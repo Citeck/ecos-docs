@@ -9,6 +9,13 @@ Welcome to Citeck ECOS's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 **************************
 База для конфигурирования
@@ -77,10 +84,3 @@ Welcome to Citeck ECOS's documentation!
 ------------------------------------
 	* Модуль интеграции (репортинг)
 --------------------------------------
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
