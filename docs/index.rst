@@ -28,7 +28,7 @@ Citeck ECOS's documentation
 	* Генерация
 	* Шаблоны
 	* Нумерация
-* `Модель`_
+* `Модель <https://citeck-ecos.readthedocs.io/ru/latest/%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html/>`_
 
 	* Аспект
 	* Набор аспектов
