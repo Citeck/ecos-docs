@@ -5,8 +5,9 @@
    
 .. toctree::
    :maxdepth: 3
+   :numbered:
    
-   модель
+   Модель
 
 
 Welcome to Citeck ECOS's documentation!
