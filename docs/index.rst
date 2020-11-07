@@ -2,6 +2,12 @@
    sphinx-quickstart on Tue Oct 27 22:09:59 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+   
+.. toctree::
+   :maxdepth: 3
+   
+   модель
+
 
 Welcome to Citeck ECOS's documentation!
 =======================================
