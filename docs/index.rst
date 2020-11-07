@@ -24,7 +24,7 @@ Welcome to Citeck ECOS's documentation!
 	* Генерация
 	* Шаблоны
 	* Нумерация
-* **`Модель <http://librerussia.blogspot.ru/>`_**
+* `Модель <http://librerussia.blogspot.ru/>`_
 
 	* Аспект
 	* Набор аспектов
