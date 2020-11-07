@@ -10,12 +10,9 @@
    Модель
 
 
-Welcome to Citeck ECOS's documentation!
+Citeck ECOS's documentation
 =======================================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 **************************
 База для конфигурирования
