@@ -73,15 +73,15 @@
 	---------------------------
 Настройка прав осуществляется на форме редактирования типа во вкладке “Модель”. Редактор будет доступен только в Enterprise поставке ECOS'а
 
-	**Пример конфигурации**
-	------------------------------
-::
+ **Пример конфигурации**::
+ -------------------------
+
 	id: "2a5c3f00-06d5-4b62-8192-1b9116f12db4"
 	typeRef: "emodel/type@contracts-cat-doctype-contract"
  
- permissions:
+  permissions:
  
-  matrix:
+   matrix:
     confirmers:
       approval: WRITE
       reworking: NONE
@@ -91,12 +91,25 @@
     scan-man:
       approval: WRITE
       reworking: NONE
-  rules: []
+   rules: []
  
- attributes:
+  attributes:
  
-  cm:name:
-    matrix:
+   cm:name:
+     matrix:
+       confirmers:
+        approval: WRITE
+        reworking: NONE
+       initiator:
+        approval: READ
+        reworking: WRITE
+       scan-man:
+        approval: WRITE
+        reworking: NONE
+     rules: []
+ 
+   cm:title:
+     matrix:
       confirmers:
         approval: WRITE
         reworking: NONE
@@ -106,17 +119,4 @@
       scan-man:
         approval: WRITE
         reworking: NONE
-    rules: []
- 
-  cm:title:
-    matrix:
-      confirmers:
-        approval: WRITE
-        reworking: NONE
-      initiator:
-        approval: READ
-        reworking: WRITE
-      scan-man:
-        approval: WRITE
-        reworking: NONE
-    rules: []
+     rules: []
