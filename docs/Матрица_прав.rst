@@ -13,32 +13,32 @@
 
 ::
 
-	 > TypePermsDef <
+	 TypePermsDef 
 	 id: String // Идентификатор настроек. Уникальный в пределах системы
 	 typeRef: RecordRef // Тип ECOS, к которому относятся настройки прав
 	 permissions: PermissionsDef // Настройка прав на документ
 	 attributes: Map<String, PermissionsDef> // Настройка прав на атрибуты
 
 ::
-	>>> PermissionsDef <<<
+	PermissionsDef
 	 matrix: Map<String, Map<String, PermissionLevel>> // Матрица прав <Роль, <Статус, Уровень_прав>>. 
 	 rules: List<PermissionRule> // Дополнительные правила для гибкой настройки 
 
 ::
-	 > PermissionLevel (enum) <
+	 PermissionLevel (enum)
 	 NONE // нет прав
 	 READ // права на чтение
 	 WRITE // права на чтение и запись
 
 ::
-	 > PermissionRule <
+	 PermissionRule
 	 roles: Set<String> // Роли, для которых применяется правило
 	 permissions: Set<String> // Список прав
 	 statuses: Set<String> // Статусы, в которых данное правило применимо. Пустой список - любой статус
 	 condition: Predicate // Условие, по которому данное правило применимо в формате предиката (см. Язык предикатов).
 	 type: RuleType // Тип правила
 
-	 > RuleType (enum) <
+	 RuleType (enum)
 	 ALLOW - разрешение. Если правило активно, то permissions добавляются для указанных ролей
 	 REVOKE - отбирание прав. Если правило активно, то permissions убираются из списка уже существующих прав у ролей
 
