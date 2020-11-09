@@ -11,7 +11,7 @@
  **Модель описания прав**
  ----------------------------
 
-::
+ ::
 
 	 TypePermsDef 
 	 id: String // Идентификатор настроек. Уникальный в пределах системы
@@ -19,18 +19,21 @@
 	 permissions: PermissionsDef // Настройка прав на документ
 	 attributes: Map<String, PermissionsDef> // Настройка прав на атрибуты
 
-::
+ ::
+ 
 	PermissionsDef
 	 matrix: Map<String, Map<String, PermissionLevel>> // Матрица прав <Роль, <Статус, Уровень_прав>>. 
 	 rules: List<PermissionRule> // Дополнительные правила для гибкой настройки 
 
-::
+ ::
+ 
 	 PermissionLevel (enum)
 	 NONE // нет прав
 	 READ // права на чтение
 	 WRITE // права на чтение и запись
 
 ::
+
 	 PermissionRule
 	 roles: Set<String> // Роли, для которых применяется правило
 	 permissions: Set<String> // Список прав
