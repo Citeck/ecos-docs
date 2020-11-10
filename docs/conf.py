@@ -10,8 +10,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -49,6 +49,14 @@ language = 'ru'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# The master toctree document.
+master_doc = 'index'
+
+# The encoding of source files.
+source_encoding = 'utf-8-sig'
+
+# The suffix of source filenames.
+source_suffix = '.rst'
 
 # -- Options for HTML output -------------------------------------------------
 
