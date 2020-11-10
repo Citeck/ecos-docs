@@ -9,7 +9,7 @@
 .. note:: *Последняя правка:* |today|
    
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    
    Модель
    Матрица_прав
