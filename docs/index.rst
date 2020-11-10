@@ -12,6 +12,12 @@
  :ref:`Search Page <search>`
 
 .. toctree::
+   :maxdepth: 4
+   :caption: База знаний
+   
+   База_знаний
+
+.. toctree::
    :maxdepth: 3
    :caption: Гайд по созданию нового | функционального модуля 
    
@@ -19,11 +25,7 @@
    Матрица_прав
    Настройка меню
 
-.. toctree::
-   :maxdepth: 4
-   :caption: База знаний
-   
-   База_знаний
+
 
 =======================================
 Citeck ECOS's documentation
