@@ -7,13 +7,23 @@
   :http-equiv=Content-Type: text/html; charset=utf-8
    
 .. note:: *Последняя правка:* |today|
-   
+
+ :ref:`Keyword Index <genindex>`
+ :ref:`Search Page <search>`
+
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
+   :caption: Гайд по созданию нового функционального модуля 
    
    Модель
    Матрица_прав
    Настройка меню
+
+.. toctree::
+   :maxdepth: 3
+   :caption: База_знаний
+   
+   База_знаний
 
 .. _my-reference-label:
 
