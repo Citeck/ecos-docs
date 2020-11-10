@@ -20,12 +20,10 @@
    Настройка меню
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: База_знаний
    
    База_знаний
-
-.. _my-reference-label:
 
 =======================================
 Citeck ECOS's documentation
