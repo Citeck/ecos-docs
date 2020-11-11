@@ -1,5 +1,5 @@
 =============
-How_To
+How To
 =============
 
 To be documented
