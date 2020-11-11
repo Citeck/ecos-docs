@@ -23,12 +23,27 @@
    :maxdepth: 4
    :caption: База знаний модулей
    
-   База_знаний
+   Data_Storage
+   Data_type
+   Form
+   Journal
+   Actions
+   Journal
+   Menu
+   Dashbord
+   Status
+   Procces
+   Rights&Access_control
+   Notification
+   Integration
    
 .. toctree::
    :maxdepth: 3
    :caption: Общая база знаний
    
+   Alfresco
+   UX_UI
+   How_To
    
 =======================================
 Citeck ECOS's documentation
