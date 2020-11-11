@@ -28,7 +28,6 @@
    Form
    Journal
    Actions
-   Journal
    Menu
    Dashbord
    Status
