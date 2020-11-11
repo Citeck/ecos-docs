@@ -69,7 +69,7 @@ Citeck ECOS's documentation
 		* Документы матрицы
 * **Нотификации**
 
-	*Email
+	* Email
 * **Интеграции**
 
 	* Интеграции с ERP
