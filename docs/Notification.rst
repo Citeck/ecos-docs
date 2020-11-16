@@ -9,27 +9,30 @@
 
 Архитектура events
 ~~~~~~~~~~~~~~~~~~
-Events queue.jpg
+.. image:: _static/Events queue.jpg
+       :scale: 90 %
+       :align: center
 
 Получение \ отправка events из alfresco
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Отправка сообщений (events) и получение строится на основе rabbitmq и моделей events в библиотеке - ecos-events. на стороне producer и consumer строится подключение к rabbitmq.
 
-На стороне alfresco, свойства, отвечающие за подключение:
-event.server.connection.enabled=false
-event.server.host=localhost
-event.server.port=0
-event.server.username=
-event.server.password=
+На стороне alfresco, свойства, отвечающие за подключение::
+
+ event.server.connection.enabled=false
+ event.server.host=localhost
+ event.server.port=0
+ event.server.username=
+ event.server.password=
 
 Очередь durable, сообщения требуют обязательного подтверждения обработки. Если при обработки сообщения произошло исключения, то сообщения попадает в dead-letter-queue с определенном ttl, после истечения ttl сообщения поступает обратно в "рабочую" очередь для повторной обработки. Пока есть пару проблем с повторной обработкой, см. блок TODO \ Проблемы. 
 
-На данный момент из alfresco отправляются events по задачам - task.create, task.assign, task.compete, task.delete. По умолчанию выключена, свойства отвечающие за отправку в alfresco:
+На данный момент из alfresco отправляются events по задачам - task.create, task.assign, task.compete, task.delete. По умолчанию выключена, свойства отвечающие за отправку в alfresco::
 
-event.task.create.emit.enabled=false
-event.task.assign.emit.enabled=false
-event.task.complete.emit.enabled=false
-event.task.delete.emit.enabled=false
+ event.task.create.emit.enabled=false
+ event.task.assign.emit.enabled=false
+ event.task.complete.emit.enabled=false
+ event.task.delete.emit.enabled=false
 
 Имеется поддержка нескольких инстансов alfresco, на основе tenant id. В alfresco добавлено свойство ecos.server.tenant.id, на основе  которого реализовано разделение.
 
