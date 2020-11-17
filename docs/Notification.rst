@@ -9,7 +9,7 @@
 
 Архитектура events
 ~~~~~~~~~~~~~~~~~~
-.. image:: _static/Events queue.jpg
+.. image:: _static/Events_queue.jpg
        :scale: 90 %
        :align: center
 
