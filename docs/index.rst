@@ -12,14 +12,15 @@
  :ref:`Search Page <search>`
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Создание нового модуля 
    
    Модель
-   Матрица_прав
    Настройка меню
    Дашборд
+   Роли_и_права_доступа
    Уведомления
+   
 
 .. toctree::
    :maxdepth: 4
@@ -39,7 +40,7 @@
    Integration
    
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Общая база знаний
    
    Alfresco
