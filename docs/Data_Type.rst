@@ -198,3 +198,141 @@ JSON представление
 .. image:: _static/predicate_lang_3.jpg
        :scale: 70 %
        :align: left
+
+Пример
+------
+
+ Задача
+~~~~~~~~~~~
+
+*Реализовать модель testModel состоящую из*
+
+
+   Типов:
+      a) car, со свойствами mass, speed, year;
+      b) producer, c одним свойством producerName;
+
+   Аспекта trunk с одним свойством shaftCount. 
+
+  Ассоциации между producer и car, один ко многим соответственно.
+
+
+ *Добавить к ней локализации en и ru*
+
+
+Реализация
+~~~~~~~~~~~~~~~
+
+1. Создать в "alfresco\module\idocs-repo\model\" файл модели testModel.xml:
+   
+::
+
+ <model name="test:car" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+   <imports>
+      <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+      <import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+   </imports>
+   <namespaces>
+      <namespace uri="http://www.citeck.ru/model/testModel/1.0" prefix="test"/>
+   </namespaces>
+   <types>
+      <type name="test:car">
+         <parent>dl:dataListItem</parent>
+         <properties>
+            <property name="test:mass">
+               <type>d:int</type>
+            </property>
+            <property name="test:speed">
+               <type>d:int</type>
+            </property>
+            <property name="test:year">
+               <type>d:text</type>
+            </property>
+         </properties>
+         <associations>
+            <association name="test:assocTest">
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>test:producer</class>
+                  <mandatory>false</mandatory>
+                  <many>false</many>
+               </target>
+            </association>
+         </associations>
+      </type>
+      <type name="test:producer">
+         <parent>dl:dataListItem</parent>
+         <properties>
+            <property name="test:producerName">
+               <type>d:text</type>
+            </property>
+         </properties>
+      </type>
+   </types>
+   <aspects>
+      <aspect name="test:trunk">
+         <properties>
+            <property name="test:shaftCount">
+               <type>d:int</type>
+            </property>
+         </properties>
+      </aspect>
+   </aspects>
+ </model>
+
+2. Создать в "alfresco\module\idocs-repo\messages\" файлы локализаций:
+    
+a) test_en.properties:
+::
+
+ test_car.type.test_car.title=Car
+ test_car.property.test_mass.title=Mass
+ test_car.property.test_speed.title=Speed
+ test_car.property.test_year.title=Year
+ test_car.association.test_assocTest.title=Test association
+ test_car.type.test_producer.title=Producer
+ test_car.property.test_producerName.title=Producer name
+ test_car.property.test_shaftCount.title=Shaft count
+
+b) test_ru.properties:
+::
+
+ test_car.type.test_car.title=Легковой автомобиль
+ test_car.property.test_mass.title=Масса
+ test_car.property.test_speed.title=Скорость
+ test_car.property.test_year.title=Год
+ test_car.association.test_assocTest.title=Тестовая ассоциация
+ test_car.type.test_producer.title=Производитель
+ test_car.property.test_producerName.title=Имя производителя
+ test_car.property.test_shaftCount.title=Количество осей
+
+3. Прописать их в "alfresco\module\idocs-repo\context\bootstrap-context.xml"
+
+a) Добавить в list
+::
+
+ <property name="models">
+   <list>
+    ...
+   </list>
+ </property>
+ путь к модели:
+
+ <value>alfresco/module/idocs-repo/model/testModel.xml</value>
+
+b) Добавить в list
+::
+
+ <property name="labels">
+   <list>
+    ...
+   </list>
+ </property>
+ путь к локализации:
+
+ <value>alfresco/module/idocs-repo/messages/test</value>
+
+4. Перезапустить проект, модель подхватится сама.
