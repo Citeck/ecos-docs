@@ -11,6 +11,13 @@
  :ref:`Keyword Index <genindex>`
  :ref:`Search Page <search>`
 
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Пример настройки процесса
+
+   Процесс_по_офферу
+
 .. toctree::
    :maxdepth: 4
    :caption: Создание нового модуля 
@@ -30,7 +37,6 @@
    Шаблоны нумерации
    Библиотека_документации
    Интеграции
-
 
 .. toctree::
    :maxdepth: 4
