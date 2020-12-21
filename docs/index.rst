@@ -14,13 +14,13 @@
 
 .. toctree::
    :maxdepth: 4
-   :caption: Пример настройки процесса
+   :caption: Пример натсройки процесса
 
    Процесс_по_офферу
 
 .. toctree::
    :maxdepth: 4
-   :caption: Создание нового модуля 
+   :caption: База знаний по настройкам 
    
    Типы_данных
    Модель
@@ -37,35 +37,18 @@
    Шаблоны нумерации
    Библиотека_документации
    Интеграции
-
-.. toctree::
-   :maxdepth: 4
-   :caption: База знаний модулей
-   
-   Data_Storage
-   Data_type
-   Form
-   Journal
-   Actions
-   Menu
-   Dashbord
-   Status
-   Procces
-   Rights&Access_control
-   Notification
-   Integration
    
 .. toctree::
    :maxdepth: 4
    :caption: Общая база знаний
-   
-   Alfresco
+
+   Глоссарий
+   Термины_системы
    UX_UI
-   How_To
    Темы_интерфейса
    Типы_действий
-   Термины_системы
-   Глоссарий
+   How_To
+   Notification
 =======================================
 Citeck ECOS's documentation
 =======================================
