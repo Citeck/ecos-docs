@@ -13,6 +13,35 @@
 В alfresco: ${module_id}/src/main/resources/alfresco/module/${module_id}/model/type/**/*.json
 В микросервисах: resources/ecos-app/model/type/**/*.json
 
+Для просмотра существующих типов и их редактирования создан журнал "Типы кейсов".
+Чтобы в него попасть следует открыть меню и перейти в системные журналы:
+
+.. image:: _static/case_type_1.png
+       :scale: 70 %
+       :align: left
+
+Пример описания типа
+~~~~~~~~~~~~~~~~~~~~
+::
+
+ {
+    "id": "base",
+    "name": "Базовый тип",
+    "actions": [
+        "ui/action$edit",
+        "ui/action$content-download",
+        "ui/action$record-actions"
+    ],
+    "associations": [
+        {
+            "id": "assoc:associatedWith",
+            "name": "Связан с",
+            "direction": "BOTH",
+            "target": "model/type$base"
+        }
+    ]
+ }
+
 Структура типов данных
 ----------------------------------------
 
