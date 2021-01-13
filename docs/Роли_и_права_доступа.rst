@@ -154,3 +154,24 @@
 
 Роли
 ----
+
+
+ECOS atributes Permissions
+---------------------------
+
+Добавлен новый компонент для обработки получения прав для атрибутов для матриц нового формата.
+
+# Yaml-формат. Пример конфига::
+
+  id: test-attrs-permissions
+  typeRef: emodel/type@test-cat-doctype
+
+  rules:
+
+    - roles: [ initiator ]
+      statuses: [ unilever-draft, unilever-reworking ]
+      attributes:
+        - name: 'cm:content'
+          permissions: { read: true, edit: true }
+
+# Регистрируется в emodel. Расположение: alfresco/module/{module-repo}/model/attrs_permission/test-attrs-permissions.yml
