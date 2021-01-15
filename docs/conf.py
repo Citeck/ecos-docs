@@ -18,7 +18,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = 'Citeck ECOS'
-copyright = '2020, Citeck'
+copyright = '2021, Citeck'
 author = 'Citeck'
 
 # The full version, including alpha/beta/rc tags
@@ -72,4 +72,4 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 def setup(app):
-    app.add_stylesheet('my_theme.css')
+  app.add_stylesheet( "css/main_theme.css" )
