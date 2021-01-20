@@ -85,7 +85,7 @@ html_theme_options = {
     'globaltoc_collapse': False,
     # If True, show hidden TOC entries
     'globaltoc_includehidden': False,
- }
+}
 
  # Set link name generated in the top bar.
 html_title = 'ECOS'
