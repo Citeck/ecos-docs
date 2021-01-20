@@ -28,7 +28,7 @@
    :maxdepth: 4
    :caption: База знаний по настройкам 
    
-   ECOS_приложения
+   ECOS_applications
    Типы_данных
    Модель
    Формы
