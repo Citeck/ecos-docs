@@ -18,14 +18,14 @@
 
 .. toctree::
    :maxdepth: 4
-   :caption: Пример натсройки процесса
+   :caption: Пример настройки процесса
 
    Процесс_по_офферу
    Офферы
    
 .. toctree::
    :maxdepth: 4
-   :caption: База знаний по настройкам 
+   :caption: База знаний по настройке
    
    ECOS_applications
    Типы_данных
