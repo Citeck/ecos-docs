@@ -68,19 +68,13 @@ source_suffix = '.rst'
 # html_theme = 'sphinx_rtd_theme'
 html_theme = 'sphinx_material'
 
-html_theme_path = 
-
-# Set link name generated in the top bar.
-html_title = 'ECOS'
-
-# Material theme options (see theme.conf for more information)
-html_theme_options = {
+#html_theme_path = 
 
 html_theme_options = {
     'base_url': 'http://bashtage.github.io/sphinx-material/',
     'repo_url': 'https://github.com/bashtage/sphinx-material/',
     'repo_name': 'Material for Sphinx',
-    'google_analytics_account': 'UA-XXXXX',
+    'google_analytics_account': 'RU-XXXXX',
     'html_minify': True,
     'css_minify': True,
     'nav_title': 'ECOS',
@@ -92,6 +86,9 @@ html_theme_options = {
     # If True, show hidden TOC entries
     'globaltoc_includehidden': False,
  }
+
+ # Set link name generated in the top bar.
+html_title = 'ECOS'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
