@@ -64,28 +64,10 @@ source_suffix = '.rst'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-# html_theme = 'alabaster'
-# html_theme = 'sphinx_rtd_theme'
-html_theme = 'sphinx_material'
+# html_theme = 'sphinx_material'
+html_theme = 'sphinx_rtd_theme'
 
-#html_theme_path = 
-
-html_theme_options = {
-    'base_url': 'http://bashtage.github.io/sphinx-material/',
-    'repo_url': 'https://github.com/bashtage/sphinx-material/',
-    'repo_name': 'Material for Sphinx',
-    'google_analytics_account': 'RU-XXXXX',
-    'html_minify': True,
-    'css_minify': True,
-    'nav_title': 'ECOS',
-    'logo_icon': '&#xe869',
-    'globaltoc_depth': 3,
-    'color_primary': 'blue',
-    'color_accent': 'light-blue',
-    'globaltoc_collapse': False,
-    # If True, show hidden TOC entries
-    'globaltoc_includehidden': False,
-}
+# html_theme_path = ['.']
 
  # Set link name generated in the top bar.
 html_title = 'ECOS'
@@ -95,5 +77,5 @@ html_title = 'ECOS'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-#def setup(app):
-#  app.add_stylesheet( "css/main_theme.css" )
+def setup(app):
+  app.add_stylesheet( "css/main_theme.css" )
