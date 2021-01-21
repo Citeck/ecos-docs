@@ -6,25 +6,25 @@
 ----------------------------------------
 Переходим в системные журналы.
 
-.. image:: _static/Переход_в_системные_журналы.png
+.. image:: _static/Переход_в_системные_журналы.jpg
       :scale: 100 %
       :align: center
 
 Справа сверху нажимаем на кнопку "Показать меню".
 
-.. image:: _static/button_show_menu.png
+.. image:: _static/Кнопка_показать_меню.jpg
         :scale: 100 %
         :align: center
 
 Выбираем "Типы кейсов".
 
-.. image:: _static/Выбрать_типы_кейсов.png
+.. image:: _static/Выбрать_типы_кейсов.jpg
        :scale: 100 %
        :align: center
 
 Слева сверху нажимаем на кнопку создания, выбираем "Создать новый тип".
 
-.. image:: _static/Кнопка_создать_тип_кейса.png
+.. image:: _static/Кнопка_создать_тип_кейса.jpg
         :scale: 100 %
         :align: center
 
@@ -33,11 +33,21 @@
 Вкладка Main (id, parent, name, description)
 --------------------------------------
 Id - уникальный идентификатор.
-Parent - выбрать base user type.
+Parent - выбрать base type.
 Name - человекопонятное имя.
 Description - описание данного типа кейса(необязательно).
 
-.. image:: _static/Параметры_типа_кейса.png
+.. image:: _static/Параметры_типа_кейса.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Create variants (id, name, record ref)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Id - уникальный идентификатор.
+Name - человекопонятное имя.
+Record Ref - для справочника заполняется значением - dict@dl:dataListItem
+
+.. image:: _static/Вариант_создания_для_справочника.jpg
         :scale: 100 %
         :align: center
 
@@ -56,48 +66,65 @@ Type- подходящий тип атрибута.
 -----------------------------------
 Справа в меню переходим в системный журнал "Формы".
 
-.. image:: _static/Переход_в_системный_журнал_формы.png
+.. image:: _static/Переход_в_системный_журнал_формы.jpg
         :scale: 100 %
         :align: center
 
 Нажимаем на кнопку создания формы.
 
-.. image:: _static/Кнопка_создать_форму.png
+.. image:: _static/Кнопка_создать_форму.jpg
         :scale: 100 %
         :align: center
 
-Основные параметры формы (Module id, Title, Тип)
+Основные параметры формы (Module id, Title, Key, Тип)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Module id - уникальный идентификатор формы.
 Title - человекопонятное имя формы.
+Key - ключ формы (такой же как и Module id).
 Тип - из списка выбрать тип кейса, созданный ранее.
+
+.. image:: _static/Параметры_формы.jpg
+        :scale: 100 %
+        :align: center
 
 Form builder
 ~~~~~~~~~~~~
 Здесь имеются различные компоненты формы.
 
-.. image:: _static/form_builder.png
+.. image:: _static/form_builder.jpg
+        :scale: 100 %
+        :align: center
+
+Columns - позволяет удобно расположить компоненты формы.
+
+.. image:: _static/columns_component.jpg
+        :scale: 100 %
+        :align: center
+
+Column Properties - основной параметр настройки, позволяет определить как по колонкам будет разбиваться компонент.
+
+.. image:: _static/columns_properties.jpg
         :scale: 100 %
         :align: center
 
 Text field (например "Код") - текстовый компонент.
 Заполняется "Label" - человекопонятное имя компонента.
 
-.. image:: _static/code_label.png
+.. image:: _static/code_label.jpg
         :scale: 100 %
         :align: center
 
 Вкладка API - здесь заполняется Property Name.
 Property Name - имя свойства в типе кейса.
 
-.. image:: _static/code_api_candidates_form.png
+.. image:: _static/code_api_candidates_form.jpg
         :scale: 100 %
         :align: center
 
 ECOS Select Component - компонент формы для выбора значения из списка.
 Заполняется "Label" - человекопонятное имя компонента.
 
-.. image:: _static/gender_label_candidates.png
+.. image:: _static/gender_label_candidates.jpg
         :scale: 100 %
         :align: center
 
@@ -105,56 +132,63 @@ ECOS Select Component - компонент формы для выбора зна
 Data Source Values - заполняется значениями, которые должны быть в списке. (Label - отображаемое имя,
 Value - значение, которое содержится)
 
-.. image:: _static/gender_data_candidates.png
+.. image:: _static/gender_data_candidates.jpg
         :scale: 100 %
         :align: center
 
 Вкладка API - здесь заполняется Property Name.
 Property Name - имя свойства в типе кейса.
 
-.. image:: _static/gender_api_candidates.png
+.. image:: _static/gender_api_candidates.jpg
         :scale: 100 %
         :align: center
 
 Date / Time Component - компонент даты / времени.
 Заполняется "Label" - человекопонятное имя компонента.
+Format - позволяет указать формат даты.
 
-.. image:: _static/date_label_candidates.png
+.. image:: _static/date_label_candidates.jpg
         :scale: 100 %
         :align: center
 
 Вкладка API - здесь заполняется Property Name.
 Property Name - имя свойства в типе кейса.
 
-.. image:: _static/date_api_candidates.png
+.. image:: _static/date_api_candidates.jpg
         :scale: 100 %
         :align: center
 
 Select Journal Component - компонент для выбора значения из журнала.
 Заполняется "Label" - человекопонятное имя компонента.
 
-.. image:: _static/select_journal_label_candidates.png
+.. image:: _static/select_journal_label_candidates.jpg
         :scale: 100 %
         :align: center
 
 Вкладка Data - заполняется "Journal ID" - идентификатор журнала, который хотим использовать в компоненте.
 
-.. image:: _static/select_journal_label_candidates.png
+.. image:: _static/select_journal_data_candidates.jpg
         :scale: 100 %
         :align: center
 
 Вкладка API - здесь заполняется Property Name.
 Property Name - имя свойства в типе кейса.
 
-.. image:: _static/select_journal_api_candidates.png
+.. image:: _static/select_journal_api_candidates.jpg
         :scale: 100 %
         :align: center
 
 Кнопка Localization
 ~~~~~~~~~~~~
+
+.. image:: _static/Кнопка_локализация.jpg
+        :scale: 100 %
+        :align: center
+
 Здесь прописывается локализация для компонентов формы.
 В параметре "Key" указывается Label компонента.
-В Locale нажимаем кнопку Add Message, выбираем необходимый язык, в поле Message прописываем то, что будет отображаться.
+В Locale нажимаем кнопку Add Message, выбираем необходимый язык, в поле Message прописываем то,
+что будет отображаться.
 
 .. image:: _static/Локализация.png
         :scale: 100 %
@@ -164,24 +198,24 @@ Property Name - имя свойства в типе кейса.
 -----------------------------------
 Справа в меню переходим в системный журнал "Журналы".
 
-.. image:: _static/Переход_в_системный_журнал_журналы.png
+.. image:: _static/Переход_в_системный_журнал_журналы.jpg
         :scale: 100 %
         :align: center
 
 Нажимаем на кнопку создания журнала.
 
-.. image:: _static/Кнопка_создать_журнал.png
+.. image:: _static/Кнопка_создать_журнал.jpg
         :scale: 100 %
         :align: center
 
 Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Идентификатор журнала (уникальный идентификатор журнала.
+Идентификатор журнала - уникальный идентификатор журнала.
 Наименование журнала - человекопонятное имя журнала.
 Тип кейса - из списка выбрать тип кейса, созданный ранее.
 Действия - из списка выбрать действия, которые будут доступны для объектов журнала.
 
-.. image:: _static/Параметры_журнала.png
+.. image:: _static/Параметры_журнала.jpg
         :scale: 100 %
         :align: center
 
@@ -191,7 +225,18 @@ Property Name - имя свойства в типе кейса.
 В "Наименование" пишем то, как будет называться колонка.
 "Системное имя" - Id атрибута модели.
 
-.. image:: _static/Вкладка_Columns.png
+.. image:: _static/Вкладка_Columns.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Create Variants.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Id - уникальный идентификатор.
+Name - человекопонятное имя.
+Record Ref - для справочника заполняется значением - dict@dl:dataListItem
+Атрибуты - через ключ "_type" указываем в значении тип "emodel/type@hr-candidates-type"
+
+.. image:: _static/Вариант_создания_для_журнала.jpg
         :scale: 100 %
         :align: center
 
@@ -199,22 +244,16 @@ Property Name - имя свойства в типе кейса.
 ----------------------------------------
 Справа в меню переходим в системный журнал "Типы кейсов".
 
-.. image:: _static/Выбрать_типы_кейсов.png
+.. image:: _static/Выбрать_типы_кейсов.jpg
         :scale: 100 %
         :align: center
+
+Выбираем ранее созданный тип кейса "Кандидаты".
 
 В параметре "Form" выбираем форму, которую создали.
 В параметре "Journal" выбираем журнал, который создали.
 
-.. image:: _static/Добаление_журнала_и_формы_в_тип_кейса.png
-        :scale: 100 %
-        :align: center
-
-Вкладка Create variants
-~~~~~~~~~~~~~~~~~~~~~~~~~
-Здесь в параметре "Form" выбираем, созданную ранее форму.
-
-.. image:: _static/Вариант_создания_для_справочника.png
+.. image:: _static/Добавление_журнала_и_формы_в_тип_кейса.jpg
         :scale: 100 %
         :align: center
 
@@ -222,14 +261,14 @@ Property Name - имя свойства в типе кейса.
 --------------
 Переходим в настройку меню, нажав на шестеренку, потом на кнопку "Настроить меню" справа сверху.
 
-.. image:: _static/Кнопка_настройки_меню.png
+.. image:: _static/Кнопка_настройки_меню.jpg
         :scale: 100 %
         :align: center
 
 Выбираем элемент меню, в котором будет находится справочник "Кандидаты".
 Наводим на элемент и нажимаем кнопку "Добавить", выбираем "Журнал", из списка выбираем необходимый журнал.
 
-.. image:: _static/Настройка_меню.png
+.. image:: _static/Настройка_меню.jpg
         :scale: 100 %
         :align: center
 
@@ -249,19 +288,19 @@ Property Name - имя свойства в типе кейса.
 
 Справа сверху нажимаем на кнопку "Показать меню".
 
-.. image:: _static/Кнопка_показать_меню.png
+.. image:: _static/Кнопка_показать_меню.jpg
         :scale: 100 %
         :align: center
 
 Выбираем "Типы кейсов".
 
-.. image:: _static/Выбрать_типы_кейсов.png
+.. image:: _static/Выбрать_типы_кейсов.jpg
         :scale: 100 %
         :align: center
 
 Слева сверху нажимаем на кнопку создания, выбираем "Создать новый тип".
 
-.. image:: _static/Кнопка_создать_тип_кейса.png
+.. image:: _static/Кнопка_создать_тип_кейса.jpg
         :scale: 100 %
         :align: center
 
@@ -273,9 +312,20 @@ Name - человекопонятное имя.
 Description - описание данного типа кейса(необязательно).
 Действия (необязательно) - из списка выбрать действия, которые будут доступны на карточке кейса.
 
-.. image:: _static/Параметры_типа_кейса_оффер.png
+.. image:: _static/Параметры_типа_кейса_оффер.jpg
         :scale: 100 %
         :align: center
+
+Вкладка Create variants
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Id - уникальный идентификатор.
+Name - человекопонятное имя.
+Record Ref - заполняется значением - dict@idocs:doc
+
+.. image:: _static/Вариант_создания_для_оффера.jpg
+        :scale: 100 %
+        :align: center
+
 
 Работа с моделью (Вкладка Model)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -284,18 +334,326 @@ Id - уникальный идентификатор атрибута.
 Name - человекопонятное имя атрибута.
 Type- подходящий тип атрибута.
 
-.. image:: _static/Атрибуты_модели_оффер.png
+.. image:: _static/Атрибуты_модели_оффер.jpg
         :scale: 100 %
         :align: center
 
-Роли (Вкладка Roles) (Здесь скорее всего еще потребуются изменения)
+Роли (Вкладка Roles)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Id - уникальный идентификатор роли.
 Name - человекопонятное имя роли.
 Assignees - можно выбрать группу пользователей и отдельных пользователей.
 Атрибут - атрибут в модели.
 
+.. image:: _static/Роли_оффера.jpg
+        :scale: 100 %
+        :align: center
+
 Статусы (Вкладка Statuses)
 """"""""""""""""""""""""""""
 Id - уникальный идентификатор статуса.
 Name - человекопонятное имя статуса.
+
+.. image:: _static/Статусы_оффера.png
+        :scale: 100 %
+        :align: center
+
+После того как настроили роли и статусы, во вкладке Model можно настроить матрицу прав.
+
+.. image:: _static/Кнопка_прав.jpg
+        :scale: 100 %
+        :align: center
+
+.. image:: _static/Кнопка_прав_оффер.jpg
+        :scale: 100 %
+        :align: center
+
+Шаблоны нумерации
+--------------
+Выбираем "Шаблоны нумерации".
+
+.. image:: _static/Журнал_шаблоны_нумерации.jpg
+        :scale: 100 %
+        :align: center
+
+Слева сверху нажимаем на кнопку создания, выбираем "Создать новый шаблон".
+
+.. image:: _static/Кнопка_создать_новый_шаблон.jpg
+        :scale: 100 %
+        :align: center
+
+Id - уникальный идентификатор шаблона нумерации.
+Name - человекопонятное имя шаблона нумерации.
+Key - что написать?
+
+.. image:: _static/regnumber_template.jpg
+        :scale: 100 %
+        :align: center
+
+.. image:: _static/offer_number_template.jpg
+        :scale: 100 %
+        :align: center
+
+После создания шаблонов нумерации добавим их в тип кейса.
+
+Выбираем "Типы кейсов".
+
+.. image:: _static/Выбрать_типы_кейсов.jpg
+        :scale: 100 %
+        :align: center
+
+В параметре "Number template" выбираем шаблон нумерации.
+
+.. image:: _static/Выбрать_шаблон_нумерации_оффер.jpg
+        :scale: 100 %
+        :align: center
+
+Во вкладке Model у атрибутов можно вычислить значение.
+
+.. image:: _static/Кнопка_вычислить.jpg
+        :scale: 100 %
+        :align: center
+
+Вычислим значение у атрибута "idocs:registrationNumber".
+
+.. image:: _static/Параметры_вычисления.jpg
+        :scale: 100 %
+        :align: center
+
+Выбрать нужный тип и заполнить соответствующие параметры (для каждого типа разные параметры).
+
+Вычислим значение у атрибута "reg_number_counter".
+
+.. image:: _static/Вычисление_шаблон_нумерации.jpg
+        :scale: 100 %
+        :align: center
+
+Создание формы "форма Оффер"
+-----------------------------------
+Справа в меню переходим в системный журнал "Формы".
+
+.. image:: _static/Переход_в_системный_журнал_формы.jpg
+        :scale: 100 %
+        :align: center
+
+Нажимаем на кнопку создания формы.
+
+.. image:: _static/Кнопка_создать_форму.jpg        :scale: 100 %
+        :align: center
+
+Основные параметры формы (Module id, Title, Key, Тип)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module id - уникальный идентификатор формы.
+Title - человекопонятное имя формы.
+Key - ключ формы (такой же как и Module id).
+Тип - из списка выбрать тип кейса, созданный ранее.
+
+.. image:: _static/Параметры_формы_оффер.jpg
+        :scale: 100 %
+        :align: center
+
+Form builder
+~~~~~~~~~~~~
+Здесь имеются различные компоненты формы.
+
+.. _Создание формы "форма Кандидата":
+
+`Создание формы "форма Кандидата"`_
+
+Panel (например "Регистрация") - находится во вкладке "Layout"
+
+.. image:: _static/component_panel.jpg
+        :scale: 100 %
+        :align: center
+
+Заполняется "Title" - человекопонятное имя компонента.
+
+.. image:: _static/panel_title.jpg
+        :scale: 100 %
+        :align: center
+
+Select Orgstruct Component (например "idocs:initiator") - компонент для выбора из оргструктуры.
+Заполняется "Label" - человекопонятное имя компонента.
+
+.. image:: _static/orgstruct_label.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Custom - можно указать допустимый тип "Allowed authority type",
+Current user by default - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание.
+
+.. image:: _static/orgstruct_custom.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе кейса.
+
+.. image:: _static/orgstruct_api.jpg
+        :scale: 100 %
+        :align: center
+
+Async Data Component - асинхронный компонент.
+
+.. image:: _static/asyncdata_component.jpg
+        :scale: 100 %
+        :align: center
+
+Заполняется "Label" - человекопонятное имя компонента.
+Data type - тип данных.
+
+.. image:: _static/asyncdata_example.jpg
+        :scale: 100 %
+        :align: center
+
+Пояснения к скрипту.
+
+.. image:: _static/asyncdata_script.jpg
+        :scale: 100 %
+        :align: center
+
+emodel/type@hr-grades-type - тип, из которого хотим получить какие либо данные.
+gradesSimpleRoleTypeAssoc - сравниваемое свойство типа, из которого получаем данные.
+offerPosition - свойство, которое используем для сравнения со свойством типа, из которого получаем данные.
+
+Здесь указываем атрибут, который хотим получить.
+
+.. image:: _static/asyncdata_attributes.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Advanced.
+Refresh on - данный параметр имеет поле для указания элементов формы, которые следует отслеживать.
+
+.. image:: _static/asyncdata_advanced.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка API - здесь заполняется Property Name.
+Property Name - человекопонятное имя свойства компонента.
+
+.. image:: _static/asyncdata_api.jpg
+        :scale: 100 %
+        :align: center
+
+Чтобы компонент формы реагировал на асинхронный компонент, надо сделать следующие настройки:
+
+.. image:: _static/grade_component_data.jpg
+        :scale: 100 %
+        :align: center
+
+В Refresh On указать компонент, при изменении которого будет реагировать компонент, для которого хотим
+получить данные из асинхронного компонента.
+
+В Calculated Value:
+
+.. image:: _static/grade_calculated_value.jpg
+        :scale: 100 %
+        :align: center
+
+JavaScript:
+
+.. image:: _static/grade_calculated_value_script.jpg
+        :scale: 100 %
+        :align: center
+
+Теперь при выборе должности, в компонент формы "Грейд" в зависимости от значения компонента "Должность",
+будет автоматически выставлено значение.
+
+Также в компонентах формы при необходимости можно выставить следующие настройки:
+Disabled (вкладка Display) - делает компонент нередактируемым.
+
+.. image:: _static/disabled_property.jpg
+        :scale: 100 %
+        :align: center
+
+Required (вкладка Validation) - делает компонент обязательным для заполнения.
+
+.. image:: _static/required_property.jpg
+        :scale: 100 %
+        :align: center
+
+Кнопка Localization
+~~~~~~~~~~~~
+
+.. _Создание формы "форма Кандидата":
+
+`Создание формы "форма Кандидата"`_
+
+Создание журнала "журнал Оффер"
+-----------------------------------
+Справа в меню переходим в системный журнал "Журналы".
+
+.. image:: _static/Переход_в_системный_журнал_журналы.jpg
+        :scale: 100 %
+        :align: center
+
+Нажимаем на кнопку создания журнала.
+
+.. image:: _static/Кнопка_создать_журнал.jpg
+        :scale: 100 %
+        :align: center
+
+Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Идентификатор журнала - уникальный идентификатор журнала.
+Наименование журнала - человекопонятное имя журнала.
+Тип кейса - из списка выбрать тип кейса, созданный ранее.
+Действия - из списка выбрать действия, которые будут доступны для объектов журнала.
+
+.. image:: _static/Параметры_журнала_оффер.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Columns (Обязательный для отображения)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Здесь заполняются колонки журнала.
+В "Наименование" пишем то, как будет называться колонка.
+"Системное имя" - Id атрибута модели.
+
+.. image:: _static/Вкладка_columns_оффер.jpg
+        :scale: 100 %
+        :align: center
+
+Вкладка Create Variants.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Id - уникальный идентификатор.
+Name - человекопонятное имя.
+Record Ref - заполняется значением - dict@ecos:case
+Атрибуты - через ключ "_type" указываем в значении тип "emodel/type@hr-offer-type"
+
+.. image:: _static/Вкладка_create_variants_offer_journal.jpg
+        :scale: 100 %
+        :align: center
+
+Добавление формы и журнала в тип кейса.
+----------------------------------------
+Справа в меню переходим в системный журнал "Типы кейсов".
+
+.. image:: _static/Выбрать_типы_кейсов.jpg
+        :scale: 100 %
+        :align: center
+
+Выбираем ранее созданный тип кейса "Офер".
+
+В параметре "Form" выбираем форму, которую создали.
+В параметре "Journal" выбираем журнал, который создали.
+
+.. image:: _static/Добавление_журнала_и_формы_в_тип_кейса.jpg
+        :scale: 100 %
+        :align: center
+
+Настройка меню
+--------------
+Переходим в настройку меню, нажав на шестеренку, потом на кнопку "Настроить меню" справа сверху.
+
+.. image:: _static/Кнопка_настройки_меню.jpg
+        :scale: 100 %
+        :align: center
+
+Выбираем элемент меню, в котором будет находится "Офер".
+Наводим на элемент и нажимаем кнопку "Добавить", выбираем "Журнал", из списка выбираем необходимый журнал.
+
+.. image:: _static/Настройка_меню.jpg
+        :scale: 100 %
+        :align: center
