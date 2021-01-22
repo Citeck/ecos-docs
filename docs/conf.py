@@ -22,7 +22,7 @@ copyright = '2021, Citeck'
 author = 'Citeck'
 
 # The full version, including alpha/beta/rc tags
-release = 'v4'
+release = 'Version 4'
 
 
 # -- General configuration ---------------------------------------------------
