@@ -8,9 +8,6 @@
    
 .. note:: *Последняя правка:* |today|
 
- :ref:`Keyword Index <genindex>`
- :ref:`Search Page <search>`
-
 .. toctree::
    :maxdepth: 1
    
