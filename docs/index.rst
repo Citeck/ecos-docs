@@ -8,9 +8,6 @@
    
 .. note:: *Последняя правка:* |today|
 
- :ref:`Keyword Index <genindex>`
- :ref:`Search Page <search>`
-
 .. toctree::
    :maxdepth: 1
    
@@ -50,6 +47,7 @@
    Глоссарий
    Термины_системы
    UX_UI
+   ECOS_Records
    Темы_интерфейса
    Типы_действий
    Язык_предикатов
