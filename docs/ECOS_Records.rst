@@ -307,7 +307,7 @@ RecordRef - это идентификатор записи, который со�
 Примеры использования::
 
   await Citeck.Records.get("workspace://SpacesStore/16d8668d-7325-49ef-80d3-f2bfdb4c6d00").load({
-    'status': '.att(n:"icase:caseStatusAssoc"){att(n:"cm:title"){str}}',
+    'status': 'icase:caseStatusAssoc.cm:title?str',
     'display': '.disp'
   });
 
