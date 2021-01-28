@@ -10,13 +10,13 @@
 ECOS Приложение (ECOS App) - приложение, которое содержит в себе артефакты. Основная цель - переносимость артефактов между стендами и возможность версионирования. ECOS Application является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.
 
 Работа с приложениями 
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Работа сприложениями осуществляется на странице администратора системы.
 
 http://host/v2/bpmn-designer?journalId=ecos-apps
 
-.. image:: _static/ecos_apps_page.png
+.. image:: _static/ecos_apps/apps_page.png
        :scale: 100 %
        :align: center
 
@@ -55,7 +55,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 
 Для управления артефактами предусмотрен журнал "Артефакты ECOS". В данный журнал попадают все артефакты, которые достигли микросервиса ecos-apps. 
 
-.. image:: _static/ecos_apps_artifacts.png
+.. image:: _static/ecos-apps/artifacts.png
        :scale: 100 %
        :align: center
 
