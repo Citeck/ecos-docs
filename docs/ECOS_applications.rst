@@ -70,7 +70,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 .. image:: _static/ecos-apps/artifact-history.png
        :align: center
 
-2. Скачать артафакт
+2. Скачать артефакт
 
 Всегда скачивается zip архив с выбранным артефактом
 
