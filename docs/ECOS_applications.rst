@@ -16,7 +16,7 @@ ECOS Приложение (ECOS App) - приложение, которое со
 
 http://host/v2/bpmn-designer?journalId=ecos-apps
 
-.. image:: _static/ecos_apps/apps_page.png
+.. image:: _static/ecos-apps/apps_page.png
        :scale: 100 %
        :align: center
 
