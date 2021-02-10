@@ -31,8 +31,8 @@ Citeck ECOS's documentation
    Типы_данных
    Модель
    Формы
-   Роли_и_статусы
    Права_доступа
+   Роли_и_статусы
    Процессы
    Журналы
    Меню
@@ -45,6 +45,12 @@ Citeck ECOS's documentation
    Библиотека_документации
    Интеграции
    
+.. toctree::
+   :maxdepth: 4
+   :caption: Администрирование
+
+   docker-compose
+
 .. toctree::
    :maxdepth: 4
    :caption: Общая база знаний
