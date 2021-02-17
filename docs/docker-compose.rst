@@ -148,15 +148,81 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 5.	Сервисы Docker
 -------------------
+В приложенных файлах перечислены сервисы с точки зрения Docker’а и их настройки.
+
+ДОКУМЕНТЫ БУДУТ ПЕРЕНЕСЕНЫ ПОЗЖЕ!
+
 6.	Известные проблемы
 ------------------------
+
 6.1.	ОС Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 6.1.1.	Порт 8080 уже занят
 """"""""""""""""""""""""""""""""
+Ecos-ui использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:
+«Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»
+
+.. image:: _static\docker\docker_8080.jpg
+       :align: center
+
+Если команда **netstat -ono** (или **netstat -ono | findstr 8080**) не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты.
+
 6.1.2.	Порт зарезервирован Windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+К примеру, каталог ecos-postgres использует порт 50432, но этот порт зарезервирован Windows. Проверить такие порты можно командой **netsh int ipv4 show excludedportrange protocol=tcp.**
+
+.. image:: _static\docker\docker_port_win.jpg
+       :align: center
+
+Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
+«Cannot start service ecos-postgress: driver failed proogramming external
+connectivity on endpoint»
+Чтобы это исправить, нужно в командной строке, запущенной с повышенными правами:
+
+1)	Остановить Hyper-V::
+ 
+ dism.exe /Online /Disable-Feature:Microsoft-Hyper- V 
+ (выполнить перезагрузку)
+2)	Добавить	нужный	порт	в	исключения::
+
+ netsh	int	ipv4	add excludedportrange protocol=tcp startport=50432 numberofports=1
+
+3)	Запустить Hyper-V::
+ dism.exe /Online /Enable-Feature:Microsoft-Hyper-V
+ /All 
+ (после потребуется перезагрузка)
+
+Порт попадет в исключения, и подобной ошибки не возникнет.
+
 6.1.3.	Если не удается выполнить switch to Linux Containers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+•	Необходимо открыть Windows Security (Защитник Windows)
+•	Открыть App & Browser control (Упр. Приложениями и Браузером)
+•	Перейти в Защита от эксплойтов
+•	Перейти в параметры программ
+ 
+•	Найти	или	добавить	в	исключения
+"C:\WINDOWS\System32\vmcompute.exe"
+•	Запустить powershell. Выполнить команду **vmcompute**
+
 6.1.4.	Docker не запускается из-за нехватки памяти
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+При запуске может возникнуть ошибка запуска Docker Desktop
+
+.. image:: _static\docker\docker_memory_1.jpg
+       :align: center
+
+Чтобы решить эту проблему нужно выделить Докеру больше памяти:
+
+1)	В системном трее нужно отыскать значок Docker. ПКМ -> Settings.
+
+.. image:: _static\docker\docker_memory_2.jpg
+       :align: center
+
+2) 2)	Вкладка Advansed, ползунок Memory. Выделить хотя бы 4 Гб и нажать
+Apply:
+
+.. image:: _static\docker\docker_memory_3.jpg
+       :align: center
+
+Если проблема продолжает возникать, то нужно завершить ресурсоёмкие процессы и/или дать Docker`у чуть меньше памяти (3-3,5 Гб).
