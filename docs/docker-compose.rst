@@ -23,8 +23,8 @@
 2.	Быстрый старт
 -------------------------------------------------------------
  •	Установите docker и docker-compose на Вашу ОС
- •	Установите Git для Вашей ОС
- •	Скачать репозиторий по ссылке, распаковать в диске С
+ •	Установите `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
+ •	Скачать репозиторий по `ссылке <https://bitbucket.org/citeck/ecos-community-demo/get/4a3f6e5.zip>`_, распаковать в диске С
  •	Выполнить	команду	cd	c:\ecos-community-demo	(переход	в распакованный архив)
  •	Выполнить docker-compose -f docker-compose.yaml up -d
  •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
@@ -36,12 +36,81 @@
 
 3.	Установка Docker
 -------------------------------------------------------------
-3.1.	На ОС Windows
+3.1. На ОС Windows
 ~~~~~~~~~~~~~~~~~~~~~~
+ *	Скачать установщик  `Docker <https://hub.docker.com/editions/community/docker-ce-desktop-windows>`_
+ *	Следуйте шагам мастера установки, чтобы принять лицензионное соглашение, авторизовать и продолжить установку. В процессе установки ОС попросит авторизовать Docker.app с вашим системным паролем. Привилегированный доступ необходим для того, чтобы установить сетевые компоненты, ссылки на Docker apps и для управления виртуальными машинами Hyper-V. Docker не запускается автоматически после установки. Его необходимо запустить вручную. Когда иконка приложения в трее перейдёт в состояние готова, Docker готов к использованию и доступен из окна терминала.
+ *	Docker Desktop for Windows уже включает в себя docker-compose, поэтому отдельно устанавливать его не нужно. Проверить можно, выполнив в окне командной строки docker-compose –version.
+
+ `Офф. руководство <https://docs.docker.com/docker-for-windows/install/>`_ 
+
+.. attention:: На виртуальной машине Windows Lunix-контейнеры не работают
+
 3.2.	На ОС MacOS
 ~~~~~~~~~~~~~~~~~~~~
+ *	Скачать установщик `Docker Desktop for Mac <https://hub.docker.com/editions/community/docker-ce-desktop-mac>`_ 
+ *	Двойным щелчком по Docker.dmg запустите установщик.
+ *	В открывшемся окне перетащите ярлык в папку приложений
+ *	В процессе установки ОС попросит авторизовать Docker.app с вашим системным паролем. Привилегированный доступ необходим для того, чтобы установить сетевые компоненты и ссылки на Docker apps. Через
+ 
+некоторое время приложение сообщит, что оно готово к работе, и иконка в статус баре примет соответствующий вид.
+ *	Docker Desktop for Mac уже включает в себя docker-compose, поэтому отдельно устанавливать его не нужно. Проверить можно, выполнив в окне терминала docker-compose –version
+
+ `Офф. руководство <https://hub.docker.com/editions/community/docker-ce-desktop-mac>`_ 
+
 3.3.	На ОС Linux
 ~~~~~~~~~~~~~~~~~~~~~
+На примере ОС Ubuntu для установки docker и docker-compose
+необходимо в эмуляторе терминала выполнить следующие команды:
+ *	Обновить список пакетов::
+
+ sudo apt-get update
+ *	Установить необходимые зависимости::
+
+  sudo apt-get install \ apt-transport-https \ ca-certificates \
+  curl \
+  gnupg-agent \
+  software-properties-common
+
+ * 	Добавить официальный GPG ключ::
+
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+  add -
+
+ *	Добавить репозиторий::
+
+  sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+ 
+stable"
+
+ *	Установить docker-ce::
+
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+ *	Включить текущего непривилегированного пользователя в группу
+docker с полномочиями доступа к демону docker::
+
+ sudo usermod -aG docker $(whoami)
+
+*	Запустить сервис docker::
+
+ systemctl start docker
+
+*	Установить автозапуск для сервиса docker::
+
+ systemctl enable docker
+
+*	Установить docker-compose::
+
+ sudo	curl	-L "https://github.com/docker/compose/releases/download/1.25.0/docker- compose-$(uname -s)-$(uname -m)" -o 
+ /usr/local/bin/docker-compose
+ sudo chmod +x /usr/local/bin/docker-compose
+
+`Офф. руководство <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_ 
+
 4.	Запуск проекта в расширенной конфигурации
 ----------------------------------------------
 4.1.	На ОС Windows
