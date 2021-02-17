@@ -67,47 +67,47 @@
  sudo apt-get update
  *	Установить необходимые зависимости::
 
-  sudo apt-get install \ apt-transport-https \ ca-certificates \
-  curl \
-  gnupg-agent \
-  software-properties-common
+ sudo apt-get install \ apt-transport-https \ ca-certificates \
+ curl \
+ gnupg-agent \
+ software-properties-common
 
  * 	Добавить официальный GPG ключ::
 
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
-  add -
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+ add -
 
  *	Добавить репозиторий::
 
-  sudo add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) \
+ sudo add-apt-repository \
+ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+ $(lsb_release -cs) \
  
-stable"
+ stable"
 
  *	Установить docker-ce::
 
-  sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
+ sudo apt-get update
+ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
  *	Включить текущего непривилегированного пользователя в группу
 docker с полномочиями доступа к демону docker::
 
- sudo usermod -aG docker $(whoami)
+sudo usermod -aG docker $(whoami)
 
 *	Запустить сервис docker::
 
- systemctl start docker
+systemctl start docker
 
 *	Установить автозапуск для сервиса docker::
 
- systemctl enable docker
+systemctl enable docker
 
 *	Установить docker-compose::
 
- sudo	curl	-L "https://github.com/docker/compose/releases/download/1.25.0/docker- compose-$(uname -s)-$(uname -m)" -o 
- /usr/local/bin/docker-compose
- sudo chmod +x /usr/local/bin/docker-compose
+sudo	curl	-L "https://github.com/docker/compose/releases/download/1.25.0/docker- compose-$(uname -s)-$(uname -m)" -o 
+/usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 `Офф. руководство <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_ 
 
@@ -115,8 +115,24 @@ docker с полномочиями доступа к демону docker::
 ----------------------------------------------
 4.1.	На ОС Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+•	Запустите Docker Compose. Запустите Git с повышенными правами
+•	Скачать репозиторий по ссылке, распаковать в диске С
+•	Выполнить	команду	cd	c:\ecos-community-demo	(переход	в распакованный архив)
+•	Выполнить переключение на Linux-контейнеры switch to linux containers3
+•	Создайте каталоги для баз данных, выполнив скрипт ./init- volumes-win.bat
+•	Выполнить docker-compose -f docker-compose-win-pv.yaml up -d
+•	Зайти в настройки Docker-compose. Перейти во вкладку Resources
+-> File sharing -> установить чекбокс «диск С»
+•	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
+•	Перейти в браузере по адресу http://localhost/
+•	Войти в систему, используя следующие учётные данные: Логин – admin
+ Пароль - alfr3sc0
+
+
 4.2.	На ОС Linux или MacOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 5.	Сервисы Docker
 -------------------
 6.	Известные проблемы
