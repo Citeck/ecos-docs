@@ -172,7 +172,7 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 «Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»
 
 .. image:: _static\docker_8080.jpg
-       :align: center
+           :align: center
 
 Если команда **netstat -ono** (или **netstat -ono | findstr 8080**) не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты.
 
@@ -181,7 +181,7 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 К примеру, каталог ecos-postgres использует порт 50432, но этот порт зарезервирован Windows. Проверить такие порты можно командой **netsh int ipv4 show excludedportrange protocol=tcp.**
 
 .. image:: _static\docker_port_win.jpg
-       :align: center
+           :align: center
 
 Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
 «Cannot start service ecos-postgress: driver failed proogramming external
@@ -219,19 +219,19 @@ connectivity on endpoint»
 При запуске может возникнуть ошибка запуска Docker Desktop
 
 .. image:: _static\docker_memory_1.jpg
-       :align: center
+           :align: center
 
 Чтобы решить эту проблему нужно выделить Докеру больше памяти:
 
 1)	В системном трее нужно отыскать значок Docker. ПКМ -> Settings.
 
 .. image:: _static\docker_memory_2.jpg
-       :align: center
+           :align: center
 
 2)	Вкладка Advansed, ползунок Memory. Выделить хотя бы 4 Гб и нажать
 **Apply**:
 
 .. image:: _static\docker_memory_3.jpg
-       :align: center
+           :align: center
 
 Если проблема продолжает возникать, то нужно завершить ресурсоёмкие процессы и/или дать Docker`у чуть меньше памяти (3-3,5 Гб).
