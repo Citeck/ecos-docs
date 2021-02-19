@@ -44,6 +44,7 @@
 
  `Офф. руководство <https://docs.docker.com/docker-for-windows/install/>`_ 
 
+
 .. attention:: На виртуальной машине Windows Lunix-контейнеры не работают
 
 3.2.	На ОС MacOS
