@@ -411,3 +411,303 @@ mailhog                     | 2020/05/14 06:43:07 [SMTP] Binding to address: 0.0
 mailhog                     | 2020/05/14 06:43:07 Serving under http://0.0.0.0:8025/mailhog/
 mailhog                     | Creating API v1 with WebPath: /mailhog
 mailhog                     | Creating API v2 with WebPath: /mailhog
+
+ecos-registry-app
+-----------------
+
+Назначение:
+~~~~~~~~~~~
+Образ одного из центральных компонентов микросервисной архитектуры. Приложение объединяет eureka REST сервис (load balancing, registering, service discovery) и Spring Cloud Config server для централизации конфигурации.
+
+Теги:
+~~~~~
+jhipster/jhipster-registry:v4.1.1 - официальный образ
+
+ `nexus_ecos_registry <http://nexus.citeck.ru/ecos-registry:>`_  - собственная сборка
+
+Базовые образы:
+~~~~~~~~~~~~~~~
+openjdk:8-jre-alpine - официальный образ openjdk 8 jre на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jhipster-registry:
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    image: jhipster/jhipster-registry:<JHIPSTER_APP_IMAGE
+    container_name: jhipster-registry
+    hostname: jhipster-registry
+    restart: unless-stopped
+    stop_grace_period: 1m
+    volumes:
+      - /opt/micro/central-server-config:/central-config
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=10004 -Dcom.sun.management.jmxremote.authenticate=true -Dcom.sun.management.jmxremote.access.file=/central-config/jmxremote.access -Dcom.sun.management.jmxremote.password.file=/central-config/jmxremote.password -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=10004  -Djava.rmi.server.hostname=<HOST_IP
+      - SPRING_PROFILES_ACTIVE=dev,swagger
+      - SPRING_SECURITY_USER_PASSWORD=alfr3sc0
+      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:/central-config/docker-config/
+    expose:
+      - 8761/tcp
+      - 10004/tcp
+    networks:
+      - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+•	**_JAVA_OPTIONS** - параметры для jvm
+•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+•	**SPRING_SECURITY_USER_PASSWORD** - пароль пользователя для аутентификации в cloud config
+•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
+•	Документация по `spring cloud config <https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server>`_
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~
+•	Требуется закончить переход на ecos-registry проект
+•	Утилизации цпу
+•	Требуется конфигурация registry как экспортера метрик микросервисов в Prometheus
+•	Использование localPath расположения конфигурационного файла
+•	Не реализован доступ к ui registry через location
+•	Не используется JWT token
+
+Типовой вывод успешного развертывания в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jhipster-registry                    | ----------------------------------------------------------
+jhipster-registry                    |  Application 'jhipster-registry' is running! Access URLs:
+jhipster-registry                    |  Local:          http://localhost:8761
+jhipster-registry                    |  External:       http://172.18.0.11:8761
+jhipster-registry                    |  Profile(s):     [composite, dev, swagger]
+jhipster-registry                    | ----------------------------------------------------------
+jhipster-registry                    | 2020-04-28 20:35:36.017  INFO 1 --- [           main] i.g.j.registry.JHipsterRegistryApp       : 
+jhipster-registry                    | ----------------------------------------------------------
+jhipster-registry                    |  Config Server:  Connected to the JHipster Registry running in Docker
+jhipster-registry                    | ----------------------------------------------------------
+
+ecos-postgresql-app
+-------------------
+Назначение:
+~~~~~~~~~~~
+Образ, собранный на официальном образе postgresql 9.4.x с добавлением скрипта инициализации баз данных и пользователей
+
+Теги:
+~~~~~
+`nexus_alpine <http://nexus.citeck.ru/ecos-postgres:9.4-alpine>`_
+
+Базовые образы:
+~~~~~~~~~~~~~~~
+postgres:9.4-alpine - официальный образ postgresql 9.4.x на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ecos-postgresql:
+    container_name: ecos-postgresql
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:50432:5432/tcp
+    environment:
+      - POSTGRES_PASSWORD=alfr3sc0
+      - DB_NAME=alfresco
+      - FLOWABLE_DBNAME=alf_flowable
+      - HISTORY_DBNAME=history_service
+      - CASE_MODEL_DBNAME=alfresco_case_model
+    hostname: ecos-postgresql
+    image: nexus.citeck.ru/ecos-postgres:9.4-alpine
+    stop_grace_period: 1m
+    volumes:
+      - /opt/alfresco/postgresql/:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+•	**POSTGRES_PASSWORD **- обязательный параметр за исключением 
+*   **POSTGRES_HOST_AUTH_METHOD=trust**, пароль рутового пользователя
+•	**POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
+•	**POSTGRES_DB **- переопределение дефолтной базы данных
+•	**POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
+•	**POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
+•	**POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
+•	**PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
+•	**DB_NAME** - определение базы данных **ecos**
+•	**DB_USERNAME** - определение пользователя для базы данных **ecos/flowable/ecos-history**
+•	**DB_PASSWORD** - пароль создаваемого пользователя
+•	**FLOWABLE_DBNAME** - определение базы данных **flowable**
+•	**HISTORY_DBNAME** - определение базы данных для ecos-history-app (устаревший параметр, базы данных мкр вынесены в отдельный инстанс)
+•	**CASE_MODEL_DBNAME** - определение базы данных **ecos-case-model-app**
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~
+•	EOL версии postgresl
+•	Используется один пользователь для баз данных
+•	Отсутствие конфигурации postgresql.conf, pg_hba.conf
+•	Отсутствие конфигурации используемых схем
+
+Типовой вывод принятых настроек в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default timezone ... UTC
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+creating template1 database in /var/lib/postgresql/data/base/1 ... ok
+initializing pg_authid ... ok
+setting password ... ok
+initializing dependencies ... ok
+creating system views ... ok
+loading system objects' descriptions ... ok
+creating collations ... sh: locale: not found
+ok
+No usable system locales were found.
+Use the option "--debug" to see details.
+creating conversions ... ok
+creating dictionaries ... ok
+setting privileges on built-in objects ... ok
+creating information schema ... ok
+loading PL/pgSQL server-side language ... ok
+vacuuming database template1 ... ok
+copying template1 to template0 ... ok
+copying template1 to postgres ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    postgres -D /var/lib/postgresql/data
+or
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+WARNING: No password has been set for the database.
+         This will allow anyone with access to the
+         Postgres port to access your database. In
+         Docker's default configuration, this is
+         effectively any other container on the same
+         system.
+
+         Use "-e POSTGRES_PASSWORD=password" to set
+         it in "docker run".
+
+waiting for server to start....LOG:  database system was shut down at 2020-04-27 23:16:37 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ done
+server started
+
+/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/initDBs.sh
+CREATE ROLE
+CREATE DATABASE
+CREATE DATABASE
+CREATE DATABASE
+CREATE DATABASE
+CREATE EXTENSION
+CREATE EXTENSION
+
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+LOG:  database system was shut down at 2020-04-27 23:16:40 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+
+ecos-model-app
+--------------
+
+Назначение:
+~~~~~~~~~~~
+Образ микросервиса, предназначенного для хранения и работы с такими сущностями как: тип(type), раздел(section), ассоциация(association), действие(action)
+
+Базовые образы:
+~~~~~~~~~~~~~~~
+•	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+emodel-app:
+    container_name: emodel-app
+    restart: unless-stopped
+    stop_grace_period: 1m
+    image: nexus.citeck.ru/ecos-model:<ECOS_MODEL_IMAGE
+    expose:
+      - 8094/tcp
+    environment:
+      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+      - _JAVA_OPTIONS=-Xmx256m -Xms256m
+      - SPRING_PROFILES_ACTIVE=dev,swagger
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://emodel-postgresql:5432/emodel
+      - ECOS_INIT_DELAY=120
+    networks:
+      - app_network
+    depends_on:
+      - emodel-postgresql
+  emodel-postgresql:
+    restart: unless-stopped
+    stop_grace_period: 1m
+    container_name: emodel-postgresql
+    image: postgres:10.4
+    environment:
+      - POSTGRES_USER=emodel
+      - POSTGRES_PASSWORD=
+    volumes:
+      - /opt/micro/postgresql/emodel:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+•	**_JAVA_OPTIONS** - параметры для **jvm**
+•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
+•	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
+•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
+•	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
+•	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~
+•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+•	Использование empty password в доступах к датасорсам
+•	cloud config и eureka load balancer используют один и тот же пароль
+
+Типовой вывод успешного развертывания в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+emodel-app                  | ----------------------------------------------------------
+emodel-app                  |   Application 'emodel' is running! Access URLs:
+emodel-app                  |   Local:          http://localhost:8094/
+emodel-app                  |   External:       http://172.25.0.26:8094/
+emodel-app                  |   Profile(s):     [dev, swagger]
+emodel-app                  | ----------------------------------------------------------
+emodel-app                  | 2020-05-13 09:04:16.415  INFO 1 --- [           main] ru.citeck.ecos.model.EcosModelApp        : 
+emodel-app                  | ----------------------------------------------------------
+emodel-app                  |   Config Server:  Connected to the JHipster Registry running in Docker
+emodel-app                  | ----------------------------------------------------------
