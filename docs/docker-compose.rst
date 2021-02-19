@@ -138,7 +138,7 @@ docker с полномочиями доступа к демону docker
 Логин – admin | 
 Пароль - alfr3sc0
 
-.. attention::  2 Проект запускается только на Linux-контейнерах
+.. attention:: Проект запускается только на Linux-контейнерах
 .. attention:: Если значение Switch to Windows, изменять ничего не нужно
 
 4.2.	На ОС Linux или MacOS
@@ -171,7 +171,7 @@ docker с полномочиями доступа к демону docker
 Ecos-ui использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:
 «Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»
 
-.. image:: _static\docker\docker_8080.jpg
+.. image:: _static\docker_8080.jpg
        :align: center
 
 Если команда **netstat -ono** (или **netstat -ono | findstr 8080**) не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты.
@@ -180,7 +180,7 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 К примеру, каталог ecos-postgres использует порт 50432, но этот порт зарезервирован Windows. Проверить такие порты можно командой **netsh int ipv4 show excludedportrange protocol=tcp.**
 
-.. image:: _static\docker\docker_port_win.jpg
+.. image:: _static\docker_port_win.jpg
        :align: center
 
 Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
@@ -218,20 +218,20 @@ connectivity on endpoint»
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 При запуске может возникнуть ошибка запуска Docker Desktop
 
- .. image:: _static\docker\docker_memory_1.jpg
+.. image:: _static\docker_memory_1.jpg
        :align: center
 
 Чтобы решить эту проблему нужно выделить Докеру больше памяти:
 
 1)	В системном трее нужно отыскать значок Docker. ПКМ -> Settings.
 
-.. image:: _static\docker\docker_memory_2.jpg
+.. image:: _static\docker_memory_2.jpg
        :align: center
 
-2) 2)	Вкладка Advansed, ползунок Memory. Выделить хотя бы 4 Гб и нажать
-Apply:
+2)	Вкладка Advansed, ползунок Memory. Выделить хотя бы 4 Гб и нажать
+**Apply**:
 
- .. image:: _static\docker\docker_memory_3.jpg
+.. image:: _static\docker_memory_3.jpg
        :align: center
 
 Если проблема продолжает возникать, то нужно завершить ресурсоёмкие процессы и/или дать Docker`у чуть меньше памяти (3-3,5 Гб).
