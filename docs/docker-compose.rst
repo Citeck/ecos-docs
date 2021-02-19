@@ -218,7 +218,7 @@ connectivity on endpoint»
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 При запуске может возникнуть ошибка запуска Docker Desktop
 
-.. image:: _static\docker\docker_memory_1.jpg
+ .. image:: _static\docker\docker_memory_1.jpg
        :align: center
 
 Чтобы решить эту проблему нужно выделить Докеру больше памяти:
@@ -231,7 +231,7 @@ connectivity on endpoint»
 2) 2)	Вкладка Advansed, ползунок Memory. Выделить хотя бы 4 Гб и нажать
 Apply:
 
-.. image:: _static\docker\docker_memory_3.jpg
+ .. image:: _static\docker\docker_memory_3.jpg
        :align: center
 
 Если проблема продолжает возникать, то нужно завершить ресурсоёмкие процессы и/или дать Docker`у чуть меньше памяти (3-3,5 Гб).
