@@ -50,6 +50,7 @@ Citeck ECOS's documentation
    :caption: Администрирование
 
    docker-compose
+   Docker-servises
 
 .. toctree::
    :maxdepth: 4
