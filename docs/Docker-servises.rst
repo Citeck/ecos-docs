@@ -878,7 +878,7 @@ ecos-app
 •	FLOWABLE_REST_API_USERNAME - логин интеграции с flowable
 •	FLOWABLE_REST_API_PASSWORD - пароль интеграции с flowable
 •	ALFRESCO_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	ALFRESCO_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+•	ALFRESCO_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco  -global.properties
 •	SHARE_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
 •	SHARE_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
 •	ALFRESCO_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
