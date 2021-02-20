@@ -36,10 +36,15 @@ onlyoffice-ds-app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 onlyoffice-ds               |  * Starting PostgreSQL 10 database server
+
 onlyoffice-ds               |    ...done.
+
 onlyoffice-ds               |  * Starting RabbitMQ Messaging Server rabbitmq-server
+
 onlyoffice-ds               |    ...done.
+
 onlyoffice-ds               | Starting redis-server: redis-server.
+
 onlyoffice-ds               | Starting supervisor: supervisord.
 onlyoffice-ds               |  * Starting periodic command scheduler cron
 onlyoffice-ds               |    ...done.
