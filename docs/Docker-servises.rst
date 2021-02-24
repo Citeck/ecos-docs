@@ -182,7 +182,7 @@ ecos-gateway-app
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
- 
+
 	gateway-app:
 	    logging:
 	      options:
@@ -239,18 +239,18 @@ ecos-gateway-app
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-gateway-app                 | ----------------------------------------------------------
-gateway-app                 |   Application 'gateway' is running! Access URLs:
-gateway-app                 |   Local:          http://localhost:8085/
-gateway-app                 |   External:       http://172.25.0.22:8085/
-gateway-app                 |   Profile(s):     [prod, swagger]
-gateway-app                 | ----------------------------------------------------------
-gateway-app                 | 2020-05-13 07:17:43.131  INFO 1 --- [           main] ru.citeck.ecos.GatewayApp                : 
-gateway-app                 | ----------------------------------------------------------
-gateway-app                 |   Config Server:  Connected to the JHipster Registry running in Docker
-gateway-app                 | ----------------------------------------------------------
-
+	gateway-app                 | ----------------------------------------------------------
+	gateway-app                 |   Application 'gateway' is running! Access URLs:
+	gateway-app                 |   Local:          http://localhost:8085/
+	gateway-app                 |   External:       http://172.25.0.22:8085/
+	gateway-app                 |   Profile(s):     [prod, swagger]
+	gateway-app                 | ----------------------------------------------------------
+	gateway-app                 | 2020-05-13 07:17:43.131  INFO 1 --- [           main] ru.citeck.ecos.GatewayApp                : 
+	gateway-app                 | ----------------------------------------------------------
+	gateway-app                 |   Config Server:  Connected to the JHipster Registry running in Docker
+	gateway-app                 | ----------------------------------------------------------
 
 ecos-notifications-app
 ----------------------
@@ -265,53 +265,55 @@ ecos-notifications-app
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-notifications-app:
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "5"
-    image: nexus.citeck.ru/ecos-notifications:<NOTIFICATIONS_APP_IMAGE
-    container_name: notifications-app
-    hostname: notifications-app
-    restart: unless-stopped
-    stop_grace_period: 1m
-    depends_on:
-      - notifications-postgresql
-    environment:
-      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
-      - _JAVA_OPTIONS=-Xmx256m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,swagger
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
-      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://notifications-postgresql:5432/notifications
-      - JHIPSTER_SLEEP=140 # gives time for the JHipster Registry to boot before the application
-      - ECOS-NOTIFICATIONS_EVENT_HOST=<ECOS-NOTIFICATIONS_EVENT_HOST
-      - ECOS-NOTIFICATIONS_EVENT_PORT=<ECOS-NOTIFICATIONS_EVENT_PORT
-      - ECOS-NOTIFICATIONS_EVENT_USERNAME=<ECOS-NOTIFICATIONS_EVENT_USERNAME
-      - ECOS-NOTIFICATIONS_EVENT_PASSWORD=<ECOS-NOTIFICATIONS_EVENT_PASSWORD
-      - ECOS-NOTIFICATIONS_ALFRESCO_URL=<ECOS-NOTIFICATIONS_ALFRESCO_URL
-      - ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME=<ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME
-      - ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD=<ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD
-    ports:
-      - 8013:8013
-    volumes:
-      - /opt/alfresco/logs/notifications:/tmp
-      - /opt/micro/credentials:/credentials
-    networks:
-      - app_network
-  # NOTIFICATIONS PSQL
-  notifications-postgresql:
-    image: postgres:10.4
-    container_name: notifications-postgresql
-    hostname: notifications-postgresql
-    restart: unless-stopped
-    stop_grace_period: 1m
-    environment:
-      - POSTGRES_USER=notifications
-    volumes:
-      - /opt/micro/postgresql/notifications:/var/lib/postgresql/data
-    networks:
-      - app_network
+::
+
+	notifications-app:
+	    logging:
+	      options:
+	        max-size: "10m"
+	        max-file: "5"
+	    image: nexus.citeck.ru/ecos-notifications:<NOTIFICATIONS_APP_IMAGE
+	    container_name: notifications-app
+	    hostname: notifications-app
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    depends_on:
+	      - notifications-postgresql
+	    environment:
+	      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+	      - _JAVA_OPTIONS=-Xmx256m -Xms256m
+	      - SPRING_PROFILES_ACTIVE=prod,swagger
+	      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+	      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+	      - SPRING_DATASOURCE_URL=jdbc:postgresql://notifications-postgresql:5432/notifications
+	      - JHIPSTER_SLEEP=140 # gives time for the JHipster Registry to boot before the application
+	      - ECOS-NOTIFICATIONS_EVENT_HOST=<ECOS-NOTIFICATIONS_EVENT_HOST
+	      - ECOS-NOTIFICATIONS_EVENT_PORT=<ECOS-NOTIFICATIONS_EVENT_PORT
+	      - ECOS-NOTIFICATIONS_EVENT_USERNAME=<ECOS-NOTIFICATIONS_EVENT_USERNAME
+	      - ECOS-NOTIFICATIONS_EVENT_PASSWORD=<ECOS-NOTIFICATIONS_EVENT_PASSWORD
+	      - ECOS-NOTIFICATIONS_ALFRESCO_URL=<ECOS-NOTIFICATIONS_ALFRESCO_URL
+	      - ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME=<ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME
+	      - ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD=<ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD
+	    ports:
+	      - 8013:8013
+	    volumes:
+	      - /opt/alfresco/logs/notifications:/tmp
+	      - /opt/micro/credentials:/credentials
+	    networks:
+	      - app_network
+	  # NOTIFICATIONS PSQL
+	  notifications-postgresql:
+	    image: postgres:10.4
+	    container_name: notifications-postgresql
+	    hostname: notifications-postgresql
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    environment:
+	      - POSTGRES_USER=notifications
+	    volumes:
+	      - /opt/micro/postgresql/notifications:/var/lib/postgresql/data
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,23 +336,24 @@ notifications-app:
 ~~~~~~~~~~~~~~~~~~~
 *	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
 *	Использование empty password в доступах к датасорсам
-*	cloud config и eureka load balancer используют один и тот же пароль
+*	Cloud config и eureka load balancer используют один и тот же пароль
 *	Монтирование firebase credentials как волюма
 *	Часть app properties (ECOS-NOTIFICATIONS*) нужно вынести в spring cloud config
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-notifications-app           | ----------------------------------------------------------
-notifications-app           |   Application 'notifications' is running! Access URLs:
-notifications-app           |   Local:          http://localhost:8013/
-notifications-app           |   External:       http://172.26.0.22:8013/
-notifications-app           |   Profile(s):     [prod, swagger]
-notifications-app           | ----------------------------------------------------------
-notifications-app           | 2020-05-14 05:59:30.204  INFO 1 --- [           main] r.c.ecos.notifications.NotificationsApp  : 
-notifications-app           | ----------------------------------------------------------
-notifications-app           |   Config Server:  Connected to the JHipster Registry running in Docker
-notifications-app           | ----------------------------------------------------------
+	notifications-app           | ----------------------------------------------------------
+	notifications-app           |   Application 'notifications' is running! Access URLs:
+	notifications-app           |   Local:          http://localhost:8013/
+	notifications-app           |   External:       http://172.26.0.22:8013/
+	notifications-app           |   Profile(s):     [prod, swagger]
+	notifications-app           | ----------------------------------------------------------
+	notifications-app           | 2020-05-14 05:59:30.204  INFO 1 --- [           main] r.c.ecos.notifications.NotificationsApp  : 
+	notifications-app           | ----------------------------------------------------------
+	notifications-app           |   Config Server:  Connected to the JHipster Registry running in Docker
+	notifications-app           | ----------------------------------------------------------
 
 ecos-mongo-app
 --------------
@@ -365,76 +368,82 @@ ecos-mongo-app
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-mongo-app:
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "5"
-    container_name: mongo-app
-    hostname: mongo-app
-    restart: unless-stopped
-    stop_grace_period: 1m
-    image: nexus.citeck.ru/mongo:4.0
-    env_file:
-     - ./env_dir/mongo-app.env
-    expose:
-      - 27017/tcp
-    volumes:
-      - /opt/mongo-app:/data/db/
-    networks:
-      - app_network
+::
+ 
+	mongo-app:
+	    logging:
+	      options:
+	        max-size: "10m"
+	        max-file: "5"
+	    container_name: mongo-app
+	    hostname: mongo-app
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    image: nexus.citeck.ru/mongo:4.0
+	    env_file:
+	     - ./env_dir/mongo-app.env
+	    expose:
+	      - 27017/tcp
+	    volumes:
+	      - /opt/mongo-app:/data/db/
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 *	**MONGO_INITDB_ROOT_USERNAME** - логин пользователя, который будет создан в **admin db с root** привилегиями
 *	**MONGO_INITDB_ROOT_PASSWORD** - пароль привилегированного пользователя
-*	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в /docker-entrypoint-initdb.d/*.js/sh. Для понимания:
-This variable allows you to specify the name of a database to be used for creation scripts in /docker-entrypoint-initdb.d/*.js (see Initializing a fresh instance below). MongoDB is fundamentally designed for "create on first use", so if you do not insert data with your JavaScript files, then no database is created.
+*	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в /docker-entrypoint-initdb.d/*.js/sh. (1)
 *	**ECOS_HISTORY_APP_DATASOURCE_DATABASE** - db микросервиса истории **(ecos-history)**
 *	**ECOS_HISTORY_APP_DATASOURCE_USERNAME** - логин для мкр истории, роль dbOwner **(ecos-history)**
 *	**ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мкр истории **(ecos-history-password)**
 *	**ECOS_PROCESS_APP_DATASOURCE_DATABASE** - db микросервиса ecos-process **(ecos-process)**
 *	**ECOS_PROCESS_APP_DATASOURCE_USERNAME **- логин для мкр ecos-process, роль dbOwner **(ecos-process)**
 *	**ECOS_PROCESS_APP_DATASOURCE_PASSWORD** - пароль для мкр ecos-process **(ecos-process-password)**
+ 	
+(1) - This variable allows you to specify the name of a database to be used for creation scripts in /docker-entrypoint-initdb.d/.js (see Initializing a fresh instance below). MongoDB is fundamentally designed for «create on first use», so if you do not insert data with your JavaScript files, then no database is created.
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
-2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** See `mongo_prodnotes_filesystem <http://dochub.mongodb.org/core/prodnotes-filesystem>`_ 
+::
+ 
+	2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+	2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** See `mongo_prodnotes_filesystem <http://dochub.mongodb.org/core/prodnotes-filesystem>`_ 
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-MongoDB shell version v4.0.18
-connecting to: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
-2020-05-06T07:44:13.565+0000 I NETWORK  [listener] connection accepted from 127.0.0.1:42378 #3 (1 connection now open)
-2020-05-06T07:44:13.565+0000 I NETWORK  [conn3] received client metadata from 127.0.0.1:42378 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.0.18" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
-Implicit session: session { "id" : UUID("3cb7f158-dfaa-4ffd-896f-b36052828f19") }
-MongoDB server version: 4.0.18
-2020-05-06T07:44:13.593+0000 I ACCESS   [conn3] Successfully authenticated as principal root_user on admin from client 127.0.0.1:42378
-1
-ecos-process
-Successfully added user: {
-        "user" : "ecos-process",
-        "roles" : [
-                {
-                        "role" : "dbOwner",
-                        "db" : "ecos-process"
-                }
-        ]
-}
-ecos-history
-Successfully added user: {
-        "user" : "ecos-history",
-        "roles" : [
-                {
-                        "role" : "dbOwner",
-                        "db" : "ecos-history"
-                }
-        ]
-}
-bye
+	MongoDB shell version v4.0.18
+	connecting to: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
+	2020-05-06T07:44:13.565+0000 I NETWORK  [listener] connection accepted from 127.0.0.1:42378 #3 (1 connection now open)
+	2020-05-06T07:44:13.565+0000 I NETWORK  [conn3] received client metadata from 127.0.0.1:42378 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.0.18" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "16.04" } }
+	Implicit session: session { "id" : UUID("3cb7f158-dfaa-4ffd-896f-b36052828f19") }
+	MongoDB server version: 4.0.18
+	2020-05-06T07:44:13.593+0000 I ACCESS   [conn3] Successfully authenticated as principal root_user on admin from client 127.0.0.1:42378
+	1
+	ecos-process
+	Successfully added user: {
+	        "user" : "ecos-process",
+	        "roles" : [
+	                {
+	                        "role" : "dbOwner",
+	                        "db" : "ecos-process"
+	                }
+	        ]
+	}
+	ecos-history
+	Successfully added user: {
+	        "user" : "ecos-history",
+	        "roles" : [
+	                {
+	                        "role" : "dbOwner",
+	                        "db" : "ecos-history"
+	                }
+	        ]
+	}
+	bye
 
 mailhog-app
 -----------
@@ -445,23 +454,24 @@ mailhog-app
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-mailhog:
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "5"
-    restart: unless-stopped
-    stop_grace_period: 1m
-    container_name: mailhog
-    hostname: mailhog
-    expose:
-      - 8025/tcp
-    environment:
-      - MH_UI_WEB_PATH=mailhog
-    image: mailhog/mailhog
-    networks:
-      - app_network
+	mailhog:
+	    logging:
+	      options:
+	        max-size: "10m"
+	        max-file: "5"
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    container_name: mailhog
+	    hostname: mailhog
+	    expose:
+	      - 8025/tcp
+	    environment:
+	      - MH_UI_WEB_PATH=mailhog
+	    image: mailhog/mailhog
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -469,13 +479,14 @@ mailhog:
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-mailhog                     | [HTTP] Binding to address: 0.0.0.0:8025
-mailhog                     | 2020/05/14 06:43:07 Using in-memory storage
-mailhog                     | 2020/05/14 06:43:07 [SMTP] Binding to address: 0.0.0.0:1025
-mailhog                     | 2020/05/14 06:43:07 Serving under http://0.0.0.0:8025/mailhog/
-mailhog                     | Creating API v1 with WebPath: /mailhog
-mailhog                     | Creating API v2 with WebPath: /mailhog
+	mailhog                     | [HTTP] Binding to address: 0.0.0.0:8025
+	mailhog                     | 2020/05/14 06:43:07 Using in-memory storage
+	mailhog                     | 2020/05/14 06:43:07 [SMTP] Binding to address: 0.0.0.0:1025
+	mailhog                     | 2020/05/14 06:43:07 Serving under http://0.0.0.0:8025/mailhog/
+	mailhog                     | Creating API v1 with WebPath: /mailhog
+	mailhog                     | Creating API v2 with WebPath: /mailhog
 
 ecos-registry-app
 -----------------
@@ -488,38 +499,40 @@ ecos-registry-app
 ~~~~~
 jhipster/jhipster-registry:v4.1.1 - официальный образ
 
- `nexus_ecos_registry <http://nexus.citeck.ru/ecos-registry:>`_  - собственная сборка
+`nexus_ecos_registry <http://nexus.citeck.ru/ecos-registry:>`_  - собственная сборка
 
 Базовые образы:
 ~~~~~~~~~~~~~~~
-openjdk:8-jre-alpine - официальный образ openjdk 8 jre на базе alpine linux
+**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-jhipster-registry:
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "5"
-    image: jhipster/jhipster-registry:<JHIPSTER_APP_IMAGE
-    container_name: jhipster-registry
-    hostname: jhipster-registry
-    restart: unless-stopped
-    stop_grace_period: 1m
-    volumes:
-      - /opt/micro/central-server-config:/central-config
-    environment:
-      - _JAVA_OPTIONS=-Xmx512m -Xms256m -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=10004 -Dcom.sun.management.jmxremote.authenticate=true -Dcom.sun.management.jmxremote.access.file=/central-config/jmxremote.access -Dcom.sun.management.jmxremote.password.file=/central-config/jmxremote.password -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=10004  -Djava.rmi.server.hostname=<HOST_IP
-      - SPRING_PROFILES_ACTIVE=dev,swagger
-      - SPRING_SECURITY_USER_PASSWORD=alfr3sc0
-      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
-      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
-      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:/central-config/docker-config/
-    expose:
-      - 8761/tcp
-      - 10004/tcp
-    networks:
-      - app_network
+::
+
+	jhipster-registry:
+	    logging:
+	      options:
+	        max-size: "10m"
+	        max-file: "5"
+	    image: jhipster/jhipster-registry:<JHIPSTER_APP_IMAGE
+	    container_name: jhipster-registry
+	    hostname: jhipster-registry
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    volumes:
+	      - /opt/micro/central-server-config:/central-config
+	    environment:
+	      - _JAVA_OPTIONS=-Xmx512m -Xms256m -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=10004 -Dcom.sun.management.jmxremote.authenticate=true -Dcom.sun.management.jmxremote.access.file=/central-config/jmxremote.access -Dcom.sun.management.jmxremote.password.file=/central-config/jmxremote.password -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=10004  -Djava.rmi.server.hostname=<HOST_IP
+	      - SPRING_PROFILES_ACTIVE=dev,swagger
+	      - SPRING_SECURITY_USER_PASSWORD=alfr3sc0
+	      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+	      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+	      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:/central-config/docker-config/
+	    expose:
+	      - 8761/tcp
+	      - 10004/tcp
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -540,16 +553,18 @@ jhipster-registry:
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-jhipster-registry                    | ----------------------------------------------------------
-jhipster-registry                    |  Application 'jhipster-registry' is running! Access URLs:
-jhipster-registry                    |  Local:          http://localhost:8761
-jhipster-registry                    |  External:       http://172.18.0.11:8761
-jhipster-registry                    |  Profile(s):     [composite, dev, swagger]
-jhipster-registry                    | ----------------------------------------------------------
-jhipster-registry                    | 2020-04-28 20:35:36.017  INFO 1 --- [           main] i.g.j.registry.JHipsterRegistryApp       : 
-jhipster-registry                    | ----------------------------------------------------------
-jhipster-registry                    |  Config Server:  Connected to the JHipster Registry running in Docker
-jhipster-registry                    | ----------------------------------------------------------
+::
+
+	jhipster-registry                    | ----------------------------------------------------------
+	jhipster-registry                    |  Application 'jhipster-registry' is running! Access URLs:
+	jhipster-registry                    |  Local:          http://localhost:8761
+	jhipster-registry                    |  External:       http://172.18.0.11:8761
+	jhipster-registry                    |  Profile(s):     [composite, dev, swagger]
+	jhipster-registry                    | ----------------------------------------------------------
+	jhipster-registry                    | 2020-04-28 20:35:36.017  INFO 1 --- [           main] i.g.j.registry.JHipsterRegistryApp       : 
+	jhipster-registry                    | ----------------------------------------------------------
+	jhipster-registry                    |  Config Server:  Connected to the JHipster Registry running in Docker
+	jhipster-registry                    | ----------------------------------------------------------
 
 ecos-postgresql-app
 -------------------
@@ -563,28 +578,30 @@ ecos-postgresql-app
 
 Базовые образы:
 ~~~~~~~~~~~~~~~
-postgres:9.4-alpine - официальный образ postgresql 9.4.x на базе alpine linux
+**postgres:9.4-alpine** - официальный образ postgresql 9.4.x на базе alpine linux
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ecos-postgresql:
-    container_name: ecos-postgresql
-    restart: unless-stopped
-    ports:
-      - 127.0.0.1:50432:5432/tcp
-    environment:
-      - POSTGRES_PASSWORD=alfr3sc0
-      - DB_NAME=alfresco
-      - FLOWABLE_DBNAME=alf_flowable
-      - HISTORY_DBNAME=history_service
-      - CASE_MODEL_DBNAME=alfresco_case_model
-    hostname: ecos-postgresql
-    image: nexus.citeck.ru/ecos-postgres:9.4-alpine
-    stop_grace_period: 1m
-    volumes:
-      - /opt/alfresco/postgresql/:/var/lib/postgresql/data
-    networks:
-      - app_network
+::
+
+	ecos-postgresql:
+	    container_name: ecos-postgresql
+	    restart: unless-stopped
+	    ports:
+	      - 127.0.0.1:50432:5432/tcp
+	    environment:
+	      - POSTGRES_PASSWORD=alfr3sc0
+	      - DB_NAME=alfresco
+	      - FLOWABLE_DBNAME=alf_flowable
+	      - HISTORY_DBNAME=history_service
+	      - CASE_MODEL_DBNAME=alfresco_case_model
+	    hostname: ecos-postgresql
+	    image: nexus.citeck.ru/ecos-postgres:9.4-alpine
+	    stop_grace_period: 1m
+	    volumes:
+	      - /opt/alfresco/postgresql/:/var/lib/postgresql/data
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -613,94 +630,95 @@ ecos-postgresql:
 
 Типовой вывод принятых настроек в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-The files belonging to this database system will be owned by user "postgres".
-This user must also own the server process.
+	The files belonging to this database system will be owned by user "postgres".
+	This user must also own the server process.
 
-The database cluster will be initialized with locale "en_US.utf8".
-The default database encoding has accordingly been set to "UTF8".
-The default text search configuration will be set to "english".
+	The database cluster will be initialized with locale "en_US.utf8".
+	The default database encoding has accordingly been set to "UTF8".
+	The default text search configuration will be set to "english".
 
-Data page checksums are disabled.
+	Data page checksums are disabled.
 
-fixing permissions on existing directory /var/lib/postgresql/data ... ok
-creating subdirectories ... ok
-selecting default max_connections ... 100
-selecting default shared_buffers ... 128MB
-selecting default timezone ... UTC
-selecting dynamic shared memory implementation ... posix
-creating configuration files ... ok
-creating template1 database in /var/lib/postgresql/data/base/1 ... ok
-initializing pg_authid ... ok
-setting password ... ok
-initializing dependencies ... ok
-creating system views ... ok
-loading system objects' descriptions ... ok
-creating collations ... sh: locale: not found
-ok
-No usable system locales were found.
-Use the option "--debug" to see details.
-creating conversions ... ok
-creating dictionaries ... ok
-setting privileges on built-in objects ... ok
-creating information schema ... ok
-loading PL/pgSQL server-side language ... ok
-vacuuming database template1 ... ok
-copying template1 to template0 ... ok
-copying template1 to postgres ... ok
-syncing data to disk ... ok
+	fixing permissions on existing directory /var/lib/postgresql/data ... ok
+	creating subdirectories ... ok
+	selecting default max_connections ... 100
+	selecting default shared_buffers ... 128MB
+	selecting default timezone ... UTC
+	selecting dynamic shared memory implementation ... posix
+	creating configuration files ... ok
+	creating template1 database in /var/lib/postgresql/data/base/1 ... ok
+	initializing pg_authid ... ok
+	setting password ... ok
+	initializing dependencies ... ok
+	creating system views ... ok
+	loading system objects' descriptions ... ok
+	creating collations ... sh: locale: not found
+	ok
+	No usable system locales were found.
+	Use the option "--debug" to see details.
+	creating conversions ... ok
+	creating dictionaries ... ok
+	setting privileges on built-in objects ... ok
+	creating information schema ... ok
+	loading PL/pgSQL server-side language ... ok
+	vacuuming database template1 ... ok
+	copying template1 to template0 ... ok
+	copying template1 to postgres ... ok
+	syncing data to disk ... ok
 
-Success. You can now start the database server using:
+	Success. You can now start the database server using:
 
-    postgres -D /var/lib/postgresql/data
-or
-    pg_ctl -D /var/lib/postgresql/data -l logfile start
+	    postgres -D /var/lib/postgresql/data
+	or
+	    pg_ctl -D /var/lib/postgresql/data -l logfile start
 
 
-WARNING: enabling "trust" authentication for local connections
-You can change this by editing pg_hba.conf or using the option -A, or
---auth-local and --auth-host, the next time you run initdb.
+	WARNING: enabling "trust" authentication for local connections
+	You can change this by editing pg_hba.conf or using the option -A, or
+	--auth-local and --auth-host, the next time you run initdb.
 
-WARNING: No password has been set for the database.
-         This will allow anyone with access to the
-         Postgres port to access your database. In
-         Docker's default configuration, this is
-         effectively any other container on the same
-         system.
+	WARNING: No password has been set for the database.
+	         This will allow anyone with access to the
+	         Postgres port to access your database. In
+	         Docker's default configuration, this is
+	         effectively any other container on the same
+	         system.
 
-         Use "-e POSTGRES_PASSWORD=password" to set
-         it in "docker run".
+	         Use "-e POSTGRES_PASSWORD=password" to set
+	         it in "docker run".
 
-waiting for server to start....LOG:  database system was shut down at 2020-04-27 23:16:37 UTC
-LOG:  MultiXact member wraparound protections are now enabled
-LOG:  database system is ready to accept connections
-LOG:  autovacuum launcher started
- done
-server started
+	waiting for server to start....LOG:  database system was shut down at 2020-04-27 23:16:37 UTC
+	LOG:  MultiXact member wraparound protections are now enabled
+	LOG:  database system is ready to accept connections
+	LOG:  autovacuum launcher started
+	 done
+	server started
 
-/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/initDBs.sh
-CREATE ROLE
-CREATE DATABASE
-CREATE DATABASE
-CREATE DATABASE
-CREATE DATABASE
-CREATE EXTENSION
-CREATE EXTENSION
+	/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/initDBs.sh
+	CREATE ROLE
+	CREATE DATABASE
+	CREATE DATABASE
+	CREATE DATABASE
+	CREATE DATABASE
+	CREATE EXTENSION
+	CREATE EXTENSION
 
-waiting for server to shut down....LOG:  received fast shutdown request
-LOG:  aborting any active transactions
-LOG:  autovacuum launcher shutting down
-LOG:  shutting down
-LOG:  database system is shut down
- done
-server stopped
+	waiting for server to shut down....LOG:  received fast shutdown request
+	LOG:  aborting any active transactions
+	LOG:  autovacuum launcher shutting down
+	LOG:  shutting down
+	LOG:  database system is shut down
+	 done
+	server stopped
 
-PostgreSQL init process complete; ready for start up.
+	PostgreSQL init process complete; ready for start up.
 
-LOG:  database system was shut down at 2020-04-27 23:16:40 UTC
-LOG:  MultiXact member wraparound protections are now enabled
-LOG:  database system is ready to accept connections
-LOG:  autovacuum launcher started
+	LOG:  database system was shut down at 2020-04-27 23:16:40 UTC
+	LOG:  MultiXact member wraparound protections are now enabled
+	LOG:  database system is ready to accept connections
+	LOG:  autovacuum launcher started
 
 ecos-model-app
 --------------
@@ -715,37 +733,38 @@ ecos-model-app
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-emodel-app:
-    container_name: emodel-app
-    restart: unless-stopped
-    stop_grace_period: 1m
-    image: nexus.citeck.ru/ecos-model:<ECOS_MODEL_IMAGE
-    expose:
-      - 8094/tcp
-    environment:
-      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
-      - _JAVA_OPTIONS=-Xmx256m -Xms256m
-      - SPRING_PROFILES_ACTIVE=dev,swagger
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
-      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://emodel-postgresql:5432/emodel
-      - ECOS_INIT_DELAY=120
-    networks:
-      - app_network
-    depends_on:
-      - emodel-postgresql
-  emodel-postgresql:
-    restart: unless-stopped
-    stop_grace_period: 1m
-    container_name: emodel-postgresql
-    image: postgres:10.4
-    environment:
-      - POSTGRES_USER=emodel
-      - POSTGRES_PASSWORD=
-    volumes:
-      - /opt/micro/postgresql/emodel:/var/lib/postgresql/data
-    networks:
-      - app_network
+::
+	emodel-app:
+	    container_name: emodel-app
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    image: nexus.citeck.ru/ecos-model:<ECOS_MODEL_IMAGE
+	    expose:
+	      - 8094/tcp
+	    environment:
+	      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+	      - _JAVA_OPTIONS=-Xmx256m -Xms256m
+	      - SPRING_PROFILES_ACTIVE=dev,swagger
+	      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+	      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+	      - SPRING_DATASOURCE_URL=jdbc:postgresql://emodel-postgresql:5432/emodel
+	      - ECOS_INIT_DELAY=120
+	    networks:
+	      - app_network
+	    depends_on:
+	      - emodel-postgresql
+	  emodel-postgresql:
+	    restart: unless-stopped
+	    stop_grace_period: 1m
+	    container_name: emodel-postgresql
+	    image: postgres:10.4
+	    environment:
+	      - POSTGRES_USER=emodel
+	      - POSTGRES_PASSWORD=
+	    volumes:
+	      - /opt/micro/postgresql/emodel:/var/lib/postgresql/data
+	    networks:
+	      - app_network
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -765,17 +784,18 @@ emodel-app:
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
 
-emodel-app                  | ----------------------------------------------------------
-emodel-app                  |   Application 'emodel' is running! Access URLs:
-emodel-app                  |   Local:          http://localhost:8094/
-emodel-app                  |   External:       http://172.25.0.26:8094/
-emodel-app                  |   Profile(s):     [dev, swagger]
-emodel-app                  | ----------------------------------------------------------
-emodel-app                  | 2020-05-13 09:04:16.415  INFO 1 --- [           main] ru.citeck.ecos.model.EcosModelApp        : 
-emodel-app                  | ----------------------------------------------------------
-emodel-app                  |   Config Server:  Connected to the JHipster Registry running in Docker
-emodel-app                  | ----------------------------------------------------------
+	emodel-app                  | ----------------------------------------------------------
+	emodel-app                  |   Application 'emodel' is running! Access URLs:
+	emodel-app                  |   Local:          http://localhost:8094/
+	emodel-app                  |   External:       http://172.25.0.26:8094/
+	emodel-app                  |   Profile(s):     [dev, swagger]
+	emodel-app                  | ----------------------------------------------------------
+	emodel-app                  | 2020-05-13 09:04:16.415  INFO 1 --- [           main] ru.citeck.ecos.model.EcosModelApp        : 
+	emodel-app                  | ----------------------------------------------------------
+	emodel-app                  |   Config Server:  Connected to the JHipster Registry running in Docker
+	emodel-app                  | ----------------------------------------------------------
 
 ecos-app
 --------
@@ -786,10 +806,10 @@ ecos-app
 Теги
 ~~~~
 
-Тег:
-<docker-registry>/ecos-<ecos project>:tag	
+**<docker-registry>/ecos-<ecos project>:tag	**
 
-Веб архивы:
+   **Веб архивы**
+
 *	alfresco.war
 *	share.war
 *	flowable-admin.war
@@ -802,7 +822,8 @@ ecos-app
 Тег:
 <docker-registry>/ecs-<ecos project>:tag
 
-	Веб архивы:
+	**Веб архивы:**
+
 *	alfresco.war
 *	share.war
 *	flowable-admin.war
@@ -813,8 +834,8 @@ ecos-app
 
 Базовые образы
 ~~~~~~~~~~~~~~
-**centos:centos7** - базовый образ последнего обновления CentOS 7.
-**nexus.citeck.ru/ecs:base** - базовый образ на основе centos:centos7. В образ вынесены слои с типовыми инструкциями для переиспользования в итоговых образах.
+* **centos:centos7** - базовый образ последнего обновления CentOS 7.
+* **nexus.citeck.ru/ecs:base** - базовый образ на основе centos:centos7. В образ вынесены слои с типовыми инструкциями для переиспользования в итоговых образах.
 
 Шаблон сервиса docker-compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -948,57 +969,58 @@ ecos-app
 
 Типовой вывод принятых настроек в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Attention!!! All spaces in Environment variables will be deleted!!!
-ecos                        | replacing option  flowable.rest-api.username=admin  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  flowable.rest-api.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  alfresco.host=ecos-demo.citeck.com  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  alfresco.protocol=https  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  alfresco.port=443  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  share.host=ecos-demo.citeck.com  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  share.protocol=https  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  share.port=443  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  system.serverMode=PRODUCTION  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  db.driver=org.postgresql.Driver  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  db.username=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  db.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  db.name=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  db.url=jdbc:postgresql://ecos-postgresql:5432/alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.host=mailhog  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.port=1025  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.username=  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.password=  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.from.default=alfresco@alfresco.org  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.protocol=smtp  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.smtp.auth=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.smtp.starttls.enable=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.smtps.auth=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  mail.smtps.starttls.enable=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  ftp.port=21  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.Server.Name=localhost  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.domain=WORKGROUP  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.hostannounce=true  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.broadcast=0.0.0.255  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  cifs.ipv6.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  nfs.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  dir.contentstore=/content/contentstore  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  dir.contentstore.deleted=/content/contentstore.deleted  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.modeler.url=https://ecos-demo.citeck.com/flowable-modeler/  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.rest-api.url=https://ecos-demo.citeck.com/flowable-rest/  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.webapps.deployment.api.url=https://ecos-demo.citeck.com/flowable-task/app-api  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | Flowable api url change skipped
-ecos                        | adding option  idm.app.url=https://ecos-demo.citeck.com/flowable-idm/  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.db.url=jdbc:postgresql://ecos-postgresql:5432/alf_flowable  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.db.username=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.db.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | adding option  flowable.db.driver.class.name=org.postgresql.Driver  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | replacing option  data.dir.root=/var/lib/solr4/index  in  /opt/alfresco/solr4/workspace-SpacesStore/conf/solrcore.properties
-ecos                        | replacing option  solr.suggester.enabled=false  in  /opt/alfresco/solr4/workspace-SpacesStore/conf/solrcore.properties
-ecos                        | replacing option  data.dir.root=/var/lib/solr4/index  in  /opt/alfresco/solr4/archive-SpacesStore/conf/solrcore.properties
-ecos                        | adding option  authentication.chain=alfrescoNtlm1:alfrescoNtlm  in  /opt/tomcat/shared/classes/alfresco-global.properties
-ecos                        | Flowable connection string: postgresql://ecos-postgresql:5432/alf_flowable
-ecos                        | Solr configuration changed!
+::
 
+	Attention!!! All spaces in Environment variables will be deleted!!!
+	ecos                        | replacing option  flowable.rest-api.username=admin  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  flowable.rest-api.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  alfresco.host=ecos-demo.citeck.com  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  alfresco.protocol=https  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  alfresco.port=443  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  share.host=ecos-demo.citeck.com  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  share.protocol=https  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  share.port=443  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  system.serverMode=PRODUCTION  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  db.driver=org.postgresql.Driver  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  db.username=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  db.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  db.name=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  db.url=jdbc:postgresql://ecos-postgresql:5432/alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.host=mailhog  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.port=1025  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.username=  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.password=  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.from.default=alfresco@alfresco.org  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.protocol=smtp  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.smtp.auth=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.smtp.starttls.enable=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.smtps.auth=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  mail.smtps.starttls.enable=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  ftp.port=21  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.Server.Name=localhost  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.domain=WORKGROUP  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.hostannounce=true  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.broadcast=0.0.0.255  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  cifs.ipv6.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  nfs.enabled=false  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  dir.contentstore=/content/contentstore  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  dir.contentstore.deleted=/content/contentstore.deleted  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.modeler.url=https://ecos-demo.citeck.com/flowable-modeler/  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.rest-api.url=https://ecos-demo.citeck.com/flowable-rest/  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.webapps.deployment.api.url=https://ecos-demo.citeck.com/flowable-task/app-api  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | Flowable api url change skipped
+	ecos                        | adding option  idm.app.url=https://ecos-demo.citeck.com/flowable-idm/  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.db.url=jdbc:postgresql://ecos-postgresql:5432/alf_flowable  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.db.username=alfresco  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.db.password=alfr3sc0  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | adding option  flowable.db.driver.class.name=org.postgresql.Driver  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | replacing option  data.dir.root=/var/lib/solr4/index  in  /opt/alfresco/solr4/workspace-SpacesStore/conf/solrcore.properties
+	ecos                        | replacing option  solr.suggester.enabled=false  in  /opt/alfresco/solr4/workspace-SpacesStore/conf/solrcore.properties
+	ecos                        | replacing option  data.dir.root=/var/lib/solr4/index  in  /opt/alfresco/solr4/archive-SpacesStore/conf/solrcore.properties
+	ecos                        | adding option  authentication.chain=alfrescoNtlm1:alfrescoNtlm  in  /opt/tomcat/shared/classes/alfresco-global.properties
+	ecos                        | Flowable connection string: postgresql://ecos-postgresql:5432/alf_flowable
+	ecos                        | Solr configuration changed!
 
 ecos-integrations-app
 ---------------------
@@ -1057,20 +1079,20 @@ ecos-integrations-app
 Используемые переменные
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-*	_JAVA_OPTIONS - параметры для jvm
-*	SPRING_PROFILES_ACTIVE - используемые при развертывании профили
-*	EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE - url используемого по умолчанию eureka load balancer, содержит credentials
-*	SPRING_CLOUD_CONFIG_URI - url используемого cloud config server, содержит credentials
-*	JHIPSTER_REGISTRY_PASSWORD - пароль пользователя для аутентификации в eureka load balancer
-*	SPRING_DATASOURCE_URL - url используемого postgresql datasource
-*	JHIPSTER_SLEEP - таймаут перед развертыванием микросервиса
+*	**_JAVA_OPTIONS** - параметры для jvm
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию eureka load balancer, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого cloud config server, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
+*	**SPRING_DATASOURCE_URL** - url используемого postgresql datasource
+*	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
 
 Известные проблемы
 ~~~~~~~~~~~~~~~~~~
 
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
 
 
 Типовой вывод успешного развертывания в лог контейнера
@@ -1097,7 +1119,7 @@ ecos-solr-app
 
 Базовые образы
 ~~~~~~~~~~~~~~~
-•	tomcat:7.0.59-jre8 - официальный образ tomcat 7.0.59, openjdk version "1.8.0_40-internal"
+*	tomcat:7.0.59-jre8 - официальный образ tomcat 7.0.59, openjdk version "1.8.0_40-internal"
 
 Шаблон сервиса docker-compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1125,22 +1147,22 @@ ecos-solr-app
 
 Используемые переменные
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	ALFRESCO_HOST - fqdn/ip инстанса ecos
-•	ALFRESCO_PORT - http порт инстанса ecos 
-•	ALFRESCO_PORT_SSL - https порт инстанса ecos 
-•	ALFRESCO_SECURE_COMMS - использовать шифрованное соединение
-•	CITECK_MERGE_FACTOR - мерж фактор solr/lucene, используемый при определении необходимости мержить сегменты.
-•	ALFRESCO_INDEX_TRANSFORM_CONTENT - если true - будет происходить конвертация контента в текст и его последующая пословесная индексация. Если false - будут индексироваться только метаданные (mimetype, size, etc).
-•	ALFRESCO_RECORD_UNINDEXED_NODES - если true - ноды, типы которых отмечены как “неиндексируемые” - будут попадать в индекс в качестве документа без индексации атрибутов ноды. Если false - такие документы будут игнорироваться при индексации.
-•	CITECK_RECORD_TRANSACTIONS - если true - каждая транзакция будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях будут храниться только в кеше, в памяти.
-•	CITECK_TX_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
-•	CITECK_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_TRANSACTIONS = false.
-•	CITECK_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_TRANSACTIONS = false.
-•	CITECK_RECORD_ACL_TRANSACTIONS - если true - каждая транзакция прав будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях прав будут храниться только в кеше, в памяти.
-•	CITECK_ACL_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций прав. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
-•	CITECK_ACL_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_ACL_TRANSACTIONS = false.
-•	CITECK_ACL_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_ACL_TRANSACTIONS = false.
-•	JAVA_OPTS - параметры для jvm
+*	ALFRESCO_HOST - fqdn/ip инстанса ecos
+*	ALFRESCO_PORT - http порт инстанса ecos 
+*	ALFRESCO_PORT_SSL - https порт инстанса ecos 
+*	ALFRESCO_SECURE_COMMS - использовать шифрованное соединение
+*	CITECK_MERGE_FACTOR - мерж фактор solr/lucene, используемый при определении необходимости мержить сегменты.
+*	ALFRESCO_INDEX_TRANSFORM_CONTENT - если true - будет происходить конвертация контента в текст и его последующая пословесная индексация. Если false - будут индексироваться только метаданные (mimetype, size, etc).
+*	ALFRESCO_RECORD_UNINDEXED_NODES - если true - ноды, типы которых отмечены как “неиндексируемые” - будут попадать в индекс в качестве документа без индексации атрибутов ноды. Если false - такие документы будут игнорироваться при индексации.
+*	CITECK_RECORD_TRANSACTIONS - если true - каждая транзакция будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях будут храниться только в кеше, в памяти.
+*	CITECK_TX_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+*	CITECK_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_TRANSACTIONS = false.
+*	CITECK_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_TRANSACTIONS = false.
+*	CITECK_RECORD_ACL_TRANSACTIONS - если true - каждая транзакция прав будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях прав будут храниться только в кеше, в памяти.
+*	CITECK_ACL_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций прав. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+*	CITECK_ACL_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+*	CITECK_ACL_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+*	JAVA_OPTS - параметры для jvm
 
 Типовой вывод успешного развертывания в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1257,6 +1279,7 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 Шаблон сервиса docker-compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
+
  ecos-proxy:
     logging:
       options:
@@ -1276,27 +1299,27 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 
 Используемые переменные
 ~~~~~~~~~~~~~~~~~~~~~~~
-•	DEFAULT_LOCATION_V2 - переключение дефолтного редиректа ( / ) с share/page на v2/. Формат переменной: DEFAULT_LOCATION_V2=true (параметр дублируется в клиенте в настройках системных журналов)
-•	ECOS_INIT_DELAY - таймаут запуска entrypoint скрипта, формирующего default.conf сервера. По умолчанию 30с для нормализации инициализации апстримов в compose проектах.
-•	CADVISOR_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим cadvisor и зависимые от него локейшены. Формат переменной: CADVISOR_TARGET=ip_or_fqdn:port
-•	NODE_EXPORTER_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим node-exporter и зависимые от него локейшены. Формат переменной: NODE_EXPORTER_TARGET=ip_or_fqdn:port
-•	USE_EXTERNAL_CONFIGURATION - при объявлении данной переменной будет удален конфигурационный файл default.conf в директории nginx. Используется для разработки и конфигурирования, при этом директории статики, конфигурационные файлы, сертификаты и прочее необходимо прокинуть в контейнер через pv. Директория монтирования файла конфигурации nginx  - /etc/nginx/conf.d/. Формат переменной: USE_EXTERNAL_CONFIGURATION=true
-•	PROXY_TARGET - если параметр не указан в файле ecos-proxy.env, то выставляется дефолтное проксирование на контейнер ecos- ecos:8080. Соответственно, при объявлении параметра в файле переменных будет заменено значение ecos:8080 в апстриме ecos конфигурации nginx образа на указанное в файле переменных. Формат переменной: PROXY_TARGET=ip_or_fqdn:port
-•	GATEWAY_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим gateway и зависимые от него локейшены. Формат переменной: GATEWAY_TARGET=ip_or_fqdn:port
-•	ENABLE_LOGGING - по умолчанию логирование контейнера отключено, объявление данной переменной включит стандартное логирование nginx, выставление переменной в debug включит расширенный режим отладки обработки пакетов nginx. Формат переменной: ENABLE_LOGGING=true (debug для расширенного режима)
-•	ENABLE_SERVER_STATUS - включение локейшена с выдачей статистики сервера nginx, используется для централизированного мониторинга. Локейш доступен только из docker сети. Формат переменной: ENABLE_SERVER_STATUS=true
-•	ENABLE_MOBILE_APP_ACCESS - включение локейшена /gateeway с проверкой bearer токена в хидере Authorization. Используется для доступа мобильным приложением. Формат переменной: ENABLE_MOBILE_APP_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.
-•	ENABLE_OIDC_FULL_ACCESS - включение проверки bearer токена в хидере Authorization для любого из обрабатываемых локейшенов. Формат переменной: ENABLE_OIDC_FULL_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.
-•	ONLYOFFICE_TARGET - включение локейшена /onlyoffice/ для интеграции ecos c развернутым инстансом OnlyOffice. Формат переменной: ONLYOFFICE_TARGET=ip_or_fqdn:port
-•	MAILHOG_TARGET - включение локейшена проксирования в ui контейнера mailhog. MAILHOG_TARGET=ip_or_fqdn:port
-•	ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. Формат переменной: ECOS_REGISTRY_TARGET=ip_or_fqdn:port
-•	RABBITMQ_TARGET - включение локейшена проксирования в managment ui контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port
-•	EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port
-•	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS
-•	EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по-умолчанию  https, опционально можно поставить http
+*	DEFAULT_LOCATION_V2 - переключение дефолтного редиректа ( / ) с share/page на v2/. Формат переменной: DEFAULT_LOCATION_V2=true (параметр дублируется в клиенте в настройках системных журналов)
+*	ECOS_INIT_DELAY - таймаут запуска entrypoint скрипта, формирующего default.conf сервера. По умолчанию 30с для нормализации инициализации апстримов в compose проектах.
+*	CADVISOR_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим cadvisor и зависимые от него локейшены. Формат переменной: CADVISOR_TARGET=ip_or_fqdn:port
+*	NODE_EXPORTER_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим node-exporter и зависимые от него локейшены. Формат переменной: NODE_EXPORTER_TARGET=ip_or_fqdn:port
+*	USE_EXTERNAL_CONFIGURATION - при объявлении данной переменной будет удален конфигурационный файл default.conf в директории nginx. Используется для разработки и конфигурирования, при этом директории статики, конфигурационные файлы, сертификаты и прочее необходимо прокинуть в контейнер через pv. Директория монтирования файла конфигурации nginx  - /etc/nginx/conf.d/. Формат переменной: USE_EXTERNAL_CONFIGURATION=true
+*	PROXY_TARGET - если параметр не указан в файле ecos-proxy.env, то выставляется дефолтное проксирование на контейнер ecos- ecos:8080. Соответственно, при объявлении параметра в файле переменных будет заменено значение ecos:8080 в апстриме ecos конфигурации nginx образа на указанное в файле переменных. Формат переменной: PROXY_TARGET=ip_or_fqdn:port
+*	GATEWAY_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим gateway и зависимые от него локейшены. Формат переменной: GATEWAY_TARGET=ip_or_fqdn:port
+*	ENABLE_LOGGING - по умолчанию логирование контейнера отключено, объявление данной переменной включит стандартное логирование nginx, выставление переменной в debug включит расширенный режим отладки обработки пакетов nginx. Формат переменной: ENABLE_LOGGING=true (debug для расширенного режима)
+*	ENABLE_SERVER_STATUS - включение локейшена с выдачей статистики сервера nginx, используется для централизированного мониторинга. Локейш доступен только из docker сети. Формат переменной: ENABLE_SERVER_STATUS=true
+*	ENABLE_MOBILE_APP_ACCESS - включение локейшена /gateeway с проверкой bearer токена в хидере Authorization. Используется для доступа мобильным приложением. Формат переменной: ENABLE_MOBILE_APP_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.
+*	ENABLE_OIDC_FULL_ACCESS - включение проверки bearer токена в хидере Authorization для любого из обрабатываемых локейшенов. Формат переменной: ENABLE_OIDC_FULL_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.
+*	ONLYOFFICE_TARGET - включение локейшена /onlyoffice/ для интеграции ecos c развернутым инстансом OnlyOffice. Формат переменной: ONLYOFFICE_TARGET=ip_or_fqdn:port
+*	MAILHOG_TARGET - включение локейшена проксирования в ui контейнера mailhog. MAILHOG_TARGET=ip_or_fqdn:port
+*	ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. Формат переменной: ECOS_REGISTRY_TARGET=ip_or_fqdn:port
+*	RABBITMQ_TARGET - включение локейшена проксирования в managment ui контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port
+*	EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port
+*	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS
+*	EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по-умолчанию  https, опционально можно поставить http
 Не реализованы:
-•	SOLR_TARGET
-•	ECOS_REGISTRY_TARGET (проблема с api)
+*	SOLR_TARGET
+*	ECOS_REGISTRY_TARGET (проблема с api)
 
 Типовой вывод принятых настроек в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1323,11 +1346,12 @@ ecos-uiserv-app
 
 Базовые образы
 ~~~~~~~~~~~~~~~
-•	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+*	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
 
 Шаблон сервиса docker-compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
+
  uiserv-app:
     logging:
       options:
@@ -1371,19 +1395,19 @@ ecos-uiserv-app
 
 Используемые переменные
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**_JAVA_OPTIONS** - параметры для jvm
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию eureka load balancer, содержит credentials
-•	**SPRING_CLOUD_CONFIG_URI** - url используемого cloud config server, содержит credentials
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
-•	**SPRING_DATASOURCE_URL** - url используемого postgresql datasource
-•	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+*	**_JAVA_OPTIONS** - параметры для jvm
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию eureka load balancer, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого cloud config server, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
+*	**SPRING_DATASOURCE_URL** - url используемого postgresql datasource
+*	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
 
 Известные проблемы
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
 
 Типовой вывод успешного развертывания в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1408,7 +1432,7 @@ ecos-process-app
 
 Базовые образы
 ~~~~~~~~~~~~~~~
-•	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+*	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
 
 Шаблон сервиса docker-compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1441,19 +1465,19 @@ ecos-process-app
 
 Используемые переменные
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**_JAVA_OPTIONS** - параметры для jvm
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию eureka load balancer, содержит credentials
-•	**SPRING_CLOUD_CONFIG_URI** - url используемого cloud config server, содержит credentials
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
-•	**SPRING_DATA_MONGODB_URI** - url используемого mongodb datasource
-•	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+*	**_JAVA_OPTIONS** - параметры для jvm
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию eureka load balancer, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого cloud config server, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
+*	**SPRING_DATA_MONGODB_URI** - url используемого mongodb datasource
+*	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
 
 Известные проблемы
 ~~~~~~~~~~~~~~~~~~
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
 
 Типовой вывод успешного развертывания в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
