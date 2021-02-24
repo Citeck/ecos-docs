@@ -220,19 +220,19 @@ gateway-app:
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-•	**_JAVA_OPTIONS** - параметры для **jvm**
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-•	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-•	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-•	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
+*	**_JAVA_OPTIONS** - параметры для **jvm**
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
+*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
+*	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -258,7 +258,7 @@ ecos-notifications-app
 
 Базовые образы:
 ~~~~~~~~~~~~~~~
-•	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+*	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -312,28 +312,28 @@ notifications-app:
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**_JAVA_OPTIONS** - параметры для **jvm**
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-•	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-•	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-•	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
-•	**ECOS-NOTIFICATIONS_EVENT_HOST** - fqdn/ip диспетчера очередей rabbitmq
-•	**ECOS-NOTIFICATIONS_EVENT_PORT** - amqp порт диспетчера очередей rabbitmq
-•	**ECOS-NOTIFICATIONS_EVENT_USERNAME** - пользователь диспетчера очередей rabbitmq
-•	**ECOS-NOTIFICATIONS_EVENT_PASSWORD** - пароль диспетчера очередей rabbitmq
-•	**ECOS-NOTIFICATIONS_ALFRESCO_URL** - fqdn развернутого приложения ecos
-•	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME** - пользователь в ecos для интеграции с микросервисом нотификации
-•	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD** - пароль пользователя в ecos для интеграции с микросервисом нотификации
+*	**_JAVA_OPTIONS** - параметры для **jvm**
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
+*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
+*	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
+*	**ECOS-NOTIFICATIONS_EVENT_HOST** - fqdn/ip диспетчера очередей rabbitmq
+*	**ECOS-NOTIFICATIONS_EVENT_PORT** - amqp порт диспетчера очередей rabbitmq
+*	**ECOS-NOTIFICATIONS_EVENT_USERNAME** - пользователь диспетчера очередей rabbitmq
+*	**ECOS-NOTIFICATIONS_EVENT_PASSWORD** - пароль диспетчера очередей rabbitmq
+*	**ECOS-NOTIFICATIONS_ALFRESCO_URL** - fqdn развернутого приложения ecos
+*	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME** - пользователь в ecos для интеграции с микросервисом нотификации
+*	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD** - пароль пользователя в ecos для интеграции с микросервисом нотификации
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
-•	Монтирование firebase credentials как волюма
-•	Часть app properties (ECOS-NOTIFICATIONS*) нужно вынести в spring cloud config
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
+*	Монтирование firebase credentials как волюма
+*	Часть app properties (ECOS-NOTIFICATIONS*) нужно вынести в spring cloud config
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -358,7 +358,7 @@ ecos-mongo-app
 
 Базовые образы:
 ~~~~~~~~~~~~~~~
-•	`mongo_4 <https://hub.docker.com/layers/mongo/library/mongo/4.0/images/sha256-ccd97bd444338973ac143a22753e6b73a3e707a6a3edd512311a418a3e432cdb?context=explore>`_ - Официальный образ mongodb v 4.0.x
+*	`mongo_4 <https://hub.docker.com/layers/mongo/library/mongo/4.0/images/sha256-ccd97bd444338973ac143a22753e6b73a3e707a6a3edd512311a418a3e432cdb?context=explore>`_ - Официальный образ mongodb v 4.0.x
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,16 +384,16 @@ mongo-app:
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-•	**MONGO_INITDB_ROOT_USERNAME** - логин пользователя, который будет создан в **admin db с root** привилегиями
-•	**MONGO_INITDB_ROOT_PASSWORD** - пароль привилегированного пользователя
-•	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в /docker-entrypoint-initdb.d/*.js/sh. Для понимания:
+*	**MONGO_INITDB_ROOT_USERNAME** - логин пользователя, который будет создан в **admin db с root** привилегиями
+*	**MONGO_INITDB_ROOT_PASSWORD** - пароль привилегированного пользователя
+*	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в /docker-entrypoint-initdb.d/*.js/sh. Для понимания:
 This variable allows you to specify the name of a database to be used for creation scripts in /docker-entrypoint-initdb.d/*.js (see Initializing a fresh instance below). MongoDB is fundamentally designed for "create on first use", so if you do not insert data with your JavaScript files, then no database is created.
-•	**ECOS_HISTORY_APP_DATASOURCE_DATABASE** - db микросервиса истории **(ecos-history)**
-•	**ECOS_HISTORY_APP_DATASOURCE_USERNAME** - логин для мкр истории, роль dbOwner **(ecos-history)**
-•	**ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мкр истории **(ecos-history-password)**
-•	**ECOS_PROCESS_APP_DATASOURCE_DATABASE** - db микросервиса ecos-process **(ecos-process)**
-•	**ECOS_PROCESS_APP_DATASOURCE_USERNAME **- логин для мкр ecos-process, роль dbOwner **(ecos-process)**
-•	**ECOS_PROCESS_APP_DATASOURCE_PASSWORD** - пароль для мкр ecos-process **(ecos-process-password)**
+*	**ECOS_HISTORY_APP_DATASOURCE_DATABASE** - db микросервиса истории **(ecos-history)**
+*	**ECOS_HISTORY_APP_DATASOURCE_USERNAME** - логин для мкр истории, роль dbOwner **(ecos-history)**
+*	**ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мкр истории **(ecos-history-password)**
+*	**ECOS_PROCESS_APP_DATASOURCE_DATABASE** - db микросервиса ecos-process **(ecos-process)**
+*	**ECOS_PROCESS_APP_DATASOURCE_USERNAME **- логин для мкр ecos-process, роль dbOwner **(ecos-process)**
+*	**ECOS_PROCESS_APP_DATASOURCE_PASSWORD** - пароль для мкр ecos-process **(ecos-process-password)**
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
@@ -462,7 +462,7 @@ mailhog:
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**MH_UI_WEB_PATH** - web path для использования mailhog за проксирующим ecos-proxy (mailhog)
+*	**MH_UI_WEB_PATH** - web path для использования mailhog за проксирующим ecos-proxy (mailhog)
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -520,20 +520,20 @@ jhipster-registry:
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**_JAVA_OPTIONS** - параметры для jvm
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**SPRING_SECURITY_USER_PASSWORD** - пароль пользователя для аутентификации в cloud config
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
-•	Документация по `spring cloud config <https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server>`_
+*	**_JAVA_OPTIONS** - параметры для jvm
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**SPRING_SECURITY_USER_PASSWORD** - пароль пользователя для аутентификации в cloud config
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в eureka load balancer
+*	Документация по `spring cloud config <https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server>`_
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-•	Требуется закончить переход на ecos-registry проект
-•	Утилизации цпу
-•	Требуется конфигурация registry как экспортера метрик микросервисов в Prometheus
-•	Использование localPath расположения конфигурационного файла
-•	Не реализован доступ к ui registry через location
-•	Не используется JWT token
+*	Требуется закончить переход на ecos-registry проект
+*	Утилизации цпу
+*	Требуется конфигурация registry как экспортера метрик микросервисов в Prometheus
+*	Использование localPath расположения конфигурационного файла
+*	Не реализован доступ к ui registry через location
+*	Не используется JWT token
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -586,27 +586,27 @@ ecos-postgresql:
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-•	**POSTGRES_PASSWORD **- обязательный параметр за исключением 
+*	**POSTGRES_PASSWORD **- обязательный параметр за исключением 
 *   **POSTGRES_HOST_AUTH_METHOD=trust**, пароль рутового пользователя
-•	**POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
-•	**POSTGRES_DB **- переопределение дефолтной базы данных
-•	**POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
-•	**POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
-•	**POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
-•	**PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
-•	**DB_NAME** - определение базы данных **ecos**
-•	**DB_USERNAME** - определение пользователя для базы данных **ecos/flowable/ecos-history**
-•	**DB_PASSWORD** - пароль создаваемого пользователя
-•	**FLOWABLE_DBNAME** - определение базы данных **flowable**
-•	**HISTORY_DBNAME** - определение базы данных для ecos-history-app (устаревший параметр, базы данных мкр вынесены в отдельный инстанс)
-•	**CASE_MODEL_DBNAME** - определение базы данных **ecos-case-model-app**
+*	**POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
+*	**POSTGRES_DB **- переопределение дефолтной базы данных
+*	**POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
+*	**POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
+*	**POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
+*	**PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
+*	**DB_NAME** - определение базы данных **ecos**
+*	**DB_USERNAME** - определение пользователя для базы данных **ecos/flowable/ecos-history**
+*	**DB_PASSWORD** - пароль создаваемого пользователя
+*	**FLOWABLE_DBNAME** - определение базы данных **flowable**
+*	**HISTORY_DBNAME** - определение базы данных для ecos-history-app (устаревший параметр, базы данных мкр вынесены в отдельный инстанс)
+*	**CASE_MODEL_DBNAME** - определение базы данных **ecos-case-model-app**
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-•	EOL версии postgresl
-•	Используется один пользователь для баз данных
-•	Отсутствие конфигурации postgresql.conf, pg_hba.conf
-•	Отсутствие конфигурации используемых схем
+*	EOL версии postgresl
+*	Используется один пользователь для баз данных
+*	Отсутствие конфигурации postgresql.conf, pg_hba.conf
+*	Отсутствие конфигурации используемых схем
 
 Типовой вывод принятых настроек в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -708,7 +708,7 @@ ecos-model-app
 
 Базовые образы:
 ~~~~~~~~~~~~~~~
-•	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+*	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
 
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -746,19 +746,19 @@ emodel-app:
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	**_JAVA_OPTIONS** - параметры для **jvm**
-•	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-•	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-•	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-•	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-•	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-•	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+*	**_JAVA_OPTIONS** - параметры для **jvm**
+*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
+*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
+*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
+*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
+*	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
 
 Известные проблемы:
 ~~~~~~~~~~~~~~~~~~~
-•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-•	Использование empty password в доступах к датасорсам
-•	cloud config и eureka load balancer используют один и тот же пароль
+*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+*	Использование empty password в доступах к датасорсам
+*	cloud config и eureka load balancer используют один и тот же пароль
 
 Типовой вывод успешного развертывания в лог контейнера:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -787,26 +787,26 @@ ecos-app
 <docker-registry>/ecos-<ecos project>:tag	
 
 Веб архивы:
-•	alfresco.war
-•	share.war
-•	flowable-admin.war
-•	flowable-idm.war
-•	flowable-modeler.war
-•	flowable-rest.war
-•	flowable-task.war
-•	solr.war
+*	alfresco.war
+*	share.war
+*	flowable-admin.war
+*	flowable-idm.war
+*	flowable-modeler.war
+*	flowable-rest.war
+*	flowable-task.war
+*	solr.war
 
 Тег:
 <docker-registry>/ecs-<ecos project>:tag
 
 	Веб архивы:
-•	alfresco.war
-•	share.war
-•	flowable-admin.war
-•	flowable-idm.war
-•	flowable-modeler.war
-•	flowable-rest.war
-•	flowable-task.war
+*	alfresco.war
+*	share.war
+*	flowable-admin.war
+*	flowable-idm.war
+*	flowable-modeler.war
+*	flowable-rest.war
+*	flowable-task.war
 
 Базовые образы
 ~~~~~~~~~~~~~~
@@ -874,74 +874,74 @@ ecos-app
 
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
-•	TWEAK_FLOWABLE - устаревший параметр, на данный момент по дефолту в true, требуется исключить из образа
-•	FLOWABLE_REST_API_USERNAME - логин интеграции с flowable
-•	FLOWABLE_REST_API_PASSWORD - пароль интеграции с flowable
-•	ALFRESCO_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	ALFRESCO_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco  -global.properties
-•	SHARE_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	SHARE_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	ALFRESCO_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	SHARE_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	DB_KIND - тип используемой бд (postgresql, mysql). Entrypoint формирует, в зависимости от выбранного параметра следующие переменные: DB_CONN_PARAMS, DB_DRIVER, DB_PORT.
-•	DB_USERNAME - логин для подключеня к датасорсу
-•	DB_PASSWORD - пароль для подключения к датасорсу
-•	DB_NAME - имя базы данных
-•	DB_HOST - fqdn or ip узла, где развернут инстанс бд
-•	DB_DRIVER - используемый драйвер подключения к датасорсу, фомируется параметром DB_KIND
-•	DB_PORT - порт усзла, где развернут инстанс бд, по умолчанию используются дефолтные порты postgresql, mysql
-•	SYSTEM_SERVERMODE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_HOST - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_USERNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_PASSWORD - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_FROM_DEFAULT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_SMTP_AUTH - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_SMTP_STARTTLS_ENABLE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_SMTPS_AUTH - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	MAIL_SMTPS_STARTTLS_ENABLE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	FTP_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	CIFS_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	CIFS_SERVER_NAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	CIFS_DOMAIN - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	NFS_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	CONTENT_STORE - расположение директорий contenstore/contentstore.deleted по абсолютному пути внутри контейнера
-•	TOMCAT_CSRF_PATCH - расположение патча по отключению Tomcat CSRF token filter
-•	TOMCAT_CSRF_ENABLED - использование Tomcat CSRF token filter (default true)
-•	SOLR_WORKSPACE_PROPERTIES - (ecos image only) директория хранения настроек коллекции workspace solr4
-•	SOLR_ARCHIVE_PROPERTIES -(ecos image only) директория хранения настроек коллекции archive solr4
-•	SOLR_STORE - (ecos image only) расположение директории хранения индексов solr по абсолютному пути внутри контейнера
-•	FLOWABLE_DB_KIND - тип используемой бд (postgresql, mysql). Entrypoint формирует, в зависимости от выбранного параметра следующие переменные: DB_CONN_PARAMS, DB_DRIVER, DB_PORT.
-•	FLOWABLE_URL - fqdn or ip обращения к флобл ui
-•	FLOWABLE_DB_NAME - имя базы данных
-•	FLOWABLE_DB_USERNAME - логин для подключеня к датасорсу
-•	FLOWABLE_DB_PASSWORD - пароль для подключения к датасорсу
-•	FLOWABLE_DB_HOST - fqdn or ip узла, где развернут инстанс бд
-•	FLOWABLE_DB_PORT - порт усзла, где развернут инстанс бд, по умолчанию используются дефолтные порты postgresql, mysql
-•	FLOWABLE_DB_CONN_PARAMS - дополнительные параметры подключения к датасорсу
-•	LDAP_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_KIND - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_AUTH_USERNAMEFORMAT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_URL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_DEFAULT_ADMINS - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_SECURITY_PRINCIPAL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_SECURITY_CREDENTIALS - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_GROUP_SEARCHBASE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_USER_SEARCHBASE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_USER_ATTRIBUTENAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	LDAP_GROUP_MEMBER_ATTRIBUTENAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
-•	USE_EXTERNAL_AUTH - конфгурирование share-config-custom.xml для использования внешней аутентификации по заголовку.
+*	TWEAK_FLOWABLE - устаревший параметр, на данный момент по дефолту в true, требуется исключить из образа
+*	FLOWABLE_REST_API_USERNAME - логин интеграции с flowable
+*	FLOWABLE_REST_API_PASSWORD - пароль интеграции с flowable
+*	ALFRESCO_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	ALFRESCO_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco  -global.properties
+*	SHARE_HOSTNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	SHARE_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	ALFRESCO_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	SHARE_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	DB_KIND - тип используемой бд (postgresql, mysql). Entrypoint формирует, в зависимости от выбранного параметра следующие переменные: DB_CONN_PARAMS, DB_DRIVER, DB_PORT.
+*	DB_USERNAME - логин для подключеня к датасорсу
+*	DB_PASSWORD - пароль для подключения к датасорсу
+*	DB_NAME - имя базы данных
+*	DB_HOST - fqdn or ip узла, где развернут инстанс бд
+*	DB_DRIVER - используемый драйвер подключения к датасорсу, фомируется параметром DB_KIND
+*	DB_PORT - порт усзла, где развернут инстанс бд, по умолчанию используются дефолтные порты postgresql, mysql
+*	SYSTEM_SERVERMODE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_HOST - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_USERNAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_PASSWORD - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_FROM_DEFAULT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_PROTOCOL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_SMTP_AUTH - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_SMTP_STARTTLS_ENABLE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_SMTPS_AUTH - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	MAIL_SMTPS_STARTTLS_ENABLE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	FTP_PORT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	CIFS_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	CIFS_SERVER_NAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	CIFS_DOMAIN - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	NFS_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	CONTENT_STORE - расположение директорий contenstore/contentstore.deleted по абсолютному пути внутри контейнера
+*	TOMCAT_CSRF_PATCH - расположение патча по отключению Tomcat CSRF token filter
+*	TOMCAT_CSRF_ENABLED - использование Tomcat CSRF token filter (default true)
+*	SOLR_WORKSPACE_PROPERTIES - (ecos image only) директория хранения настроек коллекции workspace solr4
+*	SOLR_ARCHIVE_PROPERTIES -(ecos image only) директория хранения настроек коллекции archive solr4
+*	SOLR_STORE - (ecos image only) расположение директории хранения индексов solr по абсолютному пути внутри контейнера
+*	FLOWABLE_DB_KIND - тип используемой бд (postgresql, mysql). Entrypoint формирует, в зависимости от выбранного параметра следующие переменные: DB_CONN_PARAMS, DB_DRIVER, DB_PORT.
+*	FLOWABLE_URL - fqdn or ip обращения к флобл ui
+*	FLOWABLE_DB_NAME - имя базы данных
+*	FLOWABLE_DB_USERNAME - логин для подключеня к датасорсу
+*	FLOWABLE_DB_PASSWORD - пароль для подключения к датасорсу
+*	FLOWABLE_DB_HOST - fqdn or ip узла, где развернут инстанс бд
+*	FLOWABLE_DB_PORT - порт усзла, где развернут инстанс бд, по умолчанию используются дефолтные порты postgresql, mysql
+*	FLOWABLE_DB_CONN_PARAMS - дополнительные параметры подключения к датасорсу
+*	LDAP_ENABLED - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_KIND - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_AUTH_USERNAMEFORMAT - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_URL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_DEFAULT_ADMINS - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_SECURITY_PRINCIPAL - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_SECURITY_CREDENTIALS - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_GROUP_SEARCHBASE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_USER_SEARCHBASE - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_USER_ATTRIBUTENAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	LDAP_GROUP_MEMBER_ATTRIBUTENAME - типовой параметр конфигурации alfresco, при объявлении переопределяет соответствующий параметр в alfresco-global.properties
+*	USE_EXTERNAL_AUTH - конфгурирование share-config-custom.xml для использования внешней аутентификации по заголовку.
 
 Известные проблемы
 ~~~~~~~~~~~~~~~~~~~
-•	Часть событий лога приложений контейнера сервлетов остается внутри котейнера, что приводит к неконтролируему разрастанию overlay слоев контейнера и утилизации дискового ресурса хоста.
-•	Часть параметров (отображены в документации типовой параметр конфигурации..) включены во входящиие параметры для entrypoint, часть параметров передается через alfresco-additional.properties, часть параметров находится на readonly слоях образа. Требуется выработка решения по использованию единого подхода к объявлению параметров.
-•	Большое количество веб-приложений в составе одного образа, отсутствие возможности формализации используемых ресурсов в рамках веб приложения.
-•	Невалидный ImageMagic (ecos image only)
-•	Отсутствие контроля за процессами инструментов конвертации в образе (процесс конвертера не первичный, его состояние не влияет на ЖЦ контейнера, но влияет на доступность функционала в развернутом приложении)
-•	Большой размер итогового образа (стандартная сборка без использования экспериментальных фич, типа сквоша слоев)
-•	Отсутствие мониторинга в разрезе веб-приложения под Prometheus (есть jmx мониторинг через java-gateway zabbix)
+*	Часть событий лога приложений контейнера сервлетов остается внутри котейнера, что приводит к неконтролируему разрастанию overlay слоев контейнера и утилизации дискового ресурса хоста.
+*	Часть параметров (отображены в документации типовой параметр конфигурации..) включены во входящиие параметры для entrypoint, часть параметров передается через alfresco-additional.properties, часть параметров находится на readonly слоях образа. Требуется выработка решения по использованию единого подхода к объявлению параметров.
+*	Большое количество веб-приложений в составе одного образа, отсутствие возможности формализации используемых ресурсов в рамках веб приложения.
+*	Невалидный ImageMagic (ecos image only)
+*	Отсутствие контроля за процессами инструментов конвертации в образе (процесс конвертера не первичный, его состояние не влияет на ЖЦ контейнера, но влияет на доступность функционала в развернутом приложении)
+*	Большой размер итогового образа (стандартная сборка без использования экспериментальных фич, типа сквоша слоев)
+*	Отсутствие мониторинга в разрезе веб-приложения под Prometheus (есть jmx мониторинг через java-gateway zabbix)
 
 Типовой вывод принятых настроек в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -997,3 +997,245 @@ ecos                        | Flowable connection string: postgresql://ecos-post
 ecos                        | Solr configuration changed!
 
 
+ecos-integrations-app
+---------------------
+Назначение
+~~~~~~~~~~
+Микросервис, предоставляющий эндпойнт ecos-records, через который можно посылать запросы в определенный список внешних систем.
+
+Базовые образы
+~~~~~~~~~~~~~~~
+*	**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+
+Шаблон сервиса docker-compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+ integrations-app:
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    image: nexus.citeck.ru/ecos-integrations:<INTEGRATIONS_APP_IMAGE
+    container_name: integrations-app
+    hostname: integrations-app
+    restart: unless-stopped
+    stop_grace_period: 1m
+    depends_on:
+      - integrations-postgresql
+    environment:
+      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+      - _JAVA_OPTIONS=-Xmx256m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://integrations-postgresql:5432/integrations
+      - JHIPSTER_SLEEP=140 # gives time for the JHipster Registry to boot before the application
+    expose:
+      - 8082/tcp
+    networks:
+      - app_network
+ # INTEGRATIONS PSQL
+  integrations-postgresql:
+    image: postgres:10.4
+    container_name: integrations-postgresql
+    hostname: integrations-postgresql
+    restart: unless-stopped
+    stop_grace_period: 1m
+    ports:
+      - 127.0.0.1:15432:5432/tcp
+    environment:
+      - POSTGRES_USER=integrations
+    volumes:
+      - /opt/micro/postgresql/integrations:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+Используемые переменные
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+*	_JAVA_OPTIONS - параметры для jvm
+*	SPRING_PROFILES_ACTIVE - используемые при развертывании профили
+*	EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE - url используемого по умолчанию eureka load balancer, содержит credentials
+*	SPRING_CLOUD_CONFIG_URI - url используемого cloud config server, содержит credentials
+*	JHIPSTER_REGISTRY_PASSWORD - пароль пользователя для аутентификации в eureka load balancer
+*	SPRING_DATASOURCE_URL - url используемого postgresql datasource
+*	JHIPSTER_SLEEP - таймаут перед развертыванием микросервиса
+
+Известные проблемы
+~~~~~~~~~~~~~~~~~~
+
+•	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+•	Использование empty password в доступах к датасорсам
+•	cloud config и eureka load balancer используют один и тот же пароль
+
+
+Типовой вывод успешного развертывания в лог контейнера
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+ 
+ integrations-app            | ----------------------------------------------------------
+ integrations-app            |   Application 'integrations' is running! Access URLs:
+ integrations-app            |   Local:          http://localhost:8082/
+ integrations-app            |   External:       http://172.26.0.21:8082/
+ integrations-app            |   Profile(s):     [prod, swagger]
+ integrations-app            | ----------------------------------------------------------
+ integrations-app            | 2020-05-14 06:12:11.339  INFO 1 --- [           main] r.c.ecos.integrations.IntegrationsApp    : 
+ integrations-app            | ----------------------------------------------------------
+ integrations-app            |   Config Server:  Connected to the JHipster Registry running in Docker
+ integrations-app            | ----------------------------------------------------------
+
+ecos-solr-app
+-------------
+
+Назначение
+~~~~~~~~~~~
+Образ с установленным контейнером сервлетов Tomcat с вебархивом проекта ecos-alfresco-solr4
+
+Базовые образы
+~~~~~~~~~~~~~~~
+•	tomcat:7.0.59-jre8 - официальный образ tomcat 7.0.59, openjdk version "1.8.0_40-internal"
+
+Шаблон сервиса docker-compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+ 
+ ess:
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    image: nexus.citeck.ru/ess:<ECOS_SOLR4
+    restart: unless-stopped
+    stop_grace_period: 1m
+    container_name: ess
+    hostname: ess
+    ports:
+      - 8080:8080/tcp
+      - 8443:8443/tcp
+    env_file:
+      - ./env_dir/ess.env
+    volumes:
+      - /opt/ess:/opt/solr4_data
+    networks:
+      - app_network
+
+Используемые переменные
+~~~~~~~~~~~~~~~~~~~~~~~~
+•	ALFRESCO_HOST - fqdn/ip инстанса ecos
+•	ALFRESCO_PORT - http порт инстанса ecos 
+•	ALFRESCO_PORT_SSL - https порт инстанса ecos 
+•	ALFRESCO_SECURE_COMMS - использовать шифрованное соединение
+•	CITECK_MERGE_FACTOR - мерж фактор solr/lucene, используемый при определении необходимости мержить сегменты.
+•	ALFRESCO_INDEX_TRANSFORM_CONTENT - если true - будет происходить конвертация контента в текст и его последующая пословесная индексация. Если false - будут индексироваться только метаданные (mimetype, size, etc).
+•	ALFRESCO_RECORD_UNINDEXED_NODES - если true - ноды, типы которых отмечены как “неиндексируемые” - будут попадать в индекс в качестве документа без индексации атрибутов ноды. Если false - такие документы будут игнорироваться при индексации.
+•	CITECK_RECORD_TRANSACTIONS - если true - каждая транзакция будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях будут храниться только в кеше, в памяти.
+•	CITECK_TX_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+•	CITECK_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_TRANSACTIONS = false.
+•	CITECK_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_TRANSACTIONS = false.
+•	CITECK_RECORD_ACL_TRANSACTIONS - если true - каждая транзакция прав будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях прав будут храниться только в кеше, в памяти.
+•	CITECK_ACL_CONSISTENCY_CHECK_MODE - тип проверки консистентности индекса и базы для индексации транзакций прав. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+•	CITECK_ACL_TX_IS_INDEXED_CACHE_SIZE - размер кеша, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+•	CITECK_ACL_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT - коэффициент чистки кеша при переполнении, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+•	JAVA_OPTS - параметры для jvm
+
+Типовой вывод успешного развертывания в лог контейнера
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+	ess                         | Attention!!! All spaces in Environment variables will be deleted!!!
+	ess                         | Solr configuration changed!
+	ess                         | replacing option  alfresco.index.transformContent=false  in  /opt/solr4/archive-SpacesStore/conf/solrcore.properties
+	ess                         | replacing option  alfresco.index.transformContent=false  in  /opt/solr4/workspace-SpacesStore/conf/solrcore.properties
+	ess                         | replacing option  alfresco.recordUnindexedNodes=false  in  /opt/solr4/archive-SpacesStore/conf/solrcore.properties
+	ess                         | replacing option  alfresco.recordUnindexedNodes=false  in  /opt/solr4/workspace-SpacesStore/conf/solrcore.properties
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Server version:        Apache Tomcat/7.0.59
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Server built:          Jan 28 2015 15:51:10 UTC
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Server number:         7.0.59.0
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: OS Name:               Linux
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: OS Version:            3.10.0-957.21.2.el7.x86_64
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Architecture:          amd64
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Java Home:             /usr/lib/jvm/java-8-openjdk-amd64/jre
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: JVM Version:           1.8.0_40-internal-b27
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: JVM Vendor:            Oracle Corporation
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: CATALINA_BASE:         /usr/local/tomcat
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: CATALINA_HOME:         /usr/local/tomcat
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Xms1G
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Xmx2G
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Djava.endorsed.dirs=/usr/local/tomcat/endorsed
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Dcatalina.base=/usr/local/tomcat
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Dcatalina.home=/usr/local/tomcat
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.startup.VersionLoggerListener log
+	ess                         | INFO: Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+	ess                         | May 14, 2020 9:28:30 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+	ess                         | INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+	ess                         | May 14, 2020 9:28:30 AM org.apache.coyote.AbstractProtocol init
+	ess                         | INFO: Initializing ProtocolHandler ["http-bio-8080"]
+	ess                         | May 14, 2020 9:28:30 AM org.apache.coyote.AbstractProtocol init
+	ess                         | INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+	ess                         | May 14, 2020 9:28:31 AM org.apache.coyote.AbstractProtocol init
+	ess                         | INFO: Initializing ProtocolHandler ["http-bio-8443"]
+	ess                         | May 14, 2020 9:28:31 AM org.apache.catalina.startup.Catalina load
+	ess                         | INFO: Initialization processed in 1875 ms
+	ess                         | May 14, 2020 9:28:31 AM org.apache.catalina.core.StandardService startInternal
+	ess                         | INFO: Starting service Catalina
+	ess                         | May 14, 2020 9:28:31 AM org.apache.catalina.core.StandardEngine startInternal
+	ess                         | INFO: Starting Servlet Engine: Apache Tomcat/7.0.59
+	ess                         | May 14, 2020 9:28:31 AM org.apache.catalina.startup.HostConfig deployDescriptor
+	ess                         | INFO: Deploying configuration descriptor /usr/local/tomcat/conf/Catalina/localhost/solr4.xml
+	ess                         | May 14, 2020 9:28:31 AM org.apache.catalina.startup.SetContextPropertiesRule begin
+	ess                         | WARNING: [SetContextPropertiesRule]{Context} Setting property 'debug' to '0' did not find a matching property.
+	ess                         | May 14, 2020 9:28:41 AM org.apache.catalina.core.ApplicationContext log
+	ess                         | INFO: No Spring WebApplicationInitializer types detected on classpath
+	ess                         | 2020-05-14 09:28:47,899  INFO  [solr.component.AsyncBuildSuggestComponent] [coreLoadExecutor-5-thread-2] Initializing SuggestComponent
+	ess                         | 2020-05-14 09:28:49,601  INFO  [solr.component.AsyncBuildSuggestComponent] [coreLoadExecutor-5-thread-1] Initializing SuggestComponent
+	ess                         | May 14, 2020 9:28:49 AM org.apache.catalina.startup.HostConfig deployDescriptor
+	ess                         | INFO: Deployment of configuration descriptor /usr/local/tomcat/conf/Catalina/localhost/solr4.xml has finished in 18,143 ms
+	ess                         | May 14, 2020 9:28:49 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deploying web application directory /usr/local/tomcat/webapps/examples
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deployment of web application directory /usr/local/tomcat/webapps/examples has finished in 408 ms
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deploying web application directory /usr/local/tomcat/webapps/manager
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deployment of web application directory /usr/local/tomcat/webapps/manager has finished in 64 ms
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deploying web application directory /usr/local/tomcat/webapps/host-manager
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deployment of web application directory /usr/local/tomcat/webapps/host-manager has finished in 47 ms
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deploying web application directory /usr/local/tomcat/webapps/ROOT
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deployment of web application directory /usr/local/tomcat/webapps/ROOT has finished in 56 ms
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deploying web application directory /usr/local/tomcat/webapps/docs
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+	ess                         | INFO: Deployment of web application directory /usr/local/tomcat/webapps/docs has finished in 35 ms
+	ess                         | May 14, 2020 9:28:50 AM org.apache.coyote.AbstractProtocol start
+	ess                         | INFO: Starting ProtocolHandler ["http-bio-8080"]
+	ess                         | May 14, 2020 9:28:50 AM org.apache.coyote.AbstractProtocol start
+	ess                         | INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+	ess                         | May 14, 2020 9:28:50 AM org.apache.coyote.AbstractProtocol start
+	ess                         | INFO: Starting ProtocolHandler ["http-bio-8443"]
+	ess                         | May 14, 2020 9:28:50 AM org.apache.catalina.startup.Catalina start
+	ess                         | INFO: Server startup in 18992 ms
