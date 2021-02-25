@@ -734,6 +734,7 @@ ecos-model-app
 Шаблон сервиса docker-compose:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
+
 	emodel-app:
 	    container_name: emodel-app
 	    restart: unless-stopped
@@ -806,7 +807,7 @@ ecos-app
 Теги
 ~~~~
 
-**<docker-registry>/ecos-<ecos project>:tag	**
+<docker-registry>/ecos-<ecos project>:tag*
 
    **Веб архивы**
 
@@ -820,7 +821,7 @@ ecos-app
 *	solr.war
 
 Тег:
-<docker-registry>/ecs-<ecos project>:tag
+*<docker-registry>/ecs-<ecos project>:tag*
 
 	**Веб архивы:**
 
@@ -1092,7 +1093,7 @@ ecos-integrations-app
 
 *	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
 *	Использование empty password в доступах к датасорсам
-*	cloud config и eureka load balancer используют один и тот же пароль
+*	Cloud config и eureka load balancer используют один и тот же пароль
 
 
 Типовой вывод успешного развертывания в лог контейнера
@@ -1477,7 +1478,7 @@ ecos-process-app
 ~~~~~~~~~~~~~~~~~~
 *	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
 *	Использование empty password в доступах к датасорсам
-*	cloud config и eureka load balancer используют один и тот же пароль
+*	Cloud config и eureka load balancer используют один и тот же пароль
 
 Типовой вывод успешного развертывания в лог контейнера
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
