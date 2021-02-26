@@ -65,4 +65,5 @@ Citeck ECOS's documentation
    Язык_предикатов
    How_To
    Notification
+   Alfresco
 
