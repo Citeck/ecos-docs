@@ -58,6 +58,7 @@
  * Установите и запустите Git с повышенными правами
  *	Выполните команду для скачивания репозитория: **git clone -b 3.23.0 https://bitbucket.org/citeck/ecos-community-demo.git**
  где 3.23.0 - версия проекта (поддерживается две версии community. Для скачивания 4-й версии использовать 4.0.0rc1)
+ 
  *	Перейдите в созданную папку: ecos-community-demo
  *	Выполнить docker-compose pull
  * Выполнить docker-compose up -d
