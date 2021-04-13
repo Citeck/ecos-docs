@@ -56,14 +56,14 @@ Citeck ECOS's documentation
    :maxdepth: 4
    :caption: Общая база знаний
 
-   knowledge-base/Глоссарий
-   Термины_системы
-   UX_UI
-   ECOS_Records
-   Темы_интерфейса
-   Типы_действий
-   Язык_предикатов
-   How_To
-   Notification
-   Alfresco
+   general/Глоссарий
+   general/Термины_системы
+   general/UX_UI
+   general/ECOS_Records
+   general/Темы_интерфейса
+   general/Типы_действий
+   general/Язык_предикатов
+   general/How_To
+   general/Notification
+   general/Alfresco
 
