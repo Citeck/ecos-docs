@@ -60,6 +60,7 @@ Citeck ECOS's documentation
    general/Термины_системы
    general/UX_UI
    general/ECOS_Records
+   general/ECOS_CMMN
    general/Темы_интерфейса
    general/Типы_действий
    general/Язык_предикатов
