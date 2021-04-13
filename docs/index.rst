@@ -56,7 +56,7 @@ Citeck ECOS's documentation
    :maxdepth: 4
    :caption: Общая база знаний
 
-   Глоссарий
+   knowledge-base/Глоссарий
    Термины_системы
    UX_UI
    ECOS_Records
