@@ -5,7 +5,7 @@
 Транслирование комментариев задач, действий в виджет комментариев
 -----------------------------------------------------------------
 .. image:: _static/task_action_comment_widget.png
-       :scale: 90 %
+       :width: 800
        :align: center
 
 
@@ -23,9 +23,13 @@
 
 Если при выполнении case action на форме был оставлен комментарий, то он добавляется в виджет комментариев от имени пользователя, выполневшего case action, с тегом "Действие" и названием задачи.
 
-На данный момент необходимо явно объявлять мэппинг между типом case action и свойством комментария. Для этого нужно добавить бин по примеру ниже:
+На данный момент необходимо явно объявлять мэппинг между типом case action и свойством комментария. Для этого нужно добавить бин по примеру ниже, где
+
+* key - alfresco model type с parent iEvent:additionalData, используемый для case action
+* value - свойство комментария, в которое будет записываться комментарий из формы действия
 
 ::
+
     <bean id="case.actions-comments.type-to-comment-prop.mapping"
           class="ru.citeck.ecos.spring.registry.MappingRegistrar">
         <constructor-arg ref="case.actions.additional-data.add-comment-with-tag.mappingRegistry"/>
@@ -37,4 +41,3 @@
             </map>
         </property>
     </bean>
-
