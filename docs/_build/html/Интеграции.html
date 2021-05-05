@@ -1,0 +1,746 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Интеграции &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Инструкция по установке Citeck ECOS c помощью Docker-compose" href="docker-compose.html" />
+    <link rel="prev" title="Document Library" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Пример настройки процесса</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html">ВВЕДЕНИЕ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id2">Создание справочника «Кандидаты»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id8">Создание типа ECOS «Оффер»</a></li>
+</ul>
+<p class="caption"><span class="caption-text">База знаний по настройке</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html"><strong>Формы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Интеграции</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#edi">EDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Основные принципы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edisyncexecution">Связь сервисов-реализации с EdiSyncExecution для интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edistateservice">Что происходит в либах обработки и что за зверь - EdiStateService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event">Структура Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos-records">ECOS Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recordsservice">RecordsService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recordref">RecordRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphql">GraphQL схема</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Использование в браузере</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Использование в журналах</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Выполнение групповых действий</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#message-queue">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos-synchronization">ECOS Synchronization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Изменение синхронизации «на лету»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Перенос конфигурации между стендами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Структура таблицы с данными</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alfresco">Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Восстановление потеряных записей</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">Инструкция по установке Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker-servises.html">Сервисы Docker</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%93%D0%BB%D0%BE%D1%81%D1%81%D0%B0%D1%80%D0%B8%D0%B9.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B.html">Термины системы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/UX_UI.html">UX UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records.html"><strong>ECOS Records API</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_CMMN.html"><strong>ECOS CMMN</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Темы интерфейса</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9.html">Типы действий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык_предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/How_To.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Notification.html">Уведомления (переходная версия)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Alfresco.html"><strong>Alfresco</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><strong>Интеграции</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Интеграции.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><strong>Интеграции</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="edi">
+<h2>EDI<a class="headerlink" href="#edi" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id2">
+<h3>Основные принципы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интеграция с ЭДО провайдерами, как уже писалось в других статьях на эту тему, построена на стандартном для микросервиса интеграций механизме - синхронизациях <a class="reference internal" href="#ecos-synchronization"><span class="std std-ref">ECOS Synchronization</span></a>. Это для нас означает, что у нас есть простой способ управлять состоянием интеграции с конкретным ЭДО провайдером в рамках настроенного ящика в ECOS посредством уже готового функционала (включение/выключение чекбоксами, сброс состояния при необходимости для старта интеграции с самого начала и тд).</p>
+<p>Перейдем к описанию самого функционала с указанием классов.</p>
+<p>ECOS синхронизации работают на механизме объявления реализации SyncExecutionFactory, которые поставляют реализации SyncExecution, в котором уже происходит шедулинг интеграции.</p>
+<p>В нашем случае, за это ответственны классы EdiSyncExecutionFactory и EdiSyncExecution. Работу EdiSyncExecutionFactory рассматривать не будем, так как кроме регистрации в SyncService и создания EdiSyncExecution - никакой работы он и не делает.</p>
+<p>Рассмотрим работу EdiSyncExecution:</p>
+<ul class="simple">
+<li><p>Зашедулить джобу по настройкам.</p></li>
+<li><p>В джобе - повесить лок с помощью ShedLock. Если смог повесить лок - работа продолжается.</p></li>
+<li><p>Собирает данные для интеграции, ищет зарегистрированную для ЭДО-провайдера из настроек ящика реализацию интерфейса EdiEventsSyncService. Если не находит - сыпет исключения. Важно отметить, что реализаций EdiEventsSyncService в самом микросервисе integrations на самом деле нет, как они подключаются будет описано в разделе ниже.</p></li>
+<li><p>Делегирует работу найденному EdiEventsSyncService, передавая ему собранные ранее данные + метод-колбек для обновления состояния синхронизации.</p></li>
+</ul>
+<p>То есть, по факту, особой работы EdiSyncExecution не делает, полезная работа выполняется за счет делегирования.</p>
+</div>
+<div class="section" id="edisyncexecution">
+<h3>Связь сервисов-реализации с EdiSyncExecution для интеграции<a class="headerlink" href="#edisyncexecution" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Ответ довольно прост, существует общая либа <em>ecos-edi-commons</em>, в которую вынесены основные интерфейсы интеграции и структуры данных. Таким образом, удается связать решение на уровне интерфейсов (то есть, связь такая, что интерфейс используется в микросервисе integrations, а реализация идет в сторонних либах).</p>
+<p>Ок, с этим разобрались, что-то реализуется, а как микросервис то получит это, если он этих зависимостей даже не имеет? Тут ответ уже сложнее. Решение основано на загрузке кода библиотек в микросервис в виде OSGi бандлов. Для более подробного изучения этого - можно почитать статью Функционал загрузки <a class="reference external" href="https://https://www.google.com/">OSGI пакетов</a> (и рекомендованные статьи), а так же пример загрузки либы контур для этих целей - <a class="reference external" href="https://https://www.google.com/">Настройка получения событий с ящиком Контур_Диадок</a></p>
+<p>Рассмотрим что именно за интерфейсы и сервисы определены в ecos-edi-commons либе:</p>
+<ul class="simple">
+<li><p>EdiEventsSyncService - интерфейс, в который делегируется вся интеграция с ЭДО-провайдером.</p></li>
+<li><p>EdiEventsSyncServiceResolver - класс, в котором регистрируются EdiEventsSyncService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p>EdiBoxService - интерфейс для получения информации о ящике. Расширяется в основном коде микросервиса в виде бина.</p></li>
+<li><p>EdiApiService - интерфейс для общения с ЭДО провайдером. Содержит методы для всех операций с ЭДО (или почти все).</p></li>
+<li><p>EdiApiServiceResolver - класс, в котором регистрируются EdiApiService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p>EdiService - Класс, который содержит те же методы, что и в EdiApiService, за исключением того, что в каждый метод дополнительно передается параметр EdiProviderType. По сути, является композитным EdiApiService. Делегирует логику в конкретный EdiApiService, полученный по связке с EdiProviderType из EdiApiServiceResolver.</p></li>
+<li><p>EdiGenerator + дочерние интерфейсы - интерфейсы для расширения возможностей генерации контента в ЭДО провайдерах. К примеру, может быть 2 реализации генерации печатной формы: через вызов API генерации ПФ в сервисах диадока (удаленная генерация) или генерация силами ECOS (локальная). Регистрируется в EdiGeneratorResolver.</p></li>
+<li><p>EdiGeneratorResolver - класс для регистрации EdiGenerator реализаций по составному ключу “Эдо-провайдер+Тип-генератора+вид-генератора”, где</p></li>
+</ul>
+<p>Эдо-провайдер - Контур или Корус,
+Тип генератора - Генерация печатной формы или Генерация титула покупателя,
+Вид генератора - Произвольная строка с символизирующая вид. Обычно, что то вроде “локальная генерация” или “генерация по API”.
+* EdiStateService - Сервис для отправки событий на обработку после получения и первичной обработки их в либе (будет рассмотрено ниже).</p>
+<p>Примерное взаимодействие сервисов можно изучить подробнее на <a class="reference external" href="https://app.diagrams.net/">drawIO</a> диаграмме:</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1OPjXLsTkOio4ikiG_a2d7aas_0W6fUrIbDGyNKA2uyY/edit?usp=sharing">edi_services</a></p>
+</div>
+<div class="section" id="edistateservice">
+<h3>Что происходит в либах обработки и что за зверь - EdiStateService<a class="headerlink" href="#edistateservice" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Либы не обрабатывают события. Они их получают исходя последнего обработанного события (хранящегося в состоянии синхронизации), составляют универсальную структуру Event, хранящуюся в либе <em>ecos-edi-commons</em> и после этого отправляет эту структуру в EdiStateService.</p>
+<p>Структуры в <em>ecos-edi-commons</em> можно посмотреть в следующей диаграмме <a class="reference external" href="https://app.diagrams.net/">drawIO</a> :</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1zWTdASmNCthb7vuQkwz1ocGGUTYzKlldM1hXl1JdALQ/edit?usp=sharing">edi_structures</a></p>
+<p>EdiStateService - это класс в ecos-edi-commons, который отправляет события по определенному endpoint внутри camel контекста. CamelContext отправителя и CamelContext получателя события - это, как правило, разные контексты. Подобная передача осуществляется использованием эндпоинта direct-vm типа, а не простого direct.</p>
+<p>Таким образом, происходит следующее взаимодействие:</p>
+<a class="reference internal image-reference" href="_images/integration_EDI_1.png"><img alt="_images/integration_EDI_1.png" class="align-center" src="_images/integration_EDI_1.png" style="width: 1212.0px; height: 547.0px;" /></a>
+<p>, где указано по шагам:</p>
+<p>1 - Отправляется запрос выполнить интеграцию через Контур (или иной другой вариант ЭДО-провайдера), для какого-то ящика, от такого то события (вызов EdiEventsSyncService).</p>
+<p>2 - В случае найденных событий - трансформирует их в структуру Event и через EdiStateService отправляет сообщение в Camel из контекста Camel микросервиса интеграций.</p>
+<p>3 - Camel контекст микросервиса интеграций отправляет сообщение с Event в CamelContext внутри VM, в котором зарегистрирован указанный эндпоинт. На скриншоте указано, что мы используем еще какой-то customer-lib со своим camel контекстом, но такая кастомизация нужна не всегда, в общем случае - будет использоваться сразу переход в ecos-lib.</p>
+<p>4 - После выполнения каких-то работа в customer-lib роутах - они отправляют сообщение в CamelContext либы ecos-lib. Там происходит обновление документов, подписей и тд в альфреско путем вызовов Records API.</p>
+<p>Стоит уточнить еще раз, customer-lib и ecos-lib - отдельные OSGi бандлы, включенные в микросервис после его старта, которые создают и стартуют Camel контекст, на роутах которого возложена связь между ними. Обязательно нужно соблюдать контракт по именованию endpoint.</p>
+</div>
+<div class="section" id="event">
+<h3>Структура Event<a class="headerlink" href="#event" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Не совсем так. Нет, я не имею ввиду, что Event - это какая-то хитрая структура. Это обычный POJO, с сеттерами, геттерами, equals и тд.
+Однако, заполнение Event носит определенный характер. Внутри него ДОЛЖНЫ содержаться все документы, состояния которых изменены в рамках данного события.
+Это означает, что если обрабатываем событие “Документ подписан”, то это означает, что должна прийти не просто подпись, а еще и информация о документе с АКТУАЛЬНЫМ статусом.
+Другая ситуация, если по документу типа УПД пришла корректировка УКД - это означает, что в рамках этого события придет не только УКД, но и информация о текущем новом состоянии УПД (только статус).
+Неизменившиеся поля, вроде контента или основанных на контенте формализованных атрибутах, которые могут быть тяжелыми при транспортировании - опускаются.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.. _ecos-Records:</p>
+</div>
+</div>
+<div class="section" id="ecos-records">
+<h2>ECOS Records<a class="headerlink" href="#ecos-records" title="Ссылка на этот заголовок">¶</a></h2>
+<p>ECOS Records - библиотека, которая располагается в репозитории ecos-records и обеспечивает универсальный API для доступа к записям из произвольных источников (БД, alfresco, REST и др.)</p>
+<p><strong>Заметка:</strong> Для работы в IntelliJ IDEA требуется установить в IDEA плагин Lombok.</p>
+<p><strong>Важный момент:</strong> ECOS Records API - это <strong>НЕ GraphQL в чистом виде</strong>. Часть запроса парсится GraphQL, но далеко не весь. В примере ниже показаны GraphQL части:</p>
+<a class="reference internal image-reference" href="_static/integration_records_1.png"><img alt="_static/integration_records_1.png" class="align-center" src="_static/integration_records_1.png" /></a>
+<p>Такой запрос аттрибутов преобразуется примерно в следующий вид:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="n">meta</span> <span class="p">{</span>
+   <span class="n">a</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">b</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">c</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">d</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;cm:title&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">e</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;cm:title&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">f</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;cm:title&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">g</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;contracts:contractor&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">h</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;contracts:contractor&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">i</span><span class="p">:</span> <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;contracts:contractor&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">disp</span>
+   <span class="p">}</span>
+   <span class="n">j</span><span class="p">:</span> <span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;contracts:contractWith&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">options</span> <span class="p">{</span>
+       <span class="n">value</span><span class="p">:</span> <span class="nb">str</span>
+       <span class="n">label</span><span class="p">:</span> <span class="n">disp</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="n">k</span><span class="p">:</span> <span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;contracts:contractWith&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">options</span> <span class="p">{</span>
+       <span class="n">label</span><span class="p">:</span> <span class="n">disp</span>
+       <span class="n">value</span><span class="p">:</span> <span class="nb">str</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="n">l</span><span class="p">:</span> <span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;cm:name&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">multiple</span>
+   <span class="p">}</span>
+   <span class="n">m</span><span class="p">:</span> <span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="s2">&quot;cm:name&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">multiple</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В целях экономии трафика и всвязи со строгими ограничениями на возможные имена возвращаемых полей в запросе подставляются кодовые имена a,b,c,d и тд. После получения данных имена обратно преобразуются в «contractor0», «title0» и т.д</p>
+<p>Представленный GraphQL запрос является деталью реализации и может потерять свою актуальность ввиду внутренних изменений (вплоть до замены GraphQL на собственный формат).</p>
+<div class="section" id="recordsservice">
+<h3>RecordsService<a class="headerlink" href="#recordsservice" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Сервис для работы с абстрактными записями, источником которых может быть любой DAO.</p>
+<p>Существует четыре операции, которые можно проделывать над записями:</p>
+<p><strong>а) Поиск записей</strong></p>
+<p>Методы: queryRecords</p>
+<p>Для поиска записей всегда передается RecordsQuery, который содержит параметры поиска (аналогично SearchParameters из Alfresco). Помимо самого простого метода для поиска с одним параметром RecordsQuery так же есть варианты с объединенным поиском и запросом метаданных. О вариантах запроса метаданных см. ниже.</p>
+<p><strong>б) Получение метаданных записи</strong> (в данном контексте метаданные - любые данные о записи. Например - имя договора, статус или даже контент)</p>
+<p>Методы: getAttributes, getAttribute, getMeta</p>
+<p>Существует три уровня абстрации для получения метаданных:</p>
+<p>DTO Class &gt; Attributes &gt; Schema</p>
+<ul class="simple">
+<li><p>DTO Class - класс, который используется для генерации списка аттрибутов для формирования схемы и запроса метаданных из DAO.</p></li>
+</ul>
+<p>После получения всех данных из DAO идет создание инстансов переданного DTO класса и наполнение его данными с помощью библиотеки jackson;
+Список аттрибутов формируется либо из названий полей, либо можно добавить аннотацию MetaAtt для указания аттрибута вручную.</p>
+<ul class="simple">
+<li><p>Attributes - аттрибуты записи. Существует две нотации: упрощенная (перед запросом преобразуется в полную) и полная (дает полный контроль над загружаемыми данными). Сервер отличает вид нотации по первому символу в аттрибуте. Для полной нотации - это «.»</p></li>
+</ul>
+<p><em>Упрощенная нотация:</em></p>
+<p>Просто аттрибут - „cm:title“ преобразуется в „.att(n:»cm:title»){disp}“
+Аттрибут с типом - „cm:title?json“ преобразуется в „.att(n:»cm:title»){json}“
+Метаданные аттрибута - „#cm:title?protected“ преобразуется в „.edge(n:»cm:title»){protected}“
+Варианты выбора - „#cm:title?options“ преобразуется в „.edge(n:»cm:title»){options{label:disp,value:str}}“</p>
+<p>Запрос вложенных полей - „icase:caseStatusAssoc{ .disp, .str, title: cm:title, name: cm:name, uuid: sys:node-uuid}“</p>
+<p>преобразуется в „.att(n:»icase:caseStatusAssoc»){_disp:disp,_str:str,title:att(n:»cm:title»){disp},name:att(n:»cm:name»){disp},uuid:att(n:»sys:node-uuid»){disp}}“</p>
+<p><em>Полная нотация:</em></p>
+<p>Существует две основных сущности, с которыми идет работа в полной нотации: MetaValue и MetaEdge (интерфейсы из ecos-records).</p>
+<p>Запись представлена в виде MetaValue, у которого можно запросить:
+* Вложенные аттрибуты (тоже MetaValue) через „att(n:»Имя_аттрибута»){…}“
+* Метаданные аттрибута (MetaEdge) через „edge(n:»Имя_аттрибута»){…}“
+* Скаляр (финальное значение MetaValue, у которого уже нельзя получать вложенные поля) - str, disp, bool и др.</p>
+<p>Для получения массива значений следует использовать окончание „s“: atts(n:»cm:title»){str} или edge(n:»cm:title»){vals{str}}</p>
+<p>Запрос аттрибутов может иметь неограниченную вложенность. Например для получения имени статуса кейса можно запросить следующий аттрибут:
+„.att(n:»icase:caseStatusAssoc»){att(n:»cm:title»){str}}“</p>
+<p><strong>ВАЖНО:</strong> Значения аттрибутов перед тем как вернуться проходят процесс упрощения - все json объекты с одним ключом будут развернуты. Например:</p>
+<p>Запрос: „.att(n:»icase:caseStatusAssoc»){att(n:»cm:title»){str}}“
+DAO по правилам GraphQL вернет следующий ответ: {«att»:{«att»:{«str»:»Новый»}}}
+Но сервис убирает лишнюю вложенность и мы получаем просто «Новый»</p>
+<p>Запрос: „.att(n:»icase:caseStatusAssoc»){att(n:»cm:title»){str, id}}“
+GraphQL: {«att»:{«att»:{«str»:»Новый», «id»:»workspace://SpacesStore/satus-new»}}}
+Упрощение: {«str»:»Новый», «id»:»workspace://SpacesStore/satus-new»}</p>
+<p>В аттрибуте мы можем так же указывать псевдоним для возвращаемого значения. Например:
+Запрос: „.att(n:»icase:caseStatusAssoc»){att(n:»cm:title»){statusName: str, statusId: id}}“
+Вернет: {«statusName»:»Новый», «statusId»:»workspace://SpacesStore/satus-new»}</p>
+<p>Для получения аттрибутов есть методы с аргументом Map и Collection.
+Если передан Map, то ключи - это псевдонимы для возвращаемых значений. Они могут быть любыми и сервис их никак особым образом не обрабатывает. Значения - запрашиваемые аттрибуты.
+Если передана Collection, то это аналогично поведению с Map где каждый ключ равен связанному значению.</p>
+<ul class="simple">
+<li><p>Schema - самый низкоуровневый способ описания метаданных, которые мы хотим получить. Здесь мы передаем GraphQL схему и получаем ответ полностью в том виде, в котором мы его запросили. Данный метод предназначен скорее для системных нужд (например - удаленный вызов getMeta со схемой).</p></li>
+</ul>
+<p><strong>в) Мутация (изменение или создание) записи;</strong></p>
+<p>Каждый DAO решает сам создавать или редактировать полученную запись. Например: запись где id == «» можно воспринимать как новую и создать её с полученными свойствами.
+AlfDictionaryRecords считает каждую запись новой и делегирует создание в AlfNodesRecordsDAO.</p>
+<p><strong>г) Удаление записи;</strong></p>
+</div>
+<div class="section" id="recordref">
+<h3>RecordRef<a class="headerlink" href="#recordref" title="Ссылка на этот заголовок">¶</a></h3>
+<p>RecordRef - это идентификатор записи, который состоит из трех частей:</p>
+<p>а) appname - идентификатор приложения, к которому относится запись.
+б) sourceId - идентификатор источника данных, к которому относится запись;
+в) id - локальный идентификатор, который должен быть уникален в пределах источника;</p>
+<p>Общий вид: «<a class="reference external" href="mailto:appname/sourceId&#37;&#52;&#48;id">appname/sourceId<span>&#64;</span>id</a>». / и &#64; - особые разделители. Экранирование пока не поддерживается, но в перспективе «&#64;» и «/» не будут считаться спец символами.</p>
+<ul class="simple">
+<li><p>В id может быть закодирован вложенный источник. Например, если мы используем RemoteRecordsDAO и хотим работать с определенным источником на удаленном приложении мы можем составить RecordRef следующим образом: <a class="reference external" href="mailto:remote-dao-id&#37;&#52;&#48;dao-on">remote-dao-id<span>&#64;</span>dao-on</a><a class="reference external" href="mailto:-remote&#37;&#52;&#48;local-id">-remote<span>&#64;</span>local-id</a>. В таком случае при попадании RecordRef в RemoteRecordsDAO первый идентификатор источника вырезается и на удаленный сервер отправляется запрос с RecordRef <a class="reference external" href="mailto:dao-on-remote&#37;&#52;&#48;local-id">dao-on-remote<span>&#64;</span>local-id</a></p></li>
+<li><p>Если в RecordRef не задан sourceId, то источником по-умолчанию считается - «» (пустая строка). В Alfresco с таким идентификатором зарегистрирован AlfNodesRecordsDAO - источник данных, у которого запись === нода Alfresco. Из этого следует, что NodeRef.toString() === RecordRef.toString() для нод Alfresco;</p></li>
+<li><p>«&#64;&#64;localId» === «&#64;localId» === «localId» И «source&#64;&#64;» === «source&#64;»</p></li>
+</ul>
+</div>
+<div class="section" id="graphql">
+<h3>GraphQL схема<a class="headerlink" href="#graphql" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">MetaValue</span> <span class="p">{</span>
+ <span class="nb">id</span><span class="p">:</span> <span class="n">ID</span>
+ <span class="n">att</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">MetaValue</span>
+ <span class="n">atts</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="p">[</span><span class="n">MetaValue</span><span class="p">]</span>
+ <span class="nb">bool</span><span class="p">:</span> <span class="n">Boolean</span>
+ <span class="n">disp</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">MetaEdge</span>
+ <span class="n">has</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span>
+ <span class="n">json</span><span class="p">:</span> <span class="n">JsonNode</span>
+ <span class="n">num</span><span class="p">:</span> <span class="n">Float</span>
+ <span class="nb">str</span><span class="p">:</span> <span class="n">String</span>
+<span class="p">}</span>
+
+<span class="nb">type</span> <span class="n">MetaEdge</span> <span class="p">{</span>
+ <span class="n">description</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">distinct</span><span class="p">:</span> <span class="p">[</span><span class="n">MetaValue</span><span class="p">]</span>
+ <span class="n">editorKey</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">javaClass</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">multiple</span><span class="p">:</span> <span class="n">Boolean</span>
+ <span class="n">name</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">options</span><span class="p">:</span> <span class="p">[</span><span class="n">MetaValue</span><span class="p">]</span>
+ <span class="n">protected</span><span class="p">:</span> <span class="n">Boolean</span>
+ <span class="n">title</span><span class="p">:</span> <span class="n">String</span>
+ <span class="nb">type</span><span class="p">:</span> <span class="n">String</span>
+ <span class="n">val</span><span class="p">:</span> <span class="n">MetaValue</span>
+ <span class="n">vals</span><span class="p">:</span> <span class="p">[</span><span class="n">MetaValue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nb">type</span> <span class="n">Query</span> <span class="p">{</span>
+ <span class="n">meta</span><span class="p">:</span> <span class="p">[</span><span class="n">MetaValue</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_static/integration_records_2.png"><img alt="_static/integration_records_2.png" class="align-center" src="_static/integration_records_2.png" /></a>
+</div>
+<div class="section" id="id5">
+<h3>Использование в браузере<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для работы с RecordsService’ом создан компонент Citeck.Records. Пример использования:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workspace://SpacesStore/16d8668d-7325-49ef-80d3-f2bfdb4c6d00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">({</span>
+  <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;.att(n:&quot;icase:caseStatusAssoc&quot;){att(n:&quot;cm:title&quot;)</span><span class="si">{str}</span><span class="s1">}&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;.disp&#39;</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">res</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+
+<span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ecos-config@ecos-forms-enable&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loadAttribute</span><span class="p">(</span><span class="s1">&#39;.str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">res</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Использование в журналах<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для использования RecordsDAO (records source) в журналах надо его описать и зарегистрировать в сервисе (recordsService.register(…)). После указанных действий мы можем прописать в конфиге журнала параметр datasource, в котором указать Id нового RecordsDAO. Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&lt;</span><span class="n">bean</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;testRecordsConn&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.remote.RestConnection&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;host&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;http://localhost:8081&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;enabled&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">bean</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;taxDocsSourceId81&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.records.source.RemoteRecordsDAO&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;id&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;taxDocsRemote&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;enabled&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;restConnection&quot;</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;testRecordsConn&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;remoteSourceId&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;tax-docs&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">util</span><span class="p">:</span><span class="nb">list</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tax-documents-sources&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ref</span> <span class="n">bean</span><span class="o">=</span><span class="s2">&quot;taxDocsRecordsSource&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">ref</span> <span class="n">bean</span><span class="o">=</span><span class="s2">&quot;taxDocsSourceId81&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">util</span><span class="p">:</span><span class="nb">list</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">bean</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ecos.tax-reporting.tax-docs-records-source&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.services.tax.records.TaxDocsRecordsProxy&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;id&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;tax-docs-proxy&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">bean</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.records.source.MultiRecordsDAO&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;recordsDao&quot;</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;tax-documents-sources&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Схематично доступ к данным в журналах на момент написания статьи выглядит следующим образом:</p>
+<a class="reference internal image-reference" href="_static/integration_records_2.jpg"><img alt="_static/integration_records_2.jpg" class="align-center" src="_static/integration_records_2.jpg" /></a>
+</div>
+<div class="section" id="id7">
+<h3>Выполнение групповых действий<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Выполнение группового действия делегируется RecordsDAO, к которому относится запись (определяется по sourceId). Имплементация может отправлять удаленные запросы или выполнять действия локально. Для работы с данными, которые приходят и локально и удаленно можно использовать RecordsActionFactory. Для примера можно посмотреть AddDocumentToTaxPackageAction, DeleteTaxDocumentAction, ExportTaxDocuments, ExportTaxInventory в ecos-enterprise</p>
+<p>Известные проблемы:</p>
+<p>Если RecordsDAO возвращает записи с Server ID отличным от пустой строки, то в журналах не будут отображаться действия для этих записей.
+Решение: Использовать actionFormatter для описания экшенов.
+Ссылка:
+<a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html#ecos-journals-config"><span class="std std-ref">Конфигурация журналов</span></a>
+Раздел: Переопределение действий для записей (actionFormatter).
+=======
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 94a11f9afd8f43ef4bbac19de108ea68b58a8a86
+Currency rates
+————–</p>
+</div>
+</div>
+<div class="section" id="message-queue">
+<h2>Message queue<a class="headerlink" href="#message-queue" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="ecos-synchronization">
+<span id="id8"></span><h2>ECOS Synchronization<a class="headerlink" href="#ecos-synchronization" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В микросервисе ecos-integrations добавлена поддержка выгрузки нод альфреско в таблицу базы данных. На данный момент выгрузка осуществляется в таблицы БД микросервиса ecos-integrations.</p>
+<p>Команда для подключения к БД на стенде с контейнерами докера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">psql</span> <span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">integrations</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">15432</span><span class="o">/</span><span class="n">integrations</span>
+</pre></div>
+</div>
+<p>Параметры для подключения к alfresco по REST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">integrations</span><span class="p">:</span>
+   <span class="n">alfresco</span><span class="p">:</span>
+       <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ecos</span><span class="p">:</span><span class="mi">8080</span>
+       <span class="n">authentication</span><span class="p">:</span>
+           <span class="n">username</span><span class="p">:</span> <span class="n">integrations</span>
+           <span class="n">password</span><span class="p">:</span> <span class="mi">97</span><span class="n">qiow104UIG</span>
+</pre></div>
+</div>
+<p>Можно менять эти настройки на стендах или оставить как есть (будет работать только если ECOS развернут в той же докер сети под именем «ecos»).</p>
+<p>На стороне alfresco для микросервиса должна быть заведена учетная запись integrations с паролем 97qiow104UIG (значения по-умолчанию) и админскими правами.</p>
+<p>Скрипт для создания пользователя:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">userName</span> <span class="o">=</span> <span class="s2">&quot;integrations&quot;</span><span class="p">;</span>
+<span class="n">people</span><span class="o">.</span><span class="n">createPerson</span><span class="p">(</span><span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span> <span class="o">+</span> <span class="s2">&quot;@ecos.ru&quot;</span><span class="p">,</span> <span class="s2">&quot;97qiow104UIG&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">adminsGroup</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">getGroup</span><span class="p">(</span><span class="s2">&quot;ALFRESCO_ADMINISTRATORS&quot;</span><span class="p">);</span>
+<span class="n">adminsGroup</span><span class="o">.</span><span class="n">addAuthority</span><span class="p">(</span><span class="n">userName</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Чтобы настроить выгрузку нод необходимо на стенде с ecos-enterprise-repo модулем открыть системные журналы в alfresco и найти там журнал Синхронизация (Synchronization):</p>
+<a class="reference internal image-reference" href="_images/integration_synchronization_1.png"><img alt="_images/integration_synchronization_1.png" class="align-center" src="_images/integration_synchronization_1.png" style="width: 1189.0px; height: 569.0px;" /></a>
+<ul class="simple">
+<li><p>title - заголовок синхронизации</p></li>
+<li><p>description - описание синхронизации</p></li>
+<li><p>type - тип синхронизации (пока доступен только 1 тип - alfrescords (выгрузка нод альфреско))</p></li>
+<li><p>enabled - включена или нет синхронизация</p></li>
+</ul>
+<p>В журнале можно создать новую выгрузку двумя способами:</p>
+<ol class="arabic simple">
+<li><p>Создание с помощью полей формы (удобно для создания «с нуля»)</p></li>
+<li><p>Создание с вводом json (удобно для переноса конфигурации между серверами)</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/integration_synchronization_2.png"><img alt="_images/integration_synchronization_2.png" class="align-center" src="_images/integration_synchronization_2.png" style="width: 296.0px; height: 178.0px;" /></a>
+<p>Создание с помощью формы выглядит следующим образом:</p>
+<a class="reference internal image-reference" href="_images/integration_synchronization_3.png"><img alt="_images/integration_synchronization_3.png" class="align-center" src="_images/integration_synchronization_3.png" style="width: 891.0px; height: 847.0px;" /></a>
+<ul>
+<li><p>Title - Заголовок выгрузки. Нужен для отображения в журнале синхронизации</p></li>
+<li><p>Description - Описание выгрузки. Следует заполнить это поле чтобы другие люди могли сразу понять предназначение выгрузки.</p></li>
+<li><p>Enabled - Включить/выключить синхронизацию;</p></li>
+<li><p>Reset state - Сбросить состояние (выгрузка начнется с самого начала)</p></li>
+<li><p>Config - Раздел с конфигурацией выгрузки</p></li>
+<li><dl class="simple">
+<dt>Filter type - Тип фильтра, по которому будут выбираться ноды для выгрузки. На момент написания статьи доступно два типа:</dt><dd><ul class="simple">
+<li><p><strong>ECOS Type/Kind</strong> - фильтрация происходит по выбраному типу и виду</p></li>
+<li><p><strong>Raw Predicate</strong> - фильтрация происходит по заданному предикату в формате JSON. Синтаксис предикатов можно посмотреть здесь Select Journal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Target table - Имя таблицы для выгрузки. В базе данных к этому имени прибавится префикс <strong>ecos_sync_</strong> чтобы исключить случайные изменения системных таблиц.</p></li>
+<li><p>Attributes - Выгружаемые аттрибуты. Слева описываются названия колонок в результирующей таблице, а справа выгружаемые аттрибуты. Синтаксис аттрибутов в правой колонке используется из Records API. Т.о. можно выгружать вложенные аттрибуты. Например для выгрузки статуса договора можно описать следующие аттрибуты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>«status_id»: «icase:caseStatusAssoc?id», //нодреф статуса
+«status_ru»: «icase:caseStatusAssoc.cm:title.ru», //заголовок статуса на русском
+«status_en»: «icase:caseStatusAssoc.cm:title.en» //заголовок статуса на английском</p>
+</div></blockquote>
+<p>}</p>
+</li>
+</ul>
+<p>Если у аттрибута опустить тип скаляра (после знака ?), то по-умолчанию все аттрибуты будут выгружаться в строковом виде. Если требуется числовой вид, то следует добавить к аттрибуту <strong>?num</strong>, а для булева поля <strong>?bool</strong></p>
+<p>Для полей с датой на данный момент есть возможность их выгрузить в виде строки с форматом ISO8601 (это происходит автоматически и дополнительной настройки для этого не нужно).</p>
+<p>Подробнее о синтаксисе аттрибутов можно почитать в соответствующей статье: <span class="xref std std-ref">ECOS Records</span></p>
+<div class="section" id="id9">
+<h3>Изменение синхронизации «на лету»<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Настройку синхронизации можно менять без перезагрузки сервера. При этом есть несколько особенностей:</p>
+<ol class="arabic simple">
+<li><p>Новые аттрибуты будут появляться только для заявок, которые изменились с момента изменения конфигурации. Для того чтобы новые аттрибуты появились у всех записей можно воспользоваться двумя способами:</p></li>
+</ol>
+<p>Первый - сбрасываем состояние синхронизации и недостающие данные синхронизируются полностью.</p>
+<p>Второй - создаем новую конфигурацию с недостающими атрибутами(которые были добавлены в исходную конфигурацию) и устанавливаем в ней ту же таблицу что и в исходной конфигурации. Когда новая конфигурации догонит старую, новую можно будет удалить.</p>
+<ol class="arabic simple" start="2">
+<li><p>При удалении аттрибутов таблица не чистится. То что уже синзронизировано остается в таблице.</p></li>
+<li><p>Изменение типа колонки на данный момент не поддерживается. Т.о. следует создать новый аттрибут если есть такая необходимость, а старый удалить из конфигурации. Для миграции старых записей можно воспользоваться рекоментациями из п.1</p></li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h3>Перенос конфигурации между стендами<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<a class="reference internal image-reference" href="_images/integration_synchronization_4.png"><img alt="_images/integration_synchronization_4.png" class="align-center" src="_images/integration_synchronization_4.png" style="width: 496.0px; height: 171.0px;" /></a>
+<p>Затем нужно:</p>
+<ol class="arabic simple">
+<li><p>Скопировать содержимое этого файла</p></li>
+<li><p>перейти на целевой стенд</p></li>
+<li><p>открыть журнал синхронизации</p></li>
+<li><p>Нажать Создать → Import JSON</p></li>
+<li><p>В появившемся окне вставить json, который мы скопировали в п.1</p></li>
+<li><p>Сохранить форму</p></li>
+<li><p>Обновить содержимое журнала</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/integration_synchronization_5.png"><img alt="_images/integration_synchronization_5.png" class="align-center" src="_images/integration_synchronization_5.png" style="width: 989.0px; height: 562.0px;" /></a>
+</div>
+<div class="section" id="id11">
+<h3>Структура таблицы с данными<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p><strong>id</strong> (SERIAL PRIMARY KEY) - идентификатор строки,
+<strong>_modified</strong> (TIMESTAMPTZ) - дата последнего изменения строки,
+<strong>_created</strong> (TIMESTAMPTZ) - дата создания строки,
+<strong>_version</strong> (BIGINT) - внутренняя версия записи. Используется, чтобы избежать одновременного изменения из раных потоков или инстансов микросервиса.
+<strong>modified</strong> (VARCHAR) - дата изменения, записи в alfresco в ISO8601,
+<strong>record_ref</strong> (VARCHAR) - alfresco&#64; + nodeRef заявки в alfresco</p>
+<ul class="simple">
+<li><p>все поля, которые описаны в интерфейсе</p></li>
+</ul>
+</div>
+<div class="section" id="alfresco">
+<h3>Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Часть с атрибутами можно взять из json конфигурации интеграции, поле «attributes»:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+<span class="n">query</span><span class="p">:</span> <span class="s1">&#39;tk:type:&quot;workspace://SpacesStore/type-unilever-te-request&quot;&#39;</span><span class="p">,</span>
+<span class="n">language</span><span class="p">:</span> <span class="s1">&#39;fts-alfresco&#39;</span><span class="p">,</span>
+<span class="n">consistency</span><span class="p">:</span> <span class="s1">&#39;EVENTUAL&#39;</span><span class="p">,</span>
+<span class="n">page</span><span class="p">:</span> <span class="p">{</span>
+<span class="n">maxItems</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+<span class="s2">&quot;Reg Number&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRegNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Expense Type&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terExpenseType.utedm:teetName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:reportablePerson&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Cost Center &quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPCostCenter&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS GRC Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignCRGCode.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Vendor Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPVendorCode&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP ID&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPPersonnelNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Sub Function&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPSubFunction.udm:subFunctionName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Approve Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepApproveDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Line Manager&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terLineManager&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Accountant&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAccountant&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Outsider Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignOutsiderGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel Begin Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelBeginDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelEndDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Destination City&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDestinationCity&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Diff Destination Point&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDiffDestinationPoint&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Hotel Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignHotelRequired.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Ticket Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketRequired&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Tickets&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketsTable.uterm:tertTransportType&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Doc Requester Amount&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepDocRequesterAmount&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Currency&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepCurrency.idocs:currencyName&quot;</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>«Reg Number» - key (Attributes),
+«uterm:terRegNumber» - value (Attributes)</p>
+</div>
+<div class="section" id="id12">
+<h3>Восстановление потеряных записей<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Версия микросервиса: 1.14.0-snapshot</p>
+<p>На форму добавлен флаг “Run recovery job”. Если он активен, то вместе с основной выгрузкой дополнительно запускается джоба, которая ищет пропущенные записи за последний час. Если такие записи находятся, то происходит запуск восстановления. В процессе восстановления сужается диапазон дат, между которыми найдено отличие. После уменьшения диапазона происходит пересинхронизация найденых в нем записией.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>значение флага проверяется только при запуске выгрузки (флаг Enabled переключается с False на True) или при перезагрузке микросервиса.</p>
+</div>
+<p>Дата модификации записи сохраняется в поле _rec_modified. Возможно потребуется создание индексов для этого поля, чтобы джоба работала эффективнее (Но все же если поиск будет долгим, то ничего страшного не произойдет. Просто восстановление будет происходить не так быстро).</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="docker-compose.html" class="btn btn-neutral float-right" title="Инструкция по установке Citeck ECOS c помощью Docker-compose" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html" class="btn btn-neutral float-left" title="Document Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

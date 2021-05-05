@@ -1,0 +1,372 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Типы данных &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Хранение данных (Модель)" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html" />
+    <link rel="prev" title="ECOS Приложения" href="ECOS_applications.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Пример настройки процесса</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html">ВВЕДЕНИЕ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id2">Создание справочника «Кандидаты»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id8">Создание типа ECOS «Оффер»</a></li>
+</ul>
+<p class="caption"><span class="caption-text">База знаний по настройке</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Типы данных</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Пример описания типа</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Структура типов данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Наследование типов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Маппинг старых типов и видов на новые типы кейсов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Связи (с формой, действиями)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alfresco">Связь с типом Alfresco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Действия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Варианты создания</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html"><strong>Формы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Интеграции</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">Инструкция по установке Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker-servises.html">Сервисы Docker</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%93%D0%BB%D0%BE%D1%81%D1%81%D0%B0%D1%80%D0%B8%D0%B9.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B.html">Термины системы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/UX_UI.html">UX UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records.html"><strong>ECOS Records API</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_CMMN.html"><strong>ECOS CMMN</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Темы интерфейса</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9.html">Типы действий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык_предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/How_To.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Notification.html">Уведомления (переходная версия)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Alfresco.html"><strong>Alfresco</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><strong>Типы данных</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Типы_данных.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><strong>Типы данных</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>В ECOS внедрена собственная система типов, на основе которой настраиваются следующие аспекты:</p>
+<ul class="simple">
+<li><p>Форма</p></li>
+<li><p>Действия</p></li>
+<li><p>Связи</p></li>
+<li><p>Тип UI (react/share)</p></li>
+</ul>
+<p>Типы ECOS являются модулями ECOS и располагаются по следующим путям:
+В alfresco: ${module_id}/src/main/resources/alfresco/module/${module_id}/model/type/<strong>/*.json
+В микросервисах: resources/ecos-app/model/type/</strong>/<a href="#id2"><span class="problematic" id="id3">*</span></a>.json</p>
+<p>Для просмотра существующих типов и их редактирования создан журнал «Типы кейсов».
+Чтобы в него попасть следует открыть меню и перейти в системные журналы:</p>
+<a class="reference internal image-reference" href="_images/case_type_1.png"><img alt="_images/case_type_1.png" class="align-center" src="_images/case_type_1.png" style="width: 402.0px; height: 326.0px;" /></a>
+<div class="section" id="id4">
+<h2>Пример описания типа<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Базовый тип&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+       <span class="s2">&quot;ui/action$edit&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;ui/action$content-download&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;ui/action$record-actions&quot;</span>
+   <span class="p">],</span>
+   <span class="s2">&quot;associations&quot;</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assoc:associatedWith&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Связан с&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;BOTH&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;model/type$base&quot;</span>
+       <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h3>Структура типов данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Наследование типов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>У всех типов должен быть родитель. По умолчанию - <a class="reference external" href="mailto:model/type&#37;&#52;&#48;base">model/type<span>&#64;</span>base</a> (базовый тип)</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Маппинг старых типов и видов на новые типы кейсов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Старые типы и виды кейса записываются в полях tk:type и tk:kind в виде nodeRef. Например:
+tk:type = workspace://SpacesStore/contracts-cat-doctype-contract (Договор)
+tk:kind = workspace://SpacesStore/contracts-cat-contract-services (Услуги)
+Для преобразования в новый тип кейса следует взять значения из этих полей, убрать у каждого из них workspace://SpacesStore/ и оставшиеся части объединить в одну строку через «/» (слева - tk:type, а справа tk:kind):
+<strong>contracts-cat-doctype-contract/contracts-cat-contract-services</strong>
+Если tk:kind не задан, то правой части и знака «/» не нужно. Например:
+<strong>contracts-cat-doctype-contract</strong>
+При добавлении новых типов кейсов следует учитывать, что тип с tk:kind должен наследоваться от типа без tk:kind чтобы унаследовать его свойства:</p>
+<a class="reference internal image-reference" href="_images/case_type_legacy_1.png"><img alt="_images/case_type_legacy_1.png" class="align-center" src="_images/case_type_legacy_1.png" style="width: 603.0px; height: 111.0px;" /></a>
+<div class="section" id="id8">
+<h3>Связи (с формой, действиями)<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p><em>Связи наследуются</em> т.е. чтобы добавить связь «Связан с» достаточно указать в качестве parent’а <strong>model/type$base</strong> т.к. там уже настроена эта связь
+Связи (associations) настраиваются для отображения, добавления и удаления в виджете связей на карточке документа.
+Связь описывается следующей структурой:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assoc:associatedWith&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Связан с&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;BOTH&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;model/type$base&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>id в данном случае для Alfresco должно совпадать с QName существующей в модели связи. Для добавления произвольных связей (без обязательного наличия связи в модели) нужна доработка.</p>
+</div>
+</div>
+<div class="section" id="alfresco">
+<h2>Связь с типом Alfresco<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Чтобы у записей с определенным типом alfresco был нужный тип ECOS можно сделать следующее (на выбор):</p>
+<p>Для новых нод:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Сделать аспект, который унаследован от etype:hasType и переопределить там свойство etype:type (!!!тип указывать без emodel/type&#64; префикса!!!). После этого можно навесить данный аспект на тип alfresco и новые ноды будут иметь нужный тип ECOS.</p></li>
+<li><p>В варианте создания добавить атрибут _type=emodel/type&#64;нужный-тип. Новые ноды, создаваемые через данный вариант создания будут иметь нужный тип;</p></li>
+</ol>
+</div></blockquote>
+<p>Для новых и старых нод:</p>
+<blockquote>
+<div><ol class="arabic simple" start="3">
+<li><p>Добавить Registrar бин, который зарегистрирует связь тип alfresco → тип ECOS:</p></li>
+</ol>
+</div></blockquote>
+<p>ecosTypeService.register(QName nodeType, Function&lt;AlfNodeInfo, RecordRef&gt; evaluator)</p>
+<blockquote>
+<div><p>Для примера см. конфигурацию ru.citeck.ecos.node.EcosTypeConfiguration</p>
+</div></blockquote>
+<div class="section" id="id9">
+<h3>Действия<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>Варианты создания<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html" class="btn btn-neutral float-right" title="Хранение данных (Модель)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ECOS_applications.html" class="btn btn-neutral float-left" title="ECOS Приложения" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
