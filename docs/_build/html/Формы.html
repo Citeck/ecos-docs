@@ -1,0 +1,418 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Формы &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Права доступа" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html" />
+    <link rel="prev" title="Хранение данных (Модель)" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Пример настройки процесса</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html">ВВЕДЕНИЕ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id2">Создание справочника «Кандидаты»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%BE%D1%84%D1%84%D0%B5%D1%80%D0%B0.html#id8">Создание типа ECOS «Оффер»</a></li>
+</ul>
+<p class="caption"><span class="caption-text">База знаний по настройке</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Формы</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#alfresco">Связь с типом Alfresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos">Связь с типом ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пользовательский модуль</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Проверка новых форм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos-forms-enable">Конфигурация ecos-forms-enable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Служебные данные формы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#form-builder">Form Builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Компоненты формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display">Display (Отображение на форме)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation">Validation (Связь с моделью)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Условия отображения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logic">Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#layout-html">Layout (Отображение в HTML?)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Локализация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Глобальная локализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Локализация атрибутов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Локализация формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Локализация подсказок</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Формы для задач</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#activity">Activity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mobile-app-form">Mobile App form</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Интеграции</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">Инструкция по установке Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker-servises.html">Сервисы Docker</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%93%D0%BB%D0%BE%D1%81%D1%81%D0%B0%D1%80%D0%B8%D0%B9.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B.html">Термины системы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/UX_UI.html">UX UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records.html"><strong>ECOS Records API</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_CMMN.html"><strong>ECOS CMMN</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Темы интерфейса</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9.html">Типы действий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык_предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/How_To.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Notification.html">Уведомления (переходная версия)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Alfresco.html"><strong>Alfresco</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><strong>Формы</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Формы.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><strong>Формы</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Новые формы ECOS реализованы на базе движка <a class="reference external" href="https://github.com/formio/formio.js">formiojs</a></p>
+<p>Функция редактора форм доступна только в ECOS Enterprise</p>
+<p>Формы описываются в json формате</p>
+<p>Формы используются для редактирования записей из Records Service (см. 11. ECOS Records). На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан ID редактируемой записи).</p>
+<p>Существуют две системные формы, которые изменять не желательно:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Форма для создания и редактирования других форм. Ключ: ECOS_FORM</p></li>
+<li><p>Форма по-умолчанию. Она используется как отправная точка если мы создаем новую форму. Ключ: DEFAULT</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Атрибут - это собирательный термин, который относится и к свойству и ассоциации и к дочерней ассоциации и к системным свойствам;</strong></p>
+<div class="section" id="alfresco">
+<h2>Связь с типом Alfresco<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Если мы хотим создать форму для создания или редактирования типа Alfresco, то следует создать форму с ключом, который сформирован</p>
+<p>по следующему шаблону: alf_{{ТИП-ALFRESCO}}</p>
+<p>Например: alf_idocs:contractor</p>
+</div>
+<div class="section" id="ecos">
+<h2>Связь с типом ECOS<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Если нужна форма для создания/редактирования/просмотра записи с типом ECOS следует задать ключ по следующему шаблону:</p>
+<p>type_{{TYPE_UUID}}/{{KIND_UUID}}
+Если вид не важен, то его можно не задавать и сделать ключ type_{{TYPE_UUID}}
+Например:
+Для типа+вида: type_contracts-cat-doctype-contract/contracts-cat-contract-services
+Для типа: type_contracts-cat-doctype-contract
+В консоли браузера можно проверить список возможных ключей форм для записи следующим скриптом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace://SpacesStore/86f922df-924a-46a6-a9e3-e34ddb96ef7d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;_formKey[]?str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Пользовательский модуль<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В json описании формы можно добавить поле «customModule», в котором записать путь до javascript модуля, который будет создан вместе с формой. В этом модуле можно разместить сложную логику, которую в последствии вызывать из скриптов формы. Для примера см. ecos-eform-repo/src/main/resources/alfresco/module/ecos-eform-repo/ecos-formsecos-form.json</p>
+<p>Если в customModule будет метод init, то он будет вызван с текущей формой в аргументах.</p>
+<div class="section" id="id3">
+<h3>Проверка новых форм<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Чтобы открыть конкретную форму для редактирования или создания следует в консоли браузера выполнить следующий скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">eform</span><span class="p">(</span><span class="s1">&#39;wftask@activiti$875&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">params</span><span class="p">:{</span><span class="n">formKey</span><span class="p">:</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">}})</span>
+</pre></div>
+</div>
+<p>Первый аргумент - RecordRef, кототорый будет редактироваться
+Параметр formKey - ключ формы, которую следует открыть</p>
+</div>
+</div>
+<div class="section" id="ecos-forms-enable">
+<h2>Конфигурация ecos-forms-enable<a class="headerlink" href="#ecos-forms-enable" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В ECOS конфигурации добавлен параметр ecos-forms-enable, который позволяет глобально отключать новые формы для создания нод. По-умолчанию данный параметр включен.</p>
+</div>
+<div class="section" id="id4">
+<h2>Служебные данные формы<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="form-builder">
+<h2>Form Builder<a class="headerlink" href="#form-builder" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id5">
+<h3>Компоненты формы<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="api">
+<h3>API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="display">
+<h3>Display (Отображение на форме)<a class="headerlink" href="#display" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="validation">
+<h3>Validation (Связь с моделью)<a class="headerlink" href="#validation" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Условия отображения<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="logic">
+<h3>Logic<a class="headerlink" href="#logic" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="layout-html">
+<h3>Layout (Отображение в HTML?)<a class="headerlink" href="#layout-html" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Локализация<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все Label у полей на форме перед рендером проходят через этап локализации. Если ключа локализации не найдено, то рендерится строка, которая записана в поле Label у поля.</p>
+<p>Локализация в новых формах может быть в трех видах:</p>
+<div class="section" id="id8">
+<h3>Глобальная локализация<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Вся локализация, которая имеет префикс <strong>ecos.forms</strong>. попадает в новые формы. Например <strong>ecos.forms.someTitle=»123»</strong> попадет в формы в виде: <strong>{«someTitle»:»123»}</strong></p>
+<p>На момент 16.05.19 в качестве глобальной локализации используется локализация из <strong>site-messages/*.properties файлов</strong> <strong>-share</strong> модулей</p>
+</div>
+<div class="section" id="id9">
+<h3>Локализация атрибутов<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Если Label у поля совпадает с редактируемым атрибутом, то происходит запрос на сервер за заголовком для такого поля. Если заголовок найден, то поле будет локализовано.</p>
+<a class="reference internal image-reference" href="_images/Forms_local_1.png"><img alt="_images/Forms_local_1.png" class="align-center" src="_images/Forms_local_1.png" style="width: 986.4000000000001px; height: 371.20000000000005px;" /></a>
+<a class="reference internal image-reference" href="_images/Forms_local_2.png"><img alt="_images/Forms_local_2.png" class="align-center" src="_images/Forms_local_2.png" style="width: 986.4000000000001px; height: 371.20000000000005px;" /></a>
+</div>
+<div class="section" id="id10">
+<h3>Локализация формы<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В json конфигурации формы можно задать локализацию, которая будет действовать только в пределах данной формы. Пример:</p>
+<a class="reference internal image-reference" href="_images/Forms_local_3.png"><img alt="_images/Forms_local_3.png" class="align-center" src="_images/Forms_local_3.png" style="width: 518.0px; height: 264.0px;" /></a>
+<p>Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму «Localization» и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.</p>
+<a class="reference internal image-reference" href="_images/Forms_local_4.png"><img alt="_images/Forms_local_4.png" class="align-center" src="_images/Forms_local_4.png" style="width: 565.5999999999999px; height: 317.09999999999997px;" /></a>
+<a class="reference internal image-reference" href="_images/Forms_local_5.png"><img alt="_images/Forms_local_5.png" class="align-center" src="_images/Forms_local_5.png" style="width: 840.0px; height: 348.59999999999997px;" /></a>
+<p><em>Пример локализации панели</em>:
+Чтобы установить локализацию для панелей (Layouts -&gt;Panels), можно воспользоваться функциями Localisation, достаточно прописать их как показано ниже.</p>
+<a class="reference internal image-reference" href="_images/Forms_local_6.png"><img alt="_images/Forms_local_6.png" class="align-center" src="_images/Forms_local_6.png" style="width: 369.59999999999997px; height: 123.89999999999999px;" /></a>
+<a class="reference internal image-reference" href="_images/Forms_local_7.png"><img alt="_images/Forms_local_7.png" class="align-center" src="_images/Forms_local_7.png" style="width: 846.3px; height: 189.7px;" /></a>
+</div>
+<div class="section" id="id11">
+<h3>Локализация подсказок<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Чтобы локализовать подсказки к атрибутам, необходимо следующее:
+- Написать саму локализацию в форме. Ключ для локализации можно выбрать на своё усмотрение(не нужно писать ключи с пробелами, они могут не спарситься). Пример локализованной подсказки:</p>
+<a class="reference internal image-reference" href="_images/Forms_local_8.png"><img alt="_images/Forms_local_8.png" class="align-center" src="_images/Forms_local_8.png" style="width: 800.0999999999999px; height: 633.5px;" /></a>
+<ul class="simple">
+<li><p>Пишем ключ в поле для подсказки «Tooltip».</p></li>
+<li></li>
+</ul>
+<a class="reference internal image-reference" href="_images/Forms_local_9.png"><img alt="_images/Forms_local_9.png" class="align-center" src="_images/Forms_local_9.png" style="width: 410.2px; height: 90.3px;" /></a>
+<p>В итоге получаем локализацию подсказок:</p>
+<a class="reference internal image-reference" href="_images/Forms_local_10.png"><img alt="_images/Forms_local_10.png" class="align-center" src="_images/Forms_local_10.png" style="width: 697.1999999999999px; height: 641.9px;" /></a>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Формы для задач<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="activity">
+<h3>Activity<a class="headerlink" href="#activity" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="mobile-app-form">
+<h2>Mobile App form<a class="headerlink" href="#mobile-app-form" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html" class="btn btn-neutral float-right" title="Права доступа" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html" class="btn btn-neutral float-left" title="Хранение данных (Модель)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

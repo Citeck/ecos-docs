@@ -66,7 +66,7 @@ source_suffix = '.rst'
 # a list of builtin themes.
 #
 # html_theme = 'sphinx_material'
-html_theme = 'default'
+html_theme = 'sphinx_rtd_theme'
 
 # html_theme_path = ['.']
 

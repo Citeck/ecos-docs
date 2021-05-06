@@ -1,0 +1,630 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ВВЕДЕНИЕ &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="ECOS Приложения" href="ECOS_applications.html" />
+    <link rel="prev" title="Знакомство с ECOS" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Пример настройки процесса</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ВВЕДЕНИЕ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id2">Создание справочника «Кандидаты»</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Создание типа кейса «кейс Кандидаты»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-id-parent-name-description">Вкладка Main (id, parent, name, description)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Работа с моделью (Вкладка Attributes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Создание формы «Кандидаты»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-id-title-key">Основные параметры формы (Module id, Title, Key, Тип)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#form-builder">Form builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#localization">Кнопка Localization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Создание журнала «журнал Кандидаты»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#columns">Вкладка Columns (Обязательный для отображения)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos">Добавление формы и журнала в тип ECOS.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Настройка меню</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id8">Создание типа ECOS «Оффер»</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Тип данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Вкладка Main (id, parent, name, description, действия)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Работа с моделью (Вкладка Attributes)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roles">Роли (Вкладка Roles)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#statuses">Статусы (Вкладка Statuses)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Шаблоны нумерации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Создание формы «форма Оффер»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Основные параметры формы (Module id, Title, Key, Тип)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Form builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Кнопка Localization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">Создание журнала «журнал Оффер»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Вкладка Columns (Обязательный для отображения)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">Добавление формы и журнала в тип ECOS.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">Настройка меню</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">База знаний по настройке</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html"><strong>Формы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Интеграции</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">Инструкция по установке Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker-servises.html">Сервисы Docker</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%93%D0%BB%D0%BE%D1%81%D1%81%D0%B0%D1%80%D0%B8%D0%B9.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B.html">Термины системы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/UX_UI.html">UX UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records.html"><strong>ECOS Records API</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_CMMN.html"><strong>ECOS CMMN</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Темы интерфейса</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9.html">Типы действий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык_предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/How_To.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Notification.html">Уведомления (переходная версия)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Alfresco.html"><strong>Alfresco</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ВВЕДЕНИЕ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/процесс_оффера.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>ВВЕДЕНИЕ<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>В этом разделе размещено руководство, описывающее процесс создания кейса(тип ECOS) в системе Citeck ECOS.
+Руководство состоит из описания создания справочника «Кандидаты» и кейса «Оффер».
+Приведены пошаговые инструкции, создания типового кейса HR отдела по согласованию Офферов.
+Весь процесс дополнен скриншотами, начиная с процесса создания места хранения информации и прописывания решений,
+принимаемых на каждом этапе процесса, до настройки расположения виджетов на рабочей странице (дашборде).</p>
+</div>
+<div class="section" id="id2">
+<h1>Создание справочника «Кандидаты»<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id3">
+<h2>Создание типа кейса «кейс Кандидаты»<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Переходим в инструменты.</p>
+<a class="reference internal image-reference" href="_images/переход_в_инструменты.jpg"><img alt="_images/переход_в_инструменты.jpg" class="align-center" src="_images/переход_в_инструменты.jpg" style="width: 278.0px; height: 759.0px;" /></a>
+<p>Справа сверху нажимаем на кнопку «Показать меню».</p>
+<a class="reference internal image-reference" href="_images/Кнопка_показать_меню.jpg"><img alt="_images/Кнопка_показать_меню.jpg" class="align-left" src="_images/Кнопка_показать_меню.jpg" style="width: 1267.2px; height: 490.40000000000003px;" /></a>
+<p>Выбираем «Типы данных».</p>
+<a class="reference internal image-reference" href="_images/выбрать_типы_данных.jpg"><img alt="_images/выбрать_типы_данных.jpg" class="align-center" src="_images/выбрать_типы_данных.jpg" style="width: 250.0px; height: 840.0px;" /></a>
+<p>Слева сверху нажимаем на кнопку создания, выбираем «Создать новый тип».</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_тип_кейса.jpg"><img alt="_images/Кнопка_создать_тип_кейса.jpg" class="align-center" src="_images/Кнопка_создать_тип_кейса.jpg" style="width: 1119.0px; height: 660.0px;" /></a>
+</div>
+<div class="section" id="main-id-parent-name-description">
+<h2>Вкладка Main (id, parent, name, description)<a class="headerlink" href="#main-id-parent-name-description" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Id - уникальный идентификатор.
+Parent - выбрать datalist для справочника или case для кейса (карточки бизнес-процесса)
+Name - человекопонятное имя.
+Description - описание данного типа ECOS (необязательно).</p>
+<a class="reference internal image-reference" href="_images/Форма_создания_типа_данных.jpg"><img alt="_images/Форма_создания_типа_данных.jpg" class="align-center" src="_images/Форма_создания_типа_данных.jpg" style="width: 1487.0px; height: 825.0px;" /></a>
+</div>
+<div class="section" id="attributes">
+<h2>Работа с моделью (Вкладка Attributes)<a class="headerlink" href="#attributes" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Заполняем модель атрибутами.
+Id - уникальный идентификатор атрибута.
+Name - человекопонятное имя атрибута.
+Type - подходящий тип атрибута.</p>
+<a class="reference internal image-reference" href="_images/Атрибуты_модели.png"><img alt="_images/Атрибуты_модели.png" class="align-center" src="_images/Атрибуты_модели.png" style="width: 1232.0px; height: 848.0px;" /></a>
+</div>
+<div class="section" id="id4">
+<h2>Создание формы «Кандидаты»<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в журнал «Формы».</p>
+<a class="reference internal image-reference" href="_images/переход_в_журнал_формы.jpg"><img alt="_images/переход_в_журнал_формы.jpg" class="align-center" src="_images/переход_в_журнал_формы.jpg" style="width: 315.0px; height: 746.0px;" /></a>
+<p>Нажимаем на кнопку создания формы.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_форму.jpg"><img alt="_images/Кнопка_создать_форму.jpg" class="align-center" src="_images/Кнопка_создать_форму.jpg" style="width: 1159.0px; height: 712.0px;" /></a>
+<div class="section" id="module-id-title-key">
+<h3>Основные параметры формы (Module id, Title, Key, Тип)<a class="headerlink" href="#module-id-title-key" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Module id - уникальный идентификатор формы.
+Title - человекопонятное имя формы.
+Key - ключ формы (такой же как и Module id).
+Тип - из списка выбрать тип кейса, созданный ранее.</p>
+<a class="reference internal image-reference" href="_images/Параметры_формы.jpg"><img alt="_images/Параметры_формы.jpg" class="align-center" src="_images/Параметры_формы.jpg" style="width: 1215.0px; height: 875.0px;" /></a>
+</div>
+<div class="section" id="form-builder">
+<h3>Form builder<a class="headerlink" href="#form-builder" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В колонке слева расположены основные элементы формы. Для добавления элемента его необходимо перетянуть на в выбранное место на форме.</p>
+<a class="reference internal image-reference" href="_images/form_builder.jpg"><img alt="_images/form_builder.jpg" class="align-center" src="_images/form_builder.jpg" style="width: 1172.0px; height: 781.0px;" /></a>
+<p id="candidates-components">Columns - позволяет удобно расположить компоненты формы.</p>
+<a class="reference internal image-reference" href="_images/columns_component.jpg"><img alt="_images/columns_component.jpg" class="align-center" src="_images/columns_component.jpg" style="width: 231.0px; height: 566.0px;" /></a>
+<p>Column Properties - основной параметр настройки, позволяет определить как по колонкам будет разбиваться компонент.</p>
+<a class="reference internal image-reference" href="_images/columns_properties.jpg"><img alt="_images/columns_properties.jpg" class="align-center" src="_images/columns_properties.jpg" style="width: 772.0px; height: 841.0px;" /></a>
+<p>Text field (например «Код») - текстовый компонент.
+Заполняется «Label» - человекопонятное имя компонента.</p>
+<a class="reference internal image-reference" href="_images/code_label.jpg"><img alt="_images/code_label.jpg" class="align-center" src="_images/code_label.jpg" style="width: 1483.0px; height: 346.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе кейса.</p>
+<a class="reference internal image-reference" href="_images/code_api_candidates_form.jpg"><img alt="_images/code_api_candidates_form.jpg" class="align-center" src="_images/code_api_candidates_form.jpg" style="width: 733.0px; height: 182.0px;" /></a>
+<p>ECOS Select Component - компонент формы для выбора значения из списка.
+Заполняется «Label» - человекопонятное имя компонента.</p>
+<a class="reference internal image-reference" href="_images/gender_label_candidates.jpg"><img alt="_images/gender_label_candidates.jpg" class="align-center" src="_images/gender_label_candidates.jpg" style="width: 1478.0px; height: 340.0px;" /></a>
+<p>Вкладка «Data» - в «Data Source Type» выбираем «Values».
+Data Source Values - заполняется значениями, которые должны быть в списке. (Label - отображаемое имя,
+Value - значение, которое содержится)</p>
+<a class="reference internal image-reference" href="_images/gender_data_candidates.jpg"><img alt="_images/gender_data_candidates.jpg" class="align-center" src="_images/gender_data_candidates.jpg" style="width: 729.0px; height: 529.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе кейса.</p>
+<a class="reference internal image-reference" href="_images/gender_api_candidates.jpg"><img alt="_images/gender_api_candidates.jpg" class="align-center" src="_images/gender_api_candidates.jpg" style="width: 734.0px; height: 179.0px;" /></a>
+<p>Date / Time Component - компонент даты / времени.
+Заполняется «Label» - человекопонятное имя компонента.
+Format - позволяет указать формат даты.</p>
+<a class="reference internal image-reference" href="_images/date_label_candidates.jpg"><img alt="_images/date_label_candidates.jpg" class="align-center" src="_images/date_label_candidates.jpg" style="width: 740.0px; height: 662.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе кейса.</p>
+<a class="reference internal image-reference" href="_images/date_api_candidates.jpg"><img alt="_images/date_api_candidates.jpg" class="align-center" src="_images/date_api_candidates.jpg" style="width: 735.0px; height: 178.0px;" /></a>
+<p>Select Journal Component - компонент для выбора значения из журнала.
+Заполняется «Label» - человекопонятное имя компонента.</p>
+<a class="reference internal image-reference" href="_images/select_journal_label_candidates.jpg"><img alt="_images/select_journal_label_candidates.jpg" class="align-center" src="_images/select_journal_label_candidates.jpg" style="width: 734.0px; height: 189.0px;" /></a>
+<p>Вкладка Data - заполняется «Journal ID» - идентификатор журнала, который хотим использовать в компоненте.</p>
+<a class="reference internal image-reference" href="_images/select_journal_data_candidates.jpg"><img alt="_images/select_journal_data_candidates.jpg" class="align-center" src="_images/select_journal_data_candidates.jpg" style="width: 732.0px; height: 181.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе кейса.</p>
+<a class="reference internal image-reference" href="_images/select_journal_api_candidates.jpg"><img alt="_images/select_journal_api_candidates.jpg" class="align-center" src="_images/select_journal_api_candidates.jpg" style="width: 735.0px; height: 180.0px;" /></a>
+</div>
+<div class="section" id="localization">
+<span id="candidates-localization"></span><h3>Кнопка Localization<a class="headerlink" href="#localization" title="Ссылка на этот заголовок">¶</a></h3>
+<a class="reference internal image-reference" href="_images/Кнопка_локализация.jpg"><img alt="_images/Кнопка_локализация.jpg" class="align-center" src="_images/Кнопка_локализация.jpg" style="width: 1229.0px; height: 902.0px;" /></a>
+<p>Здесь прописывается локализация для компонентов формы.
+В параметре «Key» указывается Label компонента.
+В Locale нажимаем кнопку Add Message, выбираем необходимый язык, в поле Message прописываем то,
+что будет отображаться.</p>
+<a class="reference internal image-reference" href="_images/Локализация.png"><img alt="_images/Локализация.png" class="align-center" src="_images/Локализация.png" style="width: 1464.0px; height: 926.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Создание журнала «журнал Кандидаты»<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в журнал «Журналы».</p>
+<a class="reference internal image-reference" href="_images/переход_в_журнал_журналы.jpg"><img alt="_images/переход_в_журнал_журналы.jpg" class="align-center" src="_images/переход_в_журнал_журналы.jpg" style="width: 261.0px; height: 761.0px;" /></a>
+<p>Нажимаем на кнопку создания журнала.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_журнал.jpg"><img alt="_images/Кнопка_создать_журнал.jpg" class="align-center" src="_images/Кнопка_создать_журнал.jpg" style="width: 1177.0px; height: 719.0px;" /></a>
+<div class="section" id="id6">
+<h3>Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Идентификатор журнала - уникальный идентификатор журнала.
+Наименование журнала - человекопонятное имя журнала.
+Тип кейса - из списка выбрать тип кейса, созданный ранее.
+Действия - из списка выбрать действия, которые будут доступны для объектов журнала.</p>
+<a class="reference internal image-reference" href="_images/Параметры_журнала.jpg"><img alt="_images/Параметры_журнала.jpg" class="align-center" src="_images/Параметры_журнала.jpg" style="width: 1226.0px; height: 852.0px;" /></a>
+</div>
+<div class="section" id="columns">
+<h3>Вкладка Columns (Обязательный для отображения)<a class="headerlink" href="#columns" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Здесь заполняются колонки журнала.
+В «Наименование» пишем то, как будет называться колонка.
+«Системное имя» - Id атрибута модели.</p>
+<a class="reference internal image-reference" href="_images/Вкладка_Columns.png"><img alt="_images/Вкладка_Columns.png" class="align-center" src="_images/Вкладка_Columns.png" style="width: 1219.0px; height: 839.0px;" /></a>
+</div>
+</div>
+<div class="section" id="ecos">
+<h2>Добавление формы и журнала в тип ECOS.<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в системный журнал «Типы данных».</p>
+<a class="reference internal image-reference" href="_images/выбрать_типы_данных.jpg"><img alt="_images/выбрать_типы_данных.jpg" class="align-center" src="_images/выбрать_типы_данных.jpg" style="width: 250.0px; height: 840.0px;" /></a>
+<p>Выбираем ранее созданный тип ECOS «Кандидаты».</p>
+<p>В параметре «Form» выбираем форму, которую создали.
+В параметре «Journal» выбираем журнал, который создали.</p>
+<a class="reference internal image-reference" href="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg"><img alt="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg" class="align-center" src="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg" style="width: 1232.0px; height: 838.0px;" /></a>
+</div>
+<div class="section" id="id7">
+<h2>Настройка меню<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Переходим в настройку меню, нажав на шестеренку, потом на кнопку «Настроить меню» справа сверху.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_настройки_меню.jpg"><img alt="_images/Кнопка_настройки_меню.jpg" class="align-left" src="_images/Кнопка_настройки_меню.jpg" style="width: 1025.6000000000001px; height: 560.0px;" /></a>
+<p>Выбираем элемент меню, в котором будет находится справочник «Кандидаты».
+Наводим на элемент и нажимаем кнопку «Добавить», выбираем «Журнал», из списка выбираем необходимый журнал.</p>
+<a class="reference internal image-reference" href="_images/Настройка_меню.jpg"><img alt="_images/Настройка_меню.jpg" class="align-center" src="_images/Настройка_меню.jpg" style="width: 1220.0px; height: 840.0px;" /></a>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h1>Создание типа ECOS «Оффер»<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id9">
+<h2>Тип данных<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Переходим в инструменты.</p>
+<a class="reference internal image-reference" href="_images/переход_в_инструменты.jpg"><img alt="_images/переход_в_инструменты.jpg" class="align-center" src="_images/переход_в_инструменты.jpg" style="width: 278.0px; height: 759.0px;" /></a>
+<p>Справа сверху нажимаем на кнопку «Показать меню».</p>
+<a class="reference internal image-reference" href="_images/Кнопка_показать_меню.jpg"><img alt="_images/Кнопка_показать_меню.jpg" class="align-left" src="_images/Кнопка_показать_меню.jpg" style="width: 1267.2px; height: 490.40000000000003px;" /></a>
+<p>Выбираем «Типы данных».</p>
+<a class="reference internal image-reference" href="_images/выбрать_типы_данных.jpg"><img alt="_images/выбрать_типы_данных.jpg" class="align-center" src="_images/выбрать_типы_данных.jpg" style="width: 250.0px; height: 840.0px;" /></a>
+<p>Слева сверху нажимаем на кнопку создания, выбираем «Создать новый тип».</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_тип_кейса.jpg"><img alt="_images/Кнопка_создать_тип_кейса.jpg" class="align-center" src="_images/Кнопка_создать_тип_кейса.jpg" style="width: 1119.0px; height: 660.0px;" /></a>
+</div>
+<div class="section" id="id10">
+<h2>Вкладка Main (id, parent, name, description, действия)<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Id - уникальный идентификатор.
+Parent - выбрать Case (так как мы создаем кейс/карточку процесса. Если бы мы хотели создать справочник - необходимо было бы выбрать значение datalists)
+Name - человекопонятное имя.
+Description - описание данного типа ECOS (необязательно).
+Действия (необязательно) - из списка выбрать действия, которые будут доступны на карточке кейса.</p>
+<a class="reference internal image-reference" href="_images/Параметры_типа_кейса_оффер.jpg"><img alt="_images/Параметры_типа_кейса_оффер.jpg" class="align-center" src="_images/Параметры_типа_кейса_оффер.jpg" style="width: 1229.0px; height: 828.0px;" /></a>
+<p>Также можно настроить параметр Display Name Template - это титульник созданных объектов, здесь используется
+системный атрибут _docNum для получения значения счетчика.</p>
+<a class="reference internal image-reference" href="_images/display_name_template.jpg"><img alt="_images/display_name_template.jpg" class="align-center" src="_images/display_name_template.jpg" style="width: 604.0px; height: 94.0px;" /></a>
+<div class="section" id="id11">
+<h3>Работа с моделью (Вкладка Attributes)<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Заполняем модель атрибутами.
+Id - уникальный идентификатор атрибута.
+Name - человекопонятное имя атрибута.
+Type - подходящий тип атрибута.</p>
+<a class="reference internal image-reference" href="_images/Атрибуты_модели_оффер.jpg"><img alt="_images/Атрибуты_модели_оффер.jpg" class="align-center" src="_images/Атрибуты_модели_оффер.jpg" style="width: 1226.0px; height: 850.0px;" /></a>
+<div class="section" id="roles">
+<h4>Роли (Вкладка Roles)<a class="headerlink" href="#roles" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Id - уникальный идентификатор роли.
+Name - человекопонятное имя роли.
+Assignees - можно выбрать группу пользователей и отдельных пользователей.
+Атрибут - атрибут в модели.</p>
+<a class="reference internal image-reference" href="_images/Роли_оффера.jpg"><img alt="_images/Роли_оффера.jpg" class="align-center" src="_images/Роли_оффера.jpg" style="width: 1224.0px; height: 853.0px;" /></a>
+</div>
+<div class="section" id="statuses">
+<h4>Статусы (Вкладка Statuses)<a class="headerlink" href="#statuses" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Id - уникальный идентификатор статуса.
+Name - человекопонятное имя статуса.</p>
+<a class="reference internal image-reference" href="_images/Статусы_оффера.png"><img alt="_images/Статусы_оффера.png" class="align-center" src="_images/Статусы_оффера.png" style="width: 1223.0px; height: 850.0px;" /></a>
+<p>После того как настроили роли и статусы, во вкладке Attributes можно настроить матрицу прав.</p>
+<a class="reference internal image-reference" href="_images/Переход_к_матрице_прав.jpg"><img alt="_images/Переход_к_матрице_прав.jpg" class="align-center" src="_images/Переход_к_матрице_прав.jpg" style="width: 1328.0px; height: 712.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Матрица_прав.jpg"><img alt="_images/Матрица_прав.jpg" class="align-center" src="_images/Матрица_прав.jpg" style="width: 1065.0px; height: 802.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Кнопка_прав_оффер.jpg"><img alt="_images/Кнопка_прав_оффер.jpg" class="align-center" src="_images/Кнопка_прав_оффер.jpg" style="width: 1226.0px; height: 310.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Шаблоны нумерации<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Выбираем «Шаблоны нумерации».</p>
+<a class="reference internal image-reference" href="_images/журнал_шаблоны_нумерации.jpg"><img alt="_images/журнал_шаблоны_нумерации.jpg" class="align-center" src="_images/журнал_шаблоны_нумерации.jpg" style="width: 269.0px; height: 747.0px;" /></a>
+<p>Слева сверху нажимаем на кнопку создания, выбираем «Создать новый шаблон».</p>
+<a class="reference internal image-reference" href="_images/кнопка_создать_новый_шаблон.jpg"><img alt="_images/кнопка_создать_новый_шаблон.jpg" class="align-center" src="_images/кнопка_создать_новый_шаблон.jpg" style="width: 1285.0px; height: 603.0px;" /></a>
+<p>Id - уникальный идентификатор шаблона нумерации.
+Name - человекопонятное имя шаблона нумерации.
+Key - что написать? (?)</p>
+<p>Этот шаблон служит счетчиком для регистрационного номера в модели.</p>
+<a class="reference internal image-reference" href="_images/regnumber_template.jpg"><img alt="_images/regnumber_template.jpg" class="align-center" src="_images/regnumber_template.jpg" style="width: 1220.0px; height: 457.0px;" /></a>
+<a class="reference internal image-reference" href="_images/offer_number_template.jpg"><img alt="_images/offer_number_template.jpg" class="align-center" src="_images/offer_number_template.jpg" style="width: 1222.0px; height: 465.0px;" /></a>
+<p>После создания шаблонов нумерации добавим их в тип ECOS.</p>
+<p>Выбираем «Типы данных».</p>
+<a class="reference internal image-reference" href="_images/выбрать_типы_данных.jpg"><img alt="_images/выбрать_типы_данных.jpg" class="align-center" src="_images/выбрать_типы_данных.jpg" style="width: 250.0px; height: 840.0px;" /></a>
+<p>В параметре «Number template» выбираем шаблон нумерации.</p>
+<a class="reference internal image-reference" href="_images/Выбрать_шаблон_нумерации_оффер.jpg"><img alt="_images/Выбрать_шаблон_нумерации_оффер.jpg" class="align-center" src="_images/Выбрать_шаблон_нумерации_оффер.jpg" style="width: 610.0px; height: 465.0px;" /></a>
+<p>Во вкладке Model у атрибутов можно вычислить значение.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_вычислить.jpg"><img alt="_images/Кнопка_вычислить.jpg" class="align-center" src="_images/Кнопка_вычислить.jpg" style="width: 1225.0px; height: 838.0px;" /></a>
+<p>Вычислим значение у атрибута «idocs:registrationNumber».</p>
+<p>Здесь мы получаем значение из атрибута reg_number_counter, в который приходит значение из шаблона нумерации,
+с помощью fmt(«000000») приводим значение к шестизначному виду.</p>
+<a class="reference internal image-reference" href="_images/параметры_вычисления.jpg"><img alt="_images/параметры_вычисления.jpg" class="align-center" src="_images/параметры_вычисления.jpg" style="width: 967.0px; height: 429.0px;" /></a>
+<p>Выбрать нужный тип и заполнить соответствующие параметры (для каждого типа разные параметры).</p>
+<p>Вычислим значение у атрибута «reg_number_counter».</p>
+<a class="reference internal image-reference" href="_images/Вычисление_шаблон_нумерации.jpg"><img alt="_images/Вычисление_шаблон_нумерации.jpg" class="align-center" src="_images/Вычисление_шаблон_нумерации.jpg" style="width: 975.0px; height: 472.0px;" /></a>
+</div>
+<div class="section" id="id13">
+<h2>Создание формы «форма Оффер»<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в журнал «Формы».</p>
+<a class="reference internal image-reference" href="_images/переход_в_журнал_формы.jpg"><img alt="_images/переход_в_журнал_формы.jpg" class="align-center" src="_images/переход_в_журнал_формы.jpg" style="width: 315.0px; height: 746.0px;" /></a>
+<p>Нажимаем на кнопку создания формы.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_форму.jpg"><img alt="_images/Кнопка_создать_форму.jpg" class="align-center" src="_images/Кнопка_создать_форму.jpg" style="width: 1159.0px; height: 712.0px;" /></a>
+<div class="section" id="id14">
+<h3>Основные параметры формы (Module id, Title, Key, Тип)<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Module id - уникальный идентификатор формы.
+Title - человекопонятное имя формы.
+Key - ключ формы (такой же как и Module id).
+Тип - из списка выбрать тип данных, созданный ранее.</p>
+<a class="reference internal image-reference" href="_images/Параметры_формы_оффер.jpg"><img alt="_images/Параметры_формы_оффер.jpg" class="align-center" src="_images/Параметры_формы_оффер.jpg" style="width: 1224.0px; height: 884.0px;" /></a>
+</div>
+<div class="section" id="id15">
+<h3>Form builder<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Здесь имеются различные компоненты формы.</p>
+<p><a class="reference internal" href="#candidates-components"><span class="std std-ref">Компоненты формы «Кандидаты»</span></a></p>
+<p>Panel (например «Регистрация») - находится во вкладке «Layout»</p>
+<a class="reference internal image-reference" href="_images/component_panel.jpg"><img alt="_images/component_panel.jpg" class="align-center" src="_images/component_panel.jpg" style="width: 240.0px; height: 584.0px;" /></a>
+<p>Заполняется «Title» - человекопонятное имя компонента.</p>
+<a class="reference internal image-reference" href="_images/panel_title.jpg"><img alt="_images/panel_title.jpg" class="align-center" src="_images/panel_title.jpg" style="width: 749.0px; height: 184.0px;" /></a>
+<p>Select Orgstruct Component (например «idocs:initiator») - компонент для выбора из оргструктуры.
+Заполняется «Label» - человекопонятное имя компонента.</p>
+<a class="reference internal image-reference" href="_images/orgstruct_label.jpg"><img alt="_images/orgstruct_label.jpg" class="align-center" src="_images/orgstruct_label.jpg" style="width: 740.0px; height: 181.0px;" /></a>
+<p>Вкладка Custom - можно указать допустимый тип «Allowed authority type»,
+Current user by default - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание.</p>
+<a class="reference internal image-reference" href="_images/orgstruct_custom.jpg"><img alt="_images/orgstruct_custom.jpg" class="align-center" src="_images/orgstruct_custom.jpg" style="width: 746.0px; height: 931.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - имя свойства в типе ECOS.</p>
+<a class="reference internal image-reference" href="_images/orgstruct_api.jpg"><img alt="_images/orgstruct_api.jpg" class="align-center" src="_images/orgstruct_api.jpg" style="width: 741.0px; height: 187.0px;" /></a>
+<p>Async Data Component - асинхронный компонент.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_component.jpg"><img alt="_images/asyncdata_component.jpg" class="align-center" src="_images/asyncdata_component.jpg" style="width: 228.0px; height: 557.0px;" /></a>
+<p>Заполняется «Label» - человекопонятное имя компонента.
+Data type - тип данных.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_example.jpg"><img alt="_images/asyncdata_example.jpg" class="align-center" src="_images/asyncdata_example.jpg" style="width: 728.0px; height: 910.0px;" /></a>
+<p>Пояснения к скрипту.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_script.jpg"><img alt="_images/asyncdata_script.jpg" class="align-center" src="_images/asyncdata_script.jpg" style="width: 756.0px; height: 186.0px;" /></a>
+<p><a class="reference external" href="mailto:emodel/type&#37;&#52;&#48;hr-grades-type">emodel/type<span>&#64;</span>hr-grades-type</a> - тип, из которого хотим получить какие либо данные.
+gradesSimpleRoleTypeAssoc - сравниваемое свойство типа, из которого получаем данные.
+offerPosition - свойство, которое используем для сравнения со свойством типа, из которого получаем данные.</p>
+<p>Здесь указываем атрибут, который хотим получить.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_attributes.jpg"><img alt="_images/asyncdata_attributes.jpg" class="align-center" src="_images/asyncdata_attributes.jpg" style="width: 738.0px; height: 258.0px;" /></a>
+<p>Вкладка Advanced.
+Refresh on - данный параметр имеет поле для указания элементов формы, которые следует отслеживать.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_advanced.jpg"><img alt="_images/asyncdata_advanced.jpg" class="align-center" src="_images/asyncdata_advanced.jpg" style="width: 731.0px; height: 198.0px;" /></a>
+<p>Вкладка API - здесь заполняется Property Name.
+Property Name - человекопонятное имя свойства компонента.</p>
+<a class="reference internal image-reference" href="_images/asyncdata_api.jpg"><img alt="_images/asyncdata_api.jpg" class="align-center" src="_images/asyncdata_api.jpg" style="width: 734.0px; height: 182.0px;" /></a>
+<p>Чтобы компонент формы реагировал на асинхронный компонент, надо сделать следующие настройки:</p>
+<a class="reference internal image-reference" href="_images/grade_component_data.jpg"><img alt="_images/grade_component_data.jpg" class="align-center" src="_images/grade_component_data.jpg" style="width: 733.0px; height: 441.0px;" /></a>
+<p>В Refresh On указать компонент, при изменении которого будет реагировать компонент, для которого хотим
+получить данные из асинхронного компонента.</p>
+<p>В Calculated Value:</p>
+<a class="reference internal image-reference" href="_images/grade_calculated_value.jpg"><img alt="_images/grade_calculated_value.jpg" class="align-center" src="_images/grade_calculated_value.jpg" style="width: 739.0px; height: 451.0px;" /></a>
+<p>JavaScript:</p>
+<a class="reference internal image-reference" href="_images/grade_calculated_value_script.jpg"><img alt="_images/grade_calculated_value_script.jpg" class="align-center" src="_images/grade_calculated_value_script.jpg" style="width: 723.0px; height: 96.0px;" /></a>
+<p>Теперь при выборе должности, в компонент формы «Грейд» в зависимости от значения компонента «Должность»,
+будет автоматически выставлено значение.</p>
+<p>Также в компонентах формы при необходимости можно выставить следующие настройки:
+Disabled (вкладка Display) - делает компонент нередактируемым.</p>
+<a class="reference internal image-reference" href="_images/disabled_property.jpg"><img alt="_images/disabled_property.jpg" class="align-center" src="_images/disabled_property.jpg" style="width: 333.0px; height: 543.0px;" /></a>
+<p>Required (вкладка Validation) - делает компонент обязательным для заполнения.</p>
+<a class="reference internal image-reference" href="_images/required_property.jpg"><img alt="_images/required_property.jpg" class="align-center" src="_images/required_property.jpg" style="width: 672.0px; height: 129.0px;" /></a>
+</div>
+<div class="section" id="id16">
+<h3>Кнопка Localization<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h3>
+<p><a class="reference internal" href="#candidates-localization"><span class="std std-ref">Локализация формы «Кандидаты»</span></a></p>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>Создание журнала «журнал Оффер»<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в журнал «Журналы».</p>
+<a class="reference internal image-reference" href="_images/переход_в_журнал_журналы.jpg"><img alt="_images/переход_в_журнал_журналы.jpg" class="align-center" src="_images/переход_в_журнал_журналы.jpg" style="width: 261.0px; height: 761.0px;" /></a>
+<p>Нажимаем на кнопку создания журнала.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_создать_журнал.jpg"><img alt="_images/Кнопка_создать_журнал.jpg" class="align-center" src="_images/Кнопка_создать_журнал.jpg" style="width: 1177.0px; height: 719.0px;" /></a>
+<div class="section" id="id18">
+<h3>Основные параметры журнала (Идентификатор журнала, Наименование журнала, Тип кейса, Действия)<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Идентификатор журнала - уникальный идентификатор журнала.
+Наименование журнала - человекопонятное имя журнала.
+Тип кейса - из списка выбрать тип кейса, созданный ранее.
+Действия - из списка выбрать действия, которые будут доступны для объектов журнала.</p>
+<a class="reference internal image-reference" href="_images/Параметры_журнала_оффер.jpg"><img alt="_images/Параметры_журнала_оффер.jpg" class="align-center" src="_images/Параметры_журнала_оффер.jpg" style="width: 1232.0px; height: 847.0px;" /></a>
+</div>
+<div class="section" id="id19">
+<h3>Вкладка Columns (Обязательный для отображения)<a class="headerlink" href="#id19" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Здесь заполняются колонки журнала.
+В «Наименование» пишем то, как будет называться колонка.
+«Системное имя» - Id атрибута модели.</p>
+<a class="reference internal image-reference" href="_images/Вкладка_columns_оффер.jpg"><img alt="_images/Вкладка_columns_оффер.jpg" class="align-center" src="_images/Вкладка_columns_оффер.jpg" style="width: 1224.0px; height: 834.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id20">
+<h2>Добавление формы и журнала в тип ECOS.<a class="headerlink" href="#id20" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справа в меню переходим в журнал «Типы данных».</p>
+<a class="reference internal image-reference" href="_images/выбрать_типы_данных.jpg"><img alt="_images/выбрать_типы_данных.jpg" class="align-center" src="_images/выбрать_типы_данных.jpg" style="width: 250.0px; height: 840.0px;" /></a>
+<p>Выбираем ранее созданный тип ECOS «Оффер».</p>
+<p>В параметре «Form» выбираем форму, которую создали.
+В параметре «Journal» выбираем журнал, который создали.</p>
+<a class="reference internal image-reference" href="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg"><img alt="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg" class="align-center" src="_images/Добавление_журнала_и_формы_в_тип_кейса.jpg" style="width: 1232.0px; height: 838.0px;" /></a>
+</div>
+<div class="section" id="id21">
+<h2>Настройка меню<a class="headerlink" href="#id21" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Переходим в настройку меню, нажав на шестеренку, потом на кнопку «Настроить меню» справа сверху.</p>
+<a class="reference internal image-reference" href="_images/Кнопка_настройки_меню.jpg"><img alt="_images/Кнопка_настройки_меню.jpg" class="align-left" src="_images/Кнопка_настройки_меню.jpg" style="width: 1025.6000000000001px; height: 560.0px;" /></a>
+<p>Выбираем элемент меню, в котором будет находится «Оффер».
+Наводим на элемент и нажимаем кнопку «Добавить», выбираем «Журнал», из списка выбираем необходимый журнал.</p>
+<a class="reference internal image-reference" href="_images/Настройка_меню.jpg"><img alt="_images/Настройка_меню.jpg" class="align-center" src="_images/Настройка_меню.jpg" style="width: 1220.0px; height: 840.0px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ECOS_applications.html" class="btn btn-neutral float-right" title="ECOS Приложения" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html" class="btn btn-neutral float-left" title="Знакомство с ECOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
