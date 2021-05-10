@@ -1,0 +1,404 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Хранение данных (Модель) &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Формы" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html" />
+    <link rel="prev" title="Типы данных" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример настройки процесса</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">База по настройке</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Хранение данных (Модель)</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-data-model">Ecos data model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Атрибуты модели</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Вычислямеые атрибуты</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script">Возможности атрибута с типом script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-permission">Права на атрибуты (Type Permission)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Использование атрибутов модели на форме</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Настройка статусов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-model-journal">Пример модели журнала</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html"><strong>Формы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Интеграции</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">Общая база знаний</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">База по настройке</a> &raquo;</li>
+        
+      <li><strong>Хранение данных (Модель)</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/settings_kb/Модель.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ecos-model-label">
+<span id="id1"></span><h1><strong>Хранение данных (Модель)</strong><a class="headerlink" href="#ecos-model-label" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="ecos-data-model">
+<h2>Ecos data model<a class="headerlink" href="#ecos-data-model" title="Ссылка на этот заголовок">¶</a></h2>
+<p>При редактировании типа кейса есть возможность настроить атрибуты типа на вкладке “Модель”.</p>
+<img alt="Вкладка Модель" class="align-center" src="../_images/model_v4.png" />
+<p>Id - идентификатор поля, по которому оно будет доступно на форме, в журнале и других местах.</p>
+<p>Name - имя поля для отображения пользователю</p>
+<p>Тип - тип поля. Поддерживаются:</p>
+<ul class="simple">
+<li><p>Text - текстовые данные;</p></li>
+<li><p>Association - связь с другой сущностью;</p></li>
+<li><p>Boolean - булево значение да/нет;</p></li>
+<li><p>Number - число;</p></li>
+<li><p>Date - дата;</p></li>
+<li><p>DateTime - дата с временем;</p></li>
+<li><p>Content - содержимое. Как правило поля с этим типом используются для сохранения больших объемов данных. Например - содержимое документа. Рекомендуется использовать только если стандартный cm:content не подходит;</p></li>
+<li><p>Computed - настройка динамически вычисляемого атрибута</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Атрибуты модели<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3>Вычислямеые атрибуты<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<img alt="Вычисляемые атрибуты" class="align-center" src="../_images/Модель_вычисляемые_атрибуты.png" />
+<p>Тип - тип вычисляемого атрибута. Поддерживаются:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Script - вычисление атрибута на основе javascript’а;</p></li>
+<li><p>Attribute - вычисление атрибута на основе другого атрибута (можно делать алиас на глубоко вложенный атрибут. Например: idocs:counterparty.idocs:fullOrganizationName?str);</p></li>
+<li><p>Value - константное значение;</p></li>
+<li><p>Template - шаблонная строка. Можно использовать вставки вида ${…}. Например: ${someAttribute?str}. Вместо данного плейсхолдера будет подставлено значение укзанного атрибута;</p></li>
+<li><p>Counter - значение будет генерироваться по счетчику при создании документа и не меняться со временем;</p></li>
+</ul>
+</div></blockquote>
+<p>Storing type - тип сохранения</p>
+<p>Определяет нужно или нет сохранять вычисленное значение и если да, то в какие моменты. Возможные значения:</p>
+<ul class="simple">
+<li><p>None - сохранение не нужно. При каждом обращении вычисляем значение заново;</p></li>
+<li><p>On empty - сохранять вычисленное значение только если сохраненное значение отсутствует (т.е. при запросе значения вернулся null);</p></li>
+<li><p>On create - сохранять вычисленное значение только после создания. Последующие мутации никак данный атрибут не затронут и он будет работать как обычный атрибут.</p></li>
+<li><p>On mutate - сохранять вычисленное значение при каждой мутации. В случае использования Records API для изменения записи гарантируется актуальность значения.</p></li>
+</ul>
+</div>
+<div class="section" id="script">
+<h3>Возможности атрибута с типом script<a class="headerlink" href="#script" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Объекты в глобальной области видимости:</p>
+<ul class="simple">
+<li><p>Records - адаптер для RecordsService;</p></li>
+<li><p>value - текущий документ;</p></li>
+<li><p>log - логгер;</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>прикладных сервисов в контексте скрипта нет.</p>
+</div>
+<p>Описание value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Свойства:
+id: String //глобальный идентификатор записи
+localId: String //локальный идентификатор записи
+
+Методы:
+
+load(attributes: Any?): Any? // загрузка атрибутов у текущей записи. Можно передавать массив, строку и объект &lt;String, String&gt;
+</pre></div>
+</div>
+<p>Описание Records:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Методы:
+
+get(recordRef: String): AttValueScriptCtx // возвращает объект аналогичный value, который описан выше
+query(query: Object, attributes: Any?) // возвращает объект вида:
+
+{
+ &quot;records&quot;: [
+   {
+     &quot;id&quot;: &quot;workspace://...&quot;,
+     &quot;attribute0&quot;: &quot;value0&quot;,
+     &quot;attribute1&quot;: &quot;value1&quot;
+   },
+   {
+     &quot;id&quot;: &quot;workspace://...&quot;,
+     &quot;attribute00&quot;: &quot;value00&quot;,
+     &quot;attribute11&quot;: &quot;value11&quot;
+   }
+ ],
+ &quot;totalCount&quot;: 123
+ &quot;hasMore&quot;: true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-permission">
+<h3>Права на атрибуты (Type Permission)<a class="headerlink" href="#type-permission" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Использование атрибутов модели на форме<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для использование атрибутов на форме нужно, чтобы Id атрибута соответствовал значению Property Name на форме.</p>
+<p>Если Id атрибута содержит двоеточие “:”, то следует  на форме использовать Custom Properties → attribute (если двоеточия нету, то Property Name более чем достаточно).</p>
+<img alt="model by form1" class="align-left" src="../_images/model_by_form_1.png" />
+<img alt="model by form2" class="align-left" src="../_images/model_by_form_2.png" />
+<img alt="model by form3" class="align-right" src="../_images/model_by_form_3.png" />
+</div>
+<div class="section" id="id5">
+<h2>Настройка статусов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="ecos-model-journal">
+<span id="id6"></span><h2>Пример модели журнала<a class="headerlink" href="#ecos-model-journal" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Journal</span>
+<span class="p">{</span>
+ <span class="o">//</span> <span class="n">Идентификатор</span> <span class="n">журнала</span><span class="o">.</span> <span class="n">Должен</span> <span class="n">быть</span> <span class="n">уникальным</span> <span class="n">в</span> <span class="n">пределах</span> <span class="n">системы</span><span class="o">.</span>
+ <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Название</span> <span class="n">журнала</span> <span class="n">для</span> <span class="n">отображения</span> <span class="n">в</span> <span class="n">интерфейсе</span>
+ <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;MLText&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Источник</span> <span class="n">данных</span> <span class="p">(</span><span class="n">ID</span> <span class="n">микросервиса</span> <span class="p">(</span><span class="n">или</span> <span class="n">alfresco</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">ID</span> <span class="n">из</span> <span class="n">RecordsDao</span><span class="p">)</span>
+ <span class="o">//</span> <span class="n">см</span><span class="o">.</span> <span class="n">sourceId</span> <span class="n">в</span> <span class="n">RecordsQuery</span>
+ <span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Запись</span><span class="p">,</span> <span class="n">из</span> <span class="n">которой</span> <span class="n">будут</span> <span class="n">загружаться</span> <span class="n">метаданные</span> <span class="n">для</span> <span class="n">атрибутов</span> <span class="n">если</span> <span class="n">они</span> <span class="n">не</span> <span class="n">заданы</span> <span class="n">явно</span> <span class="p">(</span><span class="n">защищенность</span><span class="p">,</span> <span class="n">заголовок</span><span class="p">,</span> <span class="n">тип</span> <span class="n">и</span> <span class="n">др</span><span class="o">.</span><span class="p">)</span>
+ <span class="s2">&quot;metaRecord&quot;</span><span class="p">:</span> <span class="s2">&quot;RecordRef&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Тип</span> <span class="n">ECOS</span><span class="p">,</span> <span class="n">для</span> <span class="n">которого</span> <span class="n">мы</span> <span class="n">описываем</span> <span class="n">журнал</span><span class="o">.</span> <span class="n">См</span><span class="o">.</span> <span class="n">статью</span> <span class="s2">&quot;Типы кейсов&quot;</span>
+ <span class="s2">&quot;typeRef&quot;</span><span class="p">:</span> <span class="s2">&quot;RecordRef&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Базовый</span> <span class="n">предикат</span> <span class="n">для</span> <span class="n">поиска</span> <span class="n">записей</span>
+ <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="s2">&quot;Predicate&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Группировка</span> <span class="n">записей</span> <span class="n">по</span> <span class="n">атрибуту</span>
+ <span class="s2">&quot;groupBy&quot;</span><span class="p">:</span> <span class="s2">&quot;String[]&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Сортировка</span> <span class="n">по</span> <span class="n">умолчанию</span>
+ <span class="s2">&quot;sortBy&quot;</span><span class="p">:</span> <span class="s2">&quot;JournalSortBy[]&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Действия</span>
+ <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="s2">&quot;RecordRef[]&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Можно</span> <span class="n">ли</span> <span class="n">редактировать</span> <span class="n">записи</span> <span class="n">в</span> <span class="n">таблице</span>
+ <span class="s2">&quot;editable&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Конфигурация</span> <span class="n">колонок</span>
+ <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="s2">&quot;JournalColumn[]&quot;</span><span class="p">,</span>
+
+ <span class="o">//</span> <span class="n">Описание</span> <span class="n">вычисляемых</span> <span class="n">атрибутов</span> <span class="n">для</span> <span class="n">сложной</span> <span class="n">логики</span><span class="o">.</span> <span class="n">Атрибуты</span> <span class="n">будут</span> <span class="n">видны</span> <span class="n">для</span> <span class="n">всех</span> <span class="n">колонок</span>
+ <span class="s2">&quot;computed&quot;</span><span class="p">:</span> <span class="s2">&quot;ComputedParam[]&quot;</span><span class="o">.</span>
+
+ <span class="o">//</span> <span class="n">Доп</span><span class="o">.</span> <span class="n">свойства</span><span class="p">,</span> <span class="n">которые</span> <span class="n">очень</span> <span class="n">специфичные</span>
+ <span class="o">//</span> <span class="n">для</span> <span class="n">узкого</span> <span class="n">круга</span> <span class="n">задач</span> <span class="n">или</span> <span class="n">для</span> <span class="n">временных</span> <span class="n">параметров</span>
+ <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="s2">&quot;ObjectData&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html" class="btn btn-neutral float-right" title="Формы" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html" class="btn btn-neutral float-left" title="Типы данных" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
