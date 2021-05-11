@@ -1,0 +1,478 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Интеграции &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Администрирование" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" />
+    <link rel="prev" title="Document Library" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html"><strong>Знакомство с ECOS</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример настройки процесса</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">База по настройке</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A4%D0%BE%D1%80%D0%BC%D1%8B.html"><strong>Формы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D1%8B.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9C%D0%B5%D0%BD%D1%8E.html"><strong>Настройка меню</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%92%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D1%8B.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F.html"><strong>Действия</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Интеграции</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#edi">EDI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Основные принципы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edisyncexecution">Связь сервисов-реализации с EdiSyncExecution для интеграции</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edistateservice">Что происходит в либах обработки и что за зверь - EdiStateService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#event">Структура Event</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-synchronization">ECOS Synchronization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Изменение синхронизации «на лету»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Перенос конфигурации между стендами</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Структура таблицы с данными</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alfresco">Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Восстановление потеряных записей</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">Общая база знаний</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">База по настройке</a> &raquo;</li>
+        
+      <li><strong>Интеграции</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/settings_kb/Интеграции.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><strong>Интеграции</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="edi">
+<h2>EDI<a class="headerlink" href="#edi" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id2">
+<h3>Основные принципы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интеграция с ЭДО провайдерами, как уже писалось в других статьях на эту тему, построена на стандартном для микросервиса интеграций механизме - синхронизациях <a class="reference internal" href="#ecos-synchronization"><span class="std std-ref">ECOS Synchronization</span></a>. Это для нас означает, что у нас есть простой способ управлять состоянием интеграции с конкретным ЭДО провайдером в рамках настроенного ящика в ECOS посредством уже готового функционала (включение/выключение чекбоксами, сброс состояния при необходимости для старта интеграции с самого начала и тд).</p>
+<p>Перейдем к описанию самого функционала с указанием классов.</p>
+<p>ECOS синхронизации работают на механизме объявления реализации SyncExecutionFactory, которые поставляют реализации SyncExecution, в котором уже происходит шедулинг интеграции.</p>
+<p>В нашем случае, за это ответственны классы EdiSyncExecutionFactory и EdiSyncExecution. Работу EdiSyncExecutionFactory рассматривать не будем, так как кроме регистрации в SyncService и создания EdiSyncExecution - никакой работы он и не делает.</p>
+<p>Рассмотрим работу EdiSyncExecution:</p>
+<ul class="simple">
+<li><p>Зашедулить джобу по настройкам.</p></li>
+<li><p>В джобе - повесить лок с помощью ShedLock. Если смог повесить лок - работа продолжается.</p></li>
+<li><p>Собирает данные для интеграции, ищет зарегистрированную для ЭДО-провайдера из настроек ящика реализацию интерфейса EdiEventsSyncService. Если не находит - сыпет исключения. Важно отметить, что реализаций EdiEventsSyncService в самом микросервисе integrations на самом деле нет, как они подключаются будет описано в разделе ниже.</p></li>
+<li><p>Делегирует работу найденному EdiEventsSyncService, передавая ему собранные ранее данные + метод-колбек для обновления состояния синхронизации.</p></li>
+</ul>
+<p>То есть, по факту, особой работы EdiSyncExecution не делает, полезная работа выполняется за счет делегирования.</p>
+</div>
+<div class="section" id="edisyncexecution">
+<h3>Связь сервисов-реализации с EdiSyncExecution для интеграции<a class="headerlink" href="#edisyncexecution" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Ответ довольно прост, существует общая либа <em>ecos-edi-commons</em>, в которую вынесены основные интерфейсы интеграции и структуры данных. Таким образом, удается связать решение на уровне интерфейсов (то есть, связь такая, что интерфейс используется в микросервисе integrations, а реализация идет в сторонних либах).</p>
+<p>Ок, с этим разобрались, что-то реализуется, а как микросервис то получит это, если он этих зависимостей даже не имеет? Тут ответ уже сложнее. Решение основано на загрузке кода библиотек в микросервис в виде OSGi бандлов. Для более подробного изучения этого - можно почитать статью Функционал загрузки <a class="reference external" href="https://https://www.google.com/">OSGI пакетов</a> (и рекомендованные статьи), а так же пример загрузки либы контур для этих целей - <a class="reference external" href="https://https://www.google.com/">Настройка получения событий с ящиком Контур_Диадок</a></p>
+<p>Рассмотрим что именно за интерфейсы и сервисы определены в ecos-edi-commons либе:</p>
+<ul class="simple">
+<li><p>EdiEventsSyncService - интерфейс, в который делегируется вся интеграция с ЭДО-провайдером.</p></li>
+<li><p>EdiEventsSyncServiceResolver - класс, в котором регистрируются EdiEventsSyncService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p>EdiBoxService - интерфейс для получения информации о ящике. Расширяется в основном коде микросервиса в виде бина.</p></li>
+<li><p>EdiApiService - интерфейс для общения с ЭДО провайдером. Содержит методы для всех операций с ЭДО (или почти все).</p></li>
+<li><p>EdiApiServiceResolver - класс, в котором регистрируются EdiApiService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p>EdiService - Класс, который содержит те же методы, что и в EdiApiService, за исключением того, что в каждый метод дополнительно передается параметр EdiProviderType. По сути, является композитным EdiApiService. Делегирует логику в конкретный EdiApiService, полученный по связке с EdiProviderType из EdiApiServiceResolver.</p></li>
+<li><p>EdiGenerator + дочерние интерфейсы - интерфейсы для расширения возможностей генерации контента в ЭДО провайдерах. К примеру, может быть 2 реализации генерации печатной формы: через вызов API генерации ПФ в сервисах диадока (удаленная генерация) или генерация силами ECOS (локальная). Регистрируется в EdiGeneratorResolver.</p></li>
+<li><p>EdiGeneratorResolver - класс для регистрации EdiGenerator реализаций по составному ключу “Эдо-провайдер+Тип-генератора+вид-генератора”, где Эдо-провайдер - Контур или Корус, Тип генератора - Генерация печатной формы или Генерация титула покупателя, Вид генератора - Произвольная строка с символизирующая вид. Обычно, что то вроде “локальная генерация” или “генерация по API”.</p></li>
+<li><p>EdiStateService - Сервис для отправки событий на обработку после получения и первичной обработки их в либе (будет рассмотрено ниже).</p></li>
+</ul>
+<p>Примерное взаимодействие сервисов можно изучить подробнее на <a class="reference external" href="https://app.diagrams.net/">drawIO</a> диаграмме:</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1OPjXLsTkOio4ikiG_a2d7aas_0W6fUrIbDGyNKA2uyY/edit?usp=sharing">edi_services</a></p>
+</div>
+<div class="section" id="edistateservice">
+<h3>Что происходит в либах обработки и что за зверь - EdiStateService<a class="headerlink" href="#edistateservice" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Либы не обрабатывают события. Они их получают исходя последнего обработанного события (хранящегося в состоянии синхронизации), составляют универсальную структуру Event, хранящуюся в либе <em>ecos-edi-commons</em> и после этого отправляет эту структуру в EdiStateService.</p>
+<p>Структуры в <em>ecos-edi-commons</em> можно посмотреть в следующей диаграмме <a class="reference external" href="https://app.diagrams.net/">drawIO</a> :</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1zWTdASmNCthb7vuQkwz1ocGGUTYzKlldM1hXl1JdALQ/edit?usp=sharing">edi_structures</a></p>
+<p>EdiStateService - это класс в ecos-edi-commons, который отправляет события по определенному endpoint внутри camel контекста. CamelContext отправителя и CamelContext получателя события - это, как правило, разные контексты. Подобная передача осуществляется использованием эндпоинта direct-vm типа, а не простого direct.</p>
+<p>Таким образом, происходит следующее взаимодействие:</p>
+<img alt="Integration EDI" class="align-center" src="../_images/integration_EDI_1.png" />
+<p>, где указано по шагам:</p>
+<p>1 - Отправляется запрос выполнить интеграцию через Контур (или иной другой вариант ЭДО-провайдера), для какого-то ящика, от такого то события (вызов EdiEventsSyncService).</p>
+<p>2 - В случае найденных событий - трансформирует их в структуру Event и через EdiStateService отправляет сообщение в Camel из контекста Camel микросервиса интеграций.</p>
+<p>3 - Camel контекст микросервиса интеграций отправляет сообщение с Event в CamelContext внутри VM, в котором зарегистрирован указанный эндпоинт. На скриншоте указано, что мы используем еще какой-то customer-lib со своим camel контекстом, но такая кастомизация нужна не всегда, в общем случае - будет использоваться сразу переход в ecos-lib.</p>
+<p>4 - После выполнения каких-то работа в customer-lib роутах - они отправляют сообщение в CamelContext либы ecos-lib. Там происходит обновление документов, подписей и тд в альфреско путем вызовов Records API.</p>
+<p>Стоит уточнить еще раз, customer-lib и ecos-lib - отдельные OSGi бандлы, включенные в микросервис после его старта, которые создают и стартуют Camel контекст, на роутах которого возложена связь между ними. Обязательно нужно соблюдать контракт по именованию endpoint.</p>
+</div>
+<div class="section" id="event">
+<h3>Структура Event<a class="headerlink" href="#event" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Не совсем так. Нет, я не имею ввиду, что Event - это какая-то хитрая структура. Это обычный POJO, с сеттерами, геттерами, equals и тд.
+Однако, заполнение Event носит определенный характер. Внутри него ДОЛЖНЫ содержаться все документы, состояния которых изменены в рамках данного события.
+Это означает, что если обрабатываем событие “Документ подписан”, то это означает, что должна прийти не просто подпись, а еще и информация о документе с АКТУАЛЬНЫМ статусом.
+Другая ситуация, если по документу типа УПД пришла корректировка УКД - это означает, что в рамках этого события придет не только УКД, но и информация о текущем новом состоянии УПД (только статус).
+Неизменившиеся поля, вроде контента или основанных на контенте формализованных атрибутах, которые могут быть тяжелыми при транспортировании - опускаются.</p>
+</div>
+</div>
+<div class="section" id="ecos-synchronization">
+<span id="id5"></span><h2>ECOS Synchronization<a class="headerlink" href="#ecos-synchronization" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В микросервисе ecos-integrations добавлена поддержка выгрузки нод альфреско в таблицу базы данных. На данный момент выгрузка осуществляется в таблицы БД микросервиса ecos-integrations.</p>
+<p>Команда для подключения к БД на стенде с контейнерами докера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">psql</span> <span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">integrations</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">15432</span><span class="o">/</span><span class="n">integrations</span>
+</pre></div>
+</div>
+<p>Параметры для подключения к alfresco по REST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">integrations</span><span class="p">:</span>
+   <span class="n">alfresco</span><span class="p">:</span>
+       <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ecos</span><span class="p">:</span><span class="mi">8080</span>
+       <span class="n">authentication</span><span class="p">:</span>
+           <span class="n">username</span><span class="p">:</span> <span class="n">integrations</span>
+           <span class="n">password</span><span class="p">:</span> <span class="mi">97</span><span class="n">qiow104UIG</span>
+</pre></div>
+</div>
+<p>Можно менять эти настройки на стендах или оставить как есть (будет работать только если ECOS развернут в той же докер сети под именем «ecos»).</p>
+<p>На стороне alfresco для микросервиса должна быть заведена учетная запись integrations с паролем 97qiow104UIG (значения по-умолчанию) и админскими правами.</p>
+<p>Скрипт для создания пользователя:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">userName</span> <span class="o">=</span> <span class="s2">&quot;integrations&quot;</span><span class="p">;</span>
+<span class="n">people</span><span class="o">.</span><span class="n">createPerson</span><span class="p">(</span><span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span> <span class="o">+</span> <span class="s2">&quot;@ecos.ru&quot;</span><span class="p">,</span> <span class="s2">&quot;97qiow104UIG&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">adminsGroup</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">getGroup</span><span class="p">(</span><span class="s2">&quot;ALFRESCO_ADMINISTRATORS&quot;</span><span class="p">);</span>
+<span class="n">adminsGroup</span><span class="o">.</span><span class="n">addAuthority</span><span class="p">(</span><span class="n">userName</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Чтобы настроить выгрузку нод необходимо на стенде с ecos-enterprise-repo модулем открыть системные журналы в alfresco и найти там журнал Синхронизация (Synchronization):</p>
+<img alt="Integration Sync" class="align-center" src="../_images/integration_synchronization_1.png" />
+<ul class="simple">
+<li><p>title - заголовок синхронизации</p></li>
+<li><p>description - описание синхронизации</p></li>
+<li><p>type - тип синхронизации (пока доступен только 1 тип - alfrescords (выгрузка нод альфреско))</p></li>
+<li><p>enabled - включена или нет синхронизация</p></li>
+</ul>
+<p>В журнале можно создать новую выгрузку двумя способами:</p>
+<ol class="arabic simple">
+<li><p>Создание с помощью полей формы (удобно для создания «с нуля»)</p></li>
+<li><p>Создание с вводом json (удобно для переноса конфигурации между серверами)</p></li>
+</ol>
+<img alt="Intergration Sync2" class="align-center" src="../_images/integration_synchronization_2.png" />
+<p>Создание с помощью формы выглядит следующим образом:</p>
+<img alt="Integration Sync3" class="align-center" src="../_images/integration_synchronization_3.png" />
+<ul class="simple">
+<li><p>Title - Заголовок выгрузки. Нужен для отображения в журнале синхронизации</p></li>
+<li><p>Description - Описание выгрузки. Следует заполнить это поле чтобы другие люди могли сразу понять предназначение выгрузки.</p></li>
+<li><p>Enabled - Включить/выключить синхронизацию;</p></li>
+<li><p>Reset state - Сбросить состояние (выгрузка начнется с самого начала)</p></li>
+<li><p>Config - Раздел с конфигурацией выгрузки</p></li>
+<li><dl class="simple">
+<dt>Filter type - Тип фильтра, по которому будут выбираться ноды для выгрузки. На момент написания статьи доступно два типа:</dt><dd><ul>
+<li><p><strong>ECOS Type/Kind</strong> - фильтрация происходит по выбраному типу и виду</p></li>
+<li><p><strong>Raw Predicate</strong> - фильтрация происходит по заданному предикату в формате JSON. Синтаксис предикатов можно посмотреть здесь Select Journal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Target table - Имя таблицы для выгрузки. В базе данных к этому имени прибавится префикс <strong>ecos_sync_</strong> чтобы исключить случайные изменения системных таблиц.</p></li>
+<li><p>Attributes - Выгружаемые аттрибуты. Слева описываются названия колонок в результирующей таблице, а справа выгружаемые аттрибуты. Синтаксис аттрибутов в правой колонке используется из Records API. Т.о. можно выгружать вложенные аттрибуты.</p></li>
+</ul>
+<p>Например, для выгрузки статуса договора можно описать следующие аттрибуты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status_id&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc?id&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">нодреф</span> <span class="n">статуса</span>
+<span class="s2">&quot;status_ru&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title.ru&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">заголовок</span> <span class="n">статуса</span> <span class="n">на</span> <span class="n">русском</span>
+<span class="s2">&quot;status_en&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title.en&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">заголовок</span> <span class="n">статуса</span> <span class="n">на</span> <span class="n">английском</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Если у аттрибута опустить тип скаляра (после знака ?), то по-умолчанию все аттрибуты будут выгружаться в строковом виде. Если требуется числовой вид, то следует добавить к аттрибуту <strong>?num</strong>, а для булева поля <strong>?bool</strong>.</p>
+<p>Для полей с датой на данный момент есть возможность их выгрузить в виде строки с форматом ISO8601 (это происходит автоматически и дополнительной настройки для этого не нужно).</p>
+<p>Подробнее о синтаксисе аттрибутов можно почитать в соответствующей статье <strong>ECOS Records API</strong> (Общая база знаний).</p>
+<div class="section" id="id6">
+<h3>Изменение синхронизации «на лету»<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Настройку синхронизации можно менять без перезагрузки сервера. При этом есть несколько особенностей:</p>
+<ol class="arabic simple">
+<li><p>Новые аттрибуты будут появляться только для заявок, которые изменились с момента изменения конфигурации. Для того чтобы новые аттрибуты появились у всех записей можно воспользоваться двумя способами:</p></li>
+</ol>
+<p>Первый - сбрасываем состояние синхронизации и недостающие данные синхронизируются полностью.</p>
+<p>Второй - создаем новую конфигурацию с недостающими атрибутами(которые были добавлены в исходную конфигурацию) и устанавливаем в ней ту же таблицу что и в исходной конфигурации. Когда новая конфигурации догонит старую, новую можно будет удалить.</p>
+<ol class="arabic simple" start="2">
+<li><p>При удалении аттрибутов таблица не чистится. То что уже синзронизировано остается в таблице.</p></li>
+<li><p>Изменение типа колонки на данный момент не поддерживается. Т.о. следует создать новый аттрибут если есть такая необходимость, а старый удалить из конфигурации. Для миграции старых записей можно воспользоваться рекоментациями из п.1</p></li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h3>Перенос конфигурации между стендами<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<img alt="Integration Sync4" class="align-center" src="../_images/integration_synchronization_4.png" />
+<p>Затем нужно:</p>
+<ol class="arabic simple">
+<li><p>Скопировать содержимое этого файла</p></li>
+<li><p>перейти на целевой стенд</p></li>
+<li><p>открыть журнал синхронизации</p></li>
+<li><p>Нажать Создать → Import JSON</p></li>
+<li><p>В появившемся окне вставить json, который мы скопировали в п.1</p></li>
+<li><p>Сохранить форму</p></li>
+<li><p>Обновить содержимое журнала</p></li>
+</ol>
+<img alt="Itegration Sync5" class="align-center" src="../_images/integration_synchronization_5.png" />
+</div>
+<div class="section" id="id8">
+<h3>Структура таблицы с данными<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p><strong>id</strong> (SERIAL PRIMARY KEY) - идентификатор строки,
+<strong>_modified</strong> (TIMESTAMPTZ) - дата последнего изменения строки,
+<strong>_created</strong> (TIMESTAMPTZ) - дата создания строки,
+<strong>_version</strong> (BIGINT) - внутренняя версия записи. Используется, чтобы избежать одновременного изменения из раных потоков или инстансов микросервиса.
+<strong>modified</strong> (VARCHAR) - дата изменения, записи в alfresco в ISO8601,
+<strong>record_ref</strong> (VARCHAR) - alfresco&#64; + nodeRef заявки в alfresco</p>
+<ul class="simple">
+<li><p>все поля, которые описаны в интерфейсе</p></li>
+</ul>
+</div>
+<div class="section" id="alfresco">
+<h3>Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Часть с атрибутами можно взять из json конфигурации интеграции, поле «attributes»:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+<span class="n">query</span><span class="p">:</span> <span class="s1">&#39;tk:type:&quot;workspace://SpacesStore/type-unilever-te-request&quot;&#39;</span><span class="p">,</span>
+<span class="n">language</span><span class="p">:</span> <span class="s1">&#39;fts-alfresco&#39;</span><span class="p">,</span>
+<span class="n">consistency</span><span class="p">:</span> <span class="s1">&#39;EVENTUAL&#39;</span><span class="p">,</span>
+<span class="n">page</span><span class="p">:</span> <span class="p">{</span>
+<span class="n">maxItems</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+<span class="s2">&quot;Reg Number&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRegNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Expense Type&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terExpenseType.utedm:teetName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:reportablePerson&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Cost Center &quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPCostCenter&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS GRC Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignCRGCode.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Vendor Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPVendorCode&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP ID&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPPersonnelNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Sub Function&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPSubFunction.udm:subFunctionName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Approve Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepApproveDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Line Manager&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terLineManager&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Accountant&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAccountant&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Outsider Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignOutsiderGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel Begin Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelBeginDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelEndDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Destination City&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDestinationCity&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Diff Destination Point&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDiffDestinationPoint&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Hotel Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignHotelRequired.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Ticket Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketRequired&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Tickets&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketsTable.uterm:tertTransportType&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Doc Requester Amount&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepDocRequesterAmount&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Currency&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepCurrency.idocs:currencyName&quot;</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>«Reg Number» - key (Attributes),
+«uterm:terRegNumber» - value (Attributes)</p>
+</div>
+<div class="section" id="id9">
+<h3>Восстановление потеряных записей<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Версия микросервиса: 1.14.0-snapshot</p>
+<p>На форму добавлен флаг “Run recovery job”. Если он активен, то вместе с основной выгрузкой дополнительно запускается джоба, которая ищет пропущенные записи за последний час. Если такие записи находятся, то происходит запуск восстановления. В процессе восстановления сужается диапазон дат, между которыми найдено отличие. После уменьшения диапазона происходит пересинхронизация найденых в нем записией.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>значение флага проверяется только при запуске выгрузки (флаг Enabled переключается с False на True) или при перезагрузке микросервиса.</p>
+</div>
+<p>Дата модификации записи сохраняется в поле _rec_modified. Возможно потребуется создание индексов для этого поля, чтобы джоба работала эффективнее (Но все же если поиск будет долгим, то ничего страшного не произойдет. Просто восстановление будет происходить не так быстро).</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" class="btn btn-neutral float-right" title="Администрирование" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8.html" class="btn btn-neutral float-left" title="Document Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -10,8 +10,8 @@
 Архитектура events
 ~~~~~~~~~~~~~~~~~~
 .. image:: _static/notification/Events_queue.jpg
-       :scale: 90 %
        :align: center
+       :alt: Архитектура events
 
 Получение \ отправка events из alfresco
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
