@@ -16,15 +16,16 @@ ECOS Приложение (ECOS App) - приложение, которое со
 
 http://host/v2/bpmn-designer?journalId=ecos-apps
 
-.. image:: _static/ecos-apps/apps_page.png
+.. image:: _static/apps_page.png
        :align: center
+       :alt: ECOS apps
 
 На этой странице можно:
 1. Cоздавать и редактировать приложения
 2. Скачивать приложения
 
 Структура архива приложения
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -53,8 +54,9 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 
 Для управления артефактами предусмотрен журнал "Артефакты ECOS". В данный журнал попадают все артефакты, которые достигли микросервиса ecos-apps. 
 
-.. image:: _static/ecos-apps/artifacts.png
+.. image:: _static/artifacts.png
        :align: center
+       :alt: Артефакты
 
 В данном журнале есть возможность выполнить следующие действия:
 
@@ -67,8 +69,9 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 Формат имени папки с версией артефакта: дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]
 Дата создания указывается в часовом поясе UTC.
 
-.. image:: _static/ecos-apps/artifact-history.png
+.. image:: _static/artifact-history.png
        :align: center
+       :alt: Версия артефакта
 
 2. Скачать артефакт
 

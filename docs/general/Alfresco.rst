@@ -119,6 +119,7 @@ JavaScript Records API
 
 .. image:: _static/alfresco/ecos_type_with_alfresco.png
        :align: center
+       :alt: ECOS type with Alfresco
 
 Список настроек:
 

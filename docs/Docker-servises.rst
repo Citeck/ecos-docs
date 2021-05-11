@@ -104,7 +104,7 @@ onlyoffice-ds-app
 ecos-gateway-app
 ----------------
 Назначение:
-~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Образ одного из центральных компонентов микросервисной архитектуры. Приложение реализует API шлюз взаимодействия с остальными микросервисами
 
 Теги:
@@ -332,7 +332,7 @@ ecos-mongo-app
 
 *	**MONGO_INITDB_ROOT_USERNAME** - логин пользователя, который будет создан в **admin db с root** привилегиями
 *	**MONGO_INITDB_ROOT_PASSWORD** - пароль привилегированного пользователя
-*	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в /docker-entrypoint-initdb.d/*.js/sh. (1)
+*	**MONGO_INITDB_DATABASE** - определение базы данных, используемой в скриптах развертывания в ``/docker-entrypoint-initdb.d/*.js/sh. (1)``
 *	**ECOS_HISTORY_APP_DATASOURCE_DATABASE** - db микросервиса истории **(ecos-history)**
 *	**ECOS_HISTORY_APP_DATASOURCE_USERNAME** - логин для мкр истории, роль dbOwner **(ecos-history)**
 *	**ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мкр истории **(ecos-history-password)**
@@ -544,10 +544,10 @@ ecos-postgresql-app
 Используемые переменные:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-*	**POSTGRES_PASSWORD **- обязательный параметр за исключением 
+*	**POSTGRES_PASSWORD** - обязательный параметр за исключением 
 *   **POSTGRES_HOST_AUTH_METHOD=trust**, пароль рутового пользователя
 *	**POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
-*	**POSTGRES_DB **- переопределение дефолтной базы данных
+*	**POSTGRES_DB** - переопределение дефолтной базы данных
 *	**POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
 *	**POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
 *	**POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
@@ -747,7 +747,7 @@ ecos-app
 
 <docker-registry>/ecos-<ecos project>:tag*
 
-   **Веб архивы**
+**Веб архивы**
 
 *	alfresco.war
 *	share.war
@@ -761,7 +761,7 @@ ecos-app
 Тег:
 *<docker-registry>/ecs-<ecos project>:tag*
 
-	**Веб архивы:**
+**Веб архивы:**
 
 *	alfresco.war
 *	share.war
@@ -1256,6 +1256,7 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 *	EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port
 *	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS
 *	EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по-умолчанию  https, опционально можно поставить http
+
 Не реализованы:
 *	SOLR_TARGET
 *	ECOS_REGISTRY_TARGET (проблема с api)
