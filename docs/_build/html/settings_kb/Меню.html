@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Настройка меню &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Дашборды" href="Дашборд.html" />
+    <link rel="prev" title="Журналы" href="Журналы.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Введение.html"><strong>Знакомство с ECOS</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Пример настройки процесса.html">Пример настройки процесса</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../База по настройке.html">База по настройке</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Типы_данных.html"><strong>Типы данных</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Модель.html"><strong>Хранение данных (Модель)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Формы.html"><strong>Формы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Права_доступа.html"><strong>Права доступа</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Роли_и_статусы.html"><strong>Роли и статусы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Процессы.html"><strong>Процессы</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Журналы.html"><strong>Журналы</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Настройка меню</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Зависимости настроек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Настройка меню</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Способы открытия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Окно настроек</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Настройки выбранной конфигурации</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Глобальные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Редактор иконок</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Результат настроек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Смежные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Дашборд.html"><strong>Дашборды</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Виджеты.html"><strong>Виджеты</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Действия.html"><strong>Действия</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Комментарии.html"><strong>Комментарии</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Уведомления.html"><strong>Уведомления</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ассоциации.html"><strong>Ассоциации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Шаблоны нумерации.html"><strong>Шаблоны нумерации</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Библиотека_документации.html"><strong>Document Library</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Интеграции.html"><strong>Интеграции</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Администрирование.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Общая база знаний.html">Общая база знаний</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../База по настройке.html">База по настройке</a> &raquo;</li>
+        
+      <li><strong>Настройка меню</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/settings_kb/Меню.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><strong>Настройка меню</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Зависимости настроек<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Важно</p>
+<ul class="last simple">
+<li>На отображение влияют настройки:</li>
+<li>Интерфейс основного меню (Журнал Конфигурация) - глобальная настройка, для всего приложения и всех пользователей</li>
+<li>Приоритеты групп (Настройки меню &gt; Глобальная настройка) - глобальная настройка для всех конфигураций и пользователей</li>
+<li>Группы или пользователи (Настройки меню &gt; Текущая конфигурация) - принадлежность одной конфигурации меню</li>
+</ul>
+</div>
+<p><strong>Журнал Конфигурация</strong></p>
+<p>В журнале для настройки <strong>Интерфейс основного меню</strong> (default-ui-main-menu) устанавливается какой <strong>вариант</strong> (версия) меню будет использоваться в системе.</p>
+<img alt="Меню" class="align-left" src="../_images/Menu_1.png" />
+<dl class="docutils">
+<dt>Значения:</dt>
+<dd><ul class="first last simple">
+<li>left - нулевая версия конфигурации левого меню (не поддерживается просмотр и настройка через интерфейс)</li>
+<li>left-v1 - первая версия конфигурации левого меню (поддерживается просмотр и редактирование)</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li>Журнал Меню - все конфигурации меню</li>
+</ul>
+<img alt="Меню2" class="align-left" src="../_images/Menu_2.png" />
+<p>В журнале перечислены все конфигурации разных версий.</p>
+<p>Доступность действий в журнале</p>
+<img alt="Меню3" class="align-left" src="../_images/Menu_3.png" />
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Для Интерфейс основного меню = left и Версия модели = 0 см. <a class="reference external" href="https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/714211365/Menu+service">Menu service</a>.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Настройка меню<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">Интерфейсная настройка меню доступна только Администратору и значения настройки <strong>left-v1</strong>.</p>
+</div>
+<div class="section" id="id4">
+<h3>Способы открытия<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li>Через шапку сайта Шестеренка &gt; Настройка меню</li>
+</ul>
+<img alt="Настройка меню" class="align-left" src="../_images/Menu_configuration.png" />
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">При использовании данного способа в окно настроек загружается конфигурация меню используемая на данный момент в интерфейсе. То есть в основном для настройки административного меню.</p>
+</div>
+<ul class="simple">
+<li>Через журнал Меню, инлайн действие <em>Редактировать конфигурацию</em></li>
+</ul>
+<img alt="Редактировать конфигурацию" class="align-left" src="../_images/Menu_configuration_2.png" />
+</div>
+<div class="section" id="id5">
+<h3>Окно настроек<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Настройки содержат две вкладки:</p>
+<ul class="simple">
+<li>Настройки выбранной конфигурации - описывает состояние отображаемого меню (элементы меню, версия, принадлежность … )</li>
+<li>Глобальные настройки - то что влияет на всю систему и всех пользователей (приоритеты)</li>
+</ul>
+<div class="section" id="id6">
+<h4>Режим редактирования<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h4>
+<img alt="Режим редактирования" class="align-center" src="../_images/Menu_redactor_mode.png" />
+</div>
+<div class="section" id="id7">
+<h4>Режим просмотра<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Инлайн действие доступно через журнал Меню.</p>
+<p>То же самое окно что при редактирования, но без элементов изменяющих представление.</p>
+<img alt="Настройки конфигурации" class="align-center" src="../_images/Menu_view_mode1.png" />
+<img alt="Глобальные настройки" class="align-center" src="../_images/Menu_view_mode2.png" />
+</div>
+</div>
+<div class="section" id="id8">
+<h3>Настройки выбранной конфигурации<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id9">
+<h4>Элементы меню<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Возможные типы пунктов и их доступность на каждом уровне</p>
+<img alt="Типы пунктов" class="align-center" src="../_images/menu_elements.jpg" />
+<p>Если добавлен пункт Ссылка на создание кейса и в результате есть возможность создавать несколькими способами в левом отобразится раздел с вариантами создания.</p>
+<img alt="Варианты создания типа данных" class="align-center" src="../_images/Menu_auto_point.png" />
+<p>..table:: Доступность дополнительных характеристик:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="21%" />
+<col width="25%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Тип</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">3</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Раздел</td>
+<td>Без названия</td>
+<td>Иконка</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Разделяющий заголовок</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Журнал</td>
+<td>&#160;</td>
+<td>СчетчикИконка</td>
+<td>Счетчик</td>
+</tr>
+<tr class="row-odd"><td>Ссылка на создание кейса</td>
+<td>&#160;</td>
+<td>Иконка</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Произвольный пункт меню</td>
+<td>&#160;</td>
+<td>Иконка</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Подробнее о некоторых типах:</p>
+<ul class="simple">
+<li><em>Журнал и Ссылка на создание кейса</em></li>
+</ul>
+<p>Добавление пунктов осуществляется выбором элементов из журнала. Редактирование не доступно, только удаление. Необходимые сведения поступают из конфигурации элемента.
+Можно добавлять сразу несколько выбранных значений.</p>
+<p><em>Ссылка на создание кейса</em> - в настройке выбирается журнал, но в самом меню используются сами варианты создания записей в этом журнале. Варианты создания настраиваются в журнале <em>Журналы</em> &gt; Редактировать нужный журнал &gt; вкладка на форме <em>Create Variants</em></p>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<ul class="last simple">
+<li>выбран журнал Файл уведомления, в меню отобразится пункт Загрузить шаблон уведомления;</li>
+<li>выбран журнал Форма, в меню отобразится раздел Форма с пунктами Создать форму и Загрузить форму</li>
+</ul>
+</div>
+<ul class="simple">
+<li>Произвольный пункт меню</li>
+</ul>
+<p><em>Ссылка</em>
+В зависимости от значения на выходе формируется соответствующий путь перехода. Под описанием поле выводится результат формируемой ссылки.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">info:</th><td class="field-body"><p class="first">Подробнее про Абсолютные и относительные ссылки</p>
+<p class="last"><strong>Абсолютный URL</strong> - если указан полный путь. Ссылка будет открываться в новой вкладке браузера.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<img alt="Абсолютный URL" class="align-center" src="../_images/Menu_url_absolut.png" />
+<p><strong>Относительный URL. Варианты формирования:</strong></p>
+<ul class="simple">
+<li>Если значение начинается с “ / ” , то итоговая ссылка формируется как хост + значение</li>
+</ul>
+<img alt="Относительный URL" class="align-center" src="../_images/Menu_url_relative.png" />
+<ul class="simple">
+<li>Если значение не начинается  с “ / ”, то итоговая ссылка формируется как текущее ссылка в адресной строке + значение</li>
+</ul>
+<p>warning::  может привести к не ожидаемому результату.</p>
+<img alt="Пример" class="align-center" src="../_images/Menu_url_relative2.png" />
+</div>
+<div class="section" id="id10">
+<h4>Группы и пользователи<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Выбор групп и пользователей которым будет назначено редактируемое меню. Пользователь имеет наивысший приоритет. Так же стоит учесть зависимости других настроек. Если на пользователя/группу назначено несколько конфигураций, это может привести к неопределенному результату и появится не то меню, что ожидалось.</p>
+<p>Установленные группы попадают в <em>приоритет групп</em>, по умолчанию в конец списка.</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>Глобальные настройки<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>..attention:: Данные настройки относятся ко всей системе</p>
+<img alt="Глобальные настройки" class="align-center" src="../_images/menu_global_settings.png" />
+<div class="section" id="id12">
+<h4>Приоритеты групп<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Список групп соответствует значениям групп, указанных во всех конфигурациях меню.</p>
+<p>Приоритет группы обратно пропорционален уровню иерархии группы в Оргструктуре или уровню функциональной иерархии. Чем специфичнее и уже группа пользователей, тем выше у нее приоритет.</p>
+<p>Группы администраторов, как правило, размещаются на первом месте. Пользователь имеет наивысший приоритет (пользователи не отображаются в приоритетах)</p>
+<p>info::  Как это работает:</p>
+<p>В конфигурации меню указываются группы или пользователи для которых настраивается меню. Приоритет групп - настройка глобальная, исходя из ее настройки и указанных участников, возвращается соответствующее для пользователя меню.</p>
+<img alt="Группы и пользователи" class="align-center" src="../_images/menu_groups_1.png" />
+<p>АП - авторизованный пользователь
+АП - tam42 и он указан в одной из конфигураций. Указание пользователя - наивысший приоритет =&gt; возвращается конфигурация №10. Пользователь не должен указываться в нескольких.
+АП состоит в группе администраторов (и не указан на прямую в конфигурации). Настраиваем конфигурацию с указанием этой группы. В настройке приоритетов эта группа на первом месте. Результат - слева отображается меню №3.
+АП - главный клерк, состоит в  2х группах: клерки и главные клерки. Есть две конфигурации №2 и №6. В приоритетах главные клерки на 2 месте, другие на 3. Результат -  слева отображается меню №6. Для Не главных клерков №2. если для АП нет ни одного подходящего меню - загружается базовое (default)</p>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>Редактор иконок<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<img alt="Редактор иконок" class="align-center" src="../_images/menu_icons.png" />
+<p>На выбор пользователю предоставлен набор системных иконок. Если в наборе нет подходящей, есть возможность загрузить собственную, которая появится в блоке Пользовательские. Наилучший вариант формата иконки  - svg.</p>
+<p>Иконка по умолчанию:</p>
+<img alt="Иконка по умолчанию" class="align-center" src="../_images/menu_icons_2.png" />
+</div>
+<div class="section" id="id14">
+<h2>Результат настроек<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h2>
+<img alt="Результат настроек" class="align-left" src="../_images/menu_settings_result.png" />
+<img alt="Результат настроек" class="align-right" src="../_images/menu_settings_result_2.png" />
+</div>
+<div class="section" id="id15">
+<h2>Смежные настройки<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>логотип &gt; <a class="reference external" href="https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1808302150">Темы интефрейса</a>.</p>
+<p>действия для журнала Меню &gt; <a class="reference external" href="https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1082392659">Типы действий</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Дашборд.html" class="btn btn-neutral float-right" title="Дашборды" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Журналы.html" class="btn btn-neutral float-left" title="Журналы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
