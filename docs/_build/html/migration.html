@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Миграция &mdash; ECOS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Введение.html"><strong>Знакомство с ECOS</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Пример настройки процесса.html">Пример настройки процесса</a></li>
+<li class="toctree-l1"><a class="reference internal" href="База по настройке.html">База по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Администрирование.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Общая база знаний.html">Общая база знаний</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Миграция</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/migration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Миграция<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="core-2-2-micro-4-3-core-2-3-micro">
+<h2>Миграция с 3.*-4.2 (core) 2.2 (micro) на 4.3+ (core) 2.3 (micro)<a class="headerlink" href="#core-2-2-micro-4-3-core-2-3-micro" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li>Перенести формы в alfresco из папки <strong>{moduleId}/ecos-forms</strong> в папку <strong>{moduleId}/ui/form</strong>;</li>
+<li>Поменять у всех ссылок на формы префикс с <strong>uiserv/eform&#64;</strong> на <strong>uiserv/form&#64;</strong>;</li>
+<li>В корне конфигурации журнала поменять <strong>label</strong> на <strong>name</strong>;</li>
+<li>В конфигурации колонок журнала поменять name на id и затем <strong>label</strong> на <strong>name</strong>;</li>
+<li>В конфигурации журнала убрать <strong>sourceId</strong> (он будет браться из типа);</li>
+<li>Описание групповых операций в журнале нужно переместить в <strong>actionsDef</strong> (см. модуль ecos-finance за примером);</li>
+<li>В журнале наследование действий из типа регулируется параметром <strong>actionsFromType</strong> (true - наследовать всегда, false - никогда, null - наследовать если действий нет в <strong>actionsDef/actions</strong>). По умолчанию null. Выставить false если в журнале не должно быть действий</li>
+<li>Варианты создания переместить из конфигурации журнала в конфигурацию типа;</li>
+<li>В конфигурации типа переименовать attributes в properties;</li>
+<li>Для связи типа ECOS с типом Alfresco: в конфигурации типа добавить <strong>properties.alfType</strong> с типом из модели alfresco и в <strong>properties.alfRoot</strong> путь до папки куда будут попадать новые записи. прим: Для новых типов тип альфреско создавать не нужно если нет такого требования в задаче;</li>
+<li>Убрать варианты создания из конфигурации журналов в типы;</li>
+<li>Убрать <strong>recordRef</strong> из варианта создания (он сформируется из <strong>sourceId</strong> в типе);</li>
+<li>Убрать <strong>attributes._parent</strong> из варианта создания (для размещения сущностей будет использовано расположение по умолчанию или <strong>properties.alfRoot</strong> из типа);</li>
+<li>Проставить <strong>parentRef</strong> в типе. Если это кейс, то родительский тип <strong>emodel/type&#64;case</strong>. Если тип - элемент даталист, то тип <strong>emodel/type&#64;data-list</strong>;</li>
+<li>С версии 4.3 (2.3) в каждом типе где есть форма и не стоит флаг <strong>defaultCreateVariant: false</strong> генерируется вариант создания по умолчанию. В большинстве случаев его хватает и описывать свой вариант не нужно;</li>
+</ol>
+<p>16. Убрать из конфига журнала следующую конструкцию:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predicate</span><span class="p">:</span>
+   <span class="n">t</span><span class="p">:</span> <span class="ow">and</span>
+   <span class="n">val</span><span class="p">:</span>
+     <span class="o">-</span> <span class="p">{</span> <span class="n">t</span><span class="p">:</span> <span class="n">eq</span><span class="p">,</span> <span class="n">att</span><span class="p">:</span> <span class="n">_type</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+     <span class="o">-</span> <span class="p">{</span> <span class="n">t</span><span class="p">:</span> <span class="n">eq</span><span class="p">,</span> <span class="n">att</span><span class="p">:</span> <span class="n">TYPE</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">idocs</span><span class="p">:</span><span class="n">personAttorney</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>В версии 4.3+ предикат с клиента отправляется с типом ECOS, а уже на сервере подменяется на тип alfresco если проставлено свойство <strong>properties.alfType</strong>.</p>
+<ol class="arabic simple" start="17">
+<li>Для настройки <strong>journalId</strong> у фильтра в журнале теперь предусмотрен следующий механизм в порядке от предпочтительного варианта к менее предпочтительному:
+a) В типе настраиваем <strong>model.attributes[{id: some:assocName, type: ASSOC, config: { typeRef: “emodel/type&#64;assoc-target-type“ }}]</strong>
+b) В конфигурации колонки журнала прописываем editor: <strong>{ type: journal, config: { journalId: „general-case“ }}</strong></li>
+<li>Конфигурации controller в колонке журнала больше нету. Вместо него предусмотрены два других поля: <strong>formatter</strong> и <strong>editor</strong>.</li>
+<li>Типы колонок в журнале теперь выбираются из списка  {ASSOC, PERSON, AUTHORITY_GROUP, AUTHORITY, TEXT, MLTEXT, NUMBER, BOOLEAN, DATE, DATETIME, CONTENT }. На uiserv настроен маппинг старых типов на новые, но лучше их тоже мигрировать.</li>
+<li>Все ссылки на ноды alfresco теперь следует указывать с добавлением префикса <strong>alfresco/&#64;</strong>. Пример: <strong>alfresco/&#64;workspace://SpacesStore/….</strong>.</li>
+<li>В типе обязательно проставляем (если они есть) journalRef и formRef. typeRef из журналов следует убрать если не предполагается несколько журналов для одного типа.</li>
+<li>MLText теперь стал Immutable структурой и метод set удален. Для удобства добавлен метод withValue, но он создает и возвращает новый инстанс MLText и нужно его не забыть куда-то сохранить.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Citeck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
