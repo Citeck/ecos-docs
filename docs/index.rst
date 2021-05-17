@@ -13,59 +13,10 @@ Citeck ECOS's documentation
 =======================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 6
    
    Введение
-
-.. toctree::
-   :maxdepth: 4
-   :caption: Пример настройки процесса
-
-   процесс_оффера
-   
-.. toctree::
-   :maxdepth: 4
-   :caption: База знаний по настройке
-   
-   ECOS_applications
-   Типы_данных
-   Модель
-   Формы
-   Права_доступа
-   Роли_и_статусы
-   Процессы
-   Журналы
-   Меню
-   Дашборд
-   Виджеты
-   Действия
-   Комментарии
-   Уведомления
-   Ассоциации
-   Шаблоны нумерации
-   Библиотека_документации
-   Интеграции
-   
-.. toctree::
-   :maxdepth: 4
-   :caption: Администрирование
-
-   docker-compose
-   Docker-servises
-
-.. toctree::
-   :maxdepth: 4
-   :caption: Общая база знаний
-
-   general/Глоссарий
-   general/Термины_системы
-   general/UX_UI
-   general/ECOS_Records
-   general/ECOS_CMMN
-   general/Темы_интерфейса
-   general/Типы_действий
-   general/Язык_предикатов
-   general/How_To
-   general/Notification
-   general/Alfresco
-
+   Пример настройки процесса
+   База по настройке
+   Администрирование
+   Общая база знаний
