@@ -38,7 +38,7 @@
 3.1.2 Правка файла hosts
 """""""""""""""""""""""""""""""
 
-Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере: Windows— c:\windows\system32\drivers\etc\hosts. Linux, Ubuntu, Unix, BSD — /etc/hosts. Mac OS — /private/etc/hosts.
+Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере: Windows— c:/windows/system32/drivers/etc/hosts. Linux, Ubuntu, Unix, BSD — /etc/hosts. Mac OS — /private/etc/hosts.
 
 * Открыть файл hosts в редакторе с повышеными правами
 * Добавить строчку: “192.168.1.16 ecos-community-demo” (без кавычек), 
@@ -58,7 +58,7 @@
  * Установите и запустите Git с повышенными правами
  * Выполните команду для скачивания репозитория: **git clone -b 3.23.0 https://bitbucket.org/citeck/ecos-community-demo.git**
   
- где 3.23.0 - версия проекта (поддерживается две версии community. Для скачивания 4-й версии использовать 4.0.0rc1)
+ где 3.23.0 - версия проекта (поддерживается две версии community. Для скачивания 4-й версии использовать 4.0.0rc2. Если необходимо обновиться с версии 4.0.0rc1 до версии 4.0.0rc2, то рекомендуется выполнить миграцию по `инструкции <https://github.com/Citeck/ecos-docs/blob/main/docs/migration.rst>`_
  
  *	Перейдите в созданную папку: ecos-community-demo
  *	Выполнить docker-compose pull
@@ -82,4 +82,4 @@
 ~~~~~~~~~~~~~~~~~~~~~~~
 В случае если сначала была развернута 4-я версия, а затем нужно развернуть 3-ю, или нужно развернуть community на чистой базе, нужно удалить папку по пути:
 
-\\wsl$\docker-desktop\mnt\version-pack\containers\services\docker\rootfs\opt\ecos-community-demo-data
+``\\wsl$\docker-desktop\mnt\version-pack\containers\services\docker\rootfs\opt\ecos-community-demo-data``
