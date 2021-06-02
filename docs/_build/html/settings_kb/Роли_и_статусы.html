@@ -206,7 +206,12 @@
 <h1><strong>Роли и статусы</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
 <div class="section" id="id2">
 <h2>Роли<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для работы с ролями кейса следует использовать сервис CaseRoleService. Список методов можно посмотреть в интерфейсе и в JS реализации CaseRoleServiceJS. В javascript контексте данный сервис доступен по имени <strong>“caseRoleService”</strong>. Javascript реализация в качестве представителей роли может принимать Authority Name, ScriptNode или NodeRef.</p>
+<ul class="simple">
+<li><p>Для работы с ролями кейса следует использовать сервис <strong>CaseRoleService</strong>.</p></li>
+<li><p>Список методов можно посмотреть в интерфейсе и в JS реализации <strong>CaseRoleServiceJS</strong>.</p></li>
+<li><p>В <code class="docutils literal notranslate"><span class="pre">javascript</span></code> контексте данный сервис доступен по имени <strong>“caseRoleService”</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Javascript</span></code> реализация в качестве представителей роли может принимать <em>Authority Name</em>, <em>ScriptNode</em> или <em>NodeRef</em>.</p></li>
+</ul>
 <div class="section" id="id3">
 <h3>Создание и настройка ролей<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
 <table class="colwidths-given docutils align-default" id="id9">
@@ -245,9 +250,11 @@
 </div>
 <div class="section" id="id4">
 <h3>Виды ролей<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
-<ul class="simple">
-<li><p>Стандартная роль (icaseRole:role) - роль, представители которой выбираются редактором кейса вручную или посредством внешнего влияния (например - js действие которое добавляет человека в роль).</p></li>
-<li><p>Javascript роль (icaseRole:scriptRole) - роль, представители которой вычисляются посредством выполнения javascript скрипта. Возвращаемое значение может быть или NodeRef, Authority Name, ScriptNode или массивом в котором лежат любые упомянутые значения. Уровень вложенности массивов не играет роли. Из возвращенного значения выбираются все уникальные элементы и назначаются в роль. Если какое-то из значений массива null или undefined, то это значение игнорируется. В контексте скрипта доступны следующие объекты: document - ScriptNode кейса. role - ScriptNode роли. Если при выполнении скрипта произошла ошибка, то это равнозначно тому, что скрипт вернул 0 элементов.</p></li>
+<ul>
+<li><p><strong>Стандартная роль (icaseRole:role)</strong> - роль, представители которой выбираются редактором кейса вручную или посредством внешнего влияния (например - js действие которое добавляет человека в роль).</p></li>
+<li><p><strong>Javascript роль (icaseRole:scriptRole)</strong> - роль, представители которой вычисляются посредством выполнения javascript скрипта. Возвращаемое значение может быть или <em>NodeRef, Authority Name, ScriptNode</em> или массивом в котором лежат любые упомянутые значения. Уровень вложенности массивов не играет роли. Из возвращенного значения выбираются все уникальные элементы и назначаются в роль. Если какое-то из значений массива <code class="docutils literal notranslate"><span class="pre">null</span></code> или <code class="docutils literal notranslate"><span class="pre">undefined</span></code>, то это значение игнорируется.</p>
+<p>В контексте скрипта доступны следующие объекты: <strong>document</strong> - <em>ScriptNode</em> кейса. <strong>role</strong> - <em>ScriptNode</em> роли. Если при выполнении скрипта произошла ошибка, то это равнозначно тому, что скрипт вернул 0 элементов.</p>
+</li>
 </ul>
 <p>Корректные варианты скрипта (на каждой строчке новый скрипт):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>“admin”
@@ -258,20 +265,20 @@ document.assocs[‘ns:initiator’]
 [document.assocs[‘ns:initiator’], “admin”]
 </pre></div>
 </div>
-<p>На данный момент в интерфейсе нету возможности создать javascript роль, но можно изменить тип уже созданной роли или в js консоли (icaseRole:scriptRole наследуется от icaseRole:role) или в xml шаблоне кейса (роли расположены в самом конце шаблона и в одном из свойств указан их тип).</p>
+<p>На данный момент в интерфейсе нету возможности создать <code class="docutils literal notranslate"><span class="pre">javascript</span></code> роль, но можно изменить тип уже созданной роли или в <code class="docutils literal notranslate"><span class="pre">js</span></code> консоли (<strong>icaseRole:scriptRole</strong> наследуется от <strong>icaseRole:role</strong>) или в <code class="docutils literal notranslate"><span class="pre">xml</span></code> шаблоне кейса (роли расположены в самом конце шаблона и в одном из свойств указан их тип).</p>
 </div>
 <div class="section" id="policy">
 <h3>Зарегистрированные Policy<a class="headerlink" href="#policy" title="Ссылка на этот заголовок">¶</a></h3>
 <ul class="simple">
-<li><p>OnRoleAssigneesChangedPolicy</p></li>
+<li><p><strong>OnRoleAssigneesChangedPolicy</strong></p></li>
 </ul>
 <p>void onRoleAssigneesChanged(NodeRef roleRef, Set&lt;NodeRef&gt; added, Set&lt;NodeRef&gt; removed);</p>
-<p>Вызывается когда представители роли изменяются. В числе параметров - ссылка на роль, список добавленных представителей, список удаленных представителей. Все параметры гарантированно не null. Коллекции неизменяемые.</p>
+<p>Вызывается когда представители роли изменяются. В числе параметров - ссылка на роль, список добавленных представителей, список удаленных представителей. Все параметры гарантированно <em>не null</em>. Коллекции неизменяемые.</p>
 <ul class="simple">
-<li><p>OnCaseRolesAssigneesChangedPolicy</p></li>
+<li><p><strong>OnCaseRolesAssigneesChangedPolicy</strong></p></li>
 </ul>
 <p>void onCaseRolesAssigneesChanged(NodeRef caseRef);</p>
-<p>Вызывается когда представители любых ролей в кейсе меняются. Данное событие удобно когда надо сделать общее действие для всех измененных ролей в кейсе и делать его при каждом вызове onRoleAssigneesChanged может быть затратно.</p>
+<p>Вызывается когда представители любых ролей в кейсе меняются. Данное событие удобно когда надо сделать общее действие для всех измененных ролей в кейсе и делать его при каждом вызове <em>onRoleAssigneesChanged</em> может быть затратно.</p>
 </div>
 <div class="section" id="id5">
 <h3>Назначение ролей из оргструктуры<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
@@ -279,9 +286,8 @@ document.assocs[‘ns:initiator’]
 </div>
 <div class="section" id="id6">
 <h2>Статусы<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для управления статусами кейса существует сервис CaseStatusService
-Каждый статус представлен в репозитории как нода с которой у кейса создается ассоциация
-icase:caseStatusAssoc</p>
+<p>Для управления статусами кейса существует сервис <strong>CaseStatusService</strong>.</p>
+<p>Каждый статус представлен в репозитории как нода с которой у кейса создается ассоциация <em>icase:caseStatusAssoc</em>.</p>
 <div class="section" id="id7">
 <h3>Создание  и настройка статусов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
 <table class="colwidths-given docutils align-default" id="id10">
@@ -315,9 +321,9 @@ icase:caseStatusAssoc</p>
 </div>
 <div class="section" id="id8">
 <h3>Перевод статусов<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Время изменения записывается в свойство <em>icase:caseStatusChangedDateTime</em></p>
-<p>Новый статус доступен по ассоциации <em>icase:caseStatusAssoc</em></p>
-<p>Предыдущий статус доступен по ассоциации <em>icase:caseStatusBeforeAssoc</em></p>
+<p>Время изменения записывается в свойство <em>icase:caseStatusChangedDateTime</em>.</p>
+<p>Новый статус доступен по ассоциации <em>icase:caseStatusAssoc</em>.</p>
+<p>Предыдущий статус доступен по ассоциации <em>icase:caseStatusBeforeAssoc</em>.</p>
 </div>
 </div>
 </div>

@@ -103,12 +103,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#ecos-data-model">Ecos data model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Атрибуты модели</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">Вычислямеые атрибуты</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#script">Возможности атрибута с типом script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script">Возможности атрибута с типом <strong>script</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#type-permission">Права на атрибуты (Type Permission)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">Использование атрибутов модели на форме</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Настройка статусов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Пример</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecos-model-journal">Пример модели журнала</a></li>
 </ul>
 </li>
@@ -204,20 +204,25 @@
 <span id="id1"></span><h1><strong>Хранение данных (Модель)</strong><a class="headerlink" href="#ecos-model-label" title="Ссылка на этот заголовок">¶</a></h1>
 <div class="section" id="ecos-data-model">
 <h2>Ecos data model<a class="headerlink" href="#ecos-data-model" title="Ссылка на этот заголовок">¶</a></h2>
-<p>При редактировании типа кейса есть возможность настроить атрибуты типа на вкладке “Модель”.</p>
+<p>При редактировании типа кейса есть возможность настроить атрибуты типа на вкладке <span class="guilabel">Модель</span>.</p>
 <img alt="Вкладка Модель" class="align-center" src="../_images/model_v4.png" />
-<p>Id - идентификатор поля, по которому оно будет доступно на форме, в журнале и других местах.</p>
-<p>Name - имя поля для отображения пользователю</p>
-<p>Тип - тип поля. Поддерживаются:</p>
-<ul class="simple">
-<li><p>Text - текстовые данные;</p></li>
-<li><p>Association - связь с другой сущностью;</p></li>
-<li><p>Boolean - булево значение да/нет;</p></li>
-<li><p>Number - число;</p></li>
-<li><p>Date - дата;</p></li>
-<li><p>DateTime - дата с временем;</p></li>
-<li><p>Content - содержимое. Как правило поля с этим типом используются для сохранения больших объемов данных. Например - содержимое документа. Рекомендуется использовать только если стандартный cm:content не подходит;</p></li>
-<li><p>Computed - настройка динамически вычисляемого атрибута</p></li>
+<ul>
+<li><p><strong>Id</strong> - идентификатор поля, по которому оно будет доступно на форме, в журнале и других местах.</p></li>
+<li><p><strong>Name</strong> - имя поля для отображения пользователю.</p></li>
+<li><p><strong>Тип</strong> - Тип поля. Поддерживаются:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Text</strong> - текстовые данные;</p></li>
+<li><p><strong>Association</strong> - связь с другой сущностью;</p></li>
+<li><p><strong>Boolean</strong> - булево значение да/нет;</p></li>
+<li><p><strong>Number</strong> - число;</p></li>
+<li><p><strong>Date</strong> - дата;</p></li>
+<li><p><strong>DateTime</strong> - дата с временем;</p></li>
+<li><p><strong>Content</strong> - содержимое. Как правило поля с этим типом используются для сохранения больших объемов данных. Например - содержимое документа. Рекомендуется использовать только если стандартный cm:content не подходит;</p></li>
+<li><p><strong>Computed</strong> - настройка динамически вычисляемого атрибута.</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="id2">
@@ -225,36 +230,39 @@
 <div class="section" id="id3">
 <h3>Вычислямеые атрибуты<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
 <img alt="Вычисляемые атрибуты" class="align-center" src="../_images/Модель_вычисляемые_атрибуты.png" />
-<p>Тип - тип вычисляемого атрибута. Поддерживаются:</p>
+<p><strong>Тип</strong> - тип вычисляемого атрибута. Поддерживаются:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Script - вычисление атрибута на основе javascript’а;</p></li>
-<li><p>Attribute - вычисление атрибута на основе другого атрибута (можно делать алиас на глубоко вложенный атрибут. Например: idocs:counterparty.idocs:fullOrganizationName?str);</p></li>
-<li><p>Value - константное значение;</p></li>
-<li><p>Template - шаблонная строка. Можно использовать вставки вида ${…}. Например: ${someAttribute?str}. Вместо данного плейсхолдера будет подставлено значение укзанного атрибута;</p></li>
-<li><p>Counter - значение будет генерироваться по счетчику при создании документа и не меняться со временем;</p></li>
+<li><p><strong>Script</strong> - вычисление атрибута на основе <code class="docutils literal notranslate"><span class="pre">javascript'а</span></code>;</p></li>
+<li><p><strong>Attribute</strong> - вычисление атрибута на основе другого атрибута (можно делать алиас на глубоко вложенный атрибут. Например: <code class="docutils literal notranslate"><span class="pre">idocs:counterparty.idocs:fullOrganizationName?str)</span></code>;</p></li>
+<li><p><strong>Value</strong> - константное значение;</p></li>
+<li><p><strong>Template</strong> - шаблонная строка. Можно использовать вставки вида ${…}. Например: <code class="docutils literal notranslate"><span class="pre">${someAttribute?str}</span></code>. Вместо данного плейсхолдера будет подставлено значение укзанного атрибута;</p></li>
+<li><p><strong>Counter</strong> - значение будет генерироваться по счетчику при создании документа и не меняться со временем.</p></li>
 </ul>
 </div></blockquote>
-<p>Storing type - тип сохранения</p>
-<p>Определяет нужно или нет сохранять вычисленное значение и если да, то в какие моменты. Возможные значения:</p>
-<ul class="simple">
-<li><p>None - сохранение не нужно. При каждом обращении вычисляем значение заново;</p></li>
-<li><p>On empty - сохранять вычисленное значение только если сохраненное значение отсутствует (т.е. при запросе значения вернулся null);</p></li>
-<li><p>On create - сохранять вычисленное значение только после создания. Последующие мутации никак данный атрибут не затронут и он будет работать как обычный атрибут.</p></li>
-<li><p>On mutate - сохранять вычисленное значение при каждой мутации. В случае использования Records API для изменения записи гарантируется актуальность значения.</p></li>
+<p><strong>Storing type</strong> - тип сохранения. Определяет нужно или нет сохранять вычисленное значение и если да, то в какие моменты. Возможные значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>None</strong> - сохранение не нужно. При каждом обращении вычисляем значение заново;</p></li>
+<li><p><strong>On empty</strong> - сохранять вычисленное значение только если сохраненное значение отсутствует (т.е. при запросе значения вернулся <code class="docutils literal notranslate"><span class="pre">null</span></code>);</p></li>
+<li><p><strong>On create</strong> - сохранять вычисленное значение только после создания. Последующие мутации никак данный атрибут не затронут и он будет работать как обычный атрибут.</p></li>
+<li><p><strong>On mutate</strong> - сохранять вычисленное значение при каждой мутации. В случае использования <strong>Records API</strong> для изменения записи гарантируется актуальность значения.</p></li>
 </ul>
+</div></blockquote>
 </div>
 <div class="section" id="script">
-<h3>Возможности атрибута с типом script<a class="headerlink" href="#script" title="Ссылка на этот заголовок">¶</a></h3>
+<h3>Возможности атрибута с типом <strong>script</strong><a class="headerlink" href="#script" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Объекты в глобальной области видимости:</p>
-<ul class="simple">
-<li><p>Records - адаптер для RecordsService;</p></li>
-<li><p>value - текущий документ;</p></li>
-<li><p>log - логгер;</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Records</strong> - адаптер для RecordsService;</p></li>
+<li><p><strong>value</strong> - текущий документ;</p></li>
+<li><p><strong>log</strong> - логгер.</p></li>
 </ul>
+</div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>прикладных сервисов в контексте скрипта нет.</p>
+<p>Прикладных сервисов в контексте скрипта нет.</p>
 </div>
 <p>Описание value:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Свойства:
@@ -297,14 +305,17 @@ query(query: Object, attributes: Any?) // возвращает объект ви
 </div>
 <div class="section" id="id4">
 <h2>Использование атрибутов модели на форме<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для использование атрибутов на форме нужно, чтобы Id атрибута соответствовал значению Property Name на форме.</p>
-<p>Если Id атрибута содержит двоеточие “:”, то следует  на форме использовать Custom Properties → attribute (если двоеточия нету, то Property Name более чем достаточно).</p>
-<img alt="model by form1" class="align-left" src="../_images/model_by_form_1.png" />
+<p>Для использование атрибутов на форме нужно, чтобы <strong>Id</strong> атрибута соответствовал значению <strong>Property Name</strong> на форме.</p>
+<ul class="simple">
+<li><p>Если <strong>Id</strong> атрибута содержит двоеточие “:”, то следует  на форме использовать <span class="guilabel">Custom Properties</span> → <strong>attribute</strong>.</p></li>
+<li><p>Если в <strong>Id</strong> атрибута двоеточия нету, то <strong>Property Name</strong> более чем достаточно.</p></li>
+</ul>
+<img alt="model by form1" class="align-center" src="../_images/model_by_form_1.png" />
 <img alt="model by form2" class="align-left" src="../_images/model_by_form_2.png" />
 <img alt="model by form3" class="align-right" src="../_images/model_by_form_3.png" />
 </div>
 <div class="section" id="id5">
-<h2>Настройка статусов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<h2>Пример<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
 </div>
 <div class="section" id="ecos-model-journal">
 <span id="id6"></span><h2>Пример модели журнала<a class="headerlink" href="#ecos-model-journal" title="Ссылка на этот заголовок">¶</a></h2>

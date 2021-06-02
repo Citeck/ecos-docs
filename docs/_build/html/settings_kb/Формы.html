@@ -103,30 +103,26 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Формы</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#alfresco">Связь с типом Alfresco</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecos">Связь с типом ECOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Пользовательский модуль</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Проверка новых форм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Связь с атрибутом записи (ноды alfresco в частном случае)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Пользовательский модуль</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-forms-enable">Конфигурация ecos-forms-enable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Проверка новых форм</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#ecos-forms-enable">Конфигурация ecos-forms-enable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Служебные данные формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Создание формы с нуля</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Служебные данные формы</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#form-builder">Form Builder</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Компоненты формы</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#api">API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#display">Display (Отображение на форме)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#validation">Validation (Связь с моделью)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Условия отображения</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Условия отображения</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#logic">Logic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#layout-html">Layout (Отображение в HTML?)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Локализация</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Глобальная локализация</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Локализация атрибутов</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Локализация формы</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Локализация подсказок</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Формы для задач</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Локализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Формы для задач</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#activity">Activity</a></li>
 </ul>
 </li>
@@ -222,62 +218,70 @@
             
   <div class="section" id="id1">
 <h1><strong>Формы</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<p>Новые формы ECOS реализованы на базе движка <a class="reference external" href="https://github.com/formio/formio.js">formiojs</a></p>
-<p>Функция редактора форм доступна только в ECOS Enterprise</p>
-<p>Формы описываются в json формате</p>
-<p>Формы используются для редактирования записей из Records Service (см. 11. ECOS Records). На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан ID редактируемой записи).</p>
-<p>Существуют две системные формы, которые изменять не желательно:</p>
+<ul class="simple">
+<li><p>Новые формы ECOS реализованы на базе движка <a class="reference external" href="https://github.com/formio/formio.js">formiojs</a>.</p></li>
+<li><p>Функция редактора форм доступна только в ECOS <strong>Enterprise</strong>.</p></li>
+<li><p>Формы описываются в <code class="docutils literal notranslate"><span class="pre">json</span></code> формате.</p></li>
+<li><p>Формы используются для редактирования записей из <strong>Records Service</strong> (см. ECOS Records). На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан <strong>ID</strong> редактируемой записи).</p></li>
+</ul>
+<p>Существуют две системные формы, которые изменять <strong>не желательно</strong>:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Форма для создания и редактирования других форм. Ключ: ECOS_FORM</p></li>
-<li><p>Форма по-умолчанию. Она используется как отправная точка если мы создаем новую форму. Ключ: DEFAULT</p></li>
+<li><p>Форма для создания и редактирования других форм. Ключ: <code class="docutils literal notranslate"><span class="pre">ECOS_FORM</span></code>;</p></li>
+<li><p>Форма по-умолчанию. Она используется как отправная точка если мы создаем новую форму. Ключ: <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>.</p></li>
 </ol>
 </div></blockquote>
-<p><strong>Атрибут - это собирательный термин, который относится и к свойству и ассоциации и к дочерней ассоциации и к системным свойствам;</strong></p>
+<p><strong>Атрибут - это собиртельный термин, который относится и к свойству и ассоциации и к дочерней ассоциации и к системным свойствам;</strong></p>
 <div class="section" id="alfresco">
 <h2>Связь с типом Alfresco<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Если мы хотим создать форму для создания или редактирования типа Alfresco, то следует создать форму с ключом, который сформирован</p>
-<p>по следующему шаблону: alf_{{ТИП-ALFRESCO}}</p>
-<p>Например: alf_idocs:contractor</p>
+<p>Если мы хотим создать форму для создания или редактирования типа <strong>Alfresco</strong>, то следует создать форму с ключом, который сформирован по следующему шаблону: <code class="docutils literal notranslate"><span class="pre">alf_{{ТИП-ALFRESCO}}</span></code>. Например: <strong>alf_idocs:contractor</strong>.</p>
 </div>
 <div class="section" id="ecos">
 <h2>Связь с типом ECOS<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Если нужна форма для создания/редактирования/просмотра записи с типом ECOS следует задать ключ по следующему шаблону:</p>
-<p>type_{{TYPE_UUID}}/{{KIND_UUID}}
-Если вид не важен, то его можно не задавать и сделать ключ type_{{TYPE_UUID}}
-Например:
-Для типа+вида: type_contracts-cat-doctype-contract/contracts-cat-contract-services
-Для типа: type_contracts-cat-doctype-contract
-В консоли браузера можно проверить список возможных ключей форм для записи следующим скриптом:</p>
+<p>Если нужна форма для создания/редактирования/просмотра записи с типом ECOS следует задать ключ по следующему шаблону: <code class="docutils literal notranslate"><span class="pre">type_{{TYPE_UUID}}/{{KIND_UUID}}</span></code>.</p>
+<p>Если вид не важен, то его можно не задавать и сделать ключ: <code class="docutils literal notranslate"><span class="pre">type_{{TYPE_UUID}}</span></code>. Например:</p>
+<ul class="simple">
+<li><p>Для типа+вида: <strong>type_contracts-cat-doctype-contract/contracts-cat-contract-services</strong></p></li>
+<li><p>Для типа: <strong>type_contracts-cat-doctype-contract</strong></p></li>
+</ul>
+<p>В консоли браузера можно проверить список возможных ключей форм для записи следующим скриптом:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace://SpacesStore/86f922df-924a-46a6-a9e3-e34ddb96ef7d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;_formKey[]?str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
-<h2>Пользовательский модуль<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В json описании формы можно добавить поле «customModule», в котором записать путь до javascript модуля, который будет создан вместе с формой. В этом модуле можно разместить сложную логику, которую в последствии вызывать из скриптов формы. Для примера см. ecos-eform-repo/src/main/resources/alfresco/module/ecos-eform-repo/ecos-formsecos-form.json</p>
-<p>Если в customModule будет метод init, то он будет вызван с текущей формой в аргументах.</p>
+<h2>Связь с атрибутом записи (ноды alfresco в частном случае)<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для простых полей мы можем выставить <strong>Property Name</strong> (1) в соответствии со свойством записи, но если нужно связать с атрибутом, в котором есть спец символы (например «:»), то следует добавить в <strong>Custom Properties</strong> свойство (2) с ключом <strong>attribute</strong> и значением - именем атрибута.</p>
+<img alt="Связь с атрибутом записи" class="align-center" src="../_images/Forms_local_0.png" />
+</div>
 <div class="section" id="id3">
-<h3>Проверка новых форм<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<h2>Пользовательский модуль<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В json описании формы можно добавить поле <strong>customModule</strong>, в котором записать путь до <code class="docutils literal notranslate"><span class="pre">javascript</span></code> модуля, который будет создан вместе с формой. В этом модуле можно разместить сложную логику, которую в последствии вызывать из скриптов формы. Для примера см. <strong>ecos-eform-repo/src/main/resources/alfresco/module/ecos-eform-repo/ecos-formsecos-form.json</strong></p>
+<p>Если в <strong>customModule</strong> будет метод <code class="docutils literal notranslate"><span class="pre">init</span></code>, то он будет вызван с текущей формой в аргументах.</p>
+</div>
+<div class="section" id="ecos-forms-enable">
+<h2>Конфигурация ecos-forms-enable<a class="headerlink" href="#ecos-forms-enable" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В ECOS конфигурации добавлен параметр <strong>ecos-forms-enable</strong>, который позволяет глобально отключать новые формы для создания нод. По-умолчанию данный параметр включен.</p>
+<div class="section" id="id4">
+<h3>Проверка новых форм<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Чтобы открыть конкретную форму для редактирования или создания следует в консоли браузера выполнить следующий скрипт:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">eform</span><span class="p">(</span><span class="s1">&#39;wftask@activiti$875&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">params</span><span class="p">:{</span><span class="n">formKey</span><span class="p">:</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">}})</span>
 </pre></div>
 </div>
-<p>Первый аргумент - RecordRef, кототорый будет редактироваться
-Параметр formKey - ключ формы, которую следует открыть</p>
+<p>Первый аргумент - <strong>RecordRef</strong>, кототорый будет редактироваться.</p>
+<p>Параметр <strong>formKey</strong> - ключ формы, которую следует открыть.</p>
 </div>
 </div>
-<div class="section" id="ecos-forms-enable">
-<h2>Конфигурация ecos-forms-enable<a class="headerlink" href="#ecos-forms-enable" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В ECOS конфигурации добавлен параметр ecos-forms-enable, который позволяет глобально отключать новые формы для создания нод. По-умолчанию данный параметр включен.</p>
+<div class="section" id="id5">
+<h2>Создание формы с нуля<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
 </div>
-<div class="section" id="id4">
-<h2>Служебные данные формы<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id6">
+<h2>Служебные данные формы<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
 </div>
 <div class="section" id="form-builder">
 <h2>Form Builder<a class="headerlink" href="#form-builder" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="section" id="id5">
-<h3>Компоненты формы<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id7">
+<h3>Компоненты формы<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 <div class="section" id="api">
 <h3>API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h3>
@@ -288,8 +292,8 @@
 <div class="section" id="validation">
 <h3>Validation (Связь с моделью)<a class="headerlink" href="#validation" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
-<div class="section" id="id6">
-<h3>Условия отображения<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id8">
+<h3>Условия отображения<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 <div class="section" id="logic">
 <h3>Logic<a class="headerlink" href="#logic" title="Ссылка на этот заголовок">¶</a></h3>
@@ -298,48 +302,41 @@
 <h3>Layout (Отображение в HTML?)<a class="headerlink" href="#layout-html" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>Локализация<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Все Label у полей на форме перед рендером проходят через этап локализации. Если ключа локализации не найдено, то рендерится строка, которая записана в поле Label у поля.</p>
-<p>Локализация в новых формах может быть в трех видах:</p>
-<div class="section" id="id8">
-<h3>Глобальная локализация<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Вся локализация, которая имеет префикс <strong>ecos.forms</strong>. попадает в новые формы. Например <strong>ecos.forms.someTitle=»123»</strong> попадет в формы в виде: <strong>{«someTitle»:»123»}</strong></p>
-<p>На момент 16.05.19 в качестве глобальной локализации используется локализация из <strong>site-messages/*.properties файлов</strong> <strong>-share</strong> модулей</p>
-</div>
 <div class="section" id="id9">
-<h3>Локализация атрибутов<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Если Label у поля совпадает с редактируемым атрибутом, то происходит запрос на сервер за заголовком для такого поля. Если заголовок найден, то поле будет локализовано.</p>
+<h2>Локализация<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все <strong>Label</strong> у полей на форме перед рендером проходят через этап локализации. Если ключа локализации не найдено, то рендерится строка, которая записана в поле <strong>Label</strong> у поля.</p>
+<p>Локализация в новых формах может быть в 4 видах:</p>
+<p><strong>1. Глобальная локализация</strong></p>
+<p>Вся локализация, которая имеет префикс <strong>ecos.forms</strong>. попадает в новые формы. Например <strong>ecos.forms.someTitle=»123»</strong> попадет в формы в виде: <strong>{«someTitle»:»123»}</strong>.</p>
+<p>На момент 16.05.19 в качестве глобальной локализации используется локализация из <code class="docutils literal notranslate"><span class="pre">site-messages/*.properties</span></code> файлов <code class="docutils literal notranslate"><span class="pre">*-share</span></code> модулей.</p>
+<p><strong>2. Локализация атрибутов</strong></p>
+<p>Если <strong>Label</strong> у поля совпадает с редактируемым атрибутом, то происходит запрос на сервер за заголовком для такого поля. Если заголовок найден, то поле будет локализовано.</p>
 <img alt="Локализация атрибутов" class="align-center" src="../_images/Forms_local_1.png" />
-<img alt="Локализация атрибутов" class="align-center" src="../_images/Forms_local_2.png" />
-</div>
-<div class="section" id="id10">
-<h3>Локализация формы<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
-<p>В json конфигурации формы можно задать локализацию, которая будет действовать только в пределах данной формы. Пример:</p>
+<p><strong>3. Локализация формы</strong></p>
+<p>В <code class="docutils literal notranslate"><span class="pre">json</span></code> конфигурации формы можно задать локализацию, которая будет действовать только в пределах данной формы. Пример:</p>
 <img alt="Локализация формы" class="align-center" src="../_images/Forms_local_3.png" />
-<p>Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму «Localization» и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.</p>
+<p>Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму <span class="guilabel">Localization</span> и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.</p>
 <img alt="Локализация формы" class="align-center" src="../_images/Forms_local_4.png" />
 <img alt="Локализация формы" class="align-center" src="../_images/Forms_local_5.png" />
 <p><em>Пример локализации панели</em>:
-Чтобы установить локализацию для панелей (Layouts -&gt;Panels), можно воспользоваться функциями Localisation, достаточно прописать их как показано ниже.</p>
+Чтобы установить локализацию для панелей (<span class="guilabel">Layouts</span> -&gt; <span class="guilabel">Panels</span>), можно воспользоваться функциями <span class="guilabel">Localisation</span>, достаточно прописать их как показано ниже.</p>
 <img alt="Локализация для панелей" class="align-center" src="../_images/Forms_local_6.png" />
 <img alt="Локализация для панелей" class="align-center" src="../_images/Forms_local_7.png" />
-</div>
-<div class="section" id="id11">
-<h3>Локализация подсказок<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Чтобы локализовать подсказки к атрибутам, необходимо следующее:
-- Написать саму локализацию в форме. Ключ для локализации можно выбрать на своё усмотрение(не нужно писать ключи с пробелами, они могут не спарситься). Пример локализованной подсказки:</p>
+<p><strong>4. Локализация подсказок</strong></p>
+<p>Чтобы локализовать подсказки к атрибутам, необходимо следующее:</p>
+<ol class="arabic simple">
+<li><p>Написать саму локализацию в форме. Ключ для локализации можно выбрать на своё усмотрение (не нужно писать ключи с пробелами, они могут не спарситься). Пример локализованной подсказки:</p></li>
+</ol>
 <img alt="Локализация подсказок" class="align-center" src="../_images/Forms_local_8.png" />
-<ul class="simple">
-<li><p>Пишем ключ в поле для подсказки «Tooltip».</p></li>
-</ul>
+<ol class="arabic simple" start="2">
+<li><p>Прописать ключ в поле для подсказки <span class="guilabel">Tooltip</span>.</p></li>
+</ol>
 <img alt="Локализация подсказок" class="align-center" src="../_images/Forms_local_9.png" />
-<p>В итоге получаем локализацию подсказок:</p>
+<p>В итоге получим локализацию подсказок:</p>
 <img alt="Локализация подсказок" class="align-center" src="../_images/Forms_local_10.png" />
 </div>
-</div>
-<div class="section" id="id12">
-<h2>Формы для задач<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id10">
+<h2>Формы для задач<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="activity">
 <h3>Activity<a class="headerlink" href="#activity" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
