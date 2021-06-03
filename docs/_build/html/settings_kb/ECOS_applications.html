@@ -100,14 +100,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>ECOS Приложения</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Определения</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Работа с приложениями</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Структура архива приложения</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Артефакты</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Источники артефактов</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#user">USER</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application">APPLICATION</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ecos-app">ECOS_APP</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Перенос данных с одного стенда на другой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Структура архива приложения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Артефакты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Источники артефактов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Обновление артефактов</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html"><strong>Типы данных</strong></a></li>
@@ -204,20 +201,32 @@
 <h1><strong>ECOS Приложения</strong><a class="headerlink" href="#ecos" title="Ссылка на этот заголовок">¶</a></h1>
 <div class="section" id="id1">
 <h2>Определения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Артефакт - единица расширения системы. Примеры артефактов: Тип, Форма, Журнал</p>
-<p>ECOS Приложение (ECOS App) - приложение, которое содержит в себе артефакты. Основная цель - переносимость артефактов между стендами и возможность версионирования. ECOS Application является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.</p>
+<p><strong>Артефакт</strong> - единица расширения системы. Примеры артефактов: <span class="guilabel">Тип</span>, <span class="guilabel">Форма</span>, <span class="guilabel">Журнал</span>.</p>
+<p><strong>Приложение ECOS</strong> (ECOS App) - приложение, которое содержит в себе артефакты. Основная задача Приложений ECOS - переносимость артефактов между стендами и возможность версионирования. ECOS App является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.</p>
 </div>
 <div class="section" id="id2">
 <h2>Работа с приложениями<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Работа сприложениями осуществляется на странице администратора системы.</p>
+<p>Работа с приложениями осуществляется на странице администратора системы.</p>
 <p><a class="reference external" href="http://host/v2/bpmn-designer?journalId=ecos-apps">http://host/v2/bpmn-designer?journalId=ecos-apps</a></p>
 <img alt="ECOS apps" class="align-center" src="../_images/apps_page.png" />
-<p>На этой странице можно:
-1. Cоздавать и редактировать приложения
-2. Скачивать приложения</p>
+<p>На этой странице можно:</p>
+<ol class="arabic simple">
+<li><p>Cоздавать и редактировать приложения.</p></li>
+<li><p>Скачивать приложения.</p></li>
+</ol>
 </div>
 <div class="section" id="id3">
-<h2>Структура архива приложения<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<h2>Перенос данных с одного стенда на другой<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Перенос данных со стенда на стенд осуществляется через <strong>Приложения ECOS</strong>. Для этого необходимо:</p>
+<ol class="arabic simple">
+<li><p>Создать приложение.</p></li>
+<li><p>Скачать приложение.</p></li>
+<li><p>Загрузить приложение на необходимом стенде.</p></li>
+</ol>
+<img alt="Создание приложения" class="align-center" src="../_images/new_app.jpg" />
+</div>
+<div class="section" id="id4">
+<h2>Структура архива приложения<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span><span class="o">.</span><span class="n">json</span> <span class="o">//</span> <span class="n">метаданные</span> <span class="n">приложения</span>
 <span class="n">artifacts</span><span class="p">:</span> <span class="o">//</span> <span class="n">папка</span> <span class="n">с</span> <span class="n">артефактами</span> <span class="n">приложения</span>
   <span class="n">type0</span><span class="p">:</span>
@@ -240,71 +249,55 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>Артефакты<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для управления артефактами предусмотрен журнал «Артефакты ECOS». В данный журнал попадают все артефакты, которые достигли микросервиса ecos-apps.</p>
+<div class="section" id="id5">
+<h2>Артефакты<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для управления артефактами предусмотрен журнал <strong>Артефакты ECOS</strong>. В данный журнал попадают все артефакты, которые достигли микросервиса <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code>.</p>
 <img alt="Артефакты" class="align-center" src="../_images/artifacts.png" />
 <p>В данном журнале есть возможность выполнить следующие действия:</p>
-<ol class="arabic simple">
-<li><p>Скачать историю артефакта</p></li>
-</ol>
-<p>При нажатии на действие можно выбрать дату, с которой необходимо выгрузить историю артефакта.
-При сабмите формы скачивается zip архив со всеми версиями артефакта с указанной даты.
-Если последний артефакт был загружен ранее чем выбраная дата, то будет выгружен только он (т.е. всегда будет как минимум 1 артефакт).</p>
-<p>Формат имени папки с версией артефакта: дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]
-Дата создания указывается в часовом поясе UTC.</p>
+<p><strong>1. Скачать историю артефакта</strong></p>
+<ul class="simple">
+<li><p>При нажатии на действие можно выбрать дату, с которой необходимо выгрузить историю артефакта.</p></li>
+<li><p>При сабмите формы скачивается <em>zip</em> архив со всеми версиями артефакта с указанной даты.</p></li>
+<li><p>Если последний артефакт был загружен ранее чем выбраная дата, то будет выгружен только он (т.е. всегда будет как минимум 1 артефакт).</p></li>
+<li><p>Формат имени папки с версией артефакта: <strong>дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]</strong>. Дата создания указывается в часовом поясе UTC.</p></li>
+</ul>
 <img alt="Версия артефакта" class="align-center" src="../_images/artifact-history.png" />
-<ol class="arabic simple" start="2">
-<li><p>Скачать артефакт</p></li>
-</ol>
-<p>Всегда скачивается zip архив с выбранным артефактом</p>
-<ol class="arabic simple" start="3">
-<li><p>Передеплоить артефакт вручную</p></li>
-</ol>
-<p>Отправить артефакт из ecos-apps в микросервис. Может быть полезно при разработке или после сбоя в базе целевого микросервиса т.е. ecos-apps не пропускает артефакт если он ранее был успешно задеплоен.</p>
-<ol class="arabic simple" start="4">
-<li><p>Сбросить пользовательскую версию артефакта</p></li>
-</ol>
-<p>Сброс происходит до той версии, которая была установлена из приложения (APPLICATION или ECOS_APP). Сбрасывать можно только артефакты, которые в колонке «Тип источника» имеют USER.</p>
+<p><strong>2. Скачать артефакт</strong></p>
+<p>Всегда скачивается <em>zip</em> архив с выбранным артефактом.</p>
+<p><strong>3. Передеплоить артефакт вручную</strong></p>
+<p>Отправить артефакт из <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code> в микросервис. Может быть полезно при разработке или после сбоя в базе целевого микросервиса т.е. <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code> не пропускает артефакт если он ранее был успешно задеплоен.</p>
+<p><strong>4. Сбросить пользовательскую версию артефакта</strong></p>
+<p>Сброс происходит до той версии, которая была установлена из приложения (<code class="docutils literal notranslate"><span class="pre">APPLICATION</span></code> или <code class="docutils literal notranslate"><span class="pre">ECOS_APP</span></code>). Сбрасывать можно только артефакты, которые в колонке <span class="guilabel">Тип источника</span> имеют <strong>USER</strong>.</p>
 </div>
-<div class="section" id="id5">
-<h2>Источники артефактов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id6">
+<h2>Источники артефактов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Есть 3 возможных источника артефактов:</p>
 <ol class="arabic simple">
 <li><p><strong>USER</strong> - артефакт добавляет или модифицирует пользователь;</p></li>
 <li><p><strong>APPLICATION</strong> - артефакт загружается из приложений, которые подключены к интерфейсу команд;</p></li>
 <li><p><strong>ECOS_APP</strong> - артефакт загружается из приложения ECOS;</p></li>
 </ol>
+</div>
+<div class="section" id="id7">
+<h2>Обновление артефактов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Все 3 источника имеют свою политику по обновлению артефактов:</p>
-<div class="section" id="user">
-<h3>USER<a class="headerlink" href="#user" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Артефакт обновляется безусловно. Любое изменение артефакта приводит к его изменению в базе микросервиса ecos-apps.</p>
-</div>
-<div class="section" id="application">
-<h3>APPLICATION<a class="headerlink" href="#application" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Артефакт обновляется если он не принадлежит никакому приложению ECOS и была загружена версия артефакта, которая отличается от предыдущей загруженной из APPLICATION.
-Пример: Если у нас есть следующие ревизии артефакта:</p>
+<p><strong>USER</strong> - Артефакт обновляется безусловно. Любое изменение артефакта приводит к его изменению в базе микросервиса <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code>.</p>
+<p><strong>APPLICATION</strong> - Артефакт обновляется если он не принадлежит никакому приложению ECOS и была загружена версия артефакта, которая отличается от предыдущей загруженной из <code class="docutils literal notranslate"><span class="pre">APPLICATION</span></code>. Пример: Если у нас есть следующие ревизии артефакта:</p>
 <ul class="simple">
-<li><p>rev2 USER</p></li>
-<li><p>rev1 USER</p></li>
-<li><p>rev0 APPLICATION</p></li>
+<li><p><strong>rev2</strong> USER</p></li>
+<li><p><strong>rev1</strong> USER</p></li>
+<li><p><strong>rev0</strong> APPLICATION</p></li>
 </ul>
-<p>rev0 - самая первая версия артефакта
-rec2 - самая последняя версия артефакта</p>
-<p>Видим, что первая версия артефакта поступила из приложения, а другие две от пользователя.
-Если в такой ситуации в микросервис приходит версия rev0 от APPLICATION, то ничего не поменяется не смотря на то что rev2 != rev0.
-Если из приложения придет rev3, то новая ревизия загрузится и станет актуальной:</p>
+<p>То <strong>rev0</strong> - самая первая версия артефакта, а <strong>rec2</strong> - самая последняя версия артефакта. Мы видим, что первая версия артефакта поступила из приложения, а другие две от пользователя.</p>
+<p>Если в такой ситуации в микросервис приходит версия <strong>rev0</strong> от APPLICATION, то ничего не поменяется не смотря на то что <strong>rev2</strong> != <strong>rev0</strong>.</p>
+<p>Если из приложения придет <strong>rev3</strong>, то новая ревизия загрузится и станет актуальной:</p>
 <ul class="simple">
-<li><p>rev3 APPLICATION</p></li>
-<li><p>rev2 USER</p></li>
-<li><p>rev1 USER</p></li>
-<li><p>rev0 APPLICATION</p></li>
+<li><p><strong>rev3</strong> APPLICATION</p></li>
+<li><p><strong>rev2</strong> USER</p></li>
+<li><p><strong>rev1</strong> USER</p></li>
+<li><p><strong>rev0</strong> APPLICATION</p></li>
 </ul>
-</div>
-<div class="section" id="ecos-app">
-<h3>ECOS_APP<a class="headerlink" href="#ecos-app" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Работает аналогично APPLICATION, но при загрузке артефакту проставляется признак принадлежности приложению. Если артефакт принадлежит приложению, то он не обновляется из APPLICATION.</p>
-</div>
+<p><strong>ECOS_APP</strong> - обновляется аналогично APPLICATION, но при загрузке артефакту проставляется признак принадлежности приложению. Если артефакт принадлежит приложению, то он не обновляется из APPLICATION.</p>
 </div>
 </div>
 
