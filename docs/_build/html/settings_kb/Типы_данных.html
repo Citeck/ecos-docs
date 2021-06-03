@@ -99,18 +99,18 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">База знаний по настройке</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ECOS_applications.html"><strong>ECOS Приложения</strong></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Типы данных</strong></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Пример описания типа</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Структура типов данных</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Наследование типов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Пример описания типа</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Структура типов данных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Наследование типов</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Маппинг старых типов и видов на новые типы кейсов</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Связи (с формой, действиями)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Маппинг старых типов и видов на новые типы кейсов</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Связи (с формой, действиями)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#alfresco">Связь с типом Alfresco</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Действия</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Варианты создания</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Действия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Варианты создания</a></li>
 </ul>
 </li>
 </ul>
@@ -208,19 +208,20 @@
 <h1><strong>Типы данных</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
 <p>В ECOS внедрена собственная система типов, на основе которой настраиваются следующие аспекты:</p>
 <ul class="simple">
-<li><p>Форма</p></li>
-<li><p>Действия</p></li>
-<li><p>Связи</p></li>
-<li><p>Тип UI (react/share)</p></li>
+<li><p><strong>Форма</strong>;</p></li>
+<li><p><strong>Действия</strong>;</p></li>
+<li><p><strong>Связи</strong>;</p></li>
+<li><p><strong>Тип UI (react/share)</strong>.</p></li>
 </ul>
 <p>Типы ECOS являются модулями ECOS и располагаются по следующим путям:</p>
-<p>В alfresco: ${module_id}/src/main/resources/alfresco/module/${module_id}/model/type/<strong>/*.json
-В микросервисах: resources/ecos-app/model/type/</strong>/<a href="#id2"><span class="problematic" id="id3">*</span></a>.json</p>
-<p>Для просмотра существующих типов и их редактирования создан журнал «Типы кейсов».
-Чтобы в него попасть следует открыть меню и перейти в системные журналы:</p>
+<ul class="simple">
+<li><p><strong>В alfresco</strong>: <code class="docutils literal notranslate"><span class="pre">${module_id}/src/main/resources/alfresco/module/${module_id}/model/type/**/*.json</span></code></p></li>
+<li><p><strong>В микросервисах</strong>: <code class="docutils literal notranslate"><span class="pre">resources/ecos-app/model/type/**/*.json</span></code></p></li>
+</ul>
+<p>Для просмотра существующих типов и их редактирования создан журнал <strong>Типы кейсов</strong>. Чтобы в него попасть следует открыть меню и перейти в системные журналы:</p>
 <img alt="casetype1" class="align-center" src="../_images/case_type_1.png" />
-<div class="section" id="id4">
-<h2>Пример описания типа<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id2">
+<h2>Пример описания типа<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span>
    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Базовый тип&quot;</span><span class="p">,</span>
@@ -240,27 +241,27 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="section" id="id3">
+<h3>Структура типов данных<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>Наследование типов<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<p>У всех типов должен быть родитель. По умолчанию - <strong>model/type&#64;base</strong> (базовый тип).</p>
+</div>
+</div>
 <div class="section" id="id5">
-<h3>Структура типов данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
-</div>
-<div class="section" id="id6">
-<h3>Наследование типов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
-<p>У всех типов должен быть родитель. По умолчанию - <a class="reference external" href="mailto:model/type&#37;&#52;&#48;base">model/type<span>&#64;</span>base</a> (базовый тип)</p>
-</div>
-</div>
-<div class="section" id="id7">
-<h2>Маппинг старых типов и видов на новые типы кейсов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Старые типы и виды кейса записываются в полях tk:type и tk:kind в виде nodeRef. Например:
-tk:type = workspace://SpacesStore/contracts-cat-doctype-contract (Договор)
-tk:kind = workspace://SpacesStore/contracts-cat-contract-services (Услуги)
-Для преобразования в новый тип кейса следует взять значения из этих полей, убрать у каждого из них workspace://SpacesStore/ и оставшиеся части объединить в одну строку через «/» (слева - tk:type, а справа tk:kind):
-<strong>contracts-cat-doctype-contract/contracts-cat-contract-services</strong>
-Если tk:kind не задан, то правой части и знака «/» не нужно. Например:
-<strong>contracts-cat-doctype-contract</strong>
-При добавлении новых типов кейсов следует учитывать, что тип с tk:kind должен наследоваться от типа без tk:kind чтобы унаследовать его свойства:</p>
+<h2>Маппинг старых типов и видов на новые типы кейсов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Старые типы и виды кейса записываются в полях tk:type и tk:kind в виде nodeRef. Например:</p>
+<ul class="simple">
+<li><p><strong>tk:type = workspace://SpacesStore/contracts-cat-doctype-contract</strong> (Договор),</p></li>
+<li><p><strong>tk:kind = workspace://SpacesStore/contracts-cat-contract-services</strong> (Услуги).</p></li>
+</ul>
+<p>Для преобразования в новый тип кейса следует взять значения из этих полей, убрать у каждого из них <strong>workspace://SpacesStore/</strong> и оставшиеся части объединить в одну строку через «/» (слева - <code class="docutils literal notranslate"><span class="pre">tk:type</span></code>, а справа <code class="docutils literal notranslate"><span class="pre">tk:kind</span></code>): <strong>contracts-cat-doctype-contract/contracts-cat-contract-services</strong>.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">tk:kind</span></code> не задан, то правой части и знака «/» не нужно. Например: <strong>contracts-cat-doctype-contract</strong>.</p>
+<p>При добавлении новых типов кейсов следует учитывать, что тип с <code class="docutils literal notranslate"><span class="pre">tk:kind</span></code> должен наследоваться от типа без <code class="docutils literal notranslate"><span class="pre">tk:kind</span></code> чтобы унаследовать его свойства:</p>
 <img alt="Наследование типа" class="align-center" src="../_images/case_type_legacy_1.png" />
-<div class="section" id="id8">
-<h3>Связи (с формой, действиями)<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id6">
+<h3>Связи (с формой, действиями)<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
 <p><em>Связи наследуются</em> т.е. чтобы добавить связь «Связан с» достаточно указать в качестве parent’а <strong>model/type$base</strong> т.к. там уже настроена эта связь
 Связи (associations) настраиваются для отображения, добавления и удаления в виджете связей на карточке документа.
 Связь описывается следующей структурой:</p>
@@ -272,32 +273,35 @@ tk:kind = workspace://SpacesStore/contracts-cat-contract-services (Услуги)
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>id в данном случае для Alfresco должно совпадать с QName существующей в модели связи. Для добавления произвольных связей (без обязательного наличия связи в модели) нужна доработка.</p>
+<p><strong>id</strong> в данном случае для Alfresco должно совпадать с <strong>QName</strong> существующей в модели связи. Для добавления произвольных связей (без обязательного наличия связи в модели) нужна доработка.</p>
 </div>
 </div>
 <div class="section" id="alfresco">
 <h2>Связь с типом Alfresco<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Чтобы у записей с определенным типом alfresco был нужный тип ECOS можно сделать следующее (на выбор):</p>
+<p>Чтобы у записей с определенным типом <code class="docutils literal notranslate"><span class="pre">alfresco</span></code> был нужный тип ECOS можно сделать следующее (на выбор):</p>
 <p>Для новых нод:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Сделать аспект, который унаследован от etype:hasType и переопределить там свойство etype:type (!!!тип указывать без emodel/type&#64; префикса!!!). После этого можно навесить данный аспект на тип alfresco и новые ноды будут иметь нужный тип ECOS.</p></li>
-<li><p>В варианте создания добавить атрибут _type=emodel/type&#64;нужный-тип. Новые ноды, создаваемые через данный вариант создания будут иметь нужный тип;</p></li>
+<li><p>Сделать аспект, который унаследован от <strong>etype:hasType</strong> и переопределить там свойство <strong>etype:type</strong> (!тип следует указывать <em>без</em> emodel/type&#64; префикса). После этого можно навесить данный аспект на тип <code class="docutils literal notranslate"><span class="pre">alfresco</span></code> и новые ноды будут иметь нужный тип ECOS.</p></li>
+<li><p>В варианте создания добавить атрибут <strong>_type=emodel/type&#64;нужный-тип</strong>. Новые ноды, создаваемые через данный вариант создания будут иметь нужный тип.</p></li>
 </ol>
 </div></blockquote>
 <p>Для новых и старых нод:</p>
 <blockquote>
-<div><ol class="arabic simple" start="3">
-<li><p>Добавить Registrar бин, который зарегистрирует связь тип alfresco → тип ECOS:</p></li>
+<div><ol class="arabic" start="3">
+<li><p>Добавить <strong>Registrar</strong> бин, который зарегистрирует связь тип alfresco → тип ECOS:</p>
+<blockquote>
+<div><p><strong>ecosTypeService.register(QName nodeType, Function&lt;AlfNodeInfo, RecordRef&gt; evaluator)</strong>.</p>
+</div></blockquote>
+</li>
 </ol>
 </div></blockquote>
-<p>ecosTypeService.register(QName nodeType, Function&lt;AlfNodeInfo, RecordRef&gt; evaluator)</p>
-<p>Для примера см. конфигурацию ru.citeck.ecos.node.EcosTypeConfiguration</p>
-<div class="section" id="id9">
-<h3>Действия<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для примера см. конфигурацию <strong>ru.citeck.ecos.node.EcosTypeConfiguration</strong>.</p>
+<div class="section" id="id7">
+<h3>Действия<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
-<div class="section" id="id10">
-<h3>Варианты создания<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id8">
+<h3>Варианты создания<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 </div>
 </div>
