@@ -199,6 +199,9 @@
   <div class="section" id="id1">
 <h1><strong>Дашборды</strong><a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
 <p>Для отображения домашней страницы пользователя или информации по кейсу или информации по сайту в ECOS предусмотрены Dashboard.</p>
+<div class="section" id="id2">
+<h2>Виды дашбордов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>На момент написания статьи существует 3 вида dashboard:</p>
 <blockquote>
 <div><table class="docutils align-default" id="id7">
 <caption><span class="caption-text">Настройки дашбордов</span><a class="headerlink" href="#id7" title="Постоянная ссылка на таблицу">¶</a></caption>
@@ -252,25 +255,22 @@
 </tbody>
 </table>
 </div></blockquote>
-<div class="section" id="id2">
-<h2>Виды дашбордов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>На момент написания статьи существует 3 вида dashboard:</p>
 <p>Алгоритм поиска dashboard следующий:</p>
 <ol class="arabic simple">
-<li><p>Смотрим наличие recordRef в URL</p></li>
-<li><p>Если recordRef отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя</p></li>
-<li><p>Если recordRef присутствует, то запрашиваем аттрибуты <strong>_dashboardKey[]</strong> (массив) и <strong>_dashboardType</strong> (одно значение)</p></li>
-<li><p>Дальше перебираем каждый полученный <strong>dashboardKey</strong> и запрашиваем у сервера конфигурацию для ключа + типа</p></li>
-<li><p>Если на сервере конфигурации не нашлось, то пробуем следующий <strong>dashboardKey</strong></p></li>
-<li><p>Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию по ключу <strong>DEFAULT</strong></p></li>
+<li><p>Смотрим наличие recordRef в URL,</p></li>
+<li><p>Если recordRef отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя,</p></li>
+<li><p>Если recordRef присутствует, то запрашиваем аттрибуты <strong>_dashboardKey[]</strong> (массив) и <strong>_dashboardType</strong> (одно значение),</p></li>
+<li><p>Дальше перебираем каждый полученный <strong>dashboardKey</strong> и запрашиваем у сервера конфигурацию для ключа + типа,</p></li>
+<li><p>Если на сервере конфигурации не нашлось, то пробуем следующий <strong>dashboardKey</strong>,</p></li>
+<li><p>Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию по ключу <strong>DEFAULT</strong>.</p></li>
 </ol>
 </div>
 <div class="section" id="id3">
 <h2>Кэширование<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Кеширование возможно в пределах открытой вкладки браузера:</p>
 <ol class="arabic simple">
-<li><p><strong>_dashboardKey[]</strong> и <strong>_dashboardType</strong> по recordRef (они достаточно редко меняются)</p></li>
-<li><p>Конфигурация dashboard (или её отсутствие) по dashboardKey + dashboardType</p></li>
+<li><p><strong>_dashboardKey[]</strong> и <strong>_dashboardType</strong> по recordRef (они достаточно редко меняются),</p></li>
+<li><p>Конфигурация <strong>dashboard</strong> (или её отсутствие) по <strong>dashboardKey</strong> + <strong>dashboardType</strong>.</p></li>
 </ol>
 </div>
 <div class="section" id="id4">
@@ -278,10 +278,10 @@
 <div class="section" id="id5">
 <h3>Настройки виджетов на дашбордах<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Осуществляется в настройке карточки.</p>
-<p>В конфигурации виджета в поле <strong>config.widgetDisplayCondition</strong> задается условие как json строка.
+<p>В конфигурации виджета в поле <strong>config.widgetDisplayCondition</strong> задается условие как <code class="docutils literal notranslate"><span class="pre">json</span></code> строка.
 Написание условия в соответствии статье <a class="reference external" href="https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1019674636/">Язык_предикатов</a>.</p>
-<p>Если отсутствует условие, то виджет отображается;</p>
-<p>На данный момент интерфейс настройка доступна только для виджета Doc One</p>
+<p>Если отсутствует условие, то виджет отображается.</p>
+<p>На данный момент интерфейс настройка доступна только для виджета <strong>Doc One</strong>.</p>
 </div>
 </div>
 </div>
