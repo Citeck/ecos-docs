@@ -114,7 +114,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmmn">Редактор сценариев (CMMN)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Добавление нового Действия</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cmmn-bpmn">Работа в связке CMMN - BPMN</a></li>
 </ul>
 </li>
@@ -317,44 +316,6 @@ ${caseStatusService.setStatus(document, «trade-primary-contact»)},  где tra
 <p>Где необходимо добавить нужный нам процесс</p>
 <img alt="../_images/proccess_cmmn_5.png" class="align-center" src="../_images/proccess_cmmn_5.png" />
 <img alt="../_images/proccess_cmmn_5_1.png" class="align-center" src="../_images/proccess_cmmn_5_1.png" />
-<p><strong>Доработка типа данных</strong></p>
-<p>Добавил роли</p>
-<img alt="../_images/proccess_cmmn_6.png" class="align-center" src="../_images/proccess_cmmn_6.png" />
-<p>Добавил статусы по которым проводил привязку к шагам процесса</p>
-<img alt="../_images/proccess_cmmn_7.png" class="align-center" src="../_images/proccess_cmmn_7.png" />
-<p>Шаблон формы для шага</p>
-<img alt="../_images/proccess_cmmn_8.png" class="align-center" src="../_images/proccess_cmmn_8.png" />
-<p>Пример успешной реализации процесса</p>
-<img alt="../_images/proccess_cmmn_9.png" class="align-center" src="../_images/proccess_cmmn_9.png" />
-<img alt="../_images/proccess_cmmn_9_1.png" class="align-center" src="../_images/proccess_cmmn_9_1.png" />
-</div>
-<div class="section" id="id8">
-<h2>Добавление нового Действия<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Добавление нового Действия происходит через json.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Пример {
-&quot;id&quot;: &quot;activity-action&quot;,
-&quot;name&quot;: {
-  &quot;ru&quot;: &quot;Активность&quot;,
-  &quot;en&quot;: &quot;Activity&quot;
-},
-&quot;icon&quot;: &quot;icon-plus&quot;,
-&quot;type&quot;: &quot;create&quot;,
-&quot;config&quot;: {
-  &quot;recordRef&quot;: &quot;dict@ecos:case&quot;, -- тип кейса (можно узнать из nodebrowser)
-      &quot;formId&quot;: &quot;uiserv/form@activity-case-form&quot;, -- название кейса для вызова
-  &quot;attributes&quot;: {
-    &quot;inner_form&quot;: &quot;true&quot;,
-        &quot;_parent&quot;: &quot;/app:company_home/st:sites/cm:tenant_/cm:documentLibrary/cm:activity-case&quot; – путь для сохранения тоже можно взять из nodeBrowser
-  }
-}
-}
-</pre></div>
-</div>
-<p>NodeBrowser</p>
-<img alt="../_images/proccess_new_actions1.png" class="align-center" src="../_images/proccess_new_actions1.png" />
-<p>Загружать json файл через Действия -&gt;»+»-&gt; Загрузить действие</p>
-<img alt="../_images/proccess_new_actions2.png" class="align-center" src="../_images/proccess_new_actions2.png" />
-<p>Применить действие также как и по инструкции создание типа данных</p>
 </div>
 <div class="section" id="cmmn-bpmn">
 <h2>Работа в связке CMMN - BPMN<a class="headerlink" href="#cmmn-bpmn" title="Ссылка на этот заголовок">¶</a></h2>
