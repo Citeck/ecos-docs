@@ -22,6 +22,16 @@
     BPM,\-,Раздел с бизнес-процессами в виде плитки или списка
     DEV_TOOLS,\-,Страница dev-tools
 
+.. csv-table:: Стандартные группы разделов
+
+    Микросервис,Идентификатор группы,Порядок
+    ecos-apps,application,0
+    ecos-process,process,10
+    ecos-model,model,20
+    ecos-uiserv,user-interface,30
+    ecos-notifications,notification,40
+    ecos-integrations,integration,50
+
 Модель группы разделов::
 
     AdminSectionsGroupDef {
@@ -37,4 +47,30 @@
         name: MLText // имя раздела. Можно не задавать для раздела с типом JOURNAL
         type: String // тип раздела
         config: ObjectData // конфигурация раздела
+    }
+
+Пример конфигурации::
+
+    {
+      "id": "user-interface",
+      "name": {
+        "en": "UI configuration",
+        "ru": "Конфигурация UI"
+      },
+      "order": 30,
+      "sections": [
+        {
+          "type": "JOURNAL",
+          "config": {
+            "journalId": "ecos-journals"
+          }
+        },
+        {
+          "type": "JOURNAL",
+          "config": {
+            "journalId": "ecos-forms"
+          }
+        },
+        ...
+      ]
     }
