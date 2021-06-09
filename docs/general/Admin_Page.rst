@@ -74,3 +74,23 @@
         ...
       ]
     }
+
+Пример патча для добавления нового раздела в группу::
+
+    id: add-some-journal-to-admin-page
+
+    name:
+      ru: Добавить журнал "Some Journal" на страницу администратора
+      en: Add journal "Some Journal" to admin page
+
+    target: ui/admin-sections-group$application
+
+    type: json
+    config:
+      operations:
+        - op: add
+          path: '$.sections'
+          value:
+            type: JOURNAL
+            config:
+              journalId: some-journal-id
