@@ -41,9 +41,9 @@
 Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере: Windows— c:/windows/system32/drivers/etc/hosts. Linux, Ubuntu, Unix, BSD — /etc/hosts. Mac OS — /private/etc/hosts.
 
 * Открыть файл hosts в редакторе с повышеными правами
-* Добавить строчку: “192.168.1.16 ecos-community-demo” (без кавычек), 
+* Добавить строчку: “127.0.0.1 ecos-community-demo” (без кавычек), 
 
-где 192.168.1.16 – ip ноутбука/компьютера, на котором разворачивается ECOS
+где 127.0.0.1 – ip ноутбука/компьютера, на котором разворачивается ECOS
 
 * Сохранить
 
@@ -64,11 +64,19 @@
  *	Выполнить docker-compose pull
  * Выполнить docker-compose up -d
  *	Перейти в браузере по адресу `http://ecos-community-demo/ <http://ecos-community-demo/>`_ 
- *	Войти в систему, используя следующие учётные данные: 
+ *	Войти в систему, используя следующие учётные данные (для 3.хх.х версии): 
 
 Логин – admin | 
 Пароль - ec0spa55wd
 
+ * Войти в систему, используя следующие учётные данные (для 4.х.х версии)
+ 
+Логин - admin |
+Пароль - admin
+ 
+ При первом развертывании keycloak попросит сменить пароль.
+ Если необходимо еще раз сменить пароль, инструкция  `здесь <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+ 
  * Учетные данные для Flowable-modeler:
  
 Логин – admin |
@@ -82,4 +90,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~
 В случае если сначала была развернута 4-я версия, а затем нужно развернуть 3-ю, или нужно развернуть community на чистой базе, нужно удалить папку по пути:
 
+ * для Windows
+
 ``\\wsl$\docker-desktop\mnt\version-pack\containers\services\docker\rootfs\opt\ecos-community-demo-data``
+
+ * для Lunix
+ 
+ ``/opt/ecos-community-demo-data``
