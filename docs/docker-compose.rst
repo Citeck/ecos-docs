@@ -94,6 +94,6 @@
 
 ``\\wsl$\docker-desktop\mnt\version-pack\containers\services\docker\rootfs\opt\ecos-community-demo-data``
 
- * для Lunix
+ * для Linux
  
 ``/opt/ecos-community-demo-data``
