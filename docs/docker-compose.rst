@@ -96,4 +96,4 @@
 
  * для Lunix
  
- ``/opt/ecos-community-demo-data``
+``/opt/ecos-community-demo-data``
