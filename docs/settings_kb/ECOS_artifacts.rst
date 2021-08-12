@@ -7,6 +7,97 @@
 
 **Артефакт** - единица расширения системы. Примеры артефактов: :guilabel:`Тип`, :guilabel:`Форма`, :guilabel:`Журнал`.
 
+Тип артефакта как правило состоит из двух частей разделенных символом ``/``.
+Первая часть - это область системы к которой относится артефакт. Обычно за одну область отвечает один микросервис.
+Вторая часть - локальный идентификатор типа
+Например в типе ``ui/form`` ui - это область, а form - локальный идентификатор.
+
+**Расположение артефактов**
+
+Все артефакты располагаются в директориях, которые соответствуют типу.
+В приложении настраивается корневая папка с артефактами и в ней можно создавать подпапки ui/form, model/type и тд.
+По умолчанию корневой папкой с артефактами является ``src/main/resources/eapps/artifacts``
+
+Типы артефактов
+~~~~~~~~~~~~~~~
+
+.. list-table::
+      :widths: 10 10 40
+      :header-rows: 1
+
+      * - Тип
+        - Микросервис
+        - Примечание
+      * - ui/dashboard
+        - ecos-uiserv
+        - 
+      * - ui/action
+        - ecos-uiserv
+        - 
+      * - ui/admin-sections-group
+        - ecos-uiserv
+        - 
+      * - ui/form
+        - ecos-uiserv
+        - 
+      * - ui/i18n
+        - ecos-uiserv
+        - 
+      * - ui/icon
+        - ecos-uiserv
+        - 
+      * - ui/journal
+        - ecos-uiserv
+        - 
+      * - ui/menu
+        - ecos-uiserv
+        -
+      * - ui/theme
+        - ecos-uiserv
+        - 
+      * - model/num-template
+        - ecos-model
+        - 
+      * - model/permissions
+        - ecos-model
+        - 
+      * - model/type
+        - ecos-model
+        - 
+      * - app/ecosapp
+        - ecos-apps
+        - 
+      * - app/artifact-patch
+        - ecos-apps
+        - 
+      * - app/dev-module
+        - ecos-apps
+        - 
+      * - integrations/credentials
+        - ecos-integrations
+        - 
+      * - integrations/datasource
+        - ecos-integrations
+        - 
+      * - integrations/file-import-config
+        - ecos-integrations
+        - 
+      * - integrations/recsrc
+        - ecos-integrations
+        - 
+      * - integrations/sync
+        - ecos-integrations
+        - 
+      * - process/cmm
+        - ecos-process
+        - 
+      * - notification/file
+        - ecos-notifications
+        - 
+      * - notification/template
+        - ecos-notifications
+        - 
+
 Переопределение артефактов
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -7,12 +7,8 @@
 * **Форма**;
 * **Действия**;
 * **Связи**;
-* **Тип UI (react/share)**.
 
-Типы ECOS являются модулями ECOS и располагаются по следующим путям:
-
-* **В alfresco**: ``${module_id}/src/main/resources/alfresco/module/${module_id}/model/type/**/*.json``
-* **В микросервисах**: ``resources/ecos-app/model/type/**/*.json``
+Типы ECOS являются артефактами ECOS с типом model/type.
 
 Для просмотра существующих типов и их редактирования создан журнал **Типы кейсов**. Чтобы в него попасть следует открыть меню и перейти в системные журналы:
 
@@ -57,7 +53,7 @@
 
 * **tk:type = workspace://SpacesStore/contracts-cat-doctype-contract** (Договор),
 * **tk:kind = workspace://SpacesStore/contracts-cat-contract-services** (Услуги).
-  
+
 Для преобразования в новый тип кейса следует взять значения из этих полей, убрать у каждого из них **workspace://SpacesStore/** и оставшиеся части объединить в одну строку через "/" (слева - ``tk:type``, а справа ``tk:kind``): **contracts-cat-doctype-contract/contracts-cat-contract-services**.
 
 Если ``tk:kind`` не задан, то правой части и знака "/" не нужно. Например: **contracts-cat-doctype-contract**.
@@ -96,8 +92,8 @@
 
 Для новых и старых нод:
 
-        3. Добавить **Registrar** бин, который зарегистрирует связь тип alfresco → тип ECOS: 
-   
+        3. Добавить **Registrar** бин, который зарегистрирует связь тип alfresco → тип ECOS:
+
             **ecosTypeService.register(QName nodeType, Function<AlfNodeInfo, RecordRef> evaluator)**.
 
 Для примера см. конфигурацию **ru.citeck.ecos.node.EcosTypeConfiguration**.

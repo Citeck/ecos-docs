@@ -13,38 +13,32 @@ ECOS Actions
       * - Имя
         - Тип
         - Описание
-      * - Id
+      * - id
         - String
         - Идентификатор действия. Уникальный среди всех действий в системе
-      * - Key
+      * - key
         - String
         - Ключ, по которому возможна фильтрация. Должен быть в формате word0.word1.word2 чтобы можно было фильтровать по маске.
-      * - Name
+      * - name
         - String
         - Имя действия, которое увидит пользователь
-      * - Type 
+      * - type
         - String
         - Тип действия. Тип определяет логику, которая будет выполнена при выполнении действия.
-      * - Icon
+      * - icon
         - String
         - Иконка действия. Пример "icon-delete", "icon-on". Все иконки можно посмотреть в citeck/ecos-ui/src/fonts/citeck/demo.html
-      * - Config
+      * - config
         - JsonObject
         - Конфигурация действия. Полезно в случаях, когда один тип действия может на основе конфигурации менять свое поведение. Например - для действия с типом Download можно задать шаблон URI для скачивания контента.
-      * - Evaluator
-        - RecordEvaluator
-        - Используется для динамического определения доступности действия для пользователя. Например, действия "Редактировать" и "Удалить" не могут выполнять пользователи без прав на запись. Т.о. для таких пользователей эти действия скрываются
-
-см. статью `Record Evaluator <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1103790162/Record+Evaluator>`_
+      * - predicate
+        - Predicate
+        - Используется для динамического определения доступности действия для пользователя. Например, действия "Редактировать" и "Удалить" не могут выполнять пользователи без прав на запись и для них эти действия скрываются
 
 Расширение списка действий
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Действия - это модули ECOS в формате json, которые располагаются по путям:
-
-Alfresco → **{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action**
-
-Микросервисы → **resources/ecos-app/ui/action/**
+Действия - это артефакты ECOS в формате json или yaml с типом ui/action:
 
 Одно действие может быть многократно использовано в разных местах системы (например, в журнале и на карточке документа).
 
@@ -68,7 +62,7 @@ Alfresco → **{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco
 Овтет::
 
  [
-    { 
+    {
         "record": "workspace://SpacesStore/123123-123-123",
         "actions": [
             {
@@ -85,7 +79,7 @@ Alfresco → **{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco
             }
         ]
     },
-    { 
+    {
         "record": "workspace://SpacesStore/123123-123-124",
         "actions": [
             {
@@ -130,8 +124,8 @@ Alfresco → **{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco
 ~~~~~~~~
 
 На фронтенде действия описаны в виде javascript сущностей с методами
-**execute, getDefaultModel, canBeExecuted** и др.
-Например: **src/components/Records/actions/DefaultActions.js**
+**execForRecord, execForRecords, execForQuery, getDefaultModel, canBeExecuted** и др.
+Например: **src/components/Records/actions/handler/executor/CreateAction.js**
 При выполнении действия вызывается метод execute в который передается запись, над которой выполняется действие и конфигурация действия.
 Реестр действий описан в **src/components/Records/actions/RecordActionExecutorsRegistry.js**
 Регистрация действий в реестре: **src/components/Records/actions/index.js**
@@ -139,6 +133,32 @@ Alfresco → **{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco
 Типы действий
 -------------
 
+.. list-table::
+      :widths: 10 10 40
+      :header-rows: 1
+
+      * - Тип
+        - Конфигурация
+        - Описание
+      * - create
+        - | ``typeRef: String``
+          | ECOS тип для создания. Обязательный параметр;
+          | ``createVariantId: String``
+          | Идентификатор варианта создания для типа. 
+          | Если не указан, то используется первый доступный вариант;
+          | ``createVariant: Object``
+          | Вариант создания для ситуаций, когда ни один 
+          | вариант создания из типа не походит и 
+          | требуется его полностью определить в действии;
+          | ``attributes: Object``
+          | Предопределенные атрибуты для создания новой сущности. 
+          | Для прокидывания атрибутов с текущей записи 
+          | (т.е. той, с которой выполняется действие) на форму создания 
+          | можно использовать вставки вида ``${attribute_name}``
+        - | Действие для создания новой сущности. 
+          | Обычно применяется когда требуется создать 
+          | новый документ, в котором некоторые поля 
+          | будут предзаполнены из данных текущей открытой заявки. 
 
 Расширение действий
 -------------------
