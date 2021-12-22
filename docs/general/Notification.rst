@@ -21,10 +21,68 @@ Firebase уведомления отправляются как реакция �
 
 3. Настройка микросервисе нотификаций
 """"""""""""""""""""""""""""""""""""""""""""""""""
-В микросервисе нотификаций должно быть заданы firebase credential-class-path и data-base-url. Для каждого проекта / клиента необходимо использовать свои credentials.
-На данный момент на стенды доставляется в комплекте поставки микросервиса. Для локальной разработки нужно указать путь для тестовых crdentials.
+В микросервисе нотификаций должно быть заданы настройки для подплюкчния к firebase - credentials и data dta url. Берутся из google firebase console.
 
-4. Реализация подписки / отписки на пуш уведомления на мобильном устройстве пользователя
+.. attention::
+
+  Для каждого проекта / клиента необходимо использовать свои приватные ключи - credentials.
+
+Data base url задается через spring config:
+
+.. code-block:: yaml
+  
+  ecos-notifications:
+    firebase:
+      data-base-url: some-url
+
+Определение credentials доступно двумя способами:
+
+1. Указание classpath до json файла с credentials
+
+.. code-block:: yaml
+
+  ecos-notifications:
+    firebase:
+      credential-class-path: /credentials/some-credentials.json
+
+2. Указание через spring config
+
+Идентификаторы мапятся с json credentials
+
+.. code-block:: yaml
+
+  ecos-notifications:
+    firebase:
+      credentials:
+        type: foobar
+        project_id: foobar
+        private_key_id: foobar
+        private_key: foobar
+        client_email: foobar
+        client_id: foobar
+        auth_uri: foobar
+        token_uri: foobar
+        auth_provider_x509_cert_url: foobar
+        client_x509_cert_url: foobar
+
+
+Если spring config задается через env:
+
+.. code-block::
+
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_TYPE=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_PROJECTID=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_PRIVATEKEYID=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_PRIVATEKEY=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_CLIENTEMAIL=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_CLIENTID=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_AUTHURI=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_TOKENURI=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_AUTHPROVIDERX509CERTURL=foobar
+  ECOS-NOTIFICATIONS_FIREBASE_CREDENTIALS_CLIENTX509CERTURL=foobar
+  
+
+1. Реализация подписки / отписки на пуш уведомления на мобильном устройстве пользователя
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. note::
