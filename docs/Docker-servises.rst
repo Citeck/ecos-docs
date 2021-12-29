@@ -1261,13 +1261,14 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 * GATEWAY_TLS_NAME - имя gateway сервера. nginx всегда проверяет хост gateway на соответствие сертификату, но если хост динамический, то можно использовать эту настройку чтобы задать его константой. (v4)
 * ENABLE_HTTPS - включает сервер по SERVER_HTTPS_PORT порту и ждет сертификаты SERVER_TLS_CERT и SERVER_TLS_KEY (v3, v4)
 * ENABLE_HSTS - добавлять заголовок Strict-Transport-Security к ответам сервера. (v3, v4)
-* SERVER_TLS_CERT - сертификат сервера (v4). По умолчанию /app/ssl/ecos-proxy.cert (v4)
-* SERVER_TLS_KEY - приватный ключ сервера (v4). По умолчанию /app/ssl/ecos-proxy.key (v4)
+* SERVER_TLS_CERT - сертификат сервера. По умолчанию /app/ssl/ecos-proxy.cert (v4)
+* SERVER_TLS_KEY - приватный ключ сервера. По умолчанию /app/ssl/ecos-proxy.key (v4)
 * SERVER_HTTP_PORT - http порт, который будет слушать nginx. По умолчанию зависит от пользователя, под которым запускается контейнер. Если это root, то 80, иначе - 8080 (v4)
 * SERVER_HTTPS_PORT - https порт, который будет слушать nginx. По умолчанию зависит от пользователя, под которым запускается контейнер. Если это root, то 443, иначе - 8443 (v4)
 * MIN_TLS_VER - минимально допустимая версия TLS. Допустимные значения: [1.3, 1.2, 1.0] (v3, v4)
 
 Не реализованы:
+
 *	SOLR_TARGET
 *	ECOS_REGISTRY_TARGET (проблема с api)
 

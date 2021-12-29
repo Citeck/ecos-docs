@@ -7,7 +7,7 @@
 
 * выполнить запрос ``/gateway/api/records/query``
 
-.. code-block::
+..code-block::
 
   {
     query: {
@@ -53,7 +53,7 @@
 * перебрать все элементы ``resp.records``, получить ключи форм ``attributes.formKey``
 * выполнить запрос ``/gateway/api/records/query``, получить настройки форм
 
-.. code-block::
+..code-block::
 
   {
     query: {
@@ -72,7 +72,7 @@
 * полученные формы передать в функцию ``parseForm``
 * получить данные для всех форм ``/gateway/api/records/query``
 
-.. code-block::
+..code-block::
 
   {
     records: formIds,
