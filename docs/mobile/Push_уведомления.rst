@@ -14,24 +14,31 @@
 Подписка на push-уведомлений
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-(src/store/actions/user.actions.ts subscribeToPushWorker)
+(src/store/actions/settings.actions.ts subscribeToPushWorker)
 
 * проверяем разрешение на прием уведомлений
 * выполняем запрос /gateway/alfresco/alfresco/s/citeck/global-properties?name=ecos.server.tenant.id
 * получаем токен FCM
 * полученный токен и Tenant ID передаем серверу в запросе /gateway/api/records/mutate
+* id подписки, полученный в ответе, сохраняется в локальном хранилище дл обновления токена, отписки от пуш-уведомлений
+
+.. note::
+ При подписке на пушуведомления дополнительно передается локаль приложения ``locale``
  
 Обновление токена
 ~~~~~~~~~~~~~~~~~
 
-(src/store/actions/user.actions.ts onTokenRefresh)
+(src/store/actions/settings.actions.ts onTokenRefresh, sendLanguageSettings)
 
 * При обновлении токина FCM необходимо передать его в запросе /gateway/api/records/mutate с указание id подписки
+
+.. note::
+ При обновлении токена, и смене языка интерфейса приложения дополнительно передается локаль приложения ``locale``
 
 Отписка от push-уведомлений
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-(src/store/actions/user.actions.ts unsubscribeFromPush)
+(src/store/actions/settings.actions.ts unsubscribeFromPush)
 
 * выполняем запрос /gateway/api/records/delete, указав id подписки, полученный на шаге подписки на уведомления
 
