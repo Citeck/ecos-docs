@@ -1,13 +1,14 @@
-==========================================
+======================
 **Шаблоны нумерации**
-==========================================
+======================
 
 Template
 ---------------
 С релиза 3.20.0 появилась поддержка шаблонов нумерации, которые можно полностью настроить через интерфейс.
 Шаблоны и счетчики для них хранятся в ecos-model
 
-.. image:: _static/Number_template_1.png
+.. image:: _static/number_template/Number_template_1.png
+       :width: 400
        :align: center
        :alt: Шаблон нумерации
 
@@ -43,20 +44,23 @@ Number counter
 --------------------------------------------------------------
 a) Открываем системные журналы и переходим в журнал “шаблоны нумерации”
 
-.. image:: _static/Number_template_2.png
+.. image:: _static/number_template/Number_template_2.png
+       :width: 400
        :align: center
        :alt: Шаблон нумерации
 
 b) Нажимаем + и выбираем “Создать новый шаблон”
 
-.. image:: _static/Number_template_3.png
+.. image:: _static/number_template/Number_template_3.png
+       :width: 600
        :align: center
        :alt: Шаблон нумерации
 
 c) Вводим Id, name и counterKey и жмем Submit
 Новый шаблон создан. Теперь его можно указывать в любом типе кейса:
 
-.. image:: _static/Number_template_4.png
+.. image:: _static/number_template/Number_template_4.png
+       :width: 600
        :align: center
        :alt: Шаблон нумерации
 

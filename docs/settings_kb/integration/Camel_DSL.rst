@@ -1,5 +1,6 @@
+============================
 **Использование Camel DSL**
-===================================
+============================
 
 
 Общие сведения
@@ -28,7 +29,7 @@ Camel использует доменные языки (Domain Specific Language
 
 Пример контекста с маршрутом:
 
-.. image:: _static/Camel_1.png
+.. image:: _static/camel/Camel_1.png
        :width: 600
        :align: center    
 
@@ -49,13 +50,13 @@ Camel использует доменные языки (Domain Specific Language
 
 **Главное меню: Инструменты администратора -> Инструменты**
 
-.. image:: _static/Camel_2.png
+.. image:: _static/camel/Camel_2.png
        :width: 800
        :align: center
 
 **Неосновное меню: Интеграция  -> Credentials**
 
-.. image:: _static/Camel_3.png
+.. image:: _static/camel/Camel_3.png
        :width: 800
        :align: center
 
@@ -65,11 +66,11 @@ Camel использует доменные языки (Domain Specific Language
 
 **Неосновное меню: Интеграция  -> Источники данных**
 
-.. image:: _static/Camel_4.png
+.. image:: _static/camel/Camel_4.png
        :width: 800
        :align: center
 
-.. image:: _static/Camel_5.png
+.. image:: _static/camel/Camel_5.png
        :width: 600
        :align: center   
 
@@ -79,7 +80,7 @@ Camel использует доменные языки (Domain Specific Language
 
 **Неосновное меню: Интеграция  -> Camel DSL**
 
-.. image:: _static/Camel_6.png
+.. image:: _static/camel/Camel_6.png
        :width: 800
        :align: center
  

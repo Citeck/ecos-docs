@@ -1,3 +1,4 @@
+==================
 **Настройка меню**
 ==================
 
@@ -20,8 +21,9 @@
 
 В журнале для настройки **Интерфейс основного меню** (default-ui-main-menu) устанавливается какой **вариант** (версия) меню будет использоваться в системе.
 
-.. image:: _static/Menu_1.png
-       :align: left
+.. image:: _static/menu/Menu_1.png
+       :width: 800
+       :align: center
        :alt: Меню
 
 Значения:
@@ -31,16 +33,18 @@
 
 - Журнал Меню - все конфигурации меню
 
-.. image:: _static/Menu_2.png
-       :align: left
+.. image:: _static/menu/Menu_2.png
+       :width: 800
+       :align: center
        :alt: Меню2
 
 В журнале перечислены все конфигурации разных версий.
 
 **Доступность действий в журнале**
 
-.. image:: _static/Menu_3.png
-       :align: left
+.. image:: _static/menu/Menu_3.png
+       :width: 600
+       :align: center
        :alt: Меню3
 
 .. note:: Для Интерфейс основного меню = left и Версия модели = 0 см. `Menu service <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/714211365/Menu+service>`_.
@@ -55,15 +59,17 @@
 
 - Через шапку сайта иконка "Шестеренка" > :guilabel:`Настроить меню`.
 
-.. image:: _static/Menu_configuration.png
-       :align: left
+.. image:: _static/menu/Menu_configuration.png
+       :width: 400
+       :align: center
        :alt: Настройка меню
 
 .. note:: При использовании данного способа в окно настроек загружается конфигурация меню используемая на данный момент в интерфейсе. То есть в основном для настройки административного меню. 
 
 - Через журнал **Меню**, инлайн действие *Редактировать конфигурацию*.
 
-.. image:: _static/Menu_configuration_2.png
+.. image:: _static/menu/Menu_configuration_2.png
+       :width: 600
        :align: center
        :alt: Редактировать конфигурацию
 
@@ -77,7 +83,8 @@
 
 Режим редактирования
 """"""""""""""""""""
-.. image:: _static/Menu_redactor_mode.png
+.. image:: _static/menu/Menu_redactor_mode.png
+       :width: 600
        :align: center
        :alt: Режим редактирования
 
@@ -87,12 +94,13 @@
 
 То же самое окно что при редактирования, но без элементов изменяющих представление.
 
-.. image:: _static/Menu_view_mode1.png
+.. image:: _static/menu/Menu_view_mode1.png
+       :width: 600
        :align: center
        :alt: Настройки конфигурации
 
-
-.. image:: _static/Menu_view_mode2.png
+.. image:: _static/menu/Menu_view_mode2.png
+       :width: 600
        :align: center
        :alt: Глобальные настройки
 
@@ -104,13 +112,15 @@
 
 Возможные типы пунктов и их доступность на каждом уровне 
 
-.. image:: _static/menu_elements.jpg
+.. image:: _static/menu/menu_elements.jpg
+       :width: 600
        :align: center
        :alt: Типы пунктов
 
 Если добавлен пункт *Ссылка* на создание кейса и в результате есть возможность создавать несколькими способами в левом отобразится раздел с вариантами создания.
 
-.. image:: _static/Menu_auto_point.png
+.. image:: _static/menu/Menu_auto_point.png
+       :width: 200
        :align: center
        :alt: Варианты создания типа данных
 
@@ -148,7 +158,8 @@
 
   **Абсолютный URL** - если указан полный путь. Ссылка будет открываться в новой вкладке браузера.
 
-.. image:: _static/Menu_url_absolut.png
+.. image:: _static/menu/Menu_url_absolut.png
+       :width: 600
        :align: center
        :alt: Абсолютный URL
 
@@ -156,7 +167,8 @@
 
 - Если значение начинается с “ / ” , то итоговая ссылка формируется как **хост** + **значение**.
   
-.. image:: _static/Menu_url_relative.png
+.. image:: _static/menu/Menu_url_relative.png
+       :width: 600
        :align: center
        :alt: Относительный URL
 
@@ -164,7 +176,8 @@
 
 .. warning::  Может привести к не ожидаемому результату.
 
-.. image:: _static/Menu_url_relative2.png
+.. image:: _static/menu/Menu_url_relative2.png
+       :width: 600
        :align: center
        :alt: Пример
 
@@ -181,7 +194,8 @@
 ~~~~~~~~~~~~~~~~~~~~
 .. note:: Данные настройки относятся ко всей системе. 
 
-.. image:: _static/menu_global_settings.png
+.. image:: _static/menu/menu_global_settings.png
+       :width: 600
        :align: center
        :alt: Глобальные настройки
 
@@ -196,7 +210,8 @@
 
 В конфигурации меню указываются группы или пользователи для которых настраивается меню. Приоритет групп - настройка глобальная, исходя из ее настройки и указанных участников, возвращается соответствующее для пользователя меню.
 
-.. image:: _static/menu_groups_1.png
+.. image:: _static/menu/menu_groups_1.png
+       :width: 600
        :align: center
        :alt: Группы и пользователи
 
@@ -208,7 +223,8 @@
 
 Редактор иконок
 ---------------
-.. image:: _static/menu_icons.png
+.. image:: _static/menu/menu_icons.png
+       :width: 400
        :align: center
        :alt: Редактор иконок
 
@@ -216,19 +232,22 @@
 
 Иконка по умолчанию: 
 
-.. image:: _static/menu_icons_2.png
+.. image:: _static/menu/menu_icons_2.png
+       :width: 300
        :align: center
        :alt: Иконка по умолчанию
 
 Результат настроек
 ------------------
 
-.. image:: _static/menu_settings_result.png
-       :align: left
+.. image:: _static/menu/menu_settings_result.png
+       :width: 400
+       :align: center
        :alt: Результат настроек
 
-.. image:: _static/menu_settings_result_2.png
-       :align: right
+.. image:: _static/menu/menu_settings_result_2.png
+       :width: 200
+       :align: center
        :alt: Результат настроек 
 
 Смежные настройки

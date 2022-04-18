@@ -15,4 +15,3 @@
     forms/form_localisation
     forms/form_for_task
     forms/mobile_app_form
-   

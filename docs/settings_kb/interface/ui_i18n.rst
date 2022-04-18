@@ -50,12 +50,14 @@
 2. Скачиваем один из существующих артефактов в журнале
 
 .. image:: _static/ui_i18n/i18n_download.png
+       :width: 400
        :align: center
        :alt: i18n_download
 
 3. Меняем локализацию в полученном файле и желательно меняем ID у артефакта
 
 .. image:: _static/ui_i18n/i18_edit.png
+       :width: 400
        :align: center
        :alt: i18_edit
 
