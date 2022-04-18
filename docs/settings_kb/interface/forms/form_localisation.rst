@@ -15,7 +15,7 @@
 
 Если **Label** у поля совпадает с редактируемым атрибутом, то происходит запрос на сервер за заголовком для такого поля. Если заголовок найден, то поле будет локализовано.
 
-.. image:: _static/Forms_local_1.png
+.. image:: _static/form_localisation/Forms_local_1.png
        :width: 800
        :align: center
        :alt: Локализация атрибутов
@@ -24,19 +24,19 @@
 
 В ``json`` конфигурации формы можно задать локализацию, которая будет действовать только в пределах данной формы. Пример:
 
-.. image:: _static/Forms_local_3.png
+.. image:: _static/form_localisation/Forms_local_3.png
        :width: 400
        :align: center
        :alt: Локализация формы
 
 Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму :guilabel:`Localization` и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.
 
-.. image:: _static/Forms_local_4.png
+.. image:: _static/form_localisation/Forms_local_4.png
        :width: 400
        :align: center
        :alt: Локализация формы
 
-.. image:: _static/Forms_local_5.png
+.. image:: _static/form_localisation/Forms_local_5.png
        :width: 400
        :align: center
        :alt: Локализация формы
@@ -44,12 +44,12 @@
 *Пример локализации панели*:
 Чтобы установить локализацию для панелей (:guilabel:`Layouts` -> :guilabel:`Panels`), можно воспользоваться функциями :guilabel:`Localisation`, достаточно прописать их как показано ниже.
 
-.. image:: _static/Forms_local_6.png
+.. image:: _static/form_localisation/Forms_local_6.png
        :width: 400
        :align: center
        :alt: Локализация для панелей
 
-.. image:: _static/Forms_local_7.png
+.. image:: _static/form_localisation/Forms_local_7.png
        :width: 600
        :align: center
        :alt: Локализация для панелей
@@ -60,21 +60,21 @@
 
 1. Написать саму локализацию в форме. Ключ для локализации можно выбрать на своё усмотрение (не нужно писать ключи с пробелами, они могут не спарситься). Пример локализованной подсказки:
 
-.. image:: _static/Forms_local_8.png
+.. image:: _static/form_localisation/Forms_local_8.png
        :width: 600
        :align: center
        :alt: Локализация подсказок
 
 2. Прописать ключ в поле для подсказки :guilabel:`Tooltip`.
 
-.. image:: _static/Forms_local_9.png
+.. image:: _static/form_localisation/Forms_local_9.png
        :width: 400
        :align: center
        :alt: Локализация подсказок
 
 В итоге получим локализацию подсказок:
 
-.. image:: _static/Forms_local_10.png
+.. image:: _static/form_localisation/Forms_local_10.png
        :width: 500
        :align: center
        :alt: Локализация подсказок

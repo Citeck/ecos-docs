@@ -8,7 +8,7 @@
 
 Канбан-доска является дополнительным представлением журнала.
 
-.. image:: _static/KB1.png
+.. image:: _static/kanban/KB1.png
        :width: 600
        :align: center
        :alt: Пользовательский вид
@@ -17,14 +17,13 @@
 
 Фильтры, примененные в журнале, применяются и на канбан-доске, и наоборот.
 
-
 Конфигурация
 ------------------
 
 Журнал с конфигурациями: 
 **Инструменты → Конфигурация UI → Канбан доски**
 
-.. image:: _static/KB2.png
+.. image:: _static/kanban/KB2.png
        :width: 600
        :align: center
        :alt: Журнал Канбан доски
@@ -33,7 +32,7 @@
 ~~~~~~~~~~~~~~~~~~
 Возможные действия с доской:
 
-.. image:: _static/KB9.png
+.. image:: _static/kanban//KB9.png
        :width: 200
        :align: center
        :alt: Доска действия
@@ -46,7 +45,7 @@
 
 * редактор json. Отрывается редактор, в котором можно вносить изменения:
 
-  .. image:: _static/KB3.png
+  .. image:: _static/kanban/KB3.png
        :width: 600
        :align: center
        :alt: Журнал Канбан доски
@@ -58,7 +57,7 @@
 
 **+ → Создать конфигурацию канбан-доски**
 
- .. image:: _static/KB4.png
+ .. image:: _static/kanban/KB4.png
        :width: 600
        :align: center
        :alt: Форма создания
@@ -108,7 +107,7 @@
 
 Соответствие полей конфигурации и UI:
 
- .. image:: _static/KB5.png
+ .. image:: _static/kanban/KB5.png
        :width: 600
        :align: center
        :alt: Поля UI
@@ -119,7 +118,7 @@
 Выберите статус. Статусы в выпадающем списке указаны в соответствии с выбранным **типом сущности**.
 Выбранный статус будет автоматически указан в колонке **«Системное имя»**.
 
- .. image:: _static/KB6.png
+ .. image:: _static/kanban/KB6.png
        :width: 600
        :align: center
        :alt: Колонки
@@ -127,7 +126,7 @@
 
 В **«Название колонки»** укажите название, которое будет отображаться на канбан-доске.
 
- .. image:: _static/KB7.png
+ .. image:: _static/kanban/KB7.png
        :width: 600
        :align: center
        :alt: Колонки заполненные
@@ -135,7 +134,7 @@
 Заполненная конфигурация
 -------------------------
 
- .. image:: _static/KB8.png
+ .. image:: _static/kanban/KB8.png
        :width: 600
        :align: center
        :alt: Заполненная конфигурация
