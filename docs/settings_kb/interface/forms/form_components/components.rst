@@ -7,3 +7,6 @@
 
     components/table form
     components/async data
+    components/select journal
+    components/select orgstruct
+    components/ecos select
