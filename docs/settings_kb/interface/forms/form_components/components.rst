@@ -10,3 +10,7 @@
     components/select journal
     components/select orgstruct
     components/ecos select
+    components/file
+    components/columns
+    components/horizontal line
+    components/import button
