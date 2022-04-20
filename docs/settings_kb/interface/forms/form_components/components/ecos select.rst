@@ -1,8 +1,8 @@
 ===============
-Ecos Select
+**Ecos Select**
 ===============
 
-.. contents:: Содержание
+.. contents::
    :depth: 4
    
 
