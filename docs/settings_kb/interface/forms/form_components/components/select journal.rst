@@ -2,7 +2,7 @@
 **Select journal**
 ===================
 
-.. contents:: Содержание
+.. contents::
    :depth: 4
    
 Настройка компонента
