@@ -1,5 +1,5 @@
 =============
-How To
+**How To**
 =============
 Создание бандла из архетипа
 ---------------------------------------------
@@ -9,11 +9,11 @@ How To
 
 Для бандла с эндпойнтом::
 
-mvn archetype:generate -DarchetypeGroupId=ru.citeck.ecos.bundle -DarchetypeArtifactId=ecos-web-endpoint-bundle-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<new_bundle_groupId> -DartifactId=<new_bundle_artefactId> 
+    mvn archetype:generate -DarchetypeGroupId=ru.citeck.ecos.bundle -DarchetypeArtifactId=ecos-web-endpoint-bundle-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<new_bundle_groupId> -DartifactId=<new_bundle_artefactId> 
 
 Для просто бандла:: 
 
-mvn archetype:generate -DarchetypeGroupId=ru.citeck.ecos.bundle -DarchetypeArtifactId=ecos-osgi-bundle-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<new_bundle_groupId> -DartifactId=<new_bundle_artefactId>
+    mvn archetype:generate -DarchetypeGroupId=ru.citeck.ecos.bundle -DarchetypeArtifactId=ecos-osgi-bundle-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<new_bundle_groupId> -DartifactId=<new_bundle_artefactId>
 
 
 
