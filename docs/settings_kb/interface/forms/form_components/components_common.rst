@@ -65,7 +65,7 @@ Day
 Ecos Select
 ~~~~~~~~~~~~~~~
 
-Поле, которое отвечает за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
+Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
 
 `См. подробное описание EcosSelect <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/select%20orgstruct.html>`_  
 
@@ -104,7 +104,7 @@ Import Button
 
 Компонент позволяет добавить на форму настраиваемую кнопку для загрузки файлов.
 
-`См. подробное описание Import Button <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/2662563855/Import+Button>`_ 
+`См. подробное описание Import Button <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/import%20button.html>`_ 
 
 Email
 ~~~~~~~~~~~~~~~
@@ -153,7 +153,7 @@ File
 
 `См. подробное описание File на Form.io <https://help.form.io/userguide/forms/premium-components#file>`_ 
 
-`См. подробное описание File <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1419542536/File>`_ 
+`См. подробное описание File <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/file.html>`_ 
 
 
 Select Action
@@ -171,7 +171,7 @@ Horizontal Line
 
 Компонент для отображения разделителя блоков.
 
-`См. подробное описание Horizontal Line <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/953024536/Horizontal+Line>`_ 
+`См. подробное описание Horizontal Line <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/horizontal%20line.html>`_ 
 
 
 Columns
@@ -181,7 +181,7 @@ Columns
 
 `См. подробное описание Columns на Form.io <https://help.form.io/userguide/forms/layout-components#columns>`_ 
 
-`См. подробное описание Columns <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/952631327/Columns>`_ 
+`См. подробное описание Columns <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/columns.html>`_ 
 
 
 Panel

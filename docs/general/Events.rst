@@ -1,4 +1,5 @@
-Events
+===========
+**Events**
 ===========
 
 .. _events_1-0_label:
