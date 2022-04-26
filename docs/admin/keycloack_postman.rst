@@ -103,7 +103,7 @@ Cоздание пользователя в alfresco
 
 1.	Перейти на вкладку авторизации и выбрать тип **OAuth 2.0**.
  
- .. image:: _static/keycloack_postman/postman_1.png
+ .. image:: _static/keycloack_postman/Postman_1.png
        :width: 700
        :align: center
 
