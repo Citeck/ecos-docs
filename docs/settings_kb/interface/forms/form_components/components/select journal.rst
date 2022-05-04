@@ -1,6 +1,5 @@
-===================
-**Select journal**
-===================
+Select journal
+==============
 
 .. contents::
    :depth: 4

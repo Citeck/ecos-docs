@@ -1,6 +1,5 @@
-============
-**Alfresco**
-============
+Alfresco
+=========
 
 JavaScript Records API
 ~~~~~~~~~~~~~~~~~~~~~~

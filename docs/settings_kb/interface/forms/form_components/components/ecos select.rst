@@ -1,6 +1,5 @@
-===============
-**Ecos Select**
-===============
+Ecos Select
+===========
 
 .. contents::
    :depth: 4
