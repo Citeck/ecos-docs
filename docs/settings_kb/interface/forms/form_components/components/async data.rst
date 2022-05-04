@@ -1,6 +1,5 @@
-===============
-**Async data**
-===============
+Async data
+===========
 
 .. contents::
    :depth: 4

@@ -1,6 +1,5 @@
-======================
-**Select orgstruct**
-======================
+Select orgstruct
+================
 
 .. contents::
    :depth: 4

@@ -1,6 +1,5 @@
-===============
-**Table form**
-===============
+Table form
+===========
 
 .. contents::
    :depth: 4
