@@ -1,9 +1,8 @@
-===================
-**Общее описание**
-===================
+Общее описание
+===============
 
-**Basic components**
----------------------
+Basic components
+----------------
 
 Text Field
 ~~~~~~~~~~~~~~~
@@ -78,8 +77,8 @@ Button
 `См. подробное описание Button на Form.io <https://help.form.io/userguide/forms/form-components#button>`_  
 
 
-**Advanced**
----------------
+Advanced
+----------
 
 ML Text
 ~~~~~~~~~~~~~~~
@@ -163,8 +162,8 @@ Select Action
 
 `См. подробное описание Select Action на Form.io <https://help.form.io/userguide/forms/form-components#select>`_ 
 
-**Layout**
----------------
+Layout
+-------
 
 Horizontal Line
 ~~~~~~~~~~~~~~~
@@ -205,8 +204,8 @@ Tabs
 
 `См. подробное описание Tabs на Form.io <https://help.form.io/userguide/forms/layout-components#tabs>`_ 
 
-**Data**
----------------		
+Data
+------		
 
 Hidden
 ~~~~~~~~~~~~~~~

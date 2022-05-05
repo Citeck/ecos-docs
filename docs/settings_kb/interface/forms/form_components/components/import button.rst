@@ -1,6 +1,5 @@
-==================
-**Import button**
-==================
+Import button
+=============
 
 .. contents::
    :depth: 4
