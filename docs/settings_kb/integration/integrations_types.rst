@@ -1,6 +1,5 @@
-================================
-**EDI и ECOS Synchronization**
-================================
+EDI и ECOS Synchronization
+==========================
 
 .. toctree::
     :maxdepth: 20
