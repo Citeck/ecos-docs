@@ -50,7 +50,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~
  * Установите и запустите Docker Compose 
  * Установите и запустите Git с повышенными правами
- * Выполните команду для скачивания репозитория: **git clone -b 3.23.0 https://bitbucket.org/citeck/ecos-community-demo.git**
+ * Выполните команду для скачивания репозитория: **git clone -b 3.23.0 https://gitlab.citeck.ru/ecos-community/ecos-community-demo.git**
   
  где 3.23.0 - версия проекта (поддерживается две версии community. Для скачивания 4-й версии использовать 4.0.0rc2. Если необходимо обновиться с версии 4.0.0rc1 до версии 4.0.0rc2, то рекомендуется выполнить миграцию по `инструкции <https://github.com/Citeck/ecos-docs/blob/main/docs/migration.rst>`_
  
