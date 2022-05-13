@@ -10,4 +10,5 @@
     journals/computed attributes
     journals/formatters
     journals/editors
+    journals/search_nested_attributes
 
