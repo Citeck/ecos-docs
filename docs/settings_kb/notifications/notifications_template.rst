@@ -42,6 +42,7 @@
 3. Выбрать из списка журналов журнал «Шаблоны уведомлений»
 
 .. image:: _static/template/notifications_template_menu_3.png
+       :width: 400
        :align: center
 
 
@@ -80,7 +81,7 @@
 Данное поле является мульти язычным, переключение языков происходит по нажатию на значок флага.
 
 .. image:: _static/template/notifications_template_create_2.png
-        :align: center
+         :align: center
 
 **Notification body** - ``lang`` = ru, ``body`` заполняем следующим текстом:
 
@@ -140,7 +141,7 @@
 Для редактирования шаблона уведомления перейдите в журнал (см. `1.2 Журнал “Шаблоны уведомлений“`_), найдите нужный шаблон и нажмите на действие «Редактировать».
 
 .. image:: _static/template/notifications_template_edit.png
-        :align: center
+         :align: center
 
 2.3 Удаление шаблона уведомления
 ================================
@@ -214,6 +215,7 @@
 * ``firstLine: eventLines{id:skifem:eventLineId,text:VIEW_0POSTXT}`` - аналогично примеру выше, с оговоркой, что будет загружен только первый объект.
 
 .. image:: _static/template/notifications_template_atts_list.png
+        :width: 400
         :align: center
 
 В самом шаблоне уведомления выведем информацию по списку строк в виде html таблицы и отдельной строкой первый элемент:
@@ -254,6 +256,7 @@
 В результате получим емейл с следующим содержанием:
 
 .. image:: _static/template/notifications_template_atts_list_result.png
+        :width: 400
         :align: center
 
 
@@ -275,6 +278,7 @@
 1. Загрузить файл изображения test-logo-citeck.png в журнал «Файлы уведомлений».
 
 .. image:: _static/template/notifications_template_image_logo.png
+        :width: 400
         :align: center
 
 2. В шаблоне добавим html разметку с кнопкой и src в виде base64 изображения, загруженного в пункте №1.
@@ -291,12 +295,8 @@
 3. В результате получим емейл с кнопкой в виде изображения:
 
 .. image:: _static/template/notifications_template_image_result.png
+        :width: 400
         :align: center
-
-
-
-
-
 
 3.3 Прикрепление вложений (attachments) к email уведомлению
 ===========================================================
@@ -306,9 +306,11 @@
 Для того чтобы прикрепить вложение необходимо в шаблоне уведомления в модель добавить атрибут ``_attachments``. В него мы можем указать контент ноды или список из контентов нод из Alfresco. Выглядеть это должно следующим образом:
 
 .. image:: _static/template/notifications_template_attachments_1.png
+        :width: 400
         :align: center
 
 .. image:: _static/template/notifications_template_attachments_2.png
+        :width: 600
         :align: center
 
     
@@ -317,6 +319,7 @@
 **Использование нод или контента Alfresco необязательно**, главное чтобы атрибут ```_attachments`` соответствовал следующей модели:
 
 .. image:: _static/template/notifications_template_attachments_3.png
+        :width: 600
         :align: center
 
 :bytes: Контент файла закодированный в формат Base64

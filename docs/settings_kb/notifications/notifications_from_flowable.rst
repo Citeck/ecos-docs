@@ -41,6 +41,7 @@
 То в модели шаблона уведомления можно будет получить доступ к значениям:
 
 .. image:: _static/from_flowable/notifications_from_flowable_additional_meta.png
+        :width: 600
         :align: center
 
 При обработке шаблона - ``${adminFio}`` выведет *.disp* для *admin*, ``${foo}`` выведет *bar*
@@ -86,6 +87,7 @@ fooValue - $foo
 Создадим простой flowable процесс с id ``simple-test-template``, состоящий из отправки одного емейла.
 
 .. image:: _static/from_flowable/notifications_from_flowable_process.png
+        :width: 600
         :align: center
 
 Заполним mail task следующими значениями:
@@ -124,6 +126,7 @@ fooValue - $foo
 6. Получение уведомления
 
 .. image:: _static/from_flowable/notifications_from_flowable_result_1.png
+        :width: 600
         :align: center
 
 Так как мы не указали language, то пришло уведомление из шаблона по умолчанию en. 
@@ -133,6 +136,7 @@ fooValue - $foo
 Получим уведомление из шаблона ru:
 
 .. image:: _static/from_flowable/notifications_from_flowable_result_2.png
+        :width: 600
         :align: center
 
 .. |br| raw:: html
