@@ -1444,3 +1444,1016 @@ ecos-process-app
 	ecos-process-app            | ----------------------------------------------------------
 	ecos-process-app            |   Config Server:  Connected to the JHipster Registry running in Docker
 	ecos-process-app            | ----------------------------------------------------------
+
+ecos-microservices-postgresql-app
+------------------------------------
+
+Назначение
+~~~~~~~~~~
+
+Образ, собранный на официальном образе postgresql 12.x с добавлением скрипта инициализации баз данных и пользователей
+
+Теги:
+~~~~~~~~~
+`nexus.citeck.ru/postrgesql:msvc-latest <nexus.citeck.ru/postrgesql:msvc-latest>`_- собран на базовом образе  postgres:12, используется в композ проектах, файлы конфигурации размещаются в образе
+
+`nexus.citeck.ru/postrgesql:12 <nexus.citeck.ru/postrgesql:12>`_ - базовый образ  postgres:12, размещен в нашем docker registry, используется в k8s объектах, файлы конфигурации и скрипт развертывания конфигурируются через configmap
+
+Базовые образы
+~~~~~~~~~~~~~~~
+
+* **postgres:12** 
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+	
+	ecos-microservices-postgresql-app:
+		container_name: ecos-microservices-postgresql-app
+		hostname: ecos-microservices-postgresql-app
+		restart: unless-stopped
+		image: nexus.citeck.ru/postgresql:msvc-latest
+		stop_grace_period: 1m
+		command: ["postgres", "-c", "config_file=/var/lib/postgresql/conf/postgresql.conf"]
+		expose:
+    		- 5432/tcp
+		env_file:
+    		- ./env_dir/ecos-microservices-postgresql-app.env
+		volumes:
+    		- /opt/ecos-microservices-postgresql:/var/lib/postgresql/data
+		networks:
+		- app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **ECOS_APPS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-apps-app
+
+* **ECOS_APPS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-apps-app
+
+* **ECOS_APPS_APP_DATASOURCE_PASSWORD**  - пароль для мрк ecos-apps-app
+
+
+* **ECOS_GATEWAY_APP_DATASOURCE_DATABASE**  - база данных для мрк ecos-gateway-app
+
+* **ECOS_GATEWAY_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-gateway-app
+
+* **ECOS_GATEWAY_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-gateway-app
+
+ 
+
+* **ECOS_UISERV_APP_DATASOURCE_DATABASE**  - база данных для мрк ecos-uiserv-app
+
+* **ECOS_UISERV_APP_DATASOURCE_USERNAME**  - пользователь для мрк ecos-uiserv-app
+
+* **ECOS_UISERV_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-uiserv-app
+
+ 
+
+* **ECOS_INTEGRATIONS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-integrations-app
+
+* **ECOS_INTEGRATIONS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-integrations-app
+
+* **ECOS_INTEGRATIONS_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-integrations-app
+ 
+
+* **ECOS_MODEL_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-model-app
+
+* **ECOS_MODEL_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-model-app
+
+* **ECOS_MODEL_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-model-app
+ 
+
+* **ECOS_NOTIFICATIONS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-notifications-app
+
+* **ECOS_NOTIFICATIONS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-notifications-app
+
+* **ECOS_NOTIFICATIONS_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-notifications-app
+ 
+
+* **ECOS_HISTORY_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-history-app
+
+* **ECOS_HISTORY_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-history-app
+
+* **ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-history-app
+
+ 
+
+* **POSTGRES_PASSWORD** - обязательный параметр за исключением **POSTGRES_HOST_AUTH_METHOD=trust**, пароль привилегированного пользователя  **postgres**
+
+* **POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
+
+* **POSTGRES_DB** - переопределение дефолтной базы данных
+
+* **POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
+
+* **POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
+
+* **POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для **всех бд**, пользователей и адресов в pg_hba.conf. Дефолтное значение **md5**
+
+* **PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~~
+
+* Не реализована возможность конфигурирования датасорсов (добавление/удаление баз данных, пользователей) после первичного развертывания
+* Отсутствие конфигурации используемых схем
+* Конфигурирование postgresql только через пересборку образа с внесением изменений в конфигурационные файлы
+
+Типовой вывод принятых настроек в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	The files belonging to this database system will be owned by user "postgres".
+	This user must also own the server process.
+
+	The database cluster will be initialized with locale "en_US.utf8".
+	The default database encoding has accordingly been set to "UTF8".
+	The default text search configuration will be set to "english".
+
+	Data page checksums are disabled.
+
+	fixing permissions on existing directory /var/lib/postgresql/data ... ok
+	creating subdirectories ... ok
+	selecting dynamic shared memory implementation ... posix
+	selecting default max_connections ... 100
+	selecting default shared_buffers ... 128MB
+	selecting default time zone ... UTC
+	creating configuration files ... ok
+	running bootstrap script ... ok
+	performing post-bootstrap initialization ... sh: locale: not found
+	2020-04-28 08:59:20.042 UTC [30] WARNING:  no usable system locales were found
+	ok
+	syncing data to disk ... initdb: warning: enabling "trust" authentication for local connections
+	You can change this by editing pg_hba.conf or using the option -A, or
+	--auth-local and --auth-host, the next time you run initdb.
+	ok
+
+
+	Success. You can now start the database server using:
+
+		pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+	waiting for server to start....2020-04-28 08:59:20.503 UTC [35] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 9.2.0) 9.2.0, 64-bit
+	2020-04-28 08:59:20.506 UTC [35] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+	2020-04-28 08:59:20.555 UTC [36] LOG:  database system was shut down at 2020-04-28 08:59:20 UTC
+	2020-04-28 08:59:20.563 UTC [35] LOG:  database system is ready to accept connections
+	done
+	server started
+
+	/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/init-db.sh
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+	CREATE ROLE
+	CREATE DATABASE
+	GRANT
+
+	waiting for server to shut down....2020-04-28 08:59:21.371 UTC [35] LOG:  received fast shutdown request
+	2020-04-28 08:59:21.374 UTC [35] LOG:  aborting any active transactions
+	2020-04-28 08:59:21.376 UTC [35] LOG:  background worker "logical replication launcher" (PID 42) exited with exit code 1
+	2020-04-28 08:59:21.376 UTC [37] LOG:  shutting down
+	2020-04-28 08:59:21.409 UTC [35] LOG:  database system is shut down
+	done
+	server stopped
+
+	PostgreSQL init process complete; ready for start up.
+
+	2020-04-28 08:59:21.494 UTC [1] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 9.2.0) 9.2.0, 64-bit
+	2020-04-28 08:59:21.494 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+	2020-04-28 08:59:21.494 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+	2020-04-28 08:59:21.502 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+	2020-04-28 08:59:21.538 UTC [46] LOG:  database system was shut down at 2020-04-28 08:59:21 UTC
+	2020-04-28 08:59:21.542 UTC [1] LOG:  database system is ready to accept connections
+
+ecos-history-app
+----------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Образ микросервиса для хранения истории, статистики по задачам и фасаду аттрибутов.
+
+Теги:
+~~~~~~~~
+
+`nexus.citeck.ru/ecos-history <nexus.citeck.ru/ecos-history>`_ :<tag>
+
+Базовые образы:
+~~~~~~~~~~~~~~~~
+* **openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	ecos-history:
+		logging:
+		options:
+			max-size: "10m"
+			max-file: "5"
+		image: nexus.citeck.ru/ecos-history:<ECOS_HISTORY_APP_IMAGE
+		container_name: ecos-history
+		hostname: ecos-history
+		restart: unless-stopped
+		stop_grace_period: 1m
+		environment:
+    		- JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+    		- _JAVA_OPTIONS=-Xmx256m -Xms256m
+    		- SPRING_PROFILES_ACTIVE=<ECOS-HISTORY_PROFILES
+    		- EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+    		- SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+    		- SPRING_DATASOURCE_URL=<ECOS_HISTORY_DATASOURCE
+    		- SPRING_DATASOURCE_USERNAME=alfresco
+    		- SPRING_DATASOURCE_PASSWORD=alfr3sc0
+    		- SPRING_DATA_MONGODB_URI=<SPRING_DATA_MONGODB_URI
+    		- SPRING_DATA_MONGODB_DATABASE=ecos-history
+    		- ECOS-HISTORY_RECOVER_SOURCEFOLDER=/source
+    		- ECOS-HISTORY_RECOVER_ERRORSFOLDER=/errors
+    		- ECOS-HISTORY_ALFRESCO_TENANTID=<ALFRESCO_TENANT_ID
+    		- ECOS-HISTORY_EVENT_HOST=<ECOS-HISTORY_EVENT_HOST
+    		- ECOS-HISTORY_EVENT_PORT=<ECOS-HISTORY_EVENT_PORT
+    		- ECOS-HISTORY_EVENT_USERNAME=<ECOS-HISTORY_EVENT_USERNAME
+    		- ECOS-HISTORY_EVENT_PASSWORD=<ECOS-HISTORY_EVENT_PASSWORD
+    		- JHIPSTER_SLEEP=1200 # gives time for the JHipster Registry to boot before the application
+		expose:
+    		- 8086/tcp
+		volumes:
+    		- /opt/micro/ecos-history/source:/source
+    		- /opt/micro/ecos-history/errors:/errors
+		networks:
+    		- app_network
+		depends_on:
+    		- ecos
+    		- ecos-postgresql
+    		- rabbitmq
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **JHIPSTER_REGISTRY_PASSWORD** - пароль аутентификации jhipster
+
+* **_JAVA_OPTIONS** - параметры для **jvm**
+
+* **SPRING_PROFILES_ACTIVE** - профили развертывания приложения
+
+* **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - **url** регистрации микросервиса в сервисе балансировки
+
+* **SPRING_CLOUD_CONFIG_URI** - **url** параметров конфигурации
+
+* **SPRING_DATASOURCE_URL** - **url postgresql** инстанса с бд хренения истории
+
+* **SPRING_DATASOURCE_USERNAME** - логин пользователя для бд хренения истории
+
+* **SPRING_DATASOURCE_PASSWORD** - пароль пользователя для бд хранения истории
+
+* **SPRING_DATA_MONGODB_URI** - **url mongodb** инстанса для хранения history/task records атрибутов нод
+
+* **SPRING_DATA_MONGODB_DATABASE** - бд хранения history/task records атрибутов нод
+
+* **ECOS-HISTORY_RECOVER_SOURCEFOLDER** - **резервный** датасорс очереди событий истории 
+
+* **ECOS-HISTORY_RECOVER_ERRORSFOLDER** - **резервный** датасорс хранения ошибок обработки очереди событий истории
+
+* **ECOS-HISTORY_ALFRESCO_TENANTID** - **tenantid** развернутого деплоя ecos
+
+* **ECOS-HISTORY_EVENT_HOST** - адрес диспетчера очередей
+
+* **ECOS-HISTORY_EVENT_PORT** -  **amqp**  порт диспетчера очередей
+
+* **ECOS-HISTORY_EVENT_USERNAME** - логин пользователя для диспетчера очередей
+
+* **ECOS-HISTORY_EVENT_PASSWORD** - пароль пользователя для диспетчера очередей
+
+* **JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~~~~
+
+* Расхождения в формирования url в микросервисах, использующих в качестве датасорса mongodb
+
+* Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+
+Дополнительно:
+~~~~~~~~~~~~~~~~~~
+
+* Документация по `spring cloud config  <https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server>`_
+
+Типовой вывод успешного развертывания в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	ecos-history                | ----------------------------------------------------------
+	ecos-history                |   Application 'history' is running! Access URLs:
+	ecos-history                |   Local:          http://localhost:8086/
+	ecos-history                |   External:       http://172.18.0.27:8086/
+	ecos-history                |   Profile(s):     [prod, swagger, facade]
+	ecos-history                | ----------------------------------------------------------
+	ecos-history                | 2020-05-06 10:51:52.991  INFO 1 --- [           main] ru.citeck.ecos.history.HistoryApp        : 
+	ecos-history                | ----------------------------------------------------------
+	ecos-history                |   Config Server:  Connected to the JHipster Registry running in Docker
+	ecos-history                | ----------------------------------------------------------
+
+
+
+
+rabbitmq-app
+--------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Образ брокера сообщений Rabbitmq
+
+Теги:
+~~~~~
+
+**rabbitmq:3.7.18-management-alpine** - используется официальный образ
+
+Базовые образы:
+~~~~~~~~~~~~~~~~~~
+
+* **rabbitmq:3.7.18-management-alpine** - образ версии 3.7.18 c интегрированным плагином managment на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	rabbitmq:
+		logging:
+		options:
+			max-size: "10m"
+			max-file: "5"
+		image: "rabbitmq:3.7.18-management-alpine"
+		restart: unless-stopped
+		stop_grace_period: 1m
+		container_name: rabbitmq
+		hostname: rabbitmq
+		environment:
+            - RABBITMQ_DEFAULT_USER=rabbitmqadmin
+            - RABBITMQ_DEFAULT_PASS=LKSjdlkj847Klhfc
+            - RABBITMQ_DEFAULT_VHOST=/
+        expose:
+            - 15672/tcp
+        ports: 
+            - 35672:5672
+        volumes:
+            - /opt/rabbitmqdata:/var/lib/rabbitmq
+        networks:
+            - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **RABBITMQ_DEFAULT_USER** - логин создаваемого пользователя по умолчанию
+
+* **RABBITMQ_DEFAULT_PASS** - пароль пользователя
+
+* **RABBITMQ_DEFAULT_VHOST** - создаваемый виртуальный хост
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* k8s после пересоздания пода при условии что приложение развернуто как statesful контейнер уходит в crash loopback
+
+* Не реализовано конфигурирование дополнительных виртуальных хостов, пользователей, наделение правами пользователей
+
+Типовой вывод успешного развертывания в лог контейнера:
+
+.. code-block::
+
+	rabbitmq                    | 2020-05-12 20:35:36.412 [info] <0.8.0> Feature flags: list of feature flags found:
+	rabbitmq                    | 2020-05-12 20:35:36.413 [info] <0.8.0> Feature flags: feature flag states written to disk: yes
+	rabbitmq                    | 2020-05-12 20:35:36.754 [info] <0.264.0> 
+	rabbitmq                    |  Starting RabbitMQ 3.7.18 on Erlang 22.1.1
+	rabbitmq                    |  Copyright (C) 2007-2019 Pivotal Software, Inc.
+	rabbitmq                    |  Licensed under the MPL.  See https://www.rabbitmq.com/
+	rabbitmq                    | 
+	rabbitmq                    |   ##  ##
+	rabbitmq                    |   ##  ##      RabbitMQ 3.7.18. Copyright (C) 2007-2019 Pivotal Software, Inc.
+	rabbitmq                    |   ##########  Licensed under the MPL.  See https://www.rabbitmq.com/
+	rabbitmq                    |   ######  ##
+	rabbitmq                    |   ##########  Logs: <stdout>
+	rabbitmq                    | 
+	rabbitmq                    |               Starting broker...
+	rabbitmq                    | 2020-05-12 20:35:36.756 [info] <0.264.0> 
+	rabbitmq                    |  node           : rabbit@rabbitmq
+	rabbitmq                    |  home dir       : /var/lib/rabbitmq
+	rabbitmq                    |  config file(s) : /etc/rabbitmq/rabbitmq.conf
+	rabbitmq                    |  cookie hash    : 69+WXGG5CrjDEU7Bmh7IbA==
+	rabbitmq                    |  log(s)         : <stdout>
+	rabbitmq                    |  database dir   : /var/lib/rabbitmq/mnesia/rabbit@rabbitmq
+	rabbitmq                    | 2020-05-12 20:35:36.807 [info] <0.264.0> Running boot step pre_boot defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.807 [info] <0.264.0> Running boot step rabbit_core_metrics defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.808 [info] <0.264.0> Running boot step rabbit_alarm defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.843 [info] <0.284.0> Memory high watermark set to 6202 MiB (6504172748 bytes) of 15507 MiB (16260431872 bytes) total
+	rabbitmq                    | 2020-05-12 20:35:36.900 [info] <0.301.0> Enabling free disk space monitoring
+	rabbitmq                    | 2020-05-12 20:35:36.900 [info] <0.301.0> Disk free limit set to 50MB
+	rabbitmq                    | 2020-05-12 20:35:36.924 [info] <0.264.0> Running boot step code_server_cache defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.924 [info] <0.264.0> Running boot step file_handle_cache defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.925 [info] <0.316.0> FHC read buffering:  OFF
+	rabbitmq                    | 2020-05-12 20:35:36.925 [info] <0.316.0> FHC write buffering: ON
+	rabbitmq                    | 2020-05-12 20:35:36.924 [info] <0.315.0> Limiting to approx 1048476 file handles (943626 sockets)
+	rabbitmq                    | 2020-05-12 20:35:36.929 [info] <0.264.0> Running boot step worker_pool defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.929 [info] <0.265.0> Will use 4 processes for default worker pool
+	rabbitmq                    | 2020-05-12 20:35:36.929 [info] <0.265.0> Starting worker pool 'worker_pool' with 4 processes in it
+	rabbitmq                    | 2020-05-12 20:35:36.930 [info] <0.264.0> Running boot step database defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:36.955 [info] <0.264.0> Waiting for Mnesia tables for 30000 ms, 9 retries left
+	rabbitmq                    | 2020-05-12 20:35:37.025 [info] <0.264.0> Waiting for Mnesia tables for 30000 ms, 9 retries left
+	rabbitmq                    | 2020-05-12 20:35:37.025 [info] <0.264.0> Peer discovery backend rabbit_peer_discovery_classic_config does not support registration, skipping registration.
+	rabbitmq                    | 2020-05-12 20:35:37.025 [info] <0.264.0> Running boot step database_sync defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.025 [info] <0.264.0> Running boot step feature_flags defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step codec_correctness_check defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step external_infrastructure defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step rabbit_registry defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step rabbit_auth_mechanism_cr_demo defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step rabbit_queue_location_random defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.030 [info] <0.264.0> Running boot step rabbit_event defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.031 [info] <0.264.0> Running boot step rabbit_auth_mechanism_amqplain defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.031 [info] <0.264.0> Running boot step rabbit_auth_mechanism_plain defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.031 [info] <0.264.0> Running boot step rabbit_exchange_type_direct defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.031 [info] <0.264.0> Running boot step rabbit_exchange_type_fanout defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.031 [info] <0.264.0> Running boot step rabbit_exchange_type_headers defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_exchange_type_topic defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_mirror_queue_mode_all defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_mirror_queue_mode_exactly defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_mirror_queue_mode_nodes defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_priority_queue defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Priority queues enabled, real BQ is rabbit_variable_queue
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_queue_location_client_local defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_queue_location_min_masters defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step kernel_ready defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.032 [info] <0.264.0> Running boot step rabbit_sysmon_minder defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.033 [info] <0.264.0> Running boot step rabbit_epmd_monitor defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.067 [info] <0.264.0> Running boot step guid_generator defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.069 [info] <0.264.0> Running boot step rabbit_node_monitor defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.070 [info] <0.343.0> Starting rabbit_node_monitor
+	rabbitmq                    | 2020-05-12 20:35:37.070 [info] <0.264.0> Running boot step delegate_sup defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.070 [info] <0.264.0> Running boot step rabbit_memory_monitor defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.071 [info] <0.264.0> Running boot step core_initialized defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.071 [info] <0.264.0> Running boot step upgrade_queues defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.100 [info] <0.264.0> Running boot step rabbit_connection_tracking defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.100 [info] <0.264.0> Running boot step rabbit_connection_tracking_handler defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.100 [info] <0.264.0> Running boot step rabbit_exchange_parameters defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.100 [info] <0.264.0> Running boot step rabbit_mirror_queue_misc defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.100 [info] <0.264.0> Running boot step rabbit_policies defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.101 [info] <0.264.0> Running boot step rabbit_policy defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.101 [info] <0.264.0> Running boot step rabbit_queue_location_validator defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.101 [info] <0.264.0> Running boot step rabbit_vhost_limit defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.101 [info] <0.264.0> Running boot step rabbit_mgmt_reset_handler defined by app rabbitmq_management
+	rabbitmq                    | 2020-05-12 20:35:37.102 [info] <0.264.0> Running boot step rabbit_mgmt_db_handler defined by app rabbitmq_management_agent
+	rabbitmq                    | 2020-05-12 20:35:37.102 [info] <0.264.0> Management plugin: using rates mode 'basic'
+	rabbitmq                    | 2020-05-12 20:35:37.102 [info] <0.264.0> Running boot step recovery defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.113 [info] <0.446.0> Making sure data directory '/var/lib/rabbitmq/mnesia/rabbit@rabbitmq/msg_stores/vhosts/628WB79CIFDYO9LJI6DKMI09L' for vhost '/' exists
+	rabbitmq                    | 2020-05-12 20:35:37.117 [info] <0.446.0> Starting message stores for vhost '/'
+	rabbitmq                    | 2020-05-12 20:35:37.117 [info] <0.450.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_transient": using rabbit_msg_store_ets_index to provide index
+	rabbitmq                    | 2020-05-12 20:35:37.119 [info] <0.446.0> Started message store of type transient for vhost '/'
+	rabbitmq                    | 2020-05-12 20:35:37.119 [info] <0.453.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_persistent": using rabbit_msg_store_ets_index to provide index
+	rabbitmq                    | 2020-05-12 20:35:37.124 [info] <0.446.0> Started message store of type persistent for vhost '/'
+	rabbitmq                    | 2020-05-12 20:35:37.352 [info] <0.264.0> Running boot step load_definitions defined by app rabbitmq_management
+	rabbitmq                    | 2020-05-12 20:35:37.352 [info] <0.264.0> Running boot step empty_db_check defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.352 [info] <0.264.0> Running boot step rabbit_looking_glass defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.352 [info] <0.264.0> Running boot step rabbit_core_metrics_gc defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.353 [info] <0.264.0> Running boot step background_gc defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.353 [info] <0.264.0> Running boot step connection_tracking defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.353 [info] <0.264.0> Setting up a table for connection tracking on this node: tracked_connection_on_node_rabbit@rabbitmq
+	rabbitmq                    | 2020-05-12 20:35:37.353 [info] <0.264.0> Setting up a table for per-vhost connection counting on this node: tracked_connection_per_vhost_on_node_rabbit@rabbitmq
+	rabbitmq                    | 2020-05-12 20:35:37.354 [info] <0.264.0> Running boot step routing_ready defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.354 [info] <0.264.0> Running boot step pre_flight defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.354 [info] <0.264.0> Running boot step notify_cluster defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.354 [info] <0.264.0> Running boot step networking defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.362 [info] <0.704.0> started TCP listener on [::]:5672
+	rabbitmq                    | 2020-05-12 20:35:37.362 [info] <0.264.0> Running boot step direct_client defined by app rabbit
+	rabbitmq                    | 2020-05-12 20:35:37.430 [info] <0.754.0> Management plugin: HTTP (non-TLS) listener started on port 15672
+	rabbitmq                    | 2020-05-12 20:35:37.430 [info] <0.860.0> Statistics database started.
+	rabbitmq                    | 2020-05-12 20:35:37.431 [info] <0.859.0> Starting worker pool 'management_worker_pool' with 3 processes in it
+	rabbitmq                    |  completed with 3 plugins.
+	rabbitmq                    | 2020-05-12 20:35:37.739 [info] <0.8.0> Server startup complete; 3 plugins started.
+	rabbitmq                    |  * rabbitmq_management
+	rabbitmq                    |  * rabbitmq_management_agent
+	rabbitmq                    |  * rabbitmq_web_dispatch
+
+ecos-apps-app
+--------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Образ микросервиса, управляющего деплоем приложений и модулей ECOS
+
+Теги:
+~~~~~~~
+
+`nexus.citeck.ru/ecos-apps <nexus.citeck.ru/ecos-apps>`_ :<tag> - сборка проекта ecos-apps
+
+Базовые образы:
+~~~~~~~~~~~~~~~~
+
+* **openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+ ecos-apps:
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    image: nexus.citeck.ru/ecos-apps:<ECOS_APPS_IMAGE
+    container_name: ecos-apps
+    stop_grace_period: 1m
+    hostname: ecos-apps
+    restart: on-failure:5
+    depends_on:
+      - ecosapps-postgresql
+    environment:
+      - JHIPSTER_REGISTRY_PASSWORD=alfr3sc0
+      - _JAVA_OPTIONS=-Xmx256m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ecosapps-postgresql:5432/eapps
+      - JHIPSTER_SLEEP=60 # gives time for the JHipster Registry to boot before the application
+ #    ports:
+ #    - 8089:8089
+    networks:
+      - app_network
+  ecosapps-postgresql:
+    container_name: ecosapps-postgresql
+    hostname: ecosapps-postgresql
+    restart: unless-stopped
+    image: postgres:10.4
+    stop_grace_period: 1m
+    environment:
+      - POSTGRES_USER=eapps
+      - POSTGRES_PASSWORD=
+    volumes:
+      - /opt/micro/postgresql/ecosapps:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **_JAVA_OPTIONS** - параметры для **jvm**
+
+* **SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
+
+* **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
+
+* **SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
+
+* **JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
+
+* **SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
+
+* **JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
+
+* Использование empty password в доступах к датасорсам
+
+* cloud config и eureka load balancer используют один и тот же пароль
+
+Дополнительно:
+~~~~~~~~~~~~~~~
+
+Документация по использованию микросервиса Apps microservice 
+
+Типовой вывод успешного развертывания в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	ecos-apps                   | ----------------------------------------------------------
+	ecos-apps                   |   Application 'eapps' is running! Access URLs:
+	ecos-apps                   |   Local:          http://localhost:8089/
+	ecos-apps                   |   External:       http://172.25.0.19:8089/
+	ecos-apps                   |   Profile(s):     [prod, swagger]
+	ecos-apps                   | ----------------------------------------------------------
+	ecos-apps                   | 2020-05-13 08:40:19.215  INFO 1 --- [           main] ru.citeck.ecos.apps.EcosAppsApp          : 
+	ecos-apps                   | ----------------------------------------------------------
+	ecos-apps                   |   Config Server:  Connected to the JHipster Registry running in Docker
+	ecos-apps                   | ----------------------------------------------------------
+
+
+eis (Keycloack)
+----------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Теги:
+~~~~~~
+
+Базовые образы:
+~~~~~~~~~~~~~~~
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	eis:
+		logging:
+		options:
+			max-size: "10m"
+			max-file: "5"
+		image: docker.io/jboss/keycloak:10.0.1
+		container_name: eis
+		hostname: eis
+		restart:  unless-stopped
+		environment:
+			PROXY_ADDRESS_FORWARDING: "true"
+			DB_VENDOR: POSTGRES
+			DB_ADDR: eis_postgres
+			DB_DATABASE: keycloak
+			DB_USER: keycloak
+			DB_SCHEMA: public
+			DB_PASSWORD: LklsdkkuOIUjkh
+			KEYCLOAK_USER: admin
+			KEYCLOAK_PASSWORD: ERRESkhlu7iu4hkhjfd
+				# Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+				#JDBC_PARAMS: "ssl=true"
+		ports:
+    		- 443:8443
+		depends_on:
+    		- eis_postgres
+		networks:
+    		- app_network
+    eis_postgres:
+		image: postgres:11
+		container_name: eis_postgres
+		hostname: eis_postgres
+		volumes:
+            - /opt/postgresql/keycloak:/var/lib/postgresql/data
+        environment:
+			POSTGRES_DB: keycloak
+			POSTGRES_USER: keycloak
+			POSTGRES_PASSWORD: LklsdkkuOIUjkh
+        networks:
+            - app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Известные проблемы:
+~~~~~~~~~~~~~~~~~~~~
+ 
+
+Дополнительно:
+~~~~~~~~~~~~~~~
+ 
+
+Типовой вывод успешного развертывания в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+backup-tool-app
+----------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Образ для создания бекапов.
+
+Создан на базе решения `Backup 4.4.1.  <https://github.com/backup/backup>`_
+Документация находится `тут  <http://backup.github.io/backup/v4/>`_
+
+Выключен по умолчанию.
+
+Исходники находznся в репозитории `https://bitbucket.org/citeck/citeck-devops/ <https://bitbucket.org/citeck/citeck-devops/>`_
+
+Теги:
+~~~~~~
+
+Актуальная версия `nexus.citeck.ru/backup-tool <nexus.citeck.ru/backup-tool>`_ 0.0.3
+UPD:  По сравнению с предыдущей версией ( 0.0.2 ) поправлены СА серты R3 и актуализированы версии вспомогательных утилит.
+
+Шаблон сервиса docker-compose:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	services:
+		app:
+			logging:
+			 options:
+				max-size: "10m"
+				max-file: "5"
+			 hostname: backup-tool-app
+			 restart: always
+			 stop_grace_period: 1m
+			image: nexus.citeck.ru/backup-tool:0.0.2
+			env_file:
+			 - ./environments/backup-tool-app.env
+			volumes:
+		{% if (BackupToolApp.environments.backup.contentstore)and(EcosApp.enabled) %}
+			- {{ EcosProjectDataDir }}ecos-app/:/content/
+		{% endif %}
+		{% if (BackupToolApp.environments.backup.index) and (EcosSearchApp.enabled) %}
+			- {{ EcosProjectDataDir }}ecos-search-app/:/index/
+		{% endif %}
+		{% if BackupToolApp.environments.export.local.enabled %}
+			- {{ EcosProjectDataDir }}backups/:/backups/
+		{% endif %}
+			networks:
+			- app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Пример ожидаемых переменных в ``backup-tool-app.env`` с значениями по умолчанию:
+
+  * **BACKUP_SHEDULE=”0 0 * * *”**
+    
+  * **BACKUP_DEBUG_CONFIG=false**
+    
+  * **BACKUP_INSTANCE_ID=local.dev**
+    
+  * **BACKUP_CONTENTSTORE=false**
+    
+  * **BACKUP_INDEX=false**
+    
+  * **BACKUP_POSTGRESQL_APP_1=false**
+
+  * **BACKUP_POSTGRESQL_APP_1_HOST=ecos-postgresql-app**
+    
+  * **BACKUP_POSTGRESQL_APP_1_PORT=5432**
+    
+  * **BACKUP_POSTGRESQL_APP_1_USERNAME=user**
+    
+  * **BACKUP_POSTGRESQL_APP_1_PASSWORD=password**
+    
+  * **BACKUP_POSTGRESQL_APP_2=false**
+    
+  * **BACKUP_POSTGRESQL_APP_2_HOST=ecos-microservices-postgresql-app**
+    
+  * **BACKUP_POSTGRESQL_APP_2_PORT=5432**
+    
+  * **BACKUP_POSTGRESQL_APP_2_USERNAME=user**
+    
+  * **BACKUP_POSTGRESQL_APP_2_PASSWORD=password**
+    
+  * **BACKUP_MONGODB_APP_1=false**
+
+  * **BACKUP_MONGODB_APP_1_HOST=mongodb-app**
+    
+  * **BACKUP_MONGODB_APP_1_PORT=27017**
+    
+  * **BACKUP_MONGODB_APP_1_USERNAME=user**
+    
+  * **BACKUP_MONGODB_APP_1_PASSWORD=password**
+    
+  * **BACKUP_MYSQL_APP_1=false**
+    
+  * **BACKUP_MYSQL_APP_1_HOST=mysql-app**
+    
+  * **BACKUP_MYSQL_APP_1_PORT=3306**
+    
+  * **BACKUP_MYSQL_APP_1_USERNAME=user**
+    
+  * **BACKUP_MYSQL_APP_1_PASSWORD=password**
+
+  * **BACKUP_LOCAL_EXPORT=false**
+    
+  * **BACKUP_LOCAL_EXPORT_KEEP=7**
+    
+  * **BACKUP_S3_EXPORT=false**
+    
+  * **BACKUP_S3_EXPORT_USE_FOG_OPTIONS=true**
+    
+  * **BACKUP_S3_EXPORT_ENDPOINT=s3.citeck.ru**
+    
+  * **BACKUP_S3_EXPORT_REGION=**
+    
+  * **BACKUP_S3_EXPORT_KEY=changemeplease**
+    
+  * **BACKUP_S3_EXPORT_SECRET=changemeplease**
+    
+  * **BACKUP_S3_EXPORT_BUCKET=bucket**
+    
+  * **BACKUP_S3_EXPORT_KEEP=7**
+    
+  * **BACKUP_MATTERMOST_NOTIFICATIONS=false**
+    
+  * **BACKUP_MATTERMOST_NOTIFICATIONS_WEBHOOK=changemeplease**
+    
+  * **BACKUP_MATTERMOST_NOTIFICATIONS_CHANNEL=channel**
+
+``BACKUP_POSTGRESQL_APP_*``
+
+``BACKUP_MONGODB_APP_*``
+
+``BACKUP_MYSQL_APP_*``
+
+Отвечают за авторизацию в субд. При использовании шаблонизатора docker-compose значения полей подставляются автоматически. Эти параметры в большинстве случаев нет необходимости предопределять.
+
+* **BACKUP_SHEDULE** - Как часто необходимо делать бекапы. Задается в формате cron. По умолчанию ежедневно в 00:00. p.s. `вот удобный калькулятор <https://crontab.guru/>`_
+
+* **BACKUP_DEBUG_CONFIG** - Возвращает список переменных и сконфигурированый backup_plan.rb.
+
+* **BACKUP_INSTANCE_ID** - Имя инстанса. Используется для оповещений в mattermost и для экспорта в S3.
+
+* **BACKUP_CONTENTSTORE** - Включает бекапы для ``ecos-app`` ``contentstore``.
+
+* **BACKUP_INDEX** - Включает бекапы для ``ecos-search-app`` ``index``.
+
+* **BACKUP_LOCAL_EXPORT** - Включает хранение бекапов на сервере, в директории ``backups/``.
+
+* **BACKUP_LOCAL_EXPORT_KEEP** - Сколько дней хранить бекапы в директории ``backups/``. Зависит о частоты выполнения бекап плана.
+
+* **BACKUP_S3_EXPORT** - Включает экспорт бекапов в S3 хранилище.
+
+* **BACKUP_S3_EXPORT_USE_FOG_OPTIONS** - Переключатель необходимый для использования в S3-like хранилищах, например в `DigitalOcean’s Spaces <https://developers.digitalocean.com/documentation/v2/>`_ или `Minio <https://www.minio.io/>`_. Использует в качестве хоста переменную BACKUP_S3_EXPORT_ENDPOINT. Более подробно в `документации <https://backup.github.io/backup/v4/storage-s3/>`_ 
+
+* **BACKUP_S3_EXPORT_ENDPOINT** - Адрес S3-like сервера. Зависит от значения ``true`` переменной BACKUP_S3_EXPORT_USE_FOG_OPTIONS.
+
+* **BACKUP_S3_EXPORT_REGION** - Регион для amazon S3. 
+
+* **BACKUP_S3_EXPORT_KEY** - S3 ключ авторизации.
+
+* **BACKUP_S3_EXPORT_SECRET** - S3 сикрет авторизации.
+
+* **BACKUP_S3_EXPORT_BUCKET** - Ведерко, куда складывать бекапы в S3.
+
+* **BACKUP_S3_EXPORT_KEEP** - Сколько дней хранить бекапы в S3 хранилище. Зависит о частоты выполнения бекап плана.
+
+* **BACKUP_MATTERMOST_NOTIFICATIONS** - Включает отправку уведомлений в mattermost / slack.
+
+* **BACKUP_MATTERMOST_NOTIFICATIONS_WEBHOOK** - Полный адрес webhook, куда нужно отправлять уведомления. `Например <https://mm.citeck.ru/hooks/apbhdnp72djpexxmofkywptyy>`_.
+
+* **BACKUP_MATTERMOST_NOTIFICATIONS_CHANNEL** - Канал в mattermost / slack для уведомлений.
+
+Типовой вывод принятых настроек в лог контейнера:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	17:27:10.INFO  ==> ** Starting Backup plan setup **
+	17:27:10.INFO  ==> ** Export to s3 storage disabled **
+	17:27:10.INFO  ==> ** Export to local storage disabled **
+	17:27:10.INFO  ==> ** Disabled mattermost notification **
+	17:27:11.INFO  ==> ** Generation of the configuration file /opt/backup/backup_plan.rb completed successfully **
+	17:27:11.INFO  ==> ** Configuration check completed successfully **
+	17:27:11.INFO  ==> ** Backup plan setup finished! **
+
+	17:27:11.INFO  ==> ** Сonfiguring the scheduler **
+	17:27:11.INFO  ==> ** Schedule applied: 0 0 * * * **
+
+ecos-alfresco-search-service
+-----------------------------
+
+Назначение:
+~~~~~~~~~~~~
+
+Образ с установленным контейнером сервлетов Tomcat с вебархивом проекта ecos-alfresco-search-service (solr6)
+
+Теги:
+~~~~~~
+
+`nexus.citeck.ru/ecos-alfresco-search-service <nexus.citeck.ru/ecos-alfresco-search-service>`_ :<tag>
+
+Базовые образы
+~~~~~~~~~~~~~~
+
+* **alfresco/alfresco-base-java:11.0.1-openjdk-centos-7-3e4e9f4e5d6a** базовый образ tomcat/java от alfresco,  openjdk version "11.0.1-openjdk"
+
+Шаблон сервиса docker-compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+	ecos-alfresco-search-services:
+		logging:
+		 options:
+			max-size: "10m"
+			max-file: "5"
+		image: nexus.citeck.ru/ecos-alfresco-search-services:<ECOS_SOLR6
+		restart: unless-stopped
+		stop_grace_period: 1m
+		container_name: ecos-alfresco-search-services
+		hostname: ecos-alfresco-search-services
+		ports:
+    		- 8983:8983
+		env_file:
+  		- ./env_dir/ecos-search-service-app.env
+		volumes:
+    		- /opt/ecos-alfresco-search-services/contentstore:/opt/ecos-alfresco-search-services/contentstore
+    		- /opt/ecos-alfresco-search-services/data:/opt/ecos-alfresco-search-services/data
+		networks:
+    		- app_network
+
+Используемые переменные:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **ALFRESCO_HOST** - fqdn/ip инстанса ecos
+
+* **ALFRESCO_PORT** - http порт инстанса ecos 
+
+* **ALFRESCO_PORT_SSL** - https порт инстанса ecos 
+
+* **SOLR_SOLR_HOST** - fqdn/ip инстанса solr
+
+* **SOLR_SOLR_PORT** - http порт инстанса solr
+
+* **SOLR_CITECK_MERGE_FACTOR** - мерж фактор solr/lucene, используемый при определении необходимости мержить сегменты.
+
+* **SOLR_ALFRESCO_INDEX_TRANSFORM_CONTENT** - если true - будет происходить конвертация контента в текст и его последующая пословесная индексация. Если false - будут индексироваться только метаданные  (mimetype, size, etc).
+
+* **SOLR_ALFRESCO_RECORD_UNINDEXED_NODES** - если true - ноды, типы которых отмечены как “неиндексируемые” - будут попадать в индекс в качестве документа без индексации атрибутов ноды. Если false - такие документы будут игнорироваться при индексации.
+
+* **SOLR_CITECK_RECORD_TRANSACTIONS** - если true - каждая транзакция будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях будут храниться только в кеше, в памяти.
+
+* **SOLR_CITECK_TX_CONSISTENCY_CHECK_MODE** - тип проверки консистентности индекса и базы для индексации транзакций. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+
+* **SOLR_CITECK_TX_IS_INDEXED_CACHE_SIZE** - размер кеша, если CITECK_RECORD_TRANSACTIONS = false.
+
+* **SOLR_CITECK_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT** - коэффициент чистки кеша при переполнении, если CITECK_RECORD_TRANSACTIONS = false.
+
+* **SOLR_CITECK_RECORD_ACL_TRANSACTIONS** - если true - каждая транзакция прав будет попадать в индекс, как отметка о том, что она проиндексирована. Если false - данные о проиндексированных транзакциях прав будут храниться только в кеше, в памяти.
+
+* **SOLR_CITECK_ACL_CONSISTENCY_CHECK_MODE** - тип проверки консистентности индекса и базы для индексации транзакций прав. Может принимать значения FULL_DB_AND_INDEX_CHECK, ONLY_LAST_TRANSACTION или NONE.
+
+* **SOLR_CITECK_ACL_TX_IS_INDEXED_CACHE_SIZE** - размер кеша, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+
+* **SOLR_CITECK_ACL_TX_IS_INDEXED_CACHE_CLEAR_COEFFICIENT** - коэффициент чистки кеша при переполнении, если CITECK_RECORD_ACL_TRANSACTIONS = false.
+
+* **SOLR_OPTS** - параметры для **jvm**
+
+**Настройки SSL:**
+
+По умолчанию SSL включён в микросервисе, при старте необходимо указать следующие environments
+
+.. code-block::
+
+	SOLR_SSL_KEY_STORE: /opt/ecos-alfresco-search-services/keystores/ssl.repo.client.keystore
+	SOLR_SSL_KEY_STORE_PASSWORD: kT9X6oe68t
+	SOLR_SSL_KEY_STORE_TYPE: JCEKS
+	SOLR_SSL_TRUST_STORE: /opt/ecos-alfresco-search-services/keystores/ssl.repo.client.truststore
+	SOLR_SSL_TRUST_STORE_PASSWORD: kT9X6oe68t
+	SOLR_SSL_TRUST_STORE_TYPE: JCEKS
+	SOLR_SSL_NEED_CLIENT_AUTH: true
+	SOLR_SSL_WANT_CLIENT_AUTH: false
+
+Для отключения SSL проверяем что у нас не устанавливаться environments выше, иначе обнуляем значения этих environments. Затем устанавливаем **ALFRESCO_SECURE_COMMS** =none
+
+Для установки своих ключей достаточно примонтировать в директорию микросервиса ``/opt/ecos-alfresco-search-services/`` свои ключи.
+Содержимое папки должно быть следующим:
+
+.. code-block::
+
+	ssl.repo.client.keystore
+	ssl.repo.client.truststore
+	ssl-keystore-passwords.properties
+	ssl-truststore-passwords.properties 
+
+Доп информация по некоторым параметрам может быть найдена тут:
+
+`https://citeck.atlassian.net/wiki/x/Q4AgRg  <https://citeck.atlassian.net/wiki/x/Q4AgRg>`_
+
+`https://docs.alfresco.com/search-services/1.3/config/properties <https://docs.alfresco.com/search-services/1.3/config/properties/>`_
+
+Типовой вывод успешного развертывания в лог контейнера:
+
+.. code-block::
+
+	OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+	2021-10-18 07:22:35.735 INFO  (main) [   ] o.e.j.s.Server jetty-9.3.27.v20190418, build timestamp: 2019-04-18T18:11:38Z, git hash: d3e249f86955d04bc646bb620905b7c1bc596a8d
+	2021-10-18 07:22:36.283 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 6.6.5-patched.2 660ad3d2332b99205fbc436047f8d547511cd767 - tpage - 2019-11-27 08:18:56
+	2021-10-18 07:22:36.284 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+	2021-10-18 07:22:36.284 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /opt/ecos-alfresco-search-services/solr
+	2021-10-18 07:22:36.298 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2021-10-18T07:22:36.286136Z
+	2021-10-18 07:22:37.349 INFO  (main) [   ] o.e.j.s.Server Started @2533ms
+	2021-10-18 07:22:47.283 WARN  (Thread-12) [   x:alfresco] o.a.s.c.Config XML parse warning in "solrres:/solrconfig.xml", line 1919, column 88: Include operation failed, reverting to fallback. Resource error reading file as XML (href='solrconfig_insight.xml'). Reason: Can't find resource 'solrconfig_insight.xml' in classpath or '/opt/ecos-alfresco-search-services/solrhome/alfresco'
+	2021-10-18 07:22:47.916 WARN  (Thread-12) [   x:alfresco] o.a.s.c.SolrResourceLoader Solr loaded a deprecated plugin/analysis class [org.apache.solr.analysis.WordDelimiterFilterFactory]. Please consult documentation how to replace it accordingly.
+	2021-10-18 07:22:47.923 WARN  (Thread-12) [   x:alfresco] o.a.s.c.SolrResourceLoader Solr loaded a deprecated plugin/analysis class [solr.SynonymFilterFactory]. Please consult documentation how to replace it accordingly.
+	2021-10-18 07:22:49.231 WARN  (Thread-12) [   x:alfresco] o.a.s.h.c.AlfrescoSolrClusteringComponent No default engine for document clustering.
+	2021-10-18 07:22:49.381 WARN  (Thread-12) [   x:alfresco] o.a.s.c.Config XML parse warning in "solrres:/solrconfig.xml", line 1919, column 88: Include operation failed, reverting to fallback. Resource error reading file as XML (href='solrconfig_insight.xml'). Reason: Can't find resource 'solrconfig_insight.xml' in classpath or '/opt/ecos-alfresco-search-services/solrhome/archive'
+	2021-10-18 07:22:49.934 WARN  (searcherExecutor-7-thread-1-processing-x:alfresco) [   x:alfresco] o.a.s.SolrInformationServer Citeck unindex are initialized for alfresco
+	2021-10-18 07:22:49.948 WARN  (Thread-12) [   x:alfresco] o.a.s.h.c.AlfrescoSolrClusteringComponent No default engine for document clustering.
+	2021-10-18 07:22:49.979 WARN  (searcherExecutor-21-thread-1-processing-x:alfresco) [   x:alfresco] o.a.s.SolrInformationServer Citeck unindex are initialized for archive

@@ -19,6 +19,7 @@
 --------------------
 
 .. image:: _static/about_event_alfresco/notifications_about_event_alfresco_form.png
+        :width: 600
         :align: center
 
 .. note:: 
@@ -93,6 +94,7 @@
 Пример модели данных:
 
 .. image:: _static/about_event_alfresco/notifications_about_event_alfresco_model_example.png
+        :width: 600
         :align: center
 
 

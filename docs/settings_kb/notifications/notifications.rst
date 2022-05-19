@@ -17,6 +17,7 @@
 ===============
 
 .. image:: _static/notification/notification_form.png
+        :width: 800
         :align: center
 
 :Идентификатор: Уникальный id уведомления.
@@ -63,4 +64,5 @@
 На текущий момент поддерживается только простая текстовая фильтрация полей через ``ИЛИ``.
 
 .. image:: _static/notification/notification_journal.png
+        :width: 800
         :align: center
