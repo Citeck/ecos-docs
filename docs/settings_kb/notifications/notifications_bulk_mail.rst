@@ -40,9 +40,11 @@
 =========
 
 .. image:: _static/bulk_mail/bulk_mail_form_1.png
+        :width: 600
         :align: center
 
 .. image:: _static/bulk_mail/bulk_mail_form_2.png
+        :width: 600
         :align: center
 
 2.2 Описание полей
@@ -152,6 +154,7 @@
 В результате действия будут сформированны уведомления в журнале "Уведомления" (см. :ref:`Описание уведомлений  <notifications-label>`), в котором можно посомтреть информацию о сформированных сообщениях и так же их статус.
 
 .. image:: _static/bulk_mail/bulk_mail_notifications_journal.png
+        :width: 600
         :align: center
 
 

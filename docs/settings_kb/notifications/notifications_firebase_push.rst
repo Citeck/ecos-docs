@@ -115,6 +115,7 @@ Data base url задается через spring config:
        На схеме микросервис интеграции заменить на нотификаций
 
 .. image:: _static/firebase_push/ecos_firebase_notifications_registration_flow.png
+       :width: 600
        :align: center
        :alt: Процесс регистрации клиента в firebase
 
@@ -291,6 +292,7 @@ Data base url задается через spring config:
        На схеме микросервис интеграции заменить на нотификаций
 
 .. image:: _static/firebase_push/ecos_firebase_notification_flow.png
+       :width: 600
        :align: center
        :alt: Процесс Процесс отправки и получения пуш уведомления
 
