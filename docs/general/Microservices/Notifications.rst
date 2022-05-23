@@ -3,6 +3,4 @@ Notifications microservice
 
 Микросервис нотификаций
 
-release 1.6.0 - Шаблоны уведомлений, отправка уведомлений через ecos-commands
-
-release 1.7.0 - Возможность вставлять изображения в шаблоны уведомлений
+`См. подробное описание <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/notifications.html>`_
