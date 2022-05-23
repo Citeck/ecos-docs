@@ -741,4 +741,138 @@ QName чувствителен к регистру.
 
 4. Логинимся и меняем процессы как хотим `http://localhost:8070/flowable-modeler: <http://localhost:8070/flowable-modeler>`_
 
+Известные проблемы с Flowable
+------------------------------
+
+Процесс с таймерами не движется дальше
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Таймеры в flowable по умолчанию пытаться выполниться 3 раза, затем после неудачных попыток перемещаться в таблицу DeadLetterJob
+
+Получить список и информацию о мертвых таймерах можно через скрипт:
+
+.. code-block::
+
+    var flowableManagementService = services.get("flowableManagementService");
+    var jobs = flowableManagementService
+    .createDeadLetterJobQuery()
+    //.processInstanceId('11699313') // Фильтр по "ID процесса flowable"
+    .listPage(0, 10);
+
+    for (var i = 0; i < jobs.size(); i++) {
+        var job = jobs.get(i);
+        print(job);
+        print("id: " + job.getId());
+        print("executionId: " + job.getExecutionId());
+        print("createTime: " + job.getCreateTime());
+        print("jobHandlerConfiguration: " + job.getJobHandlerConfiguration());
+        print("processDefinitionId: " + job.getProcessDefinitionId());
+        print("processInstanceId: " + job.getProcessInstanceId());
+        print("exceptionMessage: " + job.getExceptionMessage());
+        //print("exceptionStacktrace: " + job.getExceptionStacktrace());
+        print("---");
+    }
+
+Подробнее: `DeadLetterJobQuery <https://flowable.com/open-source/docs/javadocs/org/flowable/engine/ManagementService.html>`_
+
+ID процесса flowable можно узнать выполнив скрипт: 
+
+.. code-block::
+
+    var document = search.findNode("workspace://SpacesStore/fc00ec8c-d68a-4b8b-a63d-ab879fa99b70");
+    var bpmPackages = document.parentAssocs['bpm:packageContains'] || [];
+    for (var i in bpmPackages) {
+        var bpmPackage = bpmPackages[i];
+        var workflowId = bpmPackage.properties['bpm:workflowInstanceId'];
+        print(workflowId);
+    }
+
+Чтобы заново запустить таймер его необходимо переместить в таблицу запущенных таймеров 
+
+.. code-block::
+
+    var flowableManagementService = services.get("flowableManagementService");
+    var deadLetterJobId = '1100117'; // ID таймера 
+    var retriesCount = 3; // Новое кол-во попыток после которых таймер попадёт в DeadLetterJob
+    flowableManagementService.moveDeadLetterJobToExecutableJob(deadLetterJobId, retriesCount);
+
+Сервис восстановления таймеров flowable
+"""""""""""""""""""""""""""""""""""""""""
+
+В Community Core 3.34.3 был добавлен сервис ``FlowableTimersRestorerService`` и джоба ``FlowableRecoveryTimersJob`` для восстановления таймеров.
+
+Восстановление таймеров происходит по следующему алгоритму:
+
+1. Запрашивается пачка (batchSize) джоб из таблицы **flowable DeadLetterJobs**/
+
+2. Из этой пачки создаётся множество **processInstanceId**
+
+3. Далее отдельно для каждого **processInstanceId** запрашивается кол-во умерших таймеров
+
+    a. Если кол-во умерших таймеров больше заданного кол-ва ``maxCountJobForProcess``, то id данного процесса логируется с ошибкой. Таймеры для него не восстанавливаться. 
+
+    b. Иначе происходит попытка восстановления таймеров
+
+      * Если ошибка удовлетворяет шаблонам (перечислены в ``exceptionMsgPatterns``) представленным в конфигурации, таймер будет восстановлен. К нему будет установлена новое кол-во попыток выполнения при неудаче ``retriesCount``
+
+      * Иначе если **id процесса flowable** и **id таймера** присутствуют в мапе ``processActivitiesToChangeStatus``, документу будет выставлено свойство ``CiteckWorkflowModel.PROP_TIMER_ERROR_STATUS(cwf:timerErrorStatus, аспект cwf:hasTimerErrorStatus)`` со значением ``ecos-flowable-timer-error``. 
+
+Выполняется шаг 1 пока не пройдёт все джобы. Джоба ограничивается последней датой выполнения на момент старта.
+
+Сервис и джоба использует следующий конфиг:
+
+* ``int maxCountJobForProcess`` - Максимально кол-во таймеров которые можно восстановить для одного процесса. (Необходим для защиты от бага зацикливания таймеров flowable)
+
+* ``int retriesCount`` - Задаёт новое кол-во попыток выполнения для таймера, перед тем как он снова попадёт в таблицу **DeadLetterJobs**
+
+* ``int batchSize`` - Кол-во запрашиваем джоб на шаге 1.
+
+* ``Map<String, Set<String>> processActivitiesToChangeStatus`` - Мапа, где ключ - **id процесса flowable BPMN** (например flowable-confirm), значения это множество id таймеров в процессе, если таймер не смог выполниться, то документу выставляется свойство ``cwf:timerErrorStatus``, со значением ``ecos-flowable-timer-error``.
+
+* ``exceptionMsgPatterns`` - лист шаблонов для ошибок, которые должны быть обработаны, если не указан, шаблон по умолчанию ``“.*was updated by another transaction concurrently$"``
+
+
+Необходимо для процессов, где падание таймера останавливает процесс:
+
+Пример сконфигурированной джобы:
+
+.. code-block::
+
+    <bean id="flowable-recovery-timers-job" class="org.alfresco.util.CronTriggerBean">
+        <property name="jobDetail">
+            <bean class="org.springframework.scheduling.quartz.JobDetailBean">
+                <property name="name" value="flowable-recovery-timers-job"/>
+                <property name="jobClass" value="ru.citeck.ecos.flowable.jobs.FlowableRecoveryTimersJob"/>
+                <property name="jobDataAsMap">
+                    <map>
+                        <entry key="name" value="flowable-recovery-timers-job"/>
+                        <entry key="jobLockService" value-ref="jobLockService"/>
+                        <entry key="flowableTimersRestorerService" value-ref="flowableTimersRestorerService"/>
+                        <entry key="maxCountJobForProcess" value="100"/>
+                        <entry key="retriesCount" value="3"/>
+                        <entry key="batchSize" value="10000"/>
+                        <entry key="processActivitiesToChangeStatus">
+                            <map>
+                                <entry key="some_process">
+                                    <set>
+                                        <value>sid-BEF8848E-9EF4-45E4-A3D8-2B6678BEBFCC</value>
+                                        <value>sid-E4352D7A-C751-4EF2-87AD-CA6939CD911E</value>
+                                    </set>
+                                </entry>
+                            </map>
+                        </entry>
+                        <entry key="exceptionMsgPatterns">
+                            <list>
+                                <value>.*was updated by another transaction concurrently$</value>
+                                <value>.*Can't get record metadata..*</value>
+                            </list>
+                        </entry>
+                    </map>
+                </property>
+            </bean>
+        </property>
+        <property name="scheduler" ref="schedulerFactory"/>
+        <property name="enabled" value="true"/>
+        <property name="cronExpression" value="0 0 6/12 ? * * *"/> // Раз в 12 часов, начиная с 6 утра
+    </bean>
 

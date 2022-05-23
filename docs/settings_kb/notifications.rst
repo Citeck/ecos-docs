@@ -2,7 +2,7 @@
 ===========
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 3
 
     notifications/notifications
     notifications/notifications_template
@@ -10,3 +10,4 @@
     notifications/notifications_from_flowable
     notifications/notifications_firebase_push
     notifications/notifications_about_event_alfresco
+    notifications/notifications_commands
