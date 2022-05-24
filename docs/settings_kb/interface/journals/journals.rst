@@ -3,7 +3,7 @@
 
 **Журналы** - это табличное представление данных системы. 
 
-В качестве источников данных могут быть любые **RecordsDAO** (:ref:`ECOS Records <ecos-Records>`), которые поддерживают :ref:`Язык предикатов <ecos-predicate_main>`.
+В качестве источников данных могут быть любые **RecordsDAO** (`См. <https://citeck-ecos.readthedocs.io/ru/latest/general/ECOS_Records.html>`_), которые поддерживают `Язык предикатов <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html>`_.
 
 
 Конфигурация журналов
@@ -70,9 +70,9 @@
 
 Итоговый запрос для атрибута ``some-assoc-attribute`` формируется из следующих частей:
 
-1) ``some-assoc-attribute`` // id колонки или если есть, то attribute
-2) ``[]`` // добавляется к части из п.1 в конец если multiple == true
-3) ``{value:?assoc,disp:?disp}`` // на основе типа колонки определяется какие скаляры мы подгружаем для атрибута (для ассоциаций это ?assoc и ?disp)
+1. ``some-assoc-attribute`` // id колонки или если есть, то attribute
+2. ``[]`` // добавляется к части из п.1 в конец если multiple == true
+3. ``{value:?assoc,disp:?disp}`` // на основе типа колонки определяется какие скаляры мы подгружаем для атрибута (для ассоциаций это ?assoc и ?disp)
 
 Получаем в итоге: ``some-assoc-attribute[]{value:?assoc,disp:?disp}``
 
