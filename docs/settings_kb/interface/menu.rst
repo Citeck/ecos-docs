@@ -23,7 +23,7 @@
 
 В журнале для настройки **Интерфейс основного меню** (default-ui-main-menu) устанавливается какой **вариант** (версия) меню будет использоваться в системе.
 
-.. image:: _static/menu/menu_1.png
+.. image:: _static/menu/menu1.png
        :width: 800
        :align: center
 
@@ -34,7 +34,7 @@
 
 - **Журнал Меню** - все конфигурации меню
 
-.. image:: _static/menu/menu_2.png
+.. image:: _static/menu/menu2.png
        :width: 800
        :align: center
 
