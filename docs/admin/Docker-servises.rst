@@ -2146,7 +2146,7 @@ backup-tool-app
 
 Выключен по умолчанию.
 
-Исходники находznся в репозитории `https://bitbucket.org/citeck/citeck-devops/ <https://bitbucket.org/citeck/citeck-devops/>`_
+Исходники находятся в репозитории `https://gitlab.citeck.ru/citeck-projects/citeck-devops <https://gitlab.citeck.ru/citeck-projects/citeck-devops/>`_
 
 Теги:
 ~~~~~~

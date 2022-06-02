@@ -3,8 +3,8 @@
 
 1. Данная библиотека нужна для обработки события от провайдера непосредственно в ecos. При ее деплое как osgi-bundle, разворачивается camel контекст с внешним роутом - direct-vm:ecosEventsReceiveVmRoute. Все события от разных провайдеров будут падать в этот роут.   
 
-2. Путь до библиотеки: https://bitbucket.org/citeck/ecos-edi-integration - Can't find link 
+2. Путь до библиотеки: `https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration>`_
 
-3. Деплой библиотеки описан тут: Функционал загрузки OSGI пакетов 
+3. Деплой библиотеки описан тут: `Функционал загрузки OSGI пакетов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/integration/OSGI.html>`_
 
 4. Настройка синхронизации на примере диадока описана тут: Настройка получения событий с ящиком Контур.Диадок. 
