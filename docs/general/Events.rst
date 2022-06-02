@@ -16,7 +16,7 @@ Events 1.0
 ~~~~~~~~
 Получение / отправка events из alfresco
 """""""""""""""""""""""""""""""""""""""
-Отправка сообщений (events) и получение строится на основе rabbitmq и моделей events в библиотеке - ecos-events. на стороне producer и consumer строится подключение к rabbitmq.
+Отправка сообщений (events) и получение строится на основе rabbitmq и моделей events в библиотеке - `ecos-events <https://gitlab.citeck.ru/ecos-community/ecos-events>`_. на стороне producer и consumer строится подключение к rabbitmq.
 
 На стороне alfresco, свойства, отвечающие за подключение::
 
