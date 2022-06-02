@@ -3,7 +3,7 @@
 
 В микросервисе ecos-integrations начиная с версии 2.3.5 добавлен функционал серверного подписания документов электронной подписью без использования плагина **КриптоПро ЭЦП Browser plug-in**.
 
-Для этого был разработан дополнительный сервис **ecos-crypto-sign**.
+Для этого был разработан дополнительный сервис **ecos-crypto-sign** (репозиторий `https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign <https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign>`_)
 
 Общая схема работы:
 
