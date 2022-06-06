@@ -11,4 +11,6 @@
     journals/formatters
     journals/editors
     journals/search_nested_attributes
+    journals/kanban_board
+    journals/document_library
 
