@@ -14,13 +14,13 @@
 
       * - |
 
-             .. image:: _static/formatter_1.png
+             .. image:: _static/formatter/formatter_1.png
                  :width: 400   
                  :align: center
 
           | 
 
-             .. image:: _static/formatter_2.png
+             .. image:: _static/formatter/formatter_2.png
                   :width: 400 
                   :align: center  
 

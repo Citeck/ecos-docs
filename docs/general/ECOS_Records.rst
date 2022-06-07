@@ -313,8 +313,8 @@ API, разработанное для организации простого �
 
 Список контекстных атрибутов, которые доступны во всех источниках:
 
-* user - Текущий пользователь
-* now - Текущая дата
+* **user** - Текущий пользователь
+* **now** - Текущая дата
 
 Если в серверном коде нужно расширить доступный список контекстных атрибутов, то работу с RecordsService нужно выполнять следующим образом::
 
@@ -343,19 +343,76 @@ RecordsService (Java)
 
 Существует четыре операции, которые можно проделывать над записями:
 
-**а) Поиск записей**
+а) Поиск записей
+~~~~~~~~~~~~~~~~~
 
-Методы: query, queryOne
+Методы: **query, queryOne**
 
 Для поиска записей всегда передается RecordsQuery, который содержит параметры поиска. Помимо самого простого метода для поиска с одним параметром RecordsQuery так же есть варианты с объединенным поиском и запросом атрибутов.
 
-**б) Получение атрибутов записи**
+.. code-block::
 
-Методы: getAtt, getAtts
+  recordsService.queryOne(
+    RecordsQuery.create()
+          .withLanguage(PredicateService.LANGUAGE_PREDICATE)
+          .withQuery(Predicates.and(
+                  Predicates.eq(ValuePredicateToFtsAlfrescoConstants.TYPE, "cm:person"),
+                  Predicates.eq("ssgedic:personalNumber", personalNumber)))
+          .withConsistency(Consistency.EVENTUAL)
+          .addSort(new SortBy("cm:created", true))
+          .build());
+
+.. code-block::
+
+  recordsService.query(RecordsQuery.create()
+          .withLanguage(PredicateService.LANGUAGE_PREDICATE)
+          .withQuery(Predicates.and(
+                  Predicates.eq("_type", "emodel/type@ssgediip-inboundPackage"),
+                  Predicates.eq("ssgediip:isNeedSendToVim", true),
+                  Predicates.not(
+                          Predicates.eq("ssgediip:isAlreadySentToVim", true)
+                  )
+          ))
+          .withConsistency(Consistency.EVENTUAL)
+          .build());
+
+* **.withLanguage** – указываем язык запроса;
+
+* **.withQuery** – сам запрос;
+
+* **.withConsistency** – Consistency (Согласованность). Возможные варианты: EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE
+
+* **.addSort** – указываем по какому полю нужна сортировка
+
+* **.build()** – сборка запроса
+
+На выходе:
+
+* при **query** получаем **RecsQueryRes<RecordRef>**
+* при **queryOne** получаем **RecordRef**
+
+б) Получение атрибутов записи
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Методы: **getAtt**, **getAtts**
+
+.. code-block::
+
+  recordsService.getAtt(documentRef, "eint:ediProviderType?str").asText();
+
+* **documentRef** – record, к которому обращаемся
+
+* **"eint:ediProviderType?str"** – параметр, который хотим получить
+
+.. code-block::
+
+  RecordAtts recordAtts = recordsService.getAtts(RecordRef.valueOf(nodeRef.toString()),
+        Collections.singletonMap("assocId", name + "[]?id"));
+
 
 Существует два уровня абстрации для получения атрибутов:
 
-DTO Class > Attributes
+**DTO Class > Attributes**
 
 * **DTO Class** - класс, который используется для генерации списка аттрибутов для формирования схемы и запроса атрибутов из DAO.
 
@@ -364,12 +421,46 @@ DTO Class > Attributes
 
 * **Attributes** - аттрибуты записи в чистом виде. Есть варианты с одним атрибутом, списком атрибутов или набором ключ->значение (Map)
 
-**в) Мутация (изменение или создание) записи**
+в) Мутация (изменение или создание) записи
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Каждый DAO решает сам создавать или редактировать полученную запись.
 Если в DAO приходит запись с пустым идентификатором, то это команда к созданию новой записи.
 
-**г) Удаление записи**
+Изменение записи
+
+.. code-block::
+
+  RecordAtts recordAtts = new RecordAtts();
+  recordAtts.setId(recordRef);
+  recordAtts.setAtt("ssgedidl:isOutboundPackageSyncNeeded", false);
+  recordsService.mutate(recordAtts);
+
+Для обновления записи необходимо указывать **.setId()** записи которой необходимо изменить
+
+Создание записи
+
+.. code-block::
+
+  RecordAtts recordAtts = new RecordAtts();
+  recordAtts.setAtt(AlfNodeRecord.ATTR_TYPE, "ssgedidl:routeTemplate");
+  recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@ssgedidl-routeTemplateItem");
+  recordAtts.setAtt("etype:type","ssgedidl-routeTemplateItem");
+  recordAtts.setAtt(RecordConstants.ATT_PARENT,
+          "/app:company_home/st:sites/cm:ssg-edi/cm:dataLists/cm:ssgedidl-routeTemplate");
+  recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "cm:contains");
+  recordsService.mutate(recordAtts);
+
+При создании новой записи параметр **setId()** не указывается. 
+
+г) Удаление записи
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+recordsService.delete(routeTemplate);
+
+* **RecordRef routeTemplate** – record который необходимо удалить
 
 RecordRef
 ----------
@@ -393,6 +484,17 @@ RecordRef - это идентификатор записи, который со�
 * /@localId == @localId == localId
 * /sourceId@localId == sourceId@localId
 * appName/sourceId@localId
+
+.. code-block::
+
+  RecordRef.create("emodel", "type", "ssgedidl-counterpartyToAuthority");
+
+* **“emodel”** – appName
+* **“type”** – sourceId
+
+.. image:: _static/records/records_1.png
+       :width: 600
+       :align: center
 
 Использование в браузере
 -------------------------

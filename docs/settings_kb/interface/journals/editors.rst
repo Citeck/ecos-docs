@@ -6,13 +6,13 @@
 
 перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`
 
-.. image:: _static/editor_1.png
+.. image:: _static/editor/editor_1.png
        :width: 400   
        :align: center
 
 перейти в :guilabel:`Дополнительно`
 
-.. image:: _static/editor_2.png
+.. image:: _static/editor/editor_2.png
        :width: 400   
        :align: center
 
@@ -36,12 +36,12 @@ BooleanEditor
         - |
           | режим редактора ``select`` 
 
-             .. image:: _static/editor_3.png
+             .. image:: _static/editor/editor_3.png
                  :width: 200   
 
           | ``checkbox``
 
-             .. image:: _static/editor_4.png
+             .. image:: _static/editor/editor_4.png
                   :width: 200   
 
         - ``select``         
@@ -71,7 +71,6 @@ JournalEditor
       * - **journalId**
         - идентификатор журнала
         - 
-
 
 NumberEditor
 ~~~~~~~~~~~~~~~~~~

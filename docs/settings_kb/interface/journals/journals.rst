@@ -3,8 +3,20 @@
 
 **Журналы** - это табличное представление данных системы. 
 
-В качестве источников данных могут быть любые **RecordsDAO** (`См. <https://citeck-ecos.readthedocs.io/ru/latest/general/ECOS_Records.html>`_), которые поддерживают `Язык предикатов <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html>`_.
+В качестве источников данных могут быть любые **RecordsDAO** (`См. ECOS Records <https://citeck-ecos.readthedocs.io/ru/latest/general/ECOS_Records.html>`_), которые поддерживают `Язык предикатов <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html>`_.
 
+ .. image:: _static/view_type.png
+       :width: 600
+       :align: center
+
+Возможные варианты представления журнала:
+
+* таблица;
+* таблица с превью;
+* канбан доска **ссылка**;
+* доклиб **ссылка**. 
+
+Выбор сохраняется в урле, при перезагрузке открывается последнее представление.
 
 Конфигурация журналов
 -----------------------
