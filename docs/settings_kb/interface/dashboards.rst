@@ -7,7 +7,7 @@
 ---------------
 На момент написания статьи существует 3 вида dashboard:
 
-.. list-table:: Поля формы
+.. list-table:: 
       :widths: 5 40
       :header-rows: 1
 
@@ -49,6 +49,19 @@
 
 1. **_dashboardKey[]** и **_dashboardType** по recordRef (они достаточно редко меняются),
 2. Конфигурация **dashboard** (или её отсутствие) по **dashboardKey** + **dashboardType**.
+
+
+Описание видов
+-------------------
+
+User-dashboard
+~~~~~~~~~~~~~~~~~~
+
+Site-dashboard
+~~~~~~~~~~~~~~~~~~
+
+Case-details
+~~~~~~~~~~~~~~~~~~
 
 Настройки дашбордов
 -------------------
