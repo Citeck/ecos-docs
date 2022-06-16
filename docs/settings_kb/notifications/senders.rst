@@ -3,7 +3,7 @@
 
 .. note:: 
 
-    Добавлено в версии 2.8.0 микросервиса ecos-notifications
+    Добавлено в версии 2.9.0 микросервиса ecos-notifications
     
 .. contents::
 
