@@ -117,6 +117,7 @@ JavaScript Records API
 В типе ECOS предусмотрены настройки для связи с Alfresco. Настройка происходит в Дополнительных свойствах.
 
 .. image:: _static/alfresco/ecos_type_with_alfresco.png
+       :width: 600       
        :align: center
        :alt: ECOS type with Alfresco
 

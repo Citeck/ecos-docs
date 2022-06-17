@@ -59,6 +59,7 @@
 Схема работы:
 
 .. image:: _static/configuration/ecos_config.png
+       :width: 600       
        :align: center
        :alt: ECOS config
 

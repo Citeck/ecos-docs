@@ -144,8 +144,8 @@
           | Профиль пользователя
         - | User-dashboard
           | Домашняя страница
-      * - | JOURNAL: 'journal'
-          | **Журнал**
+      * - | **JOURNAL: 'journal'**
+          | `См. Журнал <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id2>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
@@ -157,8 +157,8 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
-      * - | WEB_PAGE: 'web-page'
-          | **Веб-страница**
+      * - | **WEB_PAGE: 'web-page'**
+          | `См. Веб-страница <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id3>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
@@ -171,59 +171,24 @@
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
-      * - | DOC_PREVIEW: 'doc-preview'
-          | **Предпросмотр**
+      * - | **DOC_PREVIEW: 'doc-preview'**
+          | `См. Предпросмотр <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id4>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | COMMENTS: 'comments'
-          | **Комментарии**
+      * - | **COMMENTS: 'comments'**
+          | `См. Комментарии <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id5>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | PROPERTIES: 'properties'
-          | **Свойства**
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | CURRENT_TASKS: 'current-tasks'
-          | **Мои задачи**
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | TASKS: 'tasks'
-          | **Все задачи**
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | DOC_STATUS: 'doc-status'
-          | **Статус**
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | EVENTS_HISTORY: 'events-history'
-          | **История событий**
+      * - | **PROPERTIES: 'properties'**
+          | `См. Свойства <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id6>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
@@ -233,43 +198,32 @@
                 :width: 20
 
         - 
-      * - | VERSIONS_JOURNAL: 'versions-journal'
-          | **Журнал версий**
+      * - | **CURRENT_TASKS: 'current-tasks'**
+          | `См. Мои задачи <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id7>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | DOC_ASSOCIATIONS: 'doc-associations'
-          | **Связи документа**
+      * - | **TASKS: 'tasks'**
+          | `Все задачи <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id8>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | RECORD_ACTIONS: 'record-actions'
-          | **Действия**
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | BARCODE: 'barcode'
-          | **Штрих-код**
+      * - | **DOC_STATUS: 'doc-status'**
+          | `См. Статус <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id9>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | DOCUMENTS: 'documents'
-          | **Документы**
+      * - | **EVENTS_HISTORY: 'events-history'**
+          | `См. История событий <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id10>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
@@ -279,40 +233,86 @@
                 :width: 20
 
         - 
-      * - | DOC_CONSTRUCTOR: 'doc-constructor'
-          | **Doc.One**
+      * - | **VERSIONS_JOURNAL: 'versions-journal'**
+          | `См. Журнал версий <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id11>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | PROCESS_STATISTICS: 'process-statistics'
-          | **Статистика процесса**
+      * - | **DOC_ASSOCIATIONS: 'doc-associations'**
+          | `См. Связи документа <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id12>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
         - 
         - 
-      * - | REPORT: 'report'
-          | **Статистика по задачам**
+      * - | **RECORD_ACTIONS: 'record-actions'**
+          | `См. Действия <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id13>`_
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+      * - | **BARCODE: 'barcode'**
+          | `См. Штрих-код <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id14>`_
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+        - 
+      * - | **DOCUMENTS: 'documents'**
+          | `См. Документы <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id16>`_
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+      * - | **DOC_CONSTRUCTOR: 'doc-constructor'**
+          | `Doc.One <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#doc-one>`_
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+        - 
+      * - | **PROCESS_STATISTICS: 'process-statistics'**
+          | `См. Статистика процесса <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id17>`_
+        - 
+            .. image:: _static/dashboards/dashboards_0.png
+                :width: 20
+
+        - 
+        - 
+      * - | **REPORT: 'report'**
+          | `См. Статистика по задачам <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id18>`_
         - 
         - 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
-      * - | BIRTHDAYS: 'birthdays'
-          | **Дни рождения**
+      * - | **BIRTHDAYS: 'birthdays'**
+          | `См. Дни рождения <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id19>`_
         - 
         - 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
 
-      * - | USER_PROFILE: 'user-profile
-          | **Профиль**
+      * - | **USER_PROFILE: 'user-profile**
+          | `См. Профиль <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id20>`_
         - 
         - 
             .. image:: _static/dashboards/dashboards_0.png
