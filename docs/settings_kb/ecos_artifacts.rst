@@ -101,6 +101,9 @@ ECOS Артефакты
       * - notification/template
         - ecos-notifications
         - 
+      * - notification/sender
+        - ecos-notifications
+        -   
 
 Переопределение артефактов
 --------------------------
