@@ -19,7 +19,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = 'Citeck ECOS'
-copyright = '2021, Citeck'
+copyright = '2022, Citeck'
 author = 'Citeck'
 
 # The full version, including alpha/beta/rc tags
@@ -80,3 +80,4 @@ html_static_path = ['_static']
 
 def setup(app):
   app.add_css_file( "css/main_theme.css" )
+

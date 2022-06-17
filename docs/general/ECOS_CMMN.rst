@@ -45,6 +45,7 @@ CMMN + ecos process - движок бизнес процессов.
 .. list-table:: 
       :widths: 5 5 5 40
       :header-rows: 1
+      :class: tight-table  
 
       * - Название команды
         - Структура запроса
@@ -127,7 +128,8 @@ CMMN + ecos process - движок бизнес процессов.
 .. list-table:: 
       :widths: 5 5 5 40
       :header-rows: 1
-
+      :class: tight-table  
+      
       * - Название команды
         - Структура запроса
         - Структура ответа
