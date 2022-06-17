@@ -4,5 +4,5 @@
 Например команда отправить емейл в flowable, действие в кейс менеджменте:
 
  .. image:: _static/command/command.png
-       :width: 800
+       :width: 600
        :align: center

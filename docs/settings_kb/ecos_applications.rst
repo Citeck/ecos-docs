@@ -16,6 +16,7 @@ ECOS Приложения
 http://host/v2/bpmn-designer?journalId=ecos-apps
 
 .. image:: _static/apps_page.png
+       :width: 600       
        :align: center
        :alt: ECOS apps
 
@@ -34,6 +35,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 3. Загрузить приложение на необходимом стенде.
 
 .. image:: _static/new_app.png
+       :width: 600       
        :align: center
        :alt: Создание приложения
 
@@ -68,6 +70,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 Для управления артефактами предусмотрен журнал **Артефакты ECOS**. В данный журнал попадают все артефакты, которые достигли микросервиса ``ecos-apps``. 
 
 .. image:: _static/artifacts.png
+       :width: 600       
        :align: center
        :alt: Артефакты
 
@@ -81,6 +84,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 * Формат имени папки с версией артефакта: **дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]**. Дата создания указывается в часовом поясе UTC.
 
 .. image:: _static/artifact-history.png
+       :width: 600       
        :align: center
        :alt: Версия артефакта
 
