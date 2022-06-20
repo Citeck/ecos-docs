@@ -76,6 +76,9 @@ ECOS Артефакты
         - 
       * - app/dev-module
         - ecos-apps
+        -
+      * - app/config
+        - ecos-apps
         - 
       * - integrations/credentials
         - ecos-integrations
@@ -480,3 +483,21 @@ filename - относительный путь до включаемого фа�
   config:
     operations:
       - { op: remove, path: '$.actions[?(@==\"uiserv/action@edit-in-onlyoffice\")]'}
+
+Изменить значение параметра Конфигурации ECOS some-config-id на 123:
+
+.. code-block::
+
+  id: some-patch-id
+  
+  name:
+    ru: Изменение значения параметра конфигурации some-config-id
+    en: Change some-config-id config value
+  
+  target: app/config$app/notifications$some-config-id
+  
+  type: json
+  config:
+    operations:
+      - { op: set, path: '$.value', value: [ 123 ] }
+      - { op: set, path: '$.version', value: 1 }
