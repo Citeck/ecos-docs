@@ -134,9 +134,11 @@
 Набор доступных виджетов зависит от вида дашборда:
 
 .. list-table:: 
-      :widths: 10 10 10 10
+      :widths: 5 5 5 5
       :header-rows: 1
-
+      :align: center      
+      :class: tight-table  
+      
       * - 
         - | Case-details
           | Карточка кейса
@@ -288,7 +290,7 @@
         - 
         - 
       * - | **PROCESS_STATISTICS: 'process-statistics'**
-          | `См. Статистика процесса <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id17>`_
+          | `См. Статистика процесса <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id18>`_
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
@@ -296,7 +298,7 @@
         - 
         - 
       * - | **REPORT: 'report'**
-          | `См. Статистика по задачам <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id18>`_
+          | `См. Статистика по задачам <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id19>`_
         - 
         - 
         - 
@@ -304,7 +306,7 @@
                 :width: 20
 
       * - | **BIRTHDAYS: 'birthdays'**
-          | `См. Дни рождения <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id19>`_
+          | `См. Дни рождения <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id20>`_
         - 
         - 
         - 
@@ -312,7 +314,7 @@
                 :width: 20
 
       * - | **USER_PROFILE: 'user-profile**
-          | `См. Профиль <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id20>`_
+          | `См. Профиль <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#id21>`_
         - 
         - 
             .. image:: _static/dashboards/dashboards_0.png
@@ -343,7 +345,9 @@
 Дашборд можно отредактировать, удалить, внести изменения через конфиг:
 
 .. list-table:: 
-      :widths: 10 10 
+      :widths: 5 10
+      :align: center
+      :class: tight-table  
 
       * - |
  
