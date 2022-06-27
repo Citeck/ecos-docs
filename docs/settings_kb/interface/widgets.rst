@@ -101,6 +101,8 @@
  .. image:: _static/widgets/widget_8.png
        :width: 600
 
+Так же см. `Транслирование комментариев в виджет комментариев <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%9A%D0%BE%D0%BC%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B8.html>`_
+
 Виджет «Свойства»
 -------------------
 
