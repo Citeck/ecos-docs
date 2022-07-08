@@ -95,9 +95,15 @@ ECOS Артефакты
       * - integrations/sync
         - ecos-integrations
         - 
-      * - process/cmm
+      * - process/cmmn
         - ecos-process
         - 
+      * - process/bpmn
+        - ecos-process
+        - 
+      * - process/bpmn-section
+        - ecos-process
+        -
       * - notification/file
         - ecos-notifications
         - 
