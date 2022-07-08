@@ -13,8 +13,8 @@
 
 * таблица;
 * таблица с превью;
-* канбан доска **ссылка**;
-* доклиб **ссылка**. 
+* `канбан доска <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/kanban_board.html>`_ ;
+* `document library  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/document_library.html>`_ .
 
 Выбор сохраняется в урле, при перезагрузке открывается последнее представление.
 
