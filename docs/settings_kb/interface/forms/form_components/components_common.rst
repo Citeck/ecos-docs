@@ -355,22 +355,6 @@ Container
        :width: 400
        :align: center
 
-`См. подробное описание Container на Form.io <https://help.form.io/userguide/forms/data-components#container>`_ 
-
-Data Grid
-~~~~~~~~~~~~~~~
-
-Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
-
- .. image:: _static/Data_Grid_Component.png
-       :width: 400
-       :align: center
-
-`См. подробное описание Data Grid на Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_ 
-
-Data Grid  Assoc
-~~~~~~~~~~~~~~~~~~
-
 Компонент управления отображением данных, основанный на использовании Bootstrap Grid. 
 
 Система **Bootstrap Grid** нужна для разметки страницы, в частности, для создания адаптивных макетов.
@@ -404,6 +388,24 @@ Data Grid  Assoc
 В большинстве случаев, не требуется использование всех, их можно объединять по мере надобности. Представьте, что вся область просмотра разделена на 12 равных частей – единиц ширины. В одной колонке может быть от 1 до 12 таких единиц.
 
 `См. подробное описание Bootstrap Grid system <https://getbootstrap.com/docs/4.0/layout/grid/>`_ 
+
+`См. подробное описание Container на Form.io <https://help.form.io/userguide/forms/data-components#container>`_ 
+
+Data Grid
+~~~~~~~~~~~~~~~
+
+Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
+
+ .. image:: _static/Data_Grid_Component.png
+       :width: 400
+       :align: center
+
+`См. подробное описание Data Grid на Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_ 
+
+Data Grid Assoc
+~~~~~~~~~~~~~~~~~~
+
+Компонент управления отображением данных.
 
 Data Map
 ~~~~~~~~~~~~~~~
