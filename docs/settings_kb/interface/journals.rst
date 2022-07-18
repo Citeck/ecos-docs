@@ -5,6 +5,8 @@
     :maxdepth: 20
 
     journals/journals
+    journals/new_journal
+    journals/configuration
     journals/group_actions
     journals/search_jourmal_config
     journals/computed attributes
