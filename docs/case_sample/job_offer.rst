@@ -49,8 +49,8 @@
 
 - **Id** - уникальный идентификатор роли **(1)**
 - **Название логики/Name** - имя роли **(2)**
-- **Assignees** - назначение статических исполнителей. Выбрать группу пользователей и отдельных пользователей из оргструктуры, которые будут выполнять функцию данной роли **(3)**
-- **HTML атрибуты** - назначение динамических исполнителей. Выбрать из списка атрибут **Name**, который был заполнен на вкладке **«Attributes»** **(4)**
+- **Assignees** - статическое назначение исполнителей. Выбрать группу пользователей и отдельных пользователей из оргструктуры, которые будут выполнять функцию данной роли **(3)**
+- **HTML атрибуты** - динамическое назначение исполнителей. Выбрать из списка атрибут **Name**, который был заполнен на вкладке **«Attributes»** **(4)**
 
 
 Статусы (Вкладка «Statuses») 
@@ -74,6 +74,8 @@
  .. image:: _static/job_offer/type_7.png
        :width: 500
        :align: center
+
+Подробно о `типах данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_
 
 Шаблоны нумерации
 -------------------
@@ -136,8 +138,11 @@
        :width: 400
        :align: center
 
-Создание формы
----------------
+Подробно о `шаблонах нумерации <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/number_template.html>`_
+
+
+Создание формы "Оффер"
+-----------------------
 
 Как перейти в `пункт меню "Формы"  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#ui>`_
 
@@ -161,6 +166,8 @@ Form builder
 Form builder - конструктор форм, который позволяет моделировать формы в дизайнере.
 
 `Некоторые компоненты <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#form-builder>`_ уже были описаны при создании **справочника "Кандидаты"**.
+
+Подробно о `формах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms.html>`_
 
 Panel
 *******
@@ -280,6 +287,8 @@ Async Data Component
 
 Как перейти в `пункт меню "Журналы"  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id10>`_
 
+Подробно о `журналах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals.html>`_
+
 Основные параметры журнала
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -317,3 +326,9 @@ Async Data Component
        :width: 600
        :align: center
 
+Настройка меню
+---------------
+
+`Настройка меню <hhttps://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id15>`_ описана при создании **справочника "Кандидаты"**.
+
+Подробно о `меню <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/menu.html>`_
