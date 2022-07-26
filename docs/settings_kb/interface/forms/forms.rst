@@ -1,11 +1,11 @@
 Общая информация
 ================
 
-**Форма**  - графическое представление объекта в виде набора полей в соответствии с атрибутами, заданными в `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_.
+**Форма**  - Форма - графическое представление объекта в виде набора элементов интерфейса для манипуляции данными объекта. Набор элементов интерфейса соответствует метаданным, заданным `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_.
 
 * Формы ECOS реализованы на базе движка `formio.js <https://github.com/formio/formio.js>`_.
 * Функция `редактора форм <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_builder.html>`_ доступна только в ECOS **Enterprise**.
-* Формы описываются в ``json`` формате.
+* Формы описываются в json-формате.
 * Формы используются для редактирования записей из **Records Service** (см. `ECOS Records <https://citeck-ecos.readthedocs.io/ru/latest/general/ECOS_Records.html>`_). На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан **ID** редактируемой записи).
 
 Существуют две системные формы, которые изменять **не желательно**:
@@ -18,7 +18,7 @@
 Журнал "Формы"
 ----------------
 
-Работа с формами осуществляется через журнал (Инструменты - Конфигурация UI - Формы)
+Работа с формами осуществляется через журнал **(Инструменты - Конфигурация UI - Формы)**
 
 .. image:: _static/form_journal.png
        :width: 600
@@ -33,9 +33,8 @@
 |
 
 .. list-table:: 
-      :widths: 5 10
+      :widths: 20 50
       :align: center
-      :class: tight-table  
 
       * - |
  
@@ -54,13 +53,13 @@
             .. image:: _static/action_3.png
                 :width: 30
 
-        - Редактировать форму
+        - Редактировать форму:
       * - |
  
             .. image:: _static/action_4.png
                 :width: 30
 
-        - | Редактировать json
+        - | Редактировать json:
 
             .. image:: _static/action_json.png
                 :width: 400
