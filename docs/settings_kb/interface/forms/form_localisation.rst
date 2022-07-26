@@ -32,19 +32,16 @@
 .. image:: _static/form_localisation/Forms_local_3.png
        :width: 400
        :align: center
-       :alt: Локализация формы
 
 Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму :guilabel:`Localization` и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.
 
 .. image:: _static/form_localisation/Forms_local_4.png
        :width: 400
        :align: center
-       :alt: Локализация формы
 
 .. image:: _static/form_localisation/Forms_local_5.png
        :width: 400
        :align: center
-       :alt: Локализация формы
 
 *Пример локализации панели*:
 Чтобы установить локализацию для панелей (:guilabel:`Layouts` -> :guilabel:`Panels`), можно воспользоваться функциями :guilabel:`Localisation`, достаточно прописать их как показано ниже.
@@ -68,21 +65,19 @@
 .. image:: _static/form_localisation/Forms_local_8.png
        :width: 600
        :align: center
-       :alt: Локализация подсказок
 
 2. Прописать ключ в поле для подсказки :guilabel:`Tooltip`.
 
 .. image:: _static/form_localisation/Forms_local_9.png
        :width: 400
        :align: center
-       :alt: Локализация подсказок
 
 В итоге получим локализацию подсказок:
 
 .. image:: _static/form_localisation/Forms_local_10.png
        :width: 500
        :align: center
-       :alt: Локализация подсказок
+
 
 
 
