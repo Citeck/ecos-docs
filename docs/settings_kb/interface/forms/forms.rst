@@ -1,7 +1,7 @@
 Общая информация
 ================
 
-**Форма**  - Форма - графическое представление объекта в виде набора элементов интерфейса для манипуляции данными объекта. Набор элементов интерфейса соответствует метаданным, заданным `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_.
+**Форма** - графическое представление объекта в виде набора элементов интерфейса для манипуляции данными объекта. Элементы интерфейса ссылаются на атрибуты, заданные в `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_.
 
 * Формы ECOS реализованы на базе движка `formio.js <https://github.com/formio/formio.js>`_.
 * Функция `редактора форм <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_builder.html>`_ доступна только в ECOS **Enterprise**.
