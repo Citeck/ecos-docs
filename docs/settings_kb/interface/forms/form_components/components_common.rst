@@ -19,6 +19,8 @@ Text Field
 
 `См. подробное описание Text Field на Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_ 
 
+`См. пример Text Field <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components_common.html#text-field>`_ 
+
 Select Journal
 ~~~~~~~~~~~~~~~
 
@@ -30,6 +32,8 @@ Select Journal
 
 `См. подробное описание Select Journal <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/select%20journal.html>`_
 
+`См. пример Select Journal <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#select-journal-component>`_ 
+
 Select Orgstruct
 ~~~~~~~~~~~~~~~~~~
 
@@ -40,6 +44,8 @@ Select Orgstruct
        :align: center
 
 `См. подробное описание Select Orgstruct  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/select%20orgstruct.html>`_
+
+`См. пример Select Orgstruct <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html#select-orgstruct-component>`_ 
 
 Number
 ~~~~~~~~~~~~~~~
@@ -58,6 +64,8 @@ Date/Time
        :align: center
 
 `См. подробное описание Date/Time на Form.io <https://help.form.io/userguide/forms/form-components#date-time>`_  
+
+`См. пример Date/Time <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#date-time-component>`_ 
 
 Text Area
 ~~~~~~~~~~~~~~~
@@ -99,8 +107,9 @@ Ecos Select
        :width: 400
        :align: center
 
-`См. подробное описание EcosSelect <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/select%20orgstruct.html>`_  
+`См. подробное описание Ecos Select <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/select%20orgstruct.html>`_  
 
+`См. пример Ecos Select <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#ecos-select-component>`_
 
 Button
 ~~~~~~~~~~~~~~~
@@ -113,6 +122,7 @@ Button
 
 `См. подробное описание Button на Form.io <https://help.form.io/userguide/forms/form-components#button>`_  
 
+`См. пример Button <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#button-component>`_ 
 
 Расширенные
 ------------
@@ -276,6 +286,7 @@ Columns
 
 `См. подробное описание Columns <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/columns.html>`_ 
 
+`См. пример Columns <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#columns>`_ 
 
 Panel
 ~~~~~~~~~~~~~~~
@@ -287,6 +298,8 @@ Panel
        :align: center
 
 `См. подробное описание Panel на Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_ 
+
+`См. пример Panel <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html#panel>`_ 
 
 Table
 ~~~~~~~~~~~~~~~
@@ -326,6 +339,8 @@ Async Data
        :align: center
 
 `См. подробное описание Async Data <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/async%20data.html>`_
+
+`См. пример Async Data <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html#async-data-component>`_ 
 
 Include Form
 ~~~~~~~~~~~~~~~
