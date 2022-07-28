@@ -63,6 +63,9 @@ ECOS Артефакты
       * - ui/theme
         - ecos-uiserv
         - 
+      * - ui/board
+        - ecos-uiserv
+        - Канбан доска
       * - model/num-template
         - ecos-model
         - 
