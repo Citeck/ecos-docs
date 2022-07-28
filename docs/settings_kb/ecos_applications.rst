@@ -13,7 +13,7 @@ ECOS Приложения
 
 Работа с приложениями осуществляется на странице администратора системы.
 
-http://host/v2/bpmn-designer?journalId=ecos-apps
+``http://host/v2/bpmn-designer?journalId=ecos-apps``
 
 .. image:: _static/apps_page.png
        :width: 600       
@@ -30,14 +30,26 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 
 Перенос данных со стенда на стенд осуществляется через **Приложения ECOS**. Для этого необходимо:
 
-1. Создать приложение.
-2. Скачать приложение.
-3. Загрузить приложение на необходимом стенде.
+1. Создать приложение по кнопке **+**.
 
 .. image:: _static/new_app.png
        :width: 600       
        :align: center
-       :alt: Создание приложения
+       :alt: Создать приложение
+
+2. Скачать приложение.
+
+.. image:: _static/apps_page_1.png
+       :width: 600       
+       :align: center
+       :alt: Скачать приложение
+
+3. Загрузить приложение на необходимом стенде.
+
+.. image:: _static/apps_page_2.png
+       :width: 600       
+       :align: center
+       :alt: Скачать приложение
 
 Структура архива приложения
 ----------------------------
@@ -75,6 +87,10 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
        :alt: Артефакты
 
 В данном журнале есть возможность выполнить следующие действия:
+
+.. image:: _static/artifacts_2.png
+       :width: 200       
+       :align: center
 
 **1. Скачать историю артефакта**
 
@@ -138,7 +154,7 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 Создание ECOS Apps проекта
 ---------------------------
 
-Для создания ECOS Apps проекта нужно создать новый maven проект и настроить главный pom файл следующим образом:
+Для создания ECOS Apps проекта нужно создать новый maven проект и настроить главный **pom файл** следующим образом:
 
 .. code-block::
 
