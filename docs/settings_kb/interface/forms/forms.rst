@@ -54,6 +54,10 @@
                 :width: 30
 
         - Редактировать форму:
+
+            .. image:: _static/action_edit.png
+                :width: 400
+
       * - |
  
             .. image:: _static/action_4.png
