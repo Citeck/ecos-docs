@@ -1,5 +1,5 @@
-Alfresco
-=========
+Alfresco и информация о миграции
+=================================
 
 .. toctree::
     :maxdepth: 4
@@ -8,3 +8,5 @@ Alfresco
     Alfresco/Alfresco _ECOS
     Alfresco/Alfresco-share_migration
     Alfresco/Nodebrowser
+    Alfresco/Data_types
+    Alfresco/Menu_left
