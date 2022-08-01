@@ -2,7 +2,7 @@
 =========
 
 .. toctree::
-    :maxdepth: 5
+    :maxdepth: 7
 
     interface/forms
     interface/journals
