@@ -5,12 +5,18 @@
 
 Типы ECOS - артефакты с типом **model/type**.
 
-В ECOS  на основе типов данных настраиваются следующие аспекты:
+В ECOS  на основе типов данных создаются следующие артефакты:
 
 * `Форма  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms.html>`_
+*  `Журнал <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals.html>`_
+
+и настраиваются следующие аспекты:
+
+* `Атрибуты <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C.html>`_
+* `Права доступа <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0.html>`_
+* `Роли и статусы <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html>`_ 
+* `Связи <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8.html>`_
 * `Действия  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/ui_actions.html>`_ 
-*  Связи;
-* ...
 
 
 Для просмотра существующих типов и их редактирования создан журнал **Типы данных** (Раздел администратора - Конфигурация UI - Журналы).
@@ -130,14 +136,16 @@
 Наследование типов
 ------------------
 
-У всех типов должен быть родитель. По умолчанию - **model/type@case** (базовый тип).
+У всех типов должен быть родитель. По умолчанию - **model/type@base** (базовый тип).
 
 
 Связи (с формой, действиями) [Уточнить]
 ----------------------------------------
 
-*Связи наследуются* т.е. чтобы добавить связь "Связан с" достаточно указать в качестве parent'а **model/type$base** т.к. там уже настроена эта связь
-Связи (associations) настраиваются для отображения, добавления и удаления в виджете связей на карточке документа.
+Связи (associations) настраиваются для отображения, добавления и удаления в виджете связей на карточке объекта.
+
+Связи наследуются, т.е. чтобы добавить связь **"Связан с"** достаточно указать в качестве parent'а **model/type$base** т.к. там уже настроена эта связь
+
 Связь описывается следующей структурой::
 
  {
