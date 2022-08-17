@@ -176,22 +176,15 @@ ECOS Application является артефактом, но его нельзя
       <parent>
           <groupId>ru.citeck.ecos.eapps.project</groupId>
           <artifactId>ecos-apps-simple-parent</artifactId>
-          <version>1.0.0</version>
+          <version>1.0.2</version>
       </parent>
 
       <repositories>
           <repository>
               <id>citeck-public</id>
-              <url>http://nexus.citeck.ru/repository/maven-public</url>
+              <url>https://nexus.citeck.ru/repository/maven-public</url>
           </repository>
       </repositories>
-
-      <pluginRepositories>
-          <pluginRepository>
-              <id>citeck-plugin-public</id>
-              <url>http://nexus.citeck.ru/repository/maven-public</url>
-          </pluginRepository>
-      </pluginRepositories>
 
   </project>
 
