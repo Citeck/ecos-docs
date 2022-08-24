@@ -542,6 +542,8 @@ id типа: ``edit-task-assignee``
           | Редактировать исполнителя задачи (запускается окно с выбором исполнителя).
           | Действие связано с бизнес-процессом записи. 
         - | **actionOfAssignment [claim , release]** 
+          | **orgstructParams:{ userSearchExtraFields: custom:property1, custom:property2 }**
+          | custom:property1, custom:property2 - строка. Свойста ноды пользователя по которым будет осущетствлен поиск
 
 
 view-business-process
