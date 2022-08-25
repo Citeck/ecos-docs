@@ -24,11 +24,11 @@
 •	Минимум 10 GB ОЗУ.
 •	Минимум 4 ядра
 
-1. Быстрый старт
+2. Быстрый старт
 -------------------
 
-•	Установите docker и docker-compose на Вашу ОС
-•	Установите `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
+•	Установить docker и docker-compose на Вашу ОС
+•	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
 •	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить ``docker-compose -f docker-compose.yaml up -d``
@@ -144,8 +144,8 @@
  Проект запускается только на Linux-контейнерах
 
 •	Запустите Docker Compose. Запустите Git с повышенными правами
-•	Скачать репозиторий по `ссылке <https://bitbucket.org/citeck/ecos-community-demo/get/52d31e0.zip>`_ , распаковать в диске С
-•	Выполнить команду ``cd c:\ecos-community-demo`` (переход в распакованный архив)
+•	Скачать репозиторий по `ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
+•	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить переключение на Linux-контейнеры **switch to linux containers**. Если значение Switch to Windows, изменять ничего не нужно. 
 •	Создайте каталоги для баз данных, выполнив скрипт ``./init-volumes-win.bat``
 •	Выполнить ``docker-compose -f docker-compose-win-pv.yaml up -d``
@@ -156,7 +156,7 @@
 
         Логин – admin
 
-        Пароль - alfr3sc0
+        Пароль - admin
 
 4.2.	На ОС Linux или MacOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -164,8 +164,8 @@
 •	Установите docker и docker-compose на Вашу ОС
 •	Установите Git для Вашей ОС
 •	Создать каталог ``"/opt/ecos"`` и дать на него права в docker. Только для MacOS
-•	Скачать репозиторий по `ссылке <https://bitbucket.org/citeck/ecos-community-demo/get/52d31e0.zip>`_ , распаковать в диске С
-•	Выполнить команду ``cd c:\ecos-community-demo`` (переход в распакованный архив)
+•	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
+•	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить ``docker-compose -f docker-compose-pv.yaml up -d``
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://localhost/
@@ -173,44 +173,15 @@
 
         Логин – admin
 
-        Пароль - alfr3sc0
+        Пароль - admin
 
-5. Сервисы Docker
+1. Сервисы Docker
 ---------------------
 
-По ссылкам перечислены сервисы с точки зрения Docker’а и их настройки:
+По ссылке перечислены сервисы с точки зрения Docker’а и их настройки  `https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html  <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_
 
-`ecos-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-app>`_
 
-`ecos-proxy-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-proxy-app>`_
-
-`ecos-postgresql-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-postgresql-app>`_
-
-`ecos-microservices-postgresql-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-microservices-postgresql-app>`_
-
-`ecos-registry-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-registry-app>`_
-
-`ecos-mongo-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-mongo-app>`_
-
-`ecos-gateway-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-gateway-app>`_
-
-`ecos-model-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-model-app>`_
-
-`ecos-uiserv-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-uiserv-app>`_
-
-`ecos-notifications-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-notifications-app>`_
-
-`ecos-integrations-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-integrations-app>`_
-
-`ecos-process-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-process-app>`_
-
-`mailhog-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#mailhog-app>`_
-
-`ecos-solr-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#ecos-solr-app>`_
-
-`onlyoffice-ds-app <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html#onlyoffice-ds-app>`_
-
-6. Переход на WSL 2
+1. Переход на WSL 2
 --------------------------
 
 Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.
