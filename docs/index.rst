@@ -13,7 +13,7 @@ Citeck ECOS's documentation
 =======================================
 
 .. toctree::
-   :maxdepth: 7
+   :maxdepth: 9
 
    Введение
    Пример настройки процесса
