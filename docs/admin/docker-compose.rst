@@ -29,7 +29,7 @@
 
 •	Установить docker и docker-compose на Вашу ОС
 •	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
-•	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
+•	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диск С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить ``docker-compose -f docker-compose.yaml up -d``
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
@@ -144,7 +144,7 @@
  Проект запускается только на Linux-контейнерах
 
 •	Запустите Docker Compose. Запустите Git с повышенными правами
-•	Скачать репозиторий по `ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
+•	Скачать репозиторий по `ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диск С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить переключение на Linux-контейнеры **switch to linux containers**. Если значение Switch to Windows, изменять ничего не нужно. 
 •	Создайте каталоги для баз данных, выполнив скрипт ``./init-volumes-win.bat``
@@ -164,7 +164,7 @@
 •	Установите docker и docker-compose на Вашу ОС
 •	Установите Git для Вашей ОС
 •	Создать каталог ``"/opt/ecos"`` и дать на него права в docker. Только для MacOS
-•	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
+•	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диск С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить ``docker-compose -f docker-compose-pv.yaml up -d``
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
@@ -175,13 +175,13 @@
 
         Пароль - admin
 
-1. Сервисы Docker
+5. Сервисы Docker
 ---------------------
 
 По ссылке перечислены сервисы с точки зрения Docker’а и их настройки  `https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html  <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_
 
 
-1. Переход на WSL 2
+6. Переход на WSL 2
 --------------------------
 
 Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.
