@@ -14,7 +14,7 @@
     •	После настройки Hyper-V, VirtualBox не будет работать, но VirtualBox VM останутся нетронутыми.
     •	Выделенные команды в данной инструкции необходимо выполнять в эмуляторе терминала или в Git CMD Windows.
     •	Все действия рекомендуется выполнять в командной строке или окне терминала, запущенного с повышенными правами.
-    •   В в файле **hosts** прописать ``127.0.0.1 ecos-community-demo``
+    • В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``
 
 Системные требования:
 
@@ -32,7 +32,7 @@
 •	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
 •	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` для перехода в распакованный архив
-•	Выполнить ``docker-compose up -d`` 
+•	Выполнить команду ``docker-compose up -d`` 
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/
 
@@ -148,7 +148,7 @@
 •	Скачать репозиторий по `ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить переключение на Linux-контейнеры **switch to linux containers**. Если значение Switch to Windows, изменять ничего не нужно. 
-•	Выполнить ``docker-compose up -d``
+•	Выполнить команду ``docker-compose up -d``
 •	Зайти в настройки Docker-compose. Перейти во вкладку **Resources -> File sharing -> установить чекбокс «диск С»**
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/
@@ -166,7 +166,8 @@
 •	Создать каталог ``"/opt/ecos"`` и дать на него права в docker. Только для MacOS
 •	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
-•	Выполнить ``docker-compose up -d``
+•	Выполнить команду ``docker-compose up -d``
+
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/ 
 •	Войти в систему, используя следующие учётные данные:

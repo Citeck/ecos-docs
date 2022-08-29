@@ -406,6 +406,10 @@ RecordsService (Java)
 
 .. code-block::
 
+ List<ObjPropertyClass> list = recordsService.getAtt(documentRef, "objProperty[]?json").asList(ObjPropertyClass.class);
+
+.. code-block::
+
   RecordAtts recordAtts = recordsService.getAtts(RecordRef.valueOf(nodeRef.toString()),
         Collections.singletonMap("assocId", name + "[]?id"));
 
