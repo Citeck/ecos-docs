@@ -167,6 +167,7 @@
 •	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить команду ``docker-compose up -d``
+
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/ 
 •	Войти в систему, используя следующие учётные данные:
