@@ -14,7 +14,7 @@
     •	После настройки Hyper-V, VirtualBox не будет работать, но VirtualBox VM останутся нетронутыми.
     •	Выделенные команды в данной инструкции необходимо выполнять в эмуляторе терминала или в Git CMD Windows.
     •	Все действия рекомендуется выполнять в командной строке или окне терминала, запущенного с повышенными правами.
-    • В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``
+    •   В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``
 
 Системные требования:
 
@@ -167,7 +167,6 @@
 •	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
 •	Выполнить команду ``docker-compose up -d``
-
 •	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/ 
 •	Войти в систему, используя следующие учётные данные:
@@ -179,8 +178,7 @@
 Сервисы Docker
 ---------------
 
-По ссылке перечислены сервисы с точки зрения Docker’а и их настройки  `https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html  <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_
-
+`По ссылке <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_ перечислены сервисы с точки зрения Docker’а и их настройки.
 
 Переход на WSL 2
 -----------------
