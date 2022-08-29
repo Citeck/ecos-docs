@@ -202,3 +202,9 @@
 .. code-block::
 
     mvn clean test
+    
+Для сборки docker образа с микросервисом выполняем следующую команду:
+
+.. code-block::
+  
+    mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot
