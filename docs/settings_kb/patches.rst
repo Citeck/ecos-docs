@@ -135,7 +135,7 @@ Stateful патчи
 Архитектура
 -------------
 
- .. image:: _static/patches/patches_1.png
+ .. image:: _static/patches_1.png
        :width: 600
        :align: center
 
