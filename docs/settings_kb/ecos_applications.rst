@@ -19,7 +19,7 @@ ECOS Application является артефактом, но его нельзя
 
 ``http://host/v2/bpmn-designer?journalId=ecos-apps``
 
-.. image:: _static/apps/apps_page.png
+.. image:: _static/apps_page.png
        :width: 600       
        :align: center
        :alt: ECOS apps
@@ -36,21 +36,21 @@ ECOS Application является артефактом, но его нельзя
 
 1. Создать приложение по кнопке **+**.
 
-.. image:: _static/apps/new_app.png
+.. image:: _static/new_app.png
        :width: 600       
        :align: center
        :alt: Создать приложение
 
 2. Скачать приложение.
 
-.. image:: _static/apps/apps_page_1.png
+.. image:: _static/apps_page_1.png
        :width: 600       
        :align: center
        :alt: Скачать приложение
 
 3. Загрузить приложение на необходимом стенде.
 
-.. image:: _static/apps/apps_page_2.png
+.. image:: _static/apps_page_2.png
        :width: 600       
        :align: center
        :alt: Скачать приложение
@@ -85,14 +85,14 @@ ECOS Application является артефактом, но его нельзя
 
 Для управления артефактами предусмотрен журнал **Артефакты ECOS**. В данный журнал попадают все артефакты, которые достигли микросервиса ``ecos-apps``. 
 
-.. image:: _static/apps/artifacts.png
+.. image:: _static/artifacts.png
        :width: 600       
        :align: center
        :alt: Артефакты
 
 В данном журнале есть возможность выполнить следующие действия:
 
-.. image:: _static/apps/artifacts_2.png
+.. image:: _static/artifacts_2.png
        :width: 200       
        :align: center
 
@@ -103,7 +103,7 @@ ECOS Application является артефактом, но его нельзя
 * Если последний артефакт был загружен ранее чем выбраная дата, то будет выгружен только он (т.е. всегда будет как минимум 1 артефакт).
 * Формат имени папки с версией артефакта: **дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]**. Дата создания указывается в часовом поясе UTC.
 
-.. image:: _static/apps/artifact-history.png
+.. image:: _static/artifact-history.png
        :width: 600       
        :align: center
        :alt: Версия артефакта

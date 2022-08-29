@@ -79,7 +79,6 @@
 ~~~~~~~~~~~~
 
 На примере ОС Ubuntu для установки docker и docker-compose необходимо в эмуляторе терминала выполнить следующие команды:
-
 •	Обновить список пакетов:
 
         ``sudo apt-get update``
@@ -179,7 +178,8 @@
 Сервисы Docker
 ---------------
 
-По ссылке перечислены сервисы с точки зрения Docker’а и их настройки `https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html  <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_
+По ссылке перечислены сервисы с точки зрения Docker’а и их настройки  `https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html  <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_
+
 
 Переход на WSL 2
 -----------------
