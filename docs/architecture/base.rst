@@ -3,7 +3,7 @@
 
 В упрощенном виде схема связи микросервисов выглядит следующим образом:
 
- .. image:: _static/Common_1.png
+ .. image:: _static/base/Common_1.png
        :width: 600
        :align: center
 
@@ -21,7 +21,7 @@
 
 В более сложных сценариях, когда микросервисам нужно общаться между собой схему можно представить следующим образом:
 
- .. image:: _static/Common_2.png
+ .. image:: _static/base/Common_2.png
        :width: 600
        :align: center
 
