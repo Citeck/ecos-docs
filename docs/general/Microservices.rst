@@ -1,11 +1,12 @@
 Микросервисы
-============
+===============
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 5
 
-    Microservices/Common
     Microservices/Apps
     Microservices/Process Engine
     Microservices/Notifications
     Microservices/Integration
+    Microservices/new_microservice
+    Microservices/microservice_development
