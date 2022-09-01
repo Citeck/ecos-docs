@@ -178,7 +178,7 @@
 Сервисы Docker
 ---------------
 
-`По ссылке <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-servi%D1%81es.html>`_ перечислены сервисы с точки зрения Docker’а и их настройки.
+`По ссылке <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-services.html>`_ перечислены сервисы с точки зрения Docker’а и их настройки.
 
 Переход на WSL 2
 -----------------
