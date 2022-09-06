@@ -1,39 +1,72 @@
-Установке Citeck ECOS c помощью Docker-compose
+Установка Citeck ECOS c помощью Docker-compose
 ===============================================
 
 .. contents::
-		:depth: 4
+    :depth: 4
+
 
 Общие требования к системе
 ---------------------------
 
-.. attention::
+* Выделенные команды в данной инструкции необходимо выполнять в эмуляторе терминала или в Git CMD Windows.
+* Все действия рекомендуется выполнять в командной строке или окне терминала, запущенного с повышенными правами.
+* В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``. Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере: 
+  
+  *  Windows— c:/windows/system32/drivers/etc/hosts. 
+  *  Linux, Ubuntu, Unix, BSD — /etc/hosts. 
+  *  Mac OS — /private/etc/hosts.
 
-    •	Docker Desktop for Windows требует для работы Microsoft Hyper-V. 
-    •	Установщик Docker Desktop for Windows самостоятельно включает системную компоненту Hyper-V, если это требуется, и перезапускает вашу ЭВМ. 
-    •	После настройки Hyper-V, VirtualBox не будет работать, но VirtualBox VM останутся нетронутыми.
-    •	Выделенные команды в данной инструкции необходимо выполнять в эмуляторе терминала или в Git CMD Windows.
-    •	Все действия рекомендуется выполнять в командной строке или окне терминала, запущенного с повышенными правами.
-    •   В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``
+Системные требования
+---------------------
 
-Системные требования:
+Windows
+~~~~~~~~~~~~
 
-•	Windows 10 64bit: Pro, Enterprise или Education (1607 Anniversary Update, Build 14393 или более поздний).
-•	Linux kernel version 3.10.0 или выше.
-•	Виртуализация разрешена в BIOS. 
-•	Процессор с поддержкой CPU SLAT (Second Level Address Translation).
-•	Минимум 16 GB ОЗУ.
-•	Минимум 4 ядра
+* Windows 11 64bit: Home, Pro, Enterprise или Education версии 21H2 или выше.
+* Windows 10 64bit: Home или Pro 21H1 (сборка 19043) или выше, Enterprise или Education 20H2 (сборка 19042) или выше
+* Включите функцию WSL 2 в Windows. Подробные инструкции см. `в документации Microsoft <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
+* Для успешного запуска WSL 2 в Windows 10 или Windows 11 необходимы следующие предварительные требования к оборудованию:
 
-Быстрый старт
---------------
+  * 64-битный процессор с трансляцией адресов второго уровня (`SLAT <https://en.wikipedia.org/wiki/Second_Level_Address_Translation>`_)
+  * 4 ГБ оперативной памяти
+  * Поддержка аппаратной виртуализации на уровне BIOS должна быть включена в настройках BIOS. Дополнительные сведения см. `в разделе Виртуализация <https://docs.docker.com/desktop/troubleshoot/topics/#virtualization>`_
 
-•	Установить docker и docker-compose на Вашу ОС
+* Загрузить и установить `пакет обновления ядра Linux <https://docs.microsoft.com/windows/wsl/wsl2-kernel>`_
+
+`Подробнее см. официальное руководство по установке на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
+
+Linux
+~~~~~~~~~~~~
+
+* Поддержка 64-битного ядра и процессора для виртуализации.
+* Поддержка виртуализации KVM. Следуйте `инструкциям поддержки виртуализации KVM <https://docs.docker.com/desktop/install/linux-install/#kvm-virtualization-support>`_ для проверки включены или нет модули ядра KVM и как предоставить доступ к устройству kvm.
+* QEMU должен быть версии 5.2 или новее. Рекомендуем обновиться до последней версии.
+* подсистема инициализации и управления службами systemd.
+* Gnome или среда рабочего стола KDE.
+* Не менее 4 ГБ оперативной памяти.
+* Включите настройку сопоставления идентификаторов в пространствах имен пользователей, см. `Общий доступ к файлам <https://docs.docker.com/desktop/install/linux-install/#file-sharing>`_
+
+`Подробнее см. официальное руководство по установке на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
+
+`Подробнее см. официальное руководство по установке на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+
+MacOS
+~~~~~~~~~~~~
+
+* macOS версии 10.15 или выше.
+* Не менее 4 ГБ оперативной памяти.
+
+`Подробнее см. официальное руководство по установке на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
+
+Установка и запуск проекта
+---------------------------
+
+•	Установить `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
 •	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
 •	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
 •	Выполнить команду ``cd c:\ecos-community-demo-master`` для перехода в распакованный архив
 •	Выполнить команду ``docker-compose up -d`` 
-•	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
+•	Подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/
 
 Войти в систему, используя следующие учётные данные:
@@ -42,177 +75,12 @@
 
     Пароль - **admin**
 
-.. attention::
-
-    Данные, внесенные в систему в режиме быстрого старта после перезапуска, не сохранятся.
-    Для сохранения данных используйте расширенный режим.
-
-Установка Docker
------------------
-
-На ОС Windows 
-~~~~~~~~~~~~~~
-
-.. attention::
-
- На виртуальной машине Windows Linux-контейнеры не работают
-
-
-•	Скачать установщик `download.docker.com <download.docker.com>`_
-•	Следуйте шагам мастера установки, чтобы принять лицензионное соглашение, авторизовать и продолжить установку. В процессе установки ОС попросит авторизовать Docker.app с вашим системным паролем. Привилегированный доступ необходим для того, чтобы установить сетевые компоненты, ссылки на Docker apps и для управления виртуальными машинами Hyper-V. Docker не запускается автоматически после установки. Его необходимо запустить вручную. Когда иконка приложения в трее перейдёт в состояние готова, Docker готов к использованию и доступен из окна терминала.
-•	Docker Desktop for Windows уже включает в себя docker-compose, поэтому отдельно устанавливать его не нужно. Проверить можно, выполнив в окне командной строки ``docker-compose –version``.
-    
-    `См. официальное руководство по установке на Windows <https://docs.docker.com/docker-for-windows/install/>`_
-
-На ОС MacOS
-~~~~~~~~~~~~
-
-•	Скачать установщик `Docker Desktop for Mac <https://hub.docker.com/editions/community/docker-ce-desktop-mac>`_
-•	Двойным щелчком по **Docker.dmg** запустите установщик.
-•	В открывшемся окне перетащите ярлык в папку приложений
-•	В процессе установки ОС попросит авторизовать **Docker.app** с вашим системным паролем. Привилегированный доступ необходим для того, чтобы установить сетевые компоненты и ссылки на Docker apps. Через некоторое время приложение сообщит, что оно готово к работе, и иконка в статус баре примет соответствующий вид.
-•	Docker Desktop for Mac уже включает в себя docker-compose, поэтому отдельно устанавливать его не нужно. Проверить можно, выполнив в окне терминала ``docker-compose –version``
-
-`См. официальное руководство по установке на MacOS <https://hub.docker.com/editions/community/docker-ce-desktop-mac>`_
-
-На ОС Linux
-~~~~~~~~~~~~
-
-На примере ОС Ubuntu для установки docker и docker-compose необходимо в эмуляторе терминала выполнить следующие команды:
-•	Обновить список пакетов:
-
-        ``sudo apt-get update``
-
-•	Установить необходимые зависимости:
-
-        ``sudo apt-get install \``
-
-        ``apt-transport-https \``
-
-        ``ca-certificates \``
-
-        ``curl \``
-
-        ``gnupg-agent \``
-
-        ``software-properties-common``
-
-•	Добавить официальный GPG ключ:
-    
-        ``curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -``
-
-•	Добавить репозиторий:
-
-        ``sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) \
-        stable"``
-
-•	Установить docker-ce: 
-
-        ``sudo apt-get update``
-
-        ``sudo apt-get install docker-ce docker-ce-cli containerd.io``
-
-•	Включить текущего непривилегированного пользователя в группу docker с полномочиями доступа к демону docker:
-
-        ``sudo usermod -aG docker $(whoami)``
-
-•	Запустить сервис docker:
-
-        ``systemctl start docker``
-
-•	Установить автозапуск для сервиса docker:
-
-        ``systemctl enable docker``
-
-•	Установить docker-compose:
-
-        ``sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose``
-
-        ``sudo chmod +x /usr/local/bin/docker-compose``
-
-`См. официальное руководство по установке на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
-
-Запуск проекта в расширенной конфигурации
-------------------------------------------
-
-На ОС Windows
-~~~~~~~~~~~~~~
-
-.. attention::
-
- Проект запускается только на Linux-контейнерах
-
-•	Запустите Docker Compose. Запустите Git с повышенными правами
-•	Скачать репозиторий по `ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
-•	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
-•	Выполнить переключение на Linux-контейнеры **switch to linux containers**. Если значение Switch to Windows, изменять ничего не нужно. 
-•	Выполнить команду ``docker-compose up -d``
-•	Зайти в настройки Docker-compose. Перейти во вкладку **Resources -> File sharing -> установить чекбокс «диск С»**
-•	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
-•	Перейти в браузере по адресу http://ecos-community-demo/
-•	Войти в систему, используя следующие учётные данные:
-
-        Логин – **admin**
-
-        Пароль - **admin**
-
-На ОС Linux или MacOS
-~~~~~~~~~~~~~~~~~~~~~~
-
-•	Установите docker и docker-compose на Вашу ОС
-•	Установите Git для Вашей ОС
-•	Создать каталог ``"/opt/ecos"`` и дать на него права в docker. Только для MacOS
-•	Скачать `репозиторий по ссылке <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать в диске С
-•	Выполнить команду ``cd c:\ecos-community-demo-master`` (переход в распакованный архив)
-•	Выполнить команду ``docker-compose up -d``
-•	Необходимо подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
-•	Перейти в браузере по адресу http://ecos-community-demo/ 
-•	Войти в систему, используя следующие учётные данные:
-
-        Логин – **admin**
-
-        Пароль - **admin**
+При первом развертывании keycloak попросит сменить пароль.  Если необходимо еще раз сменить пароль, `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
 Сервисы Docker
 ---------------
 
 `По ссылке <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-services.html>`_ перечислены сервисы с точки зрения Docker’а и их настройки.
-
-Переход на WSL 2
------------------
-
-Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.
-Требования:
-
-•	Для 64-разрядных систем: версия 1903 или более поздняя со сборкой 18362 или более поздней версии.
-•	Для систем ARM64: версия 2004 или более поздняя со сборкой 19041 или более поздней версии.
-•	Сборки ниже 18362 не поддерживают WSL 2. 
-•	`Docker Desktop Stable 2.3.0.2 <https://hub.docker.com/editions/community/docker-ce-desktop-windows/>`_  или более поздняя версия
-
-1)	Перед установкой WSL 2 необходимо включить необязательный компонент **Платформа виртуальных машин**. 
-    
-    В **PowerShell** ввести команду:
-
-    ``dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart``
-
-2)	Скачайте и установите пакет обновления ядра Linux:
-    
-    `Пакет обновления ядра Linux в WSL 2 для 64-разрядных компьютеров <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>`_ 
-
-3)	Выбрать WSL 2 в качестве версии по умолчанию:
-
-    ``wsl --set-default-version 2``
-
-Проверить вы сможете командой. Более подробная версия инструкции см. `https://docs.microsoft.com/ru-ru/windows/wsl/install-win10 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_ 
-
-    ``wsl --list --verbose``
-
-4)	Запустите Docker. Перейдите в настройки, установите галочку в поле **“Use the WSL 2 based engine”**. Более подробная версия инструкции см. `https://docs.docker.com/docker-for-windows/wsl/  <https://docs.docker.com/docker-for-windows/wsl/>`_ 
-
-
-5)	Отключите Hyper-V. **Панель управления → Программы → Включение или отключение компонентов Windows**. Снимите галочку с параметра **Hyper-V** и нажмите **OK**. Перезагрузите компьютер.
 
 
 Известные проблемы
@@ -220,6 +88,33 @@ Docker Desktop использует функцию динамического р
 
 ОС Windows
 ~~~~~~~~~~~~
+
+Включение функции WSL 2
+------------------------
+
+Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.
+
+1)	Перед установкой WSL 2 необходимо включить необязательный компонент **Платформа виртуальных машин**. 
+    
+    В **PowerShell** ввести команду:
+
+    ``dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart``
+
+2)	Скачать и установить пакет обновления ядра Linux:
+    
+    `Пакет обновления ядра Linux в WSL 2 для 64-разрядных компьютеров <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>`_ 
+
+3)	Выбрать WSL 2 в качестве версии по умолчанию:
+
+    ``wsl --set-default-version 2``
+
+Проверить можно командой. Более подробная версия инструкции см. `https://docs.microsoft.com/ru-ru/windows/wsl/install-win10 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_ 
+
+    ``wsl --list --verbose``
+
+4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Более подробная версия инструкции см. `https://docs.docker.com/docker-for-windows/wsl/  <https://docs.docker.com/docker-for-windows/wsl/>`_ 
+
+
 
 Порт 8080 уже занят
 """"""""""""""""""""
