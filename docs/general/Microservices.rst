@@ -4,9 +4,6 @@
 .. toctree::
     :maxdepth: 5
 
-    Microservices/Apps
-    Microservices/Process Engine
-    Microservices/Notifications
-    Microservices/Integration
-    Microservices/new_microservice
+    Microservices/Description
     Microservices/microservice_development
+    Microservices/new_microservice
