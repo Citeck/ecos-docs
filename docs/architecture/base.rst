@@ -36,7 +36,7 @@ Gateway не является каким-то уникальным в плане
 Приложения
 -----------
 
-Приложение - это zip архив с мета информацией (id, name, dependencies, version) и модулями (form, journal, menu, credentials, datasource, ...).
+**Приложение** - это zip архив с мета информацией (id, name, dependencies, version) и модулями (form, journal, menu, credentials, datasource, ...).
 
 Структура архива следующая:
 
