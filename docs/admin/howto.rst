@@ -78,12 +78,12 @@ How To
 Не с чистой БД
 ~~~~~~~~~~~~~~~~~~
 
-1. Зайти в панель администратора keycloak
-2. Открыть реалм **ecos-app**
-3. Открыть раздел **clients**
-4. Открыть **ecos-proxy-app**
+1. Зайти в панель администратора keycloak.
+2. Открыть реалм **ecos-app**.
+3. Открыть раздел **clients**.
+4. Открыть **ecos-proxy-app**.
 5. Изменить в поле **Valid Redirect URIs** значение http://ecos-community-demo на http://mydomain.ru
-6. Сохранить
+6. Сохранить.
 
 
 Исключить адрес из авторизации Keycloak
