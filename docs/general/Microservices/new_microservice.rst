@@ -19,9 +19,9 @@
         - | Родитель для spring-boot микросервисов, в которых предполагается использование hibernate.
           | Настройка плагинов для сборки не требуется.
       * - ru.citeck.ecos.webapp:ecos-webapp-spring-simple-parent
-        - Родитель для spring-boot микросервисов без состояния или микросервисов, которые работают с БД через jdbc или ecos-data.
+        - Родитель для spring-boot микросервисов без состояния или микросервисов, которые работают с БД через jdbc или :ref:`ecos-data<ecos_data_main>`.
 
-Актуальная версия родительских pom файлов: **1.7.5**
+Актуальная версия родительских pom файлов: **1.8.8**
 
 Все родительские pom файлы импортируют spring-boot зависимости, общие библиотеки ECOS и дополнительные библиотеки для тестирования (rabbitmq мок, zookeeper мок и тд.)
 
@@ -41,7 +41,7 @@
         <parent>
             <groupId>ru.citeck.ecos.webapp</groupId>
             <artifactId>ecos-webapp-spring-simple-parent</artifactId>
-            <version>1.7.5</version>
+            <version>1.8.8</version>
         </parent>
 
         <repositories>
