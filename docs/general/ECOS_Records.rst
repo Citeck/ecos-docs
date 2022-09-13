@@ -1,3 +1,5 @@
+.. _Records_API:
+
 ECOS Records API
 ================
 

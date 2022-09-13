@@ -1,3 +1,5 @@
+.. _Select_orgstruct:
+
 Select orgstruct
 ================
 

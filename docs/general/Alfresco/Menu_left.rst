@@ -461,7 +461,6 @@
 
 Смежные настройки
 -----------------
-Логотип > `Темы интерфейса <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html>`_.  
+Логотип > :ref:`Темы интерфейса<intrface_themes>`
 
-Действия для журнала Меню > `Типы действий <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/ui_actions.html#id6>`_. 
-
+Действия> :ref:`Типы действий<ui_actions>`

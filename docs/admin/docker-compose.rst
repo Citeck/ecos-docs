@@ -1,3 +1,6 @@
+.. _docker_compose:
+
+
 Установка Citeck ECOS c помощью Docker-compose
 ===============================================
 
@@ -79,7 +82,7 @@ MacOS
 Сервисы Docker
 ---------------
 
-`По ссылке <https://citeck-ecos.readthedocs.io/ru/latest/admin/Docker-services.html>`_ перечислены сервисы с точки зрения Docker’а и их настройки.
+:ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
 
 
 

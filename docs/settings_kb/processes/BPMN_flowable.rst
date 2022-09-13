@@ -164,7 +164,7 @@ BPMN категории
 
 В версии [rc5] добавлен новый тип ``bpmn-section`` для bpmn категорий. А также новый тип артефакта ``process/bpmn-section``.
 
-Категорию можно добавлять деплоем артефакта (`См.  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/ecos_artifacts.html#yaml>`_ ):
+Категорию можно добавлять деплоем артефакта (`См. :ref:`ECOS артефакты<ecos_artifacts>`):
 
 .. code-block::
 

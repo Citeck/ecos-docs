@@ -14,7 +14,7 @@
 - использовать возможности расширенного поиска и фильтрации по любому полю из карточки документа;
 - выгружать данные журналов в форматах HTML, PDF, Excel.
 
-В качестве источников данных могут быть любые **RecordsDAO** (`См. ECOS Records <https://citeck-ecos.readthedocs.io/ru/latest/general/ECOS_Records.html>`_), которые поддерживают `Язык предикатов <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html>`_.
+В качестве источников данных могут быть любые **RecordsDAO** (`:ref:`ECOS Records<Records_API>`), которые поддерживают :ref:`Язык предикатов <ecos-predicate_main>`
 
  .. image:: _static/view_type.png
        :width: 600
@@ -24,8 +24,8 @@
 
 * таблица (описана ниже);
 * таблица с превью;
-* `канбан доска <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/kanban_board.html>`_ ;
-* `document library  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/document_library.html>`_ .
+* :ref:`канбан доска<kanban_board>`;
+* :ref:`document library<document_library>`.
 
 Выбор сохраняется в урле, при перезагрузке открывается последнее представление.
 

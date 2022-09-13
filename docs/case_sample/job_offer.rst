@@ -1,3 +1,5 @@
+.. _job_offer:
+
 Создание типа данных «Оффер»
 =============================
 
@@ -6,7 +8,7 @@
 Создание типа данных
 ----------------------
 
-Как перейти в `пункт меню "Тип данных"  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id3>`_
+Как перейти в :ref:`пункт меню "Тип данных"<admin_type>` 
 
 Основные настройки (Вкладка «Main»)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,6 +47,8 @@
 - **Id** - уникальный идентификатор атрибута **(1)**
 - **Name** - человекопонятное имя атрибута **(2)**
 - **Type** - подходящий тип атрибута **(3)**
+
+.. _roles_offer:
 
 Роли (Вкладка «Roles») 
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +94,7 @@
        :width: 500
        :align: center
 
-Подробно о `типах данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_
+Подробно о :ref:`типах данных<data_types_main>`
 
 Шаблоны нумерации
 -------------------
@@ -153,13 +157,12 @@
        :width: 400
        :align: center
 
-Подробно о `шаблонах нумерации <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/number_template.html>`_
-
+Подробно о :ref:`шаблонах нумерации<number_template>`
 
 Создание формы "Оффер"
 -----------------------
 
-Как перейти в `пункт меню "Формы"  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#ui>`_
+Как перейти в :ref:`пункт меню "Формы"<admin_form>`
 
 Основные параметры формы
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,9 +183,11 @@ Form builder
 
 Form builder - конструктор форм, который позволяет моделировать формы в дизайнере.
 
-`Некоторые компоненты <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#form-builder>`_ уже были описаны при создании **справочника "Кандидаты"**.
+:ref:`Некоторые компоненты<candidates_form_builder>` уже были описаны при создании **справочника "Кандидаты"**.
 
-Подробно о `формах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms.html>`_
+Подробно о :ref:`формах<forms>`
+
+.. _sample_panel_component:
 
 Panel
 *******
@@ -198,6 +203,8 @@ Panel
  .. image:: _static/job_offer/form_3.png
        :width: 600
        :align: center
+
+.. _sample_select_orgstruct_component:
 
 Select Orgstruct Component
 ****************************
@@ -222,6 +229,8 @@ Select Orgstruct Component
        :width: 400
        :align: center
 
+.. _sample_async_data_component:
+
 Async Data Component 
 *********************
 
@@ -234,7 +243,7 @@ Async Data Component
 На вкладке **«Асинхронные данные»** заполняется: 
 
 - **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
-- **Ти данных** - тип данных **(2)**.
+- **Тип данных** - тип данных **(2)**.
 
  .. image:: _static/job_offer/form_7.png
        :width: 600
@@ -295,14 +304,14 @@ Async Data Component
 Кнопка "Локализация"
 """""""""""""""""""""
 
-`Функционал кнопки "Локализация" <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id8>`_ описан при создании **справочника "Кандидаты"**.
+:ref:`Функционал кнопки "Локализация"<candidate_localization>` описан при создании **справочника "Кандидаты"**.
 
 Создание журнала
 -----------------
 
-Как перейти в `пункт меню "Журналы"  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id10>`_
+Как перейти в :ref:`пункт меню "Журналы"<admin_journal>`
 
-Подробно о `журналах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals.html>`_
+Подробно о :ref:`журналах<journals>`
 
 Основные параметры журнала
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -324,7 +333,7 @@ Async Data Component
 Добавление формы и журнала в тип данных
 ----------------------------------------
 
-`Функционал добавления формы и журнала в тип данных <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id13>`_ описан при создании **справочника "Кандидаты"**.
+:ref:`Функционал добавления формы и журнала в тип данных<to_data_type>` описан при создании **справочника "Кандидаты"**.
 
 Созданный журнал «Согласование оффера» и форма добавления оффера
 -----------------------------------------------------------------
@@ -344,6 +353,6 @@ Async Data Component
 Настройка меню
 ---------------
 
-`Настройка меню <hhttps://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html#id15>`_ описана при создании **справочника "Кандидаты"**.
+:ref:`Настройка меню<menu_settings>` описана при создании **справочника "Кандидаты"**.
 
-Подробно о `меню <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/menu.html>`_
+Подробно о :ref:`меню<menu>`
