@@ -1,3 +1,5 @@
+.. _document_library:
+
 Document Library
 ====================
 

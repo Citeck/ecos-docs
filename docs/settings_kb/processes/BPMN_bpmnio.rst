@@ -429,7 +429,7 @@
          
          | При прямом использовании Заголовка и Тела возможно указывать только текст, без использования динамических переменных из процесса или документа. 
 
-      * - Получатели выбираются из списка ролей, заполненных в `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html>`_ 
+      * - Получатели выбираются из списка ролей, заполненных в :ref:`типе данных<data_types_main>`
         - 
                .. image:: _static/BPMN_bpmnio/52.png
                 :width: 300
@@ -440,6 +440,8 @@
                .. image:: _static/BPMN_bpmnio/53.png
                 :width: 300
                 :align: center   
+
+.. _user_task:
 
 Создание user task
 ~~~~~~~~~~~~~~~~~~~
@@ -452,7 +454,7 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя**, **Реципиентов** – исполнителей задачи, выбираются из списка ролей, заполненных в `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/datatypes/%D0%A0%D0%BE%D0%BB%D0%B8_%D0%B8_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B.html>`_ 
+      * - Указать **Имя**, **Реципиентов** – исполнителей задачи, выбираются из списка ролей, заполненных в :ref:`типе данных<roles_statuses>` 
 
         - 
                .. image:: _static/BPMN_bpmnio/55.png
@@ -487,6 +489,8 @@
  .. image:: _static/BPMN_bpmnio/58.png
        :width: 600
        :align: center
+
+.. _script_task:
 
 Создание script task
 ~~~~~~~~~~~~~~~~~~~~~

@@ -1,3 +1,5 @@
+.. _import_button:
+
 Import button
 =============
 

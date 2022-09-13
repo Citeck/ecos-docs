@@ -1,3 +1,5 @@
+.. _horizontal_line:
+
 Horizontal line
 ===============
 
