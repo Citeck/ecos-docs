@@ -1,3 +1,5 @@
+.. _table_form:
+
 Table form
 ===========
 

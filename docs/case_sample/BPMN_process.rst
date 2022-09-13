@@ -1,7 +1,7 @@
 Создание бизнес-процесса согласования оффера
 ============================================
 
-`Для добавленного типа данных «Оффер»  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html>`_ создадим модель бизнес-процесса в редакторе.
+:ref:`Для добавленного типа данных «Оффер»<job_offer>` создадим модель бизнес-процесса в редакторе.
 
 Удобный и понятный редактор бизнес-процессов реализован на основе библиотеки bpmn-js ( https://bpmn.io).
 
@@ -269,7 +269,7 @@
                 :width: 300
                 :align: center
          
-      * - Получатели выбираются из списка ролей, заполненных в `типе данных <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html#roles>`_ 
+      * - Получатели выбираются из списка ролей, заполненных в :ref:`типе данных<roles_offer>`
         - 
                .. image:: _static/BPMN_process/bmpn15.png
                 :width: 300
@@ -307,8 +307,7 @@
                 :width: 300
                 :align: center
 
-
-`Подробно о скриптах  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/BPMN_bpmnio.html#script-task>`_
+:ref:`Подробно о скриптах<script_task>`
 
 Создание user task
 ~~~~~~~~~~~~~~~~~~~~
@@ -328,7 +327,7 @@
                 :width: 300
                 :align: center
 
-      * - Указать **Реципиентов** – исполнителей задачи, выбираются из списка ролей, заполненных `в типе данных  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html#roles>`_  
+      * - Указать **Реципиентов** – исполнителей задачи, выбираются из списка ролей, заполненных :ref:`типе данных<roles_offer>`
 
         - 
                .. image:: _static/BPMN_process/bmpn22.png
@@ -356,13 +355,13 @@
        :width: 600
        :align: center
 
-Создание формы аналогично описанным в разделе `«Кандидаты»  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/candidates.html>`_ , `«Оффер»  <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/job_offer.html>`_:
+Создание формы аналогично описанным в разделе :ref:`«Кандидаты»<candidates>` , :ref:`«Оффер»<job_offer>` :
 
  .. image:: _static/BPMN_process/bmpn26.png
        :width: 600
        :align: center
 
-`Подробно о формах для бизнес-процессов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/BPMN_bpmnio.html#user-task>`_
+:ref:`Подробно о формах для бизнес-процессов<user_task>`
 
 Сохранение и публикация
 ------------------------

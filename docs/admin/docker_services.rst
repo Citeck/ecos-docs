@@ -1,3 +1,5 @@
+.. _docker_services:
+
 Сервисы Docker
 ===============
 

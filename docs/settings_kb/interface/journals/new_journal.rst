@@ -89,13 +89,13 @@
           | -	false - 0-1
           | -	true - сколько угодно     
       * - **Форматтер для колонки** 
-        - | Указать форматтер (`см. Форматтеры <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/formatters.html>`_) 
+        - | Указать форматтер (:ref:`см. Форматтеры<formatters>`) 
           | И далее в конфигурации ключ и значение при необходимости 
       * - **Редактор для колонки** 
-        - | Указать редактор (`см. Редакторы <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/editors.html>`_) 
+        - | Указать редактор (:ref:`см. Редакторы<editors>`) 
           | И далее в конфигурации ключ и значение при необходимости 
       * - **Тип редактора** 
-        - Указать редактор (`см. Редакторы <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/editors.html>`_)
+        - Указать редактор (:ref:`см. Редакторы<editors>`)
       * - **Delimiters** 
         - Возможность установки и настройки разделителя для массива значений
       * - **Panel** 
@@ -116,7 +116,7 @@
         - Наименование действия
       * - **Тип** 
         - | Указать тип действия 
-          | (`см. Действия <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/ui_actions.html>`_) 
+          | (:ref:`Действия<ui_actions>`) 
       * - **Модуль предварительной обработчик** 
         - Указать ссылку на модуль, содержащий JS-код
       * - **Конфигурация** 
@@ -145,7 +145,7 @@
         - [описание в работе]
       * - **Предикат** 
         - | [описание в работе]
-          | (`см. Предикаты <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html>`_) 
+          | (:ref:`Язык предикатов <ecos-predicate_main>`)
       * - **Дополнительные свойства** 
         - [описание в работе]
       * - **Группировать по** 
