@@ -1,3 +1,5 @@
+.. _ecos_select:
+
 Ecos Select
 ===========
 

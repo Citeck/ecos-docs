@@ -1,3 +1,5 @@
+.. _candidates:
+
 Создание типа данных «Кандидаты»
 ==================================
 
@@ -7,6 +9,8 @@
 ----------------------
 
 Для создания нового типа данных необходимо перейти: 
+
+.. _admin_type:
 
 Раздел администратора - Модель - Типы данных
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +36,7 @@
        :width: 600
        :align: center
 
-Подробно о `типах данных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html>`_
+Подробно о :ref:`типах данных<data_types_main>`
 
 Основные настройки (Вкладка «Main»)
 """"""""""""""""""""""""""""""""""""
@@ -65,6 +69,8 @@
 
 Для создания формы необходимо перейти:
 
+.. _admin_form:
+
 Раздел администратора - Конфигурация UI - Формы
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -89,7 +95,7 @@
        :width: 600
        :align: center
 
-Подробно о `формах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms.html>`_
+Подробно о :ref:`формах<forms>`
 
 Основные параметры формы 
 """"""""""""""""""""""""""
@@ -105,6 +111,8 @@
 
 Нажать кнопку **«Редактировать форму»**.
 
+.. _candidates_form_builder:
+
 Form builder
 """""""""""""
 
@@ -115,6 +123,8 @@ Form builder - конструктор форм, который позволяе�
  .. image:: _static/candidates/form_builder.png
        :width: 600
        :align: center
+
+.. _sample_columns_component:
 
 Columns
 *******
@@ -143,6 +153,8 @@ Columns
        :width: 600
        :align: center
 
+.. _sample_text_field_component:
+
 Text field
 **********
 
@@ -158,6 +170,8 @@ Text field
  .. image:: _static/candidates/Text_field_1.png
        :width: 600
        :align: center
+
+.. _sample_ecos_select_component:
 
 ECOS Select Component
 **********************
@@ -185,6 +199,8 @@ ECOS Select Component
        :width: 400
        :align: center
 
+.. _sample_date_time_component:
+
 Date / Time Component
 **********************
 
@@ -206,6 +222,8 @@ Date / Time Component
  .. image:: _static/candidates/Date_Time_2.png
        :width: 400
        :align: center
+
+.. _sample_select_journal_component:
 
 Select Journal Component
 *************************
@@ -229,6 +247,8 @@ Select Journal Component
        :width: 400
        :align: center
 
+.. _sample_button_component:
+
 Button Component 
 *****************
 
@@ -249,6 +269,8 @@ Button Component
  .. image:: _static/candidates/form_full.png
        :width: 600
        :align: center
+
+.. _candidate_localization:
 
 Кнопка "Локализация"
 """"""""""""""""""""
@@ -283,6 +305,8 @@ Button Component
 
 Для создания нового журнала необходимо перейти:
 
+.. _admin_journal:
+
 Раздел администратора  - Конфигурация UI - Журналы
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -307,7 +331,7 @@ Button Component
        :width: 600
        :align: center
 
-Подробно о `журналах <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals.html>`_
+Подробно о :ref:`журналах<journals>`
 
 Основные параметры журнала
 """"""""""""""""""""""""""
@@ -325,6 +349,8 @@ Button Component
 
 - **Название колонки** - как будет называться колонка **(6)**, 
 - **Системное имя** - Id атрибута модели **(5)**.
+
+.. _to_data_type:
 
 Добавление формы и журнала в тип данных
 ----------------------------------------
@@ -358,6 +384,8 @@ Button Component
        :width: 600
        :align: center
 
+.. _menu_settings:
+
 Настройка меню
 ---------------
 
@@ -383,4 +411,4 @@ Button Component
        :width: 200
        :align: center
 
-Подробно о `меню <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/menu.html>`_
+Подробно о :ref:`меню<menu>`

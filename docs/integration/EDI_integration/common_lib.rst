@@ -5,6 +5,6 @@
 
 2. Путь до библиотеки: `https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration>`_
 
-3. Деплой библиотеки описан тут: `Функционал загрузки OSGI пакетов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/integration/OSGI.html>`_
+3. Деплой библиотеки описан тут: :ref:`Функционал загрузки OSGI пакетов<OSGI>`
 
 4. Настройка синхронизации на примере диадока описана тут: Настройка получения событий с ящиком Контур.Диадок. 
