@@ -174,7 +174,7 @@
 
 В настройках типа данных можно изменить фильтр с Select Journal на текстовое поле:
 
-Фильтр Select Journal:
+Фильтр **Select Journal**:
 
   .. image:: _static/user/j_user_29.png
        :width: 600
@@ -186,13 +186,13 @@
        :width: 600
        :align: center
 
-У необходимой колонки нажать "Дополнительно" : 
+У необходимой колонки нажать **"Дополнительно"** : 
 
   .. image:: _static/user/j_user_26.png
        :width: 600
        :align: center
 
-Указать настройки, как указано ниже:
+Указать настройки, как  ниже:
 
   .. image:: _static/user/j_user_27.png
        :width: 400
