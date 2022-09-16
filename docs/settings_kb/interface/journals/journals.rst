@@ -57,7 +57,7 @@
        :width: 400
        :align: center
 
-Для столбца можно воспользоваться сортировкой и/или фильтрацией:
+Для столбца можно воспользоваться сортировкой и/или фильтрацией (подробно см. ниже)
 
  .. image:: _static/user/j_user_10.png
        :width: 400
@@ -167,6 +167,42 @@
        :width: 400
        :align: center
  
+Настройки фильтрации колонки
+""""""""""""""""""""""""""""""
+
+В журнале для колонок появилась настройка **headerFilterEditor**. 
+
+В настройках типа данных можно изменить фильтр с Select Journal на текстовое поле:
+
+Фильтр Select Journal:
+
+  .. image:: _static/user/j_user_29.png
+       :width: 600
+       :align: center
+
+Для изменения неоходимо в журнале рядом с названием нажать:
+
+  .. image:: _static/user/j_user_25.png
+       :width: 600
+       :align: center
+
+У необходимой колонки нажать "Дополнительно" : 
+
+  .. image:: _static/user/j_user_26.png
+       :width: 600
+       :align: center
+
+Указать настройки, как указано ниже:
+
+  .. image:: _static/user/j_user_27.png
+       :width: 400
+       :align: center
+
+Фильтр Select Journal изменен на текстовый:
+
+  .. image:: _static/user/j_user_28.png
+       :width: 600
+       :align: center
 
 Представление "Таблица с превью"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
