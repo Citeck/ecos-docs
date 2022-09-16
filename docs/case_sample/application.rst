@@ -14,7 +14,7 @@
 Нажать **+ - Создать приложение**: 
 
  .. image:: _static/app/App_2.png
-       :width: 400
+       :width: 300
        :align: center
 
 |
@@ -31,7 +31,7 @@
        :width: 600
        :align: center
 
-Сохранить.
+**Сохранить**.
 
 Для скачивания архива с приложением:
 
@@ -42,7 +42,7 @@
 Для загрузки приложения на необходимом стенде:
 
  .. image:: _static/app/App_6.png
-       :width: 400
+       :width: 300
        :align: center
 
 
