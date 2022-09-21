@@ -179,6 +179,12 @@
 
         - **Create expanded SubProcess** – несколько task, выделенные в отдельную подзадачу
       * -
+               .. image:: _static/BPMN_bpmnio/89.png
+                :width: 30
+                :align: center
+
+        - **Create Set document status** – изменение значения статуса элемента бизнес-процесса
+      * -
                .. image:: _static/BPMN_bpmnio/22.png
                 :width: 30
                 :align: center
@@ -232,6 +238,12 @@
 
         - добавить текст аннотации к элементу
       * - 
+               .. image:: _static/BPMN_bpmnio/89.png
+                :width: 30
+                :align: center
+
+        - изменить значение статуса элемента бизнес-процесса
+      * - 
                .. image:: _static/BPMN_bpmnio/29.png
                 :width: 30
                 :align: center
@@ -264,11 +276,11 @@
 
         - пользовательская задача 
       * - 
-               .. image:: _static/BPMN_bpmnio/33.png
+               .. image:: _static/BPMN_bpmnio/90.png
                 :width: 80
                 :align: center
 
-        - сервисная задача
+        - задача-сценарий
       * - 
                .. image:: _static/BPMN_bpmnio/34.png
                 :width: 80
@@ -396,8 +408,8 @@
 Создание элементов
 --------------------
 
-Создание уведомления
-~~~~~~~~~~~~~~~~~~~~~~~
+Уведомление
+~~~~~~~~~~~
 
  .. image:: _static/BPMN_bpmnio/48.png
        :width: 400
@@ -443,8 +455,8 @@
 
 .. _user_task:
 
-Создание user task
-~~~~~~~~~~~~~~~~~~~
+Пользовательская задача
+~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/BPMN_bpmnio/54.png
        :width: 400
@@ -492,8 +504,8 @@
 
 .. _script_task:
 
-Создание script task
-~~~~~~~~~~~~~~~~~~~~~
+Задача-сценарий
+~~~~~~~~~~~~~~~~
 
  .. image:: _static/BPMN_bpmnio/59.png
        :width: 300
@@ -747,6 +759,32 @@
                 :align: center
 
 Создание элементов подпроцесса аналогично описанным выше.
+
+Установка статуса
+~~~~~~~~~~~~~~~~~~~~
+
+Уникальный для ECOS элемент, отмеченный как:
+
+ .. image:: _static/BPMN_bpmnio/86.png
+       :width: 200
+       :align: center
+
+Элемент позволяет производить смену статуса в создаваемом бизнес-процессе.
+
+ .. image:: _static/BPMN_bpmnio/87.png
+       :width: 200
+       :align: center
+
+.. list-table::
+      :widths: 5 5
+      :class: tight-table 
+
+      * - Указать **Имя** и выбрать **Статус** из списка статусов, заполненных в :ref:`ECOS типе данных<roles_statuses>`
+
+        - 
+               .. image:: _static/BPMN_bpmnio/88.png
+                :width: 300
+                :align: center
 
 Сохранение и публикация
 ------------------------

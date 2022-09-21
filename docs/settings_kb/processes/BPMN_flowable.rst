@@ -12,7 +12,7 @@
 1. Выбираете вкладку Процессы на верхней панели.
 2. Выбираете один из предложенных процессов или нажимаете кнопку :guilabel:`Создать процесс`: 
 
-.. image:: _static/process_flowable_1.png
+.. image:: _static/flowable/process_flowable_1.png
         :width: 600        
         :align: center
 
@@ -20,7 +20,7 @@
 
 1. В левой панели меню выбираете раздел :guilabel:`Редактор бизнес-процессов`.
 
-.. image:: _static/create_proccess_1.png
+.. image:: _static/flowable/create_proccess_1.png
         :width: 600          
         :align: center
 
@@ -28,7 +28,7 @@
 
 2. Далее нажатием на иконку :guilabel:`+` в верхнем левом углу открывшегося окна выбираете опцию **Создать процесс**.
 
-.. image:: _static/proccess_details.png
+.. image:: _static/flowable/proccess_details.png
         :width: 600         
         :align: center
 
@@ -39,13 +39,13 @@
 
 Открывается страница старта формирования модели процесса. В левой панели хранятся события, которые можно использовать при создании, основное поле - для создания модели, снизу есть кардлет с параметрами объекта модели (например, исполнитель задачи, её наименование, слушатели события и так далее):
    
-.. image:: _static/process_flowable_2.png
+.. image:: _static/flowable/process_flowable_2.png
         :width: 600          
         :align: center
 
 4. Для процесса с минимальным набором типов событий (пользовательские действия и системные проверки) достаточно того количества элементов, которое появляется при клике на событие старта на экране:
    
-.. image:: _static/process_flowable_3.png
+.. image:: _static/flowable/process_flowable_3.png
         :width: 400          
         :align: center
 
@@ -58,19 +58,19 @@
 
 5. Для того, чтобы создать связь с объектом, создавая его с помощью всплывающего меню, достаточно просто зажать новый объект кнопкой мыши и немного "протянуть" его вверх или вправо. Стрелка связи установится автоматически. В случае создания связи между двумя уже существующими объектами необходимо выбрать один из них, выбрать стрелку (выделено жёлтой стрелкой), зажать стрелку и "протянуть" (как drag&drop) до второго объекта. Чтобы визуально сменить внешний вид стрелки с 
     
-.. image:: _static/process_flowable_4.png
+.. image:: _static/flowable/process_flowable_4.png
         :width: 400          
         :align: center
 
 НА
 
-.. image:: _static/process_flowable_5.png
+.. image:: _static/flowable/process_flowable_5.png
         :width: 400          
         :align: center
 
 ИЛИ НА
 
-.. image:: _static/process_flowable_6.png
+.. image:: _static/flowable/process_flowable_6.png
         :width: 400          
         :align: center
 
@@ -78,13 +78,13 @@
 
 6. Для изображения свимлейнов необходимо использовать раздел :guilabel:`Swimlanes` левого меню. Сначала выбор **Pool** ("зажать" мышкой и вытащить на основное поле), после этого для создания следующей роли надо выбрать **Lane**, вытащить на основное поле на **Pool** и подвести к краю **Pool** (пока не появятся зелёные границы): 
  
-.. image:: _static/process_flowable_7.png
+.. image:: _static/flowable/process_flowable_7.png
         :width: 400          
         :align: center
 
 После этого в Pool появляются уже 2 лейна, а не один:
 
-.. image:: _static/process_flowable_8.png
+.. image:: _static/flowable/process_flowable_8.png
         :width: 400          
         :align: center
 
@@ -92,7 +92,7 @@
 
 7. Редактирование длины *Pool&Lane*: можно увеличивать высоту/длину как всего Pool, так и отдельных Lane. Для того, чтобы переместить на экране/"протянуть" pool целиком, необходимо "встать" на него мышкой в левом верхнем углу и проверить, что весь pool выделился прерывистой линией, после чего с помощью "уголков" (подчёркнуты красным) можно произвести необходимые действия: 
 
-.. image:: _static/process_flowable_9.png
+.. image:: _static/flowable/process_flowable_9.png
         :width: 400          
         :align: center
 
@@ -100,7 +100,7 @@
 
 8. Редактирование canvas: после того, как опция увеличения длины (см. п. 7) станет недоступна (как если бы возможность протягивать закончилась), наведите мышку на самую правую панель. На ней должны будут появиться стрелки, нажатием на которые можно увеличить размер основного окна вправо или влево (как на рисунке): 
    
-.. image:: _static/process_flowable_10.png
+.. image:: _static/flowable/process_flowable_10.png
         :width: 400          
         :align: center
 
@@ -109,7 +109,7 @@
 
 9. В случае если есть необходимость в валидации созданного процесса надо нажать значок :guilabel:`V` на верхней панели:
 
-.. image:: _static/process_flowable_11.png
+.. image:: _static/flowable/process_flowable_11.png
         :width: 400          
         :align: center
 
@@ -125,7 +125,7 @@
 
 1) При создании новых пользователей, которые будут участвовать в демонстрации процесса, надо добавить им право работать в Workflow:
 
-.. image:: _static/process_flowable_cor_1.png
+.. image:: _static/flowable/process_flowable_cor_1.png
         :width: 600          
         :align: center
 
@@ -139,7 +139,7 @@
 
 Для того чтобы к процессу привязать форму необходимо заполнить **Form key** и указать название формы.
 
-.. image:: _static/proccess_link_form1.png
+.. image:: _static/flowable/proccess_link_form1.png
         :width: 600          
         :align: center
 
@@ -147,7 +147,7 @@
 * Чтобы добавить ответственных за task необходимо заполнить **Assigments**, где можно использовать существующие системные роли
 * или указать свои роли в типе данных как показано на скриншоте ``${flwRecipients.getRoleUsers(document, 'trade-case-initiator-role')}``, где ``'trade-case-initiator-role'`` - ваша роль.
 
-.. image:: _static/proccess_link_form2.png
+.. image:: _static/flowable/proccess_link_form2.png
         :width: 400          
         :align: center
 
@@ -155,7 +155,7 @@
 
 ``${caseStatusService.setStatus(document, "trade-primary-contact")}``,  где trade-primary-contact - ваш статус.
         
-.. image:: _static/proccess_link_form3.png
+.. image:: _static/flowable/proccess_link_form3.png
         :width: 400          
         :align: center
 
