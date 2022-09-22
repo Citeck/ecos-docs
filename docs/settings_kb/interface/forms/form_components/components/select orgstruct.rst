@@ -72,6 +72,20 @@ Select orgstruct
 
 В обоих случаях в качестве значения принимается строка с названиями полей, разделёнными между собой запятыми.
 
+* глобальная настройка ``uiserv/config@orgstruct-search-user-middle-name`` для использования Отчества при поиске пользователей 
+  
+ Добавить в проект конфигурационный json-файл (``alfresco\module\{module-name}\ui\config\``) с содержимым:
+
+.. code-block::
+    
+    {
+        "id": "orgstruct-search-user-middle-name",
+        "title": "SelectOrgstruct user search with cm:middleName",
+        "value": true
+    }
+
+.. code-block::
+
 Прочее
 --------
 
