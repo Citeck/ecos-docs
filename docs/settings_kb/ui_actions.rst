@@ -376,6 +376,24 @@ id типа: ``download-card-template``
         - | **templateType** - тип шаблона
           | **format** - формат (html, pdf, pdf2, docx)
 
+download-by-template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+id типа: ``download-by-template``
+
+.. list-table::
+      :widths: 10 10
+      :header-rows: 1
+      :class: tight-table 
+
+      * - Описание
+        - Конфигурация
+      * -  
+          | Скачать документ по шаблону
+        - | **templateRef** - ссылка на шаблон
+          | **resultName** - имя файла, который будет скачан
+          | **requestParams** - дополнительные параметры, которые будут отправлены на сервер
+
 view-card-template
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
