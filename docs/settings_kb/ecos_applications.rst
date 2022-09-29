@@ -1,22 +1,28 @@
-========================
-**ECOS Приложения**
-========================
+.. _applications:
+
+ECOS Приложения
+===============
 
 Определения
-~~~~~~~~~~~
+--------------
 
 **Артефакт** - единица расширения системы. Примеры артефактов: :guilabel:`Тип`, :guilabel:`Форма`, :guilabel:`Журнал`.
 
-**Приложение ECOS** (ECOS App) - приложение, которое содержит в себе артефакты. Основная задача Приложений ECOS - переносимость артефактов между стендами и возможность версионирования. ECOS Application является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.
+**Приложение ECOS** (ECOS App) - приложение, которое содержит в себе артефакты. 
+
+Основная задача Приложений ECOS - переносимость артефактов между стендами и возможность версионирования. 
+
+ECOS Application является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.
 
 Работа с приложениями 
-~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Работа с приложениями осуществляется на странице администратора системы.
 
-http://host/v2/bpmn-designer?journalId=ecos-apps
+``http://host/v2/bpmn-designer?journalId=ecos-apps``
 
-.. image:: _static/apps_page.png
+.. image:: _static/apps/apps_page.png
+       :width: 600       
        :align: center
        :alt: ECOS apps
 
@@ -26,20 +32,35 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 2. Скачивать приложения.
 
 Перенос данных с одного стенда на другой
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 Перенос данных со стенда на стенд осуществляется через **Приложения ECOS**. Для этого необходимо:
 
-1. Создать приложение.
+1. Создать приложение по кнопке **+**.
+
+.. image:: _static/apps/new_app.png
+       :width: 600       
+       :align: center
+       :alt: Создать приложение
+
+Ввести наименование, выбрать тип данных и автоматически иди вручную добавить соответствующие артефакты.
+
 2. Скачать приложение.
+
+.. image:: _static/apps/apps_page_1.png
+       :width: 600       
+       :align: center
+       :alt: Скачать приложение
+
 3. Загрузить приложение на необходимом стенде.
 
-.. image:: _static/new_app.png
+.. image:: _static/apps/apps_page_2.png
+       :width: 600       
        :align: center
-       :alt: Создание приложения
+       :alt: Скачать приложение
 
 Структура архива приложения
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 ::
 
@@ -64,15 +85,20 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
     ...
 
 Артефакты
-~~~~~~~~~
+----------
 
 Для управления артефактами предусмотрен журнал **Артефакты ECOS**. В данный журнал попадают все артефакты, которые достигли микросервиса ``ecos-apps``. 
 
-.. image:: _static/artifacts.png
+.. image:: _static/apps/artifacts.png
+       :width: 600       
        :align: center
        :alt: Артефакты
 
 В данном журнале есть возможность выполнить следующие действия:
+
+.. image:: _static/apps/artifacts_2.png
+       :width: 200       
+       :align: center
 
 **1. Скачать историю артефакта**
 
@@ -81,7 +107,8 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 * Если последний артефакт был загружен ранее чем выбраная дата, то будет выгружен только он (т.е. всегда будет как минимум 1 артефакт).
 * Формат имени папки с версией артефакта: **дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]**. Дата создания указывается в часовом поясе UTC.
 
-.. image:: _static/artifact-history.png
+.. image:: _static/apps/artifact-history.png
+       :width: 600       
        :align: center
        :alt: Версия артефакта
 
@@ -132,3 +159,108 @@ http://host/v2/bpmn-designer?journalId=ecos-apps
 
 **ECOS_APP** - обновляется аналогично APPLICATION, но при загрузке артефакту проставляется признак принадлежности приложению. Если артефакт принадлежит приложению, то он не обновляется из APPLICATION.
 
+Создание ECOS Apps проекта
+---------------------------
+
+Для создания ECOS Apps проекта нужно создать новый maven проект и настроить главный **pom файл** следующим образом:
+
+.. code-block::
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <project xmlns="http://maven.apache.org/POM/4.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+      <modelVersion>4.0.0</modelVersion>
+
+      <groupId>ru.citeck.ecos.eapps.meetings</groupId>
+      <artifactId>ecos-meetings</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+
+      <parent>
+          <groupId>ru.citeck.ecos.eapps.project</groupId>
+          <artifactId>ecos-apps-simple-parent</artifactId>
+          <version>1.0.2</version>
+      </parent>
+
+      <repositories>
+          <repository>
+              <id>citeck-public</id>
+              <url>https://nexus.citeck.ru/repository/maven-public</url>
+          </repository>
+      </repositories>
+
+  </project>
+
+Приложения можно расположить двумя способами:
+
+``src/main/resources/app`` - для варианта когда приложение у нас одно
+
+``src/main/resources/apps/[app0,app1,…]`` - для варианта когда приложений несколько
+
+В корне приложения нужно разместить файл **meta.yml**, в котором можно указать:
+
+* **id: String** - идентификатор приложения. По умолчанию равен artifactId проекта
+* **name: MLText** - имя приложения
+
+Если файл **meta.yml** отсутствует, то он будет сгенерирован автоматически.
+
+При сборке приложений получается набор zip-архивов, каждый из которых представляет из себя отдельное приложение.
+
+Деплой
+~~~~~~~
+
+Есть два основных способа деплоя - ручной и автоматический.
+
+Ручной деплой
+""""""""""""""""""
+При ручном деплое мы можем собрать приложения командой `mvn clean package` и загрузить нужный архив из папки ``target/classes/app``s через журнал приложений, который доступен по ссылке ``/v2/admin?journalId=ecos-apps&type=JOURNAL``
+
+Автоматический деплой
+""""""""""""""""""""""
+
+Автоматический деплой осуществляется через механизм загрузки артефактов в микросервисе **ecos-apps**. Артефакты доставляются в виде docker образа.
+
+Команда для сборки docker образа: 
+
+.. code-block::
+
+  mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot 
+
+
+где **1.0.0-snapshot** - это тэг для итогового образа.
+
+После сборки образа мы подключаем его там, где развернут микросервис **ecos-apps**:
+
+.. code-block::
+
+  ecos-meetings-ecos-apps:
+    container_name: ecos-meetings-ecos-apps
+    image: nexus.citeck.ru/ecos-meetings:1.0.0-snapshot
+    environment:
+      - ECOS_APPS_TARGET_DIR=/run/ecos-apps
+    volumes:
+      - ./volumes/ecos-apps:/run/ecos-apps
+
+Параметр **ECOS_APPS_TARGET_DIR** - это папка, в которую будут скопированы все приложения, которые лежат внутри образа. Копирование происходит с помощью shell скрипта. По завершении копирования приложений ECOS образ сразу же останавливается т.к. на этом его работа заканчивается.
+
+Далее нам нужно подключить папку с артефактами (``./volumes/ecos-apps``) как volume в микросервис ecos-apps:
+
+.. code-block::
+
+  eapps-app-dev:
+    container_name: eapps-app-dev
+    image: nexus.citeck.ru/ecos-apps:2.6.0-snapshot
+    ports:
+      - 8089:8089
+    environment:
+      ...остальные_env_переменные...
+      - ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS=/run/ecos-artifacts
+    volumes:
+      - ./volumes/ecos-apps:/run/ecos-artifacts/app/ecosapp
+
+В env переменной мы передаем конфигурацию  **ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS**, которая указывает на дополнительные папки, из которых нужно загрузить артефакты (приложение ECOS тоже является артефактами с типом **app/ecosapp**).
+
+Нашу папку с архивами мы должны подключить как volume в директорию ``$ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS/app/ecosapp``
+
+При запуске микросервиса **ecos-apps** он начинает следить за директориями, которые указаны в **ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS**, и если приложения, которые там находятся изменяются, то микросервис автоматически их загружает к себе в БД и деплоит оттуда артефакты.

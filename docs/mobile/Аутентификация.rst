@@ -1,0 +1,24 @@
+Аутентификация
+===============
+
+Аутентификация
+-----------------
+
+**(src/config/auth.config.ts userAuthorizeWorker)**
+
+* выполнить запрос ``/eis.json``
+* полученные ``eisId`` и ``realmId`` передать в параметры функции ``authorize`` библиотеки react-native-app-auth
+
+Обновление токена
+-----------------
+
+**(src/config/auth.config.ts updateTokensWorker)**
+
+* вызвать функцию refresh библиотеки ``react-native-app-auth``
+
+Выход
+------
+
+**(src/config/auth.config.ts userLogoutWorker)**
+
+* выполнить запрос ``/protocol/openid-connect/logout?redirect_uri=ecos-app:/callback``, указав в параметрах ``client_id`` и ``refresh_token``
