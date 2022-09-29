@@ -29,7 +29,7 @@
 
 Пример настроенного pom файла:
 
-.. code-block::
+.. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -57,7 +57,7 @@
 
 2. Следующем шагом нужно создать главный класс для запуска spring-boot приложения по следующему пути:
 
-.. code-block::
+.. code-block:: text
 
     src/main/java/ru/citeck/ecos/webapp/sample/minimal/MinimalWebAppSample.java
 
@@ -67,7 +67,7 @@
 
 Содержимое основного класса:
 
-.. code-block::
+.. code-block:: java
 
     package ru.citeck.ecos.webapp.sample.minimal;
 
@@ -102,21 +102,29 @@
 
 3. Создать файл с настройками по пути (опционально):
 
-.. code-block::
+.. code-block:: text
 
     src/main/resources/config/application.yml
+    
+Содержимое файла:
+
+.. code-block:: yaml
+
+    ---
+    server:
+      port: 8686 # указываем порт, на котором будет развернут микросервис 
 
 В этом файле можно разместить настройки приложения.
 
 4. Добавить файл для настройки логирования:
 
-.. code-block::
+.. code-block:: text
 
     src/main/resources/logback-spring.xml
 
 со следующим содержимым:
 
-.. code-block::
+.. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE configuration>
@@ -126,7 +134,7 @@
 
 Для запуска микросервиса локально используем команду:
 
-.. code-block::
+.. code-block:: bash
 
     mvn spring-boot:run
 
@@ -136,13 +144,13 @@
 
 5. Создаем файл с настройками логирования для тестов  (опционально):
 
-.. code-block::
+.. code-block:: text
 
     src/test/resources/logback-test.xml
 
 с содержимым:
 
-.. code-block::
+.. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE configuration>
@@ -152,7 +160,7 @@
 
 6. Создаем файл с настройками для автотестов (опционально):
 
-.. code-block::
+.. code-block:: text
 
     src/main/resources/config/application-test.yml
 
@@ -160,7 +168,7 @@
 
 7. Создаем файл для тестирования микросервиса:
 
-.. code-block::
+.. code-block:: text
 
     src/test/java/ru/citeck/ecos/webapp/sample/minimal/MinimalWebAppSampleTest.java
 
@@ -172,7 +180,7 @@
 
 Содержимое файла:
 
-.. code-block::
+.. code-block:: java
 
     package ru.citeck.ecos.webapp.sample.minimal;
 
@@ -201,12 +209,12 @@
 
 Для запуска автотестов нужно выполнить следующую команду:
 
-.. code-block::
+.. code-block:: bash
 
     mvn clean test
     
 Для сборки docker образа с микросервисом выполняем следующую команду:
 
-.. code-block::
+.. code-block:: bash
   
     mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot
