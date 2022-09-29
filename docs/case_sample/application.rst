@@ -45,4 +45,4 @@
        :width: 300
        :align: center
 
-
+Подробнее см. :ref:`ECOS Приложения<applications>`

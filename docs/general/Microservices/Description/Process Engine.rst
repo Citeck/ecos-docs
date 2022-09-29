@@ -4,7 +4,7 @@ Process Engine microservice
 ============================
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 5
 
     process/process_description
     process/process_lifecycle_commands_events
