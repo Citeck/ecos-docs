@@ -9,4 +9,3 @@ Alfresco и информация о миграции
     Alfresco/Alfresco-share_migration
     Alfresco/Nodebrowser
     Alfresco/Data_types
-    Alfresco/Menu_left
