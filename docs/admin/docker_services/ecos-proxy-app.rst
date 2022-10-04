@@ -1,3 +1,5 @@
+.. _ecos_proxy_app:
+
 ecos-proxy-app
 ================
 

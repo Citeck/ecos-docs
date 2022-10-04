@@ -1,7 +1,7 @@
 .. _service_setup:
 
 Создание нового микросервиса ECOS
-===========================
+==================================
 
 Результат описанных ниже инструкций можно посмотреть здесь: `ecos-webapp-sample/minimal-sample at main · Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
 
