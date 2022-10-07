@@ -580,6 +580,14 @@ RecordRef
   var user = Citeck.Records.get('alfresco/people@admin');
   await user.load('cm:firstName')
 
+  ---
+
+  пример скрипта для смены статуса:
+
+  var doc = Citeck.Records.get('someDocumentRef');
+  doc.att('_status', 'some_status_id');
+  doc.save();
+
 CRUD операции
 ~~~~~~~~~~~~~~~
 
