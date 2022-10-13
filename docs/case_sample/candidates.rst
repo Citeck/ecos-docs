@@ -124,7 +124,6 @@ Form builder - конструктор форм, который позволяе�
        :width: 600
        :align: center
 
-.. _sample_columns_component:
 
 Columns
 *******
@@ -153,7 +152,6 @@ Columns
        :width: 600
        :align: center
 
-.. _sample_text_field_component:
 
 Text field
 **********
@@ -171,7 +169,6 @@ Text field
        :width: 600
        :align: center
 
-.. _sample_ecos_select_component:
 
 ECOS Select Component
 **********************
@@ -199,7 +196,7 @@ ECOS Select Component
        :width: 400
        :align: center
 
-.. _sample_date_time_component:
+
 
 Date / Time Component
 **********************
@@ -223,7 +220,6 @@ Date / Time Component
        :width: 400
        :align: center
 
-.. _sample_select_journal_component:
 
 Select Journal Component
 *************************
@@ -247,7 +243,6 @@ Select Journal Component
        :width: 400
        :align: center
 
-.. _sample_button_component:
 
 Button Component 
 *****************
