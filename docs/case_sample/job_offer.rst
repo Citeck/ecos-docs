@@ -187,7 +187,6 @@ Form builder - конструктор форм, который позволяе�
 
 Подробно о :ref:`формах<forms>`
 
-.. _sample_panel_component:
 
 Panel
 *******
@@ -204,7 +203,6 @@ Panel
        :width: 600
        :align: center
 
-.. _sample_select_orgstruct_component:
 
 Select Orgstruct Component
 ****************************
@@ -229,7 +227,6 @@ Select Orgstruct Component
        :width: 400
        :align: center
 
-.. _sample_async_data_component:
 
 Async Data Component 
 *********************
