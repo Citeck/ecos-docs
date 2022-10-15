@@ -1,5 +1,8 @@
+.. _form_components:
+
 Компоненты формы
 ================
+
 .. toctree::
     :maxdepth: 3
 
