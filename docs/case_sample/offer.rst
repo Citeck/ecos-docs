@@ -69,6 +69,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
         1,id,cities-type
@@ -89,6 +90,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
         cityCode,Код,Text
@@ -112,6 +114,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table    
 
         1,id,hr-offices-type
@@ -131,6 +134,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
         officesCode,Код,Text
@@ -155,6 +159,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
         1,id,orgstruct-simple-role-type
@@ -174,6 +179,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
         name,Имя,Text
@@ -198,6 +204,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
    1,id,hr-grades-type
@@ -217,6 +224,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
     gradesSimpleRoleTypeAssoc,Должность,Association По кнопке **«Настроить»** выбрать тип **«Тип должности»**
@@ -242,6 +250,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
    1,id,offer-social-package-type
@@ -261,6 +270,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
     socialPackage,Соц.пакет,Text
@@ -283,6 +293,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
         1,id,offer-responsibilities-type
@@ -302,6 +313,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
         responsibilitiesSimpleRoleTypeAssoc,Должность,Association
@@ -325,6 +337,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
         1,id,hr-candidates-type
@@ -344,6 +357,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
         candidatesCode,Код,Text
@@ -373,6 +387,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 5, 10, 20
+   :align: center
    :class: tight-table 
 
      1,id,hr-offer-type
@@ -395,6 +410,7 @@
 .. csv-table::
    :header: "id (1)", "Имя (2)", "Тип (3)"
    :widths: 15, 10, 30
+   :align: center
    :class: tight-table 
 
           registrationNumber,Регистрационный номер,Text
@@ -434,6 +450,7 @@
 .. csv-table::
    :header: "id (1)", "Название логики (2)", "Участники роли(3)", "Атрибуты(4)"
    :widths: 15, 10, 30, 30
+   :align: center
    :class: tight-table 
 
           offer-initiator-role,Инициатор,???,Инициатор
@@ -453,6 +470,7 @@
 .. csv-table::
    :header: "id (1)", "Название логики (2)"
    :widths: 15, 10
+   :align: center
    :class: tight-table 
 
           draft,Черновик
@@ -485,6 +503,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,scan-cities
@@ -495,6 +514,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      cityCode,Код,
@@ -514,6 +534,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-offices-journal
@@ -524,6 +545,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      officesCode,Код,
@@ -544,6 +566,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,orgstruct-simple-role-journal
@@ -554,6 +577,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      name,Имя,Текст
@@ -574,6 +598,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-grades-journal
@@ -584,6 +609,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      gradesSimpleRoleTypeAssoc,Должность,
@@ -607,6 +633,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-social-package-journal
@@ -628,6 +655,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-responsibilities-journal
@@ -638,6 +666,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      responsibilitiesSimpleRoleTypeAssoc,Должность,
@@ -657,6 +686,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-candidates-journal
@@ -667,6 +697,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      candidatesCode,Код,
@@ -691,6 +722,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор журнала,offer-journal
@@ -701,6 +733,7 @@
 .. csv-table::
    :header: "Id (5)", "Имя (6)", "Тип (3)"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      _created,Дата создания,Дата
@@ -740,6 +773,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,cities-form
@@ -764,6 +798,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Заголовок,:ref:`Panel Component Component<Panel>`
@@ -778,6 +813,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,offer-offices-form
@@ -802,6 +838,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,:ref:`Columns Component Component<Columns_>`
@@ -816,6 +853,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,orgstruct-simple-role-form
@@ -840,6 +878,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,Columns Component
@@ -854,6 +893,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,hr-grades-form
@@ -878,6 +918,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,Columns Component
@@ -894,6 +935,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,offer-social-package-form
@@ -918,6 +960,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,Columns Component
@@ -930,6 +973,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,offer-responsibilities-form
@@ -954,6 +998,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,Columns Component
@@ -966,6 +1011,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,offer-candidates-form
@@ -990,6 +1036,7 @@
 .. list-table::
       :widths: 5 10 20
       :header-rows: 1
+      :align: center
       :class: tight-table 
       
       * - Название поля
@@ -1028,6 +1075,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Отменить
@@ -1051,6 +1099,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      1,Идентификатор формы,offer-form
@@ -1075,6 +1124,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
      ,Колонки формы,Panel Component
@@ -1102,6 +1152,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Отменить
@@ -1134,6 +1185,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       1,Идентификатор формы,offer-form-rework
@@ -1159,6 +1211,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1178,6 +1231,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       1,Идентификатор формы,offer-form-approve
@@ -1203,6 +1257,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1214,6 +1269,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Reject
@@ -1244,6 +1300,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
         1,Идентификатор формы,offer-form-add-approve
@@ -1269,6 +1326,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1279,6 +1337,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Reject
@@ -1302,6 +1361,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       1,Идентификатор формы,offer-director-form-approve
@@ -1327,6 +1387,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1339,6 +1400,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Reject
@@ -1369,6 +1431,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       1,Идентификатор формы,offer-form-feedback
@@ -1394,6 +1457,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1404,6 +1468,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Send Reject
@@ -1426,6 +1491,7 @@
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       1,Идентификатор формы,offer-form-feedback-from-candidate
@@ -1451,6 +1517,7 @@
 .. csv-table::
    :header: "Название поля", "Имя свойства", "Наименование компонента"
    :widths: 15, 10, 10
+   :align: center
    :class: tight-table 
 
       ,Колонки формы,Panel Component
@@ -1461,6 +1528,7 @@
 
 .. list-table::
       :widths: 10 50
+      :align: center
       :class: tight-table 
 
       * - Reject Offer
@@ -1569,6 +1637,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - | Указать **Имя**, 
@@ -1642,6 +1711,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - Указать **Имя**
