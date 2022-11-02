@@ -363,8 +363,8 @@
 Кейс
 ~~~~~
 
-Создание типа данных Офферы
-"""""""""""""""""""""
+Создание типа данных Согласование оффера
+"""""""""""""""""""""""""""""""""""""""""""
 
 **Тип Офферы** является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
 
@@ -380,7 +380,7 @@
      3,Шаблон отображения имени,Оффер №${registrationNumber|fmt("000000")}
      4,Описание,Согласование оффера
      5,Родитель,Кейс
-     11,Чекбокс «Наследовать действия», Действия: удалить редактировать
+     11,Чекбокс «Наследовать действия», Действия: uiserv/action@delete-offer; uiserv/action@edit
 
 Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)
 
@@ -731,8 +731,11 @@
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
 
+Основные формы
+~~~~~~~~~~~~~~~~~
+
 Создание формы Город
-~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -756,8 +759,21 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Заголовок,:ref:`Panel Component Component<Panel>`
+     ,Колонки формы,:ref:`Table Component Component<Table>`
+     cityCode,cityCode,:ref:`Text Field Component<Text_Field>`
+     cityCode,cityCode,Text Field Component
+
+
 Создание формы Офисы
-~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -781,8 +797,21 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,:ref:`Columns Component Component<Columns_>`
+     Код,officesCode,Text Field Component
+     Город,officesCity,Text Field Component
+     Адрес,officesAddress,Text Field Component
+
+
 Создание формы Тип должности
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -806,8 +835,21 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,Columns Component
+     Имя,name,Text Field Component
+     Заголовок,title,Text Field Component
+     title,roleIsManager,:ref:`Checkbox Component<Checkbox>`
+
+
 Создание формы Грейды
-~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -831,8 +873,23 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,Columns Component
+     Должность,gradesSimpleRoleTypeAssoc,:ref:`Select Journal Component<Select_Journal_>`
+     Номер,gradesNumber,Text Field Component
+     Требования к сотруднику,gradesRequirements,Text Field Component
+     Обязанности,gradesResponsibilities,Text Field Component
+     Вилка оклада,gradesSalary,Text Field Component
+     Премия,gradesPrize,Text Field Component
+
 Создание формы Социальный пакет
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -856,8 +913,19 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,Columns Component
+     Название,socialPackage,Text Field Component
+
+
 Создание формы Должностные обязанности
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -881,8 +949,19 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,Columns Component
+     Должность,gradesSimpleRoleTypeAssoc,Select Journal Component
+     Подчинение,responsibilitiesSubordination,Text Field Component
+
 Создание формы Кандидаты
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -906,8 +985,68 @@
        :width: 600
        :align: center
 
-Создание формы Офферы
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Компоненты формы:
+
+.. list-table::
+      :widths: 5 10 20
+      :header-rows: 1
+      :class: tight-table 
+      
+      * - Название поля
+        - Имя свойства
+        - Наименование компонента
+      * - |
+        - Колонки формы
+        - Columns Component
+      * - Код
+        - candidatesCode
+        - Text Field Component
+      * - Фамилия
+        - candidatesLastName
+        - Text Field Component
+      * - Имя
+        - candidatesFirstName
+        - Text Field Component
+      * - Отчество
+        - candidatesMiddleName
+        - Text Field Component
+      * - Дата рождения
+        - candidatesBirthDate
+        - :ref:`Date / Time Component<Date_Time>`
+      * - Пол
+        - candidatesGender
+        - :ref:`ECOS Select Component<Ecos_Select_>` 
+
+               .. image:: _static/offer/form_17.png
+                    :width: 300
+                    :align: center
+      * - Город
+        - candidatesCityAssoc
+        - Select Journal Component
+
+Кнопки для форм, созданных выше:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Отменить
+        - |
+
+               .. image:: _static/offer/form_18.png
+                    :width: 400
+                    :align: center
+
+      * - Сохранить
+        - |
+
+               .. image:: _static/offer/form_19.png
+                    :width: 400
+                    :align: center
+
+
+Создание формы Согласование оффера
+""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -931,10 +1070,424 @@
        :width: 600
        :align: center
 
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+     ,Колонки формы,Panel Component
+     Регистрационный номер,registrationNumber,Text Field Component
+     Присвоить номер,generateNumber,Checkbox Component
+     Дата создания,_created,Date / Time Component
+     Комментарий по результатам,offerTaskComment,:ref:`Text Area Component<Text_Area>`
+     initiator,initiator,Select Orgstruct Component
+     Кандидат,offerCandidate,Select Journal Component
+     Должность,offerPosition,Select Journal Component
+     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<Select_Orgstruct_>`
+     Грейд,offerGrade,Select Journal Component
+     Руководитель,offerChief,Select Orgstruct Component
+     Офис,offerOffice,Select Journal Component
+     Доп.согласующий,offerAdditionalChief,Select Orgstruct Component
+     Комментарий,offerComment,Text Area Component
+     Зарплатная вилка и премия,offerSalaryForkAndPrize,Text Field Component
+     Подчинение,offerSubordinationAtr,Text Field Component
+     Фидбэк по собеседованиям,offerFeedback,Text Area Component
+     Оклад,offerSalary,:ref:`Number Component<Number>`
+     Премия,offerPrize,Text Field Component
+     График работы,offerSchedule,Text Field Component
+     Дата выхода на работу,offerDateWork,Date / Time Component
+     Файлы,content,:ref:`File Component<File_>`
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Отменить
+        - |
+
+               .. image:: _static/offer/form_20.png
+                    :width: 400
+                    :align: center
+
+      * - Создать
+        - |
+
+               .. image:: _static/offer/form_21.png
+                    :width: 400
+                    :align: center
+
+      * - Сохранить (как черновик)
+        - |
+
+               .. image:: _static/offer/form_22.png
+                    :width: 400
+                    :align: center
+
+Формы, используемые при принятии решений
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Создание формы Доработка
+"""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      1,Идентификатор формы,offer-form-rework
+      2,Название формы,Offer Form Rework
+      3,Ключ формы,offer_form_rework
+      4,Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_23.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_24.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий Директора,dirApproveComment,Text Area Component
+      Комментарий,reworkComment,Text Area Component
+
+Кнопка Done:
+
+  .. image:: _static/offer/form_25.png
+       :width: 400
+       :align: center
+
+Создание формы Согласование руководителем
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      1,Идентификатор формы,offer-form-approve
+      2,Название формы,Offer Form Approve
+      3,Ключ формы,hr_offer_form_approve
+      4,Редактируемый тип данных,Согласование оффера
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_26.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_27.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий доп. согласующего,addApproveComment,Text Area Component
+      Комментарий после доработки,reworkComment,Text Area Component
+      Комментарий,chiefApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_28.png
+                    :width: 400
+                    :align: center
+
+      * - Rework
+        - |
+
+               .. image:: _static/offer/form_29.png
+                    :width: 400
+                    :align: center
+
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_30.png
+                    :width: 600
+                    :align: center
+
+
+Создание формы Согласование доп. согласующих
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+        1,Идентификатор формы,offer-form-add-approve
+        2,Название формы,Offer Form Add Approve
+        3,Ключ формы,offer_form_add_approve
+        4,Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_31.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_32.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий,addApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_33.png
+                    :width: 400
+                    :align: center
+
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_34.png
+                    :width: 400
+                    :align: center
+
+
+Создание формы Согласование директором
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      1,Идентификатор формы,offer-director-form-approve
+      2,Название формы,Offer Director Form Approve
+      3,Ключ формы,offer_director_form_approve
+      4,Редактируемый тип данных,Согласование оффера
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_35.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_35.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий доп. согласующего,addApproveComment,Text Area Component
+      Комментарий после доработки,reworkComment,Text Area Component
+      Комментарий,addApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_36.png
+                    :width: 400
+                    :align: center
+
+      * - Rework
+        - |
+
+               .. image:: _static/offer/form_37.png
+                    :width: 400
+                    :align: center
+      
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_38.png
+                    :width: 400
+                    :align: center
+
+
+Создание формы Формирование ответа кандидату
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      1,Идентификатор формы,offer-form-feedback
+      2,Название формы,Offer Form Feedback
+      3,Ключ формы,offer_form_feedback
+      4,Редактируемый тип данных,нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_40.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_41.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий директора,dirApproveComment,Text Area Component
+      Comment,offerTaskComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Send Reject
+        - |
+
+               .. image:: _static/offer/form_42.png
+                    :width: 400
+                    :align: center
+
+      * - Send Offer
+        - |
+
+               .. image:: _static/offer/form_43.png
+                    :width: 400
+                    :align: center
+
+Создание формы Ожидание ответа кандидата
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      1,Идентификатор формы,offer-form-feedback-from-candidate
+      2,Название формы,Offer Form Feedback From Candidate
+      3,Ключ формы,offer_form_feedback_from_candidate
+      4,Редактируемый тип данных,нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_44.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_45.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :class: tight-table 
+
+      ,Колонки формы,Panel Component
+      Комментарий,offerTaskComment,Text Area Component
+      Комментарий по результатам,_ECM_offerTaskComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :class: tight-table 
+
+      * - Reject Offer
+        - |
+
+               .. image:: _static/offer/form_46.png
+                    :width: 400
+                    :align: center
+
+      * - Accept Offer
+        - |
+
+               .. image:: _static/offer/form_47.png
+                    :width: 400
+                    :align: center      
+
+
 Создание бизнес-процесса
 -------------------------
 
-С использованием созданных ранее типов данных, форм настраиваем бизнес-процесс согласования оффера. Подробно о:
+С использованием созданных ранее типов данных, форм настраиваем бизнес-процесс согласования оффера:
+
+  .. image:: _static/offer/diagram_00.jpg
+       :width: 600
+       :align: center
+
+Подробно о:
 
      - :ref:`создание бизнес-процесса<new_bp>`, 
      - :ref:`конструктор бизнес-процесса<modeller_bp>`, 
@@ -1008,8 +1561,8 @@
                 :width: 300
                 :align: center   
 
-Создание script task
-"""""""""""""""""""""
+Создание задачи-сценария
+"""""""""""""""""""""""""
 
  .. image:: _static/offer/bmpn17.png
        :width: 600
@@ -1036,8 +1589,8 @@
 
 :ref:`Подробно о скриптах<script_task>`
 
-Создание user task
-"""""""""""""""""""""
+Создание пользовательской задачи
+"""""""""""""""""""""""""""""""""
 
  .. image:: _static/offer/bmpn20.png
        :width: 600

@@ -8,6 +8,8 @@
 Основные компоненты
 --------------------
 
+.. _Text_Field:
+
 Text Field
 ~~~~~~~~~~~~~~~
 
@@ -20,6 +22,8 @@ Text Field
 `См. подробное описание Text Field на Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_ 
 
 :ref:`См. пример Text Field<sample_text_field_component>` 
+
+.. _Select_Journal_:
 
 Select Journal
 ~~~~~~~~~~~~~~~
@@ -34,6 +38,8 @@ Select Journal
 
 :ref:`См. пример Select Journal<sample_select_journal_component>` 
 
+.. _Select_Orgstruct_:
+
 Select Orgstruct
 ~~~~~~~~~~~~~~~~~~
 
@@ -47,12 +53,16 @@ Select Orgstruct
 
 :ref:`См. пример Select Orgstruct<sample_select_orgstruct_component>` 
 
+.. _Number:
+
 Number
 ~~~~~~~~~~~~~~~
 
 Числовое поле. Может принимать в себя как целочисленные значения, так и с плавающей точкой. Это регулируется внутри компонента.
 
 `См. подробное описание Number на Form.io <https://help.form.io/userguide/forms/form-components#number>`_ 
+
+.. _Date_Time:
 
 Date/Time
 ~~~~~~~~~~~~~~~
@@ -67,6 +77,8 @@ Date/Time
 
 :ref:`См. пример Date/Time<sample_date_time_component>` 
 
+.. _Text_Area:
+
 Text Area
 ~~~~~~~~~~~~~~~
 
@@ -77,6 +89,8 @@ Text Area
        :align: center
 
 `См. подробное описание Text Area на Form.io <https://help.form.io/userguide/forms/form-components#text-area>`_ 
+
+.. _Checkbox:
 
 Checkbox
 ~~~~~~~~~~~~~~~
@@ -89,6 +103,7 @@ Checkbox
 
 `См. подробное описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_  
 
+.. _Day:
 
 Day
 ~~~~~~~~~~~~~~~
@@ -97,6 +112,7 @@ Day
 
 `См. подробное описание Day на Form.io <https://help.form.io/userguide/forms/form-components#day>`_  
 
+.. _Ecos_Select_:
 
 Ecos Select
 ~~~~~~~~~~~~~~~
@@ -110,6 +126,8 @@ Ecos Select
 :ref:`См. подробное описание Ecos Select<ecos_select>`  
 
 :ref:`См. пример Ecos Select<sample_ecos_select_component>`
+
+.. _Button:
 
 Button
 ~~~~~~~~~~~~~~~
@@ -228,6 +246,8 @@ HTML Element
 
 `См. подробное описание HTML Element на Form.io <https://help.form.io/userguide/forms/layout-components#html-element>`_
 
+.. _File_:
+
 File
 ~~~~~~~~~~~~~~~
 
@@ -260,9 +280,10 @@ Horizontal Line
 
 :ref:`См. подробное описание Horizontal Line<horizontal_line>` 
 
+.. _Columns_:
 
 Columns
-~~~~~~~~~~~~~~~
+~~~~~~~~
 
 Компонент, отвечающий за разделение формы на столбцы. Основан на стандартном formio-компоненте Columns, был модифицирован.
 
@@ -288,6 +309,8 @@ Columns
 
 :ref:`См. пример Columns<sample_columns_component>` 
 
+.. _Panel:
+
 Panel
 ~~~~~~~~~~~~~~~
 
@@ -300,6 +323,8 @@ Panel
 `См. подробное описание Panel на Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_ 
 
 :ref:`См. пример Panel<sample_panel_component>` 
+
+.. _Table:
 
 Table
 ~~~~~~~~~~~~~~~
