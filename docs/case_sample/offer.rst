@@ -1493,6 +1493,50 @@
      - :ref:`конструктор бизнес-процесса<modeller_bp>`, 
      - :ref:`компоненты конструктора<form_builder>`, 
 
+Используемые компоненты:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_1.png
+                    :width: 50
+                    :align: center
+        - Начальное событие
+  
+      * - 
+               .. image:: _static/offer/bpform/bpform_2.png
+                    :width: 50
+                    :align: center
+        - :ref:`Шлюз<gateway>`
+      * - 
+               .. image:: _static/offer/bpform/bpform_3.png
+                    :width: 50
+                    :align: center
+        - :ref:`Пользовательская задача<user_task>`
+      * - 
+               .. image:: _static/offer/bpform/bpform_4.png
+                    :width: 50
+                    :align: center
+        - :ref:`Уведомление<notification>`
+      * - 
+               .. image:: _static/offer/bpform/bpform_5.png
+                    :width: 50
+                    :align: center
+        - :ref:`Смена статуса<set_status>`
+      * - 
+               .. image:: _static/offer/bpform/bpform_6.png
+                    :width: 50
+                    :align: center
+        - :ref:`Задача сценарий<script_task>`
+      * - 
+               .. image:: _static/offer/bpform/bpform_7.png
+                    :width: 50
+                    :align: center
+        - Завершающее событие
+
 Создание элементов
 ~~~~~~~~~~~~~~~~~~
 
@@ -1642,6 +1686,446 @@
        :align: center
 
 :ref:`Подробно о формах для бизнес-процессов<user_task>`
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+ .. image:: _static/offer/bpform/bpform_8.png
+       :width: 600
+       :align: center
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_9.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_10.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_11.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_12.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_13.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_14.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_15.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_16.png
+                    :width: 400
+                    :align: center
+
+      * -
+               .. image:: _static/offer/bpform/bpform_17.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_18.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_19.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_20.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_21.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_22.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_23.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_24.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_25.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_26.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_27.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_28.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_29.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_30.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_31.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_32.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_33.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_34.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_35.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_36.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_37.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_38.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_39.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_40.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_41.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_42.png
+                    :width: 400
+                    :align: center
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_43.png
+                    :width: 50
+                    :align: center
+
+        - 
+               .. image:: _static/offer/bpform/bpform_44.png
+                    :width: 400
+                    :align: center
+
+.. image:: _static/offer/bpform/bpform_45.png
+       :width: 600
+       :align: center
+
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_46.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_47.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_48.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_49.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_50.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_51.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_52.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_53.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_54.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_55.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_56.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_57.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_58.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_59.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_60.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_61.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_62.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_63.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_64.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_65.png
+                    :width: 400
+                    :align: center
+
+
+.. image:: _static/offer/bpform/bpform_66.png
+       :width: 600
+       :align: center
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_67.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_68.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_69.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_70.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_71.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_72.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_73.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_74.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_75.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_76.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_77.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_78.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_79.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_80.png
+                    :width: 400
+                    :align: center
+
+.. image:: _static/offer/bpform/bpform_81.png
+       :width: 600
+       :align: center
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - 
+               .. image:: _static/offer/bpform/bpform_82.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_83.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_84.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_85.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_86.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_87.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_88.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_89.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_90.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_91.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_92.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_93.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_94.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_95.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_96.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_97.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_98.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_99.png
+                    :width: 400
+                    :align: center
+      * - 
+               .. image:: _static/offer/bpform/bpform_100.png
+                    :width: 50
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_101.png
+                    :width: 400
+                    :align: center
+
 
 Сохранение и публикация
 ~~~~~~~~~~~~~~~~~~~~~~~~
