@@ -13,17 +13,18 @@
 
 .. list-table:: 
       :widths: 40
+      :align: center
 
       * - |
 
              .. image:: _static/formatter/formatter_1.png
-                 :width: 400   
+                 :width: 500   
                  :align: center
 
           | 
 
              .. image:: _static/formatter/formatter_2.png
-                  :width: 400 
+                  :width: 500 
                   :align: center  
 
 
