@@ -1581,7 +1581,7 @@
                .. image:: _static/offer/bpform/bpform_2.png
                     :width: 50
                     :align: center
-        - :ref:`Шлюз и выходы<gateway>`
+        - :ref:`Шлюз<gateway>` и :ref:`поток управления<sequential flow>`
       * - 
                .. image:: _static/offer/bpform/bpform_3.png
                     :width: 50
@@ -1611,7 +1611,7 @@
 Создание элементов
 ~~~~~~~~~~~~~~~~~~
 
-Создание Начальнго события
+Создание начального события
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Начальное событие задается по умолчанию элементом:
@@ -1630,6 +1630,53 @@
        :align: center
 
 Для шлюза укажите **Имя**.
+
+Создание потока данных
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Поток управления используется для связи элементов потока BPMN (событий, процессов, шлюзов).
+
+Поток управления отображает ход выполнения процесса. 
+
+ .. image:: _static/offer/bmpn10а.png
+       :width: 300
+       :align: center
+
+Далее ведите стрелку к необходимому элементу. Для потока можно указать тип условия. 
+
+Для шлюза, созданного выше:
+
+Поток «Нет»:
+
+               .. image:: _static/offer/bpflow/bpflow_1.png
+                    :width: 400
+                    :align: center
+          
+Текст скипта:
+          
+               .. code-block::
+
+                    var offerChief = document.load('_roles.assigneesOf.offer-chief-role');
+                    var director = document.load('_roles.assigneesOf.offer-director-role');
+
+                    value= offerChief!=director;
+
+Поток «Да»:
+
+               .. image:: _static/offer/bpflow/bpflow_2.png
+                    :width: 400
+                    :align: center
+          
+Текст скипта:
+          
+               .. code-block::
+
+                    var offerChief = document.load('_roles.assigneesOf.offer-chief-role');
+                    var director = document.load('_roles.assigneesOf.offer-director-role');
+
+
+                    value = offerChief==director;
+
 
 Создание уведомления
 ~~~~~~~~~~~~~~~~~~~~
@@ -1760,7 +1807,7 @@
 
 :ref:`Подробно о формах для бизнес-процессов<user_task>`
 
-Ниже приведено изображение конечной настройки (для визуальной сверки):
+Ниже приведено изображение конечной настройки бизнес-процесса (для визуальной сверки):
 
  .. image:: _static/offer/bpform/bpform_8.png
        :width: 600
