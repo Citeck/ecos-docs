@@ -419,15 +419,15 @@
           initiator,Инициатор,Person
           offerCandidate,Кандиат,Person
           offerPosition,Должность,Association По кнопке «Настроить»:
-          offerSubdivision,Подразделение,Authority?
+          offerSubdivision,Подразделение,Authority
           offerGrade,Грейд,Association По кнопке «Настроить» выбрать тип «Грейды»:
           offerOffice,Офис,Association По кнопке «Настроить» выбрать тип «Офисы»:
           offerComment,Комментарий,Text
-          offerChief,Руководитель,Association?
-          offerAdditionalChief,Доп. согласующий,Association?
+          offerChief,Руководитель,Association
+          offerAdditionalChief,Доп. согласующий,Association
           offerFeedback,Фидбэк по собеседованиям,Text
           offerSalaryAndPrize,Зарплатная вилка и премия,Text
-          offerSubordination,Подчинение,Association?
+          offerSubordination,Подчинение,Association
           offerSalary,Оклад,Number
           offerPrize,Премия,Text
           offerSchedule,График работы,Text
@@ -453,11 +453,11 @@
    :align: center
    :class: tight-table 
 
-          offer-initiator-role,Инициатор,???,Инициатор
-          offer-chief-role,Руководитель,???,Руководитель
-          offer-additional-chief-role,Доп. согласующий,???,
-          offer-director-role,Директор, Нет наименования?,
-          offer-technologist-role,Технолог, Нет наименования?,
+          offer-initiator-role,Инициатор,Нет,Инициатор
+          offer-chief-role,Руководитель,Нет,Руководитель
+          offer-additional-chief-role,Доп. согласующий,Нет, Доп. согласующий
+          offer-director-role,Директор, Нет, Директор
+          offer-technologist-role,Технолог, Нет,
 
 Ниже приведено изображение конечной настройки типа (для визуальной сверки):
 
@@ -738,11 +738,11 @@
 
      _created,Дата создания,Дата
      registrationNumber,Регистрационный номер,Текст
-     offerCandidate,Кандидат,Ассоциация?
-     offerPosition,Должность,Ассоциация?
-     offerSubdivision,Подразделение,Ассоциация?
-     offerGrade,Грейд,Ассоциация?
-     initiator,Инициатор,Группа или человек?
+     offerCandidate,Кандидат,Ассоциация
+     offerPosition,Должность,Ассоциация
+     offerSubdivision,Подразделение,Ассоциация
+     offerGrade,Грейд,Ассоциация
+     initiator,Инициатор,Группа или человек
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -763,6 +763,7 @@
      - :ref:`редакторе форм<form_builder>`, 
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
+
 
 Основные формы
 ~~~~~~~~~~~~~~~~~
@@ -786,6 +787,8 @@
   .. image:: _static/offer/form_1.png
        :width: 600
        :align: center
+
+Нажать кнопку **«Редактировать форму»**. Чтобы добавить компонент в форму, перетащите компонент из левого столбца в нужное место в форме:
 
 Пример формы:
 
