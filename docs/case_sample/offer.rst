@@ -29,13 +29,13 @@
 
 Последующие разделы будут содержать процесс пошагового создания приложения в соответствии с приведенными выше рекомендациями -  сначала будут созданы справочные типы:
 
-    - Города,
+    - Город,
 
-    - Офисы,
+    - Офис,
 
-    - Тип должности
+    - Тип должности;
 
-    - Грейды,
+    - Грейд,
 
     - Социальный пакет,
 
@@ -56,7 +56,7 @@
 Создание справочника Город
 """"""""""""""""""""""""""""
 
-**Тип Города** не зависит от других типов. Содержит информацию о городах.
+**Тип Город** не зависит от других типов. Содержит информацию о городах.
 
 Является справочником (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
 
@@ -227,7 +227,7 @@
    :align: center
    :class: tight-table 
 
-    gradesSimpleRoleTypeAssoc,Должность,Association По кнопке **«Настроить»** выбрать тип **«Тип должности»**
+    gradesSimpleRoleTypeAssoc,Должность,Association По кнопке «Настроить» выбрать тип «Тип должности»
     gradesNumber,Номер,Text
     gradesRequirements,Требования к сотруднику,Text
     gradesResponsibilities,Обязанности,Text
@@ -380,7 +380,7 @@
 Создание типа данных Согласование оффера
 """""""""""""""""""""""""""""""""""""""""""
 
-**Тип Офферы** является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
+**Тип Согласование оффера** является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
 
 Таблица заполнения для вкладки **Основные**
 
@@ -395,7 +395,7 @@
      3,Шаблон отображения имени,Оффер №${registrationNumber|fmt("000000")}
      4,Описание,Согласование оффера
      5,Родитель,Кейс
-     11,Чекбокс «Наследовать действия», Действия: Редактировать "uiserv/action@edit"; Удалить "uiserv/action@delete" 
+     11,Чекбокс «Наследовать действия», Действия: Редактировать "uiserv/action@edit"; Удалить "uiserv/action@delete"
 
 Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)
 
@@ -417,8 +417,8 @@
           offerIssueDate,Дата создания,Date
           regNumberCounter,Счетчик регномера,Text
           initiator,Инициатор,Person
-          offerCandidate,Кандиат,Person
-          offerPosition,Должность,Association По кнопке «Настроить»:
+          offerCandidate,Кандидат,Person
+          offerPosition,Должность,Association По кнопке «Настроить» выбрать тип «Тип должности»
           offerSubdivision,Подразделение,Authority
           offerGrade,Грейд,Association По кнопке «Настроить» выбрать тип «Грейды»:
           offerOffice,Офис,Association По кнопке «Настроить» выбрать тип «Офисы»:
@@ -517,8 +517,8 @@
    :align: center
    :class: tight-table 
 
-     cityCode,Код,
-     cityName,Название,
+     cityCode,Код,Текст
+     cityName,Название,Текст
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -548,9 +548,9 @@
    :align: center
    :class: tight-table 
 
-     officesCode,Код,
-     officesCity,Город,
-     officesAddress,Адрес,
+     officesCode,Код,Текст
+     officesCity,Город,Текст
+     officesAddress,Адрес,Текст
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -612,12 +612,12 @@
    :align: center
    :class: tight-table 
 
-     gradesSimpleRoleTypeAssoc,Должность,
-     gradesNumber,Номер,
-     gradesRequirements,Требования к сотруднику,
-     gradesResponsibilities,Обязанности,
-     gradesSalary,Вилка окладов,
-     gradesPrize,Премия,
+     gradesSimpleRoleTypeAssoc,Должность,Текст
+     gradesNumber,Номер,Текст
+     gradesRequirements,Требования к сотруднику,Текст
+     gradesResponsibilities,Обязанности,Текст
+     gradesSalary,Вилка окладов,Текст
+     gradesPrize,Премия,Текст
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -640,6 +640,14 @@
      2,Название журнала,Социальный пакет
      3,Действия,Удалить Редактировать
      4,Тип данных,Социальный пакет
+
+.. csv-table::
+   :header: "Id (5)", "Имя (6)", "Тип (3)"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+     socialPackage,Соц.пакет,Текст
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -669,8 +677,8 @@
    :align: center
    :class: tight-table 
 
-     responsibilitiesSimpleRoleTypeAssoc,Должность,
-     responsibilitiesSubordination,Подчинение,
+     responsibilitiesSimpleRoleTypeAssoc,Должность,Текст
+     responsibilitiesSubordination,Подчинение,Текст
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -700,12 +708,12 @@
    :align: center
    :class: tight-table 
 
-     candidatesCode,Код,
-     candidatesLastName,Фамилия,
-     candidatesFirstName,Имя,
-     candidatesMiddleName,Отчество,
+     candidatesCode,Код,Текст
+     candidatesLastName,Фамилия,Текст
+     candidatesFirstName,Имя,Текст
+     candidatesMiddleName,Отчество,Текст
      candidatesBirthDate,Дата рождения,Дата
-     candidatesGender,Пол,
+     candidatesGender,Пол,Текст
      candidatesCityAssoc,Город,Ассоциация
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
@@ -746,11 +754,7 @@
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
-  .. image:: _static/offer/journal_8_1.png
-       :width: 600
-       :align: center
-
-  .. image:: _static/offer/journal_8_2.png
+  .. image:: _static/offer/journal_8.png
        :width: 600
        :align: center
 
@@ -810,8 +814,8 @@
      cityName,cityCode,Text Field Component
 
 
-Создание формы Офисы
-""""""""""""""""""""""""
+Создание формы Офис
+""""""""""""""""""""
 
 .. csv-table::
    :header: "Номер маркера", "Название поля", "Значение"
@@ -890,7 +894,7 @@
      title,roleIsManager,:ref:`Checkbox Component<Checkbox>`
 
 
-Создание формы Грейды
+Создание формы Грейд
 """""""""""""""""""""""
 
 .. csv-table::
@@ -1293,7 +1297,7 @@
         - |
 
                .. image:: _static/offer/form_30.png
-                    :width: 600
+                    :width: 400
                     :align: center
 
 
@@ -1380,7 +1384,7 @@
 
 Пример формы:
 
-  .. image:: _static/offer/form_35.png
+  .. image:: _static/offer/form_36.png
        :width: 600
        :align: center
 
@@ -1409,21 +1413,21 @@
       * - Reject
         - |
 
-               .. image:: _static/offer/form_36.png
+               .. image:: _static/offer/form_37.png
                     :width: 400
                     :align: center
 
       * - Rework
         - |
 
-               .. image:: _static/offer/form_37.png
+               .. image:: _static/offer/form_38.png
                     :width: 400
                     :align: center
       
       * - Submit
         - |
 
-               .. image:: _static/offer/form_38.png
+               .. image:: _static/offer/form_39.png
                     :width: 400
                     :align: center
 
@@ -2508,13 +2512,14 @@
 -----------------
 
 Для добавления процесса в меню **«Создать»**:
+
 1.	Перейти в настройку меню, нажав на шестеренку, потом кнопку **«Настроить меню» справа сверху**.
 
  .. image:: _static/offer/bmpn28.png
        :width: 600
        :align: center
 
-2.	Выбрать элемент меню, в котором будет находиться процесс. Навести на элемент и нажать кнопку **«Добавить»**, выбрать **«Запустить бизнес-процесс»**, из списка выбрать необходимый процесс, нажать **«Ok»**.
+2.	Выбрать элемент меню, в котором будет находиться процесс. Навести на элемент и нажать кнопку **«Добавить»**, выбрать **«Добавить ссылку на создание кейса»**:
 
  .. image:: _static/offer/bmpn29.png
        :width: 400
@@ -2526,25 +2531,25 @@
        :width: 400
        :align: center
 
-Выберите процесс:
+3. Выбрать тип данных:
 
  .. image:: _static/offer/bmpn31.png
        :width: 600
        :align: center
 
-**Название** будет указано по умолчанию из бизнес-процесса, и может быть изменено:
+**Название** будет указано по умолчанию из типа данных, и может быть изменено. Нажать **"Сохранить"**
 
  .. image:: _static/offer/bmpn32.png
        :width: 400
        :align: center
 
-Добавленный пункт меню:
+4. Добавленный пункт меню:
 
  .. image:: _static/offer/bmpn33.png
        :width: 250
        :align: center
 
-Запуск задачи
+Запуск кейса
 --------------
 
  .. image:: _static/offer/bmpn34.png
