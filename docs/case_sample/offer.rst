@@ -486,7 +486,7 @@
 
 Ниже приведено изображение конечной настройки типа (для визуальной сверки):
 
-  .. image:: _static/offer/type_17.png
+  .. image:: _static/offer/type_18.png
        :width: 600
        :align: center
 
@@ -1607,11 +1607,51 @@
 
 Подробно о:
 
-     - :ref:`создание бизнес-процесса<new_bp>`, 
      - :ref:`конструктор бизнес-процесса<modeller_bp>`, 
+     - :ref:`создание бизнес-процесса<new_bp>`, 
      - :ref:`компоненты конструктора<form_builder>`, 
 
-Используемые компоненты:
+Заполнение формы создания бизнес-процесса:
+
+  .. image:: _static/offer/process_form.png
+       :width: 600
+       :align: center
+
+где 
+
+.. list-table:: 
+      :widths: 10 20 30
+      :header-rows: 1
+      :align: center
+      :class: tight-table 
+
+      * - Номер маркера
+        - Название поля
+        - Значение
+      * - 1
+        - **Идентификатор**
+        - hr-offer-process
+      * - 2
+        - **Имя**
+        - hr-offer-process
+      * - 3
+        - **Ecos Type**
+        - выбрать созданный ранее тип данных **"Согласование оффера (hr-offer-type)"** 
+      * - 4
+        - **Раздел**
+        -  не заполнять, сохранение произойдет автоматически в раздел "По умолчанию".
+      * - 5
+        - **Форма**
+        - не указывать
+      * - 6
+        - **Включен**
+        - флаг выставлен
+      * - 7
+        - **Автоматический старт процесса**
+        - флаг выставлен
+
+
+Используемые в процессе компоненты:
 
 .. list-table::
       :widths: 10 50
@@ -1770,6 +1810,36 @@
                .. image:: _static/offer/bmpn16.png
                 :width: 300
                 :align: center   
+
+Создание смены статуса
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. image:: _static/offer/bmpn35.png
+       :width: 600
+       :align: center
+
+.. list-table::
+      :widths: 5 5
+      :align: center
+      :class: tight-table 
+
+      * - Указать **Имя**
+
+        - 
+               .. image:: _static/offer/bmpn36.png
+                :width: 300
+                :align: center
+
+      * - Выбрать **статус**
+
+        - 
+               .. image:: _static/offer/bmpn37.png
+                :width: 300
+                :align: center
+
+:ref:`Подробно об установке статуса<set_status>`
+
+
 
 Создание задачи-сценария
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2066,14 +2136,14 @@
 
                .. code-block::
 
-                    `var offerAdditionalChief = document.load('offerAdditionalChief'); 
+                    var offerAdditionalChief = document.load('offerAdditionalChief'); 
 
 
                     if(offerAdditionalChief) { 
                     execution.setVariable('additional', true); 
                     } else { 
                     execution.setVariable('additional', false); 
-                    }`
+                    }
 
       * - 
                .. image:: _static/offer/bpform/bpform_103.png
