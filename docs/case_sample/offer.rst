@@ -1757,7 +1757,7 @@
 ~~~~~~~~~~~~~~~~~~
 
 Создание начального события
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Начальное событие задается по умолчанию элементом:
 
@@ -1768,7 +1768,7 @@
 **ID элемента** Система указывает автоматически для всех создаваемых элементов.
 
 Создание шлюза
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/bmpn10.png
        :width: 600
@@ -1777,7 +1777,7 @@
 Для шлюза укажите **Имя**.
 
 Создание потока данных
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Поток управления используется для связи элементов потока BPMN (событий, процессов, шлюзов).
 
@@ -1791,7 +1791,7 @@
 
 Для шлюза, созданного выше:
 
-Поток «Нет»:
+**Поток «Нет»**:
 
                .. image:: _static/offer/bpflow/bpflow_1.png
                     :width: 400
@@ -1806,7 +1806,7 @@
 
                     value= offerChief!=director;
 
-Поток «Да»:
+**Поток «Да»**:
 
                .. image:: _static/offer/bpflow/bpflow_2.png
                     :width: 400
@@ -1822,11 +1822,50 @@
 
                     value = offerChief==director;
 
+Создание смены статуса
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. image:: _static/offer/bmpn35.png
+       :width: 600
+       :align: center
+
+|
+
+ .. image:: _static/offer/bmpn35_1.png
+       :width: 600
+       :align: center
+
+.. list-table::
+      :widths: 5 5
+      :align: center
+      :class: tight-table 
+
+      * - Указать **Имя**
+
+        - 
+               .. image:: _static/offer/bmpn36.png
+                :width: 300
+                :align: center
+
+      * - Выбрать **статус**
+
+        - 
+               .. image:: _static/offer/bmpn37.png
+                :width: 300
+                :align: center
+
+:ref:`Подробно об установке статуса<set_status>`
 
 Создание уведомления
 ~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/bmpn11.png
+       :width: 600
+       :align: center
+
+|
+
+ .. image:: _static/offer/bmpn11_1.png
        :width: 600
        :align: center
 
@@ -1869,39 +1908,17 @@
                 :width: 300
                 :align: center   
 
-Создание смены статуса
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. image:: _static/offer/bmpn35.png
-       :width: 600
-       :align: center
-
-.. list-table::
-      :widths: 5 5
-      :align: center
-      :class: tight-table 
-
-      * - Указать **Имя**
-
-        - 
-               .. image:: _static/offer/bmpn36.png
-                :width: 300
-                :align: center
-
-      * - Выбрать **статус**
-
-        - 
-               .. image:: _static/offer/bmpn37.png
-                :width: 300
-                :align: center
-
-:ref:`Подробно об установке статуса<set_status>`
-
 
 Создание задачи-сценария
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/bmpn17.png
+       :width: 600
+       :align: center
+
+|
+
+ .. image:: _static/offer/bmpn17_1.png
        :width: 600
        :align: center
 
@@ -1923,6 +1940,12 @@
                .. image:: _static/offer/bmpn19.png
                 :width: 300
                 :align: center
+           
+           | Текст скипта:
+          
+               .. code-block::
+
+                    execution.removeVariable('chiefApproveComment'); 
 
 :ref:`Подробно о скриптах<script_task>`
 
@@ -1932,6 +1955,13 @@
  .. image:: _static/offer/bmpn20.png
        :width: 600
        :align: center
+
+|
+
+ .. image:: _static/offer/bmpn20_1.png
+       :width: 600
+       :align: center
+
 
 .. list-table::
       :widths: 5 5
