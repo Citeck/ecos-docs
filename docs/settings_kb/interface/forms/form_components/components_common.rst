@@ -21,6 +21,8 @@ Text Field
 
 `См. подробное описание Text Field на Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_ 
 
+:ref:`См. доработки компонента<text_field_ecos>` 
+
 :ref:`См. пример Text Field<sample_text_field_component>` 
 
 .. _Select_Journal_:
