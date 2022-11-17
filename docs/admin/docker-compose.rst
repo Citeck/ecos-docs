@@ -66,8 +66,11 @@ MacOS
 •	Установить `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
 •	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
 •	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
-•	Выполнить команду ``cd c:\ecos-community-demo-master`` для перехода в распакованный архив
-•	Выполнить команду ``docker-compose up -d`` 
+•	В командной строке выполнить команды: 
+
+    - для перехода в распакованный архив ``cd c:\ecos-community-demo-master`` 
+    - ``docker-compose up -d`` 
+
 •	Подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
 •	Перейти в браузере по адресу http://ecos-community-demo/
 
@@ -83,7 +86,6 @@ MacOS
 ---------------
 
 :ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
-
 
 
 Возможные проблемы
@@ -171,3 +173,9 @@ Ecos-ui использует порт 8080 и, если этот порт уже
  .. image:: _static/docker-compose/07.png
        :width: 600
        :align: center
+
+
+Настройка дополнительных параметров  WSL в Windows
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Для настройки дополнительных параметров  WSL в Windows `см. подробно  <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
