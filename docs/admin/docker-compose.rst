@@ -68,7 +68,7 @@ MacOS
 •	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
 •	В командной строке выполнить команды: 
 
-    - ``cd c:\ecos-community-demo-master`` для перехода в распакованный архив
+    - для перехода в распакованный архив ``cd c:\ecos-community-demo-master`` 
     - ``docker-compose up -d`` 
 
 •	Подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
@@ -178,4 +178,4 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 Настройка дополнительных параметров  WSL в Windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-`См. подробно  <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
+Для настройки дополнительных параметров  WSL в Windows `см. подробно  <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
