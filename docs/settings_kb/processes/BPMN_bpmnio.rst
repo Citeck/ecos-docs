@@ -638,7 +638,7 @@
     document.save()
 
 
-1. **RecordsScriptService** 
+4. **RecordsScriptService** 
 
 Доступен под переменной «Records». 
 
