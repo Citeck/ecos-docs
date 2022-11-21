@@ -6,6 +6,7 @@
 
     EDI_integration/EDI
     EDI_integration/events_kontur
+    EDI_integration/counterparty_kontur   
     EDI_integration/new_provider
     EDI_integration/ecos-edi-kontur-lib
     EDI_integration/ecos-edi-ftps-lib
