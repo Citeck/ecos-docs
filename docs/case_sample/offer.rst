@@ -942,8 +942,7 @@
    :align: center
    :class: tight-table 
 
-     ,Заголовок,:ref:`Panel Component Component<Panel>`
-     ,Колонки формы,:ref:`Table Component Component<Table>`
+     ,Колонки формы,:ref:`Table Component<Table>`
      cityCode,cityCode,:ref:`Text Field Component<Text_Field>`
      cityName,cityCode,Text Field Component
 
@@ -982,7 +981,7 @@
    :align: center
    :class: tight-table 
 
-     ,Колонки формы,:ref:`Columns Component Component<Columns_>`
+     ,Колонки формы,:ref:`Columns Component<Columns_>`
      Код,officesCode,Text Field Component
      Город,officesCity,Text Field Component
      Адрес,officesAddress,Text Field Component
@@ -1025,7 +1024,7 @@
      ,Колонки формы,Columns Component
      Имя,name,Text Field Component
      Заголовок,title,Text Field Component
-     title,rolesManager,:ref:`Checkbox Component<Checkbox>`
+     Руководящая должность,rolesManager,:ref:`Checkbox Component<Checkbox>`
 
 
 Создание формы Грейд
@@ -1038,7 +1037,7 @@
    :class: tight-table 
 
      1,Идентификатор формы,hr-grades-form
-     2,Название формы,Grades Form
+     2,Название формы,Грейды
      3,Ключ формы,hr-grades-form
      4,Редактируемый тип данных,Грейды
 
@@ -1268,7 +1267,8 @@
    :align: center
    :class: tight-table 
 
-     ,Колонки формы,Panel Component
+     ,Заголовок,:ref:`Panel Component<Panel>`
+     ,Колонки формы,Columns Component
      Регистрационный номер,registrationNumber,Text Field Component
      Присвоить номер,generateNumber,Checkbox Component
      Дата создания,_created,Date / Time Component
@@ -1355,7 +1355,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий руководителя,chiefApproveComment,Text Area Component
       Комментарий Директора,dirApproveComment,Text Area Component
       Комментарий,reworkComment,Text Area Component
@@ -1401,7 +1401,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий доп. согласующего,addApproveComment,Text Area Component
       Комментарий после доработки,reworkComment,Text Area Component
       Комментарий,chiefApproveComment,Text Area Component
@@ -1470,7 +1470,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий руководителя,chiefApproveComment,Text Area Component
       Комментарий,addApproveComment,Text Area Component
 
@@ -1531,7 +1531,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий руководителя,chiefApproveComment,Text Area Component
       Комментарий доп. согласующего,addApproveComment,Text Area Component
       Комментарий после доработки,reworkComment,Text Area Component
@@ -1601,7 +1601,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий директора,dirApproveComment,Text Area Component
       Comment,offerTaskComment,Text Area Component
 
@@ -1661,7 +1661,7 @@
    :align: center
    :class: tight-table 
 
-      ,Колонки формы,Panel Component
+      ,Колонки формы,Columns Component
       Комментарий,offerTaskComment,Text Area Component
       Комментарий по результатам,_ECM_offerTaskComment,Text Area Component
 
@@ -1698,7 +1698,7 @@
 
 Для наглядности описания разобьем процесс на 6 частей. И рассмотрим каждую часть подробно.
 
-Для просмотра существующих бизнес-процессов и их редактирования необходимо перейти в левом меню в пункт «Редактор бизнес-процессов»:
+Для просмотра существующих бизнес-процессов и их редактирования необходимо перейти в левом меню в пункт **«Редактор бизнес-процессов»**:
 
   .. image:: _static/offer/bp_new.png
        :width: 600
@@ -1710,11 +1710,11 @@
        :width: 600
        :align: center
 
-Подробно о:
+Подробно можно ознакомиться с:
 
-     - :ref:`редактор бизнес-процесса<modeller_bp>`, 
-     - :ref:`создание бизнес-процесса<new_bp>`, 
-     - :ref:`компоненты конструктора<form_builder>`, 
+     - :ref:`редактором бизнес-процесса<modeller_bp>`, 
+     - :ref:`созданием бизнес-процесса<new_bp>`, 
+     - :ref:`компонентами конструктора<form_builder>`, 
 
 Заполнение формы создания бизнес-процесса "Согласование оффера":
 
@@ -1828,7 +1828,7 @@
        :width: 400
        :align: center
 
-Для шлюза (**(2)** на схеме) укажите **Имя**:
+Для шлюза **(2) на схеме** укажите **Имя**:
 
  .. image:: _static/offer/bmpn10_1.png
        :width: 500
@@ -1877,7 +1877,7 @@
 
                     value = offerChief==director;
 
-Для следующего шлюза (**(3)** на схеме):
+Для следующего шлюза **(3 на схеме)**:
 
 .. list-table::
       :widths: 10 50
@@ -1903,7 +1903,7 @@
 Создание смены статуса
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**(4)** на схеме
+**(4 на схеме)**
 
  .. image:: _static/offer/bmpn35.png
        :width: 600
@@ -1939,7 +1939,7 @@
 Создание уведомления
 ~~~~~~~~~~~~~~~~~~~~
 
-**(5)** на схеме
+**(5 на схеме)**
 
  .. image:: _static/offer/bmpn11.png
        :width: 600
@@ -1994,7 +1994,7 @@
 Создание задачи-сценария
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**(6)** на схеме
+**(6 на схеме)**
 
  .. image:: _static/offer/bmpn17.png
        :width: 600
@@ -2036,7 +2036,7 @@
 Создание пользовательской задачи
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**(7)** на схеме
+**(7 на схеме)**
 
  .. image:: _static/offer/bmpn20.png
        :width: 600
