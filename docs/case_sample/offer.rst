@@ -483,7 +483,7 @@
           offerFeedback,Фидбэк по собеседованиям,Text
           offerSalaryAndPrize,Зарплатная вилка и премия,Text
           offerSubordination,Подчинение,Association
-          offerSalary,Оклад,Number
+          offerSalary,Оклад,Text
           offerPrize,Премия,Text
           offerSchedule,График работы,Text
           content,Содержимое,Content
@@ -1025,7 +1025,7 @@
      ,Колонки формы,Columns Component
      Имя,name,Text Field Component
      Заголовок,title,Text Field Component
-     title,roleIsManager,:ref:`Checkbox Component<Checkbox>`
+     title,rolesManager,:ref:`Checkbox Component<Checkbox>`
 
 
 Создание формы Грейд
