@@ -151,6 +151,11 @@ Button Component
        :width: 600
        :align: center
 
+Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
+
+  .. image:: _static/form_examples/button_1.png
+       :width: 600
+       :align: center
 
 .. _sample_panel_component:
 
