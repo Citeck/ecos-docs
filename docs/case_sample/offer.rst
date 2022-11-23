@@ -2,7 +2,7 @@
 ===========================================
 
 .. contents::
-		:depth: 4
+		:depth: 6
 
 
 Создание приложения включает в себя создание и настройку отдельных артефактов, таких как типы данных, журналы, формы, процессы и т.д.
@@ -478,12 +478,12 @@
           offerGrade,Грейд,Association По кнопке «Настроить» выбрать тип «Грейды»:
           offerOffice,Офис,Association По кнопке «Настроить» выбрать тип «Офисы»:
           offerComment,Комментарий,Text
-          offerChief,Руководитель,Association
-          offerAdditionalChief,Доп. согласующий,Association
+          offerChief,Руководитель,Authority
+          offerAdditionalChief,Доп. согласующий,Authority
           offerFeedback,Фидбэк по собеседованиям,Text
           offerSalaryAndPrize,Зарплатная вилка и премия,Text
-          offerSubordination,Подчинение,Association
-          offerSalary,Оклад,Text
+          offerSubordination,Подчинение,Text
+          offerSalary,Оклад,Number
           offerPrize,Премия,Text
           offerSchedule,График работы,Text
           content,Содержимое,Content
@@ -943,7 +943,7 @@
    :class: tight-table 
 
      ,Колонки формы,:ref:`Table Component<Table>`
-     cityCode,cityCode,:ref:`Text Field Component<Text_Field>`
+     cityCode,cityCode,:ref:`Text Field Component<sample_text_field_component>`
      cityName,cityCode,Text Field Component
 
 
@@ -981,7 +981,7 @@
    :align: center
    :class: tight-table 
 
-     ,Колонки формы,:ref:`Columns Component<Columns_>`
+     ,Колонки формы,:ref:`Columns Component<sample_columns_component>`
      Код,officesCode,Text Field Component
      Город,officesCity,Text Field Component
      Адрес,officesAddress,Text Field Component
@@ -1062,7 +1062,7 @@
    :class: tight-table 
 
      ,Колонки формы,Columns Component
-     Должность,gradesSimpleRoleTypeAssoc,:ref:`Select Journal Component<Select_Journal_>`
+     Должность,gradesSimpleRoleTypeAssoc,:ref:`Select Journal Component<sample_select_journal_component>`
      Номер,gradesNumber,Text Field Component
      Требования к сотруднику,gradesRequirements,Text Field Component
      Обязанности,gradesResponsibilities,Text Field Component
@@ -1199,10 +1199,10 @@
         - Text Field Component
       * - Дата рождения
         - candidatesBirthDate
-        - :ref:`Date / Time Component<Date_Time>`
+        - :ref:`Date / Time Component<sample_date_time_component>`
       * - Пол
         - candidatesGender
-        - :ref:`ECOS Select Component<Ecos_Select_>` 
+        - :ref:`ECOS Select Component<sample_ecos_select_component>` 
 
                .. image:: _static/offer/form_17.png
                     :width: 300
@@ -1232,6 +1232,11 @@
                     :width: 400
                     :align: center
 
+Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
+
+  .. image:: _static/offer/form_48.png
+       :width: 600
+       :align: center
 
 Создание формы Согласование оффера
 """"""""""""""""""""""""""""""""""""
@@ -1267,16 +1272,16 @@
    :align: center
    :class: tight-table 
 
-     ,Заголовок,:ref:`Panel Component<Panel>`
+     ,Заголовок,:ref:`Panel Component<sample_panel_component>`
      ,Колонки формы,Columns Component
      Регистрационный номер,registrationNumber,Text Field Component
      Присвоить номер,generateNumber,Checkbox Component
-     Дата создания,_created,Date / Time Component
+     Дата создания,_created (для автоматического ввода даты создания документа),Date / Time Component
      Комментарий по результатам,offerTaskComment,:ref:`Text Area Component<Text_Area>`
      initiator,initiator,Select Orgstruct Component
      Кандидат,offerCandidate,Select Journal Component
      Должность,offerPosition,Select Journal Component
-     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<Select_Orgstruct_>`
+     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
      Грейд,offerGrade,Select Journal Component
      Руководитель,offerChief,Select Orgstruct Component
      Офис,offerOffice,Select Journal Component
@@ -1696,7 +1701,9 @@
        :width: 800
        :align: center
 
-Для наглядности описания разобьем процесс на 6 частей. И рассмотрим каждую часть подробно.
+Для наглядности описания разобьем процесс на **6 частей**. И рассмотрим каждую часть подробно.
+
+На примере **1 части** рассмотрим подробное создание элементов, для частей **2-5** будт приведены изображения конечной настройки элементов.
 
 Для просмотра существующих бизнес-процессов и их редактирования необходимо перейти в левом меню в пункт **«Редактор бизнес-процессов»**:
 
@@ -1756,7 +1763,8 @@
         - флаг выставлен
 
 
-Используемые в процессе компоненты:
+Используемые в процессе элементы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
       :widths: 10 50
@@ -1800,20 +1808,20 @@
                     :align: center
         - Завершающее событие
 
-Создание элементов
-~~~~~~~~~~~~~~~~~~
+Создание элементов для **Части (1)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Часть **(1)** схемы бизнес-процесса:
+**Часть (1)** схемы бизнес-процесса:
 
  .. image:: _static/offer/scheme/scheme_1.png
        :width: 600
        :align: center
 
 
-Создание начального события 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Начальное событие
+"""""""""""""""""
 
-Начальное событие (**(1)** на схеме) задается по умолчанию элементом:
+Начальное событие **(1) на схеме** задается по умолчанию элементом:
 
  .. image:: _static/offer/bmpn09.png
        :width: 600
@@ -1821,8 +1829,8 @@
 
 **ID элемента** Система указывает автоматически для всех создаваемых элементов.
 
-Создание шлюза и потока данных
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Шлюз и поток данных
+"""""""""""""""""""
 
  .. image:: _static/offer/bmpn10.png
        :width: 400
@@ -1877,7 +1885,7 @@
 
                     value = offerChief==director;
 
-Для следующего шлюза **(3 на схеме)**:
+Для следующего шлюза **3 на схеме**:
 
 .. list-table::
       :widths: 10 50
@@ -1894,16 +1902,16 @@
                     :width: 400
                     :align: center
 
-      * - Исходящий поток 1
+      * - **Поток "Начало процесса"**
         - 
                .. image:: _static/offer/bpflow/bpflow_3.png
                     :width: 400
                     :align: center
 
-Создание смены статуса
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Смена статуса
+"""""""""""""""
 
-**(4 на схеме)**
+**4 на схеме**
 
  .. image:: _static/offer/bmpn35.png
        :width: 600
@@ -1936,10 +1944,10 @@
 
 :ref:`Подробно об установке статуса<set_status>`
 
-Создание уведомления
-~~~~~~~~~~~~~~~~~~~~
+Уведомление
+""""""""""""
 
-**(5 на схеме)**
+**5 на схеме**
 
  .. image:: _static/offer/bmpn11.png
        :width: 600
@@ -1991,10 +1999,10 @@
                 :align: center   
 
 
-Создание задачи-сценария
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Задача-сценарий
+""""""""""""""""
 
-**(6 на схеме)**
+**6 на схеме**
 
  .. image:: _static/offer/bmpn17.png
        :width: 600
@@ -2033,10 +2041,10 @@
 
 :ref:`Подробно о скриптах<script_task>`
 
-Создание пользовательской задачи
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Пользовательская задача
+"""""""""""""""""""""""
 
-**(7 на схеме)**
+**7 на схеме**
 
  .. image:: _static/offer/bmpn20.png
        :width: 600
@@ -2076,8 +2084,9 @@
                 :width: 300
                 :align: center
 
-      * - Выставить **приоритет задачи**, указать **результат задачи** – идентификатор и название.
-
+      * - | Выставить **приоритет задачи**, указать **результат задачи** – идентификатор и название.
+          | Здесь и далее - исходящие варианты для потока управления доступны к выбору, если в пользовательской задаче добавлены результаты задачи.
+          | См. ниже **(8)** в таблице.
         - 
                .. image:: _static/offer/bmpn24.png
                 :width: 300
@@ -2097,6 +2106,7 @@
 
 Для последующих элементов:
 
+
 .. list-table::
       :widths: 5 10 50
       :align: center
@@ -2112,23 +2122,24 @@
                .. image:: _static/offer/bpform/bpform_32.png
                     :width: 400
                     :align: center
-
+          
+          | Здесь и далее -  исходящие варианты для потока управления доступны к выбору, если в пользовательской задаче добавлены результаты задачи. См. выше описание элемента **(7)**.
       * - 
-        - Поток «Вернуть на доработку»
+        - **Поток «Вернуть на доработку»**
         - 
                .. image:: _static/offer/bpflow/bpflow_4.png
                     :width: 400
                     :align: center
 
       * - 
-        - Поток «Отказ»
+        - **Поток «Отказ»**
         - 
                .. image:: _static/offer/bpflow/bpflow_5.png
                     :width: 400
                     :align: center
 
       * -
-        - Поток «Нужно ли доп согласование»
+        - **Поток «Доп согласование»**
         - 
                .. image:: _static/offer/bpflow/bpflow_6.png
                     :width: 400
@@ -2160,7 +2171,8 @@
 
 :ref:`Подробно о формах для бизнес-процессов<user_task>`
 
-Часть **(2)** схемы бизнес-процесса:
+Создание элементов для **Части (2)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/scheme/scheme_2.png
        :width: 600
@@ -2223,7 +2235,9 @@
 
            | **Для всех подобных задач в «Форма задачи» выбрать ранее созданную форму задачи**   
 
-Часть **(3)** схемы бизнес-процесса:
+
+Создание элементов для **Части (3)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/scheme/scheme_3.png
        :width: 600
@@ -2248,7 +2262,7 @@
                     :align: center
 
       * - 
-        - Исходящий 1
+        - **Поток "Да"**
         - 
                .. image:: _static/offer/bpflow/bpflow_7.png
                     :width: 400
@@ -2259,10 +2273,10 @@
                .. code-block::
 
                     var offerAdditionalChief = execution.getVariable('additional');
-                    value= offerAdditionalChief==true;
+                    value= offerAdditionalChief===true;
 
       * -
-        - Исходящий 2
+        - **Поток "Нет"**
         - 
                .. image:: _static/offer/bpflow/bpflow_8.png
                     :width: 400
@@ -2273,7 +2287,7 @@
                .. code-block::
 
                     var offerAdditionalChief = execution.getVariable('additional');
-                    value= offerAdditionalChief==false;
+                    value= offerAdditionalChief===false;
       * - 2
         - 
                .. image:: _static/offer/bpform/bpform_43.png
@@ -2335,14 +2349,14 @@
                     :align: center
 
       * -
-        - Поток «Отказано»
+        - **Поток «Отказано»**
         - 
                .. image:: _static/offer/bpflow/bpflow_9.png
                     :width: 400
                     :align: center
 
       * -
-        - Поток «Согласовано»
+        - **Поток «Согласовано»**
         - 
                .. image:: _static/offer/bpflow/bpflow_10.png
                     :width: 400
@@ -2365,7 +2379,8 @@
                     execution.removeVariable('chiefApproveComment');
 
 
-Часть **(4)** схемы бизнес-процесса:
+Создание элементов для **Части (4)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/scheme/scheme_4.png
        :width: 600
@@ -2388,7 +2403,7 @@
                     :width: 400
                     :align: center
       * -
-        - Исходящий поток 1
+        - **Поток "Согласование директором"**
         - 
                .. image:: _static/offer/bpflow/bpflow_11.png
                     :width: 400
@@ -2446,19 +2461,19 @@
                     :width: 400
                     :align: center
       * -
-        - Поток «Вернуть на доработку»
+        - **Поток «Вернуть на доработку»**
         - 
                .. image:: _static/offer/bpflow/bpflow_12.png
                     :width: 400
                     :align: center
       * -
-        - Поток «Отказ»
+        - **Поток «Отказ»**
         - 
                .. image:: _static/offer/bpflow/bpflow_13.png
                     :width: 400
                     :align: center
       * -
-        - Поток «Согласовано»
+        - **Поток «Согласовано»**
         - 
                .. image:: _static/offer/bpflow/bpflow_14.png
                     :width: 400
@@ -2512,7 +2527,8 @@
                     :align: center
 
 
-Часть **(5)** схемы бизнес-процесса:
+Создание элементов для **Части (5)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/scheme/scheme_5.png
        :width: 600
@@ -2535,7 +2551,7 @@
                     :width: 400
                     :align: center
       * -
-        - Поток «Отказ»
+        - **Поток «Отказ»**
         - 
                .. image:: _static/offer/bpform/bpform_107.png
                     :width: 400
@@ -2566,7 +2582,7 @@
                     :width: 400
                     :align: center
       * - 
-        - Исходящий поток 1
+        - **Поток «Отказ 1»**
         - 
                .. image:: _static/offer/bpflow/bpflow_15.png
                     :width: 400
@@ -2579,7 +2595,7 @@
                     value =execution.getVariable('isRejected')!=true;
 
       * - 
-        - Исходящий поток 2
+        - **Поток «Отказ 2»**
         - 
                .. image:: _static/offer/bpflow/bpflow_16.png
                     :width: 400
@@ -2619,7 +2635,7 @@
                     :align: center
 
       * - 
-        - Исходящий поток 1
+        - **Поток "Формирование ответа"**
         - 
                .. image:: _static/offer/bpflow/bpflow_17.png
                     :width: 400
@@ -2644,9 +2660,8 @@
                     :width: 400
                     :align: center
 
-
-
-Часть **(6)** схемы бизнес-процесса:
+Создание элементов для **Части (6)** схемы бизнес-процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. image:: _static/offer/scheme/scheme_6.png
        :width: 600
@@ -2670,14 +2685,14 @@
                     :align: center
 
       * -
-        - Поток «Отправлен оффер»
+        - **Поток «Отправлен оффер»**
         - 
                .. image:: _static/offer/bpflow/bpflow_18.png
                     :width: 400
                     :align: center
 
       * -
-        - Поток «Отправлен отказ»
+        - **Поток «Отправлен отказ»**
         - 
                .. image:: _static/offer/bpflow/bpflow_19.png
                     :width: 400
@@ -2737,14 +2752,14 @@
                     :align: center
 
       * - 
-        - Поток «Оффер принят»
+        - **Поток «Оффер принят»**
         - 
                .. image:: _static/offer/bpflow/bpflow_20.png
                     :width: 400
                     :align: center
 
       * - 
-        - Поток «Оффер не принят»
+        - **Поток «Оффер не принят»**
         - 
                .. image:: _static/offer/bpflow/bpflow_21.png
                     :width: 400
@@ -2805,49 +2820,104 @@
        :width: 600
        :align: center
 
-Настройка меню
------------------
+Добавление журнала в главное меню
+-----------------------------------
 
-Для добавления процесса в меню **«Создать»**:
+Для наполнения созданных журналов данными необходимо добавить их в главное меню:
 
-1.	Перейти в настройку меню, нажав на шестеренку, потом кнопку **«Настроить меню» справа сверху**.
+1.	Перейти в настройку меню, нажав на шестеренку, потом кнопку **«Настроить меню»** справа сверху.
 
  .. image:: _static/offer/bmpn28.png
        :width: 600
        :align: center
 
-2.	Выбрать элемент меню, в котором будет находиться процесс. Навести на элемент и нажать кнопку **«Добавить»**, выбрать **«Добавить ссылку на создание кейса»**:
+2.	Выбрать вкладку **"Настройки выбранной конфигурации"**, выбрать раздел , в котором будет находиться журнал. Навести на раздел и нажать кнопку **«Добавить»**, выбрать **«Журнал»**:
 
- .. image:: _static/offer/bmpn29.png
-       :width: 400
-       :align: center
-
-|
-
- .. image:: _static/offer/bmpn30.png
-       :width: 400
-       :align: center
-
-1. Выбрать тип данных:
-
- .. image:: _static/offer/bmpn31.png
+ .. image:: _static/offer/journal_9.png
        :width: 600
        :align: center
 
-**Название** будет указано по умолчанию из типа данных, и может быть изменено. Нажать **"Сохранить"**
+ Поместим созданные справочники в раздел "Справочники", а кейс "Согласование оффера" в отдельный раздел.
 
- .. image:: _static/offer/bmpn32.png
-       :width: 400
+1. Выбрать журнал:
+
+ .. image:: _static/offer/journal_10.png
+       :width: 600
+       :align: center
+
+Выбранный журнал будет отражен в настройках меню:
+
+ .. image:: _static/offer/journal_11.png
+       :width: 600
+       :align: center
+
+Аналогично добавим кейс:
+
+ .. image:: _static/offer/journal_12.png
+       :width: 600
        :align: center
 
 4. Добавленный пункт меню:
 
- .. image:: _static/offer/bmpn33.png
+ .. image:: _static/offer/journal_13.png
        :width: 250
        :align: center
 
+Просмотр журнала и создание в нем элемента 
+---------------------------------------------
+
+В главном меню выбрать журнал. В журнале нажать **+**, откроется форма для заполнения:
+
+ .. image:: _static/offer/journal_14.png
+       :width: 800
+       :align: center
+
+
+Настройка меню "Создать"
+-------------------------
+
+Для добавления процесса в меню **«Создать»**:
+
+1.	Перейти в настройку меню, нажав на шестеренку, потом кнопку **«Настроить меню»** справа сверху.
+
+ .. image:: _static/offer/bmpn28.png
+       :width: 600
+       :align: center
+
+2.	Выбрать вкладку **"Меню "Создать"**, выбрать элемент меню, в котором будет находиться процесс. Навести на элемент и нажать кнопку **«Добавить»**, выбрать **«Добавить ссылку на создание кейса»**:
+
+     .. image:: _static/offer/bmpn29.png
+          :width: 600
+          :align: center
+
+     |
+
+     .. image:: _static/offer/bmpn30.png
+          :width: 400
+          :align: center
+
+3. Выбрать тип данных:
+
+     .. image:: _static/offer/bmpn31.png
+          :width: 600
+          :align: center
+
+**Название** будет указано по умолчанию из типа данных, и может быть изменено. Нажать **"Сохранить"**
+
+     .. image:: _static/offer/bmpn32.png
+          :width: 400
+          :align: center
+
+4. Добавленный пункт меню:
+
+     .. image:: _static/offer/bmpn33.png
+          :width: 250
+          :align: center
+
 Запуск кейса
 --------------
+
+В меню **"Создать"** выбрать **"Согласование оффера"**, откроется форма для заполнения:
 
  .. image:: _static/offer/bmpn34.png
        :width: 500
