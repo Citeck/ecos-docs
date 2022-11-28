@@ -109,3 +109,7 @@
               .. code-block::
 
                     someField._str._as.ref.fieldFromRef  
+      * - | **_roles.isCurrentUserMemberOf.initiator?bool**
+        - | Является ли текущий пользователь представителем роли "инициатор". Вместо ``initiator`` можно подставлять любой идентификатор роли
+      * - | **_roles.assigneesOf.initiator[]?str**
+        - | Загрузить представителей роли "инициатор". Вместо ``initiator`` можно подставлять любой идентификатор роли
