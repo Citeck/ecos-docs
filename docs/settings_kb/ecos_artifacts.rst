@@ -523,6 +523,41 @@ filename - относительный путь до включаемого фа�
       - { op: set, path: '$.value', value: [ 123 ] }
       - { op: set, path: '$.version', value: 1 }
 
+Пример патча для добавления раздела меню:
+
+.. code-block::
+
+  id: menu-change-test
+  name: {ru: Добавить раздел, en: Add section }
+  target: 'ui/menu$default-menu-v1'
+  type: json
+  config:
+    operations:
+      - op: add
+        path: '$..[?(@.id == "sections")].items'
+        value: {
+          "id": "custom-meetings-section",
+          "label": {
+            "ru": "Совещания"
+          },
+          "icon": "ui/icon@i-leftmenu-meetings",
+          "type": "SECTION",
+          "items": [
+            {
+              "id": "123-123-123-123-123",
+              "label": {
+                "en": "Совещания"
+              },
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@meetings"
+              },
+              "items": [],
+              "allowedFor": []
+            }
+          ]
+        }
+
 Отображение артефактов разных категорий
 ---------------------------------------
 
