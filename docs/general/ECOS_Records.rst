@@ -599,6 +599,13 @@ RecordRef
   doc.att('_status', 'some_status_id');
   doc.save();
 
+  ---
+  
+  Проверка enterprise лицензии
+
+  await Citeck.Records.get('emodel/meta@').load('$license.enterprise?bool', true)
+
+
 CRUD операции
 ~~~~~~~~~~~~~~~
 
