@@ -6,7 +6,7 @@
 * Формы ECOS реализованы на базе движка `formio.js <https://github.com/formio/formio.js>`_.
 * Функция :ref:`редактора форм<form_builder>` доступна только в ECOS **Enterprise**.
 * Формы описываются в json-формате.
-* Формы используются для редактирования записей из **Records Service** (см.:ref:`ECOS Records<Records_API>`). На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан **ID** редактируемой записи).
+* Формы используются для редактирования записей из **Records Service** см. :ref:`ECOS Records<Records_API>`. На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан **ID** редактируемой записи).
 
 Описание перехода к разделу через интерфейс
 --------------------------------------------
@@ -47,12 +47,132 @@
        :width: 300
        :align: center
 
-Файл формата .yaml
+Файл формата .json
 
 Пример описания формы
 ----------------------
 
-Вставить файл.
+
+.. code-block::
+
+  {
+  "id": "vacation-request",
+  "formKey": "",
+  "title": {
+    "ru": "Заявление на отпуск"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "",
+  "width": "m",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "type": "datetime",
+        "input": true,
+        "enableTime": false,
+        "key": "from",
+        "label": {
+          "ru": "Начинается с"
+        },
+        "suffix": true,
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "type": "datetime",
+        "input": true,
+        "enableTime": false,
+        "key": "to",
+        "label": {
+          "ru": "Заканчивается"
+        },
+        "suffix": true,
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "label": {
+          "ru": "Инициатор"
+        },
+        "key": "initiator",
+        "allowedAuthorityType": "USER",
+        "currentUserByDefault": true,
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectOrgstruct",
+        "input": true,
+        "defaultValue": ""
+      },
+      {
+        "type": "columns",
+        "key": "buttons-columns",
+        "columns": [
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 0,
+            "components": [],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 1,
+            "key": "column",
+            "components": []
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 2,
+            "components": [
+              {
+                "type": "button",
+                "key": "cancel",
+                "label": {
+                  "ru": "Отменить",
+                  "en": "Cancel"
+                },
+                "action": "event",
+                "event": "cancel",
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 3,
+            "components": [
+              {
+                "type": "button",
+                "theme": "primary",
+                "key": "submit",
+                "label": {
+                  "ru": "Сохранить",
+                  "en": "Save"
+                },
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          }
+        ],
+        "input": false
+      }
+    ],
+    "formId": "vacation-request"
+  },
+  "attributes": {}
+ } 
 
 Доступные действия с записью
 -----------------------------
@@ -68,7 +188,12 @@
 - открыть на редактирование;
 - редактировать json-файл;
 - копировать;
-- открыть карточку в соседней вкладке.
+- открыть карточку в соседней вкладке. Карточка представляет собой :ref:`дашборд<dashboard>`:
+
+.. image:: _static/form_dashboard.png
+       :width: 600
+       :align: center
+
 
 Создание новой формы
 ---------------------
