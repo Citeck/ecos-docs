@@ -17,7 +17,7 @@ BPMN Сигналы используются для интеграции :ref:`�
 
 .. image:: _static/signal_event_form.png
   :align: center
-  :width: 500
+  :width: 400
 
 |br|
 
@@ -168,9 +168,10 @@ Start Event - старт процесса
 При изменении статуса по любому документу будет запущен процесс, который выполнит скрипт.
 
 .. image:: _static/bpmn_start_event_example.png
-   :width: 45%
+   :width: 25%
+
 .. image:: _static/bpmn_start_event_form_example.png
-   :width: 45%
+   :width: 25%
 
 Start Event - старт событийного подпроцесса
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,9 +179,10 @@ Start Event - старт событийного подпроцесса
 Каждый раз при создании комментария по текущему документу, пока основной процесс активен, будет запущен подпроцесс, который отправит уведомление.
 
 .. image:: _static/bpmn_start_event_sub_process_example.png
-   :width: 45%
+   :width: 25%
+
 .. image:: _static/bpmn_start_event_sub_process_form_example.png
-   :width: 45%
+   :width: 25%
 
 Bondary Event - событие с предикатом
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -188,8 +190,10 @@ Bondary Event - событие с предикатом
 При активной задачи, если был добавлен комментарий, который содержит текст "Галя, отмена!", то задача будет отменена и отправлено уведомление.
 
 .. image:: _static/bpmn_boundary_event_with_predicate_example.png
-   :width: 45%
+   :width: 25%
+
 .. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
+   :width: 25%
 
 End Throw Event - ручная настройка и события с фильтрами
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -202,9 +206,10 @@ End Throw Event - ручная настройка и события с филь�
   :width: 500
 
 .. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
-   :width: 45%
-.. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
+   :width: 25%
 
+.. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
+   :width: 25%
 
 Intermediate Catch Event - событие с пользовательской моделью и предикатом с expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -214,7 +219,7 @@ Intermediate Catch Event - событие с пользовательской м
 
 .. image:: _static/bpmn_intermediate_catch_event_with_model_expression_predicate_example.png
   :align: center
-  :width: 800
+  :width: 600
 
 .. |br| raw:: html
 
