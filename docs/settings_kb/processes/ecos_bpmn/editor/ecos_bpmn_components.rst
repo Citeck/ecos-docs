@@ -1,5 +1,5 @@
 Компоненты Ecos BPMN 
-====================
+=====================
 
 .. toctree::
     :maxdepth: 3
@@ -13,3 +13,4 @@
     components/ecos_bpmn_components_events
     components/ecos_bpmn_components_sub_process
     components/ecos_bpmn_components_multi_instance
+    components/ecos_bpmn_components_pool
