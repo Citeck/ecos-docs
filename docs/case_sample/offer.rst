@@ -1781,7 +1781,7 @@
                .. image:: _static/offer/bpform/bpform_2.png
                     :width: 50
                     :align: center
-        - :ref:`Шлюз<gateway>` и :ref:`поток управления<sequential flow>`
+        - :ref:`Шлюз<gateways>` и :ref:`поток управления<sequential flow>`
       * - 
                .. image:: _static/offer/bpform/bpform_3.png
                     :width: 50
