@@ -10,6 +10,6 @@
     components/ecos_bpmn_components_set_status
     components/ecos_bpmn_components_gateway
     components/ecos_bpmn_components_seq_flow
-    components/ecos_bpmn_components_timer
+    components/ecos_bpmn_components_events
     components/ecos_bpmn_components_sub_process
     components/ecos_bpmn_components_multi_instance
