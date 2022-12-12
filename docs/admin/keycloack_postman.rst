@@ -72,26 +72,21 @@ URL для доступа: ``%host%/auth/admin/master/console/``
 Cоздание пользователя в ECOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.	Перейти в соответствующий реалм ecos. Открыть пункт меню **“Пользователи”**:
+1.	Перейти в соответствующий реалм ecos. Открыть пункт меню **“Пользователи”**, для добавления нового пользователя нажать кнопку :guilabel:`+`:
 
  .. image:: _static/keycloack_postman/Keycloack_8.png
        :width: 700
        :align: center
 
-2.	Нажать кнопку :guilabel:`“Новый пользователь”`
+2.	Заполнить форму. 
+
+Заполнить поле **“Системное Имя”** по паттерну ``service-account-%имя созданного клиента%``. Остальные поля можно не заполнять, так как пользователь сервисный и заходить под ним никто не будет.
 
  .. image:: _static/keycloack_postman/Keycloack_9.png
        :width: 700
        :align: center
-
-3.	Заполнить форму. 
-Заполнить поле **“Имя пользователя”** по паттерну ``service-account-%имя созданного клиента%``. Остальные поля можно не заполнять, так как пользователь сервисный и заходить под ним никто не будет.
-
- .. image:: _static/keycloack_postman/Keycloack_10.png
-       :width: 700
-       :align: center
  
-4.	Теперь можно совершать запросы к системе через gateway.
+3.	Теперь можно совершать запросы к системе через gateway.
 
 
 Отправка запросов в ECOS
@@ -122,28 +117,28 @@ Cоздание пользователя в ECOS
        
 4.	Указать **Client ID** и **Client Secret**. Задать имя токена, имя может быть любым. 
  
- .. image:: _static/keycloack_postman/Keycloack_4.png
+ .. image:: _static/keycloack_postman/Postman_4.png
        :width: 700
        :align: center
 
 5.	В настройке **Client Authentication** установить значение **Send as Basic Auth header** для отправки токена в заголовке. 
 Попробовать получить токен и указать и использовать его в запросе, в результате значение токена подставится в раздел :guilabel:`Current Token`.
 
- .. image:: _static/keycloack_postman/Keycloack_5.png
+ .. image:: _static/keycloack_postman/Postman_5.png
        :width: 700
        :align: center
 
- .. image:: _static/keycloack_postman/Keycloack_6.png
+ .. image:: _static/keycloack_postman/Postman_6.png
        :width: 700
        :align: center
  
- .. image:: _static/keycloack_postman/Keycloack_7.png
+ .. image:: _static/keycloack_postman/Postman_7.png
        :width: 700
        :align: center
 
 6.	Если тело запроса заполнено, то можно выполнять основной запрос на стенд. Срок действия токена можно посмотреть при его получении. 
 
- .. image:: _static/keycloack_postman/Keycloack_8.png
+ .. image:: _static/keycloack_postman/Postman_8.png
        :width: 700
        :align: center
 
