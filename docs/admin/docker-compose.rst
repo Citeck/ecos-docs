@@ -178,4 +178,4 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 Настройка дополнительных параметров  WSL в Windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Для настройки дополнительных параметров  WSL в Windows `см. подробно  <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
+ `Настройка дополнительных параметров  WSL в Windows <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
