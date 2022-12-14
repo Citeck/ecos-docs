@@ -4,6 +4,7 @@
 .. toctree::
     :maxdepth: 5
 
+    components/text field
     components/table form
     components/async data
     components/select journal
