@@ -8,4 +8,3 @@
  .. image:: _static/license/license_1.png
        :width: 600
        :align: center
-

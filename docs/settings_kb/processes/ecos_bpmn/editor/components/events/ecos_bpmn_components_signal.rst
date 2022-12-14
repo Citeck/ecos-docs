@@ -185,6 +185,8 @@ Start Event - старт событийного подпроцесса
 .. image:: _static/bpmn_start_event_sub_process_form_example.png
    :width: 25%
 
+.. _Bondary_Event:
+
 Bondary Event - событие с предикатом
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -195,6 +197,8 @@ Bondary Event - событие с предикатом
 
 .. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
    :width: 25%
+
+.. _End_Throw_Event:
 
 End Throw Event - ручная настройка и события с фильтрами
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -211,6 +215,8 @@ End Throw Event - ручная настройка и события с филь�
 
 .. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
    :width: 25%
+
+.. _Intermediate_Catch_Event:
 
 Intermediate Catch Event - событие с пользовательской моделью и предикатом с expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
