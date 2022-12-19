@@ -1,8 +1,13 @@
-Задача скрипт
-===============
+Скриптовая задача
+=================
 .. _script_task:
 
-Используеттся язык JavaScript.
+.. contents::
+
+Атрибуты и форма
+----------------
+
+Используется язык JavaScript.
 
  .. image:: _static/59.png
        :width: 300
@@ -23,8 +28,8 @@
                .. image:: _static/61.png
                 :width: 300
                 :align: center
-      * - Указать **скрипт** 
-        - Асинхронность можно настроить ко многим элементам. См. подробнее https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/ 
+      * - Настройки асинхронности, см. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_ 
+        - 
                .. image:: _static/62.png
                 :width: 300
                 :align: center
@@ -32,85 +37,74 @@
 Доступные переменные
 --------------------
 
-В контексте скрипта доступно:
-
-1.	**Переменные процесса**. 
-
-Обращение к переменным процесса осуществляется по прямому наименованию переменной. Например:
+Во время выполнения скриптов доступны все переменные процесса, видимые в текущей области.
 
 .. code-block:: javascript
 
+    //someVar - переменная процесса
     print("someVar: " + someVar);
 
-2.	**Переменная «execution» процесса** 
 
-`См. подробно <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_ 
+Также в контексте скрипта доступно несколько специальных переменных:
 
-Через нее можно так же получать переменные процесса (аналог пункта 1) или записывать:
-
-.. code-block:: javascript
-
-    // get process variable
-    sum = execution.getVariable('x')
-
-    // set process variable
-    execution.setVariable('y', x + 15)
-
-3.	**Переменная «document»** - скриптовое представление документа 
+``execution`` - переменная, которая всегда доступна, если скрипт выполняется в области выполнения (например, в Script Task). `(DelegateExecution) <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_
 
 .. code-block:: javascript
 
-    AttValueScriptCtxfun getId(): String
+    // получение переменной процесса
+    var sum = execution.getVariable('x');
 
-    fun getRef(): RecordRef
+    // установление переменной процесса
+    execution.setVariable('y', x + 15);
 
-    fun getLocalId(): String
 
-    fun load(attributes: Any?): Any?
-
-    fun save(): AttValueScriptCtx fun att(attribute: String, value: Any?)
-
-    fun reset()
-    }
-
-**load()** - получение атрибута документа: 
+``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
 
 .. code-block:: javascript
 
-    var created = document.load("cm:created")
+    //получение атрибута документа
+    var created = document.load("_created");
 
-**att()** - установление атрибуту документа указанного значения:
+    //установление атрибуту документа указанного значения
+    document.att("firArchiveBoxNumber", 123);
+    //сохранение
+    document.save();
+
+    //сброс состояния документа, если ранее были внесены изменения через att()
+    document.att("firArchiveBoxNumber", 123);
+    document.reset();
+
+
+``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
 
 .. code-block:: javascript
 
-    document.att("ufrm:firArchiveBoxNumber", 123)
+    //Получение скриптового представление указанного рекорда
+    var doc = Records.get("emodel/doc@111");
 
-**save()** - сохранение внесенных изменений атриумов документа через **att()**
+    //Query рекордов
+    var queryCommentsResult = Records.query({
+        sourceId: "emodel/comment",
+        language: "predicate",
+        query: {
+            a: "record",
+            t: "eq",
+            v: "emodel/doc@123"
+        }
+    }, {
+        text: "text",
+        created: "_created"
+    });
 
-**reset()** - сброс состояния документа, если ранее были внесены изменения через **att()**
+    var firstComment = queryCommentsResult.records[0];
+    var text = firstComment.text;
+    var created = firstComment.created;
 
-Пример задания атрибута и сохранение:
-
-.. code-block:: javascript
-
-    document.att("ufrm:firArchiveBoxNumber", 123)
-    document.save()
+    print("comment: " + text + " created on " + created);
 
 
-4. **RecordsScriptService** 
+``webUrl`` - переменная возвращает настроенный веб url сервера
 
-Доступен под переменной «Records». 
+.. note:: 
 
-Методы:
-
-Получение скриптового представления рекорда по **recordReffun** 
-
-.. code-block:: kotlin
-
-    fun get(record: Any): AttValueScriptCtx 
-
-Поиск рекордов по заданному **query**
-
-.. code-block:: kotlin
-
-    query(query: Any?, attributes: Any?): Any 
+    Читай подробнее о `scripting в Camunda <https://docs.camunda.org/manual/7.14/user-guide/process-engine/scripting/>`_
