@@ -884,20 +884,61 @@ Java::
 * На сеттере для конвертации DTO -> Схема атрибутов для запроса; (см. методы ``recordsService.getAtts(Any record, Class<?> atts)``)
 * Аннотация на поле работает как для сеттера так и для геттера если они есть;
 
+Аннотация ``@AttName`` может в качестве аргумента принимать значение ``"..."``. 
+Такая запись означает, что все атрибуты из поля с этой аннотацией будут доступны так же и в нашем значении. Пример:
+
+Java::
+
+   static class ParentDto {
+     @AttName("...")
+     private ChildDto child = new ChildDto(); // опустим сеттер, чтобы не усложнять пример
+     public ChildDto getChild() {
+       return child;
+     }
+   }
+   static class ChildDto {
+      public String getValue(): String {
+        return "abc"; // геттер не обязательно должен отдавать значение поля. Его поведение может быть произвольным
+      }
+   }
+   ...
+   ParentDto value = new ParentDto();
+   
+   // Если бы аннотация AttName отсутствовала, то до значения 'abc' мы бы могли добраться так:
+   // recordsService.getAtt(value, "child.value").asText();
+   // Но с аннотацией @AttValue("...") можно обращаться к вложенному атрибуту так:
+   
+   String attributeValue = recordsService.getAtt(value, "value").asText();
+   System.out.println(attributeValue); // abc
+
+Так же особое значение имеют аннотации ``AttName`` где в качестве аргумента указан один из скаляров с вопросительным знаком. 
+Например: ``@AttName("?str")``. Такие геттеры вызываются при загрузке скаляров.
+
 ``BeanValueFactory`` так же ищет в бине ряд специальных методов по их имени и аргументам (тип возвращаемого значения не важен):
 
 Java::
   
+  Object getId() // значение для скаляра ?id
   Object getAsStr() // значение для скаляра "?str"
   Object getAsNum() // значение для скаляра "?num"
   Object getAsBool() // значение для скаляра "?bool"
   Object getAsJson() // значение для скаляра "?json"
   Object getAsRaw() // значение для скаляра "?raw"
   Object getAsBin() // значение для скаляра "?bin"
+  Object getEcosType() // значение для атрибута "_type"
   Object getAs(String name) // значение для спец. атрибута "_as"
   Object has(String name) // значение для спец. атрибута "_has"
   Object getEdge(String name) // значение для спец. атрибута "_edge"
   Object getAtt(String name) // Значение атрибута по имени если не получилось найти геттер для него
+
+Для отображаемого имени нашего бина ``BeanValueFactory`` ищет следующие методы в порядке убывания приоритета (используется первый найденный):
+
+Java::
+  
+  Object getDisplayName()
+  Object getLabel()
+  Object getTitle()
+  Object getName()
 
 Формальное описание синтаксиса атрибута ECOS Records
 -------------------------------------------------------
