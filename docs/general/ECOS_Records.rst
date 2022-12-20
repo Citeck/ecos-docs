@@ -257,9 +257,9 @@ API, разработанное для организации простого �
         - Любую структуру приводит к YAML строке.
           | Пример:
 
-            .. code-block::
+            .. code-block:: js
 
-                await Citeck.Records.get(uiserv/form@ECOS_FORM).load('?json|yaml()')
+                await Citeck.Records.get('uiserv/form@ECOS_FORM').load('?json|yaml()')
 
 
 Работа с MLText полями (3.26.0+)
@@ -365,7 +365,7 @@ RecordsService (Java)
 
 Для поиска записей всегда передается **RecordsQuery**, который содержит параметры поиска. Помимо самого простого метода для поиска с одним параметром **RecordsQuery** так же есть варианты с объединенным поиском и запросом атрибутов.
 
-.. code-block::
+.. code-block:: java
 
   recordsService.queryOne(
     RecordsQuery.create()
@@ -377,7 +377,7 @@ RecordsService (Java)
           .addSort(new SortBy("cm:created", true))
           .build());
 
-.. code-block::
+.. code-block:: java
 
   recordsService.query(RecordsQuery.create()
           .withLanguage(PredicateService.LANGUAGE_PREDICATE)
@@ -411,7 +411,7 @@ RecordsService (Java)
 
 Методы: **getAtt**, **getAtts**
 
-.. code-block::
+.. code-block:: java
 
   recordsService.getAtt(documentRef, "eint:ediProviderType?str").asText();
 
@@ -419,11 +419,11 @@ RecordsService (Java)
 
 * **"eint:ediProviderType?str"** – параметр, который хотим получить
 
-.. code-block::
+.. code-block:: java
 
  List<ObjPropertyClass> list = recordsService.getAtt(documentRef, "objProperty[]?json").asList(ObjPropertyClass.class);
 
-.. code-block::
+.. code-block:: java
 
   RecordAtts recordAtts = recordsService.getAtts(RecordRef.valueOf(nodeRef.toString()),
         Collections.singletonMap("assocId", name + "[]?id"));
@@ -448,7 +448,7 @@ RecordsService (Java)
 
 Изменение записи
 
-.. code-block::
+.. code-block:: java
 
   RecordAtts recordAtts = new RecordAtts();
   recordAtts.setId(recordRef);
@@ -459,7 +459,7 @@ RecordsService (Java)
 
 Создание записи
 
-.. code-block::
+.. code-block:: java
 
   RecordAtts recordAtts = new RecordAtts();
   recordAtts.setAtt(AlfNodeRecord.ATTR_TYPE, "ssgedidl:routeTemplate");
@@ -475,7 +475,7 @@ RecordsService (Java)
 г) Удаление записи
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: java
 
   recordsService.delete(routeTemplate);
 
@@ -507,7 +507,7 @@ RecordRef
 * /sourceId@localId == sourceId@localId
 * appName/sourceId@localId
 
-.. code-block::
+.. code-block:: java
 
   RecordRef.create("emodel", "type", "ssgedidl-counterpartyToAuthority");
 
@@ -624,40 +624,40 @@ CRUD операции
         - В коде ecos-ui используется
       * - ``READ_ONLY POST``
 
-          .. code-block::
+          .. code-block:: text
                       
             /gateway/api/records/query 
 
         - Поиск записей и/или получение атрибутов
         - 
 
-            .. code-block::
+            .. code-block:: js
 
               Records.query и Records.get("id_сущности").load(атрибуты_для_загрузки)
 
       * - ``READ_WRITE POST``
 
-          .. code-block::
+          .. code-block:: text
 
             /gateway/api/records/delete 
 
         - Удаление сущностей 
         - 
 
-            .. code-block::
+            .. code-block:: js
 
               Records.remove
 
       * - ``READ_WRITE POST``
 
-          .. code-block::
+          .. code-block:: text
 
             /gateway/api/records/mutate 
 
         - Создание или изменение сущностей
         - 
 
-            .. code-block::
+            .. code-block:: js
 
               var rec = Records.get("id_сущности"); rec.att("атрибут", "значение"); rec.save() 
 
@@ -683,7 +683,7 @@ CRUD операции
 
 Пример:
 
-.. code-block::
+.. code-block:: json
 
   {
     "messages": [
@@ -718,7 +718,8 @@ Kotlin/Java Backend
 
 Основной сервис для работы с RecordsAPI - это ``ru.citeck.ecos.records3.RecordsService``. Пример использования:
 
-Kotlin::
+Kotlin:
+.. code-block:: kotlin
 
     val serviceFactory = RecordsServiceFactory()
     val recordsService = serviceFactory.recordsServiceV1
@@ -729,7 +730,8 @@ Kotlin::
     val attributeValue = recordsService.getAtt(value, "someKey").asText()
     println(attributeValue) // someValue
     
-Java::
+Java:
+.. code-block:: java
   
     RecordsServiceFactory serviceFactory = new RecordsServiceFactory();
     RecordsService recordsService = serviceFactory.getRecordsServiceV1();
@@ -783,28 +785,28 @@ Java::
   
   + Delete. Удаление записей через ``RecordsDeleteDao``
 
-**AttValue** - это интерфейс, который представляет собой значение, с которым умеет работать ``RecordsService`` при получении атрибутов. Методы интерфейса::
+**AttValue** - это интерфейс, который представляет собой значение, с которым умеет работать ``RecordsService`` при получении атрибутов. Методы интерфейса:
 
-java::
+.. code-block:: java
 
-  Promise<?> init() // инициализация значения перед тем как начать вычисление атрибутов
-  Object getId() // идентификатор значения. Может быть как строкой, так и EntityRef  
-  Object getDisplayName() // значение для скаляра "?disp"
-  String asText() // значение для скаляра "?str"
-  Object getAs(String type) // значение для спец. атрибута "_as"
-  Double asDouble() // значение для скаляра "?num"
-  Boolean asBoolean() // значение для скаляра "?bool"
-  Object asJson() // значение для скаляра "?json"
-  Object asRaw() // значение для скаляра "?raw"
-  Object asBin() // значение для скаляра "?bin"
-  has(String name) // значение для спец. атрибута "_has"
-  Object getAtt(String name) // получить значение атрибута по его имени
-  AttEdge getEdge(String name) // получить мета-информацию об атрибуте по его имени
-  Object getType() // получить ECOS тип значения
+    Promise<?> init() // инициализация значения перед тем как начать вычисление атрибутов
+    Object getId() // идентификатор значения. Может быть как строкой, так и EntityRef  
+    Object getDisplayName() // значение для скаляра "?disp"
+    String asText() // значение для скаляра "?str"
+    Object getAs(String type) // значение для спец. атрибута "_as"
+    Double asDouble() // значение для скаляра "?num"
+    Boolean asBoolean() // значение для скаляра "?bool"
+    Object asJson() // значение для скаляра "?json"
+    Object asRaw() // значение для скаляра "?raw"
+    Object asBin() // значение для скаляра "?bin"
+    has(String name) // значение для спец. атрибута "_has"
+    Object getAtt(String name) // получить значение атрибута по его имени
+    AttEdge getEdge(String name) // получить мета-информацию об атрибуте по его имени
+    Object getType() // получить ECOS тип значения
 
 **AttValueFactory** - это интерфейс для преобразования произвольных типов данных в имплементацию AttValue
 
-Java::
+.. code-block:: java
   
   // Проинициализировать фабрику. В основном используется для получения конвертеров для других типов. 
   // Например: attValuesConverter.getFactory(DataValueAttFactory.class)
@@ -830,23 +832,23 @@ Java::
 Если для значения не нашлось подходящего ``AttValueFactory``, то используется стандартная фабрика ``BeanValueFactory``.
 Эта фабрика работает со значением как с бином, у которого ищутся геттеры для атрибутов.
 
-Например, если у нас есть следующий бин::
+Например, если у нас есть следующий бин:
 
-Java::
+.. code-block:: java
    
-  static class TestDto {
-    private String field;    
-    void setField(String value) {
-      this.field = value;
-    }
-    String getField() {
-      return field;
-    }
-  } 
+    static class TestDto {
+      private String field;    
+      void setField(String value) {
+        this.field = value;
+      }
+      String getField() {
+        return field;
+      }
+    } 
 
 То с точки зрения ``BeanValueFactory`` у этого бина есть значение с одним атрибутом "field". Пример работы:
 
-Java::
+.. code-block:: java
 
     RecordsServiceFactory serviceFactory = new RecordsServiceFactory();
     RecordsService recordsService = serviceFactory.getRecordsServiceV1();
@@ -859,7 +861,7 @@ Java::
 
 Если же мы хотим изменить имя атрибута не меняя названия методов, то можно воспользоваться аннотацией ``AttName``:
 
-Java::
+.. code-block:: java
 
     static class TestDto {
       private String field;    
@@ -887,7 +889,7 @@ Java::
 Аннотация ``@AttName`` может в качестве аргумента принимать значение ``"..."``. 
 Такая запись означает, что все атрибуты из поля с этой аннотацией будут доступны так же и в нашем значении. Пример:
 
-Java::
+.. code-block:: java
 
    static class ParentDto {
      @AttName("...")
@@ -916,7 +918,7 @@ Java::
 
 ``BeanValueFactory`` так же ищет в бине ряд специальных методов по их имени и аргументам (тип возвращаемого значения не важен):
 
-Java::
+.. code-block:: java
   
   Object getId() // значение для скаляра ?id
   Object getAsStr() // значение для скаляра "?str"
@@ -933,7 +935,7 @@ Java::
 
 Для отображаемого имени нашего бина ``BeanValueFactory`` ищет следующие методы в порядке убывания приоритета (используется первый найденный):
 
-Java::
+.. code-block:: java
   
   Object getDisplayName()
   Object getLabel()
