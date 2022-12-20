@@ -725,7 +725,7 @@ Kotlin:
     val serviceFactory = RecordsServiceFactory()
     val recordsService = serviceFactory.recordsServiceV1
   
-    val value: MutableMap<String, String> = HashMap()
+    val value = HashMap<String, String>()
     value["someKey"] = "someValue"
   
     val attributeValue = recordsService.getAtt(value, "someKey").asText()
