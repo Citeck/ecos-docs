@@ -496,7 +496,7 @@ RecordRef
 
 * Если в **RecordRef** не задан **sourceId**, то источником по умолчанию считается - "" (пустая строка).
 
-**RecordRef является наследником EntityRef**
+**RecordRef является реализацией интерфейса EntityRef**
 
 В Alfresco с таким идентификатором зарегистрирован AlfNodesRecordsDAO - источник данных, у которого запись === нода Alfresco.
 Из этого следует, что NodeRef.toString() === RecordRef.toString() для нод Alfresco;
