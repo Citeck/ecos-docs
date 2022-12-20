@@ -719,6 +719,7 @@ Kotlin/Java Backend
 Основной сервис для работы с RecordsAPI - это ``ru.citeck.ecos.records3.RecordsService``. Пример использования:
 
 Kotlin:
+
 .. code-block:: kotlin
 
     val serviceFactory = RecordsServiceFactory()
@@ -731,6 +732,7 @@ Kotlin:
     println(attributeValue) // someValue
     
 Java:
+
 .. code-block:: java
   
     RecordsServiceFactory serviceFactory = new RecordsServiceFactory();
