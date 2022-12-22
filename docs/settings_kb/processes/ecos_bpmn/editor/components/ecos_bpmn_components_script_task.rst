@@ -105,6 +105,9 @@
 
 ``webUrl`` - переменная возвращает настроенный веб url сервера
 
+``tasks`` - сервис для манипуляций над задачами.
+    - ``tasks.completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+
 .. note:: 
 
     Читай подробнее о `scripting в Camunda <https://docs.camunda.org/manual/7.14/user-guide/process-engine/scripting/>`_
