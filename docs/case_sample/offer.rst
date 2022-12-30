@@ -64,6 +64,8 @@
        :width: 600
        :align: center
 
+.. _dataset_sample:
+
 Справочники
 ~~~~~~~~~~~~
 
