@@ -18,7 +18,7 @@
        :width: 400
        :align: center
 
-Для входа в Keycloack используйте следующие логин и пароль: **admin/VeryStrongPassword**
+Для входа в Keycloack используйте логин и пароль: **admin/VeryStrongPassword**
 
 
  .. image:: _static/new_user/User_3.png
@@ -65,15 +65,13 @@
        :width: 600
        :align: center
 
-Введите обязательно имя и электронную почту, заполните остальные поля при необходимости:
+Введите обязательно **имя** и **электронную почту**, заполните остальные поля при необходимости:
 
  .. image:: _static/new_user/User_9.png
        :width: 600
        :align: center
 
-Далее добавьте пользователя в **Группы** EVERYONE и _orgstruct_home_
-
-Для этого необходимо нажать **Выбрать** и выбрать группы **EVERYONE** и **_orgstruct_home_**:
+Далее пользователей необходимо добавить в **Группы** EVERYONE и **_orgstruct_home_** - нажмите **Выбрать** и выберите группы **EVERYONE** и **_orgstruct_home_**:
 
  .. image:: _static/new_user/User_10.png
        :width: 600
