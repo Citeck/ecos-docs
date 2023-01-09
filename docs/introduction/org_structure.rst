@@ -26,7 +26,7 @@
 Для пользователей:
 
 .. image:: _static/org_structure/org_2.png
-       :width: 400
+       :width: 300
        :align: center
 
 |
@@ -41,11 +41,11 @@
                   :width: 30
                   :align: center
 
-        - | Удаление пользователя из данной группы.
+        - | **Удаление пользователя из данной группы**
           | Действие необходимо подтвердить:
 
           .. image:: _static/org_structure/org_4.png
-                  :width: 400
+                  :width: 500
                   :align: center
       * - 
 
@@ -53,10 +53,10 @@
                   :width: 30
                   :align: center
 
-        - | Просмотр профиля пользователя:
+        - | **Просмотр профиля пользователя**
 
           .. image:: _static/org_structure/org_6.png
-                  :width: 400
+                  :width: 500
                   :align: center
 
           | Профиль представлен в виде :ref:`дашборда<dashboard>`
@@ -66,7 +66,7 @@
 Для групп:
 
 .. image:: _static/org_structure/org_7.png
-       :width: 400
+       :width: 300
        :align: center
 
 |
@@ -81,11 +81,11 @@
                   :width: 30
                   :align: center
 
-        - | Редактировать группу.
+        - | **Редактировать группу**
           | Внести изменения и сохранить. 
 
           .. image:: _static/org_structure/org_9.png
-                  :width: 400
+                  :width: 500
                   :align: center
 
       * - 
@@ -94,11 +94,11 @@
                   :width: 30
                   :align: center
 
-        - | Добавить подгруппу.
+        - | **Добавить подгруппу**
           | Внести данные и сохранить. 
 
           .. image:: _static/org_structure/org_11.png
-                  :width: 400
+                  :width: 500
                   :align: center
 
       * - 
@@ -107,11 +107,11 @@
                   :width: 30
                   :align: center
 
-        - | Добавить человека в группу.
+        - | **Добавить человека в группу**
           | Внести данные и сохранить. 
 
           .. image:: _static/org_structure/org_13.png
-                  :width: 400
+                  :width: 500
                   :align: center
 
 Компонент Оргструктура
@@ -146,7 +146,7 @@
 Изменение маски вывода данных пользователя
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Маску вывода данных пользователя можно изменить. Перейдите в журнал **:ref:`«Конфигурация ECOS»<configuration_admin>`** отктройте идентификатор **orgstruct-username-mask** в режиме редактирования:
+Маску вывода данных пользователя можно изменить. Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **orgstruct-username-mask** в режиме редактирования:
 
 .. image:: _static/org_structure/org_18.png
        :width: 700
