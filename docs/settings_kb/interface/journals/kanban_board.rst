@@ -45,7 +45,7 @@
             .. image:: _static/kanban/KB9_1.png
                 :width: 30
 
-        - Просмотр свойств
+        - Просмотреть свойства
       * - |
  
             .. image:: _static/kanban/KB9_2.png
