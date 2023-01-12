@@ -67,3 +67,4 @@
 
     events/ecos_bpmn_components_timer
     events/ecos_bpmn_components_signal
+    events/ecos_bpmn_components_event_subprocess
