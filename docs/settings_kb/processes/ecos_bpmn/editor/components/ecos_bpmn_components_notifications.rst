@@ -58,7 +58,7 @@
                 :width: 300
                 :align: center
 
-_notification_variables:
+.. _notification_variables:
 
 Доступные переменные
 --------------------
