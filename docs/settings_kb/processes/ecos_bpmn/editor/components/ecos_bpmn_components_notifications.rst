@@ -58,6 +58,7 @@
                 :width: 300
                 :align: center
 
+_notification_variables:
 
 Доступные переменные
 --------------------
