@@ -43,9 +43,23 @@
                 :width: 300
                 :align: center 
 
-      * - Получатели выбираются из списка ролей, заполненных в :ref:`типе данных<data_types_main>`
+      * - Получатели могут быть выбраны из: |br| |br|
+          **Роли** |br| Роли, заполненные в :ref:`типе данных<data_types_main>`. |br| |br|
+          **Выражение** |br| Имя, recordRef или емейл получателя. Поддерживаются expression для получения данных из переменных или сервисов. Expression может вернуть множественное значение - строки разделенные запятой: ``ivan@mail.com,user2,user3``. |br|
+          |br|
+          Например: |br|
+          ``ivan.petrov`` |br|
+          ``GROUP_company_accountant`` |br|
+          ``emodel/authority-group@company_accountant`` |br|
+          ``emodel/person@ivan`` |br|
+          ``${someVariable}`` |br|
+          ``${someService.getEmails()},petya.voks`` |br|
         - 
-               .. image:: _static/52.png
+               .. image:: _static/send_task_recipient_roles.png
+                :width: 300
+                :align: center
+
+              .. image:: _static/send_task_recipient_expression.png
                 :width: 300
                 :align: center
 
