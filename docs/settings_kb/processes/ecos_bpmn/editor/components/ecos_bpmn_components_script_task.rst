@@ -106,8 +106,23 @@
 ``webUrl`` - переменная возвращает настроенный веб url сервера
 
 ``tasks`` - сервис для манипуляций над задачами.
+    
     - ``tasks.completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+
+``log`` -  логгер, пишет в микросервис ecos-process, дополнительно выводится информация о execution. Для настройки уровня логирования используется класс ``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger``. |br| Поддерживаемые методы:
+    
+    - ``log.info(message: String)``
+    - ``log.warn(message: String)``
+    - ``log.error(message: String)``
+    - ``log.debug(message: String)``
+    - ``log.trace(message: String)``
 
 .. note:: 
 
     Читай подробнее о `scripting в Camunda <https://docs.camunda.org/manual/7.14/user-guide/process-engine/scripting/>`_
+
+
+
+.. |br| raw:: html
+
+     <br>   
