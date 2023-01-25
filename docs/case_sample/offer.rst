@@ -1,5 +1,5 @@
-Описание создания процесса согласования оффера
-================================================
+Процесс согласования оффера
+=============================
 
 .. contents::
 		:depth: 6
@@ -45,7 +45,7 @@
 
 далее основной тип-кейс – Офферы (тип данных, для которого будет реализована основная бизнес-логика приложения).
 
-Структура создания каждого отдельного компонента будет обязательно начинаться с подготовки типа, а затем в зависимости от бизнес-требований дополняться созданием журналов, форм и так далее.
+Структура создания каждого отдельного компонента будет обязательно начинаться с подготовки типа данных. При создании типа данных автоматически генерируеются форма и журнал.
 
 .. _types_offer:
 
@@ -88,9 +88,8 @@
    :align: center
    :class: tight-table 
 
-        1,id,cities-type
+        1,id,city
         2,Имя,Город
-        3,Шаблон отображения имени,${cityName}
         5,Родитель,Справочник
         11,Действия, Редактировать свойства; Удалить
 
@@ -124,7 +123,7 @@
 Создание справочника Офис
 """"""""""""""""""""""""""""
 
-**Тип Офис** не зависит от других типов. Содержит информацию об офисах. Является справочником. 
+**Тип Офис** зависит от ранее созданного типа **Город** (обратить внимание на задание ассоциативного атрибута). Содержит информацию об офисах. Является справочником. 
 
 Таблица заполнения для вкладки **Основные**:
 
@@ -134,8 +133,8 @@
    :align: center
    :class: tight-table    
 
-        1,id,offices-type
-        2,Имя,Офисы
+        1,id,office
+        2,Имя,Офис
         5,Родитель,Справочник
         11,Действия, Редактировать свойства; Удалить
 
@@ -155,9 +154,9 @@
    :align: center
    :class: tight-table 
 
-        officesCode,Код,Text
-        officesCity,Город,Text
-        officesAddress,Адрес,Text
+        officeCode,Код,Text
+        officeCity,Город,Association По кнопке «Настроить» выбрать тип «Город»
+        officeAddress,Адрес,Text
 
 Ниже приведено изображение конечной настройки типа (для визуальной сверки):
 
@@ -166,9 +165,9 @@
        :align: center
 
 Создание справочника Тип должности
-""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 
-**Тип должности** не зависит от других типов. Содержит информацию о должностях.
+**Тип Должности** не зависит от других типов. Содержит информацию о должностях.
 
 Является справочником 
 
@@ -180,7 +179,7 @@
    :align: center
    :class: tight-table 
 
-        1,id,orgstruct-simple-role-type
+        1,id,orgstruct-simple-role
         2,Имя,Тип должности
         5,Родитель,Справочник
         11,Действия, Редактировать свойства; Удалить
@@ -214,7 +213,7 @@
 Создание справочника Грейд
 """"""""""""""""""""""""""""""""""""
 
-**Тип Грейд** зависит от ранее созданного типа Типы должности (обратить внимание на задание ассоциативного атрибута). Содержит информацию о грейдах.
+**Тип Грейд** зависит от ранее созданного типа **Тип должности** (обратить внимание на задание ассоциативного атрибута). Содержит информацию о грейдах.
 
 Является справочником. 
 
@@ -226,8 +225,8 @@
    :align: center
    :class: tight-table 
 
-   1,id,hr-grades-type
-   2,Имя,Грейды
+   1,id,hr-grade
+   2,Имя,Грейд
    5,Родитель,Справочник
    11,Действия, Редактировать свойства; Удалить
 
@@ -273,7 +272,7 @@
    :align: center
    :class: tight-table 
 
-   1,id,offer-social-package-type
+   1,id,social-package
    2,Имя,Социальный пакет
    5,Родитель,Справочник
    11,Действия, Редактировать свойства; Удалить
@@ -305,7 +304,7 @@
 Создание справочника Должностные обязанности
 """"""""""""""""""""""""""""""""""""""""""""""
 
-**Тип Должностные обязанности** не зависит от других типов. Содержит информацию о должностных обязанностях..
+**Тип Должностные обязанности** не зависит от других типов. Содержит информацию о должностных обязанностях.
 
 Является справочником. 
 
@@ -317,7 +316,7 @@
    :align: center
    :class: tight-table 
 
-        1,id,offer-responsibilities-type
+        1,id,offer-responsibility
         2,Имя,Должностные обязанности
         5,Родитель,Справочник
         11,Действия, Редактировать свойства; Удалить
@@ -338,8 +337,8 @@
    :align: center
    :class: tight-table 
 
-        responsibilitiesSimpleRoleTypeAssoc,Должность,Association По кнопке «Настроить» выбрать тип «Должность»
-        responsibilitiesSubordination,Подчинение,Text
+        responsibilitiesSimpleRoleTypeAssoc,Должность,Association По кнопке «Настроить» выбрать тип «Тип должности»
+        responsibilitiesSubordination,Подчинение, Person (для выбора сотрудника из оргструктуры)
 
 Ниже приведено изображение конечной настройки типа (для визуальной сверки):
 
@@ -347,7 +346,7 @@
        :width: 600
        :align: center
 
-Создание справочника Кандидаты
+Создание справочника Кандидат
 """"""""""""""""""""""""""""""""
 
 **Тип Кандидаты** зависит от ранее созданного типа Города (обратить внимание на задание ассоциативного атрибута). Содержит информацию о кандидатах, рассматриваемых для выдачи оффера.
@@ -362,8 +361,8 @@
    :align: center
    :class: tight-table 
 
-        1,id,offer-candidates-type
-        2,Имя,Кандидаты
+        1,id,offer-candidate
+        2,Имя,Кандидат
         5,Родитель,Справочник
         11,Действия, Редактировать свойства; Удалить
 
@@ -383,13 +382,13 @@
    :align: center
    :class: tight-table 
 
-        candidatesCode,Код,Text
-        candidatesLastName,Фамилия,Text
-        candidatesFirstName,Имя,Text
-        candidatesMiddleName,Отчество,Text
-        candidatesBirthDate,День рождения,Date
-        candidatesGender,Пол,Text
-        candidatesCityAssoc,Город,Association По кнопке «Настроить» выбрать тип «Город»
+        candidateCode,Код,Text
+        candidateLastName,Фамилия,Text
+        candidateFirstName,Имя,Text
+        candidateMiddleName,Отчество,Text
+        candidateBirthDate,День рождения,Date
+        candidateGender,Пол,Text
+        candidateCityAssoc,Город,Association По кнопке «Настроить» выбрать тип «Город»
 
 Ниже приведено изображение конечной настройки типа (для визуальной сверки):
 
@@ -400,17 +399,37 @@
 Кейс
 ~~~~~
 
-Присваивать номер можно автоматически. Для этого необходимо задать и настроить шаблон нумерации.
+Создание типа данных Согласование оффера
+"""""""""""""""""""""""""""""""""""""""""""
 
-Для просмотра существующих шаблонов нумерации и их редактирования создан журнал Шаблоны нумерации (**Раздел администратора - Модель – Шаблоны нумерации**):
+**Тип Согласование оффера** является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
 
-  .. image:: _static/offer/counter/count_1.png
-       :width: 600
+Таблица заполнения для вкладки **Основные**:
+
+.. csv-table::
+   :header: "Номер маркера", "Название поля", "Значение"
+   :widths: 5, 10, 20
+   :align: center
+   :class: tight-table 
+
+     1,id,offer
+     2,Имя,Согласование оффера
+     3,Шаблон отображения имени,Оффер №${registrationNumber|fmt("000000")}
+     5,Родитель,Кейс
+     8,Шаблон нумерации, Создать hr-offer-number-template см. ниже
+     11,Действия, Редактировать свойства; Удалить
+
+Пояснение к п.8. Номер можно присваивать автоматически. Для этого необходимо задать и настроить :ref:`Шаблон нумерации<number_template>`.
+
+Нажать **"Выбрать"**:
+
+  .. image:: _static/offer/counter/count_6.png
+       :width: 400
        :align: center
 
-Для создания типа данных необходимо нажать **+ - Создать новый шаблон**: 
+Далее нажать **Создать  - Создать новый шаблон**:
 
-  .. image:: _static/offer/counter/count_2.png
+  .. image:: _static/offer/counter/count_7.png
        :width: 600
        :align: center
 
@@ -430,27 +449,11 @@
      2,Name,Offer Number Template
      3,Counter key,hr-offer-counter
 
+И выбрать созданный шаблон:
 
-Создание типа данных Согласование оффера
-"""""""""""""""""""""""""""""""""""""""""""
-
-**Тип Согласование оффера** является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов :ref:`здесь<data_types_types>`)
-
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 5, 10, 20
-   :align: center
-   :class: tight-table 
-
-     1,id,offer-type
-     2,Имя,Согласование оффера
-     3,Шаблон отображения имени,Оффер №${registrationNumber|fmt("000000")}
-     4,Описание,Согласование оффера
-     5,Родитель,Кейс
-     8,Шаблон нумерации,Выбрать созданный выше hr-offer-number-template
-     11,Действия, Редактировать свойства; Удалить
+  .. image:: _static/offer/counter/count_8.png
+       :width: 600
+       :align: center
 
 Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)
 
@@ -472,25 +475,23 @@
 
           registrationNumber,Регистрационный номер,Text
           offerIssueDate,Дата создания,Date
-          regNumberCounter,Счетчик регномера,Text
           initiator,Инициатор,Person
-          offerCandidate,Кандидат,Person
+          offerCandidate,Кандидат,Association По кнопке «Настроить» выбрать тип «Кандидат»
           offerPosition,Должность,Association По кнопке «Настроить» выбрать тип «Тип должности»
-          offerSubdivision,Подразделение,Authority
-          offerGrade,Грейд,Association По кнопке «Настроить» выбрать тип «Грейды»:
-          offerOffice,Офис,Association По кнопке «Настроить» выбрать тип «Офисы»:
+          offerSubdivision,Подразделение,Group
+          offerGrade,Грейд,Association По кнопке «Настроить» выбрать тип «Грейд»:
+          offerOffice,Офис,Association По кнопке «Настроить» выбрать тип «Офис»:
           offerComment,Комментарий,Text
-          offerChief,Руководитель,Authority
-          offerAdditionalChief,Доп. согласующий,Authority
+          offerChief,Руководитель,Person
+          offerAdditionalChief,Доп. согласующий,Person
           offerFeedback,Фидбэк по собеседованиям,Text
           offerSalaryAndPrize,Зарплатная вилка и премия,Text
-          offerSubordination,Подчинение,Text
+          offerSubordination,Подчинение,Person
           offerSalary,Оклад,Number
           offerPrize,Премия,Text
           offerSchedule,График работы,Text
           content,Содержимое,Content
           offerDateWork,Дата выхода на работу,Date
-          offerTaskComment,Комментарий к задаче,Text
           offerApproveStage,Номер этапа согласования,Number
           offerTaskComment,Комментарий по офферу,Text
 
@@ -567,738 +568,93 @@
 Журналы
 --------
 
-Для каждого созданного типа данных необходимо создать журнал. 
+При создании типа данных по умолчанию создается связанный с ним :ref:`автоматически сгенерированный журнал<auto_journal>` журнал. Такой журнал получает идентификатор вида **type$idтипа**.
 
-При создании типа данных по умолчанию создается связанный с ним журнал. Подробно об этом см. :ref:`Автоматически сгенерированный журнал<auto_journal>`
+Созданные автоматически журналы доступны в разделе **Журналы** (**Раздел администратора - Конфигурация UI - Журналы**):
 
-Ниже приведена информация по созданным журналам.
+  .. image:: _static/offer/journal_auto_1.png
+       :width: 700
+       :align: center
 
-Журнал Города
-~~~~~~~~~~~~~~~
+Автосозданный журнал может полноценно использоваться в системе – и быть добавлен в :ref:`меню<menu>` - рассмотрим на примере справочника **«Города»**:
 
-Таблица заполнения для вкладки **Основные**:
+1. Перейдите в настройку меню, нажав на шестеренку справа сверху, далее выберите **«Настроить меню»**:
 
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,scan-cities
-     2,Название журнала,Города
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Город
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     cityCode,Код,Текст
-     cityName,Название,Текст
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_1.png
+  .. image:: _static/offer/menu_1.png
        :width: 600
        :align: center
 
-Журнал Офисы
-~~~~~~~~~~~~~~~~~~~~~~~~
+2. Перейдите во вкладку **«Настройки выбранной конфигурации»**, нажмите **«+ Добавить»**, выберите **«Раздел»**:
 
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-offices-journal
-     2,Название журнала,Офисы
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Офисы
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     officesCode,Код,Текст
-     officesCity,Город,Текст
-     officesAddress,Адрес,Текст
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_2.png
+  .. image:: _static/offer/menu_2.png
        :width: 600
        :align: center
 
-Журнал Тип должности
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. В поле **«Название»** введите название раздела. Например, «Офферы». Нажмите **«Сохранить»**.
 
-Таблица заполнения для вкладки **Основные**:
+  .. image:: _static/offer/menu_3.png
+       :width: 400
+       :align: center
 
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
+4. Наведите курсор на добавленный раздел, нажмите **«+ Добавить»**, выберите **«Журнал»**:
 
-     1,Идентификатор журнала,orgstruct-simple-role-journal
-     2,Название журнала,Тип должности
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Тип должности
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     name,Имя,Текст
-     title,Должность,Текст
-     rolesManager,Руководящая роль,Булево
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_3.png
+  .. image:: _static/offer/menu_4.png
        :width: 600
        :align: center
 
-Журнал Грейды
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Выберите журнал **«type$city»** и нажмите **ОК**:
 
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-grades-journal
-     2,Название журнала,Грейды
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Грейды
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     gradesSimpleRoleTypeAssoc,Должность,Текст
-     gradesNumber,Номер,Текст
-     gradesRequirements,Требования к сотруднику,Текст
-     gradesResponsibilities,Обязанности,Текст
-     gradesSalary,Вилка окладов,Текст
-     gradesPrize,Премия,Текст
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_4.png
+  .. image:: _static/offer/menu_5.png
        :width: 600
        :align: center
 
-Журнал Социальный пакет
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-social-package-journal
-     2,Название журнала,Социальный пакет
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Социальный пакет
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     socialPackage,Соц.пакет,Текст
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_5.png
+  .. image:: _static/offer/menu_6.png
        :width: 600
        :align: center
 
-Журнал Должностные обязанности
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+В левом меню появился новый журнал **«Город»**, в котором по нажатию на **+** открывается форма создания нового элемента:
 
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-responsibilities-journal
-     2,Название журнала,Должностные обязанности
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Должностные обязанности
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     responsibilitiesSimpleRoleTypeAssoc,Должность,Текст
-     responsibilitiesSubordination,Подчинение,Текст
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_6.png
+  .. image:: _static/offer/menu_7.png
        :width: 600
        :align: center
 
-Журнал Кандидаты
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-candidates-journal
-     2,Название журнала,Кандидаты
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Кандидаты
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     candidatesCode,Код,Текст
-     candidatesLastName,Фамилия,Текст
-     candidatesFirstName,Имя,Текст
-     candidatesMiddleName,Отчество,Текст
-     candidatesBirthDate,Дата рождения,Дата
-     candidatesGender,Пол,Текст
-     candidatesCityAssoc,Город,Ассоциация
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_7.png
-       :width: 600
-       :align: center
-
-Журнал Согласование оффера
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Таблица заполнения для вкладки **Основные**:
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор журнала,offer-journal
-     2,Название журнала,Согласование оффера
-     3,Действия,Редактировать свойства; Удалить
-     4,Тип данных,Согласование оффера
-
-.. csv-table::
-   :header: "Id (5)", "Имя (6)", "Тип (3)"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     _created,Дата создания,Дата
-     registrationNumber,Регистрационный номер,Текст
-     offerCandidate,Кандидат,Ассоциация
-     offerPosition,Должность,Ассоциация
-     offerSubdivision,Подразделение,Ассоциация
-     offerGrade,Грейд,Ассоциация
-     initiator,Инициатор,Группа или человек
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/journal_8.png
-       :width: 600
-       :align: center
+Форма так же была создана по умолчанию из типа данных. См. подробно ниже
 
 Формы
 -------
 
-Далее для созданных типов данных создаем формы в редакторе форм. 
+При создании типа данных по умолчанию создается связанная :ref:`автоматически сгенерированная форма<auto_form>`.
 
-При создании типа данных по умолчанию создается связанная с ними форма. Подробно об этом см. :ref:`Автоматически сгенерированная форма<auto_form>`
+Для просмотра существующих форм и их редактирования создан журнал **Формы** (**Раздел администратора - Конфигурация UI - Формы**):
 
-Ниже приведена информация по созданным формам.
+ .. image:: _static/offer/forms_journal.png
+       :width: 700
+       :align: center
 
-Подробно о:
+Подробная информация о:
 
      - :ref:`формах<forms>`, 
      - :ref:`редакторе форм<form_builder>`, 
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
 
-Для просмотра существующих форм и их редактирования создан журнал **Формы** (**Раздел администратора - Конфигурация UI - Формы**):
-
- .. image:: _static/offer/form_new_1.png
-       :width: 600
-       :align: center
-
-Для создания формы необходимо нажать **+ - Создать форму**:
-
- .. image:: _static/offer/form_new_2.png
-       :width: 600
-       :align: center
-
-Основные формы
-~~~~~~~~~~~~~~~~~
-
-Создание формы Город
-""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,cities-form
-     2,Название формы,Город
-     3,Ключ формы,cities-form
-     4,Редактируемый тип данных,Город
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_1.png
-       :width: 600
-       :align: center
-
-Нажать кнопку **«Редактировать форму»**. Чтобы добавить компонент в форму, перетащите компонент из левого столбца в нужное место в форме:
-
-Пример формы:
-
-  .. image:: _static/offer/form_2.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,:ref:`Table Component<Table>`
-     cityCode,cityCode,:ref:`Text Field Component<sample_text_field_component>`
-     cityName,cityCode,Text Field Component
-
-
-Создание формы Офис
-""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,offer-offices-form
-     2,Название формы,Офисы
-     3,Ключ формы,offer-offices-form
-     4,Редактируемый тип данных,Офисы
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_3.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_4.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,:ref:`Columns Component<sample_columns_component>`
-     Код,officesCode,Text Field Component
-     Город,officesCity,Text Field Component
-     Адрес,officesAddress,Text Field Component
-
-
-Создание формы Тип должности
-""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,orgstruct-simple-role-form
-     2,Название формы,Тип должности
-     3,Ключ формы,orgstruct-simple-role-form
-     4,Редактируемый тип данных,Тип должности
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_5.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_6.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,Columns Component
-     Имя,name,Text Field Component
-     Заголовок,title,Text Field Component
-     Руководящая должность,rolesManager,:ref:`Checkbox Component<Checkbox>`
-
-
-Создание формы Грейд
-"""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,hr-grades-form
-     2,Название формы,Грейды
-     3,Ключ формы,hr-grades-form
-     4,Редактируемый тип данных,Грейды
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_7.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_8.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,Columns Component
-     Должность,gradesSimpleRoleTypeAssoc,:ref:`Select Journal Component<sample_select_journal_component>`
-     Номер,gradesNumber,Text Field Component
-     Требования к сотруднику,gradesRequirements,Text Field Component
-     Обязанности,gradesResponsibilities,Text Field Component
-     Вилка оклада,gradesSalary,Text Field Component
-     Премия,gradesPrize,Text Field Component
-
-Создание формы Социальный пакет
-"""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,offer-social-package-form
-     2,Название формы,Социальный пакет
-     3,Ключ формы,offer-social-package-form
-     4,Редактируемый тип данных,Социальный пакет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_9.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_10.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,Columns Component
-     Название,socialPackage,Text Field Component
-
-
-Создание формы Должностные обязанности
-"""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,offer-responsibilities-form
-     2,Название формы,Responsibilities Form
-     3,Ключ формы,offer-responsibilities-form
-     4,Редактируемый тип данных,Должностные обязанности
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_11.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_12.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Колонки формы,Columns Component
-     Должность,gradesSimpleRoleTypeAssoc,Select Journal Component
-     Подчинение,responsibilitiesSubordination,Text Field Component
-
-Создание формы Кандидаты
-""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,offer-candidates-form
-     2,Название формы,Candidates Form
-     3,Ключ формы,offer-candidates-form
-     4,Редактируемый тип данных,Кандидаты
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_13.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_14.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. list-table::
-      :widths: 5 10 20
-      :header-rows: 1
-      :align: center
-      :class: tight-table 
-      
-      * - Название поля
-        - Имя свойства
-        - Наименование компонента
-      * - |
-        - Колонки формы
-        - Columns Component
-      * - Код
-        - candidatesCode
-        - Text Field Component
-      * - Фамилия
-        - candidatesLastName
-        - Text Field Component
-      * - Имя
-        - candidatesFirstName
-        - Text Field Component
-      * - Отчество
-        - candidatesMiddleName
-        - Text Field Component
-      * - Дата рождения
-        - candidatesBirthDate
-        - :ref:`Date / Time Component<sample_date_time_component>`
-      * - Пол
-        - candidatesGender
-        - :ref:`ECOS Select Component<sample_ecos_select_component>` 
-
-               .. image:: _static/offer/form_17.png
-                    :width: 300
-                    :align: center
-      * - Город
-        - candidatesCityAssoc
-        - Select Journal Component
-
-Кнопки для форм, созданных выше:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Отменить
-        - |
-
-               .. image:: _static/offer/form_18.png
-                    :width: 400
-                    :align: center
-
-      * - Сохранить
-        - |
-
-               .. image:: _static/offer/form_19.png
-                    :width: 400
-                    :align: center
-
-Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
-
-  .. image:: _static/offer/form_48.png
-       :width: 600
-       :align: center
-
-Создание формы Согласование оффера
-""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     1,Идентификатор формы,offer-form
-     2,Название формы,Offer Form
-     3,Ключ формы,offer-form
-     4,Редактируемый тип данных,Согласование оффера
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_15.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_16.png
-       :width: 600
-       :align: center
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Заголовок,:ref:`Panel Component<sample_panel_component>`
-     ,Колонки формы,Columns Component
-     Регистрационный номер,registrationNumber,Text Field Component
-     Присвоить номер,generateNumber,Checkbox Component
-     Дата создания,_created (для автоматического ввода даты создания документа),Date / Time Component
-     Комментарий по результатам,offerTaskComment,:ref:`Text Area Component<Text_Area>`
-     initiator,initiator,Select Orgstruct Component
-     Кандидат,offerCandidate,Select Journal Component
-     Должность,offerPosition,Select Journal Component
-     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
-     Грейд,offerGrade,Select Journal Component
-     Руководитель,offerChief,Select Orgstruct Component
-     Офис,offerOffice,Select Journal Component
-     Доп.согласующий,offerAdditionalChief,Select Orgstruct Component
-     Комментарий,offerComment,Text Area Component
-     Зарплатная вилка и премия,offerSalaryForkAndPrize,Text Field Component
-     Подчинение,offerSubordinationAtr,Text Field Component
-     Фидбэк по собеседованиям,offerFeedback,Text Area Component
-     Оклад,offerSalary,:ref:`Number Component<Number>`
-     Премия,offerPrize,Text Field Component
-     График работы,offerSchedule,Text Field Component
-     Дата выхода на работу,offerDateWork,Date / Time Component
-     Файлы,content,:ref:`File Component<File_>`
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Отменить
-        - |
-
-               .. image:: _static/offer/form_20.png
-                    :width: 400
-                    :align: center
-
-      * - Создать
-        - |
-
-               .. image:: _static/offer/form_21.png
-                    :width: 400
-                    :align: center
-
-      * - Сохранить (как черновик)
-        - |
-
-               .. image:: _static/offer/form_22.png
-                    :width: 400
-                    :align: center
-
 Формы, используемые при принятии решений
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Далее необходимо создать формы, которые будут использоваться в бизнес-процессе:
 
 Создание формы Доработка
 """""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-      1,Идентификатор формы,offer-form-rework
-      2,Название формы,Offer Form Rework
-      3,Ключ формы,offer_form_rework
-      4,Редактируемый тип данных,Нет
+      Идентификатор формы,offer-form-rework
+      Название формы,Offer Form Rework
+      Редактируемый тип данных,Нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -1336,15 +692,14 @@
 """""""""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-      1,Идентификатор формы,offer-form-approve
-      2,Название формы,Offer Form Approve
-      3,Ключ формы,hr_offer_form_approve
-      4,Редактируемый тип данных,Согласование оффера
+      Идентификатор формы,offer-form-approve
+      Название формы,Offer Form Approve
+      Редактируемый тип данных,Нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -1405,15 +760,14 @@
 """""""""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-        1,Идентификатор формы,offer-form-add-approve
-        2,Название формы,Offer Form Add Approve
-        3,Ключ формы,offer_form_add_approve
-        4,Редактируемый тип данных,Нет
+        Идентификатор формы,offer-form-add-approve
+        Название формы,Offer Form Add Approve
+        Редактируемый тип данных,Нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -1466,15 +820,14 @@
 """""""""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-      1,Идентификатор формы,offer-director-form-approve
-      2,Название формы,Offer Director Form Approve
-      3,Ключ формы,offer_director_form_approve
-      4,Редактируемый тип данных,Согласование оффера
+      Идентификатор формы,offer-director-form-approve
+      Название формы,Offer Director Form Approve
+      Редактируемый тип данных,Нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -1536,15 +889,14 @@
 """""""""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-      1,Идентификатор формы,offer-form-feedback
-      2,Название формы,Offer Form Feedback
-      3,Ключ формы,offer_form_feedback
-      4,Редактируемый тип данных,нет
+      Идентификатор формы,offer-form-feedback
+      Название формы,Offer Form Feedback
+      Редактируемый тип данных,нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
@@ -1596,15 +948,14 @@
 """""""""""""""""""""""""""""""""""""""""""""
 
 .. csv-table::
-   :header: "Номер маркера", "Название поля", "Значение"
-   :widths: 15, 10, 10
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
    :align: center
    :class: tight-table 
 
-      1,Идентификатор формы,offer-form-feedback-from-candidate
-      2,Название формы,Offer Form Feedback From Candidate
-      3,Ключ формы,offer_form_feedback_from_candidate
-      4,Редактируемый тип данных,нет
+      Идентификатор формы,offer-form-feedback-from-candidate
+      Название формы,Offer Form Feedback From Candidate
+      Редактируемый тип данных,нет
 
 Ниже приведено изображение конечной настройки (для визуальной сверки):
 
