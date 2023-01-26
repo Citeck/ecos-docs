@@ -638,372 +638,6 @@
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
 
-Формы, используемые при принятии решений
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Далее необходимо создать формы, которые будут использоваться в бизнес-процессе:
-
-Создание формы Доработка
-"""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-      Идентификатор формы,offer-form-rework
-      Название формы,Offer Form Rework
-      Редактируемый тип данных,Нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_23.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_24.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий руководителя,chiefApproveComment,Text Area Component
-      Комментарий Директора,dirApproveComment,Text Area Component
-      Комментарий,reworkComment,Text Area Component
-
-Кнопка Done:
-
-  .. image:: _static/offer/form_25.png
-       :width: 400
-       :align: center
-
-Создание формы Согласование руководителем
-"""""""""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-      Идентификатор формы,offer-form-approve
-      Название формы,Offer Form Approve
-      Редактируемый тип данных,Нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_26.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_27.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий доп. согласующего,addApproveComment,Text Area Component
-      Комментарий после доработки,reworkComment,Text Area Component
-      Комментарий,chiefApproveComment,Text Area Component
-
-Кнопки формы:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Reject
-        - |
-
-               .. image:: _static/offer/form_28.png
-                    :width: 400
-                    :align: center
-
-      * - Rework
-        - |
-
-               .. image:: _static/offer/form_29.png
-                    :width: 400
-                    :align: center
-
-      * - Submit
-        - |
-
-               .. image:: _static/offer/form_30.png
-                    :width: 400
-                    :align: center
-
-
-Создание формы Согласование доп. согласующих
-"""""""""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-        Идентификатор формы,offer-form-add-approve
-        Название формы,Offer Form Add Approve
-        Редактируемый тип данных,Нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_31.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_32.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий руководителя,chiefApproveComment,Text Area Component
-      Комментарий,addApproveComment,Text Area Component
-
-Кнопки формы:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Reject
-        - |
-
-               .. image:: _static/offer/form_33.png
-                    :width: 400
-                    :align: center
-
-      * - Submit
-        - |
-
-               .. image:: _static/offer/form_34.png
-                    :width: 400
-                    :align: center
-
-
-Создание формы Согласование директором
-"""""""""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-      Идентификатор формы,offer-director-form-approve
-      Название формы,Offer Director Form Approve
-      Редактируемый тип данных,Нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_35.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_36.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий руководителя,chiefApproveComment,Text Area Component
-      Комментарий доп. согласующего,addApproveComment,Text Area Component
-      Комментарий после доработки,reworkComment,Text Area Component
-      Комментарий,addApproveComment,Text Area Component
-
-Кнопки формы:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Reject
-        - |
-
-               .. image:: _static/offer/form_37.png
-                    :width: 400
-                    :align: center
-
-      * - Rework
-        - |
-
-               .. image:: _static/offer/form_38.png
-                    :width: 400
-                    :align: center
-      
-      * - Submit
-        - |
-
-               .. image:: _static/offer/form_39.png
-                    :width: 400
-                    :align: center
-
-
-Создание формы Формирование ответа кандидату
-"""""""""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-      Идентификатор формы,offer-form-feedback
-      Название формы,Offer Form Feedback
-      Редактируемый тип данных,нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_40.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_41.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий директора,dirApproveComment,Text Area Component
-      Comment,offerTaskComment,Text Area Component
-
-Кнопки формы:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Send Reject
-        - |
-
-               .. image:: _static/offer/form_42.png
-                    :width: 400
-                    :align: center
-
-      * - Send Offer
-        - |
-
-               .. image:: _static/offer/form_43.png
-                    :width: 400
-                    :align: center
-
-Создание формы Ожидание ответа кандидата
-"""""""""""""""""""""""""""""""""""""""""""""
-
-.. csv-table::
-   :header: "Название поля", "Значение"
-   :widths: 10, 10
-   :align: center
-   :class: tight-table 
-
-      Идентификатор формы,offer-form-feedback-from-candidate
-      Название формы,Offer Form Feedback From Candidate
-      Редактируемый тип данных,нет
-
-Ниже приведено изображение конечной настройки (для визуальной сверки):
-
-  .. image:: _static/offer/form_44.png
-       :width: 600
-       :align: center
-
-Пример формы:
-
-  .. image:: _static/offer/form_45.png
-       :width: 600
-       :align: center
-
-
-Компоненты формы:
-
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-      ,Колонки формы,Columns Component
-      Комментарий,offerTaskComment,Text Area Component
-      Комментарий по результатам,_ECM_offerTaskComment,Text Area Component
-
-Кнопки формы:
-
-.. list-table::
-      :widths: 10 50
-      :align: center
-      :class: tight-table 
-
-      * - Reject Offer
-        - |
-
-               .. image:: _static/offer/form_46.png
-                    :width: 400
-                    :align: center
-
-      * - Accept Offer
-        - |
-
-               .. image:: _static/offer/form_47.png
-                    :width: 400
-                    :align: center      
-
-
 Создание бизнес-процесса
 -------------------------
 
@@ -1404,7 +1038,15 @@
                 :width: 300
                 :align: center
 
-Создание формы, если она не была создана ранее:
+Создание формы:
+
+Нажмите **"Выбрать"**:
+
+ .. image:: _static/offer/bmpn25_1.png
+       :width: 400
+       :align: center
+
+Далеее **"Создать - Создать форму"**:
 
  .. image:: _static/offer/bmpn25.png
        :width: 600
@@ -1415,6 +1057,71 @@
  .. image:: _static/offer/bmpn26.png
        :width: 600
        :align: center
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+      Идентификатор формы,offer-form-approve
+      Название формы,Offer Form Approve
+      Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_26.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_27.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий доп. согласующего,addApproveComment,Text Area Component
+      Комментарий после доработки,reworkComment,Text Area Component
+      Комментарий,chiefApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_28.png
+                    :width: 400
+                    :align: center
+
+      * - Rework
+        - |
+
+               .. image:: _static/offer/form_29.png
+                    :width: 400
+                    :align: center
+
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_30.png
+                    :width: 400
+                    :align: center
+
 
 Для последующих элементов:
 
@@ -1546,6 +1253,49 @@
 
            | **Для всех подобных задач в «Форма задачи» выбрать ранее созданную форму задачи**   
 
+Информация по форме **Доработка (Offer Form Rework)**:
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+      Идентификатор формы,offer-form-rework
+      Название формы,Offer Form Rework
+      Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_23.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_24.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий Директора,dirApproveComment,Text Area Component
+      Комментарий,reworkComment,Text Area Component
+
+Кнопка Done:
+
+  .. image:: _static/offer/form_25.png
+       :width: 400
+       :align: center
 
 Создание элементов для Части (3) схемы бизнес-процесса
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1647,7 +1397,71 @@
                .. image:: _static/offer/bpform/bpform_38.png
                     :width: 400
                     :align: center
-      
+
+Информация по форме **Согласование доп. согласующими (Offer Form Add Approve)**:      
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+        Идентификатор формы,offer-form-add-approve
+        Название формы,Offer Form Add Approve
+        Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_31.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_32.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий,addApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_33.png
+                    :width: 400
+                    :align: center
+
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_34.png
+                    :width: 400
+                    :align: center
+
+
+.. list-table::
+      :widths: 5 10 50
+      :align: center
+      :class: tight-table 
+
       * - 6
         - 
                .. image:: _static/offer/bpform/bpform_35.png
@@ -1762,6 +1576,79 @@
                .. image:: _static/offer/bpform/bpform_55.png
                     :width: 400
                     :align: center
+
+Информация по форме **Согласование директором (Offer Director Form Approve)**:   
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+      Идентификатор формы,offer-director-form-approve
+      Название формы,Offer Director Form Approve
+      Редактируемый тип данных,Нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_35.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_36.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий руководителя,chiefApproveComment,Text Area Component
+      Комментарий доп. согласующего,addApproveComment,Text Area Component
+      Комментарий после доработки,reworkComment,Text Area Component
+      Комментарий,addApproveComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Reject
+        - |
+
+               .. image:: _static/offer/form_37.png
+                    :width: 400
+                    :align: center
+
+      * - Rework
+        - |
+
+               .. image:: _static/offer/form_38.png
+                    :width: 400
+                    :align: center
+      
+      * - Submit
+        - |
+
+               .. image:: _static/offer/form_39.png
+                    :width: 400
+                    :align: center
+
+.. list-table::
+      :widths: 5 15 50
+      :align: center
+      :class: tight-table 
+
       * - 6
         - 
                .. image:: _static/offer/bpform/bpform_56.png
@@ -1836,6 +1723,8 @@
                .. image:: _static/offer/bpform/bpform_59.png
                     :width: 400
                     :align: center
+
+          Для всех подобных задач в **«Форма задачи»** выбрать ранее созданную форму задачи. 
 
 
 Создание элементов для Части (5) схемы бизнес-процесса
@@ -1961,6 +1850,70 @@
                .. image:: _static/offer/bpform/bpform_78.png
                     :width: 400
                     :align: center
+
+Информация по форме **Формирование ответа кандидату (Offer Form Feedback)**:   
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+      Идентификатор формы,offer-form-feedback
+      Название формы,Offer Form Feedback
+      Редактируемый тип данных,нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_40.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_41.png
+       :width: 600
+       :align: center
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий директора,dirApproveComment,Text Area Component
+      Comment,offerTaskComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Send Reject
+        - |
+
+               .. image:: _static/offer/form_42.png
+                    :width: 400
+                    :align: center
+
+      * - Send Offer
+        - |
+
+               .. image:: _static/offer/form_43.png
+                    :width: 400
+                    :align: center
+
+
+.. list-table::
+      :widths: 5 15 50
+      :align: center
+      :class: tight-table 
+
       * - 10
         - 
                .. image:: _static/offer/bpform/bpform_79.png
@@ -2052,6 +2005,71 @@
                .. image:: _static/offer/bpform/bpform_87.png
                     :width: 400
                     :align: center
+
+Информация по форме **Ожидание ответа кандидата (Offer Form Feedback From Candidate)**:   
+
+.. csv-table::
+   :header: "Название поля", "Значение"
+   :widths: 10, 10
+   :align: center
+   :class: tight-table 
+
+      Идентификатор формы,offer-form-feedback-from-candidate
+      Название формы,Offer Form Feedback From Candidate
+      Редактируемый тип данных,нет
+
+Ниже приведено изображение конечной настройки (для визуальной сверки):
+
+  .. image:: _static/offer/form_44.png
+       :width: 600
+       :align: center
+
+Пример формы:
+
+  .. image:: _static/offer/form_45.png
+       :width: 600
+       :align: center
+
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+      ,Колонки формы,Columns Component
+      Комментарий,offerTaskComment,Text Area Component
+      Комментарий по результатам,_ECM_offerTaskComment,Text Area Component
+
+Кнопки формы:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Reject Offer
+        - |
+
+               .. image:: _static/offer/form_46.png
+                    :width: 400
+                    :align: center
+
+      * - Accept Offer
+        - |
+
+               .. image:: _static/offer/form_47.png
+                    :width: 400
+                    :align: center      
+
+.. list-table::
+      :widths: 5 15 50
+      :align: center
+      :class: tight-table 
+
+
       * - 6
         - 
                .. image:: _static/offer/bpform/bpform_90.png
