@@ -146,20 +146,43 @@
 Изменение маски вывода данных пользователя
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Маску вывода данных пользователя можно изменить. Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **orgstruct-username-mask** в режиме редактирования:
+Маску для отображения информации о пользователе можно изменить. Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **orgstruct-username-mask** в режиме редактирования:
 
 .. image:: _static/org_structure/org_18.png
        :width: 700
        :align: center
 
-Укажите маску и сохраните:
+Укажите маску, например, **${firstName} ${lastName} ${email}** и сохраните:
 
 .. image:: _static/org_structure/org_19.png
        :width: 400
        :align: center
 
-Измененный вывода данных пользователя:
+Измененный вывод данных пользователя в комопоненте Оргструктура:
 
 .. image:: _static/org_structure/org_20.png
        :width: 400
+       :align: center
+
+Добавлена возможность в конфигурации маски отображения пользователей в компоненте оргструктура использовать код HTML. 
+
+Пример с использованием кода HTML:
+
+Маска -  **${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://ecos-community-demo/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>**
+
+.. image:: _static/org_structure/org_21.png
+       :width: 400
+       :align: center
+
+По клику на ссылку в отдельной вкладке открывается страница профиля пользователя.
+
+Где найти атрибуты для маски
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Перейти в **Типы данных**, в настройках выставить :ref:`отображение системных типов<data_types_admin>`.
+
+Открыть тип **Person**, перейти в атрибуты:
+
+.. image:: _static/org_structure/person_type.png
+       :width: 600
        :align: center
