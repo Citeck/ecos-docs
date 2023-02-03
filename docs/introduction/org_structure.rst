@@ -158,7 +158,7 @@
        :width: 400
        :align: center
 
-Измененный вывод данных пользователя в комопоненте Оргструктура:
+Измененный вывод данных пользователя в компоненте Оргструктура:
 
 .. image:: _static/org_structure/org_20.png
        :width: 400
@@ -166,9 +166,9 @@
 
 Добавлена возможность в конфигурации маски отображения пользователей в компоненте оргструктура использовать код HTML. 
 
-Пример с использованием кода HTML:
+Пример с использованием кода HTML. Маска:
 
-Маска -  **${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://ecos-community-demo/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>**
+**${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://ecos-community-demo/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>**
 
 .. image:: _static/org_structure/org_21.png
        :width: 400
