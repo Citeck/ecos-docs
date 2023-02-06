@@ -95,7 +95,7 @@
 Пример описания типа
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: yaml
 
     id: hr-offices-type
     name:
@@ -237,8 +237,10 @@
         - 
       * - 13
         - **Тип источника данных**
-        - хранилище, в которое будут заноситься записи данного типа (название отражает не использумую БД, а сервис, в БД которого будут направляться запросы)
-        - выбирается из списка предлагаемых
+        - хранилище, в которое будут заноситься записи данного типа (название отражает не использумую БД, а сервис, в БД которого будут направляться запросы).
+          Значение "По умолчанию" означает, что для места хранения будет использоваться "ID источника данных (14)" из текущего или родительского
+          типа и при этом не будет никакого автоматического создания хранилища. Т.е. при типе источника данных "По умолчанию" предполагается, что место хранения уже подготовлено заранее.
+        - выбирается из списка предлагаемых. 
       * - 14
         - **ID источника данных**
         - иденифтикатор источника для случая, когда используется хранилище не встроенное по умлочанию в систему (в случае когда в п.14 выбран выриант Custom)
@@ -378,7 +380,7 @@
       * - **JSON**
         - текстовый, структурированный формат данных. Например:
 
-          .. code-block::
+          .. code-block:: json
 
             {"some": "data"}         
       * - **Binary**
@@ -433,12 +435,12 @@
       * - **Records** - адаптер для RecordsService;
         - Методы:
 
-            .. code-block::
+            .. code-block:: text
 
               get(recordRef: String): AttValueScriptCtx // возвращает объект аналогичный value, который описан выше
               query(query: Object, attributes: Any?) // возвращает объект вида:
 
-            .. code-block::  
+            .. code-block::  json
 
               {
                   "records": [{
@@ -458,14 +460,14 @@
       * - **value** - текущий документ;
         - |  Свойства
 
-            .. code-block::
+            .. code-block:: text
 
                 id: String //глобальный идентификатор записи
                 localId: String //локальный идентификатор записи
 
           | Методы:
 
-            .. code-block::
+            .. code-block:: text
 
               load(attributes: Any?): Any? // загрузка атрибутов у текущей записи. Можно передавать массив, строку и объект <String, String>
 
@@ -971,11 +973,11 @@ Java
 
 Загрузка:
 
-.. code-block::
+.. code-block:: java
 
   EntityRef tempFile = contentApi.uploadTempFile()
-      .withMimeType('application/pdf')
-      .writeContent(writer -> writer.writeBytes(imageContent1));
+      .withMimeType("application/pdf")
+      .writeContent((writer) -> writer.writeBytes(imageContent1));
 
   ObjectData attributeForMutation = ObjectData.create()
       .set("customContentAtt", tempFile);
@@ -987,7 +989,7 @@ Java
 
 Чтение:
 
-.. code-block::
+.. code-block:: java
 
   EntityRef ref = EntityRef.valueOf("emodel/test@localId");
   EcosContentData contentData = contentApi.getContent(ref, "attributeWithContent");
@@ -1213,4 +1215,3 @@ Java
 .. image:: _static/data_types/auto_17.png
        :width: 700
        :align: center
-
