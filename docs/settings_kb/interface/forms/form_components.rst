@@ -8,6 +8,7 @@
 
     form_components/components_common
     form_components/components
+    form_components/settings
 
 
 
