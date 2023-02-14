@@ -47,6 +47,8 @@
 
 Также в контексте скрипта доступно несколько специальных переменных:
 
+.. _execution:
+
 ``execution`` - переменная, которая всегда доступна, если скрипт выполняется в области выполнения (например, в Script Task). `(DelegateExecution) <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_
 
 .. code-block:: javascript

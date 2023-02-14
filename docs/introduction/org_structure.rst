@@ -143,6 +143,10 @@
        :width: 400
        :align: center
 
+
+Конфигурация компонента оргструктуры
+-------------------------------------
+
 Изменение маски вывода данных пользователя
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -185,4 +189,25 @@
 
 .. image:: _static/org_structure/person_type.png
        :width: 600
+       :align: center
+
+Скрывать пользователей/ группы при поиске в оргструктуре
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **hide-in-orgstruct** в режиме редактирования:
+
+.. image:: _static/org_structure/org_22.png
+       :width: 700
+       :align: center
+
+Укажите логины пользователей, например, **ivanov_ii,petrov_vv** и сохраните:
+
+.. image:: _static/org_structure/org_23.png
+       :width: 400
+       :align: center
+
+Поиск пользователя в компоненте Оргструктура:
+
+.. image:: _static/org_structure/org_24.png
+       :width: 400
        :align: center
