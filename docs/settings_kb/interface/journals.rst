@@ -12,6 +12,7 @@
     journals/group_actions
     journals/search_jourmal_config
     journals/computed attributes
+    journals/filter_by _text _assoc_column
     journals/formatters
     journals/editors
     journals/search_nested_attributes
