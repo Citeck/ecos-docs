@@ -584,6 +584,177 @@
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
 
+Для справочников «Город», «Офис», «Тип должности», «Грейд», «Социальный пакет», «Должностные обязанности» оставим автоматически сгенерированные формы.
+
+Ниже рассмотрим, как изменить  формы «Кандидаты» и «Офферы». Скопируйте форму из карточки типа данных:
+
+ .. image:: _static/offer/form_edit_1.png
+       :width: 600
+       :align: center
+
+Переименуйте идентификатор формы:
+
+ .. image:: _static/offer/form_edit_2.png
+       :width: 400
+       :align: center
+
+В типе данных проставляется данная форма и становятся доступны действия, включая редактирование:
+
+ .. image:: _static/offer/form_edit_3.png
+       :width: 600
+       :align: center
+
+Нажмите **«Редактировать»**:
+
+ .. image:: _static/offer/form_edit_4.png
+       :width: 600
+       :align: center
+
+И далее нажмите **«Редактировать форму»**.
+
+Форма "Кандидаты"
+~~~~~~~~~~~~~~~~~~~
+
+Пример формы:
+
+  .. image:: _static/offer/form_14.png
+       :width: 600
+       :align: center
+
+Компоненты формы:
+
+.. list-table::
+      :widths: 5 10 20
+      :header-rows: 1
+      :align: center
+      :class: tight-table 
+      
+      * - Название поля
+        - Имя свойства
+        - Наименование компонента
+      * - |
+        - Колонки формы
+        - Columns Component
+      * - Код
+        - candidatesCode
+        - Text Field Component
+      * - Фамилия
+        - candidatesLastName
+        - Text Field Component
+      * - Имя
+        - candidatesFirstName
+        - Text Field Component
+      * - Отчество
+        - candidatesMiddleName
+        - Text Field Component
+      * - Дата рождения
+        - candidatesBirthDate
+        - :ref:`Date / Time Component<sample_date_time_component>`
+      * - Пол
+        - candidatesGender
+        - :ref:`ECOS Select Component<sample_ecos_select_component>` 
+
+               .. image:: _static/offer/form_17.png
+                    :width: 300
+                    :align: center
+      * - Город
+        - candidatesCityAssoc
+        - Select Journal Component
+
+Кнопки для форм, созданных выше:
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Отменить
+        - |
+
+               .. image:: _static/offer/form_18.png
+                    :width: 400
+                    :align: center
+
+      * - Сохранить
+        - |
+
+               .. image:: _static/offer/form_19.png
+                    :width: 400
+                    :align: center
+
+Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
+
+  .. image:: _static/offer/form_48.png
+       :width: 600
+       :align: center
+
+Форма "Согласование оффера"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Пример формы:
+
+  .. image:: _static/offer/form_16.png
+       :width: 600
+       :align: center
+
+Компоненты формы:
+
+.. csv-table::
+   :header: "Название поля", "Имя свойства", "Наименование компонента"
+   :widths: 15, 10, 10
+   :align: center
+   :class: tight-table 
+
+     ,Заголовок,:ref:`Panel Component<sample_panel_component>`
+     ,Колонки формы,Columns Component
+     Регистрационный номер,registrationNumber,Text Field Component
+     Присвоить номер,generateNumber,Checkbox Component
+     Дата создания,_created (для автоматического ввода даты создания документа),Date / Time Component
+     Комментарий по результатам,offerTaskComment,:ref:`Text Area Component<Text_Area>`
+     initiator,initiator,Select Orgstruct Component
+     Кандидат,offerCandidate,Select Journal Component
+     Должность,offerPosition,Select Journal Component
+     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
+     Грейд,offerGrade,Select Journal Component
+     Руководитель,offerChief,Select Orgstruct Component
+     Офис,offerOffice,Select Journal Component
+     Доп.согласующий,offerAdditionalChief,Select Orgstruct Component
+     Комментарий,offerComment,Text Area Component
+     Зарплатная вилка и премия,offerSalaryForkAndPrize,Text Field Component
+     Подчинение,offerSubordinationAtr,Text Field Component
+     Фидбэк по собеседованиям,offerFeedback,Text Area Component
+     Оклад,offerSalary,:ref:`Number Component<Number>`
+     Премия,offerPrize,Text Field Component
+     График работы,offerSchedule,Text Field Component
+     Дата выхода на работу,offerDateWork,Date / Time Component
+     Файлы,content,:ref:`File Component<File_>`
+
+.. list-table::
+      :widths: 10 50
+      :align: center
+      :class: tight-table 
+
+      * - Отменить
+        - |
+
+               .. image:: _static/offer/form_20.png
+                    :width: 400
+                    :align: center
+
+      * - Создать
+        - |
+
+               .. image:: _static/offer/form_21.png
+                    :width: 400
+                    :align: center
+
+      * - Сохранить (как черновик)
+        - |
+
+               .. image:: _static/offer/form_22.png
+                    :width: 400
+                    :align: center
+
 Журналы
 --------
 
