@@ -558,12 +558,15 @@ RecordRef
 
 Примеры использования::
 
+  Запрос ноды:
+
   await Citeck.Records.get("workspace://SpacesStore/16d8668d-7325-49ef-80d3-f2bfdb4c6d00").load({
     'status': 'icase:caseStatusAssoc.cm:title?str',
     'display': '.disp'
   });
 
   ---
+  Запрос конфига:
 
   await Citeck.Records.get('ecos-config@ecos-forms-enable').load('.str');
 
@@ -577,6 +580,7 @@ RecordRef
   }, ['cm:title', 'cm:name']);
 
   ---
+  Запрос ФИО пользователя:
 
   var user = Citeck.Records.get('alfresco/people@admin');
   await user.load({
@@ -586,18 +590,20 @@ RecordRef
   })
 
   ---
+  Запрос ФИО пользователя:
 
   var user = Citeck.Records.get('alfresco/people@admin');
   await user.load(['cm:userName', 'cm:firstName', 'cm:lastName'])
 
   ---
-
+  Запрос имени пользователя:
+  
   var user = Citeck.Records.get('alfresco/people@admin');
   await user.load('cm:firstName')
 
   ---
 
-  пример скрипта для смены статуса:
+  Пример скрипта для смены статуса:
 
   var doc = Citeck.Records.get('someDocumentRef');
   doc.att('_status', 'some_status_id');
@@ -605,7 +611,7 @@ RecordRef
 
   ---
   
-  Проверка enterprise лицензии
+  Проверка enterprise лицензии:
 
   await Citeck.Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
