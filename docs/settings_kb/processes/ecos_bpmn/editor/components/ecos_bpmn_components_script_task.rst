@@ -114,6 +114,7 @@
 Пример использования:
     
 .. code-block:: javascript
+
     var event = DataValue.of(someExampleEventStructure);
 
     print("---HELLO FROM SCRIPT---");
@@ -133,11 +134,13 @@
 
     print("-------END--------------");
     
+    
 DataValue может быть сохранен в execution процесса с последующим извлечением и использованием.
 
 Сохраняем в execution:
 
 .. code-block:: javascript
+
     var arr = ["a", "b"];
     var obj = {
       a: "b"
@@ -149,9 +152,11 @@ DataValue может быть сохранен в execution процесса с 
     execution.setVariable("dArr", dArr);
     execution.setVariable("dObj", dObj);
     
+    
 Обращаемся к сохраненным в execution переменным в другом скрипте
     
 .. code-block:: javascript
+
     print("----------");
     
     print("dArr: " + dArr);
@@ -162,9 +167,11 @@ DataValue может быть сохранен в execution процесса с 
     
     print("----------");
     
+    
 Результат:
 
 .. code-block::
+
     ----------
     dArr: {"0":"a","1":"b"}
     dArr 0: "a"
