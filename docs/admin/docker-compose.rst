@@ -55,7 +55,7 @@ Linux
 MacOS
 ~~~~~~~~~~~~
 
-* macOS версии 10.15 или выше.
+* MacOS версии 10.15 или выше.
 * Не менее 4 ГБ оперативной памяти.
 
 `Подробнее см. официальное руководство по установке на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
@@ -82,11 +82,80 @@ MacOS
 
 При первом развертывании keycloak попросит сменить пароль.  Если необходимо еще раз сменить пароль, `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
+Первичная установка на Centos7
+-------------------------------
+
+Обновить систему и пакеты до последней актуальной версии:
+
+.. code-block::
+
+    yum update -y && yum upgrade -y
+
+Отключить SELinux и перезагрузить сервер:
+
+.. code-block::
+
+    sed -i 's/enforcing/disabled/g' /etc/selinux/config
+    reboot
+
+Устанавить Python:
+
+.. code-block::
+
+    yum install epel-release -y
+    yum install python3 -y && yum install python3-pip -y
+
+Устанавить пакеты, для комфортной работы:
+
+.. code-block::
+
+    yum install -y mc yum-utils nano ethtool ntp ntpdate firewalld lvm2 device-mapper-persistent-data htop fail2ban mc wget screen pigz
+
+Установить Docker Engine:
+
+.. code-block::
+
+    yum-config-manager --add-repo https://http://download.docker.com /linux/centos/docker-ce.repo
+    yum install -y docker-ce docker-ce-cli http://containerd.io 
+    systemctl enable docker && systemctl start docker
+
+Установить docker-compose:
+
+.. code-block::
+
+    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле:
+
+``/etc/docker/daemon.json, переменная default-address-pools``
+
+.. code-block::
+
+    {
+    "default-address-pools":
+    [
+        {"base":"172.19.0.0/16","size":24}
+    ]
+    }
+
+Следующим этапом необходимо получить комплект поставки, в который входят `docker-compose.yaml и environments <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ и поместить его на сервер.
+
+После этого в директории, куда поместили проект, выполнить:
+
+.. code-block::
+
+    docker-compose pull
+    docker-compose up -d
+
+Система будет инициализирована, и после полного запуска, будет готова к работе.
+
+
 Сервисы Docker
 ---------------
 
 :ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
-
 
 Возможные проблемы
 -------------------
@@ -120,7 +189,6 @@ Docker Desktop использует функцию динамического р
 4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Более подробная версия инструкции см. `https://docs.docker.com/docker-for-windows/wsl/  <https://docs.docker.com/docker-for-windows/wsl/>`_ 
 
 
-
 Порт 8080 уже занят
 """"""""""""""""""""
 
@@ -133,7 +201,6 @@ Ecos-ui использует порт 8080 и, если этот порт уже
        :align: center
 
 Если команда ``netstat -ono (или netstat -ono | findstr 8080)`` не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты. 
-
 
 Порт зарезервирован Windows
 """"""""""""""""""""""""""""
@@ -158,11 +225,18 @@ Ecos-ui использует порт 8080 и, если этот порт уже
 
 Порт попадет в исключения, и подобной ошибки не возникнет.
 
+Настройка дополнительных параметров  WSL в Windows
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Запускаются не все контейнеры (Mac)
-""""""""""""""""""""""""""""""""""""""
+ `Настройка дополнительных параметров  WSL в Windows <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
 
-Если при разворачивании приложения в докере запускаются не все контейнеры,
+MacOS
+~~~~~~
+
+Запускаются не все контейнеры
+"""""""""""""""""""""""""""""""
+
+Если при разворачивании приложения в докере запускаются не все контейнеры:
 
  .. image:: _static/docker-compose/06.png
        :width: 400
@@ -173,9 +247,3 @@ Ecos-ui использует порт 8080 и, если этот порт уже
  .. image:: _static/docker-compose/07.png
        :width: 600
        :align: center
-
-
-Настройка дополнительных параметров  WSL в Windows
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-
- `Настройка дополнительных параметров  WSL в Windows <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
