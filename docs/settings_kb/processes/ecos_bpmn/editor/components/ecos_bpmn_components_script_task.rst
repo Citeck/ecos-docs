@@ -104,6 +104,81 @@
 
     print("comment: " + text + " created on " + created);
 
+``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+
+    - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
+    - ``DataValue.createObj()`` - создает пустой объект DataValue.
+    - ``DataValue.createArr()`` - создает пустой массив DataValue.
+    - ``DataValue.createStr(value: Any?)`` - создает строковое представление переданного значения.
+    
+Пример использования:
+    
+.. code-block:: javascript
+
+    var event = DataValue.of(someExampleEventStructure);
+
+    print("---HELLO FROM SCRIPT---");
+
+
+    print("event id from base: " + event.get("_meta").get("id"));
+    print("event id from $: " + event.get("$._meta.id"));
+    print("event id from JsonPointer: " + event.get("/_meta/id"));
+
+    print("event time as instant: " + event.get("/_meta/time").takeAsInstant());
+    print("event field names list: " + event.fieldNamesList());
+
+    print("call undefined prop is safe: " + event.get("/_meta/a/b/c/"));
+
+    print("event id is boolean " + event.get("_meta").get("id").isBoolean());
+
+
+    print("-------END--------------");
+    
+    
+DataValue может быть сохранен в execution процесса с последующим извлечением и использованием.
+
+Сохраняем в execution:
+
+.. code-block:: javascript
+
+    var arr = ["a", "b"];
+    var obj = {
+      a: "b"
+    }
+    
+    var dArr = DataValue.of(arr);
+    var dObj = DataValue.of(obj);
+    
+    execution.setVariable("dArr", dArr);
+    execution.setVariable("dObj", dObj);
+    
+    
+Обращаемся к сохраненным в execution переменным в другом скрипте
+    
+.. code-block:: javascript
+
+    print("----------");
+    
+    print("dArr: " + dArr);
+    print("dArr 0: " + dArr.get("0"));
+    
+    print("dObj: " + dObj);
+    print("dObj a: " + dObj.get("a"));
+    
+    print("----------");
+    
+    
+Результат:
+
+.. code-block::
+
+    ----------
+    dArr: {"0":"a","1":"b"}
+    dArr 0: "a"
+    dObj: {"a":"b"}
+    dObj a: "b"
+    ----------
+
 
 ``webUrl`` - переменная возвращает настроенный веб url сервера
 
