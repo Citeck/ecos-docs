@@ -35,7 +35,7 @@ Windows
 
 * Загрузить и установить `пакет обновления ядра Linux <https://docs.microsoft.com/windows/wsl/wsl2-kernel>`_
 
-`Подробнее см. официальное руководство по установке на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
+`Официальное руководстов по установке Docker на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
 
 Linux
 ~~~~~~~~~~~~
@@ -48,9 +48,9 @@ Linux
 * Не менее 4 ГБ оперативной памяти.
 * Включите настройку сопоставления идентификаторов в пространствах имен пользователей, см. `Общий доступ к файлам <https://docs.docker.com/desktop/install/linux-install/#file-sharing>`_
 
-`Подробнее см. официальное руководство по установке на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
+`Официальное руководстов по установке Docker на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
 
-`Подробнее см. официальное руководство по установке на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+`Официальное руководстов по установке Docker на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
 
 MacOS
 ~~~~~~~~~~~~
@@ -58,7 +58,7 @@ MacOS
 * MacOS версии 10.15 или выше.
 * Не менее 4 ГБ оперативной памяти.
 
-`Подробнее см. официальное руководство по установке на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
+`Официальное руководстов по установке Docker на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
 
 Установка и запуск проекта
 ---------------------------
@@ -82,8 +82,8 @@ MacOS
 
 При первом развертывании keycloak попросит сменить пароль.  Если необходимо еще раз сменить пароль, `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
-Первичная установка на Centos7
--------------------------------
+Подготовка окружения CentOS 7.x для установки Citeck Ecos
+----------------------------------------------------------
 
 Обновить систему и пакеты до последней актуальной версии:
 
