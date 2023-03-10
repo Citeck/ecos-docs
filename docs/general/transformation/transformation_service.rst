@@ -21,6 +21,7 @@
     environment:
       - _JAVA_OPTIONS=-Xmx256m -Xms256m
       - SPRING_PROFILES_ACTIVE=dev,swagger
+      - ECOS_INTEGRATIONS_ONLYOFFICE_HOST=only-office-app
       - ECOS_WEBAPP_RABBITMQ_HOST=rabbitmq-dev
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@ecos-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@ecos-registry:8761/config
