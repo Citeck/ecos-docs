@@ -48,6 +48,13 @@ API
 
 ``aspectToTest`` - идентификатор аспекта, наличие которого мы проверяем 
 
+Получить конфиг аспекта из сущности
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    await Citeck.Records.get('emodel/some-id@local-id').load('_type.aspectById.you-aspect-id.config')
+
 Добавить аспект к сущности
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
