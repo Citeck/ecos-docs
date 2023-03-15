@@ -98,42 +98,6 @@ LinkFormatter
 
 Тип: ``link``
 
-NumberFormatter
-~~~~~~~~~~~~~~~~~~
-
-Тип: ``Number``
-
-Пример:
-
-.. code-block::
-
-  mask: {value} руб.
-  locales: ru
-  maximumFractionDigits: 16
-  decimalSeparator: .
-  thousandSeparator: ,
-
-Конфигурация:
-
-.. list-table:: 
-      :widths: 5 40
-      :header-rows: 1
-
-      * - Ключ
-        - Описание
-      * - **mask**
-        - маска, где ``{value}`` — само число
-      * - **locales**
-        - | какую локаль для форматирования использовать. 
-          | От нее зависит как будут разделяться тысячи и дробные числа. (Точкой, запятой или пробелом) По умолчанию текущая локаль.
-      * - **maximumFractionDigits**
-        - сколько чисел после запятой
-      * - **decimalSeparator**
-        - как отделяются дробные числа. По умолчанию зависит от локали
-      * - **thousandSeparator**
-        - как разделяются тысячи. По умолчанию зависит от локали.
-
-
 ScriptFormatter
 ~~~~~~~~~~~~~~~~~~
 
