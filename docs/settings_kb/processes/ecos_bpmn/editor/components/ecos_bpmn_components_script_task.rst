@@ -37,6 +37,9 @@
 Доступные переменные
 --------------------
 
+Переменные процесса
+~~~~~~~~~~~~~~~~~~~
+
 Во время выполнения скриптов доступны все переменные процесса, видимые в текущей области.
 
 .. code-block:: javascript
@@ -45,7 +48,8 @@
     print("someVar: " + someVar);
 
 
-Также в контексте скрипта доступно несколько специальных переменных:
+Execution
+~~~~~~~~~
 
 .. _execution:
 
@@ -59,6 +63,8 @@
     // установление переменной процесса
     execution.setVariable('y', x + 15);
 
+Document
+~~~~~~~~
 
 ``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
 
@@ -76,6 +82,8 @@
     document.att("firArchiveBoxNumber", 123);
     document.reset();
 
+Records
+~~~~~~~
 
 ``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
 
@@ -103,6 +111,23 @@
     var created = firstComment.created;
 
     print("comment: " + text + " created on " + created);
+
+Ecos Config
+~~~~~~~~~~~
+
+``Config`` - предоставляет доступ к Конфигурации Ecos по ключу в формате ``<область>$<идентификатор>``.
+
+    - ``get(key: String): DataValue`` - получение значения по ключу
+    - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
+    - ``getNotNull(key: String): DataValue`` - получение значения по ключу, если значение null, то выбрасывается исключение
+
+.. code-block:: javascript
+
+    //получение значения конфигурации по ключу и приведение к типу String
+    var serviceDeskEmailFrom = Config.get("app/service-desk$send-sd-email-from").asText()
+
+DataValue
+~~~~~~~~~
 
 ``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
 
@@ -179,12 +204,20 @@ DataValue может быть сохранен в execution процесса с 
     dObj a: "b"
     ----------
 
+WebUrl
+~~~~~~
 
 ``webUrl`` - переменная возвращает настроенный веб url сервера
+
+Tasks
+~~~~~
 
 ``tasks`` - сервис для манипуляций над задачами.
     
     - ``tasks.completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+
+Logger
+~~~~~~
 
 ``log`` -  логгер, пишет в микросервис ecos-process, дополнительно выводится информация о execution. Для настройки уровня логирования используется класс ``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger``. |br| Поддерживаемые методы:
     
