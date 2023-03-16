@@ -19,7 +19,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = 'Citeck ECOS'
-copyright = '2022, Citeck'
+copyright = '2023, Citeck'
 author = 'Citeck'
 
 # The full version, including alpha/beta/rc tags
