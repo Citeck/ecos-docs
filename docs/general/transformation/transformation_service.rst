@@ -386,7 +386,7 @@
   
     2. В конфигурации аспекта выбрать шаблон
 
-    .. image:: _static/templated-content.png
+    .. image:: _static/templated_content.png
           :width: 600
           :align: center
     
