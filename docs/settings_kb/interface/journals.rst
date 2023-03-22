@@ -11,7 +11,7 @@
     journals/user_description
     journals/configuration
     journals/group_actions
-    journals/search_jourmal_config
+    journals/search_journal_config
     journals/computed attributes
     journals/filter_by _text _assoc_column
     journals/searchAttribute
