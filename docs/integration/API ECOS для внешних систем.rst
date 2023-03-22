@@ -43,14 +43,14 @@ API-интерфейс позволяет работать с данными с�
                 "sourceId":"alfresco/",
                 "query":{
                     "att":"_type",
-                    "val":"emodel/type@ssgedidl-routeTemplateItem",
+                    "val":"emodel/type@sampleedidl-routeTemplateItem",
                     "t":"eq"
                     },
                     "language":"predicate",
                     "page":{"skipCount":0,"maxItems":10,"page":1},
                     "consistency":"EVENTUAL",
                     "sortBy":[{"attribute":"cm:created","ascending":false}]},
-                    "attributes":["ssgedidl:rtCode?disp"]
+                    "attributes":["sampleedidl:rtCode?disp"]
             }
 
       * - **Ответ**
@@ -62,7 +62,7 @@ API-интерфейс позволяет работать с данными с�
                     {
                         "id": "alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa",
                         "attributes": {
-                            "ssgedidl:rtCode?disp": "1"
+                            "sampleedidl:rtCode?disp": "1"
                         }
                     }
                 ],
@@ -136,7 +136,7 @@ API-интерфейс позволяет работать с данными с�
                         {
                             "id":"alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa", -- ID маршрута
                             "attributes":{
-                                "ssgedidl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", - этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
+                                "sampleedidl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", - этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
                                 "_state?str":"submitted"
                                          }
                         }
