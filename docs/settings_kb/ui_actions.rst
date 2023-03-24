@@ -836,12 +836,8 @@ id типа: ``open-submit-form``
                     "formId": "...",
                             }
 
-
 Enterprise действия
 -------------------
-
-transform
-~~~~~~~~~
 
 id типа: ``transform``
 
@@ -855,24 +851,27 @@ id типа: ``transform``
       * -  
           | 
           | Трансформация содержимого по заданным правилам и его скачивание или загрузка в атрибут с типом "контент"
-        - | 
+        - 
+          | 
           | **input: Object** // источник содержимого. По умолчанию - основное содержимое текущего документа;  
           | **transformations: Object[]** // описание трансформаций;
-          | **output: Object** // цель для результата трансформации. По умолчанию - временный файл, контент которого сразу же скачивается. 
+          | **output: Object** // цель для результата трансформации. По умолчанию - временный файл, контент которого сразу же скачивается.
+          |
           | Подробнее о возможных настройках input, transformations и output можно прочитать :ref:`здесь<Content_transformation>`
           | 
           | Примеры:
-          | 
+          |
           | 1. Сконвертировать содержимое в PDF и скачать
-          .. code-block:: yaml
-            
-            id: download-as-pdf
-            type: transform
-            name: Скачать как PDF
-            config: 
-              transformations:
-                - type: convert
-                  config: { toMimeType: 'application/pdf' } 
+
+            .. code-block::
+
+                id: download-as-pdf
+                type: transform
+                name: Скачать как PDF
+                config: 
+                  transformations:
+                    - type: convert
+                      config: { toMimeType: 'application/pdf' } 
 
 Расширение действий
 -------------------
