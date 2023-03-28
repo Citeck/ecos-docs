@@ -29,6 +29,8 @@
     depends_on:
       - ecos-registry
 
+.. _doc_template:
+
 Создание нового шаблона
 ------------------------
 
