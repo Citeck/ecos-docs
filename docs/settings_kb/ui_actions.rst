@@ -839,6 +839,9 @@ id типа: ``open-submit-form``
 Enterprise действия
 -------------------
 
+transform
+~~~~~~~~~~
+
 id типа: ``transform``
 
 .. list-table::
