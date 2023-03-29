@@ -47,3 +47,5 @@ ECOS формирует PDF-файл со штрихкодом:
     #        "_parent": '${?id}'
     #        "_parentAtt": "docs:documents"
     #        "_type": 'emodel/type@document'
+
+[описать пользовательский порядок]

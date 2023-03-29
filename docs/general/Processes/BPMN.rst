@@ -1,5 +1,9 @@
-ECOS BPMN (Flowable)
-====================
+[Deprecated] ECOS BPMN (Flowable)
+========================================
+
+.. note::
+
+    Устаревший инструмент. В Ecos реализована `low-code платформа автоматизации бизнес-процессов BPMN <ecos_bpmn>`_. Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/>`_ и движкt `camunda <https://camunda.com/>`_.
 
 .. contents:: 
    :depth: 5
