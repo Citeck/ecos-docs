@@ -11,21 +11,39 @@
 
 Перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`. Перейти в :guilabel:`Дополнительно`
 
-.. list-table:: 
-      :widths: 40
+.. list-table::
+      :widths: 20 20
       :align: center
 
       * - |
 
-             .. image:: _static/formatter/formatter_1.png
-                 :width: 500   
-                 :align: center
+            .. image:: _static/formatter/formatter_1.png
+                  :width: 500
+                  :align: center
 
-          | 
+        - |
 
-             .. image:: _static/formatter/formatter_2.png
-                  :width: 500 
-                  :align: center  
+            .. image:: _static/formatter/formatter_2.png
+                  :width: 500
+                  :align: center
+
+Выберите форматтер из списка заполните ключ-значение:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/formatter/formatter_3.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/formatter/formatter_4.png
+                  :width: 300
+                  :align: center
 
 
 .. important::

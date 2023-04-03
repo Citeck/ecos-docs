@@ -24,7 +24,6 @@
                   :width: 500 
                   :align: center  
 
-
 Типы
 ---------
 
