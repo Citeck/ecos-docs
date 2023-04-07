@@ -618,7 +618,7 @@ id типа: ``mutate``
         - Конфигурация
       * -  
           | Внесение изменений без участия пользователя посредством передачи атрибутов.
-          | Доступно для ``execForRecord`` и ``execForRecords``
+          | Доступно для ``execForRecord``, ``execForRecords``
         - | 
 
           .. code-block::
