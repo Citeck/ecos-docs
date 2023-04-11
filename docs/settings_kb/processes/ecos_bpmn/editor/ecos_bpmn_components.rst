@@ -1,6 +1,8 @@
 Компоненты Ecos BPMN 
 =====================
 
+.. _ecos_bpmn_components:
+
 .. toctree::
     :maxdepth: 3
 

@@ -1,8 +1,13 @@
-Задача скрипт
-===============
+Скриптовая задача
+=================
 .. _script_task:
 
-Используеттся язык JavaScript.
+.. contents::
+
+Атрибуты и форма
+----------------
+
+Используется язык JavaScript.
 
  .. image:: _static/59.png
        :width: 300
@@ -23,8 +28,8 @@
                .. image:: _static/61.png
                 :width: 300
                 :align: center
-      * - Указать **скрипт** 
-        - Асинхронность можно настроить ко многим элементам. См. подробнее https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/ 
+      * - Настройки асинхронности, см. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_ 
+        - 
                .. image:: _static/62.png
                 :width: 300
                 :align: center
@@ -32,85 +37,202 @@
 Доступные переменные
 --------------------
 
-В контексте скрипта доступно:
+Переменные процесса
+~~~~~~~~~~~~~~~~~~~
 
-1.	**Переменные процесса**. 
-
-Обращение к переменным процесса осуществляется по прямому наименованию переменной. Например:
+Во время выполнения скриптов доступны все переменные процесса, видимые в текущей области.
 
 .. code-block:: javascript
 
+    //someVar - переменная процесса
     print("someVar: " + someVar);
 
-2.	**Переменная «execution» процесса** 
 
-`См. подробно <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_ 
+Execution
+~~~~~~~~~
 
-Через нее можно так же получать переменные процесса (аналог пункта 1) или записывать:
+.. _execution:
 
-.. code-block:: javascript
-
-    // get process variable
-    sum = execution.getVariable('x')
-
-    // set process variable
-    execution.setVariable('y', x + 15)
-
-3.	**Переменная «document»** - скриптовое представление документа 
+``execution`` - переменная, которая всегда доступна, если скрипт выполняется в области выполнения (например, в Script Task). `(DelegateExecution) <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_
 
 .. code-block:: javascript
 
-    AttValueScriptCtxfun getId(): String
+    // получение переменной процесса
+    var sum = execution.getVariable('x');
 
-    fun getRef(): RecordRef
+    // установление переменной процесса
+    execution.setVariable('y', x + 15);
 
-    fun getLocalId(): String
+Document
+~~~~~~~~
 
-    fun load(attributes: Any?): Any?
+``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
 
-    fun save(): AttValueScriptCtx fun att(attribute: String, value: Any?)
+.. code-block:: javascript
 
-    fun reset()
+    //получение атрибута документа
+    var created = document.load("_created");
+
+    //установление атрибуту документа указанного значения
+    document.att("firArchiveBoxNumber", 123);
+    //сохранение
+    document.save();
+
+    //сброс состояния документа, если ранее были внесены изменения через att()
+    document.att("firArchiveBoxNumber", 123);
+    document.reset();
+
+Records
+~~~~~~~
+
+``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
+
+.. code-block:: javascript
+
+    //Получение скриптового представление указанного рекорда
+    var doc = Records.get("emodel/doc@111");
+
+    //Query рекордов
+    var queryCommentsResult = Records.query({
+        sourceId: "emodel/comment",
+        language: "predicate",
+        query: {
+            a: "record",
+            t: "eq",
+            v: "emodel/doc@123"
+        }
+    }, {
+        text: "text",
+        created: "_created"
+    });
+
+    var firstComment = queryCommentsResult.records[0];
+    var text = firstComment.text;
+    var created = firstComment.created;
+
+    print("comment: " + text + " created on " + created);
+
+Ecos Config
+~~~~~~~~~~~
+
+``Config`` - предоставляет доступ к Конфигурации Ecos по ключу в формате ``<область>$<идентификатор>``.
+
+    - ``get(key: String): DataValue`` - получение значения по ключу
+    - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
+    - ``getNotNull(key: String): DataValue`` - получение значения по ключу, если значение null, то выбрасывается исключение
+
+.. code-block:: javascript
+
+    //получение значения конфигурации по ключу и приведение к типу String
+    var serviceDeskEmailFrom = Config.get("app/service-desk$send-sd-email-from").asText()
+
+DataValue
+~~~~~~~~~
+
+``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+
+    - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
+    - ``DataValue.createObj()`` - создает пустой объект DataValue.
+    - ``DataValue.createArr()`` - создает пустой массив DataValue.
+    - ``DataValue.createStr(value: Any?)`` - создает строковое представление переданного значения.
+    
+Пример использования:
+    
+.. code-block:: javascript
+
+    var event = DataValue.of(someExampleEventStructure);
+
+    print("---HELLO FROM SCRIPT---");
+
+
+    print("event id from base: " + event.get("_meta").get("id"));
+    print("event id from $: " + event.get("$._meta.id"));
+    print("event id from JsonPointer: " + event.get("/_meta/id"));
+
+    print("event time as instant: " + event.get("/_meta/time").takeAsInstant());
+    print("event field names list: " + event.fieldNamesList());
+
+    print("call undefined prop is safe: " + event.get("/_meta/a/b/c/"));
+
+    print("event id is boolean " + event.get("_meta").get("id").isBoolean());
+
+
+    print("-------END--------------");
+    
+    
+DataValue может быть сохранен в execution процесса с последующим извлечением и использованием.
+
+Сохраняем в execution:
+
+.. code-block:: javascript
+
+    var arr = ["a", "b"];
+    var obj = {
+      a: "b"
     }
-
-**load()** - получение атрибута документа: 
-
+    
+    var dArr = DataValue.of(arr);
+    var dObj = DataValue.of(obj);
+    
+    execution.setVariable("dArr", dArr);
+    execution.setVariable("dObj", dObj);
+    
+    
+Обращаемся к сохраненным в execution переменным в другом скрипте
+    
 .. code-block:: javascript
 
-    var created = document.load("cm:created")
+    print("----------");
+    
+    print("dArr: " + dArr);
+    print("dArr 0: " + dArr.get("0"));
+    
+    print("dObj: " + dObj);
+    print("dObj a: " + dObj.get("a"));
+    
+    print("----------");
+    
+    
+Результат:
 
-**att()** - установление атрибуту документа указанного значения:
+.. code-block::
 
-.. code-block:: javascript
+    ----------
+    dArr: {"0":"a","1":"b"}
+    dArr 0: "a"
+    dObj: {"a":"b"}
+    dObj a: "b"
+    ----------
 
-    document.att("ufrm:firArchiveBoxNumber", 123)
+WebUrl
+~~~~~~
 
-**save()** - сохранение внесенных изменений атриумов документа через **att()**
+``webUrl`` - переменная возвращает настроенный веб url сервера
 
-**reset()** - сброс состояния документа, если ранее были внесены изменения через **att()**
+Tasks
+~~~~~
 
-Пример задания атрибута и сохранение:
+``tasks`` - сервис для манипуляций над задачами.
+    
+    - ``tasks.completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
 
-.. code-block:: javascript
+Logger
+~~~~~~
 
-    document.att("ufrm:firArchiveBoxNumber", 123)
-    document.save()
+``log`` -  логгер, пишет в микросервис ecos-process, дополнительно выводится информация о execution. Для настройки уровня логирования используется класс ``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger``. |br| Поддерживаемые методы:
+    
+    - ``log.info(message: String)``
+    - ``log.warn(message: String)``
+    - ``log.error(message: String)``
+    - ``log.debug(message: String)``
+    - ``log.trace(message: String)``
+
+.. note:: 
+
+    Читай подробнее о `scripting в Camunda <https://docs.camunda.org/manual/7.14/user-guide/process-engine/scripting/>`_
 
 
-4. **RecordsScriptService** 
 
-Доступен под переменной «Records». 
+.. |br| raw:: html
 
-Методы:
-
-Получение скриптового представления рекорда по **recordReffun** 
-
-.. code-block:: kotlin
-
-    fun get(record: Any): AttValueScriptCtx 
-
-Поиск рекордов по заданному **query**
-
-.. code-block:: kotlin
-
-    query(query: Any?, attributes: Any?): Any 
+     <br>   

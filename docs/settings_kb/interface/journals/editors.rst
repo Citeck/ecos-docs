@@ -6,18 +6,23 @@
 .. contents:: Содержание
    :depth: 3
 
-перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`
+перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`. Перейти в :guilabel:`Дополнительно`
 
-.. image:: _static/editor/editor_1.png
-       :width: 400   
-       :align: center
+.. list-table:: 
+      :widths: 40
+      :align: center
 
-перейти в :guilabel:`Дополнительно`
+      * - |
 
-.. image:: _static/editor/editor_2.png
-       :width: 400   
-       :align: center
+             .. image:: _static/editor/editor_1.png
+                 :width: 500   
+                 :align: center
 
+          | 
+
+             .. image:: _static/editor/editor_2.png
+                  :width: 500 
+                  :align: center  
 
 Типы
 ---------
