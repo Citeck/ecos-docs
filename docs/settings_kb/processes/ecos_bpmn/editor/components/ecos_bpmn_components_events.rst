@@ -1,3 +1,5 @@
+.. _bpmn_events:
+
 События
 =======
 
@@ -62,16 +64,9 @@
         - Событие-сигнал
         - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями ECOS <bpmn_events_integrations>`.
 
-
-
-
-
-
-
-
-
 .. toctree::
     :maxdepth: 3
 
     events/ecos_bpmn_components_timer
     events/ecos_bpmn_components_signal
+    events/ecos_bpmn_components_event_subprocess

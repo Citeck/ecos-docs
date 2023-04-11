@@ -1,6 +1,8 @@
 Таймер
 ======
 
+.. _ecos_bpmn_timer:
+
  .. image:: _static/67.png
        :width: 300
        :align: center
