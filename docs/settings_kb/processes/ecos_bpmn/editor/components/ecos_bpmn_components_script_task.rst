@@ -214,7 +214,18 @@ Tasks
 
 ``tasks`` - сервис для манипуляций над задачами.
     
-    - ``tasks.completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+    - ``completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+
+
+Temaplated content
+~~~~~~~~~~~~~~~~~~
+
+``templatedContent`` - сервис для работы с шаблонизированным контентом.
+
+    - ``write(record: String, template: String)`` - генеририрует контент по указанному шаблону [`template`], на основе данных рекорда [`record`] и записывает сгенерированный контент в [`record`] в атрибут контент по умолчанию `content`.
+    - ``write(record: String, template: String, attribute: String)`` - генеририрует контент по указанному шаблону `[template`], на основе данных рекорда [`record`] и записывает сгенерированный контент в [`record`] в переданный атрибут [`attribute`].
+
+В качестве [`template`] можно передать строковое представление EntityRef шаблона или его id.
 
 Logger
 ~~~~~~
