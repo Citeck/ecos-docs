@@ -7,7 +7,7 @@
        :width: 300
        :align: center
 
-В Onlyoffice откроется документ:
+В отдельной вкладке браузера в Onlyoffice откроется документ:
 
 .. image:: _static/onlyoffice_edit/edit_2.png
        :width: 700
