@@ -151,6 +151,27 @@ NumberFormatter
       * - **thousandSeparator**
         - как разделяются тысячи. По умолчанию зависит от локали.
 
+Например:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Описание
+      * - **mask**
+        - {value} руб
+      * - **maximumFractionDigits**
+        - 2
+      * - **decimalSeparator**
+        - .
+      * - **thousandSeparator**
+        - _
+
+.. image:: _static/formatter/number_formatter_1.png
+       :width: 700
+       :align: center
+
 
 ScriptFormatter
 ~~~~~~~~~~~~~~~~~~
