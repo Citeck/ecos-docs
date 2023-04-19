@@ -48,4 +48,10 @@ ECOS формирует PDF-файл со штрихкодом:
     #        "_parentAtt": "docs:documents"
     #        "_type": 'emodel/type@document'
 
-[описать пользовательский порядок]
+Для скачивания документа с размещенным штрихкодом используйте в карточе документа действие "Скачать PDF (со штрихкодом)":
+
+ .. image:: _static/barcode/barcode_2.png 
+       :width: 600
+       :align: center
+
+
