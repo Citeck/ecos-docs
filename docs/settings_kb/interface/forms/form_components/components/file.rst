@@ -99,12 +99,12 @@ File
 
 Для синхронизации с виджетом документов на форму нужно добавить поле ``docs:documents`` с контролом ``file``:
 
-.. image:: _static/file/file_5.png
-       :width: 500
+.. image:: _static/file/file_6.png
+       :width: 600
        :align: center
 
 На вкладке **Файл** указать тип(ы), с которыми следует загружать новые файлы (если файл загрузить без типа, то в виджете он не появится):
 
-.. image:: _static/file/file_5.png
-       :width: 500
+.. image:: _static/file/file_7.png
+       :width: 600
        :align: center
