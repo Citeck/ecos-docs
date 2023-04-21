@@ -106,14 +106,34 @@
 
 Примеры:
 
- .. image:: _static/56_7.png
+.. image:: _static/56_7.png
        :width: 700
        :align: center
+
+|
+
+.. list-table::
+      :widths: 5 10
+      :class: tight-table 
+      :align: center
+
+      * - **1**
+        - По умолчанию
+      * - **2**
+        - Основная
+      * - **3**
+        - Информация
+      * - **4**
+        - Успешно
+      * - **5**
+        - Опасно
+      * - **6**
+        - Предупреждение
 
 Форма задачи
 ------------
 
- .. image:: _static/57.png
+.. image:: _static/57.png
        :width: 600
        :align: center
 
