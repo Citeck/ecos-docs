@@ -12,13 +12,13 @@
 
       * - 
            
-           .. image:: _static/gway_1.png
+           .. image:: _static/gateway/gway_1.png
               :width: 50
               :align: center 
 
         - 
 
-           .. image:: _static/gway_1_1.png
+           .. image:: _static/gateway/gway_1_1.png
               :width: 200
               :align: center 
 
@@ -26,17 +26,17 @@
 
       * - 
            
-           .. image:: _static/gway_2.png
+           .. image:: _static/gateway/gway_2.png
               :width: 50
               :align: center 
 
         - 
 
-           .. image:: _static/gway_2_1.png
+           .. image:: _static/gateway/gway_2_1.png
               :width: 200
               :align: center 
 
-           .. image:: _static/gway_2_2.png
+           .. image:: _static/gateway/gway_2_2.png
               :width: 200
               :align: center 
 
@@ -45,13 +45,13 @@
 
       * - 
            
-           .. image:: _static/gway_3.png
+           .. image:: _static/gateway/gway_3.png
               :width: 50
               :align: center 
 
         - 
 
-           .. image:: _static/gway_3_1.png
+           .. image:: _static/gateway/gway_3_1.png
               :width: 200
               :align: center 
 
@@ -59,13 +59,13 @@
 
       * - 
            
-           .. image:: _static/gway_4.png
+           .. image:: _static/gateway/gway_4.png
               :width: 50
               :align: center 
 
         - 
 
-           .. image:: _static/gway_4_1.png
+           .. image:: _static/gateway/gway_4_1.png
               :width: 200
               :align: center 
 
@@ -73,7 +73,7 @@
 
 Выбор вида шлюза:
 
- .. image:: _static/gway_5.png
+ .. image:: _static/gateway/gway_5.png
        :width: 300
        :align: center
 
@@ -92,14 +92,14 @@
 Если поток управления не может быть выбран (ни одно из условий не оценивается как «истина»), это приведет к исключению во время выполнения процесса, если вы не определили поток по умолчанию. Один поток по умолчанию может быть установлен на самом шлюзе в случае, если никакое другое условие не соответствует — например, «else» в языках программирования.
 
 
- .. image:: _static/gway_6.png
+ .. image:: _static/gateway/gway_6.png
        :width: 600
        :align: center
 
 
 Настройка шлюза:
 
- .. image:: _static/gway_7.png
+ .. image:: _static/gateway/gway_7.png
        :width: 300
        :align: center
 
@@ -120,14 +120,14 @@
 
 Фактическое поведение (разветвление, объединение или и то, и другое) определяется потоком управления, подключенным к параллельному шлюзу.
 
- .. image:: _static/gway_8.png
+ .. image:: _static/gateway/gway_8.png
        :width: 600
        :align: center
 
 
 Настройка шлюза:
 
- .. image:: _static/gway_9.png
+ .. image:: _static/gateway/gway_9.png
        :width: 300
        :align: center
 
@@ -146,13 +146,13 @@
 
 Фактическое поведение (разветвление, объединение или и то, и другое) определяется потоками управления, подключенными к инклюзивному шлюзу.
 
- .. image:: _static/gway_10.png
+ .. image:: _static/gateway/gway_10.png
        :width: 600
        :align: center
 
 Настройка шлюза:
 
- .. image:: _static/gway_11.png
+ .. image:: _static/gateway/gway_11.png
        :width: 300
        :align: center
 
@@ -163,7 +163,7 @@
 
 Каждый исходящий поток управления шлюза должен быть подключен к :ref:`Intermediate Catch Event <Intermediate_Catch_Event>`. Когда выполнение процесса достигает шлюза, основанного на событиях, шлюз находится в состоянии ожидания: выполнение процесса приостанавливается. Кроме того, для каждого исходящего потока управления создается подписка на события.
 
- .. image:: _static/gway_12.png
+ .. image:: _static/gateway/gway_12.png
        :width: 300
        :align: center
 
@@ -175,13 +175,13 @@
       * За шлюзом могут следовать только элементы типа :ref:`Intermediate Catch Event <Intermediate_Catch_Event>` (Получение задач после шлюза на основе событий еще не поддерживается движком.)
       * Промежуточное событие CatchEvent, подключенное к шлюзу, должно иметь один входящий поток управления.
 
- .. image:: _static/gway_13.png
+ .. image:: _static/gateway/gway_13.png
        :width: 600
        :align: center
 
 Настройка шлюза:
 
- .. image:: _static/gway_14.png
+ .. image:: _static/gateway/gway_14.png
        :width: 300
        :align: center
 

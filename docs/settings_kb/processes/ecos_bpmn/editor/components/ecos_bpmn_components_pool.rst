@@ -1,7 +1,7 @@
 Пул и Дорожка
 ==============
 
- .. image:: _static/pool_1.png
+ .. image:: _static/pool/pool_1.png
        :align: center 
        :width: 600
 
@@ -17,7 +17,7 @@
       
       * - 
 
-            .. image:: _static/pool_2.png
+            .. image:: _static/pool/pool_2.png
                 :align: center 
                 :width: 600
 
@@ -26,7 +26,7 @@
 
       * - 
 
-            .. image:: _static/pool_3.png
+            .. image:: _static/pool/pool_3.png
                 :align: center 
                 :width: 600
 
@@ -46,7 +46,7 @@
 Пул Participant
 ------------------
 
- .. image:: _static/pool_4.png
+ .. image:: _static/pool/pool_4.png
        :align: center 
        :width: 600
 
@@ -62,13 +62,13 @@
           | Если Ecos Тип не задан, то типом считается тот, который определен в definition. 
           | Если задан, то используется собственный.
         - 
-               .. image:: _static/pool_5.png
+               .. image:: _static/pool/pool_5.png
                 :width: 300
                 :align: center
 
 Для добавления дорожек в пул используйте:
 
- .. image:: _static/pool_6.png
+ .. image:: _static/pool/pool_6.png
        :align: center 
        :width: 50
 
@@ -76,7 +76,7 @@
 -------
 
 
- .. image:: _static/pool_7.png
+ .. image:: _static/pool/pool_7.png
        :align: center 
        :width: 600
 
@@ -88,6 +88,6 @@
 
       * - | Указать **Имя**.
         - 
-               .. image:: _static/pool_8.png
+               .. image:: _static/pool/pool_8.png
                 :width: 300
                 :align: center
