@@ -16,3 +16,4 @@
     components/ecos_bpmn_components_sub_process
     components/ecos_bpmn_components_multi_instance
     components/ecos_bpmn_components_pool
+    components/ecos_bpmn_components_business_rule_task
