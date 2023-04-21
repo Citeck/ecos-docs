@@ -15,21 +15,21 @@
       
       * - 
   
-          .. image:: _static/common_1.png
+          .. image:: _static/events/common_1.png
                 :width: 50
                 :align: center
  
         - Начальное событие (инициирующее бизнес-процесс)
       * - 
   
-          .. image:: _static/common_2.png
+          .. image:: _static/events/common_2.png
                 :width: 50
                 :align: center
  
         - Промежуточное событие
       * - 
   
-          .. image:: _static/common_3.png
+          .. image:: _static/events/common_3.png
                 :width: 50
                 :align: center
  
@@ -44,7 +44,7 @@
       
       * - 
   
-          .. image:: _static/common_4.png
+          .. image:: _static/events/common_4.png
                 :width: 50
                 :align: center
  
@@ -53,11 +53,11 @@
           | Также таймер может использоваться для моделирования моментов времени, временных промежутков и превышения лимита времени.
       * - 
   
-          .. image:: _static/common_5.png
+          .. image:: _static/events/common_5.png
                 :width: 50
                 :align: center
  
-          .. image:: _static/common_6.png
+          .. image:: _static/events/common_6.png
                 :width: 50
                 :align: center
 

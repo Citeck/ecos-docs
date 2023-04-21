@@ -9,7 +9,7 @@
 
 Используется язык JavaScript.
 
- .. image:: _static/59.png
+ .. image:: _static/script_task/59.png
        :width: 300
        :align: center
 
@@ -20,17 +20,17 @@
       * - Указать **Имя**
 
         - 
-               .. image:: _static/60.png
+               .. image:: _static/script_task/60.png
                 :width: 300
                 :align: center
       * - Указать **скрипт** 
         - 
-               .. image:: _static/61.png
+               .. image:: _static/script_task/61.png
                 :width: 300
                 :align: center
       * - Настройки асинхронности, см. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_ 
         - 
-               .. image:: _static/62.png
+               .. image:: _static/script_task/62.png
                 :width: 300
                 :align: center
 

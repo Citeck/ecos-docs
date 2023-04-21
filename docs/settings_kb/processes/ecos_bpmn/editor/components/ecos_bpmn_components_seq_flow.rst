@@ -7,7 +7,7 @@
 
 Поток управления отображает ход выполнения процесса. 
 
- .. image:: _static/92.png
+ .. image:: _static/seq_flow/92.png
        :width: 200
        :align: center
 
@@ -15,7 +15,7 @@
 
 Условия могут иметь разные типы:
 
- .. image:: _static/64.png
+ .. image:: _static/seq_flow/64.png
        :width: 300
        :align: center
 
@@ -25,7 +25,7 @@
 
 Например, для шлюза - **(2)** и **(3)**:
 
- .. image:: _static/63.png
+ .. image:: _static/seq_flow/63.png
        :width: 300
        :align: center
 
@@ -37,11 +37,11 @@
       * - Для согласования:
         - Для отказа в согласовании:
       * - 
-               .. image:: _static/65.png
+               .. image:: _static/seq_flow/65.png
                 :width: 300
                 :align: center
 
         - 
-               .. image:: _static/66.png
+               .. image:: _static/seq_flow/66.png
                 :width: 300
                 :align: center

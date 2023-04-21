@@ -17,7 +17,7 @@ Multi instance
 
 В редакторе Multi Instance можно установить следующим образом:
 
- .. image:: _static/93.png
+ .. image:: _static/multi_instance/93.png
        :width: 400
        :align: center
 
@@ -26,7 +26,7 @@ Multi instance
       :class: tight-table 
 
       * - 
-               .. image:: _static/45.png
+               .. image:: _static/multi_instance/45.png
                 :width: 30
                 :align: center
 
@@ -35,12 +35,12 @@ Multi instance
            | Когда один экземпляр завершен, создается новый экземпляр для следующего элемента в ``inputCollection``.
 
         - 
-               .. image:: _static/94.png
+               .. image:: _static/multi_instance/94.png
                 :width: 300
                 :align: center
 
       * - 
-               .. image:: _static/44.png
+               .. image:: _static/multi_instance/44.png
                 :width: 30
                 :align: center
 
@@ -49,12 +49,12 @@ Multi instance
           | Экземпляры выполняются одновременно и независимо друг от друга.
       
         - 
-               .. image:: _static/95.png
+               .. image:: _static/multi_instance/95.png
                 :width: 300
                 :align: center
 
       * - 
-               .. image:: _static/46.png
+               .. image:: _static/multi_instance/46.png
                 :width: 30
                 :align: center
 
@@ -63,7 +63,7 @@ Multi instance
 
         -  |
       * - 
-               .. image:: _static/47.png
+               .. image:: _static/multi_instance/47.png
                 :width: 30
                 :align: center
 
@@ -87,7 +87,7 @@ Multi instance
         - | Если выбрано parallel или sequential multi-instance, то задачи будут назначаться на **authority** из ролей - пользователи записываются в **assignee**, группы в **candidateGroup**.
           | При выставлении флага **«Ручное назначение»** появляется возможность указать реципиентов: 
 
-               .. image:: _static/96.png
+               .. image:: _static/multi_instance/96.png
                 :width: 300
                 :align: center         
 
@@ -96,7 +96,7 @@ Multi instance
 
           | И далее указать настройки **множественного экземпяра**, которые аналогичны и для Задачи-сценария, Подпроцесса:
           
-               .. image:: _static/97.png
+               .. image:: _static/multi_instance/97.png
                 :width: 300
                 :align: center   
 
