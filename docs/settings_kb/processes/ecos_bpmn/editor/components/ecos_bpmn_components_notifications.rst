@@ -1,4 +1,3 @@
-
 Уведомление
 ===========
 .. _notification:
@@ -12,7 +11,7 @@
 
 Уведомления отправляются через микросервис ecos-notifications, см. подробнее - :ref:`уведомления<notifications>` и :ref:`шаблоны уведомлений<notification_templates>`.
 
- .. image:: _static/48.png
+ .. image:: _static/notifications/48.png
        :width: 400
        :align: center
 
@@ -26,20 +25,20 @@
       * - Указать **Имя**, выбрать **Тип уведомления**
 
         - 
-               .. image:: _static/49.png
+               .. image:: _static/notifications/49.png
                 :width: 300
                 :align: center
 
       * - Можно выбрать :ref:`шаблон уведомления<notification_templates>` или напрямую указать *Заголовок* и *Тело* сообщения напрямую. |br| При прямом использовании Заголовка и Тела возможно указывать только текст, без использования динамических переменных из процесса или документа.
 
         - 
-               .. image:: _static/50.png
+               .. image:: _static/notifications/50.png
                 :width: 300
                 :align: center
 
          |
 
-               .. image:: _static/51.png
+               .. image:: _static/notifications/51.png
                 :width: 300
                 :align: center 
 
@@ -55,11 +54,11 @@
           ``${someVariable}`` |br|
           ``${someService.getEmails()},petya.voks`` |br|
         - 
-               .. image:: _static/send_task_recipient_roles.png
+               .. image:: _static/notifications/send_task_recipient_roles.png
                 :width: 300
                 :align: center
 
-              .. image:: _static/send_task_recipient_expression.png
+              .. image:: _static/notifications/send_task_recipient_expression.png
                 :width: 300
                 :align: center
 
@@ -78,7 +77,7 @@
           **Дополнительная модель (additional meta):** |br| Описание дополнительной мета информации, где |br| *ключ (string)* - по ключу становится доступна информация в модели шаблона уведомления. |br| *значение (object)* - если в значении передана строка и начинается с префикса ``!str_``, то символы после префикса записываются как строка, иначе строка считается как recordRef.
 
         - 
-               .. image:: _static/send_task_settings_panel.png
+               .. image:: _static/notifications/send_task_settings_panel.png
                 :width: 300
                 :align: center
 
@@ -101,7 +100,7 @@
 
 Для примера используем event sub process, который реагирует на событие добавления нового комментария и отправляет уведомление.
 
-.. image:: _static/bpmn_notification_example_process.png
+.. image:: _static/notifications/bpmn_notification_example_process.png
     :width: 300
     :align: center
 
@@ -127,12 +126,12 @@
 
 Шаблон уведомления содержит текст:
 
-.. image:: _static/bpmn_notification_example_text.png
+.. image:: _static/notifications/bpmn_notification_example_text.png
     :align: center
 
 В результате получим следующее уведомление:
 
-.. image:: _static/bpmn_notification_example_result.png
+.. image:: _static/notifications/bpmn_notification_example_result.png
     :align: center
 
 
