@@ -121,6 +121,30 @@
        :width: 100
        :align: center
 
+Для типа дашборда Case-details доступна поддержка мультиязычного имени для вкладок:
+
+.. list-table:: 
+      :widths: 30 30 30
+      :align: center
+      :class: tight-table 
+
+      * - 
+
+          .. image:: _static/dashboards/dashboards_lang_1.png
+                :width: 300
+                :align: center
+
+        - 
+
+          .. image:: _static/dashboards/dashboards_lang_2.png
+                :width: 300
+                :align: center
+
+        - 
+
+          .. image:: _static/dashboards/dashboards_lang_3.png
+                :width: 300
+                :align: center
 
 .. important::
 
