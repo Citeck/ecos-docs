@@ -62,10 +62,25 @@ AssocFormatter
 
 Тип: ``assoc``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 ActionFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип : ``action``
+
+Конфигурация:
 
 .. list-table:: 
       :widths: 5 40
@@ -85,45 +100,209 @@ BooleanFormatter
 
 Тип: ``bool``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 ColoredFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``colored``
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
 
 DateFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``date``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 DateTimeFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``datetime``
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 
 DefaultFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``default``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 FileNameFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``filename``
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
 
 HtmlFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``html``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
 LinkFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``link``
 
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
+
+Добавлена возможность строить ссылки по шаблону с использованием переменных (атрибутов записи/полей журнала). Link форматтер используется для ячеек журнала с использованием полей (колонок) в качестве переменных.
+
+Шаблон адреса ссылки задается в параметрах форматтера для столбца в конфигурации журнала (Форматтер для колонки).
+
+Пример шаблона ссылки:
+
+``urlTemplate: "https://example.com/path?var1=${columnId1}&var2=${columnId2}"``
+
+где ``columnId1`` и ``columnId2`` - колонки журнала.
+
+В качестве наименования ссылки используется значение ячейки. Если значения нет, то наименование = url.
+
+Ссылка не отображается, если ячейка журнала редактируемая (если в ячейку вводятся данные).
+
+**Например:**
+
+Выбрать форматтер **Ссылка (1)** и указать: 
+
+- **ключ (2)** – ``url``, 
+- **значение (3)** - ``${$computed.url}``
+
+.. image:: _static/formatter/link_formatter_1.png
+       :width: 500
+       :align: center
+ 
+Указать:
+
+- **id (4)** – ``url``, 
+- **type (5)** – ``value``. 
+
+В конфигурации указать: 
+
+- **ключ (6)** – ``value``, 
+- **значение (7)** - ``https://enterprise-alfresco.ecos24.ru/${?id}&${?disp}``
+
+.. image:: _static/formatter/link_formatter_2.png
+       :width: 500
+       :align: center
+
+В журнале выглядит следующим образом:
+
+.. image:: _static/formatter/link_formatter_3.png
+       :width: 500
+       :align: center
+
+
 NumberFormatter
 ~~~~~~~~~~~~~~~~~~
 
 Тип: ``Number``
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
 
 Пример:
 
@@ -246,3 +425,16 @@ WorkflowPriorityFormatter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``workflowPriority``  
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Значение
+      * - 
+        - 
+      * - 
+        - 
