@@ -674,8 +674,8 @@
   -	В поле **«Тип условия»** выберите вариант **«Исходящий»**.
   -	В появившемся поле **«Исходящий»** выбрать вариант **«На согласовании согласующим - Отказать»**. 
 
-  .. image:: _static/equipment_request/Sequence_Flow_3.png
-       :width: 500
+  .. image:: _static/equipment_request/Sequence_Flow_4.png
+       :width: 300
        :align: center
 
 
