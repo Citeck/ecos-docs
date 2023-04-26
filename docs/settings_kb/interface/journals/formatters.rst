@@ -285,6 +285,7 @@ LinkFormatter
        :width: 500
        :align: center
 
+По клику на наименование будет открываться ссылка.
 
 NumberFormatter
 ~~~~~~~~~~~~~~~~~~
