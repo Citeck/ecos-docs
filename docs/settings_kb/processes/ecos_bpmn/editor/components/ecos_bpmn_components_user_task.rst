@@ -1,8 +1,9 @@
 Пользовательская задача
 =======================
+
 .. _user_task:
 
- .. image:: _static/54.png
+ .. image:: _static/user_task/54.png
        :width: 400
        :align: center
 
@@ -12,7 +13,7 @@
 
       * - Указать **Имя**:
         - 
-               .. image:: _static/55_0.png
+               .. image:: _static/user_task/55_0.png
                 :width: 300
                 :align: center
 
@@ -21,7 +22,7 @@
         
         -
 
-               .. image:: _static/55_1.png
+               .. image:: _static/user_task/55_1.png
                 :width: 300
                 :align: center
 
@@ -29,13 +30,13 @@
 
         -     
 
-               .. image:: _static/55_2.png
+               .. image:: _static/user_task/55_2.png
                 :width: 300
                 :align: center
 
           |
 
-               .. image:: _static/55_3.png
+               .. image:: _static/user_task/55_3.png
                 :width: 300
                 :align: center
                 
@@ -49,7 +50,7 @@
           | ``${someVariable}``
           | ``${someService.getRecipients()},petya.voks``
         - 
-               .. image:: _static/55_4.png
+               .. image:: _static/user_task/55_4.png
                 :width: 300
                 :align: center
       * - | **Форма задачи** определяет то, что будет отображено при назначении задачи пользователю.
@@ -57,7 +58,7 @@
           | **Форму задачи** можно выбрать из списка, создать или вовсе не указывать, тогда тогда пользователю будут отображены только результаты задачи, указанные в соответствующем поле.
           | Если какие-то задачи могут совпадать, то можно использовать одинаковую форму.
         - 
-               .. image:: _static/56.png
+               .. image:: _static/user_task/56.png
                 :width: 300
                 :align: center
       
@@ -68,20 +69,72 @@
           | или в виде выражения: ``${someDate}``
           | предварительно задав :ref:`переменную execution<execution>` через :ref:`скриптовую задачу<script_task>`
         - 
-               .. image:: _static/56_1.png
+               .. image:: _static/user_task/56_1.png
                 :width: 300
                 :align: center
       * - | Выставить **приоритет задачи**, 
-          | Указать результат задачи – **идентификатор** и **название**.
         - 
-               .. image:: _static/56_2.png
+               .. image:: _static/user_task/56_2.png
                 :width: 300
                 :align: center
+      * - | Указать результат задачи (вердикт) – **идентификатор** и **название**.
+          | В вердиктах можно настроить темы для кнопки. См. ниже
+        - 
+               .. image:: _static/user_task/56_3.png
+                :width: 300
+                :align: center
+
+Темы для кнопок вердикта
+------------------------
+
+В вердиктах доступна настройка темы кнопок. Настройка влияет на цвет кнопки по аналогии с кнопками на форме.
+
+ .. image:: _static/user_task/56_4.png
+       :width: 400
+       :align: center
+
+|
+
+ .. image:: _static/user_task/56_5.png
+       :width: 400
+       :align: center
+
+Возможные варианты:
+
+ .. image:: _static/user_task/56_6.png
+       :width: 400
+       :align: center
+
+Примеры:
+
+.. image:: _static/user_task/56_7.png
+       :width: 700
+       :align: center
+
+|
+
+.. list-table::
+      :widths: 5 10
+      :class: tight-table 
+      :align: center
+
+      * - **1**
+        - По умолчанию
+      * - **2**
+        - Основная
+      * - **3**
+        - Информация
+      * - **4**
+        - Успешно
+      * - **5**
+        - Опасно
+      * - **6**
+        - Предупреждение
 
 Форма задачи
 ------------
 
- .. image:: _static/57.png
+.. image:: _static/user_task/57.png
        :width: 600
        :align: center
 
@@ -106,7 +159,7 @@
 
 Вердикты задачи можно добавить вручную для более гибкой настройки конфгурации. Для этого на форму задачи необходимо добавить кнопку с **«Имя свойства»**, заданным по шаблону **outcome_идентификаторВердикта**. Например, **outcome_approve**.
 
- .. image:: _static/58.png
+ .. image:: _static/user_task/58.png
        :width: 600
        :align: center
 
