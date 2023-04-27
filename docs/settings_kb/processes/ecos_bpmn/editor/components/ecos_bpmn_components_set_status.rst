@@ -5,13 +5,13 @@
 
 Уникальный для ECOS элемент, отмеченный как:
 
- .. image:: _static/86.png
+ .. image:: _static/set_status/86.png
        :width: 200
        :align: center
 
 Элемент позволяет производить смену статуса в создаваемом бизнес-процессе.
 
- .. image:: _static/87.png
+ .. image:: _static/set_status/87.png
        :width: 200
        :align: center
 
@@ -22,6 +22,6 @@
       * - Указать **Имя** и выбрать **Статус** из списка статусов, заполненных в :ref:`ECOS типе данных<roles_statuses>`
 
         - 
-               .. image:: _static/88.png
+               .. image:: _static/set_status/88.png
                 :width: 300
                 :align: center
