@@ -634,11 +634,12 @@ id типа: ``mutate``
           | **record.id** - необязательный параметр
           | **record.attributes** - изменяемые поля и их значения
 
-Пример - настройка группового действия **Изменить инициатора** с использованием **mutate:**
+Пример: Настройка группового действия **Изменить инициатора**
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 1. В журнале перейти во вкладку «Действия»:
 
-.. image:: _static/ui_actions/mutate_1.png
+.. image:: _static/ui_actions/Mutate/mutate_1.png
       :width: 600
       :align: center
 
@@ -691,15 +692,118 @@ id типа: ``mutate``
 
 2. Пользователь отмечает некоторые строки в журнале и выбирает в выпадающем меню над журналом действие:
 
-.. image:: _static/ui_actions/mutate_2.png
+.. image:: _static/ui_actions/Mutate/mutate_2.png
       :width: 600
       :align: center
 
 3. Открывается форма для уточнения значений атрибута для выполнения действия и нажимает кнопку:
 
-.. image:: _static/ui_actions/mutate_3.png
+.. image:: _static/ui_actions/Mutate/mutate_3.png
       :width: 400
       :align: center
+
+Пример: Настройка действия **Изменить статус**
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "change-status",
+    "name": {
+      "ru": "Изменить статус",
+      "en": "Change status"
+    },
+    "confirm":{
+      "title": {
+      "ru": "Изменить",
+      "en": "Change"
+      },
+    "message":{},    
+    "formRef":"uiserv/form@change-status-form",
+    "formAttributes":{}, 
+    "attributesMapping":{   
+      "record.attributes._statuses": "status" 
+      }
+    }
+    "type": "mutate",
+    "config": {
+      "record": {
+        "id": "${recordRef}"
+        "attributes": {
+          "_statuses": "statuses"
+        }
+      }
+    }
+  }
+
+Форма, которая предлагается пользователю:
+
+.. image:: _static/ui_actions/Change_status/change_1.png
+      :width: 600
+      :align: center
+
+Через компонент **Async Data** добавляются статусы типа данных:
+
+.. image:: _static/ui_actions/Change_status/change_2.png
+      :width: 600
+      :align: center
+
+Настройки компонента **ECOS Select**:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/ui_actions/Change_status/change_3.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/ui_actions/Change_status/change_4.png
+                  :width: 600
+                  :align: center
+
+Скрипт для перебора массива для получения id статуса:
+
+.. code-block::
+
+  var statuses = _.get(data, "stats.statuses");
+  var arr = [];
+
+  for(var i = 0; i < statuses.length; i++) {
+    var id statuses[i].id;
+    arr.push(id);
+  }
+  values = arr;
+
+Полученные статусы в форме :ref:`локализуются<form_localisation>`:
+
+.. image:: _static/ui_actions/Change_status/change_5.png
+      :width: 600
+      :align: center
+
+Действие в интерфейсе:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/ui_actions/Change_status/change_6.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/ui_actions/Change_status/change_7.png
+                  :width: 300
+                  :align: center
 
 
 set-task-assignee
