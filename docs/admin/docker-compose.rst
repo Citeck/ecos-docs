@@ -157,6 +157,17 @@ MacOS
 
 :ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
 
+.. attention::
+
+    Следующие контейнеры запускаются 1 раз:
+
+        - ecos-community-demo-master-ecos-meetings-ecos-apps-1
+        - ecos-community-demo-master-ecos-order-pass-ecos-apps-1
+        - ecos-community-demo-master-ecos-common-data-list-ecos-apps-1
+        - ecos-community-demo-master-ecos-assignments-ecos-apps-1
+
+    и далее находятся в статусе **exited**
+
 Возможные проблемы
 -------------------
 
