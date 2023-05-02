@@ -82,8 +82,9 @@ Document
     document.att("firArchiveBoxNumber", 123);
     document.reset();
     
-    
- ``documentRef`` - строковое представление entityRef документа.
+      
+      
+``documentRef`` - строковое представление entityRef документа.
 
 Records
 ~~~~~~~
