@@ -81,6 +81,9 @@ Document
     //сброс состояния документа, если ранее были внесены изменения через att()
     document.att("firArchiveBoxNumber", 123);
     document.reset();
+    
+    
+ ``documentRef`` - строковое представление entityRef документа.
 
 Records
 ~~~~~~~
