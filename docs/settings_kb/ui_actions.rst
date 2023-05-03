@@ -635,7 +635,7 @@ id типа: ``mutate``
           | **record.attributes** - изменяемые поля и их значения
 
 Пример: Настройка группового действия **Изменить инициатора**
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 1. В журнале перейти во вкладку «Действия»:
 
@@ -805,6 +805,103 @@ id типа: ``mutate``
                   :width: 300
                   :align: center
 
+Пример: Настройка группового действия Выгрузить данные в файл 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Пример группового действия для выгрузки в txt файл некоторых данных из выбранных записей (в примере - ``_created``) с возможностью скачивания.
+
+Конфиг действия:
+
+.. code-block::
+
+  id: example-unload-to-file
+  type: mutate
+  name:
+    ru: Выгрузить в файл
+    en: Unload
+  confirm:
+    title:
+      ru: Подтвердите действие
+      en: Confirm the action
+    message:
+      ru: Выгрузить в файл
+      en: Unload
+  config:
+    implSourceId: ЗДЕСЬ_ARTIFACTID_ВАШЕГО_ПРОЕКТА/example-unload
+  features:
+    execForQuery: false
+    execForRecord: true
+    execForRecords: true
+
+RecordsDAO для действия (метод ``getId()`` должен возвращать значение из implSourceId в конфигурации):
+
+.. code-block::
+
+  import lombok.extern.slf4j.Slf4j;
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.commons.data.DataValue;
+  import ru.citeck.ecos.records3.RecordsService;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.api.content.EcosContentApi;
+  import ru.citeck.ecos.webapp.api.entity.EntityRef;
+  import ru.ecos.haleon.service.HaleonStatusService;
+
+  import java.util.*;
+
+  @Component
+  @Slf4j
+  public class ExampleUnloadToFileRecordsDao implements ValueMutateDao<DataValue> {
+
+      private final RecordsService recordsService;
+      private final EcosContentApi contentApi;
+
+      @Autowired
+      public ExampleUnloadToFileRecordsDao(RecordsService recordsService, HaleonStatusService statusService, EcosContentApi contentApi) {
+          this.recordsService = recordsService;
+          this.contentApi = contentApi;
+      }
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "example-unload";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull DataValue selectedRecords) throws Exception {
+          List<String> recordRefs = selectedRecords.get("records").asList(String.class);
+          List<String> data = new ArrayList<>(Collections.emptyList());
+
+          for (String record : recordRefs) {
+              data.add(recordsService.getAtt(record,"_created").asText());
+          }
+
+          EntityRef tempRef = contentApi.uploadTempFile()
+              .writeContent(writer -> {
+                  writer.writeText(data.toString());
+                  return null;
+              });
+
+          String url = recordsService.getAtt(tempRef, "_content.url").asText();
+
+          return DataValue.createObj()
+              .set("type", "link")
+              .set("data", DataValue.createObj()
+                  .set("url", url)
+              );
+      }
+
+  }
+
+В интерфейсе при активации действия из выбранных записей были получены их ``_created`` и записаны в файл, который доступен для скачивания:
+
+.. image:: _static/ui_actions/Data_to_file/data_to_file_1.png
+      :width: 600
+      :align: center
 
 set-task-assignee
 ~~~~~~~~~~~~~~~~~~~~~~~~
