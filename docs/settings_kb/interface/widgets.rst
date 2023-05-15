@@ -121,10 +121,41 @@
 
 Виджет для отображения комментариев к документу.
 
- .. image:: _static/widgets/widget_8.png
+.. list-table:: 
+      :widths: 10 40
+      :class: tight-table  
+
+      * - **Введенные комментарии**      
+        - |  
+            
+            .. image:: _static/widgets/comment_1.png
+                  :width: 400   
+                  :align: center
+
+      * - **Форма ввода комментария:**    
+        - |  
+            
+            .. image:: _static/widgets/comment_2.png
+                  :width: 400   
+                  :align: center  
+
+
+Транcлирование комментариев при выполнении задачи
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Для включения транслированная комментария при выполнении задачи в виджет комментариев необходимо к типу данных добавить аспект ``task-comments-broadcastable``. 
+
+.. important::
+
+       Инпут комментария на форме задачи должен быть добавлен с ``id comment``.
+
+Комментарий, добавленный из задачи помечается тегом с названием задачи.
+
+ .. image:: _static/widgets/comment_3.png
        :width: 600
        :align: center 
 
+Если необходимо выключить добавление комментария из задачи для конкретного рекорда, можно у рекорда выставить свойство ``task-comments-broadcastable:broadcastComments`` в ``false``.
 
 .. _widget_properties:
 
