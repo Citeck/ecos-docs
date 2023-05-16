@@ -47,6 +47,11 @@
     //someVar - переменная процесса
     print("someVar: " + someVar);
 
+``documentRef`` - строковое представление entityRef документа |br|
+``documentType`` - id типа документа |br|
+``lastTaskCompletor`` - username пользователя, который завершил последнюю задачу |br|
+``lastTaskComment`` - комментарий из последней завершенной задачи |br|
+``workflowInitiator`` - username инициатора БП |br|
 
 Execution
 ~~~~~~~~~
@@ -82,9 +87,6 @@ Document
     document.att("firArchiveBoxNumber", 123);
     document.reset();
     
-      
-      
-``documentRef`` - строковое представление entityRef документа.
 
 Records
 ~~~~~~~
