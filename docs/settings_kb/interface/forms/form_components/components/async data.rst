@@ -217,6 +217,6 @@ Async data
       language: 'predicate'
       };
 
- .. image:: _static/async_data/async_data_12.png
-       :width: 600
-       :align: center
+.. image:: _static/async_data/async_data_12.png
+      :width: 600
+      :align: center
