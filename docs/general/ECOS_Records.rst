@@ -372,7 +372,7 @@ RecordsService (Java)
           .withLanguage(PredicateService.LANGUAGE_PREDICATE)
           .withQuery(Predicates.and(
                   Predicates.eq(ValuePredicateToFtsAlfrescoConstants.TYPE, "cm:person"),
-                  Predicates.eq("ssgedic:personalNumber", personalNumber)))
+                  Predicates.eq("testc:personalNumber", personalNumber)))
           .withConsistency(Consistency.EVENTUAL)
           .addSort(new SortBy("cm:created", true))
           .build());
@@ -382,10 +382,10 @@ RecordsService (Java)
   recordsService.query(RecordsQuery.create()
           .withLanguage(PredicateService.LANGUAGE_PREDICATE)
           .withQuery(Predicates.and(
-                  Predicates.eq("_type", "emodel/type@ssgediip-inboundPackage"),
-                  Predicates.eq("ssgediip:isNeedSendToVim", true),
+                  Predicates.eq("_type", "emodel/type@testip-inboundPackage"),
+                  Predicates.eq("testip:isNeedSendToVim", true),
                   Predicates.not(
-                          Predicates.eq("ssgediip:isAlreadySentToVim", true)
+                          Predicates.eq("testip:isAlreadySentToVim", true)
                   )
           ))
           .withConsistency(Consistency.EVENTUAL)
@@ -452,7 +452,7 @@ RecordsService (Java)
 
   RecordAtts recordAtts = new RecordAtts();
   recordAtts.setId(recordRef);
-  recordAtts.setAtt("ssgedidl:isOutboundPackageSyncNeeded", false);
+  recordAtts.setAtt("testdl:isOutboundPackageSyncNeeded", false);
   recordsService.mutate(recordAtts);
 
 Для обновления записи необходимо указывать **.setId()** записи которой необходимо изменить
@@ -462,11 +462,11 @@ RecordsService (Java)
 .. code-block:: java
 
   RecordAtts recordAtts = new RecordAtts();
-  recordAtts.setAtt(AlfNodeRecord.ATTR_TYPE, "ssgedidl:routeTemplate");
-  recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@ssgedidl-routeTemplateItem");
-  recordAtts.setAtt("etype:type","ssgedidl-routeTemplateItem");
+  recordAtts.setAtt(AlfNodeRecord.ATTR_TYPE, "testdl:routeTemplate");
+  recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
+  recordAtts.setAtt("etype:type","testdl-routeTemplateItem");
   recordAtts.setAtt(RecordConstants.ATT_PARENT,
-          "/app:company_home/st:sites/cm:ssg-edi/cm:dataLists/cm:ssgedidl-routeTemplate");
+          "/app:company_home/st:sites/cm:ssg-edi/cm:dataLists/cm:testdl-routeTemplate");
   recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "cm:contains");
   recordsService.mutate(recordAtts);
 
@@ -509,7 +509,7 @@ RecordRef
 
 .. code-block:: java
 
-  RecordRef.create("emodel", "type", "ssgedidl-counterpartyToAuthority");
+  RecordRef.create("emodel", "type", "testdl-counterpartyToAuthority");
 
 * **“emodel”** – appName
 * **“type”** – sourceId

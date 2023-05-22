@@ -43,14 +43,14 @@ API-интерфейс позволяет работать с данными с�
                 "sourceId":"alfresco/",
                 "query":{
                     "att":"_type",
-                    "val":"emodel/type@sampleedidl-routeTemplateItem",
+                    "val":"emodel/type@testdl-routeTemplateItem",
                     "t":"eq"
                     },
                     "language":"predicate",
                     "page":{"skipCount":0,"maxItems":10,"page":1},
                     "consistency":"EVENTUAL",
                     "sortBy":[{"attribute":"cm:created","ascending":false}]},
-                    "attributes":["sampleedidl:rtCode?disp"]
+                    "attributes":["testdl:rtCode?disp"]
             }
 
       * - **Ответ**
@@ -62,7 +62,7 @@ API-интерфейс позволяет работать с данными с�
                     {
                         "id": "alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa",
                         "attributes": {
-                            "sampleedidl:rtCode?disp": "1"
+                            "testdl:rtCode?disp": "1"
                         }
                     }
                 ],
@@ -134,9 +134,9 @@ API-интерфейс позволяет работать с данными с�
                 {
                     "records": [
                         {
-                            "id":"alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa", -- ID маршрута
+                            "id":"alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa", // ID маршрута
                             "attributes":{
-                                "sampleedidl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", - этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
+                                "testdl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", // этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
                                 "_state?str":"submitted"
                                          }
                         }
@@ -446,3 +446,69 @@ API-интерфейс позволяет работать с данными с�
           | •	TRANSACTIONAL
           | •	DEFAULT
           | •	TRANSACTIONAL_IF_POSSIBLE
+
+Внесение изменений в запись
+-----------------------------
+
+.. code-block::
+
+  {
+    "records": [
+      {
+        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", //id workspace, в который данные необходимо добавить
+        "attributes": {
+          "testpkg: poAssoc?assoc": [ 
+            "dict@testpkg:po-alias-4" // alias должен быть уникальным в пределах запроса, можно задать константой
+          ]
+        }
+      },	
+      {
+        "id": "dict@testpkg: po",
+        "attributes": {
+          "_alias?str": "dict@testpkg:po-alias-4",
+          "testpkg:poValue?str": "1234567890",
+          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+          "_state?str": "submitted",
+          "_formInfo?json": {
+            "submitName": {
+              "en": "Cохранить"
+            }
+            "formId": "testpkg-po-form"		
+          }
+        }
+      }
+    ]
+  }
+
+Добавление данных
+------------------
+
+.. code-block::
+
+  {
+    "records": [
+      {
+        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", 
+        "attributes": {
+          "att_add_testpkg: poAssoc?assoc": [
+            "dict@testpkg:po-alias-4"
+          ]
+        }
+      },	
+      {
+        "id": "dict@testpkg: po",
+        "attributes": {
+          "_alias?str": "dict@testpkg:po-alias-4",
+          "testpkg:poValue?str": "1234567890",
+          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+          "_state?str": "submitted",
+          "_formInfo?json": {
+            "submitName": {
+              "en": "Cохранить"
+            }
+            "formId": "testpkg-po-form"		
+          }
+        }
+      }
+    ]
+  }
