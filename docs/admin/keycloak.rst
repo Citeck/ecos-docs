@@ -1,4 +1,4 @@
-ECOS KeyCloak Extensions
+ECOS KeyCloak Extension
 =========================
 
 Расширения KeyCloak со стороны ECOS: `<https://gitlab.citeck.ru/citeck-projects/ecos-keycloak-ext>`_ 
