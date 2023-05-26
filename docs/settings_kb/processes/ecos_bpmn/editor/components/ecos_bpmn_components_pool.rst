@@ -1,6 +1,8 @@
 Пул и Дорожка
 ==============
 
+.. _pool:
+
  .. image:: _static/pool/pool_1.png
        :align: center 
        :width: 600

@@ -19,9 +19,9 @@
        :width: 300
        :align: center
 
-*	Исходящий (выход из задачи)
-*	Скрипт - скрипт, который должен вернуть булевое значение. Например: pasymentSum >= 30000
-*	Выражение – expression (`подробнее о expressions <https://docs.camunda.io/docs/components/concepts/expressions/>`_)
+*	**Исходящий** (выход из задачи)
+*	**Скрипт** - скрипт, который должен вернуть булевое значение. Например: pasymentSum >= 30000
+*	**Выражение** – expression (`подробнее о expressions <https://docs.camunda.io/docs/components/concepts/expressions/>`_)
 
 Например, для шлюза - **(2)** и **(3)**:
 
