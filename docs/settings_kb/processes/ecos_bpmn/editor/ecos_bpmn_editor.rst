@@ -95,50 +95,49 @@
                 :width: 30
                 :align: center
 
-        - **Create StartEvent** - начальное событие
+        - **Create StartEvent** - начальное :ref:`событие<bpmn_events>`
       * - 
                .. image:: _static/17.png
                 :width: 30
                 :align: center
 
-        - **Create Intermediate/Boundary Event** - промежуточное событие
+        - **Create Intermediate/Boundary Event** - промежуточное :ref:`событие<bpmn_events>`
       * -
                .. image:: _static/18.png
                 :width: 30
                 :align: center
 
-        - **Create EndEvent** - завершающее событие
+        - **Create EndEvent** - завершающее :ref:`событие<bpmn_events>`
       * - 
                .. image:: _static/19.png
                 :width: 30
                 :align: center
 
-        - **Create Gateway** - развилка или шлюз, логический оператор
+        - **Create Gateway** - развилка или :ref:`шлюз<gateways>`, логический оператор
       * - 
                .. image:: _static/20.png
                 :width: 30
                 :align: center
 
-        - **Create Task** – задача
+        - **Create Task** – :ref:`задача<user_task>`
       * -
                .. image:: _static/21.png
                 :width: 30
                 :align: center
 
-        - **Create expanded SubProcess** – несколько task, выделенные в отдельную подзадачу
+        - **Create expanded SubProcess** – несколько task, выделенные в :ref:`отдельную подзадачу<sub_process>`
       * -
                .. image:: _static/89.png
                 :width: 30
                 :align: center
 
         - **Create Set document status** – :ref:`изменение значения статуса элемента бизнес-процесса<set_status>`
-
       * -
                .. image:: _static/24.png
                 :width: 30
                 :align: center
 
-        - | **Create Pool/Participant** – пул, используются для разграничении ответственности между задачами, организациями, пользователями. 
+        - | **Create Pool/Participant** – :ref:`пул<pool>`, используются для разграничении ответственности между задачами, организациями, пользователями. 
           | Пулы взаимодействуют между собой только потоками сообщений.
 
 
