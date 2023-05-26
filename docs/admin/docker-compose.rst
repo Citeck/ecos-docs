@@ -65,7 +65,7 @@ MacOS
 
 •	Установить `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
 •	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
-•	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
+•	Скачать `репозиторий <https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip>`_ , распаковать на диске С
 •	В командной строке выполнить команды: 
 
     - для перехода в распакованный архив ``cd c:\ecos-community-demo-master`` 
