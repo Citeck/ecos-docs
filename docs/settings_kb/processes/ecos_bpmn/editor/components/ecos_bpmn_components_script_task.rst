@@ -50,7 +50,7 @@
 ``documentRef`` - строковое представление entityRef документа |br|
 ``documentType`` - id типа документа |br|
 ``lastTaskCompletor`` - username пользователя, который завершил последнюю задачу |br|
-``lastTaskComment`` - комментарий из последней завершенной задачи |br|
+``comment`` - комментарий из последней завершенной задачи |br|
 ``workflowInitiator`` - username инициатора БП |br|
 
 Execution
