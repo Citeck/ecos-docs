@@ -1148,6 +1148,42 @@ id типа: ``transform``
                     - type: convert
                       config: { toMimeType: 'application/pdf' } 
 
+Пример: Настройка действия **Скачать c штрихкод** 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "test-action-transform",
+    "name": {
+      "ru": "Скачать с штрих-код",
+      "en": "Download with barcode"
+    },
+    "type": "transform",
+    "config": {
+      "transformations": [
+        {
+          "type": "convert",
+          "config": {
+            "toMimeType": "application/pdf"
+          }
+        },
+        {
+          "type": "barcode",
+          "config": {
+            "entityRef": "${?id}",
+            "layout": "BOTTOM_RIGHT",
+            "pages": "ALL"
+          }
+        }
+      ]
+    }
+  }
+
+``layout`` - выбор положения баркода с возможными значениями: TOP_LEFT, TOP_CENTER, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
+
 Расширение действий
 -------------------
 
