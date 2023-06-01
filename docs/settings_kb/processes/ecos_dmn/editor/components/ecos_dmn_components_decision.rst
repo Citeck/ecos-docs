@@ -55,6 +55,8 @@
 Политика выбора
 ~~~~~~~~~~~~~~~~~~
 
+.. _dmn_hit_policy:
+
  .. image:: _static/decision/decision_6.png
        :width: 200
        :align: center
