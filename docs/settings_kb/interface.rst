@@ -9,6 +9,7 @@
     interface/menu
     interface/dashboards
     interface/widgets
-    interface/barcode
-    interface/onlyoffice_edit    
     interface/number_template
+    interface/onlyoffice_edit    
+    interface/barcode
+    
