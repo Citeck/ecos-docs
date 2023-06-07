@@ -6,6 +6,6 @@
 
     ecos_modules/meeting
     ecos_modules/order_pass
-    ecos_modules/service_desk
     ecos_modules/tasks
+    ecos_modules/service_desk
     ecos_modules/offer

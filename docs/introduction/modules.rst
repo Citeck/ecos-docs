@@ -40,6 +40,20 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
+      * - :ref:`Порученияя<ecos-tasks>`
+        - Постановка поручений на исполнение, и проверки результатов их исполнения при необходимости. 
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
 
 Микросервисы
 -------------
