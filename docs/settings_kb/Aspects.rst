@@ -154,13 +154,13 @@
 В аспекте есть атрибут ``timeTracking`` - запись о потраченном времени:
 
  .. image:: _static/aspects/time_trackable_2.png
-       :width: 400
+       :width: 500
        :align: center
 
 Отражается в виде дочерней ассоциации: ``time-trackable:timeTracking``:
 
  .. image:: _static/aspects/time_trackable_3.png
-       :width: 400
+       :width: 500
        :align: center
 
 При таком выборе атрибут аспекта является дочерней ассоциацией.
@@ -180,5 +180,5 @@
 
 .. code-block::
 
-  _parent?str: "emodel/type@type"  //Заявка, с которой мы связываем родителя.
+  _parent?str: "emodel/type@document"  //Заявка, с которой мы связываем родителя.
   _parentAtt?str: "time-trackable:timeTracking"  //Атрибут от родителя к дочерней сущности, куда его нужно добавить.
