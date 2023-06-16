@@ -8,4 +8,5 @@
     ecos_modules/order_pass
     ecos_modules/tasks
     ecos_modules/service_desk
+    ecos_modules/worklog
     ecos_modules/offer
