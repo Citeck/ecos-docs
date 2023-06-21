@@ -151,6 +151,142 @@ MacOS
 
 Система будет инициализирована, и после полного запуска, будет готова к работе.
 
+Подготовка окружения Astra Linux Орел для установки Citeck Ecos
+---------------------------------------------------------------
+
+.. note:: 
+
+    Инструкция проверялась с Astra Linux Common Edition 2.12.46.
+
+Установка Docker:
+
+.. code-block::
+
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo printf "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable \n" > /etc/apt/sources.list.d/docker.list
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+Настройка групп docker:
+
+.. code-block::
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+
+Установка Docker-compose:
+
+.. code-block::
+
+    wget https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+    mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+.. note:: 
+
+    Версию можно изменить на более актуальную, заменив 1.27.4
+
+Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+
+.. code-block::
+
+    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+    unzip master.zip
+    cd ecos-community-demo-master
+    docker-compose pull
+
+Добавить ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+Запуск Ecos-Community-Demo:
+
+.. note:: 
+
+    Выполнять из директории ecos-community-demo-master
+
+.. code-block::
+
+    docker-compose up -d
+
+В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+      "default-address-pools":
+      [
+        {"base":"172.19.0.0/16","size":24}
+      ]
+    }
+
+Подготовка окружения Ред ОС (Red OS) для установки Citeck Ecos
+---------------------------------------------------------------
+
+.. note:: 
+
+    Инструкция проверялась с РЕД ОС 7.3| Ядро Linux 5.15.72 (в репозитории 5.15.87)
+
+Обновить пакеты и выключить SELINUX:
+
+.. code-block::
+
+    dnf update
+    echo 'SELINUX=disabled' > /etc/sysconfig/selinux
+    reboot
+
+Установка Docker и Docker-compose:
+
+.. code-block::
+
+    sudo dnf install docker-ce docker-ce-cli docker-compose
+    systemctl enable docker
+
+Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+
+.. code-block::
+
+    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+    unzip master.zip
+    cd ecos-community-demo-master
+    docker-compose pull
+
+Запуск Ecos-Community-Demo:
+
+.. code-block::
+
+    docker-compose up -d
+
+.. note:: 
+
+    Если встречается ошибка ``unknown log opt 'max-size' for journald log driver``, открыть ``/etc/docker/deamon.json`` и изменить там ``"log-driver": "journald "`` на ``"log-driver": "json-file"``
+
+Добавить ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+      "default-address-pools":
+      [
+        {"base":"172.19.0.0/16","size":24}
+      ]
+    }
 
 Сервисы Docker
 ---------------
