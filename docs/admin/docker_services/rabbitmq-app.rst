@@ -9,12 +9,12 @@ rabbitmq-app
 Теги:
 ------
 
-**rabbitmq:3.7.18-management-alpine** - используется официальный образ
+**rabbitmq:3.8.19-management-alpine** - используется официальный образ
 
 Базовые образы:
 ----------------
 
-* **rabbitmq:3.7.18-management-alpine** - образ версии 3.7.18 c интегрированным плагином managment на базе alpine linux
+* **rabbitmq:3.8.19-management-alpine** - образ версии 3.8.19 c интегрированным плагином managment на базе alpine linux
 
 Шаблон сервиса docker-compose:
 -------------------------------
@@ -26,7 +26,7 @@ rabbitmq-app
 		options:
 			max-size: "10m"
 			max-file: "5"
-		image: "rabbitmq:3.7.18-management-alpine"
+		image: "rabbitmq:3.8.19-management-alpine"
 		restart: unless-stopped
 		stop_grace_period: 1m
 		container_name: rabbitmq
@@ -67,12 +67,12 @@ rabbitmq-app
 	rabbitmq                    | 2020-05-12 20:35:36.412 [info] <0.8.0> Feature flags: list of feature flags found:
 	rabbitmq                    | 2020-05-12 20:35:36.413 [info] <0.8.0> Feature flags: feature flag states written to disk: yes
 	rabbitmq                    | 2020-05-12 20:35:36.754 [info] <0.264.0> 
-	rabbitmq                    |  Starting RabbitMQ 3.7.18 on Erlang 22.1.1
+	rabbitmq                    |  Starting RabbitMQ 3.8.19 on Erlang 22.1.1
 	rabbitmq                    |  Copyright (C) 2007-2019 Pivotal Software, Inc.
 	rabbitmq                    |  Licensed under the MPL.  See https://www.rabbitmq.com/
 	rabbitmq                    | 
 	rabbitmq                    |   ##  ##
-	rabbitmq                    |   ##  ##      RabbitMQ 3.7.18. Copyright (C) 2007-2019 Pivotal Software, Inc.
+	rabbitmq                    |   ##  ##      RabbitMQ 3.8.19. Copyright (C) 2007-2019 Pivotal Software, Inc.
 	rabbitmq                    |   ##########  Licensed under the MPL.  See https://www.rabbitmq.com/
 	rabbitmq                    |   ######  ##
 	rabbitmq                    |   ##########  Logs: <stdout>
