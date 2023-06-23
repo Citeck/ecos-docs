@@ -533,7 +533,7 @@
 Статус изменится на **«На согласовании»**. Исполнитель – entDir (аккаунт **entdirgorbunkov**) и ИТ-отдел (группа **it**)
 
  .. image:: _static/dmn_dynamic_role/29.png
-       :width: 500
+       :width: 600
        :align: center
 
 Проверка прав через консоль браузера
