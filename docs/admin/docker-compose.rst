@@ -140,7 +140,7 @@ MacOS
     ]
     }
 
-Следующим этапом необходимо получить комплект поставки, в который входят `docker-compose.yaml и environments <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ и поместить его на сервер.
+Следующим этапом необходимо получить комплект поставки, в который входят `docker-compose.yaml и environments <https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip>`_ и поместить его на сервер.
 
 После этого в директории, куда поместили проект, выполнить:
 
