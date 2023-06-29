@@ -71,7 +71,7 @@ Execution
 Document
 ~~~~~~~~
 
-``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
+``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
 
 .. code-block:: javascript
 
@@ -91,7 +91,7 @@ Document
 Records
 ~~~~~~~
 
-``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
+``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
 
 .. code-block:: javascript
 
@@ -135,7 +135,7 @@ Ecos Config
 DataValue
 ~~~~~~~~~
 
-``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
 
     - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
     - ``DataValue.createObj()`` - создает пустой объект DataValue.

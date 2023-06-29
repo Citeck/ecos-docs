@@ -122,9 +122,9 @@ ______________
 
 - ``before`` - атрибуты до изменения (Map<String, Any>)
 - ``after`` - атрибуты после изменения (Map<String, Any>)
-- ``diff`` - объект описывающий изменения (`Diff <https://gitlab.citeck.ru/ecos-community/ecos-events/-/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_)
+- ``diff`` - объект описывающий изменения (`Diff <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_)
 
-  - ``list`` - список изменений (List<`DiffValue <https://gitlab.citeck.ru/ecos-community/ecos-events/-/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_>), например *diff.list?json*
+  - ``list`` - список изменений (List<`DiffValue <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_>), например *diff.list?json*
 
   - ``has`` - предоставляет возможность проверить был ли изменен атрибут (Boolean), например *diff._has.youAttName?bool*
 
@@ -166,7 +166,7 @@ __________________
 
 После возникновениия события, его payload доступен в переменной ``event`` в рамках текущей транзакции. Если необходимо сохранить какую-то информацию из payload в execution процесса, то это можно осуществить через обычное сохранение переменных в execution.
 
-Переменная ``event``, это класс-обертка `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_, который позволяет удобно работать с json представлением данных - безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу и многое другое, подробнее см. методы класса.
+Переменная ``event``, это класс-обертка `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_, который позволяет удобно работать с json представлением данных - безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу и многое другое, подробнее см. методы класса.
 
 Пример использования payload в скрипте:
 

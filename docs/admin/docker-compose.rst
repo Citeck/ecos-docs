@@ -151,6 +151,34 @@ MacOS
 
 Система будет инициализирована, и после полного запуска, будет готова к работе.
 
+Настройка Proxy в Docker
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Настройки прокси задаются в файле:
+
+.. code-block::
+
+    /etc/systemd/system/docker.service.d/http-proxy.conf 
+
+Если этого файла или папки нет, нужно их создать. Содержимое файла должно быть примерно таким:
+
+.. code-block::
+
+    [Service]
+    Environment="HTTP_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+    Environment="HTTPS_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+    Environment="NO_PROXY=localhost,127.0.0.1,ecos-app, ecos-apps-app, ecos-gateway-app, ecos-history-app, ecos-identity-app, ecos-integrations-app, ecos-logger-app, ecos-microservices-postgresql-app, ecos-model-app, ecos-notifications-app, ecos-process-app, ecos-proxy-app, ecos-registry-app, ecos-search-app, ecos-uiserv-app, mailhog-app, mongodb-app, node-exporter-app, only-office-app, portainer-agent-app, postgres-exporter-app, rabbitmq-app, zookeeper-app"
+
+Также в раздел *NO_PROXY* можно добавить внутренние домены вашей компании (через запятую и также можно использовать звездочку например ``*.someco.com,`` ``*.someco.ru``)
+
+После добавления данного файла нужно перезапустить демон Docker
+
+.. code-block::
+
+    systemctl daemon-reload
+    systemctl restart docker
+
+
 Подготовка окружения Astra Linux Орел для установки Citeck Ecos
 ---------------------------------------------------------------
 
