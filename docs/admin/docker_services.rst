@@ -24,7 +24,7 @@
     docker_services/ecos-history-app
     docker_services/rabbitmq-app
     docker_services/ecos-apps-app
-    docker_services/eis_Keycloack
+    docker_services/eis_Keycloak
     docker_services/backup-tool-app
     docker_services/ecos-alfresco-search-service
 
