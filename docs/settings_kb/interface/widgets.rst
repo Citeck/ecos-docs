@@ -6,11 +6,36 @@
 .. contents::
 		:depth: 4
 
+
 Для некоторых виджетов доступна настройка. Настройка отмечена следующей иконкой:
 
  .. image:: _static/widgets/widget_1.png
        :width: 600
        :align: center
+
+.. note::
+
+  При включенном конфиге **restrict-access-to-edit-dashboard-widgets** (true) настройка виджетов запрещена пользователю.
+
+Настройка прав на редактирование
+--------------------------------
+
+В системе для пользователй можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**). 
+
+То есть у пользователя могут быть права на настройку дашборда, но запрещена настройа виджетов. 
+
+Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS**:
+
+ .. image:: _static/widgets/dashboards_widgets_settings.png
+       :width: 700
+       :align: center
+
+Включение настройки:
+
+ .. image:: _static/widgets/dashboards_widgets_settings_1.png
+       :width: 400
+       :align: center
+
 
 .. _widget_journal:
 
