@@ -163,4 +163,4 @@ Kotlin::
     }
   });
 
-здесь counterparty - это ассоциация на контрагента, а fullOrganizationName - его имя.
+здесь **counterparty** - это ассоциация на контрагента, а **fullOrganizationName** - его имя.
