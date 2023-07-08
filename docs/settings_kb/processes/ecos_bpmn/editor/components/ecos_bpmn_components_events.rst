@@ -19,24 +19,24 @@
                 :width: 50
                 :align: center
  
-        - Начальное событие (инициирующее бизнес-процесс)
+        - Начальное событие (инициирующее бизнес-процесс)/ Start event
       * - 
   
           .. image:: _static/events/common_2.png
                 :width: 50
                 :align: center
  
-        - Промежуточное событие
+        - Промежуточное событие / Intermediate Event
       * - 
   
           .. image:: _static/events/common_3.png
                 :width: 50
                 :align: center
  
-        - Конечное событие (заканчивающее бизнес-процесс).
+        - Конечное событие (заканчивающее бизнес-процесс) / End event
 
 
-2. По типу события:
+1. По типу события:
 
 .. list-table::
       :widths: 5 5 20
@@ -63,6 +63,31 @@
 
         - Событие-сигнал
         - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями ECOS <bpmn_events_integrations>`.
+      * - 
+  
+          .. image:: _static/events/common_7.png
+                :width: 50
+                :align: center
+ 
+        - Событие-условие
+        - Используется для моделирования реакции бизнес-процесса на изменения условий. 
+      * - 
+  
+          .. image:: _static/events/common_8.png
+                :width: 50
+                :align: center
+ 
+        - Событие-останов
+        - Вызывает немедленное завершение выполнения процесса, при этом все его активные потоки управления прерываются.  
+      * - 
+  
+          .. image:: _static/events/common_9.png
+                :width: 50
+                :align: center
+
+        - Событие-ошибка
+        - Используется для моделирования возможных ошибок при выполнении процесса, а также для отображения последовательности действий по устранению этих ошибок.  
+
 
 .. toctree::
     :maxdepth: 3
@@ -70,3 +95,6 @@
     events/ecos_bpmn_components_timer
     events/ecos_bpmn_components_signal
     events/ecos_bpmn_components_event_subprocess
+    events/ecos_bpmn_components_conditional
+    events/ecos_bpmn_components_termination
+    events/ecos_bpmn_components_error
