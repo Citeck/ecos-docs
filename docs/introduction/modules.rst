@@ -13,6 +13,20 @@
         - Описание
         - Community
         - Enterprise
+      * - :ref:`Совещания<ecos-meetings>`
+        - Автоматизация процесса планирования и проведения совещаний.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Пропуска<ecos-order-pass>`
         - Автоматизация процесса принятия решения по выдаче пропуска.
         - |
@@ -27,19 +41,6 @@
               :width: 30
               :align: center 
 
-      * - :ref:`Совещания<ecos-meetings>`
-        - Автоматизация процесса планирования и проведения совещаний.
-        - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
       * - :ref:`Поручения<ecos-tasks>`
         - Постановка поручений на исполнение, и проверки результатов их исполнения при необходимости. 
         - |
@@ -53,6 +54,62 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
+      * - :ref:`Service desk<ecos-service-desk>`
+        - Автоматизация работы техподдержки с клиентскими обращениями (заявками).
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+      * - :ref:`Офферы<ecos-offer>`
+        - Автоматизация процесса подбора персонала по заявкам подразделений.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+      * - :ref:`Договоры<ecos-contract>`
+        - Автоматизация процеса учета и согласования бумажных договоров, и документов, связанных с договорами.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+      * - :ref:`CRM<ecos-crm>`
+        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+
+
+
 
 
 Микросервисы
