@@ -315,6 +315,24 @@ MacOS
       ]
     }
 
+Развёртывание ecos-community-demo на удаленной машине
+-------------------------------------------------------
+
+В случае, если ecos-community-demo развёртывается на удаленной машине, для полного функционирования Ecos необходимо внести следующие настройки:
+
+  1. ``nano ecos-community-demo-master/services/environments/ecos-proxy-app.env`` заменить строку ``ENABLE_OIDC_FULL_ACCESS=true`` на ``ENABLE_OIDC_FULL_ACCESS=false``
+  2. в этом же файле добавить - ``BASIC_AUTH_ACCESS=admin:admin,fet:fet``
+
+После внесения изменений запустите проект.
+
+``docker-compose down`` в директории ``ecos-community-demo-master`` для остановки проекта
+
+``docker-compose up -d`` в директории ``ecos-community-demo-master`` для запуска проекта
+
+Тестировать можно с локальной машины при наличии корректной записи в ``/etc/hosts``.
+
+Данные для входа в ecos - ``admin`` | ``admin``
+
 Сервисы Docker
 ---------------
 
