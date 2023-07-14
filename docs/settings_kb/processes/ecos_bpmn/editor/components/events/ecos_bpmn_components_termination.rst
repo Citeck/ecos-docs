@@ -9,12 +9,13 @@
 
 Выберите конечное событие и далее:
 
- .. image:: _static/terminate_event_1.png
-       :width: 400
-       :align: center
+.. image:: _static/terminate_event_1.png
+      :width: 400
+      :align: center
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - Указать **Имя**
@@ -24,6 +25,8 @@
                 :width: 300
                 :align: center
 
-На уровне процесса Terminate End Event завершает процесс по связанным потокам. На уровне подпроцесса завершает подпроцесс и связанные потоки.
+.. image:: _static/terminate_event_3.png
+      :width: 500
+      :align: center
 
-Отрабатывает после выполнения события.
+На уровне процесса **Terminate End Event** завершает процесс по связанным потокам. На уровне подпроцесса завершает подпроцесс и связанные потоки.
