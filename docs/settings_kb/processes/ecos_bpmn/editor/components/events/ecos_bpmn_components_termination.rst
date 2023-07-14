@@ -18,7 +18,7 @@
       :align: center
       :class: tight-table 
 
-      * - Указать **Имя**
+      * - **Имя**
 
         - 
                .. image:: _static/terminate_event_2.png

@@ -16,13 +16,13 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя**
+      * - **Имя**
 
         - 
                .. image:: _static/timer_event_2.png
                 :width: 300
                 :align: center
-      * - Указать **Тип** и **Значение**
+      * -  **Тип** и **Значение**
 
         - 
                .. image:: _static/timer_event_3.png
