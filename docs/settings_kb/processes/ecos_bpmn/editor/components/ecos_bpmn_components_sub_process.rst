@@ -23,6 +23,9 @@
        :width: 300
        :align: center
 
+Атрибуты
+--------
+
 .. list-table::
       :widths: 5 5
       :class: tight-table 
