@@ -65,7 +65,7 @@ BPMN не приводит какой-либо классификации воз
                 :width: 300
                 :align: center
 
-      * - Сообщение
+      * - **Сообщение**
 
         - 
                .. image:: _static/error_event_4_4.png
