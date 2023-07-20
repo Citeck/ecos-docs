@@ -10,6 +10,7 @@
     components/ecos_bpmn_components_script_task
     components/ecos_bpmn_components_notifications
     components/ecos_bpmn_components_set_status
+    components/ecos_bpmn_components_service_task
     components/ecos_bpmn_components_gateway
     components/ecos_bpmn_components_seq_flow
     components/ecos_bpmn_components_events
