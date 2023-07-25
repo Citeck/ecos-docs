@@ -329,7 +329,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_14.png
+            .. image:: _static/widgets/all_tasks_1.png
                  :width: 400   
                  :align: center 
 
@@ -339,9 +339,25 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_15.png
+            .. image:: _static/widgets/all_tasks_2.png
                  :width: 400 
                  :align: center   
+
+При нажатии на:
+
+ .. image:: _static/widgets/all_tasks_3.png
+       :width: 400
+       :align: center 
+
+отображается схема выбранного бизнес-процесса с выделенной текущей задачей: 
+
+ .. image:: _static/widgets/all_tasks_3.png
+       :width: 400
+       :align: center 
+
+.. note:: 
+
+       Действие доступно только администратору.       
 
 .. _widget_doc-status:
 
