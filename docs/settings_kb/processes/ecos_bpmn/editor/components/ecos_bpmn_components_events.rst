@@ -3,11 +3,19 @@
 
 .. _bpmn_events:
 
+.. toctree::
+    :maxdepth: 2
+
+    events/ecos_bpmn_components_timer
+    events/ecos_bpmn_components_conditional
+    events/ecos_bpmn_components_error   
+    events/ecos_bpmn_components_signal
+    events/ecos_bpmn_components_termination
+    events/ecos_bpmn_components_event_subprocess
+
 **Событие** является одним из главных элементов BPMN и служит для описания того, что должно случиться (в отличие от задачи, когда что-то должно быть сделано). Событием может быть, например, подписание договора, или разговор с клиентом.
 
-Графические элементы событий в BPMN классифицируют двумя способами:
-
-1. В зависимости от положения события на схеме процесса:
+Графические элементы событий в BPMN классифицируют в зависимости от положения события на схеме процесса:
 
 .. list-table::
       :widths: 5 20
@@ -35,9 +43,7 @@
  
         - Конечное событие (заканчивающее бизнес-процесс) / End event
 
-**Промежуточные события** - события, которые находятся между стартовыми и конечными событиями BPMN. Такие события изображаются при помощи двойной линии.
-
-Промежуточные события делятся на:
+**Промежуточные события** - события, которые находятся между стартовыми и конечными событиями BPMN. Такие события изображаются при помощи двойной линии. Промежуточные события делятся на:
    
    * **Обрабатывающие (catching)** – события ожидания. На время обрабатывающего события выполнение процесса приостанавливается. Такие события не привязаны к какой-либо задаче:
   
@@ -88,62 +94,49 @@
             :width: 300
             :align: center     
 
+На данный момент в ECOS доступны следующие типы событий:
 
-2. По типу события:
+.. image:: _static/events/events_ECOS.png
+      :width: 500
+      :align: center
 
 .. list-table::
       :widths: 5 5 20
       :class: tight-table 
       
       * - 
-  
-          .. image:: _static/events/common_4.png
+            .. image:: _static/events/common_4.png
                 :width: 40
                 :align: center
  
-        - Таймер
+        - :ref:`Таймер<ecos_bpmn_timer>`
         - | Используется для моделирования регулярных событий. 
           | Также таймер может использоваться для моделирования моментов времени, временных промежутков и превышения лимита времени.
       * - 
-  
-          .. image:: _static/events/common_5.png
-                :width: 40
-                :align: center
-
-        - Сигнал
-        - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями ECOS <bpmn_events_integrations>`.
-      * - 
-  
           .. image:: _static/events/common_7.png
                 :width: 40
                 :align: center
  
-        - Условие
+        - :ref:`Условное<ecos_bpmn_conditional>`
         - Используется для моделирования реакции бизнес-процесса на изменения условий. 
       * - 
-  
-          .. image:: _static/events/common_8.png
-                :width: 40
-                :align: center
- 
-        - Останов
-        - Вызывает немедленное завершение выполнения процесса, при этом все его активные потоки управления прерываются.  
-      * - 
-  
           .. image:: _static/events/common_9.png
                 :width: 40
                 :align: center
 
-        - Ошибка
+        - :ref:`Ошибка<ecos_bpmn_error>`
         - Используется для моделирования возможных ошибок при выполнении процесса, а также для отображения последовательности действий по устранению этих ошибок.  
+      * -  
+          .. image:: _static/events/common_5.png
+                :width: 40
+                :align: center
 
-
-.. toctree::
-    :maxdepth: 3
-
-    events/ecos_bpmn_components_timer
-    events/ecos_bpmn_components_signal
-    events/ecos_bpmn_components_event_subprocess
-    events/ecos_bpmn_components_conditional
-    events/ecos_bpmn_components_termination
-    events/ecos_bpmn_components_error
+        - :ref:`Сигнал<ecos_bpmn_events>`
+        - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями ECOS <bpmn_events_integrations>`.
+      * - 
+          .. image:: _static/events/common_8.png
+                :width: 40
+                :align: center
+ 
+        - :ref:`Останов <ecos_bpmn_termination>`
+        - Вызывает немедленное завершение выполнения процесса, при этом все его активные потоки управления прерываются.  
