@@ -32,7 +32,7 @@ release = 'Ver. 4'
 extensions = [
  'sphinx.ext.mathjax',
  'sphinx_search.extension', 
- 'myst_parser'
+ 'sphinx.ext.myst_parser'
 ]
 
 
