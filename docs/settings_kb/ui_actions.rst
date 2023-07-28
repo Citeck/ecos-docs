@@ -711,33 +711,32 @@ id типа: ``mutate``
 .. code-block::
 
   {
-    "id": "change-status",
-    "name": {
-      "ru": "Изменить статус",
-      "en": "Change status"
-    },
-    "confirm":{
-      "title": {
-      "ru": "Изменить",
-      "en": "Change"
+      "id": "change-status",
+      "name": {
+        "ru": "Изменить статус",
+        "en": "Change status"
       },
-    "message":{},    
-    "formRef":"uiserv/form@change-status-form",
-    "formAttributes":{}, 
-    "attributesMapping":{   
-      "record.attributes._statuses": "status" 
+      "confirm":{
+        "title": {
+        "ru": "Изменить",
+        "en": "Change"
+        },
+      "message":{},
+      "formRef":"uiserv/form@change-status-form",
+      "formAttributes":{}, 
+      "attributesMapping":{
+        "record.attributes._status": "statuses" 
+        }
       }
-    }
-    "type": "mutate",
-    "config": {
-      "record": {
-        "id": "${recordRef}"
-        "attributes": {
-          "_statuses": "statuses"
+      "type": "mutate",
+      "config": {
+        "record": {
+          "id": "${recordRef}"
+          "attributes": {}
+          }
         }
       }
     }
-  }
 
 Форма, которая предлагается пользователю:
 
