@@ -41,7 +41,7 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 3
 
    Введение
    Пример настройки процесса
