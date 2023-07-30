@@ -1,9 +1,9 @@
 Базовые операции
 ================
 
-.. _new_bp:
+.. contents:: 
 
-.. contents::
+.. _new_bp:
 
 Создание
 --------
@@ -190,13 +190,13 @@
        :align: center
 
 
-Форма запуска БП
+Форма запуска БП:
 
  .. image:: _static/84.png
        :width: 600
        :align: center
 
-Форма задачи БП
+Форма задачи БП:
 
  .. image:: _static/85.png
        :width: 600
