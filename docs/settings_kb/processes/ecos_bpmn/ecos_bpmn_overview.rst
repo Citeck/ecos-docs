@@ -1,8 +1,6 @@
 Общее описание ECOS BPMN
 ========================
 
-.. contents:: 
-
 .. _ecos_bpmn:
 
 Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_.

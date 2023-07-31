@@ -11,7 +11,7 @@
 Документация Citeck ECOS 
 =========================
 
-.. image:: _static/ecos_logo.png
+.. image:: _static/Logo_Citeck_Ecos.svg
       :width: 300
       :target: https://www.citeck.ru/
 
