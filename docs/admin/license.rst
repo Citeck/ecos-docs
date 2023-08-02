@@ -10,3 +10,9 @@
  .. image:: _static/license/license_1.png
        :width: 600
        :align: center
+
+Подробно ознакомиться с информацией лицензии можно, нажав на **"глаз"**:
+
+ .. image:: _static/license/license_2.png
+       :width: 600
+       :align: center
