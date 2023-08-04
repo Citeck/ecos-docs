@@ -11,6 +11,7 @@
     components/ecos_bpmn_components_service_task
     components/ecos_bpmn_components_set_status
     components/ecos_bpmn_components_business_rule_task
+    components/ecos_bpmn_components_call_activity
     components/ecos_bpmn_components_gateway
     components/ecos_bpmn_components_seq_flow
     components/ecos_bpmn_components_events
@@ -66,11 +67,18 @@
 
         - Задача бизнес-правило служит для вызова :ref:`решения DMN<dmn_decision>` из процесса BPMN, используется для синхронного выполнения одного или нескольких правил.
       * - 
+            .. image:: _static/components/call_activity.png
+                :width: 100
+                :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.html
+
+        - Элемент диаграммы процесса, который позволяет вызывать другой процесс или подпроцесс в рамках уже выполняемого.
+      * - 
             .. image:: _static/components/gateway.png
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.html
            
         - Шлюзы контролируют поток движения в процессе. 
+      
       * - 
             .. image:: _static/components/seq_flow.png
                 :width: 100
