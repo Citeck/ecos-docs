@@ -1,4 +1,4 @@
-Компоненты Ecos BPMN 
+Компоненты ECOS BPMN 
 =====================
 
 .. toctree::
@@ -71,7 +71,7 @@
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.html
 
-        - Элемент диаграммы процесса, который позволяет вызывать другой процесс или подпроцесс в рамках уже выполняемого.
+        - Элемент схемы процесса, который позволяет вызывать другой процесс в рамках уже выполняемого.
       * - 
             .. image:: _static/components/gateway.png
                 :width: 100
