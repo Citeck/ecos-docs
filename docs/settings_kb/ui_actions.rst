@@ -847,7 +847,6 @@ RecordsDAO для действия (метод ``getId()`` должен возв
   import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
   import ru.citeck.ecos.webapp.api.content.EcosContentApi;
   import ru.citeck.ecos.webapp.api.entity.EntityRef;
-  import ru.ecos.haleon.service.HaleonStatusService;
 
   import java.util.*;
 
@@ -859,7 +858,7 @@ RecordsDAO для действия (метод ``getId()`` должен возв
       private final EcosContentApi contentApi;
 
       @Autowired
-      public ExampleUnloadToFileRecordsDao(RecordsService recordsService, HaleonStatusService statusService, EcosContentApi contentApi) {
+      public ExampleUnloadToFileRecordsDao(RecordsService recordsService, EcosContentApi contentApi) {
           this.recordsService = recordsService;
           this.contentApi = contentApi;
       }
@@ -902,6 +901,8 @@ RecordsDAO для действия (метод ``getId()`` должен возв
 .. image:: _static/ui_actions/Data_to_file/data_to_file_1.png
       :width: 600
       :align: center
+
+Подробнее о :ref:`EcosContentApi<EcosContentApi>`
 
 set-task-assignee
 ~~~~~~~~~~~~~~~~~~~~~~~~
