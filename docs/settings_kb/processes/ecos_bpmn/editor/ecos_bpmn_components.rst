@@ -2,8 +2,7 @@
 =====================
 
 .. toctree::
-    :hidden: 
-    :maxdepth: 2
+    :maxdepth: 1
 
     components/ecos_bpmn_components_user_task
     components/ecos_bpmn_components_script_task
@@ -109,4 +108,5 @@
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_pool.html
 
         - Для отображения исполнителей процесса BPMN используются элементы: пул и дорожка. 
+
 

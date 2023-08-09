@@ -3,6 +3,15 @@
 
 .. _ecos_dmn_components:
 
+.. toctree::
+    :maxdepth: 1
+
+    components/ecos_dmn_components_decision
+    components/ecos_dmn_components_input_data
+    components/ecos_dmn_components_knowledge_data
+    components/ecos_dmn_components_knowledge_model
+    components/ecos_dmn_components_connectors
+
 .. note:: 
 
   Для перехода к соответствующему разделу кликните картинку:
@@ -41,14 +50,3 @@
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_connectors.html
 
         - Правила соединения элементов
-
-
-.. toctree::
-    :hidden:
-    :maxdepth: 3
-
-    components/ecos_dmn_components_decision
-    components/ecos_dmn_components_input_data
-    components/ecos_dmn_components_knowledge_data
-    components/ecos_dmn_components_knowledge_model
-    components/ecos_dmn_components_connectors
