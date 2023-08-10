@@ -7,6 +7,8 @@
        :width: 300
        :align: center
 
+Редактор **Onlyoffice** совместим с форматами MS Office и OpenDocument.
+
 В отдельной вкладке браузера в Onlyoffice откроется документ:
 
 .. image:: _static/onlyoffice_edit/edit_2.png
