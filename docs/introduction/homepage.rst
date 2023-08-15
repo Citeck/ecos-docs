@@ -137,21 +137,21 @@
       * - 
 
              .. image:: _static/homepage/intro_14.png
-                  :width: 40
+                  :width: 430
                   :align: center 
 
         - открыть форму редактирования
       * - 
 
              .. image:: _static/homepage/intro_15.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - открыть документ на просмотр в новой вкладке
       * - 
 
              .. image:: _static/homepage/intro_13.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - открыть новая вкладка  с выбранным документом
@@ -159,7 +159,7 @@
       * - 
 
              .. image:: _static/homepage/intro_16.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - удалить документ
@@ -175,7 +175,7 @@
       * - 
 
              .. image:: _static/homepage/intro_17.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
         - открыть настройки журнала
@@ -196,7 +196,7 @@
       * - 
 
              .. image:: _static/homepage/intro_20.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
         - обновить данные в журнале
