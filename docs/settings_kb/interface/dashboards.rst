@@ -173,7 +173,7 @@
   Для мобильной версии отображаются только те виджеты, которые уже были настроены для десктопной версии и несут в себе те же настройки:
    
  .. image:: _static/dashboards/dashboards_7.png
-       :width: 400
+       :width: 500
        :align: center
 
 
@@ -183,7 +183,7 @@
 Созданные колонки можно заполнить доступными виджетами – перетащите виджет в необходимую колонку:
 
  .. image:: _static/dashboards/dashboards_8.png
-       :width: 400
+       :width: 500
        :align: center
 
 Набор доступных виджетов зависит от вида дашборда: 
@@ -206,33 +206,40 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
       * - | **WEB_PAGE: 'web-page'**
           | :ref:`См. Веб-страница<widget_web_page>`
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
       * - | **DOC_PREVIEW: 'doc-preview'**
           | :ref:`См. Предпросмотр<widget_doc_preview>`
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -241,6 +248,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -249,10 +257,12 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
       * - | **CURRENT_TASKS: 'current-tasks'**
@@ -260,6 +270,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -268,6 +279,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -276,6 +288,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -284,10 +297,12 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
       * - | **VERSIONS_JOURNAL: 'versions-journal'**
@@ -295,6 +310,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -303,6 +319,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -311,10 +328,12 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
       * - | **BARCODE: 'barcode'**
@@ -322,6 +341,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -330,10 +350,12 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
       * - | **DOC_CONSTRUCTOR: 'doc-constructor'**
@@ -341,6 +363,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -349,6 +372,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
         - 
@@ -359,6 +383,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
       * - | **BIRTHDAYS: 'birthdays'**
           | :ref:`См. Дни рождения<widget_birthdays>`
@@ -367,6 +392,7 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
       * - | **USER_PROFILE: 'user-profile**
           | :ref:`См. Профиль<widget_user_profile>`
@@ -374,13 +400,14 @@
         - 
             .. image:: _static/dashboards/dashboards_0.png
                 :width: 20
+                :align: center
 
         - 
 
 Настройки виджетов на дашбордах
 --------------------------------
 
-Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью <Виджеты>
+Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью :ref:`Виджеты<widgets>`
 
 Информация по доступности виджета хранится в самом виджете (без участия сервера).
 
