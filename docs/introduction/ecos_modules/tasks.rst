@@ -116,6 +116,8 @@
        :width: 800
        :align: center 
 
+.. _ecos-tasks-action:
+
 3.	Из карточки кейса на дашборде **«Действия»**:
 
  .. image:: _static/tasks/tasks_7.png
