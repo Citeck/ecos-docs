@@ -83,7 +83,7 @@
 Создание сделки возможно как с помощью кнопки быстрого создания: 
 
  .. image:: _static/crm/CRM_2.png
-       :width: 200
+       :width: 300
        :align: center
 
 
