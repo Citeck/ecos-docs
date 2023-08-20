@@ -1190,6 +1190,51 @@ id типа: ``transform``
 
 - добавить :ref:`шаблон нумерации<number_template>` в тип данных.
 
+Действия на версии в Alfresco
+------------------------------
+
+alf-download-report-group-action-xlsx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Действие предназначено для выгрузки выбранных записей в формат **csv**.
+
+В конфигурацию группового действия **alf-download-report-group-action-xlsx** добавлены параметры:
+
+  * ``dateFormat``-  формат даты https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html, который применяется при выгрузке атрибутов с типом ``DATE``
+  * ``decimalFormat``-  числовой формат https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html, который применяется при выгрузке атрибутов с типом ``NUMBER``
+
+Пример конфига действия с заданными параметрами:
+
+.. code-block::
+
+  {
+    "id": "alf-download-report-group-action-xlsx",
+    "name": {
+      "ru": "Скачать Excel-файл",
+      "en": "Download Excel-file"
+    },
+    "type": "server-group-action",
+    "config": {
+      "id": "download-report-xlsx-action",
+      "params": {
+        "template": "alfresco/templates/reports/ru/citeck/default.xlsx",
+        "reportTitle": "REPORT",
+        "actionId": "download-report-xlsx-action",
+        "evaluateBatch": "true",
+        "columns": "${reportColumns}",
+        "batchSize": 1000,
+        "pageSize": 1000,
+        "elementsLimit": 20000,
+        "dateFormat": "dd.MM.yyyy",
+        "decimalFormat": "#,##0.00",
+        "output": {
+          "type": "email",
+          "config": {
+            "templateRef": "notifications/template@skif-report-email-notification"
+          }
+        }
+
+
 Расширение действий
 -------------------
 
@@ -1198,7 +1243,7 @@ id типа: ``transform``
 
 Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в alfresco (в микросервисы так же можно добавлять действия) по пути
 
-**{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action**
+``{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action``
 
 Пример описания::
 
