@@ -1190,8 +1190,8 @@ id типа: ``transform``
 
 - добавить :ref:`шаблон нумерации<number_template>` в тип данных.
 
-Действия на Alfresco
----------------------
+Действия на версии в Alfresco
+------------------------------
 
 alf-download-report-group-action-xlsx
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1200,10 +1200,10 @@ alf-download-report-group-action-xlsx
 
 В конфигурацию группового действия **alf-download-report-group-action-xlsx** добавлены параметры:
 
-  * ``dateFormat`` формат даты https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html, который применяется при выгрузке атрибутов с типом ``DATE``
-  * ``decimalFormat`` числовой формат https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html для атрибутов с типом ``NUMBER``
+  * ``dateFormat``-  формат даты https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html, который применяется при выгрузке атрибутов с типом ``DATE``
+  * ``decimalFormat``-  числовой формат https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html, который применяется при выгрузке атрибутов с типом ``NUMBER``
 
-Пример действия с заданными параметрами:
+Пример конфига действия с заданными параметрами:
 
 .. code-block::
 
