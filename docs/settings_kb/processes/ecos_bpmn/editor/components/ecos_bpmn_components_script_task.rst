@@ -233,7 +233,7 @@ Tasks
     - ``completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
 
 
-Tempalated content
+Templated content
 ~~~~~~~~~~~~~~~~~~
 
 ``templatedContent`` - сервис для работы с шаблонизированным контентом.
