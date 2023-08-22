@@ -1,4 +1,4 @@
-Модуль "Service Desk"
+Модуль «Service Desk»
 ======================
 
 .. _ecos-service-desk:
