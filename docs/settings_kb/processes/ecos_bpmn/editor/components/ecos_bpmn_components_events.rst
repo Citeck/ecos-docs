@@ -27,7 +27,7 @@
                 :width: 40
                 :align: center
  
-        - Начальное событие (инициирующее бизнес-процесс)/ Start event
+        - Начальное (стартовое) событие (инициирующее бизнес-процесс)/ Start event
       * - 
   
           .. image:: _static/events/common_2.png
