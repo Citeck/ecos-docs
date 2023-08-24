@@ -512,3 +512,54 @@ API-интерфейс позволяет работать с данными с�
       }
     ]
   }
+
+
+Скачивание контента
+---------------------
+
+.. list-table:: 
+      :widths: 5 40 
+      :class: tight-table
+      
+      * - **URL**
+        - 
+         .. code-block::
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST 
+      * - **Запрос**
+        -   
+           .. code-block::
+
+              {
+                "records": [
+                  "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8"
+                ],
+                "attributes": [
+                  "_content.url"
+                ]
+              }
+
+      * - **Ответ**
+        -  
+           .. code-block::
+
+              {
+                  "records": [
+                      {
+                          "id": "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8",
+                          "attributes": {
+                              "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content"
+                          }
+                      }
+                  ],
+                  "errors": []
+              }   
+
+Далее сделать GET запрос для скачивания контента:
+
+.. code-block::
+
+    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content
