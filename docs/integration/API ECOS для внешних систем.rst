@@ -17,6 +17,122 @@ API-интерфейс позволяет работать с данными с�
  
  Для обеспечения корректной отправки http-запросов произведите настройки аутентификации в соответствии со :ref:`статьей <keycloak_postman>`
 
+
+Поиск и скачивание документа
+-----------------------------
+
+.. list-table:: 
+      :widths: 5 40 
+      :class: tight-table
+      
+      * - **URL**
+        - 
+         .. code-block::
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST 
+      * - **Запрос**
+        -   
+           .. code-block::
+
+              {
+                "query": {
+                  "sourceId": "emodel/aro-internal-type",
+                  "query": {
+                    "att": "_status",
+                    "t": "eq",
+                    "val": "new"
+                  },
+                  "language": "predicate"
+                },
+                "attributes": [
+                  "_content.url"
+                ]
+              }
+
+
+      * - **Ответ**
+        -  
+           .. code-block::
+
+              {
+                "records": [
+                  {
+                    "id": "emodel/aro-internal-type@86edb336-7816-41fa-9809-680a077e0b5e",
+                    "attributes": {
+                      "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%4086edb336-7816-41fa-9809-680a077e0b5e&att=content"
+                    }
+                  },
+                  {
+                    "id": "emodel/aro-internal-type@dde85aac-e875-471c-a44d-a4135fc7c56a",
+                    "attributes": {
+                      "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40dde85aac-e875-471c-a44d-a4135fc7c56a&att=content"
+                    }
+                  }
+                ],
+                "errors": [],
+                "hasMore": false,
+                "totalCount": 2
+              }
+
+Далее сделать GET запрос для скачивания контента:
+
+.. code-block::
+
+    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40dde85aac-e875-471c-a44d-a4135fc7c56a&att=content
+
+Скачивание документа
+---------------------
+
+.. list-table:: 
+      :widths: 5 40 
+      :class: tight-table
+      
+      * - **URL**
+        - 
+         .. code-block::
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST 
+      * - **Запрос**
+        -   
+           .. code-block::
+
+              {
+                "records": [
+                  "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8"
+                ],
+                "attributes": [
+                  "_content.url"
+                ]
+              }
+
+      * - **Ответ**
+        -  
+           .. code-block::
+
+              {
+                  "records": [
+                      {
+                          "id": "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8",
+                          "attributes": {
+                              "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content"
+                          }
+                      }
+                  ],
+                  "errors": []
+              }   
+
+Далее сделать GET запрос для скачивания контента:
+
+.. code-block::
+
+    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content
+
 Управление маршрутами
 ---------------------
 
@@ -110,7 +226,6 @@ API-интерфейс позволяет работать с данными с�
                     "groupSubType": "company"
                 }
             ]
-
 
 Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -513,53 +628,3 @@ API-интерфейс позволяет работать с данными с�
     ]
   }
 
-
-Скачивание контента
----------------------
-
-.. list-table:: 
-      :widths: 5 40 
-      :class: tight-table
-      
-      * - **URL**
-        - 
-         .. code-block::
-
-            {{host}}/gateway/api/records/query
-
-      * - **Type**
-        -  POST 
-      * - **Запрос**
-        -   
-           .. code-block::
-
-              {
-                "records": [
-                  "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8"
-                ],
-                "attributes": [
-                  "_content.url"
-                ]
-              }
-
-      * - **Ответ**
-        -  
-           .. code-block::
-
-              {
-                  "records": [
-                      {
-                          "id": "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8",
-                          "attributes": {
-                              "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content"
-                          }
-                      }
-                  ],
-                  "errors": []
-              }   
-
-Далее сделать GET запрос для скачивания контента:
-
-.. code-block::
-
-    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content
