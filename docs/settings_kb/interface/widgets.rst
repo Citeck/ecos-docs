@@ -807,6 +807,8 @@
        :width: 300
        :align: center 
 
+.. _widget_kanban:
+
 Виджет «Канбан»
 ----------------
 
@@ -856,6 +858,8 @@
             .. image:: _static/widgets/kanban_3.png
                  :width: 600  
                  :align: center 
+
+.. _widget_graphic_statistics:
 
 Виджет «Графическая статистика»
 ---------------------------------
