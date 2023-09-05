@@ -16,7 +16,7 @@
 
 Виды дашбордов
 ---------------
-На момент написания статьи существует 3 вида дашборда:
+На момент написания статьи существует 4 вида дашборда:
 
 .. list-table:: 
       :widths: 5 40
@@ -36,14 +36,18 @@
           | 2. **contracts-cat-doctype-contract**	
           | 3. **alf_contracts:agreement**  
           | Порядок - от более приоритетного к менее приоритетному	
-      * - **Site-dashboard**
-        - | Страница раздела, которая позволяет отображать общие данные по разделу. Например - профиль пользователя.
+          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
+      * - **Site-details**
+        - | Страница раздела, которая позволяет отображать общие данные по разделу.
           | Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
           | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**. 
       * - **User-dashboard**
         - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
           | Например: ``localhost/v2/dashboard`` 	
           | Ключ dashboard'а всегда DEFAULT если явно не задано обратного (возможно указание dashboardKey в URL) 
+      * - **profile-details**
+        - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления<control_panel>`)
+          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
 
 Алгоритм поиска dashboard следующий:
 
@@ -178,7 +182,7 @@
 
 
 «Виджеты»
-""""""""""""""""""
+"""""""""
 
 Созданные колонки можно заполнить доступными виджетами – перетащите виджет в необходимую колонку:
 
@@ -186,223 +190,8 @@
        :width: 500
        :align: center
 
-Набор доступных виджетов зависит от вида дашборда: 
+Набор доступных виджетов зависит от вида дашборда.
 
-.. list-table:: 
-      :widths: 5 5 5 5
-      :header-rows: 1
-      :align: center      
-      :class: tight-table  
-      
-      * - 
-        - | Case-details
-          | Карточка кейса
-        - | Site-dashboard
-          | Профиль пользователя
-        - | User-dashboard
-          | Домашняя страница
-      * - | **JOURNAL: 'journal'**
-          | :ref:`См. Журнал<widget_journal>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-      * - | **WEB_PAGE: 'web-page'**
-          | :ref:`См. Веб-страница<widget_web_page>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-      * - | **DOC_PREVIEW: 'doc-preview'**
-          | :ref:`См. Предпросмотр<widget_doc_preview>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **COMMENTS: 'comments'**
-          | :ref:`См. Комментарии<widget_comments>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **PROPERTIES: 'properties'**
-          | :ref:`См. Свойства<widget_properties>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-      * - | **CURRENT_TASKS: 'current-tasks'**
-          | :ref:`См. Мои задачи<widget_current_tasks>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **TASKS: 'tasks'**
-          | :ref:`См. Задачи<widget_tasks>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **DOC_STATUS: 'doc-status'**
-          | :ref:`См. Статус<widget_doc-status>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **EVENTS_HISTORY: 'events-history'**
-          | :ref:`См. История событий<widget_events-history>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-      * - | **VERSIONS_JOURNAL: 'versions-journal'**
-          | :ref:`См. Журнал версий<widget_versions_journal>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **DOC_ASSOCIATIONS: 'doc-associations'**
-          | :ref:`См. Связи документа<widget_doc_associations>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **RECORD_ACTIONS: 'record-actions'**
-          | :ref:`См. Действия<widget_record_actions>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-      * - | **BARCODE: 'barcode'**
-          | :ref:`См. Штрих-код<widget_barcode>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **DOCUMENTS: 'documents'**
-          | :ref:`См. Документы<widget_documents>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-      * - | **DOC_CONSTRUCTOR: 'doc-constructor'**
-          | :ref:`См. Doc.One<widget_doc_constructor>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **PROCESS_STATISTICS: 'process-statistics'**
-          | :ref:`См. Статистика процесса<widget_process_statistics>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
-        - 
-      * - | **REPORT: 'report'**
-          | :ref:`См. Статистика по задачам<widget_report>`
-        - 
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-      * - | **BIRTHDAYS: 'birthdays'**
-          | :ref:`См. Дни рождения<widget_birthdays>`
-        - 
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-      * - | **USER_PROFILE: 'user-profile**
-          | :ref:`См. Профиль<widget_user_profile>`
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-                :align: center
-
-        - 
 
 Настройки виджетов на дашбордах
 --------------------------------
