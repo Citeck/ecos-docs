@@ -139,6 +139,163 @@
               :width: 30
               :align: center 
 
+Микросервисы
+-------------
+
+.. list-table::
+      :widths: 10 20 10 10
+      :header-rows: 1
+      :class: tight-table 
+
+      * - Название
+        - Описание
+        - Community
+        - Enterprise
+      * - ecos-gateway
+        - Шлюз от клиента к серверу.
+        - 
+             .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+             .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-uiserv
+        - | Микросервис UI конфигураций. 
+          | Отвечает за формы, журналы, UI действия, темы, дашборды, локализацию, иконки, конфигурацию меню.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-model
+        - | Микросервис моделей
+          | Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-history
+        - | Микросервис истории
+          | Подписан на события в системе и сохраняет информацию о них в БД.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-apps
+        - | Микросервис приложений ECOS
+          | Отвечает за доставку приложений ECOS к целевым сервисам.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-notifications
+        - | Микросервис нотификаций
+          | Отвечает за отправку уведомлений (email, push-нотификации и др.).
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-process
+        - | Микросервис процессов. 
+          | Отвечает за процессы кейс-менеджмента и BPMN.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-integrations<integration>`
+        - | Микросервис для интеграции с внешними системами (SAP, 1C, Rabbit MQ и тд.).
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-transformations<transformation>`
+        - | Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, :ref:`формирования PDF-файла со штрихкодом<barcode_pdf>`, конвертации всех офисных форматов в PDF.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-ecom
+        - | Микросервис для парсинга данных из email, telegram бота.
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
 Функциональность, доступная только в enterprise версии
 --------------------------------------------------------
 
@@ -161,10 +318,6 @@
         - Настройка передача своих задач или функций другим сотрудникам.
       * - :ref:`Редактирование матрицы прав<permissions>`
         - Настройка прав для типа данных.
-      * - :ref:`Микросервис интеграции<integration>`
-        - Интеграции с внешними системами (SAP, 1C, Rabbit MQ и тд.).
-      * - :ref:`Микросервис трансформации<transformation>`
-        - Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, :ref:`формирования PDF-файла со штрихкодом<barcode_pdf>`, конвертации всех офисных форматов в PDF.
       * - :ref:`Синхронизация пользователей из LDAP<LDAP_sync>`
         - Можно создать несколько конфигураций синхронизации из LDAP, указав различные настройки - например, сервера, домены, фильтры и т.д.
       * - :ref:`ECOS KeyCloak Extension<keycloak_extension>`
