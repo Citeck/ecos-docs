@@ -12,7 +12,9 @@
     interface/menu
     interface/dashboards
     interface/widgets
+    interface/Темы_интерфейса
     interface/number_template
     interface/onlyoffice_edit    
     interface/barcode
+
     
