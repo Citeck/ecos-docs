@@ -6,6 +6,11 @@ ECOS Records API
 .. contents::
 		:depth: 5
 
+Полезные ссылки
+---------------
+
+`Демо Spring Boot проект <https://github.com/Citeck/ecos-records-demo>`_
+
 Общее описание
 ---------------
 
