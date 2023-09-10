@@ -154,14 +154,14 @@
         - |  
             
             .. image:: _static/widgets/comment_1.png
-                  :width: 400   
+                  :width: 600   
                   :align: center
 
       * - **Форма ввода комментария:**    
-        - |  
+        - |  В поле комментарий можно добавить таблицу **(1)**, код **(2)**, ссылку **(3)**, файл **(4)**:
             
             .. image:: _static/widgets/comment_2.png
-                  :width: 400   
+                  :width: 600   
                   :align: center  
 
 
