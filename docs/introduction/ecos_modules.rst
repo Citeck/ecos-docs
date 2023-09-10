@@ -9,6 +9,7 @@
     ecos_modules/tasks
     ecos_modules/contract
     ecos_modules/InDoc
+    ecos_modules/OutDoc
     ecos_modules/ORD
     ecos_modules/offer
     ecos_modules/service_desk
