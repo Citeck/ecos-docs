@@ -147,7 +147,7 @@ Community
 
 4.	Написан `гайд <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/dmn_dynamic_role.html>`_ по использованию динамической роли DMN в бизнеc-процессе 
 
-5.	Добавлена возможность проводить сортировку и группировку по полям из связанных таблиц. [Дописать]
+5.	Добавлена возможность проводить сортировку и группировку по полям из связанных таблиц.
 
 6.	BPMN редактор. Добавлена поддержка `Error Events <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.html>`_ , которое используется для обработки бизнес ошибок. 
 
@@ -159,4 +159,11 @@ Community
 
 10.	Реализована возможность `настройки шаблонов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/kanban_board.html#id2>`_ для журналов в режиме для канбан доски. 
 
-11.	Добавлен `модуль Корреспонденция. Входящие <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/InDoc.html>`_
+
+4.7.0
+-----
+
+1.	Добавлен `модуль Корреспонденция. Входящие <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/InDoc.html>`_
+
+2.	Добавлен `модуль Корреспонденция. Исходящие <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/OutDoc.html>`_
+
