@@ -10,6 +10,7 @@ ECOS Records API
 ---------------
 
 `Демо Spring Boot проект <https://github.com/Citeck/ecos-records-demo>`_
+`Исходный код kotlin/java движка Records API <https://github.com/Citeck/ecos-records>`_
 
 Общее описание
 ---------------
