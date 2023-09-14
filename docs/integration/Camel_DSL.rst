@@ -44,7 +44,7 @@ Camel использует доменные языки (Domain Specific Language
 
 Для выборки данных из БД необходимо:
 
-1.	Создать **“Credentials”** для подключения:
+1.  Создать **“Credentials”** для подключения:
 
 **Главное меню: Инструменты администратора -> Инструменты**
 
@@ -58,7 +58,7 @@ Camel использует доменные языки (Domain Specific Language
        :width: 800
        :align: center
 
-2.	Создать **“Источник данных”** DB Data Source, в результате источник будет с типом db.
+2.  Создать **“Источник данных”** DB Data Source, в результате источник будет с типом db.
 
 **Главное меню: Инструменты администратора -> Инструменты**
 
@@ -72,7 +72,7 @@ Camel использует доменные языки (Domain Specific Language
        :width: 600
        :align: center   
 
-3.	Создать **“Camel DSL”** 
+3.  Создать **“Camel DSL”** 
 
 **Главное меню: Инструменты администратора -> Инструменты**
 
@@ -84,18 +84,18 @@ Camel использует доменные языки (Domain Specific Language
  
 Контекст Camel DSL должен содержать маршрут выборки из БД. Например:
 
-.. code-block::
+.. code-block:: yaml
 
-	- route:
-	   from: "timer:start?delay=-1&repeatCount=1"
-	   steps:
-		 - set-body:
-			 constant: "select * from actions"
-		 - to: "jdbc:datasource"
-		 - split:
-			 simple: "${body}"
-			 steps:
-			   - to: "stream:out"
+  - route:
+     from: "timer:start?delay=-1&repeatCount=1"
+     steps:
+     - setBody:
+         constant: "select * from actions"
+     - to: "jdbc:datasource"
+     - split:
+         simple: "${body}"
+       steps:
+         - to: "stream:out"
 
   
 где
@@ -108,37 +108,37 @@ Camel использует доменные языки (Domain Specific Language
 
 * **блок split** разделяет результат выборки на строки, которые выводятся в трассу **stream:out**
 
-4.	Для выполнения содержимого контекста нужно изменить состояние Camel DSL на **Started**
+4.  Для выполнения содержимого контекста нужно изменить состояние Camel DSL на **Started**
 
 Подключение RecordsDaoEndpoint
 ----------------------------------
 
 Для записи данных в RecordsDao в содержании контекста Camel DSL нужно описать ``RecordsDaoEndpoint``. Для этого до маршрутов описывается секция **beans**. Например: 
 
-.. code-block::
+.. code-block:: yaml
 
-	- beans:
-	   - name: "recordsDaoEndpoint"
-		 type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-		 properties:
-		   sourceId: testDao
-		   pkProp: id
-		   columnMap:
-			 name: content
-			 state: currentState
-			 type: type
-		   valueConvertMap: |
-			 {"type": {"*": "YAML"}, "state": {"1":"STARTED", "*": "STOPPED"}}
-	- route:
-	   from: "timer:start?delay=-1&repeatCount=1"
-	   steps:
-		 - set-body:
-			 constant: "select * from actions"
-		 - to: "jdbc:datasource"
-		 - split:
-			 simple: "${body}"
-			 steps:
-			   - to: "bean:recordsDaoEndpoint"           
+  - beans:
+    - name: "recordsDaoEndpoint"
+      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+      properties:
+        sourceId: testDao
+        pkProp: id
+        columnMap:
+        name: content
+        state: currentState
+        type: type
+        valueConvertMap: |
+         {"type": {"*": "YAML"}, "state": {"1":"STARTED", "*": "STOPPED"}}
+  - route:
+     from: "timer:start?delay=-1&repeatCount=1"
+     steps:
+       - setBody:
+           constant: "select * from actions"
+       - to: "jdbc:datasource"
+       - split:
+           simple: "${body}"
+         steps:
+           - to: "bean:recordsDaoEndpoint"           
 
 Где 
 
@@ -146,9 +146,9 @@ Camel использует доменные языки (Domain Specific Language
 * **type** – класс бина, всегда указывается **ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint**
 * в секции **properties** описываются настройки ``RecordsDaoEndpoint``:
 * **appName** - целевой идентификатор приложения, например alfresco:
-	* **sourceId** - целевой идентификатор источника данных, куда будут помещаться данные. Обязательное свойство;
-	* **pkProp** – атрибут исходного источника, который является первичным ключом;
-	* **columnMap** – соответствие атрибутов исходного источника и атрибутов назначения. В приведенном примере значение атрибута **name** из источника будет перекладываться в атрибут **content** назначения, **state** в **currentState**, **type** в **type**. Общий вид карты:
+  * **sourceId** - целевой идентификатор источника данных, куда будут помещаться данные. Обязательное свойство;
+  * **pkProp** – атрибут исходного источника, который является первичным ключом;
+  * **columnMap** – соответствие атрибутов исходного источника и атрибутов назначения. В приведенном примере значение атрибута **name** из источника будет перекладываться в атрибут **content** назначения, **state** в **currentState**, **type** в **type**. Общий вид карты:
 
     .. code-block:: text
 
@@ -183,79 +183,79 @@ Camel использует доменные языки (Domain Specific Language
 
 В одном контексте может быть описано несколько ``RecordsDaoEndpoint``.
 
-.. code-block::
+.. code-block:: yaml
 
-    	- beans:
-	   - name: "recordsTestDaoEndpoint"
-		 type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-		 properties:
-		   sourceId: recordsTestDao
-		   pkProp: id
-	   - name: "testDaoEndpoint"
-		 type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-		 properties:
-		   sourceId: testDao
-		   pkProp: id
-		   columnMap:
-			 name: content
-			 state: currentState
-			 type: type
-		   valueConvertMap: |
-			 {"type": {"*": "YAML"}}
-	 - name: "…"
-	   …
+   - beans:
+     - name: "recordsTestDaoEndpoint"
+       type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+       properties:
+         sourceId: recordsTestDao
+         pkProp: id
+     - name: "testDaoEndpoint"
+       type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+       properties:
+         sourceId: testDao
+         pkProp: id
+         columnMap:
+         name: content
+         state: currentState
+         type: type
+         valueConvertMap: |
+           {"type": {"*": "YAML"}}
+     - name: "…"
+       …
 
 ``RecordsDaoEndpoint`` также может обрабатывать данные полученные из XML-файла, CSV-файла или текстового файла, содержащего строковые представления **Map**.
 
 Пример контекста, содержащего маршруты для обработки ``RecordsDaoEndpoint`` данных из файлов:
 
-.. code-block::
+.. code-block:: yaml
 
-    	- beans:
-		- name: "recordsDaoEndpoint"
-		  type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-		  properties:
-			sourceId: testDao
-			pkProp: id
-			columnMap:
-			  name: content
-			  state: currentState
-			delimiter: ","
-	- route:
-		id: "fromXmlFileToDb"
-		from: "direct:fromXmlFileToDb"
-		steps:
-		  - split:
-			  xpath: "//someObject"
-			  steps:
-				- to: "bean:recordsDaoEndpoint"
-	- route:
-		id: "fromTxtFileToDb"
-		from: "direct:fromTxtFileToDb"
-		steps:
-		  - split:
-			  tokenize: "\n"
-			  steps:
-				- to: "bean:recordsDaoEndpoint"
+  - beans:
+    - name: "recordsDaoEndpoint"
+      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+      properties:
+        sourceId: testDao
+        pkProp: id
+        columnMap:
+          name: content
+          state: currentState
+        delimiter: ","
+  - route:
+      id: "fromXmlFileToDb"
+      from: "direct:fromXmlFileToDb"
+      steps:
+        - split:
+            xpath: "//someObject"
+          steps:
+            - to: "bean:recordsDaoEndpoint"
+  - route:
+      id: "fromTxtFileToDb"
+      from: "direct:fromTxtFileToDb"
+      steps:
+        - split:
+            tokenize: "\n"
+          steps:
+            - to: "bean:recordsDaoEndpoint"
 
 Маршрут **fromXmlFileToDb** делит входной XML-поток из файла на элементы **someObject** и передает их в ``RecordsDaoEndpoint``.
 
 Пример входного XML-файла:
 
-.. code-block::
+.. code-block:: xml
 
-    	<?xml version="1.0" encoding="UTF-8"?>
-	<massages>
-		<someObject id="50" usage ="Additional">
-			<name>Test route name James</name>
-			<purpose>Test endpoint</purpose>        
-		</someObject>
-		<someObject id="210" usage ="Standard">
-			<name>Route 61</name>
-			<purpose>Test</purpose>
-			<city>Moscow</city>
-		</someObject>
-	</massages>
+ <?xml version="1.0" encoding="UTF-8"?>
+  <massages>
+    <someObject id="50" usage ="Additional">
+      <name>Test route name James</name>
+      <purpose>Test endpoint</purpose>        
+    </someObject>
+    <someObject id="210" usage ="Standard">
+      <name>Route 61</name>
+      <purpose>Test</purpose>
+      <city>Moscow</city>
+    </someObject>
+  </massages>
 
 В приведенном примере для установки значений доступны атрибуты записи **id**, **usage**, **name** и **purpose**.
 
@@ -263,18 +263,18 @@ Camel использует доменные языки (Domain Specific Language
 
 .. code-block::
 
-    id,name,value
-	10,SomeName,
-	908,- route:,additional
-	77,,
+  id,name,value
+  10,SomeName,
+  908,- route:,additional
+  77,,
 
 Пример файла со строковыми представлениями Map:
 
 .. code-block::
 
-    id=15, name=Test
-	id=64, name=Route, value=null
-	id=48, name=Open route, value=null
+  id=15, name=Test
+  id=64, name=Route, value=null
+  id=48, name=Open route, value=null
 
 Для работы со строковыми данными используются настройки ``RecordsDaoEndpoint`` **delimiter** и **keyValueSeparator**. 
 * **delimiter** – определяет строку-разделитель значений в строке для CSV-файла и пар ключ-значение для строкового представления Map, по умолчанию значение **«,»**
@@ -287,52 +287,105 @@ Camel использует доменные языки (Domain Specific Language
 
 Например, следующий маршрут **clearValues** удаляет все записи из таблицы **simple** источника данных **datasource**, кроме тех у которых атрибут **id** равен **'1'** или **'2'**.
 
-.. code-block::
+.. code-block:: yaml
 
-    	- route:
-		id: "clearValues"
-		from: "timer:start?delay=-1&repeatCount=1"
-		steps:
-		  - set-body:
-			  constant: "delete from simple where id not in ('1','2')"
-		  - to: "jdbc:datasource"
+  - route:
+      id: "clearValues"
+      from: "timer:start?delay=-1&repeatCount=1"
+      steps:
+        - setBody:
+            constant: "delete from simple where id not in ('1','2')"
+        - to: "jdbc:datasource"
 
 
 Пример контекста, который берет данные из источника данных **todb**, обрабатывает их через R`RecordsDaoEndpoint`` **daoEndpoint**  и очищает таблицу **simple**, из которой взял данные:
 
-.. code-block::
+.. code-block:: yaml
 
-    	- beans:
-		- name: "daoEndpoint"
-		  type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-		  properties:
-			sourceId: testDao
-			pkProp: id
-			columnMap:
-			  name: content
-			  state: currentState
-			  type: type
-	- route:
-		id: "getValues"
-		from: "timer:start?delay=-1&repeatCount=1"
-		steps:
-		  - set-body:
-			  constant: "select * from simple"
-		  - to: "jdbc:todb"
-		  - split:
-			  simple: "${body}"
-			  steps:
-				- to: "bean:daoEndpoint"
-				- to: "direct:clearValues"
-	- route:
-		id: "clearValues"
-		from: "direct:clearValues"
-		steps:
-		  - set-body:
-			  constant: "delete from simple"
-		  - to: "jdbc:todb"    
+  - beans:
+    - name: "daoEndpoint"
+      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+      properties:
+        sourceId: testDao
+        pkProp: id
+        columnMap:
+          name: content
+          state: currentState
+          type: type
+  - route:
+      id: "getValues"
+      from: "timer:start?delay=-1&repeatCount=1"
+      steps:
+        - setBody:
+            constant: "select * from simple"
+        - to: "jdbc:todb"
+        - split:
+            simple: "${body}"
+            steps:
+              - to: "bean:daoEndpoint"
+              - to: "direct:clearValues"
+  - route:
+    id: "clearValues"
+    from: "direct:clearValues"
+    steps:
+      - setBody:
+        constant: "delete from simple"
+      - to: "jdbc:todb"    
 
 
 .. note::
     Особенности контекста: 
     Содержимое constant переводится в нижний регистр. Например, выборка **"select * from simple order by COMPANY_ID"** приводит к ошибке **ERROR: column "company_id" does not exist**
+
+
+Получение сообщений из RabbitMQ и кидание события ECOS
+------------------------------------------------------
+
+Пример чтения из rabbitmq и кидание события ECOS:
+
+1. Создаем новый секрет для подключения к RMQ
+2. Создаем новый endpoint с id 'rabbitmq-endpoint' (можно любой id, но в camel конфиге мы на него ссылаемся) для подключения к RMQ и устанавливаем секрет из п.1 в него
+3. Заходим в журнал Camel DSL и создаем новый контекст со следующим конфигом: 
+
+.. code-block:: yaml
+  
+  - beans:
+      - name: rabbitConnectionFactory
+        type: com.rabbitmq.client.ConnectionFactory
+        properties:
+          uri: '{{ecos-endpoint:rabbitmq-endpoint/url}}'
+          username: '{{ecos-endpoint:rabbitmq-endpoint/credentials/username}}'
+          password: '{{ecos-endpoint:rabbitmq-endpoint/credentials/password}}'
+  - route:
+      from:
+        uri: rabbitmq:default # default здесь -это дефолтный exchange в RMQ. Обычно он обозначается пустой строкой, но в camel endpoint'е вместо этого пишется "default"
+        parameters:
+          connectionFactory: '#bean:rabbitConnectionFactory'
+          queue: test-queue
+          autoAck: false
+          autoDelete: false
+          skipExchangeDeclare: true
+      steps:
+        - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
+            pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
+        - 
+        - to: log:rmq-test # вывод в лог. Можно убрать
+        - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
+
+Подписка на событие ECOS
+------------------------
+
+.. code-block:: yaml
+  
+  - route:
+      from:
+        uri: 'ecos-event:record-created' # подписываемся на событие "Запись создана"
+        parameters:
+          attributes:
+            recordId: 'record?id' # указываем какие атрибуты нам нужны из события
+          filter: # устанавливаем фильтр 
+            t: not-eq 
+            a: conditionField
+            v: true
+      steps:
+        - to: log:record-was-created
