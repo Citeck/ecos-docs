@@ -15,3 +15,4 @@
     ecos_modules/service_desk
     ecos_modules/crm
     ecos_modules/worklog
+    ecos_modules/releases
