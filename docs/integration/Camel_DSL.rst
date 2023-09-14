@@ -146,40 +146,40 @@ Camel использует доменные языки (Domain Specific Language
 * **type** – класс бина, всегда указывается **ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint**
 * в секции **properties** описываются настройки ``RecordsDaoEndpoint``:
 * **appName** - целевой идентификатор приложения, например alfresco:
-  * **sourceId** - целевой идентификатор источника данных, куда будут помещаться данные. Обязательное свойство;
-  * **pkProp** – атрибут исходного источника, который является первичным ключом;
-  * **columnMap** – соответствие атрибутов исходного источника и атрибутов назначения. В приведенном примере значение атрибута **name** из источника будет перекладываться в атрибут **content** назначения, **state** в **currentState**, **type** в **type**. Общий вид карты:
+* **sourceId** - целевой идентификатор источника данных, куда будут помещаться данные. Обязательное свойство;
+* **pkProp** – атрибут исходного источника, который является первичным ключом;
+* **columnMap** – соответствие атрибутов исходного источника и атрибутов назначения. В приведенном примере значение атрибута **name** из источника будет перекладываться в атрибут **content** назначения, **state** в **currentState**, **type** в **type**. Общий вид карты:
 
-    .. code-block:: text
+  .. code-block:: text
 
-        sourcePropName1: targetPropName1
-        sourcePropName2: targetPropName2
-        …
-        sourcePropNameN: targetPropNameN
-        чтоБерем: кудаКладем
+      sourcePropName1: targetPropName1
+      sourcePropName2: targetPropName2
+      …
+      sourcePropNameN: targetPropNameN
+      чтоБерем: кудаКладем
 
-    * **valueConvertMap** – карта преобразований исходных значений перед записью их в БД назначения. Карта пишется в формате JSON, символ **'*'** означает любое значение атрибута. В приведенном примере перед записью в атрибут **currentState** значение поля **state** будет заменено на **STARTED**, если оно равно **1**, и на **STOPPED** во всех других случаях. Таким образом, атрибут **currentState** в результирующей таблице будет содержать только два значения: **STARTED** или **STOPPED**. Общий вид карты:
+* **valueConvertMap** – карта преобразований исходных значений перед записью их в БД назначения. Карта пишется в формате JSON, символ **'*'** означает любое значение атрибута. В приведенном примере перед записью в атрибут **currentState** значение поля **state** будет заменено на **STARTED**, если оно равно **1**, и на **STOPPED** во всех других случаях. Таким образом, атрибут **currentState** в результирующей таблице будет содержать только два значения: **STARTED** или **STOPPED**. Общий вид карты:
     
-    .. code-block:: text
+  .. code-block:: text
 
-        {“sourcePropName1”: 
-        {“value1”:”resultValue1”,
-            “value2”:”resultValue2”,
-            … 
-            “valueN”:”resultValueN”},
-        “sourcePropName2”: 
-        {“value21”:”resultValue21”,
-            “value22”:”resultValue22”,
-            … 
-            “value2N”:”resultValue2N”},
-        …
-        “sourcePropNameM”: 
-        {“valueM1”:”resultValueM1”,
-            “valueM2”:”resultValueM2”,
-            … 
-            “valueMN”:”resultValueMN”}}
+      {“sourcePropName1”: 
+      {“value1”:”resultValue1”,
+          “value2”:”resultValue2”,
+          … 
+          “valueN”:”resultValueN”},
+      “sourcePropName2”: 
+      {“value21”:”resultValue21”,
+          “value22”:”resultValue22”,
+          … 
+          “value2N”:”resultValue2N”},
+      …
+      “sourcePropNameM”: 
+      {“valueM1”:”resultValueM1”,
+          “valueM2”:”resultValueM2”,
+          … 
+          “valueMN”:”resultValueMN”}}
 
-    Так как **valueConvertMap** многострочное свойство, то перед значением необходимо указать символ **«|»**.
+Так как **valueConvertMap** многострочное свойство, то перед значением необходимо указать символ **«|»**.
 
 В одном контексте может быть описано несколько ``RecordsDaoEndpoint``.
 
@@ -329,7 +329,7 @@ Camel использует доменные языки (Domain Specific Language
     from: "direct:clearValues"
     steps:
       - setBody:
-        constant: "delete from simple"
+          constant: "delete from simple"
       - to: "jdbc:todb"    
 
 
@@ -368,7 +368,6 @@ Camel использует доменные языки (Domain Specific Language
       steps:
         - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
             pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
-        - 
         - to: log:rmq-test # вывод в лог. Можно убрать
         - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
 
