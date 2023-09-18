@@ -60,7 +60,7 @@
        :width: 600
        :align: center 
 
-Например, https://localhost/v2/journals?journalId=aro-internal-journal
+Например, https://host/v2/journals?journalId=aro-internal-journal
 
 Создание внутреннего документа
 --------------------------------

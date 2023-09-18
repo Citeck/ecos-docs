@@ -169,4 +169,6 @@ Community
 
 3.	Добавлен `модуль ОРД. Внутренние документы <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/ORD.html>`_
 
-4.  Реализована возможность сохранять бизнес-процесс как `черновик <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#id6>`_
+4.  Добавлен `модуль Релизы <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/ORD.html>`_
+
+5.  Реализована возможность сохранять бизнес-процесс как `черновик <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#id6>`_

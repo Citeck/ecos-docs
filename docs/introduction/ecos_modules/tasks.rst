@@ -64,7 +64,7 @@
     -	Инициатор;
     -	Срок.
 
-Например, https://localhost/v2/journals?journalId=assignments-journal
+Например, https://host/v2/journals?journalId=assignments-journal
 
 Карточка
 ----------
