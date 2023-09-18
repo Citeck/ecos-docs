@@ -49,7 +49,7 @@
        :align: center 
 
 
-Например, https://localhost/v2/journals?journalId=cor-income-journal
+Например, https://host/v2/journals?journalId=cor-income-journal
 
 Создание Входящего документа
 -----------------------------

@@ -58,7 +58,7 @@
     -	Дата посещения;
     -	Статус.
 
-Например, https://localhost/v2/journals?journalId=order-passes 
+Например, https://host/v2/journals?journalId=order-passes 
 
 Карточка
 --------
