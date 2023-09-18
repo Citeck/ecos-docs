@@ -81,7 +81,7 @@
   * Дата договора;
   * Срок действия.
 
-Например, https://localhost/v2/journals?journalId=ecos-contract-journal
+Например, https://host/v2/journals?journalId=ecos-contract-journal
 
 Создание договора
 ------------------

@@ -430,7 +430,7 @@ Cоздать поручение можно из карточки докумен
       -	Статус;
       -	Должность.
 
-Например, https://localhost/v2/journals?journalId=offer-candidate-journal
+Например, https://host/v2/journals?journalId=offer-candidate-journal
 
 Канбан представление журнала
 """"""""""""""""""""""""""""""
