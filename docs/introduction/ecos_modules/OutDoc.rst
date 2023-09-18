@@ -62,7 +62,7 @@
        :width: 600
        :align: center 
 
-Например, https://localhost/v2/journals?journalId=cor-outcome-journal
+Например, https://host/v2/journals?journalId=cor-outcome-journal
 
 Создание Исходящего документа
 -------------------------------

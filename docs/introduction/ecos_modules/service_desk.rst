@@ -75,7 +75,7 @@
        :width: 800
        :align: center 
 
-Например, https://localhost/v2/journals?journalId=open-requests-service-desk-journal 
+Например, https://host/v2/journals?journalId=open-requests-service-desk-journal 
 
 Для заявок в журнале доступны действия для:
 

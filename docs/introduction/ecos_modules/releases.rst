@@ -119,6 +119,7 @@
 .. list-table::
       :widths: 20 40
       :header-rows: 1
+      :align: center 
       :class: tight-table 
       
       * - Статус
