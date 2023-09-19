@@ -1,4 +1,4 @@
-Api запросы ecos-edi
+API запросы ecos-edi
 ======================
 
 В ecos-edi микросервисе реализован функционал из enterprise-core cервиса **EcosEdiService**.
