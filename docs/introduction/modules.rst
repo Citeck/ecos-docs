@@ -83,6 +83,20 @@
               :width: 30
               :align: center 
 
+      * - :ref:`Корреспонденция. Исходящие документы <ecos-outdoc>`
+        - Автоматизация процесса работы с исходящими документами: согласование, подписание, регистрация, отправка. 
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`ОРД <ecos-order-ORD>`
         - автоматизации процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
         - |
@@ -269,6 +283,34 @@
 
       * - :ref:`ecos-transformations<transformation>`
         - | Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, :ref:`формирования PDF-файла со штрихкодом<barcode_pdf>`, конвертации всех офисных форматов в PDF.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-content <content_service>`
+        - | Микросервис для обеспечения хранения файлов в системе в определенное файловое хранилище.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-edi <ecos-edi>`
+        - | Микросервис с вынесенной логикой ЭДО из микросервиса :ref:`интеграции<integration>`.
         - 
 
            .. image:: _static/modules/red.png
