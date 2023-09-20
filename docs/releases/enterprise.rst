@@ -47,3 +47,7 @@ Enterprise
 
 4.7.0
 -------
+
+1. Реализован `микросервис <https://citeck-ecos.readthedocs.io/ru/latest/general/Content_microservice.html>`_ , предназначенный для обеспечения хранения файлов в системе в определенное файловое хранилище. 
+
+2. Логика ЭДО вынесена в `отдельный микросервис <https://citeck-ecos.readthedocs.io/ru/latest/general/EDI_microservice.html>`_
