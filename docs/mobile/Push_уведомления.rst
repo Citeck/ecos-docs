@@ -4,7 +4,7 @@
 Инициализация push-уведомлений
 -------------------------------
 
-При запуске приложения инициализируем пуш-уведомления **(src/helpers/notifications.helper.ts initNotifications)**
+При запуске приложения инициализируем пуш-уведомления ``src/helpers/notifications.helper.ts initNotifications``
 
 * запрашиваем у пользователя разрешение на прием пуш-уведомлений
 * подписываемся на события открытия приложения по уведомлению: ``getInitialNotification``, ``onNotificationOpenedApp``
@@ -13,7 +13,7 @@
 Подписка на push-уведомлений
 -----------------------------
 
-**(src/store/actions/settings.actions.ts subscribeToPushWorker)**
+``src/store/actions/settings.actions.ts subscribeToPushWorker``
 
 * проверяем разрешение на прием уведомлений
 * выполняем запрос ``/gateway/alfresco/alfresco/s/citeck/global-properties?name=ecos.server.tenant.id``
@@ -27,7 +27,7 @@
 Обновление токена
 ------------------
 
-**(src/store/actions/settings.actions.ts onTokenRefresh, sendLanguageSettings)**
+``src/store/actions/settings.actions.ts onTokenRefresh, sendLanguageSettings``
 
 * При обновлении токина FCM необходимо передать его в запросе ``/gateway/api/records/mutate`` с указание **id подписки**
 
@@ -37,13 +37,13 @@
 Отписка от push-уведомлений
 ------------------------------
 
-**(src/store/actions/settings.actions.ts unsubscribeFromPush)**
+``src/store/actions/settings.actions.ts unsubscribeFromPush``
 
 * выполняем запрос ``/gateway/api/records/delete``, указав **id подписки**, полученный на шаге подписки на уведомления
 
 Открытие push-уведомлений
 ---------------------------
 
-**(src/helpers/notifications.helper.ts getInitialNotification, onNotificationOpenedApp)**
+``src/helpers/notifications.helper.ts getInitialNotification, onNotificationOpenedApp``
 
 При открытии задачи из уведомления важен ``taskId``, переданный в payload уведомления
