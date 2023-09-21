@@ -21,7 +21,8 @@
 .. list-table:: 
       :widths: 5 40
       :header-rows: 1
-
+      :class: tight-table 
+      
       * - Тип/Ключ
         - Описание
       * - **Case-details**
@@ -30,11 +31,9 @@
           | Формирование ключа построено по следующему правилу:
           | **type_uuid/kind_** 
           | **type_uuid**
-          | **alf_alfresco_type**	
-          | То есть для договоров (contracts:agreement) это будет:  
+          | То есть для договоров это будет:  
           | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**	
           | 2. **contracts-cat-doctype-contract**	
-          | 3. **alf_contracts:agreement**  
           | Порядок - от более приоритетного к менее приоритетному	
           | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
       * - **Site-details**
@@ -44,10 +43,16 @@
       * - **User-dashboard**
         - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
           | Например: ``localhost/v2/dashboard`` 	
-          | Ключ dashboard'а всегда DEFAULT если явно не задано обратного (возможно указание dashboardKey в URL) 
+          | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL) 
       * - **profile-details**
         - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления<control_panel>`)
           | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
+
+В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры)  используется параметр activeTab, 
+
+например, https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@admin
+
+``activeTab=N`` - активная вкладка дашборда. Вкладки нумеруются с 0, где 0 - первая вкладка.
 
 Алгоритм поиска dashboard следующий:
 
@@ -88,6 +93,8 @@
 
 Конфигурация дашборда
 ------------------------
+
+.. _dashboard_settings:
 
 При открытии впервые карточки кейса, профиля пользователя или домашней страницы будет показан дашборд по умолчанию для соответствующего типа.
 
