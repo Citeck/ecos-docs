@@ -29,7 +29,7 @@
 
 ``src/store/actions/settings.actions.ts onTokenRefresh, sendLanguageSettings``
 
-* При обновлении токина FCM необходимо передать его в запросе ``/gateway/api/records/mutate`` с указание **id подписки**
+* При обновлении токена FCM необходимо передать его в запросе ``/gateway/api/records/mutate`` с указание **id подписки**
 
 .. note::
  При обновлении токена, и смене языка интерфейса приложения дополнительно передается локаль приложения ``locale``
