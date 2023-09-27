@@ -212,7 +212,33 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 Обработка технических ошибок
 ++++++++++++++++++++++++++++
 
-Если в процессе обработки возникла техническая ошибка, то посредством метода `handleFailure` можно реализовать механизм повторной обработки задачи, например:
+Если в процессе обработки возникла техническая ошибка, то посредством метода `handleFailure` можно реализовать механизм повторной обработки задачи.
+
+Для удобства можно воспользоваться аннотацией `ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:
+
+.. code-block:: java
+
+    @Component
+    @ExternalTaskSubscription("processPayment")
+    class PaymentProcessorWorker(
+        private val paymentService: PaymentService
+    ) : ExternalTaskHandler {
+
+        @ExternalTaskRetry(
+            retries = 3,
+            retryTimeout = 10_000,
+            incrementRetryTimeout = true
+        )
+        override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
+            // you business logic here
+            paymentService.processPayment(task)
+
+            // complete, if successful
+            taskService.complete(task)
+        }
+    }
+
+Или реализовать механизм повторной обработки задачи вручную, со своей логикой повторной обработки:
 
 .. code-block:: java
 
@@ -268,9 +294,44 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
 Если количество попыток обработки задачи исчерпано, то будет создан инцидент и задача помечена как `failed`, в дальнейшем требуется ручной разбор инцидента в административном интерфейсе.
 
+Комбинированная обработка ошибок
+++++++++++++++++++++++++++++++++
+
+В некоторых случаях возможна ситуация, когда в процессе обработки внешней задачи может возникнуть как бизнес-ошибка, так и техническая ошибка.
+В таком случае возможно использовать `@ExternalTaskRetry` и `handleBpmnError` вместе:
+
+.. code-block:: java
+
+    @Component
+    @ExternalTaskSubscription("processPayment")
+    class PaymentProcessorWorker(
+        private val paymentService: PaymentService
+    ) : ExternalTaskHandler {
+
+        @ExternalTaskRetry
+        override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
+            // you business logic here
+            val processResult = paymentService.processPayment(task)
+            if (processResult == "DENIED") {
+                taskService.handleBpmnError(task, "paymentDenied", "Payment was denied")
+                return
+            }
+
+            // complete, if successful
+            taskService.complete(task)
+        }
+    }
+
+В данном случае, если в процессе обработки задачи возникнет техническая ошибка, например, случился `Exception` при выполнении метода `paymentService.processPayment` из-за проблем с сетью, 
+то задача будет повторно обработана согласно настройкам `@ExternalTaskRetry`. После успешного выполнения обратки платежа, если платеж был отклонен, то будет выброшена бизнес-ошибка, иначе - задача будет завершена успешно.
+
+
 .. note:: 
     При работе с внешними задачами и моделировании процесса необходимо учитывать, что внешние задачи 
     выполняются асинхронно, а обработка ошибок является зоной ответственности внешнего обработчика.
+
+    Если вы используете мутацию recordsService при обработке внешней задачи, то необходимо учитывать, что код обработки внешней задачи выполняется
+    без транзакции. Вы можете пометить метод аннотацией `ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction` для выполнения кода внутри транзакции.
 
     С более подробной документацией по внешним задачам можно ознакомиться по ссылкам: |br|
     1. `External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-engine/external-tasks/#error-event-definitions>`_ |br|
