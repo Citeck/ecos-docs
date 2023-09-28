@@ -369,11 +369,11 @@ Camel использует доменные языки (Domain Specific Language
         parameters:
           connectionFactory: '#bean:rabbitConnectionFactory'
           queues: test-queue
-      steps:
-        - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
-            pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
-        - to: log:rmq-test # вывод в лог. Можно убрать
-        - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
+        steps:
+          - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
+              pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
+          - to: log:rmq-test # вывод в лог. Можно убрать
+          - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
 
 Подписка на событие ECOS
 ------------------------
@@ -390,8 +390,8 @@ Camel использует доменные языки (Domain Specific Language
             t: not-eq 
             a: conditionField
             v: true
-      steps:
-        - to: log:record-was-created
+        steps:
+          - to: log:record-was-created
 
 Чтение из RabbitMQ -> роутинг по jsonPath -> переотправка в Ecos Event + Dead Letter Queue
 ------------------------------------------------------------------------------------------
