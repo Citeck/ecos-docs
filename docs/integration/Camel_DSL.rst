@@ -416,6 +416,8 @@ Camel использует доменные языки (Domain Specific Language
            deadLetterQueue: test-data-queue-dlq
            deadLetterRoutingKey: deadLetterTestData
            retryDelay: 5000
+           arg.queue.durable: true
+           arg.queue.autoDelete: false
          steps:
            - to:
                uri: "log:income?level=INFO&showAll=true"
