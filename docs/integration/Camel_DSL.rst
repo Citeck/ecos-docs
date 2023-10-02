@@ -86,16 +86,17 @@ Camel использует доменные языки (Domain Specific Language
 
 .. code-block:: yaml
 
-  - route:
-     from: "timer:start?delay=-1&repeatCount=1"
-     steps:
-     - setBody:
-         constant: "select * from actions"
-     - to: "jdbc:datasource"
-     - split:
-         simple: "${body}"
-       steps:
-         - to: "stream:out"
+    - route:
+        from:
+          uri: "timer:start?delay=-1&repeatCount=1"
+          steps:
+            - setBody:
+                constant: "select * from actions"
+            - to: "jdbc:datasource"
+            - split:
+                simple: "${body}"
+                steps:
+                  - to: "stream:out"
 
   
 где
@@ -117,28 +118,29 @@ Camel использует доменные языки (Domain Specific Language
 
 .. code-block:: yaml
 
-  - beans:
-    - name: "recordsDaoEndpoint"
-      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-      properties:
-        sourceId: testDao
-        pkProp: id
-        columnMap:
-        name: content
-        state: currentState
-        type: type
-        valueConvertMap: |
-         {"type": {"*": "YAML"}, "state": {"1":"STARTED", "*": "STOPPED"}}
-  - route:
-     from: "timer:start?delay=-1&repeatCount=1"
-     steps:
-       - setBody:
-           constant: "select * from actions"
-       - to: "jdbc:datasource"
-       - split:
-           simple: "${body}"
-         steps:
-           - to: "bean:recordsDaoEndpoint"           
+    - beans:
+        - name: "recordsDaoEndpoint"
+          type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+          properties:
+            sourceId: testDao
+            pkProp: id
+            columnMap:
+            name: content
+            state: currentState
+            type: type
+            valueConvertMap: |
+              {"type": {"*": "YAML"}, "state": {"1":"STARTED", "*": "STOPPED"}}
+    - route:
+        from:
+          uri: "timer:start?delay=-1&repeatCount=1"
+          steps:
+            - setBody:
+                constant: "select * from actions"
+            - to: "jdbc:datasource"
+            - split:
+                simple: "${body}"
+                steps:
+                  - to: "bean:recordsDaoEndpoint"       
 
 Где 
 
@@ -212,31 +214,33 @@ Camel использует доменные языки (Domain Specific Language
 .. code-block:: yaml
 
   - beans:
-    - name: "recordsDaoEndpoint"
-      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-      properties:
-        sourceId: testDao
-        pkProp: id
-        columnMap:
-          name: content
-          state: currentState
-        delimiter: ","
+      - name: "recordsDaoEndpoint"
+        type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+        properties:
+          sourceId: testDao
+          pkProp: id
+          columnMap:
+            name: content
+            state: currentState
+          delimiter: ","
   - route:
       id: "fromXmlFileToDb"
-      from: "direct:fromXmlFileToDb"
-      steps:
-        - split:
-            xpath: "//someObject"
-          steps:
-            - to: "bean:recordsDaoEndpoint"
+      from:
+        uri: "direct:fromXmlFileToDb"
+        steps:
+          - split:
+              xpath: "//someObject"
+              steps:
+                - to: "bean:recordsDaoEndpoint"
   - route:
       id: "fromTxtFileToDb"
-      from: "direct:fromTxtFileToDb"
-      steps:
-        - split:
-            tokenize: "\n"
-          steps:
-            - to: "bean:recordsDaoEndpoint"
+      from:
+        uri: "direct:fromTxtFileToDb"
+        steps:
+          - split:
+              tokenize: "\n"
+              steps:
+                - to: "bean:recordsDaoEndpoint"
 
 Маршрут **fromXmlFileToDb** делит входной XML-поток из файла на элементы **someObject** и передает их в ``RecordsDaoEndpoint``.
 
@@ -291,11 +295,12 @@ Camel использует доменные языки (Domain Specific Language
 
   - route:
       id: "clearValues"
-      from: "timer:start?delay=-1&repeatCount=1"
-      steps:
-        - setBody:
-            constant: "delete from simple where id not in ('1','2')"
-        - to: "jdbc:datasource"
+      from:
+        uri: "timer:start?delay=-1&repeatCount=1"
+        steps:
+          - setBody:
+              constant: "delete from simple where id not in ('1','2')"
+          - to: "jdbc:datasource"
 
 
 Пример контекста, который берет данные из источника данных **todb**, обрабатывает их через R`RecordsDaoEndpoint`` **daoEndpoint**  и очищает таблицу **simple**, из которой взял данные:
@@ -303,34 +308,36 @@ Camel использует доменные языки (Domain Specific Language
 .. code-block:: yaml
 
   - beans:
-    - name: "daoEndpoint"
-      type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
-      properties:
-        sourceId: testDao
-        pkProp: id
-        columnMap:
-          name: content
-          state: currentState
-          type: type
+      - name: "daoEndpoint"
+        type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+        properties:
+          sourceId: testDao
+          pkProp: id
+          columnMap:
+            name: content
+            state: currentState
+            type: type
   - route:
       id: "getValues"
-      from: "timer:start?delay=-1&repeatCount=1"
-      steps:
-        - setBody:
-            constant: "select * from simple"
-        - to: "jdbc:todb"
-        - split:
-            simple: "${body}"
-            steps:
-              - to: "bean:daoEndpoint"
-              - to: "direct:clearValues"
+      from:
+        uri: "timer:start?delay=-1&repeatCount=1"
+        steps:
+          - setBody:
+              constant: "select * from simple"
+          - to: "jdbc:todb"
+          - split:
+              simple: "${body}"
+              steps:
+                - to: "bean:daoEndpoint"
+                - to: "direct:clearValues"
   - route:
     id: "clearValues"
-    from: "direct:clearValues"
-    steps:
-      - setBody:
-          constant: "delete from simple"
-      - to: "jdbc:todb"    
+    from:
+      uri: "direct:clearValues"
+      steps:
+        - setBody:
+            constant: "delete from simple"
+        - to: "jdbc:todb" 
 
 
 .. note::
@@ -351,25 +358,22 @@ Camel использует доменные языки (Domain Specific Language
   
   - beans:
       - name: rabbitConnectionFactory
-        type: com.rabbitmq.client.ConnectionFactory
+        type: org.springframework.amqp.rabbit.connection.CachingConnectionFactory
         properties:
           uri: '{{ecos-endpoint:rabbitmq-endpoint/url}}'
           username: '{{ecos-endpoint:rabbitmq-endpoint/credentials/username}}'
           password: '{{ecos-endpoint:rabbitmq-endpoint/credentials/password}}'
   - route:
       from:
-        uri: rabbitmq:default # default здесь -это дефолтный exchange в RMQ. Обычно он обозначается пустой строкой, но в camel endpoint'е вместо этого пишется "default"
+        uri: spring-rabbitmq:default # default здесь -это дефолтный exchange в RMQ. Обычно он обозначается пустой строкой, но в camel endpoint'е вместо этого пишется "default"
         parameters:
           connectionFactory: '#bean:rabbitConnectionFactory'
-          queue: test-queue
-          autoAck: false
-          autoDelete: false
-          skipExchangeDeclare: true
-      steps:
-        - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
-            pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
-        - to: log:rmq-test # вывод в лог. Можно убрать
-        - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
+          queues: test-queue
+        steps:
+          - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
+              pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
+          - to: log:rmq-test # вывод в лог. Можно убрать
+          - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
 
 Подписка на событие ECOS
 ------------------------
@@ -386,5 +390,49 @@ Camel использует доменные языки (Domain Specific Language
             t: not-eq 
             a: conditionField
             v: true
-      steps:
-        - to: log:record-was-created
+        steps:
+          - to: log:record-was-created
+
+Чтение из RabbitMQ -> роутинг по jsonPath -> переотправка в Ecos Event + Dead Letter Queue
+------------------------------------------------------------------------------------------
+
+.. code-block:: yaml
+
+   - beans:
+       - name: myRabbitConnectionFactory
+         type: org.springframework.amqp.rabbit.connection.CachingConnectionFactory
+         properties:
+           uri: '{{ecos-endpoint:my-rabbitmq-endpoint/url}}'
+           username: '{{ecos-endpoint:my-rabbitmq-endpoint/credentials/username}}'
+           password: '{{ecos-endpoint:my-rabbitmq-endpoint/credentials/password}}'
+   - route:
+       from:
+         uri: "spring-rabbitmq:income-test-data"
+         parameters:
+           connectionFactory: '#bean:myRabbitConnectionFactory'
+           queues: test-data-queue
+           autoDeclare: true
+           deadLetterExchange: income-test-data
+           deadLetterQueue: test-data-queue-dlq
+           deadLetterRoutingKey: deadLetterTestData
+           retryDelay: 5000
+           arg.queue.durable: true
+           arg.queue.autoDelete: false
+         steps:
+           - to:
+               uri: "log:income?level=INFO&showAll=true"
+           - choice:
+               when:
+                 - jsonpath:
+                     expression: "$.[?(@.operation == 'CREATE')]"
+                   steps:
+                     - to: "ecos-event:test-data-create"
+                 - jsonpath:
+                     expression: "$.[?(@.operation == 'UPDATE')]"
+                   steps:
+                     - to: "ecos-event:test-data-update"
+               otherwise:
+                 steps:
+                   - throwException:
+                       exceptionType: "java.lang.IllegalArgumentException"
+                       message: "Unsupported operation. Only CREATE and UPDATE are supported."
