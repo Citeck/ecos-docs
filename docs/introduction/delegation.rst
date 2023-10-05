@@ -106,20 +106,20 @@
 
 .. list-table::
       :widths: 20 20
-      :align: left
+      :align: center
       :class: tight-table 
       
       * - 
 
              .. image:: _static/delegation/09.png
-                  :width: 50
+                  :width: 30
                   :align: center 
 
         - На месте
       * - 
 
              .. image:: _static/delegation/10.png
-                  :width: 50
+                  :width: 30
                   :align: center 
 
         - Отсутствую

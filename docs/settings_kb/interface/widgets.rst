@@ -57,13 +57,13 @@
         - |  
 
             .. image:: _static/widgets/widget_2.png
-                 :width: 400   
+                 :width: 500   
                  :align: center
 
           | 
 
              .. image:: _static/widgets/widget_3.png
-                  :width: 400  
+                  :width: 500  
                   :align: center 
 
       * - | **Настроенный вид**
@@ -72,7 +72,7 @@
         - |  
 
             .. image:: _static/widgets/widget_4.png
-                 :width: 400
+                 :width: 500
                  :align: center   
 
 .. _widget_web_page:
@@ -94,7 +94,7 @@
         - |  
 
             .. image:: _static/widgets/widget_5.png
-                 :width: 400
+                 :width: 500
                  :align: center   
 
 
@@ -104,7 +104,7 @@
         - |  
 
             .. image:: _static/widgets/widget_6.png
-                 :width: 400 
+                 :width: 500 
                  :align: center   
 
 .. _widget_doc_preview:
@@ -219,19 +219,19 @@
           | - просмотр с возможностью inline редактирования значений атрибутов:       
 
             .. image:: _static/widgets/widget_11.png
-                 :width: 400 
+                 :width: 500 
                  :align: center   
 
           | - редактирование в режиме "формы":
 
              .. image:: _static/widgets/widget_11_1.png
-                 :width: 400 
+                 :width: 500 
                  :align: center             
 
           |  Для типа дашборда :ref:`Site-dashboard<dashboard_types>`
 
             .. image:: _static/widgets/widget_12.png
-                 :width: 400   
+                 :width: 500   
                  :align: center 
 
 Для виджета так же доступен переход в конструктор формы для дополнительной настройки полей. См. подробную статью :ref:`Формы<forms>`
@@ -250,7 +250,7 @@
          - | 
 
              .. image:: _static/widgets/form_builder_form.png
-                  :width: 400   
+                  :width: 500   
                   :align: center 
 
 Настройка режима редактирования виджета для типа дашборда Case-details
@@ -330,7 +330,7 @@
         - |  
 
             .. image:: _static/widgets/all_tasks_1.png
-                 :width: 400   
+                 :width: 300   
                  :align: center 
 
 
@@ -340,19 +340,19 @@
         - |  
 
             .. image:: _static/widgets/all_tasks_2.png
-                 :width: 400 
+                 :width: 300 
                  :align: center   
 
 При нажатии на:
 
  .. image:: _static/widgets/all_tasks_3.png
-       :width: 400
+       :width: 300
        :align: center 
 
 отображается схема выбранного бизнес-процесса с выделенной текущей задачей: 
 
- .. image:: _static/widgets/all_tasks_3.png
-       :width: 400
+ .. image:: _static/widgets/all_tasks_4.png
+       :width: 600
        :align: center 
 
 .. note:: 
@@ -564,25 +564,25 @@
            |  **Документы**
 
               .. image:: _static/widgets/widget_23.png
-                  :width: 400  
+                  :width: 500  
                   :align: center  
 
            | **Синхронизация пользователей**
 
               .. image:: _static/widgets/widget_24.png
-                    :width: 400  
+                    :width: 500  
                     :align: center  
 
           | Доступно отображение только выбранных типов по соответстующему чекбоксу:
 
              .. image:: _static/widgets/widget_37.png
-                  :width: 400    
+                  :width: 500    
                   :align: center          
           
           | При выборе типа чекбоксом и наведении мышки на строку:
 
              .. image:: _static/widgets/widget_34.png
-                  :width: 400  
+                  :width: 500  
                   :align: center  
 
           | становится доступна настройка выбранного типа документа:
@@ -594,7 +594,7 @@
           | При поиске типа раскрываются все вложенности и подсвечиваются совпадения:
           
              .. image:: _static/widgets/widget_38.png
-                  :width: 400 
+                  :width: 500 
                   :align: center   
 
       * - | **Настроенный вид**
@@ -602,7 +602,7 @@
         - |  Документы
 
             .. image:: _static/widgets/widget_25.png
-                 :width: 400 
+                 :width: 500 
                  :align: center   
 
           |  В списке типов документов может встречаться одинаковое название, поэтому при наведении на тултип дополнительно отображается порядок вложенности:
@@ -614,7 +614,7 @@
           |  Синхронизация пользователей
 
             .. image:: _static/widgets/widget_26.png
-                 :width: 400   
+                 :width: 500   
                  :align: center 
 
 .. _widget_doc_constructor:
@@ -739,7 +739,7 @@
 Виджет визуализирует прохождение :ref:`ECOS стадий<stages>` документа:
 
  .. image:: _static/widgets/stages_1.png
-       :width: 400
+       :width: 500
        :align: center 
 
 .. list-table:: 
@@ -764,7 +764,7 @@
         - |  
 
             .. image:: _static/widgets/stages_3.png
-                 :width: 400  
+                 :width: 500  
                  :align: center  
 
 
