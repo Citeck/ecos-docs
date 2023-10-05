@@ -86,7 +86,8 @@
                   :align: center
 
         - | **Добавить пользователя в группу**
-          | Внесите данные и сохраните. 
+          | Внесите данные и сохраните. Обязательные поля отмечены звездочкой.
+          | Чтобы задачи пользователя были доступны для контроля руководителем, заполните поле **Линейный руководитель**.
 
           .. image:: _static/org_structure/org_13.png
                   :width: 500
@@ -136,6 +137,16 @@
           | Для редактирования информации виджета нажмите:
 
           .. image:: _static/org_structure/edit_1.png
+                  :width: 300
+                  :align: center
+
+          | Или редактировать непосредственно в строке:
+
+          .. image:: _static/org_structure/edit_2.png
+                  :width: 300
+                  :align: center   
+
+          .. image:: _static/org_structure/edit_3.png
                   :width: 300
                   :align: center
 
