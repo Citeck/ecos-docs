@@ -325,6 +325,40 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 В данном случае, если в процессе обработки задачи возникнет техническая ошибка, например, случился `Exception` при выполнении метода `paymentService.processPayment` из-за проблем с сетью, 
 то задача будет повторно обработана согласно настройкам `@ExternalTaskRetry`. После успешного выполнения обратки платежа, если платеж был отклонен, то будет выброшена бизнес-ошибка, иначе - задача будет завершена успешно.
 
+Также можно реализовать кейс, когда после нескольких неудачных попыток обработки задачи из-за технической ошибки, необходимо выбросить бизнес-ошибку:
+
+.. code-block:: java
+
+    @Component
+    @ExternalTaskSubscription("processPayment")
+    class PaymentProcessorWorker(
+        private val paymentService: PaymentService
+    ) : ExternalTaskHandler {
+    
+        companion object {
+            private  const val ATTEMPT_THRESHOLD = 1
+        }
+    
+        @ExternalTaskRetry
+        override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
+            try {
+                // you business logic here
+                val processResult = paymentService.processPayment(task)
+    
+                // complete, if successful
+                taskService.complete(task)
+            } catch (e: Exception) {
+                val retries = externalTask.retries
+                if (retries >= ATTEMPT_THRESHOLD) {
+                    // If the number of retries is greater than the threshold, then throw an BPMN error
+                    externalTaskService.handleBpmnError(externalTask, "paymentDenied", ExceptionUtils.getStackTrace(e))
+                } else {
+                    // Otherwise throw root exception. Its will be handled by @ExternalTaskRetry
+                    throw e
+                }
+            }
+        }
+    }
 
 .. note:: 
     При работе с внешними задачами и моделировании процесса необходимо учитывать, что внешние задачи 
