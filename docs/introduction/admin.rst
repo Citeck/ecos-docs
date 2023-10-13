@@ -66,23 +66,23 @@
       * - 
 
              .. image:: _static/admin/admin_4.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
-        - скачать в виде json-файла
+        - Скачать в виде json-файла
 
       * - 
 
              .. image:: _static/admin/admin_5.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
-        - удалить
+        - Удалить
 
       * - 
 
              .. image:: _static/admin/admin_6.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
         - | Открыть карточку журнала в соседней вкладке.
@@ -94,18 +94,18 @@
       * - 
 
              .. image:: _static/admin/admin_8.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
-        - открыть на редактирование
+        - Открыть на редактирование
 
       * - 
 
              .. image:: _static/admin/admin_9.png
-                  :width: 50
+                  :width: 40
                   :align: center 
 
-        - редактировать json-файл:
+        - Редактировать json-файл:
 
              .. image:: _static/admin/admin_11.png
                   :width: 500
@@ -117,5 +117,5 @@
                   :width: 50
                   :align: center 
 
-        - копировать
+        - Копировать
 
