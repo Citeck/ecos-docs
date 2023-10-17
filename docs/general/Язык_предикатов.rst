@@ -87,33 +87,70 @@ JSON представление
     - FTS
   * - **starts**
     - | Строка начинается с val.
-      | Пример: {t: «starts», att:«cm:title», val: «startsWIth»}"
+      | Пример: 
+      
+        .. code-block::
+
+          {t: «starts», att:«cm:title», val: «startsWIth»}"
+
     - ``@cm:title:«startsWith``
   * - **ends**
     - | Строка заканчивается с val.
-      | Пример: {t: «ends», att:«cm:title», val: «endsWIth»}
+      | Пример: 
+
+        .. code-block::
+
+          {t: «ends», att:«cm:title», val: «endsWIth»}
+
     - ``@cm:title:«*endsWith``
   * - **or**
     - | Объединение массива предикатов в val по ИЛИ.
-      | Пример: {t: «or», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
+      | Пример: 
+      
+        .. code-block::      
+      
+          {t: «or», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
     - 
   * - **and**
     - | Объединение массива предикатов в val по И.
-      | Пример: {t: «and», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
+      | Пример: 
+      
+        .. code-block::        
+      
+          {t: «and», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
     - 
   * - **empty**
     - | Поле в att пустое.
-      | Пример: {t: «empty», att: «cm:title»}
+      | Пример: 
+      
+        .. code-block::  
+          
+          {t: «empty», att: «cm:title»}
     - 
   * - **not**
     - | Отрицание предиката в val.
-      | Пример: {t: «not», val:{t: «empty», att: «cm:title»}}. 
+      | Пример: 
+
+        .. code-block::        
+          
+          {t: «not», val:{t: «empty», att: «cm:title»}}. 
+
       | Этот предикат можно автоматически добавлять к  другим добавляя префикс «not-». 
-      | Пример: {t: «not-eq», att:«cm:title», val: «startsWIth»}"
+      | Пример: 
+      
+        .. code-block::  
+
+          {t: «not-eq», att:«cm:title», val: «startsWIth»}"
+
     - 
   * - **eq**
     - | Значение поля att точно равно val.
-      | Пример: {t: «eq», att:«cm:title», val: «SomeValue»}"
+      | Пример: 
+      
+        .. code-block::  
+      
+         {t: «eq», att:«cm:title», val: «SomeValue»}"
+
     - 
   * - **gt**
     - | Значение поля att больше val
@@ -141,7 +178,6 @@ JSON представление
 Например:
 
 
-
 Дополнительные возможности предикатов
 --------------------------------------
 
@@ -159,11 +195,51 @@ JSON представление
      | Поиск идёт включительно границ т.е. [DurationOrDateTime1, DurationOrDateTime2]
      | Добавлены две константы $NOW - текущая дата время, $TODAY текущая дата
      | Примеры: 
-     | -{t: "ge", att:"cm:created", val: "-P10D"} - Найти документы которые были созданы в течении 10 суток
-     | -{t: "eq", att:"cm:created", val: "-P2Y/P1Y"} - Ищем документы у которых от $NOW - два года, до ($NOW - два года) - плюс год
-     | -{t: "eq", att:"cm:created", val: "-P2Y/$NOW"} - Найти документы которые были созданы в течении 2-х лет, до текущей даты-времени
-     | -{t: "eq", att:"cm:created", val: "-P2Y/$TODAY"} - Найти документы которые были созданы в течении 2-х лет, до сегодняшнего дня
-     | -{t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/2020-02-01T00:00:00Z"} - от 2020-01-01 до 2020-02-01
-     | -{t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/P1M"} - от 2020-01-01 до 2020-01-01 плюс 1 месяц
-     | -{t: "eq", att:"cm:created", val: "-P10D/2020-01-01T00:00:00Z"} - от минус 10 дней до 2020-01-01
-     | -{t: "eq", att:"cm:created", val: "$TODAY"}
+
+     | Найти документы которые были созданы в течении 10 суток:
+
+        .. code-block::
+
+         {t: "ge", att:"cm:created", val: "-P10D"}
+
+     | Ищем документы у которых от $NOW - два года, до ($NOW - два года) - плюс год
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "-P2Y/P1Y"}
+
+     | Найти документы которые были созданы в течении 2-х лет, до текущей даты-времени
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "-P2Y/$NOW"} 
+
+     | Найти документы которые были созданы в течении 2-х лет, до сегодняшнего дня
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "-P2Y/$TODAY"}   
+
+     | от 2020-01-01 до 2020-02-01
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/2020-02-01T00:00:00Z"}
+
+     | от 2020-01-01 до 2020-01-01 плюс 1 месяц
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/P1M"} 
+
+     | от минус 10 дней до 2020-01-01 
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "-P10D/2020-01-01T00:00:00Z"} 
+
+     | от сегодня
+
+        .. code-block::
+
+          {t: "eq", att:"cm:created", val: "$TODAY"} 
