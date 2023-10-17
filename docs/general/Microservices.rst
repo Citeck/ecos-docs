@@ -1,10 +1,9 @@
-Микросервисы
-===============
+Разработка и создание микросервисов
+====================================
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 6
 
     Microservices/list
-    Microservices/Description
     Microservices/microservice_development
     Microservices/new_microservice
