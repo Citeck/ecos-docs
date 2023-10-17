@@ -1,5 +1,5 @@
-Список микросервисов, модулей, доступных в Community/Enterprise
-================================================================
+Список микросервисов, доступных в Community/Enterprise
+========================================================
 
 Микросервисы
 -------------
@@ -68,7 +68,7 @@
            .. image:: _static/list/green.png
               :width: 30
               :align: center 
-      * - ecos-apps
+      * - :ref:`ecos-apps<apps_service>`
         - | Микросервис приложений ECOS
           | Отвечает за доставку приложений ECOS к целевым сервисам.
         - |
@@ -82,7 +82,7 @@
            .. image:: _static/list/green.png
               :width: 30
               :align: center 
-      * - ecos-notifications
+      * - :ref:`ecos-notifications<notifications>`
         - | Микросервис нотификаций
           | Отвечает за отправку уведомлений (email, push-нотификации и др.).
         - |
@@ -96,7 +96,7 @@
            .. image:: _static/list/green.png
               :width: 30
               :align: center 
-      * - ecos-process
+      * - :ref:`ecos-process<process>`
         - | Микросервис процессов. 
           | Отвечает за процессы кейс-менеджмента и BPMN.
         - |
