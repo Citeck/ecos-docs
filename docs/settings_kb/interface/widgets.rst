@@ -56,13 +56,13 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_2.png
+            .. image:: _static/widgets/journal_1.png
                  :width: 500   
                  :align: center
 
           | 
 
-             .. image:: _static/widgets/widget_3.png
+             .. image:: _static/widgets/journal_2.png
                   :width: 500  
                   :align: center 
 
@@ -71,7 +71,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_4.png
+            .. image:: _static/widgets/journal_3.png
                  :width: 500
                  :align: center   
 
@@ -93,7 +93,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_5.png
+            .. image:: _static/widgets/web_1.png
                  :width: 500
                  :align: center   
 
@@ -103,7 +103,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_6.png
+            .. image:: _static/widgets/web_2.png
                  :width: 500 
                  :align: center   
 
@@ -202,13 +202,13 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_9.png
+            .. image:: _static/widgets/Properties_1.png
                  :width: 400
                  :align: center    
 
           | 
 
-             .. image:: _static/widgets/widget_10.png
+             .. image:: _static/widgets/Properties_2.png
                   :width: 400
                   :align: center    
 
@@ -218,21 +218,29 @@
           
           | - просмотр с возможностью inline редактирования значений атрибутов:       
 
-            .. image:: _static/widgets/widget_11.png
+            .. image:: _static/widgets/Properties_3.png
                  :width: 500 
                  :align: center   
 
           | - редактирование в режиме "формы":
 
-             .. image:: _static/widgets/widget_11_1.png
+             .. image:: _static/widgets/Properties_4.png
                  :width: 500 
                  :align: center             
 
           |  Для типа дашборда :ref:`Site-dashboard<dashboard_types>`
 
-            .. image:: _static/widgets/widget_12.png
+            .. image:: _static/widgets/Properties_5.png
                  :width: 500   
                  :align: center 
+
+
+          | При выборе свойства **Электронная подпись** отображаются данные о сертификате ЭЦП и время подписания:
+
+            .. image:: _static/widgets/Properties_6.png
+                 :width: 500   
+                 :align: center 
+
 
 Для виджета так же доступен переход в конструктор формы для дополнительной настройки полей. См. подробную статью :ref:`Формы<forms>`
 
@@ -307,7 +315,7 @@
 
 Виджет для отображения задач по данному кейсу у просматривающего его пользователя и варианты их завершения.
 
- .. image:: _static/widgets/widget_13.png
+ .. image:: _static/widgets/task.png
        :width: 600
        :align: center 
 
@@ -367,7 +375,7 @@
 
 Виджет отображает текущий статус кейса (определяется системой автоматически, не доступен для редактирования пользователем).
 
- .. image:: _static/widgets/widget_16.png
+ .. image:: _static/widgets/status.png
        :width: 400
        :align: center 
 
@@ -422,19 +430,19 @@
 
 Служит для загрузки новой версии документа, а также для сравнения файлов.
 
- .. image:: _static/widgets/widget_18.png
+ .. image:: _static/widgets/version_1.png
        :width: 300
        :align: center 
 
 Версии документов можно сравнить - выбрать версии и нажать **Сравнить**. Различия будут подсвечены:
 
-.. image:: _static/widgets/widget_18_1.png
+.. image:: _static/widgets/version_2.png
        :width: 900
        :align: center
 
 Для bpmn-процесса:
 
- .. image:: _static/widgets/widget_39.png
+ .. image:: _static/widgets/version_3.png
        :width: 300
        :align: center 
 
@@ -448,7 +456,7 @@
 
 Добавлено сравнение версий процесса - выберите версии и нажмите **"Сравнить"**:
 
- .. image:: _static/widgets/widget_40.png
+ .. image:: _static/widgets/version_4.png
        :width: 800
        :align: center 
 
@@ -467,7 +475,7 @@
 
 и отображения установленных связей.
 
- .. image:: _static/widgets/widget_19.png
+ .. image:: _static/widgets/doc-associations_1.png
        :width: 600
        :align: center 
 
@@ -487,7 +495,7 @@
 
 Настройки подтягиваются из :ref:`типа данных<data_types_main>`. См. подробную статью :ref:`Действия<ui_actions>`
 
- .. image:: _static/widgets/widget_20.png
+ .. image:: _static/widgets/actions.png
        :width: 200
        :align: center 
 
@@ -526,7 +534,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_21.png
+            .. image:: _static/widgets/barcode_1.png
                  :width: 200  
                  :align: center  
 
@@ -540,7 +548,7 @@
 
         - |  Для типа дашборда Case-details 
 
-            .. image:: _static/widgets/widget_22.png
+            .. image:: _static/widgets/barcode_2.png
                  :width: 200   
                  :align: center 
 
@@ -563,37 +571,37 @@
            
            |  **Документы**
 
-              .. image:: _static/widgets/widget_23.png
+              .. image:: _static/widgets/documents_01.png
                   :width: 500  
                   :align: center  
 
            | **Синхронизация пользователей**
 
-              .. image:: _static/widgets/widget_24.png
+              .. image:: _static/widgets/documents_02.png
                     :width: 500  
                     :align: center  
 
           | Доступно отображение только выбранных типов по соответстующему чекбоксу:
 
-             .. image:: _static/widgets/widget_37.png
+             .. image:: _static/widgets/documents_03.png
                   :width: 500    
                   :align: center          
           
           | При выборе типа чекбоксом и наведении мышки на строку:
 
-             .. image:: _static/widgets/widget_34.png
+             .. image:: _static/widgets/documents_04.png
                   :width: 500  
                   :align: center  
 
           | становится доступна настройка выбранного типа документа:
 
-             .. image:: _static/widgets/widget_35.png
+             .. image:: _static/widgets/documents_05.png
                   :width: 400  
                   :align: center  
           
           | При поиске типа раскрываются все вложенности и подсвечиваются совпадения:
           
-             .. image:: _static/widgets/widget_38.png
+             .. image:: _static/widgets/documents_06.png
                   :width: 500 
                   :align: center   
 
@@ -601,19 +609,19 @@
        
         - |  Документы
 
-            .. image:: _static/widgets/widget_25.png
+            .. image:: _static/widgets/documents_07.png
                  :width: 500 
                  :align: center   
 
           |  В списке типов документов может встречаться одинаковое название, поэтому при наведении на тултип дополнительно отображается порядок вложенности:
 
-            .. image:: _static/widgets/widget_36.png
+            .. image:: _static/widgets/documents_08.png
                  :width: 400
                  :align: center    
 
           |  Синхронизация пользователей
 
-            .. image:: _static/widgets/widget_26.png
+            .. image:: _static/widgets/documents_09.png
                  :width: 500   
                  :align: center 
 
@@ -638,7 +646,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_27.png
+            .. image:: _static/widgets/doc_one_1.png
                  :width: 300  
                  :align: center  
 
@@ -648,7 +656,7 @@
 
         - |  
 
-            .. image:: _static/widgets/widget_28.png
+            .. image:: _static/widgets/doc_one_2.png
                  :width: 600  
                  :align: center  
 
@@ -777,7 +785,7 @@
 
 Виджет отображает статистику по задачам.
 
- .. image:: _static/widgets/widget_31.png
+ .. image:: _static/widgets/statistics.png
        :width: 500
        :align: center 
 
@@ -790,7 +798,7 @@
 
 Виджет отображает ближайшие дни рождения .
 
- .. image:: _static/widgets/widget_32.png
+ .. image:: _static/widgets/bday.png
        :width: 500
        :align: center 
 
@@ -803,7 +811,7 @@
 
 Виджет профиля пользователя
 
- .. image:: _static/widgets/widget_33.png
+ .. image:: _static/widgets/profile.png
        :width: 300
        :align: center 
 
