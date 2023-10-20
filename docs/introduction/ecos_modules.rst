@@ -1,8 +1,8 @@
 Готовые модули ECOS
-==============================
+====================
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     ecos_modules/meeting
     ecos_modules/order_pass
