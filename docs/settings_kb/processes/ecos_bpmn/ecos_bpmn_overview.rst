@@ -226,4 +226,4 @@
        :width: 600
        :align: center
 
-О виджете см. :ref:`подробно<widget_process_statistics>`
+Подробно о виджете :ref:`«Статистика по процессу»<widget_process_statistics>`
