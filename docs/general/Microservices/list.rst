@@ -152,3 +152,16 @@
            .. image:: _static/list/green.png
               :width: 30
               :align: center 
+      * - :ref:`ecos-content<content_service>`
+        - | Микросервис для обеспечения хранения файлов в системе в определенное файловое хранилище.
+        - |
+
+           .. image:: _static/list/red.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/list/green.png
+              :width: 30
+              :align: center 

@@ -406,7 +406,7 @@
        :width: 600
        :align: center 
 
-Для bpmn-процесса:
+Для **bpmn-процесса**:
 
  .. image:: _static/widgets/History_3.png
        :width: 600
@@ -440,7 +440,9 @@
        :width: 900
        :align: center
 
-Для bpmn-процесса:
+.. _widget_versions_journal_bpmn:
+
+Для **bpmn-процесса**:
 
  .. image:: _static/widgets/version_3.png
        :width: 300
