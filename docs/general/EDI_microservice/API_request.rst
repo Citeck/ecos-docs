@@ -3,7 +3,7 @@ API запросы ecos-edi
 
 В ecos-edi микросервисе реализован функционал из enterprise-core cервиса **EcosEdiService**.
 
-При отправке запроса на отправку пакета или документов или генерацию сервисных документов используется record dao c id - **edi-request**.
+При отправке запроса на отправку пакета или документов или генерацию сервисных документов используется record dao c id - **edi-action**.
 
 Для отправки запроса через рекорды необходимо использовать метод **mutate**.
 
@@ -11,23 +11,22 @@ DTO запроса и ответа:
 
 .. code-block::
 
-    public static class EdiRequest {
+
+    public static class EdiActionRequest {
         private String requestType;
-        private String providerType;
+        private EdiProviderType providerType;
         private ObjectData requestData;
     }
     
-    public static class EdiRequestResult {
-        private boolean success;
-        private ObjectData response;
-        private String error;
+    public static class EdiActionResult {
+        private T data;
     }
 
 Где:
 
-    **requestType** - тип запроса, например *“generatePrintForm“*
-    **providerType **- тип провайдера, Контур, сбис и т.д. для диадока необходимо указывать *“kontur“*
-    **requestData** - данные по запросу, например для генерации печатных форм это *documentRef документа*
+    -  **requestType** - тип запроса, например *“generatePrintForm“*
+    -  **providerType**- тип провайдера, Контур, СБИС и т.д. для Диадока необходимо указывать *“KONTUR“* (см. EdiProviderType enum).
+    -  **requestData** - данные по запросу, например, для генерации печатных форм это *documentRef документа*
 
 
 Пример запроса:
@@ -35,9 +34,9 @@ DTO запроса и ответа:
 .. code-block::
 
     RecordAtts requestAtts = new RecordAtts();
-    requestAtts.setId("edi/edi-request");
+    requestAtts.setId("edi/edi-action@");
     requestAtts.setAtt("requestType", "generatePrintForm");
-    requestAtts.setAtt("providerType","kontur");
+    requestAtts.setAtt("providerType","KONTUR");
     requestAtts.setAtt("requestData", ObjectData.create().set("documentRef", RecordRef.valueOf("recordRef value")));
     recordsService.mutate(requestAtts);
 
@@ -47,7 +46,7 @@ DTO запроса и ответа:
 
 .. code-block::
 
-    var rec = Records.get('edi/edi-request@'); // важно @ в конце
+    var rec = Records.get('edi/edi-action@'); // важно @ в конце
     rec.att("_self", {
                     "requestType":"generatePrintForm",
                     "providerType":"KONTUR",
@@ -78,7 +77,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"isCounterpartyExists",
                                 "providerType":"KONTUR",
@@ -89,7 +88,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var resp = await rec.save("json");
 
       * - **aquireCounterparty**
         -  | Запрос на создание связи с контрагентом.
@@ -104,7 +103,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"aquireCounterparty",
                                 "providerType":"KONTUR",
@@ -116,7 +115,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var resp = await rec.save("json");
 
       * - **breakWithCounterparty**
         -  | Запрос на разрыв связи с контрагентом
@@ -129,7 +128,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"breakWithCounterparty",
                                 "providerType":"KONTUR",
@@ -140,7 +139,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var resp = await rec.save("json");
 
       * - **sendPackageToCounterparty**
         -  | Отправка исходящего пакета провайдеру.
@@ -164,7 +163,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendPackageToCounterparty",
                                 "providerType":"KONTUR",
@@ -185,7 +184,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var resp = await rec.save("json");
 
       * - **signPackage**
         -  | Отправка подписанных документов в пакете провайдеру.
@@ -196,7 +195,8 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"signPackage",
                                 "providerType":"KONTUR",
@@ -205,7 +205,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **pointwiseSync**
         -  | Точечная синхронизация с провайдером по одному пакету.
@@ -217,7 +217,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"pointwiseSync",
                                 "providerType":"KONTUR",
@@ -227,7 +227,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **signDocuments**
         -  | Отправка подписей по документам провайдеру.
@@ -238,7 +238,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"signDocuments",
                                 "providerType":"KONTUR",
@@ -250,7 +250,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **signDocumentsAndBuyerTitles**
         -  | Отправка подписей по формализованным документам провайдеру.
@@ -262,7 +262,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"signDocumentsAndBuyerTitles",
                                 "providerType":"KONTUR",
@@ -278,7 +278,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **sendReconciliationActSigns**
         -  | Отправка подписей для актов сверки.
@@ -291,7 +291,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendReconciliationActSigns",
                                 "providerType":"KONTUR",
@@ -305,7 +305,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **rejectPackage**
         -  | Отправка подписанного отказа в подписи документов в пакете.
@@ -316,7 +316,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"rejectPackage",
                                 "providerType":"KONTUR",
@@ -325,7 +325,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **rejectDocuments**
         -  | Отправка подписанного отказа в подписи документов.
@@ -336,7 +336,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"rejectDocuments",
                                 "providerType":"KONTUR",
@@ -348,7 +348,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **sendReconciliationActRejects**
         -  | Отправка подписанных отказов в подписи для актов сверки.
@@ -359,7 +359,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendReconciliationActRejects",
                                 "providerType":"KONTUR",
@@ -371,7 +371,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **acceptRevocationRequests**
         -  | Отправка подписанных запросов на аннулирование по документам.
@@ -382,7 +382,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"acceptRevocationRequests",
                                 "providerType":"KONTUR",
@@ -394,7 +394,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **declineRevocationRequests**
         -  | Отправка подписанных отказов по запросу на аннулирование по документам.
@@ -405,7 +405,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"declineRevocationRequests",
                                 "providerType":"KONTUR",
@@ -417,7 +417,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **sendRevocationRequests**
         -  | Отправка подписанных запросов на аннулирование по документам.
@@ -428,7 +428,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendRevocationRequests",
                                 "providerType":"KONTUR",
@@ -440,7 +440,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **sendCorrectionRequests**
         -  | Отправка подписанных запросов на корректировку по документам.
@@ -451,7 +451,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendCorrectionRequests",
                                 "providerType":"KONTUR",
@@ -463,7 +463,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **sendBuyerTitles**
         -  | Отправка подписанных титулов покупателя по формализованным документам.
@@ -474,7 +474,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendBuyerTitles",
                                 "providerType":"KONTUR",
@@ -486,7 +486,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                rec.save("json");
 
       * - **generatePrintForm**
         -  | Генерация печатной формы по документу, возвращается контент печатной формы
@@ -497,7 +497,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generatePrintForm",
                                 "providerType":"KONTUR",
@@ -506,7 +506,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generatePrintFormWithDetails**
         -  | Генерация печатной формы по документу, возвращается контент печатной формы + доп. параметры (id документа, статус генерации печатной формы у провайдера, возможные ошибки)
@@ -517,7 +517,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generatePrintFormWithDetails",
                                 "providerType":"KONTUR",
@@ -526,7 +526,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **needUpdateMainContentByPrintForm**
         -  | Требуется ли генерация печатной формы для документа
@@ -537,7 +537,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"needUpdateMainContentByPrintForm",
                                 "providerType":"KONTUR",
@@ -546,7 +546,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateRejectionXml**
         -  | Генерация xml отказа в подписи для документа.
@@ -559,7 +559,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateRejectionXml",
                                 "providerType":"KONTUR",
@@ -570,7 +570,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateRejectionsXml**
         -  | Генерация xml отказа в подписи для документов
@@ -583,7 +583,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateRejectionsXml",
                                 "providerType":"KONTUR",
@@ -597,7 +597,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateRevocationXml**
         -  | Генерация xml запроса на аннулирование для документа
@@ -610,7 +610,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateRevocationXml",
                                 "providerType":"KONTUR",
@@ -621,7 +621,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateRevocationsXml**
         -  | Генерация xml запроса на аннулирование для документов.
@@ -634,7 +634,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateRevocationsXml",
                                 "providerType":"KONTUR",
@@ -648,7 +648,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateInvoiceCorrectionRequestXml**
         -  | Генерация xml корректировки для документа.
@@ -661,7 +661,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateInvoiceCorrectionRequestXml",
                                 "providerType":"KONTUR",
@@ -672,7 +672,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **isNeedSignTitle**
         -  | Проверка на требование подписания титула покупателя у документа
@@ -683,7 +683,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"isNeedSignTitle",
                                 "providerType":"KONTUR",
@@ -692,7 +692,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateBuyerTitle**
         -  | Генерация xml титула покупателя для документа
@@ -706,7 +706,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateBuyerTitle",
                                 "providerType":"KONTUR",
@@ -718,7 +718,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateReceiptXml**
         -  | Генерация xml извещения о получении для документа
@@ -732,7 +732,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateReceiptXml",
                                 "providerType":"KONTUR",
@@ -743,7 +743,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **generateReceiptsXml**
         -  | Генерация xml извещения о получении для документов
@@ -757,7 +757,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"generateReceiptsXml",
                                 "providerType":"KONTUR",
@@ -771,7 +771,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **sendReceiptsXml**
         -  | Отправка подписанного xml извещения о получении для документов.
@@ -782,7 +782,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendReceiptsXml",
                                 "providerType":"KONTUR",
@@ -794,7 +794,7 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
 
       * - **sendReceiptXml**
         -  | Отправка подписанного xml извещения о получении для документа (Оптимизируется в дальнейшем)
@@ -805,7 +805,7 @@ DTO запроса и ответа:
 
             .. code-block::
 
-                var rec = Records.get('edi/edi-request@');
+                var rec = Records.get('edi/edi-action@');
                 rec.att("_self", {
                                 "requestType":"sendReceiptXml",
                                 "providerType":"KONTUR",
@@ -814,4 +814,35 @@ DTO запроса и ответа:
                                 }
                 
                     });
-                var resp = await rec.save("?json");
+                var res = rec.save("json");
+
+      * - **addDocumentsToSystemPackage**
+        -  | Добавление документа в системный пакет edi-package.
+           | В параметры передаются *ref* системного пакета  и список документов для добавления в данный пакет.
+           | Если *ref* пакета не указан, то будет создан новый edi пакет и в него будут добавлены передаваемые документы.
+           | Документы могут передавать как с типом edi-document и его наследники, так и с любым другим, не связаным с edi
+           | Если передается документ не являющийся типом edi-document или его наследником, то для каждого из таких документов создается соответствующий ему документ c типом edi-document.
+           | Edi-document добавляется в пакет и далее может быть отправлен провайдеру.
+           | Edi-document и добавляемый кастомный документ связываются через ассоциацию *ediDoc:systemDocumentLink*
+
+           | Параметры:
+
+              * *packageRef* - recordRef ЭДО пакета в который добавляются документы, может быть null, в таком случае создается новый пакет
+              * *documentRefs* – документы добавляемые в пакет
+
+           | В ответе возвращается *recordRef* пакета
+
+        - 
+
+            .. code-block::
+
+                var rec = Records.get('edi/edi-action@');
+                rec.att("_self", {
+                                "requestType":"addDocumentsToSystemPackage",
+                                "providerType":"KONTUR",
+                                "requestData": {
+                                        "packageRef":"emodel/edi-package@packageId", //id системеного пакета для добавления документов (может быть null, тогда будет создан новый пакет
+                                        "documentRefs":["emodel/doc-type@doc-id"] // список документов для добавления в системный edi пакет            
+                                }    
+                });
+                var resp = await rec.save("json");
