@@ -51,6 +51,42 @@ Async data
 
 Если ссылки на сущности уже есть, то необходимо использовать другой режим. 
 
+Пример использования query:
+
+.. code-block:: javascript
+
+  const contract = Records.get(recordId).getBaseRecord().id
+  
+  if (!contract) {
+    return;
+  }
+  
+  value = {
+      sourceId: 'emodel/payments',
+      query: {
+          "t": "and",
+          "val": [
+              {
+                  "t": "eq",
+                  "att": "_parent",
+                  "val": contract
+              }
+          ]
+      },
+      sortBy: [
+          {
+              "attribute": "paymentDate",
+              "ascending": false
+          },
+          {
+              "attribute": "residue",
+              "ascending": true
+          }
+      ],
+      language: 'predicate'
+  };
+
+
 4. Ajax
 ~~~~~~~~~~~~
 
