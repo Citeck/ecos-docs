@@ -142,7 +142,7 @@
 Часть с атрибутами можно взять из json конфигурации интеграции, поле "attributes"::
 
 	Citeck.Records.query({
-	query: 'tk:type:"workspace://SpacesStore/type-unilever-te-request"',
+	query: 'tk:type:"workspace://SpacesStore/type-te-request"',
 	language: 'fts-alfresco',
 	consistency: 'EVENTUAL',
 	page: {

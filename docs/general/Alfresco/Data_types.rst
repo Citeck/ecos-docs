@@ -24,7 +24,7 @@ ECOS atributes Permissions
   rules:
 
     - roles: [ initiator ]
-      statuses: [ unilever-draft, unilever-reworking ]
+      statuses: [ draft, reworking ]
       attributes:
         - name: 'cm:content'
           permissions: { read: true, edit: true }
