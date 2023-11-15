@@ -60,7 +60,7 @@
                   :width: 500
                   :align: center
 
-      * - Переименовать
+      * - Изменить
         - Переименовать категорию:
 
             .. image:: _static/category_actions_2.png
