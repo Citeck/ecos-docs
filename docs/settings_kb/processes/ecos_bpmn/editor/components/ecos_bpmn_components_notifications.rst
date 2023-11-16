@@ -144,6 +144,13 @@
 .. image:: _static/notifications/bpmn_notification_example_result.png
     :align: center
 
+Если необходимо отправить сообщение о добавлении комментария с вложением (реакция на событие добавления комментария), то нужно добавить в модель уведомления атрибут:
+
+.. code-block:: yaml
+
+       "model": {
+              "_attachments": "$process.event.attachments[]._as.ref._content{bytes, meta:?json}"
+       }
 
 
 .. |br| raw:: html
