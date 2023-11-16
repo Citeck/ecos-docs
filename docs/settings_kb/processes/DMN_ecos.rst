@@ -14,4 +14,5 @@
 
     ecos_dmn/ecos_dmn_overview
     ecos_dmn/ecos_dmn_base_operations
+    ecos_dmn/ecos_dmn_permissions
     ecos_dmn/ecos_dmn_editor
