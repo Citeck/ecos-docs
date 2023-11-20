@@ -4,26 +4,32 @@ Community
 4.8.0
 -----
 
-1. В левое меню в раздел **Задачи** добавлен журнал `Задачи подчиненных <https://citeck-ecos.readthedocs.io/ru/latest/introduction/homepage.html#id6>`_ , в котором отображаются задачи всех подчиненных пользователя.
+1. BPMN редактор. Добавлен раздел :ref:`Администрирование БП<bpmn_admin>` позволяет наблюдать за состоянием опубликованных бизнес-процессов, получать подробную информацию о них и их запущенных экземплярах.
 
-2. Реализован запуск бизнес-процесса `у дочерних типов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#id9>`_.
+2. BPMN редактор. Добавлено :ref:`управление правами<bpmn_permissions>` в BPMN разделе.
 
-3. Для информирования о наличии ошибки в схеме бизнес-процесса реализован `режим отображения ошибок <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/ecos_bpmn_editor.html#bpmn-linter>`_.
+3. В левое меню в раздел **Задачи** добавлен журнал :ref:`Задачи подчиненных<tasks>` , в котором отображаются задачи всех подчиненных пользователя.
 
-4. Добавлена настройка `прав на конкретный тип <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-type-rights>`_
+4. BPMN редактор. Реализован запуск бизнес-процесса :ref:`у дочерних типов<inherit_bp_start>`.
+
+5. BPMN редактор. Для информирования о наличии ошибок в схеме бизнес-процесса реализован :ref:`режим отображения ошибок<bpmn_linter>`.
+
+6. Добавлена настройка :ref:`прав на конкретный тип данных<data_type_rights>`.
+
+7. Доставлен OpenOffice для правильной работы :ref:`предпросмотра документа<widget_doc_preview>`.
 
 4.7.0
 -----
 
-1.	Добавлен `модуль Корреспонденция. Входящие <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/InDoc.html>`_
+1.	Добавлен :ref:`модуль Корреспонденция. Входящие<ecos-indoc>`
 
-2.	Добавлен `модуль Корреспонденция. Исходящие <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/OutDoc.html>`_
+2.	Добавлен :ref:`модуль Корреспонденция. Исходящие<ecos-outdoc>`
 
-3.	Добавлен `модуль ОРД. Внутренние документы <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/ORD.html>`_
+3.	Добавлен :ref:`модуль ОРД. Внутренние документы<ecos-order-ORD>`
 
-4.  Добавлен `модуль Релизы <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/releases.html>`_
+4.  Добавлен :ref:`модуль Релизы<ecos-releases>`
 
-5.  Реализована возможность сохранять бизнес-процесс как `черновик <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#id6>`_
+5.  Реализована возможность сохранять бизнес-процесс как :ref:`черновик <save_bp>`
 
 
 4.6.0
@@ -64,7 +70,7 @@ Community
 
 6.	Реализована `защита от уязвимостей <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/service_desk.html#id17>`_  при добавлении комментариев через email 
 
-7.	Добавлен `модуль Офферы <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/offer.html>`_
+7.	Добавлен :ref:`модуль Офферы<ecos-offer>`
 
 
 4.4.0
@@ -99,9 +105,9 @@ Community
 4.3.0
 ------
 
-1.	Кастомизация страницы авторизации keycloak.
+1.	Кастомизирована страница авторизации keycloak.
 
-2.	Добавлен `модуль CRM <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/crm.html>`_
+2. Добавлен `модуль CRM <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/crm.html>`_
 
 3. Добавлен `модуль «Поручения» <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/tasks.html>`_
 
@@ -118,7 +124,7 @@ Community
 
 1.	Добавлен `модуль Service Desk <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/service_desk.html>`_
 
-2.	BPMN. Добавлена возможность `логирования из ScriptTask <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#logger>`_ :
+2.	BPMN. Добавлена возможность `логирования из ScriptTask <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#logger>`_ 
 
 3.	BPMN. В Уведомлении добавлена возможность указывать `реципиентов (пользователи, группы, точные адреса) <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#id4>`_ напрямую и с использованием expressions.
 
@@ -160,7 +166,7 @@ Community
 
  `Подробно о редакторе <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/BPMN_ecos.html>`_
 
-2.	Осуществленаа миграция бизнес-процессов модулей «Пропуска» и «Совещания» на новый BPMN редактор. Работа в модулях описана в следующтх разделах:
+2.	Осуществленаа миграция бизнес-процессов модулей «Пропуска» и «Совещания» на новый BPMN редактор. Работа в модулях описана в следующих разделах:
 
     - `Пропуска <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/order_pass.html>`_
     - `Совещания <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/meeting.html>`_
