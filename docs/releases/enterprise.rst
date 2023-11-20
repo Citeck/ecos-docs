@@ -4,6 +4,7 @@ Enterprise
 4.8.0
 -------
 
+1. Добавлена поддержка `серверных групповых действий <https://citeck-ecos.readthedocs.io/ru/latest/general/Group_actions.html>`_
 
 
 4.7.0
@@ -19,7 +20,7 @@ Enterprise
 
 1.	Открыты публичные доступы к enterprise модулям. Доступны по `ссылке <https://github.com/orgs/Citeck/repositories>`_ 
 
-2.	Добавлена возможность пользователю делегировать свои полномочия на время отсутствия. Подробнее описано в статье `Делегирование <https://citeck-ecos.readthedocs.io/ru/latest/introduction/delegation.html>`_ 
+2.	Добавлена возможность пользователю делегировать свои полномочия на время отсутствия. Подробнее описано в статье `Делегирование <delegation>`_ 
 
 3.	Настройка выбора положения штрихкода. См. `Пример: Настройка действия Скачать c штрихкод <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/ui_actions.html#c>`_  
 
