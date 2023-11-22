@@ -137,7 +137,6 @@
       * - **Prod**
         -
 
-
 Действие необходимо подтверждать:
 
  .. image:: _static/releases/releases_7.png
