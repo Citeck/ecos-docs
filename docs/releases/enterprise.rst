@@ -4,8 +4,9 @@ Enterprise
 4.8.0
 -------
 
-1. Добавлена поддержка `серверных групповых действий <https://citeck-ecos.readthedocs.io/ru/latest/general/Group_actions.html>`_
+1. Добавлена поддержка `серверных групповых действий <https://citeck-ecos.readthedocs.io/ru/latest/general/Group_actions.html>`_.
 
+2. В модулях **ОРД, Исходящие документы** добавлена возможность `подписания с использованием ЭЦП<esign>`.
 
 4.7.0
 -------
