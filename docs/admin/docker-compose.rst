@@ -161,7 +161,11 @@ MacOS
     ]
     }
 
-Следующим этапом необходимо получить комплект поставки, в который входят `docker-compose.yaml и environments <https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip>`_ и поместить его на сервер.
+Следующим этапом необходимо получить комплект поставки, в который входят docker-compose.yaml и environments и поместить его на сервер.
+
+.. code-block::
+
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
 
 После этого в директории, куда поместили проект, выполнить:
 
@@ -243,9 +247,7 @@ MacOS
 
 .. code-block::
 
-    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
-    unzip master.zip
-    cd ecos-community-demo-master
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
     docker-compose pull
 
 Добавить ecos-community-demo в локальный **hosts** файл:
@@ -303,9 +305,7 @@ MacOS
 
 .. code-block::
 
-    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
-    unzip master.zip
-    cd ecos-community-demo-master
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
     docker-compose pull
 
 Запуск Ecos-Community-Demo:
