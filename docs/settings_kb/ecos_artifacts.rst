@@ -49,6 +49,11 @@ ECOS Артефакты
 В приложении настраивается корневая папка с артефактами и в ней можно создавать подпапки ui/form, model/type и тд.
 По умолчанию корневой папкой с артефактами является ``src/main/resources/eapps/artifacts``
 
+  .. image:: _static/artifacts/folder_example.png
+       :width: 400
+       :align: center
+
+
 Типы артефактов
 ---------------
 
@@ -61,88 +66,88 @@ ECOS Артефакты
         - Примечание
       * - ui/dashboard
         - ecos-uiserv
-        - 
+        - Дашборды
       * - ui/action
         - ecos-uiserv
-        - 
+        - Действия
       * - ui/admin-sections-group
         - ecos-uiserv
-        - 
+        - ???
       * - ui/form
         - ecos-uiserv
-        - 
+        - Формы
       * - ui/i18n
         - ecos-uiserv
-        - 
+        - ???
       * - ui/icon
         - ecos-uiserv
-        - 
+        - ???
       * - ui/journal
         - ecos-uiserv
-        - 
+        - Журналы
       * - ui/menu
         - ecos-uiserv
-        -
+        - 
       * - ui/theme
         - ecos-uiserv
-        - 
+        - Пользовательские темы
       * - ui/board
         - ecos-uiserv
         - Канбан доска
       * - model/num-template
         - ecos-model
-        - 
+        - Шаблоны нумерации
       * - model/permissions
         - ecos-model
-        - 
+        - ???
       * - model/type
         - ecos-model
-        - 
+        - Типы данных
       * - app/ecosapp
         - ecos-apps
-        - 
+        - ???
       * - app/artifact-patch
         - ecos-apps
-        - 
+        - ???
       * - app/dev-module
         - ecos-apps
-        -
+        - ???
       * - app/config
         - ecos-apps
-        - 
+        - ???
       * - integrations/credentials
         - ecos-integrations
-        - 
+        - ???
       * - integrations/datasource
         - ecos-integrations
-        - 
+        - ???
       * - integrations/file-import-config
         - ecos-integrations
-        - 
+        - ???
       * - integrations/recsrc
         - ecos-integrations
-        - 
+        - ???
       * - integrations/sync
         - ecos-integrations
-        - 
+        - ???
       * - process/cmmn
         - ecos-process
-        - 
+        - CMMN процессы
       * - process/bpmn
         - ecos-process
-        - 
+        - BPMN процессы
       * - process/bpmn-section
         - ecos-process
-        -
+        - ???
       * - notification/file
         - ecos-notifications
-        - 
+        - ???
       * - notification/template
         - ecos-notifications
-        - 
+        - Шаблоны уведомлений
       * - notification/sender
         - ecos-notifications
-        -   
+        - ???
 
 Переопределение артефактов
 --------------------------
