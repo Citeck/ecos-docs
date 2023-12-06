@@ -6,7 +6,7 @@
 Раздел содержит описание работы действий в ECOS.
 
 .. contents::
-		:depth: 3
+		:depth: 6
 
 **Действия** - это артефакты ECOS в формате json или yaml с типом ui/action.
 
@@ -664,7 +664,7 @@ id типа: ``mutate``
 Пример: Настройка группового действия **Изменить инициатора**
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-1. В журнале перейти во вкладку «Действия»:
+1. В журнале перейти во вкладку **«Действия»**:
 
 .. image:: _static/ui_actions/Mutate/mutate_1.png
       :width: 600
@@ -929,6 +929,244 @@ RecordsDAO для действия (метод ``getId()`` должен возв
       :align: center
 
 Подробнее о :ref:`EcosContentApi<EcosContentApi>`
+
+Пример: Действие для вывода в консоль информации о данных
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. image:: _static/ui_actions/to_console_1.png
+       :width: 600
+       :align: center
+
+|
+
+.. image:: _static/ui_actions/to_console_2.png
+       :width: 600
+       :align: center
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "print-to-console",
+    "name": {
+      "ru": "Вывести в консоль",
+      "en": "Print to console"
+    },
+    "confirm": {
+      "title": {
+        "ru": "Подтвердите действие",
+        "en": "Confirm the action"
+      },
+      "message": {
+        "ru": "Вывести в консоль",
+        "en": "Print to console"
+      },
+      "formRef": "",
+      "formAttributes": {},
+      "attributesMapping": {}
+    },
+    "type": "mutate",
+    "config": {
+      "record": {
+        "id": "minimal-webapp/print-to-console@",
+        "attributes": {
+          "employee": "${employee}",
+          "position": "${position}",
+          "start_date": "${start_date}"
+        }
+      }
+    },
+    "features": {
+      "execForRecords": false,
+      "execForQuery": false,
+      "execForRecord": true
+    }
+  }
+
+DTO для необходимого набора данных - SalaryDataDto.java 
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.dto;
+
+  import lombok.Data;
+
+  import java.util.Date;
+
+  @Data
+  public class SalaryDataDto {
+      private String employee;
+      private String position;
+      private Date start_date;
+  }
+
+И DAO класс, который будет все это обрабатывать - JavaPrintToConsoleRecordsDao.java
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.service.java.action;
+
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.sample.minimal.dto.SalaryDataDto;
+
+
+  @Component
+  public class JavaPrintToConsoleRecordsDao implements ValueMutateDao<SalaryDataDto> {
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "print-to-console";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull SalaryDataDto salaryDataRecord) {
+          String salaryInfo = String.format("Сотрудник: %s%nДолжность: %s%nДата приема: %s%n",
+                  salaryDataRecord.getEmployee(), salaryDataRecord.getPosition(), salaryDataRecord.getStart_date());
+          System.out.println("###################\n");
+          System.out.println(salaryInfo);
+          System.out.println("###################");
+          return null;
+      }
+
+  }
+
+Обратите внимание, связь между конфигой и обработчиком осуществляется за счет указания ID обработчика в конфиге.
+
+Пример: Групповое действие с выгрузкой данных в файл
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. image:: _static/ui_actions/unload_to_file_1.png
+       :width: 600
+       :align: center
+
+|
+
+.. image:: _static/ui_actions/unload_to_file_2.png
+       :width: 600
+       :align: center
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "unload-salary-data-to-file",
+    "name": {
+      "ru": "Выгрузить в файл",
+      "en": "Unload to file"
+    },
+    "confirm": {
+      "title": {
+        "ru": "Подтвердите действие",
+        "en": "Confirm the action"
+      },
+      "message": {
+        "ru": "Выгрузить в файл",
+        "en": "Unload to file"
+      },
+      "formRef": "",
+      "formAttributes": {},
+      "attributesMapping": {}
+    },
+    "type": "mutate",
+    "config": {
+      "implSourceId": "minimal-webapp/unload-to-file"
+    },
+    "features": {
+      "execForRecords": true,
+      "execForQuery": false,
+      "execForRecord": false
+    }
+  }
+
+DAO класс - JavaUnloadToFileRecordsDao.java
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.service.java.action;
+
+  import lombok.AllArgsConstructor;
+  import lombok.Data;
+  import lombok.NoArgsConstructor;
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.commons.data.DataValue;
+  import ru.citeck.ecos.records3.RecordsService;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.api.content.EcosContentApi;
+  import ru.citeck.ecos.webapp.api.entity.EntityRef;
+
+  import java.util.Date;
+  import java.util.List;
+
+
+  @Component
+  public class JavaUnloadToFileRecordsDao implements ValueMutateDao<DataValue> {
+      private final RecordsService recordsService;
+      private final EcosContentApi contentApi;
+
+      @Autowired
+      public JavaUnloadToFileRecordsDao(RecordsService recordsService, EcosContentApi contentApi) {
+          this.recordsService = recordsService;
+          this.contentApi = contentApi;
+      }
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "unload-to-file";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull DataValue selectedRecords) {
+          List<String> recordRefs = selectedRecords.get("records").asList(String.class);
+          List<SalaryRecordData> salaryRecordsData = recordsService.getAtts(recordRefs, SalaryRecordData.class);
+
+          String salaryDataAsPrettyString = formatSalaryDataList(salaryRecordsData);
+
+          EntityRef tempRef = contentApi.uploadTempFile()
+                  .writeContentJ(writer -> {
+                      writer.writeText(salaryDataAsPrettyString);
+                  });
+
+          String url = recordsService.getAtt(tempRef, "_content.url").asText();
+
+          return DataValue.createObj()
+                  .set("type", "link")
+                  .set("data", DataValue.createObj()
+                          .set("url", url)
+                  );
+      }
+
+      public String formatSalaryDataList(List<SalaryRecordData> salaryRecordsData) {
+          StringBuilder sb = new StringBuilder();
+          for (SalaryRecordData record : salaryRecordsData) {
+              sb.append("\nСотрудник: ").append(record.getEmployee()).append(",\n");
+              sb.append("Должность: ").append(record.getPosition()).append(",\n");
+              sb.append("Дата приема: ").append(record.getStart_date()).append(",\n\n");
+          }
+          sb.append("\n");
+          return sb.toString();
+      }
+
+      @Data
+      @NoArgsConstructor
+      @AllArgsConstructor
+      static class SalaryRecordData {
+          private String employee;
+          private String position;
+          private Date start_date;
+      }
+  }
 
 set-task-assignee
 ~~~~~~~~~~~~~~~~~~~~~~~~
