@@ -111,7 +111,7 @@
     -	Город;
     -	Опыт работы.
 
-Например, https://localhost/v2/journals?journalId=offer-request-journal
+Например, https://host/v2/journals?journalId=offer-request-journal
 
 Карточка 
 ~~~~~~~~~~~
