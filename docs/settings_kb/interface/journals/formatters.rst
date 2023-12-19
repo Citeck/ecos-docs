@@ -126,6 +126,22 @@ ColoredFormatter
       * - textHidden
         - Флаг, который отвечает за перенос строк в ячейке
 
+Добавлена возможность  настройки условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте.
+
+.. image:: _static/formatter/color_formatter_1.png
+       :width: 400
+       :align: center
+
+Вернуть необходимо строку с цветом для css (WebColor или HEX):
+
+.. code-block::
+
+  if (cell.disp.length > 2) return "red"
+  
+  или
+
+  if (cell.disp.length > 2) return "#FF0000" 
+
 DateFormatter
 ~~~~~~~~~~~~~~~~~~
 
