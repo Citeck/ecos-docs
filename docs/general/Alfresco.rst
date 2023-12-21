@@ -9,4 +9,5 @@ Alfresco и информация о миграции
     Alfresco/Alfresco-share_migration
     Alfresco/Nodebrowser
     Alfresco/Data_types
+    Alfresco/ui_actions_alf
     Alfresco/notifications_about_event_alfresco
