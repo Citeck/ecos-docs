@@ -631,14 +631,15 @@ id типа: ``mutate``
 
           .. code-block::
 
-            implSourceId: '...',
             config: {
+              implSourceId: "ARTIFACTID_ПРОЕКТА/id_действия@"
               record: {
                   id: "${recordRef}",
                     attributes: { "key": "value" } 
                   } 
                 }
 
+          | **implSourceId** - возможность получить ссылку для скачивания файла с карточки и определенной записи в журнале
           | **record.id** - необязательный параметр
           | **record.attributes** - изменяемые поля и их значения
 
