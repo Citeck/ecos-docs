@@ -50,15 +50,11 @@
                   :align: center
 
 
-.. important::
-
-    Если форматер не указан в списке ниже вероятно он еще не мигрировал или ассоциируется с другим новым
-
 Типы
 ---------
 
-AssocFormatter
-~~~~~~~~~~~~~~~~~~
+AssocFormatter / Ассоциация
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``assoc``
 
@@ -77,8 +73,8 @@ AssocFormatter
       * - openNewBrowserTab
         - Открыть в новой вкладке браузера
 
-ActionFormatter
-~~~~~~~~~~~~~~~~~~
+ActionFormatter / Действие
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип : ``action``
 
@@ -97,8 +93,8 @@ ActionFormatter
 
 Предполагается в строке журнала наличие **id** или **recordRef** - ref записи, необходимый для выполнения действия
 
-BooleanFormatter
-~~~~~~~~~~~~~~~~~~
+BooleanFormatter / Логическое выражение
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``bool``
 
@@ -106,8 +102,8 @@ BooleanFormatter
 
 Простой форматтер, который отдает «Да» или «Нет» в ячейке
 
-ColoredFormatter
-~~~~~~~~~~~~~~~~~~
+ColoredFormatter / Цвет
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``colored``
 
@@ -142,8 +138,8 @@ ColoredFormatter
 
   if (cell.disp.length > 2) return "#FF0000" 
 
-DateFormatter
-~~~~~~~~~~~~~~~~~~
+DateFormatter / Дата
+~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``date``
 
@@ -158,8 +154,8 @@ DateFormatter
       * - format
         - Временной формат (по умолчанию 'DD.MM.YYYY')
 
-DateTimeFormatter
-~~~~~~~~~~~~~~~~~~
+DateTimeFormatter / Дата и время
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``datetime``
 
@@ -176,9 +172,8 @@ DateTimeFormatter
       * - relative
         - Флаг, который будет осчитывать время которое прошло
 
-
-DefaultFormatter
-~~~~~~~~~~~~~~~~~~
+DefaultFormatter / По умолчанию
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``default``
 
@@ -186,8 +181,35 @@ DefaultFormatter
 
 Всегда отдает строковое значение, которое получили из значения атрибута. Если ячейка имеет булево значение, то отдает "Да" или "Нет"
 
-FileNameFormatter
-~~~~~~~~~~~~~~~~~~
+DurationFormatter / Продолжительность
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Тип: ``duration``  
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Описание
+      * - **showSeconds**
+        - | При применении в журнале отображается запись в формате  1d 2h 30m 2s
+          | Возможные значение - true/false 
+          | По умолчанию секунды отображаются - showSeconds = true
+
+Пример:
+
+.. code-block::
+
+  formatter:
+    type: duration
+    config:
+      showSeconds: false 
+
+FileNameFormatter / Имя файла
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``filename``
 
@@ -202,8 +224,8 @@ FileNameFormatter
     { НАЗВАНИЕ ЯЧЕЙКИ}
   </a>
 
-HtmlFormatter
-~~~~~~~~~~~~~~~~~~
+HtmlFormatter / HTML
+~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``html``
 
@@ -218,8 +240,8 @@ HtmlFormatter
       * - html
         - Строка с html кодом
 
-LinkFormatter
-~~~~~~~~~~~~~~~~~~
+LinkFormatter / Ссылка
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``link``
 
@@ -270,8 +292,8 @@ LinkFormatter
 
 По клику на наименование будет открываться ссылка.
 
-NumberFormatter
-~~~~~~~~~~~~~~~~~~
+NumberFormatter / Число
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``Number``
 
@@ -328,8 +350,8 @@ NumberFormatter
        :align: center
 
 
-ScriptFormatter
-~~~~~~~~~~~~~~~~~~
+ScriptFormatter / Скрипт
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``script``
 
@@ -393,8 +415,8 @@ ScriptFormatter
 
  ! В форматер передается функция **t** - для локализации значений, которая не работает на формах, т.к. у нее свой словарь; внутри компонента формы следует использовать функцию формы ``instance.i18next.t``
 
-WorkflowPriorityFormatter
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+WorkflowPriorityFormatter / Приоритет рабочего процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``workflowPriority``  
 
@@ -409,4 +431,5 @@ WorkflowPriorityFormatter
       * - 
         - 
       * - 
-        - 
+        -
+
