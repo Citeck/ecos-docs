@@ -7,3 +7,4 @@
     functions/esign
     functions/onlyoffice_edit
     functions/barcode
+    functions/work_calendar
