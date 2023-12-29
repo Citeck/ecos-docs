@@ -288,8 +288,8 @@
 
 По процессу идет рассылка о комментариях в 2 случаях:
 
-  1.	Инициатор добавил комментарий -  рассылка 1,2,3 линии.
-  2.	1,2,3 линия добавила комментарий -  рассылка Инициатору.
+  1.	**Инициатор** добавил комментарий -  рассылка 1,2,3 линии.
+  2.	**1,2,3 линия поддержки** добавила комментарий -  рассылка Инициатору.
 
 SLA
 -----
@@ -305,6 +305,49 @@ SLA
   -	время до первой реакции, 
   -	время до окончательного решения. 
 
+Настройка SLA доступна в журнале https://host/v2/journals?journalId=sd-sla-journal
+
+ .. image:: _static/service_desk/sla_settings.png
+       :width: 700
+       :align: center 
+
+Карточка SLA:
+
+ .. image:: _static/service_desk/sla_card.png
+       :width: 600
+       :align: center 
+
+Сроки можно настроить для конкретного клиента.
+
+Учет рабочего расписания
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Порядок расчета SLA можно настроить с учетом рабочего времени технической поддержки индивидуально для каждого заказчика. 
+Например, если ночные/вечерние часы, выходные дни не должны включаться в расчет, или задать конкретное время начала и окончания работы.
+
+Для этого необходимо создать :ref:`рабочее расписание<working-schedule>` - https://host/v2/admin?journalId=type$working-schedule&type=JOURNAL
+
+ .. image:: _static/service_desk/SD_calendar_journal.png
+       :width: 700
+       :align: center 
+
+|
+
+ .. image:: _static/service_desk/SD_calendar.png
+       :width: 600
+       :align: center 
+
+И добавить его в карточку маппинга клиента - https://host/v2/journals?journalId=clients-mapping-journal
+
+ .. image:: _static/service_desk/client_mapping.png
+       :width: 700
+       :align: center 
+
+выбрав созданное расписание в поле **Рабочее расписании**:
+
+ .. image:: _static/service_desk/client_mapping_1.png
+       :width: 600
+       :align: center 
 
 Виджет «SLA»
 ~~~~~~~~~~~~~
@@ -385,7 +428,7 @@ SLA
 или из журнала раздела «Service desk»:
 
  .. image:: _static/service_desk/desk_26.png
-       :width: 600
+       :width: 700
        :align: center 
 
 На экране появляется форма создания Заявки.
