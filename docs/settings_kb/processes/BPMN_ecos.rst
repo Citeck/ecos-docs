@@ -11,6 +11,7 @@
     ecos_bpmn/ecos_bpmn_external_task
     ecos_bpmn/ecos_bpmn_tasks
     ecos_bpmn/ecos_bpmn_adminstration
+    ecos_bpmn/ecos_bpmn_kpi
 
 .. _ecos-bpmn_platform:
 
