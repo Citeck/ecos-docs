@@ -27,7 +27,19 @@
 
 .. code-block::
 
-    {"workdays":["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"],"workingDayEnd":"17:00","workingCalendar":"emodel/working-calendar@RU","workingDayStart":"09:00","workingDayTimeZone":"+03:00"}
+  {
+      "workdays": [
+        "MONDAY",
+        "TUESDAY",
+        "WEDNESDAY",
+        "THURSDAY",
+        "FRIDAY"
+      ],
+      "workingDayEnd": "17:00",
+      "workingCalendar": "emodel/working-calendar@RU",
+      "workingDayStart": "09:00",
+      "workingDayTimeZone": "+03:00"
+    }
 
 Где:
 
@@ -70,7 +82,53 @@
 
 .. code-block::
 
-    TBD
+  [
+      {
+        "date": "2023-01-01",
+        "type": "HOLIDAY",
+        "until": "2023-01-08",
+        "description": "Новогодние"
+      },
+      {
+        "date": "2023-02-23",
+        "type": "HOLIDAY",
+        "description": "День защитника отечества"
+      },
+      {
+        "date": "2023-02-24",
+        "type": "HOLIDAY",
+        "description": "С воскресенья 1 января"
+      },
+      {
+        "date": "2023-03-08",
+        "type": "HOLIDAY",
+        "description": "Восьмое марта"
+      },
+      {
+        "date": "2023-05-01",
+        "type": "HOLIDAY"
+      },
+      {
+        "date": "2023-05-08",
+        "type": "HOLIDAY",
+        "description": "С воскресенья 8 января"
+      },
+      {
+        "date": "2023-05-09",
+        "type": "HOLIDAY",
+        "description": "День Победы"
+      },
+      {
+        "date": "2023-06-12",
+        "type": "HOLIDAY",
+        "description": "День России"
+      },
+      {
+        "date": "2023-11-04",
+        "type": "HOLIDAY",
+        "description": "День народного единства"
+      }
+  ]
 
 Где:
 

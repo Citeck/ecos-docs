@@ -200,6 +200,9 @@ DurationFormatter / Продолжительность
         - | При применении в журнале отображается запись в формате  1d 2h 30m 2s
           | Возможные значение - true/false 
           | По умолчанию секунды отображаются - showSeconds = true
+      * - **maxAsHours**
+        - | При применении в журнале продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m
+          | Возможные значение - true/false 
 
 Пример:
 
@@ -208,7 +211,7 @@ DurationFormatter / Продолжительность
   formatter:
     type: duration
     config:
-      showSeconds: false 
+      maxAsHours: true  
 
 FileNameFormatter / Имя файла
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
