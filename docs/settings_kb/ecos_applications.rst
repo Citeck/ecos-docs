@@ -11,7 +11,7 @@ ECOS Приложения
 
 **Приложение ECOS** (ECOS App) - приложение, которое содержит в себе :ref:`артефакты<ecos_artifacts>` (единицы расширения системы). Примеры артефактов: :guilabel:`Тип`, :guilabel:`Форма`, :guilabel:`Журнал`.
 
-Основная задача Приложений ECOS - переносимость артефактов между стендами и возможность версионирования. 
+Основная задача приложений ECOS - переносимость артефактов между стендами и возможность версионирования. 
 
 **ECOS Application** сам является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.
 
@@ -178,14 +178,14 @@ ECOS Приложения
 
       <modelVersion>4.0.0</modelVersion>
 
-      <groupId>ru.citeck.ecos.eapps.meetings</groupId>
-      <artifactId>ecos-meetings</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <groupId>ru.citeck.ecos.eapps.assignments</groupId>
+      <artifactId>ecos-assignments</artifactId>
+      <version>1.0.0-snapshot</version>
 
       <parent>
           <groupId>ru.citeck.ecos.eapps.project</groupId>
           <artifactId>ecos-apps-simple-parent</artifactId>
-          <version>1.0.2</version>
+          <version>1.0.3</version>
       </parent>
 
       <repositories>
@@ -207,7 +207,7 @@ ECOS Приложения
 
 .. code-block::
 
-  id: ecos-meetings
+  id: ecos-assignments
 
 * **id: String** - идентификатор приложения. По умолчанию равен artifactId проекта
 * **name: MLText** - имя приложения
@@ -268,9 +268,9 @@ ECOS Приложения
 
 .. code-block::
 
-  ecos-meetings-ecos-apps:
-    container_name: ecos-meetings-ecos-apps
-    image: nexus.citeck.ru/ecos-meetings:1.0.0-snapshot
+  ecos-assignments-ecos-apps:
+    container_name: ecos-assignments-ecos-apps
+    image: nexus.citeck.ru/ecos-assignments:1.0.0-snapshot
     environment:
       - ECOS_APPS_TARGET_DIR=/run/ecos-apps
     volumes:
