@@ -1,4 +1,4 @@
-Функциональность ECOS
+Функциональности ECOS
 ======================
 
 .. toctree::
@@ -6,5 +6,6 @@
 
     functions/esign
     functions/onlyoffice_edit
+    functions/actions
     functions/barcode
     functions/work_calendar
