@@ -11,17 +11,18 @@ ECOS Приложения
 
 **Приложение ECOS** (ECOS App) - приложение, которое содержит в себе :ref:`артефакты<ecos_artifacts>` (единицы расширения системы). Примеры артефактов: :guilabel:`Тип`, :guilabel:`Форма`, :guilabel:`Журнал`.
 
+Приложение ECOS представляет собой zip-архив с мета информацией (id, name, dependencies, version) и модулями (form, journal, menu, credentials, datasource, …).
+
 Основная задача приложений ECOS - переносимость артефактов между стендами и возможность версионирования. 
 
 **ECOS Application** сам является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.
-
 
 Работа с приложениями 
 -----------------------
 
 Работа с приложениями осуществляется на странице администратора системы.
 
-``http://host/v2/bpmn-designer?journalId=ecos-apps``
+``http://host/v2/admin?journalId=ecos-apps&type=JOURNAL``
 
 .. image:: _static/apps/apps_page.png
        :width: 600       
