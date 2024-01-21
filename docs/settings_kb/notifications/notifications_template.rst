@@ -247,6 +247,17 @@
         //получение значения конфигурации по ключу и приведение к типу String
         <#assign replyEmail = config.getNotNull("app/service-desk$sd-email-reply").asText()>
 
+Для добавления константы можно использовать в модели шаблона :ref:`контекстный атрибут<context_attributes>` **str**:
+
+.. code-block::
+
+    await Records.get('emodel/meta@').load('$str.CONSTANT', true);
+
+вернется:
+
+.. code-block::
+
+    CONSTANT
 
 3.2 Множественные атрибуты
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -420,5 +431,3 @@
 .. |br| raw:: html
 
      <br>
-
-
