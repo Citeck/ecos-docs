@@ -1,4 +1,4 @@
-.. _Select_orgstruct:
+.. _Select_orgstruct_component:
 
 Select orgstruct
 ================

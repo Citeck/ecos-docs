@@ -1,4 +1,4 @@
-.. _async_data:
+.. _async_data_component:
 
 Async data
 ===========

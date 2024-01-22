@@ -1,4 +1,4 @@
-.. _file:
+.. _file_component:
 
 File
 =====

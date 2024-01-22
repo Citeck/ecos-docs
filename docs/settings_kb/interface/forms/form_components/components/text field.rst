@@ -1,4 +1,4 @@
-.. _text_field_ecos:
+.. _text_field_component:
 
 Text Field
 ===========

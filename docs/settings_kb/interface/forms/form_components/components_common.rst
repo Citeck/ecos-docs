@@ -11,7 +11,7 @@
 .. _Text_Field:
 
 Text Field
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 Однострочное текстовое поле.
 
@@ -21,7 +21,7 @@ Text Field
 
 `См. подробное описание Text Field на Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_ 
 
-:ref:`См. доработки компонента<text_field_ecos>` 
+:ref:`См. доработки компонента<text_field_component>` 
 
 :ref:`См. пример Text Field<sample_text_field_component>` 
 
@@ -36,7 +36,7 @@ Select Journal
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Select Journal<Select_journal>`
+:ref:`См. подробное описание Select Journal<Select_journal_component>`
 
 :ref:`См. пример Select Journal<sample_select_journal_component>` 
 
@@ -51,14 +51,14 @@ Select Orgstruct
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Select Orgstruct<Select_orgstruct>`
+:ref:`См. подробное описание Select Orgstruct<Select_orgstruct_component>`
 
 :ref:`См. пример Select Orgstruct<sample_select_orgstruct_component>` 
 
 .. _Number:
 
 Number
-~~~~~~~~~~~~~~~
+~~~~~~~
 
 Числовое поле. Может принимать в себя как целочисленные значения, так и с плавающей точкой. Это регулируется внутри компонента.
 
@@ -67,7 +67,7 @@ Number
 .. _Date_Time:
 
 Date/Time
-~~~~~~~~~~~~~~~
+~~~~~~~~~~
 
 Поле, отвечающее за отображение даты и времени. Отображение регулируется внутри компонента. 
 
@@ -82,7 +82,7 @@ Date/Time
 .. _Text_Area:
 
 Text Area
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~
 
 Аналог Text Field. Многострочное текстовое поле. 
 
@@ -95,7 +95,7 @@ Text Area
 .. _Checkbox:
 
 Checkbox
-~~~~~~~~~~~~~~~
+~~~~~~~~~
 
 Поле выбора нескольких значений из списка параметров.
 
@@ -108,7 +108,7 @@ Checkbox
 .. _Day:
 
 Day
-~~~~~~~~~~~~~~~
+~~~~
 
 Поле для ввода значений «День», «Месяц» и «Год» с использованием числа или выбора типа поля.
 
@@ -116,8 +116,8 @@ Day
 
 .. _Ecos_Select_:
 
-Ecos Select
-~~~~~~~~~~~~~~~
+ECOS Select
+~~~~~~~~~~~~~
 
 Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
 
@@ -125,14 +125,14 @@ Ecos Select
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Ecos Select<ecos_select>`  
+:ref:`См. подробное описание Ecos Select<ecos_select_component>`  
 
 :ref:`См. пример Ecos Select<sample_ecos_select_component>`
 
 .. _Button:
 
 Button
-~~~~~~~~~~~~~~~
+~~~~~~~~
 
 Добавление кнопок для выполнения различных действий в форме.
 
@@ -171,7 +171,7 @@ Table Form
 
 Компонент позволяет отображать выбранные значения в виде таблицы.
 
-:ref:`См. подробное описание Table Form<table_form>` 
+:ref:`См. подробное описание Table Form<table_form_component>` 
 
 
 Task Outcome
@@ -198,24 +198,24 @@ Import Button
 
 Компонент позволяет добавить на форму настраиваемую кнопку для загрузки файлов.
 
-:ref:`См. подробное описание Import Button<import_button>` 
+:ref:`См. подробное описание Import Button<import_button_component>` 
 
 Email
-~~~~~~~~~~~~~~~
+~~~~~~
 
 Компонент для настройки ввода электронной почты.
 
 `См. подробное описание Email на Form.io <https://help.form.io/userguide/forms/form-components#email>`_ 
 
 URL
-~~~~~~~~~~~~~~~
+~~~~
 
 Компонент имеет настраиваемый параметр проверки, который, если он настроен правильно, может гарантировать, что введенное значение является допустимым URL-адресом.
 
 `См. подробное описание URL на Form.io <https://help.form.io/userguide/forms/form-components#url>`_ 
 
 Phone Number
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 Компонент можно использовать для ввода номеров телефонов в форму.
 
@@ -229,7 +229,7 @@ Cпециальный компонент, выполняющий поиск вв
 `См. подробное описание Address Field на Form.io <https://help.form.io/userguide/forms/form-components#address>`_ 
 
 ML Textarea
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 Многострочное текстовое поле для ввода на русском/анлийском языках. 
 
@@ -241,7 +241,7 @@ ML Textarea
 
 
 HTML Element
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 Компонент может быть добавлен в форму для отображения одного элемента HTML.
 
@@ -254,7 +254,7 @@ HTML Element
 .. _File_:
 
 File
-~~~~~~~~~~~~~~~
+~~~~~
 
 Компонент для загрузки файлов. 
 
@@ -264,7 +264,7 @@ File
 
 `См. подробное описание File на Form.io <https://help.form.io/userguide/forms/premium-components#file>`_ 
 
-:ref:`См. подробное описание File <file>` 
+:ref:`См. подробное описание File <file_component>` 
 
 
 Select Action
@@ -283,7 +283,7 @@ Horizontal Line
 
 Компонент для отображения разделителя блоков.
 
-:ref:`См. подробное описание Horizontal Line<horizontal_line>` 
+:ref:`См. подробное описание Horizontal Line<horizontal_line_component>` 
 
 .. _Columns_:
 
@@ -310,14 +310,14 @@ Columns
 
 `См. подробное описание Columns на Form.io <https://help.form.io/userguide/forms/layout-components#columns>`_ 
 
-:ref:`См. подробное описание Columns<columns>` 
+:ref:`См. подробное описание Columns<columns_component>` 
 
 :ref:`См. пример Columns<sample_columns_component>` 
 
 .. _Panel:
 
 Panel
-~~~~~~~~~~~~~~~
+~~~~~~
 
 Панель, в которую можно поместить свойство. Нужна для зонирования. В неё помещаются близкие по смыслу компоненты и им присваивается заголовок.
 
@@ -327,23 +327,25 @@ Panel
 
 `См. подробное описание Panel на Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_ 
 
+:ref:`См. подробное описание Panel<panel_component>`
+
 :ref:`См. пример Panel<sample_panel_component>` 
 
 .. _Table:
 
 Table
-~~~~~~~~~~~~~~~
+~~~~~~
 
 Компонент позволяет создать таблицу со столбцами и строками.
 
- .. image:: _static/Select_Journal_Component.png
-       :width: 400
+ .. image:: _static/Table_Component.png
+       :width: 500
        :align: center
 
 `См. подробное описание Table на Form.io <https://help.form.io/userguide/forms/layout-components#table>`_ 
 
 Tabs
-~~~~~~~~~~~~~~~
+~~~~~
 
 Компонент твечает за вкладки на форме. Вкладка скрывается, когда на ней все компоненты скрыты, либо компонентов нет совсем.
 
@@ -353,27 +355,27 @@ Tabs
 --------		
 
 Hidden
-~~~~~~~~~~~~~~~
+~~~~~~~
 
 Компонент можно добавить в форму, чтобы создать свойство ресурса, которое можно настроить в форме. Внешнего виджета для скрытых компонентов нет. Они не отображаются в визуализированных формах.
 
 `См. подробное описание Hidden на Form.io <https://help.form.io/userguide/forms/data-components#hidden>`_ 
 
 Async Data
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~
 
 Невидимый компонент для загрузки асинхронных данных.
 
  .. image:: _static/Async_Data_Component.png
-       :width: 400
+       :width: 500
        :align: center
 
-:ref:`м. подробное описание Async Data<async_data>`
+:ref:`См. подробное описание Async Data<async_data_component>`
 
 :ref:`См. пример Async Data<sample_async_data_component>` 
 
 Include Form
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 Компонент для включения одной формы в другие.
 
@@ -388,7 +390,7 @@ Include Form
 При отрисовке формы не в билдере компонент рисовать не нужно (на сервере он будет автоматически заменяться на все компоненты, которые есть в выбранной форме).
 
  .. image:: _static/Include_Form_Component.png
-       :width: 400
+       :width: 500
        :align: center
 
 Container
@@ -437,7 +439,7 @@ Container
 `См. подробное описание Container на Form.io <https://help.form.io/userguide/forms/data-components#container>`_ 
 
 Data Grid
-~~~~~~~~~~~~~~~
+~~~~~~~~~~
 
 Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
 
@@ -448,12 +450,12 @@ Data Grid
 `См. подробное описание Data Grid на Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_ 
 
 Data Grid Assoc
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 Компонент управления отображением данных.
 
 Data Map
-~~~~~~~~~~~~~~~
+~~~~~~~~~
 
 Компонент позволяет пользователям создавать пары ключ/значение.
 
