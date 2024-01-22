@@ -1,4 +1,4 @@
-.. _columns:
+.. _columns_component:
 
 Columns
 =======

@@ -1,4 +1,4 @@
-.. _table_form:
+.. _table_form_component:
 
 Table form
 ===========
