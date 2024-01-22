@@ -1,4 +1,4 @@
-.. _horizontal_line:
+.. _horizontal_line_component:
 
 Horizontal line
 ===============

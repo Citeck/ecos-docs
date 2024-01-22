@@ -1,4 +1,4 @@
-.. _Select_journal:
+.. _Select_journal_component:
 
 Select journal
 ==============
