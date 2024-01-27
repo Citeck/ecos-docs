@@ -615,6 +615,8 @@ id типа: ``cancel-business-process``
 mutate
 ~~~~~~~~~~~~
 
+.. _mutate_action:
+
 id типа: ``mutate``
 
 .. list-table::

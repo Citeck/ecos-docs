@@ -11,3 +11,5 @@ Alfresco и информация о миграции
     Alfresco/Data_types
     Alfresco/ui_actions_alf
     Alfresco/notifications_about_event_alfresco
+    Alfresco/search_journal_config
+    Alfresco/search_nested_attributes
