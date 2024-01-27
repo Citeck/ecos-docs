@@ -11,14 +11,11 @@
     journals/user_description
     journals/configuration
     journals/group_actions
-    journals/search_journal_config
     journals/computed attributes
-    journals/filter_by _text _assoc_column
-    journals/searchAttribute
-    journals/search_nested_attributes
+    journals/journal_settings  
     journals/formatters
     journals/editors
     journals/kanban_board
     journals/document_library
-    journals/expression_attributes
+
 
