@@ -139,9 +139,9 @@
        :width: 500
        :align: center
 
-1. Сохраните
+Сохраните.
 
-Поиск осуществляется только по колонке "Статус": 
+Поиск осуществляется только по колонке **"Статус"**: 
 
 .. image:: _static/journal_settings/04.png
        :width: 700
@@ -189,7 +189,11 @@
 
 .. _column_sum:
 
-Добавлена поддержка группировки по всем записям в журнале через предикат:
+Добавлена поддержка группировки по всем записям в журнале с использованием :ref:`предиката<ecos-predicate_main>`:
+
+.. code-block::
+
+  await Records.query({sourceId: 'emodel/ecos-contract', query: {}, language: 'predicate', groupBy: ['*']}, 'sum(amount)');
 
 .. code-block::
 

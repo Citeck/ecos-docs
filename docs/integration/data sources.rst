@@ -7,7 +7,7 @@
 REST Data Source
 -----------------
 
-Источник данных, который работает через Rest запросы
+Источник данных, который работает через REST запросы
 
  .. image:: _static/data_sources/data_sources_1.png
        :width: 600
