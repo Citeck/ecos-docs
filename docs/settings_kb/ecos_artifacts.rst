@@ -101,7 +101,7 @@ ECOS Артефакты
         - Действия
       * - ui/admin-sections-group
         - ecos-uiserv
-        - ???
+        - Группа разделов администратора
       * - ui/form
         - ecos-uiserv
         - Формы
@@ -110,7 +110,7 @@ ECOS Артефакты
         - ???
       * - ui/icon
         - ecos-uiserv
-        - ???
+        - Набор иконок
       * - ui/journal
         - ecos-uiserv
         - Журналы
@@ -128,37 +128,37 @@ ECOS Артефакты
         - Шаблоны нумерации
       * - model/permissions
         - ecos-model
-        - ???
+        - Права доступа
       * - model/type
         - ecos-model
         - Типы данных
       * - app/ecosapp
         - ecos-apps
-        - ???
+        - Приложение ECOS
       * - app/artifact-patch
         - ecos-apps
-        - ???
+        - Патч артефакта
       * - app/dev-module
         - ecos-apps
-        - ???
+        - Инструменты разработчика
       * - app/config
         - ecos-apps
-        - ???
+        - Конфигурация ECOS
       * - integrations/credentials
         - ecos-integrations
-        - ???
+        - Учетные данные
       * - integrations/datasource
         - ecos-integrations
-        - ???
+        - Источник данных
       * - integrations/file-import-config
         - ecos-integrations
-        - ???
+        - Конфигурация импорта файлов
       * - integrations/recsrc
         - ecos-integrations
-        - ???
+        - Настройки внешней БД
       * - integrations/sync
         - ecos-integrations
-        - ???
+        - Синхронизации
       * - process/cmmn
         - ecos-process
         - CMMN процессы
@@ -167,16 +167,16 @@ ECOS Артефакты
         - BPMN процессы
       * - process/bpmn-section
         - ecos-process
-        - ???
+        - Раздел BPMN
       * - notification/file
         - ecos-notifications
-        - ???
+        - Файлы уведомлений
       * - notification/template
         - ecos-notifications
         - Шаблоны уведомлений
       * - notification/sender
         - ecos-notifications
-        - ???
+        - Отправители
 
 Переопределение артефактов
 --------------------------
@@ -456,7 +456,7 @@ filename - относительный путь до включаемого фа�
 Журнал «Патчи артефактов»
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Расположен «Раздел администратора - Управление системой - Патчи артефактов»:
+Расположен **«Раздел администратора - Управление системой - Патчи артефактов»**:
 
   .. image:: _static/artifacts/artifact_patches_journal.png
        :width: 600
