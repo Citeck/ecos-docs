@@ -47,4 +47,4 @@
        :width: 300
        :align: center
 
-Подробнее см. :ref:`ECOS Приложения<applications>`
+Подробнее см. :ref:`ECOS Приложения<applications>` и :ref:`Быстрая разработка<fast_develop>`
