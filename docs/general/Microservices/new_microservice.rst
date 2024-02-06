@@ -3,7 +3,7 @@
 Создание нового микросервиса ECOS
 ==================================
 
-Результат описанных ниже инструкций можно посмотреть здесь: `ecos-webapp-sample/minimal-sample at main · Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
+Результат описанных ниже инструкций можно посмотреть здесь: `Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
 
 1. Для создания нового микросервиса ECOS нужно создать новый **maven spring-boot проект** и в **pom.xml** добавить в качестве родителя один из следующих pom файлов:
 
