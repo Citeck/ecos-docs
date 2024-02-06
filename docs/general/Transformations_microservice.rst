@@ -1,3 +1,17 @@
+.. _transformation:
+
+Transformations микросервис
+=============================
+
+.. note::
+
+    Доступно только в Enterprise версии.
+
+Опциональный Ecos-микросервис **ecos-transformations** для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора.
+
+.. contents::
+   :depth: 3
+
 Подключение микросервиса
 -------------------------
 
@@ -36,7 +50,7 @@
 
 Для работы с новыми шаблонами документов в Ecos есть журнал **"Шаблоны документов"**, расположеный он в меню **Инструменты** в разделе **Трансформации**: 
 
- .. image:: _static/trans_1.png
+ .. image:: _static/transformation/trans_1.png
        :width: 600
        :align: center
 
@@ -59,7 +73,7 @@
 
   Пример:
 
-   .. image:: _static/trans_2.png
+   .. image:: _static/transformation/trans_2.png
        :width: 200
        :align: center
 
@@ -67,7 +81,7 @@
 
   Пример:
 
-   .. image:: _static/trans_3.png
+   .. image:: _static/transformation/trans_3.png
        :width: 200
        :align: center
 
@@ -173,13 +187,13 @@
 
 Для создания шаблона документа через журнал необходимо зайти в Инструменты в левом меню, затем в справа в разделе **Трансформации** выбрать журнал **Шаблоны документов** и создать новую запись.
 
- .. image:: _static/trans_4.png
+ .. image:: _static/transformation/trans_4.png
        :width: 600
        :align: center
 
 |
 
- .. image:: _static/trans_5.png
+ .. image:: _static/transformation/trans_5.png
        :width: 400
        :align: center
 
@@ -345,7 +359,7 @@
 
 При импорте/экспорте будет осуществляться работа с zip-архивом, который содержит метоинформацию шаблона и непосредственно сам шаблон документа:
 
- .. image:: _static/trans_6.png
+ .. image:: _static/transformation/trans_6.png
        :width: 600
        :align: center
 
@@ -354,7 +368,7 @@
 
 Импорт шаблонов осуществляется через вариант создания шаблона **Импортировать шаблон документа** в журнале **Шаблон документов**:
 
- .. image:: _static/trans_7.png
+ .. image:: _static/transformation/trans_7.png
        :width: 600
        :align: center
 
@@ -373,7 +387,7 @@
 
 Экспорт осуществляется с помощью действия **Скачать** при наведении на необходимый нам шаблон документа.
 
- .. image:: _static/trans_8.png
+ .. image:: _static/transformation/trans_8.png
        :width: 600
        :align: center
 
@@ -388,7 +402,7 @@
   
     2. В конфигурации аспекта выбрать шаблон:
 
-    .. image:: _static/templated_content.png
+    .. image:: _static/transformation/templated_content.png
           :width: 600
           :align: center
     
@@ -407,13 +421,13 @@
 
 Необходимо обратить внимание на описание сервиса, а именно на синтаксис условных операторов:
 
-    .. image:: _static/template_syntax_01.png
+    .. image:: _static/transformation/template_syntax_01.png
           :width: 800
           :align: center
 
 Выражения, которые содержат открывающий и закрывающий теги, необходимо оборачивать в теги группировки ``[#`` ``#]`` :
 
-    .. image:: _static/template_syntax_02.png
+    .. image:: _static/transformation/template_syntax_02.png
           :width: 800
           :align: center
 
@@ -423,13 +437,13 @@
 
 В действии, в **url**, через **"&config=JSON"** необходимо прописать конфиг, предварительно сгенерировав его в **encodeURIComponent** прямо в браузере:
 
-    .. image:: _static/doc_param_1.png
+    .. image:: _static/transformation/doc_param_1.png
           :width: 800
           :align: center
 
 |
 
-    .. image:: _static/doc_param_2.png
+    .. image:: _static/transformation/doc_param_2.png
           :width: 800
           :align: center
 
@@ -437,13 +451,13 @@
 
 Варианты конфигурации редактора описаны в `официальной документации <https://api.onlyoffice.com/editors/config/document/permissions#review>`_
 
-    .. image:: _static/doc_param_3.png
+    .. image:: _static/transformation/doc_param_3.png
           :width: 400
           :align: center
 
 Для создания документа с редактируемыми полями необходимо исходный .docx файл локально открыть в редакторе OnlyOffice и сохранить в формате **.docxf**
 
-    .. image:: _static/doc_param_4.png
+    .. image:: _static/transformation/doc_param_4.png
           :width: 400
           :align: center
 
@@ -451,25 +465,25 @@
 
 При этом нужно убедиться, что **"Заполнитель"** и **"Значение по умолчанию"** пустые  (для избежание проблем вёрстки и изменения цвета текста после генерации по шаблону)
 
-    .. image:: _static/doc_param_5.png
+    .. image:: _static/transformation/doc_param_5.png
           :width: 200
           :align: center
 
 Отметив необходимые поля, необходимо снова сохранить документ в формате **.docx**, открыть в Word,  заполнить необходимыми тегами и сохранить:
 
-    .. image:: _static/doc_param_6.png
+    .. image:: _static/transformation/doc_param_6.png
           :width: 400
           :align: center
 
 Далее опять открыть с помощью OnlyOffice и через вкладку **Защита→ Защитить документ**:
 
-    .. image:: _static/doc_param_7.png
+    .. image:: _static/transformation/doc_param_7.png
           :width: 500
           :align: center
 
 Указать **пароль** и **"Заполнение форм"**:
 
-    .. image:: _static/doc_param_8.png
+    .. image:: _static/transformation/doc_param_8.png
           :width: 300
           :align: center
 
@@ -483,13 +497,13 @@
 
 При генерации документа из шаблона документа, в котором есть условие (т.е. if, else или elseif), возникает ошибка.
 
-    .. image:: _static/error_1.png
+    .. image:: _static/transformation/error_1.png
           :width: 500
           :align: center
 
 так как файл **document.xml** дробит условие на множество тегов:
 
-    .. image:: _static/error_2.png
+    .. image:: _static/transformation/error_2.png
           :width: 500
           :align: center
 
@@ -497,25 +511,25 @@ Work around для решения проблемы:
 
 1. Открыть **docx** как архив. 
 
-    .. image:: _static/error_3.png
+    .. image:: _static/transformation/error_3.png
           :width: 500
           :align: center
 
 2. В папке **word** открыть файл **document.xml**
 
-    .. image:: _static/error_4.png
+    .. image:: _static/transformation/error_4.png
           :width: 500
           :align: center
 
 Найти условие, разбитое на теги:
 
-    .. image:: _static/error_5.png
+    .. image:: _static/transformation/error_5.png
           :width: 700
           :align: center
 
 3. Собрать в один тег:
 
-    .. image:: _static/error_6.png
+    .. image:: _static/transformation/error_6.png
           :width: 700
           :align: center
 

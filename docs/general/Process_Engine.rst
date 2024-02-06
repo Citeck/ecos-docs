@@ -4,7 +4,7 @@
 ==================================================
 
 .. toctree::
-    :maxdepth: 5
+    :maxdepth: 3
 
     process/process_description
     process/process_lifecycle_commands_events
