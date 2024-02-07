@@ -2,7 +2,7 @@ Alfresco и информация о миграции
 =================================
 
 .. toctree::
-    :maxdepth: 4
+    :maxdepth: 3
 
     Alfresco/JavaScript_Records_API
     Alfresco/Alfresco _ECOS

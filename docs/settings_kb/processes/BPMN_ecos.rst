@@ -2,7 +2,7 @@
 =======================================
 
 .. toctree::
-    :maxdepth: 7
+    :maxdepth: 3
 
     ecos_bpmn/ecos_bpmn_overview
     ecos_bpmn/ecos_bpmn_base_operations

@@ -61,7 +61,7 @@
 Рассмотрим каждый виджет :ref:`отдельно<process_information>`
 
 .. toctree::
-    :maxdepth: 6
+    :maxdepth: 3
 
     admin/process_information
     admin/process_instance

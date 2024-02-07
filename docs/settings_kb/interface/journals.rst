@@ -4,7 +4,7 @@
 ========
 
 .. toctree::
-    :maxdepth: 20
+    :maxdepth: 3
 
     journals/journals
     journals/new_journal

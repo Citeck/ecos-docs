@@ -2,7 +2,7 @@
 ====================================
 
 .. toctree::
-    :maxdepth: 6
+    :maxdepth: 3
 
     Microservices/microservice_development
     Microservices/new_microservice
