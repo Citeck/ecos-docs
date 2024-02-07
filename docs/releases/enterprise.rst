@@ -50,7 +50,7 @@ Enterprise
 
 3.	Сервис трансформации. Добавлена `возможность конвертации всех офисных форматов в PDF <https://citeck-ecos.readthedocs.io/ru/latest/general/Preview/Content_transformation.html>`_ 
 
-4.	Сервис трансформации. Генерация `контента из шаблона <https://citeck-ecos.readthedocs.io/ru/latest/general/transformation/transformation_service.html#id11>`_ 
+4.	Сервис трансформации. Генерация `контента из шаблона <https://citeck-ecos.readthedocs.io/ru/latest/general/Transformations_microservice.html#id12>`_ 
 
 4.1.0
 ------
@@ -62,7 +62,7 @@ Enterprise
 
 1.	Виджет «Статистика процесса». Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap). Подробнее описано в статье `Виджет «Статистика процесса» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#widget-process-statistics>`_
 
-2.	Микросервис ecos-transformations. Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора. Подробнее описано в статье `Микросервис Трансформации <https://citeck-ecos.readthedocs.io/ru/latest/general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html>`_
+2.	Микросервис ecos-transformations. Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора. Подробнее описано в статье `Микросервис Трансформации <https://citeck-ecos.readthedocs.io/ru/latest/general/Transformations_microservice.html>`_
 
 3.	Механизм лицензирования. Подробнее о `добавлении лицензии <https://citeck-ecos.readthedocs.io/ru/latest/admin/license.html>`_
 

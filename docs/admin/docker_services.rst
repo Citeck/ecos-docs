@@ -4,7 +4,7 @@
 ===============
 
 .. toctree::
-    :maxdepth: 5
+    :maxdepth: 3
 
     docker_services/onlyoffice-ds-app
     docker_services/ecos-gateway-app
