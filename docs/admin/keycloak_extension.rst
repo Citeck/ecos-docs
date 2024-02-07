@@ -7,6 +7,9 @@ ECOS KeyCloak Extension
 
     Доступно только в Enterprise версии.
 
+.. contents::
+   :depth: 3
+
 Расширения KeyCloak со стороны ECOS: `<https://gitlab.citeck.ru/citeck-projects/ecos-keycloak-ext>`_ 
 
 Возможности расширения
