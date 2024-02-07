@@ -10,7 +10,7 @@
        :align: center
 
 .. toctree::
-    :maxdepth: 7
+    :maxdepth: 3
 
     ecos_dmn/ecos_dmn_overview
     ecos_dmn/ecos_dmn_base_operations
