@@ -1,6 +1,6 @@
 .. _process:
 
-Микросервис для управления CMMN, BPMN процессами
+Микросервис для управления BPMN, CMMN процессами
 ==================================================
 
 .. toctree::
@@ -10,3 +10,4 @@
     process/process_lifecycle_commands_events
     process/process_entities
     process/process_bpmn
+    process/process_excel
