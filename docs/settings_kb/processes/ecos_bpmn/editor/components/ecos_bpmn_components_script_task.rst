@@ -243,6 +243,40 @@ Templated content
 
 В качестве [`template`] можно передать строковое представление EntityRef шаблона или его id.
 
+Events
+~~~~~~
+
+``events`` - сервис для работы с ecos events.
+
+    - ``send(type: String, data: BpmnDataValue)`` - отправляет событие с указанным типом (именем) и данными.
+    
+Например, можно отправить ecos событие через скрипт:
+
+.. code-block:: javascript
+
+    var data = DataValue.of({
+      foo: "bar",
+      number: 123
+    });
+     
+    events.send("test-topic", data);
+     
+И подписаться на него в bpmn event через ручную настройку с "test-topic" или программно через слушателя:
+
+.. code-block:: kotlin
+
+    eventsService.addListener<ObjectData> {
+      withEventType("test-topic")
+      withDataClass(ObjectData::class.java)
+      withTransactional(true)
+      withAttributes(
+        mapOf("foo" to "foo", "itsNum" to "number")
+      )
+      withAction { event ->
+        log.("event received: $event")
+      }
+    }
+
 Logger
 ~~~~~~
 
