@@ -3,12 +3,12 @@
 
 .. note::
 
-    Устаревший инструмент. В Ecos реализована `low-code платформа автоматизации бизнес-процессов BPMN <ecos_bpmn>`_. Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/>`_ и движкt `camunda <https://camunda.com/>`_.
+    Устаревший инструмент. В ECOS реализована `low-code платформа автоматизации бизнес-процессов BPMN <ecos_bpmn>`_. Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/>`_ и движке `camunda <https://camunda.com/>`_.
 
 .. contents:: 
    :depth: 5
 
-Запуск ecos + flowable webapps
+Запуск ECOS + flowable webapps
 -------------------------------
 
 При запуске **ecos-community** через **ecos:run**, веб приложения flowable автоматически деплоятся в tomcat через **profile flowable**. Данный **profile** включен по умолчанию, для отключения можно воспользоваться ключами ``-P !flowable`` или ``-DoffFlowable``
