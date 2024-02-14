@@ -4,7 +4,7 @@ Community
 4.9.0
 -----
 
-1. `Рабочее расписание и производственный календарь <https://citeck-ecos.readthedocs.io/ru/latest/introduction/functions/work_calendar.html>`_ - функциональность для учета нерабочих, праздничных дней сотрудников.
+1. `Рабочее расписание <https://citeck-ecos.readthedocs.io/ru/latest/introduction/functions/work_calendar.html>`_ - функциональность для учета нерабочих дней.
     
 2. В журналах :ref:`ширину колонки<column_width>` таблицы можно изменять и сохранять.
 
