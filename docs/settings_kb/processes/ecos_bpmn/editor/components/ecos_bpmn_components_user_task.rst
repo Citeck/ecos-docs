@@ -16,6 +16,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - Указать **Имя**.
@@ -150,6 +151,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - | Тип уведомления по умолчанию выставлен **Электронная почта**.
