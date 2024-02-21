@@ -137,11 +137,13 @@
 Шаблон уведомления содержит текст:
 
 .. image:: _static/notifications/bpmn_notification_example_text.png
+    :width: 500
     :align: center
 
 В результате получим следующее уведомление:
 
 .. image:: _static/notifications/bpmn_notification_example_result.png
+    :width: 500
     :align: center
 
 Если необходимо отправить сообщение о добавлении комментария с вложением (реакция на событие добавления комментария), то нужно добавить в модель уведомления атрибут:
