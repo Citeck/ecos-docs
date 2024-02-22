@@ -121,7 +121,7 @@
 Функционал Lazy approval для задачи
 ------------------------------------
 
-.. _user_task_LA:
+.. _user_task_lazy_approval:
 
 .. note:: 
 
