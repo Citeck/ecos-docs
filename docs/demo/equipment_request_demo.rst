@@ -40,13 +40,13 @@
 
 Для создания типа данных в меню перейдите в **«Инструменты – Типы данных»**:
 
-  .. image:: _static/equipment_request/type_new_1.png
+  .. image:: _static/equipment_request_demo/type_new_1.png
        :width: 600
        :align: center
 
 нажмите **+ - Создать новый тип**:
 
-  .. image:: _static/equipment_request/type_new_2.png
+  .. image:: _static/equipment_request_demo/type_new_2.png
        :width: 600
        :align: center
 
@@ -78,7 +78,7 @@
 
 Конечная настройка вкладки:
 
-  .. image:: _static/equipment_request/tab_1.png
+  .. image:: _static/equipment_request_demo/tab_1.png
        :width: 600
        :align: center
 
@@ -121,7 +121,7 @@
 
 Конечная настройка вкладки:
 
-  .. image:: _static/equipment_request/tab_2.png
+  .. image:: _static/equipment_request_demo/tab_2.png
        :width: 600
        :align: center
 
@@ -155,7 +155,7 @@
 
 Конечная настройка вкладки:
 
-  .. image:: _static/equipment_request/tab_3.png
+  .. image:: _static/equipment_request_demo/tab_3.png
        :width: 600
        :align: center
 
@@ -188,7 +188,7 @@
 
 Конечная настройка вкладки:
 
-  .. image:: _static/equipment_request/tab_4.png
+  .. image:: _static/equipment_request_demo/tab_4.png
        :width: 600
        :align: center
 
@@ -212,13 +212,13 @@
 
 Нажав на этот пункт меню, откроется новая ECOS вкладка с автоматически сгенерированным журналом. В журнале присутствуют колонки, которые относятся непосредственно к атрибутам, которые были указаны ранее в типе данных:
 
-  .. image:: _static/equipment_request/Journal_form_1.png
+  .. image:: _static/equipment_request_demo/Journal_form_1.png
        :width: 700
        :align: center
 
 Автоматически сгенерированная форма доступна по кнопке **+**:
 
-  .. image:: _static/equipment_request/Journal_form_1.png
+  .. image:: _static/equipment_request_demo/Journal_form_1.png
        :width: 400
        :align: center
 
@@ -229,13 +229,13 @@
 
 Перейдите левом меню в пункт **«Моделирование – Редактор бизнес-процессов»**
 
-  .. image:: _static/equipment_request/bp_new.png
+  .. image:: _static/equipment_request_demo/bp_new.png
        :width: 600
        :align: center
 
 Для создания процесса нажмите **«+ - Создать BPMN модель»**:
 
-  .. image:: _static/equipment_request/bp_new_1.png
+  .. image:: _static/equipment_request_demo/bp_new_1.png
        :width: 600
        :align: center
 
@@ -267,7 +267,7 @@
 
 Конечная настройка бизнес-процесса:
 
-  .. image:: _static/equipment_request/bp_new_2.png
+  .. image:: _static/equipment_request_demo/bp_new_2.png
        :width: 600
        :align: center
 
@@ -281,13 +281,13 @@
 
 Для перехода к редактору разверните раздел **«По умолчанию»**, наведите курсор на созданный процесс и нажмите:
 
-  .. image:: _static/equipment_request/bp_new_3.png
+  .. image:: _static/equipment_request_demo/bp_new_3.png
        :width: 600
        :align: center
 
 Откроется **конструктор бизнес-процесса**:
 
-  .. image:: _static/equipment_request/modeller.png
+  .. image:: _static/equipment_request_demo/modeller.png
        :width: 600
        :align: center
 
@@ -301,7 +301,7 @@
 
 Выделите **Start Event компонент** - рядом с компонентом расположено контекстное меню, с помощью которого в процесс можно добавлять новые элементы, связи между элементами, или редактировать текущий элемент. 
 
-  .. image:: _static/equipment_request/start_event.png
+  .. image:: _static/equipment_request_demo/start_event.png
        :width: 200
        :align: center
 
@@ -309,7 +309,7 @@
 
 Сразу после создания заявки, она должна получить статус **«Заявка создана»** - нажмите на элемент :ref:`Set status<set_status>` в контекстном меню: 
 
-  .. image:: _static/equipment_request/set_status.png
+  .. image:: _static/equipment_request_demo/set_status.png
        :width: 200
        :align: center
 
@@ -317,7 +317,7 @@
 
 Укажите имя **Статус «Заявка создана»**. В поле **«Статус»** выберите вариант **Заявка создана**.
 
-  .. image:: _static/equipment_request/set_status_prop.png
+  .. image:: _static/equipment_request_demo/set_status_prop.png
        :width: 300
        :align: center
 
@@ -325,13 +325,13 @@
 
 Для этого необходимо создать задачу для пользователя - в контекстном меню нажмите на компонент **«Task»**:
 
-  .. image:: _static/equipment_request/User_task_1.png
+  .. image:: _static/equipment_request_demo/User_task_1.png
        :width: 300
        :align: center
 
 Но данный компонент не подходит, и необходимо изменить его тип с «Task» на :ref:`User task<user_task>`. Для этого нажмите на гаечный ключ и выберите вариант **«User task»**:
 
-  .. image:: _static/equipment_request/User_task_2.png
+  .. image:: _static/equipment_request_demo/User_task_2.png
        :width: 400
        :align: center
 
@@ -340,14 +340,14 @@
   -	Имя - **На согласование**, 
   -	Реципиент - **Инициатор**
   
-  .. image:: _static/equipment_request/User_task_prop.png
+  .. image:: _static/equipment_request_demo/User_task_prop.png
        :width: 300
        :align: center
 
 
 Простая форма к задаче может быть создана автоматически - будут отображены только кнопки, настроенные в **Результате задачи**. 
 
-.. image:: _static/equipment_request/form_common.png
+.. image:: _static/equipment_request_demo/form_common.png
       :width: 300
       :align: center
 
@@ -358,7 +358,7 @@
   -	Идентификатор – **ToApprove**
   -	Название – **На согласование**
 
-    .. image:: _static/equipment_request/form_to_approve_5.png
+    .. image:: _static/equipment_request_demo/form_to_approve_5.png
        :width: 400
        :align: center
 
@@ -366,14 +366,14 @@
 
   -	Нажмите в контекстном меню на иконку **Set Status**
 
-  .. image:: _static/equipment_request/set_status_2.png
+  .. image:: _static/equipment_request_demo/set_status_2.png
        :width: 400
        :align: center  
 
   -	Укажите в поле «Имя» **Статус «На согласовании»**. 
   -	В поле «Статус» выберите вариант **На согласовании**.
 
-  .. image:: _static/equipment_request/set_status_2_prop.png
+  .. image:: _static/equipment_request_demo/set_status_2_prop.png
        :width: 400
        :align: center
 
@@ -381,20 +381,20 @@
 
   -	Добавьте при помощи контекстного меню компонент **Task**
 
-  .. image:: _static/equipment_request/User_task_3.png
+  .. image:: _static/equipment_request_demo/User_task_3.png
        :width: 400
        :align: center
 
   -	Измените тип компонента с **Task** на **User Task**:
 
-  .. image:: _static/equipment_request/User_task_4.png
+  .. image:: _static/equipment_request_demo/User_task_4.png
        :width: 500
        :align: center
 
   -	Поле **«Имя»** - **На согласовании согласующим**, 
   -	Поле **«Реципиенты»** - **Согласующий**. 
 
-  .. image:: _static/equipment_request/User_task_2_prop.png
+  .. image:: _static/equipment_request_demo/User_task_2_prop.png
        :width: 300
        :align: center
 
@@ -405,7 +405,7 @@
     -	Идентификатор – **Approve**, Название – **Согласовать**
     - Идентификатор – **Reject**, Название – **Отказать**
 
-    .. image:: _static/equipment_request/request_approve_5.png
+    .. image:: _static/equipment_request_demo/request_approve_5.png
        :width: 400
        :align: center
 
@@ -413,13 +413,13 @@
 
 **Gateway компонент** отвечает за разветвление маршрутов и за слияние потоков. Для его добавления необходимо нажать на соответствующую иконку в контекстном меню или на панели слева (но в этом случае придётся самостоятельно проставлять связи их направления):
 
-    .. image:: _static/equipment_request/gateway_1.png
+    .. image:: _static/equipment_request_demo/gateway_1.png
        :width: 500
        :align: center
 
 |
 
-    .. image:: _static/equipment_request/gateway_2.png
+    .. image:: _static/equipment_request_demo/gateway_2.png
        :width: 500
        :align: center
 
@@ -427,14 +427,14 @@
 
   -	У компонента **Gateway** нажмите в контекстном меню на иконку **Set Status**
 
-  .. image:: _static/equipment_request/set_status_3.png
+  .. image:: _static/equipment_request_demo/set_status_3.png
        :width: 500
        :align: center  
 
   -	Укажите в поле **«Имя»** **Статус «Согласовано»**. 
   -	В поле **«Статус»** выберите вариант **Согласовано**.
 
-  .. image:: _static/equipment_request/set_status_3_prop.png
+  .. image:: _static/equipment_request_demo/set_status_3_prop.png
        :width: 300
        :align: center
 
@@ -442,7 +442,7 @@
   - Укажите в поле **«Имя»** **Статус «Отказано»**. 
   -	В поле **«Статус»** выберите вариант **Отказано**.
 
-  .. image:: _static/equipment_request/set_status_4_prop.png
+  .. image:: _static/equipment_request_demo/set_status_4_prop.png
        :width: 300
        :align: center
 
@@ -452,7 +452,7 @@
 
 Для потока **«Согласовано»**:
 
-  .. image:: _static/equipment_request/Sequence_Flow_1.png
+  .. image:: _static/equipment_request_demo/Sequence_Flow_1.png
        :width: 500
        :align: center
 
@@ -460,13 +460,13 @@
   -	В поле **«Тип условия»** выберите вариант **Исходящий**.
   -	В появившемся поле **«Исходящий»** выбрать вариант **На согласовании согласующим - Согласовать**. Варианты автоматически генерируются из двух частей: первая – название задачи (поле Имя), вторая – название результатов задач.
 
-  .. image:: _static/equipment_request/Sequence_Flow_2.png
+  .. image:: _static/equipment_request_demo/Sequence_Flow_2.png
        :width: 300
        :align: center
 
 Для потока **«Отказано»**:
 
-  .. image:: _static/equipment_request/Sequence_Flow_3.png
+  .. image:: _static/equipment_request_demo/Sequence_Flow_3.png
        :width: 500
        :align: center
 
@@ -474,14 +474,14 @@
   -	В поле **«Тип условия»** выберите вариант **Исходящи**.
   -	В появившемся поле **«Исходящий»** выбрать вариант **На согласовании согласующим - Отказать**. 
 
-  .. image:: _static/equipment_request/Sequence_Flow_4.png
+  .. image:: _static/equipment_request_demo/Sequence_Flow_4.png
        :width: 300
        :align: center
 
 
 9.	Дальше необходимо добавить компонент, который будет означать, что процесс закончен. Для этого в контекстном меню компонентов **«Статус «Согласовано»** и **«Статус «Отказано»** нужно нажать на иконку :ref:`End event<bpmn_events>` компонента.
 
-  .. image:: _static/equipment_request/end_event_1.png
+  .. image:: _static/equipment_request_demo/end_event_1.png
        :width: 500
        :align: center
 
@@ -489,7 +489,7 @@
 
 Теперь процесс можно сохранить и опубликовать, нажав:
 
-  .. image:: _static/equipment_request/publish.png
+  .. image:: _static/equipment_request_demo/publish.png
        :width: 600
        :align: center
 
@@ -502,7 +502,7 @@
 
 Откроется журнал, где нет записей. Для создания нового объекта (заявки на покупку оборудования). нажмите на **«+»**:
 
-  .. image:: _static/equipment_request/new_request_1.png
+  .. image:: _static/equipment_request_demo/new_request_1.png
        :width: 600
        :align: center
 
@@ -510,12 +510,12 @@
 
 -	Название оборудование – **HDMI кабель**
 -	Стоимость - **500**
--	Инициатор – **Инициатор(requestor)**
--	Согласующий – **Согласующий(approver)**
+-	Инициатор – **выбрать себя из оргструктуры**
+-	Согласующий – **выбрать согласующего сотрудника из оргструктуры**
 
 И нажмите **«Сохранить»**.
 
-  .. image:: _static/equipment_request/new_request_2.png
+  .. image:: _static/equipment_request_demo/new_request_2.png
        :width: 500
        :align: center
 
@@ -523,7 +523,7 @@
 
 В виджете **«Мои задачи»** нажмите кнопку **«На согласование».** 
 
-  .. image:: _static/equipment_request/new_request_3.png
+  .. image:: _static/equipment_request_demo/new_request_3.png
        :width: 600
        :align: center
 
@@ -533,19 +533,19 @@
 
 В левом меню перейдите в **Активные задачи**, откройте задачу, нажав:
 
-  .. image:: _static/equipment_request/new_request_4.png
+  .. image:: _static/equipment_request_demo/new_request_4.png
        :width: 800
        :align: center
 
 Для согласования в виджете **«Мои задачи»** нажмите кнопку **«Согласовать»**:
 
-  .. image:: _static/equipment_request/new_request_5.png
+  .. image:: _static/equipment_request_demo/new_request_5.png
        :width: 600
        :align: center
 
 После выполнения задачи заявка перейдёт в статус **«Согласовано»**.
 
-  .. image:: _static/equipment_request/new_request_6.png
+  .. image:: _static/equipment_request_demo/new_request_6.png
        :width: 600
        :align: center
 
