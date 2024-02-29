@@ -7,10 +7,6 @@
 
   В статье указаны произвольные пользователи и группы.
 
-  Добавьте пользователей, как описано в статье :ref:`Создание пользователей для ecos-community-demo<demo_user>`
-
-  Добавьте группы, как описано в :ref:`Создание группы<new_group>`
-
 Создадим простой бизнес-процесс для проверки назначения динамической роли с использованием таблицы DMN при согласовании закупки мебели.
 
 В зависимости от условий закупки прописанных в таблице DMN, роль согласующего будет вычисляться автоматически.
@@ -31,19 +27,19 @@
 
 Для создания таблицы принятия решений перейдите левом меню в пункт **«Моделирование – Методы принятия решения»**:
 
- .. image:: _static/dmn_dynamic_role/01.png
+ .. image:: _static/dmn_dynamic_role_demo/01.png
        :width: 600
        :align: center
 
 Далее создайте DMN модель:
 
- .. image:: _static/dmn_dynamic_role/02.png
+ .. image:: _static/dmn_dynamic_role_demo/02.png
        :width: 600
        :align: center
 
 |
 
- .. image:: _static/dmn_dynamic_role/03.png
+ .. image:: _static/dmn_dynamic_role_demo/03.png
        :width: 500
        :align: center
 
@@ -60,18 +56,21 @@
       * - **2**
         - Имя
         - Согласование заявки мебель
+      * - **3**
+        - Раздел
+        - Тестовые DMN
 
 Нажмите **«Сохранить»**.
 
-Для перехода к редактору разверните раздел **«По умолчанию»**, наведите курсор на созданную модель и нажмите:
+Для перехода к редактору разверните раздел **«Тестовые DMN»**, наведите курсор на созданную модель и нажмите:
 
- .. image:: _static/dmn_dynamic_role/04.png
+ .. image:: _static/dmn_dynamic_role_demo/04.png
        :width: 600
        :align: center
 
 Откроется решение:
 
- .. image:: _static/dmn_dynamic_role/05.png
+ .. image:: _static/dmn_dynamic_role_demo/05.png
        :width: 600
        :align: center
 
@@ -79,7 +78,7 @@
 
 По **ключу модели** будут доступны вычисленные данные в контексте DMN.  
 
- .. image:: _static/dmn_dynamic_role/06.png
+ .. image:: _static/dmn_dynamic_role_demo/06.png
        :width: 300
        :align: center
 
@@ -103,13 +102,13 @@
 
 Для ввода данных в таблицу кликните:
 
- .. image:: _static/dmn_dynamic_role/07.png
+ .. image:: _static/dmn_dynamic_role_demo/07.png
        :width: 200
        :align: center
 
 |
 
- .. image:: _static/dmn_dynamic_role/08.png
+ .. image:: _static/dmn_dynamic_role_demo/08.png
        :width: 500
        :align: center
 
@@ -126,7 +125,7 @@
 
 Для установки наименования входного элемента, дважды кликните поле под **«When»** и введите **«Наименование»**:
 
- .. image:: _static/dmn_dynamic_role/09.png
+ .. image:: _static/dmn_dynamic_role_demo/09.png
        :width: 500
        :align: center
 
@@ -153,7 +152,7 @@
 
 Наименование выходного элемента, дважды кликните поле под **«Then»** и введите **«Согласующий»**:
 
- .. image:: _static/dmn_dynamic_role/10.png
+ .. image:: _static/dmn_dynamic_role_demo/10.png
        :width: 500
        :align: center
 
@@ -177,7 +176,27 @@
 
 Выберем 3 наименования мебели. Укажем для каждого наименования соответствующего согласующего.
 
-Добавьте первое правило, указывающее, что для наименования **«Стол»** — согласующий с системным именем **«entdirgorbunkov»** и группа **«GROUP_it»**.
+.. note:: 
+
+  Системное имя пользователя можно получить в Оргструктуре, открыв профиль пользователя:
+
+    .. image:: _static/dmn_dynamic_role_demo/org_1.png
+       :width: 600
+       :align: center
+
+  Группы:
+
+    .. image:: _static/dmn_dynamic_role_demo/org_2.png
+       :width: 500
+       :align: center  
+
+    |
+
+    .. image:: _static/dmn_dynamic_role_demo/org_3.png
+       :width: 500
+       :align: center
+
+Добавьте первое правило, указывающее, что для наименования **«Стол»** — согласующий с системным именем **«elvira.danilenko»** и группа **«GROUP_company_chief_accountant»**.
 
 .. note:: 
 
@@ -187,16 +206,16 @@
 
     Несколько значений добавляется через запятую без пробелов в одних кавычках.
 
-.. image:: _static/dmn_dynamic_role/11.png
-    :width: 500
+.. image:: _static/dmn_dynamic_role_demo/11.png
+    :width: 600
     :align: center
 
 Нажмите кнопку 88 внизу таблицы или просто нажмите в любом месте последней строки.
 
-Добавьте второе правило, указывающее, что для наименования **«Шкаф»** — согласующий с логином **«entbuhgorbunkov»**.
+Добавьте второе правило, указывающее, что для наименования **«Шкаф»** — согласующий с логином **«elvira.danilenko»**.
 
- .. image:: _static/dmn_dynamic_role/12.png
-       :width: 500
+ .. image:: _static/dmn_dynamic_role_demo/12.png
+       :width: 600
        :align: center
 
 Финальная таблица:
@@ -210,31 +229,31 @@
       * - Наименование
         - Согласующий
       * - "Стол"
-        - "entdirgorbunkov,GROUP_it"
+        - "alexandra.filchenko,GROUP_company_chief_accountant"
       * - "Шкаф"
-        - "entbuhgorbunkov"
+        - "elvira.danilenko"
       * - "Стул"
-        - "accountant"
+        - "alexandra.filchenko"
 
 Решение DMN должно вернуть **String** с именами реципиентов.
 
 Теперь таблицу принятия решения можно сохранить и опубликовать, нажав:
 
- .. image:: _static/dmn_dynamic_role/13.png
+ .. image:: _static/dmn_dynamic_role_demo/13.png
        :width: 600
        :align: center
 
 Тип данных
 -------------
 
-Создаем тип данных. Аналогично как в разделе :ref:`Процесс запроса на закупку оборудования<sample_request>`
+Создаем тип данных. Аналогично как в разделе :ref:`Процесс запроса на закупку оборудования<sample_request_demo>`
 
 Сразу приведем примеры заполненных вкладок:
 
 Вкладка «Основные»
 ~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/14.png
+ .. image:: _static/dmn_dynamic_role_demo/14.png
        :width: 600
        :align: center
 
@@ -262,7 +281,7 @@
 Вкладка «Атрибуты»
 ~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/15.png
+ .. image:: _static/dmn_dynamic_role_demo/15.png
        :width: 600
        :align: center
 
@@ -285,7 +304,7 @@
 Вкладка «Роли»
 ~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/16.png
+ .. image:: _static/dmn_dynamic_role_demo/16.png
        :width: 600
        :align: center
 
@@ -302,7 +321,7 @@
 
 Назначим согласующему динамическую роль.  В форме выберите тип **DMN**, решение – **Decision_furniture**:
 
- .. image:: _static/dmn_dynamic_role/17.png
+ .. image:: _static/dmn_dynamic_role_demo/17.png
        :width: 400
        :align: center
 
@@ -311,7 +330,7 @@
 Вкладка «Статусы»
 ~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/18.png
+ .. image:: _static/dmn_dynamic_role_demo/18.png
        :width: 600
        :align: center
 
@@ -335,11 +354,11 @@
 
 Поскольку из прошлых примеров вы знаете, как создать процесс пошагово, какие элементы могут в нем быть, отобразим процесс и поэлементно его опишем. 
 
-Подробно о :ref:`создании бизнес-процесса <bp_sample>`
+Подробно о :ref:`создании бизнес-процесса <bp_sample_demo>`
 
 Данные для создания процесса:
 
- .. image:: _static/dmn_dynamic_role/19.png
+ .. image:: _static/dmn_dynamic_role_demo/19.png
        :width: 500
        :align: center
 
@@ -357,14 +376,20 @@
       * - **3**
         - Тип данных
         - Заказ мебели
+      * - **3**
+        - Тип данных
+        - Заказ мебели
       * - **4**
+        - Раздел
+        - Тестовые процессы
+      * - **5**
         - Включен
         - True. Отметка об активности процесса.
-      * - **5**
+      * - **6**
         - Автоматический старт процесса. 
         - True, чтобы старт процесса осуществлялся автоматически. Подробно о :ref:`запуске процесса<new_bp_start>`
 
-.. image:: _static/dmn_dynamic_role/20.png
+.. image:: _static/dmn_dynamic_role_demo/20.png
     :width: 500
     :align: center
 
@@ -373,7 +398,7 @@
 1. Установить статус
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/21.png
+ .. image:: _static/dmn_dynamic_role_demo/21.png
        :width: 200
        :align: center
 
@@ -392,7 +417,7 @@
 2. Пользовательская задача
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/22.png
+ .. image:: _static/dmn_dynamic_role_demo/22.png
        :width: 300
        :align: center
 
@@ -410,7 +435,7 @@
       * - **3**
         - **Приоритет**
         - Средний
-      * - **5**
+      * - **4**
         - **Результаты задачи**
         - Средний
 
@@ -425,7 +450,7 @@
 4. Установить статус
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/24.png
+ .. image:: _static/dmn_dynamic_role_demo/24.png
        :width: 200
        :align: center
 
@@ -444,7 +469,7 @@
 5. Установить статус
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/25.png
+ .. image:: _static/dmn_dynamic_role_demo/25.png
        :width: 200
        :align: center
 
@@ -463,7 +488,7 @@
 Поток А
 ~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/26.png
+ .. image:: _static/dmn_dynamic_role_demo/26.png
        :width: 200
        :align: center
 
@@ -485,7 +510,7 @@
 Поток В
 ~~~~~~~~~~~
 
- .. image:: _static/dmn_dynamic_role/27.png
+ .. image:: _static/dmn_dynamic_role_demo/27.png
        :width: 200
        :align: center
 
@@ -509,42 +534,22 @@
 
 Конечное событие (заканчивающее бизнес-процесс).
 
-Добавить журнал в меню
+Журнал и форма
 -----------------------
 
-Добавьте в меню журнал **type$furniture-order**.
+Автоматически сгенерированный журнал будет отражен в отдельном разделе меню **«Мои журналы»**.
 
-Подробно о :ref:`добавлении журнала<journal_to_menu>`
-
-Проверка процесса
+Прохождение процесса
 ---------------------
 
 Перейдите в журнал, создайте новый элемент, заполните карточку, нажмите **«Сохранить»**:
 
- .. image:: _static/dmn_dynamic_role/28.png
+ .. image:: _static/dmn_dynamic_role_demo/28.png
        :width: 500
        :align: center
 
-Статус изменится на **«На согласовании»**. Исполнитель – entDir (аккаунт **entdirgorbunkov**) и ИТ-отдел (группа **it**)
+Статус изменится на **«На согласовании»**. Исполнитель – Александра Фильченко (аккаунт **alexandra.filchenko**) и Главный бухгалтер (группа **company_chief_accountant**)
 
- .. image:: _static/dmn_dynamic_role/29.png
+ .. image:: _static/dmn_dynamic_role_demo/29.png
        :width: 600
        :align: center
-
-Проверка прав через консоль браузера
----------------------------------------
-
-Назначенную роль можно проверить через консоль браузера командой:
-``await Citeck.Records.get('emodel/type-id@local-id').load('_roles.assigneesOf.approver []?str', true)``
-
-где 
-
-``approver`` - id роли из типа данных
-
-``emodel/type-id@local-id`` – можно взять из строки браузера:
-
- .. image:: _static/dmn_dynamic_role/30.png
-       :width: 500
-       :align: center
-
-Система выдаст кому назначена данная задача согласования.
