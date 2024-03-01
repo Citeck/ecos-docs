@@ -177,7 +177,27 @@
 
 Выберем 3 наименования мебели. Укажем для каждого наименования соответствующего согласующего.
 
-Добавьте первое правило, указывающее, что для наименования **«Стол»** — согласующий с системным именем **«entdirgorbunkov»** и группа **«GROUP_it»**.
+.. note:: 
+
+  Системное имя пользователя можно получить в Оргструктуре, открыв профиль пользователя:
+
+    .. image:: _static/dmn_dynamic_role/org_1.png
+       :width: 600
+       :align: center
+
+  Группы:
+
+    .. image:: _static/dmn_dynamic_role/org_2.png
+       :width: 500
+       :align: center  
+
+    |
+
+    .. image:: _static/dmn_dynamic_role/org_3.png
+       :width: 500
+       :align: center
+
+Добавьте первое правило, указывающее, что для наименования **«Стол»** — согласующий с системным именем **«elvira.danilenko»** и группа **«GROUP_company_chief_accountant»**.
 
 .. note:: 
 
@@ -193,7 +213,7 @@
 
 Нажмите кнопку 88 внизу таблицы или просто нажмите в любом месте последней строки.
 
-Добавьте второе правило, указывающее, что для наименования **«Шкаф»** — согласующий с логином **«entbuhgorbunkov»**.
+Добавьте второе правило, указывающее, что для наименования **«Шкаф»** — согласующий с логином **«elvira.danilenko»**.
 
  .. image:: _static/dmn_dynamic_role/12.png
        :width: 500
@@ -210,11 +230,11 @@
       * - Наименование
         - Согласующий
       * - "Стол"
-        - "entdirgorbunkov,GROUP_it"
+        - "alexandra.filchenko,GROUP_company_chief_accountant"
       * - "Шкаф"
-        - "entbuhgorbunkov"
+        - "elvira.danilenko"
       * - "Стул"
-        - "accountant"
+        - "alexandra.filchenko"
 
 Решение DMN должно вернуть **String** с именами реципиентов.
 
@@ -525,7 +545,7 @@
        :width: 500
        :align: center
 
-Статус изменится на **«На согласовании»**. Исполнитель – entDir (аккаунт **entdirgorbunkov**) и ИТ-отдел (группа **it**)
+Статус изменится на **«На согласовании»**. Исполнитель – Александра Фильченко (аккаунт **alexandra.filchenko**) и Главный бухгалтер (группа **company_chief_accountant**)
 
  .. image:: _static/dmn_dynamic_role/29.png
        :width: 600
@@ -535,13 +555,17 @@
 ---------------------------------------
 
 Назначенную роль можно проверить через консоль браузера командой:
-``await Citeck.Records.get('emodel/type-id@local-id').load('_roles.assigneesOf.approver []?str', true)``
+``await Citeck.Records.get('emodel/type-id@local-id').load('_roles.assigneesOf.approver[]?str', true)``
 
 где 
 
 ``approver`` - id роли из типа данных
 
 ``emodel/type-id@local-id`` – можно взять из строки браузера:
+
+ .. image:: _static/dmn_dynamic_role/31.png
+       :width: 600
+       :align: center
 
  .. image:: _static/dmn_dynamic_role/30.png
        :width: 500
