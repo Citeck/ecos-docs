@@ -559,16 +559,17 @@
 
 где 
 
-``approver`` - id роли из типа данных
+  ``approver`` - id роли из типа данных
 
-``emodel/type-id@local-id`` – можно взять из строки браузера:
+  ``emodel/type-id@local-id`` – можно взять из строки браузера:
 
- .. image:: _static/dmn_dynamic_role/31.png
+.. image:: _static/dmn_dynamic_role/31.png
        :width: 600
        :align: center
 
- .. image:: _static/dmn_dynamic_role/30.png
+Система выдаст кому назначена данная задача согласования.
+
+.. image:: _static/dmn_dynamic_role/30.png
        :width: 500
        :align: center
 
-Система выдаст кому назначена данная задача согласования.

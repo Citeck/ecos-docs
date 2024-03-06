@@ -441,6 +441,10 @@ Camel использует доменные языки (Domain Specific Language
 Компоненты
 -------------
 
+**Компоненты** используются для подключения маршрутов к внешним системам и сервисам.
+
+Подробнее - https://camel.apache.org/manual/component.html 
+
 EcosRecordsSync camel component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -455,6 +459,7 @@ EcosRecordsSync camel component
 .. list-table::
       :widths: 5 20
       :header-rows: 1
+      :class: tight-table  
 
       * - Key
         - Value
@@ -492,6 +497,7 @@ EcosRecordsSync camel component
 .. list-table::
       :widths: 10 20
       :header-rows: 1
+      :class: tight-table  
 
       * - Key
         - Value
@@ -512,6 +518,13 @@ EcosRecordsSync camel component
              uri: ecos-records-sync:test-type-mig-to
              parameters:
                sourceId: emodel/test-type-mig-to
+
+Конечные точки
+----------------
+
+**Конечные точки** используются для чтения или записи данных в определенном источнике.
+
+Подробнее - https://camel.apache.org/manual/endpoint.html
 
 FileFromCamelDslEndpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -541,6 +554,301 @@ FileFromCamelDslConsumer вычитывает данные из файла в в
                steps:
                  - to: ecos-records-mutate:?sourceId=emodel/camel-example-employee
 
+EcosRecordsSyncConsumer
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Эндпоинт для последовательной выгрузки любого количества записей из указанного источника данных.
+
+URI
+"""""
+
+**ecos-records-sync-consumer:syncName**
+
+**ecos-records-sync-consumer** - константа
+
+**syncName** - имя синхронизации. Может быть любым и используется для сохранения и доступа к состоянию. Т.е. если поменять syncName, то консьюмер будет работать "с нуля".
+
+Выходные данные:
+""""""""""""""""""""
+
+Тип данных: **List<DataValue>**
+
+Описание: Лист **DataValue** объектов с атрибутами, которые были загружены у записей. Глобальный идентификатор записи в атрибуты не попадает. Если он нужен, то следует его явно прописать в атрибутах:
+
+.. code-block::
+
+attributes:
+  ?id: ?id
+
+Параметры
+""""""""""""""""
+
+.. list-table::
+      :widths: 5 5 5 5 20
+      :header-rows: 1
+      :class: tight-table  
+
+      * - Параметр
+        - Тип
+        - Значение по умолчанию
+        - Обязательность
+        - Описание
+      * - sourceId
+        - String?
+        - null
+        - Нет
+        - | Идентификатор источника данных откуда мы будем загружать записи.
+          | Можно не задавать если указан ecosType.
+          | Примеры: *emodel/source0, emodel/source1*
+      * - ecosType
+        - String?
+        - null
+        - Нет
+        - | Локальный идентификатор типа.
+          | Если не укзан sourceId, то он берется из типа.
+          | Примеры: *contract, attorney*
+      * - predicate
+        - Predicate?
+        - Always True
+        - Нет
+        - | Критерии поиска записей.
+          | Примеры: {"t": "eq", "a": "_type", "v": "emodel/type@case"}
+      * - batchSize
+        - Int
+        - 100
+        - Нет
+        - Размер пачки одновременно обрабатываемых записей
+      * - attributes
+        - Map<String, String>
+        - 
+        - Да
+        - Атрибуты для загрузки у записей
+      * - addAuditAttributes
+        - Boolean
+        - true
+        - Нет
+        - Добавить атрибуты аудита (_created,_creator,_modified,_modifier) в список атрибутов для загрузки
+      * - delay
+        - Long
+        - 500
+        - Нет
+        - Количество миллисекунд между обработкой пачек записей 
+      * - greedy
+        - Boolean
+        - false
+        - Нет
+        - Если true и количество обработанных записей больше нуля, то не ждать delay перед следующей обработкой, а сразу вызвать следующий poll  
+      * - initialDelay
+        - Long
+        - 1000
+        - Нет
+        - Задержка перед первой обработкой записей
+
+.. note::
+
+  Доп. параметры можно посмотреть в исходниках класса org.apache.camel.support.ScheduledPollEndpoint
+
+Пример использования
+"""""""""""""""""""""
+
+.. code-block::
+
+   - route:
+       from:
+         uri: ecos-records-sync-consumer:alf-legalEntity-mgr-from
+         parameters:
+           delay: 30000
+           sourceId: alfresco/
+           predicate:
+             t: eq
+             a: type
+             v: idocs:legalEntity
+           addAuditAttributes: true
+           attributes:
+             ?id: ?id
+             id: ?localId
+             title: cm:title
+             name: cm:name
+         steps:
+           - to: log:ecos-records-sync
+
+Принцип работы
+""""""""""""""""
+
+Раз в **{delay}** миллисекунд идет запрос в источник данных **{sourceId}** который или задан явно или загружается из **{ecosType}**. Из источника данных загружается пачка записей размером <= **{batchSize}**. Загруженная пачка отправляется в обработку на указанные в роуте шаги. 
+
+Обновление стейта происходит только если пачка записей обработана успешно. В случае ошибки стейт остается старым и при следующем срабатывании загрузка продолжится с предыдущего стейта.
+
+Индивидуальная обработка записей
+"""""""""""""""""""""""""""""""""""
+
+Если требуется индивидуальная обработка записей, то можно разделить элементы листа и обрабатывать каждый по отдельности:
+
+.. code-block::
+
+   - route:
+       from:
+         uri: ecos-records-sync-consumer:alf-routeStage-mgr-from
+         parameters:
+           initialDelay: 10000
+           delay: 15000
+           sourceId: alfresco/
+           predicate:
+             t: eq
+             a: type
+             v: idocs:routeStage
+           batchSize: 30
+           addAuditAttributes: true
+           attributes:
+             id: ?localId
+             title: cm:title
+             name: cm:name
+         steps:
+           - split:
+               simple: "${body}"
+               steps:
+                 - to: log:result # в этих шагах каждый элемент будет обработан отдельно
+
+Если требуется как-то индивидуально обработать записи и затем опять собрать их в одну пачку, то можно воспользоваться стратегией агрегации:
+
+.. code-block::
+
+   - beans:
+       - name: customJsonPatch
+         type: ru.citeck.ecos.camel.processor.data.JsonPatchOperationsProcessor
+    
+       - name: collectToListStrategy
+         type: org.apache.camel.processor.aggregate.GroupedBodyAggregationStrategy
+   - route:
+       from:
+         uri: ecos-records-sync-consumer:alf-routeStage-mgr-from
+         parameters:
+           initialDelay: 10000
+           delay: 15000
+           sourceId: alfresco/
+           predicate:
+             t: eq
+             a: type
+             v: idocs:routeStage
+           batchSize: 30
+           addAuditAttributes: true
+           attributes:
+             id: ?localId
+             title: cm:title
+             name: cm:name
+         steps:
+           - split:
+               simple: "${body}"
+               aggregationStrategy: collectToListStrategy # это ключевое отличие
+               steps:
+                 - setHeader:
+                     name: JsonPatchOperations
+                     constant:
+                       - op: set
+                         path: "_parentAtt"
+                         value: templateRouteApprovingStages
+                 - process:
+                     ref: customJsonPatch
+           - to: log:result # после split мы будем обрабатывать лист, который собрался после индивидуальной обработки записей
+
+Стратегии
+""""""""""""""""
+
+Итерация выполняется несколькими стратегиями. При каждом срабатывании poll'а (обработка следующей пачки записей) выполняется запрос следующей пачки записей через одну из описанных ниже стратегий. Используется первый не пустой результат и дальнейший перебор стратегий не выполняется. Каждая стратегия имеет состояние, которое хранит данные для продолжения итерации с последнего обработанного места.
+
+**1. По дате создания**
+
+Перебор идет по атрибуту **_created** от начала эпохи (1970-01-01T00:00:00Z)
+
+**Состояние:**
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table  
+
+      * - Свойство
+        - Тип
+        - По умолчанию
+        - Описание
+      * - totalCount
+        - Long
+        - -1
+        - | Ожидаемое полное количество всех записей для синхронизации. 
+          | Заполняется в начале и не обновляется в ходе итерации
+      * - lastCreated 
+        - Instant
+        - Instant.EPOCH
+        - Дата последней созданной ноды, которую мы обработали
+      * - lastRef
+        - EntityRef
+        - EntityRef.EMPTY
+        - Ссылка на последнюю обработанную запись
+      * - skipCount
+        - Int
+        - 0
+        - | Количество элементов, которые нужно пропустить при следующем запросе. 
+          | Используется для обработки записей, у которых дата создания совпадает. 
+      * - processedCount
+        - Long
+        - 0
+        - Количество обработанных записей
+      * - lastCreatedCounter
+        - Int
+        - 0
+        - | Счетчик записей с одинаковой датой создания. 
+          | Используется чтобы в результирующих данных скорректировать дату создания добавив к ней lastCreatedCounter микросекунд. 
+          | Это нужно чтобы после загрузки этих данных в другую БД сохранился порядок при сортировке по полю _created.
+
+**Особенности стратегии:**
+
+Сохранение порядка - если в выгружаемых данных записи имеют одинаковую дату создания, то первая из них будет иметь оригинальную дату, а все последующие будут иметь дату создания на N микросекунд больше. Количество микросекунд увеличивается с каждой новой записью с одинаковой датой создания.
+
+**2. По дате изменения**
+
+Перебор идет по атрибуту **_modified** от даты начала синхронизации.
+
+**Состояние:**
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table  
+
+      * - Свойство
+        - Тип
+        - По умолчанию
+        - Описание
+      * - lastModified
+        - Instant
+        - Дата начала синхронизации
+        - Дата последней измененной записи, которую мы обработали
+      * - lastRef
+        - EntityRef
+        - EntityRef.EMPTY
+        - Ссылка на последнюю обработанную запись
+      * - skipCount
+        - Int
+        - 0
+        - | Количество элементов, которые нужно пропустить при следующем запросе. 
+          | Используется для обработки записей, у которых дата изменения совпадает. 
+      * - processedCount
+        - Long
+        - 0
+        - Количество обработанных записей
+
+**Особенности стратегии:**
+
+Синхронизация проходит только для тех записей, которые были созданы до даты создания последней синхронизованной записи из первой стратегии.  
+
+
+Процессоры
+----------------
+
+**Процессор** - это обработчик, который обрабатывает сообщение произвольным образом.
+
+Подробнее - https://camel.apache.org/manual/processor.html
+
 CsvToListOfDataProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -557,6 +865,7 @@ CsvToListOfDataProcessor
 .. list-table::
       :widths: 10 20
       :header-rows: 1
+      :class: tight-table  
 
       * - Key
         - Value
@@ -597,6 +906,7 @@ ExcelToListOfDataProcessor
 .. list-table::
       :widths: 10 20
       :header-rows: 1
+      :class: tight-table  
 
       * - Key
         - Value
@@ -631,7 +941,6 @@ ExcelToListOfDataProcessor
                steps:
                  - to: "ecos-records-mutate:?sourceId=emodel/camel-example-employee"
 
-
 AssocRefByAttributeProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -646,6 +955,7 @@ AssocRefByAttributeProcessor
 .. list-table::
       :widths: 10 20
       :header-rows: 1
+      :class: tight-table  
 
       * - Key
         - Value
@@ -684,6 +994,226 @@ AssocRefByAttributeProcessor
                steps:
                  - to: "ecos-records-mutate:?sourceId=emodel/camel-example-employee"
 
+CopyJournalSettingsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Данный процессор преобразует данные о шаблонах журнала, помогая тем самым перекопировать шаблоны от 1 журнала к другому.
+
+Для его использования необходимо добавить его, с соответствующей конфигурацией, в свой конфигурационный **yml** файл:
+
+.. code-block::
+
+   - beans:
+       - name: copyJournalSettings
+         type: ru.citeck.ecos.camel.processor.data.CopyJournalSettingsProcessor
+         properties:
+           journalSettingMappingConfigs:
+             - journalId: test-journal
+               journalOldId: test-old-journal
+               mapping:
+                 attFieldName: attOldFieldName
+             - journalId: signerType
+               journalOldId: old-signerType
+               mapping:
+                 stTitle: old:stType
+                 stDescription: old:stDescription
+
+Где:
+
+- **name** - Имя процессора, которое мы будем использовать в роутах Camel DSL
+- **type** - Класс, на основе которого создается процессор (Неизменяемый параметр)
+- **properties** - Конфигурация нашего класса. Нам необходимо заполнить переменную **journalSettingMappingConfigs**, которая является списком настроек для копирования шаблонов для журналов. Переменные настроек:
+
+     - **journalId** - Id журнала в котором мы хотим создавать шаблоны
+     - **journalOldId** - Id журнала из которого мы будем забирать шаблоны и переносить их в новый журнал
+     - **mapping** - маппинг сопостовления колонок между старым журналом и новым. В качестве ключа указывается Id колонки из журнала в который мигрируем, а в качестве значения - из которого мигрируем
+
+Далее мы просто успользуем данный процессор в своем Caml DSL роуте.
+
+Пример полноценного роута с данным процессором:
+
+.. code-block::
+
+  ---
+  - beans:
+      - name: copyJournalSettings
+        type: ru.citeck.ecos.camel.processor.data.CopyJournalSettingsProcessor
+        properties:
+          journalSettingMappingConfigs:
+            - journalId: test-journal
+              journalOldId: test-old-journal
+              mapping:
+                attFieldName: attOldFieldName
+            - journalId: signerType
+              journalOldId: old-signerType
+              mapping:
+                stTitle: old:stType
+                stDescription: old:stDescription
+  
+  # copy-journal-settings
+  - route:
+      from:
+        uri: ecos-records-sync-consumer:copy-journal-settings
+        parameters:
+          delay: 60000
+          sourceId: uiserv/journal-settings
+          predicate:
+            t: and
+            v:
+              - t: not
+                v:
+                  t: ends
+                  a: id
+                  v: -mgr
+              - t: in
+                a: journalId
+                v:
+                  - old-signerType
+          attributes:
+            id: ?localId
+            name: name?json
+            authority: authority
+            journalId: journalId
+            settings: settings
+        steps:
+          - split:
+              simple: "${body}"
+              steps:
+                - process:
+                    ref: copyJournalSettings
+                - to:
+                    uri: ecos-records-mutate:?sourceId=uiserv/journal-settings
+
+Примечания:
+
+  - В предикате поиска мы указываем 2 предиката: **1-ый** проверяет, что **id**шаблона не заканчивается на *-mgr*, поскольку данный суфикс будут иметь перекопированные шаблоны и их не нужно обрабатывать. **2-ой** указывает список журналов из которых мы хотим брать шаблоны для перекопирования (По идее тут должны быть журналы их конфигурации процессора, которые записаны в параметры journalOldId).
+  - **attributes** остаются без изменения, поскольку данные поля обрабатываются в процессоре и переносятся в новый журнал.
+  - В шаге роута используется **split** чтобы обрабатывать каждый шаблон по отдельности.
+
+
+CreateEcosHistoryDocumentMirrorProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Класс**
+
+ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor
+
+**Вход/Выход**
+
+На вход принимается либо объекты конвертируемые в DataValue, либо список таких объектов.
+
+Если на входе Collection, то на выходе List<DataValue>.
+
+Если на входе DataValue в виде листа, то на выходе новый лист с DataValue объектами после обработки.
+
+Если на входе объект, конвертируемый в DataValue, то на выходе новый DataValue объект после обработки. 
+
+**Описание**
+
+Создает связь между двумя записями **DocumentRef** и **DocumentMirrorRef** в БД ecos-history чтобы при загрузке истории для записи **DocumentMirrorRef** так же подтягивалась история записи **DocumentRef**.
+
+При обработке сами записи истории не меняются и можно безопасно вызывать этот процессор для одной и той же записи многократно.
+
+Процессор используется при миграции сущностей из одного хранилища в другое.
+
+**Свойства**
+
+.. list-table::
+      :widths: 5 5 20
+      :header-rows: 1
+      :class: tight-table  
+
+      * - Name
+        - Тип
+        - Описание
+      * - documentMirrorSourceId
+        - String
+        - см. хидеры → CreateEcosHistoryDocumentMirrorMirrorSourceId
+      * - documentMirrorRefIdPrefix
+        - String
+        - см. хидеры → CreateEcosHistoryDocumentMirrorDocumentMirrorRefIdPrefix
+      * - documentRefIdPrefix
+        - String
+        - см. хидеры → CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix
+
+Хидеры
+
+.. list-table::
+      :widths: 5 5 10 10
+      :header-rows: 1
+      :class: tight-table  
+
+      * - Name
+        - Тип
+        - По умолчанию
+        - Описание
+      * - CreateEcosHistoryDocumentMirrorConfig
+        - Объект:
+
+          .. code-block::
+
+            documentMirrorRefIdPrefix: String = "",
+            documentRefIdPrefix: String = "",
+            documentMirrorSourceId: String = "",
+            documentRef: String = "",
+            documentMirrorRef: String = ""
+
+        - {}
+        - | Общий объект конфигурации для всех настроек, которые описаны ниже. 
+          | Имеет меньший приоритет по сравнению с соответствующими хидерами ниже.
+      * - CreateEcosHistoryDocumentMirrorDocumentRef
+        - String
+        - | Берется атрибут "id" из value и к нему  добавляется префикс, который задан в
+          | documentRefIdPrefix (CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix)
+        - Документ, из которого мы хотим передавать историю 
+      * - CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix
+        - String
+        - ""
+        - Используется для формирования полного рефа в documentRef на базе атрибута "id" в обрабатываемом значении.
+      * - CreateEcosHistoryDocumentMirrorDocumentMirrorRef
+        - String
+        - | Берется атрибут "id" из value и к нему  добавляется префикс, который задан в
+          | documentMirrorRefIdPrefix (CreateEcosHistoryDocumentMirrorDocumentMirrorRefIdPrefix)
+          | Если префикс не задан или атрибут id отсутствует, то берется documentRef и у него меняется sourceId на
+          | documentMirrorSourceId (CreateEcosHistoryDocumentMirrorMirrorSourceId)
+        - Документ, которому мы хотим передавать историю
+      * - CreateEcosHistoryDocumentMirrorDocumentMirrorRefIdPrefix
+        - String
+        - ""
+        - Используется для формирования полного рефа в documentMirrorRef на базе атрибута "id" в обрабатываемом значении.
+      * - CreateEcosHistoryDocumentMirrorMirrorSourceId
+        - String
+        - ""
+        - Используется для формирования полного рефа в documentMirrorRef на базе значения documentRef с заменой sourceId на указанное здесь значение.
+
+**Пример Camel YAML DSL конфига**
+
+.. code-block::
+
+  ---
+  - beans:
+      - name: createHistoryDocumentMirror
+        type: ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor
+  - route:
+      from:
+        uri: ecos-records-sync-consumer:alf-route-template-code
+        parameters
+          sourceId: alfresco/
+          predicate:
+            t: eq
+            a: _type
+            v: route-template-code
+          addAuditAttributes: true
+          attributes:
+            id: ?localId
+        steps:
+          - setHeader:
+              name: CreateEcosHistoryDocumentMirrorConfig
+              constant:
+                documentRefIdPrefix: 'alfresco/@workspace://SpacesStore/'
+                documentMirrorRefIdPrefix: 'emodel/route-template-code@'
+          - process:
+              ref: createHistoryDocumentMirror
 
 Примеры реализации
 -------------------
@@ -691,7 +1221,7 @@ AssocRefByAttributeProcessor
 Пример импорта данных из Excel в ECOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В данном примере будет показан пример роута с использованием следующих camel-компонентов:
+В данном примере будет показан пример роута с использованием следующих camel-элементов:
 
  - FileFromCamelDslEndpoint
 
