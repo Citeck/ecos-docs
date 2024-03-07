@@ -577,8 +577,8 @@ URI
 
 .. code-block::
 
-attributes:
-  ?id: ?id
+  attributes:
+    ?id: ?id
 
 Параметры
 """"""""""""""""
@@ -1136,7 +1136,7 @@ ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor
         - String
         - см. хидеры → CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix
 
-Хидеры
+**Хидеры**
 
 .. list-table::
       :widths: 5 5 10 10
