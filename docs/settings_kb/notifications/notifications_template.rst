@@ -251,7 +251,7 @@
 
 .. code-block::
 
-    await Records.get('emodel/meta@').load('$str.CONSTANT', true);
+   $str.CONSTANT
 
 вернется:
 
