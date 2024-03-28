@@ -131,7 +131,7 @@ Records
 Ecos Config
 ~~~~~~~~~~~
 
-``Config`` - предоставляет доступ к Конфигурации Ecos по ключу в формате ``<область>$<идентификатор>``.
+``Config`` - предоставляет доступ к Конфигурации ECOS по ключу в формате ``<область>$<идентификатор>``.
 
     - ``get(key: String): DataValue`` - получение значения по ключу
     - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
@@ -246,11 +246,11 @@ Templated content
 Events
 ~~~~~~
 
-``events`` - сервис для работы с ecos events.
+``events`` - сервис для работы с ECOS events.
 
     - ``send(type: String, data: BpmnDataValue)`` - отправляет событие с указанным типом (именем) и данными.
     
-Например, можно отправить ecos событие через скрипт:
+Например, можно отправить ECOS событие через скрипт:
 
 .. code-block:: javascript
 
@@ -297,3 +297,17 @@ Logger
 .. |br| raw:: html
 
      <br>   
+
+Примеры
+---------
+
+ .. image:: _static/script_task/sample_01.png
+       :width: 700
+       :align: center
+
+Скрипт, как в атрибут записать человека, который выполнил предыдущую задачу:
+
+.. code-block::
+
+    document.att("manager", "emodel/person@" + lastTaskCompletor);
+    document.save();
