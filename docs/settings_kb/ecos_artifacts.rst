@@ -144,21 +144,24 @@ ECOS Артефакты
       * - app/config
         - ecos-apps
         - Конфигурация ECOS
-      * - integrations/credentials
+      * - integration/credentials
         - ecos-integrations
         - Учетные данные
-      * - integrations/datasource
+      * - integration/datasource
         - ecos-integrations
         - Источник данных
-      * - integrations/file-import-config
+      * - integration/file-import-config
         - ecos-integrations
         - Конфигурация импорта файлов
-      * - integrations/recsrc
+      * - integration/recsrc
         - ecos-integrations
         - Настройки внешней БД
-      * - integrations/sync
+      * - integration/sync
         - ecos-integrations
         - Синхронизации
+      * - integration/camel-dsl
+        - ecos-integrations
+        - Конфигурации Camel DSL
       * - process/cmmn
         - ecos-process
         - CMMN процессы
