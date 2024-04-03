@@ -156,7 +156,7 @@
 
 .. _time-trackable_aspect:
 
-Аспект **"Учет времени"** создан записи о потраченном времени по задаче:
+Аспект **"Учет времени"** создает записи о потраченном времени по задаче:
 
  .. image:: _static/aspects/time_trackable_1.png
        :width: 600
@@ -193,3 +193,80 @@
 
   _parent?str: "emodel/type@document"  //Заявка, с которой мы связываем родителя.
   _parentAtt?str: "time-trackable:timeTracking"  //Атрибут от родителя к дочерней сущности, куда его нужно добавить.
+
+Конфигурация истории
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _history-config_aspect:
+
+Аспект **«Конфигурация истории»** создан для возможности конфигурации записи свойств в историю.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/aspects/history-config_08.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/aspects/history-config_07.png
+                  :width: 600
+                  :align: center
+
+
+Для настройки необходимо добавить этот аспект в тип данных на вкладке **Аспекты**:
+
+ .. image:: _static/aspects/history-config_01.png
+       :width: 600
+       :align: center
+
+По кнопке **Настроить** доступен выбор атрибутов типа данных, информация об изменении которых не будет записываться в **историю**, и отражаться в виджете **«История событий»**, соответственно.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/aspects/history-config_02.png
+                  :width: 400
+                  :align: center
+
+        - |
+
+            .. image:: _static/aspects/history-config_03.png
+                  :width: 400
+                  :align: center
+
+Например, если в карточке изменить информацию о наименовании, категории и стоимости, то в виджете **«История событий»** отразится информация только об измененной стоимости:
+
+ .. image:: _static/aspects/history-config_04.png
+       :width: 600
+       :align: center
+
+Если необходимо исключить из истории другие атрибуты, это можно сделать, указав их в json напрямую. 
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/aspects/history-config_05.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/aspects/history-config_06.png
+                  :width: 600
+                  :align: center
+
+Например, версионирование данных (аспект **«Версионные данные»** "version:version", "version:comment", "version:versions"), наличие документов (аспект **«Имеет документы»**  docs:documents), где:
+
+  * **docs** - префикс аспекта,  
+  * **documents** - название атрибута.
