@@ -743,6 +743,8 @@ Cравнение версий процесса - выберите версии 
 
 У виджета возможны 3 представления:
 
+.. _widget_process_statistics_KPI:
+
 - **Режим KPI:**
 
             .. image:: _static/widgets/Process_statistics_KPI.png
@@ -753,6 +755,8 @@ Cравнение версий процесса - выберите версии 
 
 См. :ref:`подробно о KPI<bpmn_kpi>`
 
+.. _widget_process_statistics_simple:
+
 - **Упрощенный режим:**
 
             .. image:: _static/widgets/Process_statistics_simple.png
@@ -760,6 +764,8 @@ Cравнение версий процесса - выберите версии 
                  :align: center 
 
  Отображается только бизнес-процесс.
+
+.. _widget_process_statistics_extended:
 
 - **Расширенный режим:**
 
