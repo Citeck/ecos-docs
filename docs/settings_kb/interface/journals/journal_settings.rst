@@ -16,7 +16,7 @@
 которое в дальнейшем можно будет использовать для группировки, сортировки, поиска и отображения.
 
 .. image:: _static/journal_settings/expression_attribute.png
-      :width: 400
+      :width: 300
       :align: center
 
 Выражение должно быть записано в круглых скобках. Исключение - если выражение состоит из одной функции, то скобки не требуются.
@@ -157,13 +157,13 @@
 Фильтр **Select Journal**:
 
   .. image:: _static/journal_settings/j_user_29.png
-       :width: 600
+       :width: 700
        :align: center
 
 Для изменения неоходимо в журнале рядом с названием нажать:
 
   .. image:: _static/journal_settings/j_user_25.png
-       :width: 600
+       :width: 700
        :align: center
 
 У необходимой колонки нажать **"Дополнительно"** : 
@@ -181,7 +181,7 @@
 Фильтр **Select Journal** изменен на текстовый:
 
   .. image:: _static/journal_settings/j_user_28.png
-       :width: 600
+       :width: 700
        :align: center
 
 Настройки отображения суммы для колонки
@@ -216,6 +216,6 @@
 В нижней части столбца будет отображаться общая сумма значений столбца:
 
   .. image:: _static/journal_settings/j_user_31.png
-       :width: 600
+       :width: 700
        :align: center
 
