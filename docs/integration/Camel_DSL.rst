@@ -2,7 +2,7 @@
 =======================
 
 .. contents::
-     :depth: 2
+     :depth: 3
 
 **ECOS Camel** - это надстройка над Apache Camel, которая адаптирована для работы с платформой Citeck ECOS.
 
@@ -1219,6 +1219,8 @@ ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor
 
 Примеры реализации
 -------------------
+
+.. _Excel-import:
 
 Пример импорта данных из Excel в ECOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
