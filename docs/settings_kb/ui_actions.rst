@@ -476,6 +476,24 @@ id типа: ``create``
           | **createVariant: Object** - Вариант создания для ситуаций, когда ни один вариант создания из типа не походит и требуется его полностью определить в действии
           | **attributes: Object** - Предопределенные атрибуты для создания новой сущности. Для прокидывания атрибутов с текущей записи (т.е. той, с которой выполняется действие) на форму создания можно использовать вставки вида ``${attribute_name}`` 
           | **options: Object** - Опции формы
+          |
+          | **Пример:**
+          |
+          | Создание сущности с типом emodel/type@request-to-manager и проставлением в атрибут "incident" ссылки на текущий документ
+
+            .. code-block::
+
+                id: request-to-manager
+                name:
+                  en: Request to manager
+                  ru: Запрос руководителю
+                type: create
+                config:
+                  typeRef: emodel/type@request-to-manager
+                  redirectToPage: false
+                  attributes:
+                    incident: "${?id}"
+
 
 save-as-case-template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1338,9 +1356,9 @@ id типа: ``transform``
           |
           | Подробнее о возможных настройках input, transformations и output можно прочитать :ref:`здесь<Content_transformation>`
           | 
-          | Примеры:
+          | **Пример:**
           |
-          | 1. Сконвертировать содержимое в PDF и скачать
+          | 1. Сконвертировать содержимое в PDF и скачать:
 
             .. code-block::
 
