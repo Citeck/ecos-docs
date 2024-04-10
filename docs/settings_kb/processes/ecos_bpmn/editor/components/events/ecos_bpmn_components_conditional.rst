@@ -112,7 +112,7 @@
                 :width: 300
                 :align: center
 
-      * - Тип условия: **Скрипт**
+      * - Тип условия: **Скрипт**. См. подробно о :ref:`скриптах<script_task>`
 
         - 
                .. image:: _static/conditional_event_9.png

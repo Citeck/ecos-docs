@@ -301,13 +301,23 @@ Logger
 Примеры
 ---------
 
- .. image:: _static/script_task/sample_01.png
-       :width: 700
-       :align: center
-
 Скрипт, как в атрибут записать человека, который выполнил предыдущую задачу:
 
 .. code-block::
 
     document.att("manager", "emodel/person@" + lastTaskCompletor);
     document.save();
+
+ .. image:: _static/script_task/sample_01.png
+       :width: 700
+       :align: center
+
+Получить локальную часть глобальной ссылки на сущность
+
+.. code-block::
+
+    document.load("requestCategory?localId") == "community"
+
+- **requestCategory** - ассоциация
+
+- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@admin** локальная часть - это **"admin"**
