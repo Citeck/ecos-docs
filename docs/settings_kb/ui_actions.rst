@@ -1582,6 +1582,7 @@ id типа: ``transform``
 .. list-table::
       :widths: 5 40
       :header-rows: 1
+      :class: tight-table 
 
       * - Параметр
         - Описание
