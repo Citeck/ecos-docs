@@ -1,8 +1,8 @@
 Примеры использования Records API для внешних систем
 ======================================================
 
-.. contents:: Содержание
-   :depth: 4
+.. contents::
+   :depth: 3
 
 API-интерфейс позволяет работать с данными системы ECOS в привычном интерфейсе вашей информационной системы. 
 
@@ -16,6 +16,122 @@ API-интерфейс позволяет работать с данными с�
 .. important::
  
  Для обеспечения корректной отправки http-запросов произведите настройки аутентификации в соответствии со :ref:`статьей <keycloak_postman>`
+
+
+Поиск и скачивание документа
+-----------------------------
+
+.. list-table:: 
+      :widths: 5 40 
+      :class: tight-table
+      
+      * - **URL**
+        - 
+         .. code-block::
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST 
+      * - **Запрос**
+        -   
+           .. code-block::
+
+              {
+                "query": {
+                  "sourceId": "emodel/aro-internal-type",
+                  "query": {
+                    "att": "_status",
+                    "t": "eq",
+                    "val": "new"
+                  },
+                  "language": "predicate"
+                },
+                "attributes": [
+                  "_content.url"
+                ]
+              }
+
+
+      * - **Ответ**
+        -  
+           .. code-block::
+
+              {
+                "records": [
+                  {
+                    "id": "emodel/aro-internal-type@86edb336-7816-41fa-9809-680a077e0b5e",
+                    "attributes": {
+                      "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%4086edb336-7816-41fa-9809-680a077e0b5e&att=content"
+                    }
+                  },
+                  {
+                    "id": "emodel/aro-internal-type@dde85aac-e875-471c-a44d-a4135fc7c56a",
+                    "attributes": {
+                      "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40dde85aac-e875-471c-a44d-a4135fc7c56a&att=content"
+                    }
+                  }
+                ],
+                "errors": [],
+                "hasMore": false,
+                "totalCount": 2
+              }
+
+Далее сделать GET запрос для скачивания контента:
+
+.. code-block::
+
+    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40dde85aac-e875-471c-a44d-a4135fc7c56a&att=content
+
+Скачивание документа
+---------------------
+
+.. list-table:: 
+      :widths: 5 40 
+      :class: tight-table
+      
+      * - **URL**
+        - 
+         .. code-block::
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST 
+      * - **Запрос**
+        -   
+           .. code-block::
+
+              {
+                "records": [
+                  "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8"
+                ],
+                "attributes": [
+                  "_content.url"
+                ]
+              }
+
+      * - **Ответ**
+        -  
+           .. code-block::
+
+              {
+                  "records": [
+                      {
+                          "id": "emodel/aro-internal-type@e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8",
+                          "attributes": {
+                              "_content.url": "/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content"
+                          }
+                      }
+                  ],
+                  "errors": []
+              }   
+
+Далее сделать GET запрос для скачивания контента:
+
+.. code-block::
+
+    GET {{host}}/gateway/emodel/api/ecos/webapp/content?ref=aro-internal-type%40e3b81a2b-cdc9-42bc-abbc-a6a564aedbb8&att=content
 
 Управление маршрутами
 ---------------------
@@ -43,14 +159,14 @@ API-интерфейс позволяет работать с данными с�
                 "sourceId":"alfresco/",
                 "query":{
                     "att":"_type",
-                    "val":"emodel/type@sampleedidl-routeTemplateItem",
+                    "val":"emodel/type@testdl-routeTemplateItem",
                     "t":"eq"
                     },
                     "language":"predicate",
                     "page":{"skipCount":0,"maxItems":10,"page":1},
                     "consistency":"EVENTUAL",
                     "sortBy":[{"attribute":"cm:created","ascending":false}]},
-                    "attributes":["sampleedidl:rtCode?disp"]
+                    "attributes":["testdl:rtCode?disp"]
             }
 
       * - **Ответ**
@@ -62,7 +178,7 @@ API-интерфейс позволяет работать с данными с�
                     {
                         "id": "alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa",
                         "attributes": {
-                            "sampleedidl:rtCode?disp": "1"
+                            "testdl:rtCode?disp": "1"
                         }
                     }
                 ],
@@ -111,7 +227,6 @@ API-интерфейс позволяет работать с данными с�
                 }
             ]
 
-
 Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -134,9 +249,9 @@ API-интерфейс позволяет работать с данными с�
                 {
                     "records": [
                         {
-                            "id":"alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa", -- ID маршрута
+                            "id":"alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa", // ID маршрута
                             "attributes":{
-                                "sampleedidl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", - этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
+                                "testdl:templateRouteSignerAssoc?str":"workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea", // этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
                                 "_state?str":"submitted"
                                          }
                         }
@@ -446,3 +561,70 @@ API-интерфейс позволяет работать с данными с�
           | •	TRANSACTIONAL
           | •	DEFAULT
           | •	TRANSACTIONAL_IF_POSSIBLE
+
+Внесение изменений в запись
+-----------------------------
+
+.. code-block::
+
+  {
+    "records": [
+      {
+        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", //id workspace, в который данные необходимо добавить
+        "attributes": {
+          "testpkg: poAssoc?assoc": [ 
+            "dict@testpkg:po-alias-4" // alias должен быть уникальным в пределах запроса, можно задать константой
+          ]
+        }
+      },	
+      {
+        "id": "dict@testpkg: po",
+        "attributes": {
+          "_alias?str": "dict@testpkg:po-alias-4",
+          "testpkg:poValue?str": "1234567890",
+          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+          "_state?str": "submitted",
+          "_formInfo?json": {
+            "submitName": {
+              "en": "Cохранить"
+            }
+            "formId": "testpkg-po-form"		
+          }
+        }
+      }
+    ]
+  }
+
+Добавление данных
+------------------
+
+.. code-block::
+
+  {
+    "records": [
+      {
+        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", 
+        "attributes": {
+          "att_add_testpkg: poAssoc?assoc": [
+            "dict@testpkg:po-alias-4"
+          ]
+        }
+      },	
+      {
+        "id": "dict@testpkg: po",
+        "attributes": {
+          "_alias?str": "dict@testpkg:po-alias-4",
+          "testpkg:poValue?str": "1234567890",
+          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+          "_state?str": "submitted",
+          "_formInfo?json": {
+            "submitName": {
+              "en": "Cохранить"
+            }
+            "formId": "testpkg-po-form"		
+          }
+        }
+      }
+    ]
+  }
+

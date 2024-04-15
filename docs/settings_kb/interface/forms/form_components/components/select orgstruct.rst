@@ -1,4 +1,4 @@
-.. _Select_orgstruct:
+.. _Select_orgstruct_component:
 
 Select orgstruct
 ================
@@ -44,6 +44,10 @@ Select orgstruct
 Настройка полей для поиска пользователя
 -----------------------------------------
 
+ .. image:: _static/select_orgstruct/select_orgstruct_4.png
+       :width: 500
+       :align: center
+
 .. note::
 
     Пользовательские значения по умолчанию:
@@ -51,7 +55,7 @@ Select orgstruct
 
 По-умолчанию поиск пользователей осуществляется по трём полям: **cm:userName, cm:firstName и cm:lastName**. Есть два варианта расширить список полей для поиска пользователей:
 
-* локальная настройка **Поиск пользователя: дополнительное поле/User search: extra fields** на вкладке :guilabel:`Кастомные`. Настройка доступна только в случае, если в поле **Allowed authority type** содержится вариант **USER**.
+* локальная настройка **Поиск пользователя: дополнительное поле/User search: extra fields** на вкладке :guilabel:`Кастомные`. Настройка доступна только в случае, если в поле **Разрешенный подтип группы/Allowed authority type** содержится вариант **USER**.
   
 * глобальная настройка ``uiserv/config@orgstruct-search-user-extra-fields``
   
@@ -87,13 +91,31 @@ Select orgstruct
         "value": true
     }
 
-.. code-block::
 
 Прочее
 --------
 
- .. image:: _static/select_orgstruct/select_orgstruct_3.png
+Текущий пользователь
+~~~~~~~~~~~~~~~~~~~~~
+
+ .. image:: _static/select_orgstruct/select_orgstruct_5.png
        :width: 500
        :align: center
 
-**Current user by default** - в случае, если флажок отмечен, по умолчанию будет установлено значение с **id** текущего пользователя. Работает только для форм в режиме создания записи ('CREATE').
+На вкладке :guilabel:`Кастомные` **Текущий пользователь по умолчанию/Current user by default** - в случае, если флажок отмечен, по умолчанию будет установлено значение **id** текущего пользователя. Работает только для форм в режиме создания записи ('CREATE').
+
+На вкладке :guilabel:`Данные` в разделе **Пользовательские значения по умолчанию**:
+
+ .. image:: _static/select_orgstruct/select_orgstruct_6.png
+       :width: 500
+       :align: center
+
+указать:
+
+.. code-block::
+
+    Citeck.constants.USERNAME
+
+    или
+
+    await window.Formio.currentUser()

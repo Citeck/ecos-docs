@@ -22,4 +22,4 @@
     },
   }
 
-из полученных id формируется url ${server}/v2/dashboard?activeLayoutId= ``${activeTabId}`` &recordRef= ``${taskUuid}`` , котрый передается в WebView
+из полученных id формируется url ${server}/v2/dashboard?activeLayoutId= ``${activeTabId}`` &recordRef= ``${taskUuid}`` , который передается в WebView

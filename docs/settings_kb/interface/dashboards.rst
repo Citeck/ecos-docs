@@ -6,7 +6,7 @@
 .. contents::
 		:depth: 4
 
-Для отображения домашней страницы пользователя или информации по кейсу, или информации по сайту в ECOS предусмотрены дашборды.
+Для отображения домашней страницы пользователя или информации по кейсу в ECOS предусмотрены дашборды.
 
 Дашборд позволяет добавлять и убирать виджеты, конфигурировать каждый виджет индивидуально. См. отдельную статью :ref:`виджеты<widgets>`
 
@@ -16,12 +16,13 @@
 
 Виды дашбордов
 ---------------
-На момент написания статьи существует 3 вида дашборда:
+На момент написания статьи существует 4 вида дашборда:
 
 .. list-table:: 
       :widths: 5 40
       :header-rows: 1
-
+      :class: tight-table 
+      
       * - Тип/Ключ
         - Описание
       * - **Case-details**
@@ -30,20 +31,28 @@
           | Формирование ключа построено по следующему правилу:
           | **type_uuid/kind_** 
           | **type_uuid**
-          | **alf_alfresco_type**	
-          | То есть для договоров (contracts:agreement) это будет:  
+          | То есть для договоров это будет:  
           | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**	
           | 2. **contracts-cat-doctype-contract**	
-          | 3. **alf_contracts:agreement**  
           | Порядок - от более приоритетного к менее приоритетному	
-      * - **Site-dashboard**
-        - | Страница раздела, которая позволяет отображать общие данные по разделу. Например - профиль пользователя.
+          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
+      * - **Site-details**
+        - | Страница раздела, которая позволяет отображать общие данные по разделу.
           | Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
           | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**. 
       * - **User-dashboard**
         - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
           | Например: ``localhost/v2/dashboard`` 	
-          | Ключ dashboard'а всегда DEFAULT если явно не задано обратного (возможно указание dashboardKey в URL) 
+          | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL) 
+      * - **profile-details**
+        - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления<control_panel>`)
+          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
+
+В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры)  используется параметр activeTab, 
+
+например, https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@admin
+
+``activeTab=N`` - активная вкладка дашборда. Вкладки нумеруются с 0, где 0 - первая вкладка.
 
 Алгоритм поиска dashboard следующий:
 
@@ -63,8 +72,29 @@
 
 .. _dashboard_config:
 
+Настройка прав на редактирование
+--------------------------------
+
+В системе для пользователей можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**). 
+
+То есть у пользователя могут быть права на настройку дашборда, но запрещена настройа виджетов. 
+
+Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS**:
+
+ .. image:: _static/dashboards/dashboards_widgets_settings.png
+       :width: 700
+       :align: center
+
+Включение настройки:
+
+ .. image:: _static/dashboards/dashboards_widgets_settings_1.png
+       :width: 400
+       :align: center
+
 Конфигурация дашборда
 ------------------------
+
+.. _dashboard_settings:
 
 При открытии впервые карточки кейса, профиля пользователя или домашней страницы будет показан дашборд по умолчанию для соответствующего типа.
 
@@ -103,6 +133,9 @@
 Отдельный дашборд может быть настроен для определенного документа (если на примере выбрать тип «Договор№512», то при открытии карточки данного договора будет отображаться дашборд, сконфигурированный именно для данного документа).
 
 При выставленном чекбоксе **«Применить для всех пользователей»** настроенный дашборд будет применен для всех пользователей, состоящих в первой назначенной группе по организационной структуре, открывших указанный тип данных.
+
+
+.. _dashboard_view:
 
 «Представление»
 """"""""""""""""""
@@ -151,214 +184,26 @@
   Для мобильной версии отображаются только те виджеты, которые уже были настроены для десктопной версии и несут в себе те же настройки:
    
  .. image:: _static/dashboards/dashboards_7.png
-       :width: 400
+       :width: 500
        :align: center
 
 
 «Виджеты»
-""""""""""""""""""
+"""""""""
 
 Созданные колонки можно заполнить доступными виджетами – перетащите виджет в необходимую колонку:
 
  .. image:: _static/dashboards/dashboards_8.png
-       :width: 400
+       :width: 500
        :align: center
 
-Набор доступных виджетов зависит от вида дашборда: 
+Набор доступных виджетов зависит от вида дашборда.
 
-.. list-table:: 
-      :widths: 5 5 5 5
-      :header-rows: 1
-      :align: center      
-      :class: tight-table  
-      
-      * - 
-        - | Case-details
-          | Карточка кейса
-        - | Site-dashboard
-          | Профиль пользователя
-        - | User-dashboard
-          | Домашняя страница
-      * - | **JOURNAL: 'journal'**
-          | :ref:`См. Журнал<widget_journal>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-      * - | **WEB_PAGE: 'web-page'**
-          | :ref:`См. Веб-страница<widget_web_page>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-      * - | **DOC_PREVIEW: 'doc-preview'**
-          | :ref:`См. Предпросмотр<widget_doc_preview>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **COMMENTS: 'comments'**
-          | :ref:`См. Комментарии<widget_comments>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **PROPERTIES: 'properties'**
-          | :ref:`См. Свойства<widget_properties>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | **CURRENT_TASKS: 'current-tasks'**
-          | :ref:`См. Мои задачи<widget_current_tasks>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **TASKS: 'tasks'**
-          | :ref:`См. Задачи<widget_tasks>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **DOC_STATUS: 'doc-status'**
-          | :ref:`См. Статус<widget_doc-status>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **EVENTS_HISTORY: 'events-history'**
-          | :ref:`См. История событий<widget_events-history>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | **VERSIONS_JOURNAL: 'versions-journal'**
-          | :ref:`См. Журнал версий<widget_versions_journal>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **DOC_ASSOCIATIONS: 'doc-associations'**
-          | :ref:`См. Связи документа<widget_doc_associations>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **RECORD_ACTIONS: 'record-actions'**
-          | :ref:`См. Действия<widget_record_actions>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | **BARCODE: 'barcode'**
-          | :ref:`См. Штрих-код<widget_barcode>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **DOCUMENTS: 'documents'**
-          | :ref:`См. Документы<widget_documents>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-      * - | **DOC_CONSTRUCTOR: 'doc-constructor'**
-          | :ref:`См. Doc.One<widget_doc_constructor>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **PROCESS_STATISTICS: 'process-statistics'**
-          | :ref:`См. Статистика процесса<widget_process_statistics>`
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
-        - 
-      * - | **REPORT: 'report'**
-          | :ref:`См. Статистика по задачам<widget_report>`
-        - 
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-      * - | **BIRTHDAYS: 'birthdays'**
-          | :ref:`См. Дни рождения<widget_birthdays>`
-        - 
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-      * - | **USER_PROFILE: 'user-profile**
-          | :ref:`См. Профиль<widget_user_profile>`
-        - 
-        - 
-            .. image:: _static/dashboards/dashboards_0.png
-                :width: 20
-
-        - 
 
 Настройки виджетов на дашбордах
 --------------------------------
 
-Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью <Виджеты>
+Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью :ref:`Виджеты<widgets>`
 
 Информация по доступности виджета хранится в самом виджете (без участия сервера).
 

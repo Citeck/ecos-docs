@@ -14,8 +14,6 @@ import os
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-
-
 # -- Project information -----------------------------------------------------
 
 project = 'Citeck ECOS'
@@ -33,7 +31,9 @@ release = 'Ver. 4'
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
+ 'sphinx_search.extension', 
 ]
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

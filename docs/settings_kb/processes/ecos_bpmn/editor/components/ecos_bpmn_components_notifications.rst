@@ -22,7 +22,8 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя**, выбрать **Тип уведомления**
+      * - | Указать **Имя**,  
+          | **Тип уведомления** указан по умолчанию **Электронная почта**.
 
         - 
                .. image:: _static/notifications/49.png
@@ -42,7 +43,7 @@
                 :width: 300
                 :align: center 
 
-      * - Получатели могут быть выбраны из: |br| |br|
+      * - **Получатели** могут быть выбраны из: |br| |br|
           **Роли** |br| Роли, заполненные в :ref:`типе данных<data_types_main>`. |br| |br|
           **Выражение** |br| Имя, recordRef или емейл получателя. Поддерживаются expression для получения данных из переменных или сервисов. Expression может вернуть множественное значение - строки разделенные запятой: ``ivan@mail.com,user2,user3``. |br|
           |br|
@@ -80,6 +81,15 @@
                .. image:: _static/notifications/send_task_settings_panel.png
                 :width: 300
                 :align: center
+
+.. important::
+
+  При сохранении, сохранении/публикации процесса проверяется обязательность заполнения следующих полей:
+
+   - **«Шаблон»** или **«Тело сообщения»**;
+   - **«Получатели»** (Роли или Выражение)
+
+  Иначе в :ref:`линтере<bpmn_linter>` будет выдана ошибка.  
 
 .. _notification_variables:
 
@@ -127,13 +137,22 @@
 Шаблон уведомления содержит текст:
 
 .. image:: _static/notifications/bpmn_notification_example_text.png
+    :width: 500
     :align: center
 
 В результате получим следующее уведомление:
 
 .. image:: _static/notifications/bpmn_notification_example_result.png
+    :width: 500
     :align: center
 
+Если необходимо отправить сообщение о добавлении комментария с вложением (реакция на событие добавления комментария), то нужно добавить в модель уведомления атрибут:
+
+.. code-block:: yaml
+
+       "model": {
+              "_attachments": "$process.event.attachments[]._as.ref._content{bytes, meta:?json}"
+       }
 
 
 .. |br| raw:: html

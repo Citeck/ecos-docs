@@ -2,7 +2,7 @@
 ==============================
 
 .. toctree::
-    :maxdepth: 5
+    :maxdepth: 3
 
     EDI_integration/EDI
     EDI_integration/events_kontur

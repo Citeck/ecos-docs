@@ -50,15 +50,11 @@
                   :align: center
 
 
-.. important::
-
-    Если форматер не указан в списке ниже вероятно он еще не мигрировал или ассоциируется с другим новым
-
 Типы
 ---------
 
-AssocFormatter
-~~~~~~~~~~~~~~~~~~
+AssocFormatter / Ассоциация
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``assoc``
 
@@ -77,8 +73,8 @@ AssocFormatter
       * - openNewBrowserTab
         - Открыть в новой вкладке браузера
 
-ActionFormatter
-~~~~~~~~~~~~~~~~~~
+ActionFormatter / Действие
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип : ``action``
 
@@ -97,8 +93,8 @@ ActionFormatter
 
 Предполагается в строке журнала наличие **id** или **recordRef** - ref записи, необходимый для выполнения действия
 
-BooleanFormatter
-~~~~~~~~~~~~~~~~~~
+BooleanFormatter / Логическое выражение
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``bool``
 
@@ -106,8 +102,10 @@ BooleanFormatter
 
 Простой форматтер, который отдает «Да» или «Нет» в ячейке
 
-ColoredFormatter
-~~~~~~~~~~~~~~~~~~
+.. _ColoredFormatter:
+
+ColoredFormatter / Цвет
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``colored``
 
@@ -126,8 +124,24 @@ ColoredFormatter
       * - textHidden
         - Флаг, который отвечает за перенос строк в ячейке
 
-DateFormatter
-~~~~~~~~~~~~~~~~~~
+Добавлена возможность  настройки условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте.
+
+.. image:: _static/formatter/color_formatter_1.png
+       :width: 400
+       :align: center
+
+Вернуть необходимо строку с цветом для css (WebColor или HEX):
+
+.. code-block::
+
+  if (cell.disp.length > 2) return "red"
+  
+  или
+
+  if (cell.disp.length > 2) return "#FF0000" 
+
+DateFormatter / Дата
+~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``date``
 
@@ -142,8 +156,8 @@ DateFormatter
       * - format
         - Временной формат (по умолчанию 'DD.MM.YYYY')
 
-DateTimeFormatter
-~~~~~~~~~~~~~~~~~~
+DateTimeFormatter / Дата и время
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``datetime``
 
@@ -160,9 +174,8 @@ DateTimeFormatter
       * - relative
         - Флаг, который будет осчитывать время которое прошло
 
-
-DefaultFormatter
-~~~~~~~~~~~~~~~~~~
+DefaultFormatter / По умолчанию
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``default``
 
@@ -170,8 +183,40 @@ DefaultFormatter
 
 Всегда отдает строковое значение, которое получили из значения атрибута. Если ячейка имеет булево значение, то отдает "Да" или "Нет"
 
-FileNameFormatter
-~~~~~~~~~~~~~~~~~~
+.. _DurationFormatter:
+
+DurationFormatter / Продолжительность
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Тип: ``duration``  
+
+Конфигурация:
+
+.. list-table:: 
+      :widths: 5 40
+      :header-rows: 1
+
+      * - Ключ
+        - Описание
+      * - **showSeconds**
+        - | При применении в журнале отображается запись в формате  1d 2h 30m 2s
+          | Возможные значение - true/false 
+          | По умолчанию секунды отображаются - showSeconds = true
+      * - **maxAsHours**
+        - | При применении в журнале продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m
+          | Возможные значение - true/false 
+
+Пример:
+
+.. code-block::
+
+  formatter:
+    type: duration
+    config:
+      maxAsHours: true  
+
+FileNameFormatter / Имя файла
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``filename``
 
@@ -186,8 +231,8 @@ FileNameFormatter
     { НАЗВАНИЕ ЯЧЕЙКИ}
   </a>
 
-HtmlFormatter
-~~~~~~~~~~~~~~~~~~
+HtmlFormatter / HTML
+~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``html``
 
@@ -202,23 +247,10 @@ HtmlFormatter
       * - html
         - Строка с html кодом
 
-LinkFormatter
-~~~~~~~~~~~~~~~~~~
+LinkFormatter / Ссылка
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``link``
-
-Конфигурация:
-
-.. list-table:: 
-      :widths: 5 40
-      :header-rows: 1
-
-      * - Ключ
-        - Значение
-      * - 
-        - 
-      * - 
-        - 
 
 Добавлена возможность строить ссылки по шаблону с использованием переменных (атрибутов записи/полей журнала). Link форматтер используется для ячеек журнала с использованием полей (колонок) в качестве переменных.
 
@@ -267,33 +299,12 @@ LinkFormatter
 
 По клику на наименование будет открываться ссылка.
 
-NumberFormatter
-~~~~~~~~~~~~~~~~~~
+.. _NumberFormatter:
+
+NumberFormatter / Число
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``Number``
-
-Конфигурация:
-
-.. list-table:: 
-      :widths: 5 40
-      :header-rows: 1
-
-      * - Ключ
-        - Значение
-      * - 
-        - 
-      * - 
-        - 
-
-Пример:
-
-.. code-block::
-
-  mask: {value} руб.
-  locales: ru
-  maximumFractionDigits: 16
-  decimalSeparator: .
-  thousandSeparator: ,
 
 Конфигурация:
 
@@ -314,6 +325,17 @@ NumberFormatter
         - как отделяются дробные числа. По умолчанию зависит от локали
       * - **thousandSeparator**
         - как разделяются тысячи. По умолчанию зависит от локали.
+
+
+Пример:
+
+.. code-block::
+
+  mask: {value} руб.
+  locales: ru
+  maximumFractionDigits: 16
+  decimalSeparator: .
+  thousandSeparator: ,
 
 Например:
 
@@ -337,8 +359,8 @@ NumberFormatter
        :align: center
 
 
-ScriptFormatter
-~~~~~~~~~~~~~~~~~~
+ScriptFormatter / Скрипт
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``script``
 
@@ -402,8 +424,8 @@ ScriptFormatter
 
  ! В форматер передается функция **t** - для локализации значений, которая не работает на формах, т.к. у нее свой словарь; внутри компонента формы следует использовать функцию формы ``instance.i18next.t``
 
-WorkflowPriorityFormatter
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+WorkflowPriorityFormatter / Приоритет рабочего процесса
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип: ``workflowPriority``  
 
@@ -418,4 +440,5 @@ WorkflowPriorityFormatter
       * - 
         - 
       * - 
-        - 
+        -
+

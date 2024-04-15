@@ -1,14 +1,16 @@
 Интерфейс
 =========
 
+В разделе представлена информация о настройке интерфейса ECOS: создание форм, журналов, настройки меню, дашбордов и виджетов.
+
+
 .. toctree::
-    :maxdepth: 7
+    :maxdepth: 3
 
     interface/forms
     interface/journals
     interface/menu
     interface/dashboards
     interface/widgets
-    interface/barcode
-    interface/onlyoffice_edit    
-    interface/number_template
+    interface/Темы_интерфейса
+    

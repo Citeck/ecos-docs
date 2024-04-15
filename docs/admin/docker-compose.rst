@@ -1,6 +1,5 @@
 .. _docker_compose:
 
-
 Установка Citeck ECOS c помощью Docker-compose
 ===============================================
 
@@ -12,7 +11,7 @@
 ---------------------------
 
 * Все действия рекомендуется выполнять в командной строке или окне терминала, или в Git CMD Windows, запущенного с повышенными правами.
-* В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``. Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере: 
+* В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере: 
   
   *  Windows— **c:/windows/system32/drivers/etc/hosts** 
   *  Linux, Ubuntu, Unix, BSD — **/etc/hosts** 
@@ -30,12 +29,16 @@ Windows
 * Для успешного запуска WSL 2 в Windows 10 или Windows 11 необходимы следующие предварительные требования к оборудованию:
 
   * 64-битный процессор с трансляцией адресов второго уровня (`SLAT <https://en.wikipedia.org/wiki/Second_Level_Address_Translation>`_)
-  * 4 ГБ оперативной памяти
+  * 16 ГБ оперативной памяти
   * Поддержка аппаратной виртуализации на уровне BIOS должна быть включена в настройках BIOS. Дополнительные сведения см. `в разделе Виртуализация <https://docs.docker.com/desktop/troubleshoot/topics/#virtualization>`_
 
 * Загрузить и установить `пакет обновления ядра Linux <https://docs.microsoft.com/windows/wsl/wsl2-kernel>`_
 
 `Официальное руководстов по установке Docker на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
+
+.. note:: 
+
+    Клонировать репозиторий и запускать скрипты необходимо из-под Ubuntu
 
 Linux
 ~~~~~~~~~~~~
@@ -45,7 +48,7 @@ Linux
 * QEMU должен быть версии 5.2 или новее. Рекомендуем обновиться до последней версии.
 * подсистема инициализации и управления службами systemd.
 * Gnome или среда рабочего стола KDE.
-* Не менее 4 ГБ оперативной памяти.
+* Не менее 16 ГБ оперативной памяти.
 * Включите настройку сопоставления идентификаторов в пространствах имен пользователей, см. `Общий доступ к файлам <https://docs.docker.com/desktop/install/linux-install/#file-sharing>`_
 
 `Официальное руководстов по установке Docker на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
@@ -56,33 +59,52 @@ MacOS
 ~~~~~~~~~~~~
 
 * MacOS версии 10.15 или выше.
-* Не менее 4 ГБ оперативной памяти.
+* Не менее 16 ГБ оперативной памяти.
 
 `Официальное руководстов по установке Docker на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
 
 Установка и запуск проекта
 ---------------------------
 
-•	Установить `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
-•	Установить `Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`_ для Вашей ОС
-•	Скачать `репозиторий <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ , распаковать на диске С
-•	В командной строке выполнить команды: 
+.. important:: 
 
-    - для перехода в распакованный архив ``cd c:\ecos-community-demo-master`` 
-    - для запуска ``docker-compose up -d`` 
+    Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
+    
+    Для отключения данной настройки перед разворачиванием стенда перейдите в папку ``\services\environments`` в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
+    в настройке ``WITH_DEMO_DATA`` укажите **false**.
 
-•	Подождать некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась
-•	Перейти в браузере по адресу http://ecos-community-demo/
 
-Войти в систему, используя следующие учётные данные:
+•	Установите `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
+•   Клонируйте репозиторий: ``git clone https://github.com/citeck/ecos-community-demo.git``
+•	В терминале: 
+
+    - перейдите в папку с клонированным репозиторием ``cd полный путь до папки`` 
+    - запустите ``docker-compose up -d`` 
+
+•	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
+•	Перейдите в браузере по адресу http://ecos-community-demo/
+
+Войдите в систему, используя следующие учётные данные:
 
     Логин – **admin**
 
     Пароль - **admin**
 
-При первом развертывании keycloak попросит сменить пароль.  Если необходимо еще раз сменить пароль, `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+При первом развертывании keycloak попросит сменить пароль. 
 
-Подготовка окружения CentOS 7.x для установки Citeck Ecos
+Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+
+.. note:: 
+
+    При первом запуске в течение первых 5 минут после успешной установки и входа в систему может возникать ошибка:
+
+    .. image:: _static/docker-compose/08.png
+        :width: 600
+        :align: center
+
+    Развертывание и запуск ECOS продолжается, необходимо подождать.
+
+Подготовка окружения CentOS 7.x для установки Citeck ECOS
 ----------------------------------------------------------
 
 Обновить систему и пакеты до последней актуальной версии:
@@ -123,9 +145,8 @@ MacOS
 
 .. code-block::
 
-    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
-    ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле:
 
@@ -140,7 +161,11 @@ MacOS
     ]
     }
 
-Следующим этапом необходимо получить комплект поставки, в который входят `docker-compose.yaml и environments <https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip>`_ и поместить его на сервер.
+Следующим этапом необходимо получить комплект поставки, в который входят docker-compose.yaml и environments и поместить его на сервер.
+
+.. code-block::
+
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
 
 После этого в директории, куда поместили проект, выполнить:
 
@@ -151,11 +176,206 @@ MacOS
 
 Система будет инициализирована, и после полного запуска, будет готова к работе.
 
+Настройка Proxy в Docker
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Настройки прокси задаются в файле:
+
+.. code-block::
+
+    /etc/systemd/system/docker.service.d/http-proxy.conf 
+
+Если этого файла или папки нет, нужно их создать. Содержимое файла должно быть примерно таким:
+
+.. code-block::
+
+    [Service]
+    Environment="HTTP_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+    Environment="HTTPS_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+    Environment="NO_PROXY=localhost,127.0.0.1,ecos-app, ecos-apps-app, ecos-gateway-app, ecos-history-app, ecos-identity-app, ecos-integrations-app, ecos-logger-app, ecos-microservices-postgresql-app, ecos-model-app, ecos-notifications-app, ecos-process-app, ecos-proxy-app, ecos-registry-app, ecos-search-app, ecos-uiserv-app, mailhog-app, mongodb-app, node-exporter-app, only-office-app, portainer-agent-app, postgres-exporter-app, rabbitmq-app, zookeeper-app"
+
+Также в раздел *NO_PROXY* можно добавить внутренние домены вашей компании (через запятую и также можно использовать звездочку например ``*.someco.com,`` ``*.someco.ru``)
+
+После добавления данного файла нужно перезапустить демон Docker
+
+.. code-block::
+
+    systemctl daemon-reload
+    systemctl restart docker
+
+
+Подготовка окружения Astra Linux Орел для установки Citeck ECOS
+---------------------------------------------------------------
+
+.. note:: 
+
+    Инструкция проверялась с Astra Linux Common Edition 2.12.46.
+
+Установка Docker:
+
+.. code-block::
+
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo printf "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable \n" > /etc/apt/sources.list.d/docker.list
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+Настройка групп docker:
+
+.. code-block::
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+
+Установка Docker-compose:
+
+.. code-block::
+
+    wget https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+    mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+.. note:: 
+
+    Версию можно изменить на более актуальную, заменив 1.27.4
+
+Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+
+.. code-block::
+
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
+    docker-compose pull
+
+Добавить ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+Запуск Ecos-Community-Demo:
+
+.. note:: 
+
+    Выполнять из директории ecos-community-demo-master
+
+.. code-block::
+
+    docker-compose up -d
+
+В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+      "default-address-pools":
+      [
+        {"base":"172.19.0.0/16","size":24}
+      ]
+    }
+
+Подготовка окружения Ред ОС (Red OS) для установки Citeck ECOS
+---------------------------------------------------------------
+
+.. note:: 
+
+    Инструкция проверялась на РЕД ОС 7.3| Ядро Linux 5.15.72 
+
+Обновить пакеты и выключить SELINUX:
+
+.. code-block::
+
+    dnf update
+    echo 'SELINUX=disabled' > /etc/sysconfig/selinux
+    reboot
+
+Установка Docker и Docker-compose:
+
+.. code-block::
+
+    sudo dnf install docker-ce docker-ce-cli docker-compose
+    systemctl enable docker
+
+Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+
+.. code-block::
+
+    git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
+    docker-compose pull
+
+Запуск Ecos-Community-Demo:
+
+.. code-block::
+
+    docker-compose up -d
+
+.. note:: 
+
+    Если встречается ошибка ``unknown log opt 'max-size' for journald log driver``, открыть ``/etc/docker/deamon.json`` и изменить там ``"log-driver": "journald "`` на ``"log-driver": "json-file"``
+
+Добавить ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+      "default-address-pools":
+      [
+        {"base":"172.19.0.0/16","size":24}
+      ]
+    }
+
+Переключение на BASIC аутентификацию вместо Keycloak
+----------------------------------------------------
+
+Если нужен простой способ настройки для доступа в систему минуя Keycloak, то можно настроить BASIC Auth (не рекомендуется для production сред).
+
+  1. ``nano ecos-community-demo-master/services/environments/ecos-proxy-app.env`` заменить строку ``ENABLE_OIDC_FULL_ACCESS=true`` на ``ENABLE_OIDC_FULL_ACCESS=false``
+  2. в этом же файле добавить - ``BASIC_AUTH_ACCESS=admin:admin,fet:fet``
+
+.. note:: 
+
+    | ``admin:admin,fet:fet`` - это список пользователей, которые будут иметь доступ в систему. 
+    | Формат значения следующий - ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}`` 
+    | После изменения ecos-proxy-app.env необходима перезагрузка контейнера ecos-proxy-app, чтобы изменения вступили в силу.
+
+После внесения изменений запустите проект.
+
+``docker-compose down`` в директории ``ecos-community-demo-master`` для остановки проекта
+
+``docker-compose up -d`` в директории ``ecos-community-demo-master`` для запуска проекта
+
+Тестировать можно с локальной машины при наличии корректной записи в ``/etc/hosts``.
+
+Данные для входа в ecos - ``admin`` | ``admin``
 
 Сервисы Docker
 ---------------
 
 :ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
+
+.. attention::
+
+    Следующие контейнеры запускаются 1 раз:
+
+        - ecos-community-demo-master-ecos-meetings-ecos-apps-1
+        - ecos-community-demo-master-ecos-order-pass-ecos-apps-1
+        - ecos-community-demo-master-ecos-common-data-list-ecos-apps-1
+        - ecos-community-demo-master-ecos-assignments-ecos-apps-1
+
+    и далее находятся в статусе **exited**
 
 Возможные проблемы
 -------------------
