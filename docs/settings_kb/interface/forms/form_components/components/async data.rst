@@ -1,4 +1,4 @@
-.. _async_data:
+.. _async_data_component:
 
 Async data
 ===========
@@ -50,6 +50,42 @@ Async data
 Если включен **Единственная запись** параметр, то в результате будет поиск только одной записи.
 
 Если ссылки на сущности уже есть, то необходимо использовать другой режим. 
+
+Пример использования query:
+
+.. code-block:: javascript
+
+  const contract = Records.get(recordId).getBaseRecord().id
+  
+  if (!contract) {
+    return;
+  }
+  
+  value = {
+      sourceId: 'emodel/payments',
+      query: {
+          "t": "and",
+          "val": [
+              {
+                  "t": "eq",
+                  "att": "_parent",
+                  "val": contract
+              }
+          ]
+      },
+      sortBy: [
+          {
+              "attribute": "paymentDate",
+              "ascending": false
+          },
+          {
+              "attribute": "residue",
+              "ascending": true
+          }
+      ],
+      language: 'predicate'
+  };
+
 
 4. Ajax
 ~~~~~~~~~~~~
@@ -172,3 +208,59 @@ Async data
 **Условие обновления** представляет собой разворачивающееся окно javaScript кода. В данное окно вводится проверка необходимости обновления данных.
 
 Можно ввести любое условие, главное присвоить переменной ``value`` результат проверки. Если **value === true** - необходимо загрузить данные с сервера, а если **value === false**, то данные не будут загружены. 
+
+.. attention::
+
+      Если значения триггерятся  в другом компоненте, чтобы избежать бесконечного цикла, не выставляйте чекбокс **"Обновлять всегда, игнорировать проверку равенства значений"**. 
+
+       .. image:: _static/async_data/async_data_13.png
+            :width: 400
+            :align: center
+
+Примеры использования
+----------------------
+
+Получение ссылки карточки на форме подтверждения
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На форме подтверждения (которая указана в ``formRef`` в свойстве ``confirm``) необходимо получить ссылку самой карточки (над которой производилось действие).
+
+Можно получить внутри самой формы через системное поле:
+
+.. code-block::
+
+      instance.options.actionRecord
+
+обратиться за ссылкой на саму карточку документа. 
+
+И дальше, используя компонент **Async Data Component** на самой форме обратиться за всеми полями основной карточки.
+
+Например, для поиска дочерних документов от данной карточки, используя следующий **Record Query**:
+
+.. code-block::
+
+      var parentRef = instance.options.actionRecord;
+
+      value = {
+      sourceId: 'emodel/document',
+      query: {
+            "t": "and",
+            "val": [
+                  {
+                  "t": "eq", 
+                  "att": "_type", 
+                  "val":"emodel/type@hp-document-signed-document"
+                  },
+                  {
+                  "t": "eq", 
+                  "att": "_parent", 
+                  "val": parentRef
+                  }
+                  ]
+      },
+      language: 'predicate'
+      };
+
+.. image:: _static/async_data/async_data_12.png
+      :width: 600
+      :align: center

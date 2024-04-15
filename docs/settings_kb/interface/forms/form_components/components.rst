@@ -12,5 +12,6 @@
     components/ecos select
     components/file
     components/columns
+    components/panel
     components/horizontal line
     components/import button

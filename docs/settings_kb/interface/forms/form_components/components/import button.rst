@@ -1,4 +1,4 @@
-.. _import_button:
+.. _import_button_component:
 
 Import button
 =============

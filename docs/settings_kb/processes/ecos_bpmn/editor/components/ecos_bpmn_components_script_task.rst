@@ -4,6 +4,8 @@
 
 .. contents::
 
+Данная задача запускает скрипт (т.е. последовательность действий) или программный код, который выполняется автоматически.
+
 Атрибуты и форма
 ----------------
 
@@ -34,6 +36,14 @@
                 :width: 300
                 :align: center
 
+.. important::
+
+  При сохранении, сохранении/публикации процесса проверяется обязательность заполнения следующих полей:
+
+   - **«Скрипт»**
+
+  Иначе в :ref:`линтере<bpmn_linter>` будет выдана ошибка.  
+  
 Доступные переменные
 --------------------
 
@@ -47,6 +57,11 @@
     //someVar - переменная процесса
     print("someVar: " + someVar);
 
+``documentRef`` - строковое представление entityRef документа |br|
+``documentType`` - id типа документа |br|
+``lastTaskCompletor`` - username пользователя, который завершил последнюю задачу |br|
+``comment`` - комментарий из последней завершенной задачи |br|
+``workflowInitiator`` - username инициатора БП |br|
 
 Execution
 ~~~~~~~~~
@@ -66,7 +81,7 @@ Execution
 Document
 ~~~~~~~~
 
-``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
+``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
 
 .. code-block:: javascript
 
@@ -81,11 +96,12 @@ Document
     //сброс состояния документа, если ранее были внесены изменения через att()
     document.att("firArchiveBoxNumber", 123);
     document.reset();
+    
 
 Records
 ~~~~~~~
 
-``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://gitlab.citeck.ru/ecos-community/ecos-records/-/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
+``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
 
 .. code-block:: javascript
 
@@ -115,7 +131,7 @@ Records
 Ecos Config
 ~~~~~~~~~~~
 
-``Config`` - предоставляет доступ к Конфигурации Ecos по ключу в формате ``<область>$<идентификатор>``.
+``Config`` - предоставляет доступ к Конфигурации ECOS по ключу в формате ``<область>$<идентификатор>``.
 
     - ``get(key: String): DataValue`` - получение значения по ключу
     - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
@@ -129,7 +145,7 @@ Ecos Config
 DataValue
 ~~~~~~~~~
 
-``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
 
     - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
     - ``DataValue.createObj()`` - создает пустой объект DataValue.
@@ -217,7 +233,7 @@ Tasks
     - ``completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
 
 
-Temaplated content
+Templated content
 ~~~~~~~~~~~~~~~~~~
 
 ``templatedContent`` - сервис для работы с шаблонизированным контентом.
@@ -226,6 +242,40 @@ Temaplated content
     - ``write(record: String, template: String, attribute: String)`` - генеририрует контент по указанному шаблону `[template`], на основе данных рекорда [`record`] и записывает сгенерированный контент в [`record`] в переданный атрибут [`attribute`].
 
 В качестве [`template`] можно передать строковое представление EntityRef шаблона или его id.
+
+Events
+~~~~~~
+
+``events`` - сервис для работы с ECOS events.
+
+    - ``send(type: String, data: BpmnDataValue)`` - отправляет событие с указанным типом (именем) и данными.
+    
+Например, можно отправить ECOS событие через скрипт:
+
+.. code-block:: javascript
+
+    var data = DataValue.of({
+      foo: "bar",
+      number: 123
+    });
+     
+    events.send("test-topic", data);
+     
+И подписаться на него в bpmn event через ручную настройку с "test-topic" или программно через слушателя:
+
+.. code-block:: kotlin
+
+    eventsService.addListener<ObjectData> {
+      withEventType("test-topic")
+      withDataClass(ObjectData::class.java)
+      withTransactional(true)
+      withAttributes(
+        mapOf("foo" to "foo", "itsNum" to "number")
+      )
+      withAction { event ->
+        log.("event received: $event")
+      }
+    }
 
 Logger
 ~~~~~~
@@ -247,3 +297,27 @@ Logger
 .. |br| raw:: html
 
      <br>   
+
+Примеры
+---------
+
+Скрипт, как в атрибут записать человека, который выполнил предыдущую задачу:
+
+.. code-block::
+
+    document.att("manager", "emodel/person@" + lastTaskCompletor);
+    document.save();
+
+ .. image:: _static/script_task/sample_01.png
+       :width: 700
+       :align: center
+
+Получить локальную часть глобальной ссылки на сущность
+
+.. code-block::
+
+    document.load("requestCategory?localId") == "community"
+
+- **requestCategory** - ассоциация
+
+- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@admin** локальная часть - это **"admin"**

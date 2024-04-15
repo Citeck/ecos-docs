@@ -1,6 +1,9 @@
 Работа с событиями (events) 
 ===========================================
 
+.. contents::
+   :depth: 3
+
 Events 2.0
 -----------
 
@@ -38,7 +41,8 @@ Events 2.0
 Примеры
 -------
 
-Подписка на событие с произвольными атрибутами (Kotlin):
+Подписка на событие с произвольными атрибутами (Kotlin)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: kotlin
 
@@ -53,6 +57,7 @@ Events 2.0
   }
 
 Подписка на событие с произвольными атрибутами (Java):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: java
 
@@ -74,3 +79,105 @@ Events 2.0
       b.withAttributes(attributes);
       return Unit.INSTANCE;
   });
+
+Пример listener-а событий для определенного типа данных
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    import org.springframework.stereotype.Component
+    import ru.citeck.ecos.events2.EventsService
+    import ru.citeck.ecos.events2.type.RecordChangedEvent
+    import ru.citeck.ecos.events2.type.RecordCreatedEvent
+    import ru.citeck.ecos.events2.type.RecordDeletedEvent
+    import ru.citeck.ecos.records2.RecordRef
+    import ru.citeck.ecos.records2.predicate.model.Predicates.eq
+    import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
+    import java.time.Instant
+    import javax.annotation.PostConstruct
+
+    @Component
+    class SomeTypeEventsListener(
+        private val eventsService: EventsService,
+    ) {
+
+        companion object {
+            private const val YOUR_TYPE = "ID вашего типа данных"
+        }
+
+        @PostConstruct
+        fun init() {
+            eventsService.addListener<RecordUpdated> {
+                withTransactional(true)
+                withEventType(RecordChangedEvent.TYPE)
+                withDataClass(RecordUpdated::class.java)
+                withFilter(eq("typeDef.id", YOUR_TYPE))
+                withAction { event ->
+                    println("Запись была обновлена: " + event.record + ", создал: " + event.user + ", время: " + event.time)
+    //                Ваша логика при событии Обновления записи.....
+                }
+            }
+
+            eventsService.addListener<RecordCreated> {
+                withTransactional(true)
+                withEventType(RecordCreatedEvent.TYPE)
+                withDataClass(RecordCreated::class.java)
+                withFilter(eq("typeDef.id", YOUR_TYPE))
+                withAction { event ->
+                    println("Создана новая запись: " + event.record + ", создал: " + event.user + ", время: " + event.time)
+    //                Ваша логика при событии Создания записи.....
+                }
+            }
+
+            eventsService.addListener<RecordDeleted> {
+                withTransactional(true)
+                withEventType(RecordDeletedEvent.TYPE)
+                withDataClass(RecordDeleted::class.java)
+                withFilter(eq("typeDef.id", YOUR_TYPE))
+                withAction { event ->
+                    println("Запись была удалена: " + event.record + ", удалил: " + event.user + ", время: " + event.time)
+    //                Ваша логика при событии Удаления записи.....
+                }
+            }
+
+    //        И еще много других Listener-ов для уже реализованных эвентов или ваших собственных
+    //        Например для RecordStatusChangedEvent, RecordDraftStatusChangedEvent, RecordContentChangedEvent и тд.
+        }
+
+    //    В data классах определяем набор необходимых нам данных, которые хотим достать из Event-а.
+    //    Можно ознакомиться с классом RecordEventTypes.kt из библиотеки ecos-events2 для более подробного понимания какие данные можно получить
+
+        data class RecordUpdated(
+            @AttName("record?id")
+            val record: RecordRef,
+            @AttName("\$event.time")
+            val time: Instant,
+            @AttName("\$event.user")
+            val user: String,
+        )
+
+        data class RecordCreated(
+            @AttName("record?id")
+            val record: RecordRef,
+            @AttName("\$event.time")
+            val time: Instant,
+            @AttName("\$event.user")
+            val user: String,
+        )
+
+        data class RecordDeleted(
+            @AttName("record?id")
+            val record: RecordRef,
+            @AttName("\$event.time")
+            val time: Instant,
+            @AttName("\$event.user")
+            val user: String
+        )
+
+    }
+
+Пояснения:
+
+.. image:: _static/events/listener_01.png
+     :width: 700
+     :align: center

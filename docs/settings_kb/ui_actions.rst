@@ -5,9 +5,38 @@
 
 Раздел содержит описание работы действий в ECOS.
 
+.. contents::
+		:depth: 6
+
 **Действия** - это артефакты ECOS в формате json или yaml с типом ui/action.
 
 Одно действие может быть многократно использовано в разных местах системы (например, в журнале и на карточке документа).
+
+Все действия делятся на 3 категории - **"над записью"**, **"над выбранными записями"** и **"над отфильтрованными записями"**.
+
+.. list-table::
+      :widths: 10 30
+      :class: tight-table 
+
+      * - **Над записью**
+        - | 1.	Выполняются над конкретной записью
+          | 2.	Отображаются либо напротив каждой строки в журнале в самой правой части таблицы, либо на карточке документа в виджете действий.
+
+           .. image:: _static/ui_actions/UI/01.png
+              :width: 400
+              :align: center
+
+      * - **Над выбранными**
+        - | 1.	Выполняются над записями, рядом с которыми пользователь поставил галки
+          | 2.	Отображаются в дропдауне над таблицей, когда пользователь выбрал хотя бы одну запись
+
+           .. image:: _static/ui_actions/UI/02.png
+              :width: 400
+              :align: center
+
+      * - **Над отфильтрованными**
+        - | 1. Выполняются над записями, которые подходят под фильтрацию
+          | 2.	Отображаются в дропдауне над таблицей, когда пользователь ничего не выбрал в журнале
 
 Описание формата
 ------------------
@@ -46,7 +75,7 @@
           | Например - для действия с типом **Download** можно задать шаблон URI для скачивания контента.
       * - **predicate**
         - Predicate
-        - | Используется для динамического определения доступности действия для пользователя. 
+        - | Используется для динамического определения доступности действия для пользователя. Подробно о :ref:`предикатах <ecos-predicate_main>`
           | Например, действия **Редактировать** и **Удалить** не могут выполнять пользователи без прав на запись и для них эти действия скрываются.
 
 
@@ -358,8 +387,6 @@ id типа: ``delete``
           | **isWaitResponse** - ожидание ответа удаления (по умолчанию ``true``)
           | **withoutConfirm** - удаление без подтверждения (по умолчанию ``false``)
 
-
-
 download-card-template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -449,6 +476,24 @@ id типа: ``create``
           | **createVariant: Object** - Вариант создания для ситуаций, когда ни один вариант создания из типа не походит и требуется его полностью определить в действии
           | **attributes: Object** - Предопределенные атрибуты для создания новой сущности. Для прокидывания атрибутов с текущей записи (т.е. той, с которой выполняется действие) на форму создания можно использовать вставки вида ``${attribute_name}`` 
           | **options: Object** - Опции формы
+          |
+          | **Пример:**
+          |
+          | Создание сущности с типом emodel/type@request-to-manager и проставлением в атрибут "incident" ссылки на текущий документ
+
+            .. code-block::
+
+                id: request-to-manager
+                name:
+                  en: Request to manager
+                  ru: Запрос руководителю
+                type: create
+                config:
+                  typeRef: emodel/type@request-to-manager
+                  redirectToPage: false
+                  attributes:
+                    incident: "${?id}"
+
 
 save-as-case-template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -547,25 +592,6 @@ id типа: ``fetch``
           | **args** - аргументы, которые будут переданы в URL
           | **body** - аргументы, которые будут переданы в тело запроса
 
-edit-task-assignee
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-id типа: ``edit-task-assignee``
-
-.. list-table::
-      :widths: 10 10
-      :header-rows: 1
-      :class: tight-table 
-      
-      * - Описание
-        - Конфигурация
-      * -  
-          | Редактировать исполнителя задачи (запускается окно с выбором исполнителя).
-          | Действие связано с бизнес-процессом записи. 
-        - | **actionOfAssignment [claim , release]** 
-          | **orgstructParams:{ userSearchExtraFields: custom:property1, custom:property2 }**
-          | custom:property1, custom:property2 - строка. Свойста ноды пользователя по которым будет осущетствлен поиск
-
 
 view-business-process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -607,6 +633,8 @@ id типа: ``cancel-business-process``
 mutate
 ~~~~~~~~~~~~
 
+.. _mutate_action:
+
 id типа: ``mutate``
 
 .. list-table::
@@ -623,22 +651,24 @@ id типа: ``mutate``
 
           .. code-block::
 
-            implSourceId: '...',
             config: {
+              implSourceId: "ARTIFACTID_ПРОЕКТА/id_действия@"
               record: {
                   id: "${recordRef}",
                     attributes: { "key": "value" } 
                   } 
                 }
 
+          | **implSourceId** - возможность получить ссылку для скачивания файла с карточки и определенной записи в журнале
           | **record.id** - необязательный параметр
           | **record.attributes** - изменяемые поля и их значения
 
-Пример - настройка группового действия **Изменить инициатора** с использованием **mutate:**
+Пример: Настройка группового действия Изменить инициатора
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-1. В журнале перейти во вкладку «Действия»:
+1. В журнале перейти во вкладку **«Действия»**:
 
-.. image:: _static/ui_actions/mutate_1.png
+.. image:: _static/ui_actions/Mutate/mutate_1.png
       :width: 600
       :align: center
 
@@ -691,61 +721,455 @@ id типа: ``mutate``
 
 2. Пользователь отмечает некоторые строки в журнале и выбирает в выпадающем меню над журналом действие:
 
-.. image:: _static/ui_actions/mutate_2.png
+.. image:: _static/ui_actions/Mutate/mutate_2.png
       :width: 600
       :align: center
 
 3. Открывается форма для уточнения значений атрибута для выполнения действия и нажимает кнопку:
 
-.. image:: _static/ui_actions/mutate_3.png
+.. image:: _static/ui_actions/Mutate/mutate_3.png
       :width: 400
       :align: center
 
+Пример: Настройка действия Изменить статус
+"""""""""""""""""""""""""""""""""""""""""""
 
-set-task-assignee
-~~~~~~~~~~~~~~~~~~~~~~~~
+Конфиг действия:
 
-id типа: ``set-task-assignee``
+.. code-block::
+
+  {
+      "id": "change-status",
+      "name": {
+        "ru": "Изменить статус",
+        "en": "Change status"
+      },
+      "confirm":{
+        "title": {
+        "ru": "Изменить",
+        "en": "Change"
+        },
+      "message":{},
+      "formRef":"uiserv/form@change-status-form",
+      "formAttributes":{}, 
+      "attributesMapping":{
+        "record.attributes._status": "statuses" 
+        }
+      }
+      "type": "mutate",
+      "config": {
+        "record": {
+          "id": "${recordRef}"
+          "attributes": {}
+          }
+        }
+      }
+    }
+
+Форма, которая предлагается пользователю:
+
+.. image:: _static/ui_actions/Change_status/change_1.png
+      :width: 600
+      :align: center
+
+Через компонент **Async Data** добавляются статусы типа данных:
+
+.. image:: _static/ui_actions/Change_status/change_2.png
+      :width: 600
+      :align: center
+
+Настройки компонента **ECOS Select**:
 
 .. list-table::
-      :widths: 10 10
-      :header-rows: 1
-      :class: tight-table 
-      
-      * - Описание
-        - Конфигурация
-      * -  
-          | Назначение исполнителя задачи 
-          | (расширенный вариант edit-task-assignee)
-        - | **assignTo** - на кого назначить [me , group , someone]:
- 
-              * ``someone`` - если не указан assignee, запускается ``edit-task-assignee`` для выбора 
-              * ``me`` - исполнитель устанавливается автоматически (текущий пользователь)
-              * ``group`` - возврат в группу
+      :widths: 20 20
+      :align: center
 
-          | Необязательные параметры (можно использовать дополнительно или вместо assignTo):
+      * - |
 
-              * **actionOfAssignment** - [claim , release]
-                
-                * ``release`` - вернуть в группу
+            .. image:: _static/ui_actions/Change_status/change_3.png
+                  :width: 600
+                  :align: center
 
-              * **assignee** -  ``workspace исполнителя`` - если ``claim`` и значения нет - выбор через окно
-              * **errorMsg** - сообщение об ошибки выполнения
+        - |
 
-          ``assignTo: 'me'`` или 
+            .. image:: _static/ui_actions/Change_status/change_4.png
+                  :width: 600
+                  :align: center
 
-          ``actionOfAssignment: 'claim'``
+Скрипт для перебора массива для получения id статуса:
 
-          ``assignee: 'workspace://SpacesStore/......'``
-            
-          |
+.. code-block::
 
-            .. code-block::
+  var statuses = _.get(data, "stats.statuses");
+  var arr = [];
 
-              
-              config: { 
-                      errorMsg: 'text'
-                          }
+  for(var i = 0; i < statuses.length; i++) {
+    var id statuses[i].id;
+    arr.push(id);
+  }
+  values = arr;
+
+Полученные статусы в форме :ref:`локализуются<form_localisation>`:
+
+.. image:: _static/ui_actions/Change_status/change_5.png
+      :width: 600
+      :align: center
+
+Действие в интерфейсе:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/ui_actions/Change_status/change_6.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/ui_actions/Change_status/change_7.png
+                  :width: 300
+                  :align: center
+
+Пример: Настройка группового действия Выгрузить данные в файл
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Пример группового действия для выгрузки в txt файл некоторых данных из выбранных записей (в примере - ``_created``) с возможностью скачивания.
+
+Конфиг действия:
+
+.. code-block::
+
+  id: example-unload-to-file
+  type: mutate
+  name:
+    ru: Выгрузить в файл
+    en: Unload
+  confirm:
+    title:
+      ru: Подтвердите действие
+      en: Confirm the action
+    message:
+      ru: Выгрузить в файл
+      en: Unload
+  config:
+    implSourceId: ЗДЕСЬ_ARTIFACTID_ВАШЕГО_ПРОЕКТА/example-unload
+  features:
+    execForQuery: false
+    execForRecord: true
+    execForRecords: true
+
+RecordsDAO для действия (метод ``getId()`` должен возвращать значение из implSourceId в конфигурации):
+
+.. code-block::
+
+  import lombok.extern.slf4j.Slf4j;
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.commons.data.DataValue;
+  import ru.citeck.ecos.records3.RecordsService;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.api.content.EcosContentApi;
+  import ru.citeck.ecos.webapp.api.entity.EntityRef;
+
+  import java.util.*;
+
+  @Component
+  @Slf4j
+  public class ExampleUnloadToFileRecordsDao implements ValueMutateDao<DataValue> {
+
+      private final RecordsService recordsService;
+      private final EcosContentApi contentApi;
+
+      @Autowired
+      public ExampleUnloadToFileRecordsDao(RecordsService recordsService, EcosContentApi contentApi) {
+          this.recordsService = recordsService;
+          this.contentApi = contentApi;
+      }
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "example-unload";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull DataValue selectedRecords) throws Exception {
+          List<String> recordRefs = selectedRecords.get("records").asList(String.class);
+          List<String> data = new ArrayList<>(Collections.emptyList());
+
+          for (String record : recordRefs) {
+              data.add(recordsService.getAtt(record,"_created").asText());
+          }
+
+          EntityRef tempRef = contentApi.uploadTempFile()
+              .writeContent(writer -> {
+                  writer.writeText(data.toString());
+                  return null;
+              });
+
+          String url = recordsService.getAtt(tempRef, "_content.url").asText();
+
+          return DataValue.createObj()
+              .set("type", "link")
+              .set("data", DataValue.createObj()
+                  .set("url", url)
+              );
+      }
+
+  }
+
+В интерфейсе при активации действия из выбранных записей были получены их ``_created`` и записаны в файл, который доступен для скачивания:
+
+.. image:: _static/ui_actions/Data_to_file/data_to_file_1.png
+      :width: 600
+      :align: center
+
+Подробнее о :ref:`EcosContentApi<EcosContentApi>`
+
+Пример: Действие для вывода в консоль информации о данных
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. image:: _static/ui_actions/to_console_1.png
+       :width: 600
+       :align: center
+
+|
+
+.. image:: _static/ui_actions/to_console_2.png
+       :width: 600
+       :align: center
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "print-to-console",
+    "name": {
+      "ru": "Вывести в консоль",
+      "en": "Print to console"
+    },
+    "confirm": {
+      "title": {
+        "ru": "Подтвердите действие",
+        "en": "Confirm the action"
+      },
+      "message": {
+        "ru": "Вывести в консоль",
+        "en": "Print to console"
+      },
+      "formRef": "",
+      "formAttributes": {},
+      "attributesMapping": {}
+    },
+    "type": "mutate",
+    "config": {
+      "record": {
+        "id": "minimal-webapp/print-to-console@",
+        "attributes": {
+          "employee": "${employee}",
+          "position": "${position}",
+          "start_date": "${start_date}"
+        }
+      }
+    },
+    "features": {
+      "execForRecords": false,
+      "execForQuery": false,
+      "execForRecord": true
+    }
+  }
+
+DTO для необходимого набора данных - SalaryDataDto.java 
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.dto;
+
+  import lombok.Data;
+
+  import java.util.Date;
+
+  @Data
+  public class SalaryDataDto {
+      private String employee;
+      private String position;
+      private Date start_date;
+  }
+
+И DAO класс, который будет все это обрабатывать - JavaPrintToConsoleRecordsDao.java
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.service.java.action;
+
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.sample.minimal.dto.SalaryDataDto;
+
+
+  @Component
+  public class JavaPrintToConsoleRecordsDao implements ValueMutateDao<SalaryDataDto> {
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "print-to-console";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull SalaryDataDto salaryDataRecord) {
+          String salaryInfo = String.format("Сотрудник: %s%nДолжность: %s%nДата приема: %s%n",
+                  salaryDataRecord.getEmployee(), salaryDataRecord.getPosition(), salaryDataRecord.getStart_date());
+          System.out.println("###################\n");
+          System.out.println(salaryInfo);
+          System.out.println("###################");
+          return null;
+      }
+
+  }
+
+Обратите внимание, связь между конфигой и обработчиком осуществляется за счет указания ID обработчика в конфиге.
+
+Пример: Групповое действие с выгрузкой данных в файл
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. image:: _static/ui_actions/unload_to_file_1.png
+       :width: 600
+       :align: center
+
+|
+
+.. image:: _static/ui_actions/unload_to_file_2.png
+       :width: 600
+       :align: center
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "unload-salary-data-to-file",
+    "name": {
+      "ru": "Выгрузить в файл",
+      "en": "Unload to file"
+    },
+    "confirm": {
+      "title": {
+        "ru": "Подтвердите действие",
+        "en": "Confirm the action"
+      },
+      "message": {
+        "ru": "Выгрузить в файл",
+        "en": "Unload to file"
+      },
+      "formRef": "",
+      "formAttributes": {},
+      "attributesMapping": {}
+    },
+    "type": "mutate",
+    "config": {
+      "implSourceId": "minimal-webapp/unload-to-file"
+    },
+    "features": {
+      "execForRecords": true,
+      "execForQuery": false,
+      "execForRecord": false
+    }
+  }
+
+DAO класс - JavaUnloadToFileRecordsDao.java
+
+.. code-block::
+
+  package ru.citeck.ecos.webapp.sample.minimal.service.java.action;
+
+  import lombok.AllArgsConstructor;
+  import lombok.Data;
+  import lombok.NoArgsConstructor;
+  import org.jetbrains.annotations.NotNull;
+  import org.jetbrains.annotations.Nullable;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.stereotype.Component;
+  import ru.citeck.ecos.commons.data.DataValue;
+  import ru.citeck.ecos.records3.RecordsService;
+  import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao;
+  import ru.citeck.ecos.webapp.api.content.EcosContentApi;
+  import ru.citeck.ecos.webapp.api.entity.EntityRef;
+
+  import java.util.Date;
+  import java.util.List;
+
+
+  @Component
+  public class JavaUnloadToFileRecordsDao implements ValueMutateDao<DataValue> {
+      private final RecordsService recordsService;
+      private final EcosContentApi contentApi;
+
+      @Autowired
+      public JavaUnloadToFileRecordsDao(RecordsService recordsService, EcosContentApi contentApi) {
+          this.recordsService = recordsService;
+          this.contentApi = contentApi;
+      }
+
+      @NotNull
+      @Override
+      public String getId() {
+          return "unload-to-file";
+      }
+
+      @Nullable
+      @Override
+      public Object mutate(@NotNull DataValue selectedRecords) {
+          List<String> recordRefs = selectedRecords.get("records").asList(String.class);
+          List<SalaryRecordData> salaryRecordsData = recordsService.getAtts(recordRefs, SalaryRecordData.class);
+
+          String salaryDataAsPrettyString = formatSalaryDataList(salaryRecordsData);
+
+          EntityRef tempRef = contentApi.uploadTempFile()
+                  .writeContentJ(writer -> {
+                      writer.writeText(salaryDataAsPrettyString);
+                  });
+
+          String url = recordsService.getAtt(tempRef, "_content.url").asText();
+
+          return DataValue.createObj()
+                  .set("type", "link")
+                  .set("data", DataValue.createObj()
+                          .set("url", url)
+                  );
+      }
+
+      public String formatSalaryDataList(List<SalaryRecordData> salaryRecordsData) {
+          StringBuilder sb = new StringBuilder();
+          for (SalaryRecordData record : salaryRecordsData) {
+              sb.append("\nСотрудник: ").append(record.getEmployee()).append(",\n");
+              sb.append("Должность: ").append(record.getPosition()).append(",\n");
+              sb.append("Дата приема: ").append(record.getStart_date()).append(",\n\n");
+          }
+          sb.append("\n");
+          return sb.toString();
+      }
+
+      @Data
+      @NoArgsConstructor
+      @AllArgsConstructor
+      static class SalaryRecordData {
+          private String employee;
+          private String position;
+          private Date start_date;
+      }
+  }
+
 
 edit-menu
 ~~~~~~~~~~~~~~~~
@@ -932,9 +1356,9 @@ id типа: ``transform``
           |
           | Подробнее о возможных настройках input, transformations и output можно прочитать :ref:`здесь<Content_transformation>`
           | 
-          | Примеры:
+          | **Пример:**
           |
-          | 1. Сконвертировать содержимое в PDF и скачать
+          | 1. Сконвертировать содержимое в PDF и скачать:
 
             .. code-block::
 
@@ -946,6 +1370,49 @@ id типа: ``transform``
                     - type: convert
                       config: { toMimeType: 'application/pdf' } 
 
+Пример: Настройка действия Скачать c штрихкод
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+Конфиг действия:
+
+.. code-block::
+
+  {
+    "id": "test-action-transform",
+    "name": {
+      "ru": "Скачать с штрих-код",
+      "en": "Download with barcode"
+    },
+    "type": "transform",
+    "config": {
+      "transformations": [
+        {
+          "type": "convert",
+          "config": {
+            "toMimeType": "application/pdf"
+          }
+        },
+        {
+          "type": "barcode",
+          "config": {
+            "entityRef": "${?id}",
+            "layout": "BOTTOM_RIGHT",
+            "pages": "ALL"
+          }
+        }
+      ]
+    }
+  }
+
+``layout`` - выбор положения баркода с возможными значениями: TOP_LEFT, TOP_CENTER, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
+
+До добавления действия в тип данных необходимо:
+
+- добавить :ref:`аспект Имеет штрих-код<barcode_aspect>` в тип данных;
+
+- добавить :ref:`шаблон нумерации<number_template>` в тип данных.
+
+
 Расширение действий
 -------------------
 
@@ -954,7 +1421,7 @@ id типа: ``transform``
 
 Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в alfresco (в микросервисы так же можно добавлять действия) по пути
 
-**{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action**
+``{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action``
 
 Пример описания::
 
@@ -1115,6 +1582,7 @@ id типа: ``transform``
 .. list-table::
       :widths: 5 40
       :header-rows: 1
+      :class: tight-table 
 
       * - Параметр
         - Описание

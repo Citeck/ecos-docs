@@ -1,4 +1,4 @@
-.. _ecos_select:
+.. _ecos_select_component:
 
 Ecos Select
 ===========

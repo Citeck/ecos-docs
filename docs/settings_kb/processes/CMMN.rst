@@ -39,4 +39,4 @@
         :width: 400          
         :align: center
 
-
+:ref:`Информация по разработке<cmmn_develop>`

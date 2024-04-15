@@ -3,7 +3,14 @@
 
 .. _ecos_bpmn_timer:
 
- .. image:: _static/67.png
+**Событие «Таймер»** показывает ожидание процессом регулярного события, определенного момента времени или временного периода. На время ожидания текущий поток управления бизнес-процесса приостанавливается.
+
+**Событие «Таймер»** всегда является событием-обработчиком и может быть или **стартовым**, или **промежуточным**.
+
+Атрибуты:
+
+
+ .. image:: _static/timer_event_1.png
        :width: 300
        :align: center
 
@@ -11,28 +18,28 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя**
+      * - **Имя**
 
         - 
-               .. image:: _static/68.png
+               .. image:: _static/timer_event_2.png
                 :width: 300
                 :align: center
-      * - Указать **Тип** и **Значение**
+      * -  **Тип** и **Значение**
 
         - 
-               .. image:: _static/69.png
+               .. image:: _static/timer_event_3.png
                 :width: 300
                 :align: center
       * - | Асинхронность можно настроить ко многим элементам. 
           | `См. подробнее <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_ 
         - 
-               .. image:: _static/70.png
+               .. image:: _static/timer_event_5.png
                 :width: 300
                 :align: center
 
-Возможные типы:
+Возможные типы таймера:
 
- .. image:: _static/70_a.png
+ .. image:: _static/timer_event_4.png
        :width: 300
        :align: center
 
@@ -58,3 +65,12 @@
 .. |br| raw:: html
 
      <br>
+
+.. important::
+
+  При сохранении, сохранении/публикации процесса проверяется обязательность заполнения следующих полей:
+
+   - **«Тип»**; 
+   - **«Значение»**
+
+  Иначе в :ref:`линтере<bpmn_linter>` будет выдана ошибка.  

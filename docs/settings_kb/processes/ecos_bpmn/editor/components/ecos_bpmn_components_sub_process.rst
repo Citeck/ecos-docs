@@ -3,6 +3,8 @@
 
 .. _sub_process:
 
+**Подпроцесс BPMN** – действие, которое может включать в себя: другие действия, шлюзы, события и потоки операций.
+
  .. image:: _static/sub_process/71.png
        :width: 300
        :align: center
@@ -22,6 +24,9 @@
  .. image:: _static/sub_process/74.png
        :width: 300
        :align: center
+
+Атрибуты
+--------
 
 .. list-table::
       :widths: 5 5
