@@ -1,69 +1,187 @@
 Плагин для IntelliJ IDEA для работы с платформой ECOS
 ========================================================
 
-Функционал плагина
-------------------
+Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS.
 
-1. Создание **новых проектов ECOS** (приложение, микросервис).
-
-2. Загрузка/выгрузка **артефактов** на/с локального сервера (формы ECOS, формы Alfresco, журналы, дашборды, процессы caseManagement, ноды и пр.).
-
-3. **Поиск артефактов** по их идентификаторам (расширение для search everywhere).
-
-4. **Навигация в коде** по артефактам ECOS/Alfresco через гиперссылки.
-
-5. Автодополнение кода Java: поиск и подстановка static объектов org.alfresco.service.namespace.QName по краткому наименованию.
-
-6. Автодополнение кода JavaScript (Idea Ultimate):
-   
-    1. Cервер:
-   
-        - Типы данных Alfresco: properties, associations, types.
-        - Бины baseJavaScriptExtension и их методы (например, caseStatusService).
- 
-    2. Формы ECOS:
-   
-        - Автодополнение объекта data списком компонент формы.
-
-7. Навигация в файлах:
-   
-    - Формы (быстрый переход к компонентам по их имени);
-    - Журналы (навигация по колонкам);
-    - Модели данных Alfresco.
-
-8. Консоль Alfresco JavaScript, возможность создания параметризированных скриптов и их быстрый вызов.
-
-9.  Инспекции кода:
-    
-    1. Формы - проверка задвоений ключей компонентов.
-    2. Модели Alfresco - проверка импорта пространств имен.
-
-10. Генерация кода:
-    
-     1. Формы - генерация компонентов формы из модели данных Alfresco
-     2. Формы - генерация локализации для компонентов.
-
-11. Расширения для LiveTemplates - функции для подстановки типов/свойств/ассоциаций Alfresco.
-
-12. Расширения областей поиска файлами, содержащими артефакты ECOS/Alfresco.
-
-13. Гиперссылки в консоли вывода для nodeRef с возможностью открытия их в браузере (карточка, nodeBrowser, старая карточка).
-
-14. Language Injection (JavaScript) в формах ECOS.
-
-Установка плагина в Idea
+Установка плагина в IDEA
 ---------------------------
 
 Скачать дистрибутив плагина можно из `package registry <https://gitlab.citeck.ru/citeck-projects/ecos-idea-plugin/-/packages>`_ или собрать из исходников самостоятельно.
 
 Далее установить плагин в Idea: **Settings -> Plugins -> Install Plugin from disk**
 
+Функционал плагина
+------------------
+
+1. Создание **новых проектов ECOS** (приложение, микросервис).
+
+**File -> New project**
+
+Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<service_setup>`
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/01.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/02.png
+                  :width: 500
+                  :align: center
+
+Создается проект с соответствующей структурой:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - | **Приложение**
+
+        - | **Микросервис**
+
+      * - |
+
+            .. image:: _static/idea_plugin/03.png
+                  :width: 400
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/04.png
+                  :width: 400
+                  :align: center
+
+2. Создание **артефактов** по шаблону.
+
+    По правой кнопке в контекстном меню доступен пункт **ECOS Artifact**:
+
+    .. image:: _static/idea_plugin/05.png
+        :width: 700
+        :align: center
+
+    Вводим название, выбираем тип данных:
+
+    .. image:: _static/idea_plugin/06.png
+        :width: 300
+        :align: center
+
+    артефакт генерируется в соответствии с шаблоном:
+
+    .. image:: _static/idea_plugin/07.png
+        :width: 700
+        :align: center
+
+3. **Загрузка/выгрузка артефактов** на/с локального сервера (формы ECOS, журналы, дашборды, процессы).
+
+    Для артефакта доступны следующие действия:
+
+    .. image:: _static/idea_plugin/08.png
+        :width: 500
+        :align: center
+
+    * **Deploy File** - выгрузка артефакта на сервер
+
+    * **Fetch File** - загрузка артефакта с сервера
+
+    * **Open In Browser**- просмотр артефакта в браузере
+
+    * **Open Documentation** - переход на страницу с документацией по артефакту
+
+4. **Поиск артефактов** по их идентификаторам (расширение для search everywhere).
+   
+.. image:: _static/idea_plugin/09.png
+    :width: 500
+    :align: center
+
+5. **Навигация в коде** по артефактам ECOS через гиперссылки.
+
+.. image:: _static/idea_plugin/10.png
+    :width: 400
+    :align: center
+
+6. **Автодополнение кода JavaScript** (Idea Ultimate):
+   
+    1. Формы ECOS:
+   
+        - Автодополнение объекта **data** списком компонент формы.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/11.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/12.png
+                  :width: 500
+                  :align: center
+
+1. **Навигация в файлах**:
+   
+    - Формы (быстрый переход к компонентам по их имени);
+    - Журналы (навигация по колонкам);
+
+Пока только для формата json.
+
+.. image:: _static/idea_plugin/13.png
+    :width: 600
+    :align: center
+
+8. **Инспекции кода**:
+    
+    - Формы - проверка задвоений ключей компонентов.
+
+Пока только для формата json.
+
+.. image:: _static/idea_plugin/14.png
+    :width: 600
+    :align: center
+
+9. Расширения областей поиска **файлами, содержащими артефакты ECOS**.
+
+.. image:: _static/idea_plugin/15.png
+    :width: 600
+    :align: center
+
+10. **Language Injection (JavaScript)** в формах ECOS.
+
+.. image:: _static/idea_plugin/16.png
+    :width: 600
+    :align: center
+
+Конфигурация серверов
+----------------------
+
+Настройка серверов ECOS - **Settings -> ECOS Settings -> Servers**
+
+Примеры настройки:
+
+.. image:: _static/idea_plugin/server_settings.png
+    :width: 500
+    :align: center
+
+Для метода **OAuth2**:
+
+- **Grant Type** - client_credentials
+- **Client ID** и **Client Secret** можно получить в соответствии с :ref:`инструкцией<keycloak_postman>`
+
 Сборка дистрибутива плагина
 -----------------------------
 
 1. Для корректной сборки дистрибутива плагина необходимо убедиться, что используемая версия **Gradle JVM не ниже 17**.
    
-   Настроить используемую JVM для Gradle в Idea можно по следующему пути: **Settings -> Build, Execution, Deployment -> Build Tools -> Gradle -> Gradle JVM**
+   Настроить используемую JVM для Gradle в IDEA можно по следующему пути: **Settings -> Build, Execution, Deployment -> Build Tools -> Gradle -> Gradle JVM**
 
 2. Сборка осуществляется **Gradle** задачей **buildPlugin**.
 
@@ -74,4 +192,4 @@
 
 Для разработки плагина можно использовать Gradle задачу **runIde**.
 
-При выполнении задачи будет запущен новый экземпляр Idea с пересобранным плагином.
+При выполнении задачи будет запущен новый экземпляр IDEA с пересобранным плагином.
