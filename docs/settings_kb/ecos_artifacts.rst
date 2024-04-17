@@ -89,6 +89,7 @@ ECOS Артефакты
 .. list-table::
       :widths: 10 10 40
       :header-rows: 1
+      :class: tight-table 
 
       * - Тип
         - Микросервис
@@ -489,6 +490,7 @@ filename - относительный путь до включаемого фа�
 .. list-table:: 
       :widths: 5 5 40
       :header-rows: 1
+      :class: tight-table 
 
       * - op
         - Описание

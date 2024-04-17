@@ -1,6 +1,8 @@
 Плагин для IntelliJ IDEA для работы с платформой ECOS
 ========================================================
 
+.. _IntelliJ_IDEA_plugin:
+
 Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS.
 
 Установка плагина в IDEA
@@ -35,7 +37,7 @@
                   :width: 500
                   :align: center
 
-Создается проект с соответствующей структурой:
+Создается проект со соответствующей структурой:
 
 .. list-table::
       :widths: 20 20
@@ -82,16 +84,60 @@
     Для артефакта доступны следующие действия:
 
     .. image:: _static/idea_plugin/08.png
-        :width: 500
+        :width: 600
         :align: center
 
-    * **Deploy File** - выгрузка артефакта на сервер
+    * **Deploy File** - выгрузка артефакта на сервер. 
 
     * **Fetch File** - загрузка артефакта с сервера
 
     * **Open In Browser**- просмотр артефакта в браузере
 
     * **Open Documentation** - переход на страницу с документацией по артефакту
+
+    Выгрузите артефакт по кнопке **Deploy File** на стенд или локально:
+
+    .. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/deploy_a.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/select_server.png
+                  :width: 200
+                  :align: center 
+
+       
+    Откройте артефакт (например, форму) по кнопке **Open In Browser** в no-code редакторе на стенде или локально, отредактируйте:
+
+    .. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/form_1.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/form_2.png
+                  :width: 500
+                  :align: center 
+    
+    Загрузите измененный артефакт обратно по кнопке **Fetch File**:
+
+    .. image:: _static/idea_plugin/08_1.png
+        :width: 600
+        :align: center
+
 
 4. **Поиск артефактов** по их идентификаторам (расширение для search everywhere).
    
@@ -127,7 +173,7 @@
                   :width: 500
                   :align: center
 
-1. **Навигация в файлах**:
+7. **Навигация в файлах**:
    
     - Формы (быстрый переход к компонентам по их имени);
     - Журналы (навигация по колонкам);
@@ -145,20 +191,24 @@
 Пока только для формата json.
 
 .. image:: _static/idea_plugin/14.png
-    :width: 600
+    :width: 500
     :align: center
 
 9. Расширения областей поиска **файлами, содержащими артефакты ECOS**.
 
 .. image:: _static/idea_plugin/15.png
-    :width: 600
+    :width: 500
     :align: center
 
 10. **Language Injection (JavaScript)** в формах ECOS.
 
 .. image:: _static/idea_plugin/16.png
-    :width: 600
+    :width: 500
     :align: center
+
+11. **Деплой проекта ECOS**
+
+TBD
 
 Конфигурация серверов
 ----------------------
@@ -168,13 +218,15 @@
 Примеры настройки:
 
 .. image:: _static/idea_plugin/server_settings.png
-    :width: 500
+    :width: 600
     :align: center
+
+Для локального стенда используется метод **basic**.
 
 Для метода **OAuth2**:
 
-- **Grant Type** - client_credentials
-- **Client ID** и **Client Secret** можно получить в соответствии с :ref:`инструкцией<keycloak_postman>`
+    - **Grant Type** - client_credentials
+    - **Client ID** и **Client Secret** можно получить в соответствии с :ref:`инструкцией<keycloak_postman>`
 
 Сборка дистрибутива плагина
 -----------------------------
