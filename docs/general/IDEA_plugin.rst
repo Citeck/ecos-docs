@@ -3,7 +3,7 @@
 
 .. _IntelliJ_IDEA_plugin:
 
-Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS.
+Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
 
 Установка плагина в IDEA
 ---------------------------
@@ -19,7 +19,7 @@
 
 **File -> New project**
 
-Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<service_setup>`
+Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<service_setup>`:
 
 .. list-table::
       :widths: 20 20
@@ -139,13 +139,13 @@
         :align: center
 
 
-4. **Поиск артефактов** по их идентификаторам (расширение для search everywhere).
+4. **Поиск артефактов** по их идентификаторам (расширение для search everywhere):
    
 .. image:: _static/idea_plugin/09.png
     :width: 500
     :align: center
 
-5. **Навигация в коде** по артефактам ECOS через гиперссылки.
+5. **Навигация в коде** по артефактам ECOS через гиперссылки:
 
 .. image:: _static/idea_plugin/10.png
     :width: 400
@@ -178,7 +178,7 @@
     - Формы (быстрый переход к компонентам по их имени);
     - Журналы (навигация по колонкам);
 
-Пока только для формата json.
+Пока доступно только для формата json.
 
 .. image:: _static/idea_plugin/13.png
     :width: 600
@@ -188,19 +188,19 @@
     
     - Формы - проверка задвоений ключей компонентов.
 
-Пока только для формата json.
+Пока доступно только для формата json.
 
 .. image:: _static/idea_plugin/14.png
     :width: 500
     :align: center
 
-9. Расширения областей поиска **файлами, содержащими артефакты ECOS**.
+9. Расширения областей поиска **файлами, содержащими артефакты ECOS**:
 
 .. image:: _static/idea_plugin/15.png
     :width: 500
     :align: center
 
-10. **Language Injection (JavaScript)** в формах ECOS.
+10. **Language Injection (JavaScript)** в формах ECOS:
 
 .. image:: _static/idea_plugin/16.png
     :width: 500
@@ -208,12 +208,29 @@
 
 11. **Деплой проекта ECOS**
 
-TBD
+Деплой проекта возможен из **meta.yml** по нажатию на **Deploy File**:
+
+.. image:: _static/idea_plugin/deploy_app_1.png
+    :width: 500
+    :align: center
+
+Далее можно нажать **Open In Browser**, чтобы посмотреть и отредактировать приложение в ECOS:
+
+.. image:: _static/idea_plugin/app.png
+    :width: 500
+    :align: center
+
+Так же деплоить можно из контекстного меню, выбрав **ECOS-Deploy Application**:
+
+.. image:: _static/idea_plugin/deploy_app_2.png
+    :width: 400
+    :align: center
+
 
 Конфигурация серверов
 ----------------------
 
-Настройка серверов ECOS - **Settings -> ECOS Settings -> Servers**
+Настройка серверов ECOS: **Settings -> ECOS Settings -> Servers**
 
 Примеры настройки:
 
@@ -237,7 +254,7 @@ TBD
 
 2. Сборка осуществляется **Gradle** задачей **buildPlugin**.
 
-3. Собранный дистрибутив будет расположен по следующему пути: **build/distributions/**.
+3. Собранный дистрибутив будет расположен по следующему пути: **build/distributions/**
 
 Разработка
 -----------
