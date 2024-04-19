@@ -6,6 +6,8 @@
 
 Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
 
+Исходный код плагина доступен по ссылке: `ecos-idea-plugin <https://github.com/Citeck/ecos-idea-plugin>`_
+
 .. note::
 
  Минимально необходимые версии:
@@ -16,7 +18,7 @@
 Установка плагина в IDEA
 ---------------------------
 
-Скачать дистрибутив плагина можно из `package registry <https://gitlab.citeck.ru/citeck-projects/ecos-idea-plugin/-/packages>`_ или собрать из исходников самостоятельно.
+Скачать дистрибутив плагина можно из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или собрать из исходников самостоятельно.
 
 Далее установить плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
