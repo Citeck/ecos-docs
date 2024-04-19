@@ -4,6 +4,8 @@
 Вкладки внутри ECOS
 ---------------------
 
+.. _ecos_tabs:
+
 .. image:: _static/productivity/p_01.png
     :width: 700
     :align: center 

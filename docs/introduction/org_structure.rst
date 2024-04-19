@@ -1,8 +1,10 @@
 Организационная структура
 ===========================
 
+.. _org_structure:
+
 .. contents::
-   :depth: 3
+   :depth: 4
 
 Страница оргструктуры
 ----------------------
@@ -11,7 +13,7 @@
 
 Для управления оргструктурой необходимо выбрать в главном меню пункт: 
 
-.. image:: _static/org_structure/org_1.png
+.. image:: _static/org_structure/orgstructure.png
        :width: 600
        :align: center
 
@@ -33,9 +35,15 @@
        :width: 300
        :align: center
 
-Внесите данные в обязательные поля и нажмите **Создать**.
+Группа **Оргструктура** добавлена по умолчанию. Внесите данные в обязательные поля и нажмите **Сохранить**.
 
 .. image:: _static/org_structure/new_group_2.png
+       :width: 700
+       :align: center
+
+По кнопке **(1)** можно выбрать из оргструктуры родительскую группу (в которую создаваемая группы будет входить). 
+
+.. image:: _static/org_structure/new_group_3.png
        :width: 700
        :align: center
 
@@ -44,7 +52,7 @@
 
 Для группы доступны кнопки управления, которые отображаются при наведении на элемент.
 
-.. image:: _static/org_structure/org_7.png
+.. image:: _static/org_structure/group_actions.png
        :width: 300
        :align: center
 
@@ -56,52 +64,75 @@
 
       * - 
 
-          .. image:: _static/org_structure/org_8.png
+          .. image:: _static/org_structure/group_action_01.png
                   :width: 30
                   :align: center
 
-        - | **Редактировать группу**
-          | Внесите изменения и сохраните. На форме отображены все группы и пользователи, входящие в родительскую группу. 
-          | По клику на группу/ пользователя доступны действия - просмотр, редактирование удаление.
+        - | **Редактировать**
+          | На форме отображены все группы и пользователи, входящие в группу, информация о родительских группах.
+          | Можно отредактировать **Имя группы**, **Описание**, **удалить (1)**,  **добавить родительские группы** **(2)**.
 
-          .. image:: _static/org_structure/org_9.png
+          .. image:: _static/org_structure/edit.png
+                  :width: 500
+                  :align: center
+
+          | По клику на группу/ пользователя **(3)** доступен просмотр информации:
+
+           .. image:: _static/org_structure/edit_group.png
+                  :width: 500
+                  :align: center         
+          
+          .. image:: _static/org_structure/edit_person.png
                   :width: 500
                   :align: center
 
       * - 
 
-          .. image:: _static/org_structure/org_10.png
+          .. image:: _static/org_structure/group_action_02.png
                   :width: 30
                   :align: center
 
         - | **Добавить подгруппу**
-          | Внесите данные и сохраните. На форме отображены все группы и пользователи, входящие в родительскую группу.
-          | По клику на группу/ пользователя доступны действия - просмотр, редактирование удаление.
+          | Выберите существующую группу/группы из оргструктуры. Нажмите **Ок**.
 
-          .. image:: _static/org_structure/org_11.png
-                  :width: 500
+          .. image:: _static/org_structure/add_subgroup.png
+                  :width: 400
                   :align: center
 
       * - 
 
-          .. image:: _static/org_structure/org_12.png
+          .. image:: _static/org_structure/group_action_03.png
                   :width: 30
                   :align: center
 
         - | **Добавить пользователя в группу**
+          | Выберите существующих пользователей из оргструктуры. Нажмите Ок.
+
+          .. image:: _static/org_structure/add_user.png
+                  :width: 400
+                  :align: center
+
+      * - 
+
+          .. image:: _static/org_structure/group_action_04.png
+                  :width: 30
+                  :align: center
+
+        - | **Создать пользователя**
+          | Группа будет уже предзаполнена.
           | Внесите данные и сохраните. Обязательные поля отмечены звездочкой.
           | Чтобы задачи пользователя были доступны для контроля руководителем, заполните поле **Линейный руководитель**.
 
-          .. image:: _static/org_structure/org_13.png
+          .. image:: _static/org_structure/add_new_user.png
                   :width: 500
                   :align: center
 
 Просмотр и редактирование профиля пользователя, удаление пользователя из группы
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Для пользователя доступны кнопки управления, которые отображаются при наведении на элемент.
 
-.. image:: _static/org_structure/org_2.png
+.. image:: _static/org_structure/user_actions.png
        :width: 300
        :align: center
 
@@ -113,25 +144,25 @@
 
       * - 
 
-          .. image:: _static/org_structure/org_3.png
+          .. image:: _static/org_structure/person_action_01.png
                   :width: 30
                   :align: center
 
-        - | **Удаление пользователя из данной группы**
+        - | **Исключить пользователя из группы**
           | Действие необходимо подтвердить:
 
-          .. image:: _static/org_structure/org_4.png
+          .. image:: _static/org_structure/exclude_user.png
                   :width: 500
                   :align: center
       * - 
 
-          .. image:: _static/org_structure/org_5.png
+          .. image:: _static/org_structure/person_action_02.png
                   :width: 30
                   :align: center
 
-        - | **Просмотр профиля пользователя**
+        - | **Открыть профиль пользователя**
 
-          .. image:: _static/org_structure/org_6.png
+          .. image:: _static/org_structure/user_profile.png
                   :width: 500
                   :align: center
 
@@ -139,17 +170,17 @@
           | Виджеты на дашборде можно конфигурировать - менять их местами, скрывать ненужные. См. подробно :ref:`о конфигурации дашбордов<dashboard_config>`
           | Для редактирования информации виджета нажмите:
 
-          .. image:: _static/org_structure/edit_1.png
+          .. image:: _static/org_structure/edit_user_1.png
                   :width: 300
                   :align: center
 
           | Или редактировать непосредственно в строке:
 
-          .. image:: _static/org_structure/edit_2.png
+          .. image:: _static/org_structure/edit_user_2.png
                   :width: 300
                   :align: center   
 
-          .. image:: _static/org_structure/edit_3.png
+          .. image:: _static/org_structure/edit_user_3.png
                   :width: 300
                   :align: center
 
@@ -159,19 +190,19 @@
 
 Компонент используется для выбора сотрудников и групп в формах документов, бизнес-процессов и т.д.
 
-.. image:: _static/org_structure/org_14.png
+.. image:: _static/org_structure/org_s_1.png
        :width: 600
        :align: center
 
-По умолчанию Оргструктура представлена в виде **иерархии по уровням**. Выбор сотрудника осуществляется нажатием на:
+По умолчанию **Оргструктура** представлена в виде **иерархии по уровням**. Выбор сотрудника осуществляется нажатием на:
 
-.. image:: _static/org_structure/org_15.png
+.. image:: _static/org_structure/org_s_2.png
        :width: 400
        :align: center
 
 **Все пользователи** списком: 
 
-.. image:: _static/org_structure/org_16.png
+.. image:: _static/org_structure/org_s_3.png
        :width: 400
        :align: center
 
@@ -179,7 +210,7 @@
 
 **Только выбранные** ранее:
 
-.. image:: _static/org_structure/org_17.png
+.. image:: _static/org_structure/org_s_4.png
        :width: 400
        :align: center
 
@@ -192,19 +223,19 @@
 
 Маску для отображения информации о пользователе можно изменить. Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **orgstruct-username-mask** в режиме редактирования:
 
-.. image:: _static/org_structure/org_18.png
+.. image:: _static/org_structure/mask_1.png
        :width: 700
        :align: center
 
 Укажите маску, например, **${firstName} ${lastName} ${email}** и сохраните:
 
-.. image:: _static/org_structure/org_19.png
+.. image:: _static/org_structure/mask_2.png
        :width: 400
        :align: center
 
 Измененный вывод данных пользователя в компоненте Оргструктура:
 
-.. image:: _static/org_structure/org_20.png
+.. image:: _static/org_structure/mask_3.png
        :width: 400
        :align: center
 
@@ -214,7 +245,7 @@
 
 ``${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://ecos-community-demo/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>``
 
-.. image:: _static/org_structure/org_21.png
+.. image:: _static/org_structure/mask_4.png
        :width: 400
        :align: center
 
@@ -236,18 +267,18 @@
 
 Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, откройте идентификатор **hide-in-orgstruct** в режиме редактирования:
 
-.. image:: _static/org_structure/org_22.png
+.. image:: _static/org_structure/hide_1.png
        :width: 700
        :align: center
 
 Укажите логины пользователей, например, **ivanov_ii,petrov_vv** и сохраните:
 
-.. image:: _static/org_structure/org_23.png
+.. image:: _static/org_structure/hide_2.png
        :width: 400
        :align: center
 
-Поиск пользователя в компоненте Оргструктура:
+Поиск пользователя в компоненте **Оргструктура**:
 
-.. image:: _static/org_structure/org_24.png
+.. image:: _static/org_structure/hide_3.png
        :width: 400
        :align: center

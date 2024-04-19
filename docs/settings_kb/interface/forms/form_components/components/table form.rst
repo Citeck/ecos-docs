@@ -60,23 +60,19 @@ Table form
 
 .. code-block::
 
-    value = {
-        name: 'ExampleFormatter',
-        params: {}
-    };
+  value = { 
+   type: 'script', 
+   config: {
+     fn: function(...params) {
+       const linkHtml = `<a href="${params[0].cell}">${params[0].cell}</a>`
+       return {
+         type: 'html',
+         config: {html: linkHtml}
+       }
+     }
+   }
+ };
 
-Пример:
-
-.. code-block::
-
-    value = {
-    name: 'FunctionFormatter',
-    params: {
-        fn: function(cell, rec, col, data) {
-        cell.innerHTML = `<strong>${data}</strong>`;
-        }
-    }
-    };
 
 .. image:: _static/table_form/Table_form_8.png
        :width: 600
