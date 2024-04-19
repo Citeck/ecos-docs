@@ -3,14 +3,22 @@
 
 .. _IntelliJ_IDEA_plugin:
 
+
 Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
+
+.. note::
+
+ Минимально необходимые версии:
+    
+  * IntelliJ IDEA - 2022.2.5.
+  * ECOS - 4.2
 
 Установка плагина в IDEA
 ---------------------------
 
 Скачать дистрибутив плагина можно из `package registry <https://gitlab.citeck.ru/citeck-projects/ecos-idea-plugin/-/packages>`_ или собрать из исходников самостоятельно.
 
-Далее установить плагин в Idea: **Settings -> Plugins -> Install Plugin from disk**
+Далее установить плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
 Функционал плагина
 ------------------
@@ -151,7 +159,7 @@
     :width: 400
     :align: center
 
-6. **Автодополнение кода JavaScript** (Idea Ultimate):
+6. **Автодополнение кода JavaScript** (IDEA Ultimate):
    
     1. Формы ECOS:
    
