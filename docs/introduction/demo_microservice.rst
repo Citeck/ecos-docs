@@ -6,7 +6,7 @@
 .. contents:: 
    :depth: 2
 
-Репозиторий `ecos-demo-app <https://gitlab.citeck.ru/ecos-community/ecos-demo-app>`_ содержит приложение, демонстрирующее возможности ECOS.
+Репозиторий `ecos-demo-app <https://github.com/Citeck/ecos-demo-app>`_ содержит приложение, демонстрирующее возможности ECOS.
 
 Вы можете познакомиться с:
 
@@ -81,13 +81,13 @@
 Сборка
 -------
 
-Для сборки docker образа с микросервисом в прод среду выполните команду:
+Для сборки docker образа с микросервисом выполните команду:
 
 .. code-block:: text
 
     ./mvnw -Pprod clean package jib:dockerBuild -Djib.docker.image.tag=custom 
 
-Чтобы убедиться, что все работает, остановите исходный контейнер **ecos-demo-app** и запустите вместо него **ecos-demo-app:custom**.
+После сборки вы можете запустить контейнер **ecos-demo-app:custom** с помощью docker.
 
 Тестирование
 --------------
