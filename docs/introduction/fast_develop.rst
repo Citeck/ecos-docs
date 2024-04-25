@@ -200,4 +200,4 @@
        :width: 400
        :align: center
 
-
+См. статью о :ref:`приложении<demo_microservice>`, демонстрирующем возможности ECOS.
