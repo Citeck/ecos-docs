@@ -258,7 +258,7 @@ Records API в браузере
         query: {
             type: 'add-working-time',
             config: {date: '2023-03-05T14:00:00', time: '10h'},
-            query: {}
+            query: {scheduleId: 'DEFAULT'}
         }
     }, "data")
 
@@ -278,7 +278,7 @@ Records API в браузере
         query: {
             type: 'add-working-days',
             config: {date: '2023-03-05', days: 10},
-            query: {}
+            query: {scheduleId: 'DEFAULT'}
         }
     }, "data")
 
@@ -298,7 +298,7 @@ Records API в браузере
         query: {
             type: 'get-working-days',
             config: {from: '2023-03-05', to: '2023-03-21'},
-            query: {}
+            query: {scheduleId: 'DEFAULT'}
         }
     }, "data")
 
