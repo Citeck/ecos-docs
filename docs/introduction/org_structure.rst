@@ -132,6 +132,8 @@
 
 Для пользователя доступны кнопки управления, которые отображаются при наведении на элемент.
 
+.. _user_profile:
+
 .. image:: _static/org_structure/user_actions.png
        :width: 300
        :align: center

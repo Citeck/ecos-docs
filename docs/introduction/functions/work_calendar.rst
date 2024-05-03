@@ -3,66 +3,10 @@
 
 .. _business-schedule:
 
-Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
+Функциональность для учета нерабочих, праздничных дней календаря, которые позволяют более гибко настраивать рабочий график сотрудников в различных модулях системы.
 
 .. contents::
    :depth: 3
-
-Рабочее расписание
--------------------
-
-Определяет обычный распорядок рабочих дней. 
-
-Настройка расположена в журнале http://localhost/v2/admin?journalId=type$working-schedule&type=JOURNAL (**Раздел администратора - Модель – Рабочее расписание**)
-
- .. image:: _static/work_calendar/calendar_1.png
-       :width: 700
-       :align: center 
-
-|
-
- .. image:: _static/work_calendar/calendar_2.png
-       :width: 600
-       :align: center 
-
-
-Указать **Имя**, **Тип расписания** (на данный момент поддерживается только weekly), **Конфигурацию** для типа расписания.
-
-Пример заполнения конфигурации:
-
-.. code-block::
-
-  {
-      "workdays": [
-        "MONDAY",
-        "TUESDAY",
-        "WEDNESDAY",
-        "THURSDAY",
-        "FRIDAY"
-      ],
-      "workingDayEnd": "17:00",
-      "workingCalendar": "emodel/working-calendar@RU",
-      "workingDayStart": "09:00",
-      "workingDayTimeZone": "+03:00"
-    }
-
-Где:
-
-.. list-table:: 
-      :widths: 10 10
-
-      * - **workdays**
-        - Список рабочих дней
-      * - **workingDayEnd**
-        - Завершение рабочего дня
-      * - **workingCalendar**
-        - Ссылка на производственный календарь
-      * - **workingDayStart**
-        - Начало рабочего дня
-      * - **workingDayTimeZone**
-        - Часовой пояс рабочего дня
-
-Например, используется для расчета SLA в :ref:`модуле «Service Desk»<ecos-service-desk>`
 
 Производственный календарь
 ----------------------------
@@ -78,12 +22,12 @@
 |
 
  .. image:: _static/work_calendar/calendar_4.png
-       :width: 600
+       :width: 500
        :align: center 
 
 Выбрать **календарь**, который расширяем своей конфигурацией, указать **даты действия** календаря, выставить **Включен** ли календарь и указать **список дней** календаря.
 
-Пример заполнения конфигурации:
+Пример конфигурации календаря с условием:
 
 .. code-block::
 
@@ -135,7 +79,7 @@
       }
   ]
 
-Где:
+де:
 
 .. list-table:: 
       :widths: 10 10
@@ -157,4 +101,92 @@
       * - **description**
         - Описание дня или диапазона
 
+
+Рабочее расписание
+-------------------
+
+Определяет обычный распорядок рабочих дней. 
+
+Настройка расположена в журнале http://localhost/v2/admin?journalId=type$working-schedule&type=JOURNAL (**Раздел администратора - Модель – Рабочее расписание**)
+
+ .. image:: _static/work_calendar/calendar_1.png
+       :width: 700
+       :align: center 
+
+|
+
+ .. image:: _static/work_calendar/calendar_2.png
+       :width: 500
+       :align: center 
+
+
+Указать **Имя**, **Тип расписания** (на данный момент поддерживается только weekly), **Конфигурацию** для типа расписания.
+
+Пример заполнения конфигурации
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Пример конфигурации рабочего расписания с всеми рабочими днями и дефолтным календарем:
+
+.. code-block::
+
+  {
+      "workdays": [
+        "MONDAY",
+        "TUESDAY",
+        "WEDNESDAY",
+        "THURSDAY",
+        "FRIDAY",
+        "SATURDAY",
+        "SUNDAY"
+      ],
+      "workingDayEnd": "17:00",
+      "workingCalendar": "emodel/working-calendar@RU",
+      "workingDayStart": "09:00"
+    
+Пример конфигурации рабочего расписания с часовым поясом:
+
+.. code-block:: 
+
+  {
+      "workdays": [
+        "MONDAY",
+        "TUESDAY",
+        "WEDNESDAY",
+        "THURSDAY",
+        "FRIDAY"
+        "SATURDAY",
+        "SUNDAY"
+      ],
+      "workingDayEnd": "17:00",
+      "workingCalendar": "emodel/working-calendar@RU",
+      "workingDayStart": "09:00",
+      "workingDayTimeZone": "+03:00"
+
+Где:
+
+.. list-table:: 
+      :widths: 10 10
+
+      * - **workdays**
+        - Список рабочих дней
+      * - **workingDayEnd**
+        - Завершение рабочего дня
+      * - **workingCalendar**
+        - Ссылка на производственный календарь
+      * - **workingDayStart**
+        - Начало рабочего дня
+      * - **workingDayTimeZone**
+        - Часовой пояс рабочего дня
+
+Например, используется для расчета SLA в :ref:`модуле «Service Desk»<ecos-service-desk>`
+
 См. больше о :ref:`настройках<working-schedule>`
+
+Добавление расписания пользователю
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Рабочий календарь можно добавить пользователю :ref:`в профиле<user_profile>`:
+
+.. image:: _static/work_calendar/user_profile.png
+     :width: 500
+     :align: center

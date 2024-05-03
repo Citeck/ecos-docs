@@ -7,5 +7,6 @@
     functions/esign
     functions/onlyoffice_edit
     functions/actions
+    functions/doc_templates
     functions/barcode
     functions/work_calendar
