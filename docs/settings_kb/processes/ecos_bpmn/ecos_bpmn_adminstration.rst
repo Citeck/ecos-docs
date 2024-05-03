@@ -60,10 +60,28 @@
        :width: 600
        :align: center
 
+Если процесс еще не завершен и по нему есть активные задачи, то а администрирование конкретного :ref:`экземпляра процеса<process_instance>` можно перейти из карточки документа. В виджете **Все задачи** нажмите:
+
+.. image:: _static/admin/card_adm_01.png
+       :width: 600
+       :align: center
+
+В меню выберите **Схема бизнес-процесса**:
+
+.. image:: _static/admin/card_adm_02.png
+       :width: 300
+       :align: center
+
+Далее нажмите **Администрирование БП**:
+
+.. image:: _static/admin/card_adm_03.png
+       :width: 700
+       :align: center
+
 Рассмотрим каждый виджет :ref:`отдельно<process_information>`
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 4
 
     admin/process_information
     admin/process_instance
