@@ -69,4 +69,4 @@
 .. code-block::
 
     var rec = Records.get("emodel/contract@295ea260-df3e-493e-b27c-34b6c27e7fea"); // берем сущность с типом, на который мы добавили новый атрибут.
-    await rec.load("newExtMixin", true); // загружаем значение нового атрибута
+    await rec.load("newExtAtt,", true); // загружаем значение нового атрибута
