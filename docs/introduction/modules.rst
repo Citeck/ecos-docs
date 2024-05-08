@@ -341,39 +341,197 @@
               :width: 30
               :align: center 
 
-Функциональность, доступная только в enterprise версии
---------------------------------------------------------
+Отдельные функциональности
+---------------------------
 
 .. list-table:: 
-      :widths: 20 40
+      :widths: 10 20 10 10
       :header-rows: 1
       :class: tight-table 
 
       * - Функциональность
         - Описание
+        - Community
+        - Enterprise
       * - :ref:`Виджет «Статистика процесса»<widget_process_statistics>`
         - Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap). 
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Виджет «Стадии»<widget_stages>`
         - Виджет визуализирует прохождение :ref:`ECOS стадий<stages>` документа.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Виджет «Канбан»<widget_kanban>`
         - Виджет добавляет в карточку :ref:`канбан доску<kanban_board>` с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Виджет «Графическая статистика»<widget_graphic_statistics>`
         - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейные, столбчатые, круговые.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Делегирование<delegation>`
         - Настройка передача своих задач или функций другим сотрудникам.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Редактирование матрицы прав<permissions>`
         - Настройка прав для типа данных.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Синхронизация пользователей из LDAP<LDAP_sync>`
         - Можно создать несколько конфигураций синхронизации из LDAP, указав различные настройки - например, сервера, домены, фильтры и т.д.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`ECOS KeyCloak Extension<keycloak_extension>`
         - Возможность создания или формирование событий ECOS при возникновении пользовательских и админских событий Keycloak 
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Аудит<ecos_audit>`
         - Аудит (журнал событий) предназначен для ведения лог-файлов, в которые записываются события системы.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Lazy approval<user_task_lazy_approval>`
         - Функциональность, позволяющая принимать решения из электронной почты, не заходя в ECOS.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Групповые действия<group_actions>`
         - Позволяют обработать большое количество элементов на сервере.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Рабочий календарь<business-schedule>`
         - Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`KPI<bpmn_kpi>`
         - Настройка норм времени на выполнение задач, смену статусов, выполнение условий (событие, обновление атрибутов).
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
