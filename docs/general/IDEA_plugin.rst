@@ -187,16 +187,30 @@
    
     - Формы (быстрый переход к компонентам по их имени);
     - Журналы (навигация по колонкам);
+    - Типы данных (быстрый переход к атрибутам, ролям, статусам и т.д.)
 
 Пока доступно только для формата json.
 
-.. image:: _static/idea_plugin/13.png
-    :width: 600
-    :align: center
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/13.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/13_1.png
+                  :width: 500
+                  :align: center
+
 
 8. **Инспекции кода**:
     
-    - Формы - проверка задвоений ключей компонентов.
+    - Формы - проверка уникальности ключей компонентов форм с учетом областей (container, datagrid).
 
 Пока доступно только для формата json.
 
@@ -204,19 +218,55 @@
     :width: 500
     :align: center
 
-9. Расширения областей поиска **файлами, содержащими артефакты ECOS**:
+9. Генерация компонентов формы:
+    
+Если в форме задан **typeRef**
 
-.. image:: _static/idea_plugin/15.png
+.. image:: _static/idea_plugin/comp_gen_01.png
     :width: 500
     :align: center
 
-10. **Language Injection (JavaScript)** в формах ECOS:
+то доступна генерация компонентов по атрибутам указанного в typeRef типа данных.
+
+.. list-table::
+      :widths: 20 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/comp_gen_02.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/comp_gen_03.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/comp_gen_04.png
+                  :width: 500
+                  :align: center
+
+.. image:: _static/idea_plugin/comp_gen_05.png
+    :width: 300
+    :align: center
+
+10. Расширения областей поиска **файлами, содержащими артефакты ECOS**:
+
+.. image:: _static/idea_plugin/15.png
+    :width: 600
+    :align: center
+
+11. **Language Injection (JavaScript)** в формах ECOS:
 
 .. image:: _static/idea_plugin/16.png
     :width: 500
     :align: center
 
-11. **Деплой проекта ECOS**
+12. **Деплой проекта ECOS**
 
 Деплой проекта возможен из **meta.yml** по нажатию на **Deploy File**:
 
