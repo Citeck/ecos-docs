@@ -1,6 +1,6 @@
 .. _docker_compose:
 
-Установка Citeck ECOS c помощью Docker-compose
+Установка Citeck ECOS c помощью Docker Compose
 ===============================================
 
 .. contents::
@@ -74,7 +74,7 @@ MacOS
     в настройке ``WITH_DEMO_DATA`` укажите **false**.
 
 
-•	Установите `docker и docker-compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
+•	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
 •   Клонируйте репозиторий: ``git clone https://github.com/citeck/ecos-community-demo.git``
 •	В терминале: 
 
@@ -83,16 +83,30 @@ MacOS
 
 •	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
 •	Перейдите в браузере по адресу http://ecos-community-demo/
+•   Войдите в систему, используя следующие учётные данные:
 
-Войдите в систему, используя следующие учётные данные:
+.. image:: _static/docker-compose/09.png
+    :width: 600
+    :align: center
 
-    Логин – **admin**
+.. code-block::
 
-    Пароль - **admin**
+    Username: admin
+    Password: admin
 
-При первом развертывании keycloak попросит сменить пароль. 
+•   При первом развертывании keycloak попросит сменить пароль:
+
+.. image:: _static/docker-compose/10.png
+    :width: 300
+    :align: center
 
 Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+
+•   Далее станет доступна домашняя страница ECOS:
+
+.. image:: _static/docker-compose/11.png
+    :width: 700
+    :align: center
 
 .. note:: 
 
@@ -141,7 +155,7 @@ MacOS
     yum install -y docker-ce docker-ce-cli http://containerd.io 
     systemctl enable docker && systemctl start docker
 
-Установить docker-compose:
+Установить Docker Compose:
 
 .. code-block::
 
@@ -231,7 +245,7 @@ MacOS
     sudo systemctl enable docker.service
     sudo systemctl enable containerd.service
 
-Установка Docker-compose:
+Установка Docker Compose:
 
 .. code-block::
 
@@ -294,7 +308,7 @@ MacOS
     echo 'SELINUX=disabled' > /etc/sysconfig/selinux
     reboot
 
-Установка Docker и Docker-compose:
+Установка Docker и Docker Compose:
 
 .. code-block::
 
