@@ -245,6 +245,71 @@
 
     Если включена дифференциальная синхронизация и была изменена конфигурация с повышением версии, то первая синхронизация после изменения будет полной.
 
+
+Удаление пользователей
+""""""""""""""""""""""""""""""""""""
+
+Для новой логики синхронизации пользователей из LDAP был добавлен дополнительный функционал с удаления пользователя из ECOS если он был удален в LDAP. |br|
+В конфигурацию lDAP добавлен новый параметр **config.allowDeletions** (true/false). |br|
+Пример полной конфигурации:
+
+.. code-block:: json
+
+  {
+      "id": "emodel-ldap-person-sync-with-delete",
+      "name": {
+          "ru": "Пользователи из LDAP c удалением",
+          "en": "Persons from LDAP with allowed deletion"
+      },
+      "type": "emodel-ldap",
+      "repeatDelayDuration": "PT5M",
+      "enabled": true,
+      "config": {
+              "batchSize": 100,
+              "usernameAttributeName": "uid",
+              "modifyTimestampAttName": "modifyTimestamp",
+              "modifyTimestampFormat": "yyyyMMddHHmmss'Z'",
+              "attributes": {
+                  "email": "mail",
+                  "lastName": "sn",
+                  "firstName": "givenname"
+              },
+              "ldapSearch": {
+                  "filter": "(objectClass=person)"
+              },
+              "differential": false,
+              "allowDeletions": true,
+              "ldapConnection": {
+                  "base": "dc=example,dc=org",
+                  "urls": [
+                      "ldap://localhost:389"
+                  ],
+                  "credentials": "ldap-cred"
+              }
+      },
+      "version": 1,
+      "authorityType": "PERSON",
+      "manageNewAuthorities": true
+  }
+
+Логика:
+
+1. При синхронизации пользователей из LDAP пользователю добавляются дополнительные два атрибута:
+  
+   - **ldap-sync:lastLdapSyncDate** - дата последней синхронизации текущего пользователя с LDAP;
+
+   - **ldap-sync:ldapSyncId** - id конфигурации с LDAP синхронизацией (для понимания того какая именно синхронизация добавила или последний раз обновила пользователя), например, в примере выше это свойство будет равно *emodel-ldap-person-sync-with-delete*
+
+2. При повторной синхронизации, мы обновляем всех пользователей, данные по которым пришли из LDAP, и если у нас остались пользователи, которые не обновлялись (т.е. были удалены из LDAP и по ним не пришло никаких данных), то при флаге **allowDeletions = true** такие пользователи удаляются из ECOS.
+
+   Если флаг **allowDeletions = false**, то логика никак не меняется, пользователи остаются в ECOS даже если были удалены из LDAP.
+
+Важные замечания:
+
+1. Флаги **allowDeletions** и **differential** не могут быть **true** одновременно, корректных пользователей на удаление мы можем определить только если происходит полная синхронизация (**differential = false**).
+
+2. Если флаг **allowDeletions = true**, то крайне не рекомендуется менять поисковый запрос (ldapSearch) при наличии уже синхронизированных пользователей, иначе можно потерять данные (если требуется изменить запрос, то нужно убедится что в новый запрос входят все пользователи из старого или **allowDeletions = false**, если не хотим терять пользователей синхронизированных из LDAP).
+
 .. |br| raw:: html
 
      <br>   
