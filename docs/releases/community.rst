@@ -14,6 +14,8 @@ Community
 
 5. Разработан :ref:`плагин для IntelliJ IDEA<IntelliJ_IDEA_plugin>`, который упрощает работу с проектами и артефактами ECOS.
 
+6. Стали доступны :ref:`виджет «Стадии»<widget_stages>`, :ref:`виджет «Канбан»<widget_kanban>`, :ref:`редактирование матрицы прав<permissions>`. 
+
 4.9.0
 -----
 
