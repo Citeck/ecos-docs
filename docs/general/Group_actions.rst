@@ -306,3 +306,11 @@ UI действие
     execForQuery: true
     execForRecord: false
     execForRecords: true
+
+При выполнении групповой операции отображается окно с прогрессом (% выполнения):
+
+.. image:: _static/group_actions/01.png
+    :width: 500
+    :align: center
+
+
