@@ -17,7 +17,7 @@
     -   минимально 16 ГБ оперативной памяти;
     -	установочный образ `ECOS community demo <https://storage.yandexcloud.net/ecos-community-vm/ecos-community-vm.ova>`_;
     -	установленная система виртуализации `Oracle VM VirtualBox 7.0.18 <https://www.virtualbox.org/wiki/Downloads>`_;
-    -	в файле **hosts** необходимо прописать **127.0.0.1 ecos-community-demo**. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере:
+    -	в файле **hosts** необходимо указать **127.0.0.1 ecos-community-demo**. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере:
 
             *  Windows— **c:/windows/system32/drivers/etc/hosts**
             *  Linux, Ubuntu, Unix, BSD — **/etc/hosts** 
@@ -142,12 +142,14 @@
     :width: 700
     :align: center
 
+|
+
 .. note:: 
 
     При первом запуске в течение первых 5 минут после успешной установки и входа в систему может возникать ошибка:
 
     .. image:: _static/vm/13.png
-        :width: 600
+        :width: 700
         :align: center
 
     Развертывание и запуск ECOS продолжается, необходимо подождать.
