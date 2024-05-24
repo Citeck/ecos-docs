@@ -6,7 +6,26 @@ Kubernetes
 Менеджмент ресурсов подов и контейнеров
 ----------------------------------------
 
-Ниже описаны минимальные требования к ресурсам mem/cpu для стабильной работы микросервисов в сочетании с xmx/xms параметрами java. (TODO: привязка к количеству пользователей)
+Ниже описаны минимальные требования к ресурсам mem/cpu для стабильной работы микросервисов в сочетании с xmx/xms параметрами java. 
+На данной конфигурации было произведено нагрузочное тестирование в 1000 одновременно работающих пользователей, длительностью в 1 час.
+
+Состав сценария и распределение нагрузки:
+
+- логин в систему и просмотр главной страницы с загрузкой меню, дашборда, информации о пользователе (20%)
+- просмотр журнала контрактов (30%)
+- переход на страницу просмотра контракта с загрузкой всех виджетов: информация о контракте, действия, задачи, комментарии, связи, история версий и т.д. (30%)
+- просмотр журнала активных задач  (30%)
+- создание документов (20%)
+- старт процессов по документам (10%)
+- выполнение задач по процессу (50%)
+
+В ходе нагрузки было сгенерировано 2 043 398 запросов, из них 1 запроса (0.00 %) завершилось с ошибками или превысило лимит времени выполнения.
+
+Среднее время отклика составило 6.88 миллисекунд.
+Медиана - 6 миллисекунд.
+90% всех запросов обрабатывались менее чем за 16 миллисекунд.
+95% всех запросов обрабатывались менее чем за 25 миллисекунд.
+99% всех запросов обрабатывались менее чем за 47 миллисекунд.
 
 
 Ecos Registry
@@ -16,7 +35,7 @@ Ecos Registry
 
     EcosRegistryApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -32,13 +51,13 @@ Ecos Model
 
     EcosModelApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
-                cpu: 1
+                cpu: 2
                 memory: 1Gi
             requests:
-                cpu: 100m
+                cpu: 2
                 memory: 1Gi
 
 Ecos Gateway
@@ -48,13 +67,13 @@ Ecos Gateway
 
     EcosGatewayApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
-                cpu: 1
+                cpu: 2
                 memory: 1Gi
             requests:
-                cpu: 100m
+                cpu: 2
                 memory: 1Gi
 
 Ecos Apps
@@ -64,7 +83,7 @@ Ecos Apps
 
     EcosAppsApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -84,10 +103,10 @@ Ecos Process
         resources: |
             limits:
                 cpu: 1
-                memory: 3Gi
+                memory: 4Gi
             requests:
-                cpu: 100m
-                memory: 3Gi
+                cpu: 1
+                memory: 4Gi
 
 Ecos Uiserv
 ~~~~~~~~~~~
@@ -96,13 +115,13 @@ Ecos Uiserv
 
     EcosUiservApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
                 memory: 1Gi
             requests:
-                cpu: 100m
+                cpu: 1
                 memory: 1Gi
 
 Ecos History
@@ -112,7 +131,7 @@ Ecos History
 
     EcosHistoryApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -128,7 +147,7 @@ Ecos Integrations
 
     EcosIntegrationsApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -144,7 +163,7 @@ Ecos Notifications
 
     EcosNotificationsApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -160,7 +179,7 @@ Ecos Transformations
 
     EcosTransformationsApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -176,7 +195,7 @@ Ecos Ecom
 
     EcosEcomApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -192,7 +211,7 @@ Ecos Service Desk
 
     EcosServiceDeskApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -208,7 +227,7 @@ Ecos Edi
 
     EcosEdiApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -224,7 +243,7 @@ Ecos Content
 
     EcosContentApp:
         environments:
-            javaOpts: "-Xmx300m -Xms300m"
+            javaOpts: "-Xmx256m -Xms256m"
         resources: |
             limits:
                 cpu: 1
@@ -244,7 +263,7 @@ Ecos Proxy
                 cpu: 1
                 memory: 512Mi
             requests:
-                cpu: 100m
+                cpu: 300m
                 memory: 256Mi
 
 Microservices Posgtresql
@@ -255,11 +274,11 @@ Microservices Posgtresql
     EcosMicroservicesPostgresqlApp:
         resources: |
             limits:
-                cpu: 1
-                memory: 800Mi
+                cpu: 2
+                memory: 2Gi
             requests:
-                cpu: 300m
-                memory: 800Mi
+                cpu: 2
+                memory: 2Gi
 
 Mongo DB
 ~~~~~~~~
@@ -269,7 +288,7 @@ Mongo DB
     MongoDBApp:
         resources: |
             limits:
-                cpu: 1
+                cpu: 500m
                 memory: 512Mi
             requests:
                 cpu: 300m
@@ -286,7 +305,7 @@ Zookeeper
                 cpu: 1
                 memory: 1Gi
             requests:
-                cpu: 1
+                cpu: 500m
                 memory: 1Gi
 
 RabbitMQ
@@ -297,10 +316,10 @@ RabbitMQ
     RabbitmqApp:
         resources: |
             limits:
-                cpu: 500m
+                cpu: 1
                 memory: 1Gi
-            requests:
-                cpu: 100m
+            requests:m
+                cpu: 500
                 memory: 1Gi
 
 Ecos Indentity
