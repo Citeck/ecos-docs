@@ -25,13 +25,19 @@
 
 .. _delegation_settings:
 
-Перейти в **Мой профиль** на вкладку **Делегирование** и нажать:
+Перейти в **Мой профиль** 
+
+ .. image:: _static/delegation/01_1.png
+       :width: 200
+       :align: center 
+
+на вкладку **Делегирование** и нажать:
 
  .. image:: _static/delegation/01.png
        :width: 700
        :align: center 
 
-И в карточке выбрать:
+В карточке выбрать:
 
  .. image:: _static/delegation/02.png
        :width: 500

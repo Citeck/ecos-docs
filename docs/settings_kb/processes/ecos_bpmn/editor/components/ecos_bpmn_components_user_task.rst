@@ -161,7 +161,7 @@
           | Выберите **шаблон уведомления** из созданных ранее
         - 
                .. image:: _static/user_task/user_task_LA.png
-                :width: 400
+                :width: 300
                 :align: center
 
       * - | Или выставите чекбокс **Ручной ввод шаблона уведомления**, чтобы воспользоваться другими способами:
@@ -174,14 +174,14 @@
               execution.setVariable('la_not_templ', "notifications/template@test-la-notification");
         - 
                .. image:: _static/user_task/user_task_LA_1.png
-                :width: 400
+                :width: 300
                 :align: center
 
       * - | Выставите чекбокс **Включить отчеты о выполнении согласований через почту**, чтобы  пользователь получал ответные сообщения об успешно/ неудачно выполненных задачах и выберите шаблоны из созданных ранее. 
           | См. подробно о :ref:`отчеты об обработке сообщений<lazy_approval_reports>`
         - 
                .. image:: _static/user_task/user_task_LA_2.png
-                :width: 400
+                :width: 300
                 :align: center
 
 Форма задачи
