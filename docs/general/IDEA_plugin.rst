@@ -18,9 +18,16 @@
 Установка плагина в IDEA
 ---------------------------
 
-Скачать дистрибутив плагина можно из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или собрать из исходников самостоятельно.
+Скачайте дистрибути плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или соберите из исходников самостоятельно.
 
-Далее установить плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
+Далее установите плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
+
+Обновление плагина в IDEA
+---------------------------
+
+Для обновления скачайте последнюю версию дистрибутива плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_
+
+Удалите старую версию из **Settings -> Plugins** и установите последнюю версию плагина **Settings -> Plugins -> Install Plugin from disk**
 
 Функционал плагина
 ------------------
