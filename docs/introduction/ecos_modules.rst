@@ -15,11 +15,12 @@
     ecos_modules/ORD
     ecos_modules/offer
     ecos_modules/service_desk
+    ecos_modules/portal_sd
     ecos_modules/crm
     ecos_modules/worklog
     ecos_modules/releases
 
-Установите ECOS Community Demo любым из описанных ниже способов: 
+Установите ECOS Community любым из описанных ниже способов: 
 
     * :ref:`Развертывание виртуальной машины с Citeck ECOS в VirtualBOX <virtualbox>`; 
     * :ref:`Установка Citeck ECOS c помощью Docker Compose<docker_compose>` 
