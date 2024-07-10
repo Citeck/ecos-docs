@@ -275,43 +275,44 @@ UI действие
 
 .. code-block:: yaml
 
-    targetApp: String # целевое приложение где описана реализация групповой операции
-    valuesParams:
-        limit: Number # Лимит обрабатываемых элементов
-    executionParams:
-        type: String # Тип действия
-        timeout: Duration # Максимальное время, которое действие может выполняться
-        config: Map<String, *> # Конфигурация действия. Содержимое зависит от типа действия
-    outputParams:
-        type: String # Тип способа возвращения результата действия
-        config: Map<String, *> # Конфигурация, описывающая дополнительные свойства для возвращения результата действия
+  targetApp: String # целевое приложение где описана реализация групповой операции
+  valuesParams:
+    limit: Number # Лимит обрабатываемых элементов
+  executionParams:
+    type: String # Тип действия
+    timeout: Duration # Максимальное время, которое действие может выполняться
+    config: Map<String, *> # Конфигурация действия. Содержимое зависит от типа действия
+  outputParams:
+    type: String # Тип способа возвращения результата действия
+    config: Map<String, *> # Конфигурация, описывающая дополнительные свойства для возвращения результата действия
 
 **outputParams** не является обязательным параметром и прописывается в том случае, если необходимо исправить дефолтный способ ответа действия.
-
 
 Пример конфигурации:
 
 .. code-block:: yaml
 
-    id: group-action-export-csv
-    type: server-group-action-v2
-    name:
+  id: group-action-export-csv
+  type: server-group-action-v2
+  name:
     ru: Скачать CSV-файл
-    en: Download CSV-file
-    config:
+    en: Download Excel-file
+  
+  config:
     targetApp: transformations
     valuesParams:
-        limit: 1000000
+      limit: 1000000
     executionParams:
-        type: export-csv
-        timeout: T1H
-        config:
+      type: export-xlsx
+      timeout: T1H
+      config:
         fileName: "report"
         columns: [{name: Column, attribute: "?disp"}]
-    features:
+
+  features:
+    execForRecords: true
     execForQuery: true
     execForRecord: false
-    execForRecords: true
 
 При выполнении групповой операции отображается окно с прогрессом (% выполнения):
 
@@ -323,27 +324,28 @@ UI действие
 
 .. code-block:: yaml
 
-    id: group-action-export-xlsx
-    type: server-group-action-v2
-    name:
+  id: group-action-export-xlsx
+  type: server-group-action-v2
+  name:
     ru: Скачать Excel-файл
     en: Download Excel-file
-    config:
+
+  config:
     targetApp: transformations
     valuesParams:
-        limit: 1000000
+      limit: 1000000
     executionParams:
-        type: export-xlsx
-        timeout: T1H
-        config:
+      type: export-xlsx
+      timeout: T1H
+      config:
         fileName: "${$context.journalName}_${$now|fmt('yyyy-MM-dd_HH-mm-ss')}"
         columns: "${$context.reportColumns[]?json}"
     outputParams:
-        type: EMAIL
-        config:
+      type: EMAIL
+      config:
         notificationRef: notifications/template@default-link-for-export-file-notification
 
-    features:
+  features:
     execForQuery: true
     execForRecord: false
     execForRecords: true
