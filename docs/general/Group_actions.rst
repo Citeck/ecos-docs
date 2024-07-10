@@ -277,11 +277,17 @@ UI действие
 
     targetApp: String # целевое приложение где описана реализация групповой операции
     valuesParams:
-    limit: Number # Лимит обрабатываемых элементов
+        limit: Number # Лимит обрабатываемых элементов
     executionParams:
-    type: String # Тип действия
-    timeout: Duration # Максимальное время, которое действие может выполняться
-    config: Map<String, *> # Конфигурация действия. Содержимое зависит от типа действия
+        type: String # Тип действия
+        timeout: Duration # Максимальное время, которое действие может выполняться
+        config: Map<String, *> # Конфигурация действия. Содержимое зависит от типа действия
+    outputParams:
+        type: String # Тип способа возвращения результата действия
+        config: Map<String, *> # Конфигурация, описывающая дополнительные свойства для возвращения результата действия
+
+**outputParams** не является обязательным параметром и прописывается в том случае, если необходимо исправить дефолтный способ ответа действия.
+
 
 Пример конфигурации:
 
@@ -311,6 +317,40 @@ UI действие
 
 .. image:: _static/group_actions/01.png
     :width: 500
+    :align: center
+
+Пример конфигурации с outputParams:
+
+.. code-block:: yaml
+
+    id: group-action-export-xlsx
+    type: server-group-action-v2
+    name:
+    ru: Скачать Excel-файл
+    en: Download Excel-file
+    config:
+    targetApp: transformations
+    valuesParams:
+        limit: 1000000
+    executionParams:
+        type: export-xlsx
+        timeout: T1H
+        config:
+        fileName: "${$context.journalName}_${$now|fmt('yyyy-MM-dd_HH-mm-ss')}"
+        columns: "${$context.reportColumns[]?json}"
+    outputParams:
+        type: EMAIL
+        config:
+        notificationRef: notifications/template@default-link-for-export-file-notification
+
+    features:
+    execForQuery: true
+    execForRecord: false
+    execForRecords: true
+
+
+.. image:: _static/group_actions/02.png
+    :width: 600
     :align: center
 
 
