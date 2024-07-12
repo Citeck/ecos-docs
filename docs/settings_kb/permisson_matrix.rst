@@ -1,6 +1,8 @@
 Матрицы прав
 ============
 
+.. _permissions_journal:
+
 Журнал содержит :ref:`матрицы прав<permissions>`, созданные для типов данных.
 
 .. image:: _static/matrix/matrix_01.png
