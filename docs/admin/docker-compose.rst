@@ -1,7 +1,7 @@
 .. _docker_compose:
 
-Установка Citeck ECOS c помощью Docker Compose
-===============================================
+Установка Citeck c помощью Docker Compose
+==========================================
 
 .. contents::
     :depth: 5
@@ -119,10 +119,10 @@ MacOS
         :width: 600
         :align: center
 
-    Развертывание и запуск ECOS продолжается, необходимо подождать.
+    Развертывание и запуск Citeck продолжается, необходимо подождать.
 
-Подготовка окружения CentOS 7.x для установки Citeck ECOS
-----------------------------------------------------------
+Подготовка окружения CentOS 7.x для установки Citeck
+----------------------------------------------------
 
 Обновить систему и пакеты до последней актуальной версии:
 
@@ -221,8 +221,8 @@ MacOS
     systemctl restart docker
 
 
-Подготовка окружения Astra Linux Орел для установки Citeck ECOS
----------------------------------------------------------------
+Подготовка окружения Astra Linux Орел для установки Citeck
+-----------------------------------------------------------
 
 .. note:: 
 
@@ -260,7 +260,7 @@ MacOS
 
     Версию можно изменить на более актуальную, заменив 1.27.4
 
-Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+Установка ecos-community-demo (выполняется в терминале, Alt+T):
 
 .. code-block::
 
@@ -275,7 +275,7 @@ MacOS
     127.0.0.1      ecos-community-demo     - производим запись в файл
     :wq!     - выходим из редактора vim
 
-Запуск Ecos-Community-Demo:
+Запуск ecos-Community-Demo:
 
 .. note:: 
 
@@ -296,8 +296,8 @@ MacOS
       ]
     }
 
-Подготовка окружения Ред ОС (Red OS) для установки Citeck ECOS
----------------------------------------------------------------
+Подготовка окружения Ред ОС (Red OS) для установки Citeck
+----------------------------------------------------------
 
 .. note:: 
 
@@ -318,14 +318,14 @@ MacOS
     sudo dnf install docker-ce docker-ce-cli docker-compose
     systemctl enable docker
 
-Установка Ecos-Community-Demo (выполняется в терминале, Alt+T):
+Установка ecos-community-demo (выполняется в терминале, Alt+T):
 
 .. code-block::
 
     git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
     docker-compose pull
 
-Запуск Ecos-Community-Demo:
+Запуск ecos-community-demo:
 
 .. code-block::
 
@@ -429,7 +429,7 @@ Docker Desktop использует функцию динамического р
 Порт 8080 уже занят
 """"""""""""""""""""
 
-Ecos-ui использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:
+Citeck UI использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:
 
 **«Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»**
 
