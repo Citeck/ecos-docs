@@ -22,8 +22,8 @@
 
 Установите ECOS Community любым из описанных ниже способов: 
 
-    * :ref:`Развертывание виртуальной машины с Citeck ECOS в VirtualBOX <virtualbox>`; 
-    * :ref:`Установка Citeck ECOS c помощью Docker Compose<docker_compose>` 
+    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
+    * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
 
 и воспользуйтесь следующими учетными записями для работы с модулями системы:
 
