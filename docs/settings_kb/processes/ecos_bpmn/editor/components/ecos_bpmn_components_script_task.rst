@@ -128,10 +128,10 @@ Records
 
     print("comment: " + text + " created on " + created);
 
-Ecos Config
+ECOS Config
 ~~~~~~~~~~~
 
-``Config`` - предоставляет доступ к Конфигурации ECOS по ключу в формате ``<область>$<идентификатор>``.
+``Config`` - предоставляет доступ к Конфигурации Citeck по ключу в формате ``<область>$<идентификатор>``.
 
     - ``get(key: String): DataValue`` - получение значения по ключу
     - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
@@ -246,11 +246,11 @@ Templated content
 Events
 ~~~~~~
 
-``events`` - сервис для работы с ECOS events.
+``events`` - сервис для работы с :ref:`событиями Citeck<ecos_bpmn_events>`.
 
     - ``send(type: String, data: BpmnDataValue)`` - отправляет событие с указанным типом (именем) и данными.
     
-Например, можно отправить ECOS событие через скрипт:
+Например, можно отправить Citeck событие через скрипт:
 
 .. code-block:: javascript
 
