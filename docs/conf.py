@@ -16,7 +16,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'Citeck ECOS'
+project = 'Citeck'
 copyright = '2024, Citeck'
 author = 'Citeck'
 
@@ -71,7 +71,7 @@ html_theme = 'sphinx_rtd_theme'
 # html_theme_path = ['.']
 
  # Set link name generated in the top bar.
-html_title = 'ECOS'
+html_title = 'Citeck'
 
 navigation_depth = -1
 
