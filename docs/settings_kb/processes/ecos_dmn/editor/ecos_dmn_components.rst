@@ -1,4 +1,4 @@
-Компоненты ECOS DMN 
+Компоненты Citeck DMN 
 =====================
 
 .. _ecos_dmn_components:
