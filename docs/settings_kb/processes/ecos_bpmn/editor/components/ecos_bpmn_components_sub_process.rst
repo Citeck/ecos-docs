@@ -46,4 +46,4 @@
                 :width: 300
                 :align: center
 
-Создание элементов подпроцесса аналогично описанным в разделе :ref:`Компоненты Ecos BPMN<ecos_bpmn_components>`.
+Создание элементов подпроцесса аналогично описанным в разделе :ref:`Компоненты Citeck BPMN<ecos_bpmn_components>`.
