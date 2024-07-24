@@ -1,4 +1,4 @@
-ECOS KeyCloak Extension
+Citeck KeyCloak Extension
 =========================
 
 .. _keycloak_extension:
