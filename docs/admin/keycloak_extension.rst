@@ -1,4 +1,4 @@
-ECOS KeyCloak Extension
+Citeck KeyCloak Extension
 =========================
 
 .. _keycloak_extension:
@@ -10,16 +10,16 @@ ECOS KeyCloak Extension
 .. contents::
    :depth: 3
 
-Расширения KeyCloak со стороны ECOS: `<https://gitlab.citeck.ru/citeck-projects/ecos-keycloak-ext>`_ 
+Расширения KeyCloak со стороны Citeck: `<https://gitlab.citeck.ru/citeck-projects/ecos-keycloak-ext>`_ 
 
 Возможности расширения
 -----------------------
 
-1. Создание или формирование событий ECOS при возникновении пользовательских и админских событий Keycloak (например, при логине или логауте пользователя).
+1. Создание или формирование событий Citeck при возникновении пользовательских и админских событий Keycloak (например, при логине или логауте пользователя).
 
 2. Если включен флаг ``ECOS_KK_LISTEN_PERSON_DISABLED_STATUS``, то при отключении пользователя в ecos-model он так же отключается и в Keycloak. Работает, только если в KeyCloak нет синхронизации пользователей из LDAP.
 
-При создании новых пользователей в KeyCloak они так же создаются и в ECOS.
+При создании новых пользователей в KeyCloak они так же создаются и в Citeck.
 
 Подключение плагина
 --------------------
@@ -67,5 +67,5 @@ ECOS KeyCloak Extension
 	volumes:
 		- ./kk-ecos-extensions:/run/extensions-target
 
-``KK_EXT_TARGET_ROOT`` -  директориz, в которую нужно скопировать JAR файл расширения.
+``KK_EXT_TARGET_ROOT`` -  директория, в которую нужно скопировать JAR файл расширения.
 

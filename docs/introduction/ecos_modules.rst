@@ -1,4 +1,4 @@
-Готовые модули ECOS
+Готовые модули Citeck
 =======================
 
 .. _ecos_modules:
@@ -6,24 +6,25 @@
 .. toctree::
     :maxdepth: 1
 
-    ecos_modules/meeting
-    ecos_modules/order_pass
+    ecos_modules/ORD
     ecos_modules/tasks
     ecos_modules/contract
     ecos_modules/InDoc
     ecos_modules/OutDoc
-    ecos_modules/ORD
-    ecos_modules/offer
-    ecos_modules/service_desk
-    ecos_modules/portal_sd
     ecos_modules/crm
+    ecos_modules/meeting
+    ecos_modules/offer
+    ecos_modules/order_pass
+    ecos_modules/service_desk
     ecos_modules/worklog
+    ecos_modules/portal_sd   
     ecos_modules/releases
+
 
 Установите ECOS Community любым из описанных ниже способов: 
 
-    * :ref:`Развертывание виртуальной машины с Citeck ECOS в VirtualBOX <virtualbox>`; 
-    * :ref:`Установка Citeck ECOS c помощью Docker Compose<docker_compose>` 
+    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
+    * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
 
 и воспользуйтесь следующими учетными записями для работы с модулями системы:
 
