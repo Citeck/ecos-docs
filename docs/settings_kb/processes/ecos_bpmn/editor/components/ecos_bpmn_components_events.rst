@@ -94,7 +94,7 @@
             :width: 300
             :align: center     
 
-На данный момент в ECOS доступны следующие типы событий:
+На данный момент в Citeck доступны следующие типы событий:
 
 .. image:: _static/events/events_ECOS.png
       :width: 500

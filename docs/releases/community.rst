@@ -27,7 +27,7 @@ Community
    
 5. Обновлен функционал на :ref:`странице оргструктуры<org_structure>`.
 
-6. Разработан :ref:`плагин для IntelliJ IDEA<IntelliJ_IDEA_plugin>`, который упрощает работу с проектами и артефактами ECOS.
+6. Разработан :ref:`плагин для IntelliJ IDEA<IntelliJ_IDEA_plugin>`, который упрощает работу с проектами и артефактами Citeck.
 
 7. Стали доступны :ref:`виджет «Стадии»<widget_stages>`, :ref:`виджет «Канбан»<widget_kanban>`, :ref:`редактирование матрицы прав<permissions>`. 
 
@@ -42,7 +42,7 @@ Community
 
 4. Добавлен новый форматтер :ref:`Duration<DurationFormatter>`, при включении которого, продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m
 
-5. Добавлена возможность описывать `миксины <https://citeck-ecos.readthedocs.io/ru/latest/general/mixins.html#id2>`_ для любых ECOS типов в любом микросервисе.
+5. Добавлена возможность описывать `миксины <https://citeck-ecos.readthedocs.io/ru/latest/general/mixins.html#id2>`_ для любых Citeck типов в любом микросервисе.
 
 6. Определены поддерживаемые форматы файлов для действия `Печатать <https://citeck-ecos.readthedocs.io/ru/latest/introduction/functions/actions.html#id2>`_
 
@@ -88,7 +88,7 @@ Community
 4.6.0
 -----
 
-1.	Расширены возможности поисковых запросов в источниках данных ECOS (ecos-data), реализовав `поддержку объединения таблиц <https://citeck-ecos.readthedocs.io/ru/latest/general/ecos_data.html#id1>`_
+1.	Расширены возможности поисковых запросов в источниках данных Citeck (ecos-data), реализовав `поддержку объединения таблиц <https://citeck-ecos.readthedocs.io/ru/latest/general/ecos_data.html#id1>`_
 
 2.	Доступен иерархический интерфейс для работы с папками и документами `Doclib <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/document_library.html>`_
 
@@ -195,17 +195,17 @@ Community
 
     1.	Переменные из базового record. 
     2.	Переменные процесса. 
-    3.	Переменные событий Ecos. 
+    3.	Переменные событий Citeck. 
     4.	Контекстные переменные Records API
 
  `Подробно о переменных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#id6>`_
 
-3.	BPMN. В событиях ECOS добавлена поддержка `событий о Records <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.html#id7>`_
+3.	BPMN. В событиях Citeck добавлена поддержка `событий о Records <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.html#id7>`_
 
 4.0.0
 ------
 
-1.	Новый BPMN редактор, разработанный на основе библиотеки редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_. Со следующими элементами процесса, адаптированными под ECOS:
+1.	Новый BPMN редактор, разработанный на основе библиотеки редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_. Со следующими элементами процесса, адаптированными под Citeck:
 
     -	Пользовательская задача,
     -	Скриптовая задача,
