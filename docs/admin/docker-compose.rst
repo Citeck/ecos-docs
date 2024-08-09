@@ -105,7 +105,7 @@ MacOS
 
 Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
-•   Далее станет доступна домашняя страница ECOS:
+•   Далее станет доступна домашняя страница Citeck:
 
 .. image:: _static/docker-compose/11.png
     :width: 700
@@ -165,7 +165,7 @@ MacOS
     curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
 
-В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле:
+В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле:
 
 ``/etc/docker/daemon.json, переменная default-address-pools``
 
@@ -220,6 +220,97 @@ MacOS
     systemctl daemon-reload
     systemctl restart docker
 
+Подготовка окружения Debian 11 "Bullseye" для установки Citeck 
+-----------------------------------------------------------------
+
+Установка Docker:
+
+.. code-block::
+
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    
+    ## Чтобы установить последнюю доступную версию, выполните команду::
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    
+    ## Чтобы установить конкретную версию, выполните команду:
+    apt-cache madison docker-ce | awk '{ print $3 }'
+    VERSION_STRING={Your Specific version}
+    sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+
+Настройка docker на запуск при старте системы:
+
+.. code-block::
+
+    sudo systemctl enable docker
+
+Установка Docker-compose:
+
+.. code-block::
+
+    wget https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-Linux-x86_64
+    mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+.. note:: 
+
+    Версию можно изменить на более актуальную, заменив v2.29.1
+
+На этом установка Docker Engine и Docker-Compose завершена. 
+
+Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**. Проходим аутентификацию в нужное нам **docker registry - docker login**.
+
+.. note:: 
+
+    Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
+
+Установка ecos-community-demo:
+
+.. code-block::
+
+    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+    unzip master.zip
+    cd ecos-community-demo-master
+    docker-compose pull
+
+Добавление ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+Запуск Community Demo:
+
+.. code-block::
+
+    docker-compose up -d
+
+.. note:: 
+
+    Выполнять из директории ecos-community-demo-master
+
+В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+    "default-address-pools":
+    [
+        {"base":"172.19.0.0/16","size":24}
+    ]
+    }
 
 Подготовка окружения Astra Linux Орел для установки Citeck
 -----------------------------------------------------------
@@ -267,7 +358,7 @@ MacOS
     git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
     docker-compose pull
 
-Добавить ecos-community-demo в локальный **hosts** файл:
+Добавление ecos-community-demo в локальный **hosts** файл:
 
 .. code-block::
 
@@ -275,7 +366,7 @@ MacOS
     127.0.0.1      ecos-community-demo     - производим запись в файл
     :wq!     - выходим из редактора vim
 
-Запуск ecos-Community-Demo:
+Запуск Community Demo:
 
 .. note:: 
 
@@ -285,7 +376,7 @@ MacOS
 
     docker-compose up -d
 
-В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
 
 .. code-block::
 
@@ -325,7 +416,7 @@ MacOS
     git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
     docker-compose pull
 
-Запуск ecos-community-demo:
+Запуск Community Demo:
 
 .. code-block::
 
@@ -335,7 +426,7 @@ MacOS
 
     Если встречается ошибка ``unknown log opt 'max-size' for journald log driver``, открыть ``/etc/docker/deamon.json`` и изменить там ``"log-driver": "journald "`` на ``"log-driver": "json-file"``
 
-Добавить ecos-community-demo в локальный **hosts** файл:
+Добавление ecos-community-demo в локальный **hosts** файл:
 
 .. code-block::
 
@@ -343,7 +434,7 @@ MacOS
     127.0.0.1      ecos-community-demo     - производим запись в файл
     :wq!     - выходим из редактора vim
 
-В случае, если локальная сеть, может пересекаться с сетью докера, лучше предопределить подсеть докера. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
 
 .. code-block::
 
@@ -454,11 +545,11 @@ Citeck UI использует порт 8080 и, если этот порт уж
 
 Чтобы это исправить, нужно в командной строке, запущенной с повышенными правами:
 
-1)	Остановить Hyper-V: ``dism.exe /Online /Disable-Feature:Microsoft-Hyper-V`` (выполнить перезагрузку)
+    1)	Остановить Hyper-V: ``dism.exe /Online /Disable-Feature:Microsoft-Hyper-V`` (выполнить перезагрузку)
 
-2)	Добавить нужный порт в исключения: ``netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1``
+    2)	Добавить нужный порт в исключения: ``netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1``
 
-3)	Запустить Hyper-V: ``dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All`` (после потребуется перезагрузка)
+    3)	Запустить Hyper-V: ``dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All`` (после потребуется перезагрузка)
 
 Порт попадет в исключения, и подобной ошибки не возникнет.
 
@@ -473,13 +564,13 @@ MacOS
 Запускаются не все контейнеры
 """""""""""""""""""""""""""""""
 
-Если при разворачивании приложения в докере запускаются не все контейнеры:
+Если при разворачивании приложения в docker запускаются не все контейнеры:
 
  .. image:: _static/docker-compose/06.png
        :width: 400
        :align: center
 
-необходимо в настройках докера добавить путь **/opt**:
+необходимо в настройках docker добавить путь **/opt**:
 
  .. image:: _static/docker-compose/07.png
        :width: 600

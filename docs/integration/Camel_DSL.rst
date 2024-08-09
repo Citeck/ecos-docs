@@ -4,7 +4,7 @@
 .. contents::
      :depth: 3
 
-**ECOS Camel** - это надстройка над Apache Camel, которая адаптирована для работы с платформой Citeck ECOS.
+**ECOS Camel** - это надстройка над Apache Camel, которая адаптирована для работы с платформой Citeck.
 
 Общие сведения
 ---------------
@@ -383,9 +383,9 @@ Camel использует доменные языки (Domain Specific Language
 
 Пример чтения из rabbitmq и отправка события ECOS:
 
-1. Создаем новый секрет для подключения к RMQ
-2. Создаем новый endpoint с id 'rabbitmq-endpoint' (можно любой id, но в camel конфиге мы на него ссылаемся) для подключения к RMQ и устанавливаем секрет из п.1 в него
-3. Заходим в журнал Camel DSL и создаем новый контекст со следующим конфигом: 
+1. Создаем новый **секрет (Интеграция - Credentials)** для подключения к RMQ
+2. Создаем новый **endpoint (Интеграция - Источники данных)** с id 'rabbitmq-endpoint'  (можно любой id, но в camel конфиге мы на него ссылаемся) для подключения к RMQ и устанавливаем секрет из п.1 в него
+3. Заходим в **журнал Camel DSL (Интеграция - Camel DSL)** и создаем новый контекст со следующим конфигом: 
 
 .. code-block:: yaml
   
@@ -486,7 +486,7 @@ EcosRecordsSync camel component
 
 Ниже будут примеры регистрации компонента в yaml формате, например, при регистрации через Camel DSL.
 
-1. **EcosRecordsSyncConsumer**. Расширяет стандартный ScheduledBatchPollingConsumer, реализует перебор записей по ecos типу + sourceId. Возможные настройки для  *ecos-records-sync* консьюмера: 
+1. **EcosRecordsSyncConsumer**. Расширяет стандартный ScheduledBatchPollingConsumer, реализует перебор записей по ECOS типу + sourceId. Возможные настройки для  *ecos-records-sync* консьюмера: 
 
 .. list-table::
       :widths: 5 20
