@@ -6,7 +6,7 @@
 .. contents::
 		:depth: 4
 
-Для отображения домашней страницы пользователя или информации по кейсу в ECOS предусмотрены дашборды.
+Для отображения домашней страницы пользователя или информации по кейсу в Citeck предусмотрены дашборды.
 
 Дашборд позволяет добавлять и убирать виджеты, конфигурировать каждый виджет индивидуально. См. отдельную статью :ref:`виджеты<widgets>`
 
@@ -220,44 +220,5 @@
        :width: 600
        :align: center
 
-Дашборд можно отредактировать, удалить, внести изменения через конфиг:
-
-.. list-table:: 
-      :widths: 5 10
-      :align: center
-      :class: tight-table  
-
-      * - |
- 
-            .. image:: _static/dashboards/dashboards_10.png
-                :width: 30
-
-        - Скачать
-      * - |
- 
-            .. image:: _static/dashboards/dashboards_11.png
-                :width: 30
-
-        - Удалить
-      * - |
- 
-            .. image:: _static/dashboards/dashboards_12.png
-                :width: 30
-
-        - Редактировать в форме
-      * - |
- 
-            .. image:: _static/dashboards/dashboards_13.png
-                :width: 30
-
-        - | Редактировать json
-
-            .. image:: _static/dashboards/dashboards_15.png
-                :width: 400
-      * - |
- 
-            .. image:: _static/dashboards/dashboards_14.png
-                :width: 30
-
-        - Копировать
+Дашборд можно скачать, удалить, отредактировать в форме или через json-файл, копировать.
 
