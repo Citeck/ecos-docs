@@ -220,6 +220,102 @@ MacOS
     systemctl daemon-reload
     systemctl restart docker
 
+Подготовка окружения Ubuntu Server 24.04 LTS для установки Citeck 
+------------------------------------------------------------------
+
+Установка Docker:
+
+.. code-block::
+
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    
+    ## Чтобы установить последнюю доступную версию, выполните команду::
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    
+    ## Чтобы установить конкретную версию, выполните команду:
+    apt-cache madison docker-ce | awk '{ print $3 }'
+    VERSION_STRING={Your Specific version}
+    sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+
+Настройка docker на запуск при старте системы:
+
+.. code-block::
+
+    sudo systemctl enable docker
+
+Установка Docker-compose:
+
+.. code-block::
+
+    curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    Проверить:
+    docker-compose --version
+
+На этом установка Docker Engine и Docker-Compose завершена. 
+
+Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**. Проходим аутентификацию в нужное нам **docker registry - docker login**.
+
+.. note:: 
+
+    Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
+
+Запуск Citeck ECOS: 
+
+.. code-block::
+
+    docker-compose up -d
+
+Установка ecos-community-demo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+    unzip master.zip
+    cd ecos-community-demo-master
+    docker-compose pull
+
+Добавление ecos-community-demo в локальный **hosts** файл:
+
+.. code-block::
+
+    vim /etc/hosts     - открываем файл
+    127.0.0.1      ecos-community-demo     - производим запись в файл
+    :wq!     - выходим из редактора vim
+
+Запуск Community Demo:
+
+.. code-block::
+
+    docker-compose up -d
+
+.. note:: 
+
+    Выполнять из директории ecos-community-demo-master
+
+В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+
+.. code-block::
+
+    {
+    "default-address-pools":
+    [
+        {"base":"172.19.0.0/16","size":24}
+    ]
+    }
+
 Подготовка окружения Debian 11 "Bullseye" для установки Citeck 
 -----------------------------------------------------------------
 
@@ -274,7 +370,14 @@ MacOS
 
     Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
 
-Установка ecos-community-demo:
+Запуск Citeck ECOS: 
+
+.. code-block::
+
+    docker-compose up -d
+
+Установка ecos-community-demo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
