@@ -116,15 +116,14 @@
 
 Например, https://host/v2/journals?journalId=meetings 
 
-
 Карточка совещания с виджетами
 ------------------------------
-
 
  .. image:: _static/meetings/meet_6.png
        :width: 600
        :align: center
 
+Подробно о :ref:`виджетах<widgets>`.
 
 Процесс работы с совещанием
 ----------------------------
