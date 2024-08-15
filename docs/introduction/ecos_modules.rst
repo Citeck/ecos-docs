@@ -15,6 +15,8 @@
     ecos_modules/meeting
     ecos_modules/offer
     ecos_modules/order_pass
+    ecos_modules/poa
+    ecos_modules/vacation
     ecos_modules/service_desk
     ecos_modules/worklog
     ecos_modules/portal_sd   
