@@ -130,7 +130,7 @@
 .. code-block::
 
   {
-      "workdays": [
+      "workingDays": [
         "MONDAY",
         "TUESDAY",
         "WEDNESDAY",
@@ -148,7 +148,7 @@
 .. code-block:: 
 
   {
-      "workdays": [
+      "workingDays": [
         "MONDAY",
         "TUESDAY",
         "WEDNESDAY",
@@ -167,7 +167,7 @@
 .. list-table:: 
       :widths: 10 10
 
-      * - **workdays**
+      * - **workingDays**
         - Список рабочих дней
       * - **workingDayEnd**
         - Завершение рабочего дня
