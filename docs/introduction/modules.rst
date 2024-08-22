@@ -16,22 +16,9 @@
         - Описание
         - Community
         - Enterprise
-      * - :ref:`Совещания<ecos-meetings>`
-        - Автоматизация процесса планирования и проведения совещаний.
-        - |
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`Пропуска<ecos-order-pass>`
-        - Автоматизация процесса принятия решения по выдаче пропуска.
+      * - :ref:`ОРД <ecos-order-ORD>`
+        - Автоматизация процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
         - |
 
            .. image:: _static/modules/green.png
@@ -45,7 +32,7 @@
               :align: center 
 
       * - :ref:`Поручения<ecos-assignments>`
-        - Постановка поручений на исполнение, и проверки результатов их исполнения при необходимости. 
+        - Постановка поручений на исполнение и проверки результатов их исполнения при необходимости. 
         - |
 
            .. image:: _static/modules/green.png
@@ -59,7 +46,7 @@
               :align: center 
 
       * - :ref:`Договоры<ecos-contract>`
-        - Автоматизация процеса учета и согласования бумажных договоров, и документов, связанных с договорами.
+        - Автоматизация процесса учета и согласования бумажных договоров, и документов, связанных с договорами.
         - |
 
            .. image:: _static/modules/green.png
@@ -100,8 +87,22 @@
               :width: 30
               :align: center 
 
-      * - :ref:`ОРД <ecos-order-ORD>`
-        - автоматизации процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
+      * - :ref:`CRM<ecos-crm>`
+        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center  
+
+      * - :ref:`Совещания<ecos-meetings>`
+        - Автоматизация процесса планирования и проведения совещаний.
         - |
 
            .. image:: _static/modules/green.png
@@ -113,9 +114,23 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
-
+ 
       * - :ref:`Офферы<ecos-offer>`
         - Автоматизация процесса подбора персонала по заявкам подразделений.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Пропуска<ecos-order-pass>`
+        - Автоматизация процесса принятия решения по выдаче пропуска.
         - |
 
            .. image:: _static/modules/green.png
@@ -142,8 +157,8 @@
               :width: 30
               :align: center 
 
-      * - :ref:`CRM<ecos-crm>`
-        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании
+      * - :ref:`Журнал работ<ecos-worklog>`
+        - Учет времени, затраченного сотрудником на работу по конкретной задаче, документу непосредственно из карточки задачи, документа.
         - |
 
            .. image:: _static/modules/green.png
@@ -155,6 +170,35 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
+
+      * - :ref:`Портал технической поддержки<portal_sd>`
+        - Веб-интерфейсу для внешних заказчиков для регистрации заявок, контроля их выполнения, обмена комментариями и файлами.
+        - |
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Релизы<ecos-releases>`
+        - Систематизация этапов работ, связанных с релизами программного обеспечения или продуктов компании, ее подразделений.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
 
 Микросервисы
 -------------

@@ -171,7 +171,7 @@ Cущность нужна для формирования списка дат, 
       * - workingDayTimeZone
         - ZoneId
         - Часовой пояс рабочего дня
-      * - workdays
+      * - workingDays
         - List<DayOfWeek>
         - Список рабочих дней
       * - workingCalendar
