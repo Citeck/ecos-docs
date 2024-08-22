@@ -4,7 +4,7 @@
 Для настройки синхронизации атрибутов задач в раздел :ref:`Раздел администратора<admin>` **Управление процессами** добавлен журнал настроек **Синхронизация атрибутов задач BPMN**.
 
  .. image:: _static/attribute_synchro/01.png
-       :width: 600
+       :width: 700
        :align: center
 
 Объект настройки
@@ -83,14 +83,71 @@
        :width: 600
        :align: center
 
+.. code-block::
+
+  - id: _doc_documentStatus
+    name:
+      en: Document status
+      ru: Статус документа
+
+  - id: _doc_currency
+    name:
+      en: Document currency
+      ru: Валюта документа
+    type: ASSOC
+    formatter:
+      type: assoc
+    editor:
+      type: journal
+      config:
+        journalId: currency
+    searchable: true
+    sortable: false
+
+  - id: _doc_contractDate
+    name:
+      en: Document contract date
+      ru: Дата договора документа
+    type: DATE
+    searchable: true
+    sortable: false
+
+  - id: _doc_legalEntity
+    name:
+      en: Document legal entity
+      ru: Юридическое лицо д
+    type: ASSOC
+    formatter:
+      type: assoc
+
+  - id: _doc_signatory
+    name:
+      en: Document signatory
+      ru: Подписант документа
+    type: AUTHORITY
+
+  - id: _doc_performer
+    name:
+      en: Document performer
+      ru: Исполнитель документа
+    type: AUTHORITY
+
+  - id: _doc_t_parentType
+    name:
+      en: Document parent type
+      ru: Тип родительского документа
+    type: ASSOC
+    formatter:
+      type: assoc
+
 Активные задачи по умолчанию:
 
  .. image:: _static/attribute_synchro/06.png
-       :width: 600
+       :width: 700
        :align: center
 
 И с добавленными полями:
 
  .. image:: _static/attribute_synchro/07.png
-       :width: 600
+       :width: 1000
        :align: center
