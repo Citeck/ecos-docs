@@ -12,7 +12,9 @@
     journals/configuration
     journals/group_actions
     journals/computed attributes
-    journals/journal_settings  
+    journals/expressions
+    journals/journal_settings
+    journals/attribute_synchro
     journals/formatters
     journals/editors
     journals/kanban_board
