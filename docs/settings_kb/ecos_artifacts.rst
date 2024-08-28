@@ -1,6 +1,6 @@
 .. _ecos_artifacts:
 
-Citeck Артефакты
+Citeck артефакты
 ==================
 
 .. contents::
@@ -55,15 +55,15 @@ Citeck Артефакты
 
 В приложении настраивается корневая папка с артефактами и в ней можно создавать подпапки ``ui/form``, ``model/type`` и тд.
 
-По умолчанию корневой папкой с артефактами для Citeck приложения - ``src/main/resources/app/artifacts``, для микросервиса -  ``src/main/resources/eapps/artifacts``
+По умолчанию корневой папкой с артефактами для ECOS приложения - ``src/main/resources/app/artifacts``, для микросервиса -  ``src/main/resources/eapps/artifacts``
 
 .. list-table::
       :widths: 10 10
       :align: center
       :header-rows: 1
 
-      * - Citeck Приложение
-        - Citeck Микросервис
+      * - ECOS Приложение
+        - ECOS Микросервис
 
       * - 
             .. image:: _static/artifacts/ecos_app.png
@@ -76,7 +76,7 @@ Citeck Артефакты
                :width: 400
                :align: center
 
-Например, для **Citeck приложения Поручения**, структура папки следующая:
+Например, для **ECOS приложения Поручения**, структура папки следующая:
 
   .. image:: _static/artifacts/folder_example.png
        :width: 400
