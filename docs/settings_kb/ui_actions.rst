@@ -6,7 +6,7 @@
 Раздел содержит описание работы действий в Citeck.
 
 .. contents::
-		:depth: 6
+		:depth: 4
 
 **Действия** - это артефакты Citeck в формате json или yaml с типом ui/action.
 
@@ -214,7 +214,12 @@
                 message:{ ru: 'текст' , en: 'text' },
                 formRef: '',
                 attributesMapping:{ body.comment: "comment" }
-	            }
+                formAttributes:{
+                    recordId: ${?id} # атрибут ?id будет взят из карточки
+                    recordName: ${name} # атрибут name будет взят из карточки
+                    constant: value # константное значение                
+                               }
+                      }
 	
         - | Подтверждение выполнения действия
           | - если не заданы значения в **confirm** , действие выполняется без подтверждения
