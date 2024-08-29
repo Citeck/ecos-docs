@@ -1,6 +1,8 @@
 Пользовательское описание
 ===========================
 
+.. _user_description_journal:
+
  .. image:: _static/view_type.png
        :width: 700
        :align: center
