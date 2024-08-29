@@ -169,7 +169,6 @@
        :width: 600
        :align: center
 
-
 Статусы
 ~~~~~~~
 
@@ -228,7 +227,7 @@
 
 Автоматически сгенерированная форма доступна по кнопке **+**:
 
-  .. image:: _static/equipment_request_demo/Journal_form_1.png
+  .. image:: _static/equipment_request_demo/Journal_form_2.png
        :width: 400
        :align: center
 
