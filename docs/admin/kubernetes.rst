@@ -99,14 +99,14 @@ Ecos Process
 
     EcosProcessApp:
         environments:
-            javaOpts: "-Xmx2G -Xms512m"
+            javaOpts: "-Xmx2G -Xms2G"
         resources: |
             limits:
                 cpu: 1
-                memory: 4Gi
+                memory: 3548Mi
             requests:
                 cpu: 1
-                memory: 4Gi
+                memory: 3548Mi
 
 Ecos Uiserv
 ~~~~~~~~~~~
