@@ -85,7 +85,7 @@
         - Переименовать файл или папку:
 
            			.. image:: _static/doclib/DocLib_5.png
-						:width: 400
+						:width: 300
 						:align: center
 
 		  | Можно изменить название файла, или сам вложенный файл.
@@ -111,7 +111,7 @@
         - Удалить файл или папку:
  
            			.. image:: _static/doclib/DocLib_4.png
-						:width: 400
+						:width: 300
 						:align: center
 
       * - 
@@ -122,7 +122,7 @@
         - | Загрузить новую версию:
 
            			.. image:: _static/doclib/DocLib_11.png
-						:width: 400
+						:width: 300
 						:align: center
 
           | :ref:`Подробно о версиях<widget_versions_journal>`
@@ -164,6 +164,12 @@
 	- Скачать;
 	- Удалить;
 	- Загрузить новую версию.
+
+ .. image:: _static/doclib/DocLib_12.png
+       :width: 600
+       :align: center
+
+Подробно о :ref:`виджетах<widgets>`.
 
 Создание библиотеки документов 
 ---------------------------------
