@@ -220,6 +220,8 @@
 Конфигурация компонента оргструктуры
 -------------------------------------
 
+.. _orgstructure_config:
+
 Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, в поисковой строке введите **org** - откроется список возможных настроек.
 
 .. image:: _static/org_structure/orgstructure_settings.png
