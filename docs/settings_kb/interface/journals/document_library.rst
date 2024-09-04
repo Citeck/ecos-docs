@@ -1,7 +1,7 @@
-.. _document_library:
-
 Библиотека документов (Document Library)
 ==========================================
+
+.. _document_library:
 
 .. contents::
     :depth: 3
