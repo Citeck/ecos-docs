@@ -3,10 +3,6 @@
 
 .. _barcode_pdf:
 
-.. note:: 
-
-       Доступно только в enterprise версии.
-
 Функционал реализован с использованием микросервиса :ref:`ecos-transformations<transformation>` и PDFStamp.
 
 Citeck формирует PDF-файл со штрихкодом:
