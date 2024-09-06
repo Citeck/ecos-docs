@@ -7,6 +7,9 @@
 
     Доступно только в Enterprise версии.
 
+.. contents::
+	    :depth: 3
+
 Настройка расположена в журнале http://localhost/v2/admin?journalId=document-templates&type=JOURNAL **(Раздел администратора - Трансформации - Шаблоны документов)**
 
  .. image:: _static/doc_templates/template_01.png
@@ -150,9 +153,29 @@
 Действие сгенерировать и скачать документ
 ----------------------------------------- 
 
-Далее настройте действие, как описано :ref:`тут<download_by_template>`
+Далее настройте :ref:`действие<download_by_template>`
 
 .. note::
 
-  См. больше :ref:`о настройках<transformation>`
+  См. больше :ref:`о миросервисе трансформации<transformation>`
 
+Пример использования
+-----------------------
+
+В модуле :ref:`Договоры<ecos-contract>` при выставленном чекбоксе **«Сгенерировать из шаблона»**: 
+
+ .. image:: _static/doc_templates/contract_01.png
+       :width: 600
+       :align: center
+
+файл-вложение будет сгенерирован по шаблону на основании введенных данных:
+
+ .. image:: _static/doc_templates/contract_03.png
+       :width: 600
+       :align: center
+
+Так же файл будет доступен для предпросмотра:
+
+ .. image:: _static/doc_templates/contract_02.png
+       :width: 600
+       :align: center
