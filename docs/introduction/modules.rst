@@ -129,6 +129,20 @@
               :width: 30
               :align: center 
 
+      * - :ref:`Заявления на отпуск<ecos-vacation>`
+        - Модуль позволяет организовать работу с заявлениями на отпуск, поступающими от сотрудников.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Пропуска<ecos-order-pass>`
         - Автоматизация процесса принятия решения по выдаче пропуска.
         - |
@@ -447,7 +461,7 @@
               :width: 30
               :align: center 
       * - :ref:`Виджет «Активности»<widget_activities>`
-        - **Виджет «Активности»** модуля CRM помогает планировать и организовывать работу со сделками, лидами, представителями компаний. Задачу, связанную с продажами: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки сделки и просмотреть в календаре.
+        - Виджет помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре. 
         - 
 
            .. image:: _static/modules/red.png
@@ -490,20 +504,6 @@
 
       * - :ref:`Синхронизация пользователей из LDAP<LDAP_sync>`
         - Можно создать несколько конфигураций синхронизации из LDAP, указав различные настройки - например, сервера, домены, фильтры и т.д.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ECOS KeyCloak Extension<keycloak_extension>`
-        - Возможность создания или формирование событий Citeck при возникновении пользовательских и админских событий Keycloak 
         - 
 
            .. image:: _static/modules/red.png
@@ -586,3 +586,16 @@
               :width: 30
               :align: center 
 
+      * - :ref:`ECOS KeyCloak Extension<keycloak_extension>`
+        - Возможность создания или формирование событий Citeck при возникновении пользовательских и админских событий Keycloak 
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
