@@ -3,10 +3,13 @@
 Примеры компонент
 =================
 
-.. _sample_columns_component:
+.. contents::
+     :depth: 3
 
 Columns
 --------
+
+.. _sample_columns_component:
 
 Компонент **Columns** позволяет удобно расположить компоненты формы.
 
@@ -32,10 +35,10 @@ Columns
        :width: 600
        :align: center
 
-.. _sample_text_field_component:
-
 Text field
 ------------
+
+.. _sample_text_field_component:
 
 **Text field** - текстовый компонент. Будем использовать, например, для полей «Код», «Имя», «Фамилия», «Отчество».
 
@@ -50,10 +53,10 @@ Text field
        :width: 600
        :align: center
 
-.. _sample_ecos_select_component:
-
 ECOS Select Component
 ----------------------
+
+.. _sample_ecos_select_component:
 
 **ECOS Select Component** - компонент формы для выбора значения из списка. Будем использовать для поля «Пол».
 
@@ -79,10 +82,11 @@ ECOS Select Component
        :width: 400
        :align: center
 
-.. _sample_date_time_component:
 
 Date / Time Component
 ----------------------
+
+.. _sample_date_time_component:
 
 **Date / Time Component** - компонент даты / времени. Будем использовать для поля «Дата рождения».
 
@@ -103,10 +107,17 @@ Date / Time Component
        :width: 400
        :align: center
 
-.. _sample_select_journal_component:
+Для изменения формата даты/времени перейдите во вкладку - **вкладка «Вид» - Формат**:
+
+ .. image:: _static/form_examples/Date_Time_3.png
+       :width: 600
+       :align: center
+
 
 Select Journal Component
 -------------------------
+
+.. _sample_select_journal_component:
 
 **Select Journal Component** - компонент для выбора значения из журнала. Будем использовать для поля «Город».
 
@@ -127,10 +138,11 @@ Select Journal Component
        :width: 400
        :align: center
 
-.. _sample_button_component:
 
 Button Component 
 ---------------------
+
+.. _sample_button_component:
 
 **Button Component** - компонент для добавления кнопок для выполнения различных действий в форме.
 
@@ -157,10 +169,10 @@ Button Component
        :width: 600
        :align: center
 
-.. _sample_panel_component:
-
 Panel
 -------
+
+.. _sample_panel_component:
 
 **Panel**  - компонент - заголовок, в который помещаются близкие по смыслу компоненты. Будем использовать, например, для раздела «Регистрация».
 
@@ -180,10 +192,11 @@ Panel
        :width: 600
        :align: center
 
-.. _sample_select_orgstruct_component:
 
 Select Orgstruct Component
 ----------------------------
+
+.. _sample_select_orgstruct_component:
 
 **Select Orgstruct Component**  - компонент для выбора из оргструктуры. Будем использовать, например, для поля **"Инициатор"** («idocs:initiator»).
 
@@ -205,10 +218,10 @@ Select Orgstruct Component
        :width: 400
        :align: center
 
-.. _sample_async_data_component:
-
 Async Data Component 
 ----------------------
+
+.. _sample_async_data_component:
 
 **Async Data Component** - асинхронный компонент. Будем использовать, например, для поля **"Инициатор"**.
 
@@ -311,3 +324,33 @@ How to
 - название поля может быть любым, 
 - имя свойства -  **_status**, 
 - скрыть и заблокировать на ввод, если необходимо не отображать на форме.
+
+
+Показывать поле только в определенном режиме формы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вкладке **«Отображение»** перейдите в **Расширенные условия отображения**:
+
+.. image:: _static/form_examples/form_mode.png
+       :width: 600
+       :align: center
+
+.. code-block::
+
+      const {options} = instance || {};
+      const {formMode} = options || {};
+      var isCreateMode = formMode === 'CREATE';
+
+      show = !isCreateMode;
+
+где **formMode** может быть:
+
+  - **CREATE** -  форма создания;
+  - **VIEW** - форма просмотра;
+  - **EDIT** -  форма редактирования
+
+
+
+
+
+
