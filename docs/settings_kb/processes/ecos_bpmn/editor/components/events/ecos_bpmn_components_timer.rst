@@ -16,6 +16,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - **Имя**
