@@ -3,20 +3,20 @@
 
 .. _Excel-import:
 
-Пример импорта данных из Excel в ECOS
---------------------------------------------
+Импорт данных из Excel в Citeck
+----------------------------------
 
 В данном примере будет показан пример роута с использованием следующих camel-элементов:
 
- - FileFromCamelDslEndpoint
+ - :ref:`FileFromCamelDslEndpoint<FileFromCamelDslEndpoint>`
 
- - ExcelToListOfDataProcessor
+ - :ref:`ExcelToListOfDataProcessor<ExcelToListOfDataProcessor>`
 
  - MappingProcessor
 
- - AssocRefByAttributeProcessor
+ - :ref:`AssocRefByAttributeProcessor<AssocRefByAttributeProcessor>`
 
- - EcosRecordsMutateEndpoint
+ - :ref:`EcosRecordsMutateEndpoint<EcosRecordsMutateEndpoint>`
 
 Допустим в системе есть два пользовательских типа данных - **Работник** и **Позиция**
 
