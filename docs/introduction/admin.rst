@@ -27,7 +27,7 @@
 Управление системой - Инструменты разработки
 ---------------------------------------------
 
-Вкладка "Сборки"
+Вкладка "Сборка"
 ~~~~~~~~~~~~~~~~~
 
 Представлена актуальная информация о модулях Citeck:
@@ -35,6 +35,18 @@
  .. image:: _static/admin/admin_12.png
        :width: 600
        :align: center 
+
+Вкладка "Коммиты"
+~~~~~~~~~~~~~~~~~
+
+По всем репозиториям указан список внесенных изменений:
+
+ .. image:: _static/admin/admin_14.png
+       :width: 600
+       :align: center 
+
+По ссылкам можно перейти в репозиторий, конкретный коммит, задачу.
+
 
 Вкладка "Настройки"
 ~~~~~~~~~~~~~~~~~~~~
@@ -68,7 +80,7 @@
       * - 
 
              .. image:: _static/admin/admin_4.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - Скачать в виде json-файла
@@ -76,7 +88,7 @@
       * - 
 
              .. image:: _static/admin/admin_5.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - Удалить
@@ -84,7 +96,7 @@
       * - 
 
              .. image:: _static/admin/admin_6.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - | Открыть карточку журнала в соседней вкладке.
@@ -96,7 +108,7 @@
       * - 
 
              .. image:: _static/admin/admin_8.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - Открыть на редактирование
@@ -104,7 +116,7 @@
       * - 
 
              .. image:: _static/admin/admin_9.png
-                  :width: 40
+                  :width: 30
                   :align: center 
 
         - Редактировать json-файл:
@@ -116,7 +128,7 @@
       * - 
 
              .. image:: _static/admin/admin_10.png
-                  :width: 50
+                  :width: 30
                   :align: center 
 
         - Копировать

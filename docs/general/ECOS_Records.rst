@@ -661,7 +661,7 @@ RecordRef
   ---
   Запрос конфига:
 
-  await Citeck.Records.get('ecos-config@ecos-forms-enable').load('.str');
+  await Citeck.Records.get('eapps/config@app/edi$edi-sign-content-type').load('.str');
 
   ---
 
