@@ -1,12 +1,17 @@
 Процессоры
 ----------------
 
+.. contents::
+		:depth: 3
+
 **Процессор** - это обработчик, который обрабатывает сообщение произвольным образом.
 
 Подробнее - https://camel.apache.org/manual/processor.html
 
 CsvToListOfDataProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _CsvToListOfDataProcessor:
 
 Данный процессор предназначен для чтения CSV-данных и преобразования их в список объектов *DataValue*:
 
@@ -50,6 +55,8 @@ CsvToListOfDataProcessor
 
 ExcelToListOfDataProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _ExcelToListOfDataProcessor:
 
 Данный процессор предназначен для чтения данных из формата Excel (XLSX) и преобразования их в список объектов *DataValue*:
 
@@ -99,6 +106,8 @@ ExcelToListOfDataProcessor
 
 AssocRefByAttributeProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _AssocRefByAttributeProcessor:
 
 Данный процессор принимает объект *DataValue* и на основании переданных заголовков (обязательных) находит EntityRef необходимой ассоциации и проставляет это значение в *DataValue*:
 
@@ -152,6 +161,8 @@ AssocRefByAttributeProcessor
 
 CopyJournalSettingsProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _CopyJournalSettingsProcessor:
 
 Данный процессор преобразует данные о шаблонах журнала, помогая тем самым перекопировать шаблоны от 1 журнала к другому.
 
@@ -249,6 +260,8 @@ CopyJournalSettingsProcessor
 
 CreateEcosHistoryDocumentMirrorProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _CreateEcosHistoryDocumentMirrorProcessor:
 
 **Класс**
 

@@ -18,7 +18,7 @@
 
 Подходящая версия будет загружена из родительского POM.
 
-Подробнее про :ref:`ecos-records-mutate<ecos-records-mutate>`
+Подробнее про :ref:`ecos-records-mutate<EcosRecordsMutateEndpoint>`
 
 Далее создаем компонент с настройками роутов, который запустит новый контекст после старта приложения:
 
