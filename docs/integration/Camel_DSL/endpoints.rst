@@ -1,12 +1,17 @@
 Конечные точки
 ================
 
+.. contents::
+		:depth: 3
+
 **Конечные точки** используются для чтения или записи данных в определенном источнике.
 
 Подробнее - https://camel.apache.org/manual/endpoint.html
 
 FileFromCamelDslEndpoint
 --------------------------
+
+.. _FileFromCamelDslEndpoint:
 
 Данный компонент позволяет работать с файлом, добавленным на форму конфигурации Camel DSL:
 
@@ -16,7 +21,7 @@ FileFromCamelDslEndpoint
 
 Ключ для использования компонента в camel-контексте: *file-from-camel-dsl*
 
-FileFromCamelDslConsumer вычитывает данные из файла в виде ByteArray и кладет их в exchange для дальнейшей обработки
+**FileFromCamelDslConsumer** вычитывает данные из файла в виде ByteArray и кладет их в exchange для дальнейшей обработки
 
 Пример:
 
@@ -35,6 +40,8 @@ FileFromCamelDslConsumer вычитывает данные из файла в в
 
 EcosRecordsSyncConsumer
 -----------------------
+
+.. _EcosRecordsSyncConsumer:
 
 Эндпоинт для последовательной выгрузки любого количества записей из указанного источника данных.
 
@@ -323,16 +330,18 @@ URI
 EcosRecordsMutateEndpoint 
 --------------------------
 
-.. _ecos-records-mutate:
+.. _EcosRecordsMutateEndpoint:
+
+Эндпоинт для выполнения мутации через RecordsAPI
 
 URI
 ~~~
 
 **ecos-records-mutate:?sourceId={sourceId}**
 
-**ecos-records-mutate** - константа
+  - **ecos-records-mutate** - константа
 
-**sourceId** - идентификатор источника данных куда следует отправить запрос мутации. Например: 'emodel/contract', 'emodel/custom-type'
+  - **sourceId** - идентификатор источника данных куда следует отправить запрос мутации. Например: 'emodel/contract', 'emodel/custom-type'
 
 Входные данные
 ~~~~~~~~~~~~~~~
