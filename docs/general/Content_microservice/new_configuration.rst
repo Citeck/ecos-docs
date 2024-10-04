@@ -145,7 +145,7 @@
                     max-file-size: 2GB
                     max-request-size: 2GB
 
- 3. Сконфигурировать Nginx для передачи больших файлов. |br|
+ 3. Сконфигурировать Nginx в EcosProxyApp для передачи больших файлов. |br|
 
     Для этого необходимо установить параметры в конфигурационном файле nginx.conf:
 
@@ -161,14 +161,29 @@
             client:
                 maxBodySize: "2g"
 
+ 4. Сконфигурировать Ingress k8s (если реализация nginx):
+
     Если используется citeck helm chart и k8s yandex cloud, нужно сконфигурировать параметры timeout через аннотации:
 
     .. code-block:: yaml
 
         ecos:
+          ingress:
             annotations:
               ingress.alb.yc.io/idle-timeout: 300s
               ingress.alb.yc.io/request-timeout: 300s
+
+    Если используется citeck helm chart с k8s, конфигурируемый через аннотации `nginx.ingress.kubernetes.io/proxy-*`, то с версии 1.3.51 можно задать параметры:
+
+     .. code-block:: yaml
+        
+        ecos:
+          ingress:
+            nginx:
+              proxyConnectTimeout: "300s"
+              proxyReadTimeout: "300s"
+              proxyBodySize: "2g"
+              proxyBufferSize: "64k"
 
     .. warning:: 
 
