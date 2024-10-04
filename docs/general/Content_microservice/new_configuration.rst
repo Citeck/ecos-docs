@@ -142,8 +142,8 @@
         spring:
             servlet:
                 multipart:
-                    max-file-size: 2000MB
-                    max-request-size: 2000MB
+                    max-file-size: 2GB
+                    max-request-size: 2GB
 
  3. Сконкигурировать Nginx для передачи больших файлов. |br|
 
