@@ -1,6 +1,8 @@
 Миксины
 ==========
 
+.. _mixins:
+
 .. contents::
    :depth: 3
 

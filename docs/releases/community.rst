@@ -1,8 +1,5 @@
-Community
-=============
-
 2024.8
--------
+======
 
 1. Выполнено крупное :ref:`обновление коробочных микросервисов и библиотек<breaking_changes_2024.8>`
 
@@ -26,8 +23,18 @@ Community
 7. Оргструктура. Добавлена :ref:`настройка<orgstructure_config>` поиска по дополнительным полям.
 
 
+**Доступно в Enterprise:**
+
+1. Добавлена :ref:`интеграция с Git<git_integration>`, которая позволяет связать Citeck приложение с Git репозиторием.
+
+2. В модуль :ref:`CRM<ecos-crm>` добавлен виджет :ref:`«Активности»<widget_activities>`, который помогает планировать и организовывать работу со сделками с использованием задач планируемых: звонок, письмо, встреча; функционала :ref:`Поручений<ecos-assignments>`.
+
+3. Lazy approval. Добавлена возможность :ref:`выбора шаблона уведомления<user_task_lazy_approval>` по условию на основе переменных процесса.
+
+4. Актуализирован :ref:`виджет «История»<portal_sd_history>` внешнего портала.
+
 2024.7
--------
+======
 
 1. Добавлен аспект :ref:`«Конфигурация истории»<history-config_aspect>`, созданый для возможности конфигурации записи свойств в историю.
 
@@ -39,8 +46,25 @@ Community
 
 5. Обновлен справочник валют.
 
+
+**Доступно в Enterprise:**
+
+1. BPMN редактор. Для :ref:`пользовательской задачи<user_task>` добавлен функционал :ref:`Lazy approval<user_task_lazy_approval>`, позволяющий принимать решения из электронной почты, не заходя в Citeck.
+   
+2. Добавлены :ref:`внешние порталы<ext_portal>`. Функционал, который позволяет синхронизировать данные определённых типов между 2 стендами Citeck. 
+
+3. Добавлен функционал :ref:`портала технической поддержки<portal_sd>`, на котором доступно:
+
+       * создание заявок,
+       * отслеживание статуса текущих заявок,
+       * просмотр истории, комментариев и вложений закрытых заявок,
+       * общение через комментарии и обмен файлами со специалистами технической поддержки.
+
+4. В конфигурацию группового действия добавлена возможность :ref:`отправлять ссылку на выгрузку<ui_group_actions>` на адрес электронной почты, указанный в профиле пользователя.
+
+
 2024.4
--------
+======
 
 1. В журнале уведомлений добавлена возможность :ref:`просмотреть уведомление<notifications-label>` в том виде, в котором оно было отправлено.
 
@@ -56,27 +80,55 @@ Community
 
 7. Стали доступны :ref:`виджет «Стадии»<widget_stages>`, :ref:`виджет «Канбан»<widget_kanban>`, :ref:`редактирование матрицы прав<permissions>`. 
 
-4.9.0
------
 
-1. `Рабочее расписание <https://citeck-ecos.readthedocs.io/ru/latest/introduction/functions/work_calendar.html>`_ - функциональность для учета нерабочих дней.
+**Доступно в Enterprise:**
+
+1. Отображение KPI на схеме бизнес-процесса в виджете :ref:`«Статистика процесса»<widget_process_statistics_KPI>`.
+
+2. Отображение % экземпляров процессов :ref:`на разветвлениях <widget_process_statistics_extended>` в модели процессов . Расчет % ведется от общего числа экземпляров, прошедших шлюз.
+
+3. В библиотеку ecos-camel добавлен компонент ecos-records-delete для возможности удаления сущностей через роутинг camel.
+   
+4. Добавлена возможность :ref:`импорта данных<Excel-import>` из Excel в Citeck.
+
+
+4.9.0
+======
+
+1. :ref:`Рабочее расписание<business-schedule>` - функциональность для учета нерабочих дней.
     
 2. В журналах :ref:`ширину колонки<column_width>` таблицы можно изменять и сохранять.
 
 3. В журнале в столбце может отображаться общая сумма значений столбца. Включение или выключение отображения суммы для каждой колонки производится отдельно по каждому атрибуту в :ref:`настройках журнала<column_sum>`. 
 
-4. Добавлен новый форматтер :ref:`Duration<DurationFormatter>`, при включении которого, продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m
+4. Добавлен новый форматтер :ref:`Duration<DurationFormatter>`, при включении которого, продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m.
 
-5. Добавлена возможность описывать `миксины <https://citeck-ecos.readthedocs.io/ru/latest/general/mixins.html#id2>`_ для любых Citeck типов в любом микросервисе.
+5. Добавлена возможность описывать :ref:`миксины<mixins>` для любых Citeck типов в любом микросервисе.
 
-6. Определены поддерживаемые форматы файлов для действия `Печатать <https://citeck-ecos.readthedocs.io/ru/latest/introduction/functions/actions.html#id2>`_
+6. Определены поддерживаемые форматы файлов для действия :ref:`Печатать<actions>`.
 
 7. В форматтере :ref:`Color<ColoredFormatter>` добавлена возможность настройки условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте.
 
 8. К возможности выдавать ответ в виде ссылки на скачивания файла (использование config: implSourceId) только при выборе действия из журнала объектов, добавлена возможность аналогичного действия из :ref:`карточки объекта<mutate_action>`.
 
+9. Добавлена возможность редактировать только :ref:`определенные поля в onlyoffice<transformation_onlyoffice>`.
+
+10. Добавлена возможность скачать zip-архив со всеми :ref:`загруженными файлами<widget_documents>`.
+
+11. Для передачи в массив определенных данных выбранного журнала (ID журнала) можно использовать режим :ref:`Пользовательские значения<custom_values>`.
+
+
+**Доступно в Enterprise:**
+
+1. :ref:`Рабочее расписание и производственный календарь<business-schedule>` - функциональность для учета нерабочих, праздничных дней сотрудников, которая позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы. 
+
+2. :ref:`KPI<bpmn_kpi>` - функционал для настройки норм времени:
+  
+  - KPI по продолжительности позволяет отслеживать время между указанными BPMN элементами (Исходный и Целевой) в процессе. 
+  - KPI по количеству позволяет считать количество прохождения через указанный элемент. 
+
 4.8.0
------
+======
 
 1. BPMN редактор. Добавлен раздел :ref:`Администрирование БП<bpmn_admin>` позволяет наблюдать за состоянием опубликованных бизнес-процессов, получать подробную информацию о них и их запущенных экземплярах.
 
@@ -84,7 +136,7 @@ Community
 
 3. BPMN редактор. Реализован запуск бизнес-процесса :ref:`у дочерних типов<inherit_bp_start>`.
 
-4. BPMN редактор. Для информирования о наличии ошибок в схеме бизнес-процесса реализован :ref:`режим отображения ошибок<bpmn_linter>`. 
+4. BPMN редактор. BPMN линтеры. Для информирования о наличии ошибок в схеме бизнес-процесса реализован :ref:`режим отображения ошибок<bpmn_linter>`. 
 
 5. BPMN редактор. Добавлена возможность выгрузить модель :ref:`бизнес-процесса в Excel<bp_actions>` и загрузить :ref:`версию модели <widget_versions_journal>`.
    
@@ -96,141 +148,194 @@ Community
 
 9. Добавлена возможность :ref:`отображать количество записей<journal_group>` в настройках группировки данных журнала.
 
+10. Добавлена возможность :ref:`добавлять заголовок колонки в двух локализациях <table_form_component>` при ручном добавлении атрибутов в Table Form. 
+
+
+**Доступно в Enterprise:**
+
+1. Добавлена поддержка :ref:`серверных групповых действий<group_actions>`.
+
+2. В модулях «ОРД», «Исходящие документы» добавлена возможность :ref:`подписания с использованием ЭЦП<esign>`.
+
+3. Добавлена возможность отображать только связанные записи в виджете :ref:`Канбан<widget_kanban>` на дашборде.
+
+
 4.7.0
------
+======
 
-1.	Добавлен :ref:`модуль Корреспонденция. Входящие<ecos-indoc>`
+1.	Добавлен :ref:`модуль Корреспонденция. Входящие<ecos-indoc>`.
 
-2.	Добавлен :ref:`модуль Корреспонденция. Исходящие<ecos-outdoc>`
+2.	Добавлен :ref:`модуль Корреспонденция. Исходящие<ecos-outdoc>`.
 
-3.	Добавлен :ref:`модуль ОРД. Внутренние документы<ecos-order-ORD>`
+3.	Добавлен :ref:`модуль ОРД. Внутренние документы<ecos-order-ORD>`.
 
-4.  Добавлен :ref:`модуль Релизы<ecos-releases>`
+4.  Добавлен :ref:`модуль Релизы<ecos-releases>`.
 
-5.  Реализована возможность сохранять бизнес-процесс как :ref:`черновик <save_bp>`
+5.  Реализована возможность сохранять бизнес-процесс как :ref:`черновик<save_bp>`.
 
+
+**Доступно в Enterprise:**
+
+1. Реализован  :ref:`Content микросервис<content_service>`, предназначенный для обеспечения хранения файлов в системе в определенное файловое хранилище. 
+
+2. Логика ЭДО вынесена в :ref:`отдельный микросервис<ecos-edi>`.
 
 4.6.0
------
+======
 
-1.	Расширены возможности поисковых запросов в источниках данных Citeck (ecos-data), реализовав `поддержку объединения таблиц <https://citeck-ecos.readthedocs.io/ru/latest/general/ecos_data.html#id1>`_
+1.	Расширены возможности поисковых запросов в источниках данных Citeck (ecos-data), реализовав :ref:`поддержку объединения таблиц<ecos_data_main>`.
 
-2.	Доступен иерархический интерфейс для работы с папками и документами `Doclib <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/document_library.html>`_
+2.	Доступен иерархический интерфейс для работы с папками и документами :ref:`Doclib<document_library>`.
 
-3.	Реализованы  `динамические роли <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#dmn>`_ на основе `DMN <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.html#dmn>`_, что дает возможность устанавливать гибкую логику, по которой будет произведено вычисление состава пользователей роли.
+3.	Реализованы :ref:`динамические роли<dmn_role>` на основе :ref:`DMN решений<dmn_decision>`, что дает возможность устанавливать гибкую логику, по которой будет произведено вычисление состава пользователей роли.
 
-4.	Написан `гайд <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/dmn_dynamic_role.html>`_ по использованию динамической роли DMN в бизнеc-процессе 
+4.	Написан :ref:`гайд<dynamic_role_dmn>` по использованию динамической роли DMN в бизнеc-процессе.
 
 5.	Добавлена возможность проводить сортировку и группировку по полям из связанных таблиц.
 
-6.	BPMN редактор. Добавлена поддержка `Error Events <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.html>`_ , которое используется для обработки бизнес ошибок. 
+6.	BPMN редактор. Добавлена поддержка :ref:`Error Events<ecos_bpmn_error>`, которое используется для обработки бизнес ошибок. 
 
-7.	BPMN редактор. Добавлена поддержка `Terminate Event  <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_termination.html>`_ , которое немедленное завершение выполнения процесса.
+7.	BPMN редактор. Добавлена поддержка :ref:`Terminate Event<ecos_bpmn_termination>`, которое немедленное завершение выполнения процесса.
 
-8.	BPMN редактор. Добавлена поддержка `Conditional Event <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_conditional.html>`_ , которое используется для моделирования реакции бизнес-процесса на изменения условий.
+8.	BPMN редактор. Добавлена поддержка :ref:`Conditional Event<ecos_bpmn_conditional>`, которое используется для моделирования реакции бизнес-процесса на изменения условий.
 
-9.	BPMN редактор. Добавлена поддержка `Service Task <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_service_task.html>`_ , которое используется для обозначения подключения сторонних сервисов, не относящихся к среде выполнения бизнес-процесса.
+9.	BPMN редактор. Добавлена поддержка :ref:`Service Task<service_task>`, которое используется для обозначения подключения сторонних сервисов, не относящихся к среде выполнения бизнес-процесса.
 
-10.	Реализована возможность `настройки шаблонов <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/kanban_board.html#id2>`_ для журналов в режиме для канбан доски. 
+10.	Реализована возможность настройки шаблонов для журналов в режиме :ref:`канбан доски<kanban_board>`. 
+
 
 4.5.0
-------
+======
 
-1.	Возможность `измененть исполнителя задачи <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_tasks.html>`_ в бизнес-процессе при нажатии кнопки «Изменить исполнителя» в виджете «Все задачи».
+1. Возможность :ref:`измененть исполнителя задачи<tasks_options>` в бизнес-процессе при нажатии кнопки «Изменить исполнителя» в виджете :ref:`Все задачи<widget_tasks>`.
 
-2.	Микросервис нотификаций. Доработано `подключение к SMTP серверу <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/notifications/notifications_bulk_mail.html>`_ , чтобы его отсутствие не было блокером для работы микросервиса нотификаций. 
+2. Микросервис нотификаций. Доработано :ref:`подключение к SMTP серверу<bulk_mail>`, чтобы его отсутствие не было блокером для работы микросервиса нотификаций. 
 
-3.	BPMN редактор. Добавлена поддержка `Call activity <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.html>`_ , который позволяет вызывать другой процесс в рамках уже выполняемого.
+3. BPMN редактор. Добавлена поддержка :ref:`Call activity<call_activity>`, который позволяет вызывать другой процесс в рамках уже выполняемого.
 
-4.	BPMN редактор. Пользовательская задача. Приоритет не только выбирается из списка доступных, но и может быть добавлен `присвоением переменной <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html>`_
+4. BPMN редактор. :ref:`Пользовательская задача<user_task>`. Приоритет не только выбирается из списка доступных, но и может быть добавлен присвоением переменной.
 
-5.	Добавлено отображение предыдущего комментария задачи в таблице виджета «Мои задачи».
+5. Добавлено отображение предыдущего комментария задачи в таблице виджета :ref:`Все задачи<widget_tasks>`.
 
-6.	Реализована `защита от уязвимостей <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/service_desk.html#id17>`_  при добавлении комментариев через email 
+6. Реализована :ref:`защита от уязвимостей<parsing_email>` при добавлении комментариев через email.
 
-7.	Добавлен :ref:`модуль Офферы<ecos-offer>`
+7. Добавлен :ref:`модуль Офферы<ecos-offer>`.
 
+8. Для пользователей можно :ref:`разграничить права<dashboard_config>` на настройку дашборда и настройку виджетов. 
+
+
+**Доступно в Enterprise:**
+
+1.	Открыты публичные доступы к enterprise модулям. Доступны по `ссылке <https://github.com/orgs/Citeck/repositories>`_ 
+
+2.	Добавлена возможность пользователю делегировать свои полномочия на время отсутствия. Подробнее описано в статье :ref:`Делегирование<delegation>`. 
+
+3.	Настройка выбора положения штрихкода. См. :ref:`Пример: Настройка действия Скачать c штрихкод<download_with_barcode>`
+
+4.  Виджет :ref:`Графическая статистика<widget_graphic_statistics>`. Виджет позволяет пользователям наглядно представлять и анализировать данные, повыШая эффективность принятия решений и улучшая понимание текущего состояния бизнес-процессов.
 
 4.4.0
-------
+======
 
-1.	Версионирование артефактов. В карточке артефакта в виджете «Журнал версий» представлены текущая и предыдущая версии артефакта с возможностью перехода между версиями и сравнения версий.
+1.	Версионирование артефактов. В карточке артефакта в виджете :ref:`Журнал версий<widget_versions_journal>` представлены текущая и предыдущая версии артефакта с возможностью перехода между версиями и сравнения версий.
 
-2.	Разработан гайд `по созданию простого бизнес-процесса <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/equipment_request.html>`_
+2.	Разработан гайд :ref:`по созданию простого бизнес-процесса<sample_request>`.
 
-3.	Cоздать поручение можно из карточки документа, выбрав `действие «Создать поручение» <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/tasks.html#ecos-tasks-action>`_ 
+3.	Cоздать поручение можно из карточки документа, выбрав :ref:`действие «Создать поручение»<ecos-assignments-action>`. 
 
-4.	Обеспечена синхронизация компонента формы `File Component с атрибутом documents и виджета «Документы» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/forms/form_components/components/file.html#id6>`_, чтобы документы, загруженные через форму отображались в виджете и наоборот.
+4.	Обеспечена синхронизация компонента формы :ref:`File Component с атрибутом documents и виджета «Документы»<file_synchro_docs>`, чтобы документы, загруженные через форму отображались в виджете и наоборот.
 
-5.	Дочерние сущности удаляются `вместе с родителями <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#ecos-model-types>`_
+5.	Дочерние сущности удаляются :ref:`вместе с родителями<ecos-model_types>`.
 
-6.	Настройка связи `в обе стороны <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id29>`_
+6.	Настройка связи :ref:`в обе стороны<associations_both_sides>`.
 
-7.	BPMN. В Пользовательской задаче если форма задачи не указана, то `автоматически будут отображаться доступные вердикты задачи <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html#id4>`_, заполненные в поле Результат задачи.
+7.	BPMN. В :ref:`Пользовательской задаче<user_task>` если форма задачи не указана, то автоматически будут отображаться доступные вердикты задачи, заполненные в поле Результат задачи.
 
-8.	Новый редактор `принятия решения DMN <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/DMN_ecos.html>`_  для более гибкой настройки процессов, которые помогают решать аналитические и автоматизационные задачи компаниям.
+8.	Новый редактор :ref:`принятия решения DMN<ecos-dmn>` для более гибкой настройки процессов, которые помогают решать аналитические и автоматизационные задачи компаниям.
 
-9.	В гайд по созданию простого бизнес-процесса добавлен `пример работы с редактором принятия решения DMN <https://citeck-ecos.readthedocs.io/ru/latest/case_sample/equipment_request_p2.html>`_
+9.	В гайд по созданию простого бизнес-процесса добавлен :ref:`пример работы с редактором принятия решения DMN<sample_request_dmn>`.
 
-10.	BPMN. Добавлена поддержка `Business rule task <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_business_rule_task.html>`_ , который служит для вызова DMN Decision из процесса BPMN.
+10.	BPMN. Добавлена поддержка :ref:`Business rule task<business_rule_task>`, который служит для вызова DMN Decision из процесса BPMN.
 
-11.	Добавлена возможность `скрыть панель поиска по записям журнала <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/new_journal.html#journal-settings>`_
+11.	Добавлена возможность :ref:`скрыть панель поиска по записям журнала<journal_settings>`.
 
-12.	BPMN. В Скриптовую задачу добавлена возможность из BPMN вызывать `генерацию по указанному шаблону и запись в определенное свойство <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#templated-content>`_
+12.	BPMN. В :ref:`Скриптовую задачу<script_task>` добавлена возможность из BPMN вызывать генерацию по указанному шаблону и запись в определенное свойство.
 
-13.	В тип данных добавлен `выбор статуса по умолчанию <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#associations>`_. При сохранении кейса в состоянии «Черновик» автоматический старт бизнес- процесса не осуществляется. Автоматический старт произойдет только `при сабмите без состояния черновика. <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#submit>`_
+13.	В тип данных добавлен :ref:`выбор статуса по умолчанию<associations>`. При сохранении кейса в состоянии «Черновик» автоматический старт бизнес- процесса не осуществляется. Автоматический старт произойдет только :ref:`при сабмите без состояния черновика<bp_submit>`.
+
+
+**Доступно в Enterprise:**
+
+1.	Виджет :ref:`Канбан<widget_kanban>`. Виджет добавляет в карточку канбан доску с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку. 
+
 
 4.3.0
-------
+======
 
-1.	Кастомизирована страница авторизации keycloak.
+1. Кастомизирована страница авторизации keycloak.
 
-2. Добавлен `модуль CRM <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/crm.html>`_
+2. Добавлен :ref:`модуль CRM<ecos-crm>`.
 
-3. Добавлен `модуль «Поручения» <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/tasks.html>`_
+3. Добавлен :ref:`модуль «Поручения»<ecos-assignments>`.
 
-4.	Добавлена возможность редактировать документ с помощью onlyoffice - реализовано `действие «Редактировать документ» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/onlyoffice_edit.html>`_ , которое открывает отдельную страницу с onlyoffice.
+4.	Добавлена возможность редактировать документ с помощью onlyoffice - реализовано :ref:`действие «Редактировать документ»<edit_only_office>`, которое открывает отдельную страницу с onlyoffice.
 
-5.	В конфигурацию журналов для столбцов добавлен `«Атрибут для поиска» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/journals/new_journal.html#additional-column-settings>`_. Параметр будет использоваться на UI при построении запроса с фильтром по столбцу.
+5.	В конфигурацию журналов для столбцов добавлен :ref:`«Атрибут для поиска»<additional_column_settings>`. Параметр будет использоваться на UI при построении запроса с фильтром по столбцу.
 
-6.	Добавлена возможность `прикреплять вложения (attachments) <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/notifications/notifications_template.html#attachments-email>`_ к email уведомлению
+6.	Добавлена возможность прикреплять :ref:`вложения (attachments)<notification_attachments>` к email уведомлению
 
-7.	BPMN. Для полной работы с отправкой уведомлений добавлено `поле «Исходящий адрес» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html>`_  в компоненте Уведомление, чтобы можно было показывать от кого отправляется письмо.
+7.	BPMN. В компоненте :ref:`Уведомление<notification>` для полной работы с отправкой уведомлений добавлено поле «Исходящий адрес», чтобы можно было показывать от кого отправляется письмо.
+
+
+**Доступно в Enterprise:**
+
+1.	Добавлен новый тип синхронизации пользователей в ecos-model - :ref:`LDAP синхронизация<sync_authorities>` 
+
+2.	Возможность :ref:`формировать PDF-файла со штрихкодом<barcode_pdf>`
+
+3.	Сервис трансформации. Добавлена :ref:`возможность конвертации всех офисных форматов в PDF<content_transformation>` 
+
+4.	Сервис трансформации. Генерация :ref:`контента из шаблона<templated_content>`
+
 
 4.2.0
--------
+======
 
-1.	Добавлен `модуль Service Desk <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/service_desk.html>`_
+1.	Добавлен :ref:`модуль Service Desk<ecos-service-desk>`.
 
-2.	BPMN. Добавлена возможность `логирования из ScriptTask <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#logger>`_ 
+2.	BPMN. Добавлена возможность логирования из :ref:`ScriptTask<script_task>`. 
 
-3.	BPMN. В Уведомлении добавлена возможность указывать `реципиентов (пользователи, группы, точные адреса) <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#id4>`_ напрямую и с использованием expressions.
+3.	BPMN. В :ref:`Уведомлении<notification>` добавлена возможность указывать реципиентов (пользователи, группы, точные адреса) напрямую и с использованием expressions.
 
-4.	BPMN. В Пользовательской задаче добавлен срок выполнения . У каждой задачи может быть добавлено поле `«due date» <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html#id3>`_ , указывающее дату выполнения задачи (должна быть выполнена до или после определенной даты).
+4.	BPMN. В :ref:`Пользовательской задаче<user_task>` добавлен срок выполнения. У каждой задачи может быть добавлено поле «due date», указывающее дату выполнения задачи (должна быть выполнена до или после определенной даты).
+
 
 4.1.0
-------
+======
 
 1.	BPMN. Добавлена поддержка следующих типов шлюза:
 
-    -	`Инклюзивный (inclusive gateway) <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.html#id4>`_   
-    -	`Шлюз на основе события (event based gateway) <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.html#id5>`_    
+    -	:ref:`Инклюзивный (inclusive gateway)<inclusive_gateway>`  
+    -	:ref:`Шлюз на основе события (event based gateway)<event_gateway>`    
 
-2.	BPMN. В шаблоне уведомления доступны к использованию следующие переменные:
+2.	BPMN. В шаблоне уведомления доступны к использованию следующие :ref:`переменные<notification_variables>`:
 
     1.	Переменные из базового record. 
     2.	Переменные процесса. 
     3.	Переменные событий Citeck. 
     4.	Контекстные переменные Records API
 
- `Подробно о переменных <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#id6>`_
+3.	BPMN. В событиях Citeck добавлена поддержка :ref:`событий о Records<ecos_bpmn_signal_event_defaut_payload>`
 
-3.	BPMN. В событиях Citeck добавлена поддержка `событий о Records <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.html#id7>`_
+
+**Доступно в Enterprise:**
+
+1.	Виджет :ref:`Стадии<widget_stages>`. Разработан новый виджет, который визуализирует прохождение стадий документа.
 
 4.0.0
-------
+======
 
-1.	Новый BPMN редактор, разработанный на основе библиотеки редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_. Со следующими элементами процесса, адаптированными под Citeck:
+1.	Новый BPMN :ref:`редактор<ecos-bpmn_platform>`, разработанный на основе библиотеки редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_. Со следующими элементами процесса, адаптированными под Citeck:
 
     -	Пользовательская задача,
     -	Скриптовая задача,
@@ -242,29 +347,30 @@ Community
     -	Multi Instance (многоэкземплярная активность),
     -	Пулы и дорожки.
 
- `Подробно о редакторе <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/BPMN_ecos.html>`_
+ 2.	Осуществленаа миграция бизнес-процессов модулей «Пропуска» и «Совещания» на новый BPMN редактор. Работа в модулях описана в следующих разделах:
 
-2.	Осуществленаа миграция бизнес-процессов модулей «Пропуска» и «Совещания» на новый BPMN редактор. Работа в модулях описана в следующих разделах:
+    - :ref:`Пропуска<ecos-order-pass>`
+    - :ref:`Совещания<ecos-meetings>`
 
-    - `Пропуска <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/order_pass.html>`_
-    - `Совещания <https://citeck-ecos.readthedocs.io/ru/latest/introduction/ecos_modules/meeting.html>`_
+3.	Библиотека для быстрой :ref:`разработки новых микросервисов<service_setup>`.
 
-3.	Библиотека для быстрой `разработки новых микросервисов <https://citeck-ecos.readthedocs.io/ru/latest/general/Microservices/new_microservice.html#ecos>`_ 
-
-4.	Обновлен виджет «Журнал версий». В виджете реализованы:
+4.	Обновлен виджет :ref:`Журнал версий<widget_versions_journal>`. В виджете реализованы:
 
     -	отображение списка версий,
     -	сравнение версий,
     -	скачивание версии.
 
- `О виджете «Журнал версий» подробно <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#widget-versions-journal>`_
-
-5.	Обновление виджета «История событий». В виджете фиксируются следующих события работы с задачами:
+5.	Обновлен виджет :ref:`История событий<widget_events-history>`. В виджете фиксируются следующих события работы с задачами:
 
     -	Задача создана,
     -	Задача назначена,
     -	Задача завершена.
 
- `О виджете «История событий» подробно <https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/interface/widgets.html#widget-events-history>`_
 
+**Доступно в Enterprise:**
 
+1.	Виджет :ref:`Статистика процесса<widget_process_statistics>`. Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap).
+
+2.	Микросервис :ref:`ecos-transformations<transformation>`. Микросервис для генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора.
+
+3.	Механизм лицензирования. Подробнее о :ref:`добавлении лицензии<license>`
