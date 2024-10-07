@@ -31,9 +31,9 @@ release = 'Ver. 4'
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
- 'sphinx_search.extension', 
+ 'sphinx_search.extension',
+ 'sphinx_rtd_theme'
 ]
-
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -66,7 +66,14 @@ source_suffix = '.rst'
 # a list of builtin themes.
 #
 # html_theme = 'sphinx_material'
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
+
+# -- sphinx_rtd_theme Theme options -----------------------------------------------------
+
+html_theme_options = {
+    'flyout_display': 'attached'
+}
+
 
 # html_theme_path = ['.']
 
