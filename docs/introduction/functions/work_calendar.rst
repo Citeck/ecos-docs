@@ -120,7 +120,7 @@
        :align: center 
 
 
-Указать **Имя**, **Тип расписания** (на данный момент поддерживается только weekly), **Конфигурацию** для типа расписания.
+Указать **Имя**, **Тип расписания** (на данный момент поддерживается только weekly), **Начало и заверешение рабочего дня**, **Часовой поезд** (при необходимости), **Рабочие дни**, **Производственный календарь**.
 
 Пример заполнения конфигурации
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,8 +136,6 @@
         "WEDNESDAY",
         "THURSDAY",
         "FRIDAY",
-        "SATURDAY",
-        "SUNDAY"
       ],
       "workingDayEnd": "17:00",
       "workingCalendar": "emodel/working-calendar@RU",
@@ -154,13 +152,12 @@
         "WEDNESDAY",
         "THURSDAY",
         "FRIDAY"
-        "SATURDAY",
-        "SUNDAY"
       ],
       "workingDayEnd": "17:00",
       "workingCalendar": "emodel/working-calendar@RU",
       "workingDayStart": "09:00",
       "workingDayTimeZone": "+03:00"
+    
 
 Где:
 
