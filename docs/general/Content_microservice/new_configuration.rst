@@ -153,7 +153,7 @@
 
         client_max_body_size 2g;
 
-    Если используется citeck helm chart, то с версии 1.3.51 можно задать параметр:
+    Если используется citeck helm chart, то с версии 1.3.53 можно задать параметр:
 
     .. code-block:: yaml
 
@@ -173,7 +173,7 @@
               ingress.alb.yc.io/idle-timeout: 300s
               ingress.alb.yc.io/request-timeout: 300s
 
-    Если используется citeck helm chart с k8s, конфигурируемый через аннотации `nginx.ingress.kubernetes.io/proxy-*`, то с версии 1.3.51 можно задать параметры:
+    Если используется citeck helm chart с k8s, конфигурируемый через аннотации `nginx.ingress.kubernetes.io/proxy-*`, то с версии 1.3.53 можно задать параметры:
 
      .. code-block:: yaml
         
