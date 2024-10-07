@@ -11,6 +11,16 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    if "html_context" not in globals():
+        html_context = {}
+    html_context["READTHEDOCS"] = True
+
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -31,7 +41,8 @@ release = 'Ver. 4'
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
- 'sphinx_search.extension', 
+ 'sphinx_search.extension',
+ 'sphinx_rtd_theme'
 ]
 
 
@@ -66,7 +77,14 @@ source_suffix = '.rst'
 # a list of builtin themes.
 #
 # html_theme = 'sphinx_material'
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
+
+# -- sphinx_rtd_theme Theme options -----------------------------------------------------
+
+html_theme_options = {
+    'flyout_display': 'attached'
+}
+
 
 # html_theme_path = ['.']
 
