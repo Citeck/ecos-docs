@@ -3,6 +3,8 @@
 
 .. _IntelliJ_IDEA_plugin:
 
+.. contents::
+   :depth: 2
 
 Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
 
