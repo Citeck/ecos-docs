@@ -42,6 +42,7 @@ release = 'Ver. 4'
 extensions = [
  'sphinx.ext.mathjax',
  'sphinx_search.extension',
+ 'sphinx_copybutton',
  'sphinx_rtd_theme'
 ]
 
