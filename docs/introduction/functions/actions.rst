@@ -1,6 +1,11 @@
 Действия в карточках
 =====================
 
+.. _actions:
+
+.. contents:: 
+   :depth: 2
+
 .. image:: _static/actions/actions.png
        :width: 300
        :align: center 
