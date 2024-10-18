@@ -190,11 +190,21 @@
        :width: 600
        :align: center
 
-Вкладка **Файл**, поле **Максимальный размер файла**:
+.. list-table::
+      :widths: 20 20
+      :align: center
 
- .. image:: _static/doclib/DocLib_13_1.png
-       :width: 600
-       :align: center
+      * - |
+
+            .. image:: _static/doclib/DocLib_13_2.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/doclib/DocLib_13_1.png
+                  :width: 600
+                  :align: center
 
 
 Так же для создания библиотеки документов можно использовать аспект **doclib**. **[TBD]**
