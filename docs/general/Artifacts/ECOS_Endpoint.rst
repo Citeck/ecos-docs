@@ -1,6 +1,9 @@
 Конечные точки ECOS
 ====================
 
+.. contents::
+   :depth: 3
+
 Для работы с ресурсами по сети в Citeck ECOS предусмтрен тип артефакта ECOS Endpoint.
 
 Расположение артефактов с данным типом: **model/endpoint**
@@ -82,12 +85,12 @@
        :width: 700
        :align: center
 
-https://host/v2/admin?journalId=endpoints&type=JOURNAL Конечные точки
+Журнал - https://host/v2/admin?journalId=endpoints&type=JOURNAL
 
 Форма создания:
 
 .. image:: _static/endpoints_02.png
-    :width: 700
+    :width: 600
     :align: center
 
-В данных для идентификации необходимо указать созданный ранее Секрет.
+В данных для идентификации необходимо выбрать созданный ранее :ref:`Секрет<ECOS_secrets>`.
