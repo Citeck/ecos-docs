@@ -1,6 +1,9 @@
 ECOS Секреты
 =============
 
+.. contents::
+   :depth: 3
+
 **ECOS Секрет** - объект, содержащий конфиденциальные данные, такие как пароль, токен или ключ.
 
 Расположение артефактов с данным типом: **model/secret**
@@ -96,7 +99,7 @@ ECOS Секреты
     :width: 700
     :align: center
 
-https://host/v2/admin?journalId=ecos-secrets&type=JOURNAL Секреты
+Журнал - https://host/v2/admin?journalId=ecos-secrets&type=JOURNAL
 
 Форма создания:
 
