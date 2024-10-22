@@ -70,3 +70,24 @@
         // здесь можем пересоздать подключения, которые зависят от endpointId
         return Unit.INSTANCE;
     });
+
+В интерфейсе
+--------------
+
+.. _ECOS_endpoints:
+
+Настройки доступны в разделе **«Модель - Конечные точки»**.
+
+.. image:: _static/endpoints_01.png
+       :width: 700
+       :align: center
+
+https://host/v2/admin?journalId=endpoints&type=JOURNAL Конечные точки
+
+Форма создания:
+
+.. image:: _static/endpoints_02.png
+    :width: 700
+    :align: center
+
+В данных для идентификации необходимо указать созданный ранее Секрет.
