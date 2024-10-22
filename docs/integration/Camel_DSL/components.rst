@@ -52,7 +52,7 @@ EcosRecordsSync camel component
          steps:
          - to: log:ers-test
 
-2. **EcosRecordsSyncProducer** Расширяет DefaultProducer, реализует обновление записи через RecordsAPI. Данные для обновления берется из тела сообщения (id из тела из проперти сообщения - CamelEcosRecordsSyncEntityRef). Возможные настройки для  *ecos-records-sync* продюсера: 
+2. **EcosRecordsSyncProducer**. Расширяет DefaultProducer, реализует обновление записи через RecordsAPI. Данные для обновления берется из тела сообщения (id из тела из проперти сообщения - CamelEcosRecordsSyncEntityRef). Возможные настройки для  *ecos-records-sync* продюсера: 
 
 .. list-table::
       :widths: 10 20

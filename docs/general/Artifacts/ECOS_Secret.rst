@@ -83,3 +83,39 @@ ECOS Секреты
         // здесь можем пересоздать подключения, которые зависят от secretId
         return Unit.INSTANCE;
     });
+
+
+В интерфейсе
+--------------
+
+.. _ECOS_secrets:
+
+Настройки доступны в разделе **«Модель - Секреты»**.
+
+.. image:: _static/secrets_01.png
+    :width: 700
+    :align: center
+
+https://host/v2/admin?journalId=ecos-secrets&type=JOURNAL Секреты
+
+Форма создания:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/secrets_02.png
+                :width: 700
+                :align: center
+
+        - |
+
+            .. image:: _static/secrets_03.png
+                :width: 700
+                :align: center
+
+
+
+
