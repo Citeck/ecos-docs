@@ -12,6 +12,7 @@
 
 .. list-table::
       :widths: 10 40
+      :align: center
       :class: tight-table 
       
       * - **Совещание**
@@ -50,6 +51,7 @@
 
 .. list-table::
       :widths: 10 40
+      :align: center
       :class: tight-table 
       
       * - **Инициатор**
@@ -69,6 +71,7 @@
 
 .. list-table::
       :widths: 20 60
+      :align: center
       :class: tight-table 
       
       * - **Новый**
