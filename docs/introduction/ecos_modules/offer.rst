@@ -63,6 +63,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Инициатор**
@@ -86,6 +87,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Черновик**
@@ -375,6 +377,7 @@ Cоздать поручение можно из карточки докумен
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **HR**
@@ -393,6 +396,7 @@ Cоздать поручение можно из карточки докумен
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Черновик**

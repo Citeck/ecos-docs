@@ -31,6 +31,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Исполнитель**
@@ -50,6 +51,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **In development**
