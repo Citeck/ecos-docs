@@ -681,13 +681,7 @@ RecordRef
     firstName: 'cm:firstName',
     lastName: 'cm:lastName'
   })
-
-  ---
-  Запрос ФИО пользователя:
-
-  var user = Citeck.Records.get('alfresco/people@admin');
-  await user.load(['cm:userName', 'cm:firstName', 'cm:lastName'])
-
+  
   ---
   Запрос имени пользователя:
   

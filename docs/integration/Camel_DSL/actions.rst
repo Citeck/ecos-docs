@@ -1,6 +1,8 @@
 Действия, доступные с Camel DSL
 ==================================
 
+.. _camel_dsl_actions:
+
 .. image:: _static/actions/camel_actions.png
        :width: 700
        :align: center

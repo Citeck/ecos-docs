@@ -20,6 +20,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Руководитель**
@@ -32,6 +33,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **На резолюции**

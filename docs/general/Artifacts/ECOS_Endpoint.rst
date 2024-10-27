@@ -1,6 +1,9 @@
 Конечные точки ECOS
 ====================
 
+.. contents::
+   :depth: 3
+
 Для работы с ресурсами по сети в Citeck ECOS предусмтрен тип артефакта ECOS Endpoint.
 
 Расположение артефактов с данным типом: **model/endpoint**
@@ -70,3 +73,24 @@
         // здесь можем пересоздать подключения, которые зависят от endpointId
         return Unit.INSTANCE;
     });
+
+В интерфейсе
+--------------
+
+.. _ECOS_endpoints:
+
+Настройки доступны в разделе **«Модель - Конечные точки»**.
+
+.. image:: _static/endpoints_01.png
+       :width: 700
+       :align: center
+
+Журнал - https://host/v2/admin?journalId=endpoints&type=JOURNAL
+
+Форма создания:
+
+.. image:: _static/endpoints_02.png
+    :width: 600
+    :align: center
+
+В данных для идентификации необходимо выбрать созданный ранее :ref:`Секрет<ECOS_secrets>`.

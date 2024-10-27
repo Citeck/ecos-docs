@@ -11,7 +11,7 @@
 Документация Citeck
 ====================
 
-.. image:: _static/Logo_Citeck_Ecos.svg
+.. image:: _static/Logo_Citeck_SL.svg
       :width: 300
       :target: https://www.citeck.ru/
 

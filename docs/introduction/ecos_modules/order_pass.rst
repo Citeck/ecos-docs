@@ -20,6 +20,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Инициатор**
@@ -38,6 +39,7 @@
 
 .. list-table::
       :widths: 20 40
+      :align: center
       :class: tight-table 
       
       * - **Заказ пропуска**
