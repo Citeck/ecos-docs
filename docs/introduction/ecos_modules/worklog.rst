@@ -58,6 +58,7 @@
 
 .. list-table::
       :widths: 10 20
+      :align: center
       :class: tight-table 
       
       * - **Пользователь**
