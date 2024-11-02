@@ -15,7 +15,7 @@
     - :ref:`действиями<ui_actions>`;
     - :ref:`командами<ecos_commands>`;
     - :ref:`событиями<ecos_events>`;
-    - бизнес-процессом с  :ref:`External task<ecos_bpmn_external_task>`;
+    - бизнес-процессом с  :ref:`Внешней задачей<ecos_bpmn_external_task>`;
     - созданием :ref:`дочерних ассоциаций<datatypes_associations>`.
 
 См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`, :ref:`разработку и создание микросервисов<service_develop_setup>`.
