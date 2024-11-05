@@ -6,7 +6,7 @@
 .. contents:: 
    :depth: 2
 
-Репозиторий `ecos-demo-app <https://github.com/Citeck/ecos-demo-app>`_ содержит приложение, демонстрирующее возможности ECOS.
+Репозиторий `ecos-demo-app <https://github.com/Citeck/ecos-demo-app>`_ содержит приложение, демонстрирующее возможности Citeck.
 
 Вы можете познакомиться с:
 
