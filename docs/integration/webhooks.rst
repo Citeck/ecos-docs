@@ -126,3 +126,4 @@
         - Not found action type ${webhook.actionType}
         - Если неверно задано действие в вебхуке
 
+Вебхук используется, например, для :ref:`синхронизации с Bitrix24<bitrix24_crm>`
