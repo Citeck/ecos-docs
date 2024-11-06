@@ -142,7 +142,7 @@
 
 .. code-block::
 
-    public Object execute(SimpleDto) {
+    public Object execute (SimpleDto SimpleDto ) {
             log.info("Command received: " + SimpleDto);
             return null;
         }
