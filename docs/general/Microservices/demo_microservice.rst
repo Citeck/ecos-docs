@@ -107,7 +107,7 @@
    <details>
    <summary><a>Как задать DTO</a></summary>
 
-.. code-block::
+.. code-block:: java
 
   public static class SimpleDto {
 
@@ -140,7 +140,7 @@
 
 Например, вызвать созданное выше DTO и вывести его в консоль:
 
-.. code-block::
+.. code-block:: java
 
     public Object execute (SimpleDto SimpleDto ) {
             log.info("Command received: " + SimpleDto);
