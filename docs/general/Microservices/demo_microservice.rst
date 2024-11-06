@@ -99,3 +99,69 @@
     ./mvnw clean test
 
 
+Примеры
+---------
+
+.. raw:: html
+
+   <details>
+   <summary><a>Как задать DTO</a></summary>
+
+.. code-block:: java
+
+  public static class SimpleDto {
+
+        private String id;
+        private String textField;
+        private int numField;
+
+        private Instant created;
+        private Instant modified;
+
+        public SimpleDto(String id) {
+            this.id = id;
+            created = Instant.now();
+            modified = created;
+        }
+
+        public SimpleDto(SimpleDto other) {
+            this.id = other.id;
+            this.textField = other.textField;
+            this.numField = other.numField;
+            this.created = other.created;
+            this.modified = other.modified;
+        }
+
+.. raw:: html
+
+   </details>
+   <details>
+   <summary><a>Как задать команду</a></summary>
+
+Например, вызвать созданное выше DTO и вывести его в консоль:
+
+.. code-block:: java
+
+    public Object execute (SimpleDto SimpleDto ) {
+            log.info("Command received: " + SimpleDto);
+            return null;
+        }
+
+.. raw:: html
+
+   </details>
+   <details>
+   <summary><a>Как вызвать действие</a></summary>
+
+.. code-block::
+
+    let rec = Records.getRecordToEdit('ecos-simple-app/send-simple-email@');
+    rec.att('entityRef', 'emodel/simple-type@629fbd31-788a-4232-9de9-d737e5b07795'); // any EntityRef
+    rec.att('comment', 'any comment');
+    await rec.save();
+
+где 
+
+* **ecos-simple-app** - наименование приложения
+* **send-simple-email** - идентификатор RecordsDAO. Используется для определения того, какой DAO должен обрабатывать запрос на мутацию.
+* **EntityRef** - уникальный идентификатор сущности в системе Citeck. 
