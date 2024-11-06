@@ -1,10 +1,13 @@
 Примеры реализации
 ====================
 
-.. _Excel-import:
+.. contents::
+   :depth: 3
 
 Импорт данных из Excel в Citeck
 ----------------------------------
+
+.. _Excel-import:
 
 В данном примере будет показан пример роута с использованием следующих camel-элементов:
 
@@ -105,3 +108,133 @@
        :width: 700
        :align: center 
 
+Синхронизация Bitrix24 – CRM
+------------------------------
+
+.. _bitrix24_crm:
+
+Конфиги Camel DSL
+~~~~~~~~~~~~~~~~~~
+
+В **Разделе Администратора → Интеграция → Camel DSL** были написаны 2 Camel DSL конфига:
+
+.. image:: _static/examples/bitrix_01.png
+       :width: 700
+       :align: center 
+
+**bitrix24-crm-in-sync** - Входящая интеграция. Из Bitrix24 в Citeck CRM.
+
+Для Входящей интеграции создан вебхук **bitrix24-webhook**, через который принимаются запросы от Bitrix24 на создание или изменение Сделок.
+Входящая интеграция в Сделках использует атрибут **bitrixId** для определения какую сделку обновлять. 
+
+При создании сделки из Bitrix24 этот атрибут задается сразу. При обновлении в Bitrix24 если в Citeck CRM нет сделки с таким **id**, то она создается как новая.
+
+**bitrix24-crm-out-sync** - Исходящая интеграция. Из Citeck CRM в Bitrix24.
+
+Исходящая интеграция синхронизирует в Bitrix24 создание и обновление сделок.
+
+Атрибуты, которые синхронизируются в текущей реализации:
+
+.. list-table:: 
+      :widths: 10 20 20
+      :header-rows: 1
+      :align: center
+      :class: tight-table 
+
+      * - Атрибут в deal Citeck CRM
+        - Атрибут в Bitrix24
+        - Комментарий
+      * - bitrixId
+        - ID
+        - 
+      * - name
+        - TITLE
+        - 
+      * - amount
+        - OPPORTUNITY
+        - 
+      * - dateReceived
+        - DATE_CREATE
+        - 
+      * - company
+        - crm.company.get?id=COMPANY_ID -> TITLE
+        - В COMPANY_ID хранится ID связанной со Сделкой Компанией. 
+      * - manager
+        - user.get?id=ASSIGNED_BY_ID
+        - | В ASSIGNED_BY_ID хранится ID менеджера сделки.
+          | Получаем email пользователя из Bitrix24, и если по этому значению найден пользователь в системе, задаем его как менеджера.
+      * - contacts
+        - 
+        - | Контакты в Bitrix24 хранятся в отдельных сущностях. 
+          | Получаем список id контактов и по каждому id получаем данные контакта
+      * - contactFio
+        - LAST_NAME NAME SECOND_NAME
+        - Формируется из нескольких полей в Bitrix24
+      * - contactPhone
+        - contact.PHONE
+        - 
+      * - contactEmail
+        - contact.EMAIL
+        - 
+
+Настройка синхронизации с Bitrix24
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Для работы синхронизаций необходимо настроить Bitrix24, Конечные точки, Секреты и Входящий вебхук:
+
+1. В **Bitrix24** создать Исходящий вебхук (для входящей интеграции). См. подробно `как <https://helpdesk.bitrix24.ru/open/20886106/>`_  
+
+1.1 В **URL** указать адрес до Входящего вебхука, созданного в Citeck, вида
+
+http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToken 
+
+   * bitrix24-webhook – **id**, указанный при создании вебхука.
+   * token - параметр, который был задан на форме
+   * testAuthToken - сам токен, который был задан в Секрете
+
+1.2 В **События** необходимо указать **Создание сделки (ONCRMDEALADD)**, **Обновление сделки (ONCRMDEALUPDATE)**
+
+.. image:: _static/examples/bitrix_02.png
+       :width: 700
+       :align: center 
+
+1.3 В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-webhook-token** указать **Токен приложения**.
+
+.. image:: _static/examples/bitrix_03.png
+       :width: 500
+       :align: center 
+
+2. В Bitrix24 создать Входящий вебхук (для запросов в Birix24).
+
+2.1 Указать Настройку прав **crm** и **user**
+
+.. image:: _static/examples/bitrix_04.png
+       :width: 700
+       :align: center 
+
+2.2 В Citeck перейти в **Раздел Администратора → Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL** Входящего вебхука Bitrix24 вида https://XXXX.bitrix24.ru/rest/
+
+.. image:: _static/examples/bitrix_05.png
+       :width: 500
+       :align: center 
+
+2.3 В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-rest-credentials** указать **Имя пользователя** и **Пароль**
+(значения из URL Входящего вебхука Bitrix24 **..../rest/{имя пользователя}/{пароль})**
+
+.. image:: _static/examples/bitrix_06.png
+       :width: 500
+       :align: center 
+
+3. В Citeck перейти в **Раздел Администратора → Модель → Конечные точки** в **bitrix24-rabbitmq-endpoint** указать **URL** до Rabbitmq по AMQP:
+
+.. image:: _static/examples/bitrix_07.png
+       :width: 500
+       :align: center 
+
+4. В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-rabbitmq-credentials** указать **Имя пользователя** и **Пароль** для аутентификации в rabbitmq. Пользователь должен быть с правами администратора.
+
+.. image:: _static/examples/bitrix_08.png
+       :width: 500
+       :align: center 
+
+5. :ref:`Запустить<camel_dsl_actions>` в Camel DSL синхронизации **bitrix24-crm-in-sync**, **bitrix24-crm-out-sync**.

@@ -1335,6 +1335,46 @@ id типа: ``open-submit-form``
                     "formId": "...",
                             }
 
+user-event
+~~~~~~~~~~~
+
+.. _user_event_action:
+
+id типа: ``user-event``
+
+Для формирования пользовательских эвентов и возможности на них реагировать :ref:`в BPMN<user_event_bpmn>` добавлен новый тип действия user-event, которое кидает ecos-event.
+
+Например:
+
+.. code-block::
+
+  ---
+  id: user-event-action1
+
+  name:
+    ru: Пользовательское действие 1
+    en: User event action 1
+
+  type: user-event
+
+  config:
+    record: ${?id}
+    eventData:
+      priority: 1
+      counterpartInitiator: ${counterparty.initiator}
+      counterpartyRef: ${counterparty?id}
+      house:
+        kitchen: red
+        livingRoom: blue
+
+
+В итоге в системе будет сформирован **ecos event**:
+
+   * **Тип**. Всегда равен id действия. В данном случае *user-event-action1*
+   * **Рекорд**, по которому произошел эвент. То, что указано в record, *${?id*} означает, что по текущему документу, из которого вызывается действие. Если record не указан, эвент глобальный (не привязан к какому-то конкретному рекорду)
+   * **Полезная нагрузка эвента**. Все, что указано в *eventData*. На первом уровне атрибутов можно передавать данные в виде *entityRef*, для этого можно воспользоваться синтаксисом ${some_attribute?id}.
+
+
 Enterprise действия
 -------------------
 
