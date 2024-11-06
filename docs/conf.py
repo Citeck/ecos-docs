@@ -97,6 +97,10 @@ html_logo = '_static/logo_citeck_white.png'
 # pixels large.
 html_favicon = '_static/favicon_32.ico'
 
+# The name of the Pygments (syntax highlighting) style to use.
+
+pygments_style = 'vs'
+
 # html_theme_path = ['.']
 
  # Set link name generated in the top bar.
