@@ -82,7 +82,7 @@
 
     Для смены источника данных достаточно поменять поля **Query Data Source** и **Query params → token**
 
-    Для смены параметров на стендах необходимо использовать патч `См. Патчи для артефактов <https://citeck.atlassian.net/wiki/spaces/knowledgebase/pages/1482883161>`_
+    Для смены параметров на стендах необходимо использовать патч :ref:`См. Патчи для артефактов<artifact_patch>`  
 
  .. image:: _static/records_sources/records_sources_4.png
      :width: 600  
