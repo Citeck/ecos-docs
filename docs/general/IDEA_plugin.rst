@@ -38,7 +38,7 @@
 
 **File -> New project**
 
-Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<service_setup>`:
+Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<mcs_setup>`:
 
 .. list-table::
       :widths: 20 20

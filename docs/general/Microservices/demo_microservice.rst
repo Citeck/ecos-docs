@@ -18,7 +18,7 @@
     - бизнес-процессом с  :ref:`Внешней задачей<ecos_bpmn_external_task>`;
     - созданием :ref:`дочерних ассоциаций<datatypes_associations>`.
 
-См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`, :ref:`разработку и создание микросервисов<service_develop_setup>`.
+См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`, :ref:`разработку и создание микросервисов<mcs_develop_setup>`.
 
 При запуске приложения в левом меню по умолчанию появится раздел **«Демо тип/Demo type»** с двумя журналами:
 
@@ -107,7 +107,7 @@
    <details>
    <summary><a>Как задать DTO</a></summary>
 
-.. code-block:: java
+.. code-block:: js
 
   public static class SimpleDto {
 
@@ -140,7 +140,7 @@
 
 Например, вызвать созданное выше DTO и вывести его в консоль:
 
-.. code-block:: java
+.. code-block:: js
 
     public Object execute (SimpleDto SimpleDto ) {
             log.info("Command received: " + SimpleDto);
@@ -153,7 +153,7 @@
    <details>
    <summary><a>Как вызвать действие</a></summary>
 
-.. code-block::
+.. code-block:: js
 
     let rec = Records.getRecordToEdit('ecos-simple-app/send-simple-email@');
     rec.att('entityRef', 'emodel/simple-type@629fbd31-788a-4232-9de9-d737e5b07795'); // any EntityRef
