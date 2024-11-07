@@ -547,6 +547,29 @@
 
   При разработке модуля  необходимо по соответствующей кнопке скачать матрицу прав. Полученный json поместить в модель по пути: ``app/artifacts/model/permissions``
 
+
+Настрока прав на атрибуты в зависимости от каких-либо алгоритмов
+******************************************************************
+
+В конфигурации матриц прав есть массив **rules**:
+
+.. code-block::
+
+  data class PermissionRule(
+
+      val roles: Set<String> = emptySet(),
+      val permissions: Set<String> = emptySet(),
+
+      val statuses: Set<String> = emptySet(),
+      val condition: Predicate = VoidPredicate.INSTANCE,
+
+      val type: RuleType = RuleType.ALLOW
+  )
+
+Через правила можно писать кастомные условия для включения/отключения правила и реализовать с помощью :ref:`вычисляемых атрибутов<count_attributes>` почти любую логику. 
+
+Если не хватает вычисляемых атрибутов, то есть :ref:`внешние миксины<mixins>`, которые можно реализовать в :ref:`кастомном микросервисе<mcs_setup>`.
+
 Вычисление прав
 ****************
 
@@ -709,6 +732,8 @@
         approval: WRITE
         reworking: NONE
     rules: []
+
+
 
 Аспекты
 ~~~~~~~~~

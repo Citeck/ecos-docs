@@ -64,7 +64,7 @@
 Смена пароля пользователя осуществляется через вызов действия ``change-user-password``, с последующим вызовом формы:
 
  .. image:: _static/keycloak_ecos_integration/03.png
-       :width: 300
+       :width: 400
        :align: center
 
-Класс обработчик действия ``ChangePasswordActionDto`` принимает id юзера и новый пароль, после чего происходит синхронизация с Keycloak.
+Класс обработчик действия ``ChangePasswordActionDto`` принимает id пользователя и новый пароль, после чего происходит синхронизация с Keycloak.
