@@ -1,7 +1,7 @@
 Разработка и создание микросервисов
 ====================================
 
-.. _service_develop_setup:
+.. _mcs_develop_setup:
 
 .. toctree::
     :maxdepth: 3
