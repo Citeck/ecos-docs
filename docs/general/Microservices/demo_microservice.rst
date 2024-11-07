@@ -18,7 +18,7 @@
     - бизнес-процессом с  :ref:`Внешней задачей<ecos_bpmn_external_task>`;
     - созданием :ref:`дочерних ассоциаций<datatypes_associations>`.
 
-См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`, :ref:`разработку и создание микросервисов<service_develop_setup>`.
+См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`, :ref:`разработку и создание микросервисов<mcs_develop_setup>`.
 
 При запуске приложения в левом меню по умолчанию появится раздел **«Демо тип/Demo type»** с двумя журналами:
 
