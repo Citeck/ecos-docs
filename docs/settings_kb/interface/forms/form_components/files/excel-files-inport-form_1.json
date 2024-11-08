@@ -1,0 +1,137 @@
+{
+  "id": "excel-files-inport-form",
+  "title": {
+    "en": "excel-files-import"
+  },
+  "typeRef": "emodel/type@excel-files-import",
+  "width": "m",
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Файлы для импорта"
+        },
+        "key": "filesToImport",
+        "multiple": true,
+        "reorder": false,
+        "fileTypes": [
+          {
+            "label": "Документ",
+            "value": "document"
+          }
+        ],
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "file",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Импортированные строки"
+        },
+        "key": "importedLines",
+        "multiple": true,
+        "source": {
+          "type": "custom",
+          "custom": {
+            "columns": [
+              {
+                "name": "name",
+                "formatter": "",
+                "setAttributesManually": true,
+                "title": {
+                  "ru": "Имя"
+                },
+                "type": "text",
+                "multiple": false
+              },
+              {
+                "name": "validLine",
+                "formatter": "value = {\n  type: 'colored',\n  config: {\n    color: {\n      \"true\": '#00FF0033',\n      \"false\": \"#FF000033\"\n    }\n  }\n}",
+                "setAttributesManually": true,
+                "title": {
+                  "ru": "Строка валидна"
+                },
+                "type": "boolean",
+                "multiple": false
+              }
+            ],
+            "record": null,
+            "attribute": null
+          }
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "tableForm",
+        "input": true,
+        "reorder": false
+      },
+      {
+        "type": "columns",
+        "key": "buttons-columns",
+        "columns": [
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 0,
+            "components": [],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 1,
+            "key": "column",
+            "components": []
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 2,
+            "components": [
+              {
+                "type": "button",
+                "key": "cancel",
+                "label": {
+                  "ru": "Отменить",
+                  "en": "Cancel"
+                },
+                "action": "event",
+                "event": "cancel",
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 3,
+            "components": [
+              {
+                "type": "button",
+                "theme": "primary",
+                "key": "submit",
+                "label": {
+                  "ru": "Сохранить",
+                  "en": "Save"
+                },
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          }
+        ],
+        "input": false
+      }
+    ],
+    "formId": "excel-files-inport-form"
+  },
+  "notExists": false
+}

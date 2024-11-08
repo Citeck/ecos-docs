@@ -220,6 +220,36 @@ Async data
 Примеры использования
 ----------------------
 
+Пример формы с async data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На форме 2 видимых поля - выбор из журнала типов и textarea, которое автоматически наполняется списком записей выбранного типа.
+
+.. image:: _static/async_data/async_data_example_01.jpg
+      :width: 500
+      :align: center
+
+:download:`json с данными формы <../files/async-data-test-form.json>` 
+
+Загрузка данных через async data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Загрузка данных через async data в том числе и используя поиск:
+
+.. image:: _static/async_data/async_data_example_02.jpg
+      :width: 500
+      :align: center
+
+.. image:: _static/async_data/async_data_example_03.jpg
+      :width: 500
+      :align: center
+
+.. image:: _static/async_data/async_data_example_04.jpg
+      :width: 500
+      :align: center
+
+:download:`json с данными формы <../files/async-data-test-form_v2.json>` 
+
 Получение ссылки карточки на форме подтверждения
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -262,5 +292,5 @@ Async data
       };
 
 .. image:: _static/async_data/async_data_12.png
-      :width: 600
+      :width: 500
       :align: center

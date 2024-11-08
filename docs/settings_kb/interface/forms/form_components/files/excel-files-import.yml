@@ -1,0 +1,23 @@
+---
+id: excel-files-import
+storageType: ECOS_MODEL
+parentRef: emodel/type@case
+formRef: uiserv/form@excel-files-inport-form
+journalRef: uiserv/journal@DEFAULT_JOURNAL
+inheritForm: false
+model:
+  attributes:
+    - id: filesToImport
+      name:
+        ru: Файлы
+      type: ASSOC
+      config:
+        typeRef: emodel/type@document
+        child: true
+      multiple: true
+      mandatory: true
+    - id: importedLines
+      type: ASSOC
+      config:
+        typeRef: emodel/type@excel-files-import-line
+        child: false
