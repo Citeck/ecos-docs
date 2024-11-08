@@ -261,7 +261,8 @@ Table form
 
 Поле **Обработчик ответов** предназначено для обработки результата ответа сервера после загрузки файла. Обязательно к заполнению. 
 Принимает javascript-выражение, в котором необходимо присвоить переменной **result строку (recordRef), массив строк (массив recordRef) или ошибку (result = new Error('текст ошибки'))**.
-В javascript-выражении помимо стандартных объектов formio (data, instance, _, moment, и т.д.) доступна переменная response (или resp), которая содержит результат ответа сервера после загрузки файла. 
+
+В javascript-выражении помимо стандартных объектов **formio (data, instance, _, moment, и т.д.)** доступна переменная **response** (или resp), которая содержит результат ответа сервера после загрузки файла. 
 
 После заполнения настроек у компонента должна появиться кнопка **Импорт**:
 
@@ -269,3 +270,60 @@ Table form
        :width: 400
        :align: center
 
+Примеры
+---------
+
+Импортирование данных
+~~~~~~~~~~~~~~~~~~~~~~
+
+Работа с файлами обычно делегируется бэкенду. 
+
+Создадим новый тип для импортирования данных :download:`excel-files-import.yml <../files/excel-files-import.yml>` и форму :download:`excel-files-inport-form.json <../files/excel-files-inport-form.json>` 
+
+Для отображения строк используем дочерний тип :download:`excel-files-import-line.yml <../files/excel-files-import.yml>`
+
+:download:`ecos-app архив со всеми артефактами <../files/import-from-excel-example.zip>`, который можно загрузить целиком по адресу host/v2/admin?journalId=ecos-apps&type=JOURNAL
+
+Далее необходимо добавить основной тип в меню, открыть журнал, нажать "Создать", добавить файлы для импорта и нажать "Создать". На бэкенде ловится событие создания, обрабатываются файлы и заполняются строки.
+
+Примерный вид, того как это будет выглядеть:
+
+.. image:: _static/table_form/example_01.jpg
+       :width: 500
+       :align: center
+
+|
+
+.. image:: _static/table_form/example_02.jpg
+       :width: 600
+       :align: center
+
+Для произвольной логики на бэкенде в Citeck есть возможность создания дополнительных микросервисов. Демо микросервис, который можно посмотреть для примера -  https://github.com/Citeck/ecos-demo-app 
+
+Изменение стиля строки
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: _static/table_form/example_03.jpg
+       :width: 600
+       :align: center
+
+У каждой строки можно заполнять флаг "совпадения" и повесить на этот атрибут :ref:`форматтер<formatters>`
+
+Пример формы :download:`excel-files-inport-form.json <../files/excel-files-inport-form_1.json>` 
+
+
+Добавление строк
+~~~~~~~~~~~~~~~~~~
+
+Таблицы на формах - способ представления дочерних сущностей.
+
+Добавлять новые строки на бэкенде можно, указав корректные атрибуты **_parent** (ссылка на родителя) и **_parentAtt** (ассоциация родителя для связи с дочерней сущностью).
+
+.. code-block::
+
+        recordsService.create("type@excel-files-import-line", ObjectData.create()
+            .set("name", "custom-name")
+            .set("validLine", true)
+            .set(RecordConstants.ATT_PARENT, "emodel/excel-files-import@0fd3353c-8a9f-47bc-b3f9-26ec92b1245c")
+            .set(RecordConstants.ATT_PARENT_ATT, "importedLines")
+        );
