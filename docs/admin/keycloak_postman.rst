@@ -33,7 +33,7 @@ URL для доступа: ``%host%/auth/admin/master/console/``
 3.	После перехода в реалм выбрать вкладку :guilabel:`clients`. Как видно на скриншоте, клиент service_qa уже создан. Пример создания будет на пункт ниже, но само конфигурирование будет показано на уже существующем service_qa.
 
  .. image:: _static/keycloack_postman/Keycloack_2.png
-       :width: 600
+       :width: 700
        :align: center
 
 4.	Нажать кнопку :guilabel:`Create`
@@ -87,7 +87,7 @@ Cоздание пользователя в Citeck
 Заполнить поле **“Системное Имя”** по паттерну ``service-account-%имя созданного клиента%``. Остальные поля можно не заполнять, так как пользователь сервисный и заходить под ним никто не будет.
 
  .. image:: _static/keycloack_postman/Keycloack_9.png
-       :width: 700
+       :width: 500
        :align: center
  
 3.	Теперь можно совершать запросы к системе через gateway.
@@ -114,7 +114,7 @@ Cоздание пользователя в Citeck
        :width: 700
        :align: center
  
-3.	Далее в разделе :guilabel:`Configure New Token` указать тип выдачи прав **Client Credentials** и **URL откуда запрашивать токен авторизации**. 
+3.	Далее в разделе :guilabel:`Configure New Token` указать тип выдачи прав **Client Credentials**. В поле **Access Token URL** указать **URL**, откуда запрашивать токен авторизации, вида **https://<URL сервера>/ecos-idp/auth/...**
  
  .. image:: _static/keycloack_postman/Postman_3.png
        :width: 700
@@ -144,9 +144,10 @@ Cоздание пользователя в Citeck
 6.	Если тело запроса заполнено, то можно выполнять основной запрос на стенд. Срок действия токена можно посмотреть при его получении. 
 
  .. image:: _static/keycloack_postman/Postman_8.png
-       :width: 700
+       :width: 500
        :align: center
 
 В дальнейшей работе по истечении срока действия токена его нужно обновить, повторно нажав **Get New Access Token → Use Token**.
 
 
+См. :ref:`Примеры использования Records API для внешних систем<API_examples>`
