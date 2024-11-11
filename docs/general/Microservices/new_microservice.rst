@@ -1,11 +1,11 @@
-.. _service_setup:
+.. _mcs_setup:
 
-Создание нового микросервиса ECOS
-==================================
+Создание нового микросервиса
+============================
 
 Результат описанных ниже инструкций можно посмотреть здесь: `Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
 
-1. Для создания нового микросервиса ECOS нужно создать новый **maven spring-boot проект** и в **pom.xml** добавить в качестве родителя один из следующих pom файлов:
+1. Для создания нового микросервиса Citeck нужно создать новый **maven spring-boot проект** и в **pom.xml** добавить в качестве родителя один из следующих pom файлов:
 
 .. list-table::
       :widths: 10 10
@@ -203,7 +203,7 @@
 
 где
 
-* ``EcosSpringExtension`` - расширения ECOS для SpringExtension, которое позволяет запускать в автотестах полноценный spring-context с in-memory БД (если для неё заданы настройки подключения в application.yml);
+* ``EcosSpringExtension`` - расширения Citeck для SpringExtension, которое позволяет запускать в автотестах полноценный spring-context с in-memory БД (если для неё заданы настройки подключения в application.yml);
 
 * ``MinimalWebAppSample.class`` - класс из п.2
 

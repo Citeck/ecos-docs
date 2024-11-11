@@ -1,0 +1,113 @@
+{
+  "id": "excel-files-inport-form",
+  "title": {
+    "en": "excel-files-import"
+  },
+  "typeRef": "emodel/type@excel-files-import",
+  "width": "m",
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Файлы для импорта"
+        },
+        "key": "filesToImport",
+        "multiple": true,
+        "reorder": false,
+        "fileTypes": [
+          {
+            "label": "Документ",
+            "value": "document"
+          }
+        ],
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "file",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Импортированные строки"
+        },
+        "key": "importedLines",
+        "source": {
+          "type": "journal",
+          "journal": {
+            "journalId": "",
+            "columns": []
+          }
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "tableForm",
+        "input": true
+      },
+      {
+        "type": "columns",
+        "key": "buttons-columns",
+        "columns": [
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 0,
+            "components": [],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 1,
+            "key": "column",
+            "components": []
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 2,
+            "components": [
+              {
+                "type": "button",
+                "key": "cancel",
+                "label": {
+                  "ru": "Отменить",
+                  "en": "Cancel"
+                },
+                "action": "event",
+                "event": "cancel",
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 3,
+            "components": [
+              {
+                "type": "button",
+                "theme": "primary",
+                "key": "submit",
+                "label": {
+                  "ru": "Сохранить",
+                  "en": "Save"
+                },
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          }
+        ],
+        "input": false
+      }
+    ],
+    "formId": "excel-files-inport-form"
+  },
+  "notExists": false
+}

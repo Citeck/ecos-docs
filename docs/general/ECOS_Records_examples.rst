@@ -76,3 +76,27 @@ Cоздание пользователя
 Журналы
 --------
 
+Работа с объектами
+--------------------
+
+Работа с файлами из UI возможна либо через загрузку контента, как base64 строка:
+
+.. code-block::
+
+    await Records.get('emodel/ecos-contract@3a4e11cf-4227-44f4-98dd-1eeefba30e28').load('_content.bytes')
+
+Либо через получение URL для скачивания:
+
+.. code-block::
+
+    await Records.get('emodel/ecos-contract@3a4e11cf-4227-44f4-98dd-1eeefba30e28').load('_content.url')
+
+Можно или загрузить файл в виде **formData** по адресу:
+
+.. code-block::
+
+    /gateway/emodel/api/ecos/webapp/content 
+
+или через base64 (подходит только для небольших файлов). 
+
+
