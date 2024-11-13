@@ -77,8 +77,7 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos
 
 **Запись (Record)** – сущность с набором атрибутов и идентификатором записи (RecordRef).
 
-Ниже разобран простой пример RecordsDAO с хранением сущностей в памяти. Данный RecordsDAO демонстрирует простые базовые операции CRUD в API Records и не реализует такие функции,  как ассоциации, хранение контента, проверку разрешений и т. д.
-
+Ниже разобран простой пример RecordsDAO с хранением сущностей в памяти. Данный RecordsDAO демонстрирует простые базовые операции CRUD в API Records и не реализует такие функции,  как ассоциации, хранение контента, проверку разрешений и т. д. 
 См. подробное описание :ref:`операций CRUD<ecos_RecordsService>` 
 
 **Внимание:** Все данные будут потеряны после перезапуска приложения. Не используйте для продакшн-среды.
@@ -98,7 +97,7 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos
 
         /**
         * Запрос Query records поддерживает только язык «предикатов».
-        * @param recordsQuery – параметры запроса, отправляемые с фронта
+        * @param recordsQuery – параметры запроса, отправляемые с фронтенда
         * @return найденные записи и информацию об общем количестве без пагинации
         */
         @Nullable
@@ -355,7 +354,7 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos
         }
     }
 
-На фронте действие вызывается следующим образом:
+На фронтенде действие вызывается следующим образом:
 
 .. code-block::
 
@@ -452,7 +451,7 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos
         }
 
         /**
-        * Фронт отправляет 2 атрибута и создается инстанс ActionData	
+        * Фронтенд отправляет 2 атрибута и создается инстанс ActionData	
         */
 
 
@@ -520,7 +519,7 @@ Job
 
 Job позволяет запланировать однократное или регулярное выполнение заданий.
 
-https://github.com/Citeck/ecos-demo-app/blob/master/src/main /java/ru/citeck/ecos/webapp/demo/job/SimpleAnnotatedJob.java 
+https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/job/SimpleAnnotatedJob.java 
 
 
 .. code-block:: java
@@ -554,6 +553,100 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main /java/ru/citeck/eco
                     ". Demo records with children: " + queryRes.getTotalCount()); // вывод количества в лог
         }
     }
+
+Events 
+""""""""""
+
+:ref:`События< ecos_events>`в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий. 
+
+Рассмотрено создание класса EventListener.
+
+https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/events/DemoEcosEventListener.java 
+
+.. code-block:: java
+
+    @Slf4j
+    @Component
+    @RequiredArgsConstructor
+    public class DemoEcosEventListener {
+
+        private final EventsService eventsService;
+
+        @PostConstruct
+        public void init() {
+
+            Predicate filter = Predicates.and( // Задается фильтр для поиска
+                // Для транзакционных слушателей очень важна фильтрация по типу.
+                // чтобы избежать генерации ненужных событий.
+                Predicates.eq("typeDef.id", "demo-type"),
+                Predicates.contains("record.textField", "error")
+            );
+
+            eventsService.<UserCreatedOrUpdatedEventAtts>addListener(builder -> {
+
+                // Типы событий
+                //
+                // Часто используемые типы событий:
+                // ru.citeck.ecos.events2.type.RecordChangedEvent.TYPE ("record-changed")
+                // ru.citeck.ecos.events2.type.RecordDeletedEvent.TYPE ("record-deleted")
+                // ru.citeck.ecos.events2.type.RecordStatusChangedEvent.TYPE ("record-status-changed")
+                // ru.citeck.ecos.events2.type.RecordDraftStatusChangedEvent.TYPE ("record-draft-status-changed")
+                // ru.citeck.ecos.events2.type.RecordCreatedEvent.TYPE ("record-created")
+                // ru.citeck.ecos.events2.type.RecordContentChangedEvent.TYPE ("record-content-changed")
+                //
+                // Атрибуты для этих типов событий можно найти в классах выше.
+                builder.withEventType(RecordCreatedEvent.TYPE); // подписка на создание записи
+
+                // Класс данных определяет DTO с атрибутами, которые должны быть загружены из события и отправлены слушателю
+                builder.withDataClass(UserCreatedOrUpdatedEventAtts.class); // какие данные выбирать из события
+
+                // Транзакционный флаг дает слушателю следующие возможности:
+                // 1. Слушатель вызывается сразу после возникновения события
+                // 2. Если слушателю отправить ошибку, то транзакция будет отменена
+                // но у этого флага есть следующие недостатки:
+                // 1. Если приложение не запускается и произошло событие, транзакция всегда будет завершаться с ошибкой.
+                // 2. Если слушатель проделывает какую-то сложную работу, то отзывчивость системы будет хуже.
+                //
+                // Если выбрать transactional=false, то слушатель будет вызываться асинхронно
+                // после фиксации транзакции
+                builder.withTransactional(true);
+
+                // 'J' в конце имени метода означает 'Java'.
+                // Методы API без постфикса изначально предназначены для использования в Kotlin.
+                // withAction определяет метод, который должен вызываться при возникновении события.
+                builder.withActionJ(this::processCreatedOrUpdatedEvent);
+
+                // Фильтр проверяет любые данные в событии мгновенно, когда событие произошло.
+                // Если фильтр не соответствует, событие не будет создано.
+                builder.withFilter(filter);
+                return Unit.INSTANCE;
+            });
+
+            // Добавить слушателя к измененному событию
+            eventsService.<UserCreatedOrUpdatedEventAtts>addListener(builder -> {
+                builder.withEventType(RecordChangedEvent.TYPE);
+                builder.withDataClass(UserCreatedOrUpdatedEventAtts.class);
+                builder.withTransactional(true);
+                builder.withActionJ(this::processCreatedOrUpdatedEvent);
+                builder.withFilter(filter);
+                return Unit.INSTANCE;
+            });
+        }
+
+        private void processCreatedOrUpdatedEvent(UserCreatedOrUpdatedEventAtts event) { // вызов метода для  получения инстанса класса, наполненного данными, которые можно фильтровать
+            log.warn("Process created or updated event for record " + event.entityRef + ". TextField: " + event.textField); // вывод полученных данных в лог
+            throw new RuntimeException("You can't write 'error' in text field. Current value: '" + event.textField + "'");  // вывод ошибки, препятствующей выполнению действий
+        }
+
+        @Data
+        public static class UserCreatedOrUpdatedEventAtts { // создание на сервере инстанса этого класса и наполнение его данными.
+            @AttName("record?id") // что создалось
+            private EntityRef entityRef;
+            @AttName("record.textField") // полученные данные поля textField
+            private String textField;
+        }
+    }
+
 
 Сценарий работы
 -----------------
