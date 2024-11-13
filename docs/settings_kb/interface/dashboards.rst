@@ -36,18 +36,18 @@
           | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**	
           | 2. **contracts-cat-doctype-contract**	
           | Порядок - от более приоритетного к менее приоритетному	
-          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
+          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
       * - **Site-details**
         - | Страница раздела, которая позволяет отображать общие данные по разделу.
           | Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
           | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**. 
       * - **User-dashboard**
         - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
-          | Например: ``localhost/v2/dashboard`` 	
+          | Например: ``host/v2/dashboard`` 	
           | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL) 
       * - **profile-details**
         - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления<control_panel>`)
-          | Например: ``localhost/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
+          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
 
 В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры)  используется параметр activeTab, 
 
