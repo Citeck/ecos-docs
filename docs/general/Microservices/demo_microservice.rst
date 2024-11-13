@@ -557,9 +557,9 @@ https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos
 Events 
 """"""""""
 
-:ref:`События< ecos_events>`в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий. 
+:ref:`События<ecos_events>` в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий. 
 
-Рассмотрено создание класса EventListener.
+Рассмотрим создание класса **EventListener**.
 
 https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/events/DemoEcosEventListener.java 
 
