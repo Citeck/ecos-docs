@@ -1,0 +1,225 @@
+{
+  "id": "async-data-test-form",
+  "formKey": "",
+  "title": {
+    "en": "async-data-test-form"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "",
+  "width": "",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Список данных"
+            },
+            "key": "dataList",
+            "defaultValue": "",
+            "refreshOn": [
+              "recordsList"
+            ],
+            "calculateValue": "value = _.get(data, 'recordsList.records', []).map(r => r.toString()).join(\"\\n\");",
+            "optionalWhenDisabled": false,
+            "type": "textarea",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "Тип для поиска"
+            },
+            "key": "typeToSearch",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "ecos-types",
+            "queryData": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true
+          },
+          {
+            "label": "typeRecordsFetch",
+            "source": {
+              "type": "custom",
+              "custom": {
+                "syncData": "value = {\n  \"typeRef\": data.typeToSearch // обращаемся к полям формы через data\n}",
+                "asyncData": "if (!data.typeRef) {\n  value = { records: [] };\n} else {\n  // В value обязательно что-то должно попасть. Либо Promise либо конкретное значение.\n  // сначала загружаем sourceId из выбранного типа\n  value = Records.get(data.typeRef).load('sourceId').then(sourceId => {\n  \n    if (!sourceId) {\n      console.log('sourceId is undefined for type ' + data.typeRef);\n      return { records: [] };\n    }  \n    // обязательно делаем return и загружаем через fetch список записей. \n    // fetch может быть заменен на использование Records.query, но для демонстрации\n    // произвольных http запросов выполним именно fetch\n    return fetch('/gateway/api/records/query', {\n      method: 'POST',\n      body: JSON.stringify({\n        query: {\n          sourceId, \n          query: {}, \n          language: 'predicate',\n          page: { maxItems: 10 }\n        },\n        attributes: {\n          \"displayName\": \"?disp\"\n        },\n        version: 1\n      }),\n      credentials: 'include'\n    }).then(r => r.json()).then (queryRes => {\n      \n      // конвертируем результат и возвращаем\n      let records = queryRes.records.map(r => r.attributes.displayName + \" (\" + r.id + \")\"); \n      return { records };\n    });\n    \n  });\n}"
+              },
+              "forceLoad": false
+            },
+            "update": {
+              "type": "any-change"
+            },
+            "refreshOn": [
+              {
+                "label": "typeToSearch",
+                "value": "typeToSearch"
+              }
+            ],
+            "key": "recordsList",
+            "type": "asyncData",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "Demo types"
+            },
+            "key": "demoTypes",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "demo-type-journal",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true
+          },
+          {
+            "label": "Record",
+            "source": {
+              "type": "recordsArray",
+              "recordsArray": {
+                "id": "{{data.demoTypes}}",
+                "attributes": {
+                  "textField": "textField"
+                }
+              },
+              "forceLoad": false
+            },
+            "update": {
+              "type": "any-change"
+            },
+            "refreshOn": [
+              {
+                "label": "demoTypes",
+                "value": "demoTypes"
+              }
+            ],
+            "key": "recordData",
+            "type": "asyncData",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "Text Field"
+            },
+            "key": "textField",
+            "defaultValue": "",
+            "refreshOn": [],
+            "calculateValue": "value = JSON.stringify(data.recordData);",
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "async-data-test-form"
+  },
+  "attributes": {},
+  "notExists": false
+}
