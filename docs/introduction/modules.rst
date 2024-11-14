@@ -599,3 +599,16 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
+      * - :ref:`Интеграция с Git<git_integration>`
+        - Возможность связать Citeck приложение с Git репозиторием для загрузки измененных артефактов.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
