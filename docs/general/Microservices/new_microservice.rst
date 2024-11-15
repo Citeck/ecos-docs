@@ -3,6 +3,10 @@
 Создание нового микросервиса
 ============================
 
+.. note::
+
+    Для создания микросервиса используется `Spring Boot <https://docs.spring.io/spring-boot/documentation.html>`_
+
 Результат описанных ниже инструкций можно посмотреть здесь: `Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
 
 1. Для создания нового микросервиса Citeck нужно создать новый **maven spring-boot проект** и в **pom.xml** добавить в качестве родителя один из следующих pom файлов:
@@ -23,9 +27,9 @@
       * - ru.citeck.ecos.webapp:ecos-webapp-spring-simple-parent
         - Родитель для spring-boot микросервисов без состояния или микросервисов, которые работают с БД через jdbc или :ref:`ecos-data<ecos_data_main>`.
 
-Актуальная версия родительских pom файлов: **2.18.7 (версия Java не ниже 17)**
+Актуальная версия родительских pom файлов: **3.3.3 (версия Java не ниже 21)**
 
-Все родительские **pom файлы** импортируют spring-boot зависимости, общие библиотеки ECOS и дополнительные библиотеки для тестирования (rabbitmq мок, zookeeper мок и тд.)
+Все родительские **pom файлы** импортируют spring-boot зависимости, общие библиотеки Citeck и дополнительные библиотеки для тестирования (rabbitmq мок, zookeeper мок и тд.)
 
 Пример настроенного **pom файла**:
 
@@ -43,7 +47,7 @@
         <parent>
             <groupId>ru.citeck.ecos.webapp</groupId>
             <artifactId>ecos-webapp-spring-simple-parent</artifactId>
-            <version>1.8.8</version>
+            <version>3.3.3</version>
         </parent>
 
         <repositories>
