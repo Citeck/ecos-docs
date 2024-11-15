@@ -17,15 +17,15 @@
   * IntelliJ IDEA - 2022.2.5.
   * Citeck - 4.2
 
-Установка плагина в IDEA
----------------------------
+Установка плагина
+------------------
 
 Скачайте дистрибути плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или соберите из исходников самостоятельно.
 
 Далее установите плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
-Обновление плагина в IDEA
----------------------------
+Обновление плагина
+-------------------
 
 Для обновления скачайте последнюю версию дистрибутива плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_
 
