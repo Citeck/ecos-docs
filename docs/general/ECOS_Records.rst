@@ -714,15 +714,37 @@ RecordRef
 
   await Citeck.Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
-
 CRUD операции
 ~~~~~~~~~~~~~~~
+
+.. code-block::
+
+  CREATE:
+
+  const record = Records.get("emodel/someType@");
+  record.att("name", "New record"); 
+  record.att("someAttribute", "Hello world!");
+  record.save();
+  
+  -----
+  const record = Records.getRecordToEdit("emodel/someType@id");
+  
+  READ:
+  await record.load("?json");
+  
+  UPDATE:
+  record.att("someAttribute", "New value");
+  record.save();
+  
+  DELETE:
+  Records.remove(["emodel/someType@id1", "emodel/someType@id2"]);
 
 Общение с сервером происходит через ``POST`` запросы. 
 
 .. list-table:: 
       :widths: 10 40 40
       :header-rows: 1
+      :class: tight-table 
 
       * - Запрос
         - Описание
