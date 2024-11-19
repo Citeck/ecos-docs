@@ -6,10 +6,10 @@ Async data
 .. contents::
    :depth: 4
 
-**Запись (record)** - это понятие, которое включает в себя ноду альфреско, но не любая запись является нодой.
+**Запись (Record)** – сущность с набором атрибутов и идентификатором записи (RecordRef).
 
  .. image:: _static/async_data/async_data_1.png
-       :width: 600
+       :width: 800
        :align: center
 
 Типы данных
@@ -26,9 +26,9 @@ Async data
 
 Для подстановки текущей редактируемой ноды можно использовать ``{{ recordId }}``
 
-В аттрибутах ``ключ`` - это алиас (имя по которому будет храниться значение аттрибута), а ``value`` - это сам аттрибут. Список вариантов значения ``value`` можно посмотреть в ECOS Records [Ссылку разместить]
+В аттрибутах ``ключ`` - это алиас (имя по которому будет храниться значение аттрибута), а ``value`` - это сам аттрибут. Список вариантов значения ``value`` можно посмотреть в :ref:`ECOS Records<Records_API>`
 
-По умолчанию, при попытке из record'а получить ассоциацию, возвращается её **displayName (cm:title или если нет, то cm:name в простом случае)**. Чтобы получить ссылку на неё, необходимо после указания названия атрибута, поставить постфикс **?assoc**. Пример:
+По умолчанию, при попытке из record'а получить ассоциацию, возвращается её **displayName**. Чтобы получить ссылку на неё, необходимо после указания названия атрибута, поставить постфикс **?assoc**. Пример:
 
  .. image:: _static/async_data/async_data_2.png
        :width: 400
@@ -38,6 +38,10 @@ Async data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Работает по аналогии с режимом **Record**, но применительно к массиву идентификаторов записей.
+
+.. image:: _static/async_data/async_data_14.png
+      :width: 400
+      :align: center
 
 3. Запрос записей/Records Query
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +112,11 @@ Async data
 **Синхронные данные** - это подготовка данных, которые будут нужны для выполнения **Асинхронные данные**.
 
 В **Асинхронные данные** можно в ``value`` записать **Promise**, результат выполнения которого будет проставлен в поле.
+
+ .. image:: _static/async_data/async_data_15.png
+       :width: 400
+       :align: center
+
 
 6. Records Script
 ~~~~~~~~~~~~~~~~~~
@@ -223,7 +232,7 @@ Async data
 Пример формы с async data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-На форме 2 видимых поля - выбор из журнала типов и textarea, которое автоматически наполняется списком записей выбранного типа.
+На форме 2 видимых поля - выбор из журнала **типов** и **textarea**, которое автоматически наполняется списком записей выбранного типа.
 
 .. image:: _static/async_data/async_data_example_01.jpg
       :width: 500
@@ -236,19 +245,29 @@ Async data
 
 Загрузка данных через async data в том числе и используя поиск:
 
-.. image:: _static/async_data/async_data_example_02.jpg
-      :width: 500
+
+.. list-table::
+      :widths: 20 20
       :align: center
 
-.. image:: _static/async_data/async_data_example_03.jpg
-      :width: 500
-      :align: center
+      * - |
+
+            .. image:: _static/async_data/async_data_example_02.jpg
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/async_data/async_data_example_03.jpg
+                  :width: 500
+                  :align: center
 
 .. image:: _static/async_data/async_data_example_04.jpg
-      :width: 500
+      :width: 400
       :align: center
 
 :download:`json с данными формы <../files/async-data-test-form_v2.json>` 
+
 
 Получение ссылки карточки на форме подтверждения
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -292,5 +311,76 @@ Async data
       };
 
 .. image:: _static/async_data/async_data_12.png
-      :width: 500
+      :width: 400
       :align: center
+
+Дополнительные примеры
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: _static/async_data/async_data_example_06.png
+      :width: 600
+      :align: center
+
+**typeRecordsFetch** 
+
+Async data, которая по пользовательским данным вычисляет что-то на форме. В частности, получает с формы значение поля **typeToSearch** 
+
+Но в асинхронных данных напрямую обратиться к полям формы мы не можем.
+
+Разделение на синхронные и асинхронные сделано, чтобы из синхронных данных определить, нужно ли выполнять логику из асинхронной, то есть 
+пока данные в **typeToSearch** не изменятся, то сложная логика не будет перевычислена.
+
+.. image:: _static/async_data/async_data_example_05.png
+      :width: 400
+      :align: center
+
+**Record(recordData)** 
+
+
+Сам компонент async data:
+
+.. image:: _static/async_data/async_data_example_11.png
+      :width: 400
+      :align: center
+
+На форме есть компонент **Demo types** - выбор из журнала, в настройках указан journal id.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/async_data/async_data_example_07.png
+                  :width: 400
+                  :align: center
+
+        - |
+
+            .. image:: _static/async_data/async_data_example_08.png
+                  :width: 400
+                  :align: center
+
+
+В компоненте **Text Field** настроено вычисляемое назначение - берем вычисленное в async data **recorDdata** и преобразуем в json-строку:
+
+Удобный прием для дебага.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/async_data/async_data_example_09.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/async_data/async_data_example_10.png
+                  :width: 400
+                  :align: center
+
+
+:download:`json с данными формы <../files/async-data-test-form_v3.json>` 

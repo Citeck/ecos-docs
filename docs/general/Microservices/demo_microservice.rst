@@ -28,19 +28,19 @@
 С чего начать
 --------------
 
-Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_ Подробно :ref:`об установке<docker_compose>`
+Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_. Подробно :ref:`об установке<docker_compose>`
 
 Микросервис написан с использованием `Spring Boot <https://docs.spring.io/spring-boot/documentation.html>`_
 
-Зависимости
---------------
 
-Для запуска этого приложения необходимы следующие приложения из развертывания Citeck:
+.. note::
 
-    -	zookeeper; 
-    -	rabbitmq;
-    -	ecos-model;
-    -	ecos-registry.
+    Для запуска этого приложения необходимы следующие приложения из развертывания Citeck:
+
+        -	zookeeper; 
+        -	rabbitmq;
+        -	ecos-model;
+        -	ecos-registry.
 
 Запуск
 -------
