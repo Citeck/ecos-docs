@@ -717,6 +717,8 @@ RecordRef
 CRUD операции
 ~~~~~~~~~~~~~~~
 
+Примеры CRUD операций:
+
 .. code-block::
 
   CREATE:
@@ -730,16 +732,19 @@ CRUD операции
   const record = Records.getRecordToEdit("emodel/someType@id");
   
   READ:
+
   await record.load("?json");
   
   UPDATE:
+
   record.att("someAttribute", "New value");
   record.save();
   
   DELETE:
+  
   Records.remove(["emodel/someType@id1", "emodel/someType@id2"]);
 
-Общение с сервером происходит через ``POST`` запросы. 
+Общение с сервером происходит через ``POST`` запросы:
 
 .. list-table:: 
       :widths: 10 40 40
