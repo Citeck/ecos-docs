@@ -165,11 +165,12 @@
 Для отключения фильтра:
 
         .. image:: _static/adm_35.png
-            :width: 300
+            :width: 250
             :align: center 
 
 .. list-table::
       :widths: 5 10
+      :align: center
       :class: tight-table 
       
       * - 
@@ -219,6 +220,7 @@
 
 .. list-table::
       :widths: 5 10
+      :align: center
       :class: tight-table 
       
       * - 

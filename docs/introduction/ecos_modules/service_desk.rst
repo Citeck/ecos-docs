@@ -385,6 +385,8 @@ SLA
 Виджет «SLA»
 ~~~~~~~~~~~~~
 
+Виджет SLA отображает основные параметры SLA.
+
  .. image:: _static/service_desk/desk_16.png
        :width: 600
        :align: center 

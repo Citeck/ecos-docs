@@ -153,13 +153,13 @@ ______________
       * - |
 
             .. image:: _static/status_change_01.png
-                  :width: 500
+                  :width: 400
                   :align: center
 
         - |
 
             .. image:: _static/status_change_02.png
-                  :width: 500
+                  :width: 400
                   :align: center
 
 **Тип изменения**:
@@ -306,10 +306,10 @@ End Throw Event - ручная настройка и события с филь�
   :width: 500
 
 .. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
-   :width: 25%
+   :width: 20%
 
 .. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
-   :width: 25%
+   :width: 20%
 
 .. _Intermediate_Catch_Event:
 

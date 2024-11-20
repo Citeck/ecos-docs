@@ -9,5 +9,6 @@
     functions/doc_templates
     functions/barcode
     functions/esign
+    functions/version_comparison
     functions/actions  
     functions/work_calendar

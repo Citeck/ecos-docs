@@ -11,7 +11,7 @@
 
 
  .. image:: _static/service_task/service_task_1.png
-       :width: 400
+       :width: 350
        :align: center
 
 Есть четыре способа объявить, как вызывать логику Java:

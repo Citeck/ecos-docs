@@ -18,6 +18,7 @@
 
 .. list-table::
       :widths: 10 30
+      :align: center
       :class: tight-table 
       
       * - 
@@ -49,4 +50,4 @@
                 :width: 50
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_connectors.html
 
-        - Правила соединения элементов
+        - Правила **соединения элементов**
