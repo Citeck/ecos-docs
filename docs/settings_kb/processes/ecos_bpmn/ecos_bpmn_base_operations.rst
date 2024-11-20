@@ -210,6 +210,7 @@
 
 .. list-table::
       :widths: 1 3 5
+      :align: center
       :class: tight-table 
 
       * - **1** 
