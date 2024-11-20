@@ -34,6 +34,94 @@
 
 Правила соединения элементов:
 
-.. image:: _static/connectors/requirement_connectors_table.png
-      :width: 800
+.. list-table::
+      :widths: 20 20 20 20 
+      :header-rows: 1
       :align: center
+      :class: tight-table 
+      
+      * - Выходит от
+        - Идет к
+        - Требование
+        - Отображение на схеме
+
+      * - Решение
+        - Решение
+        - Информация
+        -
+            
+            .. image:: _static/connectors/01.png
+                  :width: 200
+                  :align: center
+
+      * - Решение
+        - Источник знания
+        - Полномочия
+        -
+            
+            .. image:: _static/connectors/02.png
+                  :width: 200
+                  :align: center
+
+      * - Модель бизнес-знаний
+        - Решение
+        - Знание
+        -
+            
+            .. image:: _static/connectors/03.png
+                  :width: 200
+                  :align: center
+
+      * - Модель бизнес-знаний
+        - Модель бизнес-знаний
+        - Знание
+        -
+            
+            .. image:: _static/connectors/04.png
+                  :width: 200
+                  :align: center
+
+      * - Входные данные
+        - Решение
+        - Информация
+        -
+            
+            .. image:: _static/connectors/05.png
+                  :width: 200
+                  :align: center
+
+      * - Входные данные
+        - Источник знания
+        - Полномочия
+        -
+            
+            .. image:: _static/connectors/06.png
+                  :width: 200
+                  :align: center
+
+      * - Источник знания
+        - Решение
+        - Полномочия
+        -
+            
+            .. image:: _static/connectors/07.png
+                  :width: 200
+                  :align: center
+
+      * - Источник знания
+        - Модель бизнес-знаний
+        - Полномочия
+        -
+            
+            .. image:: _static/connectors/08.png
+                  :width: 200
+                  :align: center
+
+      * - Источник знания
+        - Источник знания
+        - Полномочия
+        -
+            
+            .. image:: _static/connectors/09.png
+                  :width: 200
+                  :align: center

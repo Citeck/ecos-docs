@@ -24,14 +24,14 @@
       * - 
            
            .. image:: _static/seq_flow/normal_flow.png
-              :width: 200
+              :width: 150
               :align: center 
 
         - | **Стандартный поток управления** (Sequence flow) относится к потокам, берущим начало от Стартового события и следующим по ходу выполнения процесса.   
       * - 
            
            .. image:: _static/seq_flow/default_flow.png
-              :width: 200
+              :width: 150
               :align: center 
 
 

@@ -108,6 +108,7 @@
 .. list-table::
       :widths: 5 5 10
       :header-rows: 1
+      :align: center
       :class: tight-table 
 
       * - Идентификатор
