@@ -23,6 +23,7 @@ Multi instance
 
 .. list-table::
       :widths: 1 10 10
+      :align: center
       :class: tight-table 
 
       * - 
@@ -57,6 +58,7 @@ Multi instance
 
 .. list-table::
       :widths: 5 20
+      :align: center
       :class: tight-table 
 
       * - **Пользовательская задача**

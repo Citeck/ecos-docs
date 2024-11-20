@@ -34,7 +34,7 @@
 По клику правой кнопки мыши на ячейку шапки таблицы становится доступно меню:
 
  .. image:: _static/decision/decision_17.png
-       :width: 200
+       :width: 180
        :align: center
 
 Используя меню, можно добавить, скопировать/вставить, или удалить ячейки.
@@ -86,6 +86,7 @@
 
 .. list-table::
       :widths: 10 30
+      :align: center
       :header-rows: 1
       :class: tight-table 
       
@@ -122,6 +123,7 @@
 
 .. list-table::
       :widths: 10 30
+      :align: center
       :class: tight-table 
       
       * - **SUM**
@@ -147,7 +149,8 @@
 .. _input_variable:
 
 .. list-table::
-      :widths: 5 10 30 
+      :widths: 5 10 30
+      :align: center
       :class: tight-table 
       
       * - **1**
@@ -192,7 +195,8 @@
 Выходной элемент определяет идентификатор, метку, имя и тип вывода таблицы решений.
 
 .. list-table::
-      :widths: 5 10 30 
+      :widths: 5 10 30
+      :align: center
       :class: tight-table 
       
       * - **1**

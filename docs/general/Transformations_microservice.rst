@@ -4,7 +4,7 @@ Transformations микросервис
 =============================
 
 .. contents::
-   :depth: 2
+   :depth: 3
 
 .. note::
 
@@ -631,7 +631,7 @@ Work around для решения проблемы:
 Шаблон xlsx выглядит следующим образом:
 
 .. image:: _static/transformation/xlsx_4.png
-      :width: 600
+      :width: 500
       :align: center
 
 Где:
@@ -644,11 +644,11 @@ Work around для решения проблемы:
 В итоге, для карточки с данными параметрами:
 
 .. image:: _static/transformation/xlsx_5.png
-      :width: 600
+      :width: 500
       :align: center
 
 Будет сгенерирован следующий шаблон:
 
 .. image:: _static/transformation/xlsx_6.png
-      :width: 600
+      :width: 500
       :align: center
