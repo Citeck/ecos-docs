@@ -3,7 +3,7 @@
 
 .. _ecos_dmn:
 
-Платформа основана на библиотеке редактора `dmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_.
+Платформа основана на библиотеке редактора `dmn-js <https://bpmn.io/toolkit/dmn-js/>`_ и движка `camunda <https://camunda.com/>`_.
 
  .. image:: _static/dmn_01.png
        :width: 600

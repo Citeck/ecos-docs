@@ -41,7 +41,7 @@
 Возможные типы таймера:
 
  .. image:: _static/timer_event_4.png
-       :width: 300
+       :width: 250
        :align: center
 
 .. _time_format:

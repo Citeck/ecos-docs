@@ -28,6 +28,7 @@
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 
@@ -62,6 +63,7 @@
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 
@@ -120,13 +122,14 @@
 Вы создаете схему БП, выбирая на Панели элементов нужные вам элементы и соединяете их потоками управления. Выделив любой элемент схемы, справа от него появляется панель кнопок: 
 
  .. image:: _static/26.png
-       :width: 300
+       :width: 250
        :align: center
 
 На панели рядом с элементом расположены следующие кнопки:
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 
@@ -211,6 +214,7 @@
 
 .. list-table::
       :widths: 10 5 20
+      :align: center
       :header-rows: 1
       :class: tight-table 
 
@@ -224,13 +228,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_01.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_02.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Процесс/ подпроцесс имеет несколько пустых начальных событий**
         - Ошибка
@@ -238,13 +242,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_03.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_04.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Входящие потоки не объединяются**
         - Предупреждение
@@ -252,13 +256,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_05.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_06.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Gateway излишний, т.к. имеет только один ввод и вывод**
         - Предупреждение
@@ -266,13 +270,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_07.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_08.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **В процессе/ подпроцессе отсутствует начальное событие**
         - Ошибка
@@ -308,13 +312,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_11.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_12.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **SequenceFlow: дублирование входящих/ исходящих потоков**
         - Ошибка
@@ -322,13 +326,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_28.png
-                :width: 500
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_29.png
-                :width: 500
+                :width: 300
                 :align: center
       * - **Разветвления и соединения шлюза**
         - Ошибка
@@ -336,13 +340,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_13.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_14.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Поток разделяется неявно**
         - Ошибка
@@ -350,20 +354,20 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_15.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_16.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Условие не применимо без Exclusive Gateway или Inclusive Gateway**
         - Ошибка
         - | Проверяет, если у потока управления без Exclusive Gateway или Inclusive Gateway задан тип условия.
 
                .. image:: _static/errors/Linter_err_32.png
-                :width: 400
+                :width: 300
                 :align: center
 
       * - **Последовательность операций: отсутствует условие**
@@ -371,7 +375,7 @@
         - | Проверяет, наличие типа условия у потока управления, выходящего из Exclusive Gateway или Inclusive Gateway.
 
                .. image:: _static/errors/Linter_err_30.png
-                :width: 500
+                :width: 300
                 :align: center
 
           | См. подробно :ref:`типы условия<sequential flow_type>`
@@ -382,7 +386,7 @@
 
 
                .. image:: _static/errors/Linter_err_31.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | См. как изменить :ref:`тип потока управления<sequential flow_change>`
@@ -393,13 +397,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_17.png
-                :width: 400
+                :width: 300
                 :align: center
 
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_18.png
-                :width: 400
+                :width: 300
                 :align: center
       * - **Стартовое событие должно быть пустым**
         - Ошибка
@@ -407,13 +411,13 @@
           | Пример **неправильного** использования правила:
 
                .. image:: _static/errors/Linter_err_33.png
-                :width: 400
+                :width: 300
                 :align: center
           
           | Пример **правильного** использования правила:
 
                .. image:: _static/errors/Linter_err_34.png
-                :width: 400
+                :width: 300
                 :align: center
 
       * - **Отсутствует элемент bpmndi**

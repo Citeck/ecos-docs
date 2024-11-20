@@ -27,6 +27,7 @@
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 
@@ -49,6 +50,7 @@
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 
@@ -88,6 +90,7 @@
 
 .. list-table::
       :widths: 1 5
+      :align: center
       :class: tight-table 
 
       * - 

@@ -39,26 +39,26 @@
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html
 
-        - Задача запускает скрипт (т.е. последовательность действий) или программный код, который выполняется автоматически.
+        - Скриптовая запускает скрипт (т.е. последовательность действий) или программный код, который выполняется автоматически.
       * - 
 
             .. image:: _static/components/notification_task.png
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html
 
-        - Задача используется для отправки уведомлений пользователям
+        - Задача-уведомление используется для отправки уведомлений пользователям
       * - 
             .. image:: _static/components/service_task.png
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_service_task.html
 
-        - Задача используется для обозначения подключения сторонних сервисов, не относящихся к среде выполнения бизнес-процесса. 
+        - Сервисная задача используется для обозначения подключения сторонних сервисов, не относящихся к среде выполнения бизнес-процесса. 
       * - 
             .. image:: _static/components/set_status_task.png
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_set_status.html
 
-        - Элемент позволяет производить смену статуса в создаваемом бизнес-процессе.
+        - Установка статуса. Элемент позволяет производить смену статуса в создаваемом бизнес-процессе.
       * - 
             .. image:: _static/components/business_rule_task.png
                 :width: 100
@@ -89,7 +89,7 @@
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.html
 
-        - Действие, которое может включать в себя: другие действия, шлюзы, события и потоки операций.
+        - Подпроцесс. Действие, которое может включать в себя: другие действия, шлюзы, события и потоки операций.
       * - 
             .. image:: _static/components/events.png
                 :width: 100
@@ -101,12 +101,12 @@
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.html
 
-        - Способ определения повторения определенного шага в бизнес-процессе.
+        - Multi Instance (многоэкземплярная активность). Способ определения повторения определенного шага в бизнес-процессе.
       * - 
             .. image:: _static/components/pool_participant.png
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_pool.html
 
-        - Для отображения исполнителей процесса BPMN используются элементы: пул и дорожка. 
+        - Пул и дорожка используются для отображения исполнителей процесса BPMN. 
 
 

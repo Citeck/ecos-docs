@@ -30,6 +30,7 @@
 
 .. list-table::
       :widths: 5 5
+      :align: center
       :class: tight-table 
 
       * - Указать **Имя**

@@ -5,7 +5,7 @@
 
 .. _ecos_bpmn:
 
-Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/>`_ и движка `camunda <https://camunda.com/>`_.
+Платформа основана на библиотеке редактора `bpmn-js <https://bpmn.io/toolkit/bpmn-js/>`_ и движка `camunda <https://camunda.com/>`_.
 
  .. image:: _static/01.png
        :width: 600
@@ -18,6 +18,7 @@
 
 .. list-table::
       :widths: 20 20 10 10 10 10
+      :align: center
       :header-rows: 1
       :class: tight-table 
       
