@@ -41,4 +41,3 @@ API, разработанное для организации простого �
     ECOS_Records/records_syntax
     ECOS_Records/ECOS_Records_examples
 
-
