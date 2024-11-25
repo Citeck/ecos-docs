@@ -18,7 +18,7 @@
     },
     sortBy: [
         {
-        attribute: 'cm:created',
+        attribute: '_created',
         ascending: false,
         },
     ],

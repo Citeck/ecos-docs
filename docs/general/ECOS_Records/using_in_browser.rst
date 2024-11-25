@@ -72,7 +72,7 @@
 
     // Статус объекта:
 
-  await Citeck.Records.get(record).load("_status?str")
+  await Citeck.Records.get('emodel/someType@id').load("_status?str")
 
   // Проверка enterprise лицензии:
 

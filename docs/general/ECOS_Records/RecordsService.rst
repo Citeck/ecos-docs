@@ -121,7 +121,7 @@ RecordsService (Java)
   recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
   recordAtts.setAtt("etype:type","testdl-routeTemplateItem");
   recordAtts.setAtt(RecordConstants.ATT_PARENT,
-          "/app:company_home/st:sites/cm:ssg-edi/cm:dataLists/cm:testdl-routeTemplate");
+          "/app:company_home/st:sites/cm:project-edi/cm:dataLists/cm:testdl-routeTemplate");
   recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "cm:contains");
   recordsService.mutate(recordAtts);
 
