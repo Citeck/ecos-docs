@@ -64,7 +64,7 @@
 
 Открываем форму создания и заполняем следующую информацию:
 
-**id** - ssg-incident-base-new-incident-to-possible-responsible
+**id** - test-incident-base-new-incident-to-possible-responsible
 
 **name** - Базовый шаблон. Новый документ
 
@@ -80,7 +80,7 @@
 
 .. code-block::
 
-    <#import "ssg-template-lib" as lib>
+    <#import "test-template-lib" as lib>
 
     <@lib.its_test_message/>
     <p>
@@ -163,12 +163,12 @@
 
 Модуль представляет собой zip архив с мета-информаций по шаблону и самим контентом шаблона. Для примера, выгрузим модуль для шаблона, созданного на шаге `2.1.1 Создание нового объекта`_.
 
-Файл ssg-incident-base-new-incident-to-possible-responsible.html.meta.yml является мета информацией, содержимое файла:
+Файл test-incident-base-new-incident-to-possible-responsible.html.meta.yml является мета информацией, содержимое файла:
 
 .. code-block:: json
 
     {
-        "id" : "ssg-incident-base-new-incident-to-possible-responsible",
+        "id" : "test-incident-base-new-incident-to-possible-responsible",
         "name" : "Базовый шаблон. Новый документ",
         "notificationTitle" : {
             "ru" : "Новый инцидент: ${title}"
@@ -181,11 +181,11 @@
         "multiTemplateConfig" : []
     }
 
-Файл ssg-incident-base-new-incident-to-possible-responsible.html.ftl является самим контентом шаблона, его содержимое:
+Файл test-incident-base-new-incident-to-possible-responsible.html.ftl является самим контентом шаблона, его содержимое:
 
 .. code-block::
 
-    <#import "ssg-template-lib" as lib>
+    <#import "test-template-lib" as lib>
 
     <@lib.its_test_message/>
     <p>
@@ -200,8 +200,8 @@
 .. note:: 
     
     Если тело шаблона предусматривает несколько локалей, то в имени файла контента указывается локаль по следующему правилу: |br|
-    ``ssg-incident-base-new-incident-to-possible-responsible.html_en.ft`` для локали ``en`` |br|
-    ``ssg-incident-base-new-incident-to-possible-responsible.html_ru.ft`` для локали ``ru`` |br|
+    ``test-incident-base-new-incident-to-possible-responsible.html_en.ft`` для локали ``en`` |br|
+    ``test-incident-base-new-incident-to-possible-responsible.html_ru.ft`` для локали ``ru`` |br|
     и т.д.
 
 3. Использование переменных в шаблоне
