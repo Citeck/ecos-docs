@@ -376,7 +376,7 @@
     
 В значении к полю ``_attachments`` необходимо указать :ref:`Records API атрибут.<Records API attribute>`
 
-Для рекродов, которые хранятся в emodel - ``_content{bytes,meta:?json}``
+Для рекордов, которые хранятся в emodel - ``_content{bytes,meta:?json}``
 
 .. note::
 
