@@ -1521,7 +1521,7 @@ id типа: ``transform``
   },
 
   canBeExecuted: ({ record }) => {
-    return record.att('.has(n:"cm:content")') !== false;
+    return record.att('.has(n:"_content")') !== false;
   }
  };
 

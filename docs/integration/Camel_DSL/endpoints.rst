@@ -153,8 +153,8 @@ URI
            attributes:
              ?id: ?id
              id: ?localId
-             title: cm:title
-             name: cm:name
+             title: title
+             name: name
          steps:
            - to: log:ecos-records-sync
 
@@ -187,8 +187,8 @@ URI
            addAuditAttributes: true
            attributes:
              id: ?localId
-             title: cm:title
-             name: cm:name
+             title: title
+             name: name
          steps:
            - split:
                simple: "${body}"
@@ -220,8 +220,8 @@ URI
            addAuditAttributes: true
            attributes:
              id: ?localId
-             title: cm:title
-             name: cm:name
+             title: title
+             name: name
          steps:
            - split:
                simple: "${body}"

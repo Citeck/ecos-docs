@@ -93,25 +93,25 @@ JSON представление
       
         .. code-block::
 
-          {t: «starts», att:«cm:title», val: «startsWIth»}"
+          {t: «starts», att:«title», val: «startsWIth»}"
 
-    - ``@cm:title:«startsWith``
+    - ``@title:«startsWith``
   * - **ends**
     - | Строка заканчивается с val.
       | Пример: 
 
         .. code-block::
 
-          {t: «ends», att:«cm:title», val: «endsWIth»}
+          {t: «ends», att:«title», val: «endsWIth»}
 
-    - ``@cm:title:«*endsWith``
+    - ``title:«*endsWith``
   * - **or**
     - | Объединение массива предикатов в val по ИЛИ.
       | Пример: 
       
         .. code-block::      
       
-          {t: «or», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
+          {t: «or», val: [{t: «starts», att:«title», val: «startsWIth»}, {t: «ends», att:«title», val: «endsWIth»}]}"
     - 
   * - **and**
     - | Объединение массива предикатов в val по И.
@@ -119,7 +119,7 @@ JSON представление
       
         .. code-block::        
       
-          {t: «and», val: [{t: «starts», att:«cm:title», val: «startsWIth»}, {t: «ends», att:«cm:title», val: «endsWIth»}]}"
+          {t: «and», val: [{t: «starts», att:«title», val: «startsWIth»}, {t: «ends», att:«title», val: «endsWIth»}]}"
     - 
   * - **empty**
     - | Поле в att пустое.
@@ -127,7 +127,7 @@ JSON представление
       
         .. code-block::  
           
-          {t: «empty», att: «cm:title»}
+          {t: «empty», att: «title»}
     - 
   * - **not**
     - | Отрицание предиката в val.
@@ -135,14 +135,14 @@ JSON представление
 
         .. code-block::        
           
-          {t: «not», val:{t: «empty», att: «cm:title»}}. 
+          {t: «not», val:{t: «empty», att: «title»}}. 
 
       | Этот предикат можно автоматически добавлять к  другим добавляя префикс «not-». 
       | Пример: 
       
         .. code-block::  
 
-          {t: «not-eq», att:«cm:title», val: «startsWIth»}"
+          {t: «not-eq», att:«title», val: «startsWIth»}"
 
     - 
   * - **eq**
@@ -151,7 +151,7 @@ JSON представление
       
         .. code-block::  
       
-         {t: «eq», att:«cm:title», val: «SomeValue»}"
+         {t: «eq», att:«title», val: «SomeValue»}"
 
     - 
   * - **gt**
@@ -202,46 +202,46 @@ JSON представление
 
         .. code-block::
 
-         {t: "ge", att:"cm:created", val: "-P10D"}
+         {t: "ge", att:"_created", val: "-P10D"}
 
      | Ищем документы у которых от $NOW - два года, до ($NOW - два года) - плюс год
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "-P2Y/P1Y"}
+          {t: "eq", att:"_created", val: "-P2Y/P1Y"}
 
      | Найти документы которые были созданы в течении 2-х лет, до текущей даты-времени
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "-P2Y/$NOW"} 
+          {t: "eq", att:"_created", val: "-P2Y/$NOW"} 
 
      | Найти документы которые были созданы в течении 2-х лет, до сегодняшнего дня
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "-P2Y/$TODAY"}   
+          {t: "eq", att:"_created", val: "-P2Y/$TODAY"}   
 
      | от 2020-01-01 до 2020-02-01
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/2020-02-01T00:00:00Z"}
+          {t: "eq", att:"_created", val: "2020-01-01T00:00:00Z/2020-02-01T00:00:00Z"}
 
      | от 2020-01-01 до 2020-01-01 плюс 1 месяц
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "2020-01-01T00:00:00Z/P1M"} 
+          {t: "eq", att:"_created", val: "2020-01-01T00:00:00Z/P1M"} 
 
      | от минус 10 дней до 2020-01-01 
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "-P10D/2020-01-01T00:00:00Z"} 
+          {t: "eq", att:"_created", val: "-P10D/2020-01-01T00:00:00Z"} 
 
      | от сегодня
 
         .. code-block::
 
-          {t: "eq", att:"cm:created", val: "$TODAY"} 
+          {t: "eq", att:"_created", val: "$TODAY"} 
