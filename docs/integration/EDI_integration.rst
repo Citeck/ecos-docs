@@ -11,7 +11,6 @@
     EDI_integration/ecos-edi-kontur-lib
     EDI_integration/ecos-edi-ftps-lib
     EDI_integration/ecos-edi-sbis-lib
-    EDI_integration/expand_functions
     EDI_integration/new_integration_settings
     EDI_integration/CounterpartyEdiInfoRecordsDao
     EDI_integration/common_lib

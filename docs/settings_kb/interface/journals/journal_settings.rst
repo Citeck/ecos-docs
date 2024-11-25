@@ -121,7 +121,7 @@
         "t": "eq"
         },
         {
-        "att": "cm:title",
+        "att": "title",
         "val": "$TEXT",
         "t": "$PREDICATE_TYPE"
         }

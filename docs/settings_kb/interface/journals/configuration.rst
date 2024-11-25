@@ -157,7 +157,7 @@
         // конфигурация вычисляемого свойства
         config:
           record: app/sourceId@someCategoryRef
-          attributes: cm:subcategories[]{label:?disp,value:?id}
+          attributes: subcategories[]{label:?disp,value:?id}
 
     editor:
 

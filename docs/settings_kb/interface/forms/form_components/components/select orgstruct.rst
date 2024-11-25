@@ -53,7 +53,7 @@ Select orgstruct
     Пользовательские значения по умолчанию:
     ``value = user;``
 
-По-умолчанию поиск пользователей осуществляется по трём полям: **cm:userName, cm:firstName и cm:lastName**. Есть два варианта расширить список полей для поиска пользователей:
+По-умолчанию поиск пользователей осуществляется по трём полям: **userName, firstName и lastName**. Есть два варианта расширить список полей для поиска пользователей:
 
 * локальная настройка **Поиск пользователя: дополнительное поле/User search: extra fields** на вкладке :guilabel:`Кастомные`. Настройка доступна только в случае, если в поле **Разрешенный подтип группы/Allowed authority type** содержится вариант **USER**.
   
@@ -87,7 +87,7 @@ Select orgstruct
     
     {
         "id": "orgstruct-search-user-middle-name",
-        "title": "SelectOrgstruct user search with cm:middleName",
+        "title": "SelectOrgstruct user search with middleName",
         "value": true
     }
 
