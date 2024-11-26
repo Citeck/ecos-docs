@@ -53,44 +53,9 @@ Select orgstruct
     Пользовательские значения по умолчанию:
     ``value = user;``
 
-По-умолчанию поиск пользователей осуществляется по трём полям: **userName, firstName и lastName**. Есть два варианта расширить список полей для поиска пользователей:
+По-умолчанию поиск пользователей осуществляется по трём полям: **userName, firstName и lastName**. 
 
-* локальная настройка **Поиск пользователя: дополнительное поле/User search: extra fields** на вкладке :guilabel:`Кастомные`. Настройка доступна только в случае, если в поле **Разрешенный подтип группы/Allowed authority type** содержится вариант **USER**.
-  
-* глобальная настройка ``uiserv/config@orgstruct-search-user-extra-fields``
-  
- Добавить в проект конфигурационный json-файл (``alfresco\module\{module-name}\ui\config\``) с содержимым:
-
-.. code-block::
-    
-    {
-        "id": "orgstruct-search-user-extra-fields",
-        "title": "SelectOrgstruct user search: extra fields",
-        "value": "someFieldName1,field:name2"
-    }
- 
-либо выполнить в консоли команду (вариант подходит только для отладочных целей, при обновлении сервера настройка может сброситься):
- 
-.. code-block::
-
-    const config = Citeck.Records.get('uiserv/config@orgstruct-search-user-extra-fields');
-    config.att('value', 'someFieldName1,field:name2');
-    config.save();
-
-В обоих случаях в качестве значения принимается строка с названиями полей, разделёнными между собой запятыми.
-
-* глобальная настройка ``uiserv/config@orgstruct-search-user-middle-name`` для использования Отчества при поиске пользователей 
-  
- Добавить в проект конфигурационный json-файл (``alfresco\module\{module-name}\ui\config\``) с содержимым:
-
-.. code-block::
-    
-    {
-        "id": "orgstruct-search-user-middle-name",
-        "title": "SelectOrgstruct user search with middleName",
-        "value": true
-    }
-
+Подробно о вариантах расширения списка полей для поиска пользователей см. :ref:`конфигурация компонента оргструктуры <orgstructure_config>` 
 
 Прочее
 --------
