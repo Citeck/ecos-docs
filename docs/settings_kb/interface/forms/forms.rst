@@ -282,10 +282,3 @@
 .. image:: _static/form_local_3.png
        :width: 500
        :align: center
-
-
-Пользовательский модуль
------------------------
-В json описании формы можно добавить поле ``customModule``, в котором записать путь до ``javascript`` модуля, который будет создан вместе с формой. В этом модуле можно разместить сложную логику, которую в последствии вызывать из скриптов формы. Для примера см. ``ecos-eform-repo/src/main/resources/alfresco/module/ecos-eform-repo/ecos-forms\ecos-form.json``
-
-Если в ``customModule`` будет метод ``init``, то он будет вызван с текущей формой в аргументах.
