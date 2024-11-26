@@ -16,7 +16,8 @@
 
 .. list-table::
       :widths: 10 30
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
 
       * - **Над записью**
         - | 1.	Выполняются над конкретной записью
@@ -44,7 +45,8 @@
 .. list-table::
       :widths: 3 3 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Имя
         - Тип
@@ -160,8 +162,8 @@
 Фронтенд
 ---------------
 
-На фронтенде действия описаны в виде javascript сущностей с методами
-``execForRecord``, ``execForRecords``, ``execForQuery``, ``getDefaultModel``, ``canBeExecuted`` и др.
+На фронтенде действия описаны в виде javascript сущностей с методами ``execForRecord``, ``execForRecords``, ``execForQuery``, ``getDefaultModel``, ``canBeExecuted`` и др.
+
 Например: ``src/components/Records/actions/handler/executor/CreateAction.js``
 
 При выполнении действия вызывается метод execute в который передается запись, над которой выполняется действие и конфигурация действия.
@@ -176,7 +178,8 @@
 .. list-table::
       :widths: 80 80 
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Конфигурация
         - Описание
@@ -233,15 +236,21 @@
                       
             .. code-block::
 
-              { 
+              {
+                "id": "artifact-deploy",
+                "name": {
+                  "ru": "Задеплоить артефакт",
+                  "en": "Deploy artifact"
+                },
                 "type": "fetch",
                 "config": {
-                  "url": "/share/proxy/alfresco/api/someurl?nodeRef=${recordRef}",
-                  "body": {
-                    "counterparty": "${idocs:counterparty.idocs:organizationName}"
-		              }
-	              } 
-	            }
+                  "url": "/gateway/eapps/api/artifact/deploy",
+                  "args": {
+                    "ref": "${recordRef}"
+                  },
+                  "method": "POST"
+                }
+              }
 
         - | В любом месте конфигурации можно подставлять атрибуты из записи, над которой происходит действие. 
           | Есть один частный случай - ``${recordRef}``. Вместо него всегда подставляется ``recordRef`` текущей записи. 
@@ -304,7 +313,8 @@ id типа: ``view``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
 
       * - Описание
         - Конфигурация
@@ -325,7 +335,8 @@ id типа: ``edit``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -341,7 +352,8 @@ id типа: ``open-in-background``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
 
       * - Описание
         - Конфигурация
@@ -356,7 +368,8 @@ id типа: ``download``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
 
       * - Описание
         - Конфигурация
@@ -373,7 +386,8 @@ id типа: ``delete``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -400,7 +414,8 @@ id типа: ``download-card-template``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -417,7 +432,8 @@ id типа: ``download-by-template``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -435,7 +451,8 @@ id типа: ``view-card-template``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -454,7 +471,8 @@ id типа: ``upload-new-version``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Описание
         - Конфигурация
@@ -469,7 +487,8 @@ id типа: ``create``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
       
       * - Описание
         - Конфигурация
@@ -508,7 +527,8 @@ id типа: ``save-as-case-template``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -528,7 +548,8 @@ id типа: ``open-url``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -545,7 +566,8 @@ id типа: ``assoc-action``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -563,6 +585,7 @@ id типа: ``content-preview-modal``
       :widths: 10 10
       :header-rows: 1
       :class: tight-table 
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -586,7 +609,8 @@ id типа: ``fetch``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
       
       * - Описание
         - Конфигурация
@@ -606,7 +630,8 @@ id типа: ``view-business-process``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center 
       
       * - Описание
         - Конфигурация
@@ -626,7 +651,8 @@ id типа: ``cancel-business-process``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -645,7 +671,8 @@ id типа: ``mutate``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -681,7 +708,7 @@ id типа: ``mutate``
       :widths: 10 30 30 30
       :header-rows: 1
       :align: center
-      :class: tight-table 
+      :class: tight-table
 
       * - п/п
         - Наименование
@@ -1184,7 +1211,8 @@ id типа: ``edit-menu``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1202,7 +1230,8 @@ id типа: ``view-menu``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1220,7 +1249,8 @@ id типа: ``task-outcome``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1241,7 +1271,8 @@ id типа: ``tasks-actions``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1299,7 +1330,8 @@ id типа: ``edit-password``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1316,7 +1348,8 @@ id типа: ``open-submit-form``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1386,7 +1419,8 @@ id типа: ``transform``
 .. list-table::
       :widths: 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
       
       * - Описание
         - Конфигурация
@@ -1466,9 +1500,7 @@ id типа: ``transform``
 Добавление новых инстансов действий
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в alfresco (в микросервисы так же можно добавлять действия) по пути
-
-``{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action``
+Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в микросервис по пути ``eapps/artifacts/ui/actions``
 
 Пример описания::
 
@@ -1537,58 +1569,51 @@ id типа: ``transform``
 Настройки списка действий
 -------------------------
 
-Настройка действий на dashboard
+Настройка действий для карточки
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Настройка действий на dashboard осуществляется в журнале типов данных, который располагается в системных журналах:
+Настройка действий для карточки осуществляется в журнале типов данных, который располагается в системных журналах:
 
 .. image:: _static/actions/Action_settings.png
        :align: center
        :alt: Настройка действий
        :width: 600
 
-**1** - выбрать список действий для типа.
+- **1** - выбрать список действий для типа.
+- **2** - если стоит чекбокс, то действия наследуются от родителя.
 
-**2** - если стоит чекбокс, то действия наследуются от родителя.
+Пример в конфиге типа данных: ::
+
+  "actions": [
+    "uiserv/action@create-supplementary-agreement"
+  ],
 
 Настройка действий в журналах
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Действия в журнале описываются в разделе actions перед headers и содержат ссылки на те же действия, что и в типах. Если действия не описаны, то используется список действий по умолчанию:
+Настройка действий для журнала осуществляется в разделе **Конфигурация UI - Журналы**, который располагается в системных журналах:
 
-* **ui/action$content-download**
+.. image:: _static/actions/Action_settings_journal.png
+       :align: center
+       :alt: Настройка действий
+       :width: 600
 
-* **ui/action$edit**
+- **1** - Добавить действия из типа:
 
-* **ui/action$delete**
+ * **empty (null)** - если actions и actionsDef пустые, то добавляем действия из типа;
+ * **true** - всегда добавляем действия из типа;
+ * **false** - никогда не добавляем из типа.
 
-* **ui/action$view-dashboard**
+- **2** - выбор действий
 
-* **ui/action$view-dashboard-in-background**
+Пример в конфиге журнала: ::
 
-Примеры настроек действий::
-
- <journal id="ecos-sync">
-    <datasource>integrations/sync</datasource>
-    <create>
-        <variant title="Alfresco Records">
-            <recordRef>integrations/sync@alfrecords</recordRef>
-            <attribute name="type">alfrecords</attribute>
-        </variant>
-    </create>
-    <actions>
-        <action ref="ui/action$ecos-module-download" />
-        <action ref="ui/action$delete" />
-        <action ref="ui/action$edit" />
-    </actions>
-    <headers>
-        <header key="module_id" default="true"/>
-        <header key="name" default="true"/>
-        <header key="type" default="true"/>
-        <header key="syncDate" default="true"/>
-        <header key="enabled" default="true"/>
-    </headers>
- </journal>
+    "actions": [
+    "uiserv/action@download-zip",
+    "uiserv/action@edit",
+    "uiserv/action@view-dashboard",
+    "uiserv/action@view-dashboard-in-background"
+  ],
 
 Настройка действия, которое активно для записей с определенным mimetype контента::
 
@@ -1618,7 +1643,7 @@ id типа: ``transform``
     }
  }
 
-Данный конфиг достаточно положить в ecos-app/ui/action для микросервисов или в ``{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action для Alfresco``
+Данный конфиг достаточно положить в папку ``eapps/artifacts/ui/actions`` для микросервисов.
 
 Техническая информация
 ----------------------
@@ -1629,7 +1654,8 @@ id типа: ``transform``
 .. list-table::
       :widths: 5 40
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Параметр
         - Описание
@@ -1640,11 +1666,9 @@ id типа: ``transform``
 Ожидаемый формат результат действия
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Тип результата boolean или object 
-(array - deprecated - обработка поддерживается)
+Тип результата boolean или object (array - deprecated - обработка поддерживается)
 
-Если ``object`` отображаются подробности выполнения в зависимости от типа результата.
-Для групповых действий модальное окно появляется сразу при запуске и если результат boolean автоматические закрывается.
+Если ``object`` отображаются подробности выполнения в зависимости от типа результата. Для групповых действий модальное окно появляется сразу при запуске и если результат boolean автоматические закрывается.
 
 **link**
 

@@ -148,7 +148,7 @@ URI
            predicate:
              t: eq
              a: type
-             v: idocs:legalEntity
+             v: legalEntity
            addAuditAttributes: true
            attributes:
              ?id: ?id
@@ -182,7 +182,7 @@ URI
            predicate:
              t: eq
              a: type
-             v: idocs:routeStage
+             v: routeStage
            batchSize: 30
            addAuditAttributes: true
            attributes:
@@ -215,7 +215,7 @@ URI
            predicate:
              t: eq
              a: type
-             v: idocs:routeStage
+             v: routeStage
            batchSize: 30
            addAuditAttributes: true
            attributes:
