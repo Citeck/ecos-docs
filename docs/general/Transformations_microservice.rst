@@ -134,9 +134,9 @@ Transformations микросервис
             .. code-block::
 
               model:
-                regNumber: idocs:registrationNumber
-                regDate: idocs:registrationDate|fmt('dd.MM.yyyy')
-                initiator: idocs:initiator.cm:firstName
+                regNumber: registrationNumber
+                regDate: registrationDate|fmt('dd.MM.yyyy')
+                initiator: initiator.firstName
 
             | В значениях можно использовать все возможности обращения с атрибутами через :ref:`Records API<Records_API>`
 
@@ -179,9 +179,9 @@ Transformations микросервис
 
   Путь для расположения файлов имеет следующий паттерн: 
 
-  В МКР: ``${home_dir}/src/main/resources/eapps/artifacts/transformation/template/``
+  В микросервисе: ``${home_dir}/src/main/resources/eapps/artifacts/transformation/template/``
 
-  В проектах: ``${module_name}/src/main/resources/alfresco/module/${module_name}/transformation/template/``
+  В старых проектах: ``${module_name}/src/main/resources/alfresco/module/${module_name}/transformation/template/``
 
   В данных директориях вы можете создавать создавать внутреннюю структуру папок. Поиск артифактов шаблонов происходит рекурсивно по папкам, но начинается именно с этих директорий.
 

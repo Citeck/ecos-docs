@@ -23,20 +23,22 @@ RecordsService (Java)
 
   recordsService.queryOne(
     RecordsQuery.create()
+     	    .withSourceId("emodel/person")
           .withLanguage(PredicateService.LANGUAGE_PREDICATE)
           .withQuery(Predicates.and(
-                  Predicates.eq(ValuePredicateToFtsAlfrescoConstants.TYPE, "cm:person"),
-                  Predicates.eq("testc:personalNumber", personalNumber)))
+                  Predicates.eq("city", "Tomsk"),
+                  Predicates.eq("organization", "Citeck")))
           .withConsistency(Consistency.EVENTUAL)
-          .addSort(new SortBy("cm:created", true))
+          .addSort(new SortBy("_created", true))
           .build());
 
 .. code-block:: java
 
   recordsService.query(RecordsQuery.create()
+          .withSourceId("edi/edi-inbound-main-document")
           .withLanguage(PredicateService.LANGUAGE_PREDICATE)
           .withQuery(Predicates.and(
-                  Predicates.eq("_type", "emodel/type@testip-inboundPackage"),
+                  Predicates.eq("type", "emodel/type@testip-inboundPackage"),
                   Predicates.eq("testip:isNeedSendToVim", true),
                   Predicates.not(
                           Predicates.eq("testip:isAlreadySentToVim", true)
@@ -46,13 +48,9 @@ RecordsService (Java)
           .build());
 
 * **.withLanguage** – указываем язык запроса;
-
 * **.withQuery** – сам запрос;
-
 * **.withConsistency** – Consistency (Согласованность). Возможные варианты: EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE
-
 * **.addSort** – указываем по какому полю нужна сортировка
-
 * **.build()** – сборка запроса
 
 На выходе:
@@ -70,7 +68,6 @@ RecordsService (Java)
   recordsService.getAtt(documentRef, "eint:ediProviderType?str").asText();
 
 * **documentRef** – record, к которому обращаемся
-
 * **"eint:ediProviderType?str"** – параметр, который хотим получить
 
 .. code-block:: java
@@ -117,12 +114,9 @@ RecordsService (Java)
 .. code-block:: java
 
   RecordAtts recordAtts = new RecordAtts();
-  recordAtts.setAtt(AlfNodeRecord.ATTR_TYPE, "testdl:routeTemplate");
   recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
-  recordAtts.setAtt("etype:type","testdl-routeTemplateItem");
-  recordAtts.setAtt(RecordConstants.ATT_PARENT,
-          "/app:company_home/st:sites/cm:project-edi/cm:dataLists/cm:testdl-routeTemplate");
-  recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "cm:contains");
+  recordAtts.setAtt(RecordConstants.ATT_PARENT, "eproc/routeTemplate@c897a06d-e1b5-4564-9966-762124399dfd");
+  recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "routes");
   recordsService.mutate(recordAtts);
 
 При создании новой записи параметр **setId()** не указывается. 
@@ -161,4 +155,4 @@ RecordsService (Java)
 
   recordsService.delete(routeTemplate);
 
-* **RecordRef routeTemplate** – record который необходимо удалить
+* **RecordRef routeTemplate** – record, который необходимо удалить
