@@ -31,7 +31,7 @@
 
 В любом журнале со включенными фильтрами выбрать столбец с текстовым поиском, задать фильтр. 
 
-При применении фильтра UI строит и отправляет запрос с url: ``http://host/gateway/api/records/query?k=q_alfresco%2F``  
+При применении фильтра UI строит и отправляет запрос с url: ``http://host/gateway/api/records/query?``  
 
 В теле запроса, query предикат который мы задали фильтром по столбцу:
 
@@ -74,11 +74,11 @@
             "val": [
                 {
                 "att": "TYPE",
-                "val": "idocs:currency",
+                "val": "currency",
                 "t": "eq"
                 },
                 {
-                "att": "idocs:currencyCode",
+                "att": "currencyCode",
                 "val": "$TEXT",
                 "t": "$PREDICATE_TYPE"
                 }
