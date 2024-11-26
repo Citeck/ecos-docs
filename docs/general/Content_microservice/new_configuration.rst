@@ -73,9 +73,9 @@
 
 - Расположить созданный вами файл по пути:
 
-   * В МКР: ``${home_dir}/src/main/resources/eapps/artifacts/content/storage/``
+   * В микросервисе: ``${home_dir}/src/main/resources/eapps/artifacts/content/storage/``
 
-   * В проектах: ``${module_name}/src/main/resources/alfresco/module/${module_name}/content/storage/``
+   * В старых проектах: ``${module_name}/src/main/resources/alfresco/module/${module_name}/content/storage/``
 
 В данных директориях вы можете создавать внутреннюю структуру папок. Поиск артифактов шаблонов происходит рекурсивно по папкам, но начинается именно с этих директорий.
 
