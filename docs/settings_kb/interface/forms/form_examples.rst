@@ -40,7 +40,7 @@ Text field
 
 .. _sample_text_field_component:
 
-**Text field** - текстовый компонент. Будем использовать, например, для полей «Код», «Имя», «Фамилия», «Отчество».
+**Text field** - текстовый компонент. 
 
 На вкладке **«Базовые»** заполняется: 
 
@@ -58,7 +58,7 @@ ECOS Select Component
 
 .. _sample_ecos_select_component:
 
-**ECOS Select Component** - компонент формы для выбора значения из списка. Будем использовать для поля «Пол».
+**ECOS Select Component** - компонент формы для выбора значения из списка.
 
 На вкладке **«Базовые»** заполняется: 
 
@@ -88,7 +88,7 @@ Date / Time Component
 
 .. _sample_date_time_component:
 
-**Date / Time Component** - компонент даты / времени. Будем использовать для поля «Дата рождения».
+**Date / Time Component** - компонент даты / времени. 
 
 На вкладке **«Базовые»** заполняется: 
 
@@ -119,7 +119,7 @@ Select Journal Component
 
 .. _sample_select_journal_component:
 
-**Select Journal Component** - компонент для выбора значения из журнала. Будем использовать для поля «Город».
+**Select Journal Component** - компонент для выбора значения из журнала.
 
 На вкладке **«Базовые»** заполняется: 
 
@@ -174,7 +174,7 @@ Panel
 
 .. _sample_panel_component:
 
-**Panel**  - компонент - заголовок, в который помещаются близкие по смыслу компоненты. Будем использовать, например, для раздела «Регистрация».
+**Panel**  - компонент - заголовок, в который помещаются близкие по смыслу компоненты.
 
  .. image:: _static/form_examples/form_2.png
        :width: 200
@@ -198,7 +198,7 @@ Select Orgstruct Component
 
 .. _sample_select_orgstruct_component:
 
-**Select Orgstruct Component**  - компонент для выбора из оргструктуры. Будем использовать, например, для поля **"Инициатор"**.
+**Select Orgstruct Component**  - компонент для выбора из оргструктуры. 
 
 На вкладке **«Базовые»** заполняется: 
 
@@ -223,7 +223,7 @@ Async Data Component
 
 .. _sample_async_data_component:
 
-**Async Data Component** - асинхронный компонент. Будем использовать, например, для поля **"Зарплатная вилка и премия"**.
+**Async Data Component** - асинхронный компонент.
 
  .. image:: _static/form_examples/form_12_1.png
        :width: 600
