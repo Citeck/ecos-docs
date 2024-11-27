@@ -4,7 +4,7 @@
 По контрагенту
 -----------------
 
-* получение списка контрагенттов ``/gateway/api/records/query``
+* получение списка контрагентов ``/gateway/api/records/query``
 
 .. code-block::
 
