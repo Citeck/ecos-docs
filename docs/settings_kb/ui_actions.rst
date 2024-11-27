@@ -88,8 +88,8 @@
  {
     "query": {
         "records": [
-            "workspace://SpacesStore/123123-123-123",
-            "workspace://SpacesStore/123123-123-124"
+            "emodel/someType@bb617ee9-e085-4a3a-8fbf-df2d9534eadb",
+            "emodel/someType@74c11ef8-8c63-40c1-b119-94feefd7f885"
         ],
         "actions": [
             "ui/action$delete",
@@ -102,7 +102,7 @@
 
  [
     {
-        "record": "workspace://SpacesStore/123123-123-123",
+        "record": "emodel/someType@bb617ee9-e085-4a3a-8fbf-df2d9534eadb",
         "actions": [
             {
                 "icon": "edit",
@@ -119,7 +119,7 @@
         ]
     },
     {
-        "record": "workspace://SpacesStore/123123-123-124",
+        "record": "emodel/someType@74c11ef8-8c63-40c1-b119-94feefd7f885",
         "actions": [
             {
                 "icon": "edit",
@@ -143,14 +143,14 @@
     "query": {
         "records": [
             {
-                "record": "workspace://SpacesStore/123123-123-123",
+                "record": "emodel/someType@3352b46d-ec44-465c-8673-086282d62b04",
                 "actions": [
                     "ui/action$delete",
                     "ui/action$edit"
                 ]
             },
             {
-                "record": "workspace://SpacesStore/123123-123-555",
+                "record": "emodel/someType@3dfff282-3ddf-45e1-886d-f5f2c94fe4e7",
                 "actions": [
                     "ui/action$edit"
                 ]
@@ -218,9 +218,9 @@
                 formRef: '',
                 attributesMapping:{ body.comment: "comment" }
                 formAttributes:{
-                    recordId: ${?id} # атрибут ?id будет взят из карточки
-                    recordName: ${name} # атрибут name будет взят из карточки
-                    constant: value # константное значение                
+                    recordId: ${?id} // атрибут ?id будет взят из карточки
+                    recordName: ${name} // атрибут name будет взят из карточки
+                    constant: value // константное значение                
                                }
                       }
 	
@@ -1694,7 +1694,7 @@ id типа: ``transform``
 	  "data": {
 		"results": [
 		  {
-			  "recordRef": "workspace://SpacesStore/...",
+			  "recordRef": "emodel/someType@a2fb0374-d69c-4861-8d03-4a30e395fb2d",
 			  "disp": "название записи"
 			  "status": "OK",
 			  "message": "Все хорошо"  
