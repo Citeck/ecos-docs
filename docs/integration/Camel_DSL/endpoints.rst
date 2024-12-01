@@ -141,10 +141,10 @@ URI
 
    - route:
        from:
-         uri: ecos-records-sync-consumer:alf-legalEntity-mgr-from
+         uri: ecos-records-sync-consumer:legalEntity-mgr-from
          parameters:
            delay: 30000
-           sourceId: alfresco/
+           sourceId: emodel/source1
            predicate:
              t: eq
              a: type
@@ -174,11 +174,11 @@ URI
 
    - route:
        from:
-         uri: ecos-records-sync-consumer:alf-routeStage-mgr-from
+         uri: ecos-records-sync-consumer:routeStage-mgr-from
          parameters:
            initialDelay: 10000
            delay: 15000
-           sourceId: alfresco/
+           sourceId:emodel/source1
            predicate:
              t: eq
              a: type
@@ -207,11 +207,11 @@ URI
          type: org.apache.camel.processor.aggregate.GroupedBodyAggregationStrategy
    - route:
        from:
-         uri: ecos-records-sync-consumer:alf-routeStage-mgr-from
+         uri: ecos-records-sync-consumer:routeStage-mgr-from
          parameters:
            initialDelay: 10000
            delay: 15000
-           sourceId: alfresco/
+           sourceId: emodel/source1
            predicate:
              t: eq
              a: type

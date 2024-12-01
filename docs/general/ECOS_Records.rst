@@ -5,9 +5,13 @@ ECOS Records API
 
 **Полезные ссылки**
 
-:ref:`Использование Records API в браузере<using_in_browser>` и :ref:`CRUD операции<CRUD_records_api>`
+**Records API** - интерфейс на уровне системы для доступа и манипуляции данными. Данными являются записи. **Запись (Record)** – сущность с набором атрибутов и идентификатором записи (:ref:`RecordRef <RecordRef>`).
 
-:ref:`Взаимодействие на сервере<java_kotlin_backend>` и `Исходный код kotlin/java движка Records API <https://github.com/Citeck/ecos-records>`_
+Данные можно получить:
+
+ - используя браузер - см. :ref:`использование Records API в браузере<using_in_browser>` и :ref:`CRUD операции<CRUD_records_api>`;
+ - бэкенд - см. :ref:`взаимодействие на сервере<java_kotlin_backend>` и `исходный код kotlin/java движка Records API <https://github.com/Citeck/ecos-records>`_.
+
 
 **Общее описание**
 
