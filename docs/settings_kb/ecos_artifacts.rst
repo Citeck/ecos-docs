@@ -143,31 +143,86 @@ Citeck артефакты
 ---------------
 
 .. list-table::
-      :widths: 10 10 40
+      :widths: 15 15 20
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Тип
         - Микросервис
         - Примечание
-      * - ui/dashboard
-        - ecos-uiserv
-        - Дашборды
+      * - model/aspect
+        - ecos-model
+        - Аспект
+      * - model/authorities-sync
+        - ecos-model
+        - Синхронизация пользователей и групп
+      * - model/endpoint
+        - ecos-model
+        - Конечная точка
+      * - model/num-template
+        - ecos-model
+        - Шаблоны нумерации
+      * - model/permission-def
+        - ecos-model
+        - Описание права
+      * - model/Permission settings
+        - ecos-model
+        - Настройка прав
+      * - model/permissions
+        - ecos-model
+        - Права доступа
+      * - model/secret
+        - ecos-model
+        - Секрет
+      * - model/secret
+        - ecos-model
+        - Секрет
+      * - model/type
+        - ecos-model
+        - Типы данных
+      * - model/working-calendar
+        - ecos-model
+        - Производственный календарь
+      * - model/working-schedule
+        - ecos-model
+        - Рабочее расписание
+      * - model/workspace-member
+        - ecos-model
+        - Участник рабочего пространства
+      * - model/workspace-template
+        - ecos-model
+        - Шаблон рабочего пространства
+      * - model/workspace
+        - ecos-model
+        - Рабочее пространство
+      * - 
+        - 
+        - 
       * - ui/action
         - ecos-uiserv
         - Действия
       * - ui/admin-sections-group
         - ecos-uiserv
         - Группа разделов администратора
+      * - ui/board
+        - ecos-uiserv
+        - Канбан доска
+      * - ui/dashboard
+        - ecos-uiserv
+        - Дашборды
       * - ui/form
         - ecos-uiserv
         - Формы
       * - ui/i18n
         - ecos-uiserv
-        - ???
+        - Локализация
       * - ui/icon
         - ecos-uiserv
         - Набор иконок
+      * - ui/journal-settings
+        - ecos-uiserv
+        - Настройки журнала
       * - ui/journal
         - ecos-uiserv
         - Журналы
@@ -177,57 +232,93 @@ Citeck артефакты
       * - ui/theme
         - ecos-uiserv
         - Пользовательские темы
-      * - ui/board
-        - ecos-uiserv
-        - Канбан доска
-      * - model/num-template
-        - ecos-model
-        - Шаблоны нумерации
-      * - model/permissions
-        - ecos-model
-        - Права доступа
-      * - model/type
-        - ecos-model
-        - Типы данных
+      * - 
+        - 
+        - 
+      * - app/artifact-patch
+        - ecos-apps
+        - Патч для артефакта
+      * - app/config
+        - ecos-apps
+        - Конфигурация
+      * - app/dev-module
+        - ecos-apps
+        - Модуль разработки
       * - app/ecosapp
         - ecos-apps
         - Приложение ECOS
-      * - app/artifact-patch
+      * - app/license
         - ecos-apps
-        - Патч артефакта
-      * - app/dev-module
+        - Лицензия ECOS
+      * - app/patch
         - ecos-apps
-        - Инструменты разработчика
-      * - app/config
+        - Патч
+      * - app/system-info
         - ecos-apps
-        - Конфигурация ECOS
+        - Информация о системе
+      * - 
+        - 
+        - 
+      * - integration/camel-dsl
+        - ecos-integrations
+        - Конфигурации Camel DSL
       * - integration/credentials
         - ecos-integrations
         - Учетные данные
       * - integration/datasource
         - ecos-integrations
         - Источник данных
+      * - integration/ext-portal
+        - ecos-integrations
+        - Внешний портал
       * - integration/file-import-config
         - ecos-integrations
         - Конфигурация импорта файлов
+      * - integration/in-webhook
+        - ecos-integrations
+        - Вебхук
+      * - integration/osgi-bundles
+        - ecos-integrations
+        - OSGi Пакет
       * - integration/recsrc
         - ecos-integrations
         - Настройки внешней БД
       * - integration/sync
         - ecos-integrations
         - Синхронизации
-      * - integration/camel-dsl
-        - ecos-integrations
-        - Конфигурации Camel DSL
-      * - process/cmmn
+      * - 
+        - 
+        - 
+      * - transformation/template
+        - ecos-transformations
+        - Шаблон документа
+      * - 
+        - 
+        - 
+      * - process/bpmn-kpi-settings
         - ecos-process
-        - CMMN процессы
-      * - process/bpmn
-        - ecos-process
-        - BPMN процессы
+        - Настройка BPMN KPI
       * - process/bpmn-section
         - ecos-process
-        - Раздел BPMN
+        - BPMN раздел
+      * - process/bpmn-task-atts-sync
+        - ecos-process
+        - Синхронизация атрибутов задач BPMN
+      * - process/bpmn
+        - ecos-process
+        - BPMN процесс
+      * - process/cmmn
+        - ecos-process
+        - CMMN сценарий
+      * - process/dmn-section
+        - ecos-process
+        - DMN раздел
+      * - process/dmn
+        - ecos-process
+        - DMN
+      * - 
+        - 
+        - 
       * - notification/file
         - ecos-notifications
         - Файлы уведомлений
@@ -237,6 +328,9 @@ Citeck артефакты
       * - notification/sender
         - ecos-notifications
         - Отправители
+      * - notification/reminder
+        - ecos-notifications
+        - Напоминание
 
 Переопределение артефактов
 --------------------------
@@ -263,6 +357,7 @@ Citeck артефакты
 
 .. list-table:: Список возможных настроек в override/meta.yml
     :header-rows: 1
+    :align: center
 
     *   - Название
         - Тип данных
@@ -475,7 +570,8 @@ filename - относительный путь до включаемого фа�
 .. list-table:: 
       :widths: 5 5 5 5 40
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - Поле
         - Тип
@@ -545,9 +641,10 @@ filename - относительный путь до включаемого фа�
 Тип операции определяется в ключе op и может быть следующим:
 
 .. list-table:: 
-      :widths: 5 5 40
+      :widths: 10 10 40
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
+      :align: center
 
       * - op
         - Описание
