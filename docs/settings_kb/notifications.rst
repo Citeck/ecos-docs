@@ -13,3 +13,4 @@
     notifications/notifications_from_ecos_bpmn
     notifications/notifications_commands
     notifications/senders
+    notifications/mail_eds
