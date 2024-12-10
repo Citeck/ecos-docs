@@ -11,7 +11,7 @@
 ---------------------------
 
 * Все действия рекомендуется выполнять в командной строке или окне терминала, или в Git CMD Windows, запущенного с повышенными правами.
-* В файле **hosts** прописать ``127.0.0.1 ecos-community-demo``. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере: 
+* В файле **hosts** прописать **127.0.0.1 ecos-community-demo**. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере: 
   
   *  Windows— **c:/windows/system32/drivers/etc/hosts** 
   *  Linux, Ubuntu, Unix, BSD — **/etc/hosts** 
@@ -72,19 +72,33 @@
 
     Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
     
-    Для отключения данной настройки перед разворачиванием стенда перейдите в папку ``\services\environments`` в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
-    в настройке ``WITH_DEMO_DATA`` укажите **false**.
+    Для отключения данной настройки перед разворачиванием стенда перейдите в папку **\services\environments** в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
+    в настройке **WITH_DEMO_DATA** укажите **false**.
 
-•	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
-•   Клонируйте репозиторий: ``git clone https://github.com/citeck/ecos-community-demo.git``
-•	В терминале: 
+*	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
+*   Клонируйте репозиторий: 
 
-    - перейдите в папку с клонированным репозиторием ``cd полный путь до папки`` 
-    - запустите ``docker-compose up -d`` 
+        .. code-block::
 
-•	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
-•	Перейдите в браузере по адресу http://ecos-community-demo/
-•   Войдите в систему, используя следующие учётные данные:
+            git clone https://github.com/citeck/ecos-community-demo.git
+
+*	В терминале: 
+
+    * перейдите в папку с клонированным репозиторием:
+
+         .. code-block::
+
+            cd полный путь до папки
+
+    * запустите: 
+
+         .. code-block::
+
+            docker-compose up -d
+
+*	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
+*	Перейдите в браузере по адресу http://ecos-community-demo/
+*   Войдите в систему, используя следующие учётные данные:
 
 .. image:: _static/docker-compose/09.png
     :width: 600
@@ -95,7 +109,7 @@
     Username: admin
     Password: admin
 
-•   При первом развертывании keycloak попросит сменить пароль:
+*   При первом развертывании keycloak попросит сменить пароль:
 
 .. image:: _static/docker-compose/10.png
     :width: 300
@@ -103,7 +117,7 @@
 
 Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
-•   Далее станет доступна домашняя страница Citeck:
+*   Далее станет доступна **домашняя страница Citeck**:
 
 .. image:: _static/docker-compose/11.png
     :width: 700
@@ -119,8 +133,8 @@
 
     Развертывание и запуск Citeck продолжается, необходимо подождать.
 
-Подготовка окружения для установки Citeck и 
-----------------------------------------------------
+Подготовка окружения для установки Citeck
+------------------------------------------
 
 .. tabs::
 
@@ -139,14 +153,14 @@
             sed -i 's/enforcing/disabled/g' /etc/selinux/config
             reboot
 
-        Устанавить Python:
+        Установить Python:
 
         .. code-block::
 
             yum install epel-release -y
             yum install python3 -y && yum install python3-pip -y
 
-        Устанавить пакеты, для комфортной работы:
+        Установить пакеты для комфортной работы:
 
         .. code-block::
 
@@ -167,9 +181,7 @@
             curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле:
-
-        ``/etc/docker/daemon.json, переменная default-address-pools``
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json, переменная default-address-pools**
 
         .. code-block::
 
@@ -180,7 +192,7 @@
             ]
             }
 
-        Следующим этапом необходимо получить комплект поставки, в который входят docker-compose.yaml и environments и поместить его на сервер.
+        Следующим этапом необходимо получить комплект поставки, в который входят **docker-compose.yaml** и **environments** и поместить его на сервер.
 
         .. code-block::
 
@@ -212,9 +224,9 @@
             Environment="HTTPS_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
             Environment="NO_PROXY=localhost,127.0.0.1,ecos-app, ecos-apps-app, ecos-gateway-app, ecos-history-app, ecos-identity-app, ecos-integrations-app, ecos-logger-app, ecos-microservices-postgresql-app, ecos-model-app, ecos-notifications-app, ecos-process-app, ecos-proxy-app, ecos-registry-app, ecos-search-app, ecos-uiserv-app, mailhog-app, mongodb-app, node-exporter-app, only-office-app, portainer-agent-app, postgres-exporter-app, rabbitmq-app, zookeeper-app"
 
-        Также в раздел *NO_PROXY* можно добавить внутренние домены вашей компании (через запятую и также можно использовать звездочку например ``*.someco.com,`` ``*.someco.ru``)
+        Также в раздел **NO_PROXY** можно добавить внутренние домены вашей компании (через запятую и также можно использовать звездочку например ``*.someco.com,`` ``*.someco.ru``)
 
-        После добавления данного файла нужно перезапустить демон Docker
+        После добавления данного файла нужно перезапустить демон Docker:
 
         .. code-block::
 
@@ -304,7 +316,7 @@
 
             Выполнять из директории ecos-community-demo-master
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
         .. code-block::
 
@@ -401,7 +413,7 @@
 
             Выполнять из директории ecos-community-demo-master
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
         .. code-block::
 
@@ -450,7 +462,7 @@
 
             Версию можно изменить на более актуальную, заменив 1.27.4
 
-        Установка ecos-community-demo (выполняется в терминале, Alt+T):
+        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
 
         .. code-block::
 
@@ -475,7 +487,7 @@
 
             docker-compose up -d
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
         .. code-block::
 
@@ -507,7 +519,7 @@
             sudo dnf install docker-ce docker-ce-cli docker-compose
             systemctl enable docker
 
-        Установка ecos-community-demo (выполняется в терминале, Alt+T):
+        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
 
         .. code-block::
 
@@ -522,7 +534,7 @@
 
         .. note:: 
 
-            Если встречается ошибка ``unknown log opt 'max-size' for journald log driver``, открыть ``/etc/docker/deamon.json`` и изменить там ``"log-driver": "journald "`` на ``"log-driver": "json-file"``
+            Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, открыть **/etc/docker/deamon.json** и изменить там **"log-driver": "journald"** на **"log-driver": "json-file"**
 
         Добавление ecos-community-demo в локальный **hosts** файл:
 
@@ -532,7 +544,108 @@
             127.0.0.1      ecos-community-demo     - производим запись в файл
             :wq!     - выходим из редактора vim
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле ``/etc/docker/daemon.json``, переменная ``default-address-pools``
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
+
+        .. code-block::
+
+            {
+              "default-address-pools":
+              [
+                {"base":"172.19.0.0/16","size":24}
+              ]
+            }
+
+   .. tab:: Oracle Enterprise Linux 8.9
+
+        Установка Docker:
+
+        .. code-block::
+
+            sudo apt-get update
+            sudo apt-get install ca-certificates curl
+            sudo install -m 0755 -d /etc/apt/keyrings
+            sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+            sudo chmod a+r /etc/apt/keyrings/docker.asc
+            
+            # Add the repository to Apt sources:
+            echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            sudo apt-get update
+            
+            ## Чтобы установить последнюю доступную версию, выполните команду::
+            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            
+            ## Чтобы установить конкретную версию, выполните команду:
+            apt-cache madison docker-ce | awk '{ print $3 }'
+            VERSION_STRING={Your Specific version}
+            sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+
+        Настройка Docker на запуск при старте системы:
+
+        .. code-block::
+
+            sudo systemctl enable docker
+
+        Установка Docker-compose:
+
+        .. code-block::
+
+            wget https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-Linux-x86_64
+            mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+
+        .. note:: 
+
+            Версию можно изменить на более актуальную, заменив v2.29.1
+
+        На этом Установка Docker Engine и Docker-Compose завершена.
+       
+        Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
+
+        .. note:: 
+
+            В случае если используется Enterprise сборка, необходимо подключиться к registry. 
+            
+            Проходим аутентификацию в нужное нам docker registry - docker login (registry host).
+            
+            **Registry URL** и **данные для аутентификации** можно запросить у контактного лица со стороны Citeck.
+
+        Запуск Citeck ECOS: 
+
+        .. code-block::
+
+            docker-compose up -d
+
+        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
+
+        .. code-block::
+
+            wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+            unzip master.zip
+            cd ecos-community-demo-master
+            docker-compose pull
+
+        Добавление ecos-community-demo в локальный **hosts** файл: 
+
+        .. code-block::
+
+            vim /etc/hosts     - открываем файл
+            127.0.0.1      ecos-community-demo     - производим запись в файл
+            :wq!     - выходим из редактора vim
+
+        Запуск Community Demo:
+
+        .. note:: 
+
+            Выполнять из директории ecos-community-demo-master
+
+        .. code-block::
+
+            docker-compose up -d
+
+        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
         .. code-block::
 
@@ -548,24 +661,44 @@
 
 Если нужен простой способ настройки для доступа в систему минуя Keycloak, то можно настроить BASIC Auth (не рекомендуется для production сред).
 
-  1. ``nano ecos-community-demo-master/services/environments/ecos-proxy-app.env`` заменить строку ``ENABLE_OIDC_FULL_ACCESS=true`` на ``ENABLE_OIDC_FULL_ACCESS=false``
-  2. в этом же файле добавить - ``BASIC_AUTH_ACCESS=admin:admin,fet:fet``
+  1. В  
+
+     .. code-block::
+
+        nano ecos-community-demo-master/services/environments/ecos-proxy-app.env     
+
+    заменить строку **ENABLE_OIDC_FULL_ACCESS=true** на **ENABLE_OIDC_FULL_ACCESS=false**
+
+  2. в этом же файле добавить - **BASIC_AUTH_ACCESS=admin:admin,fet:fet**
 
 .. note:: 
 
     | ``admin:admin,fet:fet`` - это список пользователей, которые будут иметь доступ в систему. 
     | Формат значения следующий - ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}`` 
-    | После изменения ecos-proxy-app.env необходима перезагрузка контейнера ecos-proxy-app, чтобы изменения вступили в силу.
+    | После изменения **ecos-proxy-app.env** необходима перезагрузка контейнера ecos-proxy-app, чтобы изменения вступили в силу.
 
 После внесения изменений запустите проект.
 
-``docker-compose down`` в директории ``ecos-community-demo-master`` для остановки проекта
+.. code-block::
 
-``docker-compose up -d`` в директории ``ecos-community-demo-master`` для запуска проекта
+    docker-compose down
 
-Тестировать можно с локальной машины при наличии корректной записи в ``/etc/hosts``.
+в директории **ecos-community-demo-master**  для остановки проекта
 
-Данные для входа в ecos - ``admin`` | ``admin``
+.. code-block::
+
+    docker-compose up -d
+
+в директории **ecos-community-demo-master** для запуска проекта
+
+Тестировать можно с локальной машины при наличии корректной записи в **/etc/hosts**.
+
+Данные для входа в Citeck:
+
+.. code-block::
+
+    Username: admin
+    Password: admin
 
 Сервисы Docker
 ---------------
@@ -598,7 +731,9 @@ Docker Desktop использует функцию динамического р
     
     В **PowerShell** ввести команду:
 
-    ``dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart``
+    .. code-block:: 
+
+        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 2)	Скачать и установить пакет обновления ядра Linux:
     
@@ -606,11 +741,16 @@ Docker Desktop использует функцию динамического р
 
 3)	Выбрать WSL 2 в качестве версии по умолчанию:
 
-    ``wsl --set-default-version 2``
+    .. code-block:: 
+
+        wsl --set-default-version 2
 
 Проверить можно командой. Более подробная версия инструкции см. `https://docs.microsoft.com/ru-ru/windows/wsl/install-win10 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_ 
 
-    ``wsl --list --verbose``
+    .. code-block::
+
+        wsl --list --verbose
+  
 
 4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Более подробная версия инструкции см. `https://docs.docker.com/docker-for-windows/wsl/  <https://docs.docker.com/docker-for-windows/wsl/>`_ 
 
@@ -626,16 +766,26 @@ Citeck UI использует порт 8080 и, если этот порт уж
        :width: 400
        :align: center
 
-Если команда ``netstat -ono (или netstat -ono | findstr 8080)`` не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты. 
+Если команда:
+
+.. code-block::
+
+    netstat -ono (или netstat -ono | findstr 8080)  
+
+не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты. 
 
 Порт зарезервирован Windows
 """"""""""""""""""""""""""""
 
-К примеру, каталог **ecos-postgres** использует порт **50432**, но этот порт зарезервирован Windows. Проверить такие порты можно командой ``netsh int ipv4 show excludedportrange protocol=tcp``. 
+К примеру, каталог **ecos-postgres** использует порт **50432**, но этот порт зарезервирован Windows. Проверить такие порты можно командой
 
- .. image:: _static/docker-compose/02.png
-       :width: 400
-       :align: center
+.. code-block::
+
+    netsh int ipv4 show excludedportrange protocol=tcp 
+
+.. image:: _static/docker-compose/02.png
+    :width: 400
+    :align: center
  
 Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
 
@@ -643,11 +793,27 @@ Citeck UI использует порт 8080 и, если этот порт уж
 
 Чтобы это исправить, нужно в командной строке, запущенной с повышенными правами:
 
-    1)	Остановить Hyper-V: ``dism.exe /Online /Disable-Feature:Microsoft-Hyper-V`` (выполнить перезагрузку)
+    1)	Остановить Hyper-V: 
 
-    2)	Добавить нужный порт в исключения: ``netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1``
+        .. code-block::
+    
+            dism.exe /Online /Disable-Feature:Microsoft-Hyper-V 
+            
+        Выполнить перезагрузку.
 
-    3)	Запустить Hyper-V: ``dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All`` (после потребуется перезагрузка)
+    2)	Добавить нужный порт в исключения: 
+
+        .. code-block::
+    
+            netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1
+
+    3)	Запустить Hyper-V: 
+
+        .. code-block::
+    
+            dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All 
+            
+        После потребуется перезагрузка.
 
 Порт попадет в исключения, и подобной ошибки не возникнет.
 
