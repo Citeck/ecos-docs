@@ -70,19 +70,19 @@ Call activity
 Как найти **ID** вызываемого процесса :
 
  .. image:: _static/call_activity/call_activity_7.png
-       :width: 500
+       :width: 600
        :align: center
 
 Отдельный процесс можно указать, используя **Идентификатор**:
 
  .. image:: _static/call_activity/call_activity_7_1.png
-       :width: 500
+       :width: 600
        :align: center
 
 |
 
  .. image:: _static/call_activity/call_activity_7_2.png
-       :width: 500
+       :width: 600
        :align: center
 
 .. list-table::
@@ -144,9 +144,13 @@ Call activity
                .. image:: _static/call_activity/call_activity_14.png
                 :width: 300
                 :align: center
-      * - | **Настройки асинхронности**
-        - | см. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_ 
-            
+
+      * - | Настройки асинхронности:
+          |  - **Асинхронно "перед"**- исполнение доходит до точки перед блоком, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба
+          |  - **Асинхронно "после"** - исполнение доходит до точки после блока, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба
+          | см. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_  
+        - 
+
                .. image:: _static/call_activity/call_activity_15.png
                 :width: 300
                 :align: center   
