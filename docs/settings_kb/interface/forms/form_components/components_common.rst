@@ -2,20 +2,20 @@
 ===============
 
 .. contents::
-		:depth: 4
+   :depth: 4
 		
 
 Основные компоненты
 --------------------
 
-.. _Text_Field:
-
 Text Field
 ~~~~~~~~~~~~
 
+.. _Text_Field:
+
 Однострочное текстовое поле.
 
- .. image:: _static/Text_Field_Component.png
+.. image:: _static/Text_Field_Component.png
        :width: 400
        :align: center
 
@@ -25,14 +25,15 @@ Text Field
 
 :ref:`См. пример Text Field<sample_text_field_component>` 
 
-.. _Select_Journal_:
 
 Select Journal
 ~~~~~~~~~~~~~~~
 
+.. _Select_Journal_:
+
 Компонент, отвечающий за выбор из журнала. Работает только в том случае, если для ссылочного типа существует журнал.
 
- .. image:: _static/Select_Journal_Component.png
+.. image:: _static/Select_Journal_Component.png
        :width: 400
        :align: center
 
@@ -40,14 +41,15 @@ Select Journal
 
 :ref:`См. пример Select Journal<sample_select_journal_component>` 
 
-.. _Select_Orgstruct_:
 
 Select Orgstruct
 ~~~~~~~~~~~~~~~~~~
 
+.. _Select_Orgstruct_:
+
 Компонент, отвечающий за выбор из оргструктуры пользователей/групп. Что именно будет выбираться (пользователи с группами вместе, или что-то одно), – регулируется внутри компонента.
 
- .. image:: _static/Select_Orgstruct_Component.png
+.. image:: _static/Select_Orgstruct_Component.png
        :width: 400
        :align: center
 
@@ -55,10 +57,11 @@ Select Orgstruct
 
 :ref:`См. пример Select Orgstruct<sample_select_orgstruct_component>` 
 
-.. _Number:
 
 Number
 ~~~~~~~
+
+.. _Number:
 
 Числовое поле. Может принимать в себя как целочисленные значения, так и с плавающей точкой. Это регулируется внутри компонента.
 
@@ -66,14 +69,15 @@ Number
 
 `См. подробное описание Number на Form.io <https://help.form.io/userguide/forms/form-components#number>`_ 
 
-.. _Date_Time:
 
 Date/Time
 ~~~~~~~~~~
 
+.. _Date_Time:
+
 Поле, отвечающее за отображение даты и времени. Отображение регулируется внутри компонента. 
 
- .. image:: _static/Date_Time_Component.png
+.. image:: _static/Date_Time_Component.png
        :width: 400
        :align: center
 
@@ -81,49 +85,59 @@ Date/Time
 
 :ref:`См. пример Date/Time<sample_date_time_component>` 
 
-.. _Text_Area:
 
 Text Area
 ~~~~~~~~~~~
 
+.. _Text_Area:
+
 Аналог Text Field. Многострочное текстовое поле. 
 
- .. image:: _static/Text_Area_Component.png
+.. image:: _static/Text_Area_Component.png
        :width: 400
+       :align: center
+
+Для вывода введенных данных многострочно необходимо добавить редактор на вкладке **Вид**:a
+
+.. image:: _static/Text_Area_Component_01.png
+       :width: 500
        :align: center
 
 `См. подробное описание Text Area на Form.io <https://help.form.io/userguide/forms/form-components#text-area>`_ 
 
-.. _Checkbox:
 
 Checkbox
 ~~~~~~~~~
 
+.. _Checkbox:
+
 Поле выбора нескольких значений из списка параметров.
 
- .. image:: _static/Checkbox_Component.png
+.. image:: _static/Checkbox_Component.png
        :width: 200
        :align: center
 
 `См. подробное описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_  
 
-.. _Day:
 
 Day
 ~~~~
+
+.. _Day:
 
 Поле для ввода значений «День», «Месяц» и «Год» с использованием числа или выбора типа поля.
 
 `См. подробное описание Day на Form.io <https://help.form.io/userguide/forms/form-components#day>`_  
 
-.. _Ecos_Select_:
 
 ECOS Select
 ~~~~~~~~~~~~~
 
+.. _Ecos_Select_:
+
 Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
 
- .. image:: _static/ECOS_Select_Component.png
+.. image:: _static/ECOS_Select_Component.png
        :width: 400
        :align: center
 
@@ -131,14 +145,15 @@ ECOS Select
 
 :ref:`См. пример Ecos Select<sample_ecos_select_component>`
 
-.. _Button:
 
 Button
 ~~~~~~~~
 
+.. _Button:
+
 Добавление кнопок для выполнения различных действий в форме.
 
- .. image:: _static/Button_Component.png
+.. image:: _static/Button_Component.png
        :width: 600
        :align: center
 
@@ -149,16 +164,17 @@ Button
 Расширенные
 ------------
 
-.. _ML_Text:
 
 ML Text
-~~~~~~~~~~~~~~~
+~~~~~~~~~
+
+.. _ML_Text:
 
 Однострочное текстовое поле. Для выбора языка предусмотрен переключатель в виде флага России /США. После выбора языка в поле вводится текст.
 
 Сохраняются оба введенных зачения. Если поле содержит постфикс ML и является объектом (содержит ключ EN/RU), то элемент отрисовывается.
 
- .. image:: _static/ML_Text_Component.png
+.. image:: _static/ML_Text_Component.png
        :width: 400
        :align: center
 
@@ -215,7 +231,7 @@ ML Textarea
 
 Сохраняются оба введенных зачения. Если поле содержит постфикс ML и является объектом (содержитключ EN/RU), то элемент отрисовывается.
 
- .. image:: _static/ML_TextArea_Component.png
+.. image:: _static/ML_TextArea_Component.png
        :width: 400
        :align: center
 
@@ -227,6 +243,7 @@ HTML Element
 
 `См. подробное описание HTML Element на Form.io <https://help.form.io/userguide/forms/layout-components#html-element>`_
 
+
 File
 ~~~~~
 
@@ -234,7 +251,7 @@ File
 
 Компонент для загрузки файлов. 
 
- .. image:: _static/File_Component.png
+.. image:: _static/File_Component.png
        :width: 400
        :align: center
 
@@ -261,14 +278,15 @@ Horizontal Line
 
 :ref:`См. подробное описание Horizontal Line<horizontal_line_component>` 
 
-.. _Columns_:
 
 Columns
 ~~~~~~~~
 
+.. _Columns_:
+
 Компонент, отвечающий за разделение формы на столбцы. Основан на стандартном formio-компоненте Columns, был модифицирован.
 
- .. image:: _static/Columns_Component_1.png
+.. image:: _static/Columns_Component_1.png
        :width: 400
        :align: center
 
@@ -278,14 +296,15 @@ Columns
 
 :ref:`См. пример Columns<sample_columns_component>` 
 
-.. _Panel:
 
 Panel
 ~~~~~~
 
+.. _Panel:
+
 Панель, в которую можно поместить свойство. Нужна для зонирования. В неё помещаются близкие по смыслу компоненты и им присваивается заголовок.
 
- .. image:: _static/Panel_Component.png
+.. image:: _static/Panel_Component.png
        :width: 400
        :align: center
 
@@ -295,14 +314,15 @@ Panel
 
 :ref:`См. пример Panel<sample_panel_component>` 
 
-.. _Table:
 
 Table
 ~~~~~~
 
+.. _Table:
+
 Компонент позволяет создать таблицу со столбцами и строками.
 
- .. image:: _static/Table_Component.png
+.. image:: _static/Table_Component.png
        :width: 500
        :align: center
 
@@ -330,7 +350,7 @@ Async Data
 
 Невидимый компонент для загрузки асинхронных данных.
 
- .. image:: _static/Async_Data_Component.png
+.. image:: _static/Async_Data_Component.png
        :width: 400
        :align: center
 
@@ -353,7 +373,7 @@ Include Form
 
 При отрисовке формы не в билдере компонент рисовать не нужно (на сервере он будет автоматически заменяться на все компоненты, которые есть в выбранной форме).
 
- .. image:: _static/Include_Form_Component.png
+.. image:: _static/Include_Form_Component.png
        :width: 500
        :align: center
 
@@ -362,7 +382,7 @@ Container
 
 Оболочка для набора полей, аналогичная **Field Set**.
 
- .. image:: _static/Container_Component.png
+.. image:: _static/Container_Component.png
        :width: 400
        :align: center
 
@@ -407,7 +427,7 @@ Data Grid
 
 Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
 
- .. image:: _static/Data_Grid_Component.png
+.. image:: _static/Data_Grid_Component.png
        :width: 400
        :align: center
 
