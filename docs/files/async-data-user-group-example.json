@@ -1,0 +1,252 @@
+{
+  "id": "async-data-user-group-example",
+  "formKey": "",
+  "title": {
+    "en": "async-data-user-group-example"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "",
+  "width": "",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Panel"
+        },
+        "key": "panel2",
+        "title": {
+          "ru": "Пример с атрибутами текущего пользователя"
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Text Field"
+            },
+            "key": "isAdminText",
+            "defaultValue": "",
+            "refreshOn": [
+              "currentUserAtts"
+            ],
+            "calculateValue": "value = \"Текущий пользователь админ: \" + _.get(data, 'currentUserAtts.isAdmin', false);",
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
+          },
+          {
+            "label": {
+              "ru": "Это поле видно только администраторам"
+            },
+            "key": "adminField",
+            "hidden": true,
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "logic": [
+              {
+                "name": "show-for-admins",
+                "trigger": {
+                  "type": "javascript",
+                  "javascript": "result = _.get(data, 'currentUserAtts.isAdmin', false);"
+                },
+                "actions": [
+                  {
+                    "name": "show",
+                    "type": "property",
+                    "property": {
+                      "label": "Hidden",
+                      "value": "hidden",
+                      "type": "boolean"
+                    },
+                    "state": "false"
+                  }
+                ]
+              }
+            ],
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
+          },
+          {
+            "label": "CurrentUserAtts",
+            "source": {
+              "type": "record",
+              "record": {
+                "id": "emodel/person@{{user}}",
+                "attributes": {
+                  "isAdmin": "authorities._has.GROUP_ECOS_ADMINISTRATORS?bool"
+                }
+              },
+              "forceLoad": false
+            },
+            "update": {
+              "type": "once"
+            },
+            "key": "currentUserAtts",
+            "type": "asyncData",
+            "input": true
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Panel"
+        },
+        "key": "panel3",
+        "title": {
+          "ru": "Пример с атрибутами текущей записи"
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Атрибуты текущей записи"
+            },
+            "key": "currentRecordAttsText",
+            "defaultValue": "",
+            "refreshOn": [
+              "currentRecordAtts"
+            ],
+            "calculateValue": "value = \"Атрибуты текущей записи: \" + JSON.stringify(data.currentRecordAtts);",
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
+          },
+          {
+            "label": "CurrentRecordAtts",
+            "source": {
+              "type": "record",
+              "record": {
+                "id": "{{recordId}}",
+                "attributes": {
+                  "status": "_status?str",
+                  "displayName": "?disp"
+                }
+              },
+              "forceLoad": false
+            },
+            "update": {
+              "type": "once"
+            },
+            "key": "currentRecordAtts",
+            "type": "asyncData",
+            "input": true
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "async-data-user-group-example"
+  },
+  "attributes": {},
+  "notExists": false
+}

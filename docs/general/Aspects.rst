@@ -43,7 +43,7 @@ API
 
 .. code-block::
 
-    await Citeck.Records.get('emodel/some-id@local-id').load('_aspects._has.aspectToTest?bool!')
+    await Records.get('emodel/some-id@local-id').load('_aspects._has.aspectToTest?bool!')
 
 где,
 
@@ -56,7 +56,7 @@ API
 
 .. code-block::
 
-    await Citeck.Records.get('emodel/some-id@local-id').load('_type.aspectById.you-aspect-id.config')
+    await Records.get('emodel/some-id@local-id').load('_type.aspectById.you-aspect-id.config')
 
 Добавить аспект к сущности
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,7 +67,7 @@ API
 
 .. code-block::
 
-    var rec = Citeck.Records.get('emodel/some-id@local-id');
+    var rec = Records.get('emodel/some-id@local-id');
     rec.att('att_add__aspects', 'emodel/aspect@aspectToAdd');
     await rec.save();
 
@@ -82,7 +82,7 @@ API
 
 .. code-block::
 
-    var rec = Citeck.Records.get('emodel/some-id@local-id');
+    var rec = Records.get('emodel/some-id@local-id');
     rec.att('att_rem__aspects', 'emodel/aspect@aspectToRemove');
     await rec.save();
 

@@ -4,15 +4,12 @@
 Оргструктура
 -------------
 
-Cоздание пользователя
-~~~~~~~~~~~~~~~~~~~~~
-
 Добавление в группу
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
-    let rec = Records.get('emodel/person@admin'); // пользователь или группа, которого(ую) нужно добавить в группу
+    let rec = Records.get('emodel/person@someuser'); // пользователь или группа, которого(ую) нужно добавить в группу
     rec.att('att_add_authorityGroups', 'emodel/authority-group@accountant'); // группа, в которую нужно добавить
     rec.save();
 
@@ -21,16 +18,9 @@ Cоздание пользователя
 
 .. code-block::
 
-    let rec = Records.get('emodel/person@admin'); // пользователь или группа, которого(ую) нужно удалить из группы
+    let rec = Records.get('emodel/person@someuser'); // пользователь или группа, которого(ую) нужно удалить из группы
     rec.att('att_rem_authorityGroups', 'emodel/authority-group@accountant'); // группа, из которой нужно удалить
     rec.save();
-
-Полное удаление из системы
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block::
-
-    Records.remove('emodel/person@admin'); // пользователь или группа, которого(ую) нужно удалить из системы
 
 Пример работы с рекордами из javascript
 ---------------------------------------
@@ -45,8 +35,8 @@ Cоздание пользователя
 
     var typeRef = "emodel/type@" + typeId;
 
-    var sourceId = await Citeck.Records.get(typeRef).load('sourceId');
-    var queryResult = await Citeck.Records.query({
+    var sourceId = await Records.get(typeRef).load('sourceId');
+    var queryResult = await Records.query({
         sourceId,
         query: { t: 'eq', att: '_type', val: typeRef },
         language: 'predicate',
@@ -58,7 +48,7 @@ Cоздание пользователя
 
     var newStatus = 'old';
     for (let i = 0; i < records.length; i++) {
-        let record = Citeck.Records.get(records[i]);
+        let record = Records.get(records[i]);
         let currentStatus = await record.load('_status?str', true);
         if (currentStatus == 'new') {
             console.log('change status for ' + record.id + " from " + currentStatus + " to " + newStatus);

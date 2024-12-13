@@ -590,7 +590,7 @@
 ---------------------------------------
 
 Назначенную роль можно проверить через консоль браузера командой:
-``await Citeck.Records.get('emodel/type-id@local-id').load('_roles.assigneesOf.approver[]?str', true)``
+``await Records.get('emodel/type-id@local-id').load('_roles.assigneesOf.approver[]?str', true)``
 
 где 
 

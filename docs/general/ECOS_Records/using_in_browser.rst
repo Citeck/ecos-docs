@@ -6,23 +6,23 @@
 .. contents::
    :depth: 3
 
-.. note:: 
+.. note::
 
-  Начиная с версии 4.5.0 вместо Citeck.Records.get и Citeck.Records.query можно использовать Records.get и Records.query 
+  Начиная с версии 4.5.0 вместо Citeck.Records.get и Citeck.Records.query можно использовать Records.get и Records.query
 
-Для работы с Records API разработан компонент **Citeck.Records**, который доступен в глобальном контексте на любой странице системы. 
+Для работы с Records API разработан компонент **Records**, который доступен в глобальном контексте на любой странице системы. 
 
 Доступные операции:
 
-* **get(recordRef)** - Получить запись по её идентификатору. Ниже представлен список операций с записью;
-* **query(query, attributes)** - Поиск записей. Первый аргумент - запрос для поиска, а второй - какие атрибуты нам нужны у найденых записей;
-* **remove(records)** - Удаление записей.
+ * **get(recordRef)** - Получить запись по её идентификатору. Ниже представлен список операций с записью;
+ * **query(query, attributes)** - Поиск записей. Первый аргумент - запрос для поиска, а второй - какие атрибуты нам нужны у найденых записей;
+ * **remove(records)** - Удаление записей.
 
-Операции с записью, которая получена через метод **"Citeck.Records.get"**:
+Операции с записью, которая получена через метод **"Records.get"**:
 
-* **load(attributes, forceLoad)** - Загрузить атрибут или несколько атрибутов. Первым аргументом мы указываем что нужно загрузить, а вторым следует использовать кэш или нет. Второй аргумент опционален и по умолчанию равен false (т.е. кэш активен);
-* **att(attributeName, value)** - Проставить значение атрибута для записи. Используется перед сохранением записи;
-* **save(attsToLoad)** - Сохранить изменения в записи, которые были сделаны методом att из предыдущего пункта и загрузить атрибуты, которые передали в attsToLoad (опционально);
+ * **load(attributes, forceLoad)** - Загрузить атрибут или несколько атрибутов. Первым аргументом мы указываем что нужно загрузить, а вторым следует использовать кэш или нет. Второй аргумент опционален и по умолчанию равен false (т.е. кэш активен);
+ * **att(attributeName, value)** - Проставить значение атрибута для записи. Используется перед сохранением записи;
+ * **save(attsToLoad)** - Сохранить изменения в записи, которые были сделаны методом att из предыдущего пункта и загрузить атрибуты, которые передали в attsToLoad (опционально);
 
 Метод save с версии UI 2.8.1 может принимать атрибуты для загрузки. В этом случае на сервер вместе с атрибутами для изменения так же отправляются атрибуты для загрузки в поле attributes тела запроса.
 Если при вызове save указаны атрибуты для загрузки, то в результате будет тот же формат, что и при вызове метода load.
@@ -52,34 +52,36 @@
 
   // Запрос ФИО пользователя:
 
-  var user = Citeck.Records.get('emodel/person@user');
+  var user = Records.get('emodel/person@user');
   await user.load(['userName', 'firstName', 'lastName'])
 
-   //Запрос имени пользователя:
+  // Запрос имени пользователя:
   
-  var user = Citeck.Records.get('emodel/person@user')
+  var user = Records.get('emodel/person@user')
   await user.load('firstName')
 
-  //Пример скрипта для смены статуса:
+  // Пример скрипта для смены статуса:
 
-  var doc = Citeck.Records.get('someDocumentRef');
+  var doc = Records.get('someDocumentRef');
   doc.att('_status', 'some_status_id');
   doc.save();
 
   // Получение сразу нескольких атрибутов у вложенного значения:
 
-  await Citeck.Records.get('uiserv/rjournal@test587').load(boardRefs[]{id,name}, true)
+  await Records.get('uiserv/rjournal@test587').load(boardRefs[]{id,name}, true)
 
-    // Статус объекта:
+  // Статус объекта:
 
-  await Citeck.Records.get('emodel/someType@id').load("_status?str")
+  await Records.get('emodel/someType@id').load("_status?str")
 
   // Проверка enterprise лицензии:
 
-  await Citeck.Records.get('emodel/meta@').load('$license.enterprise?bool', true)
+  await Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
 CRUD операции
 ---------------
+
+Ниже представлены примеры основных операций, выполняемых при управлении данными и манипулировании:
 
 .. _CRUD_records_api:
 
