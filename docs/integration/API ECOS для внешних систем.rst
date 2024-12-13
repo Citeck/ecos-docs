@@ -414,7 +414,7 @@ API-интерфейс позволяет работать с данными с�
 
                 {"records":[
                     {
-                    "id":"emodel/person@admin",
+                    "id":"emodel/person@someuser",
                     "attributes":{
                         "att_add_authorityGroups":"emodel/authority-group@GROUP_company_accountancy"
                 }}]} 
@@ -458,7 +458,7 @@ API-интерфейс позволяет работать с данными с�
     
                 {
                     "records": [
-                        "emodel/person@admin"
+                        "emodel/person@someuser"
                     ],
                     "errors": [],
                     "hasMore": false,

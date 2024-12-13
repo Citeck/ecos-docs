@@ -243,7 +243,7 @@
 
 .. code-block::
 
-      Citeck.Records.get('eproc/bpmn-def@you-process').load("permissions._has.deploy?bool", true).then(res => console.log(res))
+      Records.get('eproc/bpmn-def@your-process').load("permissions._has.deploy?bool", true).then(res => console.log(res))
 
 3.	Добавлена возможность просмотра схемы БП для пользователей с правом **Право на чтение (read)**
 
@@ -265,7 +265,7 @@
 
 .. code-block::
 
-      Citeck.Records.get('eproc/bpmn-def@you-process').load("permissions._has.viewReports?bool", true).then(res => console.log(res))
+      Records.get('eproc/bpmn-def@you-process').load("permissions._has.viewReports?bool", true).then(res => console.log(res))
 
 .. image:: _static/rights_6.png
        :width: 600

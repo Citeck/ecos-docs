@@ -321,7 +321,7 @@ KeyStoreInfo:
 
 .. code-block::
 
-    Citeck.Records.query(
+    Records.query(
         {
             sourceId: "integrations/server-sign",
             query: {
@@ -384,7 +384,7 @@ KeyStoreInfo:
 
 .. code-block::
 
-    Citeck.Records.query(
+    Records.query(
         {
             sourceId: "integrations/server-sign-verify",
             query: {

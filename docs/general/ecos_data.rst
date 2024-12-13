@@ -44,7 +44,7 @@ ECOS Data
 При создании типа с sourceId, который конфликтует с существующими будет показана ошибка. 
 Чтобы проверить список зарегистрированных sourceId можно выполнить следующий скрипт в консоли браузера::
   
-  await Citeck.Records.query({sourceId: 'emodel/src', query: {}, language:'predicate'}, '?localId')
+  await Records.query({sourceId: 'emodel/src', query: {}, language:'predicate'}, '?localId')
 
 Создание нового RecordsDAO в своем микросервисе
 ------------------------------------------------
