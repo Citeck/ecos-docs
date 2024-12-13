@@ -51,7 +51,7 @@
 
 В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры)  используется параметр activeTab, 
 
-например, https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@admin
+например, https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser
 
 ``activeTab=N`` - активная вкладка дашборда. Вкладки нумеруются с 0, где 0 - первая вкладка.
 
