@@ -45,7 +45,7 @@ Text Field
 
 .. code-block::
 
-    values = window.Citeck.Records.get('emodel/type@type').load('model.attributes[]{id}');
+    values = window.Records.get('emodel/type@type').load('model.attributes[]{id}');
 
 
 Теперь, при добавлении на форму нового компонента, при вводе имени свойства, появляется выпадающий список (при наличии частичного совпадения имен). Это позволит понять, какие имена уже заняты, чтобы не привести к ошибке при создании или редактировании формы.
