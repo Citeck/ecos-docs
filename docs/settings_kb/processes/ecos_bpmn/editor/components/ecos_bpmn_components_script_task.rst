@@ -325,7 +325,7 @@ Logger
 
 - **requestCategory** - ассоциация
 
-- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@admin** локальная часть - это **"admin"**
+- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@someuser** локальная часть - это **"someuser"**
 
 Скрипт для проверки наличия комментариев после завершения задачи:
 

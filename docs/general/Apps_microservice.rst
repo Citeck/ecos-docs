@@ -111,7 +111,7 @@
 
 .. code-block::
 
-      Citeck.Records.query({
+      Records.query({
       sourceId: 'eapps/module',
             query: {
                   type: 'form'
@@ -125,7 +125,7 @@
 
 .. code-block::
 
-      Citeck.Records.remove(["eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1"]);
+      Records.remove(["eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1"]);
 
 Получение содержимого модулей из базы eapps
 --------------------------------------------
