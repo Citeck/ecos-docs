@@ -352,9 +352,9 @@ Logger
     var someDate = new Date();
     execution.setVariable("someDate", date.toISOString());
 
-    document.att("someDate", date.toISOString());
+    document.att("someDocDate", date.toISOString());
     document.save();
 
     // Парсинг даты из ISO строки
-    var dateFromDocument = document.load("someDate");
+    var dateFromDocument = document.load("someDocDate");
     var dateFromDocumentParsed = Date.parse(dateFromDocument);
