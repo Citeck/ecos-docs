@@ -59,7 +59,7 @@
 
 .. code-block:: javascript
 
-    //someVar - переменная процесса
+    // someVar - переменная процесса
     print("someVar: " + someVar);
 
 ``documentRef`` - строковое представление entityRef документа |br|
@@ -77,10 +77,10 @@ Execution
 
 .. code-block:: javascript
 
-    // получение переменной процесса
+    // Получение переменной процесса
     var sum = execution.getVariable('x');
 
-    // установление переменной процесса
+    // Установление переменной процесса
     execution.setVariable('y', x + 15);
 
 Document
@@ -90,15 +90,15 @@ Document
 
 .. code-block:: javascript
 
-    //получение атрибута документа
+    // Получение атрибута документа
     var created = document.load("_created");
 
-    //установление атрибуту документа указанного значения
+    // Установление атрибуту документа указанного значения
     document.att("firArchiveBoxNumber", 123);
-    //сохранение
+    // Сохранение
     document.save();
 
-    //сброс состояния документа, если ранее были внесены изменения через att()
+    // Сброс состояния документа, если ранее были внесены изменения через att()
     document.att("firArchiveBoxNumber", 123);
     document.reset();
     
@@ -110,10 +110,10 @@ Records
 
 .. code-block:: javascript
 
-    //Получение скриптового представление указанного рекорда
+    // Получение скриптового представление указанного рекорда
     var doc = Records.get("emodel/doc@111");
 
-    //Query рекордов
+    // Query рекордов
     var queryCommentsResult = Records.query({
         sourceId: "emodel/comment",
         language: "predicate",
@@ -144,13 +144,13 @@ ECOS Config
 
 .. code-block:: javascript
 
-    //получение значения конфигурации по ключу и приведение к типу String
+    // Получение значения конфигурации по ключу и приведение к типу String
     var serviceDeskEmailFrom = Config.get("app/service-desk$send-sd-email-from").asText()
 
 DataValue
 ~~~~~~~~~
 
-``DataValue`` - объект, позволяющий сконвертировать данные в стркутуру `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+``DataValue`` - объект, позволяющий сконвертировать данные в структуру `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
 
     - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
     - ``DataValue.createObj()`` - создает пустой объект DataValue.
@@ -307,19 +307,22 @@ Logger
 ---------
 
 Скрипт, как в атрибут записать человека, который выполнил предыдущую задачу:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: javascript
 
     document.att("manager", "emodel/person@" + lastTaskCompletor);
     document.save();
 
- .. image:: _static/script_task/sample_01.png
+
+.. image:: _static/script_task/sample_01.png
        :width: 700
        :align: center
 
 Получить локальную часть глобальной ссылки на сущность
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: javascript
 
     document.load("requestCategory?localId") == "community"
 
@@ -328,11 +331,30 @@ Logger
 - **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@someuser** локальная часть - это **"someuser"**
 
 Скрипт для проверки наличия комментариев после завершения задачи:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: javascript
 
     if (!comment) {
         throw new Error("Комментарий не заполнен");
     }
 
 В эту переменную информация не пишется, если строка пустая.
+
+Работа с датами
+~~~~~~~~~~~~~~~
+
+При работе с датами в скриптах можно использовать стандартные методы JavaScript.
+Но при сохранении даты в execution или атрибут документа необходимо сохранять как ISO строку, чтобы избежать проблем с сериализацией.
+
+.. code-block:: javascript
+
+    var someDate = new Date();
+    execution.setVariable("someDate", date.toISOString());
+
+    document.att("someDocDate", date.toISOString());
+    document.save();
+
+    // Парсинг даты из ISO строки
+    var dateFromDocument = document.load("someDocDate");
+    var dateFromDocumentParsed = Date.parse(dateFromDocument);
