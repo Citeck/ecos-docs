@@ -57,7 +57,6 @@ Select Orgstruct
 
 :ref:`См. пример Select Orgstruct<sample_select_orgstruct_component>` 
 
-
 Number
 ~~~~~~~
 
@@ -68,6 +67,7 @@ Number
 По умолчанию разряды числа разделены пробелом. Например, 1 000 000
 
 `См. подробное описание Number на Form.io <https://help.form.io/userguide/forms/form-components#number>`_ 
+
 
 
 Date/Time
@@ -180,6 +180,7 @@ ML Text
 
 Поддержка ML text реализована для поля "Название поля", "Подсказка" всех компонент редактора форм, так же для поля "Контент" компонента Html Component, "Название свойства" компонента Panel Component.
 
+
 Table Form
 ~~~~~~~~~~~~~~~
 
@@ -187,12 +188,21 @@ Table Form
 
 :ref:`См. подробное описание Table Form<table_form_component>` 
 
+Task Outcome
+~~~~~~~~~~~~~~~
+
+Компонент используется для добавления кнопок вердиктов задачи на форму. Компонент автоматически формирует кнопки вердиктов исходя из настроек Результатов задачи.
+
+:ref:`См. пример Task Outcome<approve_form_bpmn>`
+
+
 Import Button
 ~~~~~~~~~~~~~~~
 
 Компонент позволяет добавить на форму настраиваемую кнопку для загрузки файлов.
 
 :ref:`См. подробное описание Import Button<import_button_component>` 
+
 
 Email
 ~~~~~~
@@ -203,12 +213,14 @@ Email
 
 `См. подробное описание Email на Form.io <https://help.form.io/userguide/forms/form-components#email>`_ 
 
+
 URL
 ~~~~
 
 Компонент имеет настраиваемый параметр проверки, который, если он настроен правильно, может гарантировать, что введенное значение является допустимым URL-адресом.
 
 `См. подробное описание URL на Form.io <https://help.form.io/userguide/forms/form-components#url>`_ 
+
 
 Phone Number
 ~~~~~~~~~~~~~
@@ -217,12 +229,14 @@ Phone Number
 
 `См. подробное описание Phone Number на Form.io <https://help.form.io/userguide/forms/form-components#phone-number>`_ 
 
+
 Address Field
 ~~~~~~~~~~~~~~~
 
 Cпециальный компонент, выполняющий поиск введенных адресов.
 
 `См. подробное описание Address Field на Form.io <https://help.form.io/userguide/forms/form-components#address>`_ 
+
 
 ML Textarea
 ~~~~~~~~~~~~
@@ -338,12 +352,13 @@ Tabs
 Данные
 --------		
 
-Hidden
-~~~~~~~
+Скрытое поле
+~~~~~~~~~~~~~~
 
 Компонент можно добавить в форму, чтобы создать свойство ресурса, которое можно настроить в форме. Внешнего виджета для скрытых компонентов нет. Они не отображаются в визуализированных формах.
 
 `См. подробное описание Hidden на Form.io <https://help.form.io/userguide/forms/data-components#hidden>`_ 
+
 
 Async Data
 ~~~~~~~~~~~
@@ -357,6 +372,7 @@ Async Data
 :ref:`См. подробное описание Async Data<async_data_component>`
 
 :ref:`См. пример Async Data<sample_async_data_component>` 
+
 
 Include Form
 ~~~~~~~~~~~~~~
@@ -377,7 +393,7 @@ Include Form
        :width: 500
        :align: center
 
-Container
+Контейнер
 ~~~~~~~~~
 
 Оболочка для набора полей, аналогичная **Field Set**.
