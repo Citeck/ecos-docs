@@ -1,4 +1,4 @@
-Процесс запроса на закупку оборудования. Добавление справочника. Журнал и форма не по умолчанию.
+Процесс заявки на закупку оборудования. Добавление справочника. Журнал и форма не по умолчанию.
 ==================================================================================================
 
 .. contents::
@@ -6,12 +6,12 @@
 
 .. note::
 
-    Данная статья является продолжением работы с созданным ранее бизнес-процессом :ref:`Запрос на закупку оборудования<sample_request>` 
+    Данная статья является продолжением работы с созданным ранее бизнес-процессом :ref:`Заявка на закупку оборудования<sample_request>` 
 
 Справочник «Тип оборудования»
 -------------------------------
 
-Добавим справочник **«Тип оборудования»**, который мы будем использовать в запросе на закупку оборудования.
+Добавим справочник **«Тип оборудования»**, который мы будем использовать в заявке на закупку оборудования.
 
 **Справочник (datalist)** - тип для хранения набора данных, который будет использоваться в качестве статических данных для документов, не участвующие непосредственно в бизнес-процессах. 
 
@@ -147,6 +147,25 @@
 Переместите добавленную строку под строку **Название оборудования**:
 
 .. image:: _static/equipment_request_complicated/10.png
+       :width: 600
+       :align: center
+
+Так же добавим атрибут **Комментарий согласующего**, который позже добавим и на форму согласования.
+
+.. list-table:: 
+      :widths: 10 20 30
+      :header-rows: 1
+      :align: center
+      :class: tight-table 
+
+      * - Id (1)
+        - Имя (2)
+        - Тип (3)
+      * - attributeForComment
+        - Комментарий согласующего
+        - Text
+
+.. image:: _static/equipment_request_complicated/attributeForComment.png
        :width: 600
        :align: center
 
@@ -346,6 +365,7 @@
        :width: 500
        :align: center
 
+|
 
 .. image:: _static/equipment_request_complicated/30.png
        :width: 600
@@ -356,6 +376,14 @@
 4.	В поле **«Инициатор»** настроим так, чтобы создающий заявку пользователь указывался автоматически. На вкладке **«Кастомные»** выставите чекбокс **«Текущий пользователь по умолчанию»** и сохраните.
 
 .. image:: _static/equipment_request_complicated/31.png
+       :width: 600
+       :align: center
+
+**Сохраните.**
+
+5. Поле **«Комментарий согласующего»** будет заполняться при согласовании. Тогда при создании заявки запретим ввод данных в него:
+
+.. image:: _static/equipment_request_complicated/attributeForComment_form.png
        :width: 600
        :align: center
 
@@ -378,5 +406,116 @@
 Перейдите в журнал **«Заявка на закупку оборудования»** и нажмите **+**. Поля формы изменены:
 
 .. image:: _static/equipment_request_complicated/34.png
+       :width: 600
+       :align: center
+
+
+Добавление сохранения комментария согласующего в заявке
+---------------------------------------------------------
+
+В тип данных и, соответственно, на форму мы добавили атрибут **Комментарий согласующего**, теперь необходимо добавить атрибут в **форму задачи "На согласовании согласующим" (1)**, а так же компонент **Script task (2)** в бизнес-процесс.
+
+.. image:: _static/equipment_request_complicated/comment_to_bp.png
+       :width: 700
+       :align: center
+
+Добавление атрибута на форму (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Перейдите в компонент **пользовательская задача «На согласовании согласующим»** и далее в режим редактирования формы:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_01.png
+       :width: 700
+       :align: center
+
+- Нажмите **«Редактировать форму»**:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_02.png
+       :width: 600
+       :align: center
+
+- Выберите компонент **Text area**, поскольку комментарий может содержать много символов:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_03.png
+       :width: 600
+       :align: center
+
+- Укажите:
+
+ * Название поля - **Комментарий согласующего**
+ * Имя свойства - **comment**
+
+и нажмите кнопку **«Сохранить»**:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_04.png
+       :width: 600
+       :align: center
+
+- Сохраните форму:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_05.png
+       :width: 600
+       :align: center
+
+- Выйдите из режима редактирования, нажав **«Сохранить»**:
+
+.. image:: _static/equipment_request_complicated/comment_to_form_06.png
+       :width: 600
+       :align: center
+
+Добавление скрипта в процесс (2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Между элементами **пользовательская задача «На согласовании согласующим»**  и **Gateway** необходимо добавить :ref:`скриптовую задачу<script_task>`.
+
+- Для этого сначала удалите стрелку:
+
+ .. image:: _static/equipment_request_complicated/comment_to_bp_01.png
+       :width: 300
+       :align: center
+
+- Далее в  контекстном меню нажмите на компонент **«Task»**:
+
+ .. image:: _static/equipment_request_complicated/comment_to_bp_02.png
+       :width: 250
+       :align: center
+
+- Измените его тип на **Script task**:
+
+ .. image:: _static/equipment_request_complicated/comment_to_bp_03.png
+       :width: 300
+       :align: center
+
+- Чтобы комментарий, введенный при согласовании, сохранялся в заявке, укажите в форме:
+
+    *	Имя - **«Сохранение комментария»**,
+    *	в **Скрипте**:
+
+    .. code-block::
+
+       document.att('attributeForComment', comment); 
+       document.save();
+
+ .. image:: _static/equipment_request_complicated/comment_to_bp_04.png
+       :width: 300
+       :align: center
+
+- Добавьте стрелку от **Script task** до **Gateway**.
+
+Процесс можно сохранить и опубликовать, нажав:
+
+.. image:: _static/equipment_request_complicated/comment_to_bp_05.png
+       :width: 700
+       :align: center
+
+Для проверки процесса создайте заявку, отправьте ее на согласование. Если согласующий вносит комментарий в задачу:
+
+.. image:: _static/equipment_request_complicated/comment_01.png
+       :width: 600
+       :align: center
+
+то он сохранится в карточке заявки:
+
+.. image:: _static/equipment_request_complicated/comment_02.png
        :width: 600
        :align: center
