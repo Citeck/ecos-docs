@@ -1,8 +1,9 @@
 Использование Camel DSL
 =======================
 
-**Camel DSL** - это надстройка над Apache Camel, которая адаптирована для работы с платформой Citeck.
+.. _camel_dsl:
 
+**Camel DSL** - это надстройка над Apache Camel, которая адаптирована для работы с платформой Citeck.
 
 .. toctree::
     :maxdepth: 2

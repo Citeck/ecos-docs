@@ -135,6 +135,7 @@ Cущность нужна для формирования списка дат, 
 .. list-table:: 
       :widths: 10 10 10
       :header-rows: 1
+      :align: center
 
       * - ID
         - Тип 
@@ -157,6 +158,7 @@ Cущность нужна для формирования списка дат, 
 .. list-table:: 
       :widths: 10 10 10
       :header-rows: 1
+      :align: center
 
       * - ID
         - Тип 
@@ -244,22 +246,41 @@ Cущность нужна для формирования списка дат, 
       fun getWorkingTime(from: Temporal, to: Temporal): Duration
   }
 
-Records API в браузере
------------------------
+Records API в браузере и при использовании в BPMN процессе
+--------------------------------------------------------------
 
 Добавить рабочее время
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. tabs::
 
-    await Records.queryOne({
-        sourceId: 'emodel/working-schedule-action',
-        query: {
-            type: 'add-working-time',
-            config: {date: '2023-03-05T14:00:00', time: '10h'},
-            query: {scheduleId: 'DEFAULT'}
-        }
-    }, "data")
+   .. tab:: В браузере   
+
+    .. code-block::
+
+        await Records.queryOne({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'add-working-time',
+                config: {date: '2023-03-05T14:00:00', time: '10h'},
+                query: {scheduleId: 'DEFAULT'}
+            }
+        }, "data")
+
+
+   .. tab:: В BPMN процессе   
+
+    .. code-block::
+
+      Records.query({
+          sourceId: 'emodel/working-schedule-action',
+          query: {
+              type: 'add-working-time',
+              config: {date: dl.toISOString(), time: '32h'},
+              query: {scheduleId: 'DEFAULT'}
+          }
+      }, 'data').records[0].data
+
 
 Результат:
 
@@ -270,16 +291,34 @@ Records API в браузере
 Добавить рабочие дни
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. tabs::
 
-    await Records.queryOne({
-        sourceId: 'emodel/working-schedule-action',
-        query: {
-            type: 'add-working-days',
-            config: {date: '2023-03-05', days: 10},
-            query: {scheduleId: 'DEFAULT'}
-        }
-    }, "data")
+   .. tab:: В браузере   
+
+    .. code-block::
+
+        await Records.queryOne({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'add-working-days',
+                config: {date: '2023-03-05', days: 10},
+                query: {scheduleId: 'DEFAULT'}
+            }
+        }, "data")
+
+   .. tab:: В BPMN процессе   
+
+    .. code-block::
+
+        Records.query({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'add-working-days',
+                config: {date: '2023-03-05', days: 10},
+                query: {scheduleId: 'DEFAULT'}
+            }
+        }, 'data').records[0].data
+
 
 Результат:
 
@@ -290,16 +329,34 @@ Records API в браузере
 Рассчитать количество рабочих дней между двумя датами
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. tabs::
 
-    await Records.queryOne({
-        sourceId: 'emodel/working-schedule-action',
-        query: {
-            type: 'get-working-days',
-            config: {from: '2023-03-05', to: '2023-03-21'},
-            query: {scheduleId: 'DEFAULT'}
-        }
-    }, "data")
+   .. tab:: В браузере   
+
+    .. code-block::
+
+        await Records.queryOne({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'get-working-days',
+                config: {from: '2023-03-05', to: '2023-03-21'},
+                query: {scheduleId: 'DEFAULT'}
+            }
+        }, "data")
+
+   .. tab:: В BPMN процессе   
+
+    .. code-block::
+
+        Records.query({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'get-working-days',
+                config: {from: '2023-03-05', to: '2023-03-21'},
+                query: {scheduleId: 'DEFAULT'}
+            }
+        }, 'data').records[0].data
+
 
 Результат:
 
@@ -310,16 +367,33 @@ Records API в браузере
 Рассчитать количество рабочих дней между двумя датами с временем
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. tabs::
 
-    await Records.queryOne({
-        sourceId: 'emodel/working-schedule-action',
-        query: {
-            type: 'get-working-time',
-            config: {from: '2023-03-05', to: '2023-03-21'},
-            query: {}
-        }
-    }, "data")
+   .. tab:: В браузере   
+
+    .. code-block::
+
+        await Records.queryOne({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'get-working-time',
+                config: {from: '2023-03-05', to: '2023-03-21'},
+                query: {}
+            }
+        }, "data")
+
+   .. tab:: В BPMN процессе   
+
+    .. code-block::
+
+        Records.query({
+            sourceId: 'emodel/working-schedule-action',
+            query: {
+                type: 'get-working-time',
+                config: {from: '2023-03-05', to: '2023-03-21'},
+                query: {}
+            }
+        }, 'data').records[0].data
 
 Результат:
 
@@ -332,6 +406,7 @@ Records API в браузере
 .. list-table:: 
       :widths: 10 10 10
       :header-rows: 1
+      :align: center
 
       * - ID
         - Тип 
