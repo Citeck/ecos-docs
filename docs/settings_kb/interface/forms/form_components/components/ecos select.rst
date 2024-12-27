@@ -39,3 +39,42 @@ Ecos Select
 Если задано значение ``recordRef`` (это может быть актуально когда ``value`` отлично от ``recordRef`` для формирования ссылки), то оно представляется в виде ссылки. 
 
 Если параметры не подходят - текст.
+
+Примеры заполнения для типа источника Custom
+---------------------------------------------
+
+Данные берутся из Async Data с типом **Records Query**:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+          .. image:: _static/ecos_select/Records_Query_01.png
+                :width: 600
+                :align: center
+
+        - |
+
+            .. image:: _static/ecos_select/Records_Query_02.png
+                  :width: 500
+                  :align: center
+
+Данные берутся из Async Data с типом **Records Array**:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/ecos_select/Records_Array_01.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/ecos_select/Records_Array_02.png
+                  :width: 500
+                  :align: center
