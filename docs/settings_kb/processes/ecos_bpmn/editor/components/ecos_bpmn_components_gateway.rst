@@ -21,7 +21,7 @@
         - 
 
            .. image:: _static/gateway/gway_1_1.png
-              :width: 200
+              :width: 300
               :align: center 
 
         - **Эксклюзивный шлюз** (Exclusive Gateway,  исключающий) «или/или» — выбор только одного пути.
@@ -35,13 +35,8 @@
         - 
 
            .. image:: _static/gateway/gway_2_1.png
-              :width: 200
+              :width: 300
               :align: center 
-
-           .. image:: _static/gateway/gway_2_2.png
-              :width: 200
-              :align: center 
-
 
         - **Параллельный шлюз** (Parallel Gateway), «и» — выбор всех путей.
 
@@ -54,7 +49,7 @@
         - 
 
            .. image:: _static/gateway/gway_3_1.png
-              :width: 200
+              :width: 350
               :align: center 
 
         - **Инклюзивный шлюз** (Inclusive Gateway, неисключающий, неэсклюзивный), «и/или» — выбор одного или нескольких.
@@ -68,7 +63,7 @@
         - 
 
            .. image:: _static/gateway/gway_4_1.png
-              :width: 200
+              :width: 350
               :align: center 
 
         - **Шлюз, основанный на событиях** (Event Gateway) — выбор первого события, которое случится.
