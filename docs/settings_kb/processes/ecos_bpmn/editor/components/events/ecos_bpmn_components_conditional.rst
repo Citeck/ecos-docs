@@ -71,7 +71,7 @@
 
         - 
                .. image:: _static/conditional_event_5.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - | **Реагировать на изменение документа**
@@ -82,7 +82,7 @@
 
         - 
                .. image:: _static/conditional_event_13.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - | **Имя переменной**
@@ -91,7 +91,7 @@
 
         - 
                .. image:: _static/conditional_event_6.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - | **События переменной**
@@ -102,21 +102,21 @@
                 *	Удаление
         - 
                .. image:: _static/conditional_event_7.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - Тип условия: **Выражение**
 
         - 
                .. image:: _static/conditional_event_8.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - Тип условия: **Скрипт**. См. подробно о :ref:`скриптах<script_task>`
 
         - 
                .. image:: _static/conditional_event_9.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - | Настройки асинхронности:
@@ -125,7 +125,7 @@
           | См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_  
         - 
                .. image:: _static/conditional_event_10.png
-                :width: 300
+                :width: 320
                 :align: center
 
 .. important::
@@ -177,7 +177,7 @@
 Пример использования условного граничного события:
 
 .. image:: _static/conditional_event_14.png
-      :width: 700
+      :width: 800
       :align: center
 
 Скрипт:
