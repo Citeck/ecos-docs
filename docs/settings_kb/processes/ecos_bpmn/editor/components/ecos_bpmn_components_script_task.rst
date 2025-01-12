@@ -21,13 +21,13 @@
       :class: tight-table
       :align: center 
 
-      * - Указать **Имя**
+      * - Укажите **Имя**
 
         - 
                .. image:: _static/script_task/60.png
                 :width: 300
                 :align: center
-      * - Указать **скрипт** 
+      * - Укажите **скрипт** 
         - 
                .. image:: _static/script_task/61.png
                 :width: 300
@@ -316,7 +316,7 @@ Logger
 
 
 .. image:: _static/script_task/sample_01.png
-       :width: 700
+       :width: 800
        :align: center
 
 Получить локальную часть глобальной ссылки на сущность

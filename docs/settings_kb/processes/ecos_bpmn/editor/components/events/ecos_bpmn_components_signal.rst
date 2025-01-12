@@ -262,11 +262,21 @@ Start Event - старт процесса
 
 При изменении статуса по любому документу будет запущен процесс, который выполнит скрипт.
 
-.. image:: _static/bpmn_start_event_example.png
-   :width: 25%
+.. list-table::
+      :widths: 20 20
+      :align: center
 
-.. image:: _static/bpmn_start_event_form_example.png
-   :width: 25%
+      * - |
+
+            .. image:: _static/bpmn_start_event_example.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/bpmn_start_event_form_example.png
+                  :width: 300
+                  :align: center
 
 .. _start_event_subprocess:
 
@@ -275,11 +285,21 @@ Start Event - старт событийного подпроцесса
 
 Каждый раз при создании комментария по текущему документу, пока основной процесс активен, будет запущен подпроцесс, который отправит уведомление.
 
-.. image:: _static/bpmn_start_event_sub_process_example.png
-   :width: 25%
+.. list-table::
+      :widths: 20 20
+      :align: center
 
-.. image:: _static/bpmn_start_event_sub_process_form_example.png
-   :width: 25%
+      * - |
+
+            .. image:: _static/bpmn_start_event_sub_process_example.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/bpmn_start_event_sub_process_form_example.png
+                  :width: 300
+                  :align: center
 
 .. _Bondary_Event:
 
@@ -288,11 +308,22 @@ Bondary Event - событие с предикатом
 
 При активной задаче, если был добавлен комментарий, который содержит текст "Галя, отмена!", то задача будет отменена и отправлено уведомление.
 
-.. image:: _static/bpmn_boundary_event_with_predicate_example.png
-   :width: 25%
+.. list-table::
+      :widths: 20 20
+      :align: center
 
-.. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
-   :width: 25%
+      * - |
+
+            .. image:: _static/bpmn_boundary_event_with_predicate_example.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
+                  :width: 300
+                  :align: center
+
 
 .. _End_Throw_Event:
 
@@ -301,15 +332,27 @@ End Throw Event - ручная настройка и события с филь�
 
 При завершении подпроцесса сработает **signal end event** и будет сформировал сигнал с именем "manual-throw-signal" с фильтрацией - любой документ, тип "Найм сотрудника". При этом запустится событийный подпроцесс, так как он подходит по названию сигнала, документу и типу документа.
 
+.. list-table::
+      :widths: 20 20 20
+      :align: center
 
-.. image:: _static/bpmn_throw_event_with_filters_example.png
-  :width: 500
+      * - |
 
-.. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
-   :width: 20%
+            .. image:: _static/bpmn_throw_event_with_filters_example.png
+                  :width: 400
+                  :align: center
 
-.. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
-   :width: 20%
+        - |
+
+            .. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
+                  :width: 250
+                  :align: center
+
+        - |
+
+            .. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
+                  :width: 250
+                  :align: center
 
 .. _Intermediate_Catch_Event:
 
