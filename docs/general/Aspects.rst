@@ -8,7 +8,7 @@
 
 **Аспекты** - это гибкая возможность расширения функционала типов ECOS и сущностей.
 
-Журнал аспектов доступен по адресу: ``/v2/admin?journalId=ecos-aspects&type=JOURNAL``
+Журнал аспектов доступен по адресу: ``http://host/v2/admin?journalId=ecos-aspects&type=JOURNAL``
 
 Модель аспекта
 --------------
