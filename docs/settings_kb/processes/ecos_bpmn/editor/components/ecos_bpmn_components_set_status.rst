@@ -22,7 +22,7 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя** и выбрать **Статус** из списка статусов, заполненных в :ref:`Citeck типе данных<roles_statuses>`
+      * - Укажите **Имя** и выберите **Статус** из списка статусов, заполненных в :ref:`Citeck типе данных<roles_statuses>`
 
         - 
                .. image:: _static/set_status/88.png

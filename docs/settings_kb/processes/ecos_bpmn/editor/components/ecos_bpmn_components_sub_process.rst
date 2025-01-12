@@ -33,7 +33,7 @@
       :align: center
       :class: tight-table 
 
-      * - Указать **Имя**
+      * - Укажите **Имя**
 
         - 
                .. image:: _static/sub_process/75.png
