@@ -28,13 +28,13 @@
       :widths: 5 5
       :class: tight-table 
 
-      * - Указать **Имя**
+      * - Укажите **Имя**
 
         - 
                .. image:: _static/service_task/service_task_2.png
                 :width: 300
                 :align: center
-      * - Выбрать **Тип** - Внешняя задача или Выражение
+      * - Выберите **Тип** - Внешняя задача или Выражение
 
         - 
 

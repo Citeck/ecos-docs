@@ -21,13 +21,13 @@
       :class: tight-table
       :align: center 
 
-      * - Указать **Имя**
+      * - Укажите **Имя**
 
         - 
                .. image:: _static/script_task/60.png
                 :width: 300
                 :align: center
-      * - Указать **скрипт** 
+      * - Укажите **скрипт** 
         - 
                .. image:: _static/script_task/61.png
                 :width: 300
@@ -225,6 +225,121 @@ DataValue может быть сохранен в execution процесса с 
     dObj a: "b"
     ----------
 
+Time и Duration. Работа с датами и временными интервалами
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+При работе с датами и временными интервалами рекомендуется использовать объекты ``Time`` и ``Duration``.
+
+``Time`` - объект, упрощающий работу с датами, позволяющий сохранять дату в execution процесса, добавлять к дате календарное/рабочее время на основе рабочего расписания, получать разницу между двумя датами и многое другое. Подробнее см. примеры.
+
+``Duration`` - объект, упрощающий работу с временными интервалами. Поддерживается сохранение в execution процесса.
+
+Примеры использования:
+
+.. code-block:: javascript
+
+    // Получение текущего времени
+    let now = Time.now();
+
+    // Получение времени из строки в формате ISO
+    let timeFromIsoString = Time.of("2023-02-07T15:00:00.0Z");
+
+    // Получение времени из миллисекунд с начала 1970-01-01T00:00:00Z.
+    let timeFromEpochMilli = Time.ofEpochMilli(1644236400000);
+
+    // Получение миллисекунд с начала 1970-01-01T00:00:00Z.
+    let timeToEpochMilli = timeFromIsoString.toEpochMilli();
+
+
+
+    // Создание объектов Time
+    let aprilFirst = Time.of("2023-04-01T00:00:00.0Z");
+    let mayFirst = Time.of("2023-05-01T00:00:00.0Z");
+    let mayFirst2 = Time.of("2023-05-01T00:00:00.0Z");
+
+    // Сравнение времени
+    let isBefore = aprilFirst.isBefore(mayFirst); // true
+    let isAfter = aprilFirst.isAfter(mayFirst); // false
+
+    let isBeforeOrEqual = aprilFirst.isBeforeOrEqual(mayFirst); // true
+    let isAfterOrEqual = mayFirst.isAfterOrEqual(mayFirst2); // true
+
+
+
+    // Создание объектов Time
+    let timeFirst = Time.of("2023-04-01T00:00:00.0Z");
+    let timeSecond = Time.of("2023-04-01T00:30:00.0Z");
+
+    // Получение разницы между двух точек времени в Duration
+    let durationBetween = Time.durationBetween(timeFirst, timeSecond); // PT30M
+    let durationAsString = durationBetween.toString(); // "30m"
+    let durationAsIsoString = durationBetween.toIsoString(); // "PT30M"
+
+    // Получение разницы между двумя точками времени в минутах
+    let durationBetweenMinutes = Time.durationBetween(timeFirst, timeSecond).inWholeMinutes(); // 30
+    // etc.
+
+
+
+    // Объект Time можно сохранять в execution процесса
+    execution.setVariable("time", now);
+    // Можно получить объект Time из execution процесса
+    let timeFromExecution = execution.getVariable("time");
+
+    // Объект Duration можно сохранять в execution процесса
+    execution.setVariable("duration", durationBetween);
+    // Можно получить объект Duration из execution процесса
+    let durationFromExecution = execution.getVariable("duration");
+
+
+
+    let someTime = Time.now();
+
+    // Добавление 1 часа к указанному времени
+    let plus1h = Time.plus(someTime, "PT1H");
+
+    // Вычитание 1 часа из указанного времени
+    let minus1h = Time.minus(someTime, "PT1H");
+
+    // Добавление 10 минут к текущему времени
+    let nowPlus10m = Time.nowPlus("PT10M");
+
+    // Вычитание 10 минут из текущего времени
+    let nowMinus10m = Time.nowMinus("PT10M");
+
+
+
+    // Добавление 1 часа 30 минут рабочего времени к указанному. Используется рабочее расписание по умолчанию
+    let plusWorkingTime1h30m = Time.plusWorkingTime(someTime, "PT1H30M");
+
+    // Добавление 1 часа 30 минут рабочего времени к указанному. Можно указать id рабочего расписания
+    let plusWorkingTime1h30mScheduleId = Time.plusWorkingTime(someTime, "PT1H30M", "DEFAULT");
+
+    // Добавление 8 часов рабочего времени к текущему времени. Используется рабочее расписание по умолчанию
+    let nowPlusWorkingTime = Time.nowPlusWorkingTime("PT8H");
+
+    // Добавление 8 часов рабочего времени к текущему времени. Можно указать id рабочего расписания
+    let nowPlusWorkingTimeWithScheduleId = Time.nowPlusWorkingTime("PT8H", "DEFAULT");
+
+
+
+    // Добавление 1 рабочего дня к указанному времени. Используется рабочее расписание по умолчанию
+    let plusWorkingDay = Time.plusWorkingDays(someTime, 1);
+
+    // Добавление 1 рабочего дня к указанному времени. Можно указать id рабочего расписания
+    let plusWorkingDayWithScheduleId = Time.plusWorkingDays(someTime, 1, "DEFAULT");
+
+    // Добавление 1 рабочего дня к текущему времени. Используется рабочее расписание по умолчанию
+    let nowPlusWorkingDay = Time.nowPlusWorkingDays(1);
+
+    // Добавление 1 рабочего дня к текущему времени. Можно указать id рабочего расписания
+    let nowPlusWorkingDayWithScheduleId = Time.nowPlusWorkingDays(1, "DEFAULT");
+
+
+.. warning:: 
+    Сохранение объекта javascript Date в execution процесса не поддерживается. Для работы с датами и временными интервалами используйте объекты ``Time`` и ``Duration``.
+
+
 WebUrl
 ~~~~~~
 
@@ -316,7 +431,7 @@ Logger
 
 
 .. image:: _static/script_task/sample_01.png
-       :width: 700
+       :width: 800
        :align: center
 
 Получить локальную часть глобальной ссылки на сущность
@@ -340,21 +455,3 @@ Logger
     }
 
 В эту переменную информация не пишется, если строка пустая.
-
-Работа с датами
-~~~~~~~~~~~~~~~
-
-При работе с датами в скриптах можно использовать стандартные методы JavaScript.
-Но при сохранении даты в execution или атрибут документа необходимо сохранять как ISO строку, чтобы избежать проблем с сериализацией.
-
-.. code-block:: javascript
-
-    var someDate = new Date();
-    execution.setVariable("someDate", date.toISOString());
-
-    document.att("someDocDate", date.toISOString());
-    document.save();
-
-    // Парсинг даты из ISO строки
-    var dateFromDocument = document.load("someDocDate");
-    var dateFromDocumentParsed = Date.parse(dateFromDocument);
