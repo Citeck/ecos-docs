@@ -28,20 +28,20 @@
 
         - 
                .. image:: _static/notifications/49.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - Можно выбрать :ref:`шаблон уведомления<notification_templates>` или напрямую указать **Заголовок** и **Тело** сообщения напрямую. |br| При прямом использовании **Заголовка** и **Тела** возможно указывать только текст, без использования динамических переменных из процесса или документа.
 
         - 
                .. image:: _static/notifications/50.png
-                :width: 300
+                :width: 320
                 :align: center
 
          |
 
                .. image:: _static/notifications/51.png
-                :width: 300
+                :width: 320
                 :align: center 
 
       * - **Получатели** могут быть выбраны из: |br| |br|
@@ -57,11 +57,11 @@
           ``${someService.getEmails()},petya.voks`` |br|
         - 
                .. image:: _static/notifications/send_task_recipient_roles.png
-                :width: 300
+                :width: 320
                 :align: center
 
               .. image:: _static/notifications/send_task_recipient_expression.png
-                :width: 300
+                :width: 320
                 :align: center
 
       * - **Исходящий адрес** |br| Исходящий адрес уведомления. Может быть указан напрямую или через expression. |br| Если пусто, то будет использовано значение по умолчанию. |br|
@@ -80,7 +80,7 @@
 
         - 
                .. image:: _static/notifications/send_task_settings_panel.png
-                :width: 300
+                :width: 350
                 :align: center
 
 .. important::
@@ -112,7 +112,7 @@
 Для примера используем **event sub process**, который реагирует на событие добавления нового комментария и отправляет уведомление.
 
 .. image:: _static/notifications/bpmn_notification_example_process.png
-    :width: 300
+    :width: 320
     :align: center
 
 Шаблон уведомления содержит модель:
