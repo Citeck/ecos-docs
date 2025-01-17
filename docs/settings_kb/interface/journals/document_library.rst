@@ -144,6 +144,8 @@
        :width: 600
        :align: center
 
+На форме отображается индикатор процесса загрузки файла.
+
 При создании папки укажите ее название:
 
  .. image:: _static/doclib/DocLib_7.png
@@ -188,6 +190,23 @@
                   :width: 700
                   :align: center
 
+При загрузке, создании файлов и папок производится проверка на уникальность:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/doclib/validation_name_01.png
+                  :width: 300
+                  :align: center
+
+        - |
+
+            .. image:: _static/doclib/validation_name_02.png
+                  :width: 300
+                  :align: center
 
 Карточка файла
 ----------------
