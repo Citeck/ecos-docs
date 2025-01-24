@@ -9,6 +9,75 @@
 
 .. _Excel-import:
 
+Пример простой
+~~~~~~~~~~~~~~~~~~
+
+Пример подходит для простых случаев, когда данные для импорта не содержат ассоциаций, не требуется маппинг и для вас подходит упрощенный формат файла. 
+
+1. В **Разделе Администратора → Интеграция → Camel DSL** нажмите **"+"** :
+
+2. В форме заполните поля:
+
+- **id:** import-from-excel (можно задать свой. главное чтобы id был уникален среди всех Camel DSL)
+- **Тип:** Yaml
+- **Состояние:** Stopped
+- **Файл:** здесь будет необходимо загрузить excel файл с данными (пример см. ниже). Можно это сделать позднее.
+- **Содержимое контекста**:
+
+.. code-block::
+
+ - beans:
+     - name: "excelProcessor"
+       type: ru.citeck.ecos.camel.processor.reader.ExcelToListOfDataProcessor
+ - route:
+     from:
+       uri: "file-from-camel-dsl:import"
+       steps:
+         - process:
+             ref: excelProcessor
+         - split:
+             simple: "${body}"
+             steps:
+               - to: "ecos-records-mutate:?sourceId=emodel/import-test"
+
+.. image:: _static/examples/simple_xls_01.png
+       :width: 600
+       :align: center   
+
+В содержимом нужно поменять только **import-test** на **sourceId** для вашего типа. По умолчанию sourceId равен id типа. 
+
+3. Сохраните.
+
+4. Если файл с данными уже приложен, то остается только запустить через **действие** в журнале или через изменение состояния **Stopped -> Started** на форме редактирования:
+
+.. list-table:: 
+      :widths: 40 40
+      :align: center 
+
+      * - 
+
+            .. image:: _static/examples/simple_xls_02.png
+                 :width: 500
+                 :align: center   
+
+        - 
+
+             .. image:: _static/examples/simple_xls_03.png
+                  :width: 500
+                  :align: center    
+
+:download:`Пример файла с данными <../files/excel-test.xlsx>`
+
+В файле:
+
+ - Первая строка - id атрибутов. 
+ - Остальные строки - данные, которые необходимо импортировать.
+
+Пример сложнее
+~~~~~~~~~~~~~~~~~~
+
+Пример подходит для сложных случаев (добавления маппинга, работы с ассоциациями, работы с нетривиальными форматами excel файла).
+
 В данном примере будет показан пример роута с использованием следующих camel-элементов:
 
  - :ref:`FileFromCamelDslEndpoint<FileFromCamelDslEndpoint>`

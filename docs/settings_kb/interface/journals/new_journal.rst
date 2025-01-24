@@ -293,10 +293,10 @@
         - **Конфигурация** key value
         - |
 
-              **id** 		complete-document-task
-              **title**	{"ru":"Согласовать выбранные заявки","en":"Approve selected requests"}
-              **type**  selected
-              **params** 
+              - **id**: 		``complete-document-task``
+              - **title**:	``{"ru":"Согласовать выбранные заявки","en":"Approve selected requests"}``
+              - **type**:  ``selected``
+              - **params**:
               
               .. code-block::
               
