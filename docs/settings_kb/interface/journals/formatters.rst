@@ -93,6 +93,26 @@ ActionFormatter / Действие
 
 Предполагается в строке журнала наличие **id** или **recordRef** - ref записи, необходимый для выполнения действия
 
+**Пример:**
+
+По клику на информацию в поле **(1)** в соседней вкладке Citeck открывать дашборд с данными документа **(2)**:
+
+.. image:: _static/formatter/action_formatter_example_1.png
+       :width: 600
+       :align: center
+
+
+Настройка форматтера:
+
+.. image:: _static/formatter/action_formatter_example.png
+       :width: 300
+       :align: center
+
+где:
+
+- type -  ``view``
+- actionId - ``view-dashboard``
+
 BooleanFormatter / Логическое выражение
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,7 +147,7 @@ ColoredFormatter / Цвет
 Добавлена возможность  настройки условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте.
 
 .. image:: _static/formatter/color_formatter_1.png
-       :width: 400
+       :width: 300
        :align: center
 
 Вернуть необходимо строку с цветом для css (WebColor или HEX):
