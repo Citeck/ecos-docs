@@ -72,7 +72,7 @@
 
     Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
     
-    Для отключения данной настройки перед разворачиванием стенда перейдите в папку **\services\environments** в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
+    Для отключения данной настройки перед разворачиванием стенда перейдите в папку  ``\services\environments`` в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
     в настройке **WITH_DEMO_DATA** укажите **false**.
 
 *	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
