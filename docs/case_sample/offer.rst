@@ -572,9 +572,9 @@
      - :ref:`компонентах формы<form_components>`,
      - :ref:`примерах компонент<form_examples>` 
 
-Для справочников «Город», «Офис», «Тип должности», «Грейд», «Социальный пакет», «Должностные обязанности» оставим автоматически сгенерированные формы.
+Для справочников **«Город»**, **«Офис»**, **«Тип должности»**, **«Грейд»**, **«Социальный пакет»**, **«Должностные обязанности»** оставим автоматически сгенерированные формы.
 
-Ниже рассмотрим, как изменить  формы «Кандидаты» и «Офферы». Скопируйте форму из карточки типа данных:
+Ниже рассмотрим, как изменить  формы **«Кандидаты»** и **«Офферы»**. Скопируйте форму из карточки типа данных:
 
  .. image:: _static/offer/form_edit_1.png
        :width: 600
@@ -622,32 +622,32 @@
         - Наименование компонента
       * - |
         - Колонки формы
-        - Columns Component
-      * - Код
+        - :ref:`Columns Component<sample_columns_component>`
+      * - **Код**
         - candidatesCode
-        - Text Field Component
-      * - Фамилия
+        - :ref:`Text Field Component<sample_text_field_component>`
+      * - **Фамилия**
         - candidatesLastName
         - Text Field Component
-      * - Имя
+      * - **Имя**
         - candidatesFirstName
         - Text Field Component
-      * - Отчество
+      * - **Отчество**
         - candidatesMiddleName
         - Text Field Component
-      * - Дата рождения
+      * - **Дата рождения**
         - candidatesBirthDate
         - :ref:`Date / Time Component<sample_date_time_component>`
-      * - Пол
+      * - **Пол**
         - candidatesGender
         - :ref:`ECOS Select Component<sample_ecos_select_component>` 
 
                .. image:: _static/offer/form_17.png
                     :width: 300
                     :align: center
-      * - Город
+      * - **Город**
         - candidatesCityAssoc
-        - Select Journal Component
+        - :ref:`Select Journal Component<sample_select_journal_component>`
 
 Кнопки для форм, созданных выше:
 
@@ -656,14 +656,14 @@
       :align: center
       :class: tight-table 
 
-      * - Отменить
+      * - **Отменить**
         - |
 
                .. image:: _static/offer/form_18.png
                     :width: 400
                     :align: center
 
-      * - Сохранить
+      * - **Сохранить**
         - |
 
                .. image:: _static/offer/form_19.png
@@ -687,61 +687,111 @@
 
 Компоненты формы:
 
-.. csv-table::
-   :header: "Название поля", "Имя свойства", "Наименование компонента"
-   :widths: 15, 10, 10
-   :align: center
-   :class: tight-table 
-
-     ,Заголовок,:ref:`Panel Component<sample_panel_component>`
-     ,Колонки формы,Columns Component
-     Регистрационный номер,registrationNumber,Text Field Component
-     Присвоить номер,generateNumber,Checkbox Component
-     Дата создания,_created (для автоматического ввода даты создания документа),Date / Time Component
-     Комментарий по результатам,offerTaskComment,:ref:`Text Area Component<Text_Area>`
-     initiator,initiator,Select Orgstruct Component
-     Кандидат,offerCandidate,Select Journal Component
-     Должность,offerPosition,Select Journal Component
-     Подразделение,offerSubdivision,:ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
-     Грейд,offerGrade,Select Journal Component
-     Руководитель,offerChief,Select Orgstruct Component
-     Офис,offerOffice,Select Journal Component
-     Доп.согласующий,offerAdditionalChief,Select Orgstruct Component
-     Комментарий,offerComment,Text Area Component
-     Зарплатная вилка и премия,offerSalaryForkAndPrize,Text Field Component
-     Подчинение,offerSubordinationAtr,Text Field Component
-     Фидбэк по собеседованиям,offerFeedback,Text Area Component
-     Оклад,offerSalary,:ref:`Number Component<Number>`
-     Премия,offerPrize,Text Field Component
-     График работы,offerSchedule,Text Field Component
-     Дата выхода на работу,offerDateWork,Date / Time Component
-     Файлы,content,:ref:`File Component<File_>`
+.. list-table::
+      :widths: 5 10 20
+      :header-rows: 1
+      :align: center
+      :class: tight-table 
+      
+      * - Название поля
+        - Имя свойства
+        - Наименование компонента
+      * - |
+        - Заголовок
+        - :ref:`Panel Component<sample_panel_component>`
+      * - |
+        - Колонки формы
+        - :ref:`Columns Component<sample_columns_component>`
+      * - **Регистрационный номер**
+        - registrationNumber
+        - :ref:`Text Field Component<sample_text_field_component>`
+      * - **Присвоить номер**
+        - generateNumber
+        - Checkbox Component
+      * - **Дата создания**
+        - _created (для автоматического ввода даты создания документа)
+        - :ref:`Date / Time Component<sample_date_time_component>`
+      * - **Комментарий по результатам**
+        - offerTaskComment
+        - :ref:`Text Area Component<Text_Area>`
+      * - **Инициатор**
+        - initiator
+        - :ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
+      * - **Кандидат**
+        - offerCandidate
+        - :ref:`Select Journal Component<sample_select_journal_component>`
+      * - **Должность**
+        - offerPosition
+        - Select Journal Component
+      * - **Подразделение**
+        - offerSubdivision
+        - :ref:`Select Orgstruct Component<sample_select_orgstruct_component>`
+      * - **Грейд**
+        - offerGrade
+        - Select Journal Component      
+      * - **Руководитель**
+        - offerChief
+        - Select Orgstruct Component
+      * - **Офис**
+        - offerOffice
+        - Select Journal Component 
+      * - **Доп.согласующий**
+        - offerAdditionalChief
+        - Select Orgstruct Component 
+      * - **Комментарий**
+        - offerComment
+        - Text Area Component 
+      * - **Зарплатная вилка и премия**
+        - offerSalaryForkAndPrize
+        - Text Field Component 
+      * - **Подчинение**
+        - offerSubordinationAtr
+        - Text Field Component  
+      * - **Фидбэк по собеседованиям**
+        - offerFeedback
+        - Text Area Component 
+      * - **Оклад**
+        - offerSalary
+        - :ref:`Number Component<Number>` 
+      * - **Премия**
+        - offerPrize
+        - Text Field Component 
+      * - **График работы**
+        - offerSchedule
+        - Text Field Component 
+      * - **Дата выхода на работу**
+        - offerDateWork
+        - Date / Time Component 
+      * - **Файлы**
+        - _content (уже будет предзаполнено на форме)
+        - :ref:`File Component<File_>` 
 
 .. list-table::
       :widths: 10 50
       :align: center
       :class: tight-table 
 
-      * - Отменить
+      * - **Отменить**
         - |
 
                .. image:: _static/offer/form_20.png
                     :width: 400
                     :align: center
 
-      * - Создать
+      * - **Сохранить** (как черновик)
+        - |
+
+               .. image:: _static/offer/form_22.png
+                    :width: 400
+                    :align: center
+
+      * - **Создать**
         - |
 
                .. image:: _static/offer/form_21.png
                     :width: 400
                     :align: center
 
-      * - Сохранить (как черновик)
-        - |
-
-               .. image:: _static/offer/form_22.png
-                    :width: 400
-                    :align: center
 
 Журналы
 --------
@@ -1021,13 +1071,13 @@
 **4 на схеме**
 
  .. image:: _static/offer/bmpn35.png
-       :width: 600
+       :width: 500
        :align: center
 
 |
 
  .. image:: _static/offer/bmpn35_1.png
-       :width: 600
+       :width: 500
        :align: center
 
 .. list-table::
@@ -1130,14 +1180,14 @@
 
         - 
                .. image:: _static/offer/bmpn18.png
-                :width: 300
+                :width: 400
                 :align: center
 
       * - Указать **скрипт**
 
         - 
                .. image:: _static/offer/bmpn19.png
-                :width: 300
+                :width: 400
                 :align: center
            
            | Текст скипта:
@@ -1173,14 +1223,14 @@
 
         - 
                .. image:: _static/offer/bmpn21.png
-                :width: 300
+                :width: 350
                 :align: center
 
       * - Указать **Реципиентов** – исполнителей задачи, выбираются из списка ролей, заполненных :ref:`типе данных<roles_offer>`
 
         - 
                .. image:: _static/offer/bmpn22.png
-                :width: 300
+                :width: 350
                 :align: center
       * - | **Форма задачи** определяет то, что будет отображено при назначении задачи пользователю.
           | Если какие-то задачи могут совпадать, то можно использовать одинаковую форму, но если различаются, то, соответственно, формы разные.
@@ -1188,7 +1238,7 @@
 
         - 
                .. image:: _static/offer/bmpn23.png
-                :width: 300
+                :width: 350
                 :align: center
 
       * - | Выставить **приоритет задачи**, указать **результат задачи** – идентификатор и название.
@@ -1196,7 +1246,7 @@
           | См. ниже **(8)** в таблице.
         - 
                .. image:: _static/offer/bmpn24.png
-                :width: 300
+                :width: 350
                 :align: center
 
 Создание формы:
@@ -1255,6 +1305,8 @@
       Комментарий после доработки,reworkComment,Text Area Component
       Комментарий,chiefApproveComment,Text Area Component
 
+Для полей **Комментарий доп. согласующего**, **Комментарий после доработки** выставите чекбокс **«Заблокирован ввод»**.
+
 Кнопки формы:
 
 .. list-table::
@@ -1262,21 +1314,21 @@
       :align: center
       :class: tight-table 
 
-      * - Reject
+      * - **Отказать**
         - |
 
                .. image:: _static/offer/form_28.png
                     :width: 400
                     :align: center
 
-      * - Rework
+      * - **На доработку**
         - |
 
                .. image:: _static/offer/form_29.png
                     :width: 400
                     :align: center
 
-      * - Submit
+      * - **Согласовать**
         - |
 
                .. image:: _static/offer/form_30.png
@@ -1340,7 +1392,6 @@
                .. code-block::
 
                     var offerAdditionalChief = document.load('offerAdditionalChief'); 
-
 
                     if(offerAdditionalChief) { 
                     execution.setVariable('additional', true); 
@@ -1452,7 +1503,9 @@
       Комментарий Директора,dirApproveComment,Text Area Component
       Комментарий,reworkComment,Text Area Component
 
-Кнопка Done:
+Для полей **Комментарий руководителя**, **Комментарий Директора** выставите чекбокс **«Заблокирован ввод»**.
+
+Кнопка **Выполнено**:
 
   .. image:: _static/offer/form_25.png
        :width: 400
@@ -1525,7 +1578,7 @@
 
                .. code-block::
 
-                    execution.removeVariable(‘addApproveComment’);
+                    execution.removeVariable('addApproveComment');
                     execution.removeVariable('reworkComment');
 
       * - 3
@@ -1596,6 +1649,8 @@
       Комментарий руководителя,chiefApproveComment,Text Area Component
       Комментарий,addApproveComment,Text Area Component
 
+Для полей **Комментарий руководителя**, **Комментарий Директора** выставите чекбокс **«Заблокирован ввод»**.
+
 Кнопки формы:
 
 .. list-table::
@@ -1603,14 +1658,14 @@
       :align: center
       :class: tight-table 
 
-      * - Reject
+      * - **Отказать**
         - |
 
                .. image:: _static/offer/form_33.png
                     :width: 400
                     :align: center
 
-      * - Submit
+      * - **Согласовать**
         - |
 
                .. image:: _static/offer/form_34.png
@@ -1777,6 +1832,8 @@
       Комментарий после доработки,reworkComment,Text Area Component
       Комментарий,addApproveComment,Text Area Component
 
+Для полей **Комментарий руководителя**, **Комментарий доп. согласующего**, **Комментарий после доработки** выставите чекбокс **«Заблокирован ввод»**.
+
 Кнопки формы:
 
 .. list-table::
@@ -1784,21 +1841,21 @@
       :align: center
       :class: tight-table 
 
-      * - Reject
+      * - **Отказать**
         - |
 
                .. image:: _static/offer/form_37.png
                     :width: 400
                     :align: center
 
-      * - Rework
+      * - **На доработку**
         - |
 
                .. image:: _static/offer/form_38.png
                     :width: 400
                     :align: center
       
-      * - Submit
+      * - **Согласовать**
         - |
 
                .. image:: _static/offer/form_39.png
@@ -1936,17 +1993,29 @@
       * - 3
         -  
                .. image:: _static/offer/bpform/bpform_69.png
-                    :width: 100
+                    :width: 200
                     :align: center
+        -  |
+
+      * - 
+        -  **Шлюз 1**
+        - 
+               .. image:: _static/offer/bpform/bpform_70_0.png
+                    :width: 350
+                    :align: center
+
+      * - 
+        -  **Шлюз 2**
         - 
                .. image:: _static/offer/bpform/bpform_70.png
-                    :width: 400
+                    :width: 350
                     :align: center
+
       * - 
-        - **Поток «Отказ 1»**
+        - **Поток «Согласован»**
         - 
                .. image:: _static/offer/bpflow/bpflow_15.png
-                    :width: 400
+                    :width: 350
                     :align: center
 
            | Текст скрипта:
@@ -1956,17 +2025,17 @@
                     value =execution.getVariable('isRejected')!=true;
 
       * - 
-        - **Поток «Отказ 2»**
+        - **Поток «Отказ»**
         - 
                .. image:: _static/offer/bpflow/bpflow_16.png
-                    :width: 400
+                    :width: 350
                     :align: center
 
            | Текст скрипта:
 
                .. code-block::
 
-                    value =execution.getVariable('isRejected')==true;
+                    value =execution.getVariable('isRejected')===true;
       * - 4, 5
         - 
                .. image:: _static/offer/bpform/bpform_71.png
@@ -2012,6 +2081,17 @@
                     :width: 400
                     :align: center
 
+      * - 10
+        - 
+               .. image:: _static/offer/bpform/bpform_79.png
+                    :width: 100
+                    :align: center
+        - 
+               .. image:: _static/offer/bpform/bpform_80.png
+                    :width: 400
+                    :align: center
+
+
 Информация по форме **Формирование ответа кандидату (Offer Form Feedback)**:   
 
 .. csv-table::
@@ -2046,7 +2126,10 @@
 
       ,Колонки формы,Columns Component
       Комментарий директора,dirApproveComment,Text Area Component
-      Comment,offerTaskComment,Text Area Component
+      Комментарий,offerTaskComment,Text Area Component
+
+Для поля **Комментарий директора** выставите чекбокс **«Заблокирован ввод»**.
+
 
 Кнопки формы:
 
@@ -2055,35 +2138,20 @@
       :align: center
       :class: tight-table 
 
-      * - Send Reject
+      * - **Отправить отказ**
         - |
 
                .. image:: _static/offer/form_42.png
                     :width: 400
                     :align: center
 
-      * - Send Offer
+      * - **Отправить оффер**
         - |
 
                .. image:: _static/offer/form_43.png
                     :width: 400
                     :align: center
 
-
-.. list-table::
-      :widths: 5 15 50
-      :align: center
-      :class: tight-table 
-
-      * - 10
-        - 
-               .. image:: _static/offer/bpform/bpform_79.png
-                    :width: 100
-                    :align: center
-        - 
-               .. image:: _static/offer/bpform/bpform_80.png
-                    :width: 400
-                    :align: center
 
 Создание элементов для Части (6) схемы бизнес-процесса
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2204,6 +2272,8 @@
       Комментарий,offerTaskComment,Text Area Component
       Комментарий по результатам,_ECM_offerTaskComment,Text Area Component
 
+Для поля **Комментарий** выставите чекбокс **«Заблокирован ввод»**.
+
 Кнопки формы:
 
 .. list-table::
@@ -2211,14 +2281,14 @@
       :align: center
       :class: tight-table 
 
-      * - Reject Offer
+      * - **Оффер не принят**
         - |
 
                .. image:: _static/offer/form_46.png
                     :width: 400
                     :align: center
 
-      * - Accept Offer
+      * - **Оффер принят**
         - |
 
                .. image:: _static/offer/form_47.png
@@ -2307,7 +2377,7 @@
 Созданный процесс сохраняем и публикуем:
 
  .. image:: _static/offer/bmpn27.png
-       :width: 600
+       :width: 800
        :align: center
 
 .. _menu_add:
