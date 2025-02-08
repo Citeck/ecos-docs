@@ -16,12 +16,7 @@
     -	процессор, поддерживающий виртуализацию: если опция отключена в BIOS, то система виртуализации сможет работать лишь с 32-разрядными машинами, для работы ECOS Community Demo необходима поддержка 64-х разрядных систем;
     -   минимально 16 ГБ оперативной памяти;
     -	установочный образ `Citeck community demo <https://storage.yandexcloud.net/ecos-community-vm/ecos-community-vm.ova>`_;
-    -	установленная система виртуализации `Oracle VM VirtualBox 7.0.18 <https://www.virtualbox.org/wiki/Downloads>`_;
-    -	в файле **hosts** необходимо указать **127.0.0.1 ecos-community-demo**. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере:
-
-            *  Windows— **c:/windows/system32/drivers/etc/hosts**
-            *  Linux, Ubuntu, Unix, BSD — **/etc/hosts** 
-            *  Mac OS — **/private/etc/hosts**
+    -	установленная система виртуализации `Virtualbox 7.x <https://www.virtualbox.org/wiki/Downloads>`_;
 
 Как смонтировать образ
 -----------------------
@@ -117,7 +112,7 @@
 Авторизация в Citeck
 ----------------------
 
-**Шаг 6:** Перейдите в браузере по адресу `http://ecos-community-demo <http://ecos-community-demo>`_ 
+**Шаг 6:** Перейдите в браузере по адресу `http://localhost <http://localhost>`_ 
 
 **Шаг 7:** Войдите в систему, используя следующие учётные данные:
 
