@@ -6,17 +6,6 @@
 .. contents::
     :depth: 5
 
-
-Общие требования к системе
----------------------------
-
-* Все действия рекомендуется выполнять в командной строке или окне терминала, или в Git CMD Windows, запущенного с повышенными правами.
-* В файле **hosts** прописать **127.0.0.1 ecos-community-demo**. Путь к папке, где лежит файл **hosts**, зависит от операционной системы, которая установлена на вашем компьютере: 
-  
-  *  Windows— **c:/windows/system32/drivers/etc/hosts** 
-  *  Linux, Ubuntu, Unix, BSD — **/etc/hosts** 
-  *  Mac OS — **/private/etc/hosts**
-
 Системные требования
 ---------------------
 
@@ -72,7 +61,7 @@
 
     Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
     
-    Для отключения данной настройки перед разворачиванием стенда перейдите в папку **\services\environments** в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
+    Для отключения данной настройки перед разворачиванием стенда перейдите в папку  ``\services\environments`` в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
     в настройке **WITH_DEMO_DATA** укажите **false**.
 
 *	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
@@ -97,7 +86,7 @@
             docker-compose up -d
 
 *	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
-*	Перейдите в браузере по адресу http://ecos-community-demo/
+*	Перейдите в браузере по адресу http://localhost/
 *   Войдите в систему, используя следующие учётные данные:
 
 .. image:: _static/docker-compose/09.png
@@ -298,14 +287,6 @@
             cd ecos-community-demo-master
             docker-compose pull
 
-        Добавление ecos-community-demo в локальный **hosts** файл:
-
-        .. code-block::
-
-            vim /etc/hosts     - открываем файл
-            127.0.0.1      ecos-community-demo     - производим запись в файл
-            :wq!     - выходим из редактора vim
-
         Запуск Community Demo:
 
         .. code-block::
@@ -395,14 +376,6 @@
             cd ecos-community-demo-master
             docker-compose pull
 
-        Добавление ecos-community-demo в локальный **hosts** файл:
-
-        .. code-block::
-
-            vim /etc/hosts     - открываем файл
-            127.0.0.1      ecos-community-demo     - производим запись в файл
-            :wq!     - выходим из редактора vim
-
         Запуск Community Demo:
 
         .. code-block::
@@ -469,14 +442,7 @@
             git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
             docker-compose pull
 
-        Добавление ecos-community-demo в локальный **hosts** файл:
-
-        .. code-block::
-
-            vim /etc/hosts     - открываем файл
-            127.0.0.1      ecos-community-demo     - производим запись в файл
-            :wq!     - выходим из редактора vim
-
+        
         Запуск Community Demo:
 
         .. note:: 
@@ -535,14 +501,6 @@
         .. note:: 
 
             Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, открыть **/etc/docker/deamon.json** и изменить там **"log-driver": "journald"** на **"log-driver": "json-file"**
-
-        Добавление ecos-community-demo в локальный **hosts** файл:
-
-        .. code-block::
-
-            vim /etc/hosts     - открываем файл
-            127.0.0.1      ecos-community-demo     - производим запись в файл
-            :wq!     - выходим из редактора vim
 
         В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
@@ -627,14 +585,6 @@
             cd ecos-community-demo-master
             docker-compose pull
 
-        Добавление ecos-community-demo в локальный **hosts** файл: 
-
-        .. code-block::
-
-            vim /etc/hosts     - открываем файл
-            127.0.0.1      ecos-community-demo     - производим запись в файл
-            :wq!     - выходим из редактора vim
-
         Запуск Community Demo:
 
         .. note:: 
@@ -690,8 +640,6 @@
     docker-compose up -d
 
 в директории **ecos-community-demo-master** для запуска проекта
-
-Тестировать можно с локальной машины при наличии корректной записи в **/etc/hosts**.
 
 Данные для входа в Citeck:
 

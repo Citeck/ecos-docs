@@ -138,6 +138,36 @@ Select Journal Component
        :width: 400
        :align: center
 
+Select Orgstruct Component
+----------------------------
+
+.. _sample_select_orgstruct_component:
+
+**Select Orgstruct Component**  - компонент для выбора из оргструктуры. 
+
+На вкладке **«Базовые»** заполняется: 
+
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
+
+ .. image:: _static/form_examples/form_4.png
+       :width: 600
+       :align: center
+
+На вкладке **«Кастомные»** - можно указать:
+
+- допустимый **«Разрешенный тип полномочий»** **(3)**
+- **Текущий пользователь по умолчанию** - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание **(4)**.
+
+ .. image:: _static/form_examples/form_5.png
+       :width: 600
+       :align: center
+
+Для выбора подразделения:
+
+ .. image:: _static/form_examples/form_5_1.png
+       :width: 600
+       :align: center
 
 Button Component 
 ---------------------
@@ -190,32 +220,6 @@ Panel
 
  .. image:: _static/form_examples/form_14.png
        :width: 600
-       :align: center
-
-
-Select Orgstruct Component
-----------------------------
-
-.. _sample_select_orgstruct_component:
-
-**Select Orgstruct Component**  - компонент для выбора из оргструктуры. 
-
-На вкладке **«Базовые»** заполняется: 
-
-- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
-- **Имя свойства** - имя свойства в типе данных **(2)**.
-
- .. image:: _static/form_examples/form_4.png
-       :width: 600
-       :align: center
-
-На вкладке **«Кастомные»** - можно указать:
-
-- допустимый **«Разрешенный тип полномочий»** **(3)**
-- **Текущий пользователь по умолчанию** - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание **(4)**.
-
- .. image:: _static/form_examples/form_5.png
-       :width: 400
        :align: center
 
 Async Data Component 
