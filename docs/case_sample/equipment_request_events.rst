@@ -135,7 +135,7 @@
 Укажите свойства события:
 
        • Тип – **Дата**
-       • Значение – **PT30M** В формате ISO 8601 **PT30M - 30 минут**. Подробно о :ref:`формате<time_format>`
+       • Значение – **PT30M** В формате `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ **PT30M - 30 минут**. Подробно о :ref:`формате<time_format>`
 
 .. image:: _static/equipment_request_events/timer_04.png
        :width: 600
