@@ -450,4 +450,48 @@ Logger
 Пример вычисления id рабочего расписания с использованием DMN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[TBD]
+Пример процесса:
+
+.. image:: _static/script_task/process_01.png
+       :width: 700
+       :align: center
+
+Установка переменной для DMN:
+
+.. image:: _static/script_task/process_02.png
+       :width: 700
+       :align: center
+
+Скрипт:
+
+.. code-block:: javascript
+
+    execution.setVariable("sum", document.load("sum?num"));
+
+Выбор рабочего календаря:
+
+.. image:: _static/script_task/process_03.png
+       :width: 700
+       :align: center
+
+**Переменная результата:** ``workingCalendarId``
+
+:ref:`DMN решение<dmn_decision>` содержит id :ref:`созданных календарей<business-schedule>`:
+
+.. image:: _static/script_task/process_04.png
+       :width: 600
+       :align: center
+
+Пользовательская задача:
+
+.. image:: _static/script_task/process_05.png
+       :width: 700
+       :align: center
+
+Срок выполнения:
+
+.. code-block:: javascript
+
+    ${Time.nowPlusWorkingDays(5, workingCalendarId).toIsoString()}
+
+:download:`скачать процесс <../examples/test-bpmn-process.bpmn.xml>`
