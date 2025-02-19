@@ -79,7 +79,8 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
     </dependency>
 
 .. note:: 
-    В текущей реализации starter`a, spring boot приложение должно находиться в одном контуре с Ecos. |br|
+    В текущей реализации starter`a, spring boot приложение должно находиться в одном контуре с Citeck.
+
     Для использования обработчиков из внешних контуров, можно воспользоваться стандартными `клиентами <https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_. 
 
 Подписка на топики
@@ -366,12 +367,10 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
     Если вы используете мутацию recordsService при обработке внешней задачи, то необходимо учитывать, что код обработки внешней задачи выполняется
     без транзакции. Вы можете пометить метод аннотацией `ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction` для выполнения кода внутри транзакции.
 
-    С более подробной документацией по внешним задачам можно ознакомиться по ссылкам: |br|
-    1. `External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-engine/external-tasks/#error-event-definitions>`_ |br|
-    2. `External Task Client <https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_ |br|
-    3. `External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19/user-guide/ext-client/spring-boot-starter/>`_ |br|
-    4. `Error Boundary Event <https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-events/#error-boundary-event>`_
+    С более подробной документацией по внешним задачам можно ознакомиться по ссылкам:
 
-.. |br| raw:: html
+     1. `External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-engine/external-tasks/#error-event-definitions>`_
+     2. `External Task Client <https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_
+     3. `External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19/user-guide/ext-client/spring-boot-starter/>`_ 
+     4. `Error Boundary Event <https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-events/#error-boundary-event>`_
 
-     <br>   
