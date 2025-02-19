@@ -1,5 +1,5 @@
-Создание пользователей для ecos-community-demo
-===============================================
+Создание пользователей для Citeck Community
+============================================
 
 .. note::
 
@@ -11,7 +11,7 @@
 Создание пользователя в Keycloak
 ----------------------------------
 
-На запущенном проекте перейти по ссылке `http://ecos-community-demo/ecos-idp/auth <http://ecos-community-demo/ecos-idp/auth>`_
+На запущенном проекте перейти по ссылке `http://localhost/ecos-idp/auth <http://localhost/ecos-idp/auth>`_
 
 Перейти в раздел **Administration Console**:
 
