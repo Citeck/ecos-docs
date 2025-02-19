@@ -253,7 +253,7 @@
 
 Пример с использованием кода HTML. Маска:
 
-``${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://ecos-community-demo/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>``
+``${firstName} ${lastName} <span style="color: #7396cd;font-size:bold;"><a href="https://localhost/v2/orgstructure?recordRef=emodel/person@${fullName}" ><b>(${fullName})</b></a></span>``
 
 .. image:: _static/org_structure/mask_4.png
        :width: 400
