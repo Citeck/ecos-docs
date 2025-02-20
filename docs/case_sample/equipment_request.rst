@@ -498,7 +498,7 @@
        :width: 600
        :align: center
 
-  -	Перейдите в **«Расширенные»** выберите компонент **Task Outcome**:
+  -	Перейдите в **«Расширенные»** перетащите компонент **Task Outcome** на форму:
 
    .. image:: _static/equipment_request/form_outcome_2.png
        :width: 600
