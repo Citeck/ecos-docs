@@ -18,7 +18,7 @@
 
 Настройки доступны в разделе **«Интеграции-Внешнего порталы»**.
 
-Журнал -  https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
+Журнал доступен по адресу: https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
 
 .. image:: _static/external_portal/01.png
     :width: 700
