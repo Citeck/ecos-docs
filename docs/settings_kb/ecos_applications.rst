@@ -22,7 +22,7 @@ Citeck приложения
 
 Работа с приложениями осуществляется в журнале **«Раздел администратора - Управление системой - Приложения ECOS»**:
 
-http://host/v2/admin?journalId=ecos-apps&type=JOURNAL
+Журнал доступен по адресу: ``v2/admin?journalId=ecos-apps&type=JOURNAL``
 
 .. image:: _static/apps/apps_page.png
        :width: 600       
@@ -380,7 +380,7 @@ http://host/v2/admin?journalId=ecos-apps&type=JOURNAL
 Настройки конфигурации
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** (v2/admin?journalId=ecos-configs&type=JOURNAL) 
+Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** (``v2/admin?journalId=ecos-configs&type=JOURNAL``):
 
   .. image:: _static/apps/git_15.png
         :width: 700       
