@@ -99,7 +99,7 @@ ECOS Секреты
     :width: 700
     :align: center
 
-Журнал - https://host/v2/admin?journalId=ecos-secrets&type=JOURNAL
+Журнал доступен по адресу: ``v2/admin?journalId=ecos-secrets&type=JOURNAL``
 
 Форма создания:
 

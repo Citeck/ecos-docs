@@ -16,7 +16,7 @@
        :width: 700
        :align: center
 
-Журнал - https://host/v2/admin?journalId=in-webhook-journal&type=JOURNAL 
+Журнал доступен по адресу: ``v2/admin?journalId=in-webhook-journal&type=JOURNAL`` 
 
 Расположение артефактов с данным типом: **integration/in-webhook**
 
