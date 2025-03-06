@@ -13,7 +13,7 @@
 
 Функциональность для формирования списка дат, которые изменяют обычный распорядок рабочих дней:
 
-Настройка расположена в журнале http://host/v2/admin?journalId=working-calendar&type=JOURNAL (**Раздел администратора - Модель – Производственный календарь**)
+Настройка расположена в журнале ``v2/admin?journalId=working-calendar&type=JOURNAL`` (**Раздел администратора - Модель – Производственный календарь**)
 
  .. image:: _static/work_calendar/calendar_3.png
        :width: 700
@@ -107,7 +107,7 @@
 
 Определяет обычный распорядок рабочих дней. 
 
-Настройка расположена в журнале http://host/v2/admin?journalId=type$working-schedule&type=JOURNAL (**Раздел администратора - Модель – Рабочее расписание**)
+Настройка расположена в журнале ``v2/admin?journalId=type$working-schedule&type=JOURNAL`` (**Раздел администратора - Модель – Рабочее расписание**)
 
  .. image:: _static/work_calendar/calendar_1.png
        :width: 700
