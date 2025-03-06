@@ -9,7 +9,7 @@
 
 1. Открываем журнал **Хранилища контента**
 
-Журнал - https://host/v2/admin?journalId=ecos-content-storages&type=JOURNAL
+Журнал - ``v2/admin?journalId=ecos-content-storages&type=JOURNAL``
 
 2. Открываем на редактирование **content-storage-s3**
 
@@ -49,7 +49,7 @@
 
 8. Переходим в журнал **Конфигурация ECOS** и открываем на редактирование настройку **"default-content-storage"**
 
-Журнал - https://host/v2/journals?journalId=ecos-configs&search=default-content-storage
+Прямая ссылка на настройку - ``v2/journals?journalId=ecos-configs&search=default-content-storage``
 
  .. image:: _static/s3_storage/07.png
        :width: 700
