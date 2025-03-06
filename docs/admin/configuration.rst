@@ -50,7 +50,7 @@
        :width: 600
        :align: center
 
-Путь до страницы с конфигурацией: ``http://host/v2/admin?journalId=ecos-configs&type=JOURNAL``
+Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
 
 Примеры конфигураций:
 

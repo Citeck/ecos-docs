@@ -222,7 +222,11 @@
 
 .. _orgstructure_config:
 
-Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`, в поисковой строке введите **org** - откроется список возможных настроек.
+Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. 
+
+Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
+
+В поисковой строке введите **org** - откроется список возможных настроек:
 
 .. image:: _static/org_structure/orgstructure_settings.png
        :width: 700
