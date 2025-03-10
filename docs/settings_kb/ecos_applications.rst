@@ -240,7 +240,7 @@ Citeck приложения
 Настройка
 ~~~~~~~~~~~~~~~~~~
 
-1. Открыть журнал **«Секреты»** (/v2/admin?journalId=ecos-secrets&type=JOURNAL): 
+1. Открыть журнал **«Секреты»** ``/v2/admin?journalId=ecos-secrets&type=JOURNAL``: 
 
 .. image:: _static/apps/git_01.png
        :width: 700       
@@ -258,7 +258,7 @@ Citeck приложения
   
   При этом на форме создания секрета выбрать тип= Basic, ввести свой логин и вместо своего пароля ввести сгенерированный токен.
 
-2. Открыть журнал **«Конечные точки»** (/v2/admin?journalId=endpoints&type=JOURNAL) 
+2. Открыть журнал **«Конечные точки»** ``/v2/admin?journalId=endpoints&type=JOURNAL``
 
 .. image:: _static/apps/git_03.png
        :width: 700       
@@ -280,7 +280,7 @@ Citeck приложения
        :width: 400       
        :align: center
 
-3. Открыть журнал **«Приложения ECOS»** (/v2/admin?journalId=ecos-apps&type=JOURNAL) 
+3. Открыть журнал **«Приложения ECOS»** ``/v2/admin?journalId=ecos-apps&type=JOURNAL`` 
 
 .. image:: _static/apps/git_06.png
        :width: 700       
@@ -380,7 +380,7 @@ Citeck приложения
 Настройки конфигурации
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** (``v2/admin?journalId=ecos-configs&type=JOURNAL``):
+Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** ``v2/admin?journalId=ecos-configs&type=JOURNAL``:
 
   .. image:: _static/apps/git_15.png
         :width: 700       
