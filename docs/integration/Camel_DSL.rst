@@ -11,6 +11,7 @@
     Camel_DSL/overview
     Camel_DSL/BD_selection
     Camel_DSL/actions
+    Camel_DSL/context_instance
     Camel_DSL/RecordsDaoEndpoint_connection
     Camel_DSL/BD_deletion
     Camel_DSL/RabbitMQ
