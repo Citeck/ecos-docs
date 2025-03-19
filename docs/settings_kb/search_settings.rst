@@ -3,6 +3,9 @@
 
 .. _search_settings:
 
+.. contents::
+    :depth: 2
+
 Поиск осуществляется по документам, людям (пользователям), рабочим пространствам.
 
 .. image:: _static/search/search_01.png
