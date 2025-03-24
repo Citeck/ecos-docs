@@ -129,6 +129,17 @@ ColoredFormatter / Цвет
 
 Тип: ``colored``
 
+Универсальный форматтер для отображения значений с цветовой индикацией.
+
+Функции
+""""""""
+
+  - Поддержка как предопределенных цветов (через классы CSS), так и пользовательских цветов HEX
+  - Использование идентификатора для сопоставления цветов и локализованного значения для отображения
+  - Возможность отображения цветного индикатора в качестве указателя или фона
+  - Если в ``showPointer`` установлено значение **false**, цвет фона отображается в виде закругленного овала.
+  - Поддержка новых и старых форматов журналов
+
 Конфигурация:
 
 .. list-table:: 
@@ -144,7 +155,8 @@ ColoredFormatter / Цвет
       * - textHidden
         - Флаг, который отвечает за перенос строк в ячейке
 
-Добавлена возможность  настройки условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте.
+Настройка условия отображения значения в определенном цвете в зависимости от значения данных в атрибуте
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. image:: _static/formatter/color_formatter_1.png
        :width: 300
@@ -159,6 +171,173 @@ ColoredFormatter / Цвет
   или
 
   if (cell.disp.length > 2) return "#FF0000" 
+
+Использование
+""""""""""""""""
+
+**Базовое использование с предопределенными цветами**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        color:
+          low: green
+          medium: yellow
+          high: pink
+          urgent: red
+
+**Использование с цветами HEX**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#00FF00'
+          medium: '#FFFF00'
+          high: '#FF69B4'
+          urgent: '#FF0000'
+
+**Использование с указателем на дисплее**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        color:
+          low: green
+          medium: yellow
+          high: pink
+          urgent: red
+        showPointer: true
+
+**Использование с цветом по умолчанию**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        color:
+          low: green
+        defaultColor: '#CCCCCC'
+
+**Использование с именованным цветом по умолчанию**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        color:
+          low: green
+        defaultColor: 'red'
+
+**Форматирование цвета на основе скрипта**
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        fn: 'if (cell.value > 2) return "#e2e2e2"'
+        defaultColor: '#FFFFFF'
+
+Параметры конфигурации
+""""""""""""""""""""""""
+
+Параметры режима цвета значения
+**************************************
+
+.. list-table::
+      :widths: 5 5 5 10
+      :align: center
+
+      * - Параметр
+        - Тип
+        - По умолчанию
+        - Описание
+      * - **color**
+        - Object
+        - {}
+        - Сопоставление значений объектов с цветами.
+      * - **showPointer**
+        - Boolean
+        - false
+        - Показывать ли цветной указатель. Если **false**, показывает закругленный овальный фон.
+      * - **defaultColor**
+        - String
+        - ``'#FFFFFF'``
+        - Цвет по умолчанию для значений, не найденных в **color**. Может быть HEX или именованным цветом.
+      * - **fn**
+        - String/Function
+        -  
+        - Скрипт или функция для определения цвета текста.
+
+Предопределенные цвета
+***********************
+
+Форматтер поддерживает следующие предопределенные цвета:
+
+  - зеленый;
+  - желтый;
+  - розовый;
+  - красный.
+
+Для пользовательских цветов используйте формат HEX (например, «#FF0000»).
+
+Визуальный вид
+***************
+
+- Когда ``showPointer: true`` - отображает маленький цветной кружок перед текстом.
+- Когда ``showPointer: false`` - отображает текст на закругленном овальном цветном фоне.
+
 
 DateFormatter / Дата
 ~~~~~~~~~~~~~~~~~~~~~~
