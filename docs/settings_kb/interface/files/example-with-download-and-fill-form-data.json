@@ -1,0 +1,214 @@
+{
+  "id": "example-with-download-and-fill-form-data",
+  "title": {
+    "en": "example-with-download-and-fill-form-data"
+  },
+  "system": false,
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns3",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "URL To Download"
+                    },
+                    "key": "urlToDownload",
+                    "labelPosition": "left-left",
+                    "defaultValue": "https://avatars.githubusercontent.com/u/15797634?s=200&v=4",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "labelWidth": 11,
+                    "type": "textfield",
+                    "input": true,
+                    "inputMasks": [
+                      {}
+                    ],
+                    "reorder": false,
+                    "dataSrc": ""
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0,
+                "md": 8
+              },
+              {
+                "md": 4,
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "Download"
+                    },
+                    "key": "submit3",
+                    "action": "custom",
+                    "state": "",
+                    "showValidations": false,
+                    "custom": "const showError = (msg) => {\n    Citeck.Dialogs.showInfoDialog({\n        title: \"Ошибка\",\n        text: msg\n    });\n}\nconst fileUrl = data.urlToDownload;\nif (!fileUrl) {\n    showError('Поле с URL для скачивания не заполнено');\n    return;\n}\nfetch(fileUrl).then(response => {\n    if (!response.ok) {\n        throw new Error(\"Ошибка при загрузке файла\");\n    }\n    return response.blob();\n}).then(blob => {\n    let filename = fileUrl.split('?')[0].split('/').pop() || 'downloaded_file';\n    const file = new File([blob], filename, { type: blob.type });\n    const formData = new FormData();\n\n    formData.append('file', file);\n    formData.append('ecosType', 'temp-file');\n    formData.append('mimeType', blob.type);\n    formData.append('name', filename);\n\n    // загружаем временный файл на сервер\n    return ecosFetch('/gateway/emodel/api/ecos/webapp/content', {\n        method: 'POST',\n        body: formData\n    }).then(r => r.json()).then(data => data.entityRef);\n}).then(tempFile => {\n    // загружаем необходимую информацию о загруженном файле, чтобы отобразить её в компоненте на форме\n    return Records.get(tempFile).load('_as.content-data[]?json')\n}).then(contentData => {\n    contentData.map(element => {\n      element.data = { 'entityRef': element.recordRef };\n    });\n    // проставляем данные временного файла в значение поля на форме\n    // uploadField - это ключ компонента на форме.\n    const submission = instance.root.submission;\n    instance.root.submission = {\n      ...submission,\n      data: {\n        ...(submission.data),\n        // Заполняем поле с файлом\n        uploadField: contentData,\n        // Заполняем текстовое поле\n        textField: 'Размер файла: ' + contentData[0].size\n      }\n    };\n}).catch(e => {\n    showError(e.message);\n    console.error(\"Ошибка при скачивании файла\", e);\n});",
+                    "block": true,
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "button",
+                    "input": true,
+                    "event": "",
+                    "url": "",
+                    "headers": [
+                      {}
+                    ],
+                    "reorder": false,
+                    "dataGridLabel": false
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false,
+            "reorder": false
+          },
+          {
+            "label": {
+              "ru": "Upload Field"
+            },
+            "key": "uploadField",
+            "onFileClick": "download",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "file",
+            "input": true,
+            "reorder": false,
+            "url": "",
+            "options": "",
+            "webcamSize": "",
+            "imageSize": ""
+          },
+          {
+            "label": {
+              "ru": "Text Field"
+            },
+            "key": "textField",
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ],
+            "reorder": false,
+            "dataSrc": ""
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ]
+  }
+}
