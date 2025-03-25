@@ -78,8 +78,11 @@ Table form
        :width: 600
        :align: center
 
-Чтение введенных данных
+Наполнение данных в таблице
 ------------------------
+
+Использование Массив записей
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Для этого можно использовать компонент **Async Data** (добавить ссылку) с типом данных **Массив записей (Records Array)**.
 
@@ -88,6 +91,21 @@ Table form
 .. image:: _static/table_form/Table_form_9.png
        :width: 400
        :align: center
+
+
+Ручное заполнение
+~~~~~~~~~~~~~~~~~~
+
+Table form ожидает, что value в нем будет массивом recordRef. Данные по рекордам будут подтянуты автоматически.
+
+Таким образом, можем в async data получить какие-то данные, например, через recordsQuery, а в table form (вкладка Данные -> Вычисляемые значения) преобразовать их в массив recordRef и назначить в value:
+
+.. code-block:: javascript
+
+       const uncompletedIssues = _.get(data, 'uncompletedIssues.records') || [];
+       const issueIds = uncompletedIssues.map(issue => issue.id);
+
+       value = issueIds;
 
 Как получить доступ к родительской форме?
 ------------------------------------------
