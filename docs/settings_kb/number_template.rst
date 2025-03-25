@@ -129,3 +129,32 @@ Number counter
 .. image:: _static/number_template/Display_name_4.png
        :width: 600
        :align: center
+
+
+Изменение текущего значения счетчика
+------------------------------------
+
+Для изменения текущего значения счетчика необходимо выполнить mutate запрос.
+
+Template:
+
+.. code-block:: yaml
+
+       ---
+       id: ept-issue-num-template
+       name: ept-issue-num-template
+       counterKey: '${link-project:project?id}'
+
+Изменение счетчика:
+
+.. code-block:: javascript
+
+       const record = Records.get("emodel/num-template-action@");
+       record.att("type", "set-next-number");
+       record.att("args",
+       {
+              "templateRef": "emodel/num-template@ept-issue-num-template",
+              "counterKey": "emodel/ept-project@3059e6bc-1915-4afc-a36e-39effb8a04d9", // 
+              "nextNumber": 113
+       })
+       record.save();
