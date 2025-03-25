@@ -1,7 +1,7 @@
 .. _form_examples:
 
-Примеры компонент
-=================
+Примеры компонент. How to
+==========================
 
 .. contents::
      :depth: 3
@@ -379,8 +379,109 @@ How to
   - **VIEW** - форма просмотра;
   - **EDIT** -  форма редактирования
 
+Обработка результатов формы по элементам чекбокс, выпадающим спискам / submit для выпадающих списков checkbox
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Для того чтобы при выборе элемента в выпадающем списке или при клике на чекбокс происходил сабмит формы можно на submit кнопке во вкладке **"Данные"**:
+
+1. В поле **"Обновлять при"** добавить зависимость от компонентов на форме, изменение которых нам интересно.
+2. В поле **"Вычисляемые значения"** добавить логику для срабатывания авто-сабмита:
+
+.. code-block::
+
+      if (data.selectWithSubmit || data.submitOnCheckBox) {
+      instance.root.submit();
+      }
+
+где
+
+      - **data** - данные формы;
+      - **selectWithSubmit** и **submitOnCheckbox** - ключи компонентов на форме;
+      - **instance** - текущий компонент (кнопка);
+      - **instance.root** - текущая форма, в которой добавлена кнопка.
+
+Пример конфигурации:
+
+.. image:: _static/form_examples/submit-on-select.png
+       :width: 400
+       :align: center
+
+:download:`json с данными формы <../files/submit-on-select-example.json>` 
+
+Как загрузить на форму изображение с внешнего файлового хранилища?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Для автозаполнения полей на форме можно добавить кнопку и настроить **"Действия"** = **Custom**. При этом выборе внизу появляется поле для ввода произвольного javascript кода. В это поле можно загрузить нужные данные и проставить их на форму следующим образом:
+
+.. code-block::
+
+      const submission = instance.root.submission;
+      instance.root.submission = {
+      ...submission,
+      data: {
+      ...(submission.data),
+      // Заполняем поле с файлом
+      uploadField: contentData,
+      // Заполняем текстовое поле
+      textField: 'Размер файла: ' + contentData[0].size
+      }
+      };
+
+где
+
+      - **instance** - текущий компонент (кнопка);
+      - **instance.root** - форма, в которой находится наша кнопка;
+      - **instance.root.submission** - данные формы.
+
+С простыми текстовыми/числовыми/булевыми полями в **data** можно просто положить требуемое значение. Для полей с контентом нужно предварительно загрузить контент на сервер как временный файл.
+
+.. code-block::
+
+      const formData = new FormData();
+      
+      formData.append('file', file);
+      formData.append('ecosType', 'temp-file');
+      formData.append('mimeType', file.type);
+      formData.append('name', file.name);
+      
+      return ecosFetch('/gateway/emodel/api/ecos/webapp/content', {
+      method: 'POST',
+      body: formData
+      }).then(r => r.json()).then(data => data.entityRef);
+
+где
+
+- **file** - инстанс File - https://developer.mozilla.org/en-US/docs/Web/API/File
+
+В результате этого запроса получим **RecordRef** временного файла.
+
+Затем нужно из временного файла получить **json описание**, которое нужно для компонента на форме:
+
+.. code-block::
+
+      Records.get(tempFile).load('_as.content-data[]?json').then(it => it.map(element => {
+      element.data = { 'entityRef': element.recordRef };
+      }));
+
+Полученные данные можно проставить на форму, как показано в первом скрипте.
+
+Пример конфигурации:
+
+.. image:: _static/form_examples/download-and-fill.png
+       :width: 500
+       :align: center
+
+Пример типа и формы:
+
+:download:`yaml с данными типа <../files/example-with-download-and-fill-form-data-type.yml>` 
+
+:download:`json с данными формы <../files/example-with-download-and-fill-form-data.json>` 
 
 
+Можно загрузить эти артефакты, открыть журнал http://localhost/v2/journals?journalId=type$example-with-download-and-fill-form-data-type , создать новую сущность и нажать на форме кнопку **Download**.
 
 
+Дизайн на формах в задачах. Кастомные/стандартные формы. Как обеспечить подсветку/выделение текста по флагу?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+TBD
