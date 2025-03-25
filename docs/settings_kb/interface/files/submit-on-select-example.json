@@ -1,0 +1,154 @@
+{
+  "id": "submit-on-select-example",
+  "formKey": "",
+  "title": {
+    "en": "submit-on-select-example"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "",
+  "width": "m",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Select With Submit"
+        },
+        "key": "selectWithSubmit",
+        "validate": {
+          "select": false
+        },
+        "dataSrc": "values",
+        "data": {
+          "values": [
+            {
+              "label": {
+                "ru": "First"
+              },
+              "value": "first"
+            },
+            {
+              "label": {
+                "ru": "Second"
+              },
+              "value": "second"
+            },
+            {
+              "label": {
+                "ru": "Third"
+              },
+              "value": "third"
+            }
+          ],
+          "headers": [
+            {}
+          ]
+        },
+        "defaultValue": "",
+        "optionalWhenDisabled": false,
+        "type": "ecosSelect",
+        "input": true,
+        "reorder": false,
+        "reference": false
+      },
+      {
+        "label": {
+          "ru": "Submit on checkbox"
+        },
+        "key": "submitOnCheckBox",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "checkbox",
+        "input": true,
+        "reorder": false,
+        "dataGridLabel": false
+      },
+      {
+        "type": "columns",
+        "key": "buttons-columns",
+        "columns": [
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 0,
+            "components": [],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 1,
+            "key": "column",
+            "components": []
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 2,
+            "components": [
+              {
+                "type": "button",
+                "key": "cancel",
+                "label": {
+                  "ru": "Отменить",
+                  "en": "Cancel"
+                },
+                "action": "event",
+                "event": "cancel",
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Сохранить",
+                  "en": "Save"
+                },
+                "key": "submit",
+                "state": "",
+                "hidden": true,
+                "theme": "primary",
+                "block": true,
+                "refreshOn": [
+                  "selectWithSubmit",
+                  "submitOnCheckBox"
+                ],
+                "calculateValue": "if (data.selectWithSubmit || data.submitOnCheckBox) {\n  instance.root.submit();\n}",
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true,
+                "showValidations": false,
+                "event": "",
+                "custom": "",
+                "url": "",
+                "headers": [
+                  {}
+                ],
+                "reorder": false,
+                "dataGridLabel": false
+              }
+            ],
+            "key": "column"
+          }
+        ],
+        "input": false
+      }
+    ],
+    "formId": "submit-on-select-example"
+  },
+  "attributes": {},
+  "notExists": false
+}
