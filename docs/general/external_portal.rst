@@ -16,6 +16,50 @@
     :width: 600
     :align: center
 
+Пример найстройки в **values.yaml** для стенда:
+
+.. code-block:: yaml
+
+    # Настройка tls для rabbitmq
+    RabbitmqApp:
+    tls:
+        enabled: true # по умолчанию открывается порт 5671. Чтобы tls заработал нужно чтобы на стенде был ecos-tls-secret
+    
+    # Дефолтные настройки из чарта
+    tls:
+        enabled: false
+        trustedCa:
+        secretName: ecos-tls-secret
+        keyName: trusted-ca
+        keySecret:
+        secretName: ecos-tls-secret
+        keyName: rabbitmq-app-tls
+        port: 5671
+        verifyPeer: verify_peer
+        failIfNoPeerCert: true
+
+Настройка подключения к внешнему RMQ:
+
+.. code-block::
+
+    EcosIntegrationsApp:
+    cloudConfig:
+        ecos:
+        webapp:
+            dataSources:
+            sd-main-instance-rmq: #это id датасорса. На него ссылается ext-portal конфиг внутри системы
+                name: Основной инстанс SD # это имя видно на форме ext-portal конфига
+                type: rabbitmq
+                host: host
+                port: 5671 # важно - для tls.enabled true/false разные порты
+                username: ******
+                password: ******
+                tls:
+                enabled: true # в идеале подключаться к внешнему RMQ через tls, но не обязательно
+                clientKey: application
+                trustedCerts: citeck-test-ca # этот CA зашит внутрь микросервиса. настройка пока не сделана
+                verifyHostname: false
+
 Настройки доступны в разделе **«Интеграции-Внешнего порталы»**.
 
 Журнал доступен по адресу: https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
