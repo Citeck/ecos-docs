@@ -78,6 +78,16 @@
 
   await Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
+  // Получения рабочих областей текущего пользователя:
+
+  await Records.query({
+      sourceId: 'emodel/workspace',
+      language: 'user-workspaces'
+  }, {
+      'wsId': '?localId',
+      'wsName': '?disp!?localId'
+  })
+
 CRUD операции
 ---------------
 

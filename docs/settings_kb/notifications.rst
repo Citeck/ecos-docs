@@ -14,3 +14,4 @@
     notifications/notifications_commands
     notifications/senders
     notifications/mail_eds
+    notifications/test_mail

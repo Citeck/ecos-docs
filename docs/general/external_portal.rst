@@ -16,6 +16,50 @@
     :width: 600
     :align: center
 
+Пример найстройки в **values.yaml** для стенда:
+
+.. code-block:: yaml
+
+    # Настройка tls для rabbitmq
+    RabbitmqApp:
+    tls:
+        enabled: true # по умолчанию открывается порт 5671. Чтобы tls заработал нужно чтобы на стенде был ecos-tls-secret
+    
+    # Дефолтные настройки из чарта
+    tls:
+        enabled: false
+        trustedCa:
+        secretName: ecos-tls-secret
+        keyName: trusted-ca
+        keySecret:
+        secretName: ecos-tls-secret
+        keyName: rabbitmq-app-tls
+        port: 5671
+        verifyPeer: verify_peer
+        failIfNoPeerCert: true
+
+Настройка подключения к внешнему RMQ:
+
+.. code-block::
+
+    EcosIntegrationsApp:
+    cloudConfig:
+        ecos:
+        webapp:
+            dataSources:
+            sd-main-instance-rmq: #это id датасорса. На него ссылается ext-portal конфиг внутри системы
+                name: Основной инстанс SD # это имя видно на форме ext-portal конфига
+                type: rabbitmq
+                host: host
+                port: 5671 # важно - для tls.enabled true/false разные порты
+                username: ******
+                password: ******
+                tls:
+                enabled: true # в идеале подключаться к внешнему RMQ через tls, но не обязательно
+                clientKey: application
+                trustedCerts: citeck-test-ca # этот CA зашит внутрь микросервиса. настройка пока не сделана
+                verifyHostname: false
+
 Настройки доступны в разделе **«Интеграции-Внешнего порталы»**.
 
 Журнал доступен по адресу: https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
@@ -49,6 +93,41 @@
 
 * **Очередь**. Из какой очереди выбранного источника импортировать.
 
+Пример:
+
+.. code-block:: yaml
+
+    ---
+    id: sd-portal-main-sync
+    name:
+    ru: SD портал
+    en: SD portal
+    exportConfig:
+    endpoint:
+        type: rabbitmq
+        config:
+        queue: export-from-main-sd-portal 
+        dataSource: main-rabbitmq
+    typesToSync:
+        - typeRef: emodel/type@sd-request-type
+        initDate: null
+        syncDeletions: false
+        queryPredicate: '{}'
+        filterPredicate: '{}' 
+        attributesToSync:
+            - _status
+            - author
+            - deadline
+            - title
+            - description
+        iterationStrategy: CREATED_MODIFIED
+    importConfig:
+    endpoint:
+        type: rabbitmq
+        config:
+        queue: export-from-external-sd-portal 
+        dataSource: sd-ext-instance-rmq
+
 Конфигурация экспорта 
 -----------------------
 
@@ -58,6 +137,39 @@
 
 * **Очередь для экспорта**. Настроен по умолчанию на RabbitMQ текущего стенда. Выбора не предполагается.
 * **Дата начала синхронизации по умолчанию**. Заявки и комментарии, которые были созданы до указанной даты, не будут обрабатываться.
+
+Пример:
+
+.. code-block:: yaml
+
+    id: sd-portal-ext-sync
+    exportConfig:
+    endpoint:
+        type: rabbitmq
+        config:
+        queue: export-from-external-sd-portal 
+        dataSource: main-rabbitmq
+    typesToSync:
+        - typeRef: emodel/type@sd-request-type 
+        initDate: null
+        syncDeletions: false
+        queryPredicate: |-
+            {
+            "t": "empty",
+            "a": "ext-portal-sync: importSyncId"
+            }
+        filterPredicate:
+        attributesToSync:
+            - author
+            - title
+            - description
+            - deadline
+    importConfig:
+    endpoint:
+        type: rabbitmq
+        config:
+        queue: export-from-main-sd-portal 
+        dataSource: export-from-main-sd-portal 
 
 Типы и атрибуты для экспорта
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
