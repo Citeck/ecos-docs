@@ -503,7 +503,7 @@ LinkFormatter / Ссылка
 NumberFormatter / Число
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Тип: ``Number``
+Тип: ``number``
 
 Конфигурация:
 
