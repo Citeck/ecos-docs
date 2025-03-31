@@ -55,6 +55,24 @@ Async data
 
 Если ссылки на сущности уже есть, то необходимо использовать другой режим. 
 
+      .. note:: 
+
+            Для запроса вместо sourceId лучше указывать ID типа:
+
+            .. code-block:: javascript
+
+                  await Records.query({
+                  ecosType: 'typeId',
+                  language: 'predicate',
+                  query: {}
+                  });
+
+            Чтобы узнать значение sourceId можно выполнить следующий скрипт:
+
+            .. code-block:: javascript
+
+                  await Records.get('emodel/type@typeId').load('sourceId');
+
 Пример использования query:
 
 .. code-block:: javascript
@@ -291,7 +309,7 @@ Async data
 
 Можно получить внутри самой формы через системное поле:
 
-.. code-block::
+.. code-block:: javascript
 
       instance.options.actionRecord
 
@@ -301,7 +319,7 @@ Async data
 
 Например, для поиска дочерних документов от данной карточки, используя следующий **Record Query**:
 
-.. code-block::
+.. code-block:: javascript
 
       var parentRef = instance.options.actionRecord;
 
@@ -328,6 +346,39 @@ Async data
 .. image:: _static/async_data/async_data_12.png
       :width: 400
       :align: center
+
+Добавление логики проверки на кнопку submit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Синхронного варианта функции query нет, но можно добавить логику проверки на кнопку submit и блокировать сохранение формы если проверка не прошла. 
+Для этого на кнопке **"Сохранить"** во вкладке **"Базовые"** необходимо выставить **Действия: Custom**:
+
+.. image:: _static/async_data/async_data_16.png
+      :width: 400
+      :align: center
+
+и в появившемся поле ввести такой скрипт:
+
+.. code-block:: javascript
+
+      if (instance.options.formMode !== 'CREATE') {
+      instance.root.submit();
+      } else {
+      Records.query({
+      ecosType: 'typeId',
+      query: {t: 'eq', a: 'inn', v: data.inn },
+      language: 'predicate'
+      }).then(queryRes => {
+      if (queryRes.records.length > 0) {
+            utils.getComponent(instance.root.components, 'inn').setCustomValidity("Контрагент с таким inn уже существует");
+      } else {
+            instance.root.submit();
+      }
+      }).catch(e => {
+      console.error('Error occured', e);
+      instance.root.showErrors("Ошибка создания. Попробуйте еще раз или свяжитесь с системным администратором");
+      });
+      }
 
 Дополнительные примеры
 ~~~~~~~~~~~~~~~~~~~~~~~~
