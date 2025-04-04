@@ -187,15 +187,15 @@ Citeck артефакты
       * - model/working-schedule
         - ecos-model
         - Рабочее расписание
-      * - model/workspace-member
-        - ecos-model
-        - Участник рабочего пространства
-      * - model/workspace-template
-        - ecos-model
-        - Шаблон рабочего пространства
       * - model/workspace
         - ecos-model
         - Рабочее пространство
+      * - model/workspace-template
+        - ecos-model
+        - Шаблон рабочего пространства
+      * - model/workspace-member
+        - ecos-model
+        - Участник рабочего пространства
       * - 
         - 
         - 
