@@ -13,3 +13,4 @@
     functions/actions  
     functions/work_calendar
     functions/data_import
+    functions/wysiwyg_editor
