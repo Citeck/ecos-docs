@@ -12,3 +12,5 @@
     functions/version_comparison
     functions/actions  
     functions/work_calendar
+    functions/data_import
+    functions/wysiwyg_editor

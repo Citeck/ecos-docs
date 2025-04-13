@@ -1,4 +1,4 @@
-Чтение из RabbitMQ -> роутинг по jsonPath -> переотправка в ECOS Event + Dead Letter Queue
+Чтение из RabbitMQ -> роутинг по jsonPath -> переотправка в Citeck Event + Dead Letter Queue
 =============================================================================================
 
 .. code-block:: yaml

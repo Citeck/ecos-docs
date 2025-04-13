@@ -31,6 +31,17 @@ ECOS Секреты
 
             username: String
             password: String
+      * - TOKEN
+        -            
+          .. code-block::
+
+            token: String
+      * - CERTIFICATE
+        -            
+          .. code-block::
+
+            privateKey: String
+            certificate: String
 
 Пример конфигурации:
 
