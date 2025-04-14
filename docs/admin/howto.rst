@@ -1,7 +1,7 @@
 How To
 =======
 
-Изменить http://ecos-community-demo на http://mydomain.ru
+Изменить http://localhost на http://mydomain.ru
 -----------------------------------------------------------
 
 С чистой БД
@@ -13,7 +13,7 @@ How To
 
 .. code-block::
 
- KEYCLOAK_FRONTEND_URL=http://ecos-community-demo/ecos-idp/auth 
+ KEYCLOAK_FRONTEND_URL=http://localhost/ecos-idp/auth 
 
 на 
 
@@ -25,7 +25,7 @@ How To
 
 .. code-block::
 
-    EIS_ID=ecos-community-demo на EIS_ID=mydomain.ru + REDIRECT_LOGOUT_URI=http://ecos-community-demo 
+    EIS_ID=ecos-community-demo на EIS_ID=mydomain.ru + REDIRECT_LOGOUT_URI=http://localhost 
 
 на 
 
@@ -40,7 +40,7 @@ How To
 .. code-block::
 
     "redirectUris": [
-        "http://ecos-community-demo*"
+        "http://localhost*"
     ],
 
 на
@@ -58,7 +58,7 @@ How To
 .. code-block::
 
     "redirectUris": [
-        "http://ecos-community-demo*"
+        "http://localhost*"
     ],
 
 на
@@ -82,7 +82,7 @@ How To
 2. Открыть реалм **ecos-app**.
 3. Открыть раздел **clients**.
 4. Открыть **ecos-proxy-app**.
-5. Изменить в поле **Valid Redirect URIs** значение http://ecos-community-demo на http://mydomain.ru
+5. Изменить в поле **Valid Redirect URIs** значение http://localhost на http://mydomain.ru
 6. Сохранить.
 
 
