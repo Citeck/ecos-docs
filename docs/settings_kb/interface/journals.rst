@@ -19,5 +19,6 @@
     journals/editors
     journals/kanban_board
     journals/document_library
+    journals/news
 
 
