@@ -20,12 +20,12 @@ Citeck приложения
 Работа с приложениями 
 -----------------------
 
-Работа с приложениями осуществляется в журнале **«Раздел администратора - Управление системой - Приложения ECOS»**:
+Работа с приложениями осуществляется в журнале **"Приложения ECOS" (Рабочее пространство "Раздел администратора" - Управление системой)** :
 
 Журнал доступен по адресу: ``v2/admin?journalId=ecos-apps&type=JOURNAL``
 
 .. image:: _static/apps/apps_page.png
-       :width: 600       
+       :width: 700       
        :align: center
 
 На этой странице можно:
@@ -41,7 +41,7 @@ Citeck приложения
 1. Создать приложение по кнопке **+**.
 
 .. image:: _static/apps/new_app.png
-       :width: 600       
+       :width: 700       
        :align: center
        :alt: Создать приложение
 
@@ -50,14 +50,14 @@ Citeck приложения
 2. Скачать приложение.
 
 .. image:: _static/apps/apps_page_1.png
-       :width: 600       
+       :width: 700       
        :align: center
        :alt: Скачать приложение
 
 3. Загрузить приложение на необходимом стенде.
 
 .. image:: _static/apps/apps_page_2.png
-       :width: 600       
+       :width: 700       
        :align: center
        :alt: Загрузить приложение
 
@@ -171,8 +171,8 @@ Citeck приложения
 
 через журнал приложений, который доступен по ссылке ``/v2/admin?journalId=ecos-apps&type=JOURNAL``
 
-.. image:: _static/apps/zip_arch_upload.png
-       :width: 600       
+.. image:: _static/apps/apps_page_2.png
+       :width: 700       
        :align: center
 
 Автоматический деплой

@@ -61,6 +61,18 @@ WYSIWYG-редактор (произносится как «ви-зи-виг») 
         - | Вставить объект.
           | Изображение можно вставить как из файла, так и из ссылки.
 
+            .. image:: _static/wysiwyg/pic_01.png
+                 :width: 200
+                 :align: center   
+
+            .. image:: _static/wysiwyg/pic_02.png
+                 :width: 200
+                 :align: center   
+
+            .. image:: _static/wysiwyg/pic_03.png
+                 :width: 200
+                 :align: center   
+
       * - | 
 
             .. image:: _static/wysiwyg/upload.png
@@ -68,6 +80,18 @@ WYSIWYG-редактор (произносится как «ви-зи-виг») 
                  :align: center  
 
         - | Загрузить файл
+
+            .. image:: _static/wysiwyg/upload_file.png
+                 :width: 400
+                 :align: center   
+
+      * - | Упомянуть пользователя
+
+        - | 
+
+            .. image:: _static/wysiwyg/mention_01.png
+                 :width: 200
+                 :align: center   
 
 
 Пример работы с редактором:
