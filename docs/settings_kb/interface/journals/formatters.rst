@@ -461,7 +461,7 @@ LinkFormatter / Ссылка
 В конфигурации указать: 
 
 - **ключ (6)** – ``value``, 
-- **значение (7)** - ``https://host.ecos24.ru/${?id}&${?disp}``
+- **значение (7)** - ``https://host/${?id}&${?disp}``
 
 .. image:: _static/formatter/link_formatter_2.png
        :width: 500
