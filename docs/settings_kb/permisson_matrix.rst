@@ -19,10 +19,6 @@
 
 Для матрицы доступны действия **(2)**:
 
-.. image:: _static/matrix/matrix_03.png
-    :width: 500
-    :align: center
-
 - редактирование через json:
 
 .. image:: _static/matrix/matrix_04.png
@@ -30,5 +26,4 @@
     :align: center
 
 - скачивание;
-
 - удаление.
