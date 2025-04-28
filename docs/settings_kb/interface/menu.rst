@@ -82,7 +82,7 @@
 - Через шапку сайта иконка "Шестеренка" > :guilabel:`Настроить меню`.
 
 .. image:: _static/menu/Menu_configuration.png
-       :width: 300
+       :width: 400
        :align: center
 
 |
