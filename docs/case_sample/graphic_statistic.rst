@@ -29,7 +29,7 @@
 :ref:`Виджеты<widgets>` можно добавить на отдельный :ref:`дашборд<dashboard>`. Для этого перейдите в настройки :ref:`меню<menu>`: 
 
  .. image:: _static/g_stat/02.png
-       :width: 400
+       :width: 500
        :align: center
 
 Добавьте новый **раздел**:

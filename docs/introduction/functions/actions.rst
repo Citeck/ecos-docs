@@ -7,7 +7,7 @@
    :depth: 2
 
 .. image:: _static/actions/actions.png
-       :width: 300
+       :width: 250
        :align: center 
 
 Редактировать свойства
