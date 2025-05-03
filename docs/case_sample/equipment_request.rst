@@ -220,7 +220,7 @@
 Перейдите в :ref:`созданное рабочее пространство<demo_ws>`: 
 
   .. image:: _static/equipment_request/ws.png
-       :width: 600
+       :width: 700
        :align: center
 
 Для просмотра журнала необходимо его добавить в левое меню:
