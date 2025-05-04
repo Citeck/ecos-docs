@@ -1497,15 +1497,25 @@ TBD
 Виджет показывает анонсы последних 3 новостей из раздела **«Новости»**:
 
  .. image:: _static/widgets/news_01.png
-       :width: 600
+       :width: 500
        :align: center 
-
-По клику на **Перейти** можно перейти в раздел **"Новости"**.
 
 По клику на карточку новость будет доступна подробно: 
 
  .. image:: _static/widgets/news_02.png
+       :width: 500
+       :align: center 
+
+По клику на **Перейти** можно перейти в раздел **"Новости"**:
+
+ .. image:: _static/widgets/news_04.png
        :width: 600
+       :align: center 
+
+Для выбора источника новостей нажмите **шестеренку**, выберите тип данных и сохраните:
+
+ .. image:: _static/widgets/news_03.png
+       :width: 500
        :align: center 
 
 .. _widget_knowledge_base:
