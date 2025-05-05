@@ -82,6 +82,14 @@
         - | :ref:`CRM<ecos-crm>`
           | :ref:`Поручения<ecos-assignments>`
 
+      * - **Справочники**
+
+            .. image:: _static/datalist_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Справочники<datalists>`
+
       * - **Корпоративный портал**
 
             .. image:: _static/corp_space.png
@@ -100,6 +108,8 @@
         - | :ref:`Project tracker<ecos_ept>`
           | :ref:`Релизы<ecos-releases>`
           | :ref:`Учет времени<ecos-worklog>`
+
+
 
 Установите ECOS Community любым из описанных ниже способов: 
 
