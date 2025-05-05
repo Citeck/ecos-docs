@@ -27,6 +27,79 @@
     ecos_modules/portal_sd   
     ecos_modules/releases
 
+.. list-table:: 
+      :widths: 10 10
+      :header-rows: 1
+
+      * - Рабочее пространство
+        - Модули
+
+      * - **Делопроизводство**
+
+            .. image:: _static/paperwork_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Внутренние документы<ecos-order-ORD>`
+          | :ref:`Входящие документы<ecos-indoc>`
+          | :ref:`Исходящие документы<ecos-outdoc>`
+          | :ref:`Совещания<ecos-meetings>`
+          | :ref:`Поручения<ecos-assignments>`
+
+      * - **Договоры**
+
+            .. image:: _static/contracts_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Договоры<ecos-contract>`
+          | :ref:`Поручения<ecos-assignments>`
+
+      * - **Service desk**
+
+            .. image:: _static/sd_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Service desk<ecos-service-desk>`
+          | :ref:`Учет времени<ecos-worklog>`
+
+      * - **Рекрутинг**
+
+            .. image:: _static/hr_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Офферы<ecos-offer>`
+          | :ref:`Поручения<ecos-assignments>`
+
+      * - **CRM**
+
+            .. image:: _static/crm_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`CRM<ecos-crm>`
+          | :ref:`Поручения<ecos-assignments>`
+
+      * - **Корпоративный портал**
+
+            .. image:: _static/corp_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Заявления на отпуск<ecos-vacation>`
+          | :ref:`Пропуска<ecos-order-pass>`
+
+      * - **Рабочее пространство проекта**
+
+            .. image:: _static/project_space.png
+                :width: 700
+                :align: center
+
+        - | :ref:`Project tracker<ecos_ept>`
+          | :ref:`Релизы<ecos-releases>`
+          | :ref:`Учет времени<ecos-worklog>`
 
 Установите ECOS Community любым из описанных ниже способов: 
 
