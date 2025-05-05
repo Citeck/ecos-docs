@@ -87,6 +87,21 @@
               :width: 30
               :align: center 
 
+      * - :ref:`Доверенности <ecos-poa>`
+        - Автоматизация процесса выдачи бумажных доверенностей.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+
       * - :ref:`CRM<ecos-crm>`
         - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании
         - |
@@ -171,7 +186,7 @@
               :width: 30
               :align: center 
 
-      * - :ref:`Журнал работ<ecos-worklog>`
+      * - :ref:`Учет времени<ecos-worklog>`
         - Учет времени, затраченного сотрудником на работу по конкретной задаче, документу непосредственно из карточки задачи, документа.
         - |
 
@@ -213,6 +228,19 @@
               :width: 30
               :align: center 
 
+      * - :ref:`Project tracker<ecos_ept>`
+        - Инструмент для управления проектами, организации рабочих процессов команд, мониторинга задач.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
 
 Микросервисы
 -------------
