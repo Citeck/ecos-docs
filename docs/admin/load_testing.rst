@@ -491,7 +491,7 @@ PostgresSQL
     :width: 600
     :align: center
  
-Нагрузка сервисов в пике
+Нагрузка сервисов в пике:
 
     1.	Model – 1,5 CPU (700 Mb RAM)
     2.	Postgresql – 1 CPU (1.7 Gb RAM)
