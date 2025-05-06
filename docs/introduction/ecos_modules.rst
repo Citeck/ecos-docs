@@ -5,27 +5,7 @@
 
 .. note:: 
 
-    Начиная с релиза 2025.1 модули распределены по рабочим пространствам
-
-.. toctree::
-    :maxdepth: 1
-
-    ecos_modules/ORD
-    ecos_modules/tasks
-    ecos_modules/contract
-    ecos_modules/InDoc
-    ecos_modules/OutDoc
-    ecos_modules/crm
-    ecos_modules/service_desk
-    ecos_modules/meeting
-    ecos_modules/offer
-    ecos_modules/order_pass
-    ecos_modules/poa
-    ecos_modules/vacation   
-    ecos_modules/ept
-    ecos_modules/worklog
-    ecos_modules/portal_sd   
-    ecos_modules/releases
+    С релиза 2025.1 функциональные модули распределены по :ref:`рабочим пространствам<workspaces>`.
 
 .. list-table:: 
       :widths: 10 10
@@ -109,8 +89,6 @@
           | :ref:`Релизы<ecos-releases>`
           | :ref:`Учет времени<ecos-worklog>`
 
-
-
 Установите ECOS Community любым из описанных ниже способов: 
 
     * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
@@ -156,4 +134,22 @@
 
 Пароль для всех пользователей: **123**
 
+.. toctree::
+    :maxdepth: 1
 
+    ecos_modules/ORD
+    ecos_modules/tasks
+    ecos_modules/contract
+    ecos_modules/InDoc
+    ecos_modules/OutDoc
+    ecos_modules/crm
+    ecos_modules/service_desk
+    ecos_modules/meeting
+    ecos_modules/offer
+    ecos_modules/order_pass
+    ecos_modules/poa
+    ecos_modules/vacation   
+    ecos_modules/ept
+    ecos_modules/worklog
+    ecos_modules/portal_sd   
+    ecos_modules/releases
