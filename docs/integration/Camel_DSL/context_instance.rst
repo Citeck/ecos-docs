@@ -8,7 +8,7 @@
 Журнал доступен по адресу: ``v2/admin?journalId=ecos-camel-dsl-instance-journal&type=JOURNAL``
 
 .. image:: _static/instances/instance_01.png
-       :width: 600
+       :width: 700
        :align: center    
 
 Подробная информация об инстансе:

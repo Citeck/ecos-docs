@@ -14,7 +14,7 @@
 
 Пример подходит для простых случаев, когда данные для импорта не содержат ассоциаций, не требуется маппинг и для вас подходит упрощенный формат файла. 
 
-1. В **Разделе Администратора → Интеграция → Camel DSL** нажмите **"+"** :
+1. В **Рабочее пространство "Раздел администратора"→ Интеграция → Camel DSL** нажмите **"+"** :
 
 2. В форме заполните поля:
 
@@ -101,7 +101,7 @@
 **Позиция** (справочный тип, является ассоциацией в типе Работник):
 
 .. image:: _static/examples/XLS_import_02.png
-       :width: 700
+       :width: 600
        :align: center   
 
 Необходимо импортировать следующие данные из Excel-файла (xlsx):
@@ -185,10 +185,10 @@
 Конфиги Camel DSL
 ~~~~~~~~~~~~~~~~~~
 
-В **Разделе Администратора → Интеграция → Camel DSL** были написаны 2 Camel DSL конфига:
+В **Рабочее пространство "Раздел администратора" → Интеграция → Camel DSL** были написаны 2 Camel DSL конфига:
 
 .. image:: _static/examples/bitrix_01.png
-       :width: 700
+       :width: 800
        :align: center 
 
 **bitrix24-crm-in-sync** - Входящая интеграция. Из Bitrix24 в Citeck CRM.
@@ -266,10 +266,10 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
 1.2 В **События** необходимо указать **Создание сделки (ONCRMDEALADD)**, **Обновление сделки (ONCRMDEALUPDATE)**
 
 .. image:: _static/examples/bitrix_02.png
-       :width: 700
+       :width: 600
        :align: center 
 
-1.3 В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-webhook-token** указать **Токен приложения**.
+1.3 В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Секреты** в **bitrix24-webhook-token** указать **Токен приложения**.
 
 .. image:: _static/examples/bitrix_03.png
        :width: 500
@@ -280,29 +280,29 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
 2.1 Указать Настройку прав **crm** и **user**
 
 .. image:: _static/examples/bitrix_04.png
-       :width: 700
+       :width: 600
        :align: center 
 
-2.2 В Citeck перейти в **Раздел Администратора → Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL** Входящего вебхука Bitrix24 вида https://XXXX.bitrix24.ru/rest/
+2.2 В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL** Входящего вебхука Bitrix24 вида https://XXXX.bitrix24.ru/rest/
 
 .. image:: _static/examples/bitrix_05.png
        :width: 500
        :align: center 
 
-2.3 В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-rest-credentials** указать **Имя пользователя** и **Пароль**
+2.3 В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Секреты** в **bitrix24-rest-credentials** указать **Имя пользователя** и **Пароль**
 (значения из URL Входящего вебхука Bitrix24 **..../rest/{имя пользователя}/{пароль})**
 
 .. image:: _static/examples/bitrix_06.png
        :width: 500
        :align: center 
 
-3. В Citeck перейти в **Раздел Администратора → Модель → Конечные точки** в **bitrix24-rabbitmq-endpoint** указать **URL** до Rabbitmq по AMQP:
+3. В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Конечные точки** в **bitrix24-rabbitmq-endpoint** указать **URL** до Rabbitmq по AMQP:
 
 .. image:: _static/examples/bitrix_07.png
        :width: 500
        :align: center 
 
-4. В Citeck перейти в **Раздел Администратора → Модель → Секреты** в **bitrix24-rabbitmq-credentials** указать **Имя пользователя** и **Пароль** для аутентификации в rabbitmq. Пользователь должен быть с правами администратора.
+4. В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Секреты** в **bitrix24-rabbitmq-credentials** указать **Имя пользователя** и **Пароль** для аутентификации в rabbitmq. Пользователь должен быть с правами администратора.
 
 .. image:: _static/examples/bitrix_08.png
        :width: 500
@@ -325,7 +325,7 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
 
 Для настройки кастомного Импорта данных необходимо выполнить следующие шаги:
 
-**1)**	В **Разделе Администратора → Интеграция → Camel DSL** создать Camel DSL и описать в нем процесс обработки файла.
+**1)**	В **Рабочее пространство "Раздел администратора" → Интеграция → Camel DSL** создать Camel DSL и описать в нем процесс обработки файла.
 
 **Тип запуска** необходимо выбрать **Импорт данных**. 
 
