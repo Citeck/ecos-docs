@@ -352,6 +352,7 @@ UI действие
     execForRecord: false
     execForRecords: true
 
+В результае выгрузки выдается сообщение:
 
 .. image:: _static/group_actions/02.png
     :width: 600

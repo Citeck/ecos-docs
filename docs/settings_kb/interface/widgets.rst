@@ -1529,7 +1529,7 @@ TBD
        :width: 250
        :align: center 
 
-При выборе раздела справа открывается сама публикация:
+При выборе раздела справа открывается сама :ref:`публикация<widget_publication>`:
 
  .. image:: _static/widgets/kb_04.png
        :width: 700
@@ -1563,3 +1563,10 @@ TBD
        :align: center 
 
 Редактирование контента производится с помощью :ref:`редактора<wysiwyg_editor>`.
+
+.. _widget_html:
+
+Виджет HTML
+-------------
+
+TBD

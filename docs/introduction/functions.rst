@@ -1,16 +1,20 @@
-Функциональности Citeck
-========================
+Описание отдельных функциональностей
+=======================================
 
 .. toctree::
     :maxdepth: 3
 
     
     functions/onlyoffice_edit
+    functions/delegation
+    functions/wysiwyg_editor
     functions/doc_templates
-    functions/barcode
-    functions/esign
     functions/version_comparison
     functions/actions  
     functions/work_calendar
     functions/data_import
-    functions/wysiwyg_editor
+    functions/barcode
+    functions/esign
+    
+
+    
