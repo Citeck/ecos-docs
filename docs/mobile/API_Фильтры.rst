@@ -43,7 +43,7 @@
 По приоритету
 -----------------
 
-список приоритетов src/model/enums/task-priority.ts TaskPriority
+список приоритетов ``src/model/enums/task-priority.ts TaskPriority``
 
 Применение фильтра
 -------------------
