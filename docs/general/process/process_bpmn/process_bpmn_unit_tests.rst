@@ -10,15 +10,15 @@ Unit тестирование BPMN процессов
 
 Для написания unit тестов используются библиотеки облегчающие тестирование bpmn:
 
-* https://github.com/camunda-community-hub/camunda-platform-scenario - написание unit тестов по стилю `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_
-* https://github.com/camunda/camunda-bpm-platform/tree/master/test-utils/assert - удобные bpmn ассерты для тестов
+    * https://github.com/camunda-community-hub/camunda-platform-scenario - написание unit тестов по стилю `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_
+    * https://github.com/camunda/camunda-bpm-platform/tree/master/test-utils/assert - удобные bpmn ассерты для тестов
 
-2. Тестирование ecos компонентов BPMN
--------------------------------------
+2. Тестирование Citeck компонентов BPMN
+----------------------------------------
 
-Тесты написанные для проверки ecos компонентов bpmn представляют собой небольшие процессы BPMN, которые реализуют варианты использования ecos компонентов, с дальнейшем запуском процесса и проверкой результатов. 
+Тесты написанные для проверки Citeck компонентов bpmn представляют собой небольшие процессы BPMN, которые реализуют варианты использования Citeck компонентов, с дальнейшем запуском процесса и проверкой результатов. 
 
-Тесты располагаются в микрсоервисе ecos-process по пути src/test/java/ru/citeck/ecos/process/domain/bpmn/elements и написаны в стиле `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_.
+Тесты располагаются в микрсоервисе ecos-process по пути ``src/test/java/ru/citeck/ecos/process/domain/bpmn/elements`` и написаны в стиле `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_.
 
 Предполгается покрытие тестами каждого компонента. На моммент написания статьи написано порядка 40 тестов.
 
@@ -58,4 +58,4 @@ Unit test:
     }
 
     
-Таким образом, проверяется, что при выполнении компонента userTask, была назначена задача на корректных пользователей и группы исходя из указанных ролей.
+Таким образом, проверяется, что при выполнении компонента **userTask**, была назначена задача на корректных пользователей и группы исходя из указанных ролей.

@@ -63,8 +63,8 @@
 5.	Измените значение поля **«Имя/Name»** на любое другое и заполните остальные поля.
 6.	После создания вы увидите информацию о созданной записи:
 
-    -	Статус будет **«Новый/New»**. Это определено в свойстве *defaultStatus* в конфигурации типа — *src/main/resources/eapps/artifacts/model/type/demo-type.yml*.
-    -	Виджеты задач будут отображать активную задачу для текущего пользователя. Процесс BPMN запущен, поскольку у нас есть определение процесса в *src/main/resources/eapps/artifacts/process/bpmn/demo-process.bpmn.xml* с флагами *ecos:enabled="true"* и *ecos:autoStartEnabled="true"*.
+    -	Статус будет **«Новый/New»**. Это определено в свойстве *defaultStatus* в конфигурации типа — ``src/main/resources/eapps/artifacts/model/type/demo-type.yml``
+    -	Виджеты задач будут отображать активную задачу для текущего пользователя. Процесс BPMN запущен, поскольку у нас есть определение процесса в ``src/main/resources/eapps/artifacts/process/bpmn/demo-process.bpmn.xml`` с флагами *ecos:enabled="true"* и *ecos:autoStartEnabled="true"*.
 
 7.	Нажмите кнопку **«Готово/Done»** в виджете текущей задачи.
 8.	Задача исчезнет и будет запущена внешняя задача — *ru.citeck.ecos.webapp.demo.exttask.DemoExternalTask*.
@@ -72,13 +72,13 @@
 10.	Вы можете нажать **«Отправить демо письмо/Send demo email»**, чтобы протестировать специальное действие для отправки электронного письма.
 
     -	Класс действия: *ru.citeck.ecos.webapp.demo.actions.SendDemoEmailAction*
-    -	Определение действия: *src/main/resources/eapps/artifacts/ui/action/send-demo-email-action.yml*
-    -	Шаблон электронного письма: *src/main/resources/eapps/artifacts/notification/template/demo-email.html.ftl.*
+    -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/send-demo-email-action.yml``
+    -	Шаблон электронного письма: ``src/main/resources/eapps/artifacts/notification/template/demo-email.html.ftl.``
     -	Письмо с результатом можно найти в mailhog (если вы не меняли настройки электронной почты по умолчанию) — http://localhost:8025/
 
 11.	После тестирования отправки письма вы можете нажать **«Создать дочернюю сущность/Create child entity»**, чтобы проверить возможность создания связанных объектов по действию.
 
-    -	Определение действия: *src/main/resources/eapps/artifacts/ui/action/create-child-entity-action.yml*
+    -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/create-child-entity-action.yml``
 
 
 Описание сущностей микросервиса
@@ -87,7 +87,7 @@
 Артефакты
 ~~~~~~~~~
 
-В папке **.../src/main/resources/eapps/artifacts** расположены артефакты проекта. Первые два уровня каталогов соответствуют типу артефакта. Например: 
+В папке ``.../src/main/resources/eapps/artifacts`` расположены артефакты проекта. Первые два уровня каталогов соответствуют типу артефакта. Например: 
 
 * app/artifact-patch
 * model/type
@@ -298,7 +298,7 @@
 
         :ref:`Действия<ui_actions>` - артефакты Citeck в формате json или yaml с типом ui/action. `Ссылка на Action в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/actions/SendDemoEmailAction.java>`_
 
-        Артефакты действий расположены в папке **…/src/main/resources/eapps/artifacts/ui/action**
+        Артефакты действий расположены в папке ``…/src/main/resources/eapps/artifacts/ui/action``
 
         .. code-block:: java
 
@@ -617,7 +617,7 @@
 
         Пример внешней задачи для демо BPMN процесса -  `ссылка в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/exttask/DemoExternalTask.java>`_
 
-        Артефакт бизнес-процесса расположен в папке **…/src/main/resources/eapps/artifacts/process/bpmn**
+        Артефакт бизнес-процесса расположен в папке ``…/src/main/resources/eapps/artifacts/process/bpmn``
 
         .. code-block:: java
 
