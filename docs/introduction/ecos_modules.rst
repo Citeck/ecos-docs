@@ -98,7 +98,7 @@
           | :ref:`Релизы<ecos-releases>`
           | :ref:`Учет времени<ecos-worklog>`
 
-Установите ECOS Community любым из описанных ниже способов: 
+Установите Citeck Community любым из описанных ниже способов: 
 
     * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
     * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
