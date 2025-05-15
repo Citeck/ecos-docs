@@ -44,7 +44,7 @@
 
 Cущность нужна для формирования списка дат, которые изменяют обычный распорядок рабочих дней.
 
-Журнал доступен по адресу: ``v2/admin?journalId=working-calendar&type=JOURNAL``
+Журнал **"Производственный календарь" (Рабочее пространство "Раздел администратора" - Модель)** доступен по адресу: ``v2/admin?journalId=working-calendar&type=JOURNAL``
 
 .. image:: _static/calendar/calendar_1.png
        :width: 700
@@ -118,7 +118,7 @@ Cущность нужна для формирования списка дат, 
 
 Определяет обычный распорядок рабочих дней.
 
-Журнал доступен по адресу: ``v2/admin?journalId=type$working-schedule&type=JOURNAL``
+Журнал **"Рабочее расписание" (Рабочее пространство "Раздел администратора" - Модель)** доступен по адресу: ``v2/admin?journalId=type$working-schedule&type=JOURNAL``
 
 .. image:: _static/calendar/calendar_3.png
        :width: 700

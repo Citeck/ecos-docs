@@ -23,4 +23,4 @@
     },
   }
 
-из полученных id формируется url ${server}/v2/dashboard?activeLayoutId= ``${activeTabId}`` &recordRef= ``${`people@${this.props.user.username}`}`` , котрый передается в WebView
+из полученных id формируется url ${server}/v2/dashboard?activeLayoutId= ``${activeTabId}`` &recordRef= ``${`people@${this.props.user.username}`}`` , который передается в WebView

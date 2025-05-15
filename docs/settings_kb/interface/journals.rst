@@ -19,5 +19,7 @@
     journals/editors
     journals/kanban_board
     journals/document_library
+    journals/publication
+    journals/wiki
 
 
