@@ -27,7 +27,9 @@
 Метод save с версии UI 2.8.1 может принимать атрибуты для загрузки. В этом случае на сервер вместе с атрибутами для изменения так же отправляются атрибуты для загрузки в поле attributes тела запроса.
 Если при вызове save указаны атрибуты для загрузки, то в результате будет тот же формат, что и при вызове метода load.
 
-Структура query::
+Структура query
+
+.. code-block:: javascript
 
   {
     "sourceId": String // идентификатор источника данных в формате "приложение/id_локального_источника_данных"
@@ -47,7 +49,9 @@
     "consistency": EVENTUAL | TRANSACTIONAL | DEFAULT | TRANSACTIONAL_IF_POSSIBLE // ожидаемая консистенция данных. EVENTUAL позволяет использовать индексы для поиска элементов
   }
 
-Примеры использования::
+Примеры использования
+
+.. code-block:: javascript
 
 
   // Запрос ФИО пользователя:
@@ -78,6 +82,22 @@
 
   await Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
+  // Получения рабочих областей текущего пользователя:
+
+  await Records.query({
+      sourceId: 'emodel/workspace',
+      language: 'user-workspaces'
+  }, {
+      'wsId': '?localId',
+      'wsName': '?disp!?localId'
+  })
+
+  // Узнать sourceId по typeId:
+
+  await Records.get('emodel/type@typeId').load('sourceId')
+
+
+
 CRUD операции
 ---------------
 
@@ -89,7 +109,7 @@ CRUD операции
 
    .. tab:: CREATE    
 
-    .. code-block::
+    .. code-block:: javascript
 
       const record = Records.get("emodel/someType@");
       record.att("name", "New record"); 
@@ -98,14 +118,14 @@ CRUD операции
 
    .. tab:: READ    
 
-    .. code-block::
+    .. code-block:: javascript
 
       const record = Records.getRecordToEdit("emodel/someType@id");
       await record.load("?json");
 
    .. tab:: UPDATE    
 
-    .. code-block::
+    .. code-block:: javascript
 
       const record = Records.getRecordToEdit("emodel/someType@id");
       record.att("someAttribute", "New value");
@@ -113,7 +133,7 @@ CRUD операции
 
    .. tab:: DELETE  
 
-    .. code-block::
+    .. code-block:: javascript
       
       Records.remove("emodel/someType@id1"); // 1 объект
       Records.remove(["emodel/someType@id1", "emodel/someType@id2"]); // массив объектов
@@ -137,7 +157,7 @@ CRUD операции
         - Поиск записей и/или получение атрибутов
         - 
 
-            .. code-block:: js
+            .. code-block:: javascript
 
               Records.query и Records.get("id_сущности").load(атрибуты_для_загрузки)
 
@@ -150,7 +170,7 @@ CRUD операции
         - Удаление сущностей 
         - 
 
-            .. code-block:: js
+            .. code-block:: javascript
 
               Records.remove
 
@@ -163,7 +183,7 @@ CRUD операции
         - Создание или изменение сущностей
         - 
 
-            .. code-block:: js
+            .. code-block:: javascript
 
               var rec = Records.get("id_сущности"); rec.att("атрибут", "значение"); rec.save() 
 

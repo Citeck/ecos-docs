@@ -1,5 +1,5 @@
-ECOS Секреты
-=============
+Секреты
+=========
 
 .. contents::
    :depth: 3
@@ -31,6 +31,17 @@ ECOS Секреты
 
             username: String
             password: String
+      * - TOKEN
+        -            
+          .. code-block::
+
+            token: String
+      * - CERTIFICATE
+        -            
+          .. code-block::
+
+            privateKey: String
+            certificate: String
 
 Пример конфигурации:
 
@@ -93,7 +104,7 @@ ECOS Секреты
 
 .. _ECOS_secrets:
 
-Настройки доступны в разделе **«Модель - Секреты»**.
+Настройки доступны в разделе **«Секреты» (Рабочее пространство "Раздел администратора" - Модель)**:
 
 .. image:: _static/secrets_01.png
     :width: 700

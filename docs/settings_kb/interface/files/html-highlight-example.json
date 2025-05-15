@@ -1,0 +1,164 @@
+{
+  "id": "html-highlight-example",
+  "formKey": "",
+  "title": {
+    "en": "html-highlight-example"
+  },
+  "width": "m",
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Panel"
+        },
+        "key": "panel2",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html",
+            "className": "custom-html-class-for-my-form",
+            "content": {
+              "en": "<h4>Здесь будет текст, <span class=\"text-to-select\">который мы заранее разметим</span>\nи можем написать здесь что угодно</h4>\n"
+            },
+            "refreshOnChange": true,
+            "optionalWhenDisabled": false,
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html-text-style",
+            "hidden": true,
+            "className": "",
+            "content": {
+              "ru": "Это html компонент со стилями для выделения текста. Он виден только в редакторе."
+            },
+            "refreshOnChange": false,
+            "refreshOn": [
+              "checkbox2"
+            ],
+            "optionalWhenDisabled": false,
+            "logic": [
+              {
+                "name": "on-checkbox-select",
+                "trigger": {
+                  "type": "simple",
+                  "simple": {
+                    "show": true,
+                    "when": "checkbox2",
+                    "eq": "true"
+                  }
+                },
+                "actions": [
+                  {
+                    "name": "on-checkbox-select",
+                    "type": "property",
+                    "property": {
+                      "label": "Content",
+                      "value": "content",
+                      "type": "string",
+                      "component": "content"
+                    },
+                    "content": "<style>\n  .custom-html-class-for-my-form .text-to-select {\n    color: red;\n    font-weight: bold;\n  }\n</style>"
+                  }
+                ]
+              }
+            ],
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Checkbox"
+            },
+            "key": "checkbox2",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "checkbox",
+            "input": true
+          }
+        ]
+      },
+      {
+        "type": "columns",
+        "key": "buttons-columns",
+        "columns": [
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 0,
+            "components": [],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 1,
+            "key": "column",
+            "components": []
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 2,
+            "components": [
+              {
+                "type": "button",
+                "key": "cancel",
+                "label": {
+                  "ru": "Отменить",
+                  "en": "Cancel"
+                },
+                "action": "event",
+                "event": "cancel",
+                "block": true,
+                "input": true
+              }
+            ],
+            "key": "column"
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Сохранить",
+                  "en": "Save"
+                },
+                "key": "submit",
+                "action": "submit",
+                "state": "",
+                "showValidations": false,
+                "theme": "primary",
+                "block": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true,
+                "headers": [
+                  {}
+                ]
+              }
+            ],
+            "key": "column"
+          }
+        ],
+        "input": false
+      }
+    ]
+  }
+}

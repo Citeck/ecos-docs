@@ -24,6 +24,10 @@
 
 Далее установите плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
+.. image:: _static/idea_plugin/install_disk.png
+    :width: 500
+    :align: center
+
 Обновление плагина
 -------------------
 

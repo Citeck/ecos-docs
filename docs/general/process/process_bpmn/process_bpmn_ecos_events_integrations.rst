@@ -25,6 +25,6 @@
 Базовая архитектура:
 
  .. image:: _static/bpmn_events_arch_shema.png
-       :width: 800
+       :width: 900
        :align: center
 
