@@ -9,6 +9,9 @@
 
 Результат описанных ниже инструкций можно посмотреть здесь: `Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_ 
 
+Создание микросервиса в интегрированной среде разработки
+------------------------------------------------------------
+
 1. Для создания нового микросервиса Citeck нужно создать новый **maven spring-boot проект** и в **pom.xml** добавить в качестве родителя один из следующих pom файлов:
 
 .. list-table::
@@ -222,3 +225,27 @@
 .. code-block:: bash
   
     mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot
+
+.. note::
+
+    При сборке внутри контейнера обязательно должны быть файлы для запуска:
+
+    * /entrypoint.sh 
+    * /app/jib-classpath-file
+    * /app/jib-main-class-file
+
+В списке модулей системы в ID: 
+
+.. image:: _static/system_modules.png
+       :width: 600
+       :align: center
+
+выводится имя репозитория (свойство repo), который загружается из файла: 
+
+  * в проекте ``target/classes/ecos/build-info.json`` 
+  * в контейнере ``/app/resources/ecos/build-info.json``
+
+Создание микросервиса с использованием плагин для IntelliJ IDEA 
+-----------------------------------------------------------------
+
+Быстрее и удобнее создавать микросервис с использованием плагина для IntelliJ IDEA см. :ref:`как<plugin_app_mks>`.
