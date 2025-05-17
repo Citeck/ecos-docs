@@ -29,3 +29,9 @@
 ---------------------------
 
 **TBD**
+
+Созданная пустая база знаний:
+
+.. image:: _static/wiki/wiki_blank.png
+       :width: 600
+       :align: center
