@@ -89,35 +89,47 @@
 *	Перейдите в браузере по адресу http://localhost/
 *   Войдите в систему, используя следующие учётные данные:
 
-.. image:: _static/docker-compose/09.png
-    :width: 600
-    :align: center
+    .. image:: _static/docker-compose/09.png
+        :width: 600
+        :align: center
 
-.. code-block::
+    .. code-block::
 
-    Username: admin
-    Password: admin
+        Username: admin
+        Password: admin
 
 *   При первом развертывании keycloak попросит сменить пароль:
 
-.. image:: _static/docker-compose/10.png
-    :width: 300
-    :align: center
+    .. image:: _static/docker-compose/10.png
+        :width: 300
+        :align: center
 
 Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
-*   Далее станет доступна **домашняя страница Citeck**:
+*   Далее станет доступна страница :ref:`персонального рабочего пространства<ws_personal>`:
 
-.. image:: _static/docker-compose/11.png
-    :width: 700
-    :align: center
+    .. image:: _static/docker-compose/11.png
+        :width: 700
+        :align: center
+
+    В левом верхнем углу доступна кнопка для выбора доступных рабочих пространств и создания нового:
+
+    .. image:: _static/docker-compose/11_1.png
+        :width: 450
+        :align: center
+
+Подробно о: 
+
+    * :ref:`рабочих пространствах<workspaces>`; 
+    * :ref:`корпоративном портале<corp_portal>`;
+    * :ref:`разделе администратора<admin>`.
 
 .. note:: 
 
     При первом запуске в течение первых 5 минут после успешной установки и входа в систему может возникать ошибка:
 
     .. image:: _static/docker-compose/08.png
-        :width: 600
+        :width: 300
         :align: center
 
     Развертывание и запуск Citeck продолжается, необходимо подождать.

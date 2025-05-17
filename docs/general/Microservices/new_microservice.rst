@@ -226,6 +226,25 @@
   
     mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot
 
+.. note::
+
+    При сборке внутри контейнера обязательно должны быть файлы для запуска:
+
+    * /entrypoint.sh 
+    * /app/jib-classpath-file
+    * /app/jib-main-class-file
+
+В списке модулей системы в ID: 
+
+.. image:: _static/system_modules.png
+       :width: 600
+       :align: center
+
+выводится имя репозитория (свойство repo), который загружается из файла: 
+
+  * в проекте ``target/classes/ecos/build-info.json`` 
+  * в контейнере ``/app/resources/ecos/build-info.json``
+
 Создание микросервиса с использованием плагин для IntelliJ IDEA 
 -----------------------------------------------------------------
 
