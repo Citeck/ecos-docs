@@ -307,9 +307,6 @@
       * - process/bpmn
         - ecos-process
         - BPMN процесс
-      * - process/cmmn
-        - ecos-process
-        - CMMN сценарий
       * - process/dmn-section
         - ecos-process
         - DMN раздел
