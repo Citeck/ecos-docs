@@ -245,6 +245,8 @@
 Совместное рабочее пространство
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _ws_collaborative:
+
  .. image:: _static/workspaces/joint_ws_01.png
        :width: 700
        :align: center 
