@@ -42,24 +42,6 @@
 
 Коробочные :ref:`функциональные модули<ecos_modules>` разбиты по рабочим пространствам для удобства навигации. 
 
-Включение настройки
---------------------
-
-Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. 
-
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
-
-В поисковой строке введите **workspaces-enabled**, откройте настройку:
-
- .. image:: _static/workspaces/setting_01.png
-       :width: 600
-       :align: center 
-
-выставите **«Включить»** и сохраните.
-
- .. image:: _static/workspaces/setting_02.png
-       :width: 300
-       :align: center 
 
 Выбор рабочего пространства
 -----------------------------
