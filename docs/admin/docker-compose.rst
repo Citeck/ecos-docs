@@ -64,12 +64,14 @@
     Для отключения данной настройки перед разворачиванием стенда перейдите в папку  ``\services\environments`` в файлах **ecos-microservices-postgresql.env** и **mongodb-app.env**
     в настройке **WITH_DEMO_DATA** укажите **false**.
 
+    Мы анонимно собираем статистику с использованием сервиса `Umami <https://umami.is/docs>`_. Сервис не собирает и не хранит персональные данные, избегая необходимости использования файлов cookie.
+
 *	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
 *   Клонируйте репозиторий: 
 
         .. code-block::
 
-            git clone https://github.com/citeck/ecos-community-demo.git
+            git clone https://github.com/citeck/citeck-community.git
 
 *	В терминале: 
 
@@ -145,11 +147,11 @@
 
         docker-compose down
 
-* Перейдите в папку ``ecos-community-demo``:
+* Перейдите в папку ``citeck-community``:
 
          .. code-block::
 
-            cd полный путь до папки ecos-community-demo
+            cd полный путь до папки citeck-community
 
 * Получите актуальную версию Citeck:
 
@@ -232,7 +234,7 @@
 
         .. code-block::
 
-            git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
+            git clone https://github.com/citeck/citeck-community.git && cd citeck-community
 
         После этого в директории, куда поместили проект, выполнить:
 
@@ -319,22 +321,22 @@
 
             Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck ECOS: 
+        Запуск Citeck Сommunity: 
 
         .. code-block::
 
             docker-compose up -d
 
-        **Установка ecos-community-demo**
+        **Установка citeck-community**
 
         .. code-block::
 
-            wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
             unzip master.zip
-            cd ecos-community-demo-master
+            cd citeck-community-master
             docker-compose pull
 
-        Запуск Community Demo:
+        Запуск Citeck Сommunity:
 
         .. code-block::
 
@@ -342,7 +344,7 @@
 
         .. note:: 
 
-            Выполнять из директории ecos-community-demo-master
+            Выполнять из директории citeck-community-master
 
         В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
@@ -408,22 +410,22 @@
 
             Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck ECOS: 
+        Запуск Citeck Сommunity: 
 
         .. code-block::
 
             docker-compose up -d
 
-        **Установка ecos-community-demo**
+        **Установка citeck-community**
 
         .. code-block::
 
-            wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
             unzip master.zip
-            cd ecos-community-demo-master
+            cd citeck-community-master
             docker-compose pull
 
-        Запуск Community Demo:
+        Запуск Citeck Сommunity:
 
         .. code-block::
 
@@ -431,7 +433,7 @@
 
         .. note:: 
 
-            Выполнять из директории ecos-community-demo-master
+            Выполнять из директории citeck-community-master
 
         В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
@@ -482,19 +484,19 @@
 
             Версию можно изменить на более актуальную, заменив 1.27.4
 
-        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
+        **Установка citeck-community** (выполняется в терминале, Alt+T):
 
         .. code-block::
 
-            git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
+            git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
             docker-compose pull
 
         
-        Запуск Community Demo:
+        Запуск Citeck Сommunity:
 
         .. note:: 
 
-            Выполнять из директории ecos-community-demo-master
+            Выполнять из директории citeck-community
 
         .. code-block::
 
@@ -532,14 +534,14 @@
             sudo dnf install docker-ce docker-ce-cli docker-compose
             systemctl enable docker
 
-        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
+        **Установка citeck-community** (выполняется в терминале, Alt+T):
 
         .. code-block::
 
-            git clone https://github.com/Citeck/ecos-community-demo.git && cd ecos-community-demo
+            git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
             docker-compose pull
 
-        Запуск Community Demo:
+        Запуск Citeck Сommunity:
 
         .. code-block::
 
@@ -617,26 +619,26 @@
             
             **Registry URL** и **данные для аутентификации** можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck ECOS: 
+        Запуск Citeck Сommunity: 
 
         .. code-block::
 
             docker-compose up -d
 
-        **Установка ecos-community-demo** (выполняется в терминале, Alt+T):
+        **Установка citeck-community** (выполняется в терминале, Alt+T):
 
         .. code-block::
 
-            wget https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip
+            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
             unzip master.zip
-            cd ecos-community-demo-master
+            cd citeck-community-master
             docker-compose pull
 
-        Запуск Community Demo:
+        Запуск Citeck Сommunity:
 
         .. note:: 
 
-            Выполнять из директории ecos-community-demo-master
+            Выполнять из директории citeck-community-master
 
         .. code-block::
 
@@ -662,7 +664,7 @@
 
      .. code-block::
 
-        nano ecos-community-demo-master/services/environments/ecos-proxy-app.env     
+        nano citeck-community-master/services/environments/ecos-proxy-app.env     
 
     заменить строку **ENABLE_OIDC_FULL_ACCESS=true** на **ENABLE_OIDC_FULL_ACCESS=false**
 
@@ -680,13 +682,13 @@
 
     docker-compose down
 
-в директории **ecos-community-demo-master**  для остановки проекта
+в директории **citeck-community-master**  для остановки проекта
 
 .. code-block::
 
     docker-compose up -d
 
-в директории **ecos-community-demo-master** для запуска проекта
+в директории **citeck-community-master** для запуска проекта
 
 Данные для входа в Citeck:
 
@@ -704,10 +706,10 @@
 
     Следующие контейнеры запускаются 1 раз:
 
-        - ecos-community-demo-master-ecos-meetings-ecos-apps-1
-        - ecos-community-demo-master-ecos-order-pass-ecos-apps-1
-        - ecos-community-demo-master-ecos-common-data-list-ecos-apps-1
-        - ecos-community-demo-master-ecos-assignments-ecos-apps-1
+        - citeck-community-master-ecos-meetings-ecos-apps-1
+        - citeck-community-master-ecos-order-pass-ecos-apps-1
+        - citeck-community-master-ecos-common-data-list-ecos-apps-1
+        - citeck-community-master-ecos-assignments-ecos-apps-1
 
     и далее находятся в статусе **exited**
 
@@ -846,7 +848,7 @@ How to
 
 Поменять в:
 
-1. **ecos-community-demo/services/environments/ecos-identity-app.env**
+1. **citeck-community/services/environments/ecos-identity-app.env**
 
 .. code-block::
 
@@ -858,11 +860,11 @@ How to
 
     KEYCLOAK_FRONTEND_URL=http://mydomain.ru/ecos-idp/auth
 
-2. **ecos-community-demo/services/environments/ecos-proxy-app.env**
+2. **citeck-community/services/environments/ecos-proxy-app.env**
 
 .. code-block::
 
-    EIS_ID=ecos-community-demo на EIS_ID=mydomain.ru + REDIRECT_LOGOUT_URI=http://localhost
+    EIS_ID=citeck-community на EIS_ID=mydomain.ru + REDIRECT_LOGOUT_URI=http://localhost
 
 на 
 
@@ -872,7 +874,7 @@ How to
 
 3. Шаг имеет смысл, если разворачивать на чистых БД:
 
-**ecos-community-demo/services/configs/ecos-identity-app/realm-export.json**
+**citeck-community/services/configs/ecos-identity-app/realm-export.json**
 
 .. code-block::
 
@@ -890,7 +892,7 @@ How to
     
 4. Шаг имеет смысл, если разворачивать на чистых БД:
 
-**ecos-community-demo/services/configs/ecos-identity-app/realm-export.yaml**
+**citeck-community/services/configs/ecos-identity-app/realm-export.yaml**
 
 .. code-block::
 
@@ -926,7 +928,7 @@ How to
 Исключить адрес из авторизации Keycloak
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Временно можно сделать на уровне модификации **Ecos-Proxy-APP**.
+Временно можно сделать на уровне модификации **ecos-Proxy-app**.
 
 Проверить можно,  зайдя в контейнер: 
 
