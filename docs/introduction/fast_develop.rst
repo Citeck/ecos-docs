@@ -70,7 +70,7 @@ IntelliJ IDEA plugin for Citeck
 **Zip-архив** имеет следующую структуру - все артефакты располагаются в директориях, в соответствии с их типом:
 
  .. image:: _static/fast_develop/App_8.png
-       :width: 400
+       :width: 300
        :align: center
 
 Как перенести между стендами
@@ -94,7 +94,7 @@ IntelliJ IDEA plugin for Citeck
 Создайте локально `maven проект  <https://maven.apache.org/index.html>`_  с названием приложения, в папку ``src/main/resources/app`` скопируйте содержимое zip-архива:
 
  .. image:: _static/fast_develop/ecos_app.png
-       :width: 400
+       :width: 350
        :align: center
 
 В корне приложения разместите файл **meta.yml**, указав:

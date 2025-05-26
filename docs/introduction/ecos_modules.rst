@@ -5,7 +5,7 @@
 
 .. note:: 
 
-    С релиза 2025.1 функциональные модули распределены по :ref:`рабочим пространствам<workspaces>`.
+    С релиза 2025.1.3 функциональные модули распределены по :ref:`рабочим пространствам<workspaces>`.
 
 .. list-table:: 
       :widths: 20 5
@@ -98,12 +98,17 @@
           | :ref:`Релизы<ecos-releases>`
           | :ref:`Учет времени<ecos-worklog>`
 
-Установите Citeck Community любым из описанных ниже способов: 
+.. note:: 
 
-    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
-    * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
+   Экземпляры типов данных **CRM**, **Договоры** и **Service desk** - приватные, т.е.  доступны в рамках рабочего пространства, в котором созданы.
 
-и воспользуйтесь следующими учетными записями для работы с модулями системы:
+
+Установите **Citeck Community** любым из описанных ниже способов: 
+
+    * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>`;
+    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`
+
+и воспользуйтесь следующими учетными записями для работы:
 
 .. list-table:: 
       :widths: 10 10 10 10 10
@@ -221,7 +226,7 @@
 
 
 .. toctree::
-    :maxdepth: 1
+    :hidden:
 
     ecos_modules/ORD
     ecos_modules/tasks
