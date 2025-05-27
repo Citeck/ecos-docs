@@ -135,8 +135,6 @@
        :width: 800
        :align: center 
 
-Например, ``v2/journals?journalId=open-requests-service-desk-journal``
-
 Приоритет заявок автоматически отмечается цветом:
 
 .. list-table::
@@ -179,14 +177,13 @@
        :width: 800
        :align: center 
 
- - **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal`` 
- - **Заказчики** - ``v2/journals?journalId=sd-clients-journal``
- - **Типы обращения** - ``v2/journals?journalId=petition-types-journal``
- - **Виды сервиса** - ``v2/journals?journalId=service-types-journal``
- - **Модули системы** - ``v2/journals?journalId=system-module-journal``
- - **SLA** ``v2/journals?journalId=sd-sla-journal``
- - **Рабочее расписание** ``v2/admin?journalId=type$working-schedule&type=JOURNAL``  
-
+ - **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal&ws=service-desk-workspace`` 
+ - **Заказчики** - ``v2/journals?journalId=sd-clients-journal&ws=service-desk-workspace``
+ - **Типы обращения** - ``v2/journals?journalId=petition-types-journal&ws=service-desk-workspace``
+ - **Виды сервиса** - ``v2/journals?journalId=service-types-journal&ws=service-desk-workspace``
+ - **Модули системы** - ``v2/journals?journalId=system-module-journal&ws=service-desk-workspace``
+ - **SLA** ``v2/journals?journalId=sd-sla-journal&ws=service-desk-workspace``
+ - **Рабочее расписание** ``v2/journals?journalId=type$working-schedule&ws=admin$workspace``  
 
 Канбан
 -------
@@ -383,7 +380,7 @@ SLA
   -	время до первой реакции, 
   -	время до окончательного решения. 
 
-Настройка SLA доступна в журнале ``v2/journals?journalId=sd-sla-journal``
+Настройка SLA доступна в журнале:
 
  .. image:: _static/service_desk/sla_settings.png
        :width: 800
@@ -488,7 +485,7 @@ SLA можно возобновить вручную с помощью дейс�
 Заказчики
 -----------
 
-Создание доступно в журнале **Заказчики** ``v2/journals?journalId=sd-clients-journal`` 
+Создание доступно в журнале **Заказчики**
 
  .. image:: _static/service_desk/client_01.png
        :width: 800
@@ -510,7 +507,7 @@ SLA можно возобновить вручную с помощью дейс�
 
   - порядок расчета SLA с учетом рабочего времени технической поддержки. Например, если ночные/вечерние часы, выходные дни не должны включаться в расчет, или задать конкретное время начала и окончания работы.
     
-    **Рабочее расписание** ``v2/admin?journalId=type$working-schedule&type=JOURNAL``   - учет рабочего времени технической поддержки индивидуально для добавленного заказчика. 
+    **Рабочее расписание** ``v2/journals?journalId=type$working-schedule&ws=admin$workspace``   - учет рабочего времени технической поддержки индивидуально для добавленного заказчика. 
 
     .. image:: _static/service_desk/client_05.png
           :width: 800
@@ -528,7 +525,7 @@ SLA можно возобновить вручную с помощью дейс�
 
 .. _client_mapping:
 
-    **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal`` 
+    **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal&ws=service-desk-workspace`` 
 
     .. image:: _static/service_desk/client_03.png
           :width: 800
@@ -547,7 +544,7 @@ SLA можно возобновить вручную с помощью дейс�
 
   - порядок расчета :ref:`SLA<sla-service-desk>` на каждый приоритет:
 
-    **SLA** ``v2/journals?journalId=sd-sla-journal`` 
+    **SLA** ``v2/journals?journalId=sd-sla-journal&ws=service-desk-workspace`` 
 
     .. image:: _static/service_desk/client_07.png
           :width: 800
