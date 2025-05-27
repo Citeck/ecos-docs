@@ -56,8 +56,6 @@
        :align: center 
 
 
-Например, https://host/v2/journals?journalId=cor-income-journal
-
 Создание Входящего документа
 -----------------------------
 
