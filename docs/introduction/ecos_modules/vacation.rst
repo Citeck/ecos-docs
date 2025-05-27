@@ -72,7 +72,6 @@
        :width: 700
        :align: center 
 
-Например, https://host/v2/journals?journalId=ecos-vacation-journal
 
 Создание карточки заявления
 --------------------------------

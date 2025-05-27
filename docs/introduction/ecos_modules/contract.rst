@@ -105,7 +105,6 @@
        :width: 700
        :align: center
 
-Например, ``v2/journals?journalId=ecos-contract-journal``
 
 Создание договора
 ------------------
