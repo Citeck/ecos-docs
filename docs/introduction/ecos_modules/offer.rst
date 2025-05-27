@@ -121,7 +121,6 @@
        :width: 700
        :align: center 
 
-Например, https://host/v2/journals?journalId=offer-request-journal
 
 Карточка 
 ~~~~~~~~~~~
@@ -432,8 +431,6 @@ Cоздать поручение можно из карточки докумен
  .. image:: _static/offer/20.png
        :width: 700
        :align: center 
-
-Например, https://host/v2/journals?journalId=offer-candidate-journal
 
 Канбан представление журнала
 """"""""""""""""""""""""""""""

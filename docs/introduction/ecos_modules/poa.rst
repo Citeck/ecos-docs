@@ -174,8 +174,6 @@
        :width: 600
        :align: center 
 
-Например, https://host/v2/journals?journalId=attorney-journal
-
 Стандартный дашборд журнала содержит колонки:
     -	Имя;
     -	Дата создания;
