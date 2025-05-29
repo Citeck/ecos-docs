@@ -52,7 +52,7 @@
       * - Компонент
         - Описание
       * - **ecos-proxy**
-        - Контейнер с nginx (openresty) и UI статикой (js + css).
+        - Контейнер с nginx (OpenResty) и UI статикой (JS + CSS).
       * - **ecos-registry**
         - Реестр приложений и сервер Spring Cloud конфигурации.
       * - **ecos-gateway**
