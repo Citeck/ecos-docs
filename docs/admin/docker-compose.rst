@@ -99,13 +99,7 @@
         Username: admin
         Password: admin
 
-*   При первом развертывании keycloak попросит сменить пароль:
-
-    .. image:: _static/docker-compose/10.png
-        :width: 300
-        :align: center
-
-Если необходимо еще раз сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+Если необходимо сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
 
 *   Далее станет доступна страница :ref:`персонального рабочего пространства<ws_personal>`:
 
@@ -659,7 +653,7 @@
 
 Если нужен простой способ настройки для доступа в систему минуя Keycloak, то можно настроить BASIC Auth (не рекомендуется для production сред).
 
-  1. В  
+  1. В  файле **ecos-proxy-app.env**:
 
      .. code-block::
 
@@ -703,7 +697,7 @@
 
 .. note::
 
-    Следующие контейнеры запускаются 1 раз:
+    Некоторые контейнеры запускаются 1 раз, например:
 
         - citeck-community-master-ecos-meetings-ecos-apps-1
         - citeck-community-master-ecos-order-pass-ecos-apps-1
