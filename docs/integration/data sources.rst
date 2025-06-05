@@ -115,8 +115,12 @@ SSL при запросах к бд через ECOS db-data-source
         ON pg_stat_ssl.pid = pg_stat_activity.pid;
 
 
-MQ Data Source
----------------
+[Deprecated] MQ Data Source
+-------------------------------
+
+.. note::
+
+    Для интеграции с MQ лучше использовать :ref:`Camel DSL<rabbitmq_camel>`
 
 Источник данных для подключения к очереди сообщений
 
@@ -129,3 +133,4 @@ MQ Data Source
 * **URI** - строка для подключения к очереди
 * **Type** - тип очереди
 * **Credentials** - ссылка на credentials где указаны login/pass для подключения к очереди
+
