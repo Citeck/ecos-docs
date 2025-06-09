@@ -234,6 +234,7 @@
     ecos_modules/InDoc
     ecos_modules/OutDoc
     ecos_modules/crm
+    ecos_modules/crm_new
     ecos_modules/service_desk
     ecos_modules/meeting
     ecos_modules/offer
