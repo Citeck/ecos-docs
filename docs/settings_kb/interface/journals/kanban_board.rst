@@ -227,6 +227,35 @@
        :width: 600
        :align: center
 
+
+Изменение полей формы карточки
+--------------------------------
+
+Кликните на форму:
+
+ .. image:: _static/kanban/form_card_00.png
+       :width: 600
+       :align: center
+
+Удалите, добавьте необходимые поля:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/kanban/form_card_01.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/kanban/form_card_02.png
+                  :width: 500
+                  :align: center
+
+
 Связь канбан-доски и типа данных
 ----------------------------------
 
