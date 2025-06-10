@@ -15,7 +15,7 @@
     - :ref:`действиями<ui_actions>`;
     - :ref:`командами<ecos_commands>`;
     - :ref:`событиями<ecos_events>`;
-    - бизнес-процессом с  :ref:`Внешней задачей<ecos_bpmn_external_task>`;
+    - бизнес-процессом с  :ref:`внешней задачей<ecos_bpmn_external_task>`;
     - созданием :ref:`дочерних ассоциаций<datatypes_associations>`.
 
 См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`.
@@ -28,10 +28,9 @@
 С чего начать
 --------------
 
-Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_. Подробно :ref:`об установке<docker_compose>`
+Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_. Подробно :ref:`об установке<docker_compose>`.
 
-Микросервис написан с использованием `Spring Boot <https://docs.spring.io/spring-boot/documentation.html>`_
-
+Микросервис написан с использованием `Spring Boot <https://docs.spring.io/spring-boot/documentation.html>`_.
 
 .. note::
 
