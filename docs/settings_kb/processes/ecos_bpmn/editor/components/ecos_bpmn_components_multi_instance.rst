@@ -17,7 +17,7 @@ Multi instance
 
 В редакторе Multi Instance можно установить следующим образом:
 
- .. image:: _static/multi_instance/93.png
+.. image:: _static/multi_instance/93.png
        :width: 400
        :align: center
 
@@ -87,3 +87,30 @@ Multi instance
           
 
 Подробно о `Multi instance <https://docs.camunda.org/manual/7.8/reference/bpmn20/tasks/task-markers/#multiple-instance>`_ 
+
+Примеры использования
+----------------------
+
+Пользовательская задача
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Как в пользовательской задаче указать, что задачи должны идти параллельно на пользователей, указанных в переменной.
+
+Используйте ``java.util.ArrayList()``:
+
+.. image:: _static/multi_instance/user_task_01.png
+       :width: 700
+       :align: center
+
+|
+
+.. image:: _static/multi_instance/user_task_02.png
+       :width: 700
+       :align: center
+
+|
+
+.. image:: _static/multi_instance/user_task_03.png
+       :width: 600
+       :align: center
+
