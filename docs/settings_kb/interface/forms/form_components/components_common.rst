@@ -69,16 +69,21 @@ Number
 `См. подробное описание Number на Form.io <https://help.form.io/userguide/forms/form-components#number>`_ 
 
 
-
 Date/Time
 ~~~~~~~~~~
 
 .. _Date_Time:
 
-Поле, отвечающее за отображение даты и времени. Отображение регулируется внутри компонента. 
+Поле, отвечающее за отображение даты и времени. 
+
+.. image:: _static/Date_Time_Component_01.png
+       :width: 250
+       :align: center
+
+Отображение регулируется внутри компонента, доступна локализация RU/Eng
 
 .. image:: _static/Date_Time_Component.png
-       :width: 400
+       :width: 600
        :align: center
 
 `См. подробное описание Date/Time на Form.io <https://help.form.io/userguide/forms/form-components#date-time>`_  
@@ -97,10 +102,10 @@ Text Area
        :width: 400
        :align: center
 
-Для вывода введенных данных многострочно необходимо добавить редактор на вкладке **Вид**:a
+Для вывода введенных данных многострочно необходимо добавить редактор на вкладке **Вид**:
 
 .. image:: _static/Text_Area_Component_01.png
-       :width: 500
+       :width: 600
        :align: center
 
 `См. подробное описание Text Area на Form.io <https://help.form.io/userguide/forms/form-components#text-area>`_ 
