@@ -97,7 +97,7 @@ Table form
 
 Чтобы на форме отображалась кнопка **"Выбрать"** для копирования существующих объектов, установите флаг **Кнопка "Выбрать"**:
 
-.. image:: _static/table_form/Select_01.png
+.. image:: _static/table_form/select_01.png
        :width: 600
        :align: center
 
@@ -106,13 +106,13 @@ Table form
 1. На форме нажмите кнопку **"Выбрать"**.
 2. Выберите необходимый **объект** для копирования. Выбираемое значение используется как шаблон для копируемого объекта.
 
-.. image:: _static/table_form/Select_02.png
+.. image:: _static/table_form/select_02.png
        :width: 700
        :align: center
 
 3. Открывается форма редактирования объекта, если необходимо, то можно изменить значения. 
 
-.. image:: _static/table_form/Select_03.png
+.. image:: _static/table_form/select_03.png
        :width: 600
        :align: center
 
