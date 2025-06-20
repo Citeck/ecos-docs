@@ -231,6 +231,7 @@
     ecos_modules/ORD
     ecos_modules/tasks
     ecos_modules/contract
+    ecos_modules/edo_contract
     ecos_modules/InDoc
     ecos_modules/OutDoc
     ecos_modules/crm
