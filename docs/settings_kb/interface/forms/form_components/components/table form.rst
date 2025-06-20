@@ -16,32 +16,47 @@ Table form
 Для отображения кнопки :guilabel:`Создать` и возможности вызова формы создания используется ``formKey*``, который может быть вычислен в зависимости от настройки **Типа данных** на вкладке :guilabel:`Данные`:
 
 * **Журнал** - варианты создания вычисляются с помощью настройки **ID журнала**, либо на основе типа ассоциации, которая указана в атрибуте (при этом **ID журнала** заполнять не нужно). Есть возможность выбрать колонки для отображения в таблице.
- 
- .. image:: _static/table_form/Table_form_1.png
-       :width: 400
-       :align: center
 
- .. image:: _static/table_form/Table_form_2.png
-       :width: 400
-       :align: center
+.. list-table::
+      :widths: 20 20
+      :align: center
 
+      * - |
 
- .. image:: _static/table_form/Table_form_3.png
+            .. image:: _static/table_form/Table_form_1.png
+                  :width: 400
+                  :align: center
+
+        - |
+
+            .. image:: _static/table_form/Table_form_2.png
+                  :width: 400
+                  :align: center
+
+.. image:: _static/table_form/Table_form_3.png
        :width: 400
        :align: center
 
 
 * **Пользовательские** - варианты создания вычисляются на основе типа ассоциации, которая указана в атрибуте. При этом требуется добавить вручную колонки для отображения в таблице (соответствуют названиям полей в форме создания).
 
- .. image:: _static/table_form/Table_form_4.png
-       :width: 400
-       :align: center 
+.. list-table::
+      :widths: 20 20
+      :align: center
 
- .. image:: _static/table_form/Table_form_5.png
-       :width: 400
-       :align: center
+      * - |
 
- .. image:: _static/table_form/Table_form_6.png
+            .. image:: _static/table_form/Table_form_4.png
+                  :width: 400
+                  :align: center
+
+        - |
+
+            .. image:: _static/table_form/Table_form_5.png
+                  :width: 400
+                  :align: center
+
+.. image:: _static/table_form/Table_form_6.png
        :width: 400
        :align: center
 
@@ -49,10 +64,9 @@ Table form
 
 Для каждой колонки можно задать настройки вручную. Для этого нужно отметить галочкой пункт **Установить атрибуты вручную**:
 
- .. image:: _static/table_form/Table_form_7.png
+.. image:: _static/table_form/Table_form_7.png
        :width: 400
        :align: center
-
 
 Таким образом можно установить **заголовок колонки** (может быть задан в двух локализация), **тип данных** и признак **Выбор нескольких**.
 
@@ -75,8 +89,35 @@ Table form
 
 
 .. image:: _static/table_form/Table_form_8.png
+       :width: 700
+       :align: center
+
+Выбор значения из справочника
+------------------------------------
+
+Чтобы на форме отображалась кнопка **"Выбрать"** для копирования существующих объектов, установите флаг **Кнопка "Выбрать"**:
+
+.. image:: _static/table_form/Select_01.png
        :width: 600
        :align: center
+
+Укажите **идентификатор журнала** для выбора объектов. Если идентификатор не указан, будет использован журнал соответствующий типу первого варианта создания.
+
+1. На форме нажмите кнопку **"Выбрать"**.
+2. Выберите необходимый **объект** для копирования. Выбираемое значение используется как шаблон для копируемого объекта.
+
+.. image:: _static/table_form/Select_02.png
+       :width: 700
+       :align: center
+
+3. Открывается форма редактирования объекта, если необходимо, то можно изменить значения. 
+
+.. image:: _static/table_form/Select_03.png
+       :width: 600
+       :align: center
+
+4. Подтвердите выбор, объект будет скопирован в table form.
+
 
 Наполнение данных в таблице
 -----------------------------
