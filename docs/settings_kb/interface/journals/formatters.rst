@@ -430,6 +430,22 @@ LinkFormatter / Ссылка
 
 Link форматтер используется для ячеек журнала с использованием полей (колонок) в качестве переменных.
 
+Варианты конфигурации открытия ссылки по форматтеру
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Список вариантов ::
+
+  updateUrl {boolean}
+  openNewTab {boolean}
+  openNewBrowserTab {boolean}
+  reopenBrowserTab {boolean}
+  closeActiveTab {boolean}
+  openInBackground {boolean}
+  pushHistory {boolean}
+  replaceHistory {boolean} - default true, if updateUrl is true
+  rerenderPage {boolean} - needed to replace link in the router and start rerendering page
+
+
 Ссылка по шаблону с использованием переменных
 """""""""""""""""""""""""""""""""""""""""""""
 Добавлена возможность строить ссылки по шаблону с использованием переменных (атрибутов записи/полей журнала). Шаблон адреса ссылки задается в параметрах форматтера для столбца в конфигурации журнала (**Форматтер для колонки**).
@@ -476,21 +492,6 @@ Link форматтер используется для ячеек журнал�
        :align: center
 
 По клику на наименование будет открываться ссылка.
-
-Варианты конфигурации открытия ссылки по форматтеру
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Список вариантов ::
-
-  updateUrl {boolean}
-  openNewTab {boolean}
-  openNewBrowserTab {boolean}
-  reopenBrowserTab {boolean}
-  closeActiveTab {boolean}
-  openInBackground {boolean}
-  pushHistory {boolean}
-  replaceHistory {boolean} - default true, if updateUrl is true
-  rerenderPage {boolean} - needed to replace link in the router and start rerendering page
 
 
 .. _NumberFormatter:

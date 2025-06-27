@@ -7,7 +7,7 @@
 
 **Основные справочники** доступны в публичном :ref:`рабочем пространстве<workspaces>` **«Справочники»**:
 
- .. image:: _static/datalists/data_1.png
+.. image:: _static/datalists/data_1.png
        :width: 700
        :align: center 
 
@@ -47,4 +47,10 @@
 
     4.	Нажать кнопку **Применить**. 
 
-Подробно о :ref:`создании справочников<dataset_sample>`
+Подробно о :ref:`создании справочников<dataset_sample>`.
+
+Так же :ref:`рабочем пространстве<workspaces>` **«Справочники»** доступна :ref:`организационная структура<org_structure>`:
+
+.. image:: _static/datalists/orgstructure_1.png
+       :width: 700
+       :align: center 
