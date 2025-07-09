@@ -17,7 +17,7 @@
 
 База знаний состоит из 3 виджетов:
 
-- **а:** :ref:`База знаний<widget_knowledge_base>`,
+- **а:** :ref:`Иерархия<widget_knowledge_base>`,
 - **b:** :ref:`Публикация<widget_publication>`, 
 - **c:** :ref:`Комментарии<widget_comments>`
 
