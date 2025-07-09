@@ -11,7 +11,6 @@
     notifications/notifications_bulk_mail
     notifications/notification_lazy_approval
     notifications/notifications_from_ecos_bpmn
-    notifications/notifications_commands
     notifications/senders
     notifications/mail_eds
     notifications/test_mail
