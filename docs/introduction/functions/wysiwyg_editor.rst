@@ -10,7 +10,7 @@ WYSIWYG-редактор
 Над областью редактирования расположена панель инструментов WYSIWYG-редактора, при помощи которого можно оформлять текст, вставлять таблицы, изображения, математические формулы 
 
 .. image:: _static/wysiwyg/comment_edit.png
-       :width: 600
+       :width: 700
        :align: center
 
 Рассмотрим ее функционал подробнее:
@@ -79,10 +79,24 @@ WYSIWYG-редактор
                  :width: 50
                  :align: center  
 
-        - | Загрузить файл
+          |
 
             .. image:: _static/wysiwyg/upload_file.png
                  :width: 400
+                 :align: center   
+
+        - | Загрузить файл
+
+          | Файл будет отображаться в виде ссылки:
+
+            .. image:: _static/wysiwyg/upload_file_1.png
+                 :width: 500
+                 :align: center   
+
+          | По клику доступен его просмотр:
+
+            .. image:: _static/wysiwyg/upload_file_2.png
+                 :width: 600
                  :align: center   
 
       * - | Упомянуть пользователя
