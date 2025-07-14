@@ -4,7 +4,7 @@
 .. _sample_request:
 
 .. contents::
-		   :depth: 3
+		:depth: 3
 
 .. note::
   
