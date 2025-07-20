@@ -132,7 +132,7 @@
                 :align: center
 
         - :ref:`Сигнал<ecos_bpmn_events>`
-        - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями ECOS <bpmn_events_integrations>`.
+        - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями Citeck <bpmn_events_integrations>`.
       * - 
           .. image:: _static/events/common_8.png
                 :width: 40

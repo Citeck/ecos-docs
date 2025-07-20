@@ -25,7 +25,7 @@
 
      * Загрузить и установить `пакет обновления ядра Linux <https://docs.microsoft.com/windows/wsl/wsl2-kernel>`_
 
-    `Официальное руководстов по установке Docker на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
+    `Официальное руководство по установке Docker на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
 
    .. tab:: Linux   
 
@@ -38,9 +38,9 @@
      * 80 Гб свободного дискового пространства.
      * Включите настройку сопоставления идентификаторов в пространствах имен пользователей, см. `Общий доступ к файлам <https://docs.docker.com/desktop/install/linux-install/#file-sharing>`_
 
-    `Официальное руководстов по установке Docker на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
+    `Официальное руководство по установке Docker на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
 
-    `Официальное руководстов по установке Docker на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+    `Официальное руководство по установке Docker на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
 
    .. tab:: MacOS   
 
