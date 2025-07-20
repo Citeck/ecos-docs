@@ -9,6 +9,7 @@
     components/ecos_bpmn_components_notifications
     components/ecos_bpmn_components_service_task
     components/ecos_bpmn_components_set_status
+    components/ecos_bpmn_components_ai_task
     components/ecos_bpmn_components_business_rule_task
     components/ecos_bpmn_components_call_activity
     components/ecos_bpmn_components_gateway
@@ -39,7 +40,7 @@
                 :width: 100
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html
 
-        - Скриптовая запускает скрипт (т.е. последовательность действий) или программный код, который выполняется автоматически.
+        - Скриптовая задача запускает скрипт (т.е. последовательность действий) или программный код, который выполняется автоматически.
       * - 
 
             .. image:: _static/components/notification_task.png
@@ -59,6 +60,12 @@
                 :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_set_status.html
 
         - Установка статуса. Элемент позволяет производить смену статуса в создаваемом бизнес-процессе.
+      * - 
+            .. image:: _static/components/ai_task.png
+                :width: 100
+                :target: https://citeck-ecos.readthedocs.io/ru/latest/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.html
+
+        - Задача, которая отвечает за вызов AI по указанному промту, и далее в зависимости от бизнес-требований можно делать все, что позволяет делать BPMN отправлять задачи, уведомления, генерировать документы и так далее.
       * - 
             .. image:: _static/components/business_rule_task.png
                 :width: 100
