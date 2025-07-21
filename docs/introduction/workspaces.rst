@@ -195,7 +195,7 @@
        :width: 500
        :align: center 
 
-В OpenOffice создается новый файл, в котором можно вести совместную работу:
+В OnlyOffice создается новый файл, в котором можно вести совместную работу:
 
  .. image:: _static/workspaces/doc_04.png
        :width: 700
