@@ -49,4 +49,8 @@
             :width: 600
             :align: center 
 
-    *	**Проекты**
+    *	**Проекты** - информация о релизах для данного клиента:
+
+        .. image:: _static/client_360/Tab_08.png
+            :width: 600
+            :align: center 
