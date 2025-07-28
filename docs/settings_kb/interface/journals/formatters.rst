@@ -423,6 +423,8 @@ HtmlFormatter / HTML
       * - html
         - Строка с html кодом
 
+.. _LinkFormatter:
+
 LinkFormatter / Ссылка
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
