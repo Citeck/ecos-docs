@@ -75,7 +75,7 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
     <dependency>
         <groupId>ru.citeck.ecos.bpmn</groupId>
         <artifactId>ecos-bpmn-external-task-client-springboot-starter</artifactId>
-        <version>2.0.2</version>
+        <version>2.1.0</version>
     </dependency>
 
 .. note:: 
