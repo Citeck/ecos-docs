@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ecos="http://www.citeck.ru/ecos/bpmn/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_UszSNMa" name="" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.2.0" ecos:workingCopySourceRef="" ecos:name_ml="{}" ecos:formRef="" ecos:autoDeleteEnabled="true" ecos:sectionRef="eproc/bpmn-section@DEFAULT" ecos:enabled="true" ecos:autoStartEnabled="false" ecos:defState="CONVERTED" ecos:processDefId="contract-content-diff-ai-process" ecos:ecosType="">
+    <bpmn:process isExecutable="true" id="contract-content-diff-ai-process">
+        <bpmn:sequenceFlow sourceRef="StartEvent_1ew9rff" targetRef="Activity_1o76vd3" name="" id="Flow_04d2ze2" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+        <bpmn:endEvent name="" id="Event_1rg56t6" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:incoming >Flow_1oldp1f</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:startEvent isInterrupting="true" name="" id="StartEvent_1ew9rff" ecos:documentation="{}" ecos:eventFilterByRecordType="ANY" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventFilterByEcosType="emodel/type@ecos-contract" ecos:eventType="RECORD_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;diff._has.content?bool&quot;,&quot;val&quot;:true}">
+            <bpmn:outgoing >Flow_04d2ze2</bpmn:outgoing>
+            <bpmn:signalEventDefinition  signalRef="Signal_JszZNq7" id="SignalEventDefinition_0nkjw0p"/>
+        </bpmn:startEvent>
+        <bpmn:task name="Комментарий сравнение версий" id="Activity_1o76vd3" ecos:documentation="{}" ecos:aiSaveResultToDocument="" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:taskType="aiTask" ecos:aiPreprocessingScript="" ecos:aiAddDocumentToContext="true" ecos:name_ml="{&quot;ru&quot;:&quot;Комментарий сравнение версий&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:aiPostprocessingScript="const comment = Records.get('emodel/comment@');&#10;&#10;comment.att('text', aiResponse);&#10;comment.att('record', documentRef);&#10;&#10;comment.save();" ecos:aiUserInput="Какие были последние изменения в содержимом договора?&#10;&#10;Отдай в ответ в виде HTML, не оборачивай в блок кода">
+            <bpmn:incoming >Flow_04d2ze2</bpmn:incoming>
+            <bpmn:outgoing >Flow_1oldp1f</bpmn:outgoing>
+        </bpmn:task>
+        <bpmn:sequenceFlow sourceRef="Activity_1o76vd3" targetRef="Event_1rg56t6" name="" id="Flow_1oldp1f" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+    </bpmn:process>
+    <bpmn:signal name="RECORD_CHANGED;ANY;emodel/type@ecos-contract;pr_8c7809162b6487bdb97ba3a5ed739b1e" id="Signal_JszZNq7"/>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane  bpmnElement="contract-content-diff-ai-process" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1ew9rff" isExpanded="false" id="Event_1v9r6mx_di">
+                <dc:Bounds x="156.0" y="81.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1o76vd3" isExpanded="false" id="Activity_1o76vd3_di">
+                <dc:Bounds x="260.0" y="59.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1rg56t6" isExpanded="false" id="Event_1rg56t6_di">
+                <dc:Bounds x="432.0" y="81.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_04d2ze2" id="Flow_04d2ze2_di">
+                <di:waypoint x="192.0" y="99.0"/>
+                <di:waypoint x="260.0" y="99.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1oldp1f" id="Flow_1oldp1f_di">
+                <di:waypoint x="360.0" y="99.0"/>
+                <di:waypoint x="432.0" y="99.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

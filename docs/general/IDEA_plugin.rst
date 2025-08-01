@@ -6,7 +6,7 @@
 .. contents::
    :depth: 2
 
-Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами ECOS. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
+Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами Citeck. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
 
 Исходный код плагина доступен по ссылке: `ecos-idea-plugin <https://github.com/Citeck/ecos-idea-plugin>`_
 
@@ -20,7 +20,7 @@
 Установка плагина
 ------------------
 
-Скачайте дистрибути плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или соберите из исходников самостоятельно.
+Скачайте дистрибутив плагина из `release page <https://github.com/Citeck/ecos-idea-plugin/releases>`_ или соберите из исходников самостоятельно.
 
 Далее установите плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
@@ -38,13 +38,13 @@
 Функционал плагина
 ------------------
 
-1. Создание **новых проектов ECOS** (приложение, микросервис).
+1. Создание **новых проектов Citeck** (приложение, микросервис).
 
 .. _plugin_app_mks:
 
 **File -> New project**
 
-Доступен пункт **ECOS** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<mcs_setup>`:
+Доступен пункт **Citeck** и варианты создания :ref:`приложения<applications>`/ :ref:`микросервиса<mcs_setup>`:
 
 .. list-table::
       :widths: 20 20
@@ -84,15 +84,16 @@
                   :width: 400
                   :align: center
 
+
 2. Создание **артефактов** по шаблону.
 
-    По правой кнопке в контекстном меню доступен пункт **ECOS Artifact**:
+    По правой кнопке в контекстном меню доступен пункт **New - Citeck Artifact**:
 
     .. image:: _static/idea_plugin/05.png
         :width: 700
         :align: center
 
-    Вводим название, выбираем тип данных:
+    Вводим название:
 
     .. image:: _static/idea_plugin/06.png
         :width: 300
@@ -104,7 +105,8 @@
         :width: 700
         :align: center
 
-3. **Загрузка/выгрузка артефактов** на/с локального сервера (формы ECOS, журналы, дашборды, процессы).
+
+3. **Загрузка/выгрузка артефактов** на/с локального сервера (формы, журналы, дашборды, процессы).
 
     Для артефакта доступны следующие действия:
 
@@ -113,28 +115,31 @@
         :align: center
 
     * **Deploy File** - выгрузка артефакта на сервер. 
-
     * **Fetch File** - загрузка артефакта с сервера
-
     * **Open In Browser**- просмотр артефакта в браузере
-
     * **Open Documentation** - переход на страницу с документацией по артефакту
 
     Выгрузите артефакт по кнопке **Deploy File** на стенд или локально:
 
     .. list-table::
-      :widths: 20 20
+      :widths: 20 20 20
       :align: center
 
       * - |
 
             .. image:: _static/idea_plugin/deploy_a.png
-                  :width: 300
+                  :width: 200
                   :align: center
 
         - |
 
             .. image:: _static/idea_plugin/select_server.png
+                  :width: 200
+                  :align: center 
+
+        - |
+
+            .. image:: _static/idea_plugin/deploy_b.png
                   :width: 200
                   :align: center 
 
@@ -164,21 +169,46 @@
         :align: center
 
 
-4. **Поиск артефактов** по их идентификаторам (расширение для search everywhere):
+4. **JSON схемы** для артефактов. Доступна подсветка синтаксиса при конфигурировании json/yaml артефактов
+
+    .. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/idea_plugin/scheme_01.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/idea_plugin/scheme_02.png
+                  :width: 500
+                  :align: center 
+
+
+5. **Поиск артефактов** по их идентификаторам (расширение для search everywhere):
    
 .. image:: _static/idea_plugin/09.png
     :width: 500
     :align: center
 
-5. **Навигация в коде** по артефактам ECOS через гиперссылки:
+
+5. **Навигация в коде** по артефактам Citeck через гиперссылки:
 
 .. image:: _static/idea_plugin/10.png
     :width: 400
     :align: center
 
+
 6. **Автодополнение кода JavaScript** (IDEA Ultimate):
    
-    1. Формы ECOS:
+    Типы: 
+    
+        - Для атрибутов **formRef**, **journalRef** и **parentRef**
+
+    Формы:
    
         - Автодополнение объекта **data** списком компонент формы.
 
@@ -198,13 +228,12 @@
                   :width: 500
                   :align: center
 
-7. **Навигация в файлах**:
+
+1. **Навигация в файлах**:
    
     - Формы (быстрый переход к компонентам по их имени);
     - Журналы (навигация по колонкам);
     - Типы данных (быстрый переход к атрибутам, ролям, статусам и т.д.)
-
-Пока доступно только для формата json.
 
 .. list-table::
       :widths: 20 20
@@ -227,13 +256,12 @@
     
     - Формы - проверка уникальности ключей компонентов форм с учетом областей (container, datagrid).
 
-Пока доступно только для формата json.
-
 .. image:: _static/idea_plugin/14.png
     :width: 500
     :align: center
 
-9. Генерация компонентов формы:
+
+9. **Генерация компонентов формы**:
     
 Если в форме задан **typeRef**
 
@@ -269,19 +297,29 @@
     :width: 300
     :align: center
 
-10. Расширения областей поиска **файлами, содержащими артефакты ECOS**:
+
+10. Расширения областей поиска **файлами, содержащими артефакты Citeck**:
 
 .. image:: _static/idea_plugin/15.png
     :width: 600
     :align: center
 
-11. **Language Injection (JavaScript)** в формах ECOS:
+
+11.   Конвертация **YAML -> JSON**, **JSON -> YAML**
+
+.. image:: _static/idea_plugin/convert.png
+    :width: 500
+    :align: center
+
+
+12.  **Language Injection (JavaScript)** в формах:
 
 .. image:: _static/idea_plugin/16.png
     :width: 500
     :align: center
 
-12. **Деплой проекта ECOS**
+
+13.  **Деплой проекта**
 
 Деплой проекта возможен из **meta.yml** по нажатию на **Deploy File**:
 
@@ -289,13 +327,13 @@
     :width: 500
     :align: center
 
-Далее можно нажать **Open In Browser**, чтобы посмотреть и отредактировать приложение в ECOS:
+Далее можно нажать **Open In Browser**, чтобы посмотреть и отредактировать приложение в Citeck:
 
 .. image:: _static/idea_plugin/app.png
     :width: 500
     :align: center
 
-Так же деплоить можно из контекстного меню, выбрав **ECOS-Deploy Application**:
+Так же деплоить можно из контекстного меню, выбрав **Citeck-Deploy Application**:
 
 .. image:: _static/idea_plugin/deploy_app_2.png
     :width: 400
@@ -305,9 +343,9 @@
 Конфигурация серверов
 ----------------------
 
-Настройка серверов ECOS: **Settings -> ECOS Settings -> Servers**
+Настройка серверов Citeck: **Settings -> Citeck -> Servers**. 
 
-Примеры настройки:
+Достаточно указать host, остальные параметры опциональны. Примеры настройки:
 
 .. image:: _static/idea_plugin/server_settings.png
     :width: 600
@@ -315,10 +353,9 @@
 
 Для локального стенда используется метод **basic**.
 
-Для метода **OAuth2**:
+Ввод логина и пароля для OIDC происходит в окне браузера, и плагин никак не взаимодействует с логином и паролем напрямую.
 
-    - **Grant Type** - client_credentials
-    - **Client ID** и **Client Secret** можно получить в соответствии с :ref:`инструкцией<keycloak_postman>`
+**Client ID** и **Client Secret** можно получить в соответствии с :ref:`инструкцией<keycloak_postman>`
 
 Сборка дистрибутива плагина
 -----------------------------

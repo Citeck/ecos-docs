@@ -20,6 +20,7 @@
     journals/kanban_board
     journals/document_library
     journals/publication
+    journals/news
     journals/wiki
 
 
