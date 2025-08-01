@@ -67,13 +67,12 @@
 
 .. _wiki_corp:
 
-В подразделе **База знаний** информация представлена в виде :ref:`иерархии<widget_knowledge_base>`:
+В подразделе **База знаний** информация представлена в виде :ref:`иерархии<widget_knowledge_base>`. При выборе раздела справа открывается сама :ref:`публикация<widget_publication>`.
 
 .. image:: _static/corp_portal/corp_04.png
        :width: 700
        :align: center
 
-При выборе раздела справа открывается сама :ref:`публикация<widget_publication>`.
 
 Сервисы
 --------

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ecos="http://www.citeck.ru/ecos/bpmn/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_LMrCtHe" name="" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.2.0" ecos:workingCopySourceRef="" ecos:name_ml="{}" ecos:formRef="" ecos:autoDeleteEnabled="true" ecos:sectionRef="eproc/bpmn-section@DEFAULT" ecos:enabled="true" ecos:autoStartEnabled="false" ecos:defState="CONVERTED" ecos:processDefId="crm-deal-ai-process" ecos:ecosType="">
+    <bpmn:process isExecutable="true" id="crm-deal-ai-process">
+        <bpmn:sequenceFlow sourceRef="StartEvent_1ew9rff" targetRef="Activity_0hzr440" name="" id="Flow_0jntmu2" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+        <bpmn:endEvent name="Завершение" id="Event_0qlee1m" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:incoming >Flow_0bmv38k</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_08pv3zy" targetRef="Event_0qlee1m" name="" id="Flow_0bmv38k" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+        <bpmn:scriptTask scriptFormat="javascript" name="Генерация шаблона КП" id="Activity_08pv3zy" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Генерация шаблона КП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="templatedContent.write(&#10;  documentRef, &#10;  &quot;commercial-offer-template&quot;, &#10;  &quot;docs:documents&quot;, &#10;  &quot;emodel/type@commercial-offer-document&quot;&#10;);">
+            <bpmn:incoming >Flow_0lwa8qo</bpmn:incoming>
+            <bpmn:outgoing >Flow_0bmv38k</bpmn:outgoing>
+            <bpmn:script>templatedContent.write(
+  documentRef, 
+  "commercial-offer-template", 
+  "docs:documents", 
+  "emodel/type@commercial-offer-document"
+);</bpmn:script>
+        </bpmn:scriptTask>
+        <bpmn:startEvent isInterrupting="true" name="Сделка: статус Подготовка КП" id="StartEvent_1ew9rff" ecos:documentation="{}" ecos:eventFilterByRecordType="ANY" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Сделка: статус Подготовка КП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventFilterByEcosType="emodel/type@deal" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;offerPreparation&quot;}">
+            <bpmn:outgoing >Flow_0jntmu2</bpmn:outgoing>
+            <bpmn:signalEventDefinition  signalRef="Signal_tiQlXqr" id="SignalEventDefinition_19xkfcy"/>
+        </bpmn:startEvent>
+        <bpmn:task name="Генерация текста КП" id="Activity_0hzr440" ecos:documentation="{}" ecos:aiSaveResultToDocument="has-offer-text:offerText" ecos:asyncConfig="{&quot;asyncBefore&quot;:true,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:taskType="aiTask" ecos:aiPreprocessingScript="const counterparty = document.load(&quot;counterparty.fullOrganizationName&quot;);&#10;const legalEntity = document.load(&quot;contract.legalEntity.fullOrganizationName&quot;)&#10;const pas = document.load('has-pas:product-and-services[]{name, quantity, unit.unitShortName.ru, priceWithDiscount | fmt(&quot;0.00&quot;), amount}');&#10;&#10;execution.setVariable(&quot;counterparty&quot;, counterparty);&#10;execution.setVariable(&quot;legalEntity&quot;, legalEntity);&#10;execution.setVariable(&quot;pas&quot;, pas.toString());" ecos:aiAddDocumentToContext="true" ecos:name_ml="{&quot;ru&quot;:&quot;Генерация текста КП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:&quot;&quot;}" ecos:aiPostprocessingScript="" ecos:aiUserInput="Сгенерируй текст для коммерческого предложения.&#10;&#10;Контекст:&#10;1) Название клиента: ${counterparty}&#10;2) Наша компания: ${legalEntity}&#10;3) Услуги, включённые в предложение: ${pas}&#10;&#10;Цель:&#10;Напиши 1 абзац, который подчеркнёт ценность предложения именно для этого клиента, отразит ожидаемую пользу и покажет, что мы понимаем его задачи. Не дублируй список услуг — фокус на результате для клиента.&#10;&#10;Требования к стилю:&#10;1) Деловой, вежливый, без канцелярита&#10;2) Без лишней воды, чётко и по делу&#10;3) Не используй emoji&#10;4) Не добавляй заключительные фразы вроде “С уважением…”&#10;&#10;Формат:&#10;Простой текст (один абзац, без разметки и списков)&#10;">
+            <bpmn:incoming >Flow_0jntmu2</bpmn:incoming>
+            <bpmn:outgoing >Flow_0lwa8qo</bpmn:outgoing>
+        </bpmn:task>
+        <bpmn:sequenceFlow sourceRef="Activity_0hzr440" targetRef="Activity_08pv3zy" name="" id="Flow_0lwa8qo" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+    </bpmn:process>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;ANY;emodel/type@deal;pr_13505079ec738b8ade0415f32b3e5271" id="Signal_tiQlXqr"/>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane  bpmnElement="crm-deal-ai-process" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_0qlee1m" isExpanded="false" id="Event_0qlee1m_di">
+                <dc:Bounds x="672.0" y="81.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_08pv3zy" isExpanded="false" id="Activity_0ck43yh_di">
+                <dc:Bounds x="460.0" y="59.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1ew9rff" isExpanded="false" id="Event_06pcwrs_di">
+                <dc:Bounds x="156.0" y="81.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0hzr440" isExpanded="false" id="Activity_0hzr440_di">
+                <dc:Bounds x="260.0" y="59.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0jntmu2" id="Flow_0jntmu2_di">
+                <di:waypoint x="192.0" y="99.0"/>
+                <di:waypoint x="260.0" y="99.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0bmv38k" id="Flow_0bmv38k_di">
+                <di:waypoint x="560.0" y="99.0"/>
+                <di:waypoint x="672.0" y="99.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0lwa8qo" id="Flow_0lwa8qo_di">
+                <di:waypoint x="360.0" y="99.0"/>
+                <di:waypoint x="460.0" y="99.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

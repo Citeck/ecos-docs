@@ -22,46 +22,51 @@
 
 Действие **Применить тему** доступно для неактивных тем, для текущей темы действие не отображается.
 
-Через интерфейс на данный момент не предусмотрена настройка темы (только через скачивание, изменение и загрузку обратно).
+Через интерфейс на данный момент не предусмотрена настройка темы - только через скачивание, изменение и загрузку обратно. При загрузке темы через интерфейс **zip-архив** загружается в **uiserv**. 
 
-При загрузке через интерфейс тема формируется **zip-архивом** и загружается в **uiserv**. 
+Структура архива:
 
-Структура архива::
+.. code-block::
 
  root:
-	ecos:
-	   image:
-	      favicon.ico
-	      login-logo.png
-	      logo.png
-	      menu-left-logo-large.png
-	      menu-left-logo-small.png 
-	   meta.json
-	   main.css
+   theme:
+   image:   
+     apple-touch-icon.png
+     apple-touch-icon-precomposed.png
+     favicon.ico
+     login-logo.png
+     logo.png
+     menu-left-logo-large.png
+     menu-left-logo-small.png 
+   meta.json
+   main.css
 
 где:
 
 * **root** - корень архива
-* **ecos** -  идентификатор темы
+* **theme** -  идентификатор темы
+* **image** - произвольная папка для изображений. Связь между реальным файлом и его идентификатором осуществляется в meta.json
 * **meta.json** - метаданные темы
 * **main.css** - главный файл со стилями
-* **image** - произвольная папка для изображений. Связь между реальным файлом и его идентификатором осуществляется в meta.json
 
 Общий вид **meta.json**::
 
- {
-  "name": {
-    "ru": "Тема ECOS",
-    "en": "ECOS theme"
-  },
-  "images": {
-    "favicon": "/image/favicon.ico",
-    "logo": "/image/logo.png",
-    "login-logo": "/image/login-logo.png",
-    "menu-left-logo-large": "/image/menu-left-logo-large.png",
-    "menu-left-logo-small": "/image/menu-left-logo-small.png"
+  {
+    "name": {
+      "ru": "Тема ECOS",
+      "en": "ECOS theme"
+    },
+    "parentRef": null,
+    "images": {
+      "favicon": "/image/favicon.ico",
+      "logo": "/image/logo.svg",
+      "login-logo": "/image/login-logo.svg",
+      "menu-left-logo-large": "/image/menu-left-logo-large.svg",
+      "menu-left-logo-small": "/image/menu-left-logo-small.svg",
+      "apple-touch-icon": "/image/apple-touch-icon.png",
+      "apple-touch-icon-precomposed": "/image/apple-touch-icon-precomposed.png"
+    }
   }
- }
 
 * **name** - имя темы. Справочная информация;
 * **images** - ссылки на изображения:
@@ -71,6 +76,8 @@
     * **login-logo** - логотип на странице логина
     * **menu-left-logo-large** - логотип в левом развернутом меню
     * **menu-left-logo-small** - логотип в левом свернутом меню
+    * **apple-touch-icon** - логотип, используемый iOS для закладок и сайтов «на домашнем экране»
+    * **apple-touch-icon-precomposed** - логотип, используемый в ранних версиях iOS для закладок и сайтов «на домашнем экране»
 
 Поддерживаемые форматы логотипов: **jpeg**, **ico**, **png** (в предстоящем релизе добавлен **svg**). Размер логотипа не лимитирован.
 
@@ -78,7 +85,7 @@
 
 На данный момент сервер никак не обрабатывает стили. Т.е. в архиве желательно грузить сразу минифицированные стили.
 
-Помимо main.css могут быть и другие стили и к ним можно получить доступ по API. В будущем если файл main.css будет отсутствовать, то сервер сгенерирует его из всех css файлов в теме.
+Помимо **main.css** могут быть и другие стили и к ним можно получить доступ по API. В будущем если файл main.css будет отсутствовать, то сервер сгенерирует его из всех css файлов в теме.
 
 Конфигурация active-theme
 ----------------------------

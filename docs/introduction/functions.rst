@@ -4,7 +4,7 @@
 .. toctree::
     :maxdepth: 3
 
-    
+    functions/client_360
     functions/onlyoffice_edit
     functions/delegation
     functions/wysiwyg_editor

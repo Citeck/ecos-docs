@@ -243,6 +243,7 @@
     ecos_modules/poa
     ecos_modules/vacation   
     ecos_modules/ept
+    ecos_modules/releases
     ecos_modules/worklog
     ecos_modules/portal_sd   
-    ecos_modules/releases
+    
