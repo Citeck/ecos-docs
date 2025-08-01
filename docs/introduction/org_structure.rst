@@ -15,24 +15,14 @@
 
  Оргструктура доступна в рабочем пространстве :ref:`Справочники<datalists>` и на :ref:`корпоративном портале<corp_portal>`.
 
-Для управления оргструктурой необходимо выбрать в главном меню пункт:
-
-.. image:: _static/org_structure/orgstructure_1.png
-       :width: 700
-       :align: center
-
-|
-
-.. image:: _static/org_structure/orgstructure.png
-       :width: 700
-       :align: center
-
-|
-
 Форма оргструктуры разделена на две части и содержит:
 
  - иерархическое дерево структуры с возможностью поиска **(1)**, 
  - дашборд с информацией о выбранной части структуры **(2)**. 
+
+.. image:: _static/org_structure/orgstructure.png
+       :width: 700
+       :align: center
 
 Создание группы
 ~~~~~~~~~~~~~~~~
