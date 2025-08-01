@@ -62,13 +62,7 @@
 
 Установите `Docker <https://docs.docker.com/get-docker/>`_ на Вашу ОС.
 
-Скачайте (ссылка) для вашей операционной системы дистрибутив **citeck-launcher**
-
- - Windows ...
- - Debian, Ubuntu ...
- - Mac ...
-
-и запустите.
+Скачайте актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_ и запустите.
 
 .. note::
 
