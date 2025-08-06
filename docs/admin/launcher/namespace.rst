@@ -3,7 +3,7 @@
 
 .. _launcher_new_space:
 
-Для запуска другого комплекта поставки создайте новый namespace. Нажмите **Create New Namespace**.
+Для запуска другого комплекта поставки в рабочем пространстве создайте новый namespace. Нажмите **Create New Namespace**.
 
 .. image:: _static/new_namespace.png
     :width: 600

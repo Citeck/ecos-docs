@@ -6,20 +6,30 @@
 1. Убедитесь, что установлены следующие необходимые компоненты и соблюдены требования к ОЗУ:
 
     - Установлен `Docker <https://docs.docker.com/get-docker/>`_
-    - **16 ГБ** ОЗУ для корректной работы Docker
+    - **16 ГБ** ОЗУ для корректного запуска Citeck
 
-2. Запустите Docker.
-3. Скачайте актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_ и запустите.
+2. Запустите **Docker**.
+3. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
+
+    - **.msi** для Windows
+    - **.deb** для Linux-подобных ОС
+    - **.dmg** для MacOS
 
 .. note::
 
-    При установке на Windows, если **SmartScreen** предотвратил запуск приложения, то нажмите **«Запустить в любом случае»**:
+    При установке на Windows, если **SmartScreen** предотвратил запуск приложения, то нажмите **"Подробнее"** и далее **«Выполнить в любом случае»**:
 
      .. image:: _static/01.png
          :width: 300
          :align: center
 
-3. Для быстрого запуска Citeck Community:
+3. Запустите **citeck-launcher**:
+
+.. image:: _static/01_1.png
+    :width: 400
+    :align: center
+
+4. Для быстрого **запуска Citeck Community**:
 
     - с предзаполненными :ref:`демонстрационными данными<ecos_modules>` - нажмите **Quick Start With Demo Data**:
 
@@ -35,31 +45,19 @@
         :width: 600
         :align: center
 
-4. 
+5. Скачивание и разворачивание образов начнется автоматически:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+    .. image:: _static/pulling.png
+        :width: 600
+        :align: center
 
-      * - | Нажмите **Update&Start**:       
-
-            .. image:: _static/starting.png
-                  :width: 600
-                  :align: center
-
-        - | Начнется скачивание и разворачивание образов:
-
-            .. image:: _static/pulling.png
-                  :width: 600
-                  :align: center
-
-5. Дождитесь статуса **Running** всех микросервисов и приложений и нажмите **Open In Browser**:
+6. Дождитесь статуса **Running** всех микросервисов и приложений и нажмите **Open In Browser**:
 
 .. image:: _static/open.png
     :width: 600
     :align: center
 
-6. 
+7. 
 
 .. list-table::
       :widths: 20 20
@@ -78,7 +76,7 @@
                   :align: center
 
 
-7.  Далее по адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства<ws_personal>`:
+8.  По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства<ws_personal>`:
 
 .. image:: _static/page_04.png
     :width: 700
@@ -102,8 +100,8 @@
 
 Подробно о: 
 
+    * :ref:`модулях и учетных записях<ecos_modules>`; 
     * :ref:`рабочих пространствах<workspaces>`; 
     * :ref:`корпоративном портале<corp_portal>`;
-    * :ref:`модулях и учетных записях<ecos_modules>`; 
     * :ref:`разделе администратора<admin>`.
 
