@@ -34,7 +34,7 @@
 
 В статьях представлена информация по установке Citeck Community:
 
-    * :ref:`Развертывание Citeck с использованием кросплатформенного лончера <citeck_launcher>`; 
+    * :ref:`Развертывание Citeck с использованием кросплатформенного лончера <quick_start>`; 
     * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
     * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
 
