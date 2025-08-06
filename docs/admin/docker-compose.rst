@@ -6,52 +6,15 @@
 .. contents::
     :depth: 5
 
-Системные требования
----------------------
+Системные требования 
+--------------------
 
-.. tabs::
+ - Установлен `Docker <https://docs.docker.com/get-docker/>`_
+ - Установлен `Docker Compose <https://docs.docker.com/compose/install/>`_
+ - **16 ГБ** ОЗУ для корректного запуска Citeck
 
-   .. tab:: Windows   
-
-     * Windows 11 64bit: Home, Pro, Enterprise или Education версии 21H2 или выше.
-     * Windows 10 64bit: Home или Pro 21H1 (сборка 19043) или выше, Enterprise или Education 20H2 (сборка 19042) или выше
-     * Включите функцию WSL 2 в Windows. Подробные инструкции см. `в документации Microsoft <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
-     * Для успешного запуска WSL 2 в Windows 10 или Windows 11 необходимы следующие предварительные требования к оборудованию:
-
-       * 64-битный процессор с трансляцией адресов второго уровня (`SLAT <https://en.wikipedia.org/wiki/Second_Level_Address_Translation>`_)
-       * Не менее 16 ГБ оперативной памяти.
-       * 80 Гб свободного дискового пространства.
-       * Поддержка аппаратной виртуализации на уровне BIOS должна быть включена в настройках BIOS. Дополнительные сведения см. `в разделе Виртуализация <https://docs.docker.com/desktop/troubleshoot/topics/#virtualization>`_
-
-     * Загрузить и установить `пакет обновления ядра Linux <https://docs.microsoft.com/windows/wsl/wsl2-kernel>`_
-
-    `Официальное руководство по установке Docker на Windows <https://docs.docker.com/desktop/install/windows-install/>`_
-
-   .. tab:: Linux   
-
-     * Поддержка 64-битного ядра и процессора для виртуализации.
-     * Поддержка виртуализации KVM. Следуйте `инструкциям поддержки виртуализации KVM <https://docs.docker.com/desktop/install/linux-install/#kvm-virtualization-support>`_ для проверки включены или нет модули ядра KVM и как предоставить доступ к устройству kvm.
-     * QEMU должен быть версии 5.2 или новее. Рекомендуем обновиться до последней версии.
-     * Подсистема инициализации и управления службами systemd.
-     * Gnome или среда рабочего стола KDE.
-     * Не менее 16 ГБ оперативной памяти.
-     * 80 Гб свободного дискового пространства.
-     * Включите настройку сопоставления идентификаторов в пространствах имен пользователей, см. `Общий доступ к файлам <https://docs.docker.com/desktop/install/linux-install/#file-sharing>`_
-
-    `Официальное руководство по установке Docker на Linux <https://docs.docker.com/desktop/install/linux-install/>`_
-
-    `Официальное руководство по установке Docker на Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
-
-   .. tab:: MacOS   
-
-     * MacOS версии 10.15 или выше.
-     * Не менее 16 ГБ оперативной памяти.
-     * 80 Гб свободного дискового пространства.
-
-    `Официальное руководстов по установке Docker на MacOS <https://docs.docker.com/desktop/install/mac-install/>`_
-
-Установка и запуск проекта
----------------------------
+Установка и запуск Citeck Community
+-------------------------------------
 
 .. important:: 
 
@@ -113,7 +76,9 @@
 
     * :ref:`рабочих пространствах<workspaces>`; 
     * :ref:`корпоративном портале<corp_portal>`;
+    * :ref:`модулях и учетных записях<ecos_modules>`; 
     * :ref:`разделе администратора<admin>`.
+
 
 .. note:: 
 
@@ -159,6 +124,7 @@
     .. code-block::
 
         docker-compose up -d
+
 
 Подготовка окружения и установка Citeck
 ------------------------------------------
