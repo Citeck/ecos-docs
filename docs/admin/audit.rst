@@ -77,27 +77,27 @@ AuthorityFilter
 .. code-block::
 
     ecos:
-    webapp:
+      webapp:
         audit:
-        enabled: true
-        pipelines:
+          enabled: true
+          pipelines:
             main:
-            filter:
+              filter:
                 type:
-                includes: [
+                  includes: [
                     "records.query-records",
                     "records.get-records-atts",
                     "records.mutate-record",
                     "records.delete-records"
-                ]
+                  ]
                 headers: |
-                {"t":"like","att":"sourceId","val":"%-cipher"}
-            outputs: ["rabbitmq", "log"]
-        outputs:
+                  { "t": "like","att": "sourceId","val": "%-cipher" }
+              outputs: [ "rabbitmq", "log" ]
+          outputs:
             rabbitmq:
-            type: rabbitmq
+              type: rabbitmq
             log:
-            type: log
+              type: log
 
 .. list-table::
       :widths: 10 10 40
