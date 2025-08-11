@@ -20,7 +20,13 @@
     :width: 600
     :align: center
 
-|
+Непосредственно из списка namespace можно отредактировать, удалить:
+
+.. image:: _static/namespaces_2.png
+    :width: 600
+    :align: center
+
+При выборе namespace доступна актуальная информация о микросервисах и приложениях в его составе, а так же действия:
 
 .. image:: _static/overview.png
     :width: 600

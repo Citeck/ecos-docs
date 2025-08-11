@@ -145,7 +145,10 @@ ECOS Config
 .. code-block:: javascript
 
     // Получение значения конфигурации по ключу и приведение к типу String
-    var serviceDeskEmailFrom = Config.get("app/service-desk$send-sd-email-from").asText()
+    const serviceDeskEmailFrom = Config.get("app/service-desk$send-sd-email-from").asText()
+    
+    // Получение значение конфигурации из ecos-app и приведение к типу Boolean
+    const enabled = Config.get("app/eapps$enable-crm-lead-ai-spam-check").asBoolean();
 
 DataValue
 ~~~~~~~~~
