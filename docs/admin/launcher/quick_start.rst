@@ -9,7 +9,12 @@
     - **16 ГБ** ОЗУ для корректного запуска Citeck
 
 2. Запустите **Docker**.
-3. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
+
+.. note::
+
+    По умолчанию Windows выделяет 50 % общей памяти для WSL 2. Для увеличкния объема памяти, воспользуйтесь `инструкцией <https://learn.microsoft.com/ru-ru/windows/wsl/wsl-config#configuration-settings-for-wslconfig>`_ 
+
+1. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
 
     - **.msi** для Windows
     - **.deb** для Linux-подобных ОС
@@ -108,3 +113,6 @@
     * :ref:`корпоративном портале<corp_portal>`;
     * :ref:`разделе администратора<admin>`.
 
+.. note:: 
+
+    Для экономии ресурсов можно остановить микросервис **onlyoffice**, изменить аутентификацию с keycloak на **basic**.
