@@ -721,7 +721,7 @@
                      :width: 200
                      :align: center 
 
-       - Откройте почту и отправьте письмо на адрес support@citeck.ru. 
+       - Откройте почту и отправьте письмо на адрес support@citeck.ru 
   
                .. image:: _static/homepage/intro_34.png
                      :width: 600
