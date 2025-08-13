@@ -84,6 +84,8 @@
                   :width: 500
                   :align: center         
           
+          |
+          
            .. image:: _static/org_structure/edit_person.png
                   :width: 500
                   :align: center
