@@ -65,7 +65,7 @@
                 :width: 700
                 :align: center
 
-        - | :ref:`CRM<ecos-crm>`
+        - | :ref:`CRM<ecos-crm_new>`
           | :ref:`Поручения<ecos-assignments>`
 
       * - | **Справочники**
@@ -236,7 +236,6 @@
     ecos_modules/edo
     ecos_modules/InDoc
     ecos_modules/OutDoc
-    ecos_modules/crm
     ecos_modules/crm_new
     ecos_modules/service_desk
     ecos_modules/meeting
