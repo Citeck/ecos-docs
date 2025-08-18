@@ -25,6 +25,7 @@
         - | :ref:`Внутренние документы<ecos-order-ORD>`
           | :ref:`Входящие документы<ecos-indoc>`
           | :ref:`Исходящие документы<ecos-outdoc>`
+          | :ref:`Работа с документами ЭДО<EDI_in_out>`
           | :ref:`Совещания<ecos-meetings>`
           | :ref:`Поручения<ecos-assignments>`
 
@@ -36,6 +37,7 @@
                 :align: center
 
         - | :ref:`Договоры<ecos-contract>`
+          | :ref:`Работа с документами ЭДО<EDI_in_out>`
           | :ref:`Поручения<ecos-assignments>`
 
       * - | **Service desk**
@@ -84,7 +86,8 @@
                 :width: 700
                 :align: center
 
-        - | :ref:`Заявления на отпуск<ecos-vacation>`
+        - | :ref:`Корпоративный портал<corp_portal>`
+          | :ref:`Заявления на отпуск<ecos-vacation>`
           | :ref:`Пропуска<ecos-order-pass>`
 
       * - | **Рабочее пространство проекта**
