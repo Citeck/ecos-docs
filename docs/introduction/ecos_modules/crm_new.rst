@@ -240,6 +240,8 @@
        :width: 600
        :align: center
 
+В карточке лида автоматически указывается созданная сделка.
+
 Сделка
 -------
 
@@ -334,7 +336,7 @@
 
 1.	Виджет :ref:`«Стадии»<widget_stages>` визуализирует прохождение статусов сделки и доступен только в enterprise версии.
 
-  .. image:: _static/crm/CRM_6.png
+  .. image:: _static/crm_new/stages.png
         :width: 600
         :align: center
 
