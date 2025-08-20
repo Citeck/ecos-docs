@@ -66,21 +66,9 @@ Project tracker
 Определите **участников**. У участника могут быть права – пользователя или менеджера (с возможностью управления рабочим пространством).
 Пользователь, создающий пространство, получает роль **«Менеджер»**.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
-
-      * - |
-
-            .. image:: _static/ept/ws_05.png
-                  :width: 500
-                  :align: center
-
-        - |
-
-            .. image:: _static/ept/ws_06.png
-                  :width: 500
-                  :align: center
+ .. image:: _static/ept/ws_05.png
+       :width: 500
+       :align: center 
 
 
 Разделы
