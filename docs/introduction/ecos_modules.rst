@@ -67,7 +67,7 @@
                 :width: 700
                 :align: center
 
-        - | :ref:`CRM<ecos-crm_new>`
+        - | :ref:`CRM<ecos-crm>`
           | :ref:`Поручения<ecos-assignments>`
 
       * - | **Справочники**
