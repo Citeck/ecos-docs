@@ -1,6 +1,8 @@
 Процесс заявки на закупку оборудования. Добавление справочника. Журнал и форма не по умолчанию
 ===============================================================================================
 
+.. _sample_request_complicated:
+
 .. contents::
 	:depth: 3
 
@@ -23,13 +25,13 @@
 
 Для создания типа данных перейдите в журнал **«Типы данных» (Раздел администратора - Модель - Типы данных)**:
 
-.. image:: _static/equipment_request_complicated/01.png
+.. image:: _static/equipment_request/type_new_1.png
        :width: 700
        :align: center
 
 нажмите **+ - Создать новый тип**:
 
-.. image:: _static/equipment_request_complicated/02.png
+.. image:: _static/equipment_request/type_new_2.png
        :width: 600
        :align: center
 
@@ -196,7 +198,7 @@
 Заполните открывшуюся форму:
 
 .. image:: _static/equipment_request_complicated/13.png
-       :width: 500
+       :width: 600
        :align: center
 
 .. list-table:: 
@@ -205,17 +207,17 @@
       :align: center
       :class: tight-table 
 
-      * - Номер маркера (1)
-        - Название поля (2)
-        - Значение (3)
-      * - 1
-        - 2
-        - 3
-      * - id
+      * - Номер маркера
+        - Название поля
+        - Значение
+      * - **1**
+        - id
+        - equipment-request-number-template
+      * - **2**
         - Name
-        - Counter key
-      * - equipment-request-number-template
         - Equipment Request Number Template
+      * - **3**
+        - Counter key
         - equipment-request-counter
 
 И выберите созданный шаблон:
@@ -387,7 +389,7 @@
 
 **Сохраните.**
 
-5. Поле **«Комментарий согласующего»** будет заполняться при согласовании. Тогда при создании заявки запретим ввод данных в него:
+1. Поле **«Комментарий согласующего»** будет заполняться при согласовании. Тогда при создании заявки запретим ввод данных в него:
 
 .. image:: _static/equipment_request_complicated/attributeForComment_form.png
        :width: 600
@@ -511,10 +513,10 @@
 Процесс можно сохранить и опубликовать, нажав:
 
 .. image:: _static/equipment_request_complicated/comment_to_bp_05.png
-       :width: 700
+       :width: 800
        :align: center
 
-Для проверки процесса создайте заявку, отправьте ее на согласование. Если согласующий вносит комментарий в задачу:
+Для проверки процесса создайте заявку, отправьте ее на согласование, ей будет присвоен номер вида **Заявка_N**. Если согласующий вносит комментарий в задачу:
 
 .. image:: _static/equipment_request_complicated/comment_01.png
        :width: 600

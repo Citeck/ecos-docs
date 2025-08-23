@@ -55,19 +55,19 @@
 
 Для создания типа данных перейдите в рабочее пространство администратора:
 
-  .. image:: _static/offer//adm_ws.png
+  .. image:: _static/offer/adm_ws.png
        :width: 700
        :align: center
 
 в разделе **Модель** перейдите в пункт **Типы данных**:
 
-  .. image:: _static/equipment_request/type_new_1.png
-       :width: 600
+  .. image:: _static/offer/type_new_1.png
+       :width: 700
        :align: center
 
 нажмите **+ - Создать новый тип**:
 
-  .. image:: _static/equipment_request/type_new_2.png
+  .. image:: _static/offer/type_new_2.png
        :width: 500
        :align: center
 
@@ -2429,7 +2429,7 @@
 1.	Перейдите в настройку меню, нажав на шестеренку справа сверху, далее выберите **«Настроить меню»**:
 
  .. image:: _static/offer/bmpn28.png
-       :width: 600
+       :width: 700
        :align: center
 
 2.	Перейдите во вкладку **"Меню "Создать"**, выберите элемент меню, в котором будет находиться процесс. Наведите курсор на добавленный раздел, нажмите **«+ Добавить»**, выберите **«Добавить ссылку на создание кейса»**:
