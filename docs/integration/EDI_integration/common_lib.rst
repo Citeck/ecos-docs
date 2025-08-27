@@ -5,7 +5,7 @@
 
     Доступно только в Enterprise версии.
 
-1. Данная библиотека нужна для обработки события от провайдера непосредственно в ecos. При ее деплое как osgi-bundle, разворачивается camel контекст с внешним роутом - direct-vm:ecosEventsReceiveVmRoute. Все события от разных провайдеров будут падать в этот роут.   
+1. Данная библиотека нужна для обработки события от провайдера непосредственно в Citeck. При ее деплое как osgi-bundle, разворачивается camel контекст с внешним роутом - direct-vm:ecosEventsReceiveVmRoute. Все события от разных провайдеров будут падать в этот роут.   
 
 2. Путь до библиотеки: `https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration>`_
 
