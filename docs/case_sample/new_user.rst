@@ -28,13 +28,13 @@
 Для входа в Keycloak используйте логин и пароль: **admin/VeryStrongPassword**
 
  .. image:: _static/new_user/User_3.png
-       :width: 600
+       :width: 650
        :align: center
 
 Перейдите в **Users**. По кнопке **View all users** можно посмотреть список всех пользователей.
 
  .. image:: _static/new_user/User_4.png
-       :width: 600
+       :width: 650
        :align: center
 
 Для добавления пользователя нажмите **Add user**:
@@ -72,7 +72,7 @@
 В рабочем пространстве :ref:`«Раздел администратора»<admin>` перейдите в раздел **Пользователи**, откройте созданного пользователя в режиме редактирования:
 
  .. image:: _static/new_user/User_8.png
-       :width: 600
+       :width: 700
        :align: center
 
 Введите обязательно **имя** и **электронную почту**, заполните остальные поля при необходимости:
