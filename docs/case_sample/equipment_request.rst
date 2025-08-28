@@ -446,13 +446,13 @@
   -	Добавьте при помощи контекстного меню компонент **Task**
 
   .. image:: _static/equipment_request/User_task_3.png
-       :width: 400
+       :width: 500
        :align: center
 
   -	Измените тип компонента с **Task** на **User Task**:
 
   .. image:: _static/equipment_request/User_task_4.png
-       :width: 500
+       :width: 600
        :align: center
 
   -	Имя - **На согласовании согласующим**, 
@@ -542,13 +542,13 @@
  **Gateway компонент** отвечает за разветвление маршрутов и за слияние потоков. Для его добавления необходимо нажать на соответствующую иконку в контекстном меню или на панели слева (но в этом случае придётся самостоятельно проставлять связи их направления):
 
     .. image:: _static/equipment_request/gateway_1.png
-       :width: 500
+       :width: 600
        :align: center
 
 |
 
     .. image:: _static/equipment_request/gateway_2.png
-       :width: 500
+       :width: 600
        :align: center
 
 7. После **Gateway** необходимо поставить 2 компонента смены статуса на **«Согласовано»/ «Отказано»**. Для этого повторяем действия первой смены статуса (пункт 2):
@@ -556,7 +556,7 @@
   -	У компонента **Gateway** нажмите в контекстном меню на иконку **Set Status**:
 
   .. image:: _static/equipment_request/set_status_3.png
-       :width: 500
+       :width: 600
        :align: center
 
   -	Имя - **Статус «Согласовано»**. 
@@ -581,7 +581,7 @@
  Для потока **«Согласовано»**:
 
   .. image:: _static/equipment_request/Sequence_Flow_1.png
-       :width: 500
+       :width: 600
        :align: center
 
   -	Укажите имя **Согласовано**. 
@@ -595,7 +595,7 @@
 Для потока **«Отказано»**:
 
   .. image:: _static/equipment_request/Sequence_Flow_3.png
-       :width: 500
+       :width: 600
        :align: center
 
   -	Укажите имя **Отказан**. 
@@ -610,7 +610,7 @@
 9.	Дальше необходимо добавить компонент, который будет означать, что процесс закончен. Для этого в контекстном меню компонентов **«Статус «Согласовано»** и **«Статус «Отказано»** необходимо нажать на иконку :ref:`End event<bpmn_events>` компонента.
 
   .. image:: _static/equipment_request/end_event_1.png
-       :width: 500
+       :width: 600
        :align: center
 
   Так же для второго выхода gateway добавим **End Event компонент**. 
