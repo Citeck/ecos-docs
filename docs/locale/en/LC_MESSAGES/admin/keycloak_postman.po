@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/keycloak_postman.rst:4
+msgid "Настройки аутентификации для работы с Records API из внешних систем"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:9
+msgid ""
+"В статье описана последовательность настроек Citeck для обеспечения "
+"корректной отправки http-запросов Records API. На примере Postman описана"
+" аутентификация в Citeck через OAuth 2.0 и отправка запросов."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:13
+msgid "Получение и работа с Client ID и Client Secret в Keycloak"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:15
+msgid ""
+"Для получения токена для отправки запросов необходимо выполнить следующую"
+" последовательность действий:"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:17
+msgid ""
+"В **keycloak** создать клиента, из которого будет взят **Client ID** и "
+"**Client Secret**, которые будут использованы для получения "
+"bearer-токена."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:18
+msgid ""
+"Cоздать пользователя в Citeck по паттерну ``service-account-%имя "
+"созданного клиента%`` (знак % указывает, что переменная шаблонная. В "
+"самом имени указывать их не нужно)."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:21
+msgid "Создание клиента в Keycloak"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:23
+msgid "Зайти в админскую консоль keycloak."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:25
+#, python-format
+msgid "URL для доступа: ``%host%/auth/admin/master/console/``"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:27
+msgid "Выбрать необходимый реалм."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:33
+msgid ""
+"После перехода в реалм выбрать вкладку :guilabel:`clients`. Как видно на "
+"скриншоте, клиент service_qa уже создан. Пример создания будет на пункт "
+"ниже, но само конфигурирование будет показано на уже существующем "
+"service_qa."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:39
+msgid "Нажать кнопку :guilabel:`Create`"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:45
+msgid ""
+"На появившемся окне заполнить только **Client ID**, сохранить его "
+"куда-нибудь и нажать :guilabel:`Save`"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:51
+msgid ""
+"Откроется окно редактирования клиента. Для примера был создан клиент с "
+"**Client ID test**"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:57
+msgid "Заполнить вкладку :guilabel:`Settings` клиента согласно скриншоту ниже"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:59
+msgid "**Access Type**: confidential"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:60
+msgid "**Service Account Enabled**: true"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:61
+msgid ""
+"**Valid Redirect URLs**: Указывать URL'ы, которые нужны для "
+"использования. Для тестов можно просто указать * (На продуктивных средах "
+"так делать крайне не рекомендуется!)"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:63
+msgid "В самом низу страницы нажать :guilabel:`Save`."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:69
+msgid ""
+"8.      Открыть вкладку :guilabel:`Credentials`, найти поле **Secret**. "
+"Это и есть **Client Secret**. Сохранить его себе туда же, где был "
+"сохранен Client ID в п.5. В случае компроментирования, или любой другой "
+"необходимости, его можно перегенерировать, используя кнопку "
+":guilabel:`Regenerate Secret`."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:77
+msgid "Cоздание пользователя в Citeck"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:79
+msgid ""
+"Перейти в соответствующий реалм Citeck. В рабочем пространстве **«Раздел "
+"администратора»** открыть пункт меню **Пользователи**, для добавления "
+"нового пользователя нажать кнопку :guilabel:`+`:"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:85
+msgid "Заполнить форму."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:87
+msgid ""
+"Заполнить поле **Системное Имя** по паттерну ``service-account-%имя "
+"созданного клиента%``. Остальные поля можно не заполнять, так как "
+"пользователь сервисный и заходить под ним никто не будет."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:93
+msgid "Теперь можно совершать запросы к системе через gateway."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:97
+msgid "Отправка запросов в Citeck"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:99
+msgid "При работе с системой Citeck используется авторизация OAuth 2.0."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:101
+msgid ""
+"Для отправки запросов ее также нужно настроить в Postman, SoapUI или "
+"другом инструменте тестирования, который вы используете."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:103
+msgid "Рассмотрим настройку на примере Postman."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:105
+msgid "Перейти на вкладку авторизации и выбрать тип **OAuth 2.0**."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:111
+msgid "В разделе :guilabel:`Current Token` указать префикс **Bearer**."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:117
+msgid ""
+"Далее в разделе :guilabel:`Configure New Token` указать тип выдачи прав "
+"**Client Credentials**. В поле **Access Token URL** указать **URL**, "
+"откуда запрашивать токен авторизации, вида **https://<URL сервера>/ecos-"
+"idp/auth/...**"
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:123
+msgid ""
+"Указать **Client ID** и **Client Secret**. Задать имя токена, имя может "
+"быть любым."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:129
+msgid ""
+"5.      В настройке **Client Authentication** установить значение **Send "
+"as Basic Auth header** для отправки токена в заголовке. Попробовать "
+"получить токен и указать и использовать его в запросе, в результате "
+"значение токена подставится в раздел :guilabel:`Current Token`."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:144
+msgid ""
+"Если тело запроса заполнено, то можно выполнять основной запрос на стенд."
+" Срок действия токена можно посмотреть при его получении."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:150
+msgid ""
+"В дальнейшей работе по истечении срока действия токена его нужно "
+"обновить, повторно нажав **Get New Access Token → Use Token**."
+msgstr ""
+
+#: ../../admin/keycloak_postman.rst:153
+msgid ""
+"См. :ref:`Примеры использования Records API для внешних "
+"систем<API_examples>`"
+msgstr ""
+

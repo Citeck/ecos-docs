@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:2
+msgid "Конфигурация ЭДО"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:4
+msgid ""
+"После переноса ЭДО в микросервис интеграции - большая часть конфигурации,"
+" вроде идентификаторы ящиков, креды и т.д. переместились из системного "
+"журнала **Конфигурация EDI**. Информацию по этой конфигурации можно найти"
+" :ref:`Настройка получения событий с ящиком Контур_Диадок<events_kontur>`"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:6
+msgid "Актуальная конфигурация в журнале **\"Конфигурация EDI\"**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:8
+msgid ""
+"**signContentType** - указывается какая часть контента будет "
+"подписываться ЭЦП. Возможные значения:"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:10
+msgid ""
+"**content** (стоит по умолчанию) - это означает, что подпись должна "
+"строиться на основании всего контента документа целиком."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:12
+msgid ""
+"**digest** - подпись будет строиться на основании \"дайджеста\" "
+"документа, который высчитывается на стороне бэкенда ECOS. ЭДО провайдер "
+"его, насколько я знаю, не понимает как подпись к документу."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:14
+msgid ""
+"**inboundPackagesProcessing** - указывается, исходя из каких правил "
+"обрабатывать входящие документы. Возможные значения:"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:16
+msgid ""
+"**BOX_ID** - заставляет при получении входящего документа - искать "
+"обязательно контрагента в системе, от которого пришел данный документ. "
+"Если контрагент не найден - документ не будет загружен, событие ЭДО будет"
+" пропущено. Контрагент ищется с помощью алгоритмов EdiCounterpartyService"
+" на основании активного провайдера."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:18
+msgid ""
+"**ALL (или любое другое)** - игнорирование отсутствия контрагента. Все "
+"документы будут загружаться в систему."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:20
+msgid ""
+"**isplitLsdfDocflowByLegalEntities** - Зеркалирование. Включенный флаг "
+"обозначает, что исходящий пакет отправленный в свое же юр лицо попадет в "
+"систему еще и как входящий. С технической стороны, при поиске вложений, "
+"пакетов, подписей - мы ищем не просто по идентификаторам, но и по "
+"направлению. Возможные значения:"
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:22
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:28
+msgid "**true** - включено."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:24
+msgid "**false (или любое другое)** - выключено."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:26
+msgid ""
+"**iallowGenerateLsdfPrintFormsAsyncOnFail** - Оптимизация. Разрешить "
+"генерировать печатную форму (ПФ) асинхронно, если ЭДО-провайдер не смог "
+"отдать ее сразу при получении пакета. Актуально для проектов, у которых "
+"заказчикам приходит огромный объем формализованных документов. Так как "
+"для формализованных документов в ассоциацию попадает оригинальная xml, а "
+"в контент ПФ - необходимо время на генерацию этой ПФ. Данный флаг "
+"позволяет не прерывать работу интеграции, а указать флаг "
+"eint:needUpdatePrintForm. Осторожно, если в проекте нет джобы, которая "
+"будет регенерить документы с таким флагом - печатные формы, которые не "
+"были сгенерированы при получении не будет получены вообще. См. Генерация "
+"печатных форм."
+msgstr ""
+
+#: ../../integration/EDI_integration/4_RC2+_configuration.rst:30
+msgid "**false** (или любое другое) - выключено."
+msgstr ""
+

@@ -1,0 +1,285 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../architecture/patches.rst:2
+msgid "Патчи Citeck"
+msgstr ""
+
+#: ../../architecture/patches.rst:5
+msgid "Содержание"
+msgstr ""
+
+#: ../../architecture/patches.rst:7
+msgid ""
+"**Патч** - некоторая работа, которую нужно выполнить один раз после "
+"запуска системы. Патчи могут быть использованы для автоматической или "
+"ручной миграции."
+msgstr ""
+
+#: ../../architecture/patches.rst:9
+msgid ""
+"Патчи Citeck - это артефакты с типом **app/patch**, которые подчиняются "
+"тем же правилам деплоя, что и остальные артефакты. Уникальность патча в "
+"пределах системы определяется по **targetApp + id**"
+msgstr ""
+
+#: ../../architecture/patches.rst:12
+msgid "Модель"
+msgstr ""
+
+#: ../../architecture/patches.rst:26
+msgid "Типы патчей"
+msgstr ""
+
+#: ../../architecture/patches.rst:33
+msgid "Тип"
+msgstr ""
+
+#: ../../architecture/patches.rst:34
+msgid "Конфигурация"
+msgstr ""
+
+#: ../../architecture/patches.rst:35
+msgid "Описание"
+msgstr ""
+
+#: ../../architecture/patches.rst:36
+msgid "**bean**"
+msgstr ""
+
+#: ../../architecture/patches.rst:37
+msgid "**beanId: String** - идентификатор бина для исполнения"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "Запустить бин в контексте приложения."
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "Поддерживаются следующие интерфейсы:"
+msgstr ""
+
+#: ../../architecture/patches.rst:41
+msgid "Runnable"
+msgstr ""
+
+#: ../../architecture/patches.rst:42
+msgid "Function0<*>"
+msgstr ""
+
+#: ../../architecture/patches.rst:43
+msgid "Callable<*>"
+msgstr ""
+
+#: ../../architecture/patches.rst:44
+msgid "StatefulEcosPatch<*>"
+msgstr ""
+
+#: ../../architecture/patches.rst:45
+msgid "**delete**"
+msgstr ""
+
+#: ../../architecture/patches.rst:46
+msgid "**records: RecordRef[]**"
+msgstr ""
+
+#: ../../architecture/patches.rst:47
+msgid "Удалить указанные записи"
+msgstr ""
+
+#: ../../architecture/patches.rst:48
+msgid "**mutate**"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "**records: RecordAtts[]**"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "**record: RecordAtts**"
+msgstr ""
+
+#: ../../architecture/patches.rst:52
+msgid "где RecordAtts:"
+msgstr ""
+
+#: ../../architecture/patches.rst:54
+msgid "id: String"
+msgstr ""
+
+#: ../../architecture/patches.rst:55
+msgid "attributes: Map<String, Any?>"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "Произвести мутацию указанных записей;"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid ""
+"Если в конфигурации указаны records, то используются они и поле "
+"**record** игнорируется;"
+msgstr ""
+
+#: ../../architecture/patches.rst
+msgid "Если в конфигурации не указаны records, то используется record."
+msgstr ""
+
+#: ../../architecture/patches.rst:61
+msgid "Дата патча"
+msgstr ""
+
+#: ../../architecture/patches.rst:63
+msgid ""
+"**Дата патча** - это ISO8601 ZULU значение даты и времени (напр. "
+"2022-01-01T00:00:00Z). Это время заполняется при создании патча вручную "
+"текущей датой. Точное соответствие времени не требуется, но желательно "
+"чтобы дата указывалась хотя бы с точностью до дней. Дата патча "
+"используется для нескольких вещей:"
+msgstr ""
+
+#: ../../architecture/patches.rst:65
+msgid ""
+"Для сортировки патчей. Патчи с меньшим временем будут исполняться раньше."
+" Эта гарантия действует только для патчей в пределах одного приложения. "
+"Т.е. тогда когда мы описываем патчи в приложении, которые будут "
+"исполняться в рамках того же приложения. Для строгой зависимости нужно "
+"использовать поле dependsOn."
+msgstr ""
+
+#: ../../architecture/patches.rst:67
+msgid ""
+"Для возможности управления исполнением патча. Решение о исполнении патча "
+"принимается на основе старого и нового значений даты:"
+msgstr ""
+
+#: ../../architecture/patches.rst:69
+msgid "Если старая_дата отсутствует (новый патч), то патч исполнится;"
+msgstr ""
+
+#: ../../architecture/patches.rst:71
+msgid ""
+"Если старая_дата >= новая_дата, то патч считается выполненным и не "
+"исполнится;"
+msgstr ""
+
+#: ../../architecture/patches.rst:73
+msgid ""
+"Если старая_дата < новая_дата, то патч считается обновленным и ставится в"
+" очередь на исполнение;"
+msgstr ""
+
+#: ../../architecture/patches.rst:75
+msgid ""
+"Таким образом, если мы хотим, чтобы уже сработавший патч перевыполнился "
+"при следующем обновлении, то мы просто увеличиваем время в date."
+msgstr ""
+
+#: ../../architecture/patches.rst:78
+msgid "Использование в коде"
+msgstr ""
+
+#: ../../architecture/patches.rst:80
+msgid "Для описания патчей можно использовать аннотацию **@EcosPatch**"
+msgstr ""
+
+#: ../../architecture/patches.rst:82
+msgid ""
+"Для указания зависимостей можно использовать аннотацию "
+"**@EcosPatchDependsOn**"
+msgstr ""
+
+#: ../../architecture/patches.rst:101
+msgid ""
+"Если предполагается, что патч выполняет объемную работу и может "
+"выполняться более 30 секунд, то нужно использовать **StatefulEcosPatch**."
+msgstr ""
+
+#: ../../architecture/patches.rst:105
+msgid "Stateful патчи"
+msgstr ""
+
+#: ../../architecture/patches.rst:107
+msgid ""
+"Для выполнения некоторой объемной работы можно использовать Stateful "
+"патчи (патчи с состоянием)."
+msgstr ""
+
+#: ../../architecture/patches.rst:109
+msgid ""
+"Их суть заключается в том, что при выполнении патча мы не делаем всю "
+"работу сразу, а выполняем некоторую часть работы, после чего возвращаем "
+"промежуточное состояние процесса."
+msgstr ""
+
+#: ../../architecture/patches.rst:111
+msgid ""
+"Для реализации Stateful патча нужно реализовать интерфейс "
+"**StatefulEcosPatch<Config>**,"
+msgstr ""
+
+#: ../../architecture/patches.rst:113
+msgid ""
+"где **Config** - это произвольный тип, который представляет состояние "
+"выполнения."
+msgstr ""
+
+#: ../../architecture/patches.rst:115
+#, python-brace-format
+msgid ""
+"Важно, чтобы инстанс этого класса можно было создать из пустого объекта "
+"({}) т.к. это начальное состояние для патча."
+msgstr ""
+
+#: ../../architecture/patches.rst:117
+msgid "Пример в коде:"
+msgstr ""
+
+#: ../../architecture/patches.rst:137
+msgid "Архитектура"
+msgstr ""
+
+#: ../../architecture/patches.rst:143
+msgid ""
+"Из приложения артефакты патчей попадают в **ecos-apps** по стандартному "
+"механизму деплоя артефактов и сохраняются в БД."
+msgstr ""
+
+#: ../../architecture/patches.rst:145
+msgid ""
+"Далее **ecos-apps** периодически опрашивает таблицу патчей на наличие "
+"тех, которые можно применить (т.е. **targetApp** доступен и статус патча "
+"позволяет его применить)."
+msgstr ""
+
+#: ../../architecture/patches.rst:147
+msgid ""
+"Если патч для применения нашелся, то мы выполняем команду на выполнение "
+"патча и отправляем её в **targetApp**. Результат выполнения команды мы "
+"кладем в БД."
+msgstr ""
+
+#: ../../architecture/patches.rst:149
+msgid ""
+"Если при выполнении патча возникла ошибка, то мы сохраняем эту ошибку в "
+"БД и через некоторое время повторяем попытку применить патч."
+msgstr ""
+

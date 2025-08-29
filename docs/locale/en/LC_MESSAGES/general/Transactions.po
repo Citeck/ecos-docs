@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Transactions.rst:2
+msgid "Транзакции"
+msgstr ""
+
+#: ../../general/Transactions.rst:4
+msgid "В Citeck реализованы транзакции на базе двухфазного коммита."
+msgstr ""
+
+#: ../../general/Transactions.rst:6
+msgid "Описание сущностей:"
+msgstr ""
+
+#: ../../general/Transactions.rst:8
+msgid ""
+"**Транзакционный ресурс** - ресурс, который поддерживает работу с "
+"транзакциями (например - база данных);"
+msgstr ""
+
+#: ../../general/Transactions.rst:10
+msgid ""
+"**Транзакционное действие** - действие, которое привязывается к "
+"жизненному циклу транзакции и выполняется в одном из трех случаев - перед"
+" коммитом, после коммита, после отката транзакции;"
+msgstr ""
+
+#: ../../general/Transactions.rst:12
+msgid ""
+"**Транзакция** - сущность, в рамках которой можно регистрировать "
+"транзакционные ресурсы и действия. Если в ходе транзакции поисходит "
+"ошибка, то транзакция откатывается и система возвращается к состоянию до "
+"начала транзакции;"
+msgstr ""
+
+#: ../../general/Transactions.rst:14
+msgid "**Транзакционный менеджер** - менеджер, который управляет транзакциями."
+msgstr ""
+
+#: ../../general/Transactions.rst:16
+msgid "Жизненный цикл транзакции:"
+msgstr ""
+
+#: ../../general/Transactions.rst:22
+msgid "Общая схема работы:"
+msgstr ""
+
+#: ../../general/Transactions.rst:28
+msgid "Текстовое описание:"
+msgstr ""
+
+#: ../../general/Transactions.rst:30
+msgid "Транзакция начинается."
+msgstr ""
+
+#: ../../general/Transactions.rst:32
+msgid "В ходе работы идет работа с ресурсами, которые регистрируются в транзакции"
+msgstr ""
+
+#: ../../general/Transactions.rst:34
+msgid ""
+"Так же в ходе работы возникают действия, которые нужно выполнить перед "
+"коммитом, после коммита или после ролбэка."
+msgstr ""
+
+#: ../../general/Transactions.rst:36
+msgid ""
+"Перед коммитом выполняются все транзакционные действия, которые "
+"зарегистрировались в транзакции"
+msgstr ""
+
+#: ../../general/Transactions.rst:38
+msgid ""
+"Перед коммитом проверяется количество ресурсов. Если ресурс один, то "
+"выполняется однофазный коммит. Если ресурсов несколько, то выполняется "
+"подготовка к коммиту и коммит подготовленной транзакции."
+msgstr ""
+
+#: ../../general/Transactions.rst:40
+msgid ""
+"После коммита выполняются все транзакционные действия, которые "
+"зарегистрировались в транзакции"
+msgstr ""
+
+#: ../../general/Transactions.rst:42
+msgid ""
+"Если что-то пошло не так в ходе транзакции, то все ресурсы откатываются к"
+" исходногому состоянию и выполнятются действия после ролбэка, кторые "
+"успели зарегистироваться в ходе транзакции."
+msgstr ""
+
+#: ../../general/Transactions.rst:44
+msgid "Работа с транзакциями в котлин коде:"
+msgstr ""
+
+#: ../../general/Transactions.rst:52
+msgid "Работа с транзакциями в java коде:"
+msgstr ""
+
+#: ../../general/Transactions.rst:60
+msgid ""
+"Данные методы создают транзакцию? если её нет или используют "
+"существующую. Если требуется принудительно выполнить действие в новой "
+"транзакции, то следует использовать методы ``doInNewTxn`` и "
+"``doInNewTxnJ`` соответственно."
+msgstr ""
+
+#: ../../general/Transactions.rst:62
+msgid ""
+"Для Records API транзакции запускаются автоматически в момент, когда к "
+"нам приходит запрос извне нашего приложения."
+msgstr ""
+

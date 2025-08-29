@@ -1,0 +1,680 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:4
+msgid "Синхронизация данных контрагентов и их ящиков с Контур.Диадок"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:6
+msgid ""
+"Данная синхронизация предназначена для автоматизации заполнения данных "
+"контрагентов, включая ящики ЭДО."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:8
+msgid "Логика работы:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:10
+msgid ""
+"При создании синхронизации, стандартными средствами Citeck создается "
+"**FutureTask**, привязанный к определенному триггеру, который завязан на "
+"крон, или на переодический таймер"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:11
+msgid ""
+"При вызове созданной ранее **FutureTask**, выполняется метод ``execute``,"
+" вызывающий запуск синхронизации."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:12
+msgid "В методе ``execute``, вызывается метод ``executeImpl``, в котором:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:14
+msgid ""
+"Производится поиск зарегистрированного **CounterpartiesSyncService**, "
+"интерфейс которого определен в ecos-edi-commons, а реализация описывается"
+" в отдельном бандле для каждого ЭДО провайдера. К примеру :ref:`ecos-edi-"
+"kontur-lib<ecos-edi-kontur-lib>`"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:16
+msgid "Если **CounterpartiesSyncService** не найден, выбрасывается исключение."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:18
+msgid ""
+"Запускается синхронизация контрагентов, на основе описанной в "
+"синхронизации конфигурации."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:20
+msgid ""
+"Логика работы синхронизационного сервиса "
+"**KonturDiadocCounterpartiesSyncService**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:22
+msgid "Валидируются и извлекаются параметры, из конфигурации синхронизации."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:23
+msgid ""
+"Происходит отправка запроса в Контур.Диадок, для получения всех "
+"контрагентов, для заданного ящика. В данном случае видна разница между "
+"этой синхронизацией и синхронизацией документов. В данном случае, мы "
+"получаем всех контрагентов, так как у Контура нет никакой событийной "
+"системы для них."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:24
+msgid ""
+"Производится маппинг данных, полученных из Контура в dto Counterparty, "
+"описанное в ecos-edi-commons."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:25
+msgid ""
+"Полученные и обработанные данные передаются в camel route, описанный в "
+"настройках синхронизации."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:28
+msgid "Устройство бандла для обработки контрагентов"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:30
+msgid "Бандл устроен достаточно просто:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:32
+msgid ""
+"Активатор, в котором, в момент загрузки бандла инициализируется фабрика "
+"**ApplicationCamelContextFactory**. В момент его удаления происходит её "
+"уничтожение."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:33
+msgid "Класс фабрики для инициализации camel routes и всех необходимых сервисов."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:34
+msgid ""
+"Классы самих роутов, в которых производится фильтрация, передача данных в"
+" другие роуты и делегирование обработки классам процессорам."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:35
+msgid "Классы процессоры, которые обрабатывают данные по необходимому алгоритму."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:37
+msgid ""
+"Классы роутов устроены достаточно однотипно и их логика не будет "
+"меняться, если нет необходимости исключить какие-то статусы из обработки."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:39
+msgid ""
+"Классы процессоры обрабатывают данные, согласно заложенному в них "
+"алгоритму."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:43
+msgid ""
+"Пример обработчика контрагентов в статусах **IsMyCounteragent**, "
+"**RejectsMe**, **IsRejectedByMe**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:45
+msgid ""
+"Производится поиск контрагента, на основе полученных данных. Например, по"
+" ИНН:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:47
+msgid ""
+"Если контрагент не найден, в лог пишется информация, об этом, процессор "
+"завершает обработку полученных данных."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:49
+msgid ""
+"Производится заполнение запроса на мутацию с полученными данными. "
+"Отдельно производится заполнение данных ящиков, так как это ассоциация."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:50
+#: ../../integration/EDI_integration/counterparty_kontur.rst:66
+msgid "Отправляется запрос на мутацию."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:51
+#: ../../integration/EDI_integration/counterparty_kontur.rst:67
+msgid "Процессор завершает обработку полученных данных."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:53
+msgid "Пример обработчика контрагентов в статусе **InvitesMe**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:55
+msgid "На примере заполнения **Заявок на ЭДО**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:57
+msgid ""
+"Производится поиск контрагента, на основе полученных данных. Например, по"
+" ИНН."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:59
+msgid ""
+"Если контрагент найден, производится обновление его данных, для "
+"последующего прикрепления к карточке."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:61
+msgid "Производится поиск карточки **Заявки на ЭДО**, по полученным данным."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:63
+msgid ""
+"Если такая заявка найдена, её данные обновляются, процессор завершает "
+"обработку полученных данных."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:65
+msgid ""
+"Заполняется запрос на мутацию карточки **Заявка на ЭДО**. Отдельно "
+"создаются сопутствующие документы-приглашения, если они есть(к карточке "
+"привязывается процесс и если пользователь принимает заявку, при наличии, "
+"их необходимо подписать), после чего они привязываются к карточке."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:70
+msgid "Настройка синхронизации контрагентов с Контур.Диадок"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:72
+msgid "Шаги по настройке:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:74
+msgid ""
+"Открыть журнал **\"Синхронизации\" (Рабочее пространство \"Раздел "
+"администратора\" - Модель)**."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:75
+msgid "Нажать кнопку **+**"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:76
+msgid ""
+"В выпадающем списке найти **\"Синхронизация контрагентов(ЭДО)\"**, нажать"
+" на этот пункт выпадающего списка:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:82
+msgid "Заполнить открывшуюся форму:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:88
+msgid "Параметры:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:90
+msgid ""
+"**Идентификатор** – идентификатор синхронизации. На саму синхронизацию не"
+" влияет, нужен только для понимания, за что эта интеграция отвечает. Если"
+" обработка происходит для конкретного статуса контрагента, лучше "
+"указывать ``идентификатор статуса + sync``. Если все контрагенты "
+"обрабатываются в одном роуте, можно указать ``diadoc-counterparties-"
+"sync``."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:91
+msgid ""
+"**Наименование** – наименование синхронизации. Так же не влияет на саму "
+"интеграцию, нужно для понимания. Обычно, совпадает с идентификатором."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:92
+msgid "**Включена** – включена ли синхронизация."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:93
+msgid ""
+"**Необходимо перезагрузить** – перезапуск интеграции сразу после "
+"сохранения."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:94
+msgid ""
+"**Ящик ЭДО** – отвечает за то, для какого ящика будет проводиться "
+"синхронизация, как и в случае с документооборотом Контур.Диадок."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:95
+msgid ""
+"**Время наложения блокировки** – необходимо задавать для того, чтобы "
+"одновременно не запускалось более 2х интеграций для одного и того же "
+"ящика. Если значение не задано - блокировка будет накладываться на 2 "
+"часа."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:96
+msgid "**Camel endpoint** – описанный ранее роут для обработки контрагентов."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:97
+msgid ""
+"**Cron expression** – Подробнее здесь: "
+"`org.springframework.scheduling.support.CronTrigger "
+"<https://docs.spring.io/spring-framework/docs/current/javadoc-"
+"api/org/springframework/scheduling/support/CronTrigger.html>`_"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:98
+msgid ""
+"**Trigger period** – Используется, если не задан Cron expression. Должен "
+"быть задан, если не задан Cron expression, иначе могут проблемы при "
+"работе синхронизации"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:99
+msgid ""
+"**Use fixed rate** – отсчет времени до следующего триггирования будет "
+"начинаться только после того как завершилась работа по предыдущему "
+"триггированию. Подробнее здесь: "
+"org.springframework.scheduling.support.PeriodicTrigger"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:100
+msgid "**Initial delay** – джоба не будет триггериться первые N миллисекунд"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:103
+msgid "DTO для механизма синхронизации контрагентов"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:105
+msgid ""
+"Для синхронизации данных по контрагентам с Контур.Диадок, при получении "
+"данных используется Protobuf диадока."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:107
+msgid ""
+"Описание данных по контрагентам: `Counteragent — документация Диадок "
+"1.87.0 <https://developer.kontur.ru/docs/diadoc-"
+"api/proto/Counteragent.html>`_"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:109
+msgid "Для преобразования полученных данных, в Citeck используются следующие DTO:"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:111
+msgid "**Counterparty:**"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:118
+#: ../../integration/EDI_integration/counterparty_kontur.rst:175
+#: ../../integration/EDI_integration/counterparty_kontur.rst:201
+#: ../../integration/EDI_integration/counterparty_kontur.rst:218
+msgid "Тип поля"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:119
+#: ../../integration/EDI_integration/counterparty_kontur.rst:176
+#: ../../integration/EDI_integration/counterparty_kontur.rst:202
+#: ../../integration/EDI_integration/counterparty_kontur.rst:219
+msgid "Название поля"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:120
+#: ../../integration/EDI_integration/counterparty_kontur.rst:177
+#: ../../integration/EDI_integration/counterparty_kontur.rst:203
+#: ../../integration/EDI_integration/counterparty_kontur.rst:220
+msgid "Примечание"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:121
+#: ../../integration/EDI_integration/counterparty_kontur.rst:127
+msgid "OrgId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:122
+msgid "myOrgId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:123
+msgid ""
+"Идентификатор организации, от лица которой совершался запрос на получение"
+" контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:124
+#: ../../integration/EDI_integration/counterparty_kontur.rst:227
+msgid "OurId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:125
+#: ../../integration/EDI_integration/counterparty_kontur.rst:228
+msgid "ourId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:126
+msgid ""
+"Идентификатор ящика, с которого совершался запрос на получение "
+"контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:128
+msgid "orgId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:129
+msgid "Идентификатор организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:130
+#: ../../integration/EDI_integration/counterparty_kontur.rst:133
+#: ../../integration/EDI_integration/counterparty_kontur.rst:136
+#: ../../integration/EDI_integration/counterparty_kontur.rst:139
+#: ../../integration/EDI_integration/counterparty_kontur.rst:142
+#: ../../integration/EDI_integration/counterparty_kontur.rst:145
+#: ../../integration/EDI_integration/counterparty_kontur.rst:148
+#: ../../integration/EDI_integration/counterparty_kontur.rst:151
+#: ../../integration/EDI_integration/counterparty_kontur.rst:221
+#: ../../integration/EDI_integration/counterparty_kontur.rst:224
+msgid "String"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:131
+msgid "fullName"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:132
+msgid "Полное наименование организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:134
+msgid "shortName"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:135
+msgid "Сокращенное/альтернативное наименование организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:137
+msgid "inn"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:138
+msgid "ИНН организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:140
+msgid "kpp"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:141
+msgid "КПП организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:143
+msgid "ogrn"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:144
+msgid "ОГРН организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:146
+msgid "address"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:147
+msgid "Почтовый адрес организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:149
+msgid "status"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:150
+msgid "Статус организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:152
+msgid "fnsParticipantId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:153
+msgid "Налоговый идентификатор организации контрагента."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:154
+msgid "Long"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:155
+msgid "lastEventTimestamp"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:156
+msgid ""
+"Время последнего события, произошедшего между нашей организацией и "
+"организацией контрагента (изменение статуса)."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:157
+#: ../../integration/EDI_integration/counterparty_kontur.rst:158
+msgid "InvitationDocument"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:159
+msgid "Структура документа-приглашения. Опциональный."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:160
+msgid "List<EdiBoxDto>"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:161
+msgid "boxDtos"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:162
+msgid "Структура ящиков контрагента в Контур.Диадок. Может быть множественным."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:163
+#: ../../integration/EDI_integration/counterparty_kontur.rst:190
+#: ../../integration/EDI_integration/counterparty_kontur.rst:207
+#: ../../integration/EDI_integration/counterparty_kontur.rst:239
+msgid "ObjectData"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:164
+#: ../../integration/EDI_integration/counterparty_kontur.rst:191
+#: ../../integration/EDI_integration/counterparty_kontur.rst:208
+msgid "data"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:165
+#: ../../integration/EDI_integration/counterparty_kontur.rst:209
+msgid ""
+"Дополнительные параметры, которые не определены в основной структуре. "
+"Опциональный."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:168
+msgid "**InvitationDocument:**"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:178
+msgid "DocumentEdiIdentifier"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:179
+msgid "docId"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:180
+msgid "Идентификатор документа приглашения в Контур.Диадок"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:181
+msgid "SignedContent"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:182
+msgid "signedContent"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:183
+msgid "Подписанный контрагентом контент документа-приглашения"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:184
+msgid "FileContent"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:185
+msgid "docContent"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:186
+msgid "Контент документа-приглашения"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:187
+msgid "boolean"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:188
+msgid "НsignatureRequested"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:189
+msgid ""
+"Флаг, указывающий на то, запросил контрагент от нас подписание "
+"документа-приглашения, или нет. Дефолтное значение – false"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:192
+msgid ""
+"Дополнительные параметры, которые не определены в основной структуре. "
+"Опциональный"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:194
+msgid "**SignedContent:**"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:204
+msgid "Signature"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:205
+msgid "signature"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:206
+msgid "Подписанный контент документа."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:211
+msgid "**EdiBoxDto:**"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:222
+msgid "id"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:223
+msgid "Идентификатор ящика Контур.Диадок."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:225
+msgid "title"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:226
+msgid "Заголовок ящика Контур.Диадок."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:229
+msgid "Идентификатор нашей организации. Опциональный."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:230
+msgid "EdiProviderType"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:231
+msgid "ediProviderType"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:232
+msgid ""
+"Тип ЭДО провайдера. В нашем случае, – KONTUR. Другое значение принимать "
+"не может."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:233
+#: ../../integration/EDI_integration/counterparty_kontur.rst:236
+msgid "RecordRef"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:234
+msgid "datasourceRef"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:235
+msgid "Ссылка на запись источника, для синхронизации. Опциональный."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:237
+msgid "credentialsRef"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:238
+msgid "Ссылка на данные учетной записи для синхронизации. Опциональный."
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:240
+msgid "specialInfo"
+msgstr ""
+
+#: ../../integration/EDI_integration/counterparty_kontur.rst:241
+msgid ""
+"Дополнительные параметры, которые не определены в основной структуре. "
+"Опциональный. Обычно там хранится идентификатор ящика организации "
+"контрагента."
+msgstr ""
+
