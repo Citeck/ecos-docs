@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/ECOS_Records/RecordsService.rst:2
+msgid "RecordsService (Java)"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:9
+msgid ""
+"**RecordsService** - сервис для работы с абстрактными записями, "
+"источником которых может быть любой DAO."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:11
+msgid "Существует четыре операции, которые можно проделывать над записями:"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:14
+msgid "1. Поиск записей"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:18
+msgid "Методы: **query, queryOne**"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:20
+msgid ""
+"Для поиска записей всегда передается **RecordsQuery**, который содержит "
+"параметры поиска. Помимо самого простого метода для поиска с одним "
+"параметром **RecordsQuery** так же есть варианты с объединенным поиском и"
+" запросом атрибутов."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:50
+msgid "**.withLanguage** – указываем язык запроса;"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:51
+msgid "**.withQuery** – сам запрос;"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:52
+msgid ""
+"**.withConsistency** – Consistency (Согласованность). Возможные варианты:"
+" EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:53
+msgid "**.addSort** – указываем по какому полю нужна сортировка"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:54
+msgid "**.build()** – сборка запроса"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:56
+msgid "На выходе:"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:58
+msgid "при **query** получаем **RecsQueryRes<RecordRef>**"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:59
+msgid "при **queryOne** получаем **RecordRef**"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:62
+msgid "2. Получение атрибутов записи"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:64
+msgid "Методы: **getAtt**, **getAtts**"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:70
+msgid "**documentRef** – record, к которому обращаемся"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:71
+msgid "**\"eint:ediProviderType?str\"** – параметр, который хотим получить"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:82
+msgid "Существует два уровня абстрации для получения атрибутов:"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:84
+msgid "**DTO Class > Attributes**"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:86
+msgid ""
+"**DTO Class** - класс, который используется для генерации списка "
+"аттрибутов для формирования схемы и запроса атрибутов из DAO."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:88
+msgid ""
+"После получения всех данных из DAO идет создание инстансов переданного "
+"DTO класса и наполнение его данными с помощью библиотеки jackson; Список "
+"аттрибутов формируется либо из названий полей, либо можно добавить "
+"аннотацию AttName для указания атрибута вручную."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:91
+msgid ""
+"**Attributes** - аттрибуты записи в чистом виде. Есть варианты с одним "
+"атрибутом, списком атрибутов или набором ключ->значение (Map)"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:94
+msgid "3. Мутация (изменение или создание) записи"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:96
+msgid ""
+"Каждый DAO решает сам создавать или редактировать полученную запись. Если"
+" в DAO приходит запись с пустым идентификатором, то это команда к "
+"созданию новой записи."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:100
+msgid "Изменение записи"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:109
+msgid ""
+"Для обновления записи необходимо указывать **.setId()** записи которой "
+"необходимо изменить."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:112
+msgid "Создание записи"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:122
+msgid "При создании новой записи параметр **setId()** не указывается."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:124
+msgid "Если при мутации указать атрибут:"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:130
+msgid "(константа DbRecordsControlAtts.DISABLE_AUDIT), то поля:"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:139
+msgid ""
+"заполняться автоматически не будут. Если эти поля установить вручную, то "
+"в БД попадут именно они."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:141
+msgid ""
+"Для ``creator`` и ``modifier`` допустимо указывать как username так и "
+"полный ref пользователя."
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:143
+msgid "Атрибут"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:149
+msgid "допустимо проставлять только в контексте системы (runAsSystem)"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:152
+msgid "4. Удаление записи"
+msgstr ""
+
+#: ../../general/ECOS_Records/RecordsService.rst:158
+msgid "**RecordRef routeTemplate** – record, который необходимо удалить"
+msgstr ""
+
