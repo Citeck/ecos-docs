@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Apps_microservice.rst:4
+msgid "Микросервис приложений Citeck"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:9
+msgid ""
+"Платформа Citeck строится на базе артефактов, позволяя расширять "
+"функционал написанием новых артефактов, не затрагивая уже существующий "
+"функционал."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:11
+msgid ""
+"Артефакт означает единицу конфигурации системы Citeck. Примером "
+"артефактов  являются: форма, журнал, тип, раздел, матрица прав, действие "
+"и др."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:13
+msgid ""
+"Микросервис, который управляет деплоем приложений и артефактов называется"
+" ECOS Applications или сокращенно ecos-apps."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:15
+msgid "Цели микросервиса:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:17
+msgid ""
+"Версионирование артефактов . Все меняющиеся артефакты сохраняются как "
+"отдельные ревизии без возможности изменения."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:19
+msgid ""
+"Доставка артефактов  от всех микросервисов к целевому (например, доставка"
+" форм из ecos-integrations, ecos-model, alfresco в ecos-uiserv)."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:21
+msgid ""
+"Отслеживание зависимостей. Если артефакт зависит от другого артефакта, то"
+" микросервис соблюдает порядок деплоя."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:23
+msgid "Управление патчами для артефактов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:25
+msgid "Процесс деплоя артефактов выглядит примерно следующим образом:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:28
+msgid "Простое описание"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:34
+msgid ""
+"После появления в сети нового приложения (на схеме это alfresco) "
+"происходит 3 этапа:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:36
+msgid "Запрос типов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:38
+msgid "Получение артефактов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:40
+msgid "Деплой артефактов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:43
+msgid "Подробное описание"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:45
+msgid "Микросервис периодически опрашивает всех кто подключен к Rabbit MQ"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:51
+msgid "Пока к Rabbit'у никто не подключился ничего не происходит."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:53
+msgid ""
+"Когда появляется первый микросервис он возвращает ответ в ECOS Apps о "
+"своем присутствии."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:59
+msgid ""
+"После этого ECOS Apps отправляет запрос на типы, в которых заинтересован "
+"микросервис."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:61
+msgid ""
+"Получив список типов ECOS Apps отправляет всем зарегистрировавшимся "
+"микросервисам запрос на получение артефактов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:67
+msgid ""
+"Получив необходимые артефакты ECOS Apps проверяет поменялись или они с "
+"прошлой загрузки и если нет, то ничего не делает."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:69
+msgid ""
+"Если выясняется, что артефакты поменялись, то они отправляются в целевой "
+"микросервис на деплой."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:71
+msgid ""
+"Все взаимодействие происходит посредством Rabbit MQ и библиотеки ecos-"
+"commands."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:73
+msgid "Лог ECOS Apps при обнаружении трех микросервисов (включая себя):"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:108
+msgid "Полезные скрипты (EApps)"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:110
+msgid "Для получения всех артефактов по типу можно выполнить следующий скрипт:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:122
+msgid "В результате выполнения в консоль выведется список id артефактов."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:124
+msgid "Имея id артефакта, его можно удалить следующим скриптом:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:131
+msgid "Получение содержимого модулей из базы eapps"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:133
+msgid "Получаем список ревизий по ext_id и типу артефакта:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:142
+msgid "Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:148
+msgid "Получаем:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:196
+msgid ""
+"Убираем шапку, отступы ``|``, переносы строк, знаки + в конце строк и "
+"получаем строку:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:202
+msgid ""
+"Загружаем полученную строку в любой сервис по декодированию base64 в "
+"файл. Например:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:204
+msgid ""
+"`https://base64.guru/converter/decode/file "
+"<https://base64.guru/converter/decode/file>`_"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:206
+msgid "Скачиваем итоговый файл:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:212
+msgid "В результате получаем архив с нашим модулем."
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:215
+msgid "Полезные скрипты в базе ECOS Apps"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:217
+msgid "Получение ревизий модуля:"
+msgstr ""
+
+#: ../../general/Apps_microservice.rst:226
+msgid "**is_user_rev** флаг определяет, что модуль менялся пользователем."
+msgstr ""
+

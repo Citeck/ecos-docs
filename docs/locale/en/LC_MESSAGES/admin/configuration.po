@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/configuration.rst:2
+msgid "Конфигурация"
+msgstr ""
+
+#: ../../admin/configuration.rst:5
+msgid "Содержание"
+msgstr ""
+
+#: ../../admin/configuration.rst:7
+msgid "Конфигурация в Citeck делится на два основных уровня:"
+msgstr ""
+
+#: ../../admin/configuration.rst:9 ../../admin/configuration.rst:15
+msgid "Системный уровень"
+msgstr ""
+
+#: ../../admin/configuration.rst:10 ../../admin/configuration.rst:35
+msgid "Уровень администратора"
+msgstr ""
+
+#: ../../admin/configuration.rst:17
+msgid ""
+"Данный уровень конфигурации необходим для настройки низкоуровневых "
+"параметров, которые не предполагается изменять в ходе работы приложеня "
+"(параметры подключение к БД, настройки для включения/отключения сервисов "
+"в приложении и др)."
+msgstr ""
+
+#: ../../admin/configuration.rst:20
+msgid ""
+"Конфигурация системного уровня настраивается средствами Spring Cloud - "
+"https://spring.io/projects/spring-cloud"
+msgstr ""
+
+#: ../../admin/configuration.rst:22
+msgid ""
+"Контейнер ecos-registry при старте загружает конфигурацию из указанных в "
+"настройках директорий и распространяет эту конфигурацию по всем "
+"приложениям."
+msgstr ""
+
+#: ../../admin/configuration.rst:25
+msgid "Настройка ecos-registry через переменные среды::"
+msgstr ""
+
+#: ../../admin/configuration.rst:30
+msgid ""
+"Путь во втором параметре указывает на место, откуда будет загружаться "
+"конфигурация"
+msgstr ""
+
+#: ../../admin/configuration.rst:37
+msgid ""
+"**Конфигурация ECOS** - это артефакт, который позволяет описывать "
+"некоторые параметры системы с возможностью удобно использовать их "
+"значения как в коде так и в интерфейсе для изменения параметров без "
+"перезагрузки сервера."
+msgstr ""
+
+#: ../../admin/configuration.rst:39
+msgid "Расположение артефактов: ``resources/eapps/artifacts/app/config``"
+msgstr ""
+
+#: ../../admin/configuration.rst:41
+msgid "Поддерживаемые форматы: **yml**, **yaml**, **json**"
+msgstr ""
+
+#: ../../admin/configuration.rst:43
+msgid "Ответственный за хранение и управление микросервис: **ecos-apps**"
+msgstr ""
+
+#: ../../admin/configuration.rst:45
+msgid "Можно использовать: в любом приложении"
+msgstr ""
+
+#: ../../admin/configuration.rst:47
+msgid ""
+"Доступ в интерфейсе есть у администраторов: **\"Конфигурация\" (Рабочее "
+"пространство \"Раздел администратора\" - Управление системой)**:"
+msgstr ""
+
+#: ../../admin/configuration.rst:53
+msgid ""
+"Журнал доступен по адресу: ``v2/admin?journalId=ecos-"
+"configs&type=JOURNAL``"
+msgstr ""
+
+#: ../../admin/configuration.rst:55
+msgid "Примеры конфигураций:"
+msgstr ""
+
+#: ../../admin/configuration.rst:75
+msgid ""
+"Чтобы воспользоваться этой конфигурацией в коде мы можем установить "
+"аннотацию ``@EcosConfig(“идентификатор_конфигурации”)`` на поле или "
+"метод, куда нужно поместить значение конфигурации."
+msgstr ""
+
+#: ../../admin/configuration.rst:77
+msgid ""
+"Любые изменения конфигурации в интерфейсе приведут к автоматическому "
+"обновлению значения поля или вызову метода, который был помечен "
+"аннотацией ``@EcosConfig``."
+msgstr ""
+
+#: ../../admin/configuration.rst:79
+msgid "Пример:"
+msgstr ""
+
+#: ../../admin/configuration.rst:120
+msgid ""
+"Если необходимо вручную применить конфигурацию на основе аннотаций к "
+"некоторому бину (может потребоваться там где нет spring контекста), то "
+"можно использовать сервис **BeanConsumerService**."
+msgstr ""
+
+#: ../../admin/configuration.rst:122
+msgid "Пример теста:"
+msgstr ""
+
+#: ../../admin/configuration.rst:169
+msgid "Создание нового конфига"
+msgstr ""
+
+#: ../../admin/configuration.rst:171
+msgid ""
+"Для создания нового конфига нужно создать **yaml файл** по пути "
+"``src/main/resources/eapps/artifacts/app/config``"
+msgstr ""
+
+#: ../../admin/configuration.rst:173
+msgid "Например, **telegram-authtoken.yml**"
+msgstr ""
+
+#: ../../admin/configuration.rst:175
+msgid "С таким содержание:"
+msgstr ""
+
+#: ../../admin/configuration.rst:185
+msgid ""
+"При старте конфиг будет создан и появится журнале **\"Конфигурация "
+"ECOS\"**."
+msgstr ""
+
+#: ../../admin/configuration.rst:187
+msgid "Считать этот параметр можно:"
+msgstr ""
+
+#: ../../admin/configuration.rst:189
+msgid "Повесив аннотацию на поле:"
+msgstr ""
+
+#: ../../admin/configuration.rst:196
+msgid ""
+"Можно вместо поля сделать метод ``setAuthToken(String "
+"telegramAuthorizationToken)`` с той же аннотацией, и он будет вызываться "
+"при смене конфига (если нужно отслеживать изменение конфига без "
+"перезапуска)."
+msgstr ""
+
+#: ../../admin/configuration.rst:199
+msgid "Общая архитектура работы конфигураций"
+msgstr ""
+
+#: ../../admin/configuration.rst:205
+msgid "**TargetBean** - это целевой бин с аннотациями ``@EcosConfig``;"
+msgstr ""
+
+#: ../../admin/configuration.rst:206
+msgid "**resources** - это папка ресурсов в приложении;"
+msgstr ""
+
+#: ../../admin/configuration.rst:207
+msgid ""
+"**some-config.yml** - некоторый конфиг в директории "
+"``resources/eapps/artifacts/app/config``;"
+msgstr ""
+
+#: ../../admin/configuration.rst:208
+msgid ""
+"**Artifacts Source** - источник артефактов, который загружает артефакты "
+"из папки ``resources/eapps/artifacts``;"
+msgstr ""
+
+#: ../../admin/configuration.rst:209
+msgid "**EcosConfigService** - сервис конфигураций;"
+msgstr ""
+
+#: ../../admin/configuration.rst:211
+msgid "Получение конфигурации при старте системы:"
+msgstr ""
+
+#: ../../admin/configuration.rst:213
+msgid "Подключаемся к Zookeeper и проверяем актуальное значение конфигурации там."
+msgstr ""
+
+#: ../../admin/configuration.rst:215
+msgid ""
+"Если значение в Zookeeper отсутствует, то загружаем значение из "
+"**Artifacts Source** (т.е. напрямую из classpath);"
+msgstr ""
+
+#: ../../admin/configuration.rst:216
+msgid "Если значение найдено, то загружаем его;"
+msgstr ""
+
+#: ../../admin/configuration.rst:218
+msgid ""
+"Все конфигурации, которое есть в app/config отправляются на микросервис "
+"ecos-apps через RabbitMQ (стандартный механизм деплоя артефактов);"
+msgstr ""
+
+#: ../../admin/configuration.rst:219
+msgid ""
+"Микросервис ecos-apps сохраняет конфигурации у себя в таблице, чтобы в "
+"дальнейшем можно было работать с ними через интерфейс (UI);"
+msgstr ""
+
+#: ../../admin/configuration.rst:221
+msgid ""
+"При этом если в таблице уже есть конфигурация с таким же scope и id, то "
+"сравнивается версия конфига. Если новая версия совпадает или меньше "
+"текущей, то поле value в таблице не меняется;"
+msgstr ""
+
+#: ../../admin/configuration.rst:223
+msgid ""
+"После того как поле value у конфигурации в ecos-apps обновилось, "
+"микросервис отправляет новое значение в Zookeeper;"
+msgstr ""
+
+#: ../../admin/configuration.rst:224
+msgid ""
+"Наше приложение подписано на события изменения данных в Zookeeper и когда"
+" там меняется значение мы его тут же применяем ко всем слушателям "
+"конфигурации."
+msgstr ""
+
+#: ../../admin/configuration.rst:226
+msgid ""
+"Когда пользователь в интерфейсе меняет значение конфигурации, то логика "
+"аналогична пунктам 3-5, но без проверки версии."
+msgstr ""
+
+#: ../../admin/configuration.rst:229
+msgid "Формы для конфигураций [rc5+]"
+msgstr ""
+
+#: ../../admin/configuration.rst:231
+msgid "Для конфигураций есть автогенерация форм на основе значения valueDef:"
+msgstr ""
+
+#: ../../admin/configuration.rst:233
+msgid ""
+"Сущность конфигурации имеет атрибут ``_formRef``, который возвращает "
+"ссылку на форму следующего вида - ``uiserv/form@config${{config-scope"
+"}}${{config-id}}``, где"
+msgstr ""
+
+#: ../../admin/configuration.rst:235
+msgid "{{config-scope}} - область конфигурации"
+msgstr ""
+
+#: ../../admin/configuration.rst:237
+msgid "{{config-id}} - идентификатор конфигурации"
+msgstr ""
+
+#: ../../admin/configuration.rst:239
+msgid ""
+"С этой ссылкой на форму UI отправляет запрос формы на **ecos-uiserv** и "
+"он в свою очередь по префиксу ``config$`` понимает, что форму необходимо "
+"вычислить. Вычисление происходит в **ConfigFormsProvider**"
+msgstr ""
+
+#: ../../admin/configuration.rst:241
+msgid ""
+"Если же для конфигурации нужна форма со своим набором полей и логикой, то"
+" можно использовать поле **valueDef.formRef** для указания ссылки на "
+"любую реальную форму."
+msgstr ""
+
+#: ../../admin/configuration.rst:244
+msgid "Область (scope)"
+msgstr ""
+
+#: ../../admin/configuration.rst:246
+msgid ""
+"Вся конфигурация имеет scope, который описывает разные области для "
+"исключения влияния конфигурации в разных микросервисах друг на друга."
+msgstr ""
+
+#: ../../admin/configuration.rst:248
+msgid ""
+"По умолчанию scope равен **app/{{webapp_name}}**, где **{{webapp_name}}**"
+" - это системное имя приложения."
+msgstr ""
+
+#: ../../admin/configuration.rst:250
+msgid ""
+"Таким образом уникальным идентификатором конфигурации в системе можно "
+"считать только связку scope + config_id (т.е. один и тот же config_id "
+"может использоваться в разных областях)."
+msgstr ""
+
+#: ../../admin/configuration.rst:253
+msgid "Модель"
+msgstr ""
+
+#: ../../admin/configuration.rst:267
+msgid "**ConfigValueType**  - одно из следующих значений:"
+msgstr ""
+
+#: ../../admin/configuration.rst:284
+msgid "Версия конфигурации"
+msgstr ""
+
+#: ../../admin/configuration.rst:286
+msgid "В конфигурации Citeck есть поле версии, которое нужно для:"
+msgstr ""
+
+#: ../../admin/configuration.rst:288
+msgid ""
+"Защиты от случайного затирания значения, которое настроено в системе "
+"вручную;"
+msgstr ""
+
+#: ../../admin/configuration.rst:290
+msgid ""
+"Для возможности поменять значение по умолчанию для новых разворачиваемых "
+"систем;"
+msgstr ""
+
+#: ../../admin/configuration.rst:292
+msgid ""
+"Для возможности принудительно поменять значение, которое изменили в "
+"системе вручную."
+msgstr ""
+
+#: ../../admin/configuration.rst:294
+msgid ""
+"Обновление поля value в уже задеплоеной конфигурации при загрузке новой "
+"версии артефакта происходит только если поле **version** у нового конфига"
+" больше чем то что сохранено в БД."
+msgstr ""
+
+#: ../../admin/configuration.rst:296
+msgid ""
+"При использовании патчей для артефакта конфигурации следует так же "
+"учитывать влияние поля **version** (т.е. если мы поменяем только value, "
+"но version оставим старым, то в системе значение конфига останется "
+"прежним)."
+msgstr ""
+
+#: ../../admin/configuration.rst:299
+msgid "Config Provider"
+msgstr ""
+
+#: ../../admin/configuration.rst:301
+msgid ""
+"Вся конфигурация в сервисе EcosConfigService получается из провайдеров, "
+"которые имеют следующий интерфейс:"
+msgstr ""
+
+#: ../../admin/configuration.rst:312
+msgid ""
+"Все провайдеры сортируются по значению **getOrder()** и в итоге "
+"**EcosConfigService** отдает не-null значение из провайдера с наименьшим "
+"значением **getOrder()**"
+msgstr ""
+
+#: ../../admin/configuration.rst:314
+msgid "Стандартные провайдеры:"
+msgstr ""
+
+#: ../../admin/configuration.rst:316
+msgid "**ArtifactsConfigProvider** - конфигурация загружается из classpath;"
+msgstr ""
+
+#: ../../admin/configuration.rst:317
+msgid ""
+"**InMemConfigProvider** - in-memory провайдер. В основном используется "
+"для тестов;"
+msgstr ""
+
+#: ../../admin/configuration.rst:318
+msgid "**ZkConfigProvider** - провайдер на основе Zookeeper."
+msgstr ""
+
+#: ../../admin/configuration.rst:321
+msgid "Обновление значения через патч Citeck"
+msgstr ""
+
+#: ../../admin/configuration.rst:323
+msgid ""
+"Нужно разместить подобный some-patch.yml в директории "
+"``resources/eapps/artifacts/app/patch``:"
+msgstr ""
+

@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/keycloak_ecos_integration.rst:2
+msgid "Интеграция Citeck с сервисом аутентификации Keycloak"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:5
+msgid "Содержание"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:7
+msgid ""
+"Начиная с версии 2.20.0 микросервиса **ecos-model**, в приложение Citeck "
+"была добавлена возможность интеграции с сервисом аутентификации "
+"**Keycloak**. Настройка интеграции осуществляется через свойства в "
+"``application.yml``."
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:9
+msgid ""
+"Интеграция позволяет синхронизировать создание, обновление и удаление "
+"пользователей с сервисом аутентификации. До этого момента, например, "
+"после создания пользователя в ECOS, приходилось заходить в веб-интерфейс "
+"Keycloak и добавлять этого же пользователя вручную."
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:11
+msgid ""
+"Для реализации данного функционала, в **dependencies** микросервиса "
+"**ecos-model** была добавлена библиотека **“Keycloak Admin Client“**. "
+"Класс, отвечающий за синхронизацию - ``KeycloakUserService``. "
+"Синхронизация с Keycloak происходит через RESTful API. Keycloak "
+"предоставляет RESTful интерфейс, который позволяет взаимодействовать с "
+"сервером Keycloak для управления пользователями, клиентами, ролями и "
+"другими аспектами безопасности."
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:14
+msgid "Включение интеграции"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:16
+msgid ""
+"По умолчанию в ``application.yml`` микросервиса **emodel** указано, что "
+"интеграция отключена:"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:22
+msgid ""
+"Для включения интеграции необходимо установить "
+"``integrations.keycloakAdmin.enabled=true``, а также задать остальные "
+"свойства (``url``, ``user``, ``password``), необходимые для установки "
+"связи с Keycloak и выполнения операций с помощью административного API."
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:24
+msgid ""
+"Для наглядности приведен docker-compose файл микросервиса keycloak "
+"используемого при локальной разработке:"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:31
+msgid "Создание нового пользователя"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:33
+msgid ""
+"При создании нового пользователя в Citeck, синхронизация с Keycloak "
+"происходит по следующим полям:"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:35
+msgid "id"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:36
+#: ../../admin/keycloak_ecos_integration.rst:48
+msgid "firstName"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:37
+#: ../../admin/keycloak_ecos_integration.rst:49
+msgid "lastName"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:38
+#: ../../admin/keycloak_ecos_integration.rst:50
+msgid "email"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:39
+msgid "personDisabled"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:41
+msgid ""
+"Созданный пользователь по умолчанию получает пароль, совпадающий с его "
+"id. При первом входе в приложение будет предложено изменить пароль."
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:44
+msgid "Обновление пользователя"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:46
+msgid ""
+"При обновлении существующего пользователя в Citeck, синхронизация с "
+"Keycloak происходит по следующим полям:"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:51
+msgid ""
+"personDisabled (отключение профиля пользователя в Citeck также отключит "
+"его и в keycloak)"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:53
+msgid "Смена пароля пользователя происходит через отдельное действие (см. ниже)"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:57
+msgid "Удаление пользователя"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:59
+msgid "При удалении пользователя из Citeck, он также удаляется из базы Keycloak"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:62
+msgid "Смена пароля пользователя"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:64
+msgid ""
+"Смена пароля пользователя осуществляется через вызов действия ``change-"
+"user-password``, с последующим вызовом формы:"
+msgstr ""
+
+#: ../../admin/keycloak_ecos_integration.rst:70
+msgid ""
+"Класс обработчик действия ``ChangePasswordActionDto`` принимает id "
+"пользователя и новый пароль, после чего происходит синхронизация с "
+"Keycloak."
+msgstr ""
+

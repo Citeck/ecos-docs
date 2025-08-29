@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/server_signing.rst:2
+msgid "Серверное подписание"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:6
+msgid "Доступно только в Enterprise версии."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:8
+msgid ""
+"В микросервисе ecos-integrations начиная с версии 2.3.5 добавлен "
+"функционал серверного подписания документов электронной подписью без "
+"использования плагина **КриптоПро ЭЦП Browser plug-in**."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:10
+msgid ""
+"Для этого был разработан дополнительный сервис **ecos-crypto-sign** "
+"(репозиторий `https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign "
+"<https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign>`_)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:12
+msgid "Общая схема работы:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:19
+msgid "Описание"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:21
+msgid "Клиент API аутентифицируется в KeyCloak. KeyCloak выдает токен."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:23
+msgid "Клиент API передает свой запрос в ecos-proxy, указав в заголовке токен."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:25
+msgid ""
+"Компонент ecos-proxy проверяет токен в KeyCloak. Если токен валидный - "
+"пропускает запрос дальше. Иначе - ошибка."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:27
+msgid ""
+"Компонент ecos-proxy маршрутизирует запрос на целевой микросервис ecos-"
+"gateway. Заголовок с токеном транслируется."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:29
+msgid ""
+"Этот микросервис маршрутизирует запрос на один из доступных микросервисов"
+" ecos-integrations. Заголовок с токеном транслируется."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:31
+msgid ""
+"Микросервис интеграций отправляет запрос в микросервис подписания. "
+"Заголовок с токеном транслируется."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:33
+msgid ""
+"Микросервис подписания проверяет токен в KeyCloak. Если токен валидный - "
+"происходит подписание. Иначе - ошибка. Возврат ответа клиенту API"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:35
+msgid "Сервис подписания это стандартное spring-boot приложение."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:37
+msgid "На данный момент доступно 2 REST запроса:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:39
+msgid "**Подписание контента**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:45
+#: ../../integration/EDI_integration/server_signing.rst:118
+msgid "headers:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:51
+#: ../../integration/EDI_integration/server_signing.rst:124
+msgid "body:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:70
+msgid "**documentContent** - Контент для подписания (Base64 encoded byte[])"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:72
+#: ../../integration/EDI_integration/server_signing.rst:148
+msgid "**providerType** - Тип провайдера (По умолчанию у нас используется JCSP)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:74
+#: ../../integration/EDI_integration/server_signing.rst:150
+msgid ""
+"**keyStoreType** - Тип хранилища сертификата (Например HDD в разделе D, "
+"как в текущем примере или registry и т.д.)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:76
+#: ../../integration/EDI_integration/server_signing.rst:152
+msgid "**pin** - пароль от контейнера для получения приватного ключа"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:78
+#: ../../integration/EDI_integration/server_signing.rst:154
+msgid "**alias** - alias сертификата для поиска нужного сертификата для подписи"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:80
+msgid "**serialNumber** - серийный номер сертификата? если **alias** не известен"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:82
+msgid ""
+"**thumbprint** - отпечаток сертификата, используется **alias** и "
+"**serialNumber**  неизвестны"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:84
+#: ../../integration/EDI_integration/server_signing.rst:160
+msgid ""
+"**signatureAlgorithm** - алгоритм подписи (в данный момент передаваемый "
+"алгоритм не используется, берется из найденного сертификата)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:86
+#: ../../integration/EDI_integration/server_signing.rst:162
+msgid "В текущей реализации сертификат ищется:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:88
+#: ../../integration/EDI_integration/server_signing.rst:164
+msgid ""
+"Во-первых по aliasу (если он не пустой, если пустой, то пропускаем данный"
+" шаг)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:90
+#: ../../integration/EDI_integration/server_signing.rst:166
+msgid ""
+"Если не найден, то по серийному номеру (если он не пустой, если пустой, "
+"то пропускаем данный шаг)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:92
+#: ../../integration/EDI_integration/server_signing.rst:168
+msgid ""
+"Если опять не найден, то по отпечатку (если пустой и сертификат не "
+"найден, то возвращаем ошибку подписания)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:94
+#: ../../integration/EDI_integration/server_signing.rst:170
+msgid "Ожидаемый ответ:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:104
+#: ../../integration/EDI_integration/server_signing.rst:180
+msgid "**success** - результат выполнения rest запроса (успешно/неуспешно)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:106
+msgid "**error** - Строка ошибки (При ошибке подписания)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:108
+msgid "**signatureContent** - контент полученной подписи (Base64 encoded byte[])"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:110
+msgid ""
+"При подписании создается подпись в формате CMS. Возвращается "
+"зашифрованная в Base64 строка подписи (аналогично подписанию через "
+"плагин)."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:112
+msgid "**Валидация подписи**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:144
+msgid ""
+"**documentContent** - Контент, который был подписан (Base64 encoded "
+"byte[])"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:146
+msgid ""
+"**signatureContent** - Непосредственно сама подпись (Base64 encoded "
+"byte[])"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:156
+msgid "**serialNumber** - серийный номер сертификата если **alias** неизвестен"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:158
+msgid ""
+"**thumbprint** - отпечаток сертификата, используется если **alias** и "
+"**serialNumber** неизвестны"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:182
+msgid "**error** - Строка ошибки (При ошибке валидации)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:184
+msgid "**result** - результат валидации подписи"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:186
+msgid "Проверку токена можно отключить выставив соответствующие свойства:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:188
+msgid ""
+"В микросервисе интеграции: **ecos-integrations.server-"
+"sign.keycloak.isTokenCheckEnabled**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:190
+msgid "В сервисе подписания: **keycloak.enabled**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:192
+msgid "Полный конфиг настроек keycloak сервиса подписания:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:209
+msgid "**enabled** - включена/отключена проверка токена перед подписью/валидацией"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:211
+msgid "**auth-server-url** - адрес эндпоинта auth для keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:213
+msgid "**realm** - realm для которого происходит проверка токена."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:215
+msgid ""
+"**resource** - ID клиента к которому необходим доступ (В данном сервисе "
+"неактуально, можно добавить любого валидного клиента в указанном realm)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:217
+msgid ""
+"**bearer-only** - если выставлено true, то приложение может только "
+"проверять токены, и в приложении нельзя будет залогиниться"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:219
+msgid "**security-constraints** - для описания ролевой политики"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:221
+msgid ""
+"**authRoles** - список ролей Keycloak (uma_authorization по умолчанию, "
+"так как она выдается всем клиентам)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:223
+msgid "**securityCollections**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:225
+msgid ""
+"**patterns** - URL-паттерны для методов REST API, которые требуется "
+"закрыть соответствующими ролями (в данном случае два метода /ecos/'*')"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:227
+msgid "Конфиг дополнительных настроек для микросервиса интеграции:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:243
+msgid "**root-uri** - адрес сервиса подписания"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:245
+msgid "**keycloak.host**  - host keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:247
+msgid "**keycloak.port**  - порта keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:249
+msgid "**keycloak.client-id**  - id сервисного клиента keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:251
+msgid "**keycloak.client-secret**  - secret сервисного клиента keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:253
+msgid "**keycloak.realm**  - realm для которого происходит проверка токена."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:255
+msgid ""
+"**keycloak.isTokenCheckEnabled**  - при включенном флаге в сервис "
+"подписания передается access токен сервисного клиента"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:257
+msgid ""
+"**keycloak.isTrustAllEnabled**  - включение/отключение политики TrustAll "
+"при запросе токена у кейклока (выставляется в true если падает ошибка "
+"доступа, однако нужно учитывать что в таком случае появляется уязвимость)"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:260
+msgid "Создание сервисного клиента keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:262
+msgid ""
+"Сервисного клиента необходимо создать в соответствующем realm keycloak. "
+"Он необходим для получения access токена."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:264
+msgid "Зайти в консоль администратора непосредственно на сервер keycloak"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:266
+msgid "Переключится на нужный realm"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:268
+msgid "Пункт **Clients → Добавить нового (Имя клиента - любое) → Cоздать**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:270
+msgid "Пункт **Access Type = confidential**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:272
+msgid "Флаг **Service Accounts Enabled = true**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:274
+msgid ""
+"**Valid Redirect URIs** - добавит любой uri редиректа на основной сервер,"
+" хотя в данном случае это не обязательно, так как от клиента нам нужен "
+"лишь токен и не нужны ресурсы"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:276
+msgid "Save"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:278
+msgid ""
+"После этого на вкладке **Credentials** данного клиента можно найти его "
+"secret, id же является заданное нами имя."
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:281
+msgid "Запрос из ecos"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:283
+msgid ""
+"Для того чтобы можно было запрашивать валидацию подписи и подписывание "
+"любого контента в микросервисе интеграции были реализованы соотвествующие"
+" **RecordsDao**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:285
+msgid "**Подписание - ServerSignRecords**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:287
+msgid "ID - “server-sign“"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:289
+msgid "Dto - SignRequest"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:299
+#: ../../integration/EDI_integration/server_signing.rst:362
+msgid "CertificateInfo:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:311
+#: ../../integration/EDI_integration/server_signing.rst:374
+msgid "KeyStoreInfo:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:320
+#: ../../integration/EDI_integration/server_signing.rst:383
+msgid "Пример запроса из консоли браузера:"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:347
+msgid "**Валидация - ServerSignVerificationRecords**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:349
+msgid "ID - “server-sign-verify“"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:351
+msgid "Dto - SignVerifyRequest"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:411
+msgid ""
+"Для локального запуска функционала необходимо клонировать репозиторий "
+"**ecos-crypto-sign** и запустить приложение **CryptoSignApp**"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:413
+msgid ""
+"Недостающие библиотеки (при возникновении ошибок компиляции и "
+"NoClassDefFoundException) можно взять с официально сайта КриптоПро"
+msgstr ""
+
+#: ../../integration/EDI_integration/server_signing.rst:415
+msgid "Необходимо установить в нужную jre функционал JCP + JCSP"
+msgstr ""
+
