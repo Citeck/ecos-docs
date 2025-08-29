@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../settings_kb/notifications/senders.rst:2
+msgid "Отправители"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:6
+msgid "Добавлено в версии 2.9.0 микросервиса ecos-notifications"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:8
+msgid "Содержание"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:11
+msgid "1. Общие сведения"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:12
+msgid ""
+"Основная цель механизма - это роутинг, обработка одного уведомления "
+"несколькими сендерами не поддерживается. Механизм разрабатывался для "
+"поддержки возможности блокировки отправки уведомлений"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:14
+msgid ""
+"**Журнал \"Отправители\"** доступен в разделе администратора меню "
+"**\"Конфигурация уведомлений\"**"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:16
+msgid "Журнал “Отправители“"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:21
+msgid ""
+"Для отправки уведомления перебираются активные отправители с "
+"соответствующим типом нотификации в порядке возрастания порядка."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:23
+msgid ""
+"В отправителе можно определить список шаблонов, для которых он будет "
+"применяться. Если список не задан, то отправитель доступен для отправки "
+"уведомления по любому шаблону."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:25
+msgid ""
+"Также в конфигурации можно указать дополнительные условия для применения "
+"сендера. Условия описываются в формате предикатов, например:"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:38
+msgid ""
+"Значения атрибутов при проверке применения сендера вычисляются на основе "
+"атрибутов модели шаблона нотификации."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:40
+msgid "Реализовано два типа отправителей **default** и **command**."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:42
+msgid ""
+"default не имеет параметров для конфигурации. В микросервисе нотификации "
+"сконфигурированы два default отправителя *default-email-sender* и "
+"*default-firebase-sender* с порядком равным 1000. Их можно увидеть в "
+"журнале **\"Отправители\" (Рабочее пространство \"Раздел администратора -"
+" Конфигурация уведомлений)** У отправителя с типом command в конфигурации"
+" определены два параметра:"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:52
+msgid "Для отправки уведомления через command-отправителя необходимо реализовать:"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:54
+msgid ""
+"Класс с аннотацией ``@CommandType(“тип_ команды_из_конфигурации“)``. "
+"Структура класса должна повторять структуру уведомления, отправляемого "
+"микросервисом нотификации "
+"**(ru.citeck.ecos.notifications.domain.sender.command.CmdFitNotification)**"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:56
+msgid ""
+"Обработчик команды реализующий интерфейс "
+"**ru.citeck.ecos.commands.CommandExecutor<класс_из_п.1>**. В результате "
+"выполнения обработчик должен возвращать значение из перечисления "
+"**ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus**."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:58
+msgid "Создать отправителя в журнале “Отправители“"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:60
+msgid "Создание \"Отправителя с типом command\""
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:66
+msgid "2. Статусы обработки уведомления"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:68
+msgid ""
+"После получения уведомления на отправку сендер должен вернуть статус "
+"обработки уведомления "
+"**(ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus)**:"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:70
+msgid "**SENT** - Уведомление отправлено. Дальнейшая обработка не требуется"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:71
+msgid ""
+"**BLOCKED** - Отправка уведомления заблокирована. Дальнейшая обработка не"
+" требуется"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:72
+msgid ""
+"**SKIPPED** - Уведомление не обработано текущим Sender'ом. Нужно "
+"использовать следующий."
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:75
+msgid "3. Пример использования command отправителя"
+msgstr ""
+
+#: ../../settings_kb/notifications/senders.rst:77
+msgid ""
+"Для блокировки отправки сообщений были созданы журнал с условиями "
+"блокировок и command отправитель. Также создан обработчик команды, "
+"которая указана в конфигурации отправителя. Этот обработчик проверяет "
+"совпадают ли параметры уведомления с условиями в журнале блокировок, и "
+"если совпадают, то возвращает статус **BLOCKED**. Таким образом, "
+"уведомление не отправляется, а помечается как заблокированное"
+msgstr ""
+

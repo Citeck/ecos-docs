@@ -1,0 +1,484 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/OSGI.rst:4
+msgid "Функционал загрузки OSGI пакетов"
+msgstr ""
+
+#: ../../integration/OSGI.rst:8
+msgid "Доступно только в Enterprise версии."
+msgstr ""
+
+#: ../../integration/OSGI.rst:11
+msgid "Содержание"
+msgstr ""
+
+#: ../../integration/OSGI.rst:13
+msgid ""
+"Начиная с версии 1.16.0 в микросервис была добавлена возможность "
+"загружать кастомный код, реализованный согласно спецификации **OSGI** для"
+" пакетов. Это позволяет расширять микросервис без изменения базового "
+"функционала."
+msgstr ""
+
+#: ../../integration/OSGI.rst:15
+msgid ""
+"Загрузка самих пакетов производится через журнал **OSGI пакеты** в "
+"разделе администратора. Чтобы загрузить пакет, переходим в этот журнал и "
+"нажимаем кнопку создания. Появляется модальное окно с предложением "
+"загрузки файла. Подкладываем туда свой скомпилированный jar файл и "
+"нажимаем **Создать**. Пакет загружен и проинсталлирован, если никаких "
+"проблем при инсталляции не возникло. В самом журнале всегда можно найти "
+"актуальный статус пакета, имя загруженного файла, символическое имя "
+"пакета, а так же, скачать сам jar файл пакета."
+msgstr ""
+
+#: ../../integration/OSGI.rst:17
+msgid "Что доступно \"из коробки\" при реализации нового пакета:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:19
+msgid ""
+"**ApplicationContext ecos-integrations** микросервиса, но просто так с "
+"ним работать не получится, потому что пакеты не могут \"переварить\" "
+"зависимость от spring библиотек, поэтому в библиотеке **ecos-osgi-"
+"loader** была реализована обертка, принимающая в себя объект "
+"**ApplicationContext** и позволяющая получать из него бины"
+msgstr ""
+
+#: ../../integration/OSGI.rst:21
+msgid "Полезные ссылки для реализации OSGI пакетов:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:23
+msgid ""
+"`http://java-online.ru/osgi.xhtml <http://java-online.ru/osgi.xhtml>`_ – "
+"Описание работы OSGI с подробными примерами реализации самих пакетов"
+msgstr ""
+
+#: ../../integration/OSGI.rst:25
+msgid ""
+"`https://felix.apache.org/ <https://felix.apache.org/>`_  – Официальный "
+"сайт фреймворка Apache Felix, который был использован в качестве "
+"реализации спецификации OSGI"
+msgstr ""
+
+#: ../../integration/OSGI.rst:27
+msgid ""
+"`https://felix.apache.org/documentation/subprojects/apache-felix-maven-"
+"bundle-plugin-bnd.html "
+"<https://felix.apache.org/documentation/subprojects/apache-felix-maven-"
+"bundle-plugin-bnd.html>`_ – Более подробное описание работы с плагином "
+"для создания OSGI пакетов."
+msgstr ""
+
+#: ../../integration/OSGI.rst:29
+msgid ""
+"При реализации пакетов можно не прописывать пакеты **Felix** и **OSGI "
+"Core** в свои проекты, а просто добавить зависимость на ecos-osgi-loader."
+" Все необходимые библиотеки OSGI придут оттуда, как и обертка для работы "
+"с **ApplicationContext**."
+msgstr ""
+
+#: ../../integration/OSGI.rst:31
+msgid "Версия плагина для сборки пакетов: 5.1.1"
+msgstr ""
+
+#: ../../integration/OSGI.rst:33
+msgid "Пример настроенного плагина:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:55
+msgid "Пример создания бандла"
+msgstr ""
+
+#: ../../integration/OSGI.rst:57
+msgid ""
+"В данной статье будет рассмотрено пошаговое создание бандла, а так же "
+"внедрение этого бандла в микросервис интеграций."
+msgstr ""
+
+#: ../../integration/OSGI.rst:59
+msgid ""
+"Пример, на котором рассмотрим - `ecos-edi-kontur-lib "
+"<https://gitlab.citeck.ru/citeck-projects/ecos-edi-kontur-"
+"lib/-/tree/develop>`_"
+msgstr ""
+
+#: ../../integration/OSGI.rst:62
+msgid "1. Сборка"
+msgstr ""
+
+#: ../../integration/OSGI.rst:64
+msgid ""
+"**Бандл** -  стандартный **jar файл** с добавлением в него "
+"**MANIFEST.MF** файла."
+msgstr ""
+
+#: ../../integration/OSGI.rst:66
+msgid "Чтобы получить подобную сборку, делаем следующее:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:68
+msgid ""
+"1.1. Указываем **packaging** свойство в **pom.xml** в значение "
+"**bundle**. Пример с контекстом:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:83
+msgid ""
+"1.2. Указываем в области **build** следующий плагин (у меня получился "
+"довольно большой объем):"
+msgstr ""
+
+#: ../../integration/OSGI.rst:85
+msgid ""
+"Тут стоит остановиться поподробнее на настройке этого плагина. Bundle "
+"имеет свой **ClassLoader**, зависящий от других бандлов. Для него не "
+"свойственны правила наследования ClassLoader'ов в Java. По этой причине, "
+"чтобы класс из какой-то либы был доступен в вашем бандле - его надо "
+"импортировать (а другой бандл, соответственно, должен его "
+"экспортировать). Если импорта не будет - произойдет "
+"**ClassNotFoundException** или **NoClassDefFoundError** в рантайме (в "
+"зависимости от контекста запроса к классу). Если импорт будет, но "
+"подобная зависимость не может быть найдена в фреймворке из других бандлов"
+" (ни один не экспортировал) - будет исключение о том, разрешения "
+"зависимостей (wiring) при старте бандла."
+msgstr ""
+
+#: ../../integration/OSGI.rst:87
+msgid ""
+"По комментариям в xml должно быть понятно что есть что. Опишу некоторые "
+"подводные камни."
+msgstr ""
+
+#: ../../integration/OSGI.rst:89
+msgid ""
+"Бывает ситуация, когда бандл при старте будет жаловаться на отсутствие "
+"зависимости, но вы только что загрузили эту зависимость в другом бандле "
+"(или эта зависимость есть в системном бандле). Данная проблема может быть"
+" из-за того, что зависимость экспортировалась без версии (или со "
+"стандартной версией ``1.0.0``) из-за отсутствия этой информации в "
+"рантайме при экспорте, а импорт требует, например, ``25.1.0``. Примером "
+"решения подобной проблемы - может быть указание минимальной "
+"поддерживаемой версии самостоятельно в манифесте. Для этого, вместо "
+"строки в импорте ``com.google.common.*`` пишем следующее: "
+"``com.google.common.*; version=\"[1.0,26.0)\"`` , что означает, что мы "
+"будем рады любой версии от 1.0.0 до 26.0."
+msgstr ""
+
+#: ../../integration/OSGI.rst:91
+msgid ""
+"1.3. Сама сборка после предыдущих приготовлений выполняется стандартной "
+"командой ``mvn clean package (install|deploy)``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:94
+msgid "2. Активатор"
+msgstr ""
+
+#: ../../integration/OSGI.rst:96
+msgid ""
+"**Активатор** - аналог main метода для бандла. Он вызывается при старте "
+"бандла и при его остановке (методы start и stop)."
+msgstr ""
+
+#: ../../integration/OSGI.rst:98
+msgid ""
+"Либа из примера, используется для того, чтоб создать объекты, "
+"зарегистрировать их в микросервисе. Под регистрацией тут подразумевается "
+"- добавление по ключу **KONTUR** сервиса обработки событий **Diadoc** и "
+"**Kontur.EDI**. Таким образом, подключив бандл - можем пользоваться "
+"обработкой событий (и прочими фишками библиотеки) из микросервиса."
+msgstr ""
+
+#: ../../integration/OSGI.rst:101
+msgid "3. Загрузка в микросервис"
+msgstr ""
+
+#: ../../integration/OSGI.rst:103
+msgid ""
+"Заходим в **Рабочее пространство \"Раздел администратора\" → Журнал OSGI "
+"пакеты**. Загружаем через кнопку + свой бандл."
+msgstr ""
+
+#: ../../integration/OSGI.rst:109
+msgid "Если все ок, увидим следующую картину:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:115
+msgid ""
+"Важный факт, что статус - **ACTIVE**, это означает, что бандл зарезолвен,"
+" установлен и фреймворк его успешно стартанул."
+msgstr ""
+
+#: ../../integration/OSGI.rst:117
+msgid ""
+"Если есть ошибка загрузки - необходимо корректировать либо код, либо "
+"настройки бандла (импорт и экспорт)."
+msgstr ""
+
+#: ../../integration/OSGI.rst:119
+msgid ""
+"Обязательно проверьте, что в рантайме нет ошибок при работе бандла. Как "
+"писалось выше, отсутствующие импорты могут привести к ошибкам рантайма."
+msgstr ""
+
+#: ../../integration/OSGI.rst:123
+msgid ""
+"Если вы получили ошибку, поправили бандл, загружаете новый бандл и "
+"получаете эту же ошибку - сделайте рестарт микросервиса интеграций после "
+"каждого неудачного старта бандла."
+msgstr ""
+
+#: ../../integration/OSGI.rst:126
+msgid "Способы расширения микросервиса интеграций с помощью бандлов"
+msgstr ""
+
+#: ../../integration/OSGI.rst:129
+msgid "1. Регистрация своего RecordsDao"
+msgstr ""
+
+#: ../../integration/OSGI.rst:131
+msgid ""
+"Подготовительная часть - импортировать зависимости records с помощью "
+"maven в своем бандле."
+msgstr ""
+
+#: ../../integration/OSGI.rst:133 ../../integration/OSGI.rst:154
+#: ../../integration/OSGI.rst:176
+msgid "Импортировать пакеты в бандл (в конфиге):"
+msgstr ""
+
+#: ../../integration/OSGI.rst:143
+msgid "Дальше - написать ``RecordsDao`` под свои потребности."
+msgstr ""
+
+#: ../../integration/OSGI.rst:145
+msgid ""
+"После написания - в ``BundleActivator`` можно получить с помощью "
+"``ApplicationContextReflection`` бин класса ``RecordsService`` и вызываем"
+" у него метод **register**, передав свой ``RecordsDao``."
+msgstr ""
+
+#: ../../integration/OSGI.rst:147
+msgid ""
+"Теперь, запросы по указанному **sourceId** будут попадать в ваш "
+"``RecordsDao``."
+msgstr ""
+
+#: ../../integration/OSGI.rst:150
+msgid "2. Регистрация новых команд"
+msgstr ""
+
+#: ../../integration/OSGI.rst:152
+msgid ""
+"Подготовительная часть - импортировать зависимости commands с помощью "
+"maven в своем бандле."
+msgstr ""
+
+#: ../../integration/OSGI.rst:163
+msgid ""
+"Дальше объявить свою ``CommandDto``, указать аннотацией ``@CommandType`` "
+"тип для нее. Создать ``CommandExecutor`` для этой dto."
+msgstr ""
+
+#: ../../integration/OSGI.rst:165
+msgid ""
+"После написания - в ``BundleActivator`` можно получить с помощью "
+"``ApplicationContextReflection`` бин класса ``CommandsService`` и вызвать"
+" у него метод **addExecutor**, передав свою реализацию "
+"``CommandExecutor``."
+msgstr ""
+
+#: ../../integration/OSGI.rst:167
+msgid ""
+"Теперь, команды с указанным типом будут попадать в ваш "
+"**CommandExecutor**."
+msgstr ""
+
+#: ../../integration/OSGI.rst:170
+msgid "3. Возможность работы с camel"
+msgstr ""
+
+#: ../../integration/OSGI.rst:172
+msgid ""
+"В основном пока что это используется для ЭДО-интеграций, но бывает проще "
+"использовать camel для некоторых вещей."
+msgstr ""
+
+#: ../../integration/OSGI.rst:174
+msgid ""
+"Чтобы его использовать - добавить зависимости camel, которые нужны с "
+"помощью maven в своем бандле."
+msgstr ""
+
+#: ../../integration/OSGI.rst:182
+msgid ""
+"Дальше - в ``BundleActivator`` создать ``DefaultCamelContext``. Добавить "
+"в него необходимые маршруты. Запустить контекст."
+msgstr ""
+
+#: ../../integration/OSGI.rst:184
+msgid ""
+"Теперь у вас работает Camel в вашем бандле. Camel позволяет не только в "
+"рамках контекста обмениваться сообщениями, но и в рамках JVM, что может "
+"быть особенно полезно (direct-vm компонент)."
+msgstr ""
+
+#: ../../integration/OSGI.rst:186
+msgid ""
+"Пока что возможности Camel вроде динамичного добавления ендпоинтов и тд "
+"не тестировались, но до кролика или иного сервиса (исходящий запрос) - "
+"очень даже удобно ходить."
+msgstr ""
+
+#: ../../integration/OSGI.rst:189
+msgid "4. Регистрация нового endpoint"
+msgstr ""
+
+#: ../../integration/OSGI.rst:191
+msgid "Добавляем зависимость:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:202
+msgid "Добавляем в импорт пакеты:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:209
+msgid "В бандле создаем класс(ы) содержащий(ие) методы для обработки запросов."
+msgstr ""
+
+#: ../../integration/OSGI.rst:211
+msgid ""
+"Возможные варианты реализации такого метода - использование "
+"`RequestEnitity  <https://docs.spring.io/spring-framework/docs/current"
+"/javadoc-api/org/springframework/http/RequestEntity.html>`_, "
+"`ResponseEntity  <https://www.baeldung.com/spring-response-entity>`_, "
+"использование `@RequestBody  <https://www.baeldung.com/spring-request-"
+"response-body>`_, `пример  <https://www.logicbig.com/tutorials/spring-"
+"framework/spring-web-mvc/request-response-entity.html>`_.  Также методы "
+"могут принимать переменные пути запроса `@PathVariable  "
+"<https://www.baeldung.com/spring-pathvariable>`_ и переменные заголовка "
+"`@RequestHeader <https://www.baeldung.com/spring-rest-http-headers>`_."
+msgstr ""
+
+#: ../../integration/OSGI.rst:213
+msgid ""
+"В ``start`` методе активатора при помощи ``ApplicationContextReflection``"
+" получаем ``RequestMappingHandlerMapping``, настраиваем "
+"``RequestMappingInfo.BuilderConfiguration``, создаем "
+"``RequestMappingInfo`` и регистрируем его в  "
+"``RequestMappingHandlerMapping``. Пример для регистрации нового endpoint "
+"``\"ecos/message\"``:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:237
+msgid ""
+"В методе ``stop`` предусматриваем отключение endpoint при помощи вызова "
+"``handlerMapping.unregisterMapping(info)``."
+msgstr ""
+
+#: ../../integration/OSGI.rst:239
+msgid ""
+"Для изменения записей в Citeck можно использовать ``RecordsService``. "
+"Есть следующие особенности при работе с сервисом через DTO:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:241
+msgid "Создание ObjectData из DTO-объекта:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:247
+msgid ""
+"Для использования псевдонима в свойствах можно использовать "
+"``ecos.com.fasterxml.jackson210.annotation.JsonProperty``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:256
+msgid "Свойство с типом ``ASSOC: private RecordRef nsdb_counterparty``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:265
+msgid "Свойство с типом ``CONTENT: private ObjectData nsdb_content``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:275
+msgid ""
+"Возможные свойства для установки "
+"``ru.citeck.ecos.records.source.alf.file.FileRepresentation``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:277
+msgid "Ссылка на родителя из ASSOC"
+msgstr ""
+
+#: ../../integration/OSGI.rst:284
+msgid ""
+"Объявление свойства, которое базируется на атрибуте типа с двоеточием "
+"(cm:name, idocs:inn)"
+msgstr ""
+
+#: ../../integration/OSGI.rst:293
+msgid "Указание определенного alfresco-типа для родителя при создании записи"
+msgstr ""
+
+#: ../../integration/OSGI.rst:301
+msgid ""
+"где ``ru.citeck.ecos.records.source.alf.meta.AlfNodeRecord.ATTR_TYPE = "
+"“type“``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:303
+msgid "Указать определенный тип связи между родителем и дочерней записью"
+msgstr ""
+
+#: ../../integration/OSGI.rst:311
+msgid ""
+"где ``ru.citeck.ecos.records2.RecordConstants.ATT_PARENT_ATT = "
+"“_parentAtt“;``"
+msgstr ""
+
+#: ../../integration/OSGI.rst:313
+msgid ""
+"Тестирование работоспособности методов можно проверить, реализовав в "
+"тесте интерфейсы ``RecordMutateDao``, ``RecordAttsDao``, "
+"``RecordsQueryDao`` и имитировав работу ``RecordsService``, например:"
+msgstr ""
+
+#: ../../integration/OSGI.rst:329
+msgid "где **this** реализует ``RecordMutateDao``, ``RecordsQueryDao``."
+msgstr ""
+
+#: ../../integration/OSGI.rst:332
+msgid "Особенности"
+msgstr ""
+
+#: ../../integration/OSGI.rst:334
+msgid ""
+"Одновременное использование аннотаций JsonProperty и AttName приводит к "
+"тому, что при чтении DTO из RecordsService свойство не заполняется."
+msgstr ""
+
+#: ../../integration/OSGI.rst:346
+msgid "Выведет на консоль null."
+msgstr ""
+

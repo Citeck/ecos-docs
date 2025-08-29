@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/EDI_microservice/configuration.rst:2
+msgid "Настройка синхронизации и конфигурация"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:4
+msgid ""
+"В микросервис ecos-edi вынесен функционал по EDI синхронизации с "
+"провайдерами **diadoc** и **sbis**:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:6
+msgid ""
+"Принцип действия и настройки ящиков и синхронизаций edi практически "
+"идентичны настройкам на integrations."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:8
+msgid ""
+"Перед созданием ящиком необходимо создать записи в журналах **Секреты** и"
+" **Конечные точки**."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:10
+msgid ""
+"Для того чтобы добавить новую синхронизацию с каким-либо ящиком диадок "
+"или СБИС необходимо:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:12
+msgid "Cоздать ящик в журнале **Конфигурация ящиков ЭДО**:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:16
+msgid ""
+"Журнал располагается в разделе **(Рабочее пространство \"Раздел "
+"администратора\" - ЭДО интеграция)**, не путать с журналом, который "
+"располагается в разделе **Интеграция**"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:22
+msgid "Настройка ящика такая же как и в integrations:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:28
+msgid ""
+"Создание новой синхронизации также идентично тому что в integrations на "
+"данный момент."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:42
+msgid ""
+"Если необходимо включить синхронизацию по ящику в edi микросервисе (**ЭДО"
+" интеграция - Синхронизации ЭДО**), то эту же синхронизацию необходимо "
+"отключить в integrations микросервисе (**Интеграция - Синхронизации**), "
+"иначе возможны ошибки и конкурентные потоки записывающие различные данные"
+" в одни и те же документы."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:46
+msgid ""
+"Также, если мы хотим переключить синхронизацию с edi на integrations и "
+"наоборот, надо помнить что в другом микросервисе она уже продвинулась и "
+"поэтому перед включением обязательно выставлять поле **First event id**, "
+"соответствующее последнему обработанному событию, иначе события будут "
+"обрабатываться заново уже в другом микросервисе, что займет время и "
+"ресурсы."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:48
+msgid ""
+"Переключение логики по исходящим пакетам, а также любым действиям с нашей"
+" стороны."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:50
+msgid ""
+"Для того чтобы переключить логику выполнения запросов к провайдеру между "
+"edi и integrations микросервисами существует настройка **TargetEdiApp** "
+"(значения edi или integrations). Актуально только для систем с alfresco, "
+"для чистых ecos системы вся логика общения с провайдерами идет через edi."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:52
+msgid ""
+"См. ниже по остальным настройкам (для работы микросервиса edi необходимо "
+"выставить этой настройке параметр - edi)"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:56
+msgid "Настройки и конфигурация"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:58
+msgid "Основные настройки, на которые следует обратить внимание:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:60
+msgid ""
+"**TargetEdiApp** - настройка alfresco, служит для того чтобы определять в"
+" какой именно микросервис будут отправлены команды завязанные на edi "
+"логику с нашей стороны (подписание и отправка титулов, отказ, "
+"аннулирование и т.д.). Принимает 2 значения:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:62
+msgid ""
+"*integrations* - команды отсылаются в микросервис ecos-integrations "
+"(старая логика)"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:63
+msgid "*edi* - команды отсылаются в новый микросервис ecos-edi"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:65
+msgid ""
+"Если данное поле пустое, то команды отсылаются в микросервис integrations"
+" по-умолчанию."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:71
+msgid ""
+"Конфигурация из ecos конфига **(Рабочее пространство \"Раздел "
+"администратора\" - Управление системой - Конфигурация ECOS)**:"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:77
+msgid ""
+"**edi-event-processing-strategy** - стратегия обработки входящих эвентов "
+"(SEQUENTIAL или PARALLEL)."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:79
+msgid ""
+"*SEQUENTIAL* - стандартная обработка эвентов по мере их получения, друг "
+"за другом."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:80
+msgid ""
+"*PARALLEL* - сохранение получемых эвентов в БД и последующая их "
+"параллельная обработка разбитая по пакетам. (В разных потоках "
+"одновременно обрабатываются эвенты по пакетам, в рамках пакета эвенты "
+"обрабатываются последовательно)"
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:82
+msgid ""
+"**edi-system-package-type** - тип системного пакета (используется в новой"
+" логике, в гибридном варианте с alfresco пока не используется, возможно "
+"позже, когда будет миграция данные)."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:84
+msgid ""
+"**allowGenerateLsdfPrintFormsAsyncOnFail** - настройка перенесенная из "
+"ecos-integrations, позволяет асинхронную генерацию печатных форм "
+"(оставить в true)."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:86
+msgid ""
+"**edi-use-legacy-mode** - как именно обрабатываются пакеты, по старой "
+"логике или по новой (true, так как используем пока вместе с alfresco и "
+"логика обработки и системные пакеты должны сохраняться в БД alfresco)."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:88
+msgid ""
+"**splitLsdfDocflowByLegalEntities** - разделение системных пакетов по юр."
+" лицам (настройка перенесенная из ecos-integrations, возможно переименуем"
+" или переделаем данный функционал в зависимости от потребностей, "
+"по-умолчанию - true)."
+msgstr ""
+
+#: ../../general/EDI_microservice/configuration.rst:90
+msgid ""
+"**inboundPackagesProcessing** - настройка перенесенная из ecos-"
+"integrations, какой тип эвентов обрабатывать все (ALL - по-умолчанию) или"
+" по BOX_ID."
+msgstr ""
+

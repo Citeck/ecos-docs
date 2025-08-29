@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Events.rst:2
+msgid "Работа с событиями (events)"
+msgstr ""
+
+#: ../../general/Events.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/Events.rst:10
+msgid "Events 2.0"
+msgstr ""
+
+#: ../../general/Events.rst:12
+msgid ""
+"Реакция на события (events) строится на основе rabbitmq и моделей events "
+"в библиотеке - `ecos-events <https://github.com/Citeck/ecos-events>`_. На"
+" стороне producer и consumer строится подключение к rabbitmq. Пример: "
+"отправка уведомлений как реакция на событие - сменился статус, изменился "
+"атрибут, назначилась задача и т.д."
+msgstr ""
+
+#: ../../general/Events.rst:15
+msgid "Архитектура"
+msgstr ""
+
+#: ../../general/Events.rst:22
+msgid "Описание работы"
+msgstr ""
+
+#: ../../general/Events.rst:24
+msgid ""
+"События в ECOS позволяют менять атрибутивный состав, который нужен "
+"подписчику на событие, без модификации источника событий. При старте "
+"системы все подписчики регистрируют в Zookeeper список необходимых им "
+"событий по типам и атрибуты события, в которых они заинтересованы."
+msgstr ""
+
+#: ../../general/Events.rst:27
+msgid ""
+"Приложение, которое может отправлять события подобного типа, видит, что в"
+" системе есть подписчики на эти события, и, при их возникновении, "
+"подготовив необходимый список атрибутов, отправляет их в Rabbit MQ "
+"(нетранзакционные слушатели) или напрямую слушателю (транзакционные "
+"слушатели) через синхронный запрос."
+msgstr ""
+
+#: ../../general/Events.rst:31
+msgid ""
+"Атрибуты описываются в формате Records API и могут пользоваться всеми "
+"преимуществами данного API."
+msgstr ""
+
+#: ../../general/Events.rst:34
+msgid "Транзакционные слушатели"
+msgstr ""
+
+#: ../../general/Events.rst:36
+msgid ""
+"Транзакционные слушатели позволяют реагировать на события \"здесь и "
+"сейчас\", не дожидаясь пока транзакция завершится. Подобные слушатели "
+"могут быть использованы, чтобы добавить валидацию состояния системы с "
+"возможностью прервать транзакцию или для любых других действий, которые "
+"должны выполниться в рамках транзакции."
+msgstr ""
+
+#: ../../general/Events.rst:40
+msgid ""
+"Важная особенность - добавляя транзакционных слушателей вы автоматически "
+"добавляете жесткую зависимость генерирующих события микросервисов от "
+"микросервиса со слушателем. Т.е. если микросервис со слушателем "
+"недоступен, то микросервис, генерирующий события не сможет "
+"функционировать в полной мере."
+msgstr ""
+
+#: ../../general/Events.rst:44
+msgid "Примеры"
+msgstr ""
+
+#: ../../general/Events.rst:47
+msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
+msgstr ""
+
+#: ../../general/Events.rst:62
+msgid "Подписка на событие с произвольными атрибутами (Java):"
+msgstr ""
+
+#: ../../general/Events.rst:86
+msgid "Пример listener-а событий для определенного типа данных"
+msgstr ""
+
+#: ../../general/Events.rst:181
+msgid "Пояснения:"
+msgstr ""
+

@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/new_provider.rst:2
+msgid "Реализация интеграции с новым ЭДО-провайдером"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:5
+msgid "1. Со стороны бандла работы с ЭДО-провайдером (мкр. интеграции)"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:7
+msgid ""
+"Создать java проект с бандлом. Пример создания нового бандла можно "
+"посмотреть тут: Пример создания бандла."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:9
+msgid ""
+"В данном проекте обязательно надо импортнуть зависимость ``ru.citeck.ecos"
+".ecos-edi-commons``. Версия должна соответствовать той, которая находится"
+" в микросервисе интеграции необходимой Вам версии."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:11
+msgid ""
+"В активаторе (класс интерфейса ``org.osgi.framework.BundleActivator``) "
+"необходимо зарегистрировать свои реализации "
+"``ru.citeck.ecos.domain.edi.service.sync.EdiEventsSyncService`` и "
+"``ru.citeck.ecos.domain.edi.service.api.EdiApiService в бинах "
+"микросервиса integrations``. Пример из Контура (не забудьте при выгрузке "
+"бандла выполнять unregister(…)):"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:23
+msgid ""
+"После этого шага, запросы к Вашему ЭДО-провайдеру в рамках этих "
+"интерфейсов будут транслироваться в Ваш сервис."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:25
+msgid ""
+"В существующих на данный момент бандлах можно так же найти примеры "
+"регистрации слушателя изменения данных по какому-то ящику (сущности "
+"ящика, кредов, датасорса). Можно использовать для чистки кешей внутри "
+"бандла."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:27
+msgid ""
+"В случае отсутствия Вашего провайдера в enum "
+"``ru.citeck.ecos.domain.edi.dto.enums.EdiProviderType`` либы ``ecos-edi-"
+"commons`` - необходимо будет его завести."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:30
+msgid "2. Со стороны связующей либы ecos-edi-integration (мкр. интеграции)"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:32
+msgid ""
+"Как бы не хотелось полностью унифицировать обработку одного "
+"ЭДО-провайдера от другого - не получится. Разные атрибуты для "
+"идентификаторов, немного разная политика поиска и тд."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:34
+msgid ""
+"Поэтому, создан небольшой интерфейс "
+"``ru.citeck.ecos.edi.domain.integration.service.provider.ProviderHandler``"
+" на стороне ``ecos-edi-integration``, которая выполняет действия по "
+"поиску записей в альфреске (пока в альфреске)."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:36
+msgid ""
+"Реализацию для нового провайдера необходимо зарегистрировать. Делается "
+"это просто - "
+"``ru.citeck.ecos.edi.domain.integration.factory.ApplicationCamelContextFactoryImpl#createProviderResolver``:"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:49
+msgid "3. Со стороны хранилки (альфреско)"
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:51
+msgid ""
+"На данный момент, хранилка - альфреско. Ее можно сменить при наличии "
+"подобного варианта, переделав лишь либу ``ecos-edi-integration`` или "
+"сделав аналогичную для конкретной хранилки."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:53
+msgid ""
+"Создать аспект для хранения идентификаторов документов (подписей, в "
+"случае некоторых провайдеров)."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:55
+msgid ""
+"Зарегистрировать свою реализацию "
+"``ru.citeck.ecos.integration.edi.documents.identifiers.EdiIdentifiersProvider``"
+" в "
+"``ru.citeck.ecos.integration.edi.documents.identifiers.EdiIdentifiersProviderRegistry``."
+" Если вы наследуетесь от "
+"``ru.citeck.ecos.integration.edi.documents.identifiers.AbstractEdiIdentifiersProvider``,"
+" то регистрация при инициализации бина произойдет автоматически за счет "
+"``@PostConstruct``."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:57
+msgid ""
+"Данный сервис необходим для генерации печатных форм (проверка "
+"существования идентификаторов ЭДО у нод) и для определения типа документа"
+" EDI (не путать с ЮЗДО)."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:59
+msgid ""
+"Зарегистрировать свою реализацию "
+"``ru.citeck.ecos.integration.edi.documents.titles.TitleTypeService`` в "
+"``ru.citeck.ecos.integration.edi.documents.titles.TitleTypeServiceRegistry``."
+" Если вы наследуетесь от "
+"``ru.citeck.ecos.integration.edi.documents.titles.AbstractTitleTypeService``,"
+" то регистрация при инициализации бина произойдет автоматически за счет "
+"``@PostConstruct``."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:61
+msgid ""
+"Данный сервис необходим при подписании ЮЗДО. Благодаря ему определяется, "
+"нужно ли генерировать и подписывать титул документа или достаточно "
+"подписи самого вложения."
+msgstr ""
+
+#: ../../integration/EDI_integration/new_provider.rst:63
+msgid ""
+"Самая основная часть - подготовка запросов и постобработка ответов. За "
+"кастомную часть этого процесса отвечает "
+"``ru.citeck.ecos.integration.edi.service.EdiProviderHelper``, которому "
+"делегируется составление DTO, которые будут отправлены в микросервис и, "
+"далее, в бандл. Как и с остальными сервисами, тут надо зарегистрировать "
+"свой компонент в своем registry, как и у остальных сервисов, тут есть "
+"авторегистрирующий "
+"``ru.citeck.ecos.integration.edi.service.AbstractEdiProviderHelper``. "
+"Лучше использовать его, в нем частично функционал класса уже реализован."
+msgstr ""
+

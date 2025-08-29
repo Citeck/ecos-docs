@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/events_kontur.rst:2
+msgid "Настройка получения событий с ящиком Контур.Диадок"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:9
+msgid ""
+"В данной статье будет на примере нашего тестового ящика показано как "
+"добавить интеграцию с Контур.Диадок."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:11
+msgid ""
+"Для начала, уточним общие моменты. Что понимаем под интеграцией в "
+"контексте данной статьи? Конкретно в контексте данной статьи - получение "
+"событий из ЭДО-провайдера, их первичная обработка (конвертация) и "
+"отправка универсальной структуры события в обработчик. Детали по тому как"
+" работает интеграция смотрите в соседних статьях."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:14
+msgid "1. Создание DataSource до ЭДО провайдера"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:16
+msgid ""
+"В новой интеграции мы не опираемся на жестко заданных в конфигах URL. По "
+"этой причине, при настройки интеграции - понадобится задать URL."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:18
+msgid ""
+"Описание работы **DataSource** смотрите в дочерних статьях раздела "
+":ref:`REST Data Source<data_sources>` Он создается через журнал "
+"**Источники данных (Рабочее пространство \"Раздел администратора\" - "
+"Интеграция)**."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:20
+msgid ""
+"Для начала проясним, нас интересует в большинстве случаев - **REST "
+"DataSource**, так как большинство ЭДО провайдеров предоставляют именно "
+"**HTTP API**. Требования к DataSource ЭДО провайдера, отличного от "
+"Контур.Диадок - смотрите в соответствующих статьях. Предоставляю пример "
+"настроенного **DataSource** для продуктивного **Контур.Диадок**:"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:26
+msgid ""
+"Как несложно заметить, заполнены только обязательные поля (**Id, Name**) "
+"и **URL**. Именно на **URL** смотрит интеграция при запросе."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:28
+msgid "Примеры заполнения URL и расшифровка:"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:30
+msgid ""
+"`https://diadoc-api.kontur.ru <https://diadoc-api.kontur.ru>`_ - "
+"продуктивный Контур.Диадок, указанный на скрине выше."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:32
+msgid ""
+"`https://diadoc-api-test.kontur.ru <https://diadoc-api-test.kontur.ru>`_ "
+"- тестовый Контур.Диадок."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:34
+msgid ""
+"`https://test-edi-api.kontur.ru <https://test-edi-api.kontur.ru>`_ - "
+"тестовый Контур.EDI."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:36
+msgid ""
+"`https://courier-demo-api.esphere.ru <https://courier-demo-"
+"api.esphere.ru>`_ - тестовый Сфера.Курьер (Корус)."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:38
+msgid ""
+"`https://courier-api.esphere.ru <https://courier-api.esphere.ru>`_ - "
+"продуктивный Сфера.Курьер (Корус)."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:40
+msgid ""
+"В случае, если **REST Data Sources** будет не хватать для нового ЭДО "
+"провайдера - будем развивать функционал **Data Sources**."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:43
+msgid "2. Создание Credentials для доступа к ЭДО провайдеру по API"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:45
+msgid ""
+"По аналогии с **Data Sources**, нужно так же создать запись в системном "
+"журнале **Credentials**."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:47
+msgid ""
+"Пример заполнения с предзаполненными кредами от тестового ящика Citeck "
+"(**Id** - случайный):"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:54
+msgid "3. Создание ящика с информацией об ЭДО провайдере"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:56
+msgid ""
+"Заходим в журнал **Конфигурация ящиков ЭДО (EDI boxes configuration) "
+"(Рабочее пространство \"Раздел администратора\" - Интеграция)** и создаем"
+" там запись о нашем ящике."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:58
+msgid "Пример:"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:64
+msgid ""
+"В данной записи обязательно надо выбрать ЭДО провайдер. Сейчас доступны "
+"для выбора следующие ЭДО провайдеры (доступны для выбора, но "
+"поддерживался на момент написания статьи только Контур):"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:70
+msgid ""
+"Атрибуты **URL** и **Авторизационные данные** содержат созданные в "
+"пунктах выше значения - выбираем соответствующий датасорс и креды."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:72
+msgid "После этого  - вставляем идентификатор ящика и ключ разработчика."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:74
+msgid ""
+"P.S. ключ разработчика добавлен только на форму для Контур ЭДО "
+"провайдера. Иные провайдеры могут затребовать еще какие-то дополнительные"
+" данные."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:77
+msgid "4. Настройка интеграции с ЭДО провайдером в рамках ящика"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:79
+msgid ""
+"Финальный этап настройки - заходим в журнал **Синхронизации (Рабочее "
+"пространство \"Раздел администратора\" - Интеграция)**. Создаем **запись "
+"интеграции ЭДО** (это новый отдельный вариант создания, доступен для "
+"выбора по кнопке **“+”**):"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:85
+msgid "Идентификатор и наименование - произвольные."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:87
+msgid ""
+"Чекбоксы **Включена** и **Необходимо перезапустить?** - стандартные "
+"атрибуты синхронизаций Citeck."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:89
+msgid ""
+"В разделе **Базовая конфигурация** - необходимо выбрать ящик из пункта 3,"
+" и указать время блокировки и время лага в миллисекундах."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:91
+msgid ""
+"**Время наложения блокировки** - необходимо задавать для того, чтобы "
+"одновременно не запускалось более 2х интеграций для одного и того же "
+"ящика. Если значение не задано - блокировка будет накладываться на 2 "
+"часа."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:93
+msgid ""
+"**Время лага** - придумано для того, чтобы не обрабатывать события, "
+"которые произошли только что. Цель - не обрабатывать события, транзакция "
+"по которым в системе могла еще не завершиться. Рекомендуется ставить "
+"значение, хотя бы, 60 секунд (60000)."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:95
+msgid ""
+"В разделе **конфигурация шедулинга** - указаны несколько атрибутов для "
+"шедулинга."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:97
+msgid "Опишу тут логику их работы:"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:99
+msgid ""
+"Если задан ``CronExpression`` - джоба будет отрабатывать по "
+"CronExpression. Подробнее здесь: "
+"``org.springframework.scheduling.support.CronTrigger``."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:101
+msgid ""
+"Иначе, джоба будет работать периодично, раз в ``TriggerPeriod`` "
+"миллисекунд. Если задан ``InitialDelay`` - джоба не будет триггериться "
+"первые N миллисекунд. Если установлена галка ``FixedRate`` - отсчет "
+"времени до следующего триггирования будет начинаться только после того "
+"как завершилась работа по предыдущему триггированию. Подробнее здесь: "
+"org.springframework.scheduling.support.PeriodicTrigger."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:103
+msgid "Самый важный и интересный раздел - **Конфигурация персистентности**."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:105
+msgid ""
+"``Camel endpoint`` - это эндпоинт Camel, в который будут поступать "
+"универсальные структуры события (Event). Данные события должны уметь быть"
+" отработанными в заданном роуте Camel. Рекомендуется использовать "
+"эндпоинты типа ``direct-vm``, чтобы работала передача событий в "
+"посторонние контексты."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:107
+msgid ""
+"Список параметров, которые можно добавлять - это мапа ``String-String``, "
+"которая будет прокидываться в сообщение с событием в Camel роут в виде "
+"``Properties`` к ``CamelExchange``."
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:110
+msgid "5. Итоги"
+msgstr ""
+
+#: ../../integration/EDI_integration/events_kontur.rst:112
+msgid ""
+"На этом, настройка завершена. Важно, что новая интеграция работает как "
+"несколько изолированных компонентов. Соответственно, настроив текущую "
+"интеграцию - надо подключить в микросервис OSGi бандл с классами для "
+"работы с диадок и OSGi бандл, ответственный за предоставление Camel "
+"контекста с поддержкой роута, указанного при настройке интеграции. Данные"
+" моменты будут уточнены и подробнее рассмотрены в следующих статьях "
+"данного раздела."
+msgstr ""
+
