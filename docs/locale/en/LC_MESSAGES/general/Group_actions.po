@@ -1,0 +1,368 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Group_actions.rst:2
+msgid "Групповые действия"
+msgstr ""
+
+#: ../../general/Group_actions.rst:8
+msgid "Доступно только в Enterprise версии."
+msgstr ""
+
+#: ../../general/Group_actions.rst:11
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/Group_actions.rst:13
+msgid ""
+"Групповые действия позволяют обработать большое количество элементов на "
+"сервере."
+msgstr ""
+
+#: ../../general/Group_actions.rst:15
+msgid "Примеры групповых действий:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:17
+msgid "Выгрузка в Excel"
+msgstr ""
+
+#: ../../general/Group_actions.rst:18
+msgid "Скачивание Zip архива со всеми выбранными элементами"
+msgstr ""
+
+#: ../../general/Group_actions.rst:21
+msgid "Лицензия"
+msgstr ""
+
+#: ../../general/Group_actions.rst:23
+msgid ""
+"Функционал групповых действий доступен если в разделе **features** "
+"содержимого лицензии есть запись **group-actions**:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:31
+msgid "Описание новых групповых действий в микросервисе"
+msgstr ""
+
+#: ../../general/Group_actions.rst:33
+msgid ""
+"Для добавления возможности описывать групповые действия в микросервисе "
+"нужно добавить в **pom.xml** зависимость:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:43
+msgid ""
+"После этого можно описывать свою реализацию следующего интерфейса как "
+"spring-компонент (он зарегистрируется автоматически):"
+msgstr ""
+
+#: ../../general/Group_actions.rst:54
+msgid ""
+"Метод **getType** должен вернуть тип, по которому можно будет вызвать "
+"реализуемое действие."
+msgstr ""
+
+#: ../../general/Group_actions.rst:56
+msgid ""
+"Метод **createExecution** вызывается каждый раз когда запускается новое "
+"действие."
+msgstr ""
+
+#: ../../general/Group_actions.rst:58
+msgid "Интерфейс **GroupActionExecution** выглядит следующим образом:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:75
+msgid ""
+"Метод **getRequiredAttributes** возвращает мапу с атрибутами, которые "
+"нужны для выполнения действия. Атрибуты можно запрашивать и в ходе "
+"выполнения действия, но эффективнее вернуть их список заранее, чтобы не "
+"делать лишних запросов."
+msgstr ""
+
+#: ../../general/Group_actions.rst:77
+msgid ""
+"Метод **dispose** вызывается когда действие завершилось с любым "
+"результатом. Т.е. в случае ошибки метод **dispose** будет так же вызван."
+msgstr ""
+
+#: ../../general/Group_actions.rst:79
+msgid ""
+"Метод **execute** вызывается в момент запуска действия. Все основные "
+"манипуляции с данными выполняется именно в этом методе."
+msgstr ""
+
+#: ../../general/Group_actions.rst:81
+msgid ""
+"В метод **execute** передается контекст действия с методами "
+"**getValues(): Iterable<T>** и **getBatchedValues(batchSize: Int): "
+"Iterable<List<T>>**. Можно вызвать любой из этих методов и перебрать все "
+"значения через цикл или вручную."
+msgstr ""
+
+#: ../../general/Group_actions.rst:83
+msgid ""
+"Если предполагается, что при возникновении ошибки обработку не нужно "
+"прерывать, то исполнитель действия должен сам это учитывать. В случае "
+"выбрасывания исключения из метода **execute** выполнение действия сразу "
+"завершается."
+msgstr ""
+
+#: ../../general/Group_actions.rst:85
+msgid "Варианты результата групповой операции:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:93
+msgid "Класс"
+msgstr ""
+
+#: ../../general/Group_actions.rst:94
+msgid "ID"
+msgstr ""
+
+#: ../../general/Group_actions.rst:95
+msgid "Данные"
+msgstr ""
+
+#: ../../general/Group_actions.rst:96 ../../general/Group_actions.rst:194
+msgid "Описание"
+msgstr ""
+
+#: ../../general/Group_actions.rst:97
+msgid "**ActionResultLink**"
+msgstr ""
+
+#: ../../general/Group_actions.rst:98
+msgid "LINK"
+msgstr ""
+
+#: ../../general/Group_actions.rst:99
+msgid "url: String"
+msgstr ""
+
+#: ../../general/Group_actions.rst
+msgid "Вернуть ссылку на что-то для скачивания."
+msgstr ""
+
+#: ../../general/Group_actions.rst
+msgid "Ссылка должна быть относительной (без протокола, хоста, порта)."
+msgstr ""
+
+#: ../../general/Group_actions.rst ../../general/Group_actions.rst:237
+msgid "Например:"
+msgstr ""
+
+#: ../../general/Group_actions.rst
+msgid ""
+"Для получения ссылки на скачивание контента записи можно пользоваться "
+"методом **getDownloadUrl** в сервисе **EcosContentApi**."
+msgstr ""
+
+#: ../../general/Group_actions.rst
+msgid "Там же есть API для создания временного файла."
+msgstr ""
+
+#: ../../general/Group_actions.rst:110
+msgid "**ActionResultMessage**"
+msgstr ""
+
+#: ../../general/Group_actions.rst:111
+msgid "MESSAGE"
+msgstr ""
+
+#: ../../general/Group_actions.rst:112
+msgid "message: String"
+msgstr ""
+
+#: ../../general/Group_actions.rst:113
+msgid "Вернуть сообщение"
+msgstr ""
+
+#: ../../general/Group_actions.rst:114
+msgid "**ActionResultOk**"
+msgstr ""
+
+#: ../../general/Group_actions.rst:115
+msgid "OK"
+msgstr ""
+
+#: ../../general/Group_actions.rst:117
+msgid "Вернуть простой результат о том что действие успешно выполнено"
+msgstr ""
+
+#: ../../general/Group_actions.rst:118
+msgid "**ActionResultResults**"
+msgstr ""
+
+#: ../../general/Group_actions.rst:119
+msgid "RESULTS"
+msgstr ""
+
+#: ../../general/Group_actions.rst:140
+msgid "Вернуть список результатов по каждой обрабатываемой записи"
+msgstr ""
+
+#: ../../general/Group_actions.rst:143
+msgid "Потоки исполнения"
+msgstr ""
+
+#: ../../general/Group_actions.rst:145
+msgid "Все групповые действия выполняются в рамках преднастроенного тред пула."
+msgstr ""
+
+#: ../../general/Group_actions.rst:147
+msgid "Настройка количества потоков исполнения через spring свойства:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:158
+msgid ""
+"Выполнение действия происходит в контексте пользователя, который его "
+"инициировал (права доступа, часовой пояс, локаль и т.д.)"
+msgstr ""
+
+#: ../../general/Group_actions.rst:161
+msgid "Запуск группового действия"
+msgstr ""
+
+#: ../../general/Group_actions.rst:163
+msgid ""
+"Для запуска группового действия необходимо подготовить следующие "
+"параметры:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:184
+msgid "Источники значений:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:192
+msgid "Тип"
+msgstr ""
+
+#: ../../general/Group_actions.rst:193
+msgid "Конфигурация"
+msgstr ""
+
+#: ../../general/Group_actions.rst:195
+msgid "records-list"
+msgstr ""
+
+#: ../../general/Group_actions.rst:201 ../../general/Group_actions.rst:210
+msgid "Список конкретных сущностей"
+msgstr ""
+
+#: ../../general/Group_actions.rst:202
+msgid "records-query"
+msgstr ""
+
+#: ../../general/Group_actions.rst:213
+msgid "Архитектура решения"
+msgstr ""
+
+#: ../../general/Group_actions.rst:215
+msgid "Общий принцип работы групповых действий следующий:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:217
+msgid ""
+"При добавлении зависимости **ecos-group-actions** Spring Boot "
+"автоконфигурация регистрирует:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:219
+msgid "Сервис групповых действий"
+msgstr ""
+
+#: ../../general/Group_actions.rst:220
+msgid "Регистратор групповых действий"
+msgstr ""
+
+#: ../../general/Group_actions.rst:221
+msgid "RecordsDAO для групповых действий с ID \"group-action\""
+msgstr ""
+
+#: ../../general/Group_actions.rst:223
+msgid "Для запуска группового действия выполняется мутация записи:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:229
+msgid ""
+"В атрибутах заполняются поля для **GroupActionParams** (т.е. values и "
+"execution)"
+msgstr ""
+
+#: ../../general/Group_actions.rst:231
+msgid ""
+"RecordsDao через сервис запускает групповую операцию и сразу же (не "
+"дожидаясь её завершения) возвращает ссылку на созданное действие в "
+"следующем виде:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:243
+msgid ""
+"Далее инициатор действия может загрузить по вернувшемуся рефу атрибуты "
+"для получения информации о состоянии действия:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:267
+msgid ""
+"Инициатор действия периодически может проверять состояние действия через "
+"загрузку нужных атрибутов и может выполнить какие-либо действия как "
+"только получит статус отличный от WAITING/RUNNING или ненулевой "
+"результат."
+msgstr ""
+
+#: ../../general/Group_actions.rst:270
+msgid "UI действие"
+msgstr ""
+
+#: ../../general/Group_actions.rst:274
+msgid "Тип действия - **server-group-action-v2**"
+msgstr ""
+
+#: ../../general/Group_actions.rst:276
+msgid "Конфиг действия:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:291
+msgid ""
+"**outputParams** не является обязательным параметром и прописывается в "
+"том случае, если необходимо исправить дефолтный способ ответа действия."
+msgstr ""
+
+#: ../../general/Group_actions.rst:293
+msgid "Пример конфигурации:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:319
+msgid ""
+"При выполнении групповой операции отображается окно с прогрессом (% "
+"выполнения):"
+msgstr ""
+
+#: ../../general/Group_actions.rst:325
+msgid "Пример конфигурации с outputParams:"
+msgstr ""
+
+#: ../../general/Group_actions.rst:355
+msgid "В результае выгрузки выдается сообщение:"
+msgstr ""
+

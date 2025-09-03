@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:2
+msgid "Kotlin/Java Backend"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:6
+msgid ""
+"Для работы с RecordsAPI на kotlin/java бэкенде предусмотрена библиотека "
+"ecos-records - https://github.com/Citeck/ecos-records"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:8
+msgid ""
+"Подключив библиотеку можно создать ``RecordsServiceFactory`` и получить "
+"оттуда все сервисы для работы с RecordsAPI. Инициализация сервисов "
+"инкапсулирована в ``RecordsServiceFactory`` и не требует обязательного "
+"наличия DI механизмов."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:11
+msgid ""
+"Основной сервис для работы с RecordsAPI - это "
+"``ru.citeck.ecos.records3.RecordsService``. Пример использования:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:15
+msgid "Kotlin"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:28
+msgid "Java"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:41
+msgid ""
+"Здесь мы создаем новую мапу с одним значением и получаем из неё атрибут с"
+" именем someKey через ``RecordsService``."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:43
+msgid "Есть два основных сценария использования ``RecordsService``:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:45
+msgid ""
+"Работа с уже готовыми данными как в примере выше. Нам не нужно никуда "
+"отправлять запросы и получение атрибутов проходит в пределах сервиса. В "
+"этом режиме доступно только получение атрибутов и Records DAO никак не "
+"задействуются."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:47
+msgid ""
+"Работа с ссылками (``EntityRef``). В этом режиме сервис взаимодействует с"
+" источниками данных, функционал которых реализован через следующие "
+"интерфейсы:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:49
+msgid ""
+"``RecordsDao`` базовый интерфейс для всех остальных ниже по списку. "
+"Содержит только один метод - ``String getId()``, который используется при"
+" регистрации ``RecordsDao`` в ``RecordsService``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:51
+msgid "``RecordsQueryDao`` для поиска записей;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:53
+msgid ""
+"``RecordsAttsDao`` (``RecordAttsDao``) для получения атрибутов по заранее"
+" известным идентификаторам записей;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:55
+msgid "``RecordMutateDao`` для создания или редактирования записей;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:57
+msgid "``RecordsDeleteDao`` (``RecordDeleteDao``) для удаления записей;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:62
+msgid ""
+"В скобках указаны варианты интерфейсов, где в метод приходит только один "
+"идентификатор записи. По своей сути эти интерфейсы отличаются от "
+"множественного варианта только отсутствием необходимости писать перебор "
+"идентификаторов вручную. Но если есть какие-либо оптимизации, которые "
+"можно реализовать при пакетной обработке записей, то следует "
+"реализовывать интерфейсы, которые принимают коллекции записей."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:65
+msgid ""
+"Records DAO - это реализация абстрактного понятия \"Источник данных\". "
+"Один Records DAO может представлять разные источники данных."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:67
+msgid ""
+"При работе с Records DAO в зависимости от типа действия происходит "
+"следующее:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:69
+msgid ""
+"**Query**. Мы передаем в ``RecordsQueryDao`` поисковый запрос и ждем на "
+"выходе следующие типы значений (поддерживаются как коллекции этих "
+"значений так и значения в одном экземпляре):"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:71
+msgid ""
+"``EntityRef`` - ссылки на сущности. Если мы получаем ссылки, то сервис "
+"обращается к соответствующему ``RecordsAttsDao`` для получения атрибутов;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:73
+msgid ""
+"``String`` - текстовый результат означает что мы вернули идентификаторы "
+"записей, по которым нам нужно получить атрибуты через RecordsAttsDao. "
+"Если в строке не указан другой Records DAO, то используется тот же, у "
+"которого мы вызывали query;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:75
+msgid "``RecsQueryRes`` - список записей вместе с данными об их общем количестве;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:77
+msgid ""
+"``Any`` - любое другое значение, которое обрабатывается с использованием "
+"реализаций интерфейса ``AttValueFactory``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:79
+msgid ""
+"**Get attributes**. Получение атрибутов по идентификаторам записей. Этот "
+"метод используется либо с результатом Query из предыдущего пункта либо "
+"посредством прямого вызова ``recordsService.getAtts(...)`` Метод "
+"возвращает любое значение, которое обрабатывается с использованием "
+"реализаций интерфейса ``AttValueFactory``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:82
+msgid "**Mutate**. Изменение или создание записей через ``RecordMutateDao``"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:85
+msgid ""
+"В Records API создание записи происходит при мутации записи с пустым "
+"локальным идентификатором. Т.е. если мы хотим создать сущность в "
+"микросервисе emodel в источнике данных types-repo то делаем следующее:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:103
+msgid "**Delete**. Удаление записей через ``RecordsDeleteDao``"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:105
+msgid ""
+"**AttValue** - это интерфейс, который представляет собой значение, с "
+"которым умеет работать ``RecordsService`` при получении атрибутов. Методы"
+" интерфейса:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:124
+msgid ""
+"**AttValueFactory** - это интерфейс для преобразования произвольных типов"
+" данных в имплементацию **AttValue**"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:141
+msgid ""
+"Для регистрации произвольных AttValueFactory нужно в библиотеке или "
+"микросервисе создать следующий файл::"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:145
+msgid ""
+"Внутри этого файла должно быть полное имя класса (вместе с пакетом) с "
+"вашей реализацией интерфейса **AttValueFactory**"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:147
+msgid ""
+"Пример: https://github.com/Citeck/ecos-records/blob/master/ecos-"
+"records/src/test/resources/META-"
+"INF/services/ru.citeck.ecos.records3.record.atts.value.factory.AttValueFactory"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:149
+msgid ""
+"Если для значения не нашлось подходящего ``AttValueFactory``, то "
+"используется стандартная фабрика ``BeanValueFactory``. Эта фабрика "
+"работает со значением как с бином, у которого ищутся геттеры для "
+"атрибутов."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:152
+msgid "Например, если у нас есть следующий бин:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:166
+msgid ""
+"То с точки зрения ``BeanValueFactory`` у этого бина есть значение с одним"
+" атрибутом \"field\". Пример работы:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:179
+msgid ""
+"Если же мы хотим изменить имя атрибута не меняя названия методов, то "
+"можно воспользоваться аннотацией ``AttName``:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:200
+msgid ""
+"Аннотация ``@AttName`` помогает задать произвольное имя атрибута. Её "
+"можно использовать:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:202
+msgid "На геттере, чтобы дать произвольное название атрибуту;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:203
+msgid ""
+"На сеттере для конвертации DTO -> Схема атрибутов для запроса; (см. "
+"методы ``recordsService.getAtts(Any record, Class<?> atts)``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:204
+msgid ""
+"Аннотация на поле работает как для сеттера так и для геттера если они "
+"есть;"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:206
+msgid ""
+"Аннотация ``@AttName`` может в качестве аргумента принимать значение "
+"``\"...\"``. Такая запись означает, что все атрибуты из поля с этой "
+"аннотацией будут доступны так же и в нашем значении. Пример:"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:233
+msgid ""
+"Так же особое значение имеют аннотации ``AttName`` где в качестве "
+"аргумента указан один из скаляров с вопросительным знаком. Например: "
+"``@AttName(\"?str\")``. Такие геттеры вызываются при загрузке скаляров."
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:236
+msgid ""
+"``BeanValueFactory`` так же ищет в бине ряд специальных методов по их "
+"имени и аргументам (тип возвращаемого значения не важен):"
+msgstr ""
+
+#: ../../general/ECOS_Records/java_kotlin_backend.rst:253
+msgid ""
+"Для отображаемого имени нашего бина ``BeanValueFactory`` ищет следующие "
+"методы в порядке убывания приоритета (используется первый найденный):"
+msgstr ""
+

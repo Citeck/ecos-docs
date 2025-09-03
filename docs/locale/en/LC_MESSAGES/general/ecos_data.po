@@ -1,0 +1,1251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/ecos_data.rst:4
+msgid "Citeck Data"
+msgstr ""
+
+#: ../../general/ecos_data.rst:7
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/ecos_data.rst:9
+msgid ""
+"**ecos-data** - это библиотека, которая позволяет добавлять новые Records"
+" DAO, записи которых будут храниться в БД. Библиотека на основе атрибутов"
+" в :ref:`типа данных<data_types_main>` автоматически создает таблицы и "
+"предоставляет базовые операции над записями:"
+msgstr ""
+
+#: ../../general/ecos_data.rst:12
+msgid "Создание новых записей."
+msgstr ""
+
+#: ../../general/ecos_data.rst:13
+msgid "Получение атрибутов у записей по их ID."
+msgstr ""
+
+#: ../../general/ecos_data.rst:14
+msgid ""
+"Поиск записей с использованием :ref:`языка предикатов<ecos-"
+"predicate_main>`."
+msgstr ""
+
+#: ../../general/ecos_data.rst:16
+msgid "Поддерживаемые БД:"
+msgstr ""
+
+#: ../../general/ecos_data.rst:1
+msgid "Тип"
+msgstr ""
+
+#: ../../general/ecos_data.rst:1
+msgid "Версия"
+msgstr ""
+
+#: ../../general/ecos_data.rst:1
+msgid "PostgreSQL"
+msgstr ""
+
+#: ../../general/ecos_data.rst:1
+msgid "9.4+"
+msgstr ""
+
+#: ../../general/ecos_data.rst:24
+msgid "Хранение данных в ecos-model"
+msgstr ""
+
+#: ../../general/ecos_data.rst:26
+msgid ""
+"В ECOS по умолчанию для типов предусмотрено хранение в микросервисе "
+"**ecos-model**. Для этого достаточно на форме типа выбрать тип источника "
+"данных \"ECOS Model\". Микросервис ecos-model для всех подобных типов "
+"автоматически создаст RecordsDAO с идентификатором (sourceId), который "
+"формируется по следующим правилам:"
+msgstr ""
+
+#: ../../general/ecos_data.rst:30
+msgid "Берем id типа и меняем camelCase на kebab-case."
+msgstr ""
+
+#: ../../general/ecos_data.rst:31
+msgid "Переводим id в нижний регистр."
+msgstr ""
+
+#: ../../general/ecos_data.rst:32
+msgid "Заменяем все специальные символы на ``-``."
+msgstr ""
+
+#: ../../general/ecos_data.rst:33
+msgid ""
+"Убираем все задублировавшиеся символы ``-`` заменяя их на одинарные (т.е."
+" ``--`` заменяем на ``-``)."
+msgstr ""
+
+#: ../../general/ecos_data.rst:34
+msgid ""
+"Если длина полученного id получилась больше 42х символов, то берем первые"
+" 34 символа из id, добавляем ``-`` плюс контрольная сумма оставшихся "
+"символов в идентификаторе."
+msgstr ""
+
+#: ../../general/ecos_data.rst:35
+msgid "Убираем символ ``-`` в начале идентификатора и в конце если он там есть."
+msgstr ""
+
+#: ../../general/ecos_data.rst:37
+msgid "Примеры::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:44
+msgid ""
+"При создании типа с sourceId, который конфликтует с существующими будет "
+"показана ошибка. Чтобы проверить список зарегистрированных sourceId можно"
+" выполнить следующий скрипт в консоли браузера::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:50
+msgid "Создание нового RecordsDAO в своем микросервисе"
+msgstr ""
+
+#: ../../general/ecos_data.rst:54
+msgid ""
+"Для создания нового RecordsDAO в своем микросервисе нужно добавить "
+"следующую Spring конфигурацию"
+msgstr ""
+
+#: ../../general/ecos_data.rst:56
+msgid "Java::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:107
+msgid "Kotlin::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:150
+msgid "Поиск по полям ассоциаций"
+msgstr ""
+
+#: ../../general/ecos_data.rst:152
+msgid ""
+"Если источники данных на базе ecos-data находятся в одном микросервисе, в"
+" одной БД и одной схеме, то можно выполнять поиск с использованием полей "
+"из связанных сущностей. Для этого у атрибута-ассоциации должен быть "
+"указан тип, в котором sourceId ссылается на ecos-data источник в той же "
+"схеме."
+msgstr ""
+
+#: ../../general/ecos_data.rst:156
+#, python-brace-format
+msgid ""
+"Для поиска по полям из связанных сущностей в предикате нужно указать "
+"атрибут в формате ``{имя ассоциации}.{имя поля из связанной сущности}`` "
+"Например, если мы хотим найти договоры, у которых имя контрагента "
+"содержит строку \"ООО\", то это можно сделать используя следующий "
+"скрипт::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:169
+msgid ""
+"здесь **counterparty** - это ассоциация на контрагента, а "
+"**fullOrganizationName** - его имя."
+msgstr ""
+
+#: ../../general/ecos_data.rst:174
+msgid "Запросы с использованием функций"
+msgstr ""
+
+#: ../../general/ecos_data.rst:176
+msgid ""
+"Если атрибут заканчивается на круглые скобки с любым содержимым (например"
+" ``max(attribute)`` или ``count(*)``, то этот атрибут воспринимается как "
+"функция и транслируется в SQL запрос (если речь о SQL бэкенде). Функции "
+"можно указывать в условиях поиска, для группировки, для сортировки и для "
+"получения значения."
+msgstr ""
+
+#: ../../general/ecos_data.rst:180 ../../general/ecos_data.rst:559
+msgid "Пример запроса::"
+msgstr ""
+
+#: ../../general/ecos_data.rst:198
+msgid "Список поддерживаемых функций:"
+msgstr ""
+
+#: ../../general/ecos_data.rst:210 ../../general/ecos_data.rst:267
+#: ../../general/ecos_data.rst:320 ../../general/ecos_data.rst:355
+#: ../../general/ecos_data.rst:485 ../../general/ecos_data.rst:502
+#: ../../general/ecos_data.rst:529
+msgid "Функция"
+msgstr ""
+
+#: ../../general/ecos_data.rst:211 ../../general/ecos_data.rst:268
+#: ../../general/ecos_data.rst:321 ../../general/ecos_data.rst:356
+#: ../../general/ecos_data.rst:486 ../../general/ecos_data.rst:503
+#: ../../general/ecos_data.rst:530
+msgid "Описание"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``abs ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Абсолютное значение"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``abs(-17.4) → 17.4``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ceil ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Ближайшее целое, большее или равное аргументу"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ceil(42.2) → 43``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ceil(-42.8) → -42``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ceiling ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Ближайшее целое, большее или равное аргументу (равнозначно ceil)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ceiling(95.3) → 96``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``div ( y number, x number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Целочисленный результат y/x (округлённый в направлении нуля)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``div(9, 4) → 2``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``exp ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Экспонента (e возводится в заданную степень)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``exp(1.0) → 2.7182818284590452``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``floor ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Ближайшее целое, меньшее или равное аргументу"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``floor(42.8) → 42``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``floor(-42.8) → -43``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``mod ( y number, x number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Остаток от деления y/x"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``mod(9, 4) → 1``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``power ( a number, b number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "a возводится в степень b"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``power(9, 3) → 729``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``round ( number ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Округляет до ближайшего целого числа. Для numeric половина (.5) "
+"округляется до одного по модулю."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``round(42.4) → 42``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``round ( v number, s number ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Округление v до s десятичных знаков. Половина (.5) округляется до 1 по "
+"модулю."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``round(42.4382, 2) → 42.44``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``round(1234.56, -1) → 1230``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``sign ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Знак аргумента (-1, 0 или +1)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``sign(-8.4) → -1``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``sqrt ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Квадратный корень"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``sqrt(2) → 1.4142135623730951``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``trunc ( number ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Округление до целого (в направлении нуля)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``trunc(42.8) → 42``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``trunc(-42.8) → -42``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``btrim ( string text [, characters text] ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Удаляет наибольшую подстроку, содержащую только символы characters (по "
+"умолчанию пробел),"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "с начала и с конца строки string."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``btrim('xyxtrimyyx', 'xyz') → trim``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``length ( text ) → integer``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Возвращает число символов в строке."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``char_length('josé') → 4``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``initcap ( text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Переводит первую букву каждого слова в строке в верхний регистр, а "
+"остальные — в нижний."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Словами считаются последовательности алфавитно-цифровых символов, "
+"разделённые любыми другими символами."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``initcap('hi THOMAS') → Hi Thomas``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``lpad ( string text, length integer [, fill text] ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Дополняет строку string слева до длины length символами fill (по "
+"умолчанию пробелами)."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Если длина строки уже больше заданной, она обрезается справа."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``lpad('hi', 5, 'xy') → xyxhi``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ltrim ( string text [, characters text] ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Удаляет наибольшую подстроку, содержащую только символы characters (по "
+"умолчанию пробелы),"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "с начала строки string."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``ltrim('zzzytest', 'xyz') → test``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``repeat ( string text, number integer ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Повторяет содержимое string указанное число (number) раз."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``repeat('Pg', 4) → PgPgPgPg``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``replace ( string text, from text, to text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Заменяет все вхождения в string подстроки from подстрокой to."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``replace('abcdefabcdef', 'cd', 'XX') → abXXefabXXef``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``rpad ( string text, length integer [, fill text] ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Дополняет строку string справа до длины length символами fill (по "
+"умолчанию пробелами). Если длина строки уже больше заданной, она "
+"обрезается."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``rpad('hi', 5, 'xy') → hixyx``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``rtrim ( string text [, characters text] ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Удаляет наибольшую подстроку, содержащую только символы characters (по "
+"умолчанию пробелы), с конца строки string."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``rtrim('testxxzx', 'xyz') → test``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``strpos ( string text, substring text ) → integer``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Возвращает начальную позицию первого вхождения substring в строке string "
+"либо 0, если такого вхождения нет."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``upper ( text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Переводит символы строки в верхний регистр, в соответствии с правилами "
+"локали базы данных."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``upper('tom') → TOM``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``lower ( text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Переводит символы строки в нижний регистр в соответствии с правилами "
+"локали базы данных."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``lower('TOM') → tom``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char ( timestamp, text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char ( timestamp with time zone, text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Преобразует время в строку согласно заданному формату."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char(timestamp '2002-04-20 17:31:12.66', 'HH12:MI:SS') → 05:31:12``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char ( interval, text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Преобразует интервал в строку согласно заданному формату."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char(interval '15h 2m 12s', 'HH24:MI:SS') → 15:02:12``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char ( numeric_type, text ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Преобразует число в строку согласно заданному формату; поддерживаются "
+"типы integer, bigint, numeric, real, double precision."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char(125, '999') → 125``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char(125.8::real, '999D9') → 125.8``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_char(-125.8, '999D99S') → 125.80-``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_date ( text, text ) → date``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Преобразует строку в дату согласно заданному формату."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_date('05 Dec 2000', 'DD Mon YYYY') → 2000-12-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_number ( text, text ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Преобразует строку в число согласно заданному формату."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_number('12,454.8-', '99G999D9S') → -12454.8``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_timestamp ( text, text ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Преобразует строку в значение времени согласно заданному формату."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``to_timestamp('05 Dec 2000', 'DD Mon YYYY') → 2000-12-05 00:00:00-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``age ( timestamp, timestamp ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Вычитает аргументы и выдаёт «символический» результат с годами и "
+"месяцами, а не просто днями"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``age(timestamp '2001-04-10', timestamp '1957-06-13') → 43 years 9 mons "
+"27 days (43 года 9 месяцев 27 дней)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``age ( timestamp ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Вычитает аргумент из current_date (полночь текущего дня)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``age(timestamp '1957-06-13') → 62 years 6 mons 10 days (62 года 6 "
+"месяцев 10 дней)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_date → date``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущая дата"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_date → 2023-12-23``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_time → time with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущее время суток"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_time → 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_time ( integer ) → time with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущее время суток (с ограниченной точностью)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_time(2) → 14:39:53.66-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_timestamp → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущая дата и время (на момент начала транзакции)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_timestamp → 2019-12-23 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_timestamp ( integer ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Текущие дата и время (на момент начала транзакции; с ограниченной "
+"точностью)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``current_timestamp(0) → 2019-12-23 14:39:53-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``clock_timestamp ( ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущая дата и время (меняется в процессе выполнения операторов)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``clock_timestamp() → 2019-12-23 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``date_bin ( interval, timestamp, timestamp ) → timestamp``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Подгоняет заданное значение под интервал, отсчитывая от указанного "
+"начального момента"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``date_bin('15 minutes', timestamp '2001-02-16 20:38:40', timestamp "
+"'2001-02-16 20:05:00') → 2001-02-16 20:35:00``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``date_part ( text, timestamp ) → double precision``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Возвращает поле даты/времени (равнозначно extract)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``date_part('hour', timestamp '2001-02-16 20:38:40') → 20``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``date_trunc ( text, timestamp ) → timestamp``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Отсекает компоненты даты до заданной точности"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``date_trunc('hour', timestamp '2001-02-16 20:38:40') → 2001-02-16 "
+"20:00:00``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``date_trunc ( text, timestamp with time zone, text ) → timestamp with "
+"time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Отсекает компоненты даты до заданной точности в указанном часовом поясе"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``date_trunc('day', timestamptz '2001-02-16 20:38:40+00', "
+"'Australia/Sydney') → 2001-02-16 13:00:00+00``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``date_trunc ( text, interval ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``date_trunc('hour', interval '2 days 3 hours 40 minutes') → 2 days "
+"03:00:00``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite ( date ) → boolean``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Проверяет конечность даты (её отличие от +/-бесконечности)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite(date '2001-02-16') → true``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite ( timestamp ) → boolean``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Проверяет конечность времени (его отличие от +/-бесконечности)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite(timestamp 'infinity') → false``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite ( interval ) → boolean``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Проверяет конечность интервала (в настоящее время все интервалы конечны)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``isfinite(interval '4 hours') → true``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``justify_days ( interval ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Преобразует интервал так, что каждый 30-дневный период считается одним "
+"месяцем"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``justify_days(interval '35 days') → 1 mon 5 days (1 месяц 5 дней)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``justify_hours ( interval ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Преобразует интервал так, что каждый 24-часовой период считается одним "
+"днём"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``justify_hours(interval '27 hours') → 1 day 03:00:00 (1 день 03:00:00)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``justify_interval ( interval ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Преобразует интервал с применением justify_days и justify_hours и "
+"дополнительно корректирует знаки"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``justify_interval(interval '1 mon -1 hour') → 29 days 23:00:00 (29 дней "
+"23:00:00)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_date ( year int, month int, day int ) → date``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Образует дату из полей: year (год), month (месяц) и day (день)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "(отрицательное значение поля year означает год до н. э.)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_date(2013, 7, 15) → 2013-07-15``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``make_interval ( [years int [, months int [, weeks int [, days int [, "
+"hours int [, mins int [, secs double precision]]]]]]] ) → interval``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Образует интервал из полей: years (годы), months (месяцы), weeks "
+"(недели), days (дни), hours (часы),"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"minutes (минуты) и secs (секунды), каждое из которых по умолчанию "
+"считается равным нулю."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_interval(days => 10) → 10 days``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_time ( hour int, min int, sec double precision ) → time``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Образует время из полей: hour (час), minute (минута) и sec (секунда)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_time(8, 15, 23.5) → 08:15:23.5``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``make_timestamp ( year int, month int, day int, hour int, min int, sec "
+"double precision ) → timestamp``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Образует момент времени из полей: year (год), month (месяц), day (день), "
+"hour (час),"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"minute (минута) и sec (секунда) (отрицательное значение поля year "
+"означает год до н. э.)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_timestamp(2013, 7, 15, 8, 15, 23.5) → 2013-07-15 08:15:23.5``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``make_timestamptz ( year int, month int, day int, hour int, min int, sec"
+" double precision [, timezone text] ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Образует дату и время с часовым поясом из полей: year (год), month "
+"(месяц), day (день), hour (час), minute (минута) и sec (секунда) "
+"(отрицательное значение поля year означает год до н. э.). Если параметр "
+"timezone (часовой пояс) не указан, используется текущий часовой пояс; в "
+"примерах предполагается часовой пояс Europe/London (Европа/Лондон)."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``make_timestamptz(2013, 7, 15, 8, 15, 23.5) → 2013-07-15 08:15:23.5+01``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"``make_timestamptz(2013, 7, 15, 8, 15, 23.5, 'America/New_York') → "
+"2013-07-15 13:15:23.5+01``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``statement_timestamp ( ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущая дата и время (на момент начала текущего оператора)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``statement_timestamp() → 2019-12-23 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``timeofday ( ) → text``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Текущая дата и время (как clock_timestamp, но в виде строки типа text)"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``timeofday() → Mon Dec 23 14:39:53.662522 2019 EST``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``transaction_timestamp ( ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``transaction_timestamp() → 2019-12-23 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``extract ( field from timestamp ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Возвращает поле даты/времени"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``extract(hour from timestamp '2001-02-16 20:38:40') → 20``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``extract ( field from interval ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Возвращает поле интервала"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``extract(month from interval '2 years 3 months') → 3``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtime → time``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtime → 14:39:53.662522``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtime ( integer ) → time``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtime(0) → 14:39:53``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtimestamp → timestamp``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtimestamp → 2019-12-23 14:39:53.662522``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtimestamp ( integer ) → timestamp``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``localtimestamp(2) → 2019-12-23 14:39:53.66``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``now ( ) → timestamp with time zone``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``now() → 2019-12-23 14:39:53.662522-05``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``startOfMonth ( integer ) → date``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Первое число месяца. Аргумент определяет относительный сдвиг в месяцах:"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "0 - текущий месяц"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "1 - следующий месяц"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "-1 - предыдущий месяц"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``endOfMonth ( integer ) → date``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Последнее число месяца. Аргумент определяет относительный сдвиг в месяцах:"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``random ( ) → number``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Возвращает случайное число в диапазоне 0.0 <= x < 1.0"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``random() → 0.897124072839091``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``COALESCE(значение [, ...])``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Функция COALESCE возвращает первый попавшийся аргумент, отличный от NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Если же все аргументы равны NULL, результатом тоже будет NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Это часто используется при отображении данных для подстановки некоторого"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "значения по умолчанию вместо значений NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``NULLIF(значение1, значение2)``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Функция NULLIF выдаёт значение NULL, если значение1 равно значение2;"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "в противном случае она возвращает значение1. Это может быть полезно"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "для реализации обратной операции к COALESCE."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``GREATEST(значение [, ...])``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Выбирает наибольшее значение из списка выражений."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``LEAST(значение [, ...])``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Выбирает наименьшее значение из списка выражений."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``avg ( number ) → numeric``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Вычисляет арифметическое среднее для всех входных значений, отличных от "
+"NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``count ( * ) → bigint``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Выдаёт количество входных строк."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``count ( \"any\" ) → bigint``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Выдаёт количество входных строк, в которых входное значение отлично от "
+"NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``max ( см. описание ) → тот же тип, что на входе``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Вычисляет максимальное из всех значений, отличных от NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid ""
+"Имеется для всех числовых и строковых типов, типов-перечислений и "
+"даты/времени."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``min ( см. описание ) → тот же тип, что на входе``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Вычисляет минимальное из всех значений, отличных от NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "``sum ( number ) → bigint``"
+msgstr ""
+
+#: ../../general/ecos_data.rst
+msgid "Вычисляет сумму всех входных значений, отличных от NULL."
+msgstr ""
+
+#: ../../general/ecos_data.rst:554
+msgid "Использование выражений при поиске"
+msgstr ""
+
+#: ../../general/ecos_data.rst:556
+msgid ""
+"Если атрибут начинается на ``(`` и заканчивается на ``)``, то между "
+"скобками может быть выражение любого уровня сложности с использованием "
+"функций и операторов ``+``, ``-``, ``*``, ``/``"
+msgstr ""
+
