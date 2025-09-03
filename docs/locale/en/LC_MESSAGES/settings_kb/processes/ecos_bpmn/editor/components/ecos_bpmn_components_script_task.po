@@ -21,37 +21,38 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:2
 msgid "Скриптовая задача"
-msgstr ""
+msgstr "Script Task"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:6
 msgid "Содержание"
-msgstr ""
+msgstr "Content"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:8
 msgid ""
 "Задача, запускающая скрипт (т.е. последовательность действий) или "
 "программный код, который выполняется автоматически."
 msgstr ""
+"A task that launches a script (i.e., a sequence of actions) or program code that is executed automatically."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:11
 msgid "Атрибуты и форма"
-msgstr ""
+msgstr "Attributes and Form"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:13
 msgid "Используется язык JavaScript."
-msgstr ""
+msgstr "JavaScript language is used."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:24
 msgid "Укажите **Имя**"
-msgstr ""
+msgstr "Specify **Name**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:30
 msgid "Укажите **скрипт**"
-msgstr ""
+msgstr "Specify **script**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst
 msgid "Настройки асинхронности:"
-msgstr ""
+msgstr "Asynchrony settings:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst
 msgid ""
@@ -59,6 +60,7 @@ msgid ""
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
 "разбирает уже джоба"
 msgstr ""
+"- **Asynchronous \"before\"** - execution reaches a point before the block, the transaction is committed, and further execution is queued, which is then processed by a job"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst
 msgid ""
@@ -66,40 +68,44 @@ msgid ""
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
 "разбирает уже джоба"
 msgstr ""
+"- **Asynchronous \"after\"** - execution reaches a point after the block, the transaction is committed, and further execution is queued, which is then processed by a job"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst
 msgid ""
 "См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_"
 msgstr ""
+"See more about `asynchronous tasks <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:46
 msgid ""
 "При сохранении, сохранении/публикации процесса проверяется обязательность"
 " заполнения следующих полей:"
 msgstr ""
+"When saving, saving/publishing the process, the mandatory filling of the following fields is checked:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:48
 msgid "**«Скрипт»**"
-msgstr ""
+msgstr "**«Script»**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:50
 msgid "Иначе в :ref:`линтере<bpmn_linter>` будет выдана ошибка."
-msgstr ""
+msgstr "Otherwise, an error will be issued in the :ref:`linter<bpmn_linter>`."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:53
 msgid "Доступные переменные"
-msgstr ""
+msgstr "Available Variables"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:56
 msgid "Переменные процесса"
-msgstr ""
+msgstr "Process Variables"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:58
 msgid ""
 "Во время выполнения скриптов доступны все переменные процесса, видимые в "
 "текущей области."
 msgstr ""
+"During script execution, all process variables visible in the current scope are available."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:65
 msgid ""
@@ -109,10 +115,15 @@ msgid ""
 " - комментарий из последней завершенной задачи |br| ``workflowInitiator``"
 " - username инициатора БП |br|"
 msgstr ""
+"``documentRef`` - string representation of the document's entityRef |br| "
+"``documentType`` - document type id |br| ``lastTaskCompletor`` - "
+"username of the user who completed the last task |br| ``comment``"
+" - comment from the last completed task |br| ``workflowInitiator``"
+" - username of the BP initiator |br|"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:72
 msgid "Execution"
-msgstr ""
+msgstr "Execution"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:76
 msgid ""
@@ -121,10 +132,12 @@ msgid ""
 "`(DelegateExecution) <https://docs.camunda.org/javadoc/camunda-bpm-"
 "platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_"
 msgstr ""
+"``execution`` - a variable that is always available if the script is executed in an execution scope (e.g., in a Script Task). "
+"`(DelegateExecution) <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.17/org/camunda/bpm/engine/delegate/DelegateExecution.html>`_"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:87
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:89
 msgid ""
@@ -134,10 +147,13 @@ msgid ""
 "records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_"
 " , по которому идет БП."
 msgstr ""
+"``document`` - is the script representation of the document "
+"`AttValueScriptCtx <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_"
+" for which the BP is running."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:107
 msgid "Records"
-msgstr ""
+msgstr "Records"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:109
 msgid ""
@@ -146,20 +162,22 @@ msgid ""
 "records/blob/master/ecos-"
 "records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_."
 msgstr ""
+"``Records`` - is a service that provides access to record functions `RecordsScriptService <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:137
 msgid "ECOS Config"
-msgstr ""
+msgstr "ECOS Config"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:139
 msgid ""
 "``Config`` - предоставляет доступ к Конфигурации Citeck по ключу в "
 "формате ``<область>$<идентификатор>``."
 msgstr ""
+"``Config`` - provides access to Citeck Configuration by key in the format ``<scope>$<identifier>``."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:141
 msgid "``get(key: String): DataValue`` - получение значения по ключу"
-msgstr ""
+msgstr "``get(key: String): DataValue`` - get value by key"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:142
 msgid ""
@@ -167,16 +185,18 @@ msgid ""
 "значения по ключу, если значение не найдено, то возвращается значение по "
 "умолчанию"
 msgstr ""
+"``getOrDefault(key: String, defaultValue: Any): DataValue`` - get value by key, if the value is not found, the default value is returned"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:143
 msgid ""
 "``getNotNull(key: String): DataValue`` - получение значения по ключу, "
 "если значение null, то выбрасывается исключение"
 msgstr ""
+"``getNotNull(key: String): DataValue`` - get value by key, if the value is null, an exception is thrown"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:154
 msgid "DataValue"
-msgstr ""
+msgstr "DataValue"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:156
 msgid ""
@@ -188,6 +208,9 @@ msgid ""
 "типу, сохранять данные в execution и многое другое, подробнее см. методы "
 "класса."
 msgstr ""
+"``DataValue`` - an object that allows converting data into the structure "
+"`BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_"
+" for convenient work with JSON representation; it allows safely accessing fields, getting default values, casting to the desired type, saving data in execution, and much more. For more details, see the class methods."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:158
 msgid ""
@@ -195,52 +218,56 @@ msgid ""
 "объекта, если объект не может быть сконвертирован в DataValue, то "
 "возвращается пустой объект DataValue."
 msgstr ""
+"``DataValue.of(content: Any?)`` - creates a DataValue object from any object; if the object cannot be converted to DataValue, an empty DataValue object is returned."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:159
 msgid "``DataValue.createObj()`` - создает пустой объект DataValue."
-msgstr ""
+msgstr "``DataValue.createObj()`` - creates an empty DataValue object."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:160
 msgid "``DataValue.createArr()`` - создает пустой массив DataValue."
-msgstr ""
+msgstr "``DataValue.createArr()`` - creates an empty DataValue array."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:161
 msgid ""
 "``DataValue.createStr(value: Any?)`` - создает строковое представление "
 "переданного значения."
 msgstr ""
+"``DataValue.createStr(value: Any?)`` - creates a string representation of the passed value."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:163
 msgid "Пример использования:"
-msgstr ""
+msgstr "Usage example:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:187
 msgid ""
 "DataValue может быть сохранен в execution процесса с последующим "
 "извлечением и использованием."
 msgstr ""
+"DataValue can be saved in the process execution for subsequent retrieval and use."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:189
 msgid "Сохраняем в execution:"
-msgstr ""
+msgstr "Save to execution:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:205
 msgid "Обращаемся к сохраненным в execution переменным в другом скрипте"
-msgstr ""
+msgstr "Access variables saved in execution in another script"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:220
 msgid "Результат:"
-msgstr ""
+msgstr "Result:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:232
 msgid "Time и Duration. Работа с датами и временными интервалами"
-msgstr ""
+msgstr "Time and Duration. Working with dates and time intervals"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:236
 msgid ""
 "При работе с датами и временными интервалами рекомендуется использовать "
 "объекты ``Time`` и ``Duration``."
 msgstr ""
+"When working with dates and time intervals, it is recommended to use the ``Time`` and ``Duration`` objects."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:238
 msgid ""
@@ -249,16 +276,18 @@ msgid ""
 "основе рабочего расписания, получать разницу между двумя датами и многое "
 "другое. Подробнее см. примеры."
 msgstr ""
+"``Time`` - an object that simplifies working with dates, allowing to save a date in the process execution, add calendar/working time to a date based on the work schedule, get the difference between two dates, and much more. See examples for more details."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:240
 msgid ""
 "``Duration`` - объект, упрощающий работу с временными интервалами. "
 "Поддерживается сохранение в execution процесса."
 msgstr ""
+"``Duration`` - an object that simplifies working with time intervals. Saving to process execution is supported."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:242
 msgid "Примеры использования:"
-msgstr ""
+msgstr "Usage examples:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:331
 msgid ""
@@ -266,22 +295,23 @@ msgid ""
 "поддерживается. Для работы с датами и временными интервалами используйте "
 "объекты ``Time`` и ``Duration``."
 msgstr ""
+"Saving a javascript Date object to process execution is not supported. Use the ``Time`` and ``Duration`` objects for working with dates and time intervals."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:335
 msgid "WebUrl"
-msgstr ""
+msgstr "WebUrl"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:337
 msgid "``webUrl`` - переменная возвращает настроенный веб url сервера"
-msgstr ""
+msgstr "``webUrl`` - variable returns the configured web url of the server"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:340
 msgid "Tasks"
-msgstr ""
+msgstr "Tasks"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:342
 msgid "``tasks`` - сервис для манипуляций над задачами."
-msgstr ""
+msgstr "``tasks`` - service for manipulating tasks."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:344
 msgid ""
@@ -290,14 +320,16 @@ msgid ""
 "[DelegateExecution.getProcessInstanceId]. Задачи завершаются с "
 "результатом *defaultDone: Выполнено*."
 msgstr ""
+"``completeActiveTasks(execution: DelegateExecution)`` - completes all active tasks for the process instance from "
+"[DelegateExecution.getProcessInstanceId]. Tasks are completed with the result *defaultDone: Completed*."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:348
 msgid "Templated content"
-msgstr ""
+msgstr "Templated content"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:350
 msgid "``templatedContent`` - сервис для работы с шаблонизированным контентом."
-msgstr ""
+msgstr "``templatedContent`` - service for working with templated content."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:352
 msgid ""
@@ -306,6 +338,7 @@ msgid ""
 "записывает сгенерированный контент в [`record`] в атрибут контент по "
 "умолчанию `content`."
 msgstr ""
+"``write(record: String, template: String)`` - generates content based on the specified template [`template`], using record data [`record`], and writes the generated content to the [`record`] in the default content attribute `content`."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:353
 msgid ""
@@ -314,42 +347,48 @@ msgid ""
 " рекорда [`record`] и записывает сгенерированный контент в [`record`] в "
 "переданный атрибут [`attribute`]."
 msgstr ""
+"``write(record: String, template: String, attribute: String)`` - "
+"generates content based on the specified template [`template`], using record data [`record`], and writes the generated content to the [`record`] in the specified attribute [`attribute`]."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:355
 msgid ""
 "В качестве [`template`] можно передать строковое представление EntityRef "
 "шаблона или его id."
 msgstr ""
+"As [`template`], you can pass the string representation of the template's EntityRef or its id."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:358
 msgid "Events"
-msgstr ""
+msgstr "Events"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:360
 msgid ""
 "``events`` - сервис для работы с :ref:`событиями "
 "Citeck<ecos_bpmn_events>`."
 msgstr ""
+"``events`` - service for working with :ref:`Citeck events <ecos_bpmn_events>`."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:362
 msgid ""
 "``send(type: String, data: BpmnDataValue)`` - отправляет событие с "
 "указанным типом (именем) и данными."
 msgstr ""
+"``send(type: String, data: BpmnDataValue)`` - sends an event with the specified type (name) and data."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:364
 msgid "Например, можно отправить Citeck событие через скрипт:"
-msgstr ""
+msgstr "For example, you can send a Citeck event via a script:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:375
 msgid ""
 "И подписаться на него в bpmn event через ручную настройку с \"test-"
 "topic\" или программно через слушателя:"
 msgstr ""
+"And subscribe to it in a bpmn event via manual configuration with \"test-topic\" or programmatically via a listener:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:392
 msgid "Logger"
-msgstr ""
+msgstr "Logger"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:394
 msgid ""
@@ -359,26 +398,29 @@ msgid ""
 "``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger``."
 " |br| Поддерживаемые методы:"
 msgstr ""
+"``log`` -  logger, writes to the ecos-process microservice, additionally outputs execution information. The class "
+"``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger`` is used to configure the logging level."
+" |br| Supported methods:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:396
 msgid "``log.info(message: String)``"
-msgstr ""
+msgstr "``log.info(message: String)``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:397
 msgid "``log.warn(message: String)``"
-msgstr ""
+msgstr "``log.warn(message: String)``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:398
 msgid "``log.error(message: String)``"
-msgstr ""
+msgstr "``log.error(message: String)``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:399
 msgid "``log.debug(message: String)``"
-msgstr ""
+msgstr "``log.debug(message: String)``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:400
 msgid "``log.trace(message: String)``"
-msgstr ""
+msgstr "``log.trace(message: String)``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:404
 msgid ""
@@ -386,24 +428,27 @@ msgid ""
 "<https://docs.camunda.org/manual/7.14/user-guide/process-"
 "engine/scripting/>`_"
 msgstr ""
+"Read more about `scripting in Camunda "
+"<https://docs.camunda.org/manual/7.14/user-guide/process-engine/scripting/>`_"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:413
 msgid "Примеры"
-msgstr ""
+msgstr "Examples"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:417
 msgid ""
 "Скрипт, как в атрибут записать человека, который выполнил предыдущую "
 "задачу"
 msgstr ""
+"Script on how to write the person who completed the previous task into an attribute"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:431
 msgid "Получить локальную часть глобальной ссылки на сущность"
-msgstr ""
+msgstr "Get the local part of the global entity reference"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:437
 msgid "**requestCategory** - ассоциация"
-msgstr ""
+msgstr "**requestCategory** - association"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:439
 msgid ""
@@ -412,54 +457,56 @@ msgid ""
 "на сущность. Например для **emodel/person@someuser** локальная часть - "
 "это **\"someuser\"**"
 msgstr ""
+"**?localId** - :ref:`scalar<Records_API_scalar>` from :ref:`Records "
+"API<Records_API>`, which returns the local part of the global entity reference. For example, for **emodel/person@someuser** the local part is **\"someuser\"**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:442
 msgid "Скрипт для проверки наличия комментариев после завершения задачи"
-msgstr ""
+msgstr "Script to check for comments after task completion"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:450
 msgid "В эту переменную информация не пишется, если строка пустая."
-msgstr ""
+msgstr "Information is not written to this variable if the string is empty."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:454
 msgid "Пример вычисления id рабочего расписания с использованием DMN"
-msgstr ""
+msgstr "Example of calculating work schedule id using DMN"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:456
 msgid "Пример процесса:"
-msgstr ""
+msgstr "Process example:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:462
 msgid "Установка переменной для DMN:"
-msgstr ""
+msgstr "Setting a variable for DMN:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:468
 msgid "Скрипт:"
-msgstr ""
+msgstr "Script:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:474
 msgid "Выбор рабочего календаря:"
-msgstr ""
+msgstr "Select work calendar:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:480
 msgid "**Переменная результата:** ``workingCalendarId``"
-msgstr ""
+msgstr "**Result variable:** ``workingCalendarId``"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:482
 msgid ""
 ":ref:`DMN решение<dmn_decision>` содержит id :ref:`созданных календарей"
 "<business-schedule>`:"
 msgstr ""
+":ref:`DMN decision<dmn_decision>` contains the id of :ref:`created calendars <business-schedule>`:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:488
 msgid "Пользовательская задача:"
-msgstr ""
+msgstr "User task:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:494
 msgid "Срок выполнения:"
-msgstr ""
+msgstr "Due date:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.rst:500
 msgid ":download:`скачать процесс <../examples/test-bpmn-process.bpmn.xml>`"
-msgstr ""
-
+msgstr ":download:`download process <../examples/test-bpmn-process.bpmn.xml>`"
