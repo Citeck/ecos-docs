@@ -1,0 +1,1141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../architecture/base.rst:2
+msgid "Базовая архитектура"
+msgstr "Base Architecture"
+
+#: ../../architecture/base.rst:5
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../architecture/base.rst:7
+msgid ""
+"Система Citeck построена на основе микросервисной "
+"событийно-ориентированной архитектуры. В качестве основного способа "
+"взаимодействия микросервисов используется обмен сообщениями через очередь"
+" сообщений (MQ)."
+msgstr ""
+"The Citeck system is built on a microservices-based event-driven "
+"architecture. The primary method of interaction between microservices is "
+"message exchange through a message queue (MQ)."
+
+#: ../../architecture/base.rst:10
+msgid ""
+"Платформа поддерживает работу с различными источниками данных без "
+"необходимости копирования данных во внутренний репозиторий. Для работы с "
+"данными используется собственный язык запросов Records API. Перечень "
+"источников данных может быть легко расширен."
+msgstr ""
+"The platform supports working with various data sources without the need to "
+"copy data into an internal repository. A proprietary query language, Records "
+"API, is used for data operations. The list of data sources can be easily "
+"extended."
+
+#: ../../architecture/base.rst:12
+msgid "Компоненты системы:"
+msgstr "System Components:"
+
+#: ../../architecture/base.rst:14
+msgid ""
+"**DAO services** – сервисы работы с контентом и метаданными. В качестве "
+"источников данных могут использоваться Alfresco Content Service, Базы "
+"данных, 1С, SAP и другие;"
+msgstr ""
+"**DAO services** – services for working with content and metadata. Data "
+"sources can include Alfresco Content Service, Databases, 1C, SAP, and others;"
+
+#: ../../architecture/base.rst:15
+msgid ""
+"**Process services** – сервисы управления бизнес-процессами, "
+"поддерживаются нотации моделирования бизнес-процессов BPMN;"
+msgstr ""
+"**Process services** – business process management services, supporting BPMN "
+"business process modeling notations;"
+
+#: ../../architecture/base.rst:16
+msgid ""
+"**Application services** – сервисы управления приложениями Citeck, их "
+"версионностью и деплойментом;"
+msgstr ""
+"**Application services** – services for managing Citeck applications, their "
+"versioning, and deployment;"
+
+#: ../../architecture/base.rst:17
+msgid ""
+"**Data services** – сервисы работы с данными, в том числе валидации "
+"данных и их индексации;"
+msgstr ""
+"**Data services** – data processing services, including data validation and "
+"indexing;"
+
+#: ../../architecture/base.rst:18
+msgid "**Integration services** – интеграционные сервисы, включая ЮЗДО;"
+msgstr "**Integration services** – integration services, including UZDO;"
+
+#: ../../architecture/base.rst:19
+msgid ""
+"**API gateway** – API шлюз, используется в том числе для запросов от "
+"пользовательского интерфейса (WEB и мобильного);"
+msgstr ""
+"**API gateway** – API gateway, used for requests from the user interface (WEB "
+"and mobile);"
+
+#: ../../architecture/base.rst:20
+msgid "**Business logic services** – сервисы бизнес-логики и конфигурации."
+msgstr "**Business logic services** – business logic and configuration services."
+
+#: ../../architecture/base.rst:22
+msgid ""
+"Интерфейс системы разработан на базе фреймворка **ReactJS** в виде "
+"статичных **JS библиотек**, которые раздаются через NGINX и работают под "
+"управлением веб-браузеров на пользовательских устройствах."
+msgstr ""
+"The system interface is developed based on the **ReactJS** framework as static "
+"**JS libraries**, which are served via NGINX and run under the control of web "
+"browsers on user devices."
+
+#: ../../architecture/base.rst:24
+msgid ""
+"Мобильный интерфейс разработан на базе фреймворка **React Native**, также"
+" поддерживается адаптивная верстка для мобильных браузеров."
+msgstr ""
+"The mobile interface is developed based on the **React Native** framework, "
+"with adaptive layout also supported for mobile browsers."
+
+#: ../../architecture/base.rst:26
+msgid ""
+"Запросы от пользовательских интерфейсов маршрутизируются через **NGINX** "
+"и **API шлюз**."
+msgstr ""
+"Requests from user interfaces are routed through **NGINX** and the **API "
+"gateway**."
+
+#: ../../architecture/base.rst:28
+msgid ""
+"ПО Citeck развертывается с использование сервисов контейнеризации "
+"**Docker / Kubernetes**."
+msgstr ""
+"Citeck software is deployed using **Docker / Kubernetes** containerization "
+"services."
+
+#: ../../architecture/base.rst:35
+msgid "Микросервисы"
+msgstr "Microservices"
+
+#: ../../architecture/base.rst:52
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../architecture/base.rst:53
+msgid "Описание"
+msgstr "Description"
+
+#: ../../architecture/base.rst:54
+msgid "**ecos-proxy**"
+msgstr "**ecos-proxy**"
+
+#: ../../architecture/base.rst:55
+msgid "Контейнер с nginx (OpenResty) и UI статикой (JS + CSS)."
+msgstr "Container with nginx (OpenResty) and UI static files (JS + CSS)."
+
+#: ../../architecture/base.rst:56
+msgid "**ecos-registry**"
+msgstr "**ecos-registry**"
+
+#: ../../architecture/base.rst:57
+msgid "Реестр приложений и сервер Spring Cloud конфигурации."
+msgstr "Application registry and Spring Cloud configuration server."
+
+#: ../../architecture/base.rst:58
+msgid "**ecos-gateway**"
+msgstr "**ecos-gateway**"
+
+#: ../../architecture/base.rst:59
+msgid "Микросервис реализует API шлюз взаимодействия от клиента к серверу."
+msgstr "The microservice implements the API gateway for client-server interaction."
+
+#: ../../architecture/base.rst:60
+msgid "**ecos-apps**"
+msgstr "**ecos-apps**"
+
+#: ../../architecture/base.rst:61
+msgid ""
+"Микросервис приложений Citeck, отвечающий за доставку приложений Citeck к"
+" целевым сервисам."
+msgstr ""
+"Citeck applications microservice, responsible for delivering Citeck "
+"applications to target services."
+
+#: ../../architecture/base.rst:62
+msgid "**ecos-notifications**"
+msgstr "**ecos-notifications**"
+
+#: ../../architecture/base.rst:63
+msgid "Микросервис отправки уведомлений (email, push-нотификации и др.)."
+msgstr "Microservice for sending notifications (email, push notifications, etc.)."
+
+#: ../../architecture/base.rst:64
+msgid "**ecos-model**"
+msgstr "**ecos-model**"
+
+#: ../../architecture/base.rst:65
+msgid ""
+"Микросервис моделей. Отвечает за информацию о типах, шаблонах нумерации и"
+" о матрицах прав."
+msgstr ""
+"Models microservice. Responsible for information about types, numbering "
+"templates, and permission matrices."
+
+#: ../../architecture/base.rst:66
+msgid "**ecos-history**"
+msgstr "**ecos-history**"
+
+#: ../../architecture/base.rst:67
+msgid ""
+"Микросервис для хранения истории. Подписан на события в системе и "
+"сохраняет информацию о них в БД."
+msgstr ""
+"Microservice for storing history. Subscribed to system events and saves "
+"information about them in the database."
+
+#: ../../architecture/base.rst:68
+msgid "**ecos-process**"
+msgstr "**ecos-process**"
+
+#: ../../architecture/base.rst:69
+msgid "Микросервис процессов. Отвечает за процессы BPMN."
+msgstr "Processes microservice. Responsible for BPMN processes."
+
+#: ../../architecture/base.rst:70
+msgid "**ecos-eis**"
+msgstr "**ecos-eis**"
+
+#: ../../architecture/base.rst:71
+msgid "Приложение Keycloak для аутентификации в системе."
+msgstr "Keycloak application for system authentication."
+
+#: ../../architecture/base.rst:72
+msgid "**alfresco**"
+msgstr "**alfresco**"
+
+#: ../../architecture/base.rst:73
+msgid ""
+"Open-source ECM система, которая может использоваться для хранения "
+"контента (один из вариантов реализации)."
+msgstr ""
+"Open-source ECM system that can be used for content storage (one implementation option)."
+
+#: ../../architecture/base.rst:74
+msgid "**solr**"
+msgstr "**solr**"
+
+#: ../../architecture/base.rst:75
+msgid "Система индексации метаданных и контента документов."
+msgstr "System for indexing document metadata and content."
+
+#: ../../architecture/base.rst:76
+msgid "**ecos-uiserv**"
+msgstr "**ecos-uiserv**"
+
+#: ../../architecture/base.rst:77
+msgid ""
+"Микросервис UI конфигураций. Отвечает за формы, журналы, UI действия, "
+"темы, дашборды, локализацию, иконки, конфигурацию меню."
+msgstr ""
+"UI configurations microservice. Responsible for forms, journals, UI actions, "
+"themes, dashboards, localization, icons, menu configuration."
+
+#: ../../architecture/base.rst:78
+msgid "**ecos-integrations**"
+msgstr "**ecos-integrations**"
+
+#: ../../architecture/base.rst:79
+msgid ""
+"Микросервис для интеграции с внешними системы (SAP, 1C, Rabbit MQ и "
+"тд.)."
+msgstr ""
+"Microservice for integration with external systems (SAP, 1C, Rabbit MQ, etc.)."
+
+#: ../../architecture/base.rst:80
+msgid "**ecos-transformations**"
+msgstr "**ecos-transformations**"
+
+#: ../../architecture/base.rst:81
+msgid ""
+"Микросервис для преобразования (трансформации) контента. Например, "
+"генерация по шаблону, конвертация типа документов, накладывание штампов и"
+" др."
+msgstr ""
+"Microservice for content transformation. For example, template-based "
+"generation, document type conversion, stamp application, etc."
+
+#: ../../architecture/base.rst:82
+msgid "**ecos-content**"
+msgstr "**ecos-content**"
+
+#: ../../architecture/base.rst:83
+msgid ""
+"Микросервис для обеспечения хранения файлов в системе в определенное "
+"файловое хранилище (S3/Alfresco)."
+msgstr ""
+"Microservice for providing file storage in the system to a specific file "
+"storage (S3/Alfresco)."
+
+#: ../../architecture/base.rst:84
+msgid "**zookeeper**"
+msgstr "**zookeeper**"
+
+#: ../../architecture/base.rst:85
+msgid ""
+"Распределенное key-value хранилище для координации приложений Citeck "
+"между собой."
+msgstr ""
+"Distributed key-value storage for coordinating Citeck applications with each "
+"other."
+
+#: ../../architecture/base.rst:86
+msgid "**Rabbit MQ**"
+msgstr "**Rabbit MQ**"
+
+#: ../../architecture/base.rst:87
+msgid "Приложение для обмена сообщениями между микросервисами."
+msgstr "Application for message exchange between microservices."
+
+#: ../../architecture/base.rst:90
+msgid "Хранение данных"
+msgstr "Data Storage"
+
+#: ../../architecture/base.rst:92
+msgid "Основная используемая реляционная база данных – **PostgreSQL**."
+msgstr "The primary relational database used is **PostgreSQL**."
+
+#: ../../architecture/base.rst:94
+msgid ""
+"Хранение метаданных поддерживается в любой системе через адаптер (record "
+"source). Существующие адаптеры: **PostgreSQL, Oracle DB, MS SQL, Mongo "
+"DB, Alfresco ECM, SAP HANA.**"
+msgstr ""
+"Metadata storage is supported in any system through an adapter (record "
+"source). Existing adapters: **PostgreSQL, Oracle DB, MS SQL, Mongo DB, "
+"Alfresco ECM, SAP HANA.**"
+
+#: ../../architecture/base.rst:96
+msgid ""
+"Для хранения документов может быть использована БД **PostgreSQL, Alfresco"
+" ECM, S3** -совместимое хранилище или внешняя ECM система через адаптер "
+"(например, разработан адаптер к системе OpenText)."
+msgstr ""
+"For document storage, **PostgreSQL, Alfresco ECM, S3**-compatible storage, or "
+"an external ECM system via an adapter (e.g., an adapter for the OpenText "
+"system has been developed) can be used."
+
+#: ../../architecture/base.rst:98
+msgid ""
+"Помимо баз данных используется также прямая запись в файловую систему для"
+" приложений **Alfresco (Content Store), Zookeeper, Rabbit MQ и Solr**."
+msgstr ""
+"In addition to databases, direct writing to the file system is also used for "
+"**Alfresco (Content Store), Zookeeper, Rabbit MQ, and Solr** applications."
+
+#: ../../architecture/base.rst:102
+msgid "Зависимости компонентов"
+msgstr "Component Dependencies"
+
+#: ../../architecture/base.rst:108
+msgid ""
+"Центральной частью системы Citeck является абстракция **<DATA SOURCE>**, "
+"в качестве которой может выступать любой источник данных в любом из "
+"микросервисов Citeck."
+msgstr ""
+"The central part of the Citeck system is the **<DATA SOURCE>** abstraction, "
+"which can be any data source in any of the Citeck microservices."
+
+#: ../../architecture/base.rst:110
+msgid ""
+"Для добавления новых источников достаточно реализовать определенный "
+"интерфейс и данные из этого источника могут быть свободно интегрированы "
+"со всей экосистемой Citeck (их можно отображать в журнале, редактировать "
+"и просматривать через формы, отправлять по ним уведомления, запускать по "
+"ним процессы и т. д.)."
+msgstr ""
+"To add new sources, it is sufficient to implement a specific interface, and "
+"data from this source can be freely integrated with the entire Citeck "
+"ecosystem (they can be displayed in journals, edited and viewed through "
+"forms, notifications can be sent for them, processes can be launched for "
+"them, etc.)."
+
+#: ../../architecture/base.rst:112
+msgid ""
+"Любой **<DATA SOURCE>** в общем случае может общаться со следующими "
+"сервисами:"
+msgstr ""
+"Any **<DATA SOURCE>** can generally communicate with the following services:"
+
+#: ../../architecture/base.rst:114
+msgid ""
+"**ecos-model** для автонумерации, делегирования полномочий и получения "
+"индивидуальных настроек прав;"
+msgstr ""
+"**ecos-model** for auto-numbering, delegation of authority, and obtaining "
+"individual permission settings;"
+
+#: ../../architecture/base.rst:115
+msgid "**ecos-content** для работы с контентом;"
+msgstr "**ecos-content** for working with content;"
+
+#: ../../architecture/base.rst:116
+msgid "**zookeeper** для работы с реестрами артефактов."
+msgstr "**zookeeper** for working with artifact registries."
+
+#: ../../architecture/base.rst:118
+msgid ""
+"Общение с источниками данных построено на базе универсального "
+":ref:`Records API<Records_API>`. Зависимости от **<DATA SOURCE>** по "
+"микросервисам:"
+msgstr ""
+"Communication with data sources is built on the universal :ref:`Records "
+"API<Records_API>`. Dependencies on **<DATA SOURCE>** by microservices:"
+
+#: ../../architecture/base.rst:120
+msgid ""
+"**ecos-uiserv** загружает атрибуты для фильтрации UI действий по заданным"
+" в конфигурации условиям;"
+msgstr ""
+"**ecos-uiserv** loads attributes for filtering UI actions based on conditions "
+"specified in the configuration;"
+
+#: ../../architecture/base.rst:121
+msgid ""
+"**ecos-notifications** загружает атрибуты для заполнения шаблона "
+"уведомления;"
+msgstr ""
+"**ecos-notifications** loads attributes for filling the notification template;"
+
+#: ../../architecture/base.rst:122
+msgid "**ecos-history** загружает атрибуты для сохранения записи в истории;"
+msgstr "**ecos-history** loads attributes for saving a record in history;"
+
+#: ../../architecture/base.rst:123
+msgid ""
+"**ecos-process** загружает и меняет атрибуты в ходе выполнения BPMN "
+"процессов."
+msgstr ""
+"**ecos-process** loads and changes attributes during the execution of BPMN "
+"processes."
+
+#: ../../architecture/base.rst:125
+msgid ""
+"2. Почти все микросервисы работают с **Rabbit MQ** (события и команды) и "
+"с **Zookeeper** (события, конфигурация Citeck, реестры типов, аспектов, "
+"настроек прав, шаблонов нумерации, распределенные блокировки, внешние "
+"миксины);"
+msgstr ""
+"2. Almost all microservices work with **Rabbit MQ** (events and commands) and "
+"with **Zookeeper** (events, Citeck configuration, type registries, aspects, "
+"permission settings, numbering templates, distributed locks, external "
+"mixins);"
+
+#: ../../architecture/base.rst:128
+msgid ""
+"**UI** (мобильный и браузерный) зависят от **ecos-gateway** (шлюз для "
+"доступа в систему) и от **ecos-uiserv** (микросервис с UI "
+"конфигурациями);"
+msgstr ""
+"**UI** (mobile and browser) depend on **ecos-gateway** (gateway for system "
+"access) and on **ecos-uiserv** (microservice with UI configurations);"
+
+#: ../../architecture/base.rst:130
+msgid ""
+"**ecos-gateway** зависит от **ecos-model** для получения информации по "
+"пользователям и группах, в которых они состоят. Эта информация "
+"используется для формирования JWT-токена с последующей отправкой его в "
+"остальные микросервисы для аутентификации и авторизации;"
+msgstr ""
+"**ecos-gateway** depends on **ecos-model** for obtaining information about "
+"users and the groups they belong to. This information is used to form a JWT "
+"token, which is then sent to other microservices for authentication and "
+"authorization;"
+
+#: ../../architecture/base.rst:132
+msgid ""
+"**ecos-integrations** зависит от внешних систем, с которыми настроена "
+"интеграция."
+msgstr ""
+"**ecos-integrations** depends on external systems with which integration is "
+"configured."
+
+#: ../../architecture/base.rst:134
+msgid "**ecos-content** зависит от места хранения контента (Alfresco или S3)."
+msgstr "**ecos-content** depends on the content storage location (Alfresco or S3)."
+
+#: ../../architecture/base.rst:136
+msgid "**Solr** зависит от источников данных для индексации контента и атрибутов."
+msgstr "**Solr** depends on data sources for indexing content and attributes."
+
+#: ../../architecture/base.rst:139
+msgid "Взаимодействие клиента с сервером"
+msgstr "Client-Server Interaction"
+
+#: ../../architecture/base.rst:145
+msgid ""
+"**1 этап.** При первом поступлении запроса от клиента **nginx** видит, "
+"что пользователь не имеет токена и отправляет его на **Keycloak** для "
+"аутентификации через протокол **OpenID Connect**."
+msgstr ""
+"**Stage 1.** When the first request is received from the client, **nginx** "
+"sees that the user does not have a token and sends them to **Keycloak** for "
+"authentication via the **OpenID Connect** protocol."
+
+#: ../../architecture/base.rst:147
+msgid ""
+"**2 этап.** **Keycloak** может предложить окно ввода логина/пароля или "
+"сразу выдать пользователю токен, с помощью которого он сможет зайти в "
+"систему (SSO). После успешной аутентификации пользователь "
+"перенаправляется на страницу, с которой его отправили в keycloak."
+msgstr ""
+"**Stage 2.** **Keycloak** may offer a login/password input window or "
+"immediately issue a token to the user, with which they can log into the "
+"system (SSO). After successful authentication, the user is redirected to the "
+"page from which they were sent to keycloak."
+
+#: ../../architecture/base.rst:150
+msgid ""
+"**3 этап.** После того, как запрос прошел дальше, **ecos-gateway** "
+"смотрит на URL запроса и по нему решает, какой именно микросервис должен "
+"его обработать (например, запрос **/emodel/api/records/query** должен "
+"уйти в **ecos-model**)."
+msgstr ""
+"**Stage 3.** After the request proceeds further, **ecos-gateway** looks at the "
+"request URL and decides which microservice should process it (for example, a "
+"request **/emodel/api/records/query** should go to **ecos-model**)."
+
+#: ../../architecture/base.rst:152
+msgid ""
+"Для получения IP адреса и порта целевого микросервиса **ecos-gateway** "
+"обращается в **ecos-registry** за нужной информацией и, получив её, "
+"отправляет запрос дальше."
+msgstr ""
+"To obtain the IP address and port of the target microservice, **ecos-gateway** "
+"contacts **ecos-registry** for the necessary information and, having received "
+"it, forwards the request."
+
+#: ../../architecture/base.rst:155
+msgid "Records API"
+msgstr "Records API"
+
+#: ../../architecture/base.rst:157
+msgid "**Общее описание**"
+msgstr "**General Description**"
+
+#: ../../architecture/base.rst:159
+msgid ""
+"API, разработанное для организации простого и легко масштабируемого "
+"общения между потребителем информации и источником данных. Язык запросов "
+":ref:`Records API<Records_API>` объединяет в себе удобство обычных REST "
+"запросов в классическом REST API и оптимизированный и типизированный "
+"подход GraphQL, когда сервер отдает только те данные, которые нужны "
+"клиенту с предсказуемой типизацией."
+msgstr ""
+"API developed to facilitate simple and easily scalable communication between "
+"information consumers and data sources. The query language :ref:`Records "
+"API<Records_API>` combines the convenience of regular REST requests in "
+"classic REST API with the optimized and typed approach of GraphQL, where the "
+"server returns only the data needed by the client with predictable typing."
+
+#: ../../architecture/base.rst:161
+msgid "**Плюсы решения**"
+msgstr "**Solution Advantages**"
+
+#: ../../architecture/base.rst:163
+msgid ""
+"**Единый API** для доступа к данным в системе для всех потребителей "
+"(Браузер, Мобильное приложение, Система построения отчетов, "
+"Индексирование данных, Различные микросервисы, Интеграция и т.д.)."
+msgstr ""
+"**Unified API** for accessing data in the system for all consumers (Browser, "
+"Mobile Application, Reporting System, Data Indexing, Various Microservices, "
+"Integration, etc.)."
+
+#: ../../architecture/base.rst:165
+msgid ""
+"**Поддержка загрузки данных из связанных сущностей.** Например, если у "
+"нас договор ссылается на доверенность, то, имея идентификатор договора, "
+"мы можем получить любой атрибут связанной доверенности."
+msgstr ""
+"**Support for loading data from related entities.** For example, if a contract "
+"references a power of attorney, then, having the contract identifier, we can "
+"obtain any attribute of the related power of attorney."
+
+#: ../../architecture/base.rst:167
+msgid ""
+"**Оптимальность.** Загружаются и вычисляются только те атрибуты, которые "
+"нужны потребителю."
+msgstr ""
+"**Optimality.** Only the attributes needed by the consumer are loaded and "
+"computed."
+
+#: ../../architecture/base.rst:169
+msgid ""
+"**Простота в разработке** — разработчик источника данных (record source) "
+"описывает все атрибуты, которые могут запросить потребители вне "
+"зависимости от сложности их вычисления. Потребитель в запросе указывает "
+"только те атрибуты, в которых он заинтересован."
+msgstr ""
+"**Ease of Development** — the data source (record source) developer describes "
+"all attributes that consumers might request, regardless of the complexity of "
+"their computation. The consumer in the request specifies only the attributes "
+"they are interested in."
+
+#: ../../architecture/base.rst:171
+msgid ""
+"**Простота поддержки** — не требуется версионирование API, т.к. мы в "
+"любой момент можем добавлять новые атрибуты, не трогая старые."
+msgstr ""
+"**Ease of Support** — API versioning is not required because we can add new "
+"attributes at any time without touching old ones."
+
+#: ../../architecture/base.rst:173
+msgid ""
+"**Тип получаемых данных полностью описывается запросом.** Из источника "
+"данных мы возвращаем атрибуты с любым типом, а Records API приводит их к "
+"нужному для потребителя."
+msgstr ""
+"**The type of received data is fully described by the request.** From the data "
+"source, we return attributes with any type, and Records API converts them to "
+"the type required by the consumer."
+
+#: ../../architecture/base.rst:175
+msgid ""
+"**Вычисляемые атрибуты.** Возможность добавлять атрибуты, которые не "
+"хранятся в БД или любом другом хранилище, а вычисляются на основе "
+"существующих."
+msgstr ""
+"**Computed Attributes.** The ability to add attributes that are not stored in "
+"a database or any other storage but are computed based on existing ones."
+
+#: ../../architecture/base.rst:177
+msgid ""
+"**Поддержка объединения атрибутов из разных источников.** Например, можно"
+" написать источник данных, который часть атрибутов будет брать из "
+"alfresco, а часть из внешней БД, объединяя их по идентификатору."
+msgstr ""
+"**Support for combining attributes from different sources.** For example, one "
+"can write a data source that takes some attributes from alfresco and some "
+"from an external database, combining them by identifier."
+
+#: ../../architecture/base.rst:180
+msgid "События"
+msgstr "Events"
+
+#: ../../architecture/base.rst:186
+msgid ""
+"**События** в Citeck позволяют менять атрибутивный состав, который нужен "
+"подписчику на событие, без модификации источника событий."
+msgstr ""
+"**Events** in Citeck allow changing the attribute set required by an event "
+"subscriber without modifying the event source."
+
+#: ../../architecture/base.rst:188
+msgid ""
+"При старте системы все подписчики регистрируют в Zookeeper список "
+"необходимых им событий по типам и атрибуты события, в которых они "
+"заинтересованы."
+msgstr ""
+"At system startup, all subscribers register in Zookeeper the list of events "
+"they need by type and the event attributes they are interested in."
+
+#: ../../architecture/base.rst:190
+msgid ""
+"Приложение, которое может отправлять события подобного типа, видит, что в"
+" системе есть подписчики на эти события, и, при их возникновении, "
+"подготовив необходимый список атрибутов, отправляет их в Rabbit MQ."
+msgstr ""
+"An application that can send events of a similar type sees that there are "
+"subscribers for these events in the system and, when they occur, prepares the "
+"necessary list of attributes and sends them to Rabbit MQ."
+
+#: ../../architecture/base.rst:192
+msgid ""
+"Атрибуты описываются в формате :ref:`Records API<Records_API>` и могут "
+"пользоваться всеми преимуществами данного API."
+msgstr ""
+"Attributes are described in the :ref:`Records API<Records_API>` format and can "
+"leverage all the advantages of this API."
+
+#: ../../architecture/base.rst:194
+msgid ""
+"Система событий в Citeck гарантирует доставку как минимум одного "
+"сообщения вне зависимости от сбоев в системе."
+msgstr ""
+"The event system in Citeck guarantees delivery of at least one message "
+"regardless of system failures."
+
+#: ../../architecture/base.rst:201
+msgid "Команды"
+msgstr "Commands"
+
+#: ../../architecture/base.rst:203
+msgid ""
+"**Команда** — декларативное описание действия, которое нужно сделать на "
+"удаленном сервисе или локально."
+msgstr ""
+"**Command** — a declarative description of an action that needs to be "
+"performed on a remote service or locally."
+
+#: ../../architecture/base.rst:205
+msgid "Пример команды для завершения задачи в **ecos-process**:"
+msgstr "Example command for completing a task in **ecos-process**:"
+
+#: ../../architecture/base.rst:229
+msgid ""
+"**Команды** в Citeck в качестве транспорта используют очереди RabbitMQ. "
+"Использование команд возможно как в синхронном, так и в асинхронном "
+"режиме."
+msgstr ""
+"**Commands** in Citeck use RabbitMQ queues as transport. Commands can be used "
+"in both synchronous and asynchronous modes."
+
+#: ../../architecture/base.rst:231
+msgid "Целью команд могут быть:"
+msgstr "Command targets can be:"
+
+#: ../../architecture/base.rst:233
+msgid ""
+"Тип сервиса (ecos-process, ecos-uiserv, alfresco и др.). Команду "
+"исполняет один из инстансов данного сервиса."
+msgstr ""
+"A service type (ecos-process, ecos-uiserv, alfresco, etc.). The command is "
+"executed by one of the instances of this service."
+
+#: ../../architecture/base.rst:235
+msgid "Инстанс сервиса (у каждого типа сервиса может быть много инстансов)."
+msgstr "A service instance (each service type can have many instances)."
+
+#: ../../architecture/base.rst:237
+msgid ""
+"Все типы сервисов (широковещательные команды). Сервис-источник команды "
+"отправляет широковещательную команду в RabbitMQ и её обрабатывают все "
+"сервисы, которые в данный момент активны."
+msgstr ""
+"All service types (broadcast commands). The command source service sends a "
+"broadcast command to RabbitMQ, and it is processed by all services that are "
+"currently active."
+
+#: ../../architecture/base.rst:240
+msgid "Приложения"
+msgstr "Applications"
+
+#: ../../architecture/base.rst:242
+msgid ""
+":ref:`Приложения Citeck<applications>` позволяют выгружать из системы "
+"нужные артефакты в формате **zip** и деплоить их «на горячую» в другую "
+"систему."
+msgstr ""
+":ref:`Citeck Applications<applications>` allow exporting necessary artifacts "
+"from the system in **zip** format and deploying them \"hot\" to another "
+"system."
+
+#: ../../architecture/base.rst:244
+msgid ""
+":ref:`Артефакт<ecos_artifacts>` – единица расширения в Citeck. "
+"Артефактами являются формы, журналы, типы, матрицы прав, действия, "
+"описания процессов и многие другие сущности в системе."
+msgstr ""
+":ref:`Artifact<ecos_artifacts>` – a unit of extension in Citeck. Artifacts "
+"include forms, journals, types, permission matrices, actions, process "
+"descriptions, and many other entities in the system."
+
+#: ../../architecture/base.rst:246
+msgid ""
+"Микросервис **ecos-apps** управляет артефактами, ведя их версионность и "
+"доставляя их до целевого микросервиса. Контент артефактов в системе "
+"неизменяемый и при любом изменении артефакта всегда создается новая "
+"версия, а старая сохраняется в списке версий."
+msgstr ""
+"The **ecos-apps** microservice manages artifacts, maintaining their versioning and "
+"delivering them to the target microservice. The content of artifacts in the system "
+"is immutable, and any change to an artifact always results in a new version being "
+"created, while the old one is preserved in the version list."
+
+#: ../../architecture/base.rst:252
+msgid "**Доставка артефактов** при старте системы происходит в 3 этапа:"
+msgstr ""
+"**Artifact delivery** during system startup occurs in 3 stages:"
+
+#: ../../architecture/base.rst:254
+msgid ""
+"Микросервис **ecos-apps**, увидив новый микросервис в сети, загружает из "
+"него список типов, в которых он заинтересован."
+msgstr ""
+"The **ecos-apps** microservice, upon detecting a new microservice on the network, "
+"loads from it the list of types it is interested in."
+
+#: ../../architecture/base.rst:256
+msgid ""
+"Получив типы, **ecos-apps** рассылает на все остальные микросервисы "
+"запрос на получение артефактов с данными типами."
+msgstr ""
+"Having received the types, **ecos-apps** sends a request to all other microservices "
+"to obtain artifacts of those types."
+
+#: ../../architecture/base.rst:258
+msgid ""
+"Получив нужные артефакты со всех микросервисов, **ecos-apps** проверяет, "
+"изменился ли их контент с прошлого деплоя. Если изменений нет, то "
+"алгоритм заканчивает свою работу. Если изменения есть, то происходит "
+"деплой новых данных в целевой микросервис."
+msgstr ""
+"After receiving the required artifacts from all microservices, **ecos-apps** checks "
+"if their content has changed since the last deployment. If there are no changes, the "
+"algorithm finishes its work. If there are changes, the new data is deployed to the "
+"target microservice."
+
+#: ../../architecture/base.rst:260
+msgid "**Пример артефакта. Журнал форм**"
+msgstr ""
+"**Artifact Example. Forms Journal**"
+
+#: ../../architecture/base.rst:267
+msgid "Описание архитектуры событийно-ориентированного сервиса и бизнес-процессов"
+msgstr ""
+"Description of the event-driven service architecture and business processes"
+
+#: ../../architecture/base.rst:269
+msgid "Предъявляемые требования:"
+msgstr ""
+"Requirements:"
+
+#: ../../architecture/base.rst:271
+msgid ""
+"**Отказоустойчивость**. При выходе из строя любого узла системы "
+"работоспособность должна сохраняться."
+msgstr ""
+"**Fault tolerance**. If any system node fails, operability must be maintained."
+
+#: ../../architecture/base.rst:272
+msgid ""
+"**Сохранность данных**. При полной или частичной потере данных на одном "
+"из узлов хранилища данные в системе не должны быть потеряны."
+msgstr ""
+"**Data integrity**. In case of complete or partial data loss on one of the storage "
+"nodes, the data in the system must not be lost."
+
+#: ../../architecture/base.rst:273
+msgid ""
+"**Горизонтальное масштабирование**. При росте количества процессов должна"
+" быть возможность горизонтального расширения за счет увеличения "
+"количества узлов в кластере, чтобы избежать деградации времени выполнения"
+" запросов с увеличением времени жизни системы. Старые процессы, которые "
+"уже давно завершились, не должны оказывать негативное влияние на "
+"активные."
+msgstr ""
+"**Horizontal scaling**. With an increase in the number of processes, there must be "
+"the possibility of horizontal expansion by increasing the number of nodes in the "
+"cluster to avoid degradation of request execution time as the system's lifetime "
+"increases. Old processes that have long been completed should not have a negative "
+"impact on active ones."
+
+#: ../../architecture/base.rst:276
+msgid "ECOS Process"
+msgstr ""
+"ECOS Process"
+
+#: ../../architecture/base.rst:278
+msgid ""
+"В качестве BPM-движка для бизнес-процессов в **ecos-process** "
+"интегрировано популярное open-source решение **Camunda**."
+msgstr ""
+"The popular open-source solution **Camunda** is integrated as the BPM engine for "
+"business processes in **ecos-process**."
+
+#: ../../architecture/base.rst:280
+msgid ""
+"В качестве редактора для создания и редактирования процессов мы "
+"разработали свой :ref:`low-code BPMN редактор<ecos-bpmn_platform>` на "
+"основе библиотеки bpmn-js, добавив туда тесную интеграцию с экосистемой "
+"Citeck (роли, формы, статусы и др). Для разработки стандартных процессов "
+"не требуется участие программистов."
+msgstr ""
+"As an editor for creating and editing processes, we developed our own :ref:`low-code "
+"BPMN editor<ecos-bpmn_platform>` based on the bpmn-js library, adding tight "
+"integration with the Citeck ecosystem (roles, forms, statuses, etc.). Developing "
+"standard processes does not require programmers' involvement."
+
+#: ../../architecture/base.rst:287
+msgid "Таймеры"
+msgstr ""
+"Timers"
+
+#: ../../architecture/base.rst:289
+msgid ""
+"**Таймеры** в ecos-process позволяют отложить выполнение любых действий "
+"во времени."
+msgstr ""
+"**Timers** in ecos-process allow delaying the execution of any actions in time."
+
+#: ../../architecture/base.rst:291
+msgid ""
+"Любой микросервис в системе отправляет в ecos-process команду **«Создать "
+"таймер»**, указав время срабатывания таймера и команду, которая должна "
+"при этом выполниться."
+msgstr ""
+"Any microservice in the system sends a **\"Create Timer\"** command to ecos-process, "
+"specifying the timer trigger time and the command that should be executed."
+
+#: ../../architecture/base.rst:293
+msgid ""
+"Когда наступает время срабатывания таймера микросервис ecos-process "
+"отправляет зарегистрированную в п.1 **команду на целевой сервис**. Целью "
+"команды может быть любой микросервис или alfresco."
+msgstr ""
+"When the timer trigger time is reached, the ecos-process microservice sends the "
+"command registered in step 1 **to the target service**. The target of the command "
+"can be any microservice or alfresco."
+
+#: ../../architecture/base.rst:295
+msgid ""
+"Примеры команд: «Отправить email», «Выполнить скрипт», «Завершить "
+"этап/задачу в процессе» и др."
+msgstr ""
+"Command examples: \"Send email\", \"Execute script\", \"Complete stage/task in "
+"process\", etc."
+
+#: ../../architecture/base.rst:298
+msgid "Шардинг документов"
+msgstr ""
+"Document Sharding"
+
+#: ../../architecture/base.rst:300
+msgid ""
+"**Шардинг** — стратегия масштабирования приложений. В рамках шардинга "
+"информация делится на блоки и распределяется по разным серверам, которые "
+"и называются шардами."
+msgstr ""
+"**Sharding** is an application scaling strategy. Within sharding, information is "
+"divided into blocks and distributed across different servers, which are called "
+"shards."
+
+#: ../../architecture/base.rst:302
+msgid ""
+"Базовые принципы, которые позволяют реализовывать гибкую систему шардинга"
+" в Citeck:"
+msgstr ""
+"Basic principles enabling a flexible sharding system in Citeck:"
+
+#: ../../architecture/base.rst:304
+msgid ""
+"У каждого приложения в системе Citeck есть свой **уникальный "
+"идентификатор** (uiserv, integrations, emodel, notifications, alfresco и "
+"др.)"
+msgstr ""
+"Each application in the Citeck system has its own **unique identifier** (uiserv, "
+"integrations, emodel, notifications, alfresco, etc.)"
+
+#: ../../architecture/base.rst:306
+msgid ""
+"У каждой сущности в системе в идентификаторе содержится **ID "
+"приложения**, из которого следует загружать данные:"
+msgstr ""
+"Each entity in the system has an **application ID** in its identifier, indicating "
+"which application to load data from:"
+
+#: ../../architecture/base.rst:309
+msgid "Здесь, emodel/person@someuser"
+msgstr ""
+"Here, emodel/person@someuser"
+
+#: ../../architecture/base.rst:311
+msgid "**emodel** — ID приложения,"
+msgstr ""
+"**emodel** — application ID,"
+
+#: ../../architecture/base.rst:312
+msgid "**person** — ID источника данных в пределах приложения,"
+msgstr ""
+"**person** — data source ID within the application,"
+
+#: ../../architecture/base.rst:313
+msgid "**someuser** — ID сущности в пределах источника данных."
+msgstr ""
+"**someuser** — entity ID within the data source."
+
+#: ../../architecture/base.rst:315
+msgid ""
+"При поиске мы всегда указываем источник данных, в котором следует искать "
+"записи:"
+msgstr ""
+"When searching, we always specify the data source in which to look for records:"
+
+#: ../../architecture/base.rst:321
+msgid ""
+"Все запросы идут через **ecos-gateway**, который отвечает за управление "
+"потоками данных."
+msgstr ""
+"All requests go through **ecos-gateway**, which is responsible for managing data "
+"flows."
+
+#: ../../architecture/base.rst:324
+msgid "Описание базовых операций при работе с шардами"
+msgstr ""
+"Description of basic operations when working with shards"
+
+#: ../../architecture/base.rst:326
+msgid "**Создание записи**"
+msgstr ""
+"**Creating a Record**"
+
+#: ../../architecture/base.rst:328
+msgid ""
+"Пользователь нажимает кнопку **«Создать»**, заполняет атрибуты документа "
+"и отправляет результат на сервер."
+msgstr ""
+"The user clicks the **\"Create\"** button, fills in the document attributes, and "
+"sends the result to the server."
+
+#: ../../architecture/base.rst:330
+msgid ""
+"Данные с формы принимает **ecos-gateway** и на основе правил, которые "
+"настроил администратор, выбирает **id приложения**, которому нужно "
+"делегировать запрос создания."
+msgstr ""
+"The **ecos-gateway** receives the form data and, based on rules configured by the "
+"administrator, selects the **application id** to delegate the creation request to."
+
+#: ../../architecture/base.rst:332
+msgid ""
+"После того, как целевой сервис успешно выполнил операцию, **ecos-"
+"gateway** возвращает клиенту **ID новой сущности**, в котором содержится "
+"**ID приложения**, которое было выбрано согласно правилам в п.2."
+msgstr ""
+"After the target service successfully performs the operation, **ecos-gateway** "
+"returns the **ID of the new entity** to the client, which contains the **application "
+"ID** that was selected according to the rules in step 2."
+
+#: ../../architecture/base.rst:334
+msgid "**Поиск записей**"
+msgstr ""
+"**Searching for Records**"
+
+#: ../../architecture/base.rst:336
+msgid ""
+"Получив запрос на поиск данных в системе, **ecos-gateway** на основе "
+"располагаемых данных отправляет N запросов на поиск по разным шардам."
+msgstr ""
+"Upon receiving a request to search for data in the system, **ecos-gateway**, based "
+"on the available data, sends N search requests to different shards."
+
+#: ../../architecture/base.rst:338
+msgid ""
+"Получив результаты запросов, **ecos-gateway** объединяет их результаты и "
+"отдает получившийся список клиенту."
+msgstr ""
+"Having received the query results, **ecos-gateway** merges their results and "
+"returns the resulting list to the client."
+
+#: ../../architecture/base.rst:340
+msgid ""
+"Возможный вид списка сущностей, которые вернутся в результате поискового "
+"запроса:"
+msgstr ""
+"A possible view of the list of entities returned as a result of a search query:"
+
+#: ../../architecture/base.rst:347
+msgid "Кластеризация"
+msgstr ""
+"Clustering"
+
+#: ../../architecture/base.rst:349
+msgid ""
+"**Кластеризация** — разворачивание нескольких инстансов приложения для "
+"обработки большой нагрузки и повышения отказоустойчивости системы."
+msgstr ""
+"**Clustering** is deploying multiple application instances to handle high load and "
+"increase system fault tolerance."
+
+#: ../../architecture/base.rst:351
+msgid "Особенности:"
+msgstr ""
+"Features:"
+
+#: ../../architecture/base.rst:353
+msgid ""
+"Логически система работает одинаково вне зависимости от количества "
+"инстансов приложения."
+msgstr ""
+"Logically, the system works the same regardless of the number of application "
+"instances."
+
+#: ../../architecture/base.rst:355
+msgid ""
+"Инстансы приложение в кластере как правило работают с одними и теми же "
+"хранилищами данных (БД, файловая система)."
+msgstr ""
+"Application instances in a cluster typically work with the same data storages (DB, "
+"file system)."
+
+#: ../../architecture/base.rst:357
+msgid ""
+"Кластеризация нужна для отказоустойчивости и распределения нагрузки по "
+"CPU, RAM и сети."
+msgstr ""
+"Clustering is needed for fault tolerance and distributing load across CPU, RAM, and "
+"network."
+
+#: ../../architecture/base.rst:360
+msgid "Кластеризация микросервисов в системе Citeck"
+msgstr ""
+"Clustering of microservices in the Citeck system"
+
+#: ../../architecture/base.rst:366
+msgid ""
+"Для разворачивания кластера микросервисов мы просто поднимаем несколько "
+"инстансов приложения."
+msgstr ""
+"To deploy a cluster of microservices, we simply start several application instances."
+
+#: ../../architecture/base.rst:368
+msgid ""
+"При старте все приложения регистрируются в  **ecos-registry**, указывая "
+"при этом свой **IP, HOST** и **PORT**."
+msgstr ""
+"At startup, all applications register with **ecos-registry**, specifying their **IP, "
+"HOST**, and **PORT**."
+
+#: ../../architecture/base.rst:370
+msgid ""
+"Балансировкой нагрузки занимается **ecos-gateway**. Когда приходит запрос"
+" от пользователя за некоторым ресурсом, **ecos-gateway** по информации в "
+"**ecos-registry** определяет список инстансов нужного приложения. После "
+"этого запрос уходит на один из инстансов по алгоритму **round-robin**."
+msgstr ""
+"Load balancing is handled by **ecos-gateway**. When a request comes from a user for "
+"a resource, **ecos-gateway** uses the information in **ecos-registry** to determine "
+"the list of instances of the required application. Then the request is sent to one "
+"of the instances using the **round-robin** algorithm."
+
+#: ../../architecture/base.rst:372
+msgid ""
+"**ecos-registry** регулярно проверяет приложения (**health-check**). Если"
+" приложение перестало отвечать, то запросы на него отправляться не будут."
+msgstr ""
+"**ecos-registry** regularly checks the applications (**health-check**). If an "
+"application stops responding, requests will not be sent to it."

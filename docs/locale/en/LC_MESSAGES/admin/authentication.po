@@ -1,0 +1,762 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: 2025-08-28 23:55+0300\n"
+"Last-Translator: Your Name <your.email@example.com>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/authentication.rst:2
+msgid "Аутентификация"
+msgstr "Authentication"
+
+#: ../../admin/authentication.rst:5
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/authentication.rst:8
+msgid "Терминология"
+msgstr "Terminology"
+
+#: ../../admin/authentication.rst:10
+msgid ""
+"**IdP** (Identity provider) - Провайдер аутентификации, который отвечает "
+"за аутентификацию пользователей и внешних систем. В Citeck в качестве "
+"протокола для аутентификации используется OpenID Connect. В качестве "
+"стандартного IdP используется `Keycloak <https://www.keycloak.org/>`_."
+msgstr ""
+"**IdP** (Identity provider) - Authentication provider responsible for "
+"authenticating users and external systems. In Citeck, OpenID Connect is used as "
+"the authentication protocol. The standard IdP is `Keycloak <https://www.keycloak.org/>`_."
+
+#: ../../admin/authentication.rst:12
+msgid ""
+"`OIDC (OpenID Connect) <https://openid.net/connect/>`_ - Открытый "
+"стандарт децентрализованной системы аутентификации."
+msgstr ""
+"`OIDC (OpenID Connect) <https://openid.net/connect/>`_ - An open "
+"standard for a decentralized authentication system."
+
+#: ../../admin/authentication.rst:13
+msgid ""
+"**Access Token** - Токен доступа. Используется при доступе к защищенным "
+"ресурсам. Как правило имеет малое время жизни (порядка пяти минут) и "
+"регулярно обновляется с помощью токена обновления (Refresh Token)."
+msgstr ""
+"**Access Token** - Access token. Used when accessing protected "
+"resources. Typically has a short lifespan (about five minutes) and "
+"is regularly refreshed using a refresh token (Refresh Token)."
+
+#: ../../admin/authentication.rst:14
+msgid ""
+"**Refresh Token** - Токен обновления. Используется OIDC клиентом при "
+"обращении к IdP для получения нового токена доступа (Access Token)."
+msgstr ""
+"**Refresh Token** - Refresh token. Used by the OIDC client when "
+"contacting the IdP to obtain a new access token (Access Token)."
+
+#: ../../admin/authentication.rst:15
+msgid ""
+"**IdP Realm** - это независимое пространство со своими настройками "
+"аутентификации для конкретного сервера. Если проводить аналогию с базами "
+"данных, то IdP - это СУБД, а реалм - это БД."
+msgstr ""
+"**IdP Realm** - An independent space with its own authentication "
+"settings for a specific server. Using a database analogy, the IdP is the DBMS, "
+"and the realm is the database."
+
+#: ../../admin/authentication.rst:19
+msgid "Общая информация"
+msgstr "General Information"
+
+#: ../../admin/authentication.rst:21
+msgid "В Citeck поддерживается два способа аутентификации:"
+msgstr "Citeck supports two authentication methods:"
+
+#: ../../admin/authentication.rst:23 ../../admin/authentication.rst:27
+msgid "Аутентификация через встроенный OIDC клиент"
+msgstr "Authentication via built-in OIDC client"
+
+#: ../../admin/authentication.rst:24 ../../admin/authentication.rst:115
+msgid "Аутентификация через внешний OIDC клиент"
+msgstr "Authentication via external OIDC client"
+
+#: ../../admin/authentication.rst:29
+msgid ""
+"Логика аутентификации находится в приложении ecos-proxy-app и реализована"
+" через модуль `lua-resty-openidc "
+"<https://luarocks.org/modules/hanszandbelt/lua-resty-openidc>`_"
+msgstr ""
+"Authentication logic is located in the ecos-proxy-app application and implemented "
+"via the `lua-resty-openidc "
+"<https://luarocks.org/modules/hanszandbelt/lua-resty-openidc>`_ module"
+
+#: ../../admin/authentication.rst:31
+msgid ""
+"Настройка модуля выполняется через переменные среды контейнера ecos-"
+"proxy-app:"
+msgstr ""
+"Module configuration is done through environment variables of the ecos-"
+"proxy-app container:"
+
+#: ../../admin/authentication.rst:35
+msgid "**Переменная**"
+msgstr "**Variable**"
+
+#: ../../admin/authentication.rst:36
+msgid "**Значение**"
+msgstr "**Value**"
+
+#: ../../admin/authentication.rst:37 ../../admin/authentication.rst:154
+msgid "**Описание**"
+msgstr "**Description**"
+
+#: ../../admin/authentication.rst:38
+msgid "EIS_TARGET"
+msgstr "EIS_TARGET"
+
+#: ../../admin/authentication.rst
+msgid "Строка вида ``host[:port]``"
+msgstr "String of the form ``host[:port]``"
+
+#: ../../admin/authentication.rst
+msgid ""
+"Внутренний хост IdP. Используется, чтобы определить куда нужно направить "
+"запросы"
+msgstr ""
+"Internal IdP host. Used to determine where to direct "
+"requests"
+
+#: ../../admin/authentication.rst
+msgid ""
+"с ``http://{{SERVER_HOST}}/ecos-idp/auth/``. Этот параметр нужен только "
+"тогда, когда IdP"
+msgstr ""
+"with ``http://{{SERVER_HOST}}/ecos-idp/auth/``. This parameter is only needed "
+"when the IdP"
+
+#: ../../admin/authentication.rst
+msgid ""
+"разворачивается в комплекте с Citeck. Для использования внешнего IdP эту "
+"настройку"
+msgstr ""
+"is deployed as part of Citeck. For using an external IdP, this "
+"setting"
+
+#: ../../admin/authentication.rst
+msgid "следует опустить."
+msgstr "should be omitted."
+
+#: ../../admin/authentication.rst:44
+msgid "ENABLE_OIDC_FULL_ACCESS"
+msgstr "ENABLE_OIDC_FULL_ACCESS"
+
+#: ../../admin/authentication.rst
+msgid "``true`` или ``false``"
+msgstr "``true`` or ``false``"
+
+#: ../../admin/authentication.rst
+msgid ""
+"Включить интеграцию с IdP. Как правило здесь всегда должно стоять "
+"``true``."
+msgstr ""
+"Enable integration with IdP. Typically, this should always be "
+"``true``."
+
+#: ../../admin/authentication.rst:47
+msgid "CLIENT_ID"
+msgstr "CLIENT_ID"
+
+#: ../../admin/authentication.rst
+msgid "Строка"
+msgstr "String"
+
+#: ../../admin/authentication.rst
+msgid "Идентификатор клиента для работы с IdP. По умолчанию ``nginx``."
+msgstr "Client identifier for working with the IdP. Default is ``nginx``."
+
+#: ../../admin/authentication.rst:50
+msgid "CLIENT_SECRET"
+msgstr "CLIENT_SECRET"
+
+#: ../../admin/authentication.rst
+msgid "Секрет для аутентификации OIDC клиента (ecos-proxy-app) на IdP."
+msgstr "Secret for authenticating the OIDC client (ecos-proxy-app) with the IdP."
+
+#: ../../admin/authentication.rst:53
+msgid "EIS_SCHEME"
+msgstr "EIS_SCHEME"
+
+#: ../../admin/authentication.rst
+msgid "``http`` или ``https``"
+msgstr "``http`` or ``https``"
+
+#: ../../admin/authentication.rst
+msgid ""
+"Схема для запросов от OIDC клиента (ecos-proxy-app) к IdP. По умолчанию "
+"``https``."
+msgstr ""
+"Scheme for requests from the OIDC client (ecos-proxy-app) to the IdP. Default is "
+"``https``."
+
+#: ../../admin/authentication.rst:56
+msgid "EIS_ID"
+msgstr "EIS_ID"
+
+#: ../../admin/authentication.rst
+msgid "Хост для доступа к IdP от OIDC клиента и от браузера пользователя."
+msgstr "Host for accessing the IdP from the OIDC client and from the user's browser."
+
+#: ../../admin/authentication.rst:59
+msgid "EIS_LOCATION"
+msgstr "EIS_LOCATION"
+
+#: ../../admin/authentication.rst
+msgid "Локация, по которой доступен IdP на хосте EIS_ID. По умолчанию ``auth``"
+msgstr "Location where the IdP is accessible on the EIS_ID host. Default is ``auth``"
+
+#: ../../admin/authentication.rst:62
+msgid "REALM_ID"
+msgstr "REALM_ID"
+
+#: ../../admin/authentication.rst
+msgid "Идентификатор реалма, в рамках которого выполняется интеграция с IdP."
+msgstr "Realm identifier within which integration with the IdP is performed."
+
+#: ../../admin/authentication.rst:65
+msgid "REDIRECT_LOGOUT_URI"
+msgstr "REDIRECT_LOGOUT_URI"
+
+#: ../../admin/authentication.rst
+msgid "URI строка"
+msgstr "URI string"
+
+#: ../../admin/authentication.rst
+msgid ""
+"URI для переадресации после успешного входа, который произошел после "
+"логаута."
+msgstr ""
+"URI for redirection after successful login that occurred after "
+"logout."
+
+#: ../../admin/authentication.rst:68
+msgid "ENABLE_LOGGING"
+msgstr "ENABLE_LOGGING"
+
+#: ../../admin/authentication.rst
+msgid "``debug`` или ``warn``"
+msgstr "``debug`` or ``warn``"
+
+#: ../../admin/authentication.rst
+msgid ""
+"Включение дебага для ecos-proxy-app. При значении ``debug`` в логах "
+"пишутся все шаги"
+msgstr ""
+"Enable debugging for ecos-proxy-app. With the value ``debug``, all steps are "
+"written to the logs"
+
+#: ../../admin/authentication.rst
+msgid ""
+"взаимодействия с IdP. Если этот параметр не задан, то все логи "
+"отправляются в ``/dev/null``"
+msgstr ""
+"of interaction with the IdP. If this parameter is not set, all logs "
+"are sent to ``/dev/null``"
+
+#: ../../admin/authentication.rst:73
+msgid ""
+"При включенной интеграции с IdP ecos-proxy-app отправляет GET запрос за "
+"информацией для работы протокола OIDC по адресу:"
+msgstr ""
+"With IdP integration enabled, ecos-proxy-app sends a GET request for "
+"information needed for the OIDC protocol to:"
+
+#: ../../admin/authentication.rst:75
+msgid ""
+"``EIS_SCHEME://EIS_ID/EIS_LOCATION/realms/REALM_ID/.well-known/openid-"
+"configuration``"
+msgstr ""
+"``EIS_SCHEME://EIS_ID/EIS_LOCATION/realms/REALM_ID/.well-known/openid-"
+"configuration``"
+
+#: ../../admin/authentication.rst:77
+msgid ""
+"В ответе IdP возвращает параметры, которые нужны нашему клиенту для "
+"работы по протоколу OIDC. Например:"
+msgstr ""
+"In response, the IdP returns parameters needed by our client to "
+"work with the OIDC protocol. For example:"
+
+#: ../../admin/authentication.rst:79
+msgid "Адреса для получения и обновления токенов;"
+msgstr "Addresses for obtaining and refreshing tokens;"
+
+#: ../../admin/authentication.rst:80
+msgid "Адрес для проверки токена пользователя;"
+msgstr "Address for validating user tokens;"
+
+#: ../../admin/authentication.rst:81
+msgid "Адрес для логаута;"
+msgstr "Address for logout;"
+
+#: ../../admin/authentication.rst:82
+msgid "Поддерживаемые алгоритмы шифрования;"
+msgstr "Supported encryption algorithms;"
+
+#: ../../admin/authentication.rst:83
+msgid "и т.д."
+msgstr "etc."
+
+#: ../../admin/authentication.rst:86
+msgid "Алгоритм аутентификация через встроенный OIDC клиент"
+msgstr "Authentication algorithm via built-in OIDC client"
+
+#: ../../admin/authentication.rst:92
+msgid "Приходит запрос от пользователя на защищенный ресурс;"
+msgstr "A request from a user for a protected resource arrives;"
+
+#: ../../admin/authentication.rst:93
+msgid ""
+"ecos-proxy-app создает сессию для пользователя и сохраняет там исходный "
+"запрос из п.1;"
+msgstr ""
+"ecos-proxy-app creates a session for the user and stores the original "
+"request from item 1 there;"
+
+#: ../../admin/authentication.rst:94
+msgid ""
+"ecos-proxy-app отправляет ответ пользователю с установкой куки с "
+"идентификатором сессии и редиректом на IdP для входа;"
+msgstr ""
+"ecos-proxy-app sends a response to the user setting a cookie with "
+"the session identifier and redirecting to the IdP for login;"
+
+#: ../../admin/authentication.rst:95
+msgid ""
+"Пользователь проходит аутентификацию на IdP через ввод логина/пароля или "
+"используя альтернативные способы для входа;"
+msgstr ""
+"The user authenticates with the IdP by entering login/password or "
+"using alternative login methods;"
+
+#: ../../admin/authentication.rst:96
+msgid ""
+"IdP после успешного входа редиректит пользователя на URI, который был "
+"указан в параметре redirect_uri при редиректе на п.3 и при этом добавляет"
+" в этот URI параметр с кодом, по которому ecos-proxy-app сможет запросить"
+" токены пользователя у IdP;"
+msgstr ""
+"After successful login, the IdP redirects the user to the URI that was "
+"specified in the redirect_uri parameter during the redirect in item 3, and adds "
+"a parameter to this URI with a code that ecos-proxy-app can use to request "
+"user tokens from the IdP;"
+
+#: ../../admin/authentication.rst:97
+msgid ""
+"Пользователь открывает URI, который является колбэком для аутентификации "
+"(по дефолту в Citeck это ``/v2``) и попадает на ecos-proxy-app;"
+msgstr ""
+"The user opens the URI which is the authentication callback "
+"(by default in Citeck this is ``/v2``) and lands on ecos-proxy-app;"
+
+#: ../../admin/authentication.rst:98
+msgid ""
+"ecos-proxy-app получает код от пользователя и отправляет с ним запрос на "
+"IdP для получения Access и Refresh токенов для пользователя;"
+msgstr ""
+"ecos-proxy-app receives the code from the user and sends a request with it to "
+"the IdP to obtain Access and Refresh tokens for the user;"
+
+#: ../../admin/authentication.rst:99
+msgid "ecos-proxy-app получает токены пользователя от IdP;"
+msgstr "ecos-proxy-app receives the user tokens from the IdP;"
+
+#: ../../admin/authentication.rst:100
+msgid "ecos-proxy-app сохраняет у себя токены пользователя в его сессии;"
+msgstr "ecos-proxy-app stores the user tokens in their session;"
+
+#: ../../admin/authentication.rst:101
+msgid ""
+"ecos-proxy-app отправляет пользователю редирект на исходный URI, который "
+"он запрашивал в п.1;"
+msgstr ""
+"ecos-proxy-app sends the user a redirect to the original URI they "
+"requested in item 1;"
+
+#: ../../admin/authentication.rst:102
+msgid "Пользователь отправляет запрос на исходный URI из п.1;"
+msgstr "The user sends a request to the original URI from item 1;"
+
+#: ../../admin/authentication.rst:103
+msgid ""
+"ecos-proxy-app достает Access токен пользователя из сессии и отправляет "
+"запрос в IdP на проверку валидности;"
+msgstr ""
+"ecos-proxy-app retrieves the user's Access token from the session and sends "
+"a request to the IdP to validate it;"
+
+#: ../../admin/authentication.rst:104
+msgid "IdP отвечает ecos-proxy-app, что токен валидный;"
+msgstr "The IdP responds to ecos-proxy-app that the token is valid;"
+
+#: ../../admin/authentication.rst:105
+msgid ""
+"ecos-proxy-app предоставляет доступ пользователю к защищенному ресурсу и "
+"при этом добавляет в запрос хидер ``X-ECOS-User``, который равен имени "
+"пользователя;"
+msgstr ""
+"ecos-proxy-app grants the user access to the protected resource and "
+"adds the ``X-ECOS-User`` header to the request, which equals the user's name;"
+
+#: ../../admin/authentication.rst:106
+msgid "Пользователь получает ожидаемый ответ от защищенного ресурс."
+msgstr "The user receives the expected response from the protected resource."
+
+#: ../../admin/authentication.rst:108
+msgid ""
+"Во всем процессе аутентификации от пользователя требуется только действия"
+" на шаге 4 (аутентификация на IdP). Все остальные пункты проходят "
+"прозрачно и незаметно для пользователя."
+msgstr ""
+"In the entire authentication process, the user is only required to take action "
+"in step 4 (authentication with the IdP). All other steps occur "
+"transparently and unnoticed by the user."
+
+#: ../../admin/authentication.rst:111
+msgid ""
+"Шаги 11-15 выполняются при каждом последующем запросе с поправкой на то, "
+"что результат проверки токена на валидность кэшируется. Время хранения "
+"кэша зависит от настоек IdP и как правило равно времени жизни токена "
+"доступа (Access Token)."
+msgstr ""
+"Steps 11-15 are performed with each subsequent request, with the caveat that "
+"the result of token validation is cached. The cache retention time "
+"depends on the IdP settings and is typically equal to the access token's "
+"lifespan (Access Token)."
+
+#: ../../admin/authentication.rst:121
+msgid ""
+"Клиент получает базовую конфигурацию для работы с IdP (realmId, eisId, "
+"logoutUrl) отправив GET запрос на ``{{SERVER_HOST}}/eis.json``;"
+msgstr ""
+"The client receives basic configuration for working with the IdP (realmId, eisId, "
+"logoutUrl) by sending a GET request to ``{{SERVER_HOST}}/eis.json``;"
+
+#: ../../admin/authentication.rst:122
+msgid "Клиент предлагает пользователю пройти аутентификацию на IdP;"
+msgstr "The client prompts the user to authenticate with the IdP;"
+
+#: ../../admin/authentication.rst:123
+msgid "Клиент получает Access и Refresh токены от IdP;"
+msgstr "The client receives Access and Refresh tokens from the IdP;"
+
+#: ../../admin/authentication.rst:124
+msgid "Клиент отправляет запрос на защищенный ресурс с Access Token;"
+msgstr "The client sends a request to the protected resource with an Access Token;"
+
+#: ../../admin/authentication.rst:125
+msgid "ecos-proxy-app валидирует Access токен отправляя запрос на IdP;"
+msgstr "ecos-proxy-app validates the Access token by sending a request to the IdP;"
+
+#: ../../admin/authentication.rst:126
+msgid "IdP отвечает, что токен валидный;"
+msgstr "The IdP responds that the token is valid;"
+
+#: ../../admin/authentication.rst:127
+msgid ""
+"ecos-proxy-app отправляет запрос на защищенный ресурс, который нужен "
+"клиенту добавив в запрос хидер ``X-ECOS-User`` с именем пользователя;"
+msgstr ""
+"ecos-proxy-app sends the request to the protected resource needed by "
+"the client, adding the ``X-ECOS-User`` header with the username to the request;"
+
+#: ../../admin/authentication.rst:128
+msgid "Клиент получает ответ от защищенного ресурса."
+msgstr "The client receives a response from the protected resource."
+
+#: ../../admin/authentication.rst:130
+msgid ""
+"Во всем процессе аутентификации от пользователя требуется только действия"
+" на шаге 2 (аутентификация на IdP). Все остальные пункты проходят "
+"прозрачно и незаметно для пользователя."
+msgstr ""
+"In the entire authentication process, the user is only required to take action "
+"in step 2 (authentication with the IdP). All other steps occur "
+"transparently and unnoticed by the user."
+
+#: ../../admin/authentication.rst:133
+msgid "Клиент может отправлять токен при запросах в следующем виде:"
+msgstr "The client can send the token in requests in the following ways:"
+
+#: ../../admin/authentication.rst:135
+msgid "В хидере Authentication в формате ``Bearer {{TOKEN}}``."
+msgstr "In the Authentication header in the format ``Bearer {{TOKEN}}``."
+
+#: ../../admin/authentication.rst:136
+msgid "В куке PA"
+msgstr "In the PA cookie"
+
+#: ../../admin/authentication.rst:138
+msgid ""
+"Настройки /eis.json заполняются значениями из переменных среды ecos-"
+"proxy-app - REALM_ID и EIS_ID"
+msgstr ""
+"The /eis.json settings are populated with values from the ecos-"
+"proxy-app environment variables - REALM_ID and EIS_ID"
+
+#: ../../admin/authentication.rst:141
+msgid "Настройка времени жизни сессий на Keycloak"
+msgstr "Configuring session lifetimes in Keycloak"
+
+#: ../../admin/authentication.rst:143
+msgid ""
+"Настройки на уровне реалма (действуют для всех клиентов в этом реалме по "
+"умолчанию):"
+msgstr ""
+"Settings at the realm level (apply to all clients in this realm by "
+"default):"
+
+#: ../../admin/authentication.rst:145
+msgid "``Realm Settings -> Tokens``"
+msgstr "``Realm Settings -> Tokens``"
+
+#: ../../admin/authentication.rst:147
+msgid "Настройки на уровне клиента (переопределяют настройки реалма):"
+msgstr "Settings at the client level (override realm settings):"
+
+#: ../../admin/authentication.rst:149
+msgid "``Clients -> CLIENT_ID -> Settings -> Advanced Settings``"
+msgstr "``Clients -> CLIENT_ID -> Settings -> Advanced Settings``"
+
+#: ../../admin/authentication.rst:153
+msgid "**Параметр**"
+msgstr "**Parameter**"
+
+#: ../../admin/authentication.rst:155
+msgid "SSO Session Idle"
+msgstr "SSO Session Idle"
+
+#: ../../admin/authentication.rst
+msgid "Время жизни сессии пользователя при неактивности. Если от пользователя"
+msgstr "User session lifetime during inactivity. If the user"
+
+#: ../../admin/authentication.rst
+msgid "нет никакой активности в течении этого времени, то сессия прерывается."
+msgstr "has no activity during this time, the session is terminated."
+
+#: ../../admin/authentication.rst:158
+msgid "SSO Session Max"
+msgstr "SSO Session Max"
+
+#: ../../admin/authentication.rst
+msgid "Максимальное время жизни сессии пользователя. Сессия прерывается если"
+msgstr "Maximum user session lifetime. The session is terminated if"
+
+#: ../../admin/authentication.rst
+msgid ""
+"с момента аутентификации прошло указанное время вне зависимости от "
+"активности пользователя."
+msgstr ""
+"the specified time has passed since authentication, regardless of "
+"user activity."
+
+#: ../../admin/authentication.rst:161
+msgid "Client Session Idle"
+msgstr "Client Session Idle"
+
+#: ../../admin/authentication.rst
+msgid "Время жизни сессии OIDC клиента при неактивности. Если от OIDC клиента"
+msgstr "OIDC client session lifetime during inactivity. If the OIDC client"
+
+#: ../../admin/authentication.rst
+msgid ""
+"нет никакой активности в течении этого времени, то сессия клиента "
+"прерывается."
+msgstr ""
+"has no activity during this time, the client session "
+"is terminated."
+
+#: ../../admin/authentication.rst
+msgid ""
+"Если значение не задано, то по умолчанию берется значение SSO Session "
+"Idle."
+msgstr ""
+"If the value is not set, the SSO Session Idle value is used by default."
+
+#: ../../admin/authentication.rst:165
+msgid "Client Session Max"
+msgstr "Client Session Max"
+
+#: ../../admin/authentication.rst
+msgid "Максимальное время жизни сессии клиента. Сессия прерывается если"
+msgstr "Maximum client session lifetime. The session is terminated if"
+
+#: ../../admin/authentication.rst
+msgid ""
+"с момента аутентификации клиента прошло указанное время вне зависимости "
+"от активности клиента."
+msgstr ""
+"the specified time has passed since client authentication, regardless "
+"of client activity."
+
+#: ../../admin/authentication.rst
+msgid "Если значение не задано, то по умолчанию берется значение SSO Session Max."
+msgstr "If the value is not set, the SSO Session Max value is used by default."
+
+#: ../../admin/authentication.rst:169
+msgid "Access Token Lifespan"
+msgstr "Access Token Lifespan"
+
+#: ../../admin/authentication.rst
+msgid "Время жизни Access токена. Это время жизни должно быть"
+msgstr "Access token lifespan. This lifespan should be"
+
+#: ../../admin/authentication.rst
+msgid "небольшим (по умолчанию 5 минут) из соображений безопасности."
+msgstr "short (5 minutes by default) for security reasons."
+
+#: ../../admin/authentication.rst
+msgid "Токены доступа меняются автоматически и прозрачно для пользователя."
+msgstr "Access tokens are changed automatically and transparently to the user."
+
+#: ../../admin/authentication.rst:174
+msgid "Примечания:"
+msgstr "Notes:"
+
+#: ../../admin/authentication.rst:176
+msgid ""
+"Если сессия пользователя прерывается, то выданные в этой сессии Access и "
+"Refresh токены отзываются."
+msgstr ""
+"If a user session is terminated, the Access and Refresh tokens issued in that session "
+"are revoked."
+
+#: ../../admin/authentication.rst:177
+msgid ""
+"Если сессия OIDC клиента прерывается, то выданные в этой сессии Access и "
+"Refresh токены для всех пользователей отзываются."
+msgstr ""
+"If an OIDC client session is terminated, the Access and Refresh tokens issued in that session "
+"for all users are revoked."
+
+#: ../../admin/authentication.rst:179
+msgid ""
+"Если пользователь работает с сервером через встроенный OIDC клиент в "
+"ecos-proxy-app, то следует учитывать, что OIDC клиент кэширует результат "
+"запросов к IdP и не каждый запрос приводит к обновлению условного "
+"\"таймера активности\" на IdP. Активность обновляется как минимум при "
+"обновлении Access Token'а."
+msgstr ""
+"If a user works with the server through the built-in OIDC client in "
+"ecos-proxy-app, it should be noted that the OIDC client caches the result "
+"of requests to the IdP and not every request leads to the update of the conditional "
+"\"activity timer\" on the IdP. Activity is updated at least when "
+"the Access Token is refreshed."
+
+#: ../../admin/authentication.rst:183
+msgid ""
+"Из особенности работы OIDC клиента с кэшем так же следует, что если мы "
+"прерываем сессию в IdP, то это не гарантирует, что пользователь сразу же "
+"потеряет доступ к серверу. Пользователь сможет отправлять запросы и "
+"получать данные от сервера до тех пор пока действует его Access Token."
+msgstr ""
+"From the peculiarity of the OIDC client's work with cache, it also follows that if we "
+"terminate a session in the IdP, it does not guarantee that the user will immediately "
+"lose access to the server. The user will be able to send requests and "
+"receive data from the server as long as their Access Token is valid."
+
+#: ../../admin/authentication.rst:188
+msgid "Touch запросы"
+msgstr "Touch requests"
+
+#: ../../admin/authentication.rst:190
+msgid ""
+"Для того, чтобы сессия пользователя неожиданно не прерывалась без явных "
+"действий пользователя, которые приводят к запросам на сервер, в ecos-ui "
+"добавлена логика с периодическй отправкой touch запроса. Задача этого "
+"запроса в проходе через механизм проверки токена пользователя и "
+"обновления условного таймера неактивности в IdP. Touch запросы "
+"отправляются периодически до тех пор пока пользователь что-то делает в "
+"системе (двигает мышкой, нажимает клавиши и т.д.)."
+msgstr ""
+"To prevent a user session from being unexpectedly terminated without explicit "
+"user actions that lead to server requests, logic for periodic "
+"sending of touch requests has been added to ecos-ui. The purpose of this "
+"request is to pass through the user token validation mechanism and "
+"update the conditional inactivity timer in the IdP. Touch requests "
+"are sent periodically as long as the user is doing something in "
+"the system (moving the mouse, pressing keys, etc.)."
+
+#: ../../admin/authentication.rst:196
+msgid "Тайминги touch запросов для версии ecos-ui 2.9.0+:"
+msgstr "Touch request timings for ecos-ui version 2.9.0+:"
+
+#: ../../admin/authentication.rst:198
+msgid "Период отправки touch запросов: 30с."
+msgstr "Touch request sending period: 30s."
+
+#: ../../admin/authentication.rst:199
+msgid ""
+"Время неактивности после которого перестают отправляться touch запросы: "
+"1ч."
+msgstr ""
+"Inactivity time after which touch requests stop being sent: "
+"1h."
+
+#: ../../admin/authentication.rst:201
+msgid "В журнале конфигурации Citeck можно настроить поведение touch запросов:"
+msgstr "In the Citeck configuration journal, you can configure touch request behavior:"
+
+#: ../../admin/authentication.rst:203
+msgid "Scope: **app/gateway**"
+msgstr "Scope: **app/gateway**"
+
+#: ../../admin/authentication.rst:204
+msgid "Id: **touch**"
+msgstr "Id: **touch**"
+
+#: ../../admin/authentication.rst:206
+msgid "Содержимое настройки::"
+msgstr "Setting content::"
+
+#: ../../admin/authentication.rst:214
+msgid "Интеграция с внешними IdP"
+msgstr "Integration with external IdPs"
+
+#: ../../admin/authentication.rst:216
+msgid ""
+"Для организации аутентификации в Citeck с использованием IdP отличных от "
+"Keycloak или c Keycloak, который не поставляется вместе с Citeck мы "
+"рекомендуем использовать архитектуру:"
+msgstr ""
+"To organize authentication in Citeck using IdPs other than "
+"Keycloak or with Keycloak that is not supplied with Citeck, we "
+"recommend using the architecture:"
+
+#: ../../admin/authentication.rst:218
+msgid "``[Citeck <-> Keycloak] <-> External IdP``"
+msgstr "``[Citeck <-> Keycloak] <-> External IdP``"
+
+#: ../../admin/authentication.rst:220
+msgid ""
+"Citeck продолжает использовать свой Keycloak для аутентификации, а "
+"внешний IdP прозрачно подключается с использованием обширных возможностей"
+" Keycloak по интеграции с внешними IdP. Такая архитектура проверена "
+"временем и является оптимальной для использования."
+msgstr ""
+"Citeck continues to use its own Keycloak for authentication, while "
+"the external IdP is transparently connected using Keycloak's extensive "
+"capabilities for integration with external IdPs. This architecture is time-tested "
+"and is optimal for use."

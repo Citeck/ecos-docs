@@ -33,6 +33,12 @@ author = 'Citeck'
 # The full version, including alpha/beta/rc tags
 release = 'Ver. 4'
 
+# Настройки языка
+language = 'ru' # основной язык
+languages = ['ru', 'en'] # Поддерживаемые языки
+locale_dirs = ['locale/']   # Путь к папке с переводами
+gettext_compact = False     # Опция, которая определяет разделение на файлы
+# gettext_uuid = True       # Может понадобиться для новых версий Sphinx
 
 # -- General configuration ---------------------------------------------------
 

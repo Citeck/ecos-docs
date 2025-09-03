@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/ECOS_Records/records_syntax.rst:2
+msgid "Формальное описание синтаксиса атрибута Citeck Records"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:5
+msgid "Содержание"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:8
+msgid "Терминология"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:10
+#, python-brace-format
+msgid ""
+"**Контекст** - область, которая выделена с помощью скобок или кавычек "
+"``{}``, ``[]``, ``()``, ``\"\"``, ``''`` или не выделена ничем (корневая "
+"область или корневой контекст);"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:11
+msgid ""
+"**Алиас** - псевдоним для атрибута. Пример: в конструкции "
+"``someAlias:name`` someAlias является алиасом и возможный результат "
+"вычисления - ``someAlias:\"Договор №2\"``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:12
+msgid ""
+"**Экранирование символа** - добавление перед символом знака ``\\``. "
+"Необходимо в тех случаях, когда спец-символ должен быть обработан как "
+"обычный символ;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:13
+msgid ""
+"**Спец-символ** - символ, который в определенном контексте имеет "
+"специальное значение."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:14
+msgid ""
+"**Скаляр** - конечный атрибут, который не может содержать вложенных "
+"атрибутов. Может быть одним из ``?id``, ``?str``, ``?disp``, ``?num``, "
+"``?assoc``, ``?localId``, ``?bool``, ``?json``."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:17
+msgid ""
+"Экранирование спец-символов необходимо только в текущем контексте и не "
+"требуется во вложенных контекстах."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:20
+msgid "Описание"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:22
+msgid "Общий вид атрибута::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:26
+msgid ""
+"``path0[].path1`` - это путь из атрибутов. Элементы пути объединяются "
+"через точку. Если точка является частью имени атрибута, то её следует "
+"экранировать."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:28
+#, python-brace-format
+msgid ""
+"Все атрибуты в пути кроме последнего имеют ровно один внутренний атрибут "
+"без пост-процессоров и алиаса. Последний атрибут в пути может иметь любое"
+" количество вложенных атрибутов, но не имеет алиаса. Все атрибуты в пути "
+"кроме первого не имеют пост-процессоров. Первый атрибут в пути может "
+"иметь любое количество пост-процессоров, которые указываются в конце "
+"после ``{INNER}``. Любой элемент пути из атрибутов может иметь окончание "
+"``[]``, которое при наличии означает, что атрибут множественный."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:32
+#, python-brace-format
+msgid ""
+"``{INNER}`` содержит вложенные атрибуты с алиасами, которые разделены "
+"через запятую. Алиас не обязателен. Если он отсутствует, то для "
+"результата используется первое имя в пути атрибутов."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:34
+#, python-brace-format
+msgid "Пример значения ``{INNER}``::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:38
+msgid ""
+"В **aliasN** спец-символами являются ``,`` и ``:``. Вместо **attributeN**"
+" допускается синтаксис (1), но c экранированием запятых ``,`` и если "
+"отсутствует алиас, то следует экранировать ``:`` (см. Примечание 1). Если"
+" алиас равен первому элементу в пути атрибутов, то это равнозначно "
+"отсутствию алиаса."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:40
+#, python-brace-format
+msgid ""
+"Вместо ``{INNER}`` при наличии только одного вложенного атрибута без "
+"алиаса и процессоров допускается запись без фигурных скобок. В таком "
+"случае если вложенный атрибут не является скаляром, то перед ним "
+"добавляется точка. Перед скаляром ничего не добавляется т.к. он уже "
+"содержит разделительный символ ``?``."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:42
+msgid "Примеры::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:47
+#, python-brace-format
+msgid ""
+"Если атрибут заканчивается на скаляр ``?disp`` (``att0?disp`` или "
+"``att0{?disp}``), то допускается опустить окончание ``?disp`` в атрибуте "
+"т.к. это скаляр по-умолчанию."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:49
+msgid "Пример::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:53
+msgid ""
+"При описании атрибута допускается использование пост-процессоров, которые"
+" вызываются с результатом вычисления атрибута::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:57
+msgid "**procN** - имя пост-процессора;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:58
+msgid ""
+"**argN** - аргументы, которые отделяются друг от друга запятыми. "
+"Допускаются значения аналогичные формату json - https://www.json.org"
+"/json-en.html , но с возможностью использовать для строк одинарные "
+"кавычки вместо двойных;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:60
+msgid ""
+"Пост-процессоры объединяются через символ ``|`` и выполняются слева "
+"направо аналогично unix pipeline. Пост-процессоры могут быть частью "
+"любого атрибута на любом уровне вложенности."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:62
+msgid ""
+"Для пост-процессора с типом \"or\" доступен дополнительный синтаксис с "
+"использованием ``!``. Возможные варианты значения после ``!``:"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:64
+msgid ""
+"Значение в двойных или одинарных кавычках означает константную строку; "
+"(``some!'constant' == some|or('constant')``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:65
+msgid ""
+"При отсутствии значения парсер подбирает нужный аргумент в зависимости от"
+" скаляра перед знаком ``!``:"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:67
+msgid "?bool! -> ``false``"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:68
+#, python-brace-format
+msgid "?json! -> ``{}``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:69
+msgid "?num! -> ``0``;"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:70
+msgid "иначе -> ``\"\"``."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:72
+msgid "null означает пустое значение; (``some!null == some|or(null)``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:73
+msgid "true или false - булево значение; (``some!true == some|or(true)``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:74
+msgid ""
+"Если первый символ число - числовое значение; (``some!123 == "
+"some|or(123)``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:75
+msgid ""
+"Если ни один из вышестоящих вариантов не подошел, то считается, что "
+"указано имя атрибута, который нужно вернуть в случае если результат "
+"вычисления атрибута до ``!`` оказался null; (``some!other == "
+"some|or('a:other')``)"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:77
+msgid ""
+"Между частями атрибута (алиас, путь, вложенные атрибуты, пост-процессоры,"
+" аргументы) допускается использование любого количества пробельных "
+"символов (``\\n``, ``\\t``, ``\\r``, :literal:`\\ `)."
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:79
+msgid "Модель атрибута::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:89
+msgid "Модель пост-процессора::"
+msgstr ""
+
+#: ../../general/ECOS_Records/records_syntax.rst:96
+msgid "**DataValue** - любой json тип - https://www.json.org/json-en.html"
+msgstr ""
+

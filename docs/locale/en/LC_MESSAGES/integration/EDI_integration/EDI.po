@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/EDI.rst:4
+msgid "EDI"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:7
+msgid "Основные принципы"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:9
+msgid ""
+"Интеграция с ЭДО провайдерами построена на стандартном для микросервиса "
+"интеграций механизме - синхронизациях. Это означает, что у нас есть "
+"простой способ управлять состоянием интеграции с конкретным ЭДО "
+"провайдером в рамках настроенного ящика в ECOS посредством уже готового "
+"функционала (включение/выключение чекбоксами, сброс состояния при "
+"необходимости для старта интеграции с самого начала и тд)."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:11
+msgid "Перейдем к описанию самого функционала с указанием классов."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:13
+msgid ""
+"Citeck синхронизации работают на механизме объявления реализации "
+"**SyncExecutionFactory**, которые поставляют реализации SyncExecution, в "
+"котором уже происходит шедулинг интеграции."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:15
+msgid ""
+"В нашем случае, за это ответственны классы **EdiSyncExecutionFactory** и "
+"**EdiSyncExecution**. Работу **EdiSyncExecutionFactory** рассматривать не"
+" будем, так как кроме регистрации в **SyncService** и создания "
+"**EdiSyncExecution** - никакой работы он и не делает."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:17
+msgid "Рассмотрим работу EdiSyncExecution:"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:19
+msgid "Зашедулить джобу по настройкам."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:20
+msgid ""
+"В джобе - повесить лок с помощью ShedLock. Если смог повесить лок - "
+"работа продолжается."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:21
+msgid ""
+"Собирает данные для интеграции, ищет зарегистрированную для "
+"ЭДО-провайдера из настроек ящика реализацию интерфейса "
+"EdiEventsSyncService. Если не находит - сыпет исключения. Важно отметить,"
+" что реализаций **EdiEventsSyncService** в самом микросервисе "
+"integrations на самом деле нет, как они подключаются будет описано в "
+"разделе ниже."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:22
+msgid ""
+"Делегирует работу найденному EdiEventsSyncService, передавая ему "
+"собранные ранее данные + метод-колбек для обновления состояния "
+"синхронизации."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:24
+msgid ""
+"То есть, по факту, особой работы EdiSyncExecution не делает, полезная "
+"работа выполняется за счет делегирования."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:27
+msgid "Связь сервисов-реализации с EdiSyncExecution для интеграции"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:28
+msgid ""
+"Ответ довольно прост, существует общая либа *ecos-edi-commons*, в которую"
+" вынесены основные интерфейсы интеграции и структуры данных. Таким "
+"образом, удается связать решение на уровне интерфейсов (то есть, связь "
+"такая, что интерфейс используется в микросервисе integrations, а "
+"реализация идет в сторонних либах)."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:30
+msgid ""
+"Ок, с этим разобрались, что-то реализуется, а как микросервис то получит "
+"это, если он этих зависимостей даже не имеет? Тут ответ уже сложнее. "
+"Решение основано на загрузке кода библиотек в микросервис в виде OSGi "
+"бандлов. Для более подробного изучения этого - можно почитать статью "
+":ref:`Функционал загрузки OSGI пакетов<OSGI>` (и рекомендованные статьи),"
+" а так же пример загрузки либы контур для этих целей - :ref:`Настройка "
+"получения событий с ящиком Контур_Диадок<events_kontur>`"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:32
+msgid ""
+"Рассмотрим что именно за интерфейсы и сервисы определены в ecos-edi-"
+"commons либе:"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:34
+msgid ""
+"**EdiEventsSyncService** - интерфейс, в который делегируется вся "
+"интеграция с ЭДО-провайдером."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:35
+msgid ""
+"**EdiEventsSyncServiceResolver** - класс, в котором регистрируются "
+"EdiEventsSyncService по связке **\"ЭДО-провайдер - Сервис\"** при "
+"загрузке бандла, предназначенного для интеграции с каким-то "
+"ЭДО-провайдером. Содержится в микросервисе в виде бина."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:36
+msgid ""
+"**EdiBoxService** - интерфейс для получения информации о ящике. "
+"Расширяется в основном коде микросервиса в виде бина."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:37
+msgid ""
+"**EdiApiService** - интерфейс для общения с ЭДО провайдером. Содержит "
+"методы для всех операций с ЭДО (или почти все)."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:38
+msgid ""
+"**EdiApiServiceResolver** - класс, в котором регистрируются EdiApiService"
+" по связке **\"ЭДО-провайдер - Сервис\"** при загрузке бандла, "
+"предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в "
+"микросервисе в виде бина."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:39
+msgid ""
+"**EdiService** - Класс, который содержит те же методы, что и в "
+"EdiApiService, за исключением того, что в каждый метод дополнительно "
+"передается параметр EdiProviderType. По сути, является композитным "
+"EdiApiService. Делегирует логику в конкретный EdiApiService, полученный "
+"по связке с EdiProviderType из EdiApiServiceResolver."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:40
+msgid ""
+"**EdiGenerator + дочерние интерфейсы** - интерфейсы для расширения "
+"возможностей генерации контента в ЭДО провайдерах. К примеру, может быть "
+"2 реализации генерации печатной формы: через вызов API генерации ПФ в "
+"сервисах диадока (удаленная генерация) или генерация силами ECOS "
+"(локальная). Регистрируется в EdiGeneratorResolver."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:41
+msgid ""
+"**EdiGeneratorResolver** - класс для регистрации EdiGenerator реализаций "
+"по составному ключу **\"Эдо-провайдер+Тип-генератора+вид-генератора\"**, "
+"где Эдо-провайдер - Контур или Корус, Тип генератора - Генерация печатной"
+" формы или Генерация титула покупателя, Вид генератора - Произвольная "
+"строка с символизирующая вид. Обычно, что то вроде \"локальная "
+"генерация\" или \"генерация по API\"."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:42
+msgid ""
+"**EdiStateService** - Сервис для отправки событий на обработку после "
+"получения и первичной обработки их в либе (будет рассмотрено ниже)."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:44
+msgid ""
+"Примерное взаимодействие сервисов можно изучить подробнее на `drawIO "
+"<https://app.diagrams.net/>`_ диаграмме:"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:46
+msgid ""
+"`edi_services "
+"<https://docs.google.com/document/d/1OPjXLsTkOio4ikiG_a2d7aas_0W6fUrIbDGyNKA2uyY/edit?usp=sharing>`_"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:49
+msgid "Что происходит в либах обработки и что за зверь - EdiStateService"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:50
+msgid ""
+"Либы не обрабатывают события. Они их получают исходя последнего "
+"обработанного события (хранящегося в состоянии синхронизации), составляют"
+" универсальную структуру Event, хранящуюся в либе *ecos-edi-commons* и "
+"после этого отправляет эту структуру в EdiStateService."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:52
+msgid ""
+"Структуры в *ecos-edi-commons* можно посмотреть в следующей диаграмме "
+"`drawIO <https://app.diagrams.net/>`_ :"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:54
+msgid ""
+"`edi_structures "
+"<https://docs.google.com/document/d/1zWTdASmNCthb7vuQkwz1ocGGUTYzKlldM1hXl1JdALQ/edit?usp=sharing>`_"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:56
+msgid ""
+"EdiStateService - это класс в ecos-edi-commons, который отправляет "
+"события по определенному endpoint внутри camel контекста. CamelContext "
+"отправителя и CamelContext получателя события - это, как правило, разные "
+"контексты. Подобная передача осуществляется использованием эндпоинта "
+"direct-vm типа, а не простого direct."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:58
+msgid "Таким образом, происходит следующее взаимодействие:"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:60
+msgid "Integration EDI"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:65
+msgid ", где указано по шагам:"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:67
+msgid ""
+"1 - Отправляется запрос выполнить интеграцию через Контур (или иной "
+"другой вариант ЭДО-провайдера), для какого-то ящика, от такого то события"
+" (вызов EdiEventsSyncService)."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:69
+msgid ""
+"2 - В случае найденных событий - трансформирует их в структуру Event и "
+"через EdiStateService отправляет сообщение в Camel из контекста Camel "
+"микросервиса интеграций."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:71
+msgid ""
+"3 - Camel контекст микросервиса интеграций отправляет сообщение с Event в"
+" CamelContext внутри VM, в котором зарегистрирован указанный эндпоинт. На"
+" скриншоте указано, что мы используем еще какой-то customer-lib со своим "
+"camel контекстом, но такая кастомизация нужна не всегда, в общем случае -"
+" будет использоваться сразу переход в ecos-lib."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:73
+msgid ""
+"4 - После выполнения каких-то работа в customer-lib роутах - они "
+"отправляют сообщение в CamelContext либы ecos-lib. Там происходит "
+"обновление документов, подписей и тд в альфреско путем вызовов Records "
+"API."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:75
+msgid ""
+"Стоит уточнить еще раз, customer-lib и ecos-lib - отдельные OSGi бандлы, "
+"включенные в микросервис после его старта, которые создают и стартуют "
+"Camel контекст, на роутах которого возложена связь между ними. "
+"Обязательно нужно соблюдать контракт по именованию endpoint."
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:78
+msgid "Структура Event"
+msgstr ""
+
+#: ../../integration/EDI_integration/EDI.rst:80
+msgid ""
+"Не совсем так. Нет, я не имею ввиду, что Event - это какая-то хитрая "
+"структура. Это обычный POJO, с сеттерами, геттерами, equals и тд. Однако,"
+" заполнение Event носит определенный характер. Внутри него ДОЛЖНЫ "
+"содержаться все документы, состояния которых изменены в рамках данного "
+"события. Это означает, что если обрабатываем событие \"Документ "
+"подписан\", то это означает, что должна прийти не просто подпись, а еще и"
+" информация о документе с АКТУАЛЬНЫМ статусом. Другая ситуация, если по "
+"документу типа УПД пришла корректировка УКД - это означает, что в рамках "
+"этого события придет не только УКД, но и информация о текущем новом "
+"состоянии УПД (только статус). Неизменившиеся поля, вроде контента или "
+"основанных на контенте формализованных атрибутах, которые могут быть "
+"тяжелыми при транспортировании - опускаются."
+msgstr ""
+

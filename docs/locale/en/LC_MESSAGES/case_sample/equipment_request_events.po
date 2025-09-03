@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../case_sample/equipment_request_events.rst:2
+msgid "Процесс заявки на закупку оборудования. Добавление событий BPMN"
+msgstr "Equipment purchase request process. Adding BPMN events"
+
+#: ../../case_sample/equipment_request_events.rst:5
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../case_sample/equipment_request_events.rst:9
+msgid ""
+"Данная статья является продолжением работы с созданным ранее "
+"бизнес-процессом :ref:`Заявка на закупку "
+"оборудования<sample_request_dmn>`"
+msgstr ""
+"This article continues working with the previously created business process "
+":ref:`Equipment purchase request<sample_request_dmn>`"
+
+#: ../../case_sample/equipment_request_events.rst:11
+msgid "Добавим в созданный бизнес-процесс :ref:`события<bpmn_events>`:"
+msgstr "Let's add :ref:`events<bpmn_events>` to the created business process:"
+
+#: ../../case_sample/equipment_request_events.rst:13
+msgid ""
+":ref:`Сигнал<ecos_bpmn_events>`, который запустит отдельный процесс "
+"отправки уведомления согласующему после получения заявкой статуса «На "
+"согласовании»."
+msgstr ""
+":ref:`Signal<ecos_bpmn_events>` that will launch a separate notification "
+"sending process to the approver after the request receives the \"Under "
+"approval\" status."
+
+#: ../../case_sample/equipment_request_events.rst:14
+msgid ""
+":ref:`Таймер»<ecos_bpmn_timer>`. Если согласующий не согласовал заявку в "
+"течение 30 минут, то она автоматически перейдет в статус «Отказано»."
+msgstr ""
+":ref:`Timer<ecos_bpmn_timer>`. If the approver doesn't approve the request "
+"within 30 minutes, it will automatically move to the \"Rejected\" status."
+
+#: ../../case_sample/equipment_request_events.rst:22
+msgid "Сигнал"
+msgstr "Signal"
+
+#: ../../case_sample/equipment_request_events.rst:24
+msgid ""
+"Между компонентами **Статус «На согласовании»** и **Пользовательская "
+"задача «На согласовании согласующим»** необходимо добавить промежуточное "
+"событие :ref:`«Сигнал»<ecos_bpmn_events>`"
+msgstr ""
+"Between the **Status \"Under approval\"** and **User task \"Under approval "
+"by approver\"** components, add an intermediate :ref:`\"Signal\"<ecos_bpmn_events>` "
+"event"
+
+#: ../../case_sample/equipment_request_events.rst:30
+msgid "Далее выбрать его тип **Signal Intermediate Throw event**:"
+msgstr "Then select its type **Signal Intermediate Throw event**:"
+
+#: ../../case_sample/equipment_request_events.rst:36
+#: ../../case_sample/equipment_request_events.rst:153
+msgid "Укажите свойства события:"
+msgstr "Specify the event properties:"
+
+#: ../../case_sample/equipment_request_events.rst:38
+msgid "Имя - **Отправить уведомление**"
+msgstr "Name - **Send notification**"
+
+#: ../../case_sample/equipment_request_events.rst:39
+msgid "Имя сигнала - **sendEmail**,"
+msgstr "Signal name - **sendEmail**,"
+
+#: ../../case_sample/equipment_request_events.rst:40
+#: ../../case_sample/equipment_request_events.rst:62
+msgid "Фильтр события по документу – **Текущий документ**"
+msgstr "Event filter by document - **Current document**"
+
+#: ../../case_sample/equipment_request_events.rst:46
+msgid ""
+"И далее добавьте :ref:`событийный подпроцесс «Сигнал»<event_subprocess>` "
+"- подпроцесс, запускаемый событием. Для создания событийного подпроцесса "
+"создайте сначала стандартный подпроцесс. И далее выберите **Event Sub "
+"Process**:"
+msgstr ""
+"And then add a :ref:`\"Signal\" event subprocess<event_subprocess>` - a "
+"subprocess triggered by an event. To create an event subprocess, first "
+"create a standard subprocess. Then select **Event Sub Process**:"
+
+#: ../../case_sample/equipment_request_events.rst:52
+msgid ""
+"В подпроцессе измените **Start event** на **Signal Start event (non-"
+"interrupting)**:"
+msgstr ""
+"In the subprocess, change **Start event** to **Signal Start event (non-"
+"interrupting)**:"
+
+#: ../../case_sample/equipment_request_events.rst:58
+msgid "Со следующими свойствами:"
+msgstr "With the following properties:"
+
+#: ../../case_sample/equipment_request_events.rst:60
+msgid "Чекбокс **Ручная настройка**"
+msgstr "Checkbox **Manual configuration**"
+
+#: ../../case_sample/equipment_request_events.rst:61
+msgid "Имя сигнала – **sendEmail**"
+msgstr "Signal name - **sendEmail**"
+
+#: ../../case_sample/equipment_request_events.rst:68
+msgid "К начальному событию добавьте компонент :ref:`Уведомление<notification>`:"
+msgstr "Add a :ref:`Notification<notification>` component to the start event:"
+
+#: ../../case_sample/equipment_request_events.rst:74
+msgid "со следующими свойствами:"
+msgstr "with the following properties:"
+
+#: ../../case_sample/equipment_request_events.rst:76
+msgid "Имя – **Уведомление согласующему**"
+msgstr "Name - **Notification to approver**"
+
+#: ../../case_sample/equipment_request_events.rst:77
+msgid "Заголовок – **Согласуйте заявку**"
+msgstr "Title - **Approve the request**"
+
+#: ../../case_sample/equipment_request_events.rst:78
+msgid "Тело сообщения – **Согласуйте заявку на покупку оборудования**"
+msgstr "Message body - **Please approve the equipment purchase request**"
+
+#: ../../case_sample/equipment_request_events.rst:79
+msgid "Кому – **Согласующий**"
+msgstr "To - **Approver**"
+
+#: ../../case_sample/equipment_request_events.rst:85
+msgid "Добавьте **End Event** компонент **(1)**:"
+msgstr "Add an **End Event** component **(1)**:"
+
+#: ../../case_sample/equipment_request_events.rst:91
+#: ../../case_sample/equipment_request_events.rst:168
+msgid "**Опубликуйте** бизнес-процесс **(2)**."
+msgstr "**Publish** the business process **(2)**."
+
+#: ../../case_sample/equipment_request_events.rst:93
+#: ../../case_sample/equipment_request_events.rst:170
+msgid ""
+"Для проверки создайте заявку, чтобы процесс пошел по ветке с "
+"согласованием сотрудником. Для этого укажите любое другое название "
+"оборудования, не указанное в таблице, или укажите:"
+msgstr ""
+"To test, create a request so the process follows the branch with employee "
+"approval. For this, specify any other equipment name not listed in the "
+"table, or specify:"
+
+#: ../../case_sample/equipment_request_events.rst:95
+#: ../../case_sample/equipment_request_events.rst:172
+msgid "Название оборудование – **Ноутбук**"
+msgstr "Equipment name - **Laptop**"
+
+#: ../../case_sample/equipment_request_events.rst:96
+#: ../../case_sample/equipment_request_events.rst:173
+msgid "Стоимость - **65000**"
+msgstr "Cost - **65000**"
+
+#: ../../case_sample/equipment_request_events.rst:97
+#: ../../case_sample/equipment_request_events.rst:174
+msgid "Инициатор – **текущий пользователь**"
+msgstr "Initiator - **current user**"
+
+#: ../../case_sample/equipment_request_events.rst:98
+#: ../../case_sample/equipment_request_events.rst:175
+msgid ""
+"Согласующий – **любой пользователь, у которого в профиле указан "
+"электронный адрес.**"
+msgstr ""
+"Approver - **any user who has an email address specified in their profile.**"
+
+#: ../../case_sample/equipment_request_events.rst:100
+msgid ""
+"Если вы установили Citeck, используя :ref:`кроссплатформенный "
+"лончер<citeck_launcher>`, то перейдите в Mailhog:"
+msgstr ""
+"If you installed Citeck using the :ref:`cross-platform "
+"launcher<citeck_launcher>`, then go to Mailhog:"
+
+#: ../../case_sample/equipment_request_events.rst:106
+msgid ""
+"**Mailhog** - инструмент для тестирования и отладки электронной почты, "
+"представляет собой интерфейс для просмотра писем без реальной отправки на"
+" почтовые серверы:"
+msgstr ""
+"**Mailhog** - a tool for testing and debugging email, provides an interface "
+"for viewing emails without actually sending them to mail servers:"
+
+#: ../../case_sample/equipment_request_events.rst:112
+msgid "Откройте письмо:"
+msgstr "Open the email:"
+
+#: ../../case_sample/equipment_request_events.rst:118
+msgid ""
+"Так же для проверки созданного уведомления можно перейти в рабочее "
+"пространство администратора. В разделе **Конфигурация уведомлений** "
+"перейдите в пункт **Уведомления**:"
+msgstr ""
+"You can also go to the administrator workspace to check the created "
+"notification. In the **Notification Configuration** section, go to "
+"**Notifications**:"
+
+#: ../../case_sample/equipment_request_events.rst:120
+msgid "Нажмите:"
+msgstr "Click:"
+
+#: ../../case_sample/equipment_request_events.rst:126
+msgid ""
+"Откроется форма уведомления. В данных уведомления указано всё то, что мы "
+"настраивали в компоненте **Send task**:"
+msgstr ""
+"The notification form will open. The notification data shows everything we "
+"configured in the **Send task** component:"
+
+#: ../../case_sample/equipment_request_events.rst:133
+msgid "Таймер"
+msgstr "Timer"
+
+#: ../../case_sample/equipment_request_events.rst:135
+msgid ""
+"К компоненту **Пользовательская задача «На согласовании согласующим»** "
+"необходимо добавить промежуточное событие "
+":ref:`«Таймер»<ecos_bpmn_timer>`:"
+msgstr ""
+"Add an intermediate :ref:`\"Timer\"<ecos_bpmn_timer>` event to the **User "
+"task \"Under approval by approver\"** component:"
+
+#: ../../case_sample/equipment_request_events.rst:141
+msgid ""
+"Далее перенесите событие на компонент **Пользовательская задача «На "
+"согласовании согласующим»**:"
+msgstr ""
+"Then drag the event onto the **User task \"Under approval by approver\"** "
+"component:"
+
+#: ../../case_sample/equipment_request_events.rst:147
+msgid "Выберите **Timer Boundary Event**:"
+msgstr "Select **Timer Boundary Event**:"
+
+#: ../../case_sample/equipment_request_events.rst:155
+msgid "Тип – **Дата**"
+msgstr "Type - **Date**"
+
+#: ../../case_sample/equipment_request_events.rst:156
+msgid ""
+"Значение – **PT30M** В формате `ISO 8601 "
+"<https://en.wikipedia.org/wiki/ISO_8601>`_ **PT30M - 30 минут**. Подробно"
+" о :ref:`формате<time_format>`"
+msgstr ""
+"Value - **PT30M** In `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ "
+"format **PT30M - 30 minutes**. Details about :ref:`format<time_format>`"
+
+#: ../../case_sample/equipment_request_events.rst:162
+msgid "Поток от таймера отведите к **gateway (1)**:"
+msgstr "Route the flow from the timer to the **gateway (1)**:"
+
+#: ../../case_sample/equipment_request_events.rst:177
+msgid ""
+"Когда процесс дойдет до согласования согласующим, не выносите решение по "
+"задаче – через 30 минут заявка будет автоматически переведена в статус "
+"**«Отказано»**."
+msgstr ""
+"When the process reaches the approver's approval, don't make a decision on "
+"the task - after 30 minutes the request will automatically be moved to the "
+"**\"Rejected\"** status."
+
+#: ../../case_sample/equipment_request_events.rst:179
+msgid "Весь процесс финально:"
+msgstr "The complete final process:"
