@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-28 23:55+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2025-08-28 23:55+0300\n"
+"Last-Translator: Your Name <your.email@example.com>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -21,23 +20,23 @@ msgstr ""
 
 #: ../../admin/configuration.rst:2
 msgid "Конфигурация"
-msgstr ""
+msgstr "Configuration"
 
 #: ../../admin/configuration.rst:5
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../admin/configuration.rst:7
 msgid "Конфигурация в Citeck делится на два основных уровня:"
-msgstr ""
+msgstr "Configuration in Citeck is divided into two main levels:"
 
 #: ../../admin/configuration.rst:9 ../../admin/configuration.rst:15
 msgid "Системный уровень"
-msgstr ""
+msgstr "System level"
 
 #: ../../admin/configuration.rst:10 ../../admin/configuration.rst:35
 msgid "Уровень администратора"
-msgstr ""
+msgstr "Administrator level"
 
 #: ../../admin/configuration.rst:17
 msgid ""
@@ -46,12 +45,18 @@ msgid ""
 "(параметры подключение к БД, настройки для включения/отключения сервисов "
 "в приложении и др)."
 msgstr ""
+"This configuration level is necessary for setting low-level "
+"parameters that are not expected to be changed during application operation "
+"(database connection parameters, settings for enabling/disabling services "
+"in the application, etc.)."
 
 #: ../../admin/configuration.rst:20
 msgid ""
 "Конфигурация системного уровня настраивается средствами Spring Cloud - "
 "https://spring.io/projects/spring-cloud"
 msgstr ""
+"System-level configuration is configured using Spring Cloud tools - "
+"https://spring.io/projects/spring-cloud"
 
 #: ../../admin/configuration.rst:22
 msgid ""
@@ -59,16 +64,20 @@ msgid ""
 "настройках директорий и распространяет эту конфигурацию по всем "
 "приложениям."
 msgstr ""
+"The ecos-registry container loads configuration from the specified "
+"directories at startup and distributes this configuration to all "
+"applications."
 
 #: ../../admin/configuration.rst:25
 msgid "Настройка ecos-registry через переменные среды::"
-msgstr ""
+msgstr "Configuring ecos-registry through environment variables::"
 
 #: ../../admin/configuration.rst:30
 msgid ""
 "Путь во втором параметре указывает на место, откуда будет загружаться "
 "конфигурация"
 msgstr ""
+"The path in the second parameter indicates where the configuration will be loaded from"
 
 #: ../../admin/configuration.rst:37
 msgid ""
@@ -77,45 +86,56 @@ msgid ""
 "значения как в коде так и в интерфейсе для изменения параметров без "
 "перезагрузки сервера."
 msgstr ""
+"**ECOS Configuration** is an artifact that allows describing "
+"some system parameters with the ability to conveniently use their "
+"values both in code and in the interface to change parameters without "
+"server restart."
 
 #: ../../admin/configuration.rst:39
 msgid "Расположение артефактов: ``resources/eapps/artifacts/app/config``"
-msgstr ""
+msgstr "Artifact location: ``resources/eapps/artifacts/app/config``"
 
 #: ../../admin/configuration.rst:41
 msgid "Поддерживаемые форматы: **yml**, **yaml**, **json**"
-msgstr ""
+msgstr "Supported formats: **yml**, **yaml**, **json**"
 
 #: ../../admin/configuration.rst:43
 msgid "Ответственный за хранение и управление микросервис: **ecos-apps**"
-msgstr ""
+msgstr "Microservice responsible for storage and management: **ecos-apps**"
 
 #: ../../admin/configuration.rst:45
 msgid "Можно использовать: в любом приложении"
-msgstr ""
+msgstr "Can be used: in any application"
 
 #: ../../admin/configuration.rst:47
 msgid ""
 "Доступ в интерфейсе есть у администраторов: **\"Конфигурация\" (Рабочее "
 "пространство \"Раздел администратора\" - Управление системой)**:"
 msgstr ""
+"Interface access is available to administrators: **\"Configuration\" (Workspace "
+"\"Administrator Section\" - System Management)**:"
 
 #: ../../admin/configuration.rst:53
 msgid ""
 "Журнал доступен по адресу: ``v2/admin?journalId=ecos-"
 "configs&type=JOURNAL``"
 msgstr ""
+"Journal is available at: ``v2/admin?journalId=ecos-"
+"configs&type=JOURNAL``"
 
 #: ../../admin/configuration.rst:55
 msgid "Примеры конфигураций:"
-msgstr ""
+msgstr "Configuration examples:"
 
 #: ../../admin/configuration.rst:75
 msgid ""
 "Чтобы воспользоваться этой конфигурацией в коде мы можем установить "
-"аннотацию ``@EcosConfig(“идентификатор_конфигурации”)`` на поле или "
+"аннотацию ``@EcosConfig("идентификатор_конфигурации")`` на поле или "
 "метод, куда нужно поместить значение конфигурации."
 msgstr ""
+"To use this configuration in code, we can set the "
+"annotation ``@EcosConfig("configuration_identifier")`` on a field or "
+"method where the configuration value should be placed."
 
 #: ../../admin/configuration.rst:77
 msgid ""
@@ -123,10 +143,13 @@ msgid ""
 "обновлению значения поля или вызову метода, который был помечен "
 "аннотацией ``@EcosConfig``."
 msgstr ""
+"Any configuration changes in the interface will lead to automatic "
+"updating of the field value or calling the method that was marked "
+"with the ``@EcosConfig`` annotation."
 
 #: ../../admin/configuration.rst:79
 msgid "Пример:"
-msgstr ""
+msgstr "Example:"
 
 #: ../../admin/configuration.rst:120
 msgid ""
@@ -134,42 +157,49 @@ msgid ""
 "некоторому бину (может потребоваться там где нет spring контекста), то "
 "можно использовать сервис **BeanConsumerService**."
 msgstr ""
+"If it's necessary to manually apply configuration based on annotations to "
+"some bean (may be required where there is no Spring context), then "
+"you can use the **BeanConsumerService** service."
 
 #: ../../admin/configuration.rst:122
 msgid "Пример теста:"
-msgstr ""
+msgstr "Test example:"
 
 #: ../../admin/configuration.rst:169
 msgid "Создание нового конфига"
-msgstr ""
+msgstr "Creating a new config"
 
 #: ../../admin/configuration.rst:171
 msgid ""
 "Для создания нового конфига нужно создать **yaml файл** по пути "
 "``src/main/resources/eapps/artifacts/app/config``"
 msgstr ""
+"To create a new config, you need to create a **yaml file** at the path "
+"``src/main/resources/eapps/artifacts/app/config``"
 
 #: ../../admin/configuration.rst:173
 msgid "Например, **telegram-authtoken.yml**"
-msgstr ""
+msgstr "For example, **telegram-authtoken.yml**"
 
 #: ../../admin/configuration.rst:175
 msgid "С таким содержание:"
-msgstr ""
+msgstr "With the following content:"
 
 #: ../../admin/configuration.rst:185
 msgid ""
 "При старте конфиг будет создан и появится журнале **\"Конфигурация "
 "ECOS\"**."
 msgstr ""
+"At startup, the config will be created and appear in the **\"ECOS "
+"Configuration\"** journal."
 
 #: ../../admin/configuration.rst:187
 msgid "Считать этот параметр можно:"
-msgstr ""
+msgstr "This parameter can be read:"
 
 #: ../../admin/configuration.rst:189
 msgid "Повесив аннотацию на поле:"
-msgstr ""
+msgstr "By placing an annotation on a field:"
 
 #: ../../admin/configuration.rst:196
 msgid ""
@@ -178,64 +208,78 @@ msgid ""
 "при смене конфига (если нужно отслеживать изменение конфига без "
 "перезапуска)."
 msgstr ""
+"Instead of a field, you can create a method ``setAuthToken(String "
+"telegramAuthorizationToken)`` with the same annotation, and it will be called "
+"when the config changes (if you need to track config changes without "
+"restart)."
 
 #: ../../admin/configuration.rst:199
 msgid "Общая архитектура работы конфигураций"
-msgstr ""
+msgstr "General configuration architecture"
 
 #: ../../admin/configuration.rst:205
 msgid "**TargetBean** - это целевой бин с аннотациями ``@EcosConfig``;"
-msgstr ""
+msgstr "**TargetBean** - target bean with ``@EcosConfig`` annotations;"
 
 #: ../../admin/configuration.rst:206
 msgid "**resources** - это папка ресурсов в приложении;"
-msgstr ""
+msgstr "**resources** - resources folder in the application;"
 
 #: ../../admin/configuration.rst:207
 msgid ""
 "**some-config.yml** - некоторый конфиг в директории "
 "``resources/eapps/artifacts/app/config``;"
 msgstr ""
+"**some-config.yml** - some config in the directory "
+"``resources/eapps/artifacts/app/config``;"
 
 #: ../../admin/configuration.rst:208
 msgid ""
 "**Artifacts Source** - источник артефактов, который загружает артефакты "
 "из папки ``resources/eapps/artifacts``;"
 msgstr ""
+"**Artifacts Source** - artifact source that loads artifacts "
+"from the ``resources/eapps/artifacts`` folder;"
 
 #: ../../admin/configuration.rst:209
 msgid "**EcosConfigService** - сервис конфигураций;"
-msgstr ""
+msgstr "**EcosConfigService** - configuration service;"
 
 #: ../../admin/configuration.rst:211
 msgid "Получение конфигурации при старте системы:"
-msgstr ""
+msgstr "Getting configuration at system startup:"
 
 #: ../../admin/configuration.rst:213
 msgid "Подключаемся к Zookeeper и проверяем актуальное значение конфигурации там."
-msgstr ""
+msgstr "Connect to Zookeeper and check the current configuration value there."
 
 #: ../../admin/configuration.rst:215
 msgid ""
 "Если значение в Zookeeper отсутствует, то загружаем значение из "
 "**Artifacts Source** (т.е. напрямую из classpath);"
 msgstr ""
+"If the value in Zookeeper is missing, load the value from "
+"**Artifacts Source** (i.e., directly from classpath);"
 
 #: ../../admin/configuration.rst:216
 msgid "Если значение найдено, то загружаем его;"
-msgstr ""
+msgstr "If the value is found, load it;"
 
 #: ../../admin/configuration.rst:218
 msgid ""
 "Все конфигурации, которое есть в app/config отправляются на микросервис "
 "ecos-apps через RabbitMQ (стандартный механизм деплоя артефактов);"
 msgstr ""
+"All configurations in app/config are sent to the ecos-apps microservice "
+"via RabbitMQ (standard artifact deployment mechanism);"
 
 #: ../../admin/configuration.rst:219
 msgid ""
 "Микросервис ecos-apps сохраняет конфигурации у себя в таблице, чтобы в "
 "дальнейшем можно было работать с ними через интерфейс (UI);"
 msgstr ""
+"The ecos-apps microservice stores configurations in its table so that "
+"they can be worked with through the interface (UI) in the future;"
 
 #: ../../admin/configuration.rst:221
 msgid ""
@@ -243,12 +287,17 @@ msgid ""
 "сравнивается версия конфига. Если новая версия совпадает или меньше "
 "текущей, то поле value в таблице не меняется;"
 msgstr ""
+"If the table already has a configuration with the same scope and id, then "
+"the config version is compared. If the new version matches or is less than "
+"the current one, the value field in the table does not change;"
 
 #: ../../admin/configuration.rst:223
 msgid ""
 "После того как поле value у конфигурации в ecos-apps обновилось, "
 "микросервис отправляет новое значение в Zookeeper;"
 msgstr ""
+"After the value field of the configuration in ecos-apps is updated, "
+"the microservice sends the new value to Zookeeper;"
 
 #: ../../admin/configuration.rst:224
 msgid ""
@@ -256,20 +305,24 @@ msgid ""
 " там меняется значение мы его тут же применяем ко всем слушателям "
 "конфигурации."
 msgstr ""
+"Our application is subscribed to data change events in Zookeeper and when "
+"a value changes there, we immediately apply it to all configuration listeners."
 
 #: ../../admin/configuration.rst:226
 msgid ""
 "Когда пользователь в интерфейсе меняет значение конфигурации, то логика "
 "аналогична пунктам 3-5, но без проверки версии."
 msgstr ""
+"When a user changes a configuration value in the interface, the logic "
+"is similar to points 3-5, but without version checking."
 
 #: ../../admin/configuration.rst:229
 msgid "Формы для конфигураций [rc5+]"
-msgstr ""
+msgstr "Forms for configurations [rc5+]"
 
 #: ../../admin/configuration.rst:231
 msgid "Для конфигураций есть автогенерация форм на основе значения valueDef:"
-msgstr ""
+msgstr "For configurations, there is auto-generation of forms based on the valueDef value:"
 
 #: ../../admin/configuration.rst:233
 msgid ""
@@ -277,14 +330,17 @@ msgid ""
 "ссылку на форму следующего вида - ``uiserv/form@config${{config-scope"
 "}}${{config-id}}``, где"
 msgstr ""
+"The configuration entity has an attribute ``_formRef`` that returns "
+"a reference to a form of the following type - ``uiserv/form@config${{config-scope"
+"}}${{config-id}}``, where"
 
 #: ../../admin/configuration.rst:235
 msgid "{{config-scope}} - область конфигурации"
-msgstr ""
+msgstr "{{config-scope}} - configuration scope"
 
 #: ../../admin/configuration.rst:237
 msgid "{{config-id}} - идентификатор конфигурации"
-msgstr ""
+msgstr "{{config-id}} - configuration identifier"
 
 #: ../../admin/configuration.rst:239
 msgid ""
@@ -292,6 +348,9 @@ msgid ""
 "он в свою очередь по префиксу ``config$`` понимает, что форму необходимо "
 "вычислить. Вычисление происходит в **ConfigFormsProvider**"
 msgstr ""
+"With this form reference, the UI sends a form request to **ecos-uiserv** and "
+"it in turn understands by the ``config$`` prefix that the form needs to be "
+"computed. The computation happens in **ConfigFormsProvider**"
 
 #: ../../admin/configuration.rst:241
 msgid ""
@@ -299,22 +358,29 @@ msgid ""
 " можно использовать поле **valueDef.formRef** для указания ссылки на "
 "любую реальную форму."
 msgstr ""
+"If the configuration needs a form with its own set of fields and logic, then "
+"you can use the **valueDef.formRef** field to specify a reference to "
+"any real form."
 
 #: ../../admin/configuration.rst:244
 msgid "Область (scope)"
-msgstr ""
+msgstr "Scope"
 
 #: ../../admin/configuration.rst:246
 msgid ""
 "Вся конфигурация имеет scope, который описывает разные области для "
 "исключения влияния конфигурации в разных микросервисах друг на друга."
 msgstr ""
+"All configuration has a scope that describes different areas to "
+"exclude the influence of configuration in different microservices on each other."
 
 #: ../../admin/configuration.rst:248
 msgid ""
 "По умолчанию scope равен **app/{{webapp_name}}**, где **{{webapp_name}}**"
 " - это системное имя приложения."
 msgstr ""
+"By default, the scope is **app/{{webapp_name}}**, where **{{webapp_name}}**"
+" is the system application name."
 
 #: ../../admin/configuration.rst:250
 msgid ""
@@ -322,47 +388,59 @@ msgid ""
 "считать только связку scope + config_id (т.е. один и тот же config_id "
 "может использоваться в разных областях)."
 msgstr ""
+"Thus, the unique identifier of a configuration in the system can only be "
+"considered the combination of scope + config_id (i.e., the same config_id "
+"can be used in different scopes)."
 
 #: ../../admin/configuration.rst:253
 msgid "Модель"
-msgstr ""
+msgstr "Model"
 
 #: ../../admin/configuration.rst:267
 msgid "**ConfigValueType**  - одно из следующих значений:"
-msgstr ""
+msgstr "**ConfigValueType** - one of the following values:"
 
 #: ../../admin/configuration.rst:284
 msgid "Версия конфигурации"
-msgstr ""
+msgstr "Configuration version"
 
 #: ../../admin/configuration.rst:286
 msgid "В конфигурации Citeck есть поле версии, которое нужно для:"
-msgstr ""
+msgstr "Citeck configuration has a version field that is needed for:"
 
 #: ../../admin/configuration.rst:288
 msgid ""
 "Защиты от случайного затирания значения, которое настроено в системе "
 "вручную;"
 msgstr ""
+"Protection against accidental overwriting of values that are configured in the system "
+"manually;"
 
 #: ../../admin/configuration.rst:290
 msgid ""
 "Для возможности поменять значение по умолчанию для новых разворачиваемых "
 "систем;"
 msgstr ""
+"To be able to change the default value for newly deployed "
+"systems;"
 
 #: ../../admin/configuration.rst:292
 msgid ""
 "Для возможности принудительно поменять значение, которое изменили в "
 "системе вручную."
 msgstr ""
+"To be able to forcibly change values that were changed in "
+"the system manually."
 
 #: ../../admin/configuration.rst:294
 msgid ""
-"Обновление поля value в уже задеплоеной конфигурации при загрузке новой "
+"Обновление поле value в уже задеплоеной конфигурации при загрузке новой "
 "версии артефакта происходит только если поле **version** у нового конфига"
 " больше чем то что сохранено в БД."
 msgstr ""
+"Updating the value field in an already deployed configuration when loading a new "
+"version of the artifact only happens if the **version** field of the new config"
+" is greater than what is stored in the database."
 
 #: ../../admin/configuration.rst:296
 msgid ""
@@ -371,16 +449,22 @@ msgid ""
 "но version оставим старым, то в системе значение конфига останется "
 "прежним)."
 msgstr ""
+"When using patches for configuration artifacts, you should also "
+"consider the impact of the **version** field (i.e., if we only change value, "
+"but leave version old, then the config value in the system will remain "
+"the same)."
 
 #: ../../admin/configuration.rst:299
 msgid "Config Provider"
-msgstr ""
+msgstr "Config Provider"
 
 #: ../../admin/configuration.rst:301
 msgid ""
 "Вся конфигурация в сервисе EcosConfigService получается из провайдеров, "
 "которые имеют следующий интерфейс:"
 msgstr ""
+"All configuration in the EcosConfigService is obtained from providers, "
+"which have the following interface:"
 
 #: ../../admin/configuration.rst:312
 msgid ""
@@ -388,32 +472,38 @@ msgid ""
 "**EcosConfigService** отдает не-null значение из провайдера с наименьшим "
 "значением **getOrder()**"
 msgstr ""
+"All providers are sorted by the **getOrder()** value and ultimately "
+"**EcosConfigService** returns a non-null value from the provider with the smallest "
+"**getOrder()** value"
 
 #: ../../admin/configuration.rst:314
 msgid "Стандартные провайдеры:"
-msgstr ""
+msgstr "Standard providers:"
 
 #: ../../admin/configuration.rst:316
 msgid "**ArtifactsConfigProvider** - конфигурация загружается из classpath;"
-msgstr ""
+msgstr "**ArtifactsConfigProvider** - configuration is loaded from classpath;"
 
 #: ../../admin/configuration.rst:317
 msgid ""
 "**InMemConfigProvider** - in-memory провайдер. В основном используется "
 "для тестов;"
 msgstr ""
+"**InMemConfigProvider** - in-memory provider. Mainly used "
+"for tests;"
 
 #: ../../admin/configuration.rst:318
 msgid "**ZkConfigProvider** - провайдер на основе Zookeeper."
-msgstr ""
+msgstr "**ZkConfigProvider** - provider based on Zookeeper."
 
 #: ../../admin/configuration.rst:321
 msgid "Обновление значения через патч Citeck"
-msgstr ""
+msgstr "Updating values via Citeck patch"
 
 #: ../../admin/configuration.rst:323
 msgid ""
 "Нужно разместить подобный some-patch.yml в директории "
 "``resources/eapps/artifacts/app/patch``:"
 msgstr ""
-
+"You need to place a similar some-patch.yml in the directory "
+"``resources/eapps/artifacts/app/patch``:"

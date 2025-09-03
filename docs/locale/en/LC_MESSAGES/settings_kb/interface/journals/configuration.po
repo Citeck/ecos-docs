@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../settings_kb/interface/journals/configuration.rst:2
 msgid "Конфигурация журналов"
-msgstr ""
+msgstr "Journals Configuration"
 
 #: ../../settings_kb/interface/journals/configuration.rst:4
 msgid ""
@@ -29,30 +29,33 @@ msgid ""
 "журналов можно посмотреть в системных журналах → :guilabel:`Журналы`. "
 "Варианты создания записи берутся из связанного типа."
 msgstr ""
+"Journal configuration is stored in ``ecos-uiserv``. The list of loaded journals can be viewed in System Logs → :guilabel:`Journals`. Record creation options are taken from the associated type."
 
 #: ../../settings_kb/interface/journals/configuration.rst:7
 msgid ""
 "Для добавления нового журнала нужно описать тип, для которого будет "
 "описан журнал **Типы кейсов**."
 msgstr ""
+"To add a new journal, you need to describe the type for which the journal will be described in **Case Types**."
 
 #: ../../settings_kb/interface/journals/configuration.rst:8
 msgid ""
 "Затем добавляем ``yml`` (предпочтительнее) или ``json`` конфигурацию в "
 "любом микросервисе по пути **eapps/artifacts/ui/journal**."
 msgstr ""
+"Then add a ``yml`` (preferred) or ``json`` configuration in any microservice at the path **eapps/artifacts/ui/journal**."
 
 #: ../../settings_kb/interface/journals/configuration.rst:10
 msgid "**Примеры**"
-msgstr ""
+msgstr "**Examples**"
 
 #: ../../settings_kb/interface/journals/configuration.rst:12
 msgid "Журнал с дашбордами:"
-msgstr ""
+msgstr "Journal with dashboards:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:36
 msgid "Использование свойств записи в качестве конфигурации"
-msgstr ""
+msgstr "Using Record Properties as Configuration"
 
 #: ../../settings_kb/interface/journals/configuration.rst:38
 #, python-brace-format
@@ -62,14 +65,15 @@ msgid ""
 "возможностью достаточно в конфигурации указать значение необходимого "
 "свойства с помощью ${...}"
 msgstr ""
+"Journals provide the capability to use record attributes for configuring formatters and editors. To use this capability, simply specify the value of the required property in the configuration using ${...}"
 
 #: ../../settings_kb/interface/journals/configuration.rst:41
 msgid "Пример"
-msgstr ""
+msgstr "Example"
 
 #: ../../settings_kb/interface/journals/configuration.rst:54
 msgid "Использование свойств связанных сущностей для форматирования ячейки"
-msgstr ""
+msgstr "Using Related Entity Properties for Cell Formatting"
 
 #: ../../settings_kb/interface/journals/configuration.rst:56
 msgid ""
@@ -77,26 +81,29 @@ msgid ""
 "мы хотим отформатировать каждую связанную сущность используя её поля, то "
 "можно воспользоваться следующей конфигурацией колонки:"
 msgstr ""
+"If we have an association (multiple or not, it doesn't matter) and we want to format each related entity using its fields, we can use the following column configuration:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:68
 msgid ""
 "Здесь attSchema - это перечисление внутренних атрибутов, которые нужно "
 "загрузить у связанных сущностей"
 msgstr ""
+"Here, attSchema is an enumeration of the internal attributes that need to be loaded for the related entities."
 
 #: ../../settings_kb/interface/journals/configuration.rst:70
 msgid ""
 "Итоговый запрос для атрибута ``some-assoc-attribute`` формируется из "
 "следующих частей:"
 msgstr ""
+"The final query for the attribute ``some-assoc-attribute`` is formed from the following parts:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:72
 msgid "``some-assoc-attribute`` // id колонки или если есть, то attribute"
-msgstr ""
+msgstr "``some-assoc-attribute`` // column id or, if present, the attribute"
 
 #: ../../settings_kb/interface/journals/configuration.rst:73
 msgid "``[]`` // добавляется к части из п.1 в конец если multiple == true"
-msgstr ""
+msgstr "``[]`` // appended to the part from item 1 if multiple == true"
 
 #: ../../settings_kb/interface/journals/configuration.rst:74
 #, python-brace-format
@@ -105,22 +112,24 @@ msgid ""
 "какие скаляры мы подгружаем для атрибута (для ассоциаций это ?assoc и "
 "?disp)"
 msgstr ""
+"``{value:?assoc,disp:?disp}`` // based on the column type, determines which scalars we load for the attribute (for associations, these are ?assoc and ?disp)"
 
 #: ../../settings_kb/interface/journals/configuration.rst:76
 #, python-brace-format
 msgid "Получаем в итоге: ``some-assoc-attribute[]{value:?assoc,disp:?disp}``"
-msgstr ""
+msgstr "We end up with: ``some-assoc-attribute[]{value:?assoc,disp:?disp}``"
 
 #: ../../settings_kb/interface/journals/configuration.rst:78
 msgid ""
 "Пункт 3 можно переопределить параметром attSchema и в примере выше будет "
 "загружаются следующий атрибут:"
 msgstr ""
+"Item 3 can be overridden by the attSchema parameter, and in the example above, the following attribute will be loaded:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:80
 #, python-brace-format
 msgid "``some-assoc-attribute[]{field0,field1}``"
-msgstr ""
+msgstr "``some-assoc-attribute[]{field0,field1}``"
 
 #: ../../settings_kb/interface/journals/configuration.rst:82
 msgid ""
@@ -128,19 +137,20 @@ msgid ""
 "доступны под именем field0 и field1. Вариант с алиасами будет выглядеть "
 "следующим образом:"
 msgstr ""
+"According to RecordsAPI rules, if aliases for values are not specified, they will be available under the names field0 and field1. The version with aliases would look like this:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:85
 #, python-brace-format
 msgid "``some-assoc-attribute[]{alias0:field0,alias1:field1}``"
-msgstr ""
+msgstr "``some-assoc-attribute[]{alias0:field0,alias1:field1}``"
 
 #: ../../settings_kb/interface/journals/configuration.rst:87
 msgid "При загрузке такого атрибута мы получим результат в следующем формате:"
-msgstr ""
+msgstr "When loading such an attribute, we will get a result in the following format:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:105
 msgid "Вычисляемые свойства"
-msgstr ""
+msgstr "Computed Properties"
 
 #: ../../settings_kb/interface/journals/configuration.rst:107
 msgid ""
@@ -150,18 +160,19 @@ msgid ""
 "(computed), которые описываются для колонки или для конфига журнала в "
 "целом."
 msgstr ""
+"There are often situations where filters, formatters, or editors require additional data that may be loaded from a remote server. For such cases, computed properties are provided, which are described for a column or for the journal configuration as a whole."
 
 #: ../../settings_kb/interface/journals/configuration.rst:110
 msgid "Все вычисляемые свойства делятся на два уровня:"
-msgstr ""
+msgstr "All computed properties are divided into two levels:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:112
 msgid "Уровень конфигурации"
-msgstr ""
+msgstr "Configuration Level"
 
 #: ../../settings_kb/interface/journals/configuration.rst:113
 msgid "Уровень записи"
-msgstr ""
+msgstr "Record Level"
 
 #: ../../settings_kb/interface/journals/configuration.rst:115
 #, python-brace-format
@@ -175,92 +186,94 @@ msgid ""
 "конфигурации и сервис может вычислить это свойство только один раз при "
 "первом открытии журнала."
 msgstr ""
+"The configuration level means that the property can be computed independently of the records displayed in the journal. The record level relies on record attributes for its computations. If the computed property configuration contains ${...} inserts, it is assumed to be a record-level property and needs to be computed separately for each row in the journal. If there are no such inserts, it is a configuration level, and the service can compute this property only once when the journal is first opened."
 
 #: ../../settings_kb/interface/journals/configuration.rst:121
 msgid "Список поддерживаемых вычисляемых свойств"
-msgstr ""
+msgstr "List of Supported Computed Properties"
 
 #: ../../settings_kb/interface/journals/configuration.rst:124
 msgid "Название"
-msgstr ""
+msgstr "Name"
 
 #: ../../settings_kb/interface/journals/configuration.rst:125
 msgid "Свойства"
-msgstr ""
+msgstr "Properties"
 
 #: ../../settings_kb/interface/journals/configuration.rst:126
 msgid "Описание"
-msgstr ""
+msgstr "Description"
 
 #: ../../settings_kb/interface/journals/configuration.rst:127
 msgid "attributes"
-msgstr ""
+msgstr "attributes"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "``record: String`` запись, у которой нужно получить атрибуты"
-msgstr ""
+msgstr "``record: String`` the record for which to get attributes"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid ""
 "``attributes: String|List<String>|Map<String, String>`` атрибуты, которые"
 " нужно загрузить."
 msgstr ""
+"``attributes: String|List<String>|Map<String, String>`` the attributes to load."
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Загрузить атрибуты через"
-msgstr ""
+msgstr "Load attributes via"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Records.get(record).load(attributes)"
-msgstr ""
+msgstr "Records.get(record).load(attributes)"
 
 #: ../../settings_kb/interface/journals/configuration.rst:132
 msgid "query"
-msgstr ""
+msgstr "query"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "``query: String`` поисковый запрос, который нужно выполнить"
-msgstr ""
+msgstr "``query: String`` the search query to execute"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Отправить поисковый запрос через"
-msgstr ""
+msgstr "Send search query via"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Records.query(query, attributes)"
-msgstr ""
+msgstr "Records.query(query, attributes)"
 
 #: ../../settings_kb/interface/journals/configuration.rst:137
 msgid "script"
-msgstr ""
+msgstr "script"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "``fn: String`` скрипт для вычислений. Может вернуть Promise."
-msgstr ""
+msgstr "``fn: String`` script for computations. Can return a Promise."
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "``vars: Map<String, Any>`` переменные, которые будут переданы в скрипт."
-msgstr ""
+msgstr "``vars: Map<String, Any>`` variables to be passed to the script."
 
 #: ../../settings_kb/interface/journals/configuration.rst:140
 msgid "Вычислить скрипт"
-msgstr ""
+msgstr "Execute script"
 
 #: ../../settings_kb/interface/journals/configuration.rst:142
 msgid "Пример использования вычисляемого свойства для вариантов выбора:"
-msgstr ""
+msgstr "Example of using a computed property for selection options:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:174
 msgid "Модель конфигурации журнала"
-msgstr ""
+msgstr "Journal Configuration Model"
 
 #: ../../settings_kb/interface/journals/configuration.rst:176
 msgid "Модель:"
-msgstr ""
+msgstr "Model:"
 
 #: ../../settings_kb/interface/journals/configuration.rst:375
 msgid "Инструменты для разработчиков"
-msgstr ""
+msgstr "Developer Tools"
 
 #: ../../settings_kb/interface/journals/configuration.rst:377
 msgid ""
@@ -268,4 +281,4 @@ msgid ""
 ":guilabel:`ЛКМ` на заголовке журнала, то откроется его конфигурация для "
 "просмотра."
 msgstr ""
-
+"If you press :guilabel:`Ctrl` + :guilabel:`Shift` + :guilabel:`LMB` (Left Mouse Button) on the journal title on the journals page, its configuration will open for viewing."
