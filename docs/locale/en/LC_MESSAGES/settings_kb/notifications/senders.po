@@ -21,19 +21,19 @@ msgstr ""
 
 #: ../../settings_kb/notifications/senders.rst:2
 msgid "Отправители"
-msgstr ""
+msgstr "Senders"
 
 #: ../../settings_kb/notifications/senders.rst:6
 msgid "Добавлено в версии 2.9.0 микросервиса ecos-notifications"
-msgstr ""
+msgstr "Added in version 2.9.0 of the ecos-notifications microservice"
 
 #: ../../settings_kb/notifications/senders.rst:8
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../settings_kb/notifications/senders.rst:11
 msgid "1. Общие сведения"
-msgstr ""
+msgstr "1. General Information"
 
 #: ../../settings_kb/notifications/senders.rst:12
 msgid ""
@@ -41,22 +41,25 @@ msgid ""
 "несколькими сендерами не поддерживается. Механизм разрабатывался для "
 "поддержки возможности блокировки отправки уведомлений"
 msgstr ""
+"The main purpose of the mechanism is routing; processing one notification by multiple senders is not supported. The mechanism was developed to support the ability to block notification sending."
 
 #: ../../settings_kb/notifications/senders.rst:14
 msgid ""
 "**Журнал \"Отправители\"** доступен в разделе администратора меню "
 "**\"Конфигурация уведомлений\"**"
 msgstr ""
+"The **\"Senders\" journal** is available in the admin section under **\"Notification Configuration\"** menu"
 
 #: ../../settings_kb/notifications/senders.rst:16
 msgid "Журнал “Отправители“"
-msgstr ""
+msgstr "Senders Journal"
 
 #: ../../settings_kb/notifications/senders.rst:21
 msgid ""
 "Для отправки уведомления перебираются активные отправители с "
 "соответствующим типом нотификации в порядке возрастания порядка."
 msgstr ""
+"To send a notification, active senders with the appropriate notification type are iterated in ascending order."
 
 #: ../../settings_kb/notifications/senders.rst:23
 msgid ""
@@ -64,22 +67,25 @@ msgid ""
 "применяться. Если список не задан, то отправитель доступен для отправки "
 "уведомления по любому шаблону."
 msgstr ""
+"In a sender, you can define a list of templates for which it will be applied. If the list is not specified, the sender is available for sending notifications for any template."
 
 #: ../../settings_kb/notifications/senders.rst:25
 msgid ""
 "Также в конфигурации можно указать дополнительные условия для применения "
 "сендера. Условия описываются в формате предикатов, например:"
 msgstr ""
+"Additionally, in the configuration, you can specify additional conditions for applying the sender. Conditions are described in predicate format, for example:"
 
 #: ../../settings_kb/notifications/senders.rst:38
 msgid ""
 "Значения атрибутов при проверке применения сендера вычисляются на основе "
 "атрибутов модели шаблона нотификации."
 msgstr ""
+"Attribute values when checking sender application are calculated based on the notification template model attributes."
 
 #: ../../settings_kb/notifications/senders.rst:40
 msgid "Реализовано два типа отправителей **default** и **command**."
-msgstr ""
+msgstr "Two types of senders are implemented: **default** and **command**."
 
 #: ../../settings_kb/notifications/senders.rst:42
 msgid ""
@@ -90,10 +96,11 @@ msgid ""
 " Конфигурация уведомлений)** У отправителя с типом command в конфигурации"
 " определены два параметра:"
 msgstr ""
+"default has no configuration parameters. In the notification microservice, two default senders are configured: *default-email-sender* and *default-firebase-sender* with order equal to 1000. They can be seen in the **\"Senders\" journal (Workspace \"Admin Section - Notification Configuration\")**. For a sender with type command, two parameters are defined in the configuration:"
 
 #: ../../settings_kb/notifications/senders.rst:52
 msgid "Для отправки уведомления через command-отправителя необходимо реализовать:"
-msgstr ""
+msgstr "To send a notification through a command sender, it is necessary to implement:"
 
 #: ../../settings_kb/notifications/senders.rst:54
 msgid ""
@@ -102,6 +109,8 @@ msgid ""
 "микросервисом нотификации "
 "**(ru.citeck.ecos.notifications.domain.sender.command.CmdFitNotification)**"
 msgstr ""
+"A class with the annotation ``@CommandType(“command_type_from_configuration“)``. The class structure should replicate the structure of the notification sent by the notification microservice "
+"**(ru.citeck.ecos.notifications.domain.sender.command.CmdFitNotification)**"
 
 #: ../../settings_kb/notifications/senders.rst:56
 msgid ""
@@ -110,18 +119,21 @@ msgid ""
 "выполнения обработчик должен возвращать значение из перечисления "
 "**ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus**."
 msgstr ""
+"A command handler implementing the interface "
+"**ru.citeck.ecos.commands.CommandExecutor<class_from_point_1>**. As a result of execution, the handler must return a value from the enumeration "
+"**ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus**."
 
 #: ../../settings_kb/notifications/senders.rst:58
 msgid "Создать отправителя в журнале “Отправители“"
-msgstr ""
+msgstr "Create a sender in the \"Senders\" journal"
 
 #: ../../settings_kb/notifications/senders.rst:60
 msgid "Создание \"Отправителя с типом command\""
-msgstr ""
+msgstr "Creating a \"Command type Sender\""
 
 #: ../../settings_kb/notifications/senders.rst:66
 msgid "2. Статусы обработки уведомления"
-msgstr ""
+msgstr "2. Notification Processing Statuses"
 
 #: ../../settings_kb/notifications/senders.rst:68
 msgid ""
@@ -129,26 +141,30 @@ msgid ""
 "обработки уведомления "
 "**(ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus)**:"
 msgstr ""
+"After receiving a notification for sending, the sender must return the notification processing status "
+"**(ru.citeck.ecos.notifications.lib.NotificationSenderSendStatus)**:"
 
 #: ../../settings_kb/notifications/senders.rst:70
 msgid "**SENT** - Уведомление отправлено. Дальнейшая обработка не требуется"
-msgstr ""
+msgstr "**SENT** - Notification sent. Further processing is not required"
 
 #: ../../settings_kb/notifications/senders.rst:71
 msgid ""
 "**BLOCKED** - Отправка уведомления заблокирована. Дальнейшая обработка не"
 " требуется"
 msgstr ""
+"**BLOCKED** - Notification sending is blocked. Further processing is not required"
 
 #: ../../settings_kb/notifications/senders.rst:72
 msgid ""
 "**SKIPPED** - Уведомление не обработано текущим Sender'ом. Нужно "
 "использовать следующий."
 msgstr ""
+"**SKIPPED** - Notification not processed by the current Sender. The next one should be used."
 
 #: ../../settings_kb/notifications/senders.rst:75
 msgid "3. Пример использования command отправителя"
-msgstr ""
+msgstr "3. Example of Using a Command Sender"
 
 #: ../../settings_kb/notifications/senders.rst:77
 msgid ""
@@ -159,4 +175,4 @@ msgid ""
 "если совпадают, то возвращает статус **BLOCKED**. Таким образом, "
 "уведомление не отправляется, а помечается как заблокированное"
 msgstr ""
-
+"For blocking message sending, a journal with blocking conditions and a command sender were created. A command handler was also created, which is specified in the sender configuration. This handler checks whether the notification parameters match the conditions in the blocking journal, and if they match, returns the **BLOCKED** status. Thus, the notification is not sent but marked as blocked"
