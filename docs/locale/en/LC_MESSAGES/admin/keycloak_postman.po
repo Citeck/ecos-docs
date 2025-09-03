@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../../admin/keycloak_postman.rst:4
 msgid "Настройки аутентификации для работы с Records API из внешних систем"
-msgstr ""
+msgstr "Authentication Settings for Working with Records API from External Systems"
 
 #: ../../admin/keycloak_postman.rst:7
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../admin/keycloak_postman.rst:9
 msgid ""
@@ -33,16 +33,18 @@ msgid ""
 "корректной отправки http-запросов Records API. На примере Postman описана"
 " аутентификация в Citeck через OAuth 2.0 и отправка запросов."
 msgstr ""
+"This article describes the sequence of Citeck configurations to ensure correct sending of Records API HTTP requests. Using Postman as an example, it explains authentication in Citeck via OAuth 2.0 and sending requests."
 
 #: ../../admin/keycloak_postman.rst:13
 msgid "Получение и работа с Client ID и Client Secret в Keycloak"
-msgstr ""
+msgstr "Obtaining and Working with Client ID and Client Secret in Keycloak"
 
 #: ../../admin/keycloak_postman.rst:15
 msgid ""
 "Для получения токена для отправки запросов необходимо выполнить следующую"
 " последовательность действий:"
 msgstr ""
+"To obtain a token for sending requests, the following sequence of actions must be performed:"
 
 #: ../../admin/keycloak_postman.rst:17
 msgid ""
@@ -50,6 +52,7 @@ msgid ""
 "**Client Secret**, которые будут использованы для получения "
 "bearer-токена."
 msgstr ""
+"In **Keycloak**, create a client from which the **Client ID** and **Client Secret** will be taken, which will be used to obtain a bearer token."
 
 #: ../../admin/keycloak_postman.rst:18
 msgid ""
@@ -57,23 +60,25 @@ msgid ""
 "созданного клиента%`` (знак % указывает, что переменная шаблонная. В "
 "самом имени указывать их не нужно)."
 msgstr ""
+"Create a user in Citeck using the pattern ``service-account-%created client name%`` (the % sign indicates a template variable. Do not include them in the actual name)."
 
 #: ../../admin/keycloak_postman.rst:21
 msgid "Создание клиента в Keycloak"
-msgstr ""
+msgstr "Creating a Client in Keycloak"
 
 #: ../../admin/keycloak_postman.rst:23
 msgid "Зайти в админскую консоль keycloak."
-msgstr ""
+msgstr "Log in to the Keycloak admin console."
 
 #: ../../admin/keycloak_postman.rst:25
 #, python-format
 msgid "URL для доступа: ``%host%/auth/admin/master/console/``"
 msgstr ""
+"Access URL: ``%host%/auth/admin/master/console/``"
 
 #: ../../admin/keycloak_postman.rst:27
 msgid "Выбрать необходимый реалм."
-msgstr ""
+msgstr "Select the required realm."
 
 #: ../../admin/keycloak_postman.rst:33
 msgid ""
@@ -82,34 +87,40 @@ msgid ""
 "ниже, но само конфигурирование будет показано на уже существующем "
 "service_qa."
 msgstr ""
+"After switching to the realm, select the :guilabel:`clients` tab. As seen in the screenshot, the service_qa client is already created. A creation example will be in the item below, but the configuration itself will be shown on the existing service_qa."
 
 #: ../../admin/keycloak_postman.rst:39
 msgid "Нажать кнопку :guilabel:`Create`"
-msgstr ""
+msgstr "Click the :guilabel:`Create` button"
 
 #: ../../admin/keycloak_postman.rst:45
 msgid ""
 "На появившемся окне заполнить только **Client ID**, сохранить его "
 "куда-нибудь и нажать :guilabel:`Save`"
 msgstr ""
+"In the appeared window, fill in only the **Client ID**, save it somewhere, and click :guilabel:`Save`"
 
 #: ../../admin/keycloak_postman.rst:51
 msgid ""
 "Откроется окно редактирования клиента. Для примера был создан клиент с "
 "**Client ID test**"
 msgstr ""
+"The client editing window will open. For example, a client with **Client ID test** was created"
 
 #: ../../admin/keycloak_postman.rst:57
 msgid "Заполнить вкладку :guilabel:`Settings` клиента согласно скриншоту ниже"
 msgstr ""
+"Fill in the client's :guilabel:`Settings` tab according to the screenshot below"
 
 #: ../../admin/keycloak_postman.rst:59
 msgid "**Access Type**: confidential"
 msgstr ""
+"**Access Type**: confidential"
 
 #: ../../admin/keycloak_postman.rst:60
 msgid "**Service Account Enabled**: true"
 msgstr ""
+"**Service Account Enabled**: true"
 
 #: ../../admin/keycloak_postman.rst:61
 msgid ""
@@ -117,10 +128,12 @@ msgid ""
 "использования. Для тестов можно просто указать * (На продуктивных средах "
 "так делать крайне не рекомендуется!)"
 msgstr ""
+"**Valid Redirect URLs**: Specify the URLs needed for use. For testing, you can simply specify * (On production environments, this is highly discouraged!)"
 
 #: ../../admin/keycloak_postman.rst:63
 msgid "В самом низу страницы нажать :guilabel:`Save`."
 msgstr ""
+"At the very bottom of the page, click :guilabel:`Save`."
 
 #: ../../admin/keycloak_postman.rst:69
 msgid ""
@@ -130,10 +143,11 @@ msgid ""
 "необходимости, его можно перегенерировать, используя кнопку "
 ":guilabel:`Regenerate Secret`."
 msgstr ""
+"Open the :guilabel:`Credentials` tab, find the **Secret** field. This is the **Client Secret**. Save it in the same place where the Client ID was saved in step 5. In case of compromise or any other need, it can be regenerated using the :guilabel:`Regenerate Secret` button."
 
 #: ../../admin/keycloak_postman.rst:77
 msgid "Cоздание пользователя в Citeck"
-msgstr ""
+msgstr "Creating a User in Citeck"
 
 #: ../../admin/keycloak_postman.rst:79
 msgid ""
@@ -141,10 +155,11 @@ msgid ""
 "администратора»** открыть пункт меню **Пользователи**, для добавления "
 "нового пользователя нажать кнопку :guilabel:`+`:"
 msgstr ""
+"Go to the corresponding Citeck realm. In the **Administrator Section** workspace, open the **Users** menu item, to add a new user, click the :guilabel:`+` button:"
 
 #: ../../admin/keycloak_postman.rst:85
 msgid "Заполнить форму."
-msgstr ""
+msgstr "Fill out the form."
 
 #: ../../admin/keycloak_postman.rst:87
 msgid ""
@@ -152,36 +167,43 @@ msgid ""
 "созданного клиента%``. Остальные поля можно не заполнять, так как "
 "пользователь сервисный и заходить под ним никто не будет."
 msgstr ""
+"Fill in the **System Name** field using the pattern ``service-account-%created client name%``. Other fields can be left blank, as the user is a service account and no one will log in under it."
 
 #: ../../admin/keycloak_postman.rst:93
 msgid "Теперь можно совершать запросы к системе через gateway."
 msgstr ""
+"Now you can make requests to the system through the gateway."
 
 #: ../../admin/keycloak_postman.rst:97
 msgid "Отправка запросов в Citeck"
-msgstr ""
+msgstr "Sending Requests to Citeck"
 
 #: ../../admin/keycloak_postman.rst:99
 msgid "При работе с системой Citeck используется авторизация OAuth 2.0."
 msgstr ""
+"When working with the Citeck system, OAuth 2.0 authorization is used."
 
 #: ../../admin/keycloak_postman.rst:101
 msgid ""
 "Для отправки запросов ее также нужно настроить в Postman, SoapUI или "
 "другом инструменте тестирования, который вы используете."
 msgstr ""
+"To send requests, it also needs to be configured in Postman, SoapUI, or another testing tool you use."
 
 #: ../../admin/keycloak_postman.rst:103
 msgid "Рассмотрим настройку на примере Postman."
 msgstr ""
+"Let's consider the configuration using Postman as an example."
 
 #: ../../admin/keycloak_postman.rst:105
 msgid "Перейти на вкладку авторизации и выбрать тип **OAuth 2.0**."
 msgstr ""
+"Go to the authorization tab and select the **OAuth 2.0** type."
 
 #: ../../admin/keycloak_postman.rst:111
 msgid "В разделе :guilabel:`Current Token` указать префикс **Bearer**."
 msgstr ""
+"In the :guilabel:`Current Token` section, specify the **Bearer** prefix."
 
 #: ../../admin/keycloak_postman.rst:117
 msgid ""
@@ -190,12 +212,14 @@ msgid ""
 "откуда запрашивать токен авторизации, вида **https://<URL сервера>/ecos-"
 "idp/auth/...**"
 msgstr ""
+"Next, in the :guilabel:`Configure New Token` section, specify the grant type **Client Credentials**. In the **Access Token URL** field, specify the **URL** from where to request the authorization token, of the form **https://<server URL>/ecos-idp/auth/...**"
 
 #: ../../admin/keycloak_postman.rst:123
 msgid ""
 "Указать **Client ID** и **Client Secret**. Задать имя токена, имя может "
 "быть любым."
 msgstr ""
+"Specify the **Client ID** and **Client Secret**. Set a token name; the name can be anything."
 
 #: ../../admin/keycloak_postman.rst:129
 msgid ""
@@ -204,22 +228,25 @@ msgid ""
 "получить токен и указать и использовать его в запросе, в результате "
 "значение токена подставится в раздел :guilabel:`Current Token`."
 msgstr ""
+"In the **Client Authentication** setting, set the value to **Send as Basic Auth header** to send the token in the header. Try to get the token and specify and use it in the request; as a result, the token value will be inserted into the :guilabel:`Current Token` section."
 
 #: ../../admin/keycloak_postman.rst:144
 msgid ""
 "Если тело запроса заполнено, то можно выполнять основной запрос на стенд."
 " Срок действия токена можно посмотреть при его получении."
 msgstr ""
+"If the request body is filled, you can execute the main request to the stand. The token expiration time can be viewed when it is obtained."
 
 #: ../../admin/keycloak_postman.rst:150
 msgid ""
 "В дальнейшей работе по истечении срока действия токена его нужно "
 "обновить, повторно нажав **Get New Access Token → Use Token**."
 msgstr ""
+"In further work, after the token expires, it needs to be updated by clicking **Get New Access Token → Use Token** again."
 
 #: ../../admin/keycloak_postman.rst:153
 msgid ""
 "См. :ref:`Примеры использования Records API для внешних "
 "систем<API_examples>`"
 msgstr ""
-
+"See :ref:`Examples of Using Records API for External Systems<API_examples>`"
