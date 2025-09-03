@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../../architecture/patches.rst:2
 msgid "Патчи Citeck"
-msgstr ""
+msgstr "Citeck Patches"
 
 #: ../../architecture/patches.rst:5
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../architecture/patches.rst:7
 msgid ""
@@ -33,6 +33,8 @@ msgid ""
 "запуска системы. Патчи могут быть использованы для автоматической или "
 "ручной миграции."
 msgstr ""
+"**Patch** - some work that needs to be performed once after system startup. "
+"Patches can be used for automatic or manual migration."
 
 #: ../../architecture/patches.rst:9
 msgid ""
@@ -40,112 +42,118 @@ msgid ""
 "тем же правилам деплоя, что и остальные артефакты. Уникальность патча в "
 "пределах системы определяется по **targetApp + id**"
 msgstr ""
+"Citeck Patches are artifacts of type **app/patch** that follow the same "
+"deployment rules as other artifacts. A patch's uniqueness within the system is "
+"determined by **targetApp + id**"
 
 #: ../../architecture/patches.rst:12
 msgid "Модель"
-msgstr ""
+msgstr "Model"
 
 #: ../../architecture/patches.rst:26
 msgid "Типы патчей"
-msgstr ""
+msgstr "Patch Types"
 
 #: ../../architecture/patches.rst:33
 msgid "Тип"
-msgstr ""
+msgstr "Type"
 
 #: ../../architecture/patches.rst:34
 msgid "Конфигурация"
-msgstr ""
+msgstr "Configuration"
 
 #: ../../architecture/patches.rst:35
 msgid "Описание"
-msgstr ""
+msgstr "Description"
 
 #: ../../architecture/patches.rst:36
 msgid "**bean**"
-msgstr ""
+msgstr "**bean**"
 
 #: ../../architecture/patches.rst:37
 msgid "**beanId: String** - идентификатор бина для исполнения"
-msgstr ""
+msgstr "**beanId: String** - identifier of the bean to execute"
 
 #: ../../architecture/patches.rst
 msgid "Запустить бин в контексте приложения."
-msgstr ""
+msgstr "Run a bean in the application context."
 
 #: ../../architecture/patches.rst
 msgid "Поддерживаются следующие интерфейсы:"
-msgstr ""
+msgstr "The following interfaces are supported:"
 
 #: ../../architecture/patches.rst:41
 msgid "Runnable"
-msgstr ""
+msgstr "Runnable"
 
 #: ../../architecture/patches.rst:42
 msgid "Function0<*>"
-msgstr ""
+msgstr "Function0<*>"
 
 #: ../../architecture/patches.rst:43
 msgid "Callable<*>"
-msgstr ""
+msgstr "Callable<*>"
 
 #: ../../architecture/patches.rst:44
 msgid "StatefulEcosPatch<*>"
-msgstr ""
+msgstr "StatefulEcosPatch<*>"
 
 #: ../../architecture/patches.rst:45
 msgid "**delete**"
-msgstr ""
+msgstr "**delete**"
 
 #: ../../architecture/patches.rst:46
 msgid "**records: RecordRef[]**"
-msgstr ""
+msgstr "**records: RecordRef[]**"
 
 #: ../../architecture/patches.rst:47
 msgid "Удалить указанные записи"
-msgstr ""
+msgstr "Delete the specified records"
 
 #: ../../architecture/patches.rst:48
 msgid "**mutate**"
-msgstr ""
+msgstr "**mutate**"
 
 #: ../../architecture/patches.rst
 msgid "**records: RecordAtts[]**"
-msgstr ""
+msgstr "**records: RecordAtts[]**"
 
 #: ../../architecture/patches.rst
 msgid "**record: RecordAtts**"
-msgstr ""
+msgstr "**record: RecordAtts**"
 
 #: ../../architecture/patches.rst:52
 msgid "где RecordAtts:"
-msgstr ""
+msgstr "where RecordAtts:"
 
 #: ../../architecture/patches.rst:54
 msgid "id: String"
-msgstr ""
+msgstr "id: String"
 
 #: ../../architecture/patches.rst:55
 msgid "attributes: Map<String, Any?>"
-msgstr ""
+msgstr "attributes: Map<String, Any?>"
 
 #: ../../architecture/patches.rst
 msgid "Произвести мутацию указанных записей;"
-msgstr ""
+msgstr "Mutate the specified records;"
 
 #: ../../architecture/patches.rst
 msgid ""
 "Если в конфигурации указаны records, то используются они и поле "
 "**record** игнорируется;"
 msgstr ""
+"If records are specified in the configuration, they are used and the **record** "
+"field is ignored;"
 
 #: ../../architecture/patches.rst
 msgid "Если в конфигурации не указаны records, то используется record."
 msgstr ""
+"If records are not specified in the configuration, then record is used."
 
 #: ../../architecture/patches.rst:61
 msgid "Дата патча"
-msgstr ""
+msgstr "Patch Date"
 
 #: ../../architecture/patches.rst:63
 msgid ""
@@ -155,6 +163,11 @@ msgid ""
 "чтобы дата указывалась хотя бы с точностью до дней. Дата патча "
 "используется для нескольких вещей:"
 msgstr ""
+"**Patch date** is an ISO8601 ZULU date and time value (e.g. "
+"2022-01-01T00:00:00Z). This time is filled with the current date when "
+"creating a patch manually. Exact time matching is not required, but it is "
+"desirable for the date to be specified at least with day precision. The patch "
+"date is used for several things:"
 
 #: ../../architecture/patches.rst:65
 msgid ""
@@ -164,64 +177,81 @@ msgid ""
 "исполняться в рамках того же приложения. Для строгой зависимости нужно "
 "использовать поле dependsOn."
 msgstr ""
+"For sorting patches. Patches with earlier times will be executed first. This "
+"guarantee only applies to patches within the same application. I.e., when we "
+"describe patches in an application that will be executed within the same "
+"application. For strict dependency, the dependsOn field should be used."
 
 #: ../../architecture/patches.rst:67
 msgid ""
 "Для возможности управления исполнением патча. Решение о исполнении патча "
 "принимается на основе старого и нового значений даты:"
 msgstr ""
+"For managing patch execution. The decision to execute a patch is based on old "
+"and new date values:"
 
 #: ../../architecture/patches.rst:69
 msgid "Если старая_дата отсутствует (новый патч), то патч исполнится;"
-msgstr ""
+msgstr "If old_date is missing (new patch), the patch will execute;"
 
 #: ../../architecture/patches.rst:71
 msgid ""
 "Если старая_дата >= новая_дата, то патч считается выполненным и не "
 "исполнится;"
 msgstr ""
+"If old_date >= new_date, the patch is considered completed and will not "
+"execute;"
 
 #: ../../architecture/patches.rst:73
 msgid ""
 "Если старая_дата < новая_дата, то патч считается обновленным и ставится в"
 " очередь на исполнение;"
 msgstr ""
+"If old_date < new_date, the patch is considered updated and is queued for "
+"execution;"
 
 #: ../../architecture/patches.rst:75
 msgid ""
 "Таким образом, если мы хотим, чтобы уже сработавший патч перевыполнился "
 "при следующем обновлении, то мы просто увеличиваем время в date."
 msgstr ""
+"Thus, if we want an already executed patch to re-execute on the next update, "
+"we simply increase the time in date."
 
 #: ../../architecture/patches.rst:78
 msgid "Использование в коде"
-msgstr ""
+msgstr "Usage in Code"
 
 #: ../../architecture/patches.rst:80
 msgid "Для описания патчей можно использовать аннотацию **@EcosPatch**"
-msgstr ""
+msgstr "The **@EcosPatch** annotation can be used to describe patches"
 
 #: ../../architecture/patches.rst:82
 msgid ""
 "Для указания зависимостей можно использовать аннотацию "
 "**@EcosPatchDependsOn**"
 msgstr ""
+"The **@EcosPatchDependsOn** annotation can be used to specify dependencies"
 
 #: ../../architecture/patches.rst:101
 msgid ""
 "Если предполагается, что патч выполняет объемную работу и может "
 "выполняться более 30 секунд, то нужно использовать **StatefulEcosPatch**."
 msgstr ""
+"If a patch is expected to perform substantial work and may take more than 30 "
+"seconds to execute, then **StatefulEcosPatch** should be used."
 
 #: ../../architecture/patches.rst:105
 msgid "Stateful патчи"
-msgstr ""
+msgstr "Stateful Patches"
 
 #: ../../architecture/patches.rst:107
 msgid ""
 "Для выполнения некоторой объемной работы можно использовать Stateful "
 "патчи (патчи с состоянием)."
 msgstr ""
+"Stateful patches (patches with state) can be used to perform some substantial "
+"work."
 
 #: ../../architecture/patches.rst:109
 msgid ""
@@ -229,18 +259,24 @@ msgid ""
 "работу сразу, а выполняем некоторую часть работы, после чего возвращаем "
 "промежуточное состояние процесса."
 msgstr ""
+"Their essence is that when executing a patch, we don't do all the work at "
+"once, but perform some portion of the work, then return the intermediate "
+"process state."
 
 #: ../../architecture/patches.rst:111
 msgid ""
 "Для реализации Stateful патча нужно реализовать интерфейс "
 "**StatefulEcosPatch<Config>**,"
 msgstr ""
+"To implement a Stateful patch, you need to implement the "
+"**StatefulEcosPatch<Config>** interface,"
 
 #: ../../architecture/patches.rst:113
 msgid ""
 "где **Config** - это произвольный тип, который представляет состояние "
 "выполнения."
 msgstr ""
+"where **Config** is an arbitrary type that represents the execution state."
 
 #: ../../architecture/patches.rst:115
 #, python-brace-format
@@ -248,20 +284,24 @@ msgid ""
 "Важно, чтобы инстанс этого класса можно было создать из пустого объекта "
 "({}) т.к. это начальное состояние для патча."
 msgstr ""
+"It's important that an instance of this class can be created from an empty "
+"object ({}) as this is the initial state for the patch."
 
 #: ../../architecture/patches.rst:117
 msgid "Пример в коде:"
-msgstr ""
+msgstr "Code example:"
 
 #: ../../architecture/patches.rst:137
 msgid "Архитектура"
-msgstr ""
+msgstr "Architecture"
 
 #: ../../architecture/patches.rst:143
 msgid ""
 "Из приложения артефакты патчей попадают в **ecos-apps** по стандартному "
 "механизму деплоя артефактов и сохраняются в БД."
 msgstr ""
+"From the application, patch artifacts enter **ecos-apps** through the standard "
+"artifact deployment mechanism and are stored in the database."
 
 #: ../../architecture/patches.rst:145
 msgid ""
@@ -269,6 +309,9 @@ msgid ""
 "тех, которые можно применить (т.е. **targetApp** доступен и статус патча "
 "позволяет его применить)."
 msgstr ""
+"Then **ecos-apps** periodically polls the patches table for those that can be "
+"applied (i.e., **targetApp** is available and the patch status allows it to "
+"be applied)."
 
 #: ../../architecture/patches.rst:147
 msgid ""
@@ -276,10 +319,14 @@ msgid ""
 "патча и отправляем её в **targetApp**. Результат выполнения команды мы "
 "кладем в БД."
 msgstr ""
+"If a patch for application is found, we execute a command to run the patch and "
+"send it to **targetApp**. We store the command execution result in the "
+"database."
 
 #: ../../architecture/patches.rst:149
 msgid ""
 "Если при выполнении патча возникла ошибка, то мы сохраняем эту ошибку в "
 "БД и через некоторое время повторяем попытку применить патч."
 msgstr ""
-
+"If an error occurs during patch execution, we save this error in the database "
+"and after some time retry applying the patch."
