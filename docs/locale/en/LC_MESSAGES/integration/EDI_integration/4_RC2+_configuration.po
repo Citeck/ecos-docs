@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:2
 msgid "Конфигурация ЭДО"
-msgstr ""
+msgstr "EDI Configuration"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:4
 msgid ""
@@ -30,22 +30,25 @@ msgid ""
 "журнала **Конфигурация EDI**. Информацию по этой конфигурации можно найти"
 " :ref:`Настройка получения событий с ящиком Контур_Диадок<events_kontur>`"
 msgstr ""
+"After moving EDI to the integration microservice, most of the configuration, such as mailbox identifiers, credentials, etc., has moved from the system journal **EDI Configuration**. Information on this configuration can be found at :ref:`Setting up event reception from the Kontur_Diadoc mailbox<events_kontur>`"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:6
 msgid "Актуальная конфигурация в журнале **\"Конфигурация EDI\"**:"
-msgstr ""
+msgstr "Current configuration in the **\"EDI Configuration\"** journal:"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:8
 msgid ""
 "**signContentType** - указывается какая часть контента будет "
 "подписываться ЭЦП. Возможные значения:"
 msgstr ""
+"**signContentType** - specifies which part of the content will be signed with the digital signature. Possible values:"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:10
 msgid ""
 "**content** (стоит по умолчанию) - это означает, что подпись должна "
 "строиться на основании всего контента документа целиком."
 msgstr ""
+"**content** (default) - this means the signature should be built based on the entire document content as a whole."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:12
 msgid ""
@@ -53,12 +56,14 @@ msgid ""
 "документа, который высчитывается на стороне бэкенда ECOS. ЭДО провайдер "
 "его, насколько я знаю, не понимает как подпись к документу."
 msgstr ""
+"**digest** - the signature will be built based on the document \"digest\" calculated on the ECOS backend side. The EDI provider, as far as I know, does not recognize it as a document signature."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:14
 msgid ""
 "**inboundPackagesProcessing** - указывается, исходя из каких правил "
 "обрабатывать входящие документы. Возможные значения:"
 msgstr ""
+"**inboundPackagesProcessing** - specifies the rules for processing incoming documents. Possible values:"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:16
 msgid ""
@@ -68,12 +73,14 @@ msgid ""
 " пропущено. Контрагент ищется с помощью алгоритмов EdiCounterpartyService"
 " на основании активного провайдера."
 msgstr ""
+"**BOX_ID** - forces the system, upon receiving an incoming document, to search for the counterparty from whom this document originated. If the counterparty is not found, the document will not be loaded, and the EDI event will be skipped. The counterparty is searched for using EdiCounterpartyService algorithms based on the active provider."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:18
 msgid ""
 "**ALL (или любое другое)** - игнорирование отсутствия контрагента. Все "
 "документы будут загружаться в систему."
 msgstr ""
+"**ALL (or any other)** - ignores the absence of a counterparty. All documents will be loaded into the system."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:20
 msgid ""
@@ -83,15 +90,16 @@ msgid ""
 "пакетов, подписей - мы ищем не просто по идентификаторам, но и по "
 "направлению. Возможные значения:"
 msgstr ""
+"**isplitLsdfDocflowByLegalEntities** - Mirroring. The enabled flag indicates that an outgoing package sent to one's own legal entity will also enter the system as an incoming one. Technically, when searching for attachments, packages, signatures - we search not only by identifiers but also by direction. Possible values:"
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:22
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:28
 msgid "**true** - включено."
-msgstr ""
+msgstr "**true** - enabled."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:24
 msgid "**false (или любое другое)** - выключено."
-msgstr ""
+msgstr "**false (or any other)** - disabled."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:26
 msgid ""
@@ -107,8 +115,8 @@ msgid ""
 "были сгенерированы при получении не будет получены вообще. См. Генерация "
 "печатных форм."
 msgstr ""
+"**iallowGenerateLsdfPrintFormsAsyncOnFail** - Optimization. Allows generating a print form (PF) asynchronously if the EDI provider could not provide it immediately upon receiving the package. Relevant for projects where customers receive a huge volume of formalized documents. Since for formalized documents, the original XML goes into the association, while generating the PF content takes time. This flag allows not interrupting the integration work and instead setting the eint:needUpdatePrintForm flag. Caution: if the project does not have a job that will regenerate documents with this flag, print forms that were not generated upon receipt will not be obtained at all. See Generating Print Forms."
 
 #: ../../integration/EDI_integration/4_RC2+_configuration.rst:30
 msgid "**false** (или любое другое) - выключено."
-msgstr ""
-
+msgstr "**false** (or any other) - disabled."

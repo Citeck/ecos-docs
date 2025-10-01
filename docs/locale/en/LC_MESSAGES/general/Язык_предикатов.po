@@ -21,27 +21,30 @@ msgstr ""
 
 #: ../../general/Язык_предикатов.rst:4
 msgid "Язык предикатов"
-msgstr ""
+msgstr "Predicate Language"
 
 #: ../../general/Язык_предикатов.rst:7
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../general/Язык_предикатов.rst:9
 msgid ""
 "Предназначение: язык, с которым легко работать как на frontend так и на "
 "backend (модифицировать, анализировать и пр.)."
 msgstr ""
+"Purpose: a language that is easy to work with on both frontend and backend (modify, analyze, etc.)."
 
 #: ../../general/Язык_предикатов.rst:11
 msgid ""
 "Абстрактное определение предиката - это  некоторая функция, которая на "
 "вход получает элемент множества и возвращает ``True/False``."
 msgstr ""
+"The abstract definition of a predicate is a function that takes an element of a set as input and returns ``True/False``."
 
 #: ../../general/Язык_предикатов.rst:13
 msgid "В библиотеке ecos-records добавлена реализация данной концепции."
 msgstr ""
+"An implementation of this concept has been added to the ecos-records library."
 
 #: ../../general/Язык_предикатов.rst:15
 msgid ""
@@ -49,6 +52,7 @@ msgid ""
 "конвертации между этими двумя состояниями есть сервис PredicateService и "
 "методы ``writeJson/readJson``. Java представление - это просто модель."
 msgstr ""
+"There are two aggregate states of a predicate - JSON or JAVA classes. For conversion between these two states, there is the PredicateService and methods ``writeJson/readJson``. The Java representation is simply a model."
 
 #: ../../general/Язык_предикатов.rst:18
 msgid ""
@@ -57,26 +61,27 @@ msgid ""
 "предикаты трансформируются в fts-alfresco запрос в классе "
 "PredicateToFtsAlfrescoConverter)."
 msgstr ""
+"Model processing is a separate task that lies with data sources or query transformers (for example: for queries to alfresco, predicates are transformed into fts-alfresco queries in the PredicateToFtsAlfrescoConverter class)."
 
 #: ../../general/Язык_предикатов.rst:21
 msgid "JAVA представление"
-msgstr ""
+msgstr "JAVA Representation"
 
 #: ../../general/Язык_предикатов.rst:23 ../../general/Язык_предикатов.rst:87
 msgid "Предикат"
-msgstr ""
+msgstr "Predicate"
 
 #: ../../general/Язык_предикатов.rst:27
 msgid "**Predicate** - базовый маркерный интерфейс без методов"
-msgstr ""
+msgstr "**Predicate** - base marker interface without methods"
 
 #: ../../general/Язык_предикатов.rst:28
 msgid "**AttributePredicate** - предикат связанный с некоторым аттрибутом"
-msgstr ""
+msgstr "**AttributePredicate** - predicate associated with some attribute"
 
 #: ../../general/Язык_предикатов.rst:29
 msgid "**EmptyPredicate** - предикат \"Значение аттрибута пустое\""
-msgstr ""
+msgstr "**EmptyPredicate** - predicate \"Attribute value is empty\""
 
 #: ../../general/Язык_предикатов.rst:30
 msgid ""
@@ -84,22 +89,23 @@ msgid ""
 "из/больше/меньше/похоже/больше  или равно/меньше или равно. Тип сравнения"
 " определяется полем type. Значение для сравнения в поле value"
 msgstr ""
+"**ValuePredicate** - predicate \"Attribute value equals/contains/one of/greater than/less than/like/greater than or equal to/less than or equal to. Comparison type is determined by the type field. Value for comparison is in the value field"
 
 #: ../../general/Язык_предикатов.rst:31
 msgid "**NotPredicate** - предикат \"НЕ какой_то_другой_предикат\""
-msgstr ""
+msgstr "**NotPredicate** - predicate \"NOT some_other_predicate\""
 
 #: ../../general/Язык_предикатов.rst:32
 msgid "**ComposedPredicate** - предикат, который объединяет другие предикаты"
-msgstr ""
+msgstr "**ComposedPredicate** - predicate that combines other predicates"
 
 #: ../../general/Язык_предикатов.rst:33
 msgid "**AndPredicate** - предикат И"
-msgstr ""
+msgstr "**AndPredicate** - predicate AND"
 
 #: ../../general/Язык_предикатов.rst:34
 msgid "**OrPredicate** - предикат ИЛИ"
-msgstr ""
+msgstr "**OrPredicate** - predicate OR"
 
 #: ../../general/Язык_предикатов.rst:35
 msgid ""
@@ -107,14 +113,15 @@ msgid ""
 "задан. Как правило означает, что при фильтрации/поиске никаких проверок "
 "не нужно (берем все записи)."
 msgstr ""
+"**VoidPredicate** - empty predicate that results when t (type) is not specified. Typically means that no checks are needed during filtering/searching (take all records)."
 
 #: ../../general/Язык_предикатов.rst:38
 msgid "JSON представление"
-msgstr ""
+msgstr "JSON Representation"
 
 #: ../../general/Язык_предикатов.rst:40
 msgid "Пример::"
-msgstr ""
+msgstr "Example::"
 
 #: ../../general/Язык_предикатов.rst:68
 msgid ""
@@ -122,244 +129,255 @@ msgid ""
 "аттрибута (если тип предиката его требует) и в **\"val\"** значение "
 "(опять же имеет смысл не для всех предикатов)."
 msgstr ""
+"The **\"t\"** field contains the predicate type, **\"att\"** contains the attribute name (if the predicate type requires it), and **\"val\"** contains the value (again, not meaningful for all predicates)."
 
 #: ../../general/Язык_предикатов.rst:70
 msgid "Для конвертации java предикатов в json и обратно::"
-msgstr ""
+msgstr "For converting java predicates to json and back::"
 
 #: ../../general/Язык_предикатов.rst:75
 msgid "Для чтения предикатов из запроса RecordsQuery::"
-msgstr ""
+msgstr "For reading predicates from a RecordsQuery request::"
 
 #: ../../general/Язык_предикатов.rst:80 ../../general/Язык_предикатов.rst:82
 msgid "Типы предикатов"
-msgstr ""
+msgstr "Predicate Types"
 
 #: ../../general/Язык_предикатов.rst:88 ../../general/Язык_предикатов.rst:192
 msgid "Описание"
-msgstr ""
+msgstr "Description"
 
 #: ../../general/Язык_предикатов.rst:89
 msgid "FTS"
-msgstr ""
+msgstr "FTS"
 
 #: ../../general/Язык_предикатов.rst:90
 msgid "**starts**"
-msgstr ""
+msgstr "**starts**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Строка начинается с val."
-msgstr ""
+msgstr "String starts with val."
 
 #: ../../general/Язык_предикатов.rst
 msgid "Пример:"
-msgstr ""
+msgstr "Example:"
 
 #: ../../general/Язык_предикатов.rst:98
 msgid "``title:«startsWith»``"
-msgstr ""
+msgstr "``title:«startsWith»``"
 
 #: ../../general/Язык_предикатов.rst:99
 msgid "**ends**"
-msgstr ""
+msgstr "**ends**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Строка заканчивается с val."
-msgstr ""
+msgstr "String ends with val."
 
 #: ../../general/Язык_предикатов.rst:107
 msgid "``title:«*endsWith»``"
-msgstr ""
+msgstr "``title:«*endsWith»``"
 
 #: ../../general/Язык_предикатов.rst:108
 msgid "**or**"
-msgstr ""
+msgstr "**or**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Объединение массива предикатов в val по ИЛИ."
-msgstr ""
+msgstr "Union of an array of predicates in val by OR."
 
 #: ../../general/Язык_предикатов.rst:116
 msgid "**and**"
-msgstr ""
+msgstr "**and**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Объединение массива предикатов в val по И."
-msgstr ""
+msgstr "Union of an array of predicates in val by AND."
 
 #: ../../general/Язык_предикатов.rst:124
 msgid "**empty**"
-msgstr ""
+msgstr "**empty**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Поле в att пустое."
-msgstr ""
+msgstr "Field in att is empty."
 
 #: ../../general/Язык_предикатов.rst:132
 msgid "**not**"
-msgstr ""
+msgstr "**not**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Отрицание предиката в val."
-msgstr ""
+msgstr "Negation of the predicate in val."
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Этот предикат можно автоматически добавлять к  другим добавляя префикс "
 "«not-»."
 msgstr ""
+"This predicate can be automatically added to others by adding the prefix «not-»."
 
 #: ../../general/Язык_предикатов.rst:148
 msgid "**eq**"
-msgstr ""
+msgstr "**eq**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение поля att точно равно val."
-msgstr ""
+msgstr "Field att value exactly equals val."
 
 #: ../../general/Язык_предикатов.rst:157
 msgid "**gt**"
-msgstr ""
+msgstr "**gt**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение поля att больше val"
-msgstr ""
+msgstr "Field att value is greater than val"
 
 #: ../../general/Язык_предикатов.rst:160
 msgid "**ge**"
-msgstr ""
+msgstr "**ge**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение поля att больше или равно val"
-msgstr ""
+msgstr "Field att value is greater than or equal to val"
 
 #: ../../general/Язык_предикатов.rst:163
 msgid "**lt**"
-msgstr ""
+msgstr "**lt**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение поля att меньше val"
-msgstr ""
+msgstr "Field att value is less than val"
 
 #: ../../general/Язык_предикатов.rst:166
 msgid "**le**"
-msgstr ""
+msgstr "**le**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение поля att меньше или равно val"
-msgstr ""
+msgstr "Field att value is less than or equal to val"
 
 #: ../../general/Язык_предикатов.rst:169
 msgid "**like**"
-msgstr ""
+msgstr "**like**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение att подходит под паттерн val."
-msgstr ""
+msgstr "Value att matches the pattern val."
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "В паттерне используется % как заменитель любого кол-ва символов (как в "
 "SELECT запросе БД)"
 msgstr ""
+"The pattern uses % as a substitute for any number of characters (as in a DB SELECT query)"
 
 #: ../../general/Язык_предикатов.rst:173
 msgid "**in**"
-msgstr ""
+msgstr "**in**"
 
 #: ../../general/Язык_предикатов.rst:176
 msgid "**contains**"
-msgstr ""
+msgstr "**contains**"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Значение att содержит подстроку val (работает и для ассоциаций)"
-msgstr ""
+msgstr "Value att contains substring val (works for associations too)"
 
 #: ../../general/Язык_предикатов.rst:180
 msgid "Например:"
-msgstr ""
+msgstr "For example:"
 
 #: ../../general/Язык_предикатов.rst:184
 msgid "Дополнительные возможности предикатов"
-msgstr ""
+msgstr "Additional Predicate Capabilities"
 
 #: ../../general/Язык_предикатов.rst:186
 msgid "Доп. возможности предикатов"
-msgstr ""
+msgstr "Additional Predicate Capabilities"
 
 #: ../../general/Язык_предикатов.rst:191
 msgid "Фича"
-msgstr ""
+msgstr "Feature"
 
 #: ../../general/Язык_предикатов.rst:193
 msgid "**Промежутки и продолжительность**"
-msgstr ""
+msgstr "**Intervals and Duration**"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Для атрибутов типа date и datetime добавлена возможность вычислять "
 "продолжительность и промежутки"
 msgstr ""
+"For attributes of type date and datetime, the ability to calculate duration and intervals has been added"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "При указании промежутка первой границей он вычисляется от текущей "
 "даты-времени"
 msgstr ""
+"When specifying an interval with the first boundary, it is calculated from the current date-time"
 
 #: ../../general/Язык_предикатов.rst
 msgid "При указании промежутка второй границей он вычисляется от первой границы"
 msgstr ""
+"When specifying an interval with the second boundary, it is calculated from the first boundary"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Поиск идёт включительно границ т.е. [DurationOrDateTime1, "
 "DurationOrDateTime2]"
 msgstr ""
+"Search is inclusive of boundaries i.e. [DurationOrDateTime1, DurationOrDateTime2]"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Добавлены две константы $NOW - текущая дата время, $TODAY текущая дата"
 msgstr ""
+"Two constants have been added: $NOW - current date-time, $TODAY - current date"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Примеры:"
-msgstr ""
+msgstr "Examples:"
 
 #: ../../general/Язык_предикатов.rst
 msgid "Найти документы которые были созданы в течении 10 суток:"
 msgstr ""
+"Find documents that were created within 10 days:"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Ищем документы у которых от $NOW - два года, до ($NOW - два года) - плюс "
 "год"
 msgstr ""
+"Find documents where from $NOW - two years, to ($NOW - two years) - plus one year"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Найти документы которые были созданы в течении 2-х лет, до текущей "
 "даты-времени"
 msgstr ""
+"Find documents that were created within 2 years, up to the current date-time"
 
 #: ../../general/Язык_предикатов.rst
 msgid ""
 "Найти документы которые были созданы в течении 2-х лет, до сегодняшнего "
 "дня"
 msgstr ""
+"Find documents that were created within 2 years, up to today"
 
 #: ../../general/Язык_предикатов.rst
 msgid "от 2020-01-01 до 2020-02-01"
-msgstr ""
+msgstr "from 2020-01-01 to 2020-02-01"
 
 #: ../../general/Язык_предикатов.rst
 msgid "от 2020-01-01 до 2020-01-01 плюс 1 месяц"
-msgstr ""
+msgstr "from 2020-01-01 to 2020-01-01 plus 1 month"
 
 #: ../../general/Язык_предикатов.rst
 msgid "от минус 10 дней до 2020-01-01"
-msgstr ""
+msgstr "from minus 10 days to 2020-01-01"
 
 #: ../../general/Язык_предикатов.rst
 msgid "от сегодня"
-msgstr ""
-
+msgstr "from today"

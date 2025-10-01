@@ -21,15 +21,15 @@ msgstr ""
 
 #: ../../general/Events.rst:2
 msgid "Работа с событиями (events)"
-msgstr ""
+msgstr "Working with Events"
 
 #: ../../general/Events.rst:7
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../general/Events.rst:10
 msgid "Events 2.0"
-msgstr ""
+msgstr "Events 2.0"
 
 #: ../../general/Events.rst:12
 msgid ""
@@ -38,15 +38,15 @@ msgid ""
 " стороне producer и consumer строится подключение к rabbitmq. Пример: "
 "отправка уведомлений как реакция на событие - сменился статус, изменился "
 "атрибут, назначилась задача и т.д."
-msgstr ""
+msgstr "Event handling is built on RabbitMQ and event models in the library - `ecos-events <https://github.com/Citeck/ecos-events>`_. Connections to RabbitMQ are established on both the producer and consumer sides. Example: sending notifications as a reaction to an event - status changed, attribute modified, task assigned, etc."
 
 #: ../../general/Events.rst:15
 msgid "Архитектура"
-msgstr ""
+msgstr "Architecture"
 
 #: ../../general/Events.rst:22
 msgid "Описание работы"
-msgstr ""
+msgstr "Operation Description"
 
 #: ../../general/Events.rst:24
 msgid ""
@@ -54,7 +54,7 @@ msgid ""
 "подписчику на событие, без модификации источника событий. При старте "
 "системы все подписчики регистрируют в Zookeeper список необходимых им "
 "событий по типам и атрибуты события, в которых они заинтересованы."
-msgstr ""
+msgstr "Events in ECOS allow changing the attribute set required by an event subscriber without modifying the event source. During system startup, all subscribers register in Zookeeper the list of event types they need and the event attributes they are interested in."
 
 #: ../../general/Events.rst:27
 msgid ""
@@ -63,17 +63,17 @@ msgid ""
 "подготовив необходимый список атрибутов, отправляет их в Rabbit MQ "
 "(нетранзакционные слушатели) или напрямую слушателю (транзакционные "
 "слушатели) через синхронный запрос."
-msgstr ""
+msgstr "An application that can send events of a certain type sees that there are subscribers for these events in the system and, when they occur, prepares the necessary list of attributes and sends them to Rabbit MQ (for non-transactional listeners) or directly to the listener (for transactional listeners) via a synchronous request."
 
 #: ../../general/Events.rst:31
 msgid ""
 "Атрибуты описываются в формате Records API и могут пользоваться всеми "
 "преимуществами данного API."
-msgstr ""
+msgstr "Attributes are described in the Records API format and can leverage all the advantages of this API."
 
 #: ../../general/Events.rst:34
 msgid "Транзакционные слушатели"
-msgstr ""
+msgstr "Transactional Listeners"
 
 #: ../../general/Events.rst:36
 msgid ""
@@ -82,7 +82,7 @@ msgid ""
 "могут быть использованы, чтобы добавить валидацию состояния системы с "
 "возможностью прервать транзакцию или для любых других действий, которые "
 "должны выполниться в рамках транзакции."
-msgstr ""
+msgstr "Transactional listeners allow reacting to events \"here and now,\" without waiting for the transaction to complete. Such listeners can be used to add system state validation with the ability to abort the transaction or for any other actions that must be performed within the transaction."
 
 #: ../../general/Events.rst:40
 msgid ""
@@ -91,25 +91,24 @@ msgid ""
 "микросервиса со слушателем. Т.е. если микросервис со слушателем "
 "недоступен, то микросервис, генерирующий события не сможет "
 "функционировать в полной мере."
-msgstr ""
+msgstr "An important feature - by adding transactional listeners, you automatically create a hard dependency of the event-generating microservices on the microservice with the listener. That is, if the microservice with the listener is unavailable, the event-generating microservice cannot function fully."
 
 #: ../../general/Events.rst:44
 msgid "Примеры"
-msgstr ""
+msgstr "Examples"
 
 #: ../../general/Events.rst:47
 msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
-msgstr ""
+msgstr "Subscribing to an event with arbitrary attributes (Kotlin)"
 
 #: ../../general/Events.rst:62
 msgid "Подписка на событие с произвольными атрибутами (Java):"
-msgstr ""
+msgstr "Subscribing to an event with arbitrary attributes (Java):"
 
 #: ../../general/Events.rst:86
 msgid "Пример listener-а событий для определенного типа данных"
-msgstr ""
+msgstr "Example of an event listener for a specific data type"
 
 #: ../../general/Events.rst:181
 msgid "Пояснения:"
-msgstr ""
-
+msgstr "Explanations:"
