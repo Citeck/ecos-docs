@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:2
 msgid "Подключение RecordsDaoEndpoint"
-msgstr ""
+msgstr "Connecting RecordsDaoEndpoint"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:4
 msgid ""
@@ -29,42 +29,46 @@ msgid ""
 "описать ``RecordsDaoEndpoint``. Для этого до маршрутов описывается секция"
 " **beans**. Например:"
 msgstr ""
+"To write data to RecordsDao in the Camel DSL context content, you need to describe the ``RecordsDaoEndpoint``. For this, the **beans** section is described before the routes. For example:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:32
 msgid "Где"
-msgstr ""
+msgstr "Where"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:34
 msgid ""
 "**recordsDaoEndpoint** – имя ``RecordsDaoEndpoint``, при его "
 "использовании в маршруте нужно добавлять префикс **«bean:»**;"
 msgstr ""
+"**recordsDaoEndpoint** – the name of the ``RecordsDaoEndpoint``; when using it in a route, the prefix **\"bean:\"** must be added;"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:35
 msgid ""
 "**type** – класс бина, всегда указывается "
 "**ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint**"
 msgstr ""
+"**type** – the bean class, always specified as **ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint**"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:36
 msgid "в секции **properties** описываются настройки ``RecordsDaoEndpoint``:"
-msgstr ""
+msgstr "in the **properties** section, the settings of the ``RecordsDaoEndpoint`` are described:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:38
 msgid "**appName** - целевой идентификатор приложения"
-msgstr ""
+msgstr "**appName** - target application identifier"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:39
 msgid ""
 "**sourceId** - целевой идентификатор источника данных, куда будут "
 "помещаться данные. Обязательное свойство;"
 msgstr ""
+"**sourceId** - target data source identifier where the data will be placed. Mandatory property;"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:40
 msgid ""
 "**pkProp** – атрибут исходного источника, который является первичным "
 "ключом;"
-msgstr ""
+msgstr "**pkProp** – attribute of the source that is the primary key;"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:41
 msgid ""
@@ -73,6 +77,7 @@ msgid ""
 " будет перекладываться в атрибут **content** назначения, **state** в "
 "**currentState**, **type** в **type**. Общий вид карты:"
 msgstr ""
+"**columnMap** – correspondence between attributes of the source and target attributes. In the given example, the value of the **name** attribute from the source will be mapped to the **content** attribute of the target, **state** to **currentState**, **type** to **type**. General form of the map:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:51
 msgid ""
@@ -85,16 +90,18 @@ msgid ""
 " будет содержать только два значения: **STARTED** или **STOPPED**. Общий "
 "вид карты:"
 msgstr ""
+"**valueConvertMap** – a map for converting source values before writing them to the target database. The map is written in JSON format, the symbol **'*'** means any attribute value. In the given example, before writing to the **currentState** attribute, the value of the **state** field will be replaced with **STARTED** if it equals **1**, and with **STOPPED** in all other cases. Thus, the **currentState** attribute in the resulting table will contain only two values: **STARTED** or **STOPPED**. General form of the map:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:72
 msgid ""
 "Так как **valueConvertMap** многострочное свойство, то перед значением "
 "необходимо указать символ **«|»**."
 msgstr ""
+"Since **valueConvertMap** is a multi-line property, the symbol **\"|\"** must be specified before the value."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:74
 msgid "В одном контексте может быть описано несколько ``RecordsDaoEndpoint``."
-msgstr ""
+msgstr "Multiple ``RecordsDaoEndpoint`` can be described in one context."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:98
 msgid ""
@@ -102,44 +109,50 @@ msgid ""
 "XML-файла, CSV-файла или текстового файла, содержащего строковые "
 "представления **Map**."
 msgstr ""
+"``RecordsDaoEndpoint`` can also process data obtained from an XML file, CSV file, or a text file containing string representations of **Map**."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:100
 msgid ""
 "Пример контекста, содержащего маршруты для обработки "
 "``RecordsDaoEndpoint`` данных из файлов:"
 msgstr ""
+"Example of a context containing routes for processing ``RecordsDaoEndpoint`` data from files:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:133
 msgid ""
 "Маршрут **fromXmlFileToDb** делит входной XML-поток из файла на элементы "
 "**someObject** и передает их в ``RecordsDaoEndpoint``."
 msgstr ""
+"The **fromXmlFileToDb** route splits the input XML stream from the file into **someObject** elements and passes them to the ``RecordsDaoEndpoint``."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:135
 msgid "Пример входного XML-файла:"
-msgstr ""
+msgstr "Example input XML file:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:152
 msgid ""
 "В приведенном примере для установки значений доступны атрибуты записи "
 "**id**, **usage**, **name** и **purpose**."
 msgstr ""
+"In the given example, the record attributes **id**, **usage**, **name**, and **purpose** are available for setting values."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:154
 msgid ""
 "Маршрут **fromTxtFileToDb** делит входной текстовый поток из файла на "
 "строки. Пример CSV-файла:"
 msgstr ""
+"The **fromTxtFileToDb** route splits the input text stream from the file into lines. Example CSV file:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:163
 msgid "Пример файла со строковыми представлениями Map:"
-msgstr ""
+msgstr "Example file with string representations of Map:"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:171
 msgid ""
 "Для работы со строковыми данными используются настройки "
 "``RecordsDaoEndpoint`` **delimiter** и **keyValueSeparator**."
 msgstr ""
+"For working with string data, the ``RecordsDaoEndpoint`` settings **delimiter** and **keyValueSeparator** are used."
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:173
 msgid ""
@@ -147,10 +160,11 @@ msgid ""
 "CSV-файла и пар ключ-значение для строкового представления Map, по "
 "умолчанию значение **«,»**"
 msgstr ""
+"**delimiter** – defines the string delimiter for values in a line for a CSV file and for key-value pairs for a string representation of Map, default value is **\",\"**"
 
 #: ../../integration/Camel_DSL/RecordsDaoEndpoint_connection.rst:174
 msgid ""
 "**keyValueSeparator** – определяет строку-разделитель ключа и значения в "
 "строковом представлении Map, по умолчанию значение **«=»**"
 msgstr ""
-
+"**keyValueSeparator** – defines the string separator for key and value in the string representation of Map, default value is **\"=\"**"
