@@ -21,21 +21,22 @@ msgstr ""
 
 #: ../../general/Transactions.rst:2
 msgid "Транзакции"
-msgstr ""
+msgstr "Transactions"
 
 #: ../../general/Transactions.rst:4
 msgid "В Citeck реализованы транзакции на базе двухфазного коммита."
-msgstr ""
+msgstr "Citeck implements transactions based on two-phase commit."
 
 #: ../../general/Transactions.rst:6
 msgid "Описание сущностей:"
-msgstr ""
+msgstr "Entity Descriptions:"
 
 #: ../../general/Transactions.rst:8
 msgid ""
 "**Транзакционный ресурс** - ресурс, который поддерживает работу с "
 "транзакциями (например - база данных);"
 msgstr ""
+"**Transactional Resource** - a resource that supports working with transactions (for example - a database);"
 
 #: ../../general/Transactions.rst:10
 msgid ""
@@ -43,6 +44,7 @@ msgid ""
 "жизненному циклу транзакции и выполняется в одном из трех случаев - перед"
 " коммитом, после коммита, после отката транзакции;"
 msgstr ""
+"**Transactional Action** - an action that is bound to the transaction lifecycle and is executed in one of three cases - before commit, after commit, after transaction rollback;"
 
 #: ../../general/Transactions.rst:12
 msgid ""
@@ -51,42 +53,45 @@ msgid ""
 "ошибка, то транзакция откатывается и система возвращается к состоянию до "
 "начала транзакции;"
 msgstr ""
+"**Transaction** - an entity within which transactional resources and actions can be registered. If an error occurs during the transaction, the transaction is rolled back and the system returns to the state before the transaction started;"
 
 #: ../../general/Transactions.rst:14
 msgid "**Транзакционный менеджер** - менеджер, который управляет транзакциями."
-msgstr ""
+msgstr "**Transaction Manager** - a manager that controls transactions."
 
 #: ../../general/Transactions.rst:16
 msgid "Жизненный цикл транзакции:"
-msgstr ""
+msgstr "Transaction Lifecycle:"
 
 #: ../../general/Transactions.rst:22
 msgid "Общая схема работы:"
-msgstr ""
+msgstr "General Operation Scheme:"
 
 #: ../../general/Transactions.rst:28
 msgid "Текстовое описание:"
-msgstr ""
+msgstr "Text Description:"
 
 #: ../../general/Transactions.rst:30
 msgid "Транзакция начинается."
-msgstr ""
+msgstr "Transaction begins."
 
 #: ../../general/Transactions.rst:32
 msgid "В ходе работы идет работа с ресурсами, которые регистрируются в транзакции"
-msgstr ""
+msgstr "During operation, work is done with resources that are registered in the transaction"
 
 #: ../../general/Transactions.rst:34
 msgid ""
 "Так же в ходе работы возникают действия, которые нужно выполнить перед "
 "коммитом, после коммита или после ролбэка."
 msgstr ""
+"Also during operation, actions arise that need to be executed before commit, after commit, or after rollback."
 
 #: ../../general/Transactions.rst:36
 msgid ""
 "Перед коммитом выполняются все транзакционные действия, которые "
 "зарегистрировались в транзакции"
 msgstr ""
+"Before commit, all transactional actions that registered in the transaction are executed"
 
 #: ../../general/Transactions.rst:38
 msgid ""
@@ -94,12 +99,14 @@ msgid ""
 "выполняется однофазный коммит. Если ресурсов несколько, то выполняется "
 "подготовка к коммиту и коммит подготовленной транзакции."
 msgstr ""
+"Before commit, the number of resources is checked. If there is one resource, a one-phase commit is performed. If there are multiple resources, preparation for commit is performed followed by committing the prepared transaction."
 
 #: ../../general/Transactions.rst:40
 msgid ""
 "После коммита выполняются все транзакционные действия, которые "
 "зарегистрировались в транзакции"
 msgstr ""
+"After commit, all transactional actions that registered in the transaction are executed"
 
 #: ../../general/Transactions.rst:42
 msgid ""
@@ -107,14 +114,15 @@ msgid ""
 " исходногому состоянию и выполнятются действия после ролбэка, кторые "
 "успели зарегистироваться в ходе транзакции."
 msgstr ""
+"If something goes wrong during the transaction, all resources are rolled back to their original state and post-rollback actions that managed to register during the transaction are executed."
 
 #: ../../general/Transactions.rst:44
 msgid "Работа с транзакциями в котлин коде:"
-msgstr ""
+msgstr "Working with transactions in Kotlin code:"
 
 #: ../../general/Transactions.rst:52
 msgid "Работа с транзакциями в java коде:"
-msgstr ""
+msgstr "Working with transactions in Java code:"
 
 #: ../../general/Transactions.rst:60
 msgid ""
@@ -123,10 +131,11 @@ msgid ""
 "транзакции, то следует использовать методы ``doInNewTxn`` и "
 "``doInNewTxnJ`` соответственно."
 msgstr ""
+"These methods create a transaction if it doesn't exist or use an existing one. If it is necessary to forcibly execute an action in a new transaction, then the methods ``doInNewTxn`` and ``doInNewTxnJ`` should be used respectively."
 
 #: ../../general/Transactions.rst:62
 msgid ""
 "Для Records API транзакции запускаются автоматически в момент, когда к "
 "нам приходит запрос извне нашего приложения."
 msgstr ""
-
+"For the Records API, transactions are started automatically at the moment when a request comes to us from outside our application."
