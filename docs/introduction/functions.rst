@@ -5,6 +5,7 @@
     :maxdepth: 3
 
     functions/client_360
+    functions/preview
     functions/onlyoffice_edit
     functions/delegation
     functions/wysiwyg_editor
