@@ -50,8 +50,7 @@ extensions = [
  'sphinx_search.extension',
  'sphinx_copybutton',
  'sphinx_tabs.tabs',
- 'sphinx_rtd_theme',
- 'sphinxcontrib.mermaid'
+ 'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
