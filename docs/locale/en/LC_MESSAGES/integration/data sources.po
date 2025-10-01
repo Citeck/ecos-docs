@@ -21,27 +21,27 @@ msgstr ""
 
 #: ../../integration/data sources.rst:5
 msgid "Источники данных"
-msgstr ""
+msgstr "Data Sources"
 
 #: ../../integration/data sources.rst:8
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../integration/data sources.rst:11
 msgid "REST Data Source"
-msgstr ""
+msgstr "REST Data Source"
 
 #: ../../integration/data sources.rst:13
 msgid "Источник данных, который работает через REST запросы"
-msgstr ""
+msgstr "A data source that operates via REST requests"
 
 #: ../../integration/data sources.rst:19
 msgid "**Id** - идентификатор источника"
-msgstr ""
+msgstr "**Id** - data source identifier"
 
 #: ../../integration/data sources.rst:20
 msgid "**Name** - произвольное имя"
-msgstr ""
+msgstr "**Name** - arbitrary name"
 
 #: ../../integration/data sources.rst:21
 #, python-brace-format
@@ -49,6 +49,7 @@ msgid ""
 "**URL** - адрес, по которому будут отправляться запросы Есть поддержка "
 "переменных запроса в фигурных скобках - *{key}*"
 msgstr ""
+"**URL** - the address to which requests will be sent. Supports query variables in curly braces - *{key}*"
 
 #: ../../integration/data sources.rst:22
 msgid ""
@@ -56,10 +57,11 @@ msgid ""
 "зарегистрированных в Eureka (в таких запросах прокидываются header'ы и "
 "cookie)"
 msgstr ""
+"**Internal** - the request will be sent only within the network of microservices registered in Eureka (headers and cookies are passed in such requests)"
 
 #: ../../integration/data sources.rst:23
 msgid "**HTTP Method** - можно выбрать методы http post, get, put и т.д."
-msgstr ""
+msgstr "**HTTP Method** - you can select http methods like post, get, put, etc."
 
 #: ../../integration/data sources.rst:24
 #, python-brace-format
@@ -67,6 +69,7 @@ msgid ""
 "**Request headers** - заголовки запроса. Есть поддержка переменных "
 "запроса в фигурных скобках - *${key}*"
 msgstr ""
+"**Request headers** - request headers. Supports query variables in curly braces - *${key}*"
 
 #: ../../integration/data sources.rst:25
 #, python-brace-format
@@ -74,6 +77,7 @@ msgid ""
 "**Request body** - тело запроса. Есть поддержка переменных запроса в "
 "фигурных скобках - *${key}*"
 msgstr ""
+"**Request body** - request body. Supports query variables in curly braces - *${key}*"
 
 #: ../../integration/data sources.rst:26
 msgid ""
@@ -81,38 +85,41 @@ msgid ""
 "описывает преобразование ответа. Формат спецификации - `Jolt  <https"
 "://jolt-demo.appspot.com/>`_"
 msgstr ""
+"**Json response transform specification** - A specification that describes the response transformation. The specification format is `Jolt <https://jolt-demo.appspot.com/>`_"
 
 #: ../../integration/data sources.rst:29
 msgid "DB Data Source"
-msgstr ""
+msgstr "DB Data Source"
 
 #: ../../integration/data sources.rst:31
 msgid "Источник данных из базы данных."
-msgstr ""
+msgstr "Data source from a database."
 
 #: ../../integration/data sources.rst:34
 msgid "SSL при запросах к бд через ECOS db-data-source"
-msgstr ""
+msgstr "SSL for database requests via ECOS db-data-source"
 
 #: ../../integration/data sources.rst:36
 msgid "**1. Общая информация по настройке**"
-msgstr ""
+msgstr "**1. General Configuration Information**"
 
 #: ../../integration/data sources.rst:38
 msgid ""
 "Начиная с версии 2.8.0 микросервиса интеграции - появилась возможность "
 "указывать в конфиге на форме **DataSource** следующие параметры:"
 msgstr ""
+"Starting from version 2.8.0 of the integration microservice, it has become possible to specify the following parameters in the **DataSource** form config:"
 
 #: ../../integration/data sources.rst:40
 msgid "Можно использовать при настройке внешней БД в **recsrc**."
-msgstr ""
+msgstr "Can be used when configuring an external database in **recsrc**."
 
 #: ../../integration/data sources.rst:46
 msgid ""
 "Общий принцип таков, что исходя из конфига - создается "
 "**HikariDataSource**."
 msgstr ""
+"The general principle is that a **HikariDataSource** is created based on the config."
 
 #: ../../integration/data sources.rst:48
 msgid ""
@@ -120,16 +127,18 @@ msgid ""
 "попадут дополнительные атрибуты, которые принудят используемый драйвер "
 "ходить не по http, а по https."
 msgstr ""
+"When these properties are specified, additional attributes will be included in our created **HikariDataSource**, which will force the used driver to use HTTPS instead of HTTP."
 
 #: ../../integration/data sources.rst:50
 msgid "Доступные сейчас режимы:"
-msgstr ""
+msgstr "Currently available modes:"
 
 #: ../../integration/data sources.rst:52
 msgid ""
 "**none** - флаг ssl выключен, поля НЕ заполнены. Ходим по HTTP протоколу "
 "(трафик не защищен)."
 msgstr ""
+"**none** - SSL flag is off, fields are NOT filled. We use the HTTP protocol (traffic is not secured)."
 
 #: ../../integration/data sources.rst:53
 msgid ""
@@ -138,6 +147,7 @@ msgid ""
 "которой мы доверяем. БД так же не уверена что соединяется с нашим "
 "приложением."
 msgstr ""
+"**require** - SSL flag is on, other fields are NOT filled. We use HTTPS, traffic is secured by encryption, but we do not verify that the database is the one we trust. The database is also not sure it is connecting to our application."
 
 #: ../../integration/data sources.rst:54
 msgid ""
@@ -147,12 +157,14 @@ msgid ""
 "(при успехе рукопожатия). БД еще не уверена что соединяется с нашим "
 "приложением."
 msgstr ""
+"**verify-ca** - SSL flag is on, SSL root cert path and SSL cert path are specified, SSLkey path is not specified. We use HTTPS, traffic is secured by encryption. We know the database is the one we want to connect to (upon successful handshake). The database is still not sure it is connecting to our application."
 
 #: ../../integration/data sources.rst:55
 msgid ""
 "**verify-full** - флаг ssl включен, остальные поля заполнены. Ходим по "
 "HTTPS, трафик защищен. Мы уверены в БД, а БД уверена в нас."
 msgstr ""
+"**verify-full** - SSL flag is on, other fields are filled. We use HTTPS, traffic is secured. We are confident in the database, and the database is confident in us."
 
 #: ../../integration/data sources.rst:57
 msgid ""
@@ -162,20 +174,22 @@ msgid ""
 "<https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_ "
 "Connecting to the Database."
 msgstr ""
+"For more details on configuration, you can look here: `Configuring the Client <https://jdbc.postgresql.org/documentation/head/ssl-client.html>`_ and here: `Connecting to the Database <https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_."
 
 #: ../../integration/data sources.rst:59
 msgid ""
 "Настройки со стороны БД описаны тут:  `SSL Support "
 "<https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_"
 msgstr ""
+"Database-side settings are described here: `SSL Support <https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_"
 
 #: ../../integration/data sources.rst:63
 msgid "ВАЖНО! Тестировались только варианты require и verify-ca для БД Postgres."
-msgstr ""
+msgstr "IMPORTANT! Only the require and verify-ca options have been tested for Postgres DB."
 
 #: ../../integration/data sources.rst:65
 msgid "**2. Подъем БД в докере с возможностью общаться по HTTPS**"
-msgstr ""
+msgstr "**2. Running the DB in Docker with HTTPS Communication Capability**"
 
 #: ../../integration/data sources.rst:67
 msgid ""
@@ -183,70 +197,72 @@ msgid ""
 "будет разный, так как постгрису важно чтоб на файл еще были минимальные "
 "права (640 и меньше от рута, 600 и меньше при запуске в других случаях)."
 msgstr ""
+"For each system, the approach to injecting certificates into the container image will be different, because it is important for Postgres that the file has minimal permissions (640 or less from root, 600 or less when running in other cases)."
 
 #: ../../integration/data sources.rst:69
 msgid "Расскажу как обойти это на примере Windows."
-msgstr ""
+msgstr "I will explain how to work around this using Windows as an example."
 
 #: ../../integration/data sources.rst:71
 msgid ""
 "В Windows, к сожалению, такой контейнер в докере можно запустить только "
 "собирая его сразу с сертификатами."
 msgstr ""
+"In Windows, unfortunately, such a container in Docker can only be run by building it with the certificates included from the start."
 
 #: ../../integration/data sources.rst:73
-msgid "Сгенерим ключи и серт:"
-msgstr ""
+msgid "Сгенерируем ключи и серт:"
+msgstr "Let's generate keys and certificates:"
 
 #: ../../integration/data sources.rst:83
 msgid "Добавить в директорию с сертификатами DockerFile:"
-msgstr ""
+msgstr "Add a Dockerfile to the directory with certificates:"
 
 #: ../../integration/data sources.rst:98
 msgid "Собираем и запускаем:"
-msgstr ""
+msgstr "Build and run:"
 
 #: ../../integration/data sources.rst:106
 msgid "**3. Проверка соединения**"
-msgstr ""
+msgstr "**3. Connection Check**"
 
 #: ../../integration/data sources.rst:108
 msgid ""
 "Проверить клиентов и признак использования шифрования с их стороны можно "
 "с помощью SQL скрипта:"
-msgstr ""
+msgstr "You can check clients and the indication of encryption usage on their side using an SQL script:"
 
 #: ../../integration/data sources.rst:119
 msgid "[Deprecated] MQ Data Source"
-msgstr ""
+msgstr "[Deprecated] MQ Data Source"
 
 #: ../../integration/data sources.rst:123
 msgid "Для интеграции с MQ лучше использовать :ref:`Camel DSL<rabbitmq_camel>`"
-msgstr ""
+msgstr "For MQ integration, it is better to use :ref:`Camel DSL<rabbitmq_camel>`"
 
 #: ../../integration/data sources.rst:125
 msgid "Источник данных для подключения к очереди сообщений"
-msgstr ""
+msgstr "Data source for connecting to a message queue"
 
 #: ../../integration/data sources.rst:131
 msgid "**Id** - идентификатор источника данных"
-msgstr ""
+msgstr "**Id** - data source identifier"
 
 #: ../../integration/data sources.rst:132
 msgid "**Name** - произвольное имя источника данных"
-msgstr ""
+msgstr "**Name** - arbitrary data source name"
 
 #: ../../integration/data sources.rst:133
 msgid "**URI** - строка для подключения к очереди"
-msgstr ""
+msgstr "**URI** - connection string for the queue"
 
 #: ../../integration/data sources.rst:134
 msgid "**Type** - тип очереди"
-msgstr ""
+msgstr "**Type** - queue type"
 
 #: ../../integration/data sources.rst:135
 msgid ""
 "**Credentials** - ссылка на credentials где указаны login/pass для "
 "подключения к очереди"
 msgstr ""
-
+"**Credentials** - reference to credentials where the login/password for connecting to the queue is specified"

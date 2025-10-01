@@ -21,13 +21,15 @@ msgstr ""
 
 #: ../../general/Commands.rst:2
 msgid "Команды"
-msgstr ""
+msgstr "Commands"
 
 #: ../../general/Commands.rst:6
 msgid ""
 "**Команда** — декларативное описание действия, которое нужно сделать на "
 "удаленном сервисе или локально."
 msgstr ""
+"**Command** — a declarative description of an action that needs to be "
+"performed on a remote service or locally."
 
 #: ../../general/Commands.rst:12
 msgid ""
@@ -35,20 +37,24 @@ msgid ""
 "RabbitMQ. Использование команд возможно как в синхронном, так и в "
 "асинхронном режиме."
 msgstr ""
+"**Commands** in Citeck ECOS use RabbitMQ queues as transport. Commands "
+"can be used in both synchronous and asynchronous modes."
 
 #: ../../general/Commands.rst:14
 msgid "Целью команд могут быть:"
-msgstr ""
+msgstr "Command targets can be:"
 
 #: ../../general/Commands.rst:16
 msgid ""
 "Тип сервиса (ecos-process, ecos-uiserv, alfresco и др.). Команду "
 "исполняет один из инстансов данного сервиса."
 msgstr ""
+"Service type (ecos-process, ecos-uiserv, alfresco, etc.). The command is "
+"executed by one of the instances of this service."
 
 #: ../../general/Commands.rst:18
 msgid "Инстанс сервиса (у каждого типа сервиса может быть много инстансов)."
-msgstr ""
+msgstr "Service instance (each service type can have multiple instances)."
 
 #: ../../general/Commands.rst:20
 msgid ""
@@ -56,12 +62,17 @@ msgid ""
 "отправляет широковещательную команду в RabbitMQ и её обрабатывают все "
 "сервисы, которые в данный момент активны."
 msgstr ""
+"All service types (broadcast commands). The command source service sends a"
+" broadcast command to RabbitMQ and it's processed by all currently active "
+"services."
 
 #: ../../general/Commands.rst:22
 msgid ""
 "Выполнение команды осуществляется с помощью сервиса **CommandService**. В"
 " частности его методом **execute** и **executeSync**:"
 msgstr ""
+"Command execution is performed using the **CommandService**. Specifically "
+"its **execute** and **executeSync** methods:"
 
 #: ../../general/Commands.rst:24
 msgid ""
@@ -70,10 +81,13 @@ msgid ""
 "этом случае необходимо указать **id микросервиса**, куда отправится "
 "команда)"
 msgstr ""
+"Commands can be either local (i.e., executed within one service) or remote"
+" (the command is sent to another microservice, in which case the "
+"**microservice id** where the command will be sent must be specified)"
 
 #: ../../general/Commands.rst:26
 msgid "Для реализации удаленной команды:"
-msgstr ""
+msgstr "To implement a remote command:"
 
 #: ../../general/Commands.rst:28
 msgid ""
@@ -82,6 +96,10 @@ msgid ""
 "alfresco в микросервис интеграций, то необходимо создать 2 идентичных "
 "класса, один в alfresco, а второй в микросервис интеграций:"
 msgstr ""
+"Create a DTO in the service FROM which the command will be sent and where "
+"it will be executed. For example, if you need to send a command from "
+"alfresco to the integrations microservice, you need to create 2 identical "
+"classes, one in alfresco and the second in the integrations microservice:"
 
 #: ../../general/Commands.rst:40
 msgid ""
@@ -89,12 +107,17 @@ msgid ""
 " (по ней определяется какому **Executor** будет отдана данная команда "
 "(см. пункт 3)."
 msgstr ""
+"Be sure to specify the **CommandType** annotation with a unique command "
+"name (it determines which **Executor** will be given this command (see "
+"item 3))."
 
 #: ../../general/Commands.rst:42
 msgid ""
 "Также необходим DTO с ожидаемым ответом, его также необходимо реализовать"
 " в обоих сервисах."
 msgstr ""
+"A DTO with the expected response is also needed, and it must also be "
+"implemented in both services."
 
 #: ../../general/Commands.rst:44
 msgid ""
@@ -106,18 +129,29 @@ msgid ""
 "трансформируется из json в ResponseDTO. Например, ответ, который ожидаем "
 "от исполнения команды высланным выше DTO:"
 msgstr ""
+"Essentially, we send a DTO with data, which is converted to JSON, then "
+"sent to the required microservice, where it's converted back to a DTO and "
+"processed by the executor. After processing by the executor, we need to "
+"return a DTO with the response, which is also converted to JSON and sent "
+"back to where the command was called from, where it's transformed from "
+"JSON back to ResponseDTO. For example, the response we expect from "
+"executing the command with the DTO sent above:"
 
 #: ../../general/Commands.rst:57
 msgid ""
 "В сервисе, КУДА отсылается команда, необходимо реализовать **Executor**, "
 "который будет обрабатывать DTO."
 msgstr ""
+"In the service WHERE the command is sent, you need to implement an "
+"**Executor** that will process the DTO."
 
 #: ../../general/Commands.rst:59
 msgid ""
 "В executor необходимо имплиментировать интерфейс **CommandExecutor<E>** ,"
 " где **E** - входящий DTO (п.1)"
 msgstr ""
+"In the executor, you need to implement the **CommandExecutor<E>** "
+"interface, where **E** is the incoming DTO (item 1)"
 
 #: ../../general/Commands.rst:61
 msgid ""
@@ -126,20 +160,28 @@ msgid ""
 "запросом (п.1), берем из него данные, обрабатываем, затем формируем DTO с"
 " ответом в этом методе и возвращаем его."
 msgstr ""
+"You also need to implement the **execute(E)** method, which contains the "
+"actual command processing. That is, we take the request DTO as input (item"
+" 1), extract data from it, process it, then form a response DTO in this "
+"method and return it."
 
 #: ../../general/Commands.rst:63
 msgid "Пример:"
-msgstr ""
+msgstr "Example:"
 
 #: ../../general/Commands.rst:85
 msgid "Пример логики, где просто проверяем имя метода и формируем ответную DTO."
 msgstr ""
+"Example logic where we simply check the method name and form a response "
+"DTO."
 
 #: ../../general/Commands.rst:87
 msgid ""
 "В сервисе, ИЗ которого отправляем командный запрос, используем "
 "**CommandService** для отправки команды, пример:"
 msgstr ""
+"In the service FROM which we send the command request, we use "
+"**CommandService** to send the command, example:"
 
 #: ../../general/Commands.rst:101
 msgid ""
@@ -147,6 +189,9 @@ msgid ""
 "отправляем команду в микросервис интеграций, явно указывая это во втором "
 "параметре."
 msgstr ""
+"In this example, we form a DTO (you can also use a builder) and send the "
+"command to the integrations microservice, explicitly specifying this in "
+"the second parameter."
 
 #: ../../general/Commands.rst:103
 msgid ""
@@ -154,4 +199,6 @@ msgid ""
 "метод **.getResultAs** для автоматической конвертации ответа в удобный "
 "DTO."
 msgstr ""
-
+"In the response, we expect a **SparkServiceMethodCommandResponse** DTO and"
+" use the **.getResultAs** method for automatic conversion of the response "
+"to a convenient DTO."
