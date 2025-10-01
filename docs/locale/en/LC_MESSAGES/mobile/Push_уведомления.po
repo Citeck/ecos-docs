@@ -21,123 +21,148 @@ msgstr ""
 
 #: ../../mobile/Push_уведомления.rst:2
 msgid "Уведомления"
-msgstr ""
+msgstr "Notifications"
 
 #: ../../mobile/Push_уведомления.rst:5
 msgid "Инициализация push-уведомлений"
-msgstr ""
+msgstr "Push Notifications Initialization"
 
 #: ../../mobile/Push_уведомления.rst:7
 msgid ""
 "При запуске приложения инициализируем push-уведомления "
 "``src/helpers/notifications.helper.ts initNotifications``"
 msgstr ""
+"When starting the application, initialize push notifications "
+"``src/helpers/notifications.helper.ts initNotifications``"
 
 #: ../../mobile/Push_уведомления.rst:9
 msgid "запрашиваем у пользователя разрешение на прием push-уведомлений"
-msgstr ""
+msgstr "request user permission to receive push notifications"
 
 #: ../../mobile/Push_уведомления.rst:10
 msgid ""
 "подписываемся на события открытия приложения по уведомлению: "
 "``getInitialNotification``, ``onNotificationOpenedApp``"
 msgstr ""
+"subscribe to app opening events via notification: "
+"``getInitialNotification``, ``onNotificationOpenedApp``"
 
 #: ../../mobile/Push_уведомления.rst:11
 msgid ""
 "в случае отсутствия разрешения на прием push-уведомлений, отписываемся "
 "``unsubscribeFromPushWorker``"
 msgstr ""
+"if permission to receive push notifications is not granted, unsubscribe "
+"``unsubscribeFromPushWorker``"
 
 #: ../../mobile/Push_уведомления.rst:14
 msgid "Подписка на push-уведомления"
-msgstr ""
+msgstr "Push Notifications Subscription"
 
 #: ../../mobile/Push_уведомления.rst:16
 msgid "``src/store/actions/settings.actions.ts subscribeToPushWorker``"
-msgstr ""
+msgstr "``src/store/actions/settings.actions.ts subscribeToPushWorker``"
 
 #: ../../mobile/Push_уведомления.rst:18
 msgid "проверяем разрешение на прием уведомлений"
-msgstr ""
+msgstr "check notification reception permission"
 
 #: ../../mobile/Push_уведомления.rst:19
 msgid ""
 "выполняем запрос ``/gateway/alfresco/alfresco/s/citeck/global-"
 "properties?name=ecos.server.tenant.id``"
 msgstr ""
+"execute request ``/gateway/alfresco/alfresco/s/citeck/global-"
+"properties?name=ecos.server.tenant.id``"
 
 #: ../../mobile/Push_уведомления.rst:20
 msgid "получаем токен FCM"
-msgstr ""
+msgstr "get FCM token"
 
 #: ../../mobile/Push_уведомления.rst:21
 msgid ""
 "полученный токен и Tenant ID передаем серверу в запросе "
 "``/gateway/api/records/mutate``"
 msgstr ""
+"send the obtained token and Tenant ID to the server in the request "
+"``/gateway/api/records/mutate``"
 
 #: ../../mobile/Push_уведомления.rst:22
 msgid ""
 "id подписки, полученный в ответе, сохраняется в локальном хранилище для "
 "обновления токена, отписки от push-уведомлений"
 msgstr ""
+"subscription ID received in the response is saved in local storage for "
+"token updates, push notifications unsubscription"
 
 #: ../../mobile/Push_уведомления.rst:25
 msgid ""
 "При подписке на push-уведомления дополнительно передается локаль "
 "приложения ``locale``"
 msgstr ""
+"When subscribing to push notifications, the application locale ``locale`` "
+"is additionally sent"
 
 #: ../../mobile/Push_уведомления.rst:28
 msgid "Обновление токена"
-msgstr ""
+msgstr "Token Update"
 
 #: ../../mobile/Push_уведомления.rst:30
 msgid ""
 "``src/store/actions/settings.actions.ts onTokenRefresh, "
 "sendLanguageSettings``"
 msgstr ""
+"``src/store/actions/settings.actions.ts onTokenRefresh, "
+"sendLanguageSettings``"
 
 #: ../../mobile/Push_уведомления.rst:32
 msgid ""
 "При обновлении токена FCM необходимо передать его в запросе "
 "``/gateway/api/records/mutate`` с указание **id подписки**"
 msgstr ""
+"When updating the FCM token, it must be sent in the request "
+"``/gateway/api/records/mutate`` with the **subscription ID** specified"
 
 #: ../../mobile/Push_уведомления.rst:35
 msgid ""
 "При обновлении токена, и смене языка интерфейса приложения дополнительно "
 "передается локаль приложения ``locale``"
 msgstr ""
+"When updating the token and changing the application interface language, "
+"the application locale ``locale`` is additionally sent"
 
 #: ../../mobile/Push_уведомления.rst:38
 msgid "Отписка от push-уведомлений"
-msgstr ""
+msgstr "Push Notifications Unsubscription"
 
 #: ../../mobile/Push_уведомления.rst:40
 msgid "``src/store/actions/settings.actions.ts unsubscribeFromPush``"
-msgstr ""
+msgstr "``src/store/actions/settings.actions.ts unsubscribeFromPush``"
 
 #: ../../mobile/Push_уведомления.rst:42
 msgid ""
 "выполняем запрос ``/gateway/api/records/delete``, указав **id подписки**,"
 " полученный на шаге подписки на уведомления"
 msgstr ""
+"execute request ``/gateway/api/records/delete``, specifying the "
+"**subscription ID** obtained during the notification subscription step"
 
 #: ../../mobile/Push_уведомления.rst:45
 msgid "Открытие push-уведомлений"
-msgstr ""
+msgstr "Opening Push Notifications"
 
 #: ../../mobile/Push_уведомления.rst:47
 msgid ""
 "``src/helpers/notifications.helper.ts getInitialNotification, "
 "onNotificationOpenedApp``"
 msgstr ""
+"``src/helpers/notifications.helper.ts getInitialNotification, "
+"onNotificationOpenedApp``"
 
 #: ../../mobile/Push_уведомления.rst:49
 msgid ""
 "При открытии задачи из уведомления важен ``taskId``, переданный в payload"
 " уведомления"
 msgstr ""
-
+"When opening a task from a notification, the ``taskId`` passed in the "
+"notification payload is important"

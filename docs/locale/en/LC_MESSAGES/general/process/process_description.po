@@ -21,27 +21,30 @@ msgstr ""
 
 #: ../../general/process/process_description.rst:2
 msgid "Описание микросервиса Process и предпосылки"
-msgstr ""
+msgstr "Description of the Process Microservice and Prerequisites"
 
 #: ../../general/process/process_description.rst:4
 msgid "Микросервис для управления BPMN процессами."
-msgstr ""
+msgstr "Microservice for managing BPMN processes."
 
 #: ../../general/process/process_description.rst:6
 msgid "Предъявляемые требования:"
-msgstr ""
+msgstr "Requirements:"
 
 #: ../../general/process/process_description.rst:8
 msgid ""
 "Отказоустойчивость. При выходе из строя любого узла системы "
 "работоспособность должна сохраняться."
 msgstr ""
+"Fault tolerance. If any system node fails, operability must be maintained."
 
 #: ../../general/process/process_description.rst:9
 msgid ""
 "Сохранность данных. При полной или частичной потере данных на одном из "
 "узлов хранилища данные в системе не должны быть потеряны."
 msgstr ""
+"Data integrity. In case of complete or partial data loss on one of the "
+"storage nodes, data in the system must not be lost."
 
 #: ../../general/process/process_description.rst:10
 msgid ""
@@ -51,46 +54,58 @@ msgid ""
 "с увеличением времени жизни системы. Старые процессы, которые уже давно "
 "завершились не должны оказывать негативное влияние на активные."
 msgstr ""
+"Horizontal scaling. With an increase in the number of processes, it must be "
+"possible to scale horizontally by increasing the number of nodes in the "
+"cluster to avoid degradation of request execution time as the system "
+"lifetime increases. Old processes that have long been completed should not "
+"have a negative impact on active ones."
 
 #: ../../general/process/process_description.rst:12
 msgid "В качестве хранилища для данных выбрана NoSQL БД MongoDB."
-msgstr ""
+msgstr "MongoDB NoSQL database has been chosen as the data storage."
 
 #: ../../general/process/process_description.rst:14
 msgid "Схема связей микросервиса ECOS Process в случае MongoDB:"
-msgstr ""
+msgstr "ECOS Process microservice relationship diagram for MongoDB case:"
 
 #: ../../general/process/process_description.rst:20
 msgid ""
 "В качестве хранилища для данных в будущем может быть выбрана NoSQL БД "
 "Cassandra, которая сможет решить сразу несколько поставленных задач:"
 msgstr ""
+"In the future, the Cassandra NoSQL database may be chosen as the data "
+"storage, which can solve several tasks at once:"
 
 #: ../../general/process/process_description.rst:22
 msgid ""
 "Автоматическая репликация данных на заданное количество узлов "
 "(Сохранность данных)"
 msgstr ""
+"Automatic data replication to a specified number of nodes (Data integrity)"
 
 #: ../../general/process/process_description.rst:23
 msgid ""
 "Все ноды в кластере Cassandra являются равнозначными. Мастер отсутствует "
 "(Отказоустойчивость)"
 msgstr ""
+"All nodes in the Cassandra cluster are equal. There is no master node (Fault "
+"tolerance)"
 
 #: ../../general/process/process_description.rst:24
 msgid ""
 "Кластер Cassandra можно гибко конфигурировать и добавлять новые ноды в "
 "уже работающую систему (Горизонтальное масштабирование)"
 msgstr ""
+"The Cassandra cluster can be flexibly configured and new nodes can be added "
+"to an already running system (Horizontal scaling)"
 
 #: ../../general/process/process_description.rst:26
 msgid "Схема связей микросервиса ECOS Process, в случае кластера Cassandra:"
-msgstr ""
+msgstr "ECOS Process microservice relationship diagram for Cassandra cluster case:"
 
 #: ../../general/process/process_description.rst:32
 msgid "Особенности:"
-msgstr ""
+msgstr "Features:"
 
 #: ../../general/process/process_description.rst:34
 msgid ""
@@ -98,6 +113,9 @@ msgid ""
 "масштабирования - хранилище, gateway для доступа к хранилищу и кластер "
 "stateless микросервисов ECOS Process"
 msgstr ""
+"In the Enterprise configuration, we get 3 levels of horizontal scaling - "
+"storage, gateway for storage access, and a cluster of stateless ECOS Process "
+"microservices"
 
 #: ../../general/process/process_description.rst:35
 msgid ""
@@ -105,18 +123,25 @@ msgid ""
 " запрос от пользователя на любой из них. Для синхронизации действий между"
 " инстансами ECOS Process используется Hazelcast"
 msgstr ""
+"Since ECOS Process microservices are stateless, we can send user requests to "
+"any of them. Hazelcast is used for synchronizing actions between ECOS "
+"Process instances"
 
 #: ../../general/process/process_description.rst:36
 msgid ""
 "Описание процессов хранится во внешнем микросервисе ECOS Apps, который у "
 "нас уже реализован и версионирует любые изменения в процессах"
 msgstr ""
+"Process descriptions are stored in the external ECOS Apps microservice, "
+"which is already implemented and versions any changes in processes"
 
 #: ../../general/process/process_description.rst:37
 msgid ""
 "Интеграция с внешними событиями осуществляется через очередь сообщений "
 "RabbitMQ."
 msgstr ""
+"Integration with external events is carried out through the RabbitMQ message "
+"queue."
 
 #: ../../general/process/process_description.rst:38
 msgid ""
@@ -127,12 +152,20 @@ msgid ""
 " Такая настройка позволяет избежать ситуаций когда сетевые проблемы между"
 " нодами кластера приводят к их рассинхронизации."
 msgstr ""
+"Cassandra is configured for QUORUM Read/Write (N/2 + 1), where N is the "
+"number of Cassandra nodes. This means that a write is considered successful "
+"if the majority of nodes in the cluster have confirmed that the write "
+"occurred. For reading, it is also required that the majority of nodes return "
+"current data. This configuration avoids situations where network problems "
+"between cluster nodes lead to their desynchronization."
 
 #: ../../general/process/process_description.rst:39
 msgid ""
 "Администратор через центральную конфигурацию может настраивать ECOS "
 "Process для подключения к кластеру Cassandra"
 msgstr ""
+"An administrator can configure ECOS Process to connect to the Cassandra "
+"cluster through central configuration"
 
 #: ../../general/process/process_description.rst:41
 msgid ""
@@ -142,6 +175,11 @@ msgid ""
 "только меняем ссылку на новое состояние, после того, как все активности "
 "успешно завершились."
 msgstr ""
+"In the NoSQL solution, there are no full-fledged transactions, and to "
+"guarantee data integrity, the process state is described as immutable. Each "
+"process state is stored as a separate version. In the process instance, we "
+"only change the reference to the new state after all activities have "
+"successfully completed."
 
 #: ../../general/process/process_description.rst:43
 msgid ""
@@ -149,10 +187,12 @@ msgid ""
 "процесса в любое из предыдущих состояний и очень помогает в случае "
 "возникновения нештатных ситуаций."
 msgstr ""
+"In addition to data integrity, this also allows rolling back the process to "
+"any previous state and is very helpful in case of abnormal situations."
 
 #: ../../general/process/process_description.rst:50
 msgid "Жизненный цикл транзакции с запущенным процессом в ecos-process"
-msgstr ""
+msgstr "Lifecycle of a transaction with a running process in ecos-process"
 
 #: ../../general/process/process_description.rst:56
 msgid ""
@@ -160,6 +200,9 @@ msgid ""
 "(например, «Создан Договор») или при поступлении команды (например, "
 "«Завершить задачу»)."
 msgstr ""
+"A transaction in ECOS Process begins when an event occurs (for example, "
+"'Contract Created') or when a command is received (for example, 'Complete "
+"Task')."
 
 #: ../../general/process/process_description.rst:58
 msgid ""
@@ -169,6 +212,11 @@ msgid ""
 "условия выполнены, мы запускаем необходимую команду. Далее обработка идет"
 " также, как в случае, если в микросервис сразу пришла команда."
 msgstr ""
+"When an event occurs, we check all subscribers to this event and for each of "
+"them, we check the conditions if they exist. If the conditions are not met, "
+"we end event processing. When the conditions are met, we launch the "
+"necessary command. Further processing proceeds the same as if the command "
+"came directly to the microservice."
 
 #: ../../general/process/process_description.rst:60
 msgid ""
@@ -179,4 +227,10 @@ msgid ""
 "на новое состояние. Если в ходе транзакции возникали внешние события или "
 "внешние команды, то по завершении транзакции мы отправляем их в RabbitMQ."
 msgstr ""
-
+"When a command is received to perform an action in the process, we read the "
+"process state, perform a series of transitions and actions according to the "
+"process description, and if all operations are successful, we create a new "
+"version of the process state in the database, then change the reference in "
+"the process instance to the new state. If external events or external "
+"commands occurred during the transaction, we send them to RabbitMQ upon "
+"transaction completion."
