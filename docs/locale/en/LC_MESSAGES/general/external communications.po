@@ -21,35 +21,35 @@ msgstr ""
 
 #: ../../general/external communications.rst:2
 msgid "Настройка внешних коммуникаций для Citeck"
-msgstr ""
+msgstr "Configuring External Communications for Citeck"
 
 #: ../../general/external communications.rst:5
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../general/external communications.rst:8
 msgid "Базовые принципы"
-msgstr ""
+msgstr "Basic Principles"
 
 #: ../../general/external communications.rst:10
 msgid ""
 "Все коммуникации настраиваются через spring конфигурацию, которая может "
 "быть настроена либо через ENV переменные, либо через конфигурационные "
 "файлы."
-msgstr ""
+msgstr "All communications are configured through Spring configuration, which can be set up either via ENV variables or through configuration files."
 
 #: ../../general/external communications.rst:12
 msgid ""
 "Конфигурационные файлы могут быть в формате либо yaml, либо properties. "
 "Правила для маппинга между ENV переменными и свойствами в "
 "конфигурационных файлах:"
-msgstr ""
+msgstr "Configuration files can be in either yaml or properties format. The rules for mapping between ENV variables and properties in configuration files are:"
 
 #: ../../general/external communications.rst:15
 msgid ""
 "Разбиваем ключ по ``\".\"`` (т.е. ``aa.customProp.cc`` => [``'aa'``, "
 "``'customProp'``, ``'cc'``])"
-msgstr ""
+msgstr "Split the key by ``\".\"`` (i.e., ``aa.customProp.cc`` => [``'aa'``, ``'customProp'``, ``'cc'``])"
 
 #: ../../general/external communications.rst:16
 msgid ""
@@ -57,59 +57,59 @@ msgid ""
 " ``'customProp'``, ``'cc'``] => [``'aa'``, ``'custom'``, ``'Prop'``, "
 "``'cc'``]) – прим. этот этап опционален и применим только к платформе "
 "Citeck. В стандартном spring его нет."
-msgstr ""
+msgstr "Split each part of the key by words if camelCase is found ([``'aa'``, ``'customProp'``, ``'cc'``] => [``'aa'``, ``'custom'``, ``'Prop'``, ``'cc'``]) – note: this step is optional and applies only to the Citeck platform. It is not present in standard Spring."
 
 #: ../../general/external communications.rst:17
 msgid ""
 "Переводим все части в UPPER CASE и объединяем через символ ``\"_\"`` "
 "([``'aa'``, ``'custom'``, ``'Prop'``, ``'cc'``] => ``AA_CUSTOM_PROP_CC``)"
-msgstr ""
+msgstr "Convert all parts to UPPER CASE and join them with the ``\"_\"`` symbol ([``'aa'``, ``'custom'``, ``'Prop'``, ``'cc'``] => ``AA_CUSTOM_PROP_CC``)"
 
 #: ../../general/external communications.rst:19
 msgid "ENV переменные имеют наивысший приоритет."
-msgstr ""
+msgstr "ENV variables have the highest priority."
 
 #: ../../general/external communications.rst:21
 msgid ""
 "Подробнее про spring конфигурацию можно прочитать в `официальной "
 "документации spring boot <https://docs.spring.io/spring-"
 "boot/reference/features/external-config.html>`_"
-msgstr ""
+msgstr "More about Spring configuration can be read in the `official Spring Boot documentation <https://docs.spring.io/spring-boot/reference/features/external-config.html>`_"
 
 #: ../../general/external communications.rst:24
 msgid "JWT токен"
-msgstr ""
+msgstr "JWT Token"
 
 #: ../../general/external communications.rst:26
 msgid ""
 "Все микросервисы при общении между собой используют **jwt токен** для "
 "подписывания запросов и валидации входящих запросов. Токен задается "
 "свойством"
-msgstr ""
+msgstr "All microservices use a **JWT token** for signing requests and validating incoming requests when communicating with each other. The token is specified by the property"
 
 #: ../../general/external communications.rst:32
 msgid ""
 "и должен содержать произвольный base64 ключ, который должен совпадать у "
 "всех микросервисов."
-msgstr ""
+msgstr "and must contain an arbitrary base64 key that should be the same across all microservices."
 
 #: ../../general/external communications.rst:35
 msgid "Подключение к RabbitMQ"
-msgstr ""
+msgstr "Connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:37
 msgid ""
 "Каждый микросервис в платформе Citeck требует наличия основного "
 "подключения к RabbitMQ и все микросервисы должны быть подключены к одному"
 " виртуальному хосту в одном RabbitMQ."
-msgstr ""
+msgstr "Every microservice in the Citeck platform requires a main connection to RabbitMQ, and all microservices must be connected to the same virtual host in the same RabbitMQ instance."
 
 #: ../../general/external communications.rst:39
 msgid ""
 "Стандартные настройки ``spring.rabbitmq.*`` в Citeck отключены и вместо "
 "них следует использовать настройки ``ecos.webapp.dataSources.main-"
 "rabbitmq.*``"
-msgstr ""
+msgstr "The standard ``spring.rabbitmq.*`` settings are disabled in Citeck, and instead, the ``ecos.webapp.dataSources.main-rabbitmq.*`` settings should be used."
 
 #: ../../general/external communications.rst:43
 msgid ""
@@ -117,22 +117,22 @@ msgid ""
 "остаются те же самые, но вместо main-rabbitmq будет другой ключ. "
 "Подробнее о наличии дополнительных подключений можно прочитать в разделах"
 " ниже."
-msgstr ""
+msgstr "There might be more than one RabbitMQ connection, in which case the settings remain the same but with a different key instead of main-rabbitmq. More about additional connections can be read in the sections below."
 
 #: ../../general/external communications.rst:51 communications.rst:101
 #: communications.rst:123 communications.rst:163
 msgid "Настройка"
-msgstr ""
+msgstr "Setting"
 
 #: ../../general/external communications.rst:52 communications.rst:102
 #: communications.rst:124 communications.rst:164 communications.rst:244
 msgid "Значение по умолчанию"
-msgstr ""
+msgstr "Default Value"
 
 #: ../../general/external communications.rst:53 communications.rst:125
 #: communications.rst:165 communications.rst:245
 msgid "Описание"
-msgstr ""
+msgstr "Description"
 
 #: ../../general/external communications.rst:54
 msgid "ecos.webapp.dataSources.main-rabbitmq.host"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:56
 msgid "Хост для подключения к rabbitmq"
-msgstr ""
+msgstr "Host for connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:57
 msgid "ecos.webapp.dataSources.main-rabbitmq.username"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:59
 msgid "Имя пользователя для подключения к rabbitmq"
-msgstr ""
+msgstr "Username for connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:60
 msgid "ecos.webapp.dataSources.main-rabbitmq.password"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:62
 msgid "Пароль для подключения к rabbitmq"
-msgstr ""
+msgstr "Password for connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:63
 msgid "ecos.webapp.dataSources.main-rabbitmq.virtualHost"
@@ -176,7 +176,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:65
 msgid "Виртуальный хост для подключения к rabbitmq"
-msgstr ""
+msgstr "Virtual host for connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:66
 msgid "ecos.webapp.dataSources.main-rabbitmq.executor"
@@ -184,13 +184,13 @@ msgstr ""
 
 #: ../../general/external communications.rst
 msgid "Исполнитель задач, который обслуживает подключение к rabbitmq."
-msgstr ""
+msgstr "Task executor that services the RabbitMQ connection."
 
 #: ../../general/external communications.rst
 msgid ""
 "Эта настройка определяет пул потоков, который будет использован для "
 "обработки сообщений."
-msgstr ""
+msgstr "This setting defines the thread pool that will be used for message processing."
 
 #: ../../general/external communications.rst:70
 msgid "ecos.webapp.dataSources.main-rabbitmq.port"
@@ -198,15 +198,15 @@ msgstr ""
 
 #: ../../general/external communications.rst
 msgid "5671 если включен tls"
-msgstr ""
+msgstr "5671 if TLS is enabled"
 
 #: ../../general/external communications.rst
 msgid "5672 если tls выключен"
-msgstr ""
+msgstr "5672 if TLS is disabled"
 
 #: ../../general/external communications.rst:73
 msgid "Порт для подключения к rabbitmq"
-msgstr ""
+msgstr "Port for connecting to RabbitMQ"
 
 #: ../../general/external communications.rst:74
 msgid "ecos.webapp.dataSources.main-rabbitmq.tls.enabled"
@@ -218,7 +218,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:76
 msgid "Включено или нет шифрование"
-msgstr ""
+msgstr "Whether encryption is enabled or not"
 
 #: ../../general/external communications.rst:77
 msgid "ecos.webapp.dataSources.main-rabbitmq.tls.clientKey"
@@ -232,7 +232,7 @@ msgstr ""
 msgid ""
 "Секретный ключ, который будет использован микросервисом для "
 "аутентификации."
-msgstr ""
+msgstr "Secret key that will be used by the microservice for authentication."
 
 #: ../../general/external communications.rst:80
 msgid "ecos.webapp.dataSources.main-rabbitmq.tls.trustedCerts"
@@ -240,7 +240,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:82
 msgid "Список доверенных CA сертификатов"
-msgstr ""
+msgstr "List of trusted CA certificates"
 
 #: ../../general/external communications.rst:83
 msgid "ecos.webapp.dataSources.main-rabbitmq.tls.protocol"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:85
 msgid "TLS протокол"
-msgstr ""
+msgstr "TLS protocol"
 
 #: ../../general/external communications.rst:86
 msgid "ecos.webapp.dataSources.main-rabbitmq.tls.verifyHostname"
@@ -266,18 +266,18 @@ msgstr ""
 msgid ""
 "Следует или нет проверять имя хоста сервера с значением в сертификате, "
 "который он предоставляет."
-msgstr ""
+msgstr "Whether to verify the server's hostname against the value in the certificate it provides."
 
 #: ../../general/external communications.rst:91
 msgid "Особенности микросервиса ecos-process"
-msgstr ""
+msgstr "Specifics of the ecos-process Microservice"
 
 #: ../../general/external communications.rst:93
 msgid ""
 "В ecos-process добавлено дополнительное подключение к rabbitmq с ключом "
 "bpmn-rabbitmq. Настройки все те же что и для main-rabbitmq, но с "
 "поправкой на дефолтные значения:"
-msgstr ""
+msgstr "An additional RabbitMQ connection with the key bpmn-rabbitmq has been added to ecos-process. The settings are the same as for main-rabbitmq, but with adjusted default values:"
 
 #: ../../general/external communications.rst:103
 msgid "ecos.webapp.dataSources.bpmn-rabbitmq.host"
@@ -316,13 +316,13 @@ msgstr ""
 
 #: ../../general/external communications.rst:113
 msgid "Подключение к Zookeeper"
-msgstr ""
+msgstr "Connecting to Zookeeper"
 
 #: ../../general/external communications.rst:115
 msgid ""
 "Каждый микросервис в платформе Citeck требует наличия подключения к "
 "общему Zookeeper."
-msgstr ""
+msgstr "Every microservice in the Citeck platform requires a connection to a shared Zookeeper."
 
 #: ../../general/external communications.rst:126
 msgid "ecos.webapp.zookeeper.host"
@@ -334,7 +334,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:128 communications.rst:131
 msgid "Хост для подключения к Zookeeper"
-msgstr ""
+msgstr "Host for connecting to Zookeeper"
 
 #: ../../general/external communications.rst:129
 msgid "ecos.webapp.zookeeper.port"
@@ -346,17 +346,17 @@ msgstr ""
 
 #: ../../general/external communications.rst:134
 msgid "Подключение к БД (JDBC)"
-msgstr ""
+msgstr "Connecting to Database (JDBC)"
 
 #: ../../general/external communications.rst:137
 msgid "Стандартные spring настройки spring.datasource.* в Citeck не используются."
-msgstr ""
+msgstr "Standard Spring settings spring.datasource.* are not used in Citeck."
 
 #: ../../general/external communications.rst:139
 msgid ""
 "Ряд микросервисов требуют наличия двух основных подключений к БД "
 "PostgreSQL:"
-msgstr ""
+msgstr "A number of microservices require two main connections to a PostgreSQL database:"
 
 #: ../../general/external communications.rst:141
 msgid "ecos-model"
@@ -384,7 +384,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:148
 msgid "Основные подключения настраиваются через настройки:"
-msgstr ""
+msgstr "The main connections are configured via the settings:"
 
 #: ../../general/external communications.rst:155
 msgid ""
@@ -392,7 +392,7 @@ msgid ""
 "username, password должны быть такими же, а остальные настройки могут "
 "быть произвольными, но по умолчанию лучше их сделать такими же как и у "
 "main."
-msgstr ""
+msgstr "The table describes the settings for the main datasource. For main-xa-aware, the url, username, and password should be the same, while other settings can be arbitrary, but it's better to keep them the same as for main by default."
 
 #: ../../general/external communications.rst:166
 msgid "ecos.webapp.dataSources.main.url"
@@ -400,7 +400,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:168
 msgid "JDBC URL для подключения к БД"
-msgstr ""
+msgstr "JDBC URL for connecting to the database"
 
 #: ../../general/external communications.rst:169
 msgid "ecos.webapp.dataSources.main.username"
@@ -408,7 +408,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:171
 msgid "Имя пользователя для подключения"
-msgstr ""
+msgstr "Username for connection"
 
 #: ../../general/external communications.rst:172
 msgid "ecos.webapp.dataSources.main.password"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:174
 msgid "Пароль для подключения"
-msgstr ""
+msgstr "Password for connection"
 
 #: ../../general/external communications.rst:175
 msgid "ecos.webapp.dataSources.main.maxPoolSize"
@@ -428,7 +428,7 @@ msgstr ""
 
 #: ../../general/external communications.rst:177
 msgid "Максимальный размер пула подключений"
-msgstr ""
+msgstr "Maximum connection pool size"
 
 #: ../../general/external communications.rst:178
 msgid "ecos.webapp.dataSources.main.minIdle"
@@ -440,19 +440,19 @@ msgstr ""
 
 #: ../../general/external communications.rst
 msgid "Устанавливает минимальное количество неактивных соединений в пуле."
-msgstr ""
+msgstr "Sets the minimum number of idle connections in the pool."
 
 #: ../../general/external communications.rst
 msgid ""
 "Пул пытается обеспечить наличие minIdle соединений, когда запускается "
 "механизм удаления неактивных объектов."
-msgstr ""
+msgstr "The pool attempts to maintain minIdle connections when the idle object eviction mechanism is running."
 
 #: ../../general/external communications.rst
 msgid ""
 "Значение этого свойства не имеет эффекта, если "
 "timeBetweenEvictionRunsMillis не имеет положительного значения."
-msgstr ""
+msgstr "The value of this property has no effect if timeBetweenEvictionRunsMillis is not a positive value."
 
 #: ../../general/external communications.rst:183
 msgid "ecos.webapp.dataSources.main.numTestsPerEvictionRun"
@@ -464,40 +464,40 @@ msgstr ""
 
 #: ../../general/external communications.rst
 msgid "Устанавливает максимальное количество объектов, которые будут проверяться"
-msgstr ""
+msgstr "Sets the maximum number of objects to be checked"
 
 #: ../../general/external communications.rst
 msgid "при каждом запуске (если таковые есть) потока очистки неактивных объектов."
-msgstr ""
+msgstr "during each run (if any) of the idle object eviction thread."
 
 #: ../../general/external communications.rst
 msgid "Если значение положительное, то количество проверяемых объектов за один"
-msgstr ""
+msgstr "If the value is positive, then the number of objects checked per"
 
 #: ../../general/external communications.rst
 msgid "запуск будет минимумом между указанным значением и количеством неактивных"
-msgstr ""
+msgstr "run will be the minimum between the specified value and the number of idle"
 
 #: ../../general/external communications.rst
 msgid "объектов в пуле."
-msgstr ""
+msgstr "objects in the pool."
 
 #: ../../general/external communications.rst
 msgid "Если значение отрицательное, то количество проверяемых объектов будет"
-msgstr ""
+msgstr "If the value is negative, then the number of objects checked will be"
 
 #: ../../general/external communications.rst
 #, python-brace-format
 msgid "``ceil(количество_idle_подключений / |{numTestsPerEvictionRun}|)``,"
-msgstr ""
+msgstr "``ceil(number_of_idle_connections / |{numTestsPerEvictionRun}|)``,"
 
 #: ../../general/external communications.rst
 msgid "что означает, что если значение равно -N, то примерно 1/N часть"
-msgstr ""
+msgstr "which means that if the value is -N, then approximately 1/N of the"
 
 #: ../../general/external communications.rst
 msgid "неактивных объектов будет проверяться за один запуск."
-msgstr ""
+msgstr "idle objects will be checked per run."
 
 #: ../../general/external communications.rst:194
 msgid "ecos.webapp.dataSources.main.softMinEvictableIdleMillis"
@@ -511,19 +511,19 @@ msgstr ""
 msgid ""
 "Устанавливает минимальное время, в течение которого соединение может "
 "оставаться"
-msgstr ""
+msgstr "Sets the minimum amount of time a connection may sit"
 
 #: ../../general/external communications.rst
 msgid ""
 "неактивным в пуле, прежде чем оно станет кандидатом на удаление потоком "
 "очистки"
-msgstr ""
+msgstr "idle in the pool before it becomes eligible for eviction by the"
 
 #: ../../general/external communications.rst
 msgid ""
 "неактивных объектов, при условии, что в пуле остается как минимум "
 "\"minIdle\" соединений."
-msgstr ""
+msgstr "idle object evictor, provided that at least \"minIdle\" connections remain in the pool."
 
 #: ../../general/external communications.rst:199
 msgid "ecos.webapp.dataSources.main.timeBetweenEvictionRunsMillis"
@@ -537,11 +537,11 @@ msgstr ""
 msgid ""
 "Количество миллисекунд, которое поток, отвечающий за удаление неактивных "
 "объектов, будет ждать между запусками."
-msgstr ""
+msgstr "The number of milliseconds the thread responsible for evicting idle objects will wait between runs."
 
 #: ../../general/external communications.rst
 msgid "Если значение меньше или равно нулю, этот поток не будет запускаться."
-msgstr ""
+msgstr "If the value is less than or equal to zero, this thread will not be started."
 
 #: ../../general/external communications.rst:203
 msgid "ecos.webapp.dataSources.main.maxWaitMillis"
@@ -549,11 +549,11 @@ msgstr ""
 
 #: ../../general/external communications.rst:205
 msgid "Максимальное время ожидания при получении подключения к БД."
-msgstr ""
+msgstr "Maximum wait time when obtaining a database connection."
 
 #: ../../general/external communications.rst:208
 msgid "Особенности ecos-process"
-msgstr ""
+msgstr "Specifics of ecos-process"
 
 #: ../../general/external communications.rst:210
 msgid ""
@@ -561,11 +561,11 @@ msgid ""
 "и camunda. Они настраиваются так же как и main, но с префиксами "
 "``ecos.webapp.dataSources.eproc.*`` и "
 "``ecos.webapp.dataSources.camunda.*`` соответственно."
-msgstr ""
+msgstr "In ecos-process, the main datasource is absent, but there are two others - eproc and camunda. They are configured the same way as main, but with the prefixes ``ecos.webapp.dataSources.eproc.*`` and ``ecos.webapp.dataSources.camunda.*`` respectively."
 
 #: ../../general/external communications.rst:212
 msgid "В таблице представлены значения по умолчанию, которые отличны от основных:"
-msgstr ""
+msgstr "The table shows default values that differ from the main ones:"
 
 #: ../../general/external communications.rst:219
 msgid "ecos.webapp.dataSources.camunda.url"
@@ -617,11 +617,11 @@ msgstr ""
 
 #: ../../general/external communications.rst:233
 msgid "Подключение к БД (Mongo)"
-msgstr ""
+msgstr "Connecting to Database (Mongo)"
 
 #: ../../general/external communications.rst:235
 msgid "Микросервис ecos-process требует настройку для подключения к БД mongo:"
-msgstr ""
+msgstr "The ecos-process microservice requires configuration for connecting to a MongoDB database:"
 
 #: ../../general/external communications.rst:246
 msgid "spring.data.mongodb.uri"
@@ -633,7 +633,7 @@ msgstr ""
 
 #: ../../general/external communications.rst
 msgid "Строка подключения к mongo. Может содержать логин и пароль. Общий вид:"
-msgstr ""
+msgstr "Mongo connection string. Can contain login and password. General format:"
 
 #: ../../general/external communications.rst
 #, python-brace-format
@@ -642,13 +642,13 @@ msgstr ""
 
 #: ../../general/external communications.rst:252
 msgid "Cloud config"
-msgstr ""
+msgstr "Cloud Config"
 
 #: ../../general/external communications.rst:254
 msgid ""
 "Начиная с версии 2024.8 наличие ecos-registry стало опциональным т.к. "
 "service registry был переделан на использование Zookeeper."
-msgstr ""
+msgstr "Starting from version 2024.8, the presence of ecos-registry has become optional because the service registry was redesigned to use Zookeeper."
 
 #: ../../general/external communications.rst:256
 msgid ""
@@ -656,11 +656,10 @@ msgid ""
 "config, который можно выключить через переменную "
 "``SPRING_CONFIG_IMPORT``: и доставлять конфигурацию инфраструктурными "
 "средствами."
-msgstr ""
+msgstr "The only functionality remaining in ecos-registry is cloud config, which can be disabled via the ``SPRING_CONFIG_IMPORT`` variable, and configuration can be delivered by infrastructure means."
 
 #: ../../general/external communications.rst:258
 msgid ""
 ":ref:`Подробнее про ключевые изменения в релизе "
 "2024.8<breaking_changes_2024.8>`"
-msgstr ""
-
+msgstr ":ref:`More about key changes in the 2024.8 release<breaking_changes_2024.8>`"

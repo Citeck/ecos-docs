@@ -25,30 +25,30 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:5
 msgid "Содержание"
-msgstr ""
+msgstr "Contents"
 
 #: ../../general/ECOS_WebAPI.rst:7
 msgid ""
 "**Citeck WebAPI** - основной низкоуровневый способ общения микросервисов "
 "между собой в пределах Citeck. Общение происходит по схеме **Запрос → "
 "Ответ** синхронно."
-msgstr ""
+msgstr "**Citeck WebAPI** - the primary low-level method for microservices to communicate with each other within Citeck. Communication follows a synchronous **Request → Response** pattern."
 
 #: ../../general/ECOS_WebAPI.rst:9
 msgid ""
 "API для работы с WebAPI описано в **ecos-webapp-api** (репозиторий ecos-"
 "webapp-api)."
-msgstr ""
+msgstr "The API for working with WebAPI is described in **ecos-webapp-api** (ecos-webapp-api repository)."
 
 #: ../../general/ECOS_WebAPI.rst:11
 msgid ""
 "Реализация API находится в **ecos-webapp-lib** (репозиторий ecos-webapp-"
 "commons)."
-msgstr ""
+msgstr "The API implementation is located in **ecos-webapp-lib** (ecos-webapp-commons repository)."
 
 #: ../../general/ECOS_WebAPI.rst:14
 msgid "Что обеспечивает Citeck WebAPI"
-msgstr ""
+msgstr "What Citeck WebAPI Provides"
 
 #: ../../general/ECOS_WebAPI.rst:16
 msgid ""
@@ -57,7 +57,7 @@ msgid ""
 "Пользователь WebAPI клиента получит исключение EcosWebException и либо "
 "его обработает, либо оно отправится следующему приложению в иерархии "
 "вызовов;"
-msgstr ""
+msgstr "Uniform error handling. WebAPI takes care of collecting information about occurred errors and sending this information to the caller. The WebAPI client user will receive an EcosWebException and either handle it or let it propagate to the next application in the call hierarchy;"
 
 #: ../../general/ECOS_WebAPI.rst:18
 msgid ""
@@ -65,13 +65,13 @@ msgid ""
 "гигабайтов) без опасений, что на какой-либо из сторон закончится "
 "оперативная память. Потоковая обработка позволяет пропускать через WebAPI"
 " запросы любых размеров;"
-msgstr ""
+msgstr "The ability to uniformly send requests of any size (from bytes to gigabytes) without worrying about running out of RAM on either side. Stream processing allows WebAPI to handle requests of any size;"
 
 #: ../../general/ECOS_WebAPI.rst:20
 msgid ""
 "WebAPI позволяет не ломать голову над отправкой структурированных данных "
 "вместе с бинарными. В одном запросе предусмотрены обе части;"
-msgstr ""
+msgstr "WebAPI eliminates the headache of sending structured data together with binary data. Both parts are provided for in a single request;"
 
 #: ../../general/ECOS_WebAPI.rst:22
 msgid ""
@@ -79,58 +79,58 @@ msgid ""
 "сообщений. Это позволяет независимо дорабатывать возможности транспорта "
 "не изменяя прикладной код. Например, к вопросам транспорта относятся "
 "следующие аспекты системы:"
-msgstr ""
+msgstr "WebAPI abstracts the sender and receiver from the message delivery method. This allows transport capabilities to be improved independently without changing the application code. For example, transport-related aspects of the system include:"
 
 #: ../../general/ECOS_WebAPI.rst:24
 msgid ""
 "Шифрование. Настройка TLS не должна никак влиять на работу прикладного "
 "кода;"
-msgstr ""
+msgstr "Encryption. Configuring TLS should not affect the application code in any way;"
 
 #: ../../general/ECOS_WebAPI.rst:26
 msgid ""
 "Транзакционность. Идентификатор транзакции и \"прилипание\" к "
 "определенным инстансам микросервисов происходит на этом уровне;"
-msgstr ""
+msgstr "Transactionality. The transaction identifier and \"sticky\" routing to specific microservice instances happen at this level;"
 
 #: ../../general/ECOS_WebAPI.rst:28
 msgid "Локали из текущего контекста прокидывается на принимающую сторону;"
-msgstr ""
+msgstr "Locale from the current context is propagated to the receiving side;"
 
 #: ../../general/ECOS_WebAPI.rst:30
 msgid "Таймзона из текущего контекста прокидывается на принимающую сторону;"
-msgstr ""
+msgstr "Timezone from the current context is propagated to the receiving side;"
 
 #: ../../general/ECOS_WebAPI.rst:32
 msgid ""
 "Информация о клиенте (IP адрес) прокидывается из контекста на принимающую"
 " сторону;"
-msgstr ""
+msgstr "Client information (IP address) is propagated from the context to the receiving side;"
 
 #: ../../general/ECOS_WebAPI.rst:34
 msgid ""
 "Подготовка и отправка JWT токена для аутентификации происходит на этом "
 "уровне;"
-msgstr ""
+msgstr "Preparation and sending of the JWT token for authentication occur at this level;"
 
 #: ../../general/ECOS_WebAPI.rst:36
 msgid ""
 "Информация о тенанте из текущего контекста прокидывается на принимающую "
 "сторону;"
-msgstr ""
+msgstr "Tenant information from the current context is propagated to the receiving side;"
 
 #: ../../general/ECOS_WebAPI.rst:38
 msgid ""
 "WebAPI позволяет сжимать сообщения, что при сетевых задержках позволяет "
 "увеличить скорость передачи данных;"
-msgstr ""
+msgstr "WebAPI allows message compression, which increases data transfer speed in case of network latency;"
 
 #: ../../general/ECOS_WebAPI.rst:40
 msgid ""
 "WebAPI позволяет в библиотеках реализовывать клиент-серверное общение "
 "между приложениями без добавления тяжелых зависимостей вроде Spring MVC "
 "или различных HTTP клиентов;"
-msgstr ""
+msgstr "WebAPI allows libraries to implement client-server communication between applications without adding heavy dependencies like Spring MVC or various HTTP clients;"
 
 #: ../../general/ECOS_WebAPI.rst:42
 msgid ""
@@ -141,130 +141,130 @@ msgid ""
 " версии 0-3, а сервер поддерживает версии 0-2, то клиент отправит запрос "
 "в формате максимально поддерживаемой версии (2). Этот механизм позволяет "
 "развивать продукт не ломая совместимость по API."
-msgstr ""
+msgstr "API versioning allows checking if a request is supported on the receiving side even before execution. The support information also includes the range of supported versions. If a client can communicate with the /content/upload endpoint using versions 0-3, and the server supports versions 0-2, the client will send the request in the format of the maximum supported version (2). This mechanism allows product development without breaking API compatibility."
 
 #: ../../general/ECOS_WebAPI.rst:44
 msgid ""
 "Для некоторых запросов (коммит транзакции) нужна максимальная скорость и "
 "малейшая задержка может нарушить целостность данных в системе. В этом "
 "случае использование высокоуровневых API - не лучший вариант."
-msgstr ""
+msgstr "For some requests (transaction commit), maximum speed is required, and the slightest delay can compromise data integrity in the system. In this case, using high-level APIs is not the best option."
 
 #: ../../general/ECOS_WebAPI.rst:46
 msgid ""
 "Асинхронность на уровне API. Все запросы через Citeck WebAPI возвращают "
 "Promise, возможности которого можно использовать для асинхронных "
 "оптимизаций со стороны клиента."
-msgstr ""
+msgstr "Asynchronicity at the API level. All requests via Citeck WebAPI return a Promise, whose capabilities can be used for asynchronous optimizations on the client side."
 
 #: ../../general/ECOS_WebAPI.rst:48
 msgid "**Пример использования со стороны клиента:**"
-msgstr ""
+msgstr "**Client-side usage example:**"
 
 #: ../../general/ECOS_WebAPI.rst:50 ../../general/ECOS_WebAPI.rst:70
 msgid "Java:"
-msgstr ""
+msgstr "Java:"
 
 #: ../../general/ECOS_WebAPI.rst:68
 msgid "**Пример использования со стороны сервера:**"
-msgstr ""
+msgstr "**Server-side usage example:**"
 
 #: ../../general/ECOS_WebAPI.rst:104
 msgid "Версионирование API"
-msgstr ""
+msgstr "API Versioning"
 
 #: ../../general/ECOS_WebAPI.rst:106
 msgid ""
 "Микросервис при инициализации собирает информацию обо всех "
 "зарегистрированных executor'ах и записывает эту информацию в Zookeeper."
-msgstr ""
+msgstr "During initialization, a microservice collects information about all registered executors and writes this information to Zookeeper."
 
 #: ../../general/ECOS_WebAPI.rst:108
 msgid ""
 "Микросервис, который хочет отправить запрос достает информацию из "
 "Zookeeper и предоставляет возможность отправителю скорректировать свое "
 "поведение на основе поддерживаемости определенного эндпоинта."
-msgstr ""
+msgstr "A microservice that wants to send a request retrieves information from Zookeeper and allows the sender to adjust its behavior based on the supportability of a specific endpoint."
 
 #: ../../general/ECOS_WebAPI.rst:111
 msgid "Описание запроса и ответа"
-msgstr ""
+msgstr "Request and Response Description"
 
 #: ../../general/ECOS_WebAPI.rst:113
 msgid "Запрос формируется по следующему паттерну:"
-msgstr ""
+msgstr "The request is formed according to the following pattern:"
 
 #: ../../general/ECOS_WebAPI.rst:115
 msgid "Версия Citeck WebAPI (целое число);"
-msgstr ""
+msgstr "Citeck WebAPI version (integer);"
 
 #: ../../general/ECOS_WebAPI.rst:117
 msgid "Тип сжатия всего последующего содержимого (целое число);"
-msgstr ""
+msgstr "Compression type for all subsequent content (integer);"
 
 #: ../../general/ECOS_WebAPI.rst:119
 msgid ""
 "Размер сжатых метаданных в байтах включая тип метаданных и тип сжатия "
 "(целое число);"
-msgstr ""
+msgstr "Size of compressed metadata in bytes, including metadata type and compression type (integer);"
 
 #: ../../general/ECOS_WebAPI.rst:121
 msgid "Тип метаданных (целое число);"
-msgstr ""
+msgstr "Metadata type (integer);"
 
 #: ../../general/ECOS_WebAPI.rst:123
 msgid "Тип сжатия метаданных (целое число);"
-msgstr ""
+msgstr "Metadata compression type (integer);"
 
 #: ../../general/ECOS_WebAPI.rst:125
 msgid "Метаданные (зависит от типа метаданных (4))"
-msgstr ""
+msgstr "Metadata (depends on metadata type (4))"
 
 #: ../../general/ECOS_WebAPI.rst:127
 msgid "Тип тела запроса (целое число)"
-msgstr ""
+msgstr "Request body type (integer)"
 
 #: ../../general/ECOS_WebAPI.rst:129
 msgid "Тип сжатия тела запроса (целое число)"
-msgstr ""
+msgstr "Request body compression type (integer)"
 
 #: ../../general/ECOS_WebAPI.rst:131
 msgid "Тело запроса (зависит от типа тела запроса (7))"
-msgstr ""
+msgstr "Request body (depends on request body type (7))"
 
 #: ../../general/ECOS_WebAPI.rst:133
 msgid ""
 "Ответ формируется по тем же принципам, что и запрос, но без указания "
 "версии Citeck WebAPI (1)"
-msgstr ""
+msgstr "The response is formed according to the same principles as the request, but without specifying the Citeck WebAPI version (1)"
 
 #: ../../general/ECOS_WebAPI.rst:136
 msgid "Структура метаданных запроса:"
-msgstr ""
+msgstr "Request metadata structure:"
 
 #: ../../general/ECOS_WebAPI.rst:140
 msgid "Имена полей не играют роли? если тип метаданных - массив."
-msgstr ""
+msgstr "Field names do not matter? if the metadata type is an array."
 
 #: ../../general/ECOS_WebAPI.rst:156
 msgid "Структура метаданных ответа:"
-msgstr ""
+msgstr "Response metadata structure:"
 
 #: ../../general/ECOS_WebAPI.rst:160
 msgid "Имена полей не играют роли если тип метаданных - массив."
-msgstr ""
+msgstr "Field names do not matter if the metadata type is an array."
 
 #: ../../general/ECOS_WebAPI.rst:176
 msgid "Поддерживаемые типы сжатия:"
-msgstr ""
+msgstr "Supported compression types:"
 
 #: ../../general/ECOS_WebAPI.rst:182
 msgid "ID типа сжатия"
-msgstr ""
+msgstr "Compression Type ID"
 
 #: ../../general/ECOS_WebAPI.rst:183
 msgid "Тип сжатия"
-msgstr ""
+msgstr "Compression Type"
 
 #: ../../general/ECOS_WebAPI.rst:184 ../../general/ECOS_WebAPI.rst:198
 #: ../../general/ECOS_WebAPI.rst:210
@@ -273,7 +273,7 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:185
 msgid "Без сжатия"
-msgstr ""
+msgstr "No compression"
 
 #: ../../general/ECOS_WebAPI.rst:186 ../../general/ECOS_WebAPI.rst:212
 msgid "**1**"
@@ -281,35 +281,35 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:187
 msgid "ZSTD (Zstandard)"
-msgstr ""
+msgstr "ZSTD (Zstandard)"
 
 #: ../../general/ECOS_WebAPI.rst:190
 msgid "Поддерживаемые типы метаданных:"
-msgstr ""
+msgstr "Supported metadata types:"
 
 #: ../../general/ECOS_WebAPI.rst:196 ../../general/ECOS_WebAPI.rst:208
 msgid "ID типа метаданных"
-msgstr ""
+msgstr "Metadata Type ID"
 
 #: ../../general/ECOS_WebAPI.rst:197 ../../general/ECOS_WebAPI.rst:209
 msgid "Тип метаданных"
-msgstr ""
+msgstr "Metadata Type"
 
 #: ../../general/ECOS_WebAPI.rst:199
 msgid "CBOR массив с данными, где имя поля определяется по порядковому индексу."
-msgstr ""
+msgstr "CBOR array with data, where the field name is determined by the ordinal index."
 
 #: ../../general/ECOS_WebAPI.rst:202
 msgid "Поддерживаемые типы тела:"
-msgstr ""
+msgstr "Supported body types:"
 
 #: ../../general/ECOS_WebAPI.rst:211
 msgid "NONE - тело отсутствует"
-msgstr ""
+msgstr "NONE - body is absent"
 
 #: ../../general/ECOS_WebAPI.rst:213
 msgid "BINARY - бинарные данные"
-msgstr ""
+msgstr "BINARY - binary data"
 
 #: ../../general/ECOS_WebAPI.rst:214
 msgid "**2**"
@@ -317,7 +317,7 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:215
 msgid "CBOR - структурированные данные в формате CBOR"
-msgstr ""
+msgstr "CBOR - structured data in CBOR format"
 
 #: ../../general/ECOS_WebAPI.rst:216
 msgid "**3**"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:217
 msgid "JSON - структурированные данные в формате JSON"
-msgstr ""
+msgstr "JSON - structured data in JSON format"
 
 #: ../../general/ECOS_WebAPI.rst:218
 msgid "**4**"
@@ -333,23 +333,23 @@ msgstr ""
 
 #: ../../general/ECOS_WebAPI.rst:219
 msgid "TEXT_UTF8 - текстовые данные"
-msgstr ""
+msgstr "TEXT_UTF8 - text data"
 
 #: ../../general/ECOS_WebAPI.rst:222
 msgid "Бинарное представление целого числа в Citeck WebAPI:"
-msgstr ""
+msgstr "Binary representation of an integer in Citeck WebAPI:"
 
 #: ../../general/ECOS_WebAPI.rst:224
 msgid ""
 "Если число в диапазоне от 0 до 127 включительно, то мы его записываем как"
 " есть в виде одного байта."
-msgstr ""
+msgstr "If the number is in the range from 0 to 127 inclusive, we write it as is in a single byte."
 
 #: ../../general/ECOS_WebAPI.rst:226
 msgid ""
 "Если число не в диапазоне от 0 до 127, то мы первый байт формируем "
 "следующим образом (по битам):"
-msgstr ""
+msgstr "If the number is not in the range from 0 to 127, we form the first byte as follows (by bits):"
 
 #: ../../general/ECOS_WebAPI.rst:228
 msgid ""
@@ -357,50 +357,49 @@ msgid ""
 " число. Для кодирования мы берем количество байт (например 2) и вычитаем "
 "один (получаем 1). Таким образом, 001 означает, что число закодировано "
 "двумя байтами."
-msgstr ""
+msgstr "**0-2** - these bits encode the number of bytes used to encode the number. For encoding, we take the number of bytes (e.g., 2) and subtract one (getting 1). Thus, 001 means the number is encoded in two bytes."
 
 #: ../../general/ECOS_WebAPI.rst:230
 msgid "**3-5** - не используются"
-msgstr ""
+msgstr "**3-5** - unused"
 
 #: ../../general/ECOS_WebAPI.rst:232
 msgid ""
 "**6** - бит определяет знак \"минус\". Если он равен 1, то число "
 "отрицательное."
-msgstr ""
+msgstr "**6** - this bit defines the \"minus\" sign. If it is 1, the number is negative."
 
 #: ../../general/ECOS_WebAPI.rst:234
 msgid "**7** - бит определяет, что число не входит в диапазон от 0 до 127"
-msgstr ""
+msgstr "**7** - this bit indicates that the number is not in the range from 0 to 127"
 
 #: ../../general/ECOS_WebAPI.rst:236
 msgid ""
 "Далее на основе битов 0-2 мы получаем число байт, которые нужно "
 "прочитать, читаем их и преобразуем в исходное число. Если бит 6 выставлен"
 " в 1, то домножаем результат на -1."
-msgstr ""
+msgstr "Then, based on bits 0-2, we get the number of bytes to read, read them, and convert them to the original number. If bit 6 is set to 1, we multiply the result by -1."
 
 #: ../../general/ECOS_WebAPI.rst:239
 msgid "Транспорт"
-msgstr ""
+msgstr "Transport"
 
 #: ../../general/ECOS_WebAPI.rst:241
 msgid ""
 "В качестве транспорта для Citeck WebAPI на данный момент используется "
 "HTTP, но в будущем возможны и другие протоколы."
-msgstr ""
+msgstr "HTTP is currently used as the transport for Citeck WebAPI, but other protocols are possible in the future."
 
 #: ../../general/ECOS_WebAPI.rst:244
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: ../../general/ECOS_WebAPI.rst:246
 msgid "Как связан Records API и Citeck WebAPI?"
-msgstr ""
+msgstr "How are Records API and Citeck WebAPI related?"
 
 #: ../../general/ECOS_WebAPI.rst:248
 msgid ""
 "RecordsAPI использует Citeck WebAPI в качестве транспорта для общения "
 "между микросервисами."
-msgstr ""
-
+msgstr "RecordsAPI uses Citeck WebAPI as the transport for communication between microservices."

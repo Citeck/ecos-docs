@@ -21,49 +21,51 @@ msgstr ""
 
 #: ../../general/breaking_changes.rst:2
 msgid "Критические изменения"
-msgstr ""
+msgstr "Breaking Changes"
 
 #: ../../general/breaking_changes.rst:5
 msgid "Релиз 2024.8"
-msgstr ""
+msgstr "Release 2024.8"
 
 #: ../../general/breaking_changes.rst:9
 msgid ""
 "В рамках релиза 2024.8 было выполнено обновление всех коробочных "
 "микросервисов и библиотек."
 msgstr ""
+"As part of the 2024.8 release, all out-of-the-box microservices and "
+"libraries have been updated."
 
 #: ../../general/breaking_changes.rst:12
 msgid "Обновления версий"
-msgstr ""
+msgstr "Version Updates"
 
 #: ../../general/breaking_changes.rst:14
 msgid "Обновление версии java до 21й версии (последняя LTS на момент миграции);"
-msgstr ""
+msgstr "Updated Java version to 21 (latest LTS at the time of migration);"
 
 #: ../../general/breaking_changes.rst:15
 msgid "Обновление spring boot до 3.3.2 (последняя стабильная на момент миграции);"
-msgstr ""
+msgstr "Updated Spring Boot to 3.3.2 (latest stable at the time of migration);"
 
 #: ../../general/breaking_changes.rst:16
 msgid "Обновление spring до 6.1.11 (подтянулся при обновлении spring boot);"
-msgstr ""
+msgstr "Updated Spring to 6.1.11 (pulled in with Spring Boot update);"
 
 #: ../../general/breaking_changes.rst:17
 msgid "Обновление версии kotlin до 2.0.0"
-msgstr ""
+msgstr "Updated Kotlin version to 2.0.0"
 
 #: ../../general/breaking_changes.rst:18
 msgid "Обновление camunda до 7.21.0"
-msgstr ""
+msgstr "Updated Camunda to 7.21.0"
 
 #: ../../general/breaking_changes.rst:19
 msgid "Обновление всех остальных зависимостей до последних стабильных версий"
-msgstr ""
+msgstr "Updated all other dependencies to the latest stable versions"
 
 #: ../../general/breaking_changes.rst:22
 msgid "Обновление технологий"
-msgstr ""
+msgstr "Technology Updates"
 
 #: ../../general/breaking_changes.rst:24
 msgid ""
@@ -71,16 +73,22 @@ msgid ""
 "современный аналог устаревшему nashorn. Обновление позволяет использовать"
 " функционал новых версий JS."
 msgstr ""
+"The Nashorn script engine has been replaced with GraalVM JS. GraalVM JS is"
+" a modern alternative to the outdated Nashorn. The update allows using the"
+" functionality of new JS versions."
 
 #: ../../general/breaking_changes.rst:26 ../../general/breaking_changes.rst:86
 msgid ""
 "`Подробнее <https://www.graalvm.org/latest/reference-"
 "manual/js/NashornMigrationGuide/>`_ о миграции и совместимости движков."
 msgstr ""
+"`More details <https://www.graalvm.org/latest/reference-"
+"manual/js/NashornMigrationGuide/>`_ about engine migration and "
+"compatibility."
 
 #: ../../general/breaking_changes.rst:29
 msgid "Доработки"
-msgstr ""
+msgstr "Improvements"
 
 #: ../../general/breaking_changes.rst:31
 msgid ""
@@ -89,6 +97,10 @@ msgid ""
 "обрабатывать большое количество одновременных запросов, не упираясь в "
 "лимит потоков."
 msgstr ""
+"**ecos-gateway** has been completely rewritten based on **spring-cloud-"
+"gateway** using reactive technologies and virtual threads. This will allow"
+" processing a large number of concurrent requests without hitting thread "
+"limits."
 
 #: ../../general/breaking_changes.rst:32
 msgid ""
@@ -96,12 +108,17 @@ msgid ""
 "чтобы они не заполняли стектрейс запроса на уровне HTTP фильтров (на 4-5 "
 "строк все стектрейсы по входящим HTTP запросам сократились)."
 msgstr ""
+"**Contexts** like AuthContext, I18nContext, etc. have been improved so "
+"that they don't fill the request stack trace at the HTTP filter level (all"
+" stack traces for incoming HTTP requests have been reduced by 4-5 lines)."
 
 #: ../../general/breaking_changes.rst:33
 msgid ""
 "Микросервисы больше не регистрируются в ecos-registry. **Service "
 "Discovery** работает на базе реестра приложений в Zookeeper."
 msgstr ""
+"Microservices no longer register in ecos-registry. **Service Discovery** "
+"works based on the application registry in Zookeeper."
 
 #: ../../general/breaking_changes.rst:34
 msgid ""
@@ -109,16 +126,21 @@ msgid ""
 "версией hazelcast, если приложение со старой версией еще работает "
 "(rolling update при повышении версии - Enterprise фича hazelcast)."
 msgstr ""
+"Fixed an issue that prevented an application with a new Hazelcast version "
+"from starting if an application with the old version was still running "
+"(rolling update when upgrading versions - Hazelcast Enterprise feature)."
 
 #: ../../general/breaking_changes.rst:35
 msgid ""
 "Добавлен spring профиль **json_logs**. Если его включить, то логи будут "
 "записываться в виде json объектов."
 msgstr ""
+"Added **json_logs** spring profile. If enabled, logs will be written as "
+"JSON objects."
 
 #: ../../general/breaking_changes.rst:38
 msgid "Удаление устаревшего кода"
-msgstr ""
+msgstr "Removal of Deprecated Code"
 
 #: ../../general/breaking_changes.rst:40
 msgid ""
@@ -126,22 +148,28 @@ msgid ""
 "RecordsServiceFactory.recordsServiceV1 переименован в "
 "RecordsServiceFactory.recordsService"
 msgstr ""
+"Removed the old RecordsService and all old RecordsDao interfaces. The "
+"RecordsServiceFactory.recordsServiceV1 method has been renamed to "
+"RecordsServiceFactory.recordsService"
 
 #: ../../general/breaking_changes.rst:41
 msgid "Удален RecordRef."
-msgstr ""
+msgstr "Removed RecordRef."
 
 #: ../../general/breaking_changes.rst:42
 msgid ""
 "**RecordEvaluatorService** и связанные с ним классы перенесены из ecos-"
 "records в ecos-uiserv, т.к. данный функционал используется только там."
 msgstr ""
+"**RecordEvaluatorService** and its related classes have been moved from "
+"ecos-records to ecos-uiserv, as this functionality is only used there."
 
 #: ../../general/breaking_changes.rst:43
 msgid ""
 "Все микросервисы используют стандартные библиотеки "
 "**jackson/snakeyaml/guava**."
 msgstr ""
+"All microservices use standard **jackson/snakeyaml/guava** libraries."
 
 #: ../../general/breaking_changes.rst:44
 msgid ""
@@ -149,16 +177,22 @@ msgid ""
 "размещен только в ecos-gateway. Микросервисы между собой должны общаться "
 "по ECOS WebAPI, REST нужен только для запросов извне."
 msgstr ""
+"**REST controller for RecordsAPI** has been removed from ecos-webapp-"
+"commons and placed only in ecos-gateway. Microservices should communicate "
+"with each other via ECOS WebAPI, REST is only needed for external "
+"requests."
 
 #: ../../general/breaking_changes.rst:45
 msgid ""
 "Удалена **логика фасадов** из ecos-history и убрана его зависимость от "
 "mongo."
 msgstr ""
+"**Facade logic** has been removed from ecos-history and its dependency on "
+"mongo has been removed."
 
 #: ../../general/breaking_changes.rst:48
 msgid "Совместимость"
-msgstr ""
+msgstr "Compatibility"
 
 #: ../../general/breaking_changes.rst:50
 msgid ""
@@ -169,10 +203,16 @@ msgid ""
 "cache?types=theme). Если сначала обновить gateway до 3.0.0+, то любые "
 "другие микросервисы можно уже обновлять по отдельности."
 msgstr ""
+"Records API compatibility between any new and old microservices is "
+"complete. Microservices with updated parent stop registering in ecos-"
+"registry and as a result - the old version of ecos-gateway cannot proxy "
+"regular REST requests to them (e.g., /gateway/uiserv/api/ui-"
+"cache?types=theme). If you first update the gateway to 3.0.0+, then any "
+"other microservices can be updated individually."
 
 #: ../../general/breaking_changes.rst:53
 msgid "Возможные проблемы со скриптами"
-msgstr ""
+msgstr "Potential Script Issues"
 
 #: ../../general/breaking_changes.rst:55
 msgid ""
@@ -180,16 +220,21 @@ msgid ""
 "умолчанию\". Это означает что многие функции, которые были доступны в "
 "nashorn \"из коробки\" отключены."
 msgstr ""
+"The new engine, unlike the old one, uses a \"secure by default\" "
+"approach. This means many functions that were available in Nashorn \"out "
+"of the box\" are disabled."
 
 #: ../../general/breaking_changes.rst:57
 msgid "В нашем решении мы включили некоторые из **этих функций по умолчанию**:"
-msgstr ""
+msgstr "In our solution, we have enabled some of **these functions by default**:"
 
 #: ../../general/breaking_changes.rst:71
 msgid ""
 "Но некоторые части все еще требуют миграции (флаг совместимости с nashorn"
 " лучше не включать по возможности из соображений безопасности):"
 msgstr ""
+"But some parts still require migration (the Nashorn compatibility flag "
+"should preferably not be enabled for security reasons):"
 
 #: ../../general/breaking_changes.rst:73
 msgid ""
@@ -197,16 +242,22 @@ msgid ""
 " возможность вместо abc.getName() писать abc.name ) в новом движке \"из "
 "коробки\" отключен."
 msgstr ""
+"The functionality of accessing getters by simply specifying the property "
+"name (i.e., the ability to write abc.name instead of abc.getName()) is "
+"disabled \"out of the box\" in the new engine."
 
 #: ../../general/breaking_changes.rst:74
 msgid "Функционал доступа к java классам \"из коробки\" отключен."
-msgstr ""
+msgstr "The functionality of accessing Java classes \"out of the box\" is disabled."
 
 #: ../../general/breaking_changes.rst:75
 msgid ""
 "Java классы, с которыми идет работа внутри js должны иметь аннотацию "
 "@Export на методах и полях к которым должен быть доступ из скрипта."
 msgstr ""
+"Java classes that are worked with inside JS must have the @Export "
+"annotation on methods and fields that should be accessible from the "
+"script."
 
 #: ../../general/breaking_changes.rst:77
 msgid ""
@@ -214,16 +265,22 @@ msgid ""
 "атрибутах или вычисляемых ролях, то всегда можно включить режим "
 "совместимости со старым js движком через spring свойства:"
 msgstr ""
+"If there are global issues in BPMN process scripts or calculated "
+"attributes or calculated roles, you can always enable compatibility mode "
+"with the old JS engine through Spring properties:"
 
 #: ../../general/breaking_changes.rst:84
 msgid ""
 "Этот режим желательно включать только как временное решение, в рамках "
 "которого начать миграцию скриптов в совместимый с graalvm вид."
 msgstr ""
+"This mode should preferably be enabled only as a temporary solution, "
+"during which you should start migrating scripts to a GraalVM-compatible "
+"form."
 
 #: ../../general/breaking_changes.rst:89
 msgid "Изменения в библиотеках"
-msgstr ""
+msgstr "Library Changes"
 
 #: ../../general/breaking_changes.rst:91
 msgid ""
@@ -231,6 +288,9 @@ msgid ""
 "для старых версий микросервисов и alfresco помечены постфиксом _j8 в "
 "имени версии и мастер ветка для них именуется master-j8."
 msgstr ""
+"All library versions that are built on Java 8 and intended for old "
+"versions of microservices and Alfresco are marked with the _j8 suffix in "
+"the version name, and their master branch is named master-j8."
 
 #: ../../general/breaking_changes.rst:93
 msgid ""
@@ -238,199 +298,204 @@ msgid ""
 "Исключением в данном случае является ecos-commons, который для java 21 "
 "имеет версию 3.4+, а для java 8 версию 2.* и мастер ветку master-2"
 msgstr ""
+"These versions will be maintained independently of the main numbering in "
+"the future. The exception in this case is ecos-commons, which for Java 21 "
+"has version 3.4+, and for Java 8 has version 2.* and master branch master-"
+"2"
 
 #: ../../general/breaking_changes.rst:96
 msgid "Изменение классов и методов"
-msgstr ""
+msgstr "Class and Method Changes"
 
 #: ../../general/breaking_changes.rst:104
 msgid "До"
-msgstr ""
+msgstr "Before"
 
 #: ../../general/breaking_changes.rst:105
 msgid "После"
-msgstr ""
+msgstr "After"
 
 #: ../../general/breaking_changes.rst:106
 msgid "mu.KotlinLogging"
-msgstr ""
+msgstr "mu.KotlinLogging"
 
 #: ../../general/breaking_changes.rst:107
 msgid "io.github.oshai.kotlinlogging.KotlinLogging"
-msgstr ""
+msgstr "io.github.oshai.kotlinlogging.KotlinLogging"
 
 #: ../../general/breaking_changes.rst:108
 msgid "ecos.guava30.com.google.*"
-msgstr ""
+msgstr "ecos.guava30.com.google.*"
 
 #: ../../general/breaking_changes.rst:109
 msgid "com.google.*"
-msgstr ""
+msgstr "com.google.*"
 
 #: ../../general/breaking_changes.rst:110
 msgid "ru.citeck.ecos.records2.RecordRef"
-msgstr ""
+msgstr "ru.citeck.ecos.records2.RecordRef"
 
 #: ../../general/breaking_changes.rst:111
 msgid "ru.citeck.ecos.webapp.api.entity.EntityRef"
-msgstr ""
+msgstr "ru.citeck.ecos.webapp.api.entity.EntityRef"
 
 #: ../../general/breaking_changes.rst:112
 msgid "org.apache.commons.collections.*"
-msgstr ""
+msgstr "org.apache.commons.collections.*"
 
 #: ../../general/breaking_changes.rst:113
 msgid "org.apache.commons.collections4.*"
-msgstr ""
+msgstr "org.apache.commons.collections4.*"
 
 #: ../../general/breaking_changes.rst:114
 msgid "ecos.com.fasterxml.jackson210.*"
-msgstr ""
+msgstr "ecos.com.fasterxml.jackson210.*"
 
 #: ../../general/breaking_changes.rst:115
 msgid "com.fasterxml.jackson.*"
-msgstr ""
+msgstr "com.fasterxml.jackson.*"
 
 #: ../../general/breaking_changes.rst:116
 msgid "javax.*"
-msgstr ""
+msgstr "javax.*"
 
 #: ../../general/breaking_changes.rst
 msgid "jakarta.*"
-msgstr ""
+msgstr "jakarta.*"
 
 #: ../../general/breaking_changes.rst
 msgid ""
 "(не для всех классов, но если javax.* недоступно после повышения версии, "
 "то следует использовать jakarta)"
 msgstr ""
+"(not for all classes, but if javax.* is unavailable after version upgrade,"
+" then jakarta should be used)"
 
 #: ../../general/breaking_changes.rst:119
 msgid "ecos.org.snakeyaml.engine21.*"
-msgstr ""
+msgstr "ecos.org.snakeyaml.engine21.*"
 
 #: ../../general/breaking_changes.rst:120
 msgid "org.snakeyaml.engine.*"
-msgstr ""
+msgstr "org.snakeyaml.engine.*"
 
 #: ../../general/breaking_changes.rst:121
 msgid "ru.citeck.ecos.commons.utils.func.*"
-msgstr ""
+msgstr "ru.citeck.ecos.commons.utils.func.*"
 
 #: ../../general/breaking_changes.rst:122
 msgid "ru.citeck.ecos.webapp.api.func.*"
-msgstr ""
+msgstr "ru.citeck.ecos.webapp.api.func.*"
 
 #: ../../general/breaking_changes.rst:123
 msgid "ru.citeck.ecos.commons.promise.Promises"
-msgstr ""
+msgstr "ru.citeck.ecos.commons.promise.Promises"
 
 #: ../../general/breaking_changes.rst:124
 msgid "ru.citeck.ecos.webapp.api.promise.Promises"
-msgstr ""
+msgstr "ru.citeck.ecos.webapp.api.promise.Promises"
 
 #: ../../general/breaking_changes.rst:125
 msgid "ru.citeck.ecos.records2.rest.RemoteRecordsUtils.runAsSystem"
-msgstr ""
+msgstr "ru.citeck.ecos.records2.rest.RemoteRecordsUtils.runAsSystem"
 
 #: ../../general/breaking_changes.rst:126
 msgid "ru.citeck.ecos.context.lib.auth.AuthContext.runAsSystem(J)"
-msgstr ""
+msgstr "ru.citeck.ecos.context.lib.auth.AuthContext.runAsSystem(J)"
 
 #: ../../general/breaking_changes.rst:129
 msgid "Мигрированные микросервисы"
-msgstr ""
+msgstr "Migrated Microservices"
 
 #: ../../general/breaking_changes.rst:136
 msgid "ecos-model"
-msgstr ""
+msgstr "ecos-model"
 
 #: ../../general/breaking_changes.rst:137
 msgid "2.28.0+"
-msgstr ""
+msgstr "2.28.0+"
 
 #: ../../general/breaking_changes.rst:138
 msgid "ecos-notifications"
-msgstr ""
+msgstr "ecos-notifications"
 
 #: ../../general/breaking_changes.rst:139
 #: ../../general/breaking_changes.rst:159
 #: ../../general/breaking_changes.rst:161
 msgid "2.20.0+"
-msgstr ""
+msgstr "2.20.0+"
 
 #: ../../general/breaking_changes.rst:140
 msgid "ecos-content"
-msgstr ""
+msgstr "ecos-content"
 
 #: ../../general/breaking_changes.rst:141
 #: ../../general/breaking_changes.rst:145
 msgid "1.2.0+"
-msgstr ""
+msgstr "1.2.0+"
 
 #: ../../general/breaking_changes.rst:142
 msgid "ecos-uiserv"
-msgstr ""
+msgstr "ecos-uiserv"
 
 #: ../../general/breaking_changes.rst:143
 msgid "2.26.0+"
-msgstr ""
+msgstr "2.26.0+"
 
 #: ../../general/breaking_changes.rst:144
 msgid "ecos-edi"
-msgstr ""
+msgstr "ecos-edi"
 
 #: ../../general/breaking_changes.rst:146
 msgid "ecos-service-desk"
-msgstr ""
+msgstr "ecos-service-desk"
 
 #: ../../general/breaking_changes.rst:147
 #: ../../general/breaking_changes.rst:157
 msgid "1.11.0+"
-msgstr ""
+msgstr "1.11.0+"
 
 #: ../../general/breaking_changes.rst:148
 msgid "ecos-gateway"
-msgstr ""
+msgstr "ecos-gateway"
 
 #: ../../general/breaking_changes.rst:149
 msgid "3.0.0+"
-msgstr ""
+msgstr "3.0.0+"
 
 #: ../../general/breaking_changes.rst:150
 msgid "ecos-process"
-msgstr ""
+msgstr "ecos-process"
 
 #: ../../general/breaking_changes.rst:151
 #: ../../general/breaking_changes.rst:153
 msgid "2.21.0+"
-msgstr ""
+msgstr "2.21.0+"
 
 #: ../../general/breaking_changes.rst:152
 msgid "ecos-integrations"
-msgstr ""
+msgstr "ecos-integrations"
 
 #: ../../general/breaking_changes.rst:154
 msgid "ecos-ecom"
-msgstr ""
+msgstr "ecos-ecom"
 
 #: ../../general/breaking_changes.rst:155
 msgid "1.8.0+"
-msgstr ""
+msgstr "1.8.0+"
 
 #: ../../general/breaking_changes.rst:156
 msgid "ecos-transformations"
-msgstr ""
+msgstr "ecos-transformations"
 
 #: ../../general/breaking_changes.rst:158
 msgid "ecos-history"
-msgstr ""
+msgstr "ecos-history"
 
 #: ../../general/breaking_changes.rst:160
 msgid "ecos-apps"
-msgstr ""
+msgstr "ecos-apps"
 
 #: ../../general/breaking_changes.rst:164
 msgid "Мигрированная версия ecos-community-core - 4.25.0"
-msgstr ""
-
+msgstr "Migrated version of ecos-community-core - 4.25.0"
