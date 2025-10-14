@@ -114,5 +114,35 @@
      :width: 600
      :align: center 
 
+Настройки
+----------
 
-Для работы с Контур Фокус необходимо задать токен в секрете **kontur-focus-api-token**.
+Dadata
+~~~~~~~
+
+Для работы с Dadata необходимо перейти в раздел **«Источники записей» (Рабочее пространство "Раздел администратора" - Интеграция)** и задать токен Dadata в записи **findCounterpartyByInn**:
+
+.. image:: _static/client_360/dadata_01.png
+     :width: 700
+     :align: center 
+
+|
+
+.. image:: _static/client_360/dadata_02.png
+     :width: 500
+     :align: center 
+
+Контур Фокус
+~~~~~~~~~~~~~
+
+Для работы с Контур Фокус необходимо перейти в раздел **«Секреты» (Рабочее пространство "Раздел администратора" - Модель)** и задать токен Контур Фокус в секрете **kontur-focus-api-token**:
+
+.. image:: _static/client_360/kontur_focus_token_01.png
+     :width: 700
+     :align: center 
+
+|
+
+.. image:: _static/client_360/kontur_focus_token_02.png
+     :width: 500
+     :align: center 
