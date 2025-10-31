@@ -260,6 +260,13 @@ HTML Element
 
 Компонент может быть добавлен в форму для отображения одного элемента HTML.
 
+Динамически через скрипт можно менять контент. Например:
+
+.. code-block::
+
+       instance.component.content = {en: '<p>Hello World</p>', ru: '<p>Привет, мир</p>'};
+       instance.setHTML();       
+
 `См. подробное описание HTML Element на Form.io <https://help.form.io/userguide/forms/layout-components#html-element>`_
 
 
