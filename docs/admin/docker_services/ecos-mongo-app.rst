@@ -47,13 +47,6 @@ ecos-mongo-app
  	
 (1) - This variable allows you to specify the name of a database to be used for creation scripts in /docker-entrypoint-initdb.d/.js (see Initializing a fresh instance below). MongoDB is fundamentally designed for «create on first use», so if you do not insert data with your JavaScript files, then no database is created.
 
-Известные проблемы:
---------------------
-::
- 
-	2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
-	2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** See `mongo_prodnotes_filesystem <http://dochub.mongodb.org/core/prodnotes-filesystem>`_ 
-
 Типовой вывод успешного развертывания в лог контейнера:
 --------------------------------------------------------
 ::
