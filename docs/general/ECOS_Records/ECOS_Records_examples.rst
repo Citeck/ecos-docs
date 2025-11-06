@@ -128,6 +128,20 @@
     await Citeck.Records.get('emodel/ecos-contract@you-doc').load('_type.isSubTypeOf.case?bool!', true)
 
 
+Проверка прав доступа к записи
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+  
+    // Проверка права на чтение
+    await Citeck.Records.get('emodel/ecos-contract@you-doc').load('permissions._has.Read?bool!', true)
+    
+    // Проверка права на запись
+    await Citeck.Records.get('emodel/ecos-contract@you-doc').load('permissions._has.Write?bool!', true)
+    
+    // Проверка кастомного права
+    await Citeck.Records.get('emodel/ecos-contract@you-doc').load('permissions._has.bpmn-process-instance-read?bool!', true)
+
 Проверка связи между микросервисами, notifications -> eproc -> uiserv
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
