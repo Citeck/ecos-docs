@@ -78,13 +78,6 @@ ecos-notifications-app
 *	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME** - пользователь в ecos для интеграции с микросервисом нотификации
 *	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD** - пароль пользователя в ecos для интеграции с микросервисом нотификации
 
-Известные проблемы:
---------------------
-*	Отсутствие readness/liveness проверок датасорсов при развертывании и активном состоянии микросервиса
-*	Использование empty password в доступах к датасорсам
-*	Cloud config и eureka load balancer используют один и тот же пароль
-*	Монтирование firebase credentials как волюма
-*	Часть app properties (ECOS-NOTIFICATIONS*) нужно вынести в spring cloud config
 
 Типовой вывод успешного развертывания в лог контейнера:
 --------------------------------------------------------

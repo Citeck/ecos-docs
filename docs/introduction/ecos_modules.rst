@@ -111,7 +111,6 @@
 
     * :ref:`Развертывание Citeck с использованием кросплатформенного лончера <quick_start>`; 
     * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>`;
-    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`
 
 и воспользуйтесь следующими учетными записями для работы:
 

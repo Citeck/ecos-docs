@@ -245,3 +245,74 @@ JSON представление
         .. code-block::
 
           {t: "eq", att:"_created", val: "$TODAY"} 
+
+
+Дебаг предикатов и отладка
+-----------------------------
+
+1. Для дебага предикатов можно использовать следующий скрипт в консоли браузера:
+
+.. code-block::
+
+  await Records.queryOne({
+      sourceId: 'uiserv/predicate',
+      query: {
+          record: 'emodel/sed-agreement@8a2964d4-e83b-4337-b033-05e7e4a232fc',
+          predicate: {
+            "t": "and",
+            "val": [
+              {
+                "t": "not",
+                "val": {
+                  "t": "eq",
+                  "att": "_status?str",
+                  "val": "Canceled"
+                }
+              }
+            ]
+          }
+      }
+  }, 'result?bool')
+
+Между json <-> yaml можно делать однозначную конвертацию в любом онлайн сервисе по запросу "конвертация yaml в json".
+
+2. Так же для отладки полезно загрузить значения атрибутов и проверить, что с чем мы сравниваем:
+
+.. code-block::
+
+  await Records.get(
+      'emodel/sed-agreement@8a2964d4-e83b-4337-b033-05e7e4a232fc'
+  ).load([
+      '_status?str',
+      "_status?id",
+      "_status?disp",
+      "_roles.isCurrentUserMemberOf.author?bool",
+      "_roles.isCurrentUserMemberOf.admin?bool"
+  ]);
+
+.. code-block::
+
+  {
+    "_status?str": "Canceled",
+    "_status?id": "emodel/sed-agreement@Canceled",
+    "_status?disp": "Отменено",
+    "_roles.isCurrentUserMemberOf.author?bool": false,
+    "_roles.isCurrentUserMemberOf.admin?bool": true
+  }
+
+
+Отображение кнопки при определённых условиях, описанных предикатом
+---------------------------------------------------------------------
+
+**_status** - текстовое поле с локализацией, поэтому используется **_status?str**
+
+.. code-block::
+
+  t: not
+  val:
+    t: in
+    att: _status?str
+    val:
+      - draft
+      - Canceled
+      - Rejected
