@@ -3,14 +3,14 @@
 
 В **application property** добавлена конфигурация для отправки тестового сообщения при запуске микросервиса **ecos-notification**:
 
-.. code-block::
+.. code-block:: yaml
 
-    ecos-notifications:
-    startup-notification:
-        enabled: true
-        body: Microservice ecos-notifications successfully started and ready for operation. This is a test message – no reply is needed.
-        title: Microservice ecos-notifications successfully started and ready for operation
-        recipient: test@test.ru 
+ ecos-notifications:
+     startup-notification:
+         enabled: true
+         body: Microservice ecos-notifications successfully started and ready for operation. This is a test message – no reply is needed.
+         title: Microservice ecos-notifications successfully started and ready for operation
+         recipient: test@test.ru
 
 - **enabled** - true/false включена или выключена отправка сообщения;
 - **body** - тело тестового сообщения
