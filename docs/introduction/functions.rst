@@ -16,7 +16,6 @@
     functions/data_import
     functions/barcode
     functions/esign
-    functions/ws_artifacts
-    
+
 
     

@@ -211,7 +211,7 @@
     Несколько значений добавляется через запятую без пробелов в одних кавычках.
 
 .. image:: _static/dmn_dynamic_role/11.png
-    :width: 500
+    :width: 600
     :align: center
 
 Нажмите кнопку **+** внизу таблицы или просто нажмите в любом месте последней строки.
@@ -219,7 +219,7 @@
 Добавьте второе правило, указывающее, что для наименования **«Компьютер»** — согласующий с логином **«elvira.danilenko»**.
 
  .. image:: _static/dmn_dynamic_role/12.png
-       :width: 500
+       :width: 600
        :align: center
 
 Финальная таблица:
@@ -287,10 +287,10 @@
        :width: 600
        :align: center
 
-  В форме выберите тип **DMN**, решение – **Decision_equipment**:
+В форме выберите тип **DMN**, решение – **Decision_equipment**:
 
  .. image:: _static/dmn_dynamic_role/17.png
-       :width: 400
+       :width: 500
        :align: center
 
 Нажмите **Подтвердить**.
@@ -305,7 +305,7 @@
        :width: 500
        :align: center
 
-На статусе **«На согласовании»** - исполнитель – Александра Фильченко (аккаунт **alexandra.filchenko**) и Главный бухгалтер (группа **company_accountant**)
+На статусе **«На согласовании»** исполнители  - Александра Фильченко (аккаунт **alexandra.filchenko**) и Главный бухгалтер (группа **company_accountant**):
 
  .. image:: _static/dmn_dynamic_role/29.png
        :width: 700

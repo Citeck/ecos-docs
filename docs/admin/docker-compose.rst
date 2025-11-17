@@ -539,18 +539,21 @@
         Настройка Docker на запуск при старте системы:
 
         .. code-block::
+
             sudo systemctl start docker
             sudo systemctl enable docker
 
         Для того чтобы была доступна команда docker-compose, а не только docker compose:
 
         .. code-block::
+
             sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
+        
         .. note:: 
 
-        На этом Установка Docker Engine и Docker-Compose завершена.
+            На этом Установка Docker Engine и Docker-Compose завершена.
        
-        Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
+            Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
 
         .. note:: 
 
