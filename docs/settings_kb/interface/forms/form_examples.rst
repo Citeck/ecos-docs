@@ -53,6 +53,13 @@ Text field
        :width: 600
        :align: center
 
+Автофокус - автоматическая устанавка курсора ввода, без необходимости кликать на него мышью:
+
+ .. image:: _static/form_examples/Text_field_2.png
+       :width: 600
+       :align: center
+
+
 ECOS Select Component
 ----------------------
 

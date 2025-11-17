@@ -376,3 +376,92 @@ Intermediate Catch Event - событие с пользовательской м
 .. |br| raw:: html
 
      <br>
+
+
+Обработка события изменения исполнителя с использованием Signal Start Event (Non Interrupting)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: _static/assignee-changed-listener-example.bpmn.png
+      :width: 400
+      :align: center
+
+В процесс добавляется Event Sub Process, внутри событие для старта - Signal Start Event (Non Interrupting)
+
+См. :download:`демонстрационный процесс <../files/assignee-changed-listener-example.bpmn.xml>`
+
+**Настройки события для старта:**
+
+Сигнал
+
+Ручная настройка: Да
+
+Имя сигнала: bpmn-user-task-assign
+
+Модель данных:
+
+.. code-block::
+
+  {
+    "procDefId": "procDefId", // id процесса
+    "assignee": "assignee", // новый исполнитель задачи
+    "assigneeDisp": "assigneeRef?disp", // отображаемое имя нового исполнителя задачи
+    "taskDisp": "taskId?disp", // отображаемое имя задачи
+    "taskId": "elementDefId" // id задачи
+  }
+
+Полный список возможных атрибутов для загрузки можно посмотреть по `ссылка <https://github.com/Citeck/ecos-process/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/events/dto/UserTaskEvent.kt>`_
+
+**Фильтрация**
+
+Фильтр события по документу: Текущий документ
+
+Фильтр события по предикатам: 
+
+.. code-block::
+
+  {
+    "t": "and",
+    "val": [
+      {
+        "t": "eq",
+        "att": "taskId",
+        "val": "confirm_task_id"
+      },
+      {
+        "t": "eq",
+        "att": "procDefId",
+        "val": "qwe"
+      }
+    ]
+  }
+
+Проверяется id задачи и что событие произошло именно в текущем процессе (id процесса - "qwe"). При возникновении событий в лог микросервиса ecos-process выводятся следующие сообщения:
+
+.. code-block::
+
+  Нажата кнопка "Я выполню это"
+
+  2025-11-13 12:27:06.679  INFO [nio-8098-exec-6] [b1d4479fe130fcd812bbcc0f170bc8c1] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
+  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+  |Message:
+  Задача Согласование (confirm_task_id) была назначена на Admin Ecos (admin)
+
+  Нажата кнопка "Вернуть на группу"
+
+  2025-11-13 12:27:41.210  INFO [nio-8098-exec-7] [291bc37043f3435e877b73092dcbdaf4] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
+  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+  |Message:
+  Задача Согласование (confirm_task_id) была возвращена на группу
+
+  Задача назначена на пользователя из оргструктуры
+
+  2025-11-13 12:27:58.740  INFO [nio-8098-exec-3] [ba9befe170720b91e1ca3559417e6396] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
+  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+  |Message:
+  Задача Согласование (confirm_task_id) была назначена на Павел Эльбрусов (pavel.elbrusov)
