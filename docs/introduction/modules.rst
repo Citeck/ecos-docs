@@ -242,6 +242,21 @@
               :width: 30
               :align: center 
 
+      * - :ref:`Интеллектуальный помощник для платформы Citeck<AI_assistant>`
+        - Ассистент на основе искусственного интеллекта для автоматизации бизнес-процессов, работы с документами и управления данными.
+        - |
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+
 Микросервисы
 -------------
 

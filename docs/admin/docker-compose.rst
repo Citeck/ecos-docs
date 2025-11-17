@@ -527,48 +527,33 @@
 
         .. code-block::
 
-            sudo apt-get update
-            sudo apt-get install ca-certificates curl
-            sudo install -m 0755 -d /etc/apt/keyrings
-            sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-            sudo chmod a+r /etc/apt/keyrings/docker.asc
+            sudo dnf update -y
+            sudo dnf install -y dnf-utils ca-certificates curl
             
-            # Add the repository to Apt sources:
-            echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-            sudo apt-get update
-            
+            sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+            sudo dnf makecache
+
             ## Чтобы установить последнюю доступную версию, выполните команду::
-            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-            
-            ## Чтобы установить конкретную версию, выполните команду:
-            apt-cache madison docker-ce | awk '{ print $3 }'
-            VERSION_STRING={Your Specific version}
-            sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+            sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
         Настройка Docker на запуск при старте системы:
 
         .. code-block::
 
+            sudo systemctl start docker
             sudo systemctl enable docker
 
-        Установка Docker-compose:
+        Для того чтобы была доступна команда docker-compose, а не только docker compose:
 
         .. code-block::
 
-            wget https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-Linux-x86_64
-            mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-
+            sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
+        
         .. note:: 
 
-            Версию можно изменить на более актуальную, заменив v2.29.1
-
-        На этом Установка Docker Engine и Docker-Compose завершена.
+            На этом Установка Docker Engine и Docker-Compose завершена.
        
-        Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
+            Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
 
         .. note:: 
 

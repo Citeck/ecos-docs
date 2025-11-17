@@ -36,7 +36,6 @@
 
     * :ref:`Развертывание Citeck с использованием кросплатформенного лончера <quick_start>`; 
     * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>` 
-    * :ref:`Развертывание виртуальной машины с Citeck в VirtualBOX <virtualbox>`; 
 
 В разделе :ref:`"Знакомство с Citeck"<intro>` описан интерфейс и порядок работы с готовыми модулями системы.
 

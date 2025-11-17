@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ecos="http://www.citeck.ru/ecos/bpmn/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_sjG3VDb" name="qwe" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.2.0" ecos:workingCopySourceRef="" ecos:workspace="default" ecos:name_ml="{&quot;ru&quot;:&quot;qwe&quot;}" ecos:formRef="" ecos:autoDeleteEnabled="true" ecos:sectionRef="eproc/bpmn-section@DEFAULT" ecos:enabled="true" ecos:autoStartEnabled="true" ecos:defState="CONVERTED" ecos:processDefId="qwe" ecos:ecosType="emodel/type@qwe">
+    <bpmn:process isExecutable="true" id="qwe">
+        <bpmn:startEvent isInterrupting="true" name="" id="Event_17bbq58" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:outgoing >Flow_11vabri</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="Event_17bbq58" targetRef="confirm_task_id" name="" id="Flow_11vabri" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+        <bpmn:userTask name="Согласование" id="confirm_task_id" ecos:documentation="{}" ecos:manualRecipients="[&quot;GROUP_company&quot;]" ecos:laManualNotificationTemplateEnabled="false" ecos:outcomes="[{&quot;id&quot;:&quot;done&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Готово&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laNotificationAdditionalMeta="{}" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Согласование&quot;}" ecos:laNotificationType="EMAIL_NOTIFICATION" ecos:laReportEnabled="false" ecos:manualRecipientsMode="true" ecos:priority="MEDIUM" ecos:assignees="[]">
+            <bpmn:incoming >Flow_11vabri</bpmn:incoming>
+            <bpmn:outgoing >Flow_0s3jvxz</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent name="" id="Event_0yqjyse" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:incoming >Flow_0s3jvxz</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="confirm_task_id" targetRef="Event_0yqjyse" name="" id="Flow_0s3jvxz" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+        <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_110sawk" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:startEvent isInterrupting="false" name="" id="Event_0t6jnib" ecos:documentation="{}" ecos:manualSignalName="bpmn-user-task-assign" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;procDefId&quot;:&quot;procDefId&quot;,&quot;assignee&quot;:&quot;assignee&quot;,&quot;assigneeDisp&quot;:&quot;assigneeRef?disp&quot;,&quot;taskDisp&quot;:&quot;taskId?disp&quot;,&quot;taskId&quot;:&quot;elementDefId&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;and&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;taskId&quot;,&quot;val&quot;:&quot;confirm_task_id&quot;},{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;procDefId&quot;,&quot;val&quot;:&quot;qwe&quot;}]}">
+                <bpmn:outgoing >Flow_14uyuvj</bpmn:outgoing>
+                <bpmn:signalEventDefinition  signalRef="Signal_ZVwhXEl" id="SignalEventDefinition_00oba79"/>
+            </bpmn:startEvent>
+            <bpmn:sequenceFlow sourceRef="Event_0t6jnib" targetRef="Activity_07d9oq2" name="" id="Flow_14uyuvj" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:scriptTask scriptFormat="javascript" name="Обрабатываем событие смены исполнителя" id="Activity_07d9oq2" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Обрабатываем событие смены исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var assignee = event.get(&quot;assignee&quot;).asText();&#10;var assigneeDisp = event.get(&quot;assigneeDisp&quot;).asText();&#10;var taskDisp = event.get(&quot;taskDisp&quot;).asText();&#10;var taskId = event.get(&quot;taskId&quot;).asText();&#10;&#10;var msg = &quot;Задача &quot; + taskDisp + &quot; (&quot; + taskId + &quot;) &quot;;&#10;&#10;if (assignee) {&#10;  msg += &quot;была назначена на &quot; + assigneeDisp + &quot; (&quot; + assignee + &quot;)&quot;;&#10;} else {&#10;  msg += &quot;была возвращена на группу&quot;;&#10;}&#10;&#10;log.info(msg);">
+                <bpmn:incoming >Flow_14uyuvj</bpmn:incoming>
+                <bpmn:outgoing >Flow_0ouy58l</bpmn:outgoing>
+                <bpmn:script>var assignee = event.get("assignee").asText();
+var assigneeDisp = event.get("assigneeDisp").asText();
+var taskDisp = event.get("taskDisp").asText();
+var taskId = event.get("taskId").asText();
+
+var msg = "Задача " + taskDisp + " (" + taskId + ") ";
+
+if (assignee) {
+  msg += "была назначена на " + assigneeDisp + " (" + assignee + ")";
+} else {
+  msg += "была возвращена на группу";
+}
+
+log.info(msg);</bpmn:script>
+            </bpmn:scriptTask>
+            <bpmn:sequenceFlow sourceRef="Activity_07d9oq2" targetRef="Event_1eakycz" name="" id="Flow_0ouy58l" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:endEvent name="" id="Event_1eakycz" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+                <bpmn:incoming >Flow_0ouy58l</bpmn:incoming>
+            </bpmn:endEvent>
+        </bpmn:subProcess>
+    </bpmn:process>
+    <bpmn:signal name="bpmn-user-task-assign;${execution.businessKey};ANY;pr_36e1f9d4fd2af0db1d35111db81036a7" id="Signal_ZVwhXEl"/>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane  bpmnElement="qwe" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_17bbq58" isExpanded="false" id="Event_17bbq58_di">
+                <dc:Bounds x="152.0" y="222.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="confirm_task_id" isExpanded="false" id="confirm_task_id_di">
+                <dc:Bounds x="240.0" y="200.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0yqjyse" isExpanded="false" id="Event_0yqjyse_di">
+                <dc:Bounds x="392.0" y="222.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_110sawk" isExpanded="true" id="Activity_1iqm011_di">
+                <dc:Bounds x="120.0" y="350.0" width="370.0" height="160.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0t6jnib" isExpanded="false" id="Event_1ezyqv3_di">
+                <dc:Bounds x="152.0" y="412.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_07d9oq2" isExpanded="false" id="Activity_17jqblu_di">
+                <dc:Bounds x="240.0" y="390.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1eakycz" isExpanded="false" id="Event_1eakycz_di">
+                <dc:Bounds x="392.0" y="412.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_14uyuvj" id="Flow_14uyuvj_di">
+                <di:waypoint x="188.0" y="430.0"/>
+                <di:waypoint x="240.0" y="430.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0ouy58l" id="Flow_0ouy58l_di">
+                <di:waypoint x="340.0" y="430.0"/>
+                <di:waypoint x="392.0" y="430.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_11vabri" id="Flow_11vabri_di">
+                <di:waypoint x="188.0" y="240.0"/>
+                <di:waypoint x="240.0" y="240.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0s3jvxz" id="Flow_0s3jvxz_di">
+                <di:waypoint x="340.0" y="240.0"/>
+                <di:waypoint x="392.0" y="240.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

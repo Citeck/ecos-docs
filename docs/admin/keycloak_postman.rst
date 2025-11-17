@@ -22,7 +22,7 @@
 
 1.	Зайти в админскую консоль keycloak. 
 
-URL для доступа: ``%host%/auth/admin/master/console/`` 
+URL для доступа: ``%host%/ecos-idp/auth/admin/master/console/`` 
 
 2.	Выбрать необходимый реалм. 
 
