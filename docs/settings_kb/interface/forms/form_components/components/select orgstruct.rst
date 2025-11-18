@@ -9,19 +9,21 @@ Select orgstruct
 Настройка доступных для выбора элементов
 -----------------------------------------
 
- .. image:: _static/select_orgstruct/select_orgstruct_1.png
-       :width: 600
+.. image:: _static/select_orgstruct/select_orgstruct_1.png
+       :width: 550
        :align: center
+
+**Отображать всех пользователей системы** - в компоненте во вкладке **Все пользователи** будут отображать все пользователи, а не только пользователи рабочего пространства.
 
 **Таб по умолчанию: Все пользователи, По уровням** - таб, показываемый по умолчанию:
 
- .. image:: _static/select_orgstruct/select_orgstruct_2.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_2.png
+       :width: 400
        :align: center
 
 **Разрешенный тип полномочий/Allowed authority type** - типы элементов, доступные до выбора. Доступные значения: **USER** - пользователи, **GROUP** - группы. Можно указать оба типа через запятую.
 
-**Разрешенный тип группы/Allowed group type** - типы групп, доступных для выбора. Работает в случае, если **Allowed authority type** содержит **'GROUP'**. Можно указать несколько групп через запятую.
+**Разрешенный тип группы/Allowed group type** - типы групп, доступных для выбора. Работает в случае, если **Allowed authority type** содержит **GROUP**. Можно указать несколько групп через запятую.
 
 **Разрешенный подтип группы/Allowed group subtype** - типы подгрупп, доступных для выбора. Можно указать несколько подгрупп через запятую. Если поле заполнено, для выбора будут доступны только те элементы, которые проходят фильтр по этому полю, остальные группы выбрать нельзя.
 
@@ -29,8 +31,8 @@ Select orgstruct
 Скрытие групп и подгрупп
 ------------------------
 
- .. image:: _static/select_orgstruct/select_orgstruct_3.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_3.png
+       :width: 400
        :align: center
 
 **Исключить авторитеты по имени/Exclude authorities by name** -  список групп, перечисленных через запятую, для фильтрации по имени . Группы, добавленные в это поле, и все их дочерние элементы не отображаются в оргструктуре
@@ -44,8 +46,8 @@ Select orgstruct
 Настройка полей для поиска пользователя
 -----------------------------------------
 
- .. image:: _static/select_orgstruct/select_orgstruct_4.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_4.png
+       :width: 400
        :align: center
 
 .. note::
@@ -60,8 +62,8 @@ Select orgstruct
 Возможность динамически задавать корневую группу 
 --------------------------------------------------
 
- .. image:: _static/select_orgstruct/select_orgstruct_7.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_7.png
+       :width: 400
        :align: center
 
 Возможность динамически задавать корневую группу в Оргструктуре, через параметр, value или условие. Например:
@@ -85,16 +87,16 @@ Select orgstruct
 Текущий пользователь
 ~~~~~~~~~~~~~~~~~~~~~
 
- .. image:: _static/select_orgstruct/select_orgstruct_5.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_5.png
+       :width: 400
        :align: center
 
 На вкладке :guilabel:`Кастомные` **Текущий пользователь по умолчанию/Current user by default** - в случае, если флажок отмечен, по умолчанию будет установлено значение **id** текущего пользователя. Работает только для форм в режиме создания записи ('CREATE').
 
 На вкладке :guilabel:`Данные` в разделе **Пользовательские значения по умолчанию**:
 
- .. image:: _static/select_orgstruct/select_orgstruct_6.png
-       :width: 500
+.. image:: _static/select_orgstruct/select_orgstruct_6.png
+       :width: 550
        :align: center
 
 указать:
