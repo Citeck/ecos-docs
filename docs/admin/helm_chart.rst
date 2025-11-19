@@ -8,7 +8,7 @@
 Пример Helm chart с описанием параметров
 -------------------------------------------
 
-С примером Helm chart и описанием его параметров можно ознакомиться по `ссылке <https://github.com/Citeck/helm-value-samples/blob/master/values.yaml>`_
+Описание параметров представлено в `примере Helm chart <https://github.com/Citeck/helm-value-samples/blob/master/values.yaml>`_.
 
 
 Общее описание
