@@ -14,7 +14,7 @@
 
 Для настройки дашборда рабочего пространства выберите рабочее пространство: персональное или пространство, в котором вы **менеджер**. Перейдите в **настройки** и выберите **«Настроить страницу»**:
 
- .. image:: _static/09_edit_dashboard.png
+.. image:: _static/09_edit_dashboard.png
        :width: 700
        :align: center 
 
@@ -26,7 +26,7 @@
 
 Для сохранения изменений нажмите **«Применить»** внизу страницы.
 
- .. image:: _static/10_user-dashboard.png
+.. image:: _static/10_user-dashboard.png
        :width: 600
        :align: center 
 
@@ -35,13 +35,13 @@
 
 Выберите рабочее пространство: персональное или пространство, в котором вы **менеджер**, перейдите в **настройки** и выберите **«Настроить меню»**:
 
- .. image:: _static/09_edit_menu.png
+.. image:: _static/09_edit_menu.png
        :width: 700
        :align: center 
 
 Доступно как добавление раздела **(1)**, так и элементов в раздел **(2)**:
 
- .. image:: _static/11_ws-menu.png
+.. image:: _static/11_ws-menu.png
        :width: 500
        :align: center 
 
@@ -49,12 +49,12 @@
 
 Например, добавим в меню журнал «Договоры»:
 
- .. image:: _static/11_ws-menu_01.png
+.. image:: _static/11_ws-menu_01.png
        :width: 500
        :align: center 
 
 Обновленное меню станет доступно для всех пользователей рабочего пространства.
 
- .. image:: _static/11_ws-menu_02.png
+.. image:: _static/11_ws-menu_02.png
        :width: 700
        :align: center 
