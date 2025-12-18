@@ -87,7 +87,7 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 ~~~~~~~~~~~~~~~~~~
 
 Интерфейс, позволяющий реализовать пользовательскую бизнес-логику и взаимодействовать с Engine, называется `ExternalTaskHandler`. 
-Подписка идентифицируется именем топика и конфигурируется ссылкой на bean `ExternalTaskHandler`.
+Подписка идентифицируется именем топика.
 
 Вы можете подписать клиента на имя топика `processPayment`, определив bean с возвращающим типом `ExternalTaskHandler` и добавив аннотацию на этот bean:
 
@@ -96,7 +96,8 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
     @ExternalTaskSubscription("processPayment")
 
 Для аннотации требуется как минимум имя топика. 
-Однако вы можете применить больше параметров конфигурации, либо сославшись на имя топика в файле конфигурации spring-boot, например application.yml:
+
+Для более подвинутой конфигурации можно сослаться на имя топика в файле конфигурации spring-boot, например application.yml и применить настройки:
 
 .. code-block:: yaml
 
@@ -108,7 +109,7 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
                 variable-names: defaultFlow
 
 
-Или путем определения атрибутов конфигурации через аннотацию:
+Или определить атрибуты конфигурации через аннотацию:
 
 .. code-block:: kotlin
 

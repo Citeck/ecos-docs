@@ -12,7 +12,7 @@
 Для работы с секретами, используемыми для запуска Citeck, кликните:
 
 .. image:: _static/secret_0.png
-    :width: 600
+    :width: 700
     :align: center
 
 

@@ -265,17 +265,17 @@ CreateEcosHistoryDocumentMirrorProcessor
 
 **Класс**
 
-ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor
+**ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor**
 
 **Вход/Выход**
 
-На вход принимается либо объекты конвертируемые в DataValue, либо список таких объектов.
+На вход принимается либо объекты конвертируемые в **DataValue**, либо список таких объектов.
 
-Если на входе Collection, то на выходе List<DataValue>.
+Если на входе **Collection**, то на выходе **List<DataValue>**.
 
-Если на входе DataValue в виде листа, то на выходе новый лист с DataValue объектами после обработки.
+Если на входе **DataValue** в виде листа, то на выходе новый лист с **DataValue** объектами после обработки.
 
-Если на входе объект, конвертируемый в DataValue, то на выходе новый DataValue объект после обработки. 
+Если на входе объект, конвертируемый в **DataValue**, то на выходе новый **DataValue** объект после обработки. 
 
 **Описание**
 

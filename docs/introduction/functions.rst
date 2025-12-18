@@ -6,6 +6,7 @@
 
     functions/client_360
     functions/preview
+    functions/categories
     functions/onlyoffice_edit
     functions/delegation
     functions/wysiwyg_editor

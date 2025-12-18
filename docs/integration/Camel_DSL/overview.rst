@@ -35,6 +35,20 @@ Camel использует доменные языки (Domain Specific Language
 * **MANUALLY** - Работает, как и обычный Camel DSL. Запускается и останавливается через действие.
 * **IMPORT_DATA** - Используется для описания обработки файла при Импорте данных
 
+В контекст Camel DSL можно прикладывать файлы в формате base64. В конфиге можно указать название файла и его контент:
+
+.. code-block:: yaml
+
+  file:
+    name: Пользователи.xlsx
+    content: 'UEsDLVsnEoVzlgUAAJYFAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbDw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04IiBzd='
+
+После деплоя в Camel DSL будет сразу приложенный файл:
+
+.. image:: _static/Camel_content.png
+       :width: 600
+       :align: center    
+
 .. note::
     Атрибут = свойство = поле
 
