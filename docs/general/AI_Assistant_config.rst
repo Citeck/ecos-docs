@@ -43,7 +43,7 @@
 Конфигурация
 ~~~~~~~~~~~~~
 
-    * **Прокси поддержка:** HTTP, HTTPS и SOCKS протоколы
+    * **Прокси поддержка:** HTTP и HTTPS протоколы
     * **Гибкие настройки:** Конфигурация через переменные окружения и ``application.yml``
     * **Мониторинг:** Логирование и отслеживание ошибок
 
@@ -53,71 +53,135 @@
 
 Citeck AI Assistant поддерживает работу с различными провайдерами больших языковых моделей (LLM).
 
-Выбор провайдера
-~~~~~~~~~~~~~~~~~~
-
-Провайдер LLM выбирается один для всей системы и указывается в конфигурации ``spring.ai.model.chat``:
-
-.. code-block:: yaml
-
-    spring:
-    ai:
-        model:
-        chat: openai  # Провайдер: anthropic, azure-openai, и т.д. (org.springframework.ai.observation.conventions.AiProvider)
-
 Поддерживаемые провайдеры
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    - **openai** - GPT-модели (gpt-4, gpt-4.1, gpt-4.1-mini и др.)
-    - **azure-openai** - GPT-модели через Azure (gpt-4, gpt-35-turbo и др.)
-    - **anthropic** - Claude модели (claude-3-opus, claude-3-sonnet, claude-3-haiku)
-    - **ollama** - локальные модели (granite3.3, llama3, mistral и др.)
-    - **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder и др.)
-    - **vertex_ai** - Google Vertex AI модели (gemini-pro, gemini-pro-vision)
-    - **google_genai** - Google GenAI модели
-    - **bedrock_converse** - AWS Bedrock модели (claude, titan, jurassic и др.)
-    - **mistral_ai** - модели Mistral AI (mistral-large, mistral-medium, mistral-small)
-    - **minimax** - модели Minimax (abab6.5, abab5.5 и др.)
-    - **zhipuai** - модели ZhipuAI (glm-4, glm-3-turbo)
+    - **openai** - GPT-модели (gpt-5.1 и др.)
+    - **anthropic** - Claude модели (claude-opus-4-5 и др.)
+    - **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)
+    - **ollama** - локальные модели (granite3.3, llama3, mistral)
+
+Выбор провайдера по умолчанию
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Провайдер по умолчанию указывается в ``citeck.ai.default.provider``. Этот провайдер используется для всех ассистентов, если не указан специфичный:
+
+.. code-block:: yaml
+
+    citeck:
+        ai:
+            default:
+                provider: openai  # openai, anthropic, deepseek, ollama
+
+.. important::
+
+    Для каждого типа ассистента можно указать своего провайдера через параметр ``provider``. Если не указан - используется ``citeck.ai.default.provider``.
 
 Базовая конфигурация модели
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Для работы системы необходимо указать базовую модель в ``citeck.ai.base.model``. Эта модель используется по умолчанию для всех ассистентов, если не указана специфичная модель:
 
-.. code-block::
+.. code-block:: yaml
 
     citeck:
-    ai:
-        base:
-        model: gpt-4.1-mini  # Базовая модель для всех ассистентов
+        ai:
+            base:
+                model: gpt-5.1  # Базовая модель для всех ассистентов
 
 Настройка моделей для разных ассистентов
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В рамках выбранного провайдера каждый тип ассистента может использовать свою модель и температуру:
+В рамках выбранного провайдера каждый тип ассистента может использовать свою модель и дополнительные параметры:
 
 .. code-block:: yaml
 
     citeck:
-    ai:
-        assistants:
-        bpmn:
-            model: gpt-4.1          # Модель для BPMN-ассистента
-            temperature: 0.7            # Температура для творческих задач
-        universal:
-            model: gpt-4-mini           # Модель для универсального ассистента
-            temperature: 0.7
-        intent-detection:
-            model: gpt-3.5-turbo        # Быстрая модель для определения намерений
-            temperature: 0.1            # Низкая температура для точности
-        required-content-version-selection:
-            model: gpt-4-mini           # Модель для выбора версий контента
-            temperature: 0.1
+        ai:
+            assistants:
+                bpmn:
+                    model: gpt-5.1
+                    temperature: 0.1
+                    reasoning-effort: medium     # Уровень рассуждений: none, low, medium, high
+                    streaming: true              # Потоковый вывод
+                universal:
+                    model: gpt-5.1
+                    temperature: 0.7
+                    reasoning-effort: medium
+                intent-detection:
+                    model: gpt-5.1
+                    temperature: 0.1
+                    reasoning-effort: low
+                    use-native-structured-output: true  # Использовать нативный structured output
+                required-content-version-selection:
+                    model: gpt-5.1
+                    temperature: 0.1
+                    reasoning-effort: low
+                business-app-generation:       # Генерация бизнес-приложений
+                    model: gpt-5.1
+                    temperature: 0.5
+                    reasoning-effort: medium
+                    context-analyzer:          # Анализатор контекста
+                        model: gpt-5.1
+                        temperature: 0.1
+                        use-native-structured-output: true
+                    description-formatter:     # Форматирование описаний
+                        model: gpt-5.1
+                        temperature: 0.1
+                    requirements-generator:    # Генератор требований
+                        model: gpt-5.1
+                        temperature: 0.1
+                        use-native-structured-output: true
+
+Параметры ассистентов
+~~~~~~~~~~~~~~~~~~~~~~
+
+    * ``provider`` - провайдер для данного ассистента (если не указан - используется ``citeck.ai.default.provider``)
+    * ``model`` - модель для использования (должна быть доступна у выбранного провайдера)
+    * ``temperature`` - температура генерации (0.0-1.0)
+    * ``reasoning-effort`` - уровень рассуждений: ``none``, ``low``, ``medium``, ``high``
+    * ``streaming`` - включить потоковый вывод
+    * ``use-native-structured-output`` - использовать нативный structured output провайдера
+
+Пример использования разных провайдеров
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: yaml
+
+    citeck:
+        ai:
+            default:
+                provider: openai           # Провайдер по умолчанию
+            assistants:
+                bpmn:
+                    provider: anthropic      # Claude для генерации BPMN
+                    model: claude-opus-4-5
+                universal:
+                    # provider не указан - используется openai
+                    model: gpt-5.1
+                intent-detection:
+                    provider: deepseek       # DeepSeek для быстрой классификации
+                    model: deepseek-chat
 
 .. note::
 
     Все указанные модели должны быть доступны в рамках выбранного провайдера.
+
+Настройка Structured Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Конфигурация retry-механизма для структурированного вывода:
+
+.. code-block:: yaml
+
+    citeck:
+        ai:
+            structured-output:
+                max-attempts: 3              # Максимум попыток при ошибках парсинга
+                delay-ms: 500                # Начальная задержка между попытками (мс)
+                use-exponential-backoff: true # Экспоненциальное увеличение задержки
+                backoff-multiplier: 2.0      # Множитель увеличения задержки
+                max-delay-ms: 5000           # Максимальная задержка (мс)
 
 Примеры конфигурации основных провайдеров
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,52 +192,37 @@ OpenAI
 .. code-block:: yaml
 
     spring:
-    ai:
-        model:
-        chat: openai  # Выбор провайдера OpenAI
-        openai:
-        api-key: ${OPENAI_API_KEY}
-        chat:
-            options:
-            model: gpt-4.1-mini  # Модель по умолчанию для Spring AI
+        ai:
+            openai:
+                api-key: ${OPENAI_API_KEY}
 
     citeck:
-    ai:
-        base:
-        model: gpt-4.1-mini  # Базовая модель системы
-        assistants:
-        bpmn:
-            model: gpt-4.1      # Более мощная модель для BPMN
-        universal:
-            model: gpt-4.1-mini       # Стандартная модель
-        intent-detection:
-            model: gpt-3.5-turbo    # Быстрая модель для классификации
+        ai:
+            default:
+                provider: openai
+            base:
+                model: gpt-5.1
+            assistants:
+                bpmn:
+                    reasoning-effort: medium
+                    streaming: true
+                intent-detection:
+                    use-native-structured-output: true
 
 Ollama (локальные модели)
 """""""""""""""""""""""""""""
 
 .. code-block:: yaml
 
-    spring:
-    ai:
-        model:
-        chat: ollama
-        ollama:
-        chat:
-            options:
-            model: granite3.3
-
     citeck:
-    ai:
-        base:
-        model: granite3.3
-        assistants:
-        bpmn:
-            model: llama3
-        universal:
-            model: granite3.3
-        intent-detection:
-            model: granite3.3
+        ai:
+            default:
+                provider: ollama
+            base:
+                model: granite3.3
+            assistants:
+                bpmn:
+                    model: llama3
 
 DeepSeek
 """""""""""
@@ -181,26 +230,46 @@ DeepSeek
 .. code-block:: yaml
 
     spring:
-    ai:
-        model:
-        chat: deepseek
-        deepseek:
-        api-key: ${DEEPSEEK_API_KEY}
-        chat:
-            options:
-            model: deepseek-chat
+        ai:
+            deepseek:
+                api-key: ${DEEPSEEK_API_KEY}
 
     citeck:
-    ai:
-        base:
-        model: deepseek-chat
-        assistants:
-        bpmn:
-            model: deepseek-coder
-        universal:
-            model: deepseek-chat
-        intent-detection:
-            model: deepseek-chat
+        ai:
+            default:
+                provider: deepseek
+            base:
+                model: deepseek-chat
+            assistants:
+                bpmn:
+                    model: deepseek-coder
+
+Yandex Cloud (через OpenAI-совместимый API)
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: yaml
+
+    spring:
+        ai:
+            openai:
+                api-key: ${YANDEX_API_KEY}
+                chat:
+                    base-url: https://llm.api.cloud.yandex.net
+
+    citeck:
+        ai:
+            default:
+                provider: openai  # Используем OpenAI-совместимый API
+            base:
+                model: 'gpt://{folder_id}/gpt-oss-120b/latest'
+
+.. important::
+
+    * Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud
+    * Поддержка Yandex Cloud через OpenAI-совместимый API является частичной
+    * Формат модели: ``gpt://{folder_id}/model-name/latest``
+    * Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud
+    * Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в формате Yandex Cloud
 
 Настройка прокси
 ----------------
@@ -216,7 +285,7 @@ Citeck AI Assistant поддерживает работу через прокс�
 Переменные окружения
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: yaml
+.. code-block:: bash
 
     # Включение прокси
     CITECK_AI_PROXY_ENABLED=true
@@ -224,7 +293,7 @@ Citeck AI Assistant поддерживает работу через прокс�
     # Настройки подключения
     CITECK_AI_PROXY_HOST=your-proxy-host.com
     CITECK_AI_PROXY_PORT=8080
-    CITECK_AI_PROXY_PROTOCOL=HTTP  # HTTP, HTTPS или SOCKS
+    CITECK_AI_PROXY_PROTOCOL=HTTP  # HTTP или HTTPS
 
     # Аутентификация (опционально)
     CITECK_AI_PROXY_USERNAME=your-username
@@ -237,12 +306,12 @@ Citeck AI Assistant поддерживает работу через прокс�
 .. code-block:: yaml
 
     citeck:
-    ai:
-        proxy:
-        enabled: true
-        host: proxy.company.com
-        port: 8080
-        protocol: HTTP
-        username: proxy-user
-        password: proxy-pass
+        ai:
+            proxy:
+                enabled: true
+                host: proxy.company.com
+                port: 8080
+                protocol: HTTP
+                username: proxy-user
+                password: proxy-pass
 
