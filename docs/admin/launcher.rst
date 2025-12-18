@@ -31,4 +31,5 @@
     launcher/overview
     launcher/namespace
     launcher/secrets
+    launcher/dump
     launcher/workspace
