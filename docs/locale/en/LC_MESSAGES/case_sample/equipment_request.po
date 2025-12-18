@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2025-12-19 00:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,25 +32,38 @@ msgid ""
 "Порядок действий описан для пользователей, состоящих в группе "
 "**Администраторы ECOS** (ECOS_ADMINISTRATORS)."
 msgstr ""
-"The procedure is described for users belonging to the **ECOS Administrators** group (ECOS_ADMINISTRATORS)."
+"The procedure is described for users belonging to the **ECOS "
+"Administrators** group (ECOS_ADMINISTRATORS)."
 
 #: ../../case_sample/equipment_request.rst:13
 msgid ""
-"Данная статья знакомит пользователей с основами ECOS на примере создания "
-"бизнес-процесса **«Заявка на закупку оборудования»**."
+"Так же менеджер рабочего пространства может создать тип данных, "
+"бизнес-процесс для использования внутри рабочего пространства. :ref:`См. "
+"подробно<ws_artifacts>`"
 msgstr ""
-"This article introduces users to the basics of ECOS using the example of creating a business process **\"Equipment Procurement Request\"**."
 
-#: ../../case_sample/equipment_request.rst:15
+#: ../../case_sample/equipment_request.rst:16
+#, fuzzy
+msgid ""
+"Данная статья знакомит пользователей с основами Citeck на примере "
+"создания бизнес-процесса **«Заявка на закупку оборудования»**."
+msgstr ""
+"This article introduces users to the basics of ECOS using the example of "
+"creating a business process **\"Equipment Procurement Request\"**."
+
+#: ../../case_sample/equipment_request.rst:18
 msgid ""
 "**Заявка на оборудование** – заявка, которая необходима для закупки "
 "оборудования для операционной деятельности сотрудников. Например, для "
 "подключения монитора к компьютеру сотруднику необходим специальный "
 "кабель, которого на данный момент нет в наличии."
 msgstr ""
-"**Equipment Request** – a request necessary for procuring equipment for employees' operational activities. For example, an employee needs a special cable to connect a monitor to their computer, which is currently out of stock."
+"**Equipment Request** – a request necessary for procuring equipment for "
+"employees' operational activities. For example, an employee needs a "
+"special cable to connect a monitor to their computer, which is currently "
+"out of stock."
 
-#: ../../case_sample/equipment_request.rst:17
+#: ../../case_sample/equipment_request.rst:20
 msgid ""
 "Обычно сотрудник обращается к своему руководителю с просьбой, чтобы для "
 "него (сотрудника) необходимое оборудование было приобретено, после "
@@ -58,1008 +71,1188 @@ msgid ""
 "правилами и распорядками происходит закупка. Согласующий так же может "
 "отказать в покупке."
 msgstr ""
-"Typically, an employee approaches their manager with a request to purchase the necessary equipment for them. After successful approval by the manager and in accordance with internal rules and regulations, the procurement takes place. The approver can also deny the purchase."
+"Typically, an employee approaches their manager with a request to "
+"purchase the necessary equipment for them. After successful approval by "
+"the manager and in accordance with internal rules and regulations, the "
+"procurement takes place. The approver can also deny the purchase."
 
-#: ../../case_sample/equipment_request.rst:19
+#: ../../case_sample/equipment_request.rst:22
 msgid ""
 "Далее мы пошагово реализуем описанный сценарий с использованием "
 "инструментов Citeck."
 msgstr ""
-"Next, we will step-by-step implement the described scenario using Citeck tools."
+"Next, we will step-by-step implement the described scenario using Citeck "
+"tools."
 
-#: ../../case_sample/equipment_request.rst:21
+#: ../../case_sample/equipment_request.rst:24
 msgid "Для закупки оборудования нам потребуется следующая информация:"
 msgstr "For equipment procurement, we will need the following information:"
 
-#: ../../case_sample/equipment_request.rst:23
+#: ../../case_sample/equipment_request.rst:26
 msgid "**Инициатор** – сотрудник, которому необходимо оборудование;"
 msgstr "**Initiator** – the employee who needs the equipment;"
 
-#: ../../case_sample/equipment_request.rst:24
+#: ../../case_sample/equipment_request.rst:27
 msgid ""
 "**Согласующий** – сотрудник, ответственный за согласование приобретаемого"
 " оборудования;"
-msgstr "**Approver** – the employee responsible for approving the equipment to be purchased;"
+msgstr ""
+"**Approver** – the employee responsible for approving the equipment to be"
+" purchased;"
 
-#: ../../case_sample/equipment_request.rst:25
+#: ../../case_sample/equipment_request.rst:28
 msgid "**Название** – наименование приобретаемого оборудования;"
 msgstr "**Name** – the name of the equipment to be purchased;"
 
-#: ../../case_sample/equipment_request.rst:26
+#: ../../case_sample/equipment_request.rst:29
 msgid "**Стоимость** – стоимость оборудования."
 msgstr "**Cost** – the cost of the equipment."
 
-#: ../../case_sample/equipment_request.rst:28
+#: ../../case_sample/equipment_request.rst:31
+#, fuzzy
 msgid ""
-"До создания самого бизнес-процесса необходимо создать ряд "
+"До запуска самого бизнес-процесса необходимо создать ряд "
 ":ref:`артефактов<ecos_artifacts>` в следующем порядке:"
 msgstr ""
-"Before creating the business process itself, it is necessary to create a number of :ref:`artifacts<ecos_artifacts>` in the following order:"
+"Before creating the business process itself, it is necessary to create a "
+"number of :ref:`artifacts<ecos_artifacts>` in the following order:"
 
-#: ../../case_sample/equipment_request.rst:30
+#: ../../case_sample/equipment_request.rst:33
 msgid ":ref:`тип данных<data_types_main>`;"
 msgstr ":ref:`data type<data_types_main>`;"
 
-#: ../../case_sample/equipment_request.rst:31
+#: ../../case_sample/equipment_request.rst:34
 msgid ":ref:`журнал<journals>`;"
 msgstr ":ref:`journal<journals>`;"
 
-#: ../../case_sample/equipment_request.rst:32
+#: ../../case_sample/equipment_request.rst:35
 msgid ":ref:`форма <forms>` ;"
 msgstr ":ref:`form <forms>` ;"
 
-#: ../../case_sample/equipment_request.rst:33
+#: ../../case_sample/equipment_request.rst:36
 msgid ":ref:`процесс<ecos_bpmn>`."
 msgstr ":ref:`process<ecos_bpmn>`."
 
-#: ../../case_sample/equipment_request.rst:36
-#: ../../case_sample/equipment_request.rst:319
+#: ../../case_sample/equipment_request.rst:39
+#: ../../case_sample/equipment_request.rst:320
 msgid "Тип данных"
 msgstr "Data Type"
 
-#: ../../case_sample/equipment_request.rst:40
+#: ../../case_sample/equipment_request.rst:43
 msgid "**Тип данных** - основной источник метаданных работы с объектом."
 msgstr "**Data Type** - the main source of metadata for working with an object."
 
-#: ../../case_sample/equipment_request.rst:42
+#: ../../case_sample/equipment_request.rst:45
 msgid "Для создания типа данных перейдите в рабочее пространство администратора:"
 msgstr "To create a data type, go to the administrator workspace:"
 
-#: ../../case_sample/equipment_request.rst:48
+#: ../../case_sample/equipment_request.rst:51
 msgid "в разделе **Модель** перейдите в пункт **Типы данных**:"
 msgstr "in the **Model** section, go to **Data Types**:"
 
-#: ../../case_sample/equipment_request.rst:54
+#: ../../case_sample/equipment_request.rst:57
 msgid "нажмите **+ - Создать новый тип**:"
 msgstr "click **+ - Create new type**:"
 
-#: ../../case_sample/equipment_request.rst:61
+#: ../../case_sample/equipment_request.rst:64
 msgid "Основное"
 msgstr "General"
 
-#: ../../case_sample/equipment_request.rst:63
+#: ../../case_sample/equipment_request.rst:66
 msgid "На вкладке расположены основные данные по типу данных (объекту):"
 msgstr "The tab contains the main data for the data type (object):"
 
-#: ../../case_sample/equipment_request.rst:70
-#: ../../case_sample/equipment_request.rst:312
+#: ../../case_sample/equipment_request.rst:73
+#: ../../case_sample/equipment_request.rst:313
 msgid "**1**"
 msgstr "**1**"
 
-#: ../../case_sample/equipment_request.rst:71
+#: ../../case_sample/equipment_request.rst:74
 msgid "id"
 msgstr "id"
 
-#: ../../case_sample/equipment_request.rst:72
-#: ../../case_sample/equipment_request.rst:314
-#: ../../case_sample/equipment_request.rst:320
+#: ../../case_sample/equipment_request.rst:75
+#: ../../case_sample/equipment_request.rst:315
+#: ../../case_sample/equipment_request.rst:321
 msgid "equipment-request"
 msgstr "equipment-request"
 
-#: ../../case_sample/equipment_request.rst:73
-#: ../../case_sample/equipment_request.rst:315
+#: ../../case_sample/equipment_request.rst:76
+#: ../../case_sample/equipment_request.rst:316
 msgid "**2**"
 msgstr "**2**"
 
-#: ../../case_sample/equipment_request.rst:74
-#: ../../case_sample/equipment_request.rst:316
+#: ../../case_sample/equipment_request.rst:77
+#: ../../case_sample/equipment_request.rst:317
 msgid "Имя"
 msgstr "Name"
 
-#: ../../case_sample/equipment_request.rst:75
-#: ../../case_sample/equipment_request.rst:317
+#: ../../case_sample/equipment_request.rst:78
+#: ../../case_sample/equipment_request.rst:318
 msgid "Заявка на покупку оборудования"
 msgstr "Equipment Purchase Request"
 
-#: ../../case_sample/equipment_request.rst:76
-#: ../../case_sample/equipment_request.rst:318
+#: ../../case_sample/equipment_request.rst:79
+#: ../../case_sample/equipment_request.rst:319
 msgid "**3**"
 msgstr "**3**"
 
-#: ../../case_sample/equipment_request.rst:77
+#: ../../case_sample/equipment_request.rst:80
 msgid "Родитель"
 msgstr "Parent"
 
-#: ../../case_sample/equipment_request.rst:78
+#: ../../case_sample/equipment_request.rst:81
 msgid "Кейс"
 msgstr "Case"
 
-#: ../../case_sample/equipment_request.rst:79
-#: ../../case_sample/equipment_request.rst:321
+#: ../../case_sample/equipment_request.rst:82
+#: ../../case_sample/equipment_request.rst:322
 msgid "**4**"
 msgstr "**4**"
 
-#: ../../case_sample/equipment_request.rst:80
+#: ../../case_sample/equipment_request.rst:83
 msgid "Форма"
 msgstr "Form"
 
-#: ../../case_sample/equipment_request.rst:81
+#: ../../case_sample/equipment_request.rst:84
 msgid ""
 "Оставить по умолчанию (система автоматически сгенерирует форму по тем "
 "атрибутам, которые мы укажем далее, но автоматически сгенерированные "
 "формы нельзя редактировать)"
 msgstr ""
-"Leave as default (the system will automatically generate a form based on the attributes we specify later, but automatically generated forms cannot be edited)"
+"Leave as default (the system will automatically generate a form based on "
+"the attributes we specify later, but automatically generated forms cannot"
+" be edited)"
 
-#: ../../case_sample/equipment_request.rst:82
-#: ../../case_sample/equipment_request.rst:324
+#: ../../case_sample/equipment_request.rst:85
+#: ../../case_sample/equipment_request.rst:325
 msgid "**5**"
 msgstr "**5**"
 
-#: ../../case_sample/equipment_request.rst:83
+#: ../../case_sample/equipment_request.rst:86
 msgid "Журнал"
 msgstr "Journal"
 
-#: ../../case_sample/equipment_request.rst:84
+#: ../../case_sample/equipment_request.rst:87
 msgid ""
 "Оставить по умолчанию (система автоматически сгенерирует журнал по тем "
 "атрибутам, которые мы укажем далее, но автоматически сгенерированные "
 "журналы нельзя редактировать)"
 msgstr ""
-"Leave as default (the system will automatically generate a journal based on the attributes we specify later, but automatically generated journals cannot be edited)"
+"Leave as default (the system will automatically generate a journal based "
+"on the attributes we specify later, but automatically generated journals "
+"cannot be edited)"
 
-#: ../../case_sample/equipment_request.rst:86
-#: ../../case_sample/equipment_request.rst:129
-#: ../../case_sample/equipment_request.rst:163
-#: ../../case_sample/equipment_request.rst:196
+#: ../../case_sample/equipment_request.rst:89
+#: ../../case_sample/equipment_request.rst:132
+#: ../../case_sample/equipment_request.rst:166
+#: ../../case_sample/equipment_request.rst:199
 msgid "Конечная настройка вкладки:"
 msgstr "Final tab configuration:"
 
-#: ../../case_sample/equipment_request.rst:93
+#: ../../case_sample/equipment_request.rst:96
 msgid "Атрибуты"
 msgstr "Attributes"
 
-#: ../../case_sample/equipment_request.rst:97
+#: ../../case_sample/equipment_request.rst:100
 msgid ""
 "На вкладке находится информация о свойствах, которые будут использованы "
 "для взаимодействия с объектом."
-msgstr "The tab contains information about the properties that will be used to interact with the object."
+msgstr ""
+"The tab contains information about the properties that will be used to "
+"interact with the object."
 
-#: ../../case_sample/equipment_request.rst:99
+#: ../../case_sample/equipment_request.rst:102
 msgid "Для создания заявки нам потребуется следующая информация:"
 msgstr "To create a request, we will need the following information:"
 
-#: ../../case_sample/equipment_request.rst:100
+#: ../../case_sample/equipment_request.rst:103
 msgid "что необходимо купить,"
 msgstr "what needs to be bought,"
 
-#: ../../case_sample/equipment_request.rst:101
+#: ../../case_sample/equipment_request.rst:104
 msgid "сколько стоит,"
 msgstr "how much it costs,"
 
-#: ../../case_sample/equipment_request.rst:102
+#: ../../case_sample/equipment_request.rst:105
 msgid "кто запрашивает"
 msgstr "who is requesting it"
 
-#: ../../case_sample/equipment_request.rst:103
+#: ../../case_sample/equipment_request.rst:106
 msgid "кто согласует закупку."
 msgstr "who approves the purchase."
 
-#: ../../case_sample/equipment_request.rst:105
+#: ../../case_sample/equipment_request.rst:108
 msgid "И, соответственно, нам потребуются следующие атрибуты (свойства объекта):"
-msgstr "And, accordingly, we will need the following attributes (object properties):"
+msgstr ""
+"And, accordingly, we will need the following attributes (object "
+"properties):"
 
-#: ../../case_sample/equipment_request.rst:113
-#: ../../case_sample/equipment_request.rst:152
-#: ../../case_sample/equipment_request.rst:185
+#: ../../case_sample/equipment_request.rst:116
+#: ../../case_sample/equipment_request.rst:155
+#: ../../case_sample/equipment_request.rst:188
 msgid "Id (1)"
 msgstr "Id (1)"
 
-#: ../../case_sample/equipment_request.rst:114
-#: ../../case_sample/equipment_request.rst:153
-#: ../../case_sample/equipment_request.rst:186
+#: ../../case_sample/equipment_request.rst:117
+#: ../../case_sample/equipment_request.rst:156
+#: ../../case_sample/equipment_request.rst:189
 msgid "Имя (2)"
 msgstr "Name (2)"
 
-#: ../../case_sample/equipment_request.rst:115
+#: ../../case_sample/equipment_request.rst:118
 msgid "Тип (3)"
 msgstr "Type (3)"
 
-#: ../../case_sample/equipment_request.rst:116
+#: ../../case_sample/equipment_request.rst:119
 msgid "name"
 msgstr "name"
 
-#: ../../case_sample/equipment_request.rst:117
+#: ../../case_sample/equipment_request.rst:120
 msgid "Название оборудования"
 msgstr "Equipment Name"
 
-#: ../../case_sample/equipment_request.rst:118
+#: ../../case_sample/equipment_request.rst:121
 msgid "Text"
 msgstr "Text"
 
-#: ../../case_sample/equipment_request.rst:119
+#: ../../case_sample/equipment_request.rst:122
 msgid "price"
 msgstr "price"
 
-#: ../../case_sample/equipment_request.rst:120
+#: ../../case_sample/equipment_request.rst:123
 msgid "Стоимость"
 msgstr "Cost"
 
-#: ../../case_sample/equipment_request.rst:121
+#: ../../case_sample/equipment_request.rst:124
 msgid "Number"
 msgstr "Number"
 
-#: ../../case_sample/equipment_request.rst:122
+#: ../../case_sample/equipment_request.rst:125
 msgid "requester"
 msgstr "requester"
-
-#: ../../case_sample/equipment_request.rst:123
-#: ../../case_sample/equipment_request.rst:156
-#: ../../case_sample/equipment_request.rst:157
-msgid "Инициатор"
-msgstr "Initiator"
-
-#: ../../case_sample/equipment_request.rst:124
-#: ../../case_sample/equipment_request.rst:127
-msgid "Person"
-msgstr "Person"
-
-#: ../../case_sample/equipment_request.rst:125
-#: ../../case_sample/equipment_request.rst:158
-msgid "approver"
-msgstr "approver"
 
 #: ../../case_sample/equipment_request.rst:126
 #: ../../case_sample/equipment_request.rst:159
 #: ../../case_sample/equipment_request.rst:160
+msgid "Инициатор"
+msgstr "Initiator"
+
+#: ../../case_sample/equipment_request.rst:127
+#: ../../case_sample/equipment_request.rst:130
+msgid "Person"
+msgstr "Person"
+
+#: ../../case_sample/equipment_request.rst:128
+#: ../../case_sample/equipment_request.rst:161
+msgid "approver"
+msgstr "approver"
+
+#: ../../case_sample/equipment_request.rst:129
+#: ../../case_sample/equipment_request.rst:162
+#: ../../case_sample/equipment_request.rst:163
 msgid "Согласующий"
 msgstr "Approver"
 
-#: ../../case_sample/equipment_request.rst:136
+#: ../../case_sample/equipment_request.rst:139
 msgid "Роли"
 msgstr "Roles"
 
-#: ../../case_sample/equipment_request.rst:138
+#: ../../case_sample/equipment_request.rst:141
 msgid ""
 "На вкладке описываются роли, которые участвуют в работе с объектом, в "
 "нашем случае, участвуют в работе с заявкой."
-msgstr "The tab describes the roles that participate in working with the object, in our case, participate in working with the request."
+msgstr ""
+"The tab describes the roles that participate in working with the object, "
+"in our case, participate in working with the request."
 
-#: ../../case_sample/equipment_request.rst:140
+#: ../../case_sample/equipment_request.rst:143
 msgid ""
 "Смотря на атрибуты, несложно догадаться, что нам потребуется на первом "
 "этапе две роли: **Инициатор** и **Согласующий**."
-msgstr "Looking at the attributes, it's easy to guess that we will need two roles at the first stage: **Initiator** and **Approver**."
+msgstr ""
+"Looking at the attributes, it's easy to guess that we will need two roles"
+" at the first stage: **Initiator** and **Approver**."
 
-#: ../../case_sample/equipment_request.rst:144
+#: ../../case_sample/equipment_request.rst:147
 msgid ""
 "**Атрибут** выбирается из указанных ранее атрибутов. По клику на поле "
 "выпадает список указанных атрибутов на вкладке «Атрибуты»."
-msgstr "**Attribute** is selected from the previously specified attributes. Clicking on the field drops down a list of the attributes specified on the \"Attributes\" tab."
+msgstr ""
+"**Attribute** is selected from the previously specified attributes. "
+"Clicking on the field drops down a list of the attributes specified on "
+"the \"Attributes\" tab."
 
-#: ../../case_sample/equipment_request.rst:154
+#: ../../case_sample/equipment_request.rst:157
 msgid "Атрибут (3)"
 msgstr "Attribute (3)"
 
-#: ../../case_sample/equipment_request.rst:155
+#: ../../case_sample/equipment_request.rst:158
 msgid "requestor"
 msgstr "requestor"
 
-#: ../../case_sample/equipment_request.rst:171
+#: ../../case_sample/equipment_request.rst:174
 msgid "Статусы"
 msgstr "Statuses"
 
-#: ../../case_sample/equipment_request.rst:173
+#: ../../case_sample/equipment_request.rst:176
 msgid ""
 "На вкладке описываются статусы, по которым будет перемещаться объект "
 "(наша заявка) по бизнес-процессу."
-msgstr "The tab describes the statuses through which the object (our request) will move through the business process."
+msgstr ""
+"The tab describes the statuses through which the object (our request) "
+"will move through the business process."
 
-#: ../../case_sample/equipment_request.rst:175
+#: ../../case_sample/equipment_request.rst:178
 msgid "Рассмотрим самый простой и успешный вариант процесса."
 msgstr "Let's consider the simplest and most successful process variant."
 
-#: ../../case_sample/equipment_request.rst:177
+#: ../../case_sample/equipment_request.rst:180
 msgid ""
 "Инициатор создаёт заявку (статус **«Заявка создана»**), далее отправляет "
 "её на согласование согласующему (статус **«На согласовании»**), после "
 "Согласующий одобряет заявку (статус **«Одобрено»/«Согласовано»**)."
 msgstr ""
-"The Initiator creates a request (status **\"Request Created\"**), then sends it for approval to the Approver (status **\"Under Approval\"**), after which the Approver approves the request (status **\"Approved\"**)."
+"The Initiator creates a request (status **\"Request Created\"**), then "
+"sends it for approval to the Approver (status **\"Under Approval\"**), "
+"after which the Approver approves the request (status **\"Approved\"**)."
 
-#: ../../case_sample/equipment_request.rst:187
+#: ../../case_sample/equipment_request.rst:190
 msgid "request-created"
 msgstr "request-created"
 
-#: ../../case_sample/equipment_request.rst:188
+#: ../../case_sample/equipment_request.rst:191
 msgid "Заявка создана"
 msgstr "Request Created"
 
-#: ../../case_sample/equipment_request.rst:189
+#: ../../case_sample/equipment_request.rst:192
 msgid "approving"
 msgstr "approving"
 
-#: ../../case_sample/equipment_request.rst:190
+#: ../../case_sample/equipment_request.rst:193
 msgid "На согласовании"
 msgstr "Under Approval"
 
-#: ../../case_sample/equipment_request.rst:191
+#: ../../case_sample/equipment_request.rst:194
 msgid "approved"
 msgstr "approved"
 
-#: ../../case_sample/equipment_request.rst:192
+#: ../../case_sample/equipment_request.rst:195
 msgid "Согласовано"
 msgstr "Approved"
 
-#: ../../case_sample/equipment_request.rst:193
+#: ../../case_sample/equipment_request.rst:196
 msgid "rejected"
 msgstr "rejected"
 
-#: ../../case_sample/equipment_request.rst:194
+#: ../../case_sample/equipment_request.rst:197
 msgid "Отказано"
 msgstr "Rejected"
 
-#: ../../case_sample/equipment_request.rst:202
-msgid "Для сохранения нажмите **«Сохранить»**."
-msgstr "To save, click **\"Save\"**."
+#: ../../case_sample/equipment_request.rst:205
+#, fuzzy
+msgid ""
+"Для сохранения нажмите **«Сохранить»**. На этом создание базового "
+"варианта типа данных для заявки закончено."
+msgstr ""
+"This completes the creation of the basic data type variant for the "
+"request."
 
-#: ../../case_sample/equipment_request.rst:204
-msgid "На этом создание базового варианта типа данных для заявки закончено."
-msgstr "This completes the creation of the basic data type variant for the request."
-
-#: ../../case_sample/equipment_request.rst:207
+#: ../../case_sample/equipment_request.rst:208
 msgid "Промежуточный итог"
 msgstr "Interim Summary"
 
-#: ../../case_sample/equipment_request.rst:209
+#: ../../case_sample/equipment_request.rst:210
 msgid "указали базовую информацию о типе данных: id, название типа данных,"
 msgstr "specified basic information about the data type: id, data type name,"
 
-#: ../../case_sample/equipment_request.rst:210
+#: ../../case_sample/equipment_request.rst:211
 msgid ""
 "форму и журнал система сгенерировала автоматически на основании введенных"
 " данных;"
-msgstr "the form and journal were automatically generated by the system based on the entered data;"
+msgstr ""
+"the form and journal were automatically generated by the system based on "
+"the entered data;"
 
-#: ../../case_sample/equipment_request.rst:211
+#: ../../case_sample/equipment_request.rst:212
 msgid "описали свойства заявки, с которыми дальше будем взаимодействовать;"
 msgstr "described the request properties that we will interact with further;"
 
-#: ../../case_sample/equipment_request.rst:212
-msgid "добавили роли, которые будут участвовать в работе с заявку;"
+#: ../../case_sample/equipment_request.rst:213
+#, fuzzy
+msgid "добавили роли, которые будут участвовать в работе с заявкой;"
 msgstr "added roles that will participate in working with the request;"
 
-#: ../../case_sample/equipment_request.rst:213
+#: ../../case_sample/equipment_request.rst:214
 msgid "обозначили статусы, по которым будет перемещаться заявка."
 msgstr "defined the statuses through which the request will move."
 
-#: ../../case_sample/equipment_request.rst:216
+#: ../../case_sample/equipment_request.rst:217
 msgid "Журнал и форма"
 msgstr "Journal and Form"
 
-#: ../../case_sample/equipment_request.rst:220
+#: ../../case_sample/equipment_request.rst:221
 msgid "Перейдите в :ref:`созданное рабочее пространство<demo_ws>`:"
 msgstr "Go to the :ref:`created workspace<demo_ws>`:"
 
-#: ../../case_sample/equipment_request.rst:226
+#: ../../case_sample/equipment_request.rst:227
 msgid "Для просмотра журнала необходимо его добавить в левое меню:"
 msgstr "To view the journal, it must be added to the left menu:"
 
-#: ../../case_sample/equipment_request.rst:228
+#: ../../case_sample/equipment_request.rst:229
 msgid ""
 "Перейдите в настройку меню, нажав на шестеренку справа сверху, далее "
 "выберите **«Настроить меню»**:"
-msgstr "Go to the menu settings by clicking the gear icon in the top right, then select **\"Configure Menu\"**:"
+msgstr ""
+"Go to the menu settings by clicking the gear icon in the top right, then "
+"select **\"Configure Menu\"**:"
 
-#: ../../case_sample/equipment_request.rst:234
+#: ../../case_sample/equipment_request.rst:235
 msgid ""
 "Перейдите во вкладку **«Настройки выбранной конфигурации»**, нажмите **«+"
 " Добавить»**, выберите **«Раздел»**:"
-msgstr "Go to the **\"Selected Configuration Settings\"** tab, click **\"+ Add\"**, select **\"Section\"**:"
+msgstr ""
+"Go to the **\"Selected Configuration Settings\"** tab, click **\"+ "
+"Add\"**, select **\"Section\"**:"
 
-#: ../../case_sample/equipment_request.rst:240
+#: ../../case_sample/equipment_request.rst:241
 msgid ""
 "В поле **«Название»** введите название раздела. Например, «Оборудование»."
 " Нажмите **«Сохранить»**."
-msgstr "In the **\"Name\"** field, enter the section name. For example, \"Equipment\". Click **\"Save\"**."
+msgstr ""
+"In the **\"Name\"** field, enter the section name. For example, "
+"\"Equipment\". Click **\"Save\"**."
 
-#: ../../case_sample/equipment_request.rst:246
+#: ../../case_sample/equipment_request.rst:247
 msgid ""
 "Наведите курсор на добавленный раздел, нажмите **«+ Добавить»**, выберите"
 " **«Журнал»**:"
-msgstr "Hover the cursor over the added section, click **\"+ Add\"**, select **\"Journal\"**:"
+msgstr ""
+"Hover the cursor over the added section, click **\"+ Add\"**, select "
+"**\"Journal\"**:"
 
-#: ../../case_sample/equipment_request.rst:252
+#: ../../case_sample/equipment_request.rst:253
 msgid "Выберите журнал **«type$equipment-request»** и нажмите **ОК**:"
 msgstr "Select the journal **\"type$equipment-request\"** and click **OK**:"
 
-#: ../../case_sample/equipment_request.rst:259
+#: ../../case_sample/equipment_request.rst:260
 msgid "Нажмите **«Применить»**."
 msgstr "Click **\"Apply\"**."
 
-#: ../../case_sample/equipment_request.rst:266
+#: ../../case_sample/equipment_request.rst:267
 msgid "В левом меню появился новый журнал **«Заявка на покупку оборудования»**:"
-msgstr "A new journal **\"Equipment Purchase Request\"** has appeared in the left menu:"
+msgstr ""
+"A new journal **\"Equipment Purchase Request\"** has appeared in the left"
+" menu:"
 
-#: ../../case_sample/equipment_request.rst:272
+#: ../../case_sample/equipment_request.rst:273
 msgid ""
 "При выборе которого откроется новая вкладка с автоматически "
 "сгенерированным журналом. В журнале указаны колонки, которые относятся "
 "непосредственно к атрибутам, которые были указаны ранее в типе данных:"
-msgstr "Selecting it will open a new tab with an automatically generated journal. The journal shows columns that directly relate to the attributes previously specified in the data type:"
+msgstr ""
+"Selecting it will open a new tab with an automatically generated journal."
+" The journal shows columns that directly relate to the attributes "
+"previously specified in the data type:"
 
-#: ../../case_sample/equipment_request.rst:278
+#: ../../case_sample/equipment_request.rst:279
 msgid "Автоматически сгенерированная форма доступна по кнопке **+**:"
 msgstr "The automatically generated form is available via the **+** button:"
 
-#: ../../case_sample/equipment_request.rst:284
+#: ../../case_sample/equipment_request.rst:285
 msgid ""
 "Создать заявку в журнале пока невозможно, так как для объекта еще не "
 "задано описание процесса, по которому будет проходить его жизненный цикл."
-msgstr "Creating a request in the journal is not yet possible because a process description for the object's lifecycle has not been defined yet."
+msgstr ""
+"Creating a request in the journal is not yet possible because a process "
+"description for the object's lifecycle has not been defined yet."
 
-#: ../../case_sample/equipment_request.rst:287
+#: ../../case_sample/equipment_request.rst:288
 msgid "Бизнес-процесс"
 msgstr "Business Process"
 
-#: ../../case_sample/equipment_request.rst:291
+#: ../../case_sample/equipment_request.rst:292
 msgid "Для создания процесса перейдите в рабочее пространство администратора."
 msgstr "To create a process, go to the administrator workspace."
 
-#: ../../case_sample/equipment_request.rst:293
+#: ../../case_sample/equipment_request.rst:294
 msgid "В разделе **Управление процессами** перейдите в пункт **Модели BPMN**:"
 msgstr "In the **Process Management** section, go to **BPMN Models**:"
 
-#: ../../case_sample/equipment_request.rst:299
+#: ../../case_sample/equipment_request.rst:300
 msgid "Для создания процесса нажмите **«+ - Создать BPMN модель»**:"
 msgstr "To create a process, click **\"+ - Create BPMN Model\"**:"
 
-#: ../../case_sample/equipment_request.rst:305
+#: ../../case_sample/equipment_request.rst:306
 msgid "В открывшемся модальном окне заполните поля:"
 msgstr "In the opened modal window, fill in the fields:"
 
-#: ../../case_sample/equipment_request.rst:313
+#: ../../case_sample/equipment_request.rst:314
 msgid "Идентификатор"
 msgstr "Identifier"
 
-#: ../../case_sample/equipment_request.rst:322
+#: ../../case_sample/equipment_request.rst:323
 msgid "Включен"
 msgstr "Enabled"
 
-#: ../../case_sample/equipment_request.rst:323
+#: ../../case_sample/equipment_request.rst:324
 msgid "True. Отметка об активности процесса."
 msgstr "True. Indicates process activity."
 
-#: ../../case_sample/equipment_request.rst:325
-msgid "Автоматический старт процесса."
+#: ../../case_sample/equipment_request.rst:326
+#, fuzzy
+msgid "Автоматический старт процесса"
 msgstr "Automatic process start."
 
-#: ../../case_sample/equipment_request.rst:326
+#: ../../case_sample/equipment_request.rst:327
+#, fuzzy
 msgid ""
-"True, чтобы старт процесса осуществлялся автоматически. Подробно о "
-":ref:`запуске процесса<new_bp_start>`"
+"Выставить чекбокс. Чтобы старт процесса осуществлялся автоматически. "
+"Подробно о :ref:`запуске процесса<new_bp_start>`"
 msgstr ""
-"True, so that the process starts automatically. Details about :ref:`process start<new_bp_start>`"
+"True, so that the process starts automatically. Details about "
+":ref:`process start<new_bp_start>`"
 
 #: ../../case_sample/equipment_request.rst:328
+#, fuzzy
+msgid "**6**"
+msgstr "**5**"
+
+#: ../../case_sample/equipment_request.rst:329
+#, fuzzy
+msgid "Автоматическое удаление процесса"
+msgstr "Automatic process start."
+
+#: ../../case_sample/equipment_request.rst:330
+msgid ""
+"При удалении объекта указанного типа, процесс будет удален автоматически."
+" По умолчанию включено."
+msgstr ""
+
+#: ../../case_sample/equipment_request.rst:332
 msgid "Конечная настройка бизнес-процесса:"
 msgstr "Final business process configuration:"
 
-#: ../../case_sample/equipment_request.rst:336
+#: ../../case_sample/equipment_request.rst:340
 msgid ""
 "Обязательно выставите чекбоксы **Включен (4)** и **Автоматический старт "
 "процесса (5)**"
-msgstr "Be sure to check the boxes **Enabled (4)** and **Automatic process start (5)**"
+msgstr ""
+"Be sure to check the boxes **Enabled (4)** and **Automatic process start "
+"(5)**"
 
-#: ../../case_sample/equipment_request.rst:338
-msgid "Нажмите **«Сохранить»**."
+#: ../../case_sample/equipment_request.rst:342
+#, fuzzy
+msgid "Нажмите **«Создать»**."
 msgstr "Click **\"Save\"**."
 
-#: ../../case_sample/equipment_request.rst:340
+#: ../../case_sample/equipment_request.rst:344
 msgid ""
 "Далее необходимо описать схему процесса в :ref:`редакторе "
 "бизнес-процессов<editor_bpmn>`."
-msgstr "Next, it is necessary to describe the process schema in the :ref:`business process editor<editor_bpmn>`."
+msgstr ""
+"Next, it is necessary to describe the process schema in the "
+":ref:`business process editor<editor_bpmn>`."
 
-#: ../../case_sample/equipment_request.rst:342
+#: ../../case_sample/equipment_request.rst:346
 msgid ""
 "Для перехода к редактору разверните раздел **«По умолчанию»**, наведите "
 "курсор на созданный процесс и нажмите:"
-msgstr "To go to the editor, expand the **\"Default\"** section, hover the cursor over the created process and click:"
+msgstr ""
+"To go to the editor, expand the **\"Default\"** section, hover the cursor"
+" over the created process and click:"
 
-#: ../../case_sample/equipment_request.rst:348
+#: ../../case_sample/equipment_request.rst:352
 msgid "Откроется **конструктор бизнес-процесса**:"
 msgstr "The **business process designer** will open:"
 
-#: ../../case_sample/equipment_request.rst:354
+#: ../../case_sample/equipment_request.rst:358
 msgid "Процесс прохождения заявки опишем следующим образом:"
 msgstr "We will describe the request processing process as follows:"
 
-#: ../../case_sample/equipment_request.rst:356
+#: ../../case_sample/equipment_request.rst:360
 msgid ""
 "**Создать заявку -> Отправить на согласование -> Согласовать/Отклонить "
 "заявку**"
 msgstr "**Create Request -> Send for Approval -> Approve/Reject Request**"
 
-#: ../../case_sample/equipment_request.rst:358
-msgid ""
-"Автоматически на схему добавляется компонент, который отвечает за начало "
-"процесса (:ref:`Start event <bpmn_events>`)."
-msgstr "A component responsible for the start of the process (:ref:`Start event <bpmn_events>`) is automatically added to the schema."
-
-#: ../../case_sample/equipment_request.rst:360
-msgid ""
-"**Start event компонент** слушает систему и ждёт, когда в систему "
-"постучится запрос на создание нового объекта с нужным нам типом данных."
-msgstr "The **Start Event component** listens to the system and waits for a request to create a new object with the data type we need to arrive."
-
 #: ../../case_sample/equipment_request.rst:362
+#, fuzzy
 msgid ""
-"Выделите **Start Event компонент** - рядом с компонентом расположено "
-"контекстное меню, с помощью которого в процесс можно добавлять новые "
-"элементы, связи между элементами, или редактировать текущий элемент."
-msgstr "Select the **Start Event component** - a context menu is located next to the component, which can be used to add new elements to the process, connections between elements, or edit the current element."
+"Автоматически на схему добавляется элемент, который отвечает за начало "
+"процесса (:ref:`Start event <bpmn_events>`)."
+msgstr ""
+"A component responsible for the start of the process (:ref:`Start event "
+"<bpmn_events>`) is automatically added to the schema."
 
-#: ../../case_sample/equipment_request.rst:368
+#: ../../case_sample/equipment_request.rst:364
+#, fuzzy
+msgid ""
+"**Start event** слушает систему и ждёт, когда в систему постучится запрос"
+" на создание нового объекта с нужным нам типом данных."
+msgstr ""
+"The **Start Event component** listens to the system and waits for a "
+"request to create a new object with the data type we need to arrive."
+
+#: ../../case_sample/equipment_request.rst:366
+#, fuzzy
+msgid ""
+"Выделите **Start Event** - рядом с элементом расположено контекстное "
+"меню, с помощью которого в процесс можно добавлять новые элементы, связи "
+"между элементами, или редактировать текущий элемент."
+msgstr ""
+"Select the **Start Event component** - a context menu is located next to "
+"the component, which can be used to add new elements to the process, "
+"connections between elements, or edit the current element."
+
+#: ../../case_sample/equipment_request.rst:372
 msgid "Теперь необходимо добавить новый элемент, но какой?"
 msgstr "Now we need to add a new element, but which one?"
 
-#: ../../case_sample/equipment_request.rst:370
+#: ../../case_sample/equipment_request.rst:374
 msgid ""
 "Сразу после создания заявки, она должна получить статус **«Заявка "
 "создана»** - нажмите на элемент :ref:`Set status<set_status>` в "
 "контекстном меню:"
-msgstr "Immediately after creating the request, it should receive the status **\"Request Created\"** - click on the :ref:`Set status<set_status>` element in the context menu:"
+msgstr ""
+"Immediately after creating the request, it should receive the status "
+"**\"Request Created\"** - click on the :ref:`Set status<set_status>` "
+"element in the context menu:"
 
-#: ../../case_sample/equipment_request.rst:376
+#: ../../case_sample/equipment_request.rst:380
+#, fuzzy
 msgid ""
-"Справа от области для схемы появляются настройки добавленного компонента,"
-" где необходимо указать **имя (1)** и **cтатус (2)**, который будет "
+"Справа от области для схемы появляются настройки добавленного элемента, "
+"где необходимо указать **имя (1)** и **cтатус (2)**, который будет "
 "присвоен объекту на данном этапе."
-msgstr "To the right of the schema area, settings for the added component appear, where you need to specify the **name (1)** and **status (2)** that will be assigned to the object at this stage."
+msgstr ""
+"To the right of the schema area, settings for the added component appear,"
+" where you need to specify the **name (1)** and **status (2)** that will "
+"be assigned to the object at this stage."
 
-#: ../../case_sample/equipment_request.rst:378
+#: ../../case_sample/equipment_request.rst:382
 msgid "Имя -  **Статус «Заявка создана»**,"
 msgstr "Name - **Status \"Request Created\"**,"
 
-#: ../../case_sample/equipment_request.rst:379
+#: ../../case_sample/equipment_request.rst:383
 msgid "Статус - **Заявка создана**."
 msgstr "Status - **Request Created**."
 
-#: ../../case_sample/equipment_request.rst:385
+#: ../../case_sample/equipment_request.rst:389
 msgid ""
 "Когда заявка создана, необходимо проверить всё содержимое заявки, а после"
 " проверки отправить на согласование."
-msgstr "When the request is created, it is necessary to check all the contents of the request, and after checking, send it for approval."
+msgstr ""
+"When the request is created, it is necessary to check all the contents of"
+" the request, and after checking, send it for approval."
 
-#: ../../case_sample/equipment_request.rst:387
+#: ../../case_sample/equipment_request.rst:391
+#, fuzzy
 msgid ""
 "Для этого необходимо создать задачу для пользователя - в контекстном меню"
-" нажмите на компонент **«Task»**:"
-msgstr "To do this, it is necessary to create a task for the user - in the context menu, click on the **\"Task\"** component:"
+" нажмите на элемент **«Task»**:"
+msgstr ""
+"To do this, it is necessary to create a task for the user - in the "
+"context menu, click on the **\"Task\"** component:"
 
-#: ../../case_sample/equipment_request.rst:393
+#: ../../case_sample/equipment_request.rst:397
+#, fuzzy
 msgid ""
-"Но данный компонент не подходит, и необходимо изменить его тип с «Task» "
-"на :ref:`User task<user_task>`. Для этого нажмите на гаечный ключ и "
-"выберите вариант **«User task»**:"
-msgstr "But this component is not suitable, and it is necessary to change its type from \"Task\" to :ref:`User task<user_task>`. To do this, click on the wrench and select the **\"User task\"** option:"
+"Но данный элемент не подходит, и необходимо изменить его тип с «Task» на "
+":ref:`User task<user_task>`. Для этого нажмите на гаечный ключ и выберите"
+" вариант **«User task»**:"
+msgstr ""
+"But this component is not suitable, and it is necessary to change its "
+"type from \"Task\" to :ref:`User task<user_task>`. To do this, click on "
+"the wrench and select the **\"User task\"** option:"
 
-#: ../../case_sample/equipment_request.rst:399
+#: ../../case_sample/equipment_request.rst:403
 msgid ""
 "Далее необходимо правильно настроить задачу для пользователя, укажите в "
 "форме:"
-msgstr "Next, it is necessary to correctly configure the task for the user, specify in the form:"
+msgstr ""
+"Next, it is necessary to correctly configure the task for the user, "
+"specify in the form:"
 
-#: ../../case_sample/equipment_request.rst:401
+#: ../../case_sample/equipment_request.rst:405
 msgid "Имя - **На согласование**,"
 msgstr "Name - **For Approval**,"
 
-#: ../../case_sample/equipment_request.rst:402
+#: ../../case_sample/equipment_request.rst:406
 msgid "Реципиент - **Инициатор**"
 msgstr "Recipient - **Initiator**"
 
-#: ../../case_sample/equipment_request.rst:410
+#: ../../case_sample/equipment_request.rst:414
 msgid "**Форму к задаче** можно не создавать, и, соответственно, не выбирать."
 msgstr "**A form for the task** may not be created, and accordingly, not selected."
 
-#: ../../case_sample/equipment_request.rst:412
+#: ../../case_sample/equipment_request.rst:416
 msgid ""
 "Простая форма к задаче может быть создана автоматически - будут "
 "отображены только кнопки, настроенные в **Результате задачи**."
-msgstr "A simple form for the task can be created automatically - only the buttons configured in the **Task Outcome** will be displayed."
+msgstr ""
+"A simple form for the task can be created automatically - only the "
+"buttons configured in the **Task Outcome** will be displayed."
 
-#: ../../case_sample/equipment_request.rst:418
-#: ../../case_sample/equipment_request.rst:465
+#: ../../case_sample/equipment_request.rst:422
+#: ../../case_sample/equipment_request.rst:469
 msgid "**Приоритет** по умолчанию заполнен как **Средний**."
 msgstr "**Priority** is filled by default as **Medium**."
 
-#: ../../case_sample/equipment_request.rst:420
+#: ../../case_sample/equipment_request.rst:424
 msgid "Далее заполните список **«Результаты задачи»** следующими значениями:"
 msgstr "Next, fill in the **\"Task Outcomes\"** list with the following values:"
 
-#: ../../case_sample/equipment_request.rst:422
+#: ../../case_sample/equipment_request.rst:426
 msgid "Идентификатор – **ToApprove**"
 msgstr "Identifier – **ToApprove**"
 
-#: ../../case_sample/equipment_request.rst:423
+#: ../../case_sample/equipment_request.rst:427
 msgid "Название – **На согласование**"
 msgstr "Name – **For Approval**"
 
-#: ../../case_sample/equipment_request.rst:429
+#: ../../case_sample/equipment_request.rst:433
 msgid ""
 "Задача создана и после отправки на согласование необходимо изменить "
 "статус задачи на **«На согласовании»**. Для этого повторяем действия "
 "первой смены статуса (пункт 2):"
-msgstr "The task is created and after sending for approval, it is necessary to change the task status to **\"Under Approval\"**. To do this, repeat the actions of the first status change (step 2):"
+msgstr ""
+"The task is created and after sending for approval, it is necessary to "
+"change the task status to **\"Under Approval\"**. To do this, repeat the "
+"actions of the first status change (step 2):"
 
-#: ../../case_sample/equipment_request.rst:431
+#: ../../case_sample/equipment_request.rst:435
 msgid "Нажмите в контекстном меню на иконку **Set Status**"
 msgstr "Click on the **Set Status** icon in the context menu"
 
-#: ../../case_sample/equipment_request.rst:437
+#: ../../case_sample/equipment_request.rst:441
 msgid "Имя - **Статус «На согласовании»**."
 msgstr "Name - **Status \"Under Approval\"**."
 
-#: ../../case_sample/equipment_request.rst:438
+#: ../../case_sample/equipment_request.rst:442
 msgid "Статус - **На согласовании**."
 msgstr "Status - **Under Approval**."
 
-#: ../../case_sample/equipment_request.rst:444
+#: ../../case_sample/equipment_request.rst:448
 msgid "Далее необходимо создать аналогичную задачу только уже для согласующего:"
-msgstr "Next, it is necessary to create a similar task, but this time for the approver:"
+msgstr ""
+"Next, it is necessary to create a similar task, but this time for the "
+"approver:"
 
-#: ../../case_sample/equipment_request.rst:446
-msgid "Добавьте при помощи контекстного меню компонент **Task**"
+#: ../../case_sample/equipment_request.rst:450
+#, fuzzy
+msgid "Добавьте при помощи контекстного меню элемент **Task**"
 msgstr "Add a **Task** component using the context menu"
 
-#: ../../case_sample/equipment_request.rst:452
-msgid "Измените тип компонента с **Task** на **User Task**:"
+#: ../../case_sample/equipment_request.rst:456
+#, fuzzy
+msgid "Измените тип элемента с **Task** на **User Task**:"
 msgstr "Change the component type from **Task** to **User Task**:"
 
-#: ../../case_sample/equipment_request.rst:458
+#: ../../case_sample/equipment_request.rst:462
 msgid "Имя - **На согласовании согласующим**,"
 msgstr "Name - **Under approval by approver**,"
 
-#: ../../case_sample/equipment_request.rst:459
+#: ../../case_sample/equipment_request.rst:463
 msgid "Реципиенты - **Согласующий**."
 msgstr "Recipients - **Approver**."
 
-#: ../../case_sample/equipment_request.rst:466
+#: ../../case_sample/equipment_request.rst:470
 msgid "Заполните список **«Результаты задачи»** следующими значениями:"
 msgstr "Fill in the **\"Task Outcomes\"** list with the following values:"
 
-#: ../../case_sample/equipment_request.rst:468
+#: ../../case_sample/equipment_request.rst:472
 msgid "Идентификатор – **Approve**, Название – **Согласовать**"
 msgstr "Identifier – **Approve**, Name – **Approve**"
 
-#: ../../case_sample/equipment_request.rst:469
+#: ../../case_sample/equipment_request.rst:473
 msgid "Идентификатор – **Reject**, Название – **Отказать**"
 msgstr "Identifier – **Reject**, Name – **Reject**"
 
-#: ../../case_sample/equipment_request.rst:479
+#: ../../case_sample/equipment_request.rst:483
 msgid ""
 "**Форму к задаче** можно не создавать вручную, и тогда она будет создана "
 "системой, на ней будут отображаться вердикты задачи, заполненные в поле "
 "**Результат задачи**."
 msgstr ""
-"**A form for the task** can be created manually, and then it will be created by the system, displaying the task verdicts filled in the **Task Outcome** field."
+"**A form for the task** can be created manually, and then it will be "
+"created by the system, displaying the task verdicts filled in the **Task "
+"Outcome** field."
 
-#: ../../case_sample/equipment_request.rst:481
-msgid "Мы создадим пользовательскую форма для ознакомления с конструктором форм."
+#: ../../case_sample/equipment_request.rst:485
+#, fuzzy
+msgid "Мы создадим пользовательскую форму для ознакомления с конструктором форм."
 msgstr "We will create a custom form to get acquainted with the form designer."
 
-#: ../../case_sample/equipment_request.rst:483
+#: ../../case_sample/equipment_request.rst:487
 msgid ""
 "**Формы для задач** обычно состоят из комментариев и кнопок, которые "
 "обозначают результат выполнения задачи."
 msgstr ""
-"**Forms for tasks** usually consist of comments and buttons that indicate the task execution result."
+"**Forms for tasks** usually consist of comments and buttons that indicate"
+" the task execution result."
 
-#: ../../case_sample/equipment_request.rst:485
+#: ../../case_sample/equipment_request.rst:489
 msgid ""
 "В данном случае не нужен комментарий, на текущем этапе достаточно кнопок,"
 " отвечающих за исход задачи **«На согласовании»**."
 msgstr ""
-"In this case, a comment is not needed; at this stage, buttons responsible for the outcome of the task **\"Under approval\"** are sufficient."
+"In this case, a comment is not needed; at this stage, buttons responsible"
+" for the outcome of the task **\"Under approval\"** are sufficient."
 
-#: ../../case_sample/equipment_request.rst:487
+#: ../../case_sample/equipment_request.rst:491
 msgid "Для этого следует выполнить следующие действия:"
 msgstr "To do this, perform the following steps:"
 
-#: ../../case_sample/equipment_request.rst:489
+#: ../../case_sample/equipment_request.rst:493
+#, fuzzy
 msgid ""
-"На панели настроек компонента **User Task** под полем **«Форма задачи»** "
-"нажмите кнопку **«Выбрать»**:"
+"На панели настроек элемента **User Task** под полем **«Форма»** нажмите "
+"кнопку **«Выбрать»**:"
 msgstr ""
-"On the settings panel of the **User Task** component, under the **\"Task Form\"** field, click the **\"Select\"** button:"
+"On the settings panel of the **User Task** component, under the **\"Task "
+"Form\"** field, click the **\"Select\"** button:"
 
-#: ../../case_sample/equipment_request.rst:495
+#: ../../case_sample/equipment_request.rst:499
 msgid ""
 "В верхней части нажмите **«Создать»**, выберите вариант **«Создать "
 "форму»**:"
 msgstr ""
-"In the top part, click **\"Create\"**, select the **\"Create form\"** option:"
+"In the top part, click **\"Create\"**, select the **\"Create form\"** "
+"option:"
 
-#: ../../case_sample/equipment_request.rst:501
+#: ../../case_sample/equipment_request.rst:505
 msgid "Заполните поля следующими данными:"
 msgstr "Fill in the fields with the following data:"
 
-#: ../../case_sample/equipment_request.rst:503
+#: ../../case_sample/equipment_request.rst:507
 msgid "Идентификатор формы - **«equipment-request-approve-form»**"
 msgstr "Form identifier - **\"equipment-request-approve-form\"**"
 
-#: ../../case_sample/equipment_request.rst:504
+#: ../../case_sample/equipment_request.rst:508
 msgid "Название формы – **«Форма согласования заявки на покупку оборудования»**"
 msgstr "Form name – **\"Equipment purchase request approval form\"**"
 
-#: ../../case_sample/equipment_request.rst:506
+#: ../../case_sample/equipment_request.rst:510
 msgid "Нажмите кнопку **«Редактировать форму»**:"
 msgstr "Click the **\"Edit form\"** button:"
 
-#: ../../case_sample/equipment_request.rst:512
-msgid "Удалите текстовый компонент с именем **«Название»**, и кнопки:"
+#: ../../case_sample/equipment_request.rst:516
+#, fuzzy
+msgid "Удалите текстовый элемент с именем **«Название»**, и кнопки:"
 msgstr "Delete the text component named **\"Title\"**, and the buttons:"
 
-#: ../../case_sample/equipment_request.rst:518
+#: ../../case_sample/equipment_request.rst:522
+#, fuzzy
 msgid ""
-"Перейдите в **«Расширенные»** перетащите компонент **Task Outcome** на "
+"Перейдите в **«Расширенные»** перетащите элемент **Task Outcome** на "
 "форму:"
-msgstr ""
-"Go to **\"Advanced\"**, drag the **Task Outcome** component onto the form:"
+msgstr "Go to **\"Advanced\"**, drag the **Task Outcome** component onto the form:"
 
-#: ../../case_sample/equipment_request.rst:524
+#: ../../case_sample/equipment_request.rst:528
 msgid ""
 "В поле **«Имя свойства»** введите **outcome** и нажмите кнопку "
 "**«Сохранить»**:"
 msgstr ""
-"In the **\"Property name\"** field, enter **outcome** and click the **\"Save\"** button:"
+"In the **\"Property name\"** field, enter **outcome** and click the "
+"**\"Save\"** button:"
 
-#: ../../case_sample/equipment_request.rst:530
+#: ../../case_sample/equipment_request.rst:534
+#, fuzzy
 msgid ""
-"Компонент **Task Outcome** автоматически сформирует кнопки вердиктов, "
+"Элемент **Task Outcome** автоматически сформирует кнопки вердиктов, "
 "исходя из настроек **Результатов задачи**."
 msgstr ""
-"The **Task Outcome** component will automatically generate verdict buttons based on the **Task Outcomes** settings."
+"The **Task Outcome** component will automatically generate verdict "
+"buttons based on the **Task Outcomes** settings."
 
-#: ../../case_sample/equipment_request.rst:532
+#: ../../case_sample/equipment_request.rst:536
 msgid "Нажмите кнопку **«Сохранить»**:"
 msgstr "Click the **\"Save\"** button:"
 
-#: ../../case_sample/equipment_request.rst:538
+#: ../../case_sample/equipment_request.rst:542
 msgid "Выберите созданную форму."
 msgstr "Select the created form."
 
-#: ../../case_sample/equipment_request.rst:540
+#: ../../case_sample/equipment_request.rst:544
+#, fuzzy
 msgid ""
 "После согласования Согласующим задача должна завершиться, но исходов у "
 "процесса два – покупка согласована, или в покупке отказано, потому "
-"поставим следующий компонентом разветвитель - :ref:`Gateway <gateways>`"
+"поставим следующий элементом разветвитель - :ref:`Gateway <gateways>`"
 msgstr ""
-"After approval by the Approver, the task should be completed, but the process has two outcomes – purchase approved or purchase rejected, so we will place a gateway component next - :ref:`Gateway <gateways>`"
+"After approval by the Approver, the task should be completed, but the "
+"process has two outcomes – purchase approved or purchase rejected, so we "
+"will place a gateway component next - :ref:`Gateway <gateways>`"
 
-#: ../../case_sample/equipment_request.rst:542
+#: ../../case_sample/equipment_request.rst:546
+#, fuzzy
 msgid ""
-"**Gateway компонент** отвечает за разветвление маршрутов и за слияние "
-"потоков. Для его добавления необходимо нажать на соответствующую иконку в"
-" контекстном меню или на панели слева (но в этом случае придётся "
-"самостоятельно проставлять связи их направления):"
+"**Gateway** отвечает за разветвление маршрутов и за слияние потоков. Для "
+"его добавления необходимо нажать на соответствующую иконку в контекстном "
+"меню или на панели слева (но в этом случае придётся самостоятельно "
+"проставлять связи их направления):"
 msgstr ""
-"The **Gateway component** is responsible for branching routes and merging flows. To add it, click the corresponding icon in the context menu or on the left panel (but in this case, you will have to manually set the connection directions):"
+"The **Gateway component** is responsible for branching routes and merging"
+" flows. To add it, click the corresponding icon in the context menu or on"
+" the left panel (but in this case, you will have to manually set the "
+"connection directions):"
 
-#: ../../case_sample/equipment_request.rst:554
+#: ../../case_sample/equipment_request.rst:558
+#, fuzzy
 msgid ""
-"После **Gateway** необходимо поставить 2 компонента смены статуса на "
+"После **Gateway** необходимо поставить 2 элемента смены статуса на "
 "**«Согласовано»/ «Отказано»**. Для этого повторяем действия первой смены "
 "статуса (пункт 2):"
 msgstr ""
-"After the **Gateway**, it is necessary to place 2 status change components for **\"Approved\"/ \"Rejected\"**. To do this, repeat the actions of the first status change (step 2):"
+"After the **Gateway**, it is necessary to place 2 status change "
+"components for **\"Approved\"/ \"Rejected\"**. To do this, repeat the "
+"actions of the first status change (step 2):"
 
-#: ../../case_sample/equipment_request.rst:556
+#: ../../case_sample/equipment_request.rst:560
+#, fuzzy
 msgid ""
-"У компонента **Gateway** нажмите в контекстном меню на иконку **Set "
+"У элемента **Gateway** нажмите в контекстном меню на иконку **Set "
 "Status**:"
 msgstr ""
-"On the **Gateway** component, click the **Set Status** icon in the context menu:"
+"On the **Gateway** component, click the **Set Status** icon in the "
+"context menu:"
 
-#: ../../case_sample/equipment_request.rst:562
+#: ../../case_sample/equipment_request.rst:566
 msgid "Имя - **Статус «Согласовано»**."
 msgstr "Name - **Status \"Approved\"**."
 
-#: ../../case_sample/equipment_request.rst:563
+#: ../../case_sample/equipment_request.rst:567
 msgid "Статус - **Согласовано**."
 msgstr "Status - **Approved**."
 
-#: ../../case_sample/equipment_request.rst:569
-msgid ""
-"У компонента **Gateway** нажмите в контекстном меню на иконку **Set "
-"Status**"
+#: ../../case_sample/equipment_request.rst:573
+#, fuzzy
+msgid "У элемента **Gateway** нажмите в контекстном меню на иконку **Set Status**"
 msgstr ""
-"On the **Gateway** component, click the **Set Status** icon in the context menu"
+"On the **Gateway** component, click the **Set Status** icon in the "
+"context menu"
 
-#: ../../case_sample/equipment_request.rst:570
+#: ../../case_sample/equipment_request.rst:574
 msgid "Имя -  **Статус «Отказано»**."
 msgstr "Name - **Status \"Rejected\"**."
 
-#: ../../case_sample/equipment_request.rst:571
+#: ../../case_sample/equipment_request.rst:575
 msgid "Статус - **Отказано**."
 msgstr "Status - **Rejected**."
 
-#: ../../case_sample/equipment_request.rst:577
+#: ../../case_sample/equipment_request.rst:581
+#, fuzzy
 msgid ""
 "Так как из Gateway, потенциально, может быть несколько потоков, то "
 "система умеет определять по какому потоку необходимо идти при помощи "
 "вариантов исхода (исходы настраиваются при помощи кнопок на форме и "
-"стрелок, выходящих из компонента Gateway)."
+"стрелок, выходящих из элемента Gateway)."
 msgstr ""
-"Since there can potentially be multiple flows from the Gateway, the system can determine which flow to follow using outcome options (outcomes are configured using buttons on the form and arrows coming out of the Gateway component)."
+"Since there can potentially be multiple flows from the Gateway, the "
+"system can determine which flow to follow using outcome options (outcomes"
+" are configured using buttons on the form and arrows coming out of the "
+"Gateway component)."
 
-#: ../../case_sample/equipment_request.rst:579
+#: ../../case_sample/equipment_request.rst:583
+#, fuzzy
 msgid ""
-"Для настройки выберите «стрелку» (отдельный компонент **Sequence Flow**, "
+"Для настройки выберите «стрелку» (отдельный элемент **Sequence Flow**, "
 "который отвечает не только за визуализацию направления)."
 msgstr ""
-"To configure, select the \"arrow\" (a separate **Sequence Flow** component, which is responsible not only for visualizing the direction)."
+"To configure, select the \"arrow\" (a separate **Sequence Flow** "
+"component, which is responsible not only for visualizing the direction)."
 
-#: ../../case_sample/equipment_request.rst:581
+#: ../../case_sample/equipment_request.rst:585
 msgid "Для потока **«Согласовано»**:"
 msgstr "For the **\"Approved\"** flow:"
 
-#: ../../case_sample/equipment_request.rst:587
+#: ../../case_sample/equipment_request.rst:591
 msgid "Укажите имя **Согласовано**."
 msgstr "Specify the name **Approved**."
 
-#: ../../case_sample/equipment_request.rst:588
-#: ../../case_sample/equipment_request.rst:602
+#: ../../case_sample/equipment_request.rst:592
+#: ../../case_sample/equipment_request.rst:606
 msgid "В поле **«Тип условия»** выберите вариант **Исходящий**."
 msgstr "In the **\"Condition Type\"** field, select the **Outgoing** option."
 
-#: ../../case_sample/equipment_request.rst:589
+#: ../../case_sample/equipment_request.rst:593
 msgid ""
 "В появившемся поле **«Исходящий»** выбрать вариант **На согласовании "
 "согласующим - Согласовать**. Варианты автоматически генерируются из двух "
 "частей: первая – название задачи (поле Имя), вторая – название "
 "результатов задач."
 msgstr ""
-"In the appeared **\"Outgoing\"** field, select the option **Under approval by approver - Approve**. The options are automatically generated from two parts: the first is the task name (Name field), the second is the name of the task outcomes."
+"In the appeared **\"Outgoing\"** field, select the option **Under "
+"approval by approver - Approve**. The options are automatically generated"
+" from two parts: the first is the task name (Name field), the second is "
+"the name of the task outcomes."
 
-#: ../../case_sample/equipment_request.rst:595
+#: ../../case_sample/equipment_request.rst:599
 msgid "Для потока **«Отказано»**:"
 msgstr "For the **\"Rejected\"** flow:"
 
-#: ../../case_sample/equipment_request.rst:601
+#: ../../case_sample/equipment_request.rst:605
 msgid "Укажите имя **Отказан**."
 msgstr "Specify the name **Rejected**."
 
-#: ../../case_sample/equipment_request.rst:603
+#: ../../case_sample/equipment_request.rst:607
 msgid ""
 "В появившемся поле **«Исходящий»** выбрать вариант **На согласовании "
 "согласующим - Отказать**."
 msgstr ""
-"In the appeared **\"Outgoing\"** field, select the option **Under approval by approver - Reject**."
+"In the appeared **\"Outgoing\"** field, select the option **Under "
+"approval by approver - Reject**."
 
-#: ../../case_sample/equipment_request.rst:610
+#: ../../case_sample/equipment_request.rst:614
+#, fuzzy
 msgid ""
-"Дальше необходимо добавить компонент, который будет означать, что процесс"
-" закончен. Для этого в контекстном меню компонентов **«Статус "
+"Дальше необходимо добавить элемент, который будет означать, что процесс "
+"закончен. Для этого в контекстном меню элементов **«Статус "
 "«Согласовано»** и **«Статус «Отказано»** необходимо нажать на иконку "
-":ref:`End event<bpmn_events>` компонента."
+":ref:`End event<bpmn_events>` элемента."
 msgstr ""
-"Next, it is necessary to add a component that will indicate that the process is finished. To do this, in the context menu of the **\"Status «Approved»\"** and **\"Status «Rejected»\"** components, click the :ref:`End event<bpmn_events>` component icon."
+"Next, it is necessary to add a component that will indicate that the "
+"process is finished. To do this, in the context menu of the **\"Status "
+"«Approved»\"** and **\"Status «Rejected»\"** components, click the "
+":ref:`End event<bpmn_events>` component icon."
 
-#: ../../case_sample/equipment_request.rst:616
-msgid "Так же для второго выхода gateway добавим **End Event компонент**."
-msgstr "Also, for the second gateway output, we will add an **End Event component**."
+#: ../../case_sample/equipment_request.rst:620
+#, fuzzy
+msgid "Так же для второго выхода gateway добавим **End Event**."
+msgstr ""
+"Also, for the second gateway output, we will add an **End Event "
+"component**."
 
-#: ../../case_sample/equipment_request.rst:618
+#: ../../case_sample/equipment_request.rst:622
 msgid "Теперь процесс можно сохранить и опубликовать, нажав:"
 msgstr "Now the process can be saved and published by clicking:"
 
-#: ../../case_sample/equipment_request.rst:624
+#: ../../case_sample/equipment_request.rst:628
 msgid ""
 "Принятие решений по заявке можно упростить - создать таблицу принятия "
 "решений и встроить ее в процесс. См. :ref:`подробно<sample_request_dmn>`"
 msgstr ""
-"Decision-making on the request can be simplified - create a decision table and embed it in the process. See :ref:`details<sample_request_dmn>`"
+"Decision-making on the request can be simplified - create a decision "
+"table and embed it in the process. See :ref:`details<sample_request_dmn>`"
 
-#: ../../case_sample/equipment_request.rst:627
+#: ../../case_sample/equipment_request.rst:631
 msgid "Запуск процесса"
 msgstr "Process Launch"
 
-#: ../../case_sample/equipment_request.rst:629
+#: ../../case_sample/equipment_request.rst:633
 msgid ""
 "После того, как создан Тип данных, Журнал, Форма и Бизнес-процесс, можно "
 "проверить, как процесс работает. Создайте новых пользователей, как "
 "написано в :ref:`инструкции<demo_user>` или воспользуйтесь уже созданными"
 " в комплекте поставки."
 msgstr ""
-"After the Data Type, Journal, Form, and Business Process have been created, you can check how the process works. Create new users as described in the :ref:`instructions<demo_user>` or use the ones already created in the delivery package."
+"After the Data Type, Journal, Form, and Business Process have been "
+"created, you can check how the process works. Create new users as "
+"described in the :ref:`instructions<demo_user>` or use the ones already "
+"created in the delivery package."
 
-#: ../../case_sample/equipment_request.rst:631
+#: ../../case_sample/equipment_request.rst:635
+#, fuzzy
 msgid ""
 "Зайдите под Исполнителем. В левом меню выберите **«Заявка на покупку "
 "оборудования»**. Откроется журнал, где нет записей. Для создания нового "
-"объекта (заявки на покупку оборудования). нажмите на **«+»**:"
+"объекта (заявки на покупку оборудования) нажмите на **«+»**:"
 msgstr ""
-"Log in as the Performer. In the left menu, select **\"Equipment purchase request\"**. A journal will open with no entries. To create a new object (equipment purchase request), click on **\"+\"**:"
+"Log in as the Performer. In the left menu, select **\"Equipment purchase "
+"request\"**. A journal will open with no entries. To create a new object "
+"(equipment purchase request), click on **\"+\"**:"
 
-#: ../../case_sample/equipment_request.rst:637
+#: ../../case_sample/equipment_request.rst:641
 msgid "Заполните поля соответствующими данными. Например:"
 msgstr "Fill in the fields with the appropriate data. For example:"
 
-#: ../../case_sample/equipment_request.rst:639
+#: ../../case_sample/equipment_request.rst:643
 msgid "Название оборудование – **HDMI кабель**"
 msgstr "Equipment name – **HDMI cable**"
 
-#: ../../case_sample/equipment_request.rst:640
+#: ../../case_sample/equipment_request.rst:644
 msgid "Стоимость - **500**"
 msgstr "Cost - **500**"
 
-#: ../../case_sample/equipment_request.rst:641
+#: ../../case_sample/equipment_request.rst:645
 msgid "Инициатор – **выберите сотрудника из оргструктуры**"
 msgstr "Initiator – **select an employee from the organizational structure**"
 
-#: ../../case_sample/equipment_request.rst:642
+#: ../../case_sample/equipment_request.rst:646
 msgid "Согласующий – **выберите сотрудника из оргструктуры**"
 msgstr "Approver – **select an employee from the organizational structure**"
 
-#: ../../case_sample/equipment_request.rst:644
+#: ../../case_sample/equipment_request.rst:648
 msgid "И нажмите **«Сохранить»**."
 msgstr "And click **\"Save\"**."
 
-#: ../../case_sample/equipment_request.rst:650
-msgid ""
-"Создана первая заявка в статусе **«Заявка создана»**,  и далее проведем "
-"ее по нашему бизнес-процессу."
+#: ../../case_sample/equipment_request.rst:654
+msgid "Заявка перейдет в статусе **«Заявка создана»** и откроется ее карточка."
 msgstr ""
-"The first request has been created with the status **\"Request created\"**, and we will now guide it through our business process."
 
-#: ../../case_sample/equipment_request.rst:652
-msgid "В виджете **«Мои задачи»** нажмите кнопку **«Отправить на согласование».**"
-msgstr "In the **\"My Tasks\"** widget, click the **\"Send for approval\"** button."
-
-#: ../../case_sample/equipment_request.rst:658
-msgid ""
-"После выполнения задачи заявка перейдёт в статус **«На согласовании»** и "
-"на Согласующего будет назначена задача - **Согласование**."
+#: ../../case_sample/equipment_request.rst:656
+#, fuzzy
+msgid "В виджете **«Мои задачи»** нажмите кнопку **«На согласование».**"
 msgstr ""
-"After completing the task, the request will move to the status **\"Under approval\"** and a task - **Approval** - will be assigned to the Approver."
-
-#: ../../case_sample/equipment_request.rst:660
-msgid "Зайдите под **Согласующим**:"
-msgstr "Log in as the **Approver**:"
+"In the **\"My Tasks\"** widget, click the **\"Send for approval\"** "
+"button."
 
 #: ../../case_sample/equipment_request.rst:662
+#, fuzzy
 msgid ""
-"В персональном рабочем пространстве в левом меню перейдите в **Текущие "
-"задачи**, откройте задачу, нажав:"
+"После выполнения задачи заявка перейдёт в статус **«На согласовании»**, и"
+" на Согласующего будет назначена задача - **Согласование**."
 msgstr ""
-"In the personal workspace, in the left menu, go to **Current Tasks**, open the task by clicking:"
+"After completing the task, the request will move to the status **\"Under "
+"approval\"** and a task - **Approval** - will be assigned to the "
+"Approver."
 
-#: ../../case_sample/equipment_request.rst:668
+#: ../../case_sample/equipment_request.rst:664
+#, fuzzy
+msgid ""
+"Зайдите под **Согласующим** - откройте персональное рабочее пространство "
+"и далее в левом меню перейдите в **Текущие задачи**, откройте задачу, "
+"нажав:"
+msgstr ""
+"In the personal workspace, in the left menu, go to **Current Tasks**, "
+"open the task by clicking:"
+
+#: ../../case_sample/equipment_request.rst:670
 msgid ""
 "Для согласования в виджете **«Мои задачи»** нажмите кнопку "
 "**«Согласовать»**:"
 msgstr ""
-"For approval, in the **\"My Tasks\"** widget, click the **\"Approve\"** button:"
-
-#: ../../case_sample/equipment_request.rst:674
-msgid "После выполнения задачи заявка перейдёт в статус **«Согласовано»**."
-msgstr "After completing the task, the request will move to the status **\"Approved\"**."
+"For approval, in the **\"My Tasks\"** widget, click the **\"Approve\"** "
+"button:"
 
 #: ../../case_sample/equipment_request.rst:676
+msgid "После выполнения задачи заявка перейдёт в статус **«Согласовано»**."
+msgstr ""
+"After completing the task, the request will move to the status "
+"**\"Approved\"**."
+
+#: ../../case_sample/equipment_request.rst:678
 msgid ""
 "Поздравляю, первая заявка прошла полный процесс, который был только что "
 "создан Вами."
 msgstr ""
-"Congratulations, the first request has passed the full process that was just created by you."
+"Congratulations, the first request has passed the full process that was "
+"just created by you."
+
+#~ msgid "Для сохранения нажмите **«Сохранить»**."
+#~ msgstr "To save, click **\"Save\"**."
+
+#~ msgid ""
+#~ "Создана первая заявка в статусе "
+#~ "**«Заявка создана»**,  и далее проведем "
+#~ "ее по нашему бизнес-процессу."
+#~ msgstr ""
+#~ "The first request has been created "
+#~ "with the status **\"Request created\"**, "
+#~ "and we will now guide it through"
+#~ " our business process."
+
+#~ msgid "Зайдите под **Согласующим**:"
+#~ msgstr "Log in as the **Approver**:"
+

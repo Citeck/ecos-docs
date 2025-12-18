@@ -53,13 +53,13 @@
 5. Скачивание и разворачивание образов начнется автоматически:
 
 .. image:: _static/pulling.png
-    :width: 600
+    :width: 700
     :align: center
 
 6. Дождитесь статуса **Running** всех микросервисов и приложений и нажмите **Open In Browser**:
 
 .. image:: _static/open.png
-    :width: 600
+    :width: 700
     :align: center
 
 7. 
