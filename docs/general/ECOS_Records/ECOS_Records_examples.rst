@@ -310,7 +310,7 @@
 
 .. code-block:: javascript
 
-    let rec = Records.get('eproc/bpmn-proc@process_different_1'); // id процесса
+    let rec = Records.get('eproc/bpmn-proc@some-process-id'); // id процесса
     rec.att('action', 'START');
     rec.att('document', 'emodel/contract@0b54aed0-d288-4d29-aec3-c1ff37cfa089'); // Документ, для которого стартуем процесс
     rec.save();
