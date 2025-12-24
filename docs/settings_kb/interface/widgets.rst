@@ -1500,16 +1500,16 @@ Cравнение версий процесса - выберите версии 
       :widths: 20 20
       :align: center
 
-      * - | Поиск в списке:
+      * - | Выбор ответственного с функцией поиска:
 
             .. image:: _static/widgets/chart_15.png
-                  :width: 250
+                  :width: 280
                   :align: center
 
-        - | Выбор дат:
+        - | Выбор периода дат:
 
             .. image:: _static/widgets/chart_16.png
-                  :width: 300
+                  :width: 350
                   :align: center
 
 
