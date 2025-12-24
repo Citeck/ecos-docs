@@ -12,7 +12,7 @@
 
 .. note::
 
-    По умолчанию Windows выделяет 50 % общей памяти для WSL 2. Для увеличкния объема памяти, воспользуйтесь `инструкцией <https://learn.microsoft.com/ru-ru/windows/wsl/wsl-config#configuration-settings-for-wslconfig>`_ 
+    По умолчанию Windows выделяет 50 % общей памяти для WSL 2. Для увеличения объема памяти, воспользуйтесь `инструкцией <https://learn.microsoft.com/ru-ru/windows/wsl/wsl-config#configuration-settings-for-wslconfig>`_ 
 
 1. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
 
