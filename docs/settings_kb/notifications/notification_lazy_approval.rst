@@ -37,7 +37,7 @@
         :width: 700
         :align: center
 
-Пример настройки Camel DSL:
+Пример настройки Camel DSL **lazy-approval-email-configuration**:
 
 .. code-block::
 
@@ -159,7 +159,7 @@ FTL шаблон с использованием вердиктов:
 Помимо описанных выше задана дополнительная переменная **registrationNumber**- номер тестовой заявки, который берется из карточки.
  
 .. image:: _static/lazy_approval/sample_02.png
-      :width: 500
+      :width: 700
       :align: center
 
 .. list-table::

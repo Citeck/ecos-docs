@@ -12,9 +12,9 @@
 
 .. note::
 
-    По умолчанию Windows выделяет 50 % общей памяти для WSL 2. Для увеличкния объема памяти, воспользуйтесь `инструкцией <https://learn.microsoft.com/ru-ru/windows/wsl/wsl-config#configuration-settings-for-wslconfig>`_ 
+    По умолчанию Windows выделяет 50 % общей памяти для WSL 2. Для увеличения объема памяти, воспользуйтесь `инструкцией <https://learn.microsoft.com/ru-ru/windows/wsl/wsl-config#configuration-settings-for-wslconfig>`_ 
 
-1. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
+3. Скачайте и установите актуальный дистрибутив **citeck-launcher** для вашей операционной системы со `страницы релизов <https://github.com/Citeck/citeck-launcher/releases>`_:
 
     - **.msi** для Windows
     - **.deb** для Linux-подобных ОС
@@ -28,13 +28,13 @@
          :width: 300
          :align: center
 
-3. Запустите **citeck-launcher**:
+4. Запустите **citeck-launcher**:
 
 .. image:: _static/01_1.png
     :width: 400
     :align: center
 
-4. Для быстрого **запуска Citeck Community**:
+5. Для быстрого **запуска Citeck Community**:
 
     - с предзаполненными :ref:`демонстрационными данными<ecos_modules>` - нажмите **Quick Start With Demo Data**:
 
@@ -50,19 +50,19 @@
     :width: 600
     :align: center
 
-5. Скачивание и разворачивание образов начнется автоматически:
+6. Скачивание и разворачивание образов начнется автоматически:
 
 .. image:: _static/pulling.png
     :width: 700
     :align: center
 
-6. Дождитесь статуса **Running** всех микросервисов и приложений и нажмите **Open In Browser**:
+7. Дождитесь статуса **Running** всех микросервисов и приложений и нажмите **Open In Browser**:
 
 .. image:: _static/open.png
     :width: 700
     :align: center
 
-7. 
+8. 
 
 .. list-table::
       :widths: 20 20
@@ -84,7 +84,7 @@
                   :align: center
 
 
-8.  По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства<ws_personal>`:
+9.  По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства<ws_personal>`:
 
 .. image:: _static/page_04.png
     :width: 700
