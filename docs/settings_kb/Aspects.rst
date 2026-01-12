@@ -266,7 +266,7 @@
       * - |
 
             .. image:: _static/aspects/history-config_09.png
-                  :width: 400
+                  :width: 500
                   :align: center
 
         - |
@@ -344,7 +344,7 @@
 Аспект **import-data-config (Импорт данных)** - необходим для настройки вариантов импорта данных.
 
 .. image:: _static/aspects/import-data-config_01.png
-      :width: 600
+      :width: 700
       :align: center
 
 Форма настройки:
