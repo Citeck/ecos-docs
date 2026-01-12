@@ -727,7 +727,7 @@ id типа: ``mutate``
         - тип действия
         - mutate
       * - 4
-        - **Ключ:**
+        - **Ключ**
         - ключ конфигурации
         - ``record``
       * - 5
@@ -737,9 +737,9 @@ id типа: ``mutate``
       * - 6
         - **Форма**
         - выбрать форму ввода данных
-        - Действие гайда (form-action-guide)
+        - Изменить инициатора (form-action-guide)
       * - 7
-        - **Ключ:**
+        - **Ключ**
         - ключ параметра формы подтверждения
         - ``record.attributes.requester``
       * - 8
@@ -1277,11 +1277,11 @@ id типа: ``tasks-actions``
       * - Описание
         - Конфигурация
       * -  
-          | Действие для загрузки вариантов завершения задач.
+          | Действие для загрузки вариантов завершения задач
         - | 
           | На выходе для каждой задачи получается основное действие и ``variants`` с типом ``task-outcome`` где перечислены варианты завершения
 
-           .. image:: _static/actions/actions_1.png
+           .. image:: _static/ui_actions/actions_1.png
               :width: 200
               :align: center
 
@@ -1290,13 +1290,13 @@ id типа: ``tasks-actions``
           | Находятся все кнопки с ключом outcome_* и преобразуются в варианты создания.
           | Если у задачи на форме есть поля, то показывается всплывающая форма с этими полями:
           
-           .. image:: _static/actions/actions_2.png
+           .. image:: _static/ui_actions/actions_2.png
               :width: 400
               :align: center
           
           | Если у задачи на форме нет полей, то показывается следующее окно:
            
-           .. image:: _static/actions/actions_3.png
+           .. image:: _static/ui_actions/actions_3.png
               :width: 300
               :align: center
           
@@ -1574,7 +1574,7 @@ id типа: ``transform``
 
 Настройка действий для карточки осуществляется в журнале типов данных, который располагается в системных журналах:
 
-.. image:: _static/actions/Action_settings.png
+.. image:: _static/ui_actions/Action_settings.png
        :align: center
        :alt: Настройка действий
        :width: 600
@@ -1593,7 +1593,7 @@ id типа: ``transform``
 
 Настройка действий для журнала осуществляется в разделе **Конфигурация UI - Журналы**, который располагается в системных журналах:
 
-.. image:: _static/actions/Action_settings_journal.png
+.. image:: _static/ui_actions/Action_settings_journal.png
        :align: center
        :alt: Настройка действий
        :width: 600
