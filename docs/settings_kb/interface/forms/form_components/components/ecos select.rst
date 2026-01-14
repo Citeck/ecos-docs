@@ -58,7 +58,7 @@ Ecos Select
         - |
 
             .. image:: _static/ecos_select/Records_Query_02.png
-                  :width: 500
+                  :width: 400
                   :align: center
 
 Данные берутся из Async Data с типом **Records Array**:
@@ -76,5 +76,5 @@ Ecos Select
         - |
 
             .. image:: _static/ecos_select/Records_Array_02.png
-                  :width: 500
+                  :width: 400
                   :align: center

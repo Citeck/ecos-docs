@@ -10,7 +10,7 @@ Select orgstruct
 -----------------------------------------
 
 .. image:: _static/select_orgstruct/select_orgstruct_1.png
-       :width: 550
+       :width: 600
        :align: center
 
 **Отображать всех пользователей системы** - в компоненте во вкладке **Все пользователи** будут отображать все пользователи, а не только пользователи рабочего пространства.
@@ -96,7 +96,7 @@ Select orgstruct
 На вкладке :guilabel:`Данные` в разделе **Пользовательские значения по умолчанию**:
 
 .. image:: _static/select_orgstruct/select_orgstruct_6.png
-       :width: 550
+       :width: 600
        :align: center
 
 указать:
