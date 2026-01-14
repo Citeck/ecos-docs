@@ -248,17 +248,10 @@
                  :width: 500 
                  :align: center             
 
-          |  Для типа дашборда :ref:`Site-dashboard<dashboard_types>`
-
-            .. image:: _static/widgets/Properties_5.png
-                 :width: 500   
-                 :align: center 
-
-
           | При выборе свойства **Электронная подпись** отображаются данные о сертификате ЭЦП и времени подписания:
 
             .. image:: _static/widgets/Properties_6.png
-                 :width: 300   
+                 :width: 250   
                  :align: center 
 
 
@@ -1206,7 +1199,7 @@ Cравнение версий процесса - выберите версии 
 Виджет визуализирует прохождение :ref:`стадий<stages>` документа:
 
  .. image:: _static/widgets/stages_1.png
-       :width: 500
+       :width: 600
        :align: center 
 
 .. list-table:: 
@@ -1219,7 +1212,7 @@ Cравнение версий процесса - выберите версии 
         - |  
 
             .. image:: _static/widgets/stages_2.png
-                 :width: 300  
+                 :width: 400  
                  :align: center  
 
           | Если снять чекбокс, то будет показана только текущая стадия:
@@ -1231,7 +1224,7 @@ Cравнение версий процесса - выберите версии 
         - |  
 
             .. image:: _static/widgets/stages_3.png
-                 :width: 500  
+                 :width: 600  
                  :align: center  
 
 
@@ -1326,7 +1319,7 @@ Cравнение версий процесса - выберите версии 
 Для всех типов графиков:
 
  .. image:: _static/widgets/chart_4.png
-       :width: 600
+       :width: 700
        :align: center 
 
 .. list-table:: 

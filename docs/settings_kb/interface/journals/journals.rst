@@ -122,5 +122,5 @@ Citeck позволяет:
 - открыть карточку журнала в соседней вкладке. Карточка представляет собой :ref:`дашборд<dashboard>`:
 
  .. image:: _static/new/journal_dashboard.png
-       :width: 600
+       :width: 700
        :align: center
