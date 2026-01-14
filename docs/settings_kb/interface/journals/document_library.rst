@@ -224,7 +224,7 @@
 Карточка состоит из виджетов:
 
  .. image:: _static/doclib/DocLib_9.png
-       :width: 600
+       :width: 700
        :align: center
 
 Для файла доступны следующие действия:
@@ -236,7 +236,7 @@
 	- Загрузить новую версию.
 
  .. image:: _static/doclib/DocLib_12.png
-       :width: 600
+       :width: 700
        :align: center
 
 Подробно о :ref:`виджетах<widgets>`.

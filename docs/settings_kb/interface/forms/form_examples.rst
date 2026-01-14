@@ -194,12 +194,6 @@ Button Component
        :width: 600
        :align: center
 
-Собранная в конструкторе форма с компонентами:
-
- .. image:: _static/form_examples/form_full.png
-       :width: 600
-       :align: center
-
 Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
 
   .. image:: _static/form_examples/button_1.png
@@ -237,7 +231,7 @@ Async Data Component
 **Async Data Component** - асинхронный компонент.
 
  .. image:: _static/form_examples/form_12_1.png
-       :width: 600
+       :width: 500
        :align: center
 
 Справочник **Грейд** (тип данных hr-grades-type) содержит в себе информацию о должности (offerposition), вилке оклада (gradesSalary) и премии (gradesPrize).
@@ -322,7 +316,7 @@ How to
 Полезно, например, на :ref:`канбан-доске<kanban_board>`:
 
  .. image:: _static/form_examples/form_15.png
-       :width: 600
+       :width: 450
        :align: center
 
 Текст скрипта:
@@ -337,7 +331,7 @@ How to
 На форме документа :ref:`статус<associations>` может быть отражен следующим образом:
 
  .. image:: _static/form_examples/form_status.png
-       :width: 600
+       :width: 700
        :align: center
 
 В компоненте  :ref:`Text field <Text_Field>`:
