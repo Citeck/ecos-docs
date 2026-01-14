@@ -274,13 +274,13 @@
       * - |
 
             .. image:: _static/kanban/form_card_01.png
-                  :width: 500
+                  :width: 600
                   :align: center
 
         - |
 
             .. image:: _static/kanban/form_card_02.png
-                  :width: 500
+                  :width: 600
                   :align: center
 
 
@@ -290,6 +290,6 @@
 Созданная канбан доска может быть задана и в типе данных:
 
  .. image:: _static/kanban/KB10.png
-       :width: 600
+       :width: 700
        :align: center
 
