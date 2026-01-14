@@ -36,29 +36,42 @@
 
 Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму :guilabel:`Локализация` и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.
 
-.. image:: _static/form_localisation/Forms_local_4.png
-       :width: 400
-       :align: center
+.. list-table::
+      :widths: 20 20
+      :align: center
 
-|
+      * - |
 
-.. image:: _static/form_localisation/Forms_local_5.png
-       :width: 400
-       :align: center
+            .. image:: _static/form_localisation/Forms_local_4.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_localisation/Forms_local_5.png
+                  :width: 500
+                  :align: center
+
 
 **4. Локализация текста полей компонента формы**
 
 Для локализации текста полей компонента формы (Название поля, Подсказка) предусмотрен компонент :ref:`ML Text<ML_Text>` - текстовое поле с переключателем в виде флага России /США. После выбора языка в поле вводится текст.
 
-.. image:: _static/form_localisation/Forms_local_11.png
-       :width: 400
-       :align: center
+.. list-table::
+      :widths: 20 20
+      :align: center
 
-|
+      * - |
 
-.. image:: _static/form_localisation/Forms_local_12.png
-       :width: 400
-       :align: center
+            .. image:: _static/form_localisation/Forms_local_11.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_localisation/Forms_local_12.png
+                  :width: 500
+                  :align: center
 
 Сохраняются оба введенных зачения.
 

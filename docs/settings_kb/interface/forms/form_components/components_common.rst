@@ -80,7 +80,7 @@ Date/Time
        :width: 250
        :align: center
 
-Отображение регулируется внутри компонента, доступна локализация RU/Eng
+Отображение регулируется внутри компонента, доступна локализация Ru/Eng
 
 .. image:: _static/Date_Time_Component.png
        :width: 600
@@ -143,7 +143,7 @@ ECOS Select
 Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
 
 .. image:: _static/ECOS_Select_Component.png
-       :width: 400
+       :width: 350
        :align: center
 
 :ref:`См. подробное описание Ecos Select<ecos_select_component>`  
@@ -331,7 +331,7 @@ Panel
 Панель, в которую можно поместить свойство. Нужна для зонирования. В неё помещаются близкие по смыслу компоненты и им присваивается заголовок.
 
 .. image:: _static/Panel_Component.png
-       :width: 400
+       :width: 600
        :align: center
 
 `См. подробное описание Panel на Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_ 
@@ -349,7 +349,7 @@ Table
 Компонент позволяет создать таблицу со столбцами и строками.
 
 .. image:: _static/Table_Component.png
-       :width: 500
+       :width: 600
        :align: center
 
 `См. подробное описание Table на Form.io <https://help.form.io/userguide/forms/layout-components#table>`_ 
@@ -402,7 +402,7 @@ Include Form
 При отрисовке формы не в билдере компонент рисовать не нужно (на сервере он будет автоматически заменяться на все компоненты, которые есть в выбранной форме).
 
 .. image:: _static/Include_Form_Component.png
-       :width: 500
+       :width: 600
        :align: center
 
 Контейнер
@@ -456,7 +456,7 @@ Data Grid
 Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
 
 .. image:: _static/Data_Grid_Component.png
-       :width: 400
+       :width: 600
        :align: center
 
 `См. подробное описание Data Grid на Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_ 
