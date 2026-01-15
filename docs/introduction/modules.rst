@@ -1,5 +1,5 @@
-Модули и микросервисы, доступные в Community, Enterprise версиях
-==================================================================
+Сравнение Community и Enterprise версий
+========================================
 
 .. contents::
    :depth: 2
@@ -103,7 +103,7 @@
 
 
       * - :ref:`CRM<ecos-crm>`
-        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании
+        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании.
         - |
 
            .. image:: _static/modules/green.png
@@ -159,7 +159,7 @@
               :align: center 
 
       * - :ref:`Пропуска<ecos-order-pass>`
-        - Автоматизация процесса принятия решения по выдаче пропуска.
+        - Автоматизация процесса принятия решения по выдаче пропусков.
         - |
 
            .. image:: _static/modules/green.png
@@ -200,8 +200,8 @@
               :width: 30
               :align: center 
 
-      * - :ref:`Портал технической поддержки<portal_sd>`
-        - Веб-интерфейсу для внешних заказчиков для регистрации заявок, контроля их выполнения, обмена комментариями и файлами.
+      * - :ref:`Внешний портал<portal_sd>`
+        - Веб-интерфейс  для клиентов, партнеров и поставщиков, который позволяет им контролируемо работать с сервисами и данными платформы. Например, может быть использован как портал технической поддержки в составе :ref:`Service desk<ecos-service-desk>`.
         - |
 
            .. image:: _static/modules/red.png
@@ -251,187 +251,6 @@
               :align: center 
 
         - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-
-Микросервисы
--------------
-
-.. list-table::
-      :widths: 10 20 10 10
-      :header-rows: 1
-      :class: tight-table 
-
-      * - Название
-        - Описание
-        - Community
-        - Enterprise
-      * - ecos-gateway
-        - Микросервис реализует API шлюз взаимодействия с остальными микросервисами
-        - 
-             .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-             .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - ecos-uiserv
-        - | Микросервис UI конфигураций, 
-          | Предоставляет элементы UI и хранящий их настройки (меню, журналы, UI конфиги, формы, настройки журналов, дашборды).
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - ecos-model
-        - | Микросервис моделей
-          | Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - ecos-history
-        - | Микросервис истории
-          | Подписан на события в системе и сохраняет информацию о них в БД.
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-apps<apps_service>`
-        - | Микросервис приложений Citeck
-          | Отвечает за доставку приложений Citeck к целевым сервисам.
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-notifications<notifications>`
-        - | Микросервис нотификаций
-          | Отвечает за отправку уведомлений (email, push-нотификации и др.).
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-process<process>`
-        - | Микросервис процессов. 
-          | Отвечает за процессы кейс-менеджмента и BPMN.
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-integrations<integration>`
-        - | Микросервис для интеграции с внешними системами (SAP, 1C, Rabbit MQ и тд.).
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-transformations<transformation>`
-        - | Микросервис для преобразования (трансформации) контента, генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
-        - | - :ref:`Редактирование документа в Onlyoffice<edit_only_office>` 
-          | - :ref:`Генерация документа по шаблону<doc_templates>`
-          | - :ref:`Сравнение версий<widget_versions_journal>`               
-          | - :ref:`Генерация штрих-кода<widget_barcode>` 
-          | - :ref:`Скачивание pdf документа с штрих кодом<barcode_pdf>` 
-        - | - :ref:`Генерация документа по шаблону<doc_templates>`
-
-      * - :ref:`ecos-content<content_service>`
-        - | Микросервис для обеспечения хранения файлов в нескольких внешних файловых хранилищах.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`ecos-edi <ecos-edi>`
-        - | Микросервис с вынесенной логикой ЮЗДО из микросервиса :ref:`интеграции<integration>`.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - ecos-ecom
-        - | Микросервис представляет собой решение для создания и управления email-рассылками, чат-ботами внутри платформы.
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
 
            .. image:: _static/modules/green.png
               :width: 30
@@ -492,7 +311,7 @@
               :align: center 
 
       * - :ref:`Виджет «Графическая статистика»<widget_graphic_statistics>`
-        - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейные, столбчатые, круговые.
+        - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейный, столбчатый, круговой, воронка.
         - 
 
            .. image:: _static/modules/red.png
@@ -547,7 +366,7 @@
               :align: center 
 
       * - :ref:`Синхронизация пользователей из LDAP<LDAP_sync>`
-        - Можно создать несколько конфигураций синхронизации из LDAP, указав различные настройки - например, сервера, домены, фильтры и т.д.
+        - Создание нескольких конфигураций синхронизации из LDAP с возможностью различных настроек - например, сервера, домены, фильтры и т.д.
         - 
 
            .. image:: _static/modules/red.png
@@ -631,7 +450,7 @@
               :align: center 
 
       * - :ref:`ECOS KeyCloak Extension<keycloak_extension>`
-        - Возможность создания или формирование событий Citeck при возникновении пользовательских и админских событий Keycloak 
+        - Возможность создания или формирование событий Citeck при возникновении пользовательских и административных событий Keycloak.
         - 
 
            .. image:: _static/modules/red.png
@@ -656,3 +475,197 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
+
+
+Микросервисы
+-------------
+
+.. list-table::
+      :widths: 10 20 10 10
+      :header-rows: 1
+      :class: tight-table 
+
+      * - Название
+        - Описание
+        - Community
+        - Enterprise
+      * - ecos-gateway
+        - Микросервис реализует API шлюз взаимодействия с остальными микросервисами Платформы.
+        - 
+             .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+             .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-uiserv
+        - | Микросервис UI конфигураций. 
+          | Предоставляет элементы UI и хранящий их настройки (меню, журналы, UI конфиги, формы, настройки журналов, дашборды).
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-model
+        - | Микросервис моделей.
+          | Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-history
+        - | Микросервис истории.
+          | Микросервис подписан на события в системе и сохраняет информацию о них в БД.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-apps<apps_service>`
+        - | Микросервис приложений Citeck.
+          | Отвечает за доставку приложений Citeck к целевым сервисам.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-notifications<notifications>`
+        - | Микросервис нотификаций.
+          | Отвечает за отправку уведомлений (email, push-нотификации и др.).
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-process<process>`
+        - | Микросервис, отвечающий за процессы BPMN.
+        -
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-integrations<integration>`
+        - | Микросервис для интеграции с внешними системами (SAP, 1C, Rabbit MQ и тд.).
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-transformations<transformation>`
+        - | Микросервис для преобразования (трансформации) контента, генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
+        - | - :ref:`Генерация документа по шаблону<doc_templates>`
+          | - :ref:`Редактирование документа в Onlyoffice<edit_only_office>` 
+        - | - :ref:`Генерация документа по шаблону<doc_templates>`
+          | - :ref:`Редактирование документа в Onlyoffice<edit_only_office>` 
+          | - :ref:`Сравнение версий<widget_versions_journal>`               
+          | - :ref:`Генерация штрих-кода<widget_barcode>` 
+          | - :ref:`Скачивание pdf документа с штрих кодом<barcode_pdf>` 
+
+      * - :ref:`ecos-content<content_service>`
+        - | Микросервис для обеспечения хранения файлов в нескольких внешних файловых хранилищах.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`ecos-edi <ecos-edi>`
+        - | Микросервис, отвечающий за функционал ЮЗДО
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - ecos-ecom
+        - | Микросервис представляет решение для создания и управления email-рассылками, чат-ботами внутри платформы.
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+
+Техническая поддержка
+------------------------
+
+.. list-table:: 
+      :widths: 20 20
+      :header-rows: 1
+      :class: tight-table 
+
+      * - Community
+        - Enterprise
+      * - Только в `telegram канале <https://t.me/citeck>`_. Без SLA.
+        - | Портал поддержки, email, телефон. 
+          | Соблюдение сроков в соответствии с условиями SLA.
