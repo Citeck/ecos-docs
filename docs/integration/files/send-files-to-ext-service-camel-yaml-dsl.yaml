@@ -1,0 +1,132 @@
+- beans:
+    - name: globalConstants
+      type: java.util.HashMap
+      properties:
+        # URL для отправки файлов и данные для аутентификации берем из конечных точек Citeck
+        # Подробнее в документации:
+        # https://citeck-ecos.readthedocs.io/ru/latest/general/Artifacts/ECOS_Endpoint.html
+        # https://citeck-ecos.readthedocs.io/ru/latest/general/Artifacts/ECOS_Secret.html
+        FILE_UPLOAD_ENDPOINT_URL: "{{ecos-endpoint:file-upload-endpoint/url}}" # http://some-host/path
+        FILE_UPLOAD_USERNAME: "{{ecos-endpoint:file-upload-endpoint/credentials/username}}" # Имя пользователя
+        FILE_UPLOAD_PASSWORD: "{{ecos-endpoint:file-upload-endpoint/credentials/password}}" # Пароль
+        # Лимит размера файла для отправки
+        # При повышении лимита возможны ошибки превышения допустимого размера строки в json
+        # см. com.fasterxml.jackson.core.StreamReadConstraints.DEFAULT_MAX_STRING_LEN
+        # Лимит по умолчанию 20_000_000 символов
+        # 14 МБ в base64 - 19 573 420 символов
+        # Для отправки файлов без лимитов требуется другая конфигурация
+        FILE_CONTENT_LIMIT: 14680064 # 14 МБ
+        FILE_TYPES_TO_PROCESS: ['scan-document']
+    - name: collectToListStrategy
+      type: org.apache.camel.processor.aggregate.GroupedBodyAggregationStrategy
+    - name: getDocumentContentAtts
+      type: ru.citeck.ecos.camel.processor.GetRecordAttsProcessor
+      properties:
+        attributes:
+          # Глобальный идентификатор документа (например emodel/scan-document@a89987b4-4cf7-4144-8cad-20e03824c3d0)
+          id: '?id'
+          # отображаемое имя документа
+          name: '?disp'
+          # Байты содержимого документа.
+          # Передаются в формате Base64, поэтому для файлов размером больше ~14 МБ
+          # использовать этот атрибут не рекомендуется.
+          bytes: '_content.bytes'
+          # mime-тип содержимого
+          mimeType: '_content.mimeType'
+- route:
+    from:
+      uri: 'ecos-event:record-status-changed'
+      parameters:
+        # атрибуты, которые нам нужны для обработки события.
+        attributes:
+          # Глобальный идентификатор записи (например emodel/contract@eccc858a-0ae1-4886-99a5-9415aa33476f)
+          recordId: 'record?id'
+          # Документы из вкладки "Документы". Контент здесь не загружаем, так как:
+          # а) перед загрузкой необходимо отфильтровать документы по типу и размеру;
+          # б) загрузка контента для всех документов сразу может привести к ошибкам OutOfMemory.
+          documents: 'record.docs:documents[]{ref:?id,typeId:_type?localId,contentSize:_content.size?num}!'
+        filter:
+          t: and
+          val:
+            - t: 'eq'
+              att: 'typeDef.id'
+              val: 'contract' # id типа основного документа, за статусом которого мы следим
+            - t: 'eq'
+              att: 'after?str'
+              val: 'integration-trigger' # id ожидаемого статуса
+      steps:
+        - log:
+            loggingLevel: INFO
+            message: "Status changed event received. Documents: ${body.get('documents')}"
+        - script:
+            # Фильтруем документы по типу и размеру. В тело сообщения записываем массив ссылок на подходящие нам документы
+            js: |
+              const globalConst = context.getRegistry().lookupByName("globalConstants");
+              const sizeLimit = globalConst["FILE_CONTENT_LIMIT"];
+              const typesToProcess = globalConst["FILE_TYPES_TO_PROCESS"];
+
+              const ArrayListClass = Java.type('java.util.ArrayList');
+              const documentsValue = body.get("documents");
+
+              const filteredDocs = new ArrayListClass();
+              const filterMessages = new ArrayListClass();
+
+              for (let idx = 0; idx < documentsValue.size(); idx++) {
+                const doc = documentsValue.get(idx);
+                if (!doc) { continue; }
+                const docRef = doc.get('ref').asText();
+                const docType = doc.get('typeId').asText();
+                if (typesToProcess.indexOf(docType) !== -1) {
+                  if (doc.get('contentSize').asLong() <= sizeLimit) {
+                    filteredDocs.add(docRef);
+                  } else {
+                    filterMessages.add("Content size of document " +
+                        "'" + docRef + "' is too large: " + doc.get('contentSize'))
+                  }
+                } else {
+                  filterMessages.add("Skip document '" + docRef + "' with type '" + docType + "'");
+                }
+              }
+              exchange.setVariable("filterMessages", filterMessages);
+              exchange.getIn().setBody(filteredDocs);
+        - choice:
+            when:
+              - simple: "${variable.filterMessages.isEmpty()} == false"
+                steps:
+                  - log:
+                      loggingLevel: INFO
+                      message: "Messages after filtering: \n${variable.filterMessages}"
+        - split:
+            simple: "${body}"
+            aggregationStrategy: collectToListStrategy # обрабатываем каждый документ и собираем лист из результатов
+            steps:
+              # Получаем нужные атрибуты документа. Настройки бина getDocumentContentAtts в разделе beans выше
+              - to: "bean:getDocumentContentAtts"
+              - script:
+                  # Подготавливаем multipart тело запроса
+                  # Список доступных методов MultipartEntityBuilder можно посмотреть в исходниках
+                  # https://github.com/apache/httpcomponents-client/blob/master/httpclient5/src/main/java/org/apache/hc/client5/http/entity/mime/MultipartEntityBuilder.java
+                  js: |
+                    const multipartBody = Java.type('org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder').create();
+                    const bodyBytes = Java.type('java.util.Base64').getDecoder().decode(body.get('bytes').asText());
+                    multipartBody.addBinaryBody(
+                        "file",
+                        bodyBytes,
+                        Java.type('org.apache.hc.core5.http.ContentType').parse('application/octet-stream'),
+                        body.get('name').asText()
+                    )
+                    multipartBody.addTextBody('name', body.get('name').asText())
+                    exchange.getIn().setBody(multipartBody.build());
+              - setHeader:
+                  name: CamelHttpMethod
+                  constant: "POST"
+              # Отправляем HTTP запрос с Authentication: Basic ...
+              - toD: "${bean:globalConstants.get('FILE_UPLOAD_ENDPOINT_URL')}?authUsername=${bean:globalConstants.get('FILE_UPLOAD_USERNAME')}&authPassword=${bean:globalConstants.get('FILE_UPLOAD_PASSWORD')}&authMethod=Basic"
+              # Если сервер отвечает в json формате, то можно распарсить ответ через
+              # unmarshal: {json:{}} и взять из тела ответа значение нужного поля если это требуется
+              - unmarshal:
+                  json: { }
+              - setBody:
+                  simple: "${body[entityRef]}"
+        # Логируем результат
+        - to: "log:processing-result"
