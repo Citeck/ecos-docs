@@ -1,6 +1,8 @@
 Конечные точки
 ================
 
+.. _endpoints_dsl:
+
 .. contents::
 		:depth: 3
 

@@ -3,9 +3,6 @@
 
 .. _interface_themes:
 
-Темы
-----
-
 Основной источник данных: **uiserv/theme**
 
 **Тема интерфейса** - набор ссылок на изображения и стили для визуальной кастомизации Citeck.
@@ -134,3 +131,50 @@ API
 Чтобы избежать проблем с кэшем (темы могут меняться "на лету") нужно добавлять в запросы ключ кэширования, который загружается по следующему API::
 
  await Records.get('uiserv/meta@').load('attributes.theme-cache-key');
+
+Стили
+-------
+
+В активную тему можно добавить кастомный css. Для этого:
+
+1. Скачайте артефакт готовой темы: 
+
+ .. image:: _static/themes/css/custom_01.png
+       :width: 700
+       :align: center
+
+2. Распакуйте архив:
+
+ .. image:: _static/themes/css/custom_02.png
+       :width: 400
+       :align: center
+
+3. Откройте **main.css**
+
+.. code-block::
+
+  .body {
+  }
+   
+4. Внесите в него изменения. Например, для настройки ширины выпадающего списка у кнопки Создать:
+
+.. code-block::
+
+  .body {
+  }
+
+  .ecos-dropdown__menu_new, .ecos-dropdown__menu_new ul {
+      max-width: unset !important;
+  }
+
+5. Упакуйте в архив (с такой же структурой как был выгружен) и загрузите на стенд:
+
+ .. image:: _static/themes/css/custom_03.png
+       :width: 700
+       :align: center
+
+6. Обновите страницу. Перейдите к кнопке Создать, ширина выпадающего списка будет подстраиваться под длину текста:
+
+ .. image:: _static/themes/css/custom_04.png
+       :width: 600
+       :align: center
