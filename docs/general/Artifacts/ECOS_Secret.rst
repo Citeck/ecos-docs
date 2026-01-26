@@ -1,6 +1,8 @@
 Секреты
 =========
 
+.. _ecos_secret:
+
 .. contents::
    :depth: 3
 
