@@ -256,7 +256,6 @@
        :width: 600
        :align: center
 
-
 5.	Нажмите **«Применить»**.
 
   .. image:: _static/equipment_request/menu_6.png
