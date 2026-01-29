@@ -155,10 +155,23 @@ API
 
   .body {
   }
-   
-4. Внесите в него изменения. Например, для настройки ширины выпадающего списка у кнопки Создать:
 
-.. code-block::
+4. Внесите в него изменения.
+
+5. Упакуйте в архив (с такой же структурой как был выгружен) и загрузите на стенд:
+
+ .. image:: _static/themes/css/custom_03.png
+       :width: 700
+       :align: center
+
+6. Обновите страницу. 
+
+Настройка ширины выпадающего списка у кнопки Создать
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Например, для настройки ширины выпадающего списка у кнопки Создать:
+
+.. code-block:: css
 
   .body {
   }
@@ -167,14 +180,54 @@ API
       max-width: unset !important;
   }
 
-5. Упакуйте в архив (с такой же структурой как был выгружен) и загрузите на стенд:
-
- .. image:: _static/themes/css/custom_03.png
-       :width: 700
-       :align: center
-
-6. Обновите страницу. Перейдите к кнопке Создать, ширина выпадающего списка будет подстраиваться под длину текста:
+Результат: перейдите к кнопке Создать, ширина выпадающего списка будет подстраиваться под длину текста:
 
  .. image:: _static/themes/css/custom_04.png
        :width: 600
        :align: center
+
+Изменение цветовой гаммы темы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: CSS
+
+  :root {
+    --main-bg-color: #fafafa; /*основной фон страницы*/
+    --header-bg-color: #002F6C; /*основной фон хэдера страницы*/
+    --header-component-color: #1e4272dd; /*цвет элементов хэдера*/
+
+    --primary-color: #002F6C; /*основной цвет темы*/
+    --dark-primary-color: #002350; /*производная от основного цвета*/
+    --light-primary-color: #D8E5F8; /*производная от основного цвета*/
+  }
+
+  body {
+  }
+
+  .ecos-sidebar {
+    background: #f8fafc; /*фон боковой панели*/
+  }
+
+  .ecos-journal_new .ecos-grid__row_new:not(.ecos-grid__tr_selected):nth-child(odd) {
+    background-color: #d8e5f86b !important;  /*чередование строк в таблице*/
+  }
+
+Результат:
+
+.. list-table::
+      :widths: 5 30
+      :align: center
+
+      * - Базовая тема:
+        -
+
+            .. image:: _static/themes/css/custom_05.png
+                  :width: 700
+                  :align: center
+
+      * - Обновленная тема:
+        -
+            .. image:: _static/themes/css/custom_06.png
+                  :width: 700
+                  :align: center
+
