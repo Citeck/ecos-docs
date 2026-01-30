@@ -16,9 +16,9 @@ Spring настройки для микросервиса трансформац
   ecos:
     webapp:
       task:
-      executors:
-        transformations:
-        corePoolSize: 10 # количество потоков трансформации
+        executors:
+          transformations:
+            corePoolSize: 10 # количество потоков трансформации
 
 **Конвертация** - частный случай трансформации, который подразумевает изменение содержимого из одного формата в другой. 
 
@@ -34,8 +34,8 @@ OnlyOffice
   ecos:
     integrations:
       onlyoffice:
-      host: only-office-app # хост, на котором доступен сервер OnlyOffice
-      port: 80 # http порт для работы с OnlyOffice
+        host: only-office-app # хост, на котором доступен сервер OnlyOffice
+        port: 80 # http порт для работы с OnlyOffice
 
 Типы источников контента (input)
 --------------------------------
