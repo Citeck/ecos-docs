@@ -8,18 +8,18 @@
     #=== ECOS CONTENT ===#
     
     content-app-dev:
-    container_name: content-app-dev
-    image: enterprise-registry.citeck.ru/ecos-content:1.0.0
-    ports:
+      container_name: content-app-dev
+      image: enterprise-registry.citeck.ru/ecos-content:1.0.0
+      ports:
         - 8088:8088
-    environment:
+      environment:
         - _JAVA_OPTIONS=-Xmx256m -Xms256m
         - SPRING_PROFILES_ACTIVE=dev,swagger
         - SPRING_RABBITMQ_HOST=rabbitmq-dev
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@ecos-registry:8761/eureka
         - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@ecos-registry:8761/config
         - ECOS_INIT_DELAY=30
-    depends_on:
+      depends_on:
         - ecos-registry
         - rabbitmq-dev
 
