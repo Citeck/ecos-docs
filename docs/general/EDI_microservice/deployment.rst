@@ -12,11 +12,11 @@
     #=== ECOS EDI ===#
     
     edi-app-dev:
-    container_name: edi-app-dev
-    image: enterprise-registry.citeck.ru/ecos-edi:1.0.0-snapshot
-    ports:
+      container_name: edi-app-dev
+      image: enterprise-registry.citeck.ru/ecos-edi:1.0.0-snapshot
+      ports:
         - 8083:8083
-    environment:
+      environment:
         - _JAVA_OPTIONS=-Xmx512m -Xms512m
         - SPRING_PROFILES_ACTIVE=dev,swagger
         - SPRING_RABBITMQ_HOST=rabbitmq-dev
@@ -26,7 +26,7 @@
         - SPRING_DATASOURCE_USERNAME=edi
         - SPRING_DATASOURCE_PASSWORD=edipassword
         - ECOS_INIT_DELAY=20
-    depends_on:
+      depends_on:
         - ecos-registry
         - rabbitmq-dev
 

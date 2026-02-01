@@ -4,6 +4,22 @@
 .. contents::
    :depth: 2
 
+**Citeck Community** — полнофункциональный ИТ-продукт для решения бизнес-задач в небольших компаниях. На его базе вы также можете создавать собственные бизнес-приложения (No-Code, Low-Code, Code) и интеграции (Code).
+
+Используя **Citeck Community**, вы сможете:
+
+   -	Использовать уже поставляемые :ref:`модули<ecos_modules>` 
+   -	Создавать, исполнять и контролировать :ref:`бизнес-процессы<ecos-bpmn_platform>` разной сложности
+   -	Хранить контент любых видов, структурировать его и задавать права доступа
+
+**Citeck Enterprise** содержит все функциональности **Citeck Community**, а так же дополнительные, такие как:
+
+   - :ref:`Интеллектуальный помощник<AI_assistant>`
+   - :ref:`Интеграция с ЭДО провайдерами<edi_integration>`
+   - :ref:`Внешний портал<portal_sd>`
+
+Подробная информация представлена ниже.
+
 Модули
 -------
 
@@ -16,6 +32,33 @@
         - Описание
         - Community
         - Enterprise
+      * - :ref:`Корпоративный портал<corp_portal>`
+        - Раздел для сотрудников компании, который объединяет различные инструменты, информацию и сервисы в одном месте
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Рабочие пространства<workspaces>`
+        - Среда, объединяющая все файлы, настройки, конфигурации и инструменты, необходимые для работы над конкретным проектом или набором проектов
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
 
       * - :ref:`ОРД <ecos-order-ORD>`
         - Автоматизация процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
@@ -87,21 +130,6 @@
               :width: 30
               :align: center 
 
-      * - :ref:`Доверенности <ecos-poa>`
-        - Автоматизация процесса выдачи бумажных доверенностей.
-        - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - |
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-
       * - :ref:`CRM<ecos-crm>`
         - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании.
         - |
@@ -129,7 +157,7 @@
            .. image:: _static/modules/green.png
               :width: 30
               :align: center 
- 
+
       * - :ref:`Офферы<ecos-offer>`
         - Автоматизация процесса подбора персонала по заявкам подразделений.
         - |
@@ -146,6 +174,20 @@
 
       * - :ref:`Заявления на отпуск<ecos-vacation>`
         - Модуль позволяет организовать работу с заявлениями на отпуск, поступающими от сотрудников.
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - |
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Доверенности <ecos-poa>`
+        - Автоматизация процесса выдачи бумажных доверенностей.
         - |
 
            .. image:: _static/modules/green.png
@@ -256,6 +298,7 @@
               :width: 30
               :align: center 
 
+
 Отдельные функциональности
 ---------------------------
 
@@ -268,11 +311,232 @@
         - Описание
         - Community
         - Enterprise
+
+      * - :ref:`Платформа бизнес-процессов (Citeck BPMN)<ecos-bpmn_platform>`
+        - Платформа для автоматизации бизнес-процессов, которая использует нотацию BPMN (Business Process Model and Notation) для моделирования и выполнения процессов.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Модели принятия решений (Citeck DMN)<ecos-dmn>`
+        - Платформа моделей принятия решений DMN (Decision Model and Notation) позволяет в простой и понятной форме создавать таблицы принятия решений по входящим наборам данных для более гибкой настройки процессов, которые помогают решать аналитические и автоматизационные задачи компаниям.
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Виджет «Статистика процесса»<widget_process_statistics>`
         - Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap). 
         - 
 
            .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`KPI<bpmn_kpi>`
+        - Настройка норм времени на выполнение задач, смену статусов, выполнение условий (событие, обновление атрибутов).
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Подписание с использованием ЭЦП<esign>`
+        - 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Клиент 360<client_360>`
+        - Отображение в карточке контрагента консолидированных данных из модулей платформы, таких как история взаимодействия по сделкам и договорам, технической поддержке. 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Предпросмотр данных карточки<preview>`
+        - 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - Работа с контентом
+        - | Преобразование контента, генерация документов по шаблонам, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
+        - | - :ref:`Генерация документа по шаблону<doc_templates>`
+          | - :ref:`Редактирование документа в Onlyoffice<edit_only_office>` 
+        - | - :ref:`Генерация документа по шаблону<doc_templates>`
+          | - :ref:`Редактирование документа в Onlyoffice<edit_only_office>` 
+          | - :ref:`Сравнение версий<widget_versions_journal>`               
+          | - :ref:`Генерация штрих-кода<widget_barcode>` 
+          | - :ref:`Скачивание pdf документа с штрих кодом<barcode_pdf>` 
+
+      * - :ref:`WYSIWYG-редактор<wysiwyg_editor>`
+        - Инструмент для создания и редактирования контента (текста, изображений, таблиц)
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Сравнение версий<version_comparison>`
+        - Инструмент для создания и редактирования контента (текста, изображений, таблиц)
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Виджет «Графическая статистика»<widget_graphic_statistics>`
+        - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейный, столбчатый, круговой, воронка.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Виджет «Активности»<widget_activities>`
+        - Виджет помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре. 
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Lazy approval<user_task_lazy_approval>`
+        - Функциональность, позволяющая принимать решения из электронной почты, не заходя в Citeck.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Интеграция с ЭДО провайдерами<edi_integration>`
+        - Настройка интеграционных соединений для передачи и обработки электронных документов в автоматическом режиме. 
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Делегирование<delegation>`
+        - Настройка передача своих задач или функций другим сотрудникам.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Рабочий календарь<business-schedule>`
+        - Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
+        - 
+
+           .. image:: _static/modules/red.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+      * - :ref:`Импорт данных<default_data_import>`
+        - Виджет визуализирует прохождение :ref:`стадий<stages>` документа.
+        - 
+
+           .. image:: _static/modules/green.png
               :width: 30
               :align: center 
 
@@ -301,47 +565,6 @@
         - 
 
            .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`Виджет «Графическая статистика»<widget_graphic_statistics>`
-        - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейный, столбчатый, круговой, воронка.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-      * - :ref:`Виджет «Активности»<widget_activities>`
-        - Виджет помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре. 
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`Делегирование<delegation>`
-        - Настройка передача своих задач или функций другим сотрудникам.
-        - 
-
-           .. image:: _static/modules/red.png
               :width: 30
               :align: center 
 
@@ -393,50 +616,8 @@
               :width: 30
               :align: center 
 
-      * - :ref:`Lazy approval<user_task_lazy_approval>`
-        - Функциональность, позволяющая принимать решения из электронной почты, не заходя в Citeck.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
       * - :ref:`Групповые действия<group_actions>`
         - Позволяют обработать большое количество элементов на сервере.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`Рабочий календарь<business-schedule>`
-        - Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
-        - 
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center 
-
-        - 
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center 
-
-      * - :ref:`KPI<bpmn_kpi>`
-        - Настройка норм времени на выполнение задач, смену статусов, выполнение условий (событие, обновление атрибутов).
         - 
 
            .. image:: _static/modules/red.png
