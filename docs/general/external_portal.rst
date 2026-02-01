@@ -62,7 +62,7 @@
 
 Настройки доступны в журнале **«Интеграции» (Рабочее пространство "Раздел администратора" - Интеграции)**.
 
-Журнал доступен по адресу: https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
+Журнал доступен по адресу: https://portal_host/v2/journals?journalId=ext-portals&viewMode=table&ws=admin$workspace 
 
 .. image:: _static/external_portal/01.png
     :width: 700
