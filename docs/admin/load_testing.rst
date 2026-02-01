@@ -90,9 +90,9 @@ Model
 .. code-block:: yaml
 
     resources:
-    limits:
+      limits:
         memory: 13Gi
-    requests:
+      requests:
         cpu: "14"
         memory: 13Gi
 
@@ -116,15 +116,15 @@ Process
 .. code-block:: yaml
 
     resources:
-    limits:
+      limits:
         memory: 6Gi
-    requests:
+      requests:
         cpu: "6"
         memory: 6Gi
 
 Кофигурация сервиса:
 
-.. code-block:: 
+.. code-block::
 
     -Xmx4G -Xms4G
     
@@ -149,9 +149,9 @@ UiServ
 .. code-block:: yaml
 
     resources:
-    limits:
+      limits:
         memory: 6Gi
-    requests:
+      requests:
         cpu: "7"
         memory: 6Gi
 
@@ -173,9 +173,9 @@ PostgresSQL
 .. code-block:: yaml
 
     resources:
-    limits:
+      limits:
         memory: 30Gi
-    requests:
+      requests:
         cpu: "15"
         memory: 30Gi
 

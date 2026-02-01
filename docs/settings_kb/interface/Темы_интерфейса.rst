@@ -3,8 +3,8 @@
 
 .. _interface_themes:
 
-Темы
-----
+.. contents::
+    :depth: 3
 
 Основной источник данных: **uiserv/theme**
 
@@ -12,7 +12,7 @@
 
 Просмотр существующих тем, их редактирование, применение, загрузка новых осуществляется в журнале **Темы (Рабочее пространство "Раздел администратора" - Конфигурация UI)**.
 
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-theme&type=JOURNAL``
+Журнал доступен по адресу: ``/v2/journals?journalId=ecos-theme&viewMode=table&ws=admin$workspace``
 
  .. image:: _static/themes/theme_1.png
        :width: 700
@@ -96,7 +96,7 @@
 
  await Records.get('uiserv/config@active-theme').load('value');
 
-Информация об активной теме доступна в журнале **Конфигурация ECOS** (``v2/admin?journalId=ecos-configs&type=JOURNAL``) в **active-theme**:
+Информация об активной теме доступна в журнале **Конфигурация ECOS** (`v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace`) в **active-theme**:
 
  .. image:: _static/themes/theme_2.png
        :width: 700
@@ -134,3 +134,103 @@ API
 Чтобы избежать проблем с кэшем (темы могут меняться "на лету") нужно добавлять в запросы ключ кэширования, который загружается по следующему API::
 
  await Records.get('uiserv/meta@').load('attributes.theme-cache-key');
+
+Стили
+-------
+
+В активную тему можно добавить кастомный css. Для этого:
+
+1. Скачайте артефакт готовой темы: 
+
+ .. image:: _static/themes/css/custom_01.png
+       :width: 700
+       :align: center
+
+2. Распакуйте архив:
+
+ .. image:: _static/themes/css/custom_02.png
+       :width: 400
+       :align: center
+
+3. Откройте **main.css**
+
+.. code-block::
+
+  .body {
+  }
+
+4. Внесите в него изменения.
+
+5. Упакуйте в архив (с такой же структурой как был выгружен) и загрузите на стенд:
+
+ .. image:: _static/themes/css/custom_03.png
+       :width: 700
+       :align: center
+
+6. Обновите страницу. 
+
+Настройка ширины выпадающего списка у кнопки Создать
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Например, для настройки ширины выпадающего списка у кнопки Создать:
+
+.. code-block:: css
+
+  .body {
+  }
+
+  .ecos-dropdown__menu_new, .ecos-dropdown__menu_new ul {
+      max-width: unset !important;
+  }
+
+Результат: перейдите к кнопке Создать, ширина выпадающего списка будет подстраиваться под длину текста:
+
+ .. image:: _static/themes/css/custom_04.png
+       :width: 600
+       :align: center
+
+Изменение цветовой гаммы темы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: CSS
+
+  :root {
+    --main-bg-color: #fafafa; /*основной фон страницы*/
+    --header-bg-color: #002F6C; /*основной фон хедера страницы*/
+    --header-component-color: #1e4272dd; /*цвет элементов хедера*/
+
+    --primary-color: #002F6C; /*основной цвет темы*/
+    --dark-primary-color: #002350; /*производная от основного цвета*/
+    --light-primary-color: #D8E5F8; /*производная от основного цвета*/
+  }
+
+  body {
+  }
+
+  .ecos-sidebar {
+    background: #f8fafc; /*фон боковой панели*/
+  }
+
+  .ecos-journal_new .ecos-grid__row_new:not(.ecos-grid__tr_selected):nth-child(odd) {
+    background-color: #d8e5f86b !important;  /*чередование строк в таблице*/
+  }
+
+Результат:
+
+.. list-table::
+      :widths: 5 30
+      :align: center
+
+      * - Базовая тема:
+        -
+
+            .. image:: _static/themes/css/custom_05.png
+                  :width: 700
+                  :align: center
+
+      * - Обновленная тема:
+        -
+            .. image:: _static/themes/css/custom_06.png
+                  :width: 700
+                  :align: center
+

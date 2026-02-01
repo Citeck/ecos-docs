@@ -22,32 +22,32 @@
 
     # Настройка tls для rabbitmq
     RabbitmqApp:
-    tls:
+      tls:
         enabled: true # по умолчанию открывается порт 5671. Чтобы tls заработал нужно чтобы на стенде был ecos-tls-secret
-    
+
     # Дефолтные настройки из чарта
     tls:
-        enabled: false
-        trustedCa:
+      enabled: false
+      trustedCa:
         secretName: ecos-tls-secret
         keyName: trusted-ca
-        keySecret:
+      keySecret:
         secretName: ecos-tls-secret
         keyName: rabbitmq-app-tls
-        port: 5671
-        verifyPeer: verify_peer
-        failIfNoPeerCert: true
+      port: 5671
+      verifyPeer: verify_peer
+      failIfNoPeerCert: true
 
 Настройка подключения к внешнему RMQ:
 
 .. code-block::
 
     EcosIntegrationsApp:
-    cloudConfig:
+      cloudConfig:
         ecos:
-        webapp:
+          webapp:
             dataSources:
-            sd-main-instance-rmq: #это id датасорса. На него ссылается ext-portal конфиг внутри системы
+              sd-main-instance-rmq: #это id датасорса. На него ссылается ext-portal конфиг внутри системы
                 name: Основной инстанс SD # это имя видно на форме ext-portal конфига
                 type: rabbitmq
                 host: host
@@ -55,14 +55,14 @@
                 username: ******
                 password: ******
                 tls:
-                enabled: true # в идеале подключаться к внешнему RMQ через tls, но не обязательно
-                clientKey: application
-                trustedCerts: citeck-test-ca # этот CA зашит внутрь микросервиса. настройка пока не сделана
-                verifyHostname: false
+                  enabled: true # в идеале подключаться к внешнему RMQ через tls, но не обязательно
+                  clientKey: application
+                  trustedCerts: citeck-test-ca # этот CA зашит внутрь микросервиса. настройка пока не сделана
+                  verifyHostname: false
 
 Настройки доступны в журнале **«Интеграции» (Рабочее пространство "Раздел администратора" - Интеграции)**.
 
-Журнал доступен по адресу: https://portal_host/v2/admin?journalId=ext-portals&type=JOURNAL  
+Журнал доступен по адресу: https://portal_host/v2/journals?journalId=ext-portals&viewMode=table&ws=admin$workspace 
 
 .. image:: _static/external_portal/01.png
     :width: 700
@@ -100,33 +100,33 @@
     ---
     id: sd-portal-main-sync
     name:
-    ru: SD портал
-    en: SD portal
+      ru: SD портал
+      en: SD portal
     exportConfig:
-    endpoint:
+      endpoint:
         type: rabbitmq
         config:
-        queue: export-from-main-sd-portal 
-        dataSource: main-rabbitmq
-    typesToSync:
+          queue: export-from-main-sd-portal
+          dataSource: main-rabbitmq
+      typesToSync:
         - typeRef: emodel/type@sd-request-type
-        initDate: null
-        syncDeletions: false
-        queryPredicate: '{}'
-        filterPredicate: '{}' 
-        attributesToSync:
+          initDate: null
+          syncDeletions: false
+          queryPredicate: '{}'
+          filterPredicate: '{}'
+          attributesToSync:
             - _status
             - author
             - deadline
             - title
             - description
-        iterationStrategy: CREATED_MODIFIED
+          iterationStrategy: CREATED_MODIFIED
     importConfig:
-    endpoint:
+      endpoint:
         type: rabbitmq
         config:
-        queue: export-from-external-sd-portal 
-        dataSource: sd-ext-instance-rmq
+          queue: export-from-external-sd-portal
+          dataSource: sd-ext-instance-rmq
 
 Конфигурация экспорта 
 -----------------------
@@ -144,32 +144,32 @@
 
     id: sd-portal-ext-sync
     exportConfig:
-    endpoint:
+      endpoint:
         type: rabbitmq
         config:
-        queue: export-from-external-sd-portal 
-        dataSource: main-rabbitmq
-    typesToSync:
-        - typeRef: emodel/type@sd-request-type 
-        initDate: null
-        syncDeletions: false
-        queryPredicate: |-
+          queue: export-from-external-sd-portal
+          dataSource: main-rabbitmq
+      typesToSync:
+        - typeRef: emodel/type@sd-request-type
+          initDate: null
+          syncDeletions: false
+          queryPredicate: |-
             {
             "t": "empty",
             "a": "ext-portal-sync: importSyncId"
             }
-        filterPredicate:
-        attributesToSync:
+          filterPredicate:
+          attributesToSync:
             - author
             - title
             - description
             - deadline
     importConfig:
-    endpoint:
+      endpoint:
         type: rabbitmq
         config:
-        queue: export-from-main-sd-portal 
-        dataSource: export-from-main-sd-portal 
+          queue: export-from-main-sd-portal
+          dataSource: export-from-main-sd-portal
 
 Типы и атрибуты для экспорта
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -341,7 +341,7 @@ Table form ожидает, что value в нем будет массивом re
 
 Для отображения строк используем дочерний тип :download:`excel-files-import-line.yml <../files/excel-files-import.yml>`
 
-:download:`ecos-app архив со всеми артефактами <../files/import-from-excel-example.zip>`, который можно загрузить целиком по адресу ``v2/admin?journalId=ecos-apps&type=JOURNAL``
+:download:`ecos-app архив со всеми артефактами <../files/import-from-excel-example.zip>`, который можно загрузить целиком по адресу ``v2/journals?journalId=ecos-apps&viewMode=table&ws=admin$workspace``
 
 Далее необходимо добавить основной тип в меню, открыть журнал, нажать "Создать", добавить файлы для импорта и нажать "Создать". На бэкенде ловится событие создания, обрабатываются файлы и заполняются строки.
 

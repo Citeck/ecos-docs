@@ -22,7 +22,7 @@
 
 Работа с приложениями осуществляется в журнале **"Приложения ECOS" (Рабочее пространство "Раздел администратора" - Управление системой)** :
 
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-apps&type=JOURNAL``
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-apps&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/apps/apps_page.png
        :width: 700       
@@ -169,7 +169,7 @@
        :width: 400       
        :align: center
 
-через журнал приложений, который доступен по ссылке ``/v2/admin?journalId=ecos-apps&type=JOURNAL``
+через журнал приложений, который доступен по ссылке ``v2/journals?journalId=ecos-apps&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/apps/apps_page_2.png
        :width: 700       
@@ -240,7 +240,7 @@
 Настройка
 ~~~~~~~~~~~~~~~~~~
 
-1. Открыть журнал **«Секреты»** ``/v2/admin?journalId=ecos-secrets&type=JOURNAL``: 
+1. Открыть журнал **«Секреты»** ``v2/journals?journalId=ecos-secrets&viewMode=table&ws=admin$workspace``: 
 
 .. image:: _static/apps/git_01.png
        :width: 700       
@@ -258,7 +258,7 @@
   
   При этом на форме создания секрета выбрать тип= Basic, ввести свой логин и вместо своего пароля ввести сгенерированный токен.
 
-2. Открыть журнал **«Конечные точки»** ``/v2/admin?journalId=endpoints&type=JOURNAL``
+2. Открыть журнал **«Конечные точки»** ``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/apps/git_03.png
        :width: 700       
@@ -280,7 +280,7 @@
        :width: 400       
        :align: center
 
-3. Открыть журнал **«Приложения ECOS»** ``/v2/admin?journalId=ecos-apps&type=JOURNAL`` 
+3. Открыть журнал **«Приложения ECOS»** ``v2/journals?journalId=ecos-apps&viewMode=table&ws=admin$workspace`` 
 
 .. image:: _static/apps/git_06.png
        :width: 700       
@@ -380,7 +380,7 @@
 Настройки конфигурации
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** ``v2/admin?journalId=ecos-configs&type=JOURNAL``:
+Для настройки конфиграции необходимо открыть журнал **«Конфигурация ECOS»** ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``:
 
   .. image:: _static/apps/git_15.png
         :width: 700       

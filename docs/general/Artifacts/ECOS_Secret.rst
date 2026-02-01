@@ -1,6 +1,8 @@
 Секреты
 =========
 
+.. _ecos_secret:
+
 .. contents::
    :depth: 3
 
@@ -110,7 +112,7 @@
     :width: 700
     :align: center
 
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-secrets&type=JOURNAL``
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-secrets&viewMode=table&ws=admin$workspace``
 
 Форма создания:
 

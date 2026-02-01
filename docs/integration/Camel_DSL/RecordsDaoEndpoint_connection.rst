@@ -12,9 +12,9 @@
             sourceId: testDao
             pkProp: id
             columnMap:
-            name: content
-            state: currentState
-            type: type
+              name: content
+              state: currentState
+              type: type
             valueConvertMap: |
               {"type": {"*": "YAML"}, "state": {"1":"STARTED", "*": "STOPPED"}}
     - route:
@@ -87,9 +87,9 @@
          sourceId: testDao
          pkProp: id
          columnMap:
-         name: content
-         state: currentState
-         type: type
+           name: content
+           state: currentState
+           type: type
          valueConvertMap: |
            {"type": {"*": "YAML"}}
      - name: "…"

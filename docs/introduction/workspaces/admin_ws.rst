@@ -19,7 +19,7 @@
 
 Для пользователей по умолчанию открывается :ref:`персональное рабочее пространство<ws_personal>`. Но если есть потребность указать какое-то конкретное рабочее пространство (например, чтобы пользователи по умолчанию попадали на корпоративный портал), то это можно сделать через настройку **default-workspace**.
 
-Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
+Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
 
 Конфигурация **default-workspace**:
 
