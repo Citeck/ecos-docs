@@ -10,7 +10,7 @@
 .. contents::
 	    :depth: 3
 
-Настройка расположена в журнале **"Шаблоны документов" (Раздел администратора - Трансформации)** ``v2/admin?journalId=document-templates&type=JOURNAL`` 
+Настройка расположена в журнале **"Шаблоны документов" (Раздел администратора - Трансформации)** ``v2/journals?journalId=document-templates&viewMode=table&ws=admin$workspace`` 
 
  .. image:: _static/doc_templates/template_01.png
        :width: 700

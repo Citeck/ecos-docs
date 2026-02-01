@@ -237,7 +237,7 @@
 
 Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. 
 
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
 
 В поисковой строке введите **org** - откроется список возможных настроек:
 

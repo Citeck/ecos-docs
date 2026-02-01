@@ -24,7 +24,7 @@
 
 То есть у пользователя могут быть права на настройку дашборда, но запрещена настройа виджетов. 
 
-Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS** (``v2/admin?journalId=ecos-configs&type=JOURNAL``):
+Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS** (``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``):
 
  .. image:: _static/widgets/dashboards_widgets_settings.png
        :width: 700

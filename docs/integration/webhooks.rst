@@ -16,7 +16,7 @@
        :width: 700
        :align: center
 
-Журнал доступен по адресу: ``v2/admin?journalId=in-webhook-journal&type=JOURNAL`` 
+Журнал доступен по адресу: ``v2/journals?journalId=in-webhook-journal&viewMode=table&ws=admin$workspace`` 
 
 Расположение артефактов с данным типом: **integration/in-webhook**
 

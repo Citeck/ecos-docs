@@ -378,7 +378,7 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
 
 Шаблон файла импорта для пользователя можно приложить в Camel DSL, тогда пользователь сможет его скачать при выборе варианта в журнале и заполнить.
 
-При сабмите формы импорта, создается отдельный instance Camel контекста, который был указан в варианте. Состояние инстанса можно отследить в журнале :ref:`Camel DSL Instance<camel_instance>` ``v2/admin?journalId=ecos-camel-dsl-instance-journal&type=JOURNAL`` 
+При сабмите формы импорта, создается отдельный instance Camel контекста, который был указан в варианте. Состояние инстанса можно отследить в журнале :ref:`Camel DSL Instance<camel_instance>` ``v2/journals?journalId=ecos-camel-dsl&viewMode=table&ws=admin$workspace`` 
 
 **3)**	Добавить в необходимый тип данных :ref:`аспект import-data-config (Импорт данных)<import-data-config_aspect>` и настроить вариант, указав Camel DSL созданный на предыдущем пункте.
 
