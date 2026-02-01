@@ -9,7 +9,7 @@
 
 1. Открываем журнал **Хранилища контента**
 
-Журнал - ``v2/admin?journalId=ecos-content-storages&type=JOURNAL``
+Журнал - ``v2/journals?journalId=ecos-content-storages&viewMode=table&ws=admin$workspace``
 
 2. Открываем на редактирование **content-storage-s3**
 

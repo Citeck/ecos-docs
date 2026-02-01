@@ -50,7 +50,7 @@
        :width: 700
        :align: center
 
-Журнал доступен по адресу: ``v2/admin?journalId=ecos-configs&type=JOURNAL``
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
 
 Примеры конфигураций:
 
