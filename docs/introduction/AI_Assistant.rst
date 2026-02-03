@@ -99,7 +99,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239021&hash=8f720b604b36dfaa&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239021&hash=8f720b604b36dfaa&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Запросы:**
@@ -134,7 +134,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239025&hash=cfd9cf909e706707&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239026&hash=80fe89f1271502c9&hd=3" width="1280" height="720" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Запросы:**
@@ -184,7 +184,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239017&hash=9131b0c0e337c378&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239017&hash=9131b0c0e337c378&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 Помощник написания писем
@@ -204,7 +204,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239018&hash=0a539e43586fc87b&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239018&hash=0a539e43586fc87b&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Запросы:**
@@ -235,7 +235,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239024&hash=a4b8c3cf93be71ba&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239024&hash=a4b8c3cf93be71ba&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Запросы:**
@@ -272,7 +272,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239019&hash=dfd7713ac1f8c550&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239019&hash=dfd7713ac1f8c550&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Видео: Реализация спам-проверки через BPMN AI Task**
@@ -280,7 +280,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239020&hash=cbd2e6d45050d407&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239020&hash=cbd2e6d45050d407&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 Контекстная работа
@@ -302,7 +302,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe width="100%" height="394" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239022&hash=e6b630c0043c6cc7&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239022&hash=e6b630c0043c6cc7&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 Редактирование текста
