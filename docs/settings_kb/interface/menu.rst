@@ -372,7 +372,7 @@
 
    .. tab:: Произвольный пункт меню
   
-       .. image:: _static/menu/Menu_url.png
+       .. image:: _static/menu/menu_url.png
               :width: 400
               :align: center
 
