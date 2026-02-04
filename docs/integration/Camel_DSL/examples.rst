@@ -283,7 +283,10 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
        :width: 600
        :align: center 
 
-2.2 В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL** Входящего вебхука Bitrix24 вида https://XXXX.bitrix24.ru/rest/
+2.2 В Citeck перейти в **Рабочее пространство "Раздел администратора" →
+Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL**
+Входящего вебхука Bitrix24 вида ``https://<your-subdomain>.bitrix24.ru/rest/``
+(замените ``<your-subdomain>`` на поддомен вашего портала Bitrix24)
 
 .. image:: _static/examples/bitrix_05.png
        :width: 500
