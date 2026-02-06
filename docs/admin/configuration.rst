@@ -47,7 +47,7 @@
 Доступ в интерфейсе есть у администраторов: **"Конфигурация" (Рабочее пространство "Раздел администратора" - Управление системой)**:
 
  .. image:: _static/configuration/config_journal.png
-       :width: 700
+       :width: 800
        :align: center
 
 Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
