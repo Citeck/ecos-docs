@@ -4,7 +4,7 @@
 .. _groups:
 
  .. image:: _static/groups/groups.png
-       :width: 700
+       :width: 800
        :align: center
 
 В поставке Citeck представлены следующие группы:

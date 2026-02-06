@@ -28,6 +28,7 @@
     :maxdepth: 3
 
     launcher/quick_start
+    launcher/update
     launcher/overview
     launcher/namespace
     launcher/secrets
