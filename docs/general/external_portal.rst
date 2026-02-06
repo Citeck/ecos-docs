@@ -65,14 +65,14 @@
 Журнал доступен по адресу: https://portal_host/v2/journals?journalId=ext-portals&viewMode=table&ws=admin$workspace 
 
 .. image:: _static/external_portal/01.png
-    :width: 700
+    :width: 800
     :align: center
 
 Форма настройки
 ----------------
 
 .. image:: _static/external_portal/02.png
-    :width: 600
+    :width: 700
     :align: center
 
 * **Идентификатор**, **Имя** как у любого артефакта
@@ -83,7 +83,7 @@
 ---------------------
 
 .. image:: _static/external_portal/03.png
-    :width: 600
+    :width: 700
     :align: center
 
 * **Тип источника данных для импорта**. На данный момент доступен только **RabbitMQ**. 
@@ -132,7 +132,7 @@
 -----------------------
 
 .. image:: _static/external_portal/04.png
-    :width: 600
+    :width: 700
     :align: center
 
 * **Очередь для экспорта**. Настроен по умолчанию на RabbitMQ текущего стенда. Выбора не предполагается.
@@ -177,7 +177,7 @@
 Выбираем **типы данных**, выбираем **атрибуты** выбранного типа, которые необходимо синхронизировать:
 
 .. image:: _static/external_portal/05.png
-    :width: 600
+    :width: 700
     :align: center
 
 Настроить условия
@@ -186,7 +186,7 @@
 После выбора типа можно настроить условия: 
 
 .. image:: _static/external_portal/06.png
-    :width: 500
+    :width: 600
     :align: center
 
 2 поля для условий:
@@ -203,7 +203,7 @@
 Пример предиката для in-memory фильтрации:
 
 .. image:: _static/external_portal/07.png
-    :width: 500
+    :width: 600
     :align: center
 
 То есть перед тем, как отправить поисковый запрос со списком атрибутов для загрузки из предиката для in-memory фильтрации вытягиваются все атрибуты, которые необходимы для проверки условий. Соответственно, их дополнительно настраивать не нужно.
@@ -224,7 +224,7 @@
 То есть вложение крепятся по docs:document (дочерняя ассоциация) и выгружаются как отдельный тип.
 
 .. image:: _static/external_portal/08.png
-    :width: 600
+    :width: 700
     :align: center
 
 Пользовательские атрибуты
@@ -233,7 +233,7 @@
 Возможность настроить что-то сложное.
 
 .. image:: _static/external_portal/09.png
-    :width: 500
+    :width: 600
     :align: center
 
 * **Ключ** - под каким алиасом результат будет загружен в RabbitMQ и, соответственно, на другой стенд.
@@ -274,7 +274,7 @@
 Комментарии выгружаются с условием, что **importSyncId** отсутствует:
 
 .. image:: _static/external_portal/11.png
-    :width: 500
+    :width: 600
     :align: center
 
 **importSyncId** проставляется, когда у нас синхронизированные данные приходит извне. То есть когда выгружаются с одного стенда на другой, то на другом внешнем стенде **importSyncId** будет заполнен идентификатором синхронизации *sd-portal-main-sync*.
@@ -311,14 +311,14 @@
 Для атрибута Содержимое особая логика.
 
 .. image:: _static/external_portal/12.png
-    :width: 600
+    :width: 700
     :align: center
 
 Содержимое в исходном поисковом запросе не запрашивается, чтобы не было out of memory ошибок в ecos-model.
 Потом данные фильтруются следующими запросами:
 
 .. image:: _static/external_portal/13.png
-    :width: 500
+    :width: 600
     :align: center
 
 Сначала первым фильтром в поиске, потом вторым фильтром после загрузки.
@@ -330,7 +330,7 @@
 Меню и прочие артефакты определены в журнале **"Приложениях ECOS" (Рабочее пространство "Раздел администратора" - Управление системой)** для sd-ext-portal-ecos-app:
 
 .. image:: _static/external_portal/14.png
-    :width: 700
+    :width: 800
     :align: center
 
 Матрицы прав
@@ -339,13 +339,13 @@
 Важная особенность – добавлены следующие матрицы прав:
 
 .. image:: _static/external_portal/15.png
-    :width: 700
+    :width: 800
     :align: center
 
 Настройка базового типа:
 
 .. image:: _static/external_portal/16.png
-    :width: 500
+    :width: 600
     :align: center
 
 У базового типа настроено, что администраторы могут записывать всё, все прочие только читать. 
@@ -379,12 +379,16 @@
 Заказчики
 ---------
  
-В Заказчике появились группы. Просмотр и редактирование Заказчика доступны только на основном стенде в журнале https://host/v2/journals?journalId=sd-clients-journal 
+В Заказчике появились группы. 
 
 .. image:: _static/external_portal/18.png
-    :width: 700
+    :width: 800
     :align: center
  
+.. note::
+
+    Просмотр и редактирование Заказчика доступны только на основном стенде в журнале https://host/v2/journals?journalId=sd-clients-journal&viewMode=table&ws=service-desk-workspace
+
 Пользователей лучше убрать и использовать группы, т.к. при добавлении пользователя в группу будет производиться динамическое изменение прав. 
 
 .. image:: _static/external_portal/19.png
@@ -402,7 +406,7 @@
 **Состояния синхронизации** определяют то, в каком сейчас состоянии находится синхронизация.
 
 .. image:: _static/external_portal/20.png
-    :width: 700
+    :width: 800
     :align: center
 
 Состояния настроены для следующих типов:
@@ -427,13 +431,13 @@
 В таком случае важен порядок в массиве **typesToSync**:
 
 .. image:: _static/external_portal/21.png
-    :width: 500
+    :width: 600
     :align: center
 
 Конфигурация:
 
 .. image:: _static/external_portal/22.png
-    :width: 500
+    :width: 600
     :align: center
 
 -	**Status** – статусы синхронизации. RUNNING, если ERROR то выдается текст ошибки.
@@ -450,13 +454,13 @@
 В журнале хранится информация о получаемых данных.
 
 .. image:: _static/external_portal/23.png
-    :width: 700
+    :width: 800
     :align: center
 
 В случае ошибки содержит подробную информация о ней.
 
 .. image:: _static/external_portal/24.png
-    :width: 500
+    :width: 600
     :align: center
 
 Создание заявки
