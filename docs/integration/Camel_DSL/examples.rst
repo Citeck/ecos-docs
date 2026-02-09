@@ -57,13 +57,13 @@
       * - 
 
             .. image:: _static/examples/simple_xls_02.png
-                 :width: 500
+                 :width: 600
                  :align: center   
 
         - 
 
              .. image:: _static/examples/simple_xls_03.png
-                  :width: 500
+                  :width: 600
                   :align: center    
 
 :download:`Пример файла с данными <../files/excel-test.xlsx>`
@@ -90,7 +90,7 @@
 
  - :ref:`EcosRecordsMutateEndpoint<EcosRecordsMutateEndpoint>`
 
-Допустим в системе есть два пользовательских типа данных - **Работник** и **Позиция**
+Допустим в системе есть два пользовательских типа данных - **Работник** и **Позиция**.
 
 **Работник**:
 
