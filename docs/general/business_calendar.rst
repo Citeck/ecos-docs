@@ -47,7 +47,7 @@ Cущность нужна для формирования списка дат, 
 Журнал **"Производственный календарь" (Рабочее пространство "Раздел администратора" - Модель)** доступен по адресу: ``v2/journals?journalId=working-calendar&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/calendar/calendar_1.png
-       :width: 700
+       :width: 800
        :align: center
 
 |
@@ -121,7 +121,7 @@ Cущность нужна для формирования списка дат, 
 Журнал **"Рабочее расписание" (Рабочее пространство "Раздел администратора" - Модель)** доступен по адресу: ``v2/journals?journalId=type$working-schedule&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/calendar/calendar_3.png
-       :width: 700
+       :width: 800
        :align: center
 
 |

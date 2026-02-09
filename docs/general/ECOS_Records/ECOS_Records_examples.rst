@@ -46,6 +46,51 @@
 
     await Citeck.Records.get('emodel/sd-request-type@you-doc').load('_roles.assigneesOf.impl-first-line-role[]?str', true)
 
+Диагностика вычисления ролей
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Проверить, кто вычислен в роль, можно через атрибут ``_roles.assigneesOf``:
+
+.. code-block:: javascript
+
+    // Проверить, кто вычислен в роль
+    await Records.get('emodel/your-type@doc-id').load('_roles.assigneesOf.myRole[]?raw')
+
+Если роль вычисляется на основе ассоциации, можно сравнить содержимое ассоциации с результатом вычисления роли для диагностики:
+
+.. code-block:: javascript
+
+    // Загрузить содержимое ассоциации и результат вычисления роли одновременно
+    await Records.get('emodel/your-type@doc-id').load([
+      'myAssocAttr[]?raw',
+      '_roles.assigneesOf.myRole[]?raw'
+    ])
+
+Загрузка идентификаторов из ассоциаций: .id и ?id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+При работе с ассоциациями в системе важно понимать разницу между способами получения идентификатора:
+
+**Атрибут** ``.id`` — возвращает часть ссылки **после** ``@`` (localId):
+
+.. code-block:: javascript
+
+    // emodel/person@ivan.petrov → "ivan.petrov"
+    // emodel/authority-group@accountant → "accountant"
+    document.load('myAssoc.id')
+
+**Скаляр** ``?id`` — возвращает **полную ссылку** на сущность:
+
+.. code-block:: javascript
+
+    // → "emodel/person@ivan.petrov"
+    // → "emodel/authority-group@accountant"
+    document.load('myAssoc?id')
+
+.. important::
+
+  Для передачи ссылок в другие ассоциации используйте полные ссылки через ``?id``.
+
 Поиск записей и их изменение в цикле
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
