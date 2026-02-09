@@ -58,7 +58,7 @@ DTO запроса и ответа:
 Список текущих поддерживаемых запросов:
 
 .. list-table::
-      :widths: 5 50 30
+      :widths: 10 30 30
       :header-rows: 1
       :class: tight-table 
       
