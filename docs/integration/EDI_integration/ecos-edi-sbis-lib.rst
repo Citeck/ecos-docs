@@ -5,15 +5,13 @@
 
 Ссылка на документацию:
 
-`Порядок работы с API-интерфейсом  <https://sbis.ru/help/integration/api/sequence>`_
-
-`список используемых в Тензор.СБИС форматов документов <https://sbis.ru/formats/edo/>`_
+- `Порядок работы с API-интерфейсом  <https://sbis.ru/help/integration/api/sequence>`_
+- `список используемых в Тензор.СБИС форматов документов <https://sbis.ru/formats/edo/>`_
 
 Ссылка на личный кабинет:
 
-`Тест  <https://fix-online.sbis.ru/>`_
-
-`Прод  <https://online.sbis.ru/>`_
+- `Тест  <https://fix-online.sbis.ru/>`_
+- `Прод  <https://online.sbis.ru/>`_
 
 Настройка ящика проще чем для других провайдеров, необходимо заполнить только **datasource**, **creds** и **boxId**:
 
