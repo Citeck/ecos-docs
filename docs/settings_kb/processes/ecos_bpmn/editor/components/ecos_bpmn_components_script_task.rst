@@ -106,7 +106,7 @@ Document
 Records
 ~~~~~~~
 
-``Records`` - это сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
+``Records`` - сервис, который предоставляет доступ к функциям работы с рекордами `RecordsScriptService <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/RecordsScriptService.kt>`_.
 
 .. code-block:: javascript
 
@@ -436,7 +436,7 @@ Logger
 
 - **requestCategory** - ассоциация
 
-- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@someuser** локальная часть - это **"someuser"**
+- **?localId** - :ref:`скаляр<Records_API_scalar>` из :ref:`Records API<Records_API>`, который возвращает локальную часть глобальной ссылки на сущность. Например для **emodel/person@someuser** локальная часть - **"someuser"**
 
 Загрузка идентификаторов из ассоциаций
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

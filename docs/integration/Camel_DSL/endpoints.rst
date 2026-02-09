@@ -18,7 +18,7 @@ FileFromCamelDslEndpoint
 Данный компонент позволяет работать с файлом, добавленным на форму конфигурации Camel DSL:
 
 .. image:: _static/endpoints/Proc_01.png
-       :width: 700
+       :width: 800
        :align: center   
 
 Ключ для использования компонента в camel-контексте: *file-from-camel-dsl*
@@ -350,7 +350,7 @@ URI
 
 Конечная точка принимает либо одно **map-like значение**, либо список.
 
-**map-like значение** - это **Map<String, Any?>**, **DataValue**, **ObjectData** и другие, которые могут быть сконвертированы в **Map<String, Any?>**.
+**map-like значение** - **Map<String, Any?>**, **DataValue**, **ObjectData** и другие, которые могут быть сконвертированы в **Map<String, Any?>**.
 
 **map-like значение** по структуре содержит список атрибутов, которые будут использованы для мутации.
 
