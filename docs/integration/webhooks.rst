@@ -13,7 +13,7 @@
 Настройки доступны в журнале **«Входящие вебхуки» (Рабочее пространство "Раздел администратора" - Интеграция)**
 
  .. image:: _static/webhooks/webhook_01.png
-       :width: 700
+       :width: 800
        :align: center
 
 Журнал доступен по адресу: ``v2/journals?journalId=in-webhook-journal&viewMode=table&ws=admin$workspace`` 

@@ -8,7 +8,7 @@
 Перейти в журнал **"Credentials" (Рабочее пространство "Раздел администратора" - Интеграция)**
 
 .. image:: _static/BD_selection/Camel_3.png
-       :width: 700
+       :width: 800
        :align: center
 
 .. image:: _static/BD_selection/Camel_3_1.png
@@ -21,7 +21,7 @@
 
 
 .. image:: _static/BD_selection/Camel_4.png
-       :width: 700
+       :width: 800
        :align: center
 
 .. image:: _static/BD_selection/Camel_5.png

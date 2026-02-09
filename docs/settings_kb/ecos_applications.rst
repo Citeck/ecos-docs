@@ -189,7 +189,7 @@
   mvn clean package jib:dockerBuild -Djib.docker.image.tag=1.0.0-snapshot 
 
 
-где **1.0.0-snapshot** - это тег для итогового образа.
+где **1.0.0-snapshot** - тег для итогового образа.
 
 После сборки образа мы подключаем его там, где развернут микросервис **ecos-apps**:
 
