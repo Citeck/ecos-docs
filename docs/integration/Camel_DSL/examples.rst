@@ -57,13 +57,13 @@
       * - 
 
             .. image:: _static/examples/simple_xls_02.png
-                 :width: 500
+                 :width: 600
                  :align: center   
 
         - 
 
              .. image:: _static/examples/simple_xls_03.png
-                  :width: 500
+                  :width: 600
                   :align: center    
 
 :download:`Пример файла с данными <../files/excel-test.xlsx>`
@@ -90,7 +90,7 @@
 
  - :ref:`EcosRecordsMutateEndpoint<EcosRecordsMutateEndpoint>`
 
-Допустим в системе есть два пользовательских типа данных - **Работник** и **Позиция**
+Допустим в системе есть два пользовательских типа данных - **Работник** и **Позиция**.
 
 **Работник**:
 
@@ -283,7 +283,10 @@ http://host/gateway/integrations/pub/webhook/bitrix24-webhook?token=testAuthToke
        :width: 600
        :align: center 
 
-2.2 В Citeck перейти в **Рабочее пространство "Раздел администратора" → Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL** Входящего вебхука Bitrix24 вида https://XXXX.bitrix24.ru/rest/
+2.2 В Citeck перейти в **Рабочее пространство "Раздел администратора" →
+Модель → Конечные точки** в **bitrix24-rest-endpoint** указать **URL**
+Входящего вебхука Bitrix24 вида ``https://<your-subdomain>.bitrix24.ru/rest/``
+(замените ``<your-subdomain>`` на поддомен вашего портала Bitrix24)
 
 .. image:: _static/examples/bitrix_05.png
        :width: 500
