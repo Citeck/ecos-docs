@@ -213,7 +213,7 @@
 -	**Сведения о доверенности:**
 
 .. image:: _static/poa/poa_06.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -283,7 +283,7 @@
 Скрыто с формы, если **«Вид доверенности»** выбран **«Нестандартная»**.
 
 .. image:: _static/poa/poa_07.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -308,7 +308,7 @@
 Отображается, если **«Категория доверителя»** выбрана **«Юридическое лицо»**. Изначально раздел скрыт.
 
 .. image:: _static/poa/poa_08.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -344,7 +344,7 @@
 Отображается, если **«Категория доверителя»** выбрана **«Юридическое лицо»**. Изначально раздел скрыт.
 
 .. image:: _static/poa/poa_09.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -385,7 +385,7 @@
 Отображается, если **«Категория доверителя»** выбрана **«Индивидуальный предприниматель»**. Изначально раздел скрыт.
 
 .. image:: _static/poa/poa_10.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -439,7 +439,7 @@
 Отображается, если **«Категория доверителя»** выбрана **«Индивидуальный предприниматель»**. Изначально раздел скрыт.
 
 .. image:: _static/poa/poa_11.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -476,7 +476,7 @@
 Скрыто с формы, если **«Вид доверенности»** выбран **«Нестандартная»**.
 
 .. image:: _static/poa/poa_12.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -545,7 +545,7 @@
 -	**Документ, удостоверяющий личность представителя:**
 
 .. image:: _static/poa/poa_13.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -582,7 +582,7 @@
 Скрыто с формы, если «Вид доверенности» выбран «Нестандартная».
 
 .. image:: _static/poa/poa_14.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
@@ -607,7 +607,7 @@
 -	**Приложения:**
 
 .. image:: _static/poa/poa_15.png
-       :width: 700
+       :width: 800
        :align: center 
 
 .. list-table::
