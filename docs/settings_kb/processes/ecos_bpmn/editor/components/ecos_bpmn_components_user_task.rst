@@ -22,7 +22,7 @@
       * - Укажите **Имя**.
         - 
                .. image:: _static/user_task/55_0.png
-                :width: 350
+                :width: 300
                 :align: center
 
       * - | Укажите **реципиентов** - пользователей - исполнителей задачи.
@@ -43,25 +43,25 @@
         - |
 
                .. image:: _static/user_task/55_1.png
-                :width: 350
+                :width: 320
                 :align: center
 
           |
 
                .. image:: _static/user_task/55_2.png
-                :width: 350
+                :width: 320
                 :align: center
 
           |
 
                .. image:: _static/user_task/55_3.png
-                :width: 350
+                :width: 320
                 :align: center
 
           |
 
                .. image:: _static/user_task/55_4.png
-                :width: 350
+                :width: 320
                 :align: center
 
       * - | Выберите **приоритет** задачи из списка 
@@ -74,13 +74,13 @@
         - |
 
                .. image:: _static/user_task/priority_01.png
-                :width: 350
+                :width: 320
                 :align: center
 
           | 
 
                .. image:: _static/user_task/priority_02.png
-                :width: 350
+                :width: 320
                 :align: center
 
       * - | Возможность устанавливать **срок** задачи вручную или через выражение.
@@ -140,7 +140,7 @@
         - |    
     
                .. image:: _static/user_task/parameter_01.png
-                :width: 350
+                :width: 380
                 :align: center
 
 .. note::
@@ -189,7 +189,7 @@
                   :width: 400
                   :align: center
 
-О предварительных настройках функционала см. :ref:`подробно<lazy_approval_settings>`
+О предварительных настройках функционала см. :ref:`подробно<lazy_approval_settings>` 
 
 Для включения функционала **lazy approval** для определенной задачи необходимо выставить чекбокс **«Согласование по почте»**. 
 
@@ -249,13 +249,13 @@
 Для добавления кнопок вердиктов задачи на вашу форму, можно воспользоваться компонентом формы **Task Outcome**, который автоматически формирует кнопки вердиктов исходя из настроек **Результатов задачи**.
 
  .. image:: _static/user_task/task_outcome.png
-       :width: 600
+       :width: 620
        :align: center
 
 Вердикты задачи можно добавить вручную для более гибкой настройки конфигурации. Для этого на форму задачи необходимо добавить кнопку, где **«Имя свойства»** задается по шаблону **outcome_идентификаторВердикта**. Например, **outcome_approve**.
 
  .. image:: _static/user_task/58.png
-       :width: 600
+       :width: 620
        :align: center
 
 Если какие-то задачи могут совпадать, то можно использовать одинаковую форму.
