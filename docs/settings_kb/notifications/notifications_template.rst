@@ -200,9 +200,127 @@
 .. note:: 
     
     Если тело шаблона предусматривает несколько локалей, то в имени файла контента указывается локаль по следующему правилу: |br|
-    ``test-incident-base-new-incident-to-possible-responsible.html_en.ft`` для локали ``en`` |br|
-    ``test-incident-base-new-incident-to-possible-responsible.html_ru.ft`` для локали ``ru`` |br|
+    ``test-incident-base-new-incident-to-possible-responsible.html_en.ftl`` для локали ``en`` |br|
+    ``test-incident-base-new-incident-to-possible-responsible.html_ru.ftl`` для локали ``ru`` |br|
     и т.д.
+
+2.5 Структура шаблона в репозитории проекта
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _notification_template_artifact:
+
+При разработке приложения на платформе ECOS шаблоны уведомлений хранятся как артефакты
+в ресурсах проекта и деплоятся через **ecos-apps**.
+
+Каждый шаблон — это отдельная **директория** внутри ``notification/template/``:
+
+.. code-block::
+
+   src/main/resources/<path>/
+   └── notification/
+       └── template/
+           └── my-notification-template/
+               ├── my-notification-template.html.meta.yml   ← метаданные
+               └── my-notification-template.html_ru.ftl     ← тело письма (Freemarker, язык ru)
+
+**Правила именования:**
+
+- Имя директории = идентификатор шаблона (поле ``id``)
+- Метафайл: ``<id>.html.meta.yml``
+- Тело письма: ``<id>.html_<lang>.ftl`` — по одному файлу на язык (``_ru``, ``_en`` и т.д.)
+
+Для поддержки нескольких языков добавьте несколько ``.ftl``-файлов:
+
+.. code-block::
+
+   my-notification-template/
+   ├── my-notification-template.html.meta.yml
+   ├── my-notification-template.html_ru.ftl    ← русский
+   └── my-notification-template.html_en.ftl    ← английский
+
+**Пример метафайла** (``<id>.html.meta.yml``):
+
+.. code-block:: json
+
+    {
+      "id": "my-notification-template",
+      "name": "My Notification Template",
+      "notificationTitle": {
+        "ru": "${contract!\"\"} с ${counterparty!\"\"}: ${status}",
+        "en": "${contract!\"\"} with ${counterparty!\"\"}: ${status}"
+      },
+      "tags": [],
+      "model": {
+        "contract":     "?disp",
+        "date":         "date|fmt('dd-MM-yyyy')",
+        "counterparty": "counterparty.fullOrganizationName",
+        "initiator":    "_creator",
+        "docRef":       "?id",
+        "status":       "_status",
+        "docNum":       "_docNum"
+      },
+      "multiTemplateConfig": []
+    }
+
+.. note::
+
+   Путь до папки ``notification/template/`` зависит от конкретного проекта и настройки ecos-apps.
+   Обычно это ``src/main/resources/app/artifacts/`` или ``src/main/resources/eapps/artifacts/``.
+
+2.6 Поле ``model`` — маппинг атрибутов Records API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Поле ``model`` — это JSON-объект: ключ — имя переменной, доступной в Freemarker-шаблоне,
+значение — выражение атрибута документа в синтаксисе Records API.
+
+Документ для вычисления атрибутов — тот, на котором запущен процесс (задаётся в поле
+**Record уведомления** в Send Task; если не указано — документ процесса).
+
+Примеры выражений:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 30 40
+
+   * - Переменная в шаблоне
+     - Выражение в ``model``
+     - Описание
+   * - ``docNum``
+     - ``_docNum``
+     - Номер документа
+   * - ``docRef``
+     - ``?id``
+     - RecordRef документа (используется для построения ссылки)
+   * - ``status``
+     - ``_status``
+     - Системный статус документа
+   * - ``statusLabel``
+     - ``_status._disp.ru``
+     - Отображаемое название статуса на русском
+   * - ``contract``
+     - ``?disp``
+     - Отображаемое название документа
+   * - ``counterparty``
+     - ``counterparty.fullOrganizationName``
+     - Вложенный атрибут через ``.``
+   * - ``date``
+     - ``date|fmt('dd-MM-yyyy')``
+     - Дата с форматированием через ``|``
+   * - ``type``
+     - ``_type?localId``
+     - Локальный идентификатор типа через ``?``
+   * - ``initiator``
+     - ``_creator``
+     - Создатель документа
+   * - ``processUrl``
+     - ``$process.webUrl``
+     - URL процесса (контекстная переменная)
+   * - ``now``
+     - ``$now``
+     - Текущая дата/время
+   * - ``currentUser``
+     - ``$user``
+     - Текущий пользователь
 
 3. Использование переменных в шаблоне
 -------------------------------------
@@ -434,6 +552,65 @@
     1. Если в ``originalName`` будет находиться имя без расширения, то система сама допишет расширение файлу из originalExt.
     2. Если окажется, что ``cm:content`` будет отсутствовать у ноды (или лист контентов будет пустым), то отправится уведомление без прикрепления вложений.
 
+
+3.5 Шаблоны-библиотеки (библиотеки макросов)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _notification_template_library:
+
+Шаблон без языковых ``html_<lang>.ftl``-файлов, но с файлом ``<id>.html.ftl``, является
+**библиотекой макросов**. Такой шаблон не отправляется самостоятельно — он содержит
+переиспользуемые Freemarker-макросы, которые импортируются в другие шаблоны.
+
+Структура библиотеки в репозитории:
+
+.. code-block::
+
+   notification/template/my-template-lib/
+   ├── my-template-lib.html.ftl          ← определение макросов
+   └── my-template-lib.html.ftl.meta.yml ← метаданные
+
+Метафайл библиотеки (YAML, не JSON):
+
+.. code-block:: yaml
+
+   id: my-template-lib
+   name: My Template Library
+
+Пример содержимого библиотеки (``my-template-lib.html.ftl``):
+
+.. code-block::
+
+   <#macro reply_message>
+     <#assign replyEmail = config.getNotNull("app/your-app$reply-email").asText()>
+     <hr/>
+     <i>Вы можете <a href="mailto:${replyEmail}?Subject=Re: ${_notification.title}"
+         target="_top">Ответить</a> на это сообщение.
+         Ваш ответ будет добавлен как комментарий.</i>
+   </#macro>
+
+   <#macro document_link docRef title>
+     <a href="${link.getRecordLink(docRef)}" target="_blank">${title}</a>
+   </#macro>
+
+Импорт библиотеки в другом шаблоне:
+
+.. code-block::
+
+   <#import "my-template-lib" as lib>
+
+   <p>Уважаемый (-ая) ${initiator}!</p>
+   <p>Создана заявка: <@lib.document_link docRef=docRef title="SD-${docNum}"/></p>
+
+   <@lib.reply_message/>
+
+.. note::
+
+   Ключевое отличие библиотеки от обычного шаблона — файл тела имеет расширение ``.html.ftl``
+   (без кода языка), а языковые ``.html_ru.ftl``-файлы отсутствуют.
+
+   Пример из ecos-service-desk: библиотека ``sd-template-lib`` содержит макрос ``reply_message``,
+   который вставляет ссылку для ответа по email с автоматической привязкой к заявке.
 
 .. |br| raw:: html
 
