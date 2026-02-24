@@ -532,8 +532,22 @@
               :width: 30
               :align: center 
 
+      * - Экспорт содержимого журнала в форматы HTML, Excel, CSV
+        - 
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
+        - 
+
+           .. image:: _static/modules/green.png
+              :width: 30
+              :align: center 
+
       * - :ref:`Импорт данных<default_data_import>`
-        - Виджет визуализирует прохождение :ref:`стадий<stages>` документа.
+        - Импорта в систему файлов (Excel) по шаблону.
         - 
 
            .. image:: _static/modules/green.png

@@ -35,13 +35,13 @@
           | При прямом использовании **Заголовка** и **Тела** возможно указывать только текст, без использования динамических переменных из процесса или документа.
         - 
                .. image:: _static/notifications/50.png
-                :width: 380
+                :width: 350
                 :align: center
 
           |
 
                .. image:: _static/notifications/51.png
-                :width: 320
+                :width: 280
                 :align: center 
 
       * - | **Отправка писем-встреч в календарь пользователя**
@@ -141,7 +141,7 @@
 
         - 
                .. image:: _static/notifications/send_task_settings_panel.png
-                :width: 350
+                :width: 380
                 :align: center
 
 .. important::
