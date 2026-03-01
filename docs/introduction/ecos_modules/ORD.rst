@@ -71,7 +71,7 @@
        :width: 700
        :align: center 
 
-Например, https://host/v2/journals?journalId=aro-internal-journal
+Например: ``/v2/journals?journalId=aro-internal-journal``
 
 Создание внутреннего документа
 --------------------------------

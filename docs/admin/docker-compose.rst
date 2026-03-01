@@ -6,12 +6,12 @@
 .. contents::
     :depth: 5
 
-Системные требования 
+Системные требования
 --------------------
 
- - Установлен `Docker <https://docs.docker.com/get-docker/>`_
- - Установлен `Docker Compose <https://docs.docker.com/compose/install/>`_
- - **16 ГБ** ОЗУ для корректного запуска Citeck
+- Установлен `Docker <https://docs.docker.com/get-docker/>`_
+- Установлен `Docker Compose <https://docs.docker.com/compose/install/>`_
+- **16 ГБ** ОЗУ для корректного запуска Citeck
 
 Установка и запуск Citeck Community
 -------------------------------------
@@ -20,7 +20,7 @@
 
     Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
     
-    Для отключения данной настройки перед разворачиванием стенда перейдите в папку  ``\services\environments`` в файле **demo_data.env** в настройке **WITH_DEMO_DATA** укажите **false**.
+    Для отключения данной настройки перед разворачиванием стенда перейдите в папку ``\services\environments``, в файле **demo_data.env** в настройке **WITH_DEMO_DATA** укажите **false**.
 
     Мы анонимно собираем статистику с использованием сервиса `Umami <https://umami.is/docs>`_. Сервис не собирает и не хранит персональные данные, избегая необходимости использования файлов cookie.
 
@@ -58,11 +58,11 @@
         Username: admin
         Password: admin
 
-Если необходимо сменить пароль, то `см. инструкцию  <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_
+Если необходимо сменить пароль, см. `инструкцию Keycloak <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_.
 
 .. note:: 
 
-    При первом развертывании без демонстрационных данных keycloak попросит сменить пароль.
+    При первом развертывании без демонстрационных данных Keycloak попросит сменить пароль.
 
 *   Далее станет доступна страница :ref:`персонального рабочего пространства<ws_personal>`:
 
@@ -167,8 +167,8 @@
 
         .. code-block::
 
-            yum-config-manager --add-repo https://http://download.docker.com /linux/centos/docker-ce.repo
-            yum install -y docker-ce docker-ce-cli http://containerd.io 
+            yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+            yum install -y docker-ce docker-ce-cli containerd.io
             systemctl enable docker && systemctl start docker
 
         Установить Docker Compose:
@@ -269,18 +269,22 @@
 
             curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
-            Проверить:
+
+        Проверить установку:
+
+        .. code-block::
+
             docker-compose --version
 
-        На этом установка Docker Engine и Docker-Compose завершена. 
+        На этом установка Docker Engine и Docker Compose завершена.
 
-        Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**. Проходим аутентификацию в нужное нам **docker registry - docker login**.
+        Получите конфигурации docker-compose, перейдите в директорию с файлом **docker-compose.yaml**. Пройдите аутентификацию в нужный **docker registry**: ``docker login``.
 
         .. note:: 
 
             Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck Сommunity: 
+        Запуск Citeck Community: 
 
         .. code-block::
 
@@ -295,7 +299,7 @@
             cd citeck-community-master
             docker-compose pull
 
-        Запуск Citeck Сommunity:
+        Запуск Citeck Community:
 
         .. code-block::
 
@@ -363,13 +367,13 @@
 
         На этом установка Docker Engine и Docker-Compose завершена. 
 
-        Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**. Проходим аутентификацию в нужное нам **docker registry - docker login**.
+        Получите конфигурации docker-compose, перейдите в директорию с файлом **docker-compose.yaml**. Пройдите аутентификацию в нужный **docker registry**: ``docker login``.
 
         .. note:: 
 
             Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck Сommunity: 
+        Запуск Citeck Community: 
 
         .. code-block::
 
@@ -384,7 +388,7 @@
             cd citeck-community-master
             docker-compose pull
 
-        Запуск Citeck Сommunity:
+        Запуск Citeck Community:
 
         .. code-block::
 
@@ -451,7 +455,7 @@
             docker-compose pull
 
         
-        Запуск Citeck Сommunity:
+        Запуск Citeck Community:
 
         .. note:: 
 
@@ -476,7 +480,7 @@
 
         .. note:: 
 
-            Инструкция проверялась на РЕД ОС 7.3| Ядро Linux 5.15.72 
+            Инструкция проверялась на РЕД ОС 7.3, ядро Linux 5.15.72.
 
         Обновить пакеты и выключить SELINUX:
 
@@ -500,7 +504,7 @@
             git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
             docker-compose pull
 
-        Запуск Citeck Сommunity:
+        Запуск Citeck Community:
 
         .. code-block::
 
@@ -508,7 +512,7 @@
 
         .. note:: 
 
-            Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, открыть **/etc/docker/deamon.json** и изменить там **"log-driver": "journald"** на **"log-driver": "json-file"**
+            Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, открыть **/etc/docker/daemon.json** и изменить там **"log-driver": "journald"** на **"log-driver": "json-file"**
 
         В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
 
@@ -549,21 +553,15 @@
 
             sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
         
-        .. note:: 
+        На этом установка Docker Engine и Docker Compose завершена. Перейдите в директорию с файлом **docker-compose.yaml**.
 
-            На этом Установка Docker Engine и Docker-Compose завершена.
-       
-            Получаем конфигурации docker-compose, переходим в директорию с файлом **docker-compose.yaml**.
+        .. note::
 
-        .. note:: 
+            В случае если используется Enterprise-сборка, необходимо подключиться к registry: ``docker login <registry host>``.
 
-            В случае если используется Enterprise сборка, необходимо подключиться к registry. 
-            
-            Проходим аутентификацию в нужное нам docker registry - docker login (registry host).
-            
             **Registry URL** и **данные для аутентификации** можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck Сommunity: 
+        Запуск Citeck Community: 
 
         .. code-block::
 
@@ -578,7 +576,7 @@
             cd citeck-community-master
             docker-compose pull
 
-        Запуск Citeck Сommunity:
+        Запуск Citeck Community:
 
         .. note:: 
 
@@ -604,7 +602,7 @@
 
 Если нужен простой способ настройки для доступа в систему минуя Keycloak, то можно настроить BASIC Auth (не рекомендуется для production сред).
 
-  1. В  файле **ecos-proxy-app.env**:
+  1. В файле **ecos-proxy-app.env**:
 
      .. code-block::
 
@@ -612,7 +610,7 @@
 
     заменить строку **ENABLE_OIDC_FULL_ACCESS=true** на **ENABLE_OIDC_FULL_ACCESS=false**
 
-  2. в этом же файле добавить - **BASIC_AUTH_ACCESS=admin:admin,fet:fet**
+  2. В этом же файле добавить: **BASIC_AUTH_ACCESS=admin:admin,fet:fet**
 
 .. note:: 
 
@@ -620,19 +618,17 @@
     | Формат значения следующий - ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}`` 
     | После изменения **ecos-proxy-app.env** необходима перезагрузка контейнера ecos-proxy-app, чтобы изменения вступили в силу.
 
-После внесения изменений запустите проект.
+После внесения изменений (из директории **citeck-community-master**) остановите проект:
 
 .. code-block::
 
     docker-compose down
 
-в директории **citeck-community-master**  для остановки проекта
+Затем запустите проект:
 
 .. code-block::
 
     docker-compose up -d
-
-в директории **citeck-community-master** для запуска проекта
 
 Данные для входа в Citeck:
 
@@ -686,14 +682,15 @@ Docker Desktop использует функцию динамического р
 
         wsl --set-default-version 2
 
-Проверить можно командой. Более подробная версия инструкции см. `https://docs.microsoft.com/ru-ru/windows/wsl/install-win10 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_ 
+Проверить версию WSL:
 
     .. code-block::
 
         wsl --list --verbose
-  
 
-4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Более подробная версия инструкции см. `https://docs.docker.com/docker-for-windows/wsl/  <https://docs.docker.com/docker-for-windows/wsl/>`_ 
+Подробная инструкция: `docs.microsoft.com — установка WSL 2 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_
+
+4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Подробная инструкция: `docs.docker.com — Docker Desktop WSL 2 <https://docs.docker.com/docker-for-windows/wsl/>`_
 
 
 Порт 8080 уже занят
@@ -730,7 +727,7 @@ Citeck UI использует порт 8080 и, если этот порт уж
  
 Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
 
-**«Cannot start service ecos-postgress: driver failed proogramming external connectivity on endpoint»**
+**«Cannot start service ecos-postgres: driver failed programming external connectivity on endpoint»**
 
 Чтобы это исправить, нужно в командной строке, запущенной с повышенными правами:
 
@@ -758,10 +755,10 @@ Citeck UI использует порт 8080 и, если этот порт уж
 
 Порт попадет в исключения, и подобной ошибки не возникнет.
 
-Настройка дополнительных параметров  WSL в Windows
+Настройка дополнительных параметров WSL в Windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
- `Настройка дополнительных параметров  WSL в Windows <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
+`Настройка глобальных параметров WSL <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
 
 MacOS
 ~~~~~~
@@ -872,7 +869,7 @@ How to
 Исключить адрес из авторизации Keycloak
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Временно можно сделать на уровне модификации **ecos-Proxy-app**.
+Временно можно сделать на уровне модификации **ecos-proxy-app**.
 
 Проверить можно,  зайдя в контейнер: 
 
