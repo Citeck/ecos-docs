@@ -146,7 +146,7 @@
        :width: 700
        :align: center 
 
-В **Имя свойства** укажмте **templated-content:autoGenerate**.
+В **Имя свойства** укажите **templated-content:autoGenerate**.
 
 При заполнении полей карточки при выставленном чекбоксе по данным формы будет заполняться шаблон.
 
@@ -174,7 +174,7 @@
        :width: 600
        :align: center
 
-Так же файл будет доступен для предпросмотра:
+Также файл будет доступен для предпросмотра:
 
  .. image:: _static/doc_templates/contract_02.png
        :width: 600
