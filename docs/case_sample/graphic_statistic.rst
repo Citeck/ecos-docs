@@ -11,7 +11,7 @@
 
 Виджет :ref:`Графическая статистика<widget_graphic_statistics>` позволяет пользователям наглядно представлять и анализировать данные, повышая эффективность принятия решений и улучшая понимание текущего состояния бизнес-процессов.
 
- .. image:: _static/g_stat/01.png
+.. image:: _static/g_stat/01.png
        :width: 600
        :align: center
 
@@ -24,37 +24,37 @@
 Добавление дашборда
 ---------------------
 
-.. note:: 
+.. note::
 
- Функционал доступен для пользователя -  менеджера рабочего пространства.
+   Функционал доступен для пользователя — менеджера рабочего пространства.
 
 :ref:`Виджеты<widgets>` можно добавить на отдельный :ref:`дашборд<dashboard>`. Для этого перейдите в настройки :ref:`меню<menu>`: 
 
- .. image:: _static/g_stat/02.png
+.. image:: _static/g_stat/02.png
        :width: 500
        :align: center
 
 Добавьте в раздел **дашборд**:
 
- .. image:: _static/g_stat/05.png
+.. image:: _static/g_stat/05.png
        :width: 600
        :align: center
 
 Укажите **название**, выберите иконку, сохраните:
 
- .. image:: _static/g_stat/06.png
+.. image:: _static/g_stat/06.png
        :width: 400
        :align: center
 
 Сохраните настройки, нажав **«Применить»**:
 
- .. image:: _static/g_stat/07.png
+.. image:: _static/g_stat/07.png
        :width: 600
        :align: center
 
 Перейдите из меню в созданный дашборд и нажмите **«Настроить»**:
 
- .. image:: _static/g_stat/08.png
+.. image:: _static/g_stat/08.png
        :width: 600
        :align: center
 
@@ -65,13 +65,13 @@
 
 Созданные колонки заполните доступными виджетами – перетащите виджет **«Графическая статистика»** в необходимую колонку **(3)**:
 
- .. image:: _static/g_stat/09.png
+.. image:: _static/g_stat/09.png
        :width: 600
        :align: center
 
 Нажмите **«Применить»** - откроется дашборд, в котором можно настроить каждый виджет:
 
- .. image:: _static/g_stat/10.png
+.. image:: _static/g_stat/10.png
        :width: 600
        :align: center
 
@@ -80,19 +80,19 @@
 
 Для настройки виджета нажмите:
 
- .. image:: _static/g_stat/11.png
+.. image:: _static/g_stat/11.png
        :width: 300
        :align: center
 
 Настроим круговой график, чтобы в нем отражалось процентное соотношение статусов заявок. 
 
- .. image:: _static/g_stat/12.png
+.. image:: _static/g_stat/12.png
        :width: 500
        :align: center
 
 Укажите **название** виджета **(1)**, выберите тип **«Круговой»** **(2)**. 
 
- .. image:: _static/g_stat/13.png
+.. image:: _static/g_stat/13.png
        :width: 500
        :align: center
 
@@ -116,7 +116,7 @@
 
 Выберите **атрибут для группировки**:
 
- .. image:: _static/g_stat/16.png
+.. image:: _static/g_stat/16.png
        :width: 500
        :align: center
 
@@ -128,19 +128,19 @@
 
 Выберите **атрибут для агрегации** из списка:
 
- .. image:: _static/g_stat/17.png
+.. image:: _static/g_stat/17.png
        :width: 500
        :align: center
 
 Основные настройки графика завершены. Вы можете изменить **радиус** центрального круга, в процентах от радиуса основного или оставить по умолчанию **50 %**.
 
- .. image:: _static/g_stat/18.png
+.. image:: _static/g_stat/18.png
        :width: 500
        :align: center
 
 Нажмите **«Сохранить»**:
 
- .. image:: _static/g_stat/19.png
+.. image:: _static/g_stat/19.png
        :width: 250
        :align: center
 

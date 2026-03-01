@@ -36,21 +36,21 @@
 
 5. Для быстрого **запуска Citeck Community**:
 
-    - с предзаполненными :ref:`демонстрационными данными<ecos_modules>` - нажмите **Quick Start With Demo Data**:
+    - с предзаполненными :ref:`демонстрационными данными <ecos_modules>` — нажмите **Quick Start With Demo Data**:
 
         .. image:: _static/fast_start.png
             :width: 600
             :align: center
 
-    - без демонстрационных данных - нажмите **Quick Start Without Demo Data**.
+    - без демонстрационных данных — нажмите **Quick Start Without Demo Data**.
 
- Дождитесь загрузки и проверки данных:
+   Дождитесь загрузки и проверки данных:
 
-.. image:: _static/data_load.png
-    :width: 600
-    :align: center
+   .. image:: _static/data_load.png
+       :width: 600
+       :align: center
 
-6. Скачивание и разворачивание образов начнется автоматически:
+6. Скачивание и разворачивание образов начнётся автоматически:
 
 .. image:: _static/pulling.png
     :width: 700
@@ -62,14 +62,14 @@
     :width: 700
     :align: center
 
-8. 
+8. Войдите в систему:
 
 .. list-table::
       :widths: 20 20
       :align: center
 
 
-      * - | Войдите в систему, используя следующие учётные данные **admin/ admin**:
+      * - | Используйте учётные данные **admin / admin**:
           |
 
             .. image:: _static/page_01.png
@@ -113,6 +113,6 @@
     * :ref:`корпоративном портале<corp_portal>`;
     * :ref:`разделе администратора<admin>`.
 
-.. note:: 
+.. note::
 
-    Для экономии ресурсов можно остановить микросервис **onlyoffice**, изменить аутентификацию с keycloak на **basic**.
+    Для экономии ресурсов можно остановить микросервис **onlyoffice** и изменить аутентификацию с Keycloak на **basic**.
