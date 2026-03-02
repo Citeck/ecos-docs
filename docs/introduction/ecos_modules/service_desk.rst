@@ -177,13 +177,13 @@
        :width: 800
        :align: center 
 
- - **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal&ws=service-desk-workspace`` 
- - **Заказчики** - ``v2/journals?journalId=sd-clients-journal&ws=service-desk-workspace``
- - **Типы обращения** - ``v2/journals?journalId=petition-types-journal&ws=service-desk-workspace``
- - **Виды сервиса** - ``v2/journals?journalId=service-types-journal&ws=service-desk-workspace``
- - **Модули системы** - ``v2/journals?journalId=system-module-journal&ws=service-desk-workspace``
- - **SLA** ``v2/journals?journalId=sd-sla-journal&ws=service-desk-workspace``
- - **Рабочее расписание** ``v2/journals?journalId=type$working-schedule&ws=admin$workspace``  
+- **Маппинг заказчиков** ``v2/journals?journalId=clients-mapping-journal&ws=service-desk-workspace`` 
+- **Заказчики** - ``v2/journals?journalId=sd-clients-journal&ws=service-desk-workspace``
+- **Типы обращения** - ``v2/journals?journalId=petition-types-journal&ws=service-desk-workspace``
+- **Виды сервиса** - ``v2/journals?journalId=service-types-journal&ws=service-desk-workspace``
+- **Модули системы** - ``v2/journals?journalId=system-module-journal&ws=service-desk-workspace``
+- **SLA** ``v2/journals?journalId=sd-sla-journal&ws=service-desk-workspace``
+- **Рабочее расписание** ``v2/journals?journalId=type$working-schedule&ws=admin$workspace``  
 
 Канбан
 -------
