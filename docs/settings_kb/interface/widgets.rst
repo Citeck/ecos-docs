@@ -7,6 +7,8 @@
 	:depth: 3
 
 
+.. _widget_settings:
+
 Для некоторых виджетов доступна настройка. Настройка отмечена следующей иконкой:
 
  .. image:: _static/widgets/widget_1.png
@@ -214,7 +216,7 @@
 Список для выбора - формы из журнала форм.
 
 .. list-table:: 
-      :widths: 15 50
+      :widths: 15 60
       :class: tight-table
 
       * - | **Настройка**
@@ -229,7 +231,7 @@
           | 
 
              .. image:: _static/widgets/Properties_2.png
-                  :width: 400
+                  :width: 500
                   :align: center    
 
       * - | **Настроенный вид**    
@@ -1509,32 +1511,6 @@ Cравнение версий процесса - выберите версии 
 .. |br| raw:: html
 
      <br>
-
-.. _widget_esign:
-
-Виджет «Электронная подпись»
-------------------------------
-
-Виджет служит для отображения информации о сертификате, времени подписания, файле подписи:
-
-.. list-table::
-      :widths: 20 20
-      :align: center
-
-      * - **При подписании ЭЦП**
-        - **При бумажном документообороте**
-
-      * - |
-
-            .. image:: _static/widgets/esign_1.png
-                  :width: 250
-                  :align: center
-
-        - |
-
-            .. image:: _static/widgets/esign_2.png
-                  :width: 250
-                  :align: center
 
 .. _widget_news:
 
