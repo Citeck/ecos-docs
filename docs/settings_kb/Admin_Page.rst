@@ -2,9 +2,12 @@
 =======================
 
 Общее описание
----------------
+--------------
 
-Страница администратора служит для управления системой через интерфейс.
+Страница администратора предоставляет централизованный интерфейс управления системой ECOS.
+Она разделена на группы разделов, каждая из которых соответствует отдельному микросервису и содержит ссылки на журналы, бизнес-процессы и инструменты разработчика.
+
+Доступ к странице администратора требует наличия роли ``ROLE_ADMIN``.
 
 Настройка разделов меню администратора
 ---------------------------------------
@@ -12,88 +15,105 @@
 Для настройки разделов меню администратора предусмотрены артефакты с типом **ui/admin-sections-group**, каждый из которых представляет собой группу разделов в меню.
 
 Каждый микросервис может добавлять свою группу разделов (или несколько групп) при запуске.
-Для модификации существующих групп можно воспользоваться патчами для артефактов.
+Для модификации существующих групп используются патчи для артефактов.
 
-Типы разделов:
+Типы разделов
+~~~~~~~~~~~~~
 
 .. csv-table::
+   :header-rows: 1
 
-    Тип,Параметры,Описание
-    JOURNAL,journalId - идентификатор журнала, Раздел с журналом
-    BPM,\-,Раздел с бизнес-процессами в виде плитки или списка
-    DEV_TOOLS,\-,Страница dev-tools
+   Тип,Параметры,Описание
+   JOURNAL,"journalId — идентификатор журнала",Раздел с журналом
+   BPM,—,Раздел с бизнес-процессами в виде плитки или списка
+   DEV_TOOLS,—,Страница инструментов разработчика (dev-tools)
 
-Стандартные группы разделов:
+Стандартные группы разделов
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. csv-table:: 
+.. csv-table::
+   :header-rows: 1
 
-    Микросервис,Идентификатор группы,Порядок
-    ecos-apps,application,0
-    ecos-process,process,10
-    ecos-model,model,20
-    ecos-uiserv,user-interface,30
-    ecos-notifications,notification,40
-    ecos-integrations,integration,50
+   Микросервис,Идентификатор группы,Порядок
+   ecos-apps,application,0
+   ecos-process,process,10
+   ecos-model,model,20
+   ecos-uiserv,user-interface,30
+   ecos-notifications,notification,40
+   ecos-integrations,integration,50
 
-Модель группы разделов::
+Модель группы разделов
+~~~~~~~~~~~~~~~~~~~~~~
 
-    AdminSectionsGroupDef {
-        id: String // идентификатор группы может быть произвольным, но должен оставаться одним и тем же
-        name: MLText // имя группы разделов
-        order: Float // порядок группы в меню. Больше - ниже
-        sections: List<AdminSectionDef> // разделы
-    }
+.. code-block:: typescript
 
-Модель раздела::
+   AdminSectionsGroupDef {
+       id: String       // идентификатор группы (должен быть неизменным)
+       name: MLText     // локализованное имя группы
+       order: Float     // порядок в меню (чем больше, тем ниже)
+       sections: List<AdminSectionDef>  // список разделов
+   }
 
-    AdminSectionDef {
-        name: MLText // имя раздела. Можно не задавать для раздела с типом JOURNAL
-        type: String // тип раздела
-        config: ObjectData // конфигурация раздела
-    }
+Модель раздела
+~~~~~~~~~~~~~~
 
-Пример конфигурации::
+.. code-block:: typescript
 
-    {
-      "id": "user-interface",
-      "name": {
-        "en": "UI configuration",
-        "ru": "Конфигурация UI"
-      },
-      "order": 30,
-      "sections": [
-        {
-          "type": "JOURNAL",
-          "config": {
-            "journalId": "ecos-journals"
-          }
-        },
-        {
-          "type": "JOURNAL",
-          "config": {
-            "journalId": "ecos-forms"
-          }
-        },
-        ...
-      ]
-    }
+   AdminSectionDef {
+       name: MLText     // имя раздела (необязательно для типа JOURNAL)
+       type: String     // тип раздела: JOURNAL | BPM | DEV_TOOLS
+       config: ObjectData  // конфигурация, зависящая от типа раздела
+   }
 
-Пример патча для добавления нового раздела в группу::
+Пример конфигурации группы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    id: add-some-journal-to-admin-page
+.. code-block:: json
 
-    name:
-      ru: Добавить журнал "Some Journal" на страницу администратора
-      en: Add journal "Some Journal" to admin page
+   {
+     "id": "user-interface",
+     "name": {
+       "en": "UI configuration",
+       "ru": "Конфигурация UI"
+     },
+     "order": 30,
+     "sections": [
+       {
+         "type": "JOURNAL",
+         "config": {
+           "journalId": "ecos-journals"
+         }
+       },
+       {
+         "type": "JOURNAL",
+         "config": {
+           "journalId": "ecos-forms"
+         }
+       }
+     ]
+   }
 
-    target: ui/admin-sections-group$application
+Пример патча: добавление нового раздела в группу
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    type: json
-    config:
-      operations:
-        - op: add
-          path: '$.sections'
-          value:
-            type: JOURNAL
-            config:
-              journalId: some-journal-id
+Для добавления раздела в существующую группу без изменения её базовой конфигурации используется патч типа ``json``:
+
+.. code-block:: yaml
+
+   id: add-some-journal-to-admin-page
+
+   name:
+     ru: Добавить журнал "Some Journal" на страницу администратора
+     en: Add journal "Some Journal" to admin page
+
+   target: ui/admin-sections-group$application
+
+   type: json
+   config:
+     operations:
+       - op: add
+         path: '$.sections'
+         value:
+           type: JOURNAL
+           config:
+             journalId: some-journal-id

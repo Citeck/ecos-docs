@@ -16,75 +16,75 @@
 Установка и запуск Citeck Community
 -------------------------------------
 
-.. important:: 
+.. important::
 
-    Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`. 
-    
+    Комплект поставляется с предзаполненными :ref:`демонстрационными данными<ecos_modules>`.
+
     Для отключения данной настройки перед разворачиванием стенда перейдите в папку ``\services\environments``, в файле **demo_data.env** в настройке **WITH_DEMO_DATA** укажите **false**.
 
     Мы анонимно собираем статистику с использованием сервиса `Umami <https://umami.is/docs>`_. Сервис не собирает и не хранит персональные данные, избегая необходимости использования файлов cookie.
 
-*	Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на Вашу ОС
-*   Клонируйте репозиторий: 
+1. Установите `Docker и Docker Compose <https://docs.docker.com/get-docker/>`_ на вашу ОС.
 
-        .. code-block::
+2. Клонируйте репозиторий:
 
-            git clone https://github.com/citeck/citeck-community.git
+   .. code-block:: bash
 
-*	В терминале: 
+       git clone https://github.com/citeck/citeck-community.git
 
-    * перейдите в папку с клонированным репозиторием:
+3. Перейдите в папку с клонированным репозиторием:
 
-         .. code-block::
+   .. code-block:: bash
 
-            cd полный путь до папки
+       cd /полный/путь/до/папки
 
-    * запустите: 
+4. Запустите Citeck:
 
-         .. code-block::
+   .. code-block:: bash
 
-            docker-compose up -d
+       docker-compose up -d
 
-*	Подождите некоторое время (в зависимости от мощности системы) для того, чтобы система запустилась.
-*	Перейдите в браузере по адресу http://localhost/
-*   Войдите в систему, используя следующие учётные данные:
+5. Подождите, пока система запустится (время зависит от мощности системы).
 
-    .. image:: _static/docker-compose/09.png
-        :width: 600
-        :align: center
+6. Откройте браузер и перейдите по адресу: ``http://localhost/``
 
-    .. code-block::
+7. Войдите в систему:
 
-        Username: admin
-        Password: admin
+   .. image:: _static/docker-compose/09.png
+       :width: 600
+       :align: center
 
-Если необходимо сменить пароль, см. `инструкцию Keycloak <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_.
+   .. code-block:: text
 
-.. note:: 
+       Username: admin
+       Password: admin
 
-    При первом развертывании без демонстрационных данных Keycloak попросит сменить пароль.
+   Если необходимо сменить пароль, см. `инструкцию Keycloak <https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user>`_.
 
-*   Далее станет доступна страница :ref:`персонального рабочего пространства<ws_personal>`:
+   .. note::
 
-    .. image:: _static/docker-compose/11.png
-        :width: 700
-        :align: center
+       При первом развёртывании без демонстрационных данных Keycloak попросит сменить пароль.
 
-    В левом верхнем углу доступна кнопка для выбора доступных рабочих пространств и создания нового:
+8. После входа станет доступна страница :ref:`персонального рабочего пространства<ws_personal>`:
 
-    .. image:: _static/docker-compose/11_1.png
-        :width: 450
-        :align: center
+   .. image:: _static/docker-compose/11.png
+       :width: 700
+       :align: center
 
-Подробно о: 
+   В левом верхнем углу доступна кнопка для выбора рабочих пространств и создания нового:
 
-    * :ref:`рабочих пространствах<workspaces>`; 
-    * :ref:`корпоративном портале<corp_portal>`;
-    * :ref:`модулях и учетных записях<ecos_modules>`; 
-    * :ref:`разделе администратора<admin>`.
+   .. image:: _static/docker-compose/11_1.png
+       :width: 450
+       :align: center
 
+Подробнее о:
 
-.. note:: 
+- :ref:`рабочих пространствах<workspaces>`
+- :ref:`корпоративном портале<corp_portal>`
+- :ref:`модулях и учётных записях<ecos_modules>`
+- :ref:`разделе администратора<admin>`
+
+.. note::
 
     При первом запуске в течение первых 5 минут после успешной установки и входа в систему могут возникать ошибки, например:
 
@@ -92,42 +92,42 @@
         :width: 300
         :align: center
 
-    Развертывание и запуск Citeck продолжается, необходимо подождать.
+    Развёртывание и запуск Citeck продолжается — необходимо подождать.
 
 Обновление до последнего релиза
 --------------------------------
 
-В терминале:
+Выполните следующие команды в терминале:
 
-* Остановите Citeck:
+1. Остановите Citeck:
 
-    .. code-block::
+   .. code-block:: bash
 
-        docker-compose down
+       docker-compose down
 
-* Перейдите в папку ``citeck-community``:
+2. Перейдите в папку ``citeck-community``:
 
-         .. code-block::
+   .. code-block:: bash
 
-            cd полный путь до папки citeck-community
+       cd /полный/путь/до/папки/citeck-community
 
-* Получите актуальную версию Citeck:
+3. Получите актуальную версию:
 
-    .. code-block::
+   .. code-block:: bash
 
-        git pull
+       git pull
 
-* Загрузите последние версии образов:
+4. Загрузите последние версии образов:
 
-    .. code-block::
+   .. code-block:: bash
 
-        docker-compose pull
+       docker-compose pull
 
-* Запустите:
+5. Запустите Citeck:
 
-    .. code-block::
+   .. code-block:: bash
 
-        docker-compose up -d
+       docker-compose up -d
 
 
 Подготовка окружения и установка Citeck
@@ -135,630 +135,587 @@
 
 .. tabs::
 
-   .. tab:: CentOS 7.x   
+   .. tab:: CentOS 7.x
 
-        Обновить систему и пакеты до последней актуальной версии:
+       Обновите систему и пакеты:
 
-        .. code-block::
+       .. code-block:: bash
 
-            yum update -y && yum upgrade -y
+           yum update -y && yum upgrade -y
 
-        Отключить SELinux и перезагрузить сервер:
+       Отключите SELinux и перезагрузите сервер:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sed -i 's/enforcing/disabled/g' /etc/selinux/config
-            reboot
+           sed -i 's/enforcing/disabled/g' /etc/selinux/config
+           reboot
 
-        Установить Python:
+       Установите Python:
 
-        .. code-block::
+       .. code-block:: bash
 
-            yum install epel-release -y
-            yum install python3 -y && yum install python3-pip -y
+           yum install epel-release -y
+           yum install python3 -y && yum install python3-pip -y
 
-        Установить пакеты для комфортной работы:
+       Установите вспомогательные пакеты:
 
-        .. code-block::
+       .. code-block:: bash
 
-            yum install -y mc yum-utils nano ethtool ntp ntpdate firewalld lvm2 device-mapper-persistent-data htop fail2ban mc wget screen pigz
+           yum install -y mc yum-utils nano ethtool ntp ntpdate firewalld lvm2 \
+               device-mapper-persistent-data htop fail2ban wget screen pigz
 
-        Установить Docker Engine:
+       Установите Docker Engine:
 
-        .. code-block::
+       .. code-block:: bash
 
-            yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-            yum install -y docker-ce docker-ce-cli containerd.io
-            systemctl enable docker && systemctl start docker
+           yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+           yum install -y docker-ce docker-ce-cli containerd.io
+           systemctl enable docker && systemctl start docker
 
-        Установить Docker Compose:
+       Установите Docker Compose:
 
-        .. code-block::
+       .. code-block:: bash
 
-            curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
+           curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" \
+               -o /usr/local/bin/docker-compose
+           chmod +x /usr/local/bin/docker-compose
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json, переменная default-address-pools**
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-        .. code-block::
+       .. code-block:: json
 
-            {
-            "default-address-pools":
-            [
-                {"base":"172.19.0.0/16","size":24}
-            ]
-            }
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
-        Следующим этапом необходимо получить комплект поставки, в который входят **docker-compose.yaml** и **environments** и поместить его на сервер.
+       Клонируйте репозиторий и запустите Citeck:
 
-        .. code-block::
+       .. code-block:: bash
 
-            git clone https://github.com/citeck/citeck-community.git && cd citeck-community
+           git clone https://github.com/citeck/citeck-community.git && cd citeck-community
+           docker-compose pull
+           docker-compose up -d
 
-        После этого в директории, куда поместили проект, выполнить:
+       Система будет инициализирована и после полного запуска готова к работе.
 
-        .. code-block::
+       **Настройка прокси в Docker**
 
-            docker-compose pull
-            docker-compose up -d
+       Настройки прокси задаются в файле ``/etc/systemd/system/docker.service.d/http-proxy.conf``.
+       Если файл или папка отсутствуют — создайте их. Содержимое файла:
 
-        Система будет инициализирована, и после полного запуска, будет готова к работе.
+       .. code-block:: ini
 
-        **Настройка Proxy в Docker**
-        
-        Настройки прокси задаются в файле:
+           [Service]
+           Environment="HTTP_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+           Environment="HTTPS_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
+           Environment="NO_PROXY=localhost,127.0.0.1,ecos-app,ecos-apps-app,ecos-gateway-app,ecos-history-app,ecos-identity-app,ecos-integrations-app,ecos-logger-app,ecos-microservices-postgresql-app,ecos-model-app,ecos-notifications-app,ecos-process-app,ecos-proxy-app,ecos-registry-app,ecos-search-app,ecos-uiserv-app,mailhog-app,mongodb-app,node-exporter-app,only-office-app,portainer-agent-app,postgres-exporter-app,rabbitmq-app,zookeeper-app"
 
-        .. code-block::
+       В раздел **NO_PROXY** можно добавить внутренние домены вашей компании, например: ``*.someco.com``, ``*.someco.ru``.
 
-            /etc/systemd/system/docker.service.d/http-proxy.conf 
+       После добавления файла перезапустите демон Docker:
 
-        Если этого файла или папки нет, нужно их создать. Содержимое файла должно быть примерно таким:
+       .. code-block:: bash
 
-        .. code-block::
-
-            [Service]
-            Environment="HTTP_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
-            Environment="HTTPS_PROXY=http://<USER_NAME>:<PASSWORD>@<PROXY_HOST>:<PROXY_PORT>"
-            Environment="NO_PROXY=localhost,127.0.0.1,ecos-app, ecos-apps-app, ecos-gateway-app, ecos-history-app, ecos-identity-app, ecos-integrations-app, ecos-logger-app, ecos-microservices-postgresql-app, ecos-model-app, ecos-notifications-app, ecos-process-app, ecos-proxy-app, ecos-registry-app, ecos-search-app, ecos-uiserv-app, mailhog-app, mongodb-app, node-exporter-app, only-office-app, portainer-agent-app, postgres-exporter-app, rabbitmq-app, zookeeper-app"
-
-        Также в раздел **NO_PROXY** можно добавить внутренние домены вашей компании (через запятую и также можно использовать звездочку например ``*.someco.com,`` ``*.someco.ru``)
-
-        После добавления данного файла нужно перезапустить демон Docker:
-
-        .. code-block::
-
-            systemctl daemon-reload
-            systemctl restart docker
+           systemctl daemon-reload
+           systemctl restart docker
 
    .. tab:: Ubuntu Server 24.04 LTS
 
-        Установка Docker:
+       Установите Docker:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo apt-get update
-            sudo apt-get install ca-certificates curl
-            sudo install -m 0755 -d /etc/apt/keyrings
-            sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-            sudo chmod a+r /etc/apt/keyrings/docker.asc
-            
-            # Add the repository to Apt sources:
-            echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-            sudo apt-get update
-            
-            ## Чтобы установить последнюю доступную версию, выполните команду::
-            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-            
-            ## Чтобы установить конкретную версию, выполните команду:
-            apt-cache madison docker-ce | awk '{ print $3 }'
-            VERSION_STRING={Your Specific version}
-            sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+           sudo apt-get update
+           sudo apt-get install ca-certificates curl
+           sudo install -m 0755 -d /etc/apt/keyrings
+           sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+           sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-        Настройка docker на запуск при старте системы:
+           # Добавьте репозиторий в источники Apt:
+           echo \
+             "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+             $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+             sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+           sudo apt-get update
 
-        .. code-block::
+       Установите последнюю доступную версию:
 
-            sudo systemctl enable docker
+       .. code-block:: bash
 
-        Установка Docker-compose:
+           sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-        .. code-block::
+       Или установите конкретную версию:
 
-            curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
+       .. code-block:: bash
 
-        Проверить установку:
+           apt-cache madison docker-ce | awk '{ print $3 }'
+           VERSION_STRING={Your Specific version}
+           sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING \
+               containerd.io docker-buildx-plugin docker-compose-plugin
 
-        .. code-block::
+       Настройте автозапуск Docker:
 
-            docker-compose --version
+       .. code-block:: bash
 
-        На этом установка Docker Engine и Docker Compose завершена.
+           sudo systemctl enable docker
 
-        Получите конфигурации docker-compose, перейдите в директорию с файлом **docker-compose.yaml**. Пройдите аутентификацию в нужный **docker registry**: ``docker login``.
+       Установите Docker Compose:
 
-        .. note:: 
+       .. code-block:: bash
 
-            Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
+           curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" \
+               -o /usr/local/bin/docker-compose
+           chmod +x /usr/local/bin/docker-compose
 
-        Запуск Citeck Community: 
+       Проверьте установку:
 
-        .. code-block::
+       .. code-block:: bash
 
-            docker-compose up -d
+           docker-compose --version
 
-        **Установка citeck-community**
+       На этом установка Docker Engine и Docker Compose завершена.
 
-        .. code-block::
+       Клонируйте репозиторий и запустите Citeck:
 
-            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
-            unzip master.zip
-            cd citeck-community-master
-            docker-compose pull
+       .. code-block:: bash
 
-        Запуск Citeck Community:
+           wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
+           unzip master.zip
+           cd citeck-community-master
+           docker-compose pull
+           docker-compose up -d
 
-        .. code-block::
+       .. note::
 
-            docker-compose up -d
+           Выполняйте команды из директории ``citeck-community-master``.
 
-        .. note:: 
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-            Выполнять из директории citeck-community-master
+       .. code-block:: json
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
-
-        .. code-block::
-
-            {
-            "default-address-pools":
-            [
-                {"base":"172.19.0.0/16","size":24}
-            ]
-            }
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
    .. tab:: Debian 11 "Bullseye"
 
-        Установка Docker:
+       Установите Docker:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo apt-get update
-            sudo apt-get install ca-certificates curl
-            sudo install -m 0755 -d /etc/apt/keyrings
-            sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-            sudo chmod a+r /etc/apt/keyrings/docker.asc
-            
-            # Add the repository to Apt sources:
-            echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-            sudo apt-get update
-            
-            ## Чтобы установить последнюю доступную версию, выполните команду::
-            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-            
-            ## Чтобы установить конкретную версию, выполните команду:
-            apt-cache madison docker-ce | awk '{ print $3 }'
-            VERSION_STRING={Your Specific version}
-            sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+           sudo apt-get update
+           sudo apt-get install ca-certificates curl
+           sudo install -m 0755 -d /etc/apt/keyrings
+           sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+           sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-        Настройка docker на запуск при старте системы:
+           # Добавьте репозиторий в источники Apt:
+           echo \
+             "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+             $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+             sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+           sudo apt-get update
 
-        .. code-block::
+       Установите последнюю доступную версию:
 
-            sudo systemctl enable docker
+       .. code-block:: bash
 
-        Установка Docker-compose:
+           sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-        .. code-block::
+       Или установите конкретную версию:
 
-            wget https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-Linux-x86_64
-            mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
+       .. code-block:: bash
 
-        .. note:: 
+           apt-cache madison docker-ce | awk '{ print $3 }'
+           VERSION_STRING={Your Specific version}
+           sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING \
+               containerd.io docker-buildx-plugin docker-compose-plugin
 
-            Версию можно изменить на более актуальную, заменив v2.29.1
+       Настройте автозапуск Docker:
 
-        На этом установка Docker Engine и Docker-Compose завершена. 
+       .. code-block:: bash
 
-        Получите конфигурации docker-compose, перейдите в директорию с файлом **docker-compose.yaml**. Пройдите аутентификацию в нужный **docker registry**: ``docker login``.
+           sudo systemctl enable docker
 
-        .. note:: 
+       Установите Docker Compose:
 
-            Registry URL и данные для аутентификации можно запросить у контактного лица со стороны Citeck.
+       .. code-block:: bash
 
-        Запуск Citeck Community: 
+           wget https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-Linux-x86_64
+           mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+           sudo chmod +x /usr/local/bin/docker-compose
 
-        .. code-block::
+       .. note::
 
-            docker-compose up -d
+           Версию можно изменить на более актуальную, заменив ``v2.29.1``.
 
-        **Установка citeck-community**
+       На этом установка Docker Engine и Docker Compose завершена.
 
-        .. code-block::
+       Клонируйте репозиторий и запустите Citeck:
 
-            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
-            unzip master.zip
-            cd citeck-community-master
-            docker-compose pull
+       .. code-block:: bash
 
-        Запуск Citeck Community:
+           wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
+           unzip master.zip
+           cd citeck-community-master
+           docker-compose pull
+           docker-compose up -d
 
-        .. code-block::
+       .. note::
 
-            docker-compose up -d
+           Выполняйте команды из директории ``citeck-community-master``.
 
-        .. note:: 
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-            Выполнять из директории citeck-community-master
+       .. code-block:: json
 
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
-
-        .. code-block::
-
-            {
-            "default-address-pools":
-            [
-                {"base":"172.19.0.0/16","size":24}
-            ]
-            }
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
    .. tab:: Astra Linux Орел
 
-        .. note:: 
+       .. note::
 
-            Инструкция проверялась с Astra Linux Common Edition 2.12.46.
+           Инструкция проверялась с Astra Linux Common Edition 2.12.46.
 
-        Установка Docker:
+       Установите Docker:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo apt update
-            sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-            curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-            sudo printf "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable \n" > /etc/apt/sources.list.d/docker.list
-            sudo apt-get update
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
+           sudo apt update
+           sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+           curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+           sudo printf "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable \n" \
+               > /etc/apt/sources.list.d/docker.list
+           sudo apt-get update
+           sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-        Настройка групп docker:
+       Настройте группы Docker:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo groupadd docker
-            sudo usermod -aG docker $USER
-            sudo systemctl enable docker.service
-            sudo systemctl enable containerd.service
+           sudo groupadd docker
+           sudo usermod -aG docker $USER
+           sudo systemctl enable docker.service
+           sudo systemctl enable containerd.service
 
-        Установка Docker Compose:
+       Установите Docker Compose:
 
-        .. code-block::
+       .. code-block:: bash
 
-            wget https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
-            mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
+           wget https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+           mv ./docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+           sudo chmod +x /usr/local/bin/docker-compose
 
-        .. note:: 
+       .. note::
 
-            Версию можно изменить на более актуальную, заменив 1.27.4
+           Версию можно изменить на более актуальную, заменив ``1.27.4``.
 
-        **Установка citeck-community** (выполняется в терминале, Alt+T):
+       Клонируйте репозиторий и запустите Citeck (выполняется в терминале, **Alt+T**):
 
-        .. code-block::
+       .. code-block:: bash
 
-            git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
-            docker-compose pull
+           git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
+           docker-compose pull
+           docker-compose up -d
 
-        
-        Запуск Citeck Community:
+       .. note::
 
-        .. note:: 
+           Выполняйте команды из директории ``citeck-community``.
 
-            Выполнять из директории citeck-community
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-        .. code-block::
+       .. code-block:: json
 
-            docker-compose up -d
-
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
-
-        .. code-block::
-
-            {
-              "default-address-pools":
-              [
-                {"base":"172.19.0.0/16","size":24}
-              ]
-            }
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
    .. tab:: Ред ОС (Red OS)
 
-        .. note:: 
+       .. note::
 
-            Инструкция проверялась на РЕД ОС 7.3, ядро Linux 5.15.72.
+           Инструкция проверялась на РЕД ОС 7.3, ядро Linux 5.15.72.
 
-        Обновить пакеты и выключить SELINUX:
+       Обновите пакеты и отключите SELINUX:
 
-        .. code-block::
+       .. code-block:: bash
 
-            dnf update
-            echo 'SELINUX=disabled' > /etc/sysconfig/selinux
-            reboot
+           dnf update
+           echo 'SELINUX=disabled' > /etc/sysconfig/selinux
+           reboot
 
-        Установка Docker и Docker Compose:
+       Установите Docker и Docker Compose:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo dnf install docker-ce docker-ce-cli docker-compose
-            systemctl enable docker
+           sudo dnf install docker-ce docker-ce-cli docker-compose
+           systemctl enable docker
 
-        **Установка citeck-community** (выполняется в терминале, Alt+T):
+       Клонируйте репозиторий и запустите Citeck (выполняется в терминале, **Alt+T**):
 
-        .. code-block::
+       .. code-block:: bash
 
-            git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
-            docker-compose pull
+           git clone https://github.com/Citeck/citeck-community.git && cd citeck-community
+           docker-compose pull
+           docker-compose up -d
 
-        Запуск Citeck Community:
+       .. note::
 
-        .. code-block::
+           Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, откройте **/etc/docker/daemon.json** и замените ``"log-driver": "journald"`` на ``"log-driver": "json-file"``.
 
-            docker-compose up -d
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-        .. note:: 
+       .. code-block:: json
 
-            Если встречается ошибка **unknown log opt 'max-size' for journald log driver**, открыть **/etc/docker/daemon.json** и изменить там **"log-driver": "journald"** на **"log-driver": "json-file"**
-
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
-
-        .. code-block::
-
-            {
-              "default-address-pools":
-              [
-                {"base":"172.19.0.0/16","size":24}
-              ]
-            }
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
    .. tab:: Oracle Enterprise Linux 8.9
 
-        Установка Docker:
+       Установите Docker:
 
-        .. code-block::
+       .. code-block:: bash
 
-            sudo dnf update -y
-            sudo dnf install -y dnf-utils ca-certificates curl
-            
-            sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-            sudo dnf makecache
+           sudo dnf update -y
+           sudo dnf install -y dnf-utils ca-certificates curl
+           sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+           sudo dnf makecache
+           sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-            ## Чтобы установить последнюю доступную версию, выполните команду::
-            sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+       Настройте автозапуск Docker:
 
-        Настройка Docker на запуск при старте системы:
+       .. code-block:: bash
 
-        .. code-block::
+           sudo systemctl start docker
+           sudo systemctl enable docker
 
-            sudo systemctl start docker
-            sudo systemctl enable docker
+       Чтобы команда ``docker-compose`` была доступна напрямую (а не только ``docker compose``):
 
-        Для того чтобы была доступна команда docker-compose, а не только docker compose:
+       .. code-block:: bash
 
-        .. code-block::
+           sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
 
-            sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
-        
-        На этом установка Docker Engine и Docker Compose завершена. Перейдите в директорию с файлом **docker-compose.yaml**.
+       На этом установка Docker Engine и Docker Compose завершена.
 
-        .. note::
+       .. note::
 
-            В случае если используется Enterprise-сборка, необходимо подключиться к registry: ``docker login <registry host>``.
+           В случае Enterprise-сборки подключитесь к registry: ``docker login <registry host>``.
 
-            **Registry URL** и **данные для аутентификации** можно запросить у контактного лица со стороны Citeck.
+           **Registry URL** и **данные для аутентификации** можно запросить у контактного лица со стороны Citeck.
 
-        Запуск Citeck Community: 
+       Клонируйте репозиторий и запустите Citeck:
 
-        .. code-block::
+       .. code-block:: bash
 
-            docker-compose up -d
+           wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
+           unzip master.zip
+           cd citeck-community-master
+           docker-compose pull
+           docker-compose up -d
 
-        **Установка citeck-community** (выполняется в терминале, Alt+T):
+       .. note::
 
-        .. code-block::
+           Выполняйте команды из директории ``citeck-community-master``.
 
-            wget https://github.com/Citeck/citeck-community/archive/refs/heads/master.zip
-            unzip master.zip
-            cd citeck-community-master
-            docker-compose pull
+       Если локальная сеть может пересекаться с сетью Docker, задайте предопределённую подсеть в файле **/etc/docker/daemon.json** (переменная **default-address-pools**):
 
-        Запуск Citeck Community:
+       .. code-block:: json
 
-        .. note:: 
+           {
+               "default-address-pools": [
+                   {"base": "172.19.0.0/16", "size": 24}
+               ]
+           }
 
-            Выполнять из директории citeck-community-master
-
-        .. code-block::
-
-            docker-compose up -d
-
-        В случае, если локальная сеть, может пересекаться с сетью docker, лучше предопределить подсеть docker. Сделать это можно в файле **/etc/docker/daemon.json**, переменная **default-address-pools**
-
-        .. code-block::
-
-            {
-              "default-address-pools":
-              [
-                {"base":"172.19.0.0/16","size":24}
-              ]
-            }
 
 Переключение на BASIC аутентификацию вместо Keycloak
-----------------------------------------------------
+-----------------------------------------------------
 
-Если нужен простой способ настройки для доступа в систему минуя Keycloak, то можно настроить BASIC Auth (не рекомендуется для production сред).
+Если нужен простой способ настройки доступа в систему, минуя Keycloak, можно настроить BASIC Auth (не рекомендуется для production-сред).
 
-  1. В файле **ecos-proxy-app.env**:
+1. Откройте файл **ecos-proxy-app.env**:
 
-     .. code-block::
+   .. code-block:: bash
 
-        nano citeck-community-master/services/environments/ecos-proxy-app.env     
+       nano citeck-community-master/services/environments/ecos-proxy-app.env
 
-    заменить строку **ENABLE_OIDC_FULL_ACCESS=true** на **ENABLE_OIDC_FULL_ACCESS=false**
+   Замените строку:
 
-  2. В этом же файле добавить: **BASIC_AUTH_ACCESS=admin:admin,fet:fet**
+   .. code-block:: text
 
-.. note:: 
+       ENABLE_OIDC_FULL_ACCESS=true
 
-    | ``admin:admin,fet:fet`` - список пользователей, которые будут иметь доступ в систему. 
-    | Формат значения следующий - ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}`` 
-    | После изменения **ecos-proxy-app.env** необходима перезагрузка контейнера ecos-proxy-app, чтобы изменения вступили в силу.
+   на:
 
-После внесения изменений (из директории **citeck-community-master**) остановите проект:
+   .. code-block:: text
 
-.. code-block::
+       ENABLE_OIDC_FULL_ACCESS=false
 
-    docker-compose down
+2. В этом же файле добавьте:
 
-Затем запустите проект:
+   .. code-block:: text
 
-.. code-block::
+       BASIC_AUTH_ACCESS=admin:admin,fet:fet
 
-    docker-compose up -d
+   .. note::
+
+       ``admin:admin,fet:fet`` — список пользователей, имеющих доступ в систему.
+       Формат: ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}``.
+       После изменения файла необходимо перезапустить контейнер **ecos-proxy-app**, чтобы изменения вступили в силу.
+
+3. Из директории **citeck-community-master** остановите проект:
+
+   .. code-block:: bash
+
+       docker-compose down
+
+4. Запустите проект:
+
+   .. code-block:: bash
+
+       docker-compose up -d
 
 Данные для входа в Citeck:
 
-.. code-block::
+.. code-block:: text
 
     Username: admin
     Password: admin
 
+
 Сервисы Docker
 ---------------
 
-:ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker’а и их настройки.
+:ref:`По ссылке <docker_services>` перечислены сервисы с точки зрения Docker и их настройки.
 
 .. note::
 
-    Некоторые контейнеры запускаются 1 раз, например:
+    Некоторые контейнеры запускаются один раз и далее находятся в статусе **exited**, например:
 
-        - citeck-community-master-ecos-meetings-ecos-apps-1
-        - citeck-community-master-ecos-order-pass-ecos-apps-1
-        - citeck-community-master-ecos-common-data-list-ecos-apps-1
-        - citeck-community-master-ecos-assignments-ecos-apps-1
+    - ``citeck-community-master-ecos-meetings-ecos-apps-1``
+    - ``citeck-community-master-ecos-order-pass-ecos-apps-1``
+    - ``citeck-community-master-ecos-common-data-list-ecos-apps-1``
+    - ``citeck-community-master-ecos-assignments-ecos-apps-1``
 
-    и далее находятся в статусе **exited**
 
 Возможные проблемы
 -------------------
 
-ОС Windows
-~~~~~~~~~~~~
+Windows
+~~~~~~~~
 
-Включение функции WSL 2 в Windows
-""""""""""""""""""""""""""""""""""""""""
+Включение WSL 2
+""""""""""""""""
 
-Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.
+Docker Desktop использует функцию динамического распределения памяти в WSL 2, что значительно снижает потребление ресурсов. WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет доступ к новым функциям Docker Desktop.
 
-1)	Перед установкой WSL 2 необходимо включить необязательный компонент **Платформа виртуальных машин**. 
-    
-    В **PowerShell** ввести команду:
+1. Включите компонент **Платформа виртуальных машин** в **PowerShell**:
 
-    .. code-block:: 
+   .. code-block:: powershell
 
-        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+       dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-2)	Скачать и установить пакет обновления ядра Linux:
-    
-    `Пакет обновления ядра Linux в WSL 2 для 64-разрядных компьютеров <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>`_ 
+2. Скачайте и установите `пакет обновления ядра Linux для WSL 2 (64-разрядные компьютеры) <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>`_.
 
-3)	Выбрать WSL 2 в качестве версии по умолчанию:
+3. Задайте WSL 2 версией по умолчанию:
 
-    .. code-block:: 
+   .. code-block:: powershell
 
-        wsl --set-default-version 2
+       wsl --set-default-version 2
 
-Проверить версию WSL:
+4. Проверьте версию WSL:
 
-    .. code-block::
+   .. code-block:: powershell
 
-        wsl --list --verbose
+       wsl --list --verbose
 
-Подробная инструкция: `docs.microsoft.com — установка WSL 2 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_
+   Подробная инструкция: `docs.microsoft.com — установка WSL 2 <https://docs.microsoft.com/ru-ru/windows/wsl/install-win10>`_
 
-4)	При установке Docker в окне конфигурации установите галочку в поле **Use WSL 2 instead of Hyper-V (recommended)**. Подробная инструкция: `docs.docker.com — Docker Desktop WSL 2 <https://docs.docker.com/docker-for-windows/wsl/>`_
+5. При установке Docker в окне конфигурации установите галочку **Use WSL 2 instead of Hyper-V (recommended)**.
+
+   Подробная инструкция: `docs.docker.com — Docker Desktop WSL 2 <https://docs.docker.com/docker-for-windows/wsl/>`_
 
 
 Порт 8080 уже занят
-""""""""""""""""""""
+"""""""""""""""""""""
 
-Citeck UI использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:
+Citeck UI использует порт **8080**. Если он занят другой программой, появится ошибка:
 
-**«Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»**
+    *«Error starting userland proxy: listen tcp 0.0.0.0:8080: bind: Only one usage of each socket address is normally permitted.»*
 
- .. image:: _static/docker-compose/01.png
-       :width: 400
-       :align: center
+.. image:: _static/docker-compose/01.png
+    :width: 400
+    :align: center
 
-Если команда:
+Чтобы найти, какой процесс занимает порт, выполните:
 
-.. code-block::
+.. code-block:: powershell
 
-    netstat -ono (или netstat -ono | findstr 8080)  
+    netstat -ono
+    # или
+    netstat -ono | findstr 8080
 
-не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты. 
+Если команда не находит виновника, воспользуйтесь сторонней утилитой, например **CurrPorts**.
+
 
 Порт зарезервирован Windows
-""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 
-К примеру, каталог **ecos-postgres** использует порт **50432**, но этот порт зарезервирован Windows. Проверить такие порты можно командой
+Некоторые порты (например, **50432**, используемый **ecos-postgres**) могут быть зарезервированы Windows. Проверьте зарезервированные диапазоны:
 
-.. code-block::
+.. code-block:: powershell
 
-    netsh int ipv4 show excludedportrange protocol=tcp 
+    netsh int ipv4 show excludedportrange protocol=tcp
 
 .. image:: _static/docker-compose/02.png
     :width: 400
     :align: center
- 
-Команда покажет диапазон зарезервированных портов. Видно, что порт 50432 находится в данном диапазоне и поэтому при установке была получена ошибка:
 
-**«Cannot start service ecos-postgres: driver failed programming external connectivity on endpoint»**
+Если нужный порт попадает в зарезервированный диапазон, появится ошибка:
 
-Чтобы это исправить, нужно в командной строке, запущенной с повышенными правами:
+    *«Cannot start service ecos-postgres: driver failed programming external connectivity on endpoint»*
 
-    1)	Остановить Hyper-V: 
+Чтобы исправить это, выполните в командной строке с повышенными правами:
 
-        .. code-block::
-    
-            dism.exe /Online /Disable-Feature:Microsoft-Hyper-V 
-            
-        Выполнить перезагрузку.
+1. Отключите Hyper-V и перезагрузите систему:
 
-    2)	Добавить нужный порт в исключения: 
+   .. code-block:: powershell
 
-        .. code-block::
-    
-            netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1
+       dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
 
-    3)	Запустить Hyper-V: 
+2. Добавьте нужный порт в исключения:
 
-        .. code-block::
-    
-            dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All 
-            
-        После потребуется перезагрузка.
+   .. code-block:: powershell
 
-Порт попадет в исключения, и подобной ошибки не возникнет.
+       netsh int ipv4 add excludedportrange protocol=tcp startport=50432 numberofports=1
 
-Настройка дополнительных параметров WSL в Windows
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+3. Включите Hyper-V обратно и перезагрузите систему:
+
+   .. code-block:: powershell
+
+       dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+
+После перезагрузки порт попадёт в исключения и ошибка не возникнет.
+
+
+Настройка дополнительных параметров WSL
+"""""""""""""""""""""""""""""""""""""""""
 
 `Настройка глобальных параметров WSL <https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig>`_
+
 
 MacOS
 ~~~~~~
@@ -766,125 +723,128 @@ MacOS
 Запускаются не все контейнеры
 """""""""""""""""""""""""""""""
 
-Если при разворачивании приложения в docker запускаются не все контейнеры:
+Если при разворачивании приложения в Docker запускаются не все контейнеры:
 
- .. image:: _static/docker-compose/06.png
-       :width: 400
-       :align: center
+.. image:: _static/docker-compose/06.png
+    :width: 400
+    :align: center
 
-необходимо в настройках docker добавить путь **/opt**:
+Добавьте путь **/opt** в настройках Docker:
 
- .. image:: _static/docker-compose/07.png
-       :width: 600
-       :align: center
+.. image:: _static/docker-compose/07.png
+    :width: 600
+    :align: center
+
 
 How to
--------------------
+------
 
-Изменить http://localhost на http://mydomain.ru
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Изменить адрес с localhost на пользовательский домен
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 С чистой БД
-""""""""""""""
+""""""""""""
 
-Поменять в:
+1. В файле **citeck-community/services/environments/ecos-identity-app.env** замените:
 
-1. **citeck-community/services/environments/ecos-identity-app.env**
+   .. code-block:: text
 
-.. code-block::
+       KEYCLOAK_FRONTEND_URL=http://localhost/ecos-idp/auth
 
- KEYCLOAK_FRONTEND_URL=http://localhost/ecos-idp/auth 
+   на:
 
-на 
+   .. code-block:: text
 
-.. code-block::
+       KEYCLOAK_FRONTEND_URL=http://mydomain.ru/ecos-idp/auth
 
-    KEYCLOAK_FRONTEND_URL=http://mydomain.ru/ecos-idp/auth
+2. В файле **citeck-community/services/environments/ecos-proxy-app.env** замените:
 
-2. **citeck-community/services/environments/ecos-proxy-app.env**
+   .. code-block:: text
 
-.. code-block::
+       EIS_ID=citeck-community
+       REDIRECT_LOGOUT_URI=http://localhost
 
-    EIS_ID=citeck-community на EIS_ID=mydomain.ru + REDIRECT_LOGOUT_URI=http://localhost
+   на:
 
-на 
+   .. code-block:: text
 
-.. code-block::
+       EIS_ID=mydomain.ru
+       REDIRECT_LOGOUT_URI=http://mydomain.ru
 
-    REDIRECT_LOGOUT_URI=http://mydomain.ru
+3. В файле **citeck-community/services/configs/ecos-identity-app/realm-export.json** замените:
 
-3. Шаг имеет смысл, если разворачивать на чистых БД:
+   .. code-block:: json
 
-**citeck-community/services/configs/ecos-identity-app/realm-export.json**
+       "redirectUris": [
+           "http://localhost*"
+       ]
 
-.. code-block::
+   на:
 
-    "redirectUris": [
-        "http://localhost*"
-    ],
+   .. code-block:: json
 
-на
+       "redirectUris": [
+           "http://mydomain.ru*"
+       ]
 
-.. code-block::
+   .. note::
 
-    "redirectUris": [
-        "http://mydomain.ru*"
-    ],
-    
-4. Шаг имеет смысл, если разворачивать на чистых БД:
+       Шаги 3 и 4 имеют смысл только при разворачивании на чистых БД.
 
-**citeck-community/services/configs/ecos-identity-app/realm-export.yaml**
+4. В файле **citeck-community/services/configs/ecos-identity-app/realm-export.yaml** замените:
 
-.. code-block::
+   .. code-block:: text
 
-    "redirectUris": [
-        "http://localhost*"
-    ],
+       "redirectUris": [
+           "http://localhost*"
+       ]
 
-на
+   на:
 
-.. code-block::
+   .. code-block:: text
 
-    "redirectUris": [
-        "http://mydomain.ru*"
-    ],
+       "redirectUris": [
+           "http://mydomain.ru*"
+       ]
 
-5. В **hosts** добавить запись:
+5. Добавьте запись в файл **hosts**:
 
-.. code-block::
+   .. code-block:: text
 
-    127.0.0.1 mydomain.ru
+       127.0.0.1 mydomain.ru
 
 Не с чистой БД
-"""""""""""""""""
+"""""""""""""""
 
-1. Зайти в панель администратора keycloak.
-2. Открыть реалм **ecos-app**.
-3. Открыть раздел **clients**.
-4. Открыть **ecos-proxy-app**.
-5. Изменить в поле **Valid Redirect URIs** значение http://localhost на http://mydomain.ru
-6. Сохранить.
+1. Войдите в панель администратора Keycloak.
+2. Откройте реалм **ecos-app**.
+3. Перейдите в раздел **Clients**.
+4. Откройте **ecos-proxy-app**.
+5. В поле **Valid Redirect URIs** замените ``http://localhost`` на ``http://mydomain.ru``.
+6. Сохраните изменения.
 
 
 Исключить адрес из авторизации Keycloak
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Временно можно сделать на уровне модификации **ecos-proxy-app**.
+Временно это можно сделать на уровне модификации **ecos-proxy-app**.
 
-Проверить можно,  зайдя в контейнер: 
+Зайдите в контейнер:
 
-**docker-compose exec ecos-proxy-app /bin/bash**
+.. code-block:: bash
 
-и модифицировав: 
+    docker-compose exec ecos-proxy-app /bin/bash
 
-**/etc/nginx/conf.d/default.conf**
+Отредактируйте конфигурационный файл:
 
-После этого выполнить:
+.. code-block:: text
 
-.. code-block::
+    /etc/nginx/conf.d/default.conf
+
+Перезагрузите nginx:
+
+.. code-block:: bash
 
     nginx -s reload
 
-На постоянной основе только собрав свою версию контейнера **ecos-proxy-app**
-
-Второй вариант: предложив Pull-реквест нам с возможностью передавать не защищаемые URL в качестве параметра.
+На постоянной основе это возможно только путём сборки собственной версии контейнера **ecos-proxy-app** или путём отправки Pull Request с возможностью передавать незащищаемые URL в качестве параметра.
