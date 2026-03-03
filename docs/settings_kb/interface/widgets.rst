@@ -6,12 +6,17 @@
 .. contents::
 	:depth: 3
 
+**Виджеты** — настраиваемые блоки информации, которые размещаются на :ref:`дашбордах <dashboard>` и отображают данные о документе, задачах, процессах, пользователях и другом контенте системы.
+
+Виджеты добавляются и переносятся перетаскиванием при настройке дашборда. Набор доступных виджетов зависит от типа дашборда. Для части виджетов доступна индивидуальная настройка отображаемых данных.
+
+Статья содержит описание всех доступных виджетов, их параметры настройки и управление правами на редактирование.
 
 .. _widget_settings:
 
 Для некоторых виджетов доступна настройка. Настройка отмечена следующей иконкой:
 
- .. image:: _static/widgets/widget_1.png
+.. image:: _static/widgets/widget_1.png
        :width: 600
        :align: center
 
@@ -22,19 +27,19 @@
 Настройка прав на редактирование
 --------------------------------
 
-В системе для пользователй можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**). 
+В системе для пользователей можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**).
 
-То есть у пользователя могут быть права на настройку дашборда, но запрещена настройа виджетов. 
+То есть у пользователя могут быть права на настройку дашборда, но запрещена настройка виджетов.
 
 Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS** (``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``):
 
- .. image:: _static/widgets/dashboards_widgets_settings.png
+.. image:: _static/widgets/dashboards_widgets_settings.png
        :width: 700
        :align: center
 
 Включение настройки:
 
- .. image:: _static/widgets/dashboards_widgets_settings_1.png
+.. image:: _static/widgets/dashboards_widgets_settings_1.png
        :width: 400
        :align: center
 
@@ -86,7 +91,7 @@
 
 .. _widget_web_page:
 
-Виджет «Веб страница»
+Виджет «Веб-страница»
 ----------------------
 
 Ключ ``web-page``
@@ -129,7 +134,7 @@
 
 С включённой настройкой в виджете показываются все связанные документы.
  
- .. image:: _static/widgets/Preview_2.png
+.. image:: _static/widgets/Preview_2.png
        :width: 400
        :align: center 
 
@@ -139,7 +144,7 @@
 
 Переход между документами осуществляется через дропдаун или скролл. Количество документов указано в дропдауне:
 
- .. image:: _static/widgets/Preview_1.png
+.. image:: _static/widgets/Preview_1.png
        :width: 800
        :align: center 
 
@@ -166,7 +171,7 @@
                   :align: center
 
       * - **Форма ввода комментария:**    
-        - | Для ввода текста используется :ref:`визуальный редактор<wysiwyg_editor>`, в котором помимо форматирования текста доступно добавление таблицы, кода, ссылки, файла
+        - | Для ввода текста используется :ref:`визуальный редактор <wysiwyg_editor>`, в котором помимо форматирования текста доступно добавление таблицы, кода, ссылки, файла
           | Чтобы в комментарии упомянуть других пользователей используете **@**
 
             .. image:: _static/widgets/comment_2.png
@@ -185,7 +190,7 @@
        :width: 600
        :align: center 
 
-Подробно о  :ref:`разграничении пользователей различных заказчиков<UNIFIED_PRIVATE_GROUP>`
+Подробно о  :ref:`разграничении пользователей различных заказчиков <UNIFIED_PRIVATE_GROUP>`
 
 Транcлирование комментариев при выполнении задачи
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -198,7 +203,7 @@
 
 Комментарий, добавленный из задачи помечается тегом с названием задачи.
 
- .. image:: _static/widgets/comment_3.png
+.. image:: _static/widgets/comment_3.png
        :width: 600
        :align: center 
 
@@ -236,7 +241,7 @@
 
       * - | **Настроенный вид**    
 
-        - |  Для типа дашборда :ref:`Case-details<dashboard_types>` реализовано 2 режима (см. настройки ниже)
+        - |  Для типа дашборда :ref:`Case-details <dashboard_types>` реализовано 2 режима (см. настройки ниже)
           
           | - просмотр с возможностью inline редактирования значений атрибутов:       
 
@@ -257,7 +262,7 @@
                  :align: center 
 
 
-Для виджета так же доступен переход в конструктор формы для дополнительной настройки полей. См. подробную статью :ref:`Формы<forms>`
+Для виджета так же доступен переход в конструктор формы для дополнительной настройки полей. См. подробную статью :ref:`Формы <forms>`
 
 .. list-table:: 
       :widths: 5 10
@@ -284,19 +289,19 @@
 
 Для изменения режима необходимо в карточке **нажать шестеренку- > «Настроить страницу»**:
 
- .. image:: _static/widgets/case_edit_1.png
+.. image:: _static/widgets/case_edit_1.png
        :width: 400
        :align: center 
 
 В настройке карточки перейти в раздел **"Виджеты"**, и у **виджета "Свойства"** нажать:
 
- .. image:: _static/widgets/case_edit_2.png
+.. image:: _static/widgets/case_edit_2.png
        :width: 600
        :align: center 
 
 В настройках выбрать **"Режим редактирования"** и нажать **"Применить"**:
 
- .. image:: _static/widgets/case_edit_3.png
+.. image:: _static/widgets/case_edit_3.png
        :width: 400
        :align: center 
 
@@ -307,7 +312,7 @@
 
 В виджете при открытии страницы дашборда доступны свойства документа в режиме редактирования, аналогично открытию документа в модальном окне редактирования:
 
- .. image:: _static/widgets/case_edit_4.png
+.. image:: _static/widgets/case_edit_4.png
        :width: 600
        :align: center 
 
@@ -317,7 +322,7 @@
 
 Если поля при редактировании не проходят валидацию -  кнопка **"Сохранить"** становится не доступна для нажатия:
 
- .. image:: _static/widgets/case_edit_5.png
+.. image:: _static/widgets/case_edit_5.png
        :width: 600
        :align: center 
 
@@ -330,7 +335,7 @@
 
 Виджет для отображения задач по данному кейсу у просматривающего его пользователя и варианты их завершения.
 
- .. image:: _static/widgets/task.png
+.. image:: _static/widgets/task.png
        :width: 600
        :align: center 
 
@@ -368,13 +373,13 @@
 
 При нажатии на:
 
- .. image:: _static/widgets/all_tasks_3.png
+.. image:: _static/widgets/all_tasks_3.png
        :width: 300
        :align: center 
 
 отображается схема выбранного бизнес-процесса с выделенной текущей задачей: 
 
- .. image:: _static/widgets/all_tasks_4.png
+.. image:: _static/widgets/all_tasks_4.png
        :width: 600
        :align: center 
 
@@ -390,7 +395,7 @@
 
 Виджет отображает текущий статус кейса (определяется системой автоматически, не доступен для редактирования пользователем).
 
- .. image:: _static/widgets/status.png
+.. image:: _static/widgets/status.png
        :width: 400
        :align: center 
 
@@ -405,25 +410,25 @@
 
 Виджет представлен в виде таблицы.
 
- .. image:: _static/widgets/History_1.png
+.. image:: _static/widgets/History_1.png
        :width: 600
        :align: center 
 
 Для каждого столбца можно настроить фильтрацию и поиск событий:
 
- .. image:: _static/widgets/History_2.png
+.. image:: _static/widgets/History_2.png
        :width: 300
        :align: center 
 
 Если в типе данных поля заданы как мультиязычные, то показываются мультиязычные значения:
 
- .. image:: _static/widgets/History_4.png
+.. image:: _static/widgets/History_4.png
        :width: 600
        :align: center 
 
 Для **bpmn-процесса**:
 
- .. image:: _static/widgets/History_3.png
+.. image:: _static/widgets/History_3.png
        :width: 600
        :align: center 
 
@@ -433,7 +438,7 @@
        - Обновление версии процесса. Так же с указанием исходной версии;
        - Публикация версии процесса в движок.
 
-Используя аспект :ref:`Конфигурация истории<history-config_aspect>` можно настроить атрибуты типа данных, информация об изменении которых не будет записываться в историю и отображаться в виджете, соответственно.
+Используя аспект :ref:`Конфигурация истории <history-config_aspect>` можно настроить атрибуты типа данных, информация об изменении которых не будет записываться в историю и отображаться в виджете, соответственно.
 
 .. _widget_versions_journal:
 
@@ -446,7 +451,7 @@
 
 Служит для **загрузки** новой версии документа по кнопке **(1)**, а также для сравнения файлов.
 
- .. image:: _static/widgets/version_1.png
+.. image:: _static/widgets/version_1.png
        :width: 300
        :align: center 
 
@@ -460,7 +465,7 @@
 
 Для **bpmn-процесса**:
 
- .. image:: _static/widgets/version_3.png
+.. image:: _static/widgets/version_3.png
        :width: 250
        :align: center 
 
@@ -474,13 +479,13 @@
 
 Cравнение версий процесса - выберите версии и нажмите **"Сравнить"** **(4)**:
 
- .. image:: _static/widgets/version_4.png
+.. image:: _static/widgets/version_4.png
        :width: 900
        :align: center 
 
 Для загрузки новой версии нажмите **(5)**:
 
- .. image:: _static/widgets/version_5.png
+.. image:: _static/widgets/version_5.png
        :width: 300
        :align: center 
 
@@ -501,14 +506,14 @@ Cравнение версий процесса - выберите версии 
 
 и отображения установленных связей.
 
- .. image:: _static/widgets/doc-associations_1.png
+.. image:: _static/widgets/doc-associations_1.png
        :width: 600
        :align: center 
 
 Настройки
 ~~~~~~~~~~
 
-Настройки производятся на вкладке :ref:`Связи<datatypes_associations>` типа данных. Связь может быть настроена с любой ассоциацией.
+Настройки производятся на вкладке :ref:`Связи <datatypes_associations>` типа данных. Связь может быть настроена с любой ассоциацией.
 
 .. _widget_record_actions:
 
@@ -519,9 +524,9 @@ Cравнение версий процесса - выберите версии 
 
 Виджет содержит перечень доступных действий с кейсом на данном статусе.
 
-Настройки подтягиваются из :ref:`типа данных<data_types_main>`. См. подробную статью :ref:`Действия<ui_actions>`
+Настройки подтягиваются из :ref:`типа данных <data_types_main>`. См. подробную статью :ref:`Действия <ui_actions>`
 
- .. image:: _static/widgets/actions.png
+.. image:: _static/widgets/actions.png
        :width: 250
        :align: center 
 
@@ -669,7 +674,7 @@ Cравнение версий процесса - выберите версии 
 
 Виджет отображает статистику по задачам.
 
- .. image:: _static/widgets/statistics.png
+.. image:: _static/widgets/statistics.png
        :width: 500
        :align: center 
 
@@ -682,7 +687,7 @@ Cравнение версий процесса - выберите версии 
 
 Виджет отображает ближайшие дни рождения. Данные берутся из профиля пользователя. По клику на ФИО можно перейти в профиль.
 
- .. image:: _static/widgets/bday.png
+.. image:: _static/widgets/bday.png
        :width: 300
        :align: center 
 
@@ -695,7 +700,7 @@ Cравнение версий процесса - выберите версии 
 
 Виджет профиля пользователя
 
- .. image:: _static/widgets/profile.png
+.. image:: _static/widgets/profile.png
        :width: 300
        :align: center 
 
@@ -715,7 +720,7 @@ Cравнение версий процесса - выберите версии 
 Запланированные активности используется для напоминания менеджеру о необходимости контакта. Завершённые активности, как важная часть истории сделки, могут использоваться для расчета KPI менеджера. |br|
 Созданные активности отображаются в карточке сделке, по которой они назначены: |br|
 
- .. image:: _static/widgets/activity/activity_01.png
+.. image:: _static/widgets/activity/activity_01.png
        :width: 700
        :align: center 
 
@@ -723,37 +728,37 @@ Cравнение версий процесса - выберите версии 
 
 -	в календаре (только планируемые задачи): 
 
- .. image:: _static/widgets/activity/activity_02.png
+.. image:: _static/widgets/activity/activity_02.png
        :width: 700
        :align: center 
 
-См. подробно :ref:`Письмо-приглашение<activity_ics>` ниже
+См. подробно :ref:`Письмо-приглашение <activity_ics>` ниже
 
 -	и в разделе Задачи -> Текущие задачи:
 
- .. image:: _static/widgets/activity/activity_03.png
+.. image:: _static/widgets/activity/activity_03.png
        :width: 700
        :align: center 
 
-См. подробно :ref:`Задачи<activity_task>` ниже
+См. подробно :ref:`Задачи <activity_task>` ниже
 
 Активности бывают: 
 
- - :ref:`Планируемые<planned_activity>` : звонок, встреча, письмо;
- - :ref:`Непланируемые<unplanned_activity>`: поручение, комментарий
+ - :ref:`Планируемые <planned_activity>` : звонок, встреча, письмо;
+ - :ref:`Непланируемые <unplanned_activity>`: поручение, комментарий
 
 Как добавить
 ~~~~~~~~~~~~~~~~~~
 
 Нажмите **«Добавить активности»**, выберите вид активности из списка:
 
- .. image:: _static/widgets/activity/activity_04.png
+.. image:: _static/widgets/activity/activity_04.png
        :width: 600
        :align: center 
  
 Введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
 
- .. image:: _static/widgets/activity/activity_05.png
+.. image:: _static/widgets/activity/activity_05.png
        :width: 600
        :align: center 
 
@@ -766,7 +771,7 @@ Cравнение версий процесса - выберите версии 
 
 .. _planned_activity:
 
- .. image:: _static/widgets/activity/activity_06.png
+.. image:: _static/widgets/activity/activity_06.png
        :width: 600
        :align: center 
 
@@ -776,9 +781,9 @@ Cравнение версий процесса - выберите версии 
        - Письмо;
        - Встреча.
 
-Для планируемых активностей на электронный адрес, указанный в профиле ответственного и выбранных участников, отправляется письмо-приглашение, содержащее ics файл. См. :ref:`Письмо-приглашение<activity_ics>`
+Для планируемых активностей на электронный адрес, указанный в профиле ответственного и выбранных участников, отправляется письмо-приглашение, содержащее ics файл. См. :ref:`Письмо-приглашение <activity_ics>`
 
-Так же по таким активностям назначается задача, в которой можно дату и время активности перенести, или отметить ее выполнение. См. :ref:`Задачи<activity_task>`
+Так же по таким активностям назначается задача, в которой можно дату и время активности перенести, или отметить ее выполнение. См. :ref:`Задачи <activity_task>`
 
 Статусная модель таких активностей следующая:
 
@@ -796,7 +801,7 @@ Cравнение версий процесса - выберите версии 
         - |  Статус по умолчанию. 
           |  Планируемая активность создана, дата в будущем, задача еще не создана.
           |  В назначенной задаче ответственный выбрал вердикт **«Перенести активность»**.
-          |  Активность в этом статусе можно редактировать и удалять. См. подробно про :ref:`действия<activity_actions>`
+          |  Активность в этом статусе можно редактировать и удалять. См. подробно про :ref:`действия <activity_actions>`
 
       * - | 
 
@@ -805,7 +810,7 @@ Cравнение версий процесса - выберите версии 
                      :align: center 
 
         - |  Наступила дата и время активности. 
-          |  Назначается задача ответственному. В задаче доступны два действия: выполнить и перенести активность. См. подробно про :ref:`задачу<activity_task>`
+          |  Назначается задача ответственному. В задаче доступны два действия: выполнить и перенести активность. См. подробно про :ref:`задачу <activity_task>`
 
       * - | 
 
@@ -828,19 +833,19 @@ Cравнение версий процесса - выберите версии 
 
 По умолчанию указан **ответственный**:
 
- .. image:: _static/widgets/activity/activity_07.png
+.. image:: _static/widgets/activity/activity_07.png
        :width: 600
        :align: center 
 
 Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
- .. image:: _static/widgets/activity/activity_08.png
+.. image:: _static/widgets/activity/activity_08.png
        :width: 600
        :align: center 
 
 Созданная активность в карточке:
 
- .. image:: _static/widgets/activity/activity_09.png
+.. image:: _static/widgets/activity/activity_09.png
        :width: 600
        :align: center 
 
@@ -849,19 +854,19 @@ Cравнение версий процесса - выберите версии 
 
 По умолчанию указан **ответственный**:
  
- .. image:: _static/widgets/activity/activity_10.png
+.. image:: _static/widgets/activity/activity_10.png
        :width: 600
        :align: center 
 
 Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, измените **ответственного** при необходимости. Введите комментарий, добавьте файл. Нажмите **«Создать»**.
 
- .. image:: _static/widgets/activity/activity_11.png
+.. image:: _static/widgets/activity/activity_11.png
        :width: 600
        :align: center 
  
 Созданная активность в карточке:
  
- .. image:: _static/widgets/activity/activity_12.png
+.. image:: _static/widgets/activity/activity_12.png
        :width: 600
        :align: center 
 
@@ -870,19 +875,19 @@ Cравнение версий процесса - выберите версии 
 
 По умолчанию указан **ответственный**:
 
- .. image:: _static/widgets/activity/activity_13.png
+.. image:: _static/widgets/activity/activity_13.png
        :width: 600
        :align: center 
  
 Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
- .. image:: _static/widgets/activity/activity_14.png
+.. image:: _static/widgets/activity/activity_14.png
        :width: 600
        :align: center 
 
 Созданная активность в карточке:
  
- .. image:: _static/widgets/activity/activity_15.png
+.. image:: _static/widgets/activity/activity_15.png
        :width: 600
        :align: center 
 
@@ -895,11 +900,11 @@ Cравнение версий процесса - выберите версии 
 
 В файле ICS указан список запланированных событий и встреч в универсальном формате календаря, который можно использовать в различных программах-органайзерах онлайн и офлайн, например, Microsoft Outlook, Google Calendar и Apple iCal. У файла простой текстовый формат, включающий заголовок события, время его начала и окончания, краткое описание.
 
- .. image:: _static/widgets/activity/activity_16.png
+.. image:: _static/widgets/activity/activity_16.png
        :width: 600
        :align: center  
 
- .. image:: _static/widgets/activity/activity_17.png
+.. image:: _static/widgets/activity/activity_17.png
        :width: 700
        :align: center 
 
@@ -939,14 +944,14 @@ Cравнение версий процесса - выберите версии 
 
 Если работа по активности завершена, то заполните в задаче **результат** и нажмите **«Выполнено»**. Статус активности с **«Просрочена»** изменится на **«Выполнена»**.
 
- .. image:: _static/widgets/activity/activity_19_1.png
+.. image:: _static/widgets/activity/activity_19_1.png
        :width: 600
        :align: center 
 
 
 Результат будет добавлен в соответствующую активность:
 
- .. image:: _static/widgets/activity/activity_20_1.png
+.. image:: _static/widgets/activity/activity_20_1.png
        :width: 600
        :align: center 
 
@@ -983,46 +988,46 @@ Cравнение версий процесса - выберите версии 
 Комментарий
 """"""""""""
 
- .. image:: _static/widgets/activity/activity_21.png
+.. image:: _static/widgets/activity/activity_21.png
        :width: 600
        :align: center 
  
 Введите комментарий. Нажмите **«Создать»**.
 
- .. image:: _static/widgets/activity/activity_22.png
+.. image:: _static/widgets/activity/activity_22.png
        :width: 600
        :align: center 
  
 Созданная активность в карточке:
 
- .. image:: _static/widgets/activity/activity_23.png
+.. image:: _static/widgets/activity/activity_23.png
        :width: 600
        :align: center 
 
-Комментарии из виджета :ref:`«Комментарии»<widget_comments>` транслируются в активности: 
+Комментарии из виджета :ref:`«Комментарии» <widget_comments>` транслируются в активности: 
 
  - обычный комментарий;
  - если  настроена трансляция комментария из задачи в виджет комментариев, то он попадает в активности как комментарий;
- - в :ref:`CRM<ecos-crm>` комментарий по слиянию сделок попадает в активности.
+ - в :ref:`CRM <ecos-crm>` комментарий по слиянию сделок попадает в активности.
 
 Поручение
 """"""""""
 
-Активность запускает функционал :ref:`поручения<ecos-assignments>`. По умолчанию указан **приоритет - средний**:
+Активность запускает функционал :ref:`поручения <ecos-assignments>`. По умолчанию указан **приоритет - средний**:
 
- .. image:: _static/widgets/activity/activity_24.png
+.. image:: _static/widgets/activity/activity_24.png
        :width: 600
        :align: center 
 
 Укажите **название**, выберите **срок**, **исполнителя**, измените **приоритет** при необхоимости:
 
- .. image:: _static/widgets/activity/activity_25.png
+.. image:: _static/widgets/activity/activity_25.png
        :width: 600
        :align: center 
 
 Созданная активность в карточке:
 
- .. image:: _static/widgets/activity/activity_26.png
+.. image:: _static/widgets/activity/activity_26.png
        :width: 600
        :align: center 
 
@@ -1034,13 +1039,13 @@ Cравнение версий процесса - выберите версии 
 
 По нажатию на:
 
- .. image:: _static/widgets/activity/activity_27.png
+.. image:: _static/widgets/activity/activity_27.png
        :width: 600
        :align: center 
  
 можно перейти в карточку поручения для его редактирования:
 
- .. image:: _static/widgets/activity/activity_28.png
+.. image:: _static/widgets/activity/activity_28.png
        :width: 600
        :align: center 
 
@@ -1074,19 +1079,19 @@ Cравнение версий процесса - выберите версии 
 
 Редактировать и удалять можно активность в статусе **«Запланирована»**: 
 
- .. image:: _static/widgets/activity/activity_31.png
+.. image:: _static/widgets/activity/activity_31.png
        :width: 600
        :align: center 
 
 и тип **«Комментарий»**:
 
- .. image:: _static/widgets/activity/activity_32.png
+.. image:: _static/widgets/activity/activity_32.png
        :width: 600
        :align: center 
 
 Для типа **«Поручение»** доступен переход в карточку поручения:
 
- .. image:: _static/widgets/activity/activity_33.png
+.. image:: _static/widgets/activity/activity_33.png
        :width: 600
        :align: center 
 
@@ -1123,7 +1128,7 @@ Cравнение версий процесса - выберите версии 
 
  Отображается бизнес-процесс, целевые значения KPI **(1)**, отклонения значения KPI от целевого значения **(2)**:
 
-См. :ref:`подробно о KPI<bpmn_kpi>`
+См. :ref:`подробно о KPI <bpmn_kpi>`
 
 .. _widget_process_statistics_simple:
 
@@ -1198,9 +1203,9 @@ Cравнение версий процесса - выберите версии 
 
 Ключ ``stages``
 
-Виджет визуализирует прохождение :ref:`стадий<stages>` документа:
+Виджет визуализирует прохождение :ref:`стадий <stages>` документа:
 
- .. image:: _static/widgets/stages_1.png
+.. image:: _static/widgets/stages_1.png
        :width: 600
        :align: center 
 
@@ -1237,11 +1242,11 @@ Cравнение версий процесса - выберите версии 
 
 Ключ ``kanban-board``
 
-Виджет добавляет в карточку :ref:`канбан доску<kanban_board>` с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку.
+Виджет добавляет в карточку :ref:`канбан доску <kanban_board>` с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку.
 
-Виджет доступен только для следующего :ref:`представления дашборда<dashboard_view>`:
+Виджет доступен только для следующего :ref:`представления дашборда <dashboard_view>`:
 
- .. image:: _static/widgets/kanban_1.png
+.. image:: _static/widgets/kanban_1.png
        :width: 600
        :align: center 
 
@@ -1291,11 +1296,11 @@ Cравнение версий процесса - выберите версии 
 
 Виджет позволяет пользователям наглядно представлять и анализировать данные, повышая эффективность принятия решений и улучшая понимание текущего состояния бизнес-процессов.
 
- .. image:: _static/widgets/chart_1.png
+.. image:: _static/widgets/chart_1.png
        :width: 600
        :align: center 
 
- .. image:: _static/widgets/chart_1_1.png
+.. image:: _static/widgets/chart_1_1.png
        :width: 600
        :align: center 
 
@@ -1305,13 +1310,13 @@ Cравнение версий процесса - выберите версии 
 
 Графики конфигурируемые - пользователи могут настраивать оси, масштабирование и т.д. 
 
- .. image:: _static/widgets/chart_2.png
+.. image:: _static/widgets/chart_2.png
        :width: 600
        :align: center 
 
 Для столбчатого, линейного, кругового тира по нажатию на пункт легенды данные пункта легенды убираются из представления графика:
 
- .. image:: _static/widgets/chart_3.png
+.. image:: _static/widgets/chart_3.png
        :width: 600
        :align: center 
 
@@ -1320,7 +1325,7 @@ Cравнение версий процесса - выберите версии 
 
 Для всех типов графиков:
 
- .. image:: _static/widgets/chart_4.png
+.. image:: _static/widgets/chart_4.png
        :width: 700
        :align: center 
 
@@ -1365,7 +1370,7 @@ Cравнение версий процесса - выберите версии 
 
 Столбчатый 
 """""""""""
- .. image:: _static/widgets/chart_8.png
+.. image:: _static/widgets/chart_8.png
        :width: 600
        :align: center 
 
@@ -1373,7 +1378,7 @@ Cравнение версий процесса - выберите версии 
 
 Настройка:
 
- .. image:: _static/widgets/chart_5.png
+.. image:: _static/widgets/chart_5.png
        :width: 600
        :align: center 
 
@@ -1412,7 +1417,7 @@ Cравнение версий процесса - выберите версии 
 Линейный
 """""""""""
 
- .. image:: _static/widgets/chart_10.png
+.. image:: _static/widgets/chart_10.png
        :width: 600
        :align: center 
 
@@ -1420,7 +1425,7 @@ Cравнение версий процесса - выберите версии 
 
 Настройка:
 
- .. image:: _static/widgets/chart_9.png
+.. image:: _static/widgets/chart_9.png
        :width: 600
        :align: center 
 
@@ -1441,7 +1446,7 @@ Cравнение версий процесса - выберите версии 
 Круговой
 """""""""""
 
- .. image:: _static/widgets/chart_12.png
+.. image:: _static/widgets/chart_12.png
        :width: 300
        :align: center 
 
@@ -1449,7 +1454,7 @@ Cравнение версий процесса - выберите версии 
 
 Настройка:
 
- .. image:: _static/widgets/chart_11.png
+.. image:: _static/widgets/chart_11.png
        :width: 600
        :align: center 
 
@@ -1466,7 +1471,7 @@ Cравнение версий процесса - выберите версии 
 Воронка
 """""""""""
 
- .. image:: _static/widgets/chart_13.png
+.. image:: _static/widgets/chart_13.png
        :width: 300
        :align: center 
 
@@ -1476,7 +1481,7 @@ Cравнение версий процесса - выберите версии 
 
 Настройка:
 
- .. image:: _static/widgets/chart_14.png
+.. image:: _static/widgets/chart_14.png
        :width: 600
        :align: center 
 
@@ -1519,29 +1524,29 @@ Cравнение версий процесса - выберите версии 
 
 Виджет показывает анонсы последних 3 новостей из журнала **«Новости»**:
 
- .. image:: _static/widgets/news_01.png
+.. image:: _static/widgets/news_01.png
        :width: 500
        :align: center 
 
 По клику на карточку новость будет доступна подробно: 
 
- .. image:: _static/widgets/news_02.png
+.. image:: _static/widgets/news_02.png
        :width: 500
        :align: center 
 
 По клику на **Перейти** можно перейти в журнал **"Новости"**:
 
- .. image:: _static/widgets/news_04.png
+.. image:: _static/widgets/news_04.png
        :width: 700
        :align: center 
 
 Для выбора источника новостей нажмите **шестеренку**, выберите тип данных и сохраните:
 
- .. image:: _static/widgets/news_03.png
+.. image:: _static/widgets/news_03.png
        :width: 600
        :align: center 
 
-См. как создать журнал :ref:`Новости<news>`:
+См. как создать журнал :ref:`Новости <news>`:
 
 
 .. _widget_knowledge_base:
@@ -1551,25 +1556,25 @@ Cравнение версий процесса - выберите версии 
 
 Виджет отображает иерархическую структуру данных, что облегчает навигацию:
 
- .. image:: _static/widgets/kb_01.png
+.. image:: _static/widgets/kb_01.png
        :width: 250
        :align: center 
 
-При выборе раздела справа открывается :ref:`публикация<widget_publication>` или карточки входящие в :ref:`категорию<tiles>`:
+При выборе раздела справа открывается :ref:`публикация <widget_publication>` или карточки входящие в :ref:`категорию <tiles>`:
 
- .. image:: _static/widgets/kb_04.png
+.. image:: _static/widgets/kb_04.png
        :width: 700
        :align: center 
 
 По умолчанию виджет называется **Меню**. Для его переименования нажмите **(1)**:
 
- .. image:: _static/widgets/kb_06.png
+.. image:: _static/widgets/kb_06.png
        :width: 300
        :align: center 
 
-Для добавления публикации или раздела/ категории  1-го уровня нажмите большой **+** **(2)**, с использованием :ref:`редактора<wysiwyg_editor>` создайте контент, сохраните:
+Для добавления публикации или раздела/ категории  1-го уровня нажмите большой **+** **(2)**, с использованием :ref:`редактора <wysiwyg_editor>` создайте контент, сохраните:
 
- .. image:: _static/widgets/kb_03.png
+.. image:: _static/widgets/kb_03.png
        :width: 600
        :align: center 
 
@@ -1579,7 +1584,7 @@ Cравнение версий процесса - выберите версии 
 
 Пустой виджет выглядит следующим образом:
 
- .. image:: _static/widgets/kb_02.png
+.. image:: _static/widgets/kb_02.png
        :width: 250
        :align: center 
 
@@ -1597,11 +1602,11 @@ Cравнение версий процесса - выберите версии 
 
 Виджет предназначен для отображения и редактирования контента - например, новости, публикации из базы знаний:
 
- .. image:: _static/widgets/publication_01.png
+.. image:: _static/widgets/publication_01.png
        :width: 500
        :align: center 
 
-Редактирование контента производится с помощью :ref:`редактора WYSIWYG<wysiwyg_editor>`.
+Редактирование контента производится с помощью :ref:`редактора WYSIWYG <wysiwyg_editor>`.
 
 
 .. _widget_available_ws:
@@ -1609,9 +1614,9 @@ Cравнение версий процесса - выберите версии 
 Виджет «Доступные пространства»
 --------------------------------
 
-Виджет содержит доступные публичные пространства. Используя :ref:`действия<ws_actions>` в пространство можно перейти, присоединиться: 
+Виджет содержит доступные публичные пространства. Используя :ref:`действия <ws_actions>` в пространство можно перейти, присоединиться: 
 
- .. image:: _static/widgets/available_ws.png
+.. image:: _static/widgets/available_ws.png
        :width: 700
        :align: center 
 
@@ -1626,7 +1631,7 @@ Cравнение версий процесса - выберите версии 
  Редактирование виджета доступно **администратору** и пользователю с ролью **"Менеджер"** рабочего пространства, в котором виджет размещен.
 
 
-В виджете с использованием кода HTML можно ввести необходимую информацию, доступна En/Ru локализация и использование :ref:`WYSIWYG редактора<wysiwyg_editor>`.
+В виджете с использованием кода HTML можно ввести необходимую информацию, доступна En/Ru локализация и использование :ref:`WYSIWYG редактора <wysiwyg_editor>`.
 
 
 .. list-table:: 
@@ -1661,7 +1666,7 @@ Cравнение версий процесса - выберите версии 
 
 **Приветствие** - информация для знакомства пользователя с новым функционалом рабочих пространств при первом входе в систему:
 
- .. image:: _static/widgets/html_2.png
+.. image:: _static/widgets/html_2.png
        :width: 600
        :align: center 
 
@@ -1783,7 +1788,7 @@ Cравнение версий процесса - выберите версии 
  
  То есть, если сдвинуть этап, все его дочерние задачи также будут перемещены. Если дочерняя задача переносится на начало до даты начала этапа, дата начала этапа изменяется. Если дочерняя задача переносится на завершение после даты окончания этапа, дата окончания этапа изменяется.
 
-Вы также можете изменить даты при :ref:`редактировании задачи<widget_gantt_edit>`.
+Вы также можете изменить даты при :ref:`редактировании задачи <widget_gantt_edit>`.
 
 Прогресс выполнения
 """""""""""""""""""""
@@ -1794,7 +1799,7 @@ Cравнение версий процесса - выберите версии 
       :width: 300
       :align: center    
 
-Вы также можете изменить ход выполнения в поле **«Прогресс»** :ref:`редактировании задачи<widget_gantt_edit>`.
+Вы также можете изменить ход выполнения в поле **«Прогресс»** :ref:`редактировании задачи <widget_gantt_edit>`.
 
 .. image:: _static/widgets/gantt/progress.png
       :width: 800
@@ -1825,7 +1830,7 @@ Cравнение версий процесса - выберите версии 
       :width: 800
       :align: center  
 
-Вы также можете изменить уже установленные типы связи в полях **«Предшественники»** и/или **«Преемники»** при :ref:`редактировании задачи<widget_gantt_edit>`.
+Вы также можете изменить уже установленные типы связи в полях **«Предшественники»** и/или **«Преемники»** при :ref:`редактировании задачи <widget_gantt_edit>`.
 Чтобы удалить связь, нажмите кнопку **«Удалить»** рядом с типом связи.
 
 .. image:: _static/widgets/gantt/links_edit.png
