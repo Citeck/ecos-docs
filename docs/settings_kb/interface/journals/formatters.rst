@@ -380,7 +380,12 @@ DurationFormatter / Продолжительность
           | По умолчанию секунды отображаются - showSeconds = true
       * - **maxAsHours**
         - | При применении в журнале продолжительность будет трансформироваться в часы, то есть 2d 3h 30m = 51h 30m
-          | Возможные значение - true/false 
+          | Возможные значение - true/false
+      * - **hoursPerDay**
+        - | Количество рабочих часов в одном дне. При указании значения > 0 дни рассчитываются как человеко-дни (общие часы / hoursPerDay), а не календарные (24ч).
+          | Например, при hoursPerDay = 8: 24 часа = 3d (а не 1d)
+          | Возможные значения - число > 0
+          | По умолчанию не задано (используются календарные дни)
 
 Пример:
 
@@ -389,7 +394,14 @@ DurationFormatter / Продолжительность
   formatter:
     type: duration
     config:
-      maxAsHours: true  
+      maxAsHours: true
+
+.. code-block::
+
+  formatter:
+    type: duration
+    config:
+      hoursPerDay: 8
 
 FileNameFormatter / Имя файла
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
