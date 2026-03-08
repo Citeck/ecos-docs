@@ -1,24 +1,40 @@
-Демо микросервис
-===================
-
 .. _demo_microservice:
 
-.. contents:: 
+Демо микросервис
+================================
+
+.. contents::
    :depth: 5
+
+**ecos-demo-app** — эталонный микросервис платформы Citeck, предназначенный для разработчиков, которые создают собственные микросервисы или интегрируют внешние системы с платформой. Приложение написано на Java с использованием Spring Boot и охватывает наиболее распространённые сценарии работы с ECOS API.
+
+Документ адресован разработчикам (Java/Kotlin), которые начинают работу с платформой Citeck ECOS или хотят разобраться в типовых паттернах интеграции.
+
+В демо-приложении реализованы следующие механизмы платформы:
+
+- **Records API** — пользовательский RecordsDAO с хранением данных в памяти и полным набором CRUD-операций;
+- **Actions** — серверные действия, включая отправку email-уведомлений и создание дочерних сущностей по действию;
+- **Commands** — асинхронный обмен сообщениями между микросервисами;
+- **Jobs** — планирование регулярного выполнения задач с помощью аннотации ``@Scheduled``;
+- **Events** — подписка на события платформы (создание и изменение записей) с поддержкой транзакционных и асинхронных слушателей;
+- **External Tasks** — выполнение задач BPMN-процесса во внешнем сервисе;
+- **BPMN-процесс** — полный цикл бизнес-процесса с автостартом, пользовательской задачей и внешней задачей.
+
+----
 
 Репозиторий `ecos-demo-app <https://github.com/Citeck/ecos-demo-app>`_ содержит приложение, демонстрирующее возможности Citeck.
 
 Вы можете познакомиться с:
 
-    - пользовательским :ref:`RecordsDAO<new_RecordsDAO>`;
-    - работой с :ref:`RecordsService<ecos_RecordsService>`;
-    - :ref:`действиями<ui_actions>`;
-    - :ref:`командами<ecos_commands>`;
-    - :ref:`событиями<ecos_events>`;
-    - бизнес-процессом с  :ref:`внешней задачей<ecos_bpmn_external_task>`;
-    - созданием :ref:`дочерних ассоциаций<datatypes_associations>`.
+    - пользовательским :ref:`RecordsDAO <new_RecordsDAO>`;
+    - работой с :ref:`RecordsService <ecos_RecordsService>`;
+    - :ref:`действиями <ui_actions>`;
+    - :ref:`командами <ecos_commands>`;
+    - :ref:`событиями <ecos_events>`;
+    - бизнес-процессом с :ref:`внешней задачей <ecos_bpmn_external_task>`;
+    - созданием :ref:`дочерних ассоциаций <datatypes_associations>`.
 
-См. подробнее про :ref:`артефакты Citeck<ecos_artifacts>`, :ref:`приложения<applications>`.
+См. подробнее про :ref:`артефакты Citeck <ecos_artifacts>`, :ref:`приложения <applications>`.
 
 При запуске приложения в левом меню по умолчанию появится раздел **«Демо тип/Demo type»** с двумя журналами:
 
@@ -26,23 +42,23 @@
     - **in-memory демо тип/Demo in-memory type** — журнал с сущностями в памяти для демонстрации работы с пользовательским **RecordsDAO**, определенным в *ru.citeck.ecos.webapp.demo.records.DemoInMemRecordsDao*. Вы можете создавать/просматривать/редактировать/удалять записи в этом журнале и смотреть, что изменилось в **DemoInMemRecordsDao**.
 
 С чего начать
---------------
+--------------------------
 
-Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_. Подробно :ref:`об установке<docker_compose>`.
+Если вы не знакомы с платформой Citeck, и хотите запустить программное обеспечение локально, мы рекомендуем вам загрузить Dockerized версию `Community demo <https://github.com/Citeck/ecos-community-demo>`_. Подробно :ref:`об установке <docker_compose>`.
 
 Микросервис написан с использованием `Spring Boot <https://docs.spring.io/spring-boot/documentation.html>`_.
 
 .. note::
 
-    Для запуска этого приложения необходимы следующие приложения из развертывания Citeck:
+   Для запуска этого приложения необходимы следующие приложения из развертывания Citeck:
 
-        -	zookeeper; 
-        -	rabbitmq;
-        -	ecos-model;
-        -	ecos-registry.
+   - zookeeper;
+   - rabbitmq;
+   - ecos-model;
+   - ecos-registry.
 
 Запуск
--------
+------------
 
 Клонируйте репозиторий в свою среду разработки. Для запуска приложения выполните:
 
@@ -53,7 +69,7 @@
 Если ваша IDE поддерживает запуск приложений Spring Boot напрямую, вы можете легко запустить класс ru.citeck.ecos.webapp.demo.EcosDemoApp без дополнительной настройки.
 
 Сценарий работы
------------------
+------------------------------
 
 1.	Запустите **ecos-demo-app**.
 2.	В Citeck в верхнем левом углу нажмите **«Создать/Create»**.
@@ -81,10 +97,10 @@
 
 
 Описание сущностей микросервиса
-------------------------------------
+----------------------------------------------------------------
 
 Артефакты
-~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 В папке ``.../src/main/resources/eapps/artifacts`` расположены артефакты проекта. Первые два уровня каталогов соответствуют типу артефакта. Например: 
 
@@ -94,23 +110,25 @@
 * process/bpmn
 * ui/action, /form, /journal 
 
-Подробнее про :ref:`артефакты Citeck<ecos_artifacts>`
+Подробнее про :ref:`артефакты Citeck <ecos_artifacts>`
 
 Классы
-~~~~~~
+~~~~~~~~~~~~
 
 .. tabs::
 
-   .. tab:: Records      
+   .. tab:: Records
 
         **Запись (Record)** – сущность с набором атрибутов и идентификатором записи (RecordRef).
 
         Ниже разобран простой пример RecordsDAO с хранением сущностей в памяти. Данный RecordsDAO демонстрирует простые базовые операции CRUD в API Records и не реализует такие функции,  как ассоциации, хранение контента, проверку разрешений и т. д. 
-        См. подробное описание :ref:`операций CRUD<ecos_RecordsService>`
+        См. подробное описание :ref:`операций CRUD <ecos_RecordsService>`
 
         `Ссылка на Records в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/records/DemoInMemRecordsDao.java>`_ 
 
-        **Внимание:** Все данные будут потеряны после перезапуска приложения. Не используйте для продакшн-среды.
+        .. warning::
+
+           Все данные будут потеряны после перезапуска приложения. Не используйте для продакшн-среды.
 
         .. code-block:: java
 
@@ -295,7 +313,7 @@
 
    .. tab:: Actions
 
-        :ref:`Действия<ui_actions>` - артефакты Citeck в формате json или yaml с типом ui/action. `Ссылка на Action в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/actions/SendDemoEmailAction.java>`_
+        :ref:`Действия <ui_actions>` — артефакты Citeck в формате json или yaml с типом ui/action. `Ссылка на Action в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/actions/SendDemoEmailAction.java>`_
 
         Артефакты действий расположены в папке ``…/src/main/resources/eapps/artifacts/ui/action``
 
@@ -383,7 +401,7 @@
 
         На фронтенде действие вызывается следующим образом:
 
-        .. code-block::
+        .. code-block:: javascript
 
             let rec = Records.getRecordToEdit('ecos-demo-app/send-demo-email@');
             rec.att('entityRef', 'emodel/demo-type@629fbd31-788a-4232-9de9-d737e5b07795'); // any EntityRef
@@ -398,13 +416,13 @@
 
    .. tab:: Commands
 
-        :ref:`Команды<ecos_commands>` в Citeck в основном используются для асинхронного обмена сообщениями между приложениями.
+        :ref:`Команды <ecos_commands>` в Citeck в основном используются для асинхронного обмена сообщениями между приложениями.
 
         **Command Executor**
-        
+
         В сервисе, куда отсылается команда, необходимо реализовать **Executor**, который будет обрабатывать DTO. `Ссылка на Command Executor в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/commands/DemoCommandExecutor.java>`_
 
-        В данном demo executor рассматриваются понимания основные концепции. Тип команды будет рассчитываться на основе аннотации CommandType для универсального типа CommandExecutor.
+        В данном demo executor рассматриваются основные концепции. Тип команды будет рассчитываться на основе аннотации CommandType для универсального типа CommandExecutor.
 
         .. code-block:: java
 
@@ -430,7 +448,7 @@
             }
 
         **Сама команда**
-        
+
         В сервисе, из которого отправляем командный запрос, используем **CommandService** для отправки команды. `Ссылка на Command в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/commands/SendDemoCommandAction.java>`_
 
         .. code-block:: java
@@ -522,7 +540,7 @@
 
    .. tab:: Events
 
-        :ref:`События<ecos_events>` в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий. 
+        :ref:`События <ecos_events>` в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий.
 
         Рассмотрим создание класса **EventListener**. `Ссылка на Event в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/events/DemoEcosEventListener.java>`_
 
@@ -612,7 +630,7 @@
 
    .. tab:: Exttask
 
-        :ref:`Внешние задачи<ecos_bpmn_external_task>` позволяют выполнять задачи с помощью внешних систем.
+        :ref:`Внешние задачи <ecos_bpmn_external_task>` позволяют выполнять задачи с помощью внешних систем.
 
         Пример внешней задачи для демо BPMN процесса -  `ссылка в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/exttask/DemoExternalTask.java>`_
 
@@ -662,7 +680,7 @@
             }
 
 Сборка
--------
+------------
 
 Для сборки docker образа с микросервисом выполните команду:
 
@@ -673,7 +691,7 @@
 После сборки вы можете запустить контейнер **ecos-demo-app:custom** с помощью docker.
 
 Тестирование
---------------
+------------------------
 
 Для запуска тестов вашего приложения, выполните:
 

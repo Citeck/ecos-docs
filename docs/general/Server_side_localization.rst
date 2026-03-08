@@ -1,53 +1,55 @@
-Настройка бэкенд локализации
-==============================
+.. _server-side-localization:
 
-Добавлена возможность локализировать ошибки на стороне сервера.
+Настройка бэкенд локализации
+======================================================
+
+Добавлена возможность локализовать ошибки на стороне сервера.
 
 В микросервисе или библиотеке необходимо добавить файл со списком локализаций сообщений в ``resources/ecos/messages`` в формате:
 
-.. code-block::
+.. code-block:: json
 
     {
-    "id": "test-messages",
-    "locales": [
-        "en",
-        "ru"
-    ],
-    "messages": {
-        "label.yes": [
-        "Yes",
-        "Да"
+        "id": "test-messages",
+        "locales": [
+            "en",
+            "ru"
         ],
-        "label.no": [
-        "No",
-        "Нет"
-        ],
-        "server-error-occurred-with-code": [
-        "Server error occurred. Error code: {{code}}",
-        "Произошла ошибка на сервере. Код ошибки: {{code}}"
-        ]
-    }
+        "messages": {
+            "label.yes": [
+                "Yes",
+                "Да"
+            ],
+            "label.no": [
+                "No",
+                "Нет"
+            ],
+            "server-error-occurred-with-code": [
+                "Server error occurred. Error code: {{code}}",
+                "Произошла ошибка на сервере. Код ошибки: {{code}}"
+            ]
+        }
     }
 
 Локализация сообщения должна располагаться в том же порядке, как указано в ``locales``.
 
 В текст можно подставлять параметры в формате:
 
-.. code-block::
+.. code-block:: text
 
- {{param}}
+    {{param}}
 
 Для обработки локализованной ошибки добавлено исключение ``I18nRuntimeException``. Например:
 
-.. code-block::
+.. code-block:: kotlin
 
     throw I18nRuntimeException.create()
                     .messageKey("label.yes")
-                    .build() 
-                    
+                    .build()
+
 Пример с проставлением параметров:
 
-.. code-block::
+.. code-block:: kotlin
 
     throw I18nRuntimeException.create()
                     .messageKey("server-error-occurred-with-code")
@@ -56,7 +58,7 @@
                             "code" to 500
                         )
                     )
-                    .build() 
+                    .build()
 
-При обработке такого исключения в логи всегда пишется с ENGLISH локализацией. Если локализация не найдена, будет использоваться ключ сообщения.
+При обработке такого исключения в логи всегда пишется английская локализация. Если локализация не найдена, будет использоваться ключ сообщения.
 На клиент возвращается текст ошибки исходя из локализации в контексте запроса.

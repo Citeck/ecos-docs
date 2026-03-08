@@ -12,9 +12,9 @@ REST Data Source
 
 Источник данных, который работает через REST запросы
 
- .. image:: _static/data_sources/data_sources_1.png
-       :width: 600
-       :align: center
+.. image:: _static/data_sources/data_sources_1.png
+   :width: 600
+   :align: center
 
 * **Id** - идентификатор источника
 * **Name** - произвольное имя
@@ -39,9 +39,9 @@ SSL при запросах к бд через ECOS db-data-source
 
 Можно использовать при настройке внешней БД в **recsrc**.
 
- .. image:: _static/data_sources/data_sources_2.png
-       :width: 400
-       :align: center
+.. image:: _static/data_sources/data_sources_2.png
+   :width: 400
+   :align: center
 
 Общий принцип таков, что исходя из конфига - создается **HikariDataSource**.
 
@@ -72,7 +72,7 @@ SSL при запросах к бд через ECOS db-data-source
 
 1. Сгенерим ключи и серт:
 
-.. code:: 
+.. code-block:: bash
 
     openssl genrsa -out root.key 2048
     openssl req -x509 -new -key root.key -days 10000 -out root.crt
@@ -82,7 +82,7 @@ SSL при запросах к бд через ECOS db-data-source
 
 2. Добавить в директорию с сертификатами DockerFile:
 
-.. code:: 
+.. code-block:: dockerfile
 
     FROM postgres:10.4-alpine
 
@@ -97,7 +97,7 @@ SSL при запросах к бд через ECOS db-data-source
 
 3. Собираем и запускаем:
 
-.. code:: 
+.. code-block:: bash
 
     docker build -t mypg:01 .
 
@@ -107,9 +107,9 @@ SSL при запросах к бд через ECOS db-data-source
 
 Проверить клиентов и признак использования шифрования с их стороны можно с помощью SQL скрипта:
 
-.. code:: 
+.. code-block:: sql
 
-    SELECT * 
+    SELECT *
     FROM pg_stat_ssl
     JOIN pg_stat_activity
         ON pg_stat_ssl.pid = pg_stat_activity.pid;
@@ -124,9 +124,9 @@ SSL при запросах к бд через ECOS db-data-source
 
 Источник данных для подключения к очереди сообщений
 
- .. image:: _static/data_sources/data_sources_3.png
-       :width: 600
-       :align: center
+.. image:: _static/data_sources/data_sources_3.png
+   :width: 600
+   :align: center
 
 * **Id** - идентификатор источника данных
 * **Name** - произвольное имя источника данных

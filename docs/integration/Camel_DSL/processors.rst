@@ -1,23 +1,23 @@
 Процессоры
-----------------
+--------------------
 
 .. contents::
-		:depth: 3
+   :depth: 3
 
 **Процессор** - обработчик, который обрабатывает сообщение произвольным образом.
 
 Подробнее - https://camel.apache.org/manual/processor.html
 
+.. _CsvToListOfDataProcessor:
+
 CsvToListOfDataProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _CsvToListOfDataProcessor:
 
 Данный процессор предназначен для чтения CSV-данных и преобразования их в список объектов *DataValue*:
 
 .. image:: _static/processors/Proc_02.png
        :width: 700
-       :align: center   
+       :align: center
 
 Первая строка файла - заголовки, последующие - данные, соответствующие заголовкам
 
@@ -26,7 +26,7 @@ CsvToListOfDataProcessor
 .. list-table::
       :widths: 10 20
       :header-rows: 1
-      :class: tight-table  
+      :class: tight-table
 
       * - Key
         - Value
@@ -35,7 +35,7 @@ CsvToListOfDataProcessor
 
 Пример:
 
-.. code-block::
+.. code-block:: yaml
 
    - beans:
        - name: "csvToListOfDataProcessor"
@@ -53,36 +53,36 @@ CsvToListOfDataProcessor
                steps:
                  - to: ecos-records-mutate:?sourceId=emodel/camel-example-employee
 
+.. _ExcelToListOfDataProcessor:
+
 ExcelToListOfDataProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _ExcelToListOfDataProcessor:
 
 Данный процессор предназначен для чтения данных из формата Excel (XLSX) и преобразования их в список объектов *DataValue*:
 
 .. image:: _static/processors/Proc_03.png
        :width: 900
-       :align: center   
+       :align: center
 
 Параметры:
 
 .. list-table::
       :widths: 10 20
       :header-rows: 1
-      :class: tight-table  
+      :class: tight-table
 
       * - Key
         - Value
       * - sheetName
         - Название листа Excel. По умолчанию используется первый лист
       * - tableStartCellReference
-        - Ссылка на начальную ячейку таблицы (откуда начинается срока с заголовками).  По умолчанию "A1"
+        - Ссылка на начальную ячейку таблицы (откуда начинается строка с заголовками). По умолчанию "A1"
       * - customAttNames
         - Ассоциативный массив пользовательских имен атрибутов, где ключ - буква столбца (например, "A"), а значение - желаемое имя атрибута.
 
 Пример:
 
-.. code-block::
+.. code-block:: yaml
 
    - beans:
        - name: "excelProcessor"
@@ -104,23 +104,23 @@ ExcelToListOfDataProcessor
                steps:
                  - to: "ecos-records-mutate:?sourceId=emodel/camel-example-employee"
 
+.. _AssocRefByAttributeProcessor:
+
 AssocRefByAttributeProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _AssocRefByAttributeProcessor:
 
 Данный процессор принимает объект *DataValue* и на основании переданных заголовков (обязательных) находит EntityRef необходимой ассоциации и проставляет это значение в *DataValue*:
 
 .. image:: _static/processors/Proc_04.png
        :width: 900
-       :align: center   
+       :align: center
 
 Параметры заголовков ("setHeader" должен быть под именем "AssocRefByAttributeConfig"):
 
 .. list-table::
       :widths: 10 20
       :header-rows: 1
-      :class: tight-table  
+      :class: tight-table
 
       * - Key
         - Value
@@ -133,7 +133,7 @@ AssocRefByAttributeProcessor
 
 Пример:
 
-.. code-block::
+.. code-block:: yaml
 
    - beans:
        - name: "csvToListOfDataProcessor"
@@ -159,16 +159,16 @@ AssocRefByAttributeProcessor
                steps:
                  - to: "ecos-records-mutate:?sourceId=emodel/camel-example-employee"
 
+.. _CopyJournalSettingsProcessor:
+
 CopyJournalSettingsProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _CopyJournalSettingsProcessor:
 
 Данный процессор преобразует данные о шаблонах журнала, помогая тем самым перекопировать шаблоны от 1 журнала к другому.
 
 Для его использования необходимо добавить его, с соответствующей конфигурацией, в свой конфигурационный **yml** файл:
 
-.. code-block::
+.. code-block:: yaml
 
    - beans:
        - name: copyJournalSettings
@@ -193,13 +193,13 @@ CopyJournalSettingsProcessor
 
      - **journalId** - Id журнала в котором мы хотим создавать шаблоны
      - **journalOldId** - Id журнала из которого мы будем забирать шаблоны и переносить их в новый журнал
-     - **mapping** - маппинг сопостовления колонок между старым журналом и новым. В качестве ключа указывается Id колонки из журнала в который мигрируем, а в качестве значения - из которого мигрируем
+     - **mapping** - маппинг сопоставления колонок между старым журналом и новым. В качестве ключа указывается Id колонки из журнала в который мигрируем, а в качестве значения - из которого мигрируем
 
-Далее мы просто успользуем данный процессор в своем Camel DSL роуте.
+Далее мы просто используем данный процессор в своем Camel DSL роуте.
 
 Пример полноценного роута с данным процессором:
 
-.. code-block::
+.. code-block:: yaml
 
   ---
   - beans:
@@ -253,15 +253,15 @@ CopyJournalSettingsProcessor
 
 Примечания:
 
-  - В предикате поиска мы указываем 2 предиката: **1-ый** проверяет, что **id**шаблона не заканчивается на *-mgr*, поскольку данный суфикс будут иметь перекопированные шаблоны и их не нужно обрабатывать. **2-ой** указывает список журналов из которых мы хотим брать шаблоны для перекопирования (По идее тут должны быть журналы их конфигурации процессора, которые записаны в параметры journalOldId).
+  - В предикате поиска мы указываем 2 предиката: **1-ый** проверяет, что **id**шаблона не заканчивается на *-mgr*, поскольку данный суффикс будут иметь перекопированные шаблоны и их не нужно обрабатывать. **2-ой** указывает список журналов из которых мы хотим брать шаблоны для перекопирования (По идее тут должны быть журналы их конфигурации процессора, которые записаны в параметры journalOldId).
   - **attributes** остаются без изменения, поскольку данные поля обрабатываются в процессоре и переносятся в новый журнал.
   - В шаге роута используется **split** чтобы обрабатывать каждый шаблон по отдельности.
 
 
+.. _CreateEcosHistoryDocumentMirrorProcessor:
+
 CreateEcosHistoryDocumentMirrorProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _CreateEcosHistoryDocumentMirrorProcessor:
 
 **Класс**
 
@@ -275,7 +275,7 @@ CreateEcosHistoryDocumentMirrorProcessor
 
 Если на входе **DataValue** в виде листа, то на выходе новый лист с **DataValue** объектами после обработки.
 
-Если на входе объект, конвертируемый в **DataValue**, то на выходе новый **DataValue** объект после обработки. 
+Если на входе объект, конвертируемый в **DataValue**, то на выходе новый **DataValue** объект после обработки.
 
 **Описание**
 
@@ -290,7 +290,7 @@ CreateEcosHistoryDocumentMirrorProcessor
 .. list-table::
       :widths: 5 5 20
       :header-rows: 1
-      :class: tight-table  
+      :class: tight-table
 
       * - Name
         - Тип
@@ -310,7 +310,7 @@ CreateEcosHistoryDocumentMirrorProcessor
 .. list-table::
       :widths: 5 5 10 10
       :header-rows: 1
-      :class: tight-table  
+      :class: tight-table
 
       * - Name
         - Тип
@@ -319,7 +319,7 @@ CreateEcosHistoryDocumentMirrorProcessor
       * - CreateEcosHistoryDocumentMirrorConfig
         - Объект:
 
-          .. code-block::
+          .. code-block:: text
 
             documentMirrorRefIdPrefix: String = "",
             documentRefIdPrefix: String = "",
@@ -328,20 +328,20 @@ CreateEcosHistoryDocumentMirrorProcessor
             documentMirrorRef: String = ""
 
         - {}
-        - | Общий объект конфигурации для всех настроек, которые описаны ниже. 
+        - | Общий объект конфигурации для всех настроек, которые описаны ниже.
           | Имеет меньший приоритет по сравнению с соответствующими хидерами ниже.
       * - CreateEcosHistoryDocumentMirrorDocumentRef
         - String
-        - | Берется атрибут "id" из value и к нему  добавляется префикс, который задан в
+        - | Берется атрибут "id" из value и к нему добавляется префикс, который задан в
           | documentRefIdPrefix (CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix)
-        - Документ, из которого мы хотим передавать историю 
+        - Документ, из которого мы хотим передавать историю
       * - CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix
         - String
         - ""
         - Используется для формирования полного рефа в documentRef на базе атрибута "id" в обрабатываемом значении.
       * - CreateEcosHistoryDocumentMirrorDocumentMirrorRef
         - String
-        - | Берется атрибут "id" из value и к нему  добавляется префикс, который задан в
+        - | Берется атрибут "id" из value и к нему добавляется префикс, который задан в
           | documentMirrorRefIdPrefix (CreateEcosHistoryDocumentMirrorDocumentMirrorRefIdPrefix)
           | Если префикс не задан или атрибут id отсутствует, то берется documentRef и у него меняется sourceId на
           | documentMirrorSourceId (CreateEcosHistoryDocumentMirrorMirrorSourceId)
@@ -357,7 +357,7 @@ CreateEcosHistoryDocumentMirrorProcessor
 
 **Пример Camel YAML DSL конфига**
 
-.. code-block::
+.. code-block:: yaml
 
   ---
   - beans:
@@ -366,7 +366,7 @@ CreateEcosHistoryDocumentMirrorProcessor
   - route:
       from:
         uri: ecos-records-sync-consumer:alf-route-template-code
-        parameters
+        parameters:
           sourceId: alfresco/
           predicate:
             t: eq

@@ -51,7 +51,7 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 *	ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. Формат переменной: ECOS_REGISTRY_TARGET=ip_or_fqdn:port
 *	RABBITMQ_TARGET - включение локейшена проксирования в managment ui контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port
 *	EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port
-*	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS
+*	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck
 *	EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по умолчанию  https, опционально можно поставить http
 * GATEWAY_TLS_ENABLED - включить HTTPS до ecos-gateway (v4)
 * GATEWAY_TLS_CERT - корневой сертификат для проверки сертификата ecos-gateway. Можно указать непосредственно тот же сертификат, который использует gateway. По умолчанию цепочка сертификатов проверяется на 2 уровня. По умолчанию false. (v4)

@@ -1,15 +1,15 @@
+.. _ecos_commands:
+
 Команды
 =========
 
-.. _ecos_commands:
-
 **Команда** — декларативное описание действия, которое нужно сделать на удаленном сервисе или локально.
 
- .. image:: _static/commands/Commands_1.png
-       :width: 600
-       :align: center
+.. image:: _static/commands/Commands_1.png
+      :width: 600
+      :align: center
 
-**Команды** в Citeck ECOS в качестве транспорта используют очереди RabbitMQ. Использование команд возможно как в синхронном, так и в асинхронном режиме.
+**Команды** в Citeck в качестве транспорта используют очереди RabbitMQ. Использование команд возможно как в синхронном, так и в асинхронном режиме.
 
 Целью команд могут быть:
 
@@ -25,9 +25,9 @@
 
 Для реализации удаленной команды:
 
-1. Создать DTO в сервисе, ИЗ которого будет отправлена команда и там где она будет исполняться,  например, если необходимо отправить команду из alfresco в микросервис интеграций, то необходимо создать 2 идентичных класса, один в alfresco, а второй в микросервис интеграций:
+1. Создать DTO в сервисе, ИЗ которого будет отправлена команда и там где она будет исполняться, например, если необходимо отправить команду из alfresco в микросервис интеграций, то необходимо создать 2 идентичных класса, один в alfresco, а второй в микросервис интеграций:
 
-.. code-block::
+.. code-block:: java
 
     @Data
     @CommandType("execute-spark-method")
@@ -44,7 +44,7 @@
 По сути отправляем DTO c данными, который конвертируется в json, затем отправляется в нужный микросервис, там конвертируется обратно в DTO и с ним уже работает executor, после обработки executorом снова необходимо отдать DTO c ответом, который также конвертируется в json и отсылается обратно в то место, откуда была вызвана команда, там он опять трансформируется из json в ResponseDTO.
 Например, ответ, который ожидаем от исполнения команды высланным выше DTO:
 
-.. code-block::
+.. code-block:: java
 
     @AllArgsConstructor
     @NoArgsConstructor
@@ -56,13 +56,13 @@
 
 3. В сервисе, КУДА отсылается команда, необходимо реализовать **Executor**, который будет обрабатывать DTO.
 
-В executor необходимо имплиментировать интерфейс **CommandExecutor<E>** , где **E** - входящий DTO (п.1)
+В executor необходимо имплиментировать интерфейс **CommandExecutor<E>**, где **E** — входящий DTO (п.1)
 
 Также необходимо реализовать метод **execute(E)**, в котором собственно и заключается обработка самой команды. Т.е. принимаем на вход DTO c запросом (п.1), берем из него данные, обрабатываем, затем формируем DTO с ответом в этом методе и возвращаем его.
 
 Пример:
 
-.. code-block::
+.. code-block:: java
 
     public class CallSparkServiceCommandExecutor implements CommandExecutor<SparkServiceMethodCommand> {
 
@@ -73,7 +73,7 @@
             if (methodName.equals("Complete")) {
                 statusString = "Done";
             }
-            
+
             SparkServiceMethodCommandResponse response = new SparkServiceMethodCommandResponse();
             response.setStatus(statusString);
             response.setXmlContent("<?xml version=\"1.0\" encoding=\"UTF-8\"?><TestTag>Test</TestTag>");
@@ -86,7 +86,7 @@
 
 4. В сервисе, ИЗ которого отправляем командный запрос, используем **CommandService** для отправки команды, пример:
 
-.. code-block::
+.. code-block:: java
 
     public String sendSparkRequest(String dataSourceId, String methodName, Map<String, String> attributes) {
             SparkServiceMethodCommand command = new SparkServiceMethodCommand();
@@ -101,5 +101,3 @@
 В данном примере формируем DTO (также можно использовать builder) и отправляем команду в микросервис интеграций, явно указывая это во втором параметре.
 
 В ответе ожидаем **SparkServiceMethodCommandResponse** DTO и используем метод **.getResultAs** для автоматической конвертации ответа в удобный DTO.
-
-

@@ -1,3 +1,5 @@
+.. _two_instances:
+
 Общение между двумя и более инстансами Citeck через команды и события
 ===========================================================================
 
@@ -22,13 +24,13 @@
 
 Схема подключения двух инстансов Citeck: 
 
- .. image:: _static/2_instances/2_instances_1.png
-       :width: 600
-       :align: center
+.. image:: _static/2_instances/2_instances_1.png
+   :width: 600
+   :align: center
 
 Подключение пунктирными линиями настраиваются в central-config для микросервиса интеграции (в дальнейшем подключение к Zookeeper будет в connections под ключом **zookeeper**):
 
-.. code-block::
+.. code-block:: yaml
 
     # Пример конфигурации для main-ecos. Для second-ecos изменится this-app-name и возможно host/user/pass у rabbitmq 
     ecos-integrations:
@@ -53,13 +55,13 @@
 
 Инжектим **CommandsService** и вызываем:
 
-.. code-block::
+.. code-block:: java
 
     commandsService.addExecutor(new SomeExecutor());
 
 Пример исполнителя команд:
 
-.. code-block::
+.. code-block:: java
 
     public class SomeExecutor implements CommandExecutor<SomeBody> { // SomeBody - любой DTO тип, который будет передаваться в Body команды. DTO тип должен иметь аннотацию CommandType для определения типа команды
 
@@ -88,7 +90,7 @@
 
 Инжектим **CommandsService** и вызываем отправку команды:
 
-.. code-block::
+.. code-block:: java
 
     commandsService.executeSync(builder -> { // вместо executeSync можно вызвать просто execute, чтобы не дожидаться ответа. 
         builder.setTargetApp("main-ecos/alfresco"); // целевое приложение. Является значением this-app-name из конфигурации целевого контура Citeck + "/" + индентификатор целевого приложения 
@@ -100,9 +102,9 @@
 
 Если предположим, что отправка осуществляется из alfresco (Citeck 1 - second-ecos) в alfresco (Citeck 0 - main-ecos), то ход команды будет следующим:
 
- .. image:: _static/2_instances/2_instances_2.png
-       :width: 600
-       :align: center
+.. image:: _static/2_instances/2_instances_2.png
+   :width: 600
+   :align: center
 
 Тестирование отправки команд
 -----------------------------
@@ -111,7 +113,7 @@
 
 Отправка команды в локальный RabbitMQ через Java тест (можно размещать в **ecos-integrations**):
 
-.. code-block::
+.. code-block:: java
 
     public class CommandsTest {
 
@@ -176,7 +178,7 @@
 
 2. Немного меняем аргумент в методе **setTargetApp** при отправке команды в тесте:
 
-.. code-block::
+.. code-block:: java
 
     ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
             System.out.println(commandsService.executeSync(builder -> {
@@ -199,7 +201,7 @@
 
 Пример:
 
-.. code-block::
+.. code-block:: java
 
     SomeBody body = new SomeBody();
 
