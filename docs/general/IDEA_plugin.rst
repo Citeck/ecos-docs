@@ -1,21 +1,21 @@
+.. _IntelliJ_IDEA_plugin:
+
 Плагин для IntelliJ IDEA для работы с платформой Citeck
 ========================================================
-
-.. _IntelliJ_IDEA_plugin:
 
 .. contents::
    :depth: 2
 
-Разработан плагин для IntelliJ IDEA, ускоряющий работу с проектами и артефактами Citeck. Плагин доступен для `Community и Ultimate версий IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_ 
+Плагин для IntelliJ IDEA ускоряет работу с проектами и артефактами платформы Citeck. Поддерживаются `Community и Ultimate версии IntelliJ IDEA <https://www.jetbrains.com/idea/download>`_.
 
-Исходный код плагина доступен по ссылке: `ecos-idea-plugin <https://github.com/Citeck/ecos-idea-plugin>`_
+Исходный код плагина: `ecos-idea-plugin <https://github.com/Citeck/ecos-idea-plugin>`_
 
 .. note::
 
- Минимально необходимые версии:
-    
-  * IntelliJ IDEA - 2022.2.5.
-  * Citeck - 4.2
+   Минимально необходимые версии:
+
+   * IntelliJ IDEA — 2022.2.5.
+   * Citeck — 4.2
 
 Установка плагина
 ------------------
@@ -62,7 +62,7 @@
                   :width: 500
                   :align: center
 
-Создается проект со соответствующей структурой:
+Создается проект с соответствующей структурой:
 
 .. list-table::
       :widths: 20 20
@@ -114,10 +114,10 @@
         :width: 600
         :align: center
 
-    * **Deploy File** - выгрузка артефакта на сервер. 
-    * **Fetch File** - загрузка артефакта с сервера
-    * **Open In Browser**- просмотр артефакта в браузере
-    * **Open Documentation** - переход на страницу с документацией по артефакту
+    * **Deploy File** — выгрузка артефакта на сервер.
+    * **Fetch File** — загрузка артефакта с сервера
+    * **Open In Browser** — просмотр артефакта в браузере
+    * **Open Documentation** — переход на страницу с документацией по артефакту
 
     Выгрузите артефакт по кнопке **Deploy File** на стенд или локально:
 
@@ -135,15 +135,14 @@
 
             .. image:: _static/idea_plugin/select_server.png
                   :width: 200
-                  :align: center 
+                  :align: center
 
         - |
 
             .. image:: _static/idea_plugin/deploy_b.png
                   :width: 200
-                  :align: center 
+                  :align: center
 
-       
     Откройте артефакт (например, форму) по кнопке **Open In Browser** в no-code редакторе на стенде или локально, отредактируйте:
 
     .. list-table::
@@ -160,8 +159,8 @@
 
             .. image:: _static/idea_plugin/form_2.png
                   :width: 500
-                  :align: center 
-    
+                  :align: center
+
     Загрузите измененный артефакт обратно по кнопке **Fetch File**:
 
     .. image:: _static/idea_plugin/08_1.png
@@ -185,27 +184,27 @@
 
             .. image:: _static/idea_plugin/scheme_02.png
                   :width: 500
-                  :align: center 
+                  :align: center
 
 
 5. **Поиск артефактов** по их идентификаторам (расширение для search everywhere):
-   
+
 .. image:: _static/idea_plugin/09.png
     :width: 500
     :align: center
 
 
-5. **Навигация в коде** по артефактам Citeck через гиперссылки:
+6. **Навигация в коде** по артефактам Citeck через гиперссылки:
 
 .. image:: _static/idea_plugin/10.png
     :width: 400
     :align: center
 
 
-6. **Автодополнение кода JavaScript**:
-   
-    Типы: 
-    
+7. **Автодополнение кода JavaScript**:
+
+    Типы:
+
         - Для атрибутов **formRef**, **journalRef** и **parentRef**:
 
             .. image:: _static/idea_plugin/autocomplete.png
@@ -213,7 +212,7 @@
                 :align: center
 
     Формы:
-   
+
         - Автодополнение объекта **data** списком компонент формы (IDEA Ultimate)
 
 .. list-table::
@@ -233,8 +232,8 @@
                   :align: center
 
 
-7. **Навигация в файлах**:
-   
+8. **Навигация в файлах**:
+
     - Формы (быстрый переход к компонентам по их имени);
     - Журналы (навигация по колонкам);
     - Типы данных (быстрый переход к атрибутам, ролям, статусам и т.д.)
@@ -256,17 +255,17 @@
                   :align: center
 
 
-8. **Инспекции кода**:
-    
-    - Формы - проверка уникальности ключей компонентов форм с учетом областей (container, datagrid).
+9. **Инспекции кода**:
+
+    - Формы — проверка уникальности ключей компонентов форм с учетом областей (container, datagrid).
 
 .. image:: _static/idea_plugin/14.png
     :width: 500
     :align: center
 
 
-9. **Генерация компонентов формы**:
-    
+10. **Генерация компонентов формы**:
+
 Если в форме задан **typeRef**:
 
 .. image:: _static/idea_plugin/comp_gen_01.png
@@ -302,28 +301,28 @@
     :align: center
 
 
-10. Расширения областей поиска **файлами, содержащими артефакты Citeck**:
+11. Расширения областей поиска **файлами, содержащими артефакты Citeck**:
 
 .. image:: _static/idea_plugin/15.png
     :width: 600
     :align: center
 
 
-11.   Конвертация **YAML -> JSON**, **JSON -> YAML**
+12. Конвертация **YAML -> JSON**, **JSON -> YAML**
 
 .. image:: _static/idea_plugin/convert.png
     :width: 500
     :align: center
 
 
-12.  **Language Injection (JavaScript)** в формах:
+13. **Language Injection (JavaScript)** в формах:
 
 .. image:: _static/idea_plugin/16.png
     :width: 500
     :align: center
 
 
-13.  **Деплой проекта**
+14. **Деплой проекта**
 
 Деплой проекта возможен из **meta.yml** по нажатию на **Deploy File**:
 
@@ -337,7 +336,7 @@
     :width: 500
     :align: center
 
-Так же деплоить можно из контекстного меню, выбрав **Citeck-Deploy Application**:
+Также деплоить можно из контекстного меню, выбрав **Citeck-Deploy Application**:
 
 .. image:: _static/idea_plugin/deploy_app_2.png
     :width: 400
@@ -347,7 +346,7 @@
 Конфигурация серверов
 ----------------------
 
-Настройка серверов Citeck: **Settings -> Citeck -> Servers**. 
+Настройка серверов Citeck: **Settings -> Citeck -> Servers**.
 
 Достаточно указать **host**, остальные параметры опциональны. Примеры настройки:
 
@@ -355,7 +354,7 @@
     :width: 600
     :align: center
 
-Для локального стенда используется метод **basic**. 
+Для локального стенда используется метод **basic**.
 
 Ввод логина и пароля для OIDC происходит в окне браузера, и плагин никак не взаимодействует с логином и паролем напрямую.
 
@@ -365,7 +364,7 @@
 -----------------------------
 
 1. Для корректной сборки дистрибутива плагина необходимо убедиться, что используемая версия **Gradle JVM не ниже 17**.
-   
+
    Настроить используемую JVM для Gradle в IDEA можно по следующему пути: **Settings -> Build, Execution, Deployment -> Build Tools -> Gradle -> Gradle JVM**
 
 2. Сборка осуществляется **Gradle** задачей **buildPlugin**.

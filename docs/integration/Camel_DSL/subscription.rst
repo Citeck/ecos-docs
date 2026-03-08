@@ -1,16 +1,18 @@
+.. _camel_subscription:
+
 Подписка на событие Citeck
-===========================
+=====================================================
 
 .. code-block:: yaml
-  
+
   - route:
       from:
         uri: 'ecos-event:record-created' # подписываемся на событие "Запись создана"
         parameters:
           attributes:
             recordId: 'record?id' # указываем какие атрибуты нам нужны из события
-          filter: # устанавливаем фильтр 
-            t: not-eq 
+          filter: # устанавливаем фильтр
+            t: not-eq
             a: conditionField
             v: true
         steps:
@@ -18,7 +20,7 @@
 
 
 Пример: Выполнение действий при смене статуса
-------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 Для выполнения действий при смене статуса можно использовать подписку на события Citeck:
 
@@ -36,20 +38,20 @@
           - t: 'eq'
             att: 'typeDef.id'
             # id типа основного документа, за статусом которого мы следим
-            val: 'SED-agreement' 
+            val: 'SED-agreement'
           - t: 'eq'
             att: 'after?str'
             val: 'integration-trigger' # id ожидаемого статуса
 
 Далее можно взять список документов, через **GetRecordAttsProcessor** получить их атрибуты (включая контент) и через http компонент отправить на внешний сервис.
 
-Полная конфигурация с комментариями представлена во вложении. Для сценария прмиера нужно поменять:
+Полная конфигурация с комментариями представлена во вложении. Для сценария примера нужно поменять:
 
   1. beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] -> ['SED-main-document']**
   2. route -> from -> parameters -> filter -> val[0] -> val:     **contract -> SED-agreement**
   3. route -> from -> parameters -> filter -> val[1] -> val:     **integration-trigger -> ваш_статус**
 
-А так же создать :ref:`секрет<ecos_secret>` с **username/password** в журнале ``/v2/journals?journalId=ecos-secrets&viewMode=table&ws=admin$workspace``
+А так же создать :ref:`секрет <ecos_secret>` с **username/password** в журнале ``/v2/journals?journalId=ecos-secrets&viewMode=table&ws=admin$workspace``
 
 .. code-block:: yaml
 
@@ -62,7 +64,7 @@
     username: admin
     password: admin
 
-И :ref:`конечную точку<endpoints_dsl>` с URL для загрузки файлов в журнале ``/v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``
+И :ref:`конечную точку <endpoints_dsl>` с URL для загрузки файлов в журнале ``/v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``
 
 .. code-block:: yaml
 

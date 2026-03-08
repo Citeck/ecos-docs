@@ -1,4 +1,4 @@
-.. _group_actions:
+.. _group_actions_journal:
 
 Групповые действия
 ==================

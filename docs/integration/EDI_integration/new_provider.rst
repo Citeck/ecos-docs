@@ -10,7 +10,7 @@
 
 В активаторе (класс интерфейса ``org.osgi.framework.BundleActivator``) необходимо зарегистрировать свои реализации ``ru.citeck.ecos.domain.edi.service.sync.EdiEventsSyncService`` и ``ru.citeck.ecos.domain.edi.service.api.EdiApiService в бинах микросервиса integrations``. Пример из Контура (не забудьте при выгрузке бандла выполнять unregister(…)):
 
-.. code-block::
+.. code-block:: java
 
         EdiEventsSyncServiceResolver ediEventsSyncServiceResolver = ApplicationContextReflection.getBean(EdiEventsSyncServiceResolver.class);
         MandatoryParam.check("ediEventsSyncServiceResolver", ediEventsSyncServiceResolver);
@@ -35,7 +35,7 @@
 
 Реализацию для нового провайдера необходимо зарегистрировать. Делается это просто - ``ru.citeck.ecos.edi.domain.integration.factory.ApplicationCamelContextFactoryImpl#createProviderResolver``:
 
-.. code-block::
+.. code-block:: java
 
     QOverride
     protected ProviderResolver createProviderResolver() {

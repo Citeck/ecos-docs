@@ -1,9 +1,9 @@
 Вкладки профиля
-================
+==============================
 
-получение списка вкладок ``/gateway/api/records/query?k=q_uiserv/dashboard``
+Получение списка вкладок ``/gateway/api/records/query?k=q_uiserv/dashboard``
 
-.. code-block::
+.. code-block:: javascript
 
   {
     query: {
@@ -23,4 +23,4 @@
     },
   }
 
-из полученных id формируется url ${server}/v2/dashboard?activeLayoutId= ``${activeTabId}`` &recordRef= ``${`people@${this.props.user.username}`}`` , который передается в WebView
+Из полученных id формируется URL вида ``${server}/v2/dashboard?activeLayoutId=${activeTabId}&recordRef=people@${this.props.user.username}``, который передаётся в WebView.
