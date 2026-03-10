@@ -10,6 +10,7 @@
     journals/new_journal
     journals/user_description
     journals/configuration
+    journals/journal_dashboard_config
     journals/group_actions
     journals/computed attributes
     journals/expressions
