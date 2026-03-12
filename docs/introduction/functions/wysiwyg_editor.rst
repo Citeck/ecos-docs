@@ -151,6 +151,8 @@ WYSIWYG-редактор
                   :width: 200
                   :align: center
 
+.. _wysiwyg_markdown:
+
 Вставка текста в формате Markdown
 ----------------------------------
 
