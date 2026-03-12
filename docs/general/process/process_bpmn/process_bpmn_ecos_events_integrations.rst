@@ -1,7 +1,7 @@
-Интеграция Событий в движок BPMN
-================================
-
 .. _bpmn_events_integrations:
+
+Интеграция Событий в движок BPMN
+=========================================================
 
 В Citeck могут происходить различные события, такие как:
 
@@ -24,7 +24,6 @@
 
 Базовая архитектура:
 
- .. image:: _static/bpmn_events_arch_shema.png
-       :width: 900
-       :align: center
-
+.. image:: _static/bpmn_events_arch_shema.png
+      :width: 900
+      :align: center

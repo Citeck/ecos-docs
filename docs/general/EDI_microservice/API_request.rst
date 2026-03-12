@@ -9,7 +9,7 @@ API запросы ecos-edi
 
 DTO запроса и ответа:
 
-.. code-block::
+.. code-block:: java
 
 
     public static class EdiActionRequest {
@@ -31,7 +31,7 @@ DTO запроса и ответа:
 
 Пример запроса:
 
-.. code-block::
+.. code-block:: java
 
     RecordAtts requestAtts = new RecordAtts();
     requestAtts.setId("edi/edi-action@");
@@ -44,7 +44,7 @@ DTO запроса и ответа:
 
 Пример запроса из консоли:
 
-.. code-block::
+.. code-block:: javascript
 
     var rec = Records.get('edi/edi-action@'); // важно @ в конце
     rec.att("_self", {
@@ -60,18 +60,18 @@ DTO запроса и ответа:
 .. list-table::
       :widths: 10 30 30
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
       
       * - Запрос
         - Описание
         - Пример
       * - **isCounterpartyExists**
-        -  | Запрос на проверку существания связи с контрагентом у конткретной организации.
+        -  | Запрос на проверку существования связи с контрагентом у конкретной организации.
            | Параметры requestData:
 
-               * *clientBoxId* - ид проверяемого ящика
-               * *inn* - ИНН контрагента
-               * *kpp* - КПП контрагента
+               * *clientBoxId* — ид проверяемого ящика
+               * *inn* — ИНН контрагента
+               * *kpp* — КПП контрагента
 
         - 
 
@@ -147,7 +147,7 @@ DTO запроса и ответа:
 
               * *packageRef* - recordRef отправляемого пакета
               * *counterpartyRef* - recordRef контрагента в ecos
-              * *counterpartyBoxId* - boxId контрагента (опционально, обязаетельно если не указан counterpartyRef )
+              * *counterpartyBoxId* - boxId контрагента (опционально, обязательно если не указан counterpartyRef)
               * *legalEntityRef* - recordRef юр. лица в ecos
               * *clientBoxId* - boxId юр. лица (опционально, обязательно если не указан *legalEntityRef*)
               * *fromDepartmentId* - Id департамента в провайдере от имени которого отправляется пакет (Опционально)
@@ -155,7 +155,7 @@ DTO запроса и ответа:
               * *isInternal* - является ли пакет внутренним (оборот между департаменатами одной организации)
               * *needSentSignature* - Требуется ли подпись контрагента
               * *packageNumber* - Номер пакета (Опционально)
-              * *packageDate* - Дата пакета (Опционлаьно)
+              * *packageDate* - Дата пакета (Опционально)
               * *packageComment* - Комментарий к пакету (Опционально)
               * *signerRef* - recordRef пользователя подписавшего документы в пакете
 
@@ -211,7 +211,7 @@ DTO запроса и ответа:
         -  | Точечная синхронизация с провайдером по одному пакету.
            | Параметры:
 
-              * *clientBoxId* - id ящика с которым настроена синхрнизация
+              * *clientBoxId* - id ящика с которым настроена синхронизация
               * *systemPackageId*- id пакета по которому требуется провести синхронизацию
         - 
 
@@ -841,7 +841,7 @@ DTO запроса и ответа:
                                 "requestType":"addDocumentsToSystemPackage",
                                 "providerType":"KONTUR",
                                 "requestData": {
-                                        "packageRef":"emodel/edi-package@packageId", //id системеного пакета для добавления документов (может быть null, тогда будет создан новый пакет
+                                        "packageRef":"emodel/edi-package@packageId", //id системного пакета для добавления документов (может быть null, тогда будет создан новый пакет
                                         "documentRefs":["emodel/doc-type@doc-id"] // список документов для добавления в системный edi пакет            
                                 }    
                 });

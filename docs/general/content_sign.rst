@@ -1,44 +1,46 @@
-Подписания контента документа с указанием любого атрибута
-============================================================
+.. _content-sign:
 
-В метод **Citeck.Esign.sign** добавлена возможность указывать атрибут в котором содержится контент для подписания.
+Подписание контента документа с указанием любого атрибута
+==========================================================
 
-Доработка совместима с текущей логикой, в проектах изменения не требуются.
+В метод **Citeck.Esign.sign** добавлена возможность указывать атрибут, в котором содержится контент для подписания.
 
-Новая логика, например:
+Доработка совместима с текущей логикой — в проектах изменения не требуются.
 
 Подписание конкретного контента:
 
-.. code-block::
+.. code-block:: javascript
 
- Citeck.Esign.sign([{"recordRef":"emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502","contentAtt":"content"}]); 
+   Citeck.Esign.sign([{"recordRef":"emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502","contentAtt":"content"}]);
 
 При указании конкретного контента обязательно необходимо передавать объект формата:
 
-.. code-block::
+.. code-block:: javascript
 
- {"recordRef": "record_id_of_signed_node","contentAtt": "content_attribute_of_signed_node"} 
+   {"recordRef": "record_id_of_signed_node","contentAtt": "content_attribute_of_signed_node"}
 
-где
+где:
 
-- **recordRef** - recordRef подписываемого документа;
-- **contentAtt** - атрибут в котором содержится контент для подписи.
+- **recordRef** — recordRef подписываемого документа;
+- **contentAtt** — атрибут, в котором содержится контент для подписи.
 
-Если передается просто **recordRef** без указания **contentAtt** или используется старый формат, то атрибутом с контентом по умолчанию считается атрибут **content**.
+Если передаётся просто **recordRef** без указания **contentAtt** или используется старый формат, то атрибутом с контентом по умолчанию считается атрибут **content**.
 
-Старый формат также работает. Пример:
+Старый формат также поддерживается. Пример:
 
-.. code-block::
+.. code-block:: javascript
 
- Citeck.Esign.sign(["emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502"]);  
+   Citeck.Esign.sign(["emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502"]);
 
-т.е. при передаче списка **recordRef** напрямую логика также будет отрабатывать корректно, атрибут с контентом - **content**.
-
+При передаче списка **recordRef** напрямую логика также отрабатывает корректно — атрибутом с контентом считается **content**.
 
 Также возможен смешанный запрос, например:
 
-.. code-block::
+.. code-block:: javascript
 
- Citeck.Esign.sign([{"recordRef":"emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502","contentAtt":"contentCustom"}, "emodel/document@1234567-7cae-4e58-b7d5-f728d7e22341"]); 
+   Citeck.Esign.sign([
+     {"recordRef":"emodel/attachment@ee040fb3-7cae-4e58-b7d5-f728d7e9e502","contentAtt":"contentCustom"},
+     "emodel/document@1234567-7cae-4e58-b7d5-f728d7e22341"
+   ]);
 
-В таком случая для первого документа подпишется контент из атрибута **contentCustom**, для второго документа подпишется контент из атрибута content (при наличии).
+В таком случае для первого документа будет подписан контент из атрибута **contentCustom**, для второго — контент из атрибута **content** (при наличии).

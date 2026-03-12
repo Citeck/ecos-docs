@@ -1,77 +1,78 @@
 Получение списка задач
-=======================
+==========================================
 
 * выполнить запрос ``/gateway/api/records/query``
 
-.. code-block::
+.. code-block:: javascript
 
   {
     query: {
-    sourceId: 'wftask',
-    query: {
+      sourceId: 'wftask',
+      query: {
         actor: '$CURRENT',
         active: true,
-    },
-    page: {
+      },
+      page: {
         skipCount,
         maxItems,
-    },
-    sortBy: [
+      },
+      sortBy: [
         {
-        attribute: '_created',
-        ascending: false,
+          attribute: '_created',
+          ascending: false,
         },
-    ],
+      ],
     },
     attributes: {
-    documentStatusTitle: 'docStatusTitle',
-    documentStatus: 'docStatus',
-    docType: 'docType',
-    person: 'cwf_senderName',
-    actors: 'actors?json',
-    formKey: '_formKey_mobile[]',
-    documentDisplayName: 'docDisplayName',
-    documentSum: 'docSum',
-    docUuid: '_ECM_sys:node-uuid',
-    priority: 'bpm_priority',
-    description: 'workflow',
-    dueDate: 'bpm_dueDate',
-    comment: 'lastcomment',
-    counterparty: 'counterparty',
-    docEcosType: 'docEcosType',
-    etype: 'document._etype?id',
-    documentId: 'document?id',
-    workflowId: 'workflow?id',
+      documentStatusTitle: 'docStatusTitle',
+      documentStatus: 'docStatus',
+      docType: 'docType',
+      person: 'cwf_senderName',
+      actors: 'actors?json',
+      formKey: '_formKey_mobile[]',
+      documentDisplayName: 'docDisplayName',
+      documentSum: 'docSum',
+      docUuid: '_ECM_sys:node-uuid',
+      priority: 'bpm_priority',
+      description: 'workflow',
+      dueDate: 'bpm_dueDate',
+      comment: 'lastcomment',
+      counterparty: 'counterparty',
+      docEcosType: 'docEcosType',
+      etype: 'document._etype?id',
+      documentId: 'document?id',
+      workflowId: 'workflow?id',
     },
   }
 
 .. note::
- Для получения списка Завершенных задач изменить аттрибут ``active: false``
+
+   Для получения списка завершённых задач укажите атрибут ``active: false``.
 
 * отфильтровать записи по ранее полученным
 * перебрать все элементы ``resp.records``, получить ключи форм ``attributes.formKey``
 * выполнить запрос ``/gateway/api/records/query``, получить настройки форм
 
-.. code-block::
+.. code-block:: javascript
 
   {
     query: {
-        query: {
+      query: {
         formKeys,
-        },
-        sourceId: 'uiserv/rform',
+      },
+      sourceId: 'uiserv/rform',
     },
     attributes: {
-        definition: 'definition?json',
-        i18n: 'i18n?json',
-        formKey: 'formKey',
+      definition: 'definition?json',
+      i18n: 'i18n?json',
+      formKey: 'formKey',
     },
   }
 
 * полученные формы передать в функцию ``parseForm``
 * получить данные для всех форм ``/gateway/api/records/query``
 
-.. code-block::
+.. code-block:: javascript
 
   {
     records: formIds,

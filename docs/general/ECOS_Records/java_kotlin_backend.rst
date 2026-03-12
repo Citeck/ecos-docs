@@ -1,7 +1,7 @@
+.. _java_kotlin_backend:
+
 Kotlin/Java Backend
 ====================
-
-.. _java_kotlin_backend:
 
 Для работы с RecordsAPI на kotlin/java бэкенде предусмотрена библиотека ecos-records - https://github.com/Citeck/ecos-records
 
@@ -84,7 +84,7 @@ Kotlin/Java Backend
 
     В Records API создание записи происходит при мутации записи с пустым локальным идентификатором. Т.е. если мы хотим создать сущность в микросервисе emodel в источнике данных types-repo то делаем следующее:
 
-    .. code-block::
+    .. code-block:: javascript
 
       // здесь следует обратить внимание на строку 'emodel/types-repo@'. 
       // Согласно структуре RecordRef'а (ссылка внизу) здесь 

@@ -1,81 +1,85 @@
-Действия в карточках
-=====================
-
 .. _actions:
 
-.. contents:: 
+Действия в карточках
+============================================
+
+.. contents::
    :depth: 2
 
 .. image:: _static/actions/actions.png
-       :width: 250
-       :align: center 
+   :width: 250
+   :align: center
+
+В карточке записи доступны действия для управления документом: редактирование свойств и содержимого, печать, загрузка новой версии и создание поручений. Набор доступных действий зависит от типа записи и настроенных прав пользователя.
+
+.. _action_edit_props:
 
 Редактировать свойства
------------------------
+--------------------------------------------
 
 Открывается карточка документа с возможностью внести изменения и сохранить:
 
 .. image:: _static/actions/edit.png
-       :width: 600
-       :align: center 
-
-Редактировать документ
-------------------------
+   :width: 600
+   :align: center
 
 .. _action_edit:
 
+Редактировать документ
+--------------------------------------------
+
 Для вложенных и сформированных по шаблону документов формата MS Office и OpenDocument доступно редактирование в OnlyOffice.
 
-См. :ref:`подробно<edit_only_office>`
-
-Печатать
---------
+См. :ref:`подробно <edit_only_office>`
 
 .. _action_print:
 
+Печатать
+----------------
+
 Поддерживаемые форматы файлов:
 
-    - Microsoft Word - **.doc, DOCX**;
-    - Microsoft Excel - **.xls, XLSX**;
-    - Документы в формате OpenDocument - **.ODT**;
-    - Таблицы в формате OpenDocument - **.ODS**;
-    - Adobe Portable Document Format - **.PDF**;
-    - Текстовые - **.txt**
-
-Загрузить новую версию
-------------------------
+- Microsoft Word — **.doc, DOCX**;
+- Microsoft Excel — **.xls, XLSX**;
+- Документы в формате OpenDocument — **.ODT**;
+- Таблицы в формате OpenDocument — **.ODS**;
+- Adobe Portable Document Format — **.PDF**;
+- Текстовые — **.txt**
 
 .. _action_version:
+
+Загрузить новую версию
+--------------------------------------------
 
 Добавление новой версии документа:
 
 .. image:: _static/actions/new_version_1.png
-       :width: 300
-       :align: center 
+   :width: 300
+   :align: center
 
 Выберите **файл**, тип **изменений**, укажите **комментарий** при необходимости:
 
 .. image:: _static/actions/new_version_2.png
-       :width: 300
-       :align: center 
+   :width: 300
+   :align: center
 
-Изменения версий фиксируются :ref:`виджете «Журнал версий»<widget_versions_journal>`
+Изменения версий фиксируются в :ref:`виджете «Журнал версий» <widget_versions_journal>`
 
 .. image:: _static/actions/new_version_3.png
-       :width: 600
-       :align: center 
-
-Создать поручение
--------------------
+   :width: 600
+   :align: center
 
 .. _action_assignment:
+
+Создать поручение
+----------------------------------
 
 Создание поручения из карточки документа — открывается форма поручения:
 
 .. image:: _static/actions/tasks_1.png
-       :width: 500
-       :align: center 
+   :width: 500
+   :align: center
 
 При создании поручения из карточки документа автоматически проставляется двухсторонняя связь.
 
-См. подробно :ref:`Создание поручения из карточки<ecos-assignments-action>`
+См. подробно :ref:`Создание поручения из карточки <ecos-assignments-action>`

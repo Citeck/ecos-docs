@@ -6,54 +6,54 @@
 .. contents::
     :depth: 4
 
-Для отображения домашней страницы пользователя или информации по кейсу в Citeck предусмотрены дашборды.
+Для отображения домашней страницы пользователя или информации в карточке в Citeck предусмотрены дашборды.
 
-Дашборд позволяет добавлять и убирать виджеты, конфигурировать каждый виджет индивидуально. См. отдельную статью :ref:`виджеты<widgets>`
+Дашборд позволяет добавлять и убирать виджеты, конфигурировать каждый виджет индивидуально. См. отдельную статью :ref:`виджеты <widgets>`
 
-Все настройки хранятся в том же json, что и конфигурация дашборда. 
+Все настройки хранятся в том же json, что и конфигурация дашборда.
 
 .. _dashboard_types:
 
 Виды дашбордов
 ---------------
 
-Существует следующие виды дашборда:
+Существуют следующие виды дашборда:
 
-.. list-table:: 
+.. list-table::
       :widths: 5 40
       :header-rows: 1
-      :class: tight-table 
-      
+      :class: tight-table
+
       * - Тип/Ключ
         - Описание
       * - **case-details**
-        - | Дашборд карточки кейса - информация по документу (задачи, свойства, действия, история и др.). 
-          | Ключ dashboard'а берется из **RecordRef** в URL страницы и как правило он связан с типом/видом ECOS. 
+        - | Дашборд карточки кейса - информация по документу (задачи, свойства, действия, история и др.).
+          | Ключ dashboard'а берется из **RecordRef** в URL страницы и как правило он связан с типом/видом ECOS.
           | Формирование ключа построено по следующему правилу:
-          | **type_uuid/kind_** 
+          | **type_uuid/kind_**
           | **type_uuid**
-          | То есть для договоров это будет:  
-          | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**	
-          | 2. **contracts-cat-doctype-contract**	
-          | Порядок - от более приоритетного к менее приоритетному	
-          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id`` 	
+          | То есть для договоров это будет:
+          | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**
+          | 2. **contracts-cat-doctype-contract**
+          | Порядок - от более приоритетного к менее приоритетному
+          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id``
       * - **site-details**
         - | Страница раздела, которая позволяет отображать общие данные по разделу.
           | Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
-          | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**. 
+          | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**.
       * - **user-dashboard**
         - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
-          | Например: ``host/v2/dashboard`` 	
-          | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL) 
+          | Например: ``host/v2/dashboard``
+          | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL)
       * - **profile-details**
-        - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления<control_panel>`)
+        - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления <control_panel>`)
           | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
       * - **ws-dashboard**
-        - | Страница :ref:`рабочего пространствах<workspaces>`. Например:
-          | - для персонального рабочего пространства: ``host/v2/dashboard?ws=user$username`` 
-          | - для неперсонального рабочего пространства: ``host/v2/dashboard?ws=workspacename`` 
+        - | Страница :ref:`рабочего пространствах <workspaces>`. Например:
+          | - для персонального рабочего пространства: ``host/v2/dashboard?ws=user$username``
+          | - для неперсонального рабочего пространства: ``host/v2/dashboard?ws=workspacename``
 
-В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры)  используется параметр **activeTab**, 
+В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры) используется параметр **activeTab**,
 
 например, https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser
 
@@ -62,7 +62,7 @@
 Алгоритм поиска dashboard следующий:
 
 1. Смотрим наличие **recordRef** в URL:
-   
+
  - Если **recordRef** отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя.
  - Если **recordRef** присутствует, то запрашиваем аттрибуты **_dashboardKey[]** (массив) и **_dashboardType** (одно значение).
 
@@ -72,14 +72,15 @@
 
 Отображение дашбордов для рабочих пространств:
 
-   - Для :ref:`рабочего пространствах<workspaces>` по умолчанию отображается дашборд **user-dashboard**. 
+   - Для :ref:`рабочего пространствах <workspaces>` по умолчанию отображается дашборд **user-dashboard**.
    - Для персонального рабочего пространства отображается дашборд **personal-ws-dashboard-default**.
    - Для неперсонального рабочего пространства отображается дашборд **ws-dashboard-default**.
-   - Для :ref:`корпоративного портала<corp_portal>` отображается дашборд **corpport-workspace-dashboard**.
+   - Для :ref:`корпоративного портала <corp_portal>` отображается дашборд **corpport-workspace-dashboard**.
 
 Кэширование
 -----------
-Кеширование возможно в пределах открытой вкладки браузера:
+
+Кэширование возможно в пределах открытой вкладки браузера:
 
 1. **_dashboardKey[]** и **_dashboardType** по recordRef (они достаточно редко меняются),
 2. Конфигурация **dashboard** (или её отсутствие) по **dashboardKey** + **dashboardType**.
@@ -89,26 +90,26 @@
 Настройка прав на редактирование
 --------------------------------
 
-В системе для пользователей можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**). 
+В системе для пользователей можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**).
 
-То есть у пользователя могут быть права на настройку дашборда, но запрещена настройа виджетов. 
+То есть у пользователя могут быть права на настройку дашборда, но запрещена настройка виджетов.
 
 Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS** (``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``):
 
- .. image:: _static/dashboards/dashboards_widgets_settings.png
-       :width: 700
-       :align: center
+.. image:: _static/dashboards/dashboards_widgets_settings.png
+      :width: 700
+      :align: center
 
 Включение настройки:
 
- .. image:: _static/dashboards/dashboards_widgets_settings_1.png
-       :width: 400
-       :align: center
+.. image:: _static/dashboards/dashboards_widgets_settings_1.png
+      :width: 400
+      :align: center
+
+.. _dashboard_settings:
 
 Конфигурация дашборда
 ------------------------
-
-.. _dashboard_settings:
 
 При открытии впервые карточки кейса, профиля пользователя или домашней страницы будет показан дашборд по умолчанию для соответствующего типа.
 
@@ -116,15 +117,15 @@
 
 Чтобы дополнительно конфигурировать дашборд – изменить настройки, убрать или добавить виджеты, необходимо перейти в карточку кейса, профиль пользователя или домашнюю страницу и **нажать шестеренку- > «Настроить страницу»**:
 
- .. image:: _static/dashboards/dashboards_1.png
-       :width: 400
-       :align: center
+.. image:: _static/dashboards/dashboards_1.png
+      :width: 400
+      :align: center
 
 Общая форма настройки имеет следующий вид:
 
- .. image:: _static/dashboards/dashboards_2.png
-       :width: 500
-       :align: center
+.. image:: _static/dashboards/dashboards_2.png
+      :width: 500
+      :align: center
 
 Разделы дашборда
 ~~~~~~~~~~~~~~~~~~
@@ -132,17 +133,17 @@
 «Принадлежность»
 """"""""""""""""""
 
- .. image:: _static/dashboards/dashboards_3.png
-       :width: 600
-       :align: center
+.. image:: _static/dashboards/dashboards_3.png
+      :width: 600
+      :align: center
 
 В верхней части указан **id дашборда** и **тип данных**, для которого он настраивается.
 
 Тип данных может быть изменен из доступного выпадающего списка. Например:
 
- .. image:: _static/dashboards/dashboards_4.png
-       :width: 400
-       :align: center
+.. image:: _static/dashboards/dashboards_4.png
+      :width: 400
+      :align: center
 
 Отдельный дашборд может быть настроен для определенного документа (если на примере выбрать тип «Договор№512», то при открытии карточки данного договора будет отображаться дашборд, сконфигурированный именно для данного документа).
 
@@ -158,36 +159,36 @@
 
 Укажите количество и содержимое вкладок, выберите расположение и количество колонок для каждой вкладки.
 
- .. image:: _static/dashboards/dashboards_5.png
-       :width: 600
-       :align: center
+.. image:: _static/dashboards/dashboards_5.png
+      :width: 600
+      :align: center
 
 Только для типа дашборда Site-dashboard доступно следующее расположение (Количество колонок подстраивается под размер окна браузера):
 
- .. image:: _static/dashboards/dashboards_6.png
-       :width: 100
-       :align: center
+.. image:: _static/dashboards/dashboards_6.png
+      :width: 100
+      :align: center
 
 Для типа дашборда Case-details доступна поддержка мультиязычного имени для вкладок:
 
-.. list-table:: 
+.. list-table::
       :widths: 30 30 30
       :align: center
-      :class: tight-table 
+      :class: tight-table
 
-      * - 
+      * -
 
           .. image:: _static/dashboards/dashboards_lang_1.png
                 :width: 300
                 :align: center
 
-        - 
+        -
 
           .. image:: _static/dashboards/dashboards_lang_2.png
                 :width: 300
                 :align: center
 
-        - 
+        -
 
           .. image:: _static/dashboards/dashboards_lang_3.png
                 :width: 300
@@ -195,11 +196,11 @@
 
 .. important::
 
-  Для мобильной версии отображаются только те виджеты, которые уже были настроены для десктопной версии и несут в себе те же настройки:
-   
- .. image:: _static/dashboards/dashboards_7.png
-       :width: 500
-       :align: center
+   Для мобильной версии отображаются только те виджеты, которые уже были настроены для десктопной версии и несут в себе те же настройки:
+
+   .. image:: _static/dashboards/dashboards_7.png
+         :width: 500
+         :align: center
 
 
 «Виджеты»
@@ -207,9 +208,9 @@
 
 Созданные колонки можно заполнить доступными виджетами – перетащите виджет в необходимую колонку:
 
- .. image:: _static/dashboards/dashboards_8.png
-       :width: 500
-       :align: center
+.. image:: _static/dashboards/dashboards_8.png
+      :width: 500
+      :align: center
 
 Набор доступных виджетов зависит от вида дашборда.
 
@@ -217,22 +218,21 @@
 Настройки виджетов на дашбордах
 --------------------------------
 
-Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью :ref:`Виджеты<widgets>`
+Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью :ref:`Виджеты <widgets>`
 
 Информация по доступности виджета хранится в самом виджете (без участия сервера).
 
-В конфигурации виджета в поле **config.widgetDisplayCondition** задается условие как **json-строка**. Написание условия в соответствии статье :ref:`Язык предикатов<ecos-predicate_main>`
+В конфигурации виджета в поле **config.widgetDisplayCondition** задается условие как **json-строка**. Написание условия в соответствии статье :ref:`Язык предикатов <ecos-predicate_main>`
 
-Если отсутствует условие, то виджет отображается. 
+Если отсутствует условие, то виджет отображается.
 
 Журнал "Дашборды"
 -----------------
 
 Журнал расположен в **разделе администратора -> Конфигурация UI - > Дашборды**:
 
- .. image:: _static/dashboards/dashboards_9.png
-       :width: 700
-       :align: center
+.. image:: _static/dashboards/dashboards_9.png
+      :width: 700
+      :align: center
 
 Дашборд можно скачать, удалить, отредактировать в форме или через json-файл, копировать.
-
