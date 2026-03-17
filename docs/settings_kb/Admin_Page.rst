@@ -41,6 +41,12 @@
    ecos-uiserv,user-interface,30
    ecos-notifications,notification,40
    ecos-integrations,integration,50
+   ecos-integrations,integration-legacy,1000
+
+.. note::
+
+   Группа ``integration-legacy`` содержит устаревшие журналы микросервиса ``ecos-integrations`` (``ecos-sync``, ``ecos-credentials``, ``edi-box``, ``ecos-osgi-bundles``, ``file-import-config``, ``file-import-task``, ``file-import-task-item``).
+   Значение ``order: 1000`` намеренно выбрано большим, чтобы группа отображалась в конце боковой панели после всех остальных разделов. Это рекомендуемое соглашение для групп с устаревшим/legacy-содержимым.
 
 Модель группы разделов
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -117,3 +123,44 @@
            type: JOURNAL
            config:
              journalId: some-journal-id
+
+Паттерн: выделение устаревших разделов в Legacy-группу
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Если в группе разделов накопились журналы, которые больше не используются активно, рекомендуется переместить их в отдельную группу с суффиксом ``-legacy``.
+Это позволяет сохранить доступ к устаревшим данным, не перегружая основной раздел.
+
+Соглашения:
+
+* Идентификатор группы: ``<исходная-группа>-legacy`` (например, ``integration-legacy``).
+* Название: ``{ "en": "Legacy", "ru": "Устаревшее" }`` — использование единообразного имени упрощает навигацию.
+* Значение ``order``: выбирайте большое число (например, ``1000``), чтобы группа всегда отображалась в конце боковой панели.
+* Оба файла (основная группа и legacy-группа) деплоятся атомарно в рамках одного приложения — риска частичного состояния нет.
+* Прямые ссылки на журналы продолжают работать после переноса, так как маршрутизация ведётся по ``journalId``, а не по группе разделов.
+
+Пример файла ``integration-legacy.json``:
+
+.. code-block:: json
+
+   {
+     "id": "integration-legacy",
+     "name": {
+       "en": "Legacy",
+       "ru": "Устаревшее"
+     },
+     "order": 1000,
+     "sections": [
+       { "type": "JOURNAL", "config": { "journalId": "ecos-sync" } },
+       { "type": "JOURNAL", "config": { "journalId": "ecos-credentials" } },
+       { "type": "JOURNAL", "config": { "journalId": "edi-box" } },
+       { "type": "JOURNAL", "config": { "journalId": "ecos-osgi-bundles" } },
+       { "type": "JOURNAL", "config": { "journalId": "file-import-config" } },
+       { "type": "JOURNAL", "config": { "journalId": "file-import-task" } },
+       { "type": "JOURNAL", "config": { "journalId": "file-import-task-item" } }
+     ]
+   }
+
+.. note::
+
+   При разбиении группы убедитесь, что суммарное количество журналов во всех результирующих файлах совпадает с исходным.
+   Это позволяет избежать потери или дублирования журналов.
