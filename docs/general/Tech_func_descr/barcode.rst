@@ -20,7 +20,7 @@ Citeck позволяет автоматически формировать PDF-
 3. После генерации PDF-файл прикрепляется в виджет документов карточки или в контент дочерней сущности.
 4. Штрих-код размещается внизу документа:
 
-.. image:: ../introduction/functions/_static/barcode/barcode_1.png
+.. image:: _static/barcode/barcode_1.png
    :width: 400
    :align: center
 
@@ -70,7 +70,7 @@ Citeck позволяет автоматически формировать PDF-
 
 Для скачивания документа с наложенным штрих-кодом используйте в карточке действие **Скачать PDF (со штрих-кодом)**:
 
-.. image:: ../introduction/functions/_static/barcode/barcode_2.png
+.. image:: _static/barcode/barcode_2.png
    :width: 300
    :align: center
 

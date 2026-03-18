@@ -3,7 +3,7 @@
 
 Формат данных, принимаемых функцией ``parseForm``:
 
-.. code-block:: json
+.. code-block::
 
   [
     {
