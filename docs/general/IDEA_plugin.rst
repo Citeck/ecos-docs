@@ -333,7 +333,7 @@
 Далее можно нажать **Open In Browser**, чтобы посмотреть и отредактировать приложение в Citeck:
 
 .. image:: _static/idea_plugin/app.png
-    :width: 500
+    :width: 600
     :align: center
 
 Также деплоить можно из контекстного меню, выбрав **Citeck-Deploy Application**:
