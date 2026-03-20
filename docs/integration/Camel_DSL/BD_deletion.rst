@@ -1,9 +1,14 @@
+.. _camel-dsl-bd-deletion:
+
 Удаление данных из БД
-=======================
+=======================================
 
-Для удаления данных из БД необходимо создать **Credentials**, **Источник данных** и **Camel DSL** как указано в пункте **«Выборка из БД»**. При этом, содержимое маршрута должно включать в себя SQL-запрос на удаление данных. 
+Для удаления данных из БД необходимо создать **Credentials**, **Источник данных** и **Camel DSL** так же, как описано в разделе **«Выборка из БД»**. Содержимое маршрута должно включать SQL-запрос на удаление данных.
 
-Например, следующий маршрут **clearValues** удаляет все записи из таблицы **simple** источника данных **datasource**, кроме тех у которых атрибут **id** равен **'1'** или **'2'**.
+Простое удаление записей
+--------------------------
+
+Маршрут **clearValues** удаляет все записи из таблицы **simple** источника данных **datasource**, кроме записей с **id** равным **'1'** или **'2'**:
 
 .. code-block:: yaml
 
@@ -16,8 +21,10 @@
               constant: "delete from simple where id not in ('1','2')"
           - to: "jdbc:datasource"
 
+Выборка с последующим удалением
+---------------------------------
 
-Пример контекста, который берет данные из источника данных **todb**, обрабатывает их через R`RecordsDaoEndpoint`` **daoEndpoint**  и очищает таблицу **simple**, из которой взял данные:
+Следующий контекст выбирает данные из источника **todb**, обрабатывает их через ``RecordsDaoEndpoint`` **daoEndpoint**, после чего очищает таблицу **simple**:
 
 .. code-block:: yaml
 
@@ -45,15 +52,14 @@
                 - to: "bean:daoEndpoint"
                 - to: "direct:clearValues"
   - route:
-    id: "clearValues"
-    from:
-      uri: "direct:clearValues"
-      steps:
-        - setBody:
-            constant: "delete from simple"
-        - to: "jdbc:todb" 
-
+      id: "clearValues"
+      from:
+        uri: "direct:clearValues"
+        steps:
+          - setBody:
+              constant: "delete from simple"
+          - to: "jdbc:todb"
 
 .. note::
-    Особенности контекста: 
-    Содержимое constant переводится в нижний регистр. Например, выборка **"select * from simple order by COMPANY_ID"** приводит к ошибке **ERROR: column "company_id" does not exist**
+
+   Значение ``constant`` автоматически приводится к нижнему регистру. Например, запрос ``"select * from simple order by COMPANY_ID"`` вызовет ошибку ``ERROR: column "company_id" does not exist``, так как имя колонки будет преобразовано в нижний регистр.

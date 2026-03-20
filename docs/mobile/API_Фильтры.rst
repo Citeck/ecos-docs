@@ -1,12 +1,12 @@
 Фильтры
-========
+==============
 
 По контрагенту
------------------
+----------------------------
 
 * получение списка контрагентов ``/gateway/api/records/query``
 
-.. code-block::
+.. code-block:: javascript
 
   {
     query: {
@@ -21,15 +21,15 @@
     },
     attributes: {
       disp: '.disp',
-    }
+    },
   }
 
 По типу документа
------------------
+----------------------------------
 
 * получение списка типов ``/gateway/api/records/query``
 
-.. code-block::
+.. code-block:: javascript
 
   {
     records: [
@@ -41,19 +41,20 @@
   }
 
 По приоритету
------------------
+--------------------------
 
-список приоритетов ``src/model/enums/task-priority.ts TaskPriority``
+Список приоритетов ``src/model/enums/task-priority.ts TaskPriority``
 
 Применение фильтра
--------------------
+------------------------------------
 
 Выбранные фильтры добавляются в запрос списка. См. :doc:`API_Получение списка задач`
 
-.. code-block::
+.. code-block:: javascript
 
   {
     query: {
-      "docEcosTypes":["emodel/type@idocs-doc"],
-      "counterparties":["alfresco/counterparty@workspace://SpacesStore/5901e71d-bb0a-49d1-9d1a-a93a5ade198f"]},
+      "docEcosTypes": ["emodel/type@idocs-doc"],
+      "counterparties": ["alfresco/counterparty@workspace://SpacesStore/5901e71d-bb0a-49d1-9d1a-a93a5ade198f"],
+    },
   }

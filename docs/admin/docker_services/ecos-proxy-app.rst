@@ -51,7 +51,7 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 *	ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. Формат переменной: ECOS_REGISTRY_TARGET=ip_or_fqdn:port
 *	RABBITMQ_TARGET - включение локейшена проксирования в managment ui контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port
 *	EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port
-*	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS
+*	ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck
 *	EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по умолчанию  https, опционально можно поставить http
 * GATEWAY_TLS_ENABLED - включить HTTPS до ecos-gateway (v4)
 * GATEWAY_TLS_CERT - корневой сертификат для проверки сертификата ecos-gateway. Можно указать непосредственно тот же сертификат, который использует gateway. По умолчанию цепочка сертификатов проверяется на 2 уровня. По умолчанию false. (v4)
@@ -67,7 +67,7 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 Не реализованы:
 
 *	SOLR_TARGET
-*	ECOS_REGISTRY_TARGET (проблема с api)
+*	ECOS_REGISTRY_TARGET
 
 Типовой вывод принятых настроек в лог контейнера
 --------------------------------------------------------
@@ -85,4 +85,52 @@ openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливает
 	ecos-proxy                  | - Disabled eis upstream and locations
 	ecos-proxy                  | - Disabled solr location
 
+Локальная сборка и деплой ecos-ui
+--------------------------------------
 
+Требования
+~~~~~~~~~~~~
+
+* Node.js 20.19+ или 22.12+ (проект использует Vite 7)
+* Yarn 3.6.2 (через corepack, указан в ``packageManager`` в ``package.json``)
+
+Сборка
+~~~~~~~~
+
+.. code-block:: bash
+
+  cd ecos-ui
+  yarn install
+  yarn build
+
+Результат: директория ``build/`` с собранными файлами (index.html, assets/, js/, img/ и т.д.)
+
+Деплой в локальный контейнер (Citeck Launcher)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+UI раздаётся через контейнер ecos-proxy (nginx/openresty). Статика находится внутри контейнера по пути ``/var/www/assets/``.
+
+Контейнер не имеет bind mount для UI-файлов, поэтому деплой выполняется через ``docker cp``:
+
+.. code-block:: bash
+
+  docker cp ecos-ui/build/. citeck_proxy_<namespace>_default:/var/www/assets/
+
+Имя контейнера прокси имеет вид ``citeck_proxy_<namespace>_default``. Найти его:
+
+.. code-block:: bash
+
+  docker ps | grep proxy
+
+После копирования — обновить страницу в браузере (Ctrl+Shift+R / Cmd+Shift+R для hard refresh).
+
+Проверка деплоя
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+  docker exec citeck_proxy_<namespace>_default sh -c 'ls /var/www/assets/assets/main-*'
+
+.. note::
+
+  Изменения не переживают пересоздание контейнера — при рестарте Launcher вернётся оригинальный UI из образа.

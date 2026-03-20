@@ -121,28 +121,28 @@ RecordsService (Java)
 
 При создании новой записи параметр **setId()** не указывается. 
 
-Если при мутации указать атрибут: 
+Если при мутации указать атрибут:
 
-.. code-block::
+.. code-block:: text
 
   __disableAudit=true
 
-(константа DbRecordsControlAtts.DISABLE_AUDIT), то поля: 
+(константа DbRecordsControlAtts.DISABLE_AUDIT), то поля:
 
-.. code-block::
+.. code-block:: text
 
   _creator
   _created
   _modifier
   _modified
 
-заполняться автоматически не будут. Если эти поля установить вручную, то в БД попадут именно они. 
+заполняться автоматически не будут. Если эти поля установить вручную, то в БД попадут именно они.
 
 Для ``creator`` и ``modifier`` допустимо указывать как username так и полный ref пользователя.
 
 Атрибут
 
-.. code-block::
+.. code-block:: text
 
   __disableAudit
 

@@ -32,7 +32,7 @@
 
 Пример настроенного плагина:
 
-.. code-block::
+.. code-block:: xml
 
     <plugin>
         <groupId>org.apache.felix</groupId>
@@ -67,7 +67,7 @@
 
 1.1. Указываем **packaging** свойство в **pom.xml** в значение **bundle**. Пример с контекстом:
 
-.. code-block::
+.. code-block:: xml
 
     <project xmlns="http://maven.apache.org/POM/4.0.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -102,15 +102,15 @@
 
 Заходим в **Рабочее пространство "Раздел администратора" → Журнал OSGI пакеты**. Загружаем через кнопку + свой бандл.
 
- .. image:: _static/OSGI/OSGI_1.png
-       :width: 600
-       :align: center
+.. image:: _static/OSGI/OSGI_1.png
+   :width: 600
+   :align: center
 
 Если все ок, увидим следующую картину:
 
- .. image:: _static/OSGI/OSGI_2.png
-       :width: 600
-       :align: center
+.. image:: _static/OSGI/OSGI_2.png
+   :width: 600
+   :align: center
 
 Важный факт, что статус - **ACTIVE**, это означает, что бандл зарезолвен, установлен и фреймворк его успешно стартанул.
 
@@ -132,7 +132,7 @@
 
 Импортировать пакеты в бандл (в конфиге):
 
-.. code-block::
+.. code-block:: text
 
     kotlin.*,
     ecos.com.fasterxml.jackson210.*,
@@ -153,7 +153,7 @@
 
 Импортировать пакеты в бандл (в конфиге):
 
-.. code-block::
+.. code-block:: text
 
     ecos.com.fasterxml.jackson210.*,
     kotlin.*,
@@ -175,9 +175,9 @@
 
 Импортировать пакеты в бандл (в конфиге):
 
-.. code-block::
+.. code-block:: text
 
- org.apache.camel.*
+    org.apache.camel.*
 
 Дальше - в ``BundleActivator`` создать ``DefaultCamelContext``. Добавить в него необходимые маршруты. Запустить контекст.
 
@@ -190,7 +190,7 @@
 
 Добавляем зависимость: 
 
-.. code-block::
+.. code-block:: xml
 
     <dependency>
     <groupId>org.springframework</groupId>
@@ -201,7 +201,7 @@
 
 Добавляем в импорт пакеты:
 
-.. code-block::
+.. code-block:: text
 
     org.springframework.web.*,
     org.springframework.http.*
@@ -212,7 +212,7 @@
 
 В ``start`` методе активатора при помощи ``ApplicationContextReflection`` получаем ``RequestMappingHandlerMapping``, настраиваем ``RequestMappingInfo.BuilderConfiguration``, создаем ``RequestMappingInfo`` и регистрируем его в  ``RequestMappingHandlerMapping``. Пример для регистрации нового endpoint ``"ecos/message"``:
 
-.. code-block::
+.. code-block:: java
 
     RequestMappingHandlerMapping requestMappingHandlerMapping = ApplicationContextReflection.getBean(RequestMappingHandlerMapping.class);
     handlerMapping = (AbstractHandlerMethodMapping) requestMappingHandlerMapping;
@@ -240,13 +240,13 @@
 
 * Создание ObjectData из DTO-объекта:
 
-.. code-block::
+.. code-block:: java
 
- ObjectData targetAttributesData = ObjectData.create(dtoObject);
+    ObjectData targetAttributesData = ObjectData.create(dtoObject);
 
 * Для использования псевдонима в свойствах можно использовать ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``
 
-.. code-block::
+.. code-block:: java
 
     @JsonProperty("nsdb_author")
     private String author;
@@ -255,7 +255,7 @@
 
 * Свойство с типом ``ASSOC: private RecordRef nsdb_counterparty``
 
-.. code-block::
+.. code-block:: java
 
     ObjectData targetAttributesData = ObjectData.create();
     targetAttributesData.set("nsdb_counterparty", assocRecordRef);
@@ -264,7 +264,7 @@
 
 * Свойство с типом ``CONTENT: private ObjectData nsdb_content``
 
-.. code-block::
+.. code-block:: java
 
     ObjectData contentData = ObjectData.create();
     contentData.set("mimetype", "application/xml");
@@ -276,14 +276,14 @@
 
 * Ссылка на родителя из ASSOC
 
-.. code-block::
+.. code-block:: java
 
     @AttName("_parent?id")
     RecordRef parentRef;
 
 * Объявление свойства, которое базируется на атрибуте типа с двоеточием (cm:name, idocs:inn) 
 
-.. code-block::
+.. code-block:: java
 
     @AttName("idocs:inn")
     private String inn;
@@ -292,7 +292,7 @@
 
 * Указание определенного alfresco-типа для родителя при создании записи
 
-.. code-block::
+.. code-block:: java
 
     targetAttributesData.set(AlfNodeRecord.ATTR_TYPE, "dl:dataListItem");
     RecordAtts recordAtts = new RecordAtts(targetRecordRef, targetAttributesData);
@@ -302,7 +302,7 @@
 
 * Указать определенный тип связи между родителем и дочерней записью
 
-.. code-block::
+.. code-block:: java
 
     targetAttributesData.set(RecordConstants.ATT_PARENT_ATT, "icase:documents");
     RecordAtts recordAtts = new RecordAtts(targetRecordRef, targetAttributesData);
@@ -312,7 +312,7 @@
 
 Тестирование работоспособности методов можно проверить, реализовав в тесте интерфейсы ``RecordMutateDao``, ``RecordAttsDao``, ``RecordsQueryDao`` и имитировав работу ``RecordsService``, например:
 
-.. code-block::
+.. code-block:: java
 
     RecordsServiceFactory recordsServiceFactory = new RecordsServiceFactory() {
         @Override
@@ -333,7 +333,7 @@
 
 Одновременное использование аннотаций JsonProperty и AttName приводит к тому, что при чтении DTO из RecordsService свойство не заполняется.
 
-.. code-block::
+.. code-block:: java
 
     @JsonProperty("nsdb_author")
     @AttName("nsdb_author")

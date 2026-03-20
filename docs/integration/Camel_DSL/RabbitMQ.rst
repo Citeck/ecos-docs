@@ -1,31 +1,48 @@
+.. _rabbitmq_camel:
+
 Получение сообщений из RabbitMQ и отправка события Citeck
 =========================================================
 
-.. _rabbitmq_camel:
+Пример демонстрирует базовый сценарий интеграции через RabbitMQ:
 
-Пример чтения из rabbitmq и отправка события Citeck:
+1. Подключение к очереди RabbitMQ с использованием credentials из ECOS Endpoint.
+2. Удаление служебных заголовков RabbitMQ перед дальнейшей обработкой.
+3. Логирование входящего сообщения.
+4. Публикация события Citeck с телом, сформированным из тела сообщения.
 
-1. Создать новый **секрет (Модель -  Секреты)** для подключения к RMQ.
-2. Создать новый **endpoint (Модель - Конечные точки)** с id 'rabbitmq-endpoint'  (можно любой id, но в camel конфиге мы на него ссылаемся) для подключения к RMQ и устанавить секрет из п.1 в него.
-3. Зайти в **журнал Camel DSL (Интеграция - Camel DSL)** и создать новый контекст со следующим конфигом: 
+.. note::
+
+   Для работы примера необходимо:
+
+   - Создать **секрет** (Модель → Секреты) с данными для подключения к RabbitMQ.
+   - Создать **endpoint** (Модель → Конечные точки) с id ``rabbitmq-endpoint`` и указать созданный секрет.
+   - Зайти в **журнал Camel DSL** (Интеграция → Camel DSL) и создать новый контекст с конфигурацией ниже.
 
 .. code-block:: yaml
-  
-  - beans:
-      - name: rabbitConnectionFactory
-        type: org.springframework.amqp.rabbit.connection.CachingConnectionFactory
-        properties:
-          uri: '{{ecos-endpoint:rabbitmq-endpoint/url}}'
-          username: '{{ecos-endpoint:rabbitmq-endpoint/credentials/username}}'
-          password: '{{ecos-endpoint:rabbitmq-endpoint/credentials/password}}'
-  - route:
-      from:
-        uri: spring-rabbitmq:default # default здесь -это дефолтный exchange в RMQ. Обычно он обозначается пустой строкой, но в camel endpoint'е вместо этого пишется "default"
-        parameters:
-          connectionFactory: '#bean:rabbitConnectionFactory'
-          queues: test-queue
-        steps:
-          - removeHeaders: # если в дальнейшем предполагается переотправка сообщения в RMQ, то лучше удалить заголовки, которые относятся к RMQ. Здесь этот этап просто для примера.
-              pattern: "CamelRabbitmq*" #"CamelRabbitmqRoutingKey"
-          - to: log:rmq-test # вывод в лог. Можно убрать
-          - to: ecos-event:test-event-type # отправка события с типом "test-event-type". В теле отправляется DataValue.of(exchange.message.body)
+
+   - beans:
+       # Бин подключения к RabbitMQ на основе данных из ECOS Endpoint
+       - name: rabbitConnectionFactory
+         type: org.springframework.amqp.rabbit.connection.CachingConnectionFactory
+         properties:
+           uri: '{{ecos-endpoint:rabbitmq-endpoint/url}}'
+           username: '{{ecos-endpoint:rabbitmq-endpoint/credentials/username}}'
+           password: '{{ecos-endpoint:rabbitmq-endpoint/credentials/password}}'
+
+   - route:
+       from:
+         # "default" — дефолтный exchange в RabbitMQ (обычно обозначается пустой строкой,
+         # но Camel требует явного значения "default")
+         uri: "spring-rabbitmq:default"
+         parameters:
+           connectionFactory: '#bean:rabbitConnectionFactory'
+           queues: test-queue
+         steps:
+           # Удаление заголовков RabbitMQ — актуально, если сообщение будет переотправлено в RMQ
+           - removeHeaders:
+               pattern: "CamelRabbitmq*"
+           # Логирование входящего сообщения
+           - to: "log:rmq-test"
+           # Отправка события типа "test-event-type".
+           # В теле передаётся DataValue.of(exchange.message.body)
+           - to: "ecos-event:test-event-type"

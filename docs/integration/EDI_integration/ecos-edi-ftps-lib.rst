@@ -80,7 +80,7 @@
 
 Эта структура состоит из следующих полей:
 
-.. code-block::
+.. code-block:: java
 
     private OurId ourId;
     private CounterpartyId counterpartyId;
@@ -96,13 +96,13 @@
 
 Для заполнения ``data`` - можно на проектах расширить интерфейс ``FtpCustomAddInfoProvider`` и зарегистрировать его в бине ``FtpCustomAddInfoProviderRegistry``. Таким образом, можно на любом проекте кастомную логику по определению путей сделать. Пример шаблонов:
 
-.. code-block::
+.. code-block:: text
 
  /${addInfo.counterparty.esk}_S4TEST/OUTBOUND/${document.type}
 
 Это означает, что если в структуре data содержится значение 123456 по ключу ``counterparty.esk`` и ``ediXml.ediDocumentType`` содержит значение ORDERS, то данное сообщение отправится в следующую папку:
 
-.. code-block::
+.. code-block:: text
 
     /123456_S4TEST/OUTBOUND/ORDERS/
 
@@ -110,13 +110,13 @@
 
 Например, шаблон:
 
-.. code-block::
+.. code-block:: text
 
      /${addInfo.path}
 
 Разработать реализацию ``FtpCustomAddInfoProvider``, которая бы возвращала переменную ``path``. Например, если она будет равна ``some/path/type/kind/outbound``, то путь будет следующим:
 
-.. code-block::
+.. code-block:: text
 
     /some/path/type/kind/outbound
 
@@ -150,7 +150,7 @@
 
 Шаблон поиска входящих разбивается на уровни по папкам. То есть, например, шаблон ``/${addInfo.counterparty.esk}_S4TEST/INBOUND/${document.type}`` разобьется на 4 части:
 
-.. code-block::
+.. code-block:: text
 
     /
     /${addInfo.counterparty.esk}_S4TEST
@@ -159,7 +159,7 @@
 
 После этого, части будут преобразованы в корректные регулярные выражения. То есть, эти части будут иметь теперь следующие значения:
 
-.. code-block::
+.. code-block:: text
 
     /
     /(?<addInfo.counterparty.esk>[\\w\\s-]+)_S4TEST
@@ -170,9 +170,9 @@
 
 Если включен флаг поиска в поддиректориях - к последнему регулярному выражению добавляется “.*“. Таким образом становится возможным поиск по подпапкам.
 
-Так же, есть возможность указывать не стандартную регулярку, а свою. Пример - 
+Так же, есть возможность указывать не стандартную регулярку, а свою. Пример -
 
-.. code-block::
+.. code-block:: text
 
     /${addInfo.counterparty.esk(\d+)}_S4TEST/INBOUND/${document.type}
 

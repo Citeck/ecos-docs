@@ -11,9 +11,9 @@
 
 Общая схема работы:
 
- .. image:: _static/server_signing/server_signing_1png.png
-       :width: 600
-       :align: center
+.. image:: _static/server_signing/server_signing_1png.png
+   :width: 600
+   :align: center
 
 Описание 
 ----------
@@ -38,19 +38,19 @@
 
 **Подписание контента**
 
-.. code-block::
+.. code-block:: text
 
     {host:port}/ecos/crypto/sign
 
-headers: 
+headers:
 
-.. code-block::
+.. code-block:: text
 
     Authorization: Bearer access_token //keycloak bearer access token
 
 body:
 
-.. code-block::
+.. code-block:: json
 
     {
         "documentContent":"QQMTIzNDU2Nzg5",
@@ -59,7 +59,7 @@ body:
             "keyStoreType":"FAT12_D"
         },
         "certificateInfo":{
-            "pin":"1",   
+            "pin":"1",
             "alias":"null",
             "serialNumber":"5927a700f7ac223d9548e8628fe9c2c302",
             "thumbprint":"A14BFD6503EFD7116AFCE95A6FAA2097E0883DEAD811",
@@ -93,7 +93,7 @@ body:
 
 Ожидаемый ответ:
 
-.. code-block::
+.. code-block:: json
 
     {
         "success": true,
@@ -111,19 +111,19 @@ body:
 
 **Валидация подписи**
 
-.. code-block::
+.. code-block:: text
 
     {host:port}/ecos/crypto/signVerify
 
-headers: 
+headers:
 
-.. code-block::
+.. code-block:: text
 
     Authorization: Bearer access_token //keycloak bearer access token
 
 body:
 
-.. code-block::
+.. code-block:: text
 
     {
         "documentContent":"QQMTIzNDU2Nzg5",
@@ -169,7 +169,7 @@ body:
 
 Ожидаемый ответ:
 
-.. code-block::
+.. code-block:: json
 
     {
         "success": true,
@@ -191,7 +191,7 @@ body:
 
 Полный конфиг настроек keycloak сервиса подписания:
 
-.. code-block::
+.. code-block:: yaml
 
     keycloak:
         enabled: true
@@ -226,7 +226,7 @@ body:
 
 Конфиг дополнительных настроек для микросервиса интеграции:
 
-.. code-block::
+.. code-block:: yaml
 
     ecos-integrations:
     server-sign:
@@ -288,7 +288,7 @@ ID - “server-sign“
 
 Dto - SignRequest
 
-.. code-block::
+.. code-block:: java
 
     public class SignRequest {
         private String documentContent;
@@ -298,7 +298,7 @@ Dto - SignRequest
 
 CertificateInfo:
 
-.. code-block::
+.. code-block:: java
 
     public class CertificateInfo {
         private String pin;
@@ -310,7 +310,7 @@ CertificateInfo:
 
 KeyStoreInfo:
 
-.. code-block::
+.. code-block:: java
 
     public class KeyStoreInfo {
         private String providerType;
@@ -319,7 +319,7 @@ KeyStoreInfo:
 
 Пример запроса из консоли браузера:
 
-.. code-block::
+.. code-block:: javascript
 
     Records.query(
         {
@@ -350,7 +350,7 @@ ID - “server-sign-verify“
 
 Dto - SignVerifyRequest
 
-.. code-block::
+.. code-block:: java
 
     public class SignVerifyRequest {
         private String documentContent;
@@ -361,7 +361,7 @@ Dto - SignVerifyRequest
 
 CertificateInfo:
 
-.. code-block::
+.. code-block:: java
 
     public class CertificateInfo {
         private String pin;
@@ -373,7 +373,7 @@ CertificateInfo:
 
 KeyStoreInfo:
 
-.. code-block::
+.. code-block:: java
 
     public class KeyStoreInfo {
         private String providerType;
@@ -382,7 +382,7 @@ KeyStoreInfo:
 
 Пример запроса из консоли браузера:
 
-.. code-block::
+.. code-block:: javascript
 
     Records.query(
         {

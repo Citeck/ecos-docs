@@ -120,6 +120,37 @@ Date / Time Component
        :width: 600
        :align: center
 
+Значение по умолчанию — текущая дата
+""""""""""""""""""""""""""""""""""""""
+
+Для установки текущей даты в качестве значения по умолчанию используйте свойство **customDefaultValue** на вкладке **«Данные»**. Свойство принимает JavaScript-выражение, результат которого присваивается переменной ``value``.
+
+.. note::
+
+   Статическое свойство ``defaultValue`` не поддерживает динамические значения (например, ``"now"`` не работает). Для динамических значений всегда используйте ``customDefaultValue``.
+
+Пример JSON-конфигурации компонента:
+
+.. code-block:: json
+
+   {
+     "key": "startDate",
+     "type": "datetime",
+     "input": true,
+     "format": "yyyy-MM-dd",
+     "enableTime": false,
+     "customDefaultValue": "value = new Date();",
+     "defaultValue": ""
+   }
+
+В поле **Custom Default Value** в билдере форм введите:
+
+.. code-block:: javascript
+
+   value = new Date();
+
+При открытии формы на создание поле будет автоматически заполнено текущей датой.
+
 
 Select Journal Component
 -------------------------
@@ -150,9 +181,9 @@ Select Orgstruct Component
 
 .. _sample_select_orgstruct_component:
 
-**Select Orgstruct Component**  - компонент для выбора из оргструктуры. 
+**Select Orgstruct Component**  - компонент для выбора из оргструктуры.
 
-На вкладке **«Базовые»** заполняется: 
+На вкладке **«Базовые»** заполняется:
 
 - **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
 - **Имя свойства** - имя свойства в типе данных **(2)**.
@@ -165,6 +196,28 @@ Select Orgstruct Component
 
 - допустимый **«Разрешенный тип полномочий»** **(3)**
 - **Текущий пользователь по умолчанию** - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание **(4)**.
+
+Текущий пользователь по умолчанию
+""""""""""""""""""""""""""""""""""
+
+Для автоматической подстановки текущего пользователя при создании записи используйте свойство **currentUserByDefault**. Настройка работает только в режиме создания формы (``formMode = CREATE``).
+
+Пример JSON-конфигурации:
+
+.. code-block:: json
+
+   {
+     "key": "responsible",
+     "type": "selectOrgstruct",
+     "input": true,
+     "allowedAuthorityType": "USER",
+     "currentUserByDefault": true,
+     "defaultValue": ""
+   }
+
+.. note::
+
+   Свойство ``currentUserByDefault`` — встроенная настройка компонента ``selectOrgstruct``. Для других типов компонентов используйте ``customDefaultValue`` (см. :ref:`Custom Default Value <custom_default_value>`).
 
  .. image:: _static/form_examples/form_5.png
        :width: 600
