@@ -3,6 +3,9 @@
 Создание пользователей для Citeck Community
 ============================================
 
+.. contents::
+   :depth: 4
+
 .. note::
 
    Citeck поддерживает интеграцию с **LDAP** для централизованного управления пользователями.
@@ -11,48 +14,46 @@
 Создание пользователя в Keycloak
 ----------------------------------
 
-Откройте консоль администратора Keycloak по адресу `http://localhost/ecos-idp/auth <http://localhost/ecos-idp/auth>`_.
+При установке с помощью Docker Compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Откройте консоль администратора Keycloak по адресу `http://localhost/ecos-idp/auth <http://localhost/ecos-idp/auth>`_
+
+Перейдите в **Administration Console**: 
 
 .. image:: _static/new_user/User_1.png
    :width: 600
    :align: center
 
-|
-
-Перейдите в **Administration Console** и войдите с учётными данными по умолчанию: **admin / VeryStrongPassword**.
+Войдите с учётными данными по умолчанию: **admin / VeryStrongPassword**:
 
 .. image:: _static/new_user/User_2.png
    :width: 400
    :align: center
 
-|
+В боковом меню перейдите в раздел **Users**:
 
 .. image:: _static/new_user/User_3.png
    :width: 650
    :align: center
 
-|
+Создание пользователя
+"""""""""""""""""""""""""""
 
-В боковом меню перейдите в раздел **Users**. Кнопка **View all users** отображает список всех существующих пользователей.
+Кнопка **View all users** отображает список всех существующих пользователей. Для добавления нового пользователя нажмите **Add user**:
 
 .. image:: _static/new_user/User_4.png
    :width: 650
    :align: center
 
-|
-
-Для добавления нового пользователя нажмите **Add user**:
+Заполните как минимум поле **Username** и нажмите **Save**:
 
 .. image:: _static/new_user/User_5.png
-   :width: 600
+   :width: 550
    :align: center
 
-|
-
-Заполните как минимум поле **Username** и нажмите **Save**.
-
 Задание пароля
-~~~~~~~~~~~~~~~
+""""""""""""""""""
 
 Перейдите на вкладку **Credentials**, введите пароль и подтвердите его.
 
@@ -79,10 +80,84 @@
    После создания пользователь должен **выполнить первый вход в Citeck** под своими учётными данными.
    При этом в систему передаётся только **Username** (системное имя) — остальные данные необходимо заполнить отдельно.
 
+При развертывании с использованием кроссплатформенного лончера
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+В лончере в сервисах выберите **Keycloak Admin**:
+
+.. image:: _static/new_user/launcher_user_01.png
+   :width: 700
+   :align: center
+
+Перейдите в **Administration Console**:
+
+.. image:: _static/new_user/launcher_user_02.png
+   :width: 700
+   :align: center
+
+Войдите с учётными данными по умолчанию: **admin / admin**.
+
+.. image:: _static/new_user/launcher_user_03.png
+   :width: 400
+   :align: center
+
+В боковом меню перейдите в раздел **Manage realms** и выберите **ecos-app**:
+
+.. image:: _static/new_user/launcher_user_04.png
+   :width: 700
+   :align: center
+
+Создание пользователя
+"""""""""""""""""""""""""""
+
+В боковом меню перейдите в раздел **Users**, для добавления нового пользователя нажмите **Add user**:
+
+.. image:: _static/new_user/launcher_user_05.png
+   :width: 700
+   :align: center
+
+Заполните как минимум поле **Username** и нажмите **Create**:
+
+.. image:: _static/new_user/launcher_user_06.png
+   :width: 600
+   :align: center
+
+Задание пароля
+""""""""""""""""""
+
+Перейдите на вкладку **Credentials** и нажмите **Set password**:
+
+.. image:: _static/new_user/launcher_user_07.png
+   :width: 700
+   :align: center
+
+Введите пароль, подтвердите его, и нажмите **Save**:
+
+.. image:: _static/new_user/launcher_user_08.png
+   :width: 450
+   :align: center
+
+.. note::
+
+   Если пароль должен быть временным (пользователю потребуется сменить его при первом входе), установите переключатель **Temporary** в положение **ON**.
+
+Нажмите **Save Password**:
+
+.. image:: _static/new_user/launcher_user_09.png
+   :width: 400
+   :align: center
+
+|
+
+.. important::
+
+   После создания пользователь должен **выполнить первый вход в Citeck** под своими учётными данными.
+   При этом в систему передаётся только **Username** (системное имя) — остальные данные необходимо заполнить отдельно.
+
 Заполнение данных пользователя в Citeck
 -----------------------------------------
 
-В :ref:`разделе администратора<admin>` перейдите в **Пользователи** и откройте созданного пользователя в режиме редактирования:
+В :ref:`разделе администратора <admin>` перейдите в **Пользователи** и откройте созданного пользователя в режиме редактирования:
 
 .. image:: _static/new_user/User_8.png
    :width: 700

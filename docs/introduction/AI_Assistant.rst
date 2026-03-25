@@ -105,6 +105,8 @@
     * *Сделай приложение для согласования командировок с руководителем и бухгалтерией*
     * *Создай систему учета оборудования с возможностью резервирования*
 
+.. _AI_form_generation:
+
 Генерация форм
 ~~~~~~~~~~~~~~~~~~~
 
@@ -112,6 +114,40 @@
 - **Диалоговый режим**: Генерация формы с предпросмотром черновика, возможностью уточнения и подтверждения перед развёртыванием
 - **Валидация**: Автоматическая проверка структуры формы перед деплоем
 - **Интеграция с бизнес-приложениями**: Генерация форм в составе pipeline генерации бизнес-приложений
+
+.. raw:: html
+
+   <div style="text-align: center; margin-bottom: 2em;">
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239027&hash=8e8ddcd3371618a1&hd=4" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   </div>
+
+.. _AI_context_and_agent:
+
+Умный контекст и агентный режим для артефактов
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Агентный режим (Plan-and-Execute)
+""""""""""""""""""""""""""""""""""
+
+- **Сложные запросы:** AI-ассистент автоматически определяет сложность запроса и переключается в агентный режим для мультиартефактных задач
+- **Планирование:** Автоматическая генерация плана с возможностью просмотра и утверждения перед выполнением
+- **DAG-выполнение:** Пошаговое выполнение плана с учётом зависимостей между шагами (генерация типов данных, форм, BPMN, поиск, анализ, валидация, деплой)
+- **Контроль пользователя (HITL):** Утверждение плана, модификация, пропуск и повтор шагов через кнопки действий
+- **Восстановление при ошибках:** Автоматический повтор с обратной связью и ручное управление при сбоях
+
+.. raw:: html
+
+   <div style="text-align: center; margin-bottom: 2em;">
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239028&hash=8e8018c03cb6bc99&hd=4" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   </div>
+
+Умное подключение контекста записей
+"""""""""""""""""""""""""""""""""""""
+
+- **Автоматическое определение:** AI-ассистент автоматически находит и подключает релевантные артефакты из рабочего пространства на основе запроса пользователя, без необходимости явного @-упоминания
+- **Подтверждение при неоднозначности:** При низкой уверенности система предлагает пользователю подтвердить выбор артефакта
+
+.. _AI_script_assistant:
 
 Ассистент написания скриптов
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -147,7 +183,7 @@
 .. raw:: html
 
    <div style="text-align: center; margin-bottom: 2em;">
-   <iframe src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239026&hash=80fe89f1271502c9&hd=3" width="1280" height="720" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+   <iframe width="1280" height="720" src="https://vkvideo.ru/video_ext.php?oid=-235732609&id=456239026&hash=80fe89f1271502c9&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
    </div>
 
 **Запросы:**
