@@ -1,3 +1,5 @@
+.. _ecos-webapi:
+
 Citeck WebAPI
 ==============
 

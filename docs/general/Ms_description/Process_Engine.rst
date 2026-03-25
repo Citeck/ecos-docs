@@ -8,7 +8,7 @@ BPMN-процессов на базе движка Camunda. Микросерви
 и таймеров. В данном разделе описана общая архитектура процессного движка и особенности работы с BPMN-процессами в Citeck.
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
 
     process/process_description
     process/process_bpmn

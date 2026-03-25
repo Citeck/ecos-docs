@@ -8,10 +8,10 @@
    Микросервисы **ecos-content**, **ecos-transformations** и **ecos-edi** доступны только в Enterprise-версии платформы.
 
 .. toctree::
-    :maxdepth: 4
+    :maxdepth: 2
 
     Ms_description/Apps_microservice
     Ms_description/Content_microservice
-    Ms_description/EDI_microservice
     Ms_description/Process_Engine
     Ms_description/Transformations_microservice
+    Ms_description/EDI_microservice
