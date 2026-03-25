@@ -1,7 +1,7 @@
 .. _how-to:
 
-How To
-======
+How-to руководства 
+====================
 
 .. _how-to-bundle-archetype:
 
