@@ -21,7 +21,6 @@
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    functions/client_360
    functions/preview
