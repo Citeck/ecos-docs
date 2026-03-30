@@ -19,8 +19,7 @@
 
   При включенном конфиге **restrict-access-to-edit-dashboard-widgets** (true) настройка виджетов запрещена пользователю.
 
-Настройка прав на редактирование
-----------------------------------------------------------------------
+**Настройка прав на редактирование**
 
 В системе для пользователей можно разграничить права на настройку дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов (**restrict-access-to-edit-dashboard-widgets**).
 
@@ -39,8 +38,7 @@
        :align: center
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Работа с документом
+   :maxdepth: 3
 
    widgets/properties
    widgets/preview
@@ -49,49 +47,24 @@
    widgets/doc_associations
    widgets/doc_status
    widgets/barcode
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Задачи и процессы
-
    widgets/current_tasks
    widgets/tasks
    widgets/record_actions
    widgets/stages
    widgets/process_statistics
    widgets/gantt
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Коммуникации
-
    widgets/comments
    widgets/activities
    widgets/events_history
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Данные и аналитика
-
    widgets/journal
    widgets/kanban
    widgets/graphic_statistics
    widgets/report
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Контент
-
    widgets/news
    widgets/publication
    widgets/html
    widgets/web_page
    widgets/knowledge_base
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Пользователь
-
    widgets/user_profile
    widgets/birthdays
    widgets/available_ws
