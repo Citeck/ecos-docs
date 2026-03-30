@@ -15,7 +15,5 @@
     
     launch_setup/launcher
     launch_setup/docker-compose
-    launch_setup/docker_services
     launch_setup/kubernetes
-    launch_setup/helm_chart
-    launch_setup/new_server
+    launch_setup/docker_services
