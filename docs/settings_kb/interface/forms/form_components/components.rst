@@ -15,3 +15,4 @@
     components/panel
     components/horizontal line
     components/import button
+    components/checkbox
