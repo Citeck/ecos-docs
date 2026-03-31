@@ -122,7 +122,9 @@ Checkbox
        :width: 200
        :align: center
 
-`См. подробное описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_  
+`См. подробное описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_
+
+:ref:`См. доработки компонента Checkbox<checkbox_component>`
 
 
 Day
