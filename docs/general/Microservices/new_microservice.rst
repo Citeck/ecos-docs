@@ -40,7 +40,7 @@
    * - ru.citeck.ecos.webapp:ecos-webapp-spring-simple-parent
      - Родитель для spring-boot микросервисов без состояния или микросервисов, которые работают с БД через jdbc или :ref:`ecos-data <ecos_data_main>`.
 
-Актуальная версия родительских pom файлов: **3.3.3 (версия Java не ниже 21)**
+Актуальная версия родительских pom файлов: **3.22.9 (версия Java не ниже 25)**
 
 Все родительские **pom файлы** импортируют spring-boot зависимости, общие библиотеки Citeck и дополнительные библиотеки для тестирования (rabbitmq mock, zookeeper mock и тд.)
 
@@ -60,7 +60,7 @@
         <parent>
             <groupId>ru.citeck.ecos.webapp</groupId>
             <artifactId>ecos-webapp-spring-simple-parent</artifactId>
-            <version>3.3.3</version>
+            <version>3.22.9</version>
         </parent>
 
         <repositories>
