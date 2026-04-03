@@ -7,6 +7,7 @@
 
 Подразделы охватывают следующие темы:
 
+- :ref:`Настройка подключения микросервиса ecos-notifications <ecos-notifications-settings>` — конфигурация SMTP-параметров через application.yml или переменные окружения.
 - :ref:`Уведомления <notifications-label>` — общий обзор механизма уведомлений: типы, каналы доставки и базовая конфигурация.
 - :ref:`Шаблоны уведомлений <notification_templates>` — создание и управление шаблонами для автоматической генерации текста писем и сообщений.
 - :ref:`Массовая рассылка <bulk_mail>` — отправка уведомлений сразу нескольким получателям по заданным критериям.
@@ -28,3 +29,4 @@
     notifications/senders
     notifications/mail_eds
     notifications/test_mail
+    notifications/settings
