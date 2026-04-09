@@ -14,13 +14,13 @@
 .. contents::
     :depth: 3
 
-.. note:: 
+.. note::
 
   Предварительно запустите микросервис ecos-project-tracker в :ref:`лончере<citeck_launcher>`:
 
-   .. image:: _static/ept/ept_ms.png
+  .. image:: _static/ept/ept_ms.png
        :width: 500
-       :align: center 
+       :align: center
 
 
 Создание портфеля проектов
@@ -28,38 +28,38 @@
 
 Для создания портфеля проектов в рабочем пространстве :ref:`Справочники<datalists>` перейдите в **Портфели проектов**, нажмите **+**, заполните информацию и сохраните:
 
- .. image:: _static/ept/projects_portfolio_01.png
+.. image:: _static/ept/projects_portfolio_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 Откроется информация о созданном портфеле:
 
- .. image:: _static/ept/projects_portfolio_02.png
+.. image:: _static/ept/projects_portfolio_02.png
        :width: 700
-       :align: center 
+       :align: center
 
-В меню доступны разделы создания проектов **(1)**, :ref:`библиотека документов<document_library>` **(2)** и используемые справочники **(3)**, переход в список портфелей **(4)**.
+В меню доступны раздел со списком проектов **(1)**, :ref:`библиотека документов<document_library>` **(2)** и используемые справочники **(3)**, переход в список портфелей **(4)**.
 
 Для портфеля будет автоматически создано рабочее пространство.
+
+.. _ept_new_project:
 
 Создание проекта
 -------------------
 
-.. _ept_new_project:
-
 Перейдите в **Проекты** нажмите **+**:
 
- .. image:: _static/ept/project_01.png
+.. image:: _static/ept/project_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 Доступно создание простого проекта и scrum проекта, поддерживающего спринты и бэклог.
 
 Ниже рассмотрим создание scrum проекта.
 
 .. list-table::
-      :widths: 20 20
-      :align: center
+   :widths: 20 20
+   :align: center
 
       * - |
 
@@ -84,37 +84,37 @@
 
 Карточка рабочего пространства откроется сразу после создания проекта:
 
- .. image:: _static/ept/ws_00.png
+.. image:: _static/ept/ws_00.png
        :width: 700
-       :align: center 
+       :align: center
 
 В дальнейшем портфель **(1)** и его проекты **(2)** доступны в списке рабочих пространств:
 
- .. image:: _static/ept/ws_list.png
+.. image:: _static/ept/ws_list.png
        :width: 700
-       :align: center 
+       :align: center
 
 Предоставление доступа к рабочему пространству
 -----------------------------------------------
 
 Перейдите в режим редактирования:
 
- .. image:: _static/ept/ws_03.png
+.. image:: _static/ept/ws_03.png
        :width: 700
-       :align: center 
+       :align: center
 
 Настройки рабочего пространства:
 
- .. image:: _static/ept/ws_04.png
+.. image:: _static/ept/ws_04.png
        :width: 500
-       :align: center 
+       :align: center
 
 Определите **участников**. У участника могут быть права – пользователя или менеджера (с возможностью управления рабочим пространством).
 Пользователь, создающий пространство, получает роль **«Менеджер»**.
 
- .. image:: _static/ept/ws_05.png
+.. image:: _static/ept/ws_05.png
        :width: 500
-       :align: center 
+       :align: center
 
 
 Действия с проектом
@@ -123,12 +123,22 @@
 Изменить статус
 ~~~~~~~~~~~~~~~~~~
 
-TBD
+Изменение статуса проекта:
+
+.. image:: _static/ept/change_status.png
+       :width: 500
+       :align: center
+
 
 Перенести проект
 ~~~~~~~~~~~~~~~~~~
 
-TBD
+Перенос проекта в другой портфель проектов:
+
+.. image:: _static/ept/change_portfolio.png
+       :width: 500
+       :align: center
+
 
 Разделы
 --------------
@@ -138,11 +148,11 @@ TBD
 
 На доске Scrum отображаются задачи, над которыми в данный момент работает команда. Задачи можно создавать и обновлять, а также перемещать их по рабочему процессу с помощью функции «перетаскивания».
 
- .. image:: _static/ept/active_sprint_01.png
+.. image:: _static/ept/active_sprint_01.png
        :width: 700
-       :align: center 
+       :align: center
 
-.. note:: 
+.. note::
 
     Активным может быть только 1 спринт.
 
@@ -151,26 +161,26 @@ TBD
 
 Содержит список задач проекта. Представлены задачи во всех статусах.
 
- .. image:: _static/ept/tasks_01.png
+.. image:: _static/ept/tasks_01.png
        :width: 700
-       :align: center 
+       :align: center
+
+.. _ept_new_task:
 
 Создание задачи
 """"""""""""""""""
 
-.. _ept_new_task:
-
 Нажмите **+**, выберите тип задачи
 
- .. image:: _static/ept/backlog_04_0.png
+.. image:: _static/ept/backlog_04_0.png
        :width: 600
-       :align: center 
+       :align: center
 
 и заполните поля формы, вложите файлы при необходимости:
 
- .. image:: _static/ept/backlog_04.png
+.. image:: _static/ept/backlog_04.png
        :width: 600
-       :align: center 
+       :align: center
 
 Статус задачи при создании по умолчанию – **бэклог**.
 
@@ -179,11 +189,11 @@ TBD
 
 Карточка задачи состоит из виджетов:
 
- .. image:: _static/ept/tasks_02.png
+.. image:: _static/ept/tasks_02.png
        :width: 600
-       :align: center 
+       :align: center
 
-.. note:: 
+.. note::
 
     Чтобы ссылка на commit или MR (запросы на слияние) добавилась к задаче, укажите **идентификатор задачи** Project tracker, в комментарии к commit (**Commit message**) или названии (**Title**) merge request в GitLab.
     О настройке синхронизации с Gitlab см. :ref:`ниже<ept_gitlab_sync>`  
@@ -193,46 +203,46 @@ TBD
 
 Перевод задачи в статус осуществляется по действию **«Изменить статус»**:
 
- .. image:: _static/ept/tasks_03.png
+.. image:: _static/ept/tasks_03.png
        :width: 500
-       :align: center 
+       :align: center
 
 Регистрация времени работы над задачей
 """""""""""""""""""""""""""""""""""""""
 
 Запись времени работы над задачей осуществляется по действию **«Записать время»**:
 
- .. image:: _static/ept/tasks_04.png
+.. image:: _static/ept/tasks_04.png
        :width: 400
-       :align: center 
+       :align: center
+
+.. _ept_task_to_sprint:
 
 Добавление задачи в спринт
 """""""""""""""""""""""""""
 
-.. _ept_task_to_sprint:
-
 1. Указать спринт напрямую в карточке задачи:
 
- .. image:: _static/ept/backlog_06.png
+.. image:: _static/ept/backlog_06.png
        :width: 600
-       :align: center 
+       :align: center
 
 2. Выбрать действие в журнале для быстрого добавления задачи в спринт:
 
- .. image:: _static/ept/backlog_03.png
+.. image:: _static/ept/backlog_03.png
        :width: 700
-       :align: center 
+       :align: center
 
 Выбрать спринт:
 
- .. image:: _static/ept/sprint_03.png
+.. image:: _static/ept/sprint_03.png
        :width: 500
-       :align: center 
+       :align: center
 
 
 .. list-table::
-      :widths: 20 20
-      :align: center
+   :widths: 20 20
+   :align: center
 
       * - |
 
@@ -248,51 +258,51 @@ TBD
 
 3. Через групповое действие:
 
- .. image:: _static/ept/backlog_05.png
+.. image:: _static/ept/backlog_05.png
        :width: 700
-       :align: center 
+       :align: center
 
 Эпики
 ~~~~~~~
 
 **Эпик** — крупная цель или задача, включающая множество меньших задач. 
 
- .. image:: _static/ept/epic_01.png
+.. image:: _static/ept/epic_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 В разделе по кнопке **+** доступно создание не только эпика, но и задач другого типа.
 
 Карточка эпика
 """""""""""""""
 
- .. image:: _static/ept/epic_02.png
+.. image:: _static/ept/epic_02.png
        :width: 600
-       :align: center 
+       :align: center
 
 Добавление задачи в эпик
 """"""""""""""""""""""""""
 
 1. В карточке эпика перейти в виджет **«Задачи эпика»**:
 
- .. image:: _static/ept/epic_03.png
+.. image:: _static/ept/epic_03.png
        :width: 600
-       :align: center 
+       :align: center
 
 2. Для уже созданных задач указать эпик напрямую в карточке задачи:
 
- .. image:: _static/ept/epic_04.png
+.. image:: _static/ept/epic_04.png
        :width: 600
-       :align: center 
+       :align: center
 
 Бэклог
 ~~~~~~~~
 
 **Бэклог продукта** - упорядоченный и регулярно обновляемый перечень всех задач, запланированных для разработки и совершенствования продукта. Представлены задачи только в статусе **«Бэклог»**.
 
- .. image:: _static/ept/backlog_01.png
+.. image:: _static/ept/backlog_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 В разделе по кнопке **+** доступно создание задач разного типа. См. подробнее :ref:`Создание задачи<ept_new_task>`
 
@@ -301,9 +311,9 @@ TBD
 
 Карточка задачи состоит из виджетов:
 
- .. image:: _static/ept/backlog_02.png
+.. image:: _static/ept/backlog_02.png
        :width: 600
-       :align: center 
+       :align: center
 
 Добавление задачи бэклога в спринт
 """""""""""""""""""""""""""""""""""""
@@ -315,27 +325,27 @@ TBD
 
 **Спринт** — фиксированный временной интервал в проектной деятельности, в пределах которого выполняются определённые задачи, выбранные из бэклога.
 
- .. image:: _static/ept/sprint_01.png
+.. image:: _static/ept/sprint_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 Создание спринта
 """""""""""""""""""
 
 Нажмите **+** и заполните поля формы:
 
- .. image:: _static/ept/sprint_02.png
+.. image:: _static/ept/sprint_02.png
        :width: 500
-       :align: center 
+       :align: center
 
 Карточка спринта
 """""""""""""""""""
 
 Карточка спринта содержит статистику и прогресс его выполнения, список задач:
 
- .. image:: _static/ept/sprint_08.png
+.. image:: _static/ept/sprint_08.png
        :width: 600
-       :align: center 
+       :align: center
 
 Запуск спринта
 """""""""""""""""""
@@ -344,9 +354,9 @@ TBD
 
 Подтвердите:
 
- .. image:: _static/ept/sprint_07.png
+.. image:: _static/ept/sprint_07.png
        :width: 600
-       :align: center 
+       :align: center
        
 Спринт переходит в активный, все задачи спринта в статусе «Бэклог» будут автоматически переведены в статус «К выполнению».
 
@@ -355,7 +365,7 @@ TBD
 
 Перейдите в карточку спринта и выберите действие **«Завершить спринт»**
 
-.. note:: 
+.. note::
 
       Если в спринте остались незавершенные задачи, то перед завершением текущего спринта их необходимо перенести в бэклог или другой спринт. 
 
@@ -368,15 +378,15 @@ TBD
 
 **Релиз** — список готовых версий продукта.
 
- .. image:: _static/ept/release_01.png
+.. image:: _static/ept/release_01.png
        :width: 700
-       :align: center 
+       :align: center
  
 Карточка релиза:
 
- .. image:: _static/ept/release_02.png
+.. image:: _static/ept/release_02.png
        :width: 600
-       :align: center 
+       :align: center
 
 Подробно о функционале см. :ref:`Релизы<ecos-releases>`
 
@@ -387,9 +397,9 @@ TBD
 
 Добавленные в данном разделе компоненты, становятся доступны к выбору при создании задачи.
 
- .. image:: _static/ept/components_01.png
+.. image:: _static/ept/components_01.png
        :width: 700
-       :align: center 
+       :align: center
  
 Теги
 ~~~~
@@ -398,18 +408,18 @@ TBD
 
 Добавленные в данном разделе теги, становятся доступны к выбору при создании задачи.
 
- .. image:: _static/ept/tags_01.png
+.. image:: _static/ept/tags_01.png
        :width: 700
-       :align: center 
+       :align: center
  
 Учет времени
 ~~~~~~~~~~~~~~~~
 
 Функционал, позволяющий отслеживать время, затраченное сотрудником на выполнение конкретной задачи или работу с документом, непосредственно из карточки задачи или документа.
 
- .. image:: _static/ept/worklog_01.png
+.. image:: _static/ept/worklog_01.png
        :width: 700
-       :align: center 
+       :align: center
 
 Подробно о функционале см. :ref:`Учет времени<ecos-worklog>` 
 
@@ -418,9 +428,9 @@ TBD
 
 Иерархический интерфейс для совместной работы с папками и документами.
 
- .. image:: _static/ept/doclib_01.png
+.. image:: _static/ept/doclib_01.png
        :width: 700
-       :align: center 
+       :align: center
  
 В библиотеке доступны:
 
@@ -429,56 +439,56 @@ TBD
 
 Подробно о функционале см. :ref:`Библиотека документов<document_library>`  
 
+.. _ept_gitlab_sync:
+
 Настройки синхронизации Commits и Мerge requests
 --------------------------------------------------
 
 Включение данной интеграции позволяет автоматически отображать информацию о коммитах и запросах на слияние из GitLab в карточках задач проекта.
 
-.. _ept_gitlab_sync:
-
 Для запуска синхронизаций commits и merge request необходимо:
 
 1.	Создать в GitLab **Access token**. В профиле GitLab перейти в **User settings -> Access tokens**
 
- .. image:: _static/ept/git_01.png
+.. image:: _static/ept/git_01.png
        :width: 800
-       :align: center 
+       :align: center
  
 При создании токена обязательно необходимо указать **Select scopes -  read_api**
 
- .. image:: _static/ept/git_02.png
+.. image:: _static/ept/git_02.png
        :width: 600
-       :align: center 
+       :align: center
  
 Далее скопировать созданный токен:
 
- .. image:: _static/ept/git_03.png
+.. image:: _static/ept/git_03.png
        :width: 600
-       :align: center 
+       :align: center
 
 2.	Перейти в **Рабочее пространство «Раздел администратора» → Модель → Секреты** и указать его в Секрете **gitlab-access-token**
 
- .. image:: _static/ept/git_04.png
+.. image:: _static/ept/git_04.png
        :width: 500
-       :align: center 
+       :align: center
  
 3.	Перейти в **Рабочее пространство «Раздел администратора» → Модель → Конечные точки** настроить конечную точку **gitlab-domain-url**:
 
 -	указать **URL GitLab** – например, https://gitlab.yourcompany.ru
 -	выбрать в Данных для аутентификации **Токен доступа Gitlab**
 
- .. image:: _static/ept/git_05.png
+.. image:: _static/ept/git_05.png
        :width: 500
-       :align: center 
+       :align: center
  
 4.	Перейти в **Рабочее пространство «Раздел администратора» → Интеграция → Camel DSL**, запустить **gitlab-merge-requests-sync** и **gitlab-commits-sync**:
 
- .. image:: _static/ept/git_06.png
+.. image:: _static/ept/git_06.png
        :width: 700
-       :align: center 
+       :align: center
  
 
-.. note:: 
+.. note::
 
       - Синхронизация будет происходить по всем проектам в GitLab, к которым созданный токен имеет доступ
       - Маппинг коммитов и MR к задачам происходит по ключу задачи Project tracker, указанному в комментарии к commit или названии MR в GitLab. То есть, если ключ задачи в Project Tracker равен **PT-1**, то в комментарии к commit или названии MR в GitLab должно быть указано **PT-1**
