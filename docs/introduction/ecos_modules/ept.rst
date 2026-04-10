@@ -58,8 +58,8 @@
 Ниже рассмотрим создание scrum проекта.
 
 .. list-table::
-   :widths: 20 20
-   :align: center
+      :widths: 20 20
+      :align: center
 
       * - |
 
@@ -72,6 +72,7 @@
             .. image:: _static/ept/project_02_1.png
                   :width: 500
                   :align: center
+
 
 На вкладке **Основные** обязательно укажите **Название**, **Ключ** автоматически сформируется из первых букв названия проекта, **Ответственным** автоматически назначится текущий пользователь, может быть изменен.
 
@@ -239,10 +240,9 @@
        :width: 500
        :align: center
 
-
 .. list-table::
-   :widths: 20 20
-   :align: center
+      :widths: 20 20
+      :align: center
 
       * - |
 
@@ -255,6 +255,7 @@
             .. image:: _static/ept/sprint_05.png
                   :width: 500
                   :align: center
+
 
 3. Через групповое действие:
 
