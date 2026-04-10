@@ -104,13 +104,22 @@
                 :width: 30
                 :align: center
 
-        - **Create expanded SubProcess** — несколько task, выделенные в :ref:`отдельную подзадачу <sub_process>`
+        - **Create expanded SubProcess** — несколько задач, выделенные в :ref:`отдельную подзадачу <sub_process>`
       * -
                .. image:: _static/89.png
                 :width: 30
                 :align: center
 
         - **Create Set document status** — :ref:`изменение значения статуса элемента бизнес-процесса <set_status>`
+
+      * -
+               .. image:: _static/93.png
+                :width: 30
+                :align: center
+
+        - | **AI Task** — задача, которая отвечает за вызов :ref:`AI <ai_task>`, по указанному промпту. 
+          | 
+
       * -
                .. image:: _static/24.png
                 :width: 30
@@ -153,6 +162,14 @@
                 :align: center
 
         - :ref:`изменить значение статуса <set_status>` элемента бизнес-процесса
+
+      * -
+               .. image:: _static/93.png
+                :width: 30
+                :align: center
+
+        - | :ref:`AI задача <ai_task>`
+
       * -
                .. image:: _static/29.png
                 :width: 30
