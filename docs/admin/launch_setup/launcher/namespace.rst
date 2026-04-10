@@ -53,7 +53,7 @@
     :width: 400
     :align: center
 
-Далее процесс аналогичен :ref:`запуску Community <quick_start>`:
+Далее процесс аналогичен :ref:`быстрому запуску <quick_start>`:
 
 .. image:: _static/new_namespace_4.png
     :width: 700

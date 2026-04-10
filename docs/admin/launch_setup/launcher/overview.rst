@@ -9,7 +9,7 @@
     :width: 600
     :align: center
 
-При первом запуске доступны установка Citeck Community с :ref:`демонстрационными данными <ecos_modules>` **(a)**, без демо-данных **(b)** и создание нового :ref:`пространства имён (namespace) <launcher_new_space>` для разворачивания Citeck **(с)**:
+При первом запуске доступны установка Citeck с :ref:`демонстрационными данными <ecos_modules>` **(a)**, без демо-данных **(b)** и создание нового :ref:`пространства имён (namespace) <launcher_new_space>` для разворачивания Citeck **(с)**:
 
 .. image:: _static/namespaces.png
     :width: 600
