@@ -404,7 +404,7 @@ reload
     # Config valid: /opt/citeck/conf/namespace.yml
     # Changes:
     #   ~ webapps.eapps.heapSize = 2048m (was 1024m)
-    #   + webapps.ecos-uiserv.env.CUSTOM_VAR = value
+    #   + webapps.uiserv.env.CUSTOM_VAR = value
 
     # Применить изменения
     citeck reload
