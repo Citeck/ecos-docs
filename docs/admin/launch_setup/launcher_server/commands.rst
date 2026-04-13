@@ -114,7 +114,7 @@ start
     citeck start -d
 
     # Запуск конкретного приложения (если было отключено — включает обратно)
-    citeck start ecos-apps
+    citeck start eapps
 
     # Запуск с непрерывным мониторингом
     citeck start --follow
@@ -173,7 +173,7 @@ stop
     citeck stop --shutdown
 
     # Остановка конкретного приложения (detach)
-    citeck stop ecos-apps
+    citeck stop eapps
 
     # Остановка нескольких приложений сразу (все будут detach)
     citeck stop onlyoffice attorneys ecom service-desk
@@ -218,10 +218,10 @@ restart
     citeck restart
 
     # Перезапуск одного приложения (ждёт RUNNING)
-    citeck restart ecos-apps
+    citeck restart eapps
 
     # Перезапуск без ожидания (вернуть управление сразу)
-    citeck restart ecos-apps --detach
+    citeck restart eapps --detach
 
 status
 -------
@@ -323,16 +323,16 @@ logs
     citeck logs
 
     # Логи конкретного приложения
-    citeck logs ecos-apps
+    citeck logs eapps
 
     # Последние 100 строк
-    citeck logs ecos-apps --tail 100
+    citeck logs eapps --tail 100
 
     # Потоковый вывод
-    citeck logs -f ecos-apps
+    citeck logs -f eapps
 
     # Логи за последний час
-    citeck logs ecos-apps --since 1h
+    citeck logs eapps --since 1h
 
 describe
 ---------
@@ -347,10 +347,10 @@ describe
 
 .. code-block:: bash
 
-    citeck describe ecos-apps
+    citeck describe eapps
 
     # Пример вывода:
-    # Name           ecos-apps
+    # Name           eapps
     # Container ID   a1b2c3d4e5f6
     # Image          registry.citeck.ru/community/ecos-apps:2024.11
     # Status         RUNNING
@@ -364,7 +364,7 @@ describe
     #   8080/tcp -> 0.0.0.0:8080
     #
     # Volumes:
-    #   ecos-apps-data:/data
+    #   eapps-data:/data
     #
     # Environment:
     #   JAVA_OPTS=-Xmx1024m
@@ -403,7 +403,7 @@ reload
     # Пример вывода dry-run:
     # Config valid: /opt/citeck/conf/namespace.yml
     # Changes:
-    #   ~ webapps.ecos-apps.heapSize = 2048m (was 1024m)
+    #   ~ webapps.eapps.heapSize = 2048m (was 1024m)
     #   + webapps.ecos-uiserv.env.CUSTOM_VAR = value
 
     # Применить изменения

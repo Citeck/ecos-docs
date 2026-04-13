@@ -176,8 +176,8 @@
     infra          rabbitmq        RUNNING       rabbitmq:3.13
     core           keycloak        RUNNING       citeck/keycloak:26
     webapp         ecos-gateway    STARTING      citeck/ecos-gateway:2.0
-    webapp         ecos-apps       PULLING       citeck/ecos-apps:2.0
-    webapp         ecos-model      PULLING       citeck/ecos-model:2.0
+    webapp         eapps           PULLING       citeck/ecos-apps:2.0
+    webapp         emodel          PULLING       citeck/ecos-model:2.0
     proxy          proxy           DEPS_WAITING  citeck/proxy:2.0
 
     12/18 running
