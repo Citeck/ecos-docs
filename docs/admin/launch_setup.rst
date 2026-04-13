@@ -3,7 +3,8 @@
 
 Раздел описывает способы развёртывания платформы Citeck — от локального запуска для разработки до производственных конфигураций в Kubernetes.
 
-- **Citeck Launcher** — графический инструмент для быстрого локального запуска Citeck Community без ручной настройки Docker.
+- **Citeck Launcher: локальный режим** — графический инструмент (Windows / Linux / macOS) для быстрого локального запуска Citeck Community без ручной настройки Docker.
+- **Citeck Launcher: серверный режим** — установка и управление платформой Citeck на Linux-серверах через CLI и systemd.
 - **Docker Compose** — развёртывание платформы через Docker Compose для тестовых и небольших производственных сред.
 - **Сервисы Docker** — справочник по отдельным микросервисам платформы и их параметрам.
 - **Kubernetes** — управление ресурсами подов и контейнеров в кластере.
@@ -14,6 +15,7 @@
     :maxdepth: 2
     
     launch_setup/launcher
+    launch_setup/launcher_server
     launch_setup/docker-compose
     launch_setup/kubernetes
     launch_setup/docker_services
