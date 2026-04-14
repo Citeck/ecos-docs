@@ -12,3 +12,4 @@ BPMN-процессов на базе движка Camunda. Микросерви
 
     process/process_description
     process/process_bpmn
+    process/proc_task_records
