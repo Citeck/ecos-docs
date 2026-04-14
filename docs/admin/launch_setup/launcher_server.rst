@@ -19,7 +19,11 @@ Citeck Launcher: серверный режим
 
 **Требования:**
 
-- Linux (amd64)
+- Поддерживаемые платформы:
+
+  - **Linux amd64** (x86_64) -- рекомендуется для production
+  - **Linux arm64** (aarch64) -- AWS Graviton, Oracle Cloud Ampere, Raspberry Pi и т.п.
+
 - Установлен `Docker <https://docs.docker.com/engine/install/>`_ (Docker Engine, не Docker Desktop)
 - Не менее **16 ГБ** ОЗУ для Community, **24–32 ГБ** для Enterprise
 - Не менее **50 ГБ** свободного дискового пространства

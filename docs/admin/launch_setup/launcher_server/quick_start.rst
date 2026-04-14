@@ -8,7 +8,10 @@
 
 Перед установкой убедитесь, что:
 
-1. Сервер работает на **Linux (amd64)**.
+1. Сервер работает на поддерживаемой платформе:
+
+   - **Linux amd64** (x86_64) -- рекомендуется для production
+   - **Linux arm64** (aarch64) -- AWS Graviton, Oracle Cloud Ampere, Raspberry Pi и т.п.
 
 2. Установлен **Docker Engine**:
 
