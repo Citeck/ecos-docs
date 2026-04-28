@@ -1,16 +1,16 @@
 .. _widget_barcode:
 
-Виджет «Штрих-код»
-===================
+'Barcode' Widget
+================
 
-Ключ ``barcode``
+Key ``barcode``
 
-Виджет отображает сгенерированный штрих-код документа, основанный на числовом поле документа.
+The widget displays a generated barcode for the document, based on a numeric field of the document.
 
-По умолчанию используется поле ``barcode``.
+The ``barcode`` field is used by default.
 
-Если нужно другое поле, то следует зарегистрировать это поле по типу данных в бине ``core.barcode-attribute.type-to-property.mappingRegistry``
-Пример:
+If a different field is needed, register it by data type in the bean ``core.barcode-attribute.type-to-property.mappingRegistry``.
+Example:
 
 .. code-block:: xml
 
@@ -28,7 +28,7 @@
       :widths: 5 40
       :class: tight-table
 
-      * - | **Настройка**
+      * - | **Settings**
 
 
         - |
@@ -37,15 +37,15 @@
                  :width: 250
                  :align: center
 
-          | Условие отображения кнопки:
-          | Если отсутствует условие, то кнопка отображается. Иначе для отображения, API по заданному условию должно возвращать **true**.
-          | В текущей версии сохраняется как json строка.
-          | Написание условия в соответствии статье :ref:`Язык предикатов <ecos-predicate_main>`
+          | Button display condition:
+          | If no condition is set, the button is displayed. Otherwise, the API must return **true** for the given condition in order for the button to be shown.
+          | In the current version, it is saved as a JSON string.
+          | Write the condition in accordance with the :ref:`Predicate Language <ecos-predicate_main>` article.
 
-      * - | **Настроенный вид**
+      * - | **Configured view**
 
 
-        - |  Для типа дашборда Case-details
+        - |  For the Case-details dashboard type
 
             .. image:: ../_static/widgets/barcode_2.png
                  :width: 250

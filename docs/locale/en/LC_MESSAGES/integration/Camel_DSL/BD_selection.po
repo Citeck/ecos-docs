@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,77 +27,87 @@ msgid "Для выборки данных из БД необходимо:"
 msgstr "To fetch data from the database, you need to:"
 
 #: ../../integration/Camel_DSL/BD_selection.rst:6
-msgid "Создать **«Credentials»** для подключения:"
-msgstr "Create **Credentials** for the connection:"
+msgid "Создать **«Credentials»** для подключения."
+msgstr "Create **Credentials** for the connection."
 
 #: ../../integration/Camel_DSL/BD_selection.rst:8
 msgid ""
-"Перейти в журнал **\"Credentials\" (Рабочее пространство \"Раздел "
-"администратора\" - Интеграция)**"
+"Перейти в журнал **«Credentials»** (Рабочее пространство «Раздел "
+"администратора» → Интеграция):"
 msgstr ""
-"Go to the **\"Credentials\"** journal (**Administrator Section** workspace - **Integration**)"
+"Go to the **\"Credentials\"** journal (**Administrator Section** "
+"workspace → **Integration**):"
 
 #: ../../integration/Camel_DSL/BD_selection.rst:18
 msgid ""
-"Создать **«Источник данных»** DB Data Source, в результате источник будет"
-" с типом db."
+"Создать **«Источник данных»** DB Data Source — источник будет создан с "
+"типом ``db``."
 msgstr ""
-"Create a **DB Data Source**, the resulting source will be of type 'db'."
+"Create a **\"Data Source\"** of type DB Data Source — the source will be "
+"created with type ``db``."
 
 #: ../../integration/Camel_DSL/BD_selection.rst:20
 msgid ""
-"Перейти в журнал **\"Источники данных\" (Рабочее пространство \"Раздел "
-"администратора\" - Интеграция)**"
+"Перейти в журнал **«Источники данных»** (Рабочее пространство «Раздел "
+"администратора» → Интеграция):"
 msgstr ""
-"Go to the **\"Data Sources\"** journal (**Administrator Section** workspace - **Integration**)"
+"Go to the **\"Data Sources\"** journal (**Administrator Section** "
+"workspace → **Integration**):"
 
-#: ../../integration/Camel_DSL/BD_selection.rst:31
-msgid "Создать **«Camel DSL»**"
-msgstr "Create **Camel DSL**"
+#: ../../integration/Camel_DSL/BD_selection.rst:30
+msgid "Создать **«Camel DSL»**."
+msgstr "Create a **Camel DSL** context."
 
-#: ../../integration/Camel_DSL/BD_selection.rst:33
+#: ../../integration/Camel_DSL/BD_selection.rst:32
 msgid ""
-"Перейти в журнал **\"Camel DSL\" (Рабочее пространство \"Раздел "
-"администратора\" - Интеграция)**"
+"Перейти в журнал **«Camel DSL»** (Рабочее пространство «Раздел "
+"администратора» → Интеграция):"
 msgstr ""
-"Go to the **\"Camel DSL\"** journal (**Administrator Section** workspace - **Integration**)"
+"Go to the **\"Camel DSL\"** journal (**Administrator Section** "
+"workspace → **Integration**):"
 
-#: ../../integration/Camel_DSL/BD_selection.rst:44
+#: ../../integration/Camel_DSL/BD_selection.rst:42
 msgid "Контекст Camel DSL должен содержать маршрут выборки из БД. Например:"
 msgstr "The Camel DSL context must contain a database fetch route. For example:"
 
+#: ../../integration/Camel_DSL/BD_selection.rst:58
+msgid "где:"
+msgstr "where:"
+
+#: ../../integration/Camel_DSL/BD_selection.rst:60
+msgid ""
+"**datasource** — имя источника данных, созданного в п. 2; при "
+"использовании в маршруте необходимо добавлять префикс **«jdbc:»**;"
+msgstr ""
+"**datasource** – the name of the data source created in step 2; when "
+"using it in a route, the prefix **\"jdbc:\"** must be added;"
+
 #: ../../integration/Camel_DSL/BD_selection.rst:61
-msgid "где"
-msgstr "where"
+msgid "**actions** — имя таблицы БД, из которой делается выборка;"
+msgstr ""
+"**actions** – the name of the database table from which the data is "
+"fetched;"
+
+#: ../../integration/Camel_DSL/BD_selection.rst:62
+msgid ""
+"**timer** — таймер, запускающий маршрут: ``delay=-1`` — немедленно при "
+"старте контекста, ``repeatCount=1`` — только один раз;"
+msgstr ""
+"**timer** – a timer that starts the route: ``delay=-1`` – immediately "
+"upon context start, ``repeatCount=1`` – only once;"
 
 #: ../../integration/Camel_DSL/BD_selection.rst:63
 msgid ""
-"**datasource** – имя источника данных, созданного в п.2 при его "
-"использовании в маршруте нужно добавлять префикс **«jdbc:»**;"
+"**блок split** — разделяет результат выборки на строки, которые выводятся"
+" в трассу ``stream:out``."
 msgstr ""
-"**datasource** – the name of the data source created in step 2; when using it in a route, the prefix **\"jdbc:\"** must be added;"
-
-#: ../../integration/Camel_DSL/BD_selection.rst:64
-msgid "**actions** – имя таблицы БД, из которой делается выборка;"
-msgstr "**actions** – the name of the database table from which the data is fetched;"
+"the **split block** – divides the fetch result into rows, which are "
+"output to the ``stream:out`` trace."
 
 #: ../../integration/Camel_DSL/BD_selection.rst:65
 msgid ""
-"**timer** – таймер, который запускает маршрут **delay=-1** - немедленно "
-"при старте контекста и только один раз **repeatCount=1**;"
+"Для выполнения содержимого контекста изменить состояние Camel DSL на "
+"**Started**."
 msgstr ""
-"**timer** – a timer that starts the route **delay=-1** - immediately upon context start and only once **repeatCount=1**;"
-
-#: ../../integration/Camel_DSL/BD_selection.rst:66
-msgid ""
-"**блок split** разделяет результат выборки на строки, которые выводятся в"
-" трассу **stream:out**"
-msgstr ""
-"the **split block** divides the fetch result into rows, which are output to the **stream:out** trace"
-
-#: ../../integration/Camel_DSL/BD_selection.rst:68
-msgid ""
-"Для выполнения содержимого контекста нужно изменить состояние Camel DSL "
-"на **Started**"
-msgstr ""
-"To execute the context content, change the Camel DSL state to **Started**"
+"To execute the context content, change the Camel DSL state to "
+"**Started**."

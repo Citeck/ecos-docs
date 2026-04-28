@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
@@ -141,8 +140,8 @@ msgid ""
 "``id`` - указываем любой (или оставляем пустым и оно само сгенерится при "
 "создании)."
 msgstr ""
-"``id`` - Specify any (or leave it empty and it will be auto-generated "
-"upon creation)."
+"``id`` - Specify any value (or leave it empty and it will be auto-"
+"generated upon creation)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:57
 msgid "``name`` - любое человеко-читаемое название для этого ящика."
@@ -150,34 +149,39 @@ msgstr "``name`` - Any human-readable name for this box."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:59
 msgid "``URL``- указываем созданный в 2.2 датасорс."
-msgstr "``URL`` - Specify the data source create"
+msgstr "``URL`` - Specify the data source created in section 2.2."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:61
-#, fuzzy
 msgid "``Credentials`` - указываем созданные в 2.1 креды."
-msgstr "``URL`` - Specify the data source create"
+msgstr "``Credentials`` - Specify the credentials created in section 2.1."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:63
 msgid ""
 "В разделе **Box configuration** - заполняем идентификатор номером GLN "
 "организации, от имени которой происходит разбор EDI-сообщений."
 msgstr ""
+"In the **Box configuration** section, fill in the identifier with the GLN"
+" number of the organization on whose behalf EDI messages are parsed."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:65
 msgid "Раздел **Other**:"
-msgstr ""
+msgstr "The **Other** section:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:67
 msgid ""
 "``Outbound documents folder path template`` - шаблон пути, по которому "
 "будут отправляться исходящие сообщения. Подробнее в п.3."
 msgstr ""
+"``Outbound documents folder path template`` - the path template used for "
+"outgoing messages. See section 3 for details."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:69
 msgid ""
 "``Inbound documents folder path template`` - шаблон пути, по которому "
 "будут получаться входящие сообщения. Подробнее в п.4."
 msgstr ""
+"``Inbound documents folder path template`` - the path template used for "
+"incoming messages. See section 4 for details."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:71
 msgid ""
@@ -185,6 +189,9 @@ msgid ""
 "который означает, что мы должны искать документы не только в папке "
 "полностью соответствующей конфигу выше, но и в поддиректориях."
 msgstr ""
+"``Search documents in subdirectories`` - a self-explanatory checkbox "
+"indicating that documents should be searched not only in the folder that "
+"fully matches the configuration above, but also in subdirectories."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:73
 msgid ""
@@ -192,6 +199,9 @@ msgid ""
 "сообщений. Существует 2 варианта - ``MOVE_AFTER_PROCESSING`` и "
 "``DELETE_ON_SUCCESS``. Подробнее в п.4."
 msgstr ""
+"``Inbound processing policy`` - a choice of options for processing "
+"incoming messages. There are 2 options: ``MOVE_AFTER_PROCESSING`` and "
+"``DELETE_ON_SUCCESS``. See section 4 for details."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:75
 msgid ""
@@ -199,6 +209,9 @@ msgid ""
 " при ``MOVE_AFTER_PROCESSING``) - папка куда складываются документы, "
 "которые были успешно обработаны."
 msgstr ""
+"``Inbound documents success folder path template`` - (used only with "
+"``MOVE_AFTER_PROCESSING``) - the folder where successfully processed "
+"documents are placed."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:77
 msgid ""
@@ -206,11 +219,13 @@ msgid ""
 "при ``MOVE_AFTER_PROCESSING``) - папка, куда складываются документы, в "
 "результате обработки которых получили ошибку."
 msgstr ""
+"``Inbound documents error folder path template`` - (used only with "
+"``MOVE_AFTER_PROCESSING``) - the folder where documents that resulted in "
+"an error during processing are placed."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:80
-#, fuzzy
 msgid "2.4. Создание ecos-sync сущности"
-msgstr "2.2. Creating the ecos-data-sources Entity"
+msgstr "2.4. Creating the ecos-sync Entity"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:82
 msgid ""
@@ -218,14 +233,17 @@ msgid ""
 "статье: :ref:`Настройка получения событий с ящиком "
 "Контур_Диадок<events_kontur>`"
 msgstr ""
+"It is no different from other integrations; you can refer to the general "
+"article: :ref:`Setting up event reception with the Kontur Diadoc "
+"box<events_kontur>`"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:84
 msgid "Указывать, конечно, сущность **edi-box** из п.2.3."
-msgstr ""
+msgstr "Of course, specify the **edi-box** entity from section 2.3."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:87
 msgid "3. Принципы работы при отправке сообщений"
-msgstr ""
+msgstr "3. Operating Principles for Sending Messages"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:89
 msgid ""
@@ -234,14 +252,18 @@ msgid ""
 "**EdiXmlRequest** из либы ``ecos-edi-commons`` `Описание работы "
 "интеграции :ref:`"
 msgstr ""
+"The entire library is based on specifying relative paths in the "
+"configuration. The substitution variables come from the **EdiXmlRequest**"
+" structure in the ``ecos-edi-commons`` library `Integration description "
+":ref:`"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:91
 msgid "Эта структура состоит из следующих полей:"
-msgstr ""
+msgstr "This structure consists of the following fields:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:100
 msgid "где:"
-msgstr ""
+msgstr "where:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:102
 msgid ""
@@ -251,12 +273,19 @@ msgid ""
 "шаблоне можем использовать значения по следующим ключам: ``ourId.key1`` и"
 " vourId.key2``)."
 msgstr ""
+"``ourId`` is mapped for substitution as ``ourId.key_from_attributes`` "
+"(``OurId`` consists of **ObjectData**. This means that if **ObjectData** "
+"contains 2 values with keys ``key1`` and ``key2``, you can use the values"
+" by the following keys in the template: ``ourId.key1`` and "
+"``ourId.key2``)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:104
 msgid ""
 "``counterpartyId`` маппится для подстановки в виде "
 "``counterpartyId.key_from_attributes`` (аналогично ourId)."
 msgstr ""
+"``counterpartyId`` is mapped for substitution as "
+"``counterpartyId.key_from_attributes`` (similar to ourId)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:106
 msgid ""
@@ -264,10 +293,13 @@ msgid ""
 " значения ORDERS, ORDRSP, DESADV, RECADV, etc и в document.lowerType, где"
 " могут быть значения orders, ordrsp, desadv, recadv, etc."
 msgstr ""
+"``ediXml`` is mapped to only 2 values: ``document.type``, which can have "
+"values ORDERS, ORDRSP, DESADV, RECADV, etc., and ``document.lowerType``, "
+"which can have values orders, ordrsp, desadv, recadv, etc."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:108
 msgid "``data`` - полностью маппится в виде addInfo.key."
-msgstr ""
+msgstr "``data`` - is fully mapped as addInfo.key."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:110
 msgid ""
@@ -276,6 +308,10 @@ msgid ""
 "``FtpCustomAddInfoProviderRegistry``. Таким образом, можно на любом "
 "проекте кастомную логику по определению путей сделать. Пример шаблонов:"
 msgstr ""
+"To populate ``data``, you can extend the ``FtpCustomAddInfoProvider`` "
+"interface in a project and register it in the "
+"``FtpCustomAddInfoProviderRegistry`` bean. This way, custom path-"
+"determination logic can be implemented in any project. Example templates:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:116
 msgid ""
@@ -283,16 +319,21 @@ msgid ""
 "ключу ``counterparty.esk`` и ``ediXml.ediDocumentType`` содержит значение"
 " ORDERS, то данное сообщение отправится в следующую папку:"
 msgstr ""
+"This means that if the data structure contains the value 123456 under the"
+" key ``counterparty.esk`` and ``ediXml.ediDocumentType`` contains the "
+"value ORDERS, then this message will be sent to the following folder:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:122
 msgid ""
 "Можно вовсе не использовать шаблоны, тогда все документы будут попадать в"
 " любую папку."
 msgstr ""
+"You can avoid using templates entirely, in which case all documents will "
+"be placed in any folder."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:124
 msgid "Например, шаблон:"
-msgstr ""
+msgstr "For example, the template:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:130
 msgid ""
@@ -300,22 +341,29 @@ msgid ""
 "возвращала переменную ``path``. Например, если она будет равна "
 "``some/path/type/kind/outbound``, то путь будет следующим:"
 msgstr ""
+"Implement ``FtpCustomAddInfoProvider`` to return the variable ``path``. "
+"For example, if it equals ``some/path/type/kind/outbound``, the path will"
+" be as follows:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:136
 msgid ""
 "Для шаблонизации пути используется компонент ``StringSubstitutor`` из "
 "библиотеки commons-text от Apache с небольшой модернизацией."
 msgstr ""
+"Path templating uses the ``StringSubstitutor`` component from Apache's "
+"commons-text library with minor modifications."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:138
 msgid "Подробнее можно ознакомиться в тестах к либе."
-msgstr ""
+msgstr "More details can be found in the library tests."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:140
 msgid ""
 "Отправить сообщение можно с помощью интерфейса **EdiService**, передав "
 "ему ``EdiProviderType.FTP``. Доступные методы:"
 msgstr ""
+"A message can be sent using the **EdiService** interface by passing "
+"``EdiProviderType.FTP`` to it. Available methods:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:142
 msgid ""
@@ -324,40 +372,48 @@ msgid ""
 "бандла ``ecos-edi-ftps-lib`` или других, если появится такая "
 "необходимость."
 msgstr ""
+"``generateEdiXml`` - is available, but currently has no implemented "
+"generators due to lack of necessity. The list of generators can be "
+"extended within the ``ecos-edi-ftps-lib`` bundle or others if such a need"
+" arises."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:144
 msgid ""
 "``sendEdiXml`` - отправка сообщения, данные которого сериализованы в "
 "``EdiXmlRequest`` на FTP-сервер."
 msgstr ""
+"``sendEdiXml`` - sends a message whose data is serialized in "
+"``EdiXmlRequest`` to the FTP server."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:146
 msgid "Сервис **EdiService** доступен из микросервиса **integrations-app**."
 msgstr ""
+"The **EdiService** service is available from the **integrations-app** "
+"microservice."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:149
 msgid "4. Принципы работы при получении сообщений"
-msgstr ""
+msgstr "4. Operating Principles for Receiving Messages"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:151
 msgid "Для получения сообщений мы проходим через 3 фазы:"
-msgstr ""
+msgstr "To receive messages, we go through 3 phases:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:153
 msgid "Ищем сообщения."
-msgstr ""
+msgstr "Search for messages."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:155
 msgid "Обрабатываем сообщения."
-msgstr ""
+msgstr "Process messages."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:157
 msgid "Фиксируем, что сообщение обработано."
-msgstr ""
+msgstr "Confirm that the message has been processed."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:160
 msgid "4.1. Обход в поиске сообщений"
-msgstr ""
+msgstr "4.1. Traversal for Searching Messages"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:162
 msgid ""
@@ -367,6 +423,11 @@ msgid ""
 " и позже возобновляет обход с той же точки. Реализовано это в виде "
 "итератора ``FtpWalkIterator``."
 msgstr ""
+"For searching documents, a recursive traversal of folders is used. The "
+"algorithm does not fetch all documents at once and send them for "
+"processing, but instead remembers the position of the last found document,"
+" sends it for processing, and later resumes the traversal from the same "
+"point. This is implemented as the ``FtpWalkIterator`` iterator."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:164
 msgid ""
@@ -374,6 +435,10 @@ msgid ""
 "template`` (далее - шаблон поиска входящих) и Search documents in "
 "subdirectories (флаг поиска в поддиректориях), которые описаны в п.2.3."
 msgstr ""
+"The iterator is fed the parameters ``Inbound documents folder path "
+"template`` (hereafter - the inbound search template) and ``Search "
+"documents in subdirectories`` (the subdirectory search flag), which are "
+"described in section 2.3."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:166
 #, python-brace-format
@@ -383,12 +448,18 @@ msgid ""
 "``/${addInfo.counterparty.esk}_S4TEST/INBOUND/${document.type}`` "
 "разобьется на 4 части:"
 msgstr ""
+"The inbound search template is split into levels by folders. For example,"
+" the template "
+"``/${addInfo.counterparty.esk}_S4TEST/INBOUND/${document.type}`` is split"
+" into 4 parts:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:175
 msgid ""
 "После этого, части будут преобразованы в корректные регулярные выражения."
 " То есть, эти части будут иметь теперь следующие значения:"
 msgstr ""
+"After this, the parts are converted into correct regular expressions. "
+"That is, these parts will now have the following values:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:184
 msgid ""
@@ -398,25 +469,37 @@ msgid ""
 "опустим, чтобы не ухудшать читаемость). Так же, обратите внимание, "
 "document.type и document.lowerType преобразуются в конкретные значения "
 "enum, а остальные переменные - в регулярки из букв, цифр, пустых символов"
-" или символа “-”."
+" или символа \"-\"."
 msgstr ""
+"Note that the replacement is not simply done with regular expressions; "
+"groups are created so that these values can be extracted later to create "
+"an Event (internally, dots are also replaced with A1B2C3 strings, but we "
+"omit this to keep things readable). Also note that document.type and "
+"document.lowerType are converted to specific enum values, while the other"
+" variables are converted to regular expressions of letters, digits, "
+"spaces, or the \"-\" character."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:186
 msgid ""
 "Если включен флаг поиска в поддиректориях - к последнему регулярному "
-"выражению добавляется “.*“. Таким образом становится возможным поиск по "
+"выражению добавляется \".*\". Таким образом становится возможным поиск по "
 "подпапкам."
 msgstr ""
+"If the subdirectory search flag is enabled, \".*\" is appended to the "
+"last regular expression. This makes it possible to search in "
+"subdirectories."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:188
 msgid ""
 "Так же, есть возможность указывать не стандартную регулярку, а свою. "
 "Пример -"
 msgstr ""
+"It is also possible to specify a custom regular expression instead of the"
+" standard one. Example -"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:194
 msgid "Алгоритм обхода:"
-msgstr ""
+msgstr "Traversal algorithm:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:196
 msgid ""
@@ -424,27 +507,35 @@ msgid ""
 "папки, которые нужно будет в будущем посмотреть и проверить на предмет "
 "файлов, соответствующих регуляркам."
 msgstr ""
+"The iterator internally maintains a queue. Files or folders that need to "
+"be examined in the future and checked for files matching the regular "
+"expressions are added to this queue."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:198
 msgid ""
-"Инициализируем итератор, загрузив в очередь файлы из папки “/” (из рута)."
+"Инициализируем итератор, загрузив в очередь файлы из папки \"/\" (из рута)."
 " Этот шаг выполняется только 1 раз."
 msgstr ""
+"We initialize the iterator by loading files from the \"/\" folder (root) "
+"into the queue. This step is performed only once."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:200
 msgid "Берем из очереди следующий элемент."
-msgstr ""
+msgstr "We take the next element from the queue."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:202
 msgid ""
-"Определяем его уровень (по количеству символов “/“). Берем "
+"Определяем его уровень (по количеству символов \"/\"). Берем "
 "соответствующий этому уровню regexp (или последний, если уровень больше "
 "чем есть regexp'ов)."
 msgstr ""
+"We determine its level (by the number of \"/\" characters). We take the "
+"regexp corresponding to this level (or the last one if the level exceeds "
+"the number of available regexps)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:204
 msgid "Проверяем совпадение по regexp."
-msgstr ""
+msgstr "We check for a match against the regexp."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:206
 msgid ""
@@ -454,18 +545,25 @@ msgid ""
 "соответствие последнему регулярному выражению) - отправляем его на "
 "обработку."
 msgstr ""
+"3.1. If it matches - we check whether it is a folder or a file. If it is"
+" a folder - we get the list of files from it and add them to the front of"
+" the queue for further processing, then go to step 1. If it is a file "
+"(for files, we check only against the last regular expression) - we send "
+"it for processing."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:208
 msgid "3.2. Не совпадает - выбрасываем элемент из очереди. Переходим на пункт 1."
 msgstr ""
+"3.2. Does not match - we discard the element from the queue. Go to "
+"step 1."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:211
 msgid "4.2. Обработка сообщения"
-msgstr ""
+msgstr "4.2. Message Processing"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:212
 msgid "Этот шаг состоит из 2х пунктов:"
-msgstr ""
+msgstr "This step consists of 2 parts:"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:214
 #, python-brace-format
@@ -479,6 +577,14 @@ msgid ""
 "структуру **Event** пробросятся значения из пути сообщения на "
 "FTP-сервере."
 msgstr ""
+"Populating the **Event** (what an Event is in integration can be read "
+"here :ref:`Integration operation description<EDI>`). As mentioned above, "
+"it is necessary to capture groups from the regexp. This is done to pass "
+"values under the same keys into the **Event** structure. That is, for the"
+" inbound search template "
+"``/${addInfo.counterparty.esk}_S4TEST/OUTBOUND/${document.type}`` - the "
+"values from the message path on the FTP server will be forwarded into the"
+" **Event** structure."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:216
 msgid ""
@@ -486,10 +592,13 @@ msgid ""
 "(:ref:`Описание работы интеграции<EDI>`) для обработки дальше системой "
 "силами роутов Camel."
 msgstr ""
+"Next, the created **Event** is sent to **EdiStateService** "
+"(:ref:`Integration operation description<EDI>`) for further processing by"
+" the system using Camel routes."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:219
 msgid "4.3. Фиксация обработанного сообщения"
-msgstr ""
+msgstr "4.3. Committing the Processed Message"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:221
 msgid ""
@@ -498,16 +607,23 @@ msgid ""
 "выбранной политики, переданной через конфигурацию Inbound processing "
 "policy (см. п.2.3)."
 msgstr ""
+"After successful (or unsuccessful) processing of a message, it is "
+"necessary to record that the message has been processed. This is done "
+"through the selected policy passed via the Inbound processing policy "
+"configuration (see section 2.3)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:224
 msgid "4.3.1. Политика MOVE_AFTER_PROCESSING"
-msgstr ""
+msgstr "4.3.1. MOVE_AFTER_PROCESSING Policy"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:226
 msgid ""
 "В случае успеха - перемещаем файл в папку, которая указана в конфигурации"
 " ``Inbound documents success folder path template`` (см. п.2.3)."
 msgstr ""
+"On success - the file is moved to the folder specified in the "
+"``Inbound documents success folder path template`` configuration (see "
+"section 2.3)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:228
 msgid ""
@@ -515,6 +631,9 @@ msgid ""
 "конфигурации ``Inbound documents error folder path template`` (см. "
 "п.2.3)."
 msgstr ""
+"On failure - the file is moved to the folder specified in the "
+"``Inbound documents error folder path template`` configuration (see "
+"section 2.3)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:230
 msgid ""
@@ -522,16 +641,18 @@ msgid ""
 "можно использовать переменные, которые участвуют в шаблоне поиска "
 "входящих (пример можно посмотреть на скриншоте в п.2.3)."
 msgstr ""
+"Note that both of these parameters are templates. In the templates, you "
+"can use variables that are part of the inbound search template (an "
+"example can be seen in the screenshot in section 2.3)."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:233
 msgid "4.3.2. Политика DELETE_ON_SUCCESS"
-msgstr ""
+msgstr "4.3.2. DELETE_ON_SUCCESS Policy"
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:235
 msgid "В случае успешно обработанного события - файл удаляется с FTP-сервера."
-msgstr ""
+msgstr "On a successfully processed event - the file is deleted from the FTP server."
 
 #: ../../integration/EDI_integration/ecos-edi-ftps-lib.rst:237
 msgid "В случае провала - ничего не происходит."
-msgstr ""
-
+msgstr "On failure - nothing happens."

@@ -1,0 +1,443 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Data_API/Язык_предикатов.rst:4
+msgid "Язык предикатов"
+msgstr "Predicate Language"
+
+#: ../../general/Data_API/Язык_предикатов.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/Data_API/Язык_предикатов.rst:9
+msgid ""
+"Язык предикатов разработан для удобной работы как на стороне frontend, "
+"так и backend — для модификации, анализа и других операций."
+msgstr ""
+"The predicate language is designed for convenient use on both the frontend "
+"and backend sides — for modification, analysis, and other operations."
+
+#: ../../general/Data_API/Язык_предикатов.rst:11
+msgid ""
+"С точки зрения абстрактного определения, предикат — это функция, которая "
+"принимает элемент некоторого множества и возвращает ``True`` или "
+"``False``."
+msgstr ""
+"From an abstract definition standpoint, a predicate is a function that "
+"takes an element of some set and returns ``True`` or ``False``."
+
+#: ../../general/Data_API/Язык_предикатов.rst:13
+msgid "В библиотеке ecos-records добавлена реализация данной концепции."
+msgstr "The ecos-records library provides an implementation of this concept."
+
+#: ../../general/Data_API/Язык_предикатов.rst:15
+msgid ""
+"Есть два агрегатных состояния предиката - JSON или JAVA классы. Для "
+"конвертации между этими двумя состояниями есть сервис PredicateService и "
+"методы ``writeJson/readJson``. Java представление - просто модель."
+msgstr ""
+"A predicate has two aggregate representations — JSON or Java classes. To "
+"convert between these two states, the PredicateService and the "
+"``writeJson/readJson`` methods are available. The Java representation is "
+"simply a model."
+
+#: ../../general/Data_API/Язык_предикатов.rst:18
+msgid ""
+"Обработка модели - отдельная задача, которая лежит на источниках данных "
+"или на преобразователях запросов (например: для запросов в alfresco "
+"предикаты трансформируются в fts-alfresco запрос в классе "
+"PredicateToFtsAlfrescoConverter)."
+msgstr ""
+"Model processing is a separate concern handled by data sources or query "
+"transformers (for example, for Alfresco queries, predicates are transformed "
+"into an fts-alfresco query in the PredicateToFtsAlfrescoConverter class)."
+
+#: ../../general/Data_API/Язык_предикатов.rst:21
+msgid "JAVA представление"
+msgstr "Java Representation"
+
+#: ../../general/Data_API/Язык_предикатов.rst:23
+#: ../../general/Data_API/Язык_предикатов.rst:87
+msgid "Предикат"
+msgstr "Predicate"
+
+#: ../../general/Data_API/Язык_предикатов.rst:27
+msgid "**Predicate** - базовый маркерный интерфейс без методов"
+msgstr "**Predicate** — base marker interface with no methods"
+
+#: ../../general/Data_API/Язык_предикатов.rst:28
+msgid "**AttributePredicate** - предикат связанный с некоторым аттрибутом"
+msgstr "**AttributePredicate** — predicate associated with a specific attribute"
+
+#: ../../general/Data_API/Язык_предикатов.rst:29
+msgid "**EmptyPredicate** - предикат \"Значение аттрибута пустое\""
+msgstr "**EmptyPredicate** — predicate \"Attribute value is empty\""
+
+#: ../../general/Data_API/Язык_предикатов.rst:30
+msgid ""
+"**ValuePredicate** - предикат \"Значение аттрибута равно/содержит/одно "
+"из/больше/меньше/похоже/больше  или равно/меньше или равно. Тип сравнения"
+" определяется полем type. Значение для сравнения в поле value"
+msgstr ""
+"**ValuePredicate** — predicate \"Attribute value equals / contains / is one "
+"of / greater than / less than / matches / greater than or equal / less than "
+"or equal\". The comparison type is defined by the type field. The comparison "
+"value is in the value field"
+
+#: ../../general/Data_API/Язык_предикатов.rst:31
+msgid "**NotPredicate** - предикат \"НЕ какой_то_другой_предикат\""
+msgstr "**NotPredicate** — predicate \"NOT some_other_predicate\""
+
+#: ../../general/Data_API/Язык_предикатов.rst:32
+msgid "**ComposedPredicate** - предикат, который объединяет другие предикаты"
+msgstr "**ComposedPredicate** — predicate that combines other predicates"
+
+#: ../../general/Data_API/Язык_предикатов.rst:33
+msgid "**AndPredicate** - предикат И"
+msgstr "**AndPredicate** — AND predicate"
+
+#: ../../general/Data_API/Язык_предикатов.rst:34
+msgid "**OrPredicate** - предикат ИЛИ"
+msgstr "**OrPredicate** — OR predicate"
+
+#: ../../general/Data_API/Язык_предикатов.rst:35
+msgid ""
+"**VoidPredicate** - пустой предикат, который получается если t (тип) не "
+"задан. Как правило означает, что при фильтрации/поиске никаких проверок "
+"не нужно (берем все записи)."
+msgstr ""
+"**VoidPredicate** — empty predicate produced when t (type) is not set. "
+"Usually means that no checks are needed during filtering/search "
+"(all records are returned)."
+
+#: ../../general/Data_API/Язык_предикатов.rst:38
+msgid "JSON представление"
+msgstr "JSON Representation"
+
+#: ../../general/Data_API/Язык_предикатов.rst:40
+msgid "Пример::"
+msgstr "Example::"
+
+#: ../../general/Data_API/Язык_предикатов.rst:68
+msgid ""
+"В поле **\"t\"** записывается тип предиката, в **\"att\"** название "
+"аттрибута (если тип предиката его требует) и в **\"val\"** значение "
+"(опять же имеет смысл не для всех предикатов)."
+msgstr ""
+"The **\"t\"** field holds the predicate type, **\"att\"** holds the attribute "
+"name (if the predicate type requires it), and **\"val\"** holds the value "
+"(again, only meaningful for some predicates)."
+
+#: ../../general/Data_API/Язык_предикатов.rst:70
+msgid "Для конвертации java предикатов в json и обратно::"
+msgstr "To convert Java predicates to JSON and back::"
+
+#: ../../general/Data_API/Язык_предикатов.rst:75
+msgid "Для чтения предикатов из запроса RecordsQuery::"
+msgstr "To read predicates from a RecordsQuery request::"
+
+#: ../../general/Data_API/Язык_предикатов.rst:80
+#: ../../general/Data_API/Язык_предикатов.rst:82
+msgid "Типы предикатов"
+msgstr "Predicate Types"
+
+#: ../../general/Data_API/Язык_предикатов.rst:88
+#: ../../general/Data_API/Язык_предикатов.rst:192
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Data_API/Язык_предикатов.rst:89
+msgid "FTS"
+msgstr "FTS"
+
+#: ../../general/Data_API/Язык_предикатов.rst:90
+msgid "**starts**"
+msgstr "**starts**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Строка начинается с val."
+msgstr "The string starts with val."
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Пример:"
+msgstr "Example:"
+
+#: ../../general/Data_API/Язык_предикатов.rst:98
+msgid "``title:«startsWith»``"
+msgstr "``title:«startsWith»``"
+
+#: ../../general/Data_API/Язык_предикатов.rst:99
+msgid "**ends**"
+msgstr "**ends**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Строка заканчивается с val."
+msgstr "The string ends with val."
+
+#: ../../general/Data_API/Язык_предикатов.rst:107
+msgid "``title:«*endsWith»``"
+msgstr "``title:«*endsWith»``"
+
+#: ../../general/Data_API/Язык_предикатов.rst:108
+msgid "**or**"
+msgstr "**or**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Объединение массива предикатов в val по ИЛИ."
+msgstr "Combines the array of predicates in val using OR."
+
+#: ../../general/Data_API/Язык_предикатов.rst:116
+msgid "**and**"
+msgstr "**and**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Объединение массива предикатов в val по И."
+msgstr "Combines the array of predicates in val using AND."
+
+#: ../../general/Data_API/Язык_предикатов.rst:124
+msgid "**empty**"
+msgstr "**empty**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Поле в att пустое."
+msgstr "The field specified in att is empty."
+
+#: ../../general/Data_API/Язык_предикатов.rst:132
+msgid "**not**"
+msgstr "**not**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Отрицание предиката в val."
+msgstr "Negation of the predicate in val."
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Этот предикат можно автоматически добавлять к  другим добавляя префикс "
+"«not-»."
+msgstr ""
+"This predicate can be automatically prepended to others by adding the "
+"\"not-\" prefix."
+
+#: ../../general/Data_API/Язык_предикатов.rst:148
+msgid "**eq**"
+msgstr "**eq**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение поля att точно равно val."
+msgstr "The value of the att field is exactly equal to val."
+
+#: ../../general/Data_API/Язык_предикатов.rst:157
+msgid "**gt**"
+msgstr "**gt**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение поля att больше val"
+msgstr "The value of the att field is greater than val"
+
+#: ../../general/Data_API/Язык_предикатов.rst:160
+msgid "**ge**"
+msgstr "**ge**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение поля att больше или равно val"
+msgstr "The value of the att field is greater than or equal to val"
+
+#: ../../general/Data_API/Язык_предикатов.rst:163
+msgid "**lt**"
+msgstr "**lt**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение поля att меньше val"
+msgstr "The value of the att field is less than val"
+
+#: ../../general/Data_API/Язык_предикатов.rst:166
+msgid "**le**"
+msgstr "**le**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение поля att меньше или равно val"
+msgstr "The value of the att field is less than or equal to val"
+
+#: ../../general/Data_API/Язык_предикатов.rst:169
+msgid "**like**"
+msgstr "**like**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение att подходит под паттерн val."
+msgstr "The att value matches the val pattern."
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"В паттерне используется % как заменитель любого кол-ва символов (как в "
+"SELECT запросе БД)"
+msgstr ""
+"In the pattern, % is used as a wildcard for any number of characters "
+"(as in a database SELECT query)"
+
+#: ../../general/Data_API/Язык_предикатов.rst:173
+msgid "**in**"
+msgstr "**in**"
+
+#: ../../general/Data_API/Язык_предикатов.rst:176
+msgid "**contains**"
+msgstr "**contains**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Значение att содержит подстроку val (работает и для ассоциаций)"
+msgstr "The att value contains the val substring (also works for associations)"
+
+#: ../../general/Data_API/Язык_предикатов.rst:180
+msgid "Например:"
+msgstr "For example:"
+
+#: ../../general/Data_API/Язык_предикатов.rst:184
+msgid "Дополнительные возможности предикатов"
+msgstr "Additional Predicate Features"
+
+#: ../../general/Data_API/Язык_предикатов.rst:186
+msgid "Доп. возможности предикатов"
+msgstr "Additional predicate features"
+
+#: ../../general/Data_API/Язык_предикатов.rst:191
+msgid "Фича"
+msgstr "Feature"
+
+#: ../../general/Data_API/Язык_предикатов.rst:193
+msgid "**Промежутки и продолжительность**"
+msgstr "**Ranges and Durations**"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Для атрибутов типа date и datetime добавлена возможность вычислять "
+"продолжительность и промежутки"
+msgstr ""
+"For attributes of type date and datetime, the ability to compute "
+"durations and ranges has been added"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"При указании промежутка первой границей он вычисляется от текущей "
+"даты-времени"
+msgstr ""
+"When a range is specified with the first boundary, it is calculated "
+"from the current date and time"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "При указании промежутка второй границей он вычисляется от первой границы"
+msgstr "When a range is specified with the second boundary, it is calculated from the first boundary"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Поиск идёт включительно границ т.е. [DurationOrDateTime1, "
+"DurationOrDateTime2]"
+msgstr ""
+"The search is inclusive of boundaries, i.e. [DurationOrDateTime1, "
+"DurationOrDateTime2]"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Добавлены две константы $NOW - текущая дата время, $TODAY текущая дата"
+msgstr "Two constants are available: $NOW — current date and time, $TODAY — current date"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Примеры:"
+msgstr "Examples:"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "Найти документы которые были созданы в течении 10 суток:"
+msgstr "Find documents created within the last 10 days:"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Ищем документы у которых от $NOW - два года, до ($NOW - два года) - плюс "
+"год"
+msgstr ""
+"Find documents where the range is from $NOW minus two years, to ($NOW minus "
+"two years) plus one year"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Найти документы которые были созданы в течении 2-х лет, до текущей "
+"даты-времени"
+msgstr ""
+"Find documents created within the last 2 years, up to the current "
+"date and time"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid ""
+"Найти документы которые были созданы в течении 2-х лет, до сегодняшнего "
+"дня"
+msgstr ""
+"Find documents created within the last 2 years, up to today"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "от 2020-01-01 до 2020-02-01"
+msgstr "from 2020-01-01 to 2020-02-01"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "от 2020-01-01 до 2020-01-01 плюс 1 месяц"
+msgstr "from 2020-01-01 to 2020-01-01 plus 1 month"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "от минус 10 дней до 2020-01-01"
+msgstr "from minus 10 days to 2020-01-01"
+
+#: ../../general/Data_API/Язык_предикатов.rst
+msgid "от сегодня"
+msgstr "from today"
+
+#: ../../general/Data_API/Язык_предикатов.rst:251
+msgid "Дебаг предикатов и отладка"
+msgstr "Predicate Debugging"
+
+#: ../../general/Data_API/Язык_предикатов.rst:253
+msgid ""
+"Для дебага предикатов можно использовать следующий скрипт в консоли "
+"браузера:"
+msgstr ""
+"To debug predicates, you can use the following script in the browser "
+"console:"
+
+#: ../../general/Data_API/Язык_предикатов.rst:277
+msgid ""
+"Между json <-> yaml можно делать однозначную конвертацию в любом онлайн "
+"сервисе по запросу \"конвертация yaml в json\"."
+msgstr ""
+"JSON <-> YAML conversion can be done unambiguously in any online service "
+"by searching for \"yaml to json converter\"."
+
+#: ../../general/Data_API/Язык_предикатов.rst:279
+msgid ""
+"Так же для отладки полезно загрузить значения атрибутов и проверить, что "
+"с чем мы сравниваем:"
+msgstr ""
+"It is also useful for debugging to load attribute values and verify what "
+"is being compared with what:"
+
+#: ../../general/Data_API/Язык_предикатов.rst:305
+msgid "Отображение кнопки при определённых условиях, описанных предикатом"
+msgstr "Showing a button under specific conditions described by a predicate"
+
+#: ../../general/Data_API/Язык_предикатов.rst:307
+msgid ""
+"**_status** - текстовое поле с локализацией, поэтому используется "
+"**_status?str**"
+msgstr ""
+"**_status** is a localized text field, therefore **_status?str** is used"
+

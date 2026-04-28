@@ -1,0 +1,527 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:4
+msgid "Архитектура"
+msgstr "Architecture"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:6
+msgid ""
+"Citeck Launcher -- единый бинарный файл на Go (~24 МБ) без внешних "
+"зависимостей (pure Go, без CGO). Он совмещает в себе CLI-клиент и фоновый"
+" демон, взаимодействующий с Docker Engine для управления контейнерами "
+"платформы."
+msgstr ""
+"Citeck Launcher is a single Go binary (~24 MB) with no external dependencies"
+" (pure Go, no CGO). It combines a CLI client and a background daemon that "
+"interacts with Docker Engine to manage platform containers."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:13
+msgid "Общая схема"
+msgstr "General overview"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:41
+msgid "**Компоненты:**"
+msgstr "**Components:**"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:43
+msgid ""
+"**CLI** -- Cobra-команды, форматирование вывода (текст/JSON), "
+"интерактивные TUI-промпты"
+msgstr ""
+"**CLI** -- Cobra commands, output formatting (text/JSON), interactive TUI "
+"prompts"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:44
+msgid ""
+"**Daemon** -- HTTP-сервер на Unix-сокете, обслуживающий REST API и "
+"SSE-поток событий"
+msgstr ""
+"**Daemon** -- HTTP server on a Unix socket serving the REST API and SSE "
+"event stream"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:45
+msgid ""
+"**Docker SDK** -- прямое взаимодействие с Docker Engine через официальный"
+" Go SDK"
+msgstr "**Docker SDK** -- direct interaction with Docker Engine via the official Go SDK"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:46
+msgid "**Контейнеры** -- Docker-контейнеры с компонентами платформы Citeck"
+msgstr "**Containers** -- Docker containers with Citeck platform components"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:49
+msgid "Взаимодействие CLI и демона"
+msgstr "CLI and daemon interaction"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:51
+msgid ""
+"CLI и демон общаются через **Unix-сокет** (``/run/citeck/daemon.sock``). "
+"Все команды CLI отправляют HTTP-запросы к демону:"
+msgstr ""
+"The CLI and daemon communicate via a **Unix socket** "
+"(``/run/citeck/daemon.sock``). All CLI commands send HTTP requests to the "
+"daemon:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:61
+msgid ""
+"Для мониторинга в реальном времени (``citeck status --watch``, ``citeck "
+"start``) используется **SSE** (Server-Sent Events), а не WebSocket."
+msgstr ""
+"For real-time monitoring (``citeck status --watch``, ``citeck start``), "
+"**SSE** (Server-Sent Events) is used instead of WebSocket."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:64
+msgid "Жизненный цикл контейнеров"
+msgstr "Container lifecycle"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:66
+msgid "Каждое приложение проходит через состояния:"
+msgstr "Each application goes through the following states:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:78
+msgid "**Описание состояний:**"
+msgstr "**State descriptions:**"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:84
+msgid "Состояние"
+msgstr "State"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:85
+msgid "Описание"
+msgstr "Description"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:86
+msgid "``READY_TO_PULL``"
+msgstr "``READY_TO_PULL``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:87
+msgid "Начальное состояние, готово к загрузке образа"
+msgstr "Initial state, ready to pull the image"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:88
+msgid "``PULLING``"
+msgstr "``PULLING``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:89
+msgid "Загрузка Docker-образа"
+msgstr "Pulling the Docker image"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:90
+msgid "``PULL_FAILED``"
+msgstr "``PULL_FAILED``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:91
+msgid "Ошибка загрузки образа"
+msgstr "Image pull failed"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:92
+msgid "``DEPS_WAITING``"
+msgstr "``DEPS_WAITING``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:93
+msgid "Ожидание запуска зависимостей (например, postgres перед keycloak)"
+msgstr "Waiting for dependencies to start (e.g. postgres before keycloak)"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:94
+msgid "``STARTING``"
+msgstr "``STARTING``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:95
+msgid "Контейнер создан и запускается"
+msgstr "Container created and starting"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:96
+msgid "``RUNNING``"
+msgstr "``RUNNING``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:97
+msgid "Контейнер работает, liveness-проверка пройдена"
+msgstr "Container is running, liveness check passed"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:98
+msgid "``START_FAILED``"
+msgstr "``START_FAILED``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:99
+msgid "Контейнер не смог запуститься"
+msgstr "Container failed to start"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:100
+msgid "``STOPPED``"
+msgstr "``STOPPED``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:101
+msgid "Контейнер остановлен"
+msgstr "Container is stopped"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:103
+msgid ""
+"При сбое запуска реконсилер автоматически повторяет попытку с "
+"экспоненциальным backoff: 1 минута, 2 минуты, 4 минуты, ..., до максимума"
+" 30 минут."
+msgstr ""
+"On start failure, the reconciler automatically retries with exponential "
+"backoff: 1 minute, 2 minutes, 4 minutes, ..., up to a maximum of 30 minutes."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:106
+msgid "Порядок запуска"
+msgstr "Startup order"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:108
+msgid "Приложения запускаются с учётом зависимостей:"
+msgstr "Applications start in dependency order:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:117
+msgid ""
+"Каждое приложение ожидает готовности своих зависимостей (состояние "
+"``DEPS_WAITING``), прежде чем начать запуск."
+msgstr ""
+"Each application waits for its dependencies to be ready (``DEPS_WAITING`` "
+"state) before starting."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:119
+msgid "Порядок остановки -- обратный:"
+msgstr "The shutdown order is the reverse:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:129
+msgid "Deployment hash"
+msgstr "Deployment hash"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:131
+msgid ""
+"При команде ``reload`` лончер использует механизм, аналогичный ``docker-"
+"compose up``:"
+msgstr ""
+"When the ``reload`` command is run, the launcher uses a mechanism similar to "
+"``docker-compose up``:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:133
+msgid "Для каждого приложения вычисляется **deployment hash** на основе:"
+msgstr "A **deployment hash** is computed for each application based on:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:135
+msgid "Docker-образа (image + tag)"
+msgstr "Docker image (image + tag)"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:136
+msgid "Переменных окружения"
+msgstr "Environment variables"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:137
+msgid "Смонтированных томов"
+msgstr "Mounted volumes"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:138
+msgid "Портов"
+msgstr "Ports"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:139
+msgid "Лимитов ресурсов"
+msgstr "Resource limits"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:140
+msgid "Зависимостей"
+msgstr "Dependencies"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:142
+msgid "Hash сравнивается с hash работающего контейнера."
+msgstr "The hash is compared with the hash of the running container."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:144
+msgid ""
+"**Только изменённые контейнеры** пересоздаются -- неизменённые продолжают"
+" работать без прерывания."
+msgstr ""
+"**Only changed containers** are recreated -- unchanged ones continue running "
+"without interruption."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:148
+msgid ""
+"Стабильность функции ``GetHashInput`` является жёстким контрактом "
+"совместимости между версиями лончера. Изменение алгоритма хеширования "
+"требует миграции."
+msgstr ""
+"The stability of the ``GetHashInput`` function is a strict compatibility "
+"contract between launcher versions. Changing the hashing algorithm requires "
+"a migration."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:151
+msgid "Обновление CLI и демона"
+msgstr "Updating the CLI and daemon"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:153
+msgid ""
+"Установку CLI и демона обновляет тот же ``install.sh``, что и первичная "
+"установка -- он определяет факт наличия предыдущей версии и переключается"
+" в режим обновления:"
+msgstr ""
+"The CLI and daemon are updated by the same ``install.sh`` script used for "
+"initial installation -- it detects the presence of a previous version and "
+"switches to update mode:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:161
+msgid "При обновлении бинарного файла лончера:"
+msgstr "When updating the launcher binary:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:163
+msgid ""
+"Создаётся резервная копия текущего бинарного файла "
+"(``/usr/local/bin/citeck.bak``)."
+msgstr ""
+"A backup of the current binary is created "
+"(``/usr/local/bin/citeck.bak``)."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:164
+msgid ""
+"Демон останавливается в режиме **detach**: процесс демона завершается, но"
+" контейнеры Docker продолжают работать."
+msgstr ""
+"The daemon stops in **detach** mode: the daemon process exits, but Docker "
+"containers continue running."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:165
+msgid "Новый бинарный файл копируется в ``/usr/local/bin/citeck``."
+msgstr "The new binary is copied to ``/usr/local/bin/citeck``."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:166
+msgid ""
+"Запускается новый демон, который **подхватывает** работающие контейнеры "
+"через сравнение deployment hash."
+msgstr ""
+"A new daemon starts and **picks up** running containers by comparing "
+"deployment hashes."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:180
+msgid ""
+"**Что происходит с приложениями** зависит от того, изменился ли их "
+"``deployment hash`` (см. раздел «Smart regenerate» выше):"
+msgstr ""
+"**What happens to applications** depends on whether their ``deployment hash``"
+" has changed (see the \"Smart regenerate\" section above):"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:183
+msgid ""
+"**Hash приложения не изменился** (новая версия CLI не меняет формат "
+"generator-а для этого типа приложения) -- контейнер продолжает работать "
+"без перезапуска. *Это типичный сценарий zero-downtime-обновления*."
+msgstr ""
+"**Application hash unchanged** (the new CLI version does not change the "
+"generator format for this application type) -- the container continues "
+"running without a restart. *This is the typical zero-downtime update "
+"scenario*."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:186
+msgid ""
+"**Hash приложения изменился** (например, новая версия добавила переменную"
+" окружения в generator, сменился формат volume mount, обновилась версия "
+"образа в бандле) -- соответствующие контейнеры пересоздаются. Ожидаемое "
+"время простоя по каждому такому приложению -- от 1 до 5 минут (зависит от"
+" типа сервиса; Java-приложения дольше)."
+msgstr ""
+"**Application hash changed** (e.g. the new version added an environment "
+"variable to the generator, the volume mount format changed, or the image "
+"version in the bundle was updated) -- the affected containers are recreated. "
+"Expected downtime per application: 1 to 5 minutes (depends on service type; "
+"Java applications take longer)."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:194
+msgid ""
+"Чтобы заранее узнать, какие приложения будут пересозданы, после "
+"обновления бинарника выполните ``citeck reload --dry-run``. Команда "
+"покажет список контейнеров с изменённым hash до того, как вы их "
+"фактически перезапустите."
+msgstr ""
+"To find out in advance which applications will be recreated, run "
+"``citeck reload --dry-run`` after updating the binary. The command will show "
+"the list of containers with a changed hash before you actually restart them."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:199
+msgid "Если обновление прошло неудачно, используйте откат:"
+msgstr "If the update failed, use the rollback:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:205
+msgid ""
+"Это восстановит бинарный файл из ``.bak`` и перезапустит демон. "
+"Контейнеры Docker не затрагиваются."
+msgstr ""
+"This will restore the binary from ``.bak`` and restart the daemon. Docker "
+"containers are not affected."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:209
+msgid "Интеграция с systemd"
+msgstr "systemd integration"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:211
+msgid "Лончер автоматически создаёт systemd-сервис при установке:"
+msgstr "The launcher automatically creates a systemd service on installation:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:213
+msgid "**Unit-файл:** ``/etc/systemd/system/citeck.service``"
+msgstr "**Unit file:** ``/etc/systemd/system/citeck.service``"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:215
+msgid "Основные характеристики:"
+msgstr "Key characteristics:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:217
+msgid "**Restart=on-failure** -- автоматический перезапуск при сбое демона"
+msgstr "**Restart=on-failure** -- automatic restart on daemon failure"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:218
+msgid "Контейнеры Docker продолжают работать при перезапуске демона"
+msgstr "Docker containers continue running when the daemon restarts"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:219
+msgid ""
+"Новый экземпляр демона подхватывает работающие контейнеры через hash "
+"matching"
+msgstr "A new daemon instance picks up running containers via hash matching"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:220
+msgid ""
+"При обновлении используется runtime drop-in "
+"(``/run/systemd/system/citeck.service.d/no-restart.conf``), чтобы systemd"
+" не перезапустил старый демон в момент замены бинарного файла"
+msgstr ""
+"During update, a runtime drop-in "
+"(``/run/systemd/system/citeck.service.d/no-restart.conf``) is used to "
+"prevent systemd from restarting the old daemon while the binary is being "
+"replaced"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:222
+msgid "**Управление через systemd:**"
+msgstr "**Management via systemd:**"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:237
+msgid ""
+"Не используйте ``systemctl stop citeck`` для остановки платформы. Это "
+"остановит только демон, но не контейнеры. Используйте ``citeck stop "
+"--shutdown``."
+msgstr ""
+"Do not use ``systemctl stop citeck`` to stop the platform. This will stop "
+"only the daemon, not the containers. Use ``citeck stop --shutdown``."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:240
+msgid "Управление секретами"
+msgstr "Secrets management"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:242
+msgid ""
+"Секреты хранятся с шифрованием **AES-256-GCM** в директории "
+"``/opt/citeck/conf/secrets/``."
+msgstr ""
+"Secrets are stored with **AES-256-GCM** encryption in the "
+"``/opt/citeck/conf/secrets/`` directory."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:244
+msgid "**Типы секретов:**"
+msgstr "**Secret types:**"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:246
+msgid "**Системные** -- генерируются автоматически:"
+msgstr "**System** -- generated automatically:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:248
+msgid "JWT-ключ для подписи токенов"
+msgstr "JWT key for token signing"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:249
+msgid "OIDC client secret для интеграции с Keycloak"
+msgstr "OIDC client secret for Keycloak integration"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:250
+msgid "Пароль администратора — для пользовательского входа (ecos-app realm)"
+msgstr "Administrator password — for user login (ecos-app realm)"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:251
+msgid "Пароль сервисной УЗ ``citeck`` — для внутренних операций с Keycloak"
+msgstr "Password for the ``citeck`` service account — for internal Keycloak operations"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:252
+msgid "Пароли для RabbitMQ и PgAdmin"
+msgstr "Passwords for RabbitMQ and PgAdmin"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:254
+msgid "**Пользовательские** -- задаются через ``citeck setup``:"
+msgstr "**User-defined** -- set via ``citeck setup``:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:256
+msgid "Пароль SMTP"
+msgstr "SMTP password"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:257
+msgid "Secret key для S3"
+msgstr "S3 secret key"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:258
+msgid "Учётные данные Docker-реестра"
+msgstr "Docker registry credentials"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:260
+msgid ""
+"Каждый секрет шифруется отдельно. Мастер-пароль используется для вывода "
+"ключей шифрования (PBKDF2-HMAC-SHA256)."
+msgstr ""
+"Each secret is encrypted individually. The master password is used to derive "
+"encryption keys (PBKDF2-HMAC-SHA256)."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:263
+msgid "Реконсилер"
+msgstr "Reconciler"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:265
+msgid ""
+"Реконсилер -- фоновый процесс, работающий в демоне, который обеспечивает "
+"соответствие желаемого и фактического состояния контейнеров:"
+msgstr ""
+"The reconciler is a background process running in the daemon that ensures "
+"the desired and actual state of containers match:"
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:267
+msgid ""
+"**Периодическая проверка** (по умолчанию каждые 60 секунд): сравнивает "
+"конфигурацию с реальным состоянием Docker."
+msgstr ""
+"**Periodic check** (every 60 seconds by default): compares the configuration"
+" against the actual Docker state."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:269
+msgid ""
+"**Liveness-проверки** (по умолчанию каждые 30 секунд): выполняет "
+"HTTP-запрос к health endpoint приложения. После 3 последовательных неудач"
+" -- перезапуск."
+msgstr ""
+"**Liveness checks** (every 30 seconds by default): performs an HTTP request "
+"to the application's health endpoint. After 3 consecutive failures -- "
+"restart."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:271
+msgid ""
+"**Автовосстановление**: при обнаружении упавшего контейнера инициирует "
+"повторный запуск с экспоненциальным backoff."
+msgstr ""
+"**Auto-recovery**: when a crashed container is detected, initiates a restart"
+" with exponential backoff."
+
+#: ../../admin/launch_setup/launcher_server/architecture.rst:273
+msgid "Настройка через ``/opt/citeck/conf/daemon.yml``:"
+msgstr "Configuration via ``/opt/citeck/conf/daemon.yml``:"
+

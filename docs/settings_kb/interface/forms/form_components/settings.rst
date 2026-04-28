@@ -1,123 +1,123 @@
-Настройка компонента
-======================
+Component configuration
+========================
 
 .. _manual_override:
 
-Allow Manual Override of Calculated Value / Разрешить ручное переопределение вычисляемого значения
----------------------------------------------------------------------------------------------------
+Allow Manual Override of Calculated Value
+------------------------------------------
 
-Настройка расположена на вкладке **"Данные"**.
+The setting is located on the **"Data"** tab.
 
-При помощи **Allow Manual Override of Calculated Value / Разрешить ручное переопределение вычисляемого значения** поле перевычисляется до тех пор, пока пользователь не поменяет это значение.
+Using **Allow Manual Override of Calculated Value**, the field is recalculated until the user changes this value.
 
  .. image:: _static/calculated_value.png
        :width: 600
        :align: center
 
-Описание работы 
-~~~~~~~~~~~~~~~~~~
+Operation description
+~~~~~~~~~~~~~~~~~~~~~~
 
-Режим создания
-""""""""""""""""""""""
+Creation mode
+""""""""""""""
 
-Чтобы **calculated value** установилось, необходимо, чтобы **valueChangedByUser = false** (при условии, что включен **Allow Manual Override of Calculated Value**). Тогда в режиме создания достаточно просто очистить компонент, и **calculatedValue** снова заполнит его. 
+For **calculated value** to be set, **valueChangedByUser = false** is required (provided that **Allow Manual Override of Calculated Value** is enabled). Then in creation mode, it's sufficient to simply clear the component, and **calculatedValue** will fill it again.
 
-Режим редактирования
-""""""""""""""""""""""
+Edit mode
+""""""""""
 
-В режиме редактирования если очистить компонент, то это также считается за пользовательские правки, следовательно, нет возможности снова получить значение из **calculatedValue**.
+In edit mode, if you clear the component, this is also considered a user edit, therefore, there is no way to get the value from **calculatedValue** again.
 
-Описание полей и логики
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Field and logic description
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
       :widths: 5 10 20
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
 
-      * - Имя
-        - Значение по умолчанию
-        - Описание
+      * - Name
+        - Default value
+        - Description
       * - **calculatedValue**
         - null
-        - вычисленное значение
+        - calculated value
       * - **dataValue**
-        - значение с сервера
-        - значение в поле
-      * - **режим формы**
-        - 
-        - | по умолчанию выставить значение "CREATE". 
-          | Возможные значения - CREATE, EDIT
+        - value from server
+        - value in field
+      * - **form mode**
+        -
+        - | set value "CREATE" by default.
+          | Possible values - CREATE, EDIT
       * - **calculatedValueWasCalculated**
-        - 
-        - | Внутренний флаг, по которому определяется первое это вычисление значения или нет. 
-          | После первого вычисления проставляется в true.
+        -
+        - | Internal flag that determines whether this is the first value calculation or not.
+          | Set to true after first calculation.
       * - **valueChangedByUser**
         - false
-        - Внутренний флаг, который определяет, что текущее значение (dataValue) отвязано от вычисленного
+        - Internal flag that indicates the current value (dataValue) is detached from the calculated value
 
-До проставления **dataValue** у всех полей проверятся, что никакая логика с формы не начинает вычисляться.
+Before setting **dataValue** for all fields, it is checked that no logic from the form starts calculating.
 
-Для каждого перевычисления **calculatedValue**:
+For each recalculation of **calculatedValue**:
 
-    1.	После первого вычисления **calculatedValue** (первое или нет определяется по флагу **calculatedValueWasCalculated**) проставляется значение флага **valueChangedByUser**.
-    2.	**calculatedValueWasCalculated** проставляется в **true**
-    3.	Если флаг **valueChangedByUser = false**, то меняется **dataValue**, иначе с **dataValue** действия не производятся
+    1. After the first calculation of **calculatedValue** (whether it's the first or not is determined by the **calculatedValueWasCalculated** flag), the **valueChangedByUser** flag value is set.
+    2. **calculatedValueWasCalculated** is set to **true**
+    3. If the flag **valueChangedByUser = false**, then **dataValue** is changed, otherwise no actions are performed with **dataValue**
 
-Дополнительная логика:
+Additional logic:
 
-    1.	Если значение dataValue меняется пользователем, то проставляется флаг **valueChangedByUser = true**
+    1. If the dataValue is changed by the user, the flag **valueChangedByUser = true** is set
 
-Пример работы с компонентом TableForm
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example of working with TableForm component
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Задача
-"""""""
+Task
+"""""
 
-данные должны вычисляться на основе компонента 1 и помещаться в компонент 2, и после этого у пользователя должна быть возможность их изменять.
+Data should be calculated based on component 1 and placed in component 2, and after that the user should be able to modify them.
 
-И если пользователь ошибся или изменил решение, то удалить данные из компонента 2 и снова путем перевыбора в компоненте 1 получить другие данные и также изменять их:
+And if the user made a mistake or changed their decision, then delete data from component 2 and again through reselection in component 1 get other data and also modify them:
 
  .. image:: _static/calculated_value_table.png
        :width: 600
        :align: center
 
-Реализация: 
-    1.	использование флага **allow Manual Override**,
-    2.	но вместо **calculated value**, логика подтягивания записей перенесена в раздел компонента **«Logic»** (table form)
-    3.	Логика включается по событию нажатия кнопки (только когда пользователь действительно хочет перезаписать свои значения вычисленными)
+Implementation:
+    1. Using the **allow Manual Override** flag,
+    2. but instead of **calculated value**, the record retrieval logic is moved to the component's **«Logic»** section (table form)
+    3. The logic is triggered by a button click event (only when the user actually wants to overwrite their values with calculated ones)
 
-Итог: работает перезапись, ручной запуск вычисления данных (на формах создания и редактирования). Не работало ранее, до использования **instance.setValue()**.
+Result: overwrite works, manual data calculation launch works (on creation and edit forms). Did not work previously, before using **instance.setValue()**.
 
 .. _custom_default_value:
 
-Custom Default Value / Пользовательское значение по умолчанию
---------------------------------------------------------------
+Custom Default Value
+---------------------
 
-Настройка расположена на вкладке **"Данные"**.
+The setting is located on the **"Data"** tab.
 
-Свойство **customDefaultValue** позволяет задать динамическое значение по умолчанию при помощи JavaScript-выражения. Результат присваивается переменной ``value``. Выражение выполняется при инициализации формы в режиме создания.
+The **customDefaultValue** property allows setting a dynamic default value using a JavaScript expression. The result is assigned to the ``value`` variable. The expression is executed when the form is initialized in creation mode.
 
 .. note::
 
-   Статическое свойство ``defaultValue`` предназначено только для фиксированных значений. Для динамических (текущая дата, текущий пользователь и т.д.) используйте ``customDefaultValue``.
+   The static ``defaultValue`` property is intended only for fixed values. For dynamic values (current date, current user, etc.) use ``customDefaultValue``.
 
-Примеры
-~~~~~~~~
+Examples
+~~~~~~~~~
 
-Текущая дата для компонента Date/Time:
+Current date for the Date/Time component:
 
 .. code-block:: javascript
 
    value = new Date();
 
-Фиксированная строка для текстового поля:
+Fixed string for a text field:
 
 .. code-block:: javascript
 
-   value = "значение по умолчанию";
+   value = "default value";
 
-Пример JSON-конфигурации компонента Date/Time с текущей датой:
+Example JSON configuration of the Date/Time component with the current date:
 
 .. code-block:: json
 
@@ -133,14 +133,14 @@ Custom Default Value / Пользовательское значение по у
 
 .. _current_user_by_default:
 
-Current User by Default / Текущий пользователь по умолчанию (selectOrgstruct)
--------------------------------------------------------------------------------
+Current User by Default (selectOrgstruct)
+------------------------------------------
 
-Настройка расположена на вкладке **"Кастомные"** компонента **selectOrgstruct**.
+The setting is located on the **"Custom"** tab of the **selectOrgstruct** component.
 
-Свойство **currentUserByDefault** автоматически подставляет текущего пользователя в поле при открытии формы на создание. Настройка работает только в режиме создания (``formMode = CREATE``) и только для компонента ``selectOrgstruct``.
+The **currentUserByDefault** property automatically substitutes the current user into the field when opening the form for creation. The setting works only in creation mode (``formMode = CREATE``) and only for the ``selectOrgstruct`` component.
 
-Пример JSON-конфигурации:
+Example JSON configuration:
 
 .. code-block:: json
 
@@ -155,8 +155,4 @@ Current User by Default / Текущий пользователь по умол�
 
 .. note::
 
-   Для динамических значений по умолчанию в других типах компонентов используйте ``customDefaultValue`` (см. :ref:`Custom Default Value <custom_default_value>`).
-
-
-
-
+   For dynamic default values in other component types, use ``customDefaultValue`` (see :ref:`Custom Default Value <custom_default_value>`).

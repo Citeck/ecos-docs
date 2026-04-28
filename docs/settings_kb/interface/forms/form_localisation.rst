@@ -1,20 +1,20 @@
-Локализация
+Localization
 ============
 
 .. _form_localisation:
 
-Все **Label** у полей на форме перед рендером проходят через этап локализации. Если ключа локализации не найдено, то рендерится строка, которая записана в поле **Label** у поля.
+All **Label** fields on the form go through a localization stage before rendering. If a localization key is not found, the string written in the **Label** field of the component is rendered.
 
 
-**1. Глобальная локализация**
-   
-Вся локализация, которая имеет префикс **ecos.forms**. попадает в формы. Например ``ecos.forms.someTitle="123"``попадет в формы в виде: ``{"someTitle":"123"}``.
+**1. Global Localization**
 
-В качестве глобальной локализации используется локализация из ``site-messages/*.properties`` файлов ``*-share`` модулей.
+All localization that has the prefix **ecos.forms** goes into forms. For example, ``ecos.forms.someTitle="123"`` will appear in forms as: ``{"someTitle":"123"}``.
 
-**2. Локализация атрибутов**
+Global localization uses localization from ``site-messages/*.properties`` files of ``*-share`` modules.
 
-Если **Название поля** у поля совпадает с редактируемым атрибутом, то происходит запрос на сервер за заголовком для такого поля. Если заголовок найден, то поле будет локализовано.
+**2. Attribute Localization**
+
+If the **Field Label** of a field matches the attribute being edited, a request is made to the server for the title of that field. If the title is found, the field will be localized.
 
 .. image:: _static/form_localisation/Forms_local_1.png
        :width: 400
@@ -26,15 +26,15 @@
        :width: 400
        :align: center
 
-**3. Локализация формы**
+**3. Form Localization**
 
-В ``json`` конфигурации формы можно задать локализацию, которая будет действовать только в пределах данной формы. Пример:
+In the form's ``json`` configuration, you can set localization that will only apply within this specific form. Example:
 
 .. image:: _static/form_localisation/Forms_local_3.png
        :width: 400
        :align: center
 
-Такой вариант подходит, если требуется добавить пользовательскую локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить локализацию, необходимо перейти на форму :guilabel:`Локализация` и поместить свою локализацию туда. После чего её можно будет использовать на самой форме по ключу. Для именования ключей лучше всего использовать символы латиницы.
+This option is suitable if you need to add custom localization for error messages, hints, etc. To set the localization, you need to go to the :guilabel:`Localization` form and place your localization there. After that, it can be used on the form itself by key. For naming keys, it is best to use Latin characters.
 
 .. list-table::
       :widths: 20 20
@@ -53,9 +53,9 @@
                   :align: center
 
 
-**4. Локализация текста полей компонента формы**
+**4. Localization of Form Component Field Text**
 
-Для локализации текста полей компонента формы (Название поля, Подсказка) предусмотрен компонент :ref:`ML Text<ML_Text>` - текстовое поле с переключателем в виде флага России /США. После выбора языка в поле вводится текст.
+For localizing the text of form component fields (Field Label, Tooltip), the :ref:`ML Text<ML_Text>` component is provided - a text field with a switch in the form of a Russian/USA flag. After selecting the language, the text is entered in the field.
 
 .. list-table::
       :widths: 20 20
@@ -73,5 +73,5 @@
                   :width: 500
                   :align: center
 
-Сохраняются оба введенных зачения.
+Both entered values are saved.
 

@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,39 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/Camel_DSL/BD_deletion.rst:2
+#: ../../integration/Camel_DSL/BD_deletion.rst:4
 msgid "Удаление данных из БД"
 msgstr "Deleting Data from the Database"
 
-#: ../../integration/Camel_DSL/BD_deletion.rst:4
-msgid ""
-"Для удаления данных из БД необходимо создать **Credentials**, **Источник "
-"данных** и **Camel DSL** как указано в пункте **«Выборка из БД»**. При "
-"этом, содержимое маршрута должно включать в себя SQL-запрос на удаление "
-"данных."
-msgstr ""
-"To delete data from the database, you need to create **Credentials**, a **Data Source**, and **Camel DSL** as specified in the **\"Fetching from the Database\"** section. The route content must include an SQL query for data deletion."
-
 #: ../../integration/Camel_DSL/BD_deletion.rst:6
 msgid ""
-"Например, следующий маршрут **clearValues** удаляет все записи из таблицы"
-" **simple** источника данных **datasource**, кроме тех у которых атрибут "
-"**id** равен **'1'** или **'2'**."
+"Для удаления данных из БД необходимо создать **Credentials**, **Источник "
+"данных** и **Camel DSL** так же, как описано в разделе **«Выборка из "
+"БД»**. Содержимое маршрута должно включать SQL-запрос на удаление данных."
 msgstr ""
-"For example, the following **clearValues** route deletes all records from the **simple** table of the **datasource** data source, except those where the **id** attribute is equal to **'1'** or **'2'**."
+"To delete data from the database, you need to create **Credentials**, a "
+"**Data Source**, and **Camel DSL** as specified in the **\"Fetching from "
+"the Database\"** section. The route content must include an SQL query for"
+" data deletion."
 
-#: ../../integration/Camel_DSL/BD_deletion.rst:20
-msgid ""
-"Пример контекста, который берет данные из источника данных **todb**, "
-"обрабатывает их через R`RecordsDaoEndpoint`` **daoEndpoint**  и очищает "
-"таблицу **simple**, из которой взял данные:"
-msgstr ""
-"An example of a context that takes data from the **todb** data source, processes it through the `RecordsDaoEndpoint` **daoEndpoint**, and clears the **simple** table from which it took the data:"
+#: ../../integration/Camel_DSL/BD_deletion.rst:9
+msgid "Простое удаление записей"
+msgstr "Simple Record Deletion"
 
-#: ../../integration/Camel_DSL/BD_deletion.rst:58
+#: ../../integration/Camel_DSL/BD_deletion.rst:11
 msgid ""
-"Особенности контекста: Содержимое constant переводится в нижний регистр. "
-"Например, выборка **\"select * from simple order by COMPANY_ID\"** "
-"приводит к ошибке **ERROR: column \"company_id\" does not exist**"
+"Маршрут **clearValues** удаляет все записи из таблицы **simple** "
+"источника данных **datasource**, кроме записей с **id** равным **'1'** "
+"или **'2'**:"
 msgstr ""
-"Context peculiarity: The content of 'constant' is converted to lower case. For example, the query **\"select * from simple order by COMPANY_ID\"** results in the error **ERROR: column \"company_id\" does not exist**"
+"For example, the following **clearValues** route deletes all records from"
+" the **simple** table of the **datasource** data source, except those "
+"where the **id** attribute is equal to **'1'** or **'2'**."
+
+#: ../../integration/Camel_DSL/BD_deletion.rst:25
+msgid "Выборка с последующим удалением"
+msgstr "Fetching with Subsequent Deletion"
+
+#: ../../integration/Camel_DSL/BD_deletion.rst:27
+msgid ""
+"Следующий контекст выбирает данные из источника **todb**, обрабатывает их"
+" через ``RecordsDaoEndpoint`` **daoEndpoint**, после чего очищает таблицу"
+" **simple**:"
+msgstr ""
+"An example of a context that takes data from the **todb** data source, "
+"processes it through the `RecordsDaoEndpoint` **daoEndpoint**, and clears"
+" the **simple** table from which it took the data:"
+
+#: ../../integration/Camel_DSL/BD_deletion.rst:65
+
+msgid ""
+"Значение ``constant`` автоматически приводится к нижнему регистру. "
+"Например, запрос ``\"select * from simple order by COMPANY_ID\"`` вызовет"
+" ошибку ``ERROR: column \"company_id\" does not exist``, так как имя "
+"колонки будет преобразовано в нижний регистр."
+msgstr ""
+"The value of ``constant`` is automatically converted to lowercase. For "
+"example, the query ``\"select * from simple order by COMPANY_ID\"`` will "
+"raise the error ``ERROR: column \"company_id\" does not exist``, because "
+"the column name is converted to lowercase."
+
