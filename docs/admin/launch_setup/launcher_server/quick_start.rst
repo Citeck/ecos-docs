@@ -78,6 +78,7 @@
       pt (Português)
       ja (日本語)
 
+
 **2. Приветствие**
 
 Информационный экран с описанием шагов установки:
@@ -87,6 +88,10 @@
 - Установка systemd-сервиса
 - Запуск платформы
 
+.. image:: _static/server_01.png
+    :width: 500
+    :align: center
+
 **3. Имя хоста / IP-адрес**
 
 Мастер автоматически определяет внешний IP-адрес сервера. Вы можете подтвердить его или ввести доменное имя:
@@ -95,6 +100,10 @@
 
     Hostname / IP address
     > 203.0.113.45
+
+.. image:: _static/server_02.png
+    :width: 300
+    :align: center
 
 .. note::
 
@@ -109,6 +118,10 @@
 - **Self-signed HTTPS** -- автоматически сгенерированный самоподписанный сертификат
 - **Custom certificate** -- укажите пути к своим файлам сертификата и ключа
 - **HTTP only** -- без шифрования (только для тестирования)
+
+.. image:: _static/server_03.png
+    :width: 500
+    :align: center
 
 .. warning::
 
@@ -130,6 +143,10 @@
 - **Enterprise Bundles** -- расширенная версия (требуются учётные данные для Docker-реестра)
 - **Other version…** -- выбор более ранней версии (drill-down по репозиториям)
 
+.. image:: _static/server_04.png
+    :width: 650
+    :align: center
+
 При выборе Enterprise мастер запросит логин и пароль для реестра Docker-образов и проверит их перед продолжением.
 
 **6. Демонстрационные данные**
@@ -138,6 +155,10 @@
 
 - **С демо-данными** -- подготовленные рабочие пространства, типы данных, бизнес-процессы
 - **Без демо-данных** -- чистая установка
+
+.. image:: _static/server_05.png
+    :width: 650
+    :align: center
 
 .. note::
 
@@ -170,6 +191,10 @@
 - Начинается скачивание Docker-образов
 - Отображается интерактивная таблица статусов
 
+.. image:: _static/server_06.png
+    :width: 650
+    :align: center
+
 .. code-block:: text
 
     GROUP          APP             STATUS        IMAGE
@@ -184,6 +209,22 @@
     proxy          proxy           DEPS_WAITING  citeck/proxy:2.0
 
     12/18 running
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/server_07.png
+                  :width: 650
+                  :align: center
+
+        - |
+
+            .. image:: _static/server_07.png
+                  :width: 650
+                  :align: center
 
 Дождитесь, пока все приложения перейдут в статус **RUNNING**.
 

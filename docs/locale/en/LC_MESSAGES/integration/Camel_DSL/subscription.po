@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,6 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/Camel_DSL/subscription.rst:2
+#: ../../integration/Camel_DSL/subscription.rst:4
 msgid "Подписка на событие Citeck"
 msgstr "Subscribe to Citeck Event"
+
+#: ../../integration/Camel_DSL/subscription.rst:23
+msgid "Пример: Выполнение действий при смене статуса"
+msgstr "Example: Performing Actions on Status Change"
+
+#: ../../integration/Camel_DSL/subscription.rst:25
+msgid ""
+"Для выполнения действий при смене статуса можно использовать подписку на "
+"события Citeck:"
+msgstr ""
+"To perform actions on status change, you can use a subscription to Citeck "
+"events:"
+
+#: ../../integration/Camel_DSL/subscription.rst:46
+msgid ""
+"Далее можно взять список документов, через **GetRecordAttsProcessor** "
+"получить их атрибуты (включая контент) и через http компонент отправить "
+"на внешний сервис."
+msgstr ""
+"Next, you can take the list of documents, retrieve their attributes "
+"(including content) using **GetRecordAttsProcessor**, and send them to an "
+"external service via the HTTP component."
+
+#: ../../integration/Camel_DSL/subscription.rst:48
+msgid ""
+"Полная конфигурация с комментариями представлена во вложении. Для "
+"сценария примера нужно поменять:"
+msgstr ""
+"The full configuration with comments is provided in the attachment. For "
+"this example scenario, you need to change:"
+
+#: ../../integration/Camel_DSL/subscription.rst:50
+msgid ""
+"beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] "
+"-> ['SED-main-document']**"
+msgstr ""
+"beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] "
+"-> ['SED-main-document']**"
+
+#: ../../integration/Camel_DSL/subscription.rst:51
+msgid ""
+"route -> from -> parameters -> filter -> val[0] -> val:     **contract ->"
+" SED-agreement**"
+msgstr ""
+"route -> from -> parameters -> filter -> val[0] -> val:     **contract ->"
+" SED-agreement**"
+
+#: ../../integration/Camel_DSL/subscription.rst:52
+msgid ""
+"route -> from -> parameters -> filter -> val[1] -> val:     "
+"**integration-trigger -> ваш_статус**"
+msgstr ""
+"route -> from -> parameters -> filter -> val[1] -> val:     "
+"**integration-trigger -> your_status**"
+
+#: ../../integration/Camel_DSL/subscription.rst:54
+msgid ""
+"А так же создать :ref:`секрет <ecos_secret>` с **username/password** в "
+"журнале ``/v2/journals?journalId=ecos-"
+"secrets&viewMode=table&ws=admin$workspace``"
+msgstr ""
+"Also create a :ref:`secret <ecos_secret>` with **username/password** in "
+"the journal ``/v2/journals?journalId=ecos-"
+"secrets&viewMode=table&ws=admin$workspace``"
+
+#: ../../integration/Camel_DSL/subscription.rst:67
+msgid ""
+"И :ref:`конечную точку <endpoints_dsl>` с URL для загрузки файлов в "
+"журнале "
+"``/v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
+msgstr ""
+"And create an :ref:`endpoint <endpoints_dsl>` with the URL for uploading "
+"files in the journal "
+"``/v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
+
+#: ../../integration/Camel_DSL/subscription.rst:78
+msgid ""
+"Если конечная точка или секрет меняются, то необходимо перезапустить "
+"Camel DSL, чтобы изменения подхватились."
+msgstr ""
+"If the endpoint or secret changes, Camel DSL must be restarted for the "
+"changes to take effect."
+
+#: ../../integration/Camel_DSL/subscription.rst:80
+msgid ""
+":download:`Полная конфигурация с комментариями <../files/send-files-to-"
+"ext-service-camel-yaml-dsl.yaml>`"
+msgstr ""
+":download:`Full configuration with comments <../files/send-files-to-"
+"ext-service-camel-yaml-dsl.yaml>`"

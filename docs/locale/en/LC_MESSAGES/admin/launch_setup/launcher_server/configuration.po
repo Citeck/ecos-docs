@@ -1,0 +1,789 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:4
+msgid "Конфигурация"
+msgstr "Configuration"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:6
+msgid ""
+"Конфигурация серверного режима Citeck Launcher хранится в двух "
+"YAML-файлах в директории ``/opt/citeck/conf/``."
+msgstr ""
+"The Citeck Launcher server mode configuration is stored in two YAML files "
+"in the ``/opt/citeck/conf/`` directory."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:13
+msgid "namespace.yml"
+msgstr "namespace.yml"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:15
+msgid ""
+"Основной файл конфигурации платформы. Определяет, какие компоненты "
+"запускать и как их настраивать."
+msgstr ""
+"The main platform configuration file. Defines which components to start "
+"and how to configure them."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:17
+msgid "**Расположение:** ``/opt/citeck/conf/namespace.yml``"
+msgstr "**Location:** ``/opt/citeck/conf/namespace.yml``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:20
+#: ../../admin/launch_setup/launcher_server/configuration.rst:264
+msgid "Структура"
+msgstr "Structure"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:83
+msgid "Секретные поля (формат ссылок)"
+msgstr "Secret fields (reference format)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:85
+msgid ""
+"Поля, содержащие чувствительные данные (``s3.secretKey``, "
+"``email.password`` и т.д.), в файле ``namespace.yml`` хранятся **не как "
+"plain-значения**, а как ссылки формата ``secret:<имя_ключа>``:"
+msgstr ""
+"Fields containing sensitive data (``s3.secretKey``, ``email.password``, "
+"etc.) are stored in ``namespace.yml`` **not as plain values** but as "
+"references in the format ``secret:<key_name>``:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:102
+msgid ""
+"Фактические значения зашифрованы и лежат в "
+"``/opt/citeck/conf/secrets/*.json``. Launcher автоматически резолвит "
+"ссылки при генерации env-переменных контейнеров."
+msgstr ""
+"The actual values are encrypted and stored in "
+"``/opt/citeck/conf/secrets/*.json``. The launcher automatically resolves "
+"references when generating container environment variables."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:105
+msgid ""
+"При использовании ``citeck setup`` команды (например, ``setup s3``) "
+"ссылки создаются/обновляются автоматически — прямое редактирование "
+"``namespace.yml`` обычно не требуется."
+msgstr ""
+"When using ``citeck setup`` commands (e.g. ``setup s3``), references are "
+"created/updated automatically — direct editing of ``namespace.yml`` is "
+"normally not required."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:110
+msgid "Основные секции"
+msgstr "Main sections"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:112
+msgid "**bundleRef**"
+msgstr "**bundleRef**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:114
+msgid ""
+"Определяет версию платформы. Формат: ``repo:key``, например "
+"``community:2024.11``."
+msgstr ""
+"Defines the platform version. Format: ``repo:key``, e.g. "
+"``community:2024.11``."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:116
+msgid ""
+"``repo`` -- идентификатор репозитория бандлов (``community`` или "
+"``enterprise``)"
+msgstr ""
+"``repo`` — bundle repository identifier (``community`` or ``enterprise``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:117
+msgid "``key`` -- версия бандла"
+msgstr "``key`` — bundle version"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:119
+msgid "Для смены версии используйте ``citeck upgrade``."
+msgstr "To change the version, use ``citeck upgrade``."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:121
+msgid "**template**"
+msgstr "**template**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:123
+msgid ""
+"Ссылка на шаблон namespace из workspace-конфигурации "
+"(``workspace-v1.yml``). Устанавливается автоматически при ``citeck "
+"install``. Шаблоны могут определять приложения, отключённые по умолчанию:"
+msgstr ""
+"Reference to the namespace template from the workspace configuration "
+"(``workspace-v1.yml``). Set automatically during ``citeck install``. "
+"Templates may define applications that are disabled by default:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:136
+msgid ""
+"Приложения из ``detachedApps`` не запускаются при первом старте. Для "
+"включения: ``citeck start <app>``."
+msgstr ""
+"Applications listed in ``detachedApps`` are not started on first launch. "
+"To enable them: ``citeck start <app>``."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:138
+msgid "**proxy**"
+msgstr "**proxy**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:140
+msgid "Настройки прокси-сервера (точка входа для всех HTTP-запросов):"
+msgstr "Proxy server settings (entry point for all HTTP requests):"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:146
+#: ../../admin/launch_setup/launcher_server/configuration.rst:183
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:147
+#: ../../admin/launch_setup/launcher_server/configuration.rst:184
+msgid "Тип"
+msgstr "Type"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:148
+#: ../../admin/launch_setup/launcher_server/configuration.rst:185
+#: ../../admin/launch_setup/launcher_server/configuration.rst:227
+#: ../../admin/launch_setup/launcher_server/configuration.rst:375
+#: ../../admin/launch_setup/launcher_server/configuration.rst:454
+msgid "Описание"
+msgstr "Description"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:149
+msgid "``host``"
+msgstr "``host``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:150
+#: ../../admin/launch_setup/launcher_server/configuration.rst:162
+#: ../../admin/launch_setup/launcher_server/configuration.rst:165
+#: ../../admin/launch_setup/launcher_server/configuration.rst:187
+#: ../../admin/launch_setup/launcher_server/configuration.rst:190
+#: ../../admin/launch_setup/launcher_server/configuration.rst:196
+msgid "string"
+msgstr "string"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:151
+msgid "IP-адрес или доменное имя сервера"
+msgstr "Server IP address or domain name"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:152
+msgid "``port``"
+msgstr "``port``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:153
+msgid "int"
+msgstr "int"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:154
+msgid "Порт (443 для HTTPS, 80 для HTTP)"
+msgstr "Port (443 for HTTPS, 80 for HTTP)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:155
+msgid "``tls.enabled``"
+msgstr "``tls.enabled``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:156
+#: ../../admin/launch_setup/launcher_server/configuration.rst:159
+msgid "bool"
+msgstr "bool"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:157
+msgid "Включить HTTPS"
+msgstr "Enable HTTPS"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:158
+msgid "``tls.letsEncrypt``"
+msgstr "``tls.letsEncrypt``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:160
+msgid "Использовать Let's Encrypt для получения сертификата"
+msgstr "Use Let's Encrypt to obtain a certificate"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:161
+msgid "``tls.certFile``"
+msgstr "``tls.certFile``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:163
+msgid "Путь к пользовательскому файлу сертификата"
+msgstr "Path to the custom certificate file"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:164
+msgid "``tls.keyFile``"
+msgstr "``tls.keyFile``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:166
+msgid "Путь к пользовательскому файлу ключа"
+msgstr "Path to the custom key file"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:168
+msgid "**authentication**"
+msgstr "**authentication**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:170
+msgid "Тип аутентификации платформы:"
+msgstr "Platform authentication type:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:172
+msgid ""
+"``keycloak`` -- аутентификация через Keycloak (рекомендуется для "
+"production)"
+msgstr ""
+"``keycloak`` — authentication via Keycloak (recommended for production)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:173
+msgid "``basic`` -- базовая HTTP-аутентификация (для разработки)"
+msgstr "``basic`` — basic HTTP authentication (for development)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:175
+msgid "**webapps**"
+msgstr "**webapps**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:177
+msgid ""
+"Переопределение параметров отдельных приложений. Каждое приложение может "
+"иметь:"
+msgstr ""
+"Override settings for individual applications. Each application may have:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:186
+msgid "``heapSize``"
+msgstr "``heapSize``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:188
+msgid "Размер Java heap (например, ``1024m``, ``2g``)"
+msgstr "Java heap size (e.g. ``1024m``, ``2g``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:189
+msgid "``memoryLimit``"
+msgstr "``memoryLimit``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:191
+msgid "Лимит памяти Docker-контейнера"
+msgstr "Docker container memory limit"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:192
+msgid "``env``"
+msgstr "``env``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:193
+msgid "map"
+msgstr "map"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:194
+msgid "Дополнительные переменные окружения"
+msgstr "Additional environment variables"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:195
+msgid "``image``"
+msgstr "``image``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:197
+msgid "Переопределение Docker-образа"
+msgstr "Override the Docker image"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:199
+msgid "**email** (опционально)"
+msgstr "**email** (optional)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:201
+msgid "Настройки SMTP для отправки уведомлений:"
+msgstr "SMTP settings for sending notifications:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:215
+msgid ""
+"Пароль SMTP задаётся через ``citeck setup email`` и хранится в "
+"зашифрованном виде, а не в конфигурационном файле."
+msgstr ""
+"The SMTP password is set via ``citeck setup email`` and stored in encrypted "
+"form, not in the configuration file."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:217
+msgid "**Поле** ``tls`` **и соответствие портам:**"
+msgstr "**The** ``tls`` **field and port mapping:**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:219
+msgid ""
+"Транспорт SMTP управляется булевым полем ``tls``. Генератор транслирует "
+"его в протокол Spring Mail (``smtp`` или ``smtps``), используемый "
+"веб-приложениями."
+msgstr ""
+"SMTP transport is controlled by the boolean ``tls`` field. The generator "
+"translates it into the Spring Mail protocol (``smtp`` or ``smtps``) used by "
+"web applications."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:225
+msgid "Значение"
+msgstr "Value"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:226
+msgid "Типичный порт"
+msgstr "Typical port"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:228
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:229
+msgid "587"
+msgstr "587"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:230
+msgid ""
+"SMTP с STARTTLS (Spring Mail protocol ``smtp`` + "
+"``starttls.enable=true``). Рекомендуемый режим для большинства внешних "
+"SMTP-серверов."
+msgstr ""
+"SMTP with STARTTLS (Spring Mail protocol ``smtp`` + "
+"``starttls.enable=true``). The recommended mode for most external SMTP "
+"servers."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:231
+msgid "``false``"
+msgstr "``false``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:232
+msgid "25"
+msgstr "25"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:233
+msgid ""
+"Незашифрованный SMTP (Spring Mail protocol ``smtp``). Используется "
+"преимущественно для внутренних релеев."
+msgstr ""
+"Unencrypted SMTP (Spring Mail protocol ``smtp``). Used primarily for "
+"internal relays."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:235
+msgid ""
+"Если имя пользователя (``username``) оставить пустым, SMTP-аутентификация"
+" отключается -- это допустимо для релеев, принимающих неавторизованные "
+"отправки."
+msgstr ""
+"If the username (``username``) is left empty, SMTP authentication is "
+"disabled — this is acceptable for relays that accept unauthenticated "
+"submissions."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:237
+msgid "**s3** (опционально, только Enterprise)"
+msgstr "**s3** (optional, Enterprise only)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:239
+msgid ""
+"Настройки S3-совместимого объектного хранилища. Доступно только в "
+"Enterprise-бандлах, где присутствует приложение ``ecos-content``."
+msgstr ""
+"S3-compatible object storage settings. Available only in Enterprise bundles "
+"that include the ``ecos-content`` application."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:250
+msgid "Совместимо с Amazon S3, MinIO, и другими S3-совместимыми хранилищами."
+msgstr "Compatible with Amazon S3, MinIO, and other S3-compatible storage systems."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:254
+msgid ""
+"В меню ``citeck setup`` пункт S3 отображается только при наличии "
+"приложения ``ecos-content`` в бандле. На Community-бандлах он скрыт."
+msgstr ""
+"In the ``citeck setup`` menu, the S3 item is shown only when the "
+"``ecos-content`` application is present in the bundle. On Community bundles "
+"it is hidden."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:257
+msgid "daemon.yml"
+msgstr "daemon.yml"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:259
+msgid "Конфигурация самого демона (процесса Citeck Launcher)."
+msgstr "Configuration of the daemon itself (the Citeck Launcher process)."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:261
+msgid "**Расположение:** ``/opt/citeck/conf/daemon.yml``"
+msgstr "**Location:** ``/opt/citeck/conf/daemon.yml``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:289
+msgid "Параметры"
+msgstr "Parameters"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:291
+msgid "**locale**"
+msgstr "**locale**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:293
+msgid ""
+"Язык для сообщений CLI. Поддерживаемые значения: ``en``, ``ru``, ``zh``, "
+"``es``, ``de``, ``fr``, ``pt``, ``ja``."
+msgstr ""
+"Language for CLI messages. Supported values: ``en``, ``ru``, ``zh``, "
+"``es``, ``de``, ``fr``, ``pt``, ``ja``."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:295
+msgid "Изменение: ``citeck setup language``"
+msgstr "To change: ``citeck setup language``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:297
+msgid "**reconciler**"
+msgstr "**reconciler**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:299
+msgid ""
+"Реконсилер автоматически мониторит состояние приложений и перезапускает "
+"упавшие:"
+msgstr ""
+"The reconciler automatically monitors application state and restarts "
+"failed ones:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:301
+msgid "``interval`` -- как часто проверять состояние (по умолчанию 60 секунд)"
+msgstr "``interval`` — how often to check state (default: 60 seconds)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:302
+msgid "``livenessPeriod`` -- период liveness-проверок (по умолчанию 30 секунд)"
+msgstr "``livenessPeriod`` — liveness check period (default: 30 seconds)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:303
+msgid ""
+"``livenessEnabled`` -- включение/выключение liveness-проверок (по "
+"умолчанию ``true``)"
+msgstr ""
+"``livenessEnabled`` — enable/disable liveness checks (default: ``true``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:305
+msgid ""
+"При сбое приложения реконсилер использует экспоненциальный backoff для "
+"повторных попыток запуска (от 1 минуты до 30 минут максимум)."
+msgstr ""
+"When an application fails, the reconciler uses exponential backoff for "
+"restart retries (from 1 minute up to a maximum of 30 minutes)."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:307
+msgid "**docker**"
+msgstr "**docker**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:309
+msgid ""
+"``pullConcurrency`` -- количество параллельных загрузок Docker-образов "
+"(по умолчанию 4)"
+msgstr ""
+"``pullConcurrency`` — number of parallel Docker image downloads (default: 4)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:310
+msgid ""
+"``stopTimeout`` -- время ожидания graceful shutdown контейнера перед "
+"SIGKILL (по умолчанию 10 секунд)"
+msgstr ""
+"``stopTimeout`` — time to wait for graceful container shutdown before "
+"SIGKILL (default: 10 seconds)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:313
+msgid "Настройка через citeck setup"
+msgstr "Configuration via citeck setup"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:315
+msgid ""
+"Команда ``citeck setup`` предоставляет удобный интерактивный интерфейс "
+"для изменения конфигурации, не редактируя YAML-файлы вручную."
+msgstr ""
+"The ``citeck setup`` command provides a convenient interactive interface "
+"for changing configuration without manually editing YAML files."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:319
+msgid ""
+"Интерактивный CLI-доступ к этим настройкам и подробное описание флагов "
+"отдельных подкоманд (``setup hostname``, ``setup email``, ``setup s3``, "
+"``setup admin-password`` и т. д.) описаны в :ref:`server_commands`, "
+"раздел «setup»."
+msgstr ""
+"Interactive CLI access to these settings and a detailed description of the "
+"flags for individual subcommands (``setup hostname``, ``setup email``, "
+"``setup s3``, ``setup admin-password``, etc.) are described in "
+":ref:`server_commands`, section \"setup\"."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:324
+msgid "**Hostname** (``citeck setup hostname``)"
+msgstr "**Hostname** (``citeck setup hostname``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:326
+msgid "Изменение IP-адреса или доменного имени. Влияет на:"
+msgstr "Change the IP address or domain name. Affects:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:328
+msgid "URL платформы"
+msgstr "Platform URL"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:329
+msgid "Сертификаты TLS"
+msgstr "TLS certificates"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:330
+msgid "Конфигурацию Keycloak"
+msgstr "Keycloak configuration"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:332
+msgid "**TLS** (``citeck setup tls``)"
+msgstr "**TLS** (``citeck setup tls``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:334
+msgid "Переключение режима TLS. Влияет на сертификаты и порты."
+msgstr "Switch the TLS mode. Affects certificates and ports."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:336
+msgid "**Auth** (``citeck setup auth``)"
+msgstr "**Auth** (``citeck setup auth``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:338
+msgid "Переключение типа аутентификации между Keycloak и Basic."
+msgstr "Switch the authentication type between Keycloak and Basic."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:342
+msgid ""
+"Переключение с Basic на Keycloak требует перезапуска всех компонентов. "
+"Переключение с Keycloak на Basic удаляет все пользовательские аккаунты "
+"Keycloak."
+msgstr ""
+"Switching from Basic to Keycloak requires a restart of all components. "
+"Switching from Keycloak to Basic deletes all Keycloak user accounts."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:344
+msgid "**Resources** (``citeck setup resources``)"
+msgstr "**Resources** (``citeck setup resources``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:346
+msgid ""
+"Настройка ресурсов приложений (heap size, memory limit). Полезно для "
+"оптимизации потребления памяти на серверах с ограниченными ресурсами."
+msgstr ""
+"Configure application resources (heap size, memory limit). Useful for "
+"optimizing memory consumption on resource-constrained servers."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:348
+msgid "**Admin password** (``citeck setup admin-password``)"
+msgstr "**Admin password** (``citeck setup admin-password``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:350
+msgid "Смена пароля администратора. Применяется к компонентам:"
+msgstr "Change the administrator password. Applied to the components:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:352
+msgid "Keycloak (realm ``ecos-app`` — пользовательский вход)"
+msgstr "Keycloak (realm ``ecos-app`` — user login)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:353
+msgid "RabbitMQ"
+msgstr "RabbitMQ"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:354
+msgid "PgAdmin"
+msgstr "PgAdmin"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:356
+msgid ""
+"Смена происходит через API сервисов в реальном времени, без перезапуска "
+"контейнеров."
+msgstr ""
+"The change is applied via the services' APIs at runtime, without restarting "
+"containers."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:360
+msgid ""
+"Внутренние операции платформы (настройка Keycloak, обновление "
+"OIDC-клиента, смена паролей) выполняются от имени стабильного сервисного "
+"аккаунта ``citeck`` (в master realm Keycloak и в RabbitMQ). Благодаря "
+"этому ``citeck setup admin-password`` может менять пароли "
+"человека-администратора в UI-админках Keycloak / RabbitMQ / PgAdmin без "
+"влияния на работу платформы — лончер продолжает использовать ``citeck`` "
+"SA для своих внутренних операций."
+msgstr ""
+"Internal platform operations (Keycloak configuration, OIDC client updates, "
+"password changes) are performed under the stable ``citeck`` service account "
+"(in the Keycloak master realm and in RabbitMQ). This allows "
+"``citeck setup admin-password`` to change the human administrator passwords "
+"in the Keycloak / RabbitMQ / PgAdmin admin UIs without affecting platform "
+"operation — the launcher continues to use the ``citeck`` SA for its internal "
+"operations."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:368
+msgid "Режимы TLS"
+msgstr "TLS modes"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:374
+msgid "Режим"
+msgstr "Mode"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:376
+msgid "**Auto HTTPS**"
+msgstr "**Auto HTTPS**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:377
+msgid ""
+"Автоматический выбор: пробует Let's Encrypt, при неудаче переходит на "
+"самоподписанный сертификат. Рекомендуемый режим."
+msgstr ""
+"Automatic selection: tries Let's Encrypt and falls back to a self-signed "
+"certificate on failure. The recommended mode."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:378
+msgid "**Let's Encrypt**"
+msgstr "**Let's Encrypt**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:379
+msgid ""
+"Получение доверенного сертификата от Let's Encrypt. Поддерживает как "
+"доменные имена, так и IP-адреса (через shortlived-профиль, сертификаты "
+"обновляются каждые ~6 дней)."
+msgstr ""
+"Obtain a trusted certificate from Let's Encrypt. Supports both domain names "
+"and IP addresses (via the shortlived profile; certificates are renewed every "
+"~6 days)."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:380
+msgid "**Self-signed**"
+msgstr "**Self-signed**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:381
+msgid ""
+"Автоматическая генерация самоподписанного сертификата. Браузеры будут "
+"показывать предупреждение."
+msgstr ""
+"Automatically generate a self-signed certificate. Browsers will show a "
+"security warning."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:382
+msgid "**Custom**"
+msgstr "**Custom**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:383
+msgid ""
+"Использование собственных файлов сертификата и ключа. Укажите пути к "
+"``cert.pem`` и ``key.pem``."
+msgstr ""
+"Use your own certificate and key files. Specify paths to ``cert.pem`` and "
+"``key.pem``."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:384
+msgid "**HTTP only**"
+msgstr "**HTTP only**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:385
+msgid "Без шифрования. Только для тестовых окружений."
+msgstr "No encryption. For test environments only."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:388
+msgid "Пароль администратора"
+msgstr "Administrator password"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:390
+msgid "**Генерация при установке**"
+msgstr "**Generation at installation**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:392
+msgid ""
+"При первом запуске в серверном режиме автоматически генерируется "
+"случайный пароль администратора. Он применяется к:"
+msgstr ""
+"On the first launch in server mode, a random administrator password is "
+"automatically generated. It is applied to:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:394
+msgid ""
+"Keycloak (пользователь ``admin`` в realm ``ecos-app``; master-realm "
+"управляется отдельно сервисной учётной записью ``citeck``)"
+msgstr ""
+"Keycloak (user ``admin`` in realm ``ecos-app``; the master realm is managed "
+"separately by the ``citeck`` service account)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:395
+msgid "RabbitMQ (пользователь ``admin``)"
+msgstr "RabbitMQ (user ``admin``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:396
+msgid "PgAdmin (``admin@admin.com``)"
+msgstr "PgAdmin (``admin@admin.com``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:398
+msgid "Пароль отображается один раз в выводе мастера установки."
+msgstr "The password is displayed once in the installation wizard output."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:402
+msgid ""
+"В отличие от десктопного режима, где используется стандартный пароль "
+"``admin``, серверный режим генерирует уникальный пароль для каждой "
+"установки."
+msgstr ""
+"Unlike desktop mode, which uses the standard ``admin`` password, server mode "
+"generates a unique password for each installation."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:404
+msgid "**Смена пароля**"
+msgstr "**Changing the password**"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:410
+msgid "Команда:"
+msgstr "The command:"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:412
+msgid "Запрашивает новый пароль (с подтверждением)"
+msgstr "Prompts for the new password (with confirmation)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:413
+msgid "Применяет его к Keycloak через ``kcadm.sh``"
+msgstr "Applies it to Keycloak via ``kcadm.sh``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:414
+msgid "Применяет к RabbitMQ через ``rabbitmqctl``"
+msgstr "Applies it to RabbitMQ via ``rabbitmqctl``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:415
+msgid "Применяет к PgAdmin через ``setup.py``"
+msgstr "Applies it to PgAdmin via ``setup.py``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:416
+msgid "Перезагружает веб-приложения для применения обновлённого пароля RabbitMQ"
+msgstr "Reloads web applications to apply the updated RabbitMQ password"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:418
+msgid "Пароль сохраняется между перезапусками и обновлениями."
+msgstr "The password persists across restarts and updates."
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:421
+msgid "Структура директорий"
+msgstr "Directory structure"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:447
+msgid "Переменные окружения"
+msgstr "Environment variables"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:453
+msgid "Переменная"
+msgstr "Variable"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:455
+msgid "``CITECK_HOME``"
+msgstr "``CITECK_HOME``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:456
+msgid "Корневая директория (по умолчанию ``/opt/citeck``)"
+msgstr "Root directory (default: ``/opt/citeck``)"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:457
+msgid "``CITECK_RUN``"
+msgstr "``CITECK_RUN``"
+
+#: ../../admin/launch_setup/launcher_server/configuration.rst:458
+msgid "Директория для сокетов (по умолчанию ``/run/citeck``)"
+msgstr "Directory for sockets (default: ``/run/citeck``)"
+

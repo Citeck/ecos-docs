@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,8 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:2
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:4
+msgid "Чтение из RabbitMQ, роутинг по jsonPath и переотправка в Citeck Event"
+msgstr ""
+"Reading from RabbitMQ -> routing by jsonPath -> forwarding to Citeck "
+"Event + Dead Letter Queue"
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:6
+msgid "Пример демонстрирует типичный сценарий интеграции через RabbitMQ:"
+msgstr "The example demonstrates a typical integration scenario via RabbitMQ:"
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:8
 msgid ""
-"Чтение из RabbitMQ -> роутинг по jsonPath -> переотправка в Citeck Event "
-"+ Dead Letter Queue"
-msgstr "Reading from RabbitMQ -> routing by jsonPath -> forwarding to Citeck Event + Dead Letter Queue"
+"Подключение к очереди RabbitMQ с использованием credentials из ECOS "
+"Endpoint."
+msgstr ""
+"Connecting to a RabbitMQ queue using credentials from an ECOS Endpoint."
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:9
+msgid "Логирование входящего сообщения."
+msgstr "Logging the incoming message."
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:10
+msgid "Роутинг сообщения по значению поля ``operation`` в JSON-теле:"
+msgstr "Routing the message based on the ``operation`` field value in the JSON body:"
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:12
+msgid "``CREATE`` → публикация события ``test-data-create``,"
+msgstr "``CREATE`` → publishes the ``test-data-create`` event,"
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:13
+msgid "``UPDATE`` → публикация события ``test-data-update``,"
+msgstr "``UPDATE`` → publishes the ``test-data-update`` event,"
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:14
+msgid ""
+"прочие значения → выброс исключения (сообщение уходит в Dead Letter "
+"Queue)."
+msgstr ""
+"other values → throws an exception (the message is sent to the Dead "
+"Letter Queue)."
+
+#: ../../integration/Camel_DSL/RabbitMQ_routing.rst:18
+msgid ""
+"Для работы примера необходимо создать ECOS Endpoint с именем ``my-"
+"rabbitmq-endpoint``, содержащий ``url``, ``credentials/username`` и "
+"``credentials/password``."
+msgstr ""
+"For the example to work, create an ECOS Endpoint named ``my-rabbitmq-"
+"endpoint`` containing ``url``, ``credentials/username``, and "
+"``credentials/password``."
+

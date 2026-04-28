@@ -3,31 +3,31 @@
 Records API
 ==============
 
-**Records API** — интерфейс на уровне системы для доступа и манипуляции данными. Данными являются записи.
+**Records API** — a system-level interface for accessing and manipulating data. The data entities are called records.
 
-**Запись (Record)** — сущность с набором атрибутов и идентификатором записи (:ref:`RecordRef <RecordRef>`).
+**Record** — an entity with a set of attributes and a record identifier (:ref:`RecordRef <RecordRef>`).
 
-Данные можно получить:
+Data can be retrieved:
 
- - используя браузер — см. :ref:`использование Records API в браузере <using_in_browser>` и :ref:`CRUD операции <CRUD_records_api>`;
- - бэкенд — см. :ref:`взаимодействие на сервере <java_kotlin_backend>` и `исходный код kotlin/java движка Records API <https://github.com/Citeck/ecos-records>`_.
+ - using the browser — see :ref:`using Records API in the browser <using_in_browser>` and :ref:`CRUD operations <CRUD_records_api>`;
+ - backend — see :ref:`server-side interaction <java_kotlin_backend>` and `Records API kotlin/java engine source code <https://github.com/Citeck/ecos-records>`_.
 
 
-Общее описание
+Overview
 --------------
 
-API, разработанное для организации простого и легко масштабируемого общения между потребителем информации и источником. Источниками данных могут быть БД, REST и др.
+An API designed to provide simple and easily scalable communication between a data consumer and a data source. Data sources can be databases, REST services, and others.
 
-Преимущества:
+Advantages:
 
-- Единый API для доступа к данным в системе для всех потребителей (Браузер, Мобильное приложение, Система построения отчетов, Индексирование данных, Различные микросервисы и т.д.);
-- Поддержка загрузки данных из связанных сущностей. Например, если у нас договор ссылается на доверенность, то, имея идентификатор договора, мы можем получить любой атрибут связанной доверенности;
-- Оптимальность. Загружаются и вычисляются только те атрибуты, которые нужны потребителю;
-- Простота в разработке – разработчик источника данных описывает все атрибуты, которые могут запросить потребители вне зависимости от сложности их вычисления. Потребитель в запросе указывает только те атрибуты, в которых он заинтересован;
-- Простота поддержки - нет версионирования API т.к. мы в любой момент можем добавлять новые атрибуты, не трогая старые;
-- Тип получаемых данных полностью описывается запросом. Из источника данных мы возвращаем атрибуты с любым типом, а Records API приводит их к нужному для потребителя;
-- Вычисляемые атрибуты. Возможность добавлять атрибуты, которые не хранятся в БД или любом другом хранилище, а вычисляются на основе существующих;
-- Поддержка объединения атрибутов из разных источников. Например, можно написать источник данных, который часть атрибутов будет брать из alfresco, а часть из внешней БД объединяя их по идентификатору.
+- A unified API for data access across the system for all consumers (browser, mobile app, reporting system, data indexing, various microservices, etc.);
+- Support for loading data from related entities. For example, if a contract references a power of attorney, having the contract identifier allows retrieving any attribute of the related power of attorney;
+- Efficiency. Only the attributes required by the consumer are loaded and computed;
+- Ease of development — the data source developer describes all attributes that consumers may request, regardless of the complexity of their computation. The consumer specifies only the attributes it is interested in;
+- Ease of maintenance — no API versioning is needed, since new attributes can be added at any time without affecting existing ones;
+- The type of returned data is fully described by the request. The data source returns attributes of any type, and Records API converts them to the type required by the consumer;
+- Computed attributes. The ability to add attributes that are not stored in a database or any other storage, but are computed based on existing ones;
+- Support for merging attributes from different sources. For example, a data source can be written that takes some attributes from Alfresco and others from an external database, joining them by identifier.
 
 
 .. toctree::
@@ -41,4 +41,3 @@ API, разработанное для организации простого �
     ECOS_Records/java_kotlin_backend
     ECOS_Records/records_syntax
     ECOS_Records/ECOS_Records_examples
-

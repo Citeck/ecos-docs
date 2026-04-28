@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../introduction/fast_develop.rst:2
+#: ../../introduction/fast_develop.rst:4
 msgid "Быстрая разработка"
 msgstr "Fast Development"
 
@@ -29,201 +28,280 @@ msgstr "Contents"
 
 #: ../../introduction/fast_develop.rst:9
 msgid ""
-"Созданные в Citeck :ref:`артефакты<ecos_artifacts>` (типы данных, "
-"журналы, формы, бизнес-процесс и другие сущности) можно упаковать в виде "
-":ref:`приложения<applications>`, чтобы, например, поместить в систему "
-"контроля версий или перенести на другой стенд. Приложение представляет "
-"собой **zip-архив**."
+"Citeck предоставляет инструменты для организации разработки и управления "
+"конфигурациями на любом этапе — от локального прототипирования до "
+"промышленного развёртывания."
 msgstr ""
-":ref:`Artifacts<ecos_artifacts>` created in Citeck (data types, journals, forms, business processes and other entities) can be packaged as an :ref:`application<applications>` to, for example, place in a version control system or transfer to another environment. The application is a **zip archive**."
+"Citeck provides tools for organizing development and managing "
+"configurations at any stage — from local prototyping to production "
+"deployment."
 
-#: ../../introduction/fast_develop.rst:12
+#: ../../introduction/fast_develop.rst:11
+msgid ""
+":ref:`Артефакты<ecos_artifacts>` (типы данных, журналы, формы, "
+"бизнес-процессы и другие сущности), созданные в конструкторах платформы, "
+"можно упаковать в :ref:`приложение<applications>` — **zip-архив** с "
+"фиксированной структурой директорий. Приложение можно скачать, загрузить "
+"на другой стенд, задеплоить через Maven или закоммитить в систему "
+"контроля версий."
+msgstr ""
+":ref:`Artifacts<ecos_artifacts>` (data types, journals, forms, business "
+"processes, and other entities) created in the platform designers can be "
+"packaged into an :ref:`application<applications>` — a **zip archive** "
+"with a fixed directory structure. The application can be downloaded, "
+"uploaded to another environment, deployed via Maven, or committed to a "
+"version control system."
+
+#: ../../introduction/fast_develop.rst:13
+msgid ""
+"Если стандартных возможностей конструкторов недостаточно, можно создать "
+"отдельный микросервис на Spring Boot и реализовать в нём произвольную "
+"бизнес-логику."
+msgstr ""
+"If the standard capabilities of the designers are not sufficient, you can "
+"create a separate microservice on Spring Boot and implement custom "
+"business logic in it."
+
+#: ../../introduction/fast_develop.rst:15
+msgid "На этой странице описано:"
+msgstr "This page describes:"
+
+#: ../../introduction/fast_develop.rst:17
+msgid "как создать и настроить приложение;"
+msgstr "How to Create a New Citeck Application"
+
+#: ../../introduction/fast_develop.rst:18
+msgid "как перенести приложение между стендами;"
+msgstr "How to Transfer Between Environments"
+
+#: ../../introduction/fast_develop.rst:19
+msgid "как задеплоить приложение локально через Maven;"
+msgstr "How to Deploy Locally/To an Environment"
+
+#: ../../introduction/fast_develop.rst:20
+msgid "как сохранить приложение в системе контроля версий;"
+msgstr "How to Commit to Version Control System"
+
+#: ../../introduction/fast_develop.rst:21
+msgid "как создать микросервис."
+msgstr "How to Create a Microservice"
+
+#: ../../introduction/fast_develop.rst:23
+msgid ""
+"Если вы ведёте разработку в IntelliJ IDEA, воспользуйтесь "
+":ref:`плагином<IntelliJ_IDEA_plugin>` для упрощённой работы с артефактами"
+" и проектами Citeck."
+msgstr ""
+"If you develop in the IntelliJ IDEA environment, we have a special "
+":ref:`plugin<IntelliJ_IDEA_plugin>` that simplifies working with Citeck "
+"projects and artifacts."
+
+#: ../../introduction/fast_develop.rst:26
 msgid "IntelliJ IDEA plugin for Citeck"
 msgstr "IntelliJ IDEA plugin for Citeck"
 
-#: ../../introduction/fast_develop.rst:14
+#: ../../introduction/fast_develop.rst:28
 msgid ""
-"Если вы ведете разработку в среде IntelliJ IDEA, то у нас есть "
-"специальный :ref:`плагин<IntelliJ_IDEA_plugin>`, который упрощает работу "
-"с проектами и артефактами Citeck."
+":ref:`Плагин<IntelliJ_IDEA_plugin>` для IntelliJ IDEA интегрирует "
+"инструменты Citeck непосредственно в IDE: позволяет управлять "
+"артефактами, синхронизировать изменения со стендом и запускать сборку без"
+" переключения между окнами."
 msgstr ""
-"If you develop in the IntelliJ IDEA environment, we have a special :ref:`plugin<IntelliJ_IDEA_plugin>` that simplifies working with Citeck projects and artifacts."
+"The :ref:`plugin<IntelliJ_IDEA_plugin>` for IntelliJ IDEA integrates "
+"Citeck tools directly into the IDE: it allows you to manage artifacts, "
+"synchronize changes with the environment, and run builds without switching "
+"between windows."
 
-#: ../../introduction/fast_develop.rst:17
+#: ../../introduction/fast_develop.rst:31
 msgid "С чего начать"
 msgstr "Getting Started"
 
-#: ../../introduction/fast_develop.rst:19
+#: ../../introduction/fast_develop.rst:33
 msgid ""
-"Создайте артефакты бизнес-процесса. Например, создание  процесса запроса "
-"на закупку оборудования описано в :ref:`статье<sample_request>`"
+"Создайте артефакты бизнес-процесса. Например, создание процесса запроса "
+"на закупку оборудования описано в :ref:`статье<sample_request>`."
 msgstr ""
-"Create business process artifacts. For example, creating an equipment purchase request process is described in the :ref:`article<sample_request>`"
+"Create business process artifacts. For example, creating an equipment "
+"purchase request process is described in the "
+":ref:`article<sample_request>`"
 
-#: ../../introduction/fast_develop.rst:23
+#: ../../introduction/fast_develop.rst:37
 msgid "Как создать новое Citeck приложение"
 msgstr "How to Create a New Citeck Application"
 
-#: ../../introduction/fast_develop.rst:25
+#: ../../introduction/fast_develop.rst:39
 msgid ""
-"Для создания приложения перейдите в рабочее пространство администратора в"
-" разделе **Управление системой** перейдите в пункт **Приложения ECOS**:"
+"Для создания приложения в рабочем пространстве администратора перейдите в"
+" раздел **Управление системой**, затем в пункт **Приложения ECOS**:"
 msgstr ""
-"To create an application, go to the administrator workspace, in the **System Management** section, go to **ECOS Applications**:"
+"To create an application, go to the administrator workspace, in the "
+"**System Management** section, go to **ECOS Applications**:"
 
-#: ../../introduction/fast_develop.rst:31
+#: ../../introduction/fast_develop.rst:45
 msgid "Нажмите **+ - Создать приложение**:"
 msgstr "Click **+ - Create Application**:"
 
-#: ../../introduction/fast_develop.rst:43
+#: ../../introduction/fast_develop.rst:57
 msgid ""
 "Укажите **Id (1)**, **Имя (2)**, выберите все созданные **типы данных "
 "(3)** вашего процесса, измените **Версию (5)** при необходимости."
 msgstr ""
-"Specify **Id (1)**, **Name (2)**, select all created **data types (3)** of your process, change **Version (5)** if necessary."
+"Specify **Id (1)**, **Name (2)**, select all created **data types (3)** "
+"of your process, change **Version (5)** if necessary."
 
-#: ../../introduction/fast_develop.rst:45
+#: ../../introduction/fast_develop.rst:59
 msgid ""
 "Для автоматической загрузки артефактов можно нажать **«Загрузить "
 "артефакты для выбранных типов» (4)**."
 msgstr ""
-"For automatic loading of artifacts, you can click **\"Load artifacts for selected types\" (4)**."
+"For automatic loading of artifacts, you can click **\"Load artifacts for "
+"selected types\" (4)**."
 
-#: ../../introduction/fast_develop.rst:49
+#: ../../introduction/fast_develop.rst:63
 msgid ""
 "Не все типы артефактов загружаются автоматически. Дополните полученный "
 "список артефактов, нажав **«Добавить»**:"
 msgstr ""
-"Not all artifact types are loaded automatically. Supplement the resulting list of artifacts by clicking **\"Add\"**:"
+"Not all artifact types are loaded automatically. Supplement the resulting"
+" list of artifacts by clicking **\"Add\"**:"
 
-#: ../../introduction/fast_develop.rst:62
+#: ../../introduction/fast_develop.rst:76
 msgid "**Сохраните**."
 msgstr "**Save**."
 
-#: ../../introduction/fast_develop.rst:64
+#: ../../introduction/fast_develop.rst:78
 msgid ""
 "Далее архив можно скачать, чтобы перенести его на другой стенд, "
 "задеплоить его локально или закоммитить в систему контроля версий."
 msgstr ""
-"The archive can then be downloaded to transfer it to another environment, deploy it locally, or commit it to a version control system."
+"The archive can then be downloaded to transfer it to another environment,"
+" deploy it locally, or commit it to a version control system."
 
-#: ../../introduction/fast_develop.rst:70
+#: ../../introduction/fast_develop.rst:84
 msgid ""
 "**Zip-архив** имеет следующую структуру - все артефакты располагаются в "
 "директориях, в соответствии с их типом:"
 msgstr ""
-"The **zip archive** has the following structure - all artifacts are located in directories according to their type:"
+"The **zip archive** has the following structure - all artifacts are "
+"located in directories according to their type:"
 
-#: ../../introduction/fast_develop.rst:77
+#: ../../introduction/fast_develop.rst:91
 msgid "Как перенести между стендами"
 msgstr "How to Transfer Between Environments"
 
-#: ../../introduction/fast_develop.rst:79
+#: ../../introduction/fast_develop.rst:93
 msgid "Скачайте приложение:"
 msgstr "Download the application:"
 
-#: ../../introduction/fast_develop.rst:85
+#: ../../introduction/fast_develop.rst:99
 msgid "Загрузите приложение на необходимом стенде:"
 msgstr "Upload the application to the required environment:"
 
-#: ../../introduction/fast_develop.rst:92
+#: ../../introduction/fast_develop.rst:106
 msgid "Как задеплоить локально/на стенд"
 msgstr "How to Deploy Locally/To an Environment"
 
-#: ../../introduction/fast_develop.rst:94
+#: ../../introduction/fast_develop.rst:108
 msgid ""
-"Создайте локально `maven проект  <https://maven.apache.org/index.html>`_"
+"Создайте локально `Maven-проект  <https://maven.apache.org/index.html>`_"
 "  с названием приложения, в папку ``src/main/resources/app`` скопируйте "
 "содержимое zip-архива:"
 msgstr ""
-"Create a local `Maven project <https://maven.apache.org/index.html>`_ with the application name, copy the contents of the zip archive to the ``src/main/resources/app`` folder:"
+"Create a local `Maven project <https://maven.apache.org/index.html>`_ "
+"with the application name, copy the contents of the zip archive to the "
+"``src/main/resources/app`` folder:"
 
-#: ../../introduction/fast_develop.rst:100
+#: ../../introduction/fast_develop.rst:114
 msgid "В корне приложения разместите файл **meta.yml**, указав:"
 msgstr "Place the **meta.yml** file in the application root, specifying:"
 
-#: ../../introduction/fast_develop.rst:106
+#: ../../introduction/fast_develop.rst:120
 msgid ""
 "**id: String** - идентификатор приложения. По умолчанию равен artifactId "
 "проекта"
 msgstr ""
-"**id: String** - application identifier. Defaults to the project's artifactId"
+"**id: String** - application identifier. Defaults to the project's "
+"artifactId"
 
-#: ../../introduction/fast_develop.rst:107
+#: ../../introduction/fast_develop.rst:121
 msgid "**name: MLText** - имя приложения"
 msgstr "**name: MLText** - application name"
 
-#: ../../introduction/fast_develop.rst:109
+#: ../../introduction/fast_develop.rst:123
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../introduction/fast_develop.rst:115
+#: ../../introduction/fast_develop.rst:129
 msgid "Настройте главный **pom файл** следующим образом:"
 msgstr "Configure the main **pom file** as follows:"
 
-#: ../../introduction/fast_develop.rst:145
+#: ../../introduction/fast_develop.rst:159
 msgid "Укажите в нем **groupId**, **artifactId**, **version**."
 msgstr "Specify **groupId**, **artifactId**, **version** in it."
 
-#: ../../introduction/fast_develop.rst:147
+#: ../../introduction/fast_develop.rst:161
 msgid "Создайте **Jenkinsfile** с содержимым:"
 msgstr "Create a **Jenkinsfile** with the content:"
 
-#: ../../introduction/fast_develop.rst:153
+#: ../../introduction/fast_develop.rst:167
 msgid "Создайте **ecos-build-config.yml** с содержимым:"
 msgstr "Create **ecos-build-config.yml** with the content:"
 
-#: ../../introduction/fast_develop.rst:160
+#: ../../introduction/fast_develop.rst:174
 msgid "Соберите приложение командой:"
 msgstr "Build the application with the command:"
 
-#: ../../introduction/fast_develop.rst:166
+#: ../../introduction/fast_develop.rst:180
 msgid ""
 "При сборке приложения получается **zip-архив** в папке "
 "``target/classes/apps``:"
 msgstr ""
-"When building the application, a **zip archive** is created in the ``target/classes/apps`` folder:"
+"When building the application, a **zip archive** is created in the "
+"``target/classes/apps`` folder:"
 
-#: ../../introduction/fast_develop.rst:172
+#: ../../introduction/fast_develop.rst:186
 msgid ""
 "Далее загрузите созданный архив на необходимый стенд, как описано в главе"
 " выше."
 msgstr ""
-"Then upload the created archive to the required environment, as described in the chapter above."
+"Then upload the created archive to the required environment, as described"
+" in the chapter above."
 
-#: ../../introduction/fast_develop.rst:175
+#: ../../introduction/fast_develop.rst:189
 msgid "Как закоммитить в систему контроля версий"
 msgstr "How to Commit to Version Control System"
 
-#: ../../introduction/fast_develop.rst:177
+#: ../../introduction/fast_develop.rst:191
 msgid "В системе контроля версий создайте репозиторий с названием приложения."
-msgstr "Create a repository with the application name in the version control system."
+msgstr ""
+"Create a repository with the application name in the version control "
+"system."
 
-#: ../../introduction/fast_develop.rst:179
+#: ../../introduction/fast_develop.rst:193
 msgid "В репозиторий перенесите:"
 msgstr "Transfer to the repository:"
 
-#: ../../introduction/fast_develop.rst:181
+#: ../../introduction/fast_develop.rst:195
 msgid "папку ``src`` со всем содержимым;"
 msgstr "the ``src`` folder with all contents;"
 
-#: ../../introduction/fast_develop.rst:182
+#: ../../introduction/fast_develop.rst:196
 msgid "созданный **pom.xml**;"
 msgstr "the created **pom.xml**;"
 
-#: ../../introduction/fast_develop.rst:183
+#: ../../introduction/fast_develop.rst:197
 msgid "**Jenkinsfile**;"
 msgstr "**Jenkinsfile**;"
 
-#: ../../introduction/fast_develop.rst:184
+#: ../../introduction/fast_develop.rst:198
 msgid "**ecos-build-config.yml**."
 msgstr "**ecos-build-config.yml**."
 
-#: ../../introduction/fast_develop.rst:191
+#: ../../introduction/fast_develop.rst:205
 msgid "Как создать микросервис"
 msgstr "How to Create a Microservice"
 
-#: ../../introduction/fast_develop.rst:193
+#: ../../introduction/fast_develop.rst:207
 msgid ""
 "Если сконфигурированные в конструкторе артефакты не покрывают необходимую"
 " функциональность, можно создать отдельный микросервис — это полноценное "
@@ -231,22 +309,47 @@ msgid ""
 "использовать сторонние библиотеки и реализовывать любую бизнес-логику, "
 "выходящую за рамки стандартных возможностей платформы."
 msgstr ""
-"If artifacts configured in the constructor do not cover the required functionality, you can create a separate microservice - a full-fledged Java application on Spring Boot where you can write your own code, use third-party libraries, and implement any business logic beyond the standard capabilities of the platform."
+"If artifacts configured in the constructor do not cover the required "
+"functionality, you can create a separate microservice - a full-fledged "
+"Java application on Spring Boot where you can write your own code, use "
+"third-party libraries, and implement any business logic beyond the "
+"standard capabilities of the platform."
 
-#: ../../introduction/fast_develop.rst:195
-msgid "Для создания микросервиса воспользуйтесь :ref:`инструкцией<mcs_setup>`"
+#: ../../introduction/fast_develop.rst:209
+msgid "Для создания микросервиса воспользуйтесь :ref:`инструкцией<mcs_setup>`."
 msgstr "To create a microservice, use the :ref:`instruction<mcs_setup>`"
 
-#: ../../introduction/fast_develop.rst:199
+#: ../../introduction/fast_develop.rst:213
 msgid ""
 "Для микросервиса созданные артефакты необходимо скопировать в папку  "
 "``src/main/resources/eapps/artifacts``"
 msgstr ""
-"For a microservice, the created artifacts must be copied to the ``src/main/resources/eapps/artifacts`` folder"
+"For a microservice, the created artifacts must be copied to the "
+"``src/main/resources/eapps/artifacts`` folder"
 
-#: ../../introduction/fast_develop.rst:205
+#: ../../introduction/fast_develop.rst:219
 msgid ""
 "См. статью о :ref:`приложении<demo_microservice>`, демонстрирующем "
 "возможности Citeck."
 msgstr ""
-"See the article about the :ref:`application<demo_microservice>` demonstrating Citeck's capabilities."
+"See the article about the :ref:`application<demo_microservice>` "
+"demonstrating Citeck's capabilities."
+
+#~ msgid ""
+#~ "Созданные в Citeck :ref:`артефакты<ecos_artifacts>`"
+#~ " (типы данных, журналы, формы, "
+#~ "бизнес-процесс и другие сущности) можно "
+#~ "упаковать в виде :ref:`приложения<applications>`,"
+#~ " чтобы, например, поместить в систему "
+#~ "контроля версий или перенести на другой"
+#~ " стенд. Приложение представляет собой "
+#~ "**zip-архив**."
+#~ msgstr ""
+#~ ":ref:`Artifacts<ecos_artifacts>` created in Citeck"
+#~ " (data types, journals, forms, business "
+#~ "processes and other entities) can be "
+#~ "packaged as an :ref:`application<applications>` "
+#~ "to, for example, place in a "
+#~ "version control system or transfer to"
+#~ " another environment. The application is"
+#~ " a **zip archive**."

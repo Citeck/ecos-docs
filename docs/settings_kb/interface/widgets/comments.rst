@@ -1,61 +1,61 @@
 .. _widget_comments:
 
-Виджет «Комментарии»
+'Comments' Widget
 ===============================================
 
 .. contents::
    :depth: 2
 
-Ключ ``comments``
+Key ``comments``
 
-Виджет для отображения комментариев к документу.
+The widget displays comments on a document.
 
 .. list-table::
       :widths: 10 40
       :class: tight-table
 
-      * - **Введенные комментарии**
+      * - **Entered comments**
         - |
 
             .. image:: ../_static/widgets/comment_1.png
                   :width: 600
                   :align: center
 
-      * - **Форма ввода комментария:**
-        - | Для ввода текста используется :ref:`визуальный редактор <wysiwyg_editor>`, в котором помимо форматирования текста доступно добавление таблицы, кода, ссылки, файла
-          | Чтобы в комментарии упомянуть других пользователей используете **@**
+      * - **Comment input form:**
+        - | Text is entered using the :ref:`visual editor <wysiwyg_editor>`, which supports formatting as well as inserting tables, code, links, and files.
+          | To mention other users in a comment, use **@**.
 
             .. image:: ../_static/widgets/comment_2.png
                   :width: 600
                   :align: center
 
-Пользователь, которого упомянули в комментарии получит письмо следующего вида:
+The mentioned user will receive an email of the following form:
 
 .. image:: ../_static/widgets/comment_5.png
        :width: 500
        :align: center
 
-Максимальное количество символов в комментарии - 5 000. Иначе будет выдана ошибка:
+The maximum number of characters in a comment is 5,000. Otherwise, an error will be shown:
 
 .. image:: ../_static/widgets/comment_4.png
        :width: 600
        :align: center
 
-Подробно о  :ref:`разграничении пользователей различных заказчиков <UNIFIED_PRIVATE_GROUP>`
+See details on :ref:`separating users of different customers <UNIFIED_PRIVATE_GROUP>`.
 
-Транcлирование комментариев при выполнении задачи
--------------------------------------------------
+Broadcasting Comments on Task Completion
+-----------------------------------------
 
-Для включения транслированная комментария при выполнении задачи в виджет комментариев необходимо к типу данных добавить аспект ``task-comments-broadcastable``.
+To enable broadcasting a comment entered during task completion to the comments widget, add the ``task-comments-broadcastable`` aspect to the data type.
 
 .. important::
 
-       Инпут комментария на форме задачи должен быть добавлен с id ``comment``.
+       The comment input on the task form must be added with the id ``comment``.
 
-Комментарий, добавленный из задачи помечается тегом с названием задачи.
+A comment added from a task is marked with a tag containing the task name.
 
 .. image:: ../_static/widgets/comment_3.png
        :width: 600
        :align: center
 
-Если необходимо выключить добавление комментария из задачи для конкретного рекорда, можно у рекорда выставить свойство ``task-comments-broadcastable:broadcastComments`` в ``false``.
+If you need to disable comment broadcasting from a task for a specific record, set the ``task-comments-broadcastable:broadcastComments`` property to ``false`` on that record.

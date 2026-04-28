@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Core_mechanisms/Events.rst:4
+msgid "Работа с событиями (events)"
+msgstr "Working with Events"
+
+#: ../../general/Core_mechanisms/Events.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/Core_mechanisms/Events.rst:9
+msgid ""
+"**События (Events)** — механизм межсервисного взаимодействия в платформе "
+"Citeck, позволяющий микросервисам реагировать на изменения в системе без "
+"прямой зависимости друг от друга."
+msgstr ""
+"**Events** — an inter-service communication mechanism in the Citeck "
+"platform that allows microservices to react to changes in the system "
+"without direct dependencies on each other."
+
+#: ../../general/Core_mechanisms/Events.rst:11
+msgid ""
+"События генерируются при изменении состояния объектов: создании, "
+"обновлении или удалении записей, смене статуса, изменении атрибутов, "
+"назначении задач и других действиях. Подписчики получают только те "
+"атрибуты, которые им нужны, — без модификации источника событий."
+msgstr ""
+"Events are generated when the state of objects changes: when records are "
+"created, updated, or deleted, when the status changes, attributes are "
+"modified, tasks are assigned, and other actions. Subscribers receive only "
+"the attributes they need — without modifying the event source."
+
+#: ../../general/Core_mechanisms/Events.rst:13
+msgid "Механизм поддерживает два режима доставки:"
+msgstr "The mechanism supports two delivery modes:"
+
+#: ../../general/Core_mechanisms/Events.rst:15
+msgid ""
+"**Нетранзакционные** — доставка через RabbitMQ после завершения "
+"транзакции (слабая связность между сервисами);"
+msgstr ""
+"**Non-transactional** — delivery via RabbitMQ after the transaction "
+"completes (loose coupling between services);"
+
+#: ../../general/Core_mechanisms/Events.rst:16
+msgid ""
+"**Транзакционные** — синхронная доставка в рамках текущей транзакции "
+"(позволяет прерывать транзакцию или выполнять действия «здесь и сейчас»)."
+msgstr ""
+"**Transactional** — synchronous delivery within the current transaction "
+"(allows interrupting the transaction or performing actions \"here and "
+"now\")."
+
+#: ../../general/Core_mechanisms/Events.rst:19
+msgid "Events 2.0"
+msgstr "Events 2.0"
+
+#: ../../general/Core_mechanisms/Events.rst:21
+msgid ""
+"Реакция на события (events) строится на основе rabbitmq и моделей events "
+"в библиотеке - `ecos-events <https://github.com/Citeck/ecos-events>`_. На"
+" стороне producer и consumer строится подключение к rabbitmq. Пример: "
+"отправка уведомлений как реакция на событие - сменился статус, изменился "
+"атрибут, назначилась задача и т.д."
+msgstr ""
+"Event reactions are built on RabbitMQ and event models in the "
+"`ecos-events <https://github.com/Citeck/ecos-events>`_ library. RabbitMQ "
+"connections are established on both the producer and consumer sides. "
+"Example: sending notifications in response to an event — status changed, "
+"attribute modified, task assigned, etc."
+
+#: ../../general/Core_mechanisms/Events.rst:24
+msgid "Архитектура"
+msgstr "Architecture"
+
+#: ../../general/Core_mechanisms/Events.rst:31
+msgid "Описание работы"
+msgstr "How It Works"
+
+#: ../../general/Core_mechanisms/Events.rst:33
+msgid ""
+"События в Citeck позволяют менять атрибутивный состав, который нужен "
+"подписчику на событие, без модификации источника событий. При старте "
+"системы все подписчики регистрируют в Zookeeper список необходимых им "
+"событий по типам и атрибуты события, в которых они заинтересованы."
+msgstr ""
+"Events in Citeck allow changing the set of attributes required by an "
+"event subscriber without modifying the event source. At system startup, "
+"all subscribers register in Zookeeper the list of event types they need "
+"and the event attributes they are interested in."
+
+#: ../../general/Core_mechanisms/Events.rst:36
+msgid ""
+"Приложение, которое может отправлять события подобного типа, видит, что в"
+" системе есть подписчики на эти события, и, при их возникновении, "
+"подготовив необходимый список атрибутов, отправляет их в Rabbit MQ "
+"(нетранзакционные слушатели) или напрямую слушателю (транзакционные "
+"слушатели) через синхронный запрос."
+msgstr ""
+"The application that can emit events of this type sees that there are "
+"subscribers to these events in the system, and when events occur, it "
+"prepares the required list of attributes and sends them to RabbitMQ (for "
+"non-transactional listeners) or directly to the listener (for "
+"transactional listeners) via a synchronous request."
+
+#: ../../general/Core_mechanisms/Events.rst:39
+msgid ""
+"Атрибуты описываются в формате Records API и могут пользоваться всеми "
+"преимуществами данного API."
+msgstr ""
+"Attributes are described in the Records API format and can take full "
+"advantage of that API."
+
+#: ../../general/Core_mechanisms/Events.rst:42
+msgid "Транзакционные слушатели"
+msgstr "Transactional Listeners"
+
+#: ../../general/Core_mechanisms/Events.rst:44
+msgid ""
+"Транзакционные слушатели позволяют реагировать на события \"здесь и "
+"сейчас\", не дожидаясь пока транзакция завершится. Подобные слушатели "
+"могут быть использованы, чтобы добавить валидацию состояния системы с "
+"возможностью прервать транзакцию или для любых других действий, которые "
+"должны выполниться в рамках транзакции."
+msgstr ""
+"Transactional listeners allow reacting to events \"here and now\" without "
+"waiting for the transaction to complete. Such listeners can be used to "
+"add system state validation with the ability to abort the transaction, or "
+"for any other actions that must be performed within the transaction."
+
+#: ../../general/Core_mechanisms/Events.rst:47
+msgid ""
+"Важная особенность - добавляя транзакционных слушателей вы автоматически "
+"добавляете жесткую зависимость генерирующих события микросервисов от "
+"микросервиса со слушателем. Т.е. если микросервис со слушателем "
+"недоступен, то микросервис, генерирующий события не сможет "
+"функционировать в полной мере."
+msgstr ""
+"An important consideration: by adding transactional listeners, you "
+"automatically introduce a hard dependency of event-generating "
+"microservices on the microservice containing the listener. That is, if "
+"the microservice with the listener is unavailable, the event-generating "
+"microservice will not be able to function fully."
+
+#: ../../general/Core_mechanisms/Events.rst:50
+msgid "Примеры"
+msgstr "Examples"
+
+#: ../../general/Core_mechanisms/Events.rst:53
+msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
+msgstr "Subscribing to an event with arbitrary attributes (Kotlin)"
+
+#: ../../general/Core_mechanisms/Events.rst:68
+msgid "Подписка на событие с произвольными атрибутами (Java):"
+msgstr "Subscribing to an event with arbitrary attributes (Java):"
+
+#: ../../general/Core_mechanisms/Events.rst:92
+msgid "Пример listener-а событий для определенного типа данных"
+msgstr "Example of an event listener for a specific data type"
+
+#: ../../general/Core_mechanisms/Events.rst:187
+msgid "Пояснения:"
+msgstr "Notes:"

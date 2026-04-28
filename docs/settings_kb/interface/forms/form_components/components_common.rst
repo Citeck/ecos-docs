@@ -1,44 +1,44 @@
 .. _form_components_overview:
 
-Общее описание
-===============
+General description
+===================
 
 .. contents::
    :depth: 4
 
-Редактор форм платформы Citeck включает набор компонентов, сгруппированных по назначению: 
+The Citeck platform form editor includes a set of components grouped by purpose:
 
-- **Основные** — для ввода и выбора данных, 
-- **Расширенные** — специализированные компоненты платформы, 
-- **Макет** — для структурирования формы, 
-- **Данные** — для работы с данными без отображения пользователю.
+- **Basic** — for data input and selection,
+- **Advanced** — specialized platform components,
+- **Layout** — for structuring the form,
+- **Data** — for working with data without displaying to the user.
 
 .. image:: _static/overview.png
        :width: 600
        :align: center
 
-Часть компонентов основана на стандартных компонентах `Form.io <https://help.form.io/userguide/forms/form-components>`_ и дополнена функциональностью Citeck. Для таких компонентов приведены ссылки на оригинальную документацию Form.io, а также на описание доработок.
+Some components are based on standard `Form.io <https://help.form.io/userguide/forms/form-components>`_ components and are supplemented with Citeck functionality. For such components, links to the original Form.io documentation and to the description of enhancements are provided.
 
 
-Основные компоненты
---------------------
+Basic components
+-----------------
 
 Text Field
-~~~~~~~~~~~~
+~~~~~~~~~~~
 
 .. _Text_Field:
 
-Однострочное текстовое поле.
+Single-line text field.
 
 .. image:: _static/Text_Field_Component.png
        :width: 400
        :align: center
 
-`См. подробное описание Text Field на Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_ 
+`See detailed description of Text Field on Form.io <https://help.form.io/userguide/forms/form-components#text-field>`_
 
-:ref:`См. доработки компонента<text_field_component>` 
+:ref:`See component enhancements<text_field_component>`
 
-:ref:`См. пример Text Field<sample_text_field_component>` 
+:ref:`See Text Field example<sample_text_field_component>`
 
 
 Select Journal
@@ -46,42 +46,42 @@ Select Journal
 
 .. _Select_Journal_:
 
-Компонент, отвечающий за выбор из журнала. Работает только в том случае, если для ссылочного типа существует журнал.
+Component responsible for selection from a journal. Only works if a journal exists for the reference type.
 
 .. image:: _static/Select_Journal_Component.png
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Select Journal<Select_journal_component>`
+:ref:`See detailed description of Select Journal<Select_journal_component>`
 
-:ref:`См. пример Select Journal<sample_select_journal_component>` 
+:ref:`See Select Journal example<sample_select_journal_component>`
 
 
 Select Orgstruct
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 .. _Select_Orgstruct_:
 
-Компонент, отвечающий за выбор из оргструктуры пользователей/групп. Что именно будет выбираться (пользователи с группами вместе, или что-то одно), – регулируется внутри компонента.
+Component responsible for selection from organizational structure users/groups. What exactly will be selected (users with groups together, or something single) is regulated within the component.
 
 .. image:: _static/Select_Orgstruct_Component.png
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Select Orgstruct<Select_orgstruct_component>`
+:ref:`See detailed description of Select Orgstruct<Select_orgstruct_component>`
 
-:ref:`См. пример Select Orgstruct<sample_select_orgstruct_component>` 
+:ref:`See Select Orgstruct example<sample_select_orgstruct_component>`
 
 Number
 ~~~~~~~
 
 .. _Number:
 
-Числовое поле. Может принимать в себя как целочисленные значения, так и с плавающей точкой. Это регулируется внутри компонента.
+Numeric field. Can accept both integer values and floating point values. This is regulated within the component.
 
-По умолчанию разряды числа разделены пробелом. Например, 1 000 000.
+By default, number digits are separated by space. For example, 1 000 000.
 
-`См. подробное описание Number на Form.io <https://help.form.io/userguide/forms/form-components#number>`_ 
+`See detailed description of Number on Form.io <https://help.form.io/userguide/forms/form-components#number>`_
 
 
 Date/Time
@@ -89,41 +89,41 @@ Date/Time
 
 .. _Date_Time:
 
-Поле, отвечающее за отображение даты и времени. 
+Field responsible for displaying date and time.
 
 .. image:: _static/Date_Time_Component_01.png
        :width: 250
        :align: center
 
-Отображение регулируется внутри компонента, доступна локализация Ru/Eng
+Display is regulated within the component, RU/Eng localization is available
 
 .. image:: _static/Date_Time_Component.png
        :width: 600
        :align: center
 
-`См. подробное описание Date/Time на Form.io <https://help.form.io/userguide/forms/form-components#date-time>`_  
+`See detailed description of Date/Time on Form.io <https://help.form.io/userguide/forms/form-components#date-time>`_
 
-:ref:`См. пример Date/Time<sample_date_time_component>` 
+:ref:`See Date/Time example<sample_date_time_component>`
 
 
 Text Area
-~~~~~~~~~~~
+~~~~~~~~~~
 
 .. _Text_Area:
 
-Аналог Text Field. Многострочное текстовое поле. 
+Analog of Text Field. Multi-line text field.
 
 .. image:: _static/Text_Area_Component.png
        :width: 400
        :align: center
 
-Для вывода введенных данных многострочно необходимо добавить редактор на вкладке **Вид**:
+To display entered data in multiple lines, you need to add an editor on the **Display** tab:
 
 .. image:: _static/Text_Area_Component_01.png
        :width: 600
        :align: center
 
-`См. подробное описание Text Area на Form.io <https://help.form.io/userguide/forms/form-components#text-area>`_ 
+`See detailed description of Text Area on Form.io <https://help.form.io/userguide/forms/form-components#text-area>`_
 
 
 Checkbox
@@ -131,15 +131,15 @@ Checkbox
 
 .. _Checkbox:
 
-Поле выбора нескольких значений из списка параметров.
+Field for selecting multiple values from a list of parameters.
 
 .. image:: _static/Checkbox_Component.png
        :width: 200
        :align: center
 
-`См. подробное описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_
+`See detailed description of Checkbox on Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_
 
-:ref:`См. доработки компонента Checkbox<checkbox_component>`
+:ref:`See component enhancements<checkbox_component>`
 
 
 Day
@@ -147,125 +147,125 @@ Day
 
 .. _Day:
 
-Поле для ввода значений «День», «Месяц» и «Год» с использованием числа или выбора типа поля.
+Field for entering values "Day", "Month" and "Year" using number or field type selection.
 
-`См. подробное описание Day на Form.io <https://help.form.io/userguide/forms/form-components#day>`_  
+`See detailed description of Day on Form.io <https://help.form.io/userguide/forms/form-components#day>`_
 
 
 ECOS Select
-~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 .. _Ecos_Select_:
 
-Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.
+Field responsible for selection from a list. Based on the standard formio Select component, has been modified.
 
 .. image:: _static/ECOS_Select_Component.png
        :width: 350
        :align: center
 
-:ref:`См. подробное описание Ecos Select<ecos_select_component>`  
+:ref:`See detailed description of Ecos Select<ecos_select_component>`
 
-:ref:`См. пример Ecos Select<sample_ecos_select_component>`
+:ref:`See Ecos Select example<sample_ecos_select_component>`
 
 
 Button
-~~~~~~~~
+~~~~~~~
 
 .. _Button:
 
-Добавление кнопок для выполнения различных действий в форме.
+Adding buttons to perform various actions in the form.
 
 .. image:: _static/Button_Component.png
        :width: 600
        :align: center
 
-`См. подробное описание Button на Form.io <https://help.form.io/userguide/forms/form-components#button>`_  
+`See detailed description of Button on Form.io <https://help.form.io/userguide/forms/form-components#button>`_
 
-:ref:`См. пример Button<sample_button_component>` 
+:ref:`See Button example<sample_button_component>`
 
-Расширенные
-------------
+Advanced
+---------
 
 
 ML Text
-~~~~~~~~~
+~~~~~~~~
 
 .. _ML_Text:
 
-Однострочное текстовое поле. Для выбора языка предусмотрен переключатель в виде флага России /США. После выбора языка в поле вводится текст.
+Single-line text field. Language selection is provided by a Russia/USA flag switch. After selecting the language, text is entered in the field.
 
-Сохраняются оба введенных зачения. Если поле содержит постфикс ML и является объектом (содержит ключ EN/RU), то элемент отрисовывается.
+Both entered values are saved. If the field contains the ML postfix and is an object (contains EN/RU key), the element is rendered.
 
 .. image:: _static/ML_Text_Component.png
        :width: 400
        :align: center
 
-Поддержка ML text реализована для поля "Название поля", "Подсказка" всех компонент редактора форм, так же для поля "Контент" компонента Html Component, "Название свойства" компонента Panel Component.
+ML text support is implemented for the "Field name", "Hint" fields of all form editor components, as well as for the "Content" field of the Html Component, "Property name" field of the Panel Component.
 
 
 Table Form
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~
 
-Компонент позволяет отображать выбранные значения в виде таблицы.
+Component allows displaying selected values in table format.
 
-:ref:`См. подробное описание Table Form<table_form_component>` 
+:ref:`See detailed description of Table Form<table_form_component>`
 
 Task Outcome
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
-Компонент используется для добавления кнопок вердиктов задачи на форму. Компонент автоматически формирует кнопки вердиктов исходя из настроек Результатов задачи.
+Component is used to add task verdict buttons to the form. The component automatically forms verdict buttons based on Task Outcomes settings.
 
-:ref:`См. пример Task Outcome<approve_form_bpmn>`
+:ref:`See Task Outcome example<approve_form_bpmn>`
 
 
 Import Button
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
-Компонент позволяет добавить на форму настраиваемую кнопку для загрузки файлов.
+Component allows adding a customizable button to the form for file upload.
 
-:ref:`См. подробное описание Import Button<import_button_component>` 
+:ref:`See detailed description of Import Button<import_button_component>`
 
 
 Email
 ~~~~~~
 
-Компонент представляет собой строковое поле, которое выполняет специальную проверку ввода, гарантирующую, что введенные данные находятся в допустимом формате электронной почты. 
+Component is a string field that performs special input validation, ensuring that entered data is in a valid email format.
 
-Действительный адрес электронной почты состоит из префикса электронной почты и домена электронной почты в приемлемых форматах.
+A valid email address consists of an email prefix and email domain in acceptable formats.
 
-`См. подробное описание Email на Form.io <https://help.form.io/userguide/forms/form-components#email>`_ 
+`See detailed description of Email on Form.io <https://help.form.io/userguide/forms/form-components#email>`_
 
 
 URL
 ~~~~
 
-Компонент имеет настраиваемый параметр проверки, который, если он настроен правильно, может гарантировать, что введенное значение является допустимым URL-адресом.
+Component has a customizable validation parameter that, if configured correctly, can ensure that the entered value is a valid URL.
 
-`См. подробное описание URL на Form.io <https://help.form.io/userguide/forms/form-components#url>`_ 
+`See detailed description of URL on Form.io <https://help.form.io/userguide/forms/form-components#url>`_
 
 
 Phone Number
 ~~~~~~~~~~~~~
 
-Компонент можно использовать для ввода номеров телефонов в форму. Можно задать маску ввода номера.
+Component can be used to enter phone numbers into the form. Number input mask can be set.
 
-`См. подробное описание Phone Number на Form.io <https://help.form.io/userguide/forms/form-components#phone-number>`_ 
+`See detailed description of Phone Number on Form.io <https://help.form.io/userguide/forms/form-components#phone-number>`_
 
 
 Address Field
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
-Cпециальный компонент, выполняющий поиск введенных адресов.
+Special component that performs search of entered addresses.
 
-`См. подробное описание Address Field на Form.io <https://help.form.io/userguide/forms/form-components#address>`_ 
+`See detailed description of Address Field on Form.io <https://help.form.io/userguide/forms/form-components#address>`_
 
 
 ML Textarea
 ~~~~~~~~~~~~
 
-Многострочное текстовое поле для ввода на русском/анлийском языках. Для выбора языка предусмотрен переключатель в виде флага России /США. После выбора языка вводится в поле вводится текст.
+Multi-line text field for input in Russian/English languages. Language selection is provided by a Russia/USA flag switch. After selecting the language, text is entered in the field.
 
-Сохраняются оба введенных зачения. Если поле содержит постфикс ML и является объектом (содержитключ EN/RU), то элемент отрисовывается.
+Both entered values are saved. If the field contains the ML postfix and is an object (contains EN/RU key), the element is rendered.
 
 .. image:: _static/ML_TextArea_Component.png
        :width: 400
@@ -275,16 +275,16 @@ ML Textarea
 HTML Element
 ~~~~~~~~~~~~~
 
-Компонент может быть добавлен в форму для отображения одного элемента HTML.
+Component can be added to a form to display a single HTML element.
 
-Динамически через скрипт можно менять контент. Например:
+Content can be dynamically changed via a script. For example:
 
 .. code-block::
 
        instance.component.content = {en: '<p>Hello World</p>', ru: '<p>Привет, мир</p>'};
-       instance.setHTML();       
+       instance.setHTML();
 
-`См. подробное описание HTML Element на Form.io <https://help.form.io/userguide/forms/layout-components#html-element>`_
+`See detailed description of HTML Element on Form.io <https://help.form.io/userguide/forms/layout-components#html-element>`_
 
 
 File
@@ -292,34 +292,34 @@ File
 
 .. _File_:
 
-Компонент для загрузки файлов. 
+Component for file upload.
 
 .. image:: _static/File_Component.png
        :width: 400
        :align: center
 
-`См. подробное описание File на Form.io <https://help.form.io/userguide/forms/premium-components#file>`_ 
+`See detailed description of File on Form.io <https://help.form.io/userguide/forms/premium-components#file>`_
 
-:ref:`См. подробное описание File <file_component>` 
+:ref:`See detailed description of File <file_component>`
 
 
 Select Action
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
-Компонент для отображения список значений в раскрывающемся списке. Пользователи могут выбрать одно из значений.
+Component for displaying a list of values in a dropdown. Users can select one of the values.
 
 
-`См. подробное описание Select Action на Form.io <https://help.form.io/userguide/forms/form-components#select>`_ 
+`See detailed description of Select Action on Form.io <https://help.form.io/userguide/forms/form-components#select>`_
 
-Макет
+Layout
 -------
 
 Horizontal Line
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
-Компонент для отображения разделителя блоков.
+Component for displaying block separator.
 
-:ref:`См. подробное описание Horizontal Line<horizontal_line_component>` 
+:ref:`See detailed description of Horizontal Line<horizontal_line_component>`
 
 
 Columns
@@ -327,17 +327,17 @@ Columns
 
 .. _Columns_:
 
-Компонент, отвечающий за разделение формы на столбцы. Основан на стандартном formio-компоненте Columns, был модифицирован.
+Component responsible for dividing the form into columns. Based on the standard formio Columns component, has been modified.
 
 .. image:: _static/Columns_Component_1.png
        :width: 400
        :align: center
 
-`См. подробное описание Columns на Form.io <https://help.form.io/userguide/forms/layout-components#columns>`_ 
+`See detailed description of Columns on Form.io <https://help.form.io/userguide/forms/layout-components#columns>`_
 
-:ref:`См. подробное описание Columns<columns_component>` 
+:ref:`See detailed description of Columns<columns_component>`
 
-:ref:`См. пример Columns<sample_columns_component>` 
+:ref:`See Columns example<sample_columns_component>`
 
 
 Panel
@@ -345,17 +345,17 @@ Panel
 
 .. _Panel:
 
-Панель, в которую можно поместить свойство. Нужна для зонирования. В неё помещаются близкие по смыслу компоненты и им присваивается заголовок.
+Panel where a property can be placed. Needed for zoning. Components that are similar in meaning are placed in it and assigned a title.
 
 .. image:: _static/Panel_Component.png
        :width: 600
        :align: center
 
-`См. подробное описание Panel на Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_ 
+`See detailed description of Panel on Form.io <https://help.form.io/userguide/forms/layout-components#panel>`_
 
-:ref:`См. подробное описание Panel<panel_component>`
+:ref:`See detailed description of Panel<panel_component>`
 
-:ref:`См. пример Panel<sample_panel_component>` 
+:ref:`See Panel example<sample_panel_component>`
 
 
 Table
@@ -363,133 +363,129 @@ Table
 
 .. _Table:
 
-Компонент позволяет создать таблицу со столбцами и строками.
+Component allows creating a table with columns and rows.
 
 .. image:: _static/Table_Component.png
        :width: 600
        :align: center
 
-`См. подробное описание Table на Form.io <https://help.form.io/userguide/forms/layout-components#table>`_ 
+`See detailed description of Table on Form.io <https://help.form.io/userguide/forms/layout-components#table>`_
 
 Tabs
 ~~~~~
 
-Компонент твечает за вкладки на форме. Вкладка скрывается, когда на ней все компоненты скрыты, либо компонентов нет совсем.
+Component responsible for tabs on the form. A tab is hidden when all components on it are hidden, or there are no components at all.
 
-`См. подробное описание Tabs на Form.io <https://help.form.io/userguide/forms/layout-components#tabs>`_ 
+`See detailed description of Tabs on Form.io <https://help.form.io/userguide/forms/layout-components#tabs>`_
 
-Данные
---------		
+Data
+-----
 
-Скрытое поле
-~~~~~~~~~~~~~~
+Hidden field
+~~~~~~~~~~~~~
 
-Компонент можно добавить в форму, чтобы создать свойство ресурса, которое можно настроить в форме. Внешнего виджета для скрытых компонентов нет. Они не отображаются в визуализированных формах.
+Component can be added to a form to create a resource property that can be configured in the form. There is no external widget for hidden components. They are not displayed in visualized forms.
 
-`См. подробное описание Hidden на Form.io <https://help.form.io/userguide/forms/data-components#hidden>`_ 
+`See detailed description of Hidden on Form.io <https://help.form.io/userguide/forms/data-components#hidden>`_
 
 
 Async Data
 ~~~~~~~~~~~
 
-Невидимый компонент для загрузки асинхронных данных.
+Invisible component for loading asynchronous data.
 
 .. image:: _static/Async_Data_Component.png
        :width: 400
        :align: center
 
-:ref:`См. подробное описание Async Data<async_data_component>`
+:ref:`See detailed description of Async Data<async_data_component>`
 
-:ref:`См. пример Async Data<sample_async_data_component>` 
+:ref:`See Async Data example<sample_async_data_component>`
 
 
 Include Form
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
-Компонент для включения одной формы в другие.
+Component for including one form into others.
 
-В свойствах одно поле - **formRef** с выбором из журнала форм (ecos-forms).
+In properties, one field - **formRef** with selection from forms journal (ecos-forms).
 
-Внеший вид в билдере (как у компонента Hidden, но имя формируется по шаблону "Форма: имя_формы"). 
+External appearance in builder (like Hidden component, but name is formed by pattern "Form: form_name").
 
-Вариант на английском: Form: form_name
+English variant: Form: form_name
 
-где **form_name** и **имя_формы** - атрибут **"?disp"** выбраной формы. Если форма не выбрана, то пишется No form (Нет формы)
+where **form_name** is the **"?disp"** attribute of the selected form. If no form is selected, it writes No form.
 
-При отрисовке формы не в билдере компонент рисовать не нужно (на сервере он будет автоматически заменяться на все компоненты, которые есть в выбранной форме).
+When rendering a form not in the builder, the component should not be drawn (on the server it will be automatically replaced with all components that are in the selected form).
 
 .. image:: _static/Include_Form_Component.png
        :width: 600
        :align: center
 
-Контейнер
-~~~~~~~~~
+Container
+~~~~~~~~~~
 
-Оболочка для набора полей, аналогичная **Field Set**.
+Wrapper for a set of fields, similar to **Field Set**.
 
 .. image:: _static/Container_Component.png
        :width: 400
        :align: center
 
-Компонент управления отображением данных, основанный на использовании Bootstrap Grid. 
+Data display management component based on Bootstrap Grid usage.
 
-Система **Bootstrap Grid** нужна для разметки страницы, в частности, для создания адаптивных макетов.
+The **Bootstrap Grid** system is needed for page layout, particularly for creating responsive layouts.
 
-Фреймворк определяет 5 уровней адаптивности (брейкпоинтов), которые основаны на ширине области просмотра:
+The framework defines 5 responsiveness levels (breakpoints) that are based on viewport width:
 
- * **xs** — extra small, супермаленький — ширина < 576px (это уровень по умолчанию);
- * **sm** — small, маленький — ширина ≥ 576px;
- * **md** — medium, средний — ширина ≥ 768px;
- * **lg** — large, большой — ширина ≥ 992px;
- * **xl** — extra large, супербольшой — ширина ≥ 1200px.
+ * **xs** — extra small — width < 576px (this is the default level);
+ * **sm** — small — width ≥ 576px;
+ * **md** — medium — width ≥ 768px;
+ * **lg** — large — width ≥ 992px;
+ * **xl** — extra large — width ≥ 1200px.
 
-Сетка состоит из групп рядов и колонок, расположенных внутри одного или нескольких контейнеров.
+The grid consists of groups of rows and columns located within one or more containers.
 
-Основные правила сетки в Bootstrap:
+Basic grid rules in Bootstrap:
 
-* колонки находятся строго внутри ряда на первом уровне вложенности;
-* ряды нужны только для размещения колонок;
-* ряды должны располагаться внутри контейнера.
+* columns are strictly inside a row at the first nesting level;
+* rows are only needed for placing columns;
+* rows must be located inside a container.
 
-Ряды и колонки всегда работают вместе,  их нельзя разделять.
+Rows and columns always work together, they cannot be separated.
 
-Элемент с классом **.container** является корневым блоком сетки в Bootstrap, то есть располагается на внешнем уровне. Контейнер подходит для хранения любых элементов, а не только рядов и колонок.
+An element with the **.container** class is the root block of the grid in Bootstrap, meaning it is located at the outer level. The container is suitable for storing any elements, not just rows and columns.
 
-Внутри ряда должны находиться только колонки, а контент – уже внутри них.
+Only columns should be inside a row, and content should be inside them.
 
-Колонки нужны для разделения области просмотра по горизонтали, при этом в одном ряду могут быть столбцы разной ширины. 
+Columns are needed for dividing the viewport horizontally, while in one row there can be columns of different widths.
 
-Классическая Bootstrap-сетка состоит из 12 колонок. 
+The classic Bootstrap grid consists of 12 columns.
 
-В большинстве случаев, не требуется использование всех, их можно объединять по мере надобности. Представьте, что вся область просмотра разделена на 12 равных частей – единиц ширины. В одной колонке может быть от 1 до 12 таких единиц.
+In most cases, using all of them is not required; they can be combined as needed. Imagine that the entire viewport is divided into 12 equal parts - width units. One column can contain from 1 to 12 such units.
 
-`См. подробное описание Bootstrap Grid system <https://getbootstrap.com/docs/4.0/layout/grid/>`_ 
+`See detailed description of Bootstrap Grid system <https://getbootstrap.com/docs/4.0/layout/grid/>`_
 
-`См. подробное описание Container на Form.io <https://help.form.io/userguide/forms/data-components#container>`_ 
+`See detailed description of Container on Form.io <https://help.form.io/userguide/forms/data-components#container>`_
 
 Data Grid
 ~~~~~~~~~~
 
-Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.
+Data display management component that extracts information from a collection of objects and visualizes it in a grid with rows and cells. Each row corresponds to a separate object, and each column corresponds to a property in that object.
 
 .. image:: _static/Data_Grid_Component.png
        :width: 600
        :align: center
 
-`См. подробное описание Data Grid на Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_ 
+`See detailed description of Data Grid on Form.io <https://help.form.io/userguide/forms/data-components#data-grid>`_
 
 Data Grid Assoc
 ~~~~~~~~~~~~~~~~
 
-Компонент управления отображением данных.
+Data display management component.
 
 Data Map
 ~~~~~~~~~
 
-Компонент позволяет пользователям создавать пары ключ/значение.
+Component allows users to create key/value pairs.
 
-`См. подробное описание Data Map на Form.io <https://help.form.io/userguide/forms/data-components#data-map>`_ 
-
-
-
-
+`See detailed description of Data Map on Form.io <https://help.form.io/userguide/forms/data-components#data-map>`_

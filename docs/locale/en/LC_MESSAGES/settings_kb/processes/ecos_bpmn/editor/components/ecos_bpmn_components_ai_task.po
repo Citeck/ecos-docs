@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19 00:02+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:2
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:4
 msgid "AI задача"
 msgstr "AI Task"
 
@@ -27,22 +26,22 @@ msgstr "AI Task"
 msgid "Содержание"
 msgstr "Contents"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:13
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:12
 msgid ""
-"Задача, которая отвечает за вызов AI по указанному промпту, и далее в "
-"зависимости от бизнес-требований можно делать все, что позволяет делать "
-"BPMN: отправлять задачи, уведомления, генерировать документы и так далее."
+"Задача, которая отвечает за вызов AI по указанному промпту. В зависимости"
+" от бизнес-требований можно делать всё, что позволяет BPMN: отправлять "
+"задачи, уведомления, генерировать документы и т.д."
 msgstr ""
 "A task responsible for calling an AI based on a specified prompt. "
 "Subsequently, depending on business requirements, it can perform any "
 "action BPMN allows: send tasks, notifications, generate documents, and so"
 " on."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:21
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:19
 msgid "Атрибуты и форма"
 msgstr "Attributes and Form"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:28
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:26
 msgid "Укажите **Имя**."
 msgstr "Specify **Name**."
 
@@ -101,9 +100,18 @@ msgid "Промпт, отправляемый AI."
 msgstr "The prompt sent to the AI."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
-#, python-brace-format
-msgid "Можно вставлять переменные процесса через ``${someVariable}``."
+msgid "Можно вставлять переменные через ``${someVariable}``."
 msgstr "Process variables can be inserted using ``${someVariable}``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
+msgid ""
+"Переменные разрешаются в следующем порядке: сначала ищутся в переменных "
+"процесса (execution variables), затем, если не найдены, загружаются из "
+"атрибутов документа через RecordsService."
+msgstr ""
+"Variables are resolved in the following order: first they are looked up in "
+"process variables (execution variables), then, if not found, they are loaded "
+"from the document attributes via RecordsService."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
 msgid "Пример:"
@@ -132,7 +140,7 @@ msgstr "**Save Result to Document Attribute**"
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
 msgid ""
 "AI-ответ будет записан в указанный атрибут документа, по которому идет "
-"бизнес процесс."
+"бизнес-процесс."
 msgstr ""
 "The AI response will be written to the specified attribute of the "
 "document associated with the business process."
@@ -142,7 +150,7 @@ msgid "JavaScript, выполняемый после получения отве
 msgstr "JavaScript executed after receiving the response from the AI."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
-msgid "Результат запроса доступен в переменной aiResponse."
+msgid "Результат запроса доступен в переменной ``aiResponse``."
 msgstr "The request result is available in the variable aiResponse."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
@@ -151,9 +159,9 @@ msgstr "Asynchrony Settings:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
 msgid ""
-"- **Асинхронно \"перед\"**- исполнение доходит до точки перед блоком, "
+"- **Асинхронно \"перед\"** — исполнение доходит до точки перед блоком, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
-"разбирает уже джоба"
+"разбирает уже джоба."
 msgstr ""
 "- **Asynchronous \"before\"** - execution reaches the point before the "
 "block, the transaction is committed, and further execution is queued to "
@@ -161,9 +169,9 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
 msgid ""
-"- **Асинхронно \"после\"** - исполнение доходит до точки после блока, "
+"- **Асинхронно \"после\"** — исполнение доходит до точки после блока, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
-"разбирает уже джоба"
+"разбирает уже джоба."
 msgstr ""
 "- **Asynchronous \"after\"** - execution reaches the point after the "
 "block, the transaction is committed, and further execution is queued to "
@@ -172,24 +180,24 @@ msgstr ""
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst
 msgid ""
 "См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07"
-"/advanced-asynchronous-continuations/>`_"
+"/advanced-asynchronous-continuations/>`_."
 msgstr ""
 "See more about `asynchronous tasks <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:100
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:99
 msgid "Примеры использования"
 msgstr "Usage Examples"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:102
-msgid "Рассмотрим 2 примера, встраивания AI задачи в бизнес процессы."
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:101
+msgid "Рассмотрим 2 примера встраивания AI-задачи в бизнес-процессы."
 msgstr "Let's consider 2 examples of embedding an AI task into business processes."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:104
 msgid "Сравнение версий договоров"
 msgstr "Comparing Contract Versions"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:107
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:106
 msgid ""
 "В модуле «Договоры» сотрудники могут загружать разные версии договоров, "
 "вносить правки в процессе согласования."
@@ -197,7 +205,7 @@ msgstr ""
 "In the 'Contracts' module, employees can upload different contract "
 "versions and make edits during the approval process."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:109
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:108
 msgid ""
 "Рассмотрим небольшой :download:`бизнес-процесс <../files/contract-"
 "content-diff-ai-process.bpmn.xml>`, который реагирует на изменение "
@@ -208,21 +216,21 @@ msgstr ""
 "diff-ai-process.bpmn.xml>` that reacts to changes in contract content and"
 " adds a comment to the contract card listing key changes and conclusions."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:115
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:114
 msgid ""
-"Настроен :ref:`сигнал<signal_start_event>` на изменение контента, далее "
+"Настроен :ref:`сигнал <signal_start_event>` на изменение контента, далее "
 "запускается AI задача, которую мы спрашиваем в поле **«Текст запроса»**, "
-"как и в работе с :ref:`AI ассистентом<AI_assistant>`, какие были "
+"как и в работе с :ref:`AI ассистентом <AI_assistant>`, какие были "
 "последние изменения содержания договора, и просим, чтобы ответ был выдан "
 "в виде HTML формате."
 msgstr ""
-"A :ref:`signal<signal_start_event>` is configured for content changes, "
+"A :ref:`signal <signal_start_event>` is configured for content changes, "
 "then an AI task is launched. In the **\"Request Text\"** field, we ask, "
-"similar to working with the :ref:`AI assistant<AI_assistant>`, what the "
+"similar to working with the :ref:`AI assistant <AI_assistant>`, what the "
 "latest changes to the contract content were, and request the response in "
 "HTML format."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:117
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:116
 msgid ""
 "В поле **«Скрипт»** создадим комментарий к договору, в котором будут "
 "перечислены изменения:"
@@ -230,7 +238,7 @@ msgstr ""
 "In the **\"Script\"** field, we will create a comment for the contract "
 "listing the changes:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:128
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:127
 msgid ""
 "В карточку договора будет добавлен комментарий, в котором указаны "
 "ключевые изменения и выводы:"
@@ -238,11 +246,11 @@ msgstr ""
 "A comment will be added to the contract card listing key changes and "
 "conclusions:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:135
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:134
 msgid "Автоматическая генерация текста в коммерческом предложении"
 msgstr "Automatic Text Generation in a Commercial Proposal"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:137
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:136
 msgid ""
 "В модуле CRM можно сделать автоматическую генерацию текста в коммерческом"
 " предложении. :download:`Скачать процесс <../files/crm-deal-ai-"
@@ -252,22 +260,23 @@ msgstr ""
 " be implemented. :download:`Download process <../files/crm-deal-ai-"
 "process.bpmn.xml>`"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:143
-#, fuzzy
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:142
 msgid ""
-"Когда сделка переходит статус «Подготовка коммерческого предложения», "
-"запускается AI задачаа, которая заполняет контекстные данные, то есть в "
-"предобработке мы вытаскиваем наименование клиента, юридического лица и "
-"список продуктов и услуг и используем эти данные далее в промпте. После "
-"этого запускается :ref:`скриптовая задача<script_task>`, которая "
-"сформирует шаблон по коммерческому предложению."
+"Когда сделка переходит в статус «Подготовка коммерческого предложения», "
+"запускается AI задача, которая заполняет контекстные данные: в "
+"предобработке вытаскиваем наименование клиента, юридического лица и "
+"список продуктов и услуг и используем эти данные далее в промпте."
 msgstr ""
 "When a deal transitions to the 'Commercial Proposal Preparation' status, "
 "an AI task is launched that populates contextual data. In the "
 "preprocessing stage, we extract the client's name, legal entity, and list"
-" of products and services, and use this data further in the prompt. After"
-" this, a :ref:`script task<script_task>` is launched, which will form the"
-" commercial proposal template."
+" of products and services, and use this data further in the prompt."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:144
+msgid ""
+"После этого запускается :ref:`скриптовая задача <script_task>`, которая сформирует шаблон по коммерческому предложению."
+msgstr ""
+"After this, a :ref:`script task <script_task>` is launched, which will generate the commercial proposal template."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_ai_task.rst:146
 msgid ""

@@ -1,13 +1,13 @@
 .. _form_components:
 
-Компоненты формы
+Form Components
 ================
 
-Раздел описывает компоненты, доступные в редакторе форм платформы Citeck: их назначение, настройки и особенности использования.
+This section describes the components available in the Citeck platform form editor: their purpose, settings, and usage specifics.
 
-- :ref:`Общее описание компонентов <form_components_overview>` — обзор всех компонентов, сгруппированных по категориям (Основные, Расширенные, Макет, Данные), с краткими описаниями и ссылками на документацию Form.io;
-- :ref:`Подробное описание отдельных компонент <form_components_detailed>` — детальное описание компонентов с уникальной функциональностью платформы Citeck: специфические настройки, источники данных, примеры;
-- :ref:`Настройка компонента <manual_override>` — описание общих настроек, применимых к компонентам форм.
+- :ref:`General component overview <form_components_overview>` — an overview of all components grouped by category (Basic, Advanced, Layout, Data), with brief descriptions and links to Form.io documentation;
+- :ref:`Detailed description of individual components <form_components_detailed>` — a detailed description of components with unique Citeck platform functionality: specific settings, data sources, examples;
+- :ref:`Component configuration <manual_override>` — description of general settings applicable to form components.
 
 .. toctree::
     :maxdepth: 3

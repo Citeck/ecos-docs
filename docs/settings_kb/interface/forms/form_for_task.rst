@@ -1,56 +1,56 @@
 
-Связь формы с задачей
-=====================
+Linking a form to a task
+========================
 
 .. _form_to_task:
 
-Завершение задачи (outcome)
+Completing a task (outcome)
 ---------------------------
 
-Для кнопок, которые должны завершать задачу, следует указывать свойство **Имя свойства/Property Name** по следующему формату: 
+For buttons that should complete a task, the **Property Name** property should be specified in the following format:
 
 ``outcome_******``
 
- где ``******`` - результат выполнения задачи.
+ where ``******`` is the task execution result.
 
  .. image:: _static/for_task/for_task_3.png
        :width: 500
        :align: center
 
-В процессе можно добавлять **exclusive gateway** с несколькими выходами по условию нажатой кнопки.
+In the process, you can add an **exclusive gateway** with multiple exits based on the condition of the pressed button.
 
-Для проверки нажатой кнопки следует проверить переменную ``form_{{FORM_KEY}}_outcome`` или ``outcome``. Например:
+To check which button was pressed, you should check the variable ``form_{{FORM_KEY}}_outcome`` or ``outcome``. For example:
 
 .. code-block::
 
     form_testkey_outcome == 'Rework'
 
-Атрибуты задачи
+Task attributes
 ------------------
 
-Для атрибута **"комментарий"** свойство **Имя свойства/Property Name (warning)** должно быть **comment**. 
+For the **"comment"** attribute, the **Property Name (warning)** property should be **comment**.
 
-Для миграции существующих форм, где ключ отличается, следует сделать невидимое поле с нужным ключом, которое будет копировать значение из поля **comment**.  
+To migrate existing forms where the key is different, you should create an invisible field with the required key that will copy the value from the **comment** field.
 
-Для атрибутов, которые должны загружаться из привязанного к задаче документа, следует указывать префикс **_ECM_**. 
+For attributes that should be loaded from the document linked to the task, the prefix **_ECM_** should be specified.
 
-Пример: 
+Example:
 
 .. code-block::
 
     _ECM_title
 
-Все атрибуты, которые хранятся непосредственно в задаче, доступны по прямому имени без преобразований.
+All attributes that are stored directly in the task are available by their direct name without transformations.
 
-Вид формы задачи
-------------------
+Task form appearance
+--------------------
 
-1. Кнопки должны располагаться с левого края под полем комментария. 
-2. Кнопки, несущие отрицательный характер, должны быть всегда слева от кнопок, несущих положительный характер. 
-3. Если кнопок 3, то располагать в соответствии со смыслом: от отрицательного к положительному решению. 
-4. По ширине кнопки и отступы между кнопками не должны быть слишком большими.
+1. Buttons should be located at the left edge below the comment field.
+2. Buttons with a negative connotation should always be to the left of buttons with a positive connotation.
+3. If there are 3 buttons, arrange them according to their meaning: from negative to positive decision.
+4. The width of buttons and the spacing between them should not be too large.
 
-Примеры:
+Examples:
 
  .. image:: _static/for_task/for_task_4.png
        :width: 600

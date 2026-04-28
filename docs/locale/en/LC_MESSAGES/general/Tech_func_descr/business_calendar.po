@@ -1,0 +1,565 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:4
+#: ../../general/Tech_func_descr/business_calendar.rst:123
+msgid "Рабочее расписание"
+msgstr "Working Schedule"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:8
+msgid ""
+"Для использования рабочего расписания необходимо наличие лицензии "
+"\"features.working-schedule\""
+msgstr ""
+"Using the working schedule requires the \"features.working-schedule\" "
+"license"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:10
+msgid ""
+"Без наличия лицензии рабочее расписание при расчетах будет учитывать "
+"только обычные выходные дни без учета производственного календаря."
+msgstr ""
+"Without a license, the working schedule will only account for regular "
+"weekends in calculations, without considering the production calendar."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:12
+msgid ""
+"**Рабочее расписание** и **производственный календарь** — два "
+"взаимосвязанных инструмента для управления рабочим временем в системе."
+msgstr ""
+"**Working schedule** and **production calendar** are two interrelated tools "
+"for managing working time in the system."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:14
+msgid ""
+"**Производственный календарь** фиксирует нерабочие, праздничные и "
+"сокращённые дни — то, что отклоняется от стандартного графика."
+msgstr ""
+"**Production calendar** records non-working days, public holidays, and "
+"shortened days — anything that deviates from the standard schedule."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:15
+msgid ""
+"**Рабочее расписание** определяет обычный распорядок рабочих дней: "
+"рабочие дни недели, время начала и окончания, часовой пояс и привязанный "
+"производственный календарь."
+msgstr ""
+"**Working schedule** defines the standard working day routine: working days "
+"of the week, start and end times, time zone, and the associated production "
+"calendar."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:17
+msgid ""
+"Совместно они позволяют гибко настраивать рабочий график сотрудников и "
+"используются в различных модулях системы — например, для расчёта SLA в "
+"модуле «Service Desk»."
+msgstr ""
+"Together they enable flexible configuration of employee work schedules and "
+"are used across various system modules — for example, to calculate SLA in "
+"the Service Desk module."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:20
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:22
+msgid "Рабочее расписание используется для четырех видов операций:"
+msgstr "The working schedule is used for four types of operations:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:24
+msgid "Добавить рабочее время к определенной дате и времени."
+msgstr "Add working time to a specific date and time."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:25
+msgid "Добавить рабочие дни к определенной дате."
+msgstr "Add working days to a specific date."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:26
+msgid "Рассчитать количество рабочих дней между двумя датами."
+msgstr "Calculate the number of working days between two dates."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:27
+msgid "Рассчитать количество рабочих дней между двумя датами с временем."
+msgstr "Calculate the number of working days between two dates with time."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:30
+msgid "Привязка рабочего расписания к пользователю или группе"
+msgstr "Linking a Working Schedule to a User or Group"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:32
+msgid ""
+"Для привязки рабочего расписания к пользователю или группе нужно создать "
+"ассоциацию ``has-working-schedule:schedule``"
+msgstr ""
+"To link a working schedule to a user or group, create the "
+"``has-working-schedule:schedule`` association"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:35
+msgid "Часовые пояса"
+msgstr "Time Zones"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:37
+msgid ""
+"При расчетах на основе рабочего расписания используется следующая логика "
+"при обработке часовых поясов:"
+msgstr ""
+"The following logic is used when handling time zones in working schedule "
+"calculations:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:39
+msgid ""
+"Если мы делаем расчеты с учетом рабочего времени, то есть следующие "
+"варианты:"
+msgstr ""
+"When performing calculations that account for working hours, the following "
+"cases apply:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:41
+msgid ""
+"В дате часовой пояс не указан — используется часовой пояс из рабочего "
+"расписания, результат не будет содержать часовой пояс."
+msgstr ""
+"No time zone specified in the date — the time zone from the working schedule "
+"is used, and the result will not contain a time zone."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:42
+msgid ""
+"В дате часовой пояс указан — дата/время, которые получает сервис, он "
+"переводит в часовой пояс рабочего расписания. После выполнения всех "
+"операций результат переводится в исходный часовой пояс."
+msgstr ""
+"Time zone specified in the date — the service converts the received "
+"date/time to the working schedule's time zone. After all operations are "
+"performed, the result is converted back to the original time zone."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:45
+msgid "Настройка рабочего расписания"
+msgstr "Working Schedule Configuration"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:47
+msgid ""
+"В системе предусмотрены 2 сущности для настройки работы рабочего "
+"расписания."
+msgstr "The system provides 2 entities for configuring the working schedule."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:50
+msgid "Производственный календарь"
+msgstr "Production Calendar"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:52
+msgid ""
+"Сущность нужна для формирования списка дат, которые изменяют обычный "
+"распорядок рабочих дней."
+msgstr ""
+"This entity is used to form a list of dates that modify the standard "
+"working day routine."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:54
+msgid ""
+"Журнал **\"Производственный календарь\" (Рабочее пространство \"Раздел "
+"администратора\" - Модель)** доступен по адресу: ``v2/journals?journalId"
+"=working-calendar&viewMode=table&ws=admin$workspace``"
+msgstr ""
+"The **\"Production Calendar\" journal (Workspace \"Admin Section\" - Model)**"
+" is available at: ``v2/journals?journalId=working-calendar&viewMode=table"
+"&ws=admin$workspace``"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:66
+#: ../../general/Tech_func_descr/business_calendar.rst:139
+msgid "Атрибуты:"
+msgstr "Attributes:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:72
+#: ../../general/Tech_func_descr/business_calendar.rst:100
+#: ../../general/Tech_func_descr/business_calendar.rst:146
+#: ../../general/Tech_func_descr/business_calendar.rst:169
+#: ../../general/Tech_func_descr/business_calendar.rst:417
+msgid "ID"
+msgstr "ID"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:73
+#: ../../general/Tech_func_descr/business_calendar.rst:101
+#: ../../general/Tech_func_descr/business_calendar.rst:147
+#: ../../general/Tech_func_descr/business_calendar.rst:170
+#: ../../general/Tech_func_descr/business_calendar.rst:418
+msgid "Тип"
+msgstr "Type"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:74
+#: ../../general/Tech_func_descr/business_calendar.rst:102
+#: ../../general/Tech_func_descr/business_calendar.rst:148
+#: ../../general/Tech_func_descr/business_calendar.rst:171
+#: ../../general/Tech_func_descr/business_calendar.rst:419
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:75
+#: ../../general/Tech_func_descr/business_calendar.rst:149
+msgid "id"
+msgstr "id"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:76
+#: ../../general/Tech_func_descr/business_calendar.rst:110
+#: ../../general/Tech_func_descr/business_calendar.rst:150
+#: ../../general/Tech_func_descr/business_calendar.rst:156
+#: ../../general/Tech_func_descr/business_calendar.rst:421
+#: ../../general/Tech_func_descr/business_calendar.rst:425
+#: ../../general/Tech_func_descr/business_calendar.rst:429
+msgid "String"
+msgstr "String"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:77
+#: ../../general/Tech_func_descr/business_calendar.rst:151
+msgid "Идентификатор"
+msgstr "Identifier"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:78
+msgid "extensionFor"
+msgstr "extensionFor"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:79
+#: ../../general/Tech_func_descr/business_calendar.rst:185
+msgid "EntityRef"
+msgstr "EntityRef"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:80
+msgid "Ссылка на календарь, который мы расширяем своей конфигурацией"
+msgstr "Reference to the calendar that is extended by this configuration"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:81
+msgid "from"
+msgstr "from"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:82
+#: ../../general/Tech_func_descr/business_calendar.rst:85
+#: ../../general/Tech_func_descr/business_calendar.rst:104
+#: ../../general/Tech_func_descr/business_calendar.rst:107
+msgid "LocalDate"
+msgstr "LocalDate"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:83
+msgid "Дата начала действия календаря"
+msgstr "Calendar start date"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:84
+#: ../../general/Tech_func_descr/business_calendar.rst:106
+msgid "until"
+msgstr "until"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:86
+msgid "Дата окончания действия календаря"
+msgstr "Calendar end date"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:87
+msgid "enabled"
+msgstr "enabled"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:88
+msgid "Boolean"
+msgstr "Boolean"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:89
+msgid "Активен ли календарь"
+msgstr "Whether the calendar is active"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:90
+msgid "dates"
+msgstr "dates"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:91
+msgid "List<WorkingCalendarDay>"
+msgstr "List<WorkingCalendarDay>"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:92
+msgid "Список дней календаря"
+msgstr "List of calendar days"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:94
+msgid "**WorkingCalendarDay** содержит следующие поля:"
+msgstr "**WorkingCalendarDay** contains the following fields:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:103
+msgid "date"
+msgstr "date"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:105
+msgid "Конкретная дата или дата начала диапазона если задано значение until"
+msgstr "A specific date or the start date of a range if the until value is set"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:108
+msgid "Дата окончания диапазона (включительно)"
+msgstr "End date of the range (inclusive)"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:109
+#: ../../general/Tech_func_descr/business_calendar.rst:155
+msgid "type"
+msgstr "type"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Тип даты или всех дат в диапазоне"
+msgstr "Type of the date or all dates in the range"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Допустимые типы:"
+msgstr "Allowed types:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid ""
+"WORKING — рабочий день. Имеет смысл указывать, когда выходной день "
+"становится рабочим"
+msgstr ""
+"WORKING — working day. Applicable when a day off becomes a working day"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "HOLIDAY — праздник"
+msgstr "HOLIDAY — public holiday"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "SHORTDAY — сокращенный на 1ч рабочий день"
+msgstr "SHORTDAY — working day shortened by 1 hour"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "WEEKEND — выходной"
+msgstr "WEEKEND — day off"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "NON_WORKING — не рабочий день"
+msgstr "NON_WORKING — non-working day"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:118
+msgid "description"
+msgstr "description"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:119
+#: ../../general/Tech_func_descr/business_calendar.rst:153
+msgid "MLText"
+msgstr "MLText"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:120
+msgid "Описание дня или диапазона"
+msgstr "Description of the day or range"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:125
+msgid "Определяет обычный распорядок рабочих дней."
+msgstr "Defines the standard working day routine."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:127
+msgid ""
+"Журнал **\"Рабочее расписание\" (Рабочее пространство \"Раздел "
+"администратора\" - Модель)** доступен по адресу: "
+"``v2/journals?journalId=type$working-"
+"schedule&viewMode=table&ws=admin$workspace``"
+msgstr ""
+"The **\"Working Schedule\" journal (Workspace \"Admin Section\" - Model)** "
+"is available at: ``v2/journals?journalId=type$working-schedule&viewMode="
+"table&ws=admin$workspace``"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:152
+msgid "name"
+msgstr "name"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:154
+msgid "Имя расписания"
+msgstr "Schedule name"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:157
+msgid "Тип расписания. Сейчас поддерживается только weekly"
+msgstr "Schedule type. Currently only weekly is supported"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:158
+msgid "config"
+msgstr "config"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:159
+msgid "ObjectData"
+msgstr "ObjectData"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:160
+msgid "Конфигурация для типа расписания"
+msgstr "Configuration for the schedule type"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:162
+msgid "Конфигурация расписания для типа weekly:"
+msgstr "Schedule configuration for the weekly type:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:172
+msgid "workingDayStart"
+msgstr "workingDayStart"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:173
+#: ../../general/Tech_func_descr/business_calendar.rst:176
+msgid "LocalTime"
+msgstr "LocalTime"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:174
+msgid "Начало рабочего дня"
+msgstr "Start of the working day"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:175
+msgid "workingDayEnd"
+msgstr "workingDayEnd"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:177
+msgid "Завершение рабочего дня"
+msgstr "End of the working day"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:178
+msgid "workingDayTimeZone"
+msgstr "workingDayTimeZone"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:179
+msgid "ZoneId"
+msgstr "ZoneId"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:180
+msgid "Часовой пояс рабочего дня"
+msgstr "Working day time zone"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:181
+msgid "workingDays"
+msgstr "workingDays"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:182
+msgid "List<DayOfWeek>"
+msgstr "List<DayOfWeek>"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:183
+msgid "Список рабочих дней"
+msgstr "List of working days"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:184
+msgid "workingCalendar"
+msgstr "workingCalendar"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:186
+msgid "Ссылка на производственный календарь"
+msgstr "Reference to the production calendar"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:189
+msgid "Использование сервиса WorkingScheduleService в java/kotlin коде"
+msgstr "Using WorkingScheduleService in Java/Kotlin Code"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:191
+msgid ""
+"Добавляем сервис "
+"``ru.citeck.ecos.wkgsch.lib.schedule.WorkingScheduleService`` как spring "
+"бин."
+msgstr ""
+"Add the ``ru.citeck.ecos.wkgsch.lib.schedule.WorkingScheduleService`` "
+"service as a Spring bean."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:193
+msgid "Получаем рабочее расписание используя один из методов для поиска:"
+msgstr "Retrieve the working schedule using one of the lookup methods:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:202
+msgid ""
+"Используя методы интерфейса "
+"``ru.citeck.ecos.wkgsch.lib.schedule.WorkingSchedule`` производим "
+"вычисления даты и/или времени в зависимости от рабочего расписания:"
+msgstr ""
+"Using the methods of the "
+"``ru.citeck.ecos.wkgsch.lib.schedule.WorkingSchedule`` interface, perform "
+"date and/or time calculations based on the working schedule:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:256
+msgid "Records API в браузере и при использовании в BPMN процессе"
+msgstr "Records API in the Browser and in BPMN Processes"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:259
+msgid "Добавить рабочее время"
+msgstr "Add Working Time"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:263
+#: ../../general/Tech_func_descr/business_calendar.rst:302
+#: ../../general/Tech_func_descr/business_calendar.rst:340
+#: ../../general/Tech_func_descr/business_calendar.rst:378
+msgid "В браузере"
+msgstr "In the browser"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:277
+#: ../../general/Tech_func_descr/business_calendar.rst:315
+#: ../../general/Tech_func_descr/business_calendar.rst:353
+#: ../../general/Tech_func_descr/business_calendar.rst:391
+msgid "В BPMN процессе"
+msgstr "In a BPMN process"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:291
+#: ../../general/Tech_func_descr/business_calendar.rst:329
+#: ../../general/Tech_func_descr/business_calendar.rst:367
+#: ../../general/Tech_func_descr/business_calendar.rst:404
+msgid "Результат:"
+msgstr "Result:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:298
+msgid "Добавить рабочие дни"
+msgstr "Add Working Days"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:336
+msgid "Рассчитать количество рабочих дней между двумя датами"
+msgstr "Calculate the Number of Working Days Between Two Dates"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:374
+msgid "Рассчитать количество рабочих дней между двумя датами с временем"
+msgstr "Calculate the Number of Working Days Between Two Dates with Time"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:410
+msgid "Во всех запросах есть поле ``query``, которое может иметь следующие поля:"
+msgstr "All requests have a ``query`` field that may contain the following fields:"
+
+#: ../../general/Tech_func_descr/business_calendar.rst:420
+msgid "user"
+msgstr "user"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Пользователь, для которого нам нужно найти рабочее расписание."
+msgstr "The user for whom the working schedule needs to be found."
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Если расписание для пользователя не найдено, то берется DEFAULT."
+msgstr "If no schedule is found for the user, DEFAULT is used."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:424
+msgid "group"
+msgstr "group"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Группа, для которой нам нужно найти рабочее расписание."
+msgstr "The group for which the working schedule needs to be found."
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Если расписание для группы не найдено, то берется DEFAULT."
+msgstr "If no schedule is found for the group, DEFAULT is used."
+
+#: ../../general/Tech_func_descr/business_calendar.rst:428
+msgid "scheduleId"
+msgstr "scheduleId"
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Идентификатор конкретного рабочего расписания."
+msgstr "The identifier of a specific working schedule."
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Если задан, то user и group игнорируются."
+msgstr "If set, user and group are ignored."
+
+#: ../../general/Tech_func_descr/business_calendar.rst
+msgid "Примеры идентификатора: 'DEFAULT', \"some-id\""
+msgstr "Identifier examples: 'DEFAULT', \"some-id\""

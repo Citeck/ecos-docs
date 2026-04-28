@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19 00:02+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,8 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../case_sample/equipment_request_p2.rst:2
-msgid "Процесс заявки на закупку оборудования. Включение DMN в процесс"
+#: ../../case_sample/equipment_request_p2.rst:4
+msgid ""
+"Расширение процесса заявки на закупку оборудования: включение DMN в "
+"процесс"
 msgstr "Equipment Purchase Request Process. Integrating DMN into the Process"
 
 #: ../../case_sample/equipment_request_p2.rst:7
@@ -29,18 +30,18 @@ msgstr "Contents"
 
 #: ../../case_sample/equipment_request_p2.rst:11
 msgid ""
-"Данная статья является продолжением работы с созданным ранее "
-"бизнес-процессом :ref:`Заявка на закупку оборудования<sample_request>`."
+"Данная статья является продолжением :ref:`Заявки на закупку "
+"оборудования<sample_request>`."
 msgstr ""
 "This article continues working with the previously created business "
 "process :ref:`Equipment Purchase Request<sample_request>`."
 
 #: ../../case_sample/equipment_request_p2.rst:13
 msgid ""
-"Если вы продолжаете по статье :ref:`Процесс заявки на закупку "
-"оборудования. Добавление справочника. Журнал и форма не по "
-"умолчанию<sample_request_complicated>`, то удалите **Script task "
-"«Сохранение комментария»**."
+"Если вы следуете статье :ref:`Процесс заявки на закупку оборудования. "
+"Добавление справочника. Журнал и форма не по "
+"умолчанию<sample_request_complicated>`, удалите **Script task «Сохранение"
+" комментария»** перед началом."
 msgstr ""
 "If you are continuing from the article :ref:`Equipment Purchase Request "
 "Process. Adding a Directory. Non-default Journal and "
@@ -49,772 +50,774 @@ msgstr ""
 
 #: ../../case_sample/equipment_request_p2.rst:15
 msgid ""
-"Закупку оборудования всегда согласовывают, и если заявка по каким-то "
-"критериям не проходит – отклоняют."
+"Для работы в локальном рабочем пространстве перейдите в "
+"**Администрирование → Модели DMN** и нажмите **+ — Создать DMN модель**."
 msgstr ""
-"Equipment purchases are always approved, and if a request fails certain "
-"criteria – it is rejected."
+"In the local workspace, go to **Administration → DMN Models** and click "
+"**+ — Create DMN Model**."
 
 #: ../../case_sample/equipment_request_p2.rst:17
 msgid ""
-"В зависимости от условий согласование/отказ в покупке некоторых видов "
-"оборудования можно автоматизировать. Для рассмотрения данного варианта "
-"подходит использование DMN, а в частности :ref:`таблицы принятия "
-"решений<dmn_decision>`"
+"Закупку оборудования всегда согласовывают: если заявка не соответствует "
+"установленным критериям — её отклоняют. Часть таких решений можно "
+"автоматизировать с помощью :ref:`таблицы принятия решений<dmn_decision>` "
+"(DMN)."
 msgstr ""
-"Depending on the conditions, the approval/rejection of purchasing certain"
-" types of equipment can be automated. Using DMN, specifically a "
-":ref:`decision table<dmn_decision>`, is suitable for this scenario."
+"Equipment purchases always require approval: if a request does not meet "
+"the established criteria, it is rejected. Some of these decisions can be "
+"automated using a :ref:`decision table<dmn_decision>` (DMN)."
 
 #: ../../case_sample/equipment_request_p2.rst:19
-#, fuzzy
 msgid ""
-"DMN служит для сортировки входящих данных процесса или уменьшения их "
-"количества."
-msgstr "DMN is used for sorting incoming process data or reducing its volume."
-
-#: ../../case_sample/equipment_request_p2.rst:21
-msgid ""
-"Данная функциональность, основываясь на входящих данных, помогает принять"
-" конечные или промежуточные решения по бизнес-процессу."
+"DMN обрабатывает входящие данные процесса и на их основе принимает "
+"конечные или промежуточные бизнес-решения."
 msgstr ""
-"This functionality, based on incoming data, helps make final or "
-"intermediate decisions for the business process."
+"DMN processes incoming process data and uses it to make final or "
+"intermediate business decisions."
 
-#: ../../case_sample/equipment_request_p2.rst:23
-msgid "Для начала работы необходимо создать саму таблицу."
-msgstr "To get started, you need to create the table itself."
-
-#: ../../case_sample/equipment_request_p2.rst:26
+#: ../../case_sample/equipment_request_p2.rst:22
 msgid "Создание таблицы принятия решений"
 msgstr "Creating a Decision Table"
 
-#: ../../case_sample/equipment_request_p2.rst:28
+#: ../../case_sample/equipment_request_p2.rst:24
 msgid ""
-"Для таблицы требуется определить критерии, по которым будет приниматься "
-"решение. Основные критерии - наименование оборудования и его стоимость."
+"Для таблицы необходимо определить критерии принятия решения. Основные "
+"критерии — наименование оборудования и его стоимость."
 msgstr ""
 "For the table, you need to define the criteria based on which the "
 "decision will be made. The main criteria are the equipment name and its "
 "cost."
 
-#: ../../case_sample/equipment_request_p2.rst:30
+#: ../../case_sample/equipment_request_p2.rst:26
 msgid ""
-"Для создания таблицы принятия решений  перейдите в **рабочее пространство"
-" администратора**. В разделе **Управление процессами** перейдите в пункт "
-"**Модели DMN**:"
+"Перейдите в **рабочее пространство администратора**. В разделе "
+"**Управление процессами** выберите **Модели DMN**:"
 msgstr ""
 "To create a decision table, go to the **administrator workspace**. In the"
 " **Process Management** section, go to **DMN Models**:"
 
-#: ../../case_sample/equipment_request_p2.rst:36
-msgid "Нажмите **«+ - Создать DMN модель»**:"
+#: ../../case_sample/equipment_request_p2.rst:32
+msgid "Нажмите **«+ — Создать DMN модель»**:"
 msgstr "Click **«+ - Create DMN Model»**:"
 
-#: ../../case_sample/equipment_request_p2.rst:42
+#: ../../case_sample/equipment_request_p2.rst:38
 msgid "Заполните поля:"
 msgstr "Fill in the fields:"
 
-#: ../../case_sample/equipment_request_p2.rst:53
+#: ../../case_sample/equipment_request_p2.rst:49
 msgid "**1**"
 msgstr "**1**"
 
-#: ../../case_sample/equipment_request_p2.rst:54
+#: ../../case_sample/equipment_request_p2.rst:50
 msgid "Идентификатор"
 msgstr "Identifier"
 
-#: ../../case_sample/equipment_request_p2.rst:55
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:51
 msgid "equipment-decision"
-msgstr "equipment-desicion"
+msgstr "equipment-decision"
 
-#: ../../case_sample/equipment_request_p2.rst:56
+#: ../../case_sample/equipment_request_p2.rst:52
 msgid "**2**"
 msgstr "**2**"
 
-#: ../../case_sample/equipment_request_p2.rst:57
+#: ../../case_sample/equipment_request_p2.rst:53
 msgid "Имя"
 msgstr "Name"
 
-#: ../../case_sample/equipment_request_p2.rst:58
+#: ../../case_sample/equipment_request_p2.rst:54
 msgid "Решение по заявке на покупку оборудования"
 msgstr "Decision on Equipment Purchase Request"
 
-#: ../../case_sample/equipment_request_p2.rst:60
+#: ../../case_sample/equipment_request_p2.rst:56
 msgid "Нажмите **«Сохранить»**."
 msgstr "Click **«Save»**."
 
-#: ../../case_sample/equipment_request_p2.rst:62
+#: ../../case_sample/equipment_request_p2.rst:58
 msgid ""
-"Для перехода к редактору разверните раздел **«По умолчанию»**, наведите "
+"Для перехода в редактор разверните раздел **«По умолчанию»**, наведите "
 "курсор на созданную модель и нажмите:"
 msgstr ""
 "To go to the editor, expand the **«Default»** section, hover the cursor "
 "over the created model, and click:"
 
-#: ../../case_sample/equipment_request_p2.rst:68
+#: ../../case_sample/equipment_request_p2.rst:64
 msgid "Откроется **решение**:"
 msgstr "The **decision** will open:"
 
-#: ../../case_sample/equipment_request_p2.rst:76
+#: ../../case_sample/equipment_request_p2.rst:72
 msgid "Для ввода данных в таблицу кликните:"
 msgstr "To enter data into the table, click:"
 
-#: ../../case_sample/equipment_request_p2.rst:88
+#: ../../case_sample/equipment_request_p2.rst:84
 msgid ""
 "Двойным кликом по наименованию решения **(1)** перейдите в режим "
-"редактирования и назовите решение **Комп техника**."
+"редактирования и введите **Комп техника**."
 msgstr ""
 "Double-click the decision name **(1)** to enter edit mode and name the "
 "decision **Computer Equipment**."
 
-#: ../../case_sample/equipment_request_p2.rst:90
+#: ../../case_sample/equipment_request_p2.rst:86
 msgid ""
-"**Hit policy (2)** -  :ref:`политика выбора<dmn_hit_policy>`. Определим "
-"ее как **Unique** (по умолчанию)."
+"**Hit policy (2)** — :ref:`политика выбора<dmn_hit_policy>`. Оставьте "
+"значение **Unique** (по умолчанию)."
 msgstr ""
 "**Hit policy (2)** - :ref:`selection policy<dmn_hit_policy>`. Let's "
 "define it as **Unique** (default)."
 
-#: ../../case_sample/equipment_request_p2.rst:92
-msgid "**(3)** – входные элементы, **(4)** – выходные элементы."
+#: ../../case_sample/equipment_request_p2.rst:88
+msgid ""
+"**(3)** — входные элементы, **(4)** — выходные элементы. Совокупность "
+"входных и выходного элементов формирует решение."
 msgstr "**(3)** – input elements, **(4)** – output elements."
 
-#: ../../case_sample/equipment_request_p2.rst:94
-msgid "Совокупность входных элементов и выходного формируют решение."
-msgstr "The combination of input elements and the output forms the decision."
-
-#: ../../case_sample/equipment_request_p2.rst:98
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:92
 msgid ""
-"Указанные ниже переменные входных и выходных элементов выбраны не "
-"случайно. Они потребуются для настройки элемента **business rule task** в"
-" целевом бизнес-процессе."
+"Переменные входных и выходных элементов, указанные ниже, потребуются при "
+"настройке **Business rule task** в целевом бизнес-процессе."
 msgstr ""
 "The variables for the input and output elements specified below are not "
 "chosen randomly. They will be needed to configure the **business rule "
 "task** component in the target business process."
 
-#: ../../case_sample/equipment_request_p2.rst:101
+#: ../../case_sample/equipment_request_p2.rst:95
 msgid "Входные элементы"
 msgstr "Input Elements"
 
-#: ../../case_sample/equipment_request_p2.rst:103
-msgid ""
-"Для установки наименования входного элемента, дважды кликните поле под "
-"**When** и введите **Наименование**:"
+#: ../../case_sample/equipment_request_p2.rst:97
+msgid "Дважды кликните поле под **When** и введите **Наименование**:"
 msgstr ""
 "To set the name of the input element, double-click the field under "
 "**When** and enter **Name**:"
 
-#: ../../case_sample/equipment_request_p2.rst:109
-#: ../../case_sample/equipment_request_p2.rst:139
-#: ../../case_sample/equipment_request_p2.rst:166
+#: ../../case_sample/equipment_request_p2.rst:103
+#: ../../case_sample/equipment_request_p2.rst:133
+#: ../../case_sample/equipment_request_p2.rst:160
 msgid "В свойствах укажите:"
 msgstr "In the properties, specify:"
 
-#: ../../case_sample/equipment_request_p2.rst:117
-#: ../../case_sample/equipment_request_p2.rst:147
-#: ../../case_sample/equipment_request_p2.rst:174
+#: ../../case_sample/equipment_request_p2.rst:111
+#: ../../case_sample/equipment_request_p2.rst:141
+#: ../../case_sample/equipment_request_p2.rst:168
 msgid "Поле"
 msgstr "Field"
 
-#: ../../case_sample/equipment_request_p2.rst:118
-#: ../../case_sample/equipment_request_p2.rst:148
-#: ../../case_sample/equipment_request_p2.rst:175
+#: ../../case_sample/equipment_request_p2.rst:112
+#: ../../case_sample/equipment_request_p2.rst:142
+#: ../../case_sample/equipment_request_p2.rst:169
 msgid "Значение"
 msgstr "Value"
 
-#: ../../case_sample/equipment_request_p2.rst:119
-#: ../../case_sample/equipment_request_p2.rst:149
-#: ../../case_sample/equipment_request_p2.rst:176
+#: ../../case_sample/equipment_request_p2.rst:113
+#: ../../case_sample/equipment_request_p2.rst:143
+#: ../../case_sample/equipment_request_p2.rst:170
 msgid "Пояснение"
 msgstr "Explanation"
 
-#: ../../case_sample/equipment_request_p2.rst:120
-#: ../../case_sample/equipment_request_p2.rst:150
+#: ../../case_sample/equipment_request_p2.rst:114
+#: ../../case_sample/equipment_request_p2.rst:144
 msgid "Input Variable"
 msgstr "Input Variable"
 
-#: ../../case_sample/equipment_request_p2.rst:121
+#: ../../case_sample/equipment_request_p2.rst:115
 msgid "name"
 msgstr "name"
 
-#: ../../case_sample/equipment_request_p2.rst:122
+#: ../../case_sample/equipment_request_p2.rst:116
 msgid ""
-"Соответствует атрибуту name из :ref:`типа "
-"данных<sample_request_attributes>`. Значение будет передаваться как "
-"переменная в бизнес-процесс."
+"Соответствует атрибуту ``name`` из :ref:`типа "
+"данных<sample_request_attributes>`. Передаётся как переменная в "
+"бизнес-процесс."
 msgstr ""
 "Corresponds to the name attribute from the :ref:`data "
 "type<sample_request_attributes>`. The value will be passed as a variable "
 "to the business process."
 
-#: ../../case_sample/equipment_request_p2.rst:123
-#: ../../case_sample/equipment_request_p2.rst:153
-#: ../../case_sample/equipment_request_p2.rst:180
+#: ../../case_sample/equipment_request_p2.rst:117
+#: ../../case_sample/equipment_request_p2.rst:147
+#: ../../case_sample/equipment_request_p2.rst:174
 msgid "Type"
 msgstr "Type"
 
-#: ../../case_sample/equipment_request_p2.rst:124
-#: ../../case_sample/equipment_request_p2.rst:181
+#: ../../case_sample/equipment_request_p2.rst:118
+#: ../../case_sample/equipment_request_p2.rst:175
 msgid "string"
 msgstr "string"
 
-#: ../../case_sample/equipment_request_p2.rst:125
+#: ../../case_sample/equipment_request_p2.rst:119
 msgid ""
-"Типу string соответствует text в :ref:`типе "
+"Типу ``string`` соответствует ``text`` в :ref:`типе "
 "данных<sample_request_attributes>`."
 msgstr ""
 "The string type corresponds to text in the :ref:`data "
 "type<sample_request_attributes>`."
 
-#: ../../case_sample/equipment_request_p2.rst:127
+#: ../../case_sample/equipment_request_p2.rst:121
 msgid "Нажмите **+** для добавления второго входного элемента:"
 msgstr "Click **+** to add a second input element:"
 
-#: ../../case_sample/equipment_request_p2.rst:133
-msgid ""
-"Для установки наименования входного элемента, дважды кликните поле под "
-"**When** и введите **Стоимость**:"
+#: ../../case_sample/equipment_request_p2.rst:127
+msgid "Дважды кликните поле под **When** и введите **Стоимость**:"
 msgstr ""
 "To set the name of the input element, double-click the field under "
 "**When** and enter **Cost**:"
 
-#: ../../case_sample/equipment_request_p2.rst:151
+#: ../../case_sample/equipment_request_p2.rst:145
 msgid "price"
 msgstr "price"
 
-#: ../../case_sample/equipment_request_p2.rst:152
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:146
 msgid ""
-"Соответствует атрибуту price из :ref:`типа "
-"данных<sample_request_attributes>`. Значение будет передаваться как "
-"переменная в бизнес-процесс."
+"Соответствует атрибуту ``price`` из :ref:`типа "
+"данных<sample_request_attributes>`. Передаётся как переменная в "
+"бизнес-процесс."
 msgstr ""
 "Corresponds to the price attribute from the :ref:`data "
 "type<sample_request_attributes>`. The value will be passed as a variable "
 "to the business process."
 
-#: ../../case_sample/equipment_request_p2.rst:154
+#: ../../case_sample/equipment_request_p2.rst:148
 msgid "integer"
 msgstr "integer"
 
-#: ../../case_sample/equipment_request_p2.rst:155
+#: ../../case_sample/equipment_request_p2.rst:149
 msgid ""
-"Типу integer соответствует number в :ref:`типе "
+"Типу ``integer`` соответствует ``number`` в :ref:`типе "
 "данных<sample_request_attributes>`."
 msgstr ""
 "The integer type corresponds to number in the :ref:`data "
 "type<sample_request_attributes>`."
 
-#: ../../case_sample/equipment_request_p2.rst:158
+#: ../../case_sample/equipment_request_p2.rst:152
 msgid "Выходной элемент"
 msgstr "Output Element"
 
-#: ../../case_sample/equipment_request_p2.rst:160
-msgid ""
-"Для установки наименования выходного элемента, дважды кликните поле под "
-"**Then** и введите **Решение**:"
+#: ../../case_sample/equipment_request_p2.rst:154
+msgid "Дважды кликните поле под **Then** и введите **Решение**:"
 msgstr ""
 "To set the name of the output element, double-click the field under "
 "**Then** and enter **Decision**:"
 
-#: ../../case_sample/equipment_request_p2.rst:177
+#: ../../case_sample/equipment_request_p2.rst:171
 msgid "Output Name"
 msgstr "Output Name"
 
-#: ../../case_sample/equipment_request_p2.rst:178
+#: ../../case_sample/equipment_request_p2.rst:172
 msgid "decision"
 msgstr "decision"
 
-#: ../../case_sample/equipment_request_p2.rst:179
-msgid "Значение будет передаваться в бизнес-процесс как переменная результата."
+#: ../../case_sample/equipment_request_p2.rst:173
+msgid "Передаётся в бизнес-процесс как переменная результата."
 msgstr "The value will be passed to the business process as a result variable."
 
-#: ../../case_sample/equipment_request_p2.rst:185
+#: ../../case_sample/equipment_request_p2.rst:181
 msgid "Правила"
 msgstr "Rules"
 
-#: ../../case_sample/equipment_request_p2.rst:189
+#: ../../case_sample/equipment_request_p2.rst:183
 msgid ""
-"Согласована / не согласована покупка автоматически, или необходимо "
-"согласование конкретного сотрудника зависит от оборудования и его "
-"стоимости."
+"Автоматическое согласование, отказ или назначение согласующего зависит от"
+" наименования оборудования и его стоимости."
 msgstr ""
-"Whether the purchase is approved/rejected automatically or requires "
-"approval by a specific employee depends on the equipment and its cost."
+"Automatic approval, rejection, or assigning an approver depends on the "
+"equipment name and its cost."
 
-#: ../../case_sample/equipment_request_p2.rst:191
+#: ../../case_sample/equipment_request_p2.rst:185
 msgid ""
-"Для примера выберем 3 товара: Монитор, Мышь, Ноутбук. Укажем для каждого "
-"товара лимит/ диапазон стоимости и соответствующее возможное решение:"
+"Для примера возьмём 3 товара: **Монитор**, **Мышь**, **Ноутбук**. Для "
+"каждого зададим диапазон стоимости и соответствующее решение:"
 msgstr ""
 "For example, let's choose 3 items: Monitor, Mouse, Laptop. For each item,"
 " we will specify a cost limit/range and the corresponding possible "
 "decision:"
 
-#: ../../case_sample/equipment_request_p2.rst:198
-msgid "**Approve**"
-msgstr "**Approve**"
+#: ../../case_sample/equipment_request_p2.rst:192
+#: ../../case_sample/equipment_request_p2.rst:232
+#: ../../case_sample/equipment_request_p2.rst:238
+#: ../../case_sample/equipment_request_p2.rst:244
+msgid "``\"Approve\"``"
+msgstr "``\"Approve\"``"
 
-#: ../../case_sample/equipment_request_p2.rst:199
+#: ../../case_sample/equipment_request_p2.rst:193
 msgid "Согласовано автоматически"
 msgstr "Automatically Approved"
 
-#: ../../case_sample/equipment_request_p2.rst:200
-msgid "**Reject**"
-msgstr "**Reject**"
+#: ../../case_sample/equipment_request_p2.rst:194
+#: ../../case_sample/equipment_request_p2.rst:235
+#: ../../case_sample/equipment_request_p2.rst:241
+#: ../../case_sample/equipment_request_p2.rst:247
+msgid "``\"Reject\"``"
+msgstr "``\"Reject\"``"
 
-#: ../../case_sample/equipment_request_p2.rst:201
+#: ../../case_sample/equipment_request_p2.rst:195
 msgid "Отказано автоматически"
 msgstr "Automatically Rejected"
 
-#: ../../case_sample/equipment_request_p2.rst:202
-msgid "**Assign approver**"
-msgstr "**Assign approver**"
+#: ../../case_sample/equipment_request_p2.rst:196
+#: ../../case_sample/equipment_request_p2.rst:250
+msgid "``\"Assign approver\"``"
+msgstr "``\"Assign approver\"``"
 
-#: ../../case_sample/equipment_request_p2.rst:203
-msgid "Согласование конкретным сотрудником"
-msgstr "Approval by a specific employee"
+#: ../../case_sample/equipment_request_p2.rst:197
+msgid "Назначение согласующего"
+msgstr "Assigning an Approver"
 
-#: ../../case_sample/equipment_request_p2.rst:205
-msgid "В зависимости от решения процесс по соответствующему потоку управления."
+#: ../../case_sample/equipment_request_p2.rst:199
+msgid ""
+"В зависимости от решения процесс пойдёт по соответствующему потоку "
+"управления."
 msgstr ""
 "Depending on the decision, the process follows the corresponding control "
 "flow."
 
-#: ../../case_sample/equipment_request_p2.rst:207
+#: ../../case_sample/equipment_request_p2.rst:201
 msgid ""
-"Добавьте первое правило, указывающее, что для **Монитора** стоимостью "
-"**15 000 или менее** — решение **Approve**."
+"Добавьте первое правило: для **Монитора** стоимостью **15 000 и менее** —"
+" решение **Approve**."
 msgstr ""
 "Add the first rule, indicating that for a **Monitor** costing **15,000 or"
 " less** — the decision is **Approve**."
 
-#: ../../case_sample/equipment_request_p2.rst:211
+#: ../../case_sample/equipment_request_p2.rst:205
 msgid ""
-"**Наименование** и **Решение** типа **string**, поэтому элементы "
-"обязательно указывать в **кавычках**."
+"Поля **Наименование** и **Решение** имеют тип ``string``, поэтому "
+"значения необходимо указывать в **кавычках**."
 msgstr ""
 "**Name** and **Decision** are of type **string**, so the elements must be"
 " specified in **quotes**."
 
-#: ../../case_sample/equipment_request_p2.rst:217
+#: ../../case_sample/equipment_request_p2.rst:211
 msgid ""
-"Нажмите кнопку **«+»** внизу таблицы или просто нажмите в любом месте "
-"последней строки."
+"Нажмите **«+»** внизу таблицы или кликните в любом месте последней "
+"строки, чтобы добавить следующее правило."
 msgstr ""
 "Click the **«+»** button at the bottom of the table or simply click "
 "anywhere in the last row."
 
-#: ../../case_sample/equipment_request_p2.rst:219
+#: ../../case_sample/equipment_request_p2.rst:213
 msgid ""
-"Добавьте второе правило, указывающее, что для **Монитора** стоимостью "
-"**больше 15 000** - решение **Reject**."
+"Добавьте второе правило: для **Монитора** стоимостью **больше 15 000** — "
+"решение **Reject**."
 msgstr ""
 "Add a second rule, indicating that for a **Monitor** costing **more than "
 "15,000** - the decision is **Reject**."
 
-#: ../../case_sample/equipment_request_p2.rst:225
-msgid "Финальная таблица:"
-msgstr "Final table:"
+#: ../../case_sample/equipment_request_p2.rst:219
+msgid "Итоговая таблица правил:"
+msgstr "Final rules table:"
 
-#: ../../case_sample/equipment_request_p2.rst:233
+#: ../../case_sample/equipment_request_p2.rst:227
 msgid "Наименование"
 msgstr "Name"
 
-#: ../../case_sample/equipment_request_p2.rst:234
+#: ../../case_sample/equipment_request_p2.rst:228
 msgid "Цена"
 msgstr "Price"
 
-#: ../../case_sample/equipment_request_p2.rst:235
+#: ../../case_sample/equipment_request_p2.rst:229
 msgid "Решение"
 msgstr "Decision"
 
-#: ../../case_sample/equipment_request_p2.rst:362
-msgid "Теперь таблицу принятия решения можно сохранить и опубликовать, нажав:"
-msgstr "Now the decision table can be saved and published by clicking:"
+#: ../../case_sample/equipment_request_p2.rst:230
+#: ../../case_sample/equipment_request_p2.rst:233
+msgid "``\"Монитор\"``"
+msgstr "``\"Monitor\"``"
 
-#: ../../case_sample/equipment_request_p2.rst:369
+#: ../../case_sample/equipment_request_p2.rst:231
+msgid "``<=15000``"
+msgstr "``<=15000``"
+
+#: ../../case_sample/equipment_request_p2.rst:234
+msgid "``>15000``"
+msgstr "``>15000``"
+
+#: ../../case_sample/equipment_request_p2.rst:236
+#: ../../case_sample/equipment_request_p2.rst:239
+msgid "``\"Мышь\"``"
+msgstr "``\"Mouse\"``"
+
+#: ../../case_sample/equipment_request_p2.rst:237
+msgid "``<=1500``"
+msgstr "``<=1500``"
+
+#: ../../case_sample/equipment_request_p2.rst:240
+msgid "``>1500``"
+msgstr "``>1500``"
+
+#: ../../case_sample/equipment_request_p2.rst:242
+#: ../../case_sample/equipment_request_p2.rst:245
+#: ../../case_sample/equipment_request_p2.rst:248
+msgid "``\"Ноутбук\"``"
+msgstr "``\"Laptop\"``"
+
+#: ../../case_sample/equipment_request_p2.rst:243
+msgid "``<=60000``"
+msgstr "``<=60000``"
+
+#: ../../case_sample/equipment_request_p2.rst:246
+msgid "``>250000``"
+msgstr "``>250000``"
+
+#: ../../case_sample/equipment_request_p2.rst:249
+msgid "``[60000..249999]``"
+msgstr "``[60000..249999]``"
+
+#: ../../case_sample/equipment_request_p2.rst:252
+msgid "Сохраните и опубликуйте таблицу принятия решений:"
+msgstr "Save and publish the decision table:"
+
+#: ../../case_sample/equipment_request_p2.rst:259
 msgid "Добавление модели принятия решения в бизнес-процесс"
 msgstr "Adding the Decision Model to the Business Process"
 
-#: ../../case_sample/equipment_request_p2.rst:371
-msgid "Далее добавим модель в существующий бизнес-процесс. Для этого необходимо:"
+#: ../../case_sample/equipment_request_p2.rst:261
+msgid "Добавим модель в существующий бизнес-процесс. Для этого необходимо:"
 msgstr ""
 "Next, we will add the model to the existing business process. For this, "
 "it is necessary to:"
 
-#: ../../case_sample/equipment_request_p2.rst:373
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:263
 msgid ""
-"Настроить **переменные процесса (1)**, чтобы модель и бизнес-процесс "
-"могли взаимодействовать друг с другом."
+"Настроить **переменные процесса (1)** — чтобы модель и бизнес-процесс "
+"могли взаимодействовать."
 msgstr ""
 "Configure **process variables (1)** so that the model and the business "
 "process can interact with each other;"
 
-#: ../../case_sample/equipment_request_p2.rst:374
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:264
 msgid ""
-"Добавить элемент **Business rule task (2)** – чтобы встроить в процесс "
-"модель."
+"Добавить элемент **Business rule task (2)** — для встраивания модели в "
+"процесс."
 msgstr ""
 "Add a **Business rule task (2)** component – to embed the model into the "
 "process;"
 
-#: ../../case_sample/equipment_request_p2.rst:375
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:265
 msgid ""
-"Настроить **шлюз и потоки управления (3) и (4)**  – чтобы объяснить "
-"системе по какому направлению необходимо идти."
+"Настроить **шлюз и потоки управления (3) и (4)** — для маршрутизации по "
+"нужным ветвям."
 msgstr ""
 "Configure the **gateway and control flows (3)** – to explain to the "
 "system which direction to take"
 
-#: ../../case_sample/equipment_request_p2.rst:382
-msgid "Добавление переменной в процесс (1)"
+#: ../../case_sample/equipment_request_p2.rst:272
+msgid "Добавление переменных в процесс (1)"
 msgstr "Adding a Variable to the Process (1)"
 
-#: ../../case_sample/equipment_request_p2.rst:384
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:274
 msgid ""
 "Между элементами **Статус «Заявка создана»** и **пользовательская задача "
-"«На согласование»** необходимо добавить :ref:`скриптовую "
-"задачу<script_task>`."
+"«На согласование»** добавьте :ref:`скриптовую задачу<script_task>`."
 msgstr ""
 "Between the **Status \"Request Created\"** and the user task **\"For "
 "Approval\"** components, you need to add a :ref:`script "
 "task<script_task>`."
 
-#: ../../case_sample/equipment_request_p2.rst:386
+#: ../../case_sample/equipment_request_p2.rst:276
 msgid ""
-"Используя произвольное выделение **(1)** выберите и переместите левее "
-"элементы:"
+"Используя произвольное выделение **(1)**, выберите и переместите элементы"
+" левее:"
 msgstr ""
+"Using free selection **(1)**, select and move the elements to the left:"
 
-#: ../../case_sample/equipment_request_p2.rst:392
+#: ../../case_sample/equipment_request_p2.rst:282
 msgid ""
-"В меню выберите элемент **«Task»** и перетащите его за **статус «Заявка "
-"создана»**:"
+"В меню выберите элемент **«Task»** и перетащите его после **статуса "
+"«Заявка создана»**:"
 msgstr ""
+"In the menu, select the **«Task»** element and drag it after the "
+"**«Request Created»** status:"
 
-#: ../../case_sample/equipment_request_p2.rst:398
-msgid "Измените его тип на **Script task**:"
+#: ../../case_sample/equipment_request_p2.rst:288
+msgid "Измените тип элемента на **Script task**:"
 msgstr "Change its type to **Script task**:"
 
-#: ../../case_sample/equipment_request_p2.rst:404
+#: ../../case_sample/equipment_request_p2.rst:294
 msgid ""
 "Чтобы данные входных элементов решения стали доступны в бизнес-процессе, "
-"их необходимо ввести в виде переменных."
+"их необходимо передать в виде переменных."
 msgstr ""
 "For the input element data of the decision to become available in the "
 "business process, they must be entered as variables."
 
-#: ../../case_sample/equipment_request_p2.rst:406
-#: ../../case_sample/equipment_request_p2.rst:433
-msgid "Укажите в форме:"
-msgstr "Specify in the form:"
+#: ../../case_sample/equipment_request_p2.rst:296
+#: ../../case_sample/equipment_request_p2.rst:323
+msgid "Заполните форму:"
+msgstr "Fill in the fields:"
 
-#: ../../case_sample/equipment_request_p2.rst:408
-msgid "Имя - **«Стоимость и наименование»**,"
-msgstr "Name - **«Cost and Name»**,"
+#: ../../case_sample/equipment_request_p2.rst:298
+msgid "**Имя** — ``Стоимость и наименование``"
+msgstr "**Name** — ``Cost and Name``"
 
-#: ../../case_sample/equipment_request_p2.rst:409
-msgid "в **Скрипте**:"
-msgstr "in the **Script**:"
+#: ../../case_sample/equipment_request_p2.rst:299
+#: ../../case_sample/equipment_request_p2.rst:378
+#: ../../case_sample/equipment_request_p2.rst:392
+msgid "**Скрипт**:"
+msgstr "**Script**:"
 
-#: ../../case_sample/equipment_request_p2.rst:421
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:311
 msgid "Добавление элемента Business rule task (2)"
 msgstr "Adding a Business Rule Task Component (2)"
 
-#: ../../case_sample/equipment_request_p2.rst:423
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:313
 msgid ""
-"Следующим элементом необходимо добавить :ref:`Business rule "
-"task<business_rule_task>`."
+"Добавьте :ref:`Business rule task<business_rule_task>` следующим "
+"элементом после скриптовой задачи."
 msgstr ""
-"The next component to add is a :ref:`Business rule "
-"task<business_rule_task>`."
+"Add a :ref:`Business rule task<business_rule_task>` as the next element "
+"after the script task."
 
-#: ../../case_sample/equipment_request_p2.rst:425
+#: ../../case_sample/equipment_request_p2.rst:315
 msgid ""
-"Используя произвольное выделение **(1)** выберите и переместите левее "
-"элементы, В меню выберите элемент **«Task»** и перетащите его за "
-"созданную выше **скриптовую задачу**:"
+"Используя произвольное выделение **(1)**, выберите и переместите элементы"
+" левее. В меню выберите **«Task»** и перетащите его за созданную "
+"скриптовую задачу."
 msgstr ""
+"Using free selection **(1)**, select and move the elements to the left. "
+"In the menu, select **«Task»** and drag it after the created script task."
 
-#: ../../case_sample/equipment_request_p2.rst:427
-#, fuzzy
-msgid "Измените его тип на **Business Rule Task**:"
-msgstr "Change its type to **Script task**:"
+#: ../../case_sample/equipment_request_p2.rst:317
+msgid "Измените тип элемента на **Business Rule Task**:"
+msgstr "Change its type to **Business Rule Task**:"
 
-#: ../../case_sample/equipment_request_p2.rst:435
-msgid "Имя – **Решение по заявке**."
-msgstr "Name – **Request Decision**."
+#: ../../case_sample/equipment_request_p2.rst:325
+msgid "**Имя** — ``Решение по заявке``"
+msgstr "**Name** — ``Request Decision``"
 
-#: ../../case_sample/equipment_request_p2.rst:436
-msgid "Решение – выбрать из журнала созданное ранее **решение**."
-msgstr "Decision – select the previously created **decision** from the journal."
+#: ../../case_sample/equipment_request_p2.rst:326
+msgid "**Решение** — выберите из журнала созданное ранее решение"
+msgstr "**Decision** — select the previously created decision from the journal."
 
-#: ../../case_sample/equipment_request_p2.rst:437
-msgid "Связь – **Актуальное** (всегда последняя версия решения)."
-msgstr "Relation – **Latest** (always the latest version of the decision)."
+#: ../../case_sample/equipment_request_p2.rst:327
+msgid "**Связь** — ``Актуальное`` (всегда последняя версия решения)"
+msgstr "**Relation** — ``Latest`` (always the latest version of the decision)."
 
-#: ../../case_sample/equipment_request_p2.rst:438
+#: ../../case_sample/equipment_request_p2.rst:328
 msgid ""
-"Переменная результата - **decision** (заданная при создании Выходного "
-"элемента)."
-msgstr "Result variable - **decision** (set when creating the Output element)."
+"**Переменная результата** — ``decision`` (задана при создании выходного "
+"элемента)"
+msgstr "**Result variable** — ``decision`` (set when creating the Output element)."
 
-#: ../../case_sample/equipment_request_p2.rst:439
+#: ../../case_sample/equipment_request_p2.rst:329
 msgid ""
-"Сопоставление результатов решения – **Один объект (TypedValue)** – так "
-"как у нас на выходе одно значение."
+"**Сопоставление результатов решения** — ``Один объект (TypedValue)`` (так"
+" как на выходе одно значение)"
 msgstr ""
-"Decision result mapping – **Single Object (TypedValue)** – since we have "
-"a single output value."
+"**Decision result mapping** — ``Single Object (TypedValue)`` – since we "
+"have a single output value."
 
-#: ../../case_sample/equipment_request_p2.rst:446
-#, fuzzy
+#: ../../case_sample/equipment_request_p2.rst:336
 msgid "Обновление шлюзов и потоков управления (3) и (4)"
-msgstr "Updating Gateways and Control Flows (3)"
+msgstr "Updating Gateways and Control Flows (3) and (4)"
 
-#: ../../case_sample/equipment_request_p2.rst:448
+#: ../../case_sample/equipment_request_p2.rst:338
 msgid ""
-"После элемента **Решение по заявке** необходимо добавить **шлюз**, у "
-"которого должно быть 3 выхода в соответствии с "
-":ref:`правилами<sample_request_dmn_rules>`, и, соответственно добавить 2 "
-"шлюза к первоначально созданному в базовом процессе:"
+"После элемента **Решение по заявке** добавьте **шлюз** с тремя выходами в"
+" соответствии с :ref:`правилами<sample_request_dmn_rules>`, а также два "
+"дополнительных шлюза к первоначально созданному в базовом процессе:"
 msgstr ""
+"After the **Request Decision** element, add a **gateway** with three "
+"outputs according to the :ref:`rules<sample_request_dmn_rules>`, as well "
+"as two additional gateways to the one originally created in the base "
+"process:"
 
-#: ../../case_sample/equipment_request_p2.rst:454
-#, fuzzy
-msgid "И соединить элементы:"
-msgstr "Input Elements"
+#: ../../case_sample/equipment_request_p2.rst:344
+msgid "Соедините элементы:"
+msgstr "Connect the elements:"
 
-#: ../../case_sample/equipment_request_p2.rst:460
-msgid "где"
-msgstr ""
+#: ../../case_sample/equipment_request_p2.rst:350
+msgid "где:"
+msgstr "where:"
 
-#: ../../case_sample/equipment_request_p2.rst:462
-msgid "1 - **\"Assign approver\"** (Согласование согласующим)"
-msgstr "1 - **\"Assign approver\"** (Approval by Approver)"
+#: ../../case_sample/equipment_request_p2.rst:352
+msgid "**1** — **«Assign approver»** (согласование назначенным сотрудником)"
+msgstr "**1** — **«Assign approver»** (approval by assigned employee)"
 
-#: ../../case_sample/equipment_request_p2.rst:463
-msgid "2 - **\"Approve\"** (Авт. согласование)"
-msgstr "2 - **\"Approve\"** (Auto. Approval)"
+#: ../../case_sample/equipment_request_p2.rst:353
+msgid "**2** — **«Approve»** (автоматическое согласование)"
+msgstr "**2** — **«Approve»** (automatic approval)"
 
-#: ../../case_sample/equipment_request_p2.rst:464
-msgid "3 - **\"Reject\"** (Авт. отказ)"
-msgstr "3 - **\"Reject\"** (Auto. Rejection)"
+#: ../../case_sample/equipment_request_p2.rst:354
+msgid "**3** — **«Reject»** (автоматический отказ)"
+msgstr "**3** — **«Reject»** (automatic rejection)"
 
-#: ../../case_sample/equipment_request_p2.rst:471
-msgid "**1 Согласование согласующим**"
-msgstr "**1 Approval by Approver**"
+#: ../../case_sample/equipment_request_p2.rst:361
+msgid "**1 — Согласование сотрудником**"
+msgstr "**1 — Approval by Employee**"
 
 #: ../../case_sample/equipment_request_p2.rst
-msgid ""
-"Стрелка **(1)** означает поток по умолчанию и получается из стандартного "
-"потока следующим образом:"
-msgstr ""
-"Arrow **(1)** represents the default flow and is derived from the "
-"standard flow as follows:"
+msgid "Поток **(1)** является потоком по умолчанию. Для его настройки:"
+msgstr "Flow **(1)** is the default flow. To configure it:"
 
 #: ../../case_sample/equipment_request_p2.rst
-#, fuzzy
-msgid "И далее за потоком по умолчанию следуют элементы базового процесса:"
+msgid "После потока по умолчанию следуют элементы базового процесса:"
 msgstr "And then the components of the base process follow the default flow:"
 
-#: ../../case_sample/equipment_request_p2.rst:484
-msgid "**2 Авт. согласование**"
-msgstr "**2 Auto. Approval**"
+#: ../../case_sample/equipment_request_p2.rst:374
+msgid "**2 — Авт. согласование**"
+msgstr "**2 — Auto. Approval**"
 
 #: ../../case_sample/equipment_request_p2.rst
-msgid ""
-"Поток автоматического согласования по итогу применения таблицы принятия "
-"решения:"
-msgstr "The automatic approval flow resulting from applying the decision table:"
+msgid "Поток автоматического согласования:"
+msgstr "Automatic approval flow:"
 
-#: ../../case_sample/equipment_request_p2.rst:487
-msgid "Имя - **«Авт. согласование»**,"
-msgstr "Name - **«Auto. Approval»**,"
+#: ../../case_sample/equipment_request_p2.rst:377
+msgid "**Имя** — ``Авт. согласование``"
+msgstr "**Name** — ``Auto. Approval``"
 
-#: ../../case_sample/equipment_request_p2.rst:488
-#: ../../case_sample/equipment_request_p2.rst:502
-msgid "Скрипт:"
-msgstr "Script:"
-
-#: ../../case_sample/equipment_request_p2.rst:498
-msgid "**3 Авт. отказ**"
-msgstr "**3 Auto. Rejection**"
+#: ../../case_sample/equipment_request_p2.rst:388
+msgid "**3 — Авт. отказ**"
+msgstr "**3 — Auto. Rejection**"
 
 #: ../../case_sample/equipment_request_p2.rst
-msgid "Поток автоматического отказа по итогу применения таблицы принятия решения:"
-msgstr "The automatic rejection flow resulting from applying the decision table:"
+msgid "Поток автоматического отказа:"
+msgstr "Automatic rejection flow:"
 
-#: ../../case_sample/equipment_request_p2.rst:501
-msgid "Имя - **«Авт. отказ»**,"
-msgstr "Name - **«Auto. Rejection»**,"
+#: ../../case_sample/equipment_request_p2.rst:391
+msgid "**Имя** — ``Авт. отказ``"
+msgstr "**Name** — ``Auto. Rejection``"
 
-#: ../../case_sample/equipment_request_p2.rst:516
-msgid ""
-"Обратите внимание на потоки **(4)** и **(5)**. Они были настроены в "
-"базовом процессе:"
+#: ../../case_sample/equipment_request_p2.rst:406
+msgid "Потоки **(4)** и **(5)** были настроены в базовом процессе:"
 msgstr ""
 "Note the flows **(4)** and **(5)**. They were configured in the base "
 "process:"
 
-#: ../../case_sample/equipment_request_p2.rst:523
-msgid "**4 Согласовано согласующим**"
-msgstr "**4 Approved by Approver**"
+#: ../../case_sample/equipment_request_p2.rst:413
+msgid "**4 — Согласовано согласующим**"
+msgstr "**4 — Approved by Approver**"
 
-#: ../../case_sample/equipment_request_p2.rst:526
-msgid "Укажите имя **«Согласовано согласующим»**."
-msgstr "Specify the name **«Approved by Approver»**."
+#: ../../case_sample/equipment_request_p2.rst:416
+msgid "**Имя** — ``Согласовано согласующим``"
+msgstr "**Name** — ``Approved by Approver``"
 
-#: ../../case_sample/equipment_request_p2.rst:527
-#: ../../case_sample/equipment_request_p2.rst:537
-msgid "В поле **«Тип условия»** выберите вариант **«Исходящий»**."
-msgstr "In the **«Condition Type»** field, select the **«Outgoing»** option."
+#: ../../case_sample/equipment_request_p2.rst:417
+#: ../../case_sample/equipment_request_p2.rst:428
+msgid "**Тип условия** — ``Исходящий``"
+msgstr "**Condition Type** — ``Outgoing``"
 
-#: ../../case_sample/equipment_request_p2.rst:528
-msgid ""
-"В появившемся поле **«Исходящий»** выберите вариант **«На согласовании "
-"согласующим - Согласовать»**."
+#: ../../case_sample/equipment_request_p2.rst:418
+msgid "**Исходящий** — ``На согласовании согласующим — Согласовать``"
 msgstr ""
 "In the appeared **«Outgoing»** field, select the option **«Under approval"
 " by approver - Approve»**."
 
-#: ../../case_sample/equipment_request_p2.rst:533
-msgid "**5 Отказано согласующим**"
-msgstr "**5 Rejected by Approver**"
+#: ../../case_sample/equipment_request_p2.rst:424
+msgid "**5 — Отказано согласующим**"
+msgstr "**5 — Rejected by Approver**"
 
-#: ../../case_sample/equipment_request_p2.rst:536
-msgid "Укажите имя **«Отказано согласующим»**."
-msgstr "Specify the name **«Rejected by Approver»**."
+#: ../../case_sample/equipment_request_p2.rst:427
+msgid "**Имя** — ``Отказано согласующим``"
+msgstr "**Name** — ``Rejected by Approver``"
 
-#: ../../case_sample/equipment_request_p2.rst:538
-msgid ""
-"В появившемся поле **«Исходящий»** выберите вариант **«На согласовании "
-"согласующим - Отказать»**."
+#: ../../case_sample/equipment_request_p2.rst:429
+msgid "**Исходящий** — ``На согласовании согласующим — Отказать``"
 msgstr ""
 "In the appeared **«Outgoing»** field, select the option **«Under approval"
 " by approver - Reject»**."
 
-#: ../../case_sample/equipment_request_p2.rst:544
-msgid "Процесс можно сохранить и опубликовать, нажав:"
-msgstr "The process can be saved and published by clicking:"
+#: ../../case_sample/equipment_request_p2.rst:435
+msgid "Сохраните и опубликуйте процесс:"
+msgstr "Save and publish the process:"
 
-#: ../../case_sample/equipment_request_p2.rst:552
+#: ../../case_sample/equipment_request_p2.rst:442
 msgid "Проверка процесса"
 msgstr "Process Testing"
 
-#: ../../case_sample/equipment_request_p2.rst:554
-msgid "Проверим, как работает таблица принятия решения."
+#: ../../case_sample/equipment_request_p2.rst:444
+msgid "Проверим работу таблицы принятия решений."
 msgstr "Let's test how the decision table works."
 
-#: ../../case_sample/equipment_request_p2.rst:558
+#: ../../case_sample/equipment_request_p2.rst:448
 msgid ""
 "Чтобы решение принималось автоматически, название оборудования в форме "
-"завки должно четкое соответствовать (включая регистр) наименованию в "
-"таблице принятия решений."
+"заявки должно точно совпадать (включая регистр) с наименованием в таблице"
+" принятия решений. Будьте внимательны при использовании символов Unicode."
 msgstr ""
 "For the decision to be made automatically, the equipment name in the "
 "request form must exactly match (including case) the name in the decision"
-" table."
+" table. Be careful when using Unicode characters."
 
-#: ../../case_sample/equipment_request_p2.rst:560
-msgid "Будьте внимательны при сравнении строк и использовании символов в unicode."
-msgstr "Be careful when comparing strings and using unicode characters."
+#: ../../case_sample/equipment_request_p2.rst:451
+msgid "Автоматическое согласование"
+msgstr "Automatic Approval"
 
-#: ../../case_sample/equipment_request_p2.rst:563
-msgid "Случай автоматического согласования"
-msgstr "Case of Automatic Approval"
+#: ../../case_sample/equipment_request_p2.rst:453
+#: ../../case_sample/equipment_request_p2.rst:473
+msgid "Создайте заявку в журнале:"
+msgstr "Create a request in the journal:"
 
-#: ../../case_sample/equipment_request_p2.rst:565
-#: ../../case_sample/equipment_request_p2.rst:585
-msgid "В журнале создадим заявку с данными:"
-msgstr "In the journal, create a request with the data:"
+#: ../../case_sample/equipment_request_p2.rst:455
+msgid "**Название оборудования** — ``Мышь``"
+msgstr "**Equipment Name** — ``Mouse``"
 
-#: ../../case_sample/equipment_request_p2.rst:567
-msgid "Название оборудование – **Мышь**"
-msgstr "Equipment Name – **Mouse**"
+#: ../../case_sample/equipment_request_p2.rst:456
+msgid "**Стоимость** — ``500``"
+msgstr "**Cost** — ``500``"
 
-#: ../../case_sample/equipment_request_p2.rst:568
-msgid "Стоимость - **500**"
-msgstr "Cost - **500**"
+#: ../../case_sample/equipment_request_p2.rst:457
+#: ../../case_sample/equipment_request_p2.rst:477
+#: ../../case_sample/equipment_request_p2.rst:497
+msgid "**Инициатор** — текущий пользователь"
+msgstr "**Initiator** — current user"
 
-#: ../../case_sample/equipment_request_p2.rst:569
-#: ../../case_sample/equipment_request_p2.rst:589
-#: ../../case_sample/equipment_request_p2.rst:609
-msgid "Инициатор – **текущий пользователь**"
-msgstr "Initiator – **current user**"
-
-#: ../../case_sample/equipment_request_p2.rst:570
-#: ../../case_sample/equipment_request_p2.rst:590
-#: ../../case_sample/equipment_request_p2.rst:610
-msgid ""
-"Согласующий – **выберите текущего пользователя или другого из "
-"огструктуры**"
+#: ../../case_sample/equipment_request_p2.rst:458
+#: ../../case_sample/equipment_request_p2.rst:478
+#: ../../case_sample/equipment_request_p2.rst:498
+msgid "**Согласующий** — текущий пользователь или другой из оргструктуры"
 msgstr ""
-"Approver – **select the current user or another from the organizational "
-"structure**"
+"**Approver** — select the current user or another from the organizational "
+"structure"
 
-#: ../../case_sample/equipment_request_p2.rst:576
+#: ../../case_sample/equipment_request_p2.rst:464
 msgid ""
-"И нажмите **«Сохранить»**. Заявка создается успешно и ее статус "
-"автоматически становится **«Согласовано»**:"
+"Нажмите **«Сохранить»**. Статус заявки автоматически изменится на "
+"**«Согласовано»**:"
 msgstr ""
 "And click **«Save»**. The request is created successfully and its status "
 "automatically becomes **«Approved»**:"
 
-#: ../../case_sample/equipment_request_p2.rst:583
-msgid "Случай автоматического отказа"
-msgstr "Case of Automatic Rejection"
+#: ../../case_sample/equipment_request_p2.rst:471
+msgid "Автоматический отказ"
+msgstr "Automatic Rejection"
 
-#: ../../case_sample/equipment_request_p2.rst:587
-msgid "Название оборудование – **Монитор**"
-msgstr "Equipment Name – **Monitor**"
+#: ../../case_sample/equipment_request_p2.rst:475
+msgid "**Название оборудования** — ``Монитор``"
+msgstr "**Equipment Name** — ``Monitor``"
 
-#: ../../case_sample/equipment_request_p2.rst:588
-msgid "Стоимость - **250001**"
-msgstr "Cost - **250001**"
+#: ../../case_sample/equipment_request_p2.rst:476
+msgid "**Стоимость** — ``250001``"
+msgstr "**Cost** — ``250001``"
 
-#: ../../case_sample/equipment_request_p2.rst:596
+#: ../../case_sample/equipment_request_p2.rst:484
 msgid ""
-"И нажмите **«Сохранить»**. Заявка создается успешно и ее статус "
-"автоматически становится **«Отказано»**:"
+"Нажмите **«Сохранить»**. Статус заявки автоматически изменится на "
+"**«Отказано»**:"
 msgstr ""
 "And click **«Save»**. The request is created successfully and its status "
 "automatically becomes **«Rejected»**:"
 
-#: ../../case_sample/equipment_request_p2.rst:603
-msgid "Случай хода процесса по потоку по умолчанию (с согласованием сотрудником)"
-msgstr "Case of Process Following Default Flow (with Employee Approval)"
+#: ../../case_sample/equipment_request_p2.rst:491
+msgid "Согласование сотрудником (поток по умолчанию)"
+msgstr "Approval by Employee (Default Flow)"
 
-#: ../../case_sample/equipment_request_p2.rst:605
-msgid ""
-"Если указать любое другое название оборудования, не указанное в таблице, "
-"или указать:"
+#: ../../case_sample/equipment_request_p2.rst:493
+msgid "Если указать наименование, отсутствующее в таблице, или указать:"
 msgstr ""
 "If you specify any other equipment name not listed in the table, or "
 "specify:"
 
-#: ../../case_sample/equipment_request_p2.rst:607
-msgid "Название оборудование – **Ноутбук**"
-msgstr "Equipment Name – **Laptop**"
+#: ../../case_sample/equipment_request_p2.rst:495
+msgid "**Название оборудования** — ``Ноутбук``"
+msgstr "**Equipment Name** — ``Laptop``"
 
-#: ../../case_sample/equipment_request_p2.rst:608
-msgid "Стоимость - **65000**"
-msgstr "Cost - **65000**"
+#: ../../case_sample/equipment_request_p2.rst:496
+msgid "**Стоимость** — ``65000``"
+msgstr "**Cost** — ``65000``"
 
-#: ../../case_sample/equipment_request_p2.rst:616
+#: ../../case_sample/equipment_request_p2.rst:504
 msgid ""
-"то процесс пойдет стандартным способом, как в первоначальной :ref:`Заявке"
-" на закупку оборудования<sample_request>`:"
+"процесс выполнится стандартным образом, как в :ref:`базовой Заявке на "
+"закупку оборудования<sample_request>`:"
 msgstr ""
 "then the process will proceed in the standard way, as in the original "
 ":ref:`Equipment Purchase Request<sample_request>`:"
@@ -852,3 +855,166 @@ msgstr ""
 #~ "with 3 outputs** according to the "
 #~ ":ref:`rules<sample_request_dmn_rules>`:"
 
+#~ msgid ""
+#~ "Закупку оборудования всегда согласовывают, и"
+#~ " если заявка по каким-то критериям не"
+#~ " проходит – отклоняют."
+#~ msgstr ""
+#~ "Equipment purchases are always approved, "
+#~ "and if a request fails certain "
+#~ "criteria – it is rejected."
+
+#~ msgid ""
+#~ "В зависимости от условий согласование/отказ"
+#~ " в покупке некоторых видов оборудования "
+#~ "можно автоматизировать. Для рассмотрения "
+#~ "данного варианта подходит использование DMN,"
+#~ " а в частности :ref:`таблицы принятия "
+#~ "решений<dmn_decision>`"
+#~ msgstr ""
+#~ "Depending on the conditions, the "
+#~ "approval/rejection of purchasing certain types"
+#~ " of equipment can be automated. Using"
+#~ " DMN, specifically a :ref:`decision "
+#~ "table<dmn_decision>`, is suitable for this "
+#~ "scenario."
+
+#~ msgid ""
+#~ "DMN служит для сортировки входящих "
+#~ "данных процесса или уменьшения их "
+#~ "количества."
+#~ msgstr "DMN is used for sorting incoming process data or reducing its volume."
+
+#~ msgid ""
+#~ "Данная функциональность, основываясь на "
+#~ "входящих данных, помогает принять конечные "
+#~ "или промежуточные решения по бизнес-процессу."
+#~ msgstr ""
+#~ "This functionality, based on incoming "
+#~ "data, helps make final or intermediate"
+#~ " decisions for the business process."
+
+#~ msgid "Для начала работы необходимо создать саму таблицу."
+#~ msgstr "To get started, you need to create the table itself."
+
+#~ msgid "Совокупность входных элементов и выходного формируют решение."
+#~ msgstr "The combination of input elements and the output forms the decision."
+
+#~ msgid ""
+#~ "Согласована / не согласована покупка "
+#~ "автоматически, или необходимо согласование "
+#~ "конкретного сотрудника зависит от оборудования"
+#~ " и его стоимости."
+#~ msgstr ""
+#~ "Whether the purchase is approved/rejected "
+#~ "automatically or requires approval by a"
+#~ " specific employee depends on the "
+#~ "equipment and its cost."
+
+#~ msgid "**Approve**"
+#~ msgstr "**Approve**"
+
+#~ msgid "**Reject**"
+#~ msgstr "**Reject**"
+
+#~ msgid "Финальная таблица:"
+#~ msgstr "Final table:"
+
+#~ msgid "Теперь таблицу принятия решения можно сохранить и опубликовать, нажав:"
+#~ msgstr "Now the decision table can be saved and published by clicking:"
+
+#~ msgid ""
+#~ "Используя произвольное выделение **(1)** "
+#~ "выберите и переместите левее элементы:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "В меню выберите элемент **«Task»** и "
+#~ "перетащите его за **статус «Заявка "
+#~ "создана»**:"
+#~ msgstr ""
+
+#~ msgid "Укажите в форме:"
+#~ msgstr "Specify in the form:"
+
+#~ msgid ""
+#~ "Следующим элементом необходимо добавить "
+#~ ":ref:`Business rule task<business_rule_task>`."
+#~ msgstr ""
+#~ "The next component to add is a "
+#~ ":ref:`Business rule task<business_rule_task>`."
+
+#~ msgid ""
+#~ "Используя произвольное выделение **(1)** "
+#~ "выберите и переместите левее элементы, В"
+#~ " меню выберите элемент **«Task»** и "
+#~ "перетащите его за созданную выше "
+#~ "**скриптовую задачу**:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "После элемента **Решение по заявке** "
+#~ "необходимо добавить **шлюз**, у которого "
+#~ "должно быть 3 выхода в соответствии "
+#~ "с :ref:`правилами<sample_request_dmn_rules>`, и, "
+#~ "соответственно добавить 2 шлюза к "
+#~ "первоначально созданному в базовом процессе:"
+#~ msgstr ""
+
+#~ msgid "где"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Стрелка **(1)** означает поток по "
+#~ "умолчанию и получается из стандартного "
+#~ "потока следующим образом:"
+#~ msgstr ""
+#~ "Arrow **(1)** represents the default "
+#~ "flow and is derived from the "
+#~ "standard flow as follows:"
+
+#~ msgid ""
+#~ "Поток автоматического согласования по итогу"
+#~ " применения таблицы принятия решения:"
+#~ msgstr "The automatic approval flow resulting from applying the decision table:"
+
+#~ msgid "Имя - **«Авт. согласование»**,"
+#~ msgstr "Name - **«Auto. Approval»**,"
+
+#~ msgid "Скрипт:"
+#~ msgstr "Script:"
+
+#~ msgid ""
+#~ "Поток автоматического отказа по итогу "
+#~ "применения таблицы принятия решения:"
+#~ msgstr ""
+#~ "The automatic rejection flow resulting "
+#~ "from applying the decision table:"
+
+#~ msgid "Имя - **«Авт. отказ»**,"
+#~ msgstr "Name - **«Auto. Rejection»**,"
+
+#~ msgid "Укажите имя **«Согласовано согласующим»**."
+#~ msgstr "Specify the name **«Approved by Approver»**."
+
+#~ msgid "В поле **«Тип условия»** выберите вариант **«Исходящий»**."
+#~ msgstr "In the **«Condition Type»** field, select the **«Outgoing»** option."
+
+#~ msgid "Укажите имя **«Отказано согласующим»**."
+#~ msgstr "Specify the name **«Rejected by Approver»**."
+
+#~ msgid "Процесс можно сохранить и опубликовать, нажав:"
+#~ msgstr "The process can be saved and published by clicking:"
+
+#~ msgid ""
+#~ "Будьте внимательны при сравнении строк и"
+#~ " использовании символов в unicode."
+#~ msgstr "Be careful when comparing strings and using unicode characters."
+
+#~ msgid "В журнале создадим заявку с данными:"
+#~ msgstr "In the journal, create a request with the data:"
+
+#~ msgid ""
+#~ "Случай хода процесса по потоку по "
+#~ "умолчанию (с согласованием сотрудником)"
+#~ msgstr "Case of Process Following Default Flow (with Employee Approval)"

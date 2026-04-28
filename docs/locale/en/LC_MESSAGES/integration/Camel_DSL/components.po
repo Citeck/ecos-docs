@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,10 +27,13 @@ msgid ""
 "**Компоненты** используются для подключения маршрутов к внешним системам "
 "и сервисам."
 msgstr ""
-"**Components** are used to connect routes to external systems and services."
+"**Components** are used to connect routes to external systems and "
+"services."
 
 #: ../../integration/Camel_DSL/components.rst:6
-msgid "Подробнее - https://camel.apache.org/manual/component.html"
+msgid ""
+"Подробнее: `Apache Camel Components "
+"<https://camel.apache.org/manual/component.html>`_"
 msgstr "More details - https://camel.apache.org/manual/component.html"
 
 #: ../../integration/Camel_DSL/components.rst:9
@@ -40,33 +42,39 @@ msgstr "EcosRecordsSync Camel Component"
 
 #: ../../integration/Camel_DSL/components.rst:11
 msgid ""
-"**EcosRecordsSyncComponent** - компонент camel, созданный для "
+"**EcosRecordsSyncComponent** — компонент camel, созданный для "
 "перебора/обновления записей через RecordsAPI. Ключ для использования "
 "компонента в camel-контексте: *ecos-records-sync*"
 msgstr ""
-"**EcosRecordsSyncComponent** - a Camel component created for iterating/updating records via RecordsAPI. The key for using the component in a Camel context: *ecos-records-sync*"
+"**EcosRecordsSyncComponent** - a Camel component created for "
+"iterating/updating records via RecordsAPI. The key for using the "
+"component in a Camel context: *ecos-records-sync*"
 
 #: ../../integration/Camel_DSL/components.rst:13
 msgid ""
 "Компонент включает в себя как потребителя *EcosRecordsSyncConsumer*, так "
-"и производителя EcosRecordsSyncProducer по терминологии camel"
+"и производителя *EcosRecordsSyncProducer* по терминологии camel."
 msgstr ""
-"The component includes both a consumer (*EcosRecordsSyncConsumer*) and a producer (*EcosRecordsSyncProducer*) in Camel terminology"
+"The component includes both a consumer (*EcosRecordsSyncConsumer*) and a "
+"producer (*EcosRecordsSyncProducer*) in Camel terminology"
 
 #: ../../integration/Camel_DSL/components.rst:15
 msgid ""
 "Ниже будут примеры регистрации компонента в yaml формате, например, при "
 "регистрации через Camel DSL."
 msgstr ""
-"Below are examples of registering the component in YAML format, for instance, when registering via Camel DSL."
+"Below are examples of registering the component in YAML format, for "
+"instance, when registering via Camel DSL."
 
 #: ../../integration/Camel_DSL/components.rst:17
 msgid ""
 "**EcosRecordsSyncConsumer**. Расширяет стандартный "
 "ScheduledBatchPollingConsumer, реализует перебор записей по ECOS типу + "
-"sourceId. Возможные настройки для  *ecos-records-sync* консьюмера:"
+"sourceId. Возможные настройки для *ecos-records-sync* консьюмера:"
 msgstr ""
-"**EcosRecordsSyncConsumer**. Extends the standard ScheduledBatchPollingConsumer, implements iteration of records by ECOS type + sourceId. Possible settings for the *ecos-records-sync* consumer:"
+"**EcosRecordsSyncConsumer**. Extends the standard "
+"ScheduledBatchPollingConsumer, implements iteration of records by ECOS "
+"type + sourceId. Possible settings for the *ecos-records-sync* consumer:"
 
 #: ../../integration/Camel_DSL/components.rst:24
 #: ../../integration/Camel_DSL/components.rst:62
@@ -89,7 +97,9 @@ msgid ""
 "camel контексты. На основе этого значения создается стейт для "
 "периодического пуллинга из sourceId"
 msgstr ""
-"A unique value within the application instance where Camel contexts are running. A state for periodic polling from the sourceId is created based on this value."
+"A unique value within the application instance where Camel contexts are "
+"running. A state for periodic polling from the sourceId is created based "
+"on this value."
 
 #: ../../integration/Camel_DSL/components.rst
 msgid "см: journalId=ecos-sync-state"
@@ -104,11 +114,11 @@ msgid "DEFAULT | CREATE | UPDATE"
 msgstr "DEFAULT | CREATE | UPDATE"
 
 #: ../../integration/Camel_DSL/components.rst
-msgid "DEFAULT, UPDATE - перебор записей по дате обновления"
+msgid "DEFAULT, UPDATE — перебор записей по дате обновления"
 msgstr "DEFAULT, UPDATE - iterate records by update date"
 
 #: ../../integration/Camel_DSL/components.rst
-msgid "CREATE - перебор записей по дате создания"
+msgid "CREATE — перебор записей по дате создания"
 msgstr "CREATE - iterate records by creation date"
 
 #: ../../integration/Camel_DSL/components.rst:33
@@ -145,13 +155,18 @@ msgstr "Usage example:"
 #: ../../integration/Camel_DSL/components.rst:55
 msgid ""
 "**EcosRecordsSyncProducer**. Расширяет DefaultProducer, реализует "
-"обновление записи через RecordsAPI. Данные для обновления берется из тела"
-" сообщения (id из тела из проперти сообщения - "
-"CamelEcosRecordsSyncEntityRef). Возможные настройки для  *ecos-records-"
+"обновление записи через RecordsAPI. Данные для обновления берётся из тела"
+" сообщения (id из тела из проперти сообщения — "
+"CamelEcosRecordsSyncEntityRef). Возможные настройки для *ecos-records-"
 "sync* продюсера:"
 msgstr ""
-"**EcosRecordsSyncProducer**. Extends DefaultProducer, implements record update via RecordsAPI. The data for the update is taken from the message body (id from the body or from the message property - CamelEcosRecordsSyncEntityRef). Possible settings for the *ecos-records-sync* producer:"
+"**EcosRecordsSyncProducer**. Extends DefaultProducer, implements record "
+"update via RecordsAPI. The data for the update is taken from the message "
+"body (id from the body or from the message property - "
+"CamelEcosRecordsSyncEntityRef). Possible settings for the *ecos-records-"
+"sync* producer:"
 
 #: ../../integration/Camel_DSL/components.rst:65
 msgid "любое значение, скорее информационное"
 msgstr "any value, mostly informational"
+

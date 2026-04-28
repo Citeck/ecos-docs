@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/launcher_server.rst:4
+msgid "Citeck Launcher: серверный режим"
+msgstr "Citeck Launcher: Server Mode"
+
+#: ../../admin/launch_setup/launcher_server.rst:6
+msgid ""
+"**Citeck Launcher** в серверном режиме -- это единый исполняемый файл (Go "
+"binary, ~24 МБ), предназначенный для развёртывания и управления платформой "
+"Citeck на серверах Linux. В отличие от :ref:`десктопной версии "
+"<citeck_launcher>`, серверный режим работает без графического интерфейса: "
+"управление осуществляется через **CLI** и **systemd-сервис**."
+msgstr ""
+"**Citeck Launcher** in server mode is a single executable file (Go binary, "
+"~24 MB), designed for deploying and managing the Citeck platform on Linux "
+"servers. Unlike the :ref:`desktop version <citeck_launcher>`, server mode "
+"operates without a graphical interface: management is performed via **CLI** "
+"and **systemd service**."
+
+#: ../../admin/launch_setup/launcher_server.rst:8
+msgid "**Возможности:**"
+msgstr "**Features:**"
+
+#: ../../admin/launch_setup/launcher_server.rst:10
+msgid ""
+"Полностью автоматизированная установка через интерактивный мастер или one-"
+"liner скрипт."
+msgstr ""
+"Fully automated installation via interactive wizard or one-liner script."
+
+#: ../../admin/launch_setup/launcher_server.rst:11
+msgid ""
+"Управление жизненным циклом платформы: запуск, остановка, перезапуск, "
+"обновление."
+msgstr "Platform lifecycle management: start, stop, restart, update."
+
+#: ../../admin/launch_setup/launcher_server.rst:12
+msgid ""
+"TLS из коробки: автоматический HTTPS (Let's Encrypt, включая IP-адреса), "
+"самоподписанные сертификаты, пользовательские сертификаты."
+msgstr ""
+"TLS out of the box: automatic HTTPS (Let's Encrypt, including IP addresses),"
+" self-signed certificates, custom certificates."
+
+#: ../../admin/launch_setup/launcher_server.rst:13
+msgid "Управление паролем администратора (Keycloak, RabbitMQ, PgAdmin)."
+msgstr "Administrator password management (Keycloak, RabbitMQ, PgAdmin)."
+
+#: ../../admin/launch_setup/launcher_server.rst:14
+msgid "Интеграция с systemd: автоматический перезапуск при сбоях."
+msgstr "systemd integration: automatic restart on failures."
+
+#: ../../admin/launch_setup/launcher_server.rst:15
+msgid "Горячая перезагрузка конфигурации (``citeck reload``)."
+msgstr "Hot configuration reload (``citeck reload``)."
+
+#: ../../admin/launch_setup/launcher_server.rst:16
+msgid "Резервное копирование и восстановление данных (snapshots)."
+msgstr "Data backup and restore (snapshots)."
+
+#: ../../admin/launch_setup/launcher_server.rst:17
+msgid "Очистка неиспользуемых ресурсов Docker."
+msgstr "Cleanup of unused Docker resources."
+
+#: ../../admin/launch_setup/launcher_server.rst:18
+msgid "Диагностика и проверка здоровья системы."
+msgstr "Diagnostics and system health checks."
+
+#: ../../admin/launch_setup/launcher_server.rst:20
+msgid "**Требования:**"
+msgstr "**Requirements:**"
+
+#: ../../admin/launch_setup/launcher_server.rst:22
+msgid "Поддерживаемые платформы:"
+msgstr "Supported platforms:"
+
+#: ../../admin/launch_setup/launcher_server.rst:24
+msgid "**Linux amd64** (x86_64) -- рекомендуется для production"
+msgstr "**Linux amd64** (x86_64) -- recommended for production"
+
+#: ../../admin/launch_setup/launcher_server.rst:25
+msgid ""
+"**Linux arm64** (aarch64) -- AWS Graviton, Oracle Cloud Ampere, Raspberry Pi"
+" и т.п."
+msgstr ""
+"**Linux arm64** (aarch64) -- AWS Graviton, Oracle Cloud Ampere, Raspberry "
+"Pi, etc."
+
+#: ../../admin/launch_setup/launcher_server.rst:27
+msgid ""
+"Установлен `Docker <https://docs.docker.com/engine/install/>`_ (Docker "
+"Engine, не Docker Desktop)"
+msgstr ""
+"Installed `Docker <https://docs.docker.com/engine/install/>`_ (Docker "
+"Engine, not Docker Desktop)"
+
+#: ../../admin/launch_setup/launcher_server.rst:28
+msgid "Не менее **16 ГБ** ОЗУ для Community, **24–32 ГБ** для Enterprise"
+msgstr "At least **16 GB** RAM for Community, **24–32 GB** for Enterprise"
+
+#: ../../admin/launch_setup/launcher_server.rst:29
+msgid "Не менее **50 ГБ** свободного дискового пространства"
+msgstr "At least **50 GB** free disk space"
+
+#: ../../admin/launch_setup/launcher_server.rst:30
+msgid "Root-доступ (для systemd и привязки к портам 80/443)"
+msgstr "Root access (for systemd and binding to ports 80/443)"
+
+#: ../../admin/launch_setup/launcher_server.rst:34
+msgid ""
+"Для Enterprise-бандла **16 ГБ ОЗУ -- это абсолютный минимум без запаса**. "
+"Сразу после установки необходимо отключить 7 необязательных приложений "
+"(``citeck stop onlyoffice attorneys ecom service-desk ecos-project-tracker "
+"ai edi``), иначе OOM Killer начнёт завершать процессы. Для стабильной работы"
+" с полным набором приложений требуется **24--32 ГБ** ОЗУ."
+msgstr ""
+"For the Enterprise bundle, **16 GB RAM is the absolute minimum with no "
+"reserve**. Immediately after installation, 7 optional applications must be "
+"stopped (``citeck stop onlyoffice attorneys ecom service-desk ecos-project-"
+"tracker ai edi``), otherwise the OOM Killer will start terminating "
+"processes. For stable operation with the full application set, **24--32 GB**"
+" RAM is required."
+
+#: ../../admin/launch_setup/launcher_server.rst:38
+msgid ""
+"Серверный режим доступен начиная с версии **2.0**. Для десктопных систем "
+"(Windows / Linux / macOS с GUI) используйте :ref:`локальный режим "
+"<citeck_launcher>`."
+msgstr ""
+"Server mode is available starting from version **2.0**. For desktop systems "
+"(Windows / Linux / macOS with GUI), use :ref:`local mode <citeck_launcher>`."
+
+#: ../../admin/launch_setup/launcher_server.rst:40
+msgid "Для быстрого старта перейдите к разделу :ref:`server_quick_start`."
+msgstr "For a quick start, go to the :ref:`server_quick_start` section."
