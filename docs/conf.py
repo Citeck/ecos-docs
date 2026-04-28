@@ -47,11 +47,13 @@ gettext_compact = False     # Опция, которая определяет р
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
+ 'sphinx.ext.imgconverter',
  'sphinx_search.extension',
  'sphinx_copybutton',
  'sphinx_tabs.tabs',
  'sphinx_rtd_theme',
- 'sphinxcontrib.mermaid'
+ 'sphinxcontrib.mermaid',
+ 'sphinxcontrib.rsvgconverter'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -123,4 +125,30 @@ html_static_path = ['_static']
 
 def setup(app):
   app.add_css_file( "css/main_theme.css" )
+
+# -- Options for LaTeX/PDF output --------------------------------------------
+
+# XeLaTeX корректно обрабатывает кириллицу в отличие от pdflatex по умолчанию.
+latex_engine = 'xelatex'
+
+# В LaTeX у itemize/enumerate по умолчанию максимум 4 уровня вложенности. В
+# документации встречаются более глубокие списки (например, в разделе CRM),
+# поэтому увеличиваем предел до 9 через пакет enumitem.
+latex_elements = {
+    'preamble': r'''
+\usepackage{enumitem}
+\setlistdepth{9}
+\renewlist{itemize}{itemize}{9}
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+\setlist[itemize,3]{label=$\diamond$}
+\setlist[itemize,4]{label=$\ast$}
+\setlist[itemize,5]{label=$\cdot$}
+\setlist[itemize,6]{label=$\bullet$}
+\setlist[itemize,7]{label=$\circ$}
+\setlist[itemize,8]{label=$\diamond$}
+\setlist[itemize,9]{label=$\ast$}
+\renewlist{enumerate}{enumerate}{9}
+''',
+}
 

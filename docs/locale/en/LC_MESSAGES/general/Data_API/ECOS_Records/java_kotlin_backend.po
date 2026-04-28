@@ -1,0 +1,398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:4
+msgid "Kotlin/Java Backend"
+msgstr "Kotlin/Java Backend"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:6
+msgid ""
+"Для работы с RecordsAPI на kotlin/java бэкенде предусмотрена библиотека "
+"ecos-records - https://github.com/Citeck/ecos-records"
+msgstr ""
+"The ecos-records library is provided for working with RecordsAPI on the "
+"Kotlin/Java backend - https://github.com/Citeck/ecos-records"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:8
+msgid ""
+"Подключив библиотеку можно создать ``RecordsServiceFactory`` и получить "
+"оттуда все сервисы для работы с RecordsAPI. Инициализация сервисов "
+"инкапсулирована в ``RecordsServiceFactory`` и не требует обязательного "
+"наличия DI механизмов."
+msgstr ""
+"Once the library is connected, you can create a ``RecordsServiceFactory`` "
+"and obtain all services for working with RecordsAPI from it. Service "
+"initialization is encapsulated in ``RecordsServiceFactory`` and does not "
+"require a DI mechanism."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:11
+msgid ""
+"Основной сервис для работы с RecordsAPI -  "
+"``ru.citeck.ecos.records3.RecordsService``. Пример использования:"
+msgstr ""
+"The main service for working with RecordsAPI is "
+"``ru.citeck.ecos.records3.RecordsService``. Usage example:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:15
+msgid "Kotlin"
+msgstr "Kotlin"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:28
+msgid "Java"
+msgstr "Java"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:41
+msgid ""
+"Здесь мы создаем новую мапу с одним значением и получаем из неё атрибут с"
+" именем someKey через ``RecordsService``."
+msgstr ""
+"Here we create a new map with one value and retrieve from it the attribute "
+"named someKey via ``RecordsService``."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:43
+msgid "Есть два основных сценария использования ``RecordsService``:"
+msgstr "There are two main usage scenarios for ``RecordsService``:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:45
+msgid ""
+"Работа с уже готовыми данными как в примере выше. Нам не нужно никуда "
+"отправлять запросы и получение атрибутов проходит в пределах сервиса. В "
+"этом режиме доступно только получение атрибутов и Records DAO никак не "
+"задействуются."
+msgstr ""
+"Working with pre-existing data as in the example above. No requests need "
+"to be sent anywhere, and attribute retrieval occurs within the service. "
+"In this mode, only attribute retrieval is available and Records DAOs are "
+"not involved."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:47
+msgid ""
+"Работа с ссылками (``EntityRef``). В этом режиме сервис взаимодействует с"
+" источниками данных, функционал которых реализован через следующие "
+"интерфейсы:"
+msgstr ""
+"Working with references (``EntityRef``). In this mode, the service "
+"interacts with data sources whose functionality is implemented via the "
+"following interfaces:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:49
+msgid ""
+"``RecordsDao`` базовый интерфейс для всех остальных ниже по списку. "
+"Содержит только один метод - ``String getId()``, который используется при"
+" регистрации ``RecordsDao`` в ``RecordsService``;"
+msgstr ""
+"``RecordsDao`` is the base interface for all others listed below. It "
+"contains only one method — ``String getId()``, which is used when "
+"registering ``RecordsDao`` in ``RecordsService``;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:51
+msgid "``RecordsQueryDao`` для поиска записей;"
+msgstr "``RecordsQueryDao`` for searching records;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:53
+msgid ""
+"``RecordsAttsDao`` (``RecordAttsDao``) для получения атрибутов по заранее"
+" известным идентификаторам записей;"
+msgstr ""
+"``RecordsAttsDao`` (``RecordAttsDao``) for retrieving attributes by "
+"pre-known record identifiers;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:55
+msgid "``RecordMutateDao`` для создания или редактирования записей;"
+msgstr "``RecordMutateDao`` for creating or editing records;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:57
+msgid "``RecordsDeleteDao`` (``RecordDeleteDao``) для удаления записей;"
+msgstr "``RecordsDeleteDao`` (``RecordDeleteDao``) for deleting records;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:62
+msgid ""
+"В скобках указаны варианты интерфейсов, где в метод приходит только один "
+"идентификатор записи. По своей сути эти интерфейсы отличаются от "
+"множественного варианта только отсутствием необходимости писать перебор "
+"идентификаторов вручную. Но если есть какие-либо оптимизации, которые "
+"можно реализовать при пакетной обработке записей, то следует "
+"реализовывать интерфейсы, которые принимают коллекции записей."
+msgstr ""
+"The parentheses show interface variants where the method receives only a "
+"single record identifier. These interfaces differ from the multi-record "
+"variant only in that you do not need to manually iterate over identifiers. "
+"However, if there are optimizations that can be applied when processing "
+"records in batch, the interfaces accepting record collections should be "
+"implemented."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:65
+msgid ""
+"Records DAO - реализация абстрактного понятия \"Источник данных\". Один "
+"Records DAO может представлять разные источники данных."
+msgstr ""
+"Records DAO is an implementation of the abstract concept \"Data Source\". "
+"One Records DAO can represent different data sources."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:67
+msgid ""
+"При работе с Records DAO в зависимости от типа действия происходит "
+"следующее:"
+msgstr ""
+"When working with Records DAO, the following occurs depending on the type "
+"of action:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:69
+msgid ""
+"**Query**. Мы передаем в ``RecordsQueryDao`` поисковый запрос и ждем на "
+"выходе следующие типы значений (поддерживаются как коллекции этих "
+"значений так и значения в одном экземпляре):"
+msgstr ""
+"**Query**. We pass a search query to ``RecordsQueryDao`` and expect the "
+"following output value types (both collections and single instances are "
+"supported):"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:71
+msgid ""
+"``EntityRef`` - ссылки на сущности. Если мы получаем ссылки, то сервис "
+"обращается к соответствующему ``RecordsAttsDao`` для получения атрибутов;"
+msgstr ""
+"``EntityRef`` — entity references. If we receive references, the service "
+"calls the corresponding ``RecordsAttsDao`` to retrieve attributes;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:73
+msgid ""
+"``String`` - текстовый результат означает что мы вернули идентификаторы "
+"записей, по которым нам нужно получить атрибуты через RecordsAttsDao. "
+"Если в строке не указан другой Records DAO, то используется тот же, у "
+"которого мы вызывали query;"
+msgstr ""
+"``String`` — a text result means we returned record identifiers for which "
+"attributes need to be retrieved via RecordsAttsDao. If no other Records "
+"DAO is specified in the string, the same one from which query was called "
+"is used;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:75
+msgid "``RecsQueryRes`` - список записей вместе с данными об их общем количестве;"
+msgstr "``RecsQueryRes`` — a list of records together with data about their total count;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:77
+msgid ""
+"``Any`` - любое другое значение, которое обрабатывается с использованием "
+"реализаций интерфейса ``AttValueFactory``;"
+msgstr ""
+"``Any`` — any other value, which is processed using implementations of "
+"the ``AttValueFactory`` interface;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:79
+msgid ""
+"**Get attributes**. Получение атрибутов по идентификаторам записей. Этот "
+"метод используется либо с результатом Query из предыдущего пункта либо "
+"посредством прямого вызова ``recordsService.getAtts(...)`` Метод "
+"возвращает любое значение, которое обрабатывается с использованием "
+"реализаций интерфейса ``AttValueFactory``;"
+msgstr ""
+"**Get attributes**. Retrieving attributes by record identifiers. This "
+"method is used either with the Query result from the previous item or via "
+"a direct call to ``recordsService.getAtts(...)`` The method returns any "
+"value processed using implementations of the ``AttValueFactory`` interface;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:82
+msgid "**Mutate**. Изменение или создание записей через ``RecordMutateDao``"
+msgstr "**Mutate**. Modifying or creating records via ``RecordMutateDao``."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:85
+msgid ""
+"В Records API создание записи происходит при мутации записи с пустым "
+"локальным идентификатором. Т.е. если мы хотим создать сущность в "
+"микросервисе emodel в источнике данных types-repo то делаем следующее:"
+msgstr ""
+"In Records API, a record is created by mutating a record with an empty "
+"local identifier. That is, if we want to create an entity in the emodel "
+"microservice in the types-repo data source, we do the following:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:103
+msgid "**Delete**. Удаление записей через ``RecordsDeleteDao``"
+msgstr "**Delete**. Deleting records via ``RecordsDeleteDao``."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:105
+msgid ""
+"**AttValue** - интерфейс, который представляет собой значение, с которым "
+"умеет работать ``RecordsService`` при получении атрибутов. Методы "
+"интерфейса:"
+msgstr ""
+"**AttValue** — an interface that represents a value that ``RecordsService`` "
+"can work with when retrieving attributes. Interface methods:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:124
+msgid ""
+"**AttValueFactory** - интерфейс для преобразования произвольных типов "
+"данных в имплементацию **AttValue**"
+msgstr ""
+"**AttValueFactory** — an interface for converting arbitrary data types "
+"into an **AttValue** implementation."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:141
+msgid ""
+"Для регистрации произвольных AttValueFactory нужно в библиотеке или "
+"микросервисе создать следующий файл::"
+msgstr ""
+"To register custom AttValueFactory instances, create the following file "
+"in the library or microservice::"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:145
+msgid ""
+"Внутри этого файла должно быть полное имя класса (вместе с пакетом) с "
+"вашей реализацией интерфейса **AttValueFactory**"
+msgstr ""
+"This file must contain the fully qualified class name (including the "
+"package) of your **AttValueFactory** interface implementation."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:147
+msgid ""
+"Пример: https://github.com/Citeck/ecos-records/blob/master/ecos-"
+"records/src/test/resources/META-"
+"INF/services/ru.citeck.ecos.records3.record.atts.value.factory.AttValueFactory"
+msgstr ""
+"Example: https://github.com/Citeck/ecos-records/blob/master/ecos-"
+"records/src/test/resources/META-"
+"INF/services/ru.citeck.ecos.records3.record.atts.value.factory.AttValueFactory"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:149
+msgid ""
+"Если для значения не нашлось подходящего ``AttValueFactory``, то "
+"используется стандартная фабрика ``BeanValueFactory``. Эта фабрика "
+"работает со значением как с бином, у которого ищутся геттеры для "
+"атрибутов."
+msgstr ""
+"If no suitable ``AttValueFactory`` is found for a value, the default "
+"``BeanValueFactory`` is used. This factory treats the value as a bean, "
+"looking for getters for attributes."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:152
+msgid "Например, если у нас есть следующий бин:"
+msgstr "For example, if we have the following bean:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:166
+msgid ""
+"То с точки зрения ``BeanValueFactory`` у этого бина есть значение с одним"
+" атрибутом \"field\". Пример работы:"
+msgstr ""
+"From the perspective of ``BeanValueFactory``, this bean has a value with "
+"one attribute \"field\". Usage example:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:179
+msgid ""
+"Если же мы хотим изменить имя атрибута не меняя названия методов, то "
+"можно воспользоваться аннотацией ``AttName``:"
+msgstr ""
+"If we want to change the attribute name without renaming the methods, we "
+"can use the ``AttName`` annotation:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:200
+msgid ""
+"Аннотация ``@AttName`` помогает задать произвольное имя атрибута. Её "
+"можно использовать:"
+msgstr ""
+"The ``@AttName`` annotation allows setting an arbitrary attribute name. "
+"It can be used:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:202
+msgid "На геттере, чтобы дать произвольное название атрибуту;"
+msgstr "On a getter, to assign an arbitrary name to an attribute;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:203
+msgid ""
+"На сеттере для конвертации DTO -> Схема атрибутов для запроса; (см. "
+"методы ``recordsService.getAtts(Any record, Class<?> atts)``)"
+msgstr ""
+"On a setter for converting DTO -> attribute schema for a query; (see "
+"methods ``recordsService.getAtts(Any record, Class<?> atts)``);"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:204
+msgid ""
+"Аннотация на поле работает как для сеттера так и для геттера если они "
+"есть;"
+msgstr "An annotation on a field works for both the setter and the getter if they exist;"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:206
+msgid ""
+"Аннотация ``@AttName`` может в качестве аргумента принимать значение "
+"``\"...\"``. Такая запись означает, что все атрибуты из поля с этой "
+"аннотацией будут доступны так же и в нашем значении. Пример:"
+msgstr ""
+"The ``@AttName`` annotation can accept ``\"...\"`` as an argument. This "
+"notation means that all attributes from the field with this annotation "
+"will also be accessible in our value. Example:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:233
+msgid ""
+"Так же особое значение имеют аннотации ``AttName`` где в качестве "
+"аргумента указан один из скаляров с вопросительным знаком. Например: "
+"``@AttName(\"?str\")``. Такие геттеры вызываются при загрузке скаляров."
+msgstr ""
+"Also of special significance are ``AttName`` annotations where one of the "
+"question-mark scalars is specified as the argument. For example: "
+"``@AttName(\"?str\")``. Such getters are called when loading scalars."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:236
+msgid ""
+"``BeanValueFactory`` так же ищет в бине ряд специальных методов по их "
+"имени и аргументам (тип возвращаемого значения не важен):"
+msgstr ""
+"``BeanValueFactory`` also searches the bean for a number of special "
+"methods by their name and arguments (the return type does not matter):"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:253
+msgid ""
+"Для отображаемого имени нашего бина ``BeanValueFactory`` ищет следующие "
+"методы в порядке убывания приоритета (используется первый найденный):"
+msgstr ""
+"For the display name of our bean, ``BeanValueFactory`` searches for the "
+"following methods in descending priority order (the first found is used):"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:265
+msgid "Типы данных в Kotlin/Java"
+msgstr "Data Types in Kotlin/Java"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:270
+msgid "Метод ObjectData set/add"
+msgstr "ObjectData set/add Methods"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:272
+msgid "``set`` — установить значение по ключу. Аналог метода ``put`` в ``Map``."
+msgstr "``set`` — sets a value by key. Equivalent to the ``put`` method in ``Map``."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:274
+msgid ""
+"``add`` — добавить элемент к массиву. Сам по себе **ObjectData** является"
+" аналогом **Map**, и для него ``add`` имеет мало смысла напрямую, но "
+"``add`` первым аргументом может принимать путь до вложенного массива."
+msgstr ""
+"``add`` — adds an element to an array. **ObjectData** itself is an "
+"equivalent of **Map**, and ``add`` has little direct meaning for it, but "
+"``add`` can accept a path to a nested array as its first argument."
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:278
+msgid "Например:"
+msgstr "For example:"
+
+#: ../../general/Data_API/ECOS_Records/java_kotlin_backend.rst:286
+msgid ""
+"Формат с **$** — стандарт `JsonPath "
+"<https://goessner.net/articles/JsonPath/>`_."
+msgstr ""
+"The **$** format is the `JsonPath "
+"<https://goessner.net/articles/JsonPath/>`_ standard."

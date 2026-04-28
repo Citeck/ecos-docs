@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:2
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:4
 msgid "Библиотека ecos-camel-core"
 msgstr "ecos-camel-core Library"
 
@@ -28,26 +27,82 @@ msgid ""
 "Библиотека является надстройкой над Apache Camel, которая адаптирована "
 "для работы с платформой Citeck."
 msgstr ""
-"The library is an extension built on top of Apache Camel, adapted for working with the Citeck platform."
+"The library is an extension built on top of Apache Camel, adapted for "
+"working with the Citeck platform."
 
 #: ../../integration/Camel_DSL/ecos-camel-core.rst:10
 msgid "Для работы с библиотекой необходима enterprise лицензия."
 msgstr "An enterprise license is required to use the library."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:12
-msgid "Для начала работы нужно добавить зависимость в нужном микросервисе:"
-msgstr "To get started, you need to add the dependency in the relevant microservice:"
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:13
+msgid "Подключение"
+msgstr "Setup"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:21
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:15
+msgid "Добавьте зависимость в нужном микросервисе:"
+msgstr "Add the dependency to the required microservice:"
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:24
 msgid "Подходящая версия будет загружена из родительского POM."
 msgstr "The appropriate version will be downloaded from the parent POM."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:23
-msgid "Подробнее про :ref:`ecos-records-mutate<EcosRecordsMutateEndpoint>`"
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:27
+msgid "Пример использования"
+msgstr "Usage Example"
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:29
+msgid ""
+"Создайте компонент с настройками роутов. Он запустит новый контекст после"
+" старта приложения:"
+msgstr ""
+"Create a component with route configurations that will launch a new "
+"context after the application starts:"
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:123
+msgid "Пример демонстрирует следующий сценарий:"
+msgstr "The example demonstrates the following scenario:"
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:125
+msgid ""
+"При старте приложения через ``@PostConstruct`` создаётся и запускается "
+"новый ``EcosCamelContext``."
+msgstr ""
+"When the application starts, a new ``EcosCamelContext`` is created and "
+"launched via ``@PostConstruct``."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:126
+msgid ""
+"Роут подписывается на событие ``record-created`` по типу ``demo-type``, "
+"извлекая нужные атрибуты записи."
+msgstr ""
+"The route subscribes to the ``record-created`` event of type "
+"``demo-type``, extracting the required record attributes."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:127
+msgid ""
+"В ``process``-шаге формируется новый объект с полями, необходимыми для "
+"создания записи в целевом источнике."
+msgstr ""
+"In the ``process`` step, a new object is formed with the fields required "
+"to create a record in the target source."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:128
+msgid ""
+"Результат передаётся в endpoint ``ecos-records-mutate``, который создаёт "
+"новую сущность в ``emodel/demo-type-2``."
+msgstr ""
+"The result is passed to the ``ecos-records-mutate`` endpoint, which "
+"creates a new entity in ``emodel/demo-type-2``."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:129
+msgid ""
+"При остановке приложения контекст корректно завершается в методе "
+"``destroy()``."
+msgstr ""
+"When the application stops, the context is properly terminated in the "
+"``destroy()`` method."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:133
+msgid ":ref:`Endpoint ecos-records-mutate <EcosRecordsMutateEndpoint>`"
 msgstr "More about :ref:`ecos-records-mutate<EcosRecordsMutateEndpoint>`"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:25
-msgid ""
-"Далее создаем компонент с настройками роутов, который запустит новый "
-"контекст после старта приложения:"
-msgstr "Next, create a component with route configurations that will launch a new context after the application starts:"

@@ -1,0 +1,487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/Data_API/System_attributes.rst:4
+msgid "Системные атрибуты"
+msgstr "System Attributes"
+
+#: ../../general/Data_API/System_attributes.rst:6
+msgid ""
+"**Системные атрибуты** — зарезервированные атрибуты платформы Citeck, "
+"доступные для любой сущности вне зависимости от её типа. Они начинаются с"
+" символа ``_`` и предоставляют служебную информацию: метаданные сущности,"
+" права доступа, статус, мета-информацию об атрибутах, а также управляют "
+"поведением операций чтения и записи."
+msgstr ""
+"**System attributes** are reserved attributes of the Citeck platform, "
+"available for any entity regardless of its type. They start with the ``_`` "
+"character and provide service information: entity metadata, access rights, "
+"status, attribute meta-information, and also control the behavior of read "
+"and write operations."
+
+#: ../../general/Data_API/System_attributes.rst:8
+msgid ""
+"Системные атрибуты используются в тех же контекстах, что и обычные "
+"атрибуты: в Records API, в конфигурации журналов, форм, вычислениях и "
+"бизнес-процессах."
+msgstr ""
+"System attributes are used in the same contexts as regular attributes: in "
+"Records API, journal and form configuration, computations, and business "
+"processes."
+
+#: ../../general/Data_API/System_attributes.rst:16
+msgid "Атрибут"
+msgstr "Attribute"
+
+#: ../../general/Data_API/System_attributes.rst:17
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Data_API/System_attributes.rst:18
+msgid "**_null**"
+msgstr "**_null**"
+
+#: ../../general/Data_API/System_attributes.rst:19
+msgid "всегда возвращает ``null``"
+msgstr "always returns ``null``"
+
+#: ../../general/Data_API/System_attributes.rst:20
+msgid "**_type**"
+msgstr "**_type**"
+
+#: ../../general/Data_API/System_attributes.rst:21
+msgid "возвращает тип сущности"
+msgstr "returns the entity type"
+
+#: ../../general/Data_API/System_attributes.rst:22
+msgid "**_notExists**"
+msgstr "**_notExists**"
+
+#: ../../general/Data_API/System_attributes.rst:23
+msgid "возвращает ``true``, если сущность не существует"
+msgstr "returns ``true`` if the entity does not exist"
+
+#: ../../general/Data_API/System_attributes.rst:24
+msgid "**_has**"
+msgstr "**_has**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "проверить наличие чего-то в значении. Например:"
+msgstr "check whether something is present in the value. For example:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "проверить наличие прав на изменение сущности"
+msgstr "check whether the current user has permission to edit the entity"
+
+#: ../../general/Data_API/System_attributes.rst:32
+msgid "**_edge**"
+msgstr "**_edge**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"получить мета-информацию об атрибуте (имя, заголовок, возможность "
+"просматривать, возможность редактировать и т.д.):"
+msgstr ""
+"get meta-information about an attribute (name, title, ability to view, "
+"ability to edit, etc.):"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "например, для того чтобы узнать, что атрибут защищён от редактирования"
+msgstr "for example, to check whether an attribute is protected from editing"
+
+#: ../../general/Data_API/System_attributes.rst:40
+msgid "**_alias**"
+msgstr "**_alias**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"алиас сущности при сабмите. Используется, когда нужно создать несколько "
+"связанных сущностей."
+msgstr ""
+"entity alias used on submit. Used when multiple related entities need to be "
+"created at once."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Т.к. ID новых сущностей станет известен только после того, как "
+"непосредственно они будут созданы, то необходим «фиктивный ID», чтобы на "
+"него ссылаться в атрибутах."
+msgstr ""
+"Since the IDs of new entities become known only after they are actually "
+"created, a placeholder ID is required to reference them in attributes."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Например, хотим создать 2 сущности:"
+msgstr "For example, suppose we want to create 2 entities:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Движок создаёт сущности с конца. Т.е. сначала создаст:"
+msgstr "The engine creates entities from the end. That is, it first creates:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"получит идентификатор новой сущности **emodel/some-"
+"type@123-123-123-123**, пробежится по сущностям,"
+msgstr ""
+"it receives the identifier of the new entity **emodel/some-"
+"type@123-123-123-123** and iterates through the entities,"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"которые будут созданы далее и подменит все ``alias-value-0`` на реальный "
+"ID ``emodel/some-type@123-123-123-123``."
+msgstr ""
+"that will be created next and replaces all ``alias-value-0`` occurrences "
+"with the real ID ``emodel/some-type@123-123-123-123``."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Т.е. вторая сущность отправится на создание уже в виде:"
+msgstr "That is, the second entity is submitted for creation already as:"
+
+#: ../../general/Data_API/System_attributes.rst:65
+msgid "**_parent**"
+msgstr "**_parent**"
+
+#: ../../general/Data_API/System_attributes.rst:66
+msgid "ассоциация на родителя"
+msgstr "association to the parent entity"
+
+#: ../../general/Data_API/System_attributes.rst:67
+msgid "**_parentAtt**"
+msgstr "**_parentAtt**"
+
+#: ../../general/Data_API/System_attributes.rst:68
+msgid ""
+"родительский атрибут, по которому создаётся ссылка родитель → дочерняя "
+"сущность"
+msgstr ""
+"parent attribute used to create the parent → child entity reference"
+
+#: ../../general/Data_API/System_attributes.rst:69
+msgid "**_formKey**"
+msgstr "**_formKey**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"ключ формы (в множественном варианте), которые можно использовать для "
+"редактирования сущности в порядке приоритета от большего к меньшему."
+msgstr ""
+"form key (in plural form) that can be used for editing the entity, "
+"listed in descending priority order."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Позволяет связывать сущности без ECOS типа с формами (старые задачи, "
+"например)."
+msgstr ""
+"Allows linking entities without an ECOS type to forms (e.g., legacy tasks)."
+
+#: ../../general/Data_API/System_attributes.rst:72
+msgid "**_modified**"
+msgstr "**_modified**"
+
+#: ../../general/Data_API/System_attributes.rst:73
+msgid "дата изменения сущности"
+msgstr "entity modification date"
+
+#: ../../general/Data_API/System_attributes.rst:74
+msgid "**_modifier**"
+msgstr "**_modifier**"
+
+#: ../../general/Data_API/System_attributes.rst:75
+msgid "изменивший сущность"
+msgstr "user who modified the entity"
+
+#: ../../general/Data_API/System_attributes.rst:76
+msgid "**_statusModified**"
+msgstr "**_statusModified**"
+
+#: ../../general/Data_API/System_attributes.rst:77
+msgid "дата последнего изменения статуса у записи"
+msgstr "date of the last status change for the record"
+
+#: ../../general/Data_API/System_attributes.rst:78
+msgid "**_created**"
+msgstr "**_created**"
+
+#: ../../general/Data_API/System_attributes.rst:79
+msgid "дата создания сущности"
+msgstr "entity creation date"
+
+#: ../../general/Data_API/System_attributes.rst:80
+msgid "**_creator**"
+msgstr "**_creator**"
+
+#: ../../general/Data_API/System_attributes.rst:81
+msgid "создавший сущность"
+msgstr "user who created the entity"
+
+#: ../../general/Data_API/System_attributes.rst:82
+msgid "**_content**"
+msgstr "**_content**"
+
+#: ../../general/Data_API/System_attributes.rst:83
+msgid "содержимое сущности"
+msgstr "entity content"
+
+#: ../../general/Data_API/System_attributes.rst:84
+msgid "**_actions**"
+msgstr "**_actions**"
+
+#: ../../general/Data_API/System_attributes.rst:85
+msgid "действия"
+msgstr "actions"
+
+#: ../../general/Data_API/System_attributes.rst:86
+msgid "**_docNum**"
+msgstr "**_docNum**"
+
+#: ../../general/Data_API/System_attributes.rst:87
+msgid "номер документа, который генерируется по шаблону нумерации в типе"
+msgstr "document number generated according to the numbering template defined in the type"
+
+#: ../../general/Data_API/System_attributes.rst:88
+msgid "**_status**"
+msgstr "**_status**"
+
+#: ../../general/Data_API/System_attributes.rst:89
+msgid "текущий статус"
+msgstr "current status"
+
+#: ../../general/Data_API/System_attributes.rst:90
+msgid "**_stage**"
+msgstr "**_stage**"
+
+#: ../../general/Data_API/System_attributes.rst:91
+msgid "этап"
+msgstr "stage"
+
+#: ../../general/Data_API/System_attributes.rst:92
+msgid "**_status?str**"
+msgstr "**_status?str**"
+
+#: ../../general/Data_API/System_attributes.rst:93
+msgid "id текущего статуса"
+msgstr "ID of the current status"
+
+#: ../../general/Data_API/System_attributes.rst:94
+msgid "**_name**"
+msgstr "**_name**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "атрибут, который возвращает отображаемое имя сущности."
+msgstr "attribute that returns the display name of the entity."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Может быть вычислен следующим образом:"
+msgstr "It is computed as follows:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"1. Если в конфиге типа есть **dispNameTemplate**, то имя будет вычислено "
+"на его основе"
+msgstr ""
+"1. If the type config contains **dispNameTemplate**, the name is computed "
+"based on it"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"2. Если в типе есть атрибут с **id=name** и в сущности это поле не "
+"пустое, то его значение будет значением ``_name``"
+msgstr ""
+"2. If the type has an attribute with **id=name** and that field is not "
+"empty in the entity, its value becomes the ``_name`` value"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "3. Берётся name типа"
+msgstr "3. The type name is used"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "4. Берётся id типа"
+msgstr "4. The type ID is used"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Вычисленное значение **_name** всегда сохраняется в БД и по нему можно "
+"искать"
+msgstr ""
+"The computed **_name** value is always saved to the database and can be "
+"used for search"
+
+#: ../../general/Data_API/System_attributes.rst:102
+msgid "**_self**"
+msgstr "**_self**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "атрибут, который представляет само значение."
+msgstr "attribute that represents the value itself."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Т.е. ``_self._self._self._self._self`` — то же самое что и "
+"``_self._self``."
+msgstr ""
+"That is, ``_self._self._self._self._self`` is the same as "
+"``_self._self``."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Используется:"
+msgstr "Used:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"1. Там, где значение — примитив (строка, число), но его нужно "
+"отредактировать на форме (форма может редактировать только атрибуты). В "
+"этом случае можно добавить на форме атрибут **_self**."
+msgstr ""
+"1. When the value is a primitive (string, number) but needs to be edited "
+"on a form (forms can only edit attributes). In this case, the **_self** "
+"attribute can be added to the form."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"2. Там, где нужно сделать мутацию, передав на форме файл (или "
+"JSON-объект), который по сути является сборником атрибутов сущности "
+"(например, форма с загрузкой конфигурации артефактов). Т.е. при отправке:"
+msgstr ""
+"2. When a mutation is needed by passing a file (or JSON object) on the "
+"form that is essentially a collection of entity attributes (for example, "
+"a form for uploading artifact configuration). That is, when submitting:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "движок воспринимает это так же, как:"
+msgstr "the engine treats this the same as:"
+
+#: ../../general/Data_API/System_attributes.rst:119
+msgid "**_isDraft?bool**"
+msgstr "**_isDraft?bool**"
+
+#: ../../general/Data_API/System_attributes.rst:120
+msgid ""
+"Получить значение системного флага «Черновик». Для записей в черновике "
+"отключена проверка обязательности полей и не запускается бизнес-процесс."
+msgstr ""
+"Get the value of the system \"Draft\" flag. For draft records, required "
+"field validation is disabled and no business process is started."
+
+#: ../../general/Data_API/System_attributes.rst:121
+msgid "**_as**"
+msgstr "**_as**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"получить значение как другой тип. Список вариантов зависит от типа "
+"значения."
+msgstr ""
+"get the value as a different type. The available options depend on the "
+"value type."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Для строки доступно:"
+msgstr "For a string, the following are available:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_as.ref** — получить строку как ссылку на сущность"
+msgstr "**_as.ref** — get the string as a reference to an entity"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_as.mltext** — получить строку как multi language text"
+msgstr "**_as.mltext** — get the string as multi-language text"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_localId**"
+msgstr "**_localId**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_disp**"
+msgstr "**_disp**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_str**"
+msgstr "**_str**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+":ref:`скаляры<scalars>`, которые можно получить как значения обычных "
+"атрибутов."
+msgstr ""
+":ref:`Scalars<scalars>` that can be retrieved as values of regular "
+"attributes."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Т.е. в API доступ к скалярам идёт через вопросительный знак (например, "
+"**?str** и **?bin**), но заменив **«?»** на **«_»** мы получим те же "
+"данные в неконечном виде (т.е. можно запрашивать вложенные атрибуты)."
+msgstr ""
+"In the API, scalars are accessed via a question mark (e.g., **?str** and "
+"**?bin**), but by replacing **\"?\"** with **\"_\"** you get the same data "
+"in non-scalar form (i.e., nested attributes can be queried)."
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Как вариант использования — берём свойство, в котором в виде строки "
+"записана ссылка на что-то другое. Пишем:"
+msgstr ""
+"As a use case — take a property that stores a reference to something else "
+"as a string. Write:"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_roles.isCurrentUserMemberOf.initiator?bool**"
+msgstr "**_roles.isCurrentUserMemberOf.initiator?bool**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Является ли текущий пользователь представителем роли «инициатор». Вместо "
+"``initiator`` можно подставлять любой идентификатор роли"
+msgstr ""
+"Whether the current user is a member of the \"initiator\" role. Any role "
+"identifier can be used instead of ``initiator``"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "**_roles.assigneesOf.initiator[]?str**"
+msgstr "**_roles.assigneesOf.initiator[]?str**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid ""
+"Загрузить представителей роли «инициатор». Вместо ``initiator`` можно "
+"подставлять любой идентификатор роли"
+msgstr ""
+"Load the members of the \"initiator\" role. Any role identifier can be "
+"used instead of ``initiator``"
+
+#: ../../general/Data_API/System_attributes.rst
+#, python-brace-format
+msgid "**_pathByAssoc.someAssoc[]{?id,?disp}**"
+msgstr "**_pathByAssoc.someAssoc[]{?id,?disp}**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Загрузить путь до текущей записи через ассоциацию с id ``someAssoc``"
+msgstr "Load the path to the current record via the association with id ``someAssoc``"
+
+#: ../../general/Data_API/System_attributes.rst
+#, python-brace-format
+msgid "**_pathByParent[]{?id,?disp}**"
+msgstr "**_pathByParent[]{?id,?disp}**"
+
+#: ../../general/Data_API/System_attributes.rst
+msgid "Загрузить путь до текущей записи через ассоциацию с id ``_parent``"
+msgstr "Load the path to the current record via the association with id ``_parent``"
+

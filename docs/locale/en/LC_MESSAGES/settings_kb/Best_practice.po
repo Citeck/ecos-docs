@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-14 13:41+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,10 +23,26 @@ msgid "Best practice"
 msgstr "Best practice"
 
 #: ../../settings_kb/Best_practice.rst:5
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../settings_kb/Best_practice.rst:7
+msgid ""
+"Раздел содержит рекомендации по настройке и использованию ключевых "
+"компонентов платформы Citeck: типов данных, форм и шаблонов уведомлений. "
+"Следование приведённым практикам позволяет выстраивать решения, которые "
+"легко поддерживать и масштабировать."
+msgstr ""
+"This section contains recommendations for configuring and using the key "
+"components of the Citeck platform: data types, forms, and notification "
+"templates. Following these practices helps build solutions that are easy "
+"to maintain and scale."
+
+#: ../../settings_kb/Best_practice.rst:10
 msgid "Типы данных"
 msgstr "Data Types"
 
-#: ../../settings_kb/Best_practice.rst:7
+#: ../../settings_kb/Best_practice.rst:12
 msgid ""
 "При создании типа данных необходимо руководствоваться следующим правилом "
 "для **выбора типа родителя**:"
@@ -35,7 +50,7 @@ msgstr ""
 "When creating a data type, the following rule should be followed for "
 "**selecting the parent type**:"
 
-#: ../../settings_kb/Best_practice.rst:13
+#: ../../settings_kb/Best_practice.rst:18
 msgid ""
 "**Кейс** - тип для хранения записи, статус которой изменяется в процессе "
 "жизненного цикла автоматически в ходе бизнес-процесса, или вручную "
@@ -50,7 +65,7 @@ msgstr ""
 "information, attributes, roles, statuses, and a rights matrix during "
 "creation."
 
-#: ../../settings_kb/Best_practice.rst:14
+#: ../../settings_kb/Best_practice.rst:19
 msgid ""
 "**Справочник** - тип для хранения наборов бизнес-данных, которые будут "
 "использоваться как статические данные для документов, не участвующие "
@@ -63,39 +78,300 @@ msgstr ""
 "processes. An indicator that a type will be a reference is specifying "
 "only general information and a list of attributes during its creation."
 
-#: ../../settings_kb/Best_practice.rst:15
-msgid "**Документ** -"
-msgstr ""
+#: ../../settings_kb/Best_practice.rst:20
+msgid "**Документ** - TBD"
+msgstr "**Document** - TBD"
 
-#: ../../settings_kb/Best_practice.rst:16
-msgid "**Файл библиотеки документов** -"
-msgstr ""
+#: ../../settings_kb/Best_practice.rst:21
+msgid "**Файл библиотеки документов** - TBD"
+msgstr "**Document Library File** - TBD"
 
-#: ../../settings_kb/Best_practice.rst:17
-msgid "**Публикация** -"
-msgstr ""
+#: ../../settings_kb/Best_practice.rst:22
+msgid "**Публикация** - TBD"
+msgstr "**Publication** - TBD"
 
-#: ../../settings_kb/Best_practice.rst:18
-msgid "**Остальное** – иные созданные ранее типы данных."
+#: ../../settings_kb/Best_practice.rst:23
+msgid "**Остальное** - иные созданные ранее типы данных."
 msgstr "**Other** - other previously created data types."
 
-#: ../../settings_kb/Best_practice.rst:20
+#: ../../settings_kb/Best_practice.rst:25
 msgid "Подробно о :ref:`типах данных<data_types>`"
 msgstr "Details about :ref:`data types<data_types>`"
 
-#: ../../settings_kb/Best_practice.rst:23
+#: ../../settings_kb/Best_practice.rst:28
 msgid "Формы"
 msgstr "Forms"
 
-#: ../../settings_kb/Best_practice.rst:25
+#: ../../settings_kb/Best_practice.rst:30
 msgid "Подробно о :ref:`формах<best_practice_form>`"
 msgstr "Details about :ref:`forms<best_practice_form>`"
 
-#: ../../settings_kb/Best_practice.rst:29
+#: ../../settings_kb/Best_practice.rst:34
+msgid "Атрибуты"
+msgstr "Attributes"
+
+#: ../../settings_kb/Best_practice.rst:39
+msgid "Авто-заполнение из связанной сущности (Dual-Layer Default Pattern)"
+msgstr "Auto-fill from a Related Entity (Dual-Layer Default Pattern)"
+
+#: ../../settings_kb/Best_practice.rst:41
+msgid ""
+"Данный паттерн применяется, когда нужно автоматически подставить значение"
+" атрибута из связанного объекта (например, из проекта в релиз), оставляя "
+"возможность пользователю изменить его вручную."
+msgstr ""
+"This pattern is used when you need to automatically populate an attribute "
+"value from a related object (for example, from a project into a release), "
+"while still allowing the user to change it manually."
+
+#: ../../settings_kb/Best_practice.rst:43
+msgid "**Задача:**"
+msgstr "**Task:**"
+
+#: ../../settings_kb/Best_practice.rst:45
+msgid ""
+"Дочерний тип (например, Релиз) должен наследовать значение поля по "
+"умолчанию от родительской сущности (например, от связанного Проекта), но "
+"пользователь должен иметь возможность переопределить значение при "
+"необходимости."
+msgstr ""
+"A child type (e.g., Release) should inherit a default field value from "
+"the parent entity (e.g., a linked Project), but the user must be able to "
+"override the value when needed."
+
+#: ../../settings_kb/Best_practice.rst:47
+msgid "**Решение — два слоя:**"
+msgstr "**Solution — two layers:**"
+
+#: ../../settings_kb/Best_practice.rst:55
+msgid "Слой"
+msgstr "Layer"
+
+#: ../../settings_kb/Best_practice.rst:56
+msgid "Механизм"
+msgstr "Mechanism"
+
+#: ../../settings_kb/Best_practice.rst:57
+msgid "Когда срабатывает"
+msgstr "When it triggers"
+
+#: ../../settings_kb/Best_practice.rst:58
+msgid "**1. Уровень типа данных**"
+msgstr "**1. Data type level**"
+
+#: ../../settings_kb/Best_practice.rst:59
+msgid ""
+":ref:`Вычисляемый атрибут<count_attributes>` типа **Attribute**, метод "
+"хранения **On empty**"
+msgstr ""
+":ref:`Calculated attribute<count_attributes>` of type **Attribute**, "
+"storage method **On empty**"
+
+#: ../../settings_kb/Best_practice.rst:60
+msgid ""
+"При создании записи: если поле пустое — подтягивается значение из "
+"атрибута связанного объекта"
+msgstr ""
+"On record creation: if the field is empty, the value is pulled from the "
+"related object's attribute"
+
+#: ../../settings_kb/Best_practice.rst:61
+msgid "**2. Уровень формы**"
+msgstr "**2. Form level**"
+
+#: ../../settings_kb/Best_practice.rst:62
+msgid "Компонент формы с чекбоксом **«Текущий пользователь по умолчанию»**"
+msgstr "Form component with the **\"Current user by default\"** checkbox"
+
+#: ../../settings_kb/Best_practice.rst:63
+msgid ""
+"Резервный вариант: если атрибут связанного объекта тоже пустой — "
+"подставляется текущий пользователь"
+msgstr ""
+"Fallback: if the related object's attribute is also empty, the current "
+"user is substituted"
+
+#: ../../settings_kb/Best_practice.rst:65
+msgid "**Конфигурация вычисляемого атрибута (слой 1):**"
+msgstr "**Calculated attribute configuration (layer 1):**"
+
+#: ../../settings_kb/Best_practice.rst:67
+msgid ""
+"Перейдите в тип данных → вкладка **Атрибуты** → раздел **Вычисляемые "
+"атрибуты** и добавьте атрибут со следующими параметрами:"
+msgstr ""
+"Go to the data type → **Attributes** tab → **Calculated Attributes** "
+"section and add an attribute with the following parameters:"
+
+#: ../../settings_kb/Best_practice.rst:74
+msgid "**Тип**"
+msgstr "**Type**"
+
+#: ../../settings_kb/Best_practice.rst:75
+msgid "``Attribute``"
+msgstr "``Attribute``"
+
+#: ../../settings_kb/Best_practice.rst:76
+msgid "**Значение**"
+msgstr "**Value**"
+
+#: ../../settings_kb/Best_practice.rst:77
+msgid "Путь к атрибуту связанной сущности, например: ``project.responsible?id``"
+msgstr "Path to the related entity's attribute, e.g.: ``project.responsible?id``"
+
+#: ../../settings_kb/Best_practice.rst:78
+msgid "**Метод хранения**"
+msgstr "**Storage method**"
+
+#: ../../settings_kb/Best_practice.rst:79
+msgid "``On empty`` — значение записывается только если поле ещё не заполнено"
+msgstr "``On empty`` — the value is written only if the field is not yet filled"
+
+#: ../../settings_kb/Best_practice.rst:83
+msgid ""
+"Тип ``Attribute`` поддерживает глубокую вложенность через точку. "
+"Например, если у типа «Релиз» есть ассоциация ``project`` (ссылка на "
+"«Проект»), а у «Проекта» есть атрибут ``responsible``, то путь будет: "
+"``project.responsible?id``"
+msgstr ""
+"The ``Attribute`` type supports deep nesting via dot notation. For "
+"example, if the \"Release\" type has a ``project`` association (a "
+"reference to a \"Project\"), and the \"Project\" has a ``responsible`` "
+"attribute, the path will be: ``project.responsible?id``"
+
+#: ../../settings_kb/Best_practice.rst:85
+msgid ""
+"Подробнее о синтаксисе вложенных атрибутов см. :ref:`Вычисляемые "
+"атрибуты<count_attributes>`."
+msgstr ""
+"For more details on nested attribute syntax, see :ref:`Calculated "
+"attributes<count_attributes>`."
+
+#: ../../settings_kb/Best_practice.rst:87
+msgid "**Конфигурация формы (слой 2, резервный):**"
+msgstr "**Form configuration (layer 2, fallback):**"
+
+#: ../../settings_kb/Best_practice.rst:89
+msgid ""
+"Если нужен дополнительный резервный вариант (например, подставить "
+"текущего пользователя, если атрибут в связанном объекте тоже не "
+"заполнен), настройте форму:"
+msgstr ""
+"If an additional fallback is needed (for example, to substitute the "
+"current user when the related object's attribute is also empty), configure "
+"the form:"
+
+#: ../../settings_kb/Best_practice.rst:91
+msgid "Откройте форму типа данных в редакторе форм."
+msgstr "Open the data type form in the form editor."
+
+#: ../../settings_kb/Best_practice.rst:92
+msgid "Найдите компонент нужного поля (например, «Ответственный»)."
+msgstr "Find the component of the required field (e.g., \"Responsible\")."
+
+#: ../../settings_kb/Best_practice.rst:93
+msgid "Перейдите на вкладку **«Кастомные»** компонента."
+msgstr "Go to the **\"Custom\"** tab of the component."
+
+#: ../../settings_kb/Best_practice.rst:94
+msgid "Установите чекбокс **«Текущий пользователь по умолчанию»**."
+msgstr "Check the **\"Current user by default\"** checkbox."
+
+#: ../../settings_kb/Best_practice.rst:95
+msgid "Сохраните компонент и форму."
+msgstr "Save the component and the form."
+
+#: ../../settings_kb/Best_practice.rst:99
+msgid ""
+"Слой формы работает только при открытии формы создания в браузере и не "
+"влияет на программные мутации через Records API. Для надёжного резерва "
+"лучше полагаться на слой типа данных."
+msgstr ""
+"The form layer only works when the creation form is opened in a browser "
+"and does not affect programmatic mutations via the Records API. For a "
+"reliable fallback, it is better to rely on the data type layer."
+
+#: ../../settings_kb/Best_practice.rst:101
+msgid "**Пример: Ответственный в Релизе из Проекта**"
+msgstr "**Example: Responsible in Release from Project**"
+
+#: ../../settings_kb/Best_practice.rst:103
+msgid ""
+"Сценарий: тип «Релиз» связан с типом «Проект» через атрибут ``project``. "
+"При создании релиза поле «Ответственный`` должно автоматически "
+"заполняться значением поля ``responsible`` из связанного проекта."
+msgstr ""
+"Scenario: the \"Release\" type is linked to the \"Project\" type via the "
+"``project`` attribute. When creating a release, the \"Responsible\" field "
+"should be automatically populated with the value of the ``responsible`` "
+"field from the linked project."
+
+#: ../../settings_kb/Best_practice.rst:105
+msgid "Вычисляемый атрибут в типе «Релиз»:"
+msgstr "Calculated attribute in the \"Release\" type:"
+
+#: ../../settings_kb/Best_practice.rst:116
+msgid "**Порядок применения значений по умолчанию:**"
+msgstr "**Order of default value application:**"
+
+#: ../../settings_kb/Best_practice.rst:132
+msgid "**Преимущества паттерна:**"
+msgstr "**Pattern benefits:**"
+
+#: ../../settings_kb/Best_practice.rst:134
+msgid ""
+"Значение заполняется автоматически — пользователю не нужно вводить его "
+"вручную в большинстве случаев."
+msgstr ""
+"The value is populated automatically — the user does not need to enter it "
+"manually in most cases."
+
+#: ../../settings_kb/Best_practice.rst:135
+msgid ""
+"Значение остаётся редактируемым — поле не «заморожено», пользователь "
+"может изменить его при необходимости."
+msgstr ""
+"The value remains editable — the field is not \"frozen\", the user can "
+"change it when needed."
+
+#: ../../settings_kb/Best_practice.rst:136
+msgid ""
+"Метод хранения ``On empty`` гарантирует, что однажды установленное "
+"значение не будет перезаписано при последующих изменениях записи."
+msgstr ""
+"The ``On empty`` storage method guarantees that a value once set will not "
+"be overwritten on subsequent changes to the record."
+
+#: ../../settings_kb/Best_practice.rst:137
+msgid ""
+"Слои независимы: слой типа данных работает всегда (включая программные "
+"мутации), слой формы — только в UI."
+msgstr ""
+"The layers are independent: the data type layer always works (including "
+"programmatic mutations), while the form layer only works in the UI."
+
+#: ../../settings_kb/Best_practice.rst:139
+msgid ""
+"См. также: :ref:`Вычисляемые атрибуты<count_attributes>` | :ref:`Типы "
+"данных<data_types>`"
+msgstr ""
+"See also: :ref:`Calculated attributes<count_attributes>` | :ref:`Data "
+"types<data_types>`"
+
+#: ../../settings_kb/Best_practice.rst:142
 msgid "Шаблон уведомления"
 msgstr "Notification Template"
 
-#: ../../settings_kb/Best_practice.rst:31
+#: ../../settings_kb/Best_practice.rst:144
 msgid "Подробно о :ref:`шаблонах уведомлений<notification_templates>`"
 msgstr "Details about :ref:`notification templates<notification_templates>`"
+
+#~ msgid "**Документ** -"
+#~ msgstr ""
+
+#~ msgid "**Файл библиотеки документов** -"
+#~ msgstr ""
+
+#~ msgid "**Публикация** -"
+#~ msgstr ""
 

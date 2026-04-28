@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19 00:02+0300\n"
+"POT-Creation-Date: 2026-04-19 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,20 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/2_instances.rst:2
-#, fuzzy
+#: ../../integration/2_instances.rst:4
 msgid "Общение между двумя и более инстансами Citeck через команды и события"
 msgstr "Communication between two or more Citeck instances via commands and events"
 
-#: ../../integration/2_instances.rst:5
+#: ../../integration/2_instances.rst:7
 msgid "Содержание"
 msgstr "Contents"
 
-#: ../../integration/2_instances.rst:8
+#: ../../integration/2_instances.rst:10
 msgid "Требования"
 msgstr "Requirements"
 
-#: ../../integration/2_instances.rst:10
+#: ../../integration/2_instances.rst:12
 msgid ""
 "Инстансы Citeck должны быть самодостаточны. Т.е. в каждом Citeck должен "
 "быть развернут полный список необходимых микросервисов для полноценной "
@@ -41,7 +39,7 @@ msgstr ""
 "Citeck instances must be self-sufficient. I.e., each Citeck must have a "
 "full set of necessary microservices deployed for full operation."
 
-#: ../../integration/2_instances.rst:12
+#: ../../integration/2_instances.rst:14
 msgid ""
 "Микросервис интеграции в каждом контуре Citeck должен иметь доступ по "
 "сети к RabbitMQ и Zookeeper удаленного Citeck."
@@ -49,7 +47,7 @@ msgstr ""
 "The integration microservice in each Citeck instance must have network "
 "access to the RabbitMQ and Zookeeper of the remote Citeck."
 
-#: ../../integration/2_instances.rst:14
+#: ../../integration/2_instances.rst:16
 msgid ""
 "В каждом контуре Citeck должен быть микросервис интеграции версии 1.15.0+"
 " (пока SNAPSHOT)"
@@ -57,24 +55,23 @@ msgstr ""
 "Each Citeck instance must have the integration microservice version "
 "1.15.0+ (currently SNAPSHOT)"
 
-#: ../../integration/2_instances.rst:18
+#: ../../integration/2_instances.rst:20
 msgid ""
-"доступ к Zookeeper нужен для работы событий, но они пока в TODO, а для "
+"Доступ к Zookeeper необходим для работы :ref:`событий<ecos_events>`. Для "
 "работы команд достаточно доступа к RabbitMQ."
 msgstr ""
-"access to Zookeeper is needed for events, but they are currently TODO, "
+"access to Zookeeper is needed for :ref:`events<ecos_events>`, but they are currently TODO, "
 "while for commands, access to RabbitMQ is sufficient."
 
-#: ../../integration/2_instances.rst:21
+#: ../../integration/2_instances.rst:23
 msgid "Настройка"
 msgstr "Configuration"
 
-#: ../../integration/2_instances.rst:23
-#, fuzzy
+#: ../../integration/2_instances.rst:25
 msgid "Схема подключения двух инстансов Citeck:"
 msgstr "Connection diagram for two Citeck instances:"
 
-#: ../../integration/2_instances.rst:29
+#: ../../integration/2_instances.rst:31
 msgid ""
 "Подключение пунктирными линиями настраиваются в central-config для "
 "микросервиса интеграции (в дальнейшем подключение к Zookeeper будет в "
@@ -84,7 +81,7 @@ msgstr ""
 "for the integration microservice (in the future, the connection to "
 "Zookeeper will be under the key **zookeeper** in connections):"
 
-#: ../../integration/2_instances.rst:46
+#: ../../integration/2_instances.rst:48
 msgid ""
 "**extecos** - массив из подключений к различным контурам Citeck "
 "(поддерживается неограниченное кол-во подключений)."
@@ -92,7 +89,7 @@ msgstr ""
 "**extecos** - an array of connections to various Citeck instances (an "
 "unlimited number of connections is supported)."
 
-#: ../../integration/2_instances.rst:48
+#: ../../integration/2_instances.rst:49
 msgid ""
 "**extecos[].this-app-name** - имя текущего контура Citeck. Будет "
 "использоваться при отправке команд и событий из внешней системы в текущую"
@@ -107,11 +104,11 @@ msgstr ""
 "**extecos[].connections** - section with connections to RabbitMQ and "
 "Zookeeper"
 
-#: ../../integration/2_instances.rst:52
+#: ../../integration/2_instances.rst:51
 msgid "**extecos[].commands** - настройка команд;"
 msgstr "**extecos[].commands** - commands configuration;"
 
-#: ../../integration/2_instances.rst:54
+#: ../../integration/2_instances.rst:52
 msgid ""
 "**extecos[].commands.apps** - локальные приложения, которым будет "
 "возможность отправлять команды из внешней системы."
@@ -119,19 +116,19 @@ msgstr ""
 "**extecos[].commands.apps** - local applications that will be able to "
 "send commands from the external system."
 
-#: ../../integration/2_instances.rst:56
+#: ../../integration/2_instances.rst:54
 msgid "**Регистрация исполнителя команд**"
 msgstr "**Registering a Command Executor**"
 
-#: ../../integration/2_instances.rst:58
+#: ../../integration/2_instances.rst:56
 msgid "Инжектим **CommandsService** и вызываем:"
 msgstr "Inject **CommandsService** and call:"
 
-#: ../../integration/2_instances.rst:64
+#: ../../integration/2_instances.rst:62
 msgid "Пример исполнителя команд:"
 msgstr "Example of a command executor:"
 
-#: ../../integration/2_instances.rst:85
+#: ../../integration/2_instances.rst:83
 msgid ""
 "**SomeExecutor** - принимающая сторона, а отправляющая сторона будет там "
 "где вызовется commandsService.execute (пример в разделе \"отправка "
@@ -141,7 +138,7 @@ msgstr ""
 "where commandsService.execute is called (example in the \"sending "
 "commands\" section)"
 
-#: ../../integration/2_instances.rst:87
+#: ../../integration/2_instances.rst:84
 msgid ""
 "**SomeBody** класс должен быть описан на отправляющей стороне и на "
 "принимающей (Дстаточно чтобы имена полей и типы полей совпадали. Пакеты "
@@ -152,8 +149,7 @@ msgstr ""
 "match. The packages are not important. Jackson will handle the data "
 "conversion)."
 
-#: ../../integration/2_instances.rst:90
-#, fuzzy
+#: ../../integration/2_instances.rst:87
 msgid ""
 "Отправка команды во внешнюю систему (из Citeck 1 (second-ecos) в Citeck 0"
 " (main-ecos))"
@@ -161,16 +157,15 @@ msgstr ""
 "Sending a command to an external system (from ECOS 1 (second-ecos) to "
 "ECOS 0 (main-ecos))"
 
-#: ../../integration/2_instances.rst:92
+#: ../../integration/2_instances.rst:89
 msgid "**Из java кода**"
 msgstr "**From Java code**"
 
-#: ../../integration/2_instances.rst:94
+#: ../../integration/2_instances.rst:91
 msgid "Инжектим **CommandsService** и вызываем отправку команды:"
 msgstr "Inject **CommandsService** and call the command sending:"
 
-#: ../../integration/2_instances.rst:106
-#, fuzzy
+#: ../../integration/2_instances.rst:103
 msgid ""
 "Если предположим, что отправка осуществляется из alfresco (Citeck 1 - "
 "second-ecos) в alfresco (Citeck 0 - main-ecos), то ход команды будет "
@@ -180,12 +175,11 @@ msgstr ""
 "ecos) to alfresco (ECOS 0 - main-ecos), then the command flow will be as "
 "follows:"
 
-#: ../../integration/2_instances.rst:113
+#: ../../integration/2_instances.rst:110
 msgid "Тестирование отправки команд"
 msgstr "Testing Command Sending"
 
-#: ../../integration/2_instances.rst:115
-#, fuzzy
+#: ../../integration/2_instances.rst:112
 msgid ""
 "Отправка команд в удаленный Citeck и локальный отличается только "
 "аргументом в **setTargetApp**. Т.о. отлаживать механизм можно без учета "
@@ -195,7 +189,7 @@ msgstr ""
 "argument for **setTargetApp**. Thus, the mechanism can be debugged "
 "without considering multiple ECOS instances."
 
-#: ../../integration/2_instances.rst:117
+#: ../../integration/2_instances.rst:114
 msgid ""
 "Отправка команды в локальный RabbitMQ через Java тест (можно размещать в "
 "**ecos-integrations**):"
@@ -203,7 +197,7 @@ msgstr ""
 "Sending a command to the local RabbitMQ via a Java test (can be placed in"
 " **ecos-integrations**):"
 
-#: ../../integration/2_instances.rst:178
+#: ../../integration/2_instances.rst:175
 msgid ""
 "Локальное тестирование отправки команд на удаленный инстанс (имеет смысл "
 "после отладки через обычную отправку команд):"
@@ -211,8 +205,7 @@ msgstr ""
 "Local testing of sending commands to a remote instance (makes sense after"
 " debugging via regular command sending):"
 
-#: ../../integration/2_instances.rst:180
-#, fuzzy
+#: ../../integration/2_instances.rst:177
 msgid ""
 "Добавляем настройку удаленного контура Citeck как описано в разделе "
 "**Настройка**. В  качестве целевого RabbitMQ выбираем localhost. Т.о. "
@@ -224,7 +217,7 @@ msgstr ""
 "way, you can locally test interaction with remote instances by running "
 "only one RabbitMQ instance. No conflicts will arise."
 
-#: ../../integration/2_instances.rst:182
+#: ../../integration/2_instances.rst:179
 msgid ""
 "Немного меняем аргумент в методе **setTargetApp** при отправке команды в "
 "тесте:"
@@ -232,7 +225,7 @@ msgstr ""
 "Slightly change the argument in the **setTargetApp** method when sending "
 "the command in the test:"
 
-#: ../../integration/2_instances.rst:196
+#: ../../integration/2_instances.rst:193
 msgid ""
 "При желании можно подключиться и к реальному удаленному Citeck, но для "
 "этого должен быть доступ к RabbitMQ извне. При этом достаточно будет "
@@ -242,11 +235,11 @@ msgstr ""
 "requires external access to its RabbitMQ. In this case, it will be "
 "sufficient to correct the parameters in **RabbitMqConnProps**"
 
-#: ../../integration/2_instances.rst:199
+#: ../../integration/2_instances.rst:196
 msgid "Отправка файлов в командах и событиях"
 msgstr "Sending Files in Commands and Events"
 
-#: ../../integration/2_instances.rst:201
+#: ../../integration/2_instances.rst:198
 msgid ""
 "Для отправки файлов в командах и событиях следует использовать поля с "
 "типом byte[] (сообщения сжимаются перед отправкой. Т.е. доп. оптимизация "
@@ -256,7 +249,7 @@ msgstr ""
 "used (messages are compressed before sending. I.e., additional "
 "optimization is not needed)."
 
-#: ../../integration/2_instances.rst:203
+#: ../../integration/2_instances.rst:200
 msgid ""
 "Для удобной работы с файлами есть утилитные классы **EcosMemFile "
 "EcosMemDir** и **ru.citeck.ecos.commons.utils.ZipUtils**, который может "
@@ -267,7 +260,7 @@ msgstr ""
 "**ru.citeck.ecos.commons.utils.ZipUtils**, which can easily pack multiple"
 " files into a single byte stream and back."
 
-#: ../../integration/2_instances.rst:205
+#: ../../integration/2_instances.rst:202
 msgid "Пример:"
 msgstr "Example:"
 
