@@ -46,4 +46,5 @@ Citeck Launcher: серверный режим
     launcher_server/commands
     launcher_server/configuration
     launcher_server/architecture
+    launcher_server/migration_from_compose
     launcher_server/troubleshooting
