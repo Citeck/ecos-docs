@@ -9,12 +9,7 @@ ecos-gateway-app
 Теги:
 --------
 
-`Nexus_gateway <http://nexus.citeck.ru/ecos-gateway:>`_ <tag> - сборка проекта ecos-gateway 
-
-Базовые образы:
-----------------
-
-**openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
+`Nexus_gateway <http://nexus.citeck.ru/ecos-gateway:>`_ <tag> - сборка проекта ecos-gateway
 
 Шаблон сервиса docker-compose:
 -------------------------------

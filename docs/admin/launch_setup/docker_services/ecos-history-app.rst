@@ -11,10 +11,6 @@ ecos-history-app
 
 `nexus.citeck.ru/ecos-history <nexus.citeck.ru/ecos-history>`_ :<tag>
 
-Базовые образы:
------------------
-* **openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
-
 Шаблон сервиса docker-compose:
 ------------------------------
 
