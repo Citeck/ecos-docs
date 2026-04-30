@@ -1,37 +1,37 @@
 .. _form_examples:
 
-Component Examples. How to
+Примеры компонент. How to
 ==========================
 
 .. contents::
      :depth: 3
 
-This section contains practical examples of configuring form components in the Citeck platform, as well as typical scenarios («How to») — scripts and configurations for solving common tasks: managing field visibility, auto-filling, event handling, and others.
+В данном разделе собраны практические примеры настройки компонент форм платформы Citeck, а также типовые сценарии («How to») — скрипты и конфигурации для решения часто встречающихся задач: управление видимостью полей, автозаполнение, обработка событий и другие.
 
 Columns
 --------
 
 .. _sample_columns_component:
 
-The **Columns** component allows convenient arrangement of form components.
+Компонент **Columns** позволяет удобно расположить компоненты формы.
 
  .. image:: _static/form_examples/columns_1.png
        :width: 200
        :align: center
 
-**Column Properties** - the main configuration parameter, allows defining how the component will be divided into columns. The component is based on Bootstrap Grid.
+**Свойства столбца** - основной параметр настройки, позволяет определить как по колонкам будет разбиваться компонент. Компонент основан на использовании Bootstrap Grid.
 
  .. image:: _static/form_examples/columns_2.png
        :width: 600
        :align: center
 
-On the **«Display»** tab in the **Column Properties** section, specify the number of columns and their size.
+На вкладке **«Вид»** в разделе **Свойства столбца** указать количество столбцов и их размер. 
 
  .. image:: _static/form_examples/columns_3.png
        :width: 400
        :align: center
 
-Then click **"Save"**. Result:
+Далее нажать **"Сохранить"**. Результат:
 
  .. image:: _static/form_examples/columns_4.png
        :width: 600
@@ -42,20 +42,20 @@ Text field
 
 .. _sample_text_field_component:
 
-**Text field** - text component.
+**Text field** - текстовый компонент. 
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняется: 
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Property Name** - the property name in the data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
 
-Field requirement is set with a separate checkbox. **(3)**
+Обязательность поля выставляется отдельным чекбоксом. **(3)**
 
  .. image:: _static/form_examples/Text_field_1.png
        :width: 600
        :align: center
 
-Autofocus - automatically sets the input cursor without the need to click on it with the mouse:
+Автофокус - автоматическая устанавка курсора ввода, без необходимости кликать на него мышью:
 
  .. image:: _static/form_examples/Text_field_2.png
        :width: 600
@@ -67,25 +67,25 @@ ECOS Select Component
 
 .. _sample_ecos_select_component:
 
-**ECOS Select Component** - form component for selecting a value from a list.
+**ECOS Select Component** - компонент формы для выбора значения из списка.
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняется: 
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Property Name** - the property name in the data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
 
-Field requirement is set with a separate checkbox. **(3)**
+Обязательность поля выставляется отдельным чекбоксом. **(3)**
 
  .. image:: _static/form_examples/ECOS_Select_1.png
        :width: 600
        :align: center
 
-On the **«Data»** tab in **"Data Source Type"** select **Values** **(1)**.
+На вкладке **«Данные»** в **"Типе источника данных"** выбрать **Values** **(1)**.
 
-**Data Source Values** is filled with values that should be available for selection in the list **(2)**:
+**Data Source Values**  заполняется значениями, которые должны быть для выбора в списке **(2)**: 
 
-- **Field Label** - display name,
-- **Value** - the contained value.
+- **Название поле** - отображаемое имя, 
+- **Значение** - значение, которое содержится.
 
  .. image:: _static/form_examples/ECOS_Select_2.png
        :width: 400
@@ -97,41 +97,41 @@ Date / Time Component
 
 .. _sample_date_time_component:
 
-**Date / Time Component** - date/time component.
+**Date / Time Component** - компонент даты / времени. 
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняется: 
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Property Name** - the property name in the data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
 
-Field requirement is set with a separate checkbox. **(3)**
+Обязательность поля выставляется отдельным чекбоксом. **(3)**
 
  .. image:: _static/form_examples/Date_Time_1.png
        :width: 600
        :align: center
 
-On the **«Display»** tab, specify the date format **(5)** and the possibility of manual input **(4)**.
+На вкладке **«Вид»** указать формат даты **(5)** и возможность ручного ввода **(4)**. 
 
  .. image:: _static/form_examples/Date_Time_2.png
        :width: 400
        :align: center
 
-To change the date/time format, go to the tab - **«Display» tab - Format**:
+Для изменения формата даты/времени перейдите во вкладку - **вкладка «Вид» - Формат**:
 
  .. image:: _static/form_examples/Date_Time_3.png
        :width: 600
        :align: center
 
-Default value — current date
+Значение по умолчанию — текущая дата
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To set the current date as the default value, use the **customDefaultValue** property on the **«Data»** tab. The property accepts a JavaScript expression, the result of which is assigned to the ``value`` variable.
+Для установки текущей даты в качестве значения по умолчанию используйте свойство **customDefaultValue** на вкладке **«Данные»**. Свойство принимает JavaScript-выражение, результат которого присваивается переменной ``value``.
 
 .. note::
 
-   The static ``defaultValue`` property does not support dynamic values (for example, ``"now"`` does not work). For dynamic values, always use ``customDefaultValue``.
+   Статическое свойство ``defaultValue`` не поддерживает динамические значения (например, ``"now"`` не работает). Для динамических значений всегда используйте ``customDefaultValue``.
 
-Configuration example:
+Пример JSON-конфигурации компонента:
 
 .. code-block:: json
 
@@ -145,13 +145,13 @@ Configuration example:
      "defaultValue": ""
    }
 
-In the **Custom Default Value** field in the form builder, enter:
+В поле **Custom Default Value** в билдере форм введите:
 
 .. code-block:: javascript
 
    value = new Date();
 
-When opening the form for creation, the field will be automatically filled with the current date.
+При открытии формы на создание поле будет автоматически заполнено текущей датой.
 
 
 Select Journal Component
@@ -159,20 +159,20 @@ Select Journal Component
 
 .. _sample_select_journal_component:
 
-**Select Journal Component** - component for selecting a value from a journal.
+**Select Journal Component** - компонент для выбора значения из журнала.
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняется: 
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Property Name** - the property name in the data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
 
-Field requirement is set with a separate checkbox. **(3)**
+Обязательность поля выставляется отдельным чекбоксом. **(3)**
 
  .. image:: _static/form_examples/Select_Journal_1.png
        :width: 600
        :align: center
 
-On the **«Data»** tab, fill in **Journal ID** - the identifier of the journal that will be used in the component. (4)
+На вкладке **«Данные»** заполняется **ID журнала** - идентификатор журнала, который будет использовать в компоненте. (4)
 
  .. image:: _static/form_examples/Select_Journal_2.png
        :width: 400
@@ -183,28 +183,28 @@ Select Orgstruct Component
 
 .. _sample_select_orgstruct_component:
 
-**Select Orgstruct Component** - component for selection from the organizational structure.
+**Select Orgstruct Component**  - компонент для выбора из оргструктуры.
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняется:
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Property Name** - the property name in the data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства в типе данных **(2)**.
 
  .. image:: _static/form_examples/form_4.png
        :width: 600
        :align: center
 
-On the **«Custom»** tab - you can specify:
+На вкладке **«Кастомные»** - можно указать:
 
-- allowed **«Allowed Authority Type»** **(3)**
-- **Current User by Default** - a setting that allows substituting the user who opened the form for creation into the component **(4)**.
+- допустимый **«Разрешенный тип полномочий»** **(3)**
+- **Текущий пользователь по умолчанию** - настройка, позволяющая подставить в компонент пользователя, который открыл форму на создание **(4)**.
 
-Current User by Default
+Текущий пользователь по умолчанию
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To automatically substitute the current user when creating a record, use the **currentUserByDefault** property. The setting works only in form creation mode (``formMode = CREATE``).
+Для автоматической подстановки текущего пользователя при создании записи используйте свойство **currentUserByDefault**. Настройка работает только в режиме создания формы (``formMode = CREATE``).
 
-Configuration example:
+Пример JSON-конфигурации:
 
 .. code-block:: json
 
@@ -219,37 +219,37 @@ Configuration example:
 
 .. note::
 
-   The ``currentUserByDefault`` property is a built-in setting of the ``selectOrgstruct`` component. For other component types, use ``customDefaultValue`` (see :ref:`Custom Default Value <custom_default_value>`).
+   Свойство ``currentUserByDefault`` — встроенная настройка компонента ``selectOrgstruct``. Для других типов компонентов используйте ``customDefaultValue`` (см. :ref:`Custom Default Value <custom_default_value>`).
 
  .. image:: _static/form_examples/form_5.png
        :width: 600
        :align: center
 
-For selecting a department:
+Для выбора подразделения:
 
  .. image:: _static/form_examples/form_5_1.png
        :width: 600
        :align: center
 
-Button Component
+Button Component 
 ---------------------
 
 .. _sample_button_component:
 
-**Button Component** - component for adding buttons to perform various actions in the form.
+**Button Component** - компонент для добавления кнопок для выполнения различных действий в форме.
 
-On the **«Basic»** tab, fill in:
+На вкладке **«Базовые»** заполняются: 
 
-- **Field Label** - the name of the button as it will appear on the form **(1)**.
-- **Property Name** - the button property name **(2)**.
-- **Actions** - specify the button action **(3)**
-
+- **Название поля** - наименование кнопки, как оно будет отражаться на форме **(1)**.
+- **Имя свойства** - имя свойства кнопки **(2)**.
+- **Действия** - указать действие кнопки **(3)**
+  
 
  .. image:: _static/form_examples/button.png
        :width: 600
        :align: center
 
-To display the button across the full width of the cell, on the **"Display"** tab, check the **"Block"** checkbox:
+Для отображения кнопки на всю ширину ячейки необходимо на вкладке **"Вид"** выставить чекбокс **"Блокировать"**:
 
   .. image:: _static/form_examples/button_1.png
        :width: 600
@@ -260,147 +260,147 @@ Panel
 
 .. _sample_panel_component:
 
-**Panel** - a component - a header that contains semantically related components.
+**Panel**  - компонент - заголовок, в который помещаются близкие по смыслу компоненты.
 
  .. image:: _static/form_examples/form_2.png
        :width: 200
        :align: center
 
-Fill in **«Property Name»** - the component name.
+Заполняется **«Имя свойства»** - имя компонента.
 
  .. image:: _static/form_examples/form_3.png
        :width: 600
        :align: center
 
-And on the **"Display"** tab, fill in **"Property Label"** **(2)**:
+И на вкладке **"Вид"** заполнить **"Название свойства"** **(2)**:
 
  .. image:: _static/form_examples/form_14.png
        :width: 600
        :align: center
 
-Async Data Component
+Async Data Component 
 ----------------------
 
 .. _sample_async_data_component:
 
-**Async Data Component** - asynchronous component.
+**Async Data Component** - асинхронный компонент.
 
  .. image:: _static/form_examples/form_12_1.png
        :width: 500
        :align: center
 
-The **Grade** reference (data type hr-grades-type) contains information about the position (offerposition), salary range (gradesSalary) and bonus (gradesPrize).
+Справочник **Грейд** (тип данных hr-grades-type) содержит в себе информацию о должности (offerposition), вилке оклада (gradesSalary) и премии (gradesPrize).
 
-When selecting a **Position**, the corresponding **Grade** and **Salary Range and Bonus** fields will be automatically filled:
+При выборе **Должности** автоматически заполнятся соответствующие ей поля **Грейд** и **Зарплатная вилка и премия**:
 
  .. image:: _static/form_examples/form_6.png
        :width: 200
        :align: center
 
-On the **«Async Data»** tab, fill in:
+На вкладке **«Асинхронные данные»** заполняется: 
 
-- **Field Label** - the name of the component as it will appear on the form **(1)**.
-- **Data Type** - data type **(2)**.
+- **Название поля** - имя компонента, как оно будет отражаться на форме **(1)**.
+- **Тип данных** - тип данных **(2)**.
 
  .. image:: _static/form_examples/form_7.png
        :width: 600
        :align: center
 
-Script explanations **(3)**:
+Пояснения к скрипту **(3)**:
 
  .. image:: _static/form_examples/form_8.png
        :width: 500
        :align: center
 
-- **emodel/type@hr-grades-type** - the type from which data needs to be obtained.
-- **gradesSimpleRoleTypeAssoc** - the type property being compared, from which we get data.
-- **offerPosition** - the property we use to compare with the type property from which we get data.
+- **emodel/type@hr-grades-type** - тип, из которого необходимо получить данные.
+- **gradesSimpleRoleTypeAssoc** - сравниваемое свойство типа, из которого получаем данные.
+- **offerPosition** - свойство, которое используем для сравнения со свойством типа, из которого получаем данные.
 
-In **«Attributes»**, specify the attributes that need to be obtained **(4)**.
+В **«Атрибуты»** указываются атрибуты, который необходимо получить **(4)**.
 
-On the **«Advanced Settings»** tab, fill in:
+На вкладке **«Расширенные настройки»** заполняется:
 
-- **Update On** - parameter where the form element to track is specified **(5)**.
+- **Обновлять при** -параметр, в котором указывается элемент формы, которые следует отслеживать **(5)**.
 
  .. image:: _static/form_examples/form_9.png
        :width: 400
        :align: center
 
-On the **«API»** tab, fill in:
+На вкладке **«API»** заполняется:
 
-- **Property Name** - the component property name **(6)**.
+- **Имя свойства** - имя свойства компонента **(6)**.
 
  .. image:: _static/form_examples/form_10.png
        :width: 400
        :align: center
 
-For the form component to respond to the async component, make the following settings on the **«Data»** tab in the **Grade** component:
+Чтобы компонент формы реагировал на асинхронный компонент, необходимо сделать следующие настройки во вкладке **«Данные»** в компоненте **Грейд**:
 
  .. image:: _static/form_examples/form_11.png
        :width: 400
        :align: center
 
-In **Update On**, specify the component whose changes will trigger the component that needs to get data from the async component.
+В **Обновлять при** указать компонент, при изменении которого будет реагировать компонент, для которого необходимо получить данные из асинхронного компонента.
 
-In **Calculated Values**:
+В **Вычисляемые значения**:
 
  .. image:: _static/form_examples/form_12.png
        :width: 400
        :align: center
 
-Now when selecting a **Position**, the **«Grade»** form component will automatically be set with a value depending on the **«Position»** component value.
+Теперь при выборе **Должности** в компонент формы **«Грейд»** в зависимости от значения компонента **«Должность»**, будет автоматически выставлено значение.
 
-:ref:`More about Async Data<async_data_component>`
+:ref:`Подробнее об Async Data<async_data_component>`
 
 How to
 ------------
 
-Make a component non-editable
+Сделать компонент нередактируемым
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **«Display» tab - Hide Field** - makes the component non-editable.
+- **вкладка «Вид» - Скрыть поле** - делает компонент нередактируемым.
 
  .. image:: _static/form_examples/form_13.png
        :width: 600
        :align: center
 
 
-Hide a field on the form if it is empty
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Скрыть поле на форме, если оно пустое 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Useful, for example, on :ref:`kanban board<kanban_board>`:
+Полезно, например, на :ref:`канбан-доске<kanban_board>`:
 
  .. image:: _static/form_examples/form_15.png
        :width: 450
        :align: center
 
-Script text:
+Текст скрипта:
 
 .. code-block::
 
       show = !_.isEmpty(value)
 
 
-Status
+Статус
 ~~~~~~~~~~~~~~~~~~
 
-On the document form, :ref:`status<associations>` can be displayed as follows:
+На форме документа :ref:`статус<associations>` может быть отражен следующим образом:
 
  .. image:: _static/form_examples/form_status.png
        :width: 700
        :align: center
 
-In the :ref:`Text field <Text_Field>` component:
+В компоненте  :ref:`Text field <Text_Field>`:
 
-- field label can be any,
-- property name - **_status**,
-- hide and disable input if it should not be displayed on the form.
+- название поля может быть любым, 
+- имя свойства -  **_status**, 
+- скрыть и заблокировать на ввод, если необходимо не отображать на форме.
 
 
-Show field via "logic"
+Показывать поле  через "логику"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the **«Display»** tab, go to **Advanced Display Conditions**:
+На вкладке **«Отображение»** перейдите в **Расширенные условия отображения**:
 
 .. image:: _static/form_examples/form_mode_1.png
        :width: 600
@@ -410,15 +410,15 @@ On the **«Display»** tab, go to **Advanced Display Conditions**:
 
       show = _.get(data, 'asyncDataField.boolAttribute', false);
 
-Instead of **asyncDataField** and **boolAttribute**, use your data. If needed, the logic in the script can be extended.
+Вместо **asyncDataField** и **boolAttribute** ваши данные. Если нужно, то логику в скрипте можно расширить.
 
-If logic for multiple attributes is needed, you can use the **Panel** component. Place the required attributes inside it. Visually, the panel can be configured so its presence is not displayed.
+Если необходима логика на несколько атрибутов, то можно использовать компонент **Панель**. И внутри нее уже разместить нужные атрибуты. Визуально панель можно настроить, чтобы её присустствие никак не отображалось.
 
 
-Show field only in a specific form mode
+Показывать поле только в определенном режиме формы
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the **«Display»** tab, go to **Advanced Display Conditions**:
+На вкладке **«Отображение»** перейдите в **Расширенные условия отображения**:
 
 .. image:: _static/form_examples/form_mode.png
        :width: 600
@@ -432,20 +432,20 @@ On the **«Display»** tab, go to **Advanced Display Conditions**:
 
       show = !isCreateMode;
 
-where **formMode** can be:
+где **formMode** может быть:
 
-  - **CREATE** - creation form;
-  - **VIEW** - view form;
-  - **EDIT** - edit form
+  - **CREATE** -  форма создания;
+  - **VIEW** - форма просмотра;
+  - **EDIT** -  форма редактирования
 
 
-Processing form results for checkbox elements, dropdown lists / submit for dropdown checkbox lists
+Обработка результатов формы по элементам чекбокс, выпадающим спискам / submit для выпадающих списков checkbox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To make the form submit when selecting an element in a dropdown list or clicking a checkbox, on the submit button in the **"Data"** tab:
+Для того чтобы при выборе элемента в выпадающем списке или при клике на чекбокс происходил сабмит формы можно на submit кнопке во вкладке **"Данные"**:
 
-1. In the **"Update On"** field, add a dependency on form components whose changes we are interested in.
-2. In the **"Calculated Values"** field, add logic for auto-submit triggering:
+1. В поле **"Обновлять при"** добавить зависимость от компонентов на форме, изменение которых нам интересно.
+2. В поле **"Вычисляемые значения"** добавить логику для срабатывания авто-сабмита:
 
 .. code-block::
 
@@ -453,26 +453,26 @@ To make the form submit when selecting an element in a dropdown list or clicking
       instance.root.submit();
       }
 
-where
+где
 
-      - **data** - form data;
-      - **selectWithSubmit** and **submitOnCheckbox** - keys of components on the form;
-      - **instance** - current component (button);
-      - **instance.root** - current form where the button is added.
+      - **data** - данные формы;
+      - **selectWithSubmit** и **submitOnCheckbox** - ключи компонентов на форме;
+      - **instance** - текущий компонент (кнопка);
+      - **instance.root** - текущая форма, в которой добавлена кнопка.
 
-Configuration example:
+Пример конфигурации:
 
 .. image:: _static/form_examples/submit-on-select.png
        :width: 400
        :align: center
 
-:download:`json with form data <../files/submit-on-select-example.json>`
+:download:`json с данными формы <../files/submit-on-select-example.json>` 
 
 
-How to load an image from external file storage to a form?
+Как загрузить на форму изображение с внешнего файлового хранилища?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For auto-filling form fields, you can add a button and set **"Actions"** = **Custom**. With this choice, a field for entering custom javascript code appears at the bottom. In this field, you can load the required data and set it on the form as follows:
+Для автозаполнения полей на форме можно добавить кнопку и настроить **"Действия"** = **Custom**. При этом выборе внизу появляется поле для ввода произвольного javascript кода. В это поле можно загрузить нужные данные и проставить их на форму следующим образом:
 
 .. code-block::
 
@@ -481,42 +481,42 @@ For auto-filling form fields, you can add a button and set **"Actions"** = **Cus
       ...submission,
       data: {
       ...(submission.data),
-      // Fill the file field
+      // Заполняем поле с файлом
       uploadField: contentData,
-      // Fill the text field
-      textField: 'File size: ' + contentData[0].size
+      // Заполняем текстовое поле
+      textField: 'Размер файла: ' + contentData[0].size
       }
       };
 
-where
+где
 
-      - **instance** - current component (button);
-      - **instance.root** - the form containing our button;
-      - **instance.root.submission** - form data.
+      - **instance** - текущий компонент (кнопка);
+      - **instance.root** - форма, в которой находится наша кнопка;
+      - **instance.root.submission** - данные формы.
 
-With simple text/numeric/boolean fields, you can simply put the required value in **data**. For content fields, you need to first upload the content to the server as a temporary file.
+С простыми текстовыми/числовыми/булевыми полями в **data** можно просто положить требуемое значение. Для полей с контентом нужно предварительно загрузить контент на сервер как временный файл.
 
 .. code-block::
 
       const formData = new FormData();
-
+      
       formData.append('file', file);
       formData.append('ecosType', 'temp-file');
       formData.append('mimeType', file.type);
       formData.append('name', file.name);
-
+      
       return ecosFetch('/gateway/emodel/api/ecos/webapp/content', {
       method: 'POST',
       body: formData
       }).then(r => r.json()).then(data => data.entityRef);
 
-where
+где
 
-- **file** - File instance - https://developer.mozilla.org/en-US/docs/Web/API/File
+- **file** - инстанс File - https://developer.mozilla.org/en-US/docs/Web/API/File
 
-As a result of this request, we will get a **RecordRef** of the temporary file.
+В результате этого запроса получим **RecordRef** временного файла.
 
-Then you need to get a **json description** from the temporary file, which is needed for the form component:
+Затем нужно из временного файла получить **json описание**, которое нужно для компонента на форме:
 
 .. code-block::
 
@@ -524,66 +524,66 @@ Then you need to get a **json description** from the temporary file, which is ne
       element.data = { 'entityRef': element.recordRef };
       }));
 
-The obtained data can be set on the form as shown in the first script.
+Полученные данные можно проставить на форму, как показано в первом скрипте.
 
-Configuration example:
+Пример конфигурации:
 
 .. image:: _static/form_examples/download-and-fill.png
        :width: 500
        :align: center
 
-Type and form example:
+Пример типа и формы:
 
-:download:`yaml with type data <../files/example-with-download-and-fill-form-data-type.yml>`
+:download:`yaml с данными типа <../files/example-with-download-and-fill-form-data-type.yml>` 
 
-:download:`json with form data <../files/example-with-download-and-fill-form-data.json>`
-
-
-You can load these artifacts, open the journal http://localhost/v2/journals?journalId=type$example-with-download-and-fill-form-data-type , create a new entity and click the **Download** button on the form.
+:download:`json с данными формы <../files/example-with-download-and-fill-form-data.json>` 
 
 
-How to provide text highlighting based on a flag?
+Можно загрузить эти артефакты, открыть журнал http://localhost/v2/journals?journalId=type$example-with-download-and-fill-form-data-type , создать новую сущность и нажать на форме кнопку **Download**.
+
+
+Как обеспечить подсветку/выделение текста по флагу?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. **To configure custom styles inside a form, you can**
+1. **Для настройки произвольных стилей внутри формы можно**
 
-      a) Add a panel (**Layout → Panel**) to the form, place all form elements inside it, and configure a **"Custom CSS Class"** on the **"Display"** tab that will uniquely identify our form. This is needed to avoid style influence on other parts of the system (let's call this class ROOT_PANEL_CLASS in our example).
+      а) Добавить на форму панель (**Макет → Panel**), в которую добавить все элементы формы и настроить **"Пользовательский CSS класс"** на вкладке **"Вид"**, который будет однозначно идентифицировать нашу форму. Это нужно чтобы избежать влияния стилей на другие части системы (назовем этот класс в нашем примере ROOT_PANEL_CLASS).
 
-      b) Add an html component (**Advanced → HTML Element**) to the form, configure it as follows:
+      б) Добавить на форму компонент html (**Расширенные → HTML Element**), который настраиваем следующим образом:
 
-            1. On the **"Basic"** tab, check **"Hide Field"**
+            1. В вкладке **"Базовые"** ставим галку на **"Скрыть поле"**
 
-            2. On the **"Display"** tab in the **"Content"** field, first write arbitrary text (this is needed so the component is visible in the editor and can be edited) and then place opening and closing *<style></style>* tags, inside which configure custom styles. For styles to work only within our form, they need to be described in the format .ROOT_PANEL_CLASS .inner_class { __styles__ }, where **ROOT_PANEL_CLASS** is the class we configured in step 1, and inner_class is the class of the element inside the form.
+            2. В вкладке **"Вид"** в поле **"Контент"** пишем вначале  произвольный текст (это нужно чтобы компонент было видно в редакторе и была возможность его отредактировать) и затем размещаем открывающий и закрывающий тэги *<style></style>*, внутри которых настраиваем произвольные стили. Чтобы стили работали только в пределах нашей формы нужно их описывать в формате .ROOT_PANEL_CLASS .inner_class { __стили__ }, где **ROOT_PANEL_CLASS** - класс, который мы настроили в п.1, а inner_class - класс элемента внутри формы.
 
-2. To **highlight certain text based on a flag value**, you can do the following:
+2. Для того чтобы **по значению флага выделялся некоторый текст** можно сделать следующее:
 
-      a) Add an HTML component to the form
+      а) Добавить на форму HTML компонент
 
-            1. In the **"Display" → "Custom CSS Class"** field, enter a class that will uniquely identify our html component (for example, HTML_TO_HIGHLIGHT)
+            1. В поле **"Вид" → "Пользовательский CSS класс"** вводим класс, который будет однозначно идентифицировать наш html компонент (допустим HTML_TO_HIGHLIGHT)
 
-            2. In the **"Display" → "Content"** field, write arbitrary text that will be displayed to the user and mark up the parts of this text that need to be highlighted depending on conditions using classes.
+            2. В поле **"Вид" → "Контент"** пишем произвольный текст, который будет отображаться пользователю и размечаем части этого текста, которые нужно будет подсветить в зависимости от условий используя классы.
 
-            For example:
+            Например: 
 
             .. code-block::
 
-              Text before <span class="text-to-select">text to highlight</span> text after
+              Текст до <span class="text-to-select">текст для выделения</span> текст после
 
-      b) Add a **"Basic Components" → Checkbox** to the form and make it hidden in **"Basic" → "Hide Field"** if the user doesn't need to know or change its value.
+      б) Добавить на форму **"Основные компоненты" → Checkbox** и делаем его скрытым в **"Базовые" → "Скрыть поле"**  если пользователю его значение знать и менять не нужно.
 
-      c) Add another html component:
+      в) Добавить еще один html компонент:
 
-            3. Set **"Basic" → "Hide Field" → "Yes"**
+            3. Выставить **"Базовые" → "Скрыть поле" → "Да"**
 
-            4. In the **"Display" → "Content"** field, write arbitrary text so the field is visible in the editor
+            4. В поле **"Вид" → "Контент"** написать произвольный текст, чтобы поле было видно в редакторе
 
-            5. **Data → Update On → Checkbox** (from step b)
+            5. **Данные → Обновлять при → Checkbox** (из пункта б)
 
-            6. In the **"Logic"** tab, add new logic:
+            6. Во вкладке **"Логика"** добавляем новую логику:
 
-              Trigger: Simple logic - when the form component **Checkbox** (from step b) equals **true**.
+              Триггер: Простая логика - когда компонент формы **Checkbox** (из пункта б) равен **true**.
 
-              Actions: Type - Property, Component Property: Content, In the appeared **Content** field, enter our styles inside *<style></style>* tags, not forgetting to specify the class from step **(a)** to avoid accidentally changing the appearance of other parts of the system. For example:
+              Действия:  Тип - Свойство, Свойство компонента: Content, В появившемся поле **Content** вводим наши стили внутри тэгов *<style></style>* не забывая про  указание класса из пункта **(а)**, чтобы случайно не поменять вид других частей системы. Например:
 
               .. code-block::
 
@@ -594,9 +594,9 @@ How to provide text highlighting based on a flag?
                   }
                   </style>
 
-Attached is a form with a configuration example:
+Во вложении форма с примером настройки:
 
-:download:`json with form data <../files/html-highlight-example.json>`
+:download:`json с данными формы <../files/html-highlight-example.json>` 
 
 .. list-table::
       :widths: 20 20
@@ -613,3 +613,4 @@ Attached is a form with a configuration example:
             .. image:: _static/form_examples/highlight_02.png
                   :width: 500
                   :align: center
+

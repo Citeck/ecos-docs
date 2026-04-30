@@ -1,24 +1,24 @@
 Best practice
 =============
 
-This page contains recommendations for designing and formatting forms in the Citeck platform. Following the listed rules ensures interface consistency and improves the user experience when working with references, requests, and tasks.
+На этой странице собраны рекомендации по проектированию и оформлению форм в платформе Citeck. Соблюдение приведённых правил обеспечивает единообразие интерфейса и улучшает пользовательский опыт при работе со справочниками, заявками и задачами.
 
 .. _best_practice_form:
 
-Reference forms, child elements (table-form)
+Формы справочников, дочерних элементов (table-form)
 ----------------------------------------------------
 
- 1. All form elements are placed inside a container. The form header and buttons are static, and only the fields on the form can be scrolled. Using the counterparties reference as an example:
+ 1. Все элементы формы располагаются внутри контейнера. Шапка формы и кнопки  статичны, а скроллироваться могут только поля на форме. На примере справочника контрагентов:
 
      .. image:: _static/form_best_practice/02.png
        :width: 600
        :align: center
+   
+ 2. Колонки:
 
- 2. Columns:
-
-    * If there are 1 to 3 fields on the form, they are laid out in a single column.
-    * If there are 4 or more fields on the form, all fields must be arranged in 2 columns.
-    * If functional division of columns is required, panels with headers are used. Column division can be placed inside a panel, or a panel can be placed inside a column.
+    * Если на форме располагается от 1 до 3 полей, то они размечаются в одну колонку.
+    * Если на форме 4 и более полей, то все поля на форме должны располагаться в 2 колонки. 
+    * Если необходимо функциональное деление колонок, используются панели с заголовками. Колоночное деление может располагаться как внутри панели, так и панель может находиться внутри колонки
 
       .. image:: _static/form_best_practice/07.png
        :width: 600
@@ -30,74 +30,74 @@ Reference forms, child elements (table-form)
        :width: 600
        :align: center
 
- 3. Buttons
+ 3. Кнопки
 
-    * are located at the bottom of the form,
-    * on the left, occupying 1/4 of the form's width, is the gray **”Cancel”** button,
-    * on the right, occupying 1/4 of the form's width, is the blue **”Save”** button.
-    * it is necessary to remove the large padding below the buttons at the bottom of the form.
+    * располагаются снизу формы, 
+    * слева по ширине 1/4 ширины формы располагается кнопка **"Отмена"** серого цвета, 
+    * справа по 1/4 ширины формы располагается кнопка **"Сохранить"** синего цвета. 
+    * необходимо убирать большой отступ под кнопками снизу формы.
 
- Example of ideal button placement and appearance:
+ Пример идеального расположения и вида кнопок:
 
       .. image:: _static/form_best_practice/04.png
        :width: 600
        :align: center
 
-Request creation forms
+Формы создания заявок
 -----------------------
 
- 1. All form elements must be placed inside a container. The form header and buttons must be static, and only the fields on the form can be scrolled. Using the contract form as an example:
+ 1. Все элементы формы должны располагаться внутри контейнера. Шапка формы и кнопки должны быть статичны, а скроллироваться могут только поля на форме. На примере формы договора:
 
- 2. All fields on the form must be arranged in 2 columns. If functional division of columns is required, panels with headers are used. Panels are also placed inside columns.
+ 2. Все поля на форме должны располагаться в 2 колонки. Если необходимо функциональное деление колонок, используются панели с заголовками. Панели располагаются также внутри колонок.
 
- 3. Criteria for **panels**:
+ 3. Критерии к **панелям**:
 
-    * Fields in panels are grouped by meaning.
-    * A panel must have a title.
-    * It is necessary to optimize the placement of panels to minimize empty space, but all fields should be formatted in width and height, i.e., arranged in a tabular manner.
+    * Поля в панелях группируются по смыслу
+    * Панель обязательно должна иметь название
+    * Необходимо оптимизировать расположение панелей, чтобы пустого пространства было как можно меньше, но все поля были отформатированы по ширине и высоте, т.е. располагались таблично
 
       .. image:: _static/form_best_practice/03.png
        :width: 600
        :align: center
 
- 4. Buttons
+ 4. Кнопки 
 
-    * buttons are located at the bottom of the form,
-    * on the left, occupying 1/4 of the form's width, is the gray **”Cancel”** button,
-    * on the right, occupying 1/4 of the form's width, is the blue **”Create”** button.
-    * to the left of the **”Create”** button, occupying 1/4 of the form's width, is the gray **”Save”** button.
-    * it is necessary to remove the large padding below the buttons at the bottom of the form.
+    * кнопки располагаются снизу формы, 
+    * слева по ширине 1/4 ширины формы располагается кнопка **"Отмена"** серого цвета, 
+    * справа по 1/4 ширины формы располагается кнопка **"Создать"** синего цвета. 
+    * слева от кнопки **"Создать"** по ширине 1/4 ширины формы располагается кнопка **"Сохранить"** серого цвета. 
+    * необходимо убирать большой отступ под кнопками снизу формы.
 
-Example of button placement and appearance:
+Пример расположения и вида кнопок: 
 
       .. image:: _static/form_best_practice/05.png
        :width: 600
        :align: center
 
- Usually, the task form contains a “Comment” field and approval buttons. Depending on the process requirements, the content may vary.
+ Обычно на форме задач располагается поле "Комментарий" и кнопки согласования. В зависимости от требований процесса наполнение может меняться.
 
-Task forms
+Формы задач
 -------------
 
 .. _best_practice_task_form:
 
-Button requirements:
+Требования к кнопкам:
 
-    1. All buttons are aligned to the left edge of the form.
-    2. Buttons with a negative resolution (gray color) are placed first.
-    3. Buttons with a positive resolution (blue color) are placed on the right edge.
-    4. If required, buttons with a neutral resolution (gray color) are placed between the negative and positive resolution buttons.
+    1. Все кнопки располагаются с выравниванием по левому краю формы.
+    2. Сначала располагаются кнопки с отрицательной резолюцией серого цвета.
+    3. С правого края располагаются кнопки с положительной резолюцией синего цвета.
+    4. Если требуется, между кнопками отрицательной и положительной резолюции располагаются кнопки нейтральной резолюции серого цвета.
 
-Example of a task form:
+Пример формы задач:
 
       .. image:: _static/form_best_practice/06.png
        :width: 600
        :align: center
 
-Using the Citeck.helpers.getMLValue(nameObj) function
+Использование функции Citeck.helpers.getMLValue(nameObj)
 ---------------------------------------------------------
 
-The ``Citeck.helpers.getMLValue(nameObj)`` function accepts a parameter - an object with keys that match the keys of existing localizations and values - the names in those localizations.
+Функция ``Citeck.helpers. getMLValue(nameObj)`` принимает параметр - объект с ключами, которые совпадают с ключами существующих локализаций и значениями - названиями в данных локализациях.
 
       .. image:: _static/form_best_practice/getMLValue_01.png
        :width: 600
@@ -115,24 +115,24 @@ The ``Citeck.helpers.getMLValue(nameObj)`` function accepts a parameter - an obj
 
     values = arr;
 
-**Implementation example:**
+**Пример реализации:**
 
-When Russian language is selected in the system – statuses are displayed in Russian:
+В системе выбран Русский язык – отображаются статусы на русском:
 
       .. image:: _static/form_best_practice/getMLValue_02.png
        :width: 600
        :align: center
 
-When English language is selected in the system – statuses are displayed in English:
+В системе выбран Английский язык  – отображаются статусы на английском:
 
       .. image:: _static/form_best_practice/getMLValue_03.png
        :width: 600
        :align: center
 
-Using the main form submission function
+Использование функции отправки основной формы
 ---------------------------------------------------------
 
-In any component, it is possible to trigger the submission of the main (parent) form immediately after some action in the child form by handling the ``instance.on('change')`` event.
+В любом компоненте есть возможность вызвать сабмит основной (родительской) формы сразу после какого-то действия в дочерней форме при помощи обработки события ``instance.on('change')``.
 
       .. image:: _static/form_best_practice/submitForm_01.png
        :width: 600
@@ -146,8 +146,8 @@ In any component, it is possible to trigger the submission of the main (parent) 
     }
     });
 
-When using ``instance.root.submit()``, it is possible to specify two optional parameters:
+При спользовании ``instance.root.submit()`` есть возможность указать два необязательных параметра:
 
-    1. If you need to perform validation or prepare data before submission, you can define a callback function as the first argument, which will perform the necessary actions.
+    1. Если нужно выполнить проверку или подготовить данные перед отправкой, можно определить первым аргментом функцию-колбэк, которая будет выполнять необходимые действия
 
-    2. As the second argument, you can also pass options if they are needed for the callback function. Options are passed as an object.
+    2. Вторым аргументом также можно передать опции в случае их необходимости для функции-колбэка. Опции передаются в виде объекта
