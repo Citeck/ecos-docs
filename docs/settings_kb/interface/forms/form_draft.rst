@@ -1,24 +1,24 @@
 .. _form_draft:
 
-Saving a document as a draft
+Сохранение документа в качестве черновика
 ===========================================
 
-If the ability to create and edit records without sending them through the process is required, Citeck has a system flag **"Draft"** for this purpose.
+Если требуется возможность создания и редактирования записей без отправки их по процессу, то в Citeck для этого существует системный флаг **"Черновик"**.
 
-.. note::
+.. note:: 
 
-    The system flag "Draft" is not related to statuses when configuring the type.
+    Системный флаг "Черновик" не связан со статусами при настройке типа.
 
-To create a record in the **"Draft"** state on a form, you need to add a button with the **Submit** action and write **draft** (without quotes) in the **"Save state"** field.
+Для того чтобы создать запись в состоянии **"Черновик"** на форме нужно добавить кнопку с действием **Submit** и в поле **"Сохранить состояние"** написать **draft** (без кавычек).
 
  .. image:: _static/draft/draft_01.png
        :width: 500
        :align: center
 
-After this configuration, when this button is clicked on the form, validation of required fields will be disabled and the system will allow creating a record. Subsequently, it can be edited without starting the business process.
+После этой настройки при нажатии этой кнопки на форме, валидация обязательных полей будет отключена и система позволит создать запись. В последствии её можно редактировать, не запуская при этом бизнес-процесс.
 
-To make the record active and start the process, use a button with the Submit action without the **"Save state"** setting filled in.
+Для того чтобы сделать запись активной и запустить процесс следует использовать кнопку с действием Submit без заполненной настройки **"Сохранить состояние"**.
 
-If you need to create a record with the **"Draft"** flag programmatically, you should specify the ``_state`` attribute as ``draft`` during mutation. When you need to exit the "Draft" state, send a mutation with the ``_state`` attribute set to an empty string - "".
+Если требуется создать запись с флагом **"Черновик"** программно, то следует при мутации указать атрибут ``_state`` равным ``draft``. Когда потребуется выход из состояния "Черновик" следует отправить мутацию с атрибутом ``_state`` равным пустой строке - "".
 
-To get the current value of the **"Draft"** flag, you can use the ``_isDraft?bool`` attribute.
+Для получения текущего значения  флага **"Черновик"** можно использовать атрибут ``_isDraft?bool``.

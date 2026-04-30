@@ -1,22 +1,22 @@
 .. _form_components_detailed:
 
-Detailed description of individual components
-==============================================
+Подробное описание отдельных компонент
+=======================================
 
-This section provides a detailed description of Citeck platform form components, including specific settings and capabilities that complement the :ref:`general component overview <form_components_overview>`.
+В этом разделе приведено подробное описание компонент форм платформы Citeck, включая специфические настройки и возможности, дополняющие :ref:`общий обзор компонент <form_components_overview>`.
 
-- :ref:`Text Field <text_field_component>` — single-line text field for data input;
-- :ref:`Table form <table_form_component>` — displaying and editing data in tabular format within a form;
-- :ref:`Async data <async_data_component>` — asynchronous loading of data from external sources;
-- :ref:`Select journal <Select_journal_component>` — selecting a value from journal records;
-- :ref:`Select orgstruct <Select_orgstruct_component>` — selecting users and groups from the organizational structure;
-- :ref:`Ecos Select <ecos_select_component>` — advanced value selection component with support for Citeck data sources;
-- :ref:`File <file_component>` — file upload and attachment management;
-- :ref:`Columns <columns_component>` — placing components in a multi-column layout;
-- :ref:`Panel <panel_component>` — grouping components into a named block;
-- :ref:`Horizontal line <horizontal_line_component>` — visual separator of form blocks;
-- :ref:`Import button <import_button_component>` — button for importing data into a form;
-- :ref:`Checkbox <checkbox_component>` — checkbox for selecting a boolean value (yes/no).
+- :ref:`Text Field <text_field_component>` — однострочное текстовое поле для ввода данных;
+- :ref:`Table form <table_form_component>` — отображение и редактирование данных в табличном виде внутри формы;
+- :ref:`Async data <async_data_component>` — асинхронная загрузка данных из внешних источников;
+- :ref:`Select journal <Select_journal_component>` — выбор значения из записей журнала;
+- :ref:`Select orgstruct <Select_orgstruct_component>` — выбор пользователей и групп из оргструктуры;
+- :ref:`Ecos Select <ecos_select_component>` — расширенный компонент выбора значений с поддержкой источников данных Citeck;
+- :ref:`File <file_component>` — загрузка файлов и управление вложениями;
+- :ref:`Columns <columns_component>` — размещение компонентов в многоколоночном макете;
+- :ref:`Panel <panel_component>` — группировка компонентов в именованный блок;
+- :ref:`Horizontal line <horizontal_line_component>` — визуальный разделитель блоков формы;
+- :ref:`Import button <import_button_component>` — кнопка для импорта данных в форму;
+- :ref:`Checkbox <checkbox_component>` — флажок для выбора булевого значения (да/нет).
 
 .. toctree::
     :maxdepth: 5

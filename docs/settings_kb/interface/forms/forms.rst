@@ -1,69 +1,69 @@
 .. _forms_main:
 
-General Information
-===================
+Общая информация
+=================
 
-.. contents::
+.. contents:: 
    :depth: 3
 
-**Form** - a graphical representation of an object as a set of interface elements for manipulating the object's data. Interface elements reference attributes defined in the :ref:`data type<data_types_main>`.
+**Форма** - графическое представление объекта в виде набора элементов интерфейса для манипуляции данными объекта. Элементы интерфейса ссылаются на атрибуты, заданные в :ref:`типе данных<data_types_main>`.
 
-* Forms are implemented based on the `formio.js <https://github.com/formio/formio.js>`_ engine.
-* Forms are described in json format.
-* Forms are used for editing records from **Records Service** see :ref:`Citeck Records<Records_API>`. On the backend, editing a record can be perceived as creating a new one (for example, if the **ID** of the record being edited is not specified).
+* Формы реализованы на базе движка `formio.js <https://github.com/formio/formio.js>`_.
+* Формы описываются в json-формате.
+* Формы используются для редактирования записей из **Records Service** см. :ref:`Citeck Records<Records_API>`. На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан **ID** редактируемой записи).
 
-Interface navigation description
------------------------------------------
+Описание перехода к разделу через интерфейс
+--------------------------------------------
 
-A journal **"Forms" (Workspace "Admin Section" - UI Configuration)** has been created to view existing forms and edit them:
+Для просмотра существующих форм и их редактирования создан журнал **"Формы" (Рабочее пространство "Раздел администратора" - Конфигурация UI)**:
 
 .. image:: _static/form_journal.png
        :width: 700
        :align: center
 
-By default, system forms are not displayed in the journal.
+По умолчанию в журнале не отображаются системные формы.
 
-To display **ONLY** system forms, go to the table settings, set **System type - Yes**:
+Для отображения **ТОЛЬКО** системных форм перейдите в настройки таблицы, выставите **Системный тип - Да**:
 
 .. image:: _static/form_journal_1.png
        :width: 600
        :align: center
 
-Ways to obtain a form instance
---------------------------------
+Варианты получения экземпляра формы
+------------------------------------
 
-A form can be created or an already created one can be uploaded to the system.
+Форму можно создать или загрузить уже созданный в систему.
 
-Creation
+Создание
 ~~~~~~~~~
 
-To create a form, click **+ - Create form**:
+Для создания формы необходимо нажать **+ - Создать форму**:
 
 .. image:: _static/form_new.png
        :width: 400
        :align: center
 
-The creation form will open:
+Откроется форма создания:
 
 .. image:: _static/form_form_new.png
        :width: 600
        :align: center
 
-See below for details.
+Пордробно см. ниже.
 
-Upload
+Загрузка
 ~~~~~~~~~
 
-To upload a created journal, click **+ - Form**:
+Для загрузки созданного журнала необходимо нажать **+ - Форма**:
 
 .. image:: _static/form_new_1.png
        :width: 400
        :align: center
 
-.json format file
+Файл формата .json
 
-Form description example
---------------------------
+Пример описания формы
+----------------------
 
 .. code-block::
 
@@ -184,29 +184,29 @@ Form description example
     "formId": "vacation-request"
   },
   "attributes": {}
- }
+ } 
 
-Available actions with a record
----------------------------------
+Доступные действия с записью
+-----------------------------
 
-In the journal, the administrator has a standard set of actions available for each record:
+В журнале администратору с каждой записью доступен стандартный набор действий:
 
 .. image:: _static/form_actions.png
        :width: 600
        :align: center
 
-- download as a json file;
-- delete;
-- open for editing;
-- edit json file;
-- copy;
-- open the card in a neighboring tab. The card is a :ref:`dashboard<dashboard>`:
+- скачать в виде json-файла;
+- удалить;
+- открыть на редактирование;
+- редактировать json-файл;
+- копировать;
+- открыть карточку в соседней вкладке. Карточка представляет собой :ref:`дашборд<dashboard>`:
 
 .. image:: _static/form_dashboard.png
        :width: 600
        :align: center
 
-Creating a new form
+Создание новой формы
 ---------------------
 
 .. image:: _static/form_form_numbers.png
@@ -217,88 +217,89 @@ Creating a new form
       :widths: 10 30 30 30
       :header-rows: 1
       :align: center
-      :class: tight-table
+      :class: tight-table 
 
-      * - No.
-        - Name
-        - Description
-        - Example
+      * - п/п
+        - Наименование
+        - Описание
+        - Пример заполнения
       * - 1
-        - **Form Identifier***
-        - unique form identifier (required)
+        - **Идентификатор формы*** 
+        - уникальный идентификатор формы (обязательное)
         - test-form (kebab-case)
       * - 2
-        - **Form Name**
-        - form name (required)
+        - **Название формы**
+        - имя формы (обязательное)
         - Test form
       * - 3
-        - **Form Key**
-        - form key. Used to link between the form and an entity that is difficult to bind to data types or link directly. Usually these are old tasks (flowable/activiti).
+        - **Ключ формы** 
+        - ключ формы. Используется для связи между формой и сущностью, которую трудно привязать к типам данных или напрямую связать. Обычно это старые задачи (flowable/activiti).
         - test-form
       * - 4
-        - **Editable Data Type**
-        - select a :ref:`data type<data_types_main>` created earlier from the list
-        - selected from the list of suggested options
+        - **Редактируемый тип данных**
+        - из списка выбрать :ref:`тип данных<data_types_main>`, созданный ранее
+        - выбирается из списка предлагаемых
       * - 5
-        - **Form Width**
-        - select form width option
-        - selected from the list of suggested options
+        - **Ширина формы** 
+        - выбор варианта ширины формы
+        - выбирается из списка предлагаемых
       * - 6
-        - **Form Description**
-        - fields for entering form description
-        - Form created for...
+        - **Описание формы**
+        - поля для ввода описания формы
+        - Форма создана для...
 
-Click the **«Edit form»** button. The :ref:`form builder<form_builder>` will open
+Нажать кнопку **«Редактировать форму»**. Откроется :ref:`конструктор форм<form_builder>` 
 
-Connection with data type
---------------------------
+Связь с типом данных
+----------------------
 
-The data type has a ``formRef`` field that defines the connection between the type and the form. In most cases, this field is sufficient, but if multiple forms are required for one type (for example, for display on a dashboard), then the form configuration has a ``typeRef`` field.
+В типе данных предусмотрено поле ``formRef``, которое определяет связь типа с формой. В большинстве случаев этого поля достаточно, но если для одного типа требуется несколько форм (например, для отображения на дашборде), то в конгфигурации формы предусмотрено поле ``typeRef``.
 
-Connection without data type
-------------------------------
+Связь без типа данных
+----------------------
 
-If a record cannot be bound to a specific data type, key binding can be used.
-The record should return a ``_formKey`` attribute and a form search is performed based on the received keys until the first match.
+Если запись не может быть привязана к определенному типу данных, можно воспользоваться привязкой по ключам. 
+Запись должна отдавать атрибут ``_formKey`` и по полученным ключам идет поиск формы до первого совпадения.
 
-If records belong to one type or the type is absent, but a specific form should be used for some records, a ``_formRef`` attribute can be implemented. If this attribute returns a reference to a form, it has the highest priority.
+Если записи принадлежат одному типу или тип отсутствует, но для некоторых записей должна использоваться определенная форма,
+можно реализовать атрибут ``_formRef``. Если этот атрибут вернул ссылку на форму, то она имеет наибольший приоритет.
 
-Connection with record attribute
-----------------------------------
+Связь с атрибутом записи
+-------------------------
 
-For simple fields, we can set the **Property Name** in the **Basic** tab according to the record property:
+Для простых полей мы можем во вкладке **Базовые** выставить **Имя свойства**  в соответствии со свойством записи:
 
 .. image:: _static/form_local_1.png
        :width: 700
        :align: center
 
-but if you need to link to an attribute that contains special characters (for example, ":"), then in the **API** tab, you should add a property (2) to **Custom Properties** with the key **attribute** and the value - the attribute name.
+но если нужно связать с атрибутом, в котором есть спец символы (например ":"), то во вкладке **API** следует добавить в **Пользовательские свойства** свойство (2) с ключом **attribute** и значением - именем атрибута.
 
 .. image:: _static/form_local_2.png
        :width: 700
        :align: center
 
-The ability to configure field names in one place - in the data type - has also been added, without duplicating this information in the form and in the journal.
+Так же добавлена возможность настраивать имя полей в одном месте - в типе данных, и не дублировать данную информацию в форме и в журнале.
 
-**Field Label** is loaded from the type. If the **Field Label** is set equal to the attribute or if the attribute is not set, a check is performed for equality between **Property Name** and **Field Label**.
+**Название поля (Label)** загружается из типа. Если **Название поля (Label)** выставлен равный атрибуту или если атрибут не задан, то идет проверка на равенство  **Имя свойства (Property Name)** и **Название поля (Label)**.
 
 .. image:: _static/form_local_3.png
        :width: 700
        :align: center
 
 
-Using multiple forms for one type
------------------------------------
+Использование нескольких форм для одного типа
+--------------------------------------------------
 
-1. Create new forms, bind them to the required type:
+1. Создать новые формы, привязать их к нужному типу:
 
 .. image:: _static/several_forms_1.png
        :width: 600
        :align: center
 
-2. :ref:`Add<dashboard_settings>` property widgets.
+2. :ref:`Добавить<dashboard_settings>` виджеты свойств.
 
-3. In the widget settings via the gear icon, assign it the required form:
+3. В настройке виджета через шестеренку присвоить ему нужную форму:
 
 .. image:: _static/several_forms_2.png
        :width: 500

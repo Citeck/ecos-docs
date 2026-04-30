@@ -1,59 +1,59 @@
 .. _form_builder:
 
-Form Builder
+Конструктор форм
 =================
 
-.. contents::
+.. contents:: 
    :depth: 3
 
-General Description
--------------------
+Общее описание
+---------------
 
-**Form Builder** is a visual designer for creating and configuring forms in the Citeck platform. It allows defining the composition and layout of fields, setting validation rules, managing component visibility and availability, and adding custom form behavior logic — all without writing code.
+**Конструктор форм** — визуальный дизайнер для создания и настройки форм платформы Citeck. Он позволяет без написания кода определить состав и расположение полей, задать правила валидации, управлять видимостью и доступностью компонентов, а также добавить пользовательскую логику поведения формы.
 
-Using the builder, you can:
+С помощью конструктора можно:
 
-* choose from a ready-made set of components (text fields, lists, dates, attachments, etc.) and place them on the form by drag-and-drop;
-* configure the properties of each component — displayed label, binding to an attribute of the :ref:`data type<data_types_main>`, mandatory status, read-only mode;
-* set display conditions and field change logic depending on user actions;
-* validate field filling using built-in validation rules or custom scripts.
+* выбирать из готового набора компонентов (текстовые поля, списки, даты, вложения и др.) и размещать их на форме перетаскиванием;
+* настраивать свойства каждого компонента — отображаемое название, привязку к атрибуту :ref:`типа данных<data_types_main>`, обязательность, режим «только чтение»;
+* задавать условия отображения и логику изменения полей в зависимости от действий пользователя;
+* проверять корректность заполнения с помощью встроенных правил валидации или пользовательских скриптов.
 
-Adding a Form Component
+Добавление компонента формы
 -----------------------------
 
-Each new form starts with automatically added buttons and a text field, which can be deleted or edited as needed.
+Каждая новая форма начинается с автоматически добавленных кнопок и текстового поля, могут быть удалены или отредактированы по мере необходимости.
 
  .. image:: _static/form_builder/builder.png
        :width: 600
        :align: center
 
-To add a component to the form, drag the component from the left column to the desired location in the form:
+Чтобы добавить компонент в форму, перетащите компонент из левого столбца в нужное место в форме:
 
  .. image:: _static/form_builder/builder_1.png
        :width: 600
        :align: center
 
-Editing a Form Component
+Редактирование компонента формы
 --------------------------------
 
-To change a form component, hover the mouse pointer over the component and click the gear icon - the settings form for the component will open.
+Чтобы изменить компонент формы, наведите указатель мыши на компонент и щелкните значок шестеренки - откроется ​​форма настроек для компонента.
 
  .. image:: _static/form_builder/builder_2.png
        :width: 600
        :align: center
 
 
-General Component Settings
+Общие настройки компонентов
 ---------------------------
 
-Below is a list of general settings that are present in most components.
+Ниже приведен список общих настроек, которые присутствуют в большинстве компонентов.
 
-Configuring Components
-----------------------
+Настройка компонентов
+---------------------
 
-Main tabs used for configuration:
+Основные вкладки, используемые для настройки:
 
-1. **Basic**. Contains the basic, most frequently used settings.
+1. **Базовые**. Хранит в себе основные, используемые чаще всего, настройки.
 
    .. image:: _static/form_builder/tab_1.png
          :width: 600
@@ -63,38 +63,38 @@ Main tabs used for configuration:
       :widths: 10 30 30
       :header-rows: 1
       :align: center
-      :class: tight-table
+      :class: tight-table 
 
-      * - No.
-        - Name
-        - Description
+      * - п/п
+        - Наименование
+        - Описание
       * - 1
-        - **Field Label**
-        - the name of the component as it will appear on the form.
+        - **Название поля** 
+        - имя компонента, как оно будет отражаться на форме.
       * - 2
-        - **Property Name**
-        - | the property name from the :ref:`data type<data_types_main>`
-          | When entering a property name, a dropdown list of attributes from the data type for which the form is being created appears (if there is a partial name match). This helps to understand which names are already taken to avoid errors when creating or editing the form.
+        - **Имя свойства** 
+        - | имя свойства из :ref:`типа данных<data_types_main>`
+          | При вводе имени свойства появляется выпадающий список атрибутов типа данных, для которого форма создается (при наличии частичного совпадения имен). Это позволяет понять, какие имена уже заняты, чтобы не привести к ошибке при создании или редактировании формы.
 
                  .. image:: _static/form_builder/tab_1_variants.png
                       :width: 500
                       :align: center
 
       * - 3
-        - **Tooltip**
-        - a hint that appears when hovering the cursor over the question mark near the field, if necessary.
+        - **Подсказка** 
+        - подсказка, которая отображается при наведении курсора на знак вопроса возле поля, если необходимо. 
       * - 4
-        - **Multiple Selection**
-        - enables multiple selection (needed for selection from a list, journal, or organizational structure).
+        - **Множественный выбор** 
+        - отвечает за возможность множественного выбора (нужно для выбора из списка, журнала, или оргструктуры).
       * - 5
-        - **Input Disabled**
-        - disables the ability to enter data into the component.
+        - **Заблокирован ввод** 
+        - отключает возможность ввода данных в компонент.
       * - 6
-        - **Required**
-        - mandatory field filling.
+        - **Обязательное** 
+        - обязательность заполнения поля.
 
 
-2. **Display**. Contains display settings. For basic configuration, the following are needed:
+2. **Вид**. Хранит в себе настройки для отображения. Для базовой настройки нужны:
 
    .. image:: _static/form_builder/tab_2.png
          :width: 600
@@ -104,77 +104,78 @@ Main tabs used for configuration:
       :widths: 10 30 30
       :header-rows: 1
       :align: center
-      :class: tight-table
+      :class: tight-table 
 
-      * - No.
-        - Name
-        - Description
+      * - п/п
+        - Наименование
+        - Описание
       * - 1
-        - **Placeholder Text**
-        - a hint that is displayed before starting to fill the field. Used mainly for text fields.
+        - **Текст для пустого поля** 
+        - подсказка, которая отображает до начала заполнения поля. Используется в основном для текстовых полей.
       * - 2
-        - **Description**
-        - a hint that is always displayed on the form, unlike the placeholder, if necessary.
+        - **Описание** 
+        - подсказка, которая отображается на форме всегда, в отличие от Placeholder, если необходимо.
       * - 3
-        - **Clear Value When Hidden**
-        - responsible for clearing data in the component when it is hidden.
+        - **Очистить значение, если оно скрыто** 
+        - отвечает для очистку данных в компоненте, когда она скрыта.
 
-3. **Data**. Responsible for automatically populating the field with data. In lists, there is an option to populate the list with static data or data obtained from an asynchronous request.
+3. **Данные**. Отвечает за автоматическое заполнение поля данными. В списках, есть возможность заполнить список статическими, или полученными из асинхронного запроса данными.
 
    .. image:: _static/form_builder/tab_3.png
          :width: 600
          :align: center
 
-4. **Validation**. Responsible for checking the correctness of field filling. Supports both simple checks (checking the length of the entered string or accepting a specific value) and complex ones.
+4. **Валидация**. Отвечает за проверку правильности заполнения поля. Поддерживает как простые проверки (проверки длины введенной строки или принятия конкретного значения), так и сложные.
 
    .. image:: _static/form_builder/tab_4.png
          :width: 600
          :align: center
 
-5. **API**. Contains the key and attribute for correct data saving. The following fields must be filled in:
+5. **API**. Хранит в себе ключ и атрибут для корректного сохранения данных. Необходимо заполнить следующие поля:
 
    .. image:: _static/form_builder/tab_5.png
          :width: 600
          :align: center
 
- In the **Key** field, enter the string 'attribute', and in the **Value** field, enter the data as in the title %prefix%_%localName%. For example: initiator
+ В поле **Ключ** ввести строку attribute, а в **Значение** ввести данные как в заголовке %prefix%_%localName%. Например: initiator
 
-6. **Display**. Responsible for configuring the display of the component. Supports both simple logic, such as matching a field value and displaying upon match, and complex logic.
+6. **Отображение**. Отвечает за настройку отображения компонента. Поддерживает как простую логику, например, сопоставление значения поля и отображения при совпадении, так и сложную.
 
    .. image:: _static/form_builder/tab_6.png
          :width: 600
          :align: center
-7. **Logic**. Custom logic. Adding dynamic behavior to forms:
+7. **Логика**. Пользовательская логика. Добавление динамического поведения в формы:
 
-   - Show/hide fields.
-   - Changing values, mandatory status, availability of fields.
-   - Performing custom actions via JavaScript.
+   - Показ/скрытие полей.
+   - Изменение значений, обязательности, доступности полей.
+   - Выполнение кастомных действий через JavaScript.
 
    .. image:: _static/form_builder/tab_7.png
          :width: 600
          :align: center
 
-The trigger type defines the structure and firing conditions. The trigger configuration depends on the selected type:
+Тип триггера определяет структуру и условия срабатывания. Конфигурация триггера зависит от выбранного типа:
 
-  1. **Simple**. Uses a standard interface and configuration methods similar to the **"Display"** tab. See `Simple Conditions Documentation <https://help.form.io/userguide/form-building/logic-and-conditions#simple-conditions-8.0.x>`_
+  1. **Простой**. Использует стандартный интерфейс и методы настройки, аналогичные вкладке **"Отображение"**. См. `Документация по простым условиям <https://help.form.io/userguide/form-building/logic-and-conditions#simple-conditions-8.0.x>`_
 
-  2. **JavaScript**. Allows writing custom conditions in JavaScript. The interface and settings match **Advanced Display Conditions**. See `Advanced Conditions Documentation <https://help.form.io/userguide/form-building/logic-and-conditions#advanced-conditions>`_
+  2. **JavaScript**. Позволяет писать пользовательские условия на JavaScript. Интерфейс и настройки совпадают с **Расширенные условия отображения**. См. `Документация по расширенным условиям <https://help.form.io/userguide/form-building/logic-and-conditions#advanced-conditions>`_
 
-  3. **JSON Logic**. An alternative to JavaScript for writing logical conditions using JSON structures. See `JSON Logic Documentation <https://help.form.io/userguide/form-building/logic-and-conditions#json-logic>`_
+  3. **JSON Logic**. Альтернатива JavaScript для написания логических условий с использованием JSON-структур. См. `Документация по JSON Logic <https://help.form.io/userguide/form-building/logic-and-conditions#json-logic>`_
 
-  4. **Event**. Designed for creating custom events in the form.
+  4. **Событие**. Предназначен для создания пользовательских событий в форме.
 
-The following actions are available that can be performed when the condition is activated:
+Доступны следующие действия, которые могут быть выполнены при активации условия:
 
-  1. **Property**. Changing field settings (visibility, mandatory status, label text, etc.).
+  1. **Свойство**. Изменение настроек поля (видимость, обязательность, текст подписи и др.).
 
-  2. **Value**. Dynamic data update using JavaScript (variables row, data, component, result are available).
+  2. **Значение**. Динамическое обновление данных с помощью JavaScript (доступны переменные row, data, component, result).
 
-  3. **Validation**. Configuring form data validation rules depending on conditions.
+  3. **Валидация**. Настройка правил проверки данных формы в зависимости от условий.
 
-8. **Element Template**. Responsible for additional attributes that can be added to the form.
+8. **Шаблон элемента**. Отвечает за дополнительные атрибуты, которые могут быть добавлены в форму.
 
-Layout settings. You can change the arrangement of components on the form using HTML attributes. For example, top, bottom, left, and right padding. The values must be entered in a valid CSS format (e.g., 10px) to display correctly. The components will be arranged accordingly depending on which padding fields you configure.
+Настройки макета. Можно изменить расположение компонентов на форме, используя HTML-атрибуты. Например, отступы сверху, снизу, слева и справа. Величины должны быть введены в допустимом формате CSS (например, 10px), чтобы отображаться корректно.
+Компоненты будут располагаться соответствующим образом в зависимости от того, какие поля отступов вы настроите. 
 
    .. image:: _static/form_builder/tab_8.png
          :width: 600
