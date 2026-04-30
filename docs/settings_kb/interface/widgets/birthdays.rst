@@ -1,11 +1,11 @@
 .. _widget_birthdays:
 
-'Birthday' Widget
-=================
+Виджет «День рождения»
+===============================================
 
-Key ``birthdays``
+Ключ ``birthdays``
 
-The widget displays upcoming birthdays. Data is taken from the user profile. Clicking on a name navigates to the profile.
+Виджет отображает ближайшие дни рождения. Данные берутся из профиля пользователя. По клику на ФИО можно перейти в профиль.
 
 .. image:: ../_static/widgets/bday.png
        :width: 300

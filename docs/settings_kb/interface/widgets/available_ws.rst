@@ -1,9 +1,9 @@
 .. _widget_available_ws:
 
-'Available Spaces' Widget
-=========================
+Виджет «Доступные пространства»
+==================================================
 
-The widget displays available public spaces. Using :ref:`actions <ws_actions>`, you can navigate to or join a space:
+Виджет содержит доступные публичные пространства. Используя :ref:`действия <ws_actions>` в пространство можно перейти, присоединиться:
 
 .. image:: ../_static/widgets/available_ws.png
        :width: 700
