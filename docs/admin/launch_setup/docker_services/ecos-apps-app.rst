@@ -11,11 +11,6 @@ ecos-apps-app
 
 `nexus.citeck.ru/ecos-apps <nexus.citeck.ru/ecos-apps>`_ :<tag> - сборка проекта ecos-apps
 
-Базовые образы:
------------------
-
-* **openjdk:8-jre-alpine** - официальный образ openjdk 8 jre на базе alpine linux
-
 Шаблон сервиса docker-compose:
 ---------------------------------
 
