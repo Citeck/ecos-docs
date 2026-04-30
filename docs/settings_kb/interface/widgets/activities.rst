@@ -1,6 +1,6 @@
 .. _widget_activities:
 
-'Activities' Widget
+Виджет «Активности»
 ===============================================
 
 .. contents::
@@ -8,53 +8,52 @@
 
 .. note::
 
-    Available in the enterprise version only.
+    Доступно только в enterprise версии.
 
+**Виджет «Активности»** помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре. |br|
+Виджет универсальный, может быть добавлен на  любой дашборд для любого кейса и рабочего пространства. |br|
 
-**'Activities' Widget** helps plan and organize work on a case. Tasks such as a phone call, meeting, letter, or assignment can be scheduled from the case card and viewed in the calendar. |br|
-The widget is universal and can be added to any dashboard for any case and workspace. |br|
-
-For example, in the CRM module, the widget can be used to track the stages of work on a deal and view all scheduled and completed tasks (activities). |br|
-Scheduled activities are used to remind the manager about the need to make contact. Completed activities, as an important part of the deal history, can be used to calculate the manager's KPI. |br|
-Created activities are displayed in the deal card to which they are assigned: |br|
+Например, в модуле CRM с помощью виджета можно отслеживать этапы работы со сделкой и просматривать все запланированные и завершённые задачи (активности). |br|
+Запланированные активности используется для напоминания менеджеру о необходимости контакта. Завершённые активности, как важная часть истории сделки, могут использоваться для расчета KPI менеджера. |br|
+Созданные активности отображаются в карточке сделке, по которой они назначены: |br|
 
 .. image:: ../_static/widgets/activity/activity_01.png
        :width: 700
        :align: center
 
-In addition, they can be viewed:
+Кроме того, можно просматривать:
 
--	in the calendar (scheduled tasks only):
+-	в календаре (только планируемые задачи):
 
 .. image:: ../_static/widgets/activity/activity_02.png
        :width: 700
        :align: center
 
-See details :ref:`Invitation Email <activity_ics>` below.
+См. подробно :ref:`Письмо-приглашение <activity_ics>` ниже
 
--	and in the Tasks → Current Tasks section:
+-	и в разделе Задачи -> Текущие задачи:
 
 .. image:: ../_static/widgets/activity/activity_03.png
        :width: 700
        :align: center
 
-See details :ref:`Tasks <activity_task>` below.
+См. подробно :ref:`Задачи <activity_task>` ниже
 
-Activities can be:
+Активности бывают:
 
- - :ref:`Scheduled <planned_activity>`: call, meeting, letter;
- - :ref:`Unscheduled <unplanned_activity>`: assignment, comment.
+ - :ref:`Планируемые <planned_activity>` : звонок, встреча, письмо;
+ - :ref:`Непланируемые <unplanned_activity>`: поручение, комментарий
 
-How to Add
+Как добавить
 ------------
 
-Click **'Add Activity'**, then select the activity type from the list:
+Нажмите **«Добавить активности»**, выберите вид активности из списка:
 
 .. image:: ../_static/widgets/activity/activity_04.png
        :width: 600
        :align: center
 
-Enter the activity details. Depending on the type, the list of fields and available statuses may vary.
+Введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
 
 .. image:: ../_static/widgets/activity/activity_05.png
        :width: 600
@@ -62,9 +61,9 @@ Enter the activity details. Depending on the type, the list of fields and availa
 
 .. note::
 
- Adding a comment is always required for all activities.
+ Ввод комментария всегда обязателен для всех активностей.
 
-Scheduled Activities
+Планируемые активности
 -----------------------
 
 .. _planned_activity:
@@ -73,17 +72,17 @@ Scheduled Activities
        :width: 600
        :align: center
 
-Scheduled activities:
+Планируемые активности:
 
-       - Call;
-       - Letter;
-       - Meeting.
+       - Звонок;
+       - Письмо;
+       - Встреча.
 
-For scheduled activities, an invitation email containing an ICS file is sent to the email address specified in the profile of the responsible person and selected participants. See :ref:`Invitation Email <activity_ics>`.
+Для планируемых активностей на электронный адрес, указанный в профиле ответственного и выбранных участников, отправляется письмо-приглашение, содержащее ics файл. См. :ref:`Письмо-приглашение <activity_ics>`
 
-A task is also assigned for such activities, in which the date and time of the activity can be rescheduled or marked as completed. See :ref:`Tasks <activity_task>`.
+Так же по таким активностям назначается задача, в которой можно дату и время активности перенести, или отметить ее выполнение. См. :ref:`Задачи <activity_task>`
 
-The status model for such activities is as follows:
+Статусная модель таких активностей следующая:
 
 .. list-table::
       :widths: 3 5
@@ -96,10 +95,10 @@ The status model for such activities is as follows:
                      :width: 80
                      :align: center
 
-        - |  Default status.
-          |  A scheduled activity has been created, the date is in the future, and the task has not yet been created.
-          |  In the assigned task, the responsible person selected the verdict **'Reschedule Activity'**.
-          |  An activity in this status can be edited and deleted. See details on :ref:`actions <activity_actions>`.
+        - |  Статус по умолчанию.
+          |  Планируемая активность создана, дата в будущем, задача еще не создана.
+          |  В назначенной задаче ответственный выбрал вердикт **«Перенести активность»**.
+          |  Активность в этом статусе можно редактировать и удалять. См. подробно про :ref:`действия <activity_actions>`
 
       * - |
 
@@ -107,8 +106,8 @@ The status model for such activities is as follows:
                      :width: 80
                      :align: center
 
-        - |  The date and time of the activity has arrived.
-          |  A task is assigned to the responsible person. Two actions are available in the task: complete and reschedule the activity. See details on :ref:`the task <activity_task>`.
+        - |  Наступила дата и время активности.
+          |  Назначается задача ответственному. В задаче доступны два действия: выполнить и перенести активность. См. подробно про :ref:`задачу <activity_task>`
 
       * - |
 
@@ -116,87 +115,87 @@ The status model for such activities is as follows:
                      :width: 80
                      :align: center
 
-        - |  In the assigned task, the responsible person selected the verdict **'Done'**.
+        - |  В назначенной задаче ответственный выбрал вердикт **«Выполнено»**.
 
 .. note::
 
-       When using the widget in workspaces, workspace members are automatically added to **Participants** in scheduled activities. Participants can be removed and added.
+       При использовании виджета в рабочих пространствах в планируемых активностях в **Участниках** автоматически указываются участники пространства. Участников можно удалять и добавлять.
 
 
-Types
+Типы
 ~~~~~
 
-Call
+Звонок
 """""""
 
-The **responsible person** is specified by default:
+По умолчанию указан **ответственный**:
 
 .. image:: ../_static/widgets/activity/activity_07.png
        :width: 600
        :align: center
 
-Select the **date** and **time** from the calendar, specify the **name**, **duration**, and **responsible person**, and add **participants** if needed. Enter a comment. Click **'Create'**.
+Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
 .. image:: ../_static/widgets/activity/activity_08.png
        :width: 600
        :align: center
 
-The created activity in the card:
+Созданная активность в карточке:
 
 .. image:: ../_static/widgets/activity/activity_09.png
        :width: 600
        :align: center
 
-Letter
+Письмо
 """""""
 
-The **responsible person** is specified by default:
+По умолчанию указан **ответственный**:
 
 .. image:: ../_static/widgets/activity/activity_10.png
        :width: 600
        :align: center
 
-Select the **date** and **time** from the calendar, specify the **name** and **duration**, and change the **responsible person** if needed. Enter a comment and attach a file. Click **'Create'**.
+Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, измените **ответственного** при необходимости. Введите комментарий, добавьте файл. Нажмите **«Создать»**.
 
 .. image:: ../_static/widgets/activity/activity_11.png
        :width: 600
        :align: center
 
-The created activity in the card:
+Созданная активность в карточке:
 
 .. image:: ../_static/widgets/activity/activity_12.png
        :width: 600
        :align: center
 
-Meeting
+Встреча
 """"""""
 
-The **responsible person** is specified by default:
+По умолчанию указан **ответственный**:
 
 .. image:: ../_static/widgets/activity/activity_13.png
        :width: 600
        :align: center
 
-Select the **date** and **time** from the calendar, specify the **name**, **duration**, and **responsible person**, and add **participants** if needed. Enter a comment. Click **'Create'**.
+Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
 .. image:: ../_static/widgets/activity/activity_14.png
        :width: 600
        :align: center
 
-The created activity in the card:
+Созданная активность в карточке:
 
 .. image:: ../_static/widgets/activity/activity_15.png
        :width: 600
        :align: center
 
-Invitation Email
+Письмо-приглашение
 ~~~~~~~~~~~~~~~~~~~
 
 .. _activity_ics:
 
-For the **Call**, **Letter**, and **Meeting** types, an invitation email containing an **ICS file** is sent to the email address specified in the profile of the responsible person and selected participants.
+Для типов **Звонок**, **Письмо**, **Встреча** на электронный адрес, указанный в профиле ответственного и выбранных участников, отправляется письмо-приглашение, содержащее **ICS файл**.
 
-The ICS file contains a list of scheduled events and meetings in a universal calendar format that can be used in various online and offline organizer applications, such as Microsoft Outlook, Google Calendar, and Apple iCal. The file has a simple text format that includes the event title, start and end time, and a brief description.
+В файле ICS указан список запланированных событий и встреч в универсальном формате календаря, который можно использовать в различных программах-органайзерах онлайн и офлайн, например, Microsoft Outlook, Google Calendar и Apple iCal. У файла простой текстовый формат, включающий заголовок события, время его начала и окончания, краткое описание.
 
 .. image:: ../_static/widgets/activity/activity_16.png
        :width: 600
@@ -206,14 +205,14 @@ The ICS file contains a list of scheduled events and meetings in a universal cal
        :width: 700
        :align: center
 
-Task
+Задача
 ~~~~~~~
 
 .. _activity_task:
 
-When the **date** and **time** of the activity arrive, the system assigns a task to the responsible person. The task will be available:
+При наступлении **даты** и **времени** активности система назначает задачу ответственному. Задача будет доступна:
 
-       - in the Journal under **Current Tasks**;
+       - в Журнале **Текущие задачи»**;
 
               .. image:: ../_static/widgets/activity/activity_18.png
                      :width: 800
@@ -225,50 +224,50 @@ When the **date** and **time** of the activity arrive, the system assigns a task
                      :width: 600
                      :align: center
 
-       - in the deal card in the **'My Tasks'** widget:
+       - в карточке сделки в виджете **«Мои задачи»**:
 
               .. image:: ../_static/widgets/activity/activity_20.png
                      :width: 600
                      :align: center
 
 
-The following task completion options are available:
+Доступны следующие варианты завершения задачи:
 
-       - **'Done'**;
-       - **'Reschedule Activity'**
+       - **«Выполнено»**;
+       - **«Перенести активность»**
 
-Completing an Activity
+Выполнение активности
 """"""""""""""""""""""
 
-If the work on the activity is complete, fill in the **result** in the task and click **'Done'**. The activity status will change from **'Overdue'** to **'Completed'**.
+Если работа по активности завершена, то заполните в задаче **результат** и нажмите **«Выполнено»**. Статус активности с **«Просрочена»** изменится на **«Выполнена»**.
 
 .. image:: ../_static/widgets/activity/activity_19_1.png
        :width: 600
        :align: center
 
 
-The result will be added to the corresponding activity:
+Результат будет добавлен в соответствующую активность:
 
 .. image:: ../_static/widgets/activity/activity_20_1.png
        :width: 600
        :align: center
 
-Rescheduling an Activity
-"""""""""""""""""""""""""
+Перенос активности
+"""""""""""""""""""
 
-If the work on the activity is not complete, select a new **date** and **time** for the activity in the calendar and click **'Reschedule Activity'**. The activity status will change from **'Overdue'** to **'Scheduled'**.
+Если работа по активности не завершена, то выберите в календаре новую **дату** и **время** активности и нажмите **«Перенести активность»**. Статус активности с **«Просрочена»** изменится на **«Запланирована»**.
 
-Unscheduled Activities
+Непланируемые активности
 -------------------------
 
 .. _unplanned_activity:
 
-Unscheduled activities:
+Непланируемые активности:
 
-       - Comment;
-       - Assignment.
+       - Комментарий;
+       - Поручение.
 
-The status model for such activities is as follows:
+Статусная модель таких активностей следующая:
 
 .. list-table::
       :widths: 3 5
@@ -281,113 +280,113 @@ The status model for such activities is as follows:
                      :width: 80
                      :align: center
 
-        - |  Assignment, Comment created.
+        - |  Поручение, Комментарий созданы
 
-Comment
+Комментарий
 ~~~~~~~~~~~~
 
 .. image:: ../_static/widgets/activity/activity_21.png
        :width: 600
        :align: center
 
-Enter a comment. Click **'Create'**.
+Введите комментарий. Нажмите **«Создать»**.
 
 .. image:: ../_static/widgets/activity/activity_22.png
        :width: 600
        :align: center
 
-The created activity in the card:
+Созданная активность в карточке:
 
 .. image:: ../_static/widgets/activity/activity_23.png
        :width: 600
        :align: center
 
-Comments from the :ref:`'Comments' <widget_comments>` widget are transferred to activities:
+Комментарии из виджета :ref:`«Комментарии» <widget_comments>` транслируются в активности:
 
- - a regular comment;
- - if broadcasting of a comment from a task to the comments widget is configured, it appears in activities as a comment;
- - in :ref:`CRM <ecos-crm>`, comments on deal merges appear in activities.
+ - обычный комментарий;
+ - если  настроена трансляция комментария из задачи в виджет комментариев, то он попадает в активности как комментарий;
+ - в :ref:`CRM <ecos-crm>` комментарий по слиянию сделок попадает в активности.
 
-Assignment
+Поручение
 ~~~~~~~~~~
 
-The activity triggers the :ref:`assignment <ecos-assignments>` functionality. The **priority** is set to **medium** by default:
+Активность запускает функционал :ref:`поручения <ecos-assignments>`. По умолчанию указан **приоритет - средний**:
 
 .. image:: ../_static/widgets/activity/activity_24.png
        :width: 600
        :align: center
 
-Specify the **name**, select the **deadline** and **assignee**, and change the **priority** if needed:
+Укажите **название**, выберите **срок**, **исполнителя**, измените **приоритет** при необхоимости:
 
 .. image:: ../_static/widgets/activity/activity_25.png
        :width: 600
        :align: center
 
-The created activity in the card:
+Созданная активность в карточке:
 
 .. image:: ../_static/widgets/activity/activity_26.png
        :width: 600
        :align: center
 
-Priority is indicated by different colors:
+Приоритет отмечен разными цветами:
 
- - green — low;
- - yellow — medium;
- - red — high.
+ - зеленый - низкий;
+ - желтый - средний;
+ - красный - высокий.
 
-Upon clicking:
+По нажатию на:
 
 .. image:: ../_static/widgets/activity/activity_27.png
        :width: 600
        :align: center
 
-you can navigate to the assignment card to edit it:
+можно перейти в карточку поручения для его редактирования:
 
 .. image:: ../_static/widgets/activity/activity_28.png
        :width: 600
        :align: center
 
-In the **'Relations'** widget, mutual links are added both in the **assignment** card and in the **deal** card:
+В виджете **«Связи»** и в карточке **поручения**, и в карточке **сделки** добавляются взаимные связи:
 
 .. list-table::
       :widths: 3 5
       :class: tight-table
       :align: center
 
-      * - | In the assignment:
+      * - | В поручении:
         -
 
               .. image:: ../_static/widgets/activity/activity_29.png
                      :width: 200
                      :align: center
 
-      * - | In the deal:
+      * - | В сделке:
         -
 
               .. image:: ../_static/widgets/activity/activity_30.png
                      :width: 200
                      :align: center
 
-Actions with the Created Activity
+Действия с созданной активностью
 ---------------------------------
 
 .. _activity_actions:
 
-Actions are available to the author/initiator and the responsible person (if the author created the activity but assigned someone else as responsible).
+Действия доступны для автора/инициатора и ответственного (если автор создал, но назначил ответственным не себя).
 
-Activities with the status **'Scheduled'** can be edited and deleted:
+Редактировать и удалять можно активность в статусе **«Запланирована»**:
 
 .. image:: ../_static/widgets/activity/activity_31.png
        :width: 600
        :align: center
 
-and the type **'Comment'**:
+и тип **«Комментарий»**:
 
 .. image:: ../_static/widgets/activity/activity_32.png
        :width: 600
        :align: center
 
-For the **'Assignment'** type, navigation to the assignment card is available:
+Для типа **«Поручение»** доступен переход в карточку поручения:
 
 .. image:: ../_static/widgets/activity/activity_33.png
        :width: 600
