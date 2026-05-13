@@ -352,6 +352,64 @@ Async Data Component
 
 :ref:`Подробнее об Async Data<async_data_component>`
 
+
+.. _sample_select_hierarchical_component:
+
+Select Hierarchical Component
+------------------------------
+
+Компонент **Select Hierarchical** позволяет выбирать элементы из иерархически организованного справочника. Для его настройки необходимо предварительно подготовить тип данных с самореферентной ассоциацией.
+
+**Шаг 1. Подготовить тип данных**
+
+В типе данных добавить атрибут — ассоциацию, ссылающуюся на саму себя. При необходимости выставить множественность.
+
+ .. image:: _static/form_examples/Hierarchical_01.png
+       :width: 700
+       :align: center
+
+**Шаг 2. Добавить компонент на форму**
+
+Добавить на форму компонент **Select Hierarchical**, указав в поле **Имя свойства** название атрибута из типа данных:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/form_examples/Hierarchical_02.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_examples/Hierarchical_03.png
+                  :width: 500
+                  :align: center
+
+**Результат**
+
+В журнале созданного типа данных появляется представление **Иерархия** **(1)**.
+
+ .. image:: _static/form_examples/Hierarchical_04.png
+       :width: 700
+       :align: center
+
+В нём доступны следующие действия:
+
+ - **(2)** — добавление элемента 1-го уровня
+ - **(3)** — добавление элемента уровнем ниже
+ - **(4)** — редактирование элемента
+ - **(5)** — удаление элемента
+ - **(6)** — свернуть / развернуть структуру иерархии
+
+Тип данных через ассоциацию может быть использован в другом типе данных.
+
+ .. image:: _static/form_examples/Hierarchical_05.png
+       :width: 600
+       :align: center
+
 How to
 ------------
 

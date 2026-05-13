@@ -40,31 +40,56 @@
 .. toctree::
    :maxdepth: 3
 
-   widgets/properties
-   widgets/preview
-   widgets/documents
-   widgets/versions_journal
-   widgets/doc_associations
-   widgets/doc_status
-   widgets/barcode
-   widgets/current_tasks
-   widgets/tasks
-   widgets/record_actions
-   widgets/stages
-   widgets/process_statistics
-   widgets/gantt
-   widgets/comments
    widgets/activities
-   widgets/events_history
-   widgets/journal
-   widgets/kanban
+   widgets/tasks
    widgets/graphic_statistics
-   widgets/report
+   widgets/birthdays
+   widgets/record_actions
+   widgets/gantt
+   widgets/documents
+   widgets/available_ws
+   widgets/journal
+   widgets/versions_journal
+   widgets/events_history
+   widgets/kanban
+   widgets/comments
+   widgets/knowledge_base
+   widgets/current_tasks
    widgets/news
+   widgets/preview
+   widgets/user_profile
    widgets/publication
+   widgets/doc_associations
+   widgets/stages
+   widgets/report
+   widgets/process_statistics
+   widgets/doc_status
+   widgets/properties
    widgets/html
    widgets/web_page
-   widgets/knowledge_base
-   widgets/user_profile
-   widgets/birthdays
-   widgets/available_ws
+   widgets/barcode
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

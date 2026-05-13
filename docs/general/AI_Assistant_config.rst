@@ -82,8 +82,16 @@ Spring-профили
 В дальнейшем планируется добавить отдельный интерфейс для удобной настройки подключения AI ассистента.
 
 1. Найдите микросервис **ai** в списке микросервисов.
-2. Нажмите **правой кнопкой мыши** на шестеренку настроек микросервиса.
-3. Отредактируйте файл ``application-launcher.yml``.
+2. Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и добавьте переменные окружения:
+
+   - ``CTK_ANTHROPIC_API_KEY`` — для использования Anthropic
+   - ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI Studio
+
+   .. note::
+
+      Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку ``SPRING_PROFILES_ACTIVE``.
+
+3. Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите ``application-launcher.yml``.
 4. Вставьте содержимое нужного профиля. Например, для конфигурации ``ai-default``:
 
 .. code-block:: yaml
@@ -111,6 +119,10 @@ Spring-профили
             model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
           base-url: https://llm.api.cloud.yandex.net
 
+.. tip::
+
+   Вместо ``claude-sonnet-4-6`` можно указать ``claude-opus-4-6`` для более высокого качества генерации BPMN.
+
 для профиля ``ai-yandex-gpt-oss``:
 
 .. code-block:: yaml
@@ -132,7 +144,19 @@ Spring-профили
             model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
           base-url: https://llm.api.cloud.yandex.net
 
+Если для доступа к AI API требуется прокси-сервер, добавьте блок ``proxy`` в конфигурацию:
 
+.. code-block:: yaml
+
+  citeck:
+    ai:
+      proxy:
+        enabled: true
+        host: proxy.company.com
+        port: 8080
+        username: proxy-user
+        password: proxy-pass
+        protocol: HTTP
 
 5. Замените переменные ``${CTK_YANDEX_AI_API_KEY}``, ``${CTK_YANDEX_AI_FOLDER_ID}``, ``${CTK_ANTHROPIC_API_KEY}`` на реальные значения.
 6. Сохраните настройку, микросервис перезапустится автоматически.
