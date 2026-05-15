@@ -388,25 +388,43 @@ Select Hierarchical Component
                   :width: 500
                   :align: center
 
-**Результат**
-
-В журнале созданного типа данных появляется представление **Иерархия** **(1)**.
+**Результат:** 
 
  .. image:: _static/form_examples/Hierarchical_04.png
        :width: 700
        :align: center
 
-В нём доступны следующие действия:
-
- - **(2)** — добавление элемента 1-го уровня
- - **(3)** — добавление элемента уровнем ниже
- - **(4)** — редактирование элемента
- - **(5)** — удаление элемента
- - **(6)** — свернуть / развернуть структуру иерархии
+Подробно :ref:`см.<hierarchical-view>`
 
 Тип данных через ассоциацию может быть использован в другом типе данных.
 
- .. image:: _static/form_examples/Hierarchical_05.png
+Для этого необходимо добавить в другом типе данных атрибут-ассоциацию на тип данных с иерархией 
+
+ .. image:: _static/form_examples/Hierarchical_08.png
+       :width: 700
+       :align: center
+
+На форме использовать компонент **Select Hierarchical**, указав в поле **Имя свойства** название атрибута-ассоциации. На вкладке **Кастомные** указать иерархический тип данных, который был подготовлен на **шаге 1**.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/form_examples/Hierarchical_06.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_examples/Hierarchical_07.png
+                  :width: 500
+                  :align: center
+
+**Результат:** 
+
+.. image:: _static/form_examples/Hierarchical_05.png
        :width: 600
        :align: center
 
