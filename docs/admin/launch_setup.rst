@@ -18,4 +18,5 @@
     launch_setup/launcher_server
     launch_setup/docker-compose
     launch_setup/kubernetes
+    launch_setup/kubernetes_secrets
     launch_setup/docker_services

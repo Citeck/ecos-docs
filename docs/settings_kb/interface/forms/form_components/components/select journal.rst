@@ -59,7 +59,7 @@ Select journal
 На вкладке :guilabel:`Данные` в поле **Пользовательские данные запроса** есть возможность генерировать дополнительные параметры поиска:
 
  .. image:: _static/select_journal/select_journal_1.png
-       :width: 450
+       :width: 500
        :align: center
 
 Список предикатов описан в статье :ref:`Язык предикатов<ecos-predicate_main>` в разделе **JSON представление**.
@@ -93,6 +93,68 @@ Select journal
  .. image:: _static/select_journal/select_journal_6.png
        :width: 400
        :align: center
+
+
+
+Вычисление ID журнала динамически из данных формы
+----------------------------------------------------
+
+.. _dynamic-journal-id:
+
+Ранее поле SelectJournal поддерживало только статический ``journalId`` или подстановку через шаблон. 
+
+В новых сценариях (например, в зависимости от типа родительской сущности) требуется вычислять ID журнала динамически из данных формы. Добавлена возможность задавать **JS-выражение (customJournalId)**, которое вычисляется в рантайме и переопределяет статический ``journalId``, а также корректный сброс конфигурации журнала при смене ``journalId``.
+
+На вкладке **Данные** поле **Пользовательское значение ID журнала**:
+
+.. image:: _static/select_journal/dynamic_01.png
+       :width: 600
+       :align: center
+
+Рассмотрим пример:
+
+.. code-block:: javascript
+
+       value = data.name === "Другой журнал" ? "country-iso3166" : "legal-entities";
+
+
+Если указанное условие выполняется, то открывается журнал из условия:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/select_journal/dynamic_02.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/select_journal/dynamic_03.png
+                  :width: 600
+                  :align: center
+
+
+Если указанное условие не выполняется, то открывается журнал из поля ID журнала
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/select_journal/dynamic_04.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/select_journal/dynamic_05.png
+                  :width: 600
+                  :align: center
+
 
 
 Миграция инварианта "Value Title" на новые формы
