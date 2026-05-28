@@ -14,101 +14,120 @@
 Каждое рабочее пространство включает набор готовых функциональных модулей для решения задач конкретной бизнес-области. Пользователь видит только те разделы и данные, которые относятся к выбранному пространству, что упрощает навигацию и разграничивает доступ.
 Ниже представлен полный перечень коробочных рабочих пространств и входящих в них модулей:
 
-.. list-table::
-      :widths: 20 5
-      :header-rows: 1
-      :class: tight-table 
+.. grid:: 1
+   :gutter: 3
 
-      * - **Рабочее пространство**
-        - **Модули в его составе**
+   .. grid-item-card:: Делопроизводство
 
-      * - | **Делопроизводство**
-          | Пространство для управления распорядительной документацией, обработкой входящей и исходящей корреспонденции, а также организации и документирования совещаний и их итогов.
+      Пространство для управления распорядительной документацией, обработкой входящей и исходящей корреспонденции, а также организации и документирования совещаний и их итогов.
 
-            .. image:: _static/paperwork_space.png
-                :width: 700
-                :align: center
+      .. image:: _static/paperwork_space.png
+         :width: 700
+         :align: center
 
-        - | :ref:`Внутренние документы<ecos-order-ORD>`
-          | :ref:`Входящие документы<ecos-indoc>`
-          | :ref:`Исходящие документы<ecos-outdoc>`
-          | :ref:`Работа с документами ЭДО<EDI_in_out>`
-          | :ref:`Совещания<ecos-meetings>`
-          | :ref:`Поручения<ecos-assignments>`
+      +++
 
-      * - | **Договоры**
-          | Пространство для работы с договорными документами. 
+      - :ref:`Внутренние документы<ecos-order-ORD>`
+      - :ref:`Входящие документы<ecos-indoc>`
+      - :ref:`Исходящие документы<ecos-outdoc>`
+      - :ref:`Работа с документами ЭДО<EDI_in_out>`
+      - :ref:`Совещания<ecos-meetings>`
+      - :ref:`Поручения<ecos-assignments>`
 
-            .. image:: _static/contracts_space.png
-                :width: 700
-                :align: center
+   .. grid-item-card:: Договоры
 
-        - | :ref:`Договоры<ecos-contract>`
-          | :ref:`Работа с документами ЭДО<EDI_in_out>`
-          | :ref:`Поручения<ecos-assignments>`
+      Пространство для работы с договорными документами.
 
-      * - | **Service desk**
-          | Пространство для работы с клиентскими обращениями (заявками) и сбора аналитики по работе технической поддержки.
+      .. image:: _static/contracts_space.png
+         :width: 700
+         :align: center
 
-            .. image:: _static/sd_space.png
-                :width: 700
-                :align: center
+      +++
 
-        - | :ref:`Service desk<ecos-service-desk>`
-          | :ref:`Учет времени<ecos-worklog>`
+      - :ref:`Договоры<ecos-contract>`
+      - :ref:`Работа с документами ЭДО<EDI_in_out>`
+      - :ref:`Поручения<ecos-assignments>`
 
-      * - | **Рекрутинг**
-          | Пространство для выполнения задач по подбору персонала по заявкам подразделений.
+   .. grid-item-card:: Service desk
 
-            .. image:: _static/hr_space.png
-                :width: 700
-                :align: center
+      Пространство для работы с клиентскими обращениями (заявками) и сбора аналитики по работе технической поддержки.
 
-        - | :ref:`Офферы<ecos-offer>`
-          | :ref:`Поручения<ecos-assignments>`
+      .. image:: _static/sd_space.png
+         :width: 700
+         :align: center
 
-      * - | **CRM**
-          | Пространство для работы с лидами, клиентами, ведения сделок.
+      +++
 
-            .. image:: _static/crm_space.png
-                :width: 700
-                :align: center
+      - :ref:`Service desk<ecos-service-desk>`
+      - :ref:`Учет времени<ecos-worklog>`
 
-        - | :ref:`CRM<ecos-crm>`
-          | :ref:`Поручения<ecos-assignments>`
+   .. grid-item-card:: Рекрутинг
 
-      * - | **Справочники**
-          | Пространство содержит основные справочники, данные из которых используются при создании большинства документов системы.
+      Пространство для выполнения задач по подбору персонала по заявкам подразделений.
 
-            .. image:: _static/datalist_space.png
-                :width: 700
-                :align: center
+      .. image:: _static/hr_space.png
+         :width: 700
+         :align: center
 
-        - | :ref:`Справочники<datalists>`
+      +++
 
-      * - | **Корпоративный портал**
-          | Пространство предоставляет доступ к материалам компании, новостям и базам знаний, а также поддерживает основные рабочие процессы.
+      - :ref:`Офферы<ecos-offer>`
+      - :ref:`Поручения<ecos-assignments>`
 
-            .. image:: _static/corp_space.png
-                :width: 700
-                :align: center
+   .. grid-item-card:: CRM
 
-        - | :ref:`Корпоративный портал<corp_portal>`
-          | :ref:`Заявления на отпуск<ecos-vacation>`
-          | :ref:`Пропуска<ecos-order-pass>`
+      Пространство для работы с лидами, клиентами, ведения сделок.
 
-      * - | **Рабочее пространство проекта**
-          | Пространство для управления проектом, организации рабочего процесса команды, мониторинга задач.
+      .. image:: _static/crm_space.png
+         :width: 700
+         :align: center
 
-            .. image:: _static/project_space.png
-                :width: 700
-                :align: center
+      +++
 
-        - | :ref:`Project tracker<ecos_ept>`
-          | :ref:`Релизы<ecos-releases>`
-          | :ref:`Учет времени<ecos-worklog>`
+      - :ref:`CRM<ecos-crm>`
+      - :ref:`Поручения<ecos-assignments>`
 
-.. note:: 
+   .. grid-item-card:: Справочники
+
+      Пространство содержит основные справочники, данные из которых используются при создании большинства документов системы.
+
+      .. image:: _static/datalist_space.png
+         :width: 700
+         :align: center
+
+      +++
+
+      - :ref:`Справочники<datalists>`
+
+   .. grid-item-card:: Корпоративный портал
+
+      Пространство предоставляет доступ к материалам компании, новостям и базам знаний, а также поддерживает основные рабочие процессы.
+
+      .. image:: _static/corp_space.png
+         :width: 700
+         :align: center
+
+      +++
+
+      - :ref:`Корпоративный портал<corp_portal>`
+      - :ref:`Заявления на отпуск<ecos-vacation>`
+      - :ref:`Пропуска<ecos-order-pass>`
+
+   .. grid-item-card:: Рабочее пространство проекта
+
+      Пространство для управления проектом, организации рабочего процесса команды, мониторинга задач.
+
+      .. image:: _static/project_space.png
+         :width: 700
+         :align: center
+
+      +++
+
+      - :ref:`Project tracker<ecos_ept>`
+      - :ref:`Релизы<ecos-releases>`
+      - :ref:`Учет времени<ecos-worklog>`
+
+.. note::
 
    Экземпляры типов данных **CRM**, **Договоры** и **Service desk** - приватные, т.е.  доступны в рамках рабочего пространства, в котором созданы.
 
@@ -116,58 +135,58 @@
 
 Установите **Citeck Community** любым из описанных ниже способов:
 
-    * :ref:`Развертывание Citeck с использованием кроссплатформенного лончера <quick_start>`; 
+    * :ref:`Развертывание Citeck с использованием кроссплатформенного лончера <quick_start>`;
     * :ref:`Установка Citeck c помощью Docker Compose<docker_compose>`
 
 и воспользуйтесь следующими учетными записями для работы:
 
-.. list-table:: 
+.. list-table::
       :widths: 10 10 10 10 10
       :header-rows: 1
-      :class: tight-table 
+      :class: tight-table
 
-      * - Подразделение	
-        - Роль	
-        - Рабочее пространство	
-        - Роль в пространстве	
+      * - Подразделение
+        - Роль
+        - Рабочее пространство
+        - Роль в пространстве
         - Пользователь
       * - **Руководители**
-        - Генеральный директор 
+        - Генеральный директор
         - | Рекрутинг
-          | Договоры 
+          | Договоры
         - | Менеджер
           | Менеджер
-        - avraam.libertov 
-      * - 
-        - Коммерческий директор  
+        - avraam.libertov
+      * -
+        - Коммерческий директор
         - CRM
         - Менеджер
-        - elvira.danilenko 
-      * - 
-        - Директор по производству 
+        - elvira.danilenko
+      * -
+        - Директор по производству
         - Рекрутинг
         - Менеджер
         - pavel.elbrusov
       * - **Бухгалтерия**
         - Главный бухгалтер
         - | Рекрутинг
-          | Договоры 
+          | Договоры
         - | Пользователь
           | Пользователь
         - ekaterina.dudina
-      * - 
-        - Бухгалтер 
+      * -
+        - Бухгалтер
         - | Рекрутинг
-          | Договоры 
+          | Договоры
         - | Пользователь
           | Пользователь
-        - alexandra.filchenko 
+        - alexandra.filchenko
       * - **Отдел продаж и маркетинга**
         - Маркетолог
         - CRM
         - Пользователь
         - boris.alexeev
-      * - 
+      * -
         - Специалист отдела продаж
         - CRM
         - Пользователь
@@ -175,14 +194,14 @@
       * - **Делопроизводители**
         - Делопроизводитель
         - | Делопроизводство
-          | Договоры 
+          | Договоры
         - | Менеджер
           | Пользователь
         - elizaveta.kim
-      * - 
+      * -
         - Делопроизводитель
         - | Делопроизводство
-          | Договоры 
+          | Договоры
         - | Менеджер
           | Пользователь
         - alia.tarasova
@@ -201,17 +220,17 @@
         - Service Desk
         - Менеджер
         - yaroslav.staroverov
-      * - 
+      * -
         - 1 линия ТП
         - Service Desk
         - Пользователь
         - evgenia.makarenko
-      * - 
+      * -
         - 2 линия ТП
         - Service Desk
         - Пользователь
         - petr.frolov
-      * - 
+      * -
         - 3 линия ТП
         - Service Desk
         - Пользователь
@@ -221,14 +240,14 @@
         - Договоры
         - Пользователь
         - fedor.shishkin
-      * - 
+      * -
         - Юрист
         - Договоры
         - Пользователь
         - victor.drozdov
 
 
-.. note:: 
+.. note::
 
      Пароль для всех пользователей: **123**
 
@@ -256,9 +275,8 @@
     ecos_modules/offer
     ecos_modules/order_pass
     ecos_modules/poa
-    ecos_modules/vacation   
+    ecos_modules/vacation
     ecos_modules/ept
     ecos_modules/releases
     ecos_modules/worklog
-    ecos_modules/portal_sd   
-    
+    ecos_modules/portal_sd
