@@ -105,38 +105,38 @@ CRUD операции
 
 Ниже представлены примеры основных операций, выполняемых при управлении данными и манипулировании:
 
-.. tabs::
+.. tab-set::
 
-   .. tab:: CREATE    
+   .. tab-item:: CREATE
 
-    .. code-block:: javascript
+      .. code-block:: javascript
 
-      const record = Records.get("emodel/someType@");
-      record.att("name", "New record"); 
-      record.att("someAttribute", "Hello world!");
-      record.save();
+         const record = Records.get("emodel/someType@");
+         record.att("name", "New record");
+         record.att("someAttribute", "Hello world!");
+         record.save();
 
-   .. tab:: READ    
+   .. tab-item:: READ
 
-    .. code-block:: javascript
+      .. code-block:: javascript
 
-      const record = Records.getRecordToEdit("emodel/someType@id");
-      await record.load("?json");
+         const record = Records.getRecordToEdit("emodel/someType@id");
+         await record.load("?json");
 
-   .. tab:: UPDATE    
+   .. tab-item:: UPDATE
 
-    .. code-block:: javascript
+      .. code-block:: javascript
 
-      const record = Records.getRecordToEdit("emodel/someType@id");
-      record.att("someAttribute", "New value");
-      record.save();
+         const record = Records.getRecordToEdit("emodel/someType@id");
+         record.att("someAttribute", "New value");
+         record.save();
 
-   .. tab:: DELETE  
+   .. tab-item:: DELETE
 
-    .. code-block:: javascript
-      
-      Records.remove("emodel/someType@id1"); // 1 объект
-      Records.remove(["emodel/someType@id1", "emodel/someType@id2"]); // массив объектов
+      .. code-block:: javascript
+
+         Records.remove("emodel/someType@id1"); // 1 объект
+         Records.remove(["emodel/someType@id1", "emodel/someType@id2"]); // массив объектов
 
 Общение с сервером происходит через ``POST`` запросы:
 

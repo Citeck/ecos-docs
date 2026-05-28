@@ -37,7 +37,15 @@
      - 8615
      - MCP-сервер с инструментами для AI-моделей (поиск, переиндексация, статус, получение документа)
 
-**Стек:** Java 17, Spring Boot 3.5, Spring AI 1.1, OpenAI ``text-embedding-3-small`` (1536 dimensions), Qdrant, GitLab4J, ECOS Records API.
+**Стек:**
+
+- Java 17
+- Spring Boot 3.5
+- Spring AI 1.1
+- OpenAI ``text-embedding-3-small`` (1536 dimensions)
+- Qdrant
+- GitLab4J
+- ECOS Records API
 
 
 Требования
