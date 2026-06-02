@@ -3,500 +3,478 @@
 Результаты нагрузочного тестирования
 ======================================
 
-.. contents::
-    :depth: 3
+.. tab-set::
 
-Нагрузочное тестирование 10 000 пользователей, 1 час
-------------------------------------------------------
+   .. tab-item:: 10 000 пользователей, 1 час
 
-Нагрузочное тестирование производилось с помощью **jmeter**. Релиз **Citeck 2024.5**. K8S.
+      Нагрузочное тестирование производилось с помощью **jmeter**. Релиз **Citeck 2024.5**. K8S.
 
-**Ошибкой выполнения запроса** считается превышение времени ответа в 10 секунд или код, отличный от 200. Каждый тред использует отдельного пользователя в системе.
+      **Ошибкой выполнения запроса** считается превышение времени ответа в 10 секунд или код, отличный от 200. Каждый тред использует отдельного пользователя в системе.
 
-Изначально система имеет следующие данные:
+      Изначально система имеет следующие данные:
 
-* 10 000 пользователей
-* 10 000 000 контрактов
+      * 10 000 пользователей
+      * 10 000 000 контрактов
 
-Сценарий тестирования
-~~~~~~~~~~~~~~~~~~~~~~~
+      **Сценарий тестирования**
+     
+      Сценарий повторяет реальные запросы, которые возникают при работе пользователя.
 
-Сценарий повторяет реальные запросы, которые возникают при работе пользователя.
+      Состав сценариев и распределение нагрузки:
 
-Состав сценариев и распределение нагрузки:
+      * логин в систему и просмотр главной страницы с загрузкой меню, дашборда, информации о пользователе (20%);
+      * просмотр журнала контрактов (30%);
+      * переход на страницу просмотра контракта с загрузкой всех виджетов: информация о контракте, действия, задачи, комментарии, связи, история версий и т.д. (30%);
+      * просмотр журнала активных задач (30%);
+      * создание документов (20%);
+      * старт процессов по документам (10%);
+      * выполнение задач по процессу (50%).
 
-* логин в систему и просмотр главной страницы с загрузкой меню, дашборда, информации о пользователе (20%);
-* просмотр журнала контрактов (30%);
-* переход на страницу просмотра контракта с загрузкой всех виджетов: информация о контракте, действия, задачи, комментарии, связи, история версий и т.д. (30%);
-* просмотр журнала активных задач (30%);
-* создание документов (20%);
-* старт процессов по документам (10%);
-* выполнение задач по процессу (50%).
+      **Параметры нагрузки**
+     
+      .. list-table::
+         :widths: 5 5
+         :header-rows: 1
+         :class: tight-table
 
-Параметры нагрузки
-~~~~~~~~~~~~~~~~~~~
+         * - Название
+           - Значение
+         * - Количество пользователей
+           - 10 000
+         * - Initial delay, sec
+           - 0
+         * - Ramp up, sec
+           - 180
+         * - Hold load, sec
+           - 3 600
+         * - Ramp down, sec
+           - 180
 
-.. list-table::
-    :widths: 5 5
-    :header-rows: 1
-    :class: tight-table
+      **Ресурсы кластера и сервисов**
+      
+      5 * (16 CPU, 32 RAM) nodes — микросервисы Citeck (x2 gateway), postgresql.
 
-    * - Название
-      - Значение
-    * - Количество пользователей
-      - 10 000
-    * - Initial delay, sec
-      - 0
-    * - Ramp up, sec
-      - 180
-    * - Hold load, sec
-      - 3 600
-    * - Ramp down, sec
-      - 180
+      .. dropdown:: Gateway
 
-Ресурсы кластера и сервисов
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         Ресурсы пода:
 
-5 * (16 CPU, 32 RAM) nodes — микросервисы Citeck (x2 gateway), postgresql.
+         .. code-block:: yaml
 
-Gateway
-""""""""
+            resources:
+                limits:
+                    memory: 12Gi
+                requests:
+                    cpu: "8"
+                    memory: 12Gi
 
-Ресурсы пода:
+         Конфигурация сервиса:
 
-.. code-block:: yaml
+         .. code-block:: text
 
-    resources:
-        limits:
-            memory: 12Gi
-        requests:
-            cpu: "8"
-            memory: 12Gi
+            -Xmx10G -Xms10G
 
-Конфигурация сервиса:
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_MAX_POOL_SIZE: 800
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_INITIAL_SIZE: 800
+            SERVER_TOMCAT_MAX_THREADS: 6000
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 500
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 500
 
-.. code-block:: text
+      .. dropdown:: Model
 
-    -Xmx10G -Xms10G
+         Ресурсы пода:
 
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_MAX_POOL_SIZE: 800
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_INITIAL_SIZE: 800
-    SERVER_TOMCAT_MAX_THREADS: 6000
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 500
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 500
+         .. code-block:: yaml
 
-Model
-""""""
+            resources:
+                limits:
+                    memory: 13Gi
+                requests:
+                    cpu: "14"
+                    memory: 13Gi
 
-Ресурсы пода:
+         Конфигурация сервиса:
 
-.. code-block:: yaml
+         .. code-block:: text
 
-    resources:
-        limits:
-            memory: 13Gi
-        requests:
-            cpu: "14"
-            memory: 13Gi
+            -Xmx10G -Xms10G
 
-Конфигурация сервиса:
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_MAX_POOL_SIZE: 800
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_INITIAL_SIZE: 800
+            SERVER_TOMCAT_MAX_THREADS: 6000
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 500
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 500
 
-.. code-block:: text
+      .. dropdown:: Process
 
-    -Xmx10G -Xms10G
+         Ресурсы пода:
 
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_MAX_POOL_SIZE: 800
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_XA_AWARE_INITIAL_SIZE: 800
-    SERVER_TOMCAT_MAX_THREADS: 6000
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 500
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 500
+         .. code-block:: yaml
 
-Process
-""""""""
+            resources:
+                limits:
+                    memory: 6Gi
+                requests:
+                    cpu: "6"
+                    memory: 6Gi
 
-Ресурсы пода:
+         Конфигурация сервиса:
 
-.. code-block:: yaml
+         .. code-block:: text
 
-    resources:
-        limits:
-            memory: 6Gi
-        requests:
-            cpu: "6"
-            memory: 6Gi
+            -Xmx4G -Xms4G
 
-Конфигурация сервиса:
+            ECOS_WEBAPP_DATA_SOURCES_EPROC_MAX_POOL_SIZE: 100
+            ECOS_WEBAPP_DATA_SOURCES_EPROC_INITIAL_SIZE: 100
+            ECOS_WEBAPP_DATA_SOURCES_CAMUNDA_MAX_POOL_SIZE: 800
+            ECOS_WEBAPP_DATA_SOURCES_CAMUNDA_INITIAL_SIZE: 800
 
-.. code-block:: text
+            ECOS_PROCESS_BPMN_ELEMENTS_MUTATION_PROCESSOR_CONSUMER_COUNT: 8
+            ECOS_PROCESS_BPMN_KPI_MUTATION_PROCESSOR_CONSUMER_COUNT: 2
+            ECOS_PROCESS_BPMN_ASYNC_START_PROCESS_CONSUMER_COUNT: 2
 
-    -Xmx4G -Xms4G
+            SERVER_TOMCAT_MAX_THREADS: 1000
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 200
+            ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 200
 
-    ECOS_WEBAPP_DATA_SOURCES_EPROC_MAX_POOL_SIZE: 100
-    ECOS_WEBAPP_DATA_SOURCES_EPROC_INITIAL_SIZE: 100
-    ECOS_WEBAPP_DATA_SOURCES_CAMUNDA_MAX_POOL_SIZE: 800
-    ECOS_WEBAPP_DATA_SOURCES_CAMUNDA_INITIAL_SIZE: 800
+      .. dropdown:: UiServ
 
-    ECOS_PROCESS_BPMN_ELEMENTS_MUTATION_PROCESSOR_CONSUMER_COUNT: 8
-    ECOS_PROCESS_BPMN_KPI_MUTATION_PROCESSOR_CONSUMER_COUNT: 2
-    ECOS_PROCESS_BPMN_ASYNC_START_PROCESS_CONSUMER_COUNT: 2
+         Ресурсы пода:
 
-    SERVER_TOMCAT_MAX_THREADS: 1000
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTS: 200
-    ECOS_WEBAPP_WEB_CLIENT_MAXREQUESTSPERHOST: 200
+         .. code-block:: yaml
 
-UiServ
-"""""""
+            resources:
+                limits:
+                    memory: 6Gi
+                requests:
+                    cpu: "7"
+                    memory: 6Gi
 
-Ресурсы пода:
+         Конфигурация сервиса:
 
-.. code-block:: yaml
+         .. code-block:: text
 
-    resources:
-        limits:
-            memory: 6Gi
-        requests:
-            cpu: "7"
-            memory: 6Gi
+            -Xmx3G -Xms3G
 
-Конфигурация сервиса:
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_MAX_POOL_SIZE: 300
+            ECOS_WEBAPP_DATA_SOURCES_MAIN_INITIAL_SIZE: 300
+            SERVER_TOMCAT_MAX_THREADS: 2000
 
-.. code-block:: text
+      .. dropdown:: PostgreSQL
 
-    -Xmx3G -Xms3G
+         Ресурсы пода:
 
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_MAX_POOL_SIZE: 300
-    ECOS_WEBAPP_DATA_SOURCES_MAIN_INITIAL_SIZE: 300
-    SERVER_TOMCAT_MAX_THREADS: 2000
+         .. code-block:: yaml
 
-PostgreSQL
-"""""""""""
+            resources:
+                limits:
+                    memory: 30Gi
+                requests:
+                    cpu: "15"
+                    memory: 30Gi
 
-Ресурсы пода:
+         Конфигурация сервиса:
 
-.. code-block:: yaml
+         .. code-block:: text
 
-    resources:
-        limits:
-            memory: 30Gi
-        requests:
-            cpu: "15"
-            memory: 30Gi
+            max_connections = 7000
+            max_prepared_transactions = 7000
+            shared_buffers = 8GB
+            effective_cache_size = 15GB
 
-Конфигурация сервиса:
+            work_mem = 6MB
 
-.. code-block:: text
+            max_worker_processes = 15
+            max_parallel_maintenance_workers = 4
+            max_parallel_workers_per_gather = 4
+            max_parallel_workers = 15
 
-    max_connections = 7000
-    max_prepared_transactions = 7000
-    shared_buffers = 8GB
-    effective_cache_size = 15GB
+            max_wal_size = 3GB
+            min_wal_size = 80MB
 
-    work_mem = 6MB
+      Другие сервисы имели рекомендуемые параметры по умолчанию.
 
-    max_worker_processes = 15
-    max_parallel_maintenance_workers = 4
-    max_parallel_workers_per_gather = 4
-    max_parallel_workers = 15
+      **Результаты**
+      
+      В ходе нагрузки было сгенерировано **20 447 914 запросов**, из них **221 запрос (0.00 %)** завершился с ошибками или превысил лимит времени выполнения.
 
-    max_wal_size = 3GB
-    min_wal_size = 80MB
+      .. image:: _static/load_testing/01.png
+         :width: 500
+         :align: center
 
-Другие сервисы имели рекомендуемые параметры по умолчанию.
+      **Достигнутые показатели**
+      
+      * Среднее время отклика — 21.88 мс
+      * Медиана — 6 мс
+      * 90% всех запросов обрабатывались менее чем за 18 мс
+      * 95% всех запросов обрабатывались менее чем за 34 мс
+      * 99% всех запросов обрабатывались менее чем за 73 мс
 
-Результаты
-~~~~~~~~~~~
+      **Время ответа / Время**
 
-В ходе нагрузки было сгенерировано **20 447 914 запросов**, из них **221 запрос (0.00 %)** завершился с ошибками или превысил лимит времени выполнения.
+      .. image:: _static/load_testing/02.png
+         :width: 700
+         :align: center
 
-.. image:: _static/load_testing/01.png
-    :width: 500
-    :align: center
+      |
 
-Достигнутые показатели
-"""""""""""""""""""""""
+      .. image:: _static/load_testing/02_1.png
+         :width: 700
+         :align: center
 
-* Среднее время отклика — 21.88 мс
-* Медиана — 6 мс
-* 90% всех запросов обрабатывались менее чем за 18 мс
-* 95% всех запросов обрабатывались менее чем за 34 мс
-* 99% всех запросов обрабатывались менее чем за 73 мс
+      **Активные потоки / Время**
 
-**Время ответа / Время**
+      .. image:: _static/load_testing/02_2.png
+         :width: 700
+         :align: center
 
-.. image:: _static/load_testing/02.png
-    :width: 700
-    :align: center
+      **Запросов в секунду**
 
-|
+      .. image:: _static/load_testing/02_3.png
+         :width: 700
+         :align: center
 
-.. image:: _static/load_testing/02_1.png
-    :width: 700
-    :align: center
+      Самые высоконагруженные запросы:
 
-**Активные потоки / Время**
+      .. image:: _static/load_testing/03.png
+         :width: 500
+         :align: center
 
-.. image:: _static/load_testing/02_2.png
-    :width: 700
-    :align: center
+      Нагрузка сервисов в пике:
 
-**Запросов в секунду**
+      1. Model — 10 CPU (11.5 Gb RAM)
+      2. PostgreSQL — 9 CPU (27.2 Gb RAM)
+      3. UiServ — 7.5 CPU (4.3 Gb RAM)
+      4. Gateway — 6 CPU (9 Gb RAM) per instance
+      5. Process — 3 CPU (5 Gb RAM)
 
-.. image:: _static/load_testing/02_3.png
-    :width: 700
-    :align: center
+      **Графики CPU, RAM pods**
+      
+      .. image:: _static/load_testing/04.png
+         :width: 700
+         :align: center
 
-Самые высоконагруженные запросы:
+      |
 
-.. image:: _static/load_testing/03.png
-    :width: 500
-    :align: center
+      .. image:: _static/load_testing/05.png
+         :width: 700
+         :align: center
 
-Нагрузка сервисов в пике:
+   .. tab-item:: 1 000 пользователей, 1 час (минимальные ресурсы)
 
-1. Model — 10 CPU (11.5 Gb RAM)
-2. PostgreSQL — 9 CPU (27.2 Gb RAM)
-3. UiServ — 7.5 CPU (4.3 Gb RAM)
-4. Gateway — 6 CPU (9 Gb RAM) per instance
-5. Process — 3 CPU (5 Gb RAM)
+      Нагрузочное тестирование производилось с помощью **jmeter**. Релиз **Citeck 2024.5**. K8S.
 
-Графики CPU, RAM pods
-""""""""""""""""""""""
+      **Ошибкой выполнения запроса** считается превышение времени ответа в 10 секунд или код, отличный от 200. Каждый тред использует отдельного пользователя в системе.
 
-.. image:: _static/load_testing/04.png
-    :width: 700
-    :align: center
+      Изначально система имеет следующие данные:
 
-|
+      * 1 000 пользователей
+      * 10 000 000 контрактов
 
-.. image:: _static/load_testing/05.png
-    :width: 700
-    :align: center
+      **Сценарий тестирования**
+      
 
-Нагрузочное тестирование с минимальными рекомендуемыми ресурсами, 1000 пользователей, 1 час
----------------------------------------------------------------------------------------------
+      Сценарий повторяет реальные запросы, которые возникают при работе пользователя.
 
-Нагрузочное тестирование производилось с помощью **jmeter**. Релиз **Citeck 2024.5**. K8S.
+      Состав сценариев и распределение нагрузки:
 
-**Ошибкой выполнения запроса** считается превышение времени ответа в 10 секунд или код, отличный от 200. Каждый тред использует отдельного пользователя в системе.
+      * логин в систему и просмотр главной страницы с загрузкой меню, дашборда, информации о пользователе (20%);
+      * просмотр журнала контрактов (30%);
+      * переход на страницу просмотра контракта с загрузкой всех виджетов: информация о контракте, действия, задачи, комментарии, связи, история версий и т.д. (30%);
+      * просмотр журнала активных задач (30%);
+      * создание документов (20%);
+      * старт процессов по документам (10%);
+      * выполнение задач по процессу (50%).
 
-Изначально система имеет следующие данные:
+      **Параметры нагрузки**
+      
+      .. list-table::
+         :widths: 5 5
+         :header-rows: 1
+         :class: tight-table
 
-* 1 000 пользователей
-* 10 000 000 контрактов
+         * - Название
+           - Значение
+         * - Количество пользователей
+           - 1 000
+         * - Initial delay, sec
+           - 0
+         * - Ramp up, sec
+           - 180
+         * - Hold load, sec
+           - 3 600
+         * - Ramp down, sec
+           - 180
 
-Сценарий тестирования
-~~~~~~~~~~~~~~~~~~~~~~~
+      **Ресурсы кластера и сервисов**
+      
+      16 CPU, 32 RAM node — микросервисы ECOS, PostgreSQL.
 
-Сценарий повторяет реальные запросы, которые возникают при работе пользователя.
+      .. dropdown:: Gateway
 
-Состав сценариев и распределение нагрузки:
+         Ресурсы пода:
 
-* логин в систему и просмотр главной страницы с загрузкой меню, дашборда, информации о пользователе (20%);
-* просмотр журнала контрактов (30%);
-* переход на страницу просмотра контракта с загрузкой всех виджетов: информация о контракте, действия, задачи, комментарии, связи, история версий и т.д. (30%);
-* просмотр журнала активных задач (30%);
-* создание документов (20%);
-* старт процессов по документам (10%);
-* выполнение задач по процессу (50%).
+         .. code-block:: yaml
 
-Параметры нагрузки
-~~~~~~~~~~~~~~~~~~~
+            resources:
+                limits:
+                    cpu: "2"
+                    memory: 1Gi
+                requests:
+                    cpu: "2"
+                    memory: 1Gi
 
-.. list-table::
-    :widths: 5 5
-    :header-rows: 1
-    :class: tight-table
+         Конфигурация сервиса:
 
-    * - Название
-      - Значение
-    * - Количество пользователей
-      - 1 000
-    * - Initial delay, sec
-      - 0
-    * - Ramp up, sec
-      - 180
-    * - Hold load, sec
-      - 3 600
-    * - Ramp down, sec
-      - 180
+         .. code-block:: text
 
-Ресурсы кластера и сервисов
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            -Xmx256m -Xms256m
 
-16 CPU, 32 RAM node — микросервисы ECOS, PostgreSQL.
+      .. dropdown:: Model
 
-Gateway
-""""""""
+         Ресурсы пода:
 
-Ресурсы пода:
+         .. code-block:: yaml
 
-.. code-block:: yaml
+            resources:
+                limits:
+                    cpu: "2"
+                    memory: 1Gi
+                requests:
+                    cpu: "2"
+                    memory: 1Gi
 
-    resources:
-        limits:
-            cpu: "2"
-            memory: 1Gi
-        requests:
-            cpu: "2"
-            memory: 1Gi
+         Конфигурация сервиса:
 
-Конфигурация сервиса:
+         .. code-block:: text
 
-.. code-block:: text
+            -Xmx256m -Xms256m
 
-    -Xmx256m -Xms256m
+      .. dropdown:: Process
 
-Model
-""""""
+         Ресурсы пода:
 
-Ресурсы пода:
+         .. code-block:: yaml
 
-.. code-block:: yaml
+            resources:
+                limits:
+                    cpu: "1"
+                    memory: 4Gi
+                requests:
+                    cpu: "1"
+                    memory: 4Gi
 
-    resources:
-        limits:
-            cpu: "2"
-            memory: 1Gi
-        requests:
-            cpu: "2"
-            memory: 1Gi
+         Конфигурация сервиса:
 
-Конфигурация сервиса:
+         .. code-block:: text
 
-.. code-block:: text
+            -Xmx2G -Xms2G
 
-    -Xmx256m -Xms256m
+      .. dropdown:: UiServ
 
-Process
-""""""""
+         Ресурсы пода:
 
-Ресурсы пода:
+         .. code-block:: yaml
 
-.. code-block:: yaml
+            resources:
+                limits:
+                    cpu: "1"
+                    memory: 1Gi
+                requests:
+                    cpu: "1"
+                    memory: 1Gi
 
-    resources:
-        limits:
-            cpu: "1"
-            memory: 4Gi
-        requests:
-            cpu: "1"
-            memory: 4Gi
+         Конфигурация сервиса:
 
-Конфигурация сервиса:
+         .. code-block:: text
 
-.. code-block:: text
+            -Xmx256m -Xms256m
 
-    -Xmx2G -Xms2G
+      .. dropdown:: PostgreSQL
 
-UiServ
-"""""""
+         Ресурсы пода:
 
-Ресурсы пода:
+         .. code-block:: yaml
 
-.. code-block:: yaml
+            resources:
+                limits:
+                    cpu: "2"
+                    memory: 2Gi
+                requests:
+                    cpu: "2"
+                    memory: 2Gi
 
-    resources:
-        limits:
-            cpu: "1"
-            memory: 1Gi
-        requests:
-            cpu: "1"
-            memory: 1Gi
+         Конфигурация сервиса:
 
-Конфигурация сервиса:
+         .. code-block:: text
 
-.. code-block:: text
+            max_connections = 7000
+            max_prepared_transactions = 7000
+            shared_buffers = 250M
+            effective_cache_size = 1GB
 
-    -Xmx256m -Xms256m
+            work_mem = 4MB
 
-PostgreSQL
-"""""""""""
+            max_worker_processes = 2
+            max_parallel_maintenance_workers = 2
+            max_parallel_workers_per_gather = 2
+            max_parallel_workers = 2
 
-Ресурсы пода:
+            max_wal_size = 3GB
+            min_wal_size = 80MB
 
-.. code-block:: yaml
+      Другие сервисы имели рекомендуемые параметры по умолчанию.
 
-    resources:
-        limits:
-            cpu: "2"
-            memory: 2Gi
-        requests:
-            cpu: "2"
-            memory: 2Gi
+      **Результаты**
+      
 
-Конфигурация сервиса:
+      В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них **1 запрос (0.00 %)** завершился с ошибками или превысил лимит времени выполнения.
 
-.. code-block:: text
+      .. image:: _static/load_testing/06.png
+         :width: 500
+         :align: center
 
-    max_connections = 7000
-    max_prepared_transactions = 7000
-    shared_buffers = 250M
-    effective_cache_size = 1GB
+      **Достигнутые показатели**
+      
+      * Среднее время отклика — 6.88 мс
+      * Медиана — 6 мс
+      * 90% всех запросов обрабатывались менее чем за 16 мс
+      * 95% всех запросов обрабатывались менее чем за 25 мс
+      * 99% всех запросов обрабатывались менее чем за 47 мс
 
-    work_mem = 4MB
+      **Время ответа / Время**
 
-    max_worker_processes = 2
-    max_parallel_maintenance_workers = 2
-    max_parallel_workers_per_gather = 2
-    max_parallel_workers = 2
+      .. image:: _static/load_testing/07.png
+         :width: 700
+         :align: center
 
-    max_wal_size = 3GB
-    min_wal_size = 80MB
+      |
 
-Другие сервисы имели рекомендуемые параметры по умолчанию.
+      .. image:: _static/load_testing/07_1.png
+         :width: 700
+         :align: center
 
-Результаты
-~~~~~~~~~~~
+      **Активные потоки / Время**
 
-В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них **1 запрос (0.00 %)** завершился с ошибками или превысил лимит времени выполнения.
+      .. image:: _static/load_testing/07_2.png
+         :width: 700
+         :align: center
 
-.. image:: _static/load_testing/06.png
-    :width: 500
-    :align: center
+      **Запросов в секунду**
 
-Достигнутые показатели
-"""""""""""""""""""""""
+      .. image:: _static/load_testing/07_3.png
+         :width: 700
+         :align: center
 
-* Среднее время отклика — 6.88 мс
-* Медиана — 6 мс
-* 90% всех запросов обрабатывались менее чем за 16 мс
-* 95% всех запросов обрабатывались менее чем за 25 мс
-* 99% всех запросов обрабатывались менее чем за 47 мс
+      Самые высоконагруженные запросы:
 
-**Время ответа / Время**
+      .. image:: _static/load_testing/08.png
+         :width: 600
+         :align: center
 
-.. image:: _static/load_testing/07.png
-    :width: 700
-    :align: center
+      Нагрузка сервисов в пике:
 
-|
-
-.. image:: _static/load_testing/07_1.png
-    :width: 700
-    :align: center
-
-**Активные потоки / Время**
-
-.. image:: _static/load_testing/07_2.png
-    :width: 700
-    :align: center
-
-**Запросов в секунду**
-
-.. image:: _static/load_testing/07_3.png
-    :width: 700
-    :align: center
-
-Самые высоконагруженные запросы:
-
-.. image:: _static/load_testing/08.png
-    :width: 600
-    :align: center
-
-Нагрузка сервисов в пике:
-
-1. Model — 1.5 CPU (700 Mb RAM)
-2. PostgreSQL — 1 CPU (1.7 Gb RAM)
-3. UiServ — 0.8 CPU (850 Mb RAM)
-4. Gateway — 1.3 CPU (750 Mb RAM)
-5. Process — 0.5 CPU (2.8 Gb RAM)
+      1. Model — 1.5 CPU (700 Mb RAM)
+      2. PostgreSQL — 1 CPU (1.7 Gb RAM)
+      3. UiServ — 0.8 CPU (850 Mb RAM)
+      4. Gateway — 1.3 CPU (750 Mb RAM)
+      5. Process — 0.5 CPU (2.8 Gb RAM)
