@@ -445,7 +445,13 @@
               - :octicon:`check-circle;1.2em;sd-text-success`
 
             * - :ref:`citeck-stt-sidecar <citeck-stt-sidecar>`
-              - Микросервис для транскрипции аудио и диаризации (определения говорящих), развёртываемый как sidecar в платформе Citeck. Обрабатывает записи конференций из пайплайнов ``citeck-meeting-recorder`` и ``citeck-ai``.
+              - Микросервис для транскрипции аудио и диаризации (определения говорящих), развёртываемый как sidecar в платформе Citeck.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - :ref:`RAG Service <rag-config>`
+              - Микросервис семантического поиска и индексации документов на базе RAG для платформы Citeck. Обеспечивает векторное представление данных через OpenAI Embeddings и поиск через Qdrant.
               - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
