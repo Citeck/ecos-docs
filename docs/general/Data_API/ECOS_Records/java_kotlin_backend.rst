@@ -10,33 +10,33 @@ Kotlin/Java Backend
 
 Основной сервис для работы с RecordsAPI -  ``ru.citeck.ecos.records3.RecordsService``. Пример использования:
 
-.. tabs::
+.. tab-set::
 
-   .. tab:: Kotlin
+   .. tab-item:: Kotlin
 
-        .. code-block:: kotlin
+      .. code-block:: kotlin
 
-            val serviceFactory = RecordsServiceFactory()
-            val recordsService = serviceFactory.recordsServiceV1
-        
-            val value = HashMap<String, String>()
-            value["someKey"] = "someValue"
-        
-            val attributeValue = recordsService.getAtt(value, "someKey").asText()
-            println(attributeValue) // someValue
-    
-   .. tab:: Java
+         val serviceFactory = RecordsServiceFactory()
+         val recordsService = serviceFactory.recordsServiceV1
 
-    .. code-block:: java
-    
-        RecordsServiceFactory serviceFactory = new RecordsServiceFactory();
-        RecordsService recordsService = serviceFactory.getRecordsServiceV1();
-        
-        Map<String, String> value = new HashMap<>();
-        value.put("someKey", "someValue");
-    
-        String attributeValue = recordsService.getAtt(value, "someKey").asText();
-        System.out.println(attributeValue); // someValue
+         val value = HashMap<String, String>()
+         value["someKey"] = "someValue"
+
+         val attributeValue = recordsService.getAtt(value, "someKey").asText()
+         println(attributeValue) // someValue
+
+   .. tab-item:: Java
+
+      .. code-block:: java
+
+         RecordsServiceFactory serviceFactory = new RecordsServiceFactory();
+         RecordsService recordsService = serviceFactory.getRecordsServiceV1();
+
+         Map<String, String> value = new HashMap<>();
+         value.put("someKey", "someValue");
+
+         String attributeValue = recordsService.getAtt(value, "someKey").asText();
+         System.out.println(attributeValue); // someValue
 
 Здесь мы создаем новую мапу с одним значением и получаем из неё атрибут с именем someKey через ``RecordsService``.
 

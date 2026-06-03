@@ -9,9 +9,12 @@
 
 - :ref:`Плагин для IntelliJ IDEA <IntelliJ_IDEA_plugin>` — расширение для IDE, которое ускоряет работу с проектами и артефактами платформы: поддерживает автодополнение, деплой артефактов и навигацию по конфигурациям прямо из редактора.
 
+- :ref:`Браузерное расширение Citeck <citeck_browser_plugin>` — Chrome-расширение для разработчиков и администраторов: умная строка поиска по действиям, инструменты для работы с записями и вкладка DevTools для мониторинга Records API.
+
 .. toctree::
     :maxdepth: 2
     :hidden:
 
     developer_tools/developer_console
     developer_tools/IDEA_plugin
+    developer_tools/chrome_plugin

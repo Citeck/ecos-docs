@@ -1,9 +1,6 @@
 Сравнение Community и Enterprise версий
 =======================================================
 
-.. contents::
-   :depth: 2
-
 **Citeck Community** — полнофункциональный ИТ-продукт для автоматизации бизнес-задач в небольших компаниях. Платформа поддерживает разработку собственных бизнес-приложений в подходах No-Code, Low-Code и Code, а также создание интеграций.
 
 С помощью **Citeck Community** вы можете:
@@ -20,850 +17,472 @@
 
 Подробные сведения представлены в таблицах ниже.
 
-Модули
-------------
+.. tab-set::
 
-.. list-table::
-      :widths: 10 20 10 10
-      :header-rows: 1
-      :class: tight-table
+   .. tab-item:: Модули
 
-      * - Название
-        - Описание
-        - Community
-        - Enterprise
-      * - :ref:`Корпоративный портал <corp_portal>`
-        - Раздел для сотрудников компании, который объединяет различные инструменты, информацию и сервисы в одном месте
-        - |
+      .. list-table::
+            :widths: 10 20 10 10
+            :header-rows: 1
+            :class: tight-table
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - Название
+              - Описание
+              - Community
+              - Enterprise
+            * - :ref:`Корпоративный портал <corp_portal>`
+              - Раздел для сотрудников компании, который объединяет различные инструменты, информацию и сервисы в одном месте
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Рабочие пространства <workspaces>`
+              - Среда, объединяющая все файлы, настройки, конфигурации и инструменты, необходимые для работы над конкретным проектом или набором проектов
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Рабочие пространства <workspaces>`
-        - Среда, объединяющая все файлы, настройки, конфигурации и инструменты, необходимые для работы над конкретным проектом или набором проектов
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`ОРД <ecos-order-ORD>`
+              - Автоматизация процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Поручения <ecos-assignments>`
+              - Постановка поручений на исполнение и проверка результатов их исполнения при необходимости.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`ОРД <ecos-order-ORD>`
-        - Автоматизация процесса работы с организационно-распорядительными документами: приказами, распоряжениями, нормативными актами, служебными записками и т.д.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Договоры <ecos-contract>`
+              - Автоматизация процесса учета и согласования бумажных договоров и документов, связанных с договорами.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Корреспонденция. Входящие документы <ecos-indoc>`
+              - Автоматизация процесса работы с входящими документами: регистрация, отправка на рассмотрение и исполнение.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Поручения <ecos-assignments>`
-        - Постановка поручений на исполнение и проверка результатов их исполнения при необходимости.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Корреспонденция. Исходящие документы <ecos-outdoc>`
+              - Автоматизация процесса работы с исходящими документами: согласование, подписание, регистрация, отправка.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`CRM <ecos-crm>`
+              - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Договоры <ecos-contract>`
-        - Автоматизация процесса учета и согласования бумажных договоров и документов, связанных с договорами.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Совещания <ecos-meetings>`
+              - Автоматизация процесса планирования и проведения совещаний.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Офферы <ecos-offer>`
+              - Автоматизация процесса подбора персонала по заявкам подразделений.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Корреспонденция. Входящие документы <ecos-indoc>`
-        - Автоматизация процесса работы с входящими документами: регистрация, отправка на рассмотрение и исполнение.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Заявления на отпуск <ecos-vacation>`
+              - Модуль позволяет организовать работу с заявлениями на отпуск, поступающими от сотрудников.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Доверенности <ecos-poa>`
+              - Автоматизация процесса выдачи бумажных доверенностей.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Корреспонденция. Исходящие документы <ecos-outdoc>`
-        - Автоматизация процесса работы с исходящими документами: согласование, подписание, регистрация, отправка.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Пропуска <ecos-order-pass>`
+              - Автоматизация процесса принятия решения по выдаче пропусков.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Service desk <ecos-service-desk>`
+              - Автоматизация работы техподдержки с клиентскими обращениями (заявками).
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`CRM <ecos-crm>`
-        - Поддержка процесса маркетинга, продаж и обслуживания клиентов компании.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Учет времени <ecos-worklog>`
+              - Учет времени, затраченного сотрудником на работу по конкретной задаче, документу непосредственно из карточки задачи, документа.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Внешний портал <portal_sd>`
+              - Веб-интерфейс  для клиентов, партнеров и поставщиков, который позволяет им контролируемо работать с сервисами и данными платформы. Например, может быть использован как портал технической поддержки в составе :ref:`Service desk <ecos-service-desk>`.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Совещания <ecos-meetings>`
-        - Автоматизация процесса планирования и проведения совещаний.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Релизы <ecos-releases>`
+              - Систематизация этапов работ, связанных с релизами программного обеспечения или продуктов компании, ее подразделений.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Project tracker <ecos_ept>`
+              - Инструмент для управления проектами, организации рабочих процессов команд, мониторинга задач.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Офферы <ecos-offer>`
-        - Автоматизация процесса подбора персонала по заявкам подразделений.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Интеллектуальный помощник для платформы Citeck <AI_assistant>`
+              - Ассистент на основе искусственного интеллекта для автоматизации бизнес-процессов, работы с документами и управления данными.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+   .. tab-item:: Отдельные функциональности
 
-      * - :ref:`Заявления на отпуск <ecos-vacation>`
-        - Модуль позволяет организовать работу с заявлениями на отпуск, поступающими от сотрудников.
-        - |
+      .. list-table::
+            :widths: 10 20 10 10
+            :header-rows: 1
+            :class: tight-table
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - Функциональность
+              - Описание
+              - Community
+              - Enterprise
 
-        - |
+            * - **Бизнес-процессы и автоматизация**
+              -
+              -
+              -
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Платформа бизнес-процессов (Citeck BPMN) <ecos-bpmn_platform>`
+              - Платформа для автоматизации бизнес-процессов, которая использует нотацию BPMN (Business Process Model and Notation) для моделирования и выполнения процессов.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Доверенности <ecos-poa>`
-        - Автоматизация процесса выдачи бумажных доверенностей.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Модели принятия решений (Citeck DMN) <ecos-dmn>`
+              - Платформа моделей принятия решений DMN (Decision Model and Notation) позволяет в простой и понятной форме создавать таблицы принятия решений по входящим наборам данных для более гибкой настройки процессов, которые помогают решать аналитические и автоматизационные задачи компаниям.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`KPI <bpmn_kpi>`
+              - Настройка норм времени на выполнение задач, смену статусов, выполнение условий (событие, обновление атрибутов).
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Пропуска <ecos-order-pass>`
-        - Автоматизация процесса принятия решения по выдаче пропусков.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Lazy approval <user_task_lazy_approval>`
+              - Функциональность, позволяющая принимать решения из электронной почты, не заходя в Citeck.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Рабочий календарь <business-schedule>`
+              - Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Service desk <ecos-service-desk>`
-        - Автоматизация работы техподдержки с клиентскими обращениями (заявками).
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Делегирование <delegation>`
+              - Настройка передачи своих задач или функций другим сотрудникам.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - **Виджеты**
+              -
+              -
+              -
 
-      * - :ref:`Учет времени <ecos-worklog>`
-        - Учет времени, затраченного сотрудником на работу по конкретной задаче, документу непосредственно из карточки задачи, документа.
-        - |
+            * - :ref:`Виджет «Стадии» <widget_stages>`
+              - Виджет визуализирует прохождение :ref:`стадий <stages>` документа.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+            * - :ref:`Виджет «Канбан» <widget_kanban>`
+              - Виджет добавляет в карточку :ref:`канбан доску <kanban_board>` с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Внешний портал <portal_sd>`
-        - Веб-интерфейс  для клиентов, партнеров и поставщиков, который позволяет им контролируемо работать с сервисами и данными платформы. Например, может быть использован как портал технической поддержки в составе :ref:`Service desk <ecos-service-desk>`.
-        - |
+            * - :ref:`Виджет «Статистика процесса» <widget_process_statistics>`
+              - Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap).
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+            * - :ref:`Виджет «Графическая статистика» <widget_graphic_statistics>`
+              - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейный, столбчатый, круговой, воронка.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Релизы <ecos-releases>`
-        - Систематизация этапов работ, связанных с релизами программного обеспечения или продуктов компании, ее подразделений.
-        - |
+            * - :ref:`Виджет «Активности» <widget_activities>`
+              - Виджет помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+            * - **Работа с документами и контентом**
+              -
+              -
+              -
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Предпросмотр данных карточки <preview>`
+              - Просмотр данных карточки непосредственно из журнала без открытия полной карточки. Доступен для всех представлений журнала.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Project tracker <ecos_ept>`
-        - Инструмент для управления проектами, организации рабочих процессов команд, мониторинга задач.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`WYSIWYG-редактор <wysiwyg_editor>`
+              - Инструмент для создания и редактирования контента (текста, изображений, таблиц)
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Сравнение версий <version_comparison>`
+              - Инструмент для сравнения версий документа с подсветкой изменений.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Интеллектуальный помощник для платформы Citeck <AI_assistant>`
-        - Ассистент на основе искусственного интеллекта для автоматизации бизнес-процессов, работы с документами и управления данными.
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`Подписание с использованием ЭЦП <esign>`
+              - Подписание документов квалифицированной электронной цифровой подписью с использованием КриптоПро ЭЦП.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        - |
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - Работа с контентом
+              - | Преобразование контента, генерация документов по шаблонам, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
+              - | - :ref:`Генерация документа по шаблону <doc_templates>`
+                | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
+              - | - :ref:`Генерация документа по шаблону <doc_templates>`
+                | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
+                | - :ref:`Сравнение версий <widget_versions_journal>`
+                | - :ref:`Генерация штрих-кода <widget_barcode>`
+                | - :ref:`Скачивание pdf документа с штрих кодом <barcode_pdf>`
 
+            * - **Данные и журналы**
+              -
+              -
+              -
 
-Отдельные функциональности
----------------------------------------------------
+            * - Экспорт содержимого журнала в форматы HTML, Excel, CSV
+              - Выгрузка данных журнала в файлы форматов HTML, Excel или CSV для дальнейшей работы с ними во внешних инструментах.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-.. list-table::
-      :widths: 10 20 10 10
-      :header-rows: 1
-      :class: tight-table
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - Функциональность
-        - Описание
-        - Community
-        - Enterprise
+            * - :ref:`Импорт данных <default_data_import>`
+              - Импорт в систему файлов (Excel) по шаблону.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Платформа бизнес-процессов (Citeck BPMN) <ecos-bpmn_platform>`
-        - Платформа для автоматизации бизнес-процессов, которая использует нотацию BPMN (Business Process Model and Notation) для моделирования и выполнения процессов.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Групповые действия <group_actions>`
+              - Позволяют обработать большое количество элементов на сервере.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Семантический поиск и индексация документов <rag-search>`
+              - Поиск документов по смыслу запроса через строку поиска в шапке платформы или страницу глобального поиска. Документы индексируются автоматически при создании, изменении и удалении; в результатах отображаются только материалы, доступные пользователю.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Модели принятия решений (Citeck DMN) <ecos-dmn>`
-        - Платформа моделей принятия решений DMN (Decision Model and Notation) позволяет в простой и понятной форме создавать таблицы принятия решений по входящим наборам данных для более гибкой настройки процессов, которые помогают решать аналитические и автоматизационные задачи компаниям.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - **Работа с клиентами**
+              -
+              -
+              -
 
-        -
+            * - :ref:`Клиент 360 <client_360>`
+              - Отображение в карточке контрагента консолидированных данных из модулей платформы, таких как история взаимодействия по сделкам и договорам, технической поддержке.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Виджет «Статистика процесса» <widget_process_statistics>`
-        - Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap).
-        -
+            * - **Администрирование и безопасность**
+              -
+              -
+              -
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`Редактирование матрицы прав <permissions>`
+              - Настройка прав для типа данных.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`Аудит <ecos_audit>`
+              - Аудит (журнал событий) предназначен для ведения лог-файлов, в которые записываются события системы.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`KPI <bpmn_kpi>`
-        - Настройка норм времени на выполнение задач, смену статусов, выполнение условий (событие, обновление атрибутов).
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`Синхронизация пользователей из LDAP <LDAP_sync>`
+              - Создание нескольких конфигураций синхронизации из LDAP с возможностью различных настроек - например, сервера, домены, фильтры и т.д.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`ECOS KeyCloak Extension <keycloak_extension>`
+              - Возможность создания или формирование событий Citeck при возникновении пользовательских и административных событий Keycloak.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Подписание с использованием ЭЦП <esign>`
-        - Подписание документов квалифицированной электронной цифровой подписью с использованием КриптоПро ЭЦП.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - **Интеграции**
+              -
+              -
+              -
 
-        -
+            * - :ref:`Интеграция с ЭДО провайдерами <edi_integration>`
+              - Настройка интеграционных соединений для передачи и обработки электронных документов в автоматическом режиме.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Клиент 360 <client_360>`
-        - Отображение в карточке контрагента консолидированных данных из модулей платформы, таких как история взаимодействия по сделкам и договорам, технической поддержке.
-        -
+            * - :ref:`Интеграция с Git <git_integration>`
+              - Возможность связать Citeck приложение с Git репозиторием для загрузки измененных артефактов.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+            * - :ref:`Chrome-расширение для записи совещаний <meeting_record_plugin>`
+              - Запись видеоконференций Yandex Telemost с автоматической расшифровкой речи и формированием резюме встречи. Результат сохраняется в Citeck как активность и привязывается к бизнес-сущности (сделке или проекту).
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Предпросмотр данных карточки <preview>`
-        - Просмотр данных карточки непосредственно из журнала без открытия полной карточки. Доступен для всех представлений журнала.
-        -
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+   .. tab-item:: Микросервисы
 
-        -
+      .. list-table::
+            :widths: 10 20 10 10
+            :header-rows: 1
+            :class: tight-table
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - Название
+              - Описание
+              - Community
+              - Enterprise
+            * - ecos-gateway
+              - Микросервис реализует API шлюз взаимодействия с остальными микросервисами Платформы.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - Работа с контентом
-        - | Преобразование контента, генерация документов по шаблонам, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
-        - | - :ref:`Генерация документа по шаблону <doc_templates>`
-          | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
-        - | - :ref:`Генерация документа по шаблону <doc_templates>`
-          | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
-          | - :ref:`Сравнение версий <widget_versions_journal>`
-          | - :ref:`Генерация штрих-кода <widget_barcode>`
-          | - :ref:`Скачивание pdf документа с штрих кодом <barcode_pdf>`
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`WYSIWYG-редактор <wysiwyg_editor>`
-        - Инструмент для создания и редактирования контента (текста, изображений, таблиц)
-        -
+            * - ecos-uiserv
+              - | Микросервис UI конфигураций.
+                | Предоставляет элементы UI и хранящий их настройки (меню, журналы, UI конфиги, формы, настройки журналов, дашборды).
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+            * - ecos-model
+              - | Микросервис моделей.
+                | Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Сравнение версий <version_comparison>`
-        - Инструмент для сравнения версий документа с подсветкой изменений.
-        -
+            * - ecos-history
+              - | Микросервис истории.
+                | Микросервис подписан на события в системе и сохраняет информацию о них в БД.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+            * - :ref:`ecos-apps <apps_service>`
+              - | Микросервис приложений Citeck.
+                | Отвечает за доставку приложений Citeck к целевым сервисам.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Виджет «Графическая статистика» <widget_graphic_statistics>`
-        - Виджет позволяет пользователям наглядно представлять и анализировать данные. Виджет поддерживает различные типы графиков: линейный, столбчатый, круговой, воронка.
-        -
+            * - :ref:`ecos-notifications <notifications>`
+              - | Микросервис нотификаций.
+                | Отвечает за отправку уведомлений (email, push-нотификации и др.).
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+            * - :ref:`ecos-process <process>`
+              - Микросервис, отвечающий за процессы BPMN.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-      * - :ref:`Виджет «Активности» <widget_activities>`
-        - Виджет помогает планировать и организовывать работу по кейсу. Задачу: телефонный звонок, встречу, письмо, поручение можно запланировать из карточки кейса и просмотреть в календаре.
-        -
+            * - :ref:`ecos-transformations <transformation>`
+              - Микросервис для преобразования (трансформации) контента, генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
+              - | - :ref:`Генерация документа по шаблону <doc_templates>`
+                | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
+              - | - :ref:`Генерация документа по шаблону <doc_templates>`
+                | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
+                | - :ref:`Сравнение версий <widget_versions_journal>`
+                | - :ref:`Генерация штрих-кода <widget_barcode>`
+                | - :ref:`Скачивание pdf документа с штрих кодом <barcode_pdf>`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`ecos-content <content_service>`
+              - Микросервис для обеспечения хранения файлов в нескольких внешних файловых хранилищах.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`ecos-ai <AI_assistant_config>`
+              - Микросервис для работы :ref:`интеллектуального помощника <AI_assistant>` в платформе Citeck. Интегрируется с внешними LLM-провайдерами и предоставляет AI-функции другим микросервисам через RESTful API.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Lazy approval <user_task_lazy_approval>`
-        - Функциональность, позволяющая принимать решения из электронной почты, не заходя в Citeck.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`citeck-stt-sidecar <citeck-stt-sidecar>`
+              - Микросервис для транскрипции аудио и диаризации (определения говорящих), развёртываемый как sidecar в платформе Citeck.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`RAG Service <rag-config>`
+              - Микросервис семантического поиска и индексации документов на базе RAG для платформы Citeck. Обеспечивает векторное представление данных через OpenAI Embeddings и поиск через Qdrant.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Интеграция с ЭДО провайдерами <edi_integration>`
-        - Настройка интеграционных соединений для передачи и обработки электронных документов в автоматическом режиме.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - :ref:`ecos-integrations <integration>`
+              - Микросервис для интеграции с внешними системами (SAP, 1С, RabbitMQ и тд.).
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+            * - :ref:`ecos-edi <ecos-edi>`
+              - Микросервис, отвечающий за функционал ЮЗДО.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
-      * - :ref:`Делегирование <delegation>`
-        - Настройка передачи своих задач или функций другим сотрудникам.
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
+            * - ecos-ecom
+              - Микросервис представляет решение для создания и управления email-рассылками, чат-ботами внутри платформы.
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-        -
+              - :octicon:`check-circle;1.2em;sd-text-success`
 
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
+   .. tab-item:: Техническая поддержка
 
-      * - :ref:`Рабочий календарь <business-schedule>`
-        - Функциональность для учета нерабочих, праздничных дней сотрудников, которые позволяют более гибко настраивать рабочий процесс сотрудников в различных модулях системы.
-        -
+      .. list-table::
+            :widths: 20 20
+            :header-rows: 1
+            :class: tight-table
 
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - Экспорт содержимого журнала в форматы HTML, Excel, CSV
-        - Выгрузка данных журнала в файлы форматов HTML, Excel или CSV для дальнейшей работы с ними во внешних инструментах.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Импорт данных <default_data_import>`
-        - Импорт в систему файлов (Excel) по шаблону.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Виджет «Стадии» <widget_stages>`
-        - Виджет визуализирует прохождение :ref:`стадий <stages>` документа.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Виджет «Канбан» <widget_kanban>`
-        - Виджет добавляет в карточку :ref:`канбан доску <kanban_board>` с настраиваемым журналом, связанным атрибутам и шаблонами для удобства пользователя и быстрым взаимодействием со статусами через карточку.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Редактирование матрицы прав <permissions>`
-        - Настройка прав для типа данных.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Синхронизация пользователей из LDAP <LDAP_sync>`
-        - Создание нескольких конфигураций синхронизации из LDAP с возможностью различных настроек - например, сервера, домены, фильтры и т.д.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Аудит <ecos_audit>`
-        - Аудит (журнал событий) предназначен для ведения лог-файлов, в которые записываются события системы.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Групповые действия <group_actions>`
-        - Позволяют обработать большое количество элементов на сервере.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ECOS KeyCloak Extension <keycloak_extension>`
-        - Возможность создания или формирование событий Citeck при возникновении пользовательских и административных событий Keycloak.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`Интеграция с Git <git_integration>`
-        - Возможность связать Citeck приложение с Git репозиторием для загрузки измененных артефактов.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-
-Микросервисы
-------------------------
-
-.. list-table::
-      :widths: 10 20 10 10
-      :header-rows: 1
-      :class: tight-table
-
-      * - Название
-        - Описание
-        - Community
-        - Enterprise
-      * - ecos-gateway
-        - Микросервис реализует API шлюз взаимодействия с остальными микросервисами Платформы.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - ecos-uiserv
-        - | Микросервис UI конфигураций.
-          | Предоставляет элементы UI и хранящий их настройки (меню, журналы, UI конфиги, формы, настройки журналов, дашборды).
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - ecos-model
-        - | Микросервис моделей.
-          | Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - ecos-history
-        - | Микросервис истории.
-          | Микросервис подписан на события в системе и сохраняет информацию о них в БД.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-apps <apps_service>`
-        - | Микросервис приложений Citeck.
-          | Отвечает за доставку приложений Citeck к целевым сервисам.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-notifications <notifications>`
-        - | Микросервис нотификаций.
-          | Отвечает за отправку уведомлений (email, push-нотификации и др.).
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-process <process>`
-        - | Микросервис, отвечающий за процессы BPMN.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-integrations <integration>`
-        - | Микросервис для интеграции с внешними системами (SAP, 1С, RabbitMQ и тд.).
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-transformations <transformation>`
-        - | Микросервис для преобразования (трансформации) контента, генерации документов по шаблонам, которые можно подгрузить с проектом или добавить через инструменты администратора, формирования PDF-файла со штрихкодом, конвертации всех офисных форматов в PDF.
-        - | - :ref:`Генерация документа по шаблону <doc_templates>`
-          | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
-        - | - :ref:`Генерация документа по шаблону <doc_templates>`
-          | - :ref:`Редактирование документа в Onlyoffice <edit_only_office>`
-          | - :ref:`Сравнение версий <widget_versions_journal>`
-          | - :ref:`Генерация штрих-кода <widget_barcode>`
-          | - :ref:`Скачивание pdf документа с штрих кодом <barcode_pdf>`
-
-      * - :ref:`ecos-content <content_service>`
-        - | Микросервис для обеспечения хранения файлов в нескольких внешних файловых хранилищах.
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - :ref:`ecos-edi <ecos-edi>`
-        - | Микросервис, отвечающий за функционал ЮЗДО
-        -
-
-           .. image:: _static/modules/red.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-      * - ecos-ecom
-        - | Микросервис представляет решение для создания и управления email-рассылками, чат-ботами внутри платформы.
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-        -
-
-           .. image:: _static/modules/green.png
-              :width: 30
-              :align: center
-
-
-Техническая поддержка
------------------------------------------
-
-.. list-table::
-      :widths: 20 20
-      :header-rows: 1
-      :class: tight-table
-
-      * - Community
-        - Enterprise
-      * - Только в `telegram канале <https://t.me/citeck>`_. Без SLA.
-        - | Портал поддержки, email, телефон.
-          | Соблюдение сроков в соответствии с условиями SLA.
+            * - Community
+              - Enterprise
+            * - Только в `telegram канале <https://t.me/citeck>`_. Без SLA.
+              - | Портал поддержки, email, телефон.
+                | Соблюдение сроков в соответствии с условиями SLA.

@@ -53,7 +53,8 @@ extensions = [
  'sphinx_tabs.tabs',
  'sphinx_rtd_theme',
  'sphinxcontrib.mermaid',
- 'sphinxcontrib.rsvgconverter'
+ 'sphinxcontrib.rsvgconverter',
+ 'sphinx_design'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

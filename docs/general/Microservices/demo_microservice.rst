@@ -8,7 +8,7 @@
 
 **ecos-demo-app** — эталонный микросервис платформы Citeck, предназначенный для разработчиков, которые создают собственные микросервисы или интегрируют внешние системы с платформой. Приложение написано на Java с использованием Spring Boot и охватывает наиболее распространённые сценарии работы с ECOS API.
 
-Документ адресован разработчикам (Java/Kotlin), которые начинают работу с платформой Citeck ECOS или хотят разобраться в типовых паттернах интеграции.
+Документ адресован разработчикам (Java/Kotlin), которые начинают работу с платформой Citeck или хотят разобраться в типовых паттернах интеграции.
 
 В демо-приложении реализованы следующие механизмы платформы:
 
@@ -115,9 +115,9 @@
 Классы
 ~~~~~~~~~~~~
 
-.. tabs::
+.. tab-set::
 
-   .. tab:: Records
+   .. tab-item:: Records
 
         **Запись (Record)** – сущность с набором атрибутов и идентификатором записи (RecordRef).
 
@@ -311,7 +311,7 @@
                 }
             }
 
-   .. tab:: Actions
+   .. tab-item:: Actions
 
         :ref:`Действия <ui_actions>` — артефакты Citeck в формате json или yaml с типом ui/action. `Ссылка на Action в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/actions/SendDemoEmailAction.java>`_
 
@@ -414,7 +414,7 @@
         * **send-demo-email** - идентификатор RecordsDAO. Используется для определения того, какой DAO должен обрабатывать запрос на мутацию (см. SendDemoEmailAction.ID).
         * **EntityRef** - уникальный идентификатор сущности в системе Citeck. 
 
-   .. tab:: Commands
+   .. tab-item:: Commands
 
         :ref:`Команды <ecos_commands>` в Citeck в основном используются для асинхронного обмена сообщениями между приложениями.
 
@@ -502,7 +502,7 @@
                 }
             }
 
-   .. tab:: Job
+   .. tab-item:: Job
 
         Job позволяет запланировать однократное или регулярное выполнение заданий. `Ссылка на Job в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/job/SimpleAnnotatedJob.java>`_
 
@@ -538,7 +538,7 @@
                 }
             }
 
-   .. tab:: Events
+   .. tab-item:: Events
 
         :ref:`События <ecos_events>` в Citeck позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий.
 
@@ -628,7 +628,7 @@
                 }
             }
 
-   .. tab:: Exttask
+   .. tab-item:: Exttask
 
         :ref:`Внешние задачи <ecos_bpmn_external_task>` позволяют выполнять задачи с помощью внешних систем.
 

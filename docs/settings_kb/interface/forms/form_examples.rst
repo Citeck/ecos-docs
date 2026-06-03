@@ -352,6 +352,82 @@ Async Data Component
 
 :ref:`Подробнее об Async Data<async_data_component>`
 
+
+.. _sample_select_hierarchical_component:
+
+Select Hierarchical Component
+------------------------------
+
+Компонент **Select Hierarchical** позволяет выбирать элементы из иерархически организованного справочника. Для его настройки необходимо предварительно подготовить тип данных с самореферентной ассоциацией.
+
+**Шаг 1. Подготовить тип данных**
+
+В типе данных добавить атрибут — ассоциацию, ссылающуюся на саму себя. При необходимости выставить множественность.
+
+ .. image:: _static/form_examples/Hierarchical_01.png
+       :width: 700
+       :align: center
+
+**Шаг 2. Добавить компонент на форму**
+
+Добавить на форму компонент **Select Hierarchical**, указав в поле **Имя свойства** название атрибута из типа данных:
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/form_examples/Hierarchical_02.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_examples/Hierarchical_03.png
+                  :width: 500
+                  :align: center
+
+**Результат:** 
+
+ .. image:: _static/form_examples/Hierarchical_04.png
+       :width: 700
+       :align: center
+
+Подробно :ref:`см.<hierarchical-view>`
+
+Тип данных через ассоциацию может быть использован в другом типе данных.
+
+Для этого необходимо добавить в другом типе данных атрибут-ассоциацию на тип данных с иерархией 
+
+ .. image:: _static/form_examples/Hierarchical_08.png
+       :width: 700
+       :align: center
+
+На форме использовать компонент **Select Hierarchical**, указав в поле **Имя свойства** название атрибута-ассоциации. На вкладке **Кастомные** указать иерархический тип данных, который был подготовлен на **шаге 1**.
+
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/form_examples/Hierarchical_06.png
+                  :width: 600
+                  :align: center
+
+        - |
+
+            .. image:: _static/form_examples/Hierarchical_07.png
+                  :width: 500
+                  :align: center
+
+**Результат:** 
+
+.. image:: _static/form_examples/Hierarchical_05.png
+       :width: 600
+       :align: center
+
 How to
 ------------
 

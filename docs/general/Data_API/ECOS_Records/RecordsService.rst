@@ -3,156 +3,139 @@ RecordsService (Java)
 
 .. _ecos_RecordsService:
 
-.. contents::
-   :depth: 3
-
 **RecordsService** - сервис для работы с абстрактными записями, источником которых может быть любой DAO.
 
 Существует четыре операции, которые можно проделывать над записями:
 
-1. Поиск записей
--------------------
+.. tab-set::
 
-.. _RecordsQuery:
+   .. tab-item:: Поиск записей
 
-Методы: **query, queryOne**
+      .. _RecordsQuery:
 
-Для поиска записей всегда передается **RecordsQuery**, который содержит параметры поиска. Помимо самого простого метода для поиска с одним параметром **RecordsQuery** так же есть варианты с объединенным поиском и запросом атрибутов.
+      Методы: **query, queryOne**
 
-.. code-block:: java
+      Для поиска записей всегда передается **RecordsQuery**, который содержит параметры поиска.
+      Помимо самого простого метода для поиска с одним параметром **RecordsQuery** так же есть варианты
+      с объединенным поиском и запросом атрибутов.
 
-  recordsService.queryOne(
-    RecordsQuery.create()
-     	    .withSourceId("emodel/person")
-          .withLanguage(PredicateService.LANGUAGE_PREDICATE)
-          .withQuery(Predicates.and(
-                  Predicates.eq("city", "Tomsk"),
-                  Predicates.eq("organization", "Citeck")))
-          .withConsistency(Consistency.EVENTUAL)
-          .addSort(new SortBy("_created", true))
-          .build());
+      .. tab-set::
 
-.. code-block:: java
+         .. tab-item:: queryOne
 
-  recordsService.query(RecordsQuery.create()
-          .withSourceId("edi/edi-inbound-main-document")
-          .withLanguage(PredicateService.LANGUAGE_PREDICATE)
-          .withQuery(Predicates.and(
-                  Predicates.eq("type", "emodel/type@testip-inboundPackage"),
-                  Predicates.eq("testip:isNeedSendToVim", true),
-                  Predicates.not(
-                          Predicates.eq("testip:isAlreadySentToVim", true)
-                  )
-          ))
-          .withConsistency(Consistency.EVENTUAL)
-          .build());
+            .. code-block:: java
 
-* **.withLanguage** – указываем язык запроса;
-* **.withQuery** – сам запрос;
-* **.withConsistency** – Consistency (Согласованность). Возможные варианты: EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE
-* **.addSort** – указываем по какому полю нужна сортировка
-* **.build()** – сборка запроса
+               recordsService.queryOne(
+                 RecordsQuery.create()
+                   .withSourceId("emodel/person")
+                   .withLanguage(PredicateService.LANGUAGE_PREDICATE)
+                   .withQuery(Predicates.and(
+                           Predicates.eq("city", "Tomsk"),
+                           Predicates.eq("organization", "Citeck")))
+                   .withConsistency(Consistency.EVENTUAL)
+                   .addSort(new SortBy("_created", true))
+                   .build());
 
-На выходе:
+         .. tab-item:: query
 
-* при **query** получаем **RecsQueryRes<RecordRef>**
-* при **queryOne** получаем **RecordRef**
+            .. code-block:: java
 
-2. Получение атрибутов записи
--------------------------------
+               recordsService.query(RecordsQuery.create()
+                   .withSourceId("edi/edi-inbound-main-document")
+                   .withLanguage(PredicateService.LANGUAGE_PREDICATE)
+                   .withQuery(Predicates.and(
+                           Predicates.eq("type", "emodel/type@testip-inboundPackage"),
+                           Predicates.eq("testip:isNeedSendToVim", true),
+                           Predicates.not(
+                                   Predicates.eq("testip:isAlreadySentToVim", true)
+                           )
+                   ))
+                   .withConsistency(Consistency.EVENTUAL)
+                   .build());
 
-Методы: **getAtt**, **getAtts**
+      * **.withLanguage** – указываем язык запроса;
+      * **.withQuery** – сам запрос;
+      * **.withConsistency** – Consistency (Согласованность). Возможные варианты: EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE
+      * **.addSort** – указываем по какому полю нужна сортировка
+      * **.build()** – сборка запроса
 
-.. code-block:: java
+      На выходе:
 
-  recordsService.getAtt(documentRef, "eint:ediProviderType?str").asText();
+      * при **query** получаем **RecsQueryRes<RecordRef>**
+      * при **queryOne** получаем **RecordRef**
 
-* **documentRef** – record, к которому обращаемся
-* **"eint:ediProviderType?str"** – параметр, который хотим получить
+   .. tab-item:: Получение атрибутов
 
-.. code-block:: java
+      Методы: **getAtt**, **getAtts**
 
- List<ObjPropertyClass> list = recordsService.getAtt(documentRef, "objProperty[]?json").asList(ObjPropertyClass.class);
+      .. code-block:: java
 
-.. code-block:: java
+         recordsService.getAtt(documentRef, "eint:ediProviderType?str").asText();
 
-  RecordAtts recordAtts = recordsService.getAtts(RecordRef.valueOf(nodeRef.toString()),
-        Collections.singletonMap("assocId", name + "[]?id"));
+      * **documentRef** – record, к которому обращаемся
+      * **"eint:ediProviderType?str"** – параметр, который хотим получить
 
-Существует два уровня абстрации для получения атрибутов:
+      .. code-block:: java
 
-**DTO Class > Attributes**
+         List<ObjPropertyClass> list = recordsService.getAtt(documentRef, "objProperty[]?json").asList(ObjPropertyClass.class);
 
-* **DTO Class** - класс, который используется для генерации списка аттрибутов для формирования схемы и запроса атрибутов из DAO.
+      .. code-block:: java
 
-После получения всех данных из DAO идет создание инстансов переданного DTO класса и наполнение его данными с помощью библиотеки jackson;
-Список аттрибутов формируется либо из названий полей, либо можно добавить аннотацию AttName для указания атрибута вручную.
+         RecordAtts recordAtts = recordsService.getAtts(RecordRef.valueOf(nodeRef.toString()),
+               Collections.singletonMap("assocId", name + "[]?id"));
 
-* **Attributes** - аттрибуты записи в чистом виде. Есть варианты с одним атрибутом, списком атрибутов или набором ключ->значение (Map)
+      Существует два уровня абстрации для получения атрибутов:
 
-3. Мутация (изменение или создание) записи
----------------------------------------------
+      **DTO Class > Attributes**
 
-Каждый DAO решает сам создавать или редактировать полученную запись.
-Если в DAO приходит запись с пустым идентификатором, то это команда к созданию новой записи.
+      * **DTO Class** - класс, который используется для генерации списка аттрибутов для формирования схемы и запроса атрибутов из DAO.
+        После получения всех данных из DAO идет создание инстансов переданного DTO класса и наполнение его данными с помощью библиотеки jackson.
+        Список аттрибутов формируется либо из названий полей, либо можно добавить аннотацию ``AttName`` для указания атрибута вручную.
+      * **Attributes** - аттрибуты записи в чистом виде. Есть варианты с одним атрибутом, списком атрибутов или набором ключ→значение (Map).
 
-Изменение записи
-~~~~~~~~~~~~~~~~~~
+   .. tab-item:: Мутация
 
-.. code-block:: java
+      Каждый DAO решает сам создавать или редактировать полученную запись.
+      Если в DAO приходит запись с пустым идентификатором, то это команда к созданию новой записи.
 
-  RecordAtts recordAtts = new RecordAtts();
-  recordAtts.setId(recordRef);
-  recordAtts.setAtt("testdl:isOutboundPackageSyncNeeded", false);
-  recordsService.mutate(recordAtts);
+      .. tab-set::
 
-Для обновления записи необходимо указывать **.setId()** записи которой необходимо изменить.
+         .. tab-item:: Изменение записи
 
-Создание записи
-~~~~~~~~~~~~~~~~
+            .. code-block:: java
 
-.. code-block:: java
+               RecordAtts recordAtts = new RecordAtts();
+               recordAtts.setId(recordRef);
+               recordAtts.setAtt("testdl:isOutboundPackageSyncNeeded", false);
+               recordsService.mutate(recordAtts);
 
-  RecordAtts recordAtts = new RecordAtts();
-  recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
-  recordAtts.setAtt(RecordConstants.ATT_PARENT, "eproc/routeTemplate@c897a06d-e1b5-4564-9966-762124399dfd");
-  recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "routes");
-  recordsService.mutate(recordAtts);
+            Для обновления записи необходимо указывать **.setId()** записи которой необходимо изменить.
 
-При создании новой записи параметр **setId()** не указывается. 
+         .. tab-item:: Создание записи
 
-Если при мутации указать атрибут:
+            .. code-block:: java
 
-.. code-block:: text
+               RecordAtts recordAtts = new RecordAtts();
+               recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
+               recordAtts.setAtt(RecordConstants.ATT_PARENT, "eproc/routeTemplate@c897a06d-e1b5-4564-9966-762124399dfd");
+               recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "routes");
+               recordsService.mutate(recordAtts);
 
-  __disableAudit=true
+            При создании новой записи параметр **setId()** не указывается.
 
-(константа DbRecordsControlAtts.DISABLE_AUDIT), то поля:
+      Если при мутации указать атрибут ``__disableAudit=true``
+      (константа ``DbRecordsControlAtts.DISABLE_AUDIT``), то поля
+      ``_creator``, ``_created``, ``_modifier``, ``_modified``
+      заполняться автоматически не будут. Если эти поля установить вручную, то в БД попадут именно они.
 
-.. code-block:: text
+      Для ``creator`` и ``modifier`` допустимо указывать как username так и полный ref пользователя.
 
-  _creator
-  _created
-  _modifier
-  _modified
+      Атрибут ``__disableAudit`` допустимо проставлять только в контексте системы (``runAsSystem``).
 
-заполняться автоматически не будут. Если эти поля установить вручную, то в БД попадут именно они.
+   .. tab-item:: Удаление записи
 
-Для ``creator`` и ``modifier`` допустимо указывать как username так и полный ref пользователя.
+      .. code-block:: java
 
-Атрибут
+         recordsService.delete(routeTemplate);
 
-.. code-block:: text
-
-  __disableAudit
-
-допустимо проставлять только в контексте системы (runAsSystem)
-
-4. Удаление записи
---------------------
-
-.. code-block:: java
-
-  recordsService.delete(routeTemplate);
-
-* **RecordRef routeTemplate** – record, который необходимо удалить
+      * **RecordRef routeTemplate** – record, который необходимо удалить
