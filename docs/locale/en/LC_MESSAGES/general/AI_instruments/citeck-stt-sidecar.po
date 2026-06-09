@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:4
+msgid "Микросервис для транскрипции аудио и диаризации"
+msgstr "Microservice for Audio Transcription and Diarization"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:9
+msgid ""
+"**Citeck stt sidecar** — микросервис для транскрипции аудио и диаризации "
+"(определения говорящих), интегрированный как sidecar в платформу Citeck. "
+"Обрабатывает записи конференций из pipeline ``citeck-meeting-recorder`` /"
+" ``citeck-ai``."
+msgstr ""
+"**Citeck stt sidecar** is a microservice for audio transcription and "
+"diarization (speaker identification), integrated as a sidecar into the "
+"Citeck platform. It processes conference recordings from the "
+"``citeck-meeting-recorder`` / ``citeck-ai`` pipeline."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:12
+msgid "Принцип работы"
+msgstr "How It Works"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:14
+msgid ""
+"Сервис принимает аудиофайл, преобразует его в нужный формат, разбивает на"
+" чанки для транскрипции и при необходимости определяет, кто из участников"
+" говорит в каждом фрагменте."
+msgstr ""
+"The service accepts an audio file, converts it to the required format, "
+"splits it into chunks for transcription, and if needed, identifies which "
+"participant is speaking in each segment."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:17
+msgid "Конвертация аудио"
+msgstr "Audio Conversion"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:19
+msgid ""
+"Любой входящий формат (WebM, Opus и др.) преобразуется в WAV 16 кГц / "
+"mono / PCM16 через ``ffmpeg``. Временные файлы, созданные в процессе "
+"конвертации, гарантированно удаляются в ``finally``-блоках."
+msgstr ""
+"Any input format (WebM, Opus, etc.) is converted to WAV 16 kHz / mono / "
+"PCM16 via ``ffmpeg``. Temporary files created during conversion are "
+"guaranteed to be deleted in ``finally`` blocks."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:22
+msgid "Чанковая транскрипция"
+msgstr "Chunked Transcription"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:24
+msgid ""
+"Аудио нарезается на 25-секундные чанки с перекрытием 1 секунду. Это "
+"позволяет обрабатывать длинные записи без переполнения памяти и не терять"
+" слова на границах фрагментов. Каждый чанк транскрибируется моделью "
+"**GigaAM-v3 (Сбер)** — основной моделью распознавания русской речи. "
+"Результат — список сегментов с временными метками."
+msgstr ""
+"Audio is split into 25-second chunks with a 1-second overlap. This allows "
+"long recordings to be processed without memory overflow and prevents words "
+"from being lost at chunk boundaries. Each chunk is transcribed by the "
+"**GigaAM-v3 (Sber)** model — the primary Russian speech recognition model. "
+"The result is a list of segments with timestamps."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:27
+msgid "Диаризация"
+msgstr "Diarization"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:29
+msgid ""
+"Диаризация выполняется библиотекой **pyannote.audio** и загружается "
+"лениво — только при первом запросе к ``/transcribe-diarize``. Если "
+"переменная ``HF_TOKEN`` не задана, диаризация отключается gracefully, "
+"сервис продолжает работу в режиме только транскрипции."
+msgstr ""
+"Diarization is performed by the **pyannote.audio** library and is loaded "
+"lazily — only on the first request to ``/transcribe-diarize``. If the "
+"``HF_TOKEN`` variable is not set, diarization is disabled gracefully, and "
+"the service continues running in transcription-only mode."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:31
+msgid ""
+"После получения результатов транскрипции и диаризации сервис сопоставляет"
+" сегменты: для каждого текстового отрезка определяется говорящий по "
+"максимальному перекрытию с сегментами диаризации."
+msgstr ""
+"After receiving transcription and diarization results, the service matches "
+"segments: for each text segment, the speaker is determined by the maximum "
+"overlap with the diarization segments."
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:34
+msgid "Поток обработки"
+msgstr "Processing Flow"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:50
+msgid "API"
+msgstr "API"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:57
+msgid "Эндпоинт"
+msgstr "Endpoint"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:58
+msgid "Метод"
+msgstr "Method"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:59
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:60
+msgid "``/health``"
+msgstr "``/health``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:61
+msgid "``GET``"
+msgstr "``GET``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:62
+msgid "Состояние сервиса и доступность моделей"
+msgstr "Service status and model availability"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:63
+msgid "``/transcribe``"
+msgstr "``/transcribe``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:64
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:67
+msgid "``POST``"
+msgstr "``POST``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:65
+msgid "Транскрипция аудиофайла (только текст, без диаризации)"
+msgstr "Audio file transcription (text only, without diarization)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:66
+msgid "``/transcribe-diarize``"
+msgstr "``/transcribe-diarize``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:68
+msgid "Транскрипция + определение говорящих"
+msgstr "Transcription + speaker identification"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:72
+msgid "Переменные окружения"
+msgstr "Environment Variables"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:79
+msgid "Переменная"
+msgstr "Variable"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:80
+msgid "По умолчанию"
+msgstr "Default"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:81
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:111
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:82
+msgid "``HF_TOKEN``"
+msgstr "``HF_TOKEN``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:83
+msgid "—"
+msgstr "—"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:84
+msgid "Токен HuggingFace (необходим для диаризации через pyannote)"
+msgstr "HuggingFace token (required for diarization via pyannote)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:85
+msgid "``GIGAAM_MODELS_PATH``"
+msgstr "``GIGAAM_MODELS_PATH``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:86
+msgid "``../citeck-ai/models``"
+msgstr "``../citeck-ai/models``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:87
+msgid "Путь к кэшу модели GigaAM (монтируется как volume из citeck-ai)"
+msgstr "Path to the GigaAM model cache (mounted as a volume from citeck-ai)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:88
+msgid "``PORT`` / ``STT_PORT``"
+msgstr "``PORT`` / ``STT_PORT``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:89
+msgid "``8090``"
+msgstr "``8090``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:90
+msgid "Порт сервиса"
+msgstr "Service port"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:94
+msgid "Технологический стек"
+msgstr "Technology Stack"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:96
+msgid "**FastAPI + Uvicorn** — асинхронный REST API (порт 8090)"
+msgstr "**FastAPI + Uvicorn** — asynchronous REST API (port 8090)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:97
+msgid "**GigaAM-v3 (Сбер)** — распознавание русской речи"
+msgstr "**GigaAM-v3 (Sber)** — Russian speech recognition"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:98
+msgid "**pyannote.audio** — диаризация"
+msgstr "**pyannote.audio** — diarization"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:99
+msgid "**pydub + ffmpeg** — конвертация аудио (WebM/Opus → WAV)"
+msgstr "**pydub + ffmpeg** — audio conversion (WebM/Opus → WAV)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:100
+msgid "**Python 3.11**, деплой в Docker"
+msgstr "**Python 3.11**, deployed in Docker"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:104
+msgid "Ключевые файлы"
+msgstr "Key Files"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:110
+msgid "Файл"
+msgstr "File"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:112
+msgid "``app/main.py``"
+msgstr "``app/main.py``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:113
+msgid ""
+"Точка входа FastAPI, управление жизненным циклом моделей, слияние "
+"результатов транскрипции и диаризации"
+msgstr ""
+"FastAPI entry point, model lifecycle management, merging transcription and "
+"diarization results"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:114
+msgid "``app/transcriber.py``"
+msgstr "``app/transcriber.py``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:115
+msgid ""
+"``GigaAmTranscriber``: чанковая обработка аудио (25с с перекрытием 1с), "
+"возвращает сегменты с временными метками"
+msgstr ""
+"``GigaAmTranscriber``: chunked audio processing (25s with 1s overlap), "
+"returns segments with timestamps"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:116
+msgid "``app/diarizer.py``"
+msgstr "``app/diarizer.py``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:117
+msgid ""
+"``SpeakerDiarizer``: ленивая загрузка pyannote-пайплайна при первом "
+"запросе (требует ``HF_TOKEN``)"
+msgstr ""
+"``SpeakerDiarizer``: lazy loading of the pyannote pipeline on first request "
+"(requires ``HF_TOKEN``)"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:118
+msgid "``app/audio_utils.py``"
+msgstr "``app/audio_utils.py``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:119
+msgid ""
+"Конвертация любого формата в WAV 16 кГц/mono через ffmpeg, очистка "
+"временных файлов"
+msgstr ""
+"Converts any format to WAV 16 kHz/mono via ffmpeg, cleans up temporary files"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:120
+msgid "``Dockerfile`` / ``docker-compose.yml``"
+msgstr "``Dockerfile`` / ``docker-compose.yml``"
+
+#: ../../general/AI_instruments/citeck-stt-sidecar.rst:121
+msgid ""
+"Python 3.11-slim, лимит памяти 2 ГБ, модели монтируются как volume из "
+"citeck-ai"
+msgstr ""
+"Python 3.11-slim, 2 GB memory limit, models are mounted as a volume from "
+"citeck-ai"

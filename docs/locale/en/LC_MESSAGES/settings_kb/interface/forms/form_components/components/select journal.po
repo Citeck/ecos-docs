@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -243,12 +243,66 @@ msgstr ""
 "in the **\"Sorting\"** section:"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:99
+#: journal.rst:100
+msgid "Вычисление ID журнала динамически из данных формы"
+msgstr "Computing Journal ID dynamically from form data"
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:104
+msgid ""
+"Ранее поле SelectJournal поддерживало только статический ``journalId`` "
+"или подстановку через шаблон."
+msgstr ""
+"Previously, the SelectJournal field supported only a static ``journalId``"
+" or substitution via a template."
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:106
+msgid ""
+"В новых сценариях (например, в зависимости от типа родительской сущности)"
+" требуется вычислять ID журнала динамически из данных формы. Добавлена "
+"возможность задавать **JS-выражение (customJournalId)**, которое "
+"вычисляется в рантайме и переопределяет статический ``journalId``, а "
+"также корректный сброс конфигурации журнала при смене ``journalId``."
+msgstr ""
+"In new scenarios (for example, depending on the type of the parent "
+"entity), it is necessary to compute the Journal ID dynamically from form "
+"data. The ability to define a **JS expression (customJournalId)** has "
+"been added, which is evaluated at runtime and overrides the static "
+"``journalId``, as well as proper reset of journal configuration when "
+"``journalId`` changes."
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:108
+msgid "На вкладке **Данные** поле **Пользовательское значение ID журнала**:"
+msgstr "On the **Data** tab, the **Custom Journal ID value** field:"
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:114
+msgid "Рассмотрим пример:"
+msgstr "Let us consider an example:"
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:121
+msgid "Если указанное условие выполняется, то открывается журнал из условия:"
+msgstr "If the specified condition is met, the journal from the condition is opened:"
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:140
+msgid ""
+"Если указанное условие не выполняется, то открывается журнал из поля ID "
+"журнала"
+msgstr ""
+"If the specified condition is not met, the journal from the Journal ID "
+"field is opened."
+
+#: ../../settings_kb/interface/forms/form_components/components/select
+#: journal.rst:161
 msgid "Миграция инварианта \"Value Title\" на новые формы"
 msgstr "Migrating the \"Value Title\" invariant to new forms"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:101
+#: journal.rst:163
 msgid ""
 "Если журнал используется для выбора ассоциаций, то лучше в данном случае "
 "зарегистрировать эвалюатор для отображаемого имени в "
@@ -261,7 +315,7 @@ msgstr ""
 "be used on forms, in journals, and in many other places."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:103
+#: journal.rst:165
 msgid ""
 "Если же отображаемое имя специфично для конкретной формы или записи в "
 "журнале виртуальные (не имеют представления на сервере), то можно "
@@ -272,27 +326,27 @@ msgstr ""
 "the calculated field **Value Display Name**."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:105
+#: journal.rst:167
 msgid "В скрипт записаный в данном поле в качестве аргументов подается"
 msgstr "The script written in this field receives the following as arguments"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:110
+#: journal.rst:172
 msgid "'-'"
 msgstr "'-'"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:111
+#: journal.rst:173
 msgid "lodash библиотека с утилитными функциями"
 msgstr "lodash library with utility functions"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:112
+#: journal.rst:174
 msgid "value"
 msgstr "value"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:113
+#: journal.rst:175
 msgid ""
 "значение, отображаемое имя которого мы хотим вычислить (даже если поле "
 "множественное в скрипт за раз попадает только одно значение)"
@@ -301,7 +355,7 @@ msgstr ""
 "multiple, only one value enters the script at a time)"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: journal.rst:119
+#: journal.rst:181
 msgid ""
 "В некоторых случаях ``value.att()`` может возвращать пустое значение т.к."
 " значение не было подгружено. Можно использовать следующий код для "

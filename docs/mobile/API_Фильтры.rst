@@ -1,5 +1,9 @@
+.. _mobile-api-filters:
+
 Фильтры
 ==============
+
+.. _mobile-api-filters-counterparty:
 
 По контрагенту
 ----------------------------
@@ -24,6 +28,8 @@
     },
   }
 
+.. _mobile-api-filters-doc-type:
+
 По типу документа
 ----------------------------------
 
@@ -40,15 +46,19 @@
     },
   }
 
+.. _mobile-api-filters-priority:
+
 По приоритету
 --------------------------
 
 Список приоритетов ``src/model/enums/task-priority.ts TaskPriority``
 
+.. _mobile-api-filters-apply:
+
 Применение фильтра
 ------------------------------------
 
-Выбранные фильтры добавляются в запрос списка. См. :doc:`API_Получение списка задач`
+Выбранные фильтры добавляются в запрос списка. См. :ref:`mobile-api-task-list`
 
 .. code-block:: javascript
 

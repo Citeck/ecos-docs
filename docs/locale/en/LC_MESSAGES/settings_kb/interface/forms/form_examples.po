@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -33,6 +33,10 @@ msgid ""
 "конфигурации для решения часто встречающихся задач: управление видимостью"
 " полей, автозаполнение, обработка событий и другие."
 msgstr ""
+"This section contains practical examples of configuring form components "
+"in the Citeck platform, as well as typical scenarios («How to») — scripts"
+" and configurations for solving common tasks: managing field visibility, "
+"auto-filling, event handling, and more."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:12
 msgid "Columns"
@@ -115,6 +119,8 @@ msgid ""
 "Автофокус - автоматическая устанавка курсора ввода, без необходимости "
 "кликать на него мышью:"
 msgstr ""
+"Autofocus - automatically places the input cursor without the need to "
+"click on it with the mouse:"
 
 #: ../../settings_kb/interface/forms/form_examples.rst:66
 msgid "ECOS Select Component"
@@ -176,7 +182,7 @@ msgstr ""
 
 #: ../../settings_kb/interface/forms/form_examples.rst:126
 msgid "Значение по умолчанию — текущая дата"
-msgstr ""
+msgstr "Default value — current date"
 
 #: ../../settings_kb/interface/forms/form_examples.rst:128
 msgid ""
@@ -185,6 +191,10 @@ msgid ""
 "принимает JavaScript-выражение, результат которого присваивается "
 "переменной ``value``."
 msgstr ""
+"To set the current date as the default value, use the "
+"**customDefaultValue** property on the **«Data»** tab. The property "
+"accepts a JavaScript expression whose result is assigned to the ``value``"
+" variable."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:132
 msgid ""
@@ -192,6 +202,9 @@ msgid ""
 "значения (например, ``\"now\"`` не работает). Для динамических значений "
 "всегда используйте ``customDefaultValue``."
 msgstr ""
+"The static property ``defaultValue`` does not support dynamic values "
+"(for example, ``\"now\"`` does not work). For dynamic values, always use "
+"``customDefaultValue``."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:134
 msgid "Пример JSON-конфигурации компонента:"
@@ -199,13 +212,15 @@ msgstr "Configuration example:"
 
 #: ../../settings_kb/interface/forms/form_examples.rst:148
 msgid "В поле **Custom Default Value** в билдере форм введите:"
-msgstr ""
+msgstr "In the **Custom Default Value** field in the form builder, enter:"
 
 #: ../../settings_kb/interface/forms/form_examples.rst:154
 msgid ""
 "При открытии формы на создание поле будет автоматически заполнено текущей"
 " датой."
 msgstr ""
+"When the creation form is opened, the field will be automatically "
+"populated with the current date."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:158
 msgid "Select Journal Component"
@@ -253,7 +268,7 @@ msgstr ""
 
 #: ../../settings_kb/interface/forms/form_examples.rst:203
 msgid "Текущий пользователь по умолчанию"
-msgstr ""
+msgstr "Current user by default"
 
 #: ../../settings_kb/interface/forms/form_examples.rst:205
 msgid ""
@@ -261,6 +276,9 @@ msgid ""
 "используйте свойство **currentUserByDefault**. Настройка работает только "
 "в режиме создания формы (``formMode = CREATE``)."
 msgstr ""
+"To automatically substitute the current user when creating a record, use "
+"the **currentUserByDefault** property. The setting only works in form "
+"creation mode (``formMode = CREATE``)."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:207
 msgid "Пример JSON-конфигурации:"
@@ -273,6 +291,10 @@ msgid ""
 "``customDefaultValue`` (см. :ref:`Custom Default Value "
 "<custom_default_value>`)."
 msgstr ""
+"The ``currentUserByDefault`` property is a built-in setting of the "
+"``selectOrgstruct`` component. For other component types, use "
+"``customDefaultValue`` (see :ref:`Custom Default Value "
+"<custom_default_value>`)."
 
 #: ../../settings_kb/interface/forms/form_examples.rst:228
 msgid "Для выбора подразделения:"
@@ -464,35 +486,105 @@ msgstr ""
 msgid ":ref:`Подробнее об Async Data<async_data_component>`"
 msgstr ":ref:`More about Async Data<async_data_component>`"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:356
+#: ../../settings_kb/interface/forms/form_examples.rst:359
+#, fuzzy
+msgid "Select Hierarchical Component"
+msgstr "Select Journal Component"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:361
+msgid ""
+"Компонент **Select Hierarchical** позволяет выбирать элементы из "
+"иерархически организованного справочника. Для его настройки необходимо "
+"предварительно подготовить тип данных с самореферентной ассоциацией."
+msgstr ""
+"The **Select Hierarchical** component allows selecting elements from a "
+"hierarchically organized reference. To configure it, you need to first "
+"prepare a data type with a self-referential association."
+
+#: ../../settings_kb/interface/forms/form_examples.rst:363
+msgid "**Шаг 1. Подготовить тип данных**"
+msgstr "**Step 1. Prepare the data type**"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:365
+msgid ""
+"В типе данных добавить атрибут — ассоциацию, ссылающуюся на саму себя. "
+"При необходимости выставить множественность."
+msgstr ""
+"In the data type, add an attribute — an association referencing itself. "
+"If needed, enable multiplicity."
+
+#: ../../settings_kb/interface/forms/form_examples.rst:371
+msgid "**Шаг 2. Добавить компонент на форму**"
+msgstr "**Step 2. Add the component to the form**"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:373
+msgid ""
+"Добавить на форму компонент **Select Hierarchical**, указав в поле **Имя "
+"свойства** название атрибута из типа данных:"
+msgstr ""
+"Add the **Select Hierarchical** component to the form, specifying the "
+"attribute name from the data type in the **Property Name** field:"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:391
+#: ../../settings_kb/interface/forms/form_examples.rst:425
+msgid "**Результат:**"
+msgstr "**Result:**"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:397
+msgid "Подробно :ref:`см.<hierarchical-view>`"
+msgstr "For more details :ref:`see<hierarchical-view>`"
+
+#: ../../settings_kb/interface/forms/form_examples.rst:399
+msgid "Тип данных через ассоциацию может быть использован в другом типе данных."
+msgstr "A data type can be used in another data type via an association."
+
+#: ../../settings_kb/interface/forms/form_examples.rst:401
+msgid ""
+"Для этого необходимо добавить в другом типе данных атрибут-ассоциацию на "
+"тип данных с иерархией"
+msgstr ""
+"To do this, add an association attribute in another data type pointing to "
+"the data type with hierarchy."
+
+#: ../../settings_kb/interface/forms/form_examples.rst:407
+msgid ""
+"На форме использовать компонент **Select Hierarchical**, указав в поле "
+"**Имя свойства** название атрибута-ассоциации. На вкладке **Кастомные** "
+"указать иерархический тип данных, который был подготовлен на **шаге 1**."
+msgstr ""
+"On the form, use the **Select Hierarchical** component, specifying the "
+"association attribute name in the **Property Name** field. On the "
+"**Custom** tab, specify the hierarchical data type prepared in **step 1**."
+
+#: ../../settings_kb/interface/forms/form_examples.rst:432
 msgid "How to"
 msgstr "How to"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:359
+#: ../../settings_kb/interface/forms/form_examples.rst:435
 msgid "Сделать компонент нередактируемым"
 msgstr "Make a component non-editable"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:361
+#: ../../settings_kb/interface/forms/form_examples.rst:437
 msgid "**вкладка «Вид» - Скрыть поле** - делает компонент нередактируемым."
 msgstr "**«Display» tab - Hide Field** - makes the component non-editable."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:369
+#: ../../settings_kb/interface/forms/form_examples.rst:445
 msgid "Скрыть поле на форме, если оно пустое"
 msgstr "Hide a field on the form if it is empty"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:371
+#: ../../settings_kb/interface/forms/form_examples.rst:447
 msgid "Полезно, например, на :ref:`канбан-доске<kanban_board>`:"
 msgstr "Useful, for example, on :ref:`kanban board<kanban_board>`:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:377
+#: ../../settings_kb/interface/forms/form_examples.rst:453
 msgid "Текст скрипта:"
 msgstr "Script text:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:385
+#: ../../settings_kb/interface/forms/form_examples.rst:461
 msgid "Статус"
 msgstr "Status"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:387
+#: ../../settings_kb/interface/forms/form_examples.rst:463
 msgid ""
 "На форме документа :ref:`статус<associations>` может быть отражен "
 "следующим образом:"
@@ -500,34 +592,34 @@ msgstr ""
 "On the document form, :ref:`status<associations>` can be displayed as "
 "follows:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:393
+#: ../../settings_kb/interface/forms/form_examples.rst:469
 msgid "В компоненте  :ref:`Text field <Text_Field>`:"
 msgstr "In the :ref:`Text field <Text_Field>` component:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:395
+#: ../../settings_kb/interface/forms/form_examples.rst:471
 msgid "название поля может быть любым,"
 msgstr "field label can be any,"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:396
+#: ../../settings_kb/interface/forms/form_examples.rst:472
 msgid "имя свойства -  **_status**,"
 msgstr "property name - **_status**,"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:397
+#: ../../settings_kb/interface/forms/form_examples.rst:473
 msgid "скрыть и заблокировать на ввод, если необходимо не отображать на форме."
 msgstr "hide and disable input if it should not be displayed on the form."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:401
+#: ../../settings_kb/interface/forms/form_examples.rst:477
 msgid "Показывать поле  через \"логику\""
 msgstr "Show field via \"logic\""
 
-#: ../../settings_kb/interface/forms/form_examples.rst:403
-#: ../../settings_kb/interface/forms/form_examples.rst:421
+#: ../../settings_kb/interface/forms/form_examples.rst:479
+#: ../../settings_kb/interface/forms/form_examples.rst:497
 msgid ""
 "На вкладке **«Отображение»** перейдите в **Расширенные условия "
 "отображения**:"
 msgstr "On the **«Display»** tab, go to **Advanced Display Conditions**:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:413
+#: ../../settings_kb/interface/forms/form_examples.rst:489
 msgid ""
 "Вместо **asyncDataField** и **boolAttribute** ваши данные. Если нужно, то"
 " логику в скрипте можно расширить."
@@ -535,7 +627,7 @@ msgstr ""
 "Instead of **asyncDataField** and **boolAttribute**, use your data. If "
 "needed, the logic in the script can be extended."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:415
+#: ../../settings_kb/interface/forms/form_examples.rst:491
 msgid ""
 "Если необходима логика на несколько атрибутов, то можно использовать "
 "компонент **Панель**. И внутри нее уже разместить нужные атрибуты. "
@@ -546,27 +638,27 @@ msgstr ""
 "component. Place the required attributes inside it. Visually, the panel "
 "can be configured so its presence is not displayed."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:419
+#: ../../settings_kb/interface/forms/form_examples.rst:495
 msgid "Показывать поле только в определенном режиме формы"
 msgstr "Show field only in a specific form mode"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:435
+#: ../../settings_kb/interface/forms/form_examples.rst:511
 msgid "где **formMode** может быть:"
 msgstr "where **formMode** can be:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:437
+#: ../../settings_kb/interface/forms/form_examples.rst:513
 msgid "**CREATE** -  форма создания;"
 msgstr "**CREATE** - creation form;"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:438
+#: ../../settings_kb/interface/forms/form_examples.rst:514
 msgid "**VIEW** - форма просмотра;"
 msgstr "**VIEW** - view form;"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:439
+#: ../../settings_kb/interface/forms/form_examples.rst:515
 msgid "**EDIT** -  форма редактирования"
 msgstr "**EDIT** - edit form"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:443
+#: ../../settings_kb/interface/forms/form_examples.rst:519
 msgid ""
 "Обработка результатов формы по элементам чекбокс, выпадающим спискам / "
 "submit для выпадающих списков checkbox"
@@ -574,7 +666,7 @@ msgstr ""
 "Processing form results for checkbox elements, dropdown lists / submit "
 "for dropdown checkbox lists"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:445
+#: ../../settings_kb/interface/forms/form_examples.rst:521
 msgid ""
 "Для того чтобы при выборе элемента в выпадающем списке или при клике на "
 "чекбокс происходил сабмит формы можно на submit кнопке во вкладке "
@@ -583,7 +675,7 @@ msgstr ""
 "To make the form submit when selecting an element in a dropdown list or "
 "clicking a checkbox, on the submit button in the **\"Data\"** tab:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:447
+#: ../../settings_kb/interface/forms/form_examples.rst:523
 msgid ""
 "В поле **\"Обновлять при\"** добавить зависимость от компонентов на "
 "форме, изменение которых нам интересно."
@@ -591,7 +683,7 @@ msgstr ""
 "In the **\"Update On\"** field, add a dependency on form components whose"
 " changes we are interested in."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:448
+#: ../../settings_kb/interface/forms/form_examples.rst:524
 msgid ""
 "В поле **\"Вычисляемые значения\"** добавить логику для срабатывания "
 "авто-сабмита:"
@@ -599,45 +691,45 @@ msgstr ""
 "In the **\"Calculated Values\"** field, add logic for auto-submit "
 "triggering:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:456
-#: ../../settings_kb/interface/forms/form_examples.rst:491
-#: ../../settings_kb/interface/forms/form_examples.rst:513
+#: ../../settings_kb/interface/forms/form_examples.rst:532
+#: ../../settings_kb/interface/forms/form_examples.rst:567
+#: ../../settings_kb/interface/forms/form_examples.rst:589
 msgid "где"
 msgstr "where"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:458
+#: ../../settings_kb/interface/forms/form_examples.rst:534
 msgid "**data** - данные формы;"
 msgstr "**data** - form data;"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:459
+#: ../../settings_kb/interface/forms/form_examples.rst:535
 msgid "**selectWithSubmit** и **submitOnCheckbox** - ключи компонентов на форме;"
 msgstr ""
 "**selectWithSubmit** and **submitOnCheckbox** - keys of components on the"
 " form;"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:460
-#: ../../settings_kb/interface/forms/form_examples.rst:493
+#: ../../settings_kb/interface/forms/form_examples.rst:536
+#: ../../settings_kb/interface/forms/form_examples.rst:569
 msgid "**instance** - текущий компонент (кнопка);"
 msgstr "**instance** - current component (button);"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:461
+#: ../../settings_kb/interface/forms/form_examples.rst:537
 msgid "**instance.root** - текущая форма, в которой добавлена кнопка."
 msgstr "**instance.root** - current form where the button is added."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:463
-#: ../../settings_kb/interface/forms/form_examples.rst:529
+#: ../../settings_kb/interface/forms/form_examples.rst:539
+#: ../../settings_kb/interface/forms/form_examples.rst:605
 msgid "Пример конфигурации:"
 msgstr "Configuration example:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:469
+#: ../../settings_kb/interface/forms/form_examples.rst:545
 msgid ":download:`json с данными формы <../files/submit-on-select-example.json>`"
 msgstr ":download:`json with form data <../files/submit-on-select-example.json>`"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:473
+#: ../../settings_kb/interface/forms/form_examples.rst:549
 msgid "Как загрузить на форму изображение с внешнего файлового хранилища?"
 msgstr "How to load an image from external file storage to a form?"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:475
+#: ../../settings_kb/interface/forms/form_examples.rst:551
 msgid ""
 "Для автозаполнения полей на форме можно добавить кнопку и настроить "
 "**\"Действия\"** = **Custom**. При этом выборе внизу появляется поле для "
@@ -649,15 +741,15 @@ msgstr ""
 "custom javascript code appears at the bottom. In this field, you can load"
 " the required data and set it on the form as follows:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:494
+#: ../../settings_kb/interface/forms/form_examples.rst:570
 msgid "**instance.root** - форма, в которой находится наша кнопка;"
 msgstr "**instance.root** - the form containing our button;"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:495
+#: ../../settings_kb/interface/forms/form_examples.rst:571
 msgid "**instance.root.submission** - данные формы."
 msgstr "**instance.root.submission** - form data."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:497
+#: ../../settings_kb/interface/forms/form_examples.rst:573
 msgid ""
 "С простыми текстовыми/числовыми/булевыми полями в **data** можно просто "
 "положить требуемое значение. Для полей с контентом нужно предварительно "
@@ -667,7 +759,7 @@ msgstr ""
 "value in **data**. For content fields, you need to first upload the "
 "content to the server as a temporary file."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:515
+#: ../../settings_kb/interface/forms/form_examples.rst:591
 msgid ""
 "**file** - инстанс File - https://developer.mozilla.org/en-"
 "US/docs/Web/API/File"
@@ -675,13 +767,13 @@ msgstr ""
 "**file** - File instance - https://developer.mozilla.org/en-"
 "US/docs/Web/API/File"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:517
+#: ../../settings_kb/interface/forms/form_examples.rst:593
 msgid "В результате этого запроса получим **RecordRef** временного файла."
 msgstr ""
 "As a result of this request, we will get a **RecordRef** of the temporary"
 " file."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:519
+#: ../../settings_kb/interface/forms/form_examples.rst:595
 msgid ""
 "Затем нужно из временного файла получить **json описание**, которое нужно"
 " для компонента на форме:"
@@ -689,17 +781,17 @@ msgstr ""
 "Then you need to get a **json description** from the temporary file, "
 "which is needed for the form component:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:527
+#: ../../settings_kb/interface/forms/form_examples.rst:603
 msgid ""
 "Полученные данные можно проставить на форму, как показано в первом "
 "скрипте."
 msgstr "The obtained data can be set on the form as shown in the first script."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:535
+#: ../../settings_kb/interface/forms/form_examples.rst:611
 msgid "Пример типа и формы:"
 msgstr "Type and form example:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:537
+#: ../../settings_kb/interface/forms/form_examples.rst:613
 msgid ""
 ":download:`yaml с данными типа <../files/example-with-download-and-fill-"
 "form-data-type.yml>`"
@@ -707,7 +799,7 @@ msgstr ""
 ":download:`yaml with type data <../files/example-with-download-and-fill-"
 "form-data-type.yml>`"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:539
+#: ../../settings_kb/interface/forms/form_examples.rst:615
 msgid ""
 ":download:`json с данными формы <../files/example-with-download-and-fill-"
 "form-data.json>`"
@@ -715,7 +807,7 @@ msgstr ""
 ":download:`json with form data <../files/example-with-download-and-fill-"
 "form-data.json>`"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:542
+#: ../../settings_kb/interface/forms/form_examples.rst:618
 msgid ""
 "Можно загрузить эти артефакты, открыть журнал "
 "http://localhost/v2/journals?journalId=type$example-with-download-and-"
@@ -727,15 +819,15 @@ msgstr ""
 "fill-form-data-type , create a new entity and click the **Download** "
 "button on the form."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:546
+#: ../../settings_kb/interface/forms/form_examples.rst:622
 msgid "Как обеспечить подсветку/выделение текста по флагу?"
 msgstr "How to provide text highlighting based on a flag?"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:548
+#: ../../settings_kb/interface/forms/form_examples.rst:624
 msgid "**Для настройки произвольных стилей внутри формы можно**"
 msgstr "**To configure custom styles inside a form, you can**"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:550
+#: ../../settings_kb/interface/forms/form_examples.rst:626
 msgid ""
 "а) Добавить на форму панель (**Макет → Panel**), в которую добавить все "
 "элементы формы и настроить **\"Пользовательский CSS класс\"** на вкладке "
@@ -749,7 +841,7 @@ msgstr ""
 "to avoid style influence on other parts of the system (let's call this "
 "class ROOT_PANEL_CLASS in our example)."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:552
+#: ../../settings_kb/interface/forms/form_examples.rst:628
 msgid ""
 "б) Добавить на форму компонент html (**Расширенные → HTML Element**), "
 "который настраиваем следующим образом:"
@@ -757,11 +849,11 @@ msgstr ""
 "b) Add an html component (**Advanced → HTML Element**) to the form, "
 "configure it as follows:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:554
+#: ../../settings_kb/interface/forms/form_examples.rst:630
 msgid "В вкладке **\"Базовые\"** ставим галку на **\"Скрыть поле\"**"
 msgstr "On the **\"Basic\"** tab, check **\"Hide Field\"**"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:556
+#: ../../settings_kb/interface/forms/form_examples.rst:632
 #, python-brace-format
 msgid ""
 "В вкладке **\"Вид\"** в поле **\"Контент\"** пишем вначале  произвольный "
@@ -782,7 +874,7 @@ msgstr ""
 " is the class we configured in step 1, and inner_class is the class of "
 "the element inside the form."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:558
+#: ../../settings_kb/interface/forms/form_examples.rst:634
 msgid ""
 "Для того чтобы **по значению флага выделялся некоторый текст** можно "
 "сделать следующее:"
@@ -790,11 +882,11 @@ msgstr ""
 "To **highlight certain text based on a flag value**, you can do the "
 "following:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:560
+#: ../../settings_kb/interface/forms/form_examples.rst:636
 msgid "а) Добавить на форму HTML компонент"
 msgstr "a) Add an HTML component to the form"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:562
+#: ../../settings_kb/interface/forms/form_examples.rst:638
 msgid ""
 "В поле **\"Вид\" → \"Пользовательский CSS класс\"** вводим класс, который"
 " будет однозначно идентифицировать наш html компонент (допустим "
@@ -804,7 +896,7 @@ msgstr ""
 "will uniquely identify our html component (for example, "
 "HTML_TO_HIGHLIGHT)"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:564
+#: ../../settings_kb/interface/forms/form_examples.rst:640
 msgid ""
 "В поле **\"Вид\" → \"Контент\"** пишем произвольный текст, который будет "
 "отображаться пользователю и размечаем части этого текста, которые нужно "
@@ -814,11 +906,11 @@ msgstr ""
 "will be displayed to the user and mark up the parts of this text that "
 "need to be highlighted depending on conditions using classes."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:566
+#: ../../settings_kb/interface/forms/form_examples.rst:642
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:572
+#: ../../settings_kb/interface/forms/form_examples.rst:648
 msgid ""
 "б) Добавить на форму **\"Основные компоненты\" → Checkbox** и делаем его "
 "скрытым в **\"Базовые\" → \"Скрыть поле\"**  если пользователю его "
@@ -828,15 +920,15 @@ msgstr ""
 "hidden in **\"Basic\" → \"Hide Field\"** if the user doesn't need to know"
 " or change its value."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:574
+#: ../../settings_kb/interface/forms/form_examples.rst:650
 msgid "в) Добавить еще один html компонент:"
 msgstr "c) Add another html component:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:576
+#: ../../settings_kb/interface/forms/form_examples.rst:652
 msgid "Выставить **\"Базовые\" → \"Скрыть поле\" → \"Да\"**"
 msgstr "Set **\"Basic\" → \"Hide Field\" → \"Yes\"**"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:578
+#: ../../settings_kb/interface/forms/form_examples.rst:654
 msgid ""
 "В поле **\"Вид\" → \"Контент\"** написать произвольный текст, чтобы поле "
 "было видно в редакторе"
@@ -844,15 +936,15 @@ msgstr ""
 "In the **\"Display\" → \"Content\"** field, write arbitrary text so the "
 "field is visible in the editor"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:580
+#: ../../settings_kb/interface/forms/form_examples.rst:656
 msgid "**Данные → Обновлять при → Checkbox** (из пункта б)"
 msgstr "**Data → Update On → Checkbox** (from step b)"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:582
+#: ../../settings_kb/interface/forms/form_examples.rst:658
 msgid "Во вкладке **\"Логика\"** добавляем новую логику:"
 msgstr "In the **\"Logic\"** tab, add new logic:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:584
+#: ../../settings_kb/interface/forms/form_examples.rst:660
 msgid ""
 "Триггер: Простая логика - когда компонент формы **Checkbox** (из пункта "
 "б) равен **true**."
@@ -860,7 +952,7 @@ msgstr ""
 "Trigger: Simple logic - when the form component **Checkbox** (from step "
 "b) equals **true**."
 
-#: ../../settings_kb/interface/forms/form_examples.rst:586
+#: ../../settings_kb/interface/forms/form_examples.rst:662
 msgid ""
 "Действия:  Тип - Свойство, Свойство компонента: Content, В появившемся "
 "поле **Content** вводим наши стили внутри тэгов *<style></style>* не "
@@ -872,11 +964,11 @@ msgstr ""
 "forgetting to specify the class from step **(a)** to avoid accidentally "
 "changing the appearance of other parts of the system. For example:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:597
+#: ../../settings_kb/interface/forms/form_examples.rst:673
 msgid "Во вложении форма с примером настройки:"
 msgstr "Attached is a form with a configuration example:"
 
-#: ../../settings_kb/interface/forms/form_examples.rst:599
+#: ../../settings_kb/interface/forms/form_examples.rst:675
 msgid ":download:`json с данными формы <../files/html-highlight-example.json>`"
 msgstr ":download:`json with form data <../files/html-highlight-example.json>`"
 
