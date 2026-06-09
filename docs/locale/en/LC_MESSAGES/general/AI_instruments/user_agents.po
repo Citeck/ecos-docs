@@ -1,0 +1,596 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/AI_instruments/user_agents.rst:4
+msgid "Пользовательские AI-агенты"
+msgstr "Custom AI Agents"
+
+#: ../../general/AI_instruments/user_agents.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/AI_instruments/user_agents.rst:9
+msgid ""
+"**Агент** — конфигурируемая сущность в Citeck с системным промптом, "
+"LLM-провайдером и набором инструментов. Хранится как Citeck-запись типа "
+"``emodel/ai-agent``."
+msgstr ""
+"**Agent** — a configurable entity in Citeck with a system prompt, an "
+"LLM provider, and a set of tools. Stored as a Citeck record of type "
+"``emodel/ai-agent``."
+
+#: ../../general/AI_instruments/user_agents.rst:11
+msgid ""
+"Статья описывает модель данных агента, режимы выполнения, доступные "
+"инструменты и порядок создания агентов и пользовательских инструментов."
+msgstr ""
+"This article describes the agent data model, execution modes, available "
+"tools, and the procedure for creating agents and custom tools."
+
+#: ../../general/AI_instruments/user_agents.rst:14
+#: ../../general/AI_instruments/user_agents.rst:230
+msgid "Модель данных"
+msgstr "Data Model"
+
+#: ../../general/AI_instruments/user_agents.rst:16
+msgid "Модель данных определена в ``AgentDefinition.kt``:"
+msgstr "The data model is defined in ``AgentDefinition.kt``:"
+
+#: ../../general/AI_instruments/user_agents.rst:22
+msgid "Поле"
+msgstr "Field"
+
+#: ../../general/AI_instruments/user_agents.rst:23
+#: ../../general/AI_instruments/user_agents.rst:174
+msgid "Тип"
+msgstr "Type"
+
+#: ../../general/AI_instruments/user_agents.rst:24
+msgid "Обязательное"
+msgstr "Required"
+
+#: ../../general/AI_instruments/user_agents.rst:25
+#: ../../general/AI_instruments/user_agents.rst:87
+#: ../../general/AI_instruments/user_agents.rst:112
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/AI_instruments/user_agents.rst:26
+msgid "``name``"
+msgstr "``name``"
+
+#: ../../general/AI_instruments/user_agents.rst:27
+#: ../../general/AI_instruments/user_agents.rst:31
+#: ../../general/AI_instruments/user_agents.rst:35
+#: ../../general/AI_instruments/user_agents.rst:39
+msgid "TEXT"
+msgstr "TEXT"
+
+#: ../../general/AI_instruments/user_agents.rst:28
+#: ../../general/AI_instruments/user_agents.rst:32
+#: ../../general/AI_instruments/user_agents.rst:36
+#: ../../general/AI_instruments/user_agents.rst:40
+msgid "да"
+msgstr "yes"
+
+#: ../../general/AI_instruments/user_agents.rst:29
+msgid "Отображаемое имя агента"
+msgstr "Agent display name"
+
+#: ../../general/AI_instruments/user_agents.rst:30
+msgid "``instruction``"
+msgstr "``instruction``"
+
+#: ../../general/AI_instruments/user_agents.rst:33
+msgid "Системный промпт"
+msgstr "System prompt"
+
+#: ../../general/AI_instruments/user_agents.rst:34
+msgid "``aiProvider``"
+msgstr "``aiProvider``"
+
+#: ../../general/AI_instruments/user_agents.rst:37
+msgid "Идентификатор LLM-провайдера"
+msgstr "LLM provider identifier"
+
+#: ../../general/AI_instruments/user_agents.rst:38
+msgid "``aiModel``"
+msgstr "``aiModel``"
+
+#: ../../general/AI_instruments/user_agents.rst:41
+msgid "Идентификатор модели"
+msgstr "Model identifier"
+
+#: ../../general/AI_instruments/user_agents.rst:42
+msgid "``temperature``"
+msgstr "``temperature``"
+
+#: ../../general/AI_instruments/user_agents.rst:43
+msgid "NUMBER"
+msgstr "NUMBER"
+
+#: ../../general/AI_instruments/user_agents.rst:44
+#: ../../general/AI_instruments/user_agents.rst:48
+#: ../../general/AI_instruments/user_agents.rst:52
+msgid "нет"
+msgstr "no"
+
+#: ../../general/AI_instruments/user_agents.rst:45
+msgid ""
+"Степень случайности генерации: ``0.0`` — детерминированный вывод (модель "
+"всегда выбирает наиболее вероятный токен), ``1.0`` — высокая "
+"вариативность ответов. Значения выше ``1.0`` допускаются, но увеличивают "
+"риск несвязного текста. Рекомендуемый диапазон: ``0.0``–``0.3`` для "
+"фактических задач (резюме, извлечение данных), ``0.6``–``0.9`` для "
+"диалоговых агентов. По умолчанию ``0.7``."
+msgstr ""
+"Degree of randomness in generation: ``0.0`` — deterministic output (the model "
+"always picks the most probable token), ``1.0`` — high response variability. "
+"Values above ``1.0`` are allowed but increase the risk of incoherent text. "
+"Recommended range: ``0.0``–``0.3`` for factual tasks (summarization, data "
+"extraction), ``0.6``–``0.9`` for conversational agents. Default: ``0.7``."
+
+#: ../../general/AI_instruments/user_agents.rst:46
+msgid "``tools``"
+msgstr "``tools``"
+
+#: ../../general/AI_instruments/user_agents.rst:47
+msgid "TEXT[]"
+msgstr "TEXT[]"
+
+#: ../../general/AI_instruments/user_agents.rst:49
+msgid "Список подключённых инструментов"
+msgstr "List of connected tools"
+
+#: ../../general/AI_instruments/user_agents.rst:50
+msgid "``enabled``"
+msgstr "``enabled``"
+
+#: ../../general/AI_instruments/user_agents.rst:51
+msgid "BOOLEAN"
+msgstr "BOOLEAN"
+
+#: ../../general/AI_instruments/user_agents.rst:53
+msgid "Включён ли агент (по умолчанию ``false``)"
+msgstr "Whether the agent is enabled (default ``false``)"
+
+#: ../../general/AI_instruments/user_agents.rst:57
+msgid "Режимы выполнения"
+msgstr "Execution Modes"
+
+#: ../../general/AI_instruments/user_agents.rst:60
+msgid "Stateless"
+msgstr "Stateless"
+
+#: ../../general/AI_instruments/user_agents.rst:62
+msgid ""
+"Один запрос — один ответ, без памяти о предыдущих сообщениях. "
+"Используется в BPMN-процессах через ``POST /api/ai-agent/execute``."
+msgstr ""
+"One request — one response, with no memory of previous messages. "
+"Used in BPMN processes via ``POST /api/ai-agent/execute``."
+
+#: ../../general/AI_instruments/user_agents.rst:64
+msgid "Вызывается через ``AgentExecutionService.execute``."
+msgstr "Invoked via ``AgentExecutionService.execute``."
+
+#: ../../general/AI_instruments/user_agents.rst:68
+msgid ""
+"На stateless-пути нет HITL-подтверждения. Tool-вызовы выполняются под "
+"техническим пользователем Camunda, что фактически обходит Citeck record-"
+"level permissions. Не добавляйте деструктивные инструменты "
+"(``mutateRecord``, ``deleteRecords``) агентам без отдельного дизайна "
+"авторизации."
+msgstr ""
+"The stateless path has no HITL confirmation. Tool calls run under the "
+"Camunda technical user, which effectively bypasses Citeck record-level "
+"permissions. Do not add destructive tools (``mutateRecord``, "
+"``deleteRecords``) to agents without a dedicated authorization design."
+
+#: ../../general/AI_instruments/user_agents.rst:71
+msgid "Stateful / Interactive"
+msgstr "Stateful / Interactive"
+
+#: ../../general/AI_instruments/user_agents.rst:73
+msgid ""
+"Многоходовой диалог с ``ChatMemory``, требует ``conversationId``. "
+"Используется в AI Assistant UI."
+msgstr ""
+"Multi-turn dialogue with ``ChatMemory``, requires a ``conversationId``. "
+"Used in the AI Assistant UI."
+
+#: ../../general/AI_instruments/user_agents.rst:75
+msgid "Вызывается через ``AgentExecutionService.executeInteractive``."
+msgstr "Invoked via ``AgentExecutionService.executeInteractive``."
+
+#: ../../general/AI_instruments/user_agents.rst:79
+msgid "REST API"
+msgstr "REST API"
+
+#: ../../general/AI_instruments/user_agents.rst:85
+msgid "Метод"
+msgstr "Method"
+
+#: ../../general/AI_instruments/user_agents.rst:86
+msgid "URL"
+msgstr "URL"
+
+#: ../../general/AI_instruments/user_agents.rst:88
+#: ../../general/AI_instruments/user_agents.rst:91
+#: ../../general/AI_instruments/user_agents.rst:97
+msgid "``GET``"
+msgstr "``GET``"
+
+#: ../../general/AI_instruments/user_agents.rst:89
+msgid "``/api/ai-agent/available-providers``"
+msgstr "``/api/ai-agent/available-providers``"
+
+#: ../../general/AI_instruments/user_agents.rst:90
+msgid "Список подключённых LLM-провайдеров"
+msgstr "List of connected LLM providers"
+
+#: ../../general/AI_instruments/user_agents.rst:92
+msgid "``/api/ai-agent/available-tools``"
+msgstr "``/api/ai-agent/available-tools``"
+
+#: ../../general/AI_instruments/user_agents.rst:93
+msgid "Инструменты, доступные агентам"
+msgstr "Tools available to agents"
+
+#: ../../general/AI_instruments/user_agents.rst:94
+msgid "``POST``"
+msgstr "``POST``"
+
+#: ../../general/AI_instruments/user_agents.rst:95
+msgid "``/api/ai-agent/execute``"
+msgstr "``/api/ai-agent/execute``"
+
+#: ../../general/AI_instruments/user_agents.rst:96
+#, python-brace-format
+msgid "Stateless вызов: ``{agentId, message, context}`` → ``{response}``"
+msgstr "Stateless call: ``{agentId, message, context}`` → ``{response}``"
+
+#: ../../general/AI_instruments/user_agents.rst:98
+msgid "``/api/ai-agent/list``"
+msgstr "``/api/ai-agent/list``"
+
+#: ../../general/AI_instruments/user_agents.rst:99
+msgid "Список включённых агентов"
+msgstr "List of enabled agents"
+
+#: ../../general/AI_instruments/user_agents.rst:103
+msgid "Доступные инструменты"
+msgstr "Available Tools"
+
+#: ../../general/AI_instruments/user_agents.rst:105
+msgid ""
+"По умолчанию ``isAvailableForAgents() = true``. Недоступны для агентов "
+"(переопределяют в ``false``) внутренние служебные инструменты — "
+"``SaveFormDraftTool``, ``SaveDataTypeDraftTool``, ``SaveEscalationTool`` "
+"и аналогичные."
+msgstr ""
+"By default ``isAvailableForAgents() = true``. Internal service tools override "
+"this to ``false`` and are not available to agents — "
+"``SaveFormDraftTool``, ``SaveDataTypeDraftTool``, ``SaveEscalationTool``, "
+"and similar."
+
+#: ../../general/AI_instruments/user_agents.rst:111
+msgid "Инструмент"
+msgstr "Tool"
+
+#: ../../general/AI_instruments/user_agents.rst:113
+msgid "``GetRecordAttributesTool``"
+msgstr "``GetRecordAttributesTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:114
+msgid "Атрибуты записи"
+msgstr "Record attributes"
+
+#: ../../general/AI_instruments/user_agents.rst:115
+msgid "``GetRecordContentTool``"
+msgstr "``GetRecordContentTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:116
+msgid "Содержимое документа"
+msgstr "Document content"
+
+#: ../../general/AI_instruments/user_agents.rst:117
+msgid "``GetRecordContentHistoryTools``"
+msgstr "``GetRecordContentHistoryTools``"
+
+#: ../../general/AI_instruments/user_agents.rst:118
+msgid "История версий"
+msgstr "Version history"
+
+#: ../../general/AI_instruments/user_agents.rst:119
+msgid "``GetRecordDisplayNameTool``"
+msgstr "``GetRecordDisplayNameTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:120
+msgid "Отображаемое имя"
+msgstr "Display name"
+
+#: ../../general/AI_instruments/user_agents.rst:121
+msgid "``GetRecordTypeMetadataTool``"
+msgstr "``GetRecordTypeMetadataTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:122
+msgid "Метаданные типа"
+msgstr "Type metadata"
+
+#: ../../general/AI_instruments/user_agents.rst:123
+msgid "``GetRecordContactsTool``"
+msgstr "``GetRecordContactsTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:124
+msgid "Контакты записи"
+msgstr "Record contacts"
+
+#: ../../general/AI_instruments/user_agents.rst:125
+msgid "``QueryRecordsTool``"
+msgstr "``QueryRecordsTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:126
+msgid "Поиск записей"
+msgstr "Record search"
+
+#: ../../general/AI_instruments/user_agents.rst:127
+msgid "``MutateRecordTool``"
+msgstr "``MutateRecordTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:128
+msgid "Изменение записи"
+msgstr "Record mutation"
+
+#: ../../general/AI_instruments/user_agents.rst:129
+msgid "``DeleteRecordsTool``"
+msgstr "``DeleteRecordsTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:130
+msgid "Удаление записей"
+msgstr "Record deletion"
+
+#: ../../general/AI_instruments/user_agents.rst:131
+msgid "``GetActivitiesTool``"
+msgstr "``GetActivitiesTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:132
+msgid "Активности"
+msgstr "Activities"
+
+#: ../../general/AI_instruments/user_agents.rst:133
+msgid "``GetEcosAppContentTool``"
+msgstr "``GetEcosAppContentTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:134
+msgid "Содержимое ECOS-приложения"
+msgstr "ECOS application content"
+
+#: ../../general/AI_instruments/user_agents.rst:135
+msgid "``GetArtifactMetadataTool``"
+msgstr "``GetArtifactMetadataTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:136
+msgid "Метаданные артефакта"
+msgstr "Artifact metadata"
+
+#: ../../general/AI_instruments/user_agents.rst:137
+msgid "``SearchDocumentationTool``"
+msgstr "``SearchDocumentationTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:138
+msgid "Поиск в документации"
+msgstr "Documentation search"
+
+#: ../../general/AI_instruments/user_agents.rst:139
+msgid "``RagSearchTool`` / ``RagGetDocumentTool``"
+msgstr "``RagSearchTool`` / ``RagGetDocumentTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:140
+msgid "RAG-поиск (если включён)"
+msgstr "RAG search (if enabled)"
+
+#: ../../general/AI_instruments/user_agents.rst:141
+msgid "``DocumentAnalysisTool``"
+msgstr "``DocumentAnalysisTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:142
+msgid "Анализ документов"
+msgstr "Document analysis"
+
+#: ../../general/AI_instruments/user_agents.rst:143
+msgid "``GetCurrentTimeTool``"
+msgstr "``GetCurrentTimeTool``"
+
+#: ../../general/AI_instruments/user_agents.rst:144
+msgid "Текущее время"
+msgstr "Current time"
+
+#: ../../general/AI_instruments/user_agents.rst:148
+msgid "Создание агента"
+msgstr "Creating an Agent"
+
+#: ../../general/AI_instruments/user_agents.rst:151
+msgid "Через UI"
+msgstr "Via UI"
+
+#: ../../general/AI_instruments/user_agents.rst:153
+msgid ""
+"В рабочем пространстве администратора в разделе **AI** перейдите в журнал"
+" **AI Агенты**:"
+msgstr ""
+"In the administrator workspace, navigate to the **AI** section and open the "
+"**AI Agents** journal:"
+
+#: ../../general/AI_instruments/user_agents.rst:155
+msgid ""
+"Заполните **Название**, **Системный промпт**, выберите **Провайдер LLM** "
+"и **Модель**."
+msgstr ""
+"Fill in the **Name**, **System prompt**, select the **LLM Provider** "
+"and **Model**."
+
+#: ../../general/AI_instruments/user_agents.rst:156
+msgid "Опционально: добавьте инструменты, установите **Температуру**."
+msgstr "Optional: add tools and set the **Temperature**."
+
+#: ../../general/AI_instruments/user_agents.rst:157
+msgid "Установите чекбокс **Включён** и сохраните."
+msgstr "Check the **Enabled** checkbox and save."
+
+#: ../../general/AI_instruments/user_agents.rst:164
+msgid "Citeck-артефакты"
+msgstr "Citeck Artifacts"
+
+#: ../../general/AI_instruments/user_agents.rst:166
+msgid "Артефакты агента расположены в следующих файлах:"
+msgstr "Agent artifacts are located in the following files:"
+
+#: ../../general/AI_instruments/user_agents.rst:172
+msgid "Артефакт"
+msgstr "Artifact"
+
+#: ../../general/AI_instruments/user_agents.rst:173
+msgid "Путь"
+msgstr "Path"
+
+#: ../../general/AI_instruments/user_agents.rst:175
+#: ../../general/AI_instruments/user_agents.rst:241
+msgid "``src/main/resources/eapps/artifacts/model/type/ai-agent.yml``"
+msgstr "``src/main/resources/eapps/artifacts/model/type/ai-agent.yml``"
+
+#: ../../general/AI_instruments/user_agents.rst:176
+msgid "Журнал"
+msgstr "Journal"
+
+#: ../../general/AI_instruments/user_agents.rst:177
+#: ../../general/AI_instruments/user_agents.rst:243
+msgid "``src/main/resources/eapps/artifacts/ui/journal/ai-agents-journal.yml``"
+msgstr "``src/main/resources/eapps/artifacts/ui/journal/ai-agents-journal.yml``"
+
+#: ../../general/AI_instruments/user_agents.rst:178
+msgid "Форма"
+msgstr "Form"
+
+#: ../../general/AI_instruments/user_agents.rst:179
+#: ../../general/AI_instruments/user_agents.rst:245
+msgid "``src/main/resources/eapps/artifacts/ui/form/ai-agent-form.json``"
+msgstr "``src/main/resources/eapps/artifacts/ui/form/ai-agent-form.json``"
+
+#: ../../general/AI_instruments/user_agents.rst:183
+msgid "Создание собственного инструмента"
+msgstr "Creating a Custom Tool"
+
+#: ../../general/AI_instruments/user_agents.rst:185
+msgid ""
+"Реализуйте интерфейс ``CiteckAiTool`` и пометьте класс как "
+"Spring-компонент:"
+msgstr ""
+"Implement the ``CiteckAiTool`` interface and annotate the class as a "
+"Spring component:"
+
+#: ../../general/AI_instruments/user_agents.rst:206
+msgid ""
+"Spring DI автоматически обнаружит инструмент через ``List<CiteckAiTool>``"
+" и добавит в список доступных."
+msgstr ""
+"Spring DI will automatically discover the tool via ``List<CiteckAiTool>`` "
+"and add it to the list of available tools."
+
+#: ../../general/AI_instruments/user_agents.rst:208
+msgid "Чтобы скрыть инструмент от агентов (только для внутреннего использования):"
+msgstr "To hide a tool from agents (internal use only):"
+
+#: ../../general/AI_instruments/user_agents.rst:216
+msgid "Маршрутизация в оркестраторе"
+msgstr "Routing in the Orchestrator"
+
+#: ../../general/AI_instruments/user_agents.rst:218
+msgid ""
+"``AgentOrchestratorService.processRequest()`` — первый приоритет "
+"маршрутизации: если к разговору привязан агент (``resolveAgentRef``), вся"
+" обработка делегируется ``AgentExecutionService.executeInteractive()``, "
+"минуя Intent Detection и Plan-and-Execute."
+msgstr ""
+"``AgentOrchestratorService.processRequest()`` — first routing priority: "
+"if an agent is bound to the conversation (``resolveAgentRef``), all "
+"processing is delegated to ``AgentExecutionService.executeInteractive()``, "
+"bypassing Intent Detection and Plan-and-Execute."
+
+#: ../../general/AI_instruments/user_agents.rst:222
+msgid "Ключевые файлы"
+msgstr "Key Files"
+
+#: ../../general/AI_instruments/user_agents.rst:228
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../general/AI_instruments/user_agents.rst:229
+msgid "Файл"
+msgstr "File"
+
+#: ../../general/AI_instruments/user_agents.rst:231
+msgid "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentDefinition.kt``"
+msgstr "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentDefinition.kt``"
+
+#: ../../general/AI_instruments/user_agents.rst:232
+msgid "Реестр агентов"
+msgstr "Agent registry"
+
+#: ../../general/AI_instruments/user_agents.rst:233
+msgid "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentRegistry.kt``"
+msgstr "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentRegistry.kt``"
+
+#: ../../general/AI_instruments/user_agents.rst:234
+msgid "Сервис выполнения"
+msgstr "Execution service"
+
+#: ../../general/AI_instruments/user_agents.rst:235
+msgid "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentExecutionService.kt``"
+msgstr "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentExecutionService.kt``"
+
+#: ../../general/AI_instruments/user_agents.rst:236
+msgid "REST-контроллер"
+msgstr "REST controller"
+
+#: ../../general/AI_instruments/user_agents.rst:237
+msgid "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentController.kt``"
+msgstr "``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentController.kt``"
+
+#: ../../general/AI_instruments/user_agents.rst:238
+msgid "Интерфейс инструментов"
+msgstr "Tool interface"
+
+#: ../../general/AI_instruments/user_agents.rst:239
+msgid "``src/main/java/ru/citeck/ecos/ai/domain/assistant/tools/CiteckAiTool.kt``"
+msgstr "``src/main/java/ru/citeck/ecos/ai/domain/assistant/tools/CiteckAiTool.kt``"
+
+#: ../../general/AI_instruments/user_agents.rst:240
+msgid "ECOS-тип"
+msgstr "ECOS type"
+
+#: ../../general/AI_instruments/user_agents.rst:242
+msgid "ECOS-журнал"
+msgstr "ECOS journal"
+
+#: ../../general/AI_instruments/user_agents.rst:244
+msgid "ECOS-форма"
+msgstr "ECOS form"

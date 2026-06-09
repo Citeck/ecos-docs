@@ -1,0 +1,1355 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:4
+msgid "Миграция данных с docker-compose"
+msgstr "Data migration from docker-compose"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:6
+msgid ""
+"Инструкция по переносу данных со старого сервера, развёрнутого из "
+"репозитория `citeck-community <https://github.com/Citeck/citeck-"
+"community>`_ (``docker-compose``), на новый сервер, развёрнутый через "
+":ref:`Citeck Launcher <launcher_server>` v2 в серверном режиме."
+msgstr ""
+"Instructions for migrating data from an old server deployed from the "
+"`citeck-community <https://github.com/Citeck/citeck-community>`_ "
+"repository (``docker-compose``) to a new server deployed via "
+":ref:`Citeck Launcher <launcher_server>` v2 in server mode."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:8
+msgid ""
+"Рассчитана на администратора с ``root``-доступом к обоим серверам. Все "
+"шаги выполняются вручную, отдельными командами в терминале."
+msgstr ""
+"Intended for an administrator with ``root`` access to both servers. All "
+"steps are performed manually, with individual commands in the terminal."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:12
+msgid ""
+"Если установка кастомизирована, команды и логины/пароли нужно будет "
+"подкорректировать под Ваше окружение."
+msgstr ""
+"If the installation is customized, commands and login/password values "
+"will need to be adjusted for your environment."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:15
+msgid "Соглашения"
+msgstr "Conventions"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:17
+msgid ""
+"На **source** команды используют синтаксис ``docker compose`` (Compose "
+"v2, plugin). Если у вас установлен legacy ``docker-compose`` (v1) -- "
+"заменяйте ``docker compose`` на ``docker-compose`` в каждой команде."
+msgstr ""
+"On the **source**, commands use the ``docker compose`` syntax (Compose "
+"v2, plugin). If you have the legacy ``docker-compose`` (v1) installed, "
+"replace ``docker compose`` with ``docker-compose`` in every command."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:18
+msgid ""
+"Команды этапа 2 (выгрузка) и предусловий **выполняются из каталога** "
+"``citeck-community`` (там, где лежит ``docker-compose.yaml``), иначе "
+"compose не найдёт сервисы."
+msgstr ""
+"Stage 2 commands (export) and prerequisites **are executed from the** "
+"``citeck-community`` **directory** (where ``docker-compose.yaml`` "
+"resides), otherwise compose will not find the services."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:19
+msgid ""
+"На **target** launcher2 управляет контейнерами напрямую через Docker SDK "
+"(без compose) -- там используется ``docker exec`` с реальными именами "
+"контейнеров (``citeck_postgres_default``, ``citeck_mongo_default``, "
+"``citeck_zookeeper_default``)."
+msgstr ""
+"On the **target**, launcher2 manages containers directly via Docker SDK "
+"(without compose) — it uses ``docker exec`` with real container names "
+"(``citeck_postgres_default``, ``citeck_mongo_default``, "
+"``citeck_zookeeper_default``)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:22
+msgid "Что мигрируется и что нет"
+msgstr "What is migrated and what is not"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:24
+msgid "**Мигрируется:**"
+msgstr "**Migrated:**"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:26
+msgid ""
+"PostgreSQL -- пользовательские БД (схема + данные), точечно по "
+"mapping-таблице."
+msgstr ""
+"PostgreSQL — user databases (schema + data), selectively per the mapping "
+"table."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:27
+msgid "MongoDB -- одна БД ``ecos-process`` → ``citeck_eproc``."
+msgstr "MongoDB — one database ``ecos-process`` → ``citeck_eproc``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:28
+msgid ""
+"Zookeeper -- содержимое каталога ``version-2/`` (snapshots + transaction "
+"log)."
+msgstr ""
+"Zookeeper — contents of the ``version-2/`` directory (snapshots + "
+"transaction log)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:30
+msgid ""
+"**НЕ мигрируется** (то есть **выходит за рамки этой инструкции** -- "
+"технически данные ниже тоже можно перенести, если у кого-то такая задача "
+"возникнет, но пошаговую процедуру для них мы здесь не описываем):"
+msgstr ""
+"**NOT migrated** (i.e., **out of scope for this guide** — technically the "
+"data below can also be transferred if needed, but the step-by-step "
+"procedure for doing so is not described here):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:32
+msgid ""
+"БД ``keycloak`` -- на target создаётся самим launcher2. На source "
+"соответствующая БД называется ``ecos_identity`` (сервис ``ecos-identity-"
+"app`` в community -- это Keycloak старой версии)."
+msgstr ""
+"The ``keycloak`` database — created on the target by launcher2 itself. "
+"On the source, the corresponding database is named ``ecos_identity`` (the "
+"``ecos-identity-app`` service in community is an older version of "
+"Keycloak)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:33
+msgid ""
+"Пользователи, роли, клиенты Keycloak источника (включая demo-аккаунт "
+"``admin/admin``). Если они заводились вручную -- пересоздать после "
+"миграции. Admin на target использует пароль, сгенерированный launcher'ом "
+"при первом старте (показывается в визарде один раз; перевыпустить через "
+"``citeck setup admin-password``)."
+msgstr ""
+"Users, roles, and Keycloak clients from the source (including the demo "
+"account ``admin/admin``). If they were created manually — recreate them "
+"after migration. The admin on the target uses the password generated by "
+"the launcher on first startup (shown in the wizard once; re-issue via "
+"``citeck setup admin-password``)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:34
+msgid "RabbitMQ -- очереди и in-flight сообщения."
+msgstr "RabbitMQ — queues and in-flight messages."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:35
+msgid "Volumes proxy/nginx -- логи, кеш сертификатов Let's Encrypt."
+msgstr "Proxy/nginx volumes — logs, Let's Encrypt certificate cache."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:36
+msgid ""
+"Секреты (JWT, OIDC client secret, admin password) -- launcher2 генерирует"
+" свои при первой установке."
+msgstr ""
+"Secrets (JWT, OIDC client secret, admin password) — launcher2 generates "
+"its own on first installation."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:39
+msgid "Матрица совместимости"
+msgstr "Compatibility matrix"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:45
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:46
+msgid "Source"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:47
+msgid "Target"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:48
+msgid "Тип миграции"
+msgstr "Migration type"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:49
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:78
+msgid "PostgreSQL"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:50
+msgid "12.7"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:51
+msgid "17.5"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:52
+msgid "логический dump (``pg_dump -F c``)"
+msgstr "logical dump (``pg_dump -F c``)"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:53
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:132
+msgid "MongoDB"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:54
+msgid "4.0"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:55
+msgid "4.0.2"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:56
+msgid "``mongodump --archive``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:57
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:144
+msgid "Zookeeper"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:58
+msgid "3.8.2 (Bitnami)"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:59
+msgid "3.9.4 (official)"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:60
+msgid "копия ``version-2/`` из dataDir"
+msgstr "copy of ``version-2/`` from dataDir"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:61
+msgid "RabbitMQ"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:62
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:63
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:66
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:67
+msgid "--"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:64
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:68
+msgid "пропускаем"
+msgstr "skip"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:65
+msgid "Keycloak БД"
+msgstr "Keycloak DB"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:70
+msgid ""
+"PostgreSQL переезжает с мажорным скачком версии (12 → 17). Физическое "
+"копирование data-каталога (volume) не сработает -- нужен только "
+"логический dump."
+msgstr ""
+"PostgreSQL undergoes a major version jump (12 → 17). Physical copying of "
+"the data directory (volume) will not work — only a logical dump is "
+"required."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:73
+msgid "Mapping БД и пользователей"
+msgstr "Database and user mapping"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:75
+msgid ""
+"В launcher2 действует соглашение: ``имя_БД == имя_пользователя == "
+"пароль``. На target пароли пользовательских БД совпадают с именами этих "
+"БД."
+msgstr ""
+"In launcher2, the convention is: ``db_name == username == password``. On "
+"the target, user database passwords match the names of those databases."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:84
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:138
+msgid "Source DB"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:85
+msgid "Source owner"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:86
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:139
+msgid "Target DB"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:87
+msgid "Target owner"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:88
+msgid "``ecos_apps``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:89
+msgid "``apps``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:90
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:91
+msgid "``citeck_eapps``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:92
+msgid "``ecos_uiserv``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:93
+msgid "``uiserv``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:94
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:95
+msgid "``citeck_uiserv``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:96
+msgid "``ecos_integrations``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:97
+msgid "``integrations``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:98
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:99
+msgid "``citeck_integrations``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:100
+msgid "``ecos_model``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:101
+msgid "``model``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:102
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:103
+msgid "``citeck_emodel``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:104
+msgid "``ecos_notifications``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:105
+msgid "``notifications``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:106
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:107
+msgid "``citeck_notifications``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:108
+msgid "``ecos_history``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:109
+msgid "``history``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:110
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:111
+msgid "``citeck_history``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:112
+msgid "``ecos_process``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:113
+msgid "``process``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:114
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:115
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:141
+msgid "``citeck_eproc``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:116
+msgid "``ecos_camunda``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:117
+msgid "``camunda``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:118
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:119
+msgid "``citeck_camunda``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:120
+msgid "``ecos_edi``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:121
+msgid "``edi``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:122
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:123
+msgid "``citeck_edi``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:125
+msgid "**Не мигрируются (на source игнорируем):**"
+msgstr "**Not migrated (ignore on source):**"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:127
+msgid "``ecos_gateway`` -- в launcher2 у gateway нет своей БД."
+msgstr "``ecos_gateway`` — in launcher2, gateway does not have its own database."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:128
+msgid ""
+"``ecos_identity`` -- это БД сервиса ``ecos-identity-app``, который в "
+"community-сетапе является Keycloak (просто более старой версии). "
+"Соответствует решению «БД ``keycloak`` не мигрируем» -- пользователи и "
+"роли источника при миграции теряются (см. «НЕ мигрируется» во "
+"вступлении)."
+msgstr ""
+"``ecos_identity`` — this is the database of the ``ecos-identity-app`` "
+"service, which in the community setup is Keycloak (just an older version)."
+" This aligns with the decision «do not migrate the ``keycloak`` database» "
+"— source users and roles are lost during migration (see «NOT migrated» in "
+"the introduction)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:129
+msgid "``keycloak`` -- на target создаёт сам launcher2."
+msgstr "``keycloak`` — created on the target by launcher2 itself."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:140
+msgid "``ecos-process``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:150
+msgid "Source путь (хост)"
+msgstr "Source path (host)"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:151
+msgid "Target путь (хост)"
+msgstr "Target path (host)"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:152
+msgid "``services/ecos-community-demo-data/zookeeper-app/data/version-2/``"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:153
+msgid ""
+"``/opt/citeck/data/runtime/default/volumes/zookeeper2/data/version-2/`` "
+"(snapshots) + "
+"``/opt/citeck/data/runtime/default/volumes/zookeeper2/datalog/version-2/``"
+" (logs)"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:155
+msgid "Особенности:"
+msgstr "Notes:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:157
+msgid ""
+"**Source (Bitnami)** хранит и снапшоты, и transaction log в одном "
+"каталоге ``version-2/``."
+msgstr ""
+"**Source (Bitnami)** stores both snapshots and the transaction log in a "
+"single ``version-2/`` directory."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:158
+msgid ""
+"**Target (official zookeeper)** разделяет: ``data/version-2/`` для "
+"снапшотов и служебных файлов (``acceptedEpoch``, ``currentEpoch``), "
+"``datalog/version-2/`` для transaction log. Если их не разделить, target "
+"падает с ``SnapDirContentCheckException``."
+msgstr ""
+"**Target (official zookeeper)** separates them: ``data/version-2/`` for "
+"snapshots and auxiliary files (``acceptedEpoch``, ``currentEpoch``), "
+"``datalog/version-2/`` for the transaction log. If they are not separated,"
+" the target fails with ``SnapDirContentCheckException``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:159
+msgid ""
+"Хранилище в launcher2 -- это bind-mount каталог на хосте (не named docker"
+" volume). Точный путь можно подтвердить через ``docker inspect "
+"citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``."
+msgstr ""
+"Storage in launcher2 is a bind-mount directory on the host (not a named "
+"docker volume). The exact path can be confirmed via ``docker inspect "
+"citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:162
+msgid "Предусловия"
+msgstr "Prerequisites"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:165
+msgid "0. Резервный backup source ДО любых действий"
+msgstr "0. Back up source BEFORE any actions"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:167
+msgid ""
+"Это страховка на случай, если апгрейд до 2026.1 (предусловие 1) сломает "
+"старый сервер. **Backup НЕ используется для миграции** -- только для "
+"отката source."
+msgstr ""
+"This is a safety net in case the upgrade to 2026.1 (prerequisite 1) "
+"breaks the old server. **The backup is NOT used for migration** — only "
+"for rolling back the source."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:169
+msgid "Простейший вариант (с остановкой сервера):"
+msgstr "Simplest option (with server shutdown):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:179
+msgid ""
+"Если останавливать сервер нельзя -- ``pg_dumpall`` + ``mongodump`` + "
+"копия каталога zookeeper в горячем режиме на работающих контейнерах."
+msgstr ""
+"If the server cannot be stopped — ``pg_dumpall`` + ``mongodump`` + a hot "
+"copy of the zookeeper directory on running containers."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:182
+msgid "1. Source обновлён до релиза 2026.1"
+msgstr "1. Source updated to release 2026.1"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:184
+msgid ""
+"Это снимает риск рассинхронизации schema/changelog при заливке в "
+"launcher2 (тоже 2026.1). В каталоге ``citeck-community``:"
+msgstr ""
+"This eliminates the risk of schema/changelog desynchronization when "
+"loading into launcher2 (also 2026.1). In the ``citeck-community`` "
+"directory:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:191
+msgid ""
+"Дождаться, пока все микросервисы дойдут до ``RUNNING`` / ``healthy`` -- "
+"Liquibase должен догнать changelog. Проверить можно так:"
+msgstr ""
+"Wait until all microservices reach ``RUNNING`` / ``healthy`` — Liquibase "
+"must catch up with the changelog. You can verify with:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:198
+msgid "2. Target подготовлен"
+msgstr "2. Target prepared"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:200
+msgid ""
+"Установлен ``citeck-launcher`` версии ≥ 2.x, bundle ``community:2026.1`` "
+"или ``enterprise:2026.1`` (в зависимости от лицензии). Подробности "
+"первого запуска -- в этапе 1."
+msgstr ""
+"``citeck-launcher`` version ≥ 2.x is installed, bundle "
+"``community:2026.1`` or ``enterprise:2026.1`` (depending on your "
+"license). First-run details are in Stage 1."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:203
+msgid "3. Свободное место"
+msgstr "3. Free disk space"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:205
+msgid "На source: ≥ объём данных × 1.5 (для дампов)."
+msgstr "On source: ≥ data volume × 1.5 (for dumps)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:206
+msgid "На target: то же."
+msgstr "On target: same."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:209
+msgid "4. Доступ к docker"
+msgstr "4. Docker access"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:211
+msgid "``docker ps`` без sudo либо через sudo на обоих серверах."
+msgstr "``docker ps`` without sudo or via sudo on both servers."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:214
+msgid "Этап 1. Подготовка target (launcher2)"
+msgstr "Stage 1. Preparing the target (launcher2)"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:216
+msgid ""
+"Цель этапа: получить запущенный один раз namespace, чтобы launcher создал"
+" инфраструктуру (контейнеры + docker volumes), завёл пустые БД с "
+"пользователями и сгенерировал секреты."
+msgstr ""
+"Goal of this stage: run the namespace once so that launcher creates the "
+"infrastructure (containers + docker volumes), initializes empty databases "
+"with users, and generates secrets."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:219
+msgid "1.1. Установить launcher"
+msgstr "1.1. Install launcher"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:221
+msgid "Если ещё не установлен:"
+msgstr "If not yet installed:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:227
+msgid ""
+"В TUI-визарде выбрать bundle ``community:2026.1`` или "
+"``enterprise:2026.1`` (под лицензию). **Записать сгенерированный "
+"admin-пароль** -- он показывается один раз. Если пароль потерян -- после "
+"миграции его можно перевыпустить через ``citeck setup admin-password``."
+msgstr ""
+"In the TUI wizard, select bundle ``community:2026.1`` or "
+"``enterprise:2026.1`` (matching your license). **Write down the generated "
+"admin password** — it is shown only once. If the password is lost, it can "
+"be re-issued after migration via ``citeck setup admin-password``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:230
+msgid "1.2. Дождаться полного запуска"
+msgstr "1.2. Wait for full startup"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:236
+msgid ""
+"Все приложения должны быть в статусе ``RUNNING``. На сервере с 16 GB RAM "
+"это занимает 5--15 минут (для enterprise -- дольше). Этот шаг критичен: "
+"если webapp'ы не успеют отработать Liquibase на пустых БД, на этапе 4 "
+"импорт пойдёт в БД с неполной схемой."
+msgstr ""
+"All applications must be in ``RUNNING`` status. On a server with 16 GB "
+"RAM this takes 5–15 minutes (longer for enterprise). This step is "
+"critical: if webapps do not complete Liquibase on the empty databases in "
+"time, the import in Stage 4 will load into databases with an incomplete "
+"schema."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:239
+msgid "1.3. Остановить все webapp'ы, оставив инфраструктуру"
+msgstr "1.3. Stop all webapps, leaving infrastructure running"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:241
+msgid ""
+"Состав webapp в ``community`` и ``enterprise`` отличается, единого списка"
+" не приводим."
+msgstr ""
+"The webapp set in ``community`` and ``enterprise`` differs; no single "
+"list is provided."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:243
+msgid "Посмотреть текущий список:"
+msgstr "View the current list:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:249
+msgid ""
+"Остановить всё, что **не** относится к инфраструктуре. Инфраструктурные "
+"контейнеры, которые остаются запущенными для импорта: ``postgres`` и "
+"``mongo`` (zookeeper тоже инфраструктура, но его остановим "
+"непосредственно перед заливкой данных в шаге 4.3)."
+msgstr ""
+"Stop everything that does **not** belong to infrastructure. Infrastructure"
+" containers that remain running for the import: ``postgres`` and ``mongo``"
+" (zookeeper is also infrastructure, but it will be stopped immediately "
+"before loading data in step 4.3)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:251
+msgid ""
+"Перечислить остальные приложения списком (``gateway``, ``eapps``, "
+"``emodel``, ``uiserv``, ``history``, ``notifications``, ``integrations``,"
+" ``eproc``, ``transformations``, ``proxy``, и так далее -- что вернёт "
+"``citeck status``):"
+msgstr ""
+"List the remaining applications (``gateway``, ``eapps``, ``emodel``, "
+"``uiserv``, ``history``, ``notifications``, ``integrations``, ``eproc``,"
+" ``transformations``, ``proxy``, etc. — as returned by ``citeck "
+"status``):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:257
+msgid ""
+"Команда ``citeck stop <app>`` помечает приложение как detached: после "
+"очередного ``citeck start`` без аргументов оно автоматически не "
+"поднимется. Это нужно, чтобы пока идёт restore, никакой webapp не писал в"
+" БД."
+msgstr ""
+"The ``citeck stop <app>`` command marks the application as detached: "
+"after the next ``citeck start`` without arguments it will not start "
+"automatically. This ensures that no webapp writes to the database while "
+"the restore is in progress."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:260
+msgid "1.4. Учётные данные для импорта"
+msgstr "1.4. Credentials for import"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:262
+msgid "Искать вручную не нужно:"
+msgstr "No manual lookup required:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:264
+msgid "PostgreSQL: ``postgres / postgres`` (захардкожено в launcher2)."
+msgstr "PostgreSQL: ``postgres / postgres`` (hardcoded in launcher2)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:265
+msgid ""
+"MongoDB: пароль root сгенерирован launcher'ом, читается через ``docker "
+"exec citeck_mongo_default printenv MONGO_INITDB_ROOT_PASSWORD``. Команды "
+"импорта в этапе 4 берут его именно так."
+msgstr ""
+"MongoDB: the root password is generated by the launcher and read via "
+"``docker exec citeck_mongo_default printenv MONGO_INITDB_ROOT_PASSWORD``."
+" Import commands in Stage 4 use this approach."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:268
+msgid "Этап 2. Выгрузка с source"
+msgstr "Stage 2. Exporting from source"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:270
+msgid ""
+"Все команды этого этапа выполняются на старом сервере, **из каталога** "
+"``citeck-community``. Используются service-имена из ``docker-"
+"compose.yaml``:"
+msgstr ""
+"All commands in this stage are executed on the old server, **from the** "
+"``citeck-community`` **directory**. Service names from ``docker-"
+"compose.yaml`` are used:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:272
+msgid "PostgreSQL -- ``ecos-microservices-postgresql-app``"
+msgstr "PostgreSQL — ``ecos-microservices-postgresql-app``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:273
+msgid "MongoDB -- ``mongodb-app``"
+msgstr "MongoDB — ``mongodb-app``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:274
+msgid "Zookeeper -- ``zookeeper-app``"
+msgstr "Zookeeper — ``zookeeper-app``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:276
+msgid ""
+"Подход: запускаем ``pg_dump`` / ``mongodump`` через ``docker compose exec"
+" -T``, перенаправляем stdout прямо в файл на хосте. Никаких промежуточных"
+" ``docker cp`` и временных файлов внутри контейнера."
+msgstr ""
+"Approach: run ``pg_dump`` / ``mongodump`` via ``docker compose exec -T``,"
+" redirecting stdout directly to a file on the host. No intermediate "
+"``docker cp`` and no temporary files inside the container."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:278
+msgid ""
+"Рабочий каталог для дампов в инструкции -- ``~/citeck-migration/``. "
+"Создаём подкаталоги заранее:"
+msgstr ""
+"The working directory for dumps in this guide is ``~/citeck-migration/``."
+" Create subdirectories in advance:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:288
+msgid "2.1. PostgreSQL"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:290
+msgid "Параметры ``pg_dump``:"
+msgstr "``pg_dump`` parameters:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:292
+msgid "``-F c`` -- формат custom (компактный, поддерживает параллельный restore)."
+msgstr "``-F c`` — custom format (compact, supports parallel restore)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:293
+msgid ""
+"``--no-owner --no-acl`` -- выкидываем ``OWNER TO`` / ``GRANT`` (на target"
+" пользователи называются иначе, ownership проставит ``pg_restore "
+"--role``)."
+msgstr ""
+"``--no-owner --no-acl`` — strips ``OWNER TO`` / ``GRANT`` statements "
+"(target users have different names; ownership will be set by ``pg_restore "
+"--role``)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:294
+msgid ""
+"``--clean --if-exists`` НЕ используем -- целевую БД чистим отдельно "
+"командой ``DROP SCHEMA``."
+msgstr ""
+"``--clean --if-exists`` is NOT used — the target database is cleaned "
+"separately with a ``DROP SCHEMA`` command."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:295
+msgid ""
+"Без ``-f /tmp/...`` -- ``pg_dump`` пишет в stdout, мы перенаправляем "
+"``>`` в файл на хосте."
+msgstr ""
+"Without ``-f /tmp/...`` — ``pg_dump`` writes to stdout, which we "
+"redirect ``>`` to a file on the host."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:299
+msgid ""
+"**Если какая-то из БД отсутствует на вашем source** (например, в "
+"community-only deployment нет ``ecos_edi``) -- ``pg_dump`` упадёт с "
+"``database \"<name>\" does not exist``. Просто пропустите соответствующий"
+" блок: соответствующая target-БД на launcher2 либо отсутствует, либо "
+"останется пустой и Liquibase webapp'а наполнит её при первом старте."
+msgstr ""
+"**If any of the databases is missing on your source** (for example, "
+"``ecos_edi`` does not exist in a community-only deployment) — ``pg_dump``"
+" will fail with ``database \"<name>\" does not exist``. Simply skip the "
+"corresponding block: the corresponding target database on launcher2 either"
+" does not exist or will remain empty and be populated by the webapp's "
+"Liquibase on first startup."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:301
+msgid "Команды для каждой БД из mapping-таблицы (выполнять блоками, по одному):"
+msgstr "Commands for each database from the mapping table (execute in blocks, one at a time):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:303
+msgid "**ecos_apps:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:313
+msgid "**ecos_uiserv:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:323
+msgid "**ecos_integrations:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:333
+msgid "**ecos_model:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:343
+msgid "**ecos_notifications:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:353
+msgid "**ecos_history:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:363
+msgid "**ecos_process:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:373
+msgid "**ecos_camunda:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:383
+msgid "**ecos_edi:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:393
+msgid ""
+"После выполнения в ``~/citeck-migration/postgres/`` должно быть **9 "
+"файлов**:"
+msgstr ""
+"After execution, ``~/citeck-migration/postgres/`` should contain **9 "
+"files**:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:404
+msgid ""
+"**Если пароль** ``postgres`` **был изменён** (вместо "
+"``postgresstorngpassword`` из ``services/environments/ecos-microservices-"
+"postgresql-app.env``) -- заменить значение ``PGPASSWORD=...`` во всех "
+"командах."
+msgstr ""
+"**If the** ``postgres`` **password was changed** (from the default "
+"``postgresstorngpassword`` in ``services/environments/ecos-microservices-"
+"postgresql-app.env``) — replace the ``PGPASSWORD=...`` value in all "
+"commands."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:407
+msgid "2.2. MongoDB"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:409
+msgid ""
+"Дамп одной БД ``ecos-process``. Логин/пароль root -- из "
+"``services/environments/mongodb-app.env``. Если они менялись -- заменить "
+"в команде. ``--archive`` без значения = вывод в stdout."
+msgstr ""
+"Dump of a single database ``ecos-process``. Root login/password — from "
+"``services/environments/mongodb-app.env``. If they were changed — update "
+"them in the command. ``--archive`` without a value = output to stdout."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:418
+msgid ""
+"После выполнения в ``~/citeck-migration/mongo/`` должен быть один файл "
+"``ecos-process.archive``."
+msgstr ""
+"After execution, ``~/citeck-migration/mongo/`` should contain one file "
+"``ecos-process.archive``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:421
+msgid "2.3. Zookeeper"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:423
+msgid ""
+"Делаем на остановленном контейнере, чтобы не получить частично записанный"
+" snapshot. Bind-mount каталог принадлежит uid Bitnami zookeeper (1001), а"
+" не вашему пользователю -- поэтому ``tar`` запускаем во временном "
+"контейнере, чтобы не зависеть от ``sudo``:"
+msgstr ""
+"Performed on a stopped container to avoid getting a partially written "
+"snapshot. The bind-mount directory belongs to the Bitnami zookeeper uid "
+"(1001), not your user — so ``tar`` is run inside a temporary container to"
+" avoid depending on ``sudo``:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:437
+msgid ""
+"Путь ``services/ecos-community-demo-data/zookeeper-app/data`` -- это "
+"host-путь bind-mount из ``services/zookeeper-app.yaml``. Compose "
+"разрешает относительные пути относительно файла сервиса (т. е. "
+"``services/...``), а не корня репо. Если в вашем развёртывании layout "
+"другой -- указать свой путь."
+msgstr ""
+"The path ``services/ecos-community-demo-data/zookeeper-app/data`` is the "
+"host bind-mount path from ``services/zookeeper-app.yaml``. Compose "
+"resolves relative paths relative to the service file (i.e., "
+"``services/...``), not the repo root. If your deployment has a different "
+"layout — specify your own path."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:440
+msgid "2.4. Итоговая структура каталога"
+msgstr "2.4. Final directory structure"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:450
+msgid "Этап 3. Передача файлов"
+msgstr "Stage 3. Transferring files"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:452
+msgid ""
+"Передайте каталог ``~/citeck-migration/`` (PostgreSQL-дампы + Mongo-архив"
+" + Zookeeper-tarball) на целевой сервер любым удобным способом: "
+"``rsync``, ``scp``, S3, переносной носитель -- на ваше усмотрение."
+msgstr ""
+"Transfer the ``~/citeck-migration/`` directory (PostgreSQL dumps + Mongo "
+"archive + Zookeeper tarball) to the target server using any convenient "
+"method: ``rsync``, ``scp``, S3, portable media — your choice."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:454
+msgid ""
+"На целевом сервере положите его по тому же пути -- ``~/citeck-"
+"migration/``. **Важно сохранить структуру с тремя подкаталогами** "
+"(``postgres/``, ``mongo/``, ``zookeeper/``) -- команды этапа 4 ссылаются "
+"на пути вида ``~/citeck-migration/postgres/<имя>.dump``. Если файлы "
+"скопированы плоско в одну папку, импорт сломается."
+msgstr ""
+"Place it on the target server at the same path — ``~/citeck-migration/``."
+" **It is important to preserve the three-subdirectory structure** "
+"(``postgres/``, ``mongo/``, ``zookeeper/``) — Stage 4 commands reference "
+"paths like ``~/citeck-migration/postgres/<name>.dump``. If files are "
+"copied flat into one folder, the import will break."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:457
+msgid "Этап 4. Загрузка на target"
+msgstr "Stage 4. Loading onto target"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:459
+msgid ""
+"Все команды -- на новом сервере. Имена контейнеров launcher2 в серверном "
+"режиме (namespace всегда ``default``):"
+msgstr ""
+"All commands — on the new server. Container names for launcher2 in server"
+" mode (namespace is always ``default``):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:461
+msgid "PostgreSQL -- ``citeck_postgres_default``"
+msgstr "PostgreSQL — ``citeck_postgres_default``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:462
+msgid "MongoDB -- ``citeck_mongo_default``"
+msgstr "MongoDB — ``citeck_mongo_default``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:463
+msgid "Zookeeper -- ``citeck_zookeeper_default``"
+msgstr "Zookeeper — ``citeck_zookeeper_default``"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:466
+msgid "4.1. PostgreSQL"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:468
+msgid "На каждую пару БД из mapping-таблицы -- три действия:"
+msgstr "For each database pair from the mapping table — three actions:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:470
+msgid "Скопировать дамп в контейнер."
+msgstr "Copy the dump into the container."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:471
+msgid ""
+"Очистить **все** пользовательские схемы целевой БД (Liquibase на первом "
+"старте создал в ней служебные объекты; их надо снести, иначе restore "
+"конфликтует по именам)."
+msgstr ""
+"Clear **all** user schemas in the target database (Liquibase created "
+"service objects on first startup; they must be removed, otherwise the "
+"restore will have naming conflicts)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:472
+msgid ""
+"Выполнить ``pg_restore`` с указанием ``--role=<target_user>``, чтобы "
+"ownership объектов навешивался корректно."
+msgstr ""
+"Run ``pg_restore`` with ``--role=<target_user>`` so that object ownership"
+" is assigned correctly."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:474
+msgid ""
+"Расширения (``pg_trgm``, ``uuid-ossp`` и др.) восстанавливаются от имени "
+"``postgres`` -- ``--role`` на ``CREATE EXTENSION`` не влияет."
+msgstr ""
+"Extensions (``pg_trgm``, ``uuid-ossp``, etc.) are restored under the "
+"``postgres`` user — ``--role`` does not affect ``CREATE EXTENSION``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:476
+msgid "Блок команд для каждой пары (повторить 9 раз):"
+msgstr "Command block for each pair (repeat 9 times):"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:478
+msgid "**ecos_apps → citeck_eapps:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:507
+msgid "**ecos_uiserv → citeck_uiserv:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:536
+msgid "**ecos_integrations → citeck_integrations:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:565
+msgid "**ecos_model → citeck_emodel:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:594
+msgid "**ecos_notifications → citeck_notifications:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:623
+msgid "**ecos_history → citeck_history:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:652
+msgid "**ecos_process → citeck_eproc:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:681
+msgid "**ecos_camunda → citeck_camunda:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:710
+msgid "**ecos_edi → citeck_edi:**"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:740
+msgid "4.2. MongoDB"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:755
+msgid "Опции:"
+msgstr "Options:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:757
+msgid ""
+"``--nsFrom 'ecos-process.*' --nsTo 'citeck_eproc.*'`` -- переименование "
+"namespace при restore."
+msgstr ""
+"``--nsFrom 'ecos-process.*' --nsTo 'citeck_eproc.*'`` — namespace "
+"renaming during restore."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:758
+msgid ""
+"``--drop`` -- удаляет коллекции, оставшиеся от первого старта webapp "
+"``eproc``."
+msgstr ""
+"``--drop`` — drops collections left over from the first startup of the "
+"``eproc`` webapp."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:759
+msgid ""
+"Username и пароль root читаются из ENV контейнера через ``printenv``, "
+"чтобы не зависеть от того, что launcher сгенерировал."
+msgstr ""
+"The root username and password are read from the container ENV via "
+"``printenv``, so as not to depend on what the launcher generated."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:762
+msgid "4.3. Zookeeper"
+msgstr ""
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:764
+msgid ""
+"Останавливаем zookeeper **через** ``citeck stop``, а не ``docker stop``. "
+"Это критично: launcher2 имеет reconciler, который через ~1 минуту "
+"перезапустит контейнер, остановленный «снаружи», прямо во время того, как"
+" мы пишем в данные. ``citeck stop`` помечает приложение как detached и "
+"reconciler оставляет его в покое."
+msgstr ""
+"Stop zookeeper **via** ``citeck stop``, not ``docker stop``. This is "
+"critical: launcher2 has a reconciler that will restart a container stopped"
+" «from outside» in ~1 minute, potentially while data is being written. "
+"``citeck stop`` marks the application as detached and the reconciler "
+"leaves it alone."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:766
+msgid ""
+"Хранилище zookeeper в launcher2 -- это **bind-mount каталог на хосте** "
+"(не named docker volume): "
+"``/opt/citeck/data/runtime/default/volumes/zookeeper2/``. Внутри него -- "
+"подкаталог ``data/``, в котором zookeeper держит snapshots, и "
+"``datalog/``, в котором держит transaction log. Bitnami же на source "
+"складывал и snapshots, и log в один каталог ``data/version-2/``. При "
+"импорте нужно **разделить файлы**: ``log.*`` идут в "
+"``datalog/version-2/``, а **всё остальное** (``snapshot.*``, "
+"``acceptedEpoch``, ``currentEpoch`` и любые другие служебные файлы) -- в "
+"``data/version-2/``."
+msgstr ""
+"Zookeeper storage in launcher2 is a **bind-mount directory on the host** "
+"(not a named docker volume): "
+"``/opt/citeck/data/runtime/default/volumes/zookeeper2/``. Inside it — "
+"the ``data/`` subdirectory where zookeeper holds snapshots, and "
+"``datalog/`` where it holds the transaction log. Bitnami on the source "
+"stored both snapshots and the log in a single ``data/version-2/`` "
+"directory. During import, files must be **split**: ``log.*`` go into "
+"``datalog/version-2/``, and **everything else** (``snapshot.*``, "
+"``acceptedEpoch``, ``currentEpoch``, and any other auxiliary files) — "
+"into ``data/version-2/``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:792
+msgid "Замечания:"
+msgstr "Notes:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:794
+msgid ""
+"Точный путь bind-mount проверить через ``docker inspect "
+"citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``."
+msgstr ""
+"Verify the exact bind-mount path via ``docker inspect "
+"citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:795
+msgid ""
+"``chown 1001:1001`` -- uid/gid пользователя ``zookeeper`` в официальном "
+"образе. Без него запуск падает с ``permission denied``."
+msgstr ""
+"``chown 1001:1001`` — the uid/gid of the ``zookeeper`` user in the "
+"official image. Without it, startup fails with ``permission denied``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:796
+msgid ""
+"Если файлы не разделены -- official zookeeper падает с "
+"``SnapDirContentCheckException: Snapshot directory has log files``."
+msgstr ""
+"If files are not split — the official zookeeper fails with "
+"``SnapDirContentCheckException: Snapshot directory has log files``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:797
+msgid ""
+"``citeck start zookeeper`` re-attaches приложение, после чего reconciler "
+"снова им управляет."
+msgstr ""
+"``citeck start zookeeper`` re-attaches the application, after which the "
+"reconciler manages it again."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:798
+msgid "Проверить старт:"
+msgstr "Verify startup:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:804
+msgid "В логах должно быть ``Snapshot loaded`` и ``Snapshotting:`` без ошибок."
+msgstr "The logs should show ``Snapshot loaded`` and ``Snapshotting:`` without errors."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:807
+msgid "4.4. Поднять webapp'ы обратно"
+msgstr "4.4. Bring webapps back up"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:809
+msgid ""
+"Тот же список приложений, что был остановлен в шаге 1.3. **Важно**: в "
+"отличие от ``citeck stop`` (принимает любое число аргументов), ``citeck "
+"start`` принимает только **один app за раз**, поэтому запускаем циклом --"
+" **без** ``--detach``, чтобы каждый старт дожидался ``RUNNING`` перед "
+"стартом следующего:"
+msgstr ""
+"The same list of applications that was stopped in step 1.3. **Important**:"
+" unlike ``citeck stop`` (which accepts any number of arguments), ``citeck "
+"start`` accepts only **one app at a time**, so we run it in a loop — "
+"**without** ``--detach``, so that each startup waits for ``RUNNING`` "
+"before starting the next:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:817
+msgid ""
+"Если запускать с ``--detach``, возникает race condition: proxy "
+"запускается раньше, чем onlyoffice (или другая зависимость) успевает "
+"стать DNS-резолвимым, и падает с ``host not found in upstream "
+"\"onlyoffice\"``. Sequential-старт (без ``--detach``) использует "
+"``waitForDeps`` launcher2 и поднимает приложения в правильном порядке."
+msgstr ""
+"If started with ``--detach``, a race condition occurs: proxy starts "
+"before onlyoffice (or another dependency) becomes DNS-resolvable, and "
+"fails with ``host not found in upstream \"onlyoffice\"``. Sequential "
+"startup (without ``--detach``) uses launcher2's ``waitForDeps`` and "
+"brings applications up in the correct order."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:819
+msgid ""
+"Цикл занимает 10--20 минут (каждый Java-webapp стартует 1--3 минуты). "
+"Прогресс параллельно можно смотреть через ``citeck status -w`` в другой "
+"сессии."
+msgstr ""
+"The loop takes 10–20 minutes (each Java webapp starts in 1–3 minutes). "
+"Progress can be monitored in parallel via ``citeck status -w`` in another"
+" session."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:821
+msgid ""
+"Liquibase каждого webapp при старте увидит актуальный changelog (source "
+"перед миграцией обновлён до 2026.1) -- изменений schema не будет."
+msgstr ""
+"Each webapp's Liquibase will see the current changelog on startup (source"
+" was updated to 2026.1 before migration) — there will be no schema "
+"changes."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:824
+msgid "Этап 5. Проверка"
+msgstr "Stage 5. Verification"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:827
+msgid "5.1. Что должно работать"
+msgstr "5.1. What should work"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:829
+msgid ""
+"Логин в Web UI под ``admin / <admin-пароль из шага 1.1>``. **Не** ``admin"
+" / admin`` источника -- пароль теперь сгенерирован launcher'ом."
+msgstr ""
+"Log in to the Web UI with ``admin / <admin password from step 1.1>``. "
+"**Not** ``admin / admin`` from the source — the password is now generated"
+" by the launcher."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:830
+msgid ""
+"Списки записей в ``eapps``, ``eproc``, ``uiserv`` показывают данные "
+"источника."
+msgstr "Record lists in ``eapps``, ``eproc``, ``uiserv`` show source data."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:831
+msgid "BPMN-процессы из ``eproc`` запускаются (mongo + postgres согласованы)."
+msgstr "BPMN processes from ``eproc`` start (mongo + postgres are in sync)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:832
+msgid ""
+"В Keycloak присутствуют только пользователь ``admin`` и сервисный аккаунт"
+" ``citeck``."
+msgstr ""
+"Keycloak contains only the ``admin`` user and the ``citeck`` service "
+"account."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:835
+msgid "5.2. Проверочные команды"
+msgstr "5.2. Verification commands"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:853
+msgid ""
+"``citeck status`` должна показать все приложения в статусе ``RUNNING``. "
+"``citeck health`` -- exit-код 0."
+msgstr ""
+"``citeck status`` should show all applications in ``RUNNING`` status. "
+"``citeck health`` — exit code 0."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:856
+msgid "5.3. Что заведомо обнулилось"
+msgstr "5.3. What was reset"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:858
+msgid "Пользователи и роли Keycloak источника."
+msgstr "Source Keycloak users and roles."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:859
+msgid "In-flight сообщения RabbitMQ."
+msgstr "In-flight RabbitMQ messages."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:860
+msgid "Логи nginx/proxy."
+msgstr "nginx/proxy logs."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:861
+msgid "Кеш сертификатов Let's Encrypt -- будет перевыпущен при первом запросе."
+msgstr "Let's Encrypt certificate cache — will be re-issued on the first request."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:864
+msgid "Откат"
+msgstr "Rollback"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:867
+msgid "Сбой на target до доставки данных"
+msgstr "Failure on target before data delivery"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:869
+msgid "Переустановить с нуля:"
+msgstr "Reinstall from scratch:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:875
+msgid "Затем пройти установку и подготовку target заново (этап 1)."
+msgstr "Then repeat the target installation and preparation (Stage 1)."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:878
+msgid "Сбой после импорта"
+msgstr "Failure after import"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:880
+msgid "Повторить с нуля:"
+msgstr "Start over from scratch:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:886
+msgid ""
+"Затем установка → подготовка target → импорт. Source уже на 2026.1, его "
+"трогать не нужно -- дампы из ``~/citeck-migration/`` ещё валидны."
+msgstr ""
+"Then installation → target preparation → import. Source is already on "
+"2026.1, no changes needed there — dumps from ``~/citeck-migration/`` are "
+"still valid."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:889
+msgid "Сбой апгрейда source до 2026.1 (предусловие 1)"
+msgstr "Failure to upgrade source to 2026.1 (prerequisite 1)"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:891
+msgid "Восстановить из backup'а из шага 0:"
+msgstr "Restore from the backup made in step 0:"
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:893
+msgid ""
+"Если backup делался через ``tar`` -- ``docker compose down``, распаковать"
+" ``tar``, ``docker compose up -d``."
+msgstr ""
+"If the backup was made via ``tar`` — ``docker compose down``, extract the"
+" ``tar``, ``docker compose up -d``."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:894
+msgid ""
+"Если делался через ``pg_dumpall`` + ``mongodump`` -- следовать "
+"стандартной процедуре restore PostgreSQL/MongoDB."
+msgstr ""
+"If it was made via ``pg_dumpall`` + ``mongodump`` — follow the standard "
+"PostgreSQL/MongoDB restore procedure."
+
+#: ../../admin/launch_setup/launcher_server/migration_from_compose.rst:896
+msgid ""
+"Дампы из ``~/citeck-migration/`` сохранять минимум 1--2 недели после "
+"миграции -- на случай поздно обнаруженных проблем."
+msgstr ""
+"Keep dumps from ``~/citeck-migration/`` for at least 1–2 weeks after "
+"migration — in case problems are discovered late."
