@@ -1,3 +1,5 @@
+.. _mobile-api:
+
 API
 ====
 

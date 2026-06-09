@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../general/Rag_config.rst:4
-msgid "Настройка RAG-сервиса"
-msgstr "RAG Service Configuration"
+msgid "Настройка семантического поиска и индексации документов"
+msgstr "Semantic Search and Document Indexing Configuration"
 
 #: ../../general/Rag_config.rst:6
 msgid ""
@@ -32,13 +32,13 @@ msgstr ""
 
 #: ../../general/Rag_config.rst:8
 msgid ""
-"Сервис индексирует данные из **Citeck-записей** и GitLab-репозиториев, "
-"строит векторные представления с помощью OpenAI Embeddings и обеспечивает"
-" семантический поиск через Qdrant."
+"Сервис индексирует данные из **Citeck-записей** и "
+"**GitLab-репозиториев**, строит векторные представления с помощью OpenAI "
+"Embeddings и обеспечивает семантический поиск через Qdrant."
 msgstr ""
-"The service indexes data from **Citeck records** and GitLab repositories, "
-"builds vector representations using OpenAI Embeddings, and provides "
-"semantic search via Qdrant."
+"The service indexes data from **Citeck records** and **GitLab "
+"repositories**, builds vector representations using OpenAI Embeddings, "
+"and provides semantic search via Qdrant."
 
 #: ../../general/Rag_config.rst:10
 msgid "Возможности:"
@@ -47,54 +47,806 @@ msgstr "Features:"
 #: ../../general/Rag_config.rst:12
 msgid ""
 "**Семантический поиск** по содержимому документов Citeck и исходному коду"
-" GitLab"
-msgstr ""
-"**Semantic search** across Citeck document content and GitLab source code"
-
-#: ../../general/Rag_config.rst:13
-msgid ""
-"**Workspace-изоляция** — отдельные Qdrant-коллекции для каждого рабочего "
-"пространства Citeck"
-msgstr ""
-"**Workspace isolation** — separate Qdrant collections for each Citeck "
-"workspace"
+" GitLab:"
+msgstr "**Semantic search** across Citeck document content and GitLab source code:"
 
 #: ../../general/Rag_config.rst:14
 msgid ""
-"**Индексация Citeck-записей** — извлечение контента из атрибутов, файлов "
-"и метаданных записей"
+"Поиск по записям Citeck и содержимому GitLab-репозиториев с "
+"использованием эмбеддингов (OpenAI `text-embedding-3-small`) и векторной "
+"БД Qdrant."
 msgstr ""
-"**Citeck record indexing** — extraction of content from record attributes, "
-"files, and metadata"
+"Search across Citeck records and GitLab repository content using "
+"embeddings (OpenAI `text-embedding-3-small`) and the Qdrant vector "
+"database."
 
 #: ../../general/Rag_config.rst:15
 msgid ""
-"**Индексация GitLab** — сканирование репозиториев с поддержкой "
-"инкрементальной синхронизации через Commits API"
+"Результаты фильтруются по правам пользователя и рабочему пространству, "
+"дедуплицируются и ранжируются по релевантности."
 msgstr ""
-"**GitLab indexing** — repository scanning with support for incremental "
-"synchronization via the Commits API"
-
-#: ../../general/Rag_config.rst:16
-msgid ""
-"**Event-driven индексация** — автоматическое обновление индекса при "
-"создании, изменении и удалении записей"
-msgstr ""
-"**Event-driven indexing** — automatic index update on record creation, "
-"modification, and deletion"
+"Results are filtered by user permissions and workspace, deduplicated, and"
+" ranked by relevance."
 
 #: ../../general/Rag_config.rst:17
-msgid ""
-"**Контроль доступа** — фильтрация результатов поиска по правам "
-"пользователя и membership в workspace"
-msgstr ""
-"**Access control** — filtering of search results based on user permissions "
-"and workspace membership"
+msgid "**Индексация рабочих пространств**:"
+msgstr "**Workspace Indexing**:"
 
-#: ../../general/Rag_config.rst:18
+#: ../../general/Rag_config.rst:19
+msgid ""
+"Для каждого рабочего пространства создаётся отдельная Qdrant-коллекция, "
+"что гарантирует изоляцию данных."
+msgstr ""
+"A separate Qdrant collection is created for each workspace, ensuring data"
+" isolation."
+
+#: ../../general/Rag_config.rst:20
+msgid ""
+"Инкрементальная индексация по событиям CRUD с объединением повторных "
+"изменений (debounce)."
+msgstr ""
+"Incremental indexing based on CRUD events with debouncing of repeated "
+"changes."
+
+#: ../../general/Rag_config.rst:21
+msgid ""
+"Параллельная полная переиндексация с пропуском неизменённых документов по"
+" SHA-256."
+msgstr ""
+"Parallel full reindexing with skipping of unchanged documents by SHA-256."
+
+#: ../../general/Rag_config.rst:23
+msgid "**Индексация GitLab-репозиториев**:"
+msgstr "**GitLab Repository Indexing**:"
+
+#: ../../general/Rag_config.rst:25
+msgid ""
+"Репозитории настраиваются через отдельный тип `rag-gitlab-repo` с "
+"указанием секрета-токена, списка расширений и предельного размера файла."
+msgstr ""
+"Repositories are configured via a dedicated `rag-gitlab-repo` type with "
+"a token secret, file extension list, and maximum file size."
+
+#: ../../general/Rag_config.rst:26
+msgid ""
+"Инкрементальная синхронизация через GitLab Commits API — по расписанию "
+"или вручную."
+msgstr ""
+"Incremental synchronization via GitLab Commits API — on schedule or "
+"manually."
+
+#: ../../general/Rag_config.rst:27
+msgid ""
+"Репозиторий можно привязать к одному или нескольким рабочим "
+"пространствам: тогда он участвует в поиске только внутри них; без "
+"привязки — доступен во всех пространствах."
+msgstr ""
+"A repository can be linked to one or more workspaces: it then "
+"participates in search only within them; without a link — it is available"
+" in all workspaces."
+
+#: ../../general/Rag_config.rst:28
+msgid ""
+"При удалении репозитория соответствующая векторная коллекция удаляется "
+"автоматически."
+msgstr ""
+"When a repository is deleted, the corresponding vector collection is "
+"removed automatically."
+
+#: ../../general/Rag_config.rst:30
+msgid "**API поиска**:"
+msgstr "**Search API**:"
+
+#: ../../general/Rag_config.rst:32
+msgid ""
+"REST-эндпоинт `POST /api/rag/search` и ECOS Records DAO (source ID `rag-"
+"search`)."
+msgstr ""
+"REST endpoint `POST /api/rag/search` and ECOS Records DAO (source ID "
+"`rag-search`)."
+
+#: ../../general/Rag_config.rst:33
+msgid ""
+"Фильтрация по идентификаторам репозиториев (`includeRepoIds` / "
+"`excludeRepoIds`)."
+msgstr ""
+"Filtering by repository identifiers (`includeRepoIds` / "
+"`excludeRepoIds`)."
+
+#: ../../general/Rag_config.rst:34
+msgid ""
+"Вместе с документом публикуется базовый URL документации — результаты "
+"поиска могут ссылаться на публичные страницы документации."
+msgstr ""
+"A base documentation URL is published together with the document — search"
+" results can reference public documentation pages."
+
+#: ../../general/Rag_config.rst:36
+msgid "**Развёртывание преднастроенных записей**:"
+msgstr "**Pre-configured Record Deployment**:"
+
+#: ../../general/Rag_config.rst:38
+msgid ""
+"ECOS-артефакты для типов `rag-gitlab-repo` и `rag-workspace-config` "
+"позволяют разворачивать готовые конфигурации (например, документация "
+"Citeck ECOS) при старте приложения."
+msgstr ""
+"ECOS artifacts for the `rag-gitlab-repo` and `rag-workspace-config` types"
+" allow deploying ready-made configurations (e.g., Citeck ECOS "
+"documentation) on application startup."
+
+#: ../../general/Rag_config.rst:39
+msgid "Изменения таких записей синхронизируются обратно через `EventsService`."
+msgstr "Changes to such records are synchronized back via `EventsService`."
+
+#: ../../general/Rag_config.rst:41
 msgid ""
 "**MCP-сервер** — интеграция с Claude Code и другими AI-моделями через "
-"Model Context Protocol"
+"Model Context Protocol."
 msgstr ""
-"**MCP server** — integration with Claude Code and other AI models via the "
-"Model Context Protocol"
+"**MCP server** — integration with Claude Code and other AI models via "
+"Model Context Protocol."
+
+#: ../../general/Rag_config.rst:44
+msgid "Архитектура"
+msgstr "Architecture"
+
+#: ../../general/Rag_config.rst:46
+msgid "Сервис состоит из двух модулей:"
+msgstr "The service consists of two modules:"
+
+#: ../../general/Rag_config.rst:52
+msgid "Модуль"
+msgstr "Module"
+
+#: ../../general/Rag_config.rst:53
+msgid "Порт"
+msgstr "Port"
+
+#: ../../general/Rag_config.rst:54 ../../general/Rag_config.rst:99
+#: ../../general/Rag_config.rst:154
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Rag_config.rst:55
+msgid "``citeck-rag-app``"
+msgstr "``citeck-rag-app``"
+
+#: ../../general/Rag_config.rst:56
+msgid "8614"
+msgstr "8614"
+
+#: ../../general/Rag_config.rst:57
+msgid "Основной сервис: индексация, поиск, REST API, Records DAO"
+msgstr "Main service: indexing, search, REST API, Records DAO"
+
+#: ../../general/Rag_config.rst:58
+msgid "``citeck-rag-mcp``"
+msgstr "``citeck-rag-mcp``"
+
+#: ../../general/Rag_config.rst:59
+msgid "8615"
+msgstr "8615"
+
+#: ../../general/Rag_config.rst:60
+msgid ""
+"MCP-сервер с инструментами для AI-моделей (поиск, переиндексация, статус,"
+" получение документа)"
+msgstr ""
+"MCP server with tools for AI models (search, reindexing, status, document"
+" retrieval)"
+
+#: ../../general/Rag_config.rst:62
+msgid "**Стек:**"
+msgstr "**Stack:**"
+
+#: ../../general/Rag_config.rst:64
+msgid "Java 17"
+msgstr "Java 17"
+
+#: ../../general/Rag_config.rst:65
+msgid "Spring Boot 3.x"
+msgstr "Spring Boot 3.x"
+
+#: ../../general/Rag_config.rst:66
+msgid "Spring AI 1.1.3"
+msgstr "Spring AI 1.1.3"
+
+#: ../../general/Rag_config.rst:67
+msgid "OpenAI ``text-embedding-3-small`` (1536 dimensions)"
+msgstr "OpenAI ``text-embedding-3-small`` (1536 dimensions)"
+
+#: ../../general/Rag_config.rst:68
+msgid "Qdrant"
+msgstr "Qdrant"
+
+#: ../../general/Rag_config.rst:69
+msgid "GitLab4J"
+msgstr "GitLab4J"
+
+#: ../../general/Rag_config.rst:70
+msgid "ECOS Records API"
+msgstr "ECOS Records API"
+
+#: ../../general/Rag_config.rst:74
+msgid "Требования"
+msgstr "Requirements"
+
+#: ../../general/Rag_config.rst:76
+msgid "Компоненты Citeck, необходимые для работы сервиса:"
+msgstr "Citeck components required for the service:"
+
+#: ../../general/Rag_config.rst:78
+msgid "zookeeper"
+msgstr "zookeeper"
+
+#: ../../general/Rag_config.rst:79
+msgid "rabbitmq"
+msgstr "rabbitmq"
+
+#: ../../general/Rag_config.rst:80
+msgid "ecos-registry"
+msgstr "ecos-registry"
+
+#: ../../general/Rag_config.rst:81
+msgid "ecos-model (workspace-конфигурация)"
+msgstr "ecos-model (workspace configuration)"
+
+#: ../../general/Rag_config.rst:82
+msgid "ecos-apps (Records API)"
+msgstr "ecos-apps (Records API)"
+
+#: ../../general/Rag_config.rst:84
+msgid "Внешние зависимости:"
+msgstr "External dependencies:"
+
+#: ../../general/Rag_config.rst:86
+msgid "**Qdrant** — векторная БД, gRPC-порт ``6334``"
+msgstr "**Qdrant** — vector database, gRPC port ``6334``"
+
+#: ../../general/Rag_config.rst:87
+msgid ""
+"**OpenAI API** — сервис эмбеддингов, ключ передаётся через переменную "
+"``CTK_OPENAI_API_KEY``"
+msgstr ""
+"**OpenAI API** — embeddings service, the key is passed via the "
+"``CTK_OPENAI_API_KEY`` variable"
+
+#: ../../general/Rag_config.rst:91
+msgid "Параметры сервера"
+msgstr "Server Parameters"
+
+#: ../../general/Rag_config.rst:97
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../general/Rag_config.rst:98
+msgid "По умолчанию"
+msgstr "Default"
+
+#: ../../general/Rag_config.rst:100
+msgid "``CTK_OPENAI_API_KEY``"
+msgstr "``CTK_OPENAI_API_KEY``"
+
+#: ../../general/Rag_config.rst:101
+msgid "—"
+msgstr "—"
+
+#: ../../general/Rag_config.rst:102
+msgid "API-ключ OpenAI для эмбеддингов"
+msgstr "OpenAI API key for embeddings"
+
+#: ../../general/Rag_config.rst:103
+msgid "``QDRANT_HOST``"
+msgstr "``QDRANT_HOST``"
+
+#: ../../general/Rag_config.rst:104
+msgid "``localhost``"
+msgstr "``localhost``"
+
+#: ../../general/Rag_config.rst:105
+msgid "Хост Qdrant"
+msgstr "Qdrant host"
+
+#: ../../general/Rag_config.rst:106
+msgid "``QDRANT_GRPC_PORT``"
+msgstr "``QDRANT_GRPC_PORT``"
+
+#: ../../general/Rag_config.rst:107
+msgid "``6334``"
+msgstr "``6334``"
+
+#: ../../general/Rag_config.rst:108
+msgid "gRPC-порт Qdrant"
+msgstr "Qdrant gRPC port"
+
+#: ../../general/Rag_config.rst:109
+msgid "``citeck.rag.search.default-top-k``"
+msgstr "``citeck.rag.search.default-top-k``"
+
+#: ../../general/Rag_config.rst:110
+msgid "``5``"
+msgstr "``5``"
+
+#: ../../general/Rag_config.rst:111
+msgid "Количество результатов поиска"
+msgstr "Number of search results"
+
+#: ../../general/Rag_config.rst:112
+msgid "``citeck.rag.search.default-threshold``"
+msgstr "``citeck.rag.search.default-threshold``"
+
+#: ../../general/Rag_config.rst:113
+msgid "``0.7``"
+msgstr "``0.7``"
+
+#: ../../general/Rag_config.rst:114
+msgid "Порог сходства (cosine similarity)"
+msgstr "Similarity threshold (cosine similarity)"
+
+#: ../../general/Rag_config.rst:115
+msgid "``citeck.rag.chunking.default-chunk-size``"
+msgstr "``citeck.rag.chunking.default-chunk-size``"
+
+#: ../../general/Rag_config.rst:116
+msgid "``800``"
+msgstr "``800``"
+
+#: ../../general/Rag_config.rst:117
+msgid "Размер чанка в токенах"
+msgstr "Chunk size in tokens"
+
+#: ../../general/Rag_config.rst:118
+msgid "``citeck.rag.chunking.code-chunk-size``"
+msgstr "``citeck.rag.chunking.code-chunk-size``"
+
+#: ../../general/Rag_config.rst:119
+msgid "``1200``"
+msgstr "``1200``"
+
+#: ../../general/Rag_config.rst:120
+msgid "Размер чанка для файлов с кодом"
+msgstr "Chunk size for code files"
+
+#: ../../general/Rag_config.rst:124
+msgid "MCP-сервер"
+msgstr "MCP Server"
+
+#: ../../general/Rag_config.rst:126
+msgid ""
+"``citeck-rag-mcp`` (порт **8615**) предоставляет инструменты для "
+"AI-моделей через Model Context Protocol:"
+msgstr ""
+"``citeck-rag-mcp`` (port **8615**) provides tools for AI models via "
+"Model Context Protocol:"
+
+#: ../../general/Rag_config.rst:128
+msgid "``search`` — семантический поиск по проиндексированным данным"
+msgstr "``search`` — semantic search over indexed data"
+
+#: ../../general/Rag_config.rst:129
+msgid "``reindex`` — запуск переиндексации workspace или репозитория"
+msgstr "``reindex`` — trigger reindexing of a workspace or repository"
+
+#: ../../general/Rag_config.rst:130
+msgid "``status`` — статус индексации и коллекций Qdrant"
+msgstr "``status`` — indexing and Qdrant collection status"
+
+#: ../../general/Rag_config.rst:131
+msgid "``document`` — получение содержимого документа по идентификатору"
+msgstr "``document`` — retrieve document content by identifier"
+
+#: ../../general/Rag_config.rst:135
+msgid "Records API"
+msgstr "Records API"
+
+#: ../../general/Rag_config.rst:137
+msgid "Сервис предоставляет Records DAO для интеграции с платформой Citeck:"
+msgstr "The service provides Records DAO for integration with the Citeck platform:"
+
+#: ../../general/Rag_config.rst:139
+msgid "``rag-search`` — семантический поиск через ECOS Records Query"
+msgstr "``rag-search`` — semantic search via ECOS Records Query"
+
+#: ../../general/Rag_config.rst:140
+msgid "``rag-index`` — управление индексацией"
+msgstr "``rag-index`` — indexing management"
+
+#: ../../general/Rag_config.rst:141
+msgid "``gitlab-sync`` — управление синхронизацией GitLab-репозиториев"
+msgstr "``gitlab-sync`` — GitLab repository synchronization management"
+
+#: ../../general/Rag_config.rst:142
+msgid "``workspace-reindex`` — переиндексация рабочего пространства"
+msgstr "``workspace-reindex`` — workspace reindexing"
+
+#: ../../general/Rag_config.rst:146
+msgid "REST API"
+msgstr "REST API"
+
+#: ../../general/Rag_config.rst:152
+msgid "Метод"
+msgstr "Method"
+
+#: ../../general/Rag_config.rst:153
+msgid "Эндпоинт"
+msgstr "Endpoint"
+
+#: ../../general/Rag_config.rst:155 ../../general/Rag_config.rst:158
+#: ../../general/Rag_config.rst:161 ../../general/Rag_config.rst:164
+msgid "``POST``"
+msgstr "``POST``"
+
+#: ../../general/Rag_config.rst:156
+msgid "``/api/rag/search``"
+msgstr "``/api/rag/search``"
+
+#: ../../general/Rag_config.rst:157
+msgid "Семантический поиск"
+msgstr "Semantic search"
+
+#: ../../general/Rag_config.rst:159
+msgid "``/api/rag/indexing/full-reindex``"
+msgstr "``/api/rag/indexing/full-reindex``"
+
+#: ../../general/Rag_config.rst:160
+msgid "Полная переиндексация"
+msgstr "Full reindexing"
+
+#: ../../general/Rag_config.rst:162
+msgid "``/api/rag/indexing/incremental``"
+msgstr "``/api/rag/indexing/incremental``"
+
+#: ../../general/Rag_config.rst:163
+msgid "Инкрементальная синхронизация"
+msgstr "Incremental synchronization"
+
+#: ../../general/Rag_config.rst:165 ../../general/Rag_config.rst:168
+msgid "``/api/rag/indexing/document``"
+msgstr "``/api/rag/indexing/document``"
+
+#: ../../general/Rag_config.rst:166
+msgid "Индексация одного документа"
+msgstr "Single document indexing"
+
+#: ../../general/Rag_config.rst:167
+msgid "``DELETE``"
+msgstr "``DELETE``"
+
+#: ../../general/Rag_config.rst:169
+msgid "Удаление документа из индекса"
+msgstr "Remove document from index"
+
+#: ../../general/Rag_config.rst:170 ../../general/Rag_config.rst:173
+msgid "``GET``"
+msgstr "``GET``"
+
+#: ../../general/Rag_config.rst:171
+msgid "``/api/rag/status``"
+msgstr "``/api/rag/status``"
+
+#: ../../general/Rag_config.rst:172
+msgid "Статус индексации и коллекций"
+msgstr "Indexing and collection status"
+
+#: ../../general/Rag_config.rst:174
+msgid "``/api/rag/document``"
+msgstr "``/api/rag/document``"
+
+#: ../../general/Rag_config.rst:175
+msgid "Получение содержимого документа"
+msgstr "Get document content"
+
+#: ../../general/Rag_config.rst:179
+msgid "Журналы настройки"
+msgstr "Configuration Journals"
+
+#: ../../general/Rag_config.rst:181
+msgid ""
+"В рабочем пространстве администратора в разделе **RAG** доступны журналы "
+"для управления:"
+msgstr ""
+"The administrator workspace contains **RAG** section journals for "
+"managing:"
+
+#: ../../general/Rag_config.rst:183
+msgid ""
+"**Рабочие пространства** — какие рабочие пространства участвуют в "
+"семантическом поиске и какие типы записей индексируются."
+msgstr ""
+"**Workspaces** — which workspaces participate in semantic search and "
+"which record types are indexed."
+
+#: ../../general/Rag_config.rst:184
+msgid "**GitLab‑репозитории** — какие GitLab‑репозитории подключены к поиску."
+msgstr "**GitLab repositories** — which GitLab repositories are connected to search."
+
+#: ../../general/Rag_config.rst:188
+msgid "Рабочие пространства"
+msgstr "Workspaces"
+
+#: ../../general/Rag_config.rst:194 ../../general/Rag_config.rst:219
+msgid "Действия помимо стандартных:"
+msgstr "Actions in addition to standard ones:"
+
+#: ../../general/Rag_config.rst:196
+msgid ""
+"**(1) Принудительная переиндексация** — полная переиндексация всех "
+"записей рабочего пространства вне зависимости от расписания. Применяйте, "
+"если данные в индексе рассинхронизировались с реальными записями или "
+"после изменения настроек индексируемых типов."
+msgstr ""
+"**(1) Force Reindexing** — full reindexing of all workspace records "
+"regardless of schedule. Use this if the index data has gone out of sync "
+"with the actual records, or after changing the settings of indexed types."
+
+#: ../../general/Rag_config.rst:198 ../../general/Rag_config.rst:224
+msgid "**Создание новой настройки:**"
+msgstr "**Creating a new configuration:**"
+
+#: ../../general/Rag_config.rst:204
+msgid ""
+"**Воркспейс** — ограничивает, какие рабочие пространства участвуют в "
+"поиске. Оставьте пустым — запись доступна в поиске во ВСЕХ рабочих "
+"пространствах (глобальная документация). Укажите список — запись "
+"подключается к поиску только внутри выбранных пространств. На индексацию "
+"не влияет: записи всегда индексируются в свою отдельную коллекцию."
+msgstr ""
+"**Workspace** — restricts which workspaces participate in search. Leave "
+"empty — the record is available in search across ALL workspaces (global "
+"documentation). Specify a list — the record is connected to search only "
+"within the selected workspaces. Does not affect indexing: records are "
+"always indexed into their own separate collection."
+
+#: ../../general/Rag_config.rst:205
+msgid ""
+"**Включён** — при выключении запланированная синхронизация не "
+"выполняется. Уже проиндексированные векторы не удаляются — при повторном "
+"включении поиск продолжит работать без переиндексации."
+msgstr ""
+"**Enabled** — when disabled, scheduled synchronization is not performed. "
+"Already indexed vectors are not deleted — when re-enabled, search will "
+"continue working without reindexing."
+
+#: ../../general/Rag_config.rst:206
+msgid ""
+"**Индексируемые типы** (пусто = все) — типы записей, которые "
+"индексируются для этого рабочего пространства. Если пусто — индексируются"
+" все типы. Если указано — индексируются только записи этих типов."
+msgstr ""
+"**Indexed Types** (empty = all) — record types that are indexed for this "
+"workspace. If empty — all types are indexed. If specified — only records "
+"of these types are indexed."
+
+#: ../../general/Rag_config.rst:207
+msgid "**Статус** — статус синхронизации."
+msgstr "**Status** — synchronization status."
+
+#: ../../general/Rag_config.rst:208
+msgid ""
+"**Дата последней полной переиндексации** — дата последней полной "
+"переиндексации всех данных этого рабочего пространства. Поле "
+"информационное, заполняется автоматически."
+msgstr ""
+"**Last Full Reindexing Date** — the date of the last full reindexing of "
+"all data in this workspace. Informational field, filled in automatically."
+
+#: ../../general/Rag_config.rst:209
+msgid "**Ошибка** — ошибки, возникшие при последней попытке синхронизации."
+msgstr "**Error** — errors that occurred during the last synchronization attempt."
+
+#: ../../general/Rag_config.rst:213
+msgid "GitLab‑репозитории"
+msgstr "GitLab Repositories"
+
+#: ../../general/Rag_config.rst:221
+msgid ""
+"**(1) Принудительная синхронизация** — инкрементальная синхронизация: "
+"обрабатываются только изменения начиная с последнего зафиксированного "
+"коммита (по SHA). По результату идентична плановому запуску по "
+"расписанию, но выполняется немедленно."
+msgstr ""
+"**(1) Force Synchronization** — incremental synchronization: only changes"
+" since the last recorded commit (by SHA) are processed. The result is "
+"identical to a scheduled run, but executed immediately."
+
+#: ../../general/Rag_config.rst:222
+msgid ""
+"**(2) Принудительная переиндексация** — полная переиндексация: весь "
+"репозиторий сканируется заново, SHA сбрасывается. Применяйте, если индекс"
+" повреждён или после изменения параметров (расширения файлов, "
+"максимальный размер файла)."
+msgstr ""
+"**(2) Force Reindexing** — full reindexing: the entire repository is "
+"scanned from scratch, SHA is reset. Use this if the index is corrupted or"
+" after changing parameters (file extensions, maximum file size)."
+
+#: ../../general/Rag_config.rst:230
+msgid ""
+"**URL репозитория** — полный URL GitLab-репозитория для индексации. "
+"Должен содержать схему, хост и путь проекта (Группа/Проект)."
+msgstr ""
+"**Repository URL** — full URL of the GitLab repository to index. Must "
+"include the scheme, host, and project path (Group/Project)."
+
+#: ../../general/Rag_config.rst:231
+msgid ""
+"**Ветка** — Git-ветка для индексации. Данные загружаются только из этой "
+"ветки."
+msgstr ""
+"**Branch** — Git branch to index. Data is loaded only from this branch."
+
+#: ../../general/Rag_config.rst:232
+msgid ""
+"**Секрет (Токен)** — секрет ECOS с GitLab Personal/Project Access Token "
+"(права ``read_api`` и ``read_repository``). У владельца токена в проекте "
+"должна быть роль не ниже Reporter. Обязателен для приватных репозиториев."
+msgstr ""
+"**Secret (Token)** — ECOS secret containing a GitLab Personal/Project "
+"Access Token (``read_api`` and ``read_repository`` permissions). The "
+"token owner must have at least a Reporter role in the project. Required "
+"for private repositories."
+
+#: ../../general/Rag_config.rst:233
+msgid ""
+"**Рабочие пространства** — ограничивает, в каких рабочих пространствах "
+"этот репозиторий участвует в поиске. Оставьте пустым — репозиторий "
+"доступен в поиске во ВСЕХ рабочих пространствах (глобальная "
+"документация). Укажите список — репозиторий подключается к поиску только "
+"внутри выбранных пространств. На индексацию не влияет: репозиторий всегда"
+" индексируется в свою отдельную коллекцию."
+msgstr ""
+"**Workspaces** — restricts in which workspaces this repository "
+"participates in search. Leave empty — the repository is available in "
+"search across ALL workspaces (global documentation). Specify a list — the"
+" repository is connected to search only within the selected workspaces. "
+"Does not affect indexing: the repository is always indexed into its own "
+"separate collection."
+
+#: ../../general/Rag_config.rst:234
+msgid ""
+"**Включён** — при выключении запланированная синхронизация не "
+"выполняется, а репозиторий исключается из поиска. Уже проиндексированные "
+"векторы не удаляются — при повторном включении поиск продолжит работать "
+"без переиндексации."
+msgstr ""
+"**Enabled** — when disabled, scheduled synchronization is not performed "
+"and the repository is excluded from search. Already indexed vectors are "
+"not deleted — when re-enabled, search will continue working without "
+"reindexing."
+
+#: ../../general/Rag_config.rst:235
+msgid ""
+"**Расширения файлов** — список расширений файлов для индексации через "
+"запятую (без точки). Файлы с другими расширениями пропускаются. Если "
+"пусто — применяется значение по умолчанию из настроек сервера."
+msgstr ""
+"**File Extensions** — comma-separated list of file extensions to index "
+"(without dot). Files with other extensions are skipped. If empty — the "
+"default value from server settings is applied."
+
+#: ../../general/Rag_config.rst:236
+msgid ""
+"**Макс. размер файла (KB)** — файлы больше указанного размера "
+"пропускаются, чтобы избежать проблем с памятью и лишних расходов на "
+"эмбеддинги. Оставьте пустым или ``0``, чтобы использовать значение по "
+"умолчанию из настроек сервера."
+msgstr ""
+"**Max. file size (KB)** — files larger than the specified size are "
+"skipped to avoid memory issues and unnecessary embedding costs. Leave "
+"empty or ``0`` to use the default value from server settings."
+
+#: ../../general/Rag_config.rst:237
+msgid ""
+"**Расписание синхронизации** — Cron-выражение в формате Spring (6 полей: "
+"секунды минуты часы день месяц день_недели) для инкрементальной "
+"синхронизации этого репозитория. Если пусто — используется общее "
+"расписание из настроек сервера."
+msgstr ""
+"**Synchronization Schedule** — Spring cron expression (6 fields: seconds"
+" minutes hours day month day_of_week) for incremental synchronization of "
+"this repository. If empty — the common schedule from server settings is "
+"used."
+
+#: ../../general/Rag_config.rst:238
+msgid ""
+"**Базовый URL документации** — базовый URL опубликованного сайта "
+"документации. Вместе с «Корневой путь документации» и «Расширение URL» "
+"используется для построения публичной ссылки на страницу-источник в "
+"результатах поиска. Оставьте пустым, если репозиторий не публикуется на "
+"сайт."
+msgstr ""
+"**Documentation Base URL** — base URL of the published documentation "
+"site. Used together with \"Documentation Root Path\" and \"URL "
+"Extension\" to build a public link to the source page in search results. "
+"Leave empty if the repository is not published to a site."
+
+#: ../../general/Rag_config.rst:239
+msgid ""
+"**Корневой путь документации** — путь внутри репозитория, соответствующий"
+" корню опубликованного сайта. Например, при ``docsRootPath=docs`` файл "
+"``docs/guide/intro.md`` отображается на ``/guide/intro``."
+msgstr ""
+"**Documentation Root Path** — path inside the repository that "
+"corresponds to the root of the published site. For example, with "
+"``docsRootPath=docs``, the file ``docs/guide/intro.md`` maps to "
+"``/guide/intro``."
+
+#: ../../general/Rag_config.rst:240
+msgid ""
+"**Расширение URL** — расширение, подставляемое в конце URL на "
+"опубликованном сайте вместо расширения исходного файла. Например, "
+"``.html`` для статических сайтов (ReadTheDocs, MkDocs) или пустая строка,"
+" если сайт использует «чистые» URL без расширения."
+msgstr ""
+"**URL Extension** — extension appended at the end of the URL on the "
+"published site instead of the source file extension. For example, "
+"``.html`` for static sites (ReadTheDocs, MkDocs), or an empty string if "
+"the site uses \"clean\" URLs without extensions."
+
+#: ../../general/Rag_config.rst:241
+msgid ""
+"**SHA последнего синхронизированного коммита** — SHA последнего коммита, "
+"обработанного инкрементальной синхронизацией. Заполняется автоматически и"
+" используется для вычисления изменений при следующем запуске. Очистите "
+"поле, чтобы принудительно пересканировать ветку целиком."
+msgstr ""
+"**Last Synchronized Commit SHA** — SHA of the last commit processed by "
+"incremental synchronization. Filled in automatically and used to compute "
+"changes on the next run. Clear the field to force a full branch rescan."
+
+#: ../../general/Rag_config.rst:242
+msgid ""
+"**Время последней синхронизации** — время последней успешной "
+"синхронизации этого репозитория. Поле информационное, заполняется "
+"автоматически."
+msgstr ""
+"**Last Synchronization Time** — the time of the last successful "
+"synchronization of this repository. Informational field, filled in "
+"automatically."
+
+#~ msgid "Настройка RAG-сервиса"
+#~ msgstr "RAG Service Configuration"
+
+#~ msgid ""
+#~ "**Workspace-изоляция** — отдельные Qdrant-коллекции"
+#~ " для каждого рабочего пространства Citeck"
+#~ msgstr ""
+#~ "**Workspace isolation** — separate Qdrant "
+#~ "collections for each Citeck workspace"
+
+#~ msgid ""
+#~ "**Индексация Citeck-записей** — извлечение "
+#~ "контента из атрибутов, файлов и "
+#~ "метаданных записей"
+#~ msgstr ""
+#~ "**Citeck record indexing** — extraction "
+#~ "of content from record attributes, "
+#~ "files, and metadata"
+
+#~ msgid ""
+#~ "**Индексация GitLab** — сканирование "
+#~ "репозиториев с поддержкой инкрементальной "
+#~ "синхронизации через Commits API"
+#~ msgstr ""
+#~ "**GitLab indexing** — repository scanning "
+#~ "with support for incremental synchronization"
+#~ " via the Commits API"
+
+#~ msgid ""
+#~ "**Event-driven индексация** — автоматическое"
+#~ " обновление индекса при создании, изменении"
+#~ " и удалении записей"
+#~ msgstr ""
+#~ "**Event-driven indexing** — automatic "
+#~ "index update on record creation, "
+#~ "modification, and deletion"
+
+#~ msgid ""
+#~ "**Контроль доступа** — фильтрация результатов"
+#~ " поиска по правам пользователя и "
+#~ "membership в workspace"
+#~ msgstr ""
+#~ "**Access control** — filtering of search"
+#~ " results based on user permissions "
+#~ "and workspace membership"

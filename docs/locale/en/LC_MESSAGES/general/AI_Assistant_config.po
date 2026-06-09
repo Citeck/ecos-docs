@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-06-08 10:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -34,8 +34,8 @@ msgid ""
 "AI-функциональность остальным микросервисам через RESTful API."
 msgstr ""
 "The ``ecos-ai`` microservice powers the :ref:`AI assistant<AI_assistant>`"
-" in the Citeck platform. It integrates with external Large Language Model "
-"(LLM) providers and exposes AI functionality to other microservices via "
+" in the Citeck platform. It integrates with external Large Language Model"
+" (LLM) providers and exposes AI functionality to other microservices via "
 "a RESTful API."
 
 #: ../../general/AI_Assistant_config.rst:11
@@ -211,8 +211,8 @@ msgid ""
 "BPMN используется более интеллектуальная модель, что обеспечивает лучшее "
 "качество процессов."
 msgstr ""
-"**Recommended.** Yandex Cloud (``gpt-oss-120b``) as the primary provider"
-" + Anthropic (``claude-sonnet-4-6``) for BPMN generation. A more "
+"**Recommended.** Yandex Cloud (``gpt-oss-120b``) as the primary provider "
+"+ Anthropic (``claude-sonnet-4-6``) for BPMN generation. A more "
 "intelligent model is used for BPMN generation, which ensures better "
 "process quality."
 
@@ -258,14 +258,42 @@ msgid "Найдите микросервис **ai** в списке микрос
 msgstr "Find the **ai** microservice in the microservices list."
 
 #: ../../general/AI_Assistant_config.rst:85
-msgid "Нажмите **правой кнопкой мыши** на шестеренку настроек микросервиса."
-msgstr "**Right-click** on the microservice settings gear icon."
-
-#: ../../general/AI_Assistant_config.rst:86
-msgid "Отредактируйте файл ``application-launcher.yml``."
-msgstr "Edit the ``application-launcher.yml`` file."
+msgid ""
+"Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и "
+"добавьте переменные окружения:"
+msgstr ""
+"**Left-click** on the microservice settings gear icon and add environment "
+"variables:"
 
 #: ../../general/AI_Assistant_config.rst:87
+msgid "``CTK_ANTHROPIC_API_KEY`` — для использования Anthropic"
+msgstr "``CTK_ANTHROPIC_API_KEY`` — for using Anthropic"
+
+#: ../../general/AI_Assistant_config.rst:88
+msgid ""
+"``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI "
+"Studio"
+msgstr ""
+"``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — for Yandex AI "
+"Studio"
+
+#: ../../general/AI_Assistant_config.rst:92
+msgid ""
+"Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку "
+"``SPRING_PROFILES_ACTIVE``."
+msgstr ""
+"For the ``ai-yandex-gpt-oss`` profile, also add it to the "
+"``SPRING_PROFILES_ACTIVE`` line."
+
+#: ../../general/AI_Assistant_config.rst:94
+msgid ""
+"Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите "
+"``application-launcher.yml``."
+msgstr ""
+"**Right-click** on the same settings gear and select "
+"``application-launcher.yml``."
+
+#: ../../general/AI_Assistant_config.rst:95
 msgid ""
 "Вставьте содержимое нужного профиля. Например, для конфигурации ``ai-"
 "default``:"
@@ -273,11 +301,27 @@ msgstr ""
 "Paste the contents of the required profile. For example, for the ``ai-"
 "default`` configuration:"
 
-#: ../../general/AI_Assistant_config.rst:114
+#: ../../general/AI_Assistant_config.rst:124
+msgid ""
+"Вместо ``claude-sonnet-4-6`` можно указать ``claude-opus-4-6`` для более "
+"высокого качества генерации BPMN."
+msgstr ""
+"Instead of ``claude-sonnet-4-6``, you can specify ``claude-opus-4-6`` for "
+"higher BPMN generation quality."
+
+#: ../../general/AI_Assistant_config.rst:126
 msgid "для профиля ``ai-yandex-gpt-oss``:"
 msgstr "for the ``ai-yandex-gpt-oss`` profile:"
 
-#: ../../general/AI_Assistant_config.rst:137
+#: ../../general/AI_Assistant_config.rst:147
+msgid ""
+"Если для доступа к AI API требуется прокси-сервер, добавьте блок "
+"``proxy`` в конфигурацию:"
+msgstr ""
+"If a proxy server is required to access the AI API, add the ``proxy`` "
+"block to the configuration:"
+
+#: ../../general/AI_Assistant_config.rst:161
 #, python-brace-format
 msgid ""
 "Замените переменные ``${CTK_YANDEX_AI_API_KEY}``, "
@@ -288,23 +332,23 @@ msgstr ""
 "``${CTK_YANDEX_AI_FOLDER_ID}``, ``${CTK_ANTHROPIC_API_KEY}`` with real "
 "values."
 
-#: ../../general/AI_Assistant_config.rst:138
+#: ../../general/AI_Assistant_config.rst:162
 msgid "Сохраните настройку, микросервис перезапустится автоматически."
 msgstr "Save the setting — the microservice will restart automatically."
 
-#: ../../general/AI_Assistant_config.rst:142
+#: ../../general/AI_Assistant_config.rst:166
 msgid ""
 "Профиль ``ai-default`` — рекомендуемый минимум для стабильной работы "
 "ассистента. Комбинация Yandex Cloud для основных задач и Anthropic Claude"
 " для генерации BPMN обеспечивает необходимое качество, так как для "
 "генерации BPMN-процессов требуется более интеллектуальная модель."
 msgstr ""
-"The ``ai-default`` profile is the recommended minimum for stable assistant"
-" operation. The combination of Yandex Cloud for general tasks and "
-"Anthropic Claude for BPMN generation provides the required quality, since"
-" BPMN process generation requires a more intelligent model."
+"The ``ai-default`` profile is the recommended minimum for stable "
+"assistant operation. The combination of Yandex Cloud for general tasks "
+"and Anthropic Claude for BPMN generation provides the required quality, "
+"since BPMN process generation requires a more intelligent model."
 
-#: ../../general/AI_Assistant_config.rst:146
+#: ../../general/AI_Assistant_config.rst:170
 msgid ""
 "При использовании Anthropic в качестве провайдера (например, для "
 "генерации BPMN в профиле ``ai-default``) необходимо обеспечить сетевой "
@@ -316,11 +360,11 @@ msgstr ""
 "available. Configure an HTTP proxy (see the `Proxy Configuration`_ "
 "section) or use a VPN."
 
-#: ../../general/AI_Assistant_config.rst:149
+#: ../../general/AI_Assistant_config.rst:173
 msgid "Провайдеры LLM"
 msgstr "LLM Providers"
 
-#: ../../general/AI_Assistant_config.rst:151
+#: ../../general/AI_Assistant_config.rst:175
 msgid ""
 "Citeck AI Assistant поддерживает работу с различными провайдерами больших"
 " языковых моделей (LLM)."
@@ -328,31 +372,31 @@ msgstr ""
 "Citeck AI Assistant supports working with various Large Language Model "
 "(LLM) providers."
 
-#: ../../general/AI_Assistant_config.rst:154
+#: ../../general/AI_Assistant_config.rst:178
 msgid "Поддерживаемые провайдеры"
 msgstr "Supported Providers"
 
-#: ../../general/AI_Assistant_config.rst:156
+#: ../../general/AI_Assistant_config.rst:180
 msgid "**openai** - GPT-модели (gpt-5.1 и др.)"
 msgstr "**openai** - GPT models (gpt-5.1, etc.)"
 
-#: ../../general/AI_Assistant_config.rst:157
+#: ../../general/AI_Assistant_config.rst:181
 msgid "**anthropic** - Claude модели (claude-opus-4-5 и др.)"
 msgstr "**anthropic** - Claude models (claude-opus-4-5, etc.)"
 
-#: ../../general/AI_Assistant_config.rst:158
+#: ../../general/AI_Assistant_config.rst:182
 msgid "**deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)"
 msgstr "**deepseek** - DeepSeek models (deepseek-chat, deepseek-coder)"
 
-#: ../../general/AI_Assistant_config.rst:159
+#: ../../general/AI_Assistant_config.rst:183
 msgid "**ollama** - локальные модели (granite3.3, llama3, mistral)"
 msgstr "**ollama** - local models (granite3.3, llama3, mistral)"
 
-#: ../../general/AI_Assistant_config.rst:162
+#: ../../general/AI_Assistant_config.rst:186
 msgid "Выбор провайдера по умолчанию"
 msgstr "Selecting the Default Provider"
 
-#: ../../general/AI_Assistant_config.rst:164
+#: ../../general/AI_Assistant_config.rst:188
 msgid ""
 "Провайдер по умолчанию указывается в ``citeck.ai.default.provider``. Этот"
 " провайдер используется для всех ассистентов, если не указан специфичный:"
@@ -360,7 +404,7 @@ msgstr ""
 "The default provider is specified in ``citeck.ai.default.provider``. This"
 " provider is used for all assistants unless a specific one is specified:"
 
-#: ../../general/AI_Assistant_config.rst:175
+#: ../../general/AI_Assistant_config.rst:199
 msgid ""
 "Для каждого типа ассистента можно указать своего провайдера через "
 "параметр ``provider``. Если не указан - используется "
@@ -370,11 +414,11 @@ msgstr ""
 "``provider`` parameter. If not specified, ``citeck.ai.default.provider`` "
 "is used."
 
-#: ../../general/AI_Assistant_config.rst:178
+#: ../../general/AI_Assistant_config.rst:202
 msgid "Базовая конфигурация модели"
 msgstr "Base Model Configuration"
 
-#: ../../general/AI_Assistant_config.rst:180
+#: ../../general/AI_Assistant_config.rst:204
 msgid ""
 "Для работы системы необходимо указать базовую модель в "
 "``citeck.ai.base.model``. Эта модель используется по умолчанию для всех "
@@ -384,11 +428,11 @@ msgstr ""
 "``citeck.ai.base.model``. This model is used by default for all "
 "assistants unless a specific model is specified:"
 
-#: ../../general/AI_Assistant_config.rst:190
+#: ../../general/AI_Assistant_config.rst:214
 msgid "Настройка моделей для разных ассистентов"
 msgstr "Configuring Models for Different Assistants"
 
-#: ../../general/AI_Assistant_config.rst:192
+#: ../../general/AI_Assistant_config.rst:216
 msgid ""
 "В рамках выбранного провайдера каждый тип ассистента может использовать "
 "свою модель и дополнительные параметры:"
@@ -396,11 +440,11 @@ msgstr ""
 "Within the selected provider, each assistant type can use its own model "
 "and additional parameters:"
 
-#: ../../general/AI_Assistant_config.rst:234
+#: ../../general/AI_Assistant_config.rst:258
 msgid "Параметры ассистентов"
 msgstr "Assistant Parameters"
 
-#: ../../general/AI_Assistant_config.rst:236
+#: ../../general/AI_Assistant_config.rst:260
 msgid ""
 "``provider`` - провайдер для данного ассистента (если не указан - "
 "используется ``citeck.ai.default.provider``)"
@@ -408,7 +452,7 @@ msgstr ""
 "``provider`` - provider for this assistant (if not specified, "
 "``citeck.ai.default.provider`` is used)"
 
-#: ../../general/AI_Assistant_config.rst:237
+#: ../../general/AI_Assistant_config.rst:261
 msgid ""
 "``model`` - модель для использования (должна быть доступна у выбранного "
 "провайдера)"
@@ -416,11 +460,11 @@ msgstr ""
 "``model`` - the model to use (must be available with the selected "
 "provider)"
 
-#: ../../general/AI_Assistant_config.rst:238
+#: ../../general/AI_Assistant_config.rst:262
 msgid "``temperature`` - температура генерации (0.0-1.0)"
 msgstr "``temperature`` - generation temperature (0.0–1.0)"
 
-#: ../../general/AI_Assistant_config.rst:239
+#: ../../general/AI_Assistant_config.rst:263
 msgid ""
 "``reasoning-effort`` - уровень рассуждений: ``none``, ``low``, "
 "``medium``, ``high``"
@@ -428,11 +472,11 @@ msgstr ""
 "``reasoning-effort`` - reasoning level: ``none``, ``low``, ``medium``, "
 "``high``"
 
-#: ../../general/AI_Assistant_config.rst:240
+#: ../../general/AI_Assistant_config.rst:264
 msgid "``streaming`` - включить потоковый вывод"
 msgstr "``streaming`` - enable streaming output"
 
-#: ../../general/AI_Assistant_config.rst:241
+#: ../../general/AI_Assistant_config.rst:265
 msgid ""
 "``use-native-structured-output`` - использовать нативный structured "
 "output провайдера"
@@ -440,7 +484,7 @@ msgstr ""
 "``use-native-structured-output`` - use the provider's native structured "
 "output"
 
-#: ../../general/AI_Assistant_config.rst:242
+#: ../../general/AI_Assistant_config.rst:266
 msgid ""
 "``enable-bpmn-generation`` - включить генерацию BPMN процессов (только "
 "для ``business-app-generation``)"
@@ -448,71 +492,71 @@ msgstr ""
 "``enable-bpmn-generation`` - enable BPMN process generation (only for "
 "``business-app-generation``)"
 
-#: ../../general/AI_Assistant_config.rst:245
+#: ../../general/AI_Assistant_config.rst:269
 msgid "Пример использования разных провайдеров"
 msgstr "Example of Using Different Providers"
 
-#: ../../general/AI_Assistant_config.rst:266
+#: ../../general/AI_Assistant_config.rst:290
 msgid "Все указанные модели должны быть доступны в рамках выбранного провайдера."
 msgstr "All specified models must be available within the selected provider."
 
-#: ../../general/AI_Assistant_config.rst:269
+#: ../../general/AI_Assistant_config.rst:293
 msgid "Настройка Structured Output"
 msgstr "Structured Output Configuration"
 
-#: ../../general/AI_Assistant_config.rst:271
+#: ../../general/AI_Assistant_config.rst:295
 msgid "Конфигурация retry-механизма для структурированного вывода:"
 msgstr "Retry mechanism configuration for structured output:"
 
-#: ../../general/AI_Assistant_config.rst:285
+#: ../../general/AI_Assistant_config.rst:309
 msgid "Примеры конфигурации основных провайдеров"
 msgstr "Configuration Examples for Main Providers"
 
-#: ../../general/AI_Assistant_config.rst:288
+#: ../../general/AI_Assistant_config.rst:312
 msgid "OpenAI"
 msgstr "OpenAI"
 
-#: ../../general/AI_Assistant_config.rst:311
+#: ../../general/AI_Assistant_config.rst:335
 msgid "Ollama (локальные модели)"
 msgstr "Ollama (local models)"
 
-#: ../../general/AI_Assistant_config.rst:326
+#: ../../general/AI_Assistant_config.rst:350
 msgid "DeepSeek"
 msgstr "DeepSeek"
 
-#: ../../general/AI_Assistant_config.rst:346
+#: ../../general/AI_Assistant_config.rst:370
 msgid "Yandex Cloud (через OpenAI-совместимый API)"
 msgstr "Yandex Cloud (via OpenAI-compatible API)"
 
-#: ../../general/AI_Assistant_config.rst:350
+#: ../../general/AI_Assistant_config.rst:374
 msgid ""
 "Для Yandex Cloud рекомендуется использовать готовые профили **``ai-"
 "default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ "
 "выше. Ниже приведена ручная конфигурация."
 msgstr ""
-"For Yandex Cloud it is recommended to use the ready-made profiles "
-"**``ai-default``** or **``ai-yandex-gpt-oss``** — see the `Spring "
-"Profiles`_ section above. Manual configuration is shown below."
+"For Yandex Cloud it is recommended to use the ready-made profiles **``ai-"
+"default``** or **``ai-yandex-gpt-oss``** — see the `Spring Profiles`_ "
+"section above. Manual configuration is shown below."
 
-#: ../../general/AI_Assistant_config.rst:370
+#: ../../general/AI_Assistant_config.rst:394
 #, python-brace-format
 msgid "Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud"
 msgstr "Replace ``{folder_id}`` with the real Yandex Cloud folder identifier"
 
-#: ../../general/AI_Assistant_config.rst:371
+#: ../../general/AI_Assistant_config.rst:395
 msgid "Поддержка Yandex Cloud через OpenAI-совместимый API является частичной"
 msgstr "Yandex Cloud support via the OpenAI-compatible API is partial"
 
-#: ../../general/AI_Assistant_config.rst:372
+#: ../../general/AI_Assistant_config.rst:396
 #, python-brace-format
 msgid "Формат модели: ``gpt://{folder_id}/model-name/latest``"
 msgstr "Model format: ``gpt://{folder_id}/model-name/latest``"
 
-#: ../../general/AI_Assistant_config.rst:373
+#: ../../general/AI_Assistant_config.rst:397
 msgid "Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud"
 msgstr "Available models: ``gpt-oss-120b``, and other Yandex Cloud models"
 
-#: ../../general/AI_Assistant_config.rst:374
+#: ../../general/AI_Assistant_config.rst:398
 msgid ""
 "Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в "
 "формате Yandex Cloud"
@@ -520,11 +564,11 @@ msgstr ""
 "In all ``citeck.ai.*.model`` settings, the model must be specified in "
 "Yandex Cloud format"
 
-#: ../../general/AI_Assistant_config.rst:377
+#: ../../general/AI_Assistant_config.rst:401
 msgid "Настройка прокси"
 msgstr "Proxy Configuration"
 
-#: ../../general/AI_Assistant_config.rst:379
+#: ../../general/AI_Assistant_config.rst:403
 msgid ""
 "Citeck AI Assistant поддерживает работу через прокси-сервер для доступа к"
 " внешним AI-сервисам."
@@ -532,23 +576,23 @@ msgstr ""
 "Citeck AI Assistant supports working through a proxy server to access "
 "external AI services."
 
-#: ../../general/AI_Assistant_config.rst:382
+#: ../../general/AI_Assistant_config.rst:406
 msgid "Поддерживаемые протоколы прокси"
 msgstr "Supported Proxy Protocols"
 
-#: ../../general/AI_Assistant_config.rst:384
+#: ../../general/AI_Assistant_config.rst:408
 msgid "**HTTP** - стандартный HTTP прокси"
 msgstr "**HTTP** - standard HTTP proxy"
 
-#: ../../general/AI_Assistant_config.rst:385
+#: ../../general/AI_Assistant_config.rst:409
 msgid "**HTTPS** - защищенный HTTPS прокси"
 msgstr "**HTTPS** - secure HTTPS proxy"
 
-#: ../../general/AI_Assistant_config.rst:388
+#: ../../general/AI_Assistant_config.rst:412
 msgid "Переменные окружения"
 msgstr "Environment Variables"
 
-#: ../../general/AI_Assistant_config.rst:406
+#: ../../general/AI_Assistant_config.rst:430
 msgid "Пример конфигурации в application.yml"
 msgstr "Configuration Example in application.yml"
 
@@ -591,3 +635,7 @@ msgstr "Configuration Example in application.yml"
 
 #~ msgid "**zhipuai** - модели ZhipuAI (glm-4, glm-3-turbo)"
 #~ msgstr "**zhipuai** - ZhipuAI models (glm-4, glm-3-turbo)"
+
+#~ msgid "Отредактируйте файл ``application-launcher.yml``."
+#~ msgstr "Edit the ``application-launcher.yml`` file."
+
