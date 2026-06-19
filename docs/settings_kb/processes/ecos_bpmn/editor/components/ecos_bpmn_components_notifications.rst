@@ -28,7 +28,7 @@
 
         -
                .. image:: _static/notifications/49.png
-                :width: 320
+                :width: 350
                 :align: center
 
       * - | Можно выбрать :ref:`шаблон уведомления <notification_templates>` или напрямую указать **Заголовок** и **Тело** сообщения.
@@ -41,7 +41,7 @@
           |
 
                .. image:: _static/notifications/51.png
-                :width: 280
+                :width: 350
                 :align: center
 
       * - | **Отправка писем-встреч в календарь пользователя**
@@ -83,24 +83,29 @@
         - |
 
                .. image:: _static/notifications/calc_event_01.png
-                :width: 320
+                :width: 350
                 :align: center
 
           |
 
                .. image:: _static/notifications/calc_event_02.png
-                :width: 320
+                :width: 350
                 :align: center
 
           |
 
                .. image:: _static/notifications/calc_event_03.png
-                :width: 320
+                :width: 350
                 :align: center
 
-      * - | **Получатели** могут быть выбраны из:
-          | - **Роли** — роли, заполненные в :ref:`типе данных <data_types_main>`.
-          | - **Выражение** — имя, recordRef или емейл получателя. Поддерживаются expression для получения данных из переменных или сервисов. Expression может вернуть множественное значение — строки разделенные запятой: ``ivan@mail.com,user2,user3``.
+      * - | **Получатели** — список получателей уведомления. Получатели могут быть указаны через роли или выражения.  
+          |
+          | **Стратегия отправки получателям**
+          | - **Одно письмо всем получателям** — все адреса в поле «Кому». Значение по умолчанию.
+          | - **Отдельное письмо каждому получателю** — каждому адресу в поле «Кому»приходит персональное письмо, получатели не видят друг друга. Применяется только при пустых «Копия» и «Скрытая копия»
+            
+          | **Роли** — роли, заполненные в :ref:`типе данных <data_types_main>`.
+          | **Выражение** — имя, recordRef или емейл получателя. Поддерживаются expression для получения данных из переменных или сервисов. Expression может вернуть множественное значение — строки разделенные запятой: ``ivan@mail.com,user2,user3``.
           |   Например:
           |   ``ivan.petrov``
           |   ``GROUP_company_accountant``
@@ -111,14 +116,20 @@
 
         - |
 
+              .. image:: _static/notifications/send_task_strategy.png
+                :width: 350
+                :align: center
+          
+          |
+
               .. image:: _static/notifications/send_task_recipient_roles.png
-                :width: 320
+                :width: 350
                 :align: center
 
           |
 
               .. image:: _static/notifications/send_task_recipient_expression.png
-                :width: 320
+                :width: 350
                 :align: center
 
       * - | **Исходящий адрес** — исходящий адрес уведомления. Может быть указан напрямую или через expression.
@@ -141,7 +152,7 @@
 
         -
                .. image:: _static/notifications/send_task_settings_panel.png
-                :width: 380
+                :width: 350
                 :align: center
 
 .. important::
