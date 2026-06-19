@@ -18,6 +18,7 @@
     :maxdepth: 2
 
     Camel_DSL/overview
+    Camel_DSL/visual_editor
     Camel_DSL/BD_selection
     Camel_DSL/actions
     Camel_DSL/context_instance
