@@ -316,10 +316,7 @@ daemon.yml
 
 .. note::
 
-    Интерактивный CLI-доступ к этим настройкам и подробное описание флагов
-    отдельных подкоманд (``setup hostname``, ``setup email``, ``setup s3``,
-    ``setup admin-password`` и т. д.) описаны в :ref:`server_commands`,
-    раздел «setup».
+    Интерактивный CLI-доступ к этим настройкам и подробное описание флагов отдельных подкоманд (``setup hostname``, ``setup email``, ``setup s3``, ``setup admin-password`` и т. д.) описаны в :ref:`server_commands`, раздел «setup».
 
 **Hostname** (``citeck setup hostname``)
 
