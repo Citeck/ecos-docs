@@ -140,8 +140,10 @@ ColoredFormatter / Цвет
 - Использование идентификатора для сопоставления цветов и локализованного значения для отображения.
 - Возможность отображения цветного индикатора в качестве указателя или фона.
 - Если в ``showPointer`` установлено значение **false**, цвет фона отображается в виде закруглённого овала.
-- Поддержка новых и старых форматов журналов.
 
+.. image:: _static/formatter/color_formatter_0.png
+   :width: 500
+   :align: center
 
 Параметры конфигурации
 """"""""""""""""""""""""
@@ -149,23 +151,25 @@ ColoredFormatter / Цвет
 .. list-table::
    :widths: 5 5 5 10
    :align: center
+   :class: tight-table
 
    * - Параметр
      - Тип
      - По умолчанию
      - Описание
-   * - **color**
+   * - **colors**
      - Object
      - {}
-     - Сопоставление значений объектов с цветами.
+     - Сопоставление значений объектов с цветами. Карта значение → { backgroundColor (цвет фона), color (цвет шрифта) }. Имеет приоритет над color для каждого значения. 
+
    * - **showPointer**
      - Boolean
      - false
-     - Показывать ли цветной указатель. Если **false**, показывает закруглённый овальный фон.
+     - Показывать ли цветной указатель. Если **false**, показывает овальный фон со скруглением.
    * - **defaultColor**
      - String
      - ``'#FFFFFF'``
-     - Цвет по умолчанию для значений, не найденных в **color**. Может быть HEX или именованным цветом.
+     - Цвет по умолчанию для значений, не найденных в ``color``. Может быть HEX или именованным цветом.
    * - **fn**
      - String/Function
      -
@@ -183,27 +187,44 @@ ColoredFormatter / Цвет
 
 Для пользовательских цветов используйте формат HEX (например, «#FF0000»).
 
-Настройка условия отображения значения в определённом цвете в зависимости от значения данных в атрибуте
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Визуальное отображение
+***********************
 
-.. image:: _static/formatter/color_formatter_1.png
-   :width: 300
-   :align: center
+При ``showPointer: true`` — перед текстом отображается небольшой цветной кружок
+При ``showPointer: false`` — текст отображается с овальным цветным фоном со скруглением
 
-Функция должна вернуть строку с CSS-цветом (WebColor или HEX):
-
-.. code-block:: javascript
-
-  if (cell.disp.length > 2) return "red"
-
-или:
-
-.. code-block:: javascript
-
-  if (cell.disp.length > 2) return "#FF0000"
 
 Использование
 """"""""""""""""
+
+.. image:: _static/formatter/color_formatter_2.png
+   :width: 800
+   :align: center
+
+|
+
+
+.. list-table:: 
+      :widths: 50 50 50
+
+      * - | 
+
+            .. image:: _static/formatter/color_formatter_3.png
+              :width: 500
+              :align: center       
+
+        - |  
+
+            .. image:: _static/formatter/color_formatter_4.png
+                 :width: 500
+                 :align: center     
+
+        - | 
+
+             .. image:: _static/formatter/color_formatter_5.png
+                  :width: 500
+                  :align: center    
+				  
 
 **Базовое использование с предопределёнными цветами**
 
@@ -318,6 +339,28 @@ ColoredFormatter / Цвет
       config:
         fn: 'if (cell.value > 2) return "#e2e2e2"'
         defaultColor: '#FFFFFF'
+
+**Использование пользовательского цвета фона и текста**
+
+Чтобы задать одновременно цвет фона и цвет текста (шрифта) для каждого значения, используйте ключ ``colors``. Каждое значение сопоставляется с объектом, содержащим ``backgroundColor`` и ``color``. Эти настройки имеют
+приоритет над устаревшей картой ``color`` для того же значения (устаревший ``color`` сохраняется как запасной вариант для значений, отсутствующих в ``colors``).
+
+.. code-block:: yaml
+
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    editor:
+      type: select
+    formatter:
+      type: colored
+      config:
+        colors:
+          low: { backgroundColor: '#24A148', color: '#FFFFFF' }
+          medium: { backgroundColor: '#F1C21B', color: '#000000' }
+          high: { backgroundColor: '#DA1E28', color: '#FFFFFF' }
 
 
 DateFormatter / Дата
