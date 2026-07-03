@@ -60,3 +60,4 @@ Citeck Launcher: локальный режим
     launcher/secrets
     launcher/dump
     launcher/workspace
+    launcher/internal_network
