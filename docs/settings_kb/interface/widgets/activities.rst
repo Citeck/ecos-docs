@@ -47,13 +47,7 @@
 Как добавить
 ------------
 
-Нажмите **«Добавить активности»**, выберите вид активности из списка:
-
-.. image:: ../_static/widgets/activity/activity_04.png
-       :width: 600
-       :align: center
-
-Введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
+Нажмите **«+»**, выберите вид активности из списка и введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
 
 .. image:: ../_static/widgets/activity/activity_05.png
        :width: 600
@@ -221,13 +215,13 @@
               |
 
               .. image:: ../_static/widgets/activity/activity_19.png
-                     :width: 600
+                     :width: 700
                      :align: center
 
        - в карточке сделки в виджете **«Мои задачи»**:
 
               .. image:: ../_static/widgets/activity/activity_20.png
-                     :width: 600
+                     :width: 700
                      :align: center
 
 
@@ -284,10 +278,6 @@
 
 Комментарий
 ~~~~~~~~~~~~
-
-.. image:: ../_static/widgets/activity/activity_21.png
-       :width: 600
-       :align: center
 
 Введите комментарий. Нажмите **«Создать»**.
 
