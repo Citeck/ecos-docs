@@ -34,11 +34,11 @@ Citeck поддерживает несколько режимов предста
 
     journals/journals
     journals/new_journal 
-    journals/configuration
-    journals/journal_settings
-    journals/user_description     
-    journals/features
+    journals/user_description
     journals/content_types   
-    journals/views
+    journals/views    
+    journals/configuration
+    journals/journal_settings      
+    journals/features
 
     
