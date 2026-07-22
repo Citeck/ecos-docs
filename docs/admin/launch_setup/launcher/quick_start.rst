@@ -28,7 +28,7 @@
            :width: 300
            :align: center
 
-4. Запустите **citeck-launcher**:
+4. Запустите **Citeck Launcher**:
 
    .. image:: _static/01_1.png
        :width: 400
@@ -52,26 +52,39 @@
 
 .. note::    
 
-  При установке Enterprise версии введите пароль для скачивания закрытых образов:
+  При установке Enterprise версии для скачивания закрытых образов необходимо ввести учетные данные:
+  
+   .. list-table::
+       :widths: 50 50
+       :align: center
 
-  .. image:: _static/new_namespace_3.png
-      :width: 400
-      :align: center
+       * - | 
+
+             .. image:: _static/harbor_1.png
+                 :width: 350
+                 :align: center
+
+         - | 
+
+
+             .. image:: _static/harbor_2.png
+                 :width: 350
+                 :align: center
 
  
-6. Скачивание и разворачивание образов начнётся автоматически:
+1. Скачивание и разворачивание образов начнётся автоматически:
 
    .. image:: _static/pulling.png
        :width: 700
        :align: center
 
-7. Дождитесь статуса **Running** всех микросервисов и приложений, затем нажмите **Open In Browser**:
+2. Дождитесь статуса **Работает** всех микросервисов и приложений, затем нажмите **Открыть в браузере**:
 
    .. image:: _static/open.png
        :width: 700
        :align: center
 
-8. Войдите в систему:
+3. Войдите в систему:
 
    .. list-table::
        :widths: 50 50
@@ -91,7 +104,7 @@
                  :width: 350
                  :align: center
 
-9. По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства <ws_personal>`:
+4. По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства <ws_personal>`:
 
    .. image:: _static/page_04.png
        :width: 700
@@ -109,9 +122,22 @@
 
 В левом верхнем углу доступна кнопка для выбора рабочего пространства и создания нового:
 
-.. image:: _static/page_03.png
-    :width: 450
-    :align: center
+.. list-table::
+      :widths: 20 20
+      :align: center
+
+      * - |
+
+            .. image:: _static/page_03.png
+                  :width: 500
+                  :align: center
+
+        - |
+
+            .. image:: _static/page_03_1.png
+                  :width: 500
+                  :align: center
+
 
 .. note::
 
