@@ -154,8 +154,8 @@ Zookeeper
 
 Особенности:
 
-- **Source (Bitnami)** хранит и снапшоты, и transaction log в одном каталоге ``version-2/``.
-- **Target (official zookeeper)** разделяет: ``data/version-2/`` для снапшотов и служебных файлов (``acceptedEpoch``, ``currentEpoch``), ``datalog/version-2/`` для transaction log. Если их не разделить, target падает с ``SnapDirContentCheckException``.
+- **Source (Bitnami)** хранит и снэпшоты, и transaction log в одном каталоге ``version-2/``.
+- **Target (official zookeeper)** разделяет: ``data/version-2/`` для снэпшотов и служебных файлов (``acceptedEpoch``, ``currentEpoch``), ``datalog/version-2/`` для transaction log. Если их не разделить, target падает с ``SnapDirContentCheckException``.
 - Хранилище в launcher2 -- это bind-mount каталог на хосте (не named docker volume). Точный путь можно подтвердить через ``docker inspect citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``.
 
 Предусловия
