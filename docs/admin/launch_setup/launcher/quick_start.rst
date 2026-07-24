@@ -50,61 +50,60 @@
        :width: 600
        :align: center
 
-.. note::    
+.. dropdown:: Enterprise: ввод учётных данных Harbor
+   :color: secondary
 
-  При установке Enterprise версии для скачивания закрытых образов необходимо ввести учетные данные:
-  
-   .. list-table::
-       :widths: 50 50
-       :align: center
+   При установке Enterprise версии для скачивания закрытых образов необходимо ввести учетные данные:
 
-       * - | 
+   .. grid:: 2
+      :gutter: 2
 
-             .. image:: _static/harbor_1.png
-                 :width: 350
-                 :align: center
+      .. grid-item::
 
-         - | 
+         .. image:: _static/harbor_1.png
+            :width: 350
+            :align: center
 
+      .. grid-item::
 
-             .. image:: _static/harbor_2.png
-                 :width: 350
-                 :align: center
+         .. image:: _static/harbor_2.png
+            :width: 350
+            :align: center
 
- 
-1. Скачивание и разворачивание образов начнётся автоматически:
+6. Скачивание и разворачивание образов начнётся автоматически:
 
    .. image:: _static/pulling.png
        :width: 700
        :align: center
 
-2. Дождитесь статуса **Работает** всех микросервисов и приложений, затем нажмите **Открыть в браузере**:
+7. Дождитесь статуса **Работает** всех микросервисов и приложений, затем нажмите **Открыть в браузере**:
 
    .. image:: _static/open.png
        :width: 700
        :align: center
 
-3. Войдите в систему:
+8. Войдите в систему:
 
-   .. list-table::
-       :widths: 50 50
-       :align: center
+   .. grid:: 2
+       :gutter: 2
 
-       * - | Используйте учётные данные **admin / admin**:
-           |
+       .. grid-item::
 
-             .. image:: _static/page_01.png
-                 :width: 350
-                 :align: center
+          Используйте учётные данные **admin / admin**:
 
-         - | При первом развёртывании без демонстрационных данных
-           | Keycloak попросит сменить пароль:
+          .. image:: _static/page_01.png
+              :width: 350
+              :align: center
 
-             .. image:: _static/page_02.png
-                 :width: 350
-                 :align: center
+       .. grid-item::
 
-4. По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства <ws_personal>`:
+          При первом развёртывании без демонстрационных данных Keycloak попросит сменить пароль:
+
+          .. image:: _static/page_02.png
+              :width: 350
+              :align: center
+
+9. По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства <ws_personal>`:
 
    .. image:: _static/page_04.png
        :width: 700
@@ -122,21 +121,20 @@
 
 В левом верхнем углу доступна кнопка для выбора рабочего пространства и создания нового:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/page_03.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/page_03.png
+         :width: 500
+         :align: center
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/page_03_1.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/page_03_1.png
+         :width: 500
+         :align: center
 
 
 .. note::

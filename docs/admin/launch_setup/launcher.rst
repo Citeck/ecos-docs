@@ -34,25 +34,24 @@ Citeck Launcher: локальный режим
 
 Актуальный дистрибутив доступен на `странице релизов <https://github.com/Citeck/citeck-launcher/releases>`_.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/launcher/01.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/launcher/01.png
+         :width: 500
+         :align: center
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/launcher/02.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/launcher/02.png
+         :width: 500
+         :align: center
 
 **Концепция**
 
-Три термина, которые встречаются в CLI и в документации:
+Три термина, которые встречаются в интерфейсе и в документации:
 
 - **Namespace** (пространство имён) — изолированный экземпляр платформы: свои контейнеры, тома и данные. С Linux- или Kubernetes-неймспейсами не связан — это понятие лончера. На типичном сервере запущен ровно один namespace.
 - **Bundle** (бандл) — набор приложений и их версий, образующих релиз платформы, например Community или Enterprise.
@@ -62,8 +61,8 @@ Citeck Launcher: локальный режим
     :maxdepth: 3
 
     launcher/quick_start
-    launcher/update
     launcher/overview
+    launcher/update 
     launcher/namespace
     launcher/secrets
     launcher/dump

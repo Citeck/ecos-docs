@@ -17,22 +17,20 @@
 
 Нажмите кнопку сброса и подтвердите действие:
 
-.. list-table::
-    :widths: 50 50
-    :align: center
+.. grid:: 2
+    :gutter: 2
 
-    * - | 
+    .. grid-item::
 
-            .. image:: _static/secret_reset.png
-                 :width: 350
-                 :align: center
+        .. image:: _static/secret_reset.png
+            :width: 350
+            :align: center
 
-      - | 
+    .. grid-item::
 
-
-             .. image:: _static/secret_confirm.png
-                 :width: 350
-                 :align: center
+        .. image:: _static/secret_confirm.png
+            :width: 350
+            :align: center
 
 
 Затем задайте новый мастер-пароль:
