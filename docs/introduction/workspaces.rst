@@ -31,9 +31,15 @@
 
 **Возможности пользователя:**
 
-- может выбирать рабочее пространство из списка доступных:
+- может выбирать рабочее пространство, в котором уже состоит, так и из списка доступных:
 
  .. image:: _static/workspaces/01_button_select.png
+       :width: 700
+       :align: center
+
+|
+
+ .. image:: _static/workspaces/01_button_select_1.png
        :width: 700
        :align: center
 

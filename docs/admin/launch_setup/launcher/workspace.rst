@@ -42,22 +42,20 @@
 
 Введите токен в соответствующее поле и подтвердите:
 
-.. list-table::
-    :widths: 50 50
-    :align: center
+.. grid:: 2
+    :gutter: 2
 
-    * - | 
+    .. grid-item::
 
-            .. image:: _static/ws_4.png
-                 :width: 350
-                 :align: center
+        .. image:: _static/ws_4.png
+            :width: 350
+            :align: center
 
-      - | 
+    .. grid-item::
 
-
-             .. image:: _static/ws_4_1.png
-                 :width: 350
-                 :align: center
+        .. image:: _static/ws_4_1.png
+            :width: 350
+            :align: center
 
 
 Выбор из созданных
