@@ -43,6 +43,12 @@
 
 Для создания типа данных перейдите в рабочее пространство администратора:
 
+.. image:: _static/equipment_request/ws_00.png
+   :width: 800
+   :align: center
+
+|
+
 .. image:: _static/equipment_request/adm_ws.png
    :width: 800
    :align: center

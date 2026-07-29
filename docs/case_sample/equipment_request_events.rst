@@ -101,23 +101,19 @@
 - **Инициатор** — текущий пользователь
 - **Согласующий** — любой пользователь с указанным e-mail в профиле
 
-Если Citeck установлен с помощью :ref:`кроссплатформенного лончера<citeck_launcher>`, перейдите в **Mailhog** для просмотра тестовых писем:
+Если Citeck установлен с помощью :ref:`кроссплатформенного лончера<citeck_launcher>`, перейдите в **Mailpit** для просмотра тестовых писем:
 
-.. image:: _static/equipment_request_events/mailhog_01.png
+.. image:: _static/equipment_request_events/mailpit_01.png
    :width: 600
    :align: center
 
-**Mailhog** — инструмент для тестирования e-mail-рассылок, позволяющий просматривать письма без реальной отправки на почтовые серверы:
+**Mailpit** — инструмент для тестирования e-mail-рассылок, позволяющий просматривать письма без реальной отправки на почтовые серверы:
 
-.. image:: _static/equipment_request_events/mailhog_02.png
+.. image:: _static/equipment_request_events/mailpit_02.png
    :width: 600
    :align: center
 
 Откройте письмо и убедитесь, что уведомление доставлено:
-
-.. image:: _static/equipment_request_events/mailhog_03.png
-   :width: 600
-   :align: center
 
 Также проверить уведомление можно в рабочем пространстве администратора: в разделе **Конфигурация уведомлений** откройте пункт **Уведомления**.
 
