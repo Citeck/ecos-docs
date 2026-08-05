@@ -5,7 +5,7 @@ Horizontal line
 
 **Horizontal Line** - компонент для отображения разделителя блоков. В конструкторе форм располагается в блоке :guilabel:`Просмотр`.
 
- .. image:: _static/horizontal_line/horizontal_line_1.png
+.. image:: _static/horizontal_line/horizontal_line_1.png
        :width: 300
        :align: center
 
@@ -13,7 +13,7 @@ Horizontal line
 
 Так как формы в основном отображаются в модальных окнах, а модальные окна имеют отступ, было решено добавить опцию **Использовать отрицательные отступы** (включена по умолчанию), которая позволяет увеличить ширину разделителя до границ модального окна.
 
- .. image:: _static/horizontal_line/horizontal_line_2.png
+.. image:: _static/horizontal_line/horizontal_line_2.png
        :width: 500
        :align: center
 

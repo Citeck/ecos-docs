@@ -1,3 +1,5 @@
+.. _camel_dsl_processors:
+
 Процессоры
 --------------------
 
@@ -263,11 +265,13 @@ CopyJournalSettingsProcessor
 CreateEcosHistoryDocumentMirrorProcessor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Класс**
+Класс
+^^^^^^^^
 
 **ru.citeck.ecos.camel.processor.data.CreateEcosHistoryDocumentMirrorProcessor**
 
-**Вход/Выход**
+Вход/Выход
+^^^^^^^^^^^^^
 
 На вход принимается либо объекты конвертируемые в **DataValue**, либо список таких объектов.
 
@@ -277,7 +281,8 @@ CreateEcosHistoryDocumentMirrorProcessor
 
 Если на входе объект, конвертируемый в **DataValue**, то на выходе новый **DataValue** объект после обработки.
 
-**Описание**
+Описание
+^^^^^^^^^^
 
 Создает связь между двумя записями **DocumentRef** и **DocumentMirrorRef** в БД ecos-history чтобы при загрузке истории для записи **DocumentMirrorRef** так же подтягивалась история записи **DocumentRef**.
 
@@ -285,7 +290,8 @@ CreateEcosHistoryDocumentMirrorProcessor
 
 Процессор используется при миграции сущностей из одного хранилища в другое.
 
-**Свойства**
+Свойства
+^^^^^^^^^^
 
 .. list-table::
       :widths: 5 5 20
@@ -305,7 +311,8 @@ CreateEcosHistoryDocumentMirrorProcessor
         - String
         - см. хидеры → CreateEcosHistoryDocumentMirrorDocumentRefIdPrefix
 
-**Хидеры**
+Хидеры
+^^^^^^^^
 
 .. list-table::
       :widths: 5 5 10 10
@@ -355,7 +362,8 @@ CreateEcosHistoryDocumentMirrorProcessor
         - ""
         - Используется для формирования полного рефа в documentMirrorRef на базе значения documentRef с заменой sourceId на указанное здесь значение.
 
-**Пример Camel YAML DSL конфига**
+Пример Camel YAML DSL конфига
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 

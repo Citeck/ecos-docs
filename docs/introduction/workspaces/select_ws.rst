@@ -1,6 +1,9 @@
 Выбор рабочего пространства
 ============================
 
+.. contents::
+   :depth: 2
+
 В левом верхнем углу доступна кнопка для выбора рабочих пространств и создания нового:
 
  .. image:: _static/01_button_select_00.png
@@ -50,21 +53,20 @@
 
 .. _ws_actions:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/actions.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/actions.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/actions_1.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/actions_1.png
+         :width: 500
+         :align: left
 
 
 1. Пользователь **не является** участником публичного пространства — доступно действие **Присоединиться**.

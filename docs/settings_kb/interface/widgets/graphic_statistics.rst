@@ -214,18 +214,21 @@
 
 Для воронки доступны:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - | Выбор ответственного с функцией поиска:
+   .. grid-item::
 
-            .. image:: ../_static/widgets/chart_15.png
-                  :width: 280
-                  :align: center
+      Выбор ответственного с функцией поиска:
 
-        - | Выбор периода дат:
+      .. image:: ../_static/widgets/chart_15.png
+         :width: 280
+         :align: center
 
-            .. image:: ../_static/widgets/chart_16.png
-                  :width: 350
-                  :align: center
+   .. grid-item::
+
+      Выбор периода дат:
+
+      .. image:: ../_static/widgets/chart_16.png
+         :width: 350
+         :align: center

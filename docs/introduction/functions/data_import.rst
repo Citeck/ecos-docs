@@ -49,21 +49,20 @@
 
 После окончания обработки файла система выдаст сообщение о завершении процесса и статус **(Успех/Ошибка)**:
 
-.. list-table::
-    :widths: 20 20
-    :align: center
+.. grid:: 2
+   :gutter: 2
 
-    * - |
+   .. grid-item::
 
-            .. image:: _static/import/ex_10.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/import/ex_10.png
+         :width: 500
+         :align: left
 
-      - |
+   .. grid-item::
 
-            .. image:: _static/import/ex_09.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/import/ex_09.png
+         :width: 500
+         :align: left
 
 Загруженные данные в журнале — созданные карточки, которые можно открыть, внести изменения при необходимости и запустить бизнес-процесс:
 

@@ -57,27 +57,26 @@
 
 Поля для разных типов задач:
 
-.. list-table::
-      :widths: 10 10 10
-      :align: center
+.. grid:: 3
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: ../_static/widgets/gantt/task.png
-                  :width: 400
-                  :align: center
+      .. image:: ../_static/widgets/gantt/task.png
+         :width: 400
+         :align: center
 
-        - |
+   .. grid-item::
 
-            .. image:: ../_static/widgets/gantt/summary_task.png
-                  :width: 400
-                  :align: center
+      .. image:: ../_static/widgets/gantt/summary_task.png
+         :width: 400
+         :align: center
 
-        - |
+   .. grid-item::
 
-            .. image:: ../_static/widgets/gantt/milestone.png
-                  :width: 400
-                  :align: center
+      .. image:: ../_static/widgets/gantt/milestone.png
+         :width: 400
+         :align: center
 
 
 .. _gantt-task-management:

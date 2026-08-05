@@ -1,3 +1,5 @@
+.. _ecos_records_examples:
+
 Примеры запросов Citeck Records
 =================================
 

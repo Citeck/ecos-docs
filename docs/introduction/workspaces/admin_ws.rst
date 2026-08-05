@@ -3,7 +3,10 @@
 Рабочее пространство администратора
 ======================================
 
- .. image:: _static/08_admin_workspace.png
+.. contents::
+   :depth: 2
+
+.. image:: _static/08_admin_workspace.png
        :width: 700
        :align: center
 

@@ -46,23 +46,25 @@
        :width: 700
        :align: center
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/corp_portal/corp_01.png
-                  :width: 700
-                  :align: center
+      .. image:: _static/corp_portal/corp_01.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/corp_portal/corp_02.png
-                  :width: 700
-                  :align: center
+      .. image:: _static/corp_portal/corp_02.png
+         :width: 500
+         :align: left
 
-В подразделе **Новости** информация представлена в виде списка превью новостей:
+Новости
+~~~~~~~~
+
+В подразделе информация представлена в виде списка превью новостей:
 
 .. image:: _static/corp_portal/corp_03.png
        :width: 700
@@ -76,7 +78,10 @@
 
 .. _wiki_corp:
 
-В подразделе **База знаний** информация представлена в виде :ref:`иерархии<widget_knowledge_base>`. При выборе раздела справа открывается сама :ref:`публикация<widget_publication>`.
+База знаний
+~~~~~~~~~~~~
+
+В подразделе информация представлена в виде :ref:`иерархии<widget_knowledge_base>`. При выборе раздела справа открывается сама :ref:`публикация<widget_publication>`.
 
 .. image:: _static/corp_portal/corp_04.png
        :width: 700
@@ -90,17 +95,28 @@
 
 В разделе доступны наиболее востребованные корпоративные бизнес-процессы:
 
-- :ref:`Заявления на отпуск<ecos-vacation>` — создание и отслеживание заявлений на различные виды отпусков.
+.. grid:: 1
+   :gutter: 2
 
-   .. image:: _static/corp_portal/corp_05.png
-       :width: 700
-       :align: center
+   .. grid-item-card:: Заявления на отпуск
+      :link: ecos-vacation
+      :link-type: ref
 
-- :ref:`Заявки на пропуск<ecos-order-pass>` — оформление заявок на выдачу временных или постоянных пропусков для сотрудников и посетителей.
+      Создание и отслеживание заявлений на различные виды отпусков.
 
-   .. image:: _static/corp_portal/corp_06.png
-       :width: 700
-       :align: center
+      .. image:: _static/corp_portal/corp_05.png
+         :width: 700
+         :align: center
+
+   .. grid-item-card:: Заявки на пропуск
+      :link: ecos-order-pass
+      :link-type: ref
+
+      Оформление заявок на выдачу временных или постоянных пропусков для сотрудников и посетителей.
+
+      .. image:: _static/corp_portal/corp_06.png
+         :width: 700
+         :align: center
 
 Оргструктура
 --------------
@@ -142,21 +158,20 @@
        :width: 600
        :align: center
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/corp_portal/new_file_3.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/corp_portal/new_file_3.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/corp_portal/new_file_4.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/corp_portal/new_file_4.png
+         :width: 500
+         :align: left
 
 
 Подробно о :ref:`библиотеке документов<document_library>`.

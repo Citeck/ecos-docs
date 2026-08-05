@@ -14,6 +14,7 @@
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -40,6 +41,7 @@ install
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -87,6 +89,7 @@ start
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -154,6 +157,7 @@ stop
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -201,6 +205,7 @@ restart
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -237,6 +242,7 @@ status
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -306,6 +312,7 @@ logs
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -381,13 +388,20 @@ edit
 
 Редактирование конфигурации приложения. Команда работает в двух режимах:
 
-* **ApplicationDef** (по умолчанию) -- правит эффективное определение приложения
-  (образ, память, переменные окружения, порты и т. д.). Изменение сохраняется как
-  per-app патч-переопределение (по принципу ``kubectl edit``) и пересоздаёт контейнер.
-* **Смонтированный файл конфигурации** (``--file``) -- правит конкретный
-  конфигурационный файл, смонтированный в контейнер (например,
-  ``application-launcher.yml``). Изменение хранится как дельта поверх
-  сгенерированного содержимого и применяется через ``reload``.
+.. tab-set::
+
+    .. tab-item:: ApplicationDef
+
+        Режим по умолчанию. Правит эффективное определение приложения
+        (образ, память, переменные окружения, порты и т. д.). Изменение сохраняется
+        как per-app патч-переопределение (по принципу ``kubectl edit``) и
+        пересоздаёт контейнер.
+
+    .. tab-item:: Смонтированный файл конфигурации (--file)
+
+        Правит конкретный конфигурационный файл, смонтированный в контейнер
+        (например, ``application-launcher.yml``). Изменение хранится как дельта
+        поверх сгенерированного содержимого и применяется через ``reload``.
 
 .. code-block:: bash
 
@@ -398,6 +412,7 @@ edit
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -471,6 +486,7 @@ reload
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -513,6 +529,7 @@ update
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -543,6 +560,7 @@ upgrade
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -630,6 +648,7 @@ setup
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Настройка
       - Описание
@@ -735,6 +754,7 @@ setup history
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Значение
       - Что означает
@@ -873,6 +893,7 @@ health
 .. list-table::
     :widths: 15 85
     :header-rows: 1
+    :class: tight-table
 
     * - Код
       - Значение
@@ -915,6 +936,7 @@ diagnose
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -959,6 +981,7 @@ dump-system-info
 .. list-table::
     :widths: 20 80
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -981,6 +1004,7 @@ clean
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1018,6 +1042,7 @@ snapshot
 .. list-table::
     :widths: 20 80
     :header-rows: 1
+    :class: tight-table
 
     * - Подкоманда
       - Описание
@@ -1035,6 +1060,7 @@ snapshot
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1092,6 +1118,7 @@ uninstall
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1139,6 +1166,7 @@ version
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1187,6 +1215,7 @@ config
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Подкоманда
       - Описание

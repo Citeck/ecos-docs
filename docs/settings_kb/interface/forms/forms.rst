@@ -21,7 +21,9 @@
        :width: 700
        :align: center
 
-По умолчанию в журнале не отображаются системные формы.
+.. note::
+
+   По умолчанию в журнале не отображаются системные формы.
 
 Для отображения **ТОЛЬКО** системных форм перейдите в настройки таблицы, выставите **Системный тип - Да**:
 
@@ -34,157 +36,160 @@
 
 Форму можно создать или загрузить уже созданный в систему.
 
-Создание
-~~~~~~~~~
+.. tab-set::
 
-Для создания формы необходимо нажать **+ - Создать форму**:
+   .. tab-item:: Создание
 
-.. image:: _static/form_new.png
-       :width: 400
-       :align: center
+      Для создания формы необходимо нажать **+ - Создать форму**:
 
-Откроется форма создания:
+      .. image:: _static/form_new.png
+             :width: 400
+             :align: center
 
-.. image:: _static/form_form_new.png
-       :width: 600
-       :align: center
+      Откроется форма создания:
 
-Пордробно см. ниже.
+      .. image:: _static/form_form_new.png
+             :width: 600
+             :align: center
 
-Загрузка
-~~~~~~~~~
+      Подробно см. ниже.
 
-Для загрузки созданного журнала необходимо нажать **+ - Форма**:
+   .. tab-item:: Загрузка
 
-.. image:: _static/form_new_1.png
-       :width: 400
-       :align: center
+      Для загрузки созданного журнала необходимо нажать **+ - Форма**:
 
-Файл формата .json
+      .. image:: _static/form_new_1.png
+             :width: 400
+             :align: center
+
+      Файл формата .json
 
 Пример описания формы
 ----------------------
 
-.. code-block::
+.. dropdown:: Пример JSON
+   :color: secondary
 
-  {
-  "id": "vacation-request",
-  "formKey": "",
-  "title": {
-    "ru": "Заявление на отпуск"
-  },
-  "description": {},
-  "customModule": "",
-  "typeRef": "",
-  "width": "m",
-  "system": false,
-  "i18n": {},
-  "definition": {
-    "components": [
-      {
-        "type": "datetime",
-        "input": true,
-        "enableTime": false,
-        "key": "from",
-        "label": {
-          "ru": "Начинается с"
-        },
-        "suffix": true,
-        "format": "yyyy-MM-dd"
-      },
-      {
-        "type": "datetime",
-        "input": true,
-        "enableTime": false,
-        "key": "to",
-        "label": {
-          "ru": "Заканчивается"
-        },
-        "suffix": true,
-        "format": "yyyy-MM-dd"
-      },
-      {
-        "label": {
-          "ru": "Инициатор"
-        },
-        "key": "initiator",
-        "allowedAuthorityType": "USER",
-        "currentUserByDefault": true,
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "type": "selectOrgstruct",
-        "input": true,
-        "defaultValue": ""
-      },
-      {
-        "type": "columns",
-        "key": "buttons-columns",
-        "columns": [
-          {
-            "md": 3,
-            "type": "column",
-            "input": false,
-            "index": 0,
-            "components": [],
-            "key": "column"
-          },
-          {
-            "md": 3,
-            "type": "column",
-            "input": false,
-            "index": 1,
-            "key": "column",
-            "components": []
-          },
-          {
-            "md": 3,
-            "type": "column",
-            "input": false,
-            "index": 2,
-            "components": [
-              {
-                "type": "button",
-                "key": "cancel",
-                "label": {
-                  "ru": "Отменить",
-                  "en": "Cancel"
-                },
-                "action": "event",
-                "event": "cancel",
-                "block": true,
-                "input": true
-              }
-            ],
-            "key": "column"
-          },
-          {
-            "md": 3,
-            "type": "column",
-            "input": false,
-            "index": 3,
-            "components": [
-              {
-                "type": "button",
-                "theme": "primary",
-                "key": "submit",
-                "label": {
-                  "ru": "Сохранить",
-                  "en": "Save"
-                },
-                "block": true,
-                "input": true
-              }
-            ],
-            "key": "column"
-          }
-        ],
-        "input": false
-      }
-    ],
-    "formId": "vacation-request"
-  },
-  "attributes": {}
- } 
+   .. code-block::
+
+     {
+     "id": "vacation-request",
+     "formKey": "",
+     "title": {
+       "ru": "Заявление на отпуск"
+     },
+     "description": {},
+     "customModule": "",
+     "typeRef": "",
+     "width": "m",
+     "system": false,
+     "i18n": {},
+     "definition": {
+       "components": [
+         {
+           "type": "datetime",
+           "input": true,
+           "enableTime": false,
+           "key": "from",
+           "label": {
+             "ru": "Начинается с"
+           },
+           "suffix": true,
+           "format": "yyyy-MM-dd"
+         },
+         {
+           "type": "datetime",
+           "input": true,
+           "enableTime": false,
+           "key": "to",
+           "label": {
+             "ru": "Заканчивается"
+           },
+           "suffix": true,
+           "format": "yyyy-MM-dd"
+         },
+         {
+           "label": {
+             "ru": "Инициатор"
+           },
+           "key": "initiator",
+           "allowedAuthorityType": "USER",
+           "currentUserByDefault": true,
+           "refreshOn": [],
+           "optionalWhenDisabled": false,
+           "type": "selectOrgstruct",
+           "input": true,
+           "defaultValue": ""
+         },
+         {
+           "type": "columns",
+           "key": "buttons-columns",
+           "columns": [
+             {
+               "md": 3,
+               "type": "column",
+               "input": false,
+               "index": 0,
+               "components": [],
+               "key": "column"
+             },
+             {
+               "md": 3,
+               "type": "column",
+               "input": false,
+               "index": 1,
+               "key": "column",
+               "components": []
+             },
+             {
+               "md": 3,
+               "type": "column",
+               "input": false,
+               "index": 2,
+               "components": [
+                 {
+                   "type": "button",
+                   "key": "cancel",
+                   "label": {
+                     "ru": "Отменить",
+                     "en": "Cancel"
+                   },
+                   "action": "event",
+                   "event": "cancel",
+                   "block": true,
+                   "input": true
+                 }
+               ],
+               "key": "column"
+             },
+             {
+               "md": 3,
+               "type": "column",
+               "input": false,
+               "index": 3,
+               "components": [
+                 {
+                   "type": "button",
+                   "theme": "primary",
+                   "key": "submit",
+                   "label": {
+                     "ru": "Сохранить",
+                     "en": "Save"
+                   },
+                   "block": true,
+                   "input": true
+                 }
+               ],
+               "key": "column"
+             }
+           ],
+           "input": false
+         }
+       ],
+       "formId": "vacation-request"
+     },
+     "attributes": {}
+    }
 
 Доступные действия с записью
 -----------------------------
@@ -253,7 +258,7 @@
 Связь с типом данных
 ----------------------
 
-В типе данных предусмотрено поле ``formRef``, которое определяет связь типа с формой. В большинстве случаев этого поля достаточно, но если для одного типа требуется несколько форм (например, для отображения на дашборде), то в конгфигурации формы предусмотрено поле ``typeRef``.
+В типе данных предусмотрено поле ``formRef``, которое определяет связь типа с формой. В большинстве случаев этого поля достаточно, но если для одного типа требуется несколько форм (например, для отображения на дашборде), то в конфигурации формы предусмотрено поле ``typeRef``.
 
 Связь без типа данных
 ----------------------
@@ -279,7 +284,7 @@
        :width: 700
        :align: center
 
-Так же добавлена возможность настраивать имя полей в одном месте - в типе данных, и не дублировать данную информацию в форме и в журнале.
+Также добавлена возможность настраивать имя полей в одном месте - в типе данных, и не дублировать данную информацию в форме и в журнале.
 
 **Название поля (Label)** загружается из типа. Если **Название поля (Label)** выставлен равный атрибуту или если атрибут не задан, то идет проверка на равенство  **Имя свойства (Property Name)** и **Название поля (Label)**.
 
@@ -291,16 +296,19 @@
 Использование нескольких форм для одного типа
 --------------------------------------------------
 
-1. Создать новые формы, привязать их к нужному типу:
+.. dropdown:: Как использовать несколько форм для одного типа
+   :color: secondary
 
-.. image:: _static/several_forms_1.png
-       :width: 600
-       :align: center
+   1. Создать новые формы, привязать их к нужному типу:
 
-2. :ref:`Добавить<dashboard_settings>` виджеты свойств.
+   .. image:: _static/several_forms_1.png
+          :width: 600
+          :align: center
 
-3. В настройке виджета через шестеренку присвоить ему нужную форму:
+   2. :ref:`Добавить<dashboard_settings>` виджеты свойств.
 
-.. image:: _static/several_forms_2.png
-       :width: 500
-       :align: center
+   3. В настройке виджета через шестеренку присвоить ему нужную форму:
+
+   .. image:: _static/several_forms_2.png
+          :width: 500
+          :align: center

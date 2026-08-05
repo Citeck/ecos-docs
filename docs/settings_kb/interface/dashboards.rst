@@ -19,39 +19,62 @@
 
 Существуют следующие виды дашборда:
 
-.. list-table::
-      :widths: 5 40
-      :header-rows: 1
-      :class: tight-table
+case-details
+~~~~~~~~~~~~~
 
-      * - Тип/Ключ
-        - Описание
-      * - **case-details**
-        - | Дашборд карточки кейса - информация по документу (задачи, свойства, действия, история и др.).
-          | Ключ dashboard'а берется из **RecordRef** в URL страницы и как правило он связан с типом/видом ECOS.
-          | Формирование ключа построено по следующему правилу:
-          | **type_uuid/kind_**
-          | **type_uuid**
-          | То есть для договоров это будет:
-          | 1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**
-          | 2. **contracts-cat-doctype-contract**
-          | Порядок - от более приоритетного к менее приоритетному
-          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id``
-      * - **site-details**
-        - | Страница раздела, которая позволяет отображать общие данные по разделу.
-          | Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
-          | Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**.
-      * - **user-dashboard**
-        - | Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
-          | Например: ``host/v2/dashboard``
-          | Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL)
-      * - **profile-details**
-        - | Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления <control_panel>`)
-          | Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
-      * - **ws-dashboard**
-        - | Страница :ref:`рабочего пространствах <workspaces>`. Например:
-          | - для персонального рабочего пространства: ``host/v2/dashboard?ws=user$username``
-          | - для неперсонального рабочего пространства: ``host/v2/dashboard?ws=workspacename``
+Дашборд карточки кейса - информация по документу (задачи, свойства, действия, история и др.).
+
+Ключ dashboard'а берется из **RecordRef** в URL страницы и как правило он связан с типом/видом ECOS.
+
+Формирование ключа построено по следующему правилу:
+
+- **type_uuid/kind_**
+- **type_uuid**
+
+То есть для договоров это будет:
+
+1. **contracts-cat-doctype-contract/contracts-cat-contract-rent**
+2. **contracts-cat-doctype-contract**
+
+Порядок - от более приоритетного к менее приоритетного.
+
+Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-id``
+
+site-details
+~~~~~~~~~~~~~
+
+Страница раздела, которая позволяет отображать общие данные по разделу.
+
+Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент написания ключ формируется по правилу **"site"** + **siteId**.
+
+Если идентификатор сайта **contracts**, то его приоритетный dashboardKey будет **site_contracts**.
+
+user-dashboard
+~~~~~~~~~~~~~~~
+
+Домашняя страница пользователя. Открывается если в URL не указано никакого **recordRef**.
+
+Например: ``host/v2/dashboard``
+
+Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно указание dashboardKey в URL).
+
+profile-details
+~~~~~~~~~~~~~~~~
+
+Страница профиля пользователя, которая доступна из меню действий с учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель управления <control_panel>`).
+
+Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``
+
+ws-dashboard
+~~~~~~~~~~~~~
+
+Страница :ref:`рабочего пространствах <workspaces>`. Например:
+
+- для персонального рабочего пространства: ``host/v2/dashboard?ws=user$username``
+- для неперсонального рабочего пространства: ``host/v2/dashboard?ws=workspacename``
+
+Параметр activeTab
+~~~~~~~~~~~~~~~~~~~
 
 В ссылках для **user-base-type-dashboard**, **user-dashboard** (самостоятельно и из оргструктуры) используется параметр **activeTab**,
 
@@ -59,23 +82,28 @@
 
 ``activeTab=N`` - активная вкладка дашборда. Вкладки нумеруются с 0, где **0** - первая вкладка.
 
-Алгоритм поиска dashboard следующий:
+Алгоритм поиска dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Смотрим наличие **recordRef** в URL:
+.. dropdown:: Показать шаги алгоритма
+   :color: secondary
 
- - Если **recordRef** отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя.
- - Если **recordRef** присутствует, то запрашиваем аттрибуты **_dashboardKey[]** (массив) и **_dashboardType** (одно значение).
+   1. Смотрим наличие **recordRef** в URL:
 
-2. Дальше перебираем каждый полученный **dashboardKey** и запрашиваем у сервера конфигурацию для ключа + типа,
-3. Если на сервере конфигурации не нашлось, то пробуем следующий **dashboardKey**,
-#. Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию по ключу **DEFAULT**.
+    - Если **recordRef** отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя.
+    - Если **recordRef** присутствует, то запрашиваем аттрибуты **_dashboardKey[]** (массив) и **_dashboardType** (одно значение).
 
-Отображение дашбордов для рабочих пространств:
+   2. Дальше перебираем каждый полученный **dashboardKey** и запрашиваем у сервера конфигурацию для ключа + типа,
+   3. Если на сервере конфигурации не нашлось, то пробуем следующий **dashboardKey**,
+   #. Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию по ключу **DEFAULT**.
 
-   - Для :ref:`рабочего пространствах <workspaces>` по умолчанию отображается дашборд **user-dashboard**.
-   - Для персонального рабочего пространства отображается дашборд **personal-ws-dashboard-default**.
-   - Для неперсонального рабочего пространства отображается дашборд **ws-dashboard-default**.
-   - Для :ref:`корпоративного портала <corp_portal>` отображается дашборд **corpport-workspace-dashboard**.
+Дашборды рабочих пространств
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Для :ref:`рабочего пространствах <workspaces>` по умолчанию отображается дашборд **user-dashboard**.
+- Для персонального рабочего пространства отображается дашборд **personal-ws-dashboard-default**.
+- Для неперсонального рабочего пространства отображается дашборд **ws-dashboard-default**.
+- Для :ref:`корпоративного портала <corp_portal>` отображается дашборд **corpport-workspace-dashboard**.
 
 Кэширование
 -----------
@@ -163,36 +191,34 @@
       :width: 600
       :align: center
 
-Только для типа дашборда Site-dashboard доступно следующее расположение (Количество колонок подстраивается под размер окна браузера):
+Только для типа дашборда :ref:`site-details <dashboard_types>` доступно следующее расположение (Количество колонок подстраивается под размер окна браузера):
 
 .. image:: _static/dashboards/dashboards_6.png
       :width: 100
       :align: center
 
-Для типа дашборда Case-details доступна поддержка мультиязычного имени для вкладок:
+Для типа дашборда :ref:`case-details <dashboard_types>` доступна поддержка мультиязычного имени для вкладок:
 
-.. list-table::
-      :widths: 30 30 30
-      :align: center
-      :class: tight-table
+.. grid:: 3
+   :gutter: 2
 
-      * -
+   .. grid-item::
 
-          .. image:: _static/dashboards/dashboards_lang_1.png
-                :width: 300
-                :align: center
+      .. image:: _static/dashboards/dashboards_lang_1.png
+         :width: 500
+         :align: left
 
-        -
+   .. grid-item::
 
-          .. image:: _static/dashboards/dashboards_lang_2.png
-                :width: 300
-                :align: center
+      .. image:: _static/dashboards/dashboards_lang_2.png
+         :width: 500
+         :align: left
 
-        -
+   .. grid-item::
 
-          .. image:: _static/dashboards/dashboards_lang_3.png
-                :width: 300
-                :align: center
+      .. image:: _static/dashboards/dashboards_lang_3.png
+         :width: 500
+         :align: left
 
 .. important::
 

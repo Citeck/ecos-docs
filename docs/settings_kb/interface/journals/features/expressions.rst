@@ -20,22 +20,20 @@
 
 Выражения настраиваются в дополнительных настройках колонки в поле **«Атрибут для загрузки»**.
 
-.. list-table::
-   :widths: 20 20
-   :class: tight-table
-   :align: center
+.. grid:: 2
+   :gutter: 2
 
-   * - |
+   .. grid-item::
 
-         .. image:: _static/expressions/01.png
-            :width: 400
-            :align: center
+      .. image:: _static/expressions/01.png
+         :width: 500
+         :align: left
 
-     - |
+   .. grid-item::
 
-         .. image:: _static/expressions/02.png
-            :width: 400
-            :align: center
+      .. image:: _static/expressions/02.png
+         :width: 500
+         :align: left
 
 Для настройки выражения нужно, чтобы в содержимом этого поля была или функция, или выражение, полностью обёрнутое в скобки.
 

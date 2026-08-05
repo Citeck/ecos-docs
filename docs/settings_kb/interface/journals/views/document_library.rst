@@ -6,7 +6,7 @@
 .. contents::
     :depth: 3
 
-**Document Library (Библиотека документов)** — раздел для хранения и организации файлов в виде дерева папок, похожий на проводник Windows. Здесь вы можете загружать документы, создавать папки, а также перемещать и удалять файлы.
+**Библиотека документов (Document Library)** — раздел для хранения и организации файлов в виде дерева папок, похожий на проводник Windows. Здесь вы можете загружать документы, создавать папки, а также перемещать и удалять файлы.
 
 Библиотека подключается к меню через специальный элемент **DocLib** и требует создания типа данных на основе **Файл библиотеки документов**. См. раздел :ref:`Создание библиотеки документов <new_document_library>`.
 
@@ -54,6 +54,7 @@
 
 .. list-table::
    :widths: 5 10
+   :class: tight-table
    :align: center
 
    * - .. image:: _static/doclib/ic_1.png
@@ -115,71 +116,72 @@
 Создание папки / Загрузка файла
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**1. Drag-and-drop**
+.. tab-set::
 
-Перетащите нужные файлы или папки в область загрузки:
+   .. tab-item:: Drag-and-drop
 
-.. image:: _static/doclib/drag_01.png
-   :width: 700
-   :align: center
+      Перетащите нужные файлы или папки в область загрузки:
 
-Прогресс загрузки вы увидите в правом нижнем углу:
+      .. image:: _static/doclib/drag_01.png
+         :width: 700
+         :align: center
 
-.. image:: _static/doclib/drag_02.png
-   :width: 700
-   :align: center
+      Прогресс загрузки вы увидите в правом нижнем углу:
 
-Если название файла или папки уже занято, вы увидите предупреждение:
+      .. image:: _static/doclib/drag_02.png
+         :width: 700
+         :align: center
 
-.. list-table::
-   :widths: 20 20
-   :align: center
+      Если название файла или папки уже занято, вы увидите предупреждение:
 
-   * - |
+      .. grid:: 2
+         :gutter: 2
 
-         .. image:: _static/doclib/validation_name_01.png
-            :width: 300
-            :align: center
+         .. grid-item::
 
-     - |
+            .. image:: _static/doclib/validation_name_01.png
+               :width: 500
+               :align: left
 
-         .. image:: _static/doclib/validation_name_02.png
-            :width: 300
-            :align: center
+         .. grid-item::
 
-Вы также можете загрузить целую папку вместе с файлами внутри неё.
+            .. image:: _static/doclib/validation_name_02.png
+               :width: 500
+               :align: left
 
-**2. С использованием кнопки:**
+      Вы также можете загрузить целую папку вместе с файлами внутри неё.
 
-По кнопке **+ Создать** доступно добавление файлов и папок, а также создание новых документов:
+   .. tab-item:: С использованием кнопки
 
-.. image:: _static/doclib/DocLib_6.png
-   :width: 600
-   :align: center
+      По кнопке **+ Создать** доступно добавление файлов и папок, а также создание новых документов:
 
-Выберите тип файла **OnlyOffice (Документ, Таблица, Презентация)** и укажите название:
+      .. image:: _static/doclib/DocLib_6.png
+         :width: 600
+         :align: center
 
-.. image:: _static/doclib/OnlyOffice_01.png
-   :width: 600
-   :align: center
+      Выберите тип файла **OnlyOffice (Документ, Таблица, Презентация)** и укажите название:
 
-В OnlyOffice создаётся новый файл для совместной работы — над документом могут работать несколько пользователей одновременно:
+      .. image:: _static/doclib/OnlyOffice_01.png
+         :width: 600
+         :align: center
 
-.. image:: _static/doclib/OnlyOffice_02.png
-   :width: 700
-   :align: center
+      В OnlyOffice создаётся новый файл для совместной работы — над документом могут работать несколько пользователей одновременно:
 
-При загрузке файла введите название, которое будет отображаться в библиотеке, и выберите или перетащите сам файл:
+      .. image:: _static/doclib/OnlyOffice_02.png
+         :width: 700
+         :align: center
 
-.. image:: _static/doclib/DocLib_8.png
-   :width: 600
-   :align: center
+      При загрузке файла введите название, которое будет отображаться в библиотеке, и выберите или перетащите сам файл:
 
-Чтобы создать папку, укажите её название:
+      .. image:: _static/doclib/DocLib_8.png
+         :width: 600
+         :align: center
 
-.. image:: _static/doclib/DocLib_7.png
-   :width: 600
-   :align: center
+      Чтобы создать папку, укажите её название:
+
+      .. image:: _static/doclib/DocLib_7.png
+         :width: 600
+         :align: center
 
 
 Перемещение файлов и папок
@@ -239,21 +241,20 @@
       :width: 600
       :align: center
 
-   .. list-table::
-      :widths: 20 20
-      :align: center
+   .. grid:: 2
+      :gutter: 2
 
-      * - |
+      .. grid-item::
 
-            .. image:: _static/doclib/DocLib_13_2.png
-               :width: 600
-               :align: center
+         .. image:: _static/doclib/DocLib_13_2.png
+            :width: 500
+            :align: left
 
-        - |
+      .. grid-item::
 
-            .. image:: _static/doclib/DocLib_13_1.png
-               :width: 600
-               :align: center
+         .. image:: _static/doclib/DocLib_13_1.png
+            :width: 500
+            :align: left
 
 6. Для добавления библиотеки документов в меню выбирайте специальный элемент **DocLib**:
 

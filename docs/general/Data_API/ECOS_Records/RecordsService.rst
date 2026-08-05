@@ -1,7 +1,7 @@
+.. _ecos_RecordsService:
+
 RecordsService (Java)
 =======================
-
-.. _ecos_RecordsService:
 
 **RecordsService** - сервис для работы с абстрактными записями, источником которых может быть любой DAO.
 

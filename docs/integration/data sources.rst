@@ -16,14 +16,29 @@ REST Data Source
    :width: 600
    :align: center
 
-* **Id** - идентификатор источника
-* **Name** - произвольное имя
-* **URL** - адрес, по которому будут отправляться запросы Есть поддержка переменных запроса в фигурных скобках - *{key}*
-* **Internal** - запрос будет отправляться только в сети микросервисов зарегистрированных в Eureka (в таких запросах прокидываются header'ы и cookie)
-* **HTTP Method** - можно выбрать методы http post, get, put и т.д.
-* **Request headers** - заголовки запроса. Есть поддержка переменных запроса в фигурных скобках - *${key}*
-* **Request body** - тело запроса. Есть поддержка переменных запроса в фигурных скобках - *${key}*
-* **Json response transform specification** - Спецификация, которая описывает преобразование ответа. Формат спецификации - `Jolt  <https://jolt-demo.appspot.com/>`_
+.. list-table::
+   :widths: 20 40
+   :header-rows: 1
+   :class: tight-table
+
+   * - Поле
+     - Описание
+   * - **Id**
+     - Идентификатор источника
+   * - **Name**
+     - Произвольное имя
+   * - **URL**
+     - Адрес, по которому будут отправляться запросы. Есть поддержка переменных запроса в фигурных скобках - *{key}*
+   * - **Internal**
+     - Запрос будет отправляться только в сети микросервисов, зарегистрированных в Eureka (в таких запросах прокидываются header'ы и cookie)
+   * - **HTTP Method**
+     - Можно выбрать методы http post, get, put и т.д.
+   * - **Request headers**
+     - Заголовки запроса. Есть поддержка переменных запроса в фигурных скобках - *${key}*
+   * - **Request body**
+     - Тело запроса. Есть поддержка переменных запроса в фигурных скобках - *${key}*
+   * - **Json response transform specification**
+     - Спецификация, которая описывает преобразование ответа. Формат спецификации - `Jolt <https://jolt-demo.appspot.com/>`_
 
 DB Data Source
 -----------------
@@ -33,7 +48,8 @@ DB Data Source
 SSL при запросах к бд через ECOS db-data-source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**1. Общая информация по настройке**
+Общая информация по настройке
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Начиная с версии 2.8.0 микросервиса интеграции - появилась возможность указывать в конфиге на форме **DataSource** следующие параметры:
 
@@ -49,20 +65,32 @@ SSL при запросах к бд через ECOS db-data-source
 
 Доступные сейчас режимы:
 
-* **none** - флаг ssl выключен, поля НЕ заполнены. Ходим по HTTP протоколу (трафик не защищен).
-* **require** - флаг ssl включен, остальные поля НЕ заполнены. Ходим по HTTPS, трафик защищен шифрованием, но мы не проверяем что БД именно та, которой мы доверяем. БД так же не уверена что соединяется с нашим приложением.
-* **verify-ca** - флаг ssl включен, SSL root cert path и SSL cert path указаны, SSLkey path не указан. Ходим по HTTPS, трафик защищен шифрованием. Мы знаем что БД именно та, к которой мы хотим подключиться (при успехе рукопожатия). БД еще не уверена что соединяется с нашим приложением.
-* **verify-full** - флаг ssl включен, остальные поля заполнены. Ходим по HTTPS, трафик защищен. Мы уверены в БД, а БД уверена в нас. 
+.. list-table::
+   :widths: 15 40
+   :header-rows: 1
+   :class: tight-table
+
+   * - Режим
+     - Описание
+   * - **none**
+     - Флаг ssl выключен, поля НЕ заполнены. Ходим по HTTP протоколу (трафик не защищен).
+   * - **require**
+     - Флаг ssl включен, остальные поля НЕ заполнены. Ходим по HTTPS, трафик защищен шифрованием, но мы не проверяем что БД именно та, которой мы доверяем. БД так же не уверена что соединяется с нашим приложением.
+   * - **verify-ca**
+     - Флаг ssl включен, SSL root cert path и SSL cert path указаны, SSLkey path не указан. Ходим по HTTPS, трафик защищен шифрованием. Мы знаем что БД именно та, к которой мы хотим подключиться (при успехе рукопожатия). БД еще не уверена что соединяется с нашим приложением.
+   * - **verify-full**
+     - Флаг ssl включен, остальные поля заполнены. Ходим по HTTPS, трафик защищен. Мы уверены в БД, а БД уверена в нас.
 
 Более подробно по настройкам можно посмотреть тут: `Configuring the Client <https://jdbc.postgresql.org/documentation/head/ssl-client.html>`_ и тут: `Connecting to the Database <https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_ Connecting to the Database.
 
-Настройки со стороны БД описаны тут:  `SSL Support <https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_ 
+Настройки со стороны БД описаны тут:  `SSL Support <https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_
 
-.. important:: 
+.. important::
 
     ВАЖНО! Тестировались только варианты require и verify-ca для БД Postgres.
 
-**2. Подъем БД в докере с возможностью общаться по HTTPS**
+Подъем БД в докере с возможностью общаться по HTTPS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Для каждой системы подход прокидывания сертификатов в образ контейнера будет разный, так как постгрису важно чтоб на файл еще были минимальные права (640 и меньше от рута, 600 и меньше при запуске в других случаях).
 
@@ -70,40 +98,44 @@ SSL при запросах к бд через ECOS db-data-source
 
 В Windows, к сожалению, такой контейнер в докере можно запустить только собирая его сразу с сертификатами.
 
-1. Сгенерим ключи и серт:
+.. dropdown:: Как собрать и запустить контейнер с сертификатами
+   :color: secondary
 
-.. code-block:: bash
+   1. Сгенерим ключи и серт:
 
-    openssl genrsa -out root.key 2048
-    openssl req -x509 -new -key root.key -days 10000 -out root.crt
-    openssl genrsa -out server.key 2048
-    openssl req -new -key server.key -out server.csr
-    openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 5000
+   .. code-block:: bash
 
-2. Добавить в директорию с сертификатами DockerFile:
+       openssl genrsa -out root.key 2048
+       openssl req -x509 -new -key root.key -days 10000 -out root.crt
+       openssl genrsa -out server.key 2048
+       openssl req -new -key server.key -out server.csr
+       openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 5000
 
-.. code-block:: dockerfile
+   2. Добавить в директорию с сертификатами DockerFile:
 
-    FROM postgres:10.4-alpine
+   .. code-block:: dockerfile
 
-    # On Windows root will own the files, and they will have permissions 755
-    COPY root.crt /var/lib/postgresql/root.crt
-    COPY server.crt /var/lib/postgresql/server.crt
-    COPY server.key /var/lib/postgresql/server.key
+       FROM postgres:10.4-alpine
 
-    # update the privileges on the .key, no need to touch the .crt  
-    RUN chmod 600 /var/lib/postgresql/server.key
-    RUN chown postgres:postgres /var/lib/postgresql/server.key
+       # On Windows root will own the files, and they will have permissions 755
+       COPY root.crt /var/lib/postgresql/root.crt
+       COPY server.crt /var/lib/postgresql/server.crt
+       COPY server.key /var/lib/postgresql/server.key
 
-3. Собираем и запускаем:
+       # update the privileges on the .key, no need to touch the .crt
+       RUN chmod 600 /var/lib/postgresql/server.key
+       RUN chown postgres:postgres /var/lib/postgresql/server.key
 
-.. code-block:: bash
+   3. Собираем и запускаем:
 
-    docker build -t mypg:01 .
+   .. code-block:: bash
 
-    docker run -e "POSTGRES_USER=test_user" -e "POSTGRES_PASSWORD=test_password" -p 5430:5432 -d --name postgres mypg:01 -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
+       docker build -t mypg:01 .
 
-**3. Проверка соединения**
+       docker run -e "POSTGRES_USER=test_user" -e "POSTGRES_PASSWORD=test_password" -p 5430:5432 -d --name postgres mypg:01 -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
+
+Проверка соединения
+^^^^^^^^^^^^^^^^^^^^
 
 Проверить клиентов и признак использования шифрования с их стороны можно с помощью SQL скрипта:
 
@@ -128,9 +160,21 @@ SSL при запросах к бд через ECOS db-data-source
    :width: 600
    :align: center
 
-* **Id** - идентификатор источника данных
-* **Name** - произвольное имя источника данных
-* **URI** - строка для подключения к очереди
-* **Type** - тип очереди
-* **Credentials** - ссылка на credentials где указаны login/pass для подключения к очереди
+.. list-table::
+   :widths: 20 40
+   :header-rows: 1
+   :class: tight-table
+
+   * - Поле
+     - Описание
+   * - **Id**
+     - Идентификатор источника данных
+   * - **Name**
+     - Произвольное имя источника данных
+   * - **URI**
+     - Строка для подключения к очереди
+   * - **Type**
+     - Тип очереди
+   * - **Credentials**
+     - Ссылка на credentials где указаны login/pass для подключения к очереди
 

@@ -1,5 +1,10 @@
+.. _new_provider:
+
 Реализация интеграции с новым ЭДО-провайдером
 ===================================================
+
+.. contents::
+    :depth: 2
 
 1. Со стороны бандла работы с ЭДО-провайдером (мкр. интеграции)
 ----------------------------------------------------------------
@@ -37,13 +42,16 @@
 
 .. code-block:: java
 
-    QOverride
+    @Override
     protected ProviderResolver createProviderResolver() {
-    return new ProviderResolver(
-    ew CopyOnliriteArrayList<>(Arrays.asList(
-    new KonturProviderHandLer(getSignatureService(), getEcosConfigService()),
-    new CorusProviderHandler(),,
-    new SbisProviderHandler())));
+        return new ProviderResolver(
+            new CopyOnWriteArrayList<>(Arrays.asList(
+                new KonturProviderHandler(getSignatureService(), getEcosConfigService()),
+                new CorusProviderHandler(),
+                new SbisProviderHandler()
+            ))
+        );
+    }
 
 3. Со стороны хранилки (альфреско)
 ------------------------------------

@@ -109,37 +109,40 @@
 Обновление до последнего релиза
 --------------------------------
 
-Выполните следующие команды в терминале:
+.. dropdown:: Как обновить Citeck
+   :color: secondary
 
-1. Остановите Citeck:
+   Выполните следующие команды в терминале:
 
-   .. code-block:: bash
+   1. Остановите Citeck:
 
-       docker-compose down
+      .. code-block:: bash
 
-2. Перейдите в папку ``citeck-community``:
+          docker-compose down
 
-   .. code-block:: bash
+   2. Перейдите в папку ``citeck-community``:
 
-       cd /полный/путь/до/папки/citeck-community
+      .. code-block:: bash
 
-3. Получите актуальную версию:
+          cd /полный/путь/до/папки/citeck-community
 
-   .. code-block:: bash
+   3. Получите актуальную версию:
 
-       git pull
+      .. code-block:: bash
 
-4. Загрузите последние версии образов:
+          git pull
 
-   .. code-block:: bash
+   4. Загрузите последние версии образов:
 
-       docker-compose pull
+      .. code-block:: bash
 
-5. Запустите Citeck:
+          docker-compose pull
 
-   .. code-block:: bash
+   5. Запустите Citeck:
 
-       docker-compose up -d
+      .. code-block:: bash
+
+          docker-compose up -d
 
 
 Подготовка окружения и установка Citeck
@@ -472,54 +475,57 @@
 
 Если нужен простой способ настройки доступа в систему, минуя Keycloak, можно настроить BASIC Auth (не рекомендуется для production-сред).
 
-1. Откройте файл **ecos-proxy-app.env**:
+.. dropdown:: Как настроить BASIC аутентификацию
+   :color: secondary
 
-   .. code-block:: bash
+   1. Откройте файл **ecos-proxy-app.env**:
 
-       nano citeck-community-master/services/environments/ecos-proxy-app.env
+      .. code-block:: bash
 
-   Замените строку:
+          nano citeck-community-master/services/environments/ecos-proxy-app.env
+
+      Замените строку:
+
+      .. code-block:: text
+
+          ENABLE_OIDC_FULL_ACCESS=true
+
+      на:
+
+      .. code-block:: text
+
+          ENABLE_OIDC_FULL_ACCESS=false
+
+   2. В этом же файле добавьте:
+
+      .. code-block:: text
+
+          BASIC_AUTH_ACCESS=admin:admin,fet:fet
+
+      .. note::
+
+          ``admin:admin,fet:fet`` — список пользователей, имеющих доступ в систему.
+          Формат: ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}``.
+          После изменения файла необходимо перезапустить контейнер **ecos-proxy-app**, чтобы изменения вступили в силу.
+
+   3. Из директории **citeck-community-master** остановите проект:
+
+      .. code-block:: bash
+
+          docker-compose down
+
+   4. Запустите проект:
+
+      .. code-block:: bash
+
+          docker-compose up -d
+
+   Данные для входа в Citeck:
 
    .. code-block:: text
 
-       ENABLE_OIDC_FULL_ACCESS=true
-
-   на:
-
-   .. code-block:: text
-
-       ENABLE_OIDC_FULL_ACCESS=false
-
-2. В этом же файле добавьте:
-
-   .. code-block:: text
-
-       BASIC_AUTH_ACCESS=admin:admin,fet:fet
-
-   .. note::
-
-       ``admin:admin,fet:fet`` — список пользователей, имеющих доступ в систему.
-       Формат: ``{{пользователь_0}}:{{пароль_0}},{{пользователь_1}}:{{пароль_1}}``.
-       После изменения файла необходимо перезапустить контейнер **ecos-proxy-app**, чтобы изменения вступили в силу.
-
-3. Из директории **citeck-community-master** остановите проект:
-
-   .. code-block:: bash
-
-       docker-compose down
-
-4. Запустите проект:
-
-   .. code-block:: bash
-
-       docker-compose up -d
-
-Данные для входа в Citeck:
-
-.. code-block:: text
-
-    Username: admin
-    Password: admin
+       Username: admin
+       Password: admin
 
 
 Сервисы Docker

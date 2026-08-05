@@ -1,7 +1,11 @@
+.. _eis_keycloak:
+
 eis (Keycloak)
 ===============
 
-Назначение:
+.. contents::
+
+Назначение
 ----------------
 
 1. Аутентификация и авторизация: Keycloak предоставляет механизмы аутентификации и авторизации, позволяя пользователям входить в систему и контролировать доступ к ресурсам на основе определенных политик безопасности.
@@ -14,389 +18,423 @@ eis (Keycloak)
 
 5. Интеграция с веб-приложениями: Keycloak предоставляет клиентские адаптеры и библиотеки для интеграции с различными веб-приложениями и службами, обеспечивая безопасность и удобство взаимодействия с IAM-системой.
 
-Теги:
+Теги
 ----------------
 
 *	**nexus.citeck.ru/keycloak:12.0.4** -  образ, собранный на основе **docker.io/jboss/keycloak:12.0.4** , в который добавлены переменные citeck
 
-Базовые образы:
+Базовые образы
 ----------------
 
 *	keycloak:12.0.4
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса
 --------------------------------
 
-.. code-block::
+Сервис можно развернуть либо через docker-compose (локально/на выделенном сервере), либо как Deployment в Kubernetes через helm-чарт.
 
-	eis:
-		logging:
-		options:
-			max-size: "10m"
-			max-file: "5"
-		image: docker.io/jboss/keycloak:12.0.4
-		container_name: eis
-		hostname: eis
-		restart:  unless-stopped
-		environment:
-		PROXY_ADDRESS_FORWARDING: "true"
-		DB_VENDOR: POSTGRES
-		DB_ADDR: eis_postgres
-		DB_DATABASE: keycloak
-		DB_USER: keycloak
-		DB_SCHEMA: public
-		DB_PASSWORD: password
-		KEYCLOAK_USER: admin
-		KEYCLOAK_PASSWORD: examplepassword
-			# Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-			#JDBC_PARAMS: "ssl=true"
-		ports:
-		- 443:8443
-		depends_on:
-		- eis_postgres
-		networks:
-		- app_network
-	eis_postgres:
-		image: postgres:11
-		container_name: eis_postgres
-		hostname: eis_postgres
-		volumes:
-		- /opt/postgresql/keycloak:/var/lib/postgresql/data
-		environment:
-		POSTGRES_DB: keycloak
-		POSTGRES_USER: keycloak
-		POSTGRES_PASSWORD: password
-		networks:
-		- app_network
+.. tab-set::
 
-Шаблон сервиса для k8s helm-template:
---------------------------------------
+   .. tab-item:: Docker Compose
 
-.. code-block::
+      .. code-block:: yaml
 
-		{{- if .Values.EcosIdentityApp.enabled -}}
-		apiVersion: apps/v1
-		kind: Deployment
-		metadata:
-		labels:
-			app: ecos-identity-app
-		name: ecos-identity-app
-		spec:
-		{{- if .Values.EcosIdentityApp.highAvailability.enabled }}
-		replicas: {{ .Values.EcosIdentityApp.replicas | default "2" }}
-		{{- else }}
-		replicas: {{ .Values.EcosIdentityApp.replicas | default "1" }}
-		{{- end }}
-		selector:
-			matchLabels:
-			app: ecos-identity-app
-		strategy:
-			rollingUpdate:
-			maxSurge: 0
-			maxUnavailable: 1
-			type: RollingUpdate
-		template:
-			metadata:
-			labels:
-				app: ecos-identity-app
-			annotations:
-			{{- if and .Values.global.vault.enabled .Values.global.vault.annotations }}
-			{{- with .Values.global.vault.annotations }}
-				{{- toYaml . | nindent 8 }}
-			{{- end }}
-			{{- end }}
-			spec:
-			{{- if .Values.EcosIdentityApp.nodeSelector }}
-			nodeSelector:
-		{{ toYaml .Values.EcosIdentityApp.nodeSelector | indent 8 }}
-			{{- end }}
-			containers:
-			- command:
-				- /scripts/keycloak.sh
-				env:
-				- name: KEYCLOAK_FRONTEND_URL
-				{{- if .Values.EcosIdentityApp.environments.frontendURL }}
-				value: {{ .Values.EcosIdentityApp.environments.frontendURL }}
-				{{ else }}
-				value: https://{{ .Values.FQDN }}/auth
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.import.realm.enabled }}
-				- name: KEYCLOAK_IMPORT
-				value: /import/realm-export.json
-				{{- end }}
-				- name: HOSTNAME
-				value: ecos-identity-app
-				- name: KEYCLOAK_LOGLEVEL
-				value: {{ .Values.EcosIdentityApp.environments.logLevel| default "INFO" }}
-				- name: KEYCLOAK_USER
-				value: {{ .Values.EcosIdentityApp.environments.username | default "admin" }}
-				- name: KEYCLOAK_PASSWORD
-				{{- if .Values.global.vault.keycloak.appPassword }}
-				value: {{ .Values.global.vault.keycloak.appPassword | quote }}
-				{{- else }}
-				valueFrom:
-					secretKeyRef:
-					key: ecos-identity-app-password
-					name: ecos-secret
-				{{- end }}
-				- name: JAVA_TOOL_OPTIONS
-				value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=50.0
-				- name: PROXY_ADDRESS_FORWARDING
-				value: "true"
-				- name: DB_VENDOR
-				value: postgres
-				- name: DB_ADDR
-				value: {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }}.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
-				- name: DB_PORT
-				value: {{ .Values.EcosIdentityApp.dataSource.port | default "5432" | quote }}
-				- name: DB_DATABASE
-				value: {{ .Values.EcosIdentityApp.dataSource.database| default "ecos_identity" }}
-				- name: DB_USER
-				{{- if .Values.global.vault.keycloak.psqlUsername }}
-				value: {{ .Values.global.vault.keycloak.psqlUsername | quote }}
-				{{- else }}
-				valueFrom:
-					secretKeyRef:
-					key: ecos-identity-postgresql-app-username
-					name: ecos-secret
-				{{- end }}
-				- name: DB_PASSWORD
-				{{- if .Values.global.vault.keycloak.psqlPassword }}
-				value: {{ .Values.global.vault.keycloak.psqlPassword | quote }}
-				{{- else }}
-				valueFrom:
-					secretKeyRef:
-					key: ecos-identity-postgresql-app-password
-					name: ecos-secret
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.highAvailability.enabled }}
-				- name: JGROUPS_DISCOVERY_PROTOCOL
-				value: dns.DNS_PING
-				- name: JGROUPS_DISCOVERY_PROPERTIES
-				value: dns_query=ecos-identity-app-service-headless
-				- name: CACHE_OWNERS_COUNT
-				value: '2'
-				- name: CACHE_OWNERS_AUTH_SESSIONS_COUNT
-				value: '2'
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
-				- name: ECOS_KK_RMQ_HOST
-				value: rabbitmq-app-service.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
-				- name: ECOS_KK_RMQ_USERNAME
-				value: {{ .Values.RabbitmqApp.environments.username | default "rabbitmqadmin" }}
-				- name: ECOS_KK_RMQ_PASSWORD
-				value: {{ .Values.RabbitmqApp.environments.password | default "RabbitmqStrongPassword" }}
-				- name: ECOS_KK_ZK_HOST
-				value: zookeeper-app-service-headless.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
-				- name: ECOS_KK_LISTEN_PERSON_DISABLED_STATUS
-				value: {{ .Values.EcosIdentityApp.ecosExtensions.listenPersonDisabledStatus | quote }}
-				{{- end }}
-				image: {{ .Values.EcosIdentityApp.image.registry }}/{{ .Values.EcosIdentityApp.image.repository }}:{{ .Values.EcosIdentityApp.image.tag }}
-				imagePullPolicy: {{ .Values.EcosIdentityApp.image.pullPolicy | default "IfNotPresent" }}
-				name: ecos-identity-app
-				ports:
-				- containerPort: 8080
-				name: http
-				protocol: TCP
-				- containerPort: 8443
-				name: https
-				protocol: TCP
-				securityContext:
-				runAsNonRoot: true
-				runAsUser: 1000
-				{{- with .Values.EcosIdentityApp.resources }}
-				resources:
-				{{- tpl . $ | nindent 12 }}
-				{{- end }}
-				livenessProbe:
-				failureThreshold: 3
-				httpGet:
-					path: /auth/
-					port: http
-					scheme: HTTP
-				initialDelaySeconds: 300
-				periodSeconds: 10
-				successThreshold: 1
-				timeoutSeconds: 5
-				readinessProbe:
-				failureThreshold: 3
-				httpGet:
-					path: /auth/realms/master
-					port: http
-					scheme: HTTP
-				initialDelaySeconds: 30
-				periodSeconds: 10
-				successThreshold: 1
-				timeoutSeconds: 1
-				volumeMounts:
-				- mountPath: /scripts
-				name: sh
-				readOnly: true
-				- mountPath: /opt/jboss/startup-scripts
-				name: startup
-				readOnly: true
-				{{- if .Values.EcosIdentityApp.import.certs.enabled }}
-				- mountPath: /opt/certs
-				name: certs
-				readOnly: true
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.import.realm.enabled }}
-				- mountPath: /import
-				name: realm-export
-				readOnly: true
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.KerberosIntegration.enabled }}
-				- mountPath: /etc/krb5.conf.d
-				name: krb5-conf
-				readOnly: true
-				- mountPath: /opt/keytab
-				name: keytab
-				readOnly: true
-				{{- end }}
-				{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
-				- mountPath: '/opt/jboss/keycloak/standalone/deployments/ecos'
-				name: ecos-extensions
-				{{- end }}
-			initContainers:
-			- command:
-				- /bin/sh
-				- -c
-				- |
-				while true
-				do
-					{{- if .Values.EcosMicroservicesPostgresqlApp.enabled }}
-					rt=$(nc -z -w 1 {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }}.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }} {{ .Values.EcosIdentityApp.dataSource.port | default "5432" }})
-					{{ else }}
-					rt=$(nc -z -w 1 {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }} {{ .Values.EcosIdentityApp.dataSource.port | default "5432" }})
-					{{- end }}
-					if [ $? -eq 0 ]; then
-					echo "DB is UP"
-					break
-					fi
-					echo "DB is not yet reachable, sleep for 10s before retry"
-					sleep 10
-				done
-				image: {{ .Values.global.initContainers.image.registry }}/{{ .Values.global.initContainers.image.repository }}:{{ .Values.global.initContainers.image.tag }}
-				imagePullPolicy: Always
-				name: init-db
-				resources:
-				limits:
-					cpu: 100m
-					memory: 128Mi
-				requests:
-					cpu: 100m
-					memory: 128Mi
-			{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
-			- image: {{ .Values.global.initContainers.image.registry }}/ecos-keycloak-ext:{{ .Values.EcosIdentityApp.ecosExtensions.version }}
-				imagePullPolicy: Always
-				name: init-extensions
-				env:
-				- name: KK_EXT_TARGET_ROOT
-					value: /run/extensions-target
-				resources:
-				limits:
-					cpu: 100m
-					memory: 128Mi
-				requests:
-					cpu: 100m
-					memory: 128Mi
-				volumeMounts:
-				- mountPath: /run/extensions-target
-					name: ecos-extensions
-			{{- end }}
-			dnsPolicy: ClusterFirst
-			{{- if .Values.EcosIdentityApp.image.pullSecrets }}
-			imagePullSecrets:
-			- name: {{ .Values.EcosIdentityApp.image.pullSecrets }}
-			{{- end }}
-			securityContext:
-				fsGroup: 1000
-			restartPolicy: Always
-			terminationGracePeriodSeconds: 120
-			volumes:
-			{{- if .Values.EcosIdentityApp.import.certs.enabled }}
-			- name: certs
-				configMap:
-				defaultMode: 365
-				name: {{ .Values.EcosIdentityApp.import.certs.configMap }}
-			{{- end }}
-			{{- if .Values.EcosIdentityApp.KerberosIntegration.enabled }}
-			- name: krb5-conf
-				configMap:
-				defaultMode: 365
-				name: ecos-identity-app-configmap
-				items:
-					- key: krb5.conf
-					path: krb5.conf
-			- name: keytab
-				secret:
-				secretName: ecos-secret
-				items:
-					- key: keytab-file
-					path: keytab-file
-			{{- end }}
-			- name: sh
-				configMap:
-				defaultMode: 365
-				name: ecos-identity-app-configmap
-				items:
-					- key: keycloak.sh
-					path: keycloak.sh
-			- name: startup
-				configMap:
-				defaultMode: 365
-				name: ecos-identity-app-configmap
-				items:
-					- key: keycloak.cli
-					path: keycloak.cli
-			- name: realm-export
-				configMap:
-				defaultMode: 365
-				name: ecos-identity-app-configmap
-				items:
-					- key: realm-export.json
-					path: realm-export.json
-		{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
-			- name: ecos-extensions
-				emptyDir: {}
-		{{- end }}
-		{{- end }}
+      	eis:
+      		logging:
+      		options:
+      			max-size: "10m"
+      			max-file: "5"
+      		image: docker.io/jboss/keycloak:12.0.4
+      		container_name: eis
+      		hostname: eis
+      		restart:  unless-stopped
+      		environment:
+      		PROXY_ADDRESS_FORWARDING: "true"
+      		DB_VENDOR: POSTGRES
+      		DB_ADDR: eis_postgres
+      		DB_DATABASE: keycloak
+      		DB_USER: keycloak
+      		DB_SCHEMA: public
+      		DB_PASSWORD: password
+      		KEYCLOAK_USER: admin
+      		KEYCLOAK_PASSWORD: examplepassword
+      			# Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      			#JDBC_PARAMS: "ssl=true"
+      		ports:
+      		- 443:8443
+      		depends_on:
+      		- eis_postgres
+      		networks:
+      		- app_network
+      	eis_postgres:
+      		image: postgres:11
+      		container_name: eis_postgres
+      		hostname: eis_postgres
+      		volumes:
+      		- /opt/postgresql/keycloak:/var/lib/postgresql/data
+      		environment:
+      		POSTGRES_DB: keycloak
+      		POSTGRES_USER: keycloak
+      		POSTGRES_PASSWORD: password
+      		networks:
+      		- app_network
 
-Используемые переменные:
+   .. tab-item:: Kubernetes Helm
+
+      .. code-block:: yaml
+
+      		{{- if .Values.EcosIdentityApp.enabled -}}
+      		apiVersion: apps/v1
+      		kind: Deployment
+      		metadata:
+      		labels:
+      			app: ecos-identity-app
+      		name: ecos-identity-app
+      		spec:
+      		{{- if .Values.EcosIdentityApp.highAvailability.enabled }}
+      		replicas: {{ .Values.EcosIdentityApp.replicas | default "2" }}
+      		{{- else }}
+      		replicas: {{ .Values.EcosIdentityApp.replicas | default "1" }}
+      		{{- end }}
+      		selector:
+      			matchLabels:
+      			app: ecos-identity-app
+      		strategy:
+      			rollingUpdate:
+      			maxSurge: 0
+      			maxUnavailable: 1
+      			type: RollingUpdate
+      		template:
+      			metadata:
+      			labels:
+      				app: ecos-identity-app
+      			annotations:
+      			{{- if and .Values.global.vault.enabled .Values.global.vault.annotations }}
+      			{{- with .Values.global.vault.annotations }}
+      				{{- toYaml . | nindent 8 }}
+      			{{- end }}
+      			{{- end }}
+      			spec:
+      			{{- if .Values.EcosIdentityApp.nodeSelector }}
+      			nodeSelector:
+      		{{ toYaml .Values.EcosIdentityApp.nodeSelector | indent 8 }}
+      			{{- end }}
+      			containers:
+      			- command:
+      				- /scripts/keycloak.sh
+      				env:
+      				- name: KEYCLOAK_FRONTEND_URL
+      				{{- if .Values.EcosIdentityApp.environments.frontendURL }}
+      				value: {{ .Values.EcosIdentityApp.environments.frontendURL }}
+      				{{ else }}
+      				value: https://{{ .Values.FQDN }}/auth
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.import.realm.enabled }}
+      				- name: KEYCLOAK_IMPORT
+      				value: /import/realm-export.json
+      				{{- end }}
+      				- name: HOSTNAME
+      				value: ecos-identity-app
+      				- name: KEYCLOAK_LOGLEVEL
+      				value: {{ .Values.EcosIdentityApp.environments.logLevel| default "INFO" }}
+      				- name: KEYCLOAK_USER
+      				value: {{ .Values.EcosIdentityApp.environments.username | default "admin" }}
+      				- name: KEYCLOAK_PASSWORD
+      				{{- if .Values.global.vault.keycloak.appPassword }}
+      				value: {{ .Values.global.vault.keycloak.appPassword | quote }}
+      				{{- else }}
+      				valueFrom:
+      					secretKeyRef:
+      					key: ecos-identity-app-password
+      					name: ecos-secret
+      				{{- end }}
+      				- name: JAVA_TOOL_OPTIONS
+      				value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=50.0
+      				- name: PROXY_ADDRESS_FORWARDING
+      				value: "true"
+      				- name: DB_VENDOR
+      				value: postgres
+      				- name: DB_ADDR
+      				value: {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }}.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
+      				- name: DB_PORT
+      				value: {{ .Values.EcosIdentityApp.dataSource.port | default "5432" | quote }}
+      				- name: DB_DATABASE
+      				value: {{ .Values.EcosIdentityApp.dataSource.database| default "ecos_identity" }}
+      				- name: DB_USER
+      				{{- if .Values.global.vault.keycloak.psqlUsername }}
+      				value: {{ .Values.global.vault.keycloak.psqlUsername | quote }}
+      				{{- else }}
+      				valueFrom:
+      					secretKeyRef:
+      					key: ecos-identity-postgresql-app-username
+      					name: ecos-secret
+      				{{- end }}
+      				- name: DB_PASSWORD
+      				{{- if .Values.global.vault.keycloak.psqlPassword }}
+      				value: {{ .Values.global.vault.keycloak.psqlPassword | quote }}
+      				{{- else }}
+      				valueFrom:
+      					secretKeyRef:
+      					key: ecos-identity-postgresql-app-password
+      					name: ecos-secret
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.highAvailability.enabled }}
+      				- name: JGROUPS_DISCOVERY_PROTOCOL
+      				value: dns.DNS_PING
+      				- name: JGROUPS_DISCOVERY_PROPERTIES
+      				value: dns_query=ecos-identity-app-service-headless
+      				- name: CACHE_OWNERS_COUNT
+      				value: '2'
+      				- name: CACHE_OWNERS_AUTH_SESSIONS_COUNT
+      				value: '2'
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
+      				- name: ECOS_KK_RMQ_HOST
+      				value: rabbitmq-app-service.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
+      				- name: ECOS_KK_RMQ_USERNAME
+      				value: {{ .Values.RabbitmqApp.environments.username | default "rabbitmqadmin" }}
+      				- name: ECOS_KK_RMQ_PASSWORD
+      				value: {{ .Values.RabbitmqApp.environments.password | default "RabbitmqStrongPassword" }}
+      				- name: ECOS_KK_ZK_HOST
+      				value: zookeeper-app-service-headless.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }}
+      				- name: ECOS_KK_LISTEN_PERSON_DISABLED_STATUS
+      				value: {{ .Values.EcosIdentityApp.ecosExtensions.listenPersonDisabledStatus | quote }}
+      				{{- end }}
+      				image: {{ .Values.EcosIdentityApp.image.registry }}/{{ .Values.EcosIdentityApp.image.repository }}:{{ .Values.EcosIdentityApp.image.tag }}
+      				imagePullPolicy: {{ .Values.EcosIdentityApp.image.pullPolicy | default "IfNotPresent" }}
+      				name: ecos-identity-app
+      				ports:
+      				- containerPort: 8080
+      				name: http
+      				protocol: TCP
+      				- containerPort: 8443
+      				name: https
+      				protocol: TCP
+      				securityContext:
+      				runAsNonRoot: true
+      				runAsUser: 1000
+      				{{- with .Values.EcosIdentityApp.resources }}
+      				resources:
+      				{{- tpl . $ | nindent 12 }}
+      				{{- end }}
+      				livenessProbe:
+      				failureThreshold: 3
+      				httpGet:
+      					path: /auth/
+      					port: http
+      					scheme: HTTP
+      				initialDelaySeconds: 300
+      				periodSeconds: 10
+      				successThreshold: 1
+      				timeoutSeconds: 5
+      				readinessProbe:
+      				failureThreshold: 3
+      				httpGet:
+      					path: /auth/realms/master
+      					port: http
+      					scheme: HTTP
+      				initialDelaySeconds: 30
+      				periodSeconds: 10
+      				successThreshold: 1
+      				timeoutSeconds: 1
+      				volumeMounts:
+      				- mountPath: /scripts
+      				name: sh
+      				readOnly: true
+      				- mountPath: /opt/jboss/startup-scripts
+      				name: startup
+      				readOnly: true
+      				{{- if .Values.EcosIdentityApp.import.certs.enabled }}
+      				- mountPath: /opt/certs
+      				name: certs
+      				readOnly: true
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.import.realm.enabled }}
+      				- mountPath: /import
+      				name: realm-export
+      				readOnly: true
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.KerberosIntegration.enabled }}
+      				- mountPath: /etc/krb5.conf.d
+      				name: krb5-conf
+      				readOnly: true
+      				- mountPath: /opt/keytab
+      				name: keytab
+      				readOnly: true
+      				{{- end }}
+      				{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
+      				- mountPath: '/opt/jboss/keycloak/standalone/deployments/ecos'
+      				name: ecos-extensions
+      				{{- end }}
+      			initContainers:
+      			- command:
+      				- /bin/sh
+      				- -c
+      				- |
+      				while true
+      				do
+      					{{- if .Values.EcosMicroservicesPostgresqlApp.enabled }}
+      					rt=$(nc -z -w 1 {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }}.{{ .Release.Namespace }}{{ .Values.clusterName | default "" }} {{ .Values.EcosIdentityApp.dataSource.port | default "5432" }})
+      					{{ else }}
+      					rt=$(nc -z -w 1 {{ .Values.EcosIdentityApp.dataSource.host | default "ecos-microservices-postgresql-app-service" }} {{ .Values.EcosIdentityApp.dataSource.port | default "5432" }})
+      					{{- end }}
+      					if [ $? -eq 0 ]; then
+      					echo "DB is UP"
+      					break
+      					fi
+      					echo "DB is not yet reachable, sleep for 10s before retry"
+      					sleep 10
+      				done
+      				image: {{ .Values.global.initContainers.image.registry }}/{{ .Values.global.initContainers.image.repository }}:{{ .Values.global.initContainers.image.tag }}
+      				imagePullPolicy: Always
+      				name: init-db
+      				resources:
+      				limits:
+      					cpu: 100m
+      					memory: 128Mi
+      				requests:
+      					cpu: 100m
+      					memory: 128Mi
+      			{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
+      			- image: {{ .Values.global.initContainers.image.registry }}/ecos-keycloak-ext:{{ .Values.EcosIdentityApp.ecosExtensions.version }}
+      				imagePullPolicy: Always
+      				name: init-extensions
+      				env:
+      				- name: KK_EXT_TARGET_ROOT
+      					value: /run/extensions-target
+      				resources:
+      				limits:
+      					cpu: 100m
+      					memory: 128Mi
+      				requests:
+      					cpu: 100m
+      					memory: 128Mi
+      				volumeMounts:
+      				- mountPath: /run/extensions-target
+      					name: ecos-extensions
+      			{{- end }}
+      			dnsPolicy: ClusterFirst
+      			{{- if .Values.EcosIdentityApp.image.pullSecrets }}
+      			imagePullSecrets:
+      			- name: {{ .Values.EcosIdentityApp.image.pullSecrets }}
+      			{{- end }}
+      			securityContext:
+      				fsGroup: 1000
+      			restartPolicy: Always
+      			terminationGracePeriodSeconds: 120
+      			volumes:
+      			{{- if .Values.EcosIdentityApp.import.certs.enabled }}
+      			- name: certs
+      				configMap:
+      				defaultMode: 365
+      				name: {{ .Values.EcosIdentityApp.import.certs.configMap }}
+      			{{- end }}
+      			{{- if .Values.EcosIdentityApp.KerberosIntegration.enabled }}
+      			- name: krb5-conf
+      				configMap:
+      				defaultMode: 365
+      				name: ecos-identity-app-configmap
+      				items:
+      					- key: krb5.conf
+      					path: krb5.conf
+      			- name: keytab
+      				secret:
+      				secretName: ecos-secret
+      				items:
+      					- key: keytab-file
+      					path: keytab-file
+      			{{- end }}
+      			- name: sh
+      				configMap:
+      				defaultMode: 365
+      				name: ecos-identity-app-configmap
+      				items:
+      					- key: keycloak.sh
+      					path: keycloak.sh
+      			- name: startup
+      				configMap:
+      				defaultMode: 365
+      				name: ecos-identity-app-configmap
+      				items:
+      					- key: keycloak.cli
+      					path: keycloak.cli
+      			- name: realm-export
+      				configMap:
+      				defaultMode: 365
+      				name: ecos-identity-app-configmap
+      				items:
+      					- key: realm-export.json
+      					path: realm-export.json
+      		{{- if .Values.EcosIdentityApp.ecosExtensions.enabled }}
+      			- name: ecos-extensions
+      				emptyDir: {}
+      		{{- end }}
+      		{{- end }}
+
+Используемые переменные
 -------------------------
 
-*	**KEYCLOAK_FRONTEND_URL** -  https://example.ecos24.ru url кейклока, где добавлен realm
-*	**KEYCLOAK_IMPORT** - стандартное значение /import/realm-export.json успользует для того, чтоб вместе с ecos стартанул Keycloak, в котором уже будет необходимы Realm
-*	**HOSTNAME** - переменная задающая имя сервиса
-*	**KEYCLOAK_LOGLEVEL** - переменная задающая loglevel Keycloak
-*	**KEYCLOAK_USER** - admin user для входа в https://example.ecos24.ru/auth
-*	**KEYCLOAK_PASSWORD** - пароль для dmin user для входа в https://example.ecos24.ru/auth
-*	**JAVA_TOOL_OPTIONS** - параметры Java
-*	**DB_VENDOR** -  вендор БД
-*	**DB_ADDR** - имя сервиса БД
-*	**DB_PORT** -  порт , по которому доступна база данных
-*	**DB_DATABASE** - имя БД
-*	**DB_USER** - пользователь БД
-*	**DB_PASSWORD** - пароль для входа в БД
-*	**JGROUPS_DISCOVERY_PROTOCOL** - протокол, для возможности работы Keycloak в режиме HA с 2 репликами
-*	**JGROUPS_DISCOVERY_PROPERTIES** - имя сервиса, для общения 2х реплик Keycloak при развертывании в режиме HA
-*	**CACHE_OWNERS_COUNT** - количество owner при режиме HA
-*	**CACHE_OWNERS_AUTH_SESSIONS_COUNT** - количество активных сеансов для владельца кеша ( установить в соответсвии с CACHE_OWNERS_COUNT )
-*	**ECOS_KK_RMQ_HOST** - хост для подключения к RabbitMQ
-*	**ECOS_KK_RMQ_USERNAME** -  имя пользователя для подключения к RabbitMQ
-*	**ECOS_KK_RMQ_PASSWORD** - пароль пользователя для подключения к RabbitMQ
-*	**ECOS_KK_ZK_HOST** - хост  zookeeper
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
+   * - Переменная
+     - Описание
+   * - **KEYCLOAK_FRONTEND_URL**
+     - https://example.ecos24.ru url кейклока, где добавлен realm
+   * - **KEYCLOAK_IMPORT**
+     - стандартное значение /import/realm-export.json успользует для того, чтоб вместе с ecos стартанул Keycloak, в котором уже будет необходимы Realm
+   * - **HOSTNAME**
+     - переменная задающая имя сервиса
+   * - **KEYCLOAK_LOGLEVEL**
+     - переменная задающая loglevel Keycloak
+   * - **KEYCLOAK_USER**
+     - admin user для входа в https://example.ecos24.ru/auth
+   * - **KEYCLOAK_PASSWORD**
+     - пароль для dmin user для входа в https://example.ecos24.ru/auth
+   * - **JAVA_TOOL_OPTIONS**
+     - параметры Java
+   * - **DB_VENDOR**
+     - вендор БД
+   * - **DB_ADDR**
+     - имя сервиса БД
+   * - **DB_PORT**
+     - порт , по которому доступна база данных
+   * - **DB_DATABASE**
+     - имя БД
+   * - **DB_USER**
+     - пользователь БД
+   * - **DB_PASSWORD**
+     - пароль для входа в БД
+   * - **JGROUPS_DISCOVERY_PROTOCOL**
+     - протокол, для возможности работы Keycloak в режиме HA с 2 репликами
+   * - **JGROUPS_DISCOVERY_PROPERTIES**
+     - имя сервиса, для общения 2х реплик Keycloak при развертывании в режиме HA
+   * - **CACHE_OWNERS_COUNT**
+     - количество owner при режиме HA
+   * - **CACHE_OWNERS_AUTH_SESSIONS_COUNT**
+     - количество активных сеансов для владельца кеша ( установить в соответсвии с CACHE_OWNERS_COUNT )
+   * - **ECOS_KK_RMQ_HOST**
+     - хост для подключения к RabbitMQ
+   * - **ECOS_KK_RMQ_USERNAME**
+     - имя пользователя для подключения к RabbitMQ
+   * - **ECOS_KK_RMQ_PASSWORD**
+     - пароль пользователя для подключения к RabbitMQ
+   * - **ECOS_KK_ZK_HOST**
+     - хост  zookeeper
 
-Дополнительно:
+Дополнительно
 ----------------
 
-Keycloak подключается к сервису с БД ecos-app-microservice-postgresql и используются  в собственную базу данных  
+Keycloak подключается к сервису с БД ecos-app-microservice-postgresql и используются  в собственную базу данных
 
-Типовой вывод успешного развертывания в лог контейнера:
+Типовой вывод успешного развертывания в лог контейнера
 --------------------------------------------------------
 
-.. code-block::
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	Picked up JAVA_TOOL_OPTIONS: -XX:+UseContainerSupport -XX:MaxRAMPercentage=50.0
 	Added 'admin' to '/opt/jboss/keycloak/standalone/configuration/keycloak-add-user.json', restart server to load user
@@ -540,7 +578,7 @@ Keycloak подключается к сервису с БД ecos-app-microservic
 	21:11:12,003 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002205: Adding provider class org.keycloak.services.filters.KeycloakSecurityHeadersFilter from Application class org.keycloak.services.resources.KeycloakApplication
 	21:11:12,005 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002200: Adding class resource org.keycloak.services.resources.JsResource from Application class org.keycloak.services.resources.KeycloakApplication
 	21:11:12,005 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002205: Adding provider class org.keycloak.services.error.KeycloakErrorHandler from Application class org.keycloak.services.resources.KeycloakApplication
-	21:11:12,006 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002200: Adding class resource org.keycloak.services.resources.ThemeResource from Application class org.keycloak.services.resources.KeycloakApplication
+	21:11:12,005 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002200: Adding class resource org.keycloak.services.resources.ThemeResource from Application class org.keycloak.services.resources.KeycloakApplication
 	21:11:12,006 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002210: Adding provider singleton org.keycloak.services.util.ObjectMapperResolver from Application class org.keycloak.services.resources.KeycloakApplication
 	21:11:12,006 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002220: Adding singleton resource org.keycloak.services.resources.admin.AdminRoot from Application class org.keycloak.services.resources.KeycloakApplication
 	21:11:12,006 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 67) RESTEASY002220: Adding singleton resource org.keycloak.services.resources.WelcomeResource from Application class org.keycloak.services.resources.KeycloakApplication

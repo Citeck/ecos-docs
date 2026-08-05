@@ -1,3 +1,5 @@
+.. _configuration:
+
 Конфигурация
 ==============
 
@@ -78,44 +80,48 @@
 
 Пример:
 
-.. code-block::
+.. tab-set::
 
-  // kotlin
-  @Component
-  class CustomComponent {
-      
-      // Проставление через поле можно использовать
-      // если нам не важно отлавливать событие изменения
-      // Для полей можно использовать "var" и "lateinit var"
-      @EcosConfig("some-config-id")
-      private var configValue: String? = null
+   .. tab-item:: Kotlin
 
-      // Проставление через метод можно использовать
-      // если нам важно отлавливать событие изменения
-      @EcosConfig("some-config-id")
-      private fun setConfig(value: String) {
-          println("New value: $value")
-      }
-  }
+      .. code-block::
 
-.. code-block::
+        @Component
+        class CustomComponent {
 
-  // java
-  @Component
-  public class CustomComponent {
-      
-      // Проставление через поле можно использовать
-      // если нам не важно отлавливать событие изменения
-      @EcosConfig("some-config-id")
-      private String configValue;
-      
-      // Проставление через метод можно использовать
-      // если нам важно отлавливать событие изменения
-      @EcosConfig("some-config-id")
-      private void setConfig(String value) {
-          System.out.println("New value: " + value);
-      }
-  }
+            // Проставление через поле можно использовать
+            // если нам не важно отлавливать событие изменения
+            // Для полей можно использовать "var" и "lateinit var"
+            @EcosConfig("some-config-id")
+            private var configValue: String? = null
+
+            // Проставление через метод можно использовать
+            // если нам важно отлавливать событие изменения
+            @EcosConfig("some-config-id")
+            private fun setConfig(value: String) {
+                println("New value: $value")
+            }
+        }
+
+   .. tab-item:: Java
+
+      .. code-block::
+
+        @Component
+        public class CustomComponent {
+
+            // Проставление через поле можно использовать
+            // если нам не важно отлавливать событие изменения
+            @EcosConfig("some-config-id")
+            private String configValue;
+
+            // Проставление через метод можно использовать
+            // если нам важно отлавливать событие изменения
+            @EcosConfig("some-config-id")
+            private void setConfig(String value) {
+                System.out.println("New value: " + value);
+            }
+        }
 
 Если необходимо вручную применить конфигурацию на основе аннотаций к некоторому бину (может потребоваться там где нет spring контекста), то можно использовать сервис **BeanConsumerService**.
 
@@ -186,14 +192,20 @@
 
 Считать этот параметр можно:
 
-1. Повесив аннотацию на поле: 
+.. tab-set::
 
-.. code-block::
+   .. tab-item:: Через поле
 
-  @EcosConfig("telegram-authtoken")
-  private String telegramAuthorizationToken;
+      Повесив аннотацию на поле:
 
-2.  Можно вместо поля сделать метод ``setAuthToken(String telegramAuthorizationToken)`` с той же аннотацией, и он будет вызываться при смене конфига (если нужно отслеживать изменение конфига без перезапуска).
+      .. code-block::
+
+        @EcosConfig("telegram-authtoken")
+        private String telegramAuthorizationToken;
+
+   .. tab-item:: Через метод
+
+      Можно вместо поля сделать метод ``setAuthToken(String telegramAuthorizationToken)`` с той же аннотацией, и он будет вызываться при смене конфига (если нужно отслеживать изменение конфига без перезапуска).
 
 Общая архитектура работы конфигураций
 --------------------------------------
@@ -202,28 +214,37 @@
        :width: 500
        :align: center
 
-* **TargetBean** - целевой бин с аннотациями ``@EcosConfig``;
-* **resources** - папка ресурсов в приложении;
-* **some-config.yml** - некоторый конфиг в директории ``resources/eapps/artifacts/app/config``;
-* **Artifacts Source** - источник артефактов, который загружает артефакты из папки ``resources/eapps/artifacts``;
-* **EcosConfigService** - сервис конфигураций;
+.. list-table::
+   :class: tight-table
 
-Получение конфигурации при старте системы:
+   * - **TargetBean**
+     - Целевой бин с аннотациями ``@EcosConfig``
+   * - **resources**
+     - Папка ресурсов в приложении
+   * - **some-config.yml**
+     - Некоторый конфиг в директории ``resources/eapps/artifacts/app/config``
+   * - **Artifacts Source**
+     - Источник артефактов, который загружает артефакты из папки ``resources/eapps/artifacts``
+   * - **EcosConfigService**
+     - Сервис конфигураций
 
-1. Подключаемся к Zookeeper и проверяем актуальное значение конфигурации там.
+.. dropdown:: Получение конфигурации при старте системы
+   :color: secondary
 
-  a. Если значение в Zookeeper отсутствует, то загружаем значение из **Artifacts Source** (т.е. напрямую из classpath);
-  b. Если значение найдено, то загружаем его;
+   1. Подключаемся к Zookeeper и проверяем актуальное значение конфигурации там.
 
-2. Все конфигурации, которое есть в app/config отправляются на микросервис ecos-apps через RabbitMQ (стандартный механизм деплоя артефактов);
-3. Микросервис ecos-apps сохраняет конфигурации у себя в таблице, чтобы в дальнейшем можно было работать с ними через интерфейс (UI);
+     a. Если значение в Zookeeper отсутствует, то загружаем значение из **Artifacts Source** (т.е. напрямую из classpath);
+     b. Если значение найдено, то загружаем его;
 
-  a. При этом если в таблице уже есть конфигурация с таким же scope и id, то сравнивается версия конфига. Если новая версия совпадает или меньше текущей, то поле value в таблице не меняется;
+   2. Все конфигурации, которое есть в app/config отправляются на микросервис ecos-apps через RabbitMQ (стандартный механизм деплоя артефактов);
+   3. Микросервис ecos-apps сохраняет конфигурации у себя в таблице, чтобы в дальнейшем можно было работать с ними через интерфейс (UI);
 
-4. После того как поле value у конфигурации в ecos-apps обновилось, микросервис отправляет новое значение в Zookeeper;
-5. Наше приложение подписано на события изменения данных в Zookeeper и когда там меняется значение мы его тут же применяем ко всем слушателям конфигурации.
+     a. При этом если в таблице уже есть конфигурация с таким же scope и id, то сравнивается версия конфига. Если новая версия совпадает или меньше текущей, то поле value в таблице не меняется;
 
-Когда пользователь в интерфейсе меняет значение конфигурации, то логика аналогична пунктам 3-5, но без проверки версии. 
+   4. После того как поле value у конфигурации в ecos-apps обновилось, микросервис отправляет новое значение в Zookeeper;
+   5. Наше приложение подписано на события изменения данных в Zookeeper и когда там меняется значение мы его тут же применяем ко всем слушателям конфигурации.
+
+   Когда пользователь в интерфейсе меняет значение конфигурации, то логика аналогична пунктам 3-5, но без проверки версии.
 
 Формы для конфигураций [rc5+]
 ------------------------------
@@ -252,33 +273,36 @@
 Модель
 --------
 
-.. code-block::
+.. dropdown:: Модель
+   :color: secondary
 
-  id: String // идентификатор конфигурации
-  name: MLText // имя конфигурации
-  scope: String // область действия конфигурации. По умолчанию "app/{{appName_приложения_в_котором_находится_артефакт}}" 
-  value: Any // значение конфигурации
-  version: Integer // версия конфигурации. Подробнее ниже.
-  valueDef: // описание значения в поле value
-    type: ConfigValueType // тип конфигурации. Если не задан, то будет вычислен автоматически [rc5+] на основе значения в value
-    multiple: Boolean // флаг "множественное значение"
-    formRef: RecordRef // форма для редактирования значения
+   .. code-block::
 
-* **ConfigValueType**  - одно из следующих значений:
+     id: String // идентификатор конфигурации
+     name: MLText // имя конфигурации
+     scope: String // область действия конфигурации. По умолчанию "app/{{appName_приложения_в_котором_находится_артефакт}}"
+     value: Any // значение конфигурации
+     version: Integer // версия конфигурации. Подробнее ниже.
+     valueDef: // описание значения в поле value
+       type: ConfigValueType // тип конфигурации. Если не задан, то будет вычислен автоматически [rc5+] на основе значения в value
+       multiple: Boolean // флаг "множественное значение"
+       formRef: RecordRef // форма для редактирования значения
 
-.. code-block::
+   * **ConfigValueType**  - одно из следующих значений:
 
-  ASSOC,
-  PERSON,
-  AUTHORITY_GROUP,
-  AUTHORITY,
-  TEXT,
-  MLTEXT,
-  NUMBER,
-  BOOLEAN,
-  DATE,
-  DATETIME,
-  JSON
+   .. code-block::
+
+     ASSOC,
+     PERSON,
+     AUTHORITY_GROUP,
+     AUTHORITY,
+     TEXT,
+     MLTEXT,
+     NUMBER,
+     BOOLEAN,
+     DATE,
+     DATETIME,
+     JSON
 
 Версия конфигурации
 ---------------------
@@ -313,9 +337,15 @@ Config Provider
 
 Стандартные провайдеры:
 
-* **ArtifactsConfigProvider** - конфигурация загружается из classpath;
-* **InMemConfigProvider** - in-memory провайдер. В основном используется для тестов; 
-* **ZkConfigProvider** - провайдер на основе Zookeeper.
+.. list-table::
+   :class: tight-table
+
+   * - **ArtifactsConfigProvider**
+     - Конфигурация загружается из classpath
+   * - **InMemConfigProvider**
+     - In-memory провайдер. В основном используется для тестов
+   * - **ZkConfigProvider**
+     - Провайдер на основе Zookeeper
 
 Обновление значения через патч Citeck
 --------------------------------------

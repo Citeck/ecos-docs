@@ -15,15 +15,6 @@
       :widths: 5 40
       :class: tight-table
 
-      * - | **Настроенный вид**
-
-
-        - |
-
-            .. image:: ../_static/widgets/html_1.png
-                 :width: 600
-                 :align: center
-
       * - | **Настройка**
 
 
@@ -36,6 +27,15 @@
           |  без использования редактора:
 
             .. image:: ../_static/widgets/html_4.png
+                 :width: 600
+                 :align: center
+
+      * - | **Настроенный вид**
+
+
+        - |
+
+            .. image:: ../_static/widgets/html_1.png
                  :width: 600
                  :align: center
 

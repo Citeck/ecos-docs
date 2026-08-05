@@ -21,7 +21,8 @@
 
 .. _widget_versions_journal_bpmn:
 
-Для **bpmn-процесса**:
+Для BPMN-процесса
+------------------
 
 .. image:: ../_static/widgets/version_3.png
        :width: 250

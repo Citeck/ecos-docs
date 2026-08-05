@@ -53,16 +53,77 @@ Citeck Launcher: локальный режим
 
 Три термина, которые встречаются в интерфейсе и в документации:
 
-- **Namespace** (пространство имён) — изолированный экземпляр платформы: свои контейнеры, тома и данные. С Linux- или Kubernetes-неймспейсами не связан — это понятие лончера. На типичном сервере запущен ровно один namespace.
-- **Bundle** (бандл) — набор приложений и их версий, образующих релиз платформы, например Community или Enterprise.
-- **Workspace** (рабочее пространство) — источник этих определений: обычно Git-репозиторий или офлайн-архив **.zip** для установки в изолированной сети.
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
+
+   * - Термин
+     - Описание
+   * - **Namespace** (пространство имён)
+     - Изолированный экземпляр платформы: свои контейнеры, тома и данные. С Linux- или Kubernetes-неймспейсами не связан — это понятие лончера. На типичном сервере запущен ровно один namespace.
+   * - **Bundle** (бандл)
+     - Набор приложений и их версий, образующих релиз платформы, например Community или Enterprise.
+   * - **Workspace** (рабочее пространство)
+     - Источник этих определений: обычно Git-репозиторий или офлайн-архив **.zip** для установки в изолированной сети.
+
+.. grid:: 1
+   :gutter: 2
+
+   .. grid-item-card:: Быстрый запуск Citeck
+      :link: quick_start
+      :link-type: ref
+
+      Пошаговая установка и первый запуск Citeck с помощью Docker.
+
+   .. grid-item-card:: Описание интерфейса
+      :link: launcher_overview
+      :link-type: ref
+
+      Обзор элементов интерфейса лончера: рабочие пространства, namespace, микросервисы, инструменты и настройки.
+
+   .. grid-item-card:: Обновление Citeck
+      :link: launcher_update
+      :link-type: ref
+
+      Обновление namespace до нового релиза без потери данных.
+
+   .. grid-item-card:: Создание нового пространства имён
+      :link: launcher_new_space
+      :link-type: ref
+
+      Создание нового namespace для запуска отдельного комплекта поставки.
+
+   .. grid-item-card:: Работа с секретами и мастер-паролем
+      :link: launcher_secrets
+      :link-type: ref
+
+      Мастер-пароль, шифрование секретов, их создание и удаление.
+
+   .. grid-item-card:: Работа со снэпшотами
+      :link: launcher_dump
+      :link-type: ref
+
+      Создание, импорт и восстановление снэпшотов данных тома.
+
+   .. grid-item-card:: Рабочие пространства
+      :link: launcher_workspace
+      :link-type: ref
+
+      Создание и выбор рабочих пространств (workspace) с независимыми конфигурациями.
+
+   .. grid-item-card:: Запуск в закрытом контуре
+      :link: launcher_internal_network
+      :link-type: ref
+
+      Перенос Docker-образов для развёртывания без доступа к интернету.
 
 .. toctree::
     :maxdepth: 3
+    :hidden:
 
     launcher/quick_start
     launcher/overview
-    launcher/update 
+    launcher/update
     launcher/namespace
     launcher/secrets
     launcher/dump

@@ -18,16 +18,11 @@
    :width: 200
    :align: center
 
-.. list-table::
-      :widths: 5 5
-      :class: tight-table
+Укажите **Имя** и выберите **Статус** из списка статусов, заполненных в :ref:`Citeck типе данных <roles_statuses>`.
 
-      * - Укажите **Имя** и выберите **Статус** из списка статусов, заполненных в :ref:`Citeck типе данных <roles_statuses>`
-
-        -
-               .. image:: _static/set_status/88.png
-                :width: 300
-                :align: center
+.. image:: _static/set_status/88.png
+   :width: 300
+   :align: center
 
 .. important::
 

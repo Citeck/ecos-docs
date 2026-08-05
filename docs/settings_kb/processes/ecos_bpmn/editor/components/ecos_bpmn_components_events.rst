@@ -3,16 +3,6 @@
 События
 ================
 
-.. toctree::
-    :maxdepth: 2
-
-    events/ecos_bpmn_components_timer
-    events/ecos_bpmn_components_conditional
-    events/ecos_bpmn_components_error
-    events/ecos_bpmn_components_signal
-    events/ecos_bpmn_components_termination
-    events/ecos_bpmn_components_event_subprocess
-
 **Событие** — один из ключевых элементов BPMN. В отличие от задачи, которая описывает действие (что нужно сделать), событие описывает факт, который происходит в ходе процесса и влияет на его выполнение: запускает процесс, изменяет его ход или завершает его. Примеры событий: истечение срока, получение сигнала от внешней системы, возникновение ошибки.
 
 Графические элементы событий в BPMN классифицируют в зависимости от положения события на схеме процесса:
@@ -97,43 +87,66 @@
       :width: 550
       :align: center
 
-.. list-table::
-      :widths: 5 5 20
-      :class: tight-table
+.. grid:: 1
+   :gutter: 3
 
-      * -
-          .. image:: _static/events/common_4.png
-                :width: 40
-                :align: center
+   .. grid-item-card:: Таймер
+      :link: ecos_bpmn_timer
+      :link-type: ref
 
-        - :ref:`Таймер <ecos_bpmn_timer>`
-        - | Используется для моделирования регулярных событий.
-          | Также таймер может использоваться для моделирования моментов времени, временных промежутков и превышения лимита времени.
-      * -
-          .. image:: _static/events/common_7.png
-                :width: 40
-                :align: center
+      .. image:: _static/events/common_4.png
+         :width: 100
+         :align: left
 
-        - :ref:`Условное <ecos_bpmn_conditional>`
-        - Используется для моделирования реакции бизнес-процесса на изменения условий.
-      * -
-          .. image:: _static/events/common_9.png
-                :width: 40
-                :align: center
+      Используется для моделирования регулярных событий. Также таймер может использоваться для моделирования моментов времени, временных промежутков и превышения лимита времени.
 
-        - :ref:`Ошибка <ecos_bpmn_error>`
-        - Используется для моделирования возможных ошибок при выполнении процесса, а также для отображения последовательности действий по устранению этих ошибок.
-      * -
-          .. image:: _static/events/common_5.png
-                :width: 40
-                :align: center
+   .. grid-item-card:: Условное
+      :link: ecos_bpmn_conditional
+      :link-type: ref
 
-        - :ref:`Сигнал <ecos_bpmn_events>`
-        - | Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями Citeck <bpmn_events_integrations>`.
-      * -
-          .. image:: _static/events/common_8.png
-                :width: 40
-                :align: center
+      .. image:: _static/events/common_7.png
+         :width: 100
+         :align: left
 
-        - :ref:`Прерывающее <ecos_bpmn_termination>`
-        - Вызывает немедленное завершение выполнения процесса, при этом все его активные потоки управления прерываются.
+      Используется для моделирования реакции бизнес-процесса на изменения условий.
+
+   .. grid-item-card:: Ошибка
+      :link: ecos_bpmn_error
+      :link-type: ref
+
+      .. image:: _static/events/common_9.png
+         :width: 100
+         :align: left
+
+      Используется для моделирования возможных ошибок при выполнении процесса, а также для отображения последовательности действий по устранению этих ошибок.
+
+   .. grid-item-card:: Сигнал
+      :link: ecos_bpmn_events
+      :link-type: ref
+
+      .. image:: _static/events/common_5.png
+         :width: 100
+         :align: left
+
+      Обозначает ожидание или отправку сигнала между процессами, используется интеграция с :ref:`событиями Citeck <bpmn_events_integrations>`.
+
+   .. grid-item-card:: Прерывающее
+      :link: ecos_bpmn_termination
+      :link-type: ref
+
+      .. image:: _static/events/common_8.png
+         :width: 100
+         :align: left
+
+      Вызывает немедленное завершение выполнения процесса, при этом все его активные потоки управления прерываются.
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    events/ecos_bpmn_components_timer
+    events/ecos_bpmn_components_conditional
+    events/ecos_bpmn_components_error
+    events/ecos_bpmn_components_signal
+    events/ecos_bpmn_components_termination
+    events/ecos_bpmn_components_event_subprocess

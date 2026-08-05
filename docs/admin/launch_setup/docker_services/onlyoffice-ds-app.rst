@@ -1,13 +1,18 @@
+.. _onlyoffice_ds_app:
+
 onlyoffice-ds-app
 ===================
 
-Назначение:
+.. contents::
+
+Назначение
 -------------
 Образ, включающий набор инструментов для развертывания onlyoffice-ds
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 ---------------------------------------
-::
+
+.. code-block:: yaml
 
 	onlyoffice-ds:
 	    logging:
@@ -30,9 +35,13 @@ onlyoffice-ds-app
 	      - /opt/onlyoffice/document_fonts:/usr/share/fonts/truetype/custom
 	      - /opt/onlyoffice/document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten
 
-Типовой вывод успешного развертывания в лог контейнера:
+Типовой вывод успешного развертывания в лог контейнера
 -----------------------------------------------------------------
-::
+
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	onlyoffice-ds               |  * Starting PostgreSQL 10 database server
 	onlyoffice-ds               |    ...done.
@@ -53,7 +62,7 @@ onlyoffice-ds-app
 	onlyoffice-ds               |  * Reloading nginx configuration nginx
 	onlyoffice-ds               |    ...done.
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/converter/err.log <==
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/converter/out.log <==
 	onlyoffice-ds               | [2020-05-14T20:35:52.505] [WARN] nodeJS - update cluster with 1 workers
 	onlyoffice-ds               | [2020-05-14T20:36:27.586] [WARN] nodeJS - update cluster with 1 workers
@@ -65,9 +74,9 @@ onlyoffice-ds-app
 	onlyoffice-ds               | [2020-05-15T09:48:35.735] [WARN] nodeJS - update cluster with 1 workers
 	onlyoffice-ds               | [2020-05-15T09:48:35.746] [WARN] nodeJS - worker 926 started.
 	onlyoffice-ds               | [2020-05-15T09:48:35.748] [WARN] nodeJS - update cluster with 1 workers
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/docservice/err.log <==
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/docservice/out.log <==
 	onlyoffice-ds               | [2020-05-14T20:36:05.671] [WARN] nodeJS - error description: docId = 0a2955d7-9505-421b-8e14-4bfaa68d994a_1.0 errorId = Other error
 	onlyoffice-ds               | [2020-05-14T20:36:26.944] [WARN] nodeJS - Express server starting...
@@ -79,13 +88,13 @@ onlyoffice-ds-app
 	onlyoffice-ds               | [2020-05-15T09:48:34.897] [WARN] nodeJS - Express server starting...
 	onlyoffice-ds               | [2020-05-15T09:48:34.901] [WARN] nodeJS - Plugins watch exception (https://nodejs.org/docs/latest/api/fs.html#fs_availability).
 	onlyoffice-ds               | [2020-05-15T09:48:35.083] [WARN] nodeJS - Express server listening on port 8000 in production-linux mode
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/gc/err.log <==
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/gc/out.log <==
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/metrics/err.log <==
-	onlyoffice-ds               | 
+	onlyoffice-ds               |
 	onlyoffice-ds               | ==> /var/log/onlyoffice/documentserver/metrics/out.log <==
 	onlyoffice-ds               |   gauges: { 'statsd.timestamp_lag': 0 },
 	onlyoffice-ds               |   timer_data: {},
@@ -97,4 +106,3 @@ onlyoffice-ds-app
 	onlyoffice-ds               |   pctThreshold: [ 90 ] }
 	onlyoffice-ds               | 15 May 09:48:02 - [796] reading config file: ./config/config.js
 	onlyoffice-ds               | 15 May 09:48:02 - server is up INFO
-

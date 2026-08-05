@@ -16,11 +16,26 @@
    :width: 400
    :align: center
 
-:ref:`Основные <journal_main>` — основные характеристики журнала.
+.. grid:: 1
+   :gutter: 2
 
-:ref:`Действия <journal_actions>` — настройка действий, доступных для журнала.
+   .. grid-item-card:: Основные
+      :link: journal_main
+      :link-type: ref
 
-:ref:`Расширенные настройки <journal_settings>` — дополнительные настройки журнала.
+      Основные характеристики журнала.
+
+   .. grid-item-card:: Действия
+      :link: journal_actions
+      :link-type: ref
+
+      Настройка действий, доступных для журнала.
+
+   .. grid-item-card:: Расширенные настройки
+      :link: journal_settings
+      :link-type: ref
+
+      Дополнительные настройки журнала.
 
 .. _journal_main:
 

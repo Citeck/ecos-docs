@@ -1,19 +1,21 @@
+.. _groups:
+
 Группы доступа
 ==================
 
-.. _groups:
+.. contents::
 
- .. image:: _static/groups/groups.png
-       :width: 800
-       :align: center
+.. image:: _static/groups/groups.png
+   :width: 800
+   :align: center
 
 В поставке Citeck представлены следующие группы:
 
 .. list-table::
-      :widths: 10 20 
+      :widths: 10 20
       :header-rows: 1
-      :class: tight-table 
-      
+      :class: tight-table
+
       * - Наименование группы
         - Описание
       * - **ECOS_ADMINISTRATORS**
@@ -67,15 +69,15 @@ URL внешнего портала
 
 Напротив группы нажать действие с шестеренкой:
 
- .. image:: _static/groups/ext_01.png
-       :width: 700
-       :align: center
+.. image:: _static/groups/ext_01.png
+   :width: 700
+   :align: center
 
 Во всплывающем окне настроить URL внешнего портала:
 
- .. image:: _static/groups/ext_02.png
-       :width: 400
-       :align: center
+.. image:: _static/groups/ext_02.png
+   :width: 400
+   :align: center
 
 После этого письма внешним пользователям, в шаблонах которых используется:
 
@@ -89,7 +91,7 @@ URL внешнего портала
 
 При этом если в уведомлении заполнены поля cc или bcc, то разделения не происходит и логика с URL внешнего портала не работает. 
 
-Иерерахия настройки URL внешнего портала
+Иерархия настройки URL внешнего портала
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 При вычислении URL внешнего портала используется следующая логика - URL может быть настроен для любой группы внутри **EXTERNAL_USERS** с любым уровнем вложенности и приоритетнее та настройка, которая находится глубже по иерархии.
 
@@ -102,9 +104,9 @@ URL внешнего портала
 
 Функционал разграничения реализован через новый флаг у групп - **Приватная группа (privateGroup)** и новую группу **UNIFIED_PRIVATE_GROUP** (Единая приватная группа).
 
- .. image:: _static/groups/private.png
-       :width: 600
-       :align: center
+.. image:: _static/groups/private.png
+   :width: 600
+   :align: center
 
 Если этот флаг выставлен, то:
 

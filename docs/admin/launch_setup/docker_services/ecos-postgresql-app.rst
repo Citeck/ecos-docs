@@ -1,21 +1,26 @@
+.. _ecos_postgresql_app:
+
 ecos-postgresql-app
 ====================
 
-Назначение:
+.. contents::
+
+Назначение
 ------------
 Образ, собранный на официальном образе postgresql 9.4.x с добавлением скрипта инициализации баз данных и пользователей
 
-Теги:
+Теги
 ------
 `nexus_alpine <http://nexus.citeck.ru/ecos-postgres:9.4-alpine>`_
 
-Базовые образы:
+Базовые образы
 ----------------
 **postgres:9.4-alpine** - официальный образ postgresql 9.4.x на базе alpine linux
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 ----------------------------------
-::
+
+.. code-block:: yaml
 
 	ecos-postgresql:
 	    container_name: ecos-postgresql
@@ -36,27 +41,49 @@ ecos-postgresql-app
 	    networks:
 	      - app_network
 
-Используемые переменные:
+Используемые переменные
 -------------------------
 
-*	**POSTGRES_PASSWORD** - обязательный параметр за исключением 
-*   **POSTGRES_HOST_AUTH_METHOD=trust**, пароль рутового пользователя
-*	**POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
-*	**POSTGRES_DB** - переопределение дефолтной базы данных
-*	**POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
-*	**POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
-*	**POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
-*	**PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
-*	**DB_NAME** - определение базы данных **ecos**
-*	**DB_USERNAME** - определение пользователя для базы данных **ecos/flowable/ecos-history**
-*	**DB_PASSWORD** - пароль создаваемого пользователя
-*	**FLOWABLE_DBNAME** - определение базы данных **flowable**
-*	**HISTORY_DBNAME** - определение базы данных для ecos-history-app (устаревший параметр, базы данных мкр вынесены в отдельный инстанс)
-*	**CASE_MODEL_DBNAME** - определение базы данных **ecos-case-model-app**
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
-Типовой вывод принятых настроек в лог контейнера:
+   * - Переменная
+     - Описание
+   * - **POSTGRES_PASSWORD**
+     - обязательный параметр за исключением **POSTGRES_HOST_AUTH_METHOD=trust**, пароль рутового пользователя
+   * - **POSTGRES_USER**
+     - переопределение дефолтного пользователя **postgres**
+   * - **POSTGRES_DB**
+     - переопределение дефолтной базы данных
+   * - **POSTGRES_INITDB_ARGS**
+     - дополнительные параметры для инициализации кластера
+   * - **POSTGRES_INITDB_WALDIR**
+     - переопределение дефолтной директории хранения логов транзакций
+   * - **POSTGRES_HOST_AUTH_METHOD**
+     - метод аутентификации host подключений для всех бд, пользователей и адресов в **pg_hba.conf**. Дефолтное значение **md5**
+   * - **PGDATA**
+     - переопределение дефолтной директории хранения фалов инициируемого кластера
+   * - **DB_NAME**
+     - определение базы данных **ecos**
+   * - **DB_USERNAME**
+     - определение пользователя для базы данных **ecos/flowable/ecos-history**
+   * - **DB_PASSWORD**
+     - пароль создаваемого пользователя
+   * - **FLOWABLE_DBNAME**
+     - определение базы данных **flowable**
+   * - **HISTORY_DBNAME**
+     - определение базы данных для ecos-history-app (устаревший параметр, базы данных мкр вынесены в отдельный инстанс)
+   * - **CASE_MODEL_DBNAME**
+     - определение базы данных **ecos-case-model-app**
+
+Типовой вывод принятых настроек в лог контейнера
 --------------------------------------------------
-::
+
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	The files belonging to this database system will be owned by user "postgres".
 	This user must also own the server process.
@@ -145,4 +172,3 @@ ecos-postgresql-app
 	LOG:  MultiXact member wraparound protections are now enabled
 	LOG:  database system is ready to accept connections
 	LOG:  autovacuum launcher started
-

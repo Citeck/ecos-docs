@@ -30,105 +30,131 @@
 Состав панели элементов
 --------------------------------------------
 
-.. list-table::
-      :widths: 1 5
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * -
-               .. image:: _static/12.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Activate the hand tool
+      :class-header: sd-font-weight-bold
 
-        - **Activate the hand tool** — используется для перемещения схемы вверх-вниз, вправо-влево, удерживая ее левой кнопкой мыши.
-      * -
-               .. image:: _static/13.png
-                :width: 30
-                :align: center
+      .. image:: _static/12.png
+         :width: 30
+         :align: left
 
-        - | **Activate the lasso tool** — используется для выделения области схемы — позволяет выделить несколько элементов схемы, удерживая левую кнопку мыши.
-          | Выделяются все элементы, попавшие в выделяемую область.
-      * -
-               .. image:: _static/14.png
-                :width: 30
-                :align: center
+      Используется для перемещения схемы вверх-вниз, вправо-влево, удерживая ее левой кнопкой мыши.
 
-        - | **Activate the create/remove space tool** — позволяет «раздвинуть» или «сжать» схему: указатель мыши ставится на то место на схеме, где нужно «раздвинуть» или «сжать» схему.
-          | И удерживая левую кнопку мыши, указателем переместить часть схемы в нужное место.
-      * -
-               .. image:: _static/15.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Activate the lasso tool
+      :class-header: sd-font-weight-bold
 
-        - | **Activate the global connect tool** — соединяющие элементы: поток управления (сплошная линия) и поток сообщений (прерывистая линия).
+      .. image:: _static/13.png
+         :width: 30
+         :align: left
+
+      Используется для выделения области схемы — позволяет выделить несколько элементов схемы, удерживая левую кнопку мыши. Выделяются все элементы, попавшие в выделяемую область.
+
+   .. grid-item-card:: Activate the create/remove space tool
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/14.png
+         :width: 30
+         :align: left
+
+      Позволяет «раздвинуть» или «сжать» схему: указатель мыши ставится на то место на схеме, где нужно «раздвинуть» или «сжать» схему, и, удерживая левую кнопку мыши, указателем нужно переместить часть схемы в нужное место.
+
+   .. grid-item-card:: Activate the global connect tool
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/15.png
+         :width: 30
+         :align: left
+
+      Соединяющие элементы: поток управления (сплошная линия) и поток сообщений (прерывистая линия).
 
 Элементы потока управления
 ----------------------------------------------------
 
-.. list-table::
-      :widths: 1 5
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * -
-               .. image:: _static/16.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Create StartEvent
+      :class-header: sd-font-weight-bold
 
-        - **Create StartEvent** — начальное :ref:`событие <bpmn_events>`
-      * -
-               .. image:: _static/17.png
-                :width: 30
-                :align: center
+      .. image:: _static/16.png
+         :width: 30
+         :align: left
 
-        - **Create Intermediate/Boundary Event** — промежуточное :ref:`событие <bpmn_events>`
-      * -
-               .. image:: _static/18.png
-                :width: 30
-                :align: center
+      Начальное :ref:`событие <bpmn_events>`.
 
-        - **Create EndEvent** — завершающее :ref:`событие <bpmn_events>`
-      * -
-               .. image:: _static/19.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Create Intermediate/Boundary Event
+      :class-header: sd-font-weight-bold
 
-        - **Create Gateway** — развилка или :ref:`шлюз <gateways>`, логический оператор
-      * -
-               .. image:: _static/20.png
-                :width: 30
-                :align: center
+      .. image:: _static/17.png
+         :width: 30
+         :align: left
 
-        - **Create Task** — задача
-      * -
-               .. image:: _static/21.png
-                :width: 30
-                :align: center
+      Промежуточное :ref:`событие <bpmn_events>`.
 
-        - **Create expanded SubProcess** — несколько задач, выделенные в :ref:`отдельную подзадачу <sub_process>`
-      * -
-               .. image:: _static/89.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Create EndEvent
+      :class-header: sd-font-weight-bold
 
-        - **Create Set document status** — :ref:`изменение значения статуса элемента бизнес-процесса <set_status>`
+      .. image:: _static/18.png
+         :width: 30
+         :align: left
 
-      * -
-               .. image:: _static/93.png
-                :width: 30
-                :align: center
+      Завершающее :ref:`событие <bpmn_events>`.
 
-        - | **AI Task** — задача, которая отвечает за вызов :ref:`AI <ai_task>`, по указанному промпту. 
-          | 
+   .. grid-item-card:: Create Gateway
+      :class-header: sd-font-weight-bold
 
-      * -
-               .. image:: _static/24.png
-                :width: 30
-                :align: center
+      .. image:: _static/19.png
+         :width: 30
+         :align: left
 
-        - | **Create Pool/Participant** — :ref:`пул <pool>`, используются для разграничения ответственности между задачами, организациями, пользователями.
-          | Пулы взаимодействуют между собой только потоками сообщений.
+      Развилка или :ref:`шлюз <gateways>`, логический оператор.
 
+   .. grid-item-card:: Create Task
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/20.png
+         :width: 30
+         :align: left
+
+      Задача.
+
+   .. grid-item-card:: Create expanded SubProcess
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/21.png
+         :width: 30
+         :align: left
+
+      Несколько задач, выделенные в :ref:`отдельную подзадачу <sub_process>`.
+
+   .. grid-item-card:: Create Set document status
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/89.png
+         :width: 30
+         :align: left
+
+      :ref:`Изменение значения статуса элемента бизнес-процесса <set_status>`.
+
+   .. grid-item-card:: AI Task
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/93.png
+         :width: 30
+         :align: left
+
+      Задача, которая отвечает за вызов :ref:`AI <ai_task>` по указанному промпту.
+
+   .. grid-item-card:: Create Pool/Participant
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/24.png
+         :width: 30
+         :align: left
+
+      :ref:`Пул <pool>`, используется для разграничения ответственности между задачами, организациями, пользователями. Пулы взаимодействуют между собой только потоками сообщений.
 
 Любой бизнес-процесс начинается с начального события и заканчивается конечным событием. См. подробно :ref:`Компоненты Citeck BPMN <ecos_bpmn_components>`.
 
@@ -140,62 +166,80 @@
 
 На панели рядом с элементом расположены следующие кнопки:
 
-.. list-table::
-      :widths: 1 5
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * -
-               .. image:: _static/27.png
-                :width: 70
-                :align: center
+   .. grid-item-card:: Создать следующий элемент
+      :class-header: sd-font-weight-bold
 
-        - создать следующий элемент схемы, связанный с выделенным потоком управления
-      * -
-               .. image:: _static/28.png
-                :width: 30
-                :align: center
+      .. image:: _static/27.png
+         :width: 70
+         :align: left
 
-        - добавить текст аннотации к элементу
-      * -
-               .. image:: _static/89.png
-                :width: 30
-                :align: center
+      Создать следующий элемент схемы, связанный с выделенным потоком управления.
 
-        - :ref:`изменить значение статуса <set_status>` элемента бизнес-процесса
+   .. grid-item-card:: Добавить аннотацию
+      :class-header: sd-font-weight-bold
 
-      * -
-               .. image:: _static/93.png
-                :width: 30
-                :align: center
+      .. image:: _static/28.png
+         :width: 30
+         :align: left
 
-        - | :ref:`AI задача <ai_task>`
+      Добавить текст аннотации к элементу.
 
-      * -
-               .. image:: _static/29.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: Изменить статус
+      :class-header: sd-font-weight-bold
 
-        - | изменить тип элемента
-          | Нажать для изменения типа элемента и далее выбрать соответствующий тип.
-      * -
-               .. image:: _static/30.png
-                :width: 30
-                :align: center
+      .. image:: _static/89.png
+         :width: 30
+         :align: left
 
-        - удалить элемент
-      * -
-               .. image:: _static/91.png
-                :width: 30
-                :align: center
+      :ref:`Изменить значение статуса <set_status>` элемента бизнес-процесса.
 
-        - изменить цвет элемента
-      * -
-               .. image:: _static/31.png
-                :width: 30
-                :align: center
+   .. grid-item-card:: AI задача
+      :class-header: sd-font-weight-bold
 
-        - связать элемент с любым другим на схеме
+      .. image:: _static/93.png
+         :width: 30
+         :align: left
+
+      :ref:`AI задача <ai_task>`.
+
+   .. grid-item-card:: Изменить тип элемента
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/29.png
+         :width: 30
+         :align: left
+
+      Нажать для изменения типа элемента и далее выбрать соответствующий тип.
+
+   .. grid-item-card:: Удалить элемент
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/30.png
+         :width: 30
+         :align: left
+
+      Удалить элемент.
+
+   .. grid-item-card:: Изменить цвет элемента
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/91.png
+         :width: 30
+         :align: left
+
+      Изменить цвет элемента.
+
+   .. grid-item-card:: Связать с другим элементом
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/31.png
+         :width: 30
+         :align: left
+
+      Связать элемент с любым другим на схеме.
 
 .. _bpmn_linter:
 
@@ -244,147 +288,237 @@
         - Описание
 
       * - **Элемент не подключен**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, связан ли элемент с другими элементами процесса через входящие или исходящие потоки управления.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_01.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_02.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_01.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_02.png
+                        :width: 250
+                        :align: center
       * - **Процесс/подпроцесс имеет несколько пустых начальных событий**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет наличие только одного пустого стартового события для каждого процесса (или подпроцесса).
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_03.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_04.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_03.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_04.png
+                        :width: 250
+                        :align: center
       * - **Входящие потоки не объединяются**
-        - Предупреждение
+        - :bdg-warning:`Предупреждение`
         - | Пользователи должны смоделировать параллельный шлюз для достижения желаемого поведения.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_05.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_06.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_05.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_06.png
+                        :width: 250
+                        :align: center
       * - **Gateway излишний, т.к. имеет только один ввод и вывод**
-        - Предупреждение
+        - :bdg-warning:`Предупреждение`
         - | Правило, проверяющее, имеет ли шлюз только один ввод и вывод. Такие шлюзы лишние, поскольку не несут никакой функциональности.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_07.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_08.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_07.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_08.png
+                        :width: 250
+                        :align: center
       * - **В процессе/подпроцессе отсутствует начальное событие**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет наличие простого начального события в процессе или подпроцессе (не событийном).
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_19.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_20.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_19.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_20.png
+                        :width: 250
+                        :align: center
       * - **В процессе/подпроцессе отсутствует конечное событие**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | У каждого процесса и подпроцесса должно быть конечное событие.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_09.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_10.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_09.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_10.png
+                        :width: 250
+                        :align: center
       * - **SequenceFlow: является дубликатом**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, что потоки управления не дублируются. Дублирование потоков управления приводит к непреднамеренному разветвлению.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_11.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_12.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_11.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_12.png
+                        :width: 250
+                        :align: center
       * - **SequenceFlow: дублирование входящих/исходящих потоков**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, что потоки управления не дублируются. Дублирование входящих/исходящих потоков управления приводит к непреднамеренному разветвлению.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_28.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_29.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_28.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_29.png
+                        :width: 250
+                        :align: center
       * - **Разветвления и соединения шлюза**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Правило, которое проверяет, одновременно ли разветвляется и соединяется шлюз.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_13.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_14.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_13.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_14.png
+                        :width: 250
+                        :align: center
       * - **Поток разделяется неявно**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, не моделируется ли неявное разделение после задачи. Вместо этого пользователям следует явно смоделировать параллельный шлюз.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_15.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_16.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_15.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_16.png
+                        :width: 250
+                        :align: center
       * - **Условие не применимо без Exclusive Gateway или Inclusive Gateway**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, если у потока управления без Exclusive Gateway или Inclusive Gateway задан тип условия.
 
                .. image:: _static/errors/Linter_err_32.png
@@ -392,7 +526,7 @@
                 :align: center
 
       * - **Последовательность операций: отсутствует условие**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет наличие типа условия у потока управления, выходящего из Exclusive Gateway или Inclusive Gateway.
 
                .. image:: _static/errors/Linter_err_30.png
@@ -402,7 +536,7 @@
           | См. подробно :ref:`типы условия <sequential flow_type>`.
 
       * - **Поток без условия рекомендуется помечать как Default**
-        - Предупреждение
+        - :bdg-warning:`Предупреждение`
         - | Проверяет, если несколько потоков управления выходят из exclusive и inclusive gateways, и у одного из потоков **Тип условия = Нет**, то такой поток нужно помечать как **default**.
 
                .. image:: _static/errors/Linter_err_31.png
@@ -412,36 +546,54 @@
           | См. как изменить :ref:`тип потока управления <sequential flow_change>`.
 
       * - **В стартовом событии отсутствует определение события**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Стартовые события внутри событийных подпроцессов должны быть типизированы (иметь определение события), что требует стандарт BPMN 2.0.
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_17.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_18.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_17.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_18.png
+                        :width: 250
+                        :align: center
       * - **Стартовое событие должно быть пустым**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяет, что начальное (стартовое) событие внутри обычного подпроцесса пусто (не имеют определения события).
-          | Пример **неправильного** использования правила:
+          | Пример использования правила:
 
-               .. image:: _static/errors/Linter_err_33.png
-                :width: 300
-                :align: center
+               .. grid:: 2
+                  :gutter: 2
 
-          | Пример **правильного** использования правила:
+                  .. grid-item::
 
-               .. image:: _static/errors/Linter_err_34.png
-                :width: 300
-                :align: center
+                     Неправильно:
+
+                     .. image:: _static/errors/Linter_err_33.png
+                        :width: 250
+                        :align: center
+
+                  .. grid-item::
+
+                     Правильно:
+
+                     .. image:: _static/errors/Linter_err_34.png
+                        :width: 250
+                        :align: center
 
       * - **Отсутствует элемент bpmndi**
-        - Ошибка
+        - :bdg-danger:`Ошибка`
         - | Проверяется отсутствие информации BPMNDI для элементов BPMN, которые должны иметь визуальное представление.
           | На каждый элемент BPMN (который требует визуального представления) ссылается элемент BPMNDI, который определяет, как визуально отображать соответствующий элемент.
           | Может случиться так, что пользователь случайно удалит такой элемент BPMNDI (например, непосредственно работая с XML). Это может привести к ошибкам, так как элемент BPMN по-прежнему интерпретировался бы при выполнении процесса, но больше не был бы виден в средствах графического моделирования.

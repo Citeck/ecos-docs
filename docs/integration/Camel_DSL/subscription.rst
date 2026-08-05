@@ -47,9 +47,23 @@
 
 Полная конфигурация с комментариями представлена во вложении. Для сценария примера нужно поменять:
 
-  1. beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] -> ['SED-main-document']**
-  2. route -> from -> parameters -> filter -> val[0] -> val:     **contract -> SED-agreement**
-  3. route -> from -> parameters -> filter -> val[1] -> val:     **integration-trigger -> ваш_статус**
+.. list-table::
+   :widths: 40 30 30
+   :header-rows: 1
+   :class: tight-table
+
+   * - Где
+     - Было
+     - Стало
+   * - ``beans[0] -> properties -> FILE_TYPES_TO_PROCESS``
+     - ``['scan-document']``
+     - ``['SED-main-document']``
+   * - ``route -> from -> parameters -> filter -> val[0] -> val``
+     - ``contract``
+     - ``SED-agreement``
+   * - ``route -> from -> parameters -> filter -> val[1] -> val``
+     - ``integration-trigger``
+     - ``ваш_статус``
 
 А так же создать :ref:`секрет <ecos_secret>` с **username/password** в журнале ``/v2/journals?journalId=ecos-secrets&viewMode=table&ws=admin$workspace``
 

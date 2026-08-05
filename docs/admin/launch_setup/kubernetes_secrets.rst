@@ -37,6 +37,7 @@ RabbitmqApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -74,6 +75,7 @@ EcosRegistryApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -107,6 +109,7 @@ EcosIdentityApp (Keycloak)
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -140,6 +143,7 @@ EcosProxyApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -171,6 +175,7 @@ EcosGatewayApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -209,6 +214,7 @@ MongoDBApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -253,6 +259,7 @@ EcosPostgresqlApp
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml
@@ -306,6 +313,7 @@ EcosMicroservicesPostgresqlApp
 .. list-table::
    :header-rows: 1
    :widths: 30 35 35
+   :class: tight-table
 
    * - Ключ в секрете
      - ``username`` в values.yaml
@@ -408,6 +416,7 @@ EcosApp
 .. list-table::
    :header-rows: 1
    :widths: 30 35 20 15
+   :class: tight-table
 
    * - Ключ в секрете
      - Поле в values.yaml

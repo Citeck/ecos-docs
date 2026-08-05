@@ -1,28 +1,30 @@
 .. _testing_workspace_api:
 
-Testing with WorkspaceApiMock
-==============================
+Тестирование с WorkspaceApiMock
+===============================
 
 .. contents::
    :depth: 4
 
-Overview
+Обзор
 --------
 
-Services that use workspace-scoped entities — such as ``ecos-uiserv`` — depend on
-``WorkspaceWebApi``, which calls ``ecos-model`` over HTTP to resolve workspace
-membership. During ``@SpringBootTest`` tests ``ecos-model`` is not running, so
-``WorkspaceWebApi.waitUntilEmodelApiIsAvailable()`` loops forever and tests hang
-indefinitely.
+Сервисы, использующие сущности с привязкой к рабочему пространству (workspace) —
+например, ``ecos-uiserv`` — зависят от ``WorkspaceWebApi``, который обращается к
+``ecos-model`` по HTTP для определения принадлежности к рабочему пространству. Во
+время ``@SpringBootTest`` тестов ``ecos-model`` не запущен, поэтому
+``WorkspaceWebApi.waitUntilEmodelApiIsAvailable()`` уходит в бесконечный цикл
+ожидания, и тесты зависают навсегда.
 
-The ``WorkspaceApiMock`` class, provided by ``ecos-webapp-lib-spring-test``, solves
-this problem. It implements ``WorkspaceApi`` entirely in-memory, performs no HTTP
-calls, and is auto-discovered by Spring Boot in test scope.
+Класс ``WorkspaceApiMock``, предоставляемый ``ecos-webapp-lib-spring-test``,
+решает эту проблему. Он полностью реализует ``WorkspaceApi`` в памяти, не
+выполняет HTTP-вызовов и автоматически обнаруживается Spring Boot в тестовой
+области видимости.
 
-Problem: Hanging Tests
-----------------------
+Проблема: зависающие тесты
+----------------------------
 
-The call chain that triggers the hang:
+Цепочка вызовов, приводящая к зависанию:
 
 .. code-block:: text
 
@@ -30,22 +32,22 @@ The call chain that triggers the hang:
       → WorkspaceServiceImpl.addWsPrefixToId()
         → WorkspaceWebApi.mapIdentifiers()
           → WorkspaceWebApi.waitUntilEmodelApiIsAvailable()
-            → infinite sleep loop
+            → бесконечный цикл ожидания
 
-Whenever a test exercises any code path that resolves a workspace-prefixed
-identifier, the whole test suite will stall unless a test-safe ``WorkspaceApi``
-implementation is present.
+Если тест затрагивает любой участок кода, который определяет идентификатор с
+префиксом рабочего пространства, весь набор тестов зависнет, если не
+предоставлена тест-совместимая реализация ``WorkspaceApi``.
 
-Solution: WorkspaceApiMock
+Решение: WorkspaceApiMock
 --------------------------
 
-``WorkspaceApiMock`` is shipped in the ``ecos-webapp-lib-spring-test`` module
-(in ``src/main``, so it is exported as part of the module artifact). It is
-annotated with ``@Component``, so Spring Boot's component scan picks it up
-automatically when the module is on the test classpath.
+``WorkspaceApiMock`` поставляется в модуле ``ecos-webapp-lib-spring-test``
+(в ``src/main``, поэтому он экспортируется как часть артефакта модуля). Он
+аннотирован ``@Component``, поэтому компонентное сканирование Spring Boot
+автоматически подхватывает его, когда модуль присутствует в тестовом classpath.
 
-``ModelServiceFactoryInitializer`` was extended to optionally inject any
-``WorkspaceApi`` bean:
+``ModelServiceFactoryInitializer`` был расширен для опциональной инъекции
+любого бина ``WorkspaceApi``:
 
 .. code-block:: kotlin
 
@@ -54,20 +56,20 @@ automatically when the module is on the test classpath.
 
     @PostConstruct
     fun init() {
-        // ... other injections ...
+        // ... другие инъекции ...
         workspaceApi?.let { modelServices.setWorkspaceApi(it) }
     }
 
-When ``WorkspaceApiMock`` is present (test scope), it is injected and overrides
-``WorkspaceWebApi``. In production deployments — where the test module is not on
-the classpath — ``ModelServiceFactory`` falls back to the default
-``WorkspaceWebApi``. No production code is affected.
+Когда ``WorkspaceApiMock`` присутствует (тестовая область видимости), он
+инъецируется и переопределяет ``WorkspaceWebApi``. В продуктивных развёртываниях
+(где тестового модуля нет в classpath) ``ModelServiceFactory`` использует
+``WorkspaceWebApi`` по умолчанию. Продуктивный код никак не затрагивается.
 
-Setup
------
+Настройка
+---------
 
-Add ``ecos-webapp-lib-spring-test`` as a test-scoped dependency in your service's
-``pom.xml``:
+Добавьте ``ecos-webapp-lib-spring-test`` как тестовую зависимость в
+``pom.xml`` вашего сервиса:
 
 .. code-block:: xml
 
@@ -77,15 +79,15 @@ Add ``ecos-webapp-lib-spring-test`` as a test-scoped dependency in your service'
         <scope>test</scope>
     </dependency>
 
-That is all. In any ``@SpringBootTest``, the ``WorkspaceApiMock`` bean is
-automatically discovered and injected into ``ModelServiceFactory``. No explicit
-``@Import`` or additional configuration is required.
+Это всё, что требуется. В любом ``@SpringBootTest`` бин ``WorkspaceApiMock``
+автоматически обнаруживается и инъецируется в ``ModelServiceFactory``. Явный
+``@Import`` или дополнительная конфигурация не нужны.
 
-Configuring Test Data
----------------------
+Настройка тестовых данных
+--------------------------
 
-Inject ``WorkspaceApiMock`` directly into your test class to set up workspace
-members and managers:
+Инъецируйте ``WorkspaceApiMock`` напрямую в тестовый класс, чтобы настроить
+участников (members) и менеджеров рабочего пространства:
 
 .. code-block:: kotlin
 
@@ -101,7 +103,7 @@ members and managers:
 
         @BeforeEach
         fun setUp() {
-            workspaceApiMock.clear()  // always reset between tests
+            workspaceApiMock.clear()  // всегда сбрасывайте состояние между тестами
         }
 
         @Test
@@ -114,44 +116,58 @@ members and managers:
         }
     }
 
-Available methods on ``WorkspaceApiMock``:
+Доступные методы ``WorkspaceApiMock``:
 
 .. list-table::
    :widths: 30 70
    :header-rows: 1
    :class: tight-table
 
-   * - Method
-     - Description
+   * - Метод
+     - Описание
    * - ``addMember(workspace, user)``
-     - Registers ``user`` as a member of ``workspace``.
+     - Регистрирует ``user`` как участника ``workspace``.
    * - ``addManager(workspace, user)``
-     - Registers ``user`` as a manager of ``workspace``.
+     - Регистрирует ``user`` как менеджера ``workspace``.
    * - ``clear()``
-     - Removes all members and managers added so far.
+     - Удаляет всех добавленных ранее участников и менеджеров.
 
-Default Behavior
-----------------
+Поведение по умолчанию
+------------------------
 
-When no data has been configured via ``addMember()`` / ``addManager()``:
+Пока данные не настроены через ``addMember()`` / ``addManager()``:
 
-* ``getUserWorkspaces(user)`` returns ``setOf("user$<username>")`` — the
-  personal workspace, matching real ``WorkspaceService`` behavior.
-* ``getNestedWorkspaces(workspaces)`` returns empty sets for all input workspaces.
-* ``mapIdentifiers(ids, type)`` returns identifiers unchanged (identity mapping).
-* ``isUserManagerOf(user, workspace)`` returns ``false``.
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+   :class: tight-table
+
+   * - Метод
+     - Поведение по умолчанию
+   * - ``getUserWorkspaces(user)``
+     - Возвращает ``setOf("user$<username>")`` — персональное рабочее
+       пространство, что соответствует реальному поведению
+       ``WorkspaceService``.
+   * - ``getNestedWorkspaces(workspaces)``
+     - Возвращает пустые множества для всех переданных рабочих пространств.
+   * - ``mapIdentifiers(ids, type)``
+     - Возвращает идентификаторы без изменений (тождественное отображение).
+   * - ``isUserManagerOf(user, workspace)``
+     - Возвращает ``false``.
 
 .. important::
 
-    ``WorkspaceApiMock`` is a singleton Spring bean shared across all tests in a
-    test run. State configured in one test persists into the next. **Always call**
-    ``workspaceApiMock.clear()`` in ``@BeforeEach`` to ensure test isolation.
+    ``WorkspaceApiMock`` — это Spring-бин с единственным экземпляром (singleton),
+    общий для всех тестов в рамках одного тестового прогона. Состояние,
+    настроенное в одном тесте, сохраняется и в следующем. **Всегда вызывайте**
+    ``workspaceApiMock.clear()`` в ``@BeforeEach``, чтобы обеспечить изоляцию
+    тестов.
 
-Guarding Against Regressions
------------------------------
+Защита от регрессий
+----------------------
 
-To explicitly protect against any future regression that re-introduces a hang,
-annotate time-sensitive tests with ``@Timeout``:
+Чтобы явно защититься от возможной будущей регрессии, из-за которой зависание
+вернётся, помечайте чувствительные ко времени тесты аннотацией ``@Timeout``:
 
 .. code-block:: kotlin
 
@@ -162,28 +178,37 @@ annotate time-sensitive tests with ``@Timeout``:
         assertThat(result).isNotNull()
     }
 
-If the underlying code ever starts blocking again, the test will fail with a
-timeout error rather than hanging the entire CI pipeline.
+Если базовый код снова начнёт блокироваться, тест завершится с ошибкой
+таймаута, а не зависнет вместе со всем CI-пайплайном.
 
-Module Structure Note
----------------------
+Примечание о структуре модуля
+--------------------------------
 
-``WorkspaceApiMock`` lives in ``src/main`` of the ``ecos-webapp-lib-spring-test``
-module — not in ``src/test``. This distinction is intentional:
+``WorkspaceApiMock`` находится в ``src/main`` модуля
+``ecos-webapp-lib-spring-test``, а не в ``src/test``. Это разделение сделано
+намеренно:
 
-* **``src/main``** — code that is compiled into the module artifact and exported
-  to consumers' test classpaths.
-* **``src/test``** — internal tests of the module itself (e.g.,
-  ``WorkspaceApiMockTest``).
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+   :class: tight-table
 
-Any ``@Component`` or ``@Configuration`` class that must be auto-discovered by
-consuming services' Spring Boot tests must reside in ``src/main`` of the test
-module.
+   * - Каталог
+     - Назначение
+   * - ``src/main``
+     - Код, который компилируется в артефакт модуля и экспортируется в
+       тестовый classpath потребителей.
+   * - ``src/test``
+     - Внутренние тесты самого модуля (например, ``WorkspaceApiMockTest``).
 
-See Also
---------
+Любой класс ``@Component`` или ``@Configuration``, который должен
+автоматически обнаруживаться Spring Boot тестами сервисов-потребителей,
+должен находиться в ``src/main`` тестового модуля.
 
-* :ref:`Creating a new microservice <mcs_setup>` — general guide on setting up
-  a Spring Boot microservice with Citeck.
-* :ref:`Demo microservice <demo_microservice>` — a working example of a
-  Citeck microservice with tests.
+См. также
+---------
+
+* :ref:`Создание нового микросервиса <mcs_setup>` — общее руководство по
+  настройке Spring Boot микросервиса в Citeck.
+* :ref:`Демо-микросервис <demo_microservice>` — рабочий пример микросервиса
+  Citeck с тестами.
