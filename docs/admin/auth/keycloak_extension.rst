@@ -1,7 +1,7 @@
+.. _keycloak_extension:
+
 Citeck KeyCloak Extension
 =========================
-
-.. _keycloak_extension:
 
 .. note::
 
@@ -42,17 +42,25 @@ Citeck KeyCloak Extension
        :align: center
        :alt: Колонки
 
-**ENV Конфигурация**
+ENV Конфигурация
+~~~~~~~~~~~~~~~~
 
-``ECOS_KK_RMQ_HOST=rabbitmq-dev`` - хост для подключения к rabbitmq
+.. list-table::
+   :class: tight-table
+   :header-rows: 1
 
-``ECOS_KK_RMQ_USERNAME=admin`` - пользователь для подключения к rabbitmq
-
-``ECOS_KK_RMQ_PASSWORD=admin`` - пароль для подключения к rabbitmq
-
-``ECOS_KK_ZK_HOST=zookeeper-app`` - хост для подключения к zookeeper
-
-``ECOS_KK_LISTEN_PERSON_DISABLED_STATUS={{EcosIdentityApp.ecosExtensions.listenPersonDisabledStatus}}``
+   * - Переменная
+     - Описание
+   * - ``ECOS_KK_RMQ_HOST=rabbitmq-dev``
+     - Хост для подключения к rabbitmq
+   * - ``ECOS_KK_RMQ_USERNAME=admin``
+     - Пользователь для подключения к rabbitmq
+   * - ``ECOS_KK_RMQ_PASSWORD=admin``
+     - Пароль для подключения к rabbitmq
+   * - ``ECOS_KK_ZK_HOST=zookeeper-app``
+     - Хост для подключения к zookeeper
+   * - ``ECOS_KK_LISTEN_PERSON_DISABLED_STATUS={{EcosIdentityApp.ecosExtensions.listenPersonDisabledStatus}}``
+     - Флаг синхронизации отключения пользователя (см. раздел «Возможности расширения»)
 
 Для доставки на стенды сформирован docker образ:
 

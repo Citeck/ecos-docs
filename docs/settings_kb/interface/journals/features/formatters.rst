@@ -17,39 +17,37 @@
 
 Перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`. Перейти в :guilabel:`Дополнительно`.
 
-.. list-table::
-   :widths: 20 20
-   :align: center
+.. grid:: 2
+   :gutter: 2
 
-   * - |
+   .. grid-item::
 
-         .. image:: _static/formatter/formatter_1.png
-            :width: 500
-            :align: center
+      .. image:: _static/formatter/formatter_1.png
+         :width: 500
+         :align: left
 
-     - |
+   .. grid-item::
 
-         .. image:: _static/formatter/formatter_2.png
-            :width: 500
-            :align: center
+      .. image:: _static/formatter/formatter_2.png
+         :width: 500
+         :align: left
 
 Выберите форматтер из списка, заполните ключ-значение:
 
-.. list-table::
-   :widths: 20 20
-   :align: center
+.. grid:: 2
+   :gutter: 2
 
-   * - |
+   .. grid-item::
 
-         .. image:: _static/formatter/formatter_3.png
-            :width: 300
-            :align: center
+      .. image:: _static/formatter/formatter_3.png
+         :width: 300
+         :align: center
 
-     - |
+   .. grid-item::
 
-         .. image:: _static/formatter/formatter_4.png
-            :width: 300
-            :align: center
+      .. image:: _static/formatter/formatter_4.png
+         :width: 300
+         :align: center
 
 
 Типы
@@ -204,27 +202,26 @@ ColoredFormatter / Цвет
 |
 
 
-.. list-table:: 
-      :widths: 50 50 50
+.. grid:: 3
+   :gutter: 2
 
-      * - | 
+   .. grid-item::
 
-            .. image:: _static/formatter/color_formatter_3.png
-              :width: 500
-              :align: center       
+      .. image:: _static/formatter/color_formatter_3.png
+         :width: 500
+         :align: left
 
-        - |  
+   .. grid-item::
 
-            .. image:: _static/formatter/color_formatter_4.png
-                 :width: 500
-                 :align: center     
+      .. image:: _static/formatter/color_formatter_4.png
+         :width: 500
+         :align: left
 
-        - | 
+   .. grid-item::
 
-             .. image:: _static/formatter/color_formatter_5.png
-                  :width: 500
-                  :align: center    
-				  
+      .. image:: _static/formatter/color_formatter_5.png
+         :width: 500
+         :align: left
 
 **Базовое использование с предопределёнными цветами**
 

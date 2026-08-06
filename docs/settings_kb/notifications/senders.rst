@@ -51,6 +51,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 25 75
+   :class: tight-table
 
    * - Поле
      - Описание
@@ -98,6 +99,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 40 30 30
+   :class: tight-table
 
    * - Id
      - Тип уведомления
@@ -128,6 +130,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 25 75
+   :class: tight-table
 
    * - Параметр
      - Описание
@@ -192,6 +195,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 20 80
+   :class: tight-table
 
    * - Статус
      - Описание

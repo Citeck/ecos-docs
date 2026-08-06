@@ -126,24 +126,20 @@
 
 По умолчанию корневой папкой с артефактами для приложения Citeck - ``src/main/resources/app/artifacts``, для микросервиса -  ``src/main/resources/eapps/artifacts``
 
-.. list-table::
-      :widths: 10 10
-      :align: center
-      :header-rows: 1
+.. grid:: 2
+   :gutter: 2
 
-      * - Приложение Citeck
-        - Микросервис Citeck
+   .. grid-item-card:: Приложение Citeck
 
-      * - 
-            .. image:: _static/artifacts/ecos_app.png
-               :width: 400
-               :align: center
+      .. image:: _static/artifacts/ecos_app.png
+         :width: 400
+         :align: center
 
-        - 
-  
-            .. image:: _static/artifacts/ecos_mks.png
-               :width: 400
-               :align: center
+   .. grid-item-card:: Микросервис Citeck
+
+      .. image:: _static/artifacts/ecos_mks.png
+         :width: 400
+         :align: center
 
 Например, для **ECOS приложения Поручения**, структура папки следующая:
 
@@ -155,189 +151,192 @@
 Типы артефактов
 ---------------
 
-.. list-table::
-      :widths: 15 15 20
-      :header-rows: 1
-      :class: tight-table
-      :align: center
+.. dropdown:: Полный список типов артефактов по микросервисам
+   :color: secondary
 
-      * - Тип
-        - Микросервис
-        - Примечание
-      * - model/aspect
-        - ecos-model
-        - Аспект
-      * - model/authorities-sync
-        - ecos-model
-        - Синхронизация пользователей и групп
-      * - model/endpoint
-        - ecos-model
-        - Конечная точка
-      * - model/num-template
-        - ecos-model
-        - Шаблоны нумерации
-      * - model/permission-def
-        - ecos-model
-        - Описание права
-      * - model/Permission settings
-        - ecos-model
-        - Настройка прав
-      * - model/permissions
-        - ecos-model
-        - Права доступа
-      * - model/secret
-        - ecos-model
-        - Секрет
-      * - model/type
-        - ecos-model
-        - Типы данных
-      * - model/working-calendar
-        - ecos-model
-        - Производственный календарь
-      * - model/working-schedule
-        - ecos-model
-        - Рабочее расписание
-      * - model/workspace
-        - ecos-model
-        - Рабочее пространство
-      * - model/workspace-template
-        - ecos-model
-        - Шаблон рабочего пространства
-      * - model/workspace-member
-        - ecos-model
-        - Участник рабочего пространства
-      * - 
-        - 
-        - 
-      * - ui/action
-        - ecos-uiserv
-        - Действия
-      * - ui/admin-sections-group
-        - ecos-uiserv
-        - Группа разделов администратора
-      * - ui/board
-        - ecos-uiserv
-        - Канбан доска
-      * - ui/dashboard
-        - ecos-uiserv
-        - Дашборды
-      * - ui/form
-        - ecos-uiserv
-        - Формы
-      * - ui/i18n
-        - ecos-uiserv
-        - Локализация
-      * - ui/icon
-        - ecos-uiserv
-        - Набор иконок
-      * - ui/journal-settings
-        - ecos-uiserv
-        - Настройки журнала
-      * - ui/journal
-        - ecos-uiserv
-        - Журналы
-      * - ui/menu
-        - ecos-uiserv
-        - Меню
-      * - ui/theme
-        - ecos-uiserv
-        - Пользовательские темы
-      * - 
-        - 
-        - 
-      * - app/artifact-patch
-        - ecos-apps
-        - Патч для артефакта
-      * - app/config
-        - ecos-apps
-        - Конфигурация
-      * - app/dev-module
-        - ecos-apps
-        - Модуль разработки
-      * - app/ecosapp
-        - ecos-apps
-        - Приложение ECOS
-      * - app/license
-        - ecos-apps
-        - Лицензия ECOS
-      * - app/patch
-        - ecos-apps
-        - Патч
-      * - app/system-info
-        - ecos-apps
-        - Информация о системе
-      * - 
-        - 
-        - 
-      * - integration/camel-dsl
-        - ecos-integrations
-        - Конфигурации Camel DSL
-      * - integration/credentials
-        - ecos-integrations
-        - Учетные данные
-      * - integration/datasource
-        - ecos-integrations
-        - Источник данных
-      * - integration/ext-portal
-        - ecos-integrations
-        - Внешний портал
-      * - integration/file-import-config
-        - ecos-integrations
-        - Конфигурация импорта файлов
-      * - integration/in-webhook
-        - ecos-integrations
-        - Вебхук
-      * - integration/osgi-bundles
-        - ecos-integrations
-        - OSGi Пакет
-      * - integration/recsrc
-        - ecos-integrations
-        - Настройки внешней БД
-      * - integration/sync
-        - ecos-integrations
-        - Синхронизации
-      * - 
-        - 
-        - 
-      * - transformation/template
-        - ecos-transformations
-        - Шаблон документа
-      * - 
-        - 
-        - 
-      * - process/bpmn-kpi-settings
-        - ecos-process
-        - Настройка BPMN KPI
-      * - process/bpmn-section
-        - ecos-process
-        - BPMN раздел
-      * - process/bpmn-task-atts-sync
-        - ecos-process
-        - Синхронизация атрибутов задач BPMN
-      * - process/bpmn
-        - ecos-process
-        - BPMN процесс
-      * - process/dmn-section
-        - ecos-process
-        - DMN раздел
-      * - process/dmn
-        - ecos-process
-        - DMN
-      * - 
-        - 
-        - 
-      * - notification/file
-        - ecos-notifications
-        - Файлы уведомлений
-      * - notification/template
-        - ecos-notifications
-        - Шаблоны уведомлений
-      * - notification/sender
-        - ecos-notifications
-        - Отправители
-      * - notification/reminder
-        - ecos-notifications
-        - Напоминание
+   .. list-table::
+         :widths: 15 15 20
+         :header-rows: 1
+         :class: tight-table
+         :align: center
+
+         * - Тип
+           - Микросервис
+           - Примечание
+         * - model/aspect
+           - ecos-model
+           - Аспект
+         * - model/authorities-sync
+           - ecos-model
+           - Синхронизация пользователей и групп
+         * - model/endpoint
+           - ecos-model
+           - Конечная точка
+         * - model/num-template
+           - ecos-model
+           - Шаблоны нумерации
+         * - model/permission-def
+           - ecos-model
+           - Описание права
+         * - model/Permission settings
+           - ecos-model
+           - Настройка прав
+         * - model/permissions
+           - ecos-model
+           - Права доступа
+         * - model/secret
+           - ecos-model
+           - Секрет
+         * - model/type
+           - ecos-model
+           - Типы данных
+         * - model/working-calendar
+           - ecos-model
+           - Производственный календарь
+         * - model/working-schedule
+           - ecos-model
+           - Рабочее расписание
+         * - model/workspace
+           - ecos-model
+           - Рабочее пространство
+         * - model/workspace-template
+           - ecos-model
+           - Шаблон рабочего пространства
+         * - model/workspace-member
+           - ecos-model
+           - Участник рабочего пространства
+         * - 
+           - 
+           - 
+         * - ui/action
+           - ecos-uiserv
+           - Действия
+         * - ui/admin-sections-group
+           - ecos-uiserv
+           - Группа разделов администратора
+         * - ui/board
+           - ecos-uiserv
+           - Канбан доска
+         * - ui/dashboard
+           - ecos-uiserv
+           - Дашборды
+         * - ui/form
+           - ecos-uiserv
+           - Формы
+         * - ui/i18n
+           - ecos-uiserv
+           - Локализация
+         * - ui/icon
+           - ecos-uiserv
+           - Набор иконок
+         * - ui/journal-settings
+           - ecos-uiserv
+           - Настройки журнала
+         * - ui/journal
+           - ecos-uiserv
+           - Журналы
+         * - ui/menu
+           - ecos-uiserv
+           - Меню
+         * - ui/theme
+           - ecos-uiserv
+           - Пользовательские темы
+         * - 
+           - 
+           - 
+         * - app/artifact-patch
+           - ecos-apps
+           - Патч для артефакта
+         * - app/config
+           - ecos-apps
+           - Конфигурация
+         * - app/dev-module
+           - ecos-apps
+           - Модуль разработки
+         * - app/ecosapp
+           - ecos-apps
+           - Приложение ECOS
+         * - app/license
+           - ecos-apps
+           - Лицензия ECOS
+         * - app/patch
+           - ecos-apps
+           - Патч
+         * - app/system-info
+           - ecos-apps
+           - Информация о системе
+         * - 
+           - 
+           - 
+         * - integration/camel-dsl
+           - ecos-integrations
+           - Конфигурации Camel DSL
+         * - integration/credentials
+           - ecos-integrations
+           - Учетные данные
+         * - integration/datasource
+           - ecos-integrations
+           - Источник данных
+         * - integration/ext-portal
+           - ecos-integrations
+           - Внешний портал
+         * - integration/file-import-config
+           - ecos-integrations
+           - Конфигурация импорта файлов
+         * - integration/in-webhook
+           - ecos-integrations
+           - Вебхук
+         * - integration/osgi-bundles
+           - ecos-integrations
+           - OSGi Пакет
+         * - integration/recsrc
+           - ecos-integrations
+           - Настройки внешней БД
+         * - integration/sync
+           - ecos-integrations
+           - Синхронизации
+         * - 
+           - 
+           - 
+         * - transformation/template
+           - ecos-transformations
+           - Шаблон документа
+         * - 
+           - 
+           - 
+         * - process/bpmn-kpi-settings
+           - ecos-process
+           - Настройка BPMN KPI
+         * - process/bpmn-section
+           - ecos-process
+           - BPMN раздел
+         * - process/bpmn-task-atts-sync
+           - ecos-process
+           - Синхронизация атрибутов задач BPMN
+         * - process/bpmn
+           - ecos-process
+           - BPMN процесс
+         * - process/dmn-section
+           - ecos-process
+           - DMN раздел
+         * - process/dmn
+           - ecos-process
+           - DMN
+         * - 
+           - 
+           - 
+         * - notification/file
+           - ecos-notifications
+           - Файлы уведомлений
+         * - notification/template
+           - ecos-notifications
+           - Шаблоны уведомлений
+         * - notification/sender
+           - ecos-notifications
+           - Отправители
+         * - notification/reminder
+           - ecos-notifications
+           - Напоминание
 
 Переопределение артефактов
 --------------------------
@@ -390,88 +389,91 @@
 Создание нового типа артефакта
 -------------------------------
 
-1. Определяемся в какой микросервис должен попасть артефакт после деплоя.
+.. dropdown:: Пошаговая инструкция по созданию нового типа артефакта
+   :color: secondary
 
-2. В целевом приложении находим папку eapps в ресурсах и создаем там подпапки следующего содержания:
+   1. Определяемся в какой микросервис должен попасть артефакт после деплоя.
 
-   * первый уровень - раздел к которому относится артефакт (обычно 1 раздел == 1 микросервис. Например, ui → ecos-uiserv, integration → ecos-integrations, model → ecos-model и тд.)
+   2. В целевом приложении находим папку eapps в ресурсах и создаем там подпапки следующего содержания:
 
-   * второй уровень - локальный идентификатор типа (action, form, menu, dashboard, type, section и т.д.)
+      * первый уровень - раздел к которому относится артефакт (обычно 1 раздел == 1 микросервис. Например, ui → ecos-uiserv, integration → ecos-integrations, model → ecos-model и тд.)
 
-Не обязательно создавать именно 2 уровня, но желательно. Механизм поддерживает уровни любой вложенности от 1 до ограничений файловой системы).
+      * второй уровень - локальный идентификатор типа (action, form, menu, dashboard, type, section и т.д.)
 
-.. note:: 
+   Не обязательно создавать именно 2 уровня, но желательно. Механизм поддерживает уровни любой вложенности от 1 до ограничений файловой системы).
 
-  Следует учитывать, что создаваемая иерархия директорий будет использована как идентификатор типа артефакта. Поэтому следует внимательно к ней отнестись.
+   .. note:: 
 
-3. Создаем в получившейся директории файл type.yml примерно со следующим содержанием:
+     Следует учитывать, что создаваемая иерархия директорий будет использована как идентификатор типа артефакта. Поэтому следует внимательно к ней отнестись.
 
-.. code-block:: yaml
+   3. Создаем в получившейся директории файл type.yml примерно со следующим содержанием:
 
-  modelVersion: "1.0"
+   .. code-block:: yaml
 
-  source-id: "eform"
+     modelVersion: "1.0"
 
-  controller:
-      type: json
+     source-id: "eform"
 
-**modelVersion** - тип модели. В будущем будет использоваться для миграции старых артефактов.
+     controller:
+         type: json
 
-**sourceId** - ID источника данных (RecordsDAO) через который будет доступ к данным артефактам. Это поле необходимо если потребуется механизм разрешения зависимостей на стороне ECOS Apps. Если у артефакта не будет зависимостей, то можно поставить пустую строку.
+   **modelVersion** - тип модели. В будущем будет использоваться для миграции старых артефактов.
 
-**controller.type** - тип контроллера для типа артефакта. Определяет логику, по которой будут загружаться артефакты из директории и записываться в директорию. json - самый простой и понятный контроллер, который следует использовать при добавлении простых типов артефактов. Для сложных случаев существует script controller, который поддерживает описание логики чтения и записи артефактов на языке groovy (в перспективе добавятся другие языки вроде Kotlin).
+   **sourceId** - ID источника данных (RecordsDAO) через который будет доступ к данным артефактам. Это поле необходимо если потребуется механизм разрешения зависимостей на стороне ECOS Apps. Если у артефакта не будет зависимостей, то можно поставить пустую строку.
 
-4. Описываем хендлер для нашего артефакта:
+   **controller.type** - тип контроллера для типа артефакта. Определяет логику, по которой будут загружаться артефакты из директории и записываться в директорию. json - самый простой и понятный контроллер, который следует использовать при добавлении простых типов артефактов. Для сложных случаев существует script controller, который поддерживает описание логики чтения и записи артефактов на языке groovy (в перспективе добавятся другие языки вроде Kotlin).
 
-.. code-block:: java
+   4. Описываем хендлер для нашего артефакта:
 
-  @Slf4j
-  //все реализации интерфейса EcosModuleHandler в контексте будут зарегистрированы автоматически
-  @Component
-  @RequiredArgsConstructor
-  public class FormModuleHandler implements EcosModuleHandler<EcosFormModel> {
+   .. code-block:: java
 
-      private final EcosFormService formService;
+     @Slf4j
+     //все реализации интерфейса EcosModuleHandler в контексте будут зарегистрированы автоматически
+     @Component
+     @RequiredArgsConstructor
+     public class FormModuleHandler implements EcosModuleHandler<EcosFormModel> {
 
-      //При деплое артефакта он попадает в этот метод
-      @Override
-      public void deployModule(@NotNull EcosFormModel formModel) {
-          log.info("Form module received: " + formModel.getId() + " " + formModel.getFormKey());
-          formService.save(formModel);
-      }
+         private final EcosFormService formService;
 
-      // callback для отправки изменённого артефакта в ECOS Apps. Нужен для ведения истории всех ревизий
-      @Override
-      public void listenChanges(@NotNull Consumer<EcosFormModel> consumer) {
-          formService.addChangeListener(consumer);
-      }
+         //При деплое артефакта он попадает в этот метод
+         @Override
+         public void deployModule(@NotNull EcosFormModel formModel) {
+             log.info("Form module received: " + formModel.getId() + " " + formModel.getFormKey());
+             formService.save(formModel);
+         }
 
-      // метод, который вызывается перед деплоем. Если он вернет null, то деплой артефакта не произойдет
-      @Nullable
-      @Override
-      public ModuleWithMeta<EcosFormModel> prepareToDeploy(@NotNull EcosFormModel formModule) {
-          return getModuleMeta(formModule);
-      }
+         // callback для отправки изменённого артефакта в ECOS Apps. Нужен для ведения истории всех ревизий
+         @Override
+         public void listenChanges(@NotNull Consumer<EcosFormModel> consumer) {
+             formService.addChangeListener(consumer);
+         }
 
-      // Получение метаданных по артефакту (его ID и зависимости)
-      @NotNull
-      @Override
-      public ModuleWithMeta<EcosFormModel> getModuleMeta(@NotNull EcosFormModel formModule) {
-          return new ModuleWithMeta<>(formModule, new ModuleMeta(formModule.getId(), Collections.emptyList()));
-      }
+         // метод, который вызывается перед деплоем. Если он вернет null, то деплой артефакта не произойдет
+         @Nullable
+         @Override
+         public ModuleWithMeta<EcosFormModel> prepareToDeploy(@NotNull EcosFormModel formModule) {
+             return getModuleMeta(formModule);
+         }
 
-      // ID типа артефакта, для которого мы описали Handler. Должен соответствовать иерархии папок из п.2
-      @NotNull
-      @Override
-      public String getModuleType() {
-          return "ui/form";
-      }
-  }
+         // Получение метаданных по артефакту (его ID и зависимости)
+         @NotNull
+         @Override
+         public ModuleWithMeta<EcosFormModel> getModuleMeta(@NotNull EcosFormModel formModule) {
+             return new ModuleWithMeta<>(formModule, new ModuleMeta(formModule.getId(), Collections.emptyList()));
+         }
+
+         // ID типа артефакта, для которого мы описали Handler. Должен соответствовать иерархии папок из п.2
+         @NotNull
+         @Override
+         public String getModuleType() {
+             return "ui/form";
+         }
+     }
 
 
-На этом описание типа артефакта можно считать законченным. Можно положить **.json** файлы в ``eapps/artifacts/ui/form``.
+   На этом описание типа артефакта можно считать законченным. Можно положить **.json** файлы в ``eapps/artifacts/ui/form``.
 
-При добавлении нового типа перезагрузки требует только микросервис, где мы этот тип описываем.
+   При добавлении нового типа перезагрузки требует только микросервис, где мы этот тип описываем.
 
 .. _ecos-artifacts_yaml:
 
@@ -689,159 +691,163 @@ filename - относительный путь до включаемого фа�
 Примеры
 """""""""
 
-Изменить атрибут для формы:
+.. tab-set::
 
-.. code-block:: yaml
+   .. tab-item:: Изменить атрибут для формы
 
-  id: change-label-for-form-field
+      .. code-block:: yaml
 
-  name:
-    ru: Изменить название кнопки на форме
-    en: Change button label on form
+        id: change-label-for-form-field
 
-  target: ui/form$ECOS_FORM
+        name:
+          ru: Изменить название кнопки на форме
+          en: Change button label on form
 
-  type: json
-  config:
-    operations:
-      - { op: set, path: '$..[?(@.key == "localization")].label', value: 'Свое название для кнопки локализации' }
+        target: ui/form$ECOS_FORM
 
-Добавить действие для типа:
+        type: json
+        config:
+          operations:
+            - { op: set, path: '$..[?(@.key == "localization")].label', value: 'Свое название для кнопки локализации' }
 
-.. code-block:: yaml
+   .. tab-item:: Добавить действие для типа
 
-  id: add-some-action-for-case
+      .. code-block:: yaml
 
-  name:
-    ru: Добавить действия для кейса
-    en: Add actions for case
+        id: add-some-action-for-case
 
-  target: model/type$cat-doc-type-general-case
+        name:
+          ru: Добавить действия для кейса
+          en: Add actions for case
 
-  type: json
-  config:
-    operations:
-      - { op: add, path: 'actions', value: 'uiserv/action@pdf-content-with-barcode' }
+        target: model/type$cat-doc-type-general-case
 
-Изменить текст в локализации по ключу:
+        type: json
+        config:
+          operations:
+            - { op: add, path: 'actions', value: 'uiserv/action@pdf-content-with-barcode' }
 
-.. code-block:: yaml
+   .. tab-item:: Изменить текст в локализации по ключу
 
-  id: change-ui-admin-localization
+      .. code-block:: yaml
 
-  name:
-    ru: Изменить локализацию для раздела администратора
-    en: Change localization for admin section
+        id: change-ui-admin-localization
 
-  target: ui/i18n$menu-messages
+        name:
+          ru: Изменить локализацию для раздела администратора
+          en: Change localization for admin section
 
-  type: json
-  config:
-    operations:
-      - { op: set, path: '$["messages"]["menu.header.admin-tools"][1]', value: 'Опциональный заголовок для меню администратора' }
+        target: ui/i18n$menu-messages
 
-Удалить действие:
+        type: json
+        config:
+          operations:
+            - { op: set, path: '$["messages"]["menu.header.admin-tools"][1]', value: 'Опциональный заголовок для меню администратора' }
 
-.. code-block:: yaml
+   .. tab-item:: Удалить действие
 
-  id: delete-action
+      .. code-block:: yaml
 
-  name:
-    ru: Удалить действие из типа
-    en: Delete action from type
+        id: delete-action
 
-  target: model/type$contracts-cat-doctype-contract
+        name:
+          ru: Удалить действие из типа
+          en: Delete action from type
 
-  type: json
-  config:
-    operations:
-      - { op: remove, path: '$.actions[?(@==\"uiserv/action@edit-in-onlyoffice\")]'}
+        target: model/type$contracts-cat-doctype-contract
 
-Изменить значение параметра Конфигурации ECOS some-config-id на 123:
+        type: json
+        config:
+          operations:
+            - { op: remove, path: '$.actions[?(@==\"uiserv/action@edit-in-onlyoffice\")]'}
 
-.. code-block:: yaml
+   .. tab-item:: Изменить значение параметра конфигурации
 
-  id: some-patch-id
-  
-  name:
-    ru: Изменение значения параметра конфигурации some-config-id
-    en: Change some-config-id config value
-  
-  target: app/config$app/notifications$some-config-id
-  
-  type: json
-  config:
-    operations:
-      - { op: set, path: '$.value', value: [ 123 ] }
-      - { op: set, path: '$.version', value: 1 }
+      Изменить значение параметра Конфигурации ECOS some-config-id на 123:
 
-Пример патча для добавления раздела меню:
+      .. code-block:: yaml
 
-.. code-block:: yaml
+        id: some-patch-id
 
-  id: menu-change-test
-  name: {ru: Добавить раздел, en: Add section }
-  target: 'ui/menu$default-menu-v1'
-  type: json
-  config:
-    operations:
-      - op: add
-        path: '$..[?(@.id == "sections")].items'
-        value: {
-          "id": "custom-meetings-section",
-          "label": {
-            "ru": "Совещания"
-          },
-          "icon": "ui/icon@i-leftmenu-meetings",
-          "type": "SECTION",
-          "items": [
+        name:
+          ru: Изменение значения параметра конфигурации some-config-id
+          en: Change some-config-id config value
+
+        target: app/config$app/notifications$some-config-id
+
+        type: json
+        config:
+          operations:
+            - { op: set, path: '$.value', value: [ 123 ] }
+            - { op: set, path: '$.version', value: 1 }
+
+   .. tab-item:: Добавить раздел меню
+
+      .. code-block:: yaml
+
+        id: menu-change-test
+        name: {ru: Добавить раздел, en: Add section }
+        target: 'ui/menu$default-menu-v1'
+        type: json
+        config:
+          operations:
+            - op: add
+              path: '$..[?(@.id == "sections")].items'
+              value: {
+                "id": "custom-meetings-section",
+                "label": {
+                  "ru": "Совещания"
+                },
+                "icon": "ui/icon@i-leftmenu-meetings",
+                "type": "SECTION",
+                "items": [
+                  {
+                    "id": "123-123-123-123-123",
+                    "label": {
+                      "en": "Совещания"
+                    },
+                    "type": "JOURNAL",
+                    "config": {
+                      "recordRef": "uiserv/journal@meetings"
+                    },
+                    "items": [],
+                    "allowedFor": []
+                  }
+                ]
+              }
+
+   .. tab-item:: Патч для артефакта в рабочем пространстве
+
+      .. code-block:: yaml
+
+        id: hide-field-in-team-workspace-form
+
+        name:
+          ru: Скрыть поле на форме в рабочем пространстве team-a
+          en: Hide field on form in workspace team-a
+
+        target: ui/form$some-form
+        workspace: team-a
+
+        type: json
+        config:
+          operations:
+            - { op: set, path: '$..[?(@.key == "internalNote")]', key: hidden, value: true }
+
+   .. tab-item:: Патч к булевым атрибутам формы
+
+      .. code-block:: json
+
+        {
+          "operations": [
             {
-              "id": "123-123-123-123-123",
-              "label": {
-                "en": "Совещания"
-              },
-              "type": "JOURNAL",
-              "config": {
-                "recordRef": "uiserv/journal@meetings"
-              },
-              "items": [],
-              "allowedFor": []
+              "op": "set",
+              "path": "$..[?(@.key==\"meetDateTime\")]",
+              "key": "hidden",
+              "value": true
             }
           ]
         }
-
-Пример патча для артефакта в рабочем пространстве:
-
-.. code-block:: yaml
-
-  id: hide-field-in-team-workspace-form
-
-  name:
-    ru: Скрыть поле на форме в рабочем пространстве team-a
-    en: Hide field on form in workspace team-a
-
-  target: ui/form$some-form
-  workspace: team-a
-
-  type: json
-  config:
-    operations:
-      - { op: set, path: '$..[?(@.key == "internalNote")]', key: hidden, value: true }
-
-Пример патча к булевым атрибутам компонента формы:
-
-.. code-block:: json
-
-  {
-    "operations": [
-      {
-        "op": "set",
-        "path": "$..[?(@.key==\"meetDateTime\")]",
-        "key": "hidden",
-        "value": true
-      }
-    ]
-  }
 
 
 Отображение артефактов разных категорий

@@ -20,19 +20,9 @@
     :alt: Поток выполнения внешних задач
 
 
-1. **Process Engine:** Создание экземпляра внешнего задания
-2. **External Worker:** Получение и блокировка внешних задач
-3. **External Worker & Process Engine:** Завершение экземпляра внешней задачи
-
-Когда движок процесса сталкивается с сервисной задачей, которая настроена на внешнюю обработку, 
-он создает экземпляр внешней задачи и добавляет его в список внешних задач **(шаг 1)**. 
-Экземпляр задачи получает топик, который идентифицирует характер задачи, которую необходимо выполнить. 
-В какой-то момент в будущем внешний обработчик может получить и заблокировать задания для определенного набора топиков **(шаг 2)**. 
-Чтобы предотвратить одновременное получение одной задачи несколькими обработчиками, 
-задача имеет timestamp-based блокировку, которая устанавливается при получении задачи. 
-Только когда блокировка истекает, другой обработчик может снова получить задание. 
-Когда внешний обработчик выполнил требуемую задачу, он может подать сигнал движку процесса 
-продолжить выполнение процесса после выполнения сервисной задачи **(шаг 3)**.
+1. **Process Engine: создание экземпляра внешнего задания.** Когда движок процесса сталкивается с сервисной задачей, которая настроена на внешнюю обработку, он создает экземпляр внешней задачи и добавляет его в список внешних задач. Экземпляр задачи получает топик, который идентифицирует характер задачи, которую необходимо выполнить.
+2. **External Worker: получение и блокировка внешних задач.** В какой-то момент в будущем внешний обработчик может получить и заблокировать задания для определенного набора топиков. Чтобы предотвратить одновременное получение одной задачи несколькими обработчиками, задача имеет timestamp-based блокировку, которая устанавливается при получении задачи. Только когда блокировка истекает, другой обработчик может снова получить задание.
+3. **External Worker & Process Engine: завершение экземпляра внешней задачи.** Когда внешний обработчик выполнил требуемую задачу, он может подать сигнал движку процесса продолжить выполнение процесса после выполнения сервисной задачи.
 
 .. note:: 
     **Аналогия с пользовательской задачей**
@@ -47,26 +37,24 @@
 не зависят от движка процесса и получают задания для обработки путем запроса API движка процесса. 
 Это дает следующие преимущества:
 
-1. **Crossing System Boundaries:** Внешний обработчик не обязательно должен работать в том же Java-процессе, 
-на той же машине, в том же кластере или даже на том же континенте, что и движок процесса. 
-Все, что требуется - доступ к API движка процесса (через REST или Java). 
-Благодаря polling-pattern, обработчику не нужно предоставлять какой-либо интерфейс для доступа к движку процесса.
+.. list-table::
+      :widths: 10 25
+      :header-rows: 1
+      :class: tight-table
+      :align: center
 
-1. **Crossing Technology Boundaries:** Внешний обработчик не обязательно должен быть реализован на Java. 
-Вместо этого можно использовать любую технологию, которая наиболее подходит для выполнения необходимой задачи 
-и может быть использована для доступа к API движка процесса (через REST или Java).
-
-1. **Specialized Workers:** Внешний обработчик не обязательно должен быть приложением общего назначения. 
-Каждый экземпляр внешнего обработчика получает имя топика, определяющее характер выполняемого задания. 
-Обработчики могут опрашивать задания только для тех топиков, над которыми они могут работать.
-
-1. **Fine-Grained Scaling:** При высокой нагрузке, сосредоточенной на обработке сервисных задач, 
-количество внешних обработчиков для соответствующих топиков может быть масштабировано независимо от движка процесса.
-
-1. **Independent Maintenance:** Обработчики можно разворачивать независимо от движка процесса без нарушения работы. 
-Например, если обработчик для определенного топика имеет простой (например, из-за обновления), 
-это не оказывает немедленного воздействия на движок процесса. Выполнение внешних заданий для таких рабочих 
-происходит плавно: Они сохраняются в списке внешних задач до тех пор, пока внешний обработчик не возобновит работу.
+      * - Преимущество
+        - Описание
+      * - **Crossing System Boundaries**
+        - Внешний обработчик не обязательно должен работать в том же Java-процессе, на той же машине, в том же кластере или даже на том же континенте, что и движок процесса. Все, что требуется — доступ к API движка процесса (через REST или Java). Благодаря polling-pattern, обработчику не нужно предоставлять какой-либо интерфейс для доступа к движку процесса.
+      * - **Crossing Technology Boundaries**
+        - Внешний обработчик не обязательно должен быть реализован на Java. Вместо этого можно использовать любую технологию, которая наиболее подходит для выполнения необходимой задачи и может быть использована для доступа к API движка процесса (через REST или Java).
+      * - **Specialized Workers**
+        - Внешний обработчик не обязательно должен быть приложением общего назначения. Каждый экземпляр внешнего обработчика получает имя топика, определяющее характер выполняемого задания. Обработчики могут опрашивать задания только для тех топиков, над которыми они могут работать.
+      * - **Fine-Grained Scaling**
+        - При высокой нагрузке, сосредоточенной на обработке сервисных задач, количество внешних обработчиков для соответствующих топиков может быть масштабировано независимо от движка процесса.
+      * - **Independent Maintenance**
+        - Обработчики можно разворачивать независимо от движка процесса без нарушения работы. Например, если обработчик для определенного топика имеет простой (например, из-за обновления), это не оказывает немедленного воздействия на движок процесса. Выполнение внешних заданий для таких обработчиков происходит плавно: они сохраняются в списке внешних задач до тех пор, пока внешний обработчик не возобновит работу.
 
 Spring Boot Starter для клиента внешних задач
 ----------------------------------------------
@@ -101,28 +89,31 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
 Для аннотации требуется как минимум имя топика. 
 
-Для более подвинутой конфигурации можно сослаться на имя топика в файле конфигурации spring-boot, например application.yml и применить настройки:
+Для более подвинутой конфигурации можно сослаться на имя топика в файле конфигурации spring-boot, например application.yml, либо определить атрибуты конфигурации через аннотацию:
 
-.. code-block:: yaml
+.. tab-set::
 
-    ecos.bpm.client:
-        subscriptions:
-            processPayment:
-                process-definition-key: payment_process
-                include-extension-properties: true
-                variable-names: defaultFlow
+      .. tab-item:: Через application.yml
 
+            .. code-block:: yaml
 
-Или определить атрибуты конфигурации через аннотацию:
+                ecos.bpm.client:
+                    subscriptions:
+                        processPayment:
+                            process-definition-key: payment_process
+                            include-extension-properties: true
+                            variable-names: defaultFlow
 
-.. code-block:: kotlin
+      .. tab-item:: Через атрибуты аннотации
 
-    @ExternalTaskSubscription(
-        topicName = "processPayment",
-        processDefinitionKey = "payment_process",
-        includeExtensionProperties = true,
-        variableNames = ["defaultFlow"]
-    )
+            .. code-block:: kotlin
+
+                @ExternalTaskSubscription(
+                    topicName = "processPayment",
+                    processDefinitionKey = "payment_process",
+                    includeExtensionProperties = true,
+                    variableNames = ["defaultFlow"]
+                )
 
 Полный список атрибутов можно найти в `Javadocs. <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.19/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_.
 
@@ -131,6 +122,9 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
 Пример конфигурации обработчика
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Один обработчик
+++++++++++++++++
 
 Вы можете сконфигурировать обработчик следующим образом:
 
@@ -146,6 +140,9 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
         }
 
     }
+
+Несколько обработчиков в одном классе
++++++++++++++++++++++++++++++++++++++
 
 Если вы хотите определить несколько бинов обработчиков в одном классе конфигурации, вы можете сделать это следующим образом:
 
@@ -176,23 +173,13 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
 Для манипуляции с задачей используется интерфейс `ExternalTaskService <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.19/org/camunda/bpm/client/task/ExternalTaskService.html>`_.
 
-Для успешного выполнения задачи необходимо вызвать метод `complete`: 
+Для успешного выполнения задачи необходимо вызвать метод `complete` (как в примере выше):
 
 .. code-block:: kotlin
 
-    @Component
-    @ExternalTaskSubscription("processPayment")
-    class PaymentProcessorWorker : ExternalTaskHandler {
+    externalTaskService.complete(externalTask)
 
-        override fun execute(externalTask: ExternalTask, externalTaskService: ExternalTaskService) {
-            // you business logic here
-            externalTaskService.complete(externalTask);
-        }
-
-    }
-
-Но happy path не всегда возможен, правильная 
-обработка ошибок внешних задач очень важна для обеспечения надежности и стабильности выполнения процессов.
+Но `happy path` не всегда возможен, правильная обработка ошибок внешних задач очень важна для обеспечения надежности и стабильности выполнения процессов.
 
 Обработка бизнес-ошибок
 ++++++++++++++++++++++++
@@ -219,83 +206,89 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
 Если в процессе обработки возникла техническая ошибка, то посредством метода `handleFailure` можно реализовать механизм повторной обработки задачи.
 
-Для удобства можно воспользоваться аннотацией `ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:
+.. tab-set::
 
-.. code-block:: java
+      .. tab-item:: С аннотацией @ExternalTaskRetry
 
-    @Component
-    @ExternalTaskSubscription("processPayment")
-    class PaymentProcessorWorker(
-        private val paymentService: PaymentService
-    ) : ExternalTaskHandler {
+            Для удобства можно воспользоваться аннотацией `ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:
 
-        @ExternalTaskRetry(
-            retries = 3,
-            retryTimeout = 10_000,
-            incrementRetryTimeout = true
-        )
-        override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
-            // you business logic here
-            paymentService.processPayment(task)
+            .. code-block:: kotlin
 
-            // complete, if successful
-            taskService.complete(task)
-        }
-    }
+                @Component
+                @ExternalTaskSubscription("processPayment")
+                class PaymentProcessorWorker(
+                    private val paymentService: PaymentService
+                ) : ExternalTaskHandler {
 
-Или реализовать механизм повторной обработки задачи вручную, со своей логикой повторной обработки:
+                    @ExternalTaskRetry(
+                        retries = 3,
+                        retryTimeout = 10_000,
+                        incrementRetryTimeout = true
+                    )
+                    override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
+                        // you business logic here
+                        paymentService.processPayment(task)
 
-.. code-block:: java
+                        // complete, if successful
+                        taskService.complete(task)
+                    }
+                }
 
-    @Component
-    @ExternalTaskSubscription("processPayment")
-    class PaymentProcessorWorker(
-        private val paymentService: PaymentService
-    ) : ExternalTaskHandler {
+      .. tab-item:: Вручную
 
-        companion object {
-            private val log = KotlinLogging.logger {}
+            Механизм повторной обработки задачи можно реализовать вручную, со своей логикой повторной обработки:
 
-            private const val ONE_MINUTE = 1000L * 60
-            private const val MAX_RETRIES = 5
-        }
+            .. code-block::
 
-        override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
-            try {
-                // you business logic here
-                paymentService.processPayment(task)
+                @Component
+                @ExternalTaskSubscription("processPayment")
+                class PaymentProcessorWorker(
+                    private val paymentService: PaymentService
+                ) : ExternalTaskHandler {
 
-                // complete, if successful
-                taskService.complete(task)
-            } catch (e: Exception) {
-                log.error("Error processing external task: ${task.id}", e)
+                    companion object {
+                        private val log = KotlinLogging.logger {}
 
-                val retries = getRetries(task)
-                val timeout = getNextTimeout(retries)
-                taskService.handleFailure(
-                    task, e.message,
-                    ExceptionUtils.getStackTrace(e),
-                    retries, timeout
-                )
-            }
-        }
+                        private const val ONE_MINUTE = 1000L * 60
+                        private const val MAX_RETRIES = 5
+                    }
 
-        private fun getRetries(task: ExternalTask): Int {
-            var retries = task.retries
-            retries = if (retries == null) {
-                MAX_RETRIES
-            } else {
-                retries - 1
-            }
-            return retries
-        }
+                    override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
+                        try {
+                            // you business logic here
+                            paymentService.processPayment(task)
 
-        private fun getNextTimeout(retries: Int): Long {
-            // increasing interval: 1 additional minute delay after each retry
-            return ONE_MINUTE * (MAX_RETRIES - retries)
-        }
+                            // complete, if successful
+                            taskService.complete(task)
+                        } catch (e: Exception) {
+                            log.error("Error processing external task: ${task.id}", e)
 
-    }
+                            val retries = getRetries(task)
+                            val timeout = getNextTimeout(retries)
+                            taskService.handleFailure(
+                                task, e.message,
+                                ExceptionUtils.getStackTrace(e),
+                                retries, timeout
+                            )
+                        }
+                    }
+
+                    private fun getRetries(task: ExternalTask): Int {
+                        var retries = task.retries
+                        retries = if (retries == null) {
+                            MAX_RETRIES
+                        } else {
+                            retries - 1
+                        }
+                        return retries
+                    }
+
+                    private fun getNextTimeout(retries: Int): Long {
+                        // increasing interval: 1 additional minute delay after each retry
+                        return ONE_MINUTE * (MAX_RETRIES - retries)
+                    }
+
+                }
 
 Если количество попыток обработки задачи исчерпано, то будет создан инцидент и задача помечена как `failed`, в дальнейшем требуется ручной разбор инцидента в административном интерфейсе.
 
@@ -303,9 +296,12 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 ++++++++++++++++++++++++++++++++
 
 В некоторых случаях возможна ситуация, когда в процессе обработки внешней задачи может возникнуть как бизнес-ошибка, так и техническая ошибка.
-В таком случае возможно использовать `@ExternalTaskRetry` и `handleBpmnError` вместе:
+В таком случае возможно использовать `@ExternalTaskRetry` и `handleBpmnError` вместе.
 
-.. code-block:: java
+Автоматический retry с проверкой результата
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block::
 
     @Component
     @ExternalTaskSubscription("processPayment")
@@ -330,9 +326,12 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 В данном случае, если в процессе обработки задачи возникнет техническая ошибка, например, случился `Exception` при выполнении метода `paymentService.processPayment` из-за проблем с сетью, 
 то задача будет повторно обработана согласно настройкам `@ExternalTaskRetry`. После успешного выполнения обратки платежа, если платеж был отклонен, то будет выброшена бизнес-ошибка, иначе - задача будет завершена успешно.
 
-Также можно реализовать кейс, когда после нескольких неудачных попыток обработки задачи из-за технической ошибки, необходимо выбросить бизнес-ошибку:
+Также можно реализовать кейс, когда после нескольких неудачных попыток обработки задачи из-за технической ошибки, необходимо выбросить бизнес-ошибку.
 
-.. code-block:: java
+Ручной контроль порога попыток
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block::
 
     @Component
     @ExternalTaskSubscription("processPayment")
@@ -341,22 +340,22 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
     ) : ExternalTaskHandler {
     
         companion object {
-            private  const val ATTEMPT_THRESHOLD = 1
+            private const val ATTEMPT_THRESHOLD = 1
         }
-    
+
         @ExternalTaskRetry
         override fun execute(task: ExternalTask, taskService: ExternalTaskService) {
             try {
                 // you business logic here
                 val processResult = paymentService.processPayment(task)
-    
+
                 // complete, if successful
                 taskService.complete(task)
             } catch (e: Exception) {
-                val retries = externalTask.retries
+                val retries = task.retries
                 if (retries >= ATTEMPT_THRESHOLD) {
                     // If the number of retries is greater than the threshold, then throw an BPMN error
-                    externalTaskService.handleBpmnError(externalTask, "paymentDenied", ExceptionUtils.getStackTrace(e))
+                    taskService.handleBpmnError(task, "paymentDenied", ExceptionUtils.getStackTrace(e))
                 } else {
                     // Otherwise throw root exception. Its will be handled by @ExternalTaskRetry
                     throw e
@@ -365,17 +364,20 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
         }
     }
 
-.. note:: 
-    При работе с внешними задачами и моделировании процесса необходимо учитывать, что внешние задачи 
+.. note::
+    При работе с внешними задачами и моделировании процесса необходимо учитывать, что внешние задачи
     выполняются асинхронно, а обработка ошибок является зоной ответственности внешнего обработчика.
 
     Если вы используете мутацию recordsService при обработке внешней задачи, то необходимо учитывать, что код обработки внешней задачи выполняется
     без транзакции. Вы можете пометить метод аннотацией `ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction` для выполнения кода внутри транзакции.
 
-    С более подробной документацией по внешним задачам можно ознакомиться по ссылкам:
+Дополнительные материалы
+----------------------------------------------
 
-     1. `External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-engine/external-tasks/#error-event-definitions>`_
-     2. `External Task Client <https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_
-     3. `External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19/user-guide/ext-client/spring-boot-starter/>`_ 
-     4. `Error Boundary Event <https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-events/#error-boundary-event>`_
+С более подробной документацией по внешним задачам можно ознакомиться по ссылкам:
+
+1. `External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-engine/external-tasks/#error-event-definitions>`_
+2. `External Task Client <https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_
+3. `External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19/user-guide/ext-client/spring-boot-starter/>`_
+4. `Error Boundary Event <https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-events/#error-boundary-event>`_
 

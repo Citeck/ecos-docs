@@ -3,6 +3,9 @@
 
 .. _new_workspace:
 
+.. contents::
+   :depth: 2
+
 В левом верхнем углу доступна кнопка для выбора рабочих пространств и создания нового:
 
  .. image:: _static/01_button_select_00.png

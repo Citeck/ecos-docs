@@ -41,66 +41,66 @@
 
 .. _actions_migration:
 
-Миграция версий
-~~~~~~~~~~~~~~~~
+.. dropdown:: Миграция версий
+   :color: secondary
 
-Вы можете перенести запущенные экземпляры процесса из текущей версии в другую версию, используя действие **Миграция версий**.
+   Вы можете перенести запущенные экземпляры процесса из текущей версии в другую версию, используя действие **Миграция версий**.
 
-.. image:: _static/migration_01.png
-   :width: 600
-   :align: center
-
-По нажатию на действие открывается отдельный экран миграции процесса. Указан процесс, из которого выбрано действие.
-
-.. image:: _static/migration_02.png
-   :width: 700
-   :align: center
-
-По нажатию на:
-
-.. list-table::
-      :widths: 5 10
+   .. image:: _static/migration_01.png
+      :width: 600
       :align: center
-      :class: tight-table
 
-      * -
-          .. image:: _static/migration_02_1.png
-              :width: 30
-              :align: center
+   По нажатию на действие открывается отдельный экран миграции процесса. Указан процесс, из которого выбрано действие.
 
-        - открывается карточка процесса с подробной информацией.
+   .. image:: _static/migration_02.png
+      :width: 700
+      :align: center
 
-На схеме исходной версии процесса отмечены счетчики запущенных экземпляров процесса (инстансов) и инцидентов:
+   По нажатию на:
 
-.. image:: _static/migration_02_element.png
-   :width: 400
-   :align: center
+   .. list-table::
+         :widths: 5 10
+         :class: tight-table
+         :align: center
 
-Выберите **начальную** (исходную) версию процесса из списка и **конечную** (целевую) версию процесса. Выберите **элементы процесса**, кликнув на них на схеме.
+         * -
+             .. image:: _static/migration_02_1.png
+                 :width: 30
+                 :align: center
 
-.. image:: _static/migration_03.png
-   :width: 600
-   :align: center
+           - открывается карточка процесса с подробной информацией.
 
-Нажмите **«Сгенерировать план»**. План сформируется в json-редакторе, для редактирования доступна только секция **processInstanceQuery**:
+   На схеме исходной версии процесса отмечены счетчики запущенных экземпляров процесса (инстансов) и инцидентов:
 
-.. image:: _static/migration_04_1.png
-   :width: 600
-   :align: center
+   .. image:: _static/migration_02_element.png
+      :width: 400
+      :align: center
 
-...
+   Выберите **начальную** (исходную) версию процесса из списка и **конечную** (целевую) версию процесса. Выберите **элементы процесса**, кликнув на них на схеме.
 
-.. image:: _static/migration_04_2.png
-   :width: 600
-   :align: center
+   .. image:: _static/migration_03.png
+      :width: 600
+      :align: center
 
-Нажмите **«Запустить миграцию»**. Подтвердите действие:
+   Нажмите **«Сгенерировать план»**. План сформируется в json-редакторе, для редактирования доступна только секция **processInstanceQuery**:
 
-.. image:: _static/migration_05.png
-   :width: 600
-   :align: center
+   .. image:: _static/migration_04_1.png
+      :width: 600
+      :align: center
 
-Миграция будет запущена в фоновом режиме. Если миграция не сможет запуститься — будет показана ошибка.
+   ...
+
+   .. image:: _static/migration_04_2.png
+      :width: 600
+      :align: center
+
+   Нажмите **«Запустить миграцию»**. Подтвердите действие:
+
+   .. image:: _static/migration_05.png
+      :width: 600
+      :align: center
+
+   Миграция будет запущена в фоновом режиме. Если миграция не сможет запуститься — будет показана ошибка.
 
 Схема
 ------
@@ -113,8 +113,8 @@
 
 .. list-table::
       :widths: 5 10
-      :align: center
       :class: tight-table
+      :align: center
 
       * -
           .. image:: _static/adm_11.png
@@ -149,8 +149,8 @@
 
 .. list-table::
       :widths: 5 10
-      :align: center
       :class: tight-table
+      :align: center
 
       * -
           .. image:: _static/adm_14.png

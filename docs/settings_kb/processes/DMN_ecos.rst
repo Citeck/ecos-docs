@@ -22,8 +22,38 @@
    :width: 600
    :align: center
 
+Раздел охватывает полный цикл работы с DMN в Citeck:
+
+.. grid:: 1
+   :gutter: 3
+
+   .. grid-item-card:: Общее описание
+      :link: ecos_dmn
+      :link-type: ref
+
+      Архитектура платформы и навигация по журналу моделей.
+
+   .. grid-item-card:: Редактор
+      :link: modeller_dmn
+      :link-type: ref
+
+      Конструктор DMN и компоненты Citeck DMN — типы элементов нотации и правила их соединения.
+
+   .. grid-item-card:: Базовые операции
+      :link: new_dmn
+      :link-type: ref
+
+      Создание, редактирование, версионирование и публикация решений.
+
+   .. grid-item-card:: Права доступа
+      :link: dmn_permissions
+      :link-type: ref
+
+      Настройка разрешений на уровне разделов и отдельных моделей.
+
 .. toctree::
     :maxdepth: 3
+    :hidden:
 
     ecos_dmn/ecos_dmn_overview
     ecos_dmn/ecos_dmn_editor

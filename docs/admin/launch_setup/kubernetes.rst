@@ -1,3 +1,5 @@
+.. _kubernetes:
+
 Kubernetes
 ==========
 
@@ -23,13 +25,25 @@ Kubernetes
     - старт процессов по документам (10%);
     - выполнение задач по процессу (50%).
 
-В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них 1 запроса (0.00 %) завершилось с ошибками или превысило лимит времени выполнения. |br|
+В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них 1 запроса (0.00 %) завершилось с ошибками или превысило лимит времени выполнения.
 
-    Среднее время отклика - **6.88 миллисекунд**. |br|
-    Медиана - 6 миллисекунд. |br|
-    **90%** всех запросов обрабатывались менее чем за **16 миллисекунд**. |br|
-    **95%** всех запросов обрабатывались менее чем за **25 миллисекунд**. |br|
-    **99%** всех запросов обрабатывались менее чем за **47 миллисекунд**. |br|
+.. list-table::
+   :header-rows: 1
+   :widths: 50 50
+   :class: tight-table
+
+   * - Метрика
+     - Значение
+   * - Среднее время отклика
+     - 6.88 мс
+   * - Медиана
+     - 6 мс
+   * - 90% запросов
+     - < 16 мс
+   * - 95% запросов
+     - < 25 мс
+   * - 99% запросов
+     - < 47 мс
 
 
 Ecos Registry
@@ -322,8 +336,8 @@ RabbitMQ
             limits:
                 cpu: 1
                 memory: 1Gi
-            requests:m
-                cpu: 500
+            requests:
+                cpu: 500m
                 memory: 1Gi
 
 Ecos Indentity
@@ -354,10 +368,6 @@ Onlyoffice
                 cpu: 100m
                 memory: 2Gi
 
-.. |br| raw:: html
-
-     <br>
-
 .. _helm-chart-config:
 
 Параметры конфигурации Helm chart
@@ -383,75 +393,175 @@ Onlyoffice
 Общие параметры
 """"""""""""""""""
 
-- ``.Values.FQDN``: Доменное имя платформы
-- ``.Values.TenantID``: Уникальный идентификатор тенанта
-- ``.Values.clusterDomain``: Домен кластера Kubernetes
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.FQDN``
+     - Доменное имя платформы
+   * - ``.Values.TenantID``
+     - Уникальный идентификатор тенанта
+   * - ``.Values.clusterDomain``
+     - Домен кластера Kubernetes
 
 Управление микросервисами
 """""""""""""""""""""""""""
 
-- ``.Values.<mSRV>.enabled``: Включение/отключение микросервисов
-- ``.Values.<mSRV>.clearData``: Очистка данных при старте контейнера
-- ``.Values.<mSRV>.type``: Тип ingress
-- ``.Values.<mSRV>.apiVersion``: Версия API ingress
-- ``.Values.<mSRV>.secretName``: Используемый TLS сертификат
-- ``.Values.<mSRV>.albIngress.enabled``: Использовать ALB ingress контроллер
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.enabled``
+     - Включение/отключение микросервисов
+   * - ``.Values.<mSRV>.clearData``
+     - Очистка данных при старте контейнера
+   * - ``.Values.<mSRV>.type``
+     - Тип ingress
+   * - ``.Values.<mSRV>.apiVersion``
+     - Версия API ingress
+   * - ``.Values.<mSRV>.secretName``
+     - Используемый TLS сертификат
+   * - ``.Values.<mSRV>.albIngress.enabled``
+     - Использовать ALB ingress контроллер
 
 Контейнеры и образы
 """""""""""""""""""""
 
-- ``.Values.<mSRV>.image.registry``: Реестр образов
-- ``.Values.<mSRV>.image.repository``: Репозиторий образов
-- ``.Values.<mSRV>.image.tag``: Тег образа
-- ``.Values.<mSRV>.image.pullSecrets``: Секреты для доступа к реестру
-- ``.Values.<mSRV>.initContainers.image.*``: Настройки init-контейнеров
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.image.registry``
+     - Реестр образов
+   * - ``.Values.<mSRV>.image.repository``
+     - Репозиторий образов
+   * - ``.Values.<mSRV>.image.tag``
+     - Тег образа
+   * - ``.Values.<mSRV>.image.pullSecrets``
+     - Секреты для доступа к реестру
+   * - ``.Values.<mSRV>.initContainers.image.*``
+     - Настройки init-контейнеров
 
 Vault и секреты
 """"""""""""""""""
 
-- ``.Values.<mSRV>.vault.enabled``: Включение Vault
-- ``.Values.<mSRV>.vault.*``: Переменные окружения и пароли для сервисов (MongoDB, PostgreSQL, Keycloak и др.)
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.vault.enabled``
+     - Включение Vault
+   * - ``.Values.<mSRV>.vault.*``
+     - Переменные окружения и пароли для сервисов (MongoDB, PostgreSQL, Keycloak и др.)
 
 Переменные окружения
 """"""""""""""""""""""
 
-- ``.Values.<mSRV>.environments.username/password``: Логин/пароль администратора
-- ``.Values.<mSRV>.environments.javaOpts``: Java-опции старта микросервисов
-- ``.Values.<mSRV>.environments.*``: Специфичные переменные (Solr, Alfresco, Flowable и др.)
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.environments.username/password``
+     - Логин/пароль администратора
+   * - ``.Values.<mSRV>.environments.javaOpts``
+     - Java-опции старта микросервисов
+   * - ``.Values.<mSRV>.environments.*``
+     - Специфичные переменные (Solr, Alfresco, Flowable и др.)
 
 Хранилища и PVC
 """"""""""""""""""
 
-- ``.Values.<mSRV>.persistence.enabled``: Включение persistent-хранилища
-- ``.Values.<mSRV>.persistence.size``: Размер PVC
-- ``.Values.<mSRV>.persistence.storageClass``: StorageClass PVC
-- ``.Values.<mSRV>.persistence.accessModes``: Режим доступа PVC
-- ``.Values.<mSRV>.persistence.existingClaim``: Использовать существующий PVC
-- ``.Values.<mSRV>.persistence.backup*``: Параметры PVC для бэкапов
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.persistence.enabled``
+     - Включение persistent-хранилища
+   * - ``.Values.<mSRV>.persistence.size``
+     - Размер PVC
+   * - ``.Values.<mSRV>.persistence.storageClass``
+     - StorageClass PVC
+   * - ``.Values.<mSRV>.persistence.accessModes``
+     - Режим доступа PVC
+   * - ``.Values.<mSRV>.persistence.existingClaim``
+     - Использовать существующий PVC
+   * - ``.Values.<mSRV>.persistence.backup*``
+     - Параметры PVC для бэкапов
 
 Метрики и мониторинг
 """"""""""""""""""""""
 
-- ``.Values.<mSRV>.metrics.enabled``: Включение экспорта метрик
-- ``.Values.<mSRV>.metrics.config``: Конфигурация jmx-exporter
-- ``.Values.<mSRV>.metrics.serviceMonitor.*``: Настройки ServiceMonitor
-- ``.Values.<mSRV>.metrics.service.ports.*``: Порты метрик
-- ``.Values.<mSRV>.metrics.containerSecurityContext.*``: Контекст безопасности контейнера
-- ``.Values.<mSRV>.metrics.startupProbe.*``: Startup Probe
-- ``.Values.<mSRV>.metrics.readinessProbe.*``: Readiness Probe
-- ``.Values.<mSRV>.metrics.livenessProbe.*``: Liveness Probe
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.metrics.enabled``
+     - Включение экспорта метрик
+   * - ``.Values.<mSRV>.metrics.config``
+     - Конфигурация jmx-exporter
+   * - ``.Values.<mSRV>.metrics.serviceMonitor.*``
+     - Настройки ServiceMonitor
+   * - ``.Values.<mSRV>.metrics.service.ports.*``
+     - Порты метрик
+   * - ``.Values.<mSRV>.metrics.containerSecurityContext.*``
+     - Контекст безопасности контейнера
+   * - ``.Values.<mSRV>.metrics.startupProbe.*``
+     - Startup Probe
+   * - ``.Values.<mSRV>.metrics.readinessProbe.*``
+     - Readiness Probe
+   * - ``.Values.<mSRV>.metrics.livenessProbe.*``
+     - Liveness Probe
 
 Ресурсы и ограничения
 """"""""""""""""""""""
 
-- ``.Values.<mSRV>.resources``: CPU и память для микросервисов
-- ``.Values.<mSRV>.tolerations``: Tolerations для Pods
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.resources``
+     - CPU и память для микросервисов
+   * - ``.Values.<mSRV>.tolerations``
+     - Tolerations для Pods
 
 Прочее
 """"""""""""""""""
 
-- ``.Values.<mSRV>.webapp.properties.webUrl``: URL для Spring-приложений
-- ``.Values.<mSRV>.x509.certs``: Сертификаты (неясное назначение)
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``.Values.<mSRV>.webapp.properties.webUrl``
+     - URL для Spring-приложений
+   * - ``.Values.<mSRV>.x509.certs``
+     - Сертификаты (неясное назначение)
 
 Генерация уникального ключа шифрования
 ---------------------------------------

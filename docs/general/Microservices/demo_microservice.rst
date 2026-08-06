@@ -4,7 +4,7 @@
 ================================
 
 .. contents::
-   :depth: 5
+   :depth: 2
 
 **ecos-demo-app** — эталонный микросервис платформы Citeck, предназначенный для разработчиков, которые создают собственные микросервисы или интегрируют внешние системы с платформой. Приложение написано на Java с использованием Spring Boot и охватывает наиболее распространённые сценарии работы с ECOS API.
 
@@ -71,29 +71,32 @@
 Сценарий работы
 ------------------------------
 
-1.	Запустите **ecos-demo-app**.
-2.	В Citeck в верхнем левом углу нажмите **«Создать/Create»**.
-3.	Выберите **«Демо тип/Demo type»** -> **«Демо тип/Demo type»**.
-4.	Введите в поле **«Имя/Name»** значение **«ошибка»** и нажмите кнопку **«Сохранить/Save»**. Вы должны увидеть ошибку от транзакционного listener, определенного в *ru.citeck.ecos.webapp.demo.events.DemoEcosEventListener*.
-5.	Измените значение поля **«Имя/Name»** на любое другое и заполните остальные поля.
-6.	После создания вы увидите информацию о созданной записи:
+.. dropdown:: Пошаговый сценарий работы с демо-приложением
+   :color: secondary
 
-    -	Статус будет **«Новый/New»**. Это определено в свойстве *defaultStatus* в конфигурации типа — ``src/main/resources/eapps/artifacts/model/type/demo-type.yml``
-    -	Виджеты задач будут отображать активную задачу для текущего пользователя. Процесс BPMN запущен, поскольку у нас есть определение процесса в ``src/main/resources/eapps/artifacts/process/bpmn/demo-process.bpmn.xml`` с флагами *ecos:enabled="true"* и *ecos:autoStartEnabled="true"*.
+   1.	Запустите **ecos-demo-app**.
+   2.	В Citeck в верхнем левом углу нажмите **«Создать/Create»**.
+   3.	Выберите **«Демо тип/Demo type»** -> **«Демо тип/Demo type»**.
+   4.	Введите в поле **«Имя/Name»** значение **«ошибка»** и нажмите кнопку **«Сохранить/Save»**. Вы должны увидеть ошибку от транзакционного listener, определенного в *ru.citeck.ecos.webapp.demo.events.DemoEcosEventListener*.
+   5.	Измените значение поля **«Имя/Name»** на любое другое и заполните остальные поля.
+   6.	После создания вы увидите информацию о созданной записи:
 
-7.	Нажмите кнопку **«Готово/Done»** в виджете текущей задачи.
-8.	Задача исчезнет и будет запущена внешняя задача — *ru.citeck.ecos.webapp.demo.exttask.DemoExternalTask*.
-9.	Примерно через 5–10 секунд вы сможете обновить вкладку браузера и увидеть новый статус **«Завершенный/Completed»** и заполненное поле **«Поле сгенерированное во внешней задаче/Field generated in external task»**. На этом этапе процесс BPMN завершается.
-10.	Вы можете нажать **«Отправить демо письмо/Send demo email»**, чтобы протестировать специальное действие для отправки электронного письма.
+       -	Статус будет **«Новый/New»**. Это определено в свойстве *defaultStatus* в конфигурации типа — ``src/main/resources/eapps/artifacts/model/type/demo-type.yml``
+       -	Виджеты задач будут отображать активную задачу для текущего пользователя. Процесс BPMN запущен, поскольку у нас есть определение процесса в ``src/main/resources/eapps/artifacts/process/bpmn/demo-process.bpmn.xml`` с флагами *ecos:enabled="true"* и *ecos:autoStartEnabled="true"*.
 
-    -	Класс действия: *ru.citeck.ecos.webapp.demo.actions.SendDemoEmailAction*
-    -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/send-demo-email-action.yml``
-    -	Шаблон электронного письма: ``src/main/resources/eapps/artifacts/notification/template/demo-email.html.ftl.``
-    -	Письмо с результатом можно найти в mailhog (если вы не меняли настройки электронной почты по умолчанию) — http://localhost:8025/
+   7.	Нажмите кнопку **«Готово/Done»** в виджете текущей задачи.
+   8.	Задача исчезнет и будет запущена внешняя задача — *ru.citeck.ecos.webapp.demo.exttask.DemoExternalTask*.
+   9.	Примерно через 5–10 секунд вы сможете обновить вкладку браузера и увидеть новый статус **«Завершенный/Completed»** и заполненное поле **«Поле сгенерированное во внешней задаче/Field generated in external task»**. На этом этапе процесс BPMN завершается.
+   10.	Вы можете нажать **«Отправить демо письмо/Send demo email»**, чтобы протестировать специальное действие для отправки электронного письма.
 
-11.	После тестирования отправки письма вы можете нажать **«Создать дочернюю сущность/Create child entity»**, чтобы проверить возможность создания связанных объектов по действию.
+       -	Класс действия: *ru.citeck.ecos.webapp.demo.actions.SendDemoEmailAction*
+       -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/send-demo-email-action.yml``
+       -	Шаблон электронного письма: ``src/main/resources/eapps/artifacts/notification/template/demo-email.html.ftl.``
+       -	Письмо с результатом можно найти в mailhog (если вы не меняли настройки электронной почты по умолчанию) — http://localhost:8025/
 
-    -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/create-child-entity-action.yml``
+   11.	После тестирования отправки письма вы можете нажать **«Создать дочернюю сущность/Create child entity»**, чтобы проверить возможность создания связанных объектов по действию.
+
+       -	Определение действия: ``src/main/resources/eapps/artifacts/ui/action/create-child-entity-action.yml``
 
 
 Описание сущностей микросервиса
@@ -102,13 +105,13 @@
 Артефакты
 ~~~~~~~~~~~~~~~~~~
 
-В папке ``.../src/main/resources/eapps/artifacts`` расположены артефакты проекта. Первые два уровня каталогов соответствуют типу артефакта. Например: 
+В папке ``.../src/main/resources/eapps/artifacts`` расположены артефакты проекта. Первые два уровня каталогов соответствуют типу артефакта. Например:
 
-* app/artifact-patch
-* model/type
-* notification/template
-* process/bpmn
-* ui/action, /form, /journal 
+- app/artifact-patch
+- model/type
+- notification/template
+- process/bpmn
+- ui/action, /form, /journal
 
 Подробнее про :ref:`артефакты Citeck <ecos_artifacts>`
 
@@ -121,14 +124,21 @@
 
         **Запись (Record)** – сущность с набором атрибутов и идентификатором записи (RecordRef).
 
-        Ниже разобран простой пример RecordsDAO с хранением сущностей в памяти. Данный RecordsDAO демонстрирует простые базовые операции CRUD в API Records и не реализует такие функции,  как ассоциации, хранение контента, проверку разрешений и т. д. 
+        Ниже разобран простой пример RecordsDAO с хранением сущностей в памяти. Данный RecordsDAO демонстрирует простые базовые операции CRUD в API Records и не реализует такие функции, как ассоциации, хранение контента, проверку разрешений и т. д.
         См. подробное описание :ref:`операций CRUD <ecos_RecordsService>`
 
-        `Ссылка на Records в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/records/DemoInMemRecordsDao.java>`_ 
+        `Ссылка на Records в репозитории Git <https://github.com/Citeck/ecos-demo-app/blob/master/src/main/java/ru/citeck/ecos/webapp/demo/records/DemoInMemRecordsDao.java>`_
 
         .. warning::
 
            Все данные будут потеряны после перезапуска приложения. Не используйте для продакшн-среды.
+
+        На что стоит обратить внимание в коде ниже:
+
+        - ``queryRecords`` обрабатывает только запросы на языке предикатов (см. :ref:`язык предикатов <ecos-predicate_main>`) — для остальных языков DAO возвращает ``null``, и запрос делегируется дальше по цепочке DAO;
+        - ``getDisplayName`` вызывается движком при загрузке скаляра ``?disp`` и определяет отображаемое имя записи;
+        - ``getEcosType`` вызывается при загрузке атрибута ``_type`` — если метод возвращает просто строку без префикса, движок сам добавит ``emodel/type@``;
+        - геттеры ``getCreated``/``getModified`` с аннотацией ``@AttName`` отдают значения в специальные мета-атрибуты ``_created``/``_modified``, которые есть у любой записи.
 
         .. code-block:: java
 
@@ -408,11 +418,11 @@
             rec.att('comment', 'any comment');
             await rec.save();
 
-        где 
+        где
 
-        * **ecos-demo-app** - appName
-        * **send-demo-email** - идентификатор RecordsDAO. Используется для определения того, какой DAO должен обрабатывать запрос на мутацию (см. SendDemoEmailAction.ID).
-        * **EntityRef** - уникальный идентификатор сущности в системе Citeck. 
+        - **ecos-demo-app** - appName
+        - **send-demo-email** - идентификатор RecordsDAO. Используется для определения того, какой DAO должен обрабатывать запрос на мутацию (см. SendDemoEmailAction.ID).
+        - **EntityRef** - уникальный идентификатор сущности в системе Citeck.
 
    .. tab-item:: Commands
 

@@ -7,11 +7,38 @@
 
 Раздел включает следующие темы:
 
-- :ref:`Команды <ecos_commands>` — механизм декларативного вызова действий над записями платформы.
-- :ref:`События <ecos_events>` — система публикации и подписки на события внутри платформы.
-- :ref:`Citeck WebAPI <ecos-webapi>` — REST-интерфейс для работы с данными и сервисами платформы.
-- :ref:`Транзакции <ecos-transactions>` — управление транзакционностью операций на основе двухфазного коммита.
-- :ref:`Внешние коммуникации <external-communications>` — настройка каналов уведомлений (email, Telegram и др.).
+.. grid:: 1
+   :gutter: 3
+
+   .. grid-item-card:: Команды
+      :link: ecos_commands
+      :link-type: ref
+
+      Механизм декларативного вызова действий над записями платформы.
+
+   .. grid-item-card:: События
+      :link: ecos_events
+      :link-type: ref
+
+      Система публикации и подписки на события внутри платформы.
+
+   .. grid-item-card:: Citeck WebAPI
+      :link: ecos-webapi
+      :link-type: ref
+
+      REST-интерфейс для работы с данными и сервисами платформы.
+
+   .. grid-item-card:: Транзакции
+      :link: ecos-transactions
+      :link-type: ref
+
+      Управление транзакционностью операций на основе двухфазного коммита.
+
+   .. grid-item-card:: Внешние коммуникации
+      :link: external-communications
+      :link-type: ref
+
+      Настройка каналов уведомлений (email, Telegram и др.).
 
 .. toctree::
     :maxdepth: 4

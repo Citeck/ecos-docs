@@ -1,9 +1,14 @@
+.. _camel_dsl_components:
+
 Компоненты
 ====================
 
 **Компоненты** используются для подключения маршрутов к внешним системам и сервисам.
 
 Подробнее: `Apache Camel Components <https://camel.apache.org/manual/component.html>`_
+
+.. contents::
+   :depth: 2
 
 EcosRecordsSync camel component
 ---------------------------------
@@ -14,7 +19,10 @@ EcosRecordsSync camel component
 
 Ниже будут примеры регистрации компонента в yaml формате, например, при регистрации через Camel DSL.
 
-1. **EcosRecordsSyncConsumer**. Расширяет стандартный ScheduledBatchPollingConsumer, реализует перебор записей по ECOS типу + sourceId. Возможные настройки для *ecos-records-sync* консьюмера:
+EcosRecordsSyncConsumer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Расширяет стандартный ScheduledBatchPollingConsumer, реализует перебор записей по ECOS типу + sourceId. Возможные настройки для *ecos-records-sync* консьюмера:
 
 .. list-table::
    :widths: 5 20
@@ -52,7 +60,10 @@ EcosRecordsSync camel component
          steps:
          - to: log:ers-test
 
-2. **EcosRecordsSyncProducer**. Расширяет DefaultProducer, реализует обновление записи через RecordsAPI. Данные для обновления берётся из тела сообщения (id из тела из проперти сообщения — CamelEcosRecordsSyncEntityRef). Возможные настройки для *ecos-records-sync* продюсера:
+EcosRecordsSyncProducer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Расширяет DefaultProducer, реализует обновление записи через RecordsAPI. Данные для обновления берётся из тела сообщения (id из тела из проперти сообщения — CamelEcosRecordsSyncEntityRef). Возможные настройки для *ecos-records-sync* продюсера:
 
 .. list-table::
    :widths: 10 20

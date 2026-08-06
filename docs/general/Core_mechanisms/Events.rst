@@ -20,12 +20,10 @@ Events 2.0
 
 Реакция на события (events) строится на основе rabbitmq и моделей events в библиотеке - `ecos-events <https://github.com/Citeck/ecos-events>`_. На стороне producer и consumer строится подключение к rabbitmq. Пример: отправка уведомлений как реакция на событие - сменился статус, изменился атрибут, назначилась задача и т.д.
 
-Архитектура
-~~~~~~~~~~~~~~~~~~~~~~
+Общая архитектура:
 
 .. image:: _static/events/notification_through_events_2.0.png
    :align: center
-
 
 Описание работы
 -----------------------------
@@ -49,44 +47,47 @@ Events 2.0
 Примеры
 ---------------
 
-Подписка на событие с произвольными атрибутами (Kotlin)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Подписка на событие с произвольными атрибутами
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: kotlin
+.. tab-set::
 
-  eventsService.addListener<DataValue> {
-      withTransactional(true)
-      withEventType(RecordCreatedEvent.TYPE)
-      withAction {
-          println("Event for record with type: ${it["type"].asText()} Display name: ${it["disp"].asText()}")
-      }
-      withDataClass(DataValue::class.java)
-      withAttributes(mapOf("type" to "rec._type?id", "disp" to "rec?disp"))
-  }
+   .. tab-item:: Kotlin
 
-Подписка на событие с произвольными атрибутами (Java):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      .. code-block:: kotlin
 
-.. code-block:: java
+        eventsService.addListener<DataValue> {
+            withTransactional(true)
+            withEventType(RecordCreatedEvent.TYPE)
+            withAction {
+                println("Event for record with type: ${it["type"].asText()} Display name: ${it["disp"].asText()}")
+            }
+            withDataClass(DataValue::class.java)
+            withAttributes(mapOf("type" to "rec._type?id", "disp" to "rec?disp"))
+        }
 
-  Map<String, String> attributes = new HashMap<>();
-  attributes.put("type", "rec._type?id");
-  attributes.put("disp", "rec?disp");
+   .. tab-item:: Java
 
-  eventsService.<DataValue>addListener(b -> {
-      b.withTransactional(true);
-      b.withEventType(RecordCreatedEvent.TYPE);
-      b.withActionJ((event) -> {
-          System.out.printf(
-              "Event for record with type: %s Display name: %s%n",
-              event.get("type").asText(),
-              event.get("disp").asText()
-          );
-      });
-      b.withDataClass(DataValue.class);
-      b.withAttributes(attributes);
-      return Unit.INSTANCE;
-  });
+      .. code-block:: java
+
+        Map<String, String> attributes = new HashMap<>();
+        attributes.put("type", "rec._type?id");
+        attributes.put("disp", "rec?disp");
+
+        eventsService.<DataValue>addListener(b -> {
+            b.withTransactional(true);
+            b.withEventType(RecordCreatedEvent.TYPE);
+            b.withActionJ((event) -> {
+                System.out.printf(
+                    "Event for record with type: %s Display name: %s%n",
+                    event.get("type").asText(),
+                    event.get("disp").asText()
+                );
+            });
+            b.withDataClass(DataValue.class);
+            b.withAttributes(attributes);
+            return Unit.INSTANCE;
+        });
 
 Пример listener-а событий для определенного типа данных
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +123,6 @@ Events 2.0
                 withFilter(eq("typeDef.id", YOUR_TYPE))
                 withAction { event ->
                     println("Запись была обновлена: " + event.record + ", создал: " + event.user + ", время: " + event.time)
-    //                Ваша логика при событии Обновления записи.....
                 }
             }
 
@@ -133,7 +133,6 @@ Events 2.0
                 withFilter(eq("typeDef.id", YOUR_TYPE))
                 withAction { event ->
                     println("Создана новая запись: " + event.record + ", создал: " + event.user + ", время: " + event.time)
-    //                Ваша логика при событии Создания записи.....
                 }
             }
 
@@ -144,16 +143,9 @@ Events 2.0
                 withFilter(eq("typeDef.id", YOUR_TYPE))
                 withAction { event ->
                     println("Запись была удалена: " + event.record + ", удалил: " + event.user + ", время: " + event.time)
-    //                Ваша логика при событии Удаления записи.....
                 }
             }
-
-    //        И еще много других Listener-ов для уже реализованных эвентов или ваших собственных
-    //        Например для RecordStatusChangedEvent, RecordDraftStatusChangedEvent, RecordContentChangedEvent и тд.
         }
-
-    //    В data классах определяем набор необходимых нам данных, которые хотим достать из Event-а.
-    //    Можно ознакомиться с классом RecordEventTypes.kt из библиотеки ecos-events2 для более подробного понимания какие данные можно получить
 
         data class RecordUpdated(
             @AttName("record?id")
@@ -183,6 +175,10 @@ Events 2.0
         )
 
     }
+
+В теле каждого ``withAction`` вместо ``println`` должна быть ваша бизнес-логика. Аналогичным образом можно подписаться и на другие уже реализованные события — например, ``RecordStatusChangedEvent``, ``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent`` и т.д., а также на собственные события. Полный список — в классе ``RecordEventTypes.kt`` библиотеки ``ecos-events2``.
+
+В data-классах (``RecordUpdated``, ``RecordCreated``, ``RecordDeleted``) определяется набор данных, которые нужно получить из события; там же, в ``RecordEventTypes.kt``, можно посмотреть, какие атрибуты события доступны.
 
 Пояснения:
 

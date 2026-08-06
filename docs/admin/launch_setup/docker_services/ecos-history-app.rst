@@ -1,20 +1,24 @@
+.. _ecos_history_app:
+
 ecos-history-app
 =================
 
-Назначение:
+.. contents::
+
+Назначение
 -----------
 
 Образ микросервиса для хранения истории, статистики по задачам и фасаду аттрибутов.
 
-Теги:
+Теги
 ------
 
 `nexus.citeck.ru/ecos-history <nexus.citeck.ru/ecos-history>`_ :<tag>
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 ------------------------------
 
-.. code-block::
+.. code-block:: yaml
 
 	ecos-history:
 		logging:
@@ -57,54 +61,61 @@ ecos-history-app
     		- ecos-postgresql
     		- rabbitmq
 
-Используемые переменные:
+Используемые переменные
 -------------------------
 
-* **JHIPSTER_REGISTRY_PASSWORD** - пароль аутентификации jhipster
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
-* **_JAVA_OPTIONS** - параметры для **jvm**
+   * - Переменная
+     - Описание
+   * - **JHIPSTER_REGISTRY_PASSWORD**
+     - пароль аутентификации jhipster
+   * - **_JAVA_OPTIONS**
+     - параметры для **jvm**
+   * - **SPRING_PROFILES_ACTIVE**
+     - профили развертывания приложения
+   * - **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE**
+     - **url** регистрации микросервиса в сервисе балансировки
+   * - **SPRING_CLOUD_CONFIG_URI**
+     - **url** параметров конфигурации
+   * - **SPRING_DATASOURCE_URL**
+     - **url postgresql** инстанса с бд хренения истории
+   * - **SPRING_DATASOURCE_USERNAME**
+     - логин пользователя для бд хренения истории
+   * - **SPRING_DATASOURCE_PASSWORD**
+     - пароль пользователя для бд хранения истории
+   * - **SPRING_DATA_MONGODB_URI**
+     - **url mongodb** инстанса для хранения history/task records атрибутов нод
+   * - **SPRING_DATA_MONGODB_DATABASE**
+     - бд хранения history/task records атрибутов нод
+   * - **ECOS-HISTORY_RECOVER_SOURCEFOLDER**
+     - **резервный** датасорс очереди событий истории
+   * - **ECOS-HISTORY_RECOVER_ERRORSFOLDER**
+     - **резервный** датасорс хранения ошибок обработки очереди событий истории
+   * - **ECOS-HISTORY_ALFRESCO_TENANTID**
+     - **tenantid** развернутого деплоя ecos
+   * - **ECOS-HISTORY_EVENT_HOST**
+     - адрес диспетчера очередей
+   * - **ECOS-HISTORY_EVENT_PORT**
+     - **amqp** порт диспетчера очередей
+   * - **ECOS-HISTORY_EVENT_USERNAME**
+     - логин пользователя для диспетчера очередей
+   * - **ECOS-HISTORY_EVENT_PASSWORD**
+     - пароль пользователя для диспетчера очередей
+   * - **JHIPSTER_SLEEP**
+     - таймаут перед развертыванием микросервиса
 
-* **SPRING_PROFILES_ACTIVE** - профили развертывания приложения
-
-* **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - **url** регистрации микросервиса в сервисе балансировки
-
-* **SPRING_CLOUD_CONFIG_URI** - **url** параметров конфигурации
-
-* **SPRING_DATASOURCE_URL** - **url postgresql** инстанса с бд хренения истории
-
-* **SPRING_DATASOURCE_USERNAME** - логин пользователя для бд хренения истории
-
-* **SPRING_DATASOURCE_PASSWORD** - пароль пользователя для бд хранения истории
-
-* **SPRING_DATA_MONGODB_URI** - **url mongodb** инстанса для хранения history/task records атрибутов нод
-
-* **SPRING_DATA_MONGODB_DATABASE** - бд хранения history/task records атрибутов нод
-
-* **ECOS-HISTORY_RECOVER_SOURCEFOLDER** - **резервный** датасорс очереди событий истории 
-
-* **ECOS-HISTORY_RECOVER_ERRORSFOLDER** - **резервный** датасорс хранения ошибок обработки очереди событий истории
-
-* **ECOS-HISTORY_ALFRESCO_TENANTID** - **tenantid** развернутого деплоя ecos
-
-* **ECOS-HISTORY_EVENT_HOST** - адрес диспетчера очередей
-
-* **ECOS-HISTORY_EVENT_PORT** -  **amqp**  порт диспетчера очередей
-
-* **ECOS-HISTORY_EVENT_USERNAME** - логин пользователя для диспетчера очередей
-
-* **ECOS-HISTORY_EVENT_PASSWORD** - пароль пользователя для диспетчера очередей
-
-* **JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
-
-Дополнительно:
+Дополнительно
 ---------------
 
 * Документация по `spring cloud config  <https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server>`_
 
-Типовой вывод успешного развертывания в лог контейнера:
+Типовой вывод успешного развертывания в лог контейнера
 ---------------------------------------------------------
 
-.. code-block::
+.. code-block:: text
 
 	ecos-history                | ----------------------------------------------------------
 	ecos-history                |   Application 'history' is running! Access URLs:
@@ -112,11 +123,7 @@ ecos-history-app
 	ecos-history                |   External:       http://172.18.0.27:8086/
 	ecos-history                |   Profile(s):     [prod, swagger, facade]
 	ecos-history                | ----------------------------------------------------------
-	ecos-history                | 2020-05-06 10:51:52.991  INFO 1 --- [           main] ru.citeck.ecos.history.HistoryApp        : 
+	ecos-history                | 2020-05-06 10:51:52.991  INFO 1 --- [           main] ru.citeck.ecos.history.HistoryApp        :
 	ecos-history                | ----------------------------------------------------------
 	ecos-history                |   Config Server:  Connected to the JHipster Registry running in Docker
 	ecos-history                | ----------------------------------------------------------
-
-
-
-

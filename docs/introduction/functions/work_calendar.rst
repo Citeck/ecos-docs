@@ -87,8 +87,9 @@
 
 где:
 
-.. list-table:: 
+.. list-table::
       :widths: 10 10
+      :class: tight-table
 
       * - **date**
         - Конкретная дата или дата начала диапазона, если задано значение до
@@ -168,8 +169,9 @@
 
 Где:
 
-.. list-table:: 
+.. list-table::
       :widths: 10 10
+      :class: tight-table
 
       * - **workingDays**
         - Список рабочих дней

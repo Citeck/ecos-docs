@@ -12,7 +12,14 @@
 
 Атрибуты аспекта доступны через префикс в формате ``{prefix}:{attribute.id}``, что позволяет однозначно идентифицировать их в формах, журналах, конфигурациях действий и мутациях записей.
 
-В Citeck представлены системные аспекты для типовых задач: учёт времени, управление связями между документами, генерация штрихкода, конфигурация истории событий, импорт данных и обработка активностей.
+В Citeck представлены системные аспекты для типовых задач:
+
+  - учёт времени;
+  - управление связями между документами;
+  - генерация штрихкода;
+  - конфигурация истории событий;
+  - импорт данных;
+  - обработка активностей.
 
 Для просмотра существующих аспектов и их редактирования создан журнал **"Аспекты" (Рабочее пространство "Раздел администратора" - Модель)**:
 
@@ -213,22 +220,20 @@
 
 Аспект **«Конфигурация истории»** создан для возможности конфигурации записи свойств в историю.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_08.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_08.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_07.png
-                  :width: 600
-                  :align: center
-
+      .. image:: _static/aspects/history-config_07.png
+         :width: 500
+         :align: left
 
 Для настройки необходимо добавить этот аспект в тип данных на вкладке **Аспекты**:
 
@@ -236,26 +241,42 @@
        :width: 600
        :align: center
 
+Аспект добавляет 3 настройки, которые можно задать как в форме, так и напрямую в json:
+
+.. list-table::
+      :widths: 20 30
+      :header-rows: 1
+      :align: center
+      :class: tight-table
+
+      * - Настройка
+        - Описание
+      * - **Исключенные атрибуты** (``excludedAtts``)
+        - атрибуты, изменение которых не записывается в историю
+      * - **Атрибуты для записи истории при создании** (``onCreationHistoricalAtts``)
+        - атрибуты, создание которых записывается в историю
+      * - **Отключить историю**
+        - полностью отключает запись изменений в историю
+
 Исключенные атрибуты
 """""""""""""""""""""
 
 По кнопке **Настроить** в строке **Исключенные атрибуты** доступен выбор атрибутов типа данных, информация об изменении которых не будет записываться в **историю**, и отражаться в виджете **«История событий»**, соответственно.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_02.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_02.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_03.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_03.png
+         :width: 500
+         :align: left
 
 Например, если в карточке изменить информацию о наименовании, категории и стоимости, то в виджете **«История событий»** отразится информация только об измененной стоимости:
 
@@ -265,21 +286,20 @@
 
 Если в типе данных настроены аспекты (например, **Версионные данные**, **Имеет документы**), то атрибуты из них так же можно выбрать: 
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_09.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/aspects/history-config_09.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_10.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_10.png
+         :width: 500
+         :align: left
 
 
 Атрибуты для записи истории при создании
@@ -287,21 +307,20 @@
 
 По кнопке **Настроить** в строке **Атрибуты для записи истории при создании** доступен выбор атрибутов типа данных, информация о создании которых будет записываться в **историю**, и отражаться в виджете **«История событий»**, соответственно.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_12.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_12.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_13.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_13.png
+         :width: 500
+         :align: left
 
 Например:
 
@@ -315,21 +334,20 @@
   - **excludedAtts** - исключенные атрибуты;
   - **onCreationHistoricalAtts** - атрибуты для записи истории при создании
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_05.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_05.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_06.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_06.png
+         :width: 500
+         :align: left
 
 
 Отключить историю
@@ -402,19 +420,19 @@
 
 Чтобы письмо обрабатывалось и добавлялось как активность необходимо:
 
-1) Добавить в тип данных аспект **Имеет активности** (has-ecos-activities) и настроить его конфигурацию:
+#. Добавить в тип данных аспект **Имеет активности** (has-ecos-activities) и настроить его конфигурацию:
 
-.. image:: _static/aspects/has-ecos-activities_1.png
-      :width: 500
-      :align: center
+   .. image:: _static/aspects/has-ecos-activities_1.png
+         :width: 500
+         :align: center
 
-Указать **алиас**, по которому будет осуществляться поиск типа данных в заголовке письма, выбрать **атрибут** типа данных.
+   Указать **алиас**, по которому будет осуществляться поиск типа данных в заголовке письма, выбрать **атрибут** типа данных.
 
-2) В Теме сообщения в конце указывать связь в формате **(Алиас: Значение)**
+#. В Теме сообщения в конце указывать связь в формате **(Алиас: Значение)**
 
-.. image:: _static/aspects/has-ecos-activities_2.png
-      :width: 400
-      :align: center
+   .. image:: _static/aspects/has-ecos-activities_2.png
+         :width: 400
+         :align: center
 
 Для рабочих пространств по умолчанию добавлена следующая настройка аспекта:
 
@@ -424,9 +442,4 @@
 
 Для включения обработки писем в виджете "Активности" необходимо указать почтовый ящик в настройке :ref:`mail-inbox-activity<mail-inbox-activity>`.
 
-
-Файл библиотеки документов
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-TBD
 

@@ -3,34 +3,38 @@
 Пул и Дорожка
 ==========================
 
+.. contents::
+
 .. image:: _static/pool/pool_1.png
-      :width: 600
-      :align: center
+   :width: 600
+   :align: center
 
 Бизнес-процесс может состоять из **пулов**: совокупности операций и лиц, которые эти операции выполняют.
 
 При этом выделяют так называемые **«дорожки»**, из которых состоит пул.
 
-.. list-table::
-      :widths: 30 10 60
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 3
 
-      * -
-            .. image:: _static/pool/pool_2.png
-                :width: 600
-                :align: center
+   .. grid-item-card:: Пул
+      :link: pool_participant
+      :link-type: ref
 
-        - **Пул**
-        - Используется для обозначения границ бизнес-процесса
+      .. image:: _static/pool/pool_2.png
+         :width: 300
+         :align: left
 
-      * -
-            .. image:: _static/pool/pool_3.png
-                :width: 600
-                :align: center
+      Используется для обозначения границ бизнес-процесса.
 
-        - **Дорожка**
-        - Используется для отражения ответственных исполнителей и их ролей в процессе
+   .. grid-item-card:: Дорожка
+      :link: pool_lanes
+      :link-type: ref
+
+      .. image:: _static/pool/pool_3.png
+         :width: 300
+         :align: left
+
+      Используется для отражения ответственных исполнителей и их ролей в процессе.
 
 Правила:
 
@@ -41,27 +45,22 @@
 5. Дорожки имеют отношение только к задачам, исполняемым людьми (user task) — автоматическим задачам (service task, script task), подпроцессам, развилкам, событиям всё равно, на какую дорожку вы их поместили.
 6. Даже для задач, назначаемых людям, дорожки по сути являются комментариями — реальный исполнитель задается в атрибутах модели для данной задачи.
 
+.. _pool_participant:
+
 Пул Participant
 --------------------
 
 .. image:: _static/pool/pool_4.png
-      :width: 600
-      :align: center
+   :width: 600
+   :align: center
 
-.. list-table::
-      :widths: 5 5
-      :class: tight-table
+Укажите **Имя**. При необходимости выберите :ref:`тип данных <roles_statuses>`.
 
-      * - | Укажите **Имя**.
-          | При необходимости выберите :ref:`тип данных <roles_statuses>`.
-          | Пул представляет собой отдельный процесс, таких блоков может быть несколько.
-          | Соответственно, на одной схеме может быть несколько разных процессов, а у разных процессов может быть привязка к разным типам данных.
-          | Если ECOS Тип не задан, то типом считается тот, который определен в definition.
-          | Если задан, то используется собственный.
-        -
-               .. image:: _static/pool/pool_5.png
-                :width: 300
-                :align: center
+Пул представляет собой отдельный процесс, таких блоков может быть несколько. Соответственно, на одной схеме может быть несколько разных процессов, а у разных процессов может быть привязка к разным типам данных. Если ECOS Тип не задан, то типом считается тот, который определен в definition. Если задан, то используется собственный.
+
+.. image:: _static/pool/pool_5.png
+   :width: 300
+   :align: center
 
 .. important::
 
@@ -74,23 +73,20 @@
 Для добавления дорожек в пул используйте:
 
 .. image:: _static/pool/pool_6.png
-      :width: 50
-      :align: center
+   :width: 50
+   :align: center
+
+.. _pool_lanes:
 
 Дорожки
 ----------------
 
 .. image:: _static/pool/pool_7.png
-      :width: 600
-      :align: center
+   :width: 600
+   :align: center
 
-.. list-table::
-      :widths: 5 5
-      :align: center
-      :class: tight-table
+Укажите **Имя**.
 
-      * - | Укажите **Имя**.
-        -
-               .. image:: _static/pool/pool_8.png
-                :width: 300
-                :align: center
+.. image:: _static/pool/pool_8.png
+   :width: 300
+   :align: center

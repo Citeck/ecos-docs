@@ -17,11 +17,11 @@
 Архитектурные решения
 ------------------------
 
-    * **Spring Boot:** Основа микросервиса
-    * **Kotlin:** Основной язык разработки
-    * **Spring AI:** Интеграция с AI провайдерами
-    * **Ecos Records:** Интеграция с платформой Citeck
-    * **RESTful API:** Стандартные HTTP эндпоинты для интеграции
+* **Spring Boot:** Основа микросервиса
+* **Kotlin:** Основной язык разработки
+* **Spring AI:** Интеграция с AI провайдерами
+* **Ecos Records:** Интеграция с платформой Citeck
+* **RESTful API:** Стандартные HTTP эндпоинты для интеграции
 
 Базовая техническая платформа
 -------------------------------
@@ -29,31 +29,31 @@
 Базовые инструменты
 ~~~~~~~~~~~~~~~~~~~~
 
-    * **GetCurrentTimeTool:** Получение текущего времени
-    * **GetRecordAttributesTool:** Извлечение атрибутов записей
-    * **GetRecordContentTool:** Получение контента записей
-    * **GetRecordDisplayNameTool:** Получение отображаемых имен
-    * **GetRecordContactsTool:** Извлечение контактной информации
-    * **GetRecordContentHistoryTools:** История изменений контента
-    * **DocumentAnalysisTool:** Анализ документов
-    * **DeployDataTypeTool:** Развертывание типов данных
-    * **GetArtifactMetadataTool:** Метаданные артефактов
-    * **GetActivitiesTool:** Работа с активностями
+* **GetCurrentTimeTool:** Получение текущего времени
+* **GetRecordAttributesTool:** Извлечение атрибутов записей
+* **GetRecordContentTool:** Получение контента записей
+* **GetRecordDisplayNameTool:** Получение отображаемых имен
+* **GetRecordContactsTool:** Извлечение контактной информации
+* **GetRecordContentHistoryTools:** История изменений контента
+* **DocumentAnalysisTool:** Анализ документов
+* **DeployDataTypeTool:** Развертывание типов данных
+* **GetArtifactMetadataTool:** Метаданные артефактов
+* **GetActivitiesTool:** Работа с активностями
 
 Безопасность, доступ, авторизация
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    * **Лицензионный контроль:** Проверка флага ``ai`` в лицензии
-    * **Групповые права:** Контроль доступа через группу ``GROUP_ai-feature-allowed``
-    * **Контроль доступа:** Расширенные проверки доступности AI функций
-    * **BPMN авторизация:** Улучшенная обработка запросов BPMN с учетом прав пользователя
+* **Лицензионный контроль:** Проверка флага ``ai`` в лицензии
+* **Групповые права:** Контроль доступа через группу ``GROUP_ai-feature-allowed``
+* **Контроль доступа:** Расширенные проверки доступности AI функций
+* **BPMN авторизация:** Улучшенная обработка запросов BPMN с учетом прав пользователя
 
 Конфигурация
 ~~~~~~~~~~~~~
 
-    * **Прокси поддержка:** HTTP и HTTPS протоколы
-    * **Гибкие настройки:** Конфигурация через переменные окружения и ``application.yml``
-    * **Мониторинг:** Логирование и отслеживание ошибок
+* **Прокси поддержка:** HTTP и HTTPS протоколы
+* **Гибкие настройки:** Конфигурация через переменные окружения и ``application.yml``
+* **Мониторинг:** Логирование и отслеживание ошибок
 
 
 Spring-профили
@@ -64,6 +64,7 @@ Spring-профили
 .. list-table::
   :header-rows: 1
   :widths: 20 50 30
+  :class: tight-table
 
   * - Профиль
     - Описание
@@ -81,85 +82,80 @@ Spring-профили
 На текущий момент, чтобы конфигурация настроек в лаунчере не перезаписывалась при обновлении версиий в ките, необходимо настраивать через кастомный application-launcher.yml.
 В дальнейшем планируется добавить отдельный интерфейс для удобной настройки подключения AI ассистента.
 
-1. Найдите микросервис **ai** в списке микросервисов.
-2. Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и добавьте переменные окружения:
+.. dropdown:: Как подключить AI-ассистента в Citeck Launcher
+   :color: secondary
 
-   - ``CTK_ANTHROPIC_API_KEY`` — для использования Anthropic
-   - ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI Studio
+   1. Найдите микросервис **ai** в списке микросервисов.
+   2. Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и добавьте переменные окружения:
 
-   .. note::
+      - ``CTK_ANTHROPIC_API_KEY`` — для использования Anthropic
+      - ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI Studio
 
-      Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку ``SPRING_PROFILES_ACTIVE``.
+      .. note::
 
-3. Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите ``application-launcher.yml``.
-4. Вставьте содержимое нужного профиля. Например, для конфигурации ``ai-default``:
+         Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку ``SPRING_PROFILES_ACTIVE``.
 
-.. code-block:: yaml
+   3. Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите ``application-launcher.yml``.
+   4. Вставьте содержимое нужного профиля:
 
-  citeck:
-    ai:
-      base:
-        model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-      assistants:
-        bpmn:
-          model: claude-sonnet-4-6
-          streaming: true
-          provider: anthropic
-          temperature: 0.0
-          reasoning-effort: none
+      .. tab-set::
 
-  spring:
-    ai:
-      anthropic:
-        api-key: '${CTK_ANTHROPIC_API_KEY}'
-      openai:
-        api-key: '${CTK_YANDEX_AI_API_KEY}'
-        chat:
-          options:
-            model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-          base-url: https://llm.api.cloud.yandex.net
+         .. tab-item:: ai-default
 
-.. tip::
+            .. code-block:: yaml
 
-   Вместо ``claude-sonnet-4-6`` можно указать ``claude-opus-4-6`` для более высокого качества генерации BPMN.
+               citeck:
+                 ai:
+                   base:
+                     model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                   assistants:
+                     bpmn:
+                       model: claude-sonnet-4-6
+                       streaming: true
+                       provider: anthropic
+                       temperature: 0.0
+                       reasoning-effort: none
 
-для профиля ``ai-yandex-gpt-oss``:
+               spring:
+                 ai:
+                   anthropic:
+                     api-key: '${CTK_ANTHROPIC_API_KEY}'
+                   openai:
+                     api-key: '${CTK_YANDEX_AI_API_KEY}'
+                     chat:
+                       options:
+                         model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                       base-url: https://llm.api.cloud.yandex.net
 
-.. code-block:: yaml
+            .. tip::
 
-  citeck:
-    ai:
-      base:
-        model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-      assistants:
-        bpmn:
-          streaming: false
+               Вместо ``claude-sonnet-4-6`` можно указать ``claude-opus-4-6`` для более высокого качества генерации BPMN.
 
-  spring:
-    ai:
-      openai:
-        api-key: '${CTK_YANDEX_AI_API_KEY}'
-        chat:
-          options:
-            model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-          base-url: https://llm.api.cloud.yandex.net
+         .. tab-item:: ai-yandex-gpt-oss
 
-Если для доступа к AI API требуется прокси-сервер, добавьте блок ``proxy`` в конфигурацию:
+            .. code-block:: yaml
 
-.. code-block:: yaml
+               citeck:
+                 ai:
+                   base:
+                     model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                   assistants:
+                     bpmn:
+                       streaming: false
 
-  citeck:
-    ai:
-      proxy:
-        enabled: true
-        host: proxy.company.com
-        port: 8080
-        username: proxy-user
-        password: proxy-pass
-        protocol: HTTP
+               spring:
+                 ai:
+                   openai:
+                     api-key: '${CTK_YANDEX_AI_API_KEY}'
+                     chat:
+                       options:
+                         model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                       base-url: https://llm.api.cloud.yandex.net
 
-5. Замените переменные ``${CTK_YANDEX_AI_API_KEY}``, ``${CTK_YANDEX_AI_FOLDER_ID}``, ``${CTK_ANTHROPIC_API_KEY}`` на реальные значения.
-6. Сохраните настройку, микросервис перезапустится автоматически.
+      Если для доступа к AI API требуется прокси-сервер, добавьте блок ``proxy`` в конфигурацию — пример см. в разделе `Настройка прокси`_.
+
+   5. Замените переменные ``${CTK_YANDEX_AI_API_KEY}``, ``${CTK_YANDEX_AI_FOLDER_ID}``, ``${CTK_ANTHROPIC_API_KEY}`` на реальные значения.
+   6. Сохраните настройку, микросервис перезапустится автоматически.
 
 .. tip::
 
@@ -177,10 +173,10 @@ Citeck AI Assistant поддерживает работу с различным�
 Поддерживаемые провайдеры
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    - **openai** - GPT-модели (gpt-5.1 и др.)
-    - **anthropic** - Claude модели (claude-opus-4-5 и др.)
-    - **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)
-    - **ollama** - локальные модели (granite3.3, llama3, mistral)
+- **openai** - GPT-модели (gpt-5.1 и др.)
+- **anthropic** - Claude модели (claude-opus-4-5 и др.)
+- **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)
+- **ollama** - локальные модели (granite3.3, llama3, mistral)
 
 Выбор провайдера по умолчанию
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -308,94 +304,92 @@ Citeck AI Assistant поддерживает работу с различным�
 Примеры конфигурации основных провайдеров
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-OpenAI
-""""""
+.. tab-set::
 
-.. code-block:: yaml
+   .. tab-item:: OpenAI
 
-    spring:
-        ai:
-            openai:
-                api-key: ${OPENAI_API_KEY}
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: openai
-            base:
-                model: gpt-5.1
-            assistants:
-                bpmn:
-                    reasoning-effort: medium
-                    streaming: true
-                intent-detection:
-                    use-native-structured-output: true
+         spring:
+             ai:
+                 openai:
+                     api-key: ${OPENAI_API_KEY}
 
-Ollama (локальные модели)
-"""""""""""""""""""""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: openai
+                 base:
+                     model: gpt-5.1
+                 assistants:
+                     bpmn:
+                         reasoning-effort: medium
+                         streaming: true
+                     intent-detection:
+                         use-native-structured-output: true
 
-.. code-block:: yaml
+   .. tab-item:: Ollama (локальные модели)
 
-    citeck:
-        ai:
-            default:
-                provider: ollama
-            base:
-                model: granite3.3
-            assistants:
-                bpmn:
-                    model: llama3
+      .. code-block:: yaml
 
-DeepSeek
-"""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: ollama
+                 base:
+                     model: granite3.3
+                 assistants:
+                     bpmn:
+                         model: llama3
 
-.. code-block:: yaml
+   .. tab-item:: DeepSeek
 
-    spring:
-        ai:
-            deepseek:
-                api-key: ${DEEPSEEK_API_KEY}
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: deepseek
-            base:
-                model: deepseek-chat
-            assistants:
-                bpmn:
-                    model: deepseek-coder
+         spring:
+             ai:
+                 deepseek:
+                     api-key: ${DEEPSEEK_API_KEY}
 
-Yandex Cloud (через OpenAI-совместимый API)
-"""""""""""""""""""""""""""""""""""""""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: deepseek
+                 base:
+                     model: deepseek-chat
+                 assistants:
+                     bpmn:
+                         model: deepseek-coder
 
-.. tip::
+   .. tab-item:: Yandex Cloud (через OpenAI-совместимый API)
 
-  Для Yandex Cloud рекомендуется использовать готовые профили **``ai-default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ выше. Ниже приведена ручная конфигурация.
+      .. tip::
 
-.. code-block:: yaml
+         Для Yandex Cloud рекомендуется использовать готовые профили **``ai-default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ выше. Ниже приведена ручная конфигурация.
 
-    spring:
-        ai:
-            openai:
-                api-key: ${YANDEX_API_KEY}
-                chat:
-                    base-url: https://llm.api.cloud.yandex.net
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: openai  # Используем OpenAI-совместимый API
-            base:
-                model: 'gpt://{folder_id}/gpt-oss-120b/latest'
+         spring:
+             ai:
+                 openai:
+                     api-key: ${YANDEX_API_KEY}
+                     chat:
+                         base-url: https://llm.api.cloud.yandex.net
 
-.. important::
+         citeck:
+             ai:
+                 default:
+                     provider: openai  # Используем OpenAI-совместимый API
+                 base:
+                     model: 'gpt://{folder_id}/gpt-oss-120b/latest'
 
-    * Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud
-    * Поддержка Yandex Cloud через OpenAI-совместимый API является частичной
-    * Формат модели: ``gpt://{folder_id}/model-name/latest``
-    * Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud
-    * Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в формате Yandex Cloud
+      .. important::
+
+         * Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud
+         * Поддержка Yandex Cloud через OpenAI-совместимый API является частичной
+         * Формат модели: ``gpt://{folder_id}/model-name/latest``
+         * Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud
+         * Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в формате Yandex Cloud
 
 Настройка прокси
 ----------------

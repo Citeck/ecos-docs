@@ -420,8 +420,15 @@ API-интерфейс позволяет работать с данными с�
                 }}]}
 
 
-* **att_add_authorityGroups** – добавление в группу
-* **att_rem_authorityGroups** – удаление из группы
+.. list-table::
+      :widths: 10 10
+      :class: tight-table
+      :align: center
+
+      * - **att_add_authorityGroups**
+        - Добавление в группу
+      * - **att_rem_authorityGroups**
+        - Удаление из группы
 
 
 Просмотр содержимого группы
@@ -472,7 +479,147 @@ API-интерфейс позволяет работать с данными с�
 
 Просмотр пользователей или групп с учетом иерархии вниз (т.е. указать корень оргструктуры или любую другую группу, но так же ищется и во всех подгруппах) - то же что и просмотр пользователей в группе, но вместо ``authorityGroups`` использовать ``authorityGroupsFull``
 
-.. list-table:: Таблица 1 Описание полей
+Изменение и добавление данных
+-------------------------------
+
+Есть два варианта изменения значения ассоциации через ``mutate``: полная замена значения или добавление к уже существующему (через префикс ``att_add_``).
+
+.. tab-set::
+
+   .. tab-item:: Замена значения
+
+      .. list-table::
+            :widths: 5 40
+            :class: tight-table
+            :align: center
+
+            * - **URL**
+              -
+               .. code-block:: text
+
+                  {{host}}/gateway/api/records/mutate
+
+            * - **Type**
+              -  POST
+            * - **Запрос**
+              -
+                 .. code-block:: text
+
+                    {
+                      "records": [
+                        {
+                          "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", //id workspace, в который данные необходимо добавить
+                          "attributes": {
+                            "testpkg: poAssoc?assoc": [
+                              "dict@testpkg:po-alias-4" // alias должен быть уникальным в пределах запроса, можно задать константой
+                            ]
+                          }
+                        },
+                        {
+                          "id": "dict@testpkg: po",
+                          "attributes": {
+                            "_alias?str": "dict@testpkg:po-alias-4",
+                            "testpkg:poValue?str": "1234567890",
+                            "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+                            "_state?str": "submitted",
+                            "_formInfo?json": {
+                              "submitName": {
+                                "en": "Сохранить"
+                              },
+                              "formId": "testpkg-po-form"
+                            }
+                          }
+                        }
+                      ]
+                    }
+
+   .. tab-item:: Добавление значения (``att_add_``)
+
+      .. list-table::
+            :widths: 5 40
+            :class: tight-table
+            :align: center
+
+            * - **URL**
+              -
+               .. code-block:: text
+
+                  {{host}}/gateway/api/records/mutate
+
+            * - **Type**
+              -  POST
+            * - **Запрос**
+              -
+                 .. code-block:: text
+
+                    {
+                      "records": [
+                        {
+                          "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006",
+                          "attributes": {
+                            "att_add_testpkg: poAssoc?assoc": [
+                              "dict@testpkg:po-alias-4"
+                            ]
+                          }
+                        },
+                        {
+                          "id": "dict@testpkg: po",
+                          "attributes": {
+                            "_alias?str": "dict@testpkg:po-alias-4",
+                            "testpkg:poValue?str": "1234567890",
+                            "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
+                            "_state?str": "submitted",
+                            "_formInfo?json": {
+                              "submitName": {
+                                "en": "Сохранить"
+                              },
+                              "formId": "testpkg-po-form"
+                            }
+                          }
+                        }
+                      ]
+                    }
+
+Отправка запроса в Alfresco-FTS
+------------------------------------
+
+Для отправки запроса в Alfresco (Alfresco-FTS) через Records используется тот же способ, что и для обычного поиска.
+
+.. list-table::
+      :widths: 5 40
+      :class: tight-table
+      :align: center
+
+      * - **URL**
+        -
+         .. code-block:: text
+
+            {{host}}/gateway/api/records/query
+
+      * - **Type**
+        -  POST
+      * - **Запрос**
+        -
+           .. code-block:: json
+
+              {
+                "query": {
+                      "sourceId": "alfresco/",
+                      "language": "fts-alfresco",
+                      "query": "{{fts-query}}"
+                  },
+                  "version": 1
+              }
+
+Справочник
+-----------
+
+Общие поля и параметры, встречающиеся в примерах запросов и ответов на этой странице.
+
+Описание полей
+~~~~~~~~~~~~~~~
+
+.. list-table::
       :widths: 10 10
       :header-rows: 1
       :class: tight-table
@@ -481,7 +628,7 @@ API-интерфейс позволяет работать с данными с�
       * - Поле
         - Наименование
       * - **fullName**
-        - Полное наименование 
+        - Полное наименование
       * - **shortName**
         - Сокращенное наименование
       * - **id**
@@ -493,7 +640,7 @@ API-интерфейс позволяет работать с данными с�
       * - **authorityType**
         - Тип полномочий User/Group
       * - **groupType**
-        - Тип группы 
+        - Тип группы
       * - **groupSubType**
         - Тип подгруппы
       * - **userName**
@@ -514,11 +661,14 @@ API-интерфейс позволяет работать с данными с�
       * - **totalCount**
         - Общее количество найденных записей
       * - **disp**
-        - Значение для вывода 
+        - Значение для вывода
       * - **value**
         - Значение
 
-.. list-table:: Таблица 2 Описание параметров
+Описание параметров
+~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
       :widths: 10 10
       :header-rows: 1
       :class: tight-table
@@ -527,19 +677,19 @@ API-интерфейс позволяет работать с данными с�
       * - Параметр
         - Значение
       * - **Блок “page”**
-        - | Параметр для настройки пагинации. 
+        - | Параметр для настройки пагинации.
           | Необязательный параметр.
       * - **Блок “sortBy”**
         - | Параметр для сортировки.
           | Необязательный параметр.
       * - **Блок “attributes“**
-        - | Параметры (см. Таблица 1), которые необходимо получить на выходе. 
+        - | Параметры (см. "Описание полей"), которые необходимо получить на выходе.
           | Необязательный параметр.
           | Можно не указывать параметры в “attributes“ или убрать данный блок и на выходе получить список Id записей.
       * - **sourceId**
-        - | Источник данных для поиска. В данном случае alfresco. 
-          | Возможные варианты: 
-          | •	reports-data 
+        - | Источник данных для поиска. В данном случае alfresco.
+          | Возможные варианты:
+          | •	reports-data
           | •	alfresco
       * - **query**
         - Необходимый predicate query для поиска записей
@@ -549,12 +699,12 @@ API-интерфейс позволяет работать с данными с�
         - Значение
       * - **t**
         - | Типы предикатов.
-          | Возможные варианты: 
+          | Возможные варианты:
           | •	starts
           | •	ends
           | •	or
           | •	and
-          | •	empty	
+          | •	empty
           | •	not
           | •	eq
           | •	gt
@@ -568,95 +718,9 @@ API-интерфейс позволяет работать с данными с�
         - Язык запроса. На текущий момент поддерживается только predicate
       * - **consistency**
         - | Консистенция (Согласованность)
-          | Возможные варианты: 
+          | Возможные варианты:
           | •	EVENTUAL
           | •	TRANSACTIONAL
           | •	DEFAULT
           | •	TRANSACTIONAL_IF_POSSIBLE
-
-Внесение изменений в запись
------------------------------
-
-.. code-block:: text
-
-  {
-    "records": [
-      {
-        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006", //id workspace, в который данные необходимо добавить
-        "attributes": {
-          "testpkg: poAssoc?assoc": [ 
-            "dict@testpkg:po-alias-4" // alias должен быть уникальным в пределах запроса, можно задать константой
-          ]
-        }
-      },	
-      {
-        "id": "dict@testpkg: po",
-        "attributes": {
-          "_alias?str": "dict@testpkg:po-alias-4",
-          "testpkg:poValue?str": "1234567890",
-          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
-          "_state?str": "submitted",
-          "_formInfo?json": {
-            "submitName": {
-              "en": "Сохранить"
-            },
-            "formId": "testpkg-po-form"
-          }
-        }
-      }
-    ]
-  }
-
-Добавление данных
-------------------
-
-.. code-block:: text
-
-  {
-    "records": [
-      {
-        "id":  "alfresco/@workspace://SpacesStore/10a8c2e8-2c14-4c64-83b3-06b8bfc45006",
-        "attributes": {
-          "att_add_testpkg: poAssoc?assoc": [
-            "dict@testpkg:po-alias-4"
-          ]
-        }
-      },
-      {
-        "id": "dict@testpkg: po",
-        "attributes": {
-          "_alias?str": "dict@testpkg:po-alias-4",
-          "testpkg:poValue?str": "1234567890",
-          "testpkg: poPpsDate?str":"2023-05-19T00:00:00Z",
-          "_state?str": "submitted",
-          "_formInfo?json": {
-            "submitName": {
-              "en": "Сохранить"
-            },
-            "formId": "testpkg-po-form"
-          }
-        }
-      }
-    ]
-  }
-
-Отправка запроса в Alfresco-FTS
-------------------------------------
-
-Для отправки запроса в Alfresco (Alfresco-FTS) через Records в URL указывать:
-
-**URL** - https://{{host}}/gateway/api/records/query
-
-**body**
-
-.. code-block:: json
-
-  {
-    "query": {
-          "sourceId": "alfresco/",
-          "language": "fts-alfresco",
-          "query": "{{fts-query}}"
-      },
-      "version": 1
-  }
 

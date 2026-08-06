@@ -68,6 +68,7 @@
 .. list-table::
    :widths: 10 10 10
    :header-rows: 1
+   :class: tight-table
 
    * - ID
      - Тип
@@ -96,6 +97,7 @@
 .. list-table::
    :widths: 10 10 10
    :header-rows: 1
+   :class: tight-table
 
    * - ID
      - Тип
@@ -142,6 +144,7 @@
    :widths: 10 10 10
    :header-rows: 1
    :align: center
+   :class: tight-table
 
    * - ID
      - Тип
@@ -165,6 +168,7 @@
    :widths: 10 10 10
    :header-rows: 1
    :align: center
+   :class: tight-table
 
    * - ID
      - Тип
@@ -412,6 +416,7 @@ Records API в браузере и при использовании в BPMN п�
    :widths: 10 10 10
    :header-rows: 1
    :align: center
+   :class: tight-table
 
    * - ID
      - Тип

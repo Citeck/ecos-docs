@@ -16,29 +16,35 @@ Spring Boot Admin
 * управление уровнями логирования;
 * снятие thread dump.
 
-.. list-table::
-   :widths: 50 50
-   :align: center
+.. grid:: 2
+   :gutter: 2
 
-   * - .. image:: _static/spring_boot_admin/01.png
-          :width: 600
-          :align: center
+   .. grid-item::
 
-     - .. image:: _static/spring_boot_admin/02.png
-          :width: 600
-          :align: center
+      .. image:: _static/spring_boot_admin/01.png
+         :width: 500
+         :align: left
 
-.. list-table::
-   :widths: 50 50
-   :align: center
+   .. grid-item::
 
-   * - .. image:: _static/spring_boot_admin/03.png
-          :width: 600
-          :align: center
+      .. image:: _static/spring_boot_admin/02.png
+         :width: 500
+         :align: left
 
-     - .. image:: _static/spring_boot_admin/04.png
-          :width: 600
-          :align: center
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item::
+
+      .. image:: _static/spring_boot_admin/03.png
+         :width: 500
+         :align: left
+
+   .. grid-item::
+
+      .. image:: _static/spring_boot_admin/04.png
+         :width: 500
+         :align: left
 
 Просмотр логов
 --------------

@@ -1,7 +1,7 @@
+.. _new_dmn:
+
 Базовые операции
 ================
-
-.. _new_dmn:
 
 .. contents::
 
@@ -12,25 +12,24 @@
 
 Процессы сгруппированы по разделам и могут быть представлены в виде **плиток** или **списка**:
 
-.. list-table::
-      :widths: 10 20
-      :header-rows: 1
-      :align: center
-      :class: tight-table
+.. grid:: 2
+   :gutter: 2
 
-      * - **Представление в виде плиток:**
-        -
+   .. grid-item::
 
-            .. image:: _static/dmn_06_1.png
-                  :width: 600
-                  :align: center
+      Представление в виде плиток:
 
-      * - **Представление в виде списка:**
-        -
+      .. image:: _static/dmn_06_1.png
+         :width: 500
+         :align: left
 
-            .. image:: _static/dmn_06_2.png
-                  :width: 600
-                  :align: center
+   .. grid-item::
+
+      Представление в виде списка:
+
+      .. image:: _static/dmn_06_2.png
+         :width: 500
+         :align: left
 
 Для просмотра или редактирования модели решения наведите курсор мыши на плитку:
 
@@ -47,39 +46,45 @@
    :width: 600
    :align: center
 
-.. list-table::
-      :widths: 10 20
-      :header-rows: 1
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * - Действие
-        - Описание
-      * - **Добавить подкатегорию**
-        - Создание подкатегории в текущем разделе:
+   .. grid-item-card:: Добавить подкатегорию
+      :class-header: sd-font-weight-bold
 
-            .. image:: _static/category_actions_1.png
-                  :width: 500
-                  :align: center
+      Создание подкатегории в текущем разделе:
 
-      * - **Изменить**
-        - Переименовать категорию:
+      .. image:: _static/category_actions_1.png
+         :width: 500
+         :align: left
 
-            .. image:: _static/category_actions_2.png
-                  :width: 500
-                  :align: center
+   .. grid-item-card:: Изменить
+      :class-header: sd-font-weight-bold
 
-      * - **Создать модель**
-        - :ref:`Создание нового решения <new_dmn_decision>`
-      * - **Удалить**
-        - Удалить категорию
+      Переименовать категорию:
 
-            .. image:: _static/category_actions_3.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/category_actions_2.png
+         :width: 500
+         :align: left
 
-      * - **Редактировать права**
-        - :ref:`Редактирование прав на раздел <dmn_permissions>`
+   .. grid-item-card:: Создать модель
+      :class-header: sd-font-weight-bold
+
+      :ref:`Создание нового решения <new_dmn_decision>`.
+
+   .. grid-item-card:: Удалить
+      :class-header: sd-font-weight-bold
+
+      Удалить категорию:
+
+      .. image:: _static/category_actions_3.png
+         :width: 300
+         :align: left
+
+   .. grid-item-card:: Редактировать права
+      :class-header: sd-font-weight-bold
+
+      :ref:`Редактирование прав на раздел <dmn_permissions>`.
 
 Карточка модели решения
 ------------------------
@@ -90,18 +95,27 @@
    :width: 200
    :align: center
 
-* **Просмотр** — карточка решения с виджетами.
-* **Редактировать карточку решения:**
+.. grid:: 1
+   :gutter: 2
 
-        .. image:: _static/dmn_09.png
-            :width: 600
-            :align: center
+   .. grid-item-card:: Просмотр
+      :class-header: sd-font-weight-bold
 
-* **Редактировать модель принятия решения:**
+      Карточка решения с виджетами.
 
-        .. image:: _static/dmn_10.png
-            :width: 600
-            :align: center
+   .. grid-item-card:: Редактировать карточку решения
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/dmn_09.png
+         :width: 600
+         :align: left
+
+   .. grid-item-card:: Редактировать модель принятия решения
+      :class-header: sd-font-weight-bold
+
+      .. image:: _static/dmn_10.png
+         :width: 600
+         :align: left
 
 Если при редактировании DMN-решения вы переходите в другое рабочее пространство, необходимо подтвердить действие:
 
@@ -133,22 +147,18 @@
    :align: center
 
 .. list-table::
-      :widths: 10 20 30
+      :widths: 20 30
       :header-rows: 1
       :align: center
       :class: tight-table
 
-      * - п/п
-        - Наименование
+      * - Наименование
         - Описание
-      * - 1
-        - **Идентификатор**
+      * - **Идентификатор**
         - Уникальный идентификатор модели.
-      * - 2
-        - **Имя**
+      * - **Имя**
         - Наименование создаваемой модели принятия решений.
-      * - 3
-        - **Раздел**
+      * - **Раздел**
         - Наименование раздела, в котором будет сохранена модель. Если не заполнять, сохранение происходит в раздел «По умолчанию».
 
 Сохранение и публикация
@@ -160,16 +170,16 @@
 
 Модель можно:
 
-.. list-table::
-      :widths: 1 3 5
-      :class: tight-table
+.. tab-set::
 
-      * - **1**
-        - **Сохранить как черновик**
-        - Без проверки валидности (наличия логических ошибок) и конвертации в Citeck формат.
-      * - **2**
-        - **Сохранить**
-        - С проверкой валидности (наличия логических ошибок) и конвертацией в Citeck формат.
-      * - **3**
-        - **Сохранить и опубликовать**
-        - С проверкой валидности (наличия логических ошибок), конвертацией в Citeck формат, публикацией, чтобы решение стало исполняемым.
+      .. tab-item:: Сохранить как черновик
+
+         Без проверки валидности (наличия логических ошибок) и конвертации в Citeck формат.
+
+      .. tab-item:: Сохранить
+
+         С проверкой валидности (наличия логических ошибок) и конвертацией в Citeck формат.
+
+      .. tab-item:: Сохранить и опубликовать
+
+         С проверкой валидности (наличия логических ошибок), конвертацией в Citeck формат, публикацией, чтобы решение стало исполняемым.

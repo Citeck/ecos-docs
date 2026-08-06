@@ -1,13 +1,18 @@
+.. _mailhog_app:
+
 mailhog-app
 ============
 
-Назначение:
+.. contents::
+
+Назначение
 --------------
 Образ инструмента для e-mail тестирования
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 --------------------------------
-::
+
+.. code-block:: yaml
 
 	mailhog:
 	    logging:
@@ -26,13 +31,14 @@ mailhog-app
 	    networks:
 	      - app_network
 
-Используемые переменные:
+Используемые переменные
 ---------------------------
 *	**MH_UI_WEB_PATH** - web path для использования mailhog за проксирующим ecos-proxy (mailhog)
 
-Типовой вывод успешного развертывания в лог контейнера:
+Типовой вывод успешного развертывания в лог контейнера
 -----------------------------------------------------------
-::
+
+.. code-block:: text
 
 	mailhog                     | [HTTP] Binding to address: 0.0.0.0:8025
 	mailhog                     | 2020/05/14 06:43:07 Using in-memory storage
@@ -40,4 +46,3 @@ mailhog-app
 	mailhog                     | 2020/05/14 06:43:07 Serving under http://0.0.0.0:8025/mailhog/
 	mailhog                     | Creating API v1 with WebPath: /mailhog
 	mailhog                     | Creating API v2 with WebPath: /mailhog
-

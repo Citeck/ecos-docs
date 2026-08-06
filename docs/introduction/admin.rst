@@ -3,6 +3,9 @@
 Раздел администратора
 ======================
 
+.. contents::
+   :depth: 2
+
 **Раздел администратора** — рабочее пространство, предназначенное для системных администраторов. В нём сосредоточены инструменты настройки и конфигурации платформы: управление пользователями, типами данных, процессами, формами, уведомлениями и другими компонентами системы.
 
 Перейдите в рабочее пространство **"Раздел администратора"**:
@@ -33,43 +36,41 @@
 Управление системой — Инструменты разработки
 ---------------------------------------------
 
-Вкладка "Сборка"
-~~~~~~~~~~~~~~~~~
+.. tab-set::
 
-Представлена актуальная информация о модулях Citeck:
+    .. tab-item:: Сборка
 
-.. image:: _static/admin/admin_12.png
-       :width: 700
-       :align: center
+        Представлена актуальная информация о модулях Citeck:
 
-Вкладка "Коммиты"
-~~~~~~~~~~~~~~~~~
+        .. image:: _static/admin/admin_12.png
+               :width: 700
+               :align: center
 
-По всем репозиториям указан список внесённых изменений:
+    .. tab-item:: Коммиты
 
-.. image:: _static/admin/admin_14.png
-       :width: 700
-       :align: center
+        По всем репозиториям указан список внесённых изменений:
 
-По ссылкам можно перейти в репозиторий, конкретный коммит, задачу.
+        .. image:: _static/admin/admin_14.png
+               :width: 700
+               :align: center
 
+        По ссылкам можно перейти в репозиторий, конкретный коммит, задачу.
 
-Вкладка "Настройки"
-~~~~~~~~~~~~~~~~~~~~
+    .. tab-item:: Настройки
 
-Содержит параметры отладки и диагностики платформы. Используйте эти настройки при разработке и решении проблем:
+        Содержит параметры отладки и диагностики платформы. Используйте эти настройки при разработке и решении проблем:
 
-.. image:: _static/admin/admin_13.png
-       :width: 700
-       :align: center
+        .. image:: _static/admin/admin_13.png
+               :width: 700
+               :align: center
 
-**Включить логгер для новых форм** — включает дебаг-логи для форм. Смотреть можно в консоли браузера.
+        **Включить логгер для новых форм** — включает дебаг-логи для форм. Смотреть можно в консоли браузера.
 
-**Включить дебаг для Records API** — в ответе от :ref:`Records API<Records_API>` запросов возвращается дополнительная информация, которая помогает понять, что происходило на сервере во время запроса.
+        **Включить дебаг для Records API** — в ответе от :ref:`Records API<Records_API>` запросов возвращается дополнительная информация, которая помогает понять, что происходило на сервере во время запроса.
 
-.. note::
+        .. note::
 
-    Настройки отладки рекомендуется включать только временно — исключительно для диагностики, а после завершения анализа — отключать, чтобы не перегружать логи в продуктивной среде.
+            Настройки отладки рекомендуется включать только временно — исключительно для диагностики, а после завершения анализа — отключать, чтобы не перегружать логи в продуктивной среде.
 
 Интерфейс раздела администратора
 ----------------------------------
@@ -86,64 +87,57 @@
 
     Для отдельных разделов могут быть доступны дополнительные специальные действия, характерные для данного типа артефактов.
 
-.. list-table::
-      :widths: 5 10
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * -
+   .. grid-item-card:: Скачать в виде JSON-файла
+      :class-header: sd-font-weight-bold
 
-             .. image:: _static/admin/admin_4.png
-                  :width: 25
-                  :align: center
+      .. image:: _static/admin/admin_4.png
+         :width: 25
+         :align: left
 
-        - Скачать в виде JSON-файла
+   .. grid-item-card:: Удалить
+      :class-header: sd-font-weight-bold
 
-      * -
+      .. image:: _static/admin/admin_5.png
+         :width: 25
+         :align: left
 
-             .. image:: _static/admin/admin_5.png
-                  :width: 25
-                  :align: center
+   .. grid-item-card:: Открыть карточку журнала в соседней вкладке
+      :class-header: sd-font-weight-bold
 
-        - Удалить
+      .. image:: _static/admin/admin_6.png
+         :width: 25
+         :align: left
 
-      * -
+      Карточка представляет собой :ref:`дашборд<dashboard>`:
 
-             .. image:: _static/admin/admin_6.png
-                  :width: 25
-                  :align: center
+      .. image:: _static/admin/admin_7.png
+         :width: 500
+         :align: center
 
-        - | Открыть карточку журнала в соседней вкладке.
-          | Карточка представляет собой :ref:`дашборд<dashboard>`:
+   .. grid-item-card:: Открыть на редактирование
+      :class-header: sd-font-weight-bold
 
-             .. image:: _static/admin/admin_7.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/admin/admin_8.png
+         :width: 25
+         :align: left
 
-      * -
+   .. grid-item-card:: Редактировать JSON-файл
+      :class-header: sd-font-weight-bold
 
-             .. image:: _static/admin/admin_8.png
-                  :width: 25
-                  :align: center
+      .. image:: _static/admin/admin_9.png
+         :width: 25
+         :align: left
 
-        - Открыть на редактирование
+      .. image:: _static/admin/admin_11.png
+         :width: 500
+         :align: center
 
-      * -
+   .. grid-item-card:: Копировать
+      :class-header: sd-font-weight-bold
 
-             .. image:: _static/admin/admin_9.png
-                  :width: 25
-                  :align: center
-
-        - Редактировать JSON-файл:
-
-             .. image:: _static/admin/admin_11.png
-                  :width: 500
-                  :align: center
-
-      * -
-
-             .. image:: _static/admin/admin_10.png
-                  :width: 25
-                  :align: center
-
-        - Копировать
+      .. image:: _static/admin/admin_10.png
+         :width: 25
+         :align: left

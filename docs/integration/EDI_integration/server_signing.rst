@@ -1,5 +1,10 @@
+.. _server_signing:
+
 Серверное подписание
 ====================
+
+.. contents::
+    :depth: 3
 
 .. note::
 
@@ -15,7 +20,7 @@
    :width: 600
    :align: center
 
-Описание 
+Описание
 ----------
 
 1. Клиент API аутентифицируется в KeyCloak. KeyCloak выдает токен.
@@ -36,7 +41,8 @@
 
 На данный момент доступно 2 REST запроса:
 
-**Подписание контента**
+Подписание контента
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: text
 
@@ -67,49 +73,69 @@ body:
         }
     }
 
-* **documentContent** - Контент для подписания (Base64 encoded byte[])
+.. list-table::
+    :widths: 15 35
+    :header-rows: 1
+    :class: tight-table
 
-* **providerType** - Тип провайдера (По умолчанию у нас используется JCSP)
+    * - Поле
+      - Описание
+    * - ``documentContent``
+      - Контент для подписания (Base64 encoded byte[]).
+    * - ``providerType``
+      - Тип провайдера (по умолчанию используется JCSP).
+    * - ``keyStoreType``
+      - Тип хранилища сертификата (например HDD в разделе D, как в текущем примере, или registry и т.д.).
+    * - ``pin``
+      - Пароль от контейнера для получения приватного ключа.
+    * - ``alias``
+      - Alias сертификата для поиска нужного сертификата для подписи.
+    * - ``serialNumber``
+      - Серийный номер сертификата, если ``alias`` неизвестен.
+    * - ``thumbprint``
+      - Отпечаток сертификата, используется если ``alias`` и ``serialNumber`` неизвестны.
+    * - ``signatureAlgorithm``
+      - Алгоритм подписи (в данный момент передаваемый алгоритм не используется, берётся из найденного сертификата).
 
-* **keyStoreType** - Тип хранилища сертификата (Например HDD в разделе D, как в текущем примере или registry и т.д.)
-
-* **pin** - пароль от контейнера для получения приватного ключа
-
-* **alias** - alias сертификата для поиска нужного сертификата для подписи
-
-* **serialNumber** - серийный номер сертификата? если **alias** не известен
-
-* **thumbprint** - отпечаток сертификата, используется **alias** и **serialNumber**  неизвестны
-
-* **signatureAlgorithm** - алгоритм подписи (в данный момент передаваемый алгоритм не используется, берется из найденного сертификата)
+.. _server_signing_cert_search:
 
 В текущей реализации сертификат ищется:
 
-1. Во-первых по aliasу (если он не пустой, если пустой, то пропускаем данный шаг)
+1. Во-первых по alias'у (если он не пустой, если пустой - пропускаем данный шаг).
 
-2. Если не найден, то по серийному номеру (если он не пустой, если пустой, то пропускаем данный шаг)
+2. Если не найден, то по серийному номеру (если он не пустой, если пустой - пропускаем данный шаг).
 
-3. Если опять не найден, то по отпечатку (если пустой и сертификат не найден, то возвращаем ошибку подписания)
+3. Если опять не найден, то по отпечатку (если пустой и сертификат не найден, то возвращаем ошибку подписания).
 
-Ожидаемый ответ:
+.. dropdown:: Пример ответа
+    :color: secondary
 
-.. code-block:: json
+    .. code-block:: json
 
-    {
-        "success": true,
-        "error": "",
-        "signatureContent": "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"
-    }
+        {
+            "success": true,
+            "error": "",
+            "signatureContent": "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"
+        }
 
-* **success** - результат выполнения rest запроса (успешно/неуспешно)
+.. list-table::
+    :widths: 15 35
+    :header-rows: 1
+    :class: tight-table
 
-* **error** - Строка ошибки (При ошибке подписания)
-
-* **signatureContent** - контент полученной подписи (Base64 encoded byte[])
+    * - Поле
+      - Описание
+    * - ``success``
+      - Результат выполнения rest запроса (успешно/неуспешно).
+    * - ``error``
+      - Строка ошибки (при ошибке подписания).
+    * - ``signatureContent``
+      - Контент полученной подписи (Base64 encoded byte[]).
 
 При подписании создается подпись в формате CMS. Возвращается зашифрованная в Base64 строка подписи (аналогично подписанию через плагин).
 
-**Валидация подписи**
+Валидация подписи
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: text
 
@@ -123,7 +149,7 @@ headers:
 
 body:
 
-.. code-block:: text
+.. code-block:: json
 
     {
         "documentContent":"QQMTIzNDU2Nzg5",
@@ -136,36 +162,26 @@ body:
             "pin":"1",
             "alias":null,
             "serialNumber":"5927a700f713a4c2d9548e8628fe559c2c302",
-            "thumbprint":"A14BFD6503E123FD76AFCE95A6FAA2097E0883DEAD811"
+            "thumbprint":"A14BFD6503E123FD76AFCE95A6FAA2097E0883DEAD811",
             "signatureAlgorithm":"GOST3411_2012_256withGOST3410DH_2012_256"
         }
     }
 
-* **documentContent** - Контент, который был подписан (Base64 encoded byte[])
+.. list-table::
+    :widths: 15 35
+    :header-rows: 1
+    :class: tight-table
 
-* **signatureContent** - Непосредственно сама подпись (Base64 encoded byte[])
+    * - Поле
+      - Описание
+    * - ``documentContent``
+      - Контент, который был подписан (Base64 encoded byte[]).
+    * - ``signatureContent``
+      - Непосредственно сама подпись (Base64 encoded byte[]).
+    * - ``providerType``, ``keyStoreType``, ``pin``, ``alias``, ``serialNumber``, ``thumbprint``, ``signatureAlgorithm``
+      - Совпадают с описанными в разделе «Подписание контента» выше.
 
-* **providerType** - Тип провайдера (По умолчанию у нас используется JCSP)
-
-* **keyStoreType** - Тип хранилища сертификата (Например HDD в разделе D, как в текущем примере или registry и т.д.)
-
-* **pin** - пароль от контейнера для получения приватного ключа
-
-* **alias** - alias сертификата для поиска нужного сертификата для подписи
-
-* **serialNumber** - серийный номер сертификата если **alias** неизвестен
-
-* **thumbprint** - отпечаток сертификата, используется если **alias** и **serialNumber** неизвестны
-
-* **signatureAlgorithm** - алгоритм подписи (в данный момент передаваемый алгоритм не используется, берется из найденного сертификата)
-
-В текущей реализации сертификат ищется:
-
-1. Во-первых по aliasу (если он не пустой, если пустой, то пропускаем данный шаг)
-
-2. Если не найден, то по серийному номеру (если он не пустой, если пустой, то пропускаем данный шаг)
-
-3. Если опять не найден, то по отпечатку (если пустой и сертификат не найден, то возвращаем ошибку подписания)
+Порядок поиска сертификата такой же, как при подписании (см. :ref:`выше<server_signing_cert_search>`).
 
 Ожидаемый ответ:
 
@@ -177,11 +193,22 @@ body:
         "result": true
     }
 
-* **success** - результат выполнения rest запроса (успешно/неуспешно)
+.. list-table::
+    :widths: 15 35
+    :header-rows: 1
+    :class: tight-table
 
-* **error** - Строка ошибки (При ошибке валидации)
+    * - Поле
+      - Описание
+    * - ``success``
+      - Результат выполнения rest запроса (успешно/неуспешно).
+    * - ``error``
+      - Строка ошибки (при ошибке валидации).
+    * - ``result``
+      - Результат валидации подписи.
 
-* **result** - результат валидации подписи
+Настройка проверки токена
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Проверку токена можно отключить выставив соответствующие свойства:
 
@@ -206,23 +233,30 @@ body:
               - patterns:
                   - /ecos/*
 
-* **enabled** - включена/отключена проверка токена перед подписью/валидацией
+.. list-table::
+    :widths: 15 35
+    :header-rows: 1
+    :class: tight-table
 
-* **auth-server-url** - адрес эндпоинта auth для keycloak
+    * - Поле
+      - Описание
+    * - ``enabled``
+      - Включена/отключена проверка токена перед подписью/валидацией.
+    * - ``auth-server-url``
+      - Адрес эндпоинта auth для keycloak.
+    * - ``realm``
+      - Realm, для которого происходит проверка токена.
+    * - ``resource``
+      - ID клиента, к которому необходим доступ (в данном сервисе неактуально, можно добавить любого валидного клиента в указанном realm).
+    * - ``bearer-only``
+      - Если выставлено true, то приложение может только проверять токены, и в приложении нельзя будет залогиниться.
+    * - ``security-constraints``
+      - Для описания ролевой политики:
 
-* **realm** - realm для которого происходит проверка токена.
+        - ``authRoles`` - список ролей Keycloak (``uma_authorization`` по умолчанию, так как она выдается всем клиентам).
+        - ``securityCollections``
 
-* **resource** - ID клиента к которому необходим доступ (В данном сервисе неактуально, можно добавить любого валидного клиента в указанном realm)
-
-* **bearer-only** - если выставлено true, то приложение может только проверять токены, и в приложении нельзя будет залогиниться
-
-* **security-constraints** - для описания ролевой политики
-
-    - **authRoles** - список ролей Keycloak (uma_authorization по умолчанию, так как она выдается всем клиентам)
-
-    - **securityCollections**
-
-        * **patterns** - URL-паттерны для методов REST API, которые требуется закрыть соответствующими ролями (в данном случае два метода /ecos/'*')
+          - ``patterns`` - URL-паттерны для методов REST API, которые требуется закрыть соответствующими ролями (в данном случае два метода ``/ecos/*``).
 
 Конфиг дополнительных настроек для микросервиса интеграции:
 
@@ -240,49 +274,65 @@ body:
             isTokenCheckEnabled: false
             isTrustAllEnabled: false
 
-* **root-uri** - адрес сервиса подписания
+.. list-table::
+    :widths: 20 35
+    :header-rows: 1
+    :class: tight-table
 
-* **keycloak.host**  - host keycloak
+    * - Поле
+      - Описание
+    * - ``root-uri``
+      - Адрес сервиса подписания.
+    * - ``keycloak.host``
+      - Host keycloak.
+    * - ``keycloak.port``
+      - Порт keycloak.
+    * - ``keycloak.client-id``
+      - Id сервисного клиента keycloak.
+    * - ``keycloak.client-secret``
+      - Secret сервисного клиента keycloak.
+    * - ``keycloak.realm``
+      - Realm, для которого происходит проверка токена.
+    * - ``keycloak.isTokenCheckEnabled``
+      - При включенном флаге в сервис подписания передается access токен сервисного клиента.
+    * - ``keycloak.isTrustAllEnabled``
+      - Включение/отключение политики TrustAll при запросе токена у keycloak.
 
-* **keycloak.port**  - порта keycloak
+.. warning::
 
-* **keycloak.client-id**  - id сервисного клиента keycloak
-
-* **keycloak.client-secret**  - secret сервисного клиента keycloak
-
-* **keycloak.realm**  - realm для которого происходит проверка токена.
-
-* **keycloak.isTokenCheckEnabled**  - при включенном флаге в сервис подписания передается access токен сервисного клиента
-
-* **keycloak.isTrustAllEnabled**  - включение/отключение политики TrustAll при запросе токена у кейклока (выставляется в true если падает ошибка доступа, однако нужно учитывать что в таком случае появляется уязвимость)
+    ``keycloak.isTrustAllEnabled`` выставляется в true, если падает ошибка доступа. Однако нужно учитывать, что в таком случае появляется уязвимость.
 
 Создание сервисного клиента keycloak
 -------------------------------------
 
 Сервисного клиента необходимо создать в соответствующем realm keycloak. Он необходим для получения access токена.
 
-1. Зайти в консоль администратора непосредственно на сервер keycloak
+.. dropdown:: Как создать сервисного клиента keycloak
+    :color: secondary
 
-2. Переключится на нужный realm
+    1. Зайти в консоль администратора непосредственно на сервер keycloak.
 
-3. Пункт **Clients → Добавить нового (Имя клиента - любое) → Cоздать**
+    2. Переключиться на нужный realm.
 
-4. Пункт **Access Type = confidential**
+    3. Пункт **Clients → Добавить нового (Имя клиента - любое) → Создать**.
 
-5. Флаг **Service Accounts Enabled = true**
+    4. Пункт **Access Type = confidential**.
 
-6. **Valid Redirect URIs** - добавит любой uri редиректа на основной сервер, хотя в данном случае это не обязательно, так как от клиента нам нужен лишь токен и не нужны ресурсы
+    5. Флаг **Service Accounts Enabled = true**.
 
-7. Save
+    6. **Valid Redirect URIs** - добавить любой uri редиректа на основной сервер, хотя в данном случае это не обязательно, так как от клиента нам нужен лишь токен и не нужны ресурсы.
 
-После этого на вкладке **Credentials** данного клиента можно найти его secret, id же является заданное нами имя.
+    7. Save.
+
+    После этого на вкладке **Credentials** данного клиента можно найти его secret, id же является заданное нами имя.
 
 Запрос из ecos
 --------------
 
-Для того чтобы можно было запрашивать валидацию подписи и подписывание любого контента в микросервисе интеграции были реализованы соотвествующие **RecordsDao**
+Для того чтобы можно было запрашивать валидацию подписи и подписывание любого контента в микросервисе интеграции были реализованы соответствующие **RecordsDao**.
 
-**Подписание - ServerSignRecords**
+Подписание - ServerSignRecords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ID - “server-sign“
 
@@ -344,7 +394,8 @@ KeyStoreInfo:
         }
     ).then(res => console.log(res));
 
-**Валидация - ServerSignVerificationRecords**
+Валидация - ServerSignVerificationRecords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ID - “server-sign-verify“
 
@@ -359,26 +410,7 @@ Dto - SignVerifyRequest
         private CertificateInfo certificateInfo;
     }
 
-CertificateInfo:
-
-.. code-block:: java
-
-    public class CertificateInfo {
-        private String pin;
-        private String alias;
-        private String serialNumber;
-        private String thumbprint;
-        private String signatureAlgorithm;
-    }
-
-KeyStoreInfo:
-
-.. code-block:: java
-
-    public class KeyStoreInfo {
-        private String providerType;
-        private String keyStoreType;
-    }
+``CertificateInfo`` и ``KeyStoreInfo`` - те же структуры, что и в примере подписания выше.
 
 Пример запроса из консоли браузера:
 
@@ -408,9 +440,8 @@ KeyStoreInfo:
         }
     ).then(res => console.log(res));
 
-Для локального запуска функционала необходимо клонировать репозиторий **ecos-crypto-sign** и запустить приложение **CryptoSignApp**
+Для локального запуска функционала необходимо клонировать репозиторий **ecos-crypto-sign** и запустить приложение **CryptoSignApp**.
 
-Недостающие библиотеки (при возникновении ошибок компиляции и NoClassDefFoundException) можно взять с официально сайта КриптоПро
+Недостающие библиотеки (при возникновении ошибок компиляции и NoClassDefFoundException) можно взять с официального сайта КриптоПро.
 
-Необходимо установить в нужную jre функционал JCP + JCSP
-
+Необходимо установить в нужную jre функционал JCP + JCSP.

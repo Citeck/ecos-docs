@@ -7,8 +7,6 @@
 
 В данном разделе описывается, как настроить глобальный поиск: расширить список типов данных, задать атрибуты для поиска и ограничить нагрузку на сервер.
 
-Поиск осуществляется по документам, людям (пользователям), рабочим пространствам.
-
 .. image:: _static/search/search_01.png
        :width: 300
        :align: center
@@ -21,60 +19,71 @@
 
 Типы документов, по которым осуществлять поиск, настраиваются дополнительно.
 
-Для настройки типов данных перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`.
+Открытие настройки поиска
+------------------------------------------
 
-Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
+.. dropdown:: Как открыть форму настройки глобального поиска
+   :color: secondary
 
-В поисковой строке введите **global-search-config**:
+   1. Перейдите в журнал :ref:`«Конфигурация ECOS»<configuration_admin>`. Журнал доступен по адресу: ``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``
 
-.. image:: _static/search/setting_01.png
-       :width: 700
-       :align: center
+   2. В поисковой строке введите **global-search-config**:
 
-откройте настройку:
+   .. image:: _static/search/setting_01.png
+          :width: 700
+          :align: center
 
-.. image:: _static/search/setting_02.png
-       :width: 500
-       :align: center
+   3. Откройте настройку:
+
+   .. image:: _static/search/setting_02.png
+          :width: 500
+          :align: center
 
 На форме можно настроить:
 
     - Максимальное количество одновременных запросов на одно приложение (микросервис). Если будет много одновременных запросов в глобальный поиск, то это не должно положить сервер.
     - Список типов документов, по которым должен быть глобальный поиск и опционально возможность указать атрибуты, по которым его производить.
 
-Если атрибуты для поиска не указывать, то поиск будет вестись по отображаемому имени. Список доступных типов атрибутов для выбора: ``TEXT``, ``MLTEXT``, ``OPTIONS``.
+.. note::
+
+   Если атрибуты для поиска не указывать, то поиск будет вестись по отображаемому имени. Список доступных типов атрибутов для выбора: ``TEXT``, ``MLTEXT``, ``OPTIONS``.
 
 Добавление типа данных
 ------------------------------------------
 
-Нажмите **«Добавить ещё»**. Выберите тип данных:
+.. dropdown:: Как добавить тип данных для поиска
+   :color: secondary
 
-.. image:: _static/search/setting_03.png
-       :width: 600
-       :align: center
+   1. Нажмите **«Добавить ещё»**. Выберите тип данных:
 
-и атрибуты для поиска:
+   .. image:: _static/search/setting_03.png
+          :width: 600
+          :align: center
 
-.. image:: _static/search/setting_04.png
-       :width: 600
-       :align: center
+   2. Выберите атрибуты для поиска:
 
-Сохраните - нажмите **«Создать»**.
+   .. image:: _static/search/setting_04.png
+          :width: 600
+          :align: center
+
+   3. Сохраните - нажмите **«Создать»**.
+
+Проверка результата
+------------------------------------------
 
 Проверьте работу поиска:
 
-.. list-table::
-      :widths: 10 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/search/search_03.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/search/search_03.png
+             :width: 300
+             :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/search/search_04.png
-                  :width: 700
-                  :align: center
+      .. image:: _static/search/search_04.png
+             :width: 700
+             :align: left

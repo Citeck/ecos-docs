@@ -88,126 +88,118 @@
 
 Для связи в обе стороны необходимо, чтобы у источника ассоциации и у цели ассоциации была настроена ассоциация в типе с одним ID.
 
-.. list-table::
-      :widths: 20 20
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item::
+
+      .. image:: _static/both_link_1.png
+         :width: 500
+         :align: left
+
+   .. grid-item::
+
+      .. image:: _static/both_link_2.png
+         :width: 500
+         :align: left
+
+.. dropdown:: Простой пример настройки связей
+   :color: secondary
+
+   1. Создадим 2 типа данных:
+
+   **Sons**:
+
+   .. grid:: 2
+      :gutter: 2
+
+      .. grid-item::
+
+         .. image:: _static/Sample/r_01.png
+            :width: 500
+            :align: left
+
+      .. grid-item::
+
+         .. image:: _static/Sample/r_02.png
+            :width: 500
+            :align: left
+
+   **Dad**:
+
+   .. grid:: 2
+      :gutter: 2
+
+      .. grid-item::
+
+         .. image:: _static/Sample/r_03.png
+            :width: 500
+            :align: left
+
+      .. grid-item::
+
+         .. image:: _static/Sample/r_04.png
+            :width: 500
+            :align: left
+
+   **Son** зададим ассоциацией:
+
+   .. image:: _static/Sample/r_05.png
+      :width: 300
       :align: center
 
-      * - |
+   2. Заполним журнал **Sons** элементами:
 
-            .. image:: _static/both_link_1.png
-                  :width: 500
-                  :align: center
-
-        - |
-
-            .. image:: _static/both_link_2.png
-                  :width: 500
-                  :align: center
-
-Простой пример настройки связей
----------------------------------
-
-1. Создадим 2 типа данных:
-
-- **Sons**:
-
-.. list-table::
-      :widths: 30 30
+   .. image:: _static/Sample/r_06.png
+      :width: 700
       :align: center
-      :class: tight-table
 
-      * -
+   3. Заполним **Dad** - добавим к нему **sons**:
 
-          .. image:: _static/Sample/r_01.png
-                :width: 600
-                :align: center
-
-        -
-
-          .. image:: _static/Sample/r_02.png
-                :width: 600
-                :align: center
-
-
-- **Dad**:
-
-.. list-table::
-      :widths: 30 30
+   .. image:: _static/Sample/r_07.png
+      :width: 700
       :align: center
-      :class: tight-table
 
-      * -
+   **Случай 1.** Чтобы **у Dad в виджете «Связи» отображались Sons.** Для этого необходимо:
 
-          .. image:: _static/Sample/r_03.png
-                :width: 600
-                :align: center
+   1. Перейти в тип данных **Dad** во вкладку **«Связи»**, настроить:
 
-        -
+      .. image:: _static/Sample/r_08.png
+         :width: 600
+         :align: center
 
-          .. image:: _static/Sample/r_04.png
-                :width: 600
-                :align: center
+      a. **Идентификатор связи.**
+      b. **Наименование связи**, которое будет использоваться в виджете.
+      c. **Атрибут**, в который новые связи будут добавляться и из которого будут загружаться.
+      d. **Направление связи.** **Source** является **Dad**, **target**, соответственно, **Sons**.
+      e. **Тип данных.** Для добавления элементов в виджете по нажатию **+**, и правильного отображения столбцов в нем.
 
-          | **Son** зададим ассоциацией:
+   2. Перейти в журнал **Dad**, открыть карточку:
 
-          .. image:: _static/Sample/r_05.png
-                :width: 300
-                :align: center
+      .. image:: _static/Sample/r_09.png
+         :width: 700
+         :align: center
 
-2. Заполним журнал **Sons** элементами:
+      .. image:: _static/Sample/r_10.png
+         :width: 600
+         :align: center
 
-.. image:: _static/Sample/r_06.png
-   :width: 700
-   :align: center
+   **Случай 2.** Чтобы **у каждого Son в виджете «Связи» отображался его Dad.** Для этого необходимо:
 
-3. Заполним **Dad** - добавим к нему **sons**:
+   1. Перейти в тип данных **Sons** во вкладку **«Связи»**, настроить:
 
-.. image:: _static/Sample/r_07.png
-   :width: 700
-   :align: center
+      .. image:: _static/Sample/r_11.png
+         :width: 600
+         :align: center
 
-**Случай 1.** Чтобы **у Dad в виджете «Связи» отображались Sons.** Для этого необходимо:
+      a. **Идентификатор связи.**
+      b. **Наименование связи**, которое будет использоваться в виджете.
+      c. **Атрибут**, в который новые связи будут добавляться и из которого будут загружаться.
+      d. **Направление связи.** **Source** является **Son**, **target**, соответственно, **Dad**.
+      e. **Тип данных.** Для добавления элементов в виджете по нажатию **+**, и правильного отображения столбцов в нем.
 
-1. Перейти в тип данных **Dad** во вкладку **«Связи»**, настроить:
+   2. Перейти в журнал **Sons**, открыть карточку:
 
-        .. image:: _static/Sample/r_08.png
-              :width: 600
-              :align: center
-
-  1. **Идентификатор связи.**
-  2. **Наименование связи**, которое будет использоваться в виджете.
-  3. **Атрибут**, в который новые связи будут добавляться и из которого будут загружаться.
-  4. **Направление связи.** **Source** является **Dad**, **target**, соответственно, **Sons**.
-  5. **Тип данных.** Для добавления элементов в виджете по нажатию **+**, и правильного отображения столбцов в нем.
-
-2. Перейти в журнал **Dad**, открыть карточку:
-
-        .. image:: _static/Sample/r_09.png
-              :width: 700
-              :align: center
-
-        |
-
-        .. image:: _static/Sample/r_10.png
-              :width: 600
-              :align: center
-
-**Случай 2.** Чтобы **у каждого Son в виджете «Связи» отображался его Dad.** Для этого необходимо:
-
-1. Перейти в тип данных **Sons** во вкладку **«Связи»**, настроить:
-
-        .. image:: _static/Sample/r_11.png
-              :width: 600
-              :align: center
-
-  1. **Идентификатор связи.**
-  2. **Наименование связи**, которое будет использоваться в виджете.
-  3. **Атрибут**, в который новые связи будут добавляться и из которого будут загружаться.
-  4. **Направление связи.** **Source** является **Son**, **target**, соответственно, **Dad**.
-  5. **Тип данных.** Для добавления элементов в виджете по нажатию **+**, и правильного отображения столбцов в нем.
-
-2. Перейти в журнал **Sons**, открыть карточку:
-
-        .. image:: _static/Sample/r_12.png
-              :width: 600
-              :align: center
+      .. image:: _static/Sample/r_12.png
+         :width: 600
+         :align: center

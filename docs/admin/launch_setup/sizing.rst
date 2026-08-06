@@ -1,3 +1,5 @@
+.. _sizing:
+
 Сайзинг: тестовая и продуктивная среда
 =========================================
 
@@ -32,6 +34,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 30 18 18 17 17
+   :class: tight-table
 
    * - Микросервис
      - Requests CPU
@@ -142,6 +145,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 35 20 22 23
+   :class: tight-table
 
    * - Компонент
      - Минимум
@@ -167,6 +171,7 @@
     .. list-table::
        :header-rows: 1
        :widths: 30 35 35
+       :class: tight-table
 
        * - Объём контента
          - Ресурсы MinIO
@@ -204,6 +209,7 @@
         .. list-table::
            :header-rows: 1
            :widths: 55 22 23
+           :class: tight-table
 
            * - Компонент
              - Requests CPU
@@ -245,6 +251,7 @@
         .. list-table::
            :header-rows: 1
            :widths: 55 22 23
+           :class: tight-table
 
            * - Показатель
              - Requests
@@ -287,6 +294,7 @@
         .. list-table::
            :header-rows: 1
            :widths: 55 22 23
+           :class: tight-table
 
            * - Компонент
              - Requests CPU
@@ -331,6 +339,7 @@
         .. list-table::
            :header-rows: 1
            :widths: 55 22 23
+           :class: tight-table
 
            * - Показатель
              - Requests
@@ -373,6 +382,7 @@ PostgreSQL
 .. list-table::
    :header-rows: 1
    :widths: 25 37 38
+   :class: tight-table
 
    * - Параметр
      - Test
@@ -407,6 +417,7 @@ PostgreSQL
 .. list-table::
    :header-rows: 1
    :widths: 5 25 20 50
+   :class: tight-table
 
    * - №
      - База данных
@@ -463,6 +474,7 @@ S3
 .. list-table::
    :header-rows: 1
    :widths: 28 36 36
+   :class: tight-table
 
    * - Параметр
      - Test
@@ -500,6 +512,7 @@ Worker-ноды Kubernetes
 .. list-table::
    :header-rows: 1
    :widths: 25 15 15 20 25
+   :class: tight-table
 
    * - Среда / вариант
      - Requests CPU
@@ -533,6 +546,7 @@ Worker-ноды Kubernetes
 .. list-table::
    :header-rows: 1
    :widths: 15 42 43
+   :class: tight-table
 
    * - Сервис
      - Test
