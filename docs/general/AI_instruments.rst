@@ -18,6 +18,12 @@
 
       Движки выполнения (``TOOL_LOOP`` и ``CONFIG``), маршрутизация запросов, конвейер планирования и исполнения многоартефактных запросов, сводный перечень точек участия человека (HITL), области публикации артефактов с локальными копиями и ограничения выполнения.
 
+   .. grid-item-card:: Безопасность AI-функций
+      :link: ai-security
+      :link-type: ref
+
+      Лицензия и группы доступа, три оси доступа к инструментам, работа под правами пользователя, изоляция рабочих пространств и подтверждения необратимых действий.
+
    .. grid-item-card:: Микросервис транскрипции аудио и диаризации
       :link: citeck-stt-sidecar
       :link-type: ref
@@ -36,5 +42,6 @@
 
     AI_instruments/user_agents
     AI_instruments/ai_architecture
+    AI_instruments/ai_security
     AI_instruments/citeck-stt-sidecar
     AI_instruments/call-recording-module
