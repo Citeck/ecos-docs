@@ -12,6 +12,12 @@
 
       Конфигурируемые сущности с системным промптом, набором инструментов и выбранным :ref:`LLM-провайдером <AI_assistant_config>`. Работают в двух режимах: stateless (однократный вызов из :ref:`BPMN-процессов <process_bpmn>`; вызов преднастроенного агента в текущем релизе отключён и будет доступен в следующих релизах — при этом :ref:`AI задача <ai_task>` с промптом в процессах полностью работает) и stateful (многоходовой диалог в :ref:`AI Assistant UI <AI_assistant>`). Администратор создаёт агентов через **Admin > AI Agents**, разработчик подключает собственные инструменты, реализуя интерфейс ``CiteckAiTool``.
 
+   .. grid-item-card:: Архитектура выполнения AI-агентов
+      :link: ai-architecture
+      :link-type: ref
+
+      Движки выполнения (``TOOL_LOOP`` и ``CONFIG``), маршрутизация запросов, конвейер планирования и исполнения многоартефактных запросов, сводный перечень точек участия человека (HITL), области публикации артефактов с локальными копиями и ограничения выполнения.
+
    .. grid-item-card:: Микросервис транскрипции аудио и диаризации
       :link: citeck-stt-sidecar
       :link-type: ref
@@ -29,5 +35,6 @@
     :hidden:
 
     AI_instruments/user_agents
+    AI_instruments/ai_architecture
     AI_instruments/citeck-stt-sidecar
     AI_instruments/call-recording-module
