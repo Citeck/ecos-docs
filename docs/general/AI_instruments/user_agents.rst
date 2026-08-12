@@ -55,6 +55,18 @@
      - TEXT[]
      - нет
      - Список подключённых инструментов
+   * - ``engine``
+     - TEXT
+     - нет
+     - Движок выполнения: ``TOOL_LOOP`` (по умолчанию) — операционный диалоговый цикл с инструментами; ``CONFIG`` — агент конфигурирования платформы (генерация и публикация артефактов). Определяет маршрутизацию запроса; в форму редактора пока не выведено, задаётся при создании записи (например, патчем)
+   * - ``reasoningEffort``
+     - TEXT
+     - нет
+     - Глубина рассуждений модели: пустое значение / ``minimal`` / ``low`` / ``medium`` / ``high``. Учитывается моделями, поддерживающими управление рассуждениями
+   * - ``requireDeployConfirmation``
+     - BOOLEAN
+     - нет
+     - Требовать подтверждение человека перед публикацией артефакта (по умолчанию ``false``). При ``true`` инструмент ``deployArtifact`` не публикует сразу, а показывает карточку подтверждения с выбором области публикации; в форму редактора пока не выведено
    * - ``enabled``
      - BOOLEAN
      - нет
@@ -117,7 +129,7 @@ REST API
 Доступные инструменты
 ----------------------
 
-По умолчанию ``isAvailableForAgents() = true``. Недоступны для агентов (переопределяют в ``false``) внутренние служебные инструменты — ``SaveFormDraftTool``, ``SaveDataTypeDraftTool``, ``SaveEscalationTool`` и аналогичные.
+По умолчанию ``isAvailableForStatelessExecution() = true``. Инструменты, переопределяющие метод в ``false`` (изменяющие данные или конфигурацию: ``MutateRecordTool``, ``DeleteRecordsTool``, ``DeployArtifactTool``, а также внутренние служебные — ``SaveFormDraftTool``, ``SaveDataTypeDraftTool``, ``SaveEscalationTool`` и аналогичные), недоступны на stateless-пути (вызов из BPMN и ``POST /api/ai-agent/execute``); в интерактивном диалоге они работают под правами пользователя с HITL-подтверждениями.
 
 .. list-table::
    :header-rows: 1
@@ -224,7 +236,7 @@ Spring DI автоматически обнаружит инструмент ч�
 
 .. code-block:: kotlin
 
-    override fun isAvailableForAgents(): Boolean = false
+    override fun isAvailableForStatelessExecution(): Boolean = false
 
 
 Маршрутизация в оркестраторе
