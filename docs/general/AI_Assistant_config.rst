@@ -26,27 +26,15 @@
 Базовая техническая платформа
 -------------------------------
 
-Базовые инструменты
-~~~~~~~~~~~~~~~~~~~~
+Инструменты
+~~~~~~~~~~~~
 
-* **GetCurrentTimeTool:** Получение текущего времени
-* **GetRecordAttributesTool:** Извлечение атрибутов записей
-* **GetRecordContentTool:** Получение контента записей
-* **GetRecordDisplayNameTool:** Получение отображаемых имен
-* **GetRecordContactsTool:** Извлечение контактной информации
-* **GetRecordContentHistoryTools:** История изменений контента
-* **DocumentAnalysisTool:** Анализ документов
-* **DeployDataTypeTool:** Развертывание типов данных
-* **GetArtifactMetadataTool:** Метаданные артефактов
-* **GetActivitiesTool:** Работа с активностями
+Возможности ассистента реализованы инструментами, которые подключаются агентам белыми списками. Полный каталог с разделением на операционные и конфигурационные — в статье :ref:`Пользовательские AI-агенты <user-agents>`.
 
 Безопасность, доступ, авторизация
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* **Лицензионный контроль:** Проверка флага ``ai`` в лицензии
-* **Групповые права:** Контроль доступа через группу ``GROUP_ai-feature-allowed``
-* **Контроль доступа:** Расширенные проверки доступности AI функций
-* **BPMN авторизация:** Улучшенная обработка запросов BPMN с учетом прав пользователя
+Лицензионный контроль (флаг ``ai``), группы доступа, три оси доступа к инструментам и работа под правами пользователя описаны в статье :ref:`Безопасность AI-функций <ai-security>`.
 
 Конфигурация
 ~~~~~~~~~~~~~
@@ -216,39 +204,25 @@ Citeck AI Assistant поддерживает работу с различным�
     citeck:
         ai:
             assistants:
-                bpmn:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: medium     # Уровень рассуждений: none, low, medium, high
+                bpmn:                            # Помощник BPMN в редакторе процессов
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.0
+                    reasoning-effort: none       # Уровень рассуждений: none, low, medium, high
                     streaming: true              # Потоковый вывод
-                universal:
-                    model: gpt-5.1
+                universal:                       # Универсальный ассистент (чат)
+                    model: ${citeck.ai.base.model}
                     temperature: 0.7
                     reasoning-effort: medium
-                intent-detection:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: low
-                    use-native-structured-output: true  # Использовать нативный structured output
-                required-content-version-selection:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: low
-                business-app-generation:       # Генерация бизнес-приложений
-                    model: gpt-5.1
-                    temperature: 0.5
+                script-writing:                  # Помощник написания скриптов
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.2
                     reasoning-effort: medium
-                    context-analyzer:          # Анализатор контекста
-                        model: gpt-5.1
-                        temperature: 0.1
-                        use-native-structured-output: true
-                    description-formatter:     # Форматирование описаний
-                        model: gpt-5.1
-                        temperature: 0.1
-                    requirements-generator:    # Генератор требований
-                        model: gpt-5.1
-                        temperature: 0.1
-                        use-native-structured-output: true
+                    use-native-structured-output: true
+                text-edit:                       # Редактирование текста в полях записей
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.3
+                    reasoning-effort: medium
+                    use-native-structured-output: true
 
 Параметры ассистентов
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -259,7 +233,29 @@ Citeck AI Assistant поддерживает работу с различным�
     * ``reasoning-effort`` - уровень рассуждений: ``none``, ``low``, ``medium``, ``high``
     * ``streaming`` - включить потоковый вывод
     * ``use-native-structured-output`` - использовать нативный structured output провайдера
-    * ``enable-bpmn-generation`` - включить генерацию BPMN процессов (только для ``business-app-generation``)
+
+Помимо ``assistants``, свои блоки конфигурации имеют подсистемы:
+
+    * ``citeck.ai.agents`` - агенты по умолчанию: ``default-operational`` (агент чата без явного выбора, по умолчанию ``tasks-documents-helper``) и ``default-config`` (агент правки скриптов, по умолчанию ``platform-config-agent``)
+    * ``citeck.ai.multimodal`` - анализ загружаемых файлов: ``enabled``, ``limits.max-file-size-mb`` (по умолчанию 10)
+    * ``citeck.ai.image`` - генерация изображений: провайдер, модель, лимиты (см. подраздел об изображениях в описании :ref:`AI ассистента <AI_assistant>`)
+    * ``citeck.ai.model-capabilities`` - таблица возможностей моделей (какие модели мультимодальны и читают PDF нативно); дополняется шаблонами ``patterns`` и точечными ``overrides``
+    * ``citeck.ai.rag`` - семантический поиск (:ref:`настройка RAG <rag-config>`)
+    * ``citeck.ai.call-recording`` - :ref:`запись и резюме совещаний <call-recording-module>`
+
+Модели AI-агентов
+~~~~~~~~~~~~~~~~~~
+
+У :ref:`пользовательских агентов <user-agents>` провайдер и модель — реквизиты записи агента (``aiProvider``, ``aiModel``, ``temperature``, ``reasoningEffort``); блок ``assistants`` на них не влияет. Модель агента протягивается и во внутренние генераторы артефактов: тип данных, форма или процесс, созданные по запросу через агента конфигурирования, генерируются моделью этого агента.
+
+Начиная с релиза 2026.3 пустые ``aiProvider`` и ``aiModel`` наследуют платформенные значения ``citeck.ai.default.provider`` и ``citeck.ai.base.model`` — преднастроенные агенты работают на модели инсталляции без ручной настройки записей.
+
+Пример раскладки моделей по агентам: мощная модель — агенту конфигурирования (генерация артефактов), экономичная — операционному агенту (массовые операции с записями), локальная — агенту, работающему с чувствительными данными. Исключение — помощник по изображениям: ему нужна мультимодальная модель для анализа картинок, поэтому модель задаётся явно.
+
+Телеметрия и расход токенов
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+По каждому обращению к LLM в журнал приложения ``citeck-ai`` записываются метрики: токены запроса, ответа и суммарные; расширенные метрики при их наличии у провайдера (токены рассуждений, кэшированные токены); длительность вызова и скорость генерации; время до первого токена (в потоковом режиме); причина завершения; остаток квоты провайдера. При использовании более 80 % квоты провайдера в журнал пишется предупреждение.
 
 Пример использования разных провайдеров
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
