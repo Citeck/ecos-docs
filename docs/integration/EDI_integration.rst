@@ -71,6 +71,10 @@ Citeck поддерживает интеграцию с провайдерами
 
         Актуальная конфигурация ЭДО в системном журнале "Конфигурация EDI".
 
+Для разработки и тестирования интеграции без подключения к реальному провайдеру
+предназначен :ref:`симулятор ЭДО<edi_sim>`, а для сценариев с подписанием на машине без
+КриптоПро — :ref:`отладочный режим электронной подписи<esign_dev_mode>`.
+
 .. toctree::
     :maxdepth: 3
     :hidden:
@@ -84,4 +88,6 @@ Citeck поддерживает интеграцию с провайдерами
     EDI_integration/ecos-edi-sbis-lib
     EDI_integration/common_lib
     EDI_integration/server_signing
+    EDI_integration/edi_sim
+    EDI_integration/esign_dev_mode
     EDI_integration/4_RC2+_configuration
