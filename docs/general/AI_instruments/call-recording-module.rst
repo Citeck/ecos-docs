@@ -6,9 +6,9 @@
 .. contents::
     :depth: 3
 
-**Модуль callrecording** захватывает аудио из браузерной вкладки и микрофона через Chrome-расширение, передаёт потоком по WebSocket, транскрибирует через GigaAM и генерирует резюме через LLM. Результат сохраняется как Citeck-активность типа ``meeting-activity`` или ``call-activity``.
+**Модуль callrecording** захватывает аудио из браузерной вкладки и микрофона через Chrome-расширение, передаёт его фрагментами через REST API, транскрибирует через GigaAM и генерирует резюме через LLM. Результат сохраняется как Citeck-активность типа ``meeting-activity`` или ``call-activity``.
 
-Статья описывает архитектуру модуля, REST API, конфигурацию, артефакты и ключевые файлы. Функциональность доступна начиная с версии **1.11.0 (30 апреля 2026)**.
+Статья описывает архитектуру модуля, REST API, конфигурацию, артефакты и ключевые файлы. Функциональность доступна начиная с версии **1.11.0 (30 апреля 2026)**. Начиная с версии **1.12.0 (3 июня 2026)** аудио передаётся по REST вместо WebSocket — отдельная WebSocket-инфраструктура и аутентификация по ``wsToken`` больше не используются.
 
 Принцип работы
 --------------
@@ -28,20 +28,20 @@ Service Worker создаёт скрытое окно-рекордер (``record
 - **Захват голосов участников** — через ``tabCapture.getMediaStreamId`` получает аудиопоток вкладки Telemost (то, что слышит пользователь).
 - **Захват микрофона** — через ``getUserMedia({audio: true})`` захватывает локальный микрофон пользователя. ``tabCapture`` сам по себе микрофон не включает, поэтому используется отдельный поток.
 - **Микширование** — оба потока объединяются в ``AudioContext`` через ``GainNode``, образуя единый аудиовыход.
-- **Кодирование** — ``MediaRecorder`` пишет сжатый поток в формат ``audio/webm;codecs=opus`` чанками по 5 секунд, что позволяет начинать передачу немедленно, не дожидаясь конца встречи.
-- **Стриминг** — каждый чанк отправляется по WebSocket с бинарным протоколом: 4 байта sequence number (big-endian) + аудиоданные. При разрыве соединения ``lib/ws-client.js`` автоматически переподключается с экспоненциальной задержкой (до 5 попыток, максимум 30 сек).
+- **Кодирование** — ``MediaRecorder`` пишет сжатый поток в формат ``audio/webm;codecs=opus`` фрагментами по 30 секунд, что позволяет начинать передачу немедленно, не дожидаясь конца встречи.
+- **Передача** — каждый фрагмент аудио отправляется POST-запросом на ``/api/call-recording/session/{id}/chunks`` с телом ``application/octet-stream`` и заголовками ``X-Upload-Token`` (токен сессии) и ``X-Chunk-Sequence`` (порядковый номер фрагмента). При сетевых ошибках и ответах 5xx расширение повторяет отправку с экспоненциально растущей задержкой (от 1 до 30 секунд) в пределах 5 минут; ответ 4xx считается неисправимой ошибкой, и запись останавливается.
 
 Состояние записи зеркалируется в ``chrome.storage.session``, чтобы не потерять контекст при выгрузке MV3 Service Worker после ~30 сек неактивности.
 
 Транскрипция и генерация резюме
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Аудиопоток поступает в бэкенд ``citeck-ai`` через WebSocket-эндпоинт ``/gateway/ai/ws/`` (проксируется через nginx в обход основного gateway, который WebSocket не поддерживает). Бэкенд запускает pipeline:
+Фрагменты аудио поступают в бэкенд ``citeck-ai`` по REST через стандартный gateway (пути вида ``/gateway/ai/api/call-recording/…``) — отдельный WebSocket-прокси не требуется. Бэкенд запускает pipeline:
 
 - **STT** — :ref:`citeck-stt-sidecar` транскрибирует аудио с помощью GigaAM (распознавание речи на русском языке).
 - **LLM summary** — на основе транскрипта языковая модель формирует структурированное резюме встречи.
 
-Сессия завершается текстовым WebSocket-сообщением ``{ type: "end" }``. Пока идёт обработка, Service Worker каждые 3 секунды опрашивает ``/session/{id}/status`` (до 15 минут) и записывает результат в ``chrome.storage.local``.
+После выгрузки последнего фрагмента расширение завершает сессию запросом ``POST /session/{id}/end``, что запускает пост-обработку. Если расширение не смогло завершить сессию явно (окно рекордера закрыто, сбой браузера), бэкенд автоматически завершает сессию, не получавшую фрагментов дольше 5 минут. Пока идёт обработка, Service Worker каждые 3 секунды опрашивает ``/session/{id}/status`` (до 15 минут) и записывает результат в ``chrome.storage.local``.
 
 Сохранение в Citeck
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,8 +60,10 @@ Service Worker создаёт скрытое окно-рекордер (``record
 .. code-block:: text
 
     Chrome Extension (захват аудио)
-        → WebSocket /ws/call-recording
-            → CallRecordingWebSocketHandler
+        → POST /api/call-recording/session/start
+        → POST /api/call-recording/session/{id}/chunks (фрагменты аудио)
+        → POST /api/call-recording/session/{id}/end
+            → CallRecordingController
                 → CallRecordingService
                     → GigaAmSttProvider (транскрибация)
                     → CallSummaryService (LLM-резюме)
@@ -71,9 +73,8 @@ Service Worker создаёт скрытое окно-рекордер (``record
 Зависимости (внешние сервисы)
 ------------------------------------------------------
 
-- **citeck-ai** — WebSocket-хэндлер + pipeline: STT → LLM summary → сохранение активности
+- **citeck-ai** — REST API + pipeline: STT → LLM summary → сохранение активности
 - **citeck-stt-sidecar** — сервис транскрипции на базе GigaAM
-- **nginx** — WebSocket proxy (``/gateway/ai/ws/``) в обход основного gateway, который WS не проксирует
 
 
 REST API
@@ -95,16 +96,27 @@ REST API
      - Поиск записей по типу
    * - ``POST``
      - ``/api/call-recording/session/start``
-     - Старт сессии — возвращает ``sessionId`` и ``wsToken``
+     - Старт сессии — возвращает ``sessionId`` и ``uploadToken``
+   * - ``POST``
+     - ``/api/call-recording/session/{id}/chunks``
+     - Загрузка фрагмента аудио (тело ``application/octet-stream``, заголовки ``X-Upload-Token`` и ``X-Chunk-Sequence``)
    * - ``POST``
      - ``/api/call-recording/session/{id}/end``
      - Завершение сессии и пост-обработка
    * - ``GET``
      - ``/api/call-recording/session/{id}/status``
      - Статус сессии
-   * - ``WS``
-     - ``/ws/call-recording``
-     - Потоковая передача аудио (4 байта sequence + аудиоданные)
+
+Загрузка фрагментов аудио
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Жизненный цикл сессии записи:
+
+1. ``POST /session/start`` создаёт сессию и возвращает ``sessionId`` и ``uploadToken`` — токен, который выдаётся на одну сессию записи и авторизует загрузку аудио именно в эту сессию.
+2. Каждый фрагмент аудио отправляется отдельным запросом ``POST /session/{id}/chunks`` с бинарным телом (``application/octet-stream``) и двумя заголовками: ``X-Upload-Token`` — токен, полученный при старте сессии, и ``X-Chunk-Sequence`` — порядковый номер фрагмента (целое число). Повторная загрузка фрагмента с тем же номером идемпотентна: дубликат подтверждается ответом 200, но не сохраняется второй раз, поэтому клиент может безопасно повторять запрос после потерянного ответа.
+3. ``POST /session/{id}/end`` завершает сессию и запускает пост-обработку (транскрипция, резюме, сохранение активности), прогресс которой отслеживается через ``GET /session/{id}/status``.
+
+Коды ответов ``/session/{id}/chunks``: ``400`` — некорректный заголовок ``X-Chunk-Sequence``; ``403`` — неверный ``X-Upload-Token``; ``404`` — сессия не существует или принадлежит другому пользователю; ``409`` — сессия уже не находится в состоянии записи; ``413`` — фрагмент превышает лимит размера (свойство ``citeck.ai.call-recording.session.max-chunk-size-bytes``, по умолчанию 5 МБ).
 
 
 Конфигурация
@@ -181,6 +193,14 @@ LLM-промпт
 ``src/main/resources/prompts/call_summary_prompt.xml`` — инструкция для генерации резюме на русском языке. Промпт формирует адаптивный по длине текст с разделами: ключевые темы, решения, задачи, открытые вопросы, участники.
 
 
+Безопасность и хранение сессий
+-------------------------------
+
+- Все эндпоинты ``/api/call-recording/*`` требуют доступности AI-функций: лицензия с признаком ``ai`` и членство в группе ``ai-feature-allowed`` (:ref:`подробнее <ai-security>`).
+- Сессию записи можно запустить только от собственного имени; целевая запись (``targetRecordRef``) должна быть доступна пользователю на чтение — иначе запуск отклоняется.
+- Завершённые сессии (успешные и ошибочные) хранятся в памяти сервиса 60 минут и затем удаляются. Срок настраивается свойством ``citeck.ai.call-recording.session.terminal-session-retention-minutes``.
+
+
 Тесты
 --------------
 
@@ -191,7 +211,11 @@ LLM-промпт
    * - Файл
    * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingServiceTest.kt``
    * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingSessionStoreTest.kt``
-   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingWebSocketHandlerTest.kt``
+   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallSummaryServiceTest.kt``
+   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingControllerTest.kt``
+   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/CallPlatformRegistryTest.kt``
+   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/TelemostConnectorTest.kt``
+   * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/stt/SttProviderRegistryTest.kt``
 
 
 Ключевые файлы
@@ -205,8 +229,8 @@ LLM-промпт
      - Файл
    * - Оркестрация сессий
      - ``domain/callrecording/CallRecordingService.kt``
-   * - WebSocket-обработчик
-     - ``domain/callrecording/api/CallRecordingWebSocketHandler.kt``
+   * - Хранилище сессий
+     - ``domain/callrecording/CallRecordingSessionStore.kt``
    * - REST-контроллер
      - ``domain/callrecording/api/CallRecordingController.kt``
    * - STT через GigaAM
@@ -218,15 +242,8 @@ LLM-промпт
    * - Перехват Telemost-URL
      - ``domain/callrecording/platform/TelemostConnector.kt``
    * - Конфигурационные свойства
-     - ``ai/config/CallRecordingProperties.kt``
+     - ``config/CallRecordingProperties.kt``
    * - DTO и статусы
      - ``domain/callrecording/CallRecordingModels.kt``
 
 Все пути относительно ``src/main/java/ru/citeck/ecos/ai/``.
-
-Безопасность и хранение сессий
--------------------------------
-
-- Все эндпоинты ``/api/call-recording/*`` требуют доступности AI-функций: лицензия с признаком ``ai`` и членство в группе ``ai-feature-allowed`` (:ref:`подробнее <ai-security>`).
-- Сессию записи можно запустить только от собственного имени; целевая запись (``targetRecordRef``) должна быть доступна пользователю на чтение — иначе запуск отклоняется.
-- Завершённые сессии (успешные и ошибочные) хранятся в памяти сервиса 60 минут и затем удаляются. Срок настраивается свойством ``citeck.ai.call-recording.session.terminal-session-retention-minutes``.
