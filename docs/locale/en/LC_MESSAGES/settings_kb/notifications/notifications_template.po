@@ -1,13 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2025, Citeck
-# This file is distributed under the same license as the Citeck package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
-#
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -62,7 +58,7 @@ msgstr "Tags."
 msgid "Notification title"
 msgstr "Notification title"
 
-#: ../../settings_kb/notifications/notifications_template.rst:18
+#: ../../settings_kb/notifications/notifications_template.rst:17
 msgid ""
 "Заголовок уведомления, мульти-язычное поле – строка с поддержкой "
 "freemarker."
@@ -74,88 +70,42 @@ msgstr ""
 msgid "Notification body"
 msgstr "Notification body"
 
-#: ../../settings_kb/notifications/notifications_template.rst:20
+#: ../../settings_kb/notifications/notifications_template.rst:18
 msgid ""
 "Многокомпонентное поле для описания тела уведомления с привязкой к "
-"указанной локали. В одном шаблоне уведомления предусмотрена поддержка "
-"разных локалей (языков). |br| *Lang* - Локаль сообщения, например *en*, "
-"*ru*. |br| *Body* - Исходное содержимое текста сообщения c использованием"
-" `freemarker <https://freemarker.apache.org/>`_. При нажатии на кнопку "
-"\"Редактировать как HTML\" открывается richText редактор сообщения для "
-"более удобного редактирования html разметки"
+"указанной локали (подробнее см. ниже)."
 msgstr ""
 "A multi-component field for describing the notification body tied to a "
-"specified locale. One notification template supports different locales "
-"(languages). |br| *Lang* - Message locale, e.g., *en*, *ru*. |br| *Body* "
-"- The original message text content using `freemarker "
-"<https://freemarker.apache.org/>`_. Clicking the \"Edit as HTML\" button "
-"opens a richText editor for easier editing of HTML markup."
+"specified locale (see details below)."
 
 #: ../../settings_kb/notifications/notifications_template.rst
 msgid "Model"
 msgstr "Model"
 
-#: ../../settings_kb/notifications/notifications_template.rst:21
+#: ../../settings_kb/notifications/notifications_template.rst:19
 msgid ""
-"Модель, исходя из которой будет происходить шаблонизация текста – title "
-"или body для уведомлений. |br| Модель – это map ключ: значение, ключом в "
-"данном случае выступает имя переменной, которая будет доступна в шаблоне,"
-" а значение – ecos records выражение для вычисления значения переменной. "
-"|br| Базовым record является документ, по которому идет бизнес-процесс. "
-"То есть, если в модели указать значение ``.disp``, то вычисляется "
-"заголовок по документу. Так же есть доступ к другим объектам через знак "
-"``$``, например, если уведомление отправляется в рамках бизнес процесса, "
-"- ``$process.webUrl`` (по умолчанию доступны дополнительные переменные "
-"``$now``, ``$user``, ``$webUrl``). |br| При использовании мульти "
-"шаблонов, модель из базового шаблона будет сливаться с моделью, найденной"
-" по типу, таким образом часть «базовой» модели может быть описана в "
-"базовом шаблоне, а более специфичные атрибуты могут быть вынесены в "
-"конкретный шаблон."
+"Модель, исходя из которой будет происходить шаблонизация текста "
+"(подробнее см. ниже)."
 msgstr ""
-"The model based on which text templating will occur – title or body for "
-"notifications. |br| The model is a key:value map, where the key is the "
-"variable name that will be available in the template, and the value is an"
-" ecos records expression for calculating the variable's value. |br| The "
-"base record is the document associated with the business process. So, if "
-"you specify the value ``.disp`` in the model, the document's title is "
-"calculated. Access to other objects is also available via the ``$`` sign,"
-" e.g., if the notification is sent within a business process, - "
-"``$process.webUrl`` (by default, additional variables ``$now``, "
-"``$user``, ``$webUrl`` are available). |br| When using multi-templates, "
-"the model from the base template will be merged with the model found by "
-"type, so part of the \"base\" model can be described in the base "
-"template, and more specific attributes can be moved to a specific "
-"template."
+"The model based on which text templating will occur (see details below)."
 
 #: ../../settings_kb/notifications/notifications_template.rst
 msgid "Multi templates"
 msgstr "Multi templates"
 
-#: ../../settings_kb/notifications/notifications_template.rst:23
+#: ../../settings_kb/notifications/notifications_template.rst:20
 msgid ""
-"Вычисляемые шаблоны, в зависимости от типа документа, по которому "
-"отсылается уведомление. Например, может быть «базовый» шаблон, который "
-"включает в себя несколько других шаблонов с разными типами документов. "
-"|br| При отправке уведомления, если у документа, по которому отправляется"
-" уведомление, тип не соответствует ни одному из мульти-шаблонов, то "
-"отправка осуществится по «базовому» шаблону, если тип документа "
-"соответствует мульти-шаблону, то отправка произойдет по соответствующему "
-"шаблону."
+"Вычисляемые шаблоны в зависимости от типа документа, по которому "
+"отсылается уведомление (подробнее см. ниже)."
 msgstr ""
 "Computed templates depending on the type of document for which the "
-"notification is sent. For example, there can be a \"base\" template that "
-"includes several other templates with different document types. |br| When"
-" sending a notification, if the document type for which the notification "
-"is sent does not match any of the multi-templates, the sending will occur"
-" according to the \"base\" template; if the document type matches a "
-"multi-template, the sending will occur according to the corresponding "
-"template."
+"notification is sent (see details below)."
 
 #: ../../settings_kb/notifications/notifications_template.rst
 msgid "Predicate"
 msgstr "Predicate"
 
-#: ../../settings_kb/notifications/notifications_template.rst:24
+#: ../../settings_kb/notifications/notifications_template.rst:21
 msgid ""
 "Позволяет задать дополнительные условия для связки *шаблон - тип*. "
 "Вычисление предикатов происходит на основе атрибутов модели."
@@ -163,27 +113,122 @@ msgstr ""
 "Allows setting additional conditions for the *template - type* link. "
 "Predicate evaluation is based on model attributes."
 
-#: ../../settings_kb/notifications/notifications_template.rst:30
+#: ../../settings_kb/notifications/notifications_template.rst:23
+msgid "**Notification body**"
+msgstr "**Notification body**"
+
+#: ../../settings_kb/notifications/notifications_template.rst:25
+msgid ""
+"В одном шаблоне уведомления предусмотрена поддержка разных локалей "
+"(языков):"
+msgstr ""
+"One notification template supports different locales (languages):"
+
+#: ../../settings_kb/notifications/notifications_template.rst:27
+msgid "*Lang* — локаль сообщения, например *en*, *ru*."
+msgstr "*Lang* — message locale, e.g., *en*, *ru*."
+
+#: ../../settings_kb/notifications/notifications_template.rst:28
+msgid ""
+"*Body* — исходное содержимое текста сообщения c использованием "
+"`freemarker <https://freemarker.apache.org/>`_. При нажатии на кнопку "
+"\"Редактировать как HTML\" открывается richText редактор сообщения для "
+"более удобного редактирования html-разметки."
+msgstr ""
+"*Body* — the original message text content using `freemarker "
+"<https://freemarker.apache.org/>`_. Clicking the \"Edit as HTML\" button "
+"opens a richText editor for easier editing of HTML markup."
+
+#: ../../settings_kb/notifications/notifications_template.rst:32
+msgid "**Model**"
+msgstr "**Model**"
+
+#: ../../settings_kb/notifications/notifications_template.rst:34
+msgid ""
+"Модель, исходя из которой будет происходить шаблонизация текста – title "
+"или body для уведомлений. Модель – это map ключ: значение, где ключ – имя"
+" переменной, доступной в шаблоне, а значение – ecos records выражение для"
+" вычисления значения переменной."
+msgstr ""
+"The model based on which text templating will occur – title or body for "
+"notifications. The model is a key:value map, where the key is the "
+"variable name available in the template, and the value is an ecos "
+"records expression for calculating the variable's value."
+
+#: ../../settings_kb/notifications/notifications_template.rst:38
+msgid ""
+"Базовым record является документ, по которому идёт бизнес-процесс. То "
+"есть, если в модели указать значение ``.disp``, то вычисляется заголовок "
+"по документу. Также есть доступ к другим объектам через знак ``$``, "
+"например, если уведомление отправляется в рамках бизнес-процесса — "
+"``$process.webUrl`` (по умолчанию доступны дополнительные переменные "
+"``$now``, ``$user``, ``$webUrl``)."
+msgstr ""
+"The base record is the document associated with the business process. So,"
+" if you specify the value ``.disp`` in the model, the document's title is"
+" calculated. Access to other objects is also available via the ``$`` "
+"sign, e.g., if the notification is sent within a business process — "
+"``$process.webUrl`` (by default, additional variables ``$now``, "
+"``$user``, ``$webUrl`` are available)."
+
+#: ../../settings_kb/notifications/notifications_template.rst:43
+msgid ""
+"При использовании мульти-шаблонов модель из базового шаблона будет "
+"сливаться с моделью, найденной по типу — таким образом часть «базовой» "
+"модели может быть описана в базовом шаблоне, а более специфичные атрибуты"
+" вынесены в конкретный шаблон."
+msgstr ""
+"When using multi-templates, the model from the base template is merged "
+"with the model found by type — this way, part of the \"base\" model can "
+"be described in the base template, and more specific attributes moved to "
+"a specific template."
+
+#: ../../settings_kb/notifications/notifications_template.rst:47
+msgid "**Multi templates**"
+msgstr "**Multi templates**"
+
+#: ../../settings_kb/notifications/notifications_template.rst:49
+msgid ""
+"Вычисляемые шаблоны в зависимости от типа документа, по которому "
+"отсылается уведомление. Например, может быть «базовый» шаблон, который "
+"включает в себя несколько других шаблонов с разными типами документов."
+msgstr ""
+"Computed templates depending on the type of document for which the "
+"notification is sent. For example, there can be a \"base\" template that "
+"includes several other templates with different document types."
+
+#: ../../settings_kb/notifications/notifications_template.rst:52
+msgid ""
+"При отправке уведомления, если у документа тип не соответствует ни одному"
+" из мульти-шаблонов, отправка осуществится по «базовому» шаблону; если "
+"тип документа соответствует мульти-шаблону — по соответствующему шаблону."
+msgstr ""
+"When sending a notification, if the document type does not match any of "
+"the multi-templates, sending will occur according to the \"base\" "
+"template; if the document type matches a multi-template, it will occur "
+"according to the corresponding template."
+
+#: ../../settings_kb/notifications/notifications_template.rst:59
 msgid "1.2 Журнал \"Шаблоны уведомлений\""
 msgstr "1.2 \"Notification Templates\" Journal"
 
-#: ../../settings_kb/notifications/notifications_template.rst:32
-msgid “”
-“Журнал **”Шаблоны уведомлений”** расположен в **Разделе администратора → “
-“Конфигурация уведомлений**:”
-msgstr “”
-“The **\”Notification Templates\”** journal is located in **Admin Section “
-“→ Notification Configuration**:”
+#: ../../settings_kb/notifications/notifications_template.rst:61
+msgid ""
+"Журнал **”Шаблоны уведомлений”** расположен в **Разделе администратора → "
+"Конфигурация уведомлений**:"
+msgstr ""
+"The **\"Notification Templates\"** journal is located in **Admin Section "
+"→ Notification Configuration**:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:39
+#: ../../settings_kb/notifications/notifications_template.rst:68
 msgid "2. Операции"
 msgstr "2. Operations"
 
-#: ../../settings_kb/notifications/notifications_template.rst:42
+#: ../../settings_kb/notifications/notifications_template.rst:71
 msgid "2.1 Создание шаблона уведомления"
 msgstr "2.1 Creating a Notification Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:44
+#: ../../settings_kb/notifications/notifications_template.rst:73
 msgid ""
 "Для создания необходимо перейти в журнал «Шаблоны уведомлений», см. `1.2 "
 "Журнал \"Шаблоны уведомлений\"`_."
@@ -191,23 +236,23 @@ msgstr ""
 "To create one, go to the \"Notification Templates\" journal, see `1.2 "
 "\"Notification Templates\" Journal`_."
 
-#: ../../settings_kb/notifications/notifications_template.rst:46
+#: ../../settings_kb/notifications/notifications_template.rst:75
 msgid "Шаблон уведомления может быть создан несколькими способами:"
 msgstr "A notification template can be created in several ways:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:48
+#: ../../settings_kb/notifications/notifications_template.rst:77
 msgid "Создание нового объекта;"
 msgstr "Creating a new object;"
 
-#: ../../settings_kb/notifications/notifications_template.rst:49
+#: ../../settings_kb/notifications/notifications_template.rst:78
 msgid "Импорт модуля (zip)."
 msgstr "Importing a module (zip)."
 
-#: ../../settings_kb/notifications/notifications_template.rst:52
+#: ../../settings_kb/notifications/notifications_template.rst:81
 msgid "2.1.1 Создание нового объекта"
 msgstr "2.1.1 Creating a New Object"
 
-#: ../../settings_kb/notifications/notifications_template.rst:54
+#: ../../settings_kb/notifications/notifications_template.rst:83
 msgid ""
 "Для создания нового объект необходимо нажать на **«+»** и выбрать "
 "**«Создать новый шаблон уведомления»**"
@@ -215,13 +260,13 @@ msgstr ""
 "To create a new object, click **«+»** and select **«Create new "
 "notification template»**"
 
-#: ../../settings_kb/notifications/notifications_template.rst:60
+#: ../../settings_kb/notifications/notifications_template.rst:89
 msgid "Описание полей см. `1.1 Описание сущности \"Шаблон уведомления\"`_."
 msgstr ""
 "For field descriptions, see `1.1 Description of the \"Notification "
 "Template\" Entity`_."
 
-#: ../../settings_kb/notifications/notifications_template.rst:62
+#: ../../settings_kb/notifications/notifications_template.rst:91
 msgid ""
 "Для примера создадим базовый шаблон c уведомлением о том, что создан "
 "новый документ."
@@ -229,24 +274,24 @@ msgstr ""
 "As an example, let's create a base template with a notification about a "
 "new document being created."
 
-#: ../../settings_kb/notifications/notifications_template.rst:64
+#: ../../settings_kb/notifications/notifications_template.rst:93
 msgid "Открываем форму создания и заполняем следующую информацию:"
 msgstr "Open the creation form and fill in the following information:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:66
+#: ../../settings_kb/notifications/notifications_template.rst:95
 msgid "**id** - test-incident-base-new-incident-to-possible-responsible"
 msgstr "**id** - test-incident-base-new-incident-to-possible-responsible"
 
-#: ../../settings_kb/notifications/notifications_template.rst:67
+#: ../../settings_kb/notifications/notifications_template.rst:96
 msgid "**name** - Базовый шаблон. Новый документ"
 msgstr "**name** - Base template. New document"
 
-#: ../../settings_kb/notifications/notifications_template.rst:68
+#: ../../settings_kb/notifications/notifications_template.rst:97
 #, python-brace-format
 msgid "**notification title** - Новый инцидент: ${title}."
 msgstr "**notification title** - New incident: ${title}."
 
-#: ../../settings_kb/notifications/notifications_template.rst:70
+#: ../../settings_kb/notifications/notifications_template.rst:99
 #, python-brace-format
 msgid ""
 "В данном случае *${title}* означает, что из описанной модели будет взято "
@@ -258,7 +303,7 @@ msgstr ""
 "which is the document's title, will be taken. |br| This field is multi-"
 "language; switching languages is done by clicking the flag icon."
 
-#: ../../settings_kb/notifications/notifications_template.rst:77
+#: ../../settings_kb/notifications/notifications_template.rst:106
 msgid ""
 "**Notification body** - ``lang`` = ru, ``body`` заполняем следующим "
 "текстом:"
@@ -266,11 +311,11 @@ msgstr ""
 "**Notification body** - ``lang`` = ru, ``body`` is filled with the "
 "following text:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:90
+#: ../../settings_kb/notifications/notifications_template.rst:119
 msgid "В данном шаблоне импортируется библиотечный шаблон:"
 msgstr "A library template is imported in this template:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:103
+#: ../../settings_kb/notifications/notifications_template.rst:132
 msgid ""
 "В шаблонах уведомления поддерживается ``import`` и ``include`` других "
 "шаблонов по их ``id``."
@@ -278,11 +323,11 @@ msgstr ""
 "Notification templates support ``import`` and ``include`` of other "
 "templates by their ``id``."
 
-#: ../../settings_kb/notifications/notifications_template.rst:105
+#: ../../settings_kb/notifications/notifications_template.rst:134
 msgid "В текущем примере:"
 msgstr "In the current example:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:107
+#: ../../settings_kb/notifications/notifications_template.rst:136
 msgid ""
 "``<@lib.its_test_message/>`` - печать блока текста, информирующего о том,"
 " что это сообщение является тестовым. |br| ``<@lib.document_link/>`` - "
@@ -294,7 +339,7 @@ msgstr ""
 "document associated with the business process, in this case – the "
 "document itself."
 
-#: ../../settings_kb/notifications/notifications_template.rst:111
+#: ../../settings_kb/notifications/notifications_template.rst:140
 msgid ""
 "Подробнее об использовании макросов, импорте и включении других шаблонов "
 "см. документацию apache freemarker - https://freemarker.apache.org"
@@ -303,21 +348,21 @@ msgstr ""
 "templates, see the Apache Freemarker documentation - "
 "https://freemarker.apache.org"
 
-#: ../../settings_kb/notifications/notifications_template.rst:113
+#: ../../settings_kb/notifications/notifications_template.rst:142
 msgid "**Model** - описываем модель, которая потребуется для шаблонизации текста:"
 msgstr "**Model** - describe the model required for text templating:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:115
+#: ../../settings_kb/notifications/notifications_template.rst:144
 msgid "*Flowable:*"
 msgstr "*Flowable:*"
 
-#: ../../settings_kb/notifications/notifications_template.rst:117
+#: ../../settings_kb/notifications/notifications_template.rst:146
 msgid ""
 "**web_url : $process.webUrl** – используется для формирования ссылки на "
 "документ"
 msgstr "**web_url : $process.webUrl** – used to form a link to the document"
 
-#: ../../settings_kb/notifications/notifications_template.rst:118
+#: ../../settings_kb/notifications/notifications_template.rst:147
 msgid ""
 "**doc_recordRef : .id**  – уникальный id документа, так же используется "
 "для формирования ссылки на документ"
@@ -325,15 +370,15 @@ msgstr ""
 "**doc_recordRef : .id**  – unique document id, also used to form a link "
 "to the document"
 
-#: ../../settings_kb/notifications/notifications_template.rst:119
+#: ../../settings_kb/notifications/notifications_template.rst:148
 msgid "**title : .disp** – заголовок документа"
 msgstr "**title : .disp** – document title"
 
-#: ../../settings_kb/notifications/notifications_template.rst:121
+#: ../../settings_kb/notifications/notifications_template.rst:150
 msgid "*Citeck BPMN:*"
 msgstr "*Citeck BPMN:*"
 
-#: ../../settings_kb/notifications/notifications_template.rst:123
+#: ../../settings_kb/notifications/notifications_template.rst:152
 msgid ""
 "См. описание компонента :ref:`«Уведомление» в документации по Citeck "
 "BPMN.<notification_variables>`"
@@ -341,11 +386,11 @@ msgstr ""
 "See the description of the component :ref:`\"Notification\" in the Citeck"
 " BPMN documentation.<notification_variables>`"
 
-#: ../../settings_kb/notifications/notifications_template.rst:126
+#: ../../settings_kb/notifications/notifications_template.rst:155
 msgid "2.1.2 Импорт модуля"
 msgstr "2.1.2 Importing a Module"
 
-#: ../../settings_kb/notifications/notifications_template.rst:128
+#: ../../settings_kb/notifications/notifications_template.rst:157
 msgid ""
 "Для импорта модуля в журнале «Шаблоны уведомлений» нажмите на **«+»** и "
 "выберите **«Загрузить шаблон уведомления»**"
@@ -353,7 +398,7 @@ msgstr ""
 "To import a module, in the \"Notification Templates\" journal, click "
 "**«+»** and select **«Upload notification template»**"
 
-#: ../../settings_kb/notifications/notifications_template.rst:134
+#: ../../settings_kb/notifications/notifications_template.rst:163
 msgid ""
 "В открывшейся форме загрузите zip архив с шаблоном уведомления. Подробнее"
 " про модуль «Шаблон уведомления» см. `2.4 Выгрузка шаблона уведомления`_."
@@ -362,11 +407,11 @@ msgstr ""
 "For more details on the \"Notification Template\" module, see `2.4 "
 "Downloading a Notification Template`_."
 
-#: ../../settings_kb/notifications/notifications_template.rst:137
+#: ../../settings_kb/notifications/notifications_template.rst:166
 msgid "2.2 Редактирование шаблона уведомления"
 msgstr "2.2 Editing a Notification Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:139
+#: ../../settings_kb/notifications/notifications_template.rst:168
 msgid ""
 "Для редактирования шаблона уведомления перейдите в журнал (см. `1.2 "
 "Журнал \"Шаблоны уведомлений\"`_), найдите нужный шаблон и нажмите на "
@@ -376,11 +421,11 @@ msgstr ""
 "\"Notification Templates\" Journal`_), find the desired template, and "
 "click the \"Edit\" action."
 
-#: ../../settings_kb/notifications/notifications_template.rst:146
+#: ../../settings_kb/notifications/notifications_template.rst:175
 msgid "2.3 Удаление шаблона уведомления"
 msgstr "2.3 Deleting a Notification Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:148
+#: ../../settings_kb/notifications/notifications_template.rst:177
 msgid ""
 "Для удаления шаблона уведомления перейдите в журнал (см. `1.2 Журнал "
 "\"Шаблоны уведомлений\"`_), найдите нужный шаблон и нажмите на действие "
@@ -390,11 +435,11 @@ msgstr ""
 "\"Notification Templates\" Journal`_), find the desired template, and "
 "click the \"Delete\" action."
 
-#: ../../settings_kb/notifications/notifications_template.rst:155
+#: ../../settings_kb/notifications/notifications_template.rst:184
 msgid "2.4 Выгрузка шаблона уведомления"
 msgstr "2.4 Downloading a Notification Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:157
+#: ../../settings_kb/notifications/notifications_template.rst:186
 msgid ""
 "Для выгрузки модуля шаблона уведомления перейдите в журнал (см. `1.2 "
 "Журнал \"Шаблоны уведомлений\"`_), найдите нужный шаблон и нажмите на "
@@ -404,7 +449,7 @@ msgstr ""
 "\"Notification Templates\" Journal`_), find the desired template, and "
 "click the \"Download\" action."
 
-#: ../../settings_kb/notifications/notifications_template.rst:163
+#: ../../settings_kb/notifications/notifications_template.rst:192
 msgid ""
 "Модуль представляет собой zip-архив с мета-информацией по шаблону и самим"
 " контентом шаблона. Для примера, выгрузим модуль для шаблона, созданного "
@@ -415,7 +460,7 @@ msgstr ""
 "the module for the template created in step `2.1.1 Creating a New "
 "Object`_."
 
-#: ../../settings_kb/notifications/notifications_template.rst:165
+#: ../../settings_kb/notifications/notifications_template.rst:194
 msgid ""
 "Файл **test-incident-base-new-incident-to-possible-"
 "responsible.html.meta.yml** является мета информацией, содержимое файла:"
@@ -423,7 +468,7 @@ msgstr ""
 "The file **test-incident-base-new-incident-to-possible-"
 "responsible.html.meta.yml** is the meta information, the file content:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:183
+#: ../../settings_kb/notifications/notifications_template.rst:212
 msgid ""
 "Файл **test-incident-base-new-incident-to-possible-responsible.html.ftl**"
 " является самим контентом шаблона, его содержимое:"
@@ -431,7 +476,7 @@ msgstr ""
 "The file **test-incident-base-new-incident-to-possible-"
 "responsible.html.ftl** is the template content itself, its content:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:196
+#: ../../settings_kb/notifications/notifications_template.rst:225
 msgid ""
 "Обратите внимание, что модуль должен быть именно zip архивом, а файлы "
 "внутри него чувствительны к наименованию и расширению. |br| Файл с "
@@ -444,7 +489,7 @@ msgstr ""
 "the extension \".html.ftl\", and the meta information file must be named "
 "according to the rule: full_content_file_name_with_extension.meta.yml"
 
-#: ../../settings_kb/notifications/notifications_template.rst:201
+#: ../../settings_kb/notifications/notifications_template.rst:230
 msgid ""
 "Если тело шаблона предусматривает несколько локалей, то в имени файла "
 "контента указывается локаль по следующему правилу: |br| ``test-incident-"
@@ -458,11 +503,11 @@ msgstr ""
 "for locale ``en`` |br| ``test-incident-base-new-incident-to-possible-"
 "responsible.html_ru.ftl`` for locale ``ru`` |br| etc."
 
-#: ../../settings_kb/notifications/notifications_template.rst:209
+#: ../../settings_kb/notifications/notifications_template.rst:238
 msgid "2.5 Структура шаблона в репозитории проекта"
 msgstr "2.5 Template Structure in the Project Repository"
 
-#: ../../settings_kb/notifications/notifications_template.rst:211
+#: ../../settings_kb/notifications/notifications_template.rst:240
 msgid ""
 "При разработке приложения на платформе Citeck шаблоны уведомлений "
 "хранятся как артефакты в ресурсах проекта и деплоятся через **ecos-"
@@ -472,7 +517,7 @@ msgstr ""
 "templates are stored as artifacts in the project resources and deployed "
 "via **ecos-apps**."
 
-#: ../../settings_kb/notifications/notifications_template.rst:213
+#: ../../settings_kb/notifications/notifications_template.rst:242
 msgid ""
 "Каждый шаблон — это отдельная **директория** внутри "
 "``notification/template/``:"
@@ -480,19 +525,19 @@ msgstr ""
 "Each template is a separate **directory** inside "
 "``notification/template/``:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:224
+#: ../../settings_kb/notifications/notifications_template.rst:253
 msgid "**Правила именования:**"
 msgstr "**Naming rules:**"
 
-#: ../../settings_kb/notifications/notifications_template.rst:226
+#: ../../settings_kb/notifications/notifications_template.rst:255
 msgid "Имя директории = идентификатор шаблона (поле ``id``)"
 msgstr "Directory name = template identifier (field ``id``)"
 
-#: ../../settings_kb/notifications/notifications_template.rst:227
+#: ../../settings_kb/notifications/notifications_template.rst:256
 msgid "Метафайл: ``<id>.html.meta.yml``"
 msgstr "Metafile: ``<id>.html.meta.yml``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:228
+#: ../../settings_kb/notifications/notifications_template.rst:257
 msgid ""
 "Тело письма: ``<id>.html_<lang>.ftl`` — по одному файлу на язык (``_ru``,"
 " ``_en`` и т.д.)"
@@ -500,15 +545,15 @@ msgstr ""
 "Email body: ``<id>.html_<lang>.ftl`` — one file per language (``_ru``, "
 "``_en``, etc.)"
 
-#: ../../settings_kb/notifications/notifications_template.rst:230
+#: ../../settings_kb/notifications/notifications_template.rst:259
 msgid "Для поддержки нескольких языков добавьте несколько ``.ftl``-файлов:"
 msgstr "To support multiple languages, add multiple ``.ftl`` files:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:239
+#: ../../settings_kb/notifications/notifications_template.rst:268
 msgid "**Пример метафайла** (``<id>.html.meta.yml``):"
 msgstr "**Metafile example** (``<id>.html.meta.yml``):"
 
-#: ../../settings_kb/notifications/notifications_template.rst:265
+#: ../../settings_kb/notifications/notifications_template.rst:294
 msgid ""
 "Путь до папки ``notification/template/`` зависит от конкретного проекта и"
 " настройки ecos-apps. Обычно это ``src/main/resources/app/artifacts/`` "
@@ -519,11 +564,11 @@ msgstr ""
 "``src/main/resources/app/artifacts/`` or "
 "``src/main/resources/eapps/artifacts/``."
 
-#: ../../settings_kb/notifications/notifications_template.rst:269
+#: ../../settings_kb/notifications/notifications_template.rst:298
 msgid "2.6 Поле ``model`` — маппинг атрибутов Records API"
 msgstr "2.6 The ``model`` Field — Records API Attribute Mapping"
 
-#: ../../settings_kb/notifications/notifications_template.rst:271
+#: ../../settings_kb/notifications/notifications_template.rst:300
 msgid ""
 "Поле ``model`` — это JSON-объект: **ключ** — имя переменной, доступной в "
 "Freemarker-шаблоне, **значение** — выражение атрибута документа в "
@@ -533,7 +578,7 @@ msgstr ""
 "available in the Freemarker template, and the **value** is a document "
 "attribute expression in Records API syntax."
 
-#: ../../settings_kb/notifications/notifications_template.rst:273
+#: ../../settings_kb/notifications/notifications_template.rst:302
 msgid ""
 "Документ для вычисления атрибутов — тот, на котором запущен процесс "
 "(задаётся в поле **Record уведомления** в Send Task; если не указано — "
@@ -543,171 +588,172 @@ msgstr ""
 "running (set in the **Notification record** field in Send Task; if not "
 "specified — the process document)."
 
-#: ../../settings_kb/notifications/notifications_template.rst:275
+#: ../../settings_kb/notifications/notifications_template.rst:304
 msgid "Примеры выражений:"
 msgstr "Expression examples:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:281
+#: ../../settings_kb/notifications/notifications_template.rst:311
 msgid "Переменная в шаблоне"
 msgstr "Template variable"
 
-#: ../../settings_kb/notifications/notifications_template.rst:282
+#: ../../settings_kb/notifications/notifications_template.rst:312
 msgid "Выражение в ``model``"
 msgstr "Expression in ``model``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:283
+#: ../../settings_kb/notifications/notifications_template.rst:313
+#: ../../settings_kb/notifications/notifications_template.rst:370
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/notifications/notifications_template.rst:284
+#: ../../settings_kb/notifications/notifications_template.rst:314
 msgid "``docNum``"
 msgstr "``docNum``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:285
+#: ../../settings_kb/notifications/notifications_template.rst:315
 msgid "``_docNum``"
 msgstr "``_docNum``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:286
+#: ../../settings_kb/notifications/notifications_template.rst:316
 msgid "Номер документа"
 msgstr "Document number"
 
-#: ../../settings_kb/notifications/notifications_template.rst:287
+#: ../../settings_kb/notifications/notifications_template.rst:317
 msgid "``docRef``"
 msgstr "``docRef``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:288
+#: ../../settings_kb/notifications/notifications_template.rst:318
 msgid "``?id``"
 msgstr "``?id``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:289
+#: ../../settings_kb/notifications/notifications_template.rst:319
 msgid "RecordRef документа (используется для построения ссылки)"
 msgstr "Document RecordRef (used to build a link)"
 
-#: ../../settings_kb/notifications/notifications_template.rst:290
+#: ../../settings_kb/notifications/notifications_template.rst:320
 msgid "``status``"
 msgstr "``status``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:291
+#: ../../settings_kb/notifications/notifications_template.rst:321
 msgid "``_status``"
 msgstr "``_status``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:292
+#: ../../settings_kb/notifications/notifications_template.rst:322
 msgid "Системный статус документа"
 msgstr "System document status"
 
-#: ../../settings_kb/notifications/notifications_template.rst:293
+#: ../../settings_kb/notifications/notifications_template.rst:323
 msgid "``statusLabel``"
 msgstr "``statusLabel``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:294
+#: ../../settings_kb/notifications/notifications_template.rst:324
 msgid "``_status._disp.ru``"
 msgstr "``_status._disp.ru``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:295
+#: ../../settings_kb/notifications/notifications_template.rst:325
 msgid "Отображаемое название статуса на русском"
 msgstr "Displayed status name in Russian"
 
-#: ../../settings_kb/notifications/notifications_template.rst:296
+#: ../../settings_kb/notifications/notifications_template.rst:326
 msgid "``contract``"
 msgstr "``contract``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:297
+#: ../../settings_kb/notifications/notifications_template.rst:327
 msgid "``?disp``"
 msgstr "``?disp``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:298
+#: ../../settings_kb/notifications/notifications_template.rst:328
 msgid "Отображаемое название документа"
 msgstr "Displayed document name"
 
-#: ../../settings_kb/notifications/notifications_template.rst:299
+#: ../../settings_kb/notifications/notifications_template.rst:329
 msgid "``counterparty``"
 msgstr "``counterparty``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:300
+#: ../../settings_kb/notifications/notifications_template.rst:330
 msgid "``counterparty.fullOrganizationName``"
 msgstr "``counterparty.fullOrganizationName``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:301
+#: ../../settings_kb/notifications/notifications_template.rst:331
 msgid "Вложенный атрибут через ``.``"
 msgstr "Nested attribute via ``.``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:302
+#: ../../settings_kb/notifications/notifications_template.rst:332
 msgid "``date``"
 msgstr "``date``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:303
+#: ../../settings_kb/notifications/notifications_template.rst:333
 msgid "``date|fmt('dd-MM-yyyy')``"
 msgstr "``date|fmt('dd-MM-yyyy')``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:304
+#: ../../settings_kb/notifications/notifications_template.rst:334
 msgid "Дата с форматированием через ``|``"
 msgstr "Date with formatting via ``|``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:305
+#: ../../settings_kb/notifications/notifications_template.rst:335
 msgid "``type``"
 msgstr "``type``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:306
+#: ../../settings_kb/notifications/notifications_template.rst:336
 msgid "``_type?localId``"
 msgstr "``_type?localId``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:307
+#: ../../settings_kb/notifications/notifications_template.rst:337
 msgid "Локальный идентификатор типа через ``?``"
 msgstr "Local type identifier via ``?``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:308
+#: ../../settings_kb/notifications/notifications_template.rst:338
 msgid "``initiator``"
 msgstr "``initiator``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:309
+#: ../../settings_kb/notifications/notifications_template.rst:339
 msgid "``_creator``"
 msgstr "``_creator``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:310
+#: ../../settings_kb/notifications/notifications_template.rst:340
 msgid "Создатель документа"
 msgstr "Document creator"
 
-#: ../../settings_kb/notifications/notifications_template.rst:311
+#: ../../settings_kb/notifications/notifications_template.rst:341
 msgid "``processUrl``"
 msgstr "``processUrl``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:312
+#: ../../settings_kb/notifications/notifications_template.rst:342
 msgid "``$process.webUrl``"
 msgstr "``$process.webUrl``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:313
+#: ../../settings_kb/notifications/notifications_template.rst:343
 msgid "URL процесса (контекстная переменная)"
 msgstr "Process URL (contextual variable)"
 
-#: ../../settings_kb/notifications/notifications_template.rst:314
+#: ../../settings_kb/notifications/notifications_template.rst:344
 msgid "``now``"
 msgstr "``now``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:315
+#: ../../settings_kb/notifications/notifications_template.rst:345
 msgid "``$now``"
 msgstr "``$now``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:316
+#: ../../settings_kb/notifications/notifications_template.rst:346
 msgid "Текущая дата/время"
 msgstr "Current date/time"
 
-#: ../../settings_kb/notifications/notifications_template.rst:317
+#: ../../settings_kb/notifications/notifications_template.rst:347
 msgid "``currentUser``"
 msgstr "``currentUser``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:318
+#: ../../settings_kb/notifications/notifications_template.rst:348
 msgid "``$user``"
 msgstr "``$user``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:319
+#: ../../settings_kb/notifications/notifications_template.rst:349
 msgid "Текущий пользователь"
 msgstr "Current user"
 
-#: ../../settings_kb/notifications/notifications_template.rst:322
+#: ../../settings_kb/notifications/notifications_template.rst:352
 msgid "3. Использование переменных в шаблоне"
 msgstr "3. Using Variables in a Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:324
+#: ../../settings_kb/notifications/notifications_template.rst:354
 msgid ""
 "В шаблонах уведомлений доступны переменные, определенные в модели, см "
 "`1.1 Описание сущности \"Шаблон уведомления\"`_ блок «Model», а также "
@@ -717,11 +763,11 @@ msgstr ""
 " the \"Model\" block in `1.1 Description of the \"Notification Template\""
 " Entity`_, as well as services added to freemarker."
 
-#: ../../settings_kb/notifications/notifications_template.rst:329
+#: ../../settings_kb/notifications/notifications_template.rst:359
 msgid "3.1 Сервисы и константы"
 msgstr "3.1 Services and Constants"
 
-#: ../../settings_kb/notifications/notifications_template.rst:331
+#: ../../settings_kb/notifications/notifications_template.rst:361
 msgid ""
 "В шаблонах уведомлений доступны следующие сервисы, добавленные в "
 "freemarker:"
@@ -729,107 +775,167 @@ msgstr ""
 "The following services, added to freemarker, are available in "
 "notification templates:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:333
-msgid "``link`` - формирование ссылок"
-msgstr "``link`` - link formation"
+#: ../../settings_kb/notifications/notifications_template.rst:368
+msgid "Сервис"
+msgstr "Service"
 
-#: ../../settings_kb/notifications/notifications_template.rst:335
+#: ../../settings_kb/notifications/notifications_template.rst:369
+msgid "Метод / свойство"
+msgstr "Method / Property"
+
+#: ../../settings_kb/notifications/notifications_template.rst:371
+msgid "``link``"
+msgstr "``link``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:372
+msgid "``getRecordLink(recordRef: String): String``"
+msgstr "``getRecordLink(recordRef: String): String``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:373
 msgid ""
-"``getRecordLink(recordRef: String): String`` - возвращает полную ссылку "
-"на переданный recordRef вида "
-"*http://<webUrl>/v2/dashboard?recordRef=<recordRef>*"
+"Возвращает полную ссылку на переданный recordRef вида "
+"*http://<webUrl>/v2/dashboard?recordRef=<recordRef>*."
 msgstr ""
-"``getRecordLink(recordRef: String): String`` - returns the full link to "
-"the passed recordRef of the form "
-"*http://<webUrl>/v2/dashboard?recordRef=<recordRef>*"
+"Returns the full link to the passed recordRef of the form "
+"*http://<webUrl>/v2/dashboard?recordRef=<recordRef>*."
 
-#: ../../settings_kb/notifications/notifications_template.rst:337
-msgid "``meta`` - сервис для получения различной мета информация"
-msgstr "``meta`` - service for obtaining various meta information"
+#: ../../settings_kb/notifications/notifications_template.rst:374
+msgid "``meta``"
+msgstr "``meta``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:339
-msgid "``getWebUrl(): String``- возвращает настроенный webUrl сервера"
-msgstr "``getWebUrl(): String``- returns the configured server webUrl"
+#: ../../settings_kb/notifications/notifications_template.rst:375
+msgid "``getWebUrl(): String``"
+msgstr "``getWebUrl(): String``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:341
-msgid "``_notification`` - информация о текущем уведомлении"
-msgstr "``_notification`` - information about the current notification"
+#: ../../settings_kb/notifications/notifications_template.rst:376
+msgid "Возвращает настроенный webUrl сервера."
+msgstr "Returns the configured server webUrl."
 
-#: ../../settings_kb/notifications/notifications_template.rst:343
-msgid "``title`` - заголовок уведомления"
-msgstr "``title`` - notification title"
+#: ../../settings_kb/notifications/notifications_template.rst:377
+#: ../../settings_kb/notifications/notifications_template.rst:380
+#: ../../settings_kb/notifications/notifications_template.rst:383
+#: ../../settings_kb/notifications/notifications_template.rst:386
+#: ../../settings_kb/notifications/notifications_template.rst:389
+msgid "``_notification``"
+msgstr "``_notification``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:344
-msgid "``from`` - отправитель уведомления"
-msgstr "``from`` - notification sender"
+#: ../../settings_kb/notifications/notifications_template.rst:378
+msgid "``title``"
+msgstr "``title``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:345
-msgid "``to`` - получатель уведомления"
-msgstr "``to`` - notification recipient"
+#: ../../settings_kb/notifications/notifications_template.rst:379
+msgid "Заголовок уведомления."
+msgstr "Notification title."
 
-#: ../../settings_kb/notifications/notifications_template.rst:346
-msgid "``cc`` - копия уведомления"
-msgstr "``cc`` - notification copy"
+#: ../../settings_kb/notifications/notifications_template.rst:381
+msgid "``from``"
+msgstr "``from``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:347
-msgid "``bcc`` - скрытая копия уведомления"
-msgstr "``bcc`` - notification blind copy"
+#: ../../settings_kb/notifications/notifications_template.rst:382
+msgid "Отправитель уведомления."
+msgstr "Notification sender."
 
-#: ../../settings_kb/notifications/notifications_template.rst:349
+#: ../../settings_kb/notifications/notifications_template.rst:384
+msgid "``to``"
+msgstr "``to``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:385
+msgid "Получатель уведомления."
+msgstr "Notification recipient."
+
+#: ../../settings_kb/notifications/notifications_template.rst:387
+msgid "``cc``"
+msgstr "``cc``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:388
+msgid "Копия уведомления."
+msgstr "Notification copy."
+
+#: ../../settings_kb/notifications/notifications_template.rst:390
+msgid "``bcc``"
+msgstr "``bcc``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:391
+msgid "Скрытая копия уведомления."
+msgstr "Notification blind copy."
+
+#: ../../settings_kb/notifications/notifications_template.rst:392
+#: ../../settings_kb/notifications/notifications_template.rst:396
+msgid "``image``"
+msgstr "``image``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:393
+msgid "``toBase64Data(fileName: String): String``"
+msgstr "``toBase64Data(fileName: String): String``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:394
 msgid ""
-"``image`` - работа с изображениями в шаблоне, см. пример - :ref:`Вставка "
-"изображений в шаблон<notification_template_add_image>` ."
+"Возвращает *base64 data image* представление изображения по переданному "
+"имени файла изображения. См. пример — :ref:`Вставка изображений в "
+"шаблон<notification_template_add_image>`."
 msgstr ""
-"``image`` - working with images in the template, see example - "
-":ref:`Inserting images into a template<notification_template_add_image>` "
-"."
+"Returns a *base64 data image* representation of the image by the passed "
+"image file name. See example — :ref:`Inserting images into a "
+"template<notification_template_add_image>`."
 
-#: ../../settings_kb/notifications/notifications_template.rst:351
+#: ../../settings_kb/notifications/notifications_template.rst:397
+msgid "``toBase64(fileName: String): String``"
+msgstr "``toBase64(fileName: String): String``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:398
 msgid ""
-"``toBase64Data(fileName: String): String`` - возвращает *base64 data "
-"image* представление изображения по переданному имени файла изображения"
+"Возвращает *base64* представление изображения по переданному имени файла "
+"изображения."
 msgstr ""
-"``toBase64Data(fileName: String): String`` - returns a *base64 data "
-"image* representation of the image by the passed image file name"
+"Returns a *base64* representation of the image by the passed image file "
+"name."
 
-#: ../../settings_kb/notifications/notifications_template.rst:352
+#: ../../settings_kb/notifications/notifications_template.rst:399
+#: ../../settings_kb/notifications/notifications_template.rst:402
+#: ../../settings_kb/notifications/notifications_template.rst:405
+msgid "``config``"
+msgstr "``config``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:400
+msgid "``get(key: String): DataValue``"
+msgstr "``get(key: String): DataValue``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:401
+msgid "Получение значения по ключу."
+msgstr "Getting a value by key."
+
+#: ../../settings_kb/notifications/notifications_template.rst:403
+msgid "``getOrDefault(key: String, defaultValue: Any): DataValue``"
+msgstr "``getOrDefault(key: String, defaultValue: Any): DataValue``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:404
 msgid ""
-"``toBase64(fileName: String): String`` - возвращает *base64* "
-"представление изображения по переданному имени файла изображения"
+"Получение значения по ключу; если значение не найдено — возвращается "
+"значение по умолчанию."
 msgstr ""
-"``toBase64(fileName: String): String`` - returns a *base64* "
-"representation of the image by the passed image file name"
+"Getting a value by key; if the value is not found, the default value is "
+"returned."
 
-#: ../../settings_kb/notifications/notifications_template.rst:354
+#: ../../settings_kb/notifications/notifications_template.rst:406
+msgid "``getNotNull(key: String): DataValue``"
+msgstr "``getNotNull(key: String): DataValue``"
+
+#: ../../settings_kb/notifications/notifications_template.rst:407
 msgid ""
-"``config`` - предоставляет доступ к Конфигурации Citeck по ключу в "
-"формате ``<область>$<идентификатор>``."
+"Получение значения по ключу; если значение null — выбрасывается "
+"исключение."
 msgstr ""
-"``config`` - provides access to the Citeck Configuration by key in the "
-"format ``<area>$<identifier>``."
+"Getting a value by key; if the value is null, an exception is thrown."
 
-#: ../../settings_kb/notifications/notifications_template.rst:356
-msgid "``get(key: String): DataValue`` - получение значения по ключу"
-msgstr "``get(key: String): DataValue`` - getting a value by key"
-
-#: ../../settings_kb/notifications/notifications_template.rst:357
+#: ../../settings_kb/notifications/notifications_template.rst:409
 msgid ""
-"``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение "
-"значения по ключу, если значение не найдено, то возвращается значение по "
-"умолчанию"
+"Сервис ``config`` предоставляет доступ к Конфигурации Citeck по ключу в "
+"формате ``<область>$<идентификатор>``:"
 msgstr ""
-"``getOrDefault(key: String, defaultValue: Any): DataValue`` - getting a "
-"value by key, if the value is not found, the default value is returned"
+"The ``config`` service provides access to the Citeck Configuration by key "
+"in the format ``<area>$<identifier>``:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:358
-msgid ""
-"``getNotNull(key: String): DataValue`` - получение значения по ключу, "
-"если значение null, то выбрасывается исключение"
-msgstr ""
-"``getNotNull(key: String): DataValue`` - getting a value by key, if the "
-"value is null, an exception is thrown"
-
-#: ../../settings_kb/notifications/notifications_template.rst:365
+#: ../../settings_kb/notifications/notifications_template.rst:416
 msgid ""
 "Для добавления константы можно использовать в модели шаблона "
 ":ref:`контекстный атрибут<context_attributes>` **str**:"
@@ -837,15 +943,15 @@ msgstr ""
 "To add a constant, you can use the :ref:`context "
 "attribute<context_attributes>` **str** in the template model:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:371
+#: ../../settings_kb/notifications/notifications_template.rst:422
 msgid "вернется:"
 msgstr "will return:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:378
+#: ../../settings_kb/notifications/notifications_template.rst:429
 msgid "3.2 Множественные атрибуты"
 msgstr "3.2 Multiple Attributes"
 
-#: ../../settings_kb/notifications/notifications_template.rst:380
+#: ../../settings_kb/notifications/notifications_template.rst:431
 msgid ""
 "Предположим, что в источнике есть атрибут ``eventLines``, который "
 "возвращает список \"строк\" с атрибутами. |br| Для получения данных по "
@@ -856,7 +962,7 @@ msgstr ""
 " \"lines\" with attributes. |br| To get data for multiple attributes, as "
 "for all others, standard records expressions are used:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:383
+#: ../../settings_kb/notifications/notifications_template.rst:434
 #, python-brace-format
 msgid ""
 "``lines: eventLines[]{id:skifem:eventLineId,text:VIEW_0POSTXT}`` - "
@@ -867,7 +973,7 @@ msgstr ""
 "list of lines, with attributes id and VIEW_0POSTXT. Inside {} you can "
 "specify the attributes that need to be loaded into the object."
 
-#: ../../settings_kb/notifications/notifications_template.rst:384
+#: ../../settings_kb/notifications/notifications_template.rst:435
 #, python-brace-format
 msgid ""
 "``firstLine: eventLines{id:skifem:eventLineId,text:VIEW_0POSTXT}`` - "
@@ -878,7 +984,7 @@ msgstr ""
 "similar to the example above, with the caveat that only the first object "
 "will be loaded."
 
-#: ../../settings_kb/notifications/notifications_template.rst:390
+#: ../../settings_kb/notifications/notifications_template.rst:441
 msgid ""
 "В самом шаблоне уведомления выведем информацию по списку строк в виде "
 "html таблицы и отдельной строкой первый элемент:"
@@ -887,15 +993,15 @@ msgstr ""
 "the list of lines in the form of an HTML table and the first element in a"
 " separate line:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:425
+#: ../../settings_kb/notifications/notifications_template.rst:476
 msgid "В результате получим email со следующим содержанием:"
 msgstr "As a result, we will get an email with the following content:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:435
+#: ../../settings_kb/notifications/notifications_template.rst:486
 msgid "3.3 Вставка изображений в шаблон"
 msgstr "3.3 Inserting Images into a Template"
 
-#: ../../settings_kb/notifications/notifications_template.rst:437
+#: ../../settings_kb/notifications/notifications_template.rst:488
 msgid ""
 "В шаблонах уведомлений реализована возможность вставлять изображения в "
 "html разметку в виде base64 data."
@@ -903,7 +1009,7 @@ msgstr ""
 "Notification templates have the ability to insert images into HTML markup"
 " as base64 data."
 
-#: ../../settings_kb/notifications/notifications_template.rst:439
+#: ../../settings_kb/notifications/notifications_template.rst:490
 msgid ""
 "Доступные для вставки изображения находятся в журнале **\"Файлы "
 "уведомлений\"** в **Разделе администратора → Конфигурация уведомлений**:"
@@ -912,7 +1018,7 @@ msgstr ""
 "**\"Notification Files\"** in **Admin Section → Notification "
 "Configuration**:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:445
+#: ../../settings_kb/notifications/notifications_template.rst:496
 msgid ""
 "Для загрузки нового изображения необходимо нажать на **«+»** и загрузить "
 "изображение. Имя изображения является идентификатором и должно быть "
@@ -921,7 +1027,7 @@ msgstr ""
 "To upload a new image, click **«+»** and upload the image. The image name"
 " serves as an identifier and must be unique."
 
-#: ../../settings_kb/notifications/notifications_template.rst:457
+#: ../../settings_kb/notifications/notifications_template.rst:508
 msgid ""
 "Для примера, предположим, что в шаблон письма необходимо добавить кнопку "
 "с ссылкой на ресурс https://citeck.com. Для этого необходимо осуществить "
@@ -931,7 +1037,7 @@ msgstr ""
 "resource https://citeck.com to the email template. To do this, the "
 "following steps must be performed:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:459
+#: ../../settings_kb/notifications/notifications_template.rst:510
 msgid ""
 "Загрузить файл изображения **test-logo-citeck.png** в журнал **«Файлы "
 "уведомлений»**."
@@ -939,7 +1045,7 @@ msgstr ""
 "Upload the image file **test-logo-citeck.png** to the **\"Notification "
 "Files\"** journal."
 
-#: ../../settings_kb/notifications/notifications_template.rst:465
+#: ../../settings_kb/notifications/notifications_template.rst:516
 msgid ""
 "В шаблоне добавим html разметку с кнопкой и src в виде base64 "
 "изображения, загруженного в пункте №1."
@@ -947,7 +1053,7 @@ msgstr ""
 "In the template, we will add HTML markup with a button and the src as a "
 "base64 image, uploaded in step No. 1."
 
-#: ../../settings_kb/notifications/notifications_template.rst:474
+#: ../../settings_kb/notifications/notifications_template.rst:525
 msgid ""
 "Как видно из шаблона выше, для конвертации изображение в base64 data "
 "необходимо у сервиса ``image`` вызвать метод ``toBase64Data`` и передать "
@@ -957,15 +1063,15 @@ msgstr ""
 "data, the ``image`` service's method ``toBase64Data`` must be called and "
 "passed the image identifier."
 
-#: ../../settings_kb/notifications/notifications_template.rst:476
+#: ../../settings_kb/notifications/notifications_template.rst:527
 msgid "В результате получим email с кнопкой в виде изображения:"
 msgstr "As a result, we will get an email with a button in the form of an image:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:485
+#: ../../settings_kb/notifications/notifications_template.rst:536
 msgid "3.4 Прикрепление вложений (attachments) к email уведомлению"
 msgstr "3.4 Attaching Attachments to Email Notifications"
 
-#: ../../settings_kb/notifications/notifications_template.rst:487
+#: ../../settings_kb/notifications/notifications_template.rst:538
 msgid ""
 "Для того чтобы прикрепить вложение необходимо в шаблоне уведомления в "
 "модель добавить атрибут ``_attachments``. В него мы можем указать контент"
@@ -976,7 +1082,7 @@ msgstr ""
 "specify content or a list of contents in it. It should look like the "
 "following:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:497
+#: ../../settings_kb/notifications/notifications_template.rst:548
 msgid ""
 "В значении к полю ``_attachments`` необходимо указать :ref:`Records API "
 "атрибут.<Records API attribute>`"
@@ -984,12 +1090,12 @@ msgstr ""
 "In the value for the ``_attachments`` field, a :ref:`Records API "
 "attribute.<Records API attribute>` must be specified"
 
-#: ../../settings_kb/notifications/notifications_template.rst:499
+#: ../../settings_kb/notifications/notifications_template.rst:550
 #, python-brace-format
 msgid "Для рекордов, которые хранятся в emodel - ``_content{bytes,meta:?json}``"
 msgstr "For records stored in emodel - ``_content{bytes,meta:?json}``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:503
+#: ../../settings_kb/notifications/notifications_template.rst:554
 msgid ""
 "Доступно с версии ``2.15.0`` микросервиса *ecos-notification*. Можно "
 "использовать любой атрибут, в котором хранится content рекорда. В примере"
@@ -1001,23 +1107,23 @@ msgstr ""
 " The example uses ``_content`` as it is the default attribute for storing"
 " content."
 
-#: ../../settings_kb/notifications/notifications_template.rst:506
-#: ../../settings_kb/notifications/notifications_template.rst:526
+#: ../../settings_kb/notifications/notifications_template.rst:557
+#: ../../settings_kb/notifications/notifications_template.rst:577
 msgid "Ожидаемая модель:"
 msgstr "Expected model:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:520
+#: ../../settings_kb/notifications/notifications_template.rst:571
 #, python-brace-format
 msgid ""
 "Для рекордов, которые хранятся в Alfresco - "
 "``cm:content{bytes,previewInfo?json}``"
 msgstr "For records stored in Alfresco - ``cm:content{bytes,previewInfo?json}``"
 
-#: ../../settings_kb/notifications/notifications_template.rst:524
+#: ../../settings_kb/notifications/notifications_template.rst:575
 msgid "Доступно с версии ``2.5.0`` микросервиса *ecos-notification*."
 msgstr "Available since version ``2.5.0`` of the *ecos-notification* microservice."
 
-#: ../../settings_kb/notifications/notifications_template.rst:540
+#: ../../settings_kb/notifications/notifications_template.rst:591
 msgid ""
 "Использование вышеуказанных атрибутов необязательно, главное чтобы "
 "атрибут ``_attachments`` соответствовал ожидаемой модели."
@@ -1029,7 +1135,7 @@ msgstr ""
 msgid "bytes"
 msgstr "bytes"
 
-#: ../../settings_kb/notifications/notifications_template.rst:542
+#: ../../settings_kb/notifications/notifications_template.rst:593
 msgid "Контент файла закодированный в формат Base64"
 msgstr "File content encoded in Base64 format"
 
@@ -1037,7 +1143,7 @@ msgstr "File content encoded in Base64 format"
 msgid "mimeType"
 msgstr "mimeType"
 
-#: ../../settings_kb/notifications/notifications_template.rst:543
+#: ../../settings_kb/notifications/notifications_template.rst:594
 msgid "Mimetype файла"
 msgstr "File mimetype"
 
@@ -1045,7 +1151,7 @@ msgstr "File mimetype"
 msgid "ext"
 msgstr "ext"
 
-#: ../../settings_kb/notifications/notifications_template.rst:544
+#: ../../settings_kb/notifications/notifications_template.rst:595
 msgid "Расширение файла"
 msgstr "File extension"
 
@@ -1053,11 +1159,11 @@ msgstr "File extension"
 msgid "name"
 msgstr "name"
 
-#: ../../settings_kb/notifications/notifications_template.rst:545
+#: ../../settings_kb/notifications/notifications_template.rst:596
 msgid "Имя файла"
 msgstr "File name"
 
-#: ../../settings_kb/notifications/notifications_template.rst:549
+#: ../../settings_kb/notifications/notifications_template.rst:600
 msgid ""
 "Если в ``originalName`` будет находиться имя без расширения, то система "
 "сама допишет расширение файлу из originalExt."
@@ -1065,7 +1171,7 @@ msgstr ""
 "If ``originalName`` contains a name without an extension, the system will"
 " automatically add the file extension from originalExt."
 
-#: ../../settings_kb/notifications/notifications_template.rst:550
+#: ../../settings_kb/notifications/notifications_template.rst:601
 msgid ""
 "Если окажется, что ``cm:content`` будет отсутствовать у ноды (или лист "
 "контентов будет пустым), то отправится уведомление без прикрепления "
@@ -1075,11 +1181,11 @@ msgstr ""
 " of contents is empty), a notification will be sent without attached "
 "attachments."
 
-#: ../../settings_kb/notifications/notifications_template.rst:556
+#: ../../settings_kb/notifications/notifications_template.rst:607
 msgid "3.5 Шаблоны-библиотеки (библиотеки макросов)"
 msgstr "3.5 Library Templates (Macro Libraries)"
 
-#: ../../settings_kb/notifications/notifications_template.rst:558
+#: ../../settings_kb/notifications/notifications_template.rst:609
 msgid ""
 "Шаблон без языковых ``html_<lang>.ftl``-файлов, но с файлом "
 "``<id>.html.ftl``, является **библиотекой макросов**. Такой шаблон не "
@@ -1091,23 +1197,23 @@ msgstr ""
 "sent on its own — it contains reusable Freemarker macros that are "
 "imported into other templates."
 
-#: ../../settings_kb/notifications/notifications_template.rst:560
+#: ../../settings_kb/notifications/notifications_template.rst:611
 msgid "Структура библиотеки в репозитории:"
 msgstr "Library structure in the repository:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:568
+#: ../../settings_kb/notifications/notifications_template.rst:619
 msgid "Метафайл библиотеки (YAML, не JSON):"
 msgstr "Library metafile (YAML, not JSON):"
 
-#: ../../settings_kb/notifications/notifications_template.rst:575
+#: ../../settings_kb/notifications/notifications_template.rst:626
 msgid "Пример содержимого библиотеки (``my-template-lib.html.ftl``):"
 msgstr "Example library content (``my-template-lib.html.ftl``):"
 
-#: ../../settings_kb/notifications/notifications_template.rst:591
+#: ../../settings_kb/notifications/notifications_template.rst:642
 msgid "Импорт библиотеки в другом шаблоне:"
 msgstr "Importing a library in another template:"
 
-#: ../../settings_kb/notifications/notifications_template.rst:604
+#: ../../settings_kb/notifications/notifications_template.rst:655
 msgid ""
 "Ключевое отличие библиотеки от обычного шаблона — файл тела имеет "
 "расширение ``.html.ftl`` (без кода языка), а языковые "
@@ -1117,7 +1223,7 @@ msgstr ""
 "has the extension ``.html.ftl`` (without a language code), and language-"
 "specific ``.html_ru.ftl`` files are absent."
 
-#: ../../settings_kb/notifications/notifications_template.rst:607
+#: ../../settings_kb/notifications/notifications_template.rst:658
 msgid ""
 "Пример из ecos-service-desk: библиотека ``sd-template-lib`` содержит "
 "макрос ``reply_message``, который вставляет ссылку для ответа по email с "
@@ -1126,4 +1232,79 @@ msgstr ""
 "Example from ecos-service-desk: the ``sd-template-lib`` library contains "
 "the ``reply_message`` macro, which inserts an email reply link with "
 "automatic binding to the request."
+
+#~ msgid ""
+#~ "Модель, исходя из которой будет "
+#~ "происходить шаблонизация текста – title "
+#~ "или body для уведомлений. |br| Модель"
+#~ " – это map ключ: значение, ключом "
+#~ "в данном случае выступает имя "
+#~ "переменной, которая будет доступна в "
+#~ "шаблоне, а значение – ecos records "
+#~ "выражение для вычисления значения переменной."
+#~ " |br| Базовым record является документ, "
+#~ "по которому идет бизнес-процесс. То "
+#~ "есть, если в модели указать значение "
+#~ "``.disp``, то вычисляется заголовок по "
+#~ "документу. Так же есть доступ к "
+#~ "другим объектам через знак ``$``, "
+#~ "например, если уведомление отправляется в "
+#~ "рамках бизнес процесса, - ``$process.webUrl``"
+#~ " (по умолчанию доступны дополнительные "
+#~ "переменные ``$now``, ``$user``, ``$webUrl``). "
+#~ "|br| При использовании мульти шаблонов, "
+#~ "модель из базового шаблона будет "
+#~ "сливаться с моделью, найденной по типу,"
+#~ " таким образом часть «базовой» модели "
+#~ "может быть описана в базовом шаблоне,"
+#~ " а более специфичные атрибуты могут "
+#~ "быть вынесены в конкретный шаблон."
+#~ msgstr ""
+#~ "The model based on which text "
+#~ "templating will occur – title or "
+#~ "body for notifications. |br| The model"
+#~ " is a key:value map, where the "
+#~ "key is the variable name that will"
+#~ " be available in the template, and"
+#~ " the value is an ecos records "
+#~ "expression for calculating the variable's "
+#~ "value. |br| The base record is the"
+#~ " document associated with the business "
+#~ "process. So, if you specify the "
+#~ "value ``.disp`` in the model, the "
+#~ "document's title is calculated. Access "
+#~ "to other objects is also available "
+#~ "via the ``$`` sign, e.g., if the"
+#~ " notification is sent within a "
+#~ "business process, - ``$process.webUrl`` (by"
+#~ " default, additional variables ``$now``, "
+#~ "``$user``, ``$webUrl`` are available). |br|"
+#~ " When using multi-templates, the "
+#~ "model from the base template will "
+#~ "be merged with the model found by"
+#~ " type, so part of the \"base\" "
+#~ "model can be described in the base"
+#~ " template, and more specific attributes "
+#~ "can be moved to a specific "
+#~ "template."
+
+#~ msgid "``link`` - формирование ссылок"
+#~ msgstr "``link`` - link formation"
+
+#~ msgid "``meta`` - сервис для получения различной мета информация"
+#~ msgstr "``meta`` - service for obtaining various meta information"
+
+#~ msgid "``_notification`` - информация о текущем уведомлении"
+#~ msgstr "``_notification`` - information about the current notification"
+
+#~ msgid ""
+#~ "``toBase64Data(fileName: String): String`` - "
+#~ "возвращает *base64 data image* представление"
+#~ " изображения по переданному имени файла "
+#~ "изображения"
+#~ msgstr ""
+#~ "``toBase64Data(fileName: String): String`` - "
+#~ "returns a *base64 data image* "
+#~ "representation of the image by the "
+#~ "passed image file name"
 

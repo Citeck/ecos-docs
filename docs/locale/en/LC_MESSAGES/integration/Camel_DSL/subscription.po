@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -31,8 +31,8 @@ msgid ""
 "Для выполнения действий при смене статуса можно использовать подписку на "
 "события Citeck:"
 msgstr ""
-"To perform actions on status change, you can use a subscription to Citeck "
-"events:"
+"To perform actions on status change, you can use a subscription to Citeck"
+" events:"
 
 #: ../../integration/Camel_DSL/subscription.rst:46
 msgid ""
@@ -41,8 +41,8 @@ msgid ""
 "на внешний сервис."
 msgstr ""
 "Next, you can take the list of documents, retrieve their attributes "
-"(including content) using **GetRecordAttsProcessor**, and send them to an "
-"external service via the HTTP component."
+"(including content) using **GetRecordAttsProcessor**, and send them to an"
+" external service via the HTTP component."
 
 #: ../../integration/Camel_DSL/subscription.rst:48
 msgid ""
@@ -52,31 +52,55 @@ msgstr ""
 "The full configuration with comments is provided in the attachment. For "
 "this example scenario, you need to change:"
 
-#: ../../integration/Camel_DSL/subscription.rst:50
-msgid ""
-"beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] "
-"-> ['SED-main-document']**"
-msgstr ""
-"beans[0] -> properties -> FILE_TYPES_TO_PROCESS:     **['scan-document'] "
-"-> ['SED-main-document']**"
+#: ../../integration/Camel_DSL/subscription.rst:55
+msgid "Где"
+msgstr "Where"
 
-#: ../../integration/Camel_DSL/subscription.rst:51
-msgid ""
-"route -> from -> parameters -> filter -> val[0] -> val:     **contract ->"
-" SED-agreement**"
-msgstr ""
-"route -> from -> parameters -> filter -> val[0] -> val:     **contract ->"
-" SED-agreement**"
+#: ../../integration/Camel_DSL/subscription.rst:56
+msgid "Было"
+msgstr "Before"
 
-#: ../../integration/Camel_DSL/subscription.rst:52
-msgid ""
-"route -> from -> parameters -> filter -> val[1] -> val:     "
-"**integration-trigger -> ваш_статус**"
-msgstr ""
-"route -> from -> parameters -> filter -> val[1] -> val:     "
-"**integration-trigger -> your_status**"
+#: ../../integration/Camel_DSL/subscription.rst:57
+msgid "Стало"
+msgstr "After"
 
-#: ../../integration/Camel_DSL/subscription.rst:54
+#: ../../integration/Camel_DSL/subscription.rst:58
+msgid "``beans[0] -> properties -> FILE_TYPES_TO_PROCESS``"
+msgstr "``beans[0] -> properties -> FILE_TYPES_TO_PROCESS``"
+
+#: ../../integration/Camel_DSL/subscription.rst:59
+msgid "``['scan-document']``"
+msgstr "``['scan-document']``"
+
+#: ../../integration/Camel_DSL/subscription.rst:60
+msgid "``['SED-main-document']``"
+msgstr "``['SED-main-document']``"
+
+#: ../../integration/Camel_DSL/subscription.rst:61
+msgid "``route -> from -> parameters -> filter -> val[0] -> val``"
+msgstr "``route -> from -> parameters -> filter -> val[0] -> val``"
+
+#: ../../integration/Camel_DSL/subscription.rst:62
+msgid "``contract``"
+msgstr "``contract``"
+
+#: ../../integration/Camel_DSL/subscription.rst:63
+msgid "``SED-agreement``"
+msgstr "``SED-agreement``"
+
+#: ../../integration/Camel_DSL/subscription.rst:64
+msgid "``route -> from -> parameters -> filter -> val[1] -> val``"
+msgstr "``route -> from -> parameters -> filter -> val[1] -> val``"
+
+#: ../../integration/Camel_DSL/subscription.rst:65
+msgid "``integration-trigger``"
+msgstr "``integration-trigger``"
+
+#: ../../integration/Camel_DSL/subscription.rst:66
+msgid "``ваш_статус``"
+msgstr "``your_status``"
+
+#: ../../integration/Camel_DSL/subscription.rst:68
 msgid ""
 "А так же создать :ref:`секрет <ecos_secret>` с **username/password** в "
 "журнале ``/v2/journals?journalId=ecos-"
@@ -86,7 +110,7 @@ msgstr ""
 "the journal ``/v2/journals?journalId=ecos-"
 "secrets&viewMode=table&ws=admin$workspace``"
 
-#: ../../integration/Camel_DSL/subscription.rst:67
+#: ../../integration/Camel_DSL/subscription.rst:81
 msgid ""
 "И :ref:`конечную точку <endpoints_dsl>` с URL для загрузки файлов в "
 "журнале "
@@ -96,7 +120,7 @@ msgstr ""
 "files in the journal "
 "``/v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
 
-#: ../../integration/Camel_DSL/subscription.rst:78
+#: ../../integration/Camel_DSL/subscription.rst:92
 msgid ""
 "Если конечная точка или секрет меняются, то необходимо перезапустить "
 "Camel DSL, чтобы изменения подхватились."
@@ -104,10 +128,20 @@ msgstr ""
 "If the endpoint or secret changes, Camel DSL must be restarted for the "
 "changes to take effect."
 
-#: ../../integration/Camel_DSL/subscription.rst:80
+#: ../../integration/Camel_DSL/subscription.rst:94
 msgid ""
 ":download:`Полная конфигурация с комментариями <../files/send-files-to-"
 "ext-service-camel-yaml-dsl.yaml>`"
 msgstr ""
-":download:`Full configuration with comments <../files/send-files-to-"
-"ext-service-camel-yaml-dsl.yaml>`"
+":download:`Full configuration with comments <../files/send-files-to-ext-"
+"service-camel-yaml-dsl.yaml>`"
+
+#~ msgid ""
+#~ "route -> from -> parameters -> "
+#~ "filter -> val[1] -> val:     "
+#~ "**integration-trigger -> ваш_статус**"
+#~ msgstr ""
+#~ "route -> from -> parameters -> "
+#~ "filter -> val[1] -> val:     "
+#~ "**integration-trigger -> your_status**"
+

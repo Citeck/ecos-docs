@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Citeck\n"
+"Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: en <LL@li.org>\n"
 "Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:4
@@ -23,18 +23,22 @@ msgid "ecos-proxy-app"
 msgstr "ecos-proxy-app"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:10
 msgid "Назначение"
 msgstr "Purpose"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:8
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:11
 msgid "Образ проксирующего сервера со сборкой проекта ecos-ui."
 msgstr "Image of the proxy server with the ecos-ui project build."
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:11
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:14
 msgid "Базовые образы"
 msgstr "Base images"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:12
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:15
 msgid ""
 "nexus.citeck.ru/ecos-nginx-spnego:stable -  Nginx (1.17.6) собирается из "
 "исходников + в сборку включен модуль spnego (1.1.0)  для интеграции с AD "
@@ -48,327 +52,428 @@ msgstr ""
 "openresty/openresty:centos-rpm - openresty (1.15.8.3) is installed from repo"
 " packages. The base image is built on CentOS 7."
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:16
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:19
 msgid "Шаблон сервиса docker-compose"
 msgstr "Docker Compose service template"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:37
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:41
 msgid "Используемые переменные"
 msgstr "Used variables"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:38
-msgid ""
-"DEFAULT_LOCATION_V2 - переключение дефолтного редиректа ( / ) с share/page "
-"на v2/. Формат переменной: DEFAULT_LOCATION_V2=true (параметр дублируется в "
-"клиенте в настройках системных журналов)"
-msgstr ""
-"DEFAULT_LOCATION_V2 - switches the default redirect (/) from share/page to "
-"v2/. Variable format: DEFAULT_LOCATION_V2=true (parameter is duplicated on "
-"the client in system journal settings)"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:39
-msgid ""
-"ECOS_INIT_DELAY - таймаут запуска entrypoint скрипта, формирующего "
-"default.conf сервера. По умолчанию 30с для нормализации инициализации "
-"апстримов в compose проектах."
-msgstr ""
-"ECOS_INIT_DELAY - startup timeout for the entrypoint script that generates "
-"the server's default.conf. Default is 30s to normalize upstream "
-"initialization in compose projects."
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:40
-msgid ""
-"CADVISOR_TARGET - если параметр не указан, то из файла конфигурации nginx "
-"будет удален апсрим cadvisor и зависимые от него локейшены. Формат "
-"переменной: CADVISOR_TARGET=ip_or_fqdn:port"
-msgstr ""
-"CADVISOR_TARGET - if not specified, the cadvisor upstream and its dependent "
-"locations will be removed from the nginx configuration file. Variable "
-"format: CADVISOR_TARGET=ip_or_fqdn:port"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:41
-msgid ""
-"NODE_EXPORTER_TARGET - если параметр не указан, то из файла конфигурации "
-"nginx будет удален апсрим node-exporter и зависимые от него локейшены. "
-"Формат переменной: NODE_EXPORTER_TARGET=ip_or_fqdn:port"
-msgstr ""
-"NODE_EXPORTER_TARGET - if not specified, the node-exporter upstream and its "
-"dependent locations will be removed from the nginx configuration file. "
-"Variable format: NODE_EXPORTER_TARGET=ip_or_fqdn:port"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:42
-msgid ""
-"USE_EXTERNAL_CONFIGURATION - при объявлении данной переменной будет удален "
-"конфигурационный файл default.conf в директории nginx. Используется для "
-"разработки и конфигурирования, при этом директории статики, конфигурационные"
-" файлы, сертификаты и прочее необходимо прокинуть в контейнер через pv. "
-"Директория монтирования файла конфигурации nginx  - /etc/nginx/conf.d/. "
-"Формат переменной: USE_EXTERNAL_CONFIGURATION=true"
-msgstr ""
-"USE_EXTERNAL_CONFIGURATION - when declared, the default.conf configuration "
-"file in the nginx directory will be removed. Used for development and "
-"configuration; static directories, configuration files, certificates, etc. "
-"must be mounted into the container via pv. The nginx configuration file "
-"mount directory is /etc/nginx/conf.d/. Variable format: "
-"USE_EXTERNAL_CONFIGURATION=true"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:43
-msgid ""
-"PROXY_TARGET - если параметр не указан в файле ecos-proxy.env, то "
-"выставляется дефолтное проксирование на контейнер ecos- ecos:8080. "
-"Соответственно, при объявлении параметра в файле переменных будет заменено "
-"значение ecos:8080 в апстриме ecos конфигурации nginx образа на указанное в "
-"файле переменных. Формат переменной: PROXY_TARGET=ip_or_fqdn:port"
-msgstr ""
-"PROXY_TARGET - if not specified in the ecos-proxy.env file, the default "
-"proxying to the ecos container (ecos:8080) is set. When the parameter is "
-"declared in the variables file, the ecos:8080 value in the ecos upstream of "
-"the nginx image configuration is replaced with the value in the variables "
-"file. Variable format: PROXY_TARGET=ip_or_fqdn:port"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:44
-msgid ""
-"GATEWAY_TARGET - если параметр не указан, то из файла конфигурации nginx "
-"будет удален апсрим gateway и зависимые от него локейшены. Формат "
-"переменной: GATEWAY_TARGET=ip_or_fqdn:port"
-msgstr ""
-"GATEWAY_TARGET - if not specified, the gateway upstream and its dependent "
-"locations will be removed from the nginx configuration file. Variable "
-"format: GATEWAY_TARGET=ip_or_fqdn:port"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:45
-msgid ""
-"ENABLE_LOGGING - по умолчанию логирование контейнера отключено, объявление "
-"данной переменной включит стандартное логирование nginx, выставление "
-"переменной в debug включит расширенный режим отладки обработки пакетов "
-"nginx. Формат переменной: ENABLE_LOGGING=true (debug для расширенного "
-"режима)"
-msgstr ""
-"ENABLE_LOGGING - container logging is disabled by default; declaring this "
-"variable enables standard nginx logging, setting it to debug enables "
-"extended nginx packet processing debug mode. Variable format: "
-"ENABLE_LOGGING=true (debug for extended mode)"
-
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:46
-msgid ""
-"ENABLE_SERVER_STATUS - включение локейшена с выдачей статистики сервера "
-"nginx, используется для централизированного мониторинга. Локейш доступен "
-"только из docker сети. Формат переменной: ENABLE_SERVER_STATUS=true"
-msgstr ""
-"ENABLE_SERVER_STATUS - enables the location for nginx server statistics, "
-"used for centralized monitoring. The location is accessible only from the "
-"docker network. Variable format: ENABLE_SERVER_STATUS=true"
-
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:47
-msgid ""
-"ENABLE_MOBILE_APP_ACCESS - включение локейшена /gateeway с проверкой bearer "
-"токена в хидере Authorization. Используется для доступа мобильным "
-"приложением. Формат переменной: ENABLE_MOBILE_APP_ACCESS=true. При включении"
-" данного функционала требуется сконфигрурировать переменные EIS_ID, "
-"REALM_ID, CLIENT_SECRET для интеграции с keycloak."
-msgstr ""
-"ENABLE_MOBILE_APP_ACCESS - enables the /gateway location with bearer token "
-"validation in the Authorization header. Used for mobile app access. Variable"
-" format: ENABLE_MOBILE_APP_ACCESS=true. When enabling this feature, "
-"configure the EIS_ID, REALM_ID, CLIENT_SECRET variables for Keycloak "
-"integration."
+msgid "Переменная"
+msgstr "Variable"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:48
-msgid ""
-"ENABLE_OIDC_FULL_ACCESS - включение проверки bearer токена в хидере "
-"Authorization для любого из обрабатываемых локейшенов. Формат переменной: "
-"ENABLE_OIDC_FULL_ACCESS=true. При включении данного функционала требуется "
-"сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции "
-"с keycloak."
-msgstr ""
-"ENABLE_OIDC_FULL_ACCESS - enables bearer token validation in the "
-"Authorization header for any processed location. Variable format: "
-"ENABLE_OIDC_FULL_ACCESS=true. When enabling this feature, configure EIS_ID, "
-"REALM_ID, CLIENT_SECRET variables for Keycloak integration."
+msgid "Описание"
+msgstr "Description"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:49
-msgid ""
-"ONLYOFFICE_TARGET - включение локейшена /onlyoffice/ для интеграции ecos c "
-"развернутым инстансом OnlyOffice. Формат переменной: "
-"ONLYOFFICE_TARGET=ip_or_fqdn:port"
-msgstr ""
-"ONLYOFFICE_TARGET - enables the /onlyoffice/ location for integrating ecos "
-"with a deployed OnlyOffice instance. Variable format: "
-"ONLYOFFICE_TARGET=ip_or_fqdn:port"
+msgid "**DEFAULT_LOCATION_V2**"
+msgstr "**DEFAULT_LOCATION_V2**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:50
 msgid ""
-"MAILHOG_TARGET - включение локейшена проксирования в ui контейнера mailhog. "
-"MAILHOG_TARGET=ip_or_fqdn:port"
+"переключение дефолтного редиректа ( / ) с share/page на v2/. Формат "
+"переменной: ``DEFAULT_LOCATION_V2=true`` (параметр дублируется в клиенте в "
+"настройках системных журналов)"
 msgstr ""
-"MAILHOG_TARGET - enables the proxy location to the mailhog container UI. "
-"MAILHOG_TARGET=ip_or_fqdn:port"
+"switches the default redirect (/) from share/page to v2/. Variable format: "
+"DEFAULT_LOCATION_V2=true (parameter is duplicated on the client in system "
+"journal settings)"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:51
-msgid ""
-"ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера "
-"ecos(jhipster)-registry. Формат переменной: "
-"ECOS_REGISTRY_TARGET=ip_or_fqdn:port"
-msgstr ""
-"ECOS_REGISTRY_TARGET - enables the proxy location to the "
-"ecos(jhipster)-registry container UI. Variable format: "
-"ECOS_REGISTRY_TARGET=ip_or_fqdn:port"
+msgid "**ECOS_INIT_DELAY**"
+msgstr "**ECOS_INIT_DELAY**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:52
 msgid ""
-"RABBITMQ_TARGET - включение локейшена проксирования в managment ui "
-"контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port"
+"таймаут запуска entrypoint скрипта, формирующего default.conf сервера. По "
+"умолчанию 30с для нормализации инициализации апстримов в compose проектах."
 msgstr ""
-"RABBITMQ_TARGET - enables the proxy location to the rabbitmq management UI "
-"container. Variable format: RABBITMQ_TARGET=ip_or_fqdn:port"
+"startup timeout for the entrypoint script that generates the server's "
+"default.conf. Default is 30s to normalize upstream initialization in compose"
+" projects."
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:53
-msgid ""
-"EIS_TARGET - включение локейшена проксирования в ui контейнера eis. "
-"Используется при размещении eis за проксирующим сервером в сетевом сегменте "
-"заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port"
-msgstr ""
-"EIS_TARGET - enables the proxy location to the eis container UI. Used when "
-"eis is placed behind a proxy server in the customer’s network segment. "
-"Variable format: EIS_TARGET=ip_or_fqdn:port"
+msgid "**CADVISOR_TARGET**"
+msgstr "**CADVISOR_TARGET**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:54
 msgid ""
-"ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для "
-"нового интерфейса (v2). По умолчанию Citeck"
+"если параметр не указан, то из файла конфигурации nginx будет удален апсрим "
+"cadvisor и зависимые от него локейшены. Формат переменной: "
+"``CADVISOR_TARGET=ip_or_fqdn:port``"
 msgstr ""
-"ECOS_PAGE_TITLE - configures the browser page title (index.html) for the new"
-" interface (v2). Default: Citeck"
+"if not specified, the cadvisor upstream and its dependent locations will be "
+"removed from the nginx configuration file. Variable format: "
+"CADVISOR_TARGET=ip_or_fqdn:port"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:55
-msgid ""
-"EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение "
-"по умолчанию  https, опционально можно поставить http"
-msgstr ""
-"EIS_PROTO – protocol used for communication with keycloak. Default value is "
-"https, optionally can be set to http"
+msgid "**NODE_EXPORTER_TARGET**"
+msgstr "**NODE_EXPORTER_TARGET**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:56
-msgid "GATEWAY_TLS_ENABLED - включить HTTPS до ecos-gateway (v4)"
-msgstr "GATEWAY_TLS_ENABLED - enable HTTPS to ecos-gateway (v4)"
+msgid ""
+"если параметр не указан, то из файла конфигурации nginx будет удален апсрим "
+"node-exporter и зависимые от него локейшены. Формат переменной: "
+"``NODE_EXPORTER_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"if not specified, the node-exporter upstream and its dependent locations "
+"will be removed from the nginx configuration file. Variable format: "
+"NODE_EXPORTER_TARGET=ip_or_fqdn:port"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:57
-msgid ""
-"GATEWAY_TLS_CERT - корневой сертификат для проверки сертификата ecos-"
-"gateway. Можно указать непосредственно тот же сертификат, который использует"
-" gateway. По умолчанию цепочка сертификатов проверяется на 2 уровня. По "
-"умолчанию false. (v4)"
-msgstr ""
-"GATEWAY_TLS_CERT - root certificate for verifying the ecos-gateway "
-"certificate. You can specify the same certificate that the gateway uses. By "
-"default, the certificate chain is checked to 2 levels. Default: false. (v4)"
+msgid "**USE_EXTERNAL_CONFIGURATION**"
+msgstr "**USE_EXTERNAL_CONFIGURATION**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:58
 msgid ""
-"GATEWAY_TLS_NAME - имя gateway сервера. nginx всегда проверяет хост gateway "
-"на соответствие сертификату, но если хост динамический, то можно "
-"использовать эту настройку чтобы задать его константой. (v4)"
+"при объявлении данной переменной будет удален конфигурационный файл "
+"default.conf в директории nginx. Используется для разработки и "
+"конфигурирования, при этом директории статики, конфигурационные файлы, "
+"сертификаты и прочее необходимо прокинуть в контейнер через pv. Директория "
+"монтирования файла конфигурации nginx - ``/etc/nginx/conf.d/``. Формат "
+"переменной: ``USE_EXTERNAL_CONFIGURATION=true``"
 msgstr ""
-"GATEWAY_TLS_NAME - gateway server name. nginx always verifies the gateway "
-"host against the certificate, but if the host is dynamic, this setting can "
-"be used to specify it as a constant. (v4)"
+"when declared, the default.conf configuration file in the nginx directory "
+"will be removed. Used for development and configuration; static directories,"
+" configuration files, certificates, etc. must be mounted into the container "
+"via pv. The nginx configuration file mount directory is /etc/nginx/conf.d/. "
+"Variable format: USE_EXTERNAL_CONFIGURATION=true"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:59
-msgid ""
-"ENABLE_HTTPS - включает сервер по SERVER_HTTPS_PORT порту и ждет сертификаты"
-" SERVER_TLS_CERT и SERVER_TLS_KEY (v3, v4)"
-msgstr ""
-"ENABLE_HTTPS - enables the server on the SERVER_HTTPS_PORT port and expects "
-"certificates SERVER_TLS_CERT and SERVER_TLS_KEY (v3, v4)"
+msgid "**PROXY_TARGET**"
+msgstr "**PROXY_TARGET**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:60
 msgid ""
-"ENABLE_HSTS - добавлять заголовок Strict-Transport-Security к ответам "
-"сервера. (v3, v4)"
+"если параметр не указан в файле ecos-proxy.env, то выставляется дефолтное "
+"проксирование на контейнер ecos:8080. Соответственно, при объявлении "
+"параметра в файле переменных будет заменено значение ecos:8080 в апстриме "
+"ecos конфигурации nginx образа на указанное в файле переменных. Формат "
+"переменной: ``PROXY_TARGET=ip_or_fqdn:port``"
 msgstr ""
-"ENABLE_HSTS - add the Strict-Transport-Security header to server responses. "
-"(v3, v4)"
+"if not specified in the ecos-proxy.env file, the default proxying to the "
+"ecos container (ecos:8080) is set. When the parameter is declared in the "
+"variables file, the ecos:8080 value in the ecos upstream of the nginx image "
+"configuration is replaced with the value in the variables file. Variable "
+"format: PROXY_TARGET=ip_or_fqdn:port"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:61
-msgid ""
-"SERVER_TLS_CERT - сертификат сервера. По умолчанию /app/ssl/ecos-proxy.cert "
-"(v4)"
-msgstr ""
-"SERVER_TLS_CERT - server certificate. Default: /app/ssl/ecos-proxy.cert (v4)"
+msgid "**GATEWAY_TARGET**"
+msgstr "**GATEWAY_TARGET**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:62
 msgid ""
-"SERVER_TLS_KEY - приватный ключ сервера. По умолчанию /app/ssl/ecos-"
-"proxy.key (v4)"
+"если параметр не указан, то из файла конфигурации nginx будет удален апсрим "
+"gateway и зависимые от него локейшены. Формат переменной: "
+"``GATEWAY_TARGET=ip_or_fqdn:port``"
 msgstr ""
-"SERVER_TLS_KEY - server private key. Default: /app/ssl/ecos-proxy.key (v4)"
+"if not specified, the gateway upstream and its dependent locations will be "
+"removed from the nginx configuration file. Variable format: "
+"GATEWAY_TARGET=ip_or_fqdn:port"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:63
-msgid ""
-"SERVER_HTTP_PORT - http порт, который будет слушать nginx. По умолчанию "
-"зависит от пользователя, под которым запускается контейнер. Если это root, "
-"то 80, иначе - 8080 (v4)"
-msgstr ""
-"SERVER_HTTP_PORT - http port that nginx will listen on. Default depends on "
-"the user running the container: 80 for root, otherwise 8080 (v4)"
+msgid "**ENABLE_LOGGING**"
+msgstr "**ENABLE_LOGGING**"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:64
 msgid ""
-"SERVER_HTTPS_PORT - https порт, который будет слушать nginx. По умолчанию "
-"зависит от пользователя, под которым запускается контейнер. Если это root, "
-"то 443, иначе - 8443 (v4)"
+"по умолчанию логирование контейнера отключено, объявление данной переменной "
+"включит стандартное логирование nginx, выставление переменной в debug "
+"включит расширенный режим отладки обработки пакетов nginx. Формат "
+"переменной: ``ENABLE_LOGGING=true`` (``debug`` для расширенного режима)"
 msgstr ""
-"SERVER_HTTPS_PORT - https port that nginx will listen on. Default depends on"
-" the user running the container: 443 for root, otherwise 8443 (v4)"
+"container logging is disabled by default; declaring this variable enables "
+"standard nginx logging, setting it to debug enables extended nginx packet "
+"processing debug mode. Variable format: ENABLE_LOGGING=true (debug for "
+"extended mode)"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:65
+msgid "**ENABLE_SERVER_STATUS**"
+msgstr "**ENABLE_SERVER_STATUS**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:66
 msgid ""
-"MIN_TLS_VER - минимально допустимая версия TLS. Допустимные значения: [1.3, "
-"1.2, 1.0] (v3, v4)"
+"включение локейшена с выдачей статистики сервера nginx, используется для "
+"централизированного мониторинга. Локейшен доступен только из docker сети. "
+"Формат переменной: ``ENABLE_SERVER_STATUS=true``"
 msgstr ""
-"MIN_TLS_VER - minimum allowed TLS version. Allowed values: [1.3, 1.2, 1.0] "
-"(v3, v4)"
+"enables the location for nginx server statistics, used for centralized "
+"monitoring. The location is accessible only from the docker network. "
+"Variable format: ENABLE_SERVER_STATUS=true"
 
 #: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:67
+msgid "**ENABLE_MOBILE_APP_ACCESS**"
+msgstr "**ENABLE_MOBILE_APP_ACCESS**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:68
+msgid ""
+"включение локейшена /gateway с проверкой bearer токена в хидере "
+"Authorization. Используется для доступа мобильным приложением. Формат "
+"переменной: ``ENABLE_MOBILE_APP_ACCESS=true``. При включении данного "
+"функционала требуется сконфигурировать переменные EIS_ID, REALM_ID, "
+"CLIENT_SECRET для интеграции с keycloak."
+msgstr ""
+"enables the /gateway location with bearer token validation in the "
+"Authorization header. Used for mobile app access. Variable format: "
+"ENABLE_MOBILE_APP_ACCESS=true. When enabling this feature, configure the "
+"EIS_ID, REALM_ID, CLIENT_SECRET variables for Keycloak integration."
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:69
+msgid "**ENABLE_OIDC_FULL_ACCESS**"
+msgstr "**ENABLE_OIDC_FULL_ACCESS**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:70
+msgid ""
+"включение проверки bearer токена в хидере Authorization для любого из "
+"обрабатываемых локейшенов. Формат переменной: "
+"``ENABLE_OIDC_FULL_ACCESS=true``. При включении данного функционала "
+"требуется сконфигурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для "
+"интеграции с keycloak."
+msgstr ""
+"enables bearer token validation in the Authorization header for any "
+"processed location. Variable format: ENABLE_OIDC_FULL_ACCESS=true. When "
+"enabling this feature, configure EIS_ID, REALM_ID, CLIENT_SECRET variables "
+"for Keycloak integration."
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:71
+msgid "**ONLYOFFICE_TARGET**"
+msgstr "**ONLYOFFICE_TARGET**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:72
+msgid ""
+"включение локейшена /onlyoffice/ для интеграции ecos c развернутым инстансом"
+" OnlyOffice. Формат переменной: ``ONLYOFFICE_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"enables the /onlyoffice/ location for integrating ecos with a deployed "
+"OnlyOffice instance. Variable format: ONLYOFFICE_TARGET=ip_or_fqdn:port"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:73
+msgid "**MAILHOG_TARGET**"
+msgstr "**MAILHOG_TARGET**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:74
+msgid ""
+"включение локейшена проксирования в ui контейнера mailhog. "
+"``MAILHOG_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"enables the proxy location to the mailhog container UI. "
+"MAILHOG_TARGET=ip_or_fqdn:port"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:75
+msgid "**ECOS_REGISTRY_TARGET**"
+msgstr "**ECOS_REGISTRY_TARGET**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:76
+msgid ""
+"включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. "
+"Формат переменной: ``ECOS_REGISTRY_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"enables the proxy location to the ecos(jhipster)-registry container UI. "
+"Variable format: ECOS_REGISTRY_TARGET=ip_or_fqdn:port"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:77
+msgid "**RABBITMQ_TARGET**"
+msgstr "**RABBITMQ_TARGET**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:78
+msgid ""
+"включение локейшена проксирования в managment ui контейнера rabbitmq. Формат"
+" переменной: ``RABBITMQ_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"enables the proxy location to the rabbitmq management UI container. Variable"
+" format: RABBITMQ_TARGET=ip_or_fqdn:port"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:79
+msgid "**EIS_TARGET**"
+msgstr "**EIS_TARGET**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:80
+msgid ""
+"включение локейшена проксирования в ui контейнера eis. Используется при "
+"размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат"
+" переменной: ``EIS_TARGET=ip_or_fqdn:port``"
+msgstr ""
+"enables the proxy location to the eis container UI. Used when eis is placed "
+"behind a proxy server in the customer’s network segment. Variable format: "
+"EIS_TARGET=ip_or_fqdn:port"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:81
+msgid "**ECOS_PAGE_TITLE**"
+msgstr "**ECOS_PAGE_TITLE**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:82
+msgid ""
+"настройка заголовка index.html страницы браузера для нового интерфейса (v2)."
+" По умолчанию Citeck"
+msgstr ""
+"configures the browser page title (index.html) for the new interface (v2). "
+"Default: Citeck"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:83
+msgid "**EIS_PROTO**"
+msgstr "**EIS_PROTO**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:84
+msgid ""
+"протокол, по которому идёт взаимодействие с keycloak. Значение по умолчанию "
+"https, опционально можно поставить http"
+msgstr ""
+"protocol used for communication with keycloak. Default value is https, "
+"optionally can be set to http"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:85
+msgid "**GATEWAY_TLS_ENABLED**"
+msgstr "**GATEWAY_TLS_ENABLED**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:86
+msgid "включить HTTPS до ecos-gateway (v4)"
+msgstr "enable HTTPS to ecos-gateway (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:87
+msgid "**GATEWAY_TLS_CERT**"
+msgstr "**GATEWAY_TLS_CERT**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:88
+msgid ""
+"корневой сертификат для проверки сертификата ecos-gateway. Можно указать "
+"непосредственно тот же сертификат, который использует gateway. По умолчанию "
+"цепочка сертификатов проверяется на 2 уровня. По умолчанию false. (v4)"
+msgstr ""
+"root certificate for verifying the ecos-gateway certificate. You can specify"
+" the same certificate that the gateway uses. By default, the certificate "
+"chain is checked to 2 levels. Default: false. (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:89
+msgid "**GATEWAY_TLS_NAME**"
+msgstr "**GATEWAY_TLS_NAME**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:90
+msgid ""
+"имя gateway сервера. nginx всегда проверяет хост gateway на соответствие "
+"сертификату, но если хост динамический, то можно использовать эту настройку "
+"чтобы задать его константой. (v4)"
+msgstr ""
+"gateway server name. nginx always verifies the gateway host against the "
+"certificate, but if the host is dynamic, this setting can be used to specify"
+" it as a constant. (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:91
+msgid "**ENABLE_HTTPS**"
+msgstr "**ENABLE_HTTPS**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:92
+msgid ""
+"включает сервер по SERVER_HTTPS_PORT порту и ждет сертификаты "
+"SERVER_TLS_CERT и SERVER_TLS_KEY (v3, v4)"
+msgstr ""
+"enables the server on the SERVER_HTTPS_PORT port and expects certificates "
+"SERVER_TLS_CERT and SERVER_TLS_KEY (v3, v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:93
+msgid "**ENABLE_HSTS**"
+msgstr "**ENABLE_HSTS**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:94
+msgid ""
+"добавлять заголовок Strict-Transport-Security к ответам сервера. (v3, v4)"
+msgstr ""
+"add the Strict-Transport-Security header to server responses. (v3, v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:95
+msgid "**SERVER_TLS_CERT**"
+msgstr "**SERVER_TLS_CERT**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:96
+msgid "сертификат сервера. По умолчанию ``/app/ssl/ecos-proxy.cert`` (v4)"
+msgstr "server certificate. Default: /app/ssl/ecos-proxy.cert (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:97
+msgid "**SERVER_TLS_KEY**"
+msgstr "**SERVER_TLS_KEY**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:98
+msgid "приватный ключ сервера. По умолчанию ``/app/ssl/ecos-proxy.key`` (v4)"
+msgstr "server private key. Default: /app/ssl/ecos-proxy.key (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:99
+msgid "**SERVER_HTTP_PORT**"
+msgstr "**SERVER_HTTP_PORT**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:100
+msgid ""
+"http порт, который будет слушать nginx. По умолчанию зависит от "
+"пользователя, под которым запускается контейнер. Если это root, то 80, иначе"
+" - 8080 (v4)"
+msgstr ""
+"http port that nginx will listen on. Default depends on the user running the"
+" container: 80 for root, otherwise 8080 (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:101
+msgid "**SERVER_HTTPS_PORT**"
+msgstr "**SERVER_HTTPS_PORT**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:102
+msgid ""
+"https порт, который будет слушать nginx. По умолчанию зависит от "
+"пользователя, под которым запускается контейнер. Если это root, то 443, "
+"иначе - 8443 (v4)"
+msgstr ""
+"https port that nginx will listen on. Default depends on the user running "
+"the container: 443 for root, otherwise 8443 (v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:103
+msgid "**MIN_TLS_VER**"
+msgstr "**MIN_TLS_VER**"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:104
+msgid ""
+"минимально допустимая версия TLS. Допустимые значения: [1.3, 1.2, 1.0] (v3, "
+"v4)"
+msgstr "minimum allowed TLS version. Allowed values: [1.3, 1.2, 1.0] (v3, v4)"
+
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:106
 msgid "Не реализованы:"
 msgstr "Not implemented:"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:69
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:108
 msgid "SOLR_TARGET"
 msgstr "SOLR_TARGET"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:70
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:109
 msgid "ECOS_REGISTRY_TARGET"
 msgstr "ECOS_REGISTRY_TARGET"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:73
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:112
 msgid "Типовой вывод принятых настроек в лог контейнера"
 msgstr "Typical settings acceptance log output"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:89
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:129
 msgid "Локальная сборка и деплой ecos-ui"
 msgstr "Local build and deploy of ecos-ui"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:92
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:132
 msgid "Требования"
 msgstr "Requirements"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:94
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:134
 msgid "Node.js 20.19+ или 22.12+ (проект использует Vite 7)"
 msgstr "Node.js 20.19+ or 22.12+ (project uses Vite 7)"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:95
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:135
 msgid ""
 "Yarn 3.6.2 (через corepack, указан в ``packageManager`` в ``package.json``)"
 msgstr ""
 "Yarn 3.6.2 (via corepack, specified in ``packageManager`` in "
 "``package.json``)"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:98
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:138
 msgid "Сборка"
 msgstr "Build"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:106
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:146
 msgid ""
 "Результат: директория ``build/`` с собранными файлами (index.html, assets/, "
 "js/, img/ и т.д.)"
@@ -376,11 +481,11 @@ msgstr ""
 "Result: ``build/`` directory with compiled files (index.html, assets/, js/, "
 "img/, etc.)"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:109
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:149
 msgid "Деплой в локальный контейнер (Citeck Launcher)"
 msgstr "Deploy to local container (Citeck Launcher)"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:111
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:151
 msgid ""
 "UI раздаётся через контейнер ecos-proxy (nginx/openresty). Статика находится"
 " внутри контейнера по пути ``/var/www/assets/``."
@@ -388,7 +493,7 @@ msgstr ""
 "UI is served through the ecos-proxy container (nginx/openresty). Static "
 "files are located inside the container at ``/var/www/assets/``."
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:113
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:153
 msgid ""
 "Контейнер не имеет bind mount для UI-файлов, поэтому деплой выполняется "
 "через ``docker cp``:"
@@ -396,7 +501,7 @@ msgstr ""
 "The container has no bind mount for UI files, so deployment is done via "
 "``docker cp``:"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:119
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:159
 msgid ""
 "Имя контейнера прокси имеет вид ``citeck_proxy_<namespace>_default``. Найти "
 "его:"
@@ -404,7 +509,7 @@ msgstr ""
 "The proxy container name has the form ``citeck_proxy_<namespace>_default``. "
 "To find it:"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:125
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:165
 msgid ""
 "После копирования — обновить страницу в браузере (Ctrl+Shift+R / Cmd+Shift+R"
 " для hard refresh)."
@@ -412,11 +517,11 @@ msgstr ""
 "After copying — refresh the page in the browser (Ctrl+Shift+R / Cmd+Shift+R "
 "for hard refresh)."
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:128
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:168
 msgid "Проверка деплоя"
 msgstr "Deployment verification"
 
-#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:136
+#: ../../admin/launch_setup/docker_services/ecos-proxy-app.rst:176
 msgid ""
 "Изменения действуют до пересоздания контейнера. После перезапуска Launcher "
 "развернёт оригинальный UI из образа."

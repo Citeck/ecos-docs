@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -35,12 +35,12 @@ msgid ""
 "API. Это обеспечивает независимость обработчиков от движка, возможность "
 "масштабирования и поддержку разнородных технологических стеков."
 msgstr ""
-"**External Tasks** are an integration mechanism that allows service tasks "
-"of a business process to be executed in external applications. The process "
-"engine creates task instances and publishes them to topics, while external "
-"workers fetch, process, and complete the tasks via API. This ensures "
-"worker independence from the engine, scalability, and support for "
-"heterogeneous technology stacks."
+"**External Tasks** are an integration mechanism that allows service tasks"
+" of a business process to be executed in external applications. The "
+"process engine creates task instances and publishes them to topics, while"
+" external workers fetch, process, and complete the tasks via API. This "
+"ensures worker independence from the engine, scalability, and support for"
+" heterogeneous technology stacks."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:10
 msgid ""
@@ -69,50 +69,53 @@ msgid "Поток выполнения внешних задач"
 msgstr "External Task Execution Flow"
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:23
-msgid "**Process Engine:** Создание экземпляра внешнего задания"
-msgstr "**Process Engine:** Creating an external task instance"
+msgid ""
+"**Process Engine: создание экземпляра внешнего задания.** Когда движок "
+"процесса сталкивается с сервисной задачей, которая настроена на внешнюю "
+"обработку, он создает экземпляр внешней задачи и добавляет его в список "
+"внешних задач. Экземпляр задачи получает топик, который идентифицирует "
+"характер задачи, которую необходимо выполнить."
+msgstr ""
+"**Process Engine: creating an external task instance.** When the process "
+"engine encounters a service task configured for external processing, it "
+"creates an external task instance and adds it to the list of external "
+"tasks. The task instance receives a topic that identifies the nature of "
+"the task to be performed."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:24
-msgid "**External Worker:** Получение и блокировка внешних задач"
-msgstr "**External Worker:** Fetching and locking external tasks"
+msgid ""
+"**External Worker: получение и блокировка внешних задач.** В какой-то "
+"момент в будущем внешний обработчик может получить и заблокировать "
+"задания для определенного набора топиков. Чтобы предотвратить "
+"одновременное получение одной задачи несколькими обработчиками, задача "
+"имеет timestamp-based блокировку, которая устанавливается при получении "
+"задачи. Только когда блокировка истекает, другой обработчик может снова "
+"получить задание."
+msgstr ""
+"**External Worker: fetching and locking external tasks.** At some point "
+"in the future, an external worker can fetch and lock tasks for a specific"
+" set of topics. To prevent multiple workers from fetching the same task "
+"simultaneously, the task has a timestamp-based lock that is set when the "
+"task is fetched. Only when the lock expires can another worker fetch the "
+"task again."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:25
-msgid "**External Worker & Process Engine:** Завершение экземпляра внешней задачи"
-msgstr "**External Worker & Process Engine:** Completing an external task instance"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:27
 msgid ""
-"Когда движок процесса сталкивается с сервисной задачей, которая настроена"
-" на внешнюю обработку, он создает экземпляр внешней задачи и добавляет "
-"его в список внешних задач **(шаг 1)**. Экземпляр задачи получает топик, "
-"который идентифицирует характер задачи, которую необходимо выполнить. В "
-"какой-то момент в будущем внешний обработчик может получить и "
-"заблокировать задания для определенного набора топиков **(шаг 2)**. Чтобы"
-" предотвратить одновременное получение одной задачи несколькими "
-"обработчиками, задача имеет timestamp-based блокировку, которая "
-"устанавливается при получении задачи. Только когда блокировка истекает, "
-"другой обработчик может снова получить задание. Когда внешний обработчик "
-"выполнил требуемую задачу, он может подать сигнал движку процесса "
-"продолжить выполнение процесса после выполнения сервисной задачи **(шаг "
-"3)**."
+"**External Worker & Process Engine: завершение экземпляра внешней "
+"задачи.** Когда внешний обработчик выполнил требуемую задачу, он может "
+"подать сигнал движку процесса продолжить выполнение процесса после "
+"выполнения сервисной задачи."
 msgstr ""
-"When the process engine encounters a service task configured for external"
-" processing, it creates an external task instance and adds it to the list"
-" of external tasks **(step 1)**. The task instance receives a topic that "
-"identifies the nature of the task to be performed. At some point in the "
-"future, an external worker can fetch and lock tasks for a specific set of"
-" topics **(step 2)**. To prevent multiple workers from fetching the same "
-"task simultaneously, the task has a timestamp-based lock that is set when"
-" the task is fetched. Only when the lock expires can another worker fetch"
-" the task again. When the external worker has completed the required "
-"task, it can signal the process engine to continue process execution "
-"after the service task **(step 3)**."
+"**External Worker & Process Engine: completing an external task "
+"instance.** When the external worker has completed the required task, it"
+" can signal the process engine to continue process execution after the "
+"service task."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:38
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:28
 msgid "**Аналогия с пользовательской задачей**"
 msgstr "**Analogy with User Tasks**"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:40
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:30
 msgid ""
 "Внешние задачи концептуально очень похожи на пользовательские задачи. "
 "Когда вы впервые пытаетесь понять шаблон внешней задачи, может быть "
@@ -122,7 +125,7 @@ msgstr ""
 "first try to understand the external task pattern, it can be helpful to "
 "think of it by analogy with user tasks:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:42
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:32
 msgid ""
 "Пользовательские задачи создаются движком процесса и добавляются в список"
 " задач. Затем движок процесса ждет, пока пользователь-человек запросит "
@@ -132,7 +135,7 @@ msgstr ""
 "The process engine then waits for a human user to request the list, claim"
 " the task, and then complete it."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:44
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:34
 msgid ""
 "Внешние задачи аналогичны: Внешняя задача создается, а затем добавляется "
 "в топик. Затем внешнее приложение запрашивает топик и блокирует задачу. "
@@ -143,7 +146,7 @@ msgstr ""
 "task. After locking the task, the application can work on it and complete"
 " it."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:46
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:36
 msgid ""
 "Суть этого паттерна заключается в том, что объекты, выполняющие "
 "фактическую работу, не зависят от движка процесса и получают задания для "
@@ -155,81 +158,104 @@ msgstr ""
 "processing by polling the process engine API. This provides the following"
 " advantages:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:50
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:46
+msgid "Преимущество"
+msgstr "Advantage"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:47
+msgid "Описание"
+msgstr "Description"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:48
+msgid "**Crossing System Boundaries**"
+msgstr "**Crossing System Boundaries**"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:49
 msgid ""
-"1. **Crossing System Boundaries:** Внешний обработчик не обязательно "
-"должен работать в том же Java-процессе, на той же машине, в том же "
-"кластере или даже на том же континенте, что и движок процесса. Все, что "
-"требуется - доступ к API движка процесса (через REST или Java). Благодаря"
-" polling-pattern, обработчику не нужно предоставлять какой-либо интерфейс"
-" для доступа к движку процесса."
+"Внешний обработчик не обязательно должен работать в том же Java-процессе,"
+" на той же машине, в том же кластере или даже на том же континенте, что и"
+" движок процесса. Все, что требуется — доступ к API движка процесса "
+"(через REST или Java). Благодаря polling-pattern, обработчику не нужно "
+"предоставлять какой-либо интерфейс для доступа к движку процесса."
 msgstr ""
-"1. **Crossing System Boundaries:** An external worker does not "
-"necessarily have to run in the same Java process, on the same machine, in"
-" the same cluster, or even on the same continent as the process engine. "
-"All that is required is access to the process engine API (via REST or "
-"Java). Thanks to the polling pattern, the worker does not need to provide"
-" any interface for the process engine to access."
+"An external worker does not necessarily have to run in the same Java "
+"process, on the same machine, in the same cluster, or even on the same "
+"continent as the process engine. All that is required is access to the "
+"process engine API (via REST or Java). Thanks to the polling pattern, the"
+" worker does not need to provide any interface for the process engine to "
+"access."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:50
+msgid "**Crossing Technology Boundaries**"
+msgstr "**Crossing Technology Boundaries**"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:51
+msgid ""
+"Внешний обработчик не обязательно должен быть реализован на Java. Вместо "
+"этого можно использовать любую технологию, которая наиболее подходит для "
+"выполнения необходимой задачи и может быть использована для доступа к API"
+" движка процесса (через REST или Java)."
+msgstr ""
+"An external worker does not necessarily have to be implemented in Java. "
+"Instead, any technology that is most suitable for performing the required"
+" task and can be used to access the process engine API (via REST or "
+"Java) can be used."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:52
+msgid "**Specialized Workers**"
+msgstr "**Specialized Workers**"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:53
+msgid ""
+"Внешний обработчик не обязательно должен быть приложением общего "
+"назначения. Каждый экземпляр внешнего обработчика получает имя топика, "
+"определяющее характер выполняемого задания. Обработчики могут опрашивать "
+"задания только для тех топиков, над которыми они могут работать."
+msgstr ""
+"An external worker does not necessarily have to be a general-purpose "
+"application. Each external worker instance receives a topic name that "
+"defines the nature of the job to be performed. Workers can poll for jobs "
+"only for those topics they can work on."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:54
+msgid "**Fine-Grained Scaling**"
+msgstr "**Fine-Grained Scaling**"
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:55
 msgid ""
-"1. **Crossing Technology Boundaries:** Внешний обработчик не обязательно "
-"должен быть реализован на Java. Вместо этого можно использовать любую "
-"технологию, которая наиболее подходит для выполнения необходимой задачи и"
-" может быть использована для доступа к API движка процесса (через REST "
-"или Java)."
+"При высокой нагрузке, сосредоточенной на обработке сервисных задач, "
+"количество внешних обработчиков для соответствующих топиков может быть "
+"масштабировано независимо от движка процесса."
 msgstr ""
-"2. **Crossing Technology Boundaries:** An external worker does not "
-"necessarily have to be implemented in Java. Instead, any technology that "
-"is most suitable for performing the required task and can be used to "
-"access the process engine API (via REST or Java) can be used."
+"Under high load concentrated on processing service tasks, the number of "
+"external workers for the corresponding topics can be scaled independently"
+" of the process engine."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:59
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:56
+msgid "**Independent Maintenance**"
+msgstr "**Independent Maintenance**"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:57
 msgid ""
-"1. **Specialized Workers:** Внешний обработчик не обязательно должен быть"
-" приложением общего назначения. Каждый экземпляр внешнего обработчика "
-"получает имя топика, определяющее характер выполняемого задания. "
-"Обработчики могут опрашивать задания только для тех топиков, над которыми"
-" они могут работать."
+"Обработчики можно разворачивать независимо от движка процесса без "
+"нарушения работы. Например, если обработчик для определенного топика "
+"имеет простой (например, из-за обновления), это не оказывает немедленного"
+" воздействия на движок процесса. Выполнение внешних заданий для таких "
+"обработчиков происходит плавно: они сохраняются в списке внешних задач до"
+" тех пор, пока внешний обработчик не возобновит работу."
 msgstr ""
-"3. **Specialized Workers:** An external worker does not necessarily have "
-"to be a general-purpose application. Each external worker instance "
-"receives a topic name that defines the nature of the job to be performed."
-" Workers can poll for jobs only for those topics they can work on."
+"Workers can be deployed independently of the process engine without "
+"disruption. For example, if a worker for a specific topic is down (e.g.,"
+" due to an update), this does not have an immediate impact on the "
+"process engine. Execution of external tasks for such workers proceeds "
+"smoothly: they remain in the list of external tasks until the external "
+"worker resumes operation."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:63
-msgid ""
-"1. **Fine-Grained Scaling:** При высокой нагрузке, сосредоточенной на "
-"обработке сервисных задач, количество внешних обработчиков для "
-"соответствующих топиков может быть масштабировано независимо от движка "
-"процесса."
-msgstr ""
-"4. **Fine-Grained Scaling:** Under high load concentrated on processing "
-"service tasks, the number of external workers for the corresponding "
-"topics can be scaled independently of the process engine."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:66
-msgid ""
-"1. **Independent Maintenance:** Обработчики можно разворачивать "
-"независимо от движка процесса без нарушения работы. Например, если "
-"обработчик для определенного топика имеет простой (например, из-за "
-"обновления), это не оказывает немедленного воздействия на движок "
-"процесса. Выполнение внешних заданий для таких рабочих происходит плавно:"
-" Они сохраняются в списке внешних задач до тех пор, пока внешний "
-"обработчик не возобновит работу."
-msgstr ""
-"5. **Independent Maintenance:** Workers can be deployed independently of "
-"the process engine without disruption. For example, if a worker for a "
-"specific topic is down (e.g., due to an update), this does not have an "
-"immediate impact on the process engine. Execution of external tasks for "
-"such workers proceeds smoothly: They remain in the list of external tasks"
-" until the external worker resumes operation."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:72
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:60
 msgid "Spring Boot Starter для клиента внешних задач"
 msgstr "Spring Boot Starter for External Task Client"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:74
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:62
 msgid ""
 "Ecos Spring Boot Starter External Task Client позволяет легко добавить "
 "обработчика для внешних задач в Spring Boot приложение. Для этого "
@@ -239,7 +265,7 @@ msgstr ""
 "worker for external tasks to a Spring Boot application. To do this, you "
 "need to add the dependency:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:86
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:74
 msgid ""
 "В текущей реализации starter`a, spring boot приложение должно находиться "
 "в одном контуре с Citeck."
@@ -247,7 +273,7 @@ msgstr ""
 "In the current implementation of the starter, the Spring Boot application"
 " must be in the same environment as Citeck."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:88
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:76
 msgid ""
 "Для использования обработчиков из внешних контуров, можно воспользоваться"
 " стандартными `клиентами <https://docs.camunda.org/manual/7.19/user-guide"
@@ -256,11 +282,11 @@ msgstr ""
 "To use workers from external environments, you can use standard `clients "
 "<https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:91
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:79
 msgid "Подписка на топики"
 msgstr "Subscribing to Topics"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:93
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:81
 msgid ""
 "Интерфейс, позволяющий реализовать пользовательскую бизнес-логику и "
 "взаимодействовать с Engine, называется `ExternalTaskHandler`. Подписка "
@@ -271,7 +297,7 @@ msgstr ""
 "subscription is identified by a topic name and configured with a "
 "reference to a `ExternalTaskHandler` bean."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:96
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:84
 msgid ""
 "Вы можете подписать клиента на имя топика `processPayment`, определив "
 "bean с возвращающим типом `ExternalTaskHandler` и добавив аннотацию на "
@@ -281,24 +307,29 @@ msgstr ""
 "defining a bean with the return type `ExternalTaskHandler` and adding an "
 "annotation to this bean:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:102
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:90
 msgid "Для аннотации требуется как минимум имя топика."
 msgstr "The annotation requires at least a topic name."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:104
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:92
 msgid ""
 "Для более подвинутой конфигурации можно сослаться на имя топика в файле "
-"конфигурации spring-boot, например application.yml и применить настройки:"
+"конфигурации spring-boot, например application.yml, либо определить "
+"атрибуты конфигурации через аннотацию:"
 msgstr ""
-"The annotation requires at least a topic name. However, you can apply "
-"more configuration parameters, either by referencing the topic name in "
-"the spring-boot configuration file, such as application.yml:"
+"For more advanced configuration, you can reference the topic name in a "
+"spring-boot configuration file, such as application.yml, or define "
+"configuration attributes through the annotation:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:116
-msgid "Или определить атрибуты конфигурации через аннотацию:"
-msgstr "Or by defining configuration attributes through the annotation:"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
+msgid "Через application.yml"
+msgstr "Via application.yml"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:127
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
+msgid "Через атрибуты аннотации"
+msgstr "Via Annotation Attributes"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:118
 msgid ""
 "Полный список атрибутов можно найти в `Javadocs. "
 "<https://docs.camunda.org/javadoc/camunda-bpm-"
@@ -308,7 +339,7 @@ msgstr ""
 "<https://docs.camunda.org/javadoc/camunda-bpm-"
 "platform/7.19/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:130
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:121
 msgid ""
 "Свойства, определенные в файле application.yml, всегда переопределяет "
 "соответствующий атрибут, определенный программно через аннотацию."
@@ -316,15 +347,23 @@ msgstr ""
 "Properties defined in the application.yml file always override the "
 "corresponding attribute defined programmatically through the annotation."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:133
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:124
 msgid "Пример конфигурации обработчика"
 msgstr "Handler Configuration Example"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:135
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:127
+msgid "Один обработчик"
+msgstr "Single Handler"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:129
 msgid "Вы можете сконфигурировать обработчик следующим образом:"
 msgstr "You can configure the handler as follows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:150
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:145
+msgid "Несколько обработчиков в одном классе"
+msgstr "Multiple Handlers in a Single Class"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:147
 msgid ""
 "Если вы хотите определить несколько бинов обработчиков в одном классе "
 "конфигурации, вы можете сделать это следующим образом:"
@@ -332,11 +371,11 @@ msgstr ""
 "If you want to define multiple handler beans in a single configuration "
 "class, you can do so as follows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:175
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:172
 msgid "Обработка ошибок и завершение задачи"
 msgstr "Error Handling and Task Completion"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:177
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:174
 msgid ""
 "Для манипуляции с задачей используется интерфейс `ExternalTaskService "
 "<https://docs.camunda.org/javadoc/camunda-bpm-"
@@ -346,25 +385,29 @@ msgstr ""
 "platform/7.19/org/camunda/bpm/client/task/ExternalTaskService.html>`_ "
 "interface is used to manipulate the task."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:179
-msgid "Для успешного выполнения задачи необходимо вызвать метод `complete`:"
-msgstr "To successfully complete a task, you need to call the `complete` method:"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:194
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:176
 msgid ""
-"Но happy path не всегда возможен, правильная обработка ошибок внешних "
+"Для успешного выполнения задачи необходимо вызвать метод `complete` (как "
+"в примере выше):"
+msgstr ""
+"To successfully complete a task, you need to call the `complete` method "
+"(as shown in the example above):"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:182
+msgid ""
+"Но `happy path` не всегда возможен, правильная обработка ошибок внешних "
 "задач очень важна для обеспечения надежности и стабильности выполнения "
 "процессов."
 msgstr ""
-"But the happy path is not always possible; proper error handling for "
+"But the `happy path` is not always possible; proper error handling for "
 "external tasks is very important to ensure the reliability and stability "
 "of process execution."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:198
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:185
 msgid "Обработка бизнес-ошибок"
 msgstr "Business Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:200
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:187
 msgid ""
 "В процессе выполнения внешний задачи может возникнуть бизнес-ошибка, "
 "которая должна быть обработана в процессе посредством `error event`."
@@ -372,17 +415,17 @@ msgstr ""
 "During the execution of an external task, a business error may occur that"
 " should be handled in the process via an `error event`."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:202
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:189
 msgid ""
 "Для выбрасывания бизнес-ошибки необходимо использовать метод "
 "`handleBpmnError`:"
 msgstr "To throw a business error, you need to use the `handleBpmnError` method:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:218
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:205
 msgid "Обработка технических ошибок"
 msgstr "Technical Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:220
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:207
 msgid ""
 "Если в процессе обработки возникла техническая ошибка, то посредством "
 "метода `handleFailure` можно реализовать механизм повторной обработки "
@@ -391,7 +434,11 @@ msgstr ""
 "If a technical error occurs during processing, you can implement a task "
 "retry mechanism using the `handleFailure` method."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:222
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
+msgid "С аннотацией @ExternalTaskRetry"
+msgstr "With the @ExternalTaskRetry Annotation"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:213
 msgid ""
 "Для удобства можно воспользоваться аннотацией "
 "`ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
@@ -399,13 +446,19 @@ msgstr ""
 "For convenience, you can use the annotation "
 "`ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:246
-msgid ""
-"Или реализовать механизм повторной обработки задачи вручную, со своей "
-"логикой повторной обработки:"
-msgstr "Or implement a task retry mechanism manually, with your own retry logic:"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
+msgid "Вручную"
+msgstr "Manually"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:300
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:239
+msgid ""
+"Механизм повторной обработки задачи можно реализовать вручную, со своей "
+"логикой повторной обработки:"
+msgstr ""
+"You can implement the task retry mechanism manually, with your own retry"
+" logic:"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:293
 msgid ""
 "Если количество попыток обработки задачи исчерпано, то будет создан "
 "инцидент и задача помечена как `failed`, в дальнейшем требуется ручной "
@@ -415,23 +468,27 @@ msgstr ""
 "be created and the task will be marked as `failed`, requiring manual "
 "incident resolution in the administrative interface."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:303
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:296
 msgid "Комбинированная обработка ошибок"
 msgstr "Combined Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:305
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:298
 msgid ""
 "В некоторых случаях возможна ситуация, когда в процессе обработки внешней"
 " задачи может возникнуть как бизнес-ошибка, так и техническая ошибка. В "
 "таком случае возможно использовать `@ExternalTaskRetry` и "
-"`handleBpmnError` вместе:"
+"`handleBpmnError` вместе."
 msgstr ""
 "In some cases, it is possible that both a business error and a technical "
 "error may occur during the processing of an external task. In such cases,"
 " it is possible to use `@ExternalTaskRetry` and `handleBpmnError` "
-"together:"
+"together."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:330
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:302
+msgid "Автоматический retry с проверкой результата"
+msgstr "Automatic Retry with Result Verification"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:326
 msgid ""
 "В данном случае, если в процессе обработки задачи возникнет техническая "
 "ошибка, например, случился `Exception` при выполнении метода "
@@ -447,17 +504,21 @@ msgstr ""
 "successful payment processing, if the payment was declined, a business "
 "error will be thrown; otherwise, the task will be completed successfully."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:333
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:329
 msgid ""
 "Также можно реализовать кейс, когда после нескольких неудачных попыток "
 "обработки задачи из-за технической ошибки, необходимо выбросить "
-"бизнес-ошибку:"
+"бизнес-ошибку."
 msgstr ""
 "You can also implement a case where, after several unsuccessful attempts "
 "to process a task due to a technical error, you need to throw a business "
-"error:"
+"error."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:369
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:332
+msgid "Ручной контроль порога попыток"
+msgstr "Manual Control of Retry Threshold"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:368
 msgid ""
 "При работе с внешними задачами и моделировании процесса необходимо "
 "учитывать, что внешние задачи выполняются асинхронно, а обработка ошибок "
@@ -467,7 +528,7 @@ msgstr ""
 "necessary to consider that external tasks are executed asynchronously, "
 "and error handling is the responsibility of the external worker."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:372
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:371
 msgid ""
 "Если вы используете мутацию recordsService при обработке внешней задачи, "
 "то необходимо учитывать, что код обработки внешней задачи выполняется без"
@@ -482,6 +543,10 @@ msgstr ""
 "execute the code within a transaction."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:375
+msgid "Дополнительные материалы"
+msgstr "Additional Materials"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:377
 msgid ""
 "С более подробной документацией по внешним задачам можно ознакомиться по "
 "ссылкам:"
@@ -489,32 +554,32 @@ msgstr ""
 "More detailed documentation on external tasks can be found at the "
 "following links:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:377
-msgid ""
-"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
-"engine/external-tasks/#error-event-definitions>`_"
-msgstr ""
-"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
-"engine/external-tasks/#error-event-definitions>`_"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:378
-msgid ""
-"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
-"/ext-client/>`_"
-msgstr ""
-"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
-"/ext-client/>`_"
-
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:379
 msgid ""
-"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
-"/user-guide/ext-client/spring-boot-starter/>`_"
+"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
+"engine/external-tasks/#error-event-definitions>`_"
 msgstr ""
-"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
-"/user-guide/ext-client/spring-boot-starter/>`_"
+"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
+"engine/external-tasks/#error-event-definitions>`_"
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:380
 msgid ""
+"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
+"/ext-client/>`_"
+msgstr ""
+"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
+"/ext-client/>`_"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:381
+msgid ""
+"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
+"/user-guide/ext-client/spring-boot-starter/>`_"
+msgstr ""
+"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
+"/user-guide/ext-client/spring-boot-starter/>`_"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:382
+msgid ""
 "`Error Boundary Event "
 "<https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-"
 "events/#error-boundary-event>`_"
@@ -522,4 +587,20 @@ msgstr ""
 "`Error Boundary Event "
 "<https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-"
 "events/#error-boundary-event>`_"
+
+#~ msgid "**Process Engine:** Создание экземпляра внешнего задания"
+#~ msgstr "**Process Engine:** Creating an external task instance"
+
+#~ msgid "**External Worker:** Получение и блокировка внешних задач"
+#~ msgstr "**External Worker:** Fetching and locking external tasks"
+
+#~ msgid ""
+#~ "**External Worker & Process Engine:** "
+#~ "Завершение экземпляра внешней задачи"
+#~ msgstr ""
+#~ "**External Worker & Process Engine:** "
+#~ "Completing an external task instance"
+
+#~ msgid "Или определить атрибуты конфигурации через аннотацию:"
+#~ msgstr "Or by defining configuration attributes through the annotation:"
 

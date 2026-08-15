@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -70,31 +70,31 @@ msgstr "Searching and Downloading a Document"
 
 #: ../../integration/API ECOS внешних для систем.rst:31 систем.rst:97
 #: систем.rst:151 систем.rst:203 систем.rst:244 систем.rst:293 систем.rst:357
-#: систем.rst:403 систем.rst:437
+#: систем.rst:403 систем.rst:444 систем.rst:496 систем.rst:543 систем.rst:593
 msgid "**URL**"
 msgstr "**URL**"
 
 #: ../../integration/API ECOS внешних для систем.rst:37 систем.rst:103
 #: систем.rst:157 систем.rst:209 систем.rst:250 систем.rst:299 систем.rst:363
-#: систем.rst:409 систем.rst:443
+#: систем.rst:409 систем.rst:450 систем.rst:502 систем.rst:549 систем.rst:599
 msgid "**Type**"
 msgstr "**Type**"
 
 #: ../../integration/API ECOS внешних для систем.rst:38 систем.rst:104
 #: систем.rst:158 систем.rst:251 систем.rst:300 систем.rst:364 систем.rst:410
-#: систем.rst:444
+#: систем.rst:451 систем.rst:503 систем.rst:550 систем.rst:600
 msgid "POST"
 msgstr "POST"
 
 #: ../../integration/API ECOS внешних для систем.rst:39 систем.rst:105
 #: систем.rst:159 систем.rst:252 систем.rst:301 систем.rst:365 систем.rst:411
-#: систем.rst:445
+#: систем.rst:452 систем.rst:504 систем.rst:551 систем.rst:601
 msgid "**Запрос**"
 msgstr "**Request**"
 
 #: ../../integration/API ECOS внешних для систем.rst:59 систем.rst:118
 #: систем.rst:177 систем.rst:211 систем.rst:268 систем.rst:316 систем.rst:375
-#: систем.rst:455
+#: систем.rst:462
 msgid "**Ответ**"
 msgstr "**Response**"
 
@@ -142,27 +142,35 @@ msgstr "Getting the List of Groups a User Belongs To"
 msgid "Удаление/добавление пользователя в группу"
 msgstr "Removing/Adding a User to a Group"
 
-#: ../../integration/API ECOS внешних для систем.rst:423
-msgid "**att_add_authorityGroups** – добавление в группу"
-msgstr "**att_add_authorityGroups** – adding to a group"
+#: ../../integration/API ECOS внешних для систем.rst:428 систем.rst:650
+msgid "**att_add_authorityGroups**"
+msgstr "**att_add_authorityGroups**"
 
-#: ../../integration/API ECOS внешних для систем.rst:424
-msgid "**att_rem_authorityGroups** – удаление из группы"
-msgstr "**att_rem_authorityGroups** – removing from a group"
+#: ../../integration/API ECOS внешних для систем.rst:429
+msgid "Добавление в группу"
+msgstr "Adding to a Group"
 
-#: ../../integration/API ECOS внешних для систем.rst:428
+#: ../../integration/API ECOS внешних для систем.rst:430
+msgid "**att_rem_authorityGroups**"
+msgstr "**att_rem_authorityGroups**"
+
+#: ../../integration/API ECOS внешних для систем.rst:431
+msgid "Удаление из группы"
+msgstr "Removing from a Group"
+
+#: ../../integration/API ECOS внешних для систем.rst:435
 msgid "Просмотр содержимого группы"
 msgstr "Viewing Group Contents"
 
-#: ../../integration/API ECOS внешних для систем.rst:431
+#: ../../integration/API ECOS внешних для систем.rst:438
 msgid "Просмотр пользователей в группе"
 msgstr "Viewing Users in a Group"
 
-#: ../../integration/API ECOS внешних для систем.rst:470
+#: ../../integration/API ECOS внешних для систем.rst:477
 msgid "Просмотр групп в группах"
 msgstr "Viewing Groups within Groups"
 
-#: ../../integration/API ECOS внешних для систем.rst:471
+#: ../../integration/API ECOS внешних для систем.rst:478
 msgid ""
 "Просмотр групп в группе аналогичен просмотру пользователей в группе, но "
 "**sourceId** равен **“emodel/authority-group“**."
@@ -170,7 +178,7 @@ msgstr ""
 "Viewing groups within a group is similar to viewing users in a group, but"
 " the **sourceId** is **“emodel/authority-group“**."
 
-#: ../../integration/API ECOS внешних для систем.rst:473
+#: ../../integration/API ECOS внешних для систем.rst:480
 msgid ""
 "Просмотр пользователей или групп с учетом иерархии вниз (т.е. указать "
 "корень оргструктуры или любую другую группу, но так же ищется и во всех "
@@ -182,105 +190,147 @@ msgstr ""
 "but also searching in all subgroups) - the same as viewing users in a "
 "group, but using ``authorityGroupsFull`` instead of ``authorityGroups``"
 
-#: ../../integration/API ECOS внешних для систем.rst:475
-msgid "Таблица 1 Описание полей"
-msgstr "Table 1 Field Descriptions"
+#: ../../integration/API ECOS внешних для систем.rst:483
+msgid "Изменение и добавление данных"
+msgstr "Modifying and Adding Data"
 
-#: ../../integration/API ECOS внешних для систем.rst:481
+#: ../../integration/API ECOS внешних для систем.rst:485
+msgid ""
+"Есть два варианта изменения значения ассоциации через ``mutate``: полная "
+"замена значения или добавление к уже существующему (через префикс "
+"``att_add_``)."
+msgstr ""
+"There are two ways to change an association value via ``mutate``: fully "
+"replacing the value, or adding to the existing one (using the "
+"``att_add_`` prefix)."
+
+#: ../../integration/API ECOS внешних для систем.rst
+msgid "Замена значения"
+msgstr "Replacing a Value"
+
+#: ../../integration/API ECOS внешних для систем.rst
+msgid "Добавление значения (``att_add_``)"
+msgstr "Adding a Value (``att_add_``)"
+
+#: ../../integration/API ECOS внешних для систем.rst:584
+msgid "Отправка запроса в Alfresco-FTS"
+msgstr "Sending a Request to Alfresco-FTS"
+
+#: ../../integration/API ECOS внешних для систем.rst:586
+msgid ""
+"Для отправки запроса в Alfresco (Alfresco-FTS) через Records используется"
+" тот же способ, что и для обычного поиска."
+msgstr ""
+"To send a request to Alfresco (Alfresco-FTS) via Records, the same method"
+" is used as for a regular search."
+
+#: ../../integration/API ECOS внешних для систем.rst:615
+msgid "Справочник"
+msgstr "Reference"
+
+#: ../../integration/API ECOS внешних для систем.rst:617
+msgid ""
+"Общие поля и параметры, встречающиеся в примерах запросов и ответов на "
+"этой странице."
+msgstr ""
+"Common fields and parameters found in the request and response examples "
+"on this page."
+
+#: ../../integration/API ECOS внешних для систем.rst:620
+msgid "Описание полей"
+msgstr "Field Descriptions"
+
+#: ../../integration/API ECOS внешних для систем.rst:628
 msgid "Поле"
 msgstr "Field"
 
-#: ../../integration/API ECOS внешних для систем.rst:482
+#: ../../integration/API ECOS внешних для систем.rst:629
 msgid "Наименование"
 msgstr "Name"
 
-#: ../../integration/API ECOS внешних для систем.rst:483
+#: ../../integration/API ECOS внешних для систем.rst:630
 msgid "**fullName**"
 msgstr "**fullName**"
 
-#: ../../integration/API ECOS внешних для систем.rst:484
+#: ../../integration/API ECOS внешних для систем.rst:631
 msgid "Полное наименование"
 msgstr "Full Name"
 
-#: ../../integration/API ECOS внешних для систем.rst:485
+#: ../../integration/API ECOS внешних для систем.rst:632
 msgid "**shortName**"
 msgstr "**shortName**"
 
-#: ../../integration/API ECOS внешних для систем.rst:486
+#: ../../integration/API ECOS внешних для систем.rst:633
 msgid "Сокращенное наименование"
 msgstr "Short Name"
 
-#: ../../integration/API ECOS внешних для систем.rst:487
+#: ../../integration/API ECOS внешних для систем.rst:634
 msgid "**id**"
 msgstr "**id**"
 
-#: ../../integration/API ECOS внешних для систем.rst:488
+#: ../../integration/API ECOS внешних для систем.rst:635
 msgid "ID записи"
 msgstr "Record ID"
 
-#: ../../integration/API ECOS внешних для систем.rst:489
+#: ../../integration/API ECOS внешних для систем.rst:636
 msgid "**nodeRef**"
 msgstr "**nodeRef**"
 
-#: ../../integration/API ECOS внешних для систем.rst:490
+#: ../../integration/API ECOS внешних для систем.rst:637
 msgid "Ссылка на запись в системе Citeck"
 msgstr "Link to the record in the Citeck system"
 
-#: ../../integration/API ECOS внешних для систем.rst:491
+#: ../../integration/API ECOS внешних для систем.rst:638
 msgid "**displayName**"
 msgstr "**displayName**"
 
-#: ../../integration/API ECOS внешних для систем.rst:492
+#: ../../integration/API ECOS внешних для систем.rst:639
 msgid "Отображаемое наименование"
 msgstr "Display Name"
 
-#: ../../integration/API ECOS внешних для систем.rst:493
+#: ../../integration/API ECOS внешних для систем.rst:640
 msgid "**authorityType**"
 msgstr "**authorityType**"
 
-#: ../../integration/API ECOS внешних для систем.rst:494
+#: ../../integration/API ECOS внешних для систем.rst:641
 msgid "Тип полномочий User/Group"
 msgstr "Authority Type User/Group"
 
-#: ../../integration/API ECOS внешних для систем.rst:495
+#: ../../integration/API ECOS внешних для систем.rst:642
 msgid "**groupType**"
 msgstr "**groupType**"
 
-#: ../../integration/API ECOS внешних для систем.rst:496
+#: ../../integration/API ECOS внешних для систем.rst:643
 msgid "Тип группы"
 msgstr "Group Type"
 
-#: ../../integration/API ECOS внешних для систем.rst:497
+#: ../../integration/API ECOS внешних для систем.rst:644
 msgid "**groupSubType**"
 msgstr "**groupSubType**"
 
-#: ../../integration/API ECOS внешних для систем.rst:498
+#: ../../integration/API ECOS внешних для систем.rst:645
 msgid "Тип подгруппы"
 msgstr "Subgroup Type"
 
-#: ../../integration/API ECOS внешних для систем.rst:499
+#: ../../integration/API ECOS внешних для систем.rst:646
 msgid "**userName**"
 msgstr "**userName**"
 
-#: ../../integration/API ECOS внешних для систем.rst:500
+#: ../../integration/API ECOS внешних для систем.rst:647
 msgid "Логин"
 msgstr "Login"
 
-#: ../../integration/API ECOS внешних для систем.rst:501
+#: ../../integration/API ECOS внешних для систем.rst:648
 msgid "**templateRouteSignerAssoc**"
 msgstr "**templateRouteSignerAssoc**"
 
-#: ../../integration/API ECOS внешних для систем.rst:502
+#: ../../integration/API ECOS внешних для систем.rst:649
 msgid ""
 "Этап, на который необходимо добавить пользователя/группу (указать ID "
 "пользователя/группы), если необходимо удалить с этапа указать “”"
 msgstr ""
 "The stage to which a user/group needs to be added (specify the user/group"
 " ID), if removal from the stage is needed, specify “”"
-
-#: ../../integration/API ECOS внешних для систем.rst:503
-msgid "**att_add_authorityGroups**"
-msgstr "**att_add_authorityGroups**"
 
 #: ../../integration/API ECOS внешних для систем.rst
 msgid "att_add_authorityGroups – добавление в группу"
@@ -290,72 +340,72 @@ msgstr "att_add_authorityGroups – adding to a group"
 msgid "att_rem_authorityGroups – удаление из группы"
 msgstr "att_rem_authorityGroups – removing from a group"
 
-#: ../../integration/API ECOS внешних для систем.rst:506
+#: ../../integration/API ECOS внешних для систем.rst:653
 msgid "**rtCode**"
 msgstr "**rtCode**"
 
-#: ../../integration/API ECOS внешних для систем.rst:507
+#: ../../integration/API ECOS внешних для систем.rst:654
 msgid "Код шаблона"
 msgstr "Template Code"
 
-#: ../../integration/API ECOS внешних для систем.rst:508
+#: ../../integration/API ECOS внешних для систем.rst:655
 msgid "**_state**"
 msgstr "**_state**"
 
-#: ../../integration/API ECOS внешних для систем.rst:509
+#: ../../integration/API ECOS внешних для систем.rst:656
 msgid "Тип состояния"
 msgstr "State Type"
 
-#: ../../integration/API ECOS внешних для систем.rst:510
+#: ../../integration/API ECOS внешних для систем.rst:657
 msgid "**errors**"
 msgstr "**errors**"
 
-#: ../../integration/API ECOS внешних для систем.rst:511
+#: ../../integration/API ECOS внешних для систем.rst:658
 msgid "Значение ошибки, если при запросе она произошла"
 msgstr "Error value, if an error occurred during the request"
 
-#: ../../integration/API ECOS внешних для систем.rst:512
+#: ../../integration/API ECOS внешних для систем.rst:659
 msgid "**hasMore**"
 msgstr "**hasMore**"
 
-#: ../../integration/API ECOS внешних для систем.rst:513
+#: ../../integration/API ECOS внешних для систем.rst:660
 msgid "Есть ли дальше рекорды (записи)"
 msgstr "Whether there are more records"
 
-#: ../../integration/API ECOS внешних для систем.rst:514
+#: ../../integration/API ECOS внешних для систем.rst:661
 msgid "**totalCount**"
 msgstr "**totalCount**"
 
-#: ../../integration/API ECOS внешних для систем.rst:515
+#: ../../integration/API ECOS внешних для систем.rst:662
 msgid "Общее количество найденных записей"
 msgstr "Total number of records found"
 
-#: ../../integration/API ECOS внешних для систем.rst:516
+#: ../../integration/API ECOS внешних для систем.rst:663
 msgid "**disp**"
 msgstr "**disp**"
 
-#: ../../integration/API ECOS внешних для систем.rst:517
+#: ../../integration/API ECOS внешних для систем.rst:664
 msgid "Значение для вывода"
 msgstr "Value for display"
 
-#: ../../integration/API ECOS внешних для систем.rst:518
+#: ../../integration/API ECOS внешних для систем.rst:665
 msgid "**value**"
 msgstr "**value**"
 
-#: ../../integration/API ECOS внешних для систем.rst:519 систем.rst:528
-#: систем.rst:549
+#: ../../integration/API ECOS внешних для систем.rst:666 систем.rst:678
+#: систем.rst:699
 msgid "Значение"
 msgstr "Value"
 
-#: ../../integration/API ECOS внешних для систем.rst:521
-msgid "Таблица 2 Описание параметров"
-msgstr "Table 2 Parameter Descriptions"
+#: ../../integration/API ECOS внешних для систем.rst:669
+msgid "Описание параметров"
+msgstr "Parameter Descriptions"
 
-#: ../../integration/API ECOS внешних для систем.rst:527
+#: ../../integration/API ECOS внешних для систем.rst:677
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../integration/API ECOS внешних для систем.rst:529
+#: ../../integration/API ECOS внешних для систем.rst:679
 msgid "**Блок “page”**"
 msgstr "**Block “page”**"
 
@@ -367,7 +417,7 @@ msgstr "Parameter for configuring pagination."
 msgid "Необязательный параметр."
 msgstr "Optional parameter."
 
-#: ../../integration/API ECOS внешних для систем.rst:532
+#: ../../integration/API ECOS внешних для систем.rst:682
 msgid "**Блок “sortBy”**"
 msgstr "**Block “sortBy”**"
 
@@ -375,13 +425,13 @@ msgstr "**Block “sortBy”**"
 msgid "Параметр для сортировки."
 msgstr "Parameter for sorting."
 
-#: ../../integration/API ECOS внешних для систем.rst:535
+#: ../../integration/API ECOS внешних для систем.rst:685
 msgid "**Блок “attributes“**"
 msgstr "**Block “attributes“**"
 
 #: ../../integration/API ECOS внешних для систем.rst
-msgid "Параметры (см. Таблица 1), которые необходимо получить на выходе."
-msgstr "Parameters (see Table 1) that need to be obtained in the output."
+msgid "Параметры (см. \"Описание полей\"), которые необходимо получить на выходе."
+msgstr "Parameters (see \"Field Descriptions\") that need to be obtained in the output."
 
 #: ../../integration/API ECOS внешних для систем.rst
 msgid ""
@@ -391,7 +441,7 @@ msgstr ""
 "You can omit parameters in “attributes“ or remove this block and get a "
 "list of record IDs as output."
 
-#: ../../integration/API ECOS внешних для систем.rst:539
+#: ../../integration/API ECOS внешних для систем.rst:689
 msgid "**sourceId**"
 msgstr "**sourceId**"
 
@@ -411,27 +461,27 @@ msgstr "•   reports-data"
 msgid "•   alfresco"
 msgstr "•   alfresco"
 
-#: ../../integration/API ECOS внешних для систем.rst:544
+#: ../../integration/API ECOS внешних для систем.rst:694
 msgid "**query**"
 msgstr "**query**"
 
-#: ../../integration/API ECOS внешних для систем.rst:545
+#: ../../integration/API ECOS внешних для систем.rst:695
 msgid "Необходимый predicate query для поиска записей"
 msgstr "Required predicate query for searching records"
 
-#: ../../integration/API ECOS внешних для систем.rst:546
+#: ../../integration/API ECOS внешних для систем.rst:696
 msgid "**att**"
 msgstr "**att**"
 
-#: ../../integration/API ECOS внешних для систем.rst:547
+#: ../../integration/API ECOS внешних для систем.rst:697
 msgid "Название аттрибута"
 msgstr "Attribute name"
 
-#: ../../integration/API ECOS внешних для систем.rst:548
+#: ../../integration/API ECOS внешних для систем.rst:698
 msgid "**val**"
 msgstr "**val**"
 
-#: ../../integration/API ECOS внешних для систем.rst:550
+#: ../../integration/API ECOS внешних для систем.rst:700
 msgid "**t**"
 msgstr "**t**"
 
@@ -495,15 +545,15 @@ msgstr "•   in"
 msgid "•   contains"
 msgstr "•   contains"
 
-#: ../../integration/API ECOS внешних для систем.rst:567
+#: ../../integration/API ECOS внешних для систем.rst:717
 msgid "**language**"
 msgstr "**language**"
 
-#: ../../integration/API ECOS внешних для систем.rst:568
+#: ../../integration/API ECOS внешних для систем.rst:718
 msgid "Язык запроса. На текущий момент поддерживается только predicate"
 msgstr "Query language. Currently, only predicate is supported."
 
-#: ../../integration/API ECOS внешних для систем.rst:569
+#: ../../integration/API ECOS внешних для систем.rst:719
 msgid "**consistency**"
 msgstr "**consistency**"
 
@@ -527,31 +577,18 @@ msgstr "•   DEFAULT"
 msgid "•   TRANSACTIONAL_IF_POSSIBLE"
 msgstr "•   TRANSACTIONAL_IF_POSSIBLE"
 
-#: ../../integration/API ECOS внешних для систем.rst:578
-msgid "Внесение изменений в запись"
-msgstr "Making Changes to a Record"
+#~ msgid "**att_add_authorityGroups** – добавление в группу"
+#~ msgstr "**att_add_authorityGroups** – adding to a group"
 
-#: ../../integration/API ECOS внешних для систем.rst:611
-msgid "Добавление данных"
-msgstr "Adding Data"
+#~ msgid "**att_rem_authorityGroups** – удаление из группы"
+#~ msgstr "**att_rem_authorityGroups** – removing from a group"
 
-#: ../../integration/API ECOS внешних для систем.rst:644
-msgid "Отправка запроса в Alfresco-FTS"
-msgstr "Sending a Request to Alfresco-FTS"
+#~ msgid "Внесение изменений в запись"
+#~ msgstr "Making Changes to a Record"
 
-#: ../../integration/API ECOS внешних для систем.rst:646
-msgid ""
-"Для отправки запроса в Alfresco (Alfresco-FTS) через Records в URL "
-"указывать:"
-msgstr ""
-"To send a request to Alfresco (Alfresco-FTS) via Records, specify in the "
-"URL:"
+#~ msgid "**URL** - https://{{host}}/gateway/api/records/query"
+#~ msgstr "**URL** -  https://{{host}}/gateway/api/records/query"
 
-#: ../../integration/API ECOS внешних для систем.rst:648
-msgid "**URL** - https://{{host}}/gateway/api/records/query"
-msgstr "**URL** -  https://{{host}}/gateway/api/records/query"
-
-#: ../../integration/API ECOS внешних для систем.rst:650
-msgid "**body**"
-msgstr "**body**"
+#~ msgid "**body**"
+#~ msgstr "**body**"
 

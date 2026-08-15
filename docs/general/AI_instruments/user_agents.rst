@@ -18,6 +18,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 25 20 15 40
+   :class: tight-table
 
    * - Поле
      - Тип
@@ -110,6 +111,7 @@ REST API
 .. list-table::
    :header-rows: 1
    :widths: 10 45 45
+   :class: tight-table
 
    * - Метод
      - URL
@@ -145,6 +147,7 @@ REST API
 .. list-table::
    :header-rows: 1
    :widths: 32 10 58
+   :class: tight-table
 
    * - Инструмент
      - Автономный
@@ -231,6 +234,7 @@ REST API
 .. list-table::
    :header-rows: 1
    :widths: 32 10 58
+   :class: tight-table
 
    * - Инструмент
      - Автономный
@@ -287,6 +291,7 @@ REST API
 .. list-table::
    :header-rows: 1
    :widths: 22 12 36 30
+   :class: tight-table
 
    * - Агент
      - Движок
@@ -359,6 +364,7 @@ Citeck-артефакты
 .. list-table::
    :header-rows: 1
    :widths: 25 75
+   :class: tight-table
 
    * - Артефакт
      - Путь
@@ -421,6 +427,7 @@ Spring DI автоматически обнаружит инструмент ч�
 .. list-table::
    :header-rows: 1
    :widths: 35 65
+   :class: tight-table
 
    * - Компонент
      - Файл

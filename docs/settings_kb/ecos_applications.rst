@@ -340,13 +340,13 @@
 
       .. image:: _static/apps/git_09.png
          :width: 300
-         :align: left
+         :align: center
 
    .. grid-item::
 
       .. image:: _static/apps/git_10.png
          :width: 300
-         :align: left
+         :align: center
 
 Действие «Зафиксировать изменения в Git»
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

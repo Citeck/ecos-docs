@@ -70,6 +70,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 28 42 30
+   :class: tight-table
 
    * - Точка
      - Когда возникает
@@ -120,6 +121,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 45 55
+   :class: tight-table
 
    * - Ограничение
      - Значение
