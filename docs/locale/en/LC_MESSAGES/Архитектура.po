@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -62,14 +62,12 @@ msgid "Компоненты системы:"
 msgstr "System components:"
 
 #: ../../Архитектура.rst:15
-#, fuzzy
 msgid ""
 "**DAO services** – сервисы работы с контентом и метаданными. В качестве "
 "источников данных могут использоваться Базы данных, 1С, SAP и другие;"
 msgstr ""
 "**DAO services** – services for working with content and metadata. Data "
-"sources can include Alfresco Content Service, databases, 1C, SAP, and "
-"others;"
+"sources can include databases, 1C, SAP, and others;"
 
 #: ../../Архитектура.rst:16
 msgid ""
@@ -242,9 +240,8 @@ msgid "**opensearch**"
 msgstr "**opensearch**"
 
 #: ../../Архитектура.rst:72
-#, fuzzy
 msgid "Система индексации контента документов."
-msgstr "Document metadata and content indexing system."
+msgstr "Document content indexing system."
 
 #: ../../Архитектура.rst:73
 msgid "**ecos-uiserv**"
@@ -288,13 +285,12 @@ msgid "**ecos-content**"
 msgstr "**ecos-content**"
 
 #: ../../Архитектура.rst:80
-#, fuzzy
 msgid ""
 "Микросервис для обеспечения хранения файлов в системе в определенное "
 "файловое хранилище (S3)."
 msgstr ""
 "Microservice for ensuring file storage in the system to a specific file "
-"store (S3/Alfresco)."
+"store (S3)."
 
 #: ../../Архитектура.rst:81
 msgid "**zookeeper**"
@@ -325,7 +321,6 @@ msgid "Основная используемая реляционная база
 msgstr "The primary relational database used is **PostgreSQL**."
 
 #: ../../Архитектура.rst:90
-#, fuzzy
 msgid ""
 "Хранение метаданных поддерживается в любой системе через адаптер (record "
 "source). Существующие адаптеры: **PostgreSQL, Oracle DB, MS SQL, Mongo "
@@ -333,28 +328,25 @@ msgid ""
 msgstr ""
 "Metadata storage is supported in any system via an adapter (record "
 "source). Existing adapters: **PostgreSQL, Oracle DB, MS SQL, Mongo DB, "
-"Alfresco ECM, SAP HANA.**"
+"SAP HANA.**"
 
 #: ../../Архитектура.rst:91
-#, fuzzy
 msgid ""
 "Для хранения документов может быть использована БД **PostgreSQL, S3** "
 "-совместимое хранилище или внешняя ECM система через адаптер (например, "
 "разработан адаптер к системе OpenText)."
 msgstr ""
-"For document storage, **PostgreSQL, Alfresco ECM**, an **S3**-compatible "
+"For document storage, the **PostgreSQL** database, an **S3**-compatible "
 "storage, or an external ECM system via an adapter can be used (for "
 "example, an adapter to OpenText has been developed)."
 
 #: ../../Архитектура.rst:92
-#, fuzzy
 msgid ""
 "Помимо баз данных используется также прямая запись в файловую систему для"
 " приложений **Zookeeper, Rabbit MQ и OpenSearch**."
 msgstr ""
 "In addition to databases, direct filesystem writes are also used for "
-"**Alfresco (Content Store), Zookeeper, Rabbit MQ, and Solr** "
-"applications."
+"**Zookeeper, Rabbit MQ, and OpenSearch** applications."
 
 #: ../../Архитектура.rst:96
 msgid "Зависимости компонентов"
@@ -445,7 +437,6 @@ msgstr ""
 "execution."
 
 #: ../../Архитектура.rst:119
-#, fuzzy
 msgid ""
 "2. Почти все микросервисы работают с **Rabbit MQ** (события и команды) и "
 "с **Zookeeper** (события, конфигурация Citeck, реестры типов, аспектов, "
@@ -472,7 +463,7 @@ msgstr ""
 "other microservices for authentication and authorization; 5. **ecos-"
 "integrations** depends on the external systems with which integration is "
 "configured. 6. **ecos-content** depends on the content storage location "
-"(Alfresco or S3). 7. **Solr** depends on data sources for content and "
+"(S3). 7. **OpenSearch** depends on data sources for content and "
 "attribute indexing."
 
 #: ../../Архитектура.rst:128
@@ -514,14 +505,13 @@ msgstr ""
 "model**)."
 
 #: ../../Архитектура.rst:141
-#, fuzzy
 msgid ""
 "Для получения IP адреса и порта целевого микросервиса **ecos-gateway** "
 "обращается в **zookeper** за нужной информацией и, получив её, отправляет"
 " запрос дальше."
 msgstr ""
 "To get the IP address and port of the target microservice, **ecos-"
-"gateway** queries **ecos-registry** for the required information and, "
+"gateway** queries **zookeeper** for the required information and, "
 "upon receiving it, forwards the request."
 
 #: ../../Архитектура.rst:144
@@ -622,15 +612,14 @@ msgstr ""
 "existing ones."
 
 #: ../../Архитектура.rst:159
-#, fuzzy
 msgid ""
 "**Поддержка объединения атрибутов из разных источников.** Например, можно"
 " написать источник данных, который часть атрибутов будет брать из внешней"
 " БД, объединяя их по идентификатору."
 msgstr ""
 "**Support for merging attributes from different sources.** For example, "
-"it is possible to write a data source that takes some attributes from "
-"Alfresco and some from an external database, merging them by identifier."
+"it is possible to write a data source that takes some of its attributes "
+"from an external database, merging them by identifier."
 
 #: ../../Архитектура.rst:162
 msgid "События"
@@ -706,12 +695,11 @@ msgid "Целью команд могут быть:"
 msgstr "Command targets can be:"
 
 #: ../../Архитектура.rst:195
-#, fuzzy
 msgid ""
 "Тип сервиса (ecos-process, ecos-uiserv и др.). Команду исполняет один из "
 "инстансов данного сервиса."
 msgstr ""
-"A service type (ecos-process, ecos-uiserv, alfresco, etc.). The command "
+"A service type (ecos-process, ecos-uiserv, etc.). The command "
 "is executed by one of the instances of that service."
 
 #: ../../Архитектура.rst:197
@@ -802,8 +790,8 @@ msgid "**Пример артефакта. Журнал форм**"
 msgstr "**Artifact example. Forms journal**"
 
 #: ../../Архитектура.rst:229
-msgid "Описание архитектуры событийно-ориентированного сервиса и бизнес-процессов"
-msgstr "Architecture Description of Event-Driven Service and Business Processes"
+msgid "Событийно-ориентированный сервис и бизнес-процессы"
+msgstr "Event-Driven Service and Business Processes"
 
 #: ../../Архитектура.rst:231
 msgid "Предъявляемые требования:"
@@ -958,16 +946,14 @@ msgstr ""
 "instances."
 
 #: ../../Архитектура.rst:282
-#, fuzzy
 msgid ""
 "При старте все приложения регистрируются в **zookeeper**, указывая при "
 "этом свой **IP**, **HOST** и **PORT**."
 msgstr ""
-"At startup, all applications register with **ecos-registry**, providing "
-"their **IP, HOST**, and **PORT**."
+"At startup, all applications register with **zookeeper**, providing "
+"their **IP**, **HOST**, and **PORT**."
 
 #: ../../Архитектура.rst:284
-#, fuzzy
 msgid ""
 "Балансировкой нагрузки занимается **ecos-gateway**. Когда приходит запрос"
 " от пользователя за некоторым ресурсом, **ecos-gateway** по информации в "
@@ -975,8 +961,8 @@ msgid ""
 "этого запрос уходит на один из экземпляров по алгоритму **round-robin**."
 msgstr ""
 "Load balancing is handled by **ecos-gateway**. When a user request for a "
-"resource arrives, **ecos-gateway** uses the information in **ecos-"
-"registry** to determine the list of instances of the required "
+"resource arrives, **ecos-gateway** uses the information in "
+"**zookeeper** to determine the list of instances of the required "
 "application. The request is then forwarded to one of the instances using "
 "the **round-robin** algorithm."
 

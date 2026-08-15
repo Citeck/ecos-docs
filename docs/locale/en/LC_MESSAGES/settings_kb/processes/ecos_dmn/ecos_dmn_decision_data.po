@@ -1,0 +1,843 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:4
+msgid "Входные и выходные данные решения"
+msgstr "Decision input and output data"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:6
+msgid ""
+"Одно и то же решение DMN может вызываться из разных мест платформы, и от "
+"вызывающей стороны зависит и то, откуда решение получает входные "
+"переменные, и то, каким должен быть его результат."
+msgstr ""
+"The same DMN decision can be called from different places in the "
+"platform, and the caller determines both where the decision gets its "
+"input variables from and what its result should look like."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:14
+msgid "Кто вызывает решение"
+msgstr "Who calls the decision"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:15
+msgid "Откуда берутся входные переменные"
+msgstr "Where input variables come from"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:16
+msgid "Какая версия решения используется"
+msgstr "Which version of the decision is used"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:17
+msgid ":ref:`Задача бизнес-правило <business_rule_task>` в процессе BPMN"
+msgstr ":ref:`Business Rule Task <business_rule_task>` in a BPMN process"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:18
+msgid "Переменные процесса"
+msgstr "Process variables"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:19
+msgid "Определяется настройкой **«Связь»** в задаче"
+msgstr "Determined by the **\"Binding\"** setting in the task"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:20
+msgid ":ref:`Динамическая роль <dmn_role>` типа данных"
+msgstr "Data type's :ref:`Dynamic role <dmn_role>`"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:21
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:24
+msgid "Свойство схемы **«Модель»**"
+msgstr "The **\"Model\"** schema property"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:22
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:25
+msgid "Всегда последняя опубликованная"
+msgstr "Always the latest published one"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:23
+msgid ":ref:`Условие применения KPI <bpmn_kpi>`"
+msgstr ":ref:`KPI application condition <bpmn_kpi>`"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:29
+msgid ""
+"Это два независимых механизма: свойство **«Модель»** не участвует в "
+"вызове из задачи бизнес-правило, а переменные процесса недоступны при "
+"вычислении динамической роли и условия KPI."
+msgstr ""
+"These are two independent mechanisms: the **\"Model\"** property is not "
+"involved in a call from a business rule task, and process variables are "
+"not available when computing a dynamic role or a KPI condition."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:31
+msgid ""
+"Поэтому решение, написанное под вызов из процесса, нельзя без переделки "
+"назначить на роль, и наоборот."
+msgstr ""
+"So a decision written for a call from a process cannot be assigned to a "
+"role without rework, and vice versa."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:34
+msgid "Переменные процесса (вызов из BPMN)"
+msgstr "Process variables (call from BPMN)"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:36
+msgid ""
+"При вызове из :ref:`задачи бизнес-правило <business_rule_task>` решение "
+"выполняется в контексте процесса, и ему доступны переменные этого "
+"процесса — в том числе ``documentRef``."
+msgstr ""
+"When called from a :ref:`business rule task <business_rule_task>`, the "
+"decision runs in the context of the process and has access to that "
+"process's variables — including ``documentRef``."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:38
+msgid ""
+"В качестве :ref:`Expression <input_variable>` входного элемента "
+"указывается имя переменной процесса. Если нужного значения в переменных "
+"нет, его либо кладут туда заранее (например, :ref:`script task "
+"<script_task>`), либо получают прямо в выражении на языке **juel**:"
+msgstr ""
+"The name of the process variable is specified as the input element's "
+":ref:`Expression <input_variable>`. If the needed value is not among the "
+"variables, it is either placed there in advance (for example, by a "
+":ref:`script task <script_task>`) or obtained directly in the expression "
+"using **juel**:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:44
+msgid "Подробнее — в описании :ref:`задачи бизнес-правило <business_rule_task>`."
+msgstr "For details, see the description of the :ref:`business rule task <business_rule_task>`."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:49
+msgid "Модель (вызов вне процесса)"
+msgstr "Model (call outside a process)"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:51
+msgid ""
+"Динамическая роль и условие применения KPI вычисляются вне "
+"бизнес-процесса: роль пересчитывается при проверке прав, назначении задач"
+" и отправке уведомлений, то есть тогда, когда никакого экземпляра "
+"процесса может и не быть. Переменных процесса в этот момент не "
+"существует, поэтому входные данные описываются на самой схеме DMN — в "
+"свойстве **«Модель»**."
+msgstr ""
+"A dynamic role and a KPI application condition are computed outside the "
+"business process: the role is recalculated when checking permissions, "
+"assigning tasks, and sending notifications — that is, at times when there"
+" may be no process instance at all. Process variables do not exist at "
+"that moment, so the input data is described directly on the DMN schema — "
+"in the **\"Model\"** property."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:53
+msgid "Модель — это набор пар **Ключ — Значение**:"
+msgstr "The model is a set of **Key — Value** pairs:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:55
+msgid ""
+"**Ключ** — имя переменной, которая будет доступна в решении. Именно его "
+"указывают в поле **Expression** входного элемента таблицы;"
+msgstr ""
+"**Key** is the name of the variable that will be available in the "
+"decision. This is what is specified in the **Expression** field of the "
+"table's input element;"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:56
+msgid ""
+"**Значение** — атрибут рекорда (документа), из которого берётся значение "
+"переменной."
+msgstr ""
+"**Value** is the attribute of the record (document) that the variable's "
+"value is taken from."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:58
+msgid ""
+"Чтобы заполнить модель, перейдите в режим **DRD** и кликните по "
+"свободному месту схемы — в панели свойств справа появится блок "
+"**«Модель»**:"
+msgstr ""
+"To fill in the model, switch to **DRD** mode and click an empty area of "
+"the schema — the **\"Model\"** block will appear in the properties panel "
+"on the right:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:64
+msgid ""
+"Значением может быть любой атрибут в синтаксисе :ref:`Records API "
+"<Records_API>`, включая :ref:`системные атрибуты <system_attributes>` и "
+"скалярные модификаторы:"
+msgstr ""
+"The value can be any attribute in :ref:`Records API <Records_API>` "
+"syntax, including :ref:`system attributes <system_attributes>` and scalar"
+" modifiers:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:72
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:95
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:143
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:167
+msgid "Значение"
+msgstr "Value"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:73
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:96
+msgid "Что попадёт в переменную"
+msgstr "What ends up in the variable"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:74
+msgid "``fio``"
+msgstr "``fio``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:75
+msgid "значение атрибута ``fio`` документа"
+msgstr "the value of the document's ``fio`` attribute"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:76
+msgid "``.disp``"
+msgstr "``.disp``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:77
+msgid "отображаемое имя документа"
+msgstr "the document's display name"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:78
+msgid "``_creator?localId``"
+msgstr "``_creator?localId``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:79
+msgid "логин автора документа"
+msgstr "the login of the document's author"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:80
+msgid "``_type?id``"
+msgstr "``_type?id``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:81
+msgid "идентификатор типа документа"
+msgstr "the document type's identifier"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:82
+msgid "``amount?num``"
+msgstr "``amount?num``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:83
+msgid "числовое значение атрибута ``amount``"
+msgstr "the numeric value of the ``amount`` attribute"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:84
+msgid "``?id``"
+msgstr "``?id``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:85
+msgid "ссылка на сам документ (RecordRef)"
+msgstr "a reference to the document itself (RecordRef)"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:87
+msgid ""
+"Если атрибут может оказаться незаполненным, задайте в модели значение по "
+"умолчанию через :ref:`пост-процессор <records_syntax>` ``!`` — тогда "
+"переменная не придёт в решение как ``null``:"
+msgstr ""
+"If an attribute may end up unfilled, set a default value in the model "
+"using the ``!`` :ref:`post-processor <records_syntax>` — then the "
+"variable will not arrive in the decision as ``null``:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:97
+msgid "``amount?num!``"
+msgstr "``amount?num!``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:98
+msgid "число, либо ``0``, если атрибут не заполнен"
+msgstr "a number, or ``0`` if the attribute is not filled in"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:99
+msgid "``_creator?localId!``"
+msgstr "``_creator?localId!``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:100
+msgid "логин, либо пустая строка"
+msgstr "a login, or an empty string"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:101
+msgid "``status?localId!'draft'``"
+msgstr "``status?localId!'draft'``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:102
+msgid "идентификатор статуса, либо константа ``draft``"
+msgstr "a status identifier, or the ``draft`` constant"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:104
+msgid ""
+"Без значения по умолчанию незаполненный атрибут приходит в решение как "
+"``null``: правила с ним просто не сработают, а выражение, вызывающее у "
+"такого значения метод (например, проверку вхождения), завершится ошибкой."
+" Для многозначных атрибутов ту же задачу решает признак ``[]``: список "
+"приходит всегда, максимум пустой."
+msgstr ""
+"Without a default value, an unfilled attribute arrives in the decision as"
+" ``null``: rules that use it simply won't fire, and an expression that "
+"calls a method on such a value (for example, a containment check) will "
+"fail with an error. For multi-valued attributes, the ``[]`` modifier "
+"solves the same problem: the list always arrives, at worst empty."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:106
+msgid ""
+"При вычислении роли атрибуты запрашиваются от имени системного "
+"пользователя, поэтому права текущего пользователя на состав роли не "
+"влияют."
+msgstr ""
+"When computing the role, attributes are requested on behalf of the system"
+" user, so the current user's permissions do not affect the role "
+"composition."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:108
+msgid ""
+"Тип входного элемента (**Type**) в таблице должен соответствовать типу "
+"загруженного атрибута: для текстовых значений — ``string``, для чисел — "
+"``integer``/``long``/``double`` и т. д."
+msgstr ""
+"The input element's type (**Type**) in the table must match the type of "
+"the loaded attribute: ``string`` for text values, "
+"``integer``/``long``/``double``, etc. for numbers."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:112
+msgid ""
+"В решении, которое вызывается вне процесса, нельзя использовать "
+"``documentRef`` и другие переменные процесса — они не определены. В "
+"зависимости от языка выражения вычисление либо завершится ошибкой "
+"(**juel**), либо молча вернёт пустой результат (**FEEL**)."
+msgstr ""
+"In a decision called outside a process, ``documentRef`` and other process"
+" variables cannot be used — they are not defined. Depending on the "
+"expression language, the evaluation will either fail with an error "
+"(**juel**) or silently return an empty result (**FEEL**)."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:114
+msgid ""
+"Если в выражении нужна ссылка на сам документ, добавьте в модель ключ со "
+"значением ``?id`` и обращайтесь к нему по имени ключа."
+msgstr ""
+"If the expression needs a reference to the document itself, add a key "
+"with the value ``?id`` to the model and refer to it by the key's name."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:119
+msgid "Многозначные атрибуты и проверка вхождения"
+msgstr "Multi-valued attributes and containment checks"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:121
+msgid ""
+"Многозначный атрибут (с ``[]`` в конце) приходит в решение списком. "
+"Типичная задача — проверить, входит ли значение в этот список: например, "
+"состоит ли автор документа в определённой группе."
+msgstr ""
+"A multi-valued attribute (with ``[]`` at the end) arrives in the decision"
+" as a list. A typical task is to check whether a value is in this list: "
+"for example, whether the document's author belongs to a particular group."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:123
+msgid ""
+"Признак ``[]`` в модели обязателен: он гарантирует, что переменная всегда"
+" будет списком (возможно, пустым). Без него при отсутствии значения "
+"придёт ``null``, и проверка в выражении завершится ошибкой."
+msgstr ""
+"The ``[]`` modifier in the model is mandatory: it guarantees that the "
+"variable will always be a list (possibly empty). Without it, ``null`` "
+"will arrive when there is no value, and the check in the expression will "
+"fail with an error."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:127
+msgid ""
+"Список нельзя проверять через ``cellInput``. Тип колонки (**Type**) "
+"применяется к результату входного выражения, а типа «список» в редакторе "
+"нет: при ``Type: string`` список превращается в строку вида "
+"``\"[GROUP_it, GROUP_finance-accounting]\"``, и проверка становится "
+"поиском подстроки. Условие ``GROUP_finance`` при этом ложно сработает на "
+"группе ``GROUP_finance-accounting``."
+msgstr ""
+"A list cannot be checked via ``cellInput``. The column type (**Type**) is"
+" applied to the result of the input expression, and there is no \"list\" "
+"type in the editor: with ``Type: string``, the list turns into a string "
+"like ``\"[GROUP_it, GROUP_finance-accounting]\"``, and the check becomes a"
+" substring search. The condition ``GROUP_finance`` will then falsely "
+"match the group ``GROUP_finance-accounting``."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:129
+msgid ""
+"Ниже — два корректных способа. Первый проще и нагляднее, второй лучше "
+"масштабируется на большое число проверок."
+msgstr ""
+"Below are two correct approaches. The first is simpler and clearer, the "
+"second scales better to a large number of checks."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:132
+msgid "Проверка в атрибуте"
+msgstr "Checking in the attribute"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:134
+msgid ""
+"Проверку можно выполнить прямо в модели и передать в решение готовый "
+"признак ``boolean``. Для групп пользователя это делает ``_has``:"
+msgstr ""
+"The check can be performed directly in the model and a ready-made "
+"``boolean`` flag passed to the decision. For a user's groups, this is "
+"done with ``_has``:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:142
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:166
+msgid "Ключ"
+msgstr "Key"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:144
+msgid "``isAccountant``"
+msgstr "``isAccountant``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:145
+msgid "``_creator.authorities._has.GROUP_finance-accounting?bool``"
+msgstr "``_creator.authorities._has.GROUP_finance-accounting?bool``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:146
+msgid "``isLawyer``"
+msgstr "``isLawyer``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:147
+msgid "``_creator.authorities._has.GROUP_lawyers?bool``"
+msgstr "``_creator.authorities._has.GROUP_lawyers?bool``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:149
+msgid ""
+"В таблице для каждой проверки заводится своя колонка: **Expression** — "
+"ключ модели, **Type** — ``boolean``, в ячейках ``true`` или ``-``. "
+"Сравнение точное, переключать язык выражений не требуется."
+msgstr ""
+"In the table, each check gets its own column: **Expression** is the model"
+" key, **Type** is ``boolean``, and the cells contain ``true`` or ``-``. "
+"The comparison is exact, and there is no need to switch the expression "
+"language."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:151
+msgid ""
+"Способ удобен, пока проверок немного: каждая добавляет колонку, и при "
+"десятке групп таблица становится слишком широкой."
+msgstr ""
+"This approach is convenient as long as there are few checks: each one "
+"adds a column, and with a dozen groups the table becomes too wide."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:154
+msgid "Проверка в ячейках правил на JUEL"
+msgstr "Checking in rule cells using JUEL"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:156
+msgid ""
+"Второй способ позволяет обойтись одной колонкой на любое число проверок. "
+"Он опирается на то, что приведение типа не меняет исходную переменную: "
+"результат входного выражения кладётся в **отдельную** переменную с именем"
+" из поля **Input Variable** (по умолчанию ``cellInput``), а переменные "
+"модели остаются доступны в ячейках в исходном виде."
+msgstr ""
+"The second approach makes it possible to use a single column for any "
+"number of checks. It relies on the fact that type coercion does not "
+"change the original variable: the result of the input expression is "
+"placed into a **separate** variable named after the **Input Variable** "
+"field (``cellInput`` by default), while the model's variables remain "
+"available in the cells in their original form."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:158
+msgid "Модель:"
+msgstr "Model:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:168
+msgid "``creatorAuthorities``"
+msgstr "``creatorAuthorities``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:169
+msgid "``_creator.authorities.list[]?str``"
+msgstr "``_creator.authorities.list[]?str``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:171
+msgid ""
+"В шапке колонки указывается **Expression** = ``creatorAuthorities``, "
+"**Type** оставляется ``string``. Выражение шапки при этом вычисляется как"
+" обычно, но его результат (``cellInput``) в ячейках не используется — "
+"колонке он нужен только как заголовок."
+msgstr ""
+"The column header specifies **Expression** = ``creatorAuthorities``, and "
+"**Type** is left as ``string``. The header expression is evaluated as "
+"usual, but its result (``cellInput``) is not used in the cells — the "
+"column only needs it as a header."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:173
+msgid ""
+"В ячейках правил обращение идёт напрямую к переменной модели, а не к "
+"``cellInput``:"
+msgstr ""
+"In the rule cells, the reference is made directly to the model variable, "
+"not to ``cellInput``:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:181
+msgid ""
+"Каждой такой ячейке нужно задать язык выражений **JUEL**: язык по "
+"умолчанию для входных ячеек — FEEL, где проверки вхождения нет. Язык "
+"задаётся не в шапке колонки, а на самой ячейке: кликните по ячейке правой"
+" кнопкой мыши, выберите **Change Cell Expression Language** и укажите "
+"**JUEL**. Настройка сохраняется для каждой ячейки отдельно."
+msgstr ""
+"Each such cell must be set to the **JUEL** expression language: the "
+"default language for input cells is FEEL, which has no containment check."
+" The language is set not in the column header but on the cell itself: "
+"right-click the cell, choose **Change Cell Expression Language**, and "
+"select **JUEL**. The setting is saved separately for each cell."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:185
+msgid ""
+"Имя в поле **Input Variable** не должно совпадать ни с одним ключом "
+"модели. При совпадении значение из колонки перекроет переменную модели, и"
+" в ячейке окажется строка вместо списка. По умолчанию используется "
+"``cellInput``, и менять его не нужно."
+msgstr ""
+"The name in the **Input Variable** field must not match any model key. If"
+" it does, the value from the column will override the model variable, "
+"and the cell will end up with a string instead of a list. ``cellInput`` "
+"is used by default, and there is no need to change it."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:187
+msgid ""
+"В выходных ячейках ``cellInput`` недоступен: выходы вычисляются на общем "
+"контексте переменных, без слоя со значением колонки. Переменные модели в "
+"них доступны."
+msgstr ""
+"``cellInput`` is not available in output cells: outputs are evaluated in "
+"the common variable context, without the layer holding the column's "
+"value. Model variables are available in them."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:189
+msgid ""
+"В ячейке доступна вся булева логика языка выражений — отрицание, И, ИЛИ, "
+"сравнения:"
+msgstr ""
+"The full boolean logic of the expression language is available in the "
+"cell — negation, AND, OR, comparisons:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:197
+msgid "Операция"
+msgstr "Operation"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:198
+msgid "Формы записи"
+msgstr "Notation forms"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:199
+msgid "НЕ"
+msgstr "NOT"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:200
+msgid "``!``, ``not``"
+msgstr "``!``, ``not``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:201
+msgid "И"
+msgstr "AND"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:202
+msgid "``&&``, ``and``"
+msgstr "``&&``, ``and``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:203
+msgid "ИЛИ"
+msgstr "OR"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:204
+msgid "``||``, ``or``"
+msgstr "``||``, ``or``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:205
+msgid "Равенство"
+msgstr "Equality"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:206
+msgid "``==`` (``eq``), ``!=`` (``ne``)"
+msgstr "``==`` (``eq``), ``!=`` (``ne``)"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:207
+msgid "Сравнение"
+msgstr "Comparison"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:208
+msgid "``<`` (``lt``), ``>`` (``gt``), ``<=`` (``le``), ``>=`` (``ge``)"
+msgstr "``<`` (``lt``), ``>`` (``gt``), ``<=`` (``le``), ``>=`` (``ge``)"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:209
+msgid "Проверка на пустоту"
+msgstr "Emptiness check"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:210
+msgid "``empty``"
+msgstr "``empty``"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:212
+msgid "Например:"
+msgstr "For example:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:220
+msgid "Правило считается сработавшим, если выражение вернуло ``true``."
+msgstr "A rule is considered satisfied if the expression returned ``true``."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:224
+msgid ""
+"Условия с отрицанием («не состоит в группе») истинны для большинства "
+"документов, поэтому правила начинают пересекаться. При :ref:`политике "
+"выбора <dmn_hit_policy>` **Unique** одновременное срабатывание нескольких"
+" правил приводит к ошибке — используйте **First** или **Collect**."
+msgstr ""
+"Conditions with negation (\"not in the group\") are true for most "
+"documents, so rules start to overlap. With the **Unique** :ref:`hit policy"
+" <dmn_hit_policy>`, multiple rules firing at once results in an error — "
+"use **First** or **Collect** instead."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:226
+msgid ""
+"Логические операции не защищают от отсутствующего в модели ключа: "
+"конструкция вида ``!empty creatorAuthorities && "
+"creatorAuthorities.contains(...)`` не поможет, потому что неизвестное имя"
+" вычисляется уже в первом операнде. От пустого значения такая защита "
+"работает — операнды вычисляются слева направо, и до вызова метода дело не"
+" доходит. От пустого значения защищает ``[]`` в атрибуте модели: "
+"переменная всегда существует, и в худшем случае это пустой список, на "
+"котором проверка вернёт ``false``."
+msgstr ""
+"Logical operations do not protect against a key missing from the model: a"
+" construct like ``!empty creatorAuthorities && "
+"creatorAuthorities.contains(...)`` will not help, because the unknown "
+"name is already evaluated in the first operand. This kind of guard does "
+"work against an empty value — operands are evaluated left to right, so "
+"the method call is never reached. Protection against an empty value comes"
+" from ``[]`` on the model attribute: the variable always exists, and at "
+"worst it is an empty list, on which the check returns ``false``."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:228
+msgid ""
+"**Правило по умолчанию.** Чтобы правило срабатывало всегда, оставьте его "
+"входные ячейки пустыми: входная ячейка без выражения считается истинной и"
+" не вычисляется вовсе, поэтому язык выражений для неё не важен. В "
+"редакторе пустая входная ячейка отображается прочерком ``-`` независимо "
+"от выбранного для неё языка выражений. При политике выбора **First** "
+"правила проверяются в порядке следования, поэтому правило по умолчанию "
+"должно быть последним в таблице — иначе оно перехватит все остальные. Для"
+" динамической роли это удобный способ задать исполнителя по умолчанию, "
+"чтобы роль не осталась пустой, если ни одно правило не подошло."
+msgstr ""
+"**Default rule.** To make a rule always fire, leave its input cells "
+"empty: an input cell without an expression is considered true and is not "
+"evaluated at all, so its expression language does not matter. In the "
+"editor, an empty input cell is shown as a dash ``-`` regardless of the "
+"expression language selected for it. With the **First** hit policy, rules"
+" are checked in order, so the default rule must be last in the table — "
+"otherwise it will intercept all the others. For a dynamic role, this is a"
+" convenient way to set a default performer so the role does not end up "
+"empty if no rule matched."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:232
+msgid ""
+"Если входных колонок несколько, в правиле по умолчанию должны быть "
+"пустыми все входные ячейки: достаточно одной заполненной, чтобы правило "
+"перестало быть безусловным."
+msgstr ""
+"If there are several input columns, all input cells in the default rule "
+"must be empty: a single filled cell is enough for the rule to stop being "
+"unconditional."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:234
+msgid ""
+"Не используйте вместо пустой ячейки значение ``true``: в ячейке на FEEL "
+"это сравнение значения колонки с ``true``, которое на строковом входе не "
+"сработает."
+msgstr ""
+"Do not use the value ``true`` instead of an empty cell: in a FEEL cell, "
+"this is a comparison of the column's value with ``true``, which will not "
+"work on a string input."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:237
+msgid "Требования к результату"
+msgstr "Requirements for the result"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:240
+msgid "Динамическая роль"
+msgstr "Dynamic role"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:242
+msgid ""
+"Результатом должны быть имена пользователей и групп, которые войдут в "
+"роль, — строки типа ``string``:"
+msgstr ""
+"The result must be the names of the users and groups that will make up "
+"the role — strings of type ``string``:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:244
+msgid "``\"ivan.petrov\"`` — имя пользователя;"
+msgstr "``\"ivan.petrov\"`` — a username;"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:245
+msgid "``\"GROUP_administrators\"`` — группа (имя с префиксом ``GROUP_``);"
+msgstr "``\"GROUP_administrators\"`` — a group (name with the ``GROUP_`` prefix);"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:246
+msgid "``\"emodel/person@ivan.petrov\"`` — recordRef пользователя;"
+msgstr "``\"emodel/person@ivan.petrov\"`` — the user's recordRef;"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:247
+msgid "``\"emodel/authority-group@administrators\"`` — recordRef группы."
+msgstr "``\"emodel/authority-group@administrators\"`` — the group's recordRef."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:249
+msgid ""
+"Несколько участников в одной ячейке перечисляются через запятую, лишние "
+"пробелы обрезаются:"
+msgstr ""
+"Multiple participants in a single cell are listed separated by commas, "
+"and extra spaces are trimmed:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:257
+msgid ""
+"В состав роли попадают значения **всех** выходных колонок **всех** "
+"сработавших правил — они объединяются в один общий список. Лишняя "
+"выходная колонка (например, служебная пометка или комментарий) добавит в "
+"роль несуществующего участника, поэтому в решении для роли не должно быть"
+" выходов, не являющихся именами участников."
+msgstr ""
+"The role composition includes the values of **all** output columns of "
+"**all** satisfied rules — they are merged into a single combined list. An"
+" extra output column (for example, a service label or a comment) will add"
+" a nonexistent participant to the role, so a decision used for a role "
+"must not have outputs that are not participant names."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:259
+msgid ""
+"Для служебных пояснений используйте колонку **Annotations** — она в "
+"результат не входит."
+msgstr ""
+"Use the **Annotations** column for service notes — it is not included in "
+"the result."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:261
+msgid ""
+"**Output Name** значения не имеет и может быть пустым — важен только тип "
+"``string``:"
+msgstr ""
+"**Output Name** does not matter and can be left empty — only the "
+"``string`` type matters:"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:267
+msgid ""
+":ref:`Политика выбора <dmn_hit_policy>` выбирается по задаче: **Unique** "
+"допускает не более одного сработавшего правила и завершается ошибкой, "
+"если подошло несколько; **Collect** собирает все сработавшие."
+msgstr ""
+"The :ref:`hit policy <dmn_hit_policy>` is chosen based on the task: "
+"**Unique** allows at most one rule to be satisfied and fails with an "
+"error if several match; **Collect** gathers all the satisfied ones."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:269
+msgid ""
+"Состав, вычисленный решением, объединяется по **ИЛИ** с полями "
+"**«Участники роли»** и **«Атрибуты»** :ref:`роли типа данных "
+"<roles_statuses>`."
+msgstr ""
+"The composition computed by the decision is combined with **OR** with the"
+" **\"Role members\"** and **\"Attributes\"** fields of the data type's "
+":ref:`role <roles_statuses>`."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:274
+msgid "Условие применения KPI"
+msgstr "KPI application condition"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:276
+msgid ""
+"Берётся значение первой выходной колонки первого сработавшего правила и "
+"приводится к **boolean**. KPI применяется, если получено ``true``. Имя "
+"выходной переменной значения не имеет."
+msgstr ""
+"The value of the first output column of the first satisfied rule is taken"
+" and cast to **boolean**. The KPI applies if ``true`` is obtained. The "
+"name of the output variable does not matter."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:278
+msgid ""
+"Остальные сработавшие правила игнорируются независимо от :ref:`политики "
+"выбора <dmn_hit_policy>`, поэтому **Collect** здесь не даёт ожидаемого "
+"объединения — в отличие от вычисления динамической роли, где собираются "
+"все сработавшие правила."
+msgstr ""
+"The remaining satisfied rules are ignored regardless of the :ref:`hit "
+"policy <dmn_hit_policy>`, so **Collect** does not produce the expected "
+"aggregation here — unlike computing a dynamic role, where all satisfied "
+"rules are gathered."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:281
+msgid "Вызов из процесса BPMN"
+msgstr "Call from a BPMN process"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:283
+msgid ""
+"Результат решения не сохраняется в переменные процесса автоматически — в "
+"задаче бизнес-правило указываются **«Переменная результата»** и "
+"**«Сопоставление результата решения»**. См. :ref:`задачу бизнес-правило "
+"<business_rule_task>`."
+msgstr ""
+"The decision's result is not saved to process variables automatically — "
+"the business rule task specifies the **\"Result Variable\"** and "
+"**\"Decision Result Mapping\"**. See the :ref:`business rule task "
+"<business_rule_task>`."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:286
+msgid "Ограничения и производительность"
+msgstr "Limitations and performance"
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:288
+msgid ""
+"Для динамической роли и условия KPI всегда используется последняя "
+"опубликованная версия решения. Незаконченные правки, не прошедшие "
+"публикацию, в расчёт не попадают."
+msgstr ""
+"For a dynamic role and a KPI condition, the latest published version of "
+"the decision is always used. Unfinished edits that have not been "
+"published are not taken into account."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:289
+msgid ""
+"Результат вычисления кешируется в рамках одной транзакции по паре "
+"«решение — документ»: повторные обращения к роли внутри одной операции не"
+" приводят к повторному вычислению."
+msgstr ""
+"The computation result is cached within a single transaction for a "
+"decision–document pair: repeated accesses to the role within the same "
+"operation do not trigger recomputation."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:290
+msgid ""
+"Каждое вычисление роли — обращение к сервису процессов. Если состав роли "
+"определяется простым правилом (значение атрибута, фиксированный список), "
+"дешевле использовать типы динамической роли **Attribute**, **Value** или "
+"**Script**. DMN оправдан, когда логика действительно табличная и её "
+"сопровождают без участия разработчика."
+msgstr ""
+"Every role computation is a call to the process service. If the role "
+"composition is determined by a simple rule (an attribute value, a fixed "
+"list), it is cheaper to use the **Attribute**, **Value**, or **Script** "
+"dynamic role types. DMN is justified when the logic is genuinely tabular "
+"and is maintained without a developer's involvement."
+
+#: ../../settings_kb/processes/ecos_dmn/ecos_dmn_decision_data.rst:294
+msgid ":ref:`Пример использования DMN для динамической роли <dynamic_role_dmn>`"
+msgstr ":ref:`Example of using DMN for a dynamic role <dynamic_role_dmn>`"
+

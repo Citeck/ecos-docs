@@ -87,57 +87,44 @@
 
     Для отдельных разделов могут быть доступны дополнительные специальные действия, характерные для данного типа артефактов.
 
-.. grid:: 1
-   :gutter: 2
+.. list-table::
+   :align: center
+   :class: tight-table
 
-   .. grid-item-card:: Скачать в виде JSON-файла
-      :class-header: sd-font-weight-bold
+   * - .. image:: _static/admin/admin_4.png
+          :width: 25
+          :align: left
+     - Скачать в виде JSON-файла
+   * - .. image:: _static/admin/admin_5.png
+          :width: 25
+          :align: left
+     - Удалить
+   * - .. image:: _static/admin/admin_6.png
+          :width: 25
+          :align: left
 
-      .. image:: _static/admin/admin_4.png
-         :width: 25
-         :align: left
+     - | Открыть карточку журнала в соседней вкладке.
+       | Карточка представляет собой :ref:`дашборд<dashboard>`:
 
-   .. grid-item-card:: Удалить
-      :class-header: sd-font-weight-bold
+       .. image:: _static/admin/admin_7.png
+          :width: 500
+          :align: center
 
-      .. image:: _static/admin/admin_5.png
-         :width: 25
-         :align: left
+   * - .. image:: _static/admin/admin_8.png
+          :width: 25
+          :align: left
+     - Открыть на редактирование
+   * - .. image:: _static/admin/admin_9.png
+          :width: 25
+          :align: left
 
-   .. grid-item-card:: Открыть карточку журнала в соседней вкладке
-      :class-header: sd-font-weight-bold
+     - Редактировать JSON-файл
 
-      .. image:: _static/admin/admin_6.png
-         :width: 25
-         :align: left
+       .. image:: _static/admin/admin_11.png
+          :width: 500
+          :align: center
 
-      Карточка представляет собой :ref:`дашборд<dashboard>`:
-
-      .. image:: _static/admin/admin_7.png
-         :width: 500
-         :align: center
-
-   .. grid-item-card:: Открыть на редактирование
-      :class-header: sd-font-weight-bold
-
-      .. image:: _static/admin/admin_8.png
-         :width: 25
-         :align: left
-
-   .. grid-item-card:: Редактировать JSON-файл
-      :class-header: sd-font-weight-bold
-
-      .. image:: _static/admin/admin_9.png
-         :width: 25
-         :align: left
-
-      .. image:: _static/admin/admin_11.png
-         :width: 500
-         :align: center
-
-   .. grid-item-card:: Копировать
-      :class-header: sd-font-weight-bold
-
-      .. image:: _static/admin/admin_10.png
-         :width: 25
-         :align: left
+   * - .. image:: _static/admin/admin_10.png
+          :width: 25
+          :align: left
+     - Копировать

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -33,10 +33,11 @@ msgid ""
 "записям. Они задаются в конфигурации журнала в поле **actions** и "
 "управляются через реализацию ``ActionsExecutor`` на стороне UI."
 msgstr ""
-"Group actions allow applying an action simultaneously to multiple journal "
-"records: to selected records, to filtered results, or to specific records. "
-"They are defined in the journal configuration in the **actions** field and "
-"are managed through the ``ActionsExecutor`` implementation on the UI side."
+"Group actions allow applying an action simultaneously to multiple journal"
+" records: to selected records, to filtered results, or to specific "
+"records. They are defined in the journal configuration in the **actions**"
+" field and are managed through the ``ActionsExecutor`` implementation on "
+"the UI side."
 
 #: ../../settings_kb/interface/journals/features/group_actions.rst:11
 msgid ""
@@ -51,8 +52,8 @@ msgid ""
 "Для добавления групповых действий в новом конфиге журналов следует "
 "использовать поле **actions (List<RecordRef>)**."
 msgstr ""
-"To add group actions in the new journal configuration, use the "
-"**actions (List<RecordRef>)** field."
+"To add group actions in the new journal configuration, use the **actions "
+"(List<RecordRef>)** field."
 
 #: ../../settings_kb/interface/journals/features/group_actions.rst:15
 msgid ""
@@ -63,17 +64,21 @@ msgstr ""
 "Actions from this list can be group actions, actions for filtered items, "
 "actions for specific records, or any combination of these capabilities."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:17
+#: ../../settings_kb/interface/journals/features/group_actions.rst:18
+msgid "Реализация ActionsExecutor"
+msgstr "ActionsExecutor Implementation"
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:20
 msgid ""
 "Возможность выполнения действия определяется реализацией "
 "``ActionsExecutor`` на UI и флагами в конфиге действия. Пример действия "
 "на UI:"
 msgstr ""
-"Whether an action can be executed is determined by the ``ActionsExecutor`` "
-"implementation on the UI and flags in the action configuration. Example "
-"action on UI:"
+"Whether an action can be executed is determined by the "
+"``ActionsExecutor`` implementation on the UI and flags in the action "
+"configuration. Example action on UI:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:75
+#: ../../settings_kb/interface/journals/features/group_actions.rst:78
 msgid ""
 "Executor реализует два метода: ``execForRecords`` и ``execForRecord``. "
 "Это означает, что в конфиге действия мы можем управлять данными фичами, "
@@ -83,7 +88,7 @@ msgstr ""
 "``execForRecord``. This means that in the action configuration we can "
 "control these features by enabling and disabling them."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:77
+#: ../../settings_kb/interface/journals/features/group_actions.rst:80
 msgid ""
 "Фича ``execForQuery`` будет всегда неактивна до реализации "
 "соответствующего метода."
@@ -91,7 +96,7 @@ msgstr ""
 "The ``execForQuery`` feature will always be inactive until the "
 "corresponding method is implemented."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:79
+#: ../../settings_kb/interface/journals/features/group_actions.rst:82
 msgid ""
 "По умолчанию все фичи по максимуму включены, если соответствующий "
 "Executor переопределяет нужные методы."
@@ -99,19 +104,27 @@ msgstr ""
 "By default, all features are enabled to the maximum extent if the "
 "corresponding Executor overrides the required methods."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:81
+#: ../../settings_kb/interface/journals/features/group_actions.rst:85
+msgid "Конфигурация действия"
+msgstr "Action Configuration"
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:87
 msgid "Пример конфига действия:"
 msgstr "Example action configuration:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:102
+#: ../../settings_kb/interface/journals/features/group_actions.rst:108
+msgid "Миграция со старого формата groupActions"
+msgstr "Migration from the old groupActions format"
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:110
 msgid ""
 "В DTO нового конфига журнала есть поле **groupActions**, но оно "
 "deprecated и будет удалено в дальнейшем."
 msgstr ""
-"The new journal configuration DTO has a **groupActions** field, but it is "
-"deprecated and will be removed in the future."
+"The new journal configuration DTO has a **groupActions** field, but it is"
+" deprecated and will be removed in the future."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:104
+#: ../../settings_kb/interface/journals/features/group_actions.rst:112
 msgid ""
 "Для воспроизведения такого же функционала как в groupActions следует "
 "настроить примерно следующий конфиг:"
@@ -119,10 +132,11 @@ msgstr ""
 "To replicate the same functionality as in groupActions, configure "
 "approximately the following:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:106
+#: ../../settings_kb/interface/journals/features/group_actions.rst:114
 msgid "Было:"
 msgstr "Before:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:120
+#: ../../settings_kb/interface/journals/features/group_actions.rst:128
 msgid "Стало:"
 msgstr "After:"
+

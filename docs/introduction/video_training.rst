@@ -18,7 +18,7 @@
 
 .. raw:: html
 
-    <div style="height:60vw; max-width: 1066px; max-height: 600px; min-height: 240px;">
+    <div style="height:45vw; max-width: 800px; max-height: 450px; min-height: 180px;">
     <iframe width="100%" height="100%" src="https://rutube.ru/play/embed/55bccc2113aaf86d4b7c543651ba669c/?p=zpvOETaYjLfZ-gXwCVLACg"
         title="День 1. Знакомство с системой, функциональности ECM"
         frameBorder="0" allow="clipboard-write" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
@@ -40,7 +40,7 @@
 
 .. raw:: html
 
-    <div style="height:60vw; max-width: 1066px; max-height: 600px; min-height: 240px;">
+    <div style="height:45vw; max-width: 800px; max-height: 450px; min-height: 180px;">
     <iframe width="100%" height="100%" src="https://rutube.ru/play/embed/a974f4d7ba11ff3b087bfc62565ed885/?p=KyylpxLWZZUU3zDYO5MVng"
         title="День 2. Бизнес-процесс"
         frameBorder="0" allow="clipboard-write" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
@@ -60,7 +60,7 @@
 
 .. raw:: html
 
-    <div style="height:60vw; max-width: 1066px; max-height: 600px; min-height: 240px;">
+    <div style="height:45vw; max-width: 800px; max-height: 450px; min-height: 180px;">
     <iframe width="100%" height="100%" src="https://rutube.ru/play/embed/9602954f47330297abaaf9da9219118a/?p=b4PJ2h4I5hG8QRZg1JjcfQ"
         title="День 3. Расширенный функционал"
         frameBorder="0" allow="clipboard-write" webkitAllowFullScreen mozallowfullscreen allowFullScreen>

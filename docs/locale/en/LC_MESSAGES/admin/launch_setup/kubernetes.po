@@ -5,24 +5,24 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Citeck\n"
+"Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: en <LL@li.org>\n"
 "Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../admin/launch_setup/kubernetes.rst:2
+#: ../../admin/launch_setup/kubernetes.rst:4
 msgid "Kubernetes"
 msgstr "Kubernetes"
 
-#: ../../admin/launch_setup/kubernetes.rst:4
+#: ../../admin/launch_setup/kubernetes.rst:6
 msgid ""
 "Раздел описывает развёртывание платформы Citeck в среде Kubernetes: "
 "управление ресурсами подов и контейнеров, настройку Helm chart, а также "
@@ -32,194 +32,230 @@ msgstr ""
 "environment: managing pod and container resources, configuring the Helm "
 "chart, and generating encryption keys."
 
-#: ../../admin/launch_setup/kubernetes.rst:6
+#: ../../admin/launch_setup/kubernetes.rst:8
 msgid "Содержание"
 msgstr "Contents"
 
-#: ../../admin/launch_setup/kubernetes.rst:11
+#: ../../admin/launch_setup/kubernetes.rst:13
 msgid "Менеджмент ресурсов подов и контейнеров"
 msgstr "Pod and Container Resource Management"
 
-#: ../../admin/launch_setup/kubernetes.rst:13
+#: ../../admin/launch_setup/kubernetes.rst:15
 msgid ""
-"Ниже описаны минимальные требования к ресурсам MEM/CPU для стабильной работы"
-" микросервисов в сочетании с XMX/XMS параметрами java. На данной "
+"Ниже описаны минимальные требования к ресурсам MEM/CPU для стабильной "
+"работы микросервисов в сочетании с XMX/XMS параметрами java. На данной "
 "конфигурации было произведено нагрузочное тестирование в **1000** "
 "одновременно работающих пользователей, длительностью в **1** час."
 msgstr ""
-"Below are the minimum MEM/CPU resource requirements for stable operation of "
-"microservices in combination with Java XMX/XMS parameters. This "
-"configuration was load tested with **1000** concurrent users for **1** hour."
+"Below are the minimum MEM/CPU resource requirements for stable operation "
+"of microservices in combination with Java XMX/XMS parameters. This "
+"configuration was load tested with **1000** concurrent users for **1** "
+"hour."
 
-#: ../../admin/launch_setup/kubernetes.rst:16
+#: ../../admin/launch_setup/kubernetes.rst:18
 msgid "Состав сценария и распределение нагрузки:"
 msgstr "Scenario composition and load distribution:"
 
-#: ../../admin/launch_setup/kubernetes.rst:18
+#: ../../admin/launch_setup/kubernetes.rst:20
 msgid ""
 "логин в систему и просмотр главной страницы с загрузкой меню, дашборда, "
 "информации о пользователе (20%);"
 msgstr ""
-"system login and viewing the main page with loading menu, dashboard, user "
-"information (20%);"
+"system login and viewing the main page with loading menu, dashboard, user"
+" information (20%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:19
+#: ../../admin/launch_setup/kubernetes.rst:21
 msgid "просмотр журнала контрактов (30%);"
 msgstr "viewing the contracts journal (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:20
+#: ../../admin/launch_setup/kubernetes.rst:22
 msgid ""
 "переход на страницу просмотра контракта с загрузкой всех виджетов: "
-"информация о контракте, действия, задачи, комментарии, связи, история версий"
-" и т.д. (30%);"
+"информация о контракте, действия, задачи, комментарии, связи, история "
+"версий и т.д. (30%);"
 msgstr ""
 "navigating to the contract view page with loading all widgets: contract "
-"information, actions, tasks, comments, relationships, version history, etc. "
-"(30%);"
+"information, actions, tasks, comments, relationships, version history, "
+"etc. (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:21
+#: ../../admin/launch_setup/kubernetes.rst:23
 msgid "просмотр журнала активных задач  (30%);"
 msgstr "viewing the active tasks journal (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:22
+#: ../../admin/launch_setup/kubernetes.rst:24
 msgid "создание документов (20%);"
 msgstr "creating documents (20%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:23
+#: ../../admin/launch_setup/kubernetes.rst:25
 msgid "старт процессов по документам (10%);"
 msgstr "starting processes for documents (10%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:24
+#: ../../admin/launch_setup/kubernetes.rst:26
 msgid "выполнение задач по процессу (50%)."
 msgstr "executing process tasks (50%)."
 
-#: ../../admin/launch_setup/kubernetes.rst:26
-msgid ""
-"В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них 1 запроса "
-"(0.00 %) завершилось с ошибками или превысило лимит времени выполнения. |br|"
-msgstr ""
-"During the load test, **2,043,398 requests** were generated, of which 1 "
-"request (0.00%) ended with errors or exceeded the execution time limit. |br|"
-
 #: ../../admin/launch_setup/kubernetes.rst:28
 msgid ""
-"Среднее время отклика - **6.88 миллисекунд**. |br| Медиана - 6 миллисекунд. "
-"|br| **90%** всех запросов обрабатывались менее чем за **16 миллисекунд**. "
-"|br| **95%** всех запросов обрабатывались менее чем за **25 миллисекунд**. "
-"|br| **99%** всех запросов обрабатывались менее чем за **47 миллисекунд**. "
-"|br|"
+"В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них 1 "
+"запроса (0.00 %) завершилось с ошибками или превысило лимит времени "
+"выполнения."
 msgstr ""
-"Average response time - **6.88 milliseconds**. |br| Median - 6 milliseconds."
-" |br| **90%** of all requests were processed in less than **16 "
-"milliseconds**. |br| **95%** of all requests were processed in less than "
-"**25 milliseconds**. |br| **99%** of all requests were processed in less "
-"than **47 milliseconds**. |br|"
+"During the load test, **2,043,398 requests** were generated, of which 1 "
+"request (0.00%) ended with errors or exceeded the execution time limit."
+
+#: ../../admin/launch_setup/kubernetes.rst:35
+msgid "Метрика"
+msgstr "Metric"
 
 #: ../../admin/launch_setup/kubernetes.rst:36
+msgid "Значение"
+msgstr "Value"
+
+#: ../../admin/launch_setup/kubernetes.rst:37
+msgid "Среднее время отклика"
+msgstr "Average response time"
+
+#: ../../admin/launch_setup/kubernetes.rst:38
+msgid "6.88 мс"
+msgstr "6.88 ms"
+
+#: ../../admin/launch_setup/kubernetes.rst:39
+msgid "Медиана"
+msgstr "Median"
+
+#: ../../admin/launch_setup/kubernetes.rst:40
+msgid "6 мс"
+msgstr "6 ms"
+
+#: ../../admin/launch_setup/kubernetes.rst:41
+msgid "90% запросов"
+msgstr "90% of requests"
+
+#: ../../admin/launch_setup/kubernetes.rst:42
+msgid "< 16 мс"
+msgstr "< 16 ms"
+
+#: ../../admin/launch_setup/kubernetes.rst:43
+msgid "95% запросов"
+msgstr "95% of requests"
+
+#: ../../admin/launch_setup/kubernetes.rst:44
+msgid "< 25 мс"
+msgstr "< 25 ms"
+
+#: ../../admin/launch_setup/kubernetes.rst:45
+msgid "99% запросов"
+msgstr "99% of requests"
+
+#: ../../admin/launch_setup/kubernetes.rst:46
+msgid "< 47 мс"
+msgstr "< 47 ms"
+
+#: ../../admin/launch_setup/kubernetes.rst:50
 msgid "Ecos Registry"
 msgstr "Ecos Registry"
 
-#: ../../admin/launch_setup/kubernetes.rst:52
+#: ../../admin/launch_setup/kubernetes.rst:66
 msgid "Ecos Model"
 msgstr "Ecos Model"
 
-#: ../../admin/launch_setup/kubernetes.rst:68
+#: ../../admin/launch_setup/kubernetes.rst:82
 msgid "Ecos Gateway"
 msgstr "Ecos Gateway"
 
-#: ../../admin/launch_setup/kubernetes.rst:84
+#: ../../admin/launch_setup/kubernetes.rst:98
 msgid "Ecos Apps"
 msgstr "Ecos Apps"
 
-#: ../../admin/launch_setup/kubernetes.rst:100
+#: ../../admin/launch_setup/kubernetes.rst:114
 msgid "Ecos Process"
 msgstr "Ecos Process"
 
-#: ../../admin/launch_setup/kubernetes.rst:116
+#: ../../admin/launch_setup/kubernetes.rst:130
 msgid "Ecos Uiserv"
 msgstr "Ecos Uiserv"
 
-#: ../../admin/launch_setup/kubernetes.rst:132
+#: ../../admin/launch_setup/kubernetes.rst:146
 msgid "Ecos History"
 msgstr "Ecos History"
 
-#: ../../admin/launch_setup/kubernetes.rst:148
+#: ../../admin/launch_setup/kubernetes.rst:162
 msgid "Ecos Integrations"
 msgstr "Ecos Integrations"
 
-#: ../../admin/launch_setup/kubernetes.rst:164
+#: ../../admin/launch_setup/kubernetes.rst:178
 msgid "Ecos Notifications"
 msgstr "Ecos Notifications"
 
-#: ../../admin/launch_setup/kubernetes.rst:180
+#: ../../admin/launch_setup/kubernetes.rst:194
 msgid "Ecos Transformations"
 msgstr "Ecos Transformations"
 
-#: ../../admin/launch_setup/kubernetes.rst:196
+#: ../../admin/launch_setup/kubernetes.rst:210
 msgid "Ecos Ecom"
 msgstr "Ecos Ecom"
 
-#: ../../admin/launch_setup/kubernetes.rst:212
+#: ../../admin/launch_setup/kubernetes.rst:226
 msgid "Ecos Service Desk"
 msgstr "Ecos Service Desk"
 
-#: ../../admin/launch_setup/kubernetes.rst:228
+#: ../../admin/launch_setup/kubernetes.rst:242
 msgid "Ecos Edi"
 msgstr "Ecos Edi"
 
-#: ../../admin/launch_setup/kubernetes.rst:244
+#: ../../admin/launch_setup/kubernetes.rst:258
 msgid "Ecos Content"
 msgstr "Ecos Content"
 
-#: ../../admin/launch_setup/kubernetes.rst:260
+#: ../../admin/launch_setup/kubernetes.rst:274
 msgid "Ecos Proxy"
 msgstr "Ecos Proxy"
 
-#: ../../admin/launch_setup/kubernetes.rst:274
+#: ../../admin/launch_setup/kubernetes.rst:288
 msgid "Microservices Posgtresql"
 msgstr "Microservices PostgreSQL"
 
-#: ../../admin/launch_setup/kubernetes.rst:288
+#: ../../admin/launch_setup/kubernetes.rst:302
 msgid "Mongo DB"
 msgstr "MongoDB"
 
-#: ../../admin/launch_setup/kubernetes.rst:302
+#: ../../admin/launch_setup/kubernetes.rst:316
 msgid "Zookeeper"
 msgstr "Zookeeper"
 
-#: ../../admin/launch_setup/kubernetes.rst:316
+#: ../../admin/launch_setup/kubernetes.rst:330
 msgid "RabbitMQ"
 msgstr "RabbitMQ"
 
-#: ../../admin/launch_setup/kubernetes.rst:330
+#: ../../admin/launch_setup/kubernetes.rst:344
 msgid "Ecos Indentity"
 msgstr "Ecos Identity"
 
-#: ../../admin/launch_setup/kubernetes.rst:344
+#: ../../admin/launch_setup/kubernetes.rst:358
 msgid "Onlyoffice"
 msgstr "OnlyOffice"
 
-#: ../../admin/launch_setup/kubernetes.rst:364
+#: ../../admin/launch_setup/kubernetes.rst:374
 msgid "Параметры конфигурации Helm chart"
 msgstr "Helm Chart Configuration Parameters"
 
-#: ../../admin/launch_setup/kubernetes.rst:368
+#: ../../admin/launch_setup/kubernetes.rst:378
 msgid "Доступно только в Enterprise версии."
 msgstr "Available only in the Enterprise version."
 
-#: ../../admin/launch_setup/kubernetes.rst:370
+#: ../../admin/launch_setup/kubernetes.rst:380
 msgid ""
 "Раздел описывает параметры Helm chart, используемые для тонкой настройки "
-"развёртывания платформы Citeck в Kubernetes-кластере. Параметры позволяют "
-"управлять ресурсами, репликами, переменными окружения и другими "
+"развёртывания платформы Citeck в Kubernetes-кластере. Параметры позволяют"
+" управлять ресурсами, репликами, переменными окружения и другими "
 "характеристиками микросервисов."
 msgstr ""
-"This section describes the Helm chart parameters used for fine-tuning the "
-"deployment of the Citeck platform in a Kubernetes cluster. The parameters "
-"allow you to manage resources, replicas, environment variables, and other "
-"microservice characteristics."
+"This section describes the Helm chart parameters used for fine-tuning the"
+" deployment of the Citeck platform in a Kubernetes cluster. The "
+"parameters allow you to manage resources, replicas, environment "
+"variables, and other microservice characteristics."
 
-#: ../../admin/launch_setup/kubernetes.rst:373
+#: ../../admin/launch_setup/kubernetes.rst:383
 msgid ""
 "Описание параметров представлено в `примере Helm chart "
 "<https://github.com/Citeck/helm-value-samples/blob/master/values.yaml>`_."
@@ -227,11 +263,11 @@ msgstr ""
 "Parameter description is provided in the `Helm chart example "
 "<https://github.com/Citeck/helm-value-samples/blob/master/values.yaml>`_."
 
-#: ../../admin/launch_setup/kubernetes.rst:377
+#: ../../admin/launch_setup/kubernetes.rst:387
 msgid "Общее описание"
 msgstr "General Description"
 
-#: ../../admin/launch_setup/kubernetes.rst:381
+#: ../../admin/launch_setup/kubernetes.rst:391
 msgid ""
 "``<mSRV>`` заменяется на имя микросервиса, например ``EcosApp``, "
 "``RabbitmqApp`` и т.д."
@@ -239,236 +275,412 @@ msgstr ""
 "``<mSRV>`` is replaced with the microservice name, e.g., ``EcosApp``, "
 "``RabbitmqApp``, etc."
 
-#: ../../admin/launch_setup/kubernetes.rst:384
+#: ../../admin/launch_setup/kubernetes.rst:394
 msgid "Общие параметры"
 msgstr "General Parameters"
 
-#: ../../admin/launch_setup/kubernetes.rst:386
-msgid "``.Values.FQDN``: Доменное имя платформы"
-msgstr "``.Values.FQDN``: Platform domain name"
+#: ../../admin/launch_setup/kubernetes.rst:401
+#: ../../admin/launch_setup/kubernetes.rst:418
+#: ../../admin/launch_setup/kubernetes.rst:441
+#: ../../admin/launch_setup/kubernetes.rst:462
+#: ../../admin/launch_setup/kubernetes.rst:477
+#: ../../admin/launch_setup/kubernetes.rst:494
+#: ../../admin/launch_setup/kubernetes.rst:517
+#: ../../admin/launch_setup/kubernetes.rst:544
+#: ../../admin/launch_setup/kubernetes.rst:559
+msgid "Параметр"
+msgstr "Parameter"
 
-#: ../../admin/launch_setup/kubernetes.rst:387
-msgid "``.Values.TenantID``: Уникальный идентификатор тенанта"
-msgstr "``.Values.TenantID``: Unique tenant identifier"
+#: ../../admin/launch_setup/kubernetes.rst:402
+#: ../../admin/launch_setup/kubernetes.rst:419
+#: ../../admin/launch_setup/kubernetes.rst:442
+#: ../../admin/launch_setup/kubernetes.rst:463
+#: ../../admin/launch_setup/kubernetes.rst:478
+#: ../../admin/launch_setup/kubernetes.rst:495
+#: ../../admin/launch_setup/kubernetes.rst:518
+#: ../../admin/launch_setup/kubernetes.rst:545
+#: ../../admin/launch_setup/kubernetes.rst:560
+msgid "Описание"
+msgstr "Description"
 
-#: ../../admin/launch_setup/kubernetes.rst:388
-msgid "``.Values.clusterDomain``: Домен кластера Kubernetes"
-msgstr "``.Values.clusterDomain``: Kubernetes cluster domain"
+#: ../../admin/launch_setup/kubernetes.rst:403
+msgid "``.Values.FQDN``"
+msgstr "``.Values.FQDN``"
 
-#: ../../admin/launch_setup/kubernetes.rst:391
+#: ../../admin/launch_setup/kubernetes.rst:404
+msgid "Доменное имя платформы"
+msgstr "Platform domain name"
+
+#: ../../admin/launch_setup/kubernetes.rst:405
+msgid "``.Values.TenantID``"
+msgstr "``.Values.TenantID``"
+
+#: ../../admin/launch_setup/kubernetes.rst:406
+msgid "Уникальный идентификатор тенанта"
+msgstr "Unique tenant identifier"
+
+#: ../../admin/launch_setup/kubernetes.rst:407
+msgid "``.Values.clusterDomain``"
+msgstr "``.Values.clusterDomain``"
+
+#: ../../admin/launch_setup/kubernetes.rst:408
+msgid "Домен кластера Kubernetes"
+msgstr "Kubernetes cluster domain"
+
+#: ../../admin/launch_setup/kubernetes.rst:411
 msgid "Управление микросервисами"
 msgstr "Microservice Management"
 
-#: ../../admin/launch_setup/kubernetes.rst:393
-msgid "``.Values.<mSRV>.enabled``: Включение/отключение микросервисов"
-msgstr "``.Values.<mSRV>.enabled``: Enable/disable microservices"
+#: ../../admin/launch_setup/kubernetes.rst:420
+msgid "``.Values.<mSRV>.enabled``"
+msgstr "``.Values.<mSRV>.enabled``"
 
-#: ../../admin/launch_setup/kubernetes.rst:394
-msgid "``.Values.<mSRV>.clearData``: Очистка данных при старте контейнера"
-msgstr "``.Values.<mSRV>.clearData``: Clear data on container startup"
+#: ../../admin/launch_setup/kubernetes.rst:421
+msgid "Включение/отключение микросервисов"
+msgstr "Enable/disable microservices"
 
-#: ../../admin/launch_setup/kubernetes.rst:395
-msgid "``.Values.<mSRV>.type``: Тип ingress"
-msgstr "``.Values.<mSRV>.type``: Ingress type"
+#: ../../admin/launch_setup/kubernetes.rst:422
+msgid "``.Values.<mSRV>.clearData``"
+msgstr "``.Values.<mSRV>.clearData``"
 
-#: ../../admin/launch_setup/kubernetes.rst:396
-msgid "``.Values.<mSRV>.apiVersion``: Версия API ingress"
-msgstr "``.Values.<mSRV>.apiVersion``: Ingress API version"
+#: ../../admin/launch_setup/kubernetes.rst:423
+msgid "Очистка данных при старте контейнера"
+msgstr "Clear data on container startup"
 
-#: ../../admin/launch_setup/kubernetes.rst:397
-msgid "``.Values.<mSRV>.secretName``: Используемый TLS сертификат"
-msgstr "``.Values.<mSRV>.secretName``: TLS certificate to use"
+#: ../../admin/launch_setup/kubernetes.rst:424
+msgid "``.Values.<mSRV>.type``"
+msgstr "``.Values.<mSRV>.type``"
 
-#: ../../admin/launch_setup/kubernetes.rst:398
-msgid ""
-"``.Values.<mSRV>.albIngress.enabled``: Использовать ALB ingress контроллер"
-msgstr "``.Values.<mSRV>.albIngress.enabled``: Use ALB ingress controller"
+#: ../../admin/launch_setup/kubernetes.rst:425
+msgid "Тип ingress"
+msgstr "Ingress type"
 
-#: ../../admin/launch_setup/kubernetes.rst:401
+#: ../../admin/launch_setup/kubernetes.rst:426
+msgid "``.Values.<mSRV>.apiVersion``"
+msgstr "``.Values.<mSRV>.apiVersion``"
+
+#: ../../admin/launch_setup/kubernetes.rst:427
+msgid "Версия API ingress"
+msgstr "Ingress API version"
+
+#: ../../admin/launch_setup/kubernetes.rst:428
+msgid "``.Values.<mSRV>.secretName``"
+msgstr "``.Values.<mSRV>.secretName``"
+
+#: ../../admin/launch_setup/kubernetes.rst:429
+msgid "Используемый TLS сертификат"
+msgstr "TLS certificate to use"
+
+#: ../../admin/launch_setup/kubernetes.rst:430
+msgid "``.Values.<mSRV>.albIngress.enabled``"
+msgstr "``.Values.<mSRV>.albIngress.enabled``"
+
+#: ../../admin/launch_setup/kubernetes.rst:431
+msgid "Использовать ALB ingress контроллер"
+msgstr "Use ALB ingress controller"
+
+#: ../../admin/launch_setup/kubernetes.rst:434
 msgid "Контейнеры и образы"
 msgstr "Containers and Images"
 
-#: ../../admin/launch_setup/kubernetes.rst:403
-msgid "``.Values.<mSRV>.image.registry``: Реестр образов"
-msgstr "``.Values.<mSRV>.image.registry``: Image registry"
+#: ../../admin/launch_setup/kubernetes.rst:443
+msgid "``.Values.<mSRV>.image.registry``"
+msgstr "``.Values.<mSRV>.image.registry``"
 
-#: ../../admin/launch_setup/kubernetes.rst:404
-msgid "``.Values.<mSRV>.image.repository``: Репозиторий образов"
-msgstr "``.Values.<mSRV>.image.repository``: Image repository"
+#: ../../admin/launch_setup/kubernetes.rst:444
+msgid "Реестр образов"
+msgstr "Image registry"
 
-#: ../../admin/launch_setup/kubernetes.rst:405
-msgid "``.Values.<mSRV>.image.tag``: Тег образа"
-msgstr "``.Values.<mSRV>.image.tag``: Image tag"
+#: ../../admin/launch_setup/kubernetes.rst:445
+msgid "``.Values.<mSRV>.image.repository``"
+msgstr "``.Values.<mSRV>.image.repository``"
 
-#: ../../admin/launch_setup/kubernetes.rst:406
-msgid "``.Values.<mSRV>.image.pullSecrets``: Секреты для доступа к реестру"
-msgstr "``.Values.<mSRV>.image.pullSecrets``: Secrets for registry access"
+#: ../../admin/launch_setup/kubernetes.rst:446
+msgid "Репозиторий образов"
+msgstr "Image repository"
 
-#: ../../admin/launch_setup/kubernetes.rst:407
-msgid "``.Values.<mSRV>.initContainers.image.*``: Настройки init-контейнеров"
-msgstr "``.Values.<mSRV>.initContainers.image.*``: Init-container settings"
+#: ../../admin/launch_setup/kubernetes.rst:447
+msgid "``.Values.<mSRV>.image.tag``"
+msgstr "``.Values.<mSRV>.image.tag``"
 
-#: ../../admin/launch_setup/kubernetes.rst:410
+#: ../../admin/launch_setup/kubernetes.rst:448
+msgid "Тег образа"
+msgstr "Image tag"
+
+#: ../../admin/launch_setup/kubernetes.rst:449
+msgid "``.Values.<mSRV>.image.pullSecrets``"
+msgstr "``.Values.<mSRV>.image.pullSecrets``"
+
+#: ../../admin/launch_setup/kubernetes.rst:450
+msgid "Секреты для доступа к реестру"
+msgstr "Secrets for registry access"
+
+#: ../../admin/launch_setup/kubernetes.rst:451
+msgid "``.Values.<mSRV>.initContainers.image.*``"
+msgstr "``.Values.<mSRV>.initContainers.image.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:452
+msgid "Настройки init-контейнеров"
+msgstr "Init-container settings"
+
+#: ../../admin/launch_setup/kubernetes.rst:455
 msgid "Vault и секреты"
 msgstr "Vault and Secrets"
 
-#: ../../admin/launch_setup/kubernetes.rst:412
-msgid "``.Values.<mSRV>.vault.enabled``: Включение Vault"
-msgstr "``.Values.<mSRV>.vault.enabled``: Enable Vault"
+#: ../../admin/launch_setup/kubernetes.rst:464
+msgid "``.Values.<mSRV>.vault.enabled``"
+msgstr "``.Values.<mSRV>.vault.enabled``"
 
-#: ../../admin/launch_setup/kubernetes.rst:413
+#: ../../admin/launch_setup/kubernetes.rst:465
+msgid "Включение Vault"
+msgstr "Enable Vault"
+
+#: ../../admin/launch_setup/kubernetes.rst:466
+msgid "``.Values.<mSRV>.vault.*``"
+msgstr "``.Values.<mSRV>.vault.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:467
 msgid ""
-"``.Values.<mSRV>.vault.*``: Переменные окружения и пароли для сервисов "
-"(MongoDB, PostgreSQL, Keycloak и др.)"
+"Переменные окружения и пароли для сервисов (MongoDB, PostgreSQL, Keycloak"
+" и др.)"
 msgstr ""
-"``.Values.<mSRV>.vault.*``: Environment variables and passwords for services"
-" (MongoDB, PostgreSQL, Keycloak, etc.)"
+"Environment variables and passwords for services (MongoDB, PostgreSQL, "
+"Keycloak, etc.)"
 
-#: ../../admin/launch_setup/kubernetes.rst:416
+#: ../../admin/launch_setup/kubernetes.rst:470
 msgid "Переменные окружения"
 msgstr "Environment Variables"
 
-#: ../../admin/launch_setup/kubernetes.rst:418
-msgid ""
-"``.Values.<mSRV>.environments.username/password``: Логин/пароль "
-"администратора"
-msgstr ""
-"``.Values.<mSRV>.environments.username/password``: Administrator "
-"username/password"
+#: ../../admin/launch_setup/kubernetes.rst:479
+msgid "``.Values.<mSRV>.environments.username/password``"
+msgstr "``.Values.<mSRV>.environments.username/password``"
 
-#: ../../admin/launch_setup/kubernetes.rst:419
-msgid ""
-"``.Values.<mSRV>.environments.javaOpts``: Java-опции старта микросервисов"
-msgstr ""
-"``.Values.<mSRV>.environments.javaOpts``: Java startup options for "
-"microservices"
+#: ../../admin/launch_setup/kubernetes.rst:480
+msgid "Логин/пароль администратора"
+msgstr "Administrator username/password"
 
-#: ../../admin/launch_setup/kubernetes.rst:420
-msgid ""
-"``.Values.<mSRV>.environments.*``: Специфичные переменные (Solr, Alfresco, "
-"Flowable и др.)"
-msgstr ""
-"``.Values.<mSRV>.environments.*``: Specific variables (Solr, Alfresco, "
-"Flowable, etc.)"
+#: ../../admin/launch_setup/kubernetes.rst:481
+msgid "``.Values.<mSRV>.environments.javaOpts``"
+msgstr "``.Values.<mSRV>.environments.javaOpts``"
 
-#: ../../admin/launch_setup/kubernetes.rst:423
+#: ../../admin/launch_setup/kubernetes.rst:482
+msgid "Java-опции старта микросервисов"
+msgstr "Java startup options for microservices"
+
+#: ../../admin/launch_setup/kubernetes.rst:483
+msgid "``.Values.<mSRV>.environments.*``"
+msgstr "``.Values.<mSRV>.environments.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:484
+msgid "Специфичные переменные (Solr, Alfresco, Flowable и др.)"
+msgstr "Specific variables (Solr, Alfresco, Flowable, etc.)"
+
+#: ../../admin/launch_setup/kubernetes.rst:487
 msgid "Хранилища и PVC"
 msgstr "Storage and PVCs"
 
-#: ../../admin/launch_setup/kubernetes.rst:425
-msgid "``.Values.<mSRV>.persistence.enabled``: Включение persistent-хранилища"
-msgstr "``.Values.<mSRV>.persistence.enabled``: Enable persistent storage"
+#: ../../admin/launch_setup/kubernetes.rst:496
+msgid "``.Values.<mSRV>.persistence.enabled``"
+msgstr "``.Values.<mSRV>.persistence.enabled``"
 
-#: ../../admin/launch_setup/kubernetes.rst:426
-msgid "``.Values.<mSRV>.persistence.size``: Размер PVC"
-msgstr "``.Values.<mSRV>.persistence.size``: PVC size"
+#: ../../admin/launch_setup/kubernetes.rst:497
+msgid "Включение persistent-хранилища"
+msgstr "Enable persistent storage"
 
-#: ../../admin/launch_setup/kubernetes.rst:427
-msgid "``.Values.<mSRV>.persistence.storageClass``: StorageClass PVC"
-msgstr "``.Values.<mSRV>.persistence.storageClass``: PVC StorageClass"
+#: ../../admin/launch_setup/kubernetes.rst:498
+msgid "``.Values.<mSRV>.persistence.size``"
+msgstr "``.Values.<mSRV>.persistence.size``"
 
-#: ../../admin/launch_setup/kubernetes.rst:428
-msgid "``.Values.<mSRV>.persistence.accessModes``: Режим доступа PVC"
-msgstr "``.Values.<mSRV>.persistence.accessModes``: PVC access mode"
+#: ../../admin/launch_setup/kubernetes.rst:499
+msgid "Размер PVC"
+msgstr "PVC size"
 
-#: ../../admin/launch_setup/kubernetes.rst:429
-msgid ""
-"``.Values.<mSRV>.persistence.existingClaim``: Использовать существующий PVC"
-msgstr "``.Values.<mSRV>.persistence.existingClaim``: Use an existing PVC"
+#: ../../admin/launch_setup/kubernetes.rst:500
+msgid "``.Values.<mSRV>.persistence.storageClass``"
+msgstr "``.Values.<mSRV>.persistence.storageClass``"
 
-#: ../../admin/launch_setup/kubernetes.rst:430
-msgid "``.Values.<mSRV>.persistence.backup*``: Параметры PVC для бэкапов"
-msgstr "``.Values.<mSRV>.persistence.backup*``: PVC parameters for backups"
+#: ../../admin/launch_setup/kubernetes.rst:501
+msgid "StorageClass PVC"
+msgstr "PVC StorageClass"
 
-#: ../../admin/launch_setup/kubernetes.rst:433
+#: ../../admin/launch_setup/kubernetes.rst:502
+msgid "``.Values.<mSRV>.persistence.accessModes``"
+msgstr "``.Values.<mSRV>.persistence.accessModes``"
+
+#: ../../admin/launch_setup/kubernetes.rst:503
+msgid "Режим доступа PVC"
+msgstr "PVC access mode"
+
+#: ../../admin/launch_setup/kubernetes.rst:504
+msgid "``.Values.<mSRV>.persistence.existingClaim``"
+msgstr "``.Values.<mSRV>.persistence.existingClaim``"
+
+#: ../../admin/launch_setup/kubernetes.rst:505
+msgid "Использовать существующий PVC"
+msgstr "Use an existing PVC"
+
+#: ../../admin/launch_setup/kubernetes.rst:506
+msgid "``.Values.<mSRV>.persistence.backup*``"
+msgstr "``.Values.<mSRV>.persistence.backup*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:507
+msgid "Параметры PVC для бэкапов"
+msgstr "PVC parameters for backups"
+
+#: ../../admin/launch_setup/kubernetes.rst:510
 msgid "Метрики и мониторинг"
 msgstr "Metrics and Monitoring"
 
-#: ../../admin/launch_setup/kubernetes.rst:435
-msgid "``.Values.<mSRV>.metrics.enabled``: Включение экспорта метрик"
-msgstr "``.Values.<mSRV>.metrics.enabled``: Enable metrics export"
+#: ../../admin/launch_setup/kubernetes.rst:519
+msgid "``.Values.<mSRV>.metrics.enabled``"
+msgstr "``.Values.<mSRV>.metrics.enabled``"
 
-#: ../../admin/launch_setup/kubernetes.rst:436
-msgid "``.Values.<mSRV>.metrics.config``: Конфигурация jmx-exporter"
-msgstr "``.Values.<mSRV>.metrics.config``: jmx-exporter configuration"
+#: ../../admin/launch_setup/kubernetes.rst:520
+msgid "Включение экспорта метрик"
+msgstr "Enable metrics export"
 
-#: ../../admin/launch_setup/kubernetes.rst:437
-msgid "``.Values.<mSRV>.metrics.serviceMonitor.*``: Настройки ServiceMonitor"
-msgstr "``.Values.<mSRV>.metrics.serviceMonitor.*``: ServiceMonitor settings"
+#: ../../admin/launch_setup/kubernetes.rst:521
+msgid "``.Values.<mSRV>.metrics.config``"
+msgstr "``.Values.<mSRV>.metrics.config``"
 
-#: ../../admin/launch_setup/kubernetes.rst:438
-msgid "``.Values.<mSRV>.metrics.service.ports.*``: Порты метрик"
-msgstr "``.Values.<mSRV>.metrics.service.ports.*``: Metrics ports"
+#: ../../admin/launch_setup/kubernetes.rst:522
+msgid "Конфигурация jmx-exporter"
+msgstr "jmx-exporter configuration"
 
-#: ../../admin/launch_setup/kubernetes.rst:439
-msgid ""
-"``.Values.<mSRV>.metrics.containerSecurityContext.*``: Контекст безопасности"
-" контейнера"
-msgstr ""
-"``.Values.<mSRV>.metrics.containerSecurityContext.*``: Container security "
-"context"
+#: ../../admin/launch_setup/kubernetes.rst:523
+msgid "``.Values.<mSRV>.metrics.serviceMonitor.*``"
+msgstr "``.Values.<mSRV>.metrics.serviceMonitor.*``"
 
-#: ../../admin/launch_setup/kubernetes.rst:440
-msgid "``.Values.<mSRV>.metrics.startupProbe.*``: Startup Probe"
-msgstr "``.Values.<mSRV>.metrics.startupProbe.*``: Startup Probe"
+#: ../../admin/launch_setup/kubernetes.rst:524
+msgid "Настройки ServiceMonitor"
+msgstr "ServiceMonitor settings"
 
-#: ../../admin/launch_setup/kubernetes.rst:441
-msgid "``.Values.<mSRV>.metrics.readinessProbe.*``: Readiness Probe"
-msgstr "``.Values.<mSRV>.metrics.readinessProbe.*``: Readiness Probe"
+#: ../../admin/launch_setup/kubernetes.rst:525
+msgid "``.Values.<mSRV>.metrics.service.ports.*``"
+msgstr "``.Values.<mSRV>.metrics.service.ports.*``"
 
-#: ../../admin/launch_setup/kubernetes.rst:442
-msgid "``.Values.<mSRV>.metrics.livenessProbe.*``: Liveness Probe"
-msgstr "``.Values.<mSRV>.metrics.livenessProbe.*``: Liveness Probe"
+#: ../../admin/launch_setup/kubernetes.rst:526
+msgid "Порты метрик"
+msgstr "Metrics ports"
 
-#: ../../admin/launch_setup/kubernetes.rst:445
+#: ../../admin/launch_setup/kubernetes.rst:527
+msgid "``.Values.<mSRV>.metrics.containerSecurityContext.*``"
+msgstr "``.Values.<mSRV>.metrics.containerSecurityContext.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:528
+msgid "Контекст безопасности контейнера"
+msgstr "Container security context"
+
+#: ../../admin/launch_setup/kubernetes.rst:529
+msgid "``.Values.<mSRV>.metrics.startupProbe.*``"
+msgstr "``.Values.<mSRV>.metrics.startupProbe.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:530
+msgid "Startup Probe"
+msgstr "Startup Probe"
+
+#: ../../admin/launch_setup/kubernetes.rst:531
+msgid "``.Values.<mSRV>.metrics.readinessProbe.*``"
+msgstr "``.Values.<mSRV>.metrics.readinessProbe.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:532
+msgid "Readiness Probe"
+msgstr "Readiness Probe"
+
+#: ../../admin/launch_setup/kubernetes.rst:533
+msgid "``.Values.<mSRV>.metrics.livenessProbe.*``"
+msgstr "``.Values.<mSRV>.metrics.livenessProbe.*``"
+
+#: ../../admin/launch_setup/kubernetes.rst:534
+msgid "Liveness Probe"
+msgstr "Liveness Probe"
+
+#: ../../admin/launch_setup/kubernetes.rst:537
 msgid "Ресурсы и ограничения"
 msgstr "Resources and Limits"
 
-#: ../../admin/launch_setup/kubernetes.rst:447
-msgid "``.Values.<mSRV>.resources``: CPU и память для микросервисов"
-msgstr "``.Values.<mSRV>.resources``: CPU and memory for microservices"
+#: ../../admin/launch_setup/kubernetes.rst:546
+msgid "``.Values.<mSRV>.resources``"
+msgstr "``.Values.<mSRV>.resources``"
 
-#: ../../admin/launch_setup/kubernetes.rst:448
-msgid "``.Values.<mSRV>.tolerations``: Tolerations для Pods"
-msgstr "``.Values.<mSRV>.tolerations``: Tolerations for Pods"
+#: ../../admin/launch_setup/kubernetes.rst:547
+msgid "CPU и память для микросервисов"
+msgstr "CPU and memory for microservices"
 
-#: ../../admin/launch_setup/kubernetes.rst:451
+#: ../../admin/launch_setup/kubernetes.rst:548
+msgid "``.Values.<mSRV>.tolerations``"
+msgstr "``.Values.<mSRV>.tolerations``"
+
+#: ../../admin/launch_setup/kubernetes.rst:549
+msgid "Tolerations для Pods"
+msgstr "Tolerations for Pods"
+
+#: ../../admin/launch_setup/kubernetes.rst:552
 msgid "Прочее"
 msgstr "Other"
 
-#: ../../admin/launch_setup/kubernetes.rst:453
-msgid "``.Values.<mSRV>.webapp.properties.webUrl``: URL для Spring-приложений"
-msgstr ""
-"``.Values.<mSRV>.webapp.properties.webUrl``: URL for Spring applications"
+#: ../../admin/launch_setup/kubernetes.rst:561
+msgid "``.Values.<mSRV>.webapp.properties.webUrl``"
+msgstr "``.Values.<mSRV>.webapp.properties.webUrl``"
 
-#: ../../admin/launch_setup/kubernetes.rst:454
-msgid "``.Values.<mSRV>.x509.certs``: Сертификаты (неясное назначение)"
-msgstr "``.Values.<mSRV>.x509.certs``: Certificates (unclear purpose)"
+#: ../../admin/launch_setup/kubernetes.rst:562
+msgid "URL для Spring-приложений"
+msgstr "URL for Spring applications"
 
-#: ../../admin/launch_setup/kubernetes.rst:457
+#: ../../admin/launch_setup/kubernetes.rst:563
+msgid "``.Values.<mSRV>.x509.certs``"
+msgstr "``.Values.<mSRV>.x509.certs``"
+
+#: ../../admin/launch_setup/kubernetes.rst:564
+msgid "Сертификаты (неясное назначение)"
+msgstr "Certificates (unclear purpose)"
+
+#: ../../admin/launch_setup/kubernetes.rst:567
 msgid "Генерация уникального ключа шифрования"
 msgstr "Generating a unique encryption key"
 
-#: ../../admin/launch_setup/kubernetes.rst:459
+#: ../../admin/launch_setup/kubernetes.rst:569
 msgid ""
 "При развертывании нового сервера необходимо каждый раз генерировать "
 "уникальный ключ шифрования."
 msgstr ""
-"When deploying a new server, it is necessary to generate a unique encryption"
-" key each time."
+"When deploying a new server, it is necessary to generate a unique "
+"encryption key each time."
 
-#: ../../admin/launch_setup/kubernetes.rst:460
+#: ../../admin/launch_setup/kubernetes.rst:570
 msgid "Используйте следующий код для генерации AES-ключа:"
 msgstr "Use the following code to generate an AES key:"
 
-#: ../../admin/launch_setup/kubernetes.rst:475
+#: ../../admin/launch_setup/kubernetes.rst:585
 msgid ""
-"Убедитесь, что ключ по умолчанию заменен на новый. Если этого не сделать, "
-"система выдаст предупреждение в логах."
+"Убедитесь, что ключ по умолчанию заменен на новый. Если этого не сделать,"
+" система выдаст предупреждение в логах."
 msgstr ""
-"Make sure the default key is replaced with the new one. If this is not done,"
-" the system will issue a warning in the logs."
+"Make sure the default key is replaced with the new one. If this is not "
+"done, the system will issue a warning in the logs."
 
-#: ../../admin/launch_setup/kubernetes.rst:477
+#: ../../admin/launch_setup/kubernetes.rst:587
 msgid ":ref:`Подробнее о шифровании секретов<secrets_encryption>`"
 msgstr ":ref:`More about secrets encryption<secrets_encryption>`"
+
+#~ msgid ""
+#~ "Среднее время отклика - **6.88 "
+#~ "миллисекунд**. |br| Медиана - 6 "
+#~ "миллисекунд. |br| **90%** всех запросов "
+#~ "обрабатывались менее чем за **16 "
+#~ "миллисекунд**. |br| **95%** всех запросов "
+#~ "обрабатывались менее чем за **25 "
+#~ "миллисекунд**. |br| **99%** всех запросов "
+#~ "обрабатывались менее чем за **47 "
+#~ "миллисекунд**. |br|"
+#~ msgstr ""
+#~ "Average response time - **6.88 "
+#~ "milliseconds**. |br| Median - 6 "
+#~ "milliseconds. |br| **90%** of all "
+#~ "requests were processed in less than "
+#~ "**16 milliseconds**. |br| **95%** of all"
+#~ " requests were processed in less than"
+#~ " **25 milliseconds**. |br| **99%** of "
+#~ "all requests were processed in less "
+#~ "than **47 milliseconds**. |br|"
+

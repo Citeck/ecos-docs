@@ -1,0 +1,1557 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/sizing.rst:4
+msgid "Сайзинг: тестовая и продуктивная среда"
+msgstr "Sizing: Test and Production Environments"
+
+#: ../../admin/launch_setup/sizing.rst:6
+msgid ""
+"Страница содержит рекомендации по планированию инфраструктуры для "
+"развёртывания Citeck с числом именных пользователей **до 1 000**."
+msgstr ""
+"This page contains infrastructure planning recommendations for deploying "
+"Citeck with up to **1,000** named users."
+
+#: ../../admin/launch_setup/sizing.rst:10
+msgid ""
+"Учитываются только **Worker Node** Kubernetes-кластера (control plane / "
+"master не учитывается)."
+msgstr ""
+"Only Kubernetes cluster **Worker Nodes** are taken into account (the "
+"control plane / master is not included)."
+
+#: ../../admin/launch_setup/sizing.rst:11
+msgid ""
+"Данные по ресурсам подов — из официальной документации Citeck: :ref:`k8s-"
+"resource-management`."
+msgstr ""
+"Pod resource data is taken from the official Citeck documentation: :ref:"
+"`k8s-resource-management`."
+
+#: ../../admin/launch_setup/sizing.rst:12
+msgid ""
+"Конфигурация подтверждена нагрузочным тестированием: **1 000 "
+"одновременных пользователей** в течение 1 часа (~2 млн запросов, средний "
+"отклик 6.88 мс, 99-й перцентиль 47 мс)."
+msgstr ""
+"The configuration has been validated by load testing: **1,000 concurrent "
+"users** over 1 hour (~2 million requests, average response time 6.88 ms, "
+"99th percentile 47 ms)."
+
+#: ../../admin/launch_setup/sizing.rst:14
+msgid "Готовятся **две среды**, каждая в **двух вариантах**:"
+msgstr "**Two environments** are provisioned, each in **two variants**:"
+
+#: ../../admin/launch_setup/sizing.rst:16
+msgid ""
+"**Вариант A (всё в K8s):** PostgreSQL и S3-совместимое хранилище (self-"
+"hosted, например MinIO) работают внутри кластера."
+msgstr ""
+"**Variant A (everything in K8s):** PostgreSQL and S3-compatible storage "
+"(self-hosted, e.g. MinIO) run inside the cluster."
+
+#: ../../admin/launch_setup/sizing.rst:17
+msgid ""
+"**Вариант B (PG + S3 вынесены):** PostgreSQL и S3 — внешние сервисы "
+"(требования к ним — раздел :ref:`Требования к внешним сервисам<sizing-"
+"external-services-b>`)."
+msgstr ""
+"**Variant B (PG + S3 external):** PostgreSQL and S3 are external services "
+"(requirements are covered in the :ref:`External Service Requirements"
+"<sizing-external-services-b>` section)."
+
+#: ../../admin/launch_setup/sizing.rst:19
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/launch_setup/sizing.rst:22
+msgid "Методика и допущения"
+msgstr "Methodology and Assumptions"
+
+#: ../../admin/launch_setup/sizing.rst:24
+msgid ""
+"**Requests** — гарантированный минимум, на нём строится планирование "
+"суммарной ёмкости нод. **Limits** — верхняя граница потребления (для "
+"оценки пиков)."
+msgstr ""
+"**Requests** are the guaranteed minimum used to plan total node capacity. "
+"**Limits** are the upper consumption bound (for estimating peaks)."
+
+#: ../../admin/launch_setup/sizing.rst:25
+msgid ""
+"К сумме requests добавляется overhead на системные компоненты ноды "
+"(kubelet, CNI, DaemonSet'ы мониторинга/логирования, kube-proxy) — "
+"**~20%**."
+msgstr ""
+"An overhead of **~20%** is added to the sum of requests for node system "
+"components (kubelet, CNI, monitoring/logging DaemonSets, kube-proxy)."
+
+#: ../../admin/launch_setup/sizing.rst:26
+msgid ""
+"Память по limits ≈ requests: burst-запаса по RAM почти нет, нода должна "
+"гарантированно вмещать сумму requests."
+msgstr ""
+"Memory limits ≈ requests: there is almost no RAM burst headroom, so the "
+"node must reliably fit the sum of requests."
+
+#: ../../admin/launch_setup/sizing.rst:27
+msgid "Управляющие компоненты кластера не учитываются."
+msgstr "Cluster control-plane components are not taken into account."
+
+#: ../../admin/launch_setup/sizing.rst:28
+msgid ""
+"**1 000 именных пользователей ≠ 1 000 одновременных.** Реальная "
+"одновременность для небольшого внедрения — обычно 10–20% от именных "
+"(~100–200 сессий). Поэтому **ресурсы подов между Test и Prod не "
+"меняются** — продуктивная среда отличается только **резервированием** "
+"(N+1 worker-ноды), а не более «тяжёлыми» подами."
+msgstr ""
+"**1,000 named users ≠ 1,000 concurrent users.** For a small-scale "
+"deployment, actual concurrency is typically 10–20% of named users "
+"(~100–200 sessions). This is why **pod resources are identical between "
+"Test and Prod** — the production environment differs only in "
+"**redundancy** (N+1 worker nodes), not in \"heavier\" pods."
+
+#: ../../admin/launch_setup/sizing.rst:29
+msgid ""
+"Уровень отказоустойчивости Prod: **N+1 по worker-нодам**. PostgreSQL — "
+"**1 хост (без реплики)**. Реплика PostgreSQL, кластеризация RabbitMQ / "
+"Zookeeper и мульти-зональность — опциональны (см. раздел :ref:`Примечания"
+"<sizing-notes>`), при необходимости закладываются дополнительно."
+msgstr ""
+"Prod fault-tolerance level: **N+1 across worker nodes**. PostgreSQL — "
+"**1 host (no replica)**. A PostgreSQL replica, RabbitMQ / Zookeeper "
+"clustering, and multi-zone deployment are optional (see the :ref:`Notes"
+"<sizing-notes>` section) and can be added additionally if needed."
+
+#: ../../admin/launch_setup/sizing.rst:32
+msgid "Базовый перечень микросервисов (всегда в кластере)"
+msgstr "Base list of microservices (always in the cluster)"
+
+#: ../../admin/launch_setup/sizing.rst:39
+msgid "Микросервис"
+msgstr "Microservice"
+
+#: ../../admin/launch_setup/sizing.rst:40
+#: ../../admin/launch_setup/sizing.rst:215
+#: ../../admin/launch_setup/sizing.rst:300
+#: ../../admin/launch_setup/sizing.rst:518
+msgid "Requests CPU"
+msgstr "Requests CPU"
+
+#: ../../admin/launch_setup/sizing.rst:41
+#: ../../admin/launch_setup/sizing.rst:216
+#: ../../admin/launch_setup/sizing.rst:301
+#: ../../admin/launch_setup/sizing.rst:519
+msgid "Requests MEM"
+msgstr "Requests MEM"
+
+#: ../../admin/launch_setup/sizing.rst:42
+msgid "Limits CPU"
+msgstr "Limits CPU"
+
+#: ../../admin/launch_setup/sizing.rst:43
+msgid "Limits MEM"
+msgstr "Limits MEM"
+
+#: ../../admin/launch_setup/sizing.rst:44
+msgid "Ecos Model"
+msgstr "Ecos Model"
+
+#: ../../admin/launch_setup/sizing.rst:45
+#: ../../admin/launch_setup/sizing.rst:47
+#: ../../admin/launch_setup/sizing.rst:50
+#: ../../admin/launch_setup/sizing.rst:52
+#: ../../admin/launch_setup/sizing.rst:132
+#: ../../admin/launch_setup/sizing.rst:430
+msgid "2"
+msgstr "2"
+
+#: ../../admin/launch_setup/sizing.rst:46
+#: ../../admin/launch_setup/sizing.rst:48
+#: ../../admin/launch_setup/sizing.rst:51
+#: ../../admin/launch_setup/sizing.rst:53
+#: ../../admin/launch_setup/sizing.rst:56
+#: ../../admin/launch_setup/sizing.rst:58
+#: ../../admin/launch_setup/sizing.rst:66
+#: ../../admin/launch_setup/sizing.rst:68
+#: ../../admin/launch_setup/sizing.rst:71
+#: ../../admin/launch_setup/sizing.rst:73
+#: ../../admin/launch_setup/sizing.rst:76
+#: ../../admin/launch_setup/sizing.rst:78
+#: ../../admin/launch_setup/sizing.rst:81
+#: ../../admin/launch_setup/sizing.rst:83
+#: ../../admin/launch_setup/sizing.rst:86
+#: ../../admin/launch_setup/sizing.rst:88
+#: ../../admin/launch_setup/sizing.rst:91
+#: ../../admin/launch_setup/sizing.rst:93
+#: ../../admin/launch_setup/sizing.rst:96
+#: ../../admin/launch_setup/sizing.rst:98
+#: ../../admin/launch_setup/sizing.rst:101
+#: ../../admin/launch_setup/sizing.rst:103
+#: ../../admin/launch_setup/sizing.rst:106
+#: ../../admin/launch_setup/sizing.rst:108
+#: ../../admin/launch_setup/sizing.rst:121
+#: ../../admin/launch_setup/sizing.rst:123
+#: ../../admin/launch_setup/sizing.rst:126
+#: ../../admin/launch_setup/sizing.rst:128
+msgid "1 Gi"
+msgstr "1 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:49
+msgid "Ecos Gateway"
+msgstr "Ecos Gateway"
+
+#: ../../admin/launch_setup/sizing.rst:54
+msgid "Ecos Apps"
+msgstr "Ecos Apps"
+
+#: ../../admin/launch_setup/sizing.rst:55
+#: ../../admin/launch_setup/sizing.rst:70
+#: ../../admin/launch_setup/sizing.rst:75
+#: ../../admin/launch_setup/sizing.rst:80
+#: ../../admin/launch_setup/sizing.rst:85
+#: ../../admin/launch_setup/sizing.rst:90
+#: ../../admin/launch_setup/sizing.rst:95
+#: ../../admin/launch_setup/sizing.rst:100
+#: ../../admin/launch_setup/sizing.rst:105
+#: ../../admin/launch_setup/sizing.rst:130
+msgid "100m"
+msgstr "100m"
+
+#: ../../admin/launch_setup/sizing.rst:57
+#: ../../admin/launch_setup/sizing.rst:60
+#: ../../admin/launch_setup/sizing.rst:62
+#: ../../admin/launch_setup/sizing.rst:65
+#: ../../admin/launch_setup/sizing.rst:67
+#: ../../admin/launch_setup/sizing.rst:72
+#: ../../admin/launch_setup/sizing.rst:77
+#: ../../admin/launch_setup/sizing.rst:82
+#: ../../admin/launch_setup/sizing.rst:87
+#: ../../admin/launch_setup/sizing.rst:92
+#: ../../admin/launch_setup/sizing.rst:97
+#: ../../admin/launch_setup/sizing.rst:102
+#: ../../admin/launch_setup/sizing.rst:107
+#: ../../admin/launch_setup/sizing.rst:112
+#: ../../admin/launch_setup/sizing.rst:122
+#: ../../admin/launch_setup/sizing.rst:127
+#: ../../admin/launch_setup/sizing.rst:403
+#: ../../admin/launch_setup/sizing.rst:426
+msgid "1"
+msgstr "1"
+
+#: ../../admin/launch_setup/sizing.rst:59
+msgid "Ecos Process"
+msgstr "Ecos Process"
+
+#: ../../admin/launch_setup/sizing.rst:61
+#: ../../admin/launch_setup/sizing.rst:63
+msgid "3548 Mi"
+msgstr "3548 Mi"
+
+#: ../../admin/launch_setup/sizing.rst:64
+msgid "Ecos Uiserv"
+msgstr "Ecos Uiserv"
+
+#: ../../admin/launch_setup/sizing.rst:69
+msgid "Ecos History"
+msgstr "Ecos History"
+
+#: ../../admin/launch_setup/sizing.rst:74
+msgid "Ecos Integrations"
+msgstr "Ecos Integrations"
+
+#: ../../admin/launch_setup/sizing.rst:79
+msgid "Ecos Notifications"
+msgstr "Ecos Notifications"
+
+#: ../../admin/launch_setup/sizing.rst:84
+msgid "Ecos Transformations"
+msgstr "Ecos Transformations"
+
+#: ../../admin/launch_setup/sizing.rst:89
+msgid "Ecos Ecom"
+msgstr "Ecos Ecom"
+
+#: ../../admin/launch_setup/sizing.rst:94
+msgid "Ecos Service Desk"
+msgstr "Ecos Service Desk"
+
+#: ../../admin/launch_setup/sizing.rst:99
+msgid "Ecos Edi"
+msgstr "Ecos Edi"
+
+#: ../../admin/launch_setup/sizing.rst:104
+msgid "Ecos Content"
+msgstr "Ecos Content"
+
+#: ../../admin/launch_setup/sizing.rst:109
+msgid "Ecos Proxy"
+msgstr "Ecos Proxy"
+
+#: ../../admin/launch_setup/sizing.rst:110
+#: ../../admin/launch_setup/sizing.rst:115
+#: ../../admin/launch_setup/sizing.rst:125
+msgid "300m"
+msgstr "300m"
+
+#: ../../admin/launch_setup/sizing.rst:111
+msgid "256 Mi"
+msgstr "256 Mi"
+
+#: ../../admin/launch_setup/sizing.rst:113
+#: ../../admin/launch_setup/sizing.rst:116
+#: ../../admin/launch_setup/sizing.rst:118
+msgid "512 Mi"
+msgstr "512 Mi"
+
+#: ../../admin/launch_setup/sizing.rst:114
+msgid "MongoDB"
+msgstr "MongoDB"
+
+#: ../../admin/launch_setup/sizing.rst:117
+#: ../../admin/launch_setup/sizing.rst:120
+msgid "500m"
+msgstr "500m"
+
+#: ../../admin/launch_setup/sizing.rst:119
+msgid "Zookeeper"
+msgstr "Zookeeper"
+
+#: ../../admin/launch_setup/sizing.rst:124
+msgid "Ecos Identity (Keycloak)"
+msgstr "Ecos Identity (Keycloak)"
+
+#: ../../admin/launch_setup/sizing.rst:129
+msgid "Onlyoffice"
+msgstr "Onlyoffice"
+
+#: ../../admin/launch_setup/sizing.rst:131
+#: ../../admin/launch_setup/sizing.rst:133
+msgid "2 Gi"
+msgstr "2 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:134
+msgid "**Итого базовых**"
+msgstr "**Base total**"
+
+#: ../../admin/launch_setup/sizing.rst:135
+msgid "**8.40 vCPU**"
+msgstr "**8.40 vCPU**"
+
+#: ../../admin/launch_setup/sizing.rst:136
+msgid "**20.21 Gi**"
+msgstr "**20.21 Gi**"
+
+#: ../../admin/launch_setup/sizing.rst:137
+msgid "**20.50 vCPU**"
+msgstr "**20.50 vCPU**"
+
+#: ../../admin/launch_setup/sizing.rst:138
+msgid "**20.46 Gi**"
+msgstr "**20.46 Gi**"
+
+#: ../../admin/launch_setup/sizing.rst:141
+msgid "Компоненты, которые можно вынести из кластера"
+msgstr "Components that can be moved out of the cluster"
+
+#: ../../admin/launch_setup/sizing.rst:143
+msgid ""
+"Минимальный объём ресурсов — по официальной рекомендации Citeck (Read The"
+" Docs, нагрузочно подтверждённый request пода). Для PostgreSQL от "
+"минимума берётся **×2 для теста** и **×3 для прода**; **HA-реплика "
+"PostgreSQL не закладывается** (1 хост)."
+msgstr ""
+"The minimum resource amount follows the official Citeck recommendation "
+"(Read the Docs, load-test-validated pod request). For PostgreSQL, the "
+"minimum is multiplied by **×2 for Test** and **×3 for Prod**; **an HA "
+"PostgreSQL replica is not included** (1 host)."
+
+#: ../../admin/launch_setup/sizing.rst:150
+#: ../../admin/launch_setup/sizing.rst:214
+#: ../../admin/launch_setup/sizing.rst:299
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../admin/launch_setup/sizing.rst:151
+msgid "Минимум"
+msgstr "Minimum"
+
+#: ../../admin/launch_setup/sizing.rst:152
+#: ../../admin/launch_setup/sizing.rst:388
+#: ../../admin/launch_setup/sizing.rst:480
+#: ../../admin/launch_setup/sizing.rst:552
+msgid "Test"
+msgstr "Test"
+
+#: ../../admin/launch_setup/sizing.rst:153
+#: ../../admin/launch_setup/sizing.rst:389
+#: ../../admin/launch_setup/sizing.rst:481
+#: ../../admin/launch_setup/sizing.rst:553
+msgid "Production"
+msgstr "Production"
+
+#: ../../admin/launch_setup/sizing.rst:154
+msgid "Microservices PostgreSQL"
+msgstr "Microservices PostgreSQL"
+
+#: ../../admin/launch_setup/sizing.rst:155
+msgid "2 vCPU / 2 Gi"
+msgstr "2 vCPU / 2 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:156
+msgid "**4 vCPU / 4 Gi** (×2)"
+msgstr "**4 vCPU / 4 Gi** (×2)"
+
+#: ../../admin/launch_setup/sizing.rst:157
+msgid "**6 vCPU / 6 Gi** (×3)"
+msgstr "**6 vCPU / 6 Gi** (×3)"
+
+#: ../../admin/launch_setup/sizing.rst:158
+msgid "S3-совместимое хранилище (self-hosted, напр. MinIO)"
+msgstr "S3-compatible storage (self-hosted, e.g. MinIO)"
+
+#: ../../admin/launch_setup/sizing.rst:159
+msgid "~1 vCPU / 2 Gi"
+msgstr "~1 vCPU / 2 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:160
+#: ../../admin/launch_setup/sizing.rst:161
+msgid "2 vCPU / 4 Gi"
+msgstr "2 vCPU / 4 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:165
+msgid ""
+"**PostgreSQL.** Минимум 2 vCPU / 2 Gi — валидирован нагрузочным "
+"тестированием request пода Citeck (выдержал 1 000 одновременных "
+"пользователей). Множители ×2 (тест) и ×3 (прод) — умеренный запас под "
+"накладные расходы выделенного экземпляра и рост данных; реплика не "
+"закладывается."
+msgstr ""
+"**PostgreSQL.** The minimum of 2 vCPU / 2 Gi is validated by load testing "
+"of the Citeck pod request (withstood 1,000 concurrent users). The ×2 "
+"(Test) and ×3 (Prod) multipliers provide a moderate margin for the "
+"overhead of a dedicated instance and data growth; a replica is not "
+"included."
+
+#: ../../admin/launch_setup/sizing.rst
+msgid "Ресурсы MinIO в зависимости от объёма контента"
+msgstr "MinIO resources depending on content volume"
+
+#: ../../admin/launch_setup/sizing.rst:169
+msgid ""
+"При большом объёме хранимого контента ресурсы MinIO нужно увеличивать — "
+"память растёт с числом объектов и параллельных запросов, CPU — с "
+"пропускной способностью и erasure coding в распределённом режиме."
+msgstr ""
+"For large volumes of stored content, MinIO resources need to be "
+"increased — memory grows with the number of objects and concurrent "
+"requests, while CPU grows with throughput and erasure coding in "
+"distributed mode."
+
+#: ../../admin/launch_setup/sizing.rst:176
+#: ../../admin/launch_setup/sizing.rst:485
+msgid "Объём контента"
+msgstr "Content volume"
+
+#: ../../admin/launch_setup/sizing.rst:177
+msgid "Ресурсы MinIO"
+msgstr "MinIO resources"
+
+#: ../../admin/launch_setup/sizing.rst:178
+msgid "Режим"
+msgstr "Mode"
+
+#: ../../admin/launch_setup/sizing.rst:179
+msgid "до ~500 Gi"
+msgstr "up to ~500 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:180
+msgid "2 vCPU / 4 Gi (рекомендуемый baseline)"
+msgstr "2 vCPU / 4 Gi (recommended baseline)"
+
+#: ../../admin/launch_setup/sizing.rst:181
+#: ../../admin/launch_setup/sizing.rst:184
+msgid "single-node"
+msgstr "single-node"
+
+#: ../../admin/launch_setup/sizing.rst:182
+msgid "~0.5–2 TB"
+msgstr "~0.5–2 TB"
+
+#: ../../admin/launch_setup/sizing.rst:183
+msgid "2–4 vCPU / 4–8 Gi"
+msgstr "2–4 vCPU / 4–8 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:185
+msgid "~2–10 TB или интенсивная загрузка/выгрузка"
+msgstr "~2–10 TB or intensive upload/download"
+
+#: ../../admin/launch_setup/sizing.rst:186
+msgid "4 vCPU / 8 Gi"
+msgstr "4 vCPU / 8 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:187
+msgid "распределённый (≥4 узла)"
+msgstr "distributed (≥4 nodes)"
+
+#: ../../admin/launch_setup/sizing.rst:188
+msgid ">10 TB"
+msgstr ">10 TB"
+
+#: ../../admin/launch_setup/sizing.rst:189
+msgid "8 vCPU / 16 Gi и более"
+msgstr "8 vCPU / 16 Gi and more"
+
+#: ../../admin/launch_setup/sizing.rst:190
+msgid "распределённый (≥4 узла), масштабирование по узлам"
+msgstr "distributed (≥4 nodes), scaling by node"
+
+#: ../../admin/launch_setup/sizing.rst:192
+msgid ""
+"Диск под контент масштабируется отдельно по фактическому объёму "
+"(закладывать запас ~30%)."
+msgstr ""
+"Content disk scales separately based on actual volume (allow ~30% "
+"headroom)."
+
+#: ../../admin/launch_setup/sizing.rst:195
+msgid "Тестовая среда"
+msgstr "Test Environment"
+
+#: ../../admin/launch_setup/sizing.rst:199
+msgid ""
+"Предполагается, что тестовая среда **не является полной копией "
+"продуктивной** (меньший объём данных и документов). Если тест "
+"используется как копия прода (нагрузочное / приёмочное тестирование на "
+"реальном объёме данных) — **дисковые ресурсы нужно нарастить до "
+"продуктивных значений** (PostgreSQL PVC, S3 / MinIO, PVC сервисов). "
+"Ресурсы CPU / RAM при этом остаются прежними."
+msgstr ""
+"It is assumed that the test environment **is not a full copy of "
+"production** (smaller volume of data and documents). If Test is used as a"
+" copy of Prod (load / acceptance testing on a real data volume) — "
+"**disk resources need to be increased to production values** (PostgreSQL "
+"PVC, S3 / MinIO, service PVCs). CPU / RAM resources remain unchanged in "
+"this case."
+
+#: ../../admin/launch_setup/sizing.rst:201
+msgid ""
+"**Резерва на отказ ноды в тестовой среде не закладывается.** Если резерв "
+"нужен (переживание отказа узла / drain при обновлении без простоя) — "
+"добавляется 3-я нода той же конфигурации (режим N+1, как в проде)."
+msgstr ""
+"**No node-failure redundancy is provisioned for the test environment.** "
+"If redundancy is needed (surviving a node failure / drain during a zero-"
+"downtime update) — a 3rd node of the same configuration is added (N+1 "
+"mode, as in Prod)."
+
+#: ../../admin/launch_setup/sizing.rst
+msgid "Вариант A — всё в K8s"
+msgstr "Variant A — Everything in K8s"
+
+#: ../../admin/launch_setup/sizing.rst:207
+msgid ""
+"В кластере: все микросервисы + PostgreSQL (4 vCPU / 4 Gi) + RabbitMQ + "
+"self-hosted S3 (MinIO, 2 vCPU / 4 Gi)."
+msgstr ""
+"In the cluster: all microservices + PostgreSQL (4 vCPU / 4 Gi) + RabbitMQ"
+" + self-hosted S3 (MinIO, 2 vCPU / 4 Gi)."
+
+#: ../../admin/launch_setup/sizing.rst:217
+#: ../../admin/launch_setup/sizing.rst:302
+msgid "Базовые микросервисы"
+msgstr "Base microservices"
+
+#: ../../admin/launch_setup/sizing.rst:218
+#: ../../admin/launch_setup/sizing.rst:303
+msgid "8.40"
+msgstr "8.40"
+
+#: ../../admin/launch_setup/sizing.rst:219
+#: ../../admin/launch_setup/sizing.rst:304
+msgid "20.21 Gi"
+msgstr "20.21 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:220
+#: ../../admin/launch_setup/sizing.rst:380
+#: ../../admin/launch_setup/sizing.rst:554
+msgid "PostgreSQL"
+msgstr "PostgreSQL"
+
+#: ../../admin/launch_setup/sizing.rst:221
+msgid "4.00"
+msgstr "4.00"
+
+#: ../../admin/launch_setup/sizing.rst:222
+#: ../../admin/launch_setup/sizing.rst:228
+#: ../../admin/launch_setup/sizing.rst:313
+msgid "4.00 Gi"
+msgstr "4.00 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:223
+#: ../../admin/launch_setup/sizing.rst:308
+msgid "RabbitMQ"
+msgstr "RabbitMQ"
+
+#: ../../admin/launch_setup/sizing.rst:224
+#: ../../admin/launch_setup/sizing.rst:309
+msgid "0.50"
+msgstr "0.50"
+
+#: ../../admin/launch_setup/sizing.rst:225
+#: ../../admin/launch_setup/sizing.rst:310
+msgid "1.00 Gi"
+msgstr "1.00 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:226
+msgid "S3 / MinIO"
+msgstr "S3 / MinIO"
+
+#: ../../admin/launch_setup/sizing.rst:227
+#: ../../admin/launch_setup/sizing.rst:312
+msgid "2.00"
+msgstr "2.00"
+
+#: ../../admin/launch_setup/sizing.rst:229
+#: ../../admin/launch_setup/sizing.rst:314
+msgid "**Итого**"
+msgstr "**Total**"
+
+#: ../../admin/launch_setup/sizing.rst:230
+msgid "**14.90 vCPU**"
+msgstr "**14.90 vCPU**"
+
+#: ../../admin/launch_setup/sizing.rst:231
+msgid "**29.21 Gi**"
+msgstr "**29.21 Gi**"
+
+#: ../../admin/launch_setup/sizing.rst:233
+#, python-format
+msgid ""
+"**Рекомендуемая ёмкость worker-нод** (requests + ~20% overhead): **~17.9 "
+"vCPU / ~35.1 Gi**."
+msgstr ""
+"**Recommended worker node capacity** (requests + ~20% overhead): **~17.9 "
+"vCPU / ~35.1 Gi**."
+
+#: ../../admin/launch_setup/sizing.rst:235
+#: ../../admin/launch_setup/sizing.rst:268
+msgid "**Практическая конфигурация:**"
+msgstr "**Practical configuration:**"
+
+#: ../../admin/launch_setup/sizing.rst:237
+msgid ""
+"**2 ноды × 12 vCPU / 24 Gi** (без резерва на отказ; для резерва — 3 ноды "
+"той же конфигурации)."
+msgstr ""
+"**2 nodes × 12 vCPU / 24 Gi** (no failure redundancy; for redundancy — 3 "
+"nodes of the same configuration)."
+
+#: ../../admin/launch_setup/sizing.rst:239
+msgid "**Диски (на кластер):**"
+msgstr "**Disks (per cluster):**"
+
+#: ../../admin/launch_setup/sizing.rst:241
+msgid "Система + образы: ~50 Gi на ноду."
+msgstr "System + images: ~50 Gi per node."
+
+#: ../../admin/launch_setup/sizing.rst:242
+msgid "PostgreSQL (PVC): 50–100 Gi SSD."
+msgstr "PostgreSQL (PVC): 50–100 Gi SSD."
+
+#: ../../admin/launch_setup/sizing.rst:243
+msgid ""
+"S3 / MinIO (PVC под контент): 100 Gi SSD (или больше — по фактическому "
+"объёму, см. таблицу MinIO выше)."
+msgstr ""
+"S3 / MinIO (PVC for content): 100 Gi SSD (or more — based on actual "
+"volume, see the MinIO table above)."
+
+#: ../../admin/launch_setup/sizing.rst:244
+msgid "MongoDB / Zookeeper / прочее: ~20–30 Gi."
+msgstr "MongoDB / Zookeeper / other: ~20–30 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:245
+msgid "**Итого ориентировочно:** ~200 Gi SSD суммарно по PVC."
+msgstr "**Estimated total:** ~200 Gi SSD across all PVCs."
+
+#: ../../admin/launch_setup/sizing.rst
+msgid "Вариант B — PostgreSQL и S3 вынесены"
+msgstr "Variant B — PostgreSQL and S3 External"
+
+#: ../../admin/launch_setup/sizing.rst:249
+#: ../../admin/launch_setup/sizing.rst:337
+msgid "Из кластера убраны PostgreSQL и S3. **RabbitMQ остаётся в кластере.**"
+msgstr "PostgreSQL and S3 are removed from the cluster. **RabbitMQ stays in the cluster.**"
+
+#: ../../admin/launch_setup/sizing.rst:256
+#: ../../admin/launch_setup/sizing.rst:344
+msgid "Показатель"
+msgstr "Metric"
+
+#: ../../admin/launch_setup/sizing.rst:257
+#: ../../admin/launch_setup/sizing.rst:345
+msgid "Requests"
+msgstr "Requests"
+
+#: ../../admin/launch_setup/sizing.rst:258
+#: ../../admin/launch_setup/sizing.rst:346
+msgid "Limits"
+msgstr "Limits"
+
+#: ../../admin/launch_setup/sizing.rst:259
+#: ../../admin/launch_setup/sizing.rst:347
+msgid "CPU"
+msgstr "CPU"
+
+#: ../../admin/launch_setup/sizing.rst:260
+#: ../../admin/launch_setup/sizing.rst:348
+msgid "**8.90 vCPU**"
+msgstr "**8.90 vCPU**"
+
+#: ../../admin/launch_setup/sizing.rst:261
+#: ../../admin/launch_setup/sizing.rst:349
+msgid "21.50 vCPU"
+msgstr "21.50 vCPU"
+
+#: ../../admin/launch_setup/sizing.rst:262
+#: ../../admin/launch_setup/sizing.rst:350
+msgid "Memory"
+msgstr "Memory"
+
+#: ../../admin/launch_setup/sizing.rst:263
+#: ../../admin/launch_setup/sizing.rst:351
+msgid "**21.21 Gi**"
+msgstr "**21.21 Gi**"
+
+#: ../../admin/launch_setup/sizing.rst:264
+#: ../../admin/launch_setup/sizing.rst:352
+msgid "21.46 Gi"
+msgstr "21.46 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:266
+#, python-format
+msgid ""
+"**Рекомендуемая ёмкость worker-нод** (requests + ~20% overhead): **~11 "
+"vCPU / ~25.5 Gi**."
+msgstr ""
+"**Recommended worker node capacity** (requests + ~20% overhead): **~11 "
+"vCPU / ~25.5 Gi**."
+
+#: ../../admin/launch_setup/sizing.rst:270
+msgid ""
+"**2 ноды × 8 vCPU / 16 Gi** (без резерва на отказ; для резерва — 3 ноды "
+"той же конфигурации)."
+msgstr ""
+"**2 nodes × 8 vCPU / 16 Gi** (no failure redundancy; for redundancy — 3 "
+"nodes of the same configuration)."
+
+#: ../../admin/launch_setup/sizing.rst:272
+msgid ""
+"**Диски:** система + образы ~50 Gi/нода; PVC под "
+"RabbitMQ/MongoDB/Zookeeper ~40–60 Gi."
+msgstr ""
+"**Disks:** system + images ~50 Gi/node; PVC for RabbitMQ/MongoDB/"
+"Zookeeper ~40–60 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:274
+msgid ""
+"**Внешние сервисы** (требования — раздел :ref:`Требования к внешним "
+"сервисам<sizing-external-services-b>`):"
+msgstr ""
+"**External services** (requirements — see the :ref:`External Service "
+"Requirements<sizing-external-services-b>` section):"
+
+#: ../../admin/launch_setup/sizing.rst:276
+msgid "**PostgreSQL:** 4 vCPU / 4 Gi / 100 Gi SSD, 1 хост."
+msgstr "**PostgreSQL:** 4 vCPU / 4 Gi / 100 Gi SSD, 1 host."
+
+#: ../../admin/launch_setup/sizing.rst:277
+msgid "**S3:** 100 Gi (Standard/Hot) под контент + опционально 200 Gi под бэкапы."
+msgstr "**S3:** 100 Gi (Standard/Hot) for content + optionally 200 Gi for backups."
+
+#: ../../admin/launch_setup/sizing.rst:280
+msgid "Продуктивная среда"
+msgstr "Production Environment"
+
+#: ../../admin/launch_setup/sizing.rst:284
+msgid ""
+"Отказоустойчивость: **N+1 по worker-нодам** (3 ноды = 2 рабочих + 1 "
+"резервная; переживание отказа узла и drain при обновлении без "
+"деградации). **PostgreSQL — 1 хост, без реплики** (реплика — опционально,"
+" см. раздел :ref:`Примечания<sizing-notes>`)."
+msgstr ""
+"Fault tolerance: **N+1 across worker nodes** (3 nodes = 2 active + 1 "
+"standby; survives node failure and drain during updates without "
+"degradation). **PostgreSQL — 1 host, no replica** (a replica is "
+"optional, see the :ref:`Notes<sizing-notes>` section)."
+
+#: ../../admin/launch_setup/sizing.rst:286
+msgid ""
+"Состав подов и их ресурсы — те же, что в тесте. Отличие — резервирование "
+"worker-нод и распределение по ним."
+msgstr ""
+"Pod composition and their resources are the same as in Test. The "
+"difference is worker node redundancy and their distribution."
+
+#: ../../admin/launch_setup/sizing.rst:292
+msgid ""
+"В кластере: все микросервисы + PostgreSQL (1 инстанс, 6 vCPU / 6 Gi) + "
+"RabbitMQ + self-hosted S3 (MinIO, 2 vCPU / 4 Gi)."
+msgstr ""
+"In the cluster: all microservices + PostgreSQL (1 instance, 6 vCPU / 6 "
+"Gi) + RabbitMQ + self-hosted S3 (MinIO, 2 vCPU / 4 Gi)."
+
+#: ../../admin/launch_setup/sizing.rst:305
+msgid "PostgreSQL (1 хост)"
+msgstr "PostgreSQL (1 host)"
+
+#: ../../admin/launch_setup/sizing.rst:306
+msgid "6.00"
+msgstr "6.00"
+
+#: ../../admin/launch_setup/sizing.rst:307
+msgid "6.00 Gi"
+msgstr "6.00 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:311
+msgid "S3 / MinIO (single-node)"
+msgstr "S3 / MinIO (single-node)"
+
+#: ../../admin/launch_setup/sizing.rst:315
+msgid "**16.90 vCPU**"
+msgstr "**16.90 vCPU**"
+
+#: ../../admin/launch_setup/sizing.rst:316
+msgid "**31.21 Gi**"
+msgstr "**31.21 Gi**"
+
+#: ../../admin/launch_setup/sizing.rst:318
+#, python-format
+msgid "**Суммарно + 20% overhead:** ~20.3 vCPU / ~37.5 Gi."
+msgstr "**Total + 20% overhead:** ~20.3 vCPU / ~37.5 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:320
+#: ../../admin/launch_setup/sizing.rst:356
+msgid "**Практическая конфигурация (N+1):**"
+msgstr "**Practical configuration (N+1):**"
+
+#: ../../admin/launch_setup/sizing.rst:322
+msgid ""
+"**3 worker-ноды × 12 vCPU / 32 Gi** (2 рабочих + 1 резервная). На двух "
+"рабочих нодах суммарно ~24 vCPU / 64 Gi — нагрузка с overhead размещается"
+" с запасом; при отказе одной ноды остаются работоспособными 2."
+msgstr ""
+"**3 worker nodes × 12 vCPU / 32 Gi** (2 active + 1 standby). The two "
+"active nodes together provide ~24 vCPU / 64 Gi — the load with overhead "
+"fits with headroom; if one node fails, the remaining 2 stay operational."
+
+#: ../../admin/launch_setup/sizing.rst:324
+#: ../../admin/launch_setup/sizing.rst:360
+msgid "**Диски:**"
+msgstr "**Disks:**"
+
+#: ../../admin/launch_setup/sizing.rst:326
+msgid "Система: ~50 Gi/нода."
+msgstr "System: ~50 Gi/node."
+
+#: ../../admin/launch_setup/sizing.rst:327
+msgid "PostgreSQL PVC: 200 Gi SSD."
+msgstr "PostgreSQL PVC: 200 Gi SSD."
+
+#: ../../admin/launch_setup/sizing.rst:328
+msgid ""
+"MinIO PVC: 200–500 Gi SSD (по фактическому объёму, см. таблицу MinIO "
+"выше)."
+msgstr ""
+"MinIO PVC: 200–500 Gi SSD (based on actual volume, see the MinIO table "
+"above)."
+
+#: ../../admin/launch_setup/sizing.rst:329
+msgid "Прочие PVC: ~40–60 Gi."
+msgstr "Other PVCs: ~40–60 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:333
+msgid ""
+"Для продуктивной среды хранение PostgreSQL и S3 внутри K8s усложняет "
+"эксплуатацию (бэкапы, отказоустойчивость stateful-компонентов, рост "
+"данных). **Для прода предпочтителен вариант B** (внешние PostgreSQL и "
+"S3)."
+msgstr ""
+"For the production environment, storing PostgreSQL and S3 inside K8s "
+"complicates operations (backups, fault tolerance of stateful components, "
+"data growth). **Variant B is preferred for production** (external "
+"PostgreSQL and S3)."
+
+#: ../../admin/launch_setup/sizing.rst
+msgid "Вариант B — PostgreSQL и S3 вынесены (рекомендуется)"
+msgstr "Variant B — PostgreSQL and S3 External (Recommended)"
+
+#: ../../admin/launch_setup/sizing.rst:354
+#, python-format
+msgid "**Суммарно + 20% overhead:** ~11 vCPU / ~25.5 Gi."
+msgstr "**Total + 20% overhead:** ~11 vCPU / ~25.5 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:358
+msgid ""
+"**3 worker-ноды × 8 vCPU / 32 Gi** (2 рабочих + 1 резервная). На двух "
+"рабочих нодах ~16 vCPU / 64 Gi — нагрузка размещается с запасом; отказ "
+"одной ноды переживается без деградации."
+msgstr ""
+"**3 worker nodes × 8 vCPU / 32 Gi** (2 active + 1 standby). The two "
+"active nodes provide ~16 vCPU / 64 Gi — the load fits with headroom; a "
+"single node failure is survived without degradation."
+
+#: ../../admin/launch_setup/sizing.rst:362
+msgid "система ~50 Gi/нода;"
+msgstr "system ~50 Gi/node;"
+
+#: ../../admin/launch_setup/sizing.rst:363
+msgid "PVC под RabbitMQ/MongoDB/Zookeeper ~60 Gi."
+msgstr "PVC for RabbitMQ/MongoDB/Zookeeper ~60 Gi."
+
+#: ../../admin/launch_setup/sizing.rst:365
+msgid ""
+"**Внешние сервисы** (раздел :ref:`Требования к внешним сервисам<sizing-"
+"external-services-b>`):"
+msgstr ""
+"**External services** (see the :ref:`External Service Requirements"
+"<sizing-external-services-b>` section):"
+
+#: ../../admin/launch_setup/sizing.rst:367
+msgid ""
+"**PostgreSQL:** 1 хост, 6 vCPU / 6 Gi / 300 Gi SSD (без реплики; реплика "
+"— опционально)."
+msgstr ""
+"**PostgreSQL:** 1 host, 6 vCPU / 6 Gi / 300 Gi SSD (no replica; a "
+"replica is optional)."
+
+#: ../../admin/launch_setup/sizing.rst:368
+msgid ""
+"**S3:** 100–200 Gi (Standard/Hot) под контент + бэкапы; включить "
+"версионирование."
+msgstr ""
+"**S3:** 100–200 Gi (Standard/Hot) for content + backups; enable "
+"versioning."
+
+#: ../../admin/launch_setup/sizing.rst:373
+msgid "Требования к внешним сервисам (вариант B)"
+msgstr "External Service Requirements (Variant B)"
+
+#: ../../admin/launch_setup/sizing.rst:377
+msgid ""
+"Требования сформулированы **без привязки к конкретному облачному "
+"сервису**. Подходят как для managed-сервисов (например, Managed "
+"PostgreSQL / Object Storage любого провайдера), так и для развёртывания "
+"на **отдельных виртуальных машинах**."
+msgstr ""
+"The requirements are formulated **without tying them to a specific cloud "
+"service**. They are suitable both for managed services (e.g., Managed "
+"PostgreSQL / Object Storage from any provider) and for deployment on "
+"**dedicated virtual machines**."
+
+#: ../../admin/launch_setup/sizing.rst:387
+#: ../../admin/launch_setup/sizing.rst:479
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../admin/launch_setup/sizing.rst:390
+msgid "Версия"
+msgstr "Version"
+
+#: ../../admin/launch_setup/sizing.rst:391
+#: ../../admin/launch_setup/sizing.rst:392
+msgid "PostgreSQL 14+ (рекомендуется 17/18)"
+msgstr "PostgreSQL 14+ (17/18 recommended)"
+
+#: ../../admin/launch_setup/sizing.rst:393
+msgid "vCPU"
+msgstr "vCPU"
+
+#: ../../admin/launch_setup/sizing.rst:394
+msgid "4 (×2 от минимума)"
+msgstr "4 (×2 of the minimum)"
+
+#: ../../admin/launch_setup/sizing.rst:395
+msgid "6 (×3 от минимума)"
+msgstr "6 (×3 of the minimum)"
+
+#: ../../admin/launch_setup/sizing.rst:396
+msgid "RAM"
+msgstr "RAM"
+
+#: ../../admin/launch_setup/sizing.rst:397
+msgid "4 Gi"
+msgstr "4 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:398
+msgid "6 Gi"
+msgstr "6 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:399
+msgid "Диск"
+msgstr "Disk"
+
+#: ../../admin/launch_setup/sizing.rst:400
+msgid "100 Gi SSD, авторасширение"
+msgstr "100 Gi SSD, auto-expanding"
+
+#: ../../admin/launch_setup/sizing.rst:401
+msgid "300 Gi SSD, авторасширение"
+msgstr "300 Gi SSD, auto-expanding"
+
+#: ../../admin/launch_setup/sizing.rst:402
+msgid "Количество хостов"
+msgstr "Number of hosts"
+
+#: ../../admin/launch_setup/sizing.rst:404
+msgid "1 (без реплики)"
+msgstr "1 (no replica)"
+
+#: ../../admin/launch_setup/sizing.rst:406
+msgid ""
+"**Обоснование ресурсов.** Минимум по официальной документации Citeck "
+"(Read The Docs) — **2 vCPU / 2 Gi**, валидирован нагрузочным "
+"тестированием (in-cluster pod, выдержал 1 000 одновременных "
+"пользователей). Для выделенного экземпляра берётся умеренный множитель: "
+"**Test — ×2 (4 vCPU / 4 Gi)**, **Production — ×3 (6 vCPU / 6 Gi)** — "
+"запас под накладные расходы СУБД, рост объёма данных и пул соединений ~11"
+" сервисов + Keycloak. Класс хоста при необходимости повышается без "
+"переустановки."
+msgstr ""
+"**Resource rationale.** The minimum per the official Citeck documentation"
+" (Read the Docs) is **2 vCPU / 2 Gi**, validated by load testing (in-"
+"cluster pod, withstood 1,000 concurrent users). For a dedicated instance,"
+" a moderate multiplier is applied: **Test — ×2 (4 vCPU / 4 Gi)**, "
+"**Production — ×3 (6 vCPU / 6 Gi)** — headroom for DBMS overhead, data "
+"growth, and the connection pool of ~11 services + Keycloak. The host "
+"tier can be upgraded later without reinstallation if needed."
+
+#: ../../admin/launch_setup/sizing.rst:408
+msgid ""
+"**HA / реплика.** Реплика PostgreSQL **не закладывается** (1 хост). При "
+"необходимости отказоустойчивости СУБД добавляется реплика (2-й хост) "
+"и/или переход на managed-сервис с HA. Обязательны регулярные "
+"автоматические бэкапы (``pg_basebackup`` + WAL-архив)."
+msgstr ""
+"**HA / replica.** A PostgreSQL replica **is not included** (1 host). If "
+"DBMS fault tolerance is required, a replica (2nd host) is added and/or a "
+"switch is made to a managed HA service. Regular automated backups "
+"(``pg_basebackup`` + WAL archive) are mandatory."
+
+#: ../../admin/launch_setup/sizing.rst:410
+msgid ""
+"**Если на отдельной ВМ:** Test — ВМ **4 vCPU / 4 Gi / 120 Gi SSD**; Prod "
+"— ВМ **6 vCPU / 6 Gi / 300 Gi SSD** + автоматические бэкапы."
+msgstr ""
+"**If on a dedicated VM:** Test — VM **4 vCPU / 4 Gi / 120 Gi SSD**; Prod "
+"— VM **6 vCPU / 6 Gi / 300 Gi SSD** + automated backups."
+
+#: ../../admin/launch_setup/sizing.rst:413
+msgid "Список баз данных PostgreSQL"
+msgstr "List of PostgreSQL Databases"
+
+#: ../../admin/launch_setup/sizing.rst:415
+msgid ""
+"На этапе развёртывания создаётся **11 БД** (сверено с Helm chart "
+"ecos-1.3.91, секция ``EcosMicroservicesPostgresqlApp.databases``):"
+msgstr ""
+"**11 databases** are created during deployment (verified against Helm "
+"chart ecos-1.3.91, ``EcosMicroservicesPostgresqlApp.databases`` "
+"section):"
+
+#: ../../admin/launch_setup/sizing.rst:422
+msgid "№"
+msgstr "No."
+
+#: ../../admin/launch_setup/sizing.rst:423
+msgid "База данных"
+msgstr "Database"
+
+#: ../../admin/launch_setup/sizing.rst:424
+msgid "Пользователь"
+msgstr "User"
+
+#: ../../admin/launch_setup/sizing.rst:425
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../admin/launch_setup/sizing.rst:427
+msgid "ecos_model"
+msgstr "ecos_model"
+
+#: ../../admin/launch_setup/sizing.rst:428
+msgid "model"
+msgstr "model"
+
+#: ../../admin/launch_setup/sizing.rst:429
+msgid "типы данных, шаблоны нумерации, матрицы прав"
+msgstr "data types, numbering templates, permission matrices"
+
+#: ../../admin/launch_setup/sizing.rst:431
+msgid "ecos_apps"
+msgstr "ecos_apps"
+
+#: ../../admin/launch_setup/sizing.rst:432
+msgid "apps"
+msgstr "apps"
+
+#: ../../admin/launch_setup/sizing.rst:433
+msgid "доставка приложений к сервисам"
+msgstr "application delivery to services"
+
+#: ../../admin/launch_setup/sizing.rst:434
+msgid "3"
+msgstr "3"
+
+#: ../../admin/launch_setup/sizing.rst:435
+msgid "ecos_gateway"
+msgstr "ecos_gateway"
+
+#: ../../admin/launch_setup/sizing.rst:436
+msgid "gateway"
+msgstr "gateway"
+
+#: ../../admin/launch_setup/sizing.rst:437
+msgid "API-шлюз"
+msgstr "API gateway"
+
+#: ../../admin/launch_setup/sizing.rst:438
+msgid "4"
+msgstr "4"
+
+#: ../../admin/launch_setup/sizing.rst:439
+msgid "ecos_uiserv"
+msgstr "ecos_uiserv"
+
+#: ../../admin/launch_setup/sizing.rst:440
+msgid "uiserv"
+msgstr "uiserv"
+
+#: ../../admin/launch_setup/sizing.rst:441
+msgid "формы, журналы, дашборды, конфигурация UI"
+msgstr "forms, journals, dashboards, UI configuration"
+
+#: ../../admin/launch_setup/sizing.rst:442
+msgid "5"
+msgstr "5"
+
+#: ../../admin/launch_setup/sizing.rst:443
+msgid "ecos_notifications"
+msgstr "ecos_notifications"
+
+#: ../../admin/launch_setup/sizing.rst:444
+msgid "notifications"
+msgstr "notifications"
+
+#: ../../admin/launch_setup/sizing.rst:445
+msgid "уведомления (email, push)"
+msgstr "notifications (email, push)"
+
+#: ../../admin/launch_setup/sizing.rst:446
+msgid "6"
+msgstr "6"
+
+#: ../../admin/launch_setup/sizing.rst:447
+msgid "ecos_history"
+msgstr "ecos_history"
+
+#: ../../admin/launch_setup/sizing.rst:448
+msgid "history"
+msgstr "history"
+
+#: ../../admin/launch_setup/sizing.rst:449
+msgid "история событий системы"
+msgstr "system event history"
+
+#: ../../admin/launch_setup/sizing.rst:450
+msgid "7"
+msgstr "7"
+
+#: ../../admin/launch_setup/sizing.rst:451
+msgid "ecos_integrations"
+msgstr "ecos_integrations"
+
+#: ../../admin/launch_setup/sizing.rst:452
+msgid "integrations"
+msgstr "integrations"
+
+#: ../../admin/launch_setup/sizing.rst:453
+msgid "интеграции (SAP, 1C, MQ)"
+msgstr "integrations (SAP, 1C, MQ)"
+
+#: ../../admin/launch_setup/sizing.rst:454
+msgid "8"
+msgstr "8"
+
+#: ../../admin/launch_setup/sizing.rst:455
+msgid "ecos_process"
+msgstr "ecos_process"
+
+#: ../../admin/launch_setup/sizing.rst:456
+msgid "process"
+msgstr "process"
+
+#: ../../admin/launch_setup/sizing.rst:457
+msgid "процессы BPMN/CMMN"
+msgstr "BPMN/CMMN processes"
+
+#: ../../admin/launch_setup/sizing.rst:458
+msgid "9"
+msgstr "9"
+
+#: ../../admin/launch_setup/sizing.rst:459
+msgid "ecos_camunda"
+msgstr "ecos_camunda"
+
+#: ../../admin/launch_setup/sizing.rst:460
+msgid "camunda"
+msgstr "camunda"
+
+#: ../../admin/launch_setup/sizing.rst:461
+msgid "движок Camunda (ecos-process)"
+msgstr "Camunda engine (ecos-process)"
+
+#: ../../admin/launch_setup/sizing.rst:462
+msgid "10"
+msgstr "10"
+
+#: ../../admin/launch_setup/sizing.rst:463
+msgid "ecos_identity"
+msgstr "ecos_identity"
+
+#: ../../admin/launch_setup/sizing.rst:464
+msgid "eis"
+msgstr "eis"
+
+#: ../../admin/launch_setup/sizing.rst:465
+msgid "Keycloak — аутентификация/SSO"
+msgstr "Keycloak — authentication/SSO"
+
+#: ../../admin/launch_setup/sizing.rst:466
+msgid "11"
+msgstr "11"
+
+#: ../../admin/launch_setup/sizing.rst:467
+msgid "ecos_edi"
+msgstr "ecos_edi"
+
+#: ../../admin/launch_setup/sizing.rst:468
+msgid "edi"
+msgstr "edi"
+
+#: ../../admin/launch_setup/sizing.rst:469
+msgid "ЮЗД (Контур.Диадок) — при использовании ЮЗД"
+msgstr "EDI (Kontur.Diadoc) — when using EDI"
+
+#: ../../admin/launch_setup/sizing.rst:472
+#: ../../admin/launch_setup/sizing.rst:557
+msgid "S3"
+msgstr "S3"
+
+#: ../../admin/launch_setup/sizing.rst:482
+msgid "Тип"
+msgstr "Type"
+
+#: ../../admin/launch_setup/sizing.rst:483
+#: ../../admin/launch_setup/sizing.rst:484
+msgid "S3-совместимое объектное хранилище"
+msgstr "S3-compatible object storage"
+
+#: ../../admin/launch_setup/sizing.rst:486
+msgid "100 Gi (Standard/Hot)"
+msgstr "100 Gi (Standard/Hot)"
+
+#: ../../admin/launch_setup/sizing.rst:487
+msgid "100–200 Gi (Standard/Hot)"
+msgstr "100–200 Gi (Standard/Hot)"
+
+#: ../../admin/launch_setup/sizing.rst:488
+msgid "Объём бэкапов (опц.)"
+msgstr "Backup volume (opt.)"
+
+#: ../../admin/launch_setup/sizing.rst:489
+msgid "200 Gi (Cold)"
+msgstr "200 Gi (Cold)"
+
+#: ../../admin/launch_setup/sizing.rst:490
+msgid "400 Gi (Cold)"
+msgstr "400 Gi (Cold)"
+
+#: ../../admin/launch_setup/sizing.rst:491
+msgid "Версионирование"
+msgstr "Versioning"
+
+#: ../../admin/launch_setup/sizing.rst:492
+msgid "по желанию"
+msgstr "optional"
+
+#: ../../admin/launch_setup/sizing.rst:493
+msgid "**включить** (защита от случайного удаления)"
+msgstr "**enable** (protection against accidental deletion)"
+
+#: ../../admin/launch_setup/sizing.rst:494
+msgid "Доступ"
+msgstr "Access"
+
+#: ../../admin/launch_setup/sizing.rst:495
+msgid "отдельный bucket + сервисный ключ (access/secret key)"
+msgstr "dedicated bucket + service key (access/secret key)"
+
+#: ../../admin/launch_setup/sizing.rst:496
+msgid "то же, плюс bucket policy по сервисному аккаунту/IP"
+msgstr "same, plus a bucket policy scoped to the service account/IP"
+
+#: ../../admin/launch_setup/sizing.rst:497
+msgid "Публичный доступ"
+msgstr "Public access"
+
+#: ../../admin/launch_setup/sizing.rst:498
+#: ../../admin/launch_setup/sizing.rst:499
+msgid "выключен"
+msgstr "disabled"
+
+#: ../../admin/launch_setup/sizing.rst:500
+msgid "Эндпоинт"
+msgstr "Endpoint"
+
+#: ../../admin/launch_setup/sizing.rst:501
+msgid "S3-совместимый URL провайдера/MinIO"
+msgstr "S3-compatible URL of the provider/MinIO"
+
+#: ../../admin/launch_setup/sizing.rst:502
+msgid "то же"
+msgstr "same"
+
+#: ../../admin/launch_setup/sizing.rst:504
+msgid ""
+"**Если на отдельной ВМ:** развернуть MinIO. Test — 1 ВМ **2 vCPU / 4 Gi /"
+" 150 Gi SSD**. Prod — 1 ВМ **2 vCPU / 4 Gi / 250 Gi SSD** + регулярный "
+"бэкап (распределённый MinIO на 4 ВМ — только при требовании HA по "
+"хранилищу). При большом объёме контента ресурсы ВМ MinIO увеличиваются по"
+" таблице выше."
+msgstr ""
+"**If on a dedicated VM:** deploy MinIO. Test — 1 VM **2 vCPU / 4 Gi / 150"
+" Gi SSD**. Prod — 1 VM **2 vCPU / 4 Gi / 250 Gi SSD** + regular backups "
+"(distributed MinIO across 4 VMs — only if storage HA is required). For "
+"large content volumes, MinIO VM resources are increased per the table "
+"above."
+
+#: ../../admin/launch_setup/sizing.rst:507
+msgid "Сводные таблицы"
+msgstr "Summary Tables"
+
+#: ../../admin/launch_setup/sizing.rst:510
+msgid "Worker-ноды Kubernetes"
+msgstr "Kubernetes Worker Nodes"
+
+#: ../../admin/launch_setup/sizing.rst:517
+msgid "Среда / вариант"
+msgstr "Environment / variant"
+
+#: ../../admin/launch_setup/sizing.rst:520
+#, python-format
+msgid "20% overhead"
+msgstr "20% overhead"
+
+#: ../../admin/launch_setup/sizing.rst:521
+msgid "Практическая конфигурация"
+msgstr "Practical configuration"
+
+#: ../../admin/launch_setup/sizing.rst:522
+msgid "**Test A** — всё в K8s"
+msgstr "**Test A** — Everything in K8s"
+
+#: ../../admin/launch_setup/sizing.rst:523
+msgid "14.90 vCPU"
+msgstr "14.90 vCPU"
+
+#: ../../admin/launch_setup/sizing.rst:524
+msgid "29.21 Gi"
+msgstr "29.21 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:525
+msgid "~17.9 / ~35.1"
+msgstr "~17.9 / ~35.1"
+
+#: ../../admin/launch_setup/sizing.rst:526
+msgid "2×12/24 (без резерва; +1 нода для резерва)"
+msgstr "2×12/24 (no redundancy; +1 node for redundancy)"
+
+#: ../../admin/launch_setup/sizing.rst:527
+msgid "**Test B** — PG+S3 вынесены"
+msgstr "**Test B** — PG+S3 external"
+
+#: ../../admin/launch_setup/sizing.rst:528
+#: ../../admin/launch_setup/sizing.rst:538
+msgid "8.90 vCPU"
+msgstr "8.90 vCPU"
+
+#: ../../admin/launch_setup/sizing.rst:529
+#: ../../admin/launch_setup/sizing.rst:539
+msgid "21.21 Gi"
+msgstr "21.21 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:530
+#: ../../admin/launch_setup/sizing.rst:540
+msgid "~11 / ~25.5"
+msgstr "~11 / ~25.5"
+
+#: ../../admin/launch_setup/sizing.rst:531
+msgid "2×8/16 (без резерва; +1 нода для резерва)"
+msgstr "2×8/16 (no redundancy; +1 node for redundancy)"
+
+#: ../../admin/launch_setup/sizing.rst:532
+msgid "**Prod A** — всё в K8s"
+msgstr "**Prod A** — Everything in K8s"
+
+#: ../../admin/launch_setup/sizing.rst:533
+msgid "16.90 vCPU"
+msgstr "16.90 vCPU"
+
+#: ../../admin/launch_setup/sizing.rst:534
+msgid "31.21 Gi"
+msgstr "31.21 Gi"
+
+#: ../../admin/launch_setup/sizing.rst:535
+msgid "~20.3 / ~37.5"
+msgstr "~20.3 / ~37.5"
+
+#: ../../admin/launch_setup/sizing.rst:536
+msgid "3×12/32 (N+1)"
+msgstr "3×12/32 (N+1)"
+
+#: ../../admin/launch_setup/sizing.rst:537
+msgid "**Prod B** — PG+S3 вынесены"
+msgstr "**Prod B** — PG+S3 external"
+
+#: ../../admin/launch_setup/sizing.rst:541
+msgid "3×8/32 (N+1)"
+msgstr "3×8/32 (N+1)"
+
+#: ../../admin/launch_setup/sizing.rst:544
+msgid "Внешние сервисы (варианты B)"
+msgstr "External Services (Variant B)"
+
+#: ../../admin/launch_setup/sizing.rst:551
+msgid "Сервис"
+msgstr "Service"
+
+#: ../../admin/launch_setup/sizing.rst:555
+msgid "4 vCPU / 4 Gi / 100 Gi SSD, 1 хост"
+msgstr "4 vCPU / 4 Gi / 100 Gi SSD, 1 host"
+
+#: ../../admin/launch_setup/sizing.rst:556
+msgid "6 vCPU / 6 Gi / 300 Gi SSD, 1 хост (без реплики)"
+msgstr "6 vCPU / 6 Gi / 300 Gi SSD, 1 host (no replica)"
+
+#: ../../admin/launch_setup/sizing.rst:558
+msgid "100 Gi Standard (+200 Gi Cold опц.)"
+msgstr "100 Gi Standard (+200 Gi Cold opt.)"
+
+#: ../../admin/launch_setup/sizing.rst:559
+msgid "100–200 Gi Standard + 400 Gi Cold, версионирование"
+msgstr "100–200 Gi Standard + 400 Gi Cold, versioning"
+
+#: ../../admin/launch_setup/sizing.rst:564
+msgid "Примечания"
+msgstr "Notes"
+
+#: ../../admin/launch_setup/sizing.rst:566
+msgid ""
+"Сайзинг рассчитан по **requests** (минимум для стабильной работы) — "
+"корректно для планирования ёмкости нод. Сумма **limits** показана для "
+"оценки пиков."
+msgstr ""
+"Sizing is calculated based on **requests** (the minimum for stable "
+"operation) — correct for planning node capacity. The sum of **limits** "
+"is shown for peak estimation."
+
+#: ../../admin/launch_setup/sizing.rst:567
+msgid ""
+"Память по limits ≈ requests — нода должна гарантированно вмещать сумму "
+"requests; для прода RAM нод берётся с запасом, чтобы пережить отказ ноды "
+"(N+1)."
+msgstr ""
+"Memory limits ≈ requests — the node must reliably fit the sum of "
+"requests; for Prod, node RAM is taken with headroom to survive a node "
+"failure (N+1)."
+
+#: ../../admin/launch_setup/sizing.rst:568
+msgid ""
+"Ресурсы PostgreSQL заданы от минимума Read The Docs (2 vCPU / 2 Gi): **×2"
+" для теста (4/4)** и **×3 для прода (6/6)**; **реплика PostgreSQL не "
+"закладывается** (1 хост)."
+msgstr ""
+"PostgreSQL resources are set from the Read the Docs minimum (2 vCPU / 2 "
+"Gi): **×2 for Test (4/4)** and **×3 for Prod (6/6)**; **a PostgreSQL "
+"replica is not included** (1 host)."
+
+#: ../../admin/launch_setup/sizing.rst:569
+msgid ""
+"**OpenSearch** (полнотекстовый поиск/индексация метаданных) в расчёт не "
+"включён. При необходимости — развёртывается отдельно (managed либо "
+"отдельный пул нод/ВМ) и закладывается дополнительно."
+msgstr ""
+"**OpenSearch** (full-text search/metadata indexing) is not included in "
+"this estimate. If needed, it is deployed separately (managed or a "
+"dedicated node/VM pool) and provisioned additionally."
+
+#: ../../admin/launch_setup/sizing.rst:570
+msgid ""
+"Для **повышенного HA** дополнительно (опционально): реплика PostgreSQL "
+"(2-й хост), worker-ноды по 3 зонам, кластер RabbitMQ (3 узла) и ансамбль "
+"Zookeeper (3 узла). В текущем расчёте заложен уровень **N+1 по "
+"worker-нодам** без реплики PostgreSQL."
+msgstr ""
+"For **enhanced HA**, additionally (optional): a PostgreSQL replica (2nd "
+"host), worker nodes spread across 3 zones, an RabbitMQ cluster (3 nodes),"
+" and a Zookeeper ensemble (3 nodes). The current estimate provides the "
+"**N+1 across worker nodes** level without a PostgreSQL replica."
+
+#: ../../admin/launch_setup/sizing.rst:571
+msgid ""
+"Объёмы дисков заложены с запасом; уточняются под реальный объём "
+"документов и историю."
+msgstr ""
+"Disk volumes are provisioned with headroom; they should be refined based "
+"on the actual volume of documents and history."
+
+#: ../../admin/launch_setup/sizing.rst:574
+msgid "Источники"
+msgstr "Sources"
+
+#: ../../admin/launch_setup/sizing.rst:576
+msgid ":ref:`Менеджмент ресурсов подов и контейнеров<k8s-resource-management>`"
+msgstr ":ref:`Pod and Container Resource Management<k8s-resource-management>`"
+
+#: ../../admin/launch_setup/sizing.rst:577
+msgid ":ref:`Список БД / Kubernetes Secrets<kubernetes-secrets>`"
+msgstr ":ref:`Database List / Kubernetes Secrets<kubernetes-secrets>`"
+
+#: ../../admin/launch_setup/sizing.rst:578
+msgid ":ref:`Настройка S3 в Citeck<s3_storage>`"
+msgstr ":ref:`Configuring S3 in Citeck<s3_storage>`"
+
+#: ../../admin/launch_setup/sizing.rst:579
+msgid "Helm chart ecos-1.3.91"
+msgstr "Helm chart ecos-1.3.91"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -37,7 +37,10 @@ msgid ""
 " пакетов. Это позволяет расширять микросервис без изменения базового "
 "функционала."
 msgstr ""
-"Starting from version 1.16.0, the microservice has been enhanced with the capability to load custom code implemented according to the **OSGI** specification for bundles. This allows extending the microservice without altering its core functionality."
+"Starting from version 1.16.0, the microservice has been enhanced with the"
+" capability to load custom code implemented according to the **OSGI** "
+"specification for bundles. This allows extending the microservice without"
+" altering its core functionality."
 
 #: ../../integration/OSGI.rst:15
 msgid ""
@@ -50,7 +53,14 @@ msgid ""
 "актуальный статус пакета, имя загруженного файла, символическое имя "
 "пакета, а так же, скачать сам jar файл пакета."
 msgstr ""
-"The loading of the bundles themselves is done via the **OSGI Bundles** journal in the administrator section. To load a bundle, navigate to this journal and click the create button. A modal window appears, prompting for file upload. Place your compiled jar file there and click **Create**. The bundle is loaded and installed if no issues occurred during installation. In the journal itself, you can always find the current status of the bundle, the name of the uploaded file, the symbolic name of the bundle, as well as download the bundle's jar file."
+"The loading of the bundles themselves is done via the **OSGI Bundles** "
+"journal in the administrator section. To load a bundle, navigate to this "
+"journal and click the create button. A modal window appears, prompting "
+"for file upload. Place your compiled jar file there and click **Create**."
+" The bundle is loaded and installed if no issues occurred during "
+"installation. In the journal itself, you can always find the current "
+"status of the bundle, the name of the uploaded file, the symbolic name of"
+" the bundle, as well as download the bundle's jar file."
 
 #: ../../integration/OSGI.rst:17
 msgid "Что доступно \"из коробки\" при реализации нового пакета:"
@@ -64,7 +74,11 @@ msgid ""
 "loader** была реализована обертка, принимающая в себя объект "
 "**ApplicationContext** и позволяющая получать из него бины"
 msgstr ""
-"The **ApplicationContext** of the **ecos-integrations** microservice, but you cannot work with it directly because bundles cannot \"digest\" the dependency on Spring libraries. Therefore, a wrapper was implemented in the **ecos-osgi-loader** library, which accepts the **ApplicationContext** object and allows retrieving beans from it."
+"The **ApplicationContext** of the **ecos-integrations** microservice, but"
+" you cannot work with it directly because bundles cannot \"digest\" the "
+"dependency on Spring libraries. Therefore, a wrapper was implemented in "
+"the **ecos-osgi-loader** library, which accepts the "
+"**ApplicationContext** object and allows retrieving beans from it."
 
 #: ../../integration/OSGI.rst:21
 msgid "Полезные ссылки для реализации OSGI пакетов:"
@@ -76,7 +90,8 @@ msgid ""
 "Описание работы OSGI с подробными примерами реализации самих пакетов"
 msgstr ""
 "`http://java-online.ru/osgi.xhtml <http://java-online.ru/osgi.xhtml>`_ – "
-"Description of OSGI operation with detailed examples of bundle implementation."
+"Description of OSGI operation with detailed examples of bundle "
+"implementation."
 
 #: ../../integration/OSGI.rst:25
 msgid ""
@@ -84,7 +99,9 @@ msgid ""
 "сайт фреймворка Apache Felix, который был использован в качестве "
 "реализации спецификации OSGI"
 msgstr ""
-"`https://felix.apache.org/ <https://felix.apache.org/>`_  – Official website of the Apache Felix framework, which was used as the OSGI specification implementation."
+"`https://felix.apache.org/ <https://felix.apache.org/>`_  – Official "
+"website of the Apache Felix framework, which was used as the OSGI "
+"specification implementation."
 
 #: ../../integration/OSGI.rst:27
 msgid ""
@@ -97,7 +114,8 @@ msgstr ""
 "`https://felix.apache.org/documentation/subprojects/apache-felix-maven-"
 "bundle-plugin-bnd.html "
 "<https://felix.apache.org/documentation/subprojects/apache-felix-maven-"
-"bundle-plugin-bnd.html>`_ – More detailed description of working with the plugin for creating OSGI bundles."
+"bundle-plugin-bnd.html>`_ – More detailed description of working with the"
+" plugin for creating OSGI bundles."
 
 #: ../../integration/OSGI.rst:29
 msgid ""
@@ -106,7 +124,10 @@ msgid ""
 " Все необходимые библиотеки OSGI придут оттуда, как и обертка для работы "
 "с **ApplicationContext**."
 msgstr ""
-"When implementing bundles, you do not need to include **Felix** and **OSGI Core** packages in your projects; simply add a dependency on ecos-osgi-loader. All necessary OSGI libraries will come from there, as well as the wrapper for working with the **ApplicationContext**."
+"When implementing bundles, you do not need to include **Felix** and "
+"**OSGI Core** packages in your projects; simply add a dependency on ecos-"
+"osgi-loader. All necessary OSGI libraries will come from there, as well "
+"as the wrapper for working with the **ApplicationContext**."
 
 #: ../../integration/OSGI.rst:31
 msgid "Версия плагина для сборки пакетов: 5.1.1"
@@ -125,7 +146,8 @@ msgid ""
 "В данной статье будет рассмотрено пошаговое создание бандла, а так же "
 "внедрение этого бандла в микросервис интеграций."
 msgstr ""
-"This article will cover the step-by-step creation of a bundle, as well as the integration of this bundle into the integrations microservice."
+"This article will cover the step-by-step creation of a bundle, as well as"
+" the integration of this bundle into the integrations microservice."
 
 #: ../../integration/OSGI.rst:59
 msgid ""
@@ -133,9 +155,8 @@ msgid ""
 "<https://gitlab.citeck.ru/citeck-projects/ecos-edi-kontur-"
 "lib/-/tree/develop>`_"
 msgstr ""
-"Example we will consider - `ecos-edi-kontur-lib "
-"<https://gitlab.citeck.ru/citeck-projects/ecos-edi-kontur-"
-"lib/-/tree/develop>`_"
+"Example we will consider - `ecos-edi-kontur-lib <https://gitlab.citeck.ru"
+"/citeck-projects/ecos-edi-kontur-lib/-/tree/develop>`_"
 
 #: ../../integration/OSGI.rst:62
 msgid "1. Сборка"
@@ -146,7 +167,8 @@ msgid ""
 "**Бандл** -  стандартный **jar файл** с добавлением в него "
 "**MANIFEST.MF** файла."
 msgstr ""
-"A **Bundle** is a standard **jar file** with the addition of a **MANIFEST.MF** file."
+"A **Bundle** is a standard **jar file** with the addition of a "
+"**MANIFEST.MF** file."
 
 #: ../../integration/OSGI.rst:66
 msgid "Чтобы получить подобную сборку, делаем следующее:"
@@ -157,14 +179,16 @@ msgid ""
 "1.1. Указываем **packaging** свойство в **pom.xml** в значение "
 "**bundle**. Пример с контекстом:"
 msgstr ""
-"1.1. Set the **packaging** property in **pom.xml** to **bundle**. Example with context:"
+"1.1. Set the **packaging** property in **pom.xml** to **bundle**. Example"
+" with context:"
 
 #: ../../integration/OSGI.rst:83
 msgid ""
 "1.2. Указываем в области **build** следующий плагин (у меня получился "
 "довольно большой объем):"
 msgstr ""
-"1.2. Specify the following plugin in the **build** section (I ended up with a rather large configuration):"
+"1.2. Specify the following plugin in the **build** section (I ended up "
+"with a rather large configuration):"
 
 #: ../../integration/OSGI.rst:85
 msgid ""
@@ -180,14 +204,25 @@ msgid ""
 " (ни один не экспортировал) - будет исключение о том, разрешения "
 "зависимостей (wiring) при старте бандла."
 msgstr ""
-"It's worth dwelling in more detail on the configuration of this plugin. A Bundle has its own **ClassLoader**, which depends on other bundles. The rules of ClassLoader inheritance in Java do not apply to it. For this reason, for a class from some library to be available in your bundle, it must be imported (and another bundle, accordingly, must export it). If there is no import, a **ClassNotFoundException** or **NoClassDefFoundError** will occur at runtime (depending on the context of the request to the class). If there is an import, but such a dependency cannot be found in the framework from other bundles (none exported it) - an exception about dependency resolution (wiring) will occur when starting the bundle."
+"It's worth dwelling in more detail on the configuration of this plugin. A"
+" Bundle has its own **ClassLoader**, which depends on other bundles. The "
+"rules of ClassLoader inheritance in Java do not apply to it. For this "
+"reason, for a class from some library to be available in your bundle, it "
+"must be imported (and another bundle, accordingly, must export it). If "
+"there is no import, a **ClassNotFoundException** or "
+"**NoClassDefFoundError** will occur at runtime (depending on the context "
+"of the request to the class). If there is an import, but such a "
+"dependency cannot be found in the framework from other bundles (none "
+"exported it) - an exception about dependency resolution (wiring) will "
+"occur when starting the bundle."
 
 #: ../../integration/OSGI.rst:87
 msgid ""
 "По комментариям в xml должно быть понятно что есть что. Опишу некоторые "
 "подводные камни."
 msgstr ""
-"The comments in the xml should make it clear what is what. I will describe some of the pitfalls."
+"The comments in the xml should make it clear what is what. I will "
+"describe some of the pitfalls."
 
 #: ../../integration/OSGI.rst:89
 msgid ""
@@ -203,14 +238,25 @@ msgid ""
 "``com.google.common.*; version=\"[1.0,26.0)\"`` , что означает, что мы "
 "будем рады любой версии от 1.0.0 до 26.0."
 msgstr ""
-"There are situations where a bundle complains about a missing dependency at startup, but you just loaded that dependency in another bundle (or this dependency exists in the system bundle). This problem can occur because the dependency was exported without a version (or with the default version ``1.0.0``) due to the lack of this information at export runtime, while the import requires, for example, ``25.1.0``. An example solution to such a problem could be specifying the minimum supported version yourself in the manifest. To do this, instead of the import line ``com.google.common.*``, write the following: ``com.google.common.*; version=\"[1.0,26.0)\"``, which means we will accept any version from 1.0.0 to 26.0."
+"There are situations where a bundle complains about a missing dependency "
+"at startup, but you just loaded that dependency in another bundle (or "
+"this dependency exists in the system bundle). This problem can occur "
+"because the dependency was exported without a version (or with the "
+"default version ``1.0.0``) due to the lack of this information at export "
+"runtime, while the import requires, for example, ``25.1.0``. An example "
+"solution to such a problem could be specifying the minimum supported "
+"version yourself in the manifest. To do this, instead of the import line "
+"``com.google.common.*``, write the following: ``com.google.common.*; "
+"version=\"[1.0,26.0)\"``, which means we will accept any version from "
+"1.0.0 to 26.0."
 
 #: ../../integration/OSGI.rst:91
 msgid ""
 "1.3. Сама сборка после предыдущих приготовлений выполняется стандартной "
 "командой ``mvn clean package (install|deploy)``"
 msgstr ""
-"1.3. The build itself, after the previous preparations, is performed with the standard command ``mvn clean package (install|deploy)``"
+"1.3. The build itself, after the previous preparations, is performed with"
+" the standard command ``mvn clean package (install|deploy)``"
 
 #: ../../integration/OSGI.rst:94
 msgid "2. Активатор"
@@ -221,7 +267,8 @@ msgid ""
 "**Активатор** - аналог main метода для бандла. Он вызывается при старте "
 "бандла и при его остановке (методы start и stop)."
 msgstr ""
-"An **Activator** is analogous to a main method for a bundle. It is called when the bundle starts and when it stops (start and stop methods)."
+"An **Activator** is analogous to a main method for a bundle. It is called"
+" when the bundle starts and when it stops (start and stop methods)."
 
 #: ../../integration/OSGI.rst:98
 msgid ""
@@ -231,7 +278,11 @@ msgid ""
 "**Kontur.EDI**. Таким образом, подключив бандл - можем пользоваться "
 "обработкой событий (и прочими фишками библиотеки) из микросервиса."
 msgstr ""
-"The library from the example is used to create objects and register them in the microservice. Registration here means adding the **Diadoc** and **Kontur.EDI** event processing services under the key **KONTUR**. Thus, by connecting the bundle, we can use event processing (and other features of the library) from the microservice."
+"The library from the example is used to create objects and register them "
+"in the microservice. Registration here means adding the **Diadoc** and "
+"**Kontur.EDI** event processing services under the key **KONTUR**. Thus, "
+"by connecting the bundle, we can use event processing (and other features"
+" of the library) from the microservice."
 
 #: ../../integration/OSGI.rst:101
 msgid "3. Загрузка в микросервис"
@@ -242,7 +293,8 @@ msgid ""
 "Заходим в **Рабочее пространство \"Раздел администратора\" → Журнал OSGI "
 "пакеты**. Загружаем через кнопку + свой бандл."
 msgstr ""
-"Go to **Workspace \"Administrator Section\" → OSGI Bundles Journal**. Load your bundle via the + button."
+"Go to **Workspace \"Administrator Section\" → OSGI Bundles Journal**. "
+"Load your bundle via the + button."
 
 #: ../../integration/OSGI.rst:109
 msgid "Если все ок, увидим следующую картину:"
@@ -253,21 +305,25 @@ msgid ""
 "Важный факт, что статус - **ACTIVE**, это означает, что бандл зарезолвен,"
 " установлен и фреймворк его успешно стартанул."
 msgstr ""
-"An important fact is that the status is **ACTIVE**, which means the bundle is resolved, installed, and the framework has successfully started it."
+"An important fact is that the status is **ACTIVE**, which means the "
+"bundle is resolved, installed, and the framework has successfully started"
+" it."
 
 #: ../../integration/OSGI.rst:117
 msgid ""
 "Если есть ошибка загрузки - необходимо корректировать либо код, либо "
 "настройки бандла (импорт и экспорт)."
 msgstr ""
-"If there is a loading error, it is necessary to correct either the code or the bundle settings (import and export)."
+"If there is a loading error, it is necessary to correct either the code "
+"or the bundle settings (import and export)."
 
 #: ../../integration/OSGI.rst:119
 msgid ""
 "Обязательно проверьте, что в рантайме нет ошибок при работе бандла. Как "
 "писалось выше, отсутствующие импорты могут привести к ошибкам рантайма."
 msgstr ""
-"Be sure to check that there are no runtime errors when the bundle is running. As written above, missing imports can lead to runtime errors."
+"Be sure to check that there are no runtime errors when the bundle is "
+"running. As written above, missing imports can lead to runtime errors."
 
 #: ../../integration/OSGI.rst:123
 msgid ""
@@ -275,7 +331,9 @@ msgid ""
 "получаете эту же ошибку - сделайте рестарт микросервиса интеграций после "
 "каждого неудачного старта бандла."
 msgstr ""
-"If you get an error, fix the bundle, load a new bundle, and get the same error - restart the integrations microservice after each unsuccessful bundle start."
+"If you get an error, fix the bundle, load a new bundle, and get the same "
+"error - restart the integrations microservice after each unsuccessful "
+"bundle start."
 
 #: ../../integration/OSGI.rst:126
 msgid "Способы расширения микросервиса интеграций с помощью бандлов"
@@ -290,7 +348,8 @@ msgid ""
 "Подготовительная часть - импортировать зависимости records с помощью "
 "maven в своем бандле."
 msgstr ""
-"Preparatory part - import the records dependencies using Maven in your bundle."
+"Preparatory part - import the records dependencies using Maven in your "
+"bundle."
 
 #: ../../integration/OSGI.rst:133 ../../integration/OSGI.rst:154
 #: ../../integration/OSGI.rst:176
@@ -307,14 +366,18 @@ msgid ""
 "``ApplicationContextReflection`` бин класса ``RecordsService`` и вызываем"
 " у него метод **register**, передав свой ``RecordsDao``."
 msgstr ""
-"After writing - in the ``BundleActivator``, you can use ``ApplicationContextReflection`` to get the bean of the ``RecordsService`` class and call its **register** method, passing your ``RecordsDao``."
+"After writing - in the ``BundleActivator``, you can use "
+"``ApplicationContextReflection`` to get the bean of the "
+"``RecordsService`` class and call its **register** method, passing your "
+"``RecordsDao``."
 
 #: ../../integration/OSGI.rst:147
 msgid ""
 "Теперь, запросы по указанному **sourceId** будут попадать в ваш "
 "``RecordsDao``."
 msgstr ""
-"Now, requests for the specified **sourceId** will go to your ``RecordsDao``."
+"Now, requests for the specified **sourceId** will go to your "
+"``RecordsDao``."
 
 #: ../../integration/OSGI.rst:150
 msgid "2. Регистрация новых команд"
@@ -325,14 +388,16 @@ msgid ""
 "Подготовительная часть - импортировать зависимости commands с помощью "
 "maven в своем бандле."
 msgstr ""
-"Preparatory part - import the commands dependencies using Maven in your bundle."
+"Preparatory part - import the commands dependencies using Maven in your "
+"bundle."
 
 #: ../../integration/OSGI.rst:163
 msgid ""
 "Дальше объявить свою ``CommandDto``, указать аннотацией ``@CommandType`` "
 "тип для нее. Создать ``CommandExecutor`` для этой dto."
 msgstr ""
-"Next, declare your ``CommandDto``, specify its type with the ``@CommandType`` annotation. Create a ``CommandExecutor`` for this DTO."
+"Next, declare your ``CommandDto``, specify its type with the "
+"``@CommandType`` annotation. Create a ``CommandExecutor`` for this DTO."
 
 #: ../../integration/OSGI.rst:165
 msgid ""
@@ -341,14 +406,16 @@ msgid ""
 " у него метод **addExecutor**, передав свою реализацию "
 "``CommandExecutor``."
 msgstr ""
-"After writing - in the ``BundleActivator``, you can use ``ApplicationContextReflection`` to get the bean of the ``CommandsService`` class and call its **addExecutor** method, passing your implementation of ``CommandExecutor``."
+"After writing - in the ``BundleActivator``, you can use "
+"``ApplicationContextReflection`` to get the bean of the "
+"``CommandsService`` class and call its **addExecutor** method, passing "
+"your implementation of ``CommandExecutor``."
 
 #: ../../integration/OSGI.rst:167
 msgid ""
 "Теперь, команды с указанным типом будут попадать в ваш "
 "**CommandExecutor**."
-msgstr ""
-"Now, commands with the specified type will go to your **CommandExecutor**."
+msgstr "Now, commands with the specified type will go to your **CommandExecutor**."
 
 #: ../../integration/OSGI.rst:170
 msgid "3. Возможность работы с camel"
@@ -359,21 +426,24 @@ msgid ""
 "В основном пока что это используется для ЭДО-интеграций, но бывает проще "
 "использовать camel для некоторых вещей."
 msgstr ""
-"This is mainly used so far for EDI integrations, but sometimes it's easier to use Camel for certain things."
+"This is mainly used so far for EDI integrations, but sometimes it's "
+"easier to use Camel for certain things."
 
 #: ../../integration/OSGI.rst:174
 msgid ""
 "Чтобы его использовать - добавить зависимости camel, которые нужны с "
 "помощью maven в своем бандле."
 msgstr ""
-"To use it - add the necessary Camel dependencies using Maven in your bundle."
+"To use it - add the necessary Camel dependencies using Maven in your "
+"bundle."
 
 #: ../../integration/OSGI.rst:182
 msgid ""
 "Дальше - в ``BundleActivator`` создать ``DefaultCamelContext``. Добавить "
 "в него необходимые маршруты. Запустить контекст."
 msgstr ""
-"Next - in the ``BundleActivator``, create a ``DefaultCamelContext``. Add the necessary routes to it. Start the context."
+"Next - in the ``BundleActivator``, create a ``DefaultCamelContext``. Add "
+"the necessary routes to it. Start the context."
 
 #: ../../integration/OSGI.rst:184
 msgid ""
@@ -381,7 +451,9 @@ msgid ""
 "рамках контекста обмениваться сообщениями, но и в рамках JVM, что может "
 "быть особенно полезно (direct-vm компонент)."
 msgstr ""
-"Now you have Camel running in your bundle. Camel allows not only exchanging messages within the context but also within the JVM, which can be especially useful (direct-vm component)."
+"Now you have Camel running in your bundle. Camel allows not only "
+"exchanging messages within the context but also within the JVM, which can"
+" be especially useful (direct-vm component)."
 
 #: ../../integration/OSGI.rst:186
 msgid ""
@@ -389,7 +461,9 @@ msgid ""
 "не тестировались, но до кролика или иного сервиса (исходящий запрос) - "
 "очень даже удобно ходить."
 msgstr ""
-"Camel capabilities like dynamically adding endpoints, etc., have not been tested yet, but it is very convenient to reach RabbitMQ or other services (outgoing request)."
+"Camel capabilities like dynamically adding endpoints, etc., have not been"
+" tested yet, but it is very convenient to reach RabbitMQ or other "
+"services (outgoing request)."
 
 #: ../../integration/OSGI.rst:189
 msgid "4. Регистрация нового endpoint"
@@ -405,7 +479,9 @@ msgstr "Add to the import packages:"
 
 #: ../../integration/OSGI.rst:209
 msgid "В бандле создаем класс(ы) содержащий(ие) методы для обработки запросов."
-msgstr "In the bundle, create class(es) containing methods for processing requests."
+msgstr ""
+"In the bundle, create class(es) containing methods for processing "
+"requests."
 
 #: ../../integration/OSGI.rst:211
 msgid ""
@@ -420,7 +496,16 @@ msgid ""
 "<https://www.baeldung.com/spring-pathvariable>`_ и переменные заголовка "
 "`@RequestHeader <https://www.baeldung.com/spring-rest-http-headers>`_."
 msgstr ""
-"Possible implementation options for such a method include using `RequestEntity <https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/RequestEntity.html>`_, `ResponseEntity <https://www.baeldung.com/spring-response-entity>`_, using `@RequestBody <https://www.baeldung.com/spring-request-response-body>`_, `example <https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/request-response-entity.html>`_. Also, methods can accept request path variables `@PathVariable <https://www.baeldung.com/spring-pathvariable>`_ and header variables `@RequestHeader <https://www.baeldung.com/spring-rest-http-headers>`_."
+"Possible implementation options for such a method include using "
+"`RequestEntity <https://docs.spring.io/spring-framework/docs/current"
+"/javadoc-api/org/springframework/http/RequestEntity.html>`_, "
+"`ResponseEntity <https://www.baeldung.com/spring-response-entity>`_, "
+"using `@RequestBody <https://www.baeldung.com/spring-request-response-"
+"body>`_, `example <https://www.logicbig.com/tutorials/spring-framework"
+"/spring-web-mvc/request-response-entity.html>`_. Also, methods can accept"
+" request path variables `@PathVariable <https://www.baeldung.com/spring-"
+"pathvariable>`_ and header variables `@RequestHeader "
+"<https://www.baeldung.com/spring-rest-http-headers>`_."
 
 #: ../../integration/OSGI.rst:213
 msgid ""
@@ -431,64 +516,103 @@ msgid ""
 "``RequestMappingHandlerMapping``. Пример для регистрации нового endpoint "
 "``\"ecos/message\"``:"
 msgstr ""
-"In the ``start`` method of the activator, using ``ApplicationContextReflection``, get the ``RequestMappingHandlerMapping``, configure the ``RequestMappingInfo.BuilderConfiguration``, create a ``RequestMappingInfo``, and register it in the ``RequestMappingHandlerMapping``. Example for registering a new endpoint ``\"ecos/message\"``:"
+"In the ``start`` method of the activator, using "
+"``ApplicationContextReflection``, get the "
+"``RequestMappingHandlerMapping``, configure the "
+"``RequestMappingInfo.BuilderConfiguration``, create a "
+"``RequestMappingInfo``, and register it in the "
+"``RequestMappingHandlerMapping``. Example for registering a new endpoint "
+"``\"ecos/message\"``:"
 
 #: ../../integration/OSGI.rst:237
 msgid ""
 "В методе ``stop`` предусматриваем отключение endpoint при помощи вызова "
 "``handlerMapping.unregisterMapping(info)``."
 msgstr ""
-"In the ``stop`` method, provide for disabling the endpoint by calling ``handlerMapping.unregisterMapping(info)``."
+"In the ``stop`` method, provide for disabling the endpoint by calling "
+"``handlerMapping.unregisterMapping(info)``."
 
-#: ../../integration/OSGI.rst:239
+#: ../../integration/OSGI.rst:240
+msgid "Использование RecordsService через DTO"
+msgstr "Using RecordsService via DTO"
+
+#: ../../integration/OSGI.rst:242
 msgid ""
 "Для изменения записей в Citeck можно использовать ``RecordsService``. "
 "Есть следующие особенности при работе с сервисом через DTO:"
 msgstr ""
-"To modify records in Citeck, you can use ``RecordsService``. There are the following specifics when working with the service via DTO:"
+"To modify records in Citeck, you can use ``RecordsService``. There are "
+"the following specifics when working with the service via DTO:"
 
-#: ../../integration/OSGI.rst:241
-msgid "Создание ObjectData из DTO-объекта:"
-msgstr "Creating ObjectData from a DTO object:"
+#: ../../integration/OSGI.rst:245
+msgid "Создание ObjectData из DTO-объекта"
+msgstr "Creating ObjectData from a DTO Object"
 
-#: ../../integration/OSGI.rst:247
+#: ../../integration/OSGI.rst:252
+msgid "Псевдоним свойства через JsonProperty"
+msgstr "Property Alias via JsonProperty"
+
+#: ../../integration/OSGI.rst:254
 msgid ""
 "Для использования псевдонима в свойствах можно использовать "
 "``ecos.com.fasterxml.jackson210.annotation.JsonProperty``"
 msgstr ""
-"To use an alias for properties, you can use ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``"
+"To use an alias for properties, you can use "
+"``ecos.com.fasterxml.jackson210.annotation.JsonProperty``"
 
-#: ../../integration/OSGI.rst:256
+#: ../../integration/OSGI.rst:264
+msgid "Свойство с типом ASSOC"
+msgstr "Property of Type ASSOC"
+
+#: ../../integration/OSGI.rst:266
 msgid "Свойство с типом ``ASSOC: private RecordRef nsdb_counterparty``"
 msgstr "Property of type ``ASSOC: private RecordRef nsdb_counterparty``"
 
-#: ../../integration/OSGI.rst:265
+#: ../../integration/OSGI.rst:276
+msgid "Свойство с типом CONTENT"
+msgstr "Property of Type CONTENT"
+
+#: ../../integration/OSGI.rst:278
 msgid "Свойство с типом ``CONTENT: private ObjectData nsdb_content``"
 msgstr "Property of type ``CONTENT: private ObjectData nsdb_content``"
 
-#: ../../integration/OSGI.rst:275
+#: ../../integration/OSGI.rst:289
+msgid "Свойства FileRepresentation"
+msgstr "FileRepresentation Properties"
+
+#: ../../integration/OSGI.rst:291
 msgid ""
 "Возможные свойства для установки "
 "``ru.citeck.ecos.records.source.alf.file.FileRepresentation``"
 msgstr ""
-"Possible properties to set for ``ru.citeck.ecos.records.source.alf.file.FileRepresentation``"
+"Possible properties to set for "
+"``ru.citeck.ecos.records.source.alf.file.FileRepresentation``"
 
-#: ../../integration/OSGI.rst:277
+#: ../../integration/OSGI.rst:294
 msgid "Ссылка на родителя из ASSOC"
 msgstr "Reference to the parent from ASSOC"
 
-#: ../../integration/OSGI.rst:284
+#: ../../integration/OSGI.rst:302
+msgid "Свойство на основе атрибута с двоеточием в имени"
+msgstr "Property Based on an Attribute with a Colon in the Name"
+
+#: ../../integration/OSGI.rst:304
 msgid ""
 "Объявление свойства, которое базируется на атрибуте типа с двоеточием "
 "(cm:name, idocs:inn)"
 msgstr ""
-"Declaring a property that is based on an attribute of a type with a colon (cm:name, idocs:inn)"
+"Declaring a property that is based on an attribute of a type with a colon"
+" (cm:name, idocs:inn)"
 
-#: ../../integration/OSGI.rst:293
+#: ../../integration/OSGI.rst:314
+msgid "Указание alfresco-типа для родителя"
+msgstr "Specifying the alfresco-type for the Parent"
+
+#: ../../integration/OSGI.rst:316
 msgid "Указание определенного alfresco-типа для родителя при создании записи"
 msgstr "Specifying a specific alfresco-type for the parent when creating a record"
 
-#: ../../integration/OSGI.rst:301
+#: ../../integration/OSGI.rst:324
 msgid ""
 "где ``ru.citeck.ecos.records.source.alf.meta.AlfNodeRecord.ATTR_TYPE = "
 "“type“``"
@@ -496,11 +620,17 @@ msgstr ""
 "where ``ru.citeck.ecos.records.source.alf.meta.AlfNodeRecord.ATTR_TYPE = "
 "“type“``"
 
-#: ../../integration/OSGI.rst:303
-msgid "Указать определенный тип связи между родителем и дочерней записью"
-msgstr "Specify a specific association type between the parent and the child record"
+#: ../../integration/OSGI.rst:327
+msgid "Указание типа связи родитель-потомок"
+msgstr "Specifying the Parent-Child Relationship Type"
 
-#: ../../integration/OSGI.rst:311
+#: ../../integration/OSGI.rst:329
+msgid "Указать определенный тип связи между родителем и дочерней записью"
+msgstr ""
+"Specify a specific association type between the parent and the child "
+"record"
+
+#: ../../integration/OSGI.rst:337
 msgid ""
 "где ``ru.citeck.ecos.records2.RecordConstants.ATT_PARENT_ATT = "
 "“_parentAtt“;``"
@@ -508,29 +638,37 @@ msgstr ""
 "where ``ru.citeck.ecos.records2.RecordConstants.ATT_PARENT_ATT = "
 "“_parentAtt“;``"
 
-#: ../../integration/OSGI.rst:313
+#: ../../integration/OSGI.rst:340
+msgid "Тестирование"
+msgstr "Testing"
+
+#: ../../integration/OSGI.rst:342
 msgid ""
 "Тестирование работоспособности методов можно проверить, реализовав в "
 "тесте интерфейсы ``RecordMutateDao``, ``RecordAttsDao``, "
 "``RecordsQueryDao`` и имитировав работу ``RecordsService``, например:"
 msgstr ""
-"Testing the functionality of methods can be done by implementing the ``RecordMutateDao``, ``RecordAttsDao``, ``RecordsQueryDao`` interfaces in a test and simulating the work of ``RecordsService``, for example:"
+"Testing the functionality of methods can be done by implementing the "
+"``RecordMutateDao``, ``RecordAttsDao``, ``RecordsQueryDao`` interfaces in"
+" a test and simulating the work of ``RecordsService``, for example:"
 
-#: ../../integration/OSGI.rst:329
+#: ../../integration/OSGI.rst:358
 msgid "где **this** реализует ``RecordMutateDao``, ``RecordsQueryDao``."
 msgstr "where **this** implements ``RecordMutateDao``, ``RecordsQueryDao``."
 
-#: ../../integration/OSGI.rst:332
+#: ../../integration/OSGI.rst:361
 msgid "Особенности"
 msgstr "Specifics"
 
-#: ../../integration/OSGI.rst:334
+#: ../../integration/OSGI.rst:365
 msgid ""
 "Одновременное использование аннотаций JsonProperty и AttName приводит к "
 "тому, что при чтении DTO из RecordsService свойство не заполняется."
 msgstr ""
-"Simultaneous use of JsonProperty and AttName annotations results in the property not being populated when reading the DTO from RecordsService."
+"Simultaneous use of JsonProperty and AttName annotations results in the "
+"property not being populated when reading the DTO from RecordsService."
 
-#: ../../integration/OSGI.rst:346
+#: ../../integration/OSGI.rst:377
 msgid "Выведет на консоль null."
 msgstr "Will print null to the console."
+
