@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Citeck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -30,13 +29,13 @@ msgstr "Contents"
 #: ../../general/AI_instruments/call-recording-module.rst:9
 msgid ""
 "**Модуль callrecording** захватывает аудио из браузерной вкладки и "
-"микрофона через Chrome-расширение, передаёт потоком по WebSocket, "
-"транскрибирует через GigaAM и генерирует резюме через LLM. Результат "
-"сохраняется как Citeck-активность типа ``meeting-activity`` или ``call-"
+"микрофона через Chrome-расширение, передаёт его фрагментами через REST "
+"API, транскрибирует через GigaAM и генерирует резюме через LLM. Результат"
+" сохраняется как Citeck-активность типа ``meeting-activity`` или ``call-"
 "activity``."
 msgstr ""
 "The **callrecording module** captures audio from a browser tab and "
-"microphone via a Chrome extension, streams it over WebSocket, "
+"microphone via a Chrome extension, sends it in chunks via REST API, "
 "transcribes it using GigaAM, and generates a summary via LLM. The result "
 "is saved as a Citeck activity of type ``meeting-activity`` or ``call-"
 "activity``."
@@ -45,11 +44,16 @@ msgstr ""
 msgid ""
 "Статья описывает архитектуру модуля, REST API, конфигурацию, артефакты и "
 "ключевые файлы. Функциональность доступна начиная с версии **1.11.0 (30 "
-"апреля 2026)**."
+"апреля 2026)**. Начиная с версии **1.12.0 (3 июня 2026)** аудио "
+"передаётся по REST вместо WebSocket — отдельная WebSocket-инфраструктура "
+"и аутентификация по ``wsToken`` больше не используются."
 msgstr ""
-"This article describes the module architecture, REST API, configuration, artifacts, and "
-"key files. The feature is available starting from version **1.11.0 (April 30, "
-"2026)**."
+"This article describes the module architecture, REST API, configuration, "
+"artifacts, and key files. The feature is available starting from version "
+"**1.11.0 (April 30, 2026)**. Starting from version **1.12.0 (June 3, "
+"2026)**, audio is transmitted over REST instead of WebSocket — the "
+"separate WebSocket infrastructure and ``wsToken`` authentication are no "
+"longer used."
 
 #: ../../general/AI_instruments/call-recording-module.rst:14
 msgid "Принцип работы"
@@ -61,9 +65,9 @@ msgid ""
 "звонка до появления структурированной записи встречи в CRM/проекте — без "
 "ручного участия пользователя в процессе обработки."
 msgstr ""
-"The extension handles the entire end-to-end flow: from detecting an active "
-"call to creating a structured meeting record in the CRM/project — without "
-"any manual user involvement in the processing pipeline."
+"The extension handles the entire end-to-end flow: from detecting an "
+"active call to creating a structured meeting record in the CRM/project — "
+"without any manual user involvement in the processing pipeline."
 
 #: ../../general/AI_instruments/call-recording-module.rst:19
 msgid "Обнаружение звонка"
@@ -77,9 +81,9 @@ msgid ""
 "достаточно открыть вкладку встречи — ничего запускать вручную не нужно."
 msgstr ""
 "``content/call-detector.js`` monitors open Chrome tabs. As soon as the "
-"user navigates to a Yandex Telemost page, the script sends a ``call-detected`` "
-"event to the Service Worker. The user only needs to open the meeting tab — "
-"no manual action is required."
+"user navigates to a Yandex Telemost page, the script sends a ``call-"
+"detected`` event to the Service Worker. The user only needs to open the "
+"meeting tab — no manual action is required."
 
 #: ../../general/AI_instruments/call-recording-module.rst:24
 msgid "Захват и передача аудио"
@@ -90,16 +94,16 @@ msgid ""
 "Service Worker создаёт скрытое окно-рекордер (``recorder/recorder.js``), "
 "которое работает параллельно со встречей:"
 msgstr ""
-"The Service Worker creates a hidden recorder window (``recorder/recorder.js``) "
-"that runs alongside the meeting:"
+"The Service Worker creates a hidden recorder window "
+"(``recorder/recorder.js``) that runs alongside the meeting:"
 
 #: ../../general/AI_instruments/call-recording-module.rst:28
 msgid ""
 "**Захват голосов участников** — через ``tabCapture.getMediaStreamId`` "
 "получает аудиопоток вкладки Telemost (то, что слышит пользователь)."
 msgstr ""
-"**Participant audio capture** — obtains the Telemost tab audio stream via "
-"``tabCapture.getMediaStreamId`` (what the user hears)."
+"**Participant audio capture** — obtains the Telemost tab audio stream via"
+" ``tabCapture.getMediaStreamId`` (what the user hears)."
 
 #: ../../general/AI_instruments/call-recording-module.rst:29
 #, python-brace-format
@@ -109,8 +113,8 @@ msgid ""
 "включает, поэтому используется отдельный поток."
 msgstr ""
 "**Microphone capture** — captures the user's local microphone via "
-"``getUserMedia({audio: true})``. ``tabCapture`` does not include the microphone "
-"on its own, so a separate stream is used."
+"``getUserMedia({audio: true})``. ``tabCapture`` does not include the "
+"microphone on its own, so a separate stream is used."
 
 #: ../../general/AI_instruments/call-recording-module.rst:30
 msgid ""
@@ -123,24 +127,31 @@ msgstr ""
 #: ../../general/AI_instruments/call-recording-module.rst:31
 msgid ""
 "**Кодирование** — ``MediaRecorder`` пишет сжатый поток в формат "
-"``audio/webm;codecs=opus`` чанками по 5 секунд, что позволяет начинать "
-"передачу немедленно, не дожидаясь конца встречи."
+"``audio/webm;codecs=opus`` фрагментами по 30 секунд, что позволяет "
+"начинать передачу немедленно, не дожидаясь конца встречи."
 msgstr ""
 "**Encoding** — ``MediaRecorder`` writes the compressed stream in "
-"``audio/webm;codecs=opus`` format in 5-second chunks, enabling immediate "
+"``audio/webm;codecs=opus`` format in 30-second chunks, enabling immediate "
 "transmission without waiting for the meeting to end."
 
 #: ../../general/AI_instruments/call-recording-module.rst:32
+#, python-brace-format
 msgid ""
-"**Стриминг** — каждый чанк отправляется по WebSocket с бинарным "
-"протоколом: 4 байта sequence number (big-endian) + аудиоданные. При "
-"разрыве соединения ``lib/ws-client.js`` автоматически переподключается с "
-"экспоненциальной задержкой (до 5 попыток, максимум 30 сек)."
+"**Передача** — каждый фрагмент аудио отправляется POST-запросом на ``/api"
+"/call-recording/session/{id}/chunks`` с телом ``application/octet-"
+"stream`` и заголовками ``X-Upload-Token`` (токен сессии) и ``X-Chunk-"
+"Sequence`` (порядковый номер фрагмента). При сетевых ошибках и ответах "
+"5xx расширение повторяет отправку с экспоненциально растущей задержкой "
+"(от 1 до 30 секунд) в пределах 5 минут; ответ 4xx считается неисправимой "
+"ошибкой, и запись останавливается."
 msgstr ""
-"**Streaming** — each chunk is sent over WebSocket using a binary "
-"protocol: 4-byte sequence number (big-endian) + audio data. On disconnect, "
-"``lib/ws-client.js`` automatically reconnects with exponential backoff "
-"(up to 5 attempts, maximum 30 seconds)."
+"**Transmission** — each audio chunk is sent via a POST request to ``/api"
+"/call-recording/session/{id}/chunks`` with an ``application/octet-"
+"stream`` body and the ``X-Upload-Token`` (session token) and ``X-Chunk-"
+"Sequence`` (chunk sequence number) headers. On network errors and 5xx "
+"responses, the extension retries sending with exponentially increasing "
+"delay (from 1 to 30 seconds) for up to 5 minutes; a 4xx response is "
+"treated as an unrecoverable error, and recording stops."
 
 #: ../../general/AI_instruments/call-recording-module.rst:34
 msgid ""
@@ -148,8 +159,8 @@ msgid ""
 "потерять контекст при выгрузке MV3 Service Worker после ~30 сек "
 "неактивности."
 msgstr ""
-"The recording state is mirrored to ``chrome.storage.session`` to preserve "
-"context when the MV3 Service Worker is unloaded after ~30 seconds of "
+"The recording state is mirrored to ``chrome.storage.session`` to preserve"
+" context when the MV3 Service Worker is unloaded after ~30 seconds of "
 "inactivity."
 
 #: ../../general/AI_instruments/call-recording-module.rst:37
@@ -158,13 +169,14 @@ msgstr "Transcription and Summary Generation"
 
 #: ../../general/AI_instruments/call-recording-module.rst:39
 msgid ""
-"Аудиопоток поступает в бэкенд ``citeck-ai`` через WebSocket-эндпоинт "
-"``/gateway/ai/ws/`` (проксируется через nginx в обход основного gateway, "
-"который WebSocket не поддерживает). Бэкенд запускает pipeline:"
+"Фрагменты аудио поступают в бэкенд ``citeck-ai`` по REST через "
+"стандартный gateway (пути вида ``/gateway/ai/api/call-recording/…``) — "
+"отдельный WebSocket-прокси не требуется. Бэкенд запускает pipeline:"
 msgstr ""
-"The audio stream is delivered to the ``citeck-ai`` backend via the WebSocket "
-"endpoint ``/gateway/ai/ws/`` (proxied through nginx, bypassing the main gateway "
-"which does not support WebSocket). The backend runs the following pipeline:"
+"Audio chunks are delivered to the ``citeck-ai`` backend over REST through "
+"the standard gateway (paths like ``/gateway/ai/api/call-recording/…``) — "
+"a separate WebSocket proxy is not required. The backend runs the "
+"following pipeline:"
 
 #: ../../general/AI_instruments/call-recording-module.rst:41
 msgid ""
@@ -179,21 +191,28 @@ msgid ""
 "**LLM summary** — на основе транскрипта языковая модель формирует "
 "структурированное резюме встречи."
 msgstr ""
-"**LLM summary** — based on the transcript, the language model generates "
-"a structured meeting summary."
+"**LLM summary** — based on the transcript, the language model generates a"
+" structured meeting summary."
 
 #: ../../general/AI_instruments/call-recording-module.rst:44
 #, python-brace-format
 msgid ""
-"Сессия завершается текстовым WebSocket-сообщением ``{ type: \"end\" }``. "
-"Пока идёт обработка, Service Worker каждые 3 секунды опрашивает "
+"После выгрузки последнего фрагмента расширение завершает сессию запросом "
+"``POST /session/{id}/end``, что запускает пост-обработку. Если расширение"
+" не смогло завершить сессию явно (окно рекордера закрыто, сбой браузера),"
+" бэкенд автоматически завершает сессию, не получавшую фрагментов дольше 5"
+" минут. Пока идёт обработка, Service Worker каждые 3 секунды опрашивает "
 "``/session/{id}/status`` (до 15 минут) и записывает результат в "
 "``chrome.storage.local``."
 msgstr ""
-"The session is terminated by a text WebSocket message ``{ type: \"end\" }``. "
-"While processing is underway, the Service Worker polls "
-"``/session/{id}/status`` every 3 seconds (for up to 15 minutes) and stores "
-"the result in ``chrome.storage.local``."
+"After uploading the last chunk, the extension ends the session with a "
+"``POST /session/{id}/end`` request, which triggers post-processing. If "
+"the extension fails to end the session explicitly (the recorder window "
+"is closed, a browser crash), the backend automatically ends any session "
+"that has not received chunks for more than 5 minutes. While processing "
+"is underway, the Service Worker polls ``/session/{id}/status`` every 3 "
+"seconds (for up to 15 minutes) and stores the result in "
+"``chrome.storage.local``."
 
 #: ../../general/AI_instruments/call-recording-module.rst:47
 msgid "Сохранение в Citeck"
@@ -207,10 +226,10 @@ msgid ""
 "popup-интерфейсе расширения через combobox с поиском ещё до начала "
 "записи."
 msgstr ""
-"The result — transcript and summary — is saved as a ``meeting-"
-"activity`` object in the Citeck platform and automatically linked to the "
-"relevant entity (deal or project). The user selects the entity in the "
-"extension popup via a searchable combobox before recording starts."
+"The result — transcript and summary — is saved as a ``meeting-activity`` "
+"object in the Citeck platform and automatically linked to the relevant "
+"entity (deal or project). The user selects the entity in the extension "
+"popup via a searchable combobox before recording starts."
 
 #: ../../general/AI_instruments/call-recording-module.rst:52
 msgid "Уведомление пользователя"
@@ -223,65 +242,58 @@ msgid ""
 "гарантирует, что пользователь узнает о готовности результата вне "
 "зависимости от состояния UI."
 msgstr ""
-"When processing is complete, the Service Worker sends a Chrome Notification. "
-"The extension popup may be closed at that point — the notification "
-"ensures the user is informed that the result is ready regardless of the UI state."
+"When processing is complete, the Service Worker sends a Chrome "
+"Notification. The extension popup may be closed at that point — the "
+"notification ensures the user is informed that the result is ready "
+"regardless of the UI state."
 
 #: ../../general/AI_instruments/call-recording-module.rst:58
 msgid "Архитектура"
 msgstr "Architecture"
 
-#: ../../general/AI_instruments/call-recording-module.rst:72
+#: ../../general/AI_instruments/call-recording-module.rst:74
 msgid "Зависимости (внешние сервисы)"
 msgstr "Dependencies (External Services)"
 
-#: ../../general/AI_instruments/call-recording-module.rst:74
+#: ../../general/AI_instruments/call-recording-module.rst:76
 msgid ""
-"**citeck-ai** — WebSocket-хэндлер + pipeline: STT → LLM summary → "
-"сохранение активности"
+"**citeck-ai** — REST API + pipeline: STT → LLM summary → сохранение "
+"активности"
 msgstr ""
-"**citeck-ai** — WebSocket handler + pipeline: STT → LLM summary → "
+"**citeck-ai** — REST API + pipeline: STT → LLM summary → "
 "activity save"
 
-#: ../../general/AI_instruments/call-recording-module.rst:75
+#: ../../general/AI_instruments/call-recording-module.rst:77
 msgid "**citeck-stt-sidecar** — сервис транскрипции на базе GigaAM"
 msgstr "**citeck-stt-sidecar** — GigaAM-based transcription service"
 
-#: ../../general/AI_instruments/call-recording-module.rst:76
-msgid ""
-"**nginx** — WebSocket proxy (``/gateway/ai/ws/``) в обход основного "
-"gateway, который WS не проксирует"
-msgstr ""
-"**nginx** — WebSocket proxy (``/gateway/ai/ws/``) bypassing the main "
-"gateway, which does not proxy WS"
-
-#: ../../general/AI_instruments/call-recording-module.rst:80
+#: ../../general/AI_instruments/call-recording-module.rst:81
 msgid "REST API"
 msgstr "REST API"
 
-#: ../../general/AI_instruments/call-recording-module.rst:87
+#: ../../general/AI_instruments/call-recording-module.rst:88
 msgid "Метод"
 msgstr "Method"
 
-#: ../../general/AI_instruments/call-recording-module.rst:88
+#: ../../general/AI_instruments/call-recording-module.rst:89
 msgid "URL"
 msgstr "URL"
 
-#: ../../general/AI_instruments/call-recording-module.rst:89
+#: ../../general/AI_instruments/call-recording-module.rst:90
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/AI_instruments/call-recording-module.rst:90
-#: ../../general/AI_instruments/call-recording-module.rst:93
-#: ../../general/AI_instruments/call-recording-module.rst:102
+#: ../../general/AI_instruments/call-recording-module.rst:91
+#: ../../general/AI_instruments/call-recording-module.rst:94
+#: ../../general/AI_instruments/call-recording-module.rst:106
 msgid "``GET``"
 msgstr "``GET``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:91
+#: ../../general/AI_instruments/call-recording-module.rst:92
 msgid "``/api/call-recording/config``"
 msgstr "``/api/call-recording/config``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:92
+#: ../../general/AI_instruments/call-recording-module.rst:93
 msgid ""
 "Платформы, типы записей, STT-провайдер (Speech-to-Text — сервис "
 "распознавания речи, преобразующий аудио в текст)"
@@ -289,70 +301,138 @@ msgstr ""
 "Platforms, recording types, STT provider (Speech-to-Text — a speech "
 "recognition service that converts audio to text)"
 
-#: ../../general/AI_instruments/call-recording-module.rst:94
+#: ../../general/AI_instruments/call-recording-module.rst:95
 msgid "``/api/call-recording/records``"
 msgstr "``/api/call-recording/records``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:95
+#: ../../general/AI_instruments/call-recording-module.rst:96
 msgid "Поиск записей по типу"
 msgstr "Search records by type"
 
-#: ../../general/AI_instruments/call-recording-module.rst:96
-#: ../../general/AI_instruments/call-recording-module.rst:99
+#: ../../general/AI_instruments/call-recording-module.rst:97
+#: ../../general/AI_instruments/call-recording-module.rst:100
+#: ../../general/AI_instruments/call-recording-module.rst:103
 msgid "``POST``"
 msgstr "``POST``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:97
+#: ../../general/AI_instruments/call-recording-module.rst:98
 msgid "``/api/call-recording/session/start``"
 msgstr "``/api/call-recording/session/start``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:98
-msgid "Старт сессии — возвращает ``sessionId`` и ``wsToken``"
-msgstr "Start session — returns ``sessionId`` and ``wsToken``"
+#: ../../general/AI_instruments/call-recording-module.rst:99
+msgid "Старт сессии — возвращает ``sessionId`` и ``uploadToken``"
+msgstr "Start session — returns ``sessionId`` and ``uploadToken``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:100
+#: ../../general/AI_instruments/call-recording-module.rst:101
+#, python-brace-format
+msgid "``/api/call-recording/session/{id}/chunks``"
+msgstr "``/api/call-recording/session/{id}/chunks``"
+
+#: ../../general/AI_instruments/call-recording-module.rst:102
+msgid ""
+"Загрузка фрагмента аудио (тело ``application/octet-stream``, заголовки "
+"``X-Upload-Token`` и ``X-Chunk-Sequence``)"
+msgstr ""
+"Upload an audio chunk (``application/octet-stream`` body, ``X-Upload-"
+"Token`` and ``X-Chunk-Sequence`` headers)"
+
+#: ../../general/AI_instruments/call-recording-module.rst:104
 #, python-brace-format
 msgid "``/api/call-recording/session/{id}/end``"
 msgstr "``/api/call-recording/session/{id}/end``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:101
+#: ../../general/AI_instruments/call-recording-module.rst:105
 msgid "Завершение сессии и пост-обработка"
 msgstr "End session and post-processing"
 
-#: ../../general/AI_instruments/call-recording-module.rst:103
+#: ../../general/AI_instruments/call-recording-module.rst:107
 #, python-brace-format
 msgid "``/api/call-recording/session/{id}/status``"
 msgstr "``/api/call-recording/session/{id}/status``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:104
+#: ../../general/AI_instruments/call-recording-module.rst:108
 msgid "Статус сессии"
 msgstr "Session status"
 
-#: ../../general/AI_instruments/call-recording-module.rst:105
-msgid "``WS``"
-msgstr "``WS``"
-
-#: ../../general/AI_instruments/call-recording-module.rst:106
-msgid "``/ws/call-recording``"
-msgstr "``/ws/call-recording``"
-
-#: ../../general/AI_instruments/call-recording-module.rst:107
-msgid "Потоковая передача аудио (4 байта sequence + аудиоданные)"
-msgstr "Audio streaming (4-byte sequence + audio data)"
-
 #: ../../general/AI_instruments/call-recording-module.rst:111
+msgid "Загрузка фрагментов аудио"
+msgstr "Audio Chunk Upload"
+
+#: ../../general/AI_instruments/call-recording-module.rst:113
+msgid "Жизненный цикл сессии записи:"
+msgstr "Recording session lifecycle:"
+
+#: ../../general/AI_instruments/call-recording-module.rst:115
+msgid ""
+"``POST /session/start`` создаёт сессию и возвращает ``sessionId`` и "
+"``uploadToken`` — токен, который выдаётся на одну сессию записи и "
+"авторизует загрузку аудио именно в эту сессию."
+msgstr ""
+"``POST /session/start`` creates a session and returns ``sessionId`` and "
+"``uploadToken`` — a token issued for a single recording session that "
+"authorizes audio uploads to that specific session."
+
+#: ../../general/AI_instruments/call-recording-module.rst:116
+#, python-brace-format
+msgid ""
+"Каждый фрагмент аудио отправляется отдельным запросом ``POST "
+"/session/{id}/chunks`` с бинарным телом (``application/octet-stream``) и "
+"двумя заголовками: ``X-Upload-Token`` — токен, полученный при старте "
+"сессии, и ``X-Chunk-Sequence`` — порядковый номер фрагмента (целое "
+"число). Повторная загрузка фрагмента с тем же номером идемпотентна: "
+"дубликат подтверждается ответом 200, но не сохраняется второй раз, "
+"поэтому клиент может безопасно повторять запрос после потерянного ответа."
+msgstr ""
+"Each audio chunk is sent as a separate ``POST /session/{id}/chunks`` "
+"request with a binary body (``application/octet-stream``) and two "
+"headers: ``X-Upload-Token`` — the token obtained when the session was "
+"started, and ``X-Chunk-Sequence`` — the chunk's sequence number (an "
+"integer). Re-uploading a chunk with the same number is idempotent: the "
+"duplicate is acknowledged with a 200 response but is not stored a "
+"second time, so the client can safely retry the request after a lost "
+"response."
+
+#: ../../general/AI_instruments/call-recording-module.rst:117
+#, python-brace-format
+msgid ""
+"``POST /session/{id}/end`` завершает сессию и запускает пост-обработку "
+"(транскрипция, резюме, сохранение активности), прогресс которой "
+"отслеживается через ``GET /session/{id}/status``."
+msgstr ""
+"``POST /session/{id}/end`` ends the session and triggers post-processing "
+"(transcription, summary, activity save), whose progress is tracked via "
+"``GET /session/{id}/status``."
+
+#: ../../general/AI_instruments/call-recording-module.rst:119
+#, python-brace-format
+msgid ""
+"Коды ответов ``/session/{id}/chunks``: ``400`` — некорректный заголовок "
+"``X-Chunk-Sequence``; ``403`` — неверный ``X-Upload-Token``; ``404`` — "
+"сессия не существует или принадлежит другому пользователю; ``409`` — "
+"сессия уже не находится в состоянии записи; ``413`` — фрагмент превышает "
+"лимит размера (свойство ``citeck.ai.call-recording.session.max-chunk-"
+"size-bytes``, по умолчанию 5 МБ)."
+msgstr ""
+"Response codes for ``/session/{id}/chunks``: ``400`` — invalid ``X-Chunk-"
+"Sequence`` header; ``403`` — invalid ``X-Upload-Token``; ``404`` — the "
+"session does not exist or belongs to another user; ``409`` — the session "
+"is no longer in the recording state; ``413`` — the chunk exceeds the "
+"size limit (property ``citeck.ai.call-recording.session.max-chunk-size-"
+"bytes``, 5 MB by default)."
+
+#: ../../general/AI_instruments/call-recording-module.rst:123
 msgid "Конфигурация"
 msgstr "Configuration"
 
-#: ../../general/AI_instruments/call-recording-module.rst:113
+#: ../../general/AI_instruments/call-recording-module.rst:125
 msgid "Настройки задаются в ``application.yml``:"
 msgstr "Settings are defined in ``application.yml``:"
 
-#: ../../general/AI_instruments/call-recording-module.rst:133
+#: ../../general/AI_instruments/call-recording-module.rst:145
 msgid "Через UI"
 msgstr "Via UI"
 
-#: ../../general/AI_instruments/call-recording-module.rst:135
+#: ../../general/AI_instruments/call-recording-module.rst:147
 msgid ""
 "В рабочем пространстве администратора в разделе **AI** перейдите в журнал"
 " **Запись звонков**:"
@@ -360,31 +440,31 @@ msgstr ""
 "In the administrator workspace, go to the **AI** section and open the "
 "**Call Recording** journal:"
 
-#: ../../general/AI_instruments/call-recording-module.rst:137
+#: ../../general/AI_instruments/call-recording-module.rst:149
 msgid "Заполните **Название**."
 msgstr "Fill in the **Name**."
 
-#: ../../general/AI_instruments/call-recording-module.rst:138
+#: ../../general/AI_instruments/call-recording-module.rst:150
 msgid "Выберите **Типы данных для привязки**."
 msgstr "Select **Data types for binding**."
 
-#: ../../general/AI_instruments/call-recording-module.rst:139
+#: ../../general/AI_instruments/call-recording-module.rst:151
 msgid ""
 "Укажите **STT-провайдер по умолчанию** для платформы (например, GigaAM "
 "для Telemost)."
 msgstr ""
-"Specify the **Default STT provider** for the platform (e.g., GigaAM "
-"for Telemost)."
+"Specify the **Default STT provider** for the platform (e.g., GigaAM for "
+"Telemost)."
 
-#: ../../general/AI_instruments/call-recording-module.rst:140
+#: ../../general/AI_instruments/call-recording-module.rst:152
 msgid "Сохраните."
 msgstr "Save."
 
-#: ../../general/AI_instruments/call-recording-module.rst:148
+#: ../../general/AI_instruments/call-recording-module.rst:160
 msgid "Citeck-артефакты"
 msgstr "Citeck Artifacts"
 
-#: ../../general/AI_instruments/call-recording-module.rst:150
+#: ../../general/AI_instruments/call-recording-module.rst:162
 msgid ""
 "Модуль добавляет аспект ``recording-aspect`` с атрибутами ``recording`` "
 "(аудиофайл), ``transcription``, ``transcriptionDiarized``, ``summary``, "
@@ -398,23 +478,23 @@ msgstr ""
 "``meetingUrl``. The aspect is attached to the ``meeting-activity`` and "
 "``call-activity`` types via artifact-patch."
 
-#: ../../general/AI_instruments/call-recording-module.rst:156
+#: ../../general/AI_instruments/call-recording-module.rst:168
 msgid "Путь"
 msgstr "Path"
 
-#: ../../general/AI_instruments/call-recording-module.rst:157
+#: ../../general/AI_instruments/call-recording-module.rst:169
 msgid "Назначение"
 msgstr "Purpose"
 
-#: ../../general/AI_instruments/call-recording-module.rst:158
+#: ../../general/AI_instruments/call-recording-module.rst:170
 msgid "``eapps/artifacts/model/aspect/recording-aspect.yml``"
 msgstr "``eapps/artifacts/model/aspect/recording-aspect.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:159
+#: ../../general/AI_instruments/call-recording-module.rst:171
 msgid "Аспект с атрибутами записи"
 msgstr "Aspect with recording attributes"
 
-#: ../../general/AI_instruments/call-recording-module.rst:160
+#: ../../general/AI_instruments/call-recording-module.rst:172
 msgid ""
 "``eapps/artifacts/app/artifact-patch/meeting-activity-recording-"
 "aspect.yml``"
@@ -422,71 +502,71 @@ msgstr ""
 "``eapps/artifacts/app/artifact-patch/meeting-activity-recording-"
 "aspect.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:161
+#: ../../general/AI_instruments/call-recording-module.rst:173
 msgid "Подключение аспекта к ``meeting-activity``"
 msgstr "Attaches the aspect to ``meeting-activity``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:162
+#: ../../general/AI_instruments/call-recording-module.rst:174
 msgid "``eapps/artifacts/app/artifact-patch/call-activity-recording-aspect.yml``"
 msgstr "``eapps/artifacts/app/artifact-patch/call-activity-recording-aspect.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:163
+#: ../../general/AI_instruments/call-recording-module.rst:175
 msgid "Подключение аспекта к ``call-activity``"
 msgstr "Attaches the aspect to ``call-activity``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:164
+#: ../../general/AI_instruments/call-recording-module.rst:176
 msgid "``eapps/artifacts/ui/form/meeting-activity-form.json``"
 msgstr "``eapps/artifacts/ui/form/meeting-activity-form.json``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:165
+#: ../../general/AI_instruments/call-recording-module.rst:177
 msgid "Форма с полями аудио, резюме, расшифровки"
 msgstr "Form with audio, summary, and transcript fields"
 
-#: ../../general/AI_instruments/call-recording-module.rst:166
+#: ../../general/AI_instruments/call-recording-module.rst:178
 msgid "``eapps/artifacts/ui/action/meeting-activity-bind-record.yml``"
 msgstr "``eapps/artifacts/ui/action/meeting-activity-bind-record.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:167
+#: ../../general/AI_instruments/call-recording-module.rst:179
 msgid "Действие привязки встречи к сделке или проекту"
 msgstr "Action for binding a meeting to a deal or project"
 
-#: ../../general/AI_instruments/call-recording-module.rst:168
+#: ../../general/AI_instruments/call-recording-module.rst:180
 msgid "``eapps/artifacts/model/type/call-recording-config.yml``"
 msgstr "``eapps/artifacts/model/type/call-recording-config.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:169
+#: ../../general/AI_instruments/call-recording-module.rst:181
 msgid "Тип конфигурации записи (типы, платформы, STT-провайдер)"
 msgstr "Recording configuration type (types, platforms, STT provider)"
 
-#: ../../general/AI_instruments/call-recording-module.rst:170
+#: ../../general/AI_instruments/call-recording-module.rst:182
 msgid "``eapps/artifacts/ui/form/call-recording-config-form.json``"
 msgstr "``eapps/artifacts/ui/form/call-recording-config-form.json``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:171
+#: ../../general/AI_instruments/call-recording-module.rst:183
 msgid "Форма администрирования конфигурации"
 msgstr "Configuration administration form"
 
-#: ../../general/AI_instruments/call-recording-module.rst:172
+#: ../../general/AI_instruments/call-recording-module.rst:184
 msgid "``eapps/artifacts/ui/journal/call-recording-config-journal.yml``"
 msgstr "``eapps/artifacts/ui/journal/call-recording-config-journal.yml``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:173
+#: ../../general/AI_instruments/call-recording-module.rst:185
 msgid "Журнал конфигураций"
 msgstr "Configuration journal"
 
-#: ../../general/AI_instruments/call-recording-module.rst:174
+#: ../../general/AI_instruments/call-recording-module.rst:186
 msgid "``eapps/artifacts/ui/dashboard/meeting-activity-dashboard.json``"
 msgstr "``eapps/artifacts/ui/dashboard/meeting-activity-dashboard.json``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:175
+#: ../../general/AI_instruments/call-recording-module.rst:187
 msgid "Дашборд встречи"
 msgstr "Meeting dashboard"
 
-#: ../../general/AI_instruments/call-recording-module.rst:179
+#: ../../general/AI_instruments/call-recording-module.rst:191
 msgid "LLM-промпт"
 msgstr "LLM Prompt"
 
-#: ../../general/AI_instruments/call-recording-module.rst:181
+#: ../../general/AI_instruments/call-recording-module.rst:193
 msgid ""
 "``src/main/resources/prompts/call_summary_prompt.xml`` — инструкция для "
 "генерации резюме на русском языке. Промпт формирует адаптивный по длине "
@@ -498,107 +578,231 @@ msgstr ""
 "text with sections: key topics, decisions, action items, open questions, "
 "participants."
 
-#: ../../general/AI_instruments/call-recording-module.rst:185
+#: ../../general/AI_instruments/call-recording-module.rst:197
+msgid "Безопасность и хранение сессий"
+msgstr "Security and Session Storage"
+
+#: ../../general/AI_instruments/call-recording-module.rst:199
+msgid ""
+"Все эндпоинты ``/api/call-recording/*`` требуют доступности AI-функций: "
+"лицензия с признаком ``ai`` и членство в группе ``ai-feature-allowed`` "
+"(:ref:`подробнее <ai-security>`)."
+msgstr ""
+"All ``/api/call-recording/*`` endpoints require AI features to be "
+"available: a license with the ``ai`` flag and membership in the ``ai-"
+"feature-allowed`` group (:ref:`more details <ai-security>`)."
+
+#: ../../general/AI_instruments/call-recording-module.rst:200
+msgid ""
+"Сессию записи можно запустить только от собственного имени; целевая "
+"запись (``targetRecordRef``) должна быть доступна пользователю на чтение "
+"— иначе запуск отклоняется."
+msgstr ""
+"A recording session can only be started on behalf of the user "
+"themselves; the target record (``targetRecordRef``) must be readable by "
+"the user — otherwise the start request is rejected."
+
+#: ../../general/AI_instruments/call-recording-module.rst:201
+msgid ""
+"Завершённые сессии (успешные и ошибочные) хранятся в памяти сервиса 60 "
+"минут и затем удаляются. Срок настраивается свойством ``citeck.ai.call-"
+"recording.session.terminal-session-retention-minutes``."
+msgstr ""
+"Completed sessions (both successful and failed) are kept in the "
+"service's memory for 60 minutes and then removed. The retention period "
+"is configurable via the ``citeck.ai.call-recording.session.terminal-"
+"session-retention-minutes`` property."
+
+#: ../../general/AI_instruments/call-recording-module.rst:205
 msgid "Тесты"
 msgstr "Tests"
 
-#: ../../general/AI_instruments/call-recording-module.rst:191
-#: ../../general/AI_instruments/call-recording-module.rst:205
+#: ../../general/AI_instruments/call-recording-module.rst:211
+#: ../../general/AI_instruments/call-recording-module.rst:229
 msgid "Файл"
 msgstr "File"
 
-#: ../../general/AI_instruments/call-recording-module.rst:192
+#: ../../general/AI_instruments/call-recording-module.rst:212
 msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingServiceTest.kt``"
 msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingServiceTest.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:193
+#: ../../general/AI_instruments/call-recording-module.rst:213
 msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingSessionStoreTest.kt``"
 msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingSessionStoreTest.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:194
-msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingWebSocketHandlerTest.kt``"
-msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingWebSocketHandlerTest.kt``"
+#: ../../general/AI_instruments/call-recording-module.rst:214
+msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallSummaryServiceTest.kt``"
+msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallSummaryServiceTest.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:198
+#: ../../general/AI_instruments/call-recording-module.rst:215
+msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingControllerTest.kt``"
+msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/api/CallRecordingControllerTest.kt``"
+
+#: ../../general/AI_instruments/call-recording-module.rst:216
+msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/CallPlatformRegistryTest.kt``"
+msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/CallPlatformRegistryTest.kt``"
+
+#: ../../general/AI_instruments/call-recording-module.rst:217
+msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/TelemostConnectorTest.kt``"
+msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/platform/TelemostConnectorTest.kt``"
+
+#: ../../general/AI_instruments/call-recording-module.rst:218
+msgid "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/stt/SttProviderRegistryTest.kt``"
+msgstr "``src/test/java/ru/citeck/ecos/ai/domain/callrecording/stt/SttProviderRegistryTest.kt``"
+
+#: ../../general/AI_instruments/call-recording-module.rst:222
 msgid "Ключевые файлы"
 msgstr "Key Files"
 
-#: ../../general/AI_instruments/call-recording-module.rst:204
+#: ../../general/AI_instruments/call-recording-module.rst:228
 msgid "Компонент"
 msgstr "Component"
 
-#: ../../general/AI_instruments/call-recording-module.rst:206
+#: ../../general/AI_instruments/call-recording-module.rst:230
 msgid "Оркестрация сессий"
 msgstr "Session orchestration"
 
-#: ../../general/AI_instruments/call-recording-module.rst:207
+#: ../../general/AI_instruments/call-recording-module.rst:231
 msgid "``domain/callrecording/CallRecordingService.kt``"
 msgstr "``domain/callrecording/CallRecordingService.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:208
-msgid "WebSocket-обработчик"
-msgstr "WebSocket handler"
+#: ../../general/AI_instruments/call-recording-module.rst:232
+msgid "Хранилище сессий"
+msgstr "Session storage"
 
-#: ../../general/AI_instruments/call-recording-module.rst:209
-msgid "``domain/callrecording/api/CallRecordingWebSocketHandler.kt``"
-msgstr "``domain/callrecording/api/CallRecordingWebSocketHandler.kt``"
+#: ../../general/AI_instruments/call-recording-module.rst:233
+msgid "``domain/callrecording/CallRecordingSessionStore.kt``"
+msgstr "``domain/callrecording/CallRecordingSessionStore.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:210
+#: ../../general/AI_instruments/call-recording-module.rst:234
 msgid "REST-контроллер"
 msgstr "REST controller"
 
-#: ../../general/AI_instruments/call-recording-module.rst:211
+#: ../../general/AI_instruments/call-recording-module.rst:235
 msgid "``domain/callrecording/api/CallRecordingController.kt``"
 msgstr "``domain/callrecording/api/CallRecordingController.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:212
+#: ../../general/AI_instruments/call-recording-module.rst:236
 msgid "STT через GigaAM"
 msgstr "STT via GigaAM"
 
-#: ../../general/AI_instruments/call-recording-module.rst:213
+#: ../../general/AI_instruments/call-recording-module.rst:237
 msgid "``domain/callrecording/stt/GigaAmSttProvider.kt``"
 msgstr "``domain/callrecording/stt/GigaAmSttProvider.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:214
+#: ../../general/AI_instruments/call-recording-module.rst:238
 msgid "LLM-резюме"
 msgstr "LLM summary"
 
-#: ../../general/AI_instruments/call-recording-module.rst:215
+#: ../../general/AI_instruments/call-recording-module.rst:239
 msgid "``domain/callrecording/summary/CallSummaryService.kt``"
 msgstr "``domain/callrecording/summary/CallSummaryService.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:216
+#: ../../general/AI_instruments/call-recording-module.rst:240
 msgid "Загрузка в Citeck"
 msgstr "Upload to Citeck"
 
-#: ../../general/AI_instruments/call-recording-module.rst:217
+#: ../../general/AI_instruments/call-recording-module.rst:241
 msgid "``domain/callrecording/ecos/CallActivityService.kt``"
 msgstr "``domain/callrecording/ecos/CallActivityService.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:218
+#: ../../general/AI_instruments/call-recording-module.rst:242
 msgid "Перехват Telemost-URL"
 msgstr "Telemost URL interception"
 
-#: ../../general/AI_instruments/call-recording-module.rst:219
+#: ../../general/AI_instruments/call-recording-module.rst:243
 msgid "``domain/callrecording/platform/TelemostConnector.kt``"
 msgstr "``domain/callrecording/platform/TelemostConnector.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:220
+#: ../../general/AI_instruments/call-recording-module.rst:244
 msgid "Конфигурационные свойства"
 msgstr "Configuration properties"
 
-#: ../../general/AI_instruments/call-recording-module.rst:221
-msgid "``ai/config/CallRecordingProperties.kt``"
-msgstr "``ai/config/CallRecordingProperties.kt``"
+#: ../../general/AI_instruments/call-recording-module.rst:245
+msgid "``config/CallRecordingProperties.kt``"
+msgstr "``config/CallRecordingProperties.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:222
+#: ../../general/AI_instruments/call-recording-module.rst:246
 msgid "DTO и статусы"
 msgstr "DTOs and statuses"
 
-#: ../../general/AI_instruments/call-recording-module.rst:223
+#: ../../general/AI_instruments/call-recording-module.rst:247
 msgid "``domain/callrecording/CallRecordingModels.kt``"
 msgstr "``domain/callrecording/CallRecordingModels.kt``"
 
-#: ../../general/AI_instruments/call-recording-module.rst:225
+#: ../../general/AI_instruments/call-recording-module.rst:249
 msgid "Все пути относительно ``src/main/java/ru/citeck/ecos/ai/``."
 msgstr "All paths are relative to ``src/main/java/ru/citeck/ecos/ai/``."
+
+#~ msgid ""
+#~ "**Стриминг** — каждый чанк отправляется "
+#~ "по WebSocket с бинарным протоколом: 4"
+#~ " байта sequence number (big-endian) +"
+#~ " аудиоданные. При разрыве соединения ``lib"
+#~ "/ws-client.js`` автоматически переподключается с"
+#~ " экспоненциальной задержкой (до 5 попыток,"
+#~ " максимум 30 сек)."
+#~ msgstr ""
+#~ "**Streaming** — each chunk is sent "
+#~ "over WebSocket using a binary protocol:"
+#~ " 4-byte sequence number (big-endian) "
+#~ "+ audio data. On disconnect, ``lib"
+#~ "/ws-client.js`` automatically reconnects with "
+#~ "exponential backoff (up to 5 attempts,"
+#~ " maximum 30 seconds)."
+
+#~ msgid ""
+#~ "Аудиопоток поступает в бэкенд ``citeck-"
+#~ "ai`` через WebSocket-эндпоинт ``/gateway/ai/ws/``"
+#~ " (проксируется через nginx в обход "
+#~ "основного gateway, который WebSocket не "
+#~ "поддерживает). Бэкенд запускает pipeline:"
+#~ msgstr ""
+#~ "The audio stream is delivered to "
+#~ "the ``citeck-ai`` backend via the "
+#~ "WebSocket endpoint ``/gateway/ai/ws/`` (proxied "
+#~ "through nginx, bypassing the main "
+#~ "gateway which does not support "
+#~ "WebSocket). The backend runs the "
+#~ "following pipeline:"
+
+#~ msgid ""
+#~ "Сессия завершается текстовым WebSocket-сообщением"
+#~ " ``{ type: \"end\" }``. Пока идёт "
+#~ "обработка, Service Worker каждые 3 "
+#~ "секунды опрашивает ``/session/{id}/status`` (до "
+#~ "15 минут) и записывает результат в "
+#~ "``chrome.storage.local``."
+#~ msgstr ""
+#~ "The session is terminated by a "
+#~ "text WebSocket message ``{ type: \"end\""
+#~ " }``. While processing is underway, "
+#~ "the Service Worker polls "
+#~ "``/session/{id}/status`` every 3 seconds (for"
+#~ " up to 15 minutes) and stores "
+#~ "the result in ``chrome.storage.local``."
+
+#~ msgid ""
+#~ "**nginx** — WebSocket proxy "
+#~ "(``/gateway/ai/ws/``) в обход основного "
+#~ "gateway, который WS не проксирует"
+#~ msgstr ""
+#~ "**nginx** — WebSocket proxy "
+#~ "(``/gateway/ai/ws/``) bypassing the main "
+#~ "gateway, which does not proxy WS"
+
+#~ msgid "``WS``"
+#~ msgstr "``WS``"
+
+#~ msgid "``/ws/call-recording``"
+#~ msgstr "``/ws/call-recording``"
+
+#~ msgid "Потоковая передача аудио (4 байта sequence + аудиоданные)"
+#~ msgstr "Audio streaming (4-byte sequence + audio data)"
+
+#~ msgid "WebSocket-обработчик"
+#~ msgstr "WebSocket handler"
+
+#~ msgid "``domain/callrecording/api/CallRecordingWebSocketHandler.kt``"
+#~ msgstr "``domain/callrecording/api/CallRecordingWebSocketHandler.kt``"
+

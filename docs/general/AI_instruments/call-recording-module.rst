@@ -83,7 +83,7 @@ REST API
 .. list-table::
    :header-rows: 1
    :widths: 10 45 45
-   :class: tight-table 
+   :class: tight-table
 
    * - Метод
      - URL
@@ -141,17 +141,20 @@ REST API
         temperature: 0.3
 
 
-Через UI
-~~~~~~~~~
+Через интерфейс
+~~~~~~~~~~~~~~~~~~
 
-В рабочем пространстве администратора в разделе **AI** перейдите в журнал **Запись звонков**:
+В рабочем пространстве администратора в разделе **AI** перейдите в журнал **Запись звонков**.
 
-1. Заполните **Название**.
-2. Выберите **Типы данных для привязки**.
-3. Укажите **STT-провайдер по умолчанию** для платформы (например, GigaAM для Telemost).
-4. Сохраните.
+.. dropdown:: Как настроить запись звонков через UI
+    :color: secondary
 
- .. image:: _static/meeting_setting.png
+    1. Заполните **Название**.
+    2. Выберите **Типы данных для привязки**.
+    3. Укажите **STT-провайдер по умолчанию** для платформы (например, GigaAM для Telemost).
+    4. Сохраните.
+
+    .. image:: _static/meeting_setting.png
        :width: 650
        :align: center
 
@@ -164,6 +167,7 @@ Citeck-артефакты
 .. list-table::
    :header-rows: 1
    :widths: 55 45
+   :class: tight-table
 
    * - Путь
      - Назначение
@@ -207,6 +211,7 @@ LLM-промпт
 .. list-table::
    :header-rows: 1
    :widths: 100
+   :class: tight-table
 
    * - Файл
    * - ``src/test/java/ru/citeck/ecos/ai/domain/callrecording/CallRecordingServiceTest.kt``
@@ -224,6 +229,7 @@ LLM-промпт
 .. list-table::
    :header-rows: 1
    :widths: 40 60
+   :class: tight-table
 
    * - Компонент
      - Файл

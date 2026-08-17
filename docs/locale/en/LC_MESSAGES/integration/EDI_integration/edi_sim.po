@@ -1,0 +1,448 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/edi_sim.rst:4
+msgid "Симулятор ЭДО (citeck-edi-sim)"
+msgstr "EDI Simulator (citeck-edi-sim)"
+
+#: ../../integration/EDI_integration/edi_sim.rst:8
+msgid "Доступно только в Enterprise версии."
+msgstr "Available only in the Enterprise version."
+
+#: ../../integration/EDI_integration/edi_sim.rst:10
+msgid ""
+"**citeck-edi-sim** — сервис, заменяющий на стенде реальный портал ЭДО. Он"
+" поднимает поверхности провайдеров, к которым обращается "
+":ref:`микросервис ecos-edi<ecos-edi>`, и позволяет вести вторую сторону "
+"обмена руками: доставлять документы, подписывать их от имени контрагента,"
+" отклонять, запрашивать уточнение и аннулирование."
+msgstr ""
+"**citeck-edi-sim** is a service that replaces a real EDI portal on a test"
+" stand. It raises the provider surfaces that the :ref:`ecos-edi "
+"microservice<ecos-edi>` calls, and lets you drive the other side of the "
+"exchange by hand: deliver documents, sign them on behalf of the "
+"counterparty, reject them, request clarification, and request "
+"cancellation."
+
+#: ../../integration/EDI_integration/edi_sim.rst:13
+msgid ""
+"Применяется там, где боевой или демо-стенд провайдера не подходит: "
+"локальная разработка, автотесты, разбор инцидента на воспроизводимых "
+"данных, отладка нового сценария до подключения к провайдеру."
+msgstr ""
+"It is used where a provider's production or demo stand does not fit: "
+"local development, automated tests, incident analysis on reproducible "
+"data, and debugging a new scenario before connecting to the provider."
+
+#: ../../integration/EDI_integration/edi_sim.rst:16
+msgid ""
+"Исходный код: `https://gitlab.citeck.ru/citeck-projects/citeck-edi-sim "
+"<https://gitlab.citeck.ru/citeck-projects/citeck-edi-sim>`_"
+msgstr ""
+"Source code: `https://gitlab.citeck.ru/citeck-projects/citeck-edi-sim "
+"<https://gitlab.citeck.ru/citeck-projects/citeck-edi-sim>`_"
+
+#: ../../integration/EDI_integration/edi_sim.rst:21
+msgid ""
+"Симулятор **никогда не проверяет электронные подписи**. Он их принимает, "
+"хранит и умеет создавать настоящие CMS-подписи, но не верифицирует ни "
+"одну. Проверка криптографии — не его задача, и полагаться на него в этом "
+"нельзя."
+msgstr ""
+"The simulator **never verifies electronic signatures**. It accepts and "
+"stores them, and can create real CMS signatures, but does not verify any "
+"of them. Verifying cryptography is not its job, and it must not be relied"
+" on for that."
+
+#: ../../integration/EDI_integration/edi_sim.rst:24
+msgid "Что эмулируется"
+msgstr "What is emulated"
+
+#: ../../integration/EDI_integration/edi_sim.rst:26
+msgid ""
+"Один процесс обслуживает четыре провайдерские поверхности и собственный "
+"административный API. Каждая поверхность смонтирована на своём префиксе:"
+msgstr ""
+"A single process serves four provider surfaces and its own administrative"
+" API. Each surface is mounted on its own prefix:"
+
+#: ../../integration/EDI_integration/edi_sim.rst:33
+msgid "Провайдер"
+msgstr "Provider"
+
+#: ../../integration/EDI_integration/edi_sim.rst:34
+msgid "Префикс"
+msgstr "Prefix"
+
+#: ../../integration/EDI_integration/edi_sim.rst:35
+msgid "Формат обмена"
+msgstr "Exchange format"
+
+#: ../../integration/EDI_integration/edi_sim.rst:36
+msgid "Контур.Диадок"
+msgstr "Kontur.Diadoc"
+
+#: ../../integration/EDI_integration/edi_sim.rst:37
+msgid "``/diadoc``"
+msgstr "``/diadoc``"
+
+#: ../../integration/EDI_integration/edi_sim.rst:38
+msgid "protobuf + gzip"
+msgstr "protobuf + gzip"
+
+#: ../../integration/EDI_integration/edi_sim.rst:39
+msgid "СберКорус"
+msgstr "SberKorus"
+
+#: ../../integration/EDI_integration/edi_sim.rst:40
+msgid "``/korus``"
+msgstr "``/korus``"
+
+#: ../../integration/EDI_integration/edi_sim.rst:41
+#: ../../integration/EDI_integration/edi_sim.rst:44
+#: ../../integration/EDI_integration/edi_sim.rst:50
+msgid "JSON REST"
+msgstr "JSON REST"
+
+#: ../../integration/EDI_integration/edi_sim.rst:42
+msgid "Didox (Узбекистан)"
+msgstr "Didox (Uzbekistan)"
+
+#: ../../integration/EDI_integration/edi_sim.rst:43
+msgid "``/didox``"
+msgstr "``/didox``"
+
+#: ../../integration/EDI_integration/edi_sim.rst:45
+msgid "Контур EDI/SE"
+msgstr "Kontur EDI/SE"
+
+#: ../../integration/EDI_integration/edi_sim.rst:46
+msgid "``/kontur-edi``"
+msgstr "``/kontur-edi``"
+
+#: ../../integration/EDI_integration/edi_sim.rst:47
+msgid "EDI-XML, JSON REST"
+msgstr "EDI-XML, JSON REST"
+
+#: ../../integration/EDI_integration/edi_sim.rst:48
+msgid "Административный API и консоль"
+msgstr "Administrative API and console"
+
+#: ../../integration/EDI_integration/edi_sim.rst:49
+msgid "``/admin/api``"
+msgstr "``/admin/api``"
+
+#: ../../integration/EDI_integration/edi_sim.rst:52
+msgid ""
+"Административный API управляет организациями, ящиками, контрагентами, "
+"документами и сертификатами, а также содержит инспектор запросов: каждый "
+"вызов провайдерской поверхности сохраняется с методом, заголовками, "
+"разобранным телом (protobuf декодируется в JSON), ответом и временем "
+"обработки. Веб-консоль встроена в бинарь и отдаётся с корня."
+msgstr ""
+"The administrative API manages organizations, mailboxes, counterparties, "
+"documents, and certificates, and also includes a request inspector: every"
+" call to a provider surface is stored with its method, headers, parsed "
+"body (protobuf is decoded to JSON), response, and processing time. The "
+"web console is embedded in the binary and served from the root."
+
+#: ../../integration/EDI_integration/edi_sim.rst:57
+msgid "Запуск и конфигурация"
+msgstr "Launch and configuration"
+
+#: ../../integration/EDI_integration/edi_sim.rst:59
+msgid ""
+"Конфигурация читается из yaml-файла, путь к которому передаётся флагом "
+"``--config``. Любой параметр переопределяется переменной окружения: имя —"
+" это путь ключа в верхнем регистре с подчёркиванием вместо разделителей "
+"(``server.port`` → ``SERVER_PORT``, ``data.path`` → ``DATA_PATH``). "
+"Учитываются только заданные и непустые переменные."
+msgstr ""
+"Configuration is read from a yaml file whose path is passed via the "
+"``--config`` flag. Any parameter can be overridden by an environment "
+"variable: its name is the key path in upper case with underscores "
+"instead of separators (``server.port`` → ``SERVER_PORT``, ``data.path`` "
+"→ ``DATA_PATH``). Only variables that are set and non-empty are taken "
+"into account."
+
+#: ../../integration/EDI_integration/edi_sim.rst:96
+msgid ""
+"Хранилище выбирается значением ``data.path``: пустое — данные живут в "
+"памяти и теряются при перезапуске (режим для автотестов), путь — данные "
+"сохраняются в файл."
+msgstr ""
+"The storage is selected by the value of ``data.path``: empty means data "
+"lives in memory and is lost on restart (the mode for automated tests); a"
+" path means data is persisted to a file."
+
+#: ../../integration/EDI_integration/edi_sim.rst:99
+msgid "Регистрация в Citeck"
+msgstr "Registration in Citeck"
+
+#: ../../integration/EDI_integration/edi_sim.rst:101
+msgid ""
+"Симулятор регистрируется в реестре сервисов Citeck через ZooKeeper и "
+"после этого доступен через gateway по адресу "
+"``/gateway/<discovery.appName>/…``."
+msgstr ""
+"The simulator registers in the Citeck service registry via ZooKeeper, "
+"after which it becomes available through the gateway at "
+"``/gateway/<discovery.appName>/…``."
+
+#: ../../integration/EDI_integration/edi_sim.rst:103
+msgid ""
+"Это нужно не только для порядка. Обращение **из браузера** возможно "
+"только тем же источником — через gateway; прямой вызов на порт симулятора"
+" будет кросс-доменным, а административный API намеренно не отдаёт "
+"CORS-заголовки. Именно так работает :ref:`отладочный режим электронной "
+"подписи<esign_dev_mode>`. Серверным потребителям (ecos-edi, автотесты) "
+"регистрация не требуется — они ходят по прямому адресу."
+msgstr ""
+"This is not just for tidiness. Access **from a browser** is only "
+"possible from the same origin — through the gateway; a direct call to "
+"the simulator's port would be cross-origin, and the administrative API "
+"intentionally does not send CORS headers. This is exactly how the "
+":ref:`electronic signature debug mode<esign_dev_mode>` works. Server-side"
+" consumers (ecos-edi, automated tests) do not need registration — they "
+"go directly to the address."
+
+#: ../../integration/EDI_integration/edi_sim.rst:107
+msgid ""
+"Адрес ZooKeeper зависит от того, где запущен процесс, — так же, как у "
+"остальных приложений платформы:"
+msgstr ""
+"The ZooKeeper address depends on where the process is running — just "
+"like for the platform's other applications:"
+
+#: ../../integration/EDI_integration/edi_sim.rst:109
+msgid "**в сети стенда** подходит значение по умолчанию ``zookeeper-app:2181``;"
+msgstr "**on the stand's network**, the default value ``zookeeper-app:2181`` works;"
+
+#: ../../integration/EDI_integration/edi_sim.rst:110
+msgid ""
+"**с машины разработчика** укажите опубликованный адрес: "
+"``ZOOKEEPER_HOSTS=localhost:2181``. Это же делает цель ``make dev``."
+msgstr ""
+"**from a developer's machine**, specify the published address: "
+"``ZOOKEEPER_HOSTS=localhost:2181``. The ``make dev`` target does the "
+"same."
+
+#: ../../integration/EDI_integration/edi_sim.rst:113
+msgid "Чтобы отключить регистрацию, задайте в файле конфигурации ``hosts: []``."
+msgstr "To disable registration, set ``hosts: []`` in the configuration file."
+
+#: ../../integration/EDI_integration/edi_sim.rst:115
+msgid ""
+"Регистрация выполняется в фоне и не блокирует запуск: если ZooKeeper "
+"недоступен, сервис пишет предупреждение и продолжает работать автономно."
+msgstr ""
+"Registration runs in the background and does not block startup: if "
+"ZooKeeper is unavailable, the service logs a warning and keeps running "
+"standalone."
+
+#: ../../integration/EDI_integration/edi_sim.rst:117
+msgid ""
+"Параметр ``discovery.host`` в обычном случае оставляют пустым — тогда "
+"сервис объявляет первый не-loopback IP машины. Именно он и нужен, когда "
+"gateway работает в контейнере, а симулятор — на хосте: ``localhost`` для "
+"контейнера означал бы его самого. Задавайте адрес явно, если "
+"автоопределение выбирает не тот интерфейс (VPN, несколько сетевых карт)."
+msgstr ""
+"The ``discovery.host`` parameter is normally left empty — the service "
+"then advertises the machine's first non-loopback IP. That is exactly "
+"what's needed when the gateway runs in a container while the simulator "
+"runs on the host: ``localhost`` for the container would mean the "
+"container itself. Set the address explicitly if auto-detection picks the"
+" wrong interface (VPN, multiple network adapters)."
+
+#: ../../integration/EDI_integration/edi_sim.rst:122
+msgid ""
+"Регистрация открывает административный API людям. Gateway пропускает к"
+"     зарегистрированному приложению любого пользователя с ролью **USER**,"
+" а этот API умеет выпускать сертификаты, подписывать произвольное "
+"содержимое и создавать документы."
+msgstr ""
+"Registration opens the administrative API to people. The gateway lets "
+"any user with the **USER** role through to a registered application, and"
+" this API can issue certificates, sign arbitrary content, and create "
+"documents."
+
+#: ../../integration/EDI_integration/edi_sim.rst:125
+msgid ""
+"На личной машине это безопасно. На общем стенде задайте "
+"``auth.jwtSecret`` (переменная ``AUTH_JWTSECRET``) — JWT-секрет стенда в "
+"base64. Тогда все маршруты, кроме ``/health``, потребуют роль "
+"**ROLE_ADMIN**, а межсервисные вызовы с ролью **ROLE_SYSTEM** продолжат "
+"работать. Браузерные сценарии от имени администратора при этом не "
+"ломаются: gateway перевыпускает токен текущего пользователя с его ролями."
+msgstr ""
+"On a personal machine this is safe. On a shared stand, set "
+"``auth.jwtSecret`` (the ``AUTH_JWTSECRET`` variable) to the stand's JWT "
+"secret in base64. Then all routes except ``/health`` will require the "
+"**ROLE_ADMIN** role, while inter-service calls with the **ROLE_SYSTEM** "
+"role keep working. Browser scenarios acting as an administrator are not "
+"broken by this: the gateway reissues the current user's token with their"
+" roles."
+
+#: ../../integration/EDI_integration/edi_sim.rst:129
+msgid ""
+"При запуске с регистрацией и пустым секретом сервис пишет предупреждение "
+"в лог."
+msgstr ""
+"When started with registration enabled and an empty secret, the service "
+"logs a warning."
+
+#: ../../integration/EDI_integration/edi_sim.rst:132
+msgid "Подключение ecos-edi к симулятору"
+msgstr "Connecting ecos-edi to the simulator"
+
+#: ../../integration/EDI_integration/edi_sim.rst:134
+msgid ""
+"Порядок такой же, как для настоящего провайдера (:ref:`настройка "
+"синхронизации<ecos-edi>`), меняются только адреса и учётные данные:"
+msgstr ""
+"The procedure is the same as for a real provider (:ref:`sync "
+"configuration<ecos-edi>`), only the addresses and credentials change:"
+
+#: ../../integration/EDI_integration/edi_sim.rst:136
+msgid ""
+"Создайте запись в журнале :ref:`Секреты<ECOS_secrets>` с учётными "
+"данными, которые показывает симулятор."
+msgstr ""
+"Create a record in the :ref:`Secrets<ECOS_secrets>` journal with the "
+"credentials shown by the simulator."
+
+#: ../../integration/EDI_integration/edi_sim.rst:137
+msgid ""
+"Создайте запись в журнале :ref:`Конечные точки<ECOS_endpoints>`: адрес — "
+"прямой, в обход gateway, вида "
+"``http://<discovery.appName>:<server.port>`` плюс префикс нужной "
+"поверхности, например ``http://edi-sim:8080/diadoc``."
+msgstr ""
+"Create a record in the :ref:`Endpoints<ECOS_endpoints>` journal: the "
+"address is direct, bypassing the gateway, in the form "
+"``http://<discovery.appName>:<server.port>`` plus the prefix of the "
+"needed surface, for example ``http://edi-sim:8080/diadoc``."
+
+#: ../../integration/EDI_integration/edi_sim.rst:139
+msgid ""
+"Заведите ящик в журнале **Конфигурация ящиков ЭДО** и синхронизацию — как"
+" описано в :ref:`настройке ecos-edi<ecos-edi>`."
+msgstr ""
+"Set up a mailbox in the **EDI Mailbox Configuration** journal and its "
+"synchronization — as described in :ref:`configuring ecos-edi<ecos-edi>`."
+
+#: ../../integration/EDI_integration/edi_sim.rst:141
+msgid ""
+"Готовые значения для подстановки не нужно собирать вручную: в консоли "
+"симулятора кнопка **Подключение** показывает по каждой поверхности "
+"базовый адрес, схему авторизации, формат обмена и конкретные параметры "
+"выбранной организации — идентификатор ящика, ИНН, GLN и ключ "
+"разработчика."
+msgstr ""
+"There is no need to assemble the ready-to-use values by hand: in the "
+"simulator console, the **Connection** button shows, for each surface, "
+"the base address, authorization scheme, exchange format, and the "
+"specific parameters of the selected organization — the mailbox "
+"identifier, INN, GLN, and developer key."
+
+#: ../../integration/EDI_integration/edi_sim.rst:145
+msgid "Сертификаты и подписание"
+msgstr "Certificates and signing"
+
+#: ../../integration/EDI_integration/edi_sim.rst:147
+msgid ""
+"Симулятор выпускает настоящий ключевой материал: **ГОСТ Р 34.10-2012 (256"
+" и 512)**, **RSA-2048/4096**, **ECDSA P-256**. Сертификат выпускается на "
+"организацию, субъектом выступает физическое лицо. Срок задаётся при "
+"создании — действующий, истёкший или ещё не вступивший в силу; два "
+"последних предназначены для негативных проверок."
+msgstr ""
+"The simulator issues real key material: **GOST R 34.10-2012 (256 and "
+"512)**, **RSA-2048/4096**, **ECDSA P-256**. The certificate is issued to"
+" an organization, with an individual as the subject. The validity period"
+" is set at creation time — current, expired, or not yet valid; the "
+"latter two are meant for negative testing."
+
+#: ../../integration/EDI_integration/edi_sim.rst:150
+msgid ""
+"Сертификат можно скачать: ``.cer`` (DER) — для всех алгоритмов, ``.pfx`` "
+"(PKCS#12, пароль ``test``) и ``.key`` (PKCS#8 PEM) — только для RSA и "
+"ECDSA."
+msgstr ""
+"The certificate can be downloaded: ``.cer`` (DER) — for all algorithms, "
+"``.pfx`` (PKCS#12, password ``test``) and ``.key`` (PKCS#8 PEM) — only "
+"for RSA and ECDSA."
+
+#: ../../integration/EDI_integration/edi_sim.rst:154
+#, python-brace-format
+msgid ""
+"Для ГОСТ доступен только ``.cer``. КриптоПро не импортирует закрытый ключ"
+" ГОСТ, созданный вне собственного криптопровайдера, поэтому обратный "
+"порядок таков: ключ создаётся в КриптоПро, а его открытый сертификат "
+"загружается в симулятор (``POST "
+"/admin/api/orgs/{id}/certificates/import``). Загруженный таким образом "
+"сертификат подписывать не может — закрытого ключа у симулятора нет."
+msgstr ""
+"Only ``.cer`` is available for GOST. KriptoPro does not import a GOST "
+"private key created outside its own crypto provider, so the order is "
+"reversed: the key is created in KriptoPro, and its public certificate is"
+" uploaded to the simulator (``POST "
+"/admin/api/orgs/{id}/certificates/import``). A certificate uploaded this"
+" way cannot sign — the simulator does not have the private key."
+
+#: ../../integration/EDI_integration/edi_sim.rst:158
+msgid ""
+"Подписание выполняется на стороне сервиса, без КриптоПро на машине "
+"оператора:"
+msgstr ""
+"Signing is performed on the service side, without KriptoPro on the "
+"operator's machine:"
+
+#: ../../integration/EDI_integration/edi_sim.rst:160
+msgid ""
+"действия ``sign`` и ``sign-sender`` принимают необязательный ``certId``. "
+"С ним документ подписывается настоящей отсоединённой CMS-подписью "
+"выбранного сертификата, без него — тестовой подписью, как раньше;"
+msgstr ""
+"the ``sign`` and ``sign-sender`` actions accept an optional ``certId``. "
+"With it, the document is signed with a real detached CMS signature of "
+"the chosen certificate; without it, with a test signature, as before;"
+
+#: ../../integration/EDI_integration/edi_sim.rst:162
+#, python-brace-format
+msgid ""
+"``POST /admin/api/certificates/{cid}/sign`` подписывает произвольное "
+"содержимое, переданное вызывающей стороной, и возвращает отсоединённую "
+"CMS. На этом методе построен :ref:`отладочный режим электронной "
+"подписи<esign_dev_mode>`;"
+msgstr ""
+"``POST /admin/api/certificates/{cid}/sign`` signs arbitrary content "
+"passed by the caller and returns a detached CMS. The :ref:`electronic "
+"signature debug mode<esign_dev_mode>` is built on this method;"
+
+#: ../../integration/EDI_integration/edi_sim.rst:164
+msgid ""
+"``GET /admin/api/certificates`` возвращает сертификаты всех организаций —"
+" для клиента, который не знает, от чьего имени выбирать."
+msgstr ""
+"``GET /admin/api/certificates`` returns the certificates of all "
+"organizations — for a client that does not know on whose behalf to "
+"choose."
