@@ -1,6 +1,6 @@
 .. _user-agents:
 
-Пользовательские AI-агенты
+Конфигурация AI-агентов
 ============================
 
 .. contents::
@@ -288,39 +288,68 @@ REST API
 
    При обновлении версии платформы записи преднастроенных агентов синхронизируются с поставкой: название, описание, инструкция, список инструментов и движок перезаписываются поставляемыми значениями. Настройки провайдера и модели (``aiProvider``, ``aiModel``), температура и признак «Включён» при этом сохраняются. Локальные правки инструкции или белого списка инструментов поставляемого агента будут утеряны при обновлении — для собственных сценариев создавайте отдельного агента.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 22 12 36 30
-   :class: tight-table
+.. grid:: 1
+   :gutter: 3
 
-   * - Агент
-     - Движок
-     - Назначение и типовые запросы
-     - Инструменты
-   * - **Помощник по задачам и документам** (``tasks-documents-helper``)
-     - ``TOOL_LOOP``
-     - Работа с записями, задачами, документами и коммуникациями: «найди мои открытые обращения», «сравни версии договора», «подготовь письмо клиенту», «собери сводку по клиенту». Обслуживает чат без явно выбранного агента
-     - ``queryRecords``, ``mutateRecord``, ``getRecordAttributes``, ``getRecordDisplayName``, ``getRecordTypeMetadata``, ``getRecordContent``, ``getRecordContentHistory``, ``getRecordContacts``, ``getActivities``, ``documentAnalysis``, ``analyzeFile``, ``proposeFile``, ``discardPendingFile``, ``getClient360``, ``getCurrentUserInfo``, ``compareDocuments``, ``writeEmail``, ``getCurrentTime``, ``getJournalSelectionLink``, ``ragSearch``, ``ragGetDocument``
-   * - **Агент конфигурации платформы** (``platform-config-agent``)
-     - ``CONFIG``
-     - Создание и изменение конфигурации: «создай тип данных для учёта командировок», «добавь на форму поле для суммы», «сделай процесс согласования». Публикует артефакты только после подтверждения (``requireDeployConfirmation: true``)
-     - ``searchDocumentation``, ``findArtifact``, ``queryRecords``, ``getRecordTypeMetadata``, ``generateDataType``, ``generateForm``, ``generateBpmn``, ``editScript``, ``validateArtifact``, ``deployArtifact``, ``generateAppDocumentation``
-   * - **Помощник по изображениям** (``image-helper``)
-     - ``TOOL_LOOP``
-     - Генерация и редактирование изображений: «нарисуй иконку для раздела», «убери фон», «сделай баннер к письму»
-     - ``generateImage``, ``editImage``, ``analyzeFile``
-   * - **Помощник по возможностям платформы** (``platform-capabilities-helper``)
-     - ``TOOL_LOOP``
-     - Ответы на вопросы о возможностях платформы строго по документации, со ссылками на разделы: «поддерживается ли подключение своей LLM?», «как контролируется расход токенов?». Доступен начиная с релиза 2026.3
-     - ``searchDocumentation``, ``ragSearch``, ``ragGetDocument``, ``getCurrentTime``
-   * - **Аудитор конфигурации** (``config-audit-helper``)
-     - ``TOOL_LOOP``
-     - Аудит приложения по чек-листу — безопасность (права, чувствительные данные, доступ в статусах) и качество конфигурации (модель данных, статусы, процессы, формы); отчёт с уровнями риска: «проверь приложение „Договоры“». Только читающие инструменты. Доступен начиная с релиза 2026.3
-     - ``getEcosAppContent``, ``getArtifactMetadata``, ``getRecordTypeMetadata``, ``findArtifact``, ``queryRecords``, ``getRecordAttributes``, ``getRecordDisplayName``, ``searchDocumentation``, ``ragSearch``
-   * - **Оператор публикации конфигурации** (``deploy-operator-helper``)
-     - ``CONFIG``
-     - Решение о публикации артефакта: валидация, оценка влияния на зависимые артефакты, вердикт «публиковать / вернуть на доработку»; публикация только после подтверждения человеком. Доступен начиная с релиза 2026.3
-     - ``findArtifact``, ``getArtifactMetadata``, ``validateArtifact``, ``deployArtifact``, ``searchDocumentation``
+   .. grid-item-card:: Помощник по задачам и документам
+      :class-header: sd-font-weight-bold
+
+      ``tasks-documents-helper`` · движок ``TOOL_LOOP``
+
+      Работа с записями, задачами, документами и коммуникациями: «найди мои открытые обращения», «сравни версии договора», «подготовь письмо клиенту», «собери сводку по клиенту». Обслуживает чат без явно выбранного агента.
+
+      +++
+      ``queryRecords``, ``mutateRecord``, ``getRecordAttributes``, ``getRecordDisplayName``, ``getRecordTypeMetadata``, ``getRecordContent``, ``getRecordContentHistory``, ``getRecordContacts``, ``getActivities``, ``documentAnalysis``, ``analyzeFile``, ``proposeFile``, ``discardPendingFile``, ``getClient360``, ``getCurrentUserInfo``, ``compareDocuments``, ``writeEmail``, ``getCurrentTime``, ``getJournalSelectionLink``, ``ragSearch``, ``ragGetDocument``
+
+   .. grid-item-card:: Агент конфигурации платформы
+      :class-header: sd-font-weight-bold
+
+      ``platform-config-agent`` · движок ``CONFIG``
+
+      Создание и изменение конфигурации: «создай тип данных для учёта командировок», «добавь на форму поле для суммы», «сделай процесс согласования». Публикует артефакты только после подтверждения (``requireDeployConfirmation: true``).
+
+      +++
+      ``searchDocumentation``, ``findArtifact``, ``queryRecords``, ``getRecordTypeMetadata``, ``generateDataType``, ``generateForm``, ``generateBpmn``, ``editScript``, ``validateArtifact``, ``deployArtifact``, ``generateAppDocumentation``
+
+   .. grid-item-card:: Помощник по изображениям
+      :class-header: sd-font-weight-bold
+
+      ``image-helper`` · движок ``TOOL_LOOP``
+
+      Генерация и редактирование изображений: «нарисуй иконку для раздела», «убери фон», «сделай баннер к письму».
+
+      +++
+      ``generateImage``, ``editImage``, ``analyzeFile``
+
+   .. grid-item-card:: Помощник по возможностям платформы
+      :class-header: sd-font-weight-bold
+
+      ``platform-capabilities-helper`` · движок ``TOOL_LOOP``
+
+      Ответы на вопросы о возможностях платформы строго по документации, со ссылками на разделы: «поддерживается ли подключение своей LLM?», «как контролируется расход токенов?». Доступен начиная с релиза 2026.3.
+
+      +++
+      ``searchDocumentation``, ``ragSearch``, ``ragGetDocument``, ``getCurrentTime``
+
+   .. grid-item-card:: Аудитор конфигурации
+      :class-header: sd-font-weight-bold
+
+      ``config-audit-helper`` · движок ``TOOL_LOOP``
+
+      Аудит приложения по чек-листу — безопасность (права, чувствительные данные, доступ в статусах) и качество конфигурации (модель данных, статусы, процессы, формы); отчёт с уровнями риска: «проверь приложение «Договоры». Только читающие инструменты. Доступен начиная с релиза 2026.3.
+
+      +++
+      ``getEcosAppContent``, ``getArtifactMetadata``, ``getRecordTypeMetadata``, ``findArtifact``, ``queryRecords``, ``getRecordAttributes``, ``getRecordDisplayName``, ``searchDocumentation``, ``ragSearch``
+
+   .. grid-item-card:: Оператор публикации конфигурации
+      :class-header: sd-font-weight-bold
+
+      ``deploy-operator-helper`` · движок ``CONFIG``
+
+      Решение о публикации артефакта: валидация, оценка влияния на зависимые артефакты, вердикт «публиковать / вернуть на доработку»; публикация только после подтверждения человеком. Доступен начиная с релиза 2026.3.
+
+      +++
+      ``findArtifact``, ``getArtifactMetadata``, ``validateArtifact``, ``deployArtifact``, ``searchDocumentation``
 
 Помимо агентов-записей, в платформу встроены специализированные помощники: помощник BPMN в редакторе процессов, помощник написания скриптов, редактирование текста в полях записей, а также :ref:`запись и резюме совещаний <call-recording-module>`. Анализ и сравнение документов, деловые письма и «Клиент 360» выполняются инструментами операционного агента (см. каталог выше).
 
@@ -343,21 +372,21 @@ REST API
 Создание агента
 ----------------
 
-Через UI
-~~~~~~~~~
+В  интерфейсе платформы
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В рабочем пространстве администратора в разделе **AI** перейдите в журнал **AI Агенты**:
+В рабочем пространстве администратора в разделе **AI** перейдите в журнал **AI Агенты**.
 
 1. Заполните **Название**, **Системный промпт**, выберите **Провайдер LLM** и **Модель**.
 2. Опционально: добавьте инструменты, установите **Температуру**.
 3. Установите чекбокс **Включён** и сохраните.
 
- .. image:: _static/ai_agent_setting.png
-       :width: 650
-       :align: center
+.. image:: ../_static/ai_agent_setting.png
+   :width: 650
+   :align: center
 
 Citeck-артефакты
-~~~~~~~~~~~~~~~~~~
+----------------
 
 Артефакты агента расположены в следующих файлах:
 
@@ -414,11 +443,7 @@ Spring DI автоматически обнаружит инструмент ч�
 Маршрутизация в оркестраторе
 ------------------------------
 
-``AgentOrchestratorService.processRequest()`` — единая точка входа для всех запросов ассистента. Маршрутизация определяется полем ``engine`` записи агента, а не автоматическим определением намерения:
-
-- диалог с привязанным агентом обслуживается движком этого агента: ``TOOL_LOOP`` — операционный диалоговый цикл (``AgentExecutionService.executeInteractive``), ``CONFIG`` — цикл агента конфигурирования платформы (``ConfigAgentService``);
-- чат **без выбранного агента** обслуживается операционным агентом по умолчанию — свойство ``citeck.ai.agents.default-operational``, по умолчанию ``tasks-documents-helper``;
-- многоартефактный запрос конфигурации (например, создание бизнес-приложения целиком) перенаправляется в конвейер планирования и исполнения с утверждением плана человеком.
+``AgentOrchestratorService.processRequest()`` — единая точка входа для всех запросов ассистента. Маршрутизация запроса к движку агента (``TOOL_LOOP`` / ``CONFIG``) или в конвейер планирования и исполнения определяется полем ``engine`` записи агента, а не автоматическим определением намерения — подробно описана в разделе :ref:`«Маршрутизация» <ai-routing>` статьи :ref:`«Механика выполнения AI-агентов» <ai-architecture>`.
 
 
 Ключевые файлы
@@ -435,8 +460,12 @@ Spring DI автоматически обнаружит инструмент ч�
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentDefinition.kt``
    * - Реестр агентов
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentRegistry.kt``
+   * - Оркестратор (маршрутизация запросов)
+     - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentOrchestratorService.kt``
    * - Сервис выполнения
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentExecutionService.kt``
+   * - Сервис агента конфигурирования (``CONFIG``)
+     - ``src/main/java/ru/citeck/ecos/ai/domain/agent/ConfigAgentService.kt``
    * - REST-контроллер
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentController.kt``
    * - Интерфейс инструментов

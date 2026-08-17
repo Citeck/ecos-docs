@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -40,8 +40,8 @@ msgid ""
 "данные, повышая эффективность принятия решений и улучшая понимание "
 "текущего состояния бизнес-процессов."
 msgstr ""
-"The widget allows users to visually represent and analyze data, improving "
-"decision-making efficiency and understanding of the current state of "
+"The widget allows users to visually represent and analyze data, improving"
+" decision-making efficiency and understanding of the current state of "
 "business processes."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:25
@@ -68,8 +68,7 @@ msgstr ""
 msgid ""
 "Графики конфигурируемые - пользователи могут настраивать оси, "
 "масштабирование и т.д."
-msgstr ""
-"Charts are configurable — users can adjust axes, scaling, and more."
+msgstr "Charts are configurable — users can adjust axes, scaling, and more."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:35
 msgid ""
@@ -183,8 +182,7 @@ msgstr ""
 msgid ""
 "В списке представлены атрибуты, у которых в настройках разрешена "
 "группировка."
-msgstr ""
-"The list shows only attributes for which grouping is enabled in settings."
+msgstr "The list shows only attributes for which grouping is enabled in settings."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:86
 msgid "**Атрибут агрегации**"
@@ -194,8 +192,7 @@ msgstr "**Aggregation attribute**"
 msgid ""
 "Выберите атрибут из представленых в списке, по которому возвращать "
 "сводные данные."
-msgstr ""
-"Select an attribute from the list to use for returning aggregated data."
+msgstr "Select an attribute from the list to use for returning aggregated data."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:90
 msgid "Столбчатый"
@@ -248,8 +245,8 @@ msgid ""
 "Дробное. Масштабирования оси - отношение единицы X к единице Y. По "
 "умолчанию 2."
 msgstr ""
-"Decimal. Axis scaling — the ratio of one X unit to one Y unit. Default "
-"is 2."
+"Decimal. Axis scaling — the ratio of one X unit to one Y unit. Default is"
+" 2."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:116
 msgid ""
@@ -347,11 +344,157 @@ msgstr "Select the stages and display colors for the funnel."
 msgid "Для воронки доступны:"
 msgstr "The following options are available for the funnel:"
 
-#: ../../settings_kb/interface/widgets/graphic_statistics.rst
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:222
 msgid "Выбор ответственного с функцией поиска:"
 msgstr "Selecting an assignee with a search function:"
 
-#: ../../settings_kb/interface/widgets/graphic_statistics.rst
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:230
 msgid "Выбор периода дат:"
 msgstr "Selecting a date range:"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:237
+msgid "Что полезно знать при настройке"
+msgstr "Useful things to know when configuring"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:239
+msgid ""
+"**Агрегация — не только количество.** Атрибутом агрегации может быть "
+"сумма числового поля, а не только количество записей: например, сумма по "
+"колонке с суммой договора или с расходом."
+msgstr ""
+"**Aggregation is not only a count.** The aggregation attribute can be the"
+" sum of a numeric field, not just the number of records: for example, "
+"the sum of a contract amount or expense column."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:241
+msgid ""
+"**Период группировки по дате задаётся в самом виджете.** Для колонки с "
+"датой выбирается период — сутки, месяц и т. д. Отдельное поле «день» или "
+"«месяц» в типе данных для графика заводить не нужно."
+msgstr ""
+"**The date grouping period is set in the widget itself.** For a date "
+"column, you select a period — day, month, and so on. There is no need to "
+"add a separate \"day\" or \"month\" field to the data type used for the "
+"chart."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:243
+msgid ""
+"**Ссылка на дашборд с графиками.** Дашборд открывается адресом "
+"``/v2/dashboard?dashboardId=<идентификатор дашборда>``. Такую ссылку "
+"можно добавить в :ref:`меню <menu>` пунктом типа **Произвольный**, чтобы "
+"график открывался из любого раздела."
+msgstr ""
+"**Link to a dashboard with charts.** A dashboard is opened at the address"
+" ``/v2/dashboard?dashboardId=<dashboard ID>``. This link can be added to "
+"the :ref:`menu <menu>` as a **Custom** item so the chart can be opened "
+"from any section."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:246
+msgid "Настройка виджета в артефакте дашборда"
+msgstr "Configuring the widget in a dashboard artifact"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:248
+msgid ""
+"Дашборд можно не только собрать в интерфейсе, но и поставить артефактом "
+"``ui/dashboard``. В этом случае настройки виджета задаются в конфигурации"
+" вручную, а значения, которые в интерфейсе выбираются списком, приходится"
+" указывать точными идентификаторами."
+msgstr ""
+"A dashboard can not only be built in the interface but also deployed as a"
+" ``ui/dashboard`` artifact. In this case, the widget settings are "
+"specified manually in the configuration, and values that are selected "
+"from a list in the interface must be specified as exact identifiers."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:250
+msgid ""
+"Виджет описывается элементом с именем ``charts``; в ``props.config`` "
+"задаются:"
+msgstr ""
+"The widget is described by an element named ``charts``; the following "
+"are specified in ``props.config``:"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:257
+msgid "Свойство"
+msgstr "Property"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:258
+msgid "Значение"
+msgstr "Value"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:259
+msgid "``graphicTypeId``"
+msgstr "``graphicTypeId``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:260
+msgid ""
+"Тип графика: ``vertical-bar`` (столбчатый), ``doughnut`` (круговой), "
+"``line`` (линейный), ``funnel`` (воронка)"
+msgstr ""
+"Chart type: ``vertical-bar`` (bar), ``doughnut`` (pie), ``line`` (line), "
+"``funnel`` (funnel)"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:261
+msgid "``journalId``"
+msgstr "``journalId``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:262
+msgid "Ссылка на журнал, например ``uiserv/journal@deals-journal``"
+msgstr "Reference to the journal, for example ``uiserv/journal@deals-journal``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:263
+msgid "``typeRef``"
+msgstr "``typeRef``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:264
+msgid "Тип данных, записи которого показывает журнал"
+msgstr "The data type whose records the journal displays"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:265
+msgid "``groupByParams``"
+msgstr "``groupByParams``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:266
+msgid ""
+"Список атрибутов группировки; у атрибута с датой указываются "
+"``isDateColumn: true`` и период в ``dateParam``"
+msgstr ""
+"The list of grouping attributes; for a date attribute, specify "
+"``isDateColumn: true`` and the period in ``dateParam``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:267
+msgid "``aggregationParam``"
+msgstr "``aggregationParam``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:268
+msgid "Выражение агрегации, например ``count(*)`` или сумма числового поля"
+msgstr "The aggregation expression, for example ``count(*)`` or the sum of a numeric field"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:269
+msgid "``selectedPreset``"
+msgstr "``selectedPreset``"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:270
+msgid "Шаблон журнала, по которому отбираются записи"
+msgstr "The journal template used to select records"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:274
+msgid ""
+"Идентификатор типа графика должен в точности совпадать с одним из четырёх"
+" значений выше. При другом значении виджет отображается пустым — "
+"заголовок есть, графика нет, сообщения об ошибке тоже."
+msgstr ""
+"The chart type identifier must exactly match one of the four values "
+"above. With any other value, the widget is displayed empty — the title "
+"is shown, but there is no chart and no error message."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:278
+msgid ""
+"Собственный идентификатор дашборда задаётся именно в артефакте: при "
+"создании записи через API идентификатор назначает платформа, а попытка "
+"указать свой приводит к ошибке ``Dashboard with id … is not found``."
+msgstr ""
+"A custom dashboard identifier can only be set in the artifact: when a "
+"record is created via the API, the platform assigns the identifier, and "
+"trying to specify your own results in a ``Dashboard with id … is not "
+"found`` error."
 

@@ -106,6 +106,7 @@ API
 .. list-table::
    :header-rows: 1
    :widths: 35 65
+   :class: tight-table
 
    * - Файл
      - Назначение

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -150,7 +150,9 @@ msgstr ""
 msgid ""
 "Фильтрация по идентификаторам репозиториев (``includeRepoIds`` / "
 "``excludeRepoIds``)."
-msgstr "Filtering by repository identifiers (``includeRepoIds`` / ``excludeRepoIds``)."
+msgstr ""
+"Filtering by repository identifiers (``includeRepoIds`` / "
+"``excludeRepoIds``)."
 
 #: ../../general/Rag_config.rst:43
 msgid ""
@@ -207,7 +209,7 @@ msgid "Порт"
 msgstr "Port"
 
 #: ../../general/Rag_config.rst:68 ../../general/Rag_config.rst:114
-#: ../../general/Rag_config.rst:170
+#: ../../general/Rag_config.rst:170 ../../general/Rag_config.rst:293
 msgid "Описание"
 msgstr "Description"
 
@@ -319,11 +321,11 @@ msgstr ""
 msgid "Параметры сервера"
 msgstr "Server Parameters"
 
-#: ../../general/Rag_config.rst:112
+#: ../../general/Rag_config.rst:112 ../../general/Rag_config.rst:291
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../general/Rag_config.rst:113
+#: ../../general/Rag_config.rst:113 ../../general/Rag_config.rst:292
 msgid "По умолчанию"
 msgstr "Default"
 
@@ -367,7 +369,7 @@ msgstr "Qdrant gRPC port"
 msgid "``citeck.rag.search.default-top-k``"
 msgstr "``citeck.rag.search.default-top-k``"
 
-#: ../../general/Rag_config.rst:125
+#: ../../general/Rag_config.rst:125 ../../general/Rag_config.rst:298
 msgid "``5``"
 msgstr "``5``"
 
@@ -821,6 +823,120 @@ msgid ""
 msgstr ""
 "**Last Synchronization Time** — the time of the last successful "
 "synchronization of this repository."
+
+#: ../../general/Rag_config.rst:277
+msgid "Использование базы знаний AI-агентами"
+msgstr "Using the Knowledge Base with AI Agents"
+
+#: ../../general/Rag_config.rst:279
+msgid ""
+"Проиндексированные источники доступны :ref:`AI-агентам <user-agents>` "
+"через инструменты ``ragSearch``, ``ragGetDocument`` и "
+"``searchDocumentation`` в белом списке агента. Результаты поиска "
+"фильтруются по правам пользователя и рабочему пространству диалога. "
+"Подробнее — в разделе :ref:`Подключение базы знаний агенту <agent-"
+"knowledge-base>`."
+msgstr ""
+"Indexed sources are available to :ref:`AI agents <user-agents>` through "
+"the ``ragSearch``, ``ragGetDocument``, and ``searchDocumentation`` tools "
+"in the agent's whitelist. Search results are filtered by user permissions"
+" and the dialog's workspace. For more details, see :ref:`Connecting a "
+"Knowledge Base to an Agent <agent-knowledge-base>`."
+
+#: ../../general/Rag_config.rst:282
+msgid "Настройки на стороне citeck-ai"
+msgstr "Settings on the citeck-ai Side"
+
+#: ../../general/Rag_config.rst:284
+msgid ""
+"Микросервис ``citeck-ai`` обращается к ``citeck-rag`` как клиент. "
+"Параметры клиента задаются блоком ``citeck.ai.rag``:"
+msgstr ""
+"The ``citeck-ai`` microservice calls ``citeck-rag`` as a client. Client "
+"parameters are set via the ``citeck.ai.rag`` block:"
+
+#: ../../general/Rag_config.rst:294
+msgid "``citeck.ai.rag.enabled``"
+msgstr "``citeck.ai.rag.enabled``"
+
+#: ../../general/Rag_config.rst:295
+msgid "``false``"
+msgstr "``false``"
+
+#: ../../general/Rag_config.rst:296
+msgid ""
+"Включение RAG-инструментов агентов (``ragSearch``, ``ragGetDocument``, "
+"``searchDocumentation``); при ``false`` инструменты не регистрируются"
+msgstr ""
+"Enables agent RAG tools (``ragSearch``, ``ragGetDocument``, "
+"``searchDocumentation``); when ``false``, the tools are not registered"
+
+#: ../../general/Rag_config.rst:297
+msgid "``citeck.ai.rag.search.top-k``"
+msgstr "``citeck.ai.rag.search.top-k``"
+
+#: ../../general/Rag_config.rst:299
+msgid "Количество результатов, запрашиваемых инструментом поиска"
+msgstr "Number of results requested by the search tool"
+
+#: ../../general/Rag_config.rst:300
+msgid "``citeck.ai.rag.search.threshold``"
+msgstr "``citeck.ai.rag.search.threshold``"
+
+#: ../../general/Rag_config.rst:301
+msgid "``0.4``"
+msgstr "``0.4``"
+
+#: ../../general/Rag_config.rst:302
+msgid "Порог сходства для результатов на стороне клиента"
+msgstr "Similarity threshold for results on the client side"
+
+#: ../../general/Rag_config.rst:303
+msgid "``citeck.ai.rag.search.max-content-length``"
+msgstr "``citeck.ai.rag.search.max-content-length``"
+
+#: ../../general/Rag_config.rst:304
+msgid "``2000``"
+msgstr "``2000``"
+
+#: ../../general/Rag_config.rst:305
+msgid ""
+"Максимальная длина фрагмента результата поиска, передаваемого модели "
+"(символы)"
+msgstr ""
+"Maximum length of a search result fragment passed to the model "
+"(characters)"
+
+#: ../../general/Rag_config.rst:306
+msgid "``citeck.ai.rag.document.max-content-length``"
+msgstr "``citeck.ai.rag.document.max-content-length``"
+
+#: ../../general/Rag_config.rst:307
+msgid "``50000``"
+msgstr "``50000``"
+
+#: ../../general/Rag_config.rst:308
+msgid ""
+"Максимальная длина полного текста документа, передаваемого модели "
+"(символы)"
+msgstr ""
+"Maximum length of the full document text passed to the model (characters)"
+
+#: ../../general/Rag_config.rst:309
+msgid "``citeck.ai.rag.documentation.repo-id``"
+msgstr "``citeck.ai.rag.documentation.repo-id``"
+
+#: ../../general/Rag_config.rst:310
+msgid "``citeck-docs``"
+msgstr "``citeck-docs``"
+
+#: ../../general/Rag_config.rst:311
+msgid ""
+"Идентификатор репозитория с документацией платформы для инструмента "
+"``searchDocumentation``"
+msgstr ""
+"Identifier of the repository containing platform documentation, used by "
+"the ``searchDocumentation`` tool"
 
 #~ msgid "Настройка RAG-сервиса"
 #~ msgstr "RAG Service Configuration"
