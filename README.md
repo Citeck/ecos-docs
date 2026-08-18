@@ -42,7 +42,10 @@ pip install pre-commit
 
 Рекомендуется устанавливать зависимости в виртуальное окружение — на современных macOS/Linux прямой `pip install` часто блокируется (PEP 668, ошибка `externally-managed-environment`).
 
+Окружение создаётся **в корне репозитория**, а не в `docs/`: каталог `docs/` — это источник для Sphinx, и venv внутри него будет просканирован как документация (в лог посыпятся ошибки из `site-packages`).
+
 ```bash
+cd /путь/к/ecos-docs
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r docs/requirements.txt
@@ -50,6 +53,8 @@ pre-commit install
 ```
 
 Перед каждой сборкой активируйте окружение командой `source .venv/bin/activate`.
+
+После `git pull` повторяйте `pip install -r docs/requirements.txt` — список зависимостей меняется, а существующее окружение само не обновляется.
 
 После `pre-commit install` каждый коммит с изображениями будет автоматически сжимать их.
 
@@ -70,6 +75,7 @@ pre-commit run compress-images --all-files
 ## Локальная сборка
 
 ```bash
+source .venv/bin/activate
 cd docs
 make html
 ```
@@ -123,8 +129,18 @@ sudo apt install texlive-xetex texlive-fonts-recommended texlive-lang-cyrillic l
 ### Сборка
 
 ```bash
+source .venv/bin/activate
 cd docs
 make latexpdf
 ```
 
-Готовый PDF будет доступен по пути `_build/latex/citeck.pdf`.
+Готовый PDF будет доступен по пути `_build/latex/citeck.pdf`. Сборка идёт долго — около 25 минут (примерно 2700 страниц, ~80 МБ), `latexmk` делает 3 прохода. Предупреждения `Overfull \hbox`, `Underfull \vbox`, `Hyper reference ... undefined` и `Missing character` — нормальны и на результат не влияют.
+
+## Типичные ошибки
+
+| Ошибка | Причина и решение |
+|---|---|
+| `sphinx-build: command not found` | Не активировано окружение — `source .venv/bin/activate` из корня репозитория. |
+| `Не удалось загрузить расширение <имя> (exception: No module named ...)` | Окружение устарело относительно `docs/requirements.txt` — выполните `pip install -r docs/requirements.txt`. Пересоздание venv поверх существующего каталога зависимости не ставит. |
+| ERROR из `site-packages/...` в логе сборки | Виртуальное окружение создано внутри `docs/` — Sphinx сканирует его как источник. Создавайте venv в корне репозитория. |
+| `xelatex: command not found` (macOS) | После установки MacTeX добавьте `/Library/TeX/texbin` в `PATH` или откройте новую сессию терминала. |
