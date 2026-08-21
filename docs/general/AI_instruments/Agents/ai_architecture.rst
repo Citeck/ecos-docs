@@ -71,7 +71,7 @@
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 42 30
+   :widths: 28 30 30
    :class: tight-table
 
    * - Точка
