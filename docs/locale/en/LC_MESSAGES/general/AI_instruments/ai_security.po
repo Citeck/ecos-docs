@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/AI_instruments/ai_security.rst:4
+msgid "Безопасность AI-функций"
+msgstr "Security of AI Features"
+
+#: ../../general/AI_instruments/ai_security.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/AI_instruments/ai_security.rst:9
+msgid ""
+"Статья сводит воедино механизмы, ограничивающие доступ к AI-функциям "
+"платформы и действия самих агентов."
+msgstr ""
+"This article brings together the mechanisms that restrict access to the"
+" platform's AI features and the actions of the agents themselves."
+
+#: ../../general/AI_instruments/ai_security.rst:12
+msgid "Лицензия и доступ пользователей"
+msgstr "License and user access"
+
+#: ../../general/AI_instruments/ai_security.rst:14
+msgid "AI-функции доступны при выполнении двух условий:"
+msgstr "AI features are available when two conditions are met:"
+
+#: ../../general/AI_instruments/ai_security.rst:16
+msgid ""
+"**Лицензия** инсталляции содержит признак ``ai`` (или лицензия "
+"разработчика)."
+msgstr ""
+"The installation's **license** contains the ``ai`` flag (or it is a "
+"developer license)."
+
+#: ../../general/AI_instruments/ai_security.rst:17
+msgid ""
+"**Пользователь** состоит в группе ``ai-feature-allowed`` («Разрешено "
+"использовать AI-функции», полный идентификатор ``GROUP_ai-feature-"
+"allowed``). Администраторы платформы проходят проверку без членства в "
+"группе. Анонимным и гостевым пользователям AI-функции недоступны всегда."
+msgstr ""
+"The **user** is a member of the ``ai-feature-allowed`` group (\"Allowed"
+" to use AI features\", full identifier ``GROUP_ai-feature-allowed``). "
+"Platform administrators pass the check without being a member of the "
+"group. AI features are never available to anonymous and guest users."
+
+#: ../../general/AI_instruments/ai_security.rst:19
+msgid ""
+"Группа поставляется вместе с модулем ``citeck-ai`` пустой: администратор"
+" наполняет её пользователями или группами оргструктуры."
+msgstr ""
+"The group ships empty together with the ``citeck-ai`` module: the "
+"administrator populates it with users or org-structure groups."
+
+#: ../../general/AI_instruments/ai_security.rst:21
+msgid ""
+"**Генерация и редактирование изображений** дополнительно требуют "
+"членства в группе ``ai-image-allowed`` — доступ к платным генерациям "
+"изображений управляется отдельно от остальных AI-функций."
+msgstr ""
+"**Image generation and editing** additionally require membership in "
+"the ``ai-image-allowed`` group — access to paid image generations is "
+"managed separately from the other AI features."
+
+#: ../../general/AI_instruments/ai_security.rst:24
+msgid "Три оси доступа к инструментам"
+msgstr "Three axes of tool access"
+
+#: ../../general/AI_instruments/ai_security.rst:26
+msgid ""
+"Какие действия доступны агенту, определяется тремя независимыми "
+"механизмами:"
+msgstr ""
+"Which actions are available to an agent is determined by three "
+"independent mechanisms:"
+
+#: ../../general/AI_instruments/ai_security.rst:28
+msgid ""
+"**Белый список агента** — поле ``tools`` записи агента. Агент видит "
+"только явно подключённые инструменты; это единственный фильтр «какие "
+"инструменты у какого агента»."
+msgstr ""
+"**The agent's allowlist** — the ``tools`` field of the agent record. "
+"The agent sees only the tools explicitly attached to it; this is the "
+"only filter for \"which tools belong to which agent\"."
+
+#: ../../general/AI_instruments/ai_security.rst:29
+msgid ""
+"**Путь выполнения** — признак ``isAvailableForStatelessExecution()`` "
+"инструмента. Изменяющие инструменты (создание, изменение, удаление "
+"записей, публикация артефактов) запрещены на stateless-пути (вызов из "
+"BPMN, ``POST /api/ai-agent/execute``) и доступны только в интерактивном "
+"диалоге, где действует подтверждение человеком. Способ отказа зависит от "
+"вызывающего: BPMN-путь завершается явной ошибкой, REST-путь исключает "
+"запрещённые инструменты из набора и сообщает об этом в ответе; "
+"запрещённый инструмент не будет выполнен ни в одном из случаев. См. "
+":ref:`каталог инструментов <user-agents>`."
+msgstr ""
+"**The execution path** — the tool's "
+"``isAvailableForStatelessExecution()`` flag. Mutating tools (creating, "
+"modifying, deleting records, publishing artifacts) are forbidden on the"
+" stateless path (a call from BPMN, ``POST /api/ai-agent/execute``) and "
+"are available only in an interactive dialog, where human confirmation "
+"applies. The way the refusal happens depends on the caller: the BPMN "
+"path ends with an explicit error, the REST path excludes the forbidden "
+"tools from the set and reports this in the response; in neither case is"
+" a forbidden tool executed. See the :ref:`tool catalog <user-agents>`."
+
+#: ../../general/AI_instruments/ai_security.rst:30
+msgid ""
+"**Движок агента** — поле ``engine`` определяет сам режим выполнения и "
+"его защитные механизмы (:ref:`подробнее <ai-architecture>`)."
+msgstr ""
+"**The agent engine** — the ``engine`` field determines the execution "
+"mode itself and its safeguards (:ref:`more details <ai-architecture>`)."
+
+#: ../../general/AI_instruments/ai_security.rst:33
+msgid "Права пользователя"
+msgstr "User permissions"
+
+#: ../../general/AI_instruments/ai_security.rst:35
+msgid ""
+"В интерактивном диалоге все инструменты работают **под правами текущего"
+" пользователя**: агент не прочитает запись и не изменит артефакт, "
+"которые недоступны самому пользователю. Попытка публикации без прав "
+"завершается одним понятным сообщением об отказе."
+msgstr ""
+"In an interactive dialog, all tools operate **under the current user's"
+" permissions**: the agent will not read a record or modify an artifact"
+" that is not accessible to the user themselves. An attempt to publish "
+"without permission ends with a single clear denial message."
+
+#: ../../general/AI_instruments/ai_security.rst:39
+msgid ""
+"На stateless-пути (вызов из BPMN) запрос выполняется под техническим "
+"пользователем процесса, без подтверждений человеком. Не добавляйте "
+"изменяющие инструменты агентам, предназначенным для автономного вызова,"
+" — ограничивайтесь читающими. Платформа дополнительно защищает этот "
+"путь: изменяющий инструмент в белом списке агента при вызове из BPMN "
+"приводит к явной ошибке, а при вызове через ``POST /api/ai-agent"
+"/execute`` — исключается из набора; молчаливого выполнения нет ни в "
+"одном случае."
+msgstr ""
+"On the stateless path (a call from BPMN), the request runs as the "
+"process's technical user, without human confirmations. Do not add "
+"mutating tools to agents intended for autonomous invocation — limit "
+"them to read-only tools. The platform additionally protects this path:"
+" a mutating tool in the agent's allowlist causes an explicit error when"
+" called from BPMN, and is excluded from the set when called via "
+"``POST /api/ai-agent/execute``; silent execution never happens in "
+"either case."
+
+#: ../../general/AI_instruments/ai_security.rst:42
+msgid "Изоляция рабочих пространств"
+msgstr "Workspace isolation"
+
+#: ../../general/AI_instruments/ai_security.rst:44
+msgid ""
+"Операции агента выполняются в рамках рабочего пространства диалога; "
+"публикация артефактов из рабочего пространства не затрагивает "
+"глобальную конфигурацию (:ref:`область публикации <ai-deploy-scope>`)."
+msgstr ""
+"Agent operations run within the dialog's workspace; publishing "
+"artifacts from the workspace does not affect the global configuration "
+"(:ref:`publication scope <ai-deploy-scope>`)."
+
+#: ../../general/AI_instruments/ai_security.rst:45
+msgid ""
+"Базы знаний индексируются в отдельные коллекции по рабочим "
+"пространствам, результаты семантического поиска фильтруются по правам "
+"пользователя (:ref:`настройка RAG <rag-config>`)."
+msgstr ""
+"Knowledge bases are indexed into separate collections per workspace, "
+"and semantic search results are filtered by the user's permissions "
+"(:ref:`RAG configuration <rag-config>`)."
+
+#: ../../general/AI_instruments/ai_security.rst:48
+msgid "Подтверждения действий"
+msgstr "Action confirmations"
+
+#: ../../general/AI_instruments/ai_security.rst:50
+msgid ""
+"Все действия с необратимыми последствиями — публикация конфигурации, "
+"изменение и удаление записей, расширение типов — проходят через "
+"подтверждение человеком. Нормативный перечень точек — в разделе "
+":ref:`Человек в контуре <ai-hitl>`."
+msgstr ""
+"All actions with irreversible consequences — publishing configuration,"
+" modifying and deleting records, extending types — go through human "
+"confirmation. The normative list of these points is in the :ref:`Human"
+" in the loop <ai-hitl>` section."

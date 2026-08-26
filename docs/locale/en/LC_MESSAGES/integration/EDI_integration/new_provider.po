@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19 00:02+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,15 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/EDI_integration/new_provider.rst:2
+#: ../../integration/EDI_integration/new_provider.rst:4
 msgid "Реализация интеграции с новым ЭДО-провайдером"
 msgstr "Implementing integration with a new EDI provider"
 
-#: ../../integration/EDI_integration/new_provider.rst:5
+#: ../../integration/EDI_integration/new_provider.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../integration/EDI_integration/new_provider.rst:10
 msgid "1. Со стороны бандла работы с ЭДО-провайдером (мкр. интеграции)"
 msgstr "1. From the EDI provider handling bundle side (integrations microservice)"
 
-#: ../../integration/EDI_integration/new_provider.rst:7
+#: ../../integration/EDI_integration/new_provider.rst:12
 msgid ""
 "Создать java проект с бандлом. Пример создания нового бандла можно "
 "посмотреть тут: Пример создания бандла."
@@ -34,7 +38,7 @@ msgstr ""
 "Create a Java project with a bundle. An example of creating a new bundle "
 "can be found here: Bundle creation example."
 
-#: ../../integration/EDI_integration/new_provider.rst:9
+#: ../../integration/EDI_integration/new_provider.rst:14
 msgid ""
 "В данном проекте обязательно надо импортнуть зависимость ``ru.citeck.ecos"
 ".ecos-edi-commons``. Версия должна соответствовать той, которая находится"
@@ -44,7 +48,7 @@ msgstr ""
 "commons``. The version must match the one in the integrations "
 "microservice of the version you require."
 
-#: ../../integration/EDI_integration/new_provider.rst:11
+#: ../../integration/EDI_integration/new_provider.rst:16
 msgid ""
 "В активаторе (класс интерфейса ``org.osgi.framework.BundleActivator``) "
 "необходимо зарегистрировать свои реализации "
@@ -61,7 +65,7 @@ msgstr ""
 "the integrations microservice. Example from Kontur (don't forget to "
 "perform unregister(…) when unloading the bundle):"
 
-#: ../../integration/EDI_integration/new_provider.rst:23
+#: ../../integration/EDI_integration/new_provider.rst:28
 msgid ""
 "После этого шага, запросы к Вашему ЭДО-провайдеру в рамках этих "
 "интерфейсов будут транслироваться в Ваш сервис."
@@ -69,7 +73,7 @@ msgstr ""
 "After this step, requests to your EDI provider within these interfaces "
 "will be translated to your service."
 
-#: ../../integration/EDI_integration/new_provider.rst:25
+#: ../../integration/EDI_integration/new_provider.rst:30
 msgid ""
 "В существующих на данный момент бандлах можно так же найти примеры "
 "регистрации слушателя изменения данных по какому-то ящику (сущности "
@@ -81,7 +85,7 @@ msgstr ""
 "entity, credentials, data source). Can be used for clearing caches inside"
 " the bundle."
 
-#: ../../integration/EDI_integration/new_provider.rst:27
+#: ../../integration/EDI_integration/new_provider.rst:32
 msgid ""
 "В случае отсутствия Вашего провайдера в enum "
 "``ru.citeck.ecos.domain.edi.dto.enums.EdiProviderType`` либы ``ecos-edi-"
@@ -91,13 +95,13 @@ msgstr ""
 "``ru.citeck.ecos.domain.edi.dto.enums.EdiProviderType`` of the ``ecos-"
 "edi-commons`` library, it will be necessary to add it."
 
-#: ../../integration/EDI_integration/new_provider.rst:30
+#: ../../integration/EDI_integration/new_provider.rst:35
 msgid "2. Со стороны связующей либы ecos-edi-integration (мкр. интеграции)"
 msgstr ""
 "2. From the connecting library ecos-edi-integration side (integrations "
 "microservice)"
 
-#: ../../integration/EDI_integration/new_provider.rst:32
+#: ../../integration/EDI_integration/new_provider.rst:37
 msgid ""
 "Как бы не хотелось полностью унифицировать обработку одного "
 "ЭДО-провайдера от другого - не получится. Разные атрибуты для "
@@ -107,7 +111,7 @@ msgstr ""
 "provider from another, it's not possible. Different attributes for "
 "identifiers, slightly different search policies, etc."
 
-#: ../../integration/EDI_integration/new_provider.rst:34
+#: ../../integration/EDI_integration/new_provider.rst:39
 msgid ""
 "Поэтому, создан небольшой интерфейс "
 "``ru.citeck.ecos.edi.domain.integration.service.provider.ProviderHandler``"
@@ -119,7 +123,7 @@ msgstr ""
 " was created on the ``ecos-edi-integration`` side, which performs actions"
 " to search for records in Alfresco (currently in Alfresco)."
 
-#: ../../integration/EDI_integration/new_provider.rst:36
+#: ../../integration/EDI_integration/new_provider.rst:41
 msgid ""
 "Реализацию для нового провайдера необходимо зарегистрировать. Делается "
 "это просто - "
@@ -129,11 +133,11 @@ msgstr ""
 "done simply in "
 "``ru.citeck.ecos.edi.domain.integration.factory.ApplicationCamelContextFactoryImpl#createProviderResolver``:"
 
-#: ../../integration/EDI_integration/new_provider.rst:49
+#: ../../integration/EDI_integration/new_provider.rst:57
 msgid "3. Со стороны хранилки (альфреско)"
 msgstr "3. From the repository side (Alfresco)"
 
-#: ../../integration/EDI_integration/new_provider.rst:51
+#: ../../integration/EDI_integration/new_provider.rst:59
 msgid ""
 "На данный момент, хранилка - альфреско. Ее можно сменить при наличии "
 "подобного варианта, переделав лишь либу ``ecos-edi-integration`` или "
@@ -143,7 +147,7 @@ msgstr ""
 "option is available, by reworking only the ``ecos-edi-integration`` "
 "library or creating a similar one for a specific repository."
 
-#: ../../integration/EDI_integration/new_provider.rst:53
+#: ../../integration/EDI_integration/new_provider.rst:61
 msgid ""
 "Создать аспект для хранения идентификаторов документов (подписей, в "
 "случае некоторых провайдеров)."
@@ -151,7 +155,7 @@ msgstr ""
 "Create an aspect for storing document identifiers (signatures, in the "
 "case of some providers)."
 
-#: ../../integration/EDI_integration/new_provider.rst:55
+#: ../../integration/EDI_integration/new_provider.rst:63
 msgid ""
 "Зарегистрировать свою реализацию "
 "``ru.citeck.ecos.integration.edi.documents.identifiers.EdiIdentifiersProvider``"
@@ -171,7 +175,7 @@ msgstr ""
 " then registration during bean initialization will happen automatically "
 "via ``@PostConstruct``."
 
-#: ../../integration/EDI_integration/new_provider.rst:57
+#: ../../integration/EDI_integration/new_provider.rst:65
 msgid ""
 "Данный сервис необходим для генерации печатных форм (проверка "
 "существования идентификаторов ЭДО у нод) и для определения типа документа"
@@ -181,7 +185,7 @@ msgstr ""
 "existence of EDI identifiers on nodes) and for determining the EDI "
 "document type (not to be confused with UZDO)."
 
-#: ../../integration/EDI_integration/new_provider.rst:59
+#: ../../integration/EDI_integration/new_provider.rst:67
 msgid ""
 "Зарегистрировать свою реализацию "
 "``ru.citeck.ecos.integration.edi.documents.titles.TitleTypeService`` в "
@@ -199,7 +203,7 @@ msgstr ""
 " then registration during bean initialization will happen automatically "
 "via ``@PostConstruct``."
 
-#: ../../integration/EDI_integration/new_provider.rst:61
+#: ../../integration/EDI_integration/new_provider.rst:69
 msgid ""
 "Данный сервис необходим при подписании ЮЗДО. Благодаря ему определяется, "
 "нужно ли генерировать и подписывать титул документа или достаточно "
@@ -209,7 +213,7 @@ msgstr ""
 " It determines whether it is necessary to generate and sign the document "
 "title or if the signature of the attachment itself is sufficient."
 
-#: ../../integration/EDI_integration/new_provider.rst:63
+#: ../../integration/EDI_integration/new_provider.rst:71
 msgid ""
 "Самая основная часть - подготовка запросов и постобработка ответов. За "
 "кастомную часть этого процесса отвечает "

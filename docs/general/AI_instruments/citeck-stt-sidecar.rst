@@ -97,7 +97,7 @@ API
 - **GigaAM-v3 (Сбер)** — распознавание русской речи
 - **pyannote.audio** — диаризация
 - **pydub + ffmpeg** — конвертация аудио (WebM/Opus → WAV)
-- **Python 3.11**, деплой в Docker
+- **Python 3.11**, развёртывание в Docker
 
 
 Ключевые файлы
@@ -106,6 +106,7 @@ API
 .. list-table::
    :header-rows: 1
    :widths: 35 65
+   :class: tight-table
 
    * - Файл
      - Назначение

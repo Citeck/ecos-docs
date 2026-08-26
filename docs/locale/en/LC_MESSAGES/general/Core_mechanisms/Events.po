@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -45,8 +45,8 @@ msgid ""
 msgstr ""
 "Events are generated when the state of objects changes: when records are "
 "created, updated, or deleted, when the status changes, attributes are "
-"modified, tasks are assigned, and other actions. Subscribers receive only "
-"the attributes they need — without modifying the event source."
+"modified, tasks are assigned, and other actions. Subscribers receive only"
+" the attributes they need — without modifying the event source."
 
 #: ../../general/Core_mechanisms/Events.rst:13
 msgid "Механизм поддерживает два режима доставки:"
@@ -81,21 +81,21 @@ msgid ""
 "отправка уведомлений как реакция на событие - сменился статус, изменился "
 "атрибут, назначилась задача и т.д."
 msgstr ""
-"Event reactions are built on RabbitMQ and event models in the "
-"`ecos-events <https://github.com/Citeck/ecos-events>`_ library. RabbitMQ "
+"Event reactions are built on RabbitMQ and event models in the `ecos-"
+"events <https://github.com/Citeck/ecos-events>`_ library. RabbitMQ "
 "connections are established on both the producer and consumer sides. "
 "Example: sending notifications in response to an event — status changed, "
 "attribute modified, task assigned, etc."
 
-#: ../../general/Core_mechanisms/Events.rst:24
-msgid "Архитектура"
-msgstr "Architecture"
+#: ../../general/Core_mechanisms/Events.rst:23
+msgid "Общая архитектура:"
+msgstr "Overall architecture:"
 
-#: ../../general/Core_mechanisms/Events.rst:31
+#: ../../general/Core_mechanisms/Events.rst:29
 msgid "Описание работы"
 msgstr "How It Works"
 
-#: ../../general/Core_mechanisms/Events.rst:33
+#: ../../general/Core_mechanisms/Events.rst:31
 msgid ""
 "События в Citeck позволяют менять атрибутивный состав, который нужен "
 "подписчику на событие, без модификации источника событий. При старте "
@@ -107,7 +107,7 @@ msgstr ""
 "all subscribers register in Zookeeper the list of event types they need "
 "and the event attributes they are interested in."
 
-#: ../../general/Core_mechanisms/Events.rst:36
+#: ../../general/Core_mechanisms/Events.rst:34
 msgid ""
 "Приложение, которое может отправлять события подобного типа, видит, что в"
 " системе есть подписчики на эти события, и, при их возникновении, "
@@ -121,7 +121,7 @@ msgstr ""
 "non-transactional listeners) or directly to the listener (for "
 "transactional listeners) via a synchronous request."
 
-#: ../../general/Core_mechanisms/Events.rst:39
+#: ../../general/Core_mechanisms/Events.rst:37
 msgid ""
 "Атрибуты описываются в формате Records API и могут пользоваться всеми "
 "преимуществами данного API."
@@ -129,11 +129,11 @@ msgstr ""
 "Attributes are described in the Records API format and can take full "
 "advantage of that API."
 
-#: ../../general/Core_mechanisms/Events.rst:42
+#: ../../general/Core_mechanisms/Events.rst:40
 msgid "Транзакционные слушатели"
 msgstr "Transactional Listeners"
 
-#: ../../general/Core_mechanisms/Events.rst:44
+#: ../../general/Core_mechanisms/Events.rst:42
 msgid ""
 "Транзакционные слушатели позволяют реагировать на события \"здесь и "
 "сейчас\", не дожидаясь пока транзакция завершится. Подобные слушатели "
@@ -141,12 +141,12 @@ msgid ""
 "возможностью прервать транзакцию или для любых других действий, которые "
 "должны выполниться в рамках транзакции."
 msgstr ""
-"Transactional listeners allow reacting to events \"here and now\" without "
-"waiting for the transaction to complete. Such listeners can be used to "
-"add system state validation with the ability to abort the transaction, or "
-"for any other actions that must be performed within the transaction."
+"Transactional listeners allow reacting to events \"here and now\" without"
+" waiting for the transaction to complete. Such listeners can be used to "
+"add system state validation with the ability to abort the transaction, or"
+" for any other actions that must be performed within the transaction."
 
-#: ../../general/Core_mechanisms/Events.rst:47
+#: ../../general/Core_mechanisms/Events.rst:45
 msgid ""
 "Важная особенность - добавляя транзакционных слушателей вы автоматически "
 "добавляете жесткую зависимость генерирующих события микросервисов от "
@@ -160,22 +160,57 @@ msgstr ""
 "the microservice with the listener is unavailable, the event-generating "
 "microservice will not be able to function fully."
 
-#: ../../general/Core_mechanisms/Events.rst:50
+#: ../../general/Core_mechanisms/Events.rst:48
 msgid "Примеры"
 msgstr "Examples"
 
-#: ../../general/Core_mechanisms/Events.rst:53
-msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
-msgstr "Subscribing to an event with arbitrary attributes (Kotlin)"
+#: ../../general/Core_mechanisms/Events.rst:51
+msgid "Подписка на событие с произвольными атрибутами"
+msgstr "Subscribing to an event with arbitrary attributes"
 
-#: ../../general/Core_mechanisms/Events.rst:68
-msgid "Подписка на событие с произвольными атрибутами (Java):"
-msgstr "Subscribing to an event with arbitrary attributes (Java):"
+#: ../../general/Core_mechanisms/Events.rst
+msgid "Kotlin"
+msgstr "Kotlin"
 
-#: ../../general/Core_mechanisms/Events.rst:92
+#: ../../general/Core_mechanisms/Events.rst
+msgid "Java"
+msgstr "Java"
+
+#: ../../general/Core_mechanisms/Events.rst:93
 msgid "Пример listener-а событий для определенного типа данных"
 msgstr "Example of an event listener for a specific data type"
 
-#: ../../general/Core_mechanisms/Events.rst:187
+#: ../../general/Core_mechanisms/Events.rst:179
+msgid ""
+"В теле каждого ``withAction`` вместо ``println`` должна быть ваша "
+"бизнес-логика. Аналогичным образом можно подписаться и на другие уже "
+"реализованные события — например, ``RecordStatusChangedEvent``, "
+"``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent`` и т.д., "
+"а также на собственные события. Полный список — в классе "
+"``RecordEventTypes.kt`` библиотеки ``ecos-events2``."
+msgstr ""
+"The body of each ``withAction`` should contain your business logic "
+"instead of ``println``. In the same way, you can subscribe to other "
+"already implemented events — for example, ``RecordStatusChangedEvent``, "
+"``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent``, etc., "
+"as well as to your own custom events. The full list is available in the "
+"``RecordEventTypes.kt`` class of the ``ecos-events2`` library."
+
+#: ../../general/Core_mechanisms/Events.rst:181
+msgid ""
+"В data-классах (``RecordUpdated``, ``RecordCreated``, ``RecordDeleted``) "
+"определяется набор данных, которые нужно получить из события; там же, в "
+"``RecordEventTypes.kt``, можно посмотреть, какие атрибуты события "
+"доступны."
+msgstr ""
+"The data classes (``RecordUpdated``, ``RecordCreated``, "
+"``RecordDeleted``) define the set of data to be obtained from the event; "
+"``RecordEventTypes.kt`` also shows which event attributes are available."
+
+#: ../../general/Core_mechanisms/Events.rst:183
 msgid "Пояснения:"
 msgstr "Notes:"
+
+#~ msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
+#~ msgstr "Subscribing to an event with arbitrary attributes (Kotlin)"
+

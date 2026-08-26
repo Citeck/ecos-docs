@@ -34,6 +34,12 @@
 
       Управление транзакционностью операций на основе двухфазного коммита.
 
+   .. grid-item-card:: Версионирование контента
+      :link: content_versioning
+      :link-type: ref
+
+      Хранение, создание и сравнение версий файлов записей.
+
    .. grid-item-card:: Внешние коммуникации
       :link: external-communications
       :link-type: ref
@@ -48,4 +54,5 @@
     Core_mechanisms/Events.rst
     Core_mechanisms/ECOS_WebAPI.rst
     Core_mechanisms/Transactions.rst
+    Core_mechanisms/Content_versioning.rst
     Core_mechanisms/external communications.rst
