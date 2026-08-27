@@ -130,13 +130,13 @@
 
              .. image:: _static/homepage/intro_5.png
                   :width: 200
-                  :align: center
+                  :align: right
 
       .. grid-item::
 
              .. image:: _static/homepage/intro_6.png
                   :width: 60
-                  :align: center
+                  :align: left
 
 В свернутом виде оно будет отображаться в виде панели со значками в левой части экрана.
 
