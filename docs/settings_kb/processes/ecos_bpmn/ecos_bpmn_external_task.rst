@@ -418,7 +418,7 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 3. **У повтора есть явная ветка «уже сделано»**, и она завершает задачу штатно (``complete``), а не
    выбрасывает бизнес-ошибку: работа выполнена, процесс должен идти дальше.
 
-.. code-block:: kotlin
+.. code-block::
 
     @Component
     @ExternalTaskSubscription("processPayment")
