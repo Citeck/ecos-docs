@@ -563,6 +563,8 @@ Vault и секреты
    * - ``.Values.<mSRV>.x509.certs``
      - Сертификаты (неясное назначение)
 
+.. _zookeeper-ecos-chart:
+
 ZooKeeper в чарте ecos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
