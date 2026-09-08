@@ -563,6 +563,198 @@ Vault и секреты
    * - ``.Values.<mSRV>.x509.certs``
      - Сертификаты (неясное назначение)
 
+ZooKeeper в чарте ecos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Начиная с версии **1.3.108** чарт поддерживает два образа Zookeeper: Bitnami и официальный Apache. Дефолтный не менялся — без новых флагов, остаётся на Bitnami.
+
+Режимы
+""""""""""""""""""
+
+``ZookeeperApp.legacyStartCmd.enabled`` выбирает layout и команду старта.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+   :class: tight-table
+
+   * - Свойство
+     - Bitnami (``true``, дефолт)
+     - Official (``false``)
+   * - Команда
+     - ``/entrypoint.sh /run.sh``
+     - ``/docker-entrypoint.sh zkServer.sh start-foreground``
+   * - Том
+     - ``/bitnami/zookeeper`` (данные в ``data/myid``)
+     - ``/data`` (``/data/myid``)
+   * - UID / fsGroup
+     - ``1001``
+     - ``1000``
+   * - Env
+     - ``ZOO_SERVER_ID``, ``ZOO_PORT_NUMBER``, …
+     - ``ZOO_MY_ID``, ``ZOO_DATA_DIR=/data``, ``ZOO_SERVERS`` вида ``server.1=host:2888:3888;2181``
+   * - Проба
+     - ``echo ruok | nc localhost 2181 | grep imok``
+     - ``ruok`` через bash ``/dev/tcp`` (в образе нет ``nc``)
+   * - Тег чарта по умолчанию
+     - ``3.6.2-debian-10-r124``
+     - —
+
+``legacyStartCmd`` без нужного образа не переключать: Bitnami не поймёт ``/data`` и ``/docker-entrypoint.sh``, переход с Bitnami на official — возможен.
+
+Флаги
+""""""
+
+.. code-block:: yaml
+
+   ZookeeperApp:
+     legacyStartCmd:
+       enabled: true    # true = Bitnami, false = official
+     migrateFromBitnami:
+       enabled: true    # только official: flatten data/ → /data и chown
+
+Апгрейд Bitnami → Bitnami
+""""""""""""""""""""""""""""""""""""
+
+Остаётесь на Bitnami, нужен только более новый тег (3.6 / 3.8 → 3.9.3). Флаг не выключать, migrate не нужен.
+
+.. code-block:: yaml
+
+   ZookeeperApp:
+     legacyStartCmd:
+       enabled: true
+     image:
+       tag: 3.9.3-debian-12-r22
+
+Тот же PVC, ``/bitnami/zookeeper``, UID ``1001``. Snapshot читается как есть.
+
+Дальше 3.9.3 на Bitnami не поднимать: у 3.9.4+ другой entrypoint, чарт под него не заточен. Если нужна 3.9.4+ — official.
+
+Переход Bitnami → official (тот же PVC)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Данные на диске не копируются и не удаляются. Меняется только путь, по которому контейнер видит том, и init один раз поправляет вложенную папку.
+
+На Bitnami PVC смонтирован как ``/bitnami/zookeeper``. Файлы лежат так:
+
+.. code-block:: text
+
+   /bitnami/zookeeper/data/myid
+   /bitnami/zookeeper/data/version-2/
+
+На official тот же PVC монтируется как ``/data``. Содержимое диска то же, точка монтирования другая, поэтому те же файлы видны глубже:
+
+.. code-block:: text
+
+   /data/data/myid
+   /data/data/version-2/
+
+Official ищет ``/data/myid``, не ``/data/data/myid``. Init ``init-migrate-from-bitnami`` (busybox) поднимает содержимое на уровень выше:
+
+.. code-block:: text
+
+   /data/myid
+   /data/version-2/
+   /data/.migrated-from-bitnami
+
+Порядок работы init:
+
+1. Есть ``/data/myid`` — том уже в формате official, файлы не трогает.
+2. Есть ``/data/data/myid`` — переносит всё из ``data/`` в ``/data``, пишет маркер ``.migrated-from-bitnami``.
+3. Нет ни того ни другого — пустой том, ZK сам создаст ``myid``.
+4. В любом случае ``chown`` на ``runAsUser:fsGroup`` (для official это ``1000:1000``). Если оставить UID Bitnami ``1001``, official не сможет писать в том.
+
+.. code-block:: yaml
+
+   ZookeeperApp:
+     legacyStartCmd:
+       enabled: false
+     migrateFromBitnami:
+       enabled: true
+     securityContext:
+       runAsUser: 1000
+       fsGroup: 1000
+     image:
+       registry: harbor.citeck.ru
+       repository: docker-hub/library/zookeeper
+       tag: "3.9.5"
+       pullSecrets: harbor-docker-rpoxy
+     persistence:
+       enabled: true
+       volumePermissions:
+         enabled: true
+
+После этого шага ``legacyStartCmd: true`` обратно не включать: пути уже не Bitnami, под не будет стартовать.
+
+Пробы
+"""""""
+
+Тайминги из values (дефолт): 
+
+- liveness delay 30 с, 
+- readiness 5 с, 
+- timeout 5 с, 
+- 6 фейлов. 
+
+На апгрейде чарта Bitnami — пробу не меняют.
+
+Память
+"""""""""""
+
+В поде два разных лимита: Kubernetes (``resources.limits.memory``) и JVM-куча (heap). Если Java просит больше, чем даёт kube, под убивают с ``OOMKilled``.
+
+Bitnami режет сам. Чарт ставит ``ZOO_HEAP_SIZE`` из ``environments.heapSize`` (дефолт ``512``, в мегабайтах):
+
+.. code-block:: yaml
+
+   ZookeeperApp:
+     environments:
+       heapSize: 512
+     resources: |
+       limits:
+         memory: 768Mi
+       requests:
+         memory: 768Mi
+
+JVM-куча ~512 Mi, запас в limit на метаспейс и нативные буферы. Так устроен дефолт чарта (768 Mi).
+
+Official переменную ``ZOO_HEAP_SIZE`` игнорирует. Без ``JVMFLAGS`` JVM сама выбирает JVM-кучу (часто от размера контейнера). Чарт пишет ``JVMFLAGS``, только если задать ``environments.jvmFlags``. Если official начнёт упираться в память (OOM или тяжёлые пробы), поднять limit и явно ограничить кучу:
+
+.. code-block:: yaml
+
+   ZookeeperApp:
+     environments:
+       jvmFlags: "-Xmx256m -Xms256m"
+     resources: |
+       limits:
+         cpu: 500m
+         memory: 768Mi
+       requests:
+         cpu: 300m
+         memory: 768Mi
+
+``-Xmx`` держать заметно ниже ``limits.memory``: кроме кучи есть метаспейс, треды, прямые буферы. ``heapSize`` на official на это не влияет.
+
+Итого: выставлять ``heapSize`` на official можно, но без смысла. Это не ошибка чарта и не поломка — просто мёртвая env.
+
+Проверка после деплоя
+"""""""""""""""""""""""""
+
+.. code-block:: bash
+
+   kubectl -n <ns> get pod zookeeper-app-0
+   kubectl -n <ns> logs zookeeper-app-0 --tail=50
+   kubectl -n <ns> logs zookeeper-app-0 -c init-migrate-from-bitnami
+   kubectl -n <ns> exec zookeeper-app-0 -- zkCli.sh -server 127.0.0.1:2181 ls /ecos
+
+Под должен быть ``1/1 Running``, в логах ZK — bind на 2181 и чтение snapshot, ``/ecos`` — прежний набор каталогов. Лог init-контейнера покажет один из трёх исходов: ``flatten bitnami data/ -> /data`` (первый переход), ``already official layout`` (повторный старт после миграции) или ``empty volume, nothing to migrate`` (пустой PVC). На томе после миграции (``ls -la /data``) должны быть ``myid`` и ``version-2``, без вложенного ``/data/data/myid``.
+
+Чего не делать:
+
+- Не ставить official-тег при ``legacyStartCmd: true``.
+- Не возвращать Bitnami после migrate.
+
+
 Генерация уникального ключа шифрования
 ---------------------------------------
 
