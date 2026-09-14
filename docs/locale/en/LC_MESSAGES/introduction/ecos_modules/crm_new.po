@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -844,7 +844,7 @@ msgstr ""
 
 #: ../../introduction/ecos_modules/crm_new.rst:623
 msgid "Карточка платежа:"
-msgstr "Order Card:"
+msgstr "Payment Card:"
 
 #: ../../introduction/ecos_modules/crm_new.rst:638
 msgid ""
@@ -1034,11 +1034,28 @@ msgstr "**delay**"
 msgid "частота проверки почтового ящика (указывается в миллисекундах)"
 msgstr "mailbox check frequency (specified in milliseconds)"
 
-#: ../../introduction/ecos_modules/crm_new.rst:744
+#: ../../introduction/ecos_modules/crm_new.rst:743
+msgid ""
+"Значения конфигураций ``mail-inbox-crm`` и ``mail-inbox-activity`` "
+"считываются микросервисом **ecom** один раз — при старте приложения "
+"(Camel-маршрут собирается на этапе инициализации Spring-контекста). После"
+" любого изменения настройки (включая переключение значения с ``disabled``"
+" на реальный IMAP URI и обратно) необходимо **перезапустить микросервис "
+"ecom**, иначе новые параметры подключения не применятся."
+msgstr ""
+"The values of the ``mail-inbox-crm`` and ``mail-inbox-activity`` "
+"configurations are read by the **ecom** microservice only once — at "
+"application startup (the Camel route is assembled during Spring context "
+"initialization). After any change to the setting (including switching the"
+" value from ``disabled`` to a real IMAP URI and back), you must "
+"**restart the ecom microservice**, otherwise the new connection "
+"parameters will not be applied."
+
+#: ../../introduction/ecos_modules/crm_new.rst:749
 msgid "Включение обработки писем в активности"
 msgstr "Enabling Email Processing in Activities"
 
-#: ../../introduction/ecos_modules/crm_new.rst:746
+#: ../../introduction/ecos_modules/crm_new.rst:751
 msgid ""
 "Для включения обработки писем в виджете \"Активности\" необходимо указать"
 " почтовый ящик в настройке **mail-inbox-activity (Конфигурация почтового "
@@ -1050,7 +1067,7 @@ msgstr ""
 "Configuration for Reading Emails in Activity Camel Route)** similarly as "
 "described above."
 
-#: ../../introduction/ecos_modules/crm_new.rst:750
+#: ../../introduction/ecos_modules/crm_new.rst:755
 msgid ""
 "Желательно, чтобы обработка писем в активности и создания сделок, "
 "осуществлялось через разные почтовые ящики."
@@ -1058,7 +1075,7 @@ msgstr ""
 "It is advisable that email processing for activities and deal creation be"
 " handled through different mailboxes."
 
-#: ../../introduction/ecos_modules/crm_new.rst:752
+#: ../../introduction/ecos_modules/crm_new.rst:757
 msgid ""
 "Чтобы письмо обрабатывалось и добавлялось как активность, необходимо в "
 "тип **сделка** добавить и настроить аспект :ref:`Имеет активности<has-"
@@ -1068,7 +1085,7 @@ msgstr ""
 " add and configure the :ref:`Has Activities<has-ecos-activities_aspect>` "
 "aspect to the **deal** type."
 
-#: ../../introduction/ecos_modules/crm_new.rst:754
+#: ../../introduction/ecos_modules/crm_new.rst:759
 msgid ""
 "Если в письме было вложение, то в виджете "
 ":ref:`Активности<widget_activities>` создается запись с типом **Письмо**,"

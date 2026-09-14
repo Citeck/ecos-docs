@@ -15,13 +15,20 @@
 
 Список для выбора - формы из журнала форм.
 
-.. image:: ../_static/widgets/Properties_1.png
-   :width: 400
-   :align: center
+.. grid:: 2
+   :gutter: 2
 
-.. image:: ../_static/widgets/Properties_2.png
-   :width: 500
-   :align: center
+   .. grid-item::
+
+      .. image:: ../_static/widgets/Properties_1.png
+         :width: 400
+         :align: left
+
+   .. grid-item::
+
+      .. image:: ../_static/widgets/Properties_2.png
+         :width: 500
+         :align: left
 
 Настроенный вид
 ----------------

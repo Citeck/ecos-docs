@@ -1,0 +1,287 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-15 13:51+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:4
+msgid "Отладочный режим электронной подписи"
+msgstr "Electronic signature debug mode"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:8
+msgid "Доступно только в Enterprise версии."
+msgstr "Available only in the Enterprise version."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:12
+msgid ""
+"Режим предназначен исключительно для стендов разработки и тестирования. "
+"Подпись, полученная в этом режиме, **не является усиленной "
+"квалифицированной подписью** и не имеет юридической значимости. На "
+"продуктивном стенде режим должен быть выключен."
+msgstr ""
+"The mode is intended exclusively for development and testing "
+"environments. A signature obtained in this mode **is not a qualified "
+"electronic signature** and has no legal validity. This mode must be "
+"disabled on a production environment."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:16
+msgid "Зачем нужен"
+msgstr "Why It Is Needed"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:18
+msgid ""
+":ref:`Штатное подписание<esign>` работает через **КриптоПро ЭЦП Browser "
+"plug-in** и ключ в криптопровайдере на машине пользователя. На машине "
+"разработчика такого ключа обычно нет, и получить его непросто: закрытый "
+"ключ ГОСТ должен быть создан внутри самого КриптоПро, импортировать его "
+"извне нельзя."
+msgstr ""
+":ref:`Standard signing<esign>` works through the **CryptoPro EDS Browser "
+"plug-in** and a key in the cryptographic provider on the user's machine. "
+"A developer's machine usually has no such key, and obtaining one is not "
+"easy: a GOST private key must be created inside CryptoPro itself and "
+"cannot be imported from outside."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:21
+msgid ""
+"Из-за этого любой сценарий, где встречается подписание, не деградирует, а"
+" блокируется целиком: процесс невозможно провести дальше шага подписи. "
+"Отладочный режим подменяет только криптографическую операцию — диалог "
+"выбора сертификата, запрос дайджеста, отправка подписи на сервер и "
+"обработка ошибок выполняются своим обычным путём."
+msgstr ""
+"Because of this, any scenario that involves signing does not degrade but "
+"is blocked entirely: the process cannot proceed past the signing step. "
+"The debug mode replaces only the cryptographic operation — the "
+"certificate selection dialog, the digest request, sending the signature "
+"to the server, and error handling all follow their usual path."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:25
+msgid "Режимы"
+msgstr "Modes"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:27
+msgid ""
+"Поведение задаётся конфигурацией Citeck с идентификатором ``esign-dev-"
+"mode`` приложения ``edi`` (полный ключ — ``app/edi$esign-dev-mode``). "
+"Значение — JSON:"
+msgstr ""
+"The behavior is set by a Citeck configuration with the identifier "
+"``esign-dev-mode`` of the ``edi`` application (full key — ``app/edi"
+"$esign-dev-mode``). The value is JSON:"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:34
+msgid "``mode``"
+msgstr "``mode``"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:35
+msgid "Поведение"
+msgstr "Behavior"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:36
+msgid "``off``"
+msgstr "``off``"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:37
+msgid "Значение по умолчанию. Штатное подписание через КриптоПро."
+msgstr "Default value. Standard signing through CryptoPro."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:38
+msgid "``stub``"
+msgstr "``stub``"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:39
+msgid ""
+"Сертификаты синтетические, подпись — маркерная строка. Криптографии нет "
+"вообще, внешние сервисы не вызываются. Годится, чтобы пройти процесс "
+"насквозь, но разобрать такую подпись платформа не сможет."
+msgstr ""
+"Certificates are synthetic, and the signature is a marker string. There "
+"is no cryptography at all, and no external services are called. Good for "
+"running the process end to end, but the platform will not be able to "
+"parse such a signature."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:42
+msgid "``remote``"
+msgstr "``remote``"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:43
+msgid ""
+"Сертификаты и подпись берутся у :ref:`симулятора ЭДО<edi_sim>`. Подпись —"
+" настоящая отсоединённая CMS, платформа разбирает её и заполняет "
+"владельца, серийный номер, издателя и срок действия сертификата."
+msgstr ""
+"Certificates and the signature are taken from the :ref:`EDI "
+"simulator<edi_sim>`. The signature is a genuine detached CMS; the "
+"platform parses it and fills in the owner, serial number, issuer, and "
+"validity period of the certificate."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:47
+msgid ""
+"Для режима ``remote`` дополнительно задаётся ``url`` — адрес "
+"административного API симулятора."
+msgstr ""
+"For the ``remote`` mode, ``url`` is additionally set — the address of the"
+" simulator's administrative API."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:59
+msgid ""
+"``url`` обязан быть путём того же источника — как правило, маршрутом "
+"gateway. Абсолютный адрес отвергается с ошибкой: в запросе на подписание "
+"уходит **содержимое документа**, а не его хэш, и вместе с ним — cookie "
+"сессии пользователя. Указание внешнего хоста означало бы передачу и того,"
+" и другого на чужой сервер."
+msgstr ""
+"``url`` must be a same-origin path — typically a gateway route. An "
+"absolute address is rejected with an error: the signing request sends "
+"the **document content** itself, not its hash, along with the user's "
+"session cookie. Specifying an external host would mean sending both to a"
+" third-party server."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:63
+msgid ""
+"Чтобы адрес вида ``/gateway/edi-sim/…`` работал, симулятор должен быть "
+":ref:`зарегистрирован в ECOS<edi_sim>`."
+msgstr ""
+"For an address like ``/gateway/edi-sim/…`` to work, the simulator must be"
+" :ref:`registered in ECOS<edi_sim>`."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:66
+msgid "Изменение значения"
+msgstr "Changing the Value"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:68
+msgid ""
+"Артефакт конфигурации поставляется вместе с микросервисом ecos-edi со "
+"значением ``off``. Значение меняется в журнале конфигураций Citeck, либо "
+":ref:`патчем<ecos_artifacts>`:"
+msgstr ""
+"The configuration artifact ships with the ecos-edi microservice set to "
+"``off``. The value is changed in the Citeck configuration journal, or "
+"with a :ref:`patch<ecos_artifacts>`:"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:88
+msgid ""
+"Значения конфигураций кешируются в браузере, поэтому изменение "
+"подхватывается не мгновенно — обновите страницу, если новое значение ещё "
+"не применилось."
+msgstr ""
+"Configuration values are cached in the browser, so a change is not "
+"picked up instantly — reload the page if the new value has not been "
+"applied yet."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:91
+msgid "Как это выглядит для пользователя"
+msgstr "What This Looks Like for the User"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:93
+msgid "Режим не маскируется под обычное подписание:"
+msgstr "The mode does not disguise itself as regular signing:"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:95
+msgid ""
+"при первом обращении к подписанию на странице показывается предупреждение"
+" с указанием включённого режима;"
+msgstr ""
+"the first time signing is invoked, the page shows a warning stating "
+"which mode is enabled;"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:96
+msgid "в диалоге выбора сертификата выводится баннер с тем же предупреждением;"
+msgstr "the certificate selection dialog displays a banner with the same warning;"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:97
+msgid ""
+"сертификаты в списке помечены — в наименовании владельца добавлено "
+"«(отладка)», в издателе и криптопровайдере указано, что это отладочный "
+"источник."
+msgstr ""
+"certificates in the list are marked — \"(debug)\" is added to the "
+"owner's name, and the issuer and cryptographic provider fields indicate "
+"that this is a debug source."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:100
+msgid "Ограничения"
+msgstr "Limitations"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:102
+msgid ""
+"Методы, которые режим не может подменить осмысленно (``signXml``, "
+"``getHash``, ``signHash``, работа с файлами), возвращают явную ошибку, а "
+"не правдоподобный результат."
+msgstr ""
+"Methods that the mode cannot meaningfully substitute (``signXml``, "
+"``getHash``, ``signHash``, file operations) return an explicit error "
+"rather than a plausible-looking result."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:103
+msgid "Локальная проверка подписи всегда успешна: проверять нечего."
+msgstr "Local signature verification always succeeds: there is nothing to verify."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:104
+msgid ""
+"В режиме ``stub`` подпись не является криптографической — платформа не "
+"сможет извлечь из неё данные сертификата."
+msgstr ""
+"In ``stub`` mode, the signature is not cryptographic — the platform will "
+"not be able to extract certificate data from it."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:105
+msgid ""
+"Список сертификатов фильтруется по сроку действия — так же, как это "
+"делает настоящий плагин. Истёкший или ещё не вступивший в силу сертификат"
+" в диалоге выбора не появится."
+msgstr ""
+"The certificate list is filtered by validity period, the same way the "
+"real plug-in does it. An expired certificate, or one not yet valid, will "
+"not appear in the selection dialog."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:108
+msgid "Подписание заведомо невалидным сертификатом"
+msgstr "Signing with a Deliberately Invalid Certificate"
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:110
+msgid ""
+"Если по сценарию нужен именно просроченный сертификат, он выбирается явно"
+" — тем же способом, что и в штатном режиме: вызывающая сторона передаёт "
+"отпечаток нужного сертификата, и тогда фильтр по сроку не применяется. В "
+"режиме ``remote`` отпечатком выступает идентификатор сертификата в "
+"симуляторе."
+msgstr ""
+"If a scenario specifically requires an expired certificate, it is "
+"selected explicitly — the same way as in standard mode: the calling side"
+" passes the thumbprint of the required certificate, and in that case the"
+" validity filter is not applied. In ``remote`` mode, the certificate's "
+"identifier in the simulator serves as the thumbprint."
+
+#: ../../integration/EDI_integration/esign_dev_mode.rst:113
+msgid ""
+"Учтите при планировании проверок: на пути подписания из интерфейса "
+"платформа не вычисляет признаки ``isSignValid`` и ``isCertificateValid`` "
+"— они заполняются только для подписей, полученных **от провайдера ЭДО**. "
+"Поэтому содержательная негативная проверка ставится с другой стороны: "
+"подпись создаётся действием симулятора с указанием просроченного "
+"сертификата и приходит в Citeck штатным путём приёма документов."
+msgstr ""
+"Keep this in mind when planning checks: on the interface signing path, "
+"the platform does not compute the ``isSignValid`` and "
+"``isCertificateValid`` flags — they are filled in only for signatures "
+"received **from an EDI provider**. A meaningful negative test therefore "
+"has to be set up from the other side: the signature is created by a "
+"simulator action using an expired certificate and arrives in Citeck "
+"through the standard document-intake path."
+

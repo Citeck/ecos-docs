@@ -1,7 +1,7 @@
+.. _workspace_settings:
+
 Настройки рабочего пространства
 ==================================
-
-.. _workspace_settings:
 
 .. contents::
    :depth: 2

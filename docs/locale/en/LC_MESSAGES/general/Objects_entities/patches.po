@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -41,9 +41,9 @@ msgid ""
 "общим правилам деплоя артефактов. Уникальность патча в рамках системы "
 "определяется комбинацией **targetApp + id**."
 msgstr ""
-"Citeck patches are implemented as artifacts of type **app/patch** and follow "
-"the general artifact deployment rules. The uniqueness of a patch within the "
-"system is determined by the combination of **targetApp + id**."
+"Citeck patches are implemented as artifacts of type **app/patch** and "
+"follow the general artifact deployment rules. The uniqueness of a patch "
+"within the system is determined by the combination of **targetApp + id**."
 
 #: ../../general/Objects_entities/patches.rst:14
 msgid "Модель"
@@ -147,7 +147,9 @@ msgstr ""
 
 #: ../../general/Objects_entities/patches.rst
 msgid "Если в конфигурации не указаны records, то используется record."
-msgstr "If records are not specified in the configuration, the record field is used."
+msgstr ""
+"If records are not specified in the configuration, the record field is "
+"used."
 
 #: ../../general/Objects_entities/patches.rst:63
 msgid "Дата патча"
@@ -161,10 +163,11 @@ msgid ""
 "чтобы дата указывалась хотя бы с точностью до дней. Дата патча "
 "используется для нескольких вещей:"
 msgstr ""
-"**Patch date** — an ISO 8601 UTC date-time value (e.g. 2022-01-01T00:00:00Z). "
-"This value is set to the current date when a patch is created manually. An "
-"exact time match is not required, but the date should be specified at least "
-"to the day. The patch date is used for several purposes:"
+"**Patch date** — an ISO 8601 UTC date-time value (e.g. "
+"2022-01-01T00:00:00Z). This value is set to the current date when a patch"
+" is created manually. An exact time match is not required, but the date "
+"should be specified at least to the day. The patch date is used for "
+"several purposes:"
 
 #: ../../general/Objects_entities/patches.rst:67
 msgid ""
@@ -174,9 +177,9 @@ msgid ""
 "исполняться в рамках того же приложения. Для строгой зависимости нужно "
 "использовать поле dependsOn."
 msgstr ""
-"For sorting patches. Patches with an earlier date will be executed first. "
-"This guarantee applies only to patches within the same application, i.e. "
-"when patches defined in an application are executed within that same "
+"For sorting patches. Patches with an earlier date will be executed first."
+" This guarantee applies only to patches within the same application, i.e."
+" when patches defined in an application are executed within that same "
 "application. For strict ordering, use the dependsOn field."
 
 #: ../../general/Objects_entities/patches.rst:69
@@ -187,27 +190,39 @@ msgstr ""
 "To control patch execution. The decision to execute a patch is based on "
 "the old and new date values:"
 
-#: ../../general/Objects_entities/patches.rst:71
-msgid "Если старая_дата отсутствует (новый патч), то патч исполнится;"
-msgstr "If old_date is absent (new patch), the patch will be executed;"
-
-#: ../../general/Objects_entities/patches.rst:73
-msgid ""
-"Если старая_дата >= новая_дата, то патч считается выполненным и не "
-"исполнится;"
-msgstr ""
-"If old_date >= new_date, the patch is considered completed and will not "
-"be executed;"
-
-#: ../../general/Objects_entities/patches.rst:75
-msgid ""
-"Если старая_дата < новая_дата, то патч считается обновленным и ставится в"
-" очередь на исполнение;"
-msgstr ""
-"If old_date < new_date, the patch is considered updated and is queued "
-"for execution;"
+#: ../../general/Objects_entities/patches.rst:76
+msgid "Условие"
+msgstr "Condition"
 
 #: ../../general/Objects_entities/patches.rst:77
+msgid "Результат"
+msgstr "Result"
+
+#: ../../general/Objects_entities/patches.rst:78
+msgid "Старая дата отсутствует (новый патч)"
+msgstr "Old date is absent (new patch)"
+
+#: ../../general/Objects_entities/patches.rst:79
+msgid "Патч исполнится"
+msgstr "The patch will be executed"
+
+#: ../../general/Objects_entities/patches.rst:80
+msgid "Старая дата >= новая дата"
+msgstr "Old date >= new date"
+
+#: ../../general/Objects_entities/patches.rst:81
+msgid "Патч считается выполненным и не исполнится"
+msgstr "The patch is considered completed and will not be executed"
+
+#: ../../general/Objects_entities/patches.rst:82
+msgid "Старая дата < новая дата"
+msgstr "Old date < new date"
+
+#: ../../general/Objects_entities/patches.rst:83
+msgid "Патч считается обновлённым и ставится в очередь на исполнение"
+msgstr "The patch is considered updated and is queued for execution"
+
+#: ../../general/Objects_entities/patches.rst:85
 msgid ""
 "Таким образом, если мы хотим, чтобы уже сработавший патч перевыполнился "
 "при следующем обновлении, то мы просто увеличиваем время в date."
@@ -215,22 +230,23 @@ msgstr ""
 "Thus, if we want an already-executed patch to re-execute on the next "
 "update, we simply increase the value in the date field."
 
-#: ../../general/Objects_entities/patches.rst:80
+#: ../../general/Objects_entities/patches.rst:88
 msgid "Использование в коде"
 msgstr "Usage in Code"
 
-#: ../../general/Objects_entities/patches.rst:82
+#: ../../general/Objects_entities/patches.rst:90
 msgid "Для описания патчей можно использовать аннотацию **@EcosPatch**"
 msgstr "To define patches, you can use the **@EcosPatch** annotation"
 
-#: ../../general/Objects_entities/patches.rst:84
+#: ../../general/Objects_entities/patches.rst:92
 msgid ""
 "Для указания зависимостей можно использовать аннотацию "
 "**@EcosPatchDependsOn**"
 msgstr ""
-"To specify dependencies, you can use the **@EcosPatchDependsOn** annotation"
+"To specify dependencies, you can use the **@EcosPatchDependsOn** "
+"annotation"
 
-#: ../../general/Objects_entities/patches.rst:103
+#: ../../general/Objects_entities/patches.rst:111
 msgid ""
 "Если предполагается, что патч выполняет объемную работу и может "
 "выполняться более 30 секунд, то нужно использовать **StatefulEcosPatch**."
@@ -238,11 +254,11 @@ msgstr ""
 "If a patch is expected to perform a large amount of work and may run for "
 "more than 30 seconds, **StatefulEcosPatch** should be used."
 
-#: ../../general/Objects_entities/patches.rst:107
+#: ../../general/Objects_entities/patches.rst:115
 msgid "Stateful патчи"
 msgstr "Stateful Patches"
 
-#: ../../general/Objects_entities/patches.rst:109
+#: ../../general/Objects_entities/patches.rst:117
 msgid ""
 "Для выполнения некоторой объемной работы можно использовать Stateful "
 "патчи (патчи с состоянием)."
@@ -250,16 +266,17 @@ msgstr ""
 "For performing large-volume work, Stateful patches (patches with state) "
 "can be used."
 
-#: ../../general/Objects_entities/patches.rst:111
+#: ../../general/Objects_entities/patches.rst:119
 msgid ""
 "Их суть заключается в том, что при выполнении патча мы не делаем всю "
 "работу сразу, а выполняем некоторую часть работы, после чего возвращаем "
 "промежуточное состояние процесса."
 msgstr ""
-"The idea is that instead of doing all the work at once, the patch performs "
-"a portion of the work and then returns an intermediate state of the process."
+"The idea is that instead of doing all the work at once, the patch "
+"performs a portion of the work and then returns an intermediate state of "
+"the process."
 
-#: ../../general/Objects_entities/patches.rst:113
+#: ../../general/Objects_entities/patches.rst:121
 msgid ""
 "Для реализации Stateful патча нужно реализовать интерфейс "
 "**StatefulEcosPatch<Config>**,"
@@ -267,61 +284,62 @@ msgstr ""
 "To implement a Stateful patch, you need to implement the "
 "**StatefulEcosPatch<Config>** interface,"
 
-#: ../../general/Objects_entities/patches.rst:115
+#: ../../general/Objects_entities/patches.rst:123
 msgid ""
 "где **Config** - произвольный тип, который представляет состояние "
 "выполнения."
-msgstr ""
-"where **Config** is an arbitrary type representing the execution state."
+msgstr "where **Config** is an arbitrary type representing the execution state."
 
-#: ../../general/Objects_entities/patches.rst:117
+#: ../../general/Objects_entities/patches.rst:125
 #, python-brace-format
 msgid ""
 "Важно, чтобы инстанс этого класса можно было создать из пустого объекта "
 "({}) т.к. это начальное состояние для патча."
 msgstr ""
-"It is important that an instance of this class can be created from an empty "
-"object ({}) since this is the initial state for the patch."
+"It is important that an instance of this class can be created from an "
+"empty object ({}) since this is the initial state for the patch."
 
-#: ../../general/Objects_entities/patches.rst:119
+#: ../../general/Objects_entities/patches.rst:127
 msgid "Пример в коде:"
 msgstr "Code example:"
 
-#: ../../general/Objects_entities/patches.rst:139
+#: ../../general/Objects_entities/patches.rst:147
 msgid "Архитектура"
 msgstr "Architecture"
 
-#: ../../general/Objects_entities/patches.rst:145
+#: ../../general/Objects_entities/patches.rst:153
 msgid ""
 "Из приложения артефакты патчей попадают в **ecos-apps** по стандартному "
 "механизму деплоя артефактов и сохраняются в БД."
 msgstr ""
-"Patch artifacts are delivered from the application to **ecos-apps** via the "
-"standard artifact deployment mechanism and stored in the database."
+"Patch artifacts are delivered from the application to **ecos-apps** via "
+"the standard artifact deployment mechanism and stored in the database."
 
-#: ../../general/Objects_entities/patches.rst:147
+#: ../../general/Objects_entities/patches.rst:155
 msgid ""
 "Далее **ecos-apps** периодически опрашивает таблицу патчей на наличие "
 "тех, которые можно применить (т.е. **targetApp** доступен и статус патча "
 "позволяет его применить)."
 msgstr ""
-"**ecos-apps** then periodically polls the patches table for patches that can "
-"be applied (i.e. **targetApp** is available and the patch status allows it "
-"to be applied)."
+"**ecos-apps** then periodically polls the patches table for patches that "
+"can be applied (i.e. **targetApp** is available and the patch status "
+"allows it to be applied)."
 
-#: ../../general/Objects_entities/patches.rst:149
+#: ../../general/Objects_entities/patches.rst:157
 msgid ""
 "Если патч для применения нашелся, то мы выполняем команду на выполнение "
 "патча и отправляем её в **targetApp**. Результат выполнения команды мы "
 "кладем в БД."
 msgstr ""
 "If a patch to apply is found, a command to execute the patch is sent to "
-"**targetApp**. The result of the command execution is stored in the database."
+"**targetApp**. The result of the command execution is stored in the "
+"database."
 
-#: ../../general/Objects_entities/patches.rst:151
+#: ../../general/Objects_entities/patches.rst:159
 msgid ""
 "Если при выполнении патча возникла ошибка, то мы сохраняем эту ошибку в "
 "БД и через некоторое время повторяем попытку применить патч."
 msgstr ""
 "If an error occurs during patch execution, the error is saved to the "
 "database and the patch application is retried after some time."
+

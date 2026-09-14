@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../general/Microservices/testing_workspace_api.rst:4
-msgid "Testing with WorkspaceApiMock"
+msgid "Тестирование с WorkspaceApiMock"
 msgstr "Testing with WorkspaceApiMock"
 
 #: ../../general/Microservices/testing_workspace_api.rst:7
@@ -27,17 +27,18 @@ msgid "Содержание"
 msgstr "Contents"
 
 #: ../../general/Microservices/testing_workspace_api.rst:10
-msgid "Overview"
+msgid "Обзор"
 msgstr "Overview"
 
 #: ../../general/Microservices/testing_workspace_api.rst:12
 msgid ""
-"Services that use workspace-scoped entities — such as ``ecos-uiserv`` — "
-"depend on ``WorkspaceWebApi``, which calls ``ecos-model`` over HTTP to "
-"resolve workspace membership. During ``@SpringBootTest`` tests ``ecos-"
-"model`` is not running, so "
-"``WorkspaceWebApi.waitUntilEmodelApiIsAvailable()`` loops forever and "
-"tests hang indefinitely."
+"Сервисы, использующие сущности с привязкой к рабочему пространству "
+"(workspace) — например, ``ecos-uiserv`` — зависят от ``WorkspaceWebApi``,"
+" который обращается к ``ecos-model`` по HTTP для определения "
+"принадлежности к рабочему пространству. Во время ``@SpringBootTest`` "
+"тестов ``ecos-model`` не запущен, поэтому "
+"``WorkspaceWebApi.waitUntilEmodelApiIsAvailable()`` уходит в бесконечный "
+"цикл ожидания, и тесты зависают навсегда."
 msgstr ""
 "Services that use workspace-scoped entities — such as ``ecos-uiserv`` — "
 "depend on ``WorkspaceWebApi``, which calls ``ecos-model`` over HTTP to "
@@ -46,47 +47,48 @@ msgstr ""
 "``WorkspaceWebApi.waitUntilEmodelApiIsAvailable()`` loops forever and "
 "tests hang indefinitely."
 
-#: ../../general/Microservices/testing_workspace_api.rst:18
+#: ../../general/Microservices/testing_workspace_api.rst:19
 msgid ""
-"The ``WorkspaceApiMock`` class, provided by ``ecos-webapp-lib-spring-"
-"test``, solves this problem. It implements ``WorkspaceApi`` entirely in-"
-"memory, performs no HTTP calls, and is auto-discovered by Spring Boot in "
-"test scope."
+"Класс ``WorkspaceApiMock``, предоставляемый ``ecos-webapp-lib-spring-"
+"test``, решает эту проблему. Он полностью реализует ``WorkspaceApi`` в "
+"памяти, не выполняет HTTP-вызовов и автоматически обнаруживается Spring "
+"Boot в тестовой области видимости."
 msgstr ""
 "The ``WorkspaceApiMock`` class, provided by ``ecos-webapp-lib-spring-"
 "test``, solves this problem. It implements ``WorkspaceApi`` entirely in-"
 "memory, performs no HTTP calls, and is auto-discovered by Spring Boot in "
 "test scope."
-
-#: ../../general/Microservices/testing_workspace_api.rst:23
-msgid "Problem: Hanging Tests"
-msgstr "Problem: Hanging Tests"
 
 #: ../../general/Microservices/testing_workspace_api.rst:25
-msgid "The call chain that triggers the hang:"
+msgid "Проблема: зависающие тесты"
+msgstr "Problem: Hanging Tests"
+
+#: ../../general/Microservices/testing_workspace_api.rst:27
+msgid "Цепочка вызовов, приводящая к зависанию:"
 msgstr "The call chain that triggers the hang:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:35
+#: ../../general/Microservices/testing_workspace_api.rst:37
 msgid ""
-"Whenever a test exercises any code path that resolves a workspace-"
-"prefixed identifier, the whole test suite will stall unless a test-safe "
-"``WorkspaceApi`` implementation is present."
+"Если тест затрагивает любой участок кода, который определяет "
+"идентификатор с префиксом рабочего пространства, весь набор тестов "
+"зависнет, если не предоставлена тест-совместимая реализация "
+"``WorkspaceApi``."
 msgstr ""
 "Whenever a test exercises any code path that resolves a workspace-"
 "prefixed identifier, the whole test suite will stall unless a test-safe "
 "``WorkspaceApi`` implementation is present."
-
-#: ../../general/Microservices/testing_workspace_api.rst:40
-msgid "Solution: WorkspaceApiMock"
-msgstr "Solution: WorkspaceApiMock"
 
 #: ../../general/Microservices/testing_workspace_api.rst:42
+msgid "Решение: WorkspaceApiMock"
+msgstr "Solution: WorkspaceApiMock"
+
+#: ../../general/Microservices/testing_workspace_api.rst:44
 msgid ""
-"``WorkspaceApiMock`` is shipped in the ``ecos-webapp-lib-spring-test`` "
-"module (in ``src/main``, so it is exported as part of the module "
-"artifact). It is annotated with ``@Component``, so Spring Boot's "
-"component scan picks it up automatically when the module is on the test "
-"classpath."
+"``WorkspaceApiMock`` поставляется в модуле ``ecos-webapp-lib-spring-"
+"test`` (в ``src/main``, поэтому он экспортируется как часть артефакта "
+"модуля). Он аннотирован ``@Component``, поэтому компонентное сканирование"
+" Spring Boot автоматически подхватывает его, когда модуль присутствует в "
+"тестовом classpath."
 msgstr ""
 "``WorkspaceApiMock`` is shipped in the ``ecos-webapp-lib-spring-test`` "
 "module (in ``src/main``, so it is exported as part of the module "
@@ -94,221 +96,245 @@ msgstr ""
 "component scan picks it up automatically when the module is on the test "
 "classpath."
 
-#: ../../general/Microservices/testing_workspace_api.rst:47
+#: ../../general/Microservices/testing_workspace_api.rst:49
 msgid ""
-"``ModelServiceFactoryInitializer`` was extended to optionally inject any "
-"``WorkspaceApi`` bean:"
+"``ModelServiceFactoryInitializer`` был расширен для опциональной инъекции"
+" любого бина ``WorkspaceApi``:"
 msgstr ""
 "``ModelServiceFactoryInitializer`` was extended to optionally inject any "
 "``WorkspaceApi`` bean:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:61
+#: ../../general/Microservices/testing_workspace_api.rst:63
 msgid ""
-"When ``WorkspaceApiMock`` is present (test scope), it is injected and "
-"overrides ``WorkspaceWebApi``. In production deployments — where the test"
-" module is not on the classpath — ``ModelServiceFactory`` falls back to "
-"the default ``WorkspaceWebApi``. No production code is affected."
+"Когда ``WorkspaceApiMock`` присутствует (тестовая область видимости), он "
+"инъецируется и переопределяет ``WorkspaceWebApi``. В продуктивных "
+"развёртываниях (где тестового модуля нет в classpath) "
+"``ModelServiceFactory`` использует ``WorkspaceWebApi`` по умолчанию. "
+"Продуктивный код никак не затрагивается."
 msgstr ""
 "When ``WorkspaceApiMock`` is present (test scope), it is injected and "
 "overrides ``WorkspaceWebApi``. In production deployments — where the test"
 " module is not on the classpath — ``ModelServiceFactory`` falls back to "
 "the default ``WorkspaceWebApi``. No production code is affected."
-
-#: ../../general/Microservices/testing_workspace_api.rst:67
-msgid "Setup"
-msgstr "Setup"
 
 #: ../../general/Microservices/testing_workspace_api.rst:69
+msgid "Настройка"
+msgstr "Setup"
+
+#: ../../general/Microservices/testing_workspace_api.rst:71
 msgid ""
-"Add ``ecos-webapp-lib-spring-test`` as a test-scoped dependency in your "
-"service's ``pom.xml``:"
+"Добавьте ``ecos-webapp-lib-spring-test`` как тестовую зависимость в "
+"``pom.xml`` вашего сервиса:"
 msgstr ""
 "Add ``ecos-webapp-lib-spring-test`` as a test-scoped dependency in your "
 "service's ``pom.xml``:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:80
+#: ../../general/Microservices/testing_workspace_api.rst:82
 msgid ""
-"That is all. In any ``@SpringBootTest``, the ``WorkspaceApiMock`` bean is"
-" automatically discovered and injected into ``ModelServiceFactory``. No "
-"explicit ``@Import`` or additional configuration is required."
+"Это всё, что требуется. В любом ``@SpringBootTest`` бин "
+"``WorkspaceApiMock`` автоматически обнаруживается и инъецируется в "
+"``ModelServiceFactory``. Явный ``@Import`` или дополнительная "
+"конфигурация не нужны."
 msgstr ""
 "That is all. In any ``@SpringBootTest``, the ``WorkspaceApiMock`` bean is"
 " automatically discovered and injected into ``ModelServiceFactory``. No "
 "explicit ``@Import`` or additional configuration is required."
-
-#: ../../general/Microservices/testing_workspace_api.rst:85
-msgid "Configuring Test Data"
-msgstr "Configuring Test Data"
 
 #: ../../general/Microservices/testing_workspace_api.rst:87
+msgid "Настройка тестовых данных"
+msgstr "Configuring Test Data"
+
+#: ../../general/Microservices/testing_workspace_api.rst:89
 msgid ""
-"Inject ``WorkspaceApiMock`` directly into your test class to set up "
-"workspace members and managers:"
+"Инъецируйте ``WorkspaceApiMock`` напрямую в тестовый класс, чтобы "
+"настроить участников (members) и менеджеров рабочего пространства:"
 msgstr ""
 "Inject ``WorkspaceApiMock`` directly into your test class to set up "
 "workspace members and managers:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:117
-msgid "Available methods on ``WorkspaceApiMock``:"
+#: ../../general/Microservices/testing_workspace_api.rst:119
+msgid "Доступные методы ``WorkspaceApiMock``:"
 msgstr "Available methods on ``WorkspaceApiMock``:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:124
-msgid "Method"
+#: ../../general/Microservices/testing_workspace_api.rst:126
+#: ../../general/Microservices/testing_workspace_api.rst:145
+msgid "Метод"
 msgstr "Method"
 
-#: ../../general/Microservices/testing_workspace_api.rst:125
-msgid "Description"
+#: ../../general/Microservices/testing_workspace_api.rst:127
+msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Microservices/testing_workspace_api.rst:126
+#: ../../general/Microservices/testing_workspace_api.rst:128
 msgid "``addMember(workspace, user)``"
 msgstr "``addMember(workspace, user)``"
 
-#: ../../general/Microservices/testing_workspace_api.rst:127
-msgid "Registers ``user`` as a member of ``workspace``."
+#: ../../general/Microservices/testing_workspace_api.rst:129
+msgid "Регистрирует ``user`` как участника ``workspace``."
 msgstr "Registers ``user`` as a member of ``workspace``."
 
-#: ../../general/Microservices/testing_workspace_api.rst:128
+#: ../../general/Microservices/testing_workspace_api.rst:130
 msgid "``addManager(workspace, user)``"
 msgstr "``addManager(workspace, user)``"
 
-#: ../../general/Microservices/testing_workspace_api.rst:129
-msgid "Registers ``user`` as a manager of ``workspace``."
+#: ../../general/Microservices/testing_workspace_api.rst:131
+msgid "Регистрирует ``user`` как менеджера ``workspace``."
 msgstr "Registers ``user`` as a manager of ``workspace``."
 
-#: ../../general/Microservices/testing_workspace_api.rst:130
+#: ../../general/Microservices/testing_workspace_api.rst:132
 msgid "``clear()``"
 msgstr "``clear()``"
 
-#: ../../general/Microservices/testing_workspace_api.rst:131
-msgid "Removes all members and managers added so far."
+#: ../../general/Microservices/testing_workspace_api.rst:133
+msgid "Удаляет всех добавленных ранее участников и менеджеров."
 msgstr "Removes all members and managers added so far."
 
-#: ../../general/Microservices/testing_workspace_api.rst:134
-msgid "Default Behavior"
+#: ../../general/Microservices/testing_workspace_api.rst:136
+#: ../../general/Microservices/testing_workspace_api.rst:146
+msgid "Поведение по умолчанию"
 msgstr "Default Behavior"
 
-#: ../../general/Microservices/testing_workspace_api.rst:136
-msgid "When no data has been configured via ``addMember()`` / ``addManager()``:"
+#: ../../general/Microservices/testing_workspace_api.rst:138
+msgid "Пока данные не настроены через ``addMember()`` / ``addManager()``:"
 msgstr "When no data has been configured via ``addMember()`` / ``addManager()``:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:138
-msgid ""
-"``getUserWorkspaces(user)`` returns ``setOf(\"user$<username>\")`` — the "
-"personal workspace, matching real ``WorkspaceService`` behavior."
-msgstr ""
-"``getUserWorkspaces(user)`` returns ``setOf(\"user$<username>\")`` — the "
-"personal workspace, matching real ``WorkspaceService`` behavior."
+#: ../../general/Microservices/testing_workspace_api.rst:147
+msgid "``getUserWorkspaces(user)``"
+msgstr "``getUserWorkspaces(user)``"
 
-#: ../../general/Microservices/testing_workspace_api.rst:140
+#: ../../general/Microservices/testing_workspace_api.rst:148
 msgid ""
-"``getNestedWorkspaces(workspaces)`` returns empty sets for all input "
-"workspaces."
+"Возвращает ``setOf(\"user$<username>\")`` — персональное рабочее "
+"пространство, что соответствует реальному поведению ``WorkspaceService``."
 msgstr ""
-"``getNestedWorkspaces(workspaces)`` returns empty sets for all input "
-"workspaces."
-
-#: ../../general/Microservices/testing_workspace_api.rst:141
-msgid ""
-"``mapIdentifiers(ids, type)`` returns identifiers unchanged (identity "
-"mapping)."
-msgstr ""
-"``mapIdentifiers(ids, type)`` returns identifiers unchanged (identity "
-"mapping)."
-
-#: ../../general/Microservices/testing_workspace_api.rst:142
-msgid "``isUserManagerOf(user, workspace)`` returns ``false``."
-msgstr "``isUserManagerOf(user, workspace)`` returns ``false``."
-
-#: ../../general/Microservices/testing_workspace_api.rst:146
-msgid ""
-"``WorkspaceApiMock`` is a singleton Spring bean shared across all tests "
-"in a test run. State configured in one test persists into the next. "
-"**Always call** ``workspaceApiMock.clear()`` in ``@BeforeEach`` to ensure"
-" test isolation."
-msgstr ""
-"``WorkspaceApiMock`` is a singleton Spring bean shared across all tests "
-"in a test run. State configured in one test persists into the next. "
-"**Always call** ``workspaceApiMock.clear()`` in ``@BeforeEach`` to ensure"
-" test isolation."
+"Returns ``setOf(\"user$<username>\")`` — the personal workspace, matching"
+" real ``WorkspaceService`` behavior."
 
 #: ../../general/Microservices/testing_workspace_api.rst:151
-msgid "Guarding Against Regressions"
-msgstr "Guarding Against Regressions"
+msgid "``getNestedWorkspaces(workspaces)``"
+msgstr "``getNestedWorkspaces(workspaces)``"
+
+#: ../../general/Microservices/testing_workspace_api.rst:152
+msgid "Возвращает пустые множества для всех переданных рабочих пространств."
+msgstr "Returns empty sets for all input workspaces."
 
 #: ../../general/Microservices/testing_workspace_api.rst:153
-msgid ""
-"To explicitly protect against any future regression that re-introduces a "
-"hang, annotate time-sensitive tests with ``@Timeout``:"
-msgstr ""
-"To explicitly protect against any future regression that re-introduces a "
-"hang, annotate time-sensitive tests with ``@Timeout``:"
+msgid "``mapIdentifiers(ids, type)``"
+msgstr "``mapIdentifiers(ids, type)``"
 
-#: ../../general/Microservices/testing_workspace_api.rst:165
+#: ../../general/Microservices/testing_workspace_api.rst:154
+msgid "Возвращает идентификаторы без изменений (тождественное отображение)."
+msgstr "Returns identifiers unchanged (identity mapping)."
+
+#: ../../general/Microservices/testing_workspace_api.rst:155
+msgid "``isUserManagerOf(user, workspace)``"
+msgstr "``isUserManagerOf(user, workspace)``"
+
+#: ../../general/Microservices/testing_workspace_api.rst:156
+msgid "Возвращает ``false``."
+msgstr "Returns ``false``."
+
+#: ../../general/Microservices/testing_workspace_api.rst:160
 msgid ""
-"If the underlying code ever starts blocking again, the test will fail "
-"with a timeout error rather than hanging the entire CI pipeline."
+"``WorkspaceApiMock`` — это Spring-бин с единственным экземпляром "
+"(singleton), общий для всех тестов в рамках одного тестового прогона. "
+"Состояние, настроенное в одном тесте, сохраняется и в следующем. **Всегда"
+" вызывайте** ``workspaceApiMock.clear()`` в ``@BeforeEach``, чтобы "
+"обеспечить изоляцию тестов."
 msgstr ""
-"If the underlying code ever starts blocking again, the test will fail "
-"with a timeout error rather than hanging the entire CI pipeline."
+"``WorkspaceApiMock`` is a singleton Spring bean shared across all tests "
+"in a test run. State configured in one test persists into the next. "
+"**Always call** ``workspaceApiMock.clear()`` in ``@BeforeEach`` to ensure"
+" test isolation."
+
+#: ../../general/Microservices/testing_workspace_api.rst:167
+msgid "Защита от регрессий"
+msgstr "Guarding Against Regressions"
 
 #: ../../general/Microservices/testing_workspace_api.rst:169
-msgid "Module Structure Note"
+msgid ""
+"Чтобы явно защититься от возможной будущей регрессии, из-за которой "
+"зависание вернётся, помечайте чувствительные ко времени тесты аннотацией "
+"``@Timeout``:"
+msgstr ""
+"To explicitly protect against any future regression that re-introduces a"
+" hang, annotate time-sensitive tests with ``@Timeout``:"
+
+#: ../../general/Microservices/testing_workspace_api.rst:181
+msgid ""
+"Если базовый код снова начнёт блокироваться, тест завершится с ошибкой "
+"таймаута, а не зависнет вместе со всем CI-пайплайном."
+msgstr ""
+"If the underlying code ever starts blocking again, the test will fail "
+"with a timeout error rather than hanging the entire CI pipeline."
+
+#: ../../general/Microservices/testing_workspace_api.rst:185
+msgid "Примечание о структуре модуля"
 msgstr "Module Structure Note"
 
-#: ../../general/Microservices/testing_workspace_api.rst:171
+#: ../../general/Microservices/testing_workspace_api.rst:187
 msgid ""
-"``WorkspaceApiMock`` lives in ``src/main`` of the ``ecos-webapp-lib-"
-"spring-test`` module — not in ``src/test``. This distinction is "
-"intentional:"
+"``WorkspaceApiMock`` находится в ``src/main`` модуля ``ecos-webapp-lib-"
+"spring-test``, а не в ``src/test``. Это разделение сделано намеренно:"
 msgstr ""
 "``WorkspaceApiMock`` lives in ``src/main`` of the ``ecos-webapp-lib-"
 "spring-test`` module — not in ``src/test``. This distinction is "
 "intentional:"
 
-#: ../../general/Microservices/testing_workspace_api.rst:174
-msgid ""
-"**``src/main``** — code that is compiled into the module artifact and "
-"exported to consumers' test classpaths."
-msgstr ""
-"**``src/main``** — code that is compiled into the module artifact and "
-"exported to consumers' test classpaths."
+#: ../../general/Microservices/testing_workspace_api.rst:196
+msgid "Каталог"
+msgstr "Directory"
 
-#: ../../general/Microservices/testing_workspace_api.rst:176
-msgid ""
-"**``src/test``** — internal tests of the module itself (e.g., "
-"``WorkspaceApiMockTest``)."
-msgstr ""
-"**``src/test``** — internal tests of the module itself (e.g., "
-"``WorkspaceApiMockTest``)."
+#: ../../general/Microservices/testing_workspace_api.rst:197
+msgid "Назначение"
+msgstr "Purpose"
 
-#: ../../general/Microservices/testing_workspace_api.rst:179
+#: ../../general/Microservices/testing_workspace_api.rst:198
+msgid "``src/main``"
+msgstr "``src/main``"
+
+#: ../../general/Microservices/testing_workspace_api.rst:199
 msgid ""
+"Код, который компилируется в артефакт модуля и экспортируется в тестовый "
+"classpath потребителей."
+msgstr ""
+"Code that is compiled into the module artifact and exported to "
+"consumers' test classpaths."
+
+#: ../../general/Microservices/testing_workspace_api.rst:201
+msgid "``src/test``"
+msgstr "``src/test``"
+
+#: ../../general/Microservices/testing_workspace_api.rst:202
+msgid "Внутренние тесты самого модуля (например, ``WorkspaceApiMockTest``)."
+msgstr "Internal tests of the module itself (e.g., ``WorkspaceApiMockTest``)."
+
+#: ../../general/Microservices/testing_workspace_api.rst:204
+msgid ""
+"Любой класс ``@Component`` или ``@Configuration``, который должен "
+"автоматически обнаруживаться Spring Boot тестами сервисов-потребителей, "
+"должен находиться в ``src/main`` тестового модуля."
+msgstr ""
 "Any ``@Component`` or ``@Configuration`` class that must be auto-"
 "discovered by consuming services' Spring Boot tests must reside in "
 "``src/main`` of the test module."
-msgstr ""
-"Any ``@Component`` or ``@Configuration`` class that must be auto-"
-"discovered by consuming services' Spring Boot tests must reside in "
-"``src/main`` of the test module."
 
-#: ../../general/Microservices/testing_workspace_api.rst:184
-msgid "See Also"
+#: ../../general/Microservices/testing_workspace_api.rst:209
+msgid "См. также"
 msgstr "See Also"
 
-#: ../../general/Microservices/testing_workspace_api.rst:186
+#: ../../general/Microservices/testing_workspace_api.rst:211
 msgid ""
-":ref:`Creating a new microservice <mcs_setup>` — general guide on setting"
-" up a Spring Boot microservice with Citeck."
+":ref:`Создание нового микросервиса <mcs_setup>` — общее руководство по "
+"настройке Spring Boot микросервиса в Citeck."
 msgstr ""
 ":ref:`Creating a new microservice <mcs_setup>` — general guide on setting"
 " up a Spring Boot microservice with Citeck."
 
-#: ../../general/Microservices/testing_workspace_api.rst:188
+#: ../../general/Microservices/testing_workspace_api.rst:213
 msgid ""
-":ref:`Demo microservice <demo_microservice>` — a working example of a "
-"Citeck microservice with tests."
+":ref:`Демо-микросервис <demo_microservice>` — рабочий пример микросервиса"
+" Citeck с тестами."
 msgstr ""
 ":ref:`Demo microservice <demo_microservice>` — a working example of a "
 "Citeck microservice with tests."
-

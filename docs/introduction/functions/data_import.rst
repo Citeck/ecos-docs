@@ -55,14 +55,14 @@
    .. grid-item::
 
       .. image:: _static/import/ex_10.png
-         :width: 500
-         :align: left
+         :width: 300
+         :align: center
 
    .. grid-item::
 
       .. image:: _static/import/ex_09.png
-         :width: 500
-         :align: left
+         :width: 300
+         :align: center
 
 Загруженные данные в журнале — созданные карточки, которые можно открыть, внести изменения при необходимости и запустить бизнес-процесс:
 

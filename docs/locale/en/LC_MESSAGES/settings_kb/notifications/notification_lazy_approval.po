@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -46,8 +46,9 @@ msgid ""
 "имени пользователя."
 msgstr ""
 "The user receives an email with clickable verdict links. Clicking a link "
-"opens the email client with a pre-filled reply message. After sending the "
-"reply, the system automatically completes the task on behalf of the user."
+"opens the email client with a pre-filled reply message. After sending the"
+" reply, the system automatically completes the task on behalf of the "
+"user."
 
 #: ../../settings_kb/notifications/notification_lazy_approval.rst:17
 msgid ""
@@ -69,23 +70,76 @@ msgstr "ecos-integration: **2.18.0 +**"
 msgid "1. Принцип работы"
 msgstr "1. General Working Principle"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:37
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:25
+msgid "Задача создаётся в BPMN-процессе (UserTask с ``ecos:laEnabled=\"true\"``)."
+msgstr "The task is created in a BPMN process (UserTask with ``ecos:laEnabled=\"true\"``)."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:26
+msgid "Система отправляет email исполнителю(ям) задачи с вердиктами-ссылками."
+msgstr "The system sends an email to the task assignee(s) with verdict links."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:27
+msgid ""
+"Пользователь нажимает на ссылку вердикта → почтовый клиент открывает "
+"предзаполненное ответное письмо с нужной темой и телом."
+msgstr ""
+"The user clicks a verdict link → the email client opens a pre-filled "
+"reply message with the required subject and body."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:28
+msgid ""
+"Пользователь добавляет комментарий между метками "
+"``[comment]...[comment]`` и отправляет письмо."
+msgstr ""
+"The user adds a comment between the ``[comment]...[comment]`` markers and "
+"sends the email."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:29
+msgid ""
+"Apache Camel читает почтовый ящик через IMAP и передаёт письмо в "
+"``LazyApprovalEndpoint`` (ecos-integrations)."
+msgstr ""
+"Apache Camel reads the mailbox via IMAP and passes the email to "
+"``LazyApprovalEndpoint`` (ecos-integrations)."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:30
+#, python-brace-format
+msgid "Система парсит тему письма: ``Prefix-{taskId}-{outcome}-{taskToken}``."
+msgstr "The system parses the email subject: ``Prefix-{taskId}-{outcome}-{taskToken}``."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:31
+msgid "Система извлекает комментарий из тела письма."
+msgstr "The system extracts the comment from the email body."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:32
+msgid ""
+"Задача завершается от имени пользователя с нужным вердиктом и "
+"комментарием."
+msgstr ""
+"The task is completed on behalf of the user with the corresponding "
+"verdict and comment."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:33
+msgid "Отправляется отчётное письмо (если настроено)."
+msgstr "A report email is sent (if configured)."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:35
 msgid "**Формат темы ответного письма:**"
 msgstr "**Reply email subject format:**"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:43
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:41
 msgid "Где:"
 msgstr "Where:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:45
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:43
 msgid ""
 "``Prefix`` — произвольная строка (например ``CA``). Используется для "
 "идентификации типа письма."
 msgstr ""
-"``Prefix`` — an arbitrary string (e.g. ``CA``). Used to identify the "
-"type of email."
+"``Prefix`` — an arbitrary string (e.g. ``CA``). Used to identify the type"
+" of email."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:46
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:44
 #, python-brace-format
 msgid ""
 "``taskId`` — UUID идентификатор задачи Camunda. Подставляется "
@@ -94,7 +148,7 @@ msgstr ""
 "``taskId`` — UUID identifier of the Camunda task. Automatically "
 "substituted via the ``${task_id}`` variable."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:47
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:45
 msgid ""
 "``Outcome`` — идентификатор вердикта (``id`` из ``ecos:outcomes`` "
 "задачи). **Должен совпадать с id вердикта задачи.**"
@@ -102,7 +156,7 @@ msgstr ""
 "``Outcome`` — the verdict identifier (``id`` from the task's "
 "``ecos:outcomes``). **Must match the task's verdict id.**"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:48
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:46
 #, python-brace-format
 msgid ""
 "``taskToken`` — UUID токен безопасности, генерируемый при создании "
@@ -111,11 +165,11 @@ msgstr ""
 "``taskToken`` — UUID security token generated when the task is created. "
 "Substituted via ``${task_token}``."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:50
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:48
 msgid "**Извлечение комментария из тела письма:**"
 msgstr "**Extracting a comment from the email body:**"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:52
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:50
 msgid ""
 "Комментарий извлекается из текста между метками ``[comment]`` и "
 "``[comment]``:"
@@ -123,7 +177,7 @@ msgstr ""
 "The comment is extracted from the text between the ``[comment]`` and "
 "``[comment]`` markers:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:66
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:64
 msgid ""
 "Конструкция ``$[comment]`` является подсказкой-заполнителем (placeholder)"
 " и будет заменена реальным текстом при редактировании. Финальный "
@@ -134,11 +188,11 @@ msgstr ""
 "real text when editing. The final comment is the text between "
 "``[comment]`` and ``[comment]`` in the sent email."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:70
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:68
 msgid "2. Переменные конфигурации"
 msgstr "2. Configuration Variables"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:72
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:70
 msgid ""
 "Для обеспечения работы Lazy approval необходимо заполнить некоторые "
 "переменные в конфигурации Citeck:"
@@ -146,26 +200,24 @@ msgstr ""
 "To ensure Lazy approval works, some variables in the Citeck configuration"
 " need to be filled:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:82
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:81
 msgid "Ключ конфигурации"
 msgstr "Configuration Key"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:83
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:82
 #: ../../settings_kb/notifications/notification_lazy_approval.rst:103
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:203
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:236
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:403
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:431
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:445
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:457
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:204
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:238
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:415
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:442
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:84
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:83
 msgid "``lazy-approval-mail-for-reply``"
 msgstr "``lazy-approval-mail-for-reply``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:85
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:84
 #, python-brace-format
 msgid ""
 "Email-адрес, на который пользователь отправляет ответ с вердиктом. Именно"
@@ -176,11 +228,11 @@ msgstr ""
 "the address configured in Camel DSL for reading incoming emails. "
 "Substituted into the template via the ``${mail_for_answer}`` variable."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:88
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:87
 msgid "``lazy-approval-default-comment``"
 msgstr "``lazy-approval-default-comment``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:89
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:88
 #, python-brace-format
 msgid ""
 "Комментарий по умолчанию, который вставляется в тело ответного письма. "
@@ -189,11 +241,11 @@ msgstr ""
 "Default comment inserted into the body of the reply email. Substituted "
 "into the template via the ``${default_comment}`` variable."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:94
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:93
 msgid "3. Настройка UserTask в BPMN"
 msgstr "3. Configuring UserTask in BPMN"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:96
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:95
 msgid ""
 "Lazy approval включается на уровне конкретного UserTask через "
 "ECOS-атрибуты."
@@ -225,8 +277,7 @@ msgstr "``ecos:laNotificationType=\"EMAIL_NOTIFICATION\"``"
 msgid ""
 "Тип уведомления. На текущий момент поддерживается только "
 "``EMAIL_NOTIFICATION``."
-msgstr ""
-"Notification type. Currently, only ``EMAIL_NOTIFICATION`` is supported."
+msgstr "Notification type. Currently, only ``EMAIL_NOTIFICATION`` is supported."
 
 #: ../../settings_kb/notifications/notification_lazy_approval.rst:109
 msgid "``ecos:laNotificationTemplate=\"notifications/template@<id>\"``"
@@ -365,15 +416,15 @@ msgstr ""
 msgid "Параметры **route uri**:"
 msgstr "**Route uri** parameters:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:202
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:203
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:204
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:205
 msgid "``username``"
 msgstr "``username``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:205
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:206
 msgid ""
 "Email-адрес, на котором настроено чтение ответных писем. Должен совпадать"
 " со значением конфига ``lazy-approval-mail-for-reply``."
@@ -381,27 +432,29 @@ msgstr ""
 "Email address configured to read reply emails. Must match the value of "
 "the ``lazy-approval-mail-for-reply`` config."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:207
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:208
 msgid "``password``"
 msgstr "``password``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:208
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:209
 msgid "Пароль для подключения к почтовому серверу."
 msgstr "Password for connecting to the mail server."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:209
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:210
 msgid "``delete``"
 msgstr "``delete``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:210
-msgid "Удалять ли письма из ящика после обработки. Рекомендуется ``false``."
-msgstr "Whether to delete emails from the mailbox after processing. Recommended: ``false``."
-
 #: ../../settings_kb/notifications/notification_lazy_approval.rst:211
+msgid "Удалять ли письма из ящика после обработки. Рекомендуется ``false``."
+msgstr ""
+"Whether to delete emails from the mailbox after processing. Recommended: "
+"``false``."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:212
 msgid "``unseen``"
 msgstr "``unseen``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:212
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:213
 msgid ""
 "Обрабатывать только непрочитанные письма. **Обязательно устанавливать "
 "``true``**, иначе одно письмо будет обрабатываться бесконечно."
@@ -409,11 +462,11 @@ msgstr ""
 "Process only unread emails. **Must be set to ``true``**, otherwise the "
 "same email will be processed indefinitely."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:214
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:215
 msgid "``delay``"
 msgstr "``delay``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:215
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:216
 msgid ""
 "Частота проверки почтового ящика в **миллисекундах**. Пример: ``60000`` ="
 " 1 минута."
@@ -421,15 +474,15 @@ msgstr ""
 "Mailbox check frequency in **milliseconds**. Example: ``60000`` = 1 "
 "minute."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:219
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:220
 msgid "5. Шаблоны уведомлений для Lazy approval"
 msgstr "5. Notification Templates for Lazy Approval"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:226
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:227
 msgid "5.1 Переменные шаблона"
 msgstr "5.1 Template Variables"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:228
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:229
 msgid ""
 "Помимо стандартных переменных из :ref:`модели "
 "шаблона<notification_templates>`, в шаблонах Lazy approval автоматически "
@@ -439,26 +492,24 @@ msgstr ""
 "model<notification_templates>`, the following variables are automatically"
 " available in Lazy approval templates:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:235
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:430
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:444
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:456
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:237
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:441
 msgid "Переменная"
 msgstr "Variable"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:237
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:239
 msgid "``task_id``"
 msgstr "``task_id``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:238
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:240
 msgid "UUID идентификатор задачи. Используется в теме ответного письма."
 msgstr "UUID task identifier. Used in the reply email subject."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:239
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:241
 msgid "``task_token``"
 msgstr "``task_token``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:240
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:242
 msgid ""
 "UUID токен безопасности, сгенерированный при создании задачи. Защищает от"
 " несанкционированного завершения задачи."
@@ -466,11 +517,11 @@ msgstr ""
 "UUID security token generated when the task is created. Protects against "
 "unauthorized task completion."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:242
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:244
 msgid "``mail_for_answer``"
 msgstr "``mail_for_answer``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:243
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:245
 msgid ""
 "Email для отправки ответа с вердиктом. Берётся из конфигурации ``lazy-"
 "approval-mail-for-reply``."
@@ -478,11 +529,11 @@ msgstr ""
 "Email address for sending the reply with a verdict. Taken from the "
 "``lazy-approval-mail-for-reply`` configuration."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:245
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:247
 msgid "``default_comment``"
 msgstr "``default_comment``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:246
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:248
 msgid ""
 "Комментарий по умолчанию. Берётся из конфигурации ``lazy-approval-"
 "default-comment``."
@@ -490,23 +541,23 @@ msgstr ""
 "Default comment. Taken from the ``lazy-approval-default-comment`` "
 "configuration."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:254
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:256
 msgid "5.2 FTL-шаблон с вердиктами"
 msgstr "5.2 FTL Template with Verdicts"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:256
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:258
 msgid "FTL шаблон с использованием вердиктов:"
 msgstr "FTL template using verdicts:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:273
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:275
 msgid "**Структура ссылки вердикта:**"
 msgstr "**Verdict link structure:**"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:281
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:283
 msgid "``CA`` — произвольный префикс (может быть любым)."
 msgstr "``CA`` — an arbitrary prefix (can be anything)."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:282
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:284
 msgid ""
 "``<Outcome>`` — **id вердикта**, строго совпадающий с ``id`` в "
 "``ecos:outcomes`` задачи."
@@ -514,23 +565,23 @@ msgstr ""
 "``<Outcome>`` — the **verdict id**, strictly matching the ``id`` in the "
 "task's ``ecos:outcomes``."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:283
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:285
 msgid "``%0D%0A`` — перенос строки (URL-encoded ``\\r\\n``)."
 msgstr "``%0D%0A`` — line break (URL-encoded ``\\r\\n``)."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:284
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:286
 msgid "``$[comment]`` / ``[comment]`` — маркеры для извлечения комментария."
 msgstr "``$[comment]`` / ``[comment]`` — markers for extracting the comment."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:286
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:288
 msgid "Итоговый шаблон должен выглядеть примерно следующим образом:"
 msgstr "The final template should look approximately like this:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:299
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:301
 msgid "5.3 Пример уведомления Lazy approval к задаче"
 msgstr "5.3 Example of a Lazy Approval Notification for a Task"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:301
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:303
 msgid ""
 "Рассмотрим пример уведомления Lazy approval к задаче согласования со "
 "следующими вердиктами:"
@@ -538,11 +589,11 @@ msgstr ""
 "Let's consider an example of a Lazy approval notification for an approval"
 " task with the following verdicts:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:307
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:309
 msgid "Тело шаблона:"
 msgstr "Template body:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:326
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:328
 msgid ""
 "Помимо описанных выше задана дополнительная переменная "
 "**registrationNumber**- номер тестовой заявки, который берется из "
@@ -552,19 +603,19 @@ msgstr ""
 "**registrationNumber** is set - the test application number, which is "
 "taken from the card."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:338
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:340
 msgid "Уведомление"
 msgstr "Notification"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:339
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:341
 msgid "Ответ с вердиктом"
 msgstr "Response with verdict"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:361
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:363
 msgid "6. Сообщения с отчетами об обработке"
 msgstr "6. Processing Report Messages"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:363
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:365
 msgid ""
 "В системе предусмотрены ответные сообщения пользователю об успешно "
 "выполненных задачах через Lazy approval или о неудачных выполнениях."
@@ -572,68 +623,71 @@ msgstr ""
 "The system provides response messages to the user about successfully "
 "completed tasks via Lazy approval or about unsuccessful executions."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:365
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:367
 msgid "Они делятся на 3 типа:"
 msgstr "They are divided into 3 types:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:367
-msgid "Базовые шаблоны об ошибке (задаются в конфигурации);"
-msgstr "Basic error templates (set in configuration);"
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:368
-msgid ""
-"Уведомление об успешном выполнении задачи (задаётся в задаче или через "
-"конфигурацию);"
-msgstr ""
-"Notification of successful task completion (set for the task, or through "
-"configuration);"
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:369
-msgid ""
-"Уведомление о неудачном выполнении задачи (задаётся в задаче или через "
-"конфигурацию)."
-msgstr ""
-"Notification of unsuccessful task completion (set for the task, or "
-"through configuration)."
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:371
-msgid ""
-"**Базовое сообщение об ошибке** отличаются от уведомлений о неудачном "
-"согласовании тем, что базовые отправляются всегда (если шаблон задан в "
-"конфигурации), а уведомление о неудачном согласовании можно отключить "
-"через свойство в задаче. Базовые сообщения об ошибке отправляются "
-"ответным письмом, на сообщение пользователя и обрабатывает такие ошибки, "
-"которые возникли раньше, чем система смогла добраться до самой задачи и "
-"посмотреть конфигурации задачи (Например: не удалось распарсить тему "
-"письма)."
-msgstr ""
-"**Basic error messages** differ from unsuccessful approval notifications "
-"in that basic ones are always sent (if the template is set in the "
-"configuration), while unsuccessful approval notifications can be disabled"
-" through a property in the task. Basic error messages are sent as a "
-"response email to the user's message and handle errors that occurred "
-"before the system could reach the task itself and check the task "
-"configurations (For example: failed to parse the email subject)."
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:373
-msgid ""
-"**Уведомления об успешном или неудачном выполнении задачи** можно задать "
-"у самой задачи. В таком случае в качестве ответного сообщения будет "
-"сгенерировано письмо на основе данных шаблонов. Если в задаче шаблоны не "
-"указаны, будет взят базовый шаблон из конфигурации Citeck."
-msgstr ""
-"**Notifications of successful or unsuccessful task completion** can be "
-"set for the task itself. In this case, a response email will be generated"
-" based on these templates. If templates are not specified in the task, "
-"the basic template from Citeck configuration will be used."
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:374
+msgid "Тип сообщения"
+msgstr "Message Type"
 
 #: ../../settings_kb/notifications/notification_lazy_approval.rst:375
+msgid "Когда отправляется"
+msgstr "When Sent"
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:376
+msgid "Базовое сообщение об ошибке"
+msgstr "Basic error message"
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:377
+msgid ""
+"Отправляется всегда, если шаблон задан в конфигурации; отключить через "
+"свойства задачи нельзя. Обрабатывает ошибки, возникшие раньше, чем "
+"система смогла добраться до самой задачи и посмотреть её конфигурацию "
+"(например: не удалось распарсить тему письма)."
+msgstr ""
+"Always sent if the template is set in the configuration; cannot be "
+"disabled via task properties. Handles errors that occurred before the "
+"system could reach the task itself and check its configuration (for "
+"example: failed to parse the email subject)."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:380
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:449
+msgid "Уведомление об успешном выполнении задачи"
+msgstr "Notification of successful task completion"
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:381
+msgid ""
+"Задаётся в самой задаче. Если шаблон в задаче не указан — используется "
+"базовый шаблон из конфигурации Citeck."
+msgstr ""
+"Set in the task itself. If no template is specified in the task, the "
+"basic template from the Citeck configuration is used."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:382
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:452
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:455
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:458
+msgid "Уведомление о неудачном выполнении задачи"
+msgstr "Notification of unsuccessful task completion"
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:383
+msgid ""
+"Задаётся в самой задаче, можно отключить через свойство задачи. Если "
+"шаблон в задаче не указан — используется базовый шаблон из конфигурации "
+"Citeck."
+msgstr ""
+"Set in the task itself; can be disabled via a task property. If no "
+"template is specified in the task, the basic template from the Citeck "
+"configuration is used."
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:386
 msgid ""
 "**Установление шаблонов по умолчанию для ответных сообщений Lazy "
 "approval**"
 msgstr "**Setting Default Templates for Lazy Approval Response Messages**"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:377
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:388
 msgid ""
 "Через конфигурацию Citeck устанавливаются базовые версии шаблонов для "
 "отправки ответных сообщений пользователям о результатах обработки их "
@@ -643,7 +697,7 @@ msgstr ""
 "sending response messages to users about the results of processing their "
 "messages sent via Lazy Approval."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:389
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:400
 msgid ""
 "Данный шаблон будет выбран в том случае, если необходимо отправить "
 "сообщение пользователю, но в задаче не указан шаблон."
@@ -651,7 +705,7 @@ msgstr ""
 "This template will be selected if it is necessary to send a message to "
 "the user, but no template is specified in the task."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:391
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:402
 msgid ""
 "В случае, если шаблон нигде не указан (ни в конфигурации, ни в задаче), "
 "то сообщение отправлено не будет."
@@ -659,23 +713,25 @@ msgstr ""
 "If a template is not specified anywhere (neither in configuration nor in "
 "the task), the message will not be sent."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:394
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:405
 msgid "6.1 Коды ошибок"
 msgstr "6.1 Error Codes"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:396
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:407
 msgid "Все коды ошибок, доступные в переменной ``error_code`` отчётных шаблонов:"
-msgstr "All error codes available in the ``error_code`` variable of report templates:"
+msgstr ""
+"All error codes available in the ``error_code`` variable of report "
+"templates:"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:402
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:414
 msgid "Код"
 msgstr "Code"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:404
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:416
 msgid "``INCORRECT_DATA``"
 msgstr "``INCORRECT_DATA``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:405
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:417
 msgid ""
 "Не удалось разобрать тему письма (неверный формат ``Prefix-taskId-"
 "Outcome-token``). Возникает до поиска задачи."
@@ -683,35 +739,35 @@ msgstr ""
 "Failed to parse the email subject (invalid format ``Prefix-taskId-"
 "Outcome-token``). Occurs before task lookup."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:407
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:419
 msgid "``USER_NOT_FOUND``"
 msgstr "``USER_NOT_FOUND``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:408
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:420
 msgid "Пользователь, с email которого пришло письмо, не найден в системе."
 msgstr "The user whose email sent the message was not found in the system."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:409
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:421
 msgid "``TASK_NOT_FOUND``"
 msgstr "``TASK_NOT_FOUND``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:410
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:422
 msgid "Задача с указанным ``taskId`` не найдена."
 msgstr "The task with the specified ``taskId`` was not found."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:411
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:423
 msgid "``TASK_ALREADY_COMPLETED``"
 msgstr "``TASK_ALREADY_COMPLETED``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:412
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:424
 msgid "Задача уже завершена ранее."
 msgstr "The task has already been completed."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:413
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:425
 msgid "``OUTCOME_NOT_FOUND``"
 msgstr "``OUTCOME_NOT_FOUND``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:414
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:426
 msgid ""
 "Указанный в теме письма вердикт не найден среди доступных вердиктов "
 "задачи."
@@ -719,35 +775,40 @@ msgstr ""
 "The verdict specified in the email subject was not found among the "
 "available task verdicts."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:415
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:427
 msgid "``TOKEN_NOT_FOUND``"
 msgstr "``TOKEN_NOT_FOUND``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:416
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:428
 msgid "Токен безопасности из темы письма не совпадает с токеном задачи."
 msgstr "The security token from the email subject does not match the task's token."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:417
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:429
 msgid "``EXCEPTION``"
 msgstr "``EXCEPTION``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:418
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:430
 msgid "Произошла непредвиденная ошибка при завершении задачи."
 msgstr "An unexpected error occurred while completing the task."
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:421
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:433
 msgid "6.2 Переменные шаблонов отчётов"
 msgstr "6.2 Report Template Variables"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:423
-msgid "Базовый шаблон об ошибке:"
-msgstr "Basic error template:"
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:440
+msgid "Тип отчёта"
+msgstr "Report Type"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:432
-msgid "**subject**"
-msgstr "**subject**"
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:443
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:446
+msgid "Базовый шаблон об ошибке"
+msgstr "Basic error template"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:433
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:444
+msgid "``subject``"
+msgstr "``subject``"
+
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:445
 msgid ""
 "Тема сообщения от пользователя с префиксом \"Re: \" (для формирования "
 "письма как ответного сообщения)"
@@ -755,12 +816,12 @@ msgstr ""
 "Subject of the message from the user with the prefix \"Re: \" (to form "
 "the email as a response message)"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:434
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:460
-msgid "**error_code**"
-msgstr "**error_code**"
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:447
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:456
+msgid "``error_code``"
+msgstr "``error_code``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:435
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:448
 msgid ""
 "Код сообщения об ошибке. Возможные варианты: ``INCORRECT_DATA``, "
 "``USER_NOT_FOUND``, ``TASK_NOT_FOUND``"
@@ -768,25 +829,17 @@ msgstr ""
 "Error message code. Possible values: ``INCORRECT_DATA``, "
 "``USER_NOT_FOUND``, ``TASK_NOT_FOUND``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:437
-msgid "Уведомление об успешном выполнении задачи:"
-msgstr "Notification of successful task completion:"
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:450
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:453
+msgid "``task_name``"
+msgstr "``task_name``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:446
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:458
-msgid "**task_name**"
-msgstr "**task_name**"
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:447
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:459
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:451
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:454
 msgid "Название задачи"
 msgstr "Task name"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:449
-msgid "Уведомление о неудачном выполнении задачи:"
-msgstr "Notification of unsuccessful task completion:"
-
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:461
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:457
 msgid ""
 "Код сообщения об ошибке. Возможные варианты: ``TASK_ALREADY_COMPLETED``, "
 "``OUTCOME_NOT_FOUND``, ``TOKEN_NOT_FOUND``, ``EXCEPTION``"
@@ -794,11 +847,11 @@ msgstr ""
 "Error message code. Possible values: ``TASK_ALREADY_COMPLETED``, "
 "``OUTCOME_NOT_FOUND``, ``TOKEN_NOT_FOUND``, ``EXCEPTION``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:462
-msgid "**error_message**"
-msgstr "**error_message**"
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:459
+msgid "``error_message``"
+msgstr "``error_message``"
 
-#: ../../settings_kb/notifications/notification_lazy_approval.rst:463
+#: ../../settings_kb/notifications/notification_lazy_approval.rst:460
 msgid "Текст сообщения об ошибке"
 msgstr "Error message text"
 
@@ -911,3 +964,47 @@ msgstr "Error message text"
 
 #~ msgid "Код сообщения об ошибке. Возможные варианты:"
 #~ msgstr "Error message code. Possible options:"
+
+#~ msgid "Базовые шаблоны об ошибке (задаются в конфигурации);"
+#~ msgstr "Basic error templates (set in configuration);"
+
+#~ msgid ""
+#~ "Уведомление об успешном выполнении задачи "
+#~ "(задаётся в задаче или через "
+#~ "конфигурацию);"
+#~ msgstr ""
+#~ "Notification of successful task completion "
+#~ "(set for the task, or through "
+#~ "configuration);"
+
+#~ msgid ""
+#~ "Уведомление о неудачном выполнении задачи "
+#~ "(задаётся в задаче или через "
+#~ "конфигурацию)."
+#~ msgstr ""
+#~ "Notification of unsuccessful task completion"
+#~ " (set for the task, or through "
+#~ "configuration)."
+
+#~ msgid ""
+#~ "**Уведомления об успешном или неудачном "
+#~ "выполнении задачи** можно задать у самой"
+#~ " задачи. В таком случае в качестве"
+#~ " ответного сообщения будет сгенерировано "
+#~ "письмо на основе данных шаблонов. Если"
+#~ " в задаче шаблоны не указаны, будет"
+#~ " взят базовый шаблон из конфигурации "
+#~ "Citeck."
+#~ msgstr ""
+#~ "**Notifications of successful or unsuccessful"
+#~ " task completion** can be set for "
+#~ "the task itself. In this case, a"
+#~ " response email will be generated "
+#~ "based on these templates. If templates"
+#~ " are not specified in the task, "
+#~ "the basic template from Citeck "
+#~ "configuration will be used."
+
+#~ msgid "**task_name**"
+#~ msgstr "**task_name**"
+

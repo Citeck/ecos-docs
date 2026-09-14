@@ -1,0 +1,584 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-24 12:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:4
+msgid "Механика выполнения AI-агентов"
+msgstr "AI Agent Execution Mechanics"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:7
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:9
+msgid ""
+"Статья описывает, как платформа выполняет запросы к :ref:`AI-агентам "
+"<user-agents>`: движки выполнения, маршрутизацию, конвейер планирования и"
+" исполнения, точки участия человека, области публикации артефактов и "
+"ограничения выполнения."
+msgstr ""
+"This article describes how the platform executes requests to :ref:`AI "
+"agents <user-agents>`: execution engines, routing, the "
+"planning-and-execution pipeline, human-in-the-loop points, artifact "
+"publication scopes, and execution limits."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:12
+msgid "Ключевой принцип"
+msgstr "Key Principle"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:14
+msgid ""
+"**Структурные решения принимает код платформы, языковая модель отвечает "
+"за содержание.** Маршрутизация запроса, выбор области публикации, порядок"
+" этапов конвейера, проверка ссылок на артефакты и права доступа "
+"определяются детерминированным кодом. Модель генерирует содержимое — "
+"текст ответа, структуру артефакта, формулировку плана — внутри рамок, "
+"заданных кодом. Такой подход делает поведение агентов предсказуемым и "
+"позволяет использовать экономичные модели без потери надёжности."
+msgstr ""
+"**Structural decisions are made by platform code; the language model is "
+"responsible for content.** Request routing, publication scope selection,"
+" pipeline stage ordering, artifact reference validation, and access "
+"rights are determined by deterministic code. The model generates content"
+" — the response text, the artifact structure, the plan wording — within "
+"the bounds set by the code. This approach makes agent behavior "
+"predictable and allows the use of cost-effective models without "
+"sacrificing reliability."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:17
+msgid "Движки выполнения"
+msgstr "Execution Engines"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:19
+msgid ""
+"Каждый агент выполняется одним из двух движков — поле ``engine`` записи "
+"агента:"
+msgstr ""
+"Each agent runs on one of two engines — the agent record's ``engine`` "
+"field:"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:21
+msgid ""
+"**TOOL_LOOP — операционный диалоговый цикл.** Модель в цикле вызывает "
+"инструменты из белого списка агента (поиск записей, чтение документов, "
+"письма, изображения) и формирует ответ. Работает с памятью диалога, под "
+"правами текущего пользователя. Изменяющие операции (``mutateRecord``, "
+"``deleteRecords``) выполняются только после подтверждения пользователем в"
+" диалоге."
+msgstr ""
+"**TOOL_LOOP — an operational dialogue loop.** In a loop, the model calls "
+"tools from the agent's allowlist (searching records, reading documents, "
+"letters, images) and produces a response. Works with dialogue memory, "
+"under the current user's permissions. Mutating operations "
+"(``mutateRecord``, ``deleteRecords``) run only after user confirmation "
+"in the dialogue."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:23
+msgid ""
+"**CONFIG — агент конфигурирования платформы.** Тот же цикл с "
+"инструментами, но набор инструментов — генерация и публикация артефактов "
+"(типы данных, формы, процессы, скрипты). Ход работы отображается в чате "
+"пошаговой лентой выполняемых инструментов. Публикация артефактов при "
+"включённом ``requireDeployConfirmation`` требует подтверждения человеком."
+msgstr ""
+"**CONFIG — the platform configuration agent.** The same tool loop, but "
+"the tool set covers artifact generation and publishing (data types, "
+"forms, processes, scripts). Progress is shown in the chat as a "
+"step-by-step feed of the tools being executed. Publishing artifacts "
+"requires human confirmation when ``requireDeployConfirmation`` is "
+"enabled."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:28
+msgid "Маршрутизация"
+msgstr "Routing"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:30
+msgid "Диалог с привязанным агентом обслуживается движком этого агента."
+msgstr "A dialogue bound to an agent is served by that agent's engine."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:31
+msgid ""
+"Чат без выбранного агента обслуживается операционным агентом по умолчанию"
+" (свойство ``citeck.ai.agents.default-operational``, по умолчанию "
+"``tasks-documents-helper``)."
+msgstr ""
+"A chat with no agent selected is served by the default operational agent"
+" (the ``citeck.ai.agents.default-operational`` property, default "
+"``tasks-documents-helper``)."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:32
+msgid ""
+"Запрос конфигурации оценивается классификатором объёма: **один артефакт**"
+" остаётся в цикле агента конфигурирования; **проект из нескольких "
+"артефактов** (например, «создай приложение для учёта командировок») "
+"перенаправляется в конвейер планирования и исполнения."
+msgstr ""
+"A configuration request is evaluated by a scope classifier: a **single "
+"artifact** stays in the configuration agent's loop; a **multi-artifact "
+"project** (e.g., \"create an application for tracking business trips\") "
+"is redirected to the planning-and-execution pipeline."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:35
+msgid "Диагностика"
+msgstr "Diagnostics"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:37
+msgid ""
+"Ошибки конфигурации агента не маскируются: несуществующий агент, "
+"отключённый агент, неизвестный провайдер или движок дают понятное "
+"сообщение об ошибке с указанием причины, а не молчаливую подстановку "
+"значений по умолчанию."
+msgstr ""
+"Agent configuration errors are not masked: a non-existent agent, a "
+"disabled agent, or an unknown provider or engine produce a clear error "
+"message stating the cause, rather than a silent fallback to default "
+"values."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:42
+msgid "Агентный конвейер: планирование и исполнение"
+msgstr "Agentic Pipeline: Planning and Execution"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:44
+msgid ""
+"Многоартефактные запросы выполняются конвейером «план → утверждение → "
+"исполнение»."
+msgstr ""
+"Multi-artifact requests are executed by a \"plan → approval → "
+"execution\" pipeline."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:47
+msgid "Планирование"
+msgstr "Planning"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:49
+msgid ""
+"Модель строит план из этапов с зависимостями (граф). Типы этапов: поиск "
+"артефактов, поиск знаний, анализ артефакта, генерация типа данных, "
+"генерация формы, генерация процесса, валидация, публикация. План "
+"показывается пользователю со структурным предпросмотром: для типов данных"
+" — атрибуты, статусы и роли будущего артефакта; для форм и процессов — "
+"ключевые поля и шаги. Если запрос содержит то, что конвейер построить не "
+"может (например, отчёт нестандартного вида), это явно перечисляется в "
+"плане, а не подменяется другим типом артефакта."
+msgstr ""
+"The model builds a plan of stages with dependencies (a graph). Stage "
+"types: artifact search, knowledge search, artifact analysis, data type "
+"generation, form generation, process generation, validation, publishing."
+" The plan is shown to the user with a structural preview: for data types"
+" — the attributes, statuses, and roles of the future artifact; for forms"
+" and processes — the key fields and steps. If the request contains "
+"something the pipeline cannot build (e.g., a non-standard report), this "
+"is explicitly listed in the plan rather than substituted with a "
+"different artifact type."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:52
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:80
+msgid "Утверждение плана"
+msgstr "Plan Approval"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:54
+msgid ""
+"План исполняется только после утверждения человеком: кнопки «Подтвердить»"
+" и «Отклонить», свободным текстом — изменение плана или вопрос. Вопрос о "
+"плане получает ответ, после чего план предъявляется снова. См. сводную "
+"таблицу точек участия человека ниже."
+msgstr ""
+"The plan is executed only after human approval: \"Confirm\" and "
+"\"Reject\" buttons, or free text — a change to the plan or a question. A"
+" question about the plan gets an answer, after which the plan is "
+"presented again. See the summary table of human-in-the-loop points "
+"below."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:57
+msgid "Исполнение"
+msgstr "Execution"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:59
+msgid ""
+"Этапы выполняются последовательно с учётом зависимостей; каждый этап "
+"работает в изолированной памяти и получает результаты только тех этапов, "
+"от которых зависит."
+msgstr ""
+"Stages run sequentially according to dependencies; each stage runs in "
+"isolated memory and receives results only from the stages it depends on."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:60
+msgid ""
+"Ход исполнения отображается пошаговым индикатором с состоянием каждого "
+"этапа."
+msgstr ""
+"Execution progress is shown by a step indicator with the state of each "
+"stage."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:61
+msgid ""
+"Ошибка этапа предлагает выбор: **повторить**, **пропустить**, "
+"**прервать**. Генерация повторяется автоматически с передачей ошибки "
+"валидации модели (до 3 попыток), публикация всегда останавливается и "
+"спрашивает человека."
+msgstr ""
+"A stage error offers a choice: **retry**, **skip**, **abort**. "
+"Generation is retried automatically, passing the model the validation "
+"error (up to 3 attempts); publishing always stops and asks the human."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:62
+msgid ""
+"Если при генерации выясняется, что зависимому типу данных не хватает "
+"атрибута, конвейер останавливается и предлагает расширить тип (да/нет); "
+"при согласии в план добавляются этапы изменения и публикации типа, после "
+"чего заблокированный этап выполняется заново."
+msgstr ""
+"If generation finds that a dependent data type is missing an attribute, "
+"the pipeline stops and offers to extend the type (yes/no); if agreed, "
+"stages for modifying and publishing the type are added to the plan, "
+"after which the blocked stage runs again."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:63
+msgid ""
+"План можно пересмотреть по ходу исполнения: выполненные этапы сохраняют "
+"статус, изменённые — перегенерируются."
+msgstr ""
+"The plan can be revised during execution: completed stages keep their "
+"status, changed ones are regenerated."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:68
+msgid "Человек в контуре (HITL)"
+msgstr "Human in the Loop (HITL)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:70
+msgid ""
+"Сводный перечень точек, в которых агент останавливается и ждёт решения "
+"человека. Это нормативный список: остальные разделы документации "
+"ссылаются сюда."
+msgstr ""
+"A summary list of the points where the agent stops and waits for a human"
+" decision. This is the normative list: other documentation sections "
+"reference it."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:77
+msgid "Точка"
+msgstr "Point"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:78
+msgid "Когда возникает"
+msgstr "When it occurs"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:79
+msgid "Как настраивается"
+msgstr "How it's configured"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:81
+msgid "Конвейер построил план многоартефактного запроса"
+msgstr "The pipeline has built a plan for a multi-artifact request"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:82
+msgid ""
+"Всегда включено; кнопки Подтвердить / Отклонить, изменение и вопросы — "
+"свободным текстом"
+msgstr ""
+"Always enabled; Confirm / Reject buttons, changes and questions via free"
+" text"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:83
+msgid "Ошибка этапа конвейера"
+msgstr "Pipeline stage error"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:84
+msgid "Этап исчерпал автоматические повторы"
+msgstr "The stage has exhausted its automatic retries"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:85
+msgid "Всегда включено; кнопки Повторить / Пропустить / Прервать"
+msgstr "Always enabled; Retry / Skip / Abort buttons"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:86
+msgid "Подтверждение публикации"
+msgstr "Publish confirmation"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:87
+msgid "Агент готов опубликовать артефакт"
+msgstr "The agent is ready to publish an artifact"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:88
+msgid ""
+"Поле ``requireDeployConfirmation`` записи агента; карточка показывает "
+"область публикации (см. ниже)"
+msgstr ""
+"The agent record's ``requireDeployConfirmation`` field; the card shows "
+"the publication scope (see below)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:89
+msgid "Подтверждение изменения записи"
+msgstr "Record modification confirmation"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:90
+msgid ""
+"Операционный агент собирается создать или изменить запись "
+"(``mutateRecord``)"
+msgstr ""
+"The operational agent is about to create or modify a record "
+"(``mutateRecord``)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:91
+msgid "Всегда включено; карточка с составом изменений"
+msgstr "Always enabled; a card with the list of changes"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:92
+msgid "Подтверждение удаления"
+msgstr "Deletion confirmation"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:93
+msgid "Операционный агент собирается удалить записи (``deleteRecords``)"
+msgstr "The operational agent is about to delete records (``deleteRecords``)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:94
+msgid ""
+"Всегда включено; удаление подтверждается отдельной карточкой, поэтому "
+"подтверждение, ранее выданное на изменение записи, не может случайно "
+"привести к удалению"
+msgstr ""
+"Always enabled; deletion is confirmed by a separate card, so a "
+"confirmation previously given for a record change cannot accidentally "
+"lead to deletion"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:95
+msgid "Расширение зависимого типа"
+msgstr "Dependent type extension"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:96
+msgid ""
+"Генерация обнаружила недостающий атрибут в типе, от которого зависит "
+"артефакт"
+msgstr ""
+"Generation found a missing attribute in the type the artifact depends on"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:97
+msgid ""
+"Всегда включено; вопрос да/нет, при согласии план дополняется этапами "
+"изменения типа"
+msgstr ""
+"Always enabled; a yes/no question, and if agreed, the plan is extended "
+"with type modification stages"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:98
+msgid "Уточняющие вопросы"
+msgstr "Clarifying questions"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:99
+msgid "Запрос на создание бизнес-приложения недостаточно детален"
+msgstr "The request to create a business application is not detailed enough"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:100
+msgid ""
+"Всегда включено; до нескольких раундов, кнопки Пропустить (генерировать с"
+" разумными допущениями) и Отмена; вместо ответов можно приложить "
+"спецификацию"
+msgstr ""
+"Always enabled; up to several rounds, Skip (generate with reasonable "
+"assumptions) and Cancel buttons; a specification can be attached instead"
+" of answering"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:101
+msgid "Ограничение повторов подтверждений"
+msgstr "Confirmation retry limit"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:102
+msgid "Подтверждение дважды завершилось ошибкой"
+msgstr "Confirmation has failed twice"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:103
+msgid ""
+"Всегда включено: ожидающее действие снимается, диалог продолжается "
+"штатно. Отклонение пользователем снимает ожидающее действие сразу, с "
+"первого раза"
+msgstr ""
+"Always enabled: the pending action is dropped and the dialogue continues"
+" normally. A user rejection drops the pending action immediately, on "
+"the first try"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:108
+msgid "Область публикации и локальная копия"
+msgstr "Publication Scope and Local Copy"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:110
+msgid ""
+"Публикация артефакта всегда выполняется в определённую **область**: "
+"глобально или в рабочее пространство. Область показывается в карточке "
+"подтверждения публикации."
+msgstr ""
+"Publishing an artifact always happens within a specific **scope**: "
+"globally or to a workspace. The scope is shown in the publish "
+"confirmation card."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:112
+msgid "Правила определяются кодом платформы:"
+msgstr "The rules are determined by platform code:"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:114
+msgid ""
+"**Из рабочего пространства** (именованного или личного) публикация всегда"
+" идёт в это рабочее пространство. Запросить публикацию глобально из "
+"рабочего пространства нельзя — попытка переопределить область отклоняется"
+" с объяснением, а не подменяется молча."
+msgstr ""
+"**From a workspace** (named or personal), publishing always goes to that"
+" workspace. Requesting a global publish from a workspace is not "
+"possible — an attempt to override the scope is rejected with an "
+"explanation, not silently substituted."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:115
+msgid ""
+"**Изменение глобального артефакта из рабочего пространства невозможно по "
+"построению** — вместо этого создаётся **локальная копия** артефакта в "
+"рабочем пространстве. Диалог предупреждает об этом формулировкой «Создать"
+" локальную копию …». Оригинальный глобальный артефакт не меняется; "
+"последующие артефакты диалога (например, форма для скопированного типа) "
+"автоматически привязываются к локальной копии."
+msgstr ""
+"**Modifying a global artifact from a workspace is impossible by "
+"design** — instead, a **local copy** of the artifact is created in the "
+"workspace. The dialogue warns about this with the wording \"Create a "
+"local copy of …\". The original global artifact is not changed; "
+"subsequent artifacts in the dialogue (e.g., a form for the copied type) "
+"are automatically bound to the local copy."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:116
+msgid ""
+"**Администратор в глобальном административном рабочем пространстве** "
+"(``admin$workspace``) публикует глобально, изменяя артефакт на месте. "
+"Администратору, работающему в обычном рабочем пространстве, диалог "
+"подсказывает перейти в административное пространство, если нужно изменить"
+" оригинал."
+msgstr ""
+"**An administrator in the global administrator workspace** "
+"(``admin$workspace``) publishes globally, modifying the artifact in "
+"place. For an administrator working in a regular workspace, the dialogue"
+" suggests switching to the administrator workspace if the original needs"
+" to be modified."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:117
+msgid ""
+"**Расширение типа** (создание наследника глобального типа вместо копии) "
+"выполняется только по явной просьбе «расширить» / «унаследовать»."
+msgstr ""
+"**Extending a type** (creating a descendant of a global type instead of "
+"a copy) is performed only on an explicit \"extend\" / \"inherit\" "
+"request."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:118
+msgid ""
+"**Нехватка прав** на публикацию даёт одно понятное сообщение без цикла "
+"повторных попыток."
+msgstr ""
+"**Insufficient permissions** to publish produce a single clear message "
+"with no retry loop."
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:121
+msgid "Ограничения выполнения и устойчивость"
+msgstr "Execution Limits and Resilience"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:128
+msgid "Ограничение"
+msgstr "Limit"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:129
+msgid "Значение"
+msgstr "Value"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:130
+msgid "Этапов в плане конвейера"
+msgstr "Stages in a pipeline plan"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:131
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:141
+msgid "до 20"
+msgstr "up to 20"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:132
+msgid "Автоматических повторов этапа генерации"
+msgstr "Automatic retries of a generation stage"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:133
+msgid "до 3 (поисковые и аналитические этапы — до 2, затем предлагается пропуск)"
+msgstr "up to 3 (search and analysis stages — up to 2, then a skip is offered)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:134
+msgid "Время исполнения конвейера"
+msgstr "Pipeline execution time"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:135
+msgid "до 10 минут"
+msgstr "up to 10 minutes"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:136
+msgid "Вызовов инструментов на один запрос в цикле агента"
+msgstr "Tool calls per request in the agent loop"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:137
+msgid ""
+"до 60; при повторных сбоях одного инструмента (3 сбоя подряд или 2 сбоя с"
+" одинаковой ошибкой) инструмент блокируется до конца запроса"
+msgstr ""
+"up to 60; on repeated failures of the same tool (3 consecutive failures "
+"or 2 failures with the same error), the tool is blocked for the rest of "
+"the request"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:138
+msgid "Вызовов инструментов при генерации документации приложения"
+msgstr "Tool calls when generating application documentation"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:139
+msgid "до 40"
+msgstr "up to 40"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:140
+msgid "Генераций изображений на один диалог"
+msgstr "Image generations per dialogue"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:142
+msgid "Повторы обращения к LLM-провайдеру при сетевых сбоях"
+msgstr "Retries of LLM provider calls on network failures"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:143
+msgid "3 попытки с нарастающей задержкой"
+msgstr "3 attempts with increasing delay"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:144
+msgid "Перегрузка провайдера (HTTP 429)"
+msgstr "Provider overload (HTTP 429)"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:145
+msgid ""
+"пользователь видит сообщение «Сервис перегружен, попробуйте через N "
+"секунд» с фактическим временем ожидания; исчерпание квоты — отдельное "
+"сообщение с рекомендацией обратиться к администратору"
+msgstr ""
+"the user sees the message \"Service is overloaded, try again in N "
+"seconds\" with the actual wait time; quota exhaustion is a separate "
+"message recommending contacting the administrator"
+
+#: ../../general/AI_instruments/Agents/ai_architecture.rst:147
+msgid ""
+"Ограничения защищают от неконтролируемого расхода токенов и зацикливания;"
+" при достижении лимита агент завершает работу с уже собранным результатом"
+" и явно сообщает об этом."
+msgstr ""
+"The limits protect against uncontrolled token usage and loops; when a "
+"limit is reached, the agent finishes with the result already collected "
+"and explicitly reports this."

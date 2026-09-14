@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -23,6 +23,10 @@ msgid "Настройка подключения микросервиса ecos-n
 msgstr "Configuring the ecos-notifications Microservice Connection"
 
 #: ../../settings_kb/notifications/settings.rst:6
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../settings_kb/notifications/settings.rst:8
 msgid ""
 "Для отправки писем пользователям необходимо настроить подключение "
 "микросервиса ecos-notifications к SMTP-серверу."
@@ -30,7 +34,7 @@ msgstr ""
 "To send emails to users, the ecos-notifications microservice must be "
 "configured to connect to an SMTP server."
 
-#: ../../settings_kb/notifications/settings.rst:8
+#: ../../settings_kb/notifications/settings.rst:10
 msgid ""
 "Эти параметры задаются в конфигурации сервиса (**spring properties**) и "
 "обычно настраиваются не через интерфейс, а при развертывании приложения: "
@@ -42,15 +46,80 @@ msgstr ""
 "application deployment: for example, via application.yml, environment "
 "variables, Docker Compose, Helm chart, or another configuration method."
 
-#: ../../settings_kb/notifications/settings.rst:10
+#: ../../settings_kb/notifications/settings.rst:12
 msgid "Ниже пример настройки для mail.ru."
 msgstr "Below is a configuration example for mail.ru."
 
-#: ../../settings_kb/notifications/settings.rst:12
-msgid "Через **application.yml**:"
-msgstr "Via **application.yml**:"
+#: ../../settings_kb/notifications/settings.rst
+msgid "application.yml"
+msgstr "application.yml"
 
-#: ../../settings_kb/notifications/settings.rst:34
-msgid "Или то же самое через **переменные окружения**:"
-msgstr "Or the same via **environment variables**:"
+#: ../../settings_kb/notifications/settings.rst
+msgid "Переменные окружения"
+msgstr "Environment Variables"
+
+#: ../../settings_kb/notifications/settings.rst:51
+msgid "Параметры, влияющие на повторные отправки"
+msgstr "Parameters Affecting Retries"
+
+#: ../../settings_kb/notifications/settings.rst:53
+msgid ""
+"Помимо параметров подключения, поведение микросервиса при сбоях отправки "
+"задаётся блоком ``ecos-notifications.retry`` — см. :ref:`повторные "
+"попытки отправки <notifications-label>`."
+msgstr ""
+"In addition to the connection parameters, the microservice's behavior on "
+"send failures is set by the ``ecos-notifications.retry`` block — see "
+":ref:`retry attempts <notifications-label>`."
+
+#: ../../settings_kb/notifications/settings.rst:56
+msgid ""
+"Значения по умолчанию рассчитаны на типовой сценарий, менять их обычно не"
+" требуется."
+msgstr ""
+"The default values are designed for a typical scenario; changing them is "
+"usually not required."
+
+#: ../../settings_kb/notifications/settings.rst:60
+msgid ""
+"Следующие SMTP-параметры важны для корректной работы повторов — "
+"переопределять их значения по умолчанию не рекомендуется:"
+msgstr ""
+"The following SMTP parameters are important for retries to work "
+"correctly — overriding their default values is not recommended:"
+
+#: ../../settings_kb/notifications/settings.rst:80
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../settings_kb/notifications/settings.rst:81
+msgid "Описание"
+msgstr "Description"
+
+#: ../../settings_kb/notifications/settings.rst:82
+msgid "``connectiontimeout``, ``timeout``, ``writetimeout``"
+msgstr "``connectiontimeout``, ``timeout``, ``writetimeout``"
+
+#: ../../settings_kb/notifications/settings.rst:83
+msgid ""
+"Таймауты обязательно должны быть конечными: иначе зависшее соединение "
+"заблокирует уведомление на всё время ожидания ответа сервера."
+msgstr ""
+"Timeouts must always be finite: otherwise a hung connection will block "
+"the notification for the entire time it waits for a server response."
+
+#: ../../settings_kb/notifications/settings.rst:85
+msgid "``sendpartial``"
+msgstr "``sendpartial``"
+
+#: ../../settings_kb/notifications/settings.rst:86
+msgid ""
+"Доставлять письмо принявшим его получателям вместо отмены отправки "
+"целиком, если часть адресов отклонена сервером."
+msgstr ""
+"Deliver the email to the recipients who accepted it instead of cancelling "
+"the entire send if some addresses are rejected by the server."
+
+#~ msgid "Или то же самое через **переменные окружения**:"
+#~ msgstr "Or the same via **environment variables**:"
 

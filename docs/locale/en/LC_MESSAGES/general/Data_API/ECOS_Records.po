@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -27,8 +27,8 @@ msgid ""
 "**Records API** — интерфейс на уровне системы для доступа и манипуляции "
 "данными. Данными являются записи."
 msgstr ""
-"**Records API** is a system-level interface for accessing and manipulating "
-"data. The data entities are called records."
+"**Records API** is a system-level interface for accessing and "
+"manipulating data. The data entities are called records."
 
 #: ../../general/Data_API/ECOS_Records.rst:8
 msgid ""
@@ -39,66 +39,52 @@ msgstr ""
 "(:ref:`RecordRef <RecordRef>`)."
 
 #: ../../general/Data_API/ECOS_Records.rst:10
-msgid "Данные можно получить:"
-msgstr "Data can be retrieved:"
-
-#: ../../general/Data_API/ECOS_Records.rst:12
 msgid ""
-"используя браузер — см. :ref:`использование Records API в браузере "
-"<using_in_browser>` и :ref:`CRUD операции <CRUD_records_api>`;"
+"Данные можно получить, используя браузер или бэкенд (kotlin/java) — "
+"подробнее в темах раздела ниже."
 msgstr ""
-"using a browser — see :ref:`using Records API in the browser "
-"<using_in_browser>` and :ref:`CRUD operations <CRUD_records_api>`;"
+"Data can be retrieved using a browser or the backend (kotlin/java) — see "
+"the topics of the section below for details."
 
-#: ../../general/Data_API/ECOS_Records.rst:13
-msgid ""
-"бэкенд — см. :ref:`взаимодействие на сервере <java_kotlin_backend>` и "
-"`исходный код kotlin/java движка Records API <https://github.com/Citeck"
-"/ecos-records>`_."
-msgstr ""
-"on the backend — see :ref:`server-side interaction <java_kotlin_backend>` and "
-"`Records API Kotlin/Java engine source code <https://github.com/Citeck"
-"/ecos-records>`_."
-
-#: ../../general/Data_API/ECOS_Records.rst:17
+#: ../../general/Data_API/ECOS_Records.rst:14
 msgid "Общее описание"
 msgstr "General Description"
 
-#: ../../general/Data_API/ECOS_Records.rst:19
+#: ../../general/Data_API/ECOS_Records.rst:16
 msgid ""
 "API, разработанное для организации простого и легко масштабируемого "
 "общения между потребителем информации и источником. Источниками данных "
 "могут быть БД, REST и др."
 msgstr ""
-"An API designed to provide simple and easily scalable communication between "
-"a data consumer and a data source. Data sources can include databases, "
-"REST services, and more."
+"An API designed to provide simple and easily scalable communication "
+"between a data consumer and a data source. Data sources can include "
+"databases, REST services, and more."
 
-#: ../../general/Data_API/ECOS_Records.rst:21
+#: ../../general/Data_API/ECOS_Records.rst:18
 msgid "Преимущества:"
 msgstr "Advantages:"
 
-#: ../../general/Data_API/ECOS_Records.rst:23
+#: ../../general/Data_API/ECOS_Records.rst:20
 msgid ""
 "Единый API для доступа к данным в системе для всех потребителей (Браузер,"
 " Мобильное приложение, Система построения отчетов, Индексирование данных,"
 " Различные микросервисы и т.д.);"
 msgstr ""
-"A unified API for data access across the system for all consumers (Browser, "
-"Mobile application, Reporting system, Data indexing, Various microservices, "
-"etc.);"
+"A unified API for data access across the system for all consumers "
+"(Browser, Mobile application, Reporting system, Data indexing, Various "
+"microservices, etc.);"
 
-#: ../../general/Data_API/ECOS_Records.rst:24
+#: ../../general/Data_API/ECOS_Records.rst:21
 msgid ""
 "Поддержка загрузки данных из связанных сущностей. Например, если у нас "
 "договор ссылается на доверенность, то, имея идентификатор договора, мы "
 "можем получить любой атрибут связанной доверенности;"
 msgstr ""
-"Support for loading data from related entities. For example, if a contract "
-"references a power of attorney, having the contract's identifier allows you "
-"to retrieve any attribute of the linked power of attorney;"
+"Support for loading data from related entities. For example, if a "
+"contract references a power of attorney, having the contract's identifier"
+" allows you to retrieve any attribute of the linked power of attorney;"
 
-#: ../../general/Data_API/ECOS_Records.rst:25
+#: ../../general/Data_API/ECOS_Records.rst:22
 msgid ""
 "Оптимальность. Загружаются и вычисляются только те атрибуты, которые "
 "нужны потребителю;"
@@ -106,7 +92,7 @@ msgstr ""
 "Efficiency. Only the attributes required by the consumer are loaded and "
 "computed;"
 
-#: ../../general/Data_API/ECOS_Records.rst:26
+#: ../../general/Data_API/ECOS_Records.rst:23
 msgid ""
 "Простота в разработке – разработчик источника данных описывает все "
 "атрибуты, которые могут запросить потребители вне зависимости от "
@@ -115,41 +101,135 @@ msgid ""
 msgstr ""
 "Ease of development — the data source developer describes all attributes "
 "that consumers may request, regardless of computation complexity. The "
-"consumer specifies in the request only the attributes they are interested in;"
+"consumer specifies in the request only the attributes they are interested"
+" in;"
 
-#: ../../general/Data_API/ECOS_Records.rst:27
+#: ../../general/Data_API/ECOS_Records.rst:24
 msgid ""
 "Простота поддержки - нет версионирования API т.к. мы в любой момент можем"
 " добавлять новые атрибуты, не трогая старые;"
 msgstr ""
-"Ease of maintenance — no API versioning is required, as new attributes can "
-"be added at any time without affecting existing ones;"
+"Ease of maintenance — no API versioning is required, as new attributes "
+"can be added at any time without affecting existing ones;"
 
-#: ../../general/Data_API/ECOS_Records.rst:28
+#: ../../general/Data_API/ECOS_Records.rst:25
 msgid ""
 "Тип получаемых данных полностью описывается запросом. Из источника данных"
 " мы возвращаем атрибуты с любым типом, а Records API приводит их к "
 "нужному для потребителя;"
 msgstr ""
-"The type of retrieved data is fully defined by the request. The data source "
-"returns attributes of any type, and Records API converts them to the type "
-"required by the consumer;"
+"The type of retrieved data is fully defined by the request. The data "
+"source returns attributes of any type, and Records API converts them to "
+"the type required by the consumer;"
 
-#: ../../general/Data_API/ECOS_Records.rst:29
+#: ../../general/Data_API/ECOS_Records.rst:26
 msgid ""
 "Вычисляемые атрибуты. Возможность добавлять атрибуты, которые не хранятся"
 " в БД или любом другом хранилище, а вычисляются на основе существующих;"
 msgstr ""
-"Computed attributes. The ability to add attributes that are not stored in "
-"the database or any other storage but are computed based on existing ones;"
+"Computed attributes. The ability to add attributes that are not stored in"
+" the database or any other storage but are computed based on existing "
+"ones;"
 
-#: ../../general/Data_API/ECOS_Records.rst:30
+#: ../../general/Data_API/ECOS_Records.rst:27
 msgid ""
 "Поддержка объединения атрибутов из разных источников. Например, можно "
 "написать источник данных, который часть атрибутов будет брать из "
 "alfresco, а часть из внешней БД объединяя их по идентификатору."
 msgstr ""
-"Support for combining attributes from different sources. For example, you "
-"can create a data source that retrieves some attributes from Alfresco and "
-"others from an external database, merging them by identifier."
+"Support for combining attributes from different sources. For example, you"
+" can create a data source that retrieves some attributes from Alfresco "
+"and others from an external database, merging them by identifier."
+
+#: ../../general/Data_API/ECOS_Records.rst:29
+msgid "Раздел включает следующие темы:"
+msgstr "The section includes the following topics:"
+
+#: ../../general/Data_API/ECOS_Records.rst:34
+msgid "Термины и описание работы"
+msgstr "Terms and Description of Operation"
+
+#: ../../general/Data_API/ECOS_Records.rst:38
+msgid "Ключевые термины и принцип работы Records API."
+msgstr "Key terms and the operating principle of Records API."
+
+#: ../../general/Data_API/ECOS_Records.rst:40
+msgid "Атрибуты"
+msgstr "Attributes"
+
+#: ../../general/Data_API/ECOS_Records.rst:44
+msgid "Синтаксис запроса атрибутов записи: значения, ассоциации, модификаторы."
+msgstr "Syntax for querying record attributes: values, associations, modifiers."
+
+#: ../../general/Data_API/ECOS_Records.rst:46
+msgid "RecordsService (Java)"
+msgstr "RecordsService (Java)"
+
+#: ../../general/Data_API/ECOS_Records.rst:50
+msgid "Сервис для поиска, получения, изменения и удаления записей."
+msgstr "A service for searching, retrieving, modifying, and deleting records."
+
+#: ../../general/Data_API/ECOS_Records.rst:52
+msgid "RecordRef"
+msgstr "RecordRef"
+
+#: ../../general/Data_API/ECOS_Records.rst:56
+msgid "Формат идентификатора записи и работа со ссылками между сущностями."
+msgstr "The format of the record identifier and working with references between entities."
+
+#: ../../general/Data_API/ECOS_Records.rst:58
+msgid "Использование в браузере"
+msgstr "Usage in the Browser"
+
+#: ../../general/Data_API/ECOS_Records.rst:62
+msgid "Работа с Records API через глобальный компонент Records и CRUD-операции."
+msgstr "Working with Records API via the global Records component and CRUD operations."
+
+#: ../../general/Data_API/ECOS_Records.rst:64
+msgid "Kotlin/Java Backend"
+msgstr "Kotlin/Java Backend"
+
+#: ../../general/Data_API/ECOS_Records.rst:68
+msgid "Работа с Records API на бэкенде через библиотеку ecos-records."
+msgstr "Working with Records API on the backend via the ecos-records library."
+
+#: ../../general/Data_API/ECOS_Records.rst:70
+msgid "Формальное описание синтаксиса атрибута"
+msgstr "Formal Description of Attribute Syntax"
+
+#: ../../general/Data_API/ECOS_Records.rst:74
+msgid "Полная грамматика синтаксиса атрибутов Citeck Records."
+msgstr "The complete grammar of the Citeck Records attribute syntax."
+
+#: ../../general/Data_API/ECOS_Records.rst:76
+msgid "Примеры запросов Citeck Records"
+msgstr "Citeck Records Query Examples"
+
+#: ../../general/Data_API/ECOS_Records.rst:80
+msgid "Готовые примеры запросов и операций."
+msgstr "Ready-made examples of queries and operations."
+
+#~ msgid "Данные можно получить:"
+#~ msgstr "Data can be retrieved:"
+
+#~ msgid ""
+#~ "используя браузер — см. :ref:`использование"
+#~ " Records API в браузере <using_in_browser>`"
+#~ " и :ref:`CRUD операции <CRUD_records_api>`;"
+#~ msgstr ""
+#~ "using a browser — see :ref:`using "
+#~ "Records API in the browser "
+#~ "<using_in_browser>` and :ref:`CRUD operations "
+#~ "<CRUD_records_api>`;"
+
+#~ msgid ""
+#~ "бэкенд — см. :ref:`взаимодействие на "
+#~ "сервере <java_kotlin_backend>` и `исходный код"
+#~ " kotlin/java движка Records API "
+#~ "<https://github.com/Citeck/ecos-records>`_."
+#~ msgstr ""
+#~ "on the backend — see :ref:`server-"
+#~ "side interaction <java_kotlin_backend>` and "
+#~ "`Records API Kotlin/Java engine source "
+#~ "code <https://github.com/Citeck/ecos-records>`_."
 

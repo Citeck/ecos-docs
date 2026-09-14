@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -27,8 +27,8 @@ msgid ""
 "В метод **Citeck.Esign.sign** добавлена возможность указывать атрибут, в "
 "котором содержится контент для подписания."
 msgstr ""
-"The **Citeck.Esign.sign** method now supports specifying the attribute that "
-"contains the content to be signed."
+"The **Citeck.Esign.sign** method now supports specifying the attribute "
+"that contains the content to be signed."
 
 #: ../../general/Tech_func_descr/content_sign.rst:8
 msgid ""
@@ -38,11 +38,11 @@ msgstr ""
 "The update is backward-compatible — no changes are required in existing "
 "projects."
 
-#: ../../general/Tech_func_descr/content_sign.rst:10
-msgid "Подписание конкретного контента:"
-msgstr "Signing specific content:"
+#: ../../general/Tech_func_descr/content_sign.rst:15
+msgid "Указание атрибута с контентом"
+msgstr "Specifying the Content Attribute"
 
-#: ../../general/Tech_func_descr/content_sign.rst:16
+#: ../../general/Tech_func_descr/content_sign.rst:17
 msgid ""
 "При указании конкретного контента обязательно необходимо передавать "
 "объект формата:"
@@ -50,19 +50,23 @@ msgstr ""
 "When specifying particular content, you must pass an object in the "
 "following format:"
 
-#: ../../general/Tech_func_descr/content_sign.rst:22
+#: ../../general/Tech_func_descr/content_sign.rst:23
 msgid "где:"
 msgstr "where:"
 
-#: ../../general/Tech_func_descr/content_sign.rst:24
+#: ../../general/Tech_func_descr/content_sign.rst:25
 msgid "**recordRef** — recordRef подписываемого документа;"
 msgstr "**recordRef** — the recordRef of the document to be signed;"
 
-#: ../../general/Tech_func_descr/content_sign.rst:25
+#: ../../general/Tech_func_descr/content_sign.rst:26
 msgid "**contentAtt** — атрибут, в котором содержится контент для подписи."
 msgstr "**contentAtt** — the attribute that contains the content to be signed."
 
-#: ../../general/Tech_func_descr/content_sign.rst:27
+#: ../../general/Tech_func_descr/content_sign.rst:28
+msgid "Пример:"
+msgstr "Example:"
+
+#: ../../general/Tech_func_descr/content_sign.rst:34
 msgid ""
 "Если передаётся просто **recordRef** без указания **contentAtt** или "
 "используется старый формат, то атрибутом с контентом по умолчанию "
@@ -72,28 +76,56 @@ msgstr ""
 "the old format is used, the **content** attribute is treated as the "
 "default content attribute."
 
-#: ../../general/Tech_func_descr/content_sign.rst:29
-msgid "Старый формат также поддерживается. Пример:"
-msgstr "The old format is also supported. Example:"
+#: ../../general/Tech_func_descr/content_sign.rst:37
+msgid "Старый формат"
+msgstr "Old Format"
 
-#: ../../general/Tech_func_descr/content_sign.rst:35
+#: ../../general/Tech_func_descr/content_sign.rst:39
+msgid ""
+"Старый формат также поддерживается — recordRef передаётся напрямую "
+"строкой, без объекта:"
+msgstr ""
+"The old format is also supported — recordRef is passed directly as a "
+"string, without an object:"
+
+#: ../../general/Tech_func_descr/content_sign.rst:45
 msgid ""
 "При передаче списка **recordRef** напрямую логика также отрабатывает "
 "корректно — атрибутом с контентом считается **content**."
 msgstr ""
-"When passing a list of **recordRef** values directly, the logic also works "
-"correctly — the **content** attribute is used as the content attribute."
+"When passing a list of **recordRef** values directly, the logic also "
+"works correctly — the **content** attribute is used as the content "
+"attribute."
 
-#: ../../general/Tech_func_descr/content_sign.rst:37
-msgid "Также возможен смешанный запрос, например:"
-msgstr "A mixed request is also possible, for example:"
+#: ../../general/Tech_func_descr/content_sign.rst:48
+msgid "Смешанный запрос"
+msgstr "Mixed Request"
 
-#: ../../general/Tech_func_descr/content_sign.rst:46
+#: ../../general/Tech_func_descr/content_sign.rst:50
+msgid ""
+"Также возможен смешанный запрос, где для одних элементов списка "
+"передаётся объект с **contentAtt**, а для других — recordRef в старом "
+"формате:"
+msgstr ""
+"A mixed request is also possible, where an object with **contentAtt** is "
+"passed for some list items, and recordRef in the old format for others:"
+
+#: ../../general/Tech_func_descr/content_sign.rst:59
 msgid ""
 "В таком случае для первого документа будет подписан контент из атрибута "
 "**contentCustom**, для второго — контент из атрибута **content** (при "
 "наличии)."
 msgstr ""
-"In this case, for the first document the content from the **contentCustom** "
-"attribute will be signed, and for the second — the content from the "
-"**content** attribute (if present)."
+"In this case, for the first document the content from the "
+"**contentCustom** attribute will be signed, and for the second — the "
+"content from the **content** attribute (if present)."
+
+#~ msgid "Подписание конкретного контента:"
+#~ msgstr "Signing specific content:"
+
+#~ msgid "Старый формат также поддерживается. Пример:"
+#~ msgstr "The old format is also supported. Example:"
+
+#~ msgid "Также возможен смешанный запрос, например:"
+#~ msgstr "A mixed request is also possible, for example:"
+

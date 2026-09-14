@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../introduction/functions/doc_templates.rst:2
+#: ../../introduction/functions/doc_templates.rst:4
 msgid "Шаблоны документов"
 msgstr "Document Templates"
 
@@ -45,10 +45,10 @@ msgstr ""
 " etc.) based on pre-prepared templates and data from record cards. The "
 "template is described in `Freemarker "
 "<https://freemarker.apache.org/docs/dgui_template.html>`_ format and "
-"contains variables that are substituted from card fields during generation"
-" according to the configured mapping model. This allows automatically "
-"generating contracts, acts, letters, and other documents without manual "
-"data copying."
+"contains variables that are substituted from card fields during "
+"generation according to the configured mapping model. This allows "
+"automatically generating contracts, acts, letters, and other documents "
+"without manual data copying."
 
 #: ../../introduction/functions/doc_templates.rst:15
 msgid ""
@@ -265,38 +265,49 @@ msgstr ""
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../introduction/functions/doc_templates.rst:89
-msgid "вывод переменной:"
-msgstr "variable output:"
+#: ../../introduction/functions/doc_templates.rst:94
+msgid "Конструкция"
+msgstr "Construct"
 
-#: ../../introduction/functions/doc_templates.rst:91
+#: ../../introduction/functions/doc_templates.rst:95
+msgid "Пример"
+msgstr "Example"
+
+#: ../../introduction/functions/doc_templates.rst:96
+msgid "Вывод переменной"
+msgstr "Variable output"
+
+#: ../../introduction/functions/doc_templates.rst:97
 #, python-brace-format
 msgid "``${contract}``"
 msgstr "``${contract}``"
 
-#: ../../introduction/functions/doc_templates.rst:93
+#: ../../introduction/functions/doc_templates.rst
 msgid ""
-"вывод переменных с проверкой на null - если возвращаемое значение «пусто»"
-" (null) - выводится то, что указано между ``\" \"``.  В данном случае "
-"пустое поле, которое можно заполнить вручную позднее:"
+"Вывод переменной с проверкой на null — если возвращаемое значение «пусто»"
+" (null), выводится то, что указано между ``\" \"``."
 msgstr ""
-"output of variables with null check - if the returned value is \"empty\" "
-"(null) - what is specified between ``\" \"`` is displayed. In this case, "
-"an empty field that can be filled in manually later:"
+"Variable output with a null check — if the returned value is \"empty\" "
+"(null), what is specified between ``\" \"`` is displayed."
 
-#: ../../introduction/functions/doc_templates.rst:95
+#: ../../introduction/functions/doc_templates.rst
+msgid "В данном случае — пустое поле, которое можно заполнить вручную позднее"
+msgstr ""
+"In this case — an empty field that can be filled in manually later"
+
+#: ../../introduction/functions/doc_templates.rst:100
 msgid "``${counterpartyInn!\"\"}``"
 msgstr "``${counterpartyInn!\"\"}``"
 
-#: ../../introduction/functions/doc_templates.rst:97
+#: ../../introduction/functions/doc_templates.rst:101
 msgid ""
-"конструкция «если, то .., иначе» - если Вид контрагента - ИП, то "
-"выводится ОГРНИП, если ЮЛ - то ОГРН:"
+"Конструкция «если, то ..., иначе» — если вид контрагента ИП, выводится "
+"ОГРНИП, если ЮЛ — ОГРН"
 msgstr ""
-"\"if, then .., else\" construct - if Counterparty Type is Individual "
-"Entrepreneur, then OGRNIP is displayed, if Legal Entity - then OGRN:"
+"\"If, then ..., else\" construct — if the counterparty type is Individual"
+" Entrepreneur, OGRNIP is displayed, if Legal Entity — OGRN"
 
-#: ../../introduction/functions/doc_templates.rst:99
+#: ../../introduction/functions/doc_templates.rst:102
 msgid ""
 "``[#if counterpartyKind == \"individualEntrepreneur\"]ОГРНИП: "
 "${psrnsp}[#else] ОГРН: ${counterpartyOgrn!\"\"}[/#if]``"
@@ -304,23 +315,23 @@ msgstr ""
 "``[#if counterpartyKind == \"individualEntrepreneur\"]OGRNIP: "
 "${psrnsp}[#else] OGRN: ${counterpartyOgrn!\"\"}[/#if]``"
 
-#: ../../introduction/functions/doc_templates.rst:101
-msgid "системный атрибут дата в формате дд.мм.гггг:"
-msgstr "system attribute date in dd.mm.yyyy format:"
-
 #: ../../introduction/functions/doc_templates.rst:103
+msgid "Системный атрибут «дата» в формате дд.мм.гггг"
+msgstr "System attribute \"date\" in dd.mm.yyyy format"
+
+#: ../../introduction/functions/doc_templates.rst:104
 msgid "``date | fmt(\"dd.MM.yyyy\")``"
 msgstr "``date | fmt(\"dd.MM.yyyy\")``"
 
 #: ../../introduction/functions/doc_templates.rst:105
-msgid "заголовок документа :ref:`системный атрибут<system_attributes>` :"
-msgstr "document title :ref:`system attribute<system_attributes>` :"
+msgid "Заголовок документа — :ref:`системный атрибут<system_attributes>`"
+msgstr "Document title — :ref:`system attribute<system_attributes>`"
 
-#: ../../introduction/functions/doc_templates.rst:107
+#: ../../introduction/functions/doc_templates.rst:106
 msgid "``.disp``"
 msgstr "``.disp``"
 
-#: ../../introduction/functions/doc_templates.rst:126
+#: ../../introduction/functions/doc_templates.rst:123
 msgid ""
 "Добавьте шаблон в zip архив и прикрепите его в карточку шаблона "
 "документа. См. выше."
@@ -328,17 +339,17 @@ msgstr ""
 "Add the template to a zip archive and attach it in the document template "
 "card. See above."
 
-#: ../../introduction/functions/doc_templates.rst:129
+#: ../../introduction/functions/doc_templates.rst:126
 msgid "Настройка генерации контента из шаблона"
 msgstr "Setting up content generation from template"
 
-#: ../../introduction/functions/doc_templates.rst:131
+#: ../../introduction/functions/doc_templates.rst:128
 msgid "Для автоматической генерации контента из шаблона в типе данных необходимо:"
 msgstr ""
 "For automatic content generation from a template in the data type, it is "
 "necessary to:"
 
-#: ../../introduction/functions/doc_templates.rst:133
+#: ../../introduction/functions/doc_templates.rst:130
 msgid ""
 "В тип данных добавить :ref:`аспект <aspects_user>` **Шаблонизируемый "
 "контент**"
@@ -346,19 +357,19 @@ msgstr ""
 "Add the :ref:`aspect <aspects_user>` **Templated Content** to the data "
 "type"
 
-#: ../../introduction/functions/doc_templates.rst:139
+#: ../../introduction/functions/doc_templates.rst:136
 msgid "В конфигурации аспекта выбрать шаблон:"
 msgstr "Select a template in the aspect configuration:"
 
-#: ../../introduction/functions/doc_templates.rst:145
+#: ../../introduction/functions/doc_templates.rst:142
 msgid "Далее на форме необходимо добавить элемент **чекбокс**:"
 msgstr "Next, add a **checkbox** element to the form:"
 
-#: ../../introduction/functions/doc_templates.rst:151
+#: ../../introduction/functions/doc_templates.rst:148
 msgid "В **Имя свойства** укажите **templated-content:autoGenerate**."
 msgstr "In **Property Name**, specify **templated-content:autoGenerate**."
 
-#: ../../introduction/functions/doc_templates.rst:153
+#: ../../introduction/functions/doc_templates.rst:150
 msgid ""
 "При заполнении полей карточки при выставленном чекбоксе по данным формы "
 "будет заполняться шаблон."
@@ -366,23 +377,23 @@ msgstr ""
 "When filling in the card fields with the checkbox checked, the template "
 "will be filled based on the form data."
 
-#: ../../introduction/functions/doc_templates.rst:156
+#: ../../introduction/functions/doc_templates.rst:153
 msgid "Действие сгенерировать и скачать документ"
 msgstr "Action to generate and download document"
 
-#: ../../introduction/functions/doc_templates.rst:158
+#: ../../introduction/functions/doc_templates.rst:155
 msgid "Далее настройте :ref:`действие<download_by_template>`"
 msgstr "Next, configure the :ref:`action<download_by_template>`"
 
-#: ../../introduction/functions/doc_templates.rst:162
+#: ../../introduction/functions/doc_templates.rst:159
 msgid "См. больше :ref:`о миросервисе трансформации<transformation>`"
 msgstr "See more :ref:`about the transformation microservice<transformation>`"
 
-#: ../../introduction/functions/doc_templates.rst:165
+#: ../../introduction/functions/doc_templates.rst:162
 msgid "Пример использования"
 msgstr "Usage example"
 
-#: ../../introduction/functions/doc_templates.rst:167
+#: ../../introduction/functions/doc_templates.rst:164
 msgid ""
 "В модуле :ref:`Договоры<ecos-contract>` при выставленном чекбоксе "
 "**«Сгенерировать из шаблона»**:"
@@ -390,13 +401,13 @@ msgstr ""
 "In the :ref:`Contracts<ecos-contract>` module with the **\"Generate from "
 "template\"** checkbox checked:"
 
-#: ../../introduction/functions/doc_templates.rst:173
+#: ../../introduction/functions/doc_templates.rst:170
 msgid "файл-вложение будет сгенерирован по шаблону на основании введенных данных:"
 msgstr ""
 "the attachment file will be generated from the template based on the "
 "entered data:"
 
-#: ../../introduction/functions/doc_templates.rst:179
+#: ../../introduction/functions/doc_templates.rst:176
 msgid "Также файл будет доступен для предпросмотра:"
 msgstr "The file will also be available for preview:"
 

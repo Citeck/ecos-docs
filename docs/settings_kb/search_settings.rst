@@ -80,10 +80,10 @@
 
       .. image:: _static/search/search_03.png
              :width: 300
-             :align: left
+             :align: center
 
    .. grid-item::
 
       .. image:: _static/search/search_04.png
              :width: 700
-             :align: left
+             :align: center

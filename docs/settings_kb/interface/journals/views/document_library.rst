@@ -140,14 +140,14 @@
          .. grid-item::
 
             .. image:: _static/doclib/validation_name_01.png
-               :width: 500
-               :align: left
+               :width: 300
+               :align: center
 
          .. grid-item::
 
             .. image:: _static/doclib/validation_name_02.png
-               :width: 500
-               :align: left
+               :width: 300
+               :align: center
 
       Вы также можете загрузить целую папку вместе с файлами внутри неё.
 

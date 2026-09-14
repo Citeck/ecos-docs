@@ -25,7 +25,7 @@
 Далее установите плагин в IDEA: **Settings -> Plugins -> Install Plugin from disk**
 
 .. image:: _static/idea_plugin/install_disk.png
-    :width: 500
+    :width: 600
     :align: center
 
 Обновление плагина
@@ -147,7 +147,7 @@
          .. grid-item::
 
             .. image:: _static/idea_plugin/deploy_b.png
-               :width: 200
+               :width: 250
                :align: left
 
    2. Откройте артефакт (например, форму) по кнопке **Open In Browser** в no-code редакторе на стенде или локально, отредактируйте:
@@ -185,13 +185,13 @@ JSON-схемы для артефактов
    .. grid-item::
 
       .. image:: _static/idea_plugin/scheme_01.png
-         :width: 500
+         :width: 600
          :align: left
 
    .. grid-item::
 
       .. image:: _static/idea_plugin/scheme_02.png
-         :width: 500
+         :width: 600
          :align: left
 
 
@@ -211,7 +211,7 @@ JSON-схемы для артефактов
 Навигация в коде по артефактам Citeck через гиперссылки:
 
 .. image:: _static/idea_plugin/10.png
-    :width: 400
+    :width: 300
     :align: center
 
 
@@ -394,7 +394,7 @@ Language Injection (JavaScript) в формах
 
 2. Сборка осуществляется **Gradle** задачей **buildPlugin**.
 
-3. Собранный дистрибутив будет расположен по следующему пути: **build/distributions/**
+3. Собранный дистрибутив будет расположен по следующему пути: ``build/distributions/``
 
 Разработка
 -----------

@@ -7,17 +7,14 @@
 
 Документация сервисов:
 
-`https://api-docs.diadoc.ru/ru/latest/  <https://api-docs.diadoc.ru/ru/latest/>`_
-
-`API EDI.Контур documentation <https://edi-api-documentation.readthedocs.io/en/latest/>`_
+    - `https://api-docs.diadoc.ru/ru/latest/  <https://api-docs.diadoc.ru/ru/latest/>`_
+    - `API EDI.Контур documentation <https://edi-api-documentation.readthedocs.io/en/latest/>`_
 
 Ссылки на веб-морды для работы сервисов:
 
-`Вход в систему <https://diadoc.kontur.ru/>`_
-
-`Тестовый Контур.EDI <https://test-edi.kontur.ru/SelectParty>`_
-
-`Контур.EDI <https://edi.kontur.ru/SelectParty>`_
+    - `Вход в систему <https://diadoc.kontur.ru/>`_
+    - `Тестовый Контур.EDI <https://test-edi.kontur.ru/SelectParty>`_
+    - `Контур.EDI <https://edi.kontur.ru/SelectParty>`_
 
 Интеграция с одним или с другим сервисов происходит раздельно. То есть, для интеграции с каждым сервисом необходимо создавать отдельные синхронизации. 
 
