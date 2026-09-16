@@ -81,19 +81,25 @@
       :link: camel_dsl_components
       :link-type: ref
 
-      Camel-компоненты для подключения маршрутов к внешним системам, включая EcosRecordsSync.
+      Сводный список Camel-компонентов Citeck: ключ, роль и назначение каждого.
 
    .. grid-item-card:: Конечные точки
       :link: endpoints_dsl
       :link-type: ref
 
-      FileFromCamelDslEndpoint, EcosRecordsSyncConsumer, EcosRecordsMutateEndpoint и другие endpoint-ы.
+      Подробное описание endpoint-ов: URI, параметры, входные и выходные данные.
 
    .. grid-item-card:: Процессоры
       :link: camel_dsl_processors
       :link-type: ref
 
       Обработка CSV/Excel-данных, сопоставление ассоциаций и другие процессоры Camel DSL.
+
+   .. grid-item-card:: Импорт из Jira и GitLab
+      :link: camel_dsl_external_import
+      :link-type: ref
+
+      Компоненты для переноса задач, комментариев, вложений, спринтов и связанных коммитов.
 
    .. grid-item-card:: Библиотека ecos-camel-core
       :link: ecos-camel-core
@@ -124,6 +130,7 @@
     Camel_DSL/components
     Camel_DSL/endpoints
     Camel_DSL/processors
+    Camel_DSL/external_import
     Camel_DSL/ecos-camel-core
     Camel_DSL/examples
 

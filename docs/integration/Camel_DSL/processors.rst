@@ -10,6 +10,47 @@
 
 Подробнее - https://camel.apache.org/manual/processor.html
 
+Процессор подключается к маршруту объявлением бина и шагом ``process``:
+
+.. code-block:: yaml
+
+   - beans:
+       - name: myProcessor
+         type: ru.citeck.ecos.camel.processor.data.ReverseArrayProcessor
+         properties:
+           someProperty: someValue
+   - route:
+       from:
+         uri: .....
+         steps:
+           - process:
+               ref: myProcessor
+
+.. _camel_dsl_processors_binding:
+
+Ограничения привязки свойств из yaml
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Не всякое свойство можно задать вложенной структурой yaml. Ограничения и принятые обходные пути:
+
+.. list-table::
+      :widths: 10 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Что нужно задать
+        - Как это делается
+      * - Список значений
+        - | Строкой через запятую: ``rejectedFirstBytes: "<,{"``.
+          | Вложенная последовательность yaml не привязывается — загрузка маршрута завершается ошибкой *Unsupported type: SEQUENCE*.
+      * - Список, элементы которого сами содержат запятую (например, регулярные выражения)
+        - Строкой через точку с запятой: ``maskPatterns: "/rest/([0-9]+)/;token=([^&]+)"``.
+      * - Упорядоченный набор пар «имя — значение»
+        - | Строкой пар: ``fields: "a=header.A,b=header.B"``.
+          | Вложенная карта привязывается плоскими ключами ``fields.<имя>`` и сортируется по имени, поэтому объявленный порядок молча теряется. Для процессоров, где порядок важен (подпись формы), это критично.
+      * - Карта, порядок ключей которой не важен
+        - Вложенной картой yaml, как у ``attributes`` в ``GetRecordAttsProcessor``.
+
 .. _CsvToListOfDataProcessor:
 
 CsvToListOfDataProcessor
@@ -79,6 +120,8 @@ ExcelToListOfDataProcessor
         - Название листа Excel. По умолчанию используется первый лист
       * - tableStartCellReference
         - Ссылка на начальную ячейку таблицы (откуда начинается строка с заголовками). По умолчанию "A1"
+      * - lastDataRowNumber
+        - Номер последней строки с данными в нумерации Excel (начиная с 1). По умолчанию -1 — читать до последней заполненной строки листа.
       * - customAttNames
         - Ассоциативный массив пользовательских имен атрибутов, где ключ - буква столбца (например, "A"), а значение - желаемое имя атрибута.
 
@@ -391,3 +434,530 @@ CreateEcosHistoryDocumentMirrorProcessor
                 documentMirrorRefIdPrefix: 'emodel/route-template-code@'
           - process:
               ref: createHistoryDocumentMirror
+.. _GetRecordAttsProcessor:
+
+GetRecordAttsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.GetRecordAttsProcessor``
+
+Загружает заданный набор атрибутов записи, ссылка на которую лежит в теле сообщения, и заменяет тело картой атрибутов. Загрузка выполняется от имени системы.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Обязательность
+        - Описание
+      * - attributes
+        - Map<String, String>
+        - Да
+        - Вложенная карта «псевдоним — схема атрибута». Порядок ключей значения не имеет
+
+**Вход:** тело — ссылка на запись (**EntityRef** или строка, приводимая к ней).
+
+**Выход:** тело заменяется картой загруженных атрибутов.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: getAtts
+         type: ru.citeck.ecos.camel.processor.GetRecordAttsProcessor
+         properties:
+           attributes:
+             name: _name
+             created: _created
+
+.. _EcosContentReadProcessor:
+
+EcosContentReadProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.reader.EcosContentReadProcessor``
+
+Читает содержимое записи и кладет его в тело сообщения, чтобы передать дальше по маршруту. Чтение выполняется от имени системы.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - contentAttribute
+        - String
+        - _content
+        - Атрибут записи, из которого читается содержимое
+      * - outputType
+        - BYTE_ARRAY | STRING | BASE64
+        - BYTE_ARRAY
+        - | В каком виде содержимое попадет в тело: массив байт, текст или строка base64.
+          | Значение разбирается с учетом регистра, неизвестное значение отклоняется при загрузке маршрута
+
+**Вход:** тело — ссылка на запись.
+
+**Ошибки на сообщении:** пустое тело, некорректная ссылка или отсутствующее содержимое.
+
+.. _ListOfDataToCsvProcessor:
+
+ListOfDataToCsvProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.writer.ListOfDataToCsvProcessor``
+
+Собирает CSV из списка записей — обратная операция к :ref:`CsvToListOfDataProcessor <CsvToListOfDataProcessor>`. Типичный вход — результат ``ecos-records-query`` или ``ecos-records-sync-consumer``.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - columns
+        - String
+        -
+        - | Колонки строкой через запятую: ``key`` либо ``key:Заголовок``.
+          | Если не задано, колонки берутся из ключей первой записи
+      * - delimiter
+        - String
+        - ,
+        - Разделитель, ровно один символ
+      * - withHeader
+        - Boolean
+        - true
+        - Записывать ли строку заголовков
+      * - recordSeparator
+        - String
+        - \\r\\n
+        - Разделитель строк
+      * - quoteMode
+        - MINIMAL | ALL | NON_NUMERIC | NONE
+        - MINIMAL
+        - Режим экранирования кавычками
+      * - escape
+        - String
+        -
+        - | Символ экранирования, ровно один символ.
+          | При ``quoteMode: NONE`` и незаданном значении используется ``\\``
+
+**Вход:** тело — коллекция записей. Строка, не являющаяся объектом, отклоняется с указанием ее номера.
+
+**Выход:** тело заменяется строкой CSV.
+
+.. _MappingProcessor:
+
+MappingProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.MappingProcessor``
+
+Переименовывает ключи атрибутов и подменяет их значения — например, чтобы привести данные внешней системы к именам и значениям, принятым в ECOS.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - keysMapping
+        - Map<String, String>
+        - {}
+        - Карта «старый ключ — новый ключ». Значение переносится, старый ключ удаляется
+      * - valuesMapping
+        - Map<String, Map>
+        - {}
+        - | Карта «атрибут — карта соответствия значений».
+          | Ключ ``*`` — значение по умолчанию для всех значений, не перечисленных явно
+
+**Вход и выход:** тело — объект, коллекция объектов или массив **DataValue**; обрабатывается каждый элемент. Значения ``null`` проходят без изменений.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: mapping
+         type: ru.citeck.ecos.camel.processor.data.MappingProcessor
+         properties:
+           keysMapping:
+             ID: id
+             NAME: _name
+           valuesMapping:
+             status:
+               NEW: draft
+               "*": unknown
+
+.. _JsonPatchOperationsProcessor:
+
+JsonPatchOperationsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.JsonPatchOperationsProcessor``
+
+Применяет к каждому элементу тела последовательность операций правки JSON, позволяя менять структуру данных настройкой, а не скриптом.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - operations
+        - List
+        - []
+        - | Последовательность операций. У каждой обязательно поле ``op``:
+          | ``add`` — ``path``, ``value``, необязательный ``idx``;
+          | ``remove`` — ``path``;
+          | ``rename-key`` — ``path``, ``oldKey``, ``newKey``;
+          | ``set`` — ``path``, ``value``, необязательный ``key``.
+          | Неизвестное значение ``op`` отклоняется при загрузке маршрута
+
+**Заголовок на входе:** ``JsonPatchOperations`` — дополнительные операции того же вида для одного сообщения; применяются после настроенных, после чтения заголовок удаляется из сообщения.
+
+.. _StringValuesOperationsProcessor:
+
+StringValuesOperationsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.StringValuesOperationsProcessor``
+
+Применяет цепочку строковых преобразований ко всем текстовым значениям в теле сообщения.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - operations
+        - List
+        - []
+        - | Последовательность операций, у каждой поле ``op``: ``replace`` и ``replaceFirst`` (``substring`` либо ``substringRegex`` и ``replacement``), ``trim``, ``uppercase``, ``lowercase``, ``substringBefore``, ``substringAfter``, ``substringAfterLast`` (``delimiter``, необязательный ``missingDelimiterValue``).
+          | Неизвестное значение ``op`` отклоняется при загрузке маршрута
+      * - matchRegex
+        - String
+        -
+        - Обрабатываются только значения, целиком совпадающие с этим выражением. Если не задано, обрабатываются все
+      * - maxDepth
+        - Int
+        - 2
+        - Глубина обхода вложенных объектов и массивов
+      * - excludePaths
+        - List<String>
+        - []
+        - Пути атрибутов через точку, которые пропускаются вместе с вложенными
+      * - includePaths
+        - List<String>
+        - []
+        - Если список не пуст, обрабатываются только эти пути и вложенные в них
+
+**Заголовок на входе:** ``StringValuesOperations`` — дополнительные операции для одного сообщения; после чтения заголовок удаляется.
+
+.. _MapAssocRefsProcessor:
+
+MapAssocRefsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.MapAssocRefsProcessor``
+
+Переписывает значения ассоциаций в ссылки на записи другого источника данных. Значения, для которых соответствия не нашлось, остаются как есть — ошибки не возникает.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - ecosTypeToSourceIdMapping
+        - Map<String, String>
+        - {}
+        - Карта «локальный идентификатор типа — целевой sourceId». Применяется, когда значение является объектом-ссылкой
+      * - sourceIdByKeyMapping
+        - Map<String, String>
+        - {}
+        - Карта «имя атрибута — целевой sourceId». Применяется, когда значение является строкой с локальным идентификатором
+      * - ecosTypeAttribute
+        - String
+        - _type
+        - Поле объекта-ссылки, в котором лежит тип
+      * - assocRefAttribute
+        - String
+        - ?localId
+        - Поле объекта-ссылки, в котором лежит локальный идентификатор
+
+.. _AuthorityNameToRefProcessor:
+
+AuthorityNameToRefProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.AuthorityNameToRefProcessor``
+
+Заменяет имена пользователей и групп в указанных атрибутах на ссылки на соответствующие записи. Неразрешенное имя остается без изменений.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - attributes
+        - List<String>
+        - []
+        - Атрибуты тела, значения которых являются именами пользователей или групп. Значение атрибута может быть строкой или массивом строк
+
+**Заголовок на входе:** ``AuthorityNameToRefAttributes`` — дополнительные имена атрибутов для одного сообщения, строкой через запятую или списком.
+
+.. _MutateInnerRecordsProcessor:
+
+MutateInnerRecordsProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.MutateInnerRecordsProcessor``
+
+Сохраняет вложенные записи, встроенные в тело под указанными атрибутами, и заменяет их ссылками на сохраненные записи. Применяется, когда вместе с основной записью приходят связанные с ней дочерние.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - sourceId
+        - String
+        -
+        - | Источник данных, в котором сохраняются вложенные записи.
+          | Значение можно переопределить заголовком ``MutateInnerRecordsSourceId``. Если оно не задано ни свойством, ни заголовком, обработка сообщения завершается ошибкой
+      * - assocAtts
+        - String либо List<String>
+        - []
+        - Атрибуты тела, в которых лежат вложенные записи. Строкой через запятую или списком
+
+**Заголовки на входе:** ``MutateInnerRecordsAssocAtts`` — дополнительные атрибуты; ``MutateInnerRecordsSourceId`` — источник данных для одного сообщения.
+
+.. _ReverseArrayProcessor:
+
+ReverseArrayProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.ReverseArrayProcessor``
+
+Меняет порядок элементов списка или массива в теле сообщения на обратный — например, чтобы перевернуть порядок результатов запроса. Свойств нет. Тело другого вида остается без изменений, ошибки не возникает.
+
+.. _PrepareToMutateProcessor:
+
+PrepareToMutateProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.importdata.processor.PrepareToMutateProcessor``
+
+Дополняет набор атрибутов записи перед сохранением: проставляет рабочее пространство и, если тип является делом (case), выставляет состояние ``draft``. Настраивается не свойствами, а заголовком сообщения.
+
+**Заголовок на входе:** ``PrepareToMutateProcessorConfig`` — объект с полями ``typeId`` (обязателен) и ``workspace`` (необязателен).
+
+**Ошибки на сообщении:** пустой ``typeId``; отсутствие в теле хотя бы одного ключа, похожего на идентификатор атрибута.
+
+.. _HmacSignatureProcessor:
+
+HmacSignatureProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.HmacSignatureProcessor``
+
+Вычисляет подпись по упорядоченному набору значений и записывает ее в заголовок или в поле тела — чтобы маршрут мог подписывать исходящие запросы настройкой, а не скриптом.
+
+Значения задаются ссылками: ``const.<литерал>``, ``header.<имя>``, ``variable.<имя>``, ``body.<поле>``, а также ``secret.username``, ``secret.password``, ``secret.token``.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - components
+        - String
+        -
+        - | Обязательно. Ссылки на значения строкой через запятую, в порядке склейки перед подписью
+      * - algorithm
+        - sha256 | hmac-sha256
+        - sha256
+        - Алгоритм подписи, регистр не важен
+      * - keyComponent
+        - String
+        -
+        - Ссылка на значение ключа. Обязательна при ``algorithm: hmac-sha256``, при ``sha256`` не используется
+      * - secretId
+        - String
+        -
+        - Идентификатор секрета. Обязателен, если хотя бы одна ссылка начинается с ``secret.``
+      * - signatureHeader
+        - String
+        -
+        - Заголовок, в который записывается подпись
+      * - signatureBodyField
+        - String
+        -
+        - Поле тела, в которое записывается подпись
+
+Должно быть задано ровно одно из ``signatureHeader`` и ``signatureBodyField``. Подпись записывается строкой шестнадцатеричных символов в нижнем регистре.
+
+Пример: ``ecos-camel-examples/hmac-signature``.
+
+.. _MaskedExceptionDescriberProcessor:
+
+MaskedExceptionDescriberProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.MaskedExceptionDescriberProcessor``
+
+Предназначен для обработчика ошибок маршрута. Описывает перехваченное исключение в переменные обмена, маскируя учетные данные, чтобы они не попали в журнал. Процессор никогда не бросает исключений: при отсутствии исключения он записывает значения по умолчанию, а не ломает обработчик ошибок.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - maskFields
+        - String
+        -
+        - | Имена полей строкой через запятую. Скрывается значение поля в трех формах: ``поле=значение``, ``"поле": "значение"`` и ``{поле=значение}``, а также в заголовке авторизации
+      * - maskPatterns
+        - String
+        -
+        - | Регулярные выражения строкой через точку с запятой (не через запятую: запятая встречается внутри выражений).
+          | Скрывается содержимое групп захвата, текст вокруг сохраняется; выражение без групп скрывается целиком
+      * - variablePrefix
+        - String
+        -
+        - Префикс имен переменных на выходе
+
+**Переменные на выходе** (без префикса; с префиксом ``mango`` имя становится ``mangoExceptionType`` и так далее):
+
+.. list-table::
+      :widths: 10 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Переменная
+        - Значение
+      * - exceptionType
+        - Имя класса исключения, либо ``UnknownError``, если исключения нет
+      * - maskedErrorMessage
+        - Сообщение исключения после маскировки, либо ``No message``
+      * - maskedStackTrace
+        - Стек вызовов после маскировки
+      * - isHttpException
+        - Признак того, что в цепочке причин найден отказ http
+      * - httpStatusCode
+        - Код ответа. Записывается только для отказа http
+      * - responseBody
+        - Тело ответа после маскировки. Записывается только для отказа http
+
+Пример: ``ecos-camel-examples/masked-exception-describer``.
+
+.. _BinaryBodyGuardProcessor:
+
+BinaryBodyGuardProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.BinaryBodyGuardProcessor``
+
+Проверяет, что полученное тело действительно является двоичным файлом, а не страницей ошибки в html или json, отданной с кодом 200. Результат записывается в переменные обмена, исключение не бросается — маршрут сам выбирает ветку по вердикту.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - maxSize
+        - Long
+        - 0
+        - | Предел размера тела в байтах, 0 — без ограничения.
+          | Если тело сообщает свой размер заранее (заголовок ``Content-Length``, длина ``StreamCache``), превышение определяется до чтения тела в память
+      * - rejectedContentTypes
+        - String
+        - text/,/json,+json,/xml,+xml,/html,+html
+        - | Подстроки ``Content-Type``, при которых тело отклоняется, строкой через запятую.
+          | Пустая строка отключает проверку
+      * - rejectedFirstBytes
+        - String
+        - <,{
+        - | Символы, с которых не может начинаться двоичный файл, строкой через запятую. Ведущие пробелы и BOM пропускаются.
+          | Пустая строка отключает проверку
+      * - variablePrefix
+        - String
+        - body
+        - Префикс имен переменных на выходе
+
+**Переменные на выходе** (при префиксе по умолчанию): ``bodyAccepted`` — признак того, что тело принято; ``bodyRejectReason`` — причина отказа, пустая строка при успехе; ``bodySize`` — размер тела, всегда **Long**.
+
+**Тело на выходе:** тело, которое читается один раз (``InputStream``, ``Reader``, ``StreamCache``), заменяется прочитанными байтами, чтобы следующий шаг маршрута получил данные, а не опустошенный поток. Отклоненное тело тоже остается байтами, чтобы маршрут смог записать в журнал страницу ошибки.
+
+Пример: ``ecos-camel-examples/binary-body-guard``.
+
+.. _FormUrlEncodedBodyProcessor:
+
+FormUrlEncodedBodyProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.FormUrlEncodedBodyProcessor``
+
+Собирает тело ``application/x-www-form-urlencoded`` из именованных значений обмена в заданном порядке и выставляет соответствующий заголовок ``Content-Type``.
+
+.. list-table::
+      :widths: 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Свойство
+        - Тип
+        - Значение по умолчанию
+        - Описание
+      * - fields
+        - String
+        -
+        - | Обязательно. Пары ``<имя>=<ссылка>`` строкой через запятую, в порядке отправки.
+          | Ссылки: ``const.<литерал>``, ``header.<имя>``, ``variable.<имя>``, ``body.<поле>``.
+          | Ссылки ``secret.*`` запрещены — значение передается заголовком из ``{{ecos-secret:...}}``
+
+.. warning::
+
+  Свойство ``fields`` задается именно строкой. Вложенная карта привязывается плоскими ключами ``fields.<имя>``, которые сортируются по имени, поэтому объявленный порядок полей молча теряется — а провайдер, подписывающий форму, ожидает документированный порядок.
+
+**Выход:** тело заменяется строкой вида ``имя=значение&имя2=значение2`` в кодировке UTF-8; заголовок ``Content-Type`` выставляется в ``application/x-www-form-urlencoded``. Значения всех полей вычисляются до замены тела, поэтому несколько ссылок ``body.*`` читают исходное тело.
+
+Пример: ``ecos-camel-examples/form-urlencoded-body``.

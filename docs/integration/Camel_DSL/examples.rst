@@ -82,7 +82,7 @@
 
 В данном примере будет показан роут с использованием следующих camel-элементов:
 
-- :ref:`FileFromCamelDslEndpoint <FileFromCamelDslEndpoint>`
+- :ref:`FileFromCamelDslEndpoint <camel_file_from_camel_dsl>`
 
 - :ref:`ExcelToListOfDataProcessor <ExcelToListOfDataProcessor>`
 
@@ -404,3 +404,34 @@
    При сабмите формы импорта, создается отдельный instance Camel контекста, который был указан в варианте. Состояние инстанса можно отследить в журнале :ref:`Camel DSL Instance <camel_instance>` ``v2/journals?journalId=ecos-camel-dsl&viewMode=table&ws=admin$workspace``
 
    **3)**	Добавить в необходимый тип данных :ref:`аспект import-data-config (Импорт данных) <import-data-config_aspect>` и настроить вариант, указав Camel DSL созданный на предыдущем пункте.
+
+.. _camel_dsl_repo_examples:
+
+Готовые примеры маршрутов в репозитории ecos-camel
+--------------------------------------------------------
+
+В проекте ``ecos-camel`` есть каталог ``ecos-camel-examples`` с готовыми маршрутами на YAML. Эти примеры покрыты тестами, которые загружают и выполняют сами файлы примеров, поэтому пример не может разойтись с процессором, который он демонстрирует.
+
+.. list-table::
+   :widths: 10 25
+   :header-rows: 1
+   :class: tight-table
+
+   * - Каталог
+     - Что показывает
+   * - ``masked-exception-describer``
+     - :ref:`MaskedExceptionDescriberProcessor <MaskedExceptionDescriberProcessor>` в обработчике ошибок: два случая — учетные данные в теле формы и токен в пути url
+   * - ``binary-body-guard``
+     - :ref:`BinaryBodyGuardProcessor <BinaryBodyGuardProcessor>` при скачивании файла: ветвление маршрута по вердикту проверки
+   * - ``form-urlencoded-body``
+     - :ref:`HmacSignatureProcessor <HmacSignatureProcessor>` подписывает запрос, затем :ref:`FormUrlEncodedBodyProcessor <FormUrlEncodedBodyProcessor>` собирает тело формы
+   * - ``hmac-signature``
+     - Подпись исходящего запроса
+   * - ``ftp``
+     - Выгрузка записей в CSV и отправка на SFTP: ``ecos-records-sync-consumer`` → :ref:`ListOfDataToCsvProcessor <ListOfDataToCsvProcessor>` → :ref:`ecos-ftp <EcosFtpEndpoint>`
+   * - ``jira``
+     - Импорт задач из Jira
+
+.. note::
+
+  В примерах вызов внешнего провайдера заменен на ``throwException`` либо на тело, подаваемое вызывающей стороной, — чтобы пример можно было выполнить в тесте. Строка с настоящим ``to:`` оставлена рядом в комментарии.
