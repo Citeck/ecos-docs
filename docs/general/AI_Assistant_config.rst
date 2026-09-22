@@ -63,6 +63,12 @@ Spring-профили
   * - ``ai-yandex-gpt-oss``
     - Yandex Cloud (``gpt-oss-120b``) для всех ассистентов
     - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
+  * - ``ai-deepseek``
+    - Собственный API DeepSeek (``api.deepseek.com``), модель ``deepseek-flash`` (DeepSeek-V4.1-Flash, мультимодальная — работает и с изображениями). Профиль включает ``citeck.ai.agents.pin-to-base-model``, поэтому модели, записанные в самих агентах, игнорируются: пути вида ``gpt://<каталог>/…`` за пределами Yandex Cloud отвечают 404
+    - ``CTK_DEEPSEEK_API_KEY``
+  * - ``ai-yandex-deepseek``
+    - Yandex Cloud как провайдер, модель DeepSeek внутри него
+    - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
 
 Подключение в Citeck Launcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -161,7 +167,7 @@ Citeck AI Ассистент поддерживает работу с разли
 
 - **openai** - GPT-модели (gpt-5.1 и др.)
 - **anthropic** - Claude модели (claude-opus-4-5 и др.)
-- **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)
+- **deepseek** - модели DeepSeek (``deepseek-flash`` — DeepSeek-V4.1-Flash, мультимодальная)
 - **ollama** - локальные модели (granite3.3, llama3, mistral)
 
 Выбор провайдера по умолчанию
@@ -263,6 +269,17 @@ Citeck AI Ассистент поддерживает работу с разли
     * ``citeck.ai.model-capabilities`` - таблица возможностей моделей (какие модели мультимодальны и читают PDF нативно); дополняется шаблонами ``patterns`` и точечными ``overrides``
     * ``citeck.ai.rag`` - семантический поиск (:ref:`настройка RAG <rag-config>`)
     * ``citeck.ai.call-recording`` - :ref:`запись и резюме совещаний <call-recording-module>`
+    * ``citeck.ai.artifacts.workspace-creatable`` - виды артефактов, которые разрешено создавать внутри рабочего пространства. Список поддерживается вручную и является единственным источником правды об области создания
+    * ``citeck.ai.agent-execution`` - ограничения конвейера: ``max-steps``, ``max-retries-per-step``, ``max-retries-search-analyze``, ``max-wall-time``, ``request-timeout``, ``parallel-steps`` (см. :ref:`архитектуру агентов <ai-architecture>`)
+    * ``citeck.ai.deepseek.thinking`` - режим рассуждений на собственном API DeepSeek, где модель рассуждает по умолчанию и провайдер не даёт это отключить штатными средствами: ``endpoint-default`` (ничего не менять), ``light-off`` (поставляемое значение — рассуждения отключены только для лёгких генераций), ``disabled`` (для всех вызовов)
+    * ``citeck.ai.agents.pin-to-base-model`` - игнорировать модель, записанную в самих агентах, и выполнять всех агентов на базовой модели профиля (по умолчанию ``false``)
+
+.. warning::
+
+   Два значения проверяются при старте, и неверное значение НЕ ДАЁТ приложению запуститься:
+
+   * пустой список или неизвестный вид артефакта в ``citeck.ai.artifacts.workspace-creatable``;
+   * ``citeck.ai.agent-execution.request-timeout`` меньше ``max-wall-time``.
 
 .. _ai-agent-models:
 
@@ -392,7 +409,7 @@ Citeck AI Ассистент поддерживает работу с разли
                     model: gpt-5.1
                 intent-detection:
                     provider: deepseek       # DeepSeek для быстрой классификации
-                    model: deepseek-chat
+                    model: deepseek-flash
 
 .. note::
 
@@ -473,10 +490,10 @@ Citeck AI Ассистент поддерживает работу с разли
                  default:
                      provider: deepseek
                  base:
-                     model: deepseek-chat
+                     model: deepseek-flash
                  assistants:
                      bpmn:
-                         model: deepseek-coder
+                         model: deepseek-flash
 
    .. tab-item:: Yandex Cloud (через OpenAI-совместимый API)
 
