@@ -134,6 +134,8 @@ REST API
         language: ru
         enable-diarization: false
       session:
+        # Предел применяется: сессия, превысившая его, завершается так же, как по команде
+        # завершения, а фрагмент, пришедший после этого, получает ошибку 408
         max-duration-minutes: 180
         chunk-size-seconds: 30
       summary:
@@ -162,7 +164,11 @@ REST API
 Citeck-артефакты
 -----------------
 
-Модуль добавляет аспект ``recording-aspect`` с атрибутами ``recording`` (аудиофайл), ``transcription``, ``transcriptionDiarized``, ``summary``, ``recordingDuration``, ``recordingStatus``, ``callPlatform``, ``meetingUrl``. Аспект подключается к типам ``meeting-activity`` и ``call-activity`` через artifact-patch.
+Модуль работает с аспектом ``recording-aspect`` (атрибуты ``recording`` — аудиофайл, ``transcription``, ``transcriptionDiarized``, ``summary``, ``recordingDuration``, ``recordingStatus``, ``callPlatform``, ``meetingUrl``), подключённым к типам ``meeting-activity`` и ``call-activity``.
+
+.. note::
+
+   Сам аспект и его подключение к типам активностей поставляются **сервисом ``ecos-model``**, а не ``citeck-ai``. Раньше аспект и два патча артефактов шли в составе ``citeck-ai``; при обновлении ранее поставленные записи патчей выключаются разово и автоматически, вмешательство администратора не требуется.
 
 .. list-table::
    :header-rows: 1
