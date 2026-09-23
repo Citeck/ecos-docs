@@ -58,16 +58,18 @@ Spring-профили
     - Описание
     - Обязательные env
   * - ``ai-default``
-    - **Рекомендуемый.** Yandex Cloud как единственный провайдер; модель ``deepseek-v4-flash`` используется для всех задач, включая генерацию BPMN. Стенд не зависит от второго провайдера и его баланса.
+    - | **Рекомендуемый.** Yandex Cloud как единственный провайдер; модель ``deepseek-v4-flash`` используется для всех задач, включая генерацию BPMN. 
+      | Стенд не зависит от второго провайдера и его баланса.
     - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
   * - ``ai-yandex-gpt-oss``
     - Yandex Cloud (``gpt-oss-120b``) для всех ассистентов
     - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
   * - ``ai-deepseek``
-    - Собственный API DeepSeek (``api.deepseek.com``), модель ``deepseek-flash`` (DeepSeek-V4.1-Flash, мультимодальная — работает и с изображениями). Профиль включает ``citeck.ai.agents.pin-to-base-model``, поэтому модели, записанные в самих агентах, игнорируются: пути вида ``gpt://<каталог>/…`` за пределами Yandex Cloud отвечают 404
+    - | Собственный API DeepSeek (``api.deepseek.com``), модель ``deepseek-flash`` (DeepSeek-V4.1-Flash, мультимодальная — работает и с изображениями). 
+      | Профиль включает ``citeck.ai.agents.pin-to-base-model``, поэтому модели, записанные в самих агентах, игнорируются: пути вида ``gpt://<каталог>/…`` за пределами Yandex Cloud отвечают 404
     - ``CTK_DEEPSEEK_API_KEY``
   * - ``ai-yandex-deepseek``
-    - Yandex Cloud как провайдер, модель DeepSeek внутри него
+    - | Yandex Cloud как провайдер, модель DeepSeek внутри него
     - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
 
 Подключение в Citeck Launcher

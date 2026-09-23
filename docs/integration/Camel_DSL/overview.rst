@@ -38,6 +38,12 @@ Camel использует доменные языки (Domain Specific Language
    * - Jetty
      - Предоставляет endpoint на основе HTTP для получения и отправки HTTP запросов
 
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-camel-dsl&viewMode=table&ws=admin$workspace``
+
+.. image:: _static/camel_dsl.png
+   :width: 800
+   :align: center
+
 Пример контекста с маршрутом:
 
 .. image:: _static/Camel_1.png
