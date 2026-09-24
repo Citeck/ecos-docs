@@ -16,7 +16,8 @@
 
 - На **source** команды используют синтаксис ``docker compose`` (Compose v2, plugin). Если у вас установлен legacy ``docker-compose`` (v1) -- заменяйте ``docker compose`` на ``docker-compose`` в каждой команде.
 - Команды этапа 2 (выгрузка) и предусловий **выполняются из каталога** ``citeck-community`` (там, где лежит ``docker-compose.yaml``), иначе compose не найдёт сервисы.
-- На **target** launcher2 управляет контейнерами напрямую через Docker SDK (без compose) -- там используется ``docker exec`` с реальными именами контейнеров (``citeck_postgres_default``, ``citeck_mongo_default``, ``citeck_zookeeper_default``).
+- На **target** лаунчер управляет контейнерами напрямую через Docker SDK (без compose) -- там используется ``docker exec`` с реальными именами контейнеров (``citeck_postgres_default``, ``citeck_mongo_default``, ``citeck_zookeeper_default``; в серверном режиме имя всегда ``citeck_<приложение>_default``).
+- Файлы на **target** передаются в контейнеры через **каталог экспорта** ``/opt/citeck/data/runtime/default/export/<приложение>/`` (в контейнере -- ``/citeck/export``), а не через ``docker cp`` в ``/tmp`` контейнера (подробнее -- в шаге 4.1).
 
 Что мигрируется и что нет
 -------------------------
@@ -29,11 +30,11 @@
 
 **НЕ мигрируется** (то есть **выходит за рамки этой инструкции** -- технически данные ниже тоже можно перенести, если у кого-то такая задача возникнет, но пошаговую процедуру для них мы здесь не описываем):
 
-- БД ``keycloak`` -- на target создаётся самим launcher2. На source соответствующая БД называется ``ecos_identity`` (сервис ``ecos-identity-app`` в community -- это Keycloak старой версии).
-- Пользователи, роли, клиенты Keycloak источника (включая demo-аккаунт ``admin/admin``). Если они заводились вручную -- пересоздать после миграции. Admin на target использует пароль, сгенерированный launcher'ом при первом старте (показывается в визарде один раз; перевыпустить через ``citeck setup admin-password``).
+- БД ``keycloak`` -- на target создаётся самим лаунчером. На source соответствующая БД называется ``ecos_identity`` (сервис ``ecos-identity-app`` в community -- это Keycloak старой версии).
+- Пользователи, роли, клиенты Keycloak источника (включая demo-аккаунт ``admin/admin``). Если они заводились вручную -- пересоздать после миграции. Admin на target использует пароль, сгенерированный лаунчером при первом старте (показывается в визарде один раз; перевыпустить через ``citeck setup admin-password``).
 - RabbitMQ -- очереди и in-flight сообщения.
 - Volumes proxy/nginx -- логи, кеш сертификатов Let's Encrypt.
-- Секреты (JWT, OIDC client secret, admin password) -- launcher2 генерирует свои при первой установке.
+- Секреты (JWT, OIDC client secret, admin password) -- лаунчер генерирует свои при первой установке.
 
 Матрица совместимости
 ---------------------
@@ -56,7 +57,7 @@
       - ``mongodump --archive``
     * - Zookeeper
       - 3.8.2 (Bitnami)
-      - 3.9.4 (official)
+      - 3.9.5 (official)
       - копия ``version-2/`` из dataDir
     * - RabbitMQ
       - --
@@ -67,12 +68,14 @@
       - --
       - пропускаем
 
+Версии на target -- значения лаунчера по умолчанию для бандла ``2026.1``; фактические можно посмотреть командой ``docker ps``.
+
 PostgreSQL переезжает с мажорным скачком версии (12 → 17). Физическое копирование data-каталога (volume) не сработает -- нужен только логический dump.
 
 Mapping БД и пользователей
 --------------------------
 
-В launcher2 действует соглашение: ``имя_БД == имя_пользователя == пароль``. На target пароли пользовательских БД совпадают с именами этих БД.
+В лаунчере действует соглашение: ``имя_БД == имя_пользователя == пароль``. Для каждой БД (``citeck_emodel``, ``citeck_eapps`` и т. д.) создаётся роль с тем же именем и паролем, совпадающим с именем. Суперпользователь PostgreSQL -- ``postgres / postgres``.
 
 PostgreSQL
 ~~~~~~~~~~
@@ -124,9 +127,9 @@ PostgreSQL
 
 **Не мигрируются (на source игнорируем):**
 
-- ``ecos_gateway`` -- в launcher2 у gateway нет своей БД.
+- ``ecos_gateway`` -- в лаунчере у gateway нет своей БД.
 - ``ecos_identity`` -- это БД сервиса ``ecos-identity-app``, который в community-сетапе является Keycloak (просто более старой версии). Соответствует решению «БД ``keycloak`` не мигрируем» -- пользователи и роли источника при миграции теряются (см. «НЕ мигрируется» во вступлении).
-- ``keycloak`` -- на target создаёт сам launcher2.
+- ``keycloak`` -- на target создаёт сам лаунчер.
 
 MongoDB
 ~~~~~~~
@@ -156,7 +159,7 @@ Zookeeper
 
 - **Source (Bitnami)** хранит и снэпшоты, и transaction log в одном каталоге ``version-2/``.
 - **Target (official zookeeper)** разделяет: ``data/version-2/`` для снэпшотов и служебных файлов (``acceptedEpoch``, ``currentEpoch``), ``datalog/version-2/`` для transaction log. Если их не разделить, target падает с ``SnapDirContentCheckException``.
-- Хранилище в launcher2 -- это bind-mount каталог на хосте (не named docker volume). Точный путь можно подтвердить через ``docker inspect citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``.
+- Хранилище в лаунчере -- это bind-mount каталог на хосте (не named docker volume). Точный путь можно подтвердить через ``docker inspect citeck_zookeeper_default --format '{{range .Mounts}}{{.Source}} -> {{.Destination}}{{println}}{{end}}'`` -- нужна строка с ``/citeck/zookeeper``.
 
 Предусловия
 -----------
@@ -181,7 +184,7 @@ Zookeeper
 1. Source обновлён до релиза 2026.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Это снимает риск рассинхронизации schema/changelog при заливке в launcher2 (тоже 2026.1). В каталоге ``citeck-community``:
+Это снимает риск рассинхронизации schema/changelog при заливке в лаунчер (тоже 2026.1). В каталоге ``citeck-community``:
 
 .. code-block:: bash
 
@@ -197,26 +200,28 @@ Zookeeper
 2. Target подготовлен
 ~~~~~~~~~~~~~~~~~~~~~
 
-Установлен ``citeck-launcher`` версии ≥ 2.x, bundle ``community:2026.1`` или ``enterprise:2026.1`` (в зависимости от лицензии). Подробности первого запуска -- в этапе 1.
+Установлен ``citeck-launcher`` версии **не ниже 2.15.2** (каталог экспорта, через который дампы передаются в контейнеры, появился в 2.10.0; публикация порта БД только на ``127.0.0.1`` -- в 2.15.2), bundle ``community:2026.1`` или ``enterprise:2026.1`` (в зависимости от лицензии). Подробности первого запуска -- в этапе 1.
+
+Версию можно посмотреть командой ``citeck version``. Если лаунчер старее -- обновите его, повторно выполнив установочную команду из шага 1.1: скрипт определит установленную версию и предложит обновиться, запущенные контейнеры при этом продолжают работать. Команда ``citeck update`` лаунчер **не** обновляет -- она только подтягивает свежие описания workspace и бандлов.
 
 3. Свободное место
 ~~~~~~~~~~~~~~~~~~
 
 - На source: ≥ объём данных × 1.5 (для дампов).
-- На target: то же.
+- На target: то же, причём на разделе с ``/opt/citeck`` -- там лежат и данные PostgreSQL, и каталог экспорта, через который идёт restore (шаг 4.1).
 
 4. Доступ к docker
 ~~~~~~~~~~~~~~~~~~
 
 ``docker ps`` без sudo либо через sudo на обоих серверах.
 
-Этап 1. Подготовка target (launcher2)
--------------------------------------
+Этап 1. Подготовка target (лаунчер)
+-----------------------------------
 
-Цель этапа: получить запущенный один раз namespace, чтобы launcher создал инфраструктуру (контейнеры + docker volumes), завёл пустые БД с пользователями и сгенерировал секреты.
+Цель этапа: получить запущенный один раз namespace, чтобы лаунчер создал инфраструктуру (контейнеры и каталоги данных в ``/opt/citeck/data/runtime/default/``), завёл пустые БД с пользователями и сгенерировал секреты.
 
-1.1. Установить launcher
-~~~~~~~~~~~~~~~~~~~~~~~~
+1.1. Установить лаунчер
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Если ещё не установлен:
 
@@ -261,8 +266,8 @@ Zookeeper
 
 Искать вручную не нужно:
 
-- PostgreSQL: ``postgres / postgres`` (захардкожено в launcher2).
-- MongoDB: пароль root сгенерирован launcher'ом, читается через ``docker exec citeck_mongo_default printenv MONGO_INITDB_ROOT_PASSWORD``. Команды импорта в этапе 4 берут его именно так.
+- PostgreSQL: ``postgres / postgres`` (задано в лаунчере жёстко).
+- MongoDB: пароль root сгенерирован лаунчером, читается через ``docker exec citeck_mongo_default printenv MONGO_INITDB_ROOT_PASSWORD``. Команды импорта в этапе 4 берут его именно так.
 
 Этап 2. Выгрузка с source
 -------------------------
@@ -296,7 +301,7 @@ Zookeeper
 
 .. note::
 
-    **Если какая-то из БД отсутствует на вашем source** (например, в community-only deployment нет ``ecos_edi``) -- ``pg_dump`` упадёт с ``database "<name>" does not exist``. Просто пропустите соответствующий блок: соответствующая target-БД на launcher2 либо отсутствует, либо останется пустой и Liquibase webapp'а наполнит её при первом старте.
+    **Если какая-то из БД отсутствует на вашем source** (например, в community-only deployment нет ``ecos_edi``) -- ``pg_dump`` упадёт с ``database "<name>" does not exist``. Просто пропустите соответствующий блок: соответствующая target-БД в лаунчере либо отсутствует, либо останется пустой и Liquibase webapp'а наполнит её при первом старте.
 
 Команды для каждой БД из mapping-таблицы (выполнять блоками, по одному):
 
@@ -453,10 +458,12 @@ Zookeeper
 
 На целевом сервере положите его по тому же пути -- ``~/citeck-migration/``. **Важно сохранить структуру с тремя подкаталогами** (``postgres/``, ``mongo/``, ``zookeeper/``) -- команды этапа 4 ссылаются на пути вида ``~/citeck-migration/postgres/<имя>.dump``. Если файлы скопированы плоско в одну папку, импорт сломается.
 
+Каталог ``~/citeck-migration/`` лучше разместить на том же разделе, что и ``/opt/citeck``: на этапе 4 дампы перемещаются в каталог экспорта лаунчера (``/opt/citeck/data/runtime/default/export/``), и в пределах одного раздела ``mv`` выполняется мгновенно, без копирования.
+
 Этап 4. Загрузка на target
 --------------------------
 
-Все команды -- на новом сервере. Имена контейнеров launcher2 в серверном режиме (namespace всегда ``default``):
+Все команды -- на новом сервере. Имена контейнеров лаунчера в серверном режиме (namespace всегда ``default``):
 
 - PostgreSQL -- ``citeck_postgres_default``
 - MongoDB -- ``citeck_mongo_default``
@@ -465,13 +472,29 @@ Zookeeper
 4.1. PostgreSQL
 ~~~~~~~~~~~~~~~
 
-На каждую пару БД из mapping-таблицы -- три действия:
+Дампы передаются в контейнер через **каталог экспорта**, а не через ``docker cp`` в ``/tmp``. Каталог ``/tmp`` лежит в записываемом слое контейнера (на разделе ``/var/lib/docker``), и большой дамп (десятки гигабайт) его просто переполняет. Каталог экспорта -- это обычный каталог на хосте, смонтированный в контейнер:
 
-1. Скопировать дамп в контейнер.
-2. Очистить **все** пользовательские схемы целевой БД (Liquibase на первом старте создал в ней служебные объекты; их надо снести, иначе restore конфликтует по именам).
+- на хосте: ``/opt/citeck/data/runtime/default/export/postgres/``;
+- в контейнере ``citeck_postgres_default``: ``/citeck/export/`` (тот же путь записан в переменной окружения ``CITECK_EXPORT_DIR``).
+
+Такой каталог есть у **каждого** контейнера лаунчера (``.../export/<приложение>/``), права ``1777`` -- писать в него может любой пользователь. Лаунчер создаёт его при запуске namespace (этап 1), поэтому к этому моменту он уже существует.
+
+.. important::
+
+    - Дамп нужно **переместить** (``mv``) или скопировать в каталог экспорта. Символьная ссылка не подойдёт: ссылка на файл вне каталога экспорта внутри контейнера не видна.
+    - ``mv`` в пределах одного раздела выполняется мгновенно; если ``~/citeck-migration/`` и ``/opt/citeck`` на разных разделах, файл копируется, и на разделе с ``/opt/citeck`` должно хватить места под дамп. Можно сразу на этапе 3 передавать дампы прямо в ``/opt/citeck/data/runtime/default/export/postgres/``.
+    - После restore уберите дамп из каталога экспорта -- ниже он перемещается обратно в ``~/citeck-migration/`` (дампы стоит хранить до окончания проверки, см. «Откат»). Проверить содержимое каталога можно командой ``citeck export ls postgres``.
+
+На каждую пару БД из mapping-таблицы -- четыре действия:
+
+1. Переместить дамп в каталог экспорта postgres.
+2. Очистить **все** пользовательские схемы целевой БД: restore должен идти в пустую БД, а Liquibase на первом старте уже создал в ней свои объекты -- без очистки restore конфликтует по именам.
 3. Выполнить ``pg_restore`` с указанием ``--role=<target_user>``, чтобы ownership объектов навешивался корректно.
+4. Убрать дамп из каталога экспорта.
 
 Расширения (``pg_trgm``, ``uuid-ossp`` и др.) восстанавливаются от имени ``postgres`` -- ``--role`` на ``CREATE EXTENSION`` не влияет.
+
+Все webapp'ы уже остановлены на шаге 1.3, поэтому в БД во время restore никто не пишет.
 
 Блок команд для каждой пары (повторить 9 раз):
 
@@ -479,7 +502,7 @@ Zookeeper
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_apps.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_apps.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -500,15 +523,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_eapps \
         --no-owner --no-acl --role=citeck_eapps \
-        -j 4 /tmp/ecos_apps.dump
+        -j 4 /citeck/export/ecos_apps.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_apps.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_apps.dump ~/citeck-migration/postgres/
 
 **ecos_uiserv → citeck_uiserv:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_uiserv.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_uiserv.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -529,15 +552,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_uiserv \
         --no-owner --no-acl --role=citeck_uiserv \
-        -j 4 /tmp/ecos_uiserv.dump
+        -j 4 /citeck/export/ecos_uiserv.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_uiserv.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_uiserv.dump ~/citeck-migration/postgres/
 
 **ecos_integrations → citeck_integrations:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_integrations.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_integrations.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -558,15 +581,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_integrations \
         --no-owner --no-acl --role=citeck_integrations \
-        -j 4 /tmp/ecos_integrations.dump
+        -j 4 /citeck/export/ecos_integrations.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_integrations.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_integrations.dump ~/citeck-migration/postgres/
 
 **ecos_model → citeck_emodel:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_model.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_model.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -587,15 +610,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_emodel \
         --no-owner --no-acl --role=citeck_emodel \
-        -j 4 /tmp/ecos_model.dump
+        -j 4 /citeck/export/ecos_model.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_model.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_model.dump ~/citeck-migration/postgres/
 
 **ecos_notifications → citeck_notifications:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_notifications.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_notifications.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -616,15 +639,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_notifications \
         --no-owner --no-acl --role=citeck_notifications \
-        -j 4 /tmp/ecos_notifications.dump
+        -j 4 /citeck/export/ecos_notifications.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_notifications.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_notifications.dump ~/citeck-migration/postgres/
 
 **ecos_history → citeck_history:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_history.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_history.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -645,15 +668,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_history \
         --no-owner --no-acl --role=citeck_history \
-        -j 4 /tmp/ecos_history.dump
+        -j 4 /citeck/export/ecos_history.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_history.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_history.dump ~/citeck-migration/postgres/
 
 **ecos_process → citeck_eproc:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_process.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_process.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -674,15 +697,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_eproc \
         --no-owner --no-acl --role=citeck_eproc \
-        -j 4 /tmp/ecos_process.dump
+        -j 4 /citeck/export/ecos_process.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_process.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_process.dump ~/citeck-migration/postgres/
 
 **ecos_camunda → citeck_camunda:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_camunda.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_camunda.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -703,15 +726,15 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_camunda \
         --no-owner --no-acl --role=citeck_camunda \
-        -j 4 /tmp/ecos_camunda.dump
+        -j 4 /citeck/export/ecos_camunda.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_camunda.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_camunda.dump ~/citeck-migration/postgres/
 
 **ecos_edi → citeck_edi:**
 
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/postgres/ecos_edi.dump citeck_postgres_default:/tmp/
+    mv ~/citeck-migration/postgres/ecos_edi.dump /opt/citeck/data/runtime/default/export/postgres/
 
     docker exec -i \
       -e PGPASSWORD=postgres \
@@ -732,38 +755,44 @@ Zookeeper
       pg_restore -U postgres \
         -d citeck_edi \
         --no-owner --no-acl --role=citeck_edi \
-        -j 4 /tmp/ecos_edi.dump
+        -j 4 /citeck/export/ecos_edi.dump
 
-    docker exec citeck_postgres_default rm /tmp/ecos_edi.dump
+    mv /opt/citeck/data/runtime/default/export/postgres/ecos_edi.dump ~/citeck-migration/postgres/
 
 4.2. MongoDB
 ~~~~~~~~~~~~
 
+.. note::
+
+    Контейнер MongoDB (``citeck_mongo_default``) создаётся на target, только если в выбранном бандле ecos-process (``eproc``) старше 2.33.0 -- для ``2026.1`` это так. В новых версиях ecos-process данные процессов хранятся в PostgreSQL, и новый namespace создаётся без MongoDB. Проверить: ``docker ps | grep mongo``.
+
+Архив передаётся тем же способом -- через каталог экспорта mongo (на хосте ``/opt/citeck/data/runtime/default/export/mongo/``, в контейнере ``/citeck/export/``):
+
 .. code-block:: bash
 
-    docker cp ~/citeck-migration/mongo/ecos-process.archive citeck_mongo_default:/tmp/
+    mv ~/citeck-migration/mongo/ecos-process.archive /opt/citeck/data/runtime/default/export/mongo/
 
     docker exec citeck_mongo_default mongorestore \
       --username "$(docker exec citeck_mongo_default printenv MONGO_INITDB_ROOT_USERNAME)" \
       --password "$(docker exec citeck_mongo_default printenv MONGO_INITDB_ROOT_PASSWORD)" \
       --authenticationDatabase admin \
       --nsFrom 'ecos-process.*' --nsTo 'citeck_eproc.*' \
-      --archive=/tmp/ecos-process.archive --gzip --drop
+      --archive=/citeck/export/ecos-process.archive --gzip --drop
 
-    docker exec citeck_mongo_default rm /tmp/ecos-process.archive
+    mv /opt/citeck/data/runtime/default/export/mongo/ecos-process.archive ~/citeck-migration/mongo/
 
 Опции:
 
 - ``--nsFrom 'ecos-process.*' --nsTo 'citeck_eproc.*'`` -- переименование namespace при restore.
 - ``--drop`` -- удаляет коллекции, оставшиеся от первого старта webapp ``eproc``.
-- Username и пароль root читаются из ENV контейнера через ``printenv``, чтобы не зависеть от того, что launcher сгенерировал.
+- Username и пароль root читаются из ENV контейнера через ``printenv``, чтобы не зависеть от того, что сгенерировал лаунчер.
 
 4.3. Zookeeper
 ~~~~~~~~~~~~~~
 
-Останавливаем zookeeper **через** ``citeck stop``, а не ``docker stop``. Это критично: launcher2 имеет reconciler, который через ~1 минуту перезапустит контейнер, остановленный «снаружи», прямо во время того, как мы пишем в данные. ``citeck stop`` помечает приложение как detached и reconciler оставляет его в покое.
+Останавливаем zookeeper **через** ``citeck stop``, а не ``docker stop``. Это критично: у лаунчера есть reconciler, который через ~1 минуту перезапустит контейнер, остановленный «снаружи», прямо во время того, как мы пишем в данные. ``citeck stop`` помечает приложение как detached и reconciler оставляет его в покое.
 
-Хранилище zookeeper в launcher2 -- это **bind-mount каталог на хосте** (не named docker volume): ``/opt/citeck/data/runtime/default/volumes/zookeeper2/``. Внутри него -- подкаталог ``data/``, в котором zookeeper держит snapshots, и ``datalog/``, в котором держит transaction log. Bitnami же на source складывал и snapshots, и log в один каталог ``data/version-2/``. При импорте нужно **разделить файлы**: ``log.*`` идут в ``datalog/version-2/``, а **всё остальное** (``snapshot.*``, ``acceptedEpoch``, ``currentEpoch`` и любые другие служебные файлы) -- в ``data/version-2/``.
+Хранилище zookeeper в лаунчере -- это **bind-mount каталог на хосте** (не named docker volume): ``/opt/citeck/data/runtime/default/volumes/zookeeper2/``. Внутри него -- подкаталог ``data/``, в котором zookeeper держит snapshots, и ``datalog/``, в котором держит transaction log. Bitnami же на source складывал и snapshots, и log в один каталог ``data/version-2/``. При импорте нужно **разделить файлы**: ``log.*`` идут в ``datalog/version-2/``, а **всё остальное** (``snapshot.*``, ``acceptedEpoch``, ``currentEpoch`` и любые другие служебные файлы) -- в ``data/version-2/``.
 
 .. code-block:: bash
 
@@ -771,7 +800,7 @@ Zookeeper
 
     citeck stop zookeeper
 
-    # Очистить старые данные (они созданы launcher'ом при первом старте)
+    # Очистить старые данные (они созданы лаунчером при первом старте)
     rm -rf $ZK_DIR/data/version-2 $ZK_DIR/datalog/version-2
     mkdir -p $ZK_DIR/data/version-2 $ZK_DIR/datalog/version-2
 
@@ -785,14 +814,15 @@ Zookeeper
     rm -rf $TMP
 
     # Выставить владельца -- uid/gid пользователя zookeeper в official образе
-    chown -R 1001:1001 $ZK_DIR/data/version-2 $ZK_DIR/datalog/version-2
+    chown -R 1000:1000 $ZK_DIR/data/version-2 $ZK_DIR/datalog/version-2
 
     citeck start zookeeper
 
 Замечания:
 
-- Точный путь bind-mount проверить через ``docker inspect citeck_zookeeper_default --format '{{(index .Mounts 0).Source}}'``.
-- ``chown 1001:1001`` -- uid/gid пользователя ``zookeeper`` в официальном образе. Без него запуск падает с ``permission denied``.
+- Точный путь bind-mount проверить через ``docker inspect citeck_zookeeper_default --format '{{range .Mounts}}{{.Source}} -> {{.Destination}}{{println}}{{end}}'`` -- нужна строка с ``/citeck/zookeeper`` (у контейнера есть и другие монтирования, например каталог экспорта).
+- ``chown 1000:1000`` -- uid/gid пользователя ``zookeeper`` в официальном образе. Без него запуск может упасть с ``permission denied``.
+- Пока zookeeper остановлен, ``citeck status`` может показывать namespace как ``STALLED`` -- это ожидаемо, после ``citeck start zookeeper`` статус вернётся.
 - Если файлы не разделены -- official zookeeper падает с ``SnapDirContentCheckException: Snapshot directory has log files``.
 - ``citeck start zookeeper`` re-attaches приложение, после чего reconciler снова им управляет.
 - Проверить старт:
@@ -806,7 +836,7 @@ Zookeeper
 4.4. Поднять webapp'ы обратно
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Тот же список приложений, что был остановлен в шаге 1.3. **Важно**: в отличие от ``citeck stop`` (принимает любое число аргументов), ``citeck start`` принимает только **один app за раз**, поэтому запускаем циклом -- **без** ``--detach``, чтобы каждый старт дожидался ``RUNNING`` перед стартом следующего:
+Тот же список приложений, что был остановлен в шаге 1.3. **Важно**: в отличие от ``citeck stop`` (принимает любое число аргументов), ``citeck start`` принимает только **один app за раз**, поэтому запускаем циклом -- **без** ``--detach``, чтобы каждый старт дожидался ``RUNNING`` перед стартом следующего. Цикл запускайте в интерактивном терминале: если вывод перенаправлен в файл или команда выполняется не в терминале (скрипт, ``nohup``), ``citeck start <app>`` не ждёт ``RUNNING`` и возвращается сразу:
 
 .. code-block:: bash
 
@@ -814,7 +844,7 @@ Zookeeper
       citeck start "$app"
     done
 
-Если запускать с ``--detach``, возникает race condition: proxy запускается раньше, чем onlyoffice (или другая зависимость) успевает стать DNS-резолвимым, и падает с ``host not found in upstream "onlyoffice"``. Sequential-старт (без ``--detach``) использует ``waitForDeps`` launcher2 и поднимает приложения в правильном порядке.
+Если запускать с ``--detach``, возникает race condition: proxy запускается раньше, чем onlyoffice (или другая зависимость) успевает стать DNS-резолвимым, и падает с ``host not found in upstream "onlyoffice"``. Последовательный старт (без ``--detach``) дожидается зависимостей каждого приложения и поднимает приложения в правильном порядке.
 
 Цикл занимает 10--20 минут (каждый Java-webapp стартует 1--3 минуты). Прогресс параллельно можно смотреть через ``citeck status -w`` в другой сессии.
 
@@ -826,7 +856,7 @@ Liquibase каждого webapp при старте увидит актуаль�
 5.1. Что должно работать
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Логин в Web UI под ``admin / <admin-пароль из шага 1.1>``. **Не** ``admin / admin`` источника -- пароль теперь сгенерирован launcher'ом.
+- Логин в Web UI под ``admin / <admin-пароль из шага 1.1>``. **Не** ``admin / admin`` источника -- пароль теперь сгенерирован лаунчером.
 - Списки записей в ``eapps``, ``eproc``, ``uiserv`` показывают данные источника.
 - BPMN-процессы из ``eproc`` запускаются (mongo + postgres согласованы).
 - В Keycloak присутствуют только пользователь ``admin`` и сервисный аккаунт ``citeck``.
@@ -859,6 +889,104 @@ Liquibase каждого webapp при старте увидит актуаль�
 - In-flight сообщения RabbitMQ.
 - Логи nginx/proxy.
 - Кеш сертификатов Let's Encrypt -- будет перевыпущен при первом запросе.
+
+.. _migration_from_compose_db_access:
+
+Работа с БД после миграции
+--------------------------
+
+В docker-compose версии PostgreSQL был доступен снаружи (порт ``15432``). В серверном режиме лаунчер публикует наружу **только прокси** -- порты PostgreSQL, MongoDB, RabbitMQ и остальных сервисов с хоста не доступны. Ниже -- как делать дампы и восстановление и как подключиться к БД из DBeaver/pgAdmin.
+
+Резервная копия одной БД
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Дамп пишется сразу в каталог экспорта postgres и оказывается на хосте, минуя файловую систему контейнера:
+
+.. code-block:: bash
+
+    docker exec citeck_postgres_default \
+      pg_dump -U postgres -F c -f /citeck/export/citeck_emodel.dump citeck_emodel
+
+    ls -lh /opt/citeck/data/runtime/default/export/postgres/
+
+Заберите файл из ``/opt/citeck/data/runtime/default/export/postgres/`` (или командой ``citeck export get postgres citeck_emodel.dump --rm`` -- скачает файл в текущий каталог и удалит его из каталога экспорта). Не оставляйте дампы в каталоге экспорта: они занимают место на разделе с данными.
+
+Восстановление одной БД из дампа
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Пример для ``citeck_emodel``; для другой БД подставьте её имя и приложение, которое её использует (``citeck_eproc`` и ``citeck_camunda`` -- ``eproc``, ``citeck_eapps`` -- ``eapps`` и т. д., см. «Mapping БД и пользователей»).
+
+1. Переместите дамп в каталог экспорта (не символьной ссылкой -- ссылка на файл вне каталога в контейнере не видна):
+
+   .. code-block:: bash
+
+       mv /path/to/emodel.dump /opt/citeck/data/runtime/default/export/postgres/
+
+2. Остановите приложение, которое пишет в эту БД:
+
+   .. code-block:: bash
+
+       citeck stop emodel
+
+3. Очистите целевую БД -- restore должен идти в пустую БД (блок ``DROP SCHEMA`` из шага 4.1 с подставленным именем БД и роли).
+
+4. Восстановите дамп. Custom-формат (``pg_dump -F c``):
+
+   .. code-block:: bash
+
+       docker exec -it citeck_postgres_default \
+         pg_restore -U postgres -d citeck_emodel \
+           --no-owner --role=citeck_emodel \
+           -j 4 /citeck/export/emodel.dump
+
+   Обычный SQL-дамп (``.sql``, снятый с ``--no-owner --no-acl``) выполняется от имени роли БД, чтобы объекты принадлежали ей:
+
+   .. code-block:: bash
+
+       docker exec -it citeck_postgres_default \
+         psql -U citeck_emodel -d citeck_emodel -v ON_ERROR_STOP=1 \
+           -f /citeck/export/emodel.sql
+
+5. Запустите приложение и удалите дамп из каталога экспорта:
+
+   .. code-block:: bash
+
+       citeck start emodel
+       rm /opt/citeck/data/runtime/default/export/postgres/emodel.dump
+
+Прямое подключение к PostgreSQL (DBeaver, pgAdmin)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Начиная с лаунчера 2.15.2 в описании порта можно указать адрес. Рекомендуемый вариант -- опубликовать PostgreSQL только на loopback-интерфейсе сервера и подключаться через SSH-туннель.
+
+1. На сервере откройте описание приложения:
+
+   .. code-block:: bash
+
+       citeck edit postgres
+
+   и добавьте в раздел ``ports:`` (если его нет -- создайте) запись:
+
+   .. code-block:: yaml
+
+       ports:
+         - "127.0.0.1:15432:5432"
+
+   После сохранения лаунчер пересоздаёт контейнер postgres (кратковременный перезапуск БД). Порт ``15432`` будет слушаться только на ``127.0.0.1`` сервера.
+
+2. На рабочей станции поднимите туннель:
+
+   .. code-block:: bash
+
+       ssh -N -L 15432:127.0.0.1:15432 root@<server>
+
+3. В DBeaver/pgAdmin подключайтесь к ``localhost:15432``, пользователь/пароль ``postgres / postgres`` (или роль конкретной БД, например ``citeck_emodel / citeck_emodel``).
+
+Про адрес в описании порта:
+
+- Порт без адреса (``"15432:5432"``) с версии 2.15.2 тоже публикуется только на ``127.0.0.1``.
+- ``'*:15432:5432'`` (в YAML -- обязательно в кавычках) открывает порт на всех интерфейсах. **Не делайте так** без необходимости: Docker обходит правила ``ufw``/``iptables`` хоста, и БД с паролем ``postgres`` окажется доступна из сети. Используйте SSH-туннель.
+- Убрать правку и вернуть описание по умолчанию -- ``citeck edit postgres --reset`` (сбрасывает **все** правки описания postgres).
 
 Откат
 -----

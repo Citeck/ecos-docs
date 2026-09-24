@@ -3,7 +3,7 @@
 Citeck Launcher: серверный режим
 ================================
 
-**Citeck Launcher** в серверном режиме -- это единый исполняемый файл (Go binary, ~24 МБ), предназначенный для развёртывания и управления платформой Citeck на серверах Linux. В отличие от :ref:`десктопной версии <citeck_launcher>`, серверный режим работает без графического интерфейса: управление осуществляется через **CLI** и **systemd-сервис**.
+**Citeck Launcher** в серверном режиме -- это единый исполняемый файл (Go binary, ~27 МБ), предназначенный для развёртывания и управления платформой Citeck на серверах Linux. В отличие от :ref:`десктопной версии <citeck_launcher>`, серверный режим работает без графического и веб-интерфейса: управление осуществляется через **CLI** и **systemd-сервис**.
 
 **Возможности:**
 
@@ -12,10 +12,11 @@ Citeck Launcher: серверный режим
 - TLS из коробки: автоматический HTTPS (Let's Encrypt, включая IP-адреса), самоподписанные сертификаты, пользовательские сертификаты.
 - Управление паролем администратора (Keycloak, RabbitMQ, PgAdmin).
 - Интеграция с systemd: автоматический перезапуск при сбоях.
-- Горячая перезагрузка конфигурации (``citeck reload``).
+- Горячая перезагрузка конфигурации (``citeck reload``) и точечное редактирование приложений (``citeck edit``).
+- Защита данных при обновлении бандла: версии PostgreSQL, RabbitMQ, ZooKeeper и других компонентов привязаны к данным, их обновление и откат выполняются явно (``citeck deps``).
 - Резервное копирование и восстановление данных (snapshots).
 - Очистка неиспользуемых ресурсов Docker.
-- Диагностика и проверка здоровья системы.
+- Диагностика и проверка здоровья системы, дампы потоков и памяти JVM (``citeck jstack``, ``citeck jmap``, ``citeck jcmd``).
 
 **Требования:**
 
@@ -45,6 +46,8 @@ Citeck Launcher: серверный режим
     launcher_server/quick_start
     launcher_server/commands
     launcher_server/configuration
+    launcher_server/dependencies
+    launcher_server/jvm_diagnostics
     launcher_server/architecture
     launcher_server/migration_from_compose
     launcher_server/troubleshooting
