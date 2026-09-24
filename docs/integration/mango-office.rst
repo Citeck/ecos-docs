@@ -290,7 +290,8 @@ Mango Office: обработка записей звонков
    * - Объект
      - Проверка
    * - ``integrations/camel-dsl@mango-call-recordings-sync``
-     - Состояние ``STARTED``; в логах нет ошибки запуска контекста.
+     - | Состояние ``STARTED``.
+       | В логах нет ошибки запуска контекста.
    * - Сервисы
      - | Доступны ``ecos-integrations``, RabbitMQ, Records API, Mango API и STT.
        | Endpoint ``stt-sidecar`` доступен именно из среды запуска интеграции.
@@ -311,8 +312,7 @@ Mango Office: обработка записей звонков
        | - ошибки публикации, сохранения статуса и ``LOST``.
 
 Для наблюдения за очередями используйте RabbitMQ Management выбранного стенда.
-Сопоставляйте ``entryId`` из логов и сообщения с полем активности ``recording-aspect:meetingUrl``
-вида ``mango://entry/<entryId>``.
+Сопоставляйте ``entryId`` из логов и сообщения с полем активности ``recording-aspect:meetingUrl`` вида ``mango://entry/<entryId>``.
 
 .. warning::
 

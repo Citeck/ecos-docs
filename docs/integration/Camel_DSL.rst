@@ -27,7 +27,7 @@
       :link: camel_dsl_visual_editor
       :link-type: ref
 
-      Просмотр Camel-маршрута в виде схемы рядом с YAML на базе Kaoto.
+      Просмотр Camel-маршрута в виде схемы рядом с YAML на базе Kaoto, навигация по схеме и включение полноценного визуального редактирования.
 
    .. grid-item-card:: Выборка из БД
       :link: camel_dsl_bd_selection
