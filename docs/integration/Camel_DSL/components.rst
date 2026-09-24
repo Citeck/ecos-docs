@@ -10,7 +10,7 @@
 Помимо стандартных компонентов Apache Camel, в Citeck доступны компоненты, перечисленные ниже. Ключ компонента — это префикс схемы в URI маршрута, например ``ecos-records-mutate:`` в шаге ``to``.
 
 .. list-table::
-   :widths: 10 5 25
+   :widths: 10 10 30
    :header-rows: 1
    :class: tight-table
 
