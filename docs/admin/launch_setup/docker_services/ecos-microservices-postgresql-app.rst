@@ -1,27 +1,32 @@
+.. _ecos_microservices_postgresql_app:
+
 ecos-microservices-postgresql-app
 =====================================
+
+.. contents::
 
 Назначение
 ------------
 
 Образ, собранный на официальном образе postgresql 12.x с добавлением скрипта инициализации баз данных и пользователей
 
-Теги:
+Теги
 ------------
-`nexus.citeck.ru/postrgesql:msvc-latest <nexus.citeck.ru/postrgesql:msvc-latest>`_- собран на базовом образе  postgres:12, используется в композ проектах, файлы конфигурации размещаются в образе
+
+`nexus.citeck.ru/postrgesql:msvc-latest <nexus.citeck.ru/postrgesql:msvc-latest>`_ - собран на базовом образе  postgres:12, используется в композ проектах, файлы конфигурации размещаются в образе
 
 `nexus.citeck.ru/postrgesql:12 <nexus.citeck.ru/postrgesql:12>`_ - базовый образ  postgres:12, размещен в нашем docker registry, используется в k8s объектах, файлы конфигурации и скрипт развертывания конфигурируются через configmap
 
 Базовые образы
 ---------------
 
-* **postgres:12** 
+* **postgres:12**
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 ------------------------------------
 
-.. code-block::
-	
+.. code-block:: yaml
+
 	ecos-microservices-postgresql-app:
 		container_name: ecos-microservices-postgresql-app
 		hostname: ecos-microservices-postgresql-app
@@ -38,79 +43,79 @@ ecos-microservices-postgresql-app
 		networks:
 		- app_network
 
-Используемые переменные:
+Используемые переменные
 ------------------------
 
-* **ECOS_APPS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-apps-app
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
-* **ECOS_APPS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-apps-app
+   * - Переменная
+     - Описание
+   * - **ECOS_APPS_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-apps-app
+   * - **ECOS_APPS_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-apps-app
+   * - **ECOS_APPS_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-apps-app
+   * - **ECOS_GATEWAY_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-gateway-app
+   * - **ECOS_GATEWAY_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-gateway-app
+   * - **ECOS_GATEWAY_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-gateway-app
+   * - **ECOS_UISERV_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-uiserv-app
+   * - **ECOS_UISERV_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-uiserv-app
+   * - **ECOS_UISERV_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-uiserv-app
+   * - **ECOS_INTEGRATIONS_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-integrations-app
+   * - **ECOS_INTEGRATIONS_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-integrations-app
+   * - **ECOS_INTEGRATIONS_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-integrations-app
+   * - **ECOS_MODEL_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-model-app
+   * - **ECOS_MODEL_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-model-app
+   * - **ECOS_MODEL_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-model-app
+   * - **ECOS_NOTIFICATIONS_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-notifications-app
+   * - **ECOS_NOTIFICATIONS_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-notifications-app
+   * - **ECOS_NOTIFICATIONS_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-notifications-app
+   * - **ECOS_HISTORY_APP_DATASOURCE_DATABASE**
+     - база данных для мрк ecos-history-app
+   * - **ECOS_HISTORY_APP_DATASOURCE_USERNAME**
+     - пользователь для мрк ecos-history-app
+   * - **ECOS_HISTORY_APP_DATASOURCE_PASSWORD**
+     - пароль для мрк ecos-history-app
+   * - **POSTGRES_PASSWORD**
+     - обязательный параметр за исключением **POSTGRES_HOST_AUTH_METHOD=trust**, пароль привилегированного пользователя **postgres**
+   * - **POSTGRES_USER**
+     - переопределение дефолтного пользователя **postgres**
+   * - **POSTGRES_DB**
+     - переопределение дефолтной базы данных
+   * - **POSTGRES_INITDB_ARGS**
+     - дополнительные параметры для инициализации кластера
+   * - **POSTGRES_INITDB_WALDIR**
+     - переопределение дефолтной директории хранения логов транзакций
+   * - **POSTGRES_HOST_AUTH_METHOD**
+     - метод аутентификации host подключений для **всех бд**, пользователей и адресов в pg_hba.conf. Дефолтное значение **md5**
+   * - **PGDATA**
+     - переопределение дефолтной директории хранения фалов инициируемого кластера
 
-* **ECOS_APPS_APP_DATASOURCE_PASSWORD**  - пароль для мрк ecos-apps-app
-
-
-* **ECOS_GATEWAY_APP_DATASOURCE_DATABASE**  - база данных для мрк ecos-gateway-app
-
-* **ECOS_GATEWAY_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-gateway-app
-
-* **ECOS_GATEWAY_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-gateway-app
-
- 
-
-* **ECOS_UISERV_APP_DATASOURCE_DATABASE**  - база данных для мрк ecos-uiserv-app
-
-* **ECOS_UISERV_APP_DATASOURCE_USERNAME**  - пользователь для мрк ecos-uiserv-app
-
-* **ECOS_UISERV_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-uiserv-app
-
- 
-
-* **ECOS_INTEGRATIONS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-integrations-app
-
-* **ECOS_INTEGRATIONS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-integrations-app
-
-* **ECOS_INTEGRATIONS_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-integrations-app
- 
-
-* **ECOS_MODEL_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-model-app
-
-* **ECOS_MODEL_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-model-app
-
-* **ECOS_MODEL_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-model-app
- 
-
-* **ECOS_NOTIFICATIONS_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-notifications-app
-
-* **ECOS_NOTIFICATIONS_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-notifications-app
-
-* **ECOS_NOTIFICATIONS_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-notifications-app
- 
-
-* **ECOS_HISTORY_APP_DATASOURCE_DATABASE** - база данных для мрк ecos-history-app
-
-* **ECOS_HISTORY_APP_DATASOURCE_USERNAME** - пользователь для мрк ecos-history-app
-
-* **ECOS_HISTORY_APP_DATASOURCE_PASSWORD** - пароль для мрк ecos-history-app
-
- 
-
-* **POSTGRES_PASSWORD** - обязательный параметр за исключением **POSTGRES_HOST_AUTH_METHOD=trust**, пароль привилегированного пользователя  **postgres**
-
-* **POSTGRES_USER** - переопределение дефолтного пользователя **postgres**
-
-* **POSTGRES_DB** - переопределение дефолтной базы данных
-
-* **POSTGRES_INITDB_ARGS** - дополнительные параметры для инициализации кластера
-
-* **POSTGRES_INITDB_WALDIR** - переопределение дефолтной директории хранения логов транзакций
-
-* **POSTGRES_HOST_AUTH_METHOD** - метод аутентификации host подключений для **всех бд**, пользователей и адресов в pg_hba.conf. Дефолтное значение **md5**
-
-* **PGDATA** - переопределение дефолтной директории хранения фалов инициируемого кластера
-
-Типовой вывод принятых настроек в лог контейнера:
+Типовой вывод принятых настроек в лог контейнера
 ------------------------------------------------------------
 
-.. code-block::
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	The files belonging to this database system will be owned by user "postgres".
 	This user must also own the server process.

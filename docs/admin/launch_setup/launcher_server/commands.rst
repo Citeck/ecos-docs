@@ -14,6 +14,7 @@
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -40,6 +41,7 @@ install
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -87,6 +89,7 @@ start
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -154,6 +157,7 @@ stop
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -201,6 +205,7 @@ restart
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -237,6 +242,7 @@ status
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -287,6 +293,11 @@ status
 (``attorneys``, ``service-desk``, ``ecos-project-tracker``, ``ai``,
 ``edi``, ``ecos-content`` и др.) -- группировка такая же.
 
+Приложение с ручной правкой конфигурации помечается символом ``*`` рядом с
+именем (``eapps *``) -- это переопределение ApplicationDef или смонтированного
+файла, внесённое командой ``citeck edit`` (см. ниже). Сбросить правку
+можно через ``citeck edit <app> --reset``.
+
 logs
 -----
 
@@ -301,6 +312,7 @@ logs
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -371,6 +383,95 @@ describe
     #   SPRING_PROFILES_ACTIVE=server
     #   RABBITMQ_PASSWORD=***
 
+edit
+-----
+
+Редактирование конфигурации приложения. Команда работает в двух режимах:
+
+.. tab-set::
+
+    .. tab-item:: ApplicationDef
+
+        Режим по умолчанию. Правит эффективное определение приложения
+        (образ, память, переменные окружения, порты и т. д.). Изменение сохраняется
+        как per-app патч-переопределение (по принципу ``kubectl edit``) и
+        пересоздаёт контейнер.
+
+    .. tab-item:: Смонтированный файл конфигурации (--file)
+
+        Правит конкретный конфигурационный файл, смонтированный в контейнер
+        (например, ``application-launcher.yml``). Изменение хранится как дельта
+        поверх сгенерированного содержимого и применяется через ``reload``.
+
+.. code-block:: bash
+
+    citeck edit <app> [flags]
+
+**Флаги:**
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 1
+    :class: tight-table
+
+    * - Флаг
+      - Описание
+    * - ``--file <path>``
+      - Редактировать смонтированный файл конфигурации (например,
+        ``app/<app>/props/application-launcher.yml``) вместо ApplicationDef
+    * - ``--list-files``
+      - Показать список редактируемых смонтированных файлов приложения
+        (изменённые помечены ``*``)
+    * - ``--reset``
+      - Сбросить цель (ApplicationDef или файл при ``--file``) к сгенерированному
+        значению по умолчанию, удалив переопределение
+    * - ``--from <file|->``
+      - Взять новое содержимое из файла (или ``-`` для stdin) вместо запуска
+        редактора -- для неинтерактивного применения (скрипты, CI)
+    * - ``--no-apply``
+      - Только с ``--file``: сохранить правку, не выполняя ``reload``
+        (применить позже вручную командой ``citeck reload``)
+
+Без ``--from`` и ``--reset`` команда открывает содержимое в редакторе из
+переменной окружения ``$EDITOR`` (требуется TTY). Если изменений не внесено,
+конфигурация остаётся прежней.
+
+**Примеры:**
+
+.. code-block:: bash
+
+    # Редактировать ApplicationDef приложения в $EDITOR
+    citeck edit eapps
+
+    # Сбросить переопределение ApplicationDef к значению по умолчанию
+    citeck edit eapps --reset
+
+    # Задать ApplicationDef неинтерактивно из файла
+    citeck edit eapps --from ./eapps.yaml
+
+    # Показать редактируемые смонтированные файлы приложения
+    citeck edit eapps --list-files
+
+    # Редактировать смонтированный файл конфигурации
+    citeck edit eapps --file app/eapps/props/application-launcher.yml
+
+    # Восстановить этот файл к сгенерированному значению по умолчанию
+    citeck edit eapps --file app/eapps/props/application-launcher.yml --reset
+
+    # Задать файл из stdin без немедленного reload
+    citeck edit eapps --file app/eapps/props/application-launcher.yml \
+        --from - --no-apply < application-launcher.yml
+
+.. note::
+
+    Переопределения сохраняются в состоянии namespace (server-режим -- в файле
+    состояния, desktop -- в SQLite) и переживают перезапуски. Приложения с
+    ручной правкой ApplicationDef или смонтированного файла помечаются символом
+    ``*`` в таблице ``citeck status``. В desktop-версии тот же смысл несёт
+    **синий маркер** на приложении в списке (см. :ref:`launcher_overview`);
+    сбросить ручные изменения можно командой ``citeck edit <app> --reset``
+    (или ``--file <path> --reset`` для файла).
+
 reload
 -------
 
@@ -385,6 +486,7 @@ reload
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -427,6 +529,7 @@ update
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -457,6 +560,7 @@ upgrade
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -544,6 +648,7 @@ setup
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Настройка
       - Описание
@@ -649,6 +754,7 @@ setup history
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Значение
       - Что означает
@@ -787,6 +893,7 @@ health
 .. list-table::
     :widths: 15 85
     :header-rows: 1
+    :class: tight-table
 
     * - Код
       - Значение
@@ -829,6 +936,7 @@ diagnose
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -873,15 +981,14 @@ dump-system-info
 .. list-table::
     :widths: 20 80
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
     * - ``--full``
       - Включить полные логи контейнеров без обрезки (по умолчанию: head 1000 + tail 2000 строк).
 
-Подробное описание содержимого архива и инструкции по отправке —
-в :ref:`server_support_dump` (раздел «Обращение в поддержку» в
-:ref:`server_troubleshooting`).
+Подробное описание содержимого архива и инструкции по отправке — в :ref:`server_support_dump` (раздел «Обращение в поддержку» в :ref:`server_troubleshooting`).
 
 clean
 ------
@@ -897,6 +1004,7 @@ clean
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -934,6 +1042,7 @@ snapshot
 .. list-table::
     :widths: 20 80
     :header-rows: 1
+    :class: tight-table
 
     * - Подкоманда
       - Описание
@@ -951,6 +1060,7 @@ snapshot
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1008,6 +1118,7 @@ uninstall
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1055,6 +1166,7 @@ version
 .. list-table::
     :widths: 30 70
     :header-rows: 1
+    :class: tight-table
 
     * - Флаг
       - Описание
@@ -1103,6 +1215,7 @@ config
 .. list-table::
     :widths: 25 75
     :header-rows: 1
+    :class: tight-table
 
     * - Подкоманда
       - Описание

@@ -1,19 +1,24 @@
+.. _ecos_gateway_app:
+
 ecos-gateway-app
 ================
 
-Назначение:
+.. contents::
+
+Назначение
 ------------
 
 Образ одного из центральных компонентов микросервисной архитектуры. Приложение реализует API шлюз взаимодействия с остальными микросервисами
 
-Теги:
+Теги
 --------
 
 `Nexus_gateway <http://nexus.citeck.ru/ecos-gateway:>`_ <tag> - сборка проекта ecos-gateway
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 -------------------------------
-::
+
+.. code-block:: yaml
 
 	gateway-app:
 	    logging:
@@ -52,20 +57,37 @@ ecos-gateway-app
 	    networks:
 	      - app_network
 
-Используемые переменные:
+Используемые переменные
 --------------------------
 
-*	**_JAVA_OPTIONS** - параметры для **jvm**
-*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-*	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
-Типовой вывод успешного развертывания в лог контейнера:
+   * - Переменная
+     - Описание
+   * - **_JAVA_OPTIONS**
+     - параметры для **jvm**
+   * - **SPRING_PROFILES_ACTIVE**
+     - используемые при развертывании профили
+   * - **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE**
+     - url используемого по умолчанию **eureka load balancer**, содержит credentials
+   * - **SPRING_CLOUD_CONFIG_URI**
+     - url используемого **cloud config server**, содержит credentials
+   * - **JHIPSTER_REGISTRY_PASSWORD**
+     - пароль пользователя для аутентификации в **eureka load balancer**
+   * - **SPRING_DATASOURCE_URL**
+     - url используемого **postgresql datasource**
+   * - **JHIPSTER_SLEEP**
+     - **таймаут** перед развертыванием микросервиса
+
+Типовой вывод успешного развертывания в лог контейнера
 --------------------------------------------------------
-::
+
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	gateway-app                 | ----------------------------------------------------------
 	gateway-app                 |   Application 'gateway' is running! Access URLs:
@@ -73,8 +95,7 @@ ecos-gateway-app
 	gateway-app                 |   External:       http://172.25.0.22:8085/
 	gateway-app                 |   Profile(s):     [prod, swagger]
 	gateway-app                 | ----------------------------------------------------------
-	gateway-app                 | 2020-05-13 07:17:43.131  INFO 1 --- [           main] ru.citeck.ecos.GatewayApp                : 
+	gateway-app                 | 2020-05-13 07:17:43.131  INFO 1 --- [           main] ru.citeck.ecos.GatewayApp                :
 	gateway-app                 | ----------------------------------------------------------
 	gateway-app                 |   Config Server:  Connected to the JHipster Registry running in Docker
 	gateway-app                 | ----------------------------------------------------------
-

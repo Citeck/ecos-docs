@@ -1,13 +1,18 @@
+.. _ecos_model_app:
+
 ecos-model-app
 ===============
 
-Назначение:
+.. contents::
+
+Назначение
 ------------
 Образ микросервиса, предназначенного для хранения и работы с такими сущностями как: тип(type), раздел(section), ассоциация(association), действие(action)
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 -------------------------------
-::
+
+.. code-block:: yaml
 
 	emodel-app:
 	    container_name: emodel-app
@@ -41,19 +46,34 @@ ecos-model-app
 	    networks:
 	      - app_network
 
-Используемые переменные:
+Используемые переменные
 --------------------------
-*	**_JAVA_OPTIONS** - параметры для **jvm**
-*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-*	**JHIPSTER_SLEEP** - таймаут перед развертыванием микросервиса
 
-Типовой вывод успешного развертывания в лог контейнера:
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
+
+   * - Переменная
+     - Описание
+   * - **_JAVA_OPTIONS**
+     - параметры для **jvm**
+   * - **SPRING_PROFILES_ACTIVE**
+     - используемые при развертывании профили
+   * - **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE**
+     - url используемого по умолчанию **eureka load balancer**, содержит credentials
+   * - **SPRING_CLOUD_CONFIG_URI**
+     - url используемого **cloud config server**, содержит credentials
+   * - **JHIPSTER_REGISTRY_PASSWORD**
+     - пароль пользователя для аутентификации в **eureka load balancer**
+   * - **SPRING_DATASOURCE_URL**
+     - url используемого **postgresql datasource**
+   * - **JHIPSTER_SLEEP**
+     - таймаут перед развертыванием микросервиса
+
+Типовой вывод успешного развертывания в лог контейнера
 --------------------------------------------------------
-::
+
+.. code-block:: text
 
 	emodel-app                  | ----------------------------------------------------------
 	emodel-app                  |   Application 'emodel' is running! Access URLs:
@@ -61,8 +81,7 @@ ecos-model-app
 	emodel-app                  |   External:       http://172.25.0.26:8094/
 	emodel-app                  |   Profile(s):     [dev, swagger]
 	emodel-app                  | ----------------------------------------------------------
-	emodel-app                  | 2020-05-13 09:04:16.415  INFO 1 --- [           main] ru.citeck.ecos.model.EcosModelApp        : 
+	emodel-app                  | 2020-05-13 09:04:16.415  INFO 1 --- [           main] ru.citeck.ecos.model.EcosModelApp        :
 	emodel-app                  | ----------------------------------------------------------
 	emodel-app                  |   Config Server:  Connected to the JHipster Registry running in Docker
 	emodel-app                  | ----------------------------------------------------------
-
