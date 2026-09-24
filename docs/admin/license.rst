@@ -15,14 +15,14 @@ Citeck Enterprise
 
 Для работы **Citeck Enterprise** требуется проприетарная лицензия.
 
-Файл лицензии необходимо добавить в журнал **«Лицензии ECOS»** (Рабочее пространство **«Раздел администратора»** → **Управление системой**):
+1. Добавьте файл лицензии в журнал **«Лицензии ECOS»** (Рабочее пространство **«Раздел администратора»** → **Управление системой**):
 
-.. image:: _static/license/license_1.png
-    :width: 800
-    :align: center
+   .. image:: _static/license/license_1.png
+       :width: 800
+       :align: center
 
-Чтобы просмотреть детали лицензии, нажмите на иконку **«Глаз»**:
+2. Чтобы просмотреть детали лицензии, нажмите на иконку **«Глаз»**:
 
-.. image:: _static/license/license_2.png
-    :width: 600
-    :align: center
+   .. image:: _static/license/license_2.png
+       :width: 600
+       :align: center

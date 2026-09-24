@@ -28,7 +28,7 @@
            :width: 300
            :align: center
 
-4. Запустите **citeck-launcher**:
+4. Запустите **Citeck Launcher**:
 
    .. image:: _static/01_1.png
        :width: 400
@@ -50,22 +50,33 @@
        :width: 600
        :align: center
 
-.. note::    
+.. dropdown:: Enterprise: ввод учётных данных Harbor
+   :color: secondary
 
-  При установке Enterprise версии введите пароль для скачивания закрытых образов:
+   При установке Enterprise версии для скачивания закрытых образов необходимо ввести учетные данные:
 
-  .. image:: _static/new_namespace_3.png
-      :width: 400
-      :align: center
+   .. grid:: 2
+      :gutter: 2
 
- 
+      .. grid-item::
+
+         .. image:: _static/harbor_1.png
+            :width: 350
+            :align: center
+
+      .. grid-item::
+
+         .. image:: _static/harbor_2.png
+            :width: 350
+            :align: center
+
 6. Скачивание и разворачивание образов начнётся автоматически:
 
    .. image:: _static/pulling.png
        :width: 700
        :align: center
 
-7. Дождитесь статуса **Running** всех микросервисов и приложений, затем нажмите **Open In Browser**:
+7. Дождитесь статуса **Работает** всех микросервисов и приложений, затем нажмите **Открыть в браузере**:
 
    .. image:: _static/open.png
        :width: 700
@@ -73,23 +84,24 @@
 
 8. Войдите в систему:
 
-   .. list-table::
-       :widths: 50 50
-       :align: center
+   .. grid:: 2
+       :gutter: 2
 
-       * - | Используйте учётные данные **admin / admin**:
-           |
+       .. grid-item::
 
-             .. image:: _static/page_01.png
-                 :width: 350
-                 :align: center
+          Используйте учётные данные **admin / admin**:
 
-         - | При первом развёртывании без демонстрационных данных
-           | Keycloak попросит сменить пароль:
+          .. image:: _static/page_01.png
+              :width: 350
+              :align: center
 
-             .. image:: _static/page_02.png
-                 :width: 350
-                 :align: center
+       .. grid-item::
+
+          При первом развёртывании без демонстрационных данных Keycloak попросит сменить пароль:
+
+          .. image:: _static/page_02.png
+              :width: 350
+              :align: center
 
 9. По адресу http://localhost/ откроется страница :ref:`персонального рабочего пространства <ws_personal>`:
 
@@ -109,9 +121,21 @@
 
 В левом верхнем углу доступна кнопка для выбора рабочего пространства и создания нового:
 
-.. image:: _static/page_03.png
-    :width: 450
-    :align: center
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item::
+
+      .. image:: _static/page_03.png
+         :width: 500
+         :align: center
+
+   .. grid-item::
+
+      .. image:: _static/page_03_1.png
+         :width: 500
+         :align: center
+
 
 .. note::
 

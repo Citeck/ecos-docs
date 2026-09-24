@@ -1,13 +1,18 @@
+.. _ecos_notifications_app:
+
 ecos-notifications-app
 =======================
 
-Назначение:
+.. contents::
+
+Назначение
 -----------
 Образ микросервиса рассылки нотификаций
 
-Шаблон сервиса docker-compose:
+Шаблон сервиса docker-compose
 -------------------------------
-::
+
+.. code-block:: yaml
 
 	notifications-app:
 	    logging:
@@ -57,27 +62,51 @@ ecos-notifications-app
 	    networks:
 	      - app_network
 
-Используемые переменные:
+Используемые переменные
 --------------------------
-*	**_JAVA_OPTIONS** - параметры для **jvm**
-*	**SPRING_PROFILES_ACTIVE** - используемые при развертывании профили
-*	**EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE** - url используемого по умолчанию **eureka load balancer**, содержит credentials
-*	**SPRING_CLOUD_CONFIG_URI** - url используемого **cloud config server**, содержит credentials
-*	**JHIPSTER_REGISTRY_PASSWORD** - пароль пользователя для аутентификации в **eureka load balancer**
-*	**SPRING_DATASOURCE_URL** - url используемого **postgresql datasource**
-*	**JHIPSTER_SLEEP **- **таймаут** перед развертыванием микросервиса
-*	**ECOS-NOTIFICATIONS_EVENT_HOST** - fqdn/ip диспетчера очередей rabbitmq
-*	**ECOS-NOTIFICATIONS_EVENT_PORT** - amqp порт диспетчера очередей rabbitmq
-*	**ECOS-NOTIFICATIONS_EVENT_USERNAME** - пользователь диспетчера очередей rabbitmq
-*	**ECOS-NOTIFICATIONS_EVENT_PASSWORD** - пароль диспетчера очередей rabbitmq
-*	**ECOS-NOTIFICATIONS_ALFRESCO_URL** - fqdn развернутого приложения ecos
-*	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME** - пользователь в ecos для интеграции с микросервисом нотификации
-*	**ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD** - пароль пользователя в ecos для интеграции с микросервисом нотификации
 
+.. list-table::
+   :header-rows: 1
+   :class: tight-table
 
-Типовой вывод успешного развертывания в лог контейнера:
+   * - Переменная
+     - Описание
+   * - **_JAVA_OPTIONS**
+     - параметры для **jvm**
+   * - **SPRING_PROFILES_ACTIVE**
+     - используемые при развертывании профили
+   * - **EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE**
+     - url используемого по умолчанию **eureka load balancer**, содержит credentials
+   * - **SPRING_CLOUD_CONFIG_URI**
+     - url используемого **cloud config server**, содержит credentials
+   * - **JHIPSTER_REGISTRY_PASSWORD**
+     - пароль пользователя для аутентификации в **eureka load balancer**
+   * - **SPRING_DATASOURCE_URL**
+     - url используемого **postgresql datasource**
+   * - **JHIPSTER_SLEEP**
+     - **таймаут** перед развертыванием микросервиса
+   * - **ECOS-NOTIFICATIONS_EVENT_HOST**
+     - fqdn/ip диспетчера очередей rabbitmq
+   * - **ECOS-NOTIFICATIONS_EVENT_PORT**
+     - amqp порт диспетчера очередей rabbitmq
+   * - **ECOS-NOTIFICATIONS_EVENT_USERNAME**
+     - пользователь диспетчера очередей rabbitmq
+   * - **ECOS-NOTIFICATIONS_EVENT_PASSWORD**
+     - пароль диспетчера очередей rabbitmq
+   * - **ECOS-NOTIFICATIONS_ALFRESCO_URL**
+     - fqdn развернутого приложения ecos
+   * - **ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_USERNAME**
+     - пользователь в ecos для интеграции с микросервисом нотификации
+   * - **ECOS-NOTIFICATIONS_ALFRESCO_AUTHENTICATION_PASSWORD**
+     - пароль пользователя в ecos для интеграции с микросервисом нотификации
+
+Типовой вывод успешного развертывания в лог контейнера
 --------------------------------------------------------
-::
+
+.. dropdown:: Пример лога
+   :color: secondary
+
+   .. code-block:: text
 
 	notifications-app           | ----------------------------------------------------------
 	notifications-app           |   Application 'notifications' is running! Access URLs:
@@ -85,8 +114,7 @@ ecos-notifications-app
 	notifications-app           |   External:       http://172.26.0.22:8013/
 	notifications-app           |   Profile(s):     [prod, swagger]
 	notifications-app           | ----------------------------------------------------------
-	notifications-app           | 2020-05-14 05:59:30.204  INFO 1 --- [           main] r.c.ecos.notifications.NotificationsApp  : 
+	notifications-app           | 2020-05-14 05:59:30.204  INFO 1 --- [           main] r.c.ecos.notifications.NotificationsApp  :
 	notifications-app           | ----------------------------------------------------------
 	notifications-app           |   Config Server:  Connected to the JHipster Registry running in Docker
 	notifications-app           | ----------------------------------------------------------
-
