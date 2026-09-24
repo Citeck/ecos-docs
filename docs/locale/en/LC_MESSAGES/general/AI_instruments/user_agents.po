@@ -334,12 +334,12 @@ msgid ""
 msgstr ""
 "The stateless path has no human-in-the-loop (HITL) confirmations, and a "
 "call from BPMN runs under the process's technical user. Mutating tools "
-"are not available on this path: when called from BPMN, having them in "
-"the agent's tool whitelist causes an explicit error; when called via "
-"``POST /api/ai-agent/execute``, they are excluded from the tool set. "
-"When selecting an agent's whitelist for stateless scenarios, keep in "
-"mind that read-only tools called from BPMN also run under the technical "
-"user, not under the end user."
+"are not available on this path: when called from BPMN, having them in the"
+" agent's tool allowlist causes an explicit error; when called via ``POST "
+"/api/ai-agent/execute``, they are excluded from the tool set. When "
+"selecting an agent's allowlist for stateless scenarios, keep in mind that"
+" read-only tools called from BPMN also run under the technical user, not "
+"under the end user."
 
 #: ../../general/AI_instruments/user_agents.rst:99
 msgid "Stateful / Interactive"
@@ -455,7 +455,7 @@ msgstr ""
 "``DeployArtifactTool``, as well as internal service tools — "
 "``SaveFormDraftTool``, ``SaveDataTypeDraftTool``, ``SaveEscalationTool``,"
 " and similar) are not available on the stateless path: when called from "
-"BPMN, having such a tool in the agent's whitelist causes an explicit "
+"BPMN, having such a tool in the agent's allowlist causes an explicit "
 "error; when called via ``POST /api/ai-agent/execute``, it is excluded "
 "from the tool set with a notification in the response. In interactive "
 "dialogue, these tools run under the user's permissions with HITL "
@@ -471,9 +471,9 @@ msgid ""
 msgstr ""
 "Tools are split into two scopes: **operational** (working with records, "
 "documents, and communications) and **configuration** (creating and "
-"modifying platform artifacts). The scope is shown in the agent editor as"
-" a grouping of the tool list and is returned by the ``/api/ai-"
-"agent/available-tools`` endpoint."
+"modifying platform artifacts). The scope is shown in the agent editor as "
+"a grouping of the tool list and is returned by the ``/api/ai-agent"
+"/available-tools`` endpoint."
 
 #: ../../general/AI_instruments/user_agents.rst:142
 msgid ""
@@ -487,8 +487,8 @@ msgstr ""
 "The tables list the tool name — this is exactly what is written to the "
 "agent's ``tools`` field. The implementation class is derived from the "
 "name: ``queryRecords`` → ``QueryRecordsTool``. The \"Autonomous\" column "
-"shows the value of ``isAvailableForStatelessExecution()``: \"yes\" — the"
-" tool is available when called from BPMN and via ``POST /api/ai-"
+"shows the value of ``isAvailableForStatelessExecution()``: \"yes\" — the "
+"tool is available when called from BPMN and via ``POST /api/ai-"
 "agent/execute``, \"no\" — interactive dialogue only."
 
 #: ../../general/AI_instruments/user_agents.rst:145
@@ -594,8 +594,8 @@ msgid ""
 "Сводка «Клиент 360»: связанные сделки, обращения, договоры, платежи "
 "клиента"
 msgstr ""
-"\"Client 360\" summary: the client's related deals, cases, contracts, "
-"and payments"
+"\"Client 360\" summary: the client's related deals, cases, contracts, and"
+" payments"
 
 #: ../../general/AI_instruments/user_agents.rst:188
 msgid "``compareDocuments``"
@@ -612,8 +612,8 @@ msgstr "``documentAnalysis``"
 #: ../../general/AI_instruments/user_agents.rst:193
 msgid "Анализ содержимого документа записи (вопросы и ответы по документу)"
 msgstr ""
-"Analysis of a record's document content (questions and answers about the"
-" document)"
+"Analysis of a record's document content (questions and answers about the "
+"document)"
 
 #: ../../general/AI_instruments/user_agents.rst:194
 msgid "``analyzeFile``"
@@ -624,8 +624,8 @@ msgid ""
 "Анализ загруженного в чат файла: PDF и изображения нативно, офисные "
 "форматы через извлечение текста"
 msgstr ""
-"Analysis of a file uploaded to the chat: PDF and images natively, office"
-" formats via text extraction"
+"Analysis of a file uploaded to the chat: PDF and images natively, office "
+"formats via text extraction"
 
 #: ../../general/AI_instruments/user_agents.rst:197
 msgid "``proposeFile``"
@@ -636,8 +636,8 @@ msgid ""
 "Предложение сохранить сгенерированный файл в запись (карточка с выбором "
 "места сохранения)"
 msgstr ""
-"Offer to save a generated file to a record (a card for choosing the save"
-" location)"
+"Offer to save a generated file to a record (a card for choosing the save "
+"location)"
 
 #: ../../general/AI_instruments/user_agents.rst:200
 msgid "``discardPendingFile``"
@@ -683,8 +683,7 @@ msgstr "``deleteRecords``"
 
 #: ../../general/AI_instruments/user_agents.rst:214
 msgid "Удаление записей; выполняется после подтверждения пользователем в диалоге"
-msgstr ""
-"Delete records; executed after user confirmation in the dialogue"
+msgstr "Delete records; executed after user confirmation in the dialogue"
 
 #: ../../general/AI_instruments/user_agents.rst:215
 msgid "``generateImage``"
@@ -708,9 +707,7 @@ msgstr "``ragSearch``"
 
 #: ../../general/AI_instruments/user_agents.rst:223
 msgid "Семантический поиск по подключённым базам знаний (:ref:`RAG <rag-config>`)"
-msgstr ""
-"Semantic search across connected knowledge bases (:ref:`RAG <rag-"
-"config>`)"
+msgstr "Semantic search across connected knowledge bases (:ref:`RAG <rag-config>`)"
 
 #: ../../general/AI_instruments/user_agents.rst:224
 msgid "``ragGetDocument``"
@@ -718,8 +715,7 @@ msgstr "``ragGetDocument``"
 
 #: ../../general/AI_instruments/user_agents.rst:226
 msgid "Полный текст документа из базы знаний по ссылке из результатов поиска"
-msgstr ""
-"Full text of a knowledge base document by a link from search results"
+msgstr "Full text of a knowledge base document by a link from search results"
 
 #: ../../general/AI_instruments/user_agents.rst:227
 msgid "``getEcosAppContent``"
@@ -763,11 +759,11 @@ msgstr "Search across the Citeck platform documentation"
 
 #: ../../general/AI_instruments/user_agents.rst:251
 msgid "``generateDataType``"
-msgstr ""
+msgstr "``generateDataType``"
 
 #: ../../general/AI_instruments/user_agents.rst:253
 msgid "Генерация нового или изменение существующего типа данных"
-msgstr ""
+msgstr "Generate a new data type or modify an existing one"
 
 #: ../../general/AI_instruments/user_agents.rst:254
 msgid "``generateForm``"
@@ -775,7 +771,7 @@ msgstr "``generateForm``"
 
 #: ../../general/AI_instruments/user_agents.rst:256
 msgid "Генерация новой или изменение существующей формы"
-msgstr ""
+msgstr "Generate a new form or modify an existing one"
 
 #: ../../general/AI_instruments/user_agents.rst:257
 msgid "``generateBpmn``"
@@ -783,25 +779,27 @@ msgstr "``generateBpmn``"
 
 #: ../../general/AI_instruments/user_agents.rst:259
 msgid "Генерация нового или изменение существующего BPMN-процесса"
-msgstr ""
+msgstr "Generate a new BPMN process or modify an existing one"
 
 #: ../../general/AI_instruments/user_agents.rst:260
 msgid "``validateArtifact``"
-msgstr ""
+msgstr "``validateArtifact``"
 
 #: ../../general/AI_instruments/user_agents.rst:262
 msgid "Структурная валидация сгенерированного артефакта до публикации"
-msgstr ""
+msgstr "Structural validation of a generated artifact before publishing"
 
 #: ../../general/AI_instruments/user_agents.rst:263
 msgid "``deployArtifact``"
-msgstr ""
+msgstr "``deployArtifact``"
 
 #: ../../general/AI_instruments/user_agents.rst:265
 msgid ""
 "Публикация артефакта; при ``requireDeployConfirmation`` — после "
 "подтверждения человеком с выбором области публикации"
 msgstr ""
+"Publish an artifact; with ``requireDeployConfirmation``, after human "
+"confirmation with a choice of publication scope"
 
 #: ../../general/AI_instruments/user_agents.rst:266
 msgid "``editScript``"
@@ -810,6 +808,8 @@ msgstr "``editScript``"
 #: ../../general/AI_instruments/user_agents.rst:268
 msgid "Правка скрипта по текстовому запросу (результат — сравнение версий в чате)"
 msgstr ""
+"Edit a script per a text request (the result is a version comparison in "
+"the chat)"
 
 #: ../../general/AI_instruments/user_agents.rst:269
 msgid "``generateAppDocumentation``"
@@ -820,6 +820,8 @@ msgid ""
 "Техническая документация приложения ECOS: Markdown-отчёт с диаграммами по"
 " составу артефактов"
 msgstr ""
+"Technical documentation for an ECOS application: a Markdown report with "
+"diagrams of the artifact composition"
 
 #: ../../general/AI_instruments/user_agents.rst:275
 msgid ""
@@ -827,6 +829,8 @@ msgid ""
 "регистрируются только при включённом RAG "
 "(``citeck.ai.rag.enabled=true``)."
 msgstr ""
+"The ``ragSearch``, ``ragGetDocument``, and ``searchDocumentation`` tools "
+"are registered only when RAG is enabled (``citeck.ai.rag.enabled=true``)."
 
 #: ../../general/AI_instruments/user_agents.rst:277
 msgid ""
@@ -835,6 +839,9 @@ msgid ""
 "``saveEscalation``) используются внутри сервисов генерации и в белые "
 "списки агентов не добавляются."
 msgstr ""
+"Internal generation tools (``saveFormDraft``, ``saveDataTypeDraft``, "
+"``saveFormPatch``, ``saveDataTypePatch``, ``saveEscalation``) are used "
+"inside generation services and are not added to agent allowlists."
 
 #: ../../general/AI_instruments/user_agents.rst:283
 msgid "Преднастроенные агенты"
@@ -846,6 +853,9 @@ msgid ""
 "автоматически при развёртывании модуля ``citeck-ai``; состав инструментов"
 " см. в каталоге выше."
 msgstr ""
+"The platform ships with ready-made agents. Their records are created "
+"automatically when the ``citeck-ai`` module is deployed; see the catalog "
+"above for their tool composition."
 
 #: ../../general/AI_instruments/user_agents.rst:289
 msgid ""
@@ -857,18 +867,25 @@ msgid ""
 " белого списка инструментов поставляемого агента будут утеряны при "
 "обновлении — для собственных сценариев создавайте отдельного агента."
 msgstr ""
+"When the platform is updated, preconfigured agent records are "
+"synchronized with the shipped version: the name, description, "
+"instruction, tool list, and engine are overwritten with the shipped "
+"values. The provider and model settings (``aiProvider``, ``aiModel``), "
+"temperature, and the \"Enabled\" flag are preserved. Local edits to a "
+"shipped agent's instruction or tool allowlist will be lost on update — "
+"create a separate agent for your own scenarios."
 
 #: ../../general/AI_instruments/user_agents.rst:296
 msgid "Агент"
-msgstr ""
+msgstr "Agent"
 
 #: ../../general/AI_instruments/user_agents.rst:297
 msgid "Движок"
-msgstr ""
+msgstr "Engine"
 
 #: ../../general/AI_instruments/user_agents.rst:298
 msgid "Назначение и типовые запросы"
-msgstr ""
+msgstr "Purpose and typical requests"
 
 #: ../../general/AI_instruments/user_agents.rst:299
 msgid "Инструменты"
@@ -876,7 +893,7 @@ msgstr "Tools"
 
 #: ../../general/AI_instruments/user_agents.rst:300
 msgid "**Помощник по задачам и документам** (``tasks-documents-helper``)"
-msgstr ""
+msgstr "**Tasks and Documents Assistant** (``tasks-documents-helper``)"
 
 #: ../../general/AI_instruments/user_agents.rst:301
 #: ../../general/AI_instruments/user_agents.rst:309
@@ -892,6 +909,10 @@ msgid ""
 "клиенту», «собери сводку по клиенту». Обслуживает чат без явно выбранного"
 " агента"
 msgstr ""
+"Working with records, tasks, documents, and communications: \"find my "
+"open requests\", \"compare contract versions\", \"prepare a letter to the"
+" client\", \"compile a client summary\". Serves the chat when no agent is"
+" explicitly selected"
 
 #: ../../general/AI_instruments/user_agents.rst:303
 msgid ""
@@ -904,10 +925,18 @@ msgid ""
 "``getCurrentTime``, ``getJournalSelectionLink``, ``ragSearch``, "
 "``ragGetDocument``"
 msgstr ""
+"``queryRecords``, ``mutateRecord``, ``getRecordAttributes``, "
+"``getRecordDisplayName``, ``getRecordTypeMetadata``, "
+"``getRecordContent``, ``getRecordContentHistory``, ``getRecordContacts``,"
+" ``getActivities``, ``documentAnalysis``, ``analyzeFile``, "
+"``proposeFile``, ``discardPendingFile``, ``getClient360``, "
+"``getCurrentUserInfo``, ``compareDocuments``, ``writeEmail``, "
+"``getCurrentTime``, ``getJournalSelectionLink``, ``ragSearch``, "
+"``ragGetDocument``"
 
 #: ../../general/AI_instruments/user_agents.rst:304
 msgid "**Агент конфигурации платформы** (``platform-config-agent``)"
-msgstr ""
+msgstr "**Platform Configuration Agent** (``platform-config-agent``)"
 
 #: ../../general/AI_instruments/user_agents.rst:305
 #: ../../general/AI_instruments/user_agents.rst:321
@@ -921,6 +950,10 @@ msgid ""
 "согласования». Публикует артефакты только после подтверждения "
 "(``requireDeployConfirmation: true``)"
 msgstr ""
+"Creating and modifying configuration: \"create a data type for tracking "
+"business trips\", \"add a field for the amount to the form\", \"build an "
+"approval process\". Publishes artifacts only after confirmation "
+"(``requireDeployConfirmation: true``)"
 
 #: ../../general/AI_instruments/user_agents.rst:307
 msgid ""
@@ -929,24 +962,30 @@ msgid ""
 "``generateBpmn``, ``editScript``, ``validateArtifact``, "
 "``deployArtifact``, ``generateAppDocumentation``"
 msgstr ""
+"``searchDocumentation``, ``findArtifact``, ``queryRecords``, "
+"``getRecordTypeMetadata``, ``generateDataType``, ``generateForm``, "
+"``generateBpmn``, ``editScript``, ``validateArtifact``, "
+"``deployArtifact``, ``generateAppDocumentation``"
 
 #: ../../general/AI_instruments/user_agents.rst:308
 msgid "**Помощник по изображениям** (``image-helper``)"
-msgstr ""
+msgstr "**Image Assistant** (``image-helper``)"
 
 #: ../../general/AI_instruments/user_agents.rst:310
 msgid ""
 "Генерация и редактирование изображений: «нарисуй иконку для раздела», "
 "«убери фон», «сделай баннер к письму»"
 msgstr ""
+"Generating and editing images: \"draw an icon for the section\", \"remove"
+" the background\", \"make a banner for the email\""
 
 #: ../../general/AI_instruments/user_agents.rst:311
 msgid "``generateImage``, ``editImage``, ``analyzeFile``"
-msgstr ""
+msgstr "``generateImage``, ``editImage``, ``analyzeFile``"
 
 #: ../../general/AI_instruments/user_agents.rst:312
 msgid "**Помощник по возможностям платформы** (``platform-capabilities-helper``)"
-msgstr ""
+msgstr "**Platform Capabilities Assistant** (``platform-capabilities-helper``)"
 
 #: ../../general/AI_instruments/user_agents.rst:314
 msgid ""
@@ -954,16 +993,22 @@ msgid ""
 "ссылками на разделы: «поддерживается ли подключение своей LLM?», «как "
 "контролируется расход токенов?». Доступен начиная с релиза 2026.3"
 msgstr ""
+"Answers questions about platform capabilities strictly based on the "
+"documentation, with links to sections: \"is connecting a custom LLM "
+"supported?\", \"how is token usage controlled?\". Available starting with"
+" release 2026.3"
 
 #: ../../general/AI_instruments/user_agents.rst:315
 msgid ""
 "``searchDocumentation``, ``ragSearch``, ``ragGetDocument``, "
 "``getCurrentTime``"
 msgstr ""
+"``searchDocumentation``, ``ragSearch``, ``ragGetDocument``, "
+"``getCurrentTime``"
 
 #: ../../general/AI_instruments/user_agents.rst:316
 msgid "**Аудитор конфигурации** (``config-audit-helper``)"
-msgstr ""
+msgstr "**Configuration Auditor** (``config-audit-helper``)"
 
 #: ../../general/AI_instruments/user_agents.rst:318
 msgid ""
@@ -973,6 +1018,11 @@ msgid ""
 "„Договоры“». Только читающие инструменты. Доступен начиная с релиза "
 "2026.3"
 msgstr ""
+"Audits an application against a checklist — security (permissions, "
+"sensitive data, status-based access) and configuration quality (data "
+"model, statuses, processes, forms); a report with risk levels: \"audit "
+"the 'Contracts' application\". Read-only tools only. Available starting "
+"with release 2026.3"
 
 #: ../../general/AI_instruments/user_agents.rst:319
 msgid ""
@@ -981,10 +1031,14 @@ msgid ""
 "``getRecordAttributes``, ``getRecordDisplayName``, "
 "``searchDocumentation``, ``ragSearch``"
 msgstr ""
+"``getEcosAppContent``, ``getArtifactMetadata``, "
+"``getRecordTypeMetadata``, ``findArtifact``, ``queryRecords``, "
+"``getRecordAttributes``, ``getRecordDisplayName``, "
+"``searchDocumentation``, ``ragSearch``"
 
 #: ../../general/AI_instruments/user_agents.rst:320
 msgid "**Оператор публикации конфигурации** (``deploy-operator-helper``)"
-msgstr ""
+msgstr "**Configuration Deployment Operator** (``deploy-operator-helper``)"
 
 #: ../../general/AI_instruments/user_agents.rst:322
 msgid ""
@@ -992,12 +1046,18 @@ msgid ""
 "артефакты, вердикт «публиковать / вернуть на доработку»; публикация "
 "только после подтверждения человеком. Доступен начиная с релиза 2026.3"
 msgstr ""
+"Decides whether to publish an artifact: validation, impact assessment on "
+"dependent artifacts, a \"publish / send back for revision\" verdict; "
+"publishing only after human confirmation. Available starting with release"
+" 2026.3"
 
 #: ../../general/AI_instruments/user_agents.rst:323
 msgid ""
 "``findArtifact``, ``getArtifactMetadata``, ``validateArtifact``, "
 "``deployArtifact``, ``searchDocumentation``"
 msgstr ""
+"``findArtifact``, ``getArtifactMetadata``, ``validateArtifact``, "
+"``deployArtifact``, ``searchDocumentation``"
 
 #: ../../general/AI_instruments/user_agents.rst:325
 msgid ""
@@ -1008,16 +1068,24 @@ msgid ""
 " деловые письма и «Клиент 360» выполняются инструментами операционного "
 "агента (см. каталог выше)."
 msgstr ""
+"In addition to agent records, the platform includes built-in specialized "
+"assistants: a BPMN assistant in the process editor, a script-writing "
+"assistant, text editing in record fields, and :ref:`meeting recording and"
+" summary <call-recording-module>`. Document analysis and comparison, "
+"business letters, and \"Client 360\" are performed by the operational "
+"agent's tools (see the catalog above)."
 
 #: ../../general/AI_instruments/user_agents.rst:330
 msgid "Подключение базы знаний агенту"
-msgstr ""
+msgstr "Connecting a Knowledge Base to an Agent"
 
 #: ../../general/AI_instruments/user_agents.rst:332
 msgid ""
 "База знаний подключается агенту **через белый список инструментов** — "
 "отдельного поля привязки у записи агента нет:"
 msgstr ""
+"A knowledge base is connected to an agent **via the tool allowlist** — "
+"there is no separate binding field on the agent record:"
 
 #: ../../general/AI_instruments/user_agents.rst:334
 msgid ""
@@ -1025,10 +1093,12 @@ msgid ""
 "проиндексированным источникам: записям рабочих пространств и подключённым"
 " Git-репозиториям;"
 msgstr ""
+"``ragSearch`` + ``ragGetDocument`` — semantic search across indexed "
+"sources: workspace records and connected Git repositories;"
 
 #: ../../general/AI_instruments/user_agents.rst:335
 msgid "``searchDocumentation`` — поиск по документации платформы Citeck."
-msgstr ""
+msgstr "``searchDocumentation`` — search Citeck platform documentation."
 
 #: ../../general/AI_instruments/user_agents.rst:337
 msgid ""
@@ -1041,12 +1111,22 @@ msgid ""
 "например, агенту-справочнику по возможностям платформы инструкция "
 "предписывает искать только в документации."
 msgstr ""
+"The set of sources is configured on the :ref:`citeck-rag microservice "
+"<rag-config>` side: the \"Workspaces\" journal (which workspaces and data"
+" types are indexed) and \"GitLab Repositories\". Search results are "
+"filtered by the user's permissions and the dialogue's workspace, so "
+"different agents and different users see different subsets of the same "
+"knowledge base. The search scope is further narrowed by the agent's "
+"instruction — for example, the platform capabilities reference agent is "
+"instructed to search only the documentation."
 
 #: ../../general/AI_instruments/user_agents.rst:339
 msgid ""
 "Все три инструмента требуют включённого RAG "
 "(``citeck.ai.rag.enabled=true``)."
 msgstr ""
+"All three tools require RAG to be enabled "
+"(``citeck.ai.rag.enabled=true``)."
 
 #: ../../general/AI_instruments/user_agents.rst:344
 msgid "Создание агента"
@@ -1144,6 +1224,8 @@ msgid ""
 "Чтобы запретить выполнение инструмента на stateless-пути (вызов из BPMN и"
 " через ``POST /api/ai-agent/execute``):"
 msgstr ""
+"To prevent the tool from running on the stateless path (calls from BPMN "
+"and via ``POST /api/ai-agent/execute``):"
 
 #: ../../general/AI_instruments/user_agents.rst:411
 msgid ""
@@ -1153,6 +1235,10 @@ msgid ""
 "``saveFormDraft``) не скрываются, а просто не добавляются в белые списки "
 "агентов."
 msgstr ""
+"In an interactive dialogue, such a tool remains fully available and runs "
+"with HITL confirmations. There is no separate mechanism for \"hiding a "
+"tool from agents\": system tools (e.g., ``saveFormDraft``) are not hidden"
+" — they are simply not added to agent allowlists."
 
 #: ../../general/AI_instruments/user_agents.rst:415
 msgid "Маршрутизация в оркестраторе"
@@ -1164,6 +1250,9 @@ msgid ""
 "всех запросов ассистента. Маршрутизация определяется полем ``engine`` "
 "записи агента, а не автоматическим определением намерения:"
 msgstr ""
+"``AgentOrchestratorService.processRequest()`` is the single entry point "
+"for all assistant requests. Routing is determined by the agent record's "
+"``engine`` field, not by automatic intent detection:"
 
 #: ../../general/AI_instruments/user_agents.rst:419
 msgid ""
@@ -1172,6 +1261,10 @@ msgid ""
 "(``AgentExecutionService.executeInteractive``), ``CONFIG`` — цикл агента "
 "конфигурирования платформы (``ConfigAgentService``);"
 msgstr ""
+"a dialogue bound to an agent is served by that agent's engine: "
+"``TOOL_LOOP`` — the operational dialogue loop "
+"(``AgentExecutionService.executeInteractive``), ``CONFIG`` — the platform"
+" configuration agent loop (``ConfigAgentService``);"
 
 #: ../../general/AI_instruments/user_agents.rst:420
 msgid ""
@@ -1179,6 +1272,9 @@ msgid ""
 "умолчанию — свойство ``citeck.ai.agents.default-operational``, по "
 "умолчанию ``tasks-documents-helper``;"
 msgstr ""
+"a chat **with no agent selected** is served by the default operational "
+"agent — the ``citeck.ai.agents.default-operational`` property, default "
+"``tasks-documents-helper``;"
 
 #: ../../general/AI_instruments/user_agents.rst:421
 msgid ""
@@ -1186,6 +1282,9 @@ msgid ""
 "бизнес-приложения целиком) перенаправляется в конвейер планирования и "
 "исполнения с утверждением плана человеком."
 msgstr ""
+"a multi-artifact configuration request (e.g., creating an entire business"
+" application) is redirected to the planning-and-execution pipeline with "
+"human approval of the plan."
 
 #: ../../general/AI_instruments/user_agents.rst:425
 msgid "Ключевые файлы"
