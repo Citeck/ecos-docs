@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-09-24 10:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -79,8 +79,7 @@ msgstr "Audio capture"
 
 #: ../../introduction/meeting_record_plugin.rst:33
 msgid "Звук вкладки и микрофон пользователя объединяются в единый поток"
-msgstr ""
-"Tab audio and the user's microphone are combined into a single stream"
+msgstr "Tab audio and the user's microphone are combined into a single stream"
 
 #: ../../introduction/meeting_record_plugin.rst:34
 msgid "Автоматическая транскрипция"
@@ -96,8 +95,7 @@ msgstr "Summary generation"
 
 #: ../../introduction/meeting_record_plugin.rst:37
 msgid "Через LLM: ключевые темы, решения, задачи, открытые вопросы, участники"
-msgstr ""
-"Via LLM: key topics, decisions, tasks, open questions, participants"
+msgstr "Via LLM: key topics, decisions, tasks, open questions, participants"
 
 #: ../../introduction/meeting_record_plugin.rst:38
 msgid "Привязка к сущности"
@@ -146,11 +144,12 @@ msgstr ""
 #: ../../introduction/meeting_record_plugin.rst:51
 msgid ""
 "Расширение захватывает аудио участников (звук вкладки) и микрофон "
-"пользователя, микширует их и передаёт потоком по WebSocket в ``citeck-"
+"пользователя, микширует их и передаёт фрагментами по REST API в ``citeck-"
 "ai``."
 msgstr ""
-"The extension captures participant audio (tab audio) and user microphone,"
-" mixes them, and streams via WebSocket to ``citeck-ai``."
+"The extension captures participant audio (tab audio) and the user's "
+"microphone, mixes them, and sends them in chunks via REST API to "
+"``citeck-ai``."
 
 #: ../../introduction/meeting_record_plugin.rst:52
 msgid "После завершения встречи бэкенд транскрибирует аудио и генерирует резюме."
@@ -238,7 +237,7 @@ msgid ""
 "закройте/покиньте встречу, запись остановится автоматически."
 msgstr ""
 "When finished, click **Stop Recording** — or simply close/leave the "
-"meeting, the recording will stop automatically."
+"meeting, and the recording will stop automatically."
 
 #: ../../introduction/meeting_record_plugin.rst:110
 msgid "Дождитесь уведомления о готовности транскрипта и резюме."
@@ -322,9 +321,11 @@ msgstr "citeck-ai"
 
 #: ../../introduction/meeting_record_plugin.rst:166
 msgid ""
-"Бэкенд: WebSocket-обработчик, pipeline STT → LLM summary → сохранение "
-"активности"
-msgstr "Backend: WebSocket handler, pipeline STT → LLM summary → activity saving"
+"Бэкенд: REST API приёма фрагментов, конвейер «распознавание речи → резюме"
+" модели → сохранение активности»"
+msgstr ""
+"Backend: REST API for receiving chunks, the \"speech recognition → model "
+"summary → activity saving\" pipeline"
 
 #: ../../introduction/meeting_record_plugin.rst:167
 msgid "citeck-stt-sidecar"
@@ -335,22 +336,27 @@ msgid "Сервис транскрипции на базе GigaAM (распоз�
 msgstr "Transcription service based on GigaAM (Russian speech recognition)"
 
 #: ../../introduction/meeting_record_plugin.rst:169
-msgid "nginx"
-msgstr "nginx"
+msgid "gateway"
+msgstr "gateway"
 
 #: ../../introduction/meeting_record_plugin.rst:170
-msgid "WebSocket-прокси ``/gateway/ai/ws/`` напрямую на ``citeck-ai``"
-msgstr "WebSocket proxy ``/gateway/ai/ws/`` directly to ``citeck-ai``"
+msgid ""
+"Обычный маршрут ``/gateway/ai/`` — отдельная инфраструктура для передачи "
+"звука не нужна"
+msgstr ""
+"The regular ``/gateway/ai/`` route — no separate infrastructure is needed"
+" for audio transfer"
 
 #: ../../introduction/meeting_record_plugin.rst:174
 msgid ""
-"Основной gateway Citeck не проксирует WebSocket. Для работы расширения "
-"необходимо настроить nginx-маршрут ``/gateway/ai/ws/`` напрямую на "
-"``citeck-ai``."
+"Начиная с версии **1.12.0 (3 июня 2026)** звук передаётся по REST. "
+"Отдельный маршрут ``/gateway/ai/ws/`` и аутентификация по ``wsToken`` "
+"больше не используются: настраивать WebSocket-прокси не требуется."
 msgstr ""
-"The main Citeck gateway does not proxy WebSocket. For the extension to "
-"work, you need to configure an nginx route ``/gateway/ai/ws/`` directly "
-"to ``citeck-ai``."
+"Starting with version **1.12.0 (June 3, 2026)**, audio is transferred via"
+" REST. The separate ``/gateway/ai/ws/`` route and ``wsToken`` "
+"authentication are no longer used: no WebSocket proxy configuration is "
+"required."
 
 #: ../../introduction/meeting_record_plugin.rst:178
 msgid "Подробная техническая информация"
@@ -359,4 +365,29 @@ msgstr "Detailed Technical Information"
 #: ../../introduction/meeting_record_plugin.rst:180
 msgid ":ref:`Модуль записи совещаний (callrecording) <call-recording-module>`"
 msgstr ":ref:`Meeting Recording Module (callrecording) <call-recording-module>`"
+
+#~ msgid ""
+#~ "Бэкенд: WebSocket-обработчик, pipeline STT →"
+#~ " LLM summary → сохранение активности"
+#~ msgstr ""
+#~ "Backend: WebSocket handler, pipeline STT "
+#~ "→ LLM summary → activity saving"
+
+#~ msgid "nginx"
+#~ msgstr "nginx"
+
+#~ msgid "WebSocket-прокси ``/gateway/ai/ws/`` напрямую на ``citeck-ai``"
+#~ msgstr "WebSocket proxy ``/gateway/ai/ws/`` directly to ``citeck-ai``"
+
+#~ msgid ""
+#~ "Основной gateway Citeck не проксирует "
+#~ "WebSocket. Для работы расширения необходимо"
+#~ " настроить nginx-маршрут ``/gateway/ai/ws/`` "
+#~ "напрямую на ``citeck-ai``."
+#~ msgstr ""
+#~ "The main Citeck gateway does not "
+#~ "proxy WebSocket. For the extension to"
+#~ " work, you need to configure an "
+#~ "nginx route ``/gateway/ai/ws/`` directly to"
+#~ " ``citeck-ai``."
 

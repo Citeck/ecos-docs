@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 02:56+0300\n"
+"POT-Creation-Date: 2026-09-24 10:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../general/AI_Assistant_config.rst:2
 msgid "AI Ассистент. Архитектура и конфигурация"
@@ -96,7 +96,7 @@ msgid ""
 "— в статье :ref:`Пользовательские AI-агенты <user-agents>`."
 msgstr ""
 "The assistant's capabilities are implemented as tools. Tools are "
-"connected to each agent through its whitelist (the agent record's "
+"connected to each agent through its allowlist (the agent record's "
 "``tools`` field). See the :ref:`Custom AI Agents <user-agents>` article "
 "for the full catalog, split into operational and configuration tools."
 
@@ -120,7 +120,7 @@ msgstr "Configuration"
 
 #: ../../general/AI_Assistant_config.rst:42
 msgid "**Прокси поддержка:** HTTP и HTTPS протоколы"
-msgstr "**Proxy Support:** HTTP, HTTPS and SOCKS protocols"
+msgstr "**Proxy Support:** HTTP and HTTPS protocols"
 
 #: ../../general/AI_Assistant_config.rst:43
 msgid ""
@@ -162,35 +162,74 @@ msgstr "Required env variables"
 msgid "``ai-default``"
 msgstr "``ai-default``"
 
-#: ../../general/AI_Assistant_config.rst:61
+#: ../../general/AI_Assistant_config.rst
 msgid ""
 "**Рекомендуемый.** Yandex Cloud как единственный провайдер; модель "
 "``deepseek-v4-flash`` используется для всех задач, включая генерацию "
-"BPMN. Стенд не зависит от второго провайдера и его баланса."
+"BPMN."
 msgstr ""
 "**Recommended.** Yandex Cloud as the sole provider; the "
 "``deepseek-v4-flash`` model is used for all tasks, including BPMN "
-"generation. The stand does not depend on a second provider or its "
-"balance."
+"generation."
 
-#: ../../general/AI_Assistant_config.rst:62
-#: ../../general/AI_Assistant_config.rst:65
+#: ../../general/AI_Assistant_config.rst
+msgid "Стенд не зависит от второго провайдера и его баланса."
+msgstr "The stand does not depend on a second provider or its balance."
+
+#: ../../general/AI_Assistant_config.rst:63
+#: ../../general/AI_Assistant_config.rst:66
+#: ../../general/AI_Assistant_config.rst:73
 msgid "``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``"
 msgstr "``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``"
 
-#: ../../general/AI_Assistant_config.rst:63
+#: ../../general/AI_Assistant_config.rst:64
 msgid "``ai-yandex-gpt-oss``"
 msgstr "``ai-yandex-gpt-oss``"
 
-#: ../../general/AI_Assistant_config.rst:64
+#: ../../general/AI_Assistant_config.rst:65
 msgid "Yandex Cloud (``gpt-oss-120b``) для всех ассистентов"
 msgstr "Yandex Cloud (``gpt-oss-120b``) for all assistants"
 
-#: ../../general/AI_Assistant_config.rst:68
+#: ../../general/AI_Assistant_config.rst:67
+msgid "``ai-deepseek``"
+msgstr "``ai-deepseek``"
+
+#: ../../general/AI_Assistant_config.rst
+msgid ""
+"Собственный API DeepSeek (``api.deepseek.com``), модель ``deepseek-"
+"flash`` (DeepSeek-V4.1-Flash, мультимодальная — работает и с "
+"изображениями)."
+msgstr ""
+"DeepSeek's own API (``api.deepseek.com``), model ``deepseek-flash`` "
+"(DeepSeek-V4.1-Flash, multimodal — also works with images)."
+
+#: ../../general/AI_Assistant_config.rst
+msgid ""
+"Профиль включает ``citeck.ai.agents.pin-to-base-model``, поэтому модели, "
+"записанные в самих агентах, игнорируются: пути вида ``gpt://<каталог>/…``"
+" за пределами Yandex Cloud отвечают 404"
+msgstr ""
+"The profile enables ``citeck.ai.agents.pin-to-base-model``, so models "
+"specified in the agents themselves are ignored: paths like "
+"``gpt://<folder>/…`` return 404 outside Yandex Cloud"
+
+#: ../../general/AI_Assistant_config.rst:70
+msgid "``CTK_DEEPSEEK_API_KEY``"
+msgstr "``CTK_DEEPSEEK_API_KEY``"
+
+#: ../../general/AI_Assistant_config.rst:71
+msgid "``ai-yandex-deepseek``"
+msgstr "``ai-yandex-deepseek``"
+
+#: ../../general/AI_Assistant_config.rst
+msgid "Yandex Cloud как провайдер, модель DeepSeek внутри него"
+msgstr "Yandex Cloud as the provider, with a DeepSeek model inside it"
+
+#: ../../general/AI_Assistant_config.rst:76
 msgid "Подключение в Citeck Launcher"
 msgstr "Connecting in Citeck Launcher"
 
-#: ../../general/AI_Assistant_config.rst:70
+#: ../../general/AI_Assistant_config.rst:78
 msgid ""
 "На текущий момент, чтобы конфигурация настроек в лаунчере не "
 "перезаписывалась при обновлении версиий в ките, необходимо настраивать "
@@ -207,11 +246,11 @@ msgstr ""
 msgid "Как подключить AI Ассистента в Citeck Launcher"
 msgstr "How to Connect the AI Assistant in Citeck Launcher"
 
-#: ../../general/AI_Assistant_config.rst:76
+#: ../../general/AI_Assistant_config.rst:84
 msgid "Найдите микросервис **ai** в списке микросервисов."
 msgstr "Find the **ai** microservice in the microservices list."
 
-#: ../../general/AI_Assistant_config.rst:77
+#: ../../general/AI_Assistant_config.rst:85
 msgid ""
 "Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и "
 "добавьте переменные окружения:"
@@ -219,7 +258,7 @@ msgstr ""
 "**Left-click** on the microservice settings gear icon and add environment"
 " variables:"
 
-#: ../../general/AI_Assistant_config.rst:79
+#: ../../general/AI_Assistant_config.rst:87
 msgid ""
 "``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI "
 "Studio (профили ``ai-default`` и ``ai-yandex-gpt-oss``)"
@@ -227,7 +266,7 @@ msgstr ""
 "``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — for Yandex AI "
 "Studio (``ai-default`` and ``ai-yandex-gpt-oss`` profiles)"
 
-#: ../../general/AI_Assistant_config.rst:80
+#: ../../general/AI_Assistant_config.rst:88
 msgid ""
 "``CTK_ANTHROPIC_API_KEY`` — только при ручной настройке провайдера "
 "Anthropic (в готовых профилях не используется)"
@@ -235,7 +274,7 @@ msgstr ""
 "``CTK_ANTHROPIC_API_KEY`` — only when manually configuring the Anthropic "
 "provider (not used in the ready-made profiles)"
 
-#: ../../general/AI_Assistant_config.rst:84
+#: ../../general/AI_Assistant_config.rst:92
 msgid ""
 "Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку "
 "``SPRING_PROFILES_ACTIVE``."
@@ -243,7 +282,7 @@ msgstr ""
 "For the ``ai-yandex-gpt-oss`` profile, also add it to the "
 "``SPRING_PROFILES_ACTIVE`` line."
 
-#: ../../general/AI_Assistant_config.rst:86
+#: ../../general/AI_Assistant_config.rst:94
 msgid ""
 "Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите "
 "``application-launcher.yml``."
@@ -251,7 +290,7 @@ msgstr ""
 "**Right-click** on the same settings gear and select ``application-"
 "launcher.yml``."
 
-#: ../../general/AI_Assistant_config.rst:87
+#: ../../general/AI_Assistant_config.rst:95
 msgid "Вставьте содержимое нужного профиля:"
 msgstr "Paste the contents of the required profile:"
 
@@ -259,7 +298,7 @@ msgstr "Paste the contents of the required profile:"
 msgid "ai-default"
 msgstr "ai-default"
 
-#: ../../general/AI_Assistant_config.rst:118
+#: ../../general/AI_Assistant_config.rst:126
 msgid ""
 "Профиль задаёт только конфигурацию по умолчанию — поддержка остальных "
 "провайдеров и моделей (Anthropic Claude, OpenAI GPT, DeepSeek, Ollama) "
@@ -277,7 +316,7 @@ msgstr ""
 msgid "ai-yandex-gpt-oss"
 msgstr "ai-yandex-gpt-oss"
 
-#: ../../general/AI_Assistant_config.rst:141
+#: ../../general/AI_Assistant_config.rst:149
 msgid ""
 "Если для доступа к AI API требуется прокси-сервер, добавьте блок "
 "``proxy`` в конфигурацию — пример см. в разделе `Настройка прокси`_."
@@ -286,7 +325,7 @@ msgstr ""
 "block to the configuration — see the example in the `Proxy "
 "Configuration`_ section."
 
-#: ../../general/AI_Assistant_config.rst:143
+#: ../../general/AI_Assistant_config.rst:151
 #, python-brace-format
 msgid ""
 "Замените переменные ``${CTK_YANDEX_AI_API_KEY}`` и "
@@ -295,11 +334,11 @@ msgstr ""
 "Replace the variables ``${CTK_YANDEX_AI_API_KEY}`` and "
 "``${CTK_YANDEX_AI_FOLDER_ID}`` with real values."
 
-#: ../../general/AI_Assistant_config.rst:144
+#: ../../general/AI_Assistant_config.rst:152
 msgid "Сохраните настройку, микросервис перезапустится автоматически."
 msgstr "Save the setting — the microservice will restart automatically."
 
-#: ../../general/AI_Assistant_config.rst:148
+#: ../../general/AI_Assistant_config.rst:156
 msgid ""
 "Профиль ``ai-default`` — рекомендуемый минимум для стабильной работы "
 "ассистента: один провайдер (Yandex Cloud) с моделью ``deepseek-v4-flash``"
@@ -311,7 +350,7 @@ msgstr ""
 "``deepseek-v4-flash`` model covers all tasks, including BPMN generation, "
 "and does not require access to external foreign APIs."
 
-#: ../../general/AI_Assistant_config.rst:152
+#: ../../general/AI_Assistant_config.rst:160
 msgid ""
 "При использовании Anthropic в качестве провайдера (например, при ручной "
 "настройке более мощной модели для генерации BPMN) необходимо обеспечить "
@@ -323,11 +362,11 @@ msgstr ""
 " API must be available — for example, configure an HTTP proxy (see the "
 "`Proxy Configuration`_ section)."
 
-#: ../../general/AI_Assistant_config.rst:155
+#: ../../general/AI_Assistant_config.rst:163
 msgid "Провайдеры LLM"
 msgstr "LLM Providers"
 
-#: ../../general/AI_Assistant_config.rst:157
+#: ../../general/AI_Assistant_config.rst:165
 msgid ""
 "Citeck AI Ассистент поддерживает работу с различными провайдерами больших"
 " языковых моделей (LLM)."
@@ -335,31 +374,35 @@ msgstr ""
 "Citeck AI Assistant supports working with various Large Language Model "
 "(LLM) providers."
 
-#: ../../general/AI_Assistant_config.rst:160
+#: ../../general/AI_Assistant_config.rst:168
 msgid "Поддерживаемые провайдеры"
 msgstr "Supported Providers"
 
-#: ../../general/AI_Assistant_config.rst:162
+#: ../../general/AI_Assistant_config.rst:170
 msgid "**openai** - GPT-модели (gpt-5.1 и др.)"
 msgstr "**openai** - GPT models (gpt-5.1, etc.)"
 
-#: ../../general/AI_Assistant_config.rst:163
+#: ../../general/AI_Assistant_config.rst:171
 msgid "**anthropic** - Claude модели (claude-opus-4-5 и др.)"
 msgstr "**anthropic** - Claude models (claude-opus-4-5, etc.)"
 
-#: ../../general/AI_Assistant_config.rst:164
-msgid "**deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)"
-msgstr "**deepseek** - DeepSeek models (deepseek-chat, deepseek-coder)"
+#: ../../general/AI_Assistant_config.rst:172
+msgid ""
+"**deepseek** - модели DeepSeek (``deepseek-flash`` — DeepSeek-V4.1-Flash,"
+" мультимодальная)"
+msgstr ""
+"**deepseek** - DeepSeek models (``deepseek-flash`` — DeepSeek-V4.1-Flash,"
+" multimodal)"
 
-#: ../../general/AI_Assistant_config.rst:165
+#: ../../general/AI_Assistant_config.rst:173
 msgid "**ollama** - локальные модели (granite3.3, llama3, mistral)"
 msgstr "**ollama** - local models (granite3.3, llama3, mistral)"
 
-#: ../../general/AI_Assistant_config.rst:168
+#: ../../general/AI_Assistant_config.rst:176
 msgid "Выбор провайдера по умолчанию"
 msgstr "Selecting the Default Provider"
 
-#: ../../general/AI_Assistant_config.rst:170
+#: ../../general/AI_Assistant_config.rst:178
 msgid ""
 "Провайдер по умолчанию указывается в ``citeck.ai.default.provider``. Этот"
 " провайдер используется для всех ассистентов, если не указан специфичный:"
@@ -367,7 +410,7 @@ msgstr ""
 "The default provider is specified in ``citeck.ai.default.provider``. This"
 " provider is used for all assistants unless a specific one is specified:"
 
-#: ../../general/AI_Assistant_config.rst:181
+#: ../../general/AI_Assistant_config.rst:189
 msgid ""
 "Для каждого типа ассистента можно указать своего провайдера через "
 "параметр ``provider``. Если не указан - используется "
@@ -377,11 +420,11 @@ msgstr ""
 "``provider`` parameter. If not specified, ``citeck.ai.default.provider`` "
 "is used."
 
-#: ../../general/AI_Assistant_config.rst:184
+#: ../../general/AI_Assistant_config.rst:192
 msgid "Базовая конфигурация модели"
 msgstr "Base Model Configuration"
 
-#: ../../general/AI_Assistant_config.rst:186
+#: ../../general/AI_Assistant_config.rst:194
 msgid ""
 "Для работы системы необходимо указать базовую модель в "
 "``citeck.ai.base.model``. Эта модель используется по умолчанию для всех "
@@ -391,11 +434,11 @@ msgstr ""
 "``citeck.ai.base.model``. This model is used by default for all "
 "assistants unless a specific model is specified:"
 
-#: ../../general/AI_Assistant_config.rst:196
+#: ../../general/AI_Assistant_config.rst:204
 msgid "Настройка моделей для разных ассистентов"
 msgstr "Configuring Models for Different Assistants"
 
-#: ../../general/AI_Assistant_config.rst:198
+#: ../../general/AI_Assistant_config.rst:206
 msgid ""
 "В рамках выбранного провайдера каждый тип ассистента может использовать "
 "свою модель и дополнительные параметры:"
@@ -403,7 +446,7 @@ msgstr ""
 "Within the selected provider, each assistant type can use its own model "
 "and additional parameters:"
 
-#: ../../general/AI_Assistant_config.rst:232
+#: ../../general/AI_Assistant_config.rst:240
 msgid ""
 "Слот ``universal`` не относится к чату. Агент чата по умолчанию задаётся "
 "свойством ``citeck.ai.agents.default-operational`` (по умолчанию — "
@@ -415,13 +458,13 @@ msgid ""
 msgstr ""
 "The ``universal`` slot does not apply to chat. The default chat agent is "
 "set by the ``citeck.ai.agents.default-operational`` property (by default,"
-" the tasks-and-documents assistant), and the dialog model is taken from "
-"the agent record. The ``universal`` slot sets the model for internal "
+" the tasks-and-documents assistant), and the dialogue model is taken from"
+" the agent record. The ``universal`` slot sets the model for internal "
 "generators — forms, data types, and application documentation — for calls"
 " made outside an agent. If a generator is invoked by an agent tool, the "
 "agent's model is used, and the slot serves as a fallback value."
 
-#: ../../general/AI_Assistant_config.rst:241
+#: ../../general/AI_Assistant_config.rst:249
 msgid ""
 "Слот ``intent-detection`` задаёт модель для служебных вызовов агентного "
 "режима: построение и пересмотр плана, разбор ответа пользователя на "
@@ -436,16 +479,16 @@ msgstr ""
 "service calls: building and revising the plan, parsing the user's "
 "response to the agent's question (confirm, change, reject, skip), and the"
 " classifiers for edit scope, request routing, and clarifying questions. "
-"If an agent is active in the dialog, these calls run on the agent's own "
-"model — the parameter serves as a fallback value. When the value is "
+"If an agent is active in the dialogue, these calls run on the agent's own"
+" model — the parameter serves as a fallback value. When the value is "
 "empty, these calls run on the Spring AI provider's default model "
 "(``spring.ai.<provider>.chat.options.model``)."
 
-#: ../../general/AI_Assistant_config.rst:249
+#: ../../general/AI_Assistant_config.rst:257
 msgid "Параметры ассистентов"
 msgstr "Assistant Parameters"
 
-#: ../../general/AI_Assistant_config.rst:251
+#: ../../general/AI_Assistant_config.rst:259
 msgid ""
 "``provider`` - провайдер для данного ассистента (если не указан - "
 "используется ``citeck.ai.default.provider``)"
@@ -453,7 +496,7 @@ msgstr ""
 "``provider`` - provider for this assistant (if not specified, "
 "``citeck.ai.default.provider`` is used)"
 
-#: ../../general/AI_Assistant_config.rst:252
+#: ../../general/AI_Assistant_config.rst:260
 msgid ""
 "``model`` - модель для использования (должна быть доступна у выбранного "
 "провайдера)"
@@ -461,7 +504,7 @@ msgstr ""
 "``model`` - the model to use (must be available with the selected "
 "provider)"
 
-#: ../../general/AI_Assistant_config.rst:253
+#: ../../general/AI_Assistant_config.rst:261
 msgid ""
 "``temperature`` - температура генерации (0.0-1.0); значение ``~`` (null) "
 "— параметр не передаётся провайдеру (нужно для моделей, которые не "
@@ -473,7 +516,7 @@ msgstr ""
 " that do not accept temperature, e.g. Anthropic Claude in extended "
 "reasoning mode)"
 
-#: ../../general/AI_Assistant_config.rst:254
+#: ../../general/AI_Assistant_config.rst:262
 msgid ""
 "``reasoning-effort`` - уровень рассуждений: ``minimal``, ``low``, "
 "``medium``, ``high``; значение ``none`` (синонимы ``off``, ``disabled``, "
@@ -483,11 +526,11 @@ msgstr ""
 " ``high``; the value ``none`` (synonyms ``off``, ``disabled``, "
 "``default``) means the parameter is not sent to the provider"
 
-#: ../../general/AI_Assistant_config.rst:255
+#: ../../general/AI_Assistant_config.rst:263
 msgid "``streaming`` - включить потоковый вывод"
 msgstr "``streaming`` - enable streaming output"
 
-#: ../../general/AI_Assistant_config.rst:256
+#: ../../general/AI_Assistant_config.rst:264
 msgid ""
 "``use-native-structured-output`` - использовать нативный structured "
 "output провайдера"
@@ -495,13 +538,13 @@ msgstr ""
 "``use-native-structured-output`` - use the provider's native structured "
 "output"
 
-#: ../../general/AI_Assistant_config.rst:258
+#: ../../general/AI_Assistant_config.rst:266
 msgid "Помимо ``assistants``, свои блоки конфигурации имеют подсистемы:"
 msgstr ""
 "In addition to ``assistants``, the following subsystems have their own "
 "configuration blocks:"
 
-#: ../../general/AI_Assistant_config.rst:260
+#: ../../general/AI_Assistant_config.rst:268
 msgid ""
 "``citeck.ai.agents`` - агенты по умолчанию: ``default-operational`` "
 "(агент чата, когда пользователь не выбрал агента явно; по умолчанию "
@@ -517,7 +560,7 @@ msgstr ""
 "\"optimize\" actions and free-form requests; ``platform-config-agent`` by"
 " default)"
 
-#: ../../general/AI_Assistant_config.rst:261
+#: ../../general/AI_Assistant_config.rst:269
 msgid ""
 "``citeck.ai.multimodal`` - анализ загружаемых файлов: ``enabled``, "
 "``limits.max-file-size-mb`` (по умолчанию 10)"
@@ -525,7 +568,7 @@ msgstr ""
 "``citeck.ai.multimodal`` - analysis of uploaded files: ``enabled``, "
 "``limits.max-file-size-mb`` (10 by default)"
 
-#: ../../general/AI_Assistant_config.rst:262
+#: ../../general/AI_Assistant_config.rst:270
 msgid ""
 "``citeck.ai.image`` - генерация изображений (см. раздел `Генерация "
 "изображений`_)"
@@ -533,7 +576,7 @@ msgstr ""
 "``citeck.ai.image`` - image generation (see the `Image Generation`_ "
 "section)"
 
-#: ../../general/AI_Assistant_config.rst:263
+#: ../../general/AI_Assistant_config.rst:271
 msgid ""
 "``citeck.ai.model-capabilities`` - таблица возможностей моделей (какие "
 "модели мультимодальны и читают PDF нативно); дополняется шаблонами "
@@ -543,7 +586,7 @@ msgstr ""
 "models are multimodal and read PDF natively); extended with ``patterns`` "
 "templates and point ``overrides``"
 
-#: ../../general/AI_Assistant_config.rst:264
+#: ../../general/AI_Assistant_config.rst:272
 msgid ""
 "``citeck.ai.rag`` - семантический поиск (:ref:`настройка RAG <rag-"
 "config>`)"
@@ -551,7 +594,7 @@ msgstr ""
 "``citeck.ai.rag`` - semantic search (:ref:`RAG configuration <rag-"
 "config>`)"
 
-#: ../../general/AI_Assistant_config.rst:265
+#: ../../general/AI_Assistant_config.rst:273
 msgid ""
 "``citeck.ai.call-recording`` - :ref:`запись и резюме совещаний <call-"
 "recording-module>`"
@@ -559,11 +602,79 @@ msgstr ""
 "``citeck.ai.call-recording`` - :ref:`meeting recording and summary <call-"
 "recording-module>`"
 
-#: ../../general/AI_Assistant_config.rst:270
+#: ../../general/AI_Assistant_config.rst:274
+msgid ""
+"``citeck.ai.artifacts.workspace-creatable`` - виды артефактов, которые "
+"разрешено создавать внутри рабочего пространства. Список поддерживается "
+"вручную и является единственным источником правды об области создания"
+msgstr ""
+"``citeck.ai.artifacts.workspace-creatable`` - artifact kinds that may be "
+"created inside a workspace. The list is maintained manually and is the "
+"single source of truth for where artifacts can be created"
+
+#: ../../general/AI_Assistant_config.rst:275
+msgid ""
+"``citeck.ai.agent-execution`` - ограничения конвейера: ``max-steps``, "
+"``max-retries-per-step``, ``max-retries-search-analyze``, ``max-wall-"
+"time``, ``request-timeout``, ``parallel-steps`` (см. :ref:`архитектуру "
+"агентов <ai-architecture>`)"
+msgstr ""
+"``citeck.ai.agent-execution`` - pipeline limits: ``max-steps``, ``max-"
+"retries-per-step``, ``max-retries-search-analyze``, ``max-wall-time``, "
+"``request-timeout``, ``parallel-steps`` (see :ref:`agent architecture "
+"<ai-architecture>`)"
+
+#: ../../general/AI_Assistant_config.rst:276
+msgid ""
+"``citeck.ai.deepseek.thinking`` - режим рассуждений на собственном API "
+"DeepSeek, где модель рассуждает по умолчанию и провайдер не даёт это "
+"отключить штатными средствами: ``endpoint-default`` (ничего не менять), "
+"``light-off`` (поставляемое значение — рассуждения отключены только для "
+"лёгких генераций), ``disabled`` (для всех вызовов)"
+msgstr ""
+"``citeck.ai.deepseek.thinking`` - reasoning mode on DeepSeek's own API, "
+"where the model reasons by default and the provider offers no standard "
+"way to turn it off: ``endpoint-default`` (change nothing), ``light-off`` "
+"(shipped value — reasoning is disabled only for lightweight generations),"
+" ``disabled`` (for all calls)"
+
+#: ../../general/AI_Assistant_config.rst:277
+msgid ""
+"``citeck.ai.agents.pin-to-base-model`` - игнорировать модель, записанную "
+"в самих агентах, и выполнять всех агентов на базовой модели профиля (по "
+"умолчанию ``false``)"
+msgstr ""
+"``citeck.ai.agents.pin-to-base-model`` - ignore the model specified in "
+"the agents themselves and run all agents on the profile's base model "
+"(default ``false``)"
+
+#: ../../general/AI_Assistant_config.rst:281
+msgid ""
+"Два значения проверяются при старте, и неверное значение НЕ ДАЁТ "
+"приложению запуститься:"
+msgstr ""
+"Two values are validated at startup, and an invalid value PREVENTS the "
+"application from starting:"
+
+#: ../../general/AI_Assistant_config.rst:283
+msgid ""
+"пустой список или неизвестный вид артефакта в ``citeck.ai.artifacts"
+".workspace-creatable``;"
+msgstr ""
+"an empty list or an unknown artifact kind in ``citeck.ai.artifacts"
+".workspace-creatable``;"
+
+#: ../../general/AI_Assistant_config.rst:284
+msgid "``citeck.ai.agent-execution.request-timeout`` меньше ``max-wall-time``."
+msgstr ""
+"``citeck.ai.agent-execution.request-timeout`` is less than ``max-wall-"
+"time``."
+
+#: ../../general/AI_Assistant_config.rst:289
 msgid "Модели AI-агентов"
 msgstr "Models of AI Agents"
 
-#: ../../general/AI_Assistant_config.rst:272
+#: ../../general/AI_Assistant_config.rst:291
 msgid ""
 "У :ref:`пользовательских агентов <user-agents>` провайдер и модель — "
 "реквизиты записи агента (``aiProvider``, ``aiModel``, ``temperature``, "
@@ -579,7 +690,7 @@ msgstr ""
 "generators: a data type, form, or process created on request through the "
 "configuration agent is generated using that agent's model."
 
-#: ../../general/AI_Assistant_config.rst:274
+#: ../../general/AI_Assistant_config.rst:293
 msgid ""
 "Поля ``aiProvider`` и ``aiModel`` обязательны. У преднастроенных агентов "
 "они заполнены при поставке; чтобы перевести агента на другую модель, "
@@ -597,7 +708,7 @@ msgstr ""
 "platform version is updated (see the note on preconfigured agent "
 "synchronization in the :ref:`Custom AI Agents <user-agents>` article)."
 
-#: ../../general/AI_Assistant_config.rst:276
+#: ../../general/AI_Assistant_config.rst:295
 msgid ""
 "Пример распределения моделей между агентами: мощная модель — агенту "
 "конфигурирования (генерация артефактов), экономичная — операционному "
@@ -613,11 +724,11 @@ msgstr ""
 "assistant: it needs a multimodal model to analyze images, so an "
 "economical or local model cannot be assigned to it."
 
-#: ../../general/AI_Assistant_config.rst:281
+#: ../../general/AI_Assistant_config.rst:300
 msgid "Телеметрия и расход токенов"
 msgstr "Telemetry and Token Usage"
 
-#: ../../general/AI_Assistant_config.rst:283
+#: ../../general/AI_Assistant_config.rst:302
 msgid ""
 "По каждому обращению к LLM в журнал приложения ``citeck-ai`` записываются"
 " метрики: токены запроса, ответа и суммарные; расширенные метрики при их "
@@ -635,7 +746,7 @@ msgstr ""
 "provider quota is used (by tokens or by number of requests), a warning is"
 " written to the log."
 
-#: ../../general/AI_Assistant_config.rst:285
+#: ../../general/AI_Assistant_config.rst:304
 msgid ""
 "Кроме того, каждый вызов с данными о расходе токенов сохраняется записью "
 "типа «Вызов LLM» (``emodel/ai-llm-call``). В административном разделе AI "
@@ -649,7 +760,7 @@ msgstr ""
 " many tokens did a specific agent, model, or user spend\" without needing"
 " the application log. The call card opens from the journal."
 
-#: ../../general/AI_Assistant_config.rst:287
+#: ../../general/AI_Assistant_config.rst:306
 msgid ""
 "**Что записывается.** Одна запись на вызов LLM: агент (ссылка на карточку"
 " агента), диалог, провайдер, модель, пользователь, рабочее пространство, "
@@ -658,15 +769,15 @@ msgid ""
 "для потокового режима), причина завершения, дата вызова."
 msgstr ""
 "**What is recorded.** One record per LLM call: agent (link to the agent "
-"card), dialog, provider, model, user, workspace, five token counters "
+"card), dialogue, provider, model, user, workspace, five token counters "
 "(request, response, total, reasoning, cached), duration in seconds, time "
 "to first token (streaming mode only), finish reason, call date."
 
-#: ../../general/AI_Assistant_config.rst:289
+#: ../../general/AI_Assistant_config.rst:308
 msgid "**Чего в записи нет и почему:**"
 msgstr "**What is not in the record and why:**"
 
-#: ../../general/AI_Assistant_config.rst:291
+#: ../../general/AI_Assistant_config.rst:310
 msgid ""
 "вызов, по которому провайдер не вернул сведений о расходе, не "
 "записывается вовсе — строка из нулей неотличима от действительно "
@@ -676,7 +787,7 @@ msgstr ""
 "recorded at all — a row of zeros would be indistinguishable from a "
 "genuinely free call and would distort any total in the journal;"
 
-#: ../../general/AI_Assistant_config.rst:292
+#: ../../general/AI_Assistant_config.rst:311
 msgid ""
 "вызов без агента (фоновые службы, AI-задача процесса с собственным "
 "промптом) записывается с пустым полем агента: токены потрачены и должны "
@@ -687,7 +798,7 @@ msgstr ""
 "and must be accounted for, and \"a call without an agent\" is a fact, not"
 " a loss of data."
 
-#: ../../general/AI_Assistant_config.rst:294
+#: ../../general/AI_Assistant_config.rst:313
 msgid ""
 "**Преднастройки группировки.** В «Шаблонах настроек» журнала поставляются"
 " шесть разрезов расхода: по агентам, по моделям, по пользователям, по "
@@ -699,7 +810,7 @@ msgstr ""
 " and by workspace. Each shows the key breakdown column and the sums of "
 "the five token counters."
 
-#: ../../general/AI_Assistant_config.rst:298
+#: ../../general/AI_Assistant_config.rst:317
 msgid ""
 "Шаблоны разрезов видны **только администраторам** (группа "
 "``GROUP_ECOS_ADMINISTRATORS``) и только в административном разделе. Под "
@@ -711,7 +822,7 @@ msgstr ""
 "section. They are not present in the journal's template list for a "
 "regular user — this is an access restriction, not a configuration error."
 
-#: ../../general/AI_Assistant_config.rst:302
+#: ../../general/AI_Assistant_config.rst:321
 msgid ""
 "Итоги считаются «на лету» по детальным записям: отдельного хранилища "
 "агрегированных сумм нет. Поэтому срок хранения записей не ограничен, а "
@@ -724,11 +835,11 @@ msgstr ""
 "usage history for the corresponding period — the totals disappear "
 "together with the records they were calculated from."
 
-#: ../../general/AI_Assistant_config.rst:305
+#: ../../general/AI_Assistant_config.rst:324
 msgid "Графики расхода"
 msgstr "Usage Charts"
 
-#: ../../general/AI_Assistant_config.rst:307
+#: ../../general/AI_Assistant_config.rst:326
 msgid ""
 "Помимо табличных разрезов, по тем же записям строятся графики — виджетом "
 ":ref:`Графическая статистика <widget_graphic_statistics>` на дашборде. "
@@ -740,7 +851,7 @@ msgstr ""
 " widget on a dashboard. Widget setup: the **\"LLM Calls\"** journal, a "
 "breakdown template, a grouping attribute, and an aggregation attribute."
 
-#: ../../general/AI_Assistant_config.rst:309
+#: ../../general/AI_Assistant_config.rst:328
 msgid ""
 "Готовый дашборд входит в поставку модуля: административный раздел **AI → "
 "«Графики расхода»**. На нём три графика из типового набора, приведённого "
@@ -754,69 +865,69 @@ msgstr ""
 " as soon as call records appear in the system. Your own charts over the "
 "same data are added the usual way, through the dashboard settings."
 
-#: ../../general/AI_Assistant_config.rst:311
+#: ../../general/AI_Assistant_config.rst:330
 msgid "Типовой набор, закрывающий обычные вопросы о расходе:"
 msgstr "A typical set that covers common usage questions:"
 
-#: ../../general/AI_Assistant_config.rst:318
+#: ../../general/AI_Assistant_config.rst:337
 msgid "Что показывает"
 msgstr "What it shows"
 
-#: ../../general/AI_Assistant_config.rst:319
+#: ../../general/AI_Assistant_config.rst:338
 msgid "Тип графика"
 msgstr "Chart type"
 
-#: ../../general/AI_Assistant_config.rst:320
+#: ../../general/AI_Assistant_config.rst:339
 msgid "Группировка"
 msgstr "Grouping"
 
-#: ../../general/AI_Assistant_config.rst:321
+#: ../../general/AI_Assistant_config.rst:340
 msgid "Агрегация"
 msgstr "Aggregation"
 
-#: ../../general/AI_Assistant_config.rst:322
+#: ../../general/AI_Assistant_config.rst:341
 msgid "Расход по агентам"
 msgstr "Usage by agent"
 
-#: ../../general/AI_Assistant_config.rst:323
+#: ../../general/AI_Assistant_config.rst:342
 msgid "Столбчатый"
 msgstr "Bar"
 
-#: ../../general/AI_Assistant_config.rst:324
+#: ../../general/AI_Assistant_config.rst:343
 msgid "Агент"
 msgstr "Agent"
 
-#: ../../general/AI_Assistant_config.rst:325
-#: ../../general/AI_Assistant_config.rst:329
-#: ../../general/AI_Assistant_config.rst:333
+#: ../../general/AI_Assistant_config.rst:344
+#: ../../general/AI_Assistant_config.rst:348
+#: ../../general/AI_Assistant_config.rst:352
 msgid "Сумма поля «Токенов всего»"
 msgstr "Sum of the \"Total tokens\" field"
 
-#: ../../general/AI_Assistant_config.rst:326
+#: ../../general/AI_Assistant_config.rst:345
 msgid "Доля моделей в расходе"
 msgstr "Share of models in usage"
 
-#: ../../general/AI_Assistant_config.rst:327
+#: ../../general/AI_Assistant_config.rst:346
 msgid "Круговой"
 msgstr "Pie"
 
-#: ../../general/AI_Assistant_config.rst:328
+#: ../../general/AI_Assistant_config.rst:347
 msgid "Модель"
 msgstr "Model"
 
-#: ../../general/AI_Assistant_config.rst:330
+#: ../../general/AI_Assistant_config.rst:349
 msgid "Динамика расхода"
 msgstr "Usage over time"
 
-#: ../../general/AI_Assistant_config.rst:331
+#: ../../general/AI_Assistant_config.rst:350
 msgid "Линейный"
 msgstr "Line"
 
-#: ../../general/AI_Assistant_config.rst:332
+#: ../../general/AI_Assistant_config.rst:351
 msgid "Дата вызова, период «сутки»"
 msgstr "Call date, \"day\" period"
 
-#: ../../general/AI_Assistant_config.rst:335
+#: ../../general/AI_Assistant_config.rst:354
 msgid ""
 "Вызовы без агента (фоновые службы, AI-задача процесса с собственным "
 "промптом) образуют на графике по агентам отдельную группу — это "
@@ -826,7 +937,7 @@ msgstr ""
 "own prompt) form a separate group on the by-agent chart — this is normal;"
 " the tokens for them were spent and must be accounted for."
 
-#: ../../general/AI_Assistant_config.rst:339
+#: ../../general/AI_Assistant_config.rst:358
 msgid ""
 "Виджет графической статистики поставляется со сборкой интерфейса и "
 "доступен не в каждой инсталляции; табличные разрезы журнала работают в "
@@ -844,11 +955,11 @@ msgstr ""
 " the journal's breakdowns. Practical configuration details are in the "
 ":ref:`\"Graphic Statistics\" Widget <widget_graphic_statistics>` article."
 
-#: ../../general/AI_Assistant_config.rst:342
+#: ../../general/AI_Assistant_config.rst:361
 msgid "Генерация изображений"
 msgstr "Image Generation"
 
-#: ../../general/AI_Assistant_config.rst:344
+#: ../../general/AI_Assistant_config.rst:363
 msgid ""
 "Генерация изображений настраивается блоком ``citeck.ai.image`` и работает"
 " **только через OpenAI** (``api.openai.com``) независимо от того, какой "
@@ -858,7 +969,7 @@ msgstr ""
 "works **only through OpenAI** (``api.openai.com``), regardless of which "
 "provider is selected for chat:"
 
-#: ../../general/AI_Assistant_config.rst:371
+#: ../../general/AI_Assistant_config.rst:390
 msgid ""
 "Ключ для генерации изображений задаётся **отдельной** переменной "
 "``CTK_AI_IMAGE_OPENAI_API_KEY``. Если чат работает через другого "
@@ -876,7 +987,7 @@ msgstr ""
 "chat key is substituted automatically only when chat itself runs through "
 "``api.openai.com``."
 
-#: ../../general/AI_Assistant_config.rst:373
+#: ../../general/AI_Assistant_config.rst:392
 msgid ""
 "Модель ``gpt-image-2`` не поддерживает прозрачный фон: запросы с "
 "прозрачным фоном автоматически выполняются моделью из ``transparent-"
@@ -888,7 +999,7 @@ msgstr ""
 "model from ``transparent-fallback-model``. To get an explicit error "
 "instead, set the parameter to an empty value."
 
-#: ../../general/AI_Assistant_config.rst:375
+#: ../../general/AI_Assistant_config.rst:394
 msgid ""
 "Доступ пользователей к генерации изображений дополнительно ограничен "
 "группой ``ai-image-allowed`` (администраторы и системные процессы имеют "
@@ -900,23 +1011,23 @@ msgstr ""
 "without group membership) — see the :ref:`AI Feature Security <ai-"
 "security>` article for details."
 
-#: ../../general/AI_Assistant_config.rst:378
+#: ../../general/AI_Assistant_config.rst:397
 msgid "Пример использования разных провайдеров"
 msgstr "Example of Using Different Providers"
 
-#: ../../general/AI_Assistant_config.rst:399
+#: ../../general/AI_Assistant_config.rst:418
 msgid "Все указанные модели должны быть доступны в рамках выбранного провайдера."
 msgstr "All specified models must be available within the selected provider."
 
-#: ../../general/AI_Assistant_config.rst:402
+#: ../../general/AI_Assistant_config.rst:421
 msgid "Настройка Structured Output"
 msgstr "Structured Output Configuration"
 
-#: ../../general/AI_Assistant_config.rst:404
+#: ../../general/AI_Assistant_config.rst:423
 msgid "Конфигурация retry-механизма для структурированного вывода:"
 msgstr "Retry mechanism configuration for structured output:"
 
-#: ../../general/AI_Assistant_config.rst:419
+#: ../../general/AI_Assistant_config.rst:438
 msgid ""
 "Повторы при сетевых сбоях обращений к провайдеру (таймауты, обрывы "
 "соединения) настраиваются отдельно — стандартным блоком Spring AI "
@@ -927,7 +1038,7 @@ msgstr ""
 "AI ``spring.ai.retry`` block; 3 attempts with increasing delay by "
 "default."
 
-#: ../../general/AI_Assistant_config.rst:422
+#: ../../general/AI_Assistant_config.rst:441
 msgid "Примеры конфигурации основных провайдеров"
 msgstr "Configuration Examples for Main Providers"
 
@@ -947,7 +1058,7 @@ msgstr "DeepSeek"
 msgid "Yandex Cloud (через OpenAI-совместимый API)"
 msgstr "Yandex Cloud (via OpenAI-compatible API)"
 
-#: ../../general/AI_Assistant_config.rst:485
+#: ../../general/AI_Assistant_config.rst:504
 msgid ""
 "Для Yandex Cloud рекомендуется использовать готовые профили **``ai-"
 "default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ "
@@ -957,25 +1068,25 @@ msgstr ""
 "default``** or **``ai-yandex-gpt-oss``** — see the `Spring Profiles`_ "
 "section above. Manual configuration is shown below."
 
-#: ../../general/AI_Assistant_config.rst:505
+#: ../../general/AI_Assistant_config.rst:524
 #, python-brace-format
 msgid "Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud"
 msgstr "Replace ``{folder_id}`` with the real Yandex Cloud folder identifier"
 
-#: ../../general/AI_Assistant_config.rst:506
+#: ../../general/AI_Assistant_config.rst:525
 msgid "Поддержка Yandex Cloud через OpenAI-совместимый API является частичной"
 msgstr "Yandex Cloud support via the OpenAI-compatible API is partial"
 
-#: ../../general/AI_Assistant_config.rst:507
+#: ../../general/AI_Assistant_config.rst:526
 #, python-brace-format
 msgid "Формат модели: ``gpt://{folder_id}/model-name/latest``"
 msgstr "Model format: ``gpt://{folder_id}/model-name/latest``"
 
-#: ../../general/AI_Assistant_config.rst:508
+#: ../../general/AI_Assistant_config.rst:527
 msgid "Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud"
 msgstr "Available models: ``gpt-oss-120b``, and other Yandex Cloud models"
 
-#: ../../general/AI_Assistant_config.rst:509
+#: ../../general/AI_Assistant_config.rst:528
 msgid ""
 "Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в "
 "формате Yandex Cloud"
@@ -983,11 +1094,11 @@ msgstr ""
 "In all ``citeck.ai.*.model`` settings, the model must be specified in "
 "Yandex Cloud format"
 
-#: ../../general/AI_Assistant_config.rst:512
+#: ../../general/AI_Assistant_config.rst:531
 msgid "Настройка прокси"
 msgstr "Proxy Configuration"
 
-#: ../../general/AI_Assistant_config.rst:514
+#: ../../general/AI_Assistant_config.rst:533
 msgid ""
 "Citeck AI Ассистент поддерживает работу через прокси-сервер для доступа к"
 " внешним AI-сервисам."
@@ -995,23 +1106,23 @@ msgstr ""
 "Citeck AI Assistant supports working through a proxy server to access "
 "external AI services."
 
-#: ../../general/AI_Assistant_config.rst:517
+#: ../../general/AI_Assistant_config.rst:536
 msgid "Поддерживаемые протоколы прокси"
 msgstr "Supported Proxy Protocols"
 
-#: ../../general/AI_Assistant_config.rst:519
+#: ../../general/AI_Assistant_config.rst:538
 msgid "**HTTP** - стандартный HTTP прокси"
 msgstr "**HTTP** - standard HTTP proxy"
 
-#: ../../general/AI_Assistant_config.rst:520
+#: ../../general/AI_Assistant_config.rst:539
 msgid "**HTTPS** - защищенный HTTPS прокси"
 msgstr "**HTTPS** - secure HTTPS proxy"
 
-#: ../../general/AI_Assistant_config.rst:523
+#: ../../general/AI_Assistant_config.rst:542
 msgid "Переменные окружения"
 msgstr "Environment Variables"
 
-#: ../../general/AI_Assistant_config.rst:541
+#: ../../general/AI_Assistant_config.rst:560
 msgid "Пример конфигурации в application.yml"
 msgstr "Configuration Example in application.yml"
 
