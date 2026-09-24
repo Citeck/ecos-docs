@@ -16,7 +16,7 @@
 
 .. note::
 
-  Предварительно запустите микросервис **ecos-project-tracker** в :ref:`лончере<citeck_launcher>`:
+  Предварительно запустите микросервис **ecos-project-tracker** в :ref:`лаунчере<citeck_launcher>`:
 
   .. image:: _static/ept/ept_ms.png
        :width: 500
