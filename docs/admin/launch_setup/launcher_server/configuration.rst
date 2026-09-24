@@ -343,7 +343,7 @@ daemon.yml
 **docker**
 
 - ``pullConcurrency`` -- количество параллельных загрузок Docker-образов (по умолчанию 4)
-- ``stopTimeout`` -- время ожидания graceful shutdown контейнера перед SIGKILL (если не задано -- действует значение Docker по умолчанию, 10 секунд)
+- ``stopTimeout`` -- время ожидания graceful shutdown контейнера перед SIGKILL (если не задано -- 15 секунд)
 
 Настройка через citeck setup
 ------------------------------
