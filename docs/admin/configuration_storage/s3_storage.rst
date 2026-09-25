@@ -7,6 +7,10 @@
 
     Доступно только в Enterprise версии.
 
+.. seealso::
+
+    Требования к объёму и ресурсам S3-совместимого хранилища — :ref:`sizing_s3`.
+
 1. Открываем журнал **Хранилища контента**
 
 Журнал - ``v2/journals?journalId=ecos-content-storages&viewMode=table&ws=admin$workspace``

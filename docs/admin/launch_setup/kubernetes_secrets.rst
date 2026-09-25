@@ -308,7 +308,7 @@ EcosMicroservicesPostgresqlApp
             password: gatewaypassword
           # ... и т.д. для каждой БД
 
-Ключи паролей для каждой базы данных формируются по шаблону **``{username}-password``**:
+Ключи паролей для каждой базы данных формируются по шаблону **``{username}-password``**. Назначение баз данных описано в разделе :ref:`Перечень баз данных <sizing_databases>`.
 
 .. list-table::
    :header-rows: 1
