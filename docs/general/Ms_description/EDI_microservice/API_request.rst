@@ -42,7 +42,7 @@ DTO запроса и ответа:
     requestAtts.setAtt("requestData", ObjectData.create().set("documentRef", RecordRef.valueOf("recordRef value")));
     recordsService.mutate(requestAtts);
 
-Посмотреть различные типы запросов можно в классе **EdiRequestRecords** микросервиса ecos-edi
+Посмотреть различные типы запросов можно в классе **EdiRequestRouter** микросервиса ecos-edi
 
 Пример запроса из консоли:
 
@@ -85,7 +85,7 @@ DTO запроса и ответа:
            });
        var resp = await rec.save("json");
 
-.. dropdown:: aquireCounterparty — создание связи с контрагентом
+.. dropdown:: acquireCounterparty — создание связи с контрагентом
    :color: secondary
 
    Запрос на создание связи с контрагентом.
@@ -101,12 +101,12 @@ DTO запроса и ответа:
 
        var rec = Records.get('edi/edi-action@');
        rec.att("_self", {
-                       "requestType":"aquireCounterparty",
+                       "requestType":"acquireCounterparty",
                        "providerType":"KONTUR",
                        "requestData": {
                            "counterpartyRef":"emodel/counterparty@12311241-123123",
                            "clientBoxId":"123123-123123123-123213",
-                           "invitationDocRef ":"emodel/invitationDoc@12311241-123123",
+                           "invitationDocRef":"emodel/invitationDoc@12311241-123123",
                            "comment": "commentText"
                        }
 
@@ -156,9 +156,10 @@ DTO запроса и ответа:
    * *isInternal* - является ли пакет внутренним (оборот между департаменатами одной организации)
    * *needSentSignature* - Требуется ли подпись контрагента
    * *packageNumber* - Номер пакета (Опционально)
-   * *packageDate* - Дата пакета (Опционально)
+   * *packageDate* - Дата пакета в формате ГГГГ-ММ-ДД (Опционально)
    * *packageComment* - Комментарий к пакету (Опционально)
    * *signerRef* - recordRef пользователя подписавшего документы в пакете
+   * *targetType* - id типа данных, по которому выбирается ящик ЭДО юр. лица и контрагента, если *clientBoxId* или *counterpartyBoxId* не указаны. Сопоставляется с полем «Типы цели» настроек ЭДО (Опционально)
 
    .. code-block:: javascript
 
@@ -169,15 +170,15 @@ DTO запроса и ответа:
                        "requestData": {
                            "packageRef":"emodel/edi-package@12311241-123123",
                            "counterpartyRef":"emodel/counterparty@12311241-123123",
-                           "counterpartyBoxId ":"234623478246824623442374",
+                           "counterpartyBoxId":"234623478246824623442374",
                            "legalEntityRef":"emodel/legal-entity@12311241-123123",
                            "clientBoxId":"2342342342342342424324",
-                           "fromDepartmentId ":"3434444444444434343434",
+                           "fromDepartmentId":"3434444444444434343434",
                            "toDepartmentId":"242423423424242424242",
                            "isInternal":false,
                            "needSentSignature":true,
                            "packageNumber":"22551515252",
-                           "packageDate":"2023/09/08",
+                           "packageDate":"2023-09-08",
                            "packageComment":"Test comment",
                            "signerRef": "emodel/person@12311241-123123"
                        }
@@ -202,7 +203,7 @@ DTO запроса и ответа:
                        "requestType":"signPackage",
                        "providerType":"KONTUR",
                        "requestData": {
-                           "packageRef ":"emodel/edi-package@12311241-123123"
+                           "packageRef":"emodel/edi-package@12311241-123123"
                        }
 
            });
@@ -266,6 +267,8 @@ DTO запроса и ответа:
 
    * *documentRefs* - список подписанных неформализованных документов, для которых требуется отправить подписи.
    * *invoicesRefs* - список подписанных формализованных документов,  для которых требуется отправить подписи
+   * *inn* - ИНН юр. лица (Опционально, используется провайдером СБИС)
+   * *fio* - ФИО подписанта (Опционально, используется провайдером СБИС; по умолчанию — ФИО текущего пользователя)
 
    .. code-block:: javascript
 
@@ -332,7 +335,7 @@ DTO запроса и ответа:
                        "requestType":"rejectPackage",
                        "providerType":"KONTUR",
                        "requestData": {
-                           "packageRef ":"emodel/edi-package@12311241-123123"
+                           "packageRef":"emodel/edi-package@12311241-123123"
                        }
 
            });
@@ -388,10 +391,10 @@ DTO запроса и ответа:
            });
        rec.save("json");
 
-.. dropdown:: acceptRevocationRequests — отправка подписанных запросов на аннулирование по документам
+.. dropdown:: acceptRevocationRequests — отправка подписанного согласия на аннулирование по документам
    :color: secondary
 
-   Отправка подписанных запросов на аннулирование по документам.
+   Отправка подписанного согласия на аннулирование документов по предложению контрагента.
 
    Параметры:
 
@@ -612,7 +615,7 @@ DTO запроса и ответа:
 
    Параметры:
 
-   * *documentRef* – recordRef документа по которому требуется генерация xml отказа в подписи
+   * *documentRefs* – список документов, по которым требуется генерация xml отказа в подписи
    * *signerRef* - recordRef пользователя, который будет подписывать отказ
    * *comment* - комментарий отказа
 
@@ -642,7 +645,7 @@ DTO запроса и ответа:
    Параметры:
 
    * *documentRef* – recordRef документа по которому требуется генерация xml запроса на аннулирование
-   * *signerRef* - имя пользователя, который будет подписывать запрос на аннулирование
+   * *signerName* - имя пользователя, который будет подписывать запрос на аннулирование
    * *comment* - комментарий запроса на аннулирование
 
    .. code-block:: javascript
@@ -667,8 +670,8 @@ DTO запроса и ответа:
 
    Параметры:
 
-   * *documentRef* – recordRef документов по которым требуется генерация xml запроса на аннулирование
-   * *signerRef* - имя пользователя, который будет подписывать запрос на аннулирование
+   * *documentRefs* – recordRef документов по которым требуется генерация xml запроса на аннулирование
+   * *signerName* - имя пользователя, который будет подписывать запрос на аннулирование
    * *comment* - комментарий запроса на аннулирование
 
    .. code-block:: javascript
@@ -697,7 +700,7 @@ DTO запроса и ответа:
    Параметры:
 
    * *documentRef* – recordRef документа по которому требуется генерация xml корректировки
-   * *signerRef* - имя пользователя, который будет подписывать корректировку
+   * *signerName* - имя пользователя, который будет подписывать корректировку
    * *comment* - комментарий
 
    .. code-block:: javascript
@@ -746,8 +749,9 @@ DTO запроса и ответа:
 
    * *documentRef* – recordRef документа по которому требуется генерация титула покупателя
    * *signerName* - имя пользователя, который будет подписывать титул покупателя
-   * *factArrivalDate* - фактическая дата передачи товара
+   * *factArrivalDate* - фактическая дата передачи товара в формате ГГГГ-ММ-ДД
    * *comment* - комментарий
+   * *data* - дополнительные данные запроса на генерацию титула, передаются провайдеру (Опционально)
 
    .. code-block:: javascript
 
@@ -758,8 +762,52 @@ DTO запроса и ответа:
                        "requestData": {
                            "documentRef":"emodel/edi-document@ref1",
                            "signerName":"admin",
-                           "factArrivalDate ":"2023/09/08",
+                           "factArrivalDate":"2023-09-08",
                            "comment":"Test comment"
+                       }
+
+           });
+       var res = rec.save("json");
+
+.. dropdown:: sendEdiXml — отправка EDI-сообщения провайдеру
+   :color: secondary
+
+   Отправка EDI-сообщения (например, ORDERS или DESADV) провайдеру. Содержимое документа отправляется как есть. Реализовано для Контур.EDI (*providerType* — KONTUR).
+
+   Параметры:
+
+   * *documentRef* - recordRef документа с XML EDI-сообщения
+
+   .. code-block:: javascript
+
+       var rec = Records.get('edi/edi-action@');
+       rec.att("_self", {
+                       "requestType":"sendEdiXml",
+                       "providerType":"KONTUR",
+                       "requestData": {
+                           "documentRef":"emodel/edi-document@ref1"
+                       }
+
+           });
+       var res = rec.save("json");
+
+.. dropdown:: sendSignedEdiXml — отправка подписанного EDI-сообщения провайдеру
+   :color: secondary
+
+   Отправка EDI-сообщения вместе с подписью. На текущий момент коннекторами провайдеров не поддерживается.
+
+   Параметры:
+
+   * *documentRef* - recordRef подписанного документа с XML EDI-сообщения
+
+   .. code-block:: javascript
+
+       var rec = Records.get('edi/edi-action@');
+       rec.att("_self", {
+                       "requestType":"sendSignedEdiXml",
+                       "providerType":"KONTUR",
+                       "requestData": {
+                           "documentRef":"emodel/edi-document@ref1"
                        }
 
            });
@@ -862,6 +910,68 @@ DTO запроса и ответа:
                        "providerType":"KONTUR",
                        "requestData": {
                            "documentRef":"emodel/edi-document@ref1"
+                       }
+
+           });
+       var res = rec.save("json");
+
+.. dropdown:: generateUniversalMessageXml — генерация xml универсального сообщения для документа
+   :color: secondary
+
+   Генерация xml универсального сообщения по документу. Возвращается recordRef сохранённого универсального сообщения.
+
+   Параметры:
+
+   * *documentRef* - recordRef документа, по которому формируется сообщение
+   * *universalMessageCode* - тип сообщения: *Receipt* (извещение о получении), *AmendmentRequest* (уведомление об уточнении), *Rejection* (отказ), *InformationMessage* (информационное сообщение)
+   * *sender* - сведения об отправителе: *firstName*, *lastName*, *middleName*, *position*
+   * *receiver* - сведения о получателе: *firstName*, *lastName*, *middleName*, *position*
+   * *comment* - комментарий (Опционально)
+
+   .. code-block:: javascript
+
+       var rec = Records.get('edi/edi-action@');
+       rec.att("_self", {
+                       "requestType":"generateUniversalMessageXml",
+                       "providerType":"KONTUR",
+                       "requestData": {
+                           "documentRef":"emodel/edi-document@ref1",
+                           "universalMessageCode":"Rejection",
+                           "sender": {
+                               "firstName":"Иван",
+                               "lastName":"Иванов",
+                               "middleName":"Иванович",
+                               "position":"Бухгалтер"
+                           },
+                           "receiver": {
+                               "firstName":"Пётр",
+                               "lastName":"Петров",
+                               "middleName":"Петрович",
+                               "position":"Менеджер"
+                           },
+                           "comment":"Test comment"
+                       }
+
+           });
+       var res = rec.save("json");
+
+.. dropdown:: sendUniversalMessage — отправка универсального сообщения провайдеру
+   :color: secondary
+
+   Отправка провайдеру универсального сообщения, сформированного запросом *generateUniversalMessageXml*.
+
+   Параметры:
+
+   * *documentRef* - recordRef универсального сообщения
+
+   .. code-block:: javascript
+
+       var rec = Records.get('edi/edi-action@');
+       rec.att("_self", {
+                       "requestType":"sendUniversalMessage",
+                       "providerType":"KONTUR",
+                       "requestData": {
+                           "documentRef":"emodel/edi-universal-message-xml@ref1"
                        }
 
            });
