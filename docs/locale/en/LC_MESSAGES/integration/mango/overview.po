@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/mango/overview.rst:4
+msgid "Как работает интеграция"
+msgstr "How the Integration Works"
+
+#: ../../integration/mango/overview.rst:6
+msgid ""
+"Интеграция входит в микросервис ``ecos-integrations`` и собрана из штатных"
+" механизмов Citeck: входящего вебхука, секрета, конечных точек и маршрута "
+"Camel DSL ``mango-call-recordings-sync``. Уведомления MANGO OFFICE "
+"поступают во входящий вебхук ``mango-webhook`` и обрабатываются через "
+"RabbitMQ."
+msgstr ""
+"The integration is part of the ``ecos-integrations`` microservice and is "
+"built from standard Citeck mechanisms: an incoming webhook, a secret, "
+"endpoints, and the Camel DSL route ``mango-call-recordings-sync``. MANGO "
+"OFFICE notifications arrive at the ``mango-webhook`` incoming webhook and "
+"are processed through RabbitMQ."
+
+#: ../../integration/mango/overview.rst:13
+msgid "Термины"
+msgstr "Terms"
+
+#: ../../integration/mango/overview.rst:20
+msgid "Термин"
+msgstr "Term"
+
+#: ../../integration/mango/overview.rst:21
+msgid "Значение"
+msgstr "Meaning"
+
+#: ../../integration/mango/overview.rst:22
+msgid "ВАТС"
+msgstr "VPBX"
+
+#: ../../integration/mango/overview.rst:23
+msgid "Виртуальная АТС MANGO OFFICE."
+msgstr "MANGO OFFICE virtual PBX."
+
+#: ../../integration/mango/overview.rst:24
+msgid "Код ВАТС"
+msgstr "VPBX code"
+
+#: ../../integration/mango/overview.rst:25
+msgid ""
+"Уникальный код ВАТС (``vpbx_api_key``), API-ключ, который выдаётся при "
+"подключении API-коннектора."
+msgstr ""
+"Unique VPBX code (``vpbx_api_key``), the API key issued when the API "
+"connector is connected."
+
+#: ../../integration/mango/overview.rst:26
+msgid "Соль"
+msgstr "Salt"
+
+#: ../../integration/mango/overview.rst:27
+msgid ""
+"Ключ для создания подписи (``vpbx_api_salt``). Выдаётся вместе с кодом "
+"ВАТС и в запросах не передаётся."
+msgstr ""
+"Signing key (``vpbx_api_salt``). Issued together with the VPBX code and "
+"not transmitted in requests."
+
+#: ../../integration/mango/overview.rst:28
+msgid "Событие"
+msgstr "Event"
+
+#: ../../integration/mango/overview.rst:29
+msgid ""
+"То, что произошло в ВАТС: например, завершился звонок или аудиозапись "
+"попала в облачное хранилище."
+msgstr ""
+"Something that happened in the VPBX: for example, a call ended or a "
+"recording was placed in cloud storage."
+
+#: ../../integration/mango/overview.rst:30
+#: ../../integration/mango/overview.rst:53
+msgid "Уведомление"
+msgstr "Notification"
+
+#: ../../integration/mango/overview.rst:31
+msgid ""
+"POST-запрос, который MANGO OFFICE отправляет во внешнюю систему о событии "
+"в ВАТС."
+msgstr ""
+"A POST request that MANGO OFFICE sends to an external system about an "
+"event in the VPBX."
+
+#: ../../integration/mango/overview.rst:32
+msgid "Уведомление о записи"
+msgstr "Recording notification"
+
+#: ../../integration/mango/overview.rst:33
+msgid ""
+"Уведомление «Запись добавлена» (``/events/record/added``): аудиозапись "
+"разговора готова к загрузке."
+msgstr ""
+"The \"Recording added\" notification (``/events/record/added``): the "
+"conversation recording is ready for download."
+
+#: ../../integration/mango/overview.rst:34
+msgid "Событие Citeck"
+msgstr "Citeck event"
+
+#: ../../integration/mango/overview.rst:35
+msgid ""
+"Событие платформы ``in-webhook-request``, которое входящий вебхук создаёт "
+"из принятого уведомления."
+msgstr ""
+"The ``in-webhook-request`` platform event that the incoming webhook "
+"creates from an accepted notification."
+
+#: ../../integration/mango/overview.rst:36
+msgid "``entry_id``"
+msgstr "``entry_id``"
+
+#: ../../integration/mango/overview.rst:37
+msgid ""
+"Идентификатор звонка в MANGO OFFICE. Общий для всех уведомлений одного "
+"звонка."
+msgstr ""
+"Call identifier in MANGO OFFICE. Common to all notifications of the same "
+"call."
+
+#: ../../integration/mango/overview.rst:38
+msgid "``recording_id``"
+msgstr "``recording_id``"
+
+#: ../../integration/mango/overview.rst:39
+msgid "Идентификатор аудиозаписи в MANGO OFFICE."
+msgstr "Recording identifier in MANGO OFFICE."
+
+#: ../../integration/mango/overview.rst:40
+msgid "Очередь недоставленных сообщений (DLQ)"
+msgstr "Dead-letter queue (DLQ)"
+
+#: ../../integration/mango/overview.rst:41
+msgid ""
+"Очередь RabbitMQ, в которую попадают сообщения, не обработанные после всех"
+" повторов. Разбирается вручную."
+msgstr ""
+"A RabbitMQ queue that receives messages not processed after all retries. "
+"Reviewed manually."
+
+#: ../../integration/mango/overview.rst:44
+msgid "Уведомления MANGO OFFICE"
+msgstr "MANGO OFFICE notifications"
+
+#: ../../integration/mango/overview.rst:46
+msgid ""
+"О каждом звонке интеграция получает от MANGO OFFICE два отдельных "
+"уведомления:"
+msgstr ""
+"For each call, the integration receives two separate notifications from "
+"MANGO OFFICE:"
+
+#: ../../integration/mango/overview.rst:54
+msgid "Адрес"
+msgstr "Address"
+
+#: ../../integration/mango/overview.rst:55
+msgid "Описание"
+msgstr "Description"
+
+#: ../../integration/mango/overview.rst:56
+msgid "Итог вызова"
+msgstr "Call summary"
+
+#: ../../integration/mango/overview.rst:57
+msgid "``/events/summary``"
+msgstr "``/events/summary``"
+
+#: ../../integration/mango/overview.rst:58
+msgid ""
+"Приходит по завершении звонка. Содержит номер звонящего, направление и "
+"результат звонка."
+msgstr ""
+"Arrives when the call ends. Contains the caller's number, the direction, "
+"and the result of the call."
+
+#: ../../integration/mango/overview.rst:59
+msgid "Запись добавлена"
+msgstr "Recording added"
+
+#: ../../integration/mango/overview.rst:60
+msgid "``/events/record/added``"
+msgstr "``/events/record/added``"
+
+#: ../../integration/mango/overview.rst:61
+msgid ""
+"Приходит, когда аудиозапись разговора помещена в облачное хранилище и "
+"готова к загрузке."
+msgstr ""
+"Arrives when the conversation recording has been placed in cloud storage "
+"and is ready for download."
+
+#: ../../integration/mango/overview.rst:65
+msgid ""
+"Номера звонящего в уведомлении о записи нет, а идентификатора аудиозаписи "
+"нет в итоге вызова. Поэтому интеграция связывает оба уведомления по общему"
+" идентификатору звонка MANGO OFFICE (``entry_id``): итог вызова создаёт "
+"активность, а уведомление о записи дополняет её."
+msgstr ""
+"The recording notification does not contain the caller's number, and the "
+"call summary does not contain the recording identifier. Therefore, the "
+"integration links both notifications by the common MANGO OFFICE call "
+"identifier (``entry_id``): the call summary creates the activity, and the "
+"recording notification supplements it."
+
+#: ../../integration/mango/overview.rst:68
+msgid "Жизненный цикл звонка"
+msgstr "Call lifecycle"
+
+#: ../../integration/mango/overview.rst:93
+msgid ""
+"**Приём уведомления.** MANGO OFFICE отправляет уведомление на адрес "
+"входящего вебхука Citeck. Citeck проверяет подпись запроса, сразу отвечает"
+" MANGO OFFICE и помещает уведомление в очередь уведомлений (см. "
+":ref:`mango_receive`)."
+msgstr ""
+"**Receiving the notification.** MANGO OFFICE sends the notification to the"
+" Citeck incoming webhook address. Citeck verifies the request signature, "
+"immediately responds to MANGO OFFICE, and places the notification in the "
+"notifications queue (see :ref:`mango_receive`)."
+
+#: ../../integration/mango/overview.rst:94
+msgid ""
+"**Разбор уведомления.** Обработчик очереди определяет тип уведомления по "
+"его содержимому. Дальше обрабатываются только итог входящего состоявшегося"
+" звонка и уведомление о готовой аудиозаписи; остальные уведомления "
+"пропускаются, а причина выводится в лог."
+msgstr ""
+"**Parsing the notification.** The queue handler determines the "
+"notification type by its content. Only the summary of an incoming answered"
+" call and the notification of a ready recording are processed further; "
+"other notifications are skipped, and the reason is written to the log."
+
+#: ../../integration/mango/overview.rst:95
+msgid ""
+"**Поиск сделки или лида.** Номер звонящего из итога вызова приводится к "
+"единому формату, после чего в CRM ищется активная сделка, а если её нет — "
+"активный лид. Если активных совпадений нет, создаётся новый лид (см. "
+":ref:`mango_phone_search`)."
+msgstr ""
+"**Finding a deal or lead.** The caller's number from the call summary is "
+"converted to a single format, after which an active deal is searched for "
+"in CRM, or, if there is none, an active lead. If there are no active "
+"matches, a new lead is created (see :ref:`mango_phone_search`)."
+
+#: ../../integration/mango/overview.rst:96
+msgid ""
+"**Создание активности.** К найденной или созданной сделке либо лиду "
+"привязывается активность **«Звонок»** в статусе **«Выполнена»** с темой "
+"«Входящий звонок ``<номер>``» и датой звонка (см. :ref:`mango_activity`)."
+msgstr ""
+"**Creating the activity.** A **\"Call\"** activity in the "
+"**\"Completed\"** status with the subject \"Входящий звонок ``<номер>``\" "
+"(\"Incoming call ``<number>``\") and the call date is linked to the found "
+"or created deal or lead (see :ref:`mango_activity`)."
+
+#: ../../integration/mango/overview.rst:97
+msgid ""
+"**Постановка аудиозаписи в работу.** По уведомлению о записи интеграция "
+"находит активность этого звонка, устанавливает статус обработки "
+"аудиозаписи ``downloading`` и передаёт звонок в очередь аудиозаписей."
+msgstr ""
+"**Queuing the recording.** On the recording notification, the integration "
+"finds the activity of this call, sets the recording processing status to "
+"``downloading``, and passes the call to the recordings queue."
+
+#: ../../integration/mango/overview.rst:98
+msgid ""
+"**Загрузка аудиозаписи.** Обработчик очереди аудиозаписей запрашивает "
+"mp3-файл у MANGO OFFICE подписанным запросом и проверяет ответ (см. "
+":ref:`mango_recording_download`)."
+msgstr ""
+"**Downloading the recording.** The recordings queue handler requests the "
+"mp3 file from MANGO OFFICE with a signed request and checks the response "
+"(see :ref:`mango_recording_download`)."
+
+#: ../../integration/mango/overview.rst:99
+msgid ""
+"**Распознавание речи.** Файл передаётся сервису распознавания, который "
+"возвращает полный текст, реплики с метками говорящих и длительность (см. "
+":ref:`mango_stt`)."
+msgstr ""
+"**Speech recognition.** The file is passed to the recognition service, "
+"which returns the full text, turns with speaker labels, and the duration "
+"(see :ref:`mango_stt`)."
+
+#: ../../integration/mango/overview.rst:100
+msgid ""
+"**Резюме.** Если расшифровка не пустая, интеграция запрашивает у Citeck AI"
+" краткое резюме разговора. Этот шаг необязательный (см. "
+":ref:`mango_summary`)."
+msgstr ""
+"**Summary.** If the transcript is not empty, the integration requests a "
+"brief summary of the conversation from Citeck AI. This step is optional "
+"(see :ref:`mango_summary`)."
+
+#: ../../integration/mango/overview.rst:101
+msgid ""
+"**Сохранение и статус.** В активность записываются mp3-файл, расшифровка, "
+"длительность, резюме и итоговый статус ``completed``. При окончательном "
+"отказе вместо него устанавливается ``download-failed`` или "
+"``transcription-failed`` (см. :ref:`mango_record_statuses` и "
+":ref:`mango_retries`)."
+msgstr ""
+"**Saving and status.** The mp3 file, transcript, duration, summary, and "
+"the final ``completed`` status are written to the activity. On a permanent"
+" failure, ``download-failed`` or ``transcription-failed`` is set instead "
+"(see :ref:`mango_record_statuses` and :ref:`mango_retries`)."

@@ -1,0 +1,393 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/mango/limitations.rst:4
+msgid "Ограничения"
+msgstr "Limitations"
+
+#: ../../integration/mango/limitations.rst:11
+msgid "Какие звонки попадают в CRM"
+msgstr "Which calls get into CRM"
+
+#: ../../integration/mango/limitations.rst:13
+msgid ""
+"Звонок со скрытым номером или номером, из которого нельзя получить "
+"нормализованный номер (меньше 10 или больше 15 цифр), не фиксируется."
+msgstr ""
+"A call from a hidden number or a number from which no normalized number "
+"can be obtained (fewer than 10 or more than 15 digits) is not recorded."
+
+#: ../../integration/mango/limitations.rst:14
+msgid ""
+"Обрабатываются входящие звонки всех линий, по которым MANGO OFFICE "
+"отправляет уведомления: фильтра по линии или номеру ВАТС нет."
+msgstr ""
+"Incoming calls on all lines for which MANGO OFFICE sends notifications are"
+" processed: there is no filter by line or VPBX number."
+
+#: ../../integration/mango/limitations.rst:15
+msgid ""
+"Интеграция рассчитана на одну ВАТС MANGO OFFICE (один код ВАТС и одну "
+"соль)."
+msgstr ""
+"The integration is designed for one MANGO OFFICE VPBX (one VPBX code and "
+"one salt)."
+
+#: ../../integration/mango/limitations.rst:16
+msgid "В карточке сохраняется одна аудиозапись звонка."
+msgstr "One call recording is saved in the card."
+
+#: ../../integration/mango/limitations.rst:20
+msgid ""
+"**Переведённые звонки.** При переводе звонка MANGO OFFICE создаёт "
+"отдельную аудиозапись для каждого участка разговора с общим "
+"идентификатором звонка. Если к приходу следующего уведомления первая "
+"аудиозапись уже сохранена, остальные отбрасываются (в логе — ``the "
+"record/added of recording … is dropped``). Если аудиозаписи обрабатываются"
+" одновременно, в карточке остаётся та, чья обработка закончилась позже. "
+"Поэтому при переводе, например от секретаря к менеджеру, в CRM может "
+"попасть только часть разговора. Остальные аудиозаписи доступны в личном "
+"кабинете MANGO OFFICE."
+msgstr ""
+"**Transferred calls.** When a call is transferred, MANGO OFFICE creates a "
+"separate recording for each part of the conversation with a common call "
+"identifier. If the first recording has already been saved by the time the "
+"next notification arrives, the others are discarded (the log shows ``the "
+"record/added of recording … is dropped``). If the recordings are processed"
+" simultaneously, the card keeps the one whose processing finished later. "
+"Therefore, when a call is transferred, for example from a secretary to a "
+"manager, only part of the conversation may get into CRM. The other "
+"recordings are available in the MANGO OFFICE account."
+
+#: ../../integration/mango/limitations.rst:23
+msgid "Что не сохраняется в активности"
+msgstr "What is not saved in the activity"
+
+#: ../../integration/mango/limitations.rst:25
+msgid ""
+"Сотрудник, ответивший на звонок, не определяется: внутренние номера и "
+"пользователи MANGO OFFICE не сопоставляются с пользователями Citeck. Поле "
+"«Ответственный» не заполняется, автором активности указывается система. "
+"Менеджер при необходимости заполняет поле вручную."
+msgstr ""
+"The employee who answered the call is not identified: MANGO OFFICE "
+"extensions and users are not mapped to Citeck users. The \"Responsible\" "
+"field is not filled in, and the system is specified as the activity "
+"author. The manager fills in the field manually if needed."
+
+#: ../../integration/mango/limitations.rst:26
+msgid ""
+"Номер и линия ВАТС, на которые позвонил клиент, не сохраняются. Звонки на "
+"разные линии (например, в отдел продаж и в поддержку) в CRM не "
+"различаются."
+msgstr ""
+"The VPBX number and line the customer called are not saved. Calls to "
+"different lines (for example, to sales and to support) are not "
+"distinguished in CRM."
+
+#: ../../integration/mango/limitations.rst:27
+msgid ""
+"Длительность разговора берётся из распознанной аудиозаписи. У звонка без "
+"аудиозаписи или с неудачным распознаванием длительность не заполняется."
+msgstr ""
+"The conversation duration is taken from the recognized recording. For a "
+"call without a recording or with failed recognition, the duration is not "
+"filled in."
+
+#: ../../integration/mango/limitations.rst:28
+msgid ""
+"Идентификатор аудиозаписи MANGO OFFICE (``recording_id``) в активности не "
+"хранится."
+msgstr ""
+"The MANGO OFFICE recording identifier (``recording_id``) is not stored in "
+"the activity."
+
+#: ../../integration/mango/limitations.rst:31
+msgid "Создание лидов"
+msgstr "Creating leads"
+
+#: ../../integration/mango/limitations.rst:33
+msgid ""
+"Лид создаётся на каждый состоявшийся входящий звонок с номера, которого "
+"нет в активных сделках и лидах. Это касается и поставщиков, партнёров, "
+"соискателей, рекламных и спам-номеров, и клиентов, у которых все сделки "
+"закрыты."
+msgstr ""
+"A lead is created for every answered incoming call from a number that is "
+"not in active deals and leads. This also applies to suppliers, partners, "
+"job applicants, advertising and spam numbers, and customers whose deals "
+"are all closed."
+
+#: ../../integration/mango/limitations.rst:34
+msgid ""
+"Списков исключаемых номеров нет. Лишний лид закрывается вручную, например "
+"переводом в статус «Дисквалифицирован». Такой лид в поиске не участвует, "
+"поэтому следующий звонок с того же номера снова создаст лид."
+msgstr ""
+"There are no lists of excluded numbers. An unnecessary lead is closed "
+"manually, for example by moving it to the \"Disqualified\" status. Such a "
+"lead does not take part in the search, so the next call from the same "
+"number will create a lead again."
+
+#: ../../integration/mango/limitations.rst:35
+msgid ""
+"Если звонки некоторых линий не должны попадать в CRM, отключите для них "
+"отправку уведомлений в личном кабинете MANGO OFFICE (если кабинет это "
+"позволяет) или обсудите доработку фильтра с Citeck."
+msgstr ""
+"If calls on some lines must not get into CRM, disable sending "
+"notifications for them in the MANGO OFFICE account (if the account allows "
+"it) or discuss a filter enhancement with Citeck."
+
+#: ../../integration/mango/limitations.rst:40
+msgid "Доставка уведомлений и восстановление после простоя"
+msgstr "Notification delivery and recovery after downtime"
+
+#: ../../integration/mango/limitations.rst:42
+msgid ""
+"Устойчивые сообщения, уже принятые RabbitMQ, переживают перезапуск "
+"приложения. Это не распространяется на удаление очередей или потерю данных"
+" брокера."
+msgstr ""
+"Durable messages already accepted by RabbitMQ survive an application "
+"restart. This does not apply to deleting queues or losing broker data."
+
+#: ../../integration/mango/limitations.rst:43
+msgid ""
+"MANGO OFFICE не повторяет доставку уведомлений. Уведомление теряется "
+"безвозвратно, если Citeck или шлюз недоступны, запрос отклонён (например, "
+"из-за неверной соли) или маршрут остановлен; в последнем случае MANGO "
+"OFFICE получает ответ 200. Отклонённые запросы в логе Citeck не "
+"отображаются."
+msgstr ""
+"MANGO OFFICE does not retry notification delivery. A notification is lost "
+"irrecoverably if Citeck or the gateway is unavailable, the request is "
+"rejected (for example, because of an incorrect salt), or the route is "
+"stopped; in the last case, MANGO OFFICE receives a 200 response. Rejected "
+"requests are not shown in the Citeck log."
+
+#: ../../integration/mango/limitations.rst:44
+msgid ""
+"Обрыв публичного HTTPS-туннеля прерывает доставку вебхуков. Повторы "
+"обработки аудиозаписей не восстанавливают уведомления, которые вообще не "
+"дошли до Citeck. После восстановления связи сверяйте звонки MANGO OFFICE с"
+" активностями CRM; не рассчитывайте на автоматическую повторную отправку "
+"пропущенных уведомлений."
+msgstr ""
+"A break in the public HTTPS tunnel interrupts webhook delivery. Recording "
+"processing retries do not recover notifications that never reached Citeck."
+" After connectivity is restored, reconcile MANGO OFFICE calls with CRM "
+"activities; do not rely on missed notifications being resent "
+"automatically."
+
+#: ../../integration/mango/limitations.rst:45
+msgid ""
+"Если брокер RabbitMQ недоступен в момент прихода уведомления, после двух "
+"повторов уведомление теряется, хотя MANGO OFFICE получает успешный ответ. "
+"Единственный след — сообщение ``is LOST`` в логе с содержимым уведомления."
+msgstr ""
+"If the RabbitMQ broker is unavailable when a notification arrives, the "
+"notification is lost after two retries, even though MANGO OFFICE receives "
+"a successful response. The only trace is the ``is LOST`` message in the "
+"log with the notification content."
+
+#: ../../integration/mango/limitations.rst:46
+msgid ""
+"Если уведомление о записи обработано раньше итога вызова (MANGO OFFICE не "
+"гарантирует порядок), оно отбрасывается, и аудиозапись этого звонка не "
+"сохраняется. То же происходит, если итог вызова попал в очередь "
+"недоставленных. В обоих случаях аудиозапись можно загрузить, подав "
+"уведомление о записи вручную (см. :ref:`mango_record_reupload`)."
+msgstr ""
+"If the recording notification is processed before the call summary (MANGO "
+"OFFICE does not guarantee the order), it is discarded, and the recording "
+"of this call is not saved. The same happens if the call summary went to "
+"the dead-letter queue. In both cases, the recording can be loaded by "
+"submitting the recording notification manually (see "
+":ref:`mango_record_reupload`)."
+
+#: ../../integration/mango/limitations.rst:47
+msgid ""
+"Порядковый номер уведомлений MANGO OFFICE (``seq``) не учитывается: "
+"запоздавший итог вызова может перезаписать дату звонка."
+msgstr ""
+"The sequence number of MANGO OFFICE notifications (``seq``) is not taken "
+"into account: a late call summary may overwrite the call date."
+
+#: ../../integration/mango/limitations.rst:48
+msgid ""
+"Уведомление о распознавании тематик записи (``/events/record/tagged``) по "
+"составу полей не отличается от уведомления о записи. Если оно включено, "
+"аудиозапись может загружаться и распознаваться повторно, поэтому отправку "
+"этого уведомления на адрес Citeck включать не следует."
+msgstr ""
+"The recording topic recognition notification (``/events/record/tagged``) "
+"does not differ from the recording notification in its fields. If it is "
+"enabled, the recording may be downloaded and recognized again, so sending "
+"this notification to the Citeck address should not be enabled."
+
+#: ../../integration/mango/limitations.rst:49
+msgid ""
+"Запрос без подписи (например, проверочный) Citeck отклоняет с кодом 401; "
+"на доставку подписанных уведомлений это не влияет."
+msgstr ""
+"Citeck rejects a request without a signature (for example, a test one) "
+"with code 401; this does not affect the delivery of signed notifications."
+
+#: ../../integration/mango/limitations.rst:52
+msgid "Поиск сделки или лида"
+msgstr "Finding a deal or lead"
+
+#: ../../integration/mango/limitations.rst:54
+msgid ""
+"В каждом источнике рассматриваются 100 последних изменённых сделок или "
+"лидов, совпавших по номеру. Активная сделка или лид старше них не будут "
+"найдены, и будет создан новый лид; в лог выводится предупреждение."
+msgstr ""
+"Each source considers the 100 most recently modified deals or leads "
+"matching the number. An active deal or lead older than these will not be "
+"found, and a new lead will be created; a warning is written to the log."
+
+#: ../../integration/mango/limitations.rst:55
+msgid ""
+"Нормализация рассчитана на российские номера: любой номер из 10 цифр "
+"получает префикс 7, международные префиксы выхода ``00`` и ``810`` не "
+"отбрасываются."
+msgstr ""
+"Normalization is designed for Russian numbers: any 10-digit number gets "
+"the prefix 7, and the international exit prefixes ``00`` and ``810`` are "
+"not stripped."
+
+#: ../../integration/mango/limitations.rst:56
+msgid ""
+"Пометка о неоднозначности добавляется только при создании активности; если"
+" удалить её из текста, звонок перестанет находиться по маркеру."
+msgstr ""
+"The ambiguity note is added only when the activity is created; if you "
+"delete it from the text, the call will no longer be found by the marker."
+
+#: ../../integration/mango/limitations.rst:59
+msgid "Обработка аудиозаписи"
+msgstr "Recording processing"
+
+#: ../../integration/mango/limitations.rst:61
+msgid ""
+"Размер аудиозаписи ограничен 50 МБ, язык распознавания — только русский "
+"(см. :ref:`mango_recording_download` и :ref:`mango_stt`)."
+msgstr ""
+"The recording size is limited to 50 MB, and the recognition language is "
+"Russian only (see :ref:`mango_recording_download` and :ref:`mango_stt`)."
+
+#: ../../integration/mango/limitations.rst:62
+msgid ""
+"Качество распознавания ограничено качеством исходной аудиозаписи MANGO "
+"OFFICE (телефонный звук с низким битрейтом)."
+msgstr ""
+"Recognition quality is limited by the quality of the original MANGO OFFICE"
+" recording (low-bitrate telephone audio)."
+
+#: ../../integration/mango/limitations.rst:63
+msgid ""
+"Если одна обработка длится дольше настроенного ``consumer_timeout`` "
+"RabbitMQ, брокер может закрыть канал и вернуть неподтверждённое сообщение."
+" Для длинных аудиозаписей согласуйте тайм-аут с максимальным временем "
+"обработки. Паузы в retry-очередях этот тайм-аут потребителя не расходуют."
+msgstr ""
+"If a single processing run takes longer than the configured RabbitMQ "
+"``consumer_timeout``, the broker may close the channel and return the "
+"unacknowledged message. For long recordings, align the timeout with the "
+"maximum processing time. Pauses in retry queues do not consume this "
+"consumer timeout."
+
+#: ../../integration/mango/limitations.rst:64
+msgid ""
+"Повреждённое аудио, на которое сервис распознавания отвечает HTTP 500, "
+"сейчас повторяется как временная ошибка и после исчерпания попыток "
+"попадает в очередь недоставленных без сохранённой аудиозаписи, со статусом"
+" ``transcription-failed``. Не запускайте бесконечный ручной повтор такого "
+"сообщения: сначала устраните проблему с файлом."
+msgstr ""
+"Corrupted audio to which the recognition service responds with HTTP 500 is"
+" currently retried as a temporary error and, after the attempts are "
+"exhausted, goes to the dead-letter queue without a saved recording, with "
+"the ``transcription-failed`` status. Do not start an endless manual retry "
+"of such a message: fix the problem with the file first."
+
+#: ../../integration/mango/limitations.rst:69
+msgid "Время звонка"
+msgstr "Call time"
+
+#: ../../integration/mango/limitations.rst:71
+msgid ""
+"Время звонка берётся из поля ``create_time`` итога вызова (при его "
+"отсутствии — из ``talk_time`` или ``end_time``) как Unix-время без сдвига "
+"часового пояса. В документации MANGO OFFICE эти времена помечены как "
+"UTC+3. Если MANGO OFFICE передаёт их со сдвигом, даты всех звонков будут "
+"отличаться на 3 часа. Поэтому при вводе в эксплуатацию обязательно сверьте"
+" время контрольного звонка с личным кабинетом (см. "
+":ref:`mango_step_check`)."
+msgstr ""
+"The call time is taken from the ``create_time`` field of the call summary "
+"(if it is missing, from ``talk_time`` or ``end_time``) as Unix time "
+"without a time zone offset. In the MANGO OFFICE documentation, these times"
+" are marked as UTC+3. If MANGO OFFICE transmits them with an offset, the "
+"dates of all calls will be off by 3 hours. Therefore, during "
+"commissioning, be sure to compare the time of the test call with the "
+"account (see :ref:`mango_step_check`)."
+
+#: ../../integration/mango/limitations.rst:74
+msgid "Эксплуатация"
+msgstr "Operation"
+
+#: ../../integration/mango/limitations.rst:76
+msgid ""
+"Интеграция рассчитана на один экземпляр микросервиса ``ecos-"
+"integrations``: порядок уведомлений обеспечивается единственным "
+"обработчиком очереди уведомлений. Если маршрут запущен в нескольких "
+"экземплярах, порядок обработки уведомлений одного звонка не гарантируется,"
+" и уведомления о записи будут чаще отбрасываться. Если требуется несколько"
+" экземпляров, согласуйте конфигурацию с поддержкой Citeck."
+msgstr ""
+"The integration is designed for one instance of the ``ecos-integrations`` "
+"microservice: the order of notifications is ensured by a single "
+"notifications queue handler. If the route runs in several instances, the "
+"processing order of notifications for the same call is not guaranteed, and"
+" recording notifications will be discarded more often. If several "
+"instances are required, agree on the configuration with Citeck support."
+
+#: ../../integration/mango/limitations.rst:77
+msgid "Соединение с брокером RabbitMQ по TLS не поддерживается."
+msgstr "A TLS connection to the RabbitMQ broker is not supported."
+
+#: ../../integration/mango/limitations.rst:78
+msgid ""
+"Очереди недоставленных разбираются вручную (см. :ref:`mango_dlq_restore`)."
+msgstr ""
+"Dead-letter queues are reviewed manually (see :ref:`mango_dlq_restore`)."
+
+#: ../../integration/mango/limitations.rst:79
+msgid ""
+"Не входят в интеграцию обработка исходящих звонков и управление звонками "
+"из Citeck (обратный звонок, запуск записи). Возможные направления развития"
+" перечислены в статье :ref:`mango_telecom`."
+msgstr ""
+"Processing outgoing calls and managing calls from Citeck (callback, "
+"starting a recording) are not part of the integration. Possible "
+"development directions are listed in the :ref:`mango_telecom` article."
