@@ -1,0 +1,1609 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/mango/setup.rst:4
+msgid "Подключение и настройка"
+msgstr "Connection and Setup"
+
+#: ../../integration/mango/setup.rst:11
+msgid "Требования и предварительные условия"
+msgstr "Requirements and prerequisites"
+
+#: ../../integration/mango/setup.rst:14
+msgid "На стороне MANGO OFFICE"
+msgstr "On the MANGO OFFICE side"
+
+#: ../../integration/mango/setup.rst:16
+msgid ""
+"Подключён API-коннектор. Для него получены код ВАТС (``vpbx_api_key``) и "
+"соль — ключ для создания подписи (``vpbx_api_salt``)."
+msgstr ""
+"The API connector is connected. The VPBX code (``vpbx_api_key``) and the "
+"salt — the signing key (``vpbx_api_salt``) — have been obtained for it."
+
+#: ../../integration/mango/setup.rst:17
+msgid ""
+"Тариф и настройки API позволяют получать уведомления об итоге вызова "
+"(``/events/summary``) и о добавлении аудиозаписи в облако "
+"(``/events/record/added``). Доступность уведомлений зависит от тарифа, её "
+"следует уточнить у MANGO OFFICE."
+msgstr ""
+"The plan and API settings allow receiving notifications about the call "
+"summary (``/events/summary``) and about a recording being added to the "
+"cloud (``/events/record/added``). The availability of notifications "
+"depends on the plan; check it with MANGO OFFICE."
+
+#: ../../integration/mango/setup.rst:18
+msgid ""
+"Запись разговоров включена для нужных линий и сотрудников, и аудиозаписи "
+"сохраняются в облачное хранилище. Если аудиозаписи только отправляются на "
+"почту, уведомление о записи не придёт, а аудиозапись нельзя будет получить"
+" по API."
+msgstr ""
+"Call recording is enabled for the required lines and employees, and "
+"recordings are saved to cloud storage. If recordings are only sent by "
+"email, the recording notification will not arrive, and the recording "
+"cannot be obtained via the API."
+
+#: ../../integration/mango/setup.rst:22
+msgid ""
+"Само создание сотрудника с добавочным номером не подтверждает готовность "
+"интеграции: для тестового сотрудника или направления должна быть включена "
+"запись разговоров, а используемые настройки и услуги ВАТС должны позволять"
+" получать аудиозапись через API."
+msgstr ""
+"Creating an employee with an extension does not by itself confirm that the"
+" integration is ready: call recording must be enabled for the test "
+"employee or route, and the VPBX settings and services in use must allow "
+"obtaining the recording via the API."
+
+#: ../../integration/mango/setup.rst:25
+msgid "На стороне Citeck"
+msgstr "On the Citeck side"
+
+#: ../../integration/mango/setup.rst:32 ../../integration/mango/setup.rst:94
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../integration/mango/setup.rst:33
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../integration/mango/setup.rst:34
+msgid "Обязательность"
+msgstr "Required"
+
+#: ../../integration/mango/setup.rst:35
+msgid ""
+"Микросервис ``ecos-integrations`` с артефактами MANGO OFFICE и поддержкой "
+"подписи входящих вебхуков"
+msgstr ""
+"The ``ecos-integrations`` microservice with MANGO OFFICE artifacts and "
+"support for incoming webhook signatures"
+
+#: ../../integration/mango/setup.rst:36
+msgid "Приём уведомлений, маршрут обработки"
+msgstr "Receiving notifications, processing route"
+
+#: ../../integration/mango/setup.rst:37 ../../integration/mango/setup.rst:40
+#: ../../integration/mango/setup.rst:43 ../../integration/mango/setup.rst:46
+#: ../../integration/mango/setup.rst:49
+msgid "Обязательно"
+msgstr "Required"
+
+#: ../../integration/mango/setup.rst:38
+msgid "Модуль CRM"
+msgstr "CRM module"
+
+#: ../../integration/mango/setup.rst:39
+msgid ""
+"Типы сделок, лидов и контрагентов с вычисляемым атрибутом ``phoneDigits`` "
+"для поиска по телефону"
+msgstr ""
+"Deal, lead, and counterparty types with the calculated ``phoneDigits`` "
+"attribute for searching by phone"
+
+#: ../../integration/mango/setup.rst:41
+msgid ""
+"Модель данных с типом «Звонок» (``call-activity``) и аспектом ``recording-"
+"aspect``"
+msgstr ""
+"Data model with the \"Call\" type (``call-activity``) and the ``recording-"
+"aspect`` aspect"
+
+#: ../../integration/mango/setup.rst:42
+msgid "Хранение звонка, аудиозаписи и расшифровки, форма карточки звонка"
+msgstr "Storing the call, recording, and transcript; call card form"
+
+#: ../../integration/mango/setup.rst:44
+msgid "Рабочее пространство ``crm-workspace``"
+msgstr "The ``crm-workspace`` workspace"
+
+#: ../../integration/mango/setup.rst:45
+msgid "Размещение создаваемых лидов"
+msgstr "Placement of created leads"
+
+#: ../../integration/mango/setup.rst:47
+msgid "Брокер RabbitMQ платформы"
+msgstr "Platform RabbitMQ broker"
+
+#: ../../integration/mango/setup.rst:48
+msgid "Очереди уведомлений и аудиозаписей"
+msgstr "Notifications and recordings queues"
+
+#: ../../integration/mango/setup.rst:50
+msgid ""
+"Сервис распознавания речи ``citeck-stt-sidecar`` с приёмом сырого тела "
+"``audio/mpeg`` на ``/transcribe-diarize``"
+msgstr ""
+"The ``citeck-stt-sidecar`` speech recognition service accepting a raw "
+"``audio/mpeg`` body at ``/transcribe-diarize``"
+
+#: ../../integration/mango/setup.rst:51
+msgid "Расшифровка аудиозаписей"
+msgstr "Transcribing recordings"
+
+#: ../../integration/mango/setup.rst:52
+msgid "Обязательно для обработки аудиозаписей"
+msgstr "Required for recording processing"
+
+#: ../../integration/mango/setup.rst:53
+msgid "Модуль Citeck AI (микросервис ``citeck-ai``)"
+msgstr "Citeck AI module (``citeck-ai`` microservice)"
+
+#: ../../integration/mango/setup.rst:54
+msgid "Построение резюме"
+msgstr "Generating summaries"
+
+#: ../../integration/mango/setup.rst:55
+msgid "Необязательно"
+msgstr "Optional"
+
+#: ../../integration/mango/setup.rst:57
+msgid ""
+"Тип «Звонок» и аспект ``recording-aspect`` поставляет модель данных "
+"платформы (``ecos-model``). Модуль ``citeck-ai`` нужен только для "
+"необязательного резюме, но не для скачивания и расшифровки. Сервис "
+"``citeck-stt-sidecar`` и модуль Citeck AI доступны в Enterprise-версии "
+"Citeck."
+msgstr ""
+"The \"Call\" type and the ``recording-aspect`` aspect are provided by the "
+"platform data model (``ecos-model``). The ``citeck-ai`` module is needed "
+"only for the optional summary, not for downloading and transcription. The "
+"``citeck-stt-sidecar`` service and the Citeck AI module are available in "
+"the Enterprise version of Citeck."
+
+#: ../../integration/mango/setup.rst:59
+msgid "Кроме того, должны выполняться следующие условия:"
+msgstr "In addition, the following conditions must be met:"
+
+#: ../../integration/mango/setup.rst:61
+msgid ""
+"**Вычисляемое поле** ``phoneDigits`` есть у сделок и лидов (из контактов) "
+"и у контрагентов, и его значение вычислено у существующих записей (см. "
+":ref:`mango_step_crm_check`). Без него поиск по номеру ничего не находит, "
+"и на каждый звонок создаётся новый лид."
+msgstr ""
+"**The calculated field** ``phoneDigits`` exists for deals and leads (from "
+"contacts) and for counterparties, and its value has been calculated for "
+"existing records (see :ref:`mango_step_crm_check`). Without it, the search"
+" by number finds nothing, and a new lead is created for every call."
+
+#: ../../integration/mango/setup.rst:62
+msgid ""
+"**Брокер RabbitMQ.** Используется RabbitMQ платформы (источник данных "
+"``main-rabbitmq``): на настроенном стенде отдельное подключение для MANGO "
+"OFFICE создавать не нужно. Перед запуском убедитесь, что RabbitMQ "
+"доступен. Условия:"
+msgstr ""
+"**RabbitMQ broker.** The platform RabbitMQ is used (the ``main-rabbitmq`` "
+"data source): on a configured installation, there is no need to create a "
+"separate connection for MANGO OFFICE. Before starting, make sure RabbitMQ "
+"is available. Conditions:"
+
+#: ../../integration/mango/setup.rst:64
+msgid "соединение без TLS: с TLS маршрут не запускается;"
+msgstr "connection without TLS: the route does not start with TLS;"
+
+#: ../../integration/mango/setup.rst:65
+msgid ""
+"версия RabbitMQ 3.10 или новее с включённым флагом функциональности "
+"``stream_queue``;"
+msgstr ""
+"RabbitMQ version 3.10 or later with the ``stream_queue`` feature flag "
+"enabled;"
+
+#: ../../integration/mango/setup.rst:66
+msgid ""
+"маршрут сам объявляет свои очереди и exchange, поэтому штатному "
+"подключению нужны соответствующие права;"
+msgstr ""
+"the route declares its own queues and exchange, so the standard connection"
+" needs the corresponding permissions;"
+
+#: ../../integration/mango/setup.rst:67
+msgid "данные брокера хранятся на постоянном томе."
+msgstr "broker data is stored on a persistent volume."
+
+#: ../../integration/mango/setup.rst:69
+msgid ""
+"**Модуль Citeck AI** предоставляет источник резюме звонков ``ai/call-"
+"summary``. Для этого в модуле включается свойство ``citeck.ai.call-"
+"recording.enabled=true``."
+msgstr ""
+"**The Citeck AI module** provides the ``ai/call-summary`` call summary "
+"source. To enable it, the ``citeck.ai.call-recording.enabled=true`` "
+"property is set in the module."
+
+#: ../../integration/mango/setup.rst:74
+msgid "Права пользователей"
+msgstr "User rights"
+
+#: ../../integration/mango/setup.rst:76
+msgid ""
+"Лиды и активности создаются от имени системы. У созданного лида менеджер "
+"не указан, поэтому роль «Менеджер» по матрице прав лида получает группа "
+"менеджеров CRM (``GROUP_crm-manager``): лид виден всей группе как "
+"неразобранный."
+msgstr ""
+"Leads and activities are created on behalf of the system. A created lead "
+"has no manager, so the \"Manager\" role according to the lead permission "
+"matrix is given to the CRM managers group (``GROUP_crm-manager``): the "
+"lead is visible to the whole group as unassigned."
+
+#: ../../integration/mango/setup.rst:78
+msgid ""
+"Администратор системы или рабочего пространства без членства в группах CRM"
+" созданные лиды не видит, поэтому проверяйте интеграцию под пользователем "
+"из группы менеджеров или администраторов CRM. Ошибка «Нет доступа» сама по"
+" себе не означает, что лид не создан: проверьте ссылку, рабочее "
+"пространство и права."
+msgstr ""
+"A system or workspace administrator who is not a member of the CRM groups "
+"does not see created leads, so check the integration as a user from the "
+"CRM managers or administrators group. An \"Access denied\" error by itself"
+" does not mean that the lead was not created: check the link, the "
+"workspace, and the rights."
+
+#: ../../integration/mango/setup.rst:81
+msgid "Совместимость версий"
+msgstr "Version compatibility"
+
+#: ../../integration/mango/setup.rst:85
+msgid ""
+"Интеграция подготовлена к выпуску в ``ecos-integrations`` 2.37.0. До "
+"выхода релизов ``ecos-integrations`` 2.37.0 и библиотеки ``ecos-camel-"
+"core`` 1.16.0 документ описывает предварительную версию интеграции."
+msgstr ""
+"The integration is prepared for release in ``ecos-integrations`` 2.37.0. "
+"Until ``ecos-integrations`` 2.37.0 and the ``ecos-camel-core`` 1.16.0 "
+"library are released, this document describes a preview version of the "
+"integration."
+
+#: ../../integration/mango/setup.rst:87
+msgid ""
+"Интеграция работает только при согласованных версиях компонентов "
+"платформы. Перед подключением убедитесь, что установлены:"
+msgstr ""
+"The integration works only with consistent versions of the platform "
+"components. Before connecting, make sure the following are installed:"
+
+#: ../../integration/mango/setup.rst:95
+msgid "Версия"
+msgstr "Version"
+
+#: ../../integration/mango/setup.rst:96
+msgid "Что в ней нужно интеграции"
+msgstr "What the integration needs from it"
+
+#: ../../integration/mango/setup.rst:97
+msgid "``ecos-integrations``"
+msgstr "``ecos-integrations``"
+
+#: ../../integration/mango/setup.rst:98
+msgid "2.37.0 или новее"
+msgstr "2.37.0 or later"
+
+#: ../../integration/mango/setup.rst:99
+msgid ""
+"Артефакты интеграции MANGO OFFICE; проверка подписи входящих вебхуков и "
+"приём по вложенным путям (появились в 2.34.0)"
+msgstr ""
+"MANGO OFFICE integration artifacts; incoming webhook signature "
+"verification and receiving on nested paths (introduced in 2.34.0)"
+
+#: ../../integration/mango/setup.rst:100
+msgid "``ecos-camel-core`` (библиотека в составе ``ecos-integrations``)"
+msgstr "``ecos-camel-core`` (a library included in ``ecos-integrations``)"
+
+#: ../../integration/mango/setup.rst:101
+msgid "1.16.0 или новее"
+msgstr "1.16.0 or later"
+
+#: ../../integration/mango/setup.rst:102
+msgid ""
+"Подпись запросов к API MANGO OFFICE, формирование тела запроса, проверка "
+"загруженного ответа, маскирование учётных данных в ошибках"
+msgstr ""
+"Signing requests to the MANGO OFFICE API, building the request body, "
+"checking the downloaded response, masking credentials in errors"
+
+#: ../../integration/mango/setup.rst:103
+msgid "``ecos-model``"
+msgstr "``ecos-model``"
+
+#: ../../integration/mango/setup.rst:104
+msgid "Версия, поставляющая аспект ``recording-aspect`` для типа «Звонок»"
+msgstr ""
+"A version that provides the ``recording-aspect`` aspect for the \"Call\" "
+"type"
+
+#: ../../integration/mango/setup.rst:105
+msgid "Хранение аудиозаписи, расшифровки и статуса; форма карточки звонка"
+msgstr "Storing the recording, transcript, and status; call card form"
+
+#: ../../integration/mango/setup.rst:106
+msgid "CRM (``ecos-crm``, ``ecos-common-data-list``)"
+msgstr "CRM (``ecos-crm``, ``ecos-common-data-list``)"
+
+#: ../../integration/mango/setup.rst:107
+msgid "Релиз 2026.3 или новее"
+msgstr "Release 2026.3 or later"
+
+#: ../../integration/mango/setup.rst:108
+msgid "Вычисляемое поле ``phoneDigits`` у сделок, лидов и контрагентов"
+msgstr ""
+"The calculated ``phoneDigits`` field for deals, leads, and counterparties"
+
+#: ../../integration/mango/setup.rst:109
+msgid "``citeck-stt-sidecar``"
+msgstr "``citeck-stt-sidecar``"
+
+#: ../../integration/mango/setup.rst:110
+msgid ""
+"Сборка, принимающая ``audio/mpeg`` в теле запроса к ``/transcribe-"
+"diarize``"
+msgstr ""
+"A build that accepts ``audio/mpeg`` in the request body to ``/transcribe-"
+"diarize``"
+
+#: ../../integration/mango/setup.rst:111
+msgid "Распознавание речи"
+msgstr "Speech recognition"
+
+#: ../../integration/mango/setup.rst:112
+msgid "``citeck-ai`` (необязательно)"
+msgstr "``citeck-ai`` (optional)"
+
+#: ../../integration/mango/setup.rst:113
+msgid "Версия с источником ``ai/call-summary``"
+msgstr "A version with the ``ai/call-summary`` source"
+
+#: ../../integration/mango/setup.rst:114
+msgid "Резюме разговора"
+msgstr "Conversation summary"
+
+#: ../../integration/mango/setup.rst:116
+msgid ""
+"Точные номера версий для вашей инсталляции уточните в поддержке Citeck."
+msgstr ""
+"Check the exact version numbers for your installation with Citeck support."
+
+#: ../../integration/mango/setup.rst:121
+msgid "Сервис распознавания речи"
+msgstr "Speech recognition service"
+
+#: ../../integration/mango/setup.rst:123
+msgid ""
+"Сервис ``citeck-stt-sidecar`` распознаёт речь локальной моделью GigaAM и "
+"разделяет текст по говорящим (диаризация). Подробнее о сервисе — в статье "
+"«Микросервис для транскрипции аудио и диаризации». Требования к "
+"развёртыванию:"
+msgstr ""
+"The ``citeck-stt-sidecar`` service recognizes speech with the local GigaAM"
+" model and splits the text by speaker (diarization). For more about the "
+"service, see the \"Microservice for audio transcription and diarization\" "
+"article. Deployment requirements:"
+
+#: ../../integration/mango/setup.rst:130
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../integration/mango/setup.rst:131
+#: ../../integration/mango/setup.rst:166
+msgid "Требование"
+msgstr "Requirement"
+
+#: ../../integration/mango/setup.rst:132
+msgid "Образ"
+msgstr "Image"
+
+#: ../../integration/mango/setup.rst:133
+msgid "``harbor.citeck.ru/enterprise/citeck-stt-sidecar``"
+msgstr "``harbor.citeck.ru/enterprise/citeck-stt-sidecar``"
+
+#: ../../integration/mango/setup.rst:134
+msgid "Память"
+msgstr "Memory"
+
+#: ../../integration/mango/setup.rst:135
+msgid ""
+"Около 1,5 ГБ после загрузки модели. Лимит памяти контейнера задавайте с "
+"запасом: при лимите 2 ГБ сервис может аварийно завершаться (код 137)."
+msgstr ""
+"About 1.5 GB after the model is loaded. Set the container memory limit "
+"with headroom: with a 2 GB limit, the service may crash (code 137)."
+
+#: ../../integration/mango/setup.rst:136
+msgid "Процессор"
+msgstr "CPU"
+
+#: ../../integration/mango/setup.rst:137
+msgid ""
+"1–2 ядра. Распознавание нагружает процессор, и его время растёт с "
+"длительностью разговора."
+msgstr ""
+"1–2 cores. Recognition loads the CPU, and its time grows with the "
+"conversation duration."
+
+#: ../../integration/mango/setup.rst:138
+msgid "Первый запуск"
+msgstr "First start"
+
+#: ../../integration/mango/setup.rst:139
+msgid ""
+"Сервис скачивает модель (около 1,5 ГБ, 3–5 минут). Чтобы не скачивать её "
+"после каждого перезапуска, подключите постоянный том для кеша моделей."
+msgstr ""
+"The service downloads the model (about 1.5 GB, 3–5 minutes). To avoid "
+"downloading it after every restart, mount a persistent volume for the "
+"model cache."
+
+#: ../../integration/mango/setup.rst:140
+msgid "Диаризация"
+msgstr "Diarization"
+
+#: ../../integration/mango/setup.rst:141
+msgid ""
+"Для разделения текста по говорящим задайте токен HuggingFace в переменной "
+"окружения ``HF_TOKEN``. Без него текст распознаётся, но реплики не "
+"разделяются по говорящим."
+msgstr ""
+"To split the text by speaker, set a HuggingFace token in the ``HF_TOKEN`` "
+"environment variable. Without it, the text is recognized, but the turns "
+"are not split by speaker."
+
+#: ../../integration/mango/setup.rst:142
+msgid "Проверка"
+msgstr "Check"
+
+#: ../../integration/mango/setup.rst:143
+msgid ""
+"Запрос ``GET <адрес сервиса>/health`` возвращает ``status: ok``; значение "
+"``diarization_available: true`` подтверждает, что разделение по говорящим "
+"работает."
+msgstr ""
+"The ``GET <service address>/health`` request returns ``status: ok``; the "
+"value ``diarization_available: true`` confirms that speaker splitting "
+"works."
+
+#: ../../integration/mango/setup.rst:144
+msgid "Вызов из маршрута"
+msgstr "Call from the route"
+
+#: ../../integration/mango/setup.rst:145
+msgid ""
+"``POST <адрес сервиса>/transcribe-diarize?language=ru``, mp3-файл "
+"передаётся в теле запроса с типом ``audio/mpeg``."
+msgstr ""
+"``POST <service address>/transcribe-diarize?language=ru``, the mp3 file is"
+" passed in the request body with the ``audio/mpeg`` type."
+
+#: ../../integration/mango/setup.rst:148
+msgid "Сетевые требования"
+msgstr "Network requirements"
+
+#: ../../integration/mango/setup.rst:150
+msgid ""
+"Входящий публичный HTTPS-адрес Citeck доступен из интернета с IP-адресов "
+"MANGO OFFICE по протоколу TLS 1.2. Другие версии протокола MANGO OFFICE не"
+" поддерживает. Путь вебхука доступен без авторизации пользователя."
+msgstr ""
+"The incoming public HTTPS address of Citeck is accessible from the "
+"internet from MANGO OFFICE IP addresses over TLS 1.2. MANGO OFFICE does "
+"not support other protocol versions. The webhook path is accessible "
+"without user authorization."
+
+#: ../../integration/mango/setup.rst:151
+msgid ""
+"У микросервиса ``ecos-integrations`` есть исходящий HTTPS-доступ к "
+"``app.mango-office.ru`` и к ссылкам на файлы аудиозаписей, которые выдаёт "
+"MANGO OFFICE."
+msgstr ""
+"The ``ecos-integrations`` microservice has outgoing HTTPS access to "
+"``app.mango-office.ru`` and to the recording file links issued by MANGO "
+"OFFICE."
+
+#: ../../integration/mango/setup.rst:152
+msgid ""
+"Микросервис ``ecos-integrations`` имеет сетевой доступ к сервису "
+"распознавания речи."
+msgstr ""
+"The ``ecos-integrations`` microservice has network access to the speech "
+"recognition service."
+
+#: ../../integration/mango/setup.rst:153
+msgid ""
+"Если в личном кабинете MANGO OFFICE включено ограничение IP-адресов для "
+"запросов внешней системы, в список добавлен исходящий IP-адрес Citeck. "
+"Иначе запросы на загрузку аудиозаписей будут отклоняться."
+msgstr ""
+"If IP address restrictions for external system requests are enabled in the"
+" MANGO OFFICE account, the outgoing IP address of Citeck is added to the "
+"list. Otherwise, recording download requests will be rejected."
+
+#: ../../integration/mango/setup.rst:158
+msgid "Ресурсы и хранилище"
+msgstr "Resources and storage"
+
+#: ../../integration/mango/setup.rst:165
+msgid "Ресурс"
+msgstr "Resource"
+
+#: ../../integration/mango/setup.rst:167
+msgid "Объём хранилища"
+msgstr "Storage size"
+
+#: ../../integration/mango/setup.rst:168
+msgid ""
+"mp3-файл каждого обработанного звонка хранится в хранилище содержимого "
+"Citeck, поэтому объём растёт пропорционально числу и длительности звонков."
+" Фактический размер аудиозаписи виден в логе в сообщении ``is downloaded, "
+"N bytes`` для контрольного звонка. Заложите этот рост в размер хранилища "
+"содержимого и резервных копий."
+msgstr ""
+"The mp3 file of each processed call is stored in the Citeck content "
+"storage, so the size grows in proportion to the number and duration of "
+"calls. The actual recording size can be seen in the log in the ``is "
+"downloaded, N bytes`` message for the test call. Plan for this growth in "
+"the size of the content storage and backups."
+
+#: ../../integration/mango/setup.rst:169
+msgid "Память микросервиса"
+msgstr "Microservice memory"
+
+#: ../../integration/mango/setup.rst:170
+msgid ""
+"При сохранении аудиозапись целиком находится в памяти ``ecos-"
+"integrations`` и кодируется в base64 (плюс треть объёма); одновременно "
+"обрабатываются до двух аудиозаписей. Учитывайте это при выделении памяти, "
+"если аудиозаписи близки к пределу 50 МБ."
+msgstr ""
+"When saved, the recording is held entirely in ``ecos-integrations`` memory"
+" and encoded in base64 (plus a third of the size); up to two recordings "
+"are processed at the same time. Take this into account when allocating "
+"memory if recordings are close to the 50 MB limit."
+
+#: ../../integration/mango/setup.rst:173
+#: ../../integration/mango/setup.rst:213
+msgid "Настройка"
+msgstr "Setup"
+
+#: ../../integration/mango/setup.rst:175
+msgid ""
+"Интеграция поставляется набором готовых артефактов. Перед запуском нужно "
+"заполнить секрет (код ВАТС и соль) и указать адрес сервиса распознавания "
+"речи для вашей инсталляции."
+msgstr ""
+"The integration is delivered as a set of ready-made artifacts. Before "
+"starting, fill in the secret (VPBX code and salt) and specify the speech "
+"recognition service address for your installation."
+
+#: ../../integration/mango/setup.rst:179
+msgid ""
+"Маршрут поставляется остановленным (``STOPPED``). Сначала настройте "
+"доступы и адреса, затем запускайте маршрут, и только после этого "
+"указывайте адрес уведомлений в MANGO OFFICE. Уведомления, пришедшие при "
+"остановленном маршруте, теряются."
+msgstr ""
+"The route is delivered stopped (``STOPPED``). First configure access and "
+"addresses, then start the route, and only after that specify the "
+"notification address in MANGO OFFICE. Notifications that arrive while the "
+"route is stopped are lost."
+
+#: ../../integration/mango/setup.rst:184
+msgid "Шаг 1. Проверка данных CRM"
+msgstr "Step 1. Checking CRM data"
+
+#: ../../integration/mango/setup.rst:186
+msgid ""
+"Сделку или лид интеграция ищет только по заполненному вычисляемому полю "
+"``phoneDigits``. После установки или обновления CRM это поле вычисляется у"
+" существующих сделок, лидов и контрагентов фоновым пересчётом. Пересчёт "
+"идёт асинхронно и на больших базах занимает заметное время."
+msgstr ""
+"The integration searches for a deal or lead only by the filled calculated "
+"``phoneDigits`` field. After CRM is installed or updated, this field is "
+"calculated for existing deals, leads, and counterparties by a background "
+"recalculation. The recalculation runs asynchronously and takes noticeable "
+"time on large databases."
+
+#: ../../integration/mango/setup.rst:188
+msgid ""
+"Выберите несколько сделок, лидов и контрагентов с заполненным телефоном и "
+"убедитесь, что у них заполнено поле ``phoneDigits`` (например, запросом "
+"Records API к этому атрибуту). Для номера ``+7 (900) 000-00-00`` значение "
+"— ``79000000000``."
+msgstr ""
+"Select several deals, leads, and counterparties with a filled phone number"
+" and make sure their ``phoneDigits`` field is filled (for example, with a "
+"Records API query for this attribute). For the number ``+7 (900) "
+"000-00-00``, the value is ``79000000000``."
+
+#: ../../integration/mango/setup.rst:189
+msgid ""
+"Если у сделок, лидов или контрагентов с телефоном поле пусто, дождитесь "
+"окончания пересчёта. Если поле так и не заполнилось, администратор "
+"платформы запускает пересчёт вычисляемых атрибутов (групповое действие "
+"``update-calculated-atts``) для сделок, лидов и контрагентов."
+msgstr ""
+"If the field is empty for deals, leads, or counterparties with a phone "
+"number, wait for the recalculation to finish. If the field is still not "
+"filled, the platform administrator starts the recalculation of calculated "
+"attributes (the ``update-calculated-atts`` group action) for deals, leads,"
+" and counterparties."
+
+#: ../../integration/mango/setup.rst:191
+msgid ""
+"Пока поле не заполнено, интеграция не находит существующие сделки и лиды и"
+" на каждый звонок создаёт новый лид."
+msgstr ""
+"Until the field is filled, the integration does not find existing deals "
+"and leads and creates a new lead for every call."
+
+#: ../../integration/mango/setup.rst:194
+msgid "Шаг 2. Подключение API-коннектора в личном кабинете MANGO OFFICE"
+msgstr "Step 2. Connecting the API connector in the MANGO OFFICE account"
+
+#: ../../integration/mango/setup.rst:196
+msgid ""
+"В личном кабинете MANGO OFFICE откройте настройки API-коннектора (в "
+"зависимости от версии кабинета — «Интеграции» → «API коннектор» или "
+"«Настройки» → «API») и подключите его."
+msgstr ""
+"In the MANGO OFFICE account, open the API connector settings (depending on"
+" the account version — «Интеграции» → «API коннектор» (\"Integrations\" → "
+"\"API connector\") or «Настройки» → «API» (\"Settings\" → \"API\")) and "
+"connect it."
+
+#: ../../integration/mango/setup.rst:197
+msgid ""
+"На странице API-коннектора скопируйте **уникальный код ВАТС** "
+"(``vpbx_api_key``) и **ключ для создания подписи** (``vpbx_api_salt``)."
+msgstr ""
+"On the API connector page, copy the **unique VPBX code** "
+"(``vpbx_api_key``) and the **signing key** (``vpbx_api_salt``)."
+
+#: ../../integration/mango/setup.rst:198
+msgid ""
+"Убедитесь, что запись разговоров включена и аудиозаписи сохраняются в "
+"облачное хранилище."
+msgstr ""
+"Make sure call recording is enabled and recordings are saved to cloud "
+"storage."
+
+#: ../../integration/mango/setup.rst:200
+msgid ""
+"Названия разделов личного кабинета приведены по документации `MANGO OFFICE"
+" VPBX API версии 1.9 <https://www.mango-"
+"office.ru/upload/api/MangoOffice_VPBX_API_v1.9.pdf>`_ и могут отличаться в"
+" текущей версии кабинета."
+msgstr ""
+"The names of the account sections are given according to the `MANGO OFFICE"
+" VPBX API version 1.9 <https://www.mango-"
+"office.ru/upload/api/MangoOffice_VPBX_API_v1.9.pdf>`_ documentation and "
+"may differ in the current version of the account."
+
+#: ../../integration/mango/setup.rst:203
+msgid "Шаг 3. Заполнение секрета и конечных точек"
+msgstr "Step 3. Filling in the secret and endpoints"
+
+#: ../../integration/mango/setup.rst:205
+msgid ""
+"В административном разделе заполните существующие артефакты (журналы "
+"**«Секреты»** и **«Конечные точки»**, Рабочее пространство «Раздел "
+"администратора» — Модель):"
+msgstr ""
+"In the administration section, fill in the existing artifacts (the "
+"**\"Secrets\"** and **\"Endpoints\"** journals, \"Admin section\" "
+"workspace — Model):"
+
+#: ../../integration/mango/setup.rst:212
+msgid "Артефакт"
+msgstr "Artifact"
+
+#: ../../integration/mango/setup.rst:214
+msgid "``emodel/secret@mango-api``"
+msgstr "``emodel/secret@mango-api``"
+
+#: ../../integration/mango/setup.rst:215
+msgid ""
+"Тип ``BASIC``. В «Имя пользователя» (``username``) укажите код ВАТС "
+"``vpbx_api_key``, в «Пароль» (``password``) — соль ``vpbx_api_salt`` из "
+"настроек API вашей ВАТС."
+msgstr ""
+"Type ``BASIC``. In \"Username\" (``username``), specify the VPBX code "
+"``vpbx_api_key``; in \"Password\" (``password``), specify the salt "
+"``vpbx_api_salt`` from your VPBX API settings."
+
+#: ../../integration/mango/setup.rst:216
+msgid "``emodel/endpoint@mango-office``"
+msgstr "``emodel/endpoint@mango-office``"
+
+#: ../../integration/mango/setup.rst:217
+msgid ""
+"URL ``https://app.mango-office.ru``, учётные данные — "
+"``emodel/secret@mango-api``."
+msgstr ""
+"URL ``https://app.mango-office.ru``, credentials — ``emodel/secret@mango-"
+"api``."
+
+#: ../../integration/mango/setup.rst:218
+msgid "``emodel/endpoint@stt-sidecar``"
+msgstr "``emodel/endpoint@stt-sidecar``"
+
+#: ../../integration/mango/setup.rst:219
+msgid ""
+"Базовый URL сервиса распознавания, доступный из процесса интеграции. "
+"Например, ``http://citeck-stt-sidecar:8090`` в общей Docker-сети или "
+"``http://localhost:8090``, если оба сервиса запущены на хосте."
+msgstr ""
+"The base URL of the recognition service accessible from the integration "
+"process. For example, ``http://citeck-stt-sidecar:8090`` in a shared "
+"Docker network or ``http://localhost:8090`` if both services run on the "
+"host."
+
+#: ../../integration/mango/setup.rst:221
+msgid "Адреса журналов:"
+msgstr "Journal addresses:"
+
+#: ../../integration/mango/setup.rst:223
+msgid ""
+"«Секреты» — ``v2/journals?journalId=ecos-"
+"secrets&viewMode=table&ws=admin$workspace``;"
+msgstr ""
+"\"Secrets\" — ``v2/journals?journalId=ecos-"
+"secrets&viewMode=table&ws=admin$workspace``;"
+
+#: ../../integration/mango/setup.rst:224
+msgid ""
+"«Конечные точки» — "
+"``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``."
+msgstr ""
+"\"Endpoints\" — "
+"``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``."
+
+#: ../../integration/mango/setup.rst:226
+msgid ""
+"Пока секрет не заполнен, вебхук отвечает MANGO OFFICE ошибкой, а маршрут "
+"не запускается."
+msgstr ""
+"Until the secret is filled in, the webhook responds to MANGO OFFICE with "
+"an error, and the route does not start."
+
+#: ../../integration/mango/setup.rst:230
+msgid ""
+"``localhost`` внутри контейнера не означает другой контейнер или хост. "
+"Проверяйте доступность конечной точки из той же среды, где работает "
+"``ecos-integrations``."
+msgstr ""
+"``localhost`` inside a container does not mean another container or host. "
+"Check the availability of the endpoint from the same environment where "
+"``ecos-integrations`` runs."
+
+#: ../../integration/mango/setup.rst:232
+msgid ""
+"После любого изменения секрета или конечной точки перезапустите маршрут "
+"(см. :ref:`mango_credentials_change`)."
+msgstr ""
+"After any change to the secret or an endpoint, restart the route (see "
+":ref:`mango_credentials_change`)."
+
+#: ../../integration/mango/setup.rst:235
+msgid "Шаг 4. Проверка входящего вебхука"
+msgstr "Step 4. Checking the incoming webhook"
+
+#: ../../integration/mango/setup.rst:237
+msgid ""
+"Поставляемый ``integrations/in-webhook@mango-webhook`` уже настроен на "
+"проверку подписи MANGO OFFICE. Переводить его на token-аутентификацию или "
+"добавлять ``?token=`` к публичному адресу не требуется. Откройте журнал "
+"**«Входящие вебхуки»** (Рабочее пространство «Раздел администратора» — "
+"Интеграция) и проверьте конфигурацию."
+msgstr ""
+"The delivered ``integrations/in-webhook@mango-webhook`` is already "
+"configured to verify the MANGO OFFICE signature. There is no need to "
+"switch it to token authentication or add ``?token=`` to the public "
+"address. Open the **\"Incoming webhooks\"** journal (\"Admin section\" "
+"workspace — Integration) and check the configuration."
+
+#: ../../integration/mango/setup.rst:239
+msgid ""
+"Журнал доступен по адресу: ``v2/journals?journalId=in-webhook-"
+"journal&viewMode=table&ws=admin$workspace``"
+msgstr ""
+"The journal is available at: ``v2/journals?journalId=in-webhook-"
+"journal&viewMode=table&ws=admin$workspace``"
+
+#: ../../integration/mango/setup.rst
+msgid "В YAML артефакта"
+msgstr "In the artifact YAML"
+
+#: ../../integration/mango/setup.rst
+msgid "В интерфейсе"
+msgstr "In the interface"
+
+#: ../../integration/mango/setup.rst:266
+msgid "«Тип аутентификации» — «Подпись»;"
+msgstr "\"Authentication type\" — \"Signature\";"
+
+#: ../../integration/mango/setup.rst:267
+msgid "в поле «Токен» выбран секрет ``mango-api``;"
+msgstr "the ``mango-api`` secret is selected in the \"Token\" field;"
+
+#: ../../integration/mango/setup.rst:268
+msgid "«Действие» — «Трансформация в Events»;"
+msgstr "\"Action\" — \"Transformation to Events\";"
+
+#: ../../integration/mango/setup.rst:269
+msgid "«Конфигурация подписи (JSON)» — схема MANGO OFFICE:"
+msgstr "\"Signature configuration (JSON)\" — the MANGO OFFICE scheme:"
+
+#: ../../integration/mango/setup.rst:280
+msgid ""
+"В конфигурации ``components`` задаёт, из чего и в каком порядке собирается"
+" подпись, ``signatureParam`` — поле запроса с подписью, ``payloadParam`` —"
+" поле запроса, значение которого становится телом события Citeck. Как "
+"выполняется проверка подписи, описано в разделе :ref:`mango_receive`."
+msgstr ""
+"In the configuration, ``components`` specifies what the signature is built"
+" from and in what order, ``signatureParam`` is the request field with the "
+"signature, and ``payloadParam`` is the request field whose value becomes "
+"the Citeck event body. How the signature is verified is described in the "
+":ref:`mango_receive` section."
+
+#: ../../integration/mango/setup.rst:282
+msgid ""
+"Идентификатор ``mango-webhook`` изменять нельзя: на него ссылается маршрут"
+" обработки."
+msgstr ""
+"The ``mango-webhook`` identifier must not be changed: the processing route"
+" refers to it."
+
+#: ../../integration/mango/setup.rst:285
+msgid "Шаг 5. Запуск маршрута"
+msgstr "Step 5. Starting the route"
+
+#: ../../integration/mango/setup.rst:287
+msgid ""
+"Откройте журнал **«Camel DSL»** (Рабочее пространство «Раздел "
+"администратора» — Интеграция). Журнал доступен по адресу: "
+"``v2/journals?journalId=ecos-camel-"
+"dsl&viewMode=table&ws=admin$workspace``."
+msgstr ""
+"Open the **\"Camel DSL\"** journal (\"Admin section\" workspace — "
+"Integration). The journal is available at: ``v2/journals?journalId=ecos-"
+"camel-dsl&viewMode=table&ws=admin$workspace``."
+
+#: ../../integration/mango/setup.rst:288
+msgid ""
+"Найдите маршрут ``mango-call-recordings-sync`` и выполните действие "
+"**«Запустить»**. Действие доступно администратору."
+msgstr ""
+"Find the ``mango-call-recordings-sync`` route and run the **\"Start\"** "
+"action. The action is available to the administrator."
+
+#: ../../integration/mango/setup.rst:289
+msgid ""
+"Проверьте состояние ``STARTED`` и наличие потребителей у очередей ``mango-"
+"events`` и ``mango-recordings``."
+msgstr ""
+"Check the ``STARTED`` state and that the ``mango-events`` and ``mango-"
+"recordings`` queues have consumers."
+
+#: ../../integration/mango/setup.rst:291
+msgid ""
+"При запуске маршрут сам объявляет обменник и очереди RabbitMQ. Схему "
+"маршрута можно посмотреть действием «Открыть в редакторе» в журнале Camel "
+"DSL."
+msgstr ""
+"On start, the route declares the RabbitMQ exchange and queues itself. The "
+"route diagram can be viewed with the \"Open in editor\" action in the "
+"Camel DSL journal."
+
+#: ../../integration/mango/setup.rst:295
+msgid ""
+"После обновления микросервиса ``ecos-integrations`` проверьте состояние "
+"маршрута (см. :ref:`mango_after_update`)."
+msgstr ""
+"After updating the ``ecos-integrations`` microservice, check the route "
+"state (see :ref:`mango_after_update`)."
+
+#: ../../integration/mango/setup.rst:298
+msgid "Шаг 6. Адрес и уведомления в MANGO OFFICE"
+msgstr "Step 6. Address and notifications in MANGO OFFICE"
+
+#: ../../integration/mango/setup.rst:300
+msgid ""
+"В настройках API ВАТС укажите **базовый адрес вебхука**, включая путь до "
+"``mango-webhook``. Маршрутизация обратного прокси стенда должна "
+"соответствовать выбранному варианту:"
+msgstr ""
+"In the VPBX API settings, specify the **base webhook address**, including "
+"the path to ``mango-webhook``. The reverse proxy routing of the "
+"installation must match the chosen option:"
+
+#: ../../integration/mango/setup.rst
+msgid "Через gateway"
+msgstr "Via gateway"
+
+#: ../../integration/mango/setup.rst
+msgid "Прямое проксирование на HTTP-порт ecos-integrations"
+msgstr "Direct proxying to the ecos-integrations HTTP port"
+
+#: ../../integration/mango/setup.rst:316
+msgid "При указании адреса:"
+msgstr "When specifying the address:"
+
+#: ../../integration/mango/setup.rst:318
+msgid "не указывайте только домен;"
+msgstr "do not specify just the domain;"
+
+#: ../../integration/mango/setup.rst:319
+msgid ""
+"к базовому адресу MANGO OFFICE добавляет путь с типом уведомления, "
+"например ``/events/summary`` или ``/events/record/added``; эти суффиксы в "
+"базовое поле не добавляются;"
+msgstr ""
+"MANGO OFFICE appends a path with the notification type to the base "
+"address, for example ``/events/summary`` or ``/events/record/added``; "
+"these suffixes are not added to the base field;"
+
+#: ../../integration/mango/setup.rst:320
+msgid ""
+"для сертификата публичного центра сертификации используйте проверку "
+"доверенного сертификата;"
+msgstr ""
+"for a certificate from a public certificate authority, use trusted "
+"certificate verification;"
+
+#: ../../integration/mango/setup.rst:321
+msgid ""
+"если существующая внешняя система используется другой интеграцией, "
+"настройте отдельную запись внешней системы для Citeck, чтобы не прервать "
+"её работу."
+msgstr ""
+"if an existing external system is used by another integration, set up a "
+"separate external system record for Citeck so as not to interrupt its "
+"work."
+
+#: ../../integration/mango/setup.rst:323
+msgid ""
+"Перед указанием адреса проверьте его доступность из внешней сети (пример "
+"для варианта через gateway):"
+msgstr ""
+"Before specifying the address, check that it is accessible from the "
+"external network (example for the gateway option):"
+
+#: ../../integration/mango/setup.rst:329
+msgid ""
+"Ожидаемый ответ — HTTP 401 ``Webhook signature is not valid``: запрос "
+"дошёл до Citeck и был отклонён проверкой подписи, потому что подписи в нём"
+" нет. Ответы 404, 403, 502 или перенаправление на страницу входа означают,"
+" что путь закрыт шлюзом или прокси."
+msgstr ""
+"The expected response is HTTP 401 ``Webhook signature is not valid``: the "
+"request reached Citeck and was rejected by the signature check because it "
+"has no signature. Responses 404, 403, 502, or a redirect to the login page"
+" mean that the path is blocked by the gateway or proxy."
+
+#: ../../integration/mango/setup.rst:331
+msgid ""
+"Разрешите отправку уведомлений об итоге вызова ``events/summary`` и о "
+"готовности файла аудиозаписи ``events/record/added``. В интерфейсе с "
+"флажками **«Не отправлять…»** соответствующие флажки должны быть "
+"**сняты**. Промежуточные уведомления ``events/call`` и уведомления о "
+"состоянии записи ``events/recording`` текущему маршруту не нужны; по ним "
+"активность не создаётся. Остальные уведомления для этого сценария не "
+"требуются (о ``events/record/tagged`` см. :ref:`mango_delivery_limits`). "
+"Проверьте, что тестовые номера не исключены фильтром отправки уведомлений."
+msgstr ""
+"Allow sending notifications about the call summary ``events/summary`` and "
+"about the recording file being ready ``events/record/added``. In the "
+"interface with the **«Не отправлять…»** (\"Do not send…\") checkboxes, the"
+" corresponding checkboxes must be **cleared**. Intermediate "
+"``events/call`` notifications and ``events/recording`` recording state "
+"notifications are not needed by the current route; no activity is created "
+"from them. Other notifications are not required for this scenario (for "
+"``events/record/tagged``, see :ref:`mango_delivery_limits`). Check that "
+"the test numbers are not excluded by the notification sending filter."
+
+#: ../../integration/mango/setup.rst:333
+msgid ""
+"Если перед Citeck стоит обратный прокси или межсетевой экран, путь вебхука"
+" и все пути под ним должны быть доступны без авторизации пользователя и "
+"разрешены для IP-адресов MANGO OFFICE (см. :ref:`mango_ip_addresses`)."
+msgstr ""
+"If there is a reverse proxy or firewall in front of Citeck, the webhook "
+"path and all paths under it must be accessible without user authorization "
+"and allowed for MANGO OFFICE IP addresses (see :ref:`mango_ip_addresses`)."
+
+#: ../../integration/mango/setup.rst
+msgid "Локальный стенд через HTTPS-туннель"
+msgstr "Local installation via an HTTPS tunnel"
+
+#: ../../integration/mango/setup.rst:338
+msgid ""
+"Если ``ecos-integrations`` запущен на хосте на порту ``8082``, для "
+"временной проверки можно проксировать его через установленный "
+"``cloudflared``:"
+msgstr ""
+"If ``ecos-integrations`` runs on the host on port ``8082``, for temporary "
+"testing it can be proxied through an installed ``cloudflared``:"
+
+#: ../../integration/mango/setup.rst:344
+msgid ""
+"Полученный публичный домен используйте с путём ``/pub/webhook/mango-"
+"webhook``. При смене домена обновите адрес внешней системы в MANGO OFFICE."
+" Процесс туннеля должен работать всё время тестирования."
+msgstr ""
+"Use the obtained public domain with the ``/pub/webhook/mango-webhook`` "
+"path. When the domain changes, update the external system address in MANGO"
+" OFFICE. The tunnel process must keep running during the entire test."
+
+#: ../../integration/mango/setup.rst:346
+msgid ""
+"Для постоянной эксплуатации нужен стабильный HTTPS-адрес; временный "
+"туннель не гарантирует непрерывную доставку."
+msgstr ""
+"Permanent operation requires a stable HTTPS address; a temporary tunnel "
+"does not guarantee continuous delivery."
+
+#: ../../integration/mango/setup.rst:351
+msgid "Шаг 7. Проверочный звонок"
+msgstr "Step 7. Test call"
+
+#: ../../integration/mango/setup.rst:353
+msgid ""
+"Проверяйте под пользователем из группы менеджеров или администраторов CRM "
+"(см. :ref:`mango_user_rights`)."
+msgstr ""
+"Test as a user from the CRM managers or administrators group (see "
+":ref:`mango_user_rights`)."
+
+#: ../../integration/mango/setup.rst:355
+msgid ""
+"Выполните входящий звонок на номер ВАТС, ответьте, произнесите тестовую "
+"фразу и завершите разговор. Текущий сценарий обрабатывает **входящие "
+"отвеченные** звонки: ``call_direction=1``, ``entry_result=1``. Активность "
+"не ожидается сразу при наборе номера."
+msgstr ""
+"Make an incoming call to the VPBX number, answer, say a test phrase, and "
+"end the conversation. The current scenario processes **incoming answered**"
+" calls: ``call_direction=1``, ``entry_result=1``. The activity is not "
+"expected immediately when the number is dialed."
+
+#: ../../integration/mango/setup.rst:356
+msgid ""
+"Проверьте получение ``summary`` и создание активности «Входящий звонок "
+"``<номер>``» в карточке сделки или лида. Если номер не найден среди "
+"подходящих сделок или лидов, маршрут создаёт новый лид в ``crm-"
+"workspace``; при необходимости удалите его после проверки. При нескольких "
+"совпадениях выбирается наиболее недавно изменённый подходящий документ и "
+"добавляется отметка ``[mango:ambiguous]``."
+msgstr ""
+"Check that the ``summary`` is received and the \"Входящий звонок "
+"``<номер>``\" (\"Incoming call ``<number>``\") activity is created in the "
+"deal or lead card. If the number is not found among the matching deals or "
+"leads, the route creates a new lead in ``crm-workspace``; delete it after "
+"testing if necessary. With multiple matches, the most recently modified "
+"matching document is chosen, and the ``[mango:ambiguous]`` mark is added."
+
+#: ../../integration/mango/setup.rst:357
+msgid ""
+"После готовности аудиозаписи проверьте ``record/added`` того же "
+"``entry_id``, скачивание, расшифровку, аудиофайл и длительность в "
+"карточке. Файл может стать доступен позже завершения звонка."
+msgstr ""
+"After the recording is ready, check ``record/added`` for the same "
+"``entry_id``, the download, the transcript, the audio file, and the "
+"duration in the card. The file may become available later than the end of "
+"the call."
+
+#: ../../integration/mango/setup.rst:358
+msgid ""
+"Убедитесь, что пользователь CRM имеет доступ к рабочему пространству и "
+"документу через предусмотренные роли."
+msgstr ""
+"Make sure the CRM user has access to the workspace and the document "
+"through the provided roles."
+
+#: ../../integration/mango/setup.rst:359
+msgid ""
+"Сверьте время звонка в карточке со временем в личном кабинете MANGO OFFICE"
+" (см. :ref:`mango_call_time`). Если время отличается ровно на 3 часа, "
+"сообщите в поддержку Citeck до ввода в эксплуатацию: исправление требует "
+"доработки интеграции."
+msgstr ""
+"Compare the call time in the card with the time in the MANGO OFFICE "
+"account (see :ref:`mango_call_time`). If the time differs by exactly 3 "
+"hours, report it to Citeck support before commissioning: fixing it "
+"requires an enhancement to the integration."
+
+#: ../../integration/mango/setup.rst:360
+msgid ""
+"Проверьте отсутствие новых сообщений в ``mango-events-dlq`` и ``mango-"
+"recordings-dlq``. Зафиксируйте ``entry_id`` и ссылки на лид или сделку и "
+"активность для последующей диагностики."
+msgstr ""
+"Check that there are no new messages in ``mango-events-dlq`` and ``mango-"
+"recordings-dlq``. Record the ``entry_id`` and the links to the lead or "
+"deal and the activity for later diagnostics."
+
+#: ../../integration/mango/setup.rst:362
+msgid "Ориентиры по времени:"
+msgstr "Timing guidelines:"
+
+#: ../../integration/mango/setup.rst:369
+msgid "Этап"
+msgstr "Stage"
+
+#: ../../integration/mango/setup.rst:370
+msgid "Когда ожидать"
+msgstr "When to expect"
+
+#: ../../integration/mango/setup.rst:371
+msgid "Активность в карточке сделки или лида"
+msgstr "Activity in the deal or lead card"
+
+#: ../../integration/mango/setup.rst:372
+msgid "Через несколько секунд после окончания звонка"
+msgstr "A few seconds after the call ends"
+
+#: ../../integration/mango/setup.rst:373
+msgid "Аудиозапись и расшифровка"
+msgstr "Recording and transcript"
+
+#: ../../integration/mango/setup.rst:374
+msgid ""
+"После того как MANGO OFFICE поместит аудиозапись в облако и сервис "
+"распознавания её обработает. В зависимости от процессора распознавание "
+"занимает от нескольких секунд на минуту разговора до времени, сравнимого с"
+" длительностью разговора."
+msgstr ""
+"After MANGO OFFICE places the recording in the cloud and the recognition "
+"service processes it. Depending on the CPU, recognition takes from a few "
+"seconds per minute of conversation to a time comparable to the "
+"conversation duration."
+
+#: ../../integration/mango/setup.rst:375
+msgid "Очередь в часы пик"
+msgstr "Queue at peak hours"
+
+#: ../../integration/mango/setup.rst:376
+msgid ""
+"Одновременно обрабатываются две аудиозаписи, остальные ждут в очереди "
+"``mango-recordings``, поэтому статус ``downloading`` держится дольше"
+msgstr ""
+"Two recordings are processed at the same time, the others wait in the "
+"``mango-recordings`` queue, so the ``downloading`` status lasts longer"
+
+#: ../../integration/mango/setup.rst:377
+msgid "Когда проверять"
+msgstr "When to check"
+
+#: ../../integration/mango/setup.rst:378
+msgid ""
+"С учётом отложенных повторов (48 минут ожидания) статус ``downloading``, "
+"который не меняется больше полутора часов, требует проверки лога и "
+"очередей ``mango-recordings-retry-*`` и ``mango-recordings-dlq``"
+msgstr ""
+"Taking delayed retries into account (48 minutes of waiting), a "
+"``downloading`` status that does not change for more than an hour and a "
+"half requires checking the log and the ``mango-recordings-retry-*`` and "
+"``mango-recordings-dlq`` queues"
+
+#: ../../integration/mango/setup.rst:380
+msgid ""
+"Если активность не появилась, воспользуйтесь разделом "
+":ref:`mango_monitoring`."
+msgstr ""
+"If the activity did not appear, use the :ref:`mango_monitoring` section."
+
+#: ../../integration/mango/setup.rst:383
+msgid "Дополнительная настройка"
+msgstr "Additional setup"
+
+#: ../../integration/mango/setup.rst:388
+msgid "Настройка интервалов повторов"
+msgstr "Configuring retry intervals"
+
+#: ../../integration/mango/setup.rst:390
+msgid ""
+"Параметры разрешает Camel через JVM system properties или переменные "
+"окружения, а не через ``application.yml`` Spring. Перечень параметров и "
+"значения по умолчанию приведены в разделе :ref:`mango_route_params`."
+msgstr ""
+"Camel resolves the parameters through JVM system properties or environment"
+" variables, not through the Spring ``application.yml``. The list of "
+"parameters and their default values is given in the "
+":ref:`mango_route_params` section."
+
+#: ../../integration/mango/setup.rst
+msgid "Свойство JVM"
+msgstr "JVM property"
+
+#: ../../integration/mango/setup.rst
+msgid "Переменная окружения"
+msgstr "Environment variable"
+
+#: ../../integration/mango/setup.rst:406
+msgid ""
+"После изменения параметров обеспечьте пересоздание Camel-контекста; при "
+"изменении параметров запуска JVM перезапустите приложение."
+msgstr ""
+"After changing the parameters, make sure the Camel context is recreated; "
+"when changing JVM startup parameters, restart the application."
+
+#: ../../integration/mango/setup.rst:408
+msgid ""
+"Значения ``mango.recording.retryDelaysMillis`` должны быть положительными "
+"числами. Ошибка в этом параметре нарушает обработку сбоев аудиозаписей."
+msgstr ""
+"The ``mango.recording.retryDelaysMillis`` values must be positive numbers."
+" An error in this parameter breaks the handling of recording failures."
+
+#: ../../integration/mango/setup.rst:412
+msgid ""
+"Уже опубликованные сообщения остаются в очередях с прежним TTL: изменение "
+"настройки не переносит их в новые очереди. Прежние очереди ``mango-"
+"recordings-retry-*`` автоматически не удаляются — после того как они "
+"опустеют, удалите их вручную."
+msgstr ""
+"Messages already published remain in queues with the previous TTL: "
+"changing the setting does not move them to the new queues. The previous "
+"``mango-recordings-retry-*`` queues are not deleted automatically — once "
+"they are empty, delete them manually."
+
+#: ../../integration/mango/setup.rst:417
+msgid "Правила выбора сделки или лида"
+msgstr "Deal or lead selection rules"
+
+#: ../../integration/mango/setup.rst:419
+msgid ""
+"Правила выбора хранятся в YAML маршрута ``mango-call-recordings-sync``, в "
+"объекте ``mangoResolvePolicy``. Их можно изменить под модель CRM вашей "
+"организации. Правила задаются параметрами ``inactiveStatuses``, "
+"``candidatesPageSize``, ``ambiguousMarker``, ``ambiguityNoteTemplate`` и "
+"``sourceNoteTemplates``; их назначение и значения по умолчанию приведены в"
+" разделе :ref:`mango_route_params`."
+msgstr ""
+"The selection rules are stored in the YAML of the ``mango-call-recordings-"
+"sync`` route, in the ``mangoResolvePolicy`` object. They can be changed to"
+" fit your organization's CRM model. The rules are set by the "
+"``inactiveStatuses``, ``candidatesPageSize``, ``ambiguousMarker``, "
+"``ambiguityNoteTemplate``, and ``sourceNoteTemplates`` parameters; their "
+"purpose and default values are given in the :ref:`mango_route_params` "
+"section."
+
+#: ../../integration/mango/setup.rst:421
+msgid "В шаблонах пометок доступны подстановки:"
+msgstr "The following placeholders are available in note templates:"
+
+#: ../../integration/mango/setup.rst:428
+msgid "Подстановка"
+msgstr "Placeholder"
+
+#: ../../integration/mango/setup.rst:429
+msgid "Значение"
+msgstr "Value"
+
+#: ../../integration/mango/setup.rst:430
+#, python-brace-format
+msgid "``{number}``"
+msgstr "``{number}``"
+
+#: ../../integration/mango/setup.rst:431
+msgid "Номер звонящего"
+msgstr "Caller's number"
+
+#: ../../integration/mango/setup.rst:432
+#, python-brace-format
+msgid "``{names}``"
+msgstr "``{names}``"
+
+#: ../../integration/mango/setup.rst:433
+msgid "Названия найденных сделок, лидов или контрагентов"
+msgstr "Names of the deals, leads, or counterparties found"
+
+#: ../../integration/mango/setup.rst:434
+#, python-brace-format
+msgid "``{chosen}``"
+msgstr "``{chosen}``"
+
+#: ../../integration/mango/setup.rst:435
+msgid "Выбранная сделка, лид или контрагент"
+msgstr "The selected deal, lead, or counterparty"
+
+#: ../../integration/mango/setup.rst:437
+msgid ""
+"Значения ``inactiveStatuses`` и ``sourceNoteTemplates`` — JSON-словари, "
+"записанные строкой в одинарных кавычках. Ключ — идентификатор источника "
+"(``emodel/deal``, ``emodel/lead``, ``emodel/ecos-counterparty``), значение"
+" — идентификаторы статусов через запятую (для ``sourceNoteTemplates`` — "
+"текст пометки). Пример — значение ``inactiveStatuses`` по умолчанию, в "
+"котором перечислены статусы из раздела :ref:`mango_search_order`:"
+msgstr ""
+"The ``inactiveStatuses`` and ``sourceNoteTemplates`` values are JSON "
+"dictionaries written as a string in single quotes. The key is the source "
+"identifier (``emodel/deal``, ``emodel/lead``, ``emodel/ecos-"
+"counterparty``), and the value is comma-separated status identifiers (for "
+"``sourceNoteTemplates`` — the note text). Example — the default "
+"``inactiveStatuses`` value, which lists the statuses from the "
+":ref:`mango_search_order` section:"
+
+#: ../../integration/mango/setup.rst:443
+msgid "Вне ``mangoResolvePolicy`` в YAML маршрута задаются:"
+msgstr ""
+"The following are set in the route YAML outside ``mangoResolvePolicy``:"
+
+#: ../../integration/mango/setup.rst:445
+msgid "порядок источников поиска;"
+msgstr "the order of search sources;"
+
+#: ../../integration/mango/setup.rst:446
+msgid ""
+"рабочее пространство создаваемого лида (константа ``LEAD_WORKSPACE`` в "
+"шаге ``mango-create-lead-for-call``);"
+msgstr ""
+"the workspace of the created lead (the ``LEAD_WORKSPACE`` constant in the "
+"``mango-create-lead-for-call`` step);"
+
+#: ../../integration/mango/setup.rst:447
+msgid ""
+"коды HTTP-ответов, при которых загрузка и распознавание аудиозаписи "
+"повторяются (``recordingFailurePolicy.retryHttpStatuses``);"
+msgstr ""
+"HTTP response codes on which downloading and recognizing the recording are"
+" retried (``recordingFailurePolicy.retryHttpStatuses``);"
+
+#: ../../integration/mango/setup.rst:448
+msgid "наибольший размер аудиозаписи (``mangoRecordingGuard.maxSize``)."
+msgstr "the maximum recording size (``mangoRecordingGuard.maxSize``)."
+
+#: ../../integration/mango/setup.rst
+msgid "Порядок изменения"
+msgstr "How to make changes"
+
+#: ../../integration/mango/setup.rst:453
+msgid "Остановите маршрут действием «Остановить» в журнале Camel DSL."
+msgstr "Stop the route with the \"Stop\" action in the Camel DSL journal."
+
+#: ../../integration/mango/setup.rst:454
+msgid "Измените YAML маршрута и сохраните его."
+msgstr "Change the route YAML and save it."
+
+#: ../../integration/mango/setup.rst:455
+msgid "Запустите маршрут действием «Запустить»."
+msgstr "Start the route with the \"Start\" action."
+
+#: ../../integration/mango/setup.rst:456
+#: ../../integration/mango/setup.rst:490
+msgid "Сделайте контрольный звонок."
+msgstr "Make a test call."
+
+#: ../../integration/mango/setup.rst:460
+msgid ""
+"Ошибка в правилах не мешает маршруту запуститься, но ломает обработку "
+"звонков. К таким ошибкам относятся неверный JSON, нечисловое или "
+"неположительное значение ``candidatesPageSize``, удалённые "
+"``ambiguousMarker`` или шаблон пометки (такая ошибка проявится на первом "
+"неоднозначном совпадении). Каждое затронутое уведомление повторяется три "
+"раза, задерживая остальные уведомления до трёх с половиной минут, и уходит"
+" в ``mango-events-dlq``. После исправления верните такие уведомления из "
+"очереди недоставленных."
+msgstr ""
+"An error in the rules does not prevent the route from starting but breaks "
+"call processing. Such errors include invalid JSON, a non-numeric or non-"
+"positive ``candidatesPageSize`` value, and a deleted ``ambiguousMarker`` "
+"or note template (such an error shows up on the first ambiguous match). "
+"Each affected notification is retried three times, delaying other "
+"notifications by up to three and a half minutes, and goes to ``mango-"
+"events-dlq``. After fixing the error, return such notifications from the "
+"dead-letter queue."
+
+#: ../../integration/mango/setup.rst:464
+msgid ""
+"Правила хранятся в содержимом поставляемого маршрута. Если при обновлении "
+"``ecos-integrations`` изменился поставляемый маршрут, ваши правки YAML "
+"перезаписываются (см. :ref:`mango_after_update`). Храните копию "
+"изменённого YAML вне Citeck."
+msgstr ""
+"The rules are stored in the content of the delivered route. If the "
+"delivered route changed when ``ecos-integrations`` was updated, your YAML "
+"changes are overwritten (see :ref:`mango_after_update`). Keep a copy of "
+"the modified YAML outside Citeck."
+
+#: ../../integration/mango/setup.rst:469
+msgid "Смена учётных данных API-коннектора"
+msgstr "Changing API connector credentials"
+
+#: ../../integration/mango/setup.rst:471
+msgid ""
+"После любого изменения секрета ``mango-api`` или адреса любой конечной "
+"точки сразу остановите и заново запустите маршрут ``mango-call-recordings-"
+"sync`` (действия «Остановить» и «Запустить» в журнале Camel DSL). Часть "
+"значений привязывается при создании Camel-контекста, поэтому до "
+"перезапуска MANGO OFFICE отклоняет запросы на загрузку аудиозаписей. "
+"Проверка входящих уведомлений читает секрет при каждом запросе."
+msgstr ""
+"After any change to the ``mango-api`` secret or the address of any "
+"endpoint, immediately stop and restart the ``mango-call-recordings-sync`` "
+"route (the \"Stop\" and \"Start\" actions in the Camel DSL journal). Some "
+"values are bound when the Camel context is created, so until the restart "
+"MANGO OFFICE rejects recording download requests. Incoming notification "
+"verification reads the secret on every request."
+
+#: ../../integration/mango/setup.rst:473
+msgid ""
+"Что станет со звонком, аудиозапись которого не удалось загрузить из-за "
+"такого отказа, зависит от ответа MANGO OFFICE:"
+msgstr ""
+"What happens to a call whose recording could not be downloaded because of "
+"such a rejection depends on the MANGO OFFICE response:"
+
+#: ../../integration/mango/setup.rst:475
+msgid ""
+"ответы 401 и 403, как и ответы 5xx, считаются временными: сообщение "
+"проходит отложенные повторы, после чего звонок получает статус ``download-"
+"failed``, а сообщение попадает в ``mango-recordings-dlq``;"
+msgstr ""
+"401 and 403 responses, like 5xx responses, are considered temporary: the "
+"message goes through delayed retries, after which the call gets the "
+"``download-failed`` status, and the message goes to ``mango-recordings-"
+"dlq``;"
+
+#: ../../integration/mango/setup.rst:476
+msgid ""
+"ответ с кодом ошибки MANGO OFFICE в JSON и HTTP-кодом 2xx, а также ответ с"
+" любым другим кодом 4xx считаются окончательными: звонок сразу получает "
+"статус ``download-failed``, а сообщение в очередь недоставленных не "
+"попадает."
+msgstr ""
+"a response with a MANGO OFFICE error code in JSON and an HTTP 2xx code, as"
+" well as a response with any other 4xx code, is considered final: the call"
+" immediately gets the ``download-failed`` status, and the message does not"
+" go to the dead-letter queue."
+
+#: ../../integration/mango/setup.rst:478
+msgid ""
+"По документации MANGO OFFICE ошибка в запросе возвращается кодом 3xxx в "
+"JSON, а ответ 401 приходит только после превышения квоты неверных "
+"запросов. Поэтому при смене учётных данных часть звонков, скорее всего, "
+"получит статус ``download-failed`` без отложенных повторов. После "
+"перезапуска маршрута верните сообщения из ``mango-recordings-dlq`` (см. "
+":ref:`mango_dlq_restore`). Затем найдите звонки со статусом ``download-"
+"failed`` за время сбоя, сообщений которых нет в очереди недоставленных, и "
+"подайте для них уведомление о записи вручную (см. "
+":ref:`mango_record_reupload`)."
+msgstr ""
+"According to the MANGO OFFICE documentation, a request error is returned "
+"as a 3xxx code in JSON, and a 401 response comes only after the quota of "
+"invalid requests is exceeded. Therefore, when credentials are changed, "
+"some calls will most likely get the ``download-failed`` status without "
+"delayed retries. After restarting the route, return the messages from "
+"``mango-recordings-dlq`` (see :ref:`mango_dlq_restore`). Then find calls "
+"with the ``download-failed`` status during the failure period whose "
+"messages are not in the dead-letter queue, and submit the recording "
+"notification for them manually (see :ref:`mango_record_reupload`)."
+
+#: ../../integration/mango/setup.rst:483
+msgid "Действия после обновления ecos-integrations"
+msgstr "Actions after updating ecos-integrations"
+
+#: ../../integration/mango/setup.rst:485
+msgid ""
+"При обновлении микросервиса поставляемые артефакты интеграции "
+"разворачиваются заново, если в новой версии они изменились. Изменённый "
+"маршрут разворачивается с содержимым из поставки и в состоянии "
+"``STOPPED``, поэтому ваши правки YAML (правила выбора, "
+"``retryHttpStatuses``, ``maxSize``, рабочее пространство лида) "
+"перезаписываются. После каждого обновления:"
+msgstr ""
+"When the microservice is updated, the delivered integration artifacts are "
+"redeployed if they changed in the new version. A changed route is deployed"
+" with the content from the delivery and in the ``STOPPED`` state, so your "
+"YAML changes (selection rules, ``retryHttpStatuses``, ``maxSize``, lead "
+"workspace) are overwritten. After each update:"
+
+#: ../../integration/mango/setup.rst:487
+msgid ""
+"Проверьте, что маршрут ``mango-call-recordings-sync`` запущен "
+"(``STARTED``)."
+msgstr ""
+"Check that the ``mango-call-recordings-sync`` route is running "
+"(``STARTED``)."
+
+#: ../../integration/mango/setup.rst:488
+msgid ""
+"Сверьте YAML маршрута с сохранённой копией своих изменений и при "
+"необходимости повторите их."
+msgstr ""
+"Compare the route YAML with the saved copy of your changes and reapply "
+"them if necessary."
+
+#: ../../integration/mango/setup.rst:489
+msgid ""
+"Проверьте адреса конечных точек ``mango-office`` и ``stt-sidecar`` и "
+"заполненность секрета ``mango-api``."
+msgstr ""
+"Check the addresses of the ``mango-office`` and ``stt-sidecar`` endpoints "
+"and that the ``mango-api`` secret is filled in."
+
+#: ../../integration/mango/setup.rst:493
+msgid "Отключение интеграции"
+msgstr "Disabling the integration"
+
+#: ../../integration/mango/setup.rst:495
+msgid ""
+"Удалите адрес внешней системы в настройках API-коннектора в личном "
+"кабинете MANGO OFFICE."
+msgstr ""
+"Remove the external system address in the API connector settings in the "
+"MANGO OFFICE account."
+
+#: ../../integration/mango/setup.rst:496
+msgid ""
+"Дождитесь, пока опустеют очереди ``mango-events``, ``mango-recordings`` и "
+"``mango-recordings-retry-*``."
+msgstr ""
+"Wait until the ``mango-events``, ``mango-recordings``, and ``mango-"
+"recordings-retry-*`` queues are empty."
+
+#: ../../integration/mango/setup.rst:497
+msgid ""
+"Остановите маршрут ``mango-call-recordings-sync`` действием «Остановить» в"
+" журнале Camel DSL."
+msgstr ""
+"Stop the ``mango-call-recordings-sync`` route with the \"Stop\" action in "
+"the Camel DSL journal."
+
+#: ../../integration/mango/setup.rst:501
+msgid ""
+"Если остановить маршрут, не убрав адрес в MANGO OFFICE, вебхук продолжит "
+"отвечать кодом 200, но уведомления никто не обработает. Они теряются без "
+"следа в логе, и MANGO OFFICE их не повторит. Сообщения, уже лежащие в "
+"очередях, сохраняются и обрабатываются после запуска маршрута."
+msgstr ""
+"If you stop the route without removing the address in MANGO OFFICE, the "
+"webhook will keep responding with code 200, but nobody will process the "
+"notifications. They are lost without a trace in the log, and MANGO OFFICE "
+"will not repeat them. Messages already in the queues are kept and "
+"processed after the route is started."

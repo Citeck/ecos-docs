@@ -1,0 +1,1038 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/mango/monitoring.rst:4
+msgid "Мониторинг и диагностика"
+msgstr "Monitoring and Diagnostics"
+
+#: ../../integration/mango/monitoring.rst:11
+msgid "Что контролировать администратору"
+msgstr "What an administrator should monitor"
+
+#: ../../integration/mango/monitoring.rst:18
+msgid "Объект"
+msgstr "Object"
+
+#: ../../integration/mango/monitoring.rst:19
+msgid "Проверка"
+msgstr "Check"
+
+#: ../../integration/mango/monitoring.rst:20
+msgid "``integrations/camel-dsl@mango-call-recordings-sync``"
+msgstr "``integrations/camel-dsl@mango-call-recordings-sync``"
+
+#: ../../integration/mango/monitoring.rst:21
+msgid "Состояние ``STARTED``; в логах нет ошибки запуска контекста."
+msgstr "State ``STARTED``; no context startup error in the logs."
+
+#: ../../integration/mango/monitoring.rst:22
+msgid "Сервисы"
+msgstr "Services"
+
+#: ../../integration/mango/monitoring.rst:23
+msgid ""
+"Доступны ``ecos-integrations``, RabbitMQ, Records API, MANGO OFFICE API и "
+"сервис распознавания. Конечная точка ``stt-sidecar`` доступна именно из "
+"среды запуска интеграции."
+msgstr ""
+"``ecos-integrations``, RabbitMQ, Records API, MANGO OFFICE API, and the "
+"recognition service are available. The ``stt-sidecar`` endpoint is "
+"accessible specifically from the environment where the integration runs."
+
+#: ../../integration/mango/monitoring.rst:24
+msgid "``mango-events`` и ``mango-recordings``"
+msgstr "``mango-events`` and ``mango-recordings``"
+
+#: ../../integration/mango/monitoring.rst:25
+msgid ""
+"Есть потребители, очередь не растёт непрерывно. В поставляемом маршруте "
+"один потребитель уведомлений и два потребителя аудиозаписей. Если "
+"потребителей нет, маршрут остановлен или не подключился к брокеру."
+msgstr ""
+"There are consumers, and the queue does not grow continuously. The "
+"delivered route has one notifications consumer and two recordings "
+"consumers. If there are no consumers, the route is stopped or has not "
+"connected to the broker."
+
+#: ../../integration/mango/monitoring.rst:26
+msgid "``mango-recordings-retry-*``"
+msgstr "``mango-recordings-retry-*``"
+
+#: ../../integration/mango/monitoring.rst:27
+msgid ""
+"Наличие сообщений означает ожидание повторов. Обычных потребителей в этих "
+"очередях нет по замыслу. Длительное накопление требует проверки целевого "
+"exchange, привязок очередей и состояния RabbitMQ."
+msgstr ""
+"Messages present mean retries are pending. By design, these queues have no"
+" regular consumers. Prolonged accumulation requires checking the target "
+"exchange, queue bindings, and the RabbitMQ state."
+
+#: ../../integration/mango/monitoring.rst:28
+msgid "``mango-events-dlq`` и ``mango-recordings-dlq``"
+msgstr "``mango-events-dlq`` and ``mango-recordings-dlq``"
+
+#: ../../integration/mango/monitoring.rst:29
+msgid ""
+"Любое сообщение требует разбора; автоматически эти очереди не "
+"опустошаются, оповещений об их заполнении нет."
+msgstr ""
+"Every message requires review; these queues are not emptied automatically,"
+" and there are no alerts when they fill up."
+
+#: ../../integration/mango/monitoring.rst:30
+msgid "Карточка активности"
+msgstr "Activity card"
+
+#: ../../integration/mango/monitoring.rst:31
+msgid ""
+"Статус обработки аудиозаписи, аудиофайл, длительность, расшифровка. "
+"Отсутствие только AI-резюме проверяется отдельно от сохранения аудио."
+msgstr ""
+"Recording processing status, audio file, duration, transcript. The absence"
+" of only the AI summary is checked separately from saving the audio."
+
+#: ../../integration/mango/monitoring.rst:32
+msgid "Логи интеграции"
+msgstr "Integration logs"
+
+#: ../../integration/mango/monitoring.rst:33
+msgid ""
+"Ошибки по ``entry_id`` звонка; строки ``scheduled for retry`` с номером "
+"попытки и задержкой; ошибки публикации, сохранения статуса и ``is LOST``."
+msgstr ""
+"Errors by the call's ``entry_id``; ``scheduled for retry`` lines with the "
+"attempt number and delay; publication errors, status saving errors, and "
+"``is LOST``."
+
+#: ../../integration/mango/monitoring.rst:35
+msgid ""
+"Для наблюдения за очередями используйте RabbitMQ Management выбранного "
+"стенда. Сопоставляйте ``entry_id`` из логов и сообщения с полем активности"
+" ``recording-aspect:meetingUrl`` вида ``mango://entry/<entry_id>``."
+msgstr ""
+"To observe the queues, use the RabbitMQ Management of the chosen "
+"installation. Match the ``entry_id`` from the logs and the message with "
+"the activity field ``recording-aspect:meetingUrl`` of the form "
+"``mango://entry/<entry_id>``."
+
+#: ../../integration/mango/monitoring.rst:38
+msgid "Лог микросервиса"
+msgstr "Microservice log"
+
+#: ../../integration/mango/monitoring.rst:40
+msgid ""
+"Интеграция выводит сообщения в лог микросервиса ``ecos-integrations``:"
+msgstr ""
+"The integration writes messages to the ``ecos-integrations`` microservice "
+"log:"
+
+#: ../../integration/mango/monitoring.rst:42
+msgid ""
+"все сообщения начинаются с префикса ``Mango:``, и фильтровать лог надёжнее"
+" всего по нему;"
+msgstr ""
+"all messages start with the ``Mango:`` prefix, and filtering the log by it"
+" is the most reliable;"
+
+#: ../../integration/mango/monitoring.rst:43
+msgid ""
+"сообщения шагов маршрута выводятся в логгеры с именами подмаршрутов "
+"(``mango-webhook-request``, ``mango-download-recording``, ``mango-"
+"transcribe-recording`` и т. д.);"
+msgstr ""
+"route step messages are written to loggers named after the subroutes "
+"(``mango-webhook-request``, ``mango-download-recording``, ``mango-"
+"transcribe-recording``, etc.);"
+
+#: ../../integration/mango/monitoring.rst:44
+msgid ""
+"сообщения об отложенных повторах и о параметре ``retryHttpStatuses`` "
+"выводятся в логгеры классов "
+"``ru.citeck.ecos.integrations.domain.telephony.RecordingRetryProcessor`` и"
+" "
+"``ru.citeck.ecos.integrations.domain.telephony.RecordingFailurePolicyProcessor``;"
+msgstr ""
+"messages about delayed retries and the ``retryHttpStatuses`` parameter are"
+" written to the loggers of the "
+"``ru.citeck.ecos.integrations.domain.telephony.RecordingRetryProcessor`` "
+"and "
+"``ru.citeck.ecos.integrations.domain.telephony.RecordingFailurePolicyProcessor``"
+" classes;"
+
+#: ../../integration/mango/monitoring.rst:45
+msgid "код ВАТС и подпись в логе маскируются."
+msgstr "the VPBX code and the signature are masked in the log."
+
+#: ../../integration/mango/monitoring.rst:47
+msgid ""
+"Журнал синхронизации (действие «Посмотреть лог синхронизации» в журнале "
+"Camel DSL) этим маршрутом не ведётся."
+msgstr ""
+"The synchronization log (the \"View synchronization log\" action in the "
+"Camel DSL journal) is not kept by this route."
+
+#: ../../integration/mango/monitoring.rst
+msgid "Сообщения лога"
+msgstr "Log messages"
+
+#: ../../integration/mango/monitoring.rst:57
+msgid "Сообщение (фрагмент)"
+msgstr "Message (fragment)"
+
+#: ../../integration/mango/monitoring.rst:58
+msgid "Уровень"
+msgstr "Level"
+
+#: ../../integration/mango/monitoring.rst:59
+msgid "Значение"
+msgstr "Meaning"
+
+#: ../../integration/mango/monitoring.rst:60
+msgid "``activity … of call … is created``"
+msgstr "``activity … of call … is created``"
+
+#: ../../integration/mango/monitoring.rst:61
+#: ../../integration/mango/monitoring.rst:64
+#: ../../integration/mango/monitoring.rst:67
+#: ../../integration/mango/monitoring.rst:70
+#: ../../integration/mango/monitoring.rst:73
+#: ../../integration/mango/monitoring.rst:76
+#: ../../integration/mango/monitoring.rst:79
+#: ../../integration/mango/monitoring.rst:82
+#: ../../integration/mango/monitoring.rst:85
+#: ../../integration/mango/monitoring.rst:88
+#: ../../integration/mango/monitoring.rst:91
+#: ../../integration/mango/monitoring.rst:94
+#: ../../integration/mango/monitoring.rst:97
+#: ../../integration/mango/monitoring.rst:100
+msgid "INFO"
+msgstr "INFO"
+
+#: ../../integration/mango/monitoring.rst:62
+msgid "Создана активность звонка"
+msgstr "A call activity has been created"
+
+#: ../../integration/mango/monitoring.rst:63
+msgid "``is attached to … (N active candidates in …)``"
+msgstr "``is attached to … (N active candidates in …)``"
+
+#: ../../integration/mango/monitoring.rst:65
+msgid "Звонок привязан к найденной сделке или лиду"
+msgstr "The call is linked to the found deal or lead"
+
+#: ../../integration/mango/monitoring.rst:66
+msgid "``created the lead``"
+msgstr "``created the lead``"
+
+#: ../../integration/mango/monitoring.rst:68
+msgid "По звонку создан лид"
+msgstr "A lead has been created for the call"
+
+#: ../../integration/mango/monitoring.rst:69
+msgid "``is already attached to …, no second lead is created``"
+msgstr "``is already attached to …, no second lead is created``"
+
+#: ../../integration/mango/monitoring.rst:71
+msgid "Повторная обработка итога вызова, звонок уже привязан"
+msgstr "Repeated processing of the call summary, the call is already linked"
+
+#: ../../integration/mango/monitoring.rst:72
+msgid "``event of call … skipped - <причина>``"
+msgstr "``event of call … skipped - <reason>``"
+
+#: ../../integration/mango/monitoring.rst:74
+msgid ""
+"Уведомление пропущено (исходящий или пропущенный звонок, уведомление о "
+"статусе записи и т. п.)"
+msgstr ""
+"The notification was skipped (outgoing or missed call, recording status "
+"notification, etc.)"
+
+#: ../../integration/mango/monitoring.rst:75
+msgid "``gives no phone key``"
+msgstr "``gives no phone key``"
+
+#: ../../integration/mango/monitoring.rst:77
+msgid ""
+"Из номера не получен нормализованный номер (скрытый или короткий номер)"
+msgstr ""
+"No normalized number was obtained from the number (hidden or short number)"
+
+#: ../../integration/mango/monitoring.rst:78
+msgid "``resolved to no target``"
+msgstr "``resolved to no target``"
+
+#: ../../integration/mango/monitoring.rst:80
+msgid "Сделка или лид не найдены и не созданы, активность не создана"
+msgstr "No deal or lead was found or created, no activity was created"
+
+#: ../../integration/mango/monitoring.rst:81
+msgid "``is queued for``"
+msgstr "``is queued for``"
+
+#: ../../integration/mango/monitoring.rst:83
+msgid "Звонок поставлен в очередь на загрузку аудиозаписи"
+msgstr "The call has been queued for recording download"
+
+#: ../../integration/mango/monitoring.rst:84
+msgid "``is downloaded, N bytes``"
+msgstr "``is downloaded, N bytes``"
+
+#: ../../integration/mango/monitoring.rst:86
+msgid "Аудиозапись загружена"
+msgstr "The recording has been downloaded"
+
+#: ../../integration/mango/monitoring.rst:87
+msgid "``is transcribed``"
+msgstr "``is transcribed``"
+
+#: ../../integration/mango/monitoring.rst:89
+msgid "Аудиозапись распознана"
+msgstr "The recording has been recognized"
+
+#: ../../integration/mango/monitoring.rst:90
+msgid "``has no transcription to summarize``"
+msgstr "``has no transcription to summarize``"
+
+#: ../../integration/mango/monitoring.rst:92
+msgid "Расшифровка пуста, резюме не запрашивалось"
+msgstr "The transcript is empty, no summary was requested"
+
+#: ../../integration/mango/monitoring.rst:93
+msgid "``event is dropped``"
+msgstr "``event is dropped``"
+
+#: ../../integration/mango/monitoring.rst:95
+msgid ""
+"Уведомление о записи пришло для звонка без активности и отброшено; для "
+"исходящих, внутренних и пропущенных звонков с аудиозаписью это штатная "
+"ситуация"
+msgstr ""
+"A recording notification arrived for a call without an activity and was "
+"discarded; for outgoing, internal, and missed calls with a recording, this"
+" is normal"
+
+#: ../../integration/mango/monitoring.rst:96
+msgid "``the record/added of recording … is dropped``"
+msgstr "``the record/added of recording … is dropped``"
+
+#: ../../integration/mango/monitoring.rst:98
+msgid ""
+"Аудиозапись звонка уже сохранена; повторное уведомление или аудиозапись "
+"второго участка переведённого звонка отброшены"
+msgstr ""
+"The call recording has already been saved; a repeated notification or the "
+"recording of the second part of a transferred call was discarded"
+
+#: ../../integration/mango/monitoring.rst:99
+msgid "``scheduled for retry N in M ms``"
+msgstr "``scheduled for retry N in M ms``"
+
+#: ../../integration/mango/monitoring.rst:101
+msgid "Запланирован отложенный повтор обработки аудиозаписи"
+msgstr "A delayed retry of recording processing has been scheduled"
+
+#: ../../integration/mango/monitoring.rst:102
+msgid "``matched several records``"
+msgstr "``matched several records``"
+
+#: ../../integration/mango/monitoring.rst:103
+#: ../../integration/mango/monitoring.rst:106
+#: ../../integration/mango/monitoring.rst:109
+#: ../../integration/mango/monitoring.rst:112
+#: ../../integration/mango/monitoring.rst:115
+#: ../../integration/mango/monitoring.rst:118
+#: ../../integration/mango/monitoring.rst:121
+#: ../../integration/mango/monitoring.rst:124
+#: ../../integration/mango/monitoring.rst:127
+#: ../../integration/mango/monitoring.rst:130
+#: ../../integration/mango/monitoring.rst:133
+#: ../../integration/mango/monitoring.rst:136
+#: ../../integration/mango/monitoring.rst:139
+msgid "WARN"
+msgstr "WARN"
+
+#: ../../integration/mango/monitoring.rst:104
+msgid ""
+"Номер совпал с несколькими сделками, лидами или контрагентами, приведены "
+"ссылки на кандидатов"
+msgstr ""
+"The number matched several deals, leads, or counterparties; links to the "
+"candidates are given"
+
+#: ../../integration/mango/monitoring.rst:105
+msgid "``an older active record may have been missed``"
+msgstr "``an older active record may have been missed``"
+
+#: ../../integration/mango/monitoring.rst:107
+msgid ""
+"По номеру найдено 100 и более сделок или лидов, более старая активная "
+"сделка или лид могли не попасть в выборку"
+msgstr ""
+"100 or more deals or leads were found for the number; an older active deal"
+" or lead may not have been included in the selection"
+
+#: ../../integration/mango/monitoring.rst:108
+msgid "``activities with the same key``"
+msgstr "``activities with the same key``"
+
+#: ../../integration/mango/monitoring.rst:110
+msgid "У звонка несколько активностей, используется самая ранняя"
+msgstr "The call has several activities; the earliest one is used"
+
+#: ../../integration/mango/monitoring.rst:111
+msgid "``saved without a summary``"
+msgstr "``saved without a summary``"
+
+#: ../../integration/mango/monitoring.rst:113
+msgid "Резюме не построено, звонок сохранён без него"
+msgstr "No summary was generated; the call was saved without it"
+
+#: ../../integration/mango/monitoring.rst:114
+msgid "``is not saved - <причина>``"
+msgstr "``is not saved - <reason>``"
+
+#: ../../integration/mango/monitoring.rst:116
+msgid "Загруженный ответ не прошёл проверку и не сохранён"
+msgstr "The downloaded response failed the check and was not saved"
+
+#: ../../integration/mango/monitoring.rst:117
+msgid "``is marked download-failed``, ``is marked transcription-failed``"
+msgstr "``is marked download-failed``, ``is marked transcription-failed``"
+
+#: ../../integration/mango/monitoring.rst:119
+msgid "У активности установлен статус сбоя, в конце сообщения — причина"
+msgstr ""
+"A failure status has been set for the activity; the reason is at the end "
+"of the message"
+
+#: ../../integration/mango/monitoring.rst:120
+msgid "``the activity of call … is gone``"
+msgstr "``the activity of call … is gone``"
+
+#: ../../integration/mango/monitoring.rst:122
+msgid "Активность удалена до обработки аудиозаписи, аудиозапись отброшена"
+msgstr ""
+"The activity was deleted before the recording was processed; the recording"
+" was discarded"
+
+#: ../../integration/mango/monitoring.rst:123
+msgid "``has no activity, the status … is not written``"
+msgstr "``has no activity, the status … is not written``"
+
+#: ../../integration/mango/monitoring.rst:125
+msgid "Статус сбоя некуда записать: активности нет"
+msgstr "There is nowhere to write the failure status: there is no activity"
+
+#: ../../integration/mango/monitoring.rst:126
+msgid "``could not be marked``"
+msgstr "``could not be marked``"
+
+#: ../../integration/mango/monitoring.rst:128
+msgid "Не удалось записать статус сбоя в активность"
+msgstr "Failed to write the failure status to the activity"
+
+#: ../../integration/mango/monitoring.rst:129
+msgid "``could not be saved, one more attempt follows``"
+msgstr "``could not be saved, one more attempt follows``"
+
+#: ../../integration/mango/monitoring.rst:131
+msgid ""
+"Первая попытка сохранить результат не удалась, через 5 секунд будет вторая"
+msgstr ""
+"The first attempt to save the result failed; the second one will be made "
+"in 5 seconds"
+
+#: ../../integration/mango/monitoring.rst:132
+msgid "``its card link could not be added``"
+msgstr "``its card link could not be added``"
+
+#: ../../integration/mango/monitoring.rst:134
+msgid "Активность создана без ссылки на карточку звонка"
+msgstr "The activity was created without a link to the call card"
+
+#: ../../integration/mango/monitoring.rst:135
+msgid "``the retryHttpStatuses entry … is not a number``"
+msgstr "``the retryHttpStatuses entry … is not a number``"
+
+#: ../../integration/mango/monitoring.rst:137
+msgid "Ошибка в параметре ``retryHttpStatuses``, значение пропущено"
+msgstr "Error in the ``retryHttpStatuses`` parameter; the value was skipped"
+
+#: ../../integration/mango/monitoring.rst:138
+msgid "``the failure of call … is temporary``"
+msgstr "``the failure of call … is temporary``"
+
+#: ../../integration/mango/monitoring.rst:140
+msgid "Ошибка признана временной и будет повторена"
+msgstr "The error is considered temporary and will be retried"
+
+#: ../../integration/mango/monitoring.rst:141
+msgid "``is not transcribed``"
+msgstr "``is not transcribed``"
+
+#: ../../integration/mango/monitoring.rst:142
+#: ../../integration/mango/monitoring.rst:145
+#: ../../integration/mango/monitoring.rst:148
+#: ../../integration/mango/monitoring.rst:151
+msgid "ERROR"
+msgstr "ERROR"
+
+#: ../../integration/mango/monitoring.rst:143
+msgid ""
+"Распознавание окончательно не удалось, аудиозапись сохранена без текста"
+msgstr ""
+"Recognition failed permanently; the recording was saved without text"
+
+#: ../../integration/mango/monitoring.rst:144
+msgid "``failed with HTTP N``"
+msgstr "``failed with HTTP N``"
+
+#: ../../integration/mango/monitoring.rst:146
+msgid "Ошибка обращения к внешнему сервису с кодом ответа"
+msgstr "Error calling an external service, with the response code"
+
+#: ../../integration/mango/monitoring.rst:147
+msgid "``failed [<тип ошибки>]``, ``full stack trace``, ``response body``"
+msgstr "``failed [<error type>]``, ``full stack trace``, ``response body``"
+
+#: ../../integration/mango/monitoring.rst:149
+msgid "Подробности ошибки: тип, стек вызовов, тело ответа внешнего сервиса"
+msgstr "Error details: type, stack trace, external service response body"
+
+#: ../../integration/mango/monitoring.rst:150
+msgid "``is LOST``"
+msgstr "``is LOST``"
+
+#: ../../integration/mango/monitoring.rst:152
+msgid ""
+"Уведомление не удалось записать в очередь; следующее сообщение лога "
+"содержит его для ручного восстановления"
+msgstr ""
+"The notification could not be written to the queue; the next log message "
+"contains it for manual recovery"
+
+#: ../../integration/mango/monitoring.rst:155
+msgid "Очереди недоставленных сообщений"
+msgstr "Dead-letter queues"
+
+#: ../../integration/mango/monitoring.rst:157
+msgid ""
+"В очереди недоставленных сообщений (DLQ, dead letter queue) попадают "
+"сообщения, которые не удалось обработать после всех повторов. "
+"Автоматически эти очереди не разбираются."
+msgstr ""
+"Dead-letter queues (DLQ) receive messages that could not be processed "
+"after all retries. These queues are not reviewed automatically."
+
+#: ../../integration/mango/monitoring.rst:164
+msgid "Очередь"
+msgstr "Queue"
+
+#: ../../integration/mango/monitoring.rst:165
+msgid "Что в неё попадает"
+msgstr "What goes into it"
+
+#: ../../integration/mango/monitoring.rst:166
+#: ../../integration/mango/monitoring.rst:188
+msgid "``mango-events-dlq``"
+msgstr "``mango-events-dlq``"
+
+#: ../../integration/mango/monitoring.rst:167
+msgid ""
+"Уведомления, которые не удалось обработать: поиск сделки или лида, "
+"создание лида или активности"
+msgstr ""
+"Notifications that could not be processed: searching for a deal or lead, "
+"creating a lead or activity"
+
+#: ../../integration/mango/monitoring.rst:168
+#: ../../integration/mango/monitoring.rst:190
+msgid "``mango-recordings-dlq``"
+msgstr "``mango-recordings-dlq``"
+
+#: ../../integration/mango/monitoring.rst:169
+msgid ""
+"Звонки, аудиозапись которых не удалось загрузить, распознать или сохранить"
+" после всех повторов"
+msgstr ""
+"Calls whose recording could not be downloaded, recognized, or saved after "
+"all retries"
+
+#: ../../integration/mango/monitoring.rst:171
+msgid ""
+"Звонки с неудачной обработкой аудиозаписи можно найти по атрибуту "
+"``recording-aspect:recordingStatus`` активностей со значениями ``download-"
+"failed`` и ``transcription-failed`` или по сообщениям ``is marked`` в "
+"логе. В поставке нет готового фильтра журнала активностей по статусу "
+"обработки аудиозаписи. Звонки с неоднозначной привязкой находятся по "
+"маркеру ``[mango:ambiguous]`` в тексте активности (поле «Примечание» "
+"карточки звонка)."
+msgstr ""
+"Calls with failed recording processing can be found by the ``recording-"
+"aspect:recordingStatus`` attribute of activities with the values "
+"``download-failed`` and ``transcription-failed``, or by ``is marked`` "
+"messages in the log. The delivery has no ready-made activities journal "
+"filter by recording processing status. Calls with an ambiguous link are "
+"found by the ``[mango:ambiguous]`` marker in the activity text (the "
+"\"Note\" field of the call card)."
+
+#: ../../integration/mango/monitoring.rst:176
+msgid "Восстановление из очереди недоставленных"
+msgstr "Restoring from the dead-letter queue"
+
+#: ../../integration/mango/monitoring.rst:178
+msgid ""
+"Определите звонок и причину по сообщению и логам. Сохраните исходное тело "
+"сообщения и его свойства в доступном только администраторам месте. При "
+"чтении сообщения для осмотра используйте режим с возвратом в очередь, "
+"чтобы не потерять его до публикации."
+msgstr ""
+"Identify the call and the cause from the message and the logs. Save the "
+"original message body and its properties in a place accessible only to "
+"administrators. When reading the message for inspection, use the requeue "
+"mode so as not to lose it before publishing."
+
+#: ../../integration/mango/monitoring.rst:179
+msgid ""
+"Устраните причину: восстановите сервис распознавания или Records API, "
+"исправьте конечную точку либо доступ к MANGO OFFICE. Убедитесь, что "
+"маршрут запущен и у целевой очереди есть потребитель."
+msgstr ""
+"Eliminate the cause: restore the recognition service or the Records API, "
+"fix the endpoint or access to MANGO OFFICE. Make sure the route is running"
+" and the target queue has a consumer."
+
+#: ../../integration/mango/monitoring.rst:180
+msgid ""
+"Опубликуйте исходное тело в exchange ``mango-call-recordings`` с "
+"соответствующим routing key. Используйте persistent-сообщение и "
+"подтвердите успешную маршрутизацию и публикацию до удаления исходного "
+"сообщения из очереди недоставленных."
+msgstr ""
+"Publish the original body to the ``mango-call-recordings`` exchange with "
+"the corresponding routing key. Use a persistent message and confirm "
+"successful routing and publication before deleting the original message "
+"from the dead-letter queue."
+
+#: ../../integration/mango/monitoring.rst:186
+msgid "Исходная очередь"
+msgstr "Source queue"
+
+#: ../../integration/mango/monitoring.rst:187
+msgid "Routing key"
+msgstr "Routing key"
+
+#: ../../integration/mango/monitoring.rst:189
+msgid "``mango-events``"
+msgstr "``mango-events``"
+
+#: ../../integration/mango/monitoring.rst:191
+msgid "``mango-recordings``"
+msgstr "``mango-recordings``"
+
+#: ../../integration/mango/monitoring.rst:193
+msgid ""
+"Для нового бюджета повторов обработки аудиозаписи **удалите заголовок** "
+"``mango-recording-retry-attempt``. Перемещение сообщения с сохранением "
+"этого заголовка не сбрасывает бюджет. Не меняйте ``entryId``, "
+"``recordingId`` и ссылки на активность в JSON."
+msgstr ""
+"For a new recording processing retry budget, **delete the** ``mango-"
+"recording-retry-attempt`` **header**. Moving the message while keeping "
+"this header does not reset the budget. Do not change ``entryId``, "
+"``recordingId``, and the activity links in the JSON."
+
+#: ../../integration/mango/monitoring.rst:194
+msgid ""
+"После подтверждённой публикации удалите исходное сообщение из очереди "
+"недоставленных. Не очищайте всю очередь командой Purge."
+msgstr ""
+"After confirmed publication, delete the original message from the dead-"
+"letter queue. Do not clear the entire queue with the Purge command."
+
+#: ../../integration/mango/monitoring.rst:195
+msgid ""
+"Проверьте логи обработки, состояние очередей и карточку звонка. Если "
+"обработка аудиозаписи уже завершена, ожидаемый результат — пропуск "
+"повторной обработки без новой активности."
+msgstr ""
+"Check the processing logs, the queue state, and the call card. If "
+"recording processing has already been completed, the expected result is "
+"that the reprocessing is skipped without a new activity."
+
+#: ../../integration/mango/monitoring.rst:199
+msgid ""
+"При ручной работе через Management UI не выполняйте одновременно несколько"
+" переносов одного сообщения. Для массового восстановления нужен "
+"контролируемый инструмент с подтверждениями публикации и учётом уже "
+"перенесённых сообщений. Обычный перенос через Shovel («Move messages») не "
+"следует считать сбросом счётчика повторов: отдельно проверьте заголовки."
+msgstr ""
+"When working manually through the Management UI, do not move the same "
+"message several times at once. Bulk recovery requires a controlled tool "
+"with publication confirmations and tracking of already moved messages. A "
+"regular move via Shovel (\"Move messages\") should not be considered a "
+"reset of the retry counter: check the headers separately."
+
+#: ../../integration/mango/monitoring.rst:201
+msgid ""
+"Если ошибка постоянная и сообщение было успешно обработано со статусом "
+"ошибки, в очереди недоставленных его может не быть. После исправления "
+"причины требуется повторная подача исходного уведомления или сохранённого "
+"сообщения (см. :ref:`mango_record_reupload`), а не только изменение "
+"статуса в карточке."
+msgstr ""
+"If the error is permanent and the message was successfully processed with "
+"an error status, it may not be in the dead-letter queue. After fixing the "
+"cause, the original notification or the saved message must be resubmitted "
+"(see :ref:`mango_record_reupload`), not just the status in the card "
+"changed."
+
+#: ../../integration/mango/monitoring.rst:203
+msgid ""
+"Если уведомление было потеряно при первичной публикации (ошибка ``is "
+"LOST``), восстановление выполняется из сохранённого уведомления в логах: "
+"следующее сообщение лога содержит его целиком. Опубликуйте это содержимое "
+"в exchange ``mango-call-recordings`` с routing key ``mango-events`` в "
+"виде:"
+msgstr ""
+"If a notification was lost during initial publication (the ``is LOST`` "
+"error), it is recovered from the notification saved in the logs: the next "
+"log message contains it in full. Publish this content to the ``mango-call-"
+"recordings`` exchange with the ``mango-events`` routing key in the "
+"following form:"
+
+#: ../../integration/mango/monitoring.rst:209
+msgid ""
+"Если уведомления нет ни в очередях, ни в логах, возврат из очереди "
+"недоставленных невозможен — сначала необходимо получить исходные данные "
+"звонка."
+msgstr ""
+"If the notification is neither in the queues nor in the logs, returning it"
+" from the dead-letter queue is impossible — you must first obtain the "
+"original call data."
+
+#: ../../integration/mango/monitoring.rst:214
+msgid "Повторная загрузка аудиозаписи отдельного звонка"
+msgstr "Re-downloading the recording of a single call"
+
+#: ../../integration/mango/monitoring.rst:216
+msgid ""
+"MANGO OFFICE не отправляет уведомления повторно, поэтому уведомление о "
+"записи можно подать вручную. Это нужно в трёх случаях:"
+msgstr ""
+"MANGO OFFICE does not resend notifications, so the recording notification "
+"can be submitted manually. This is needed in three cases:"
+
+#: ../../integration/mango/monitoring.rst:218
+msgid ""
+"у активности статус ``download-failed`` или ``transcription-failed``, а "
+"сообщения этого звонка в очереди недоставленных нет;"
+msgstr ""
+"the activity has the ``download-failed`` or ``transcription-failed`` "
+"status, and there is no message for this call in the dead-letter queue;"
+
+#: ../../integration/mango/monitoring.rst:219
+msgid "уведомление о записи пришло раньше итога вызова и было отброшено;"
+msgstr ""
+"the recording notification arrived before the call summary and was "
+"discarded;"
+
+#: ../../integration/mango/monitoring.rst:220
+msgid ""
+"итог вызова вручную возвращён из ``mango-events-dlq``, а уведомление о "
+"записи к этому времени уже было отброшено."
+msgstr ""
+"the call summary was manually returned from ``mango-events-dlq``, and the "
+"recording notification had already been discarded by that time."
+
+#: ../../integration/mango/monitoring.rst
+msgid "Порядок действий"
+msgstr "Procedure"
+
+#: ../../integration/mango/monitoring.rst:225
+msgid ""
+"Определите идентификатор звонка ``entry_id``: это часть значения поля "
+"«Идентификатор звонка в телефонии» (``recording-aspect:meetingUrl``) после"
+" ``mango://entry/``."
+msgstr ""
+"Determine the call identifier ``entry_id``: it is the part of the \"Call "
+"identifier in telephony\" field value (``recording-aspect:meetingUrl``) "
+"after ``mango://entry/``."
+
+#: ../../integration/mango/monitoring.rst:226
+msgid ""
+"Определите идентификатор аудиозаписи ``recording_id``. В карточке звонка "
+"он не хранится. Найдите его в логе по ``entry_id`` в сообщении ``Mango: "
+"the recording <recording_id> of call <entry_id> is queued for …`` либо "
+"получите через API статистики вызовов MANGO OFFICE (поле ``records``). Для"
+" уведомления, отброшенного из-за обратного порядка, ``recording_id`` в лог"
+" не выводится: получите его в MANGO OFFICE."
+msgstr ""
+"Determine the recording identifier ``recording_id``. It is not stored in "
+"the call card. Find it in the log by ``entry_id`` in the ``Mango: the "
+"recording <recording_id> of call <entry_id> is queued for …`` message, or "
+"obtain it via the MANGO OFFICE call statistics API (the ``records`` "
+"field). For a notification discarded because of reverse order, "
+"``recording_id`` is not written to the log: get it in MANGO OFFICE."
+
+#: ../../integration/mango/monitoring.rst:227
+msgid ""
+"В RabbitMQ Management опубликуйте в exchange ``mango-call-recordings`` с "
+"routing key ``mango-events`` сообщение:"
+msgstr ""
+"In RabbitMQ Management, publish the following message to the ``mango-call-"
+"recordings`` exchange with the ``mango-events`` routing key:"
+
+#: ../../integration/mango/monitoring.rst:233
+msgid ""
+"Убедитесь, что в логе появилось сообщение ``is queued for``, затем "
+"проверьте статус обработки аудиозаписи в карточке звонка."
+msgstr ""
+"Make sure the ``is queued for`` message appears in the log, then check the"
+" recording processing status in the call card."
+
+#: ../../integration/mango/monitoring.rst:235
+msgid ""
+"Звонок в статусе ``completed`` повторно не обрабатывается. Повтор "
+"возможен, только пока аудиозапись хранится в облаке MANGO OFFICE (срок "
+"зависит от тарифа); после этого у активности будет статус ``download-"
+"failed``."
+msgstr ""
+"A call in the ``completed`` status is not processed again. A retry is "
+"possible only while the recording is stored in the MANGO OFFICE cloud (the"
+" period depends on the plan); after that, the activity will have the "
+"``download-failed`` status."
+
+#: ../../integration/mango/monitoring.rst:238
+msgid "Типичные проблемы"
+msgstr "Typical problems"
+
+#: ../../integration/mango/monitoring.rst:245
+msgid "Симптом"
+msgstr "Symptom"
+
+#: ../../integration/mango/monitoring.rst:246
+msgid "Возможная причина"
+msgstr "Possible cause"
+
+#: ../../integration/mango/monitoring.rst:247
+msgid "Что сделать"
+msgstr "What to do"
+
+#: ../../integration/mango/monitoring.rst:248
+msgid "Звонки не появляются в CRM, в логе нет сообщений ``Mango:``"
+msgstr ""
+"Calls do not appear in CRM, there are no ``Mango:`` messages in the log"
+
+#: ../../integration/mango/monitoring.rst:249
+msgid "Маршрут остановлен или уведомления не доходят до Citeck"
+msgstr "The route is stopped or notifications do not reach Citeck"
+
+#: ../../integration/mango/monitoring.rst:250
+msgid ""
+"Проверить состояние маршрута, адрес в личном кабинете, доступность адреса "
+"с IP-адресов MANGO OFFICE"
+msgstr ""
+"Check the route state, the address in the account, and the address "
+"availability from MANGO OFFICE IP addresses"
+
+#: ../../integration/mango/monitoring.rst:251
+msgid "Звонки не появляются, MANGO OFFICE получает ответ 401"
+msgstr "Calls do not appear, MANGO OFFICE receives a 401 response"
+
+#: ../../integration/mango/monitoring.rst:252
+msgid "Неверный код ВАТС или соль в секрете ``mango-api``"
+msgstr "Incorrect VPBX code or salt in the ``mango-api`` secret"
+
+#: ../../integration/mango/monitoring.rst:253
+msgid ""
+"Сверить секрет с данными API-коннектора; отклонённые запросы в логе Citeck"
+" не отображаются"
+msgstr ""
+"Compare the secret with the API connector data; rejected requests are not "
+"shown in the Citeck log"
+
+#: ../../integration/mango/monitoring.rst:254
+msgid "На каждый звонок создаётся новый лид"
+msgstr "A new lead is created for every call"
+
+#: ../../integration/mango/monitoring.rst:255
+msgid ""
+"Поле ``phoneDigits`` отсутствует или не вычислено у существующих записей, "
+"либо статусы исключения не соответствуют модели CRM"
+msgstr ""
+"The ``phoneDigits`` field is missing or not calculated for existing "
+"records, or the exclusion statuses do not match the CRM model"
+
+#: ../../integration/mango/monitoring.rst:256
+msgid ""
+"Выполнить :ref:`mango_step_crm_check`, проверить "
+":ref:`mango_resolve_rules`"
+msgstr ""
+"Perform :ref:`mango_step_crm_check`, check :ref:`mango_resolve_rules`"
+
+#: ../../integration/mango/monitoring.rst:257
+msgid "Созданный лид не виден, «Нет доступа»"
+msgstr "The created lead is not visible, \"Access denied\""
+
+#: ../../integration/mango/monitoring.rst:258
+msgid "Пользователь не входит в группы CRM"
+msgstr "The user is not a member of the CRM groups"
+
+#: ../../integration/mango/monitoring.rst:259
+msgid ""
+"Проверить под пользователем из группы менеджеров или администраторов CRM"
+msgstr "Check as a user from the CRM managers or administrators group"
+
+#: ../../integration/mango/monitoring.rst:260
+msgid "Активность есть, аудиозаписи нет, статус пуст"
+msgstr "There is an activity but no recording, the status is empty"
+
+#: ../../integration/mango/monitoring.rst:261
+msgid "Уведомление о записи не пришло или пришло раньше итога вызова"
+msgstr ""
+"The recording notification did not arrive or arrived before the call "
+"summary"
+
+#: ../../integration/mango/monitoring.rst:262
+msgid ""
+"Проверить сохранение аудиозаписей в облако и отправку уведомлений; подать "
+"уведомление о записи вручную"
+msgstr ""
+"Check that recordings are saved to the cloud and notifications are sent; "
+"submit the recording notification manually"
+
+#: ../../integration/mango/monitoring.rst:263
+msgid "Статус долго остаётся ``downloading``"
+msgstr "The status stays ``downloading`` for a long time"
+
+#: ../../integration/mango/monitoring.rst:264
+msgid ""
+"Идут отложенные повторы или сообщение попало в очередь недоставленных"
+msgstr ""
+"Delayed retries are in progress, or the message went to the dead-letter "
+"queue"
+
+#: ../../integration/mango/monitoring.rst:265
+msgid "Проверить лог и очереди ``mango-recordings-retry-*`` и ``*-dlq``"
+msgstr ""
+"Check the log and the ``mango-recordings-retry-*`` and ``*-dlq`` queues"
+
+#: ../../integration/mango/monitoring.rst:266
+msgid "Статус ``download-failed``"
+msgstr "``download-failed`` status"
+
+#: ../../integration/mango/monitoring.rst:267
+msgid "MANGO OFFICE не отдал аудиозапись или вернул не аудио"
+msgstr ""
+"MANGO OFFICE did not return the recording or returned something other than"
+" audio"
+
+#: ../../integration/mango/monitoring.rst:268
+msgid ""
+"Проверить лог, доступность ``app.mango-office.ru``, наличие аудиозаписи в "
+"личном кабинете"
+msgstr ""
+"Check the log, the availability of ``app.mango-office.ru``, and whether "
+"the recording exists in the account"
+
+#: ../../integration/mango/monitoring.rst:269
+msgid "Все загрузки аудиозаписей завершаются ошибкой после смены кода ВАТС"
+msgstr "All recording downloads fail after the VPBX code was changed"
+
+#: ../../integration/mango/monitoring.rst:270
+msgid "Camel-контекст не пересоздан после изменения секрета"
+msgstr "The Camel context was not recreated after the secret was changed"
+
+#: ../../integration/mango/monitoring.rst:271
+msgid ""
+"Остановить и запустить маршрут, вернуть сообщения из ``mango-recordings-"
+"dlq``, для остальных звонков со статусом ``download-failed`` подать "
+"уведомление о записи вручную (см. :ref:`mango_credentials_change`)"
+msgstr ""
+"Stop and start the route, return the messages from ``mango-recordings-"
+"dlq``, and submit the recording notification manually for the other calls "
+"with the ``download-failed`` status (see :ref:`mango_credentials_change`)"
+
+#: ../../integration/mango/monitoring.rst:272
+msgid "Статус ``transcription-failed``"
+msgstr "``transcription-failed`` status"
+
+#: ../../integration/mango/monitoring.rst:273
+msgid "Сервис распознавания недоступен или не смог распознать аудиозапись"
+msgstr ""
+"The recognition service is unavailable or could not recognize the "
+"recording"
+
+#: ../../integration/mango/monitoring.rst:274
+msgid ""
+"Проверить сервис распознавания и конечную точку ``stt-sidecar`` из среды "
+"``ecos-integrations``"
+msgstr ""
+"Check the recognition service and the ``stt-sidecar`` endpoint from the "
+"``ecos-integrations`` environment"
+
+#: ../../integration/mango/monitoring.rst:275
+msgid "Текст не разделён по говорящим"
+msgstr "The text is not split by speaker"
+
+#: ../../integration/mango/monitoring.rst:276
+msgid "У сервиса распознавания не задан ``HF_TOKEN``"
+msgstr "``HF_TOKEN`` is not set for the recognition service"
+
+#: ../../integration/mango/monitoring.rst:277
+msgid "Проверить значение ``diarization_available`` в ответе ``/health``"
+msgstr ""
+"Check the ``diarization_available`` value in the ``/health`` response"
+
+#: ../../integration/mango/monitoring.rst:278
+msgid "Нет резюме"
+msgstr "No summary"
+
+#: ../../integration/mango/monitoring.rst:279
+msgid "Модуль Citeck AI не установлен или выключен"
+msgstr "The Citeck AI module is not installed or is disabled"
+
+#: ../../integration/mango/monitoring.rst:280
+msgid "Проверить модуль Citeck AI; звонок при этом сохранён"
+msgstr "Check the Citeck AI module; the call is saved anyway"
+
+#: ../../integration/mango/monitoring.rst:281
+msgid "Маршрут не запускается"
+msgstr "The route does not start"
+
+#: ../../integration/mango/monitoring.rst:282
+msgid ""
+"Не заполнен секрет, нет конечной точки, не задан брокер или включён TLS к "
+"брокеру"
+msgstr ""
+"The secret is not filled in, there is no endpoint, the broker is not set, "
+"or TLS to the broker is enabled"
+
+#: ../../integration/mango/monitoring.rst:283
+msgid ""
+"Проверить лог при запуске, секрет, конечные точки и источник данных "
+"RabbitMQ"
+msgstr ""
+"Check the startup log, the secret, the endpoints, and the RabbitMQ data "
+"source"
