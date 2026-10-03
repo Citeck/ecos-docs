@@ -35,7 +35,7 @@
 
 .. code-block:: text
 
-    citeck-ai (WebSocket handler)
+    citeck-ai (конвейер обработки записи совещания)
         ↓
     citeck-stt-sidecar (FastAPI :8090)
         ├── Принять аудиофайл (multipart, WebM или WAV)

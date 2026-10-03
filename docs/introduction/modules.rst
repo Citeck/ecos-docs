@@ -438,7 +438,7 @@
 
               - :octicon:`check-circle;1.2em;sd-text-success`
 
-            * - :ref:`ecos-ai <AI_assistant_config>`
+            * - :ref:`citeck-ai <AI_assistant_config>`
               - Микросервис для работы :ref:`интеллектуального помощника <AI_assistant>` в платформе Citeck. Интегрируется с внешними LLM-провайдерами и предоставляет AI-функции другим микросервисам через RESTful API.
               - :octicon:`x-circle;1.2em;sd-text-danger`
 
