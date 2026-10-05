@@ -204,7 +204,7 @@ REST API
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: _static/rag/rag_01.png
-       :width: 700
+       :width: 800
        :align: center
 
 Действия помимо стандартных:
@@ -234,7 +234,7 @@ GitLab‑репозитории
 ~~~~~~~~~~~~~~~~~~~
 
 .. image:: _static/rag/rag_03.png
-       :width: 700
+       :width: 800
        :align: center
 
 Действия помимо стандартных:
