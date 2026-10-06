@@ -47,7 +47,11 @@
       "PowerShell(python -m sphinx -b html . \"$env:TEMP\\\\claude\\\\dadata_build\" -q -E 2>&1 | Select-String -Pattern \"dadata|Введение\" ; \"exit: $LASTEXITCODE\")",
       "PowerShell(python -m sphinx -b html . \"$env:TEMP\\\\sphx_out\" -q -E 2>&1 | Select-String \"llm_log\")",
       "PowerShell(python -m sphinx -b html . \"$env:TEMP\\\\sphx_out\" -q -E 2>&1 | Select-String \"AI_instruments\")",
-      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)"
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "PowerShell(Set-Location d:\\\\GitLab\\\\ecos-docs; python -m sphinx -b html docs \"$env:TEMP\\\\claude\\\\d--GitLab-ecos-docs-docs\\\\701da167-d897-4473-aec8-d3d50fdb25d5\\\\scratchpad\\\\out\" -q -E 2>&1 | Select-String -Pattern \"modules.rst|AI_instruments.rst\"; \"EXIT $LASTEXITCODE\")",
+      "Bash(PYTHONIOENCODING=utf-8 python -)",
+      "Bash(python -c \"import polib;p=polib.pofile\\('Релизы.po'\\);print\\([e.msgid for e in p if not e.msgstr or 'fuzzy' in e.flags]\\)\")",
+      "Bash(grep -rhoE 'msgstr \".*\\(widget_current_tasks|widget_properties|widget_events-history|widget_doc_preview|widget_documents|widget_comments|widget_doc-status|widget_tasks|widget_record_actions|widget_doc_associations|widget_versions_journal|widget_barcode|widget_stages\\)>`' .)"
     ]
   }
 }
