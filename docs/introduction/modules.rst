@@ -13,7 +13,8 @@
 
 - :ref:`Интеллектуальный помощник <AI_assistant>`;
 - :ref:`Интеграцию с ЭДО-провайдерами <edi_integration>`;
-- :ref:`Внешний портал <portal_sd>`.
+- :ref:`AI инструменты <ai_instruments>`: AI-агенты, запись и расшифровку совещаний, журнал вызовов LLM и контроль расхода токенов;
+- :ref:`Портал технической поддержки <portal_sd>` и :ref:`внешний портал <ext_portal>`.
 
 Подробные сведения представлены в таблицах ниже.
 
@@ -120,8 +121,8 @@
 
               - :octicon:`check-circle;1.2em;sd-text-success`
 
-            * - :ref:`Внешний портал <portal_sd>`
-              - Веб-интерфейс  для клиентов, партнеров и поставщиков, который позволяет им контролируемо работать с сервисами и данными платформы. Например, может быть использован как портал технической поддержки в составе :ref:`Service desk <ecos-service-desk>`.
+            * - :ref:`Портал технической поддержки <portal_sd>`
+              - Веб-интерфейс для внешних пользователей (клиентов, партнеров, поставщиков) в составе :ref:`Service desk <ecos-service-desk>`: создание заявок, отслеживание их статуса, общение со специалистами поддержки через комментарии и обмен файлами.
               - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
@@ -135,12 +136,6 @@
             * - :ref:`Project tracker <ecos_ept>`
               - Инструмент для управления проектами, организации рабочих процессов команд, мониторинга задач.
               - :octicon:`check-circle;1.2em;sd-text-success`
-
-              - :octicon:`check-circle;1.2em;sd-text-success`
-
-            * - :ref:`Интеллектуальный помощник для платформы Citeck <AI_assistant>`
-              - Ассистент на основе искусственного интеллекта для автоматизации бизнес-процессов, работы с документами и управления данными.
-              - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
 
@@ -193,6 +188,29 @@
 
             * - :ref:`Делегирование <delegation>`
               - Настройка передачи своих задач или функций другим сотрудникам.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - **AI инструменты**
+              -
+              -
+              -
+
+            * - :ref:`AI-агенты <ai-agents>`
+              - Конфигурируемые агенты на базе LLM с системным промптом и набором инструментов. Вызываются из BPMN-процессов или работают в режиме диалога в интерфейсе интеллектуального помощника.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - :ref:`AI задача <ai_task>`
+              - Компонент BPMN-процесса для вызова LLM по промпту.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - :ref:`Модуль записи совещаний <call-recording-module>`
+              - Запись аудио из вкладки браузера и микрофона, транскрипция с определением говорящих и автоматическое формирование резюме через LLM. Результат сохраняется как активность.
               - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
@@ -257,7 +275,7 @@
 
             * - :ref:`Подписание с использованием ЭЦП <esign>`
               - Подписание документов квалифицированной электронной цифровой подписью с использованием КриптоПро ЭЦП.
-              - :octicon:`check-circle;1.2em;sd-text-success`
+              - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
 
@@ -307,9 +325,10 @@
 
             * - :ref:`Клиент 360 <client_360>`
               - Отображение в карточке контрагента консолидированных данных из модулей платформы, таких как история взаимодействия по сделкам и договорам, технической поддержке.
-              - :octicon:`check-circle;1.2em;sd-text-success`
-
-              - :octicon:`check-circle;1.2em;sd-text-success`
+              - | - :ref:`Карточка контрагента с консолидированными данными <client_360>`
+              - | - :ref:`Карточка контрагента с консолидированными данными <client_360>`
+                | - :ref:`Автозаполнение реквизитов через DaData <client_360_autofill>`
+                | - :ref:`Экспресс-отчет Контур-Фокус <client_360_express_report>`
 
             * - **Администрирование и безопасность**
               -
@@ -318,6 +337,12 @@
 
             * - :ref:`Редактирование матрицы прав <permissions>`
               - Настройка прав для типа данных.
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - :ref:`Консоль разработчика <developer_console>`
+              - Выполнение JavaScript кода непосредственно в браузере с отображением результатов, сохранение сниппетов. В Enterprise версии доступна кнопка :ref:`AI Ассистент <AI_assistant>` для генерации и редактирования кода.
               - :octicon:`check-circle;1.2em;sd-text-success`
 
               - :octicon:`check-circle;1.2em;sd-text-success`
@@ -353,6 +378,12 @@
 
             * - :ref:`Интеграция с Git <git_integration>`
               - Возможность связать Citeck приложение с Git репозиторием для загрузки измененных артефактов.
+              - :octicon:`x-circle;1.2em;sd-text-danger`
+
+              - :octicon:`check-circle;1.2em;sd-text-success`
+
+            * - :ref:`Внешний портал <ext_portal>`
+              - Двусторонняя синхронизация заявок, комментариев и вложений между двумя независимыми инстансами Citeck через RabbitMQ. Используется для вынесения :ref:`портала технической поддержки <portal_sd>` на отдельный стенд, изолированный от основного.
               - :octicon:`x-circle;1.2em;sd-text-danger`
 
               - :octicon:`check-circle;1.2em;sd-text-success`

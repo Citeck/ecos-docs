@@ -82,6 +82,8 @@
           :width: 600
           :align: center
 
+.. _client_360_autofill:
+
 Автозаполнение
 ----------------
 
@@ -105,6 +107,8 @@
       .. image:: _static/client_360/autofill_02.png
          :width: 500
          :align: left
+
+.. _client_360_express_report:
 
 Экспресс-отчет
 ---------------

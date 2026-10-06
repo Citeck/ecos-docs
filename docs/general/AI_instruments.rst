@@ -1,3 +1,5 @@
+.. _ai_instruments:
+
 AI инструменты
 ===============================
 
@@ -5,6 +7,12 @@ AI инструменты
 
 .. grid:: 1
    :gutter: 3
+
+   .. grid-item-card:: AI-агенты
+      :link: ai-agents
+      :link-type: ref
+
+      Конфигурируемые сущности с системным промптом, набором инструментов и выбранным :ref:`LLM-провайдером <AI_assistant_config>`. Работают в двух режимах: stateless — однократный вызов из :ref:`BPMN-процессов <process_bpmn>` — и stateful — многоходовой диалог в :ref:`AI Assistant UI <AI_assistant>`. Для вызова LLM по промпту в процессах также доступна :ref:`AI задача <ai_task>`. Раздел включает архитектуру выполнения: движки, маршрутизацию, конвейер планирования и исполнения, точки участия человека.
 
    .. grid-item-card:: Возможности AI: вопросы и ответы
       :link: ai-capabilities
@@ -17,12 +25,6 @@ AI инструменты
       :link-type: ref
 
       Лицензия и группы доступа, три оси доступа к инструментам, работа под правами пользователя, изоляция рабочих пространств и подтверждения необратимых действий.
-
-   .. grid-item-card:: AI-агенты
-      :link: ai-agents
-      :link-type: ref
-
-      Конфигурируемые сущности с системным промптом, набором инструментов и выбранным :ref:`LLM-провайдером <AI_assistant_config>`. Работают в двух режимах: stateless — однократный вызов из :ref:`BPMN-процессов <process_bpmn>` — и stateful — многоходовой диалог в :ref:`AI Assistant UI <AI_assistant>`. Для вызова LLM по промпту в процессах также доступна :ref:`AI задача <ai_task>`. Раздел включает архитектуру выполнения: движки, маршрутизацию, конвейер планирования и исполнения, точки участия человека.
 
    .. grid-item-card:: Микросервис транскрипции аудио и диаризации
       :link: citeck-stt-sidecar
@@ -52,9 +54,9 @@ AI инструменты
     :maxdepth: 2
     :hidden:
 
+    AI_instruments/agents
     AI_instruments/ai_capabilities
     AI_instruments/ai_security
-    AI_instruments/agents
     AI_instruments/citeck-stt-sidecar
     AI_instruments/call-recording-module
     AI_instruments/llm_log
