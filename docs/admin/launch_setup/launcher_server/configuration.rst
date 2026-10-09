@@ -535,6 +535,14 @@ daemon.yml
 
 Помимо ``namespace.yml``, генерация контейнеров использует **конфигурацию workspace** (``workspace-v1.yml``) -- общее описание репозиториев бандлов, шаблонов namespace и дополнительных сервисов. В серверном режиме она берётся из публичного репозитория `Citeck/launcher-workspace <https://github.com/Citeck/launcher-workspace>`_ (клон в ``/opt/citeck/data/bundles/``) или из архива, импортированного командой ``citeck update -f`` / ``citeck install --workspace`` (каталог ``/opt/citeck/data/repo/``, имеет приоритет над git).
 
+Начиная с Launcher 2.16.1 выбирается первый доступный файл: ``workspace-v2.yml``,
+``workspace-v2.yaml``, ``workspace-v1.yml``, ``workspace-v1.yaml``, ``workspace.yml``.
+Файлы не объединяются: v2 содержит полную конфигурацию. Редактор и локальные
+переопределения используют выбранный файл. В публичном workspace настройки
+managed SeaweedFS и generated secrets находятся в v2; совместимый v1 сохранён
+для старых лаунчеров. Бандл с этими возможностями требует Launcher 2.16.1+.
+
+
 Определения обновляются командами ``citeck update`` и ``citeck upgrade``, а также при запуске и перезагрузке namespace, если с последней синхронизации прошло больше часа.
 
 Основные разделы, влияющие на стенд:
