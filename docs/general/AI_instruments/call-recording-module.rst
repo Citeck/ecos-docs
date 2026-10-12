@@ -148,17 +148,20 @@ REST API
 
 В рабочем пространстве администратора в разделе **AI** перейдите в журнал **Запись звонков**.
 
-.. dropdown:: Как настроить запись звонков через UI
-    :color: secondary
+Журнал доступен по адресу: ``v2/journals?journalId=call-recording-config-journal&viewMode=table&ws=admin$workspace``
 
-    1. Заполните **Название**.
-    2. Выберите **Типы данных для привязки**.
-    3. Укажите **STT-провайдер по умолчанию** для платформы (например, GigaAM для Telemost).
-    4. Сохраните.
+.. image:: _static/meeting_recording.png
+   :width: 800
+   :align: center
 
-    .. image:: _static/meeting_setting.png
-       :width: 650
-       :align: center
+1. Заполните **Название**.
+2. Выберите **Типы данных для привязки**.
+3. Укажите **STT-провайдер по умолчанию** для платформы (например, GigaAM для Telemost).
+4. Сохраните.
+
+.. image:: _static/meeting_setting.png
+   :width: 600
+   :align: center
 
 
 Citeck-артефакты
