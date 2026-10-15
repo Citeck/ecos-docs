@@ -108,6 +108,8 @@ Stateless
 
    На stateless-пути нет подтверждений человеком (HITL), а вызов из BPMN выполняется под техническим пользователем процесса. Изменяющие инструменты на этом пути недоступны: при вызове из BPMN их наличие в белом списке агента приводит к явной ошибке, при вызове через ``POST /api/ai-agent/execute`` они исключаются из набора инструментов. Подбирая белый список агента для stateless-сценариев, учитывайте, что читающие инструменты при вызове из BPMN выполняются под техническим пользователем, а не под конечным пользователем.
 
+На stateless-пути счётных ограничений цикла инструментов нет (в интерактивном диалоге они есть): агент, который читает много записей подряд, не останавливается на полпути. Отклоняется только точный повтор — вызов того же инструмента с теми же аргументами более 3 раз подряд либо после двух одинаковых отказов; вызов другого инструмента между ними прерывает серию. Отклонённый вызов не выполняется, и модель отвечает по уже собранным данным (ограничения интерактивного диалога — в разделе :ref:`ai-architecture`).
+
 
 Stateful / Interactive
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,12 +303,6 @@ REST API
    * - ``generateDmn``
      - нет
      - Таблица решений DMN
-   * - ``getRecordTypeMetadata``
-     - нет
-     - Модель типа записи: атрибуты, статусы и роли
-   * - ``queryRecords``
-     - нет
-     - Поиск записей — нужен конфигурационному агенту, чтобы сверяться с реальными данными
    * - ``validateArtifact``
      - нет
      - Структурная валидация сгенерированного артефакта до публикации
@@ -322,7 +318,9 @@ REST API
 
 .. note::
 
-   Инструменты ``ragSearch``, ``ragGetDocument`` и ``searchDocumentation`` регистрируются только при включённом RAG (``citeck.ai.rag.enabled=true``).
+   Инструменты ``ragSearch``, ``ragGetDocument`` и ``searchDocumentation`` регистрируются только при включённом RAG (``citeck.ai.rag.enabled=true``). Инструменты ``generateImage`` и ``editImage`` доступны, пока не отключено свойство ``citeck.ai.image.enabled`` (по умолчанию включено). Если отключённый инструмент указан в белом списке агента, агент не завершается ошибкой: он продолжает работу и сообщает пользователю, что возможность отключена.
+
+   Агент конфигурации платформы использует также операционные инструменты ``queryRecords`` и ``getRecordTypeMetadata`` (см. таблицу операционных инструментов) — чтобы сверяться с моделью типа и реальными данными.
 
    Служебные инструменты генерации (``saveFormDraft``, ``saveDataTypeDraft``, ``saveBoardDraft``, ``saveDashboardDraft`` и остальные ``save*Draft``, ``saveFormPatch``, ``saveDataTypePatch``, ``saveEscalation``) используются внутри сервисов генерации, в белые списки агентов не добавляются и скрыты из редактора агентов. Это витрина списка инструментов, а не отдельная ось доступа: доступ определяют три независимых признака — белый список агента, доступность на пути без состояния и движок агента.
 
@@ -363,7 +361,7 @@ REST API
       Создание и изменение конфигурации: «создай тип данных для учёта командировок», «добавь на форму поле для суммы», «сделай процесс согласования». Публикует артефакты только после подтверждения (``requireDeployConfirmation: true``).
 
       +++
-      ``searchDocumentation``, ``findArtifact``, ``queryRecords``, ``getRecordTypeMetadata``, ``generateDataType``, ``generateForm``, ``generateBpmn``, ``editScript``, ``validateArtifact``, ``deployArtifact``, ``generateAppDocumentation``
+      ``searchDocumentation``, ``findArtifact``, ``queryRecords``, ``getRecordTypeMetadata``, ``generateDataType``, ``generateForm``, ``generateBpmn``, ``generateJournal``, ``generateNotificationTemplate``, ``generateAction``, ``generateTypePermissions``, ``generatePermissionSettings``, ``generateBoard``, ``generateDashboard``, ``generateJournalSettings``, ``generateArtifactPatch``, ``generateDmn``, ``editScript``, ``validateArtifact``, ``deployArtifact``, ``generateAppDocumentation``
 
    .. grid-item-card:: Помощник по изображениям
       :class-header: sd-font-weight-bold
@@ -373,7 +371,7 @@ REST API
       Генерация и редактирование изображений: «нарисуй иконку для раздела», «убери фон», «сделай баннер к письму».
 
       +++
-      ``generateImage``, ``editImage``, ``analyzeFile``
+      ``generateImage``, ``editImage``, ``analyzeFile``, ``discardPendingFile``
 
    .. grid-item-card:: Помощник по возможностям платформы
       :class-header: sd-font-weight-bold
@@ -497,7 +495,7 @@ Spring DI автоматически обнаружит инструмент ч�
 
     override fun isAvailableForStatelessExecution(): Boolean = false
 
-В интерактивном диалоге такой инструмент остаётся полностью доступным и выполняется с HITL-подтверждениями. Отдельного механизма «скрыть инструмент от агентов» нет: служебные инструменты (например, ``saveFormDraft``) не скрываются, а просто не добавляются в белые списки агентов.
+В интерактивном диалоге такой инструмент остаётся полностью доступным и выполняется с HITL-подтверждениями. Служебные инструменты (например, ``saveFormDraft``) не показываются в редакторе агента — для этого метод ``isVisibleInAgentEditor()`` возвращает ``false``. Имя такого инструмента, уже записанное в белый список, продолжает работать.
 
 
 Маршрутизация в оркестраторе
@@ -521,11 +519,11 @@ Spring DI автоматически обнаружит инструмент ч�
    * - Реестр агентов
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentRegistry.kt``
    * - Оркестратор (маршрутизация запросов)
-     - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentOrchestratorService.kt``
+     - ``src/main/java/ru/citeck/ecos/ai/domain/assistant/core/AgentOrchestratorService.kt``
    * - Сервис выполнения
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentExecutionService.kt``
    * - Сервис агента конфигурирования (``CONFIG``)
-     - ``src/main/java/ru/citeck/ecos/ai/domain/agent/ConfigAgentService.kt``
+     - ``src/main/java/ru/citeck/ecos/ai/domain/agent/config/ConfigAgentService.kt``
    * - REST-контроллер
      - ``src/main/java/ru/citeck/ecos/ai/domain/agent/AgentController.kt``
    * - Интерфейс инструментов
