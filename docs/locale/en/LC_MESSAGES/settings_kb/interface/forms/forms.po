@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-10-19 16:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -116,8 +116,8 @@ msgid "Загрузка"
 msgstr "Upload"
 
 #: ../../settings_kb/interface/forms/forms.rst:59
-msgid "Для загрузки созданного журнала необходимо нажать **+ - Форма**:"
-msgstr "To upload a created journal, click **+ - Form**:"
+msgid "Для загрузки созданной формы необходимо нажать **+ - Загрузить форму**:"
+msgstr "To upload a created form, click **+ - Upload form**:"
 
 #: ../../settings_kb/interface/forms/forms.rst:65
 msgid "Файл формата .json"
@@ -385,7 +385,7 @@ msgstr ""
 "equal to the attribute or if the attribute is not set, a check is "
 "performed for equality between **Property Name** and **Field Label**."
 
-#: ../../settings_kb/interface/forms/forms.rst:297
+#: ../../settings_kb/interface/forms/forms.rst:299
 msgid "Использование нескольких форм для одного типа"
 msgstr "Using multiple forms for one type"
 
@@ -393,17 +393,87 @@ msgstr "Using multiple forms for one type"
 msgid "Как использовать несколько форм для одного типа"
 msgstr "How to use multiple forms for one type"
 
-#: ../../settings_kb/interface/forms/forms.rst:302
+#: ../../settings_kb/interface/forms/forms.rst:304
 msgid "Создать новые формы, привязать их к нужному типу:"
 msgstr "Create new forms, bind them to the required type:"
 
-#: ../../settings_kb/interface/forms/forms.rst:308
+#: ../../settings_kb/interface/forms/forms.rst:310
 msgid ":ref:`Добавить<dashboard_settings>` виджеты свойств."
 msgstr ":ref:`Add<dashboard_settings>` property widgets."
 
-#: ../../settings_kb/interface/forms/forms.rst:310
+#: ../../settings_kb/interface/forms/forms.rst:312
 msgid "В настройке виджета через шестеренку присвоить ему нужную форму:"
 msgstr "In the widget settings via the gear icon, assign it the required form:"
+
+#: ../../settings_kb/interface/forms/forms.rst:319
+msgid "Разные формы для создания и редактирования"
+msgstr "Different forms for creation and editing"
+
+#: ../../settings_kb/interface/forms/forms.rst:321
+msgid ""
+"Разные формы для создания и редактирования записи обычно настраиваются "
+"без отдельного действия:"
+msgstr ""
+"Different forms for creating and editing a record are usually configured "
+"without a separate action:"
+
+#: ../../settings_kb/interface/forms/forms.rst:323
+msgid ""
+"**форма создания** указывается в варианте создания типа данных, в поле "
+"``formRef`` (см. ``createVariants`` в :ref:`параметрах типа "
+"данных<type_parameters>`);"
+msgstr ""
+"the **creation form** is specified in the data type's create variant, in "
+"the ``formRef`` field (see ``createVariants`` in the :ref:`data type "
+"parameters<type_parameters>`);"
+
+#: ../../settings_kb/interface/forms/forms.rst:324
+msgid ""
+"**при редактировании** открывается основная форма, заданная в самом типе "
+"данных."
+msgstr ""
+"**when editing**, the main form specified in the data type itself is "
+"opened."
+
+#: ../../settings_kb/interface/forms/forms.rst:326
+msgid ""
+"Также нужную форму можно выбрать в настройках виджета **«Свойства»** на "
+"дашборде (см. :ref:`выше<several_forms_for_type>`). Чтобы форма появилась"
+" в списке, её ``typeRef`` должен указывать на ваш тип данных или на один "
+"из его родительских типов. Кнопка редактирования (карандаш) на виджете "
+"откроет именно эту форму."
+msgstr ""
+"You can also select the required form in the **«Properties»** widget "
+"settings on the dashboard (see :ref:`above<several_forms_for_type>`). For"
+" the form to appear in the list, its ``typeRef`` must point to your data "
+"type or to one of its parent types. The edit button (pencil) on the "
+"widget will open exactly this form."
+
+#: ../../settings_kb/interface/forms/forms.rst:329
+msgid "Отдельная кнопка редактирования"
+msgstr "Separate edit button"
+
+#: ../../settings_kb/interface/forms/forms.rst:331
+msgid ""
+"Если нужна отдельная кнопка, например **«Редактировать профиль»**, можно "
+"использовать :ref:`действие<ui_actions_types>` типа ``create``:"
+msgstr ""
+"If you need a separate button, for example **«Edit profile»**, you can "
+"use an :ref:`action<ui_actions_types>` of the ``create`` type:"
+
+#: ../../settings_kb/interface/forms/forms.rst:360
+msgid ""
+"Несмотря на тип ``create``, новая запись не создаётся: в ``recordRef`` "
+"передаётся ссылка на текущую запись, а в ``options.formMode`` задаётся "
+"режим ``EDIT``. Форма ожидает нажатия **«Сохранить»**, изменения "
+"сохраняются в ту же запись. Указывать ``typeRef`` в конфигурации этого "
+"действия не нужно."
+msgstr ""
+"Despite the ``create`` type, no new record is created: ``recordRef`` "
+"receives a reference to the current record, and ``options.formMode`` is "
+"set to ``EDIT``. The form waits for **«Save»** to be clicked, and the "
+"changes are saved to the same record. There is no need to specify "
+"``typeRef`` in this action's configuration."
 
 #~ msgid ""
 #~ "Функция :ref:`редактора форм<form_builder>` доступна"
@@ -412,4 +482,7 @@ msgstr "In the widget settings via the gear icon, assign it the required form:"
 #~ "The :ref:`form editor<form_builder>` function "
 #~ "is only available in Citeck "
 #~ "**Enterprise**."
+
+#~ msgid "Для загрузки созданного журнала необходимо нажать **+ - Форма**:"
+#~ msgstr "To upload a created journal, click **+ - Form**:"
 

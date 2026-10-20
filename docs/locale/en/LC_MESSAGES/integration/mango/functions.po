@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Citeck\n"
+"Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"POT-Creation-Date: 2026-10-19 16:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: en <LL@li.org>\n"
 "Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../integration/mango/functions.rst:4
@@ -40,7 +40,7 @@ msgid "Поле"
 msgstr "Field"
 
 #: ../../integration/mango/functions.rst:23
-#: ../../integration/mango/functions.rst:338
+#: ../../integration/mango/functions.rst:341
 msgid "Описание"
 msgstr "Description"
 
@@ -71,8 +71,8 @@ msgstr "Request signature"
 #: ../../integration/mango/functions.rst:31
 msgid ""
 "Подпись строится с помощью ключа для создания подписи ``vpbx_api_salt`` "
-"(далее — соль). MANGO OFFICE выдаёт соль вместе с кодом ВАТС, а в запросах"
-" её не передаёт."
+"(далее — соль). MANGO OFFICE выдаёт соль вместе с кодом ВАТС, а в "
+"запросах её не передаёт."
 msgstr ""
 "The signature is built using the signing key ``vpbx_api_salt`` "
 "(hereinafter — the salt). MANGO OFFICE issues the salt together with the "
@@ -80,55 +80,55 @@ msgstr ""
 
 #: ../../integration/mango/functions.rst:33
 msgid ""
-"Адрес уведомлений состоит из базового адреса, указанного в личном кабинете"
-" MANGO OFFICE, и добавленного к нему окончания ``/events/<тип>``. Входящий"
-" вебхук Citeck принимает запросы и по базовому адресу, и по любому "
-"окончанию, поэтому в личном кабинете достаточно указать один адрес. Тип "
-"уведомления интеграция определяет не по окончанию адреса, а по содержимому"
-" поля ``json``."
+"Адрес уведомлений состоит из базового адреса, указанного в личном "
+"кабинете MANGO OFFICE, и добавленного к нему окончания ``/events/<тип>``."
+" Входящий вебхук Citeck принимает запросы и по базовому адресу, и по "
+"любому окончанию, поэтому в личном кабинете достаточно указать один "
+"адрес. Тип уведомления интеграция определяет не по окончанию адреса, а по"
+" содержимому поля ``json``."
 msgstr ""
 "The notification address consists of the base address specified in the "
-"MANGO OFFICE account and the ``/events/<type>`` suffix appended to it. The"
-" Citeck incoming webhook accepts requests both at the base address and at "
-"any suffix, so it is enough to specify a single address in the account. "
-"The integration determines the notification type not by the address suffix"
-" but by the contents of the ``json`` field."
+"MANGO OFFICE account and the ``/events/<type>`` suffix appended to it. "
+"The Citeck incoming webhook accepts requests both at the base address and"
+" at any suffix, so it is enough to specify a single address in the "
+"account. The integration determines the notification type not by the "
+"address suffix but by the contents of the ``json`` field."
 
 #: ../../integration/mango/functions.rst:35
 msgid ""
 "Подлинность запроса проверяется по подписи. Citeck вычисляет "
 "``sha256(vpbx_api_key + json + vpbx_api_salt)``, где код ВАТС и соль "
 "берутся из секрета Citeck, и сравнивает результат с полем ``sign`` без "
-"учёта регистра. Подпись проверяется по полям формы запроса, а тело события"
-" Citeck берётся из поля ``json``. Результат проверки:"
+"учёта регистра. Подпись проверяется по полям формы запроса, а тело "
+"события Citeck берётся из поля ``json``. Результат проверки:"
 msgstr ""
 "Request authenticity is verified by the signature. Citeck computes "
 "``sha256(vpbx_api_key + json + vpbx_api_salt)``, where the VPBX code and "
 "the salt are taken from the Citeck secret, and compares the result with "
-"the ``sign`` field, case-insensitively. The signature is verified against "
-"the request form fields, and the Citeck event body is taken from the "
+"the ``sign`` field, case-insensitively. The signature is verified against"
+" the request form fields, and the Citeck event body is taken from the "
 "``json`` field. Verification result:"
 
 #: ../../integration/mango/functions.rst:37
 msgid ""
-"подпись верна — Citeck отвечает HTTP 200 и публикует событие Citeck (``in-"
-"webhook-request``) для обработки;"
+"подпись верна — Citeck отвечает HTTP 200 и публикует событие Citeck "
+"(``in-webhook-request``) для обработки;"
 msgstr ""
 "the signature is valid — Citeck responds with HTTP 200 and publishes a "
 "Citeck event (``in-webhook-request``) for processing;"
 
 #: ../../integration/mango/functions.rst:38
 msgid ""
-"подписи нет или она неверна — Citeck отвечает HTTP 401 ``Webhook signature"
-" is not valid``, событие Citeck не создаётся;"
+"подписи нет или она неверна — Citeck отвечает HTTP 401 ``Webhook "
+"signature is not valid``, событие Citeck не создаётся;"
 msgstr ""
 "the signature is missing or invalid — Citeck responds with HTTP 401 "
 "``Webhook signature is not valid``, no Citeck event is created;"
 
 #: ../../integration/mango/functions.rst:39
 msgid ""
-"подпись есть, но нет поля ``json`` — Citeck отвечает HTTP 401 с сообщением"
-" об отсутствующем параметре, событие Citeck не создаётся."
+"подпись есть, но нет поля ``json`` — Citeck отвечает HTTP 401 с "
+"сообщением об отсутствующем параметре, событие Citeck не создаётся."
 msgstr ""
 "the signature is present but the ``json`` field is missing — Citeck "
 "responds with HTTP 401 with a message about the missing parameter, no "
@@ -139,21 +139,21 @@ msgid ""
 "Полный перечень кодов ответа приведён в разделе "
 ":ref:`mango_webhook_codes`."
 msgstr ""
-"The full list of response codes is given in the :ref:`mango_webhook_codes`"
-" section."
+"The full list of response codes is given in the "
+":ref:`mango_webhook_codes` section."
 
 #: ../../integration/mango/functions.rst:43
 msgid ""
-"Сразу после проверки уведомление помещается в устойчивую очередь RabbitMQ "
-"``mango-events``. Поиск сделки или лида, загрузка аудиозаписи и "
+"Сразу после проверки уведомление помещается в устойчивую очередь RabbitMQ"
+" ``mango-events``. Поиск сделки или лида, загрузка аудиозаписи и "
 "распознавание выполняются позже, в обработчиках очередей, поэтому MANGO "
 "OFFICE получает ответ без ожидания обработки."
 msgstr ""
-"Immediately after verification, the notification is placed in the durable "
-"RabbitMQ queue ``mango-events``. Searching for a deal or lead, downloading"
-" the recording, and speech recognition are performed later, in the queue "
-"handlers, so MANGO OFFICE receives a response without waiting for "
-"processing."
+"Immediately after verification, the notification is placed in the durable"
+" RabbitMQ queue ``mango-events``. Searching for a deal or lead, "
+"downloading the recording, and speech recognition are performed later, in"
+" the queue handlers, so MANGO OFFICE receives a response without waiting "
+"for processing."
 
 #: ../../integration/mango/functions.rst:45
 msgid "Уведомления распознаются по содержимому:"
@@ -205,8 +205,7 @@ msgstr "The ``recording_state`` field is present"
 
 #: ../../integration/mango/functions.rst:63
 msgid "Пропуск: загрузку запускает уведомление «Запись добавлена»"
-msgstr ""
-"Skipped: the download is triggered by the \"Recording added\" notification"
+msgstr "Skipped: the download is triggered by the \"Recording added\" notification"
 
 #: ../../integration/mango/functions.rst:64
 msgid "Прочие уведомления (в том числе промежуточные ``/events/call``)"
@@ -256,25 +255,25 @@ msgstr ""
 
 #: ../../integration/mango/functions.rst:82
 msgid ""
-"строка делится на части по символам «,», «;», «#», «/», по переводу строки"
-" и по словам «доб», «доп», «вн», «ext» в любом регистре;"
+"строка делится на части по символам «,», «;», «#», «/», по переводу "
+"строки и по словам «доб», «доп», «вн», «ext» в любом регистре;"
 msgstr ""
 "the string is split into parts by the characters \",\", \";\", \"#\", "
-"\"/\", by line breaks, and by the words \"доб\", \"доп\", \"вн\", \"ext\" "
-"(extension) in any case;"
+"\"/\", by line breaks, and by the words \"доб\", \"доп\", \"вн\", \"ext\""
+" (extension) in any case;"
 
 #: ../../integration/mango/functions.rst:83
 msgid ""
-"в каждой части остаются только цифры, поэтому номер можно записать в любом"
-" виде: с «+7» или «8», со скобками, дефисами и пробелами;"
+"в каждой части остаются только цифры, поэтому номер можно записать в "
+"любом виде: с «+7» или «8», со скобками, дефисами и пробелами;"
 msgstr ""
-"only digits remain in each part, so the number can be written in any form:"
-" with \"+7\" or \"8\", with parentheses, hyphens, and spaces;"
+"only digits remain in each part, so the number can be written in any "
+"form: with \"+7\" or \"8\", with parentheses, hyphens, and spaces;"
 
 #: ../../integration/mango/functions.rst:84
 msgid ""
-"часть длиной от 10 до 15 цифр даёт нормализованный номер, остальные части "
-"отбрасываются, повторы удаляются;"
+"часть длиной от 10 до 15 цифр даёт нормализованный номер, остальные части"
+" отбрасываются, повторы удаляются;"
 msgstr ""
 "a part of 10 to 15 digits gives a normalized number, other parts are "
 "discarded, duplicates are removed;"
@@ -289,12 +288,12 @@ msgstr "in an 11-digit number, the leading 8 is replaced with 7."
 
 #: ../../integration/mango/functions.rst:88
 msgid ""
-"Поэтому короткий добавочный номер (например, «доб. 422») отбрасывается, а "
-"второй полный номер, записанный после «/» или «доб», даёт второй "
+"Поэтому короткий добавочный номер (например, «доб. 422») отбрасывается, а"
+" второй полный номер, записанный после «/» или «доб», даёт второй "
 "нормализованный номер."
 msgstr ""
-"Therefore, a short extension (for example, \"ext. 422\") is discarded, and"
-" a second full number written after \"/\" or \"ext\" gives a second "
+"Therefore, a short extension (for example, \"ext. 422\") is discarded, "
+"and a second full number written after \"/\" or \"ext\" gives a second "
 "normalized number."
 
 #: ../../integration/mango/functions.rst:95
@@ -325,25 +324,26 @@ msgstr "``8-900-000-00-00 ext. 422``"
 
 #: ../../integration/mango/functions.rst:104
 msgid ""
-"Если номер скрыт или из него нельзя получить нормализованный номер (меньше"
-" 10 или больше 15 цифр, например короткий внутренний номер), сделка или "
-"лид не ищутся: активность и лид не создаются, в лог выводится сообщение."
+"Если номер скрыт или из него нельзя получить нормализованный номер "
+"(меньше 10 или больше 15 цифр, например короткий внутренний номер), "
+"сделка или лид не ищутся: активность и лид не создаются, в лог выводится "
+"сообщение."
 msgstr ""
 "If the number is hidden or no normalized number can be obtained from it "
 "(fewer than 10 or more than 15 digits, for example a short internal "
-"number), no deal or lead is searched for: no activity or lead is created, "
-"and a message is written to the log."
+"number), no deal or lead is searched for: no activity or lead is created,"
+" and a message is written to the log."
 
 #: ../../integration/mango/functions.rst:106
 msgid ""
-"Правила нормализации совпадают с правилами, по которым CRM вычисляет поле "
-"``phoneDigits`` у сделок, лидов и контрагентов. Благодаря этому номер "
+"Правила нормализации совпадают с правилами, по которым CRM вычисляет поле"
+" ``phoneDigits`` у сделок, лидов и контрагентов. Благодаря этому номер "
 "звонящего и номер в карточке совпадают, как бы номер ни был записан."
 msgstr ""
 "The normalization rules are the same as the rules by which CRM computes "
-"the ``phoneDigits`` field for deals, leads, and counterparties. Thanks to "
-"this, the caller's number and the number in the card match no matter how "
-"the number was written."
+"the ``phoneDigits`` field for deals, leads, and counterparties. Thanks to"
+" this, the caller's number and the number in the card match no matter how"
+" the number was written."
 
 #: ../../integration/mango/functions.rst:111
 msgid "Порядок поиска"
@@ -363,8 +363,8 @@ msgstr ""
 
 #: ../../integration/mango/functions.rst:116
 msgid ""
-"**Лиды** (``emodel/lead``), если активная сделка не найдена: по телефонам "
-"лида и по телефонам его контрагента."
+"**Лиды** (``emodel/lead``), если активная сделка не найдена: по телефонам"
+" лида и по телефонам его контрагента."
 msgstr ""
 "**Leads** (``emodel/lead``), if no active deal is found: by the lead's "
 "phone numbers and the phone numbers of its counterparty."
@@ -404,8 +404,8 @@ msgstr "Deal"
 
 #: ../../integration/mango/functions.rst:131
 msgid ""
-"«Завершена» (``completed``), «Отказ» (``refusal``), «Отсев» (``dropout``),"
-" «Исторические заявки» (``old``)"
+"«Завершена» (``completed``), «Отказ» (``refusal``), «Отсев» "
+"(``dropout``), «Исторические заявки» (``old``)"
 msgstr ""
 "\"Completed\" (``completed``), \"Refusal\" (``refusal``), \"Dropout\" "
 "(``dropout``), \"Historical requests\" (``old``)"
@@ -415,12 +415,8 @@ msgid "Лид"
 msgstr "Lead"
 
 #: ../../integration/mango/functions.rst:133
-msgid ""
-"«Дисквалифицирован» (``disqualified``), «Сделка» (``deal_creation``), "
-"«Проверка на спам» (``spam_check``)"
-msgstr ""
-"\"Disqualified\" (``disqualified``), \"Deal\" (``deal_creation``), \"Spam "
-"check\" (``spam_check``)"
+msgid "«Дисквалифицирован» (``disqualified``), «Сделка» (``deal_creation``)"
+msgstr "\"Disqualified\" (``disqualified``), \"Deal\" (``deal_creation``)"
 
 #: ../../integration/mango/functions.rst:135
 msgid ""
@@ -435,17 +431,17 @@ msgstr ""
 
 #: ../../integration/mango/functions.rst:139
 msgid ""
-"Статус лида ``spam_check`` не завершающий. Если в CRM включена AI-проверка"
-" на спам, новый лид, в том числе созданный интеграцией, попадает в этот "
-"статус, и повторный звонок с того же номера до окончания проверки создаст "
-"ещё один лид. В таких инсталляциях исключите ``spam_check`` из перечня "
-"исключаемых статусов лида."
+"Лид в статусе «Проверка на спам» (``spam_check``) считается активным. "
+"Если в CRM включена AI-проверка на спам, новый лид, в том числе созданный"
+" интеграцией, попадает в этот статус, и повторный звонок с того же номера"
+" до окончания проверки привязывается к этому же лиду — второй лид не "
+"создаётся."
 msgstr ""
-"The ``spam_check`` lead status is not final. If AI spam checking is "
-"enabled in CRM, a new lead, including one created by the integration, "
-"enters this status, and a repeated call from the same number before the "
-"check completes will create another lead. In such installations, remove "
-"``spam_check`` from the list of excluded lead statuses."
+"A lead in the \"Spam check\" (``spam_check``) status is considered "
+"active. If AI spam checking is enabled in CRM, a new lead, including one "
+"created by the integration, enters this status, and a repeated call from "
+"the same number before the check completes is linked to the same lead — "
+"no second lead is created."
 
 #: ../../integration/mango/functions.rst:141
 msgid ""
@@ -465,9 +461,9 @@ msgstr "Multiple matches"
 
 #: ../../integration/mango/functions.rst:146
 msgid ""
-"Если номеру соответствуют несколько активных сделок или несколько активных"
-" лидов, звонок привязывается к последней изменённой из них. В текст "
-"активности добавляется пометка вида:"
+"Если номеру соответствуют несколько активных сделок или несколько "
+"активных лидов, звонок привязывается к последней изменённой из них. В "
+"текст активности добавляется пометка вида:"
 msgstr ""
 "If the number matches several active deals or several active leads, the "
 "call is linked to the most recently modified one. A note like the "
@@ -475,15 +471,15 @@ msgstr ""
 
 #: ../../integration/mango/functions.rst:152
 msgid ""
-"Звонки с такой пометкой можно найти по маркеру ``[mango:ambiguous]`` и при"
-" необходимости перепривязать вручную (см. :ref:`mango_manual_rebind`). В "
-"пометке перечислены названия найденных сделок или лидов, а ссылки на них "
-"выводятся в лог микросервиса."
+"Звонки с такой пометкой можно найти по маркеру ``[mango:ambiguous]`` и "
+"при необходимости перепривязать вручную (см. :ref:`mango_manual_rebind`)."
+" В пометке перечислены названия найденных сделок или лидов, а ссылки на "
+"них выводятся в лог микросервиса."
 msgstr ""
 "Calls with such a note can be found by the ``[mango:ambiguous]`` marker "
-"and, if necessary, relinked manually (see :ref:`mango_manual_rebind`). The"
-" note lists the names of the deals or leads found, and links to them are "
-"written to the microservice log."
+"and, if necessary, relinked manually (see :ref:`mango_manual_rebind`). "
+"The note lists the names of the deals or leads found, and links to them "
+"are written to the microservice log."
 
 #: ../../integration/mango/functions.rst:157
 msgid "Создание лида"
@@ -491,53 +487,59 @@ msgstr "Creating a lead"
 
 #: ../../integration/mango/functions.rst:159
 msgid ""
-"Если активных совпадений нет, в том числе когда все совпадения находятся в"
-" исключаемых статусах, интеграция создаёт лид:"
+"Если активных совпадений нет, в том числе когда все совпадения находятся "
+"в исключаемых статусах, интеграция создаёт лид:"
 msgstr ""
-"If there are no active matches, including when all matches are in excluded"
-" statuses, the integration creates a lead:"
+"If there are no active matches, including when all matches are in "
+"excluded statuses, the integration creates a lead:"
 
 #: ../../integration/mango/functions.rst:161
 msgid ""
 "перед созданием номер ищется в справочнике контрагентов (``emodel/ecos-"
 "counterparty``);"
 msgstr ""
-"before creation, the number is searched for in the counterparty directory "
-"(``emodel/ecos-counterparty``);"
+"before creation, the number is searched for in the counterparty directory"
+" (``emodel/ecos-counterparty``);"
 
 #: ../../integration/mango/functions.rst:162
 msgid ""
 "если контрагент найден, он указывается в лиде, и лид получает его "
 "название;"
 msgstr ""
-"if a counterparty is found, it is specified in the lead, and the lead gets"
-" its name;"
+"if a counterparty is found, it is specified in the lead, and the lead "
+"gets its name;"
 
 #: ../../integration/mango/functions.rst:163
 msgid ""
-"если контрагентов с этим номером несколько, берётся последний изменённый, "
-"а в активность добавляется пометка ``[mango:ambiguous] Номер … совпал с "
+"если контрагентов с этим номером несколько, берётся последний изменённый,"
+" а в активность добавляется пометка ``[mango:ambiguous] Номер … совпал с "
 "несколькими контрагентами (…). Лид создан с последним изменённым — ….``;"
 msgstr ""
 "if there are several counterparties with this number, the most recently "
 "modified one is taken, and the note ``[mango:ambiguous] Номер … совпал с "
 "несколькими контрагентами (…). Лид создан с последним изменённым — ….`` "
-"(\"Number … matched several counterparties (…). The lead was created with "
-"the most recently modified one — ….\") is added to the activity;"
+"(\"Number … matched several counterparties (…). The lead was created with"
+" the most recently modified one — ….\") is added to the activity;"
 
 #: ../../integration/mango/functions.rst:164
-msgid ""
-"если контрагент не найден, лид называется «Входящий звонок ``<номер>``»;"
+msgid "если контрагент не найден, лид называется «Входящий звонок ``<номер>``»;"
 msgstr ""
 "if no counterparty is found, the lead is named \"Входящий звонок "
 "``<номер>``\" (\"Incoming call ``<number>``\");"
 
 #: ../../integration/mango/functions.rst:165
 msgid "номер звонящего записывается в контакты лида как основной;"
-msgstr ""
-"the caller's number is written to the lead's contacts as the primary one;"
+msgstr "the caller's number is written to the lead's contacts as the primary one;"
 
 #: ../../integration/mango/functions.rst:166
+msgid ""
+"лид получает категорию обращения «Телефон» (``emodel/deal-request-"
+"category@phone``);"
+msgstr ""
+"the lead gets the \"Phone\" request category (``emodel/deal-request-"
+"category@phone``);"
+
+#: ../../integration/mango/functions.rst:167
 msgid ""
 "лид создаётся в рабочем пространстве ``crm-workspace``, ответственный "
 "менеджер не назначается (о видимости таких лидов см. "
@@ -547,21 +549,35 @@ msgstr ""
 "manager is assigned (for the visibility of such leads, see "
 ":ref:`mango_user_rights`)."
 
-#: ../../integration/mango/functions.rst:168
+#: ../../integration/mango/functions.rst:169
 msgid ""
-"Номер попадает в контакты лида, поэтому следующий звонок с того же номера "
-"находит уже созданный лид, и второй лид не создаётся, если лид не "
+"Лид и активность «Звонок» создаются одним запросом, в одной транзакции: "
+"лид без активности звонка или активность без лида не появляются. При "
+"ошибке не создаётся ни то, ни другое, а уведомление обрабатывается "
+"повторно без риска создать второй лид."
+msgstr ""
+"The lead and the \"Call\" activity are created in a single request, in one "
+"transaction: a lead without a call activity or an activity without a lead "
+"never appears. If an error occurs, neither is created, and the "
+"notification is processed again without the risk of creating a second "
+"lead."
+
+#: ../../integration/mango/functions.rst:171
+msgid ""
+"Номер попадает в контакты лида, поэтому следующий звонок с того же номера"
+" находит уже созданный лид, и второй лид не создаётся, если лид не "
 "переведён в статус, исключаемый из поиска."
 msgstr ""
-"The number is added to the lead's contacts, so the next call from the same"
-" number finds the already created lead, and a second lead is not created "
-"unless the lead has been moved to a status excluded from the search."
+"The number is added to the lead's contacts, so the next call from the "
+"same number finds the already created lead, and a second lead is not "
+"created unless the lead has been moved to a status excluded from the "
+"search."
 
-#: ../../integration/mango/functions.rst:173
+#: ../../integration/mango/functions.rst:176
 msgid "Активность «Звонок» в карточке сделки или лида"
 msgstr "The \"Call\" activity in the deal or lead card"
 
-#: ../../integration/mango/functions.rst:175
+#: ../../integration/mango/functions.rst:178
 msgid ""
 "На входящий состоявшийся звонок с определённым номером создаётся одна "
 "активность типа «Звонок» (``call-activity``); повторные уведомления "
@@ -572,40 +588,40 @@ msgid ""
 msgstr ""
 "For an incoming answered call from an identified number, one activity of "
 "the \"Call\" type (``call-activity``) is created; repeated notifications "
-"find it by the call identifier ``mango://entry/<entry_id>``. The activity "
-"is displayed in the activities widget of the deal or lead. The call card "
-"is the card of the same activity; the \"Open call card →\" link to it is "
-"stored in the HTML of the activity's ``text`` field."
+"find it by the call identifier ``mango://entry/<entry_id>``. The activity"
+" is displayed in the activities widget of the deal or lead. The call card"
+" is the card of the same activity; the \"Open call card →\" link to it is"
+" stored in the HTML of the activity's ``text`` field."
 
-#: ../../integration/mango/functions.rst:182
+#: ../../integration/mango/functions.rst:185
 msgid "Что заполняется"
 msgstr "What is filled in"
 
-#: ../../integration/mango/functions.rst:183
+#: ../../integration/mango/functions.rst:186
 msgid "Значение"
 msgstr "Value"
 
-#: ../../integration/mango/functions.rst:184
+#: ../../integration/mango/functions.rst:187
 msgid "Тема"
 msgstr "Subject"
 
-#: ../../integration/mango/functions.rst:185
+#: ../../integration/mango/functions.rst:188
 msgid "«Входящий звонок ``<номер>``»"
 msgstr "\"Входящий звонок ``<номер>``\" (\"Incoming call ``<number>``\")"
 
-#: ../../integration/mango/functions.rst:186
+#: ../../integration/mango/functions.rst:189
 msgid "Дата и время"
 msgstr "Date and time"
 
-#: ../../integration/mango/functions.rst:187
+#: ../../integration/mango/functions.rst:190
 msgid "Время звонка из уведомления MANGO OFFICE"
 msgstr "Call time from the MANGO OFFICE notification"
 
-#: ../../integration/mango/functions.rst:188
+#: ../../integration/mango/functions.rst:191
 msgid "Статус активности"
 msgstr "Activity status"
 
-#: ../../integration/mango/functions.rst:189
+#: ../../integration/mango/functions.rst:192
 msgid ""
 "«Выполнена» (``completed``): звонок уже состоялся и не превратится в "
 "просроченную задачу"
@@ -613,70 +629,69 @@ msgstr ""
 "\"Completed\" (``completed``): the call has already taken place and will "
 "not turn into an overdue task"
 
-#: ../../integration/mango/functions.rst:190
+#: ../../integration/mango/functions.rst:193
 msgid "Родитель"
 msgstr "Parent"
 
-#: ../../integration/mango/functions.rst:191
+#: ../../integration/mango/functions.rst:194
 msgid "Найденная или созданная сделка либо лид"
 msgstr "The found or created deal or lead"
 
-#: ../../integration/mango/functions.rst:192
+#: ../../integration/mango/functions.rst:195
 msgid "Платформа звонка"
 msgstr "Call platform"
 
-#: ../../integration/mango/functions.rst:193
+#: ../../integration/mango/functions.rst:196
 msgid "``mango``"
 msgstr "``mango``"
 
-#: ../../integration/mango/functions.rst:194
+#: ../../integration/mango/functions.rst:197
 msgid "Идентификатор звонка"
 msgstr "Call identifier"
 
-#: ../../integration/mango/functions.rst:195
+#: ../../integration/mango/functions.rst:198
 msgid "``mango://entry/<entry_id>``"
 msgstr "``mango://entry/<entry_id>``"
 
-#: ../../integration/mango/functions.rst:196
+#: ../../integration/mango/functions.rst:199
 msgid "Текст"
 msgstr "Text"
 
-#: ../../integration/mango/functions.rst:197
-msgid ""
-"Пометка о неоднозначности (если есть) и ссылка «Открыть карточку звонка →»"
+#: ../../integration/mango/functions.rst:200
+msgid "Пометка о неоднозначности (если есть) и ссылка «Открыть карточку звонка →»"
 msgstr "Ambiguity note (if any) and the \"Open call card →\" link"
 
-#: ../../integration/mango/functions.rst:199
+#: ../../integration/mango/functions.rst:202
 msgid "После обработки аудиозаписи в карточке звонка также видны:"
 msgstr "After the recording is processed, the call card also shows:"
 
-#: ../../integration/mango/functions.rst:201
+#: ../../integration/mango/functions.rst:204
 msgid "**аудиозапись** — mp3-файл, который можно скачать;"
 msgstr "**recording** — an mp3 file that can be downloaded;"
 
-#: ../../integration/mango/functions.rst:202
+#: ../../integration/mango/functions.rst:205
 msgid "**резюме** — краткое содержание разговора, если оно построено;"
 msgstr ""
 "**summary** — a brief summary of the conversation, if one has been "
 "generated;"
 
-#: ../../integration/mango/functions.rst:203
+#: ../../integration/mango/functions.rst:206
 msgid "**расшифровка** — текст по репликам говорящих и полный текст;"
 msgstr "**transcript** — text by speaker turns and the full text;"
 
-#: ../../integration/mango/functions.rst:204
+#: ../../integration/mango/functions.rst:207
 msgid "**длительность** аудиозаписи в секундах;"
 msgstr "**duration** of the recording in seconds;"
 
-#: ../../integration/mango/functions.rst:205
+#: ../../integration/mango/functions.rst:208
 msgid "**статус обработки аудиозаписи**."
 msgstr "**recording processing status**."
 
-#: ../../integration/mango/functions.rst:208
+#: ../../integration/mango/functions.rst:211
 msgid "Карточка звонка"
 msgstr "Call card"
 
-#: ../../integration/mango/functions.rst:210
+#: ../../integration/mango/functions.rst:213
 msgid ""
 "В текущей версии формы типа «Звонок» карточка звонка состоит из двух "
 "колонок:"
@@ -684,7 +699,7 @@ msgstr ""
 "In the current version of the \"Call\" type form, the call card consists "
 "of two columns:"
 
-#: ../../integration/mango/functions.rst:212
+#: ../../integration/mango/functions.rst:215
 msgid ""
 "слева — «Информация о звонке»: тема, «Документ» (сделка или лид), дата, "
 "платформа звонка, длительность, статус обработки аудиозаписи, "
@@ -693,11 +708,11 @@ msgid ""
 "карточку), «Результат» и «Ответственный»;"
 msgstr ""
 "left — \"Call information\": subject, \"Document\" (deal or lead), date, "
-"call platform, duration, recording processing status, \"Call identifier in"
-" telephony\" (``mango://entry/<entry_id>``), \"Note\" (the ambiguity note "
-"and the card link go here), \"Result\", and \"Responsible\";"
+"call platform, duration, recording processing status, \"Call identifier "
+"in telephony\" (``mango://entry/<entry_id>``), \"Note\" (the ambiguity "
+"note and the card link go here), \"Result\", and \"Responsible\";"
 
-#: ../../integration/mango/functions.rst:213
+#: ../../integration/mango/functions.rst:216
 msgid ""
 "справа — панели «Аудиозапись», «Резюме звонка» и свёрнутая панель "
 "«Расшифровка»."
@@ -705,7 +720,7 @@ msgstr ""
 "right — the \"Recording\" and \"Call summary\" panels and the collapsed "
 "\"Transcript\" panel."
 
-#: ../../integration/mango/functions.rst:215
+#: ../../integration/mango/functions.rst:218
 msgid ""
 "Менеджер может изменить поля «Документ», «Результат» и «Ответственный». "
 "Остальные поля заполняет интеграция, они доступны только для чтения. "
@@ -718,18 +733,17 @@ msgstr ""
 "form in the data model, so they may differ depending on the installed "
 "version."
 
-#: ../../integration/mango/functions.rst:219
-msgid ""
-"Блок «Работа менеджера» в форме звонка для работы интеграции не требуется."
+#: ../../integration/mango/functions.rst:222
+msgid "Блок «Работа менеджера» в форме звонка для работы интеграции не требуется."
 msgstr ""
 "The \"Manager's work\" block in the call form is not required for the "
 "integration to work."
 
-#: ../../integration/mango/functions.rst:224
+#: ../../integration/mango/functions.rst:227
 msgid "Ручная перепривязка звонка"
 msgstr "Manually relinking a call"
 
-#: ../../integration/mango/functions.rst:226
+#: ../../integration/mango/functions.rst:229
 msgid ""
 "Чтобы перепривязать звонок к другой сделке или лиду, откройте карточку "
 "звонка, выберите нужную сделку или лид в поле «Документ» и сохраните "
@@ -738,32 +752,32 @@ msgstr ""
 "To relink a call to another deal or lead, open the call card, select the "
 "required deal or lead in the \"Document\" field, and save the card."
 
-#: ../../integration/mango/functions.rst:228
+#: ../../integration/mango/functions.rst:231
 msgid ""
 "При повторной обработке уведомлений интеграция не перезаписывает тему, "
 "текст, статус и тип активности, а привязку к сделке или лиду не трогает, "
 "если она уже задана. Поэтому звонок, перенесённый вручную, остаётся на "
 "новом месте."
 msgstr ""
-"When notifications are reprocessed, the integration does not overwrite the"
-" subject, text, status, and type of the activity, and does not touch the "
-"link to the deal or lead if it is already set. Therefore, a manually moved"
-" call stays in its new place."
+"When notifications are reprocessed, the integration does not overwrite "
+"the subject, text, status, and type of the activity, and does not touch "
+"the link to the deal or lead if it is already set. Therefore, a manually "
+"moved call stays in its new place."
 
-#: ../../integration/mango/functions.rst:233
+#: ../../integration/mango/functions.rst:236
 msgid "Загрузка аудиозаписи разговора"
 msgstr "Downloading the call recording"
 
-#: ../../integration/mango/functions.rst:235
+#: ../../integration/mango/functions.rst:238
 msgid ""
-"По уведомлению «Запись добавлена» интеграция находит активность звонка по "
-"идентификатору звонка и запрашивает файл у API MANGO OFFICE:"
+"По уведомлению «Запись добавлена» интеграция находит активность звонка по"
+" идентификатору звонка и запрашивает файл у API MANGO OFFICE:"
 msgstr ""
 "On the \"Recording added\" notification, the integration finds the call "
 "activity by the call identifier and requests the file from the MANGO "
 "OFFICE API:"
 
-#: ../../integration/mango/functions.rst:237
+#: ../../integration/mango/functions.rst:240
 msgid ""
 "запрос ``POST /vpbx/queries/recording/post`` подписывается так же, как "
 "уведомления (см. :ref:`mango_receive`);"
@@ -771,7 +785,7 @@ msgstr ""
 "the ``POST /vpbx/queries/recording/post`` request is signed in the same "
 "way as notifications (see :ref:`mango_receive`);"
 
-#: ../../integration/mango/functions.rst:238
+#: ../../integration/mango/functions.rst:241
 msgid ""
 "MANGO OFFICE отвечает перенаправлением на временную ссылку, и интеграция "
 "автоматически скачивает файл по ней;"
@@ -779,16 +793,15 @@ msgstr ""
 "MANGO OFFICE responds with a redirect to a temporary link, and the "
 "integration automatically downloads the file from it;"
 
-#: ../../integration/mango/functions.rst:239
+#: ../../integration/mango/functions.rst:242
 msgid "ссылка временная, поэтому в карточке хранится сам файл, а не ссылка."
-msgstr ""
-"the link is temporary, so the card stores the file itself, not the link."
+msgstr "the link is temporary, so the card stores the file itself, not the link."
 
-#: ../../integration/mango/functions.rst:241
+#: ../../integration/mango/functions.rst:244
 msgid "Перед сохранением ответ проверяется:"
 msgstr "Before saving, the response is checked:"
 
-#: ../../integration/mango/functions.rst:243
+#: ../../integration/mango/functions.rst:246
 msgid ""
 "пустые, текстовые, HTML-, JSON- и XML-ответы (даже с кодом HTTP 200), а "
 "также ответы, начинающиеся с символа ``<`` или ``{``, отклоняются;"
@@ -797,114 +810,120 @@ msgstr ""
 "well as responses starting with the ``<`` or ``{`` character, are "
 "rejected;"
 
-#: ../../integration/mango/functions.rst:244
+#: ../../integration/mango/functions.rst:247
 msgid "файл больше 50 МБ (52 428 800 байт) отклоняется;"
 msgstr "a file larger than 50 MB (52,428,800 bytes) is rejected;"
 
-#: ../../integration/mango/functions.rst:245
+#: ../../integration/mango/functions.rst:248
 msgid ""
-"ответ без указания типа содержимого принимается, только если он начинается"
-" как mp3-файл;"
+"ответ без указания типа содержимого принимается, только если он "
+"начинается как mp3-файл;"
 msgstr ""
 "a response without a content type is accepted only if it starts like an "
 "mp3 file;"
 
-#: ../../integration/mango/functions.rst:246
+#: ../../integration/mango/functions.rst:249
 msgid ""
 "ответ с другим двоичным типом содержимого (например, ``application/octet-"
 "stream``) принимается без проверки формата."
 msgstr ""
-"a response with another binary content type (for example, "
-"``application/octet-stream``) is accepted without format checking."
+"a response with another binary content type (for example, ``application"
+"/octet-stream``) is accepted without format checking."
 
-#: ../../integration/mango/functions.rst:248
+#: ../../integration/mango/functions.rst:251
 msgid ""
 "Если ответ не прошёл проверку, у активности устанавливается статус "
 "``download-failed``, аудиозапись не сохраняется. Такая обработка "
 "завершается со статусом ошибки без попадания сообщения в очередь "
 "недоставленных."
 msgstr ""
-"If the response fails the check, the activity gets the ``download-failed``"
-" status, and the recording is not saved. Such processing ends with an "
-"error status without the message going to the dead-letter queue."
+"If the response fails the check, the activity gets the ``download-"
+"failed`` status, and the recording is not saved. Such processing ends "
+"with an error status without the message going to the dead-letter queue."
 
-#: ../../integration/mango/functions.rst:250
+#: ../../integration/mango/functions.rst:253
 msgid ""
 "Уведомление о записи никогда не создаёт активность само. Если активность "
 "звонка не найдена, уведомление отбрасывается (см. "
-":ref:`mango_delivery_limits`). Если аудиозапись этого звонка уже сохранена"
-" (статус ``completed``), повторное уведомление ничего не загружает. Файл "
-"аудиозаписи может стать доступен в MANGO OFFICE заметно позже завершения "
-"звонка."
+":ref:`mango_delivery_limits`). Если аудиозапись этого звонка уже "
+"сохранена (статус ``completed``), повторное уведомление ничего не "
+"загружает. Файл аудиозаписи может стать доступен в MANGO OFFICE заметно "
+"позже завершения звонка."
 msgstr ""
-"A recording notification never creates an activity by itself. If the call "
-"activity is not found, the notification is discarded (see "
+"A recording notification never creates an activity by itself. If the call"
+" activity is not found, the notification is discarded (see "
 ":ref:`mango_delivery_limits`). If the recording of this call has already "
 "been saved (status ``completed``), a repeated notification downloads "
 "nothing. The recording file may become available in MANGO OFFICE "
 "noticeably later than the end of the call."
 
-#: ../../integration/mango/functions.rst:255
+#: ../../integration/mango/functions.rst:258
 msgid "Распознавание речи"
 msgstr "Speech recognition"
 
-#: ../../integration/mango/functions.rst:257
+#: ../../integration/mango/functions.rst:260
 msgid ""
 "Загруженный файл передаётся сервису распознавания речи ``citeck-stt-"
-"sidecar`` (см. :ref:`mango_stt_service`). Язык распознавания — русский. В "
-"активность записываются:"
+"sidecar`` (см. :ref:`mango_stt_service`). Язык распознавания — русский. В"
+" активность записываются:"
 msgstr ""
 "The downloaded file is passed to the ``citeck-stt-sidecar`` speech "
 "recognition service (see :ref:`mango_stt_service`). The recognition "
 "language is Russian. The following is written to the activity:"
 
-#: ../../integration/mango/functions.rst:259
+#: ../../integration/mango/functions.rst:262
 msgid "**полный текст** разговора;"
 msgstr "the **full text** of the conversation;"
 
-#: ../../integration/mango/functions.rst:260
+#: ../../integration/mango/functions.rst:263
 msgid ""
 "**текст по репликам** в виде строк «``SPEAKER_00: …``», «``SPEAKER_01: "
 "…``». Метки обозначают говорящих условно, это не имена сотрудника и "
-"клиента. Реплики разделяются по говорящим, только если в сервисе включена "
-"диаризация. Если сервис не вернул реплик, в это поле записывается полный "
-"текст;"
+"клиента. Реплики разделяются по говорящим, только если в сервисе включена"
+" диаризация. Если сервис не вернул реплик, в это поле записывается полный"
+" текст;"
 msgstr ""
-"**text by speaker turns** as lines \"``SPEAKER_00: …``\", \"``SPEAKER_01: "
-"…``\". The labels identify speakers conventionally; they are not the names"
-" of the employee and the customer. Turns are split by speaker only if "
-"diarization is enabled in the service. If the service returned no turns, "
-"the full text is written to this field;"
+"**text by speaker turns** as lines \"``SPEAKER_00: …``\", \"``SPEAKER_01:"
+" …``\". The labels identify speakers conventionally; they are not the "
+"names of the employee and the customer. Turns are split by speaker only "
+"if diarization is enabled in the service. If the service returned no "
+"turns, the full text is written to this field;"
 
-#: ../../integration/mango/functions.rst:261
-msgid "**длительность** в целых секундах."
-msgstr "**duration** in whole seconds."
+#: ../../integration/mango/functions.rst:264
+msgid ""
+"**длительность** в целых секундах. Если сервис не вернул корректную "
+"длительность, она вычисляется по заголовкам кадров mp3-файла; если не "
+"удалось и так, длительность не заполняется."
+msgstr ""
+"**duration** in whole seconds. If the service did not return a valid "
+"duration, it is calculated from the frame headers of the mp3 file; if "
+"that also fails, the duration is not filled in."
 
-#: ../../integration/mango/functions.rst:263
+#: ../../integration/mango/functions.rst:266
 msgid "Ожидание ответа сервиса распознавания ограничено 30 минутами."
 msgstr ""
 "Waiting for a response from the speech recognition service is limited to "
 "30 minutes."
 
-#: ../../integration/mango/functions.rst:265
+#: ../../integration/mango/functions.rst:268
 msgid ""
 "Если сервис окончательно отказал в распознавании (ответил ошибкой 4xx, "
 "кроме кодов 401, 403, 408, 425 и 429, или вернул ответ без текста), "
-"аудиозапись сохраняется в карточке без текста со статусом ``transcription-"
-"failed``. Временные сбои обрабатываются автоматическими повторами (см. "
-":ref:`mango_retries`)."
+"аудиозапись и её длительность сохраняются в карточке без текста со "
+"статусом ``transcription-failed``. Временные сбои обрабатываются "
+"автоматическими повторами (см. :ref:`mango_retries`)."
 msgstr ""
 "If the service has permanently refused recognition (responded with a 4xx "
-"error other than codes 401, 403, 408, 425, and 429, or returned a response"
-" without text), the recording is saved in the card without text with the "
-"``transcription-failed`` status. Temporary failures are handled by "
-"automatic retries (see :ref:`mango_retries`)."
+"error other than codes 401, 403, 408, 425, and 429, or returned a "
+"response without text), the recording and its duration are saved in the "
+"card without text with the ``transcription-failed`` status. Temporary "
+"failures are handled by automatic retries (see :ref:`mango_retries`)."
 
-#: ../../integration/mango/functions.rst:270
+#: ../../integration/mango/functions.rst:273
 msgid "Резюме разговора"
 msgstr "Conversation summary"
 
-#: ../../integration/mango/functions.rst:272
+#: ../../integration/mango/functions.rst:275
 msgid ""
 "Если расшифровка получена и не пуста, интеграция запрашивает у модуля "
 "Citeck AI (микросервис ``citeck-ai``) краткое резюме. Резюме строит "
@@ -914,27 +933,28 @@ msgid ""
 msgstr ""
 "If a transcript has been obtained and is not empty, the integration "
 "requests a brief summary from the Citeck AI module (the ``citeck-ai`` "
-"microservice). The summary is generated by the large language model (LLM) "
-"connected in Citeck AI. It receives the conversation text, turns with "
+"microservice). The summary is generated by the large language model (LLM)"
+" connected in Citeck AI. It receives the conversation text, turns with "
 "speaker labels and timecodes, the number of speakers, and the duration "
 "(for data protection, see :ref:`mango_security`)."
 
-#: ../../integration/mango/functions.rst:274
+#: ../../integration/mango/functions.rst:277
 msgid ""
 "Резюме строится на языке разговора. Для короткого разговора это 1–2 "
 "предложения. Для содержательного — разделы «Ключевые темы», «Решения», "
-"«Задачи», «Открытые вопросы» и «Участники», если по ним есть что сказать. "
-"Разделы оформлены разметкой Markdown, а поле «Резюме звонка» показывает её"
-" как обычный текст, поэтому заголовки видны с символами «##»."
+"«Задачи», «Открытые вопросы» и «Участники», если по ним есть что сказать."
+" Разделы оформлены разметкой Markdown, а поле «Резюме звонка» показывает "
+"её как обычный текст, поэтому заголовки видны с символами «##»."
 msgstr ""
-"The summary is generated in the language of the conversation. For a short "
-"conversation, it is 1–2 sentences. For a substantive one, it includes the "
-"sections \"Key topics\", \"Decisions\", \"Tasks\", \"Open questions\", and"
-" \"Participants\", if there is something to say for them. The sections are"
-" formatted with Markdown markup, and the \"Call summary\" field shows it "
-"as plain text, so the headings are visible with the \"##\" characters."
+"The summary is generated in the language of the conversation. For a short"
+" conversation, it is 1–2 sentences. For a substantive one, it includes "
+"the sections \"Key topics\", \"Decisions\", \"Tasks\", \"Open "
+"questions\", and \"Participants\", if there is something to say for them."
+" The sections are formatted with Markdown markup, and the \"Call "
+"summary\" field shows it as plain text, so the headings are visible with "
+"the \"##\" characters."
 
-#: ../../integration/mango/functions.rst:278
+#: ../../integration/mango/functions.rst:281
 msgid ""
 "Резюме формирует языковая модель, и оно может быть неточным: в спорных "
 "случаях опирайтесь на расшифровку и аудиозапись."
@@ -942,114 +962,114 @@ msgstr ""
 "The summary is generated by a language model and may be inaccurate: in "
 "disputed cases, rely on the transcript and the recording."
 
-#: ../../integration/mango/functions.rst:280
+#: ../../integration/mango/functions.rst:283
 msgid ""
-"Если модуль Citeck AI не установлен, выключен или ответил ошибкой, звонок "
-"сохраняется с аудиозаписью и расшифровкой, но без резюме: ошибка резюме не"
-" отменяет сохранение аудиозаписи и расшифровки. Звонки без речи и звонки "
-"без расшифровки на резюме не отправляются. Отказ при построении резюме не "
-"повторяется и не считается ошибкой обработки звонка."
+"Если модуль Citeck AI не установлен, выключен или ответил ошибкой, звонок"
+" сохраняется с аудиозаписью и расшифровкой, но без резюме: ошибка резюме "
+"не отменяет сохранение аудиозаписи и расшифровки. Звонки без речи и "
+"звонки без расшифровки на резюме не отправляются. Отказ при построении "
+"резюме не повторяется и не считается ошибкой обработки звонка."
 msgstr ""
 "If the Citeck AI module is not installed, is disabled, or responded with "
-"an error, the call is saved with the recording and transcript but without "
-"a summary: a summary error does not cancel saving the recording and "
+"an error, the call is saved with the recording and transcript but without"
+" a summary: a summary error does not cancel saving the recording and "
 "transcript. Calls without speech and calls without a transcript are not "
-"sent for summarization. A failure to generate a summary is not retried and"
-" is not considered a call processing error."
+"sent for summarization. A failure to generate a summary is not retried "
+"and is not considered a call processing error."
 
-#: ../../integration/mango/functions.rst:282
+#: ../../integration/mango/functions.rst:285
 msgid ""
-"Каждый звонок с непустой расшифровкой — отдельный запрос к LLM. Учитывайте"
-" это в расходах на провайдера."
+"Каждый звонок с непустой расшифровкой — отдельный запрос к LLM. "
+"Учитывайте это в расходах на провайдера."
 msgstr ""
-"Each call with a non-empty transcript is a separate LLM request. Take this"
-" into account in provider costs."
+"Each call with a non-empty transcript is a separate LLM request. Take "
+"this into account in provider costs."
 
-#: ../../integration/mango/functions.rst:284
+#: ../../integration/mango/functions.rst:287
 msgid ""
-"Отдельного переключателя резюме для телефонии нет. Свойство "
-"``citeck.ai.call-recording.enabled=false`` выключает резюме вместе с "
-"остальными функциями записи разговоров Citeck AI; звонки при этом "
-"сохраняются с аудиозаписью и расшифровкой."
+"Отдельного переключателя резюме для телефонии нет. Свойство ``citeck.ai"
+".call-recording.enabled=false`` выключает резюме вместе с остальными "
+"функциями записи разговоров Citeck AI; звонки при этом сохраняются с "
+"аудиозаписью и расшифровкой."
 msgstr ""
 "There is no separate summary switch for telephony. The ``citeck.ai.call-"
-"recording.enabled=false`` property disables the summary together with the "
-"other Citeck AI call recording functions; calls are still saved with the "
-"recording and transcript."
+"recording.enabled=false`` property disables the summary together with the"
+" other Citeck AI call recording functions; calls are still saved with the"
+" recording and transcript."
 
-#: ../../integration/mango/functions.rst:289
+#: ../../integration/mango/functions.rst:292
 msgid "Статусы обработки аудиозаписи"
 msgstr "Recording processing statuses"
 
-#: ../../integration/mango/functions.rst:291
+#: ../../integration/mango/functions.rst:294
 msgid ""
 "Статус обработки аудиозаписи (атрибут ``recording-"
 "aspect:recordingStatus``) хранится отдельно от статуса самой активности. "
 "Статус активности сразу равен «Выполнена» и означает, что звонок "
 "состоялся."
 msgstr ""
-"The recording processing status (the ``recording-aspect:recordingStatus`` "
-"attribute) is stored separately from the status of the activity itself. "
+"The recording processing status (the ``recording-aspect:recordingStatus``"
+" attribute) is stored separately from the status of the activity itself. "
 "The activity status is immediately \"Completed\" and means that the call "
 "has taken place."
 
-#: ../../integration/mango/functions.rst:298
+#: ../../integration/mango/functions.rst:301
 msgid "Статус"
 msgstr "Status"
 
-#: ../../integration/mango/functions.rst:299
+#: ../../integration/mango/functions.rst:302
 msgid "Когда устанавливается"
 msgstr "When it is set"
 
-#: ../../integration/mango/functions.rst:300
+#: ../../integration/mango/functions.rst:303
 msgid "Что видит пользователь"
 msgstr "What the user sees"
 
-#: ../../integration/mango/functions.rst:301
+#: ../../integration/mango/functions.rst:304
 msgid "не заполнен"
 msgstr "not set"
 
-#: ../../integration/mango/functions.rst:302
+#: ../../integration/mango/functions.rst:305
 msgid "Уведомление о записи ещё не поступало"
 msgstr "No recording notification has been received yet"
 
-#: ../../integration/mango/functions.rst:303
+#: ../../integration/mango/functions.rst:306
 msgid "Активность без аудиозаписи и текста"
 msgstr "An activity without a recording or text"
 
-#: ../../integration/mango/functions.rst:304
+#: ../../integration/mango/functions.rst:307
 msgid "``downloading``"
 msgstr "``downloading``"
 
-#: ../../integration/mango/functions.rst:305
+#: ../../integration/mango/functions.rst:308
 msgid "Уведомление о записи принято, звонок передан в очередь аудиозаписей"
 msgstr ""
-"The recording notification has been accepted, the call has been passed to "
-"the recordings queue"
+"The recording notification has been accepted, the call has been passed to"
+" the recordings queue"
 
-#: ../../integration/mango/functions.rst:306
+#: ../../integration/mango/functions.rst:309
 msgid "Аудиозапись и текст пока отсутствуют"
 msgstr "The recording and text are not yet available"
 
-#: ../../integration/mango/functions.rst:307
+#: ../../integration/mango/functions.rst:310
 msgid "``completed``"
 msgstr "``completed``"
 
-#: ../../integration/mango/functions.rst:308
+#: ../../integration/mango/functions.rst:311
 msgid "Аудиозапись загружена и распознана, результат сохранён"
 msgstr ""
 "The recording has been downloaded and recognized, the result has been "
 "saved"
 
-#: ../../integration/mango/functions.rst:309
+#: ../../integration/mango/functions.rst:312
 msgid "mp3-файл, расшифровка, длительность и резюме, если оно построено"
 msgstr "mp3 file, transcript, duration, and summary, if generated"
 
-#: ../../integration/mango/functions.rst:310
+#: ../../integration/mango/functions.rst:313
 msgid "``download-failed``"
 msgstr "``download-failed``"
 
-#: ../../integration/mango/functions.rst:311
+#: ../../integration/mango/functions.rst:314
 msgid ""
 "Аудиозапись не получена или не прошла проверку либо повторы исчерпаны до "
 "загрузки"
@@ -1057,43 +1077,43 @@ msgstr ""
 "The recording was not received or failed the check, or the retries were "
 "exhausted before downloading"
 
-#: ../../integration/mango/functions.rst:312
+#: ../../integration/mango/functions.rst:315
 msgid "Аудиозапись и текст отсутствуют"
 msgstr "No recording or text"
 
-#: ../../integration/mango/functions.rst:313
+#: ../../integration/mango/functions.rst:316
 msgid "``transcription-failed``"
 msgstr "``transcription-failed``"
 
-#: ../../integration/mango/functions.rst:314
+#: ../../integration/mango/functions.rst:317
 msgid "Аудиозапись получена, но расшифровка не получена"
 msgstr "The recording was received, but no transcript was obtained"
 
-#: ../../integration/mango/functions.rst:315
+#: ../../integration/mango/functions.rst:318
 msgid ""
-"mp3-файл без текста при окончательном отказе сервиса распознавания; только"
-" статус, без файла, если исчерпаны повторы или не удалось сохранить "
-"результат"
+"mp3-файл и длительность без текста — и при окончательном отказе сервиса "
+"распознавания, и после исчерпания повторов. Только статус, без файла, — "
+"если сохранить mp3-файл не удалось"
 msgstr ""
-"An mp3 file without text if the speech recognition service permanently "
-"refused; only the status, without a file, if the retries were exhausted or"
-" the result could not be saved"
+"An mp3 file and duration without text — both when the speech recognition "
+"service permanently refused and after the retries were exhausted. Only "
+"the status, without a file, if the mp3 file could not be saved"
 
-#: ../../integration/mango/functions.rst:317
+#: ../../integration/mango/functions.rst:320
 msgid ""
-"Звонок в статусе ``completed`` повторно не загружается и не распознаётся, "
-"а отметка сбоя этот статус не перезаписывает. Исключение — одновременная "
-"обработка двух уведомлений одного звонка: результат последней обработки, в"
-" том числе ``transcription-failed``, может заменить ранее сохранённый (см."
-" :ref:`mango_known_issues`)."
+"Звонок в статусе ``completed`` повторно не загружается и не распознаётся,"
+" а отметка сбоя этот статус не перезаписывает. Исключение — одновременная"
+" обработка двух уведомлений одного звонка: результат последней обработки,"
+" в том числе ``transcription-failed``, может заменить ранее сохранённый "
+"(см. :ref:`mango_known_issues`)."
 msgstr ""
-"A call in the ``completed`` status is not downloaded or recognized again, "
-"and a failure mark does not overwrite this status. The exception is the "
-"simultaneous processing of two notifications for the same call: the result"
-" of the last processing, including ``transcription-failed``, may replace "
-"the previously saved one (see :ref:`mango_known_issues`)."
+"A call in the ``completed`` status is not downloaded or recognized again,"
+" and a failure mark does not overwrite this status. The exception is the "
+"simultaneous processing of two notifications for the same call: the "
+"result of the last processing, including ``transcription-failed``, may "
+"replace the previously saved one (see :ref:`mango_known_issues`)."
 
-#: ../../integration/mango/functions.rst:319
+#: ../../integration/mango/functions.rst:322
 msgid ""
 "Статусы ``download-failed`` и ``transcription-failed`` можно исправить: "
 "после устранения причины верните сообщение из очереди недоставленных или "
@@ -1106,81 +1126,83 @@ msgstr ""
 ":ref:`mango_dlq_restore` and :ref:`mango_record_reupload`). MANGO OFFICE "
 "itself does not repeat notifications."
 
-#: ../../integration/mango/functions.rst:321
+#: ../../integration/mango/functions.rst:324
 msgid ""
-"Неудачная повторная попытка не стирает ранее сохранённые текст, "
-"длительность и резюме: при отметке сбоя записывается только статус."
+"Неудачная повторная попытка не стирает ранее сохранённые текст и резюме: "
+"при отметке сбоя записывается статус, а затем — полученные mp3-файл и "
+"длительность."
 msgstr ""
-"An unsuccessful retry does not erase the previously saved text, duration, "
-"and summary: only the status is written when a failure is marked."
+"An unsuccessful retry does not erase the previously saved text and "
+"summary: when a failure is marked, the status is written first, followed "
+"by the received mp3 file and duration."
 
-#: ../../integration/mango/functions.rst:325
+#: ../../integration/mango/functions.rst:328
 msgid ""
 "Статус ошибки в карточке не всегда означает наличие сообщения в очереди "
-"недоставленных. И наоборот, отсутствие статуса ошибки не гарантирует, что "
-"обработка продолжается. Проверяйте одновременно карточку, очереди и лог."
+"недоставленных. И наоборот, отсутствие статуса ошибки не гарантирует, что"
+" обработка продолжается. Проверяйте одновременно карточку, очереди и лог."
 msgstr ""
-"An error status in the card does not always mean there is a message in the"
-" dead-letter queue. Conversely, the absence of an error status does not "
-"guarantee that processing is continuing. Check the card, the queues, and "
-"the log together."
+"An error status in the card does not always mean there is a message in "
+"the dead-letter queue. Conversely, the absence of an error status does "
+"not guarantee that processing is continuing. Check the card, the queues, "
+"and the log together."
 
-#: ../../integration/mango/functions.rst:330
+#: ../../integration/mango/functions.rst:333
 msgid "Безопасность и защита данных"
 msgstr "Security and data protection"
 
-#: ../../integration/mango/functions.rst:337
+#: ../../integration/mango/functions.rst:340
 msgid "Аспект"
 msgstr "Aspect"
 
-#: ../../integration/mango/functions.rst:339
+#: ../../integration/mango/functions.rst:342
 msgid "Подпись запросов"
 msgstr "Request signature"
 
-#: ../../integration/mango/functions.rst:340
+#: ../../integration/mango/functions.rst:343
 msgid ""
 "Каждое уведомление MANGO OFFICE проверяется по подписи на основе соли. "
 "Неподписанные и подделанные запросы отклоняются с кодом 401. Исходящие "
 "запросы к MANGO OFFICE подписываются тем же способом."
 msgstr ""
 "Every MANGO OFFICE notification is verified by a salt-based signature. "
-"Unsigned and forged requests are rejected with code 401. Outgoing requests"
-" to MANGO OFFICE are signed in the same way."
+"Unsigned and forged requests are rejected with code 401. Outgoing "
+"requests to MANGO OFFICE are signed in the same way."
 
-#: ../../integration/mango/functions.rst:341
+#: ../../integration/mango/functions.rst:344
 msgid "Хранение учётных данных"
 msgstr "Credential storage"
 
-#: ../../integration/mango/functions.rst:342
+#: ../../integration/mango/functions.rst:345
 msgid ""
 "Код ВАТС и соль хранятся в секрете Citeck ``mango-api``. Один и тот же "
-"секрет служит и для проверки входящих уведомлений, и для подписи запросов "
-"к MANGO OFFICE. Соль никуда не передаётся и не записывается ни в тело, ни "
-"в заголовки запросов."
+"секрет служит и для проверки входящих уведомлений, и для подписи запросов"
+" к MANGO OFFICE. Соль никуда не передаётся и не записывается ни в тело, "
+"ни в заголовки запросов."
 msgstr ""
-"The VPBX code and the salt are stored in the Citeck secret ``mango-api``. "
-"The same secret is used both to verify incoming notifications and to sign "
-"requests to MANGO OFFICE. The salt is not transmitted anywhere and is not "
-"written to either the body or the headers of requests."
+"The VPBX code and the salt are stored in the Citeck secret ``mango-api``."
+" The same secret is used both to verify incoming notifications and to "
+"sign requests to MANGO OFFICE. The salt is not transmitted anywhere and "
+"is not written to either the body or the headers of requests."
 
-#: ../../integration/mango/functions.rst:343
+#: ../../integration/mango/functions.rst:346
 msgid "Учётные данные не попадают в очереди"
 msgstr "Credentials do not get into queues"
 
-#: ../../integration/mango/functions.rst:344
+#: ../../integration/mango/functions.rst:347
 msgid ""
 "В очередь уведомлений передаётся только содержимое уведомления, без кода "
 "ВАТС и подписи. Аудио и учётные данные через брокер не передаются."
 msgstr ""
 "Only the notification content is passed to the notifications queue, "
-"without the VPBX code and signature. Audio and credentials are not passed "
-"through the broker."
+"without the VPBX code and signature. Audio and credentials are not passed"
+" through the broker."
 
-#: ../../integration/mango/functions.rst:345
+#: ../../integration/mango/functions.rst:348
 msgid "Маскирование в логе"
 msgstr "Masking in the log"
 
-#: ../../integration/mango/functions.rst:346
+#: ../../integration/mango/functions.rst:349
 msgid ""
 "В сообщениях об ошибках, стеках вызовов и телах ответов значения "
 "``vpbx_api_key`` и ``sign`` заменяются на ``***``."
@@ -1188,108 +1210,116 @@ msgstr ""
 "In error messages, stack traces, and response bodies, the values of "
 "``vpbx_api_key`` and ``sign`` are replaced with ``***``."
 
-#: ../../integration/mango/functions.rst:347
+#: ../../integration/mango/functions.rst:350
 msgid "Доступ к настройкам"
 msgstr "Access to settings"
 
-#: ../../integration/mango/functions.rst:348
-msgid ""
-"Просматривать и изменять вебхуки могут только администраторы и система."
+#: ../../integration/mango/functions.rst:351
+msgid "Просматривать и изменять вебхуки могут только администраторы и система."
 msgstr "Only administrators and the system can view and change webhooks."
 
-#: ../../integration/mango/functions.rst:349
+#: ../../integration/mango/functions.rst:352
 msgid "Сетевая защита"
 msgstr "Network protection"
 
-#: ../../integration/mango/functions.rst:350
+#: ../../integration/mango/functions.rst:353
 msgid ""
 "MANGO OFFICE отправляет уведомления с фиксированного набора IP-адресов "
 "(см. :ref:`mango_ip_addresses`). Проверку IP-адресов Citeck сам не "
 "выполняет, поэтому белый список настраивается на уровне сети или шлюза."
 msgstr ""
 "MANGO OFFICE sends notifications from a fixed set of IP addresses (see "
-":ref:`mango_ip_addresses`). Citeck itself does not check IP addresses, so "
-"the allowlist is configured at the network or gateway level."
+":ref:`mango_ip_addresses`). Citeck itself does not check IP addresses, so"
+" the allowlist is configured at the network or gateway level."
 
-#: ../../integration/mango/functions.rst:351
+#: ../../integration/mango/functions.rst:354
 msgid "Повтор перехваченного запроса"
 msgstr "Replay of an intercepted request"
 
-#: ../../integration/mango/functions.rst:352
+#: ../../integration/mango/functions.rst:355
 msgid ""
 "Подпись MANGO OFFICE не содержит отметки времени, поэтому перехваченный "
 "подлинный запрос можно отправить повторно. Последствия ограничены: "
-"повторное уведомление не создаёт второй активности. Защитой служат HTTPS и"
-" белый список IP-адресов."
+"повторное уведомление не создаёт второй активности. Защитой служат HTTPS "
+"и белый список IP-адресов."
 msgstr ""
-"The MANGO OFFICE signature does not contain a timestamp, so an intercepted"
-" genuine request can be sent again. The consequences are limited: a "
-"repeated notification does not create a second activity. HTTPS and the IP "
-"allowlist serve as protection."
+"The MANGO OFFICE signature does not contain a timestamp, so an "
+"intercepted genuine request can be sent again. The consequences are "
+"limited: a repeated notification does not create a second activity. HTTPS"
+" and the IP allowlist serve as protection."
 
-#: ../../integration/mango/functions.rst:353
+#: ../../integration/mango/functions.rst:356
 msgid "Распознавание речи внутри контура"
 msgstr "Speech recognition within your infrastructure"
 
-#: ../../integration/mango/functions.rst:354
+#: ../../integration/mango/functions.rst:357
 msgid ""
-"Аудиозапись передаётся только сервису ``citeck-stt-sidecar``, развёрнутому"
-" в вашей инсталляции; во внешние сервисы аудио не отправляется. Сервис "
-"работает без собственной аутентификации и не должен быть доступен извне "
-"сети Citeck."
+"Аудиозапись передаётся только сервису ``citeck-stt-sidecar``, "
+"развёрнутому в вашей инсталляции; во внешние сервисы аудио не "
+"отправляется. Сервис работает без собственной аутентификации и не должен "
+"быть доступен извне сети Citeck."
 msgstr ""
 "The recording is passed only to the ``citeck-stt-sidecar`` service "
-"deployed in your installation; audio is not sent to external services. The"
-" service works without its own authentication and must not be accessible "
-"from outside the Citeck network."
+"deployed in your installation; audio is not sent to external services. "
+"The service works without its own authentication and must not be "
+"accessible from outside the Citeck network."
 
-#: ../../integration/mango/functions.rst:355
+#: ../../integration/mango/functions.rst:358
 msgid "Хранение аудиозаписей"
 msgstr "Recording storage"
 
-#: ../../integration/mango/functions.rst:356
+#: ../../integration/mango/functions.rst:359
 msgid ""
 "mp3-файл каждого обработанного звонка копируется в хранилище содержимого "
 "Citeck и хранится в активности звонка вместе с расшифровкой и резюме. "
-"Интеграция не удаляет их автоматически, а срок хранения аудиозаписей в "
-"MANGO OFFICE на эту копию не влияет. Срок хранения аудиозаписей определите"
-" в соответствии с требованиями вашей организации к персональным данным. "
-"Требования к объёму хранилища приведены в разделе :ref:`mango_resources`."
+"Файл передаётся через временный файл (``emodel/temp-file``), который "
+"интеграция удаляет после успешной записи; временные файлы неудачных "
+"записей остаются в хранилище (см. :ref:`mango_resources`). Аудиозаписи в "
+"активностях интеграция не удаляет автоматически, а срок хранения "
+"аудиозаписей в MANGO OFFICE на эту копию не влияет. Срок хранения "
+"аудиозаписей определите в соответствии с требованиями вашей организации к"
+" персональным данным. Требования к объёму хранилища приведены в разделе "
+":ref:`mango_resources`."
 msgstr ""
 "The mp3 file of each processed call is copied to the Citeck content "
 "storage and stored in the call activity together with the transcript and "
-"summary. The integration does not delete them automatically, and the "
-"recording retention period in MANGO OFFICE does not affect this copy. "
-"Define the recording retention period in accordance with your "
-"organization's personal data requirements. Storage size requirements are "
-"given in the :ref:`mango_resources` section."
+"summary. The file is transferred via a temporary file (``emodel/temp-"
+"file``), which the integration deletes after a successful write; "
+"temporary files of failed writes remain in the storage (see "
+":ref:`mango_resources`). The integration does not delete recordings in "
+"activities automatically, and the recording retention period in MANGO "
+"OFFICE does not affect this copy. Define the recording retention period "
+"in accordance with your organization's personal data requirements. "
+"Storage size requirements are given in the :ref:`mango_resources` "
+"section."
 
-#: ../../integration/mango/functions.rst:360
+#: ../../integration/mango/functions.rst:363
 msgid ""
 "**Передача текста разговора языковой модели.** Резюме строит LLM, "
 "подключённая в модуле Citeck AI. Ей передаются полный текст разговора, "
-"реплики с метками говорящих и тайм-кодами, число говорящих и длительность."
-" Провайдер и модель задаются свойствами Citeck AI ``citeck.ai.call-"
-"recording.summary.provider`` и ``citeck.ai.call-recording.summary.model``;"
-" если они не заданы, используется провайдер Citeck AI по умолчанию. Если "
-"это внешний облачный сервис, тексты разговоров с персональными данными "
-"клиентов передаются за пределы вашей инфраструктуры. Перед включением "
-"резюме согласуйте это с ответственным за обработку персональных данных или"
-" подключите модель, развёрнутую внутри контура."
+"реплики с метками говорящих и тайм-кодами, число говорящих и "
+"длительность. Провайдер и модель задаются свойствами Citeck AI "
+"``citeck.ai.call-recording.summary.provider`` и ``citeck.ai.call-"
+"recording.summary.model``; если они не заданы, используется провайдер "
+"Citeck AI по умолчанию. Если это внешний облачный сервис, тексты "
+"разговоров с персональными данными клиентов передаются за пределы вашей "
+"инфраструктуры. Перед включением резюме согласуйте это с ответственным за"
+" обработку персональных данных или подключите модель, развёрнутую внутри "
+"контура."
 msgstr ""
 "**Passing the conversation text to the language model.** The summary is "
 "generated by the LLM connected in the Citeck AI module. It receives the "
 "full conversation text, turns with speaker labels and timecodes, the "
 "number of speakers, and the duration. The provider and model are set by "
-"the Citeck AI properties ``citeck.ai.call-recording.summary.provider`` and"
-" ``citeck.ai.call-recording.summary.model``; if they are not set, the "
+"the Citeck AI properties ``citeck.ai.call-recording.summary.provider`` "
+"and ``citeck.ai.call-recording.summary.model``; if they are not set, the "
 "default Citeck AI provider is used. If it is an external cloud service, "
 "conversation texts containing customers' personal data are transferred "
-"outside your infrastructure. Before enabling summaries, agree on this with"
-" the person responsible for personal data processing, or connect a model "
-"deployed within your infrastructure."
+"outside your infrastructure. Before enabling summaries, agree on this "
+"with the person responsible for personal data processing, or connect a "
+"model deployed within your infrastructure."
 
-#: ../../integration/mango/functions.rst:362
+#: ../../integration/mango/functions.rst:365
 msgid ""
 "Аудиозаписи, расшифровки и номера телефонов относятся к персональным "
 "данным. Порядок их обработки, в том числе уведомление абонентов о записи "
@@ -1298,27 +1328,27 @@ msgid ""
 msgstr ""
 "Recordings, transcripts, and phone numbers are personal data. The "
 "procedure for processing them, including notifying subscribers that the "
-"conversation is being recorded, is determined by your organization. Do not"
-" include API keys, request signatures, or recording contents in publicly "
-"available reports."
+"conversation is being recorded, is determined by your organization. Do "
+"not include API keys, request signatures, or recording contents in "
+"publicly available reports."
 
-#: ../../integration/mango/functions.rst:364
+#: ../../integration/mango/functions.rst:367
 msgid "Интеграция сохраняет и передаёт следующие данные:"
 msgstr "The integration stores and transmits the following data:"
 
-#: ../../integration/mango/functions.rst:371
+#: ../../integration/mango/functions.rst:374
 msgid "Где"
 msgstr "Where"
 
-#: ../../integration/mango/functions.rst:372
+#: ../../integration/mango/functions.rst:375
 msgid "Какие данные"
 msgstr "What data"
 
-#: ../../integration/mango/functions.rst:373
+#: ../../integration/mango/functions.rst:376
 msgid "Активность «Звонок»"
 msgstr "\"Call\" activity"
 
-#: ../../integration/mango/functions.rst:374
+#: ../../integration/mango/functions.rst:377
 msgid ""
 "Номер звонящего (в теме), время звонка, mp3-файл, расшифровка, "
 "длительность, резюме"
@@ -1326,19 +1356,19 @@ msgstr ""
 "Caller's number (in the subject), call time, mp3 file, transcript, "
 "duration, summary"
 
-#: ../../integration/mango/functions.rst:375
+#: ../../integration/mango/functions.rst:378
 msgid "Созданный лид"
 msgstr "Created lead"
 
-#: ../../integration/mango/functions.rst:376
+#: ../../integration/mango/functions.rst:379
 msgid "Номер звонящего в контактах, название, ссылка на контрагента"
 msgstr "Caller's number in contacts, name, link to the counterparty"
 
-#: ../../integration/mango/functions.rst:377
+#: ../../integration/mango/functions.rst:380
 msgid "Лог микросервиса"
 msgstr "Microservice log"
 
-#: ../../integration/mango/functions.rst:378
+#: ../../integration/mango/functions.rst:381
 msgid ""
 "Номер звонящего и ссылки на сделки, лиды и контрагентов в информационных "
 "сообщениях; содержимое уведомления (включая номер) в сообщении о "
@@ -1346,63 +1376,64 @@ msgid ""
 "сервиса распознавания (до 200 символов) при ошибках"
 msgstr ""
 "The caller's number and links to deals, leads, and counterparties in "
-"informational messages; the notification content (including the number) in"
-" the lost notification message; bodies of external service responses and a"
-" fragment of the speech recognition service response (up to 200 "
+"informational messages; the notification content (including the number) "
+"in the lost notification message; bodies of external service responses "
+"and a fragment of the speech recognition service response (up to 200 "
 "characters) on errors"
 
-#: ../../integration/mango/functions.rst:379
+#: ../../integration/mango/functions.rst:382
 msgid "Очереди ``mango-events`` и ``mango-events-dlq``"
 msgstr "Queues ``mango-events`` and ``mango-events-dlq``"
 
-#: ../../integration/mango/functions.rst:380
+#: ../../integration/mango/functions.rst:383
 msgid ""
 "Исходное содержимое уведомления MANGO OFFICE: номера звонящего и "
 "вызываемого, внутренний номер сотрудника, линия"
 msgstr ""
-"The original MANGO OFFICE notification content: caller and called numbers,"
-" employee's extension, line"
+"The original MANGO OFFICE notification content: caller and called "
+"numbers, employee's extension, line"
 
-#: ../../integration/mango/functions.rst:381
+#: ../../integration/mango/functions.rst:384
 msgid "Очереди ``mango-recordings`` и ``mango-recordings-dlq``"
 msgstr "Queues ``mango-recordings`` and ``mango-recordings-dlq``"
 
-#: ../../integration/mango/functions.rst:382
+#: ../../integration/mango/functions.rst:385
 msgid ""
 "Описание звонка: номер звонящего, найденная сделка или лид, названия "
 "сделок, лидов и контрагентов из пометки о неоднозначности, ссылки на "
 "кандидатов, идентификаторы звонка и аудиозаписи"
 msgstr ""
-"Call description: caller's number, the found deal or lead, names of deals,"
-" leads, and counterparties from the ambiguity note, links to candidates, "
-"call and recording identifiers"
+"Call description: caller's number, the found deal or lead, names of "
+"deals, leads, and counterparties from the ambiguity note, links to "
+"candidates, call and recording identifiers"
 
-#: ../../integration/mango/functions.rst:383
+#: ../../integration/mango/functions.rst:386
 msgid "Провайдер LLM (если включено резюме)"
 msgstr "LLM provider (if summaries are enabled)"
 
-#: ../../integration/mango/functions.rst:384
+#: ../../integration/mango/functions.rst:387
 msgid "Текст разговора, реплики, число говорящих, длительность"
 msgstr "Conversation text, turns, number of speakers, duration"
 
-#: ../../integration/mango/functions.rst:386
+#: ../../integration/mango/functions.rst:389
 msgid ""
-"Код ВАТС, подпись и соль не сохраняются ни в активности, ни в очередях, ни"
-" в логе. Сообщения в очередях недоставленных хранятся до ручного разбора. "
-"Срок хранения лога и этих сообщений определяется регламентом обслуживания "
-"системы и требованиями вашей организации к персональным данным."
+"Код ВАТС, подпись и соль не сохраняются ни в активности, ни в очередях, "
+"ни в логе. Сообщения в очередях недоставленных хранятся до ручного "
+"разбора. Срок хранения лога и этих сообщений определяется регламентом "
+"обслуживания системы и требованиями вашей организации к персональным "
+"данным."
 msgstr ""
 "The VPBX code, signature, and salt are not stored in the activity, the "
-"queues, or the log. Messages in dead-letter queues are kept until manually"
-" reviewed. The retention period of the log and these messages is "
+"queues, or the log. Messages in dead-letter queues are kept until "
+"manually reviewed. The retention period of the log and these messages is "
 "determined by the system maintenance regulations and your organization's "
 "personal data requirements."
 
-#: ../../integration/mango/functions.rst:391
+#: ../../integration/mango/functions.rst:394
 msgid "Автоматические повторы"
 msgstr "Automatic retries"
 
-#: ../../integration/mango/functions.rst:393
+#: ../../integration/mango/functions.rst:396
 msgid ""
 "MANGO OFFICE не повторяет доставку уведомлений и может отправлять их "
 "параллельно, без гарантии порядка, поэтому надёжность обеспечивается "
@@ -1420,27 +1451,27 @@ msgstr ""
 "``mango-recordings`` recordings queue is processed in two threads: long "
 "recognition of one conversation does not delay other customers' calls."
 
-#: ../../integration/mango/functions.rst:396
+#: ../../integration/mango/functions.rst:399
 msgid "Аудиозаписи звонков"
 msgstr "Call recordings"
 
-#: ../../integration/mango/functions.rst:398
+#: ../../integration/mango/functions.rst:401
 msgid ""
 "Первая попытка начинается сразу после получения сообщения из ``mango-"
-"recordings``. При ошибке, допускающей повтор, выполняются ещё пять попыток"
-" с паузами **1, 2, 5, 10 и 30 минут между попытками**. Это шесть попыток и"
-" 48 минут ожидания плюс время скачивания, расшифровки и сохранения. Время "
-"восстановления зависимостей и доставки брокером может дополнительно "
-"увеличить этот срок."
+"recordings``. При ошибке, допускающей повтор, выполняются ещё пять "
+"попыток с паузами **1, 2, 5, 10 и 30 минут между попытками**. Это шесть "
+"попыток и 48 минут ожидания плюс время скачивания, расшифровки и "
+"сохранения. Время восстановления зависимостей и доставки брокером может "
+"дополнительно увеличить этот срок."
 msgstr ""
 "The first attempt starts immediately after the message is received from "
 "``mango-recordings``. On a retryable error, five more attempts are made "
 "with pauses of **1, 2, 5, 10, and 30 minutes between attempts**. That is "
 "six attempts and 48 minutes of waiting plus the time for downloading, "
-"transcription, and saving. The time to restore dependencies and for broker"
-" delivery may extend this further."
+"transcription, and saving. The time to restore dependencies and for "
+"broker delivery may extend this further."
 
-#: ../../integration/mango/functions.rst:400
+#: ../../integration/mango/functions.rst:403
 msgid ""
 "Ожидание проходит в устойчивых quorum-очередях ``mango-recordings-"
 "retry-<delayMillis>``:"
@@ -1448,26 +1479,25 @@ msgstr ""
 "Waiting takes place in durable quorum queues ``mango-recordings-"
 "retry-<delayMillis>``:"
 
-#: ../../integration/mango/functions.rst:402
+#: ../../integration/mango/functions.rst:405
 msgid "поток потребителя на время паузы освобождается;"
 msgstr "the consumer thread is released for the duration of the pause;"
 
-#: ../../integration/mango/functions.rst:403
+#: ../../integration/mango/functions.rst:406
 msgid ""
-"очереди создаются при первом использовании: их отсутствие до первой ошибки"
-" нормально;"
+"очереди создаются при первом использовании: их отсутствие до первой "
+"ошибки нормально;"
 msgstr ""
-"the queues are created on first use: their absence before the first error "
-"is normal;"
+"the queues are created on first use: their absence before the first error"
+" is normal;"
 
-#: ../../integration/mango/functions.rst:404
-msgid ""
-"после истечения TTL RabbitMQ возвращает сообщение в ``mango-recordings``;"
+#: ../../integration/mango/functions.rst:407
+msgid "после истечения TTL RabbitMQ возвращает сообщение в ``mango-recordings``;"
 msgstr ""
 "after the TTL expires, RabbitMQ returns the message to ``mango-"
 "recordings``;"
 
-#: ../../integration/mango/functions.rst:405
+#: ../../integration/mango/functions.rst:408
 msgid ""
 "номер попытки хранится в заголовке ``mango-recording-retry-attempt``, "
 "поэтому перезапуск приложения не сбрасывает счётчик повторов."
@@ -1475,23 +1505,23 @@ msgstr ""
 "the attempt number is stored in the ``mango-recording-retry-attempt`` "
 "header, so restarting the application does not reset the retry counter."
 
-#: ../../integration/mango/functions.rst:407
+#: ../../integration/mango/functions.rst:410
 msgid ""
 "Исходное сообщение подтверждается только после подтверждённой публикации "
 "отложенного повтора. Если публикация не удалась, исходное сообщение "
-"остаётся необработанным для передачи в ``mango-recordings-dlq``. Для этой "
-"схемы нужен RabbitMQ с поддержкой quorum at-least-once dead lettering "
-"(3.10+ с включённым ``stream_queue``). Данные брокера должны храниться на "
-"постоянном томе."
+"остаётся необработанным для передачи в ``mango-recordings-dlq``. Для этой"
+" схемы нужен RabbitMQ с поддержкой quorum at-least-once dead lettering "
+"(3.10+ с включённым ``stream_queue``). Данные брокера должны храниться на"
+" постоянном томе."
 msgstr ""
-"The original message is acknowledged only after the delayed retry has been"
-" published with confirmation. If publishing fails, the original message "
-"remains unprocessed so that it goes to ``mango-recordings-dlq``. This "
-"scheme requires RabbitMQ with support for quorum at-least-once dead "
+"The original message is acknowledged only after the delayed retry has "
+"been published with confirmation. If publishing fails, the original "
+"message remains unprocessed so that it goes to ``mango-recordings-dlq``. "
+"This scheme requires RabbitMQ with support for quorum at-least-once dead "
 "lettering (3.10+ with ``stream_queue`` enabled). Broker data must be "
 "stored on a persistent volume."
 
-#: ../../integration/mango/functions.rst:409
+#: ../../integration/mango/functions.rst:412
 msgid ""
 "Каждая новая попытка снова скачивает и расшифровывает аудиозапись. Перед "
 "повтором маршрут проверяет активность: если аудиозапись уже успешно "
@@ -1504,58 +1534,58 @@ msgstr ""
 "retry, the route checks the activity: if the recording has already been "
 "processed successfully or the activity has been deleted, the retry is "
 "skipped. If saving the result fails, one separate retry is made first "
-"after 5 seconds without re-downloading and re-recognition; if it does not "
-"help, the error is raised to the message processing level."
+"after 5 seconds without re-downloading and re-recognition; if it does not"
+" help, the error is raised to the message processing level."
 
-#: ../../integration/mango/functions.rst:411
+#: ../../integration/mango/functions.rst:414
 msgid ""
 "Доставка допускает дубли: сбой между подтверждением публикации повтора и "
 "подтверждением исходного сообщения может привести к повторной работе. "
-"Последствия одновременной обработки двух сообщений одного звонка описаны в"
-" разделе :ref:`mango_known_issues`."
+"Последствия одновременной обработки двух сообщений одного звонка описаны "
+"в разделе :ref:`mango_known_issues`."
 msgstr ""
 "Delivery allows duplicates: a failure between confirming the retry "
 "publication and acknowledging the original message may lead to repeated "
 "work. The consequences of simultaneously processing two messages for the "
 "same call are described in the :ref:`mango_known_issues` section."
 
-#: ../../integration/mango/functions.rst:414
+#: ../../integration/mango/functions.rst:417
 msgid "Какие ошибки повторяются"
 msgstr "Which errors are retried"
 
-#: ../../integration/mango/functions.rst:421
+#: ../../integration/mango/functions.rst:424
 msgid "Тип ошибки"
 msgstr "Error type"
 
-#: ../../integration/mango/functions.rst:422
+#: ../../integration/mango/functions.rst:425
 msgid "Какие ошибки относятся и что происходит"
 msgstr "Which errors belong to it and what happens"
 
-#: ../../integration/mango/functions.rst:423
+#: ../../integration/mango/functions.rst:426
 msgid "Временная"
 msgstr "Temporary"
 
-#: ../../integration/mango/functions.rst:424
+#: ../../integration/mango/functions.rst:427
 msgid ""
-"При скачивании и вызове сервиса распознавания: сетевые ошибки ввода-"
-"вывода, тайм-ауты, HTTP 5xx и HTTP ``401``, ``403``, ``408``, ``425``, "
-"``429``. Назначаются отложенные повторы."
+"При скачивании и вызове сервиса распознавания: сетевые ошибки "
+"ввода-вывода, тайм-ауты, HTTP 5xx и HTTP ``401``, ``403``, ``408``, "
+"``425``, ``429``. Назначаются отложенные повторы."
 msgstr ""
 "When downloading and calling the speech recognition service: network I/O "
 "errors, timeouts, HTTP 5xx, and HTTP ``401``, ``403``, ``408``, ``425``, "
 "``429``. Delayed retries are scheduled."
 
-#: ../../integration/mango/functions.rst:425
+#: ../../integration/mango/functions.rst:428
 msgid "Постоянная"
 msgstr "Permanent"
 
-#: ../../integration/mango/functions.rst:426
+#: ../../integration/mango/functions.rst:429
 msgid ""
 "Остальные HTTP 4xx на этих этапах. Автоматический повтор не назначается: "
 "при ошибке скачивания фиксируется ``download-failed``, при постоянной "
 "ошибке распознавания маршрут сохраняет аудио без расшифровки. "
-"Отбракованное содержимое скачанного файла также может завершить обработку "
-"со статусом ошибки без попадания в очередь недоставленных."
+"Отбракованное содержимое скачанного файла также может завершить обработку"
+" со статусом ошибки без попадания в очередь недоставленных."
 msgstr ""
 "Other HTTP 4xx at these stages. No automatic retry is scheduled: on a "
 "download error, ``download-failed`` is recorded; on a permanent "
@@ -1563,7 +1593,7 @@ msgstr ""
 "Rejected content of the downloaded file may also end processing with an "
 "error status without going to the dead-letter queue."
 
-#: ../../integration/mango/functions.rst:430
+#: ../../integration/mango/functions.rst:433
 msgid ""
 "При ``401``/``403`` проверьте доступы и настройки интеграции: повтор сам "
 "по себе неверные настройки не исправляет."
@@ -1571,26 +1601,37 @@ msgstr ""
 "For ``401``/``403``, check the access rights and integration settings: a "
 "retry by itself does not fix incorrect settings."
 
-#: ../../integration/mango/functions.rst:432
+#: ../../integration/mango/functions.rst:435
 msgid ""
 "После исчерпания отложенных повторов маршрут пытается установить "
 "``download-failed`` или ``transcription-failed``, а сообщение попадает в "
-"``mango-recordings-dlq``. Если обновление активности тоже не удалось, её "
-"статус может остаться промежуточным. Повреждённый JSON может попасть в "
-"очередь недоставленных без изменения активности: состояние звонка ещё не "
-"удалось прочитать."
+"``mango-recordings-dlq``. Если аудиозапись была загружена, маршрут "
+"сохраняет то, что успел получить, тремя независимыми записями: mp3-файл с"
+" длительностью, резюме, текст с длительностью и статусом ``completed``. "
+"Сбой одной записи не отменяет остальные. Если обновление активности тоже "
+"не удалось, её статус может остаться промежуточным. В очередь "
+"недоставленных и в лог передаётся исходная ошибка обработки, а не ошибка "
+"записи статуса или файла. Повреждённый JSON может попасть в очередь "
+"недоставленных без изменения активности: состояние звонка ещё не удалось "
+"прочитать."
 msgstr ""
 "After the delayed retries are exhausted, the route tries to set "
 "``download-failed`` or ``transcription-failed``, and the message goes to "
-"``mango-recordings-dlq``. If updating the activity also fails, its status "
-"may remain intermediate. Corrupted JSON may go to the dead-letter queue "
-"without changing the activity: the call state could not be read yet."
+"``mango-recordings-dlq``. If the recording was downloaded, the route "
+"saves whatever it managed to obtain as three independent writes: the mp3 "
+"file with duration, the summary, and the text with duration and the "
+"``completed`` status. A failure of one write does not cancel the others. "
+"If updating the activity also fails, its status may remain intermediate. "
+"The original processing error, not the status or file write error, is "
+"passed to the dead-letter queue and the log. Corrupted JSON may go to the"
+" dead-letter queue without changing the activity: the call state could "
+"not be read yet."
 
-#: ../../integration/mango/functions.rst:435
+#: ../../integration/mango/functions.rst:438
 msgid "Уведомления и первичная публикация"
 msgstr "Notifications and initial publication"
 
-#: ../../integration/mango/functions.rst:437
+#: ../../integration/mango/functions.rst:440
 msgid ""
 "У ``mango-events`` отдельная политика: три повтора через 30, 60 и 120 "
 "секунд, затем ``mango-events-dlq``. Эти короткие повторы выполняются "
@@ -1599,27 +1640,32 @@ msgid ""
 "уведомления ждут в очереди."
 msgstr ""
 "``mango-events`` has a separate policy: three retries after 30, 60, and "
-"120 seconds, then ``mango-events-dlq``. These short retries are performed "
-"within notification processing to preserve the order of the call "
+"120 seconds, then ``mango-events-dlq``. These short retries are performed"
+" within notification processing to preserve the order of the call "
 "completion and recording readiness notifications. During this time, the "
 "other notifications wait in the queue."
 
-#: ../../integration/mango/functions.rst:439
+#: ../../integration/mango/functions.rst:442
 msgid ""
 "При первичной публикации уведомления в очередь предусмотрены два повтора "
-"через 500 мс. Если публикация окончательно не удалась, в лог записываются "
-"ошибка ``is LOST`` и исходное уведомление для ручного восстановления."
+"через 500 мс. Если публикация окончательно не удалась, в лог записываются"
+" ошибка ``is LOST`` и исходное уведомление для ручного восстановления."
 msgstr ""
-"When a notification is initially published to the queue, two retries after"
-" 500 ms are provided. If publishing finally fails, the ``is LOST`` error "
-"and the original notification are written to the log for manual recovery."
+"When a notification is initially published to the queue, two retries "
+"after 500 ms are provided. If publishing finally fails, the ``is LOST`` "
+"error and the original notification are written to the log for manual "
+"recovery."
 
-#: ../../integration/mango/functions.rst:443
+#: ../../integration/mango/functions.rst:446
 msgid ""
-"На этом пути есть окно потери: успешный HTTP-ответ вебхука не гарантирует "
-"последующую запись уведомления в RabbitMQ. Автоматического восстановления "
-"таких уведомлений маршрут не выполняет."
+"На этом пути есть окно потери: успешный HTTP-ответ вебхука не гарантирует"
+" последующую запись уведомления в RabbitMQ. Автоматического "
+"восстановления таких уведомлений маршрут не выполняет."
 msgstr ""
 "There is a loss window on this path: a successful webhook HTTP response "
 "does not guarantee that the notification is subsequently written to "
 "RabbitMQ. The route does not automatically recover such notifications."
+
+#~ msgid "**длительность** в целых секундах."
+#~ msgstr "**duration** in whole seconds."
+
