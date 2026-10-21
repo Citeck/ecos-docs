@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-10-19 16:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -147,7 +147,7 @@ msgid "Наименование"
 msgstr "Name"
 
 #: ../../settings_kb/Aspects.rst:58 ../../settings_kb/Aspects.rst:92
-#: ../../settings_kb/Aspects.rst:253
+#: ../../settings_kb/Aspects.rst:253 ../../settings_kb/Aspects.rst:483
 msgid "Описание"
 msgstr "Description"
 
@@ -770,6 +770,222 @@ msgstr ""
 "To enable email processing in the \"Activities\" widget, you need to "
 "specify a mailbox in the :ref:`mail-inbox-activity<mail-inbox-activity>` "
 "setting."
+
+#: ../../settings_kb/Aspects.rst:447
+msgid "Вычисляемые атрибуты в аспекте"
+msgstr "Calculated attributes in an aspect"
+
+#: ../../settings_kb/Aspects.rst:451
+msgid ""
+"Пример показывает, как один раз описать :ref:`вычисляемые "
+"атрибуты<count_attributes>` в аспекте и переиспользовать их в нескольких "
+"типах данных. Скрипт аспекта выполняется в контексте записи того типа, к "
+"которому подключён аспект, и может читать её атрибуты через "
+"``value.load(...)``."
+msgstr ""
+"This example shows how to describe :ref:`calculated "
+"attributes<count_attributes>` in an aspect once and reuse them in several "
+"data types. The aspect script runs in the context of a record of the type"
+" the aspect is attached to, and can read its attributes via "
+"``value.load(...)``."
+
+#: ../../settings_kb/Aspects.rst:453
+msgid "Пример состоит из трёх файлов:"
+msgstr "The example consists of three files:"
+
+#: ../../settings_kb/Aspects.rst:461
+msgid "Файл"
+msgstr "File"
+
+#: ../../settings_kb/Aspects.rst:462
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../settings_kb/Aspects.rst:463
+msgid "``age-test-aspect.yml``"
+msgstr "``age-test-aspect.yml``"
+
+#: ../../settings_kb/Aspects.rst:464
+msgid "аспект **«Вычисление возраста»** с вычисляемыми атрибутами"
+msgstr ""
+"the **«Вычисление возраста»** (\"Age calculation\") aspect with "
+"calculated attributes"
+
+#: ../../settings_kb/Aspects.rst:465
+msgid "``age-example-a-type.yml``"
+msgstr "``age-example-a-type.yml``"
+
+#: ../../settings_kb/Aspects.rst:466
+msgid "тип данных **«Пример возраста — тип A»**, к которому подключён аспект"
+msgstr ""
+"the **«Пример возраста — тип A»** (\"Age example — type A\") data type "
+"to which the aspect is attached"
+
+#: ../../settings_kb/Aspects.rst:467
+msgid "``age-example-b-type.yml``"
+msgstr "``age-example-b-type.yml``"
+
+#: ../../settings_kb/Aspects.rst:468
+msgid ""
+"тип данных **«Пример возраста — тип B»**, к которому подключён тот же "
+"аспект"
+msgstr ""
+"the **«Пример возраста — тип B»** (\"Age example — type B\") data type "
+"to which the same aspect is attached"
+
+#: ../../settings_kb/Aspects.rst:471
+msgid "Аспект"
+msgstr "Aspect"
+
+#: ../../settings_kb/Aspects.rst:473
+msgid ""
+"Аспект ``age-test`` содержит два вычисляемых атрибута типа ``SCRIPT``. "
+"Оба используют ``storingType: ON_MUTATE`` — значение пересчитывается и "
+"сохраняется при каждом изменении записи."
+msgstr ""
+"The ``age-test`` aspect contains two calculated attributes of the "
+"``SCRIPT`` type. Both use ``storingType: ON_MUTATE`` — the value is "
+"recalculated and saved on every record change."
+
+#: ../../settings_kb/Aspects.rst:481
+msgid "Атрибут"
+msgstr "Attribute"
+
+#: ../../settings_kb/Aspects.rst:482
+msgid "Тип"
+msgstr "Type"
+
+#: ../../settings_kb/Aspects.rst:484
+msgid "``constant``"
+msgstr "``constant``"
+
+#: ../../settings_kb/Aspects.rst:485
+msgid "TEXT"
+msgstr "TEXT"
+
+#: ../../settings_kb/Aspects.rst:486
+msgid ""
+"всегда возвращает строку ``\"Любой текст\"``. Служит для проверки, что "
+"вычисляемые атрибуты аспекта работают на типе"
+msgstr ""
+"always returns the string ``\"Любой текст\"`` (\"Any text\"). Used to "
+"check that the aspect's calculated attributes work on the type"
+
+#: ../../settings_kb/Aspects.rst:487
+msgid "``age``"
+msgstr "``age``"
+
+#: ../../settings_kb/Aspects.rst:488
+msgid "NUMBER"
+msgstr "NUMBER"
+
+#: ../../settings_kb/Aspects.rst:489
+msgid ""
+"возраст на дату расчёта, вычисленный по атрибутам записи ``dateBirth`` и "
+"``calculationDate``"
+msgstr ""
+"age as of the calculation date, computed from the record attributes "
+"``dateBirth`` and ``calculationDate``"
+
+#: ../../settings_kb/Aspects.rst:491
+msgid "Алгоритм вычисления атрибута ``age``:"
+msgstr "Algorithm for calculating the ``age`` attribute:"
+
+#: ../../settings_kb/Aspects.rst:493
+msgid ""
+"Прочитать из записи ``dateBirth`` и ``calculationDate`` в строковом виде "
+"(``?str``)."
+msgstr ""
+"Read ``dateBirth`` and ``calculationDate`` from the record as strings "
+"(``?str``)."
+
+#: ../../settings_kb/Aspects.rst:494
+msgid "Если хотя бы одна из дат не заполнена — вернуть ``null``."
+msgstr "If at least one of the dates is empty, return ``null``."
+
+#: ../../settings_kb/Aspects.rst:495
+msgid ""
+"Разобрать обе даты на год, месяц и день (первые 10 символов в формате "
+"``ГГГГ-ММ-ДД``)."
+msgstr ""
+"Parse both dates into year, month, and day (the first 10 characters in "
+"the ``YYYY-MM-DD`` format)."
+
+#: ../../settings_kb/Aspects.rst:496
+msgid "Если дата расчёта раньше даты рождения — вернуть ``null``."
+msgstr "If the calculation date is earlier than the birth date, return ``null``."
+
+#: ../../settings_kb/Aspects.rst:497
+msgid ""
+"Вычесть год рождения из года расчёта. Если в году расчёта день рождения "
+"ещё не наступил — уменьшить результат на 1."
+msgstr ""
+"Subtract the birth year from the calculation year. If the birthday has "
+"not yet occurred in the calculation year, decrease the result by 1."
+
+#: ../../settings_kb/Aspects.rst
+msgid "age-test-aspect.yml"
+msgstr "age-test-aspect.yml"
+
+#: ../../settings_kb/Aspects.rst:554
+msgid "Типы данных"
+msgstr "Data types"
+
+#: ../../settings_kb/Aspects.rst:556
+msgid ""
+"Оба типа наследуются от ``emodel/type@user-base``, хранятся в "
+"``ECOS_MODEL`` и подключают аспект через ``aspects: - ref: emodel/aspect"
+"@age-test``. Набор собственных атрибутов у типов одинаковый: ``name``, "
+"``dateBirth``, ``calculationDate``. Типы различаются только "
+"идентификатором и названием."
+msgstr ""
+"Both types inherit from ``emodel/type@user-base``, are stored in "
+"``ECOS_MODEL``, and attach the aspect via ``aspects: - ref: "
+"emodel/aspect@age-test``. The types have the same set of own attributes: "
+"``name``, ``dateBirth``, ``calculationDate``. The types differ only in "
+"their identifier and name."
+
+#: ../../settings_kb/Aspects.rst
+msgid "Тип A"
+msgstr "Type A"
+
+#: ../../settings_kb/Aspects.rst
+msgid "Тип B"
+msgstr "Type B"
+
+#: ../../settings_kb/Aspects.rst:622
+msgid ""
+"В результате у записей обоих типов автоматически появляются атрибуты "
+"аспекта, которые вычисляются по данным самой записи. Префикс в аспекте не"
+" задан, поэтому он равен идентификатору, и атрибуты доступны как ``age-"
+"test:constant`` и ``age-test:age``."
+msgstr ""
+"As a result, records of both types automatically get the aspect "
+"attributes, which are calculated from the record's own data. No prefix is"
+" set in the aspect, so it equals the identifier, and the attributes are "
+"available as ``age-test:constant`` and ``age-test:age``."
+
+#: ../../settings_kb/Aspects.rst:626
+msgid ""
+"Аспект не объявляет атрибуты ``dateBirth`` и ``calculationDate`` — он "
+"рассчитывает на то, что они есть в типе данных. Если подключить аспект к "
+"типу без этих атрибутов, ``age`` всегда будет ``null``, ошибки при этом "
+"не возникнет."
+msgstr ""
+"The aspect does not declare the ``dateBirth`` and ``calculationDate`` "
+"attributes — it relies on them being present in the data type. If the "
+"aspect is attached to a type without these attributes, ``age`` will "
+"always be ``null``, and no error will occur."
+
+#: ../../settings_kb/Aspects.rst:628
+msgid ""
+"Чтобы сделать аспект самодостаточным, ``dateBirth`` и ``calculationDate``"
+" можно перенести в ``attributes`` самого аспекта — тогда в типах их "
+"объявлять не нужно."
+msgstr ""
+"To make the aspect self-contained, ``dateBirth`` and ``calculationDate`` "
+"can be moved to the aspect's own ``attributes`` — then they do not need "
+"to be declared in the types."
 
 #~ msgid "Аспект  расширяет функционал типа данных без изменения самого типа."
 #~ msgstr ""

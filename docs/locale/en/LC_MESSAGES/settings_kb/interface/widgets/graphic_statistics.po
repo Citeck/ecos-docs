@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-15 13:51+0300\n"
+"POT-Creation-Date: 2026-10-19 16:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -363,8 +363,8 @@ msgid ""
 "колонке с суммой договора или с расходом."
 msgstr ""
 "**Aggregation is not only a count.** The aggregation attribute can be the"
-" sum of a numeric field, not just the number of records: for example, "
-"the sum of a contract amount or expense column."
+" sum of a numeric field, not just the number of records: for example, the"
+" sum of a contract amount or expense column."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:241
 msgid ""
@@ -410,8 +410,8 @@ msgid ""
 "Виджет описывается элементом с именем ``charts``; в ``props.config`` "
 "задаются:"
 msgstr ""
-"The widget is described by an element named ``charts``; the following "
-"are specified in ``props.config``:"
+"The widget is described by an element named ``charts``; the following are"
+" specified in ``props.config``:"
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:257
 msgid "Свойство"
@@ -467,7 +467,9 @@ msgstr "``aggregationParam``"
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:268
 msgid "Выражение агрегации, например ``count(*)`` или сумма числового поля"
-msgstr "The aggregation expression, for example ``count(*)`` or the sum of a numeric field"
+msgstr ""
+"The aggregation expression, for example ``count(*)`` or the sum of a "
+"numeric field"
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:269
 msgid "``selectedPreset``"
@@ -484,8 +486,8 @@ msgid ""
 "заголовок есть, графика нет, сообщения об ошибке тоже."
 msgstr ""
 "The chart type identifier must exactly match one of the four values "
-"above. With any other value, the widget is displayed empty — the title "
-"is shown, but there is no chart and no error message."
+"above. With any other value, the widget is displayed empty — the title is"
+" shown, but there is no chart and no error message."
 
 #: ../../settings_kb/interface/widgets/graphic_statistics.rst:278
 msgid ""
@@ -497,4 +499,108 @@ msgstr ""
 "record is created via the API, the platform assigns the identifier, and "
 "trying to specify your own results in a ``Dashboard with id … is not "
 "found`` error."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:282
+msgid "Настройка графиков через AI-ассистента"
+msgstr "Configuring charts via the AI assistant"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:284
+msgid ""
+"Если пользователь явно просит дашборд с графиками, AI-ассистент добавляет"
+" на него один или несколько виджетов «Графическая статистика». Для "
+"каждого графика ассистент задаёт заголовок, вид графика, группировку и "
+"агрегат. Примеры запросов:"
+msgstr ""
+"If the user explicitly asks for a dashboard with charts, the AI assistant"
+" adds one or more \"Graphic Statistics\" widgets to it. For each chart, "
+"the assistant sets the title, chart type, grouping, and aggregate. "
+"Example requests:"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:286
+msgid ""
+"«Сделай дашборд для типа Сделка с графиком количества записей по "
+"статусам»."
+msgstr ""
+"\"Create a dashboard for the Deal type with a chart of the number of "
+"records by status\"."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:287
+msgid ""
+"«Добавь на дашборд линейный график суммы договоров по месяцам даты "
+"заключения»."
+msgstr ""
+"\"Add a line chart of the contract amount by month of the signing date "
+"to the dashboard\"."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:288
+msgid ""
+"«На одной вкладке покажи два графика: количество по статусам и сумму по "
+"ответственным»."
+msgstr ""
+"\"Show two charts on one tab: the count by status and the amount by "
+"responsible person\"."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:290
+msgid "Ассистент соблюдает следующие правила:"
+msgstr "The assistant follows these rules:"
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:292
+msgid ""
+"Вид графика — одно из четырёх значений ``graphicTypeId``, перечисленных "
+"выше: столбчатый, круговой, линейный или воронка."
+msgstr ""
+"The chart type is one of the four ``graphicTypeId`` values listed above:"
+" bar, pie, line, or funnel."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:293
+msgid ""
+"Агрегат — количество записей, сумма или среднее. Для количества числовое "
+"поле не требуется, а сумма и среднее строятся только по числовому "
+"атрибуту."
+msgstr ""
+"The aggregate is the number of records, the sum, or the average. The "
+"count does not require a numeric field, while the sum and average are "
+"calculated only for a numeric attribute."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:294
+msgid ""
+"Группировка по часу, дню, неделе, месяцу, кварталу или году допускается "
+"только для атрибута с датой. Для такой группировки можно дополнительно "
+"ограничить диапазон дат."
+msgstr ""
+"Grouping by hour, day, week, month, quarter, or year is allowed only for "
+"a date attribute. For such grouping, the date range can additionally be "
+"limited."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:295
+msgid ""
+"Ссылки на тип данных (``typeRef``) и журнал (``journalId``) ассистент не "
+"указывает: их подставляет сам AI-сервис при сборке артефакта."
+msgstr ""
+"The assistant does not specify references to the data type (``typeRef``)"
+" and the journal (``journalId``): the AI service itself fills them in "
+"when building the artifact."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:297
+msgid ""
+"Если в графике указан несуществующий атрибут или атрибут неподходящего "
+"типа, такая конфигурация отклоняется до развёртывания дашборда."
+msgstr ""
+"If a chart specifies a nonexistent attribute or an attribute of an "
+"unsuitable type, the configuration is rejected before the dashboard is "
+"deployed."
+
+#: ../../settings_kb/interface/widgets/graphic_statistics.rst:299
+msgid ""
+"Когда ассистент добавляет график на существующий дашборд, остальные "
+"графики сохраняются вместе со своими настройками, включая выбранный "
+"шаблон журнала. Перед публикацией ассистент показывает карточку "
+"подтверждения, в которой для каждого графика указаны вид, агрегат и "
+"группировка; публикацию можно отменить."
+msgstr ""
+"When the assistant adds a chart to an existing dashboard, the other "
+"charts are kept along with their settings, including the selected journal"
+" template. Before publishing, the assistant shows a confirmation card "
+"listing the type, aggregate, and grouping for each chart; publishing can "
+"be canceled."
 
