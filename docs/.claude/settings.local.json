@@ -59,7 +59,11 @@
       "Bash(sed -i 's/`see <Типы без дополнительных параметров_>`__/`see <Types without additional parameters_>`__/g' __TRACKED_VAR__/tr.json)",
       "Bash(python __TRACKED_VAR__/apply.py __TRACKED_VAR__/tr.json)",
       "Bash(grep -v '^[-+]\"[^\"]*\"$')",
-      "Bash(PYTHONIOENCODING=utf-8 python -I \"C:/Users/kseni/AppData/Local/Temp/claude/d--GitLab-ecos-docs-docs/401e3f17-ec49-4e17-9b5b-f81778174cb6/scratchpad/fill_types.py\" locale/en/LC_MESSAGES/settings_kb/ui_actions/types.po)"
+      "Bash(PYTHONIOENCODING=utf-8 python -I \"C:/Users/kseni/AppData/Local/Temp/claude/d--GitLab-ecos-docs-docs/401e3f17-ec49-4e17-9b5b-f81778174cb6/scratchpad/fill_types.py\" locale/en/LC_MESSAGES/settings_kb/ui_actions/types.po)",
+      "PowerShell(python -c \"import babel.messages.pofile as p; c=p.read_po\\(open\\(r'locale\\\\en\\\\LC_MESSAGES\\\\admin\\\\authorities\\\\sync_authorities.po',encoding='utf-8'\\)\\); print\\(len\\([m for m in c if m.id and not m.string]\\), len\\([m for m in c if m.fuzzy and m.id]\\)\\)\")",
+      "PowerShell(python -c \"import babel.messages.pofile as p; c=p.read_po\\(open\\(r'locale\\\\en\\\\LC_MESSAGES\\\\settings_kb\\\\interface\\\\journals\\\\views\\\\document_library.po',encoding='utf-8'\\)\\); print\\(len\\([m for m in c if m.id and not m.string]\\), len\\([m for m in c if m.fuzzy and m.id]\\)\\)\")",
+      "PowerShell(python -c \"import babel, sys; print\\(babel.__version__, sys.version\\)\")",
+      "PowerShell($bak = \"C:\\\\Users\\\\kseni\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--GitLab-ecos-docs-docs\\\\263c6d57-85cd-4cb8-8b3b-aa975a57cc25\\\\scratchpad\\\\kubernetes.po.bak\"; git diff --no-index -U0 $bak \"locale\\\\en\\\\LC_MESSAGES\\\\admin\\\\launch_setup\\\\kubernetes.po\" | Select-String -Pattern '^-[^-]' | Where-Object { $_.Line -notmatch '^-msgstr \"\"$' -and $_.Line -notmatch '^-#, fuzzy$' })"
     ]
   }
 }

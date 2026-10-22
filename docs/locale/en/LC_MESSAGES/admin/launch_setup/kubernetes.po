@@ -5,42 +5,46 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Citeck\n"
+"Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"POT-Creation-Date: 2026-10-22 10:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: en <LL@li.org>\n"
 "Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../admin/launch_setup/kubernetes.rst:4
 msgid "Kubernetes"
 msgstr "Kubernetes"
 
-#: ../../admin/launch_setup/kubernetes.rst:6
+#: ../../admin/launch_setup/kubernetes.rst:8
+msgid "Доступно только в Enterprise версии."
+msgstr "Available only in the Enterprise version."
+
+#: ../../admin/launch_setup/kubernetes.rst:10
 msgid ""
 "Раздел описывает развёртывание платформы Citeck в среде Kubernetes: "
-"управление ресурсами подов и контейнеров, настройку Helm chart, а также "
-"генерацию ключей шифрования."
+"управление ресурсами подов и контейнеров, настройку Helm chart, остановку"
+" и запуск системы, а также ключ шифрования секретов."
 msgstr ""
 "This section describes deploying the Citeck platform in a Kubernetes "
 "environment: managing pod and container resources, configuring the Helm "
-"chart, and generating encryption keys."
+"chart, stopping and starting the system, and the secret encryption key."
 
-#: ../../admin/launch_setup/kubernetes.rst:8
+#: ../../admin/launch_setup/kubernetes.rst:12
 msgid "Содержание"
 msgstr "Contents"
 
-#: ../../admin/launch_setup/kubernetes.rst:13
+#: ../../admin/launch_setup/kubernetes.rst:17
 msgid "Менеджмент ресурсов подов и контейнеров"
 msgstr "Pod and Container Resource Management"
 
-#: ../../admin/launch_setup/kubernetes.rst:15
+#: ../../admin/launch_setup/kubernetes.rst:19
 msgid ""
 "Ниже описаны минимальные требования к ресурсам MEM/CPU для стабильной "
 "работы микросервисов в сочетании с XMX/XMS параметрами java. На данной "
@@ -52,7 +56,7 @@ msgstr ""
 "configuration was load tested with **1000** concurrent users for **1** "
 "hour."
 
-#: ../../admin/launch_setup/kubernetes.rst:20
+#: ../../admin/launch_setup/kubernetes.rst:24
 msgid ""
 "Расчёт worker-нод кластера на основе этих значений — :ref:`Сайзинг в "
 "Kubernetes <sizing_k8s>`."
@@ -60,23 +64,23 @@ msgstr ""
 "Calculation of the cluster worker nodes based on these values — "
 ":ref:`Kubernetes Sizing <sizing_k8s>`."
 
-#: ../../admin/launch_setup/kubernetes.rst:22
+#: ../../admin/launch_setup/kubernetes.rst:26
 msgid "Состав сценария и распределение нагрузки:"
 msgstr "Scenario composition and load distribution:"
 
-#: ../../admin/launch_setup/kubernetes.rst:24
+#: ../../admin/launch_setup/kubernetes.rst:28
 msgid ""
 "логин в систему и просмотр главной страницы с загрузкой меню, дашборда, "
 "информации о пользователе (20%);"
 msgstr ""
-"system login and viewing the main page with loading menu, dashboard, user "
-"information (20%);"
+"system login and viewing the main page with loading menu, dashboard, user"
+" information (20%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:25
+#: ../../admin/launch_setup/kubernetes.rst:29
 msgid "просмотр журнала контрактов (30%);"
 msgstr "viewing the contracts journal (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:26
+#: ../../admin/launch_setup/kubernetes.rst:30
 msgid ""
 "переход на страницу просмотра контракта с загрузкой всех виджетов: "
 "информация о контракте, действия, задачи, комментарии, связи, история "
@@ -86,23 +90,23 @@ msgstr ""
 "information, actions, tasks, comments, relationships, version history, "
 "etc. (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:27
+#: ../../admin/launch_setup/kubernetes.rst:31
 msgid "просмотр журнала активных задач  (30%);"
 msgstr "viewing the active tasks journal (30%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:28
+#: ../../admin/launch_setup/kubernetes.rst:32
 msgid "создание документов (20%);"
 msgstr "creating documents (20%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:29
+#: ../../admin/launch_setup/kubernetes.rst:33
 msgid "старт процессов по документам (10%);"
 msgstr "starting processes for documents (10%);"
 
-#: ../../admin/launch_setup/kubernetes.rst:30
+#: ../../admin/launch_setup/kubernetes.rst:34
 msgid "выполнение задач по процессу (50%)."
 msgstr "executing process tasks (50%)."
 
-#: ../../admin/launch_setup/kubernetes.rst:32
+#: ../../admin/launch_setup/kubernetes.rst:36
 msgid ""
 "В ходе нагрузки было сгенерировано **2 043 398 запросов**, из них 1 "
 "запроса (0.00 %) завершилось с ошибками или превысило лимит времени "
@@ -111,157 +115,153 @@ msgstr ""
 "During the load test, **2,043,398 requests** were generated, of which 1 "
 "request (0.00%) ended with errors or exceeded the execution time limit."
 
-#: ../../admin/launch_setup/kubernetes.rst:39
+#: ../../admin/launch_setup/kubernetes.rst:43
 msgid "Метрика"
 msgstr "Metric"
 
-#: ../../admin/launch_setup/kubernetes.rst:40
+#: ../../admin/launch_setup/kubernetes.rst:44
 msgid "Значение"
 msgstr "Value"
 
-#: ../../admin/launch_setup/kubernetes.rst:41
+#: ../../admin/launch_setup/kubernetes.rst:45
 msgid "Среднее время отклика"
 msgstr "Average response time"
 
-#: ../../admin/launch_setup/kubernetes.rst:42
+#: ../../admin/launch_setup/kubernetes.rst:46
 msgid "6.88 мс"
 msgstr "6.88 ms"
 
-#: ../../admin/launch_setup/kubernetes.rst:43
+#: ../../admin/launch_setup/kubernetes.rst:47
 msgid "Медиана"
 msgstr "Median"
 
-#: ../../admin/launch_setup/kubernetes.rst:44
+#: ../../admin/launch_setup/kubernetes.rst:48
 msgid "6 мс"
 msgstr "6 ms"
 
-#: ../../admin/launch_setup/kubernetes.rst:45
+#: ../../admin/launch_setup/kubernetes.rst:49
 msgid "90% запросов"
 msgstr "90% of requests"
 
-#: ../../admin/launch_setup/kubernetes.rst:46
+#: ../../admin/launch_setup/kubernetes.rst:50
 msgid "< 16 мс"
 msgstr "< 16 ms"
 
-#: ../../admin/launch_setup/kubernetes.rst:47
+#: ../../admin/launch_setup/kubernetes.rst:51
 msgid "95% запросов"
 msgstr "95% of requests"
 
-#: ../../admin/launch_setup/kubernetes.rst:48
+#: ../../admin/launch_setup/kubernetes.rst:52
 msgid "< 25 мс"
 msgstr "< 25 ms"
 
-#: ../../admin/launch_setup/kubernetes.rst:49
+#: ../../admin/launch_setup/kubernetes.rst:53
 msgid "99% запросов"
 msgstr "99% of requests"
 
-#: ../../admin/launch_setup/kubernetes.rst:50
+#: ../../admin/launch_setup/kubernetes.rst:54
 msgid "< 47 мс"
 msgstr "< 47 ms"
 
-#: ../../admin/launch_setup/kubernetes.rst:54
+#: ../../admin/launch_setup/kubernetes.rst:58
 msgid "Ecos Registry"
 msgstr "Ecos Registry"
 
-#: ../../admin/launch_setup/kubernetes.rst:70
+#: ../../admin/launch_setup/kubernetes.rst:74
 msgid "Ecos Model"
 msgstr "Ecos Model"
 
-#: ../../admin/launch_setup/kubernetes.rst:86
+#: ../../admin/launch_setup/kubernetes.rst:90
 msgid "Ecos Gateway"
 msgstr "Ecos Gateway"
 
-#: ../../admin/launch_setup/kubernetes.rst:102
+#: ../../admin/launch_setup/kubernetes.rst:106
 msgid "Ecos Apps"
 msgstr "Ecos Apps"
 
-#: ../../admin/launch_setup/kubernetes.rst:118
+#: ../../admin/launch_setup/kubernetes.rst:122
 msgid "Ecos Process"
 msgstr "Ecos Process"
 
-#: ../../admin/launch_setup/kubernetes.rst:134
+#: ../../admin/launch_setup/kubernetes.rst:138
 msgid "Ecos Uiserv"
 msgstr "Ecos Uiserv"
 
-#: ../../admin/launch_setup/kubernetes.rst:150
+#: ../../admin/launch_setup/kubernetes.rst:154
 msgid "Ecos History"
 msgstr "Ecos History"
 
-#: ../../admin/launch_setup/kubernetes.rst:166
+#: ../../admin/launch_setup/kubernetes.rst:170
 msgid "Ecos Integrations"
 msgstr "Ecos Integrations"
 
-#: ../../admin/launch_setup/kubernetes.rst:182
+#: ../../admin/launch_setup/kubernetes.rst:186
 msgid "Ecos Notifications"
 msgstr "Ecos Notifications"
 
-#: ../../admin/launch_setup/kubernetes.rst:198
+#: ../../admin/launch_setup/kubernetes.rst:202
 msgid "Ecos Transformations"
 msgstr "Ecos Transformations"
 
-#: ../../admin/launch_setup/kubernetes.rst:214
+#: ../../admin/launch_setup/kubernetes.rst:218
 msgid "Ecos Ecom"
 msgstr "Ecos Ecom"
 
-#: ../../admin/launch_setup/kubernetes.rst:230
+#: ../../admin/launch_setup/kubernetes.rst:234
 msgid "Ecos Service Desk"
 msgstr "Ecos Service Desk"
 
-#: ../../admin/launch_setup/kubernetes.rst:246
+#: ../../admin/launch_setup/kubernetes.rst:250
 msgid "Ecos Edi"
 msgstr "Ecos Edi"
 
-#: ../../admin/launch_setup/kubernetes.rst:262
+#: ../../admin/launch_setup/kubernetes.rst:266
 msgid "Ecos Content"
 msgstr "Ecos Content"
 
-#: ../../admin/launch_setup/kubernetes.rst:278
+#: ../../admin/launch_setup/kubernetes.rst:282
 msgid "Ecos Proxy"
 msgstr "Ecos Proxy"
 
-#: ../../admin/launch_setup/kubernetes.rst:292
+#: ../../admin/launch_setup/kubernetes.rst:296
 msgid "Microservices Posgtresql"
 msgstr "Microservices PostgreSQL"
 
-#: ../../admin/launch_setup/kubernetes.rst:306
+#: ../../admin/launch_setup/kubernetes.rst:310
 msgid "Mongo DB"
 msgstr "MongoDB"
 
-#: ../../admin/launch_setup/kubernetes.rst:320
+#: ../../admin/launch_setup/kubernetes.rst:324
 msgid "Zookeeper"
 msgstr "Zookeeper"
 
-#: ../../admin/launch_setup/kubernetes.rst:334
+#: ../../admin/launch_setup/kubernetes.rst:338
 msgid "RabbitMQ"
 msgstr "RabbitMQ"
 
-#: ../../admin/launch_setup/kubernetes.rst:348
+#: ../../admin/launch_setup/kubernetes.rst:352
 msgid "Ecos Indentity"
 msgstr "Ecos Identity"
 
-#: ../../admin/launch_setup/kubernetes.rst:362
+#: ../../admin/launch_setup/kubernetes.rst:366
 msgid "Onlyoffice"
 msgstr "OnlyOffice"
 
-#: ../../admin/launch_setup/kubernetes.rst:378
+#: ../../admin/launch_setup/kubernetes.rst:382
 msgid "Параметры конфигурации Helm chart"
 msgstr "Helm Chart Configuration Parameters"
-
-#: ../../admin/launch_setup/kubernetes.rst:382
-msgid "Доступно только в Enterprise версии."
-msgstr "Available only in the Enterprise version."
 
 #: ../../admin/launch_setup/kubernetes.rst:384
 msgid ""
 "Раздел описывает параметры Helm chart, используемые для тонкой настройки "
-"развёртывания платформы Citeck в Kubernetes-кластере. Параметры позволяют "
-"управлять ресурсами, репликами, переменными окружения и другими "
+"развёртывания платформы Citeck в Kubernetes-кластере. Параметры позволяют"
+" управлять ресурсами, репликами, переменными окружения и другими "
 "характеристиками микросервисов."
 msgstr ""
-"This section describes the Helm chart parameters used for fine-tuning the "
-"deployment of the Citeck platform in a Kubernetes cluster. The parameters "
-"allow you to manage resources, replicas, environment variables, and other "
-"microservice characteristics."
+"This section describes the Helm chart parameters used for fine-tuning the"
+" deployment of the Citeck platform in a Kubernetes cluster. The "
+"parameters allow you to manage resources, replicas, environment "
+"variables, and other microservice characteristics."
 
 #: ../../admin/launch_setup/kubernetes.rst:387
 msgid ""
@@ -296,6 +296,7 @@ msgstr "General Parameters"
 #: ../../admin/launch_setup/kubernetes.rst:521
 #: ../../admin/launch_setup/kubernetes.rst:548
 #: ../../admin/launch_setup/kubernetes.rst:563
+#: ../../admin/launch_setup/kubernetes.rst:1179
 msgid "Параметр"
 msgstr "Parameter"
 
@@ -308,6 +309,7 @@ msgstr "Parameter"
 #: ../../admin/launch_setup/kubernetes.rst:522
 #: ../../admin/launch_setup/kubernetes.rst:549
 #: ../../admin/launch_setup/kubernetes.rst:564
+#: ../../admin/launch_setup/kubernetes.rst:1180
 msgid "Описание"
 msgstr "Description"
 
@@ -449,8 +451,8 @@ msgstr "``.Values.<mSRV>.vault.*``"
 
 #: ../../admin/launch_setup/kubernetes.rst:471
 msgid ""
-"Переменные окружения и пароли для сервисов (MongoDB, PostgreSQL, Keycloak "
-"и др.)"
+"Переменные окружения и пароли для сервисов (MongoDB, PostgreSQL, Keycloak"
+" и др.)"
 msgstr ""
 "Environment variables and passwords for services (MongoDB, PostgreSQL, "
 "Keycloak, etc.)"
@@ -654,16 +656,15 @@ msgid ""
 "остаётся на Bitnami."
 msgstr ""
 "Starting with version **1.3.108**, the chart supports two ZooKeeper "
-"images: Bitnami and the official Apache one. The default has not changed —"
-" without the new flags, it stays on Bitnami."
+"images: Bitnami and the official Apache one. The default has not changed "
+"— without the new flags, it stays on Bitnami."
 
 #: ../../admin/launch_setup/kubernetes.rst:578
 msgid "Режимы"
 msgstr "Modes"
 
 #: ../../admin/launch_setup/kubernetes.rst:580
-msgid ""
-"``ZookeeperApp.legacyStartCmd.enabled`` выбирает layout и команду старта."
+msgid "``ZookeeperApp.legacyStartCmd.enabled`` выбирает layout и команду старта."
 msgstr ""
 "``ZookeeperApp.legacyStartCmd.enabled`` selects the layout and the start "
 "command."
@@ -762,8 +763,8 @@ msgid ""
 "``/data`` и ``/docker-entrypoint.sh``, переход с Bitnami на official — "
 "возможен."
 msgstr ""
-"Do not switch ``legacyStartCmd`` without the matching image: Bitnami does "
-"not understand ``/data`` and ``/docker-entrypoint.sh``; migrating from "
+"Do not switch ``legacyStartCmd`` without the matching image: Bitnami does"
+" not understand ``/data`` and ``/docker-entrypoint.sh``; migrating from "
 "Bitnami to official is possible."
 
 #: ../../admin/launch_setup/kubernetes.rst:612
@@ -779,8 +780,8 @@ msgid ""
 "Остаётесь на Bitnami, нужен только более новый тег (3.6 / 3.8 → 3.9.3). "
 "Флаг не выключать, migrate не нужен."
 msgstr ""
-"You stay on Bitnami and only need a newer tag (3.6 / 3.8 → 3.9.3). Do not "
-"turn the flag off; migration is not needed."
+"You stay on Bitnami and only need a newer tag (3.6 / 3.8 → 3.9.3). Do not"
+" turn the flag off; migration is not needed."
 
 #: ../../admin/launch_setup/kubernetes.rst:635
 msgid ""
@@ -792,11 +793,11 @@ msgstr ""
 
 #: ../../admin/launch_setup/kubernetes.rst:637
 msgid ""
-"Дальше 3.9.3 на Bitnami не поднимать: у 3.9.4+ другой entrypoint, чарт под"
-" него не заточен. Если нужна 3.9.4+ — official."
+"Дальше 3.9.3 на Bitnami не поднимать: у 3.9.4+ другой entrypoint, чарт "
+"под него не заточен. Если нужна 3.9.4+ — official."
 msgstr ""
-"Do not go beyond 3.9.3 on Bitnami: 3.9.4+ has a different entrypoint that "
-"the chart is not designed for. If you need 3.9.4+, use official."
+"Do not go beyond 3.9.3 on Bitnami: 3.9.4+ has a different entrypoint that"
+" the chart is not designed for. If you need 3.9.4+, use official."
 
 #: ../../admin/launch_setup/kubernetes.rst:640
 msgid "Переход Bitnami → official (тот же PVC)"
@@ -807,21 +808,20 @@ msgid ""
 "Данные на диске не копируются и не удаляются. Меняется только путь, по "
 "которому контейнер видит том, и init один раз поправляет вложенную папку."
 msgstr ""
-"Data on the disk is neither copied nor deleted. Only the path at which the"
-" container sees the volume changes, and the init container fixes the "
+"Data on the disk is neither copied nor deleted. Only the path at which "
+"the container sees the volume changes, and the init container fixes the "
 "nested folder once."
 
 #: ../../admin/launch_setup/kubernetes.rst:644
-msgid ""
-"На Bitnami PVC смонтирован как ``/bitnami/zookeeper``. Файлы лежат так:"
+msgid "На Bitnami PVC смонтирован как ``/bitnami/zookeeper``. Файлы лежат так:"
 msgstr ""
 "On Bitnami, the PVC is mounted as ``/bitnami/zookeeper``. The files are "
 "laid out as follows:"
 
 #: ../../admin/launch_setup/kubernetes.rst:651
 msgid ""
-"На official тот же PVC монтируется как ``/data``. Содержимое диска то же, "
-"точка монтирования другая, поэтому те же файлы видны глубже:"
+"На official тот же PVC монтируется как ``/data``. Содержимое диска то же,"
+" точка монтирования другая, поэтому те же файлы видны глубже:"
 msgstr ""
 "On official, the same PVC is mounted as ``/data``. The disk contents are "
 "the same, but the mount point is different, so the same files appear one "
@@ -829,8 +829,8 @@ msgstr ""
 
 #: ../../admin/launch_setup/kubernetes.rst:658
 msgid ""
-"Official ищет ``/data/myid``, не ``/data/data/myid``. Init ``init-migrate-"
-"from-bitnami`` (busybox) поднимает содержимое на уровень выше:"
+"Official ищет ``/data/myid``, не ``/data/data/myid``. Init ``init-"
+"migrate-from-bitnami`` (busybox) поднимает содержимое на уровень выше:"
 msgstr ""
 "Official looks for ``/data/myid``, not ``/data/data/myid``. The ``init-"
 "migrate-from-bitnami`` init container (busybox) moves the contents one "
@@ -843,16 +843,16 @@ msgstr "How the init container works:"
 #: ../../admin/launch_setup/kubernetes.rst:668
 msgid "Есть ``/data/myid`` — том уже в формате official, файлы не трогает."
 msgstr ""
-"``/data/myid`` exists — the volume is already in the official format; the "
-"files are left untouched."
+"``/data/myid`` exists — the volume is already in the official format; the"
+" files are left untouched."
 
 #: ../../admin/launch_setup/kubernetes.rst:669
 msgid ""
 "Есть ``/data/data/myid`` — переносит всё из ``data/`` в ``/data``, пишет "
 "маркер ``.migrated-from-bitnami``."
 msgstr ""
-"``/data/data/myid`` exists — moves everything from ``data/`` to ``/data`` "
-"and writes the ``.migrated-from-bitnami`` marker."
+"``/data/data/myid`` exists — moves everything from ``data/`` to ``/data``"
+" and writes the ``.migrated-from-bitnami`` marker."
 
 #: ../../admin/launch_setup/kubernetes.rst:670
 msgid "Нет ни того ни другого — пустой том, ZK сам создаст ``myid``."
@@ -865,13 +865,13 @@ msgid ""
 "писать в том."
 msgstr ""
 "In all cases, ``chown`` to ``runAsUser:fsGroup`` (``1000:1000`` for "
-"official). If the Bitnami UID ``1001`` is kept, official will not be able "
-"to write to the volume."
+"official). If the Bitnami UID ``1001`` is kept, official will not be able"
+" to write to the volume."
 
 #: ../../admin/launch_setup/kubernetes.rst:693
 msgid ""
-"После этого шага ``legacyStartCmd: true`` обратно не включать: пути уже не"
-" Bitnami, под не будет стартовать."
+"После этого шага ``legacyStartCmd: true`` обратно не включать: пути уже "
+"не Bitnami, под не будет стартовать."
 msgstr ""
 "After this step, do not turn ``legacyStartCmd: true`` back on: the paths "
 "are no longer Bitnami paths, and the pod will not start."
@@ -910,13 +910,13 @@ msgstr "Memory"
 
 #: ../../admin/launch_setup/kubernetes.rst:710
 msgid ""
-"В поде два разных лимита: Kubernetes (``resources.limits.memory``) и JVM-"
-"куча (heap). Если Java просит больше, чем даёт kube, под убивают с "
+"В поде два разных лимита: Kubernetes (``resources.limits.memory``) и "
+"JVM-куча (heap). Если Java просит больше, чем даёт kube, под убивают с "
 "``OOMKilled``."
 msgstr ""
 "A pod has two different limits: the Kubernetes one "
-"(``resources.limits.memory``) and the JVM heap. If Java requests more than"
-" Kubernetes allows, the pod is killed with ``OOMKilled``."
+"(``resources.limits.memory``) and the JVM heap. If Java requests more "
+"than Kubernetes allows, the pod is killed with ``OOMKilled``."
 
 #: ../../admin/launch_setup/kubernetes.rst:712
 msgid ""
@@ -938,15 +938,15 @@ msgstr ""
 msgid ""
 "Official переменную ``ZOO_HEAP_SIZE`` игнорирует. Без ``JVMFLAGS`` JVM "
 "сама выбирает JVM-кучу (часто от размера контейнера). Чарт пишет "
-"``JVMFLAGS``, только если задать ``environments.jvmFlags``. Если official "
-"начнёт упираться в память (OOM или тяжёлые пробы), поднять limit и явно "
+"``JVMFLAGS``, только если задать ``environments.jvmFlags``. Если official"
+" начнёт упираться в память (OOM или тяжёлые пробы), поднять limit и явно "
 "ограничить кучу:"
 msgstr ""
-"Official ignores the ``ZOO_HEAP_SIZE`` variable. Without ``JVMFLAGS``, the"
-" JVM chooses the heap size itself (often based on the container size). The"
-" chart writes ``JVMFLAGS`` only if ``environments.jvmFlags`` is set. If "
-"official starts running into memory limits (OOM or slow probes), raise the"
-" limit and cap the heap explicitly:"
+"Official ignores the ``ZOO_HEAP_SIZE`` variable. Without ``JVMFLAGS``, "
+"the JVM chooses the heap size itself (often based on the container size)."
+" The chart writes ``JVMFLAGS`` only if ``environments.jvmFlags`` is set. "
+"If official starts running into memory limits (OOM or slow probes), raise"
+" the limit and cap the heap explicitly:"
 
 #: ../../admin/launch_setup/kubernetes.rst:742
 msgid ""
@@ -963,8 +963,9 @@ msgid ""
 "Итого: выставлять ``heapSize`` на official можно, но без смысла. Это не "
 "ошибка чарта и не поломка — просто мёртвая env."
 msgstr ""
-"In short: you can set ``heapSize`` on official, but it has no effect. This"
-" is neither a chart bug nor a malfunction — just an unused env variable."
+"In short: you can set ``heapSize`` on official, but it has no effect. "
+"This is neither a chart bug nor a malfunction — just an unused env "
+"variable."
 
 #: ../../admin/launch_setup/kubernetes.rst:747
 msgid "Проверка после деплоя"
@@ -973,20 +974,20 @@ msgstr "Post-deployment check"
 #: ../../admin/launch_setup/kubernetes.rst:756
 msgid ""
 "Под должен быть ``1/1 Running``, в логах ZK — bind на 2181 и чтение "
-"snapshot, ``/ecos`` — прежний набор каталогов. Лог init-контейнера покажет"
-" один из трёх исходов: ``flatten bitnami data/ -> /data`` (первый "
-"переход), ``already official layout`` (повторный старт после миграции) или"
-" ``empty volume, nothing to migrate`` (пустой PVC). На томе после миграции"
-" (``ls -la /data``) должны быть ``myid`` и ``version-2``, без вложенного "
-"``/data/data/myid``."
+"snapshot, ``/ecos`` — прежний набор каталогов. Лог init-контейнера "
+"покажет один из трёх исходов: ``flatten bitnami data/ -> /data`` (первый "
+"переход), ``already official layout`` (повторный старт после миграции) "
+"или ``empty volume, nothing to migrate`` (пустой PVC). На томе после "
+"миграции (``ls -la /data``) должны быть ``myid`` и ``version-2``, без "
+"вложенного ``/data/data/myid``."
 msgstr ""
-"The pod must be ``1/1 Running``; the ZK logs must show binding to 2181 and"
-" reading the snapshot; ``/ecos`` must contain the same set of nodes as "
-"before. The init container log shows one of three outcomes: ``flatten "
+"The pod must be ``1/1 Running``; the ZK logs must show binding to 2181 "
+"and reading the snapshot; ``/ecos`` must contain the same set of nodes as"
+" before. The init container log shows one of three outcomes: ``flatten "
 "bitnami data/ -> /data`` (first migration), ``already official layout`` "
-"(restart after migration), or ``empty volume, nothing to migrate`` (empty "
-"PVC). After migration, the volume (``ls -la /data``) must contain ``myid``"
-" and ``version-2``, without a nested ``/data/data/myid``."
+"(restart after migration), or ``empty volume, nothing to migrate`` (empty"
+" PVC). After migration, the volume (``ls -la /data``) must contain "
+"``myid`` and ``version-2``, without a nested ``/data/data/myid``."
 
 #: ../../admin/launch_setup/kubernetes.rst:758
 msgid "Чего не делать:"
@@ -1000,43 +1001,1291 @@ msgstr "Do not set an official tag with ``legacyStartCmd: true``."
 msgid "Не возвращать Bitnami после migrate."
 msgstr "Do not go back to Bitnami after migration."
 
-#: ../../admin/launch_setup/kubernetes.rst:765
-msgid "Генерация уникального ключа шифрования"
-msgstr "Generating a unique encryption key"
-
 #: ../../admin/launch_setup/kubernetes.rst:767
+msgid "Остановка и запуск"
+msgstr "Stopping and Starting"
+
+#: ../../admin/launch_setup/kubernetes.rst:769
 msgid ""
-"При развертывании нового сервера необходимо каждый раз генерировать "
-"уникальный ключ шифрования."
+"Раздел описывает плановую остановку и запуск системы, развёрнутой Helm "
+"chart ``ecos`` версии 1.4.x. Состав компонентов приведён для релиза "
+"2026.3."
 msgstr ""
-"When deploying a new server, it is necessary to generate a unique "
-"encryption key each time."
+"This section describes the planned stop and start of a system deployed "
+"with the ``ecos`` Helm chart version 1.4.x. The component list is given "
+"for release 2026.3."
 
-#: ../../admin/launch_setup/kubernetes.rst:768
-msgid "Используйте следующий код для генерации AES-ключа:"
-msgstr "Use the following code to generate an AES key:"
-
-#: ../../admin/launch_setup/kubernetes.rst:783
+#: ../../admin/launch_setup/kubernetes.rst:771
 msgid ""
-"Убедитесь, что ключ по умолчанию заменен на новый. Если этого не сделать, "
-"система выдаст предупреждение в логах."
+"**Остановка** уменьшает число реплик каждого Deployment и StatefulSet "
+"релиза до 0. Helm-релиз, PVC, ConfigMap и Secret остаются, данные "
+"сохраняются."
 msgstr ""
-"Make sure the default key is replaced with the new one. If this is not "
-"done, the system will issue a warning in the logs."
+"**Stopping** scales every Deployment and StatefulSet of the release down "
+"to 0 replicas. The Helm release, PVCs, ConfigMaps and Secrets remain, and"
+" the data is preserved."
 
-#: ../../admin/launch_setup/kubernetes.rst:785
-msgid ":ref:`Подробнее о шифровании секретов<secrets_encryption>`"
-msgstr ":ref:`More about secrets encryption<secrets_encryption>`"
+#: ../../admin/launch_setup/kubernetes.rst:772
+msgid "**Запуск** возвращает каждому компоненту прежнее число реплик."
+msgstr "**Starting** restores the previous number of replicas for each component."
+
+#: ../../admin/launch_setup/kubernetes.rst:774
+msgid ""
+"Систему можно остановить и запустить через ``kubectl``, Argo CD или "
+"Kubernetes Dashboard. Порядок компонентов во всех способах одинаковый."
+msgstr ""
+"The system can be stopped and started via ``kubectl``, Argo CD or "
+"Kubernetes Dashboard. The component order is the same for all methods."
+
+#: ../../admin/launch_setup/kubernetes.rst:778
+msgid ""
+"Не останавливайте систему через ``helm uninstall`` и не удаляйте "
+"Deployment, StatefulSet и PVC: вместе с PVC PostgreSQL и RabbitMQ "
+"удалятся данные."
+msgstr ""
+"Do not stop the system with ``helm uninstall`` and do not delete "
+"Deployments, StatefulSets or PVCs: deleting the PostgreSQL and RabbitMQ "
+"PVCs deletes their data."
+
+#: ../../admin/launch_setup/kubernetes.rst:779
+msgid ""
+"Пока система остановлена, не выполняйте ``helm upgrade``, ``helm "
+"rollback`` и синхронизацию в Argo CD. Остановка через Scale не меняет "
+"манифесты релиза, поэтому деплой вернёт число реплик из чарта и запустит "
+"систему раньше времени, например посреди работ с данными."
+msgstr ""
+"While the system is stopped, do not run ``helm upgrade``, ``helm "
+"rollback`` or an Argo CD sync. Stopping via Scale does not change the "
+"release manifests, so a deployment restores the replica count from the "
+"chart and starts the system prematurely, for example in the middle of "
+"data maintenance."
+
+#: ../../admin/launch_setup/kubernetes.rst:780
+msgid ""
+"Не останавливайте систему через values. ``replicas: 0`` не сработает: "
+"шаблоны чарта подставляют вместо нуля 1. Отключение компонентов через "
+"``enabled: false`` удалит их ресурсы вместе с PVC."
+msgstr ""
+"Do not stop the system via values. ``replicas: 0`` does not work: the "
+"chart templates substitute 1 for zero. Disabling components with "
+"``enabled: false`` deletes their resources together with the PVCs."
+
+#: ../../admin/launch_setup/kubernetes.rst:781
+msgid ""
+"Если релизом управляет Argo CD с автосинхронизацией, отключите её до "
+"остановки и включите после запуска. Иначе Argo CD вернёт реплики сам."
+msgstr ""
+"If the release is managed by Argo CD with auto-sync, disable it before "
+"stopping and re-enable it after starting. Otherwise Argo CD restores the "
+"replicas itself."
+
+#: ../../admin/launch_setup/kubernetes.rst:784
+msgid "Порядок"
+msgstr "Order"
+
+#: ../../admin/launch_setup/kubernetes.rst:786
+msgid ""
+"Компоненты останавливаются группами в порядке, обратном зависимостям: "
+"сервис останавливается только после всех, кто им пользуется."
+msgstr ""
+"Components are stopped in groups, in reverse dependency order: a service "
+"is stopped only after everything that uses it."
+
+#: ../../admin/launch_setup/kubernetes.rst:788
+msgid ""
+"Точка входа — группы 1–2 в таблице ниже: система перестаёт принимать "
+"запросы пользователей и внешних систем."
+msgstr ""
+"Entry point — groups 1–2 in the table below: the system stops accepting "
+"requests from users and external systems."
+
+#: ../../admin/launch_setup/kubernetes.rst:789
+msgid "Микросервисы — группы 3–7: от прикладных модулей к ядру платформы."
+msgstr "Microservices — groups 3–7: from application modules to the platform core."
+
+#: ../../admin/launch_setup/kubernetes.rst:790
+msgid "Сторонние сервисы, инфраструктура и СУБД — группы 8–10."
+msgstr "Third-party services, infrastructure and DBMS — groups 8–10."
+
+#: ../../admin/launch_setup/kubernetes.rst:792
+msgid ""
+"Запуск идёт в обратном порядке. Внутри группы компоненты останавливаются "
+"и запускаются одновременно. К следующей группе переходите, когда поды "
+"предыдущей удалены (при остановке) или готовы (при запуске)."
+msgstr ""
+"Starting goes in reverse order. Within a group, components are stopped "
+"and started simultaneously. Move on to the next group once the pods of "
+"the previous one are deleted (when stopping) or ready (when starting)."
+
+#: ../../admin/launch_setup/kubernetes.rst:796
+msgid ""
+"Одновременный запуск всех компонентов, например после ``helm upgrade``, "
+"систему не ломает. Init-контейнеры не дают микросервисам стартовать "
+"раньше PostgreSQL и RabbitMQ. Остальные зависимости микросервисы "
+"отрабатывают сами: повторяют обращения к нужным сервисам, пока те не "
+"станут доступны."
+msgstr ""
+"Starting all components at once, for example after ``helm upgrade``, does"
+" not break the system. Init containers prevent microservices from "
+"starting before PostgreSQL and RabbitMQ. Microservices handle the other "
+"dependencies themselves: they retry calls to the required services until "
+"those become available."
+
+#: ../../admin/launch_setup/kubernetes.rst:798
+msgid "Порядок из таблицы нужен, чтобы:"
+msgstr "The order in the table ensures that:"
+
+#: ../../admin/launch_setup/kubernetes.rst:800
+msgid "пользователи и внешние системы не попадали в недоподнятую систему;"
+msgstr "users and external systems do not reach a partially started system;"
+
+#: ../../admin/launch_setup/kubernetes.rst:801
+msgid ""
+"снизить пиковую нагрузку на ноды кластера: при одновременном старте "
+"Java-сервисы делят процессор и дольше проходят проверки готовности;"
+msgstr ""
+"peak load on the cluster nodes is reduced: when started simultaneously, "
+"Java services share CPU and take longer to pass readiness checks;"
+
+#: ../../admin/launch_setup/kubernetes.rst:802
+msgid "при сбое было видно, какой компонент не поднялся."
+msgstr "if something fails, it is clear which component did not start."
+
+#: ../../admin/launch_setup/kubernetes.rst
+#: ../../admin/launch_setup/kubernetes.rst:809
+msgid "Остановка"
+msgstr "Stop"
+
+#: ../../admin/launch_setup/kubernetes.rst
+#: ../../admin/launch_setup/kubernetes.rst:810
+msgid "Запуск"
+msgstr "Start"
+
+#: ../../admin/launch_setup/kubernetes.rst:811
+msgid "Компоненты"
+msgstr "Components"
+
+#: ../../admin/launch_setup/kubernetes.rst:812
+msgid "Комментарии"
+msgstr "Comments"
+
+#: ../../admin/launch_setup/kubernetes.rst:813
+#: ../../admin/launch_setup/kubernetes.rst:888
+msgid "1"
+msgstr "1"
+
+#: ../../admin/launch_setup/kubernetes.rst:814
+#: ../../admin/launch_setup/kubernetes.rst:887
+msgid "10"
+msgstr "10"
+
+#: ../../admin/launch_setup/kubernetes.rst:815
+msgid "``ecos-proxy-app``"
+msgstr "``ecos-proxy-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst:816
+msgid "``ecos-proxy-app`` — точка входа пользователей."
+msgstr "``ecos-proxy-app`` — the entry point for users."
+
+#: ../../admin/launch_setup/kubernetes.rst:817
+#: ../../admin/launch_setup/kubernetes.rst:880
+msgid "2"
+msgstr "2"
+
+#: ../../admin/launch_setup/kubernetes.rst:818
+#: ../../admin/launch_setup/kubernetes.rst:879
+msgid "9"
+msgstr "9"
+
+#: ../../admin/launch_setup/kubernetes.rst:819
+msgid "``ecos-gateway-app``"
+msgstr "``ecos-gateway-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst:820
+msgid ""
+"``ecos-gateway-app`` — принимает только внешние запросы: UI, REST API, "
+"вебхуки. Микросервисы вызывают друг друга напрямую, минуя gateway."
+msgstr ""
+"``ecos-gateway-app`` — accepts only external requests: UI, REST API, "
+"webhooks. Microservices call each other directly, bypassing the gateway."
+
+#: ../../admin/launch_setup/kubernetes.rst:821
+#: ../../admin/launch_setup/kubernetes.rst:869
+msgid "3"
+msgstr "3"
+
+#: ../../admin/launch_setup/kubernetes.rst:822
+#: ../../admin/launch_setup/kubernetes.rst:868
+msgid "8"
+msgstr "8"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-edi-app``"
+msgstr "``ecos-edi-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-ecom-app``"
+msgstr "``ecos-ecom-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-service-desk-app``"
+msgstr "``ecos-service-desk-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-project-tracker-app``"
+msgstr "``ecos-project-tracker-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-power-of-attorneys``"
+msgstr "``ecos-power-of-attorneys``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-ai-app`` (модуль AI)"
+msgstr "``ecos-ai-app`` (AI module)"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-rag-app`` (модуль AI)"
+msgstr "``ecos-rag-app`` (AI module)"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "сервисы, разработанные под заказчика"
+msgstr "custom services developed for the customer"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"Прикладные модули и сервисы заказчика: пользуются сервисами платформы, но"
+" платформе сами не нужны. Все необязательны, в релизе есть только "
+"установленные. Сюда относится всё, чего нет в других группах."
+msgstr ""
+"Application modules and customer services: they use platform services, "
+"but the platform itself does not need them. All are optional; the release"
+" contains only the installed ones. This group includes everything not "
+"listed in other groups."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-edi-app`` — обмен электронными документами с контрагентами через "
+"операторов ЭДО."
+msgstr ""
+"``ecos-edi-app`` — electronic document exchange with counterparties via "
+"EDI operators."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-ecom-app`` — email-рассылки, чат-боты, импорт входящих писем в "
+"лиды CRM."
+msgstr ""
+"``ecos-ecom-app`` — email campaigns, chatbots, importing incoming emails "
+"into CRM leads."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-service-desk-app`` — обработка обращений (Service Desk)."
+msgstr "``ecos-service-desk-app`` — request handling (Service Desk)."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-project-tracker-app`` — управление проектами и задачами."
+msgstr "``ecos-project-tracker-app`` — project and task management."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-power-of-attorneys`` — доверенности, в том числе машиночитаемые "
+"(МЧД)."
+msgstr ""
+"``ecos-power-of-attorneys`` — powers of attorney, including machine-"
+"readable ones (MCHD)."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-ai-app`` — AI-ассистент."
+msgstr "``ecos-ai-app`` — AI assistant."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-rag-app`` — поиск по базе знаний для AI-ассистента (RAG)."
+msgstr "``ecos-rag-app`` — knowledge base search for the AI assistant (RAG)."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"Сервисы, разработанные под заказчика, — прикладная логика конкретного "
+"проекта."
+msgstr ""
+"Custom services developed for the customer — the application logic of a "
+"specific project."
+
+#: ../../admin/launch_setup/kubernetes.rst:840
+#: ../../admin/launch_setup/kubernetes.rst:865
+msgid "4"
+msgstr "4"
+
+#: ../../admin/launch_setup/kubernetes.rst:841
+#: ../../admin/launch_setup/kubernetes.rst:864
+msgid "7"
+msgstr "7"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-process-app``"
+msgstr "``ecos-process-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-integrations-app``"
+msgstr "``ecos-integrations-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Модули из группы 3 работают поверх процессов и интеграций."
+msgstr "Modules from group 3 run on top of processes and integrations."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-process-app`` — бизнес-процессы."
+msgstr "``ecos-process-app`` — business processes."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-integrations-app`` — интеграции с внешними системами: маршруты, "
+"синхронизация, импорт файлов."
+msgstr ""
+"``ecos-integrations-app`` — integrations with external systems: routes, "
+"synchronization, file import."
+
+#: ../../admin/launch_setup/kubernetes.rst:847
+#: ../../admin/launch_setup/kubernetes.rst:859
+msgid "5"
+msgstr "5"
+
+#: ../../admin/launch_setup/kubernetes.rst:848
+#: ../../admin/launch_setup/kubernetes.rst:858
+msgid "6"
+msgstr "6"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-uiserv-app``"
+msgstr "``ecos-uiserv-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-transformations-app``"
+msgstr "``ecos-transformations-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-notifications-app``"
+msgstr "``ecos-notifications-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-apps-app``"
+msgstr "``ecos-apps-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Общие сервисы, которыми пользуются модули и процессы."
+msgstr "Shared services used by modules and processes."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-uiserv-app`` — формы, журналы, меню и дашборды."
+msgstr "``ecos-uiserv-app`` — forms, journals, menus and dashboards."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-transformations-app`` — генерация документов по шаблонам и "
+"конвертация форматов."
+msgstr ""
+"``ecos-transformations-app`` — template-based document generation and "
+"format conversion."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-notifications-app`` — отправка уведомлений."
+msgstr "``ecos-notifications-app`` — sending notifications."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-apps-app`` — раздача артефактов приложений (типов, форм, журналов)"
+" по микросервисам."
+msgstr ""
+"``ecos-apps-app`` — distribution of application artifacts (types, forms, "
+"journals) to microservices."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-history-app``"
+msgstr "``ecos-history-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-content-app``"
+msgstr "``ecos-content-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-history-app`` — принимает события от всех микросервисов и хранит "
+"историю. Останавливается после всех, кто пишет события, чтобы успеть "
+"обработать очередь."
+msgstr ""
+"``ecos-history-app`` — receives events from all microservices and stores "
+"the history. It is stopped after all event producers so that it can "
+"process the queue."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-content-app`` — хранит файлы остальных микросервисов. "
+"Останавливается после всех, кто читает и пишет файлы."
+msgstr ""
+"``ecos-content-app`` — stores files of the other microservices. It is "
+"stopped after all services that read and write files."
+
+#: ../../admin/launch_setup/kubernetes.rst:866
+msgid "``ecos-model-app``"
+msgstr "``ecos-model-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst:867
+msgid ""
+"``ecos-model-app`` — ядро: типы, пользователи, группы, права. Без него не"
+" работают gateway и остальные микросервисы; при старте они ждут его "
+"доступности."
+msgstr ""
+"``ecos-model-app`` — the core: types, users, groups, permissions. The "
+"gateway and the other microservices do not work without it; on startup "
+"they wait for it to become available."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``onlyoffice-app``"
+msgstr "``onlyoffice-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``mailhog-app`` (Mailpit) — если развёрнут"
+msgstr "``mailhog-app`` (Mailpit) — if deployed"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``qdrant-app`` — если установлен модуль AI"
+msgstr "``qdrant-app`` — if the AI module is installed"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``stt-sidecar-app`` — если установлен модуль AI"
+msgstr "``stt-sidecar-app`` — if the AI module is installed"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Сторонние сервисы, которыми пользуются микросервисы."
+msgstr "Third-party services used by the microservices."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``onlyoffice-app`` — конвертация и редактирование документов."
+msgstr "``onlyoffice-app`` — document conversion and editing."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``mailhog-app`` — SMTP-сервер для уведомлений."
+msgstr "``mailhog-app`` — SMTP server for notifications."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``qdrant-app`` — векторное хранилище для ``ecos-rag-app``."
+msgstr "``qdrant-app`` — vector store for ``ecos-rag-app``."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``stt-sidecar-app`` — распознавание речи для ``ecos-ai-app`` и телефонии "
+"в ``ecos-integrations-app``."
+msgstr ""
+"``stt-sidecar-app`` — speech recognition for ``ecos-ai-app`` and for "
+"telephony in ``ecos-integrations-app``."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-identity-app`` (Keycloak) — если развёрнут в этом релизе"
+msgstr "``ecos-identity-app`` (Keycloak) — if deployed in this release"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``rabbitmq-app``"
+msgstr "``rabbitmq-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``zookeeper-app``"
+msgstr "``zookeeper-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-identity-app`` — аутентификация (Keycloak)."
+msgstr "``ecos-identity-app`` — authentication (Keycloak)."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``rabbitmq-app`` — шина сообщений."
+msgstr "``rabbitmq-app`` — message bus."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``zookeeper-app`` — обнаружение сервисов."
+msgstr "``zookeeper-app`` — service discovery."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-microservices-postgresql-app``"
+msgstr "``ecos-microservices-postgresql-app``"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-mongodb-app`` — если установлена MongoDB"
+msgstr "``ecos-mongodb-app`` — if MongoDB is installed"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "``ecos-microservices-postgresql-app`` — СУБД микросервисов."
+msgstr "``ecos-microservices-postgresql-app`` — the microservices DBMS."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid ""
+"``ecos-mongodb-app`` — данные старых инсталляций, ещё не перенесённые в "
+"PostgreSQL."
+msgstr ""
+"``ecos-mongodb-app`` — data of older installations not yet migrated to "
+"PostgreSQL."
+
+#: ../../admin/launch_setup/kubernetes.rst:894
+msgid "Все компоненты — Deployment, кроме ``zookeeper-app`` (StatefulSet)."
+msgstr "All components are Deployments, except ``zookeeper-app`` (StatefulSet)."
+
+#: ../../admin/launch_setup/kubernetes.rst:897
+msgid "Порядок действий"
+msgstr "Procedure"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "kubectl"
+msgstr "kubectl"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Подготовка"
+msgstr "Preparation"
+
+#: ../../admin/launch_setup/kubernetes.rst:905
+msgid "Нужен ``kubectl`` с правами в неймспейсе релиза:"
+msgstr ""
+"You need ``kubectl`` with the following permissions in the release "
+"namespace:"
+
+#: ../../admin/launch_setup/kubernetes.rst:907
+msgid "``get``, ``scale``, ``annotate`` для deployments и statefulsets;"
+msgstr "``get``, ``scale``, ``annotate`` for deployments and statefulsets;"
+
+#: ../../admin/launch_setup/kubernetes.rst:908
+msgid "``get``, ``list``, ``watch`` для pods."
+msgstr "``get``, ``list``, ``watch`` for pods."
+
+#: ../../admin/launch_setup/kubernetes.rst:910
+msgid ""
+"Задайте неймспейс и определите функции в той же bash-сессии, где будете "
+"останавливать и запускать систему:"
+msgstr ""
+"Set the namespace and define the functions in the same bash session in "
+"which you will stop and start the system:"
+
+#: ../../admin/launch_setup/kubernetes.rst:971
+msgid ""
+"Повторный вызов ``stop`` безопасен: уже сохранённое число реплик не "
+"перезаписывается нулём."
+msgstr ""
+"Calling ``stop`` again is safe: an already saved replica count is not "
+"overwritten with zero."
+
+#: ../../admin/launch_setup/kubernetes.rst:973
+msgid ""
+"Функция ``modules`` выводит компоненты группы 3. Проверьте список перед "
+"остановкой:"
+msgstr ""
+"The ``modules`` function lists the components of group 3. Check the list "
+"before stopping:"
+
+#: ../../admin/launch_setup/kubernetes.rst:979
+msgid ""
+"Если в списке оказался инфраструктурный компонент (например, своя БД или "
+"брокер сообщений), он будет остановлен слишком рано. Добавьте его имя в "
+"``G_DB``, ``G_INFRA`` или ``G_EXT`` и выполните определения заново."
+msgstr ""
+"If the list contains an infrastructure component (for example, your own "
+"database or message broker), it will be stopped too early. Add its name "
+"to ``G_DB``, ``G_INFRA`` or ``G_EXT`` and run the definitions again."
+
+#: ../../admin/launch_setup/kubernetes.rst:983
+msgid ""
+"Каждый шаг ждёт, пока поды группы удалятся. Штатное завершение пода "
+"занимает до 2 минут."
+msgstr ""
+"Each step waits until the group's pods are deleted. A graceful pod "
+"shutdown takes up to 2 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:998
+msgid "Проверка:"
+msgstr "Check:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1008
+msgid ""
+"Каждый шаг ждёт готовности (readiness) группы. Java-сервис стартует 1–3 "
+"минуты."
+msgstr ""
+"Each step waits for the group to become ready (readiness). A Java service"
+" starts in 1–3 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:1023
+msgid ""
+"После шага 1 убедитесь, что PostgreSQL был остановлен штатно. В логе "
+"должна быть строка ``database system was shut down at ...``, а не ``was "
+"interrupted``:"
+msgstr ""
+"After step 1, make sure that PostgreSQL was shut down gracefully. The log"
+" must contain the line ``database system was shut down at ...``, not "
+"``was interrupted``:"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Проверка после запуска"
+msgstr "Post-start check"
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Argo CD"
+msgstr "Argo CD"
+
+#: ../../admin/launch_setup/kubernetes.rst:1043
+msgid "Проверьте права учётной записи Argo CD на приложение:"
+msgstr "Check the Argo CD account permissions for the application:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1045
+msgid "просмотр приложения и логов подов: ``applications, get`` и ``logs, get``;"
+msgstr ""
+"viewing the application and pod logs: ``applications, get`` and ``logs, "
+"get``;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1046
+msgid "изменение политики синхронизации: ``applications, update``;"
+msgstr "changing the sync policy: ``applications, update``;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1047
+msgid ""
+"действие Scale: ``applications, action/apps/Deployment/scale`` и "
+"``applications, action/apps/StatefulSet/scale``;"
+msgstr ""
+"the Scale action: ``applications, action/apps/Deployment/scale`` and "
+"``applications, action/apps/StatefulSet/scale``;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1048
+msgid "для проверок через терминал пода — ``exec, create``."
+msgstr "for checks via the pod terminal — ``exec, create``."
+
+#: ../../admin/launch_setup/kubernetes.rst:1050
+msgid ""
+"Откройте приложение. Оно должно быть в статусе **Synced** и **Healthy**. "
+"Если приложение в статусе **OutOfSync**, выясните причину до остановки: "
+"иначе отложенные изменения из Git применятся, когда вы включите "
+"автосинхронизацию после запуска."
+msgstr ""
+"Open the application. It must be **Synced** and **Healthy**. If the "
+"application is **OutOfSync**, find out why before stopping: otherwise "
+"pending changes from Git will be applied when you enable auto-sync after "
+"starting."
+
+#: ../../admin/launch_setup/kubernetes.rst:1051
+msgid ""
+"Определите состав группы 3. В панели фильтров отметьте **Kinds** "
+"``Deployment`` и ``StatefulSet``: к группе 3 относятся все компоненты, "
+"которых нет в остальных группах таблицы."
+msgstr ""
+"Determine the components of group 3. In the filter panel, select "
+"**Kinds** ``Deployment`` and ``StatefulSet``: group 3 includes all "
+"components that are not in the other groups of the table."
+
+#: ../../admin/launch_setup/kubernetes.rst:1052
+msgid ""
+"Запишите число реплик компонентов, у которых оно больше одной: при "
+"запуске нужно вернуть именно его. Значение видно в окне Scale и в "
+"манифесте из Git (вкладка **Desired Manifest**, поле ``spec.replicas``)."
+msgstr ""
+"Write down the replica count of components that have more than one: you "
+"need to restore exactly that number when starting. The value is shown in "
+"the Scale dialog and in the manifest from Git (**Desired Manifest** tab, "
+"``spec.replicas`` field)."
+
+#: ../../admin/launch_setup/kubernetes.rst:1053
+msgid ""
+"Нажмите **App Details**, запишите текущую политику синхронизации (**Auto-"
+"Sync**, **Prune Resources**, **Self Heal**) и нажмите **Disable Auto-"
+"Sync**. Если приложением управляет ApplicationSet или родительское "
+"приложение (App of Apps), отключите автосинхронизацию на их уровне: иначе"
+" родитель вернёт прежнюю политику."
+msgstr ""
+"Click **App Details**, write down the current sync policy (**Auto-Sync**,"
+" **Prune Resources**, **Self Heal**) and click **Disable Auto-Sync**. If "
+"the application is managed by an ApplicationSet or a parent application "
+"(App of Apps), disable auto-sync at their level: otherwise the parent "
+"restores the previous policy."
+
+#: ../../admin/launch_setup/kubernetes.rst:1057
+#: ../../admin/launch_setup/kubernetes.rst:1104
+msgid "Для каждой группы по порядку из столбца «Остановка»:"
+msgstr "For each group, in the order of the “Stop” column:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1059
+msgid ""
+"В дереве ресурсов приложения нажмите на Deployment компонента (для "
+"``zookeeper-app`` — на StatefulSet)."
+msgstr ""
+"In the application resource tree, click the component's Deployment (for "
+"``zookeeper-app`` — the StatefulSet)."
+
+#: ../../admin/launch_setup/kubernetes.rst:1060
+msgid "Нажмите **Actions** → **Scale**, введите ``0`` и нажмите **OK**."
+msgstr "Click **Actions** → **Scale**, enter ``0`` and click **OK**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1061
+msgid ""
+"Дождитесь, пока поды всех компонентов группы исчезнут из дерева. Штатное "
+"завершение пода занимает до 2 минут."
+msgstr ""
+"Wait until the pods of all components in the group disappear from the "
+"tree. A graceful pod shutdown takes up to 2 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:1063
+msgid ""
+"Если в меню **Actions** нет пункта **Scale** (старые версии Argo CD), "
+"откройте вкладку **Live Manifest**, нажмите **Edit**, замените значение "
+"``spec.replicas`` на ``0`` и нажмите **Save**."
+msgstr ""
+"If the **Actions** menu has no **Scale** item (older Argo CD versions), "
+"open the **Live Manifest** tab, click **Edit**, change ``spec.replicas`` "
+"to ``0`` and click **Save**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1065
+msgid ""
+"После первой остановки приложение перейдёт в статус **OutOfSync** — это "
+"ожидаемо. Не запускайте Sync."
+msgstr ""
+"After the first stop, the application switches to **OutOfSync** — this is"
+" expected. Do not run Sync."
+
+#: ../../admin/launch_setup/kubernetes.rst:1067
+msgid ""
+"Когда все группы остановлены, в дереве не должно остаться подов. В "
+"фильтре **Kinds** отметьте ``PersistentVolumeClaim`` и убедитесь, что все"
+" PVC на месте."
+msgstr ""
+"When all groups are stopped, no pods must remain in the tree. In the "
+"**Kinds** filter, select ``PersistentVolumeClaim`` and make sure all PVCs"
+" are in place."
+
+#: ../../admin/launch_setup/kubernetes.rst:1071
+#: ../../admin/launch_setup/kubernetes.rst:1118
+msgid "Для каждой группы по порядку из столбца «Запуск»:"
+msgstr "For each group, in the order of the “Start” column:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1073
+msgid ""
+"Нажмите на Deployment компонента (для ``zookeeper-app`` — на StatefulSet)"
+" → **Actions** → **Scale**."
+msgstr ""
+"Click the component's Deployment (for ``zookeeper-app`` — the "
+"StatefulSet) → **Actions** → **Scale**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1074
+msgid "Введите прежнее число реплик (обычно ``1``) и нажмите **OK**."
+msgstr "Enter the previous replica count (usually ``1``) and click **OK**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1075
+msgid ""
+"Дождитесь, пока поды группы станут **Healthy**. Java-сервис стартует 1–3 "
+"минуты."
+msgstr ""
+"Wait until the group's pods become **Healthy**. A Java service starts in "
+"1–3 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:1077
+msgid ""
+"После запуска СУБД убедитесь, что PostgreSQL был остановлен штатно. "
+"Откройте под ``ecos-microservices-postgresql-app`` → вкладка **Logs**: в "
+"начале лога должна быть строка ``database system was shut down at ...``, "
+"а не ``was interrupted``."
+msgstr ""
+"After the DBMS starts, make sure that PostgreSQL was shut down "
+"gracefully. Open the ``ecos-microservices-postgresql-app`` pod → **Logs**"
+" tab: the beginning of the log must contain the line ``database system "
+"was shut down at ...``, not ``was interrupted``."
+
+#: ../../admin/launch_setup/kubernetes.rst:1079
+msgid ""
+"Когда все группы запущены, нажмите **App Details** → **Enable Auto-Sync**"
+" и верните прежние значения **Prune Resources** и **Self Heal**. "
+"Приложение должно перейти в статус **Synced** и **Healthy**. Если оно "
+"осталось в **OutOfSync**, откройте **App Diff**: у какого-то компонента "
+"число реплик не совпадает с Git."
+msgstr ""
+"When all groups are started, click **App Details** → **Enable Auto-Sync**"
+" and restore the previous **Prune Resources** and **Self Heal** values. "
+"The application must switch to **Synced** and **Healthy**. If it stays "
+"**OutOfSync**, open **App Diff**: some component's replica count does not"
+" match Git."
+
+#: ../../admin/launch_setup/kubernetes.rst:1083
+msgid "Все поды в дереве — **Running** и **Healthy**."
+msgstr "All pods in the tree are **Running** and **Healthy**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1084
+msgid ""
+"Если доступен терминал пода (вкладка **Terminal**): ``pg_isready`` в поде"
+" ``ecos-microservices-postgresql-app`` и ``rabbitmq-diagnostics -q "
+"check_running`` в поде ``rabbitmq-app``."
+msgstr ""
+"If the pod terminal is available (**Terminal** tab): ``pg_isready`` in "
+"the ``ecos-microservices-postgresql-app`` pod and ``rabbitmq-diagnostics "
+"-q check_running`` in the ``rabbitmq-app`` pod."
+
+#: ../../admin/launch_setup/kubernetes.rst
+msgid "Kubernetes Dashboard"
+msgstr "Kubernetes Dashboard"
+
+#: ../../admin/launch_setup/kubernetes.rst:1090
+msgid "Проверьте права учётной записи Dashboard в неймспейсе релиза:"
+msgstr "Check the Dashboard account permissions in the release namespace:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1092
+msgid ""
+"``get``, ``list``, ``watch`` для deployments, statefulsets, pods, events "
+"и persistentvolumeclaims;"
+msgstr ""
+"``get``, ``list``, ``watch`` for deployments, statefulsets, pods, events "
+"and persistentvolumeclaims;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1093
+msgid "``get``, ``update``, ``patch`` для deployments/scale и statefulsets/scale;"
+msgstr ""
+"``get``, ``update``, ``patch`` for deployments/scale and "
+"statefulsets/scale;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1094
+msgid "``get`` для pods/log;"
+msgstr "``get`` for pods/log;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1095
+msgid "для проверок через терминал пода — ``create`` для pods/exec."
+msgstr "for checks via the pod terminal — ``create`` for pods/exec."
+
+#: ../../admin/launch_setup/kubernetes.rst:1097
+msgid "Войдите в Dashboard и выберите неймспейс релиза в списке вверху страницы."
+msgstr ""
+"Log in to the Dashboard and select the release namespace in the list at "
+"the top of the page."
+
+#: ../../admin/launch_setup/kubernetes.rst:1098
+msgid ""
+"Определите состав группы 3. Откройте **Workloads** → **Deployments** и "
+"**Stateful Sets**: к группе 3 относятся все компоненты, которых нет в "
+"остальных группах таблицы."
+msgstr ""
+"Determine the components of group 3. Open **Workloads** → **Deployments**"
+" and **Stateful Sets**: group 3 includes all components that are not in "
+"the other groups of the table."
+
+#: ../../admin/launch_setup/kubernetes.rst:1099
+msgid ""
+"Запишите число реплик компонентов, у которых оно больше одной (колонка "
+"**Pods**, например ``2 / 2``): при запуске нужно вернуть именно его."
+msgstr ""
+"Write down the replica count of components that have more than one "
+"(**Pods** column, e.g. ``2 / 2``): you need to restore exactly that "
+"number when starting."
+
+#: ../../admin/launch_setup/kubernetes.rst:1100
+msgid ""
+"Если релизом управляет Argo CD с автосинхронизацией, попросите "
+"администратора Argo CD отключить её (см. вкладку **Argo CD**)."
+msgstr ""
+"If the release is managed by Argo CD with auto-sync, ask the Argo CD "
+"administrator to disable it (see the **Argo CD** tab)."
+
+#: ../../admin/launch_setup/kubernetes.rst:1106
+#: ../../admin/launch_setup/kubernetes.rst:1120
+msgid ""
+"Откройте **Workloads** → **Deployments** (для ``zookeeper-app`` — "
+"**Stateful Sets**), в строке компонента — меню **⋮** → **Scale**."
+msgstr ""
+"Open **Workloads** → **Deployments** (for ``zookeeper-app`` — **Stateful "
+"Sets**), and in the component row open the **⋮** menu → **Scale**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1107
+msgid "В поле **Desired replicas** введите ``0`` и нажмите **Scale**."
+msgstr "In the **Desired replicas** field, enter ``0`` and click **Scale**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1108
+msgid ""
+"Дождитесь, пока поды всех компонентов группы исчезнут в **Workloads** → "
+"**Pods**. Штатное завершение пода занимает до 2 минут."
+msgstr ""
+"Wait until the pods of all components in the group disappear from "
+"**Workloads** → **Pods**. A graceful pod shutdown takes up to 2 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:1110
+msgid "Когда все группы остановлены, проверьте:"
+msgstr "When all groups are stopped, check:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1112
+msgid "**Workloads** → **Pods**: подов нет;"
+msgstr "**Workloads** → **Pods**: no pods;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1113
+msgid ""
+"**Workloads** → **Deployments** и **Stateful Sets**: у всех компонентов "
+"``0 / 0``;"
+msgstr ""
+"**Workloads** → **Deployments** and **Stateful Sets**: all components "
+"show ``0 / 0``;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1114
+msgid ""
+"**Config and Storage** → **Persistent Volume Claims**: все PVC на месте, "
+"в статусе ``Bound``."
+msgstr ""
+"**Config and Storage** → **Persistent Volume Claims**: all PVCs are in "
+"place, with ``Bound`` status."
+
+#: ../../admin/launch_setup/kubernetes.rst:1121
+msgid ""
+"В поле **Desired replicas** введите прежнее число реплик (обычно ``1``) и"
+" нажмите **Scale**."
+msgstr ""
+"In the **Desired replicas** field, enter the previous replica count "
+"(usually ``1``) and click **Scale**."
+
+#: ../../admin/launch_setup/kubernetes.rst:1122
+msgid ""
+"Дождитесь, пока поды группы перейдут в статус ``Running``, а у "
+"компонентов в списке Deployments станет ``1 / 1``. Java-сервис стартует "
+"1–3 минуты."
+msgstr ""
+"Wait until the group's pods are ``Running`` and the components in the "
+"Deployments list show ``1 / 1``. A Java service starts in 1–3 minutes."
+
+#: ../../admin/launch_setup/kubernetes.rst:1124
+msgid ""
+"После запуска СУБД убедитесь, что PostgreSQL был остановлен штатно. В "
+"**Workloads** → **Pods** откройте под ``ecos-microservices-postgresql-"
+"app-…`` → **Logs**: в начале лога должна быть строка ``database system "
+"was shut down at ...``, а не ``was interrupted``."
+msgstr ""
+"After the DBMS starts, make sure that PostgreSQL was shut down "
+"gracefully. In **Workloads** → **Pods**, open the ``ecos-microservices-"
+"postgresql-app-…`` pod → **Logs**: the beginning of the log must contain "
+"the line ``database system was shut down at ...``, not ``was "
+"interrupted``."
+
+#: ../../admin/launch_setup/kubernetes.rst:1128
+msgid ""
+"**Workloads** → **Deployments** и **Stateful Sets**: у всех компонентов "
+"число готовых подов равно желаемому."
+msgstr ""
+"**Workloads** → **Deployments** and **Stateful Sets**: for all "
+"components, the number of ready pods equals the desired number."
+
+#: ../../admin/launch_setup/kubernetes.rst:1129
+msgid ""
+"**Workloads** → **Pods**: все поды в статусе ``Running``, в колонке "
+"**Restarts** нули."
+msgstr ""
+"**Workloads** → **Pods**: all pods are ``Running``, with zeros in the "
+"**Restarts** column."
+
+#: ../../admin/launch_setup/kubernetes.rst:1130
+msgid ""
+"Если доступен терминал пода (меню **⋮** → **Exec**): ``pg_isready`` в "
+"поде ``ecos-microservices-postgresql-app-…`` и ``rabbitmq-diagnostics -q "
+"check_running`` в поде ``rabbitmq-app-…``."
+msgstr ""
+"If the pod terminal is available (**⋮** menu → **Exec**): ``pg_isready`` "
+"in the ``ecos-microservices-postgresql-app-…`` pod and ``rabbitmq-"
+"diagnostics -q check_running`` in the ``rabbitmq-app-…`` pod."
+
+#: ../../admin/launch_setup/kubernetes.rst:1133
+msgid "Проверка работы и типовые проблемы"
+msgstr "Verification and Common Issues"
+
+#: ../../admin/launch_setup/kubernetes.rst:1135
+msgid "После запуска откройте систему в браузере и проверьте:"
+msgstr "After starting, open the system in a browser and check:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1137
+msgid "вход в систему;"
+msgstr "logging in;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1138
+msgid "открытие журнала;"
+msgstr "opening a journal;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1139
+msgid "открытие карточки документа;"
+msgstr "opening a document card;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1140
+msgid "открытие документа в редакторе (если используется OnlyOffice)."
+msgstr "opening a document in the editor (if OnlyOffice is used)."
+
+#: ../../admin/launch_setup/kubernetes.rst:1142
+msgid "Типовые проблемы:"
+msgstr "Common issues:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1144
+msgid ""
+"**Под висит в** ``Init``. Init-контейнеры ждут PostgreSQL или RabbitMQ. "
+"Проверьте, что они запущены, и посмотрите события пода."
+msgstr ""
+"**The pod is stuck in** ``Init``. Init containers are waiting for "
+"PostgreSQL or RabbitMQ. Check that they are running and look at the pod "
+"events."
+
+#: ../../admin/launch_setup/kubernetes.rst:1145
+msgid ""
+"**В логах сервиса** ``Patch ... depends on app 'emodel', but it is not "
+"available yet``. Сервис ждёт ``ecos-model-app``. Проверьте, что ``ecos-"
+"model-app`` запущен и готов."
+msgstr ""
+"**The service log shows** ``Patch ... depends on app 'emodel', but it is "
+"not available yet``. The service is waiting for ``ecos-model-app``. Check"
+" that ``ecos-model-app`` is running and ready."
+
+#: ../../admin/launch_setup/kubernetes.rst:1146
+msgid ""
+"**PostgreSQL не стартует, в событиях пода** ``Multi-Attach error``. "
+"Старый под ещё держит том. Дождитесь его удаления."
+msgstr ""
+"**PostgreSQL does not start, the pod events show** ``Multi-Attach "
+"error``. The old pod is still holding the volume. Wait until it is "
+"deleted."
+
+#: ../../admin/launch_setup/kubernetes.rst:1147
+msgid ""
+"**Микросервис перезапускается по кругу** (``CrashLoopBackOff``). "
+"Посмотрите логи пода. Если зависимости уже поднялись, перезапустите "
+"сервис: ``kubectl rollout restart deploy/<имя> -n <неймспейс>`` или "
+"действие **Restart** в Argo CD и Dashboard."
+msgstr ""
+"**A microservice keeps restarting** (``CrashLoopBackOff``). Check the pod"
+" logs. If the dependencies are already up, restart the service: ``kubectl"
+" rollout restart deploy/<name> -n <namespace>`` or the **Restart** action"
+" in Argo CD and Dashboard."
+
+#: ../../admin/launch_setup/kubernetes.rst:1148
+msgid ""
+"**Реплики вернулись сами, пока система была остановлена.** Прошёл деплой "
+"релиза или синхронизация Argo CD."
+msgstr ""
+"**Replicas came back by themselves while the system was stopped.** A "
+"release deployment or an Argo CD sync took place."
+
+#: ../../admin/launch_setup/kubernetes.rst:1154
+msgid "Ключ шифрования секретов"
+msgstr "Secret Encryption Key"
+
+#: ../../admin/launch_setup/kubernetes.rst:1156
+msgid ""
+"``ecos-model-app`` хранит :ref:`секреты <ecos_secret>` в своей БД в "
+"зашифрованном виде (AES/GCM). Секреты — это логины и пароли, токены, "
+"ключи и сертификаты, на которые ссылаются эндпоинты внешних систем, "
+"маршруты Camel DSL и другие интеграции. Ключ шифрования задаётся "
+"параметрами Helm chart."
+msgstr ""
+"``ecos-model-app`` stores :ref:`secrets <ecos_secret>` in its database in"
+" encrypted form (AES/GCM). Secrets are usernames and passwords, tokens, "
+"keys and certificates referenced by external system endpoints, Camel DSL "
+"routes and other integrations. The encryption key is set by Helm chart "
+"parameters."
+
+#: ../../admin/launch_setup/kubernetes.rst:1160
+msgid ""
+"Если ключ не задан, используется ключ по умолчанию. Он одинаковый во всех"
+" инсталляциях и опубликован в открытом коде, поэтому любой, у кого есть "
+"копия БД, сможет расшифровать секреты. При профиле ``prod`` ``ecos-model-"
+"app`` пишет в лог ``SECURITY ALERT``, но продолжает работать. Для каждой "
+"инсталляции генерируйте собственный ключ."
+msgstr ""
+"If the key is not set, the default key is used. It is the same in all "
+"installations and is published in the open source code, so anyone with a "
+"copy of the database can decrypt the secrets. With the ``prod`` profile, "
+"``ecos-model-app`` writes ``SECURITY ALERT`` to the log but keeps "
+"running. Generate a unique key for each installation."
+
+#: ../../admin/launch_setup/kubernetes.rst:1163
+msgid "Генерация ключа"
+msgstr "Key Generation"
+
+#: ../../admin/launch_setup/kubernetes.rst:1165
+msgid "Ключ — 128-битный ключ AES в кодировке Base64:"
+msgstr "The key is a 128-bit AES key in Base64 encoding:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1172
+msgid "Параметры Helm chart"
+msgstr "Helm Chart Parameters"
+
+#: ../../admin/launch_setup/kubernetes.rst:1181
+msgid "``EcosModelApp.secret.encryption.current.key``"
+msgstr "``EcosModelApp.secret.encryption.current.key``"
+
+#: ../../admin/launch_setup/kubernetes.rst:1182
+msgid "Текущий ключ: им шифруются секреты."
+msgstr "The current key: secrets are encrypted with it."
+
+#: ../../admin/launch_setup/kubernetes.rst:1183
+msgid "``EcosModelApp.secret.encryption.previous.key``"
+msgstr "``EcosModelApp.secret.encryption.previous.key``"
+
+#: ../../admin/launch_setup/kubernetes.rst:1184
+msgid ""
+"Предыдущий ключ. Нужен только при смене ключа, чтобы расшифровать "
+"секреты, зашифрованные прежним ключом."
+msgstr ""
+"The previous key. Needed only when changing the key, to decrypt secrets "
+"encrypted with the old key."
+
+#: ../../admin/launch_setup/kubernetes.rst:1185
+msgid "``EcosModelApp.secret.encryption.existingSecret``"
+msgstr "``EcosModelApp.secret.encryption.existingSecret``"
+
+#: ../../admin/launch_setup/kubernetes.rst:1186
+msgid ""
+"Имя существующего Kubernetes Secret с ключами ``current-key`` "
+"(обязательный) и ``previous-key`` (необязательный). Если параметр задан, "
+"``current.key`` и ``previous.key`` не используются. Secret должен "
+"существовать до деплоя."
+msgstr ""
+"Name of an existing Kubernetes Secret with the keys ``current-key`` "
+"(required) and ``previous-key`` (optional). If this parameter is set, "
+"``current.key`` and ``previous.key`` are not used. The Secret must exist "
+"before deployment."
+
+#: ../../admin/launch_setup/kubernetes.rst:1188
+msgid "Ключ в values:"
+msgstr "Key in values:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1198
+msgid "Ключ в существующем Secret:"
+msgstr "Key in an existing Secret:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1212
+msgid ""
+"Подробнее о Secret и режимах их подключения — в разделе :ref:`Управление "
+"секретами через Kubernetes Secrets <kubernetes-secrets>`."
+msgstr ""
+"For more about Secrets and how they are connected, see :ref:`Managing "
+"Secrets via Kubernetes Secrets <kubernetes-secrets>`."
+
+#: ../../admin/launch_setup/kubernetes.rst:1216
+msgid ""
+"Ключ должен быть задан при каждом деплое. Если убрать его из values или "
+"Secret, чарт подставит ключ по умолчанию, и ``ecos-model-app`` перестанет"
+" расшифровывать секреты, зашифрованные вашим ключом."
+msgstr ""
+"The key must be set on every deployment. If you remove it from values or "
+"the Secret, the chart substitutes the default key, and ``ecos-model-app``"
+" can no longer decrypt secrets encrypted with your key."
+
+#: ../../admin/launch_setup/kubernetes.rst:1219
+msgid "Смена ключа"
+msgstr "Changing the Key"
+
+#: ../../admin/launch_setup/kubernetes.rst:1221
+msgid "Сгенерируйте новый ключ."
+msgstr "Generate a new key."
+
+#: ../../admin/launch_setup/kubernetes.rst:1222
+msgid ""
+"Задайте новый ключ в ``current.key`` (``current-key``), а прежний — в "
+"``previous.key`` (``previous-key``). Если инсталляция работала на ключе "
+"по умолчанию, прежний ключ — ``Cz6ruLL9XkNjn4vaU0/MDQ==``."
+msgstr ""
+"Set the new key in ``current.key`` (``current-key``) and the old one in "
+"``previous.key`` (``previous-key``). If the installation used the default"
+" key, the old key is ``Cz6ruLL9XkNjn4vaU0/MDQ==``."
+
+#: ../../admin/launch_setup/kubernetes.rst:1223
+msgid ""
+"Выполните деплой. При старте ``ecos-model-app`` расшифрует секреты "
+"прежним ключом и зашифрует их новым."
+msgstr ""
+"Deploy. On startup, ``ecos-model-app`` decrypts the secrets with the old "
+"key and re-encrypts them with the new one."
+
+#: ../../admin/launch_setup/kubernetes.rst:1224
+msgid ""
+"Когда ``ecos-model-app`` запустился и секреты работают, прежний ключ "
+"можно убрать из ``previous.key``. Сохраните его вместе с резервными "
+"копиями БД, сделанными до смены ключа."
+msgstr ""
+"Once ``ecos-model-app`` has started and the secrets work, the old key can"
+" be removed from ``previous.key``. Keep it together with the database "
+"backups made before the key change."
+
+#: ../../admin/launch_setup/kubernetes.rst:1227
+msgid "Резервные копии и перенос БД"
+msgstr "Backups and Database Migration"
+
+#: ../../admin/launch_setup/kubernetes.rst:1229
+msgid ""
+"Секреты в копии БД расшифровываются только тем ключом, которым они были "
+"зашифрованы. Поэтому:"
+msgstr ""
+"Secrets in a database copy can be decrypted only with the key they were "
+"encrypted with. Therefore:"
+
+#: ../../admin/launch_setup/kubernetes.rst:1231
+msgid "храните ключ вместе с резервными копиями БД ``ecos-model-app``;"
+msgstr "keep the key together with the ``ecos-model-app`` database backups;"
+
+#: ../../admin/launch_setup/kubernetes.rst:1232
+msgid ""
+"при восстановлении или переносе БД на другой стенд задайте на нём тот же "
+"ключ. Если на новом стенде нужен свой ключ, укажите перенесённый как "
+"предыдущий (``previous.key``): при старте ``ecos-model-app`` перешифрует "
+"секреты новым ключом."
+msgstr ""
+"when restoring the database or moving it to another environment, set the "
+"same key there. If the new environment needs its own key, specify the "
+"transferred one as the previous key (``previous.key``): on startup, "
+"``ecos-model-app`` re-encrypts the secrets with the new key."
+
+#: ../../admin/launch_setup/kubernetes.rst:1234
+msgid ""
+"Если ключ не совпадает, ``ecos-model-app`` не расшифрует секреты: в логе "
+"будет ``Cannot decrypt secret ... Re-save the secret to fix it``, и "
+"секреты придётся заводить заново."
+msgstr ""
+"If the key does not match, ``ecos-model-app`` cannot decrypt the secrets:"
+" the log shows ``Cannot decrypt secret ... Re-save the secret to fix "
+"it``, and the secrets have to be created again."
+
+#: ../../admin/launch_setup/kubernetes.rst:1236
+msgid ""
+"Подробнее о секретах — в разделе :ref:`Шифрование секретов "
+"<secrets_encryption>`."
+msgstr ""
+"For more about secrets, see :ref:`Secrets Encryption "
+"<secrets_encryption>`."
 
 #~ msgid ""
-#~ "Среднее время отклика - **6.88 миллисекунд**. |br| Медиана - 6 "
-#~ "миллисекунд. |br| **90%** всех запросов обрабатывались менее чем за **16 "
-#~ "миллисекунд**. |br| **95%** всех запросов обрабатывались менее чем за **25"
-#~ " миллисекунд**. |br| **99%** всех запросов обрабатывались менее чем за "
-#~ "**47 миллисекунд**. |br|"
+#~ "Среднее время отклика - **6.88 "
+#~ "миллисекунд**. |br| Медиана - 6 "
+#~ "миллисекунд. |br| **90%** всех запросов "
+#~ "обрабатывались менее чем за **16 "
+#~ "миллисекунд**. |br| **95%** всех запросов "
+#~ "обрабатывались менее чем за **25 "
+#~ "миллисекунд**. |br| **99%** всех запросов "
+#~ "обрабатывались менее чем за **47 "
+#~ "миллисекунд**. |br|"
 #~ msgstr ""
-#~ "Average response time - **6.88 milliseconds**. |br| Median - 6 "
-#~ "milliseconds. |br| **90%** of all requests were processed in less than "
-#~ "**16 milliseconds**. |br| **95%** of all requests were processed in less "
-#~ "than **25 milliseconds**. |br| **99%** of all requests were processed in "
-#~ "less than **47 milliseconds**. |br|"
+#~ "Average response time - **6.88 "
+#~ "milliseconds**. |br| Median - 6 "
+#~ "milliseconds. |br| **90%** of all "
+#~ "requests were processed in less than "
+#~ "**16 milliseconds**. |br| **95%** of all"
+#~ " requests were processed in less than"
+#~ " **25 milliseconds**. |br| **99%** of "
+#~ "all requests were processed in less "
+#~ "than **47 milliseconds**. |br|"
+
+#~ msgid "Генерация уникального ключа шифрования"
+#~ msgstr "Generating a unique encryption key"
+
+#~ msgid ""
+#~ "При развертывании нового сервера необходимо"
+#~ " каждый раз генерировать уникальный ключ"
+#~ " шифрования."
+#~ msgstr ""
+#~ "When deploying a new server, it is"
+#~ " necessary to generate a unique "
+#~ "encryption key each time."
+
+#~ msgid "Используйте следующий код для генерации AES-ключа:"
+#~ msgstr "Use the following code to generate an AES key:"
+
+#~ msgid ""
+#~ "Убедитесь, что ключ по умолчанию заменен"
+#~ " на новый. Если этого не сделать, "
+#~ "система выдаст предупреждение в логах."
+#~ msgstr ""
+#~ "Make sure the default key is "
+#~ "replaced with the new one. If this"
+#~ " is not done, the system will "
+#~ "issue a warning in the logs."
+
