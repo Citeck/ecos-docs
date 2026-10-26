@@ -17,7 +17,7 @@
 Перейдите в журнал **«База знаний»**:
 
 .. image:: _static/wiki/wiki_1.png
-   :width: 700
+   :width: 800
    :align: center
 
 База знаний состоит из трёх виджетов:
@@ -68,5 +68,5 @@
 Создаётся пустая база знаний:
 
 .. image:: _static/wiki/wiki_new_2.png
-   :width: 600
+   :width: 700
    :align: center
