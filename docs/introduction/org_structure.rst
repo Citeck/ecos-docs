@@ -11,8 +11,6 @@
 Страница оргструктуры
 ----------------------
 
-В системе предусмотрен функционал формирования организационной структуры компании. 
-
 **Организационная структура** – система иерархически упорядоченных организационных единиц (должностей, отделов, подразделений). Она используется для назначения исполнителей в бизнес-процессах, настройки прав доступа, управления задачами и делегирования полномочий.
 
 .. note::
@@ -64,82 +62,80 @@
 
 |
 
-.. list-table:: 
-      :widths: 10 60
-      :align: center
+.. grid:: 1
+   :gutter: 2
 
-      * - 
+   .. grid-item-card:: Редактировать
+      :class-header: sd-font-weight-bold
 
-          .. image:: _static/org_structure/group_action_01.png
-                  :width: 30
-                  :align: center
+      .. image:: _static/org_structure/group_action_01.png
+         :width: 30
+         :align: left
 
-        - | **Редактировать**
-          | На форме отображены все группы и пользователи, входящие в группу, информация о родительских группах.
-          | Можно отредактировать **Имя группы**, **Описание**, **удалить (1)**,  **добавить родительские группы** **(2)**.
+      На форме отображены все группы и пользователи, входящие в группу, информация о родительских группах.
 
-          .. image:: _static/org_structure/edit.png
-                  :width: 500
-                  :align: center
+      Можно отредактировать **Имя группы**, **Описание**, **удалить (1)**, **добавить родительские группы (2)**.
 
-          | По клику на группу/ пользователя **(3)** доступен просмотр информации:
+      .. image:: _static/org_structure/edit.png
+         :width: 500
+         :align: center
 
-           .. image:: _static/org_structure/edit_group.png
-                  :width: 500
-                  :align: center         
-          
-          |
-          
-           .. image:: _static/org_structure/edit_person.png
-                  :width: 500
-                  :align: center
+      По клику на группу/пользователя **(3)** доступен просмотр информации:
 
-      * - 
+      .. image:: _static/org_structure/edit_group.png
+         :width: 500
+         :align: center
 
-          .. image:: _static/org_structure/group_action_02.png
-                  :width: 30
-                  :align: center
+      .. image:: _static/org_structure/edit_person.png
+         :width: 500
+         :align: center
 
-        - | **Добавить подгруппу**
-          | Выберите **существующую** группу/группы из оргструктуры. Нажмите **Ок**.
+   .. grid-item-card:: Добавить подгруппу
+      :class-header: sd-font-weight-bold
 
-          .. image:: _static/org_structure/add_subgroup.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/org_structure/group_action_02.png
+         :width: 30
+         :align: left
 
-          | Пример иерархии подгрупп и пользователей в них:
+      Выберите **существующую** группу/группы из оргструктуры. Нажмите **Ок**.
 
-          .. image:: _static/org_structure/structure.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/org_structure/add_subgroup.png
+         :width: 400
+         :align: center
 
-      * - 
+      Пример иерархии подгрупп и пользователей в них:
 
-          .. image:: _static/org_structure/group_action_03.png
-                  :width: 30
-                  :align: center
+      .. image:: _static/org_structure/structure.png
+         :width: 300
+         :align: center
 
-        - | **Добавить пользователя в группу**
-          | Выберите **существующих** пользователей из оргструктуры. Нажмите **Ок**.
+   .. grid-item-card:: Добавить пользователя в группу
+      :class-header: sd-font-weight-bold
 
-          .. image:: _static/org_structure/add_user.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/org_structure/group_action_03.png
+         :width: 30
+         :align: left
 
-      * - 
+      Выберите **существующих** пользователей из оргструктуры. Нажмите **Ок**.
 
-          .. image:: _static/org_structure/group_action_04.png
-                  :width: 30
-                  :align: center
+      .. image:: _static/org_structure/add_user.png
+         :width: 400
+         :align: center
 
-        - | **Создать пользователя**
-          | Группа будет уже предзаполнена.
-          | Внесите данные и сохраните. Обязательные поля отмечены звездочкой.
-          | Чтобы задачи пользователя были доступны для контроля руководителем, заполните поле **Линейный руководитель**.
+   .. grid-item-card:: Создать пользователя
+      :class-header: sd-font-weight-bold
 
-          .. image:: _static/org_structure/add_new_user.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/org_structure/group_action_04.png
+         :width: 30
+         :align: left
+
+      Группа будет уже предзаполнена. Внесите данные и сохраните. Обязательные поля отмечены звездочкой.
+
+      Чтобы задачи пользователя были доступны для контроля руководителем, заполните поле **Линейный руководитель**.
+
+      .. image:: _static/org_structure/add_new_user.png
+         :width: 500
+         :align: center
 
 Просмотр и редактирование профиля пользователя, удаление пользователя из группы
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,56 +150,54 @@
 
 |
 
-.. list-table:: 
-      :widths: 10 60
-      :align: center
+.. grid:: 1
+   :gutter: 2
 
-      * - 
+   .. grid-item-card:: Исключить пользователя из группы
+      :class-header: sd-font-weight-bold
 
-          .. image:: _static/org_structure/person_action_01.png
-                  :width: 30
-                  :align: center
+      .. image:: _static/org_structure/person_action_01.png
+         :width: 30
+         :align: left
 
-        - | **Исключить пользователя из группы**
-          | Действие необходимо подтвердить:
+      Действие необходимо подтвердить:
 
-          .. image:: _static/org_structure/exclude_user.png
-                  :width: 500
-                  :align: center
-      * - 
+      .. image:: _static/org_structure/exclude_user.png
+         :width: 500
+         :align: center
 
-          .. image:: _static/org_structure/person_action_02.png
-                  :width: 30
-                  :align: center
+   .. grid-item-card:: Открыть профиль пользователя
+      :class-header: sd-font-weight-bold
 
-        - | **Открыть профиль пользователя**
+      .. image:: _static/org_structure/person_action_02.png
+         :width: 30
+         :align: left
 
-          .. image:: _static/org_structure/user_profile.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/org_structure/user_profile.png
+         :width: 500
+         :align: center
 
-          | Профиль представлен в виде :ref:`дашборда<dashboard>`. Дашборд состоит из :ref:`виджетов<widgets>`.
-          | Виджеты на дашборде можно конфигурировать - менять их местами, скрывать ненужные. См. подробно :ref:`о конфигурации дашбордов<dashboard_config>`
+      Профиль представлен в виде :ref:`дашборда<dashboard>`. Дашборд состоит из :ref:`виджетов<widgets>`. Виджеты на дашборде можно конфигурировать - менять их местами, скрывать ненужные. См. подробно :ref:`о конфигурации дашбордов<dashboard_config>`.
 
-          .. note::
+      .. note::
 
-              Пользователь может редактировать только свой профиль, администратор - профиль любого пользователя.
+         Пользователь может редактировать только свой профиль, администратор - профиль любого пользователя.
 
-          | Для редактирования информации виджета нажмите:
+      Для редактирования информации виджета нажмите:
 
-          .. image:: _static/org_structure/edit_user_1.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/org_structure/edit_user_1.png
+         :width: 300
+         :align: center
 
-          | Или редактировать непосредственно в строке:
+      Или редактировать непосредственно в строке:
 
-          .. image:: _static/org_structure/edit_user_2.png
-                  :width: 300
-                  :align: center   
+      .. image:: _static/org_structure/edit_user_2.png
+         :width: 300
+         :align: center
 
-          .. image:: _static/org_structure/edit_user_3.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/org_structure/edit_user_3.png
+         :width: 300
+         :align: center
 
 Компонент Оргструктура
 ------------------------
@@ -214,13 +208,21 @@
        :width: 600
        :align: center
 
-По умолчанию **Оргструктура** представлена в виде вкладок **(1)**, где по умолчанию открывается **По уровням**. Воспользуйтесь строкой поиска при необходимости **(2)** и выберите сотрудника, нажав на **(3)**:
+Оргструктура представлена в виде вкладок **(1)**: **По уровням** (открывается по умолчанию) и **Все пользователи**. Воспользуйтесь строкой поиска при необходимости **(2)**.
+
+По уровням
+~~~~~~~~~~~
+
+Выберите сотрудника, нажав на **(3)**:
 
 .. image:: _static/org_structure/org_s_2.png
        :width: 400
        :align: center
 
-**Все пользователи** - участники рабочего пространства: 
+Все пользователи
+~~~~~~~~~~~~~~~~~~
+
+Вкладка **Все пользователи** показывает участников рабочего пространства:
 
 .. image:: _static/org_structure/org_s_3.png
        :width: 400
@@ -228,7 +230,10 @@
 
 Неактивные пользователи отмечены более светлым оттенком серого.
 
-**Уже выбранные** отмечены:
+Уже выбранные
+~~~~~~~~~~~~~~
+
+Уже выбранные сотрудники/группы отмечены:
 
 .. image:: _static/org_structure/org_s_4.png
        :width: 400

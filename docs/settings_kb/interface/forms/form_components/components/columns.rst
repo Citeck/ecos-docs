@@ -7,7 +7,7 @@ Columns
 
 Добавлена возможность указать ширину ячейки для разных размеров экрана согласно сетке bootstrap. `Подробная информация о сетке bootstrap <https://getbootstrap.com/docs/4.0/layout/grid/>`_
 
- .. image:: _static/columns/columns1.png
+.. image:: _static/columns/columns1.png
        :width: 400
        :align: center
 

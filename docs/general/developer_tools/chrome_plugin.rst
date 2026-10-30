@@ -33,104 +33,113 @@
 
 Все действия реализуют единый интерфейс и доступны через строку поиска или контекстное меню.
 
-BrowseRecord
-~~~~~~~~~~~~~
+.. grid:: 1
+   :gutter: 2
 
-Открывает диалог с полной информацией о записи:
+   .. grid-item-card:: BrowseRecord
+      :class-header: sd-font-weight-bold
 
-- Системные атрибуты: ``_id``, ``_created``, ``_modified``, ``_status``, ``_type``, ``_parent``.
-- Значения атрибутов модели.
-- Назначенные роли.
-- Для Alfresco workspace nodeRef — открывает Node Browser.
+      Открывает диалог с полной информацией о записи:
 
-SetStatus
-~~~~~~~~~~
+      - Системные атрибуты: ``_id``, ``_created``, ``_modified``, ``_status``, ``_type``, ``_parent``.
+      - Значения атрибутов модели.
+      - Назначенные роли.
+      - Для Alfresco workspace nodeRef — открывает Node Browser.
 
-Загружает список статусов из ``_type.model.statuses``, показывает текущий статус и позволяет выбрать новый.
+   .. grid-item-card:: SetStatus
+      :class-header: sd-font-weight-bold
 
-CopyRecordId
-~~~~~~~~~~~~~
+      Загружает список статусов из ``_type.model.statuses``, показывает текущий статус и позволяет выбрать новый.
 
-Копирует полный идентификатор записи в буфер обмена.
+   .. grid-item-card:: CopyRecordId
+      :class-header: sd-font-weight-bold
 
-Пример: ``emodel/person@admin``
+      Копирует полный идентификатор записи в буфер обмена.
 
-CopyLocalRecordId
-~~~~~~~~~~~~~~~~~~
+      Пример: ``emodel/person@admin``
 
-Копирует только локальную часть идентификатора (подстрока после ``@``).
+   .. grid-item-card:: CopyLocalRecordId
+      :class-header: sd-font-weight-bold
 
-Пример: ``admin``
+      Копирует только локальную часть идентификатора (подстрока после ``@``).
 
-ClaimTask
-~~~~~~~~~~
+      Пример: ``admin``
 
-- Запрашивает активные задачи workflow для текущей записи (sourceId: ``eproc/wftask``).
-- Показывает каждую задачу с кнопкой **Claim**.
-- Опция **Claim all** — назначить все задачи на текущего пользователя сразу.
+   .. grid-item-card:: ClaimTask
+      :class-header: sd-font-weight-bold
 
-DeleteProcessInstance
-~~~~~~~~~~~~~~~~~~~~~~
+      - Запрашивает активные задачи workflow для текущей записи (sourceId: ``eproc/wftask``).
+      - Показывает каждую задачу с кнопкой **Claim**.
+      - Опция **Claim all** — назначить все задачи на текущего пользователя сразу.
 
-.. note::
+   .. grid-item-card:: DeleteProcessInstance
+      :class-header: sd-font-weight-bold
 
-   Доступно только администраторам.
+      .. note::
 
-- Находит активные экземпляры процессов для текущей записи.
-- Диалог подтверждения с обязательным полем комментария.
-- Опции: пропустить кастомные листенеры / IO mapping.
-- Опциональное изменение статуса записи (по умолчанию: ``rejected``).
-- Записывает событие в историю (``task.delete``).
+         Доступно только администраторам.
 
-ShowFormComponentsKeys
-~~~~~~~~~~~~~~~~~~~~~~~
+      - Находит активные экземпляры процессов для текущей записи.
+      - Диалог подтверждения с обязательным полем комментария.
+      - Опции: пропустить кастомные листенеры / IO mapping.
+      - Опциональное изменение статуса записи (по умолчанию: ``rejected``).
+      - Записывает событие в историю (``task.delete``).
 
-Накладывает метки с именами атрибутов поверх полей формы в виде ``<sup>``-тегов. Берёт элементы с классом ``control-label``, извлекает имена из атрибутов ``name`` или ``for``. Полезно при разработке и отладке форм.
+   .. grid-item-card:: ShowFormComponentsKeys
+      :class-header: sd-font-weight-bold
 
-HostOptions
-~~~~~~~~~~~~
+      Накладывает метки с именами атрибутов поверх полей формы в виде ``<sup>``-тегов. Берёт элементы с классом ``control-label``, извлекает имена из атрибутов ``name`` или ``for``. Полезно при разработке и отладке форм.
 
-Настройки на уровне домена, хранятся в ``chrome.storage.sync``.
+   .. grid-item-card:: HostOptions
+      :class-header: sd-font-weight-bold
 
-Позволяет задать цвет шапки сайта (``.ecos-header``) для визуального различия окружений. Предустановленная палитра: ``primary``, ``warning``, ``success``, ``danger``, ``purple``, ``pink``, ``teal`` и др. Применяется при каждой загрузке страницы через ``chrome.tabs.onUpdated``.
+      Настройки на уровне домена, хранятся в ``chrome.storage.sync``.
 
-AdminPageSection
-~~~~~~~~~~~~~~~~~
+      Позволяет задать цвет шапки сайта (``.ecos-header``) для визуального различия окружений. Предустановленная палитра: ``primary``, ``warning``, ``success``, ``danger``, ``purple``, ``pink``, ``teal`` и др. Применяется при каждой загрузке страницы через ``chrome.tabs.onUpdated``.
 
-.. note::
+   .. grid-item-card:: AdminPageSection
+      :class-header: sd-font-weight-bold
 
-   Доступно только администраторам.
+      .. note::
 
-- Запрашивает все разделы административной панели (sourceId: ``uiserv/admin-page-section``).
-- Двуязычный поиск (RU / EN).
-- Открывает ``/v2/admin`` с нужным типом и journalId.
+         Доступно только администраторам.
 
-OpenCardInOldUi
-~~~~~~~~~~~~~~~~
+      - Запрашивает все разделы административной панели (sourceId: ``uiserv/admin-page-section``).
+      - Двуязычный поиск (RU / EN).
+      - Открывает ``/v2/admin`` с нужным типом и journalId.
 
-Открывает карточку Alfresco workspace nodeRef в старом интерфейсе Share.
+   .. grid-item-card:: OpenCardInOldUi
+      :class-header: sd-font-weight-bold
 
-URL: ``{origin}/share/page/card-details?forceOld=true&nodeRef={nodeRef}``
+      Открывает карточку Alfresco workspace nodeRef в старом интерфейсе Share.
 
-InjectCiteckUtils
-~~~~~~~~~~~~~~~~~~
+      URL: ``{origin}/share/page/card-details?forceOld=true&nodeRef={nodeRef}``
 
-.. _InjectCiteckUtils:
+   .. grid-item-card:: InjectCiteckUtils
+      :class-header: sd-font-weight-bold
 
-Автоматически внедряет объекты ``$`` и ``$$`` в контекст страницы при каждой загрузке. Не добавляет элемент в строку поиска — работает только как фоновый хук. Подробнее: :ref:`консольные хелперы <citeck_console_helpers>`.
+      .. _InjectCiteckUtils:
 
-Impersonate
-~~~~~~~~~~~~
+      Автоматически внедряет объекты ``$`` и ``$$`` в контекст страницы при каждой загрузке. Не добавляет элемент в строку поиска — работает только как фоновый хук. Подробнее: :ref:`консольные хелперы <citeck_console_helpers>`.
 
-Имперсонация пользователя через Keycloak OAuth.
+   .. grid-item-card:: Impersonate
+      :class-header: sd-font-weight-bold
 
-- Сохраняет историю последних 10 пользователей (``chrome.storage.sync``).
-- Секреты (токены) хранятся в ``chrome.storage.session``.
+      Имперсонация пользователя через Keycloak OAuth.
 
-Keycloak endpoints:
+      - Сохраняет историю последних 10 пользователей (``chrome.storage.sync``).
+      - Секреты (токены) хранятся в ``chrome.storage.session``.
 
-- ``/ecos-idp/auth/realms/master/protocol/openid-connect/token`` — получение токена.
-- ``/ecos-idp/auth/admin/realms/ecos-app/users?username=...`` — поиск пользователя.
+      Keycloak endpoints:
+
+      .. list-table::
+         :widths: 50 50
+         :class: tight-table
+
+         * - ``/ecos-idp/auth/realms/master/protocol/openid-connect/token``
+           - Получение токена.
+         * - ``/ecos-idp/auth/admin/realms/ecos-app/users?username=...``
+           - Поиск пользователя.
 
 Контекстное меню
 -----------------
@@ -140,6 +149,7 @@ Keycloak endpoints:
 .. list-table::
    :widths: 30 70
    :header-rows: 1
+   :class: tight-table
 
    * - Пункт меню
      - Действие
@@ -167,6 +177,7 @@ Keycloak endpoints:
 .. list-table::
    :widths: 30 70
    :header-rows: 1
+   :class: tight-table
 
    * - Тип
      - Цвет
@@ -187,6 +198,7 @@ Keycloak endpoints:
 .. list-table::
    :widths: 20 80
    :header-rows: 1
+   :class: tight-table
 
    * - Вкладка
      - Содержимое
@@ -236,10 +248,21 @@ Edit & Retry
 Управление записью
 ~~~~~~~~~~~~~~~~~~~
 
-- **Pause** (⏸) — приостановить запись новых запросов.
-- **Clear** (🗑) — очистить список.
-- **Filter** — фильтрация списка по тексту.
-- **Find** (F3) — поиск по тексту внутри детального просмотра.
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+   :class: tight-table
+
+   * - Кнопка
+     - Действие
+   * - **Pause** (⏸)
+     - Приостановить запись новых запросов.
+   * - **Clear** (🗑)
+     - Очистить список.
+   * - **Filter**
+     - Фильтрация списка по тексту.
+   * - **Find** (F3)
+     - Поиск по тексту внутри детального просмотра.
 
 Темы
 ~~~~~
@@ -294,6 +317,7 @@ Edit & Retry
 .. list-table::
    :widths: 35 65
    :header-rows: 1
+   :class: tight-table
 
    * - Функция
      - Описание
@@ -326,6 +350,7 @@ Edit & Retry
 .. list-table::
    :widths: 30 70
    :header-rows: 1
+   :class: tight-table
 
    * - Разрешение
      - Назначение

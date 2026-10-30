@@ -12,7 +12,14 @@
 
 Атрибуты аспекта доступны через префикс в формате ``{prefix}:{attribute.id}``, что позволяет однозначно идентифицировать их в формах, журналах, конфигурациях действий и мутациях записей.
 
-В Citeck представлены системные аспекты для типовых задач: учёт времени, управление связями между документами, генерация штрихкода, конфигурация истории событий, импорт данных и обработка активностей.
+В Citeck представлены системные аспекты для типовых задач:
+
+  - учёт времени;
+  - управление связями между документами;
+  - генерация штрихкода;
+  - конфигурация истории событий;
+  - импорт данных;
+  - обработка активностей.
 
 Для просмотра существующих аспектов и их редактирования создан журнал **"Аспекты" (Рабочее пространство "Раздел администратора" - Модель)**:
 
@@ -213,22 +220,20 @@
 
 Аспект **«Конфигурация истории»** создан для возможности конфигурации записи свойств в историю.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_08.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_08.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_07.png
-                  :width: 600
-                  :align: center
-
+      .. image:: _static/aspects/history-config_07.png
+         :width: 500
+         :align: left
 
 Для настройки необходимо добавить этот аспект в тип данных на вкладке **Аспекты**:
 
@@ -236,26 +241,42 @@
        :width: 600
        :align: center
 
+Аспект добавляет 3 настройки, которые можно задать как в форме, так и напрямую в json:
+
+.. list-table::
+      :widths: 20 30
+      :header-rows: 1
+      :align: center
+      :class: tight-table
+
+      * - Настройка
+        - Описание
+      * - **Исключенные атрибуты** (``excludedAtts``)
+        - атрибуты, изменение которых не записывается в историю
+      * - **Атрибуты для записи истории при создании** (``onCreationHistoricalAtts``)
+        - атрибуты, создание которых записывается в историю
+      * - **Отключить историю**
+        - полностью отключает запись изменений в историю
+
 Исключенные атрибуты
 """""""""""""""""""""
 
 По кнопке **Настроить** в строке **Исключенные атрибуты** доступен выбор атрибутов типа данных, информация об изменении которых не будет записываться в **историю**, и отражаться в виджете **«История событий»**, соответственно.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_02.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_02.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_03.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_03.png
+         :width: 500
+         :align: left
 
 Например, если в карточке изменить информацию о наименовании, категории и стоимости, то в виджете **«История событий»** отразится информация только об измененной стоимости:
 
@@ -265,21 +286,20 @@
 
 Если в типе данных настроены аспекты (например, **Версионные данные**, **Имеет документы**), то атрибуты из них так же можно выбрать: 
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_09.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/aspects/history-config_09.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_10.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_10.png
+         :width: 500
+         :align: left
 
 
 Атрибуты для записи истории при создании
@@ -287,21 +307,20 @@
 
 По кнопке **Настроить** в строке **Атрибуты для записи истории при создании** доступен выбор атрибутов типа данных, информация о создании которых будет записываться в **историю**, и отражаться в виджете **«История событий»**, соответственно.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_12.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_12.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_13.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/aspects/history-config_13.png
+         :width: 500
+         :align: left
 
 Например:
 
@@ -315,21 +334,20 @@
   - **excludedAtts** - исключенные атрибуты;
   - **onCreationHistoricalAtts** - атрибуты для записи истории при создании
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_05.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_05.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/aspects/history-config_06.png
-                  :width: 600
-                  :align: center
+      .. image:: _static/aspects/history-config_06.png
+         :width: 500
+         :align: left
 
 
 Отключить историю
@@ -402,19 +420,19 @@
 
 Чтобы письмо обрабатывалось и добавлялось как активность необходимо:
 
-1) Добавить в тип данных аспект **Имеет активности** (has-ecos-activities) и настроить его конфигурацию:
+#. Добавить в тип данных аспект **Имеет активности** (has-ecos-activities) и настроить его конфигурацию:
 
-.. image:: _static/aspects/has-ecos-activities_1.png
-      :width: 500
-      :align: center
+   .. image:: _static/aspects/has-ecos-activities_1.png
+         :width: 500
+         :align: center
 
-Указать **алиас**, по которому будет осуществляться поиск типа данных в заголовке письма, выбрать **атрибут** типа данных.
+   Указать **алиас**, по которому будет осуществляться поиск типа данных в заголовке письма, выбрать **атрибут** типа данных.
 
-2) В Теме сообщения в конце указывать связь в формате **(Алиас: Значение)**
+#. В Теме сообщения в конце указывать связь в формате **(Алиас: Значение)**
 
-.. image:: _static/aspects/has-ecos-activities_2.png
-      :width: 400
-      :align: center
+   .. image:: _static/aspects/has-ecos-activities_2.png
+         :width: 400
+         :align: center
 
 Для рабочих пространств по умолчанию добавлена следующая настройка аспекта:
 
@@ -425,8 +443,188 @@
 Для включения обработки писем в виджете "Активности" необходимо указать почтовый ящик в настройке :ref:`mail-inbox-activity<mail-inbox-activity>`.
 
 
-Файл библиотеки документов
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Вычисляемые атрибуты в аспекте
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD
+.. _computed-atts_aspect:
+
+Пример показывает, как один раз описать :ref:`вычисляемые атрибуты<count_attributes>` в аспекте и переиспользовать их в нескольких типах данных. Скрипт аспекта выполняется в контексте записи того типа, к которому подключён аспект, и может читать её атрибуты через ``value.load(...)``.
+
+Пример состоит из трёх файлов:
+
+.. list-table::
+      :widths: 20 40
+      :header-rows: 1
+      :class: tight-table
+      :align: center
+
+      * - Файл
+        - Назначение
+      * - ``age-test-aspect.yml``
+        - аспект **«Вычисление возраста»** с вычисляемыми атрибутами
+      * - ``age-example-a-type.yml``
+        - тип данных **«Пример возраста — тип A»**, к которому подключён аспект
+      * - ``age-example-b-type.yml``
+        - тип данных **«Пример возраста — тип B»**, к которому подключён тот же аспект
+
+Аспект
+"""""""
+
+Аспект ``age-test`` содержит два вычисляемых атрибута типа ``SCRIPT``. Оба используют ``storingType: ON_MUTATE`` — значение пересчитывается и сохраняется при каждом изменении записи.
+
+.. list-table::
+      :widths: 15 15 40
+      :header-rows: 1
+      :class: tight-table
+      :align: center
+
+      * - Атрибут
+        - Тип
+        - Описание
+      * - ``constant``
+        - TEXT
+        - всегда возвращает строку ``"Любой текст"``. Служит для проверки, что вычисляемые атрибуты аспекта работают на типе
+      * - ``age``
+        - NUMBER
+        - возраст на дату расчёта, вычисленный по атрибутам записи ``dateBirth`` и ``calculationDate``
+
+Алгоритм вычисления атрибута ``age``:
+
+#. Прочитать из записи ``dateBirth`` и ``calculationDate`` в строковом виде (``?str``).
+#. Если хотя бы одна из дат не заполнена — вернуть ``null``.
+#. Разобрать обе даты на год, месяц и день (первые 10 символов в формате ``ГГГГ-ММ-ДД``).
+#. Если дата расчёта раньше даты рождения — вернуть ``null``.
+#. Вычесть год рождения из года расчёта. Если в году расчёта день рождения ещё не наступил — уменьшить результат на 1.
+
+.. dropdown:: age-test-aspect.yml
+   :color: secondary
+
+   .. code-block:: yaml
+
+      id: age-test
+      name:
+        ru: Вычисление возраста
+
+      attributes:
+        - id: constant
+          name:
+            ru: Проверка вычисления
+          type: TEXT
+          computed:
+            type: SCRIPT
+            storingType: ON_MUTATE
+            config:
+              fn: |
+                return "Любой текст";
+
+        - id: age
+          name:
+            ru: Возраст на дату расчёта
+          type: NUMBER
+          computed:
+            type: SCRIPT
+            storingType: ON_MUTATE
+            config:
+              fn: |
+                var birth = value.load('dateBirth?str');
+                var target = value.load('calculationDate?str');
+
+                if (!birth || !target) return null;
+
+                var b = birth.substring(0, 10).split('-').map(Number);
+                var d = target.substring(0, 10).split('-').map(Number);
+
+                if (d[0] < b[0] ||
+                    (d[0] === b[0] &&
+                     (d[1] < b[1] ||
+                      (d[1] === b[1] && d[2] < b[2])))) {
+                  return null;
+                }
+
+                var age = d[0] - b[0];
+
+                if (d[1] < b[1] ||
+                    (d[1] === b[1] && d[2] < b[2])) {
+                  age--;
+                }
+
+                return age;
+
+Типы данных
+""""""""""""
+
+Оба типа наследуются от ``emodel/type@user-base``, хранятся в ``ECOS_MODEL`` и подключают аспект через ``aspects: - ref: emodel/aspect@age-test``. Набор собственных атрибутов у типов одинаковый: ``name``, ``dateBirth``, ``calculationDate``. Типы различаются только идентификатором и названием.
+
+.. tab-set::
+
+   .. tab-item:: Тип A
+
+      .. code-block:: yaml
+
+         id: age-example-a
+         name:
+           ru: Пример возраста — тип A
+
+         parentRef: emodel/type@user-base
+         storageType: ECOS_MODEL
+
+         aspects:
+           - ref: emodel/aspect@age-test
+
+         model:
+           attributes:
+             - id: name
+               name:
+                 ru: Имя
+               type: TEXT
+
+             - id: dateBirth
+               name:
+                 ru: Дата рождения
+               type: DATE
+
+             - id: calculationDate
+               name:
+                 ru: Дата расчёта
+               type: DATE
+
+   .. tab-item:: Тип B
+
+      .. code-block:: yaml
+
+         id: age-example-b
+         name:
+           ru: Пример возраста — тип B
+
+         parentRef: emodel/type@user-base
+         storageType: ECOS_MODEL
+
+         aspects:
+           - ref: emodel/aspect@age-test
+
+         model:
+           attributes:
+             - id: name
+               name:
+                 ru: Имя
+               type: TEXT
+
+             - id: dateBirth
+               name:
+                 ru: Дата рождения
+               type: DATE
+
+             - id: calculationDate
+               name:
+                 ru: Дата расчёта
+               type: DATE
+
+В результате у записей обоих типов автоматически появляются атрибуты аспекта, которые вычисляются по данным самой записи. Префикс в аспекте не задан, поэтому он равен идентификатору, и атрибуты доступны как ``age-test:constant`` и ``age-test:age``.
+
+.. note::
+
+   Аспект не объявляет атрибуты ``dateBirth`` и ``calculationDate`` — он рассчитывает на то, что они есть в типе данных. Если подключить аспект к типу без этих атрибутов, ``age`` всегда будет ``null``, ошибки при этом не возникнет.
+
+   Чтобы сделать аспект самодостаточным, ``dateBirth`` и ``calculationDate`` можно перенести в ``attributes`` самого аспекта — тогда в типах их объявлять не нужно.
+
 

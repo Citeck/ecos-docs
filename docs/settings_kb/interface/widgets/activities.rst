@@ -47,13 +47,7 @@
 Как добавить
 ------------
 
-Нажмите **«Добавить активности»**, выберите вид активности из списка:
-
-.. image:: ../_static/widgets/activity/activity_04.png
-       :width: 600
-       :align: center
-
-Введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
+Нажмите **«+»**, выберите вид активности из списка и введите информацию об активности. В зависимости от типа список полей и возможные статусы различаются.
 
 .. image:: ../_static/widgets/activity/activity_05.png
        :width: 600
@@ -125,68 +119,67 @@
 Типы
 ~~~~~
 
-Звонок
-"""""""
+.. tab-set::
 
-По умолчанию указан **ответственный**:
+   .. tab-item:: Звонок
 
-.. image:: ../_static/widgets/activity/activity_07.png
-       :width: 600
-       :align: center
+      По умолчанию указан **ответственный**:
 
-Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
+      .. image:: ../_static/widgets/activity/activity_07.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_08.png
-       :width: 600
-       :align: center
+      Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
-Созданная активность в карточке:
+      .. image:: ../_static/widgets/activity/activity_08.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_09.png
-       :width: 600
-       :align: center
+      Созданная активность в карточке:
 
-Письмо
-"""""""
+      .. image:: ../_static/widgets/activity/activity_09.png
+         :width: 600
+         :align: center
 
-По умолчанию указан **ответственный**:
+   .. tab-item:: Письмо
 
-.. image:: ../_static/widgets/activity/activity_10.png
-       :width: 600
-       :align: center
+      По умолчанию указан **ответственный**:
 
-Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, измените **ответственного** при необходимости. Введите комментарий, добавьте файл. Нажмите **«Создать»**.
+      .. image:: ../_static/widgets/activity/activity_10.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_11.png
-       :width: 600
-       :align: center
+      Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, измените **ответственного** при необходимости. Введите комментарий, добавьте файл. Нажмите **«Создать»**.
 
-Созданная активность в карточке:
+      .. image:: ../_static/widgets/activity/activity_11.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_12.png
-       :width: 600
-       :align: center
+      Созданная активность в карточке:
 
-Встреча
-""""""""
+      .. image:: ../_static/widgets/activity/activity_12.png
+         :width: 600
+         :align: center
 
-По умолчанию указан **ответственный**:
+   .. tab-item:: Встреча
 
-.. image:: ../_static/widgets/activity/activity_13.png
-       :width: 600
-       :align: center
+      По умолчанию указан **ответственный**:
 
-Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
+      .. image:: ../_static/widgets/activity/activity_13.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_14.png
-       :width: 600
-       :align: center
+      Выберите **дату**, **время** из календаря, укажите **название**, **продолжительность**, **ответственного**, добавьте **участников** при необходимости. Введите комментарий. Нажмите **«Создать»**.
 
-Созданная активность в карточке:
+      .. image:: ../_static/widgets/activity/activity_14.png
+         :width: 600
+         :align: center
 
-.. image:: ../_static/widgets/activity/activity_15.png
-       :width: 600
-       :align: center
+      Созданная активность в карточке:
+
+      .. image:: ../_static/widgets/activity/activity_15.png
+         :width: 600
+         :align: center
 
 Письмо-приглашение
 ~~~~~~~~~~~~~~~~~~~
@@ -221,13 +214,13 @@
               |
 
               .. image:: ../_static/widgets/activity/activity_19.png
-                     :width: 600
+                     :width: 700
                      :align: center
 
        - в карточке сделки в виджете **«Мои задачи»**:
 
               .. image:: ../_static/widgets/activity/activity_20.png
-                     :width: 600
+                     :width: 700
                      :align: center
 
 
@@ -284,10 +277,6 @@
 
 Комментарий
 ~~~~~~~~~~~~
-
-.. image:: ../_static/widgets/activity/activity_21.png
-       :width: 600
-       :align: center
 
 Введите комментарий. Нажмите **«Создать»**.
 

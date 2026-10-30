@@ -49,17 +49,13 @@
 
 Перейти в раздел администрирования > :guilabel:`Журналы` > найти необходимый журнал > действие :guilabel:`Редактировать`. Перейти в :guilabel:`Дополнительно`.
 
-.. list-table::
-   :widths: 40
+.. image:: _static/editor/editor_1.png
+   :width: 500
    :align: center
 
-   * - .. image:: _static/editor/editor_1.png
-          :width: 500
-          :align: center
-
-       .. image:: _static/editor/editor_2.png
-          :width: 500
-          :align: center
+.. image:: _static/editor/editor_2.png
+   :width: 500
+   :align: center
 
 Типы
 ---------

@@ -311,5 +311,5 @@
 
 - :ref:`Команды CLI <server_commands>` -- полный справочник по командам
 - :ref:`Конфигурация <server_configuration>` -- настройка namespace.yml и daemon.yml
-- :ref:`Архитектура <server_architecture>` -- как устроен лончер изнутри
+- :ref:`Архитектура <server_architecture>` -- как устроен лаунчер изнутри
 - :ref:`Решение проблем <server_troubleshooting>` -- типичные ошибки и их решение

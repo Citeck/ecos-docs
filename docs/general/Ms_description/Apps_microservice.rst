@@ -107,120 +107,92 @@
 Полезные скрипты (EApps)
 ------------------------
 
-Для получения всех артефактов по типу можно выполнить следующий скрипт:
+.. dropdown:: Получение и удаление артефактов по типу
+   :color: secondary
 
-.. code-block:: javascript
+   Для получения всех артефактов по типу можно выполнить следующий скрипт:
 
-      Records.query({
-      sourceId: 'eapps/module',
-            query: {
-                  type: 'form'
-            },
-            page: {maxItems: 100}
-      }).then(console.log);
+   .. code-block:: javascript
 
-В результате выполнения в консоль выведется список id артефактов.
+         Records.query({
+         sourceId: 'eapps/module',
+               query: {
+                     type: 'form'
+               },
+               page: {maxItems: 100}
+         }).then(console.log);
 
-Имея id артефакта, его можно удалить следующим скриптом:
+   В результате выполнения в консоль выведется список id артефактов.
 
-.. code-block:: javascript
+   Имея id артефакта, его можно удалить следующим скриптом:
 
-      Records.remove(["eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1"]);
+   .. code-block:: javascript
+
+         Records.remove(["eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1"]);
 
 Получение содержимого модулей из базы eapps
 --------------------------------------------
 
-Получаем список ревизий по ext_id и типу артефакта:
+.. dropdown:: Извлечение файла модуля напрямую из БД
+   :color: secondary
 
-.. code-block:: sql
+   Получаем список ревизий по ext_id и типу артефакта:
 
-      select module.ext_id,rev.created_date,rev.created_by,rev.content_id
-      from ecos_module module
-      join ecos_module_rev rev on module.id=rev.module_id
-      where module.ext_id='ECOS_FORM' and module.type='ui/form';
+   .. code-block:: sql
 
-Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:
+         select module.ext_id,rev.created_date,rev.created_by,rev.content_id
+         from ecos_module module
+         join ecos_module_rev rev on module.id=rev.module_id
+         where module.ext_id='ECOS_FORM' and module.type='ui/form';
 
-.. code-block:: sql
+   Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:
 
-      select id,encode(data, 'base64') from ecos_content where id=14809;
+   .. code-block:: sql
 
-Получаем:
+         select id,encode(data, 'base64') from ecos_content where id=14809;
 
-.. code-block:: text
+   Получаем результат в виде постранично разбитой base64-строки (фрагмент):
 
-       id   |                                    encode
-      -------+------------------------------------------------------------------------------
-      11448 | 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
-            | AQBFAAAAmQgAAAAA
+   .. code-block:: text
 
-Убираем шапку, отступы ``|``, переносы строк, знаки + в конце строк и получаем строку:
+          id   |                                    encode
+         -------+------------------------------------------------------------------------------
+         11448 | UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAA+
+               | AAAAAO1aWXMbNxL+K8y8xKnSYUdOLDHZrXIoKVFiLl2Wy3nYcrnAGZADCgNQAIYUxeJ/324cc1AU+
+               | HR1UxM3oRRygB+jz625g5hFLonZ00umdfzntfehGO9FAquwPOoPRTCY5p19wAMYNM5xG7XlEBcyd+
+               | ...
+               | AABRQgAADgAJAAAAAAAAAAAAAAAAAAAARUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEA+
+               | AQBFAAAAmQgAAAAA
 
-.. code-block:: text
+   Убираем шапку, отступы ``|``, переносы строк и знаки ``+`` в конце строк — получаем одну сплошную base64-строку:
 
-      UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAAAAAAAO1aWXMbNxL+K8y8xKnSYUdOLDHZrXIoKVFiLl2Wy3nYcrnAGZADCgNQAIYUxeJ/324cc1AUHR1UxM3oRRygB+jz625g5hFLonZ00umdfzntfehGO9FAquwPOoPRTCY5p19wAMYNM5xG7XlEBcydwmArZ9FiJ0qojhUbGyZFfdrIFk2YaUmTUtXCZTTSx7k2MuvaxYF0pPdjZmh8se/20/sUSfdpLPUu/tp1LyALszH9QAfwEjxMWWLSqC1yznci9uoQN7fcDJhggZmE6TEnKIyXIpbZWAoqjI7a/51HnPQph1nHTQuUsRPpVE7/lCrpyFyYqD0gXFM32kmJqo8a0uf0E6PTqG1UDgOET8lMnwgcT0oyYBx2MfTKDBjluAvhXE67OTdszGmX6AtdUDMxzk1Y8KJiijN8cUI4S4ixpvCqpFqTIXVqGWmUHH8pepkzhVy4lbwa7Zz7/V6xiV3Jb5wx8Y6KIaoViTJyVXtkAtWii8nK05gYQ5XdeIFaGaJ6P1trEJDxE+G5588Kh+5BQMQIjMMEjFIRq9nYVFQGMzFNJU+o8lsosOxVlf0OJ9rvr/NBMZl5pZZLKQn+VV08F+wyrxBQpZk2VBRaT1mSoCN7gphTonriN5bQQAEmIL8qlrxzHuQJrT+9l9o7YGTkOPKjfzp/PXjpn7tEDUH29sFSBKEIVCmp/Mr4bKREmdwD8Ebru4IXMpFQLz/4fN37SG7kQILOipGkf+bog3xWn8c3jBUTHuccXKQyZh23EyZ6E+DVqsUvBWE5pAadcxCMPIO/3W53N0laadrOshaJrP7o6VoKTSb0rfZhg24FDqCoTnteSd4oH9xowUCID0sWp0RAZGDci8QahXDkDaM5YMc0RUu73/TSu3AGEVkPyI9lDAc37loi69WIojT98YfDTMDrJbB8tKj5PEHFeN4aRGkQpUGUZ4oo3y8jCtZmayP9aaBmBZ6EyvEhQVoG+hagEpdDFts6UpAM+Tp2gYK1bkvPIP4zX/aCYIoNh4g886DNEZkQF6UoTvnQBok0aK/1rxYT2hAR070xUYAle1gT7zmZ9pg+tzugUl989xPyQ2L0R72SI282vzcAGECUmVkU9D/bpY8dh4C3ZrA2TMohv0YfIIQSdM4IuDTWQcAA0eLz4nODtg3abh/aTl/HV0LV6zd8a2m5vwiaI5krYPfMLo3NLMaNdgbGprQjeZ4Jj3bYl+bWxecu5I4d0X9cGNsgA3XF6akNZOdlsKhtcsGVvXQQUDJG4pvIWt/1rZ6J+BherLXB9TbTekwxVNWKBZeSxj5W56sBUYGQymiV2oFbhdAPVGmsYIw4fCspa8NV+i/ANwPQq4pSjq2iVCsowRful4lqcXl7KloUpbg/2SjgmFHtzjOWHL/czIWAPQmxAWA9Iri/B9jquzgfEhYIBYlMsT64nN/Hg7qmHKD2d+e6y2l+XRUexKMJi0HA30PChNim5pRxSJvFpC5mmySx1UnCge5DcB3l7CgK47/kxsjSGjhxAt77QU5XzByDmxp6c47pU2DpPFaUCmuLrkwIr0yfW/+miZX1rf6I2aCYtUj9Ojk8SngNIpxV75cF0IXOFQSdAxftUicpcL5+DumtUwNNN1Ll5x14VRV/+bA2fXJlFGktE1Ec3UXSz1XMyhUP4KUh6uNaOHs0KQx8MqHVlsLq8mOKcxKT0su9gxvQkBQSVdwEIeRmhnoCnJ16S34FZVdha7n9w1EWM7fzxNshtsHG/wdsvBMYcpYxePPVy5c+bN8XvZkP451oYFOpN7qtCAvEcXa5USZCP3tuxyBAMXZI0hN85gUqNQSObmx2LrVKszF3jd3PekzEv+fzFoPBPWu+1mLx874djgIU2E11lbdlcBjkmvbGvkudFyFUG/I4YbEmlL8BnPtv3kzioxraHddqzc0efkBdSlaffdQr3pvl0eaw7fGOM+4Hgnc/2fk6bDbYt93Y98wOD+54GKDkVFvTTGeaTWfD4lW8zZaqikfxxegin/RrgBT6egyo0OHPw3X1QYEnbtKbtCc6KeMJtL2/1Z1vBdREK5CLl+5yyw13B88RsaNzh4TI/MR13eHwzqGnMjFuiE99LuOLsMN9at9wUOhq9JXCxIEtRJtPznouFQSdu5KzJHxEbKjDtEvYd8KLsiO5G2BUjNbgxaP0kdX8ep/24K7ni5pd29MxPF/idGDO4iKBs2FaefQK7okzYXks7ZDSrN4gOUgR34+G18x2aXIw0Kge8IJxrlP/g3P740rbfxrkOtpBRtA5oL2zc44kxjigj3/W8uC4afLsPzVunI9nlz9cXbgzllvSFR79tPw3W0XGKj4Eq6eslXmj4B0XqV2c4RtYfJzYbP7iuzvkvdLqoVt/rDyIpYUXtx5dT3E2cr/Cf8UXFsunKusL/eKS0ukruucl6TfffNmDaHgRLkt3Wt8qKc0am39763VpyclG70mtvvxFaShwotpZHPRoqIeg2L+pH9r++mZLYXlz5cVIH1B+YcuLsiVZW2hsuF9p6pimjtnWOiYWwx/7l+vqmHcS1MKuiT8Y3EApY3egT1fM/C33Nryuxie5vnni8qRqx2dVoKytXjdyX9Wcy2wrDG+ubjk6uh6/acqWpmxpypYHly1H+dUr7b7Yu6sbbziqyti+pZ46z/t4R16rmwJkjBXLiJqtL4FuAs/j3W84EXVgsSb+c4r/7U+PTfxv+NqiaFRKb7bQMdP9y8Hr6JG/8G8yWuPRD8poF3yqXx1at0S9vU1GsPrXoD0oeiW2++vp4i7/qb4YrCVYXWaRgv0t7bfCVk0APvMAXF/R2WiT16PDFJPAYvkL18X/AFBLBwiiGE2wTAgAAFFCAABQSwECFAAUAAgICAAAACEAohhNsEwIAABRQgAADgAJAAAAAAAAAAAAAAAAAAAARUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEAAQBFAAAAmQgAAAAA
+   .. code-block:: text
 
-Загружаем полученную строку в любой сервис по декодированию base64 в файл. Например:
+         UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAAAAAAAO1aWXMbNxL...RUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEAAQBFAAAAmQgAAAAA
 
-`https://base64.guru/converter/decode/file <https://base64.guru/converter/decode/file>`_
+   Загружаем полученную строку в любой сервис по декодированию base64 в файл. Например:
 
-Скачиваем итоговый файл:
+   `https://base64.guru/converter/decode/file <https://base64.guru/converter/decode/file>`_
 
-.. image:: _static/apps_mks/app_download.png
-   :width: 700
-   :align: center
+   Скачиваем итоговый файл:
 
-В результате получаем архив с нашим модулем.
+   .. image:: _static/apps_mks/app_download.png
+      :width: 700
+      :align: center
+
+   В результате получаем архив с нашим модулем.
 
 Полезные скрипты в базе ECOS Apps
 ----------------------------------
 
-Получение ревизий модуля:
+.. dropdown:: Получение ревизий модуля
+   :color: secondary
 
-.. code-block:: sql
+   .. code-block:: sql
 
-      select module.ext_id,rev.created_date,rev.created_by,rev.is_user_rev,rev.content_id
-      from ecos_module module
-      join ecos_module_rev rev on module.id=rev.module_id
-      where module.ext_id='ECOS_FORM' order by rev.created_date desc;
+         select module.ext_id,rev.created_date,rev.created_by,rev.is_user_rev,rev.content_id
+         from ecos_module module
+         join ecos_module_rev rev on module.id=rev.module_id
+         where module.ext_id='ECOS_FORM' order by rev.created_date desc;
 
-**is_user_rev** флаг определяет, что модуль менялся пользователем.
+   **is_user_rev** флаг определяет, что модуль менялся пользователем.

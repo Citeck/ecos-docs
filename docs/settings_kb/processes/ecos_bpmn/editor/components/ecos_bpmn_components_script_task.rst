@@ -16,30 +16,35 @@
    :width: 300
    :align: center
 
-.. list-table::
-      :widths: 5 5
-      :class: tight-table
-      :align: center
+Имя
+~~~
 
-      * - Укажите **Имя**
+Укажите **Имя**.
 
-        - 
-               .. image:: _static/script_task/60.png
-                :width: 300
-                :align: center
-      * - Укажите **скрипт**
-        -
-               .. image:: _static/script_task/61.png
-                :width: 300
-                :align: center
-      * - | Настройки асинхронности:
-          |  - **Асинхронно "перед"**- исполнение доходит до точки перед блоком, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба
-          |  - **Асинхронно "после"** - исполнение доходит до точки после блока, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба
-          | См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_
-        -
-               .. image:: _static/script_task/62.png
-                :width: 300
-                :align: center
+.. image:: _static/script_task/60.png
+   :width: 300
+   :align: center
+
+Скрипт
+~~~~~~
+
+Укажите **скрипт**.
+
+.. image:: _static/script_task/61.png
+   :width: 300
+   :align: center
+
+Настройки асинхронности
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Асинхронно "перед"** — исполнение доходит до точки перед блоком, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба.
+- **Асинхронно "после"** — исполнение доходит до точки после блока, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба.
+
+См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_.
+
+.. image:: _static/script_task/62.png
+   :width: 300
+   :align: center
 
 .. important::
 
@@ -470,51 +475,51 @@ Logger
 В эту переменную информация не пишется, если строка пустая.
 
 
-Пример вычисления id рабочего расписания с использованием DMN
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. dropdown:: Пример вычисления id рабочего расписания с использованием DMN
+   :color: secondary
 
-Пример процесса:
+   Пример процесса:
 
-.. image:: _static/script_task/process_01.png
-       :width: 700
-       :align: center
+   .. image:: _static/script_task/process_01.png
+      :width: 700
+      :align: center
 
-Установка переменной для DMN:
+   Установка переменной для DMN:
 
-.. image:: _static/script_task/process_02.png
-       :width: 700
-       :align: center
+   .. image:: _static/script_task/process_02.png
+      :width: 700
+      :align: center
 
-Скрипт:
+   Скрипт:
 
-.. code-block:: javascript
+   .. code-block:: javascript
 
-    execution.setVariable("sum", document.load("sum?num"));
+       execution.setVariable("sum", document.load("sum?num"));
 
-Выбор рабочего календаря:
+   Выбор рабочего календаря:
 
-.. image:: _static/script_task/process_03.png
-       :width: 700
-       :align: center
+   .. image:: _static/script_task/process_03.png
+      :width: 700
+      :align: center
 
-**Переменная результата:** ``workingCalendarId``
+   **Переменная результата:** ``workingCalendarId``
 
-:ref:`DMN решение<dmn_decision>` содержит id :ref:`созданных календарей<business-schedule>`:
+   :ref:`DMN решение<dmn_decision>` содержит id :ref:`созданных календарей<business-schedule>`:
 
-.. image:: _static/script_task/process_04.png
-       :width: 600
-       :align: center
+   .. image:: _static/script_task/process_04.png
+      :width: 600
+      :align: center
 
-Пользовательская задача:
+   Пользовательская задача:
 
-.. image:: _static/script_task/process_05.png
-       :width: 700
-       :align: center
+   .. image:: _static/script_task/process_05.png
+      :width: 700
+      :align: center
 
-Срок выполнения:
+   Срок выполнения:
 
-.. code-block:: javascript
+   .. code-block:: javascript
 
-    ${Time.nowPlusWorkingDays(5, workingCalendarId).toIsoString()}
+       ${Time.nowPlusWorkingDays(5, workingCalendarId).toIsoString()}
 
-:download:`скачать процесс <../examples/test-bpmn-process.bpmn.xml>`
+   :download:`скачать процесс <../examples/test-bpmn-process.bpmn.xml>`

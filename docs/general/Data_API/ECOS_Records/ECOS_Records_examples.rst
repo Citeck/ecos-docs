@@ -1,3 +1,5 @@
+.. _ecos_records_examples:
+
 Примеры запросов Citeck Records
 =================================
 
@@ -171,6 +173,24 @@
 .. code-block:: javascript
 
     await Citeck.Records.get('emodel/ecos-contract@you-doc').load('_type.isSubTypeOf.case?bool!', true)
+
+
+Получение списка атрибутов записи и типа
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Чтобы проверить, какие именно атрибуты доступны у записи, можно выполнить скрипт:
+
+.. code-block:: javascript
+
+    var rec = Records.get('emodel/test-01@8e3c265c-af7b-467f-ab9b-e43452d302f5');
+    var attributes = await rec.load('_type.model.attributes[].id');
+    await rec.load(attributes.map(att => att + "?raw"));
+
+Также можно получить все атрибуты (включая атрибуты аспектов) по id типа:
+
+.. code-block:: javascript
+
+    await Records.get('emodel/type@test-01').load('model.attributes[].id')
 
 
 Проверка прав доступа к записи

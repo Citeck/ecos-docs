@@ -22,7 +22,7 @@ Citeck предоставляет инструменты для организа
 
 Если вы ведёте разработку в IntelliJ IDEA, воспользуйтесь :ref:`плагином<IntelliJ_IDEA_plugin>` для упрощённой работы с артефактами и проектами Citeck.
 
-IntelliJ IDEA plugin for Citeck
+Плагин IntelliJ IDEA для Citeck
 --------------------------------------
 
 :ref:`Плагин<IntelliJ_IDEA_plugin>` для IntelliJ IDEA интегрирует инструменты Citeck непосредственно в IDE: позволяет управлять артефактами, синхронизировать изменения со стендом и запускать сборку без переключения между окнами.
@@ -30,160 +30,170 @@ IntelliJ IDEA plugin for Citeck
 С чего начать
 --------------
 
-Создайте артефакты бизнес-процесса. Например, создание процесса запроса на закупку оборудования описано в :ref:`статье<sample_request>`.
+Прежде чем создавать приложение (см. следующий раздел), подготовьте артефакты бизнес-процесса. Например, создание процесса запроса на закупку оборудования описано в :ref:`статье<sample_request>`.
 
 
 Как создать новое Citeck приложение
 -------------------------------------
 
-Для создания приложения в рабочем пространстве администратора перейдите в раздел **Управление системой**, затем в пункт **Приложения ECOS**:
+1. Для создания приложения в рабочем пространстве администратора перейдите в раздел **Управление системой**, затем в пункт **Приложения ECOS**:
 
- .. image:: _static/fast_develop/App_1.png
-       :width: 700
-       :align: center
+   .. image:: _static/fast_develop/App_1.png
+      :width: 700
+      :align: center
 
-Нажмите **+ - Создать приложение**: 
+2. Нажмите **+ - Создать приложение**:
 
- .. image:: _static/fast_develop/App_2.png
-       :width: 500
-       :align: center
+   .. image:: _static/fast_develop/App_2.png
+      :width: 500
+      :align: center
 
-|
+   |
 
- .. image:: _static/fast_develop/App_3.png
-       :width: 600
-       :align: center
+   .. image:: _static/fast_develop/App_3.png
+      :width: 600
+      :align: center
 
-Укажите **Id (1)**, **Имя (2)**, выберите все созданные **типы данных (3)** вашего процесса, измените **Версию (5)** при необходимости.
+3. Укажите **Id (1)**, **Имя (2)**, выберите все созданные **типы данных (3)** вашего процесса, измените **Версию (5)** при необходимости.
 
-Для автоматической загрузки артефактов можно нажать **«Загрузить артефакты для выбранных типов» (4)**.
+   Для автоматической загрузки артефактов можно нажать **«Загрузить артефакты для выбранных типов» (4)**.
 
-.. note:: 
+   .. note::
 
- Не все типы артефактов загружаются автоматически. Дополните полученный список артефактов, нажав **«Добавить»**:
+      Не все типы артефактов загружаются автоматически. Дополните полученный список артефактов, нажав **«Добавить»**:
 
-.. image:: _static/fast_develop/App_4.png
-    :width: 600
-    :align: center
+      .. image:: _static/fast_develop/App_4.png
+         :width: 600
+         :align: center
 
-|
+      |
 
-.. image:: _static/fast_develop/App_7.png
-    :width: 600
-    :align: center
+      .. image:: _static/fast_develop/App_7.png
+         :width: 600
+         :align: center
 
+4. **Сохраните**.
 
-**Сохраните**.
+Полученный архив можно скачать и перенести на другой стенд, задеплоить локально или закоммитить в систему контроля версий — см. разделы ниже.
 
-Далее архив можно скачать, чтобы перенести его на другой стенд, задеплоить его локально или закоммитить в систему контроля версий.
+.. image:: _static/fast_develop/App_5.png
+   :width: 600
+   :align: center
 
- .. image:: _static/fast_develop/App_5.png
-       :width: 600
-       :align: center
+**Zip-архив** имеет следующую структуру: все артефакты располагаются в директориях в соответствии с их типом:
 
-**Zip-архив** имеет следующую структуру - все артефакты располагаются в директориях, в соответствии с их типом:
-
- .. image:: _static/fast_develop/App_8.png
-       :width: 300
-       :align: center
+.. image:: _static/fast_develop/App_8.png
+   :width: 300
+   :align: center
 
 Как перенести между стендами
 -------------------------------
 
-Скачайте приложение:
+1. Скачайте приложение:
 
- .. image:: _static/fast_develop/App_5_1.png
-       :width: 600
-       :align: center
- 
-Загрузите приложение на необходимом стенде:
+   .. image:: _static/fast_develop/App_5_1.png
+      :width: 600
+      :align: center
 
- .. image:: _static/fast_develop/App_6.png
-       :width: 500
-       :align: center
+2. Загрузите приложение на необходимом стенде:
+
+   .. image:: _static/fast_develop/App_6.png
+      :width: 500
+      :align: center
 
 Как задеплоить локально/на стенд
 ---------------------------------
 
-Создайте локально `Maven-проект  <https://maven.apache.org/index.html>`_  с названием приложения, в папку ``src/main/resources/app`` скопируйте содержимое zip-архива:
+1. Создайте локально `Maven-проект <https://maven.apache.org/index.html>`_ с названием приложения, в папку ``src/main/resources/app`` скопируйте содержимое zip-архива:
 
- .. image:: _static/fast_develop/ecos_app.png
-       :width: 350
-       :align: center
+   .. image:: _static/fast_develop/ecos_app.png
+      :width: 350
+      :align: center
 
-В корне приложения разместите файл **meta.yml**, указав:
+2. В корне приложения разместите файл **meta.yml**, указав:
 
-.. code-block::
+   .. code-block::
 
-  id: name
+     id: name
 
-* **id: String** - идентификатор приложения. По умолчанию равен artifactId проекта
-* **name: MLText** - имя приложения
+   .. list-table::
+      :header-rows: 1
+      :class: tight-table
 
-Например:
+      * - Поле
+        - Тип
+        - Описание
+      * - ``id``
+        - String
+        - Идентификатор приложения. По умолчанию равен ``artifactId`` проекта
+      * - ``name``
+        - MLText
+        - Имя приложения
 
-.. code-block::
+   Например:
 
-  ecos-assignments
+   .. code-block::
 
-Настройте главный **pom файл** следующим образом:
+     id: ecos-assignments
 
-.. code-block::
+3. Настройте главный **pom файл** следующим образом:
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <project xmlns="http://maven.apache.org/POM/4.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   .. code-block::
 
-      <modelVersion>4.0.0</modelVersion>
+     <?xml version="1.0" encoding="UTF-8"?>
+     <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-      <groupId>ru.citeck.ecos.eapps.assignments</groupId>
-      <artifactId>ecos-assignments</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+         <modelVersion>4.0.0</modelVersion>
 
-      <parent>
-          <groupId>ru.citeck.ecos.eapps.project</groupId>
-          <artifactId>ecos-apps-simple-parent</artifactId>
-          <version>1.0.3</version>
-      </parent>
+         <groupId>ru.citeck.ecos.eapps.assignments</groupId>
+         <artifactId>ecos-assignments</artifactId>
+         <version>1.0.0-SNAPSHOT</version>
 
-      <repositories>
-          <repository>
-              <id>citeck-public</id>
-              <url>https://nexus.citeck.ru/repository/maven-public</url>
-          </repository>
-      </repositories>
+         <parent>
+             <groupId>ru.citeck.ecos.eapps.project</groupId>
+             <artifactId>ecos-apps-simple-parent</artifactId>
+             <version>1.0.3</version>
+         </parent>
 
-  </project>
+         <repositories>
+             <repository>
+                 <id>citeck-public</id>
+                 <url>https://nexus.citeck.ru/repository/maven-public</url>
+             </repository>
+         </repositories>
 
-Укажите в нем **groupId**, **artifactId**, **version**.
+     </project>
 
-Создайте **Jenkinsfile** с содержимым:
+   Укажите в нем **groupId**, **artifactId**, **version**.
 
-.. code-block::
+4. Создайте **Jenkinsfile** с содержимым:
 
-    ecosBuild()
+   .. code-block::
 
-Создайте **ecos-build-config.yml** с содержимым:
+     ecosBuild()
 
-.. code-block::
+5. Создайте **ecos-build-config.yml** с содержимым:
 
-    ---
-    type: maven-ecos-apps
+   .. code-block::
 
-Соберите приложение командой: 
+     ---
+     type: maven-ecos-apps
 
-.. code-block::
+6. Соберите приложение командой:
 
- mvn clean package
+   .. code-block::
 
-При сборке приложения получается **zip-архив** в папке ``target/classes/apps``: 
+     mvn clean package
+
+При сборке приложения получается **zip-архив** в папке ``target/classes/apps``:
 
 .. image:: _static/fast_develop/App_9.png
-       :width: 400       
-       :align: center
+   :width: 400
+   :align: center
 
-Далее загрузите созданный архив на необходимый стенд, как описано в главе выше.
+Далее загрузите созданный архив на необходимый стенд, как описано в разделе «Как перенести между стендами» выше.
 
 Как закоммитить в систему контроля версий
 -------------------------------------------
@@ -197,9 +207,9 @@ IntelliJ IDEA plugin for Citeck
   - **Jenkinsfile**;
   - **ecos-build-config.yml**.
 
- .. image:: _static/fast_develop/git_01.png
-      :width: 700
-      :align: center
+.. image:: _static/fast_develop/git_01.png
+   :width: 700
+   :align: center
 
 Как создать микросервис
 ------------------------
@@ -210,9 +220,9 @@ IntelliJ IDEA plugin for Citeck
 
 .. note::
 
-    Для микросервиса созданные артефакты необходимо скопировать в папку  ``src/main/resources/eapps/artifacts``
+    Для микросервиса созданные артефакты необходимо скопировать в папку ``src/main/resources/eapps/artifacts``
 
-     .. image:: _static/fast_develop/ecos_mks.png
+    .. image:: _static/fast_develop/ecos_mks.png
        :width: 400
        :align: center
 

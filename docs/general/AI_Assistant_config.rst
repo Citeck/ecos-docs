@@ -1,59 +1,47 @@
-Конфигурация AI ассистента
-============================
+AI Ассистент. Архитектура и конфигурация
+===========================================
 
 .. _AI_assistant_config:
 
 .. contents::
-    :depth: 3
+    :depth: 2
 
-Микросервис ``ecos-ai`` обеспечивает работу :ref:`интеллектуального помощника<AI_assistant>` в платформе Citeck. Он интегрируется с внешними провайдерами больших языковых моделей (LLM) и предоставляет AI-функциональность остальным микросервисам через RESTful API.
+Микросервис ``citeck-ai`` обеспечивает работу :ref:`интеллектуального помощника<AI_assistant>` в платформе Citeck. Он интегрируется с внешними провайдерами больших языковых моделей (LLM) и предоставляет AI-функциональность остальным микросервисам через RESTful API.
 
 Статья описывает технические детали микросервиса, порядок настройки провайдеров LLM, конфигурацию ассистентов и параметры подключения через прокси.
 
 .. note::
 
-   Для работы AI-ассистента необходима Enterprise-лицензия с флагом ``ai`` и наличие пользователя в группе ``GROUP_ai-feature-allowed``.
+   Для работы AI Ассистента необходима Enterprise-лицензия с флагом ``ai`` и наличие пользователя в группе ``GROUP_ai-feature-allowed``.
 
 Архитектурные решения
 ------------------------
 
-    * **Spring Boot:** Основа микросервиса
-    * **Kotlin:** Основной язык разработки
-    * **Spring AI:** Интеграция с AI провайдерами
-    * **Ecos Records:** Интеграция с платформой Citeck
-    * **RESTful API:** Стандартные HTTP эндпоинты для интеграции
+* **Spring Boot:** Основа микросервиса
+* **Kotlin:** Основной язык разработки
+* **Spring AI:** Интеграция с AI провайдерами
+* **Ecos Records:** Интеграция с платформой Citeck
+* **RESTful API:** Стандартные HTTP эндпоинты для интеграции
 
 Базовая техническая платформа
 -------------------------------
 
-Базовые инструменты
-~~~~~~~~~~~~~~~~~~~~
+Инструменты
+~~~~~~~~~~~~
 
-    * **GetCurrentTimeTool:** Получение текущего времени
-    * **GetRecordAttributesTool:** Извлечение атрибутов записей
-    * **GetRecordContentTool:** Получение контента записей
-    * **GetRecordDisplayNameTool:** Получение отображаемых имен
-    * **GetRecordContactsTool:** Извлечение контактной информации
-    * **GetRecordContentHistoryTools:** История изменений контента
-    * **DocumentAnalysisTool:** Анализ документов
-    * **DeployDataTypeTool:** Развертывание типов данных
-    * **GetArtifactMetadataTool:** Метаданные артефактов
-    * **GetActivitiesTool:** Работа с активностями
+Возможности ассистента реализованы инструментами. Каждому агенту инструменты подключаются через его белый список (поле ``tools`` записи агента). Полный каталог с разделением на операционные и конфигурационные — в статье :ref:`Пользовательские AI-агенты <user-agents>`.
 
 Безопасность, доступ, авторизация
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    * **Лицензионный контроль:** Проверка флага ``ai`` в лицензии
-    * **Групповые права:** Контроль доступа через группу ``GROUP_ai-feature-allowed``
-    * **Контроль доступа:** Расширенные проверки доступности AI функций
-    * **BPMN авторизация:** Улучшенная обработка запросов BPMN с учетом прав пользователя
+Лицензионный контроль (флаг ``ai``), группы доступа, три оси доступа к инструментам и работа под правами пользователя описаны в статье :ref:`Безопасность AI-функций <ai-security>`.
 
 Конфигурация
 ~~~~~~~~~~~~~
 
-    * **Прокси поддержка:** HTTP и HTTPS протоколы
-    * **Гибкие настройки:** Конфигурация через переменные окружения и ``application.yml``
-    * **Мониторинг:** Логирование и отслеживание ошибок
+* **Прокси поддержка:** HTTP и HTTPS протоколы
+* **Гибкие настройки:** Конфигурация через переменные окружения и ``application.yml``
+* **Мониторинг:** Логирование и отслеживание ошибок
 
 
 Spring-профили
@@ -64,123 +52,125 @@ Spring-профили
 .. list-table::
   :header-rows: 1
   :widths: 20 50 30
+  :class: tight-table
 
   * - Профиль
     - Описание
     - Обязательные env
   * - ``ai-default``
-    - **Рекомендуемый.** Yandex Cloud (``gpt-oss-120b``) как основной провайдер + Anthropic (``claude-sonnet-4-6``) для генерации BPMN. Для генерации BPMN используется более интеллектуальная модель, что обеспечивает лучшее качество процессов.
-    - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_ANTHROPIC_API_KEY``
+    - | **Рекомендуемый.** Yandex Cloud как единственный провайдер; модель ``deepseek-v4-flash`` используется для всех задач, включая генерацию BPMN. 
+      | Стенд не зависит от второго провайдера и его баланса.
+    - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
   * - ``ai-yandex-gpt-oss``
     - Yandex Cloud (``gpt-oss-120b``) для всех ассистентов
+    - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
+  * - ``ai-deepseek``
+    - | Собственный API DeepSeek (``api.deepseek.com``), модель ``deepseek-flash`` (DeepSeek-V4.1-Flash, мультимодальная — работает и с изображениями). 
+      | Профиль включает ``citeck.ai.agents.pin-to-base-model``, поэтому модели, записанные в самих агентах, игнорируются: пути вида ``gpt://<каталог>/…`` за пределами Yandex Cloud отвечают 404
+    - ``CTK_DEEPSEEK_API_KEY``
+  * - ``ai-yandex-deepseek``
+    - | Yandex Cloud как провайдер, модель DeepSeek внутри него
     - ``CTK_YANDEX_AI_API_KEY``, ``CTK_YANDEX_AI_FOLDER_ID``
 
 Подключение в Citeck Launcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 На текущий момент, чтобы конфигурация настроек в лаунчере не перезаписывалась при обновлении версиий в ките, необходимо настраивать через кастомный application-launcher.yml.
-В дальнейшем планируется добавить отдельный интерфейс для удобной настройки подключения AI ассистента.
+В дальнейшем планируется добавить отдельный интерфейс для удобной настройки подключения AI Ассистента.
 
-1. Найдите микросервис **ai** в списке микросервисов.
-2. Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и добавьте переменные окружения:
+.. dropdown:: Как подключить AI Ассистента в Citeck Launcher
+   :color: secondary
 
-   - ``CTK_ANTHROPIC_API_KEY`` — для использования Anthropic
-   - ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI Studio
+   1. Найдите микросервис **ai** в списке микросервисов.
+   2. Нажмите **левой кнопкой мыши** на шестеренку настроек микросервиса и добавьте переменные окружения:
 
-   .. note::
+      - ``CTK_YANDEX_AI_FOLDER_ID``, ``CTK_YANDEX_AI_API_KEY`` — для Yandex AI Studio (профили ``ai-default`` и ``ai-yandex-gpt-oss``)
+      - ``CTK_ANTHROPIC_API_KEY`` — только при ручной настройке провайдера Anthropic (в готовых профилях не используется)
 
-      Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку ``SPRING_PROFILES_ACTIVE``.
+      .. note::
 
-3. Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите ``application-launcher.yml``.
-4. Вставьте содержимое нужного профиля. Например, для конфигурации ``ai-default``:
+         Для профиля ``ai-yandex-gpt-oss`` также добавьте его в строку ``SPRING_PROFILES_ACTIVE``.
 
-.. code-block:: yaml
+   3. Нажмите **правой кнопкой мыши** на ту же шестеренку и выберите ``application-launcher.yml``.
+   4. Вставьте содержимое нужного профиля:
 
-  citeck:
-    ai:
-      base:
-        model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-      assistants:
-        bpmn:
-          model: claude-sonnet-4-6
-          streaming: true
-          provider: anthropic
-          temperature: 0.0
-          reasoning-effort: none
+      .. tab-set::
 
-  spring:
-    ai:
-      anthropic:
-        api-key: '${CTK_ANTHROPIC_API_KEY}'
-      openai:
-        api-key: '${CTK_YANDEX_AI_API_KEY}'
-        chat:
-          options:
-            model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-          base-url: https://llm.api.cloud.yandex.net
+         .. tab-item:: ai-default
 
-.. tip::
+            .. code-block:: yaml
 
-   Вместо ``claude-sonnet-4-6`` можно указать ``claude-opus-4-6`` для более высокого качества генерации BPMN.
+               citeck:
+                 ai:
+                   base:
+                     model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/deepseek-v4-flash/latest'
+                   assistants:
+                     bpmn:
+                       model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/deepseek-v4-flash/latest'
+                       streaming: true
+                       provider: openai
+                       temperature: ~     # параметр не передаётся провайдеру
+                       reasoning-effort: none
 
-для профиля ``ai-yandex-gpt-oss``:
+               spring:
+                 ai:
+                   openai:
+                     api-key: '${CTK_YANDEX_AI_API_KEY}'
+                     chat:
+                       options:
+                         model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/deepseek-v4-flash/latest'
+                       base-url: https://llm.api.cloud.yandex.net
 
-.. code-block:: yaml
+            .. tip::
 
-  citeck:
-    ai:
-      base:
-        model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-      assistants:
-        bpmn:
-          streaming: false
+               Профиль задаёт только конфигурацию по умолчанию — поддержка остальных провайдеров и моделей (Anthropic Claude, OpenAI GPT, DeepSeek, Ollama) сохраняется. Любую из них можно назначить отдельному ассистенту (см. `Настройка моделей для разных ассистентов`_) или агенту (см. `Модели AI-агентов`_).
 
-  spring:
-    ai:
-      openai:
-        api-key: '${CTK_YANDEX_AI_API_KEY}'
-        chat:
-          options:
-            model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
-          base-url: https://llm.api.cloud.yandex.net
+         .. tab-item:: ai-yandex-gpt-oss
 
-Если для доступа к AI API требуется прокси-сервер, добавьте блок ``proxy`` в конфигурацию:
+            .. code-block:: yaml
 
-.. code-block:: yaml
+               citeck:
+                 ai:
+                   base:
+                     model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                   assistants:
+                     bpmn:
+                       streaming: false
 
-  citeck:
-    ai:
-      proxy:
-        enabled: true
-        host: proxy.company.com
-        port: 8080
-        username: proxy-user
-        password: proxy-pass
-        protocol: HTTP
+               spring:
+                 ai:
+                   openai:
+                     api-key: '${CTK_YANDEX_AI_API_KEY}'
+                     chat:
+                       options:
+                         model: 'gpt://${CTK_YANDEX_AI_FOLDER_ID}/gpt-oss-120b/latest'
+                       base-url: https://llm.api.cloud.yandex.net
 
-5. Замените переменные ``${CTK_YANDEX_AI_API_KEY}``, ``${CTK_YANDEX_AI_FOLDER_ID}``, ``${CTK_ANTHROPIC_API_KEY}`` на реальные значения.
-6. Сохраните настройку, микросервис перезапустится автоматически.
+      Если для доступа к AI API требуется прокси-сервер, добавьте блок ``proxy`` в конфигурацию — пример см. в разделе `Настройка прокси`_.
+
+   5. Замените переменные ``${CTK_YANDEX_AI_API_KEY}`` и ``${CTK_YANDEX_AI_FOLDER_ID}`` на реальные значения.
+   6. Сохраните настройку, микросервис перезапустится автоматически.
 
 .. tip::
 
-  Профиль ``ai-default`` — рекомендуемый минимум для стабильной работы ассистента. Комбинация Yandex Cloud для основных задач и Anthropic Claude для генерации BPMN обеспечивает необходимое качество, так как для генерации BPMN-процессов требуется более интеллектуальная модель.
+  Профиль ``ai-default`` — рекомендуемый минимум для стабильной работы ассистента: один провайдер (Yandex Cloud) с моделью ``deepseek-v4-flash`` покрывает все задачи, включая генерацию BPMN, и не требует доступа к внешним зарубежным API.
 
 .. important::
 
-  При использовании Anthropic в качестве провайдера (например, для генерации BPMN в профиле ``ai-default``) необходимо обеспечить сетевой доступ к API Anthropic. Для этого настройте HTTP-прокси (см. раздел `Настройка прокси`_) или используйте VPN.
+  При использовании Anthropic в качестве провайдера (например, при ручной настройке более мощной модели для генерации BPMN) необходимо обеспечить сетевой доступ к API Anthropic — например, настройте HTTP-прокси (см. раздел `Настройка прокси`_).
 
 Провайдеры LLM
 ----------------
 
-Citeck AI Assistant поддерживает работу с различными провайдерами больших языковых моделей (LLM).
+Citeck AI Ассистент поддерживает работу с различными провайдерами больших языковых моделей (LLM).
 
 Поддерживаемые провайдеры
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    - **openai** - GPT-модели (gpt-5.1 и др.)
-    - **anthropic** - Claude модели (claude-opus-4-5 и др.)
-    - **deepseek** - модели DeepSeek (deepseek-chat, deepseek-coder)
-    - **ollama** - локальные модели (granite3.3, llama3, mistral)
+- **openai** - GPT-модели (gpt-5.1 и др.)
+- **anthropic** - Claude модели (claude-opus-4-5 и др.)
+- **deepseek** - модели DeepSeek (``deepseek-flash`` — DeepSeek-V4.1-Flash, мультимодальная)
+- **ollama** - локальные модели (granite3.3, llama3, mistral)
 
 Выбор провайдера по умолчанию
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -220,50 +210,188 @@ Citeck AI Assistant поддерживает работу с различным�
     citeck:
         ai:
             assistants:
-                bpmn:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: medium     # Уровень рассуждений: none, low, medium, high
+                bpmn:                            # Генерация BPMN, помощник в редакторе процессов и AI задача в процессах
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.0
+                    reasoning-effort: none       # Уровень рассуждений: none, low, medium, high
                     streaming: true              # Потоковый вывод
-                universal:
-                    model: gpt-5.1
+                universal:                       # Модель генераторов форм, типов данных и документации (см. примечание ниже)
+                    model: ${citeck.ai.base.model}
                     temperature: 0.7
                     reasoning-effort: medium
-                intent-detection:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: low
-                    use-native-structured-output: true  # Использовать нативный structured output
-                required-content-version-selection:
-                    model: gpt-5.1
-                    temperature: 0.1
-                    reasoning-effort: low
-                business-app-generation:       # Генерация бизнес-приложений
-                    model: gpt-5.1
-                    temperature: 0.5
+                script-writing:                  # Помощник написания скриптов
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.2
                     reasoning-effort: medium
-                    context-analyzer:          # Анализатор контекста
-                        model: gpt-5.1
-                        temperature: 0.1
-                        use-native-structured-output: true
-                    description-formatter:     # Форматирование описаний
-                        model: gpt-5.1
-                        temperature: 0.1
-                    requirements-generator:    # Генератор требований
-                        model: gpt-5.1
-                        temperature: 0.1
-                        use-native-structured-output: true
+                    use-native-structured-output: true
+                text-edit:                       # Редактирование текста в полях записей
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.3
+                    reasoning-effort: medium
+                    use-native-structured-output: true
+                intent-detection:                # Планирование и разбор ответов пользователя в агентном режиме
+                    model: ${citeck.ai.base.model}
+                    temperature: 0.1
+                    reasoning-effort: low
+                    use-native-structured-output: true
+
+.. note::
+
+   Слот ``universal`` не относится к чату. Агент чата по умолчанию задаётся свойством
+   ``citeck.ai.agents.default-operational`` (по умолчанию — помощник по задачам и документам),
+   и модель диалога берётся из записи агента. Слот ``universal`` задаёт модель внутренних
+   генераторов — форм, типов данных и документации приложения — для вызовов вне агента.
+   Если генератор вызван инструментом агента, используется модель агента, а слот служит
+   запасным значением.
+
+.. note::
+
+   Слот ``intent-detection`` задаёт модель для служебных вызовов агентного режима: построение и
+   пересмотр плана, разбор ответа пользователя на вопрос агента (подтвердить, изменить, отклонить,
+   пропустить), а также классификаторы объёма правки, маршрута запроса и уточняющих вопросов.
+   Если в диалоге активен агент, эти вызовы выполняются на модели самого агента — параметр служит
+   запасным значением. При пустом значении эти вызовы выполняются на модели по умолчанию
+   Spring AI провайдера (``spring.ai.<провайдер>.chat.options.model``).
 
 Параметры ассистентов
 ~~~~~~~~~~~~~~~~~~~~~~
 
     * ``provider`` - провайдер для данного ассистента (если не указан - используется ``citeck.ai.default.provider``)
     * ``model`` - модель для использования (должна быть доступна у выбранного провайдера)
-    * ``temperature`` - температура генерации (0.0-1.0)
-    * ``reasoning-effort`` - уровень рассуждений: ``none``, ``low``, ``medium``, ``high``
+    * ``temperature`` - температура генерации (0.0-1.0); значение ``~`` (null) — параметр не передаётся провайдеру (нужно для моделей, которые не принимают температуру, например Anthropic Claude в режиме расширенных рассуждений)
+    * ``reasoning-effort`` - уровень рассуждений: ``minimal``, ``low``, ``medium``, ``high``; значение ``none`` (синонимы ``off``, ``disabled``, ``default``) — параметр не отправляется провайдеру
     * ``streaming`` - включить потоковый вывод
     * ``use-native-structured-output`` - использовать нативный structured output провайдера
-    * ``enable-bpmn-generation`` - включить генерацию BPMN процессов (только для ``business-app-generation``)
+
+Помимо ``assistants``, свои блоки конфигурации имеют подсистемы:
+
+    * ``citeck.ai.agents`` - агенты по умолчанию: ``default-operational`` (агент чата, когда пользователь не выбрал агента явно; по умолчанию ``tasks-documents-helper``) и ``default-config`` (агент, обслуживающий правку скриптов в редакторах кода — быстрые действия «объяснить», «исправить», «оптимизировать» и произвольные запросы; по умолчанию ``platform-config-agent``)
+    * ``citeck.ai.multimodal`` - анализ загружаемых файлов: ``enabled``, ``limits.max-file-size-mb`` (по умолчанию 10)
+    * ``citeck.ai.image`` - генерация изображений (см. раздел `Генерация изображений`_)
+    * ``citeck.ai.model-capabilities`` - таблица возможностей моделей (какие модели мультимодальны и читают PDF нативно); дополняется шаблонами ``patterns`` и точечными ``overrides``
+    * ``citeck.ai.rag`` - семантический поиск (:ref:`настройка RAG <rag-config>`)
+    * ``citeck.ai.call-recording`` - :ref:`запись и резюме совещаний <call-recording-module>`
+    * ``citeck.ai.artifacts.workspace-creatable`` - виды артефактов, которые разрешено создавать внутри рабочего пространства. Список поддерживается вручную и является единственным источником правды об области создания. По умолчанию: ``data_type``, ``form``, ``bpmn``, ``journal``, ``notification_template``, ``dashboard``, ``board``, ``dmn``, ``type_perms``, ``artifact_patch``, ``action``. Действие над записью (``action``) в рабочем пространстве требует ``ecos-uiserv`` версии 2.41 и новее: более ранняя версия сохраняет такое действие глобальным, и ассистент предупреждает об этом. Чтобы на такой версии действия из рабочих пространств не создавались, уберите ``action`` из списка
+    * ``citeck.ai.agent-execution`` - ограничения конвейера: ``max-steps``, ``max-retries-per-step``, ``max-retries-search-analyze``, ``max-wall-time``, ``request-timeout``, ``parallel-steps`` (см. :ref:`архитектуру агентов <ai-architecture>`)
+    * ``citeck.ai.deepseek.thinking`` - режим рассуждений на собственном API DeepSeek, где модель рассуждает по умолчанию и провайдер не даёт это отключить штатными средствами: ``endpoint-default`` (ничего не менять), ``light-off`` (поставляемое значение — рассуждения отключены только для лёгких генераций), ``disabled`` (для всех вызовов)
+    * ``citeck.ai.agents.pin-to-base-model`` - игнорировать модель, записанную в самих агентах, и выполнять всех агентов на базовой модели профиля (по умолчанию ``false``)
+
+.. warning::
+
+   Два значения проверяются при старте, и неверное значение НЕ ДАЁТ приложению запуститься:
+
+   * пустой список или неизвестный вид артефакта в ``citeck.ai.artifacts.workspace-creatable``;
+   * ``citeck.ai.agent-execution.request-timeout`` не больше ``max-wall-time`` (в том числе равен ему).
+
+.. _ai-agent-models:
+
+Модели AI-агентов
+~~~~~~~~~~~~~~~~~~
+
+У :ref:`пользовательских агентов <user-agents>` провайдер и модель — реквизиты записи агента (``aiProvider``, ``aiModel``, ``temperature``, ``reasoningEffort``); блок ``assistants`` на них не влияет. Модель агента применяется и во внутренних генераторах артефактов: тип данных, форма или процесс, созданные по запросу через агента конфигурирования, генерируются моделью этого агента.
+
+Поля ``aiProvider`` и ``aiModel`` обязательны. У преднастроенных агентов они заполнены при поставке; чтобы перевести агента на другую модель, измените их в карточке агента — платформенные значения ``citeck.ai.default.provider`` и ``citeck.ai.base.model`` на агентов не распространяются. Настройка модели в карточке сохраняется при обновлении версии платформы (см. примечание о синхронизации преднастроенных агентов в статье :ref:`Пользовательские AI-агенты <user-agents>`).
+
+Пример распределения моделей между агентами: мощная модель — агенту конфигурирования (генерация артефактов), экономичная — операционному агенту (массовые операции с записями), локальная — агенту, работающему с чувствительными данными. Исключение — помощник по изображениям: ему нужна мультимодальная модель для анализа картинок, поэтому экономичную или локальную модель ему назначать нельзя.
+
+.. _ai-telemetry:
+
+Телеметрия и расход токенов
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+По каждому обращению к LLM в журнал приложения ``citeck-ai`` записываются метрики: токены запроса, ответа и суммарные; расширенные метрики при их наличии у провайдера (токены рассуждений, кэшированные токены); длительность вызова и скорость генерации; время до первого токена (в потоковом режиме); причина завершения; остаток квоты провайдера. При использовании более 80 % квоты провайдера (по токенам или по числу запросов) в журнал пишется предупреждение.
+
+Кроме того, каждый вызов с данными о расходе токенов сохраняется записью типа «Вызов LLM» (``emodel/ai-llm-call``). В административном разделе AI доступен журнал **«Вызовы LLM»**: он отвечает на вопрос «сколько токенов израсходовал конкретный агент, модель или пользователь» без обращения к журналу приложения. Карточка вызова открывается из журнала.
+
+**Что записывается.** Одна запись на вызов LLM: агент (ссылка на карточку агента), диалог, провайдер, модель, пользователь, рабочее пространство, пять счётчиков токенов (запроса, ответа, суммарно, рассуждений, кэшированные), длительность в секундах, время до первого токена (только для потокового режима), причина завершения, дата вызова.
+
+**Чего в записи нет и почему:**
+
+* вызов, по которому провайдер не вернул сведений о расходе, не записывается вовсе — строка из нулей неотличима от действительно бесплатного вызова и исказила бы любую сумму по журналу;
+* вызов без агента (фоновые службы, AI-задача процесса с собственным промптом) записывается с пустым полем агента: токены потрачены и должны быть учтены, а «вызов без агента» — это факт, а не потеря значения.
+
+**Преднастройки группировки.** В «Шаблонах настроек» журнала поставляются шесть разрезов расхода: по агентам, по моделям, по пользователям, по дням, по месяцам и по рабочим пространствам. Каждый показывает ключевой столбец разреза и суммы пяти счётчиков токенов.
+
+.. note::
+
+   Шаблоны разрезов видны **только администраторам** (группа ``GROUP_ECOS_ADMINISTRATORS``) и только в административном разделе. Под обычным пользователем их в списке шаблонов журнала нет — это ограничение доступа, а не ошибка настройки.
+
+.. note::
+
+   Итоги считаются «на лету» по детальным записям: отдельного хранилища агрегированных сумм нет. Поэтому срок хранения записей не ограничен, а удаление старых записей уничтожает историю расхода за соответствующий период — суммы исчезают вместе с записями, по которым они считались.
+
+Графики расхода
+~~~~~~~~~~~~~~~~
+
+Помимо табличных разрезов, по тем же записям строятся графики — виджетом :ref:`Графическая статистика <widget_graphic_statistics>` на дашборде. Настройка виджета: журнал **«Вызовы LLM»**, шаблон разреза, атрибут группировки и атрибут агрегации.
+
+Готовый дашборд входит в поставку модуля: административный раздел **AI → «Графики расхода»**. На нём три графика из типового набора, приведённого ниже. Настраивать его не нужно — графики заполняются сразу, как только в системе появляются записи вызовов. Свои графики по тем же данным добавляются обычным образом, через настройку дашборда.
+
+Типовой набор, закрывающий обычные вопросы о расходе:
+
+.. list-table::
+  :header-rows: 1
+  :widths: 25 20 25 30
+  :class: tight-table
+
+  * - Что показывает
+    - Тип графика
+    - Группировка
+    - Агрегация
+  * - Расход по агентам
+    - Столбчатый
+    - Агент
+    - Сумма поля «Токенов всего»
+  * - Доля моделей в расходе
+    - Круговой
+    - Модель
+    - Сумма поля «Токенов всего»
+  * - Динамика расхода
+    - Линейный
+    - Дата вызова, период «сутки»
+    - Сумма поля «Токенов всего»
+
+Вызовы без агента (фоновые службы, AI-задача процесса с собственным промптом) образуют на графике по агентам отдельную группу — это нормально, токены по ним потрачены и должны быть учтены.
+
+.. note::
+
+   Виджет графической статистики поставляется со сборкой интерфейса и доступен не в каждой инсталляции; табличные разрезы журнала работают в любой. Если виджет в инсталляции недоступен, поставляемый дашборд «Графики расхода» откроется пустым — это ограничение сборки, а не ошибка настройки, и расход в таком случае смотрят по разрезам журнала. Практические особенности настройки — в статье :ref:`Виджет «Графическая статистика» <widget_graphic_statistics>`.
+
+Генерация изображений
+~~~~~~~~~~~~~~~~~~~~~~
+
+Генерация изображений настраивается блоком ``citeck.ai.image`` и работает **только через OpenAI** (``api.openai.com``) независимо от того, какой провайдер выбран для чата:
+
+.. code-block:: yaml
+
+    citeck:
+        ai:
+            image:
+                enabled: true                    # Выключатель подсистемы для всего стенда
+                provider: OPENAI
+                openai:
+                    api-key: ${CTK_AI_IMAGE_OPENAI_API_KEY:}
+                    model: gpt-image-2                       # Основная модель
+                    transparent-fallback-model: gpt-image-1  # Модель для прозрачного фона
+                    defaults:
+                        size: square             # square (1024×1024), portrait (1024×1536), landscape (1536×1024)
+                        quality: standard        # draft, standard, best
+                        output-format: png       # png, jpeg, webp
+                        background: opaque       # opaque, transparent
+                        moderation: auto         # auto, low
+                    limits:
+                        max-generations-per-conversation: 20
+                        max-input-image-size-bytes: 10485760     # 10 МБ
+                        max-output-file-size-bytes: 10485760     # 10 МБ
+                        request-timeout-seconds: 90
+
+.. important::
+
+   Ключ для генерации изображений задаётся **отдельной** переменной ``CTK_AI_IMAGE_OPENAI_API_KEY``. Если чат работает через другого провайдера (например, Yandex Cloud через OpenAI-совместимый API), ключ чата для изображений **не подходит** — без отдельного ключа инструменты генерации откажут с сообщением, называющим это свойство. Автоматическая подстановка ключа чата выполняется только тогда, когда чат сам работает через ``api.openai.com``.
+
+Модель ``gpt-image-2`` не поддерживает прозрачный фон: запросы с прозрачным фоном автоматически выполняются моделью из ``transparent-fallback-model``. Чтобы вместо этого получать явную ошибку, задайте параметру пустое значение.
+
+Доступ пользователей к генерации изображений дополнительно ограничен группой ``ai-image-allowed`` (администраторы и системные процессы имеют доступ без членства в группе) — подробнее в статье :ref:`Безопасность AI-функций <ai-security>`.
 
 Пример использования разных провайдеров
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -283,7 +411,7 @@ Citeck AI Assistant поддерживает работу с различным�
                     model: gpt-5.1
                 intent-detection:
                     provider: deepseek       # DeepSeek для быстрой классификации
-                    model: deepseek-chat
+                    model: deepseek-flash
 
 .. note::
 
@@ -305,102 +433,104 @@ Citeck AI Assistant поддерживает работу с различным�
                 backoff-multiplier: 2.0      # Множитель увеличения задержки
                 max-delay-ms: 5000           # Максимальная задержка (мс)
 
+.. note::
+
+   Повторы при сетевых сбоях обращений к провайдеру (таймауты, обрывы соединения) настраиваются отдельно — стандартным блоком Spring AI ``spring.ai.retry``; по умолчанию 3 попытки с нарастающей задержкой.
+
 Примеры конфигурации основных провайдеров
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-OpenAI
-""""""
+.. tab-set::
 
-.. code-block:: yaml
+   .. tab-item:: OpenAI
 
-    spring:
-        ai:
-            openai:
-                api-key: ${OPENAI_API_KEY}
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: openai
-            base:
-                model: gpt-5.1
-            assistants:
-                bpmn:
-                    reasoning-effort: medium
-                    streaming: true
-                intent-detection:
-                    use-native-structured-output: true
+         spring:
+             ai:
+                 openai:
+                     api-key: ${OPENAI_API_KEY}
 
-Ollama (локальные модели)
-"""""""""""""""""""""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: openai
+                 base:
+                     model: gpt-5.1
+                 assistants:
+                     bpmn:
+                         reasoning-effort: medium
+                         streaming: true
+                     intent-detection:
+                         use-native-structured-output: true
 
-.. code-block:: yaml
+   .. tab-item:: Ollama (локальные модели)
 
-    citeck:
-        ai:
-            default:
-                provider: ollama
-            base:
-                model: granite3.3
-            assistants:
-                bpmn:
-                    model: llama3
+      .. code-block:: yaml
 
-DeepSeek
-"""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: ollama
+                 base:
+                     model: granite3.3
+                 assistants:
+                     bpmn:
+                         model: llama3
 
-.. code-block:: yaml
+   .. tab-item:: DeepSeek
 
-    spring:
-        ai:
-            deepseek:
-                api-key: ${DEEPSEEK_API_KEY}
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: deepseek
-            base:
-                model: deepseek-chat
-            assistants:
-                bpmn:
-                    model: deepseek-coder
+         spring:
+             ai:
+                 deepseek:
+                     api-key: ${DEEPSEEK_API_KEY}
 
-Yandex Cloud (через OpenAI-совместимый API)
-"""""""""""""""""""""""""""""""""""""""""""""""
+         citeck:
+             ai:
+                 default:
+                     provider: deepseek
+                 base:
+                     model: deepseek-flash
+                 assistants:
+                     bpmn:
+                         model: deepseek-flash
 
-.. tip::
+   .. tab-item:: Yandex Cloud (через OpenAI-совместимый API)
 
-  Для Yandex Cloud рекомендуется использовать готовые профили **``ai-default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ выше. Ниже приведена ручная конфигурация.
+      .. tip::
 
-.. code-block:: yaml
+         Для Yandex Cloud рекомендуется использовать готовые профили **``ai-default``** или **``ai-yandex-gpt-oss``** — см. раздел `Spring-профили`_ выше. Ниже приведена ручная конфигурация.
 
-    spring:
-        ai:
-            openai:
-                api-key: ${YANDEX_API_KEY}
-                chat:
-                    base-url: https://llm.api.cloud.yandex.net
+      .. code-block:: yaml
 
-    citeck:
-        ai:
-            default:
-                provider: openai  # Используем OpenAI-совместимый API
-            base:
-                model: 'gpt://{folder_id}/gpt-oss-120b/latest'
+         spring:
+             ai:
+                 openai:
+                     api-key: ${YANDEX_API_KEY}
+                     chat:
+                         base-url: https://llm.api.cloud.yandex.net
 
-.. important::
+         citeck:
+             ai:
+                 default:
+                     provider: openai  # Используем OpenAI-совместимый API
+                 base:
+                     model: 'gpt://{folder_id}/gpt-oss-120b/latest'
 
-    * Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud
-    * Поддержка Yandex Cloud через OpenAI-совместимый API является частичной
-    * Формат модели: ``gpt://{folder_id}/model-name/latest``
-    * Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud
-    * Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в формате Yandex Cloud
+      .. important::
+
+         * Замените ``{folder_id}`` на реальный идентификатор каталога Yandex Cloud
+         * Поддержка Yandex Cloud через OpenAI-совместимый API является частичной
+         * Формат модели: ``gpt://{folder_id}/model-name/latest``
+         * Доступные модели: ``gpt-oss-120b``, и другие модели Yandex Cloud
+         * Во всех настройках ``citeck.ai.*.model`` необходимо указать модель в формате Yandex Cloud
 
 Настройка прокси
 ----------------
 
-Citeck AI Assistant поддерживает работу через прокси-сервер для доступа к внешним AI-сервисам.
+Citeck AI Ассистент поддерживает работу через прокси-сервер для доступа к внешним AI-сервисам.
 
 Поддерживаемые протоколы прокси
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -440,5 +570,3 @@ Citeck AI Assistant поддерживает работу через прокс�
                 protocol: HTTP
                 username: proxy-user
                 password: proxy-pass
-
-

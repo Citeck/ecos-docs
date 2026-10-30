@@ -1,3 +1,4 @@
+.. _seq_flow:
 .. _sequential flow:
 
 Потоки управления

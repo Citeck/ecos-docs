@@ -10,13 +10,13 @@ Panel
 
 Например: ``${someField}``
 
- .. image:: _static/panel/panel_header_1.png
+.. image:: _static/panel/panel_header_1.png
        :width: 600
        :align: center
 
 В данном примере в название панели будет выведено ФИО контактного лица.
 
- .. image:: _static/panel/panel_header_2.png
+.. image:: _static/panel/panel_header_2.png
        :width: 600
        :align: center
 
@@ -24,12 +24,12 @@ Panel
 
 Например по какой-то логике добавить действие:
 
- .. image:: _static/panel/panel_header_3.png
+.. image:: _static/panel/panel_header_3.png
        :width: 400
        :align: center
 
 В данном примере цвет панели будет меняться на ``panel-info``, если чекбокс **Завершена** активен:
 
- .. image:: _static/panel/panel_header_4.png
+.. image:: _static/panel/panel_header_4.png
        :width: 500
        :align: center

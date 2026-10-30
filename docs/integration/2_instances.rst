@@ -45,13 +45,27 @@
             apps:
             - alfresco
 
-- **extecos** - массив из подключений к различным контурам Citeck (поддерживается неограниченное кол-во подключений).
-- **extecos[].this-app-name** - имя текущего контура Citeck. Будет использоваться при отправке команд и событий из внешней системы в текущую
-- **extecos[].connections** - раздел с подключениями к RabbitMQ и Zookeeper
-- **extecos[].commands** - настройка команд;
-- **extecos[].commands.apps** - локальные приложения, которым будет возможность отправлять команды из внешней системы.
+.. list-table::
+   :widths: 10 30
+   :header-rows: 1
+   :class: tight-table
+   :align: center
 
-**Регистрация исполнителя команд**
+   * - Поле
+     - Описание
+   * - **extecos**
+     - Массив из подключений к различным контурам Citeck (поддерживается неограниченное кол-во подключений).
+   * - **extecos[].this-app-name**
+     - Имя текущего контура Citeck. Будет использоваться при отправке команд и событий из внешней системы в текущую.
+   * - **extecos[].connections**
+     - Раздел с подключениями к RabbitMQ и Zookeeper.
+   * - **extecos[].commands**
+     - Настройка команд.
+   * - **extecos[].commands.apps**
+     - Локальные приложения, которым будет возможность отправлять команды из внешней системы.
+
+Регистрация исполнителя команд
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Инжектим **CommandsService** и вызываем:
 
@@ -63,7 +77,7 @@
 
 .. code-block:: java
 
-    public class SomeExecutor implements CommandExecutor<SomeBody> { // SomeBody - любой DTO тип, который будет передаваться в Body команды. DTO тип должен иметь аннотацию CommandType для определения типа команды
+    public class SomeExecutor implements CommandExecutor<SomeBody> {
 
         @Nullable
         @Override
@@ -74,31 +88,52 @@
     }
 
     @Data
-    @CommandType("some-command-type") // тип команды. С отправляющей стороны задается как builder.setType("some-command-type") или так же через аннотацию на типе тела команды, которое передается как builder.setBody(...)
+    @CommandType("some-command-type")
     public class SomeBody {
         private String strField = "str-field";
         private byte[] bytesField;
     }
 
-- **SomeExecutor** - принимающая сторона, а отправляющая сторона будет там где вызовется commandsService.execute (пример в разделе "отправка команд")
-- **SomeBody** класс должен быть описан на отправляющей стороне и на принимающей (Дстаточно чтобы имена полей и типы полей совпадали. Пакеты при этом не важны. Jackson позаботится о приобразовании данных).
+- **SomeExecutor** - принимающая сторона, а отправляющая сторона будет там где вызовется commandsService.execute (пример в разделе "отправка команд").
+- **SomeBody** - любой DTO тип, который будет передаваться в Body команды. Класс должен быть описан на отправляющей стороне и на принимающей (достаточно, чтобы имена полей и типы полей совпадали - пакеты при этом не важны, Jackson позаботится о преобразовании данных).
+- **@CommandType("some-command-type")** - аннотация на типе тела команды, определяющая тип команды. С отправляющей стороны тип можно также задать явно через ``builder.setType("some-command-type")``.
 
 Отправка команды во внешнюю систему (из Citeck 1 (second-ecos) в Citeck 0 (main-ecos))
 -----------------------------------------------------------------------------------------
 
-**Из java кода**
+Из java кода
+~~~~~~~~~~~~
 
 Инжектим **CommandsService** и вызываем отправку команды:
 
 .. code-block:: java
 
-    commandsService.executeSync(builder -> { // вместо executeSync можно вызвать просто execute, чтобы не дожидаться ответа. 
-        builder.setTargetApp("main-ecos/alfresco"); // целевое приложение. Является значением this-app-name из конфигурации целевого контура Citeck + "/" + индентификатор целевого приложения 
-        builder.setType("some-command-type"); // тип события. по нему будет выбран CommandExecutor для выполнения. Вместо данной строки тип можно указать через аннотацию @CommandType
-        builder.setBody(new SomeBody()); // любой инстанс DTO класса. Преобразуется в байты и обратно с помощью библиотеки Jackson
-        builder.setTtl(Duration.of(1, ChronoUnit.MINUTES)); //время жизни сообщения в RabbitMQ. Если за это время сообщение никто не обработает, то оно удалится из очередей. 
+    commandsService.executeSync(builder -> {
+        builder.setTargetApp("main-ecos/alfresco");
+        builder.setType("some-command-type");
+        builder.setBody(new SomeBody());
+        builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
         return Unit.INSTANCE;
     })
+
+.. list-table::
+   :widths: 10 30
+   :header-rows: 1
+   :class: tight-table
+   :align: center
+
+   * - Параметр
+     - Описание
+   * - **executeSync**
+     - Вместо ``executeSync`` можно вызвать просто ``execute``, чтобы не дожидаться ответа.
+   * - **setTargetApp**
+     - Целевое приложение. Является значением ``this-app-name`` из конфигурации целевого контура Citeck + "/" + идентификатор целевого приложения.
+   * - **setType**
+     - Тип команды, по которому будет выбран ``CommandExecutor`` для выполнения. Вместо этого вызова тип можно указать через аннотацию ``@CommandType``.
+   * - **setBody**
+     - Любой инстанс DTO класса. Преобразуется в байты и обратно с помощью библиотеки Jackson.
+   * - **setTtl**
+     - Время жизни сообщения в RabbitMQ. Если за это время сообщение никто не обработает, оно удалится из очередей.
 
 Если предположим, что отправка осуществляется из alfresco (Citeck 1 - second-ecos) в alfresco (Citeck 0 - main-ecos), то ход команды будет следующим:
 
@@ -153,10 +188,11 @@
             commFactory.getRemoteCommandsService();
             CommandsService commandsService = commFactory.getCommandsService();
 
-            System.out.println(commandsService.executeSync(builder -> { // выполняем команду синхронно и выводим результат в консоль
-                builder.setTargetApp("alfresco"); // отправляем команду в alfresco
-                builder.setType("some-command-type"); // тип команды
-                builder.setBody(new SomeBody()); // тело команды
+            // выполняем команду синхронно и выводим результат в консоль
+            System.out.println(commandsService.executeSync(builder -> {
+                builder.setTargetApp("alfresco");
+                builder.setType("some-command-type");
+                builder.setBody(new SomeBody());
                 builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
                 return Unit.INSTANCE;
             }));
@@ -172,25 +208,28 @@
         }
     }
 
-Локальное тестирование отправки команд на удаленный инстанс (имеет смысл после отладки через обычную отправку команд):
+.. dropdown:: Локальное тестирование отправки команд на удаленный инстанс
+   :color: secondary
 
-1. Добавляем настройку удаленного контура Citeck как описано в разделе **Настройка**. В  качестве целевого RabbitMQ выбираем localhost. Т.о. можно локально тестировать работу с удаленными инстансами подняв только один инстанс RabbitMQ. Конфликтов при этом не возникнет.
+   Имеет смысл после отладки через обычную отправку команд.
 
-2. Немного меняем аргумент в методе **setTargetApp** при отправке команды в тесте:
+   1. Добавляем настройку удаленного контура Citeck как описано в разделе **Настройка**. В качестве целевого RabbitMQ выбираем localhost. Т.о. можно локально тестировать работу с удаленными инстансами подняв только один инстанс RabbitMQ. Конфликтов при этом не возникнет.
 
-.. code-block:: java
+   2. Немного меняем аргумент в методе **setTargetApp** при отправке команды в тесте - добавляется идентификатор контура Citeck со слэшем:
 
-    ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
-            System.out.println(commandsService.executeSync(builder -> {
-                builder.setTargetApp("main-ecos/alfresco"); // единственное отличие при отправке команд - добавляется идентификатор контура Citeck со слэшем
-                builder.setType("some-command-type");
-                builder.setBody(new SomeBody());
-                builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
-                return Unit.INSTANCE;
-            }));
-    ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
+   .. code-block:: java
 
-При желании можно подключиться и к реальному удаленному Citeck, но для этого должен быть доступ к RabbitMQ извне. При этом достаточно будет исправить параметры в **RabbitMqConnProps**
+       ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
+               System.out.println(commandsService.executeSync(builder -> {
+                   builder.setTargetApp("main-ecos/alfresco");
+                   builder.setType("some-command-type");
+                   builder.setBody(new SomeBody());
+                   builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
+                   return Unit.INSTANCE;
+               }));
+       ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
+
+   При желании можно подключиться и к реальному удаленному Citeck, но для этого должен быть доступ к RabbitMQ извне. При этом достаточно будет исправить параметры в **RabbitMqConnProps**.
 
 Отправка файлов в командах и событиях
 --------------------------------------

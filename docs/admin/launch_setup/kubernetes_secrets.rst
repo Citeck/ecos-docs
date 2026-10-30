@@ -3,6 +3,10 @@
 Управление секретами через Kubernetes Secrets
 ==============================================
 
+.. note::
+
+    Доступно только в Enterprise версии.
+
 Параметр ``existingSecret`` позволяет хранить чувствительные данные (пароли, токены, credentials) в Kubernetes Secrets вместо ``values.yaml``.
 
 При использовании ``existingSecret`` Helm выполняет ``lookup`` секрета во время деплоя и подставляет значения напрямую.
@@ -308,7 +312,7 @@ EcosMicroservicesPostgresqlApp
             password: gatewaypassword
           # ... и т.д. для каждой БД
 
-Ключи паролей для каждой базы данных формируются по шаблону **``{username}-password``**:
+Ключи паролей для каждой базы данных формируются по шаблону **``{username}-password``**. Назначение баз данных описано в разделе :ref:`Перечень баз данных <sizing_databases>`.
 
 .. list-table::
    :header-rows: 1

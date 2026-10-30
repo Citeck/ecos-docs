@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,58 +18,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:2
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:4
 msgid "Конечные точки"
 msgstr "Endpoints"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:5
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:7
 msgid "Содержание"
 msgstr "Contents"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:7
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:9
 msgid ""
 "Для работы с ресурсами по сети в Citeck предусмотрен тип артефакта "
 "Endpoint."
 msgstr ""
-"Citeck provides the Endpoint artifact type for working with network resources."
+"Citeck provides the Endpoint artifact type for working with network "
+"resources."
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:9
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:11
 msgid "Расположение артефактов с данным типом: **model/endpoint**"
 msgstr "Artifact location for this type: **model/endpoint**"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:11
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:13
 msgid "Модель конфигурации:"
 msgstr "Configuration model:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:20
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:22
 msgid "Пример конфигурации:"
 msgstr "Configuration example:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:33
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:35
 msgid ""
 "Информация о конечных точках по умолчанию хранится и загружается из БД "
 "микросервиса ecos-model, но также есть возможность указать настройки "
 "через переменные среды. Для этого следует взять идентификатор конечной "
 "точки и сконвертировать его по следующим правилам:"
 msgstr ""
-"Endpoint information is stored in and loaded from the ecos-model microservice "
-"database by default, but it is also possible to specify settings via "
-"environment variables. To do this, take the endpoint identifier and convert "
-"it according to the following rules:"
+"Endpoint information is stored in and loaded from the ecos-model "
+"microservice database by default, but it is also possible to specify "
+"settings via environment variables. To do this, take the endpoint "
+"identifier and convert it according to the following rules:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:35
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst
+msgid "Правила преобразования идентификатора в имя переменной окружения"
+msgstr "Rules for converting the identifier into an environment variable name"
+
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:40
 msgid ""
 "Разбиваем camelCase на части через символ '_'. Например: camelCase → "
 "camel_Case"
 msgstr ""
-"Split camelCase into parts using the '_' character. For example: camelCase → "
-"camel_Case"
+"Split camelCase into parts using the '_' character. For example: "
+"camelCase → camel_Case"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:37
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:42
 msgid "Заменяем все символы '-' и '.' на '_'"
 msgstr "Replace all '-' and '.' characters with '_'"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:39
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:44
 #, python-brace-format
 msgid ""
 "Заменяем все символы, которые не входят в перечень ``[a-zA-Z0-9_]`` на "
@@ -78,7 +83,7 @@ msgstr ""
 "Replace all characters not in the set ``[a-zA-Z0-9_]`` with "
 "``_X{character_code}_``"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:41
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:46
 msgid ""
 "Переводим получившуюся строку в верхний регистр и добавляем префикс "
 "**\"ECOS_ENDPOINT_\"**"
@@ -86,11 +91,13 @@ msgstr ""
 "Convert the resulting string to upper case and add the prefix "
 "**\"ECOS_ENDPOINT_\"**"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:43
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:48
 msgid "Таким образом для примера выше мы можем задать следующие переменные среды:"
-msgstr "Thus, for the example above, the following environment variables can be set:"
+msgstr ""
+"Thus, for the example above, the following environment variables can be "
+"set:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:50
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:55
 msgid ""
 "Переменные среды приоритетнее хранилища конечных точек в БД микросервиса "
 "ecos-model и они могут быть заданы как непосредственно в микросервисе, "
@@ -100,23 +107,23 @@ msgstr ""
 "ecos-model microservice database and can be set either directly in the "
 "microservice that will use these endpoints, or in ecos-model."
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:53
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:58
 msgid "Использование конечных точек в коде"
 msgstr "Using Endpoints in Code"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:55
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:60
 msgid "Получение:"
 msgstr "Retrieval:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:68
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:73
 msgid "Подписка на изменения:"
 msgstr "Subscribing to changes:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:80
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:85
 msgid "В интерфейсе"
 msgstr "In the UI"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:82
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:87
 msgid ""
 "Настройки доступны в журнале **«Конечные точки»** (Рабочее пространство "
 "«Раздел администратора» — **Модель**):"
@@ -124,7 +131,7 @@ msgstr ""
 "Settings are available in the **«Endpoints»** journal (Workspace "
 "«Administrator Section» — **Model**):"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:88
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:93
 msgid ""
 "Журнал доступен по адресу: "
 "``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
@@ -132,14 +139,15 @@ msgstr ""
 "The journal is available at: "
 "``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:90
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:95
 msgid "Форма создания:"
 msgstr "Creation form:"
 
-#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:96
+#: ../../general/Objects_entities/Artifacts/ECOS_Endpoint.rst:101
 msgid ""
 "В данных для идентификации необходимо выбрать созданный ранее "
 ":ref:`Секрет <ECOS_secrets>`."
 msgstr ""
-"In the identification data, select the previously created "
-":ref:`Secret <ECOS_secrets>`."
+"In the identification data, select the previously created :ref:`Secret "
+"<ECOS_secrets>`."
+

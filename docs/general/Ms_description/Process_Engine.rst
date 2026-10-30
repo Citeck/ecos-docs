@@ -7,8 +7,24 @@
 BPMN-процессов на базе движка Camunda. Микросервис поддерживает версионирование процессов, управление пользовательскими и сервисными задачами, обработку событий
 и таймеров. В данном разделе описана общая архитектура процессного движка и особенности работы с BPMN-процессами в Citeck.
 
+.. grid:: 1
+   :gutter: 3
+
+   .. grid-item-card:: Описание микросервиса Process и предпосылки
+      :link: process_description
+      :link-type: ref
+
+      Архитектура хранения состояния процессов и требования к отказоустойчивости.
+
+   .. grid-item-card:: BPMN Process Engine
+      :link: process_bpmn
+      :link-type: ref
+
+      Движок Camunda: интеграция событий и unit-тестирование процессов.
+
 .. toctree::
     :maxdepth: 2
+    :hidden:
 
     process/process_description
     process/process_bpmn

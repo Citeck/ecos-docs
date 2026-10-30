@@ -25,7 +25,8 @@
        :width: 600
        :align: center
 
-Для **bpmn-процесса**:
+Для BPMN-процесса
+------------------
 
 .. image:: ../_static/widgets/History_3.png
        :width: 600

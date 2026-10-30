@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1480,17 +1480,33 @@ msgstr "**delay**"
 msgid "частота проверки почтового ящика (указывается в миллисекундах)"
 msgstr "mailbox check frequency (specified in milliseconds)"
 
-#: ../../introduction/ecos_modules/service_desk.rst:789
+#: ../../introduction/ecos_modules/service_desk.rst:791
+msgid ""
+"Значение конфигурации ``mail-inbox-sd`` считывается микросервисом "
+"**ecom** один раз — при старте приложения (Camel-маршрут собирается на "
+"этапе инициализации Spring-контекста). После любого изменения настройки "
+"(включая переключение значения с ``disabled`` на реальный IMAP URI и "
+"обратно) необходимо **перезапустить микросервис ecom**, иначе новые "
+"параметры подключения не применятся."
+msgstr ""
+"The ``mail-inbox-sd`` configuration value is read by the **ecom** "
+"microservice only once — at application startup (the Camel route is "
+"assembled during Spring context initialization). After any configuration "
+"change (including switching the value from ``disabled`` to a real IMAP "
+"URI and back), you must **restart the ecom microservice**, otherwise the "
+"new connection parameters will not be applied."
+
+#: ../../introduction/ecos_modules/service_desk.rst:794
 msgid "Логика поиска клиентов следующая:"
 msgstr "The customer search logic is as follows:"
 
-#: ../../introduction/ecos_modules/service_desk.rst:791
+#: ../../introduction/ecos_modules/service_desk.rst:796
 msgid "Поиск возможных клиентов на основе домена из email'a автора письма."
 msgstr ""
 "Search for potential customers based on the domain from the email "
 "author's address."
 
-#: ../../introduction/ecos_modules/service_desk.rst:792
+#: ../../introduction/ecos_modules/service_desk.rst:797
 msgid ""
 "Поиск среди возможных клиентов того, у которого есть в списке "
 "пользователей автор письма (сравнивать по полю email у пользователя). "
@@ -1500,7 +1516,7 @@ msgstr ""
 "in its user list (compare by the user's email field). If found, it is "
 "returned."
 
-#: ../../introduction/ecos_modules/service_desk.rst:793
+#: ../../introduction/ecos_modules/service_desk.rst:798
 msgid ""
 "Если задан клиент по умолчанию И он среди возможных клиентов, то искать "
 "пользователя среди всех пользователей в системе по email (не важно "
@@ -1511,7 +1527,7 @@ msgstr ""
 "(regardless of whether they are added to the customer or not). If found, "
 "it is returned."
 
-#: ../../introduction/ecos_modules/service_desk.rst:794
+#: ../../introduction/ecos_modules/service_desk.rst:799
 msgid ""
 "Если не вернулись на предыдущих пунктах, то считать, что клиент и "
 "пользователь не найдены и заявка не создается."
@@ -1519,7 +1535,7 @@ msgstr ""
 "If no result is returned from the previous steps, then consider that the "
 "customer and user are not found, and the ticket is not created."
 
-#: ../../introduction/ecos_modules/service_desk.rst:796
+#: ../../introduction/ecos_modules/service_desk.rst:801
 msgid ""
 "Автоматически из полученного письма будут заполняться следующие поля "
 "заявки:"
@@ -1527,23 +1543,23 @@ msgstr ""
 "Automatically, the following ticket fields will be filled from the "
 "received email:"
 
-#: ../../introduction/ecos_modules/service_desk.rst:798
+#: ../../introduction/ecos_modules/service_desk.rst:803
 msgid "Тема письма;"
 msgstr "Email subject;"
 
-#: ../../introduction/ecos_modules/service_desk.rst:799
+#: ../../introduction/ecos_modules/service_desk.rst:804
 msgid "Содержание обращения;"
 msgstr "Request content;"
 
-#: ../../introduction/ecos_modules/service_desk.rst:800
+#: ../../introduction/ecos_modules/service_desk.rst:805
 msgid "Автор;"
 msgstr "Author;"
 
-#: ../../introduction/ecos_modules/service_desk.rst:801
+#: ../../introduction/ecos_modules/service_desk.rst:806
 msgid "Инициатор."
 msgstr "Initiator."
 
-#: ../../introduction/ecos_modules/service_desk.rst:803
+#: ../../introduction/ecos_modules/service_desk.rst:808
 msgid ""
 "При перемещении заявки по бизнес-процессу автор заявки получает письма "
 "такого формата:"
@@ -1551,7 +1567,7 @@ msgstr ""
 "When a ticket moves through the business process, the ticket author "
 "receives emails of this format:"
 
-#: ../../introduction/ecos_modules/service_desk.rst:809
+#: ../../introduction/ecos_modules/service_desk.rst:814
 msgid ""
 "Автор заявки нажимает на ссылку **\"Ответить\"**, пишет письмо. "
 "Информация из тела письма будет перенесена в комментарий заявки."
@@ -1560,15 +1576,15 @@ msgstr ""
 "information from the email body will be transferred to the ticket "
 "comment."
 
-#: ../../introduction/ecos_modules/service_desk.rst:811
+#: ../../introduction/ecos_modules/service_desk.rst:816
 msgid "Правила обработки такого письма и переноса информации из него:"
 msgstr "Rules for processing such an email and transferring information from it:"
 
-#: ../../introduction/ecos_modules/service_desk.rst:813
+#: ../../introduction/ecos_modules/service_desk.rst:818
 msgid "Удаляются вложения."
 msgstr "Attachments are removed."
 
-#: ../../introduction/ecos_modules/service_desk.rst:814
+#: ../../introduction/ecos_modules/service_desk.rst:819
 msgid ""
 "Защита от изменения стилей, добавления ссылок - удаляются теги, в "
 "комментарии остается только текст письма."
@@ -1576,7 +1592,7 @@ msgstr ""
 "Protection against style changes, link additions - tags are removed, only"
 " the email text remains in the comment."
 
-#: ../../introduction/ecos_modules/service_desk.rst:815
+#: ../../introduction/ecos_modules/service_desk.rst:820
 msgid "Блокировка выполнения скриптов."
 msgstr "Script execution blocking."
 

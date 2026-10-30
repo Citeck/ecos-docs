@@ -27,44 +27,46 @@
 
 В этом интерфейсе 1 метод **register**, который принимает настройки, которые позволяют добавлять любое количество вычисляемых атрибутов.
 
-Пример на Kotlin:
+.. tab-set::
 
-.. code-block:: kotlin
+   .. tab-item:: Kotlin
 
-    @Component
-    class CustomExtMixinConfigurer : ExtAttMixinConfigurer {
+      .. code-block:: kotlin
 
-        override fun configure(settings: ExtMixinConfig) {
-            settings.setEcosType("contract") // тип ECOS к которому добавляется новый атрибут. Атрибут добавляется к указанному типу и к его наследникам.
-                .addProvidedAtt("newExtAtt") // имя добавляемого атрибута
-                .addRequiredAtts(mapOf("ref" to "?id")) // атрибуты, которые нужны для вычисления значения нашего атрибута
-                .withHandler { // код по вычислению атрибута
-                    EntityRef.create("emodel","person", "admin") // возвращаем просто ссылку на другую сущность
-                }
-        }
-    }
+         @Component
+         class CustomExtMixinConfigurer : ExtAttMixinConfigurer {
 
-Пример на Java:
+             override fun configure(settings: ExtMixinConfig) {
+                 settings.setEcosType("contract") // тип ECOS к которому добавляется новый атрибут. Атрибут добавляется к указанному типу и к его наследникам.
+                     .addProvidedAtt("newExtAtt") // имя добавляемого атрибута
+                     .addRequiredAtts(mapOf("ref" to "?id")) // атрибуты, которые нужны для вычисления значения нашего атрибута
+                     .withHandler { // код по вычислению атрибута
+                         EntityRef.create("emodel","person", "admin") // возвращаем просто ссылку на другую сущность
+                     }
+             }
+         }
 
-.. code-block:: java
+   .. tab-item:: Java
 
-    public class CustomExtMixinConfigurer implements ExtAttMixinConfigurer {
+      .. code-block:: java
 
-        @Override
-        public void configure(@NotNull ExtMixinConfig config) throws Exception {
+         public class CustomExtMixinConfigurer implements ExtAttMixinConfigurer {
 
-            Map<String, String> requiredAtts = new HashMap<>();
+             @Override
+             public void configure(@NotNull ExtMixinConfig config) throws Exception {
 
-            config.setEcosType("contract") // тип ECOS к которому добавляется новый атрибут. Атрибут добавляется к указанному типу и к его наследникам.
-                .addProvidedAtt("newExtAtt") // имя добавляемого атрибута
-                .addRequiredAtts(requiredAtts) // атрибуты, которые нужны для вычисления значения нашего атрибута
-                .withHandler(data -> { // код по вычислению атрибута
-                    return EntityRef.create("emodel", "person", "admin"); // возвращаем просто ссылку на другую сущность
-                });
-        }
-    }
+                 Map<String, String> requiredAtts = new HashMap<>();
 
-После описания новых атрибутов для типов ECOS можно пользоваться стандартным :ref:`Records API <Records_API>` для получения значения этих атрибутов.
+                 config.setEcosType("contract") // тип ECOS к которому добавляется новый атрибут. Атрибут добавляется к указанному типу и к его наследникам.
+                     .addProvidedAtt("newExtAtt") // имя добавляемого атрибута
+                     .addRequiredAtts(requiredAtts) // атрибуты, которые нужны для вычисления значения нашего атрибута
+                     .withHandler(data -> { // код по вычислению атрибута
+                         return EntityRef.create("emodel", "person", "admin"); // возвращаем просто ссылку на другую сущность
+                     });
+             }
+         }
+
+После описания новых атрибутов для типов Citeck можно пользоваться стандартным :ref:`Records API <Records_API>` для получения значения этих атрибутов.
 
 Например, для загрузки нового атрибута в браузере можно выполнить следующий скрипт:
 

@@ -28,61 +28,96 @@
 Если при вызове save указаны атрибуты для загрузки, то в результате будет тот же формат, что и при вызове метода load.
 
 Структура query
+-----------------
+
+.. list-table::
+  :widths: 20 55
+  :header-rows: 1
+  :class: tight-table
+
+  * - Поле
+    - Описание
+  * - ``sourceId``
+    - Идентификатор источника данных в формате «приложение/id_локального_источника_данных»
+  * - ``query``
+    - Любой формат, который поддерживается источником данных
+  * - ``language``
+    - Язык для определения содержимого query. Источник данных может поддерживать несколько языков
+  * - ``sortBy``
+    - Список объектов ``{attribute: String, ascending: Boolean}`` — атрибут для сортировки и направление (по возрастанию ``true`` или по убыванию ``false``)
+  * - ``groupBy``
+    - Список атрибутов для группировки
+  * - ``page``
+    - Объект ``{maxItems: Number, skipCount: Number}`` — максимальное количество элементов и количество элементов, которое нужно пропустить при поиске
+  * - ``consistency``
+    - Ожидаемая консистенция данных: ``EVENTUAL`` \| ``TRANSACTIONAL`` \| ``DEFAULT`` \| ``TRANSACTIONAL_IF_POSSIBLE``. ``EVENTUAL`` позволяет использовать индексы для поиска элементов
 
 .. code-block:: javascript
 
   {
-    "sourceId": String // идентификатор источника данных в формате "приложение/id_локального_источника_данных"
-    "query": Any // любой формат, который поддерживается источником данных
-    "language": String // язык для определения содержимого query. Источник данных может поддерживать несколько языков
+    "sourceId": String,
+    "query": Any,
+    "language": String,
     "sortBy": [
         {
-            "attribute": String // атрибут для сортировки
-            "ascending": Boolean // сортировка должна быть по возрастанию true или по убыванию false
+            "attribute": String,
+            "ascending": Boolean
         }
     ],
-    "groupBy": [String] // список атрибутов для группировки
+    "groupBy": [String],
     "page": {
-        maxItems: Number // максимальное кол-во элементов
-        skipCount: Number // количество элементов, которое нужно пропустить при поиске
-    }
-    "consistency": EVENTUAL | TRANSACTIONAL | DEFAULT | TRANSACTIONAL_IF_POSSIBLE // ожидаемая консистенция данных. EVENTUAL позволяет использовать индексы для поиска элементов
+        "maxItems": Number,
+        "skipCount": Number
+    },
+    "consistency": EVENTUAL | TRANSACTIONAL | DEFAULT | TRANSACTIONAL_IF_POSSIBLE
   }
 
 Примеры использования
+------------------------
+
+Запрос ФИО пользователя:
 
 .. code-block:: javascript
-
-
-  // Запрос ФИО пользователя:
 
   var user = Records.get('emodel/person@user');
   await user.load(['userName', 'firstName', 'lastName'])
 
-  // Запрос имени пользователя:
-  
+Запрос имени пользователя:
+
+.. code-block:: javascript
+
   var user = Records.get('emodel/person@user')
   await user.load('firstName')
 
-  // Пример скрипта для смены статуса:
+Пример скрипта для смены статуса:
+
+.. code-block:: javascript
 
   var doc = Records.get('someDocumentRef');
   doc.att('_status', 'some_status_id');
   doc.save();
 
-  // Получение сразу нескольких атрибутов у вложенного значения:
+Получение сразу нескольких атрибутов у вложенного значения:
+
+.. code-block:: javascript
 
   await Records.get('uiserv/rjournal@test587').load(boardRefs[]{id,name}, true)
 
-  // Статус объекта:
+Статус объекта:
+
+.. code-block:: javascript
 
   await Records.get('emodel/someType@id').load("_status?str")
 
-  // Проверка enterprise лицензии:
+Проверка enterprise лицензии:
+
+.. code-block:: javascript
 
   await Records.get('emodel/meta@').load('$license.enterprise?bool', true)
 
-  // Получения рабочих областей текущего пользователя:
+Получение рабочих областей текущего пользователя:
+
+.. code-block:: javascript
 
   await Records.query({
       sourceId: 'emodel/workspace',
@@ -92,7 +127,9 @@
       'wsName': '?disp!?localId'
   })
 
-  // Узнать sourceId по typeId:
+Узнать sourceId по typeId:
+
+.. code-block:: javascript
 
   await Records.get('emodel/type@typeId').load('sourceId')
 

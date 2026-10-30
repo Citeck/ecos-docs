@@ -114,58 +114,54 @@ Java
 
 - :ref:`Список<publication>`. Режим можно использовать для представления списка новостей, базы знаний, перечисления товаров или оборудования. Выберите чекбокс:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_2_1.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/tab_views_2_1.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_2.png
-                  :width: 500
-                  :align: center
-
+      .. image:: _static/tab_views_2.png
+         :width: 500
+         :align: left
 
 - :ref:`Плитки<tiles>`. Режим можно использовать для представления списка новостей, базы знаний, перечисления товаров или оборудования. Выберите чекбокс:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_3_1.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/tab_views_3_1.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_3.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/tab_views_3.png
+         :width: 500
+         :align: left
 
 - :ref:`Библиотека документов<document_library>`. Выберите чекбокс:
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_4_1.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/tab_views_4_1.png
+         :width: 500
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/tab_views_4.png
-                  :width: 500
-                  :align: center
+      .. image:: _static/tab_views_4.png
+         :width: 500
+         :align: left
 
 
 Список, плитки

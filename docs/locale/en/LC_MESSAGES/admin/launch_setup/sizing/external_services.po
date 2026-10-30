@@ -1,0 +1,873 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:4
+msgid "Требования к внешним сервисам"
+msgstr "External Services Requirements"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:6
+msgid ""
+"Страница описывает требования к PostgreSQL, S3-совместимому хранилищу и "
+"OpenSearch, когда эти компоненты выносятся за пределы кластера Kubernetes "
+"или за пределы ВМ с контейнерами платформы. Требования сформулированы "
+"**без привязки к конкретному провайдеру** и подходят как для managed-"
+"сервисов, так и для развёртывания на отдельных виртуальных машинах."
+msgstr ""
+"This page describes the requirements for PostgreSQL, S3-compatible "
+"storage, and OpenSearch when these components are moved outside the "
+"Kubernetes cluster or outside the VM with platform containers. The "
+"requirements are stated **without reference to a specific provider** and "
+"apply both to managed services and to deployment on separate virtual "
+"machines."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:8
+msgid ""
+"Ресурсы приведены с запасом и уточняются по фактическому объёму "
+"документооборота — см. :ref:`правила пересчёта <sizing_recalc>`."
+msgstr ""
+"Resources are given with headroom and are refined based on the actual "
+"document flow volume — see the :ref:`recalculation rules <sizing_recalc>`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:11
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:16
+#: ../../admin/launch_setup/sizing/external_services.rst:270
+msgid "PostgreSQL"
+msgstr "PostgreSQL"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:23
+#: ../../admin/launch_setup/sizing/external_services.rst:135
+#: ../../admin/launch_setup/sizing/external_services.rst:208
+#: ../../admin/launch_setup/sizing/external_services.rst:249
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:24
+#: ../../admin/launch_setup/sizing/external_services.rst:136
+#: ../../admin/launch_setup/sizing/external_services.rst:209
+#: ../../admin/launch_setup/sizing/external_services.rst:268
+msgid "Test"
+msgstr "Test"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:25
+#: ../../admin/launch_setup/sizing/external_services.rst:137
+#: ../../admin/launch_setup/sizing/external_services.rst:210
+#: ../../admin/launch_setup/sizing/external_services.rst:269
+msgid "Production"
+msgstr "Production"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:26
+msgid "Версия"
+msgstr "Version"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:27
+#: ../../admin/launch_setup/sizing/external_services.rst:28
+msgid "PostgreSQL 14+ (рекомендуется 18)"
+msgstr "PostgreSQL 14+ (18 recommended)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:29
+#: ../../admin/launch_setup/sizing/external_services.rst:214
+msgid "vCPU"
+msgstr "vCPU"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:30
+#: ../../admin/launch_setup/sizing/external_services.rst:72
+msgid "2"
+msgstr "2"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:31
+#: ../../admin/launch_setup/sizing/external_services.rst:216
+msgid "**8**"
+msgstr "**8**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:32
+#: ../../admin/launch_setup/sizing/external_services.rst:217
+msgid "RAM"
+msgstr "RAM"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:33
+msgid "4 GiB"
+msgstr "4 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:34
+#: ../../admin/launch_setup/sizing/external_services.rst:219
+msgid "**32 GiB**"
+msgstr "**32 GiB**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:35
+#: ../../admin/launch_setup/sizing/external_services.rst:223
+#: ../../admin/launch_setup/sizing/external_services.rst:255
+msgid "Диск"
+msgstr "Disk"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:36
+msgid "50–100 ГБ SSD, автоувеличение"
+msgstr "50–100 GB SSD, auto-expansion"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:37
+msgid "**400 ГБ SSD NVMe**, автоувеличение"
+msgstr "**400 GB SSD NVMe**, auto-expansion"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:38
+msgid "Количество хостов"
+msgstr "Number of hosts"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:39
+#: ../../admin/launch_setup/sizing/external_services.rst:68
+#: ../../admin/launch_setup/sizing/external_services.rst:212
+msgid "1"
+msgstr "1"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:40
+msgid "1 (без реплики)"
+msgstr "1 (no replica)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:42
+msgid ""
+"**Обоснование ресурсов.** Минимум — **2 vCPU / 4 GiB** по "
+":ref:`k8s-resource-management`, валидирован нагрузочным тестированием "
+"(:ref:`load_testing`). Норматив на 2000 именных пользователей — 8 vCPU / "
+"16 GiB; RAM взята с двукратным запасом. Диск: объём БД ≈ 0.6 × объёма "
+"контента (500 ГБ) + ~30 % на WAL, временные файлы и служебные данные. "
+"Ресурсы в зависимости от объёма БД — см. :ref:`sizing_recalc`."
+msgstr ""
+"**Resource rationale.** The minimum of **2 vCPU / 4 GiB** follows "
+":ref:`k8s-resource-management` and has been validated by load testing "
+"(:ref:`load_testing`). The baseline for 2,000 named users is 8 vCPU / 16 "
+"GiB; RAM is taken with a twofold margin. Disk: database size ≈ 0.6 × "
+"content volume (500 GB) + ~30% for WAL, temporary files, and service data."
+" For resources depending on database size, see :ref:`sizing_recalc`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:46
+msgid ""
+"При размещении PostgreSQL **на общей ВМ** вместе с контейнерами платформы "
+"ресурсы снижаются до 4 vCPU / 16 GiB на целевом профиле (вместо 8 vCPU / "
+"32 GiB): ядра и файловый кэш делятся со всей платформой, а "
+"``shared_buffers`` при 16 GiB составляет ~4 GiB, чего достаточно для базы "
+"до ~500 ГБ. См. :ref:`sizing_docker`."
+msgstr ""
+"When PostgreSQL is placed **on a shared VM** together with the platform "
+"containers, resources are reduced to 4 vCPU / 16 GiB for the target "
+"profile (instead of 8 vCPU / 32 GiB): cores and file cache are shared with"
+" the entire platform, and with 16 GiB, ``shared_buffers`` is ~4 GiB, which"
+" is sufficient for a database of up to ~500 GB. See :ref:`sizing_docker`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:48
+msgid ""
+"При размещении **внутри кластера Kubernetes** значения пода 2 vCPU / 4 GiB"
+" покрывают тестовый и приёмочный сценарии; для продуктива применяются "
+"значения из таблицы выше. См. :ref:`sizing_k8s`."
+msgstr ""
+"When placed **inside a Kubernetes cluster**, the pod values of 2 vCPU / 4 "
+"GiB cover test and acceptance scenarios; for production, the values from "
+"the table above apply. See :ref:`sizing_k8s`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:50
+msgid ""
+"**Отказоустойчивость.** Реплика PostgreSQL в расчёте **не закладывается** "
+"(1 хост). При необходимости отказоустойчивости СУБД добавляется реплика "
+"(2-й хост) и/или переход на managed-сервис с HA; ресурсы на кластеризацию "
+"— репликация, Patroni, etcd, балансировщик подключений — определяются "
+"отдельно. Обязательны регулярные автоматические резервные копии "
+"(``pg_basebackup`` + архив WAL)."
+msgstr ""
+"**Fault tolerance.** A PostgreSQL replica is **not included** in the "
+"calculation (1 host). If DBMS fault tolerance is required, a replica is "
+"added (2nd host) and/or a managed service with HA is used; resources for "
+"clustering — replication, Patroni, etcd, connection pooler — are "
+"determined separately. Regular automated backups (``pg_basebackup`` + WAL "
+"archive) are mandatory."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:55
+msgid "Перечень баз данных"
+msgstr "List of databases"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:57
+msgid ""
+"На этапе развёртывания создаётся набор баз данных микросервисов. Базовый "
+"состав:"
+msgstr ""
+"A set of microservice databases is created at the deployment stage. The "
+"base set:"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:64
+msgid "№"
+msgstr "No."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:65
+msgid "База данных"
+msgstr "Database"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:66
+msgid "Пользователь"
+msgstr "User"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:67
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:69
+msgid "ecos_model"
+msgstr "ecos_model"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:70
+msgid "model"
+msgstr "model"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:71
+msgid "типы данных, шаблоны нумерации, матрицы прав"
+msgstr "data types, numbering templates, permission matrices"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:73
+msgid "ecos_apps"
+msgstr "ecos_apps"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:74
+msgid "apps"
+msgstr "apps"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:75
+msgid "доставка приложений к сервисам"
+msgstr "delivering applications to services"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:76
+msgid "3"
+msgstr "3"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:77
+msgid "ecos_gateway"
+msgstr "ecos_gateway"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:78
+msgid "gateway"
+msgstr "gateway"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:79
+msgid "API-шлюз"
+msgstr "API gateway"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:80
+#: ../../admin/launch_setup/sizing/external_services.rst:215
+msgid "4"
+msgstr "4"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:81
+msgid "ecos_uiserv"
+msgstr "ecos_uiserv"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:82
+msgid "uiserv"
+msgstr "uiserv"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:83
+msgid "формы, журналы, дашборды, конфигурация UI"
+msgstr "forms, journals, dashboards, UI configuration"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:84
+msgid "5"
+msgstr "5"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:85
+msgid "ecos_notifications"
+msgstr "ecos_notifications"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:86
+msgid "notifications"
+msgstr "notifications"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:87
+msgid "уведомления (email, push)"
+msgstr "notifications (email, push)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:88
+msgid "6"
+msgstr "6"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:89
+msgid "ecos_history"
+msgstr "ecos_history"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:90
+msgid "history"
+msgstr "history"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:91
+msgid "история событий системы"
+msgstr "system event history"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:92
+msgid "7"
+msgstr "7"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:93
+msgid "ecos_integrations"
+msgstr "ecos_integrations"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:94
+msgid "integrations"
+msgstr "integrations"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:95
+msgid "интеграции (SAP, 1C, MQ)"
+msgstr "integrations (SAP, 1C, MQ)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:96
+msgid "8"
+msgstr "8"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:97
+msgid "ecos_process"
+msgstr "ecos_process"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:98
+msgid "process"
+msgstr "process"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:99
+msgid "процессы BPMN/CMMN"
+msgstr "BPMN/CMMN processes"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:100
+msgid "9"
+msgstr "9"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:101
+msgid "ecos_camunda"
+msgstr "ecos_camunda"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:102
+msgid "camunda"
+msgstr "camunda"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:103
+msgid "движок Camunda (ecos-process)"
+msgstr "Camunda engine (ecos-process)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:104
+msgid "10"
+msgstr "10"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:105
+msgid "ecos_identity"
+msgstr "ecos_identity"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:106
+msgid "eis"
+msgstr "eis"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:107
+msgid "Keycloak — аутентификация/SSO"
+msgstr "Keycloak — authentication/SSO"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:108
+msgid "11"
+msgstr "11"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:109
+msgid "ecos_edi"
+msgstr "ecos_edi"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:110
+msgid "edi"
+msgstr "edi"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:111
+msgid "ЮЗЭДО — обмен документами с операторами ЭДО; при использовании ЮЗЭДО"
+msgstr "EDI — document exchange with EDI operators; if EDI is used"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:112
+msgid "12"
+msgstr "12"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:113
+msgid "citeck_observer"
+msgstr "citeck_observer"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:114
+msgid "observer"
+msgstr "observer"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:115
+msgid ""
+"Citeck Observer — метрики, логи, трассировки и алерты платформы; при "
+"использовании Observer, на отдельной СУБД"
+msgstr ""
+"Citeck Observer — platform metrics, logs, traces, and alerts; if Observer "
+"is used, on a separate DBMS"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:119
+msgid ""
+"База ``citeck_observer`` размещается на отдельном экземпляре PostgreSQL, "
+"который не используют другие сервисы платформы: Observer постоянно "
+"записывает метрики, логи и трассировки, и эта нагрузка не должна влиять на"
+" базы платформы. Ресурсы этой СУБД в настоящем расчёте не учтены."
+msgstr ""
+"The ``citeck_observer`` database is placed on a separate PostgreSQL "
+"instance that is not used by other platform services: Observer constantly "
+"writes metrics, logs, and traces, and this load must not affect the "
+"platform databases. The resources of this DBMS are not included in this "
+"calculation."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:123
+msgid ""
+"Состав баз может меняться от версии к версии Citeck. Полный перечень "
+"ключей и паролей — :ref:`kubernetes-secrets`."
+msgstr ""
+"The set of databases may change from one Citeck version to another. For "
+"the full list of keys and passwords, see :ref:`kubernetes-secrets`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:128
+msgid "S3-совместимое хранилище"
+msgstr "S3-compatible storage"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:138
+msgid "Тип"
+msgstr "Type"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:139
+#: ../../admin/launch_setup/sizing/external_services.rst:140
+msgid "S3-совместимое объектное хранилище"
+msgstr "S3-compatible object storage"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:141
+#: ../../admin/launch_setup/sizing/external_services.rst:174
+msgid "Объём контента"
+msgstr "Content volume"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:142
+msgid "100 ГБ"
+msgstr "100 GB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:143
+msgid "**500 ГБ** (базовое допущение расчёта)"
+msgstr "**500 GB** (base calculation assumption)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:144
+msgid "Ресурсы узла (self-hosted)"
+msgstr "Node resources (self-hosted)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:145
+msgid "2 vCPU / 4 GiB"
+msgstr "2 vCPU / 4 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:146
+msgid "2 vCPU / 4 GiB, 1 узел"
+msgstr "2 vCPU / 4 GiB, 1 node"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:147
+msgid "Режим развёртывания"
+msgstr "Deployment mode"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:148
+msgid "1 узел"
+msgstr "1 node"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:149
+msgid ""
+"1 узел; кластерная конфигурация — при объёме свыше ~2 ТБ или требованиях к"
+" HA"
+msgstr ""
+"1 node; cluster configuration — for volumes over ~2 TB or HA requirements"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:150
+msgid "Версионирование"
+msgstr "Versioning"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:151
+msgid "по желанию"
+msgstr "optional"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:152
+msgid "**включить** (защита от случайного удаления)"
+msgstr "**enable** (protection against accidental deletion)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:153
+msgid "Доступ"
+msgstr "Access"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:154
+msgid "отдельный bucket + сервисный ключ (access / secret key)"
+msgstr "separate bucket + service key (access / secret key)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:155
+msgid "то же, плюс bucket policy по сервисному аккаунту / IP"
+msgstr "same, plus a bucket policy by service account / IP"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:156
+msgid "Публичный доступ"
+msgstr "Public access"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:157
+#: ../../admin/launch_setup/sizing/external_services.rst:158
+msgid "выключен"
+msgstr "disabled"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:159
+msgid "Эндпоинт"
+msgstr "Endpoint"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:160
+msgid "S3-совместимый URL провайдера или S3-совместимого хранилища"
+msgstr "S3-compatible URL of the provider or S3-compatible storage"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:161
+msgid "то же"
+msgstr "same"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:163
+msgid ""
+"В базовом расчёте заложено S3-совместимое хранилище на одном узле, "
+"например SeaweedFS. Альтернатива — managed Object Storage объёмом от 500 "
+"ГБ. Настройка подключения хранилища в интерфейсе платформы — "
+":ref:`s3_storage`."
+msgstr ""
+"The base calculation assumes single-node S3-compatible storage, for "
+"example SeaweedFS. An alternative is managed Object Storage of 500 GB or "
+"more. Configuring the storage connection in the platform interface — "
+":ref:`s3_storage`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst
+msgid "Ресурсы S3-хранилища в зависимости от объёма контента"
+msgstr "S3 storage resources depending on content volume"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:167
+msgid ""
+"При большом объёме хранимого контента ресурсы хранилища нужно увеличивать:"
+" память растёт с числом объектов и параллельных запросов, CPU — с "
+"пропускной способностью и erasure coding в кластерной конфигурации."
+msgstr ""
+"With a large volume of stored content, storage resources need to be "
+"increased: memory grows with the number of objects and concurrent "
+"requests, CPU — with throughput and erasure coding in a cluster "
+"configuration."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:175
+msgid "Ресурсы хранилища"
+msgstr "Storage resources"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:176
+msgid "Режим"
+msgstr "Mode"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:177
+msgid "до ~500 ГБ"
+msgstr "up to ~500 GB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:178
+msgid "2 vCPU / 4 GiB (рекомендуемый baseline)"
+msgstr "2 vCPU / 4 GiB (recommended baseline)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:179
+#: ../../admin/launch_setup/sizing/external_services.rst:182
+msgid "single-node"
+msgstr "single-node"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:180
+msgid "~0.5–2 ТБ"
+msgstr "~0.5–2 TB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:181
+msgid "2–4 vCPU / 4–8 GiB"
+msgstr "2–4 vCPU / 4–8 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:183
+msgid "~2–10 ТБ или интенсивная загрузка/выгрузка"
+msgstr "~2–10 TB or intensive upload/download"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:184
+msgid "4 vCPU / 8 GiB"
+msgstr "4 vCPU / 8 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:185
+msgid "кластерная конфигурация"
+msgstr "cluster configuration"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:186
+msgid "> 10 ТБ"
+msgstr "> 10 TB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:187
+msgid "8 vCPU / 16 GiB и более"
+msgstr "8 vCPU / 16 GiB or more"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:188
+msgid "кластерная конфигурация, масштабирование по узлам"
+msgstr "cluster configuration, scaling by nodes"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:190
+msgid ""
+"Диск под контент масштабируется отдельно по фактическому объёму "
+"(закладывать запас ~30 %)."
+msgstr ""
+"Content disk is scaled separately based on the actual volume (plan for "
+"~30% headroom)."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:192
+msgid ""
+"**Кластеризация хранилища** — переход на кластерное S3-совместимое "
+"хранилище (managed Object Storage или self-hosted: Ceph RGW, SeaweedFS и "
+"т. п.), выбор параметров erasure coding, георезервирование — в настоящем "
+"расчёте не рассматривается и подлежит отдельному обсуждению."
+msgstr ""
+"**Storage clustering** — moving to clustered S3-compatible storage "
+"(managed Object Storage or self-hosted: Ceph RGW, SeaweedFS, etc.), "
+"choosing erasure coding parameters, geo-redundancy — is not covered by "
+"this calculation and is subject to separate discussion."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:194
+msgid ""
+"**Если на отдельной ВМ:** развернуть S3-совместимое хранилище на одном "
+"узле, например SeaweedFS. Test — 1 ВМ **2 vCPU / 4 GiB / 150 ГБ SSD**. "
+"Prod — 1 ВМ **2 vCPU / 4 GiB / от 500 ГБ SSD** + регулярное резервное "
+"копирование."
+msgstr ""
+"**If on a separate VM:** deploy single-node S3-compatible storage, for "
+"example SeaweedFS. Test — 1 VM **2 vCPU / 4 GiB / 150 GB SSD**. Prod — 1 "
+"VM **2 vCPU / 4 GiB / 500 GB SSD or more** + regular backups."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:199
+#: ../../admin/launch_setup/sizing/external_services.rst:276
+msgid "OpenSearch"
+msgstr "OpenSearch"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:201
+msgid ""
+"OpenSearch обеспечивает полнотекстовый поиск и индексацию контента и "
+"атрибутов (см. :ref:`Архитектура <architecture>`). Компонент включается по"
+" необходимости: конфигурации «без полнотекстового поиска» в расчётах "
+"приведены отдельно."
+msgstr ""
+"OpenSearch provides full-text search and indexing of content and "
+"attributes (see :ref:`Architecture <architecture>`). The component is "
+"enabled as needed: configurations \"without full-text search\" are listed "
+"separately in the calculations."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:211
+msgid "Узлы"
+msgstr "Nodes"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:213
+msgid "**1**"
+msgstr "**1**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:218
+msgid "16 GiB"
+msgstr "16 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:220
+msgid "Heap JVM"
+msgstr "Heap JVM"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:221
+msgid "8 GiB"
+msgstr "8 GiB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:222
+msgid "**16 GiB**"
+msgstr "**16 GiB**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:224
+msgid "100 ГБ NVMe"
+msgstr "100 GB NVMe"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:225
+msgid "**300 ГБ NVMe** (индексы ~250 ГБ при 500 ГБ контента)"
+msgstr "**300 GB NVMe** (indexes ~250 GB with 500 GB of content)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:227
+msgid ""
+"**Ориентир по ресурсам:** ~1 GiB heap на 20–30 ГБ индексов; heap не более "
+"31 GiB и не более 50 % RAM узла. Объём индексов ≈ 0.5 × объёма контента."
+msgstr ""
+"**Resource guideline:** ~1 GiB heap per 20–30 GB of indexes; heap no more "
+"than 31 GiB and no more than 50% of node RAM. Index size ≈ 0.5 × content "
+"volume."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:229
+msgid ""
+"**Размещение.** Рекомендуется вынос за пределы кластера — managed-сервис "
+"или выделенные ВМ. Для тестовых контуров при небольших объёмах индексов "
+"допустимо размещение внутри кластера Kubernetes; в этом случае требуются:"
+msgstr ""
+"**Placement.** Moving it outside the cluster is recommended — a managed "
+"service or dedicated VMs. For test environments with small index volumes, "
+"placement inside the Kubernetes cluster is acceptable; in this case, the "
+"following are required:"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:231
+msgid "отдельный node pool с локальными NVMe;"
+msgstr "a separate node pool with local NVMe;"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:232
+msgid "Guaranteed QoS (``requests = limits``);"
+msgstr "Guaranteed QoS (``requests = limits``);"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:233
+msgid ""
+"настройки уровня хоста: ``vm.max_map_count = 262144``, отключённый swap."
+msgstr "host-level settings: ``vm.max_map_count = 262144``, swap disabled."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:235
+msgid ""
+"При размещении **на общей ВМ** вместе с контейнерами платформы применяется"
+" сокращённая конфигурация: на продуктиве — 4 vCPU / 16 GiB (при 250 ГБ "
+"индексов heap 8 GiB находится у нижней границы правила: поиск работает, но"
+" холодные запросы выполняются медленнее), на тестовом контуре — 2 vCPU / 4"
+" GiB при индексах до 50 ГБ. При росте индексов свыше ~500 ГБ применяется 8"
+" vCPU / 32 GiB либо вынос поиска на отдельную ВМ. См. "
+":ref:`sizing_docker`."
+msgstr ""
+"When placed **on a shared VM** together with the platform containers, a "
+"reduced configuration applies: in production — 4 vCPU / 16 GiB (with 250 "
+"GB of indexes, an 8 GiB heap is at the lower bound of the rule: search "
+"works, but cold queries run slower); in the test environment — 2 vCPU / 4 "
+"GiB with indexes up to 50 GB. When indexes grow beyond ~500 GB, 8 vCPU / "
+"32 GiB applies, or search is moved to a separate VM. See "
+":ref:`sizing_docker`."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:237
+msgid ""
+"**Кластеризация OpenSearch** в расчёте не учтена — заложен один узел. При "
+"необходимости отказоустойчивого поиска (кворум из трёх узлов с репликами "
+"индексов) ресурсы умножаются на три: **24 vCPU / 96 GiB / 900 ГБ NVMe**; "
+"объём индексов при этом также возрастает кратно числу узлов с репликами."
+msgstr ""
+"**OpenSearch clustering** is not included in the calculation — a single "
+"node is assumed. If fault-tolerant search is required (a three-node quorum"
+" with index replicas), resources are tripled: **24 vCPU / 96 GiB / 900 GB "
+"NVMe**; the index volume also grows in proportion to the number of nodes "
+"with replicas."
+
+#: ../../admin/launch_setup/sizing/external_services.rst:240
+msgid "RabbitMQ"
+msgstr "RabbitMQ"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:242
+msgid ""
+"В базовом расчёте RabbitMQ остаётся внутри кластера или на общей ВМ: "
+"нагрузочное тестирование проводилось именно в такой конфигурации. При "
+"выносе на отдельный хост или в managed-сервис:"
+msgstr ""
+"In the base calculation, RabbitMQ stays inside the cluster or on the "
+"shared VM: load testing was performed in exactly this configuration. When "
+"moved to a separate host or a managed service:"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:250
+msgid "Значение"
+msgstr "Value"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:251
+msgid "Основание"
+msgstr "Rationale"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:252
+msgid "vCPU / RAM"
+msgstr "vCPU / RAM"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:253
+msgid "**2 vCPU / 4 GiB**"
+msgstr "**2 vCPU / 4 GiB**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:254
+msgid "замена контейнера 500m / 1 GiB, взято с запасом"
+msgstr "replaces the 500m / 1 GiB container, taken with headroom"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:256
+msgid "**50 ГБ SSD**"
+msgstr "**50 GB SSD**"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:257
+msgid "очереди и журналы"
+msgstr "queues and logs"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:260
+msgid "Сводная таблица"
+msgstr "Summary table"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:267
+msgid "Сервис"
+msgstr "Service"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:271
+msgid "2 vCPU / 4 GiB / 50–100 ГБ SSD, 1 хост"
+msgstr "2 vCPU / 4 GiB / 50–100 GB SSD, 1 host"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:272
+msgid "8 vCPU / 32 GiB / 400 ГБ NVMe, 1 хост (без реплики)"
+msgstr "8 vCPU / 32 GiB / 400 GB NVMe, 1 host (no replica)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:273
+msgid "S3-хранилище"
+msgstr "S3 storage"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:274
+msgid "2 vCPU / 4 GiB / 100–150 ГБ"
+msgstr "2 vCPU / 4 GiB / 100–150 GB"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:275
+msgid "2 vCPU / 4 GiB / от 500 ГБ, версионирование"
+msgstr "2 vCPU / 4 GiB / 500 GB or more, versioning"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:277
+msgid "4 vCPU / 16 GiB / 100 ГБ NVMe"
+msgstr "4 vCPU / 16 GiB / 100 GB NVMe"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:278
+msgid "8 vCPU / 32 GiB / 300 ГБ NVMe"
+msgstr "8 vCPU / 32 GiB / 300 GB NVMe"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:279
+msgid "RabbitMQ (если выносится)"
+msgstr "RabbitMQ (if moved out)"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:280
+#: ../../admin/launch_setup/sizing/external_services.rst:281
+msgid "2 vCPU / 4 GiB / 50 ГБ SSD"
+msgstr "2 vCPU / 4 GiB / 50 GB SSD"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:285
+msgid ":ref:`Настройка S3 хранилища через интерфейс <s3_storage>`"
+msgstr ":ref:`Configuring S3 storage through the interface <s3_storage>`"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:286
+msgid ""
+":ref:`Kubernetes Secrets <kubernetes-secrets>` — перечень баз данных и "
+"ключей паролей"
+msgstr ""
+":ref:`Kubernetes Secrets <kubernetes-secrets>` — list of databases and "
+"password keys"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:287
+msgid ""
+":ref:`Настройка внешних коммуникаций <external-communications>` — "
+"подключение микросервисов к RabbitMQ, Zookeeper и БД"
+msgstr ""
+":ref:`Configuring external communications <external-communications>` — "
+"connecting microservices to RabbitMQ, Zookeeper, and databases"
+
+#: ../../admin/launch_setup/sizing/external_services.rst:288
+msgid ""
+":ref:`Хранение конфигурации <configuration>` — настройки платформы и их "
+"источники"
+msgstr ""
+":ref:`Configuration storage <configuration>` — platform settings and their"
+" sources"

@@ -22,38 +22,51 @@
 Атрибуты
 ~~~~~~~~
 
-.. list-table::
-      :widths: 20 40
-      :align: center
-      :class: tight-table
+Ручная настройка
+________________
 
-      * - **Ручная настройка**
-        - Флаг, который позволяет переключить настройку сигнала в ручной режим — указание имени сигнала, а не выбор из предустановленных типов событий.
-      * - **Имя сигнала**
-        - | Служит для идентификации сигнала.
-          | Данное поле становится доступно если включена опция ``Ручная настройка``.
-          | Если выбран ``тип события``, то имя генерируется автоматически.
-      * - **Модель данных**
-        - | Каждое событие имеет свою полезную нагрузку (payload).
-          | Например, событие ``Статус изменен`` содержит информацию о новом и предыдущем статусе.
-          | Модель данных представляет собой ``map``, где ``ключ`` — имя атрибута, по которому будет доступно вычисленное значение, а ``значение`` — :ref:`Records API атрибут <Records API attribute>`.
-          | Таким образом, модель данных позволяет указать какие данные будут передаваться в сигнале, при этом пользовательская модель данных имеет высший приоритет над :ref:`payload по умолчанию <ecos_bpmn_signal_event_defaut_payload>`.
-      * - **Фильтр события по документу**
-        - | Позволяет отфильтровать события на основе документа, по которому возникает данное событие.
-          | Поле имеет 3 значения:
+Флаг, который позволяет переключить настройку сигнала в ручной режим — указание имени сигнала, а не выбор из предустановленных типов событий.
 
-           * ``Любой документ`` — событие будет происходить для любого документа.
-           * ``Текущий документ`` — событие будет происходить только для документа по которому идет бизнес процесс.
-           * ``Документ из переменной процесса`` — событие будет возникать только для документа, который указан в поле ``Имя переменной``.
+Имя сигнала
+___________
 
-      * - **Имя переменной**
-        - | Поле становится доступно, если в ``Фильтр события по документу`` выбрано значение ``Документ из переменной процесса``.
-          | В данном поле указывается имя переменной процесса, по которой будет определяться документ, для которого будет возникать событие.
-          | Переменная должна содержать EntityRef документа в виде String.
-      * - **Фильтр события по предикатам**
-        - | Используется для фильтрации catch событий.
-          | Моделью для вычисления предиката является payload события. В предикатах можно ссылаться на атрибуты из payload события через ``{{someAttribute}}``. Если атрибут используется только в предикате, то его можно использовать напрямую без объявления в модели.
-          | :ref:`Подробнее о предикатах <ecos-predicate_main>`
+Служит для идентификации сигнала.
+
+Данное поле становится доступно если включена опция ``Ручная настройка``. Если выбран ``тип события``, то имя генерируется автоматически.
+
+Модель данных
+_____________
+
+Каждое событие имеет свою полезную нагрузку (payload). Например, событие ``Статус изменен`` содержит информацию о новом и предыдущем статусе.
+
+Модель данных представляет собой ``map``, где ``ключ`` — имя атрибута, по которому будет доступно вычисленное значение, а ``значение`` — :ref:`Records API атрибут <Records API attribute>`.
+
+Таким образом, модель данных позволяет указать какие данные будут передаваться в сигнале, при этом пользовательская модель данных имеет высший приоритет над :ref:`payload по умолчанию <ecos_bpmn_signal_event_defaut_payload>`.
+
+Фильтр события по документу
+____________________________
+
+Позволяет отфильтровать события на основе документа, по которому возникает данное событие. Поле имеет 3 значения:
+
+* ``Любой документ`` — событие будет происходить для любого документа.
+* ``Текущий документ`` — событие будет происходить только для документа по которому идет бизнес процесс.
+* ``Документ из переменной процесса`` — событие будет возникать только для документа, который указан в поле ``Имя переменной``.
+
+Имя переменной
+______________
+
+Поле становится доступно, если в ``Фильтр события по документу`` выбрано значение ``Документ из переменной процесса``.
+
+В данном поле указывается имя переменной процесса, по которой будет определяться документ, для которого будет возникать событие. Переменная должна содержать EntityRef документа в виде String.
+
+Фильтр события по предикатам
+_____________________________
+
+Используется для фильтрации catch событий.
+
+Моделью для вычисления предиката является payload события. В предикатах можно ссылаться на атрибуты из payload события через ``{{someAttribute}}``. Если атрибут используется только в предикате, то его можно использовать напрямую без объявления в модели.
+
+:ref:`Подробнее о предикатах <ecos-predicate_main>`
 
 .. important::
 
@@ -93,17 +106,21 @@ Payload по умолчанию для всех событий
 
 Каждое событие имеет payload по умолчанию, который содержит:
 
--  ``_meta`` — мета информация о событии. Содержит:
+.. list-table::
+   :widths: 20 40
+   :align: center
+   :class: tight-table
 
-   -  ``id`` — уникальный идентификатор события (UUID)
-
-   -  ``type`` — тип события (String)
-
-   -  ``time`` — время возникновения события (Instant)
-
-   -  ``user`` — username пользователя, который вызвал событие (String)
-- ``record`` — документ по которому произошло событие (EntityRef)
-- ``recordType`` — тип документа по которому произошло событие (EntityRef)
+   * - ``_meta``
+     - | Мета информация о событии. Содержит:
+       | ``id`` — уникальный идентификатор события (UUID)
+       | ``type`` — тип события (String)
+       | ``time`` — время возникновения события (Instant)
+       | ``user`` — username пользователя, который вызвал событие (String)
+   * - ``record``
+     - Документ, по которому произошло событие (EntityRef)
+   * - ``recordType``
+     - Тип документа, по которому произошло событие (EntityRef)
 
 .. note::
 
@@ -125,32 +142,37 @@ _____________
 Record изменен
 ______________
 
-- ``before`` — атрибуты до изменения (Map<String, Any>)
-- ``after`` — атрибуты после изменения (Map<String, Any>)
-- ``diff`` — объект описывающий изменения (`Diff <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_)
+.. list-table::
+   :widths: 20 40
+   :align: center
+   :class: tight-table
 
-  - ``list`` — список изменений (List<`DiffValue <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_>), например *diff.list?json*
-
-  - ``has`` — предоставляет возможность проверить был ли изменен атрибут (Boolean), например *diff._has.youAttName?bool*
+   * - ``before``
+     - Атрибуты до изменения (Map<String, Any>)
+   * - ``after``
+     - Атрибуты после изменения (Map<String, Any>)
+   * - ``diff``
+     - | Объект, описывающий изменения (`Diff <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_):
+       | ``list`` — список изменений (List<`DiffValue <https://github.com/Citeck/ecos-events/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt>`_>), например *diff.list?json*
+       | ``has`` — предоставляет возможность проверить был ли изменен атрибут (Boolean), например *diff._has.youAttName?bool*
 
 Статус изменен
 ______________
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/status_change_01.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/status_change_01.png
+         :width: 400
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/status_change_02.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/status_change_02.png
+         :width: 400
+         :align: left
 
 **Тип изменения**:
 
@@ -163,21 +185,43 @@ ______________
 Комментарий создан
 __________________
 
-- ``text`` — текст комментария (String)
-- ``commentRecord`` — рекорд созданного комментария (EntityRef)
+.. list-table::
+   :widths: 20 40
+   :align: center
+   :class: tight-table
+
+   * - ``text``
+     - Текст комментария (String)
+   * - ``commentRecord``
+     - Рекорд созданного комментария (EntityRef)
 
 Комментарий изменен
 ___________________
 
-- ``textBefore`` — текст комментария до изменения (String)
-- ``textAfter`` — текст комментария после изменения (String)
-- ``commentRecord`` — рекорд созданного комментария (EntityRef)
+.. list-table::
+   :widths: 20 40
+   :align: center
+   :class: tight-table
+
+   * - ``textBefore``
+     - Текст комментария до изменения (String)
+   * - ``textAfter``
+     - Текст комментария после изменения (String)
+   * - ``commentRecord``
+     - Рекорд созданного комментария (EntityRef)
 
 Комментарий удален
 __________________
 
-- ``text`` — текст удаленного комментария (String)
-- ``commentRecord`` — рекорд удаленного комментария (EntityRef)
+.. list-table::
+   :widths: 20 40
+   :align: center
+   :class: tight-table
+
+   * - ``text``
+     - Текст удаленного комментария (String)
+   * - ``commentRecord``
+     - Рекорд удаленного комментария (EntityRef)
 
 .. _user_event_bpmn:
 
@@ -254,21 +298,20 @@ Start Event - старт процесса
 
 При изменении статуса по любому документу будет запущен процесс, который выполнит скрипт.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_start_event_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_start_event_example.png
+         :width: 300
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_start_event_form_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_start_event_form_example.png
+         :width: 300
+         :align: left
 
 .. _start_event_subprocess:
 
@@ -277,21 +320,20 @@ Start Event - старт событийного подпроцесса
 
 Каждый раз при создании комментария по текущему документу, пока основной процесс активен, будет запущен подпроцесс, который отправит уведомление.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_start_event_sub_process_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_start_event_sub_process_example.png
+         :width: 300
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_start_event_sub_process_form_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_start_event_sub_process_form_example.png
+         :width: 300
+         :align: left
 
 .. _Bondary_Event:
 
@@ -300,21 +342,20 @@ Boundary Event - событие с предикатом
 
 При активной задаче, если был добавлен комментарий, который содержит текст "Галя, отмена!", то задача будет отменена и отправлено уведомление.
 
-.. list-table::
-      :widths: 20 20
-      :align: center
+.. grid:: 2
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_boundary_event_with_predicate_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_boundary_event_with_predicate_example.png
+         :width: 300
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
-                  :width: 300
-                  :align: center
+      .. image:: _static/bpmn_boundary_event_with_predicate_form_example.png
+         :width: 300
+         :align: left
 
 
 .. _End_Throw_Event:
@@ -324,27 +365,26 @@ End Throw Event - ручная настройка и события с филь�
 
 При завершении подпроцесса сработает **signal end event** и будет сформировал сигнал с именем "manual-throw-signal" с фильтрацией - любой документ, тип "Найм сотрудника". При этом запустится событийный подпроцесс, так как он подходит по названию сигнала, документу и типу документа.
 
-.. list-table::
-      :widths: 20 20 20
-      :align: center
+.. grid:: 3
+   :gutter: 2
 
-      * - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_throw_event_with_filters_example.png
-                  :width: 400
-                  :align: center
+      .. image:: _static/bpmn_throw_event_with_filters_example.png
+         :width: 400
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
-                  :width: 250
-                  :align: center
+      .. image:: _static/bpmn_throw_event_with_filters_throw_form_example.png
+         :width: 250
+         :align: left
 
-        - |
+   .. grid-item::
 
-            .. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
-                  :width: 250
-                  :align: center
+      .. image:: _static/bpmn_throw_event_with_filters_start_form_example.png
+         :width: 250
+         :align: left
 
 .. _Intermediate_Catch_Event:
 
@@ -385,79 +425,96 @@ Intermediate Catch Event - событие с пользовательской м
 
 См. :download:`демонстрационный процесс <../files/assignee-changed-listener-example.bpmn.xml>`
 
-**Настройки события для старта:**
+.. dropdown:: Настройки события и пример логов
+   :color: secondary
 
-Сигнал
+   **Сигнал**
 
-Ручная настройка: Да
+   .. list-table::
+      :widths: 20 40
+      :align: center
+      :class: tight-table
 
-Имя сигнала: bpmn-user-task-assign
+      * - Ручная настройка
+        - Да
+      * - Имя сигнала
+        - ``bpmn-user-task-assign``
 
-Модель данных:
+   Модель данных:
 
-.. code-block::
+   .. code-block::
 
-  {
-    "procDefId": "procDefId", // id процесса
-    "assignee": "assignee", // новый исполнитель задачи
-    "assigneeDisp": "assigneeRef?disp", // отображаемое имя нового исполнителя задачи
-    "taskDisp": "taskId?disp", // отображаемое имя задачи
-    "taskId": "elementDefId" // id задачи
-  }
+     {
+       "procDefId": "procDefId", // id процесса
+       "assignee": "assignee", // новый исполнитель задачи
+       "assigneeDisp": "assigneeRef?disp", // отображаемое имя нового исполнителя задачи
+       "taskDisp": "taskId?disp", // отображаемое имя задачи
+       "taskId": "elementDefId" // id задачи
+     }
 
-Полный список возможных атрибутов для загрузки можно посмотреть по `ссылка <https://github.com/Citeck/ecos-process/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/events/dto/UserTaskEvent.kt>`_
+   Полный список возможных атрибутов для загрузки можно посмотреть по `ссылка <https://github.com/Citeck/ecos-process/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/events/dto/UserTaskEvent.kt>`_
 
-**Фильтрация**
+   **Фильтрация**
 
-Фильтр события по документу: Текущий документ
+   .. list-table::
+      :widths: 20 40
+      :align: center
+      :class: tight-table
 
-Фильтр события по предикатам:
+      * - Фильтр события по документу
+        - Текущий документ
 
-.. code-block::
+   Фильтр события по предикатам:
 
-  {
-    "t": "and",
-    "val": [
-      {
-        "t": "eq",
-        "att": "taskId",
-        "val": "confirm_task_id"
-      },
-      {
-        "t": "eq",
-        "att": "procDefId",
-        "val": "qwe"
-      }
-    ]
-  }
+   .. code-block::
 
-Проверяется id задачи и что событие произошло именно в текущем процессе (id процесса - "qwe"). При возникновении событий в лог микросервиса ecos-process выводятся следующие сообщения:
+     {
+       "t": "and",
+       "val": [
+         {
+           "t": "eq",
+           "att": "taskId",
+           "val": "confirm_task_id"
+         },
+         {
+           "t": "eq",
+           "att": "procDefId",
+           "val": "qwe"
+         }
+       ]
+     }
 
-.. code-block::
+   Проверяется id задачи и что событие произошло именно в текущем процессе (id процесса - "qwe"). При возникновении событий в лог микросервиса ecos-process выводятся следующие сообщения:
 
-  Нажата кнопка "Я выполню это"
+   Нажата кнопка «Я выполню это»:
 
-  2025-11-13 12:27:06.679  INFO [nio-8098-exec-6] [b1d4479fe130fcd812bbcc0f170bc8c1] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
-  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
-  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
-  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
-  |Message:
-  Задача Согласование (confirm_task_id) была назначена на Admin Ecos (admin)
+   .. code-block:: text
 
-  Нажата кнопка "Вернуть на группу"
+     2025-11-13 12:27:06.679  INFO [nio-8098-exec-6] [b1d4479fe130fcd812bbcc0f170bc8c1] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     :
+     |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+     |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+     |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+     |Message:
+     Задача Согласование (confirm_task_id) была назначена на Admin Ecos (admin)
 
-  2025-11-13 12:27:41.210  INFO [nio-8098-exec-7] [291bc37043f3435e877b73092dcbdaf4] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
-  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
-  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
-  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
-  |Message:
-  Задача Согласование (confirm_task_id) была возвращена на группу
+   Нажата кнопка «Вернуть на группу»:
 
-  Задача назначена на пользователя из оргструктуры
+   .. code-block:: text
 
-  2025-11-13 12:27:58.740  INFO [nio-8098-exec-3] [ba9befe170720b91e1ca3559417e6396] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     : 
-  |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
-  |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
-  |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
-  |Message:
-  Задача Согласование (confirm_task_id) была назначена на Павел Эльбрусов (pavel.elbrusov)
+     2025-11-13 12:27:41.210  INFO [nio-8098-exec-7] [291bc37043f3435e877b73092dcbdaf4] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     :
+     |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+     |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+     |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+     |Message:
+     Задача Согласование (confirm_task_id) была возвращена на группу
+
+   Задача назначена на пользователя из оргструктуры:
+
+   .. code-block:: text
+
+     2025-11-13 12:27:58.740  INFO [nio-8098-exec-3] [ba9befe170720b91e1ca3559417e6396] [admin] r.c.e.p.d.b.e.c.s.beans.ScriptLogger     :
+     |businessKey: emodel/qwe@38792090-edcc-4255-81f5-4c157c5657e7
+     |activity: Activity_07d9oq2 Обрабатываем событие смены исполнителя
+     |processDefId: qwe:15:7d60c0af-c04e-11f0-a446-02422b79fab5, processInstId: 620034ef-c051-11f0-a446-02422b79fab5
+     |Message:
+     Задача Согласование (confirm_task_id) была назначена на Павел Эльбрусов (pavel.elbrusov)

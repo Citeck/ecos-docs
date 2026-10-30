@@ -1,0 +1,980 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:4
+msgid "Сайзинг в Kubernetes"
+msgstr "Kubernetes Sizing"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:6
+msgid ""
+"Страница описывает расчёт **worker-нод** Kubernetes-кластера для "
+"развёртывания Citeck с числом именных пользователей **до 2000**. Общие "
+"допущения, целевая нагрузка, состав контейнеров и правила пересчёта — на "
+"странице :ref:`Типовой сайзинг <sizing>`."
+msgstr ""
+"This page describes how to calculate the **worker nodes** of a Kubernetes "
+"cluster for a Citeck deployment with **up to 2,000** named users. General "
+"assumptions, target load, container composition, and recalculation rules "
+"are on the :ref:`Typical sizing <sizing>` page."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:10
+msgid ""
+"Учитываются только **worker-ноды**; управляющие компоненты кластера "
+"(control plane / master-ноды) в расчёт не входят."
+msgstr ""
+"Only **worker nodes** are taken into account; cluster control components "
+"(control plane / master nodes) are not included in the calculation."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:11
+msgid ""
+"Ресурсы подов взяты из раздела :ref:`Менеджмент ресурсов подов и "
+"контейнеров <k8s-resource-management>`; сводная таблица — :ref:`Состав и "
+"ресурсы контейнеров платформы <sizing_containers>`."
+msgstr ""
+"Pod resources are taken from the :ref:`Pod and container resource "
+"management <k8s-resource-management>` section; summary table — "
+":ref:`Platform container composition and resources <sizing_containers>`."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:12
+msgid ""
+"Развёртывание в Kubernetes выполняется с помощью Helm chart (только в "
+"Enterprise-поставке) — см. :ref:`Параметры конфигурации Helm chart <helm-"
+"chart-config>`."
+msgstr ""
+"Deployment in Kubernetes is performed using a Helm chart (Enterprise "
+"edition only) — see :ref:`Helm chart configuration parameters <helm-chart-"
+"config>`."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:15
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:18
+#: ../../admin/launch_setup/sizing/kubernetes.rst:29
+msgid "Типоразмер worker-ноды"
+msgstr "Worker node size"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:20
+msgid "За единицу расчёта принята worker-нода **16 vCPU / 32 GiB**."
+msgstr "The unit of calculation is a **16 vCPU / 32 GiB** worker node."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:27
+#: ../../admin/launch_setup/sizing/kubernetes.rst:275
+msgid "Показатель"
+msgstr "Metric"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:28
+msgid "Значение"
+msgstr "Value"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:30
+#: ../../admin/launch_setup/sizing/kubernetes.rst:140
+msgid "16 vCPU / 32 GiB"
+msgstr "16 vCPU / 32 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:31
+msgid "Доступно для подов платформы"
+msgstr "Available for platform pods"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:32
+#: ../../admin/launch_setup/sizing/kubernetes.rst:141
+msgid "~14 vCPU / ~27 GiB"
+msgstr "~14 vCPU / ~27 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:33
+msgid "Накладные расходы ноды"
+msgstr "Node overhead"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:34
+msgid ""
+"~15–20 % — ``kube-reserved`` и ``system-reserved``, агенты мониторинга и "
+"сбора логов (DaemonSet)"
+msgstr ""
+"~15–20% — ``kube-reserved`` and ``system-reserved``, monitoring and log "
+"collection agents (DaemonSet)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:36
+msgid ""
+"Масштабирование сверх целевого профиля — **горизонтальное**: добавление "
+"worker-нод того же типоразмера, тиражирование и кластеризация "
+"микросервисов в соответствии с нагрузкой."
+msgstr ""
+"Scaling beyond the target profile is **horizontal**: adding worker nodes "
+"of the same size, replicating and clustering microservices according to "
+"the load."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:39
+msgid "Рекомендации по размещению общесистемных компонентов"
+msgstr "Recommendations for placing system-wide components"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:46
+#: ../../admin/launch_setup/sizing/kubernetes.rst:211
+#: ../../admin/launch_setup/sizing/kubernetes.rst:250
+#: ../../admin/launch_setup/sizing/kubernetes.rst:318
+msgid "Компонент"
+msgstr "Component"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:47
+msgid "Рекомендация"
+msgstr "Recommendation"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:48
+#: ../../admin/launch_setup/sizing/kubernetes.rst:101
+#: ../../admin/launch_setup/sizing/kubernetes.rst:137
+#: ../../admin/launch_setup/sizing/kubernetes.rst:169
+msgid "Комментарий"
+msgstr "Comment"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:49
+msgid "**PostgreSQL**"
+msgstr "**PostgreSQL**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:50
+#: ../../admin/launch_setup/sizing/kubernetes.rst:59
+msgid "Вынести за пределы кластера — managed-сервис или выделенные ВМ"
+msgstr "Move outside the cluster — a managed service or dedicated VMs"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:51
+msgid ""
+"Ресурсы на кластеризацию (репликация, Patroni, etcd, балансировщик) в "
+"настоящем расчёте **не учитываются** и определяются отдельно. "
+":ref:`Требования к PostgreSQL <sizing_pg>`"
+msgstr ""
+"Resources for clustering (replication, Patroni, etcd, load balancer) are "
+"**not included** in this calculation and are determined separately. "
+":ref:`PostgreSQL requirements <sizing_pg>`"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:52
+msgid "**S3-хранилище**"
+msgstr "**S3 storage**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:53
+msgid ""
+"Предпочтительно managed Object Storage; в базовом расчёте заложено self-"
+"hosted S3-хранилище внутри кластера — **1 узел**"
+msgstr ""
+"Managed Object Storage is preferred; the base calculation assumes self-"
+"hosted S3 storage inside the cluster — **1 node**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:54
+msgid ""
+"Кластеризация хранилища подлежит отдельному обсуждению. :ref:`Требования к"
+" S3-хранилищу <sizing_s3>`, :ref:`настройка в интерфейсе <s3_storage>`"
+msgstr ""
+"Storage clustering is subject to separate discussion. :ref:`S3 storage "
+"requirements <sizing_s3>`, :ref:`configuration in the interface "
+"<s3_storage>`"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:55
+msgid "**RabbitMQ**"
+msgstr "**RabbitMQ**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:56
+msgid "Опционально: вынести при наличии managed-сервиса"
+msgstr "Optional: move out if a managed service is available"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:57
+msgid ""
+"Нагрузочное тестирование проводилось с RabbitMQ внутри кластера, поэтому в"
+" базовом расчёте он оставлен на worker-нодах"
+msgstr ""
+"Load testing was performed with RabbitMQ inside the cluster, so in the "
+"base calculation it remains on the worker nodes"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:58
+msgid "**OpenSearch**"
+msgstr "**OpenSearch**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:60
+msgid ""
+"Для тестовых контуров при небольших объёмах индексов допустимо размещение "
+"внутри кластера. При таком размещении требуются отдельный node pool с "
+"локальными NVMe-дисками, Guaranteed QoS (``requests = limits``) и "
+"настройки на уровне хоста (``vm.max_map_count = 262144``, отключённый "
+"swap). :ref:`Требования к OpenSearch <sizing_opensearch>`"
+msgstr ""
+"For test environments with small index volumes, placement inside the "
+"cluster is acceptable. Such placement requires a separate node pool with "
+"local NVMe disks, Guaranteed QoS (``requests = limits``), and host-level "
+"settings (``vm.max_map_count = 262144``, swap disabled). :ref:`OpenSearch "
+"requirements <sizing_opensearch>`"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:62
+msgid ""
+"Вне расчёта worker-нод также остаются серверные компоненты мониторинга и "
+"сбора логов (их агенты на нодах учтены в накладных расходах), инструменты "
+"CI/CD и резервное копирование."
+msgstr ""
+"Also outside the worker node calculation are the server-side monitoring "
+"and log collection components (their agents on the nodes are included in "
+"the overhead), CI/CD tools, and backup."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:65
+msgid "Ресурсы на один контур"
+msgstr "Resources per environment"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:72
+msgid "Размещение компонентов"
+msgstr "Component placement"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:73
+msgid "Σ requests"
+msgstr "Σ requests"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:74
+msgid "Σ limits"
+msgstr "Σ limits"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:75
+msgid ""
+"PostgreSQL (тестовая конфигурация, 2 vCPU / 4 GiB), RabbitMQ и S3 "
+"развёрнуты в кластере"
+msgstr ""
+"PostgreSQL (test configuration, 2 vCPU / 4 GiB), RabbitMQ, and S3 deployed"
+" in the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:76
+msgid "11.60 vCPU / 26.71 GiB"
+msgstr "11.60 vCPU / 26.71 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:77
+msgid "25.00 vCPU / 28.96 GiB"
+msgstr "25.00 vCPU / 28.96 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:78
+msgid "**PostgreSQL вынесен; RabbitMQ и S3 в кластере — базовый расчёт**"
+msgstr ""
+"**PostgreSQL moved out; RabbitMQ and S3 in the cluster — base "
+"calculation**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:79
+msgid "**9.60 vCPU / 22.71 GiB**"
+msgstr "**9.60 vCPU / 22.71 GiB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:80
+msgid "**23.00 vCPU / 24.96 GiB**"
+msgstr "**23.00 vCPU / 24.96 GiB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:81
+msgid "PostgreSQL, RabbitMQ и S3 вынесены"
+msgstr "PostgreSQL, RabbitMQ, and S3 moved out"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:82
+msgid "8.10 vCPU / 19.71 GiB"
+msgstr "8.10 vCPU / 19.71 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:83
+msgid "20.00 vCPU / 19.96 GiB"
+msgstr "20.00 vCPU / 19.96 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:85
+msgid ""
+"OpenSearch во всех вариантах вынесен за пределы кластера; его размещение "
+"внутри кластера описано в приложении в конце страницы. Далее количество "
+"нод рассчитывается по базовому варианту на один контур: CPU — по requests "
+"(**9.60 vCPU**), память — по limits (**24.96 GiB**)."
+msgstr ""
+"In all variants, OpenSearch is moved outside the cluster; placing it "
+"inside the cluster is described in the appendix at the end of the page. "
+"Below, the number of nodes is calculated for the base variant per "
+"environment: CPU by requests (**9.60 vCPU**), memory by limits (**24.96 "
+"GiB**)."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:88
+msgid "Продуктивный кластер"
+msgstr "Production cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:90
+msgid ""
+"Потребность продуктивного кластера: Σ requests **9.60 vCPU / 22.71 GiB**, "
+"Σ limits **23.00 vCPU / 24.96 GiB**."
+msgstr ""
+"Production cluster requirements: Σ requests **9.60 vCPU / 22.71 GiB**, Σ "
+"limits **23.00 vCPU / 24.96 GiB**."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:97
+#: ../../admin/launch_setup/sizing/kubernetes.rst:133
+#: ../../admin/launch_setup/sizing/kubernetes.rst:165
+msgid "Вариант"
+msgstr "Variant"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:98
+#: ../../admin/launch_setup/sizing/kubernetes.rst:134
+#: ../../admin/launch_setup/sizing/kubernetes.rst:166
+msgid "Ноды"
+msgstr "Nodes"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:99
+#: ../../admin/launch_setup/sizing/kubernetes.rst:135
+#: ../../admin/launch_setup/sizing/kubernetes.rst:167
+msgid "Всего ресурсов"
+msgstr "Total resources"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:100
+#: ../../admin/launch_setup/sizing/kubernetes.rst:136
+#: ../../admin/launch_setup/sizing/kubernetes.rst:168
+msgid "Доступно для подов"
+msgstr "Available for pods"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:102
+msgid "**Рекомендуемый (N+1)**"
+msgstr "**Recommended (N+1)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:103
+#: ../../admin/launch_setup/sizing/kubernetes.rst:144
+msgid "**2 × (16 vCPU / 32 GiB)**"
+msgstr "**2 × (16 vCPU / 32 GiB)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:104
+#: ../../admin/launch_setup/sizing/kubernetes.rst:145
+#: ../../admin/launch_setup/sizing/kubernetes.rst:177
+msgid "32 vCPU / 64 GiB"
+msgstr "32 vCPU / 64 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:105
+#: ../../admin/launch_setup/sizing/kubernetes.rst:146
+#: ../../admin/launch_setup/sizing/kubernetes.rst:178
+msgid "~28 vCPU / ~54 GiB"
+msgstr "~28 vCPU / ~54 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:106
+msgid ""
+"Контур целиком помещается на одну ноду (limits 24.96 ≤ 27 GiB), поэтому "
+"при отказе любой из двух нод оставшаяся вмещает всю нагрузку"
+msgstr ""
+"The entire environment fits on one node (limits 24.96 ≤ 27 GiB), so if "
+"either of the two nodes fails, the remaining one can handle the entire "
+"load"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:107
+msgid "С запасом на рост и распределение реплик"
+msgstr "With headroom for growth and replica distribution"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:108
+msgid "3 × (16 vCPU / 32 GiB)"
+msgstr "3 × (16 vCPU / 32 GiB)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:109
+#: ../../admin/launch_setup/sizing/kubernetes.rst:172
+msgid "48 vCPU / 96 GiB"
+msgstr "48 vCPU / 96 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:110
+#: ../../admin/launch_setup/sizing/kubernetes.rst:173
+msgid "~42 vCPU / ~81 GiB"
+msgstr "~42 vCPU / ~81 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:111
+msgid ""
+"Разнесение реплик критичных сервисов по нодам (anti-affinity), обновления "
+"без деградации, запас на рост нагрузки сверх 2000 именных пользователей"
+msgstr ""
+"Spreading replicas of critical services across nodes (anti-affinity), "
+"updates without degradation, headroom for load growth beyond 2,000 named "
+"users"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:114
+msgid "Кластер для разработки и тестирования"
+msgstr "Development and testing cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:116
+msgid ""
+"Продуктивная среда размещается в отдельном кластере — см. `Продуктивный "
+"кластер`_. Состав кластера для разработки и тестирования зависит от того, "
+"какие среды нужны заказчику: только Test или Dev и Test."
+msgstr ""
+"The production environment is placed in a separate cluster — see "
+"`Production cluster`_. The composition of the development and testing "
+"cluster depends on which environments the customer needs: Test only, or "
+"Dev and Test."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst
+msgid "Только Test"
+msgstr "Test only"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:122
+msgid "Контур **Test** — разработка, отладка, приёмочное тестирование."
+msgstr "**Test** environment — development, debugging, acceptance testing."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:124
+msgid ""
+"Потребность тестового кластера: Σ requests **9.60 vCPU / 22.71 GiB**, Σ "
+"limits **23.00 vCPU / 24.96 GiB**."
+msgstr ""
+"Test cluster requirements: Σ requests **9.60 vCPU / 22.71 GiB**, Σ limits "
+"**23.00 vCPU / 24.96 GiB**."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:126
+msgid ""
+"Конфигурация тестового кластера зависит от его назначения. **Выбор "
+"варианта остаётся за заказчиком.**"
+msgstr ""
+"The test cluster configuration depends on its purpose. **The choice of "
+"variant is up to the customer.**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:138
+msgid "**А. Облегчённый**"
+msgstr "**A. Lightweight**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:139
+msgid "**1 × (16 vCPU / 32 GiB)**"
+msgstr "**1 × (16 vCPU / 32 GiB)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:142
+msgid ""
+"Контур помещается на одну ноду (limits 24.96 ≤ 27 GiB); отказ ноды "
+"останавливает среду целиком"
+msgstr ""
+"The environment fits on one node (limits 24.96 ≤ 27 GiB); a node failure "
+"stops the entire environment"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:143
+msgid "**Б. Предпродуктивный (N+1)**"
+msgstr "**B. Pre-production (N+1)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:147
+msgid ""
+"Топология и резервирование — как в Prod. Подходит для приёмочных "
+"испытаний, нагрузочных прогонов, репетиции обновлений и отработки отказа "
+"ноды"
+msgstr ""
+"Topology and redundancy are the same as in Prod. Suitable for acceptance "
+"testing, load runs, update rehearsals, and node failure drills"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst
+msgid "Dev + Test"
+msgstr "Dev + Test"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:151
+msgid "Контуры:"
+msgstr "Environments:"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:153
+msgid "**Dev** — разработка;"
+msgstr "**Dev** — development;"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:154
+msgid "**Test** — отладка, приёмочное тестирование."
+msgstr "**Test** — debugging, acceptance testing."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:156
+msgid "Dev и Test размещаются в одном кластере."
+msgstr "Dev and Test are placed in the same cluster."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:158
+msgid ""
+"Потребность двух сред в одном кластере: Σ requests **19.20 vCPU / 45.43 "
+"GiB**, Σ limits **46.00 vCPU / 49.93 GiB**."
+msgstr ""
+"Requirements for two environments in one cluster: Σ requests **19.20 vCPU "
+"/ 45.43 GiB**, Σ limits **46.00 vCPU / 49.93 GiB**."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:170
+msgid "**Рекомендуемый (N+1, общий резерв)**"
+msgstr "**Recommended (N+1, shared reserve)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:171
+msgid "**3 × (16 vCPU / 32 GiB)**"
+msgstr "**3 × (16 vCPU / 32 GiB)**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:174
+msgid ""
+"Обе среды размещаются на трёх нодах (limits 49.93 ≤ 81 GiB); при отказе "
+"одной ноды две оставшиеся (~54 GiB) вмещают обе среды целиком. Резервная "
+"нода одна на обе среды, а не по ноде на каждую"
+msgstr ""
+"Both environments are placed on three nodes (limits 49.93 ≤ 81 GiB); if "
+"one node fails, the remaining two (~54 GiB) can hold both environments "
+"entirely. There is one reserve node for both environments, not one per "
+"environment"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:175
+msgid "Минимальный (без резерва)"
+msgstr "Minimum (no reserve)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:176
+msgid "2 × (16 vCPU / 32 GiB)"
+msgstr "2 × (16 vCPU / 32 GiB)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:179
+msgid ""
+"Вмещает обе среды (limits 49.93 ≤ 54 GiB), но без запаса на отказ ноды"
+msgstr ""
+"Holds both environments (limits 49.93 ≤ 54 GiB), but with no headroom for "
+"a node failure"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:182
+msgid "Дисковая подсистема"
+msgstr "Disk subsystem"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:185
+msgid "Локальные диски worker-нод"
+msgstr "Worker node local disks"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:192
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:193
+msgid "Объём на ноду"
+msgstr "Size per node"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:194
+#: ../../admin/launch_setup/sizing/kubernetes.rst:214
+#: ../../admin/launch_setup/sizing/kubernetes.rst:253
+msgid "Тип"
+msgstr "Type"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:195
+msgid ""
+"ОС, образы контейнеров, эфемерное хранилище подов (``ephemeral-storage``)"
+msgstr "OS, container images, pod ephemeral storage (``ephemeral-storage``)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:196
+msgid "**100 ГБ**"
+msgstr "**100 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:197
+#: ../../admin/launch_setup/sizing/kubernetes.rst:222
+#: ../../admin/launch_setup/sizing/kubernetes.rst:226
+#: ../../admin/launch_setup/sizing/kubernetes.rst:230
+#: ../../admin/launch_setup/sizing/kubernetes.rst:234
+msgid "SSD"
+msgstr "SSD"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:199
+msgid ""
+"Из них ~80 ГБ — ОС и образы контейнеров, ~20 ГБ — запас на развёртывание, "
+"логи kubelet и временные файлы подов."
+msgstr ""
+"Of this, ~80 GB is for the OS and container images, ~20 GB is headroom for"
+" deployment, kubelet logs, and pod temporary files."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:202
+msgid "Persistent Volumes внутри кластера"
+msgstr "Persistent Volumes inside the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:204
+msgid ""
+"Объёмы приведены **на один контур**: в варианте Dev + Test значения "
+"столбца Test закладываются отдельно на Dev и на Test."
+msgstr ""
+"Sizes are given **per environment**: in the Dev + Test variant, the Test "
+"column values are allocated separately for Dev and for Test."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:212
+#: ../../admin/launch_setup/sizing/kubernetes.rst:251
+msgid "Prod"
+msgstr "Prod"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:213
+#: ../../admin/launch_setup/sizing/kubernetes.rst:252
+msgid "Test (на каждую непродуктивную среду)"
+msgstr "Test (per non-production environment)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:215
+#: ../../admin/launch_setup/sizing/kubernetes.rst:279
+msgid "S3-хранилище — контент"
+msgstr "S3 storage — content"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:216
+msgid "**500 ГБ**"
+msgstr "**500 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:217
+#: ../../admin/launch_setup/sizing/kubernetes.rst:260
+msgid "100 ГБ"
+msgstr "100 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:218
+msgid "SSD или HDD"
+msgstr "SSD or HDD"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:219
+msgid "RabbitMQ — очереди и журналы"
+msgstr "RabbitMQ — queues and logs"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:220
+#: ../../admin/launch_setup/sizing/kubernetes.rst:221
+#: ../../admin/launch_setup/sizing/kubernetes.rst:228
+msgid "20 ГБ"
+msgstr "20 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:223
+msgid "Zookeeper — конфигурация и снапшоты"
+msgstr "Zookeeper — configuration and snapshots"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:224
+#: ../../admin/launch_setup/sizing/kubernetes.rst:225
+#: ../../admin/launch_setup/sizing/kubernetes.rst:229
+msgid "10 ГБ"
+msgstr "10 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:227
+msgid "Onlyoffice — временные файлы конвертации"
+msgstr "Onlyoffice — conversion temporary files"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:231
+msgid "Логи приложений (при хранении в кластере)"
+msgstr "Application logs (if stored in the cluster)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:232
+#: ../../admin/launch_setup/sizing/kubernetes.rst:233
+msgid "5 ГБ в год"
+msgstr "5 GB per year"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:235
+msgid "**Итого PV на контур** (логи — за 1 год)"
+msgstr "**Total PV per environment** (logs — for 1 year)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:236
+msgid "**~555 ГБ**"
+msgstr "**~555 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:237
+msgid "**~145 ГБ**"
+msgstr "**~145 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:240
+msgid ""
+"Объём контента непродуктивных сред определяется сценариями испытаний; 100 "
+"ГБ на среду — ориентир для приёмочных и нагрузочных прогонов."
+msgstr ""
+"The content volume of non-production environments is determined by test "
+"scenarios; 100 GB per environment is a guideline for acceptance and load "
+"runs."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:243
+msgid "Диски вне кластера"
+msgstr "Disks outside the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:254
+msgid "PostgreSQL — данные, WAL, временные файлы"
+msgstr "PostgreSQL — data, WAL, temporary files"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:255
+msgid "**400 ГБ**"
+msgstr "**400 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:256
+msgid "50 ГБ"
+msgstr "50 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:257
+#: ../../admin/launch_setup/sizing/kubernetes.rst:261
+msgid "NVMe"
+msgstr "NVMe"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:258
+msgid "OpenSearch — поисковые индексы"
+msgstr "OpenSearch — search indexes"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:259
+msgid "**300 ГБ**"
+msgstr "**300 GB**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:263
+msgid ""
+"Пересчёт объёмов под фактический документооборот — по :ref:`общим правилам"
+" <sizing_recalc>`."
+msgstr ""
+"Recalculate sizes for the actual document flow using the :ref:`general "
+"rules <sizing_recalc>`."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:266
+msgid "Сценарии по объёму контента"
+msgstr "Content volume scenarios"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:268
+msgid ""
+"Конфигурация worker-нод при росте объёма документооборота не меняется: при"
+" объёме контента около 2 ТБ S3-хранилище выносится за пределы кластера, и "
+"дальше меняются только внешние компоненты — S3-хранилище, PostgreSQL и "
+"OpenSearch."
+msgstr ""
+"The worker node configuration does not change as the document flow grows: "
+"at a content volume of about 2 TB, S3 storage is moved outside the "
+"cluster, and from then on only the external components change — S3 "
+"storage, PostgreSQL, and OpenSearch."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:276
+msgid "500 ГБ (базовый расчёт)"
+msgstr "500 GB (base calculation)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:277
+#: ../../admin/launch_setup/sizing/kubernetes.rst:281
+msgid "2 ТБ"
+msgstr "2 TB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:278
+#: ../../admin/launch_setup/sizing/kubernetes.rst:282
+msgid "5 ТБ"
+msgstr "5 TB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:280
+msgid "500 ГБ"
+msgstr "500 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:283
+msgid "S3-хранилище — режим развёртывания"
+msgstr "S3 storage — deployment mode"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:284
+msgid "1 узел в кластере"
+msgstr "1 node in the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:285
+msgid "1 узел за пределами кластера"
+msgstr "1 node outside the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:286
+msgid "кластерная конфигурация за пределами кластера"
+msgstr "cluster configuration outside the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:287
+msgid "PostgreSQL — диск (0.6 × контент + 30 %)"
+msgstr "PostgreSQL — disk (0.6 × content + 30%)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:288
+msgid "400 ГБ"
+msgstr "400 GB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:289
+msgid "1.6 ТБ"
+msgstr "1.6 TB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:290
+msgid "4 ТБ"
+msgstr "4 TB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:291
+msgid "PostgreSQL — ресурсы"
+msgstr "PostgreSQL — resources"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:292
+msgid "8 vCPU / 32 GiB"
+msgstr "8 vCPU / 32 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:293
+#: ../../admin/launch_setup/sizing/kubernetes.rst:294
+msgid "16 vCPU / 64 GiB"
+msgstr "16 vCPU / 64 GiB"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:295
+msgid "OpenSearch — индексы (0.5 × контент)"
+msgstr "OpenSearch — indexes (0.5 × content)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:296
+msgid "250 ГБ, диск 300 ГБ"
+msgstr "250 GB, 300 GB disk"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:297
+msgid "1 ТБ, диск 1.2 ТБ"
+msgstr "1 TB, 1.2 TB disk"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:298
+msgid "2.5 ТБ, диск 3 ТБ"
+msgstr "2.5 TB, 3 TB disk"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:299
+msgid "OpenSearch — узлы"
+msgstr "OpenSearch — nodes"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:300
+msgid "1 × (8 vCPU / 32 GiB)"
+msgstr "1 × (8 vCPU / 32 GiB)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:301
+msgid "1 × (8 vCPU / 64 GiB)"
+msgstr "1 × (8 vCPU / 64 GiB)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:302
+msgid "3 × (8 vCPU / 64 GiB)"
+msgstr "3 × (8 vCPU / 64 GiB)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:303
+msgid "Worker-ноды Kubernetes"
+msgstr "Kubernetes worker nodes"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:304
+#: ../../admin/launch_setup/sizing/kubernetes.rst:305
+#: ../../admin/launch_setup/sizing/kubernetes.rst:306
+msgid "без изменений"
+msgstr "no change"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:309
+msgid "Приложение. Размещение PostgreSQL и OpenSearch внутри кластера"
+msgstr "Appendix. Placing PostgreSQL and OpenSearch inside the cluster"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:311
+msgid ""
+"Оба компонента рекомендуется выносить за пределы кластера (см. "
+"рекомендации по размещению выше), поэтому в базовый расчёт они не входят. "
+"При их размещении внутри кластера к суммам :ref:`базовой таблицы "
+"контейнеров <sizing_containers>` добавляется:"
+msgstr ""
+"Both components are recommended to be moved outside the cluster (see the "
+"placement recommendations above), so they are not included in the base "
+"calculation. If they are placed inside the cluster, the following is added"
+" to the totals of the :ref:`base container table <sizing_containers>`:"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:319
+msgid "Requests CPU"
+msgstr "Requests CPU"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:320
+msgid "Requests MEM"
+msgstr "Requests MEM"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:321
+msgid "Limits CPU"
+msgstr "Limits CPU"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:322
+msgid "Limits MEM"
+msgstr "Limits MEM"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:323
+msgid "PostgreSQL (в кластере)"
+msgstr "PostgreSQL (in the cluster)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:324
+#: ../../admin/launch_setup/sizing/kubernetes.rst:326
+msgid "2"
+msgstr "2"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:325
+#: ../../admin/launch_setup/sizing/kubernetes.rst:327
+msgid "4 Gi"
+msgstr "4 Gi"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:328
+msgid "OpenSearch (в кластере, 1 узел)"
+msgstr "OpenSearch (in the cluster, 1 node)"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:329
+#: ../../admin/launch_setup/sizing/kubernetes.rst:331
+msgid "4"
+msgstr "4"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:330
+#: ../../admin/launch_setup/sizing/kubernetes.rst:332
+msgid "16 Gi"
+msgstr "16 Gi"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:333
+msgid "**Итого с PostgreSQL**"
+msgstr "**Total with PostgreSQL**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:334
+msgid "**11.60 vCPU**"
+msgstr "**11.60 vCPU**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:335
+msgid "**26.71 Gi**"
+msgstr "**26.71 Gi**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:336
+msgid "**25.00 vCPU**"
+msgstr "**25.00 vCPU**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:337
+msgid "**28.96 Gi**"
+msgstr "**28.96 Gi**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:338
+msgid "**Итого с PostgreSQL и OpenSearch**"
+msgstr "**Total with PostgreSQL and OpenSearch**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:339
+msgid "**15.60 vCPU**"
+msgstr "**15.60 vCPU**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:340
+msgid "**42.71 Gi**"
+msgstr "**42.71 Gi**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:341
+msgid "**29.00 vCPU**"
+msgstr "**29.00 vCPU**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:342
+msgid "**44.96 Gi**"
+msgstr "**44.96 Gi**"
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:346
+msgid ""
+"PostgreSQL и OpenSearch указаны в тестовой конфигурации: внутри кластера "
+"OpenSearch допустим только для тестовых контуров, а PostgreSQL в размере 2"
+" vCPU / 4 GiB достаточен для тестового и приёмочного сценариев. Для "
+"продуктивной эксплуатации на 2000 именных пользователей ресурсы СУБД "
+"определяются по разделу :ref:`sizing_pg` (8 vCPU / 32 GiB)."
+msgstr ""
+"PostgreSQL and OpenSearch are given in the test configuration: inside the "
+"cluster, OpenSearch is acceptable only for test environments, and "
+"PostgreSQL at 2 vCPU / 4 GiB is sufficient for test and acceptance "
+"scenarios. For production use with 2,000 named users, DBMS resources are "
+"determined according to :ref:`sizing_pg` (8 vCPU / 32 GiB)."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:348
+msgid ""
+"Уже при размещении в кластере одного PostgreSQL потребность по limits "
+"памяти (28.96 GiB) превышает объём, доступный для подов на одной ноде (~27"
+" GiB): резерв N+1 на двух нодах не обеспечивается. Количество worker-нод в"
+" этом случае, как и при размещении обоих компонентов, пересчитывается "
+"отдельно."
+msgstr ""
+"Even with only PostgreSQL placed in the cluster, the memory limits "
+"requirement (28.96 GiB) exceeds the amount available for pods on one node "
+"(~27 GiB): N+1 redundancy on two nodes is not ensured. In this case, as "
+"with placing both components, the number of worker nodes is recalculated "
+"separately."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:352
+msgid ""
+":ref:`Требования к внешним сервисам <sizing_external>` — PostgreSQL, "
+"S3-хранилище и OpenSearch за пределами кластера."
+msgstr ""
+":ref:`External services requirements <sizing_external>` — PostgreSQL, S3 "
+"storage, and OpenSearch outside the cluster."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:353
+msgid ""
+":ref:`Kubernetes <kubernetes>` — менеджмент ресурсов подов, параметры Helm"
+" chart, генерация ключа шифрования."
+msgstr ""
+":ref:`Kubernetes <kubernetes>` — pod resource management, Helm chart "
+"parameters, encryption key generation."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:354
+msgid ""
+":ref:`Kubernetes Secrets <kubernetes-secrets>` — хранение паролей и "
+"токенов вместо ``values.yaml``."
+msgstr ""
+":ref:`Kubernetes Secrets <kubernetes-secrets>` — storing passwords and "
+"tokens instead of ``values.yaml``."
+
+#: ../../admin/launch_setup/sizing/kubernetes.rst:355
+msgid ""
+":ref:`Результаты нагрузочного тестирования <load_testing>` — данные "
+"прогонов, на которых подтверждена конфигурация."
+msgstr ""
+":ref:`Load testing results <load_testing>` — data from the runs that "
+"confirmed the configuration."

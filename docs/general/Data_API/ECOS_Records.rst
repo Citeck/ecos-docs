@@ -7,10 +7,7 @@ Records API
 
 **Запись (Record)** — сущность с набором атрибутов и идентификатором записи (:ref:`RecordRef <RecordRef>`).
 
-Данные можно получить:
-
- - используя браузер — см. :ref:`использование Records API в браузере <using_in_browser>` и :ref:`CRUD операции <CRUD_records_api>`;
- - бэкенд — см. :ref:`взаимодействие на сервере <java_kotlin_backend>` и `исходный код kotlin/java движка Records API <https://github.com/Citeck/ecos-records>`_.
+Данные можно получить, используя браузер или бэкенд (kotlin/java) — подробнее в темах раздела ниже.
 
 
 Общее описание
@@ -29,9 +26,62 @@ API, разработанное для организации простого �
 - Вычисляемые атрибуты. Возможность добавлять атрибуты, которые не хранятся в БД или любом другом хранилище, а вычисляются на основе существующих;
 - Поддержка объединения атрибутов из разных источников. Например, можно написать источник данных, который часть атрибутов будет брать из alfresco, а часть из внешней БД объединяя их по идентификатору.
 
+Раздел включает следующие темы:
+
+.. grid:: 1
+   :gutter: 3
+
+   .. grid-item-card:: Термины и описание работы
+      :link: records_intro
+      :link-type: ref
+
+      Ключевые термины и принцип работы Records API.
+
+   .. grid-item-card:: Атрибуты
+      :link: attributes
+      :link-type: ref
+
+      Синтаксис запроса атрибутов записи: значения, ассоциации, модификаторы.
+
+   .. grid-item-card:: RecordsService (Java)
+      :link: ecos_recordsservice
+      :link-type: ref
+
+      Сервис для поиска, получения, изменения и удаления записей.
+
+   .. grid-item-card:: RecordRef
+      :link: recordref
+      :link-type: ref
+
+      Формат идентификатора записи и работа со ссылками между сущностями.
+
+   .. grid-item-card:: Использование в браузере
+      :link: using_in_browser
+      :link-type: ref
+
+      Работа с Records API через глобальный компонент Records и CRUD-операции.
+
+   .. grid-item-card:: Kotlin/Java Backend
+      :link: java_kotlin_backend
+      :link-type: ref
+
+      Работа с Records API на бэкенде через библиотеку ecos-records.
+
+   .. grid-item-card:: Формальное описание синтаксиса атрибута
+      :link: records_syntax
+      :link-type: ref
+
+      Полная грамматика синтаксиса атрибутов Citeck Records.
+
+   .. grid-item-card:: Примеры запросов Citeck Records
+      :link: ecos_records_examples
+      :link-type: ref
+
+      Готовые примеры запросов и операций.
 
 .. toctree::
     :maxdepth: 2
+    :hidden:
 
     ECOS_Records/records_intro
     ECOS_Records/attributes

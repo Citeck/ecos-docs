@@ -223,47 +223,69 @@
 
 Также права можно настраивать конкретным пользователям на :ref:`конкретные разделы <bpmn_permissions>`.
 
-1. Раздел **«Моделирование»** с редакторами DMN/BPMN, раздел доступен для пользователей с правом **Право на чтение (read)**
+Доступ к разделу «Моделирование»
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-2. В редакторах DMN/BPMN публикация моделей доступна только для пользователей с правом **Деплой процесса**
+Раздел **«Моделирование»** с редакторами DMN/BPMN доступен для пользователей с правом **Право на чтение (read)**.
 
-.. image:: _static/rights_2.png
-   :width: 700
-   :align: center
+Публикация (деплой) моделей
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|
+В редакторах DMN/BPMN публикация моделей доступна только для пользователей с правом **Деплой процесса**.
 
-.. image:: _static/rights_3.png
-   :width: 700
-   :align: center
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item::
+
+      .. image:: _static/rights_2.png
+         :width: 500
+         :align: left
+
+   .. grid-item::
+
+      .. image:: _static/rights_3.png
+         :width: 500
+         :align: left
 
 Право на деплой можно проверить запросом ``permissions._has.deploy?bool``
 
 Например:
 
-.. code-block::
+.. code-block:: javascript
 
       Records.get('eproc/bpmn-def@your-process').load("permissions._has.deploy?bool", true).then(res => console.log(res))
 
-3.	Добавлена возможность просмотра схемы БП для пользователей с правом **Право на чтение (read)**
+Просмотр схемы процесса
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: _static/rights_4.png
-   :width: 700
-   :align: center
+Добавлена возможность просмотра схемы БП для пользователей с правом **Право на чтение (read)**.
 
-|
+.. grid:: 2
+   :gutter: 2
 
-.. image:: _static/rights_5.png
-   :width: 700
-   :align: center
+   .. grid-item::
 
-4.	Добавлен просмотр отчетности для ролей с правом **Просмотр отчета**. Под отчетностью понимаем виджет «Статистика по процессу».
+      .. image:: _static/rights_4.png
+         :width: 500
+         :align: left
+
+   .. grid-item::
+
+      .. image:: _static/rights_5.png
+         :width: 500
+         :align: left
+
+Просмотр отчётности
+~~~~~~~~~~~~~~~~~~~~
+
+Добавлен просмотр отчетности для ролей с правом **Просмотр отчета**. Под отчетностью понимаем виджет «Статистика по процессу».
 
 Право на просмотр отчётности можно проверить запросом ``permissions._has.viewReports?bool``
 
 Например:
 
-.. code-block::
+.. code-block:: javascript
 
       Records.get('eproc/bpmn-def@you-process').load("permissions._has.viewReports?bool", true).then(res => console.log(res))
 

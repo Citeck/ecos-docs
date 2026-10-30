@@ -1,0 +1,818 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../admin/launch_setup/sizing/docker.rst:4
+msgid "Сайзинг на одной ВМ: Citeck Launcher"
+msgstr "Single VM Sizing: Citeck Launcher"
+
+#: ../../admin/launch_setup/sizing/docker.rst:6
+msgid ""
+"Страница описывает расчёт ресурсов ВМ для развёртывания, при котором все "
+"компоненты платформы запускаются в контейнерах **на одной ВМ**. "
+"Оркестрация уровня кластера (Kubernetes, Swarm) не используется. Общие "
+"допущения, целевая нагрузка, состав контейнеров и правила пересчёта — на "
+"странице :ref:`Типовой сайзинг <sizing>`."
+msgstr ""
+"This page describes how to calculate VM resources for a deployment in "
+"which all platform components run in containers **on a single VM**. "
+"Cluster-level orchestration (Kubernetes, Swarm) is not used. General "
+"assumptions, target load, container composition, and recalculation rules "
+"are on the :ref:`Typical sizing <sizing>` page."
+
+#: ../../admin/launch_setup/sizing/docker.rst:10
+msgid ""
+"**Единственный рекомендуемый способ развёртывания на одной ВМ — Citeck "
+"Launcher 2.x в** :ref:`серверном режиме <launcher_server>`. Лончер "
+"устанавливает и обновляет платформу, управляет её жизненным циклом через "
+"CLI и systemd, настраивает TLS, ведёт снэпшоты данных и выполняет "
+"диагностику. Установка — :ref:`server_quick_start`, команды — "
+":ref:`server_commands`."
+msgstr ""
+"**The only recommended way to deploy on a single VM is Citeck Launcher "
+"2.x in** :ref:`server mode <launcher_server>`. The launcher installs and "
+"updates the platform, manages its lifecycle via the CLI and systemd, "
+"configures TLS, maintains data snapshots, and performs diagnostics. "
+"Installation — :ref:`server_quick_start`, commands — "
+":ref:`server_commands`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:12
+msgid ""
+"Docker Compose как способ развёртывания вне Kubernetes **больше не "
+"поддерживается**: конфигурации Docker Compose для новых версий Citeck "
+"выпускаться не будут. Перенос существующей установки с Docker Compose под"
+" управление лончера — :ref:`migration_from_compose`."
+msgstr ""
+"Docker Compose as a deployment method outside Kubernetes is **no longer "
+"supported**: Docker Compose configurations will not be released for new "
+"Citeck versions. To move an existing Docker Compose installation under "
+"launcher management, see :ref:`migration_from_compose`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:15
+msgid "Содержание"
+msgstr "Contents"
+
+#: ../../admin/launch_setup/sizing/docker.rst:18
+msgid "Контуры"
+msgstr "Environments"
+
+#: ../../admin/launch_setup/sizing/docker.rst:20
+msgid "Одна ВМ на каждую среду:"
+msgstr "One VM per environment:"
+
+#: ../../admin/launch_setup/sizing/docker.rst:22
+msgid "**Test** — разработка, отладка, приёмочное тестирование;"
+msgstr "**Test** — development, debugging, acceptance testing;"
+
+#: ../../admin/launch_setup/sizing/docker.rst:23
+msgid "**Prod** — продуктив."
+msgstr "**Prod** — production."
+
+#: ../../admin/launch_setup/sizing/docker.rst:25
+msgid ""
+"При схеме с тремя средами (**Dev + Test + Prod**) добавляется ещё одна ВМ"
+" по конфигурации тестового контура."
+msgstr ""
+"With a three-environment setup (**Dev + Test + Prod**), one more VM is "
+"added with the same configuration as the test environment."
+
+#: ../../admin/launch_setup/sizing/docker.rst:28
+msgid "Типовые конфигурации"
+msgstr "Typical configurations"
+
+#: ../../admin/launch_setup/sizing/docker.rst:35
+msgid "Профиль"
+msgstr "Profile"
+
+#: ../../admin/launch_setup/sizing/docker.rst:36
+#: ../../admin/launch_setup/sizing/docker.rst:85
+msgid "Без полнотекстового поиска"
+msgstr "Without full-text search"
+
+#: ../../admin/launch_setup/sizing/docker.rst:37
+msgid "С полнотекстовым поиском (OpenSearch)"
+msgstr "With full-text search (OpenSearch)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:38
+msgid "100 именных — минимальная конфигурация"
+msgstr "100 named users — minimum configuration"
+
+#: ../../admin/launch_setup/sizing/docker.rst:39
+msgid "8 CPU / 24 ГБ RAM / 240 ГБ SSD"
+msgstr "8 CPU / 24 GB RAM / 240 GB SSD"
+
+#: ../../admin/launch_setup/sizing/docker.rst:40
+msgid "8 CPU / 32 ГБ RAM / 300 ГБ SSD"
+msgstr "8 CPU / 32 GB RAM / 300 GB SSD"
+
+#: ../../admin/launch_setup/sizing/docker.rst:41
+msgid "100 именных — рекомендуемая конфигурация"
+msgstr "100 named users — recommended configuration"
+
+#: ../../admin/launch_setup/sizing/docker.rst:42
+msgid "16 CPU / 32 ГБ RAM / 500 ГБ SSD"
+msgstr "16 CPU / 32 GB RAM / 500 GB SSD"
+
+#: ../../admin/launch_setup/sizing/docker.rst:43
+msgid "16 CPU / 40 ГБ RAM / 500 ГБ SSD"
+msgstr "16 CPU / 40 GB RAM / 500 GB SSD"
+
+#: ../../admin/launch_setup/sizing/docker.rst:44
+msgid "до 2000 именных (500 одновременных)"
+msgstr "up to 2,000 named users (500 concurrent)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:45
+msgid "16 CPU / 48 ГБ RAM / от 1.3 ТБ SSD"
+msgstr "16 CPU / 48 GB RAM / 1.3 TB SSD or more"
+
+#: ../../admin/launch_setup/sizing/docker.rst:46
+msgid "24 CPU / 64 ГБ RAM / от 1.3 ТБ SSD"
+msgstr "24 CPU / 64 GB RAM / 1.3 TB SSD or more"
+
+#: ../../admin/launch_setup/sizing/docker.rst:48
+msgid ""
+"Объём дискового пространства зависит от планируемого объёма хранимых "
+"документов — см. «Дисковая подсистема» в соответствующей вкладке ниже."
+msgstr ""
+"Disk space depends on the planned volume of stored documents — see "
+"\"Disk subsystem\" in the corresponding tab below."
+
+#: ../../admin/launch_setup/sizing/docker.rst:52
+msgid ""
+"Требуемый объём памяти мало зависит от числа пользователей: :ref:`состав "
+"контейнеров <sizing_containers>` одинаков и для 100, и для 2000 именных "
+"пользователей. Разница между профилями складывается из ресурсов "
+"PostgreSQL (4 GiB на малой базе против 16 GiB на целевом профиле) и "
+"запаса на пики. С процессором иначе: контейнеры делят ядра ВМ между "
+"собой, и при нехватке CPU сервисы замедляются, а не завершаются, как при "
+"нехватке памяти. Поэтому младшим профилям достаточно меньшего числа CPU."
+msgstr ""
+"The required amount of memory depends little on the number of users: the"
+" :ref:`container composition <sizing_containers>` is the same for both "
+"100 and 2,000 named users. The difference between profiles comes from "
+"PostgreSQL resources (4 GiB for a small database vs. 16 GiB for the "
+"target profile) and headroom for peaks. CPU is different: containers "
+"share the VM's cores, and when CPU is insufficient, services slow down "
+"rather than terminate as they do when memory runs out. Therefore, smaller"
+" profiles need fewer CPUs."
+
+#: ../../admin/launch_setup/sizing/docker.rst:54
+msgid ""
+"Значения в :ref:`таблице контейнеров <sizing_containers>` приведены по "
+"``limits`` — это потолок, а не фактическое потребление: на малых "
+"установках контейнеры расходуют заметно меньше памяти, что и позволяет "
+"уместить профиль на 100 пользователей в 24–32 ГБ."
+msgstr ""
+"The values in the :ref:`container table <sizing_containers>` are based on"
+" ``limits`` — this is a ceiling, not actual consumption: on small "
+"installations, containers use noticeably less memory, which is what "
+"allows the 100-user profile to fit into 24–32 GB."
+
+#: ../../admin/launch_setup/sizing/docker.rst:57
+msgid "Расчёт ресурсов ВМ по профилям"
+msgstr "VM resource calculation by profile"
+
+#: ../../admin/launch_setup/sizing/docker.rst
+msgid "До 100 именных пользователей"
+msgstr "Up to 100 named users"
+
+#: ../../admin/launch_setup/sizing/docker.rst:63
+msgid "Профиль для небольших внедрений, демонстрационных и тестовых контуров."
+msgstr "A profile for small deployments, demo and test environments."
+
+#: ../../admin/launch_setup/sizing/docker.rst:65
+msgid "**Минимальная конфигурация — 8 CPU / 24 ГБ RAM.** Предполагает:"
+msgstr "**Minimum configuration — 8 CPU / 24 GB RAM.** It assumes:"
+
+#: ../../admin/launch_setup/sizing/docker.rst:67
+msgid ""
+"отключение неиспользуемых модулей (Ecos Ecom, Service Desk, EDI, "
+"Transformations — по 1 GiB каждый). В :ref:`серверном режиме лончера "
+"<launcher_server>` приложения отключаются командой ``citeck stop`` — см. "
+":ref:`server_commands`;"
+msgstr ""
+"disabling unused modules (Ecos Ecom, Service Desk, EDI, Transformations —"
+" 1 GiB each). In the :ref:`launcher server mode <launcher_server>`, "
+"applications are disabled with the ``citeck stop`` command — see "
+":ref:`server_commands`;"
+
+#: ../../admin/launch_setup/sizing/docker.rst:68
+msgid ""
+"уменьшенные лимиты контейнеров: у Java-сервисов с ``-Xmx256m`` "
+"фактическое потребление 400–600 МиБ вместо 1 GiB;"
+msgstr ""
+"reduced container limits: Java services with ``-Xmx256m`` actually "
+"consume 400–600 MiB instead of 1 GiB;"
+
+#: ../../admin/launch_setup/sizing/docker.rst:69
+msgid "PostgreSQL в минимальной конфигурации (2 vCPU / 4 GiB)."
+msgstr "PostgreSQL in the minimum configuration (2 vCPU / 4 GiB)."
+
+#: ../../admin/launch_setup/sizing/docker.rst:71
+msgid ""
+"**Рекомендуемая конфигурация — 16 CPU / 32 ГБ RAM** — полный набор "
+"приложений без отключений и запас на пики."
+msgstr ""
+"**Recommended configuration — 16 CPU / 32 GB RAM** — the full set of "
+"applications with nothing disabled, plus headroom for peaks."
+
+#: ../../admin/launch_setup/sizing/docker.rst:75
+msgid ""
+"16 ГБ ОЗУ, указанные в системных требованиях :ref:`Citeck Launcher "
+"<citeck_launcher>`, — это минимум для **запуска** Community-поставки без "
+"нагрузки, а не для продуктивной эксплуатации. Enterprise-поставка с "
+"полным набором приложений уже в простое занимает около 16 ГБ и в этот "
+"объём не помещается. Для рабочей установки с полным набором приложений "
+"необходимо **24–32 ГБ**."
+msgstr ""
+"The 16 GB of RAM specified in the :ref:`Citeck Launcher "
+"<citeck_launcher>` system requirements is the minimum for **starting** "
+"the Community edition without load, not for production use. The "
+"Enterprise edition with the full set of applications takes about 16 GB "
+"even when idle and does not fit into this amount. A working installation"
+" with the full set of applications requires **24–32 GB**."
+
+#: ../../admin/launch_setup/sizing/docker.rst:77
+msgid "**Дисковая подсистема**"
+msgstr "**Disk subsystem**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:84
+#: ../../admin/launch_setup/sizing/docker.rst:158
+msgid "Раздел"
+msgstr "Partition"
+
+#: ../../admin/launch_setup/sizing/docker.rst:86
+msgid "С полнотекстовым поиском"
+msgstr "With full-text search"
+
+#: ../../admin/launch_setup/sizing/docker.rst:87
+#: ../../admin/launch_setup/sizing/docker.rst:162
+msgid "Корневой раздел — ОС, Docker, образы контейнеров"
+msgstr "Root partition — OS, Docker, container images"
+
+#: ../../admin/launch_setup/sizing/docker.rst:88
+#: ../../admin/launch_setup/sizing/docker.rst:89
+#: ../../admin/launch_setup/sizing/docker.rst:164
+#: ../../admin/launch_setup/sizing/docker.rst:183
+#: ../../admin/launch_setup/sizing/docker.rst:189
+msgid "100 ГБ"
+msgstr "100 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:90
+#: ../../admin/launch_setup/sizing/docker.rst:166
+msgid "``/opt`` — данные платформы"
+msgstr "``/opt`` — platform data"
+
+#: ../../admin/launch_setup/sizing/docker.rst:91
+msgid "~140 ГБ"
+msgstr "~140 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:92
+msgid "~200 ГБ"
+msgstr "~200 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:93
+#: ../../admin/launch_setup/sizing/docker.rst:196
+msgid "**Итого**"
+msgstr "**Total**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:94
+msgid "**~240 ГБ SSD**"
+msgstr "**~240 GB SSD**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:95
+msgid "**~300 ГБ SSD**"
+msgstr "**~300 GB SSD**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:97
+msgid ""
+"Объём раздела данных рассчитан по :ref:`общим правилам пересчёта "
+"<sizing_recalc>` для **~50 ГБ контента**: база данных ~40 ГБ, поисковые "
+"индексы ~25 ГБ (диск 30 ГБ), очереди и временные файлы 20 ГБ, логи до 5 "
+"ГБ. Рекомендуемая конфигурация 500 ГБ соответствует объёму контента "
+"**~150 ГБ**."
+msgstr ""
+"The data partition size is calculated using the :ref:`general "
+"recalculation rules <sizing_recalc>` for **~50 GB of content**: database "
+"~40 GB, search indexes ~25 GB (30 GB disk), queues and temporary files 20"
+" GB, logs up to 5 GB. The recommended 500 GB configuration corresponds to"
+" **~150 GB** of content."
+
+#: ../../admin/launch_setup/sizing/docker.rst
+msgid "До 2000 именных пользователей"
+msgstr "Up to 2,000 named users"
+
+#: ../../admin/launch_setup/sizing/docker.rst:101
+msgid ""
+"Целевой профиль расчёта: до 2000 именных, до 500 одновременных "
+"пользователей, базовый объём контента 500 ГБ."
+msgstr ""
+"Target calculation profile: up to 2,000 named users, up to 500 concurrent"
+" users, base content volume of 500 GB."
+
+#: ../../admin/launch_setup/sizing/docker.rst:103
+msgid ""
+"Потребность собрана снизу вверх — по :ref:`ресурсам контейнеров "
+"<sizing_containers>`, с добавлением СУБД, поискового движка и накладных "
+"расходов ВМ."
+msgstr ""
+"Requirements are built bottom-up from the :ref:`container resources "
+"<sizing_containers>`, adding the DBMS, the search engine, and VM "
+"overhead."
+
+#: ../../admin/launch_setup/sizing/docker.rst:110
+msgid "Группа компонентов"
+msgstr "Component group"
+
+#: ../../admin/launch_setup/sizing/docker.rst:111
+msgid "vCPU"
+msgstr "vCPU"
+
+#: ../../admin/launch_setup/sizing/docker.rst:112
+msgid "RAM"
+msgstr "RAM"
+
+#: ../../admin/launch_setup/sizing/docker.rst:113
+msgid ""
+"Контейнеры платформы (микросервисы, Keycloak, Zookeeper, RabbitMQ, "
+"Onlyoffice, S3-хранилище)"
+msgstr ""
+"Platform containers (microservices, Keycloak, Zookeeper, RabbitMQ, "
+"Onlyoffice, S3 storage)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:114
+msgid "9.6 (по ``requests``)"
+msgstr "9.6 (by ``requests``)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:115
+msgid "25 GiB (по ``limits``)"
+msgstr "25 GiB (by ``limits``)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:116
+msgid "PostgreSQL — на общей ВМ с остальными контейнерами"
+msgstr "PostgreSQL — on the same VM as the other containers"
+
+#: ../../admin/launch_setup/sizing/docker.rst:117
+#: ../../admin/launch_setup/sizing/docker.rst:120
+msgid "4"
+msgstr "4"
+
+#: ../../admin/launch_setup/sizing/docker.rst:118
+#: ../../admin/launch_setup/sizing/docker.rst:121
+msgid "16 GiB"
+msgstr "16 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:119
+msgid "OpenSearch — при включении полнотекстового поиска, на общей ВМ"
+msgstr "OpenSearch — if full-text search is enabled, on the shared VM"
+
+#: ../../admin/launch_setup/sizing/docker.rst:122
+msgid "ОС, Docker daemon, агенты мониторинга и сбора логов"
+msgstr "OS, Docker daemon, monitoring and log collection agents"
+
+#: ../../admin/launch_setup/sizing/docker.rst:123
+msgid "2"
+msgstr "2"
+
+#: ../../admin/launch_setup/sizing/docker.rst:124
+msgid "4 GiB"
+msgstr "4 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:126
+msgid ""
+"Ресурсы PostgreSQL снижены относительно расчёта для выделенного сервера "
+"(8 vCPU / 32 GiB): на общей ВМ ядра и файловый кэш делятся со всей "
+"платформой, а ``shared_buffers`` при 16 GiB составляет ~4 GiB, чего "
+"достаточно для базы до ~500 ГБ. При выносе СУБД на отдельную ВМ или в "
+"managed-сервис применяются полные 8 vCPU / 32 GiB — см. :ref:`sizing_pg`."
+msgstr ""
+"PostgreSQL resources are reduced compared to the dedicated server "
+"calculation (8 vCPU / 32 GiB): on a shared VM, cores and file cache are "
+"shared with the entire platform, and with 16 GiB, ``shared_buffers`` is "
+"~4 GiB, which is sufficient for a database of up to ~500 GB. When the "
+"DBMS is moved to a separate VM or a managed service, the full 8 vCPU / 32"
+" GiB applies — see :ref:`sizing_pg`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:128
+msgid ""
+"OpenSearch на общей ВМ также взят в сокращённой конфигурации: при 250 ГБ "
+"индексов heap 8 GiB (половина от 16 GiB RAM) находится у нижней границы "
+"правила «1 GiB heap на 20–30 ГБ индексов» — поиск работает, но объём "
+"файлового кэша ограничен и холодные запросы выполняются медленнее. При "
+"росте индексов свыше ~500 ГБ применяется конфигурация 8 vCPU / 32 GiB "
+"либо вынос поиска на отдельную ВМ — см. :ref:`sizing_opensearch`."
+msgstr ""
+"OpenSearch on the shared VM is also taken in a reduced configuration: "
+"with 250 GB of indexes, an 8 GiB heap (half of 16 GiB RAM) is at the "
+"lower bound of the \"1 GiB heap per 20–30 GB of indexes\" rule — search "
+"works, but the file cache is limited and cold queries run slower. When "
+"indexes grow beyond ~500 GB, the 8 vCPU / 32 GiB configuration applies, "
+"or search is moved to a separate VM — see :ref:`sizing_opensearch`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:130
+msgid "**Рекомендуемые конфигурации ВМ**"
+msgstr "**Recommended VM configurations**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:137
+msgid "Контур"
+msgstr "Environment"
+
+#: ../../admin/launch_setup/sizing/docker.rst:138
+msgid "Без OpenSearch"
+msgstr "Without OpenSearch"
+
+#: ../../admin/launch_setup/sizing/docker.rst:139
+msgid "С OpenSearch"
+msgstr "With OpenSearch"
+
+#: ../../admin/launch_setup/sizing/docker.rst:140
+msgid "**Prod**"
+msgstr "**Prod**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:141
+#: ../../admin/launch_setup/sizing/docker.rst:144
+#: ../../admin/launch_setup/sizing/docker.rst:145
+msgid "**16 vCPU / 48 GiB**"
+msgstr "**16 vCPU / 48 GiB**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:142
+msgid "**24 vCPU / 64 GiB**"
+msgstr "**24 vCPU / 64 GiB**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:143
+msgid "**Test**"
+msgstr "**Test**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:147
+msgid ""
+"Для тестового контура PostgreSQL берётся в минимальной конфигурации (2 "
+"vCPU / 4 GiB), OpenSearch — 2 vCPU / 4 GiB (индексы до 50 ГБ). Одна "
+"конфигурация 16 vCPU / 48 GiB закрывает тестовый контур в обоих "
+"вариантах: потребность 15.6 vCPU / 37 GiB, запас ~11 GiB."
+msgstr ""
+"For the test environment, PostgreSQL uses the minimum configuration (2 "
+"vCPU / 4 GiB), and OpenSearch uses 2 vCPU / 4 GiB (indexes up to 50 GB)."
+" A single 16 vCPU / 48 GiB configuration covers the test environment in "
+"both variants: the requirement is 15.6 vCPU / 37 GiB, with ~11 GiB of "
+"headroom."
+
+#: ../../admin/launch_setup/sizing/docker.rst:149
+msgid ""
+"Состав контейнеров на продуктиве и тесте одинаков — контейнеры платформы "
+"занимают 25 GiB независимо от числа пользователей. Это нижняя граница: "
+"разместить тестовый контур в 32 GiB можно только при отключении "
+"неиспользуемых модулей (Ecos Ecom, Service Desk, EDI, Transformations) и "
+"без запаса на пики."
+msgstr ""
+"The container composition is the same in production and test — platform"
+" containers take 25 GiB regardless of the number of users. This is the "
+"lower bound: the test environment can fit into 32 GiB only if unused "
+"modules (Ecos Ecom, Service Desk, EDI, Transformations) are disabled and "
+"with no headroom for peaks."
+
+#: ../../admin/launch_setup/sizing/docker.rst:151
+msgid "**Разметка дисков**"
+msgstr "**Disk layout**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:159
+#: ../../admin/launch_setup/sizing/docker.rst:179
+msgid "Prod"
+msgstr "Prod"
+
+#: ../../admin/launch_setup/sizing/docker.rst:160
+#: ../../admin/launch_setup/sizing/docker.rst:180
+msgid "Test"
+msgstr "Test"
+
+#: ../../admin/launch_setup/sizing/docker.rst:161
+msgid "Тип"
+msgstr "Type"
+
+#: ../../admin/launch_setup/sizing/docker.rst:163
+msgid "**100 ГБ**"
+msgstr "**100 GB**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:165
+msgid "SSD"
+msgstr "SSD"
+
+#: ../../admin/launch_setup/sizing/docker.rst:167
+#: ../../admin/launch_setup/sizing/docker.rst:197
+msgid "**~1.3 ТБ**"
+msgstr "**~1.3 TB**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:168
+msgid "~300 ГБ"
+msgstr "~300 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:169
+msgid "SSD; для БД и индексов — NVMe"
+msgstr "SSD; NVMe for the database and indexes"
+
+#: ../../admin/launch_setup/sizing/docker.rst:171
+msgid "**Состав раздела данных**"
+msgstr "**Data partition breakdown**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:178
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../admin/launch_setup/sizing/docker.rst:181
+msgid "Контент (S3-совместимое хранилище)"
+msgstr "Content (S3-compatible storage)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:182
+#: ../../admin/launch_setup/sizing/docker.rst:213
+msgid "500 ГБ"
+msgstr "500 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:184
+msgid "База данных PostgreSQL — данные, WAL, временные файлы"
+msgstr "PostgreSQL database — data, WAL, temporary files"
+
+#: ../../admin/launch_setup/sizing/docker.rst:185
+#: ../../admin/launch_setup/sizing/docker.rst:217
+msgid "400 ГБ"
+msgstr "400 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:186
+#: ../../admin/launch_setup/sizing/docker.rst:191
+msgid "50 ГБ"
+msgstr "50 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:187
+msgid "Поисковые индексы OpenSearch"
+msgstr "OpenSearch search indexes"
+
+#: ../../admin/launch_setup/sizing/docker.rst:188
+msgid "300 ГБ"
+msgstr "300 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:190
+msgid "Очереди RabbitMQ, снапшоты Zookeeper, временные файлы Onlyoffice"
+msgstr "RabbitMQ queues, Zookeeper snapshots, Onlyoffice temporary files"
+
+#: ../../admin/launch_setup/sizing/docker.rst:192
+msgid "40 ГБ"
+msgstr "40 GB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:193
+msgid "Логи приложений"
+msgstr "Application logs"
+
+#: ../../admin/launch_setup/sizing/docker.rst:194
+msgid "10 ГБ в год"
+msgstr "10 GB per year"
+
+#: ../../admin/launch_setup/sizing/docker.rst:195
+msgid "5 ГБ в год"
+msgstr "5 GB per year"
+
+#: ../../admin/launch_setup/sizing/docker.rst:198
+msgid "**~300 ГБ**"
+msgstr "**~300 GB**"
+
+#: ../../admin/launch_setup/sizing/docker.rst:201
+msgid "Сценарии по объёму контента"
+msgstr "Content volume scenarios"
+
+#: ../../admin/launch_setup/sizing/docker.rst:208
+msgid "Показатель"
+msgstr "Metric"
+
+#: ../../admin/launch_setup/sizing/docker.rst:209
+msgid "500 ГБ (базовый расчёт)"
+msgstr "500 GB (base calculation)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:210
+#: ../../admin/launch_setup/sizing/docker.rst:214
+msgid "2 ТБ"
+msgstr "2 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:211
+#: ../../admin/launch_setup/sizing/docker.rst:215
+msgid "5 ТБ"
+msgstr "5 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:212
+msgid "Контент"
+msgstr "Content"
+
+#: ../../admin/launch_setup/sizing/docker.rst:216
+msgid "PostgreSQL — диск (0.6 × контент + 30 %)"
+msgstr "PostgreSQL — disk (0.6 × content + 30%)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:218
+msgid "1.6 ТБ"
+msgstr "1.6 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:219
+msgid "4 ТБ"
+msgstr "4 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:220
+msgid "PostgreSQL — ресурсы на общей ВМ"
+msgstr "PostgreSQL — resources on the shared VM"
+
+#: ../../admin/launch_setup/sizing/docker.rst:221
+#: ../../admin/launch_setup/sizing/docker.rst:229
+msgid "4 vCPU / 16 GiB"
+msgstr "4 vCPU / 16 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:222
+msgid "8 vCPU / 32 GiB"
+msgstr "8 vCPU / 32 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:223
+msgid "вынос на отдельную ВМ: 16 vCPU / 64 GiB"
+msgstr "move to a separate VM: 16 vCPU / 64 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:224
+msgid "OpenSearch — индексы (0.5 × контент)"
+msgstr "OpenSearch — indexes (0.5 × content)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:225
+msgid "250 ГБ, диск 300 ГБ"
+msgstr "250 GB, 300 GB disk"
+
+#: ../../admin/launch_setup/sizing/docker.rst:226
+msgid "1 ТБ, диск 1.2 ТБ"
+msgstr "1 TB, 1.2 TB disk"
+
+#: ../../admin/launch_setup/sizing/docker.rst:227
+msgid "2.5 ТБ, диск 3 ТБ"
+msgstr "2.5 TB, 3 TB disk"
+
+#: ../../admin/launch_setup/sizing/docker.rst:228
+msgid "OpenSearch — ресурсы на общей ВМ"
+msgstr "OpenSearch — resources on the shared VM"
+
+#: ../../admin/launch_setup/sizing/docker.rst:230
+msgid "8 vCPU / 64 GiB"
+msgstr "8 vCPU / 64 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:231
+msgid "вынос на отдельную ВМ"
+msgstr "move to a separate VM"
+
+#: ../../admin/launch_setup/sizing/docker.rst:232
+msgid "Диск ВМ — итого"
+msgstr "VM disk — total"
+
+#: ../../admin/launch_setup/sizing/docker.rst:233
+msgid "~1.3 ТБ"
+msgstr "~1.3 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:234
+msgid "~5 ТБ"
+msgstr "~5 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:235
+msgid "~12 ТБ"
+msgstr "~12 TB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:236
+msgid "Конфигурация ВМ (Prod, с OpenSearch)"
+msgstr "VM configuration (Prod, with OpenSearch)"
+
+#: ../../admin/launch_setup/sizing/docker.rst:237
+msgid "24 vCPU / 64 GiB"
+msgstr "24 vCPU / 64 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:238
+msgid "32 vCPU / 128 GiB"
+msgstr "32 vCPU / 128 GiB"
+
+#: ../../admin/launch_setup/sizing/docker.rst:239
+msgid "вынос СУБД и хранилища на отдельные ВМ"
+msgstr "move the DBMS and storage to separate VMs"
+
+#: ../../admin/launch_setup/sizing/docker.rst:241
+msgid ""
+"Правила пересчёта, ресурсы PostgreSQL в зависимости от объёма БД и "
+"ориентиры по heap OpenSearch — :ref:`общие для всех вариантов "
+"развёртывания <sizing_recalc>`."
+msgstr ""
+"Recalculation rules, PostgreSQL resources depending on database size, and"
+" OpenSearch heap guidelines are :ref:`common to all deployment options "
+"<sizing_recalc>`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:244
+msgid "Ограничения схемы с одной ВМ"
+msgstr "Limitations of the single VM setup"
+
+#: ../../admin/launch_setup/sizing/docker.rst:246
+msgid "**Отказоустойчивость отсутствует** — ВМ является единой точкой отказа."
+msgstr "**No fault tolerance** — the VM is a single point of failure."
+
+#: ../../admin/launch_setup/sizing/docker.rst:247
+msgid ""
+"**Обновления выполняются с остановкой сервисов**, rolling update "
+"недоступен."
+msgstr "**Updates require stopping services**; rolling updates are not available."
+
+#: ../../admin/launch_setup/sizing/docker.rst:248
+msgid ""
+"**Масштабирование — вертикальное**, увеличением ресурсов ВМ. "
+"Тиражирование отдельных микросервисов (кластеризация) в :ref:`Citeck "
+"Launcher <launcher_server>` пока не поддерживается. Оно появится в "
+"будущих версиях, но только в пределах одной ВМ: многосерверные "
+"конфигурации лончер не обслуживает."
+msgstr ""
+"**Scaling is vertical**, by increasing VM resources. Replicating "
+"individual microservices (clustering) is not yet supported in "
+":ref:`Citeck Launcher <launcher_server>`. It will be added in future "
+"versions, but only within a single VM: the launcher does not support "
+"multi-server configurations."
+
+#: ../../admin/launch_setup/sizing/docker.rst:249
+msgid ""
+"**Кластеризация PostgreSQL, S3 и OpenSearch** в рамках одной ВМ не "
+"предусмотрена и требует выноса этих компонентов на отдельные ВМ — см. "
+":ref:`sizing_external`."
+msgstr ""
+"**Clustering of PostgreSQL, S3, and OpenSearch** within a single VM is "
+"not provided and requires moving these components to separate VMs — see "
+":ref:`sizing_external`."
+
+#: ../../admin/launch_setup/sizing/docker.rst:250
+msgid ""
+"**Компоненты искусственного интеллекта**, резервное копирование и "
+"инструменты мониторинга в расчёт не входят — см. «Что не входит в расчёт»"
+" на странице :ref:`sizing`."
+msgstr ""
+"**AI components**, backup, and monitoring tools are not included in the "
+"calculation — see \"What is not included in the calculation\" on the "
+":ref:`sizing` page."
+
+#: ../../admin/launch_setup/sizing/docker.rst:254
+msgid ""
+"При наличии требований по RPO / RTO либо при численности свыше 2000 "
+"именных пользователей рекомендуется переход на :ref:`развёртывание в "
+"Kubernetes <sizing_k8s>`. Тиражирование ключевых микросервисов (Ecos "
+"Model, Gateway, Process) в пределах одной ВМ появится в будущих версиях "
+"Citeck Launcher. Ориентир для такой конфигурации — **24–32 CPU / 64–96 "
+"ГБ**; отказоустойчивости она не даёт — ВМ остаётся единой точкой отказа."
+msgstr ""
+"If there are RPO / RTO requirements, or more than 2,000 named users, "
+"moving to a :ref:`Kubernetes deployment <sizing_k8s>` is recommended. "
+"Replication of key microservices (Ecos Model, Gateway, Process) within a "
+"single VM will be added in future versions of Citeck Launcher. The "
+"guideline for such a configuration is **24–32 CPU / 64–96 GB**; it does "
+"not provide fault tolerance — the VM remains a single point of failure."
+
+#: ../../admin/launch_setup/sizing/docker.rst:258
+msgid ""
+":ref:`Citeck Launcher: серверный режим <launcher_server>` — установка и "
+"управление платформой на Linux-сервере."
+msgstr ""
+":ref:`Citeck Launcher: server mode <launcher_server>` — installing and "
+"managing the platform on a Linux server."
+
+#: ../../admin/launch_setup/sizing/docker.rst:259
+msgid ""
+":ref:`Миграция данных с docker-compose <migration_from_compose>` — "
+"перенос существующей установки под управление лончера."
+msgstr ""
+":ref:`Data migration from docker-compose <migration_from_compose>` — "
+"moving an existing installation under launcher management."
+
+#: ../../admin/launch_setup/sizing/docker.rst:260
+msgid ""
+":ref:`Сервисы Docker <docker_services>` — назначение образов и переменные"
+" окружения."
+msgstr ""
+":ref:`Docker services <docker_services>` — image purposes and environment"
+" variables."
+
+#: ../../admin/launch_setup/sizing/docker.rst:261
+msgid ""
+":ref:`Запуск в закрытом контуре <launcher_internal_network>` — перенос "
+"образов для развёртывания без доступа к интернету."
+msgstr ""
+":ref:`Running in an isolated network <launcher_internal_network>` — "
+"transferring images for deployment without internet access."
+
+#: ../../admin/launch_setup/sizing/docker.rst:262
+msgid ""
+":ref:`Работа со снэпшотами <launcher_dump>` — создание и восстановление "
+"снэпшотов данных тома."
+msgstr ""
+":ref:`Working with snapshots <launcher_dump>` — creating and restoring "
+"volume data snapshots."

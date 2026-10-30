@@ -14,50 +14,48 @@
 
 Доступные варианты представления:
 
-.. list-table::
-      :widths: 10 20
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 2
 
-      * - |
+   .. grid-item-card:: Таблица
+      :link: journal_table
+      :link-type: ref
 
-              .. image:: _static/user/view_01.png
-                     :width: 30
-                     :align: center
+      .. image:: _static/user/view_01.png
+         :width: 30
+         :align: left
 
-        - :ref:`таблица <journal_table>`
+   .. grid-item-card:: Канбан доска
+      :link: kanban_board
+      :link-type: ref
 
-      * - |
+      .. image:: _static/user/view_03.png
+         :width: 30
+         :align: left
 
-              .. image:: _static/user/view_03.png
-                     :width: 30
-                     :align: center
+   .. grid-item-card:: Библиотека документов
+      :link: document_library
+      :link-type: ref
 
-        - :ref:`канбан доска <kanban_board>`
-      * - |
+      .. image:: _static/user/view_04.png
+         :width: 30
+         :align: left
 
-              .. image:: _static/user/view_04.png
-                     :width: 30
-                     :align: center
+   .. grid-item-card:: Список, контент в виде плиток
+      :link: tiles
+      :link-type: ref
 
-        - :ref:`библиотека документов <document_library>`
+      .. image:: _static/user/view_05.png
+         :width: 30
+         :align: left
 
-      * - |
+   .. grid-item-card:: Иерархия
+      :link: hierarchical-view
+      :link-type: ref
 
-              .. image:: _static/user/view_05.png
-                     :width: 30
-                     :align: center
-
-        - :ref:`список, контент в виде плиток <tiles>`
-
-      * - |
-
-              .. image:: _static/user/view_hier.png
-                     :width: 30
-                     :align: center
-
-        - :ref:`иерархия <hierarchical-view>`
-
+      .. image:: _static/user/view_hier.png
+         :width: 30
+         :align: left
 
 Выбор сохраняется в URL, при перезагрузке открывается последнее выбранное представление.
 
@@ -146,32 +144,3 @@
    :align: center
 
 :ref:`Подробно о предпросмотре данных <preview>`
-
-.. _journal_list:
-
-Представление «Список»
-----------------------------------------------
-
-В левой части может быть представлено изображение, правее — заголовок публикации и подробное описание.
-
-.. image:: _static/user/j_list.png
-   :width: 800
-   :align: center
-
-По клику на изображение или заголовок открывается карточка. Подробно о :ref:`публикациях <publication>`.
-
-
-.. _journal_hierarchical:
-
-Представление «Иерархия»
-----------------------------------------------
-
-В режиме **«Иерархия»** данные организованы в виде дерева с возможностью вложенности элементов друг в друга.
-
-.. image:: _static/user/j_hierarchical.png
-   :width: 800
-   :align: center
-
-Подробно об :ref:`иерархии <hierarchical-view>`.
-
-Как добавить представление «Иерархия» в тип данных и форму, смотрите :ref:`пример <sample_select_hierarchical_component>`.

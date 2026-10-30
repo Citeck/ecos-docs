@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -35,9 +35,9 @@ msgid ""
 "запрашивать их."
 msgstr ""
 "**Webhook** — an integration mechanism in which an external system sends "
-"an HTTP request to Citeck when a specific event occurs. Unlike polling, a "
-"webhook operates on a \"push\" basis: data is delivered immediately at the "
-"moment of the event, with no need to query it periodically."
+"an HTTP request to Citeck when a specific event occurs. Unlike polling, a"
+" webhook operates on a \"push\" basis: data is delivered immediately at "
+"the moment of the event, with no need to query it periodically."
 
 #: ../../integration/webhooks.rst:11
 msgid ""
@@ -48,8 +48,8 @@ msgid ""
 msgstr ""
 "Citeck supports **incoming webhooks**: an external system sends a POST "
 "request to a dedicated endpoint, Citeck verifies the token and publishes "
-"the event to the internal message bus. The event can then be processed by "
-"any subscriber — a BPMN process, a Camel DSL integration route, etc."
+"the event to the internal message bus. The event can then be processed by"
+" any subscriber — a BPMN process, a Camel DSL integration route, etc."
 
 #: ../../integration/webhooks.rst:13
 msgid "Типичный сценарий использования:"
@@ -59,7 +59,9 @@ msgstr "Typical use cases:"
 msgid ""
 "внешняя CRM (например, Bitrix24) уведомляет Citeck о создании новой "
 "сделки;"
-msgstr "an external CRM (e.g. Bitrix24) notifies Citeck about the creation of a new deal;"
+msgstr ""
+"an external CRM (e.g. Bitrix24) notifies Citeck about the creation of a "
+"new deal;"
 
 #: ../../integration/webhooks.rst:16
 msgid "мессенджер или CI/CD-система отправляет событие по завершении задачи;"
@@ -67,15 +69,17 @@ msgstr "a messenger or CI/CD system sends an event upon task completion;"
 
 #: ../../integration/webhooks.rst:17
 msgid "любая сторонняя система инициирует запуск бизнес-процесса в Citeck."
-msgstr "any third-party system initiates the launch of a business process in Citeck."
+msgstr ""
+"any third-party system initiates the launch of a business process in "
+"Citeck."
 
 #: ../../integration/webhooks.rst:19
 msgid ""
 "Настройки доступны в журнале **«Входящие вебхуки»** (Рабочее пространство"
 " «Раздел администратора» — Интеграция)."
 msgstr ""
-"Settings are available in the **\"Incoming Webhooks\"** journal (Workspace "
-"\"Admin Section\" — Integration)."
+"Settings are available in the **\"Incoming Webhooks\"** journal "
+"(Workspace \"Admin Section\" — Integration)."
 
 #: ../../integration/webhooks.rst:25
 msgid ""
@@ -101,7 +105,7 @@ msgstr "Attributes (in-webhook):"
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../integration/webhooks.rst:45
+#: ../../integration/webhooks.rst:45 ../../integration/webhooks.rst:109
 msgid "Тип"
 msgstr "Type"
 
@@ -162,7 +166,11 @@ msgstr "If not specified, the default value **token** is used"
 msgid "Пример конфигурации:"
 msgstr "Configuration Example:"
 
-#: ../../integration/webhooks.rst:72
+#: ../../integration/webhooks.rst:73
+msgid "Отправка запроса"
+msgstr "Sending a Request"
+
+#: ../../integration/webhooks.rst:75
 msgid ""
 "После создания входящего вебхука становится доступна отправка "
 "POST-запросов по адресу:"
@@ -170,15 +178,15 @@ msgstr ""
 "Once an incoming webhook is created, POST requests can be sent to the "
 "following address:"
 
-#: ../../integration/webhooks.rst:78
+#: ../../integration/webhooks.rst:81
 msgid "где **id** — идентификатор, указанный при создании вебхука."
 msgstr "where **id** is the identifier specified when creating the webhook."
 
-#: ../../integration/webhooks.rst:80
+#: ../../integration/webhooks.rst:85
 msgid "В запросе обязательно должно присутствовать **тело (body)**."
 msgstr "The request must contain a **body**."
 
-#: ../../integration/webhooks.rst:82
+#: ../../integration/webhooks.rst:87
 msgid ""
 "Токен для аутентификации должен передаваться в параметре, указанном при "
 "создании вебхука."
@@ -186,29 +194,57 @@ msgstr ""
 "The authentication token must be passed in the parameter specified when "
 "creating the webhook."
 
-#: ../../integration/webhooks.rst:84 ../../integration/webhooks.rst:100
+#: ../../integration/webhooks.rst:89 ../../integration/webhooks.rst:117
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../integration/webhooks.rst:90
+#: ../../integration/webhooks.rst:96
+msgid "Обработка запроса"
+msgstr "Request Processing"
+
+#: ../../integration/webhooks.rst:98
 msgid ""
 "На данный момент доступен один тип действия — «Трансформация в Events». "
 "При обработке вебхука проверяется токен."
 msgstr ""
-"Currently, one action type is available — \"Transformation into Events\". "
-"When processing a webhook, the token is verified."
+"Currently, one action type is available — \"Transformation into Events\"."
+" When processing a webhook, the token is verified."
 
-#: ../../integration/webhooks.rst:92
+#: ../../integration/webhooks.rst:100
 msgid ""
 "Если проверка прошла успешно, создаётся :ref:`ECOS Event <ecos_events>` в"
 " стандартную очередь **ecos-events** с типом **in-webhook-request**. "
 "Event содержит данные запроса:"
 msgstr ""
 "If verification succeeds, an :ref:`ECOS Event <ecos_events>` is created "
-"in the standard queue **ecos-events** with the type **in-webhook-request**. "
-"The event contains the request data:"
+"in the standard queue **ecos-events** with the type **in-webhook-"
+"request**. The event contains the request data:"
+
+#: ../../integration/webhooks.rst:108
+msgid "Поле"
+msgstr "Field"
 
 #: ../../integration/webhooks.rst:110
+msgid "webhookId"
+msgstr "webhookId"
+
+#: ../../integration/webhooks.rst:111 ../../integration/webhooks.rst:115
+msgid "String"
+msgstr "String"
+
+#: ../../integration/webhooks.rst:112
+msgid "params"
+msgstr "params"
+
+#: ../../integration/webhooks.rst:113
+msgid "Map<String, String>"
+msgstr "Map<String, String>"
+
+#: ../../integration/webhooks.rst:114
+msgid "body"
+msgstr "body"
+
+#: ../../integration/webhooks.rst:129
 msgid ""
 "Доступ на чтение и редактирование вебхуков есть только у Администратора и"
 " Системы."
@@ -216,73 +252,73 @@ msgstr ""
 "Only the Administrator and the System have read and edit access to "
 "webhooks."
 
-#: ../../integration/webhooks.rst:113
+#: ../../integration/webhooks.rst:132
 msgid "Ошибки"
 msgstr "Errors"
 
-#: ../../integration/webhooks.rst:115
+#: ../../integration/webhooks.rst:134
 msgid "При отправке запроса на вебхук возможны следующие ошибки:"
 msgstr "The following errors may occur when sending a request to a webhook:"
 
-#: ../../integration/webhooks.rst:123
+#: ../../integration/webhooks.rst:142
 msgid "Код"
 msgstr "Code"
 
-#: ../../integration/webhooks.rst:124
+#: ../../integration/webhooks.rst:143
 msgid "Детали"
 msgstr "Details"
 
-#: ../../integration/webhooks.rst:125
+#: ../../integration/webhooks.rst:144
 msgid "Комментарий"
 msgstr "Comment"
 
-#: ../../integration/webhooks.rst:126 ../../integration/webhooks.rst:129
-#: ../../integration/webhooks.rst:132 ../../integration/webhooks.rst:135
+#: ../../integration/webhooks.rst:145 ../../integration/webhooks.rst:148
+#: ../../integration/webhooks.rst:151 ../../integration/webhooks.rst:154
 msgid "500"
 msgstr "500"
 
-#: ../../integration/webhooks.rst:127
+#: ../../integration/webhooks.rst:146
 #, python-brace-format
 msgid "Invalid webhook id={wh_id}"
 msgstr "Invalid webhook id={wh_id}"
 
-#: ../../integration/webhooks.rst:128
+#: ../../integration/webhooks.rst:147
 msgid "Вебхук с указанным id не найден"
 msgstr "Webhook with the specified id not found"
 
-#: ../../integration/webhooks.rst:130
+#: ../../integration/webhooks.rst:149
 #, python-brace-format
 msgid "Secret ${webhook.token} not found"
 msgstr "Secret ${webhook.token} not found"
 
-#: ../../integration/webhooks.rst:131
+#: ../../integration/webhooks.rst:150
 msgid "Секрет, заданный в вебхуке, не найден"
 msgstr "The secret specified in the webhook was not found"
 
-#: ../../integration/webhooks.rst:133
+#: ../../integration/webhooks.rst:152
 msgid "Authentication token is not valid"
 msgstr "Authentication token is not valid"
 
-#: ../../integration/webhooks.rst:134
+#: ../../integration/webhooks.rst:153
 msgid "Параметр с токеном отсутствует в запросе или токен неверный"
 msgstr "The token parameter is missing from the request or the token is invalid"
 
-#: ../../integration/webhooks.rst:136
+#: ../../integration/webhooks.rst:155
 #, python-brace-format
 msgid "Not found action type ${webhook.actionType}"
 msgstr "Not found action type ${webhook.actionType}"
 
-#: ../../integration/webhooks.rst:137
+#: ../../integration/webhooks.rst:156
 msgid "Указан несуществующий тип действия"
 msgstr "A non-existent action type was specified"
 
-#: ../../integration/webhooks.rst:139
+#: ../../integration/webhooks.rst:160
 msgid ""
 "Вебхук используется, например, для :ref:`синхронизации с Bitrix24 "
 "<bitrix24_crm>`."
 msgstr ""
-"Webhooks are used, for example, for "
-":ref:`synchronization with Bitrix24 <bitrix24_crm>`."
+"Webhooks are used, for example, for :ref:`synchronization with Bitrix24 "
+"<bitrix24_crm>`."
 
 #~ msgid "В Citeck добавлен функционал входящих вебхуков."
 #~ msgstr "Incoming webhooks functionality has been added to Citeck."
@@ -306,3 +342,4 @@ msgstr ""
 
 #~ msgid "Если неверно задано действие в вебхуке"
 #~ msgstr "If the action is incorrectly set in the webhook"
+

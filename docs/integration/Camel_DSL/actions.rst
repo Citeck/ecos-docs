@@ -16,6 +16,7 @@
 .. list-table::
    :widths: 10 90
    :header-rows: 1
+   :class: tight-table
 
    * - Действие
      - Описание

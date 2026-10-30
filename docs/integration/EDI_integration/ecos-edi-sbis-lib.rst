@@ -1,3 +1,5 @@
+.. _ecos-edi-sbis-lib:
+
 Описание ecos-edi-sbis-lib
 ===========================
 

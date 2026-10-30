@@ -22,6 +22,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 25 30 15
+   :class: tight-table
 
    * - Тип артефакта
      - Путь
@@ -86,6 +87,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 20 80
+   :class: tight-table
 
    * - Поле
      - Описание
@@ -103,6 +105,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 20 80
+   :class: tight-table
 
    * - Поле
      - Описание
@@ -124,6 +127,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 20 80
+   :class: tight-table
 
    * - Поле
      - Описание
@@ -203,6 +207,7 @@
 .. list-table::
    :header-rows: 1
    :widths: 35 20 45
+   :class: tight-table
 
    * - Файл патча
      - ``order``
@@ -242,132 +247,177 @@
 
 Артефакты типа ``ui/admin-sections-group`` описывали группы разделов в меню администратора.
 
-Стандартные группы разделов (исторический справочник):
+.. dropdown:: Стандартные группы разделов (исторический справочник)
+   :color: secondary
 
-.. csv-table::
-   :header-rows: 1
+   .. list-table::
+      :header-rows: 1
+      :class: tight-table
 
-   Микросервис,Идентификатор группы,Порядок
-   ecos-apps,application,0
-   ecos-process,process,10
-   ecos-model,model,20
-   ecos-uiserv,user-interface,30
-   ecos-notifications,notification,40
-   ecos-integrations,integration,50
-   ecos-integrations,integration-legacy,1000
+      * - Микросервис
+        - Идентификатор группы
+        - Порядок
+      * - ecos-apps
+        - application
+        - 0
+      * - ecos-process
+        - process
+        - 10
+      * - ecos-model
+        - model
+        - 20
+      * - ecos-uiserv
+        - user-interface
+        - 30
+      * - ecos-notifications
+        - notification
+        - 40
+      * - ecos-integrations
+        - integration
+        - 50
+      * - ecos-integrations
+        - integration-legacy
+        - 1000
 
-.. note::
+   .. note::
 
-   Группа ``integration-legacy`` содержит устаревшие журналы микросервиса ``ecos-integrations`` (``ecos-sync``, ``ecos-credentials``, ``edi-box``, ``ecos-osgi-bundles``, ``file-import-config``, ``file-import-task``, ``file-import-task-item``).
-   Значение ``order: 1000`` намеренно выбрано большим, чтобы группа отображалась в конце боковой панели после всех остальных разделов. Это рекомендуемое соглашение для групп с устаревшим/legacy-содержимым.
+      Группа ``integration-legacy`` содержит устаревшие журналы микросервиса ``ecos-integrations`` (``ecos-sync``, ``ecos-credentials``, ``edi-box``, ``ecos-osgi-bundles``, ``file-import-config``, ``file-import-task``, ``file-import-task-item``).
+      Значение ``order: 1000`` намеренно выбрано большим, чтобы группа отображалась в конце боковой панели после всех остальных разделов. Это рекомендуемое соглашение для групп с устаревшим/legacy-содержимым.
 
 Типы разделов (устаревший справочник)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. csv-table::
-   :header-rows: 1
+.. dropdown:: Показать таблицу типов
+   :color: secondary
 
-   Тип,Параметры,Описание
-   JOURNAL,"journalId — идентификатор журнала",Раздел с журналом
-   BPM,—,Раздел с бизнес-процессами в виде плитки или списка
-   DEV_TOOLS,—,Страница инструментов разработчика (dev-tools)
+   .. list-table::
+      :header-rows: 1
+      :class: tight-table
+
+      * - Тип
+        - Параметры
+        - Описание
+      * - ``JOURNAL``
+        - ``journalId`` — идентификатор журнала
+        - Раздел с журналом
+      * - ``BPM``
+        - —
+        - Раздел с бизнес-процессами в виде плитки или списка
+      * - ``DEV_TOOLS``
+        - —
+        - Страница инструментов разработчика (dev-tools)
 
 Модель группы разделов
 """"""""""""""""""""""""""""""""""""""""""""
 
-.. code-block:: typescript
+.. dropdown:: Показать TypeScript-модель
+   :color: secondary
 
-   AdminSectionsGroupDef {
-       id: String       // идентификатор группы (должен быть неизменным)
-       name: MLText     // локализованное имя группы
-       order: Float     // порядок в меню (чем больше, тем ниже)
-       sections: List<AdminSectionDef>  // список разделов
-   }
+   .. code-block:: typescript
+
+      AdminSectionsGroupDef {
+          id: String       // идентификатор группы (должен быть неизменным)
+          name: MLText     // локализованное имя группы
+          order: Float     // порядок в меню (чем больше, тем ниже)
+          sections: List<AdminSectionDef>  // список разделов
+      }
 
 Модель раздела
 """"""""""""""""""""""""""""""""
 
-.. code-block:: typescript
+.. dropdown:: Показать TypeScript-модель
+   :color: secondary
 
-   AdminSectionDef {
-       name: MLText     // имя раздела (необязательно для типа JOURNAL)
-       type: String     // тип раздела: JOURNAL | BPM | DEV_TOOLS
-       config: ObjectData  // конфигурация, зависящая от типа раздела
-   }
+   .. code-block:: typescript
+
+      AdminSectionDef {
+          name: MLText     // имя раздела (необязательно для типа JOURNAL)
+          type: String     // тип раздела: JOURNAL | BPM | DEV_TOOLS
+          config: ObjectData  // конфигурация, зависящая от типа раздела
+      }
 
 Пример конфигурации группы (устаревший)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. code-block:: json
+.. dropdown:: Показать JSON-пример
+   :color: secondary
 
-   {
-     "id": "user-interface",
-     "name": {
-       "en": "UI configuration",
-       "ru": "Конфигурация UI"
-     },
-     "order": 30,
-     "sections": [
-       {
-         "type": "JOURNAL",
-         "config": {
-           "journalId": "ecos-journals"
-         }
-       },
-       {
-         "type": "JOURNAL",
-         "config": {
-           "journalId": "ecos-forms"
-         }
-       }
-     ]
-   }
+   .. code-block:: json
+
+      {
+        "id": "user-interface",
+        "name": {
+          "en": "UI configuration",
+          "ru": "Конфигурация UI"
+        },
+        "order": 30,
+        "sections": [
+          {
+            "type": "JOURNAL",
+            "config": {
+              "journalId": "ecos-journals"
+            }
+          },
+          {
+            "type": "JOURNAL",
+            "config": {
+              "journalId": "ecos-forms"
+            }
+          }
+        ]
+      }
 
 Пример патча для ``ui/admin-sections-group`` (устаревший, не работает)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. code-block:: yaml
+.. dropdown:: Показать YAML-пример
+   :color: secondary
 
-   id: add-some-journal-to-admin-page
+   .. code-block:: yaml
 
-   name:
-     ru: Добавить журнал "Some Journal" на страницу администратора
-     en: Add journal "Some Journal" to admin page
+      id: add-some-journal-to-admin-page
 
-   target: ui/admin-sections-group$application
+      name:
+        ru: Добавить журнал "Some Journal" на страницу администратора
+        en: Add journal "Some Journal" to admin page
 
-   type: json
-   config:
-     operations:
-       - op: add
-         path: '$.sections'
-         value:
-           type: JOURNAL
-           config:
-             journalId: some-journal-id
+      target: ui/admin-sections-group$application
+
+      type: json
+      config:
+        operations:
+          - op: add
+            path: '$.sections'
+            value:
+              type: JOURNAL
+              config:
+                journalId: some-journal-id
 
 Пример файла ``integration-legacy.json`` (устаревший)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. code-block:: json
+.. dropdown:: Показать JSON-пример
+   :color: secondary
 
-   {
-     "id": "integration-legacy",
-     "name": {
-       "en": "Legacy",
-       "ru": "Устаревшее"
-     },
-     "order": 1000,
-     "sections": [
-       { "type": "JOURNAL", "config": { "journalId": "ecos-sync" } },
-       { "type": "JOURNAL", "config": { "journalId": "ecos-credentials" } },
-       { "type": "JOURNAL", "config": { "journalId": "edi-box" } },
-       { "type": "JOURNAL", "config": { "journalId": "ecos-osgi-bundles" } },
-       { "type": "JOURNAL", "config": { "journalId": "file-import-config" } },
-       { "type": "JOURNAL", "config": { "journalId": "file-import-task" } },
-       { "type": "JOURNAL", "config": { "journalId": "file-import-task-item" } }
-     ]
-   }
+   .. code-block:: json
+
+      {
+        "id": "integration-legacy",
+        "name": {
+          "en": "Legacy",
+          "ru": "Устаревшее"
+        },
+        "order": 1000,
+        "sections": [
+          { "type": "JOURNAL", "config": { "journalId": "ecos-sync" } },
+          { "type": "JOURNAL", "config": { "journalId": "ecos-credentials" } },
+          { "type": "JOURNAL", "config": { "journalId": "edi-box" } },
+          { "type": "JOURNAL", "config": { "journalId": "ecos-osgi-bundles" } },
+          { "type": "JOURNAL", "config": { "journalId": "file-import-config" } },
+          { "type": "JOURNAL", "config": { "journalId": "file-import-task" } },
+          { "type": "JOURNAL", "config": { "journalId": "file-import-task-item" } }
+        ]
+      }
 
 .. note::
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-08-10 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -43,16 +43,16 @@ msgid ""
 " др."
 msgstr ""
 "An artifact is a unit of configuration in the Citeck system. Examples of "
-"artifacts include: a form, journal, type, section, rights matrix, action, "
-"etc."
+"artifacts include: a form, journal, type, section, rights matrix, action,"
+" etc."
 
 #: ../../general/Ms_description/Apps_microservice.rst:13
 msgid ""
 "Микросервис, который управляет деплоем приложений и артефактов называется"
 " ECOS Applications или сокращенно ecos-apps."
 msgstr ""
-"The microservice that manages the deployment of applications and artifacts"
-" is called ECOS Applications, or ecos-apps for short."
+"The microservice that manages the deployment of applications and "
+"artifacts is called ECOS Applications, or ecos-apps for short."
 
 #: ../../general/Ms_description/Apps_microservice.rst:15
 msgid "Цели микросервиса:"
@@ -171,8 +171,7 @@ msgstr ""
 msgid ""
 "Все взаимодействие происходит посредством Rabbit MQ и библиотеки ecos-"
 "commands."
-msgstr ""
-"All interaction occurs via Rabbit MQ and the ecos-commands library."
+msgstr "All interaction occurs via Rabbit MQ and the ecos-commands library."
 
 #: ../../general/Ms_description/Apps_microservice.rst:73
 msgid "Лог ECOS Apps при обнаружении трех микросервисов (включая себя):"
@@ -182,45 +181,53 @@ msgstr "ECOS Apps log when three microservices are detected (including itself):"
 msgid "Полезные скрипты (EApps)"
 msgstr "Useful Scripts (EApps)"
 
-#: ../../general/Ms_description/Apps_microservice.rst:110
+#: ../../general/Ms_description/Apps_microservice.rst
+msgid "Получение и удаление артефактов по типу"
+msgstr "Getting and Deleting Artifacts by Type"
+
+#: ../../general/Ms_description/Apps_microservice.rst:113
 msgid "Для получения всех артефактов по типу можно выполнить следующий скрипт:"
 msgstr "To retrieve all artifacts by type, you can run the following script:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:122
+#: ../../general/Ms_description/Apps_microservice.rst:125
 msgid "В результате выполнения в консоль выведется список id артефактов."
 msgstr "As a result, a list of artifact IDs will be printed to the console."
 
-#: ../../general/Ms_description/Apps_microservice.rst:124
+#: ../../general/Ms_description/Apps_microservice.rst:127
 msgid "Имея id артефакта, его можно удалить следующим скриптом:"
 msgstr "Having the artifact ID, it can be deleted using the following script:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:131
+#: ../../general/Ms_description/Apps_microservice.rst:134
 msgid "Получение содержимого модулей из базы eapps"
 msgstr "Retrieving Module Contents from the eapps Database"
 
-#: ../../general/Ms_description/Apps_microservice.rst:133
+#: ../../general/Ms_description/Apps_microservice.rst
+msgid "Извлечение файла модуля напрямую из БД"
+msgstr "Extracting a Module File Directly from the Database"
+
+#: ../../general/Ms_description/Apps_microservice.rst:139
 msgid "Получаем список ревизий по ext_id и типу артефакта:"
 msgstr "Get the list of revisions by ext_id and artifact type:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:142
+#: ../../general/Ms_description/Apps_microservice.rst:148
 msgid "Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:"
 msgstr ""
 "Look at the **content_id** field of the required modules and make the "
 "following request:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:148
-msgid "Получаем:"
-msgstr "We get:"
+#: ../../general/Ms_description/Apps_microservice.rst:154
+msgid "Получаем результат в виде постранично разбитой base64-строки (фрагмент):"
+msgstr "We get the result as a paginated base64 string (fragment):"
 
-#: ../../general/Ms_description/Apps_microservice.rst:196
+#: ../../general/Ms_description/Apps_microservice.rst:167
 msgid ""
-"Убираем шапку, отступы ``|``, переносы строк, знаки + в конце строк и "
-"получаем строку:"
+"Убираем шапку, отступы ``|``, переносы строк и знаки ``+`` в конце строк "
+"— получаем одну сплошную base64-строку:"
 msgstr ""
-"Remove the header, ``|`` indents, line breaks, + signs at the end of "
-"lines, and get the string:"
+"Remove the header, the ``|`` indents, line breaks, and the ``+`` signs at "
+"the end of lines — this gives one continuous base64 string:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:202
+#: ../../general/Ms_description/Apps_microservice.rst:173
 msgid ""
 "Загружаем полученную строку в любой сервис по декодированию base64 в "
 "файл. Например:"
@@ -228,7 +235,7 @@ msgstr ""
 "Upload the resulting string to any base64-to-file decoding service. For "
 "example:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:204
+#: ../../general/Ms_description/Apps_microservice.rst:175
 msgid ""
 "`https://base64.guru/converter/decode/file "
 "<https://base64.guru/converter/decode/file>`_"
@@ -236,23 +243,26 @@ msgstr ""
 "`https://base64.guru/converter/decode/file "
 "<https://base64.guru/converter/decode/file>`_"
 
-#: ../../general/Ms_description/Apps_microservice.rst:206
+#: ../../general/Ms_description/Apps_microservice.rst:177
 msgid "Скачиваем итоговый файл:"
 msgstr "Download the resulting file:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:212
+#: ../../general/Ms_description/Apps_microservice.rst:183
 msgid "В результате получаем архив с нашим модулем."
 msgstr "As a result, we get an archive with our module."
 
-#: ../../general/Ms_description/Apps_microservice.rst:215
+#: ../../general/Ms_description/Apps_microservice.rst:186
 msgid "Полезные скрипты в базе ECOS Apps"
 msgstr "Useful Scripts in the ECOS Apps Database"
 
-#: ../../general/Ms_description/Apps_microservice.rst:217
-msgid "Получение ревизий модуля:"
-msgstr "Getting module revisions:"
+#: ../../general/Ms_description/Apps_microservice.rst
+msgid "Получение ревизий модуля"
+msgstr "Getting Module Revisions"
 
-#: ../../general/Ms_description/Apps_microservice.rst:226
+#: ../../general/Ms_description/Apps_microservice.rst:198
 msgid "**is_user_rev** флаг определяет, что модуль менялся пользователем."
 msgstr "**is_user_rev** flag indicates that the module was changed by a user."
+
+#~ msgid "Получаем:"
+#~ msgstr "We get:"
 

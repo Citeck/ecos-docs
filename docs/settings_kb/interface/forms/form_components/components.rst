@@ -5,18 +5,80 @@
 
 В этом разделе приведено подробное описание компонент форм платформы Citeck, включая специфические настройки и возможности, дополняющие :ref:`общий обзор компонент <form_components_overview>`.
 
-- :ref:`Text Field <text_field_component>` — однострочное текстовое поле для ввода данных;
-- :ref:`Table form <table_form_component>` — отображение и редактирование данных в табличном виде внутри формы;
-- :ref:`Async data <async_data_component>` — асинхронная загрузка данных из внешних источников;
-- :ref:`Select journal <Select_journal_component>` — выбор значения из записей журнала;
-- :ref:`Select orgstruct <Select_orgstruct_component>` — выбор пользователей и групп из оргструктуры;
-- :ref:`Ecos Select <ecos_select_component>` — расширенный компонент выбора значений с поддержкой источников данных Citeck;
-- :ref:`File <file_component>` — загрузка файлов и управление вложениями;
-- :ref:`Columns <columns_component>` — размещение компонентов в многоколоночном макете;
-- :ref:`Panel <panel_component>` — группировка компонентов в именованный блок;
-- :ref:`Horizontal line <horizontal_line_component>` — визуальный разделитель блоков формы;
-- :ref:`Import button <import_button_component>` — кнопка для импорта данных в форму;
-- :ref:`Checkbox <checkbox_component>` — флажок для выбора булевого значения (да/нет).
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item-card:: Text Field
+      :link: text_field_component
+      :link-type: ref
+
+      Однострочное текстовое поле для ввода данных.
+
+   .. grid-item-card:: Table form
+      :link: table_form_component
+      :link-type: ref
+
+      Отображение и редактирование данных в табличном виде внутри формы.
+
+   .. grid-item-card:: Async data
+      :link: async_data_component
+      :link-type: ref
+
+      Асинхронная загрузка данных из внешних источников.
+
+   .. grid-item-card:: Select journal
+      :link: select_journal_component
+      :link-type: ref
+
+      Выбор значения из записей журнала.
+
+   .. grid-item-card:: Select orgstruct
+      :link: select_orgstruct_component
+      :link-type: ref
+
+      Выбор пользователей и групп из оргструктуры.
+
+   .. grid-item-card:: Ecos Select
+      :link: ecos_select_component
+      :link-type: ref
+
+      Расширенный компонент выбора значений с поддержкой источников данных Citeck.
+
+   .. grid-item-card:: File
+      :link: file_component
+      :link-type: ref
+
+      Загрузка файлов и управление вложениями.
+
+   .. grid-item-card:: Columns
+      :link: columns_component
+      :link-type: ref
+
+      Размещение компонентов в многоколоночном макете.
+
+   .. grid-item-card:: Panel
+      :link: panel_component
+      :link-type: ref
+
+      Группировка компонентов в именованный блок.
+
+   .. grid-item-card:: Horizontal line
+      :link: horizontal_line_component
+      :link-type: ref
+
+      Визуальный разделитель блоков формы.
+
+   .. grid-item-card:: Import button
+      :link: import_button_component
+      :link-type: ref
+
+      Кнопка для импорта данных в форму.
+
+   .. grid-item-card:: Checkbox
+      :link: checkbox_component
+      :link-type: ref
+
+      Флажок для выбора булевого значения (да/нет).
 
 .. toctree::
     :maxdepth: 5

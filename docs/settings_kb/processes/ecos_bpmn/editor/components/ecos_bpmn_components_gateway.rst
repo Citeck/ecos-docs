@@ -7,58 +7,64 @@
 
 Шлюзы контролируют поток движения в процессе. Они позволяют моделировать решения на основе данных и событий, а также параллелизм разветвления/соединения.
 
-.. list-table::
-      :widths: 10 20 20
-      :align: center
-      :class: tight-table
+.. grid:: 1
+   :gutter: 3
 
-      * -
-           .. image:: _static/gateway/gway_1.png
-              :width: 50
-              :align: center
+   .. grid-item-card:: Эксклюзивный шлюз (XOR)
+      :link: exclusive_gateway
+      :link-type: ref
 
-        -
-           .. image:: _static/gateway/gway_1_1.png
-              :width: 300
-              :align: center
+      .. image:: _static/gateway/gway_1.png
+         :width: 60
+         :align: left
 
-        - **Эксклюзивный шлюз** (Exclusive Gateway, исключающий) «или/или» — выбор только одного пути.
+      *Exclusive Gateway*, исключающий — «или/или», выбор только одного пути.
 
-      * -
-           .. image:: _static/gateway/gway_2.png
-              :width: 50
-              :align: center
+      .. image:: _static/gateway/gway_1_1.png
+         :width: 300
+         :align: center
 
-        -
-           .. image:: _static/gateway/gway_2_1.png
-              :width: 300
-              :align: center
+   .. grid-item-card:: Параллельный шлюз
+      :link: parallel_gateway
+      :link-type: ref
 
-        - **Параллельный шлюз** (Parallel Gateway), «и» — выбор всех путей.
+      .. image:: _static/gateway/gway_2.png
+         :width: 60
+         :align: left
 
-      * -
-           .. image:: _static/gateway/gway_3.png
-              :width: 50
-              :align: center
+      *Parallel Gateway*, «и» — выбор всех путей.
 
-        -
-           .. image:: _static/gateway/gway_3_1.png
-              :width: 350
-              :align: center
+      .. image:: _static/gateway/gway_2_1.png
+         :width: 300
+         :align: center
 
-        - **Инклюзивный шлюз** (Inclusive Gateway, неисключающий, неэксклюзивный), «и/или» — выбор одного или нескольких.
+   .. grid-item-card:: Инклюзивный шлюз
+      :link: inclusive_gateway
+      :link-type: ref
 
-      * -
-           .. image:: _static/gateway/gway_4.png
-              :width: 50
-              :align: center
+      .. image:: _static/gateway/gway_3.png
+         :width: 60
+         :align: left
 
-        -
-           .. image:: _static/gateway/gway_4_1.png
-              :width: 350
-              :align: center
+      *Inclusive Gateway*, неисключающий, неэксклюзивный — «и/или», выбор одного или нескольких путей.
 
-        - **Событийный** (Event Gateway) — выбор первого события, которое случится.
+      .. image:: _static/gateway/gway_3_1.png
+         :width: 350
+         :align: center
+
+   .. grid-item-card:: Событийный
+      :link: event_gateway
+      :link-type: ref
+
+      .. image:: _static/gateway/gway_4.png
+         :width: 60
+         :align: left
+
+      *Event Gateway* — выбор первого события, которое случится.
+
+      .. image:: _static/gateway/gway_4_1.png
+         :width: 350
+         :align: center
 
 Выбор вида шлюза:
 

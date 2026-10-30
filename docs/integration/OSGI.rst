@@ -236,15 +236,22 @@
 
 В методе ``stop`` предусматриваем отключение endpoint при помощи вызова ``handlerMapping.unregisterMapping(info)``.
 
+Использование RecordsService через DTO
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Для изменения записей в Citeck можно использовать ``RecordsService``. Есть следующие особенности при работе с сервисом через DTO:
 
-* Создание ObjectData из DTO-объекта:
+Создание ObjectData из DTO-объекта
+""""""""""""""""""""""""""""""""""
 
 .. code-block:: java
 
     ObjectData targetAttributesData = ObjectData.create(dtoObject);
 
-* Для использования псевдонима в свойствах можно использовать ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``
+Псевдоним свойства через JsonProperty
+"""""""""""""""""""""""""""""""""""""
+
+Для использования псевдонима в свойствах можно использовать ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``
 
 .. code-block:: java
 
@@ -253,7 +260,10 @@
     ...
     ObjectData targetAttributesData = ObjectData.create(dtoObject);
 
-* Свойство с типом ``ASSOC: private RecordRef nsdb_counterparty``
+Свойство с типом ASSOC
+""""""""""""""""""""""
+
+Свойство с типом ``ASSOC: private RecordRef nsdb_counterparty``
 
 .. code-block:: java
 
@@ -262,7 +272,10 @@
     RecordAtts recordAtts = new RecordAtts(targetRecordRef, targetAttributesData);
     RecordRef result = recordsService.mutate(recordAtts);
 
-* Свойство с типом ``CONTENT: private ObjectData nsdb_content``
+Свойство с типом CONTENT
+""""""""""""""""""""""""
+
+Свойство с типом ``CONTENT: private ObjectData nsdb_content``
 
 .. code-block:: java
 
@@ -272,16 +285,23 @@
     contentData.set("base64content", base64content.getBytes());
     nsdb_content = contentData;
 
+Свойства FileRepresentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Возможные свойства для установки ``ru.citeck.ecos.records.source.alf.file.FileRepresentation``
 
-* Ссылка на родителя из ASSOC
+Ссылка на родителя из ASSOC
+""""""""""""""""""""""""""""
 
 .. code-block:: java
 
     @AttName("_parent?id")
     RecordRef parentRef;
 
-* Объявление свойства, которое базируется на атрибуте типа с двоеточием (cm:name, idocs:inn) 
+Свойство на основе атрибута с двоеточием в имени
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+Объявление свойства, которое базируется на атрибуте типа с двоеточием (cm:name, idocs:inn)
 
 .. code-block:: java
 
@@ -290,17 +310,23 @@
     @AttName("idocs:fullOrganizationName")
     private String organizationName;
 
-* Указание определенного alfresco-типа для родителя при создании записи
+Указание alfresco-типа для родителя
+""""""""""""""""""""""""""""""""""""
+
+Указание определенного alfresco-типа для родителя при создании записи
 
 .. code-block:: java
 
     targetAttributesData.set(AlfNodeRecord.ATTR_TYPE, "dl:dataListItem");
     RecordAtts recordAtts = new RecordAtts(targetRecordRef, targetAttributesData);
     RecordRef result = recordsService.mutate(recordAtts);
-    
+
 где ``ru.citeck.ecos.records.source.alf.meta.AlfNodeRecord.ATTR_TYPE = “type“``
 
-* Указать определенный тип связи между родителем и дочерней записью
+Указание типа связи родитель-потомок
+""""""""""""""""""""""""""""""""""""
+
+Указать определенный тип связи между родителем и дочерней записью
 
 .. code-block:: java
 
@@ -309,6 +335,9 @@
     RecordRef result = recordsService.mutate(recordAtts);
 
 где ``ru.citeck.ecos.records2.RecordConstants.ATT_PARENT_ATT = “_parentAtt“;``
+
+Тестирование
+^^^^^^^^^^^^^
 
 Тестирование работоспособности методов можно проверить, реализовав в тесте интерфейсы ``RecordMutateDao``, ``RecordAttsDao``, ``RecordsQueryDao`` и имитировав работу ``RecordsService``, например:
 
@@ -331,16 +360,18 @@
 Особенности
 ~~~~~~~~~~~~~~~~
 
-Одновременное использование аннотаций JsonProperty и AttName приводит к тому, что при чтении DTO из RecordsService свойство не заполняется.
+.. warning::
 
-.. code-block:: java
+    Одновременное использование аннотаций JsonProperty и AttName приводит к тому, что при чтении DTO из RecordsService свойство не заполняется.
 
-    @JsonProperty("nsdb_author")
-    @AttName("nsdb_author")
-    private String author;
-    ...
-    RecsQueryRes<Dto> docRes = recordsService.query(query, Dto.class);
-    ...
-    System.out.println(queryResultDto.getAuthor());
+    .. code-block:: java
 
-Выведет на консоль null.
+        @JsonProperty("nsdb_author")
+        @AttName("nsdb_author")
+        private String author;
+        ...
+        RecsQueryRes<Dto> docRes = recordsService.query(query, Dto.class);
+        ...
+        System.out.println(queryResultDto.getAuthor());
+
+    Выведет на консоль null.

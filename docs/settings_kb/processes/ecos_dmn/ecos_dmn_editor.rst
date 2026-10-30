@@ -7,11 +7,24 @@
 
 Раздел охватывает:
 
-- **Конструктор DMN** — интерфейс редактора, панели инструментов и работа с элементами схемы;
-- **Компоненты Citeck DMN** — типы элементов нотации и правила их соединения.
+.. grid:: 1
+   :gutter: 3
+
+   .. grid-item-card:: Конструктор DMN
+      :link: editor_dmn
+      :link-type: ref
+
+      Интерфейс редактора, панели инструментов и работа с элементами схемы.
+
+   .. grid-item-card:: Компоненты Citeck DMN
+      :link: ecos_dmn_components
+      :link-type: ref
+
+      Типы элементов нотации и правила их соединения.
 
 .. toctree::
     :maxdepth: 3
+    :hidden:
 
     editor/ecos_dmn_editor
     editor/ecos_dmn_components

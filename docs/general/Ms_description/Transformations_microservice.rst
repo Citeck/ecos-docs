@@ -167,7 +167,7 @@ Transformations микросервис
 
     .. code-block:: yaml
 
-        ---
+      ---
       id: test-docx-template
       engine: freemarker
       name: TestDocxTemplate
@@ -227,8 +227,7 @@ Transformations микросервис
         - | Лист объектов с информацией о вычисляемых атрибутах.
           | См. подробнее :ref:`Вычисляемые атрибуты для шаблонов <calculated_attr>`
       * - **Теги**
-        - | Список вспомогательных меток для удобного поиска
-          | См. подробнее :ref:`Вычисляемые атрибуты для шаблонов <calculated_attr>`
+        - Список вспомогательных меток для удобного поиска
 
 
 .. _calculated_attr:
@@ -284,15 +283,7 @@ Transformations микросервис
 Типы вычисляемых атрибутов
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. list-table::
-      :widths: 10 10
-      :header-rows: 1
-      :class: tight-table
-
-      * - Тип
-        - Описание
-      * - **html-to-text**
-        - Преобразует входной текст из HTML кода в текст, убирая из него лишние теги (такие как <p>, <br>, <li>).
+**html-to-text** — преобразует входной текст из HTML кода в текст, убирая из него лишние теги (такие как <p>, <br>, <li>).
 
 .. _download_by_template:
 
@@ -468,37 +459,40 @@ Transformations микросервис
           :width: 400
           :align: center
 
-Для создания документа с редактируемыми полями необходимо исходный .docx файл локально открыть в редакторе OnlyOffice и сохранить в формате **.docxf**
+Для создания документа с редактируемыми полями необходимо выполнить следующие шаги:
 
-    .. image:: _static/transformation/doc_param_4.png
-          :width: 400
-          :align: center
+.. dropdown:: Пример: создание документа с редактируемыми полями
+   :color: secondary
 
-Открыть уже в этом формате, и с помощью вкладки **Формы → Текстовое поле**, разметить необходимые поля.
+   1. Исходный **.docx** файл локально открыть в редакторе OnlyOffice и сохранить в формате **.docxf**.
 
-При этом нужно убедиться, что **«Заполнитель»** и **«Значение по умолчанию»** пустые (для избежания проблем вёрстки и изменения цвета текста после генерации по шаблону).
+       .. image:: _static/transformation/doc_param_4.png
+             :width: 400
+             :align: center
 
-    .. image:: _static/transformation/doc_param_5.png
-          :width: 200
-          :align: center
+   2. Открыть уже в этом формате и с помощью вкладки **Формы → Текстовое поле** разметить необходимые поля.
 
-Отметив необходимые поля, необходимо снова сохранить документ в формате **.docx**, открыть в Word, заполнить необходимыми тегами и сохранить:
+      При этом нужно убедиться, что **«Заполнитель»** и **«Значение по умолчанию»** пустые (для избежания проблем вёрстки и изменения цвета текста после генерации по шаблону).
 
-    .. image:: _static/transformation/doc_param_6.png
-          :width: 300
-          :align: center
+       .. image:: _static/transformation/doc_param_5.png
+             :width: 200
+             :align: center
 
-Далее опять открыть с помощью OnlyOffice и через вкладку **Защита → Защитить документ**:
+   3. Отметив необходимые поля, снова сохранить документ в формате **.docx**, открыть в Word, заполнить необходимыми тегами и сохранить.
 
-    .. image:: _static/transformation/doc_param_7.png
-          :width: 500
-          :align: center
+       .. image:: _static/transformation/doc_param_6.png
+             :width: 300
+             :align: center
 
-Указать **пароль** и **«Заполнение форм»**:
+   4. Снова открыть документ с помощью OnlyOffice, через вкладку **Защита → Защитить документ** указать **пароль** и **«Заполнение форм»**.
 
-    .. image:: _static/transformation/doc_param_8.png
-          :width: 300
-          :align: center
+       .. image:: _static/transformation/doc_param_7.png
+             :width: 500
+             :align: center
+
+       .. image:: _static/transformation/doc_param_8.png
+             :width: 300
+             :align: center
 
 В итоге получаем готовый **.docx** файл, который перед тем как загружать в систему, следует поправить, пользуясь статьей :ref:`Временное решение ошибки при генерации шаблона с условиями <temporary_solution>`
 
@@ -520,33 +514,34 @@ Transformations микросервис
           :width: 500
           :align: center
 
-Work around для решения проблемы:
+.. dropdown:: Work around для решения проблемы
+   :color: secondary
 
-1. Открыть **docx** как архив.
+   1. Открыть **docx** как архив.
 
-    .. image:: _static/transformation/error_3.png
-          :width: 500
-          :align: center
+       .. image:: _static/transformation/error_3.png
+             :width: 500
+             :align: center
 
-2. В папке **word** открыть файл **document.xml**
+   2. В папке **word** открыть файл **document.xml**
 
-    .. image:: _static/transformation/error_4.png
-          :width: 500
-          :align: center
+       .. image:: _static/transformation/error_4.png
+             :width: 500
+             :align: center
 
-Найти условие, разбитое на теги:
+       Найти условие, разбитое на теги:
 
-    .. image:: _static/transformation/error_5.png
-          :width: 700
-          :align: center
+       .. image:: _static/transformation/error_5.png
+             :width: 700
+             :align: center
 
-3. Собрать в один тег:
+   3. Собрать в один тег:
 
-    .. image:: _static/transformation/error_6.png
-          :width: 700
-          :align: center
+       .. image:: _static/transformation/error_6.png
+             :width: 700
+             :align: center
 
-4. Сохранить. Загрузить.
+   4. Сохранить. Загрузить.
 
 
 Движок «ECOS table»
