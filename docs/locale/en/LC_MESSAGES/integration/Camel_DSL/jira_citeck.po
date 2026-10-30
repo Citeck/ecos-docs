@@ -1,0 +1,561 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Citeck
+# This file is distributed under the same license as the Citeck package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Citeck \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-30 15:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:4
+msgid "Настройка импорта проектов из Jira"
+msgstr "Configuring project imports from Jira"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:9
+msgid "Настройки синхронизации Commits и Merge requests"
+msgstr "Configuring commit and merge request synchronization"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:11
+msgid ""
+"Включение данной интеграции позволяет автоматически отображать информацию"
+" о коммитах и запросах на слияние из GitLab в карточках задач проекта."
+msgstr "Enabling this integration automatically displays information about GitLab commits and merge requests in project task cards."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:13
+msgid "Для запуска синхронизаций commits и merge request необходимо:"
+msgstr "To start synchronizing commits and merge requests:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:15
+msgid ""
+"Создать в GitLab **Access token**. В профиле GitLab перейти в **User "
+"settings -> Access tokens**"
+msgstr "Create an **Access token** in GitLab. In your GitLab profile, go to **User settings -> Access tokens**."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:21
+msgid ""
+"При создании токена обязательно необходимо указать **Select scopes -  "
+"read_api**"
+msgstr "When creating the token, make sure to select **Select scopes - read_api**."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:27
+msgid "Далее скопировать созданный токен:"
+msgstr "Next, copy the generated token:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:33
+msgid ""
+"Перейти в **Рабочее пространство «Раздел администратора» → Модель → "
+"Секреты** и указать его в Секрете **gitlab-access-token**"
+msgstr "Go to **Administration workspace → Model → Secrets** and enter the token in the **gitlab-access-token** secret."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:39
+msgid ""
+"Перейти в **Рабочее пространство «Раздел администратора» → Модель → "
+"Конечные точки** настроить конечную точку **gitlab-domain-url**:"
+msgstr "Go to **Administration workspace → Model → Endpoints** and configure the **gitlab-domain-url** endpoint:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:41
+msgid "указать **URL GitLab** – например, https://gitlab.yourcompany.ru"
+msgstr "Specify the **GitLab URL**, for example, https://gitlab.yourcompany.ru."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:42
+msgid "выбрать в Данных для аутентификации **Токен доступа Gitlab**"
+msgstr "Select **GitLab access token** in the authentication credentials."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:48
+msgid ""
+"Перейти в **Рабочее пространство «Раздел администратора» → Интеграция → "
+"Camel DSL**, запустить **gitlab-merge-requests-sync** и **gitlab-commits-"
+"sync**:"
+msgstr "Go to **Administration workspace → Integration → Camel DSL** and start **gitlab-merge-requests-sync** and **gitlab-commits-sync**:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:57
+msgid ""
+"Синхронизация будет происходить по всем проектам в GitLab, к которым "
+"созданный токен имеет доступ"
+msgstr "Synchronization covers all GitLab projects accessible to the generated token."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:58
+msgid ""
+"Маппинг коммитов и MR к задачам происходит по ключу задачи Project "
+"tracker, указанному в комментарии к commit или названии MR в GitLab. То "
+"есть, если ключ задачи в Project Tracker равен **PT-1**, то в комментарии"
+" к commit или названии MR в GitLab должно быть указано **PT-1**"
+msgstr "Commits and merge requests are mapped to tasks using the Project Tracker task key specified in the commit message or merge request title in GitLab. For example, if the task key in Project Tracker is **PT-1**, the commit message or merge request title in GitLab must contain **PT-1**."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:60
+msgid "Подробнее о :ref:`действиях<camel_dsl_actions>`, доступных с Camel DSL."
+msgstr "Learn more about the :ref:`actions<camel_dsl_actions>` available for Camel DSL."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:66
+msgid "Настройка импорта задач из Jira"
+msgstr "Configuring task imports from Jira"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:69
+msgid "Введение"
+msgstr "Introduction"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:71
+msgid ""
+"Данный раздел описывает настройку синхронизации проектов из Jira в "
+"Citeck. Функциональность реализована с использованием Apache Camel DSL и "
+"позволяет настраивать гибкие сценарии импорта данных."
+msgstr "This section describes how to configure project synchronization from Jira to Citeck. The functionality uses Apache Camel DSL and supports flexible data import scenarios."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:74
+msgid "Основные возможности"
+msgstr "Key features"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:76
+msgid "Импорт задач (issues) из проекта Jira в Citeck;"
+msgstr "Import issues from a Jira project into Citeck;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:77
+msgid "Импорт комментариев к задачам;"
+msgstr "Import issue comments;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:78
+msgid "Импорт затраченного времени (work logs);"
+msgstr "Import work logs;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:79
+msgid "Импорт компонентов (components);"
+msgstr "Import components;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:80
+msgid "Импорт тегов (tags/labels);"
+msgstr "Import tags/labels;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:81
+msgid "Импорт релизов (releases);"
+msgstr "Import releases;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:82
+msgid "Импорт спринтов;"
+msgstr "Import sprints;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:83
+msgid "Импорт вложений (attachments);"
+msgstr "Import attachments;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:84
+msgid "Настраиваемое маппирование типов задач, статусов и приоритетов;"
+msgstr "Configurable mapping of issue types, statuses, and priorities;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:85
+msgid "Настраиваемое преобразование атрибутов;"
+msgstr "Configurable attribute conversion;"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:86
+msgid "Импорт связей между задачами."
+msgstr "Import links between issues."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:89
+msgid "Пример конфигурации"
+msgstr "Configuration example"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:336
+msgid "Быстрая настройка"
+msgstr "Quick setup"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:338
+msgid ""
+":ref:`Создайте проект<ept_new_project>` в Citeck. После этого должно "
+"создаться рабочее пространство проекта."
+msgstr ":ref:`Create a project<ept_new_project>` in Citeck. A project workspace should then be created."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:339
+msgid ""
+"В jira создайте пользователя для импорта задач, получите его токен или "
+"пароль."
+msgstr "In Jira, create a user for importing issues and obtain their token or password."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:340
+msgid ""
+"В журнале **Конечные точки** (Рабочее пространство «Раздел "
+"администратора» → Модель) создайте конечную точку, заполните URL, данные "
+"для аутентификации с типом Basic."
+msgstr "In the **Endpoints** journal (Administration workspace → Model), create an endpoint, enter the URL, and configure Basic authentication credentials."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:341
+msgid ""
+"В журнале **Camel DSL** (Рабочее пространство «Раздел администратора» → "
+"Интеграция ) создайте маршрут с контекстом на основе примера выше. "
+"Обязательно укажите параметры подключения к Jira, ``_workspace`` и "
+"``link-project:project``."
+msgstr "In the **Camel DSL** journal (Administration workspace → Integration), create a route with a context based on the example above. Make sure to specify the Jira connection parameters, ``_workspace``, and ``link-project:project``."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:342
+msgid ""
+"Логи импорта доступны в журнале **Журнал синхронизаций** (Рабочее "
+"пространство «Раздел администратора» → Интеграция)."
+msgstr "Import logs are available in the **Synchronization log** journal (Administration workspace → Integration)."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:343
+msgid ""
+"Посмотреть состояние импорта, сбросить его можно в журнале **Состояние "
+"синхронизации** (Рабочее пространство «Раздел администратора» → "
+"Интеграция)."
+msgstr "You can view and reset the import state in the **Synchronization state** journal (Administration workspace → Integration)."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:344
+msgid "После того, как задачи импортированы, выключите маршрут."
+msgstr "Once the issues have been imported, disable the route."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:345
+msgid ""
+"Скорректируйте генератор счетчика задач. Для этого необходимо выполнить "
+"скрипт в консоли браузера:"
+msgstr "Adjust the task counter generator by running the following script in the browser console:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:359
+msgid ""
+"``\"nextNumber\": 39`` - следующий номер задачи, который будет присвоен "
+"при создании новой задачи."
+msgstr "``\"nextNumber\": 39`` - the next task number to assign when a new task is created."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:360
+msgid ""
+"``\"counterKey\": \"emodel/ept-project@767a669f-8455-4cf3-b43f-"
+"75b66c6eeb8f\"`` - recordRef проекта, аналогичный полю ``link-"
+"project:project`` в маршруте импорта."
+msgstr "``\"counterKey\": \"emodel/ept-project@767a669f-8455-4cf3-b43f-75b66c6eeb8f\"`` - the project recordRef, matching the ``link-project:project`` field in the import route."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:363
+msgid "Параметры настройки"
+msgstr "Configuration parameters"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:366
+msgid "Основные параметры"
+msgstr "Basic parameters"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:368
+msgid "**jiraHost** - URL сервера Jira"
+msgstr "**jiraHost** - Jira server URL"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:369
+msgid "**jiraUser** - Имя пользователя для подключения к Jira"
+msgstr "**jiraUser** - Username used to connect to Jira"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:370
+msgid "**jiraToken** - Токен или пароль пользователя для подключения к Jira"
+msgstr "**jiraToken** - User token or password used to connect to Jira"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:371
+msgid "**projectKey** - Ключ проекта в Jira для импорта"
+msgstr "**projectKey** - Key of the Jira project to import"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:372
+msgid "**delay** - Интервал проверки новых задач в миллисекундах"
+msgstr "**delay** - Interval for checking for new issues, in milliseconds"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:376
+msgid "Указание рабочего пространства и проекта"
+msgstr "Specifying the workspace and project"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:378
+msgid ""
+"Для корректной работы импорта обязательно необходимо указать рабочее "
+"пространство и проект в Citeck:"
+msgstr "For the import to work correctly, you must specify the workspace and project in Citeck:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:391
+msgid "Настройка маппинга значений"
+msgstr "Configuring value mappings"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:393
+msgid ""
+"``valuesMapping`` позволяет указать соответствие значений из Jira "
+"значениям в Citeck:"
+msgstr "``valuesMapping`` maps Jira values to Citeck values:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:419
+msgid "Конвертеры значений"
+msgstr "Value converters"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:421
+msgid ""
+"``valuesConverter`` определяет преобразование значений полей из формата "
+"Jira в формат Citeck:"
+msgstr "``valuesConverter`` defines how field values are converted from the Jira format to the Citeck format:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:436
+msgid "Доступные конвертеры:"
+msgstr "Available converters:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:438
+msgid ""
+"**jiraRenderedFieldToTextArea** - преобразует отрендеренное "
+"HTML-содержимое поля Jira в формат TextArea для Citeck, сохраняя "
+"форматирование и ссылки"
+msgstr "**jiraRenderedFieldToTextArea** - converts the rendered HTML content of a Jira field to the Citeck TextArea format, preserving formatting and links"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:439
+msgid ""
+"**jiraDateToInstant** - преобразует дату из формата Jira в формат Instant"
+" для Citeck"
+msgstr "**jiraDateToInstant** - converts a date from the Jira format to the Citeck Instant format"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:440
+msgid ""
+"**emailToPersonRef** - преобразует email-адрес пользователя Jira в ссылку"
+" на пользователя в Citeck"
+msgstr "**emailToPersonRef** - converts a Jira user's email address to a reference to a user in Citeck"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:441
+msgid ""
+"**issueKeyToRef** - преобразует ключ задачи Jira (например, ECOSCRM-123) "
+"в ссылку на соответствующую задачу в Citeck"
+msgstr "**issueKeyToRef** - converts a Jira issue key (for example, ECOSCRM-123) to a reference to the corresponding task in Citeck"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:442
+msgid ""
+"**secondsToMills** - преобразует время в секундах в миллисекунды для "
+"корректного отображения в Citeck"
+msgstr "**secondsToMills** - converts time in seconds to milliseconds for correct display in Citeck"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:445
+msgid "Маппинг атрибутов"
+msgstr "Attribute mapping"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:447
+msgid ""
+"``attributesMapping`` определяет соответствие полей Jira атрибутам "
+"сущностей в Citeck:"
+msgstr "``attributesMapping`` maps Jira fields to entity attributes in Citeck:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:470
+msgid "Маппинг связей между задачами"
+msgstr "Issue link mapping"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:472
+msgid ""
+"``linksMapping`` определяет соответствие типов связей между задачами в "
+"Jira типам связей в Citeck:"
+msgstr "``linksMapping`` maps Jira issue link types to link types in Citeck:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:485
+msgid "Статические атрибуты"
+msgstr "Static attributes"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:487
+msgid ""
+"``staticAttributes`` позволяет указать атрибуты, которые будут добавлены "
+"ко всем импортируемым сущностям:"
+msgstr "``staticAttributes`` specifies attributes to add to all imported entities:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:495
+msgid ""
+"Для корректного установления атрибутов ``_created``, ``_modified`` и т.д."
+" необходимо указать ``__disableAudit: true``"
+msgstr "To set attributes such as ``_created`` and ``_modified`` correctly, specify ``__disableAudit: true``."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:498
+msgid "Компоненты и этапы синхронизации"
+msgstr "Synchronization components and stages"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:501
+msgid "Импорт задач (Issues)"
+msgstr "Importing issues"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:503
+msgid ""
+"Основной компонент синхронизации, выполняет загрузку задач из Jira и их "
+"преобразование в сущности Citeck. Для работы использует "
+"**JiraIssuesComponent** и **TransformJiraIssueComponent**."
+msgstr "The main synchronization component retrieves issues from Jira and converts them to Citeck entities. It uses **JiraIssuesComponent** and **TransformJiraIssueComponent**."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:506
+msgid "Импорт комментариев"
+msgstr "Importing comments"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:508
+msgid ""
+"Компонент **TransformJiraCommentComponent** импортирует комментарии к "
+"задачам из Jira в Citeck, сохраняя их как связанные записи с типом "
+"``\"emodel/type@ecos-comment\"``."
+msgstr "The **TransformJiraCommentComponent** component imports issue comments from Jira into Citeck, saving them as linked records of type ``\"emodel/type@ecos-comment\"``."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:511
+msgid "Импорт затраченного времени"
+msgstr "Importing work logs"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:513
+msgid ""
+"Компонент **TransformJiraWorkLogComponent** импортирует записи о "
+"затраченном времени (work logs) из Jira в Citeck, сохраняя их как "
+"сущности с типом ``\"emodel/type@ecos-time-tracking-type\"``."
+msgstr "The **TransformJiraWorkLogComponent** component imports work logs from Jira into Citeck, saving them as entities of type ``\"emodel/type@ecos-time-tracking-type\"``."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:516
+msgid "Импорт компонентов"
+msgstr "Importing components"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:518
+msgid ""
+"Компонент **ImportJiraComponentComponent** импортирует компоненты, "
+"присвоенные задачам в Jira."
+msgstr "The **ImportJiraComponentComponent** component imports components assigned to Jira issues."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:521
+msgid "Импорт тегов"
+msgstr "Importing tags"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:523
+msgid ""
+"Компонент **ImportJiraTagsComponent** импортирует метки (labels) из Jira,"
+" преобразуя их в теги Citeck."
+msgstr "The **ImportJiraTagsComponent** component imports labels from Jira and converts them to Citeck tags."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:526
+msgid "Импорт релизов"
+msgstr "Importing releases"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:528
+msgid ""
+"Компонент **ImportJiraReleasesComponent** импортирует информацию о "
+"релизах (fixVersions и affectedVersions) из Jira в Citeck."
+msgstr "The **ImportJiraReleasesComponent** component imports release information (fixVersions and affectedVersions) from Jira into Citeck."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:531
+msgid "Импорт спринтов"
+msgstr "Importing sprints"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:533
+msgid ""
+"Компонент **ImportJiraSprintComponent** импортирует информацию о "
+"спринтах, к которым отнесены задачи в Jira."
+msgstr "The **ImportJiraSprintComponent** component imports information about the sprints to which Jira issues belong."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:536
+msgid "Импорт вложений"
+msgstr "Importing attachments"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:538
+msgid ""
+"Компонент **ImportJiraAttachmentComponent** загружает вложения задач из "
+"Jira и импортирует их в Citeck."
+msgstr "The **ImportJiraAttachmentComponent** component downloads issue attachments from Jira and imports them into Citeck."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:541
+msgid "Дополнительные возможности"
+msgstr "Additional features"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:544
+msgid "Префикс идентификаторов"
+msgstr "ID prefix"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:546
+msgid ""
+"Для уникальной идентификации импортированных записей можно задать префикс"
+" через свойство ``jiraImportedRecordIdPrefix``:"
+msgstr "To uniquely identify imported records, specify a prefix using the ``jiraImportedRecordIdPrefix`` property:"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:554
+msgid ""
+"Все созданные записи в рамках импорта будут использовать данные префикс, "
+"обратите внимание, если импорт будет выполняться несколько раз, то "
+"существующие записи будут обновлены, а новые созданы."
+msgstr "All records created during the import use this prefix. If the import runs multiple times, existing records are updated and new records are created."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:556
+msgid ""
+"Если необходимо запустить импорт заново, то можно сбросить состояние "
+"импорта в журнале **Состояние синхронизации** (Рабочее пространство "
+"«Раздел администратора» → Интеграция)."
+msgstr "To restart the import, reset the import state in the **Synchronization state** journal (Administration workspace → Integration)."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:559
+msgid "Ограничения и рекомендации"
+msgstr "Limitations and recommendations"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:561
+msgid ""
+"Перед настройкой импорта убедитесь, что пользователь Jira имеет "
+"необходимые права доступа к проекту."
+msgstr "Before configuring the import, make sure the Jira user has the required project access permissions."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:562
+msgid ""
+"При использовании двухфакторной аутентификации в Jira необходимо "
+"использовать API-токен вместо пароля."
+msgstr "If two-factor authentication is enabled in Jira, use an API token instead of a password."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:563
+msgid ""
+"Для импорта вложений может потребоваться отключение принудительной 2FA "
+"для URL ``/secure/attachment`` в настройках Jira."
+msgstr "Importing attachments may require disabling mandatory 2FA for the ``/secure/attachment`` URL in the Jira settings."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:564
+msgid ""
+"Рекомендуется начинать с небольшого набора задач для проверки "
+"корректности импорта."
+msgstr "Start with a small set of issues to verify that the import works correctly."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:565
+msgid ""
+"При импорте большого количества задач рекомендуется увеличить значение "
+"параметра ``delay``."
+msgstr "When importing a large number of issues, increase the ``delay`` parameter."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:566
+msgid ""
+"Убедитесь, что корректно указаны ``_workspace`` и ``link-"
+"project:project``."
+msgstr "Make sure that ``_workspace`` and ``link-project:project`` are specified correctly."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:569
+msgid "Устранение неполадок"
+msgstr "Troubleshooting"
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:571
+msgid "**Проблема**: Задачи не импортируются."
+msgstr "**Problem**: Issues are not imported."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:573
+msgid ""
+"**Решение**: Проверьте правильность указания ``jiraHost``, ``jiraUser``, "
+"``jiraToken`` и ``projectKey``."
+msgstr "**Solution**: Check that ``jiraHost``, ``jiraUser``, ``jiraToken``, and ``projectKey`` are specified correctly."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:575
+msgid "**Проблема**: Не импортируются вложения."
+msgstr "**Problem**: Attachments are not imported."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:577
+msgid ""
+"**Решение**: Проверьте настройки двухфакторной аутентификации в Jira для "
+"URL ``/secure/attachment``."
+msgstr "**Solution**: Check the Jira two-factor authentication settings for the ``/secure/attachment`` URL."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:579
+msgid "**Проблема**: Неверное маппирование типов/статусов."
+msgstr "**Problem**: Incorrect type/status mapping."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:581
+msgid ""
+"**Решение**: Проверьте значения **ID** в Jira и обновите соответствующую "
+"секцию ``valuesMapping``."
+msgstr "**Solution**: Check the **ID** values in Jira and update the corresponding ``valuesMapping`` section."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:583
+msgid "**Проблема**: Ошибка \"Value mapping for field does not contain value\"."
+msgstr "**Problem**: The error \"Value mapping for field does not contain value\" occurs."
+
+#: ../../integration/Camel_DSL/jira_citeck.rst:585
+msgid ""
+"**Решение**: Добавьте отсутствующее значение в соответствующую секцию "
+"``valuesMapping``."
+msgstr "**Solution**: Add the missing value to the corresponding ``valuesMapping`` section."
+
