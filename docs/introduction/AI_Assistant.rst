@@ -100,7 +100,6 @@ Citeck AI Ассистент
 Полный состав инструментов и системные промпты агентов приведены в разделе :ref:`Преднастроенные агенты <preconfigured-agents>`.
 
 
-
 Горячие клавиши
 ~~~~~~~~~~~~~~~~~~
 
@@ -314,30 +313,37 @@ Citeck AI Ассистент
 .. dropdown:: Как использовать
    :color: secondary
 
-   1. Откройте любой редактор скриптов (BPMN Script Task, вычисляемый атрибут и др.)
-   2. Нажмите на кнопку AI Ассистента в правом нижнем углу редактора
-   3. В появившемся поле ввода опишите, что должен делать скрипт, или выберите быстрое действие
-   4. Ассистент сгенерирует код с подробным объяснением логики
+   1. Откройте любой редактор скриптов (BPMN Script Task, вычисляемый атрибут и др.).
+   2. Нажмите на кнопку AI Ассистента в правом нижнем углу редактора.
+   
+    .. image:: _static/AI_Assistant/script_assistant.png
+       :width: 350
+       :align: center
+
+
+   3. В появившемся поле ввода опишите, что должен делать скрипт, или выберите быстрое действие.
+   4. Ассистент сгенерирует код с подробным объяснением логики.
 
 .. list-table::
     :header-rows: 1
+    :align: center
     :class: tight-table
 
     * - Контекст
       - Описание
-    * - **BPMN Script Task**
+    * - :ref:`BPMN Script Task <script_task>`
       - Скрипты внутри бизнес-процессов
-    * - **Gateway / Sequence Flow Condition**
+    * - :ref:`Gateway / Sequence Flow Condition <sequential flow_type>`
       - Условия маршрутизации процессов
-    * - **Computed Attribute**
+    * - :ref:`Computed Attribute <count_attributes>`
       - Вычисляемые атрибуты типов данных
-    * - **Computed Role**
+    * - :ref:`Computed Role <roles_statuses>`
       - Динамическое определение участников ролей
-    * - **UI Action Script**
+    * - :ref:`UI Action Script <ui_action_script>`
       - Клиентские скрипты действий
-    * - **Journal Formatter**
+    * - :ref:`Journal Formatter <formatters>`
       - Форматирование ячеек журналов
-    * - **Консоль разработчика**
+    * - :ref:`Консоль разработчика <developer_console>`
       - Скрипты в консоли администратора
 
 **Возможности:**
