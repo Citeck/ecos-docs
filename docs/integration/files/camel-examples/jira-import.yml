@@ -1,0 +1,259 @@
+---
+- beans:
+    - name: jiraClient
+      type: ru.citeck.ecos.camel.jira.api.JiraApiClient
+      properties:
+        # Нужно создать конечную точку с таким id и Token кредами
+        # Токен можно создать зайдя в Jira Profile -> Personal Access Token
+        endpointId: jira-host
+- route:
+    # Пример импорта задач из Jira
+    # Проект должен быть создан в Citeck
+    id: jira-issues-import
+    from:
+      uri: "jira-issues:issues-import"
+      # Проверьте доступ к jira пользователя, под которым запускается импорт
+      parameters:
+        jiraClient: '#jiraClient'
+        delay: 5000
+        # Ключи проектов, которые будут импортироваться
+        # Импорт идет сначала полностью для первого проекта, затем для второго и т.д.
+        # Когда все проекты обработаны, цикл начинается опять с первого проекта и далее.
+        projectKey: "ECOSUI,ECOSCOM,ECOSENT,ECOSMOB"
+        # Для отладки можно указать ключ конкретной задачи. В этом случае projectKey игнорируется,
+        # проект определяется из ключа задачи. После импорта задачи consumer останавливается.
+        # issueKey: "ECOSENT-1234"
+      steps:
+        - to: log:raw-jira-issues?level=INFO&showBody=true
+        - setProperty:
+            name: "valuesMapping"
+            constant: >
+              {
+                "_type": {
+                  "10000": "emodel/type@ept-issue-epic",
+                  "10001": "emodel/type@ept-issue-story",
+                  "10002": "emodel/type@ept-issue-task",
+                  "10003": "emodel/type@ept-issue-subtask",
+                  "10004": "emodel/type@ept-issue-bug",
+                  "10005": "emodel/type@ept-issue-task",
+                  "10100": "emodel/type@ept-issue-task",
+                  "10401": "emodel/type@ept-issue-task",
+                  "10501": "emodel/type@ept-issue-task",
+                  "10500": "emodel/type@ept-issue-story",
+                  "10502": "emodel/type@ept-issue-subtask",
+                  "10503": "emodel/type@ept-issue-bug"
+                },
+                "priority": {
+                  "1": "100_urgent",
+                  "2": "200_high",
+                  "3": "300_medium",
+                  "4": "400_low"
+                },
+                "_status": {
+                  "1": "backlog",
+                  "3": "in-progress",
+                  "5": "done",
+                  "10000": "to-do",
+                  "10001": "done",
+                  "10006": "on-hold",
+                  "10007": "to-do",
+                  "10008": "done",
+                  "10009": "done",
+                  "10010": "backlog",
+                  "10011": "to-do",
+                  "10100": "in-qa-review",
+                  "10101": "waiting-for-qa",
+                  "10510": "review",
+                  "10530": "on-hold",
+                  "10531": "on-hold",
+                  "10537": "in-qa-review",
+                  "10541": "done",
+                  "10561": "to-do",
+                  "10565": "in-qa-review"
+                },
+                "resolution": {
+                  "10000": "emodel/ept-issue-resolution@done",
+                  "10001": "emodel/ept-issue-resolution@wont-do",
+                  "10002": "emodel/ept-issue-resolution@duplicate",
+                  "10003": "emodel/ept-issue-resolution@cannot-reproduce",
+                  "10100": "emodel/ept-issue-resolution@declined",
+                  "10101": "emodel/ept-issue-resolution@known-error",
+                  "10102": "emodel/ept-issue-resolution@hardware-failure",
+                  "10200": "emodel/ept-issue-resolution@done",
+                  "10300": "emodel/ept-issue-resolution@done",
+                  "10301": "emodel/ept-issue-resolution@wont-do",
+                  "10302": "emodel/ept-issue-resolution@duplicate",
+                  "10303": "emodel/ept-issue-resolution@cannot-reproduce",
+                  "10400": "emodel/ept-issue-resolution@cannot-reproduce"
+                }
+              }
+        - setProperty:
+            name: "valuesConverter"
+            constant: >
+              {
+                "description": "jiraRenderedFieldToTextArea",
+                "_created": "jiraDateToInstant",
+                "_modified": "jiraDateToInstant",
+                "endDate": "jiraDateToInstant",
+                "reporter": "emailToPersonRef",
+                "implementer": "emailToPersonRef",
+                "epicLink": "issueKeyToRef",
+                "remainingEstimateMills": "secondsToMills"
+              }
+        - setProperty:
+            name: "attributesMapping"
+            # Json path to EPT field
+            constant: >
+              {
+                "fields.issuetype.id": "_type",
+                "fields.priority.id": "priority",
+                "fields.summary": "summary",
+                "fields.description": "description",
+                "fields.resolution.id": "resolution",
+                "fields.labels": "tags",
+                "fields.resolutiondate": "endDate",
+                "fields.status.id": "_status",
+                "fields.reporter.emailAddress": "reporter",
+                "fields.assignee.emailAddress": "implementer",
+                "fields.timetracking.originalEstimate": "estimatedWorks",
+                "fields.timetracking.remainingEstimateSeconds": "remainingEstimateMills",
+                "fields.created": "_created",
+                "fields.updated": "_modified",
+                "fields.customfield_10002": "epicLink",
+                "fields.customfield_11425": "documentation"
+              }
+        - setProperty:
+            name: "staticAttributes"
+            constant: >
+              {
+                "__disableAudit": true
+              }
+        - setProperty:
+            name: "linksMapping"
+            constant: >
+              {
+                "10000": "issue-links:blocker",
+                "10001": "issue-links:clone",
+                "10002": "issue-links:duplicate",
+                "10300": "issue-links:problem",
+                "10003": "issue-links:relates",
+                "10500": "issue-links:relates",
+                "10400": "issue-links:relates"
+              }
+        - split:
+            expression:
+              simple: "${body}"
+            steps:
+              - setProperty:
+                  name: "originalIssue"
+                  simple: "${body}"
+              # Трансформация метаданных jira в поля ept
+              - to:
+                  uri: "transform-jira-issue:issues-import"
+                  parameters:
+                    jiraClient: '#jiraClient'
+              - to: log:transformed-issue?level=INFO&showBody=true
+              # Создание ept задачи через records
+              - to: "ecos-records-mutate:?sourceId=emodel/ept-issue"
+              #- to: log:created-record?level=INFO&showHeaders=true
+              - setHeader:
+                  name: eptIssueRef
+                  simple: "${header.recordsMutated[0]}"
+              - step:
+                  id: import-comments
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: commentLinkToRecord
+                        simple: "${header.eptIssueRef}"
+                    - to: "transform-jira-comment:issues-import"
+                    - to: "ecos-records-mutate:?sourceId=emodel/comment"
+                    #- to: log:importcomments?level=INFO&showBody=true
+              - step:
+                  id: import-components
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to: "import-jira-component:issues-import"
+                    #- to: log:importcomponents?level=INFO&showBody=true
+              - step:
+                  id: import-jira-tags
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to: "import-jira-tags:issues-import"
+                    #- to: log:importtags?level=INFO&showBody=true
+              - step:
+                  id: import-releases
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to:
+                        uri: "import-jira-releases:issues-import"
+                        parameters:
+                          jiraClient: '#jiraClient'
+                    #- to: log:importreleases?level=INFO&showBody=true
+              - step:
+                  # Если настроен плагин 2FA для Jira, то в нем нужно отключить принудительный
+                  # 2FA для url /secure/attachment
+                  id: import-attachments
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to:
+                        uri: "import-jira-attachment:issues-import"
+                        parameters:
+                          jiraClient: '#jiraClient'
+                    #- to: log:importattachments?level=INFO&showBody=true
+              - step:
+                  id: import-sprint
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to:
+                        uri: "import-jira-sprint:issues-import"
+                        parameters:
+                          # Поле в jira, в котором хранится спринт
+                          sprintFieldId: "customfield_10006"
+                    #- to: log:importsprint?level=INFO&showBody=true
+              - step:
+                  id: import-dev-info
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: eptIssueRef
+                        simple: "${header.eptIssueRef}"
+                    - to:
+                        uri: "import-jira-dev-info:issues-import"
+                        parameters:
+                          jiraClient: '#jiraClient'
+                    #- to: log:importdevinfo?level=INFO&showBody=true
+              - step:
+                  id: import-work-logs
+                  steps:
+                    - setBody:
+                        simple: "${exchangeProperty.originalIssue}"
+                    - setHeader:
+                        name: worklogLinkToRecord
+                        simple: "${header.eptIssueRef}"
+                    - to: "transform-jira-worklog:issues-import"
+                    #- to: log:transformworklog?level=INFO&showBody=true
+                    - to: "ecos-records-mutate:?sourceId=emodel/ecos-time-tracking-type"
+                    #- to: log:importworklogs?level=INFO&showBody=true
