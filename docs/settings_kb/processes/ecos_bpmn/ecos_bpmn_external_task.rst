@@ -153,16 +153,20 @@ Ecos Spring Boot Starter External Task Client позволяет легко до
 
         @Bean
         @ExternalTaskSubscription("processPayment")
-        fun processPayment(externalTask: ExternalTask, externalTaskService: ExternalTaskService) {
-            // you business logic here
-            externalTaskService.complete(externalTask);
+        fun processPayment(): ExternalTaskHandler {
+            return ExternalTaskHandler { externalTask, externalTaskService ->
+                // Business logic for payment processing
+                externalTaskService.complete(externalTask)
+            }
         }
 
         @Bean
         @ExternalTaskSubscription("cancelPayment")
-        fun processPayment2(externalTask: ExternalTask, externalTaskService: ExternalTaskService) {
-            // you business logic here
-            externalTaskService.complete(externalTask);
+        fun cancelPayment(): ExternalTaskHandler {
+            return ExternalTaskHandler { externalTask, externalTaskService ->
+                // Business logic for payment cancellation
+                externalTaskService.complete(externalTask)
+            }
         }
 
     }
