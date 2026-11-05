@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Citeck\n"
+"Project-Id-Version: Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-22 00:27+0300\n"
+"POT-Creation-Date: 2026-11-05 14:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en\n"
 "Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../admin/authorities/sync_authorities.rst:4
@@ -27,7 +27,7 @@ msgid "Синхронизация Пользователей или Групп �
 msgstr "Synchronization of Users or Groups with Citeck."
 
 #: ../../admin/authorities/sync_authorities.rst:9
-#: ../../admin/authorities/sync_authorities.rst:57
+#: ../../admin/authorities/sync_authorities.rst:59
 msgid "Содержание"
 msgstr "Contents"
 
@@ -41,8 +41,8 @@ msgid ""
 "пространство \"Раздел администратора\" - Модель)** или деплой "
 "соответствующего артефакта ``authorities-sync``."
 msgstr ""
-"Configuration is done in the **\"LDAP Synchronization\" (\"Admin "
-"Section\" workspace - Model)** section or by deploying the corresponding "
+"Configuration is done in the **\"LDAP Synchronization\" (\"Admin Section\" "
+"workspace - Model)** section or by deploying the corresponding "
 "``authorities-sync`` artifact."
 
 #: ../../admin/authorities/sync_authorities.rst:15
@@ -55,29 +55,37 @@ msgstr ""
 
 #: ../../admin/authorities/sync_authorities.rst:21
 msgid ""
-"Нажать **«Загрузить конфигурацию»**, выбрать json-файл с настройками "
-"LDAP. Запись появляется в журнале, синхронизация стартует без перезапуска"
-" приложения."
+"Нажать **«Загрузить конфигурацию»**, выбрать JSON-файл с настройками LDAP, "
+"например приведенный ниже. Запись появляется в журнале, конфигурация "
+"регистрируется без перезапуска приложения. Автоматические запуски "
+"выполняются при ``enabled: true`` и заданном корректном "
+"``repeatDelayDuration``."
 msgstr ""
-"Click **\"Upload configuration\"** and select a json file with LDAP "
-"settings. The record appears in the journal, and synchronization starts "
-"without restarting the application."
+"Click **\"Upload configuration\"** and select a JSON file with LDAP "
+"settings, such as the example below. The record appears in the journal, and "
+"the configuration is registered without restarting the application. "
+"Automatic runs require ``enabled: true`` and a valid "
+"``repeatDelayDuration``."
 
 #: ../../admin/authorities/sync_authorities.rst:22
 msgid ""
-"Действием **«Скачать»** получить json, изменить и загрузить повторно — "
-"существующая запись обновляется, дубликат не создаётся."
+"Действием **«Скачать»** получить конфигурацию в формате YAML. Для изменения "
+"конфигурации в журнале также предусмотрено редактирование JSON. Повторная "
+"загрузка конфигурации с тем же ``id`` обновляет существующую запись, "
+"дубликат не создается."
 msgstr ""
-"Use the **\"Download\"** action to get the json, edit it and upload it "
-"again — the existing record is updated, no duplicate is created."
+"Use the **\"Download\"** action to download the configuration in YAML "
+"format. The journal also supports editing the configuration as JSON. "
+"Uploading a configuration with the same ``id`` updates the existing record "
+"without creating a duplicate."
 
 #: ../../admin/authorities/sync_authorities.rst:23
 msgid ""
 "Действием **«Удалить»** убрать запись — синхронизация останавливается и "
 "снимается с расписания без перезапуска приложения."
 msgstr ""
-"Use the **\"Delete\"** action to remove the record — synchronization "
-"stops and is unscheduled without restarting the application."
+"Use the **\"Delete\"** action to remove the record — synchronization stops "
+"and is unscheduled without restarting the application."
 
 #: ../../admin/authorities/sync_authorities.rst:28
 msgid "Синхронизация пользователей и групп из LDAP"
@@ -105,8 +113,8 @@ msgstr ""
 
 #: ../../admin/authorities/sync_authorities.rst:40
 msgid ""
-"Синхронизация настраивается одной конфигурацией с ``authorityType: "
-"PERSON`` и выполняется в два этапа:"
+"Синхронизация настраивается одной конфигурацией с ``authorityType: PERSON`` "
+"и выполняется в два этапа:"
 msgstr ""
 "Synchronization is configured with a single configuration with "
 "``authorityType: PERSON`` and is performed in two stages:"
@@ -120,45 +128,55 @@ msgid ""
 "Импорт групп и членства в них - необязательный этап, включается блоком "
 "``config.groups``."
 msgstr ""
-"Import of groups and their membership - an optional stage, enabled by the"
-" ``config.groups`` block."
+"Import of groups and their membership - an optional stage, enabled by the "
+"``config.groups`` block."
 
 #: ../../admin/authorities/sync_authorities.rst:45
 msgid ""
 "Оба этапа используют общий идентификатор синхронизации, параметры "
-"подключения, расписание и распределенную блокировку. Если синхронизация "
-"уже выполняется (в том числе на другом экземпляре ecos-model), запуск по "
-"расписанию пропускается, а ручной запуск ожидает освобождения блокировки "
-"до 5 секунд и затем завершается ошибкой. Отдельная синхронизация с "
-"``authorityType: GROUP`` не поддерживается."
+"подключения, расписание и распределенную блокировку. Отдельная синхронизация"
+" с ``authorityType: GROUP`` не поддерживается."
 msgstr ""
 "Both stages share the synchronization identifier, connection parameters, "
-"schedule and distributed lock. If synchronization is already running "
-"(including on another ecos-model instance), a scheduled run is skipped, "
-"and a manual run waits up to 5 seconds for the lock to be released and "
-"then fails with an error. A separate synchronization with "
+"schedule and distributed lock. A separate synchronization with "
 "``authorityType: GROUP`` is not supported."
 
 #: ../../admin/authorities/sync_authorities.rst:47
 msgid ""
-"LDAP используется только для чтения: синхронизация не создает и не "
-"изменяет записи в LDAP. Параметр ``manageNewAuthorities`` должен быть "
-"``false``. Локальное редактирование уже импортированных пользователей и "
-"групп в Citeck допускается."
+"Если распределенная блокировка занята, например синхронизация выполняется на"
+" другом экземпляре ecos-model, запуск по расписанию пропускается, а ручной "
+"вызов ожидает ее освобождения до 5 секунд и затем завершается ошибкой. Этот "
+"таймаут ограничивает только ожидание распределенной блокировки: "
+"конкурирующие вызовы одной синхронизации внутри одного экземпляра могут "
+"ожидать завершения предыдущего вызова дольше 5 секунд."
 msgstr ""
-"LDAP is used read-only: synchronization does not create or modify records"
-" in LDAP. The ``manageNewAuthorities`` parameter must be ``false``. Local"
-" editing of already imported users and groups in Citeck is allowed."
+"If the distributed lock is held, for example because synchronization is "
+"running on another ecos-model instance, a scheduled run is skipped, while a "
+"manual call waits up to 5 seconds for the lock to be released and then fails"
+" with an error. This timeout limits only the wait for the distributed lock: "
+"concurrent calls to the same synchronization within one instance may wait "
+"longer than 5 seconds for the previous call to complete."
 
-#: ../../admin/authorities/sync_authorities.rst:51
+#: ../../admin/authorities/sync_authorities.rst:49
 msgid ""
-"При синхронизации из Active Directory (или другого LDAP-каталога) "
-"необходимо соблюдать следующие ограничения:"
+"LDAP используется только для чтения: синхронизация не создает и не изменяет "
+"записи в LDAP. Параметр ``manageNewAuthorities`` должен быть ``false``. "
+"Локальное редактирование уже импортированных пользователей и групп в Citeck "
+"допускается."
 msgstr ""
-"When synchronizing from Active Directory (or another LDAP directory), the"
-" following restrictions must be observed:"
+"LDAP is used read-only: synchronization does not create or modify records in"
+" LDAP. The ``manageNewAuthorities`` parameter must be ``false``. Local "
+"editing of already imported users and groups in Citeck is allowed."
 
 #: ../../admin/authorities/sync_authorities.rst:53
+msgid ""
+"При синхронизации из Active Directory (или другого LDAP-каталога) необходимо"
+" соблюдать следующие ограничения:"
+msgstr ""
+"When synchronizing from Active Directory (or another LDAP directory), the "
+"following restrictions must be observed:"
+
+#: ../../admin/authorities/sync_authorities.rst:55
 msgid ""
 "Имена групп не должны содержать кириллические символы, например "
 "``Группа_Тест_группа``."
@@ -166,161 +184,166 @@ msgstr ""
 "Group names must not contain Cyrillic characters, for example "
 "``Группа_Тест_группа``."
 
-#: ../../admin/authorities/sync_authorities.rst:54
+#: ../../admin/authorities/sync_authorities.rst:56
 msgid "Имена учётных записей не должны содержать пробелы."
 msgstr "Account names must not contain spaces."
 
-#: ../../admin/authorities/sync_authorities.rst:62
+#: ../../admin/authorities/sync_authorities.rst:64
 msgid "Синхронизация пользователей"
 msgstr "User synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:64
-#: ../../admin/authorities/sync_authorities.rst:234
-#: ../../admin/authorities/sync_authorities.rst:309
+#: ../../admin/authorities/sync_authorities.rst:66
+#: ../../admin/authorities/sync_authorities.rst:236
+#: ../../admin/authorities/sync_authorities.rst:313
 msgid "Пример конфигурации:"
 msgstr "Configuration example:"
 
-#: ../../admin/authorities/sync_authorities.rst:106
+#: ../../admin/authorities/sync_authorities.rst:108
 msgid "Общие атрибуты конфигурации синхронизации"
 msgstr "Common synchronization configuration attributes"
 
-#: ../../admin/authorities/sync_authorities.rst:111
-#: ../../admin/authorities/sync_authorities.rst:139
-#: ../../admin/authorities/sync_authorities.rst:372
-#: ../../admin/authorities/sync_authorities.rst:423
+#: ../../admin/authorities/sync_authorities.rst:113
+#: ../../admin/authorities/sync_authorities.rst:141
+#: ../../admin/authorities/sync_authorities.rst:377
+#: ../../admin/authorities/sync_authorities.rst:430
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../admin/authorities/sync_authorities.rst:112
-#: ../../admin/authorities/sync_authorities.rst:140
-#: ../../admin/authorities/sync_authorities.rst:373
-#: ../../admin/authorities/sync_authorities.rst:424
+#: ../../admin/authorities/sync_authorities.rst:114
+#: ../../admin/authorities/sync_authorities.rst:142
+#: ../../admin/authorities/sync_authorities.rst:378
+#: ../../admin/authorities/sync_authorities.rst:431
 msgid "Описание"
 msgstr "Description"
 
-#: ../../admin/authorities/sync_authorities.rst:113
+#: ../../admin/authorities/sync_authorities.rst:115
 msgid "id"
 msgstr "id"
 
-#: ../../admin/authorities/sync_authorities.rst:114
+#: ../../admin/authorities/sync_authorities.rst:116
 msgid ""
-"Идентификатор синхронизации. Записывается импортированным пользователям и"
-" группам в атрибут ``ldap-sync:ldapSyncId`` (по нему выбираются "
-"пользователи для отключения, см. :ref:`ldap_sync_deletions`), а ссылка на"
-" синхронизацию - в атрибут ``managedBySync`` (по нему определяется "
-"принадлежность, см. :ref:`ldap_sync_ownership`). Не должен быть пустым. "
-"Не меняйте его после первого запуска"
+"Идентификатор синхронизации. Записывается импортированным пользователям и "
+"группам в атрибут ``ldap-sync:ldapSyncId`` (по нему выбираются пользователи "
+"для отключения, см. :ref:`ldap_sync_deletions`), а ссылка на синхронизацию -"
+" в атрибут ``managedBySync`` (по нему определяется принадлежность, см. "
+":ref:`ldap_sync_ownership`). Не должен быть пустым. Не меняйте его после "
+"первого запуска"
 msgstr ""
-"Synchronization identifier. It is written to the ``ldap-sync:ldapSyncId``"
-" attribute of imported users and groups (used to select users for "
-"disabling, see :ref:`ldap_sync_deletions`), and a reference to the "
-"synchronization is written to the ``managedBySync`` attribute (used to "
-"determine ownership, see :ref:`ldap_sync_ownership`). Must not be empty. "
-"Do not change it after the first run"
+"Synchronization identifier. It is written to the ``ldap-sync:ldapSyncId`` "
+"attribute of imported users and groups (used to select users for disabling, "
+"see :ref:`ldap_sync_deletions`), and a reference to the synchronization is "
+"written to the ``managedBySync`` attribute (used to determine ownership, see"
+" :ref:`ldap_sync_ownership`). Must not be empty. Do not change it after the "
+"first run"
 
-#: ../../admin/authorities/sync_authorities.rst:115
+#: ../../admin/authorities/sync_authorities.rst:117
 msgid "name"
 msgstr "name"
 
-#: ../../admin/authorities/sync_authorities.rst:116
+#: ../../admin/authorities/sync_authorities.rst:118
 msgid "Отображаемое название синхронизации"
 msgstr "Display name of the synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:117
+#: ../../admin/authorities/sync_authorities.rst:119
 msgid "type"
 msgstr "type"
 
-#: ../../admin/authorities/sync_authorities.rst:118
+#: ../../admin/authorities/sync_authorities.rst:120
 msgid "Тип синхронизации - ``emodel-ldap``"
 msgstr "Synchronization type - ``emodel-ldap``"
 
-#: ../../admin/authorities/sync_authorities.rst:119
+#: ../../admin/authorities/sync_authorities.rst:121
 msgid "authorityType"
 msgstr "authorityType"
 
-#: ../../admin/authorities/sync_authorities.rst:120
+#: ../../admin/authorities/sync_authorities.rst:122
 msgid ""
-"Только ``PERSON``. Группы синхронизируются в рамках этой же конфигурации "
-"через ``config.groups``"
+"Только ``PERSON`` (значение по умолчанию). Группы синхронизируются в рамках "
+"этой же конфигурации через ``config.groups``"
 msgstr ""
-"``PERSON`` only. Groups are synchronized within the same configuration "
-"via ``config.groups``"
+"``PERSON`` only (the default). Groups are synchronized within the same "
+"configuration via ``config.groups``"
 
-#: ../../admin/authorities/sync_authorities.rst:121
+#: ../../admin/authorities/sync_authorities.rst:123
 msgid "enabled"
 msgstr "enabled"
 
-#: ../../admin/authorities/sync_authorities.rst:122
-msgid "Флаг включения синхронизации"
-msgstr "Flag that enables synchronization"
+#: ../../admin/authorities/sync_authorities.rst:124
+msgid ""
+"Флаг включения синхронизации. По умолчанию - ``false``; автоматическое "
+"расписание при этом не создается"
+msgstr ""
+"Enables synchronization. Default: ``false``; no automatic schedule is "
+"created in this case"
 
-#: ../../admin/authorities/sync_authorities.rst:123
+#: ../../admin/authorities/sync_authorities.rst:125
 msgid "repeatDelayDuration"
 msgstr "repeatDelayDuration"
 
-#: ../../admin/authorities/sync_authorities.rst:124
+#: ../../admin/authorities/sync_authorities.rst:126
 msgid ""
-"Интервал между запусками в формате ISO-8601, например ``PT5M``. Первый "
-"запуск выполняется через минуту после регистрации синхронизации. Если "
-"значение пустое или некорректное, синхронизация не запускается по "
-"расписанию (некорректное значение записывается в лог как ошибка) и может "
-"быть запущена только вручную"
+"Интервал между запусками в формате ISO-8601, например ``PT5M``. По умолчанию"
+" - пустая строка. При ``enabled: true`` и корректном интервале первый запуск"
+" выполняется через минуту после регистрации синхронизации. Если значение "
+"пустое или некорректное, синхронизация не запускается по расписанию "
+"(некорректное значение записывается в лог как ошибка) и может быть запущена "
+"только вручную"
 msgstr ""
-"Interval between runs in ISO-8601 format, for example ``PT5M``. The first"
-" run is performed one minute after the synchronization is registered. If"
-" the value is empty or invalid, synchronization does not run on schedule "
-"(an invalid value is logged as an error) and can only be started "
-"manually"
+"Interval between runs in ISO-8601 format, for example ``PT5M``. Default: an "
+"empty string. With ``enabled: true`` and a valid interval, the first run "
+"takes place one minute after synchronization is registered. If the value is "
+"empty or invalid, synchronization does not run on schedule (an invalid value"
+" is logged as an error) and can only be started manually"
 
-#: ../../admin/authorities/sync_authorities.rst:125
+#: ../../admin/authorities/sync_authorities.rst:127
 msgid "manageNewAuthorities"
 msgstr "manageNewAuthorities"
 
-#: ../../admin/authorities/sync_authorities.rst:126
+#: ../../admin/authorities/sync_authorities.rst:128
 msgid ""
-"Должен быть ``false``: создание записей в LDAP не поддерживается. При "
-"``true`` создание новых пользователей в Citeck будет завершаться ошибкой"
+"Должен быть ``false`` (значение по умолчанию): создание записей в LDAP не "
+"поддерживается. При ``true`` создание новых пользователей в Citeck будет "
+"завершаться ошибкой"
 msgstr ""
-"Must be ``false``: creating records in LDAP is not supported. With "
-"``true``, creating new users in Citeck will fail with an error"
+"Must be ``false`` (the default): creating records in LDAP is not supported. "
+"With ``true``, creating new users in Citeck will fail with an error"
 
-#: ../../admin/authorities/sync_authorities.rst:127
+#: ../../admin/authorities/sync_authorities.rst:129
 msgid "priority"
 msgstr "priority"
 
-#: ../../admin/authorities/sync_authorities.rst:128
+#: ../../admin/authorities/sync_authorities.rst:130
 msgid ""
 "Приоритет синхронизации (см. :ref:`ldap_sync_ownership`). По умолчанию - "
 "``0``"
 msgstr ""
-"Synchronization priority (see :ref:`ldap_sync_ownership`). Default - "
-"``0``"
+"Synchronization priority (see :ref:`ldap_sync_ownership`). Default - ``0``"
 
-#: ../../admin/authorities/sync_authorities.rst:129
+#: ../../admin/authorities/sync_authorities.rst:131
 msgid "version"
 msgstr "version"
 
-#: ../../admin/authorities/sync_authorities.rst:130
+#: ../../admin/authorities/sync_authorities.rst:132
 msgid ""
-"Версия конфигурации. При повышении версии сохраненное состояние "
-"синхронизации сбрасывается"
+"Версия конфигурации. По умолчанию - ``0``. При повышении версии сохраненное "
+"состояние синхронизации сбрасывается"
 msgstr ""
-"Configuration version. When the version is increased, the saved "
-"synchronization state is reset"
+"Configuration version. Default: ``0``. Increasing the version resets the "
+"saved synchronization state"
 
-#: ../../admin/authorities/sync_authorities.rst:131
+#: ../../admin/authorities/sync_authorities.rst:133
 msgid "config"
 msgstr "config"
 
-#: ../../admin/authorities/sync_authorities.rst:132
+#: ../../admin/authorities/sync_authorities.rst:134
 msgid "Параметры синхронизации LDAP (см. ниже)"
 msgstr "LDAP synchronization parameters (see below)"
 
-#: ../../admin/authorities/sync_authorities.rst:134
+#: ../../admin/authorities/sync_authorities.rst:136
 msgid "Описание атрибутов config для синхронизации пользователей"
 msgstr "Description of config attributes for user synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:141
+#: ../../admin/authorities/sync_authorities.rst:143
 msgid "ldapConnection"
 msgstr "ldapConnection"
 
@@ -328,7 +351,7 @@ msgstr "ldapConnection"
 msgid "Параметры подключения к LDAP серверу"
 msgstr "LDAP server connection parameters"
 
-#: ../../admin/authorities/sync_authorities.rst:144
+#: ../../admin/authorities/sync_authorities.rst:146
 msgid ""
 "urls - список URL серверов (обязательный), например "
 "``ldaps://directory.example.org:636``"
@@ -336,29 +359,29 @@ msgstr ""
 "urls - list of server URLs (required), for example "
 "``ldaps://directory.example.org:636``"
 
-#: ../../admin/authorities/sync_authorities.rst:145
+#: ../../admin/authorities/sync_authorities.rst:147
 msgid ""
-"base - базовый DN подключения, например ``dc=example,dc=org``. Базы "
-"поиска пользователей и групп указываются относительно него"
+"base - базовый DN подключения, например ``dc=example,dc=org``. Базы поиска "
+"пользователей и групп указываются относительно него"
 msgstr ""
-"base - base DN of the connection, for example ``dc=example,dc=org``. User"
-" and group search bases are specified relative to it"
+"base - base DN of the connection, for example ``dc=example,dc=org``. User "
+"and group search bases are specified relative to it"
 
-#: ../../admin/authorities/sync_authorities.rst:146
+#: ../../admin/authorities/sync_authorities.rst:148
 msgid ""
 "credentials - идентификатор credentials для подключения к LDAP серверу "
-"(обязательный). Сейчас это credentials из мкр. ecos-integrations: из "
-"записи берутся ``username`` (DN для подключения) и ``password``. Если "
-"мкр. ecos-integrations недоступен, синхронизация завершается ошибкой"
+"(обязательный). Сейчас это credentials из мкр. ecos-integrations: из записи "
+"берутся ``username`` (DN для подключения) и ``password``. Если мкр. ecos-"
+"integrations недоступен, синхронизация завершается ошибкой"
 msgstr ""
 "credentials - credentials identifier for connecting to the LDAP server "
 "(required). Currently these are credentials from the ecos-integrations "
-"microservice: ``username`` (DN for connection) and ``password`` are taken"
-" from the record. If the ecos-integrations microservice is unavailable, "
+"microservice: ``username`` (DN for connection) and ``password`` are taken "
+"from the record. If the ecos-integrations microservice is unavailable, "
 "synchronization fails with an error"
 
-#: ../../admin/authorities/sync_authorities.rst:148
-#: ../../admin/authorities/sync_authorities.rst:374
+#: ../../admin/authorities/sync_authorities.rst:150
+#: ../../admin/authorities/sync_authorities.rst:379
 msgid "ldapSearch"
 msgstr "ldapSearch"
 
@@ -366,15 +389,15 @@ msgstr "ldapSearch"
 msgid "Параметры поиска пользователей"
 msgstr "User search parameters"
 
-#: ../../admin/authorities/sync_authorities.rst:151
+#: ../../admin/authorities/sync_authorities.rst:153
 msgid ""
-"base - базовый DN для поиска относительно ``ldapConnection.base``, "
-"например ``ou=people``. По умолчанию - пустая строка"
+"base - базовый DN для поиска относительно ``ldapConnection.base``, например "
+"``ou=people``. По умолчанию - пустая строка"
 msgstr ""
-"base - base DN for search relative to ``ldapConnection.base``, for "
-"example ``ou=people``. Default - empty string"
+"base - base DN for search relative to ``ldapConnection.base``, for example "
+"``ou=people``. Default - empty string"
 
-#: ../../admin/authorities/sync_authorities.rst:152
+#: ../../admin/authorities/sync_authorities.rst:154
 msgid ""
 "filter - LDAP-фильтр для поиска (обязательный), например "
 "``(objectClass=inetOrgPerson)``"
@@ -382,68 +405,67 @@ msgstr ""
 "filter - LDAP search filter (required), for example "
 "``(objectClass=inetOrgPerson)``"
 
-#: ../../admin/authorities/sync_authorities.rst:153
-#: ../../admin/authorities/sync_authorities.rst:379
+#: ../../admin/authorities/sync_authorities.rst:155
+#: ../../admin/authorities/sync_authorities.rst:384
 msgid ""
 "scope - область поиска. Допустимые значения: ``BASE``, ``ONE_LEVEL``, "
 "``SUBTREE``. По умолчанию - ``SUBTREE``"
 msgstr ""
-"scope - search scope. Valid values: ``BASE``, ``ONE_LEVEL``, "
-"``SUBTREE``. Default - ``SUBTREE``"
+"scope - search scope. Valid values: ``BASE``, ``ONE_LEVEL``, ``SUBTREE``. "
+"Default - ``SUBTREE``"
 
-#: ../../admin/authorities/sync_authorities.rst:155
+#: ../../admin/authorities/sync_authorities.rst:157
 msgid "usernameAttributeName"
 msgstr "usernameAttributeName"
 
-#: ../../admin/authorities/sync_authorities.rst:156
+#: ../../admin/authorities/sync_authorities.rst:158
 msgid ""
 "Атрибут LDAP, содержащий имя пользователя (username); становится "
 "идентификатором пользователя в Citeck и должен быть уникальным без учета "
-"регистра: идентификаторы пользователей в Citeck хранятся в нижнем "
-"регистре. Для Active Directory обычно ``sAMAccountName``. Записи с пустым"
-" значением пропускаются. По умолчанию - ``uid``"
+"регистра: идентификаторы пользователей в Citeck хранятся в нижнем регистре. "
+"Для Active Directory обычно ``sAMAccountName``. Записи с пустым значением "
+"пропускаются. По умолчанию - ``uid``"
 msgstr ""
-"LDAP attribute containing the username; it becomes the user identifier in"
-" Citeck and must be unique case-insensitively: user identifiers in Citeck"
-" are stored in lower case. For Active Directory it is usually "
+"LDAP attribute containing the username; it becomes the user identifier in "
+"Citeck and must be unique case-insensitively: user identifiers in Citeck are"
+" stored in lower case. For Active Directory it is usually "
 "``sAMAccountName``. Records with an empty value are skipped. Default - "
 "``uid``"
 
-#: ../../admin/authorities/sync_authorities.rst:157
-#: ../../admin/authorities/sync_authorities.rst:385
+#: ../../admin/authorities/sync_authorities.rst:159
+#: ../../admin/authorities/sync_authorities.rst:390
 msgid "attributes"
 msgstr "attributes"
 
-#: ../../admin/authorities/sync_authorities.rst:158
+#: ../../admin/authorities/sync_authorities.rst:160
 msgid ""
 "Атрибуты для синхронизации (обязательный). Ключ - имя атрибута в Citeck, "
 "значение - атрибут в LDAP. В значении можно использовать процессоры "
 "атрибутов Records через ``|`` или ``!``, например ``\"lastName\": "
 "\"sn|or('-')\"``"
 msgstr ""
-"Attributes to synchronize (required). Key - attribute name in Citeck, "
-"value - attribute in LDAP. Records attribute processors can be used in "
-"the value via ``|`` or ``!``, for example ``\"lastName\": "
-"\"sn|or('-')\"``"
+"Attributes to synchronize (required). Key - attribute name in Citeck, value "
+"- attribute in LDAP. Records attribute processors can be used in the value "
+"via ``|`` or ``!``, for example ``\"lastName\": \"sn|or('-')\"``"
 
-#: ../../admin/authorities/sync_authorities.rst:159
+#: ../../admin/authorities/sync_authorities.rst:161
 msgid "batchSize"
 msgstr "batchSize"
 
-#: ../../admin/authorities/sync_authorities.rst:160
+#: ../../admin/authorities/sync_authorities.rst:162
 msgid ""
-"Размер страницы при постраничном поиске в LDAP и размер пакета при записи"
-" в Citeck. Должен быть больше 0. По умолчанию - ``30``"
+"Размер страницы при постраничном поиске в LDAP и размер пакета при записи в "
+"Citeck. Должен быть больше 0. По умолчанию - ``30``"
 msgstr ""
 "Page size for paged search in LDAP and batch size for writing to Citeck. "
 "Must be greater than 0. Default - ``30``"
 
-#: ../../admin/authorities/sync_authorities.rst:161
-#: ../../admin/authorities/sync_authorities.rst:398
+#: ../../admin/authorities/sync_authorities.rst:163
+#: ../../admin/authorities/sync_authorities.rst:403
 msgid "differential"
 msgstr "differential"
 
-#: ../../admin/authorities/sync_authorities.rst:162
+#: ../../admin/authorities/sync_authorities.rst:164
 msgid ""
 "Флаг, указывающий на необходимость синхронизации только измененных "
 "пользователей. По умолчанию - ``true``"
@@ -451,27 +473,27 @@ msgstr ""
 "Flag indicating whether to synchronize only modified users. Default - "
 "``true``"
 
-#: ../../admin/authorities/sync_authorities.rst:163
-#: ../../admin/authorities/sync_authorities.rst:400
+#: ../../admin/authorities/sync_authorities.rst:165
+#: ../../admin/authorities/sync_authorities.rst:407
 msgid "modifyTimestampAttName"
 msgstr "modifyTimestampAttName"
 
-#: ../../admin/authorities/sync_authorities.rst:164
+#: ../../admin/authorities/sync_authorities.rst:166
 msgid ""
-"Атрибут LDAP, содержащий время последнего изменения записи, необходим для"
-" дифференциальной синхронизации. Для Active Directory - ``whenChanged``. "
-"По умолчанию - ``modifyTimestamp``"
+"Атрибут LDAP, содержащий время последнего изменения записи, необходим для "
+"дифференциальной синхронизации. Для Active Directory - ``whenChanged``. По "
+"умолчанию - ``modifyTimestamp``"
 msgstr ""
-"LDAP attribute containing the time of the last record modification, "
-"required for differential synchronization. For Active Directory - "
-"``whenChanged``. Default - ``modifyTimestamp``"
+"LDAP attribute containing the time of the last record modification, required"
+" for differential synchronization. For Active Directory - ``whenChanged``. "
+"Default - ``modifyTimestamp``"
 
-#: ../../admin/authorities/sync_authorities.rst:165
-#: ../../admin/authorities/sync_authorities.rst:402
+#: ../../admin/authorities/sync_authorities.rst:167
+#: ../../admin/authorities/sync_authorities.rst:409
 msgid "modifyTimestampFormat"
 msgstr "modifyTimestampFormat"
 
-#: ../../admin/authorities/sync_authorities.rst:166
+#: ../../admin/authorities/sync_authorities.rst:168
 msgid ""
 "Формат времени последнего изменения в LDAP (значения атрибута "
 "``modifyTimestampAttName``), время интерпретируется в UTC. Для Active "
@@ -479,15 +501,16 @@ msgid ""
 "``yyyyMMddHHmmss'Z'``"
 msgstr ""
 "Format of the last modification time in LDAP (values of the "
-"``modifyTimestampAttName`` attribute); the time is interpreted as UTC. "
-"For Active Directory it is usually ``yyyyMMddHHmmss.0'Z'``. Default - "
+"``modifyTimestampAttName`` attribute); the time is interpreted as UTC. For "
+"Active Directory it is usually ``yyyyMMddHHmmss.0'Z'``. Default - "
 "``yyyyMMddHHmmss'Z'``"
 
-#: ../../admin/authorities/sync_authorities.rst:167
+#: ../../admin/authorities/sync_authorities.rst:169
+#: ../../admin/authorities/sync_authorities.rst:405
 msgid "allowDeletions"
 msgstr "allowDeletions"
 
-#: ../../admin/authorities/sync_authorities.rst:168
+#: ../../admin/authorities/sync_authorities.rst:170
 msgid ""
 "Отключение в Citeck пользователей, отсутствующих в LDAP (см. "
 ":ref:`ldap_sync_deletions`). По умолчанию - ``false``"
@@ -495,134 +518,134 @@ msgstr ""
 "Disabling users in Citeck that are missing in LDAP (see "
 ":ref:`ldap_sync_deletions`). Default - ``false``"
 
-#: ../../admin/authorities/sync_authorities.rst:169
+#: ../../admin/authorities/sync_authorities.rst:171
 msgid "referral"
 msgstr "referral"
 
-#: ../../admin/authorities/sync_authorities.rst:170
+#: ../../admin/authorities/sync_authorities.rst:172
 msgid ""
-"Обработка LDAP referrals: ``ignore``, ``throw`` или ``follow``. По "
-"умолчанию - ``ignore``. При ``allowDeletions: true`` или включенной "
-"синхронизации групп значение ``follow`` запрещено (синхронизация "
-"завершается ошибкой конфигурации), а полученный referral при обоих "
-"допустимых значениях считается ошибкой"
+"Обработка LDAP referrals: ``ignore``, ``throw`` или ``follow``. По умолчанию"
+" - ``ignore``. При ``allowDeletions: true`` или включенной синхронизации "
+"групп значение ``follow`` запрещено (синхронизация завершается ошибкой "
+"конфигурации), а полученный referral при обоих допустимых значениях "
+"считается ошибкой"
 msgstr ""
-"Handling of LDAP referrals: ``ignore``, ``throw`` or ``follow``. Default "
-"- ``ignore``. With ``allowDeletions: true`` or enabled group "
-"synchronization, the ``follow`` value is forbidden (synchronization fails"
-" with a configuration error), and a received referral is treated as an "
-"error with both allowed values"
+"Handling of LDAP referrals: ``ignore``, ``throw`` or ``follow``. Default - "
+"``ignore``. With ``allowDeletions: true`` or enabled group synchronization, "
+"the ``follow`` value is forbidden (synchronization fails with a "
+"configuration error), and a received referral is treated as an error with "
+"both allowed values"
 
-#: ../../admin/authorities/sync_authorities.rst:171
+#: ../../admin/authorities/sync_authorities.rst:173
 msgid "ignorePartialResultException"
 msgstr "ignorePartialResultException"
 
-#: ../../admin/authorities/sync_authorities.rst:172
+#: ../../admin/authorities/sync_authorities.rst:174
 msgid ""
 "Игнорировать ``PartialResultException`` при поиске. По умолчанию - "
 "``false``. Должен быть ``false`` при ``allowDeletions: true`` и при "
 "включенной синхронизации групп"
 msgstr ""
-"Ignore ``PartialResultException`` during search. Default - ``false``. "
-"Must be ``false`` with ``allowDeletions: true`` and with enabled group "
+"Ignore ``PartialResultException`` during search. Default - ``false``. Must "
+"be ``false`` with ``allowDeletions: true`` and with enabled group "
 "synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:173
+#: ../../admin/authorities/sync_authorities.rst:175
 msgid "ignoreNameNotFoundException"
 msgstr "ignoreNameNotFoundException"
 
-#: ../../admin/authorities/sync_authorities.rst:174
+#: ../../admin/authorities/sync_authorities.rst:176
 msgid ""
-"Игнорировать отсутствие базового DN поиска. По умолчанию - ``false``. "
-"Должен быть ``false`` при ``allowDeletions: true`` и при включенной "
-"синхронизации групп"
+"Игнорировать отсутствие базового DN поиска. По умолчанию - ``false``. Должен"
+" быть ``false`` при ``allowDeletions: true`` и при включенной синхронизации "
+"групп"
 msgstr ""
-"Ignore a missing search base DN. Default - ``false``. Must be ``false`` "
-"with ``allowDeletions: true`` and with enabled group synchronization"
+"Ignore a missing search base DN. Default - ``false``. Must be ``false`` with"
+" ``allowDeletions: true`` and with enabled group synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:175
+#: ../../admin/authorities/sync_authorities.rst:177
 msgid "groups"
 msgstr "groups"
 
-#: ../../admin/authorities/sync_authorities.rst:176
+#: ../../admin/authorities/sync_authorities.rst:178
 msgid ""
-"Параметры синхронизации групп (см. :ref:`ldap_sync_groups`). Если не "
-"указан или равен ``null``, синхронизируются только пользователи"
+"Параметры синхронизации групп (см. :ref:`ldap_sync_groups`). Если не указан "
+"или равен ``null``, синхронизируются только пользователи"
 msgstr ""
 "Group synchronization parameters (see :ref:`ldap_sync_groups`). If not "
 "specified or equal to ``null``, only users are synchronized"
 
-#: ../../admin/authorities/sync_authorities.rst:178
-msgid "При синхронизации каждому пользователю добавляются два служебных атрибута:"
-msgstr "During synchronization, two service attributes are added to each user:"
-
 #: ../../admin/authorities/sync_authorities.rst:180
 msgid ""
-"**ldap-sync:lastLdapSyncDate** - дата последней синхронизации "
-"пользователя с LDAP;"
+"При синхронизации каждому пользователю добавляются два служебных атрибута:"
+msgstr ""
+"During synchronization, two service attributes are added to each user:"
+
+#: ../../admin/authorities/sync_authorities.rst:182
+msgid ""
+"**ldap-sync:lastLdapSyncDate** - дата последней синхронизации пользователя с"
+" LDAP;"
 msgstr ""
 "**ldap-sync:lastLdapSyncDate** - date of the last synchronization of the "
 "user with LDAP;"
 
-#: ../../admin/authorities/sync_authorities.rst:181
+#: ../../admin/authorities/sync_authorities.rst:183
 msgid ""
-"**ldap-sync:ldapSyncId** - id конфигурации синхронизации, которая создала"
-" или последней обновила пользователя. Например, в примере выше это "
-"свойство будет равно *emodel-ldap-person-sync*."
+"**ldap-sync:ldapSyncId** - id конфигурации синхронизации, которая создала "
+"или последней обновила пользователя. Например, в примере выше это свойство "
+"будет равно *emodel-ldap-person-sync*."
 msgstr ""
 "**ldap-sync:ldapSyncId** - id of the synchronization configuration that "
 "created or last updated the user. For example, in the example above this "
 "property would be equal to *emodel-ldap-person-sync*."
 
-#: ../../admin/authorities/sync_authorities.rst:183
+#: ../../admin/authorities/sync_authorities.rst:185
 msgid ""
-"Эти же атрибуты записываются группам, импортированным на этапе "
-"синхронизации групп."
+"Эти же атрибуты записываются группам, импортированным на этапе синхронизации"
+" групп."
 msgstr ""
 "The same attributes are written to groups imported at the group "
 "synchronization stage."
 
-#: ../../admin/authorities/sync_authorities.rst:188
+#: ../../admin/authorities/sync_authorities.rst:190
 msgid "Принадлежность пользователей синхронизации"
 msgstr "User ownership by synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:190
-msgid ""
-"Синхронизация, которая создала или обновила пользователя, записывается в "
-"его атрибут ``managedBySync``. При обновлении пользователя из LDAP:"
-msgstr ""
-"The synchronization that created or updated a user is written to the "
-"user's ``managedBySync`` attribute. When a user is updated from LDAP:"
-
 #: ../../admin/authorities/sync_authorities.rst:192
+msgid ""
+"Синхронизация, которая создала или обновила пользователя, записывается в его"
+" атрибут ``managedBySync``. При обновлении пользователя из LDAP:"
+msgstr ""
+"The synchronization that created or updated a user is written to the user's "
+"``managedBySync`` attribute. When a user is updated from LDAP:"
+
+#: ../../admin/authorities/sync_authorities.rst:194
 msgid "новый пользователь создается и закрепляется за текущей синхронизацией;"
 msgstr "a new user is created and assigned to the current synchronization;"
 
-#: ../../admin/authorities/sync_authorities.rst:193
+#: ../../admin/authorities/sync_authorities.rst:195
 msgid ""
 "существующий пользователь без ``managedBySync`` (например, созданный "
 "локально в Citeck) обновляется и закрепляется за текущей синхронизацией;"
 msgstr ""
-"an existing user without ``managedBySync`` (for example, created locally "
-"in Citeck) is updated and assigned to the current synchronization;"
-
-#: ../../admin/authorities/sync_authorities.rst:194
-msgid ""
-"пользователь, закрепленный за другой синхронизацией, обновляется и "
-"переходит к текущей синхронизации, только если ее ``priority`` строго "
-"выше. При равном или более низком приоритете пользователь не изменяется -"
-" ошибки нет, запись есть только в debug-логе. Пользователь также не "
-"изменяется, если синхронизация, за которой он закреплен, удалена или не "
-"зарегистрирована."
-msgstr ""
-"a user assigned to another synchronization is updated and transferred to "
-"the current synchronization only if its ``priority`` is strictly higher. "
-"With equal or lower priority, the user is not changed - there is no "
-"error, only an entry in the debug log. The user is also not changed if "
-"the synchronization it is assigned to has been deleted or is not "
-"registered."
+"an existing user without ``managedBySync`` (for example, created locally in "
+"Citeck) is updated and assigned to the current synchronization;"
 
 #: ../../admin/authorities/sync_authorities.rst:196
+msgid ""
+"пользователь, закрепленный за другой синхронизацией, обновляется и переходит"
+" к текущей синхронизации, только если ее ``priority`` строго выше. При "
+"равном или более низком приоритете пользователь не изменяется - ошибки нет, "
+"запись есть только в debug-логе. Пользователь также не изменяется, если "
+"синхронизация, за которой он закреплен, удалена или не зарегистрирована."
+msgstr ""
+"a user assigned to another synchronization is updated and transferred to the"
+" current synchronization only if its ``priority`` is strictly higher. With "
+"equal or lower priority, the user is not changed - there is no error, only "
+"an entry in the debug log. The user is also not changed if the "
+"synchronization it is assigned to has been deleted or is not registered."
+
+#: ../../admin/authorities/sync_authorities.rst:198
 msgid ""
 "Пользователи и группы, закрепленные за включенной синхронизацией, можно "
 "редактировать в Citeck локально; изменения в LDAP не записываются."
@@ -630,79 +653,76 @@ msgstr ""
 "Users and groups assigned to an enabled synchronization can be edited "
 "locally in Citeck; changes are not written to LDAP."
 
-#: ../../admin/authorities/sync_authorities.rst:199
+#: ../../admin/authorities/sync_authorities.rst:201
 msgid "Дифференциальная синхронизация"
 msgstr "Differential synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:201
+#: ../../admin/authorities/sync_authorities.rst:203
 msgid ""
 "При ``differential: true`` к фильтру ``ldapSearch.filter`` добавляется "
 "условие на время изменения записи:"
 msgstr ""
-"With ``differential: true``, a condition on the record modification time "
-"is added to the ``ldapSearch.filter`` filter:"
+"With ``differential: true``, a condition on the record modification time is "
+"added to the ``ldapSearch.filter`` filter:"
 
-#: ../../admin/authorities/sync_authorities.rst:207
+#: ../../admin/authorities/sync_authorities.rst:209
 msgid ""
-"Первая синхронизация всегда полная. Время последней успешной "
-"синхронизации хранится в состоянии синхронизации отдельно для "
-"пользователей и для групп:"
+"Первая синхронизация всегда полная. Время последней успешной синхронизации "
+"хранится в состоянии синхронизации отдельно для пользователей и для групп:"
 msgstr ""
-"The first synchronization is always full. The time of the last successful"
-" synchronization is stored in the synchronization state separately for "
-"users and for groups:"
+"The first synchronization is always full. The time of the last successful "
+"synchronization is stored in the synchronization state separately for users "
+"and for groups:"
 
-#: ../../admin/authorities/sync_authorities.rst:219
+#: ../../admin/authorities/sync_authorities.rst:221
 msgid ""
-"``lastSyncTimeStamp`` в корне - метка пользователей, блок ``groups`` - "
-"метки групп. Состояния, сохраненные до появления синхронизации групп, "
-"читаются без изменений."
+"``lastSyncTimeStamp`` в корне - метка пользователей, блок ``groups`` - метки"
+" групп. Состояния, сохраненные до появления синхронизации групп, читаются "
+"без изменений."
 msgstr ""
 "``lastSyncTimeStamp`` at the root is the user timestamp, the ``groups`` "
 "block contains the group timestamps. States saved before group "
 "synchronization was introduced are read without changes."
 
-#: ../../admin/authorities/sync_authorities.rst:223
-msgid ""
-"Если включена дифференциальная синхронизация и была изменена конфигурация"
-" с повышением версии, то первая синхронизация после изменения будет "
-"полной (для пользователей и для групп)."
-msgstr ""
-"If differential synchronization is enabled and the configuration has been"
-" changed with a version increase, then the first synchronization after "
-"the change will be full (for both users and groups)."
-
 #: ../../admin/authorities/sync_authorities.rst:225
 msgid ""
-"Для корректной работы дифференциальной синхронизации время изменения "
-"записей в LDAP должно обновляться при изменениях (в том числе при "
-"изменении состава групп), а часы серверов LDAP и Citeck должны быть "
-"согласованы."
+"Если включена дифференциальная синхронизация и была изменена конфигурация с "
+"повышением версии, то первая синхронизация после изменения будет полной (для"
+" пользователей и для групп)."
 msgstr ""
-"For differential synchronization to work correctly, the modification time"
-" of records in LDAP must be updated on changes (including changes in "
-"group membership), and the clocks of the LDAP and Citeck servers must be "
+"If differential synchronization is enabled and the configuration has been "
+"changed with a version increase, then the first synchronization after the "
+"change will be full (for both users and groups)."
+
+#: ../../admin/authorities/sync_authorities.rst:227
+msgid ""
+"Для корректной работы дифференциальной синхронизации время изменения записей"
+" в LDAP должно обновляться при изменениях (в том числе при изменении состава"
+" групп), а часы серверов LDAP и Citeck должны быть согласованы."
+msgstr ""
+"For differential synchronization to work correctly, the modification time of"
+" records in LDAP must be updated on changes (including changes in group "
+"membership), and the clocks of the LDAP and Citeck servers must be "
 "synchronized."
 
-#: ../../admin/authorities/sync_authorities.rst:230
+#: ../../admin/authorities/sync_authorities.rst:232
 msgid "Отключение удаленных пользователей"
 msgstr "Disabling deleted users"
 
-#: ../../admin/authorities/sync_authorities.rst:232
+#: ../../admin/authorities/sync_authorities.rst:234
 msgid ""
-"Параметр **config.allowDeletions** (true/false) включает отключение в "
-"Citeck пользователей, которые были удалены из LDAP. Записи пользователей "
-"при этом не удаляются."
+"Параметр **config.allowDeletions** (true/false) включает отключение в Citeck"
+" пользователей, которые были удалены из LDAP. Записи пользователей при этом "
+"не удаляются."
 msgstr ""
-"The **config.allowDeletions** parameter (true/false) enables disabling "
-"users in Citeck that have been deleted from LDAP. User records are not "
-"deleted."
+"The **config.allowDeletions** parameter (true/false) enables disabling users"
+" in Citeck that have been deleted from LDAP. User records are not deleted."
 
-#: ../../admin/authorities/sync_authorities.rst:276
+#: ../../admin/authorities/sync_authorities.rst:278
 msgid "Логика:"
 msgstr "Logic:"
 
-#: ../../admin/authorities/sync_authorities.rst:278
+#: ../../admin/authorities/sync_authorities.rst:280
 msgid ""
 "При каждой синхронизации обновляются все пользователи, данные по которым "
 "пришли из LDAP."
@@ -710,123 +730,133 @@ msgstr ""
 "During each synchronization, all users whose data came from LDAP are "
 "updated."
 
-#: ../../admin/authorities/sync_authorities.rst:279
+#: ../../admin/authorities/sync_authorities.rst:281
 msgid ""
-"Пользователи с ``ldap-sync:ldapSyncId``, равным id текущей синхронизации,"
-" по которым данные из LDAP не пришли (т.е. удаленные из LDAP или не "
-"попадающие в поисковый запрос), при **allowDeletions = true** отключаются"
-" в Citeck: пользователю устанавливаются ``personDisabled: true`` и "
+"Пользователи с ``ldap-sync:ldapSyncId``, равным id текущей синхронизации, по"
+" которым данные из LDAP не пришли (т.е. удаленные из LDAP или не попадающие "
+"в поисковый запрос), при **allowDeletions = true** отключаются в Citeck: "
+"пользователю устанавливаются ``personDisabled: true`` и "
 "``personDisableReason: \"Removed form AD (ldap sync)\"``. Запись "
 "пользователя, его членство в группах и ссылки на него сохраняются. Имена "
 "пользователей сравниваются без учета регистра."
 msgstr ""
 "Users with ``ldap-sync:ldapSyncId`` equal to the id of the current "
-"synchronization for which no data came from LDAP (i.e., deleted from LDAP"
-" or not matching the search query) are disabled in Citeck when "
-"**allowDeletions = true**: the user gets ``personDisabled: true`` and "
-"``personDisableReason: \"Removed form AD (ldap sync)\"``. The user "
-"record, group membership and references to the user are preserved. "
-"Usernames are compared case-insensitively."
-
-#: ../../admin/authorities/sync_authorities.rst:281
-msgid ""
-"Если флаг **allowDeletions = false**, пользователи остаются активными в "
-"Citeck, даже если были удалены из LDAP."
-msgstr ""
-"If the **allowDeletions = false** flag is set, users remain active in "
-"Citeck even if they were deleted from LDAP."
+"synchronization for which no data came from LDAP (i.e., deleted from LDAP or"
+" not matching the search query) are disabled in Citeck when **allowDeletions"
+" = true**: the user gets ``personDisabled: true`` and ``personDisableReason:"
+" \"Removed form AD (ldap sync)\"``. The user record, group membership and "
+"references to the user are preserved. Usernames are compared case-"
+"insensitively."
 
 #: ../../admin/authorities/sync_authorities.rst:283
 msgid ""
-"Чтобы неполный ответ LDAP не привел к ошибочному отключению, в этом "
-"режиме синхронизация завершается ошибкой без отключения пользователей, "
-"если:"
+"Если флаг **allowDeletions = false**, исчезновение из LDAP не приводит к "
+"отключению пользователя в Citeck."
 msgstr ""
-"To prevent an incomplete LDAP response from causing erroneous disabling, "
-"in this mode synchronization fails with an error without disabling users "
-"if:"
+"If **allowDeletions = false**, disappearing from LDAP does not disable the "
+"user in Citeck."
 
 #: ../../admin/authorities/sync_authorities.rst:285
 msgid ""
-"сервер не подтвердил постраничную выдачу (paged results) или ответ "
-"неполный;"
+"Повторное появление отключенного пользователя в LDAP само по себе не "
+"включает его учетную запись в Citeck. При приведенном выше маппинге "
+"``personDisabled`` и ``personDisableReason`` автоматически не сбрасываются; "
+"для включения учетной записи их нужно изменить отдельно."
+msgstr ""
+"A disabled user reappearing in LDAP does not automatically enable their "
+"Citeck account. With the mapping above, ``personDisabled`` and "
+"``personDisableReason`` are not reset automatically; change them separately "
+"to enable the account."
+
+#: ../../admin/authorities/sync_authorities.rst:287
+msgid ""
+"Чтобы неполный ответ LDAP не привел к ошибочному отключению, в этом режиме "
+"синхронизация завершается ошибкой без отключения пользователей, если:"
+msgstr ""
+"To prevent an incomplete LDAP response from causing erroneous disabling, in "
+"this mode synchronization fails with an error without disabling users if:"
+
+#: ../../admin/authorities/sync_authorities.rst:289
+msgid ""
+"сервер не подтвердил постраничную выдачу (paged results) или ответ неполный;"
 msgstr ""
 "the server did not confirm paged results or the response is incomplete;"
 
-#: ../../admin/authorities/sync_authorities.rst:286
+#: ../../admin/authorities/sync_authorities.rst:290
 msgid "превышен лимит размера выборки (size limit);"
 msgstr "the size limit is exceeded;"
 
-#: ../../admin/authorities/sync_authorities.rst:287
+#: ../../admin/authorities/sync_authorities.rst:291
 msgid "базовый DN поиска не найден;"
 msgstr "the search base DN is not found;"
 
-#: ../../admin/authorities/sync_authorities.rst:288
+#: ../../admin/authorities/sync_authorities.rst:292
 msgid "получен referral;"
 msgstr "a referral is received;"
 
-#: ../../admin/authorities/sync_authorities.rst:289
-msgid "у какой-либо возвращенной записи пустой атрибут ``usernameAttributeName``."
-msgstr "any returned record has an empty ``usernameAttributeName`` attribute."
-
 #: ../../admin/authorities/sync_authorities.rst:293
 msgid ""
-"Флаги **allowDeletions** и **differential** не могут быть **true** "
-"одновременно: корректно определить пользователей на отключение можно "
-"только при полной синхронизации (**differential = false**)."
-msgstr ""
-"The **allowDeletions** and **differential** flags cannot both be **true**"
-" at the same time: users to be disabled can only be correctly identified "
-"during a full synchronization (**differential = false**)."
+"у какой-либо возвращенной записи пустой атрибут ``usernameAttributeName``."
+msgstr "any returned record has an empty ``usernameAttributeName`` attribute."
 
-#: ../../admin/authorities/sync_authorities.rst:295
+#: ../../admin/authorities/sync_authorities.rst:297
 msgid ""
-"Параметры **ignorePartialResultException** и "
-"**ignoreNameNotFoundException** должны быть **false**, **referral** - "
-"``ignore`` или ``throw``."
+"Флаги **allowDeletions** и **differential** не могут быть **true** "
+"одновременно: корректно определить пользователей на отключение можно только "
+"при полной синхронизации (**differential = false**)."
+msgstr ""
+"The **allowDeletions** and **differential** flags cannot both be **true** at"
+" the same time: users to be disabled can only be correctly identified during"
+" a full synchronization (**differential = false**)."
+
+#: ../../admin/authorities/sync_authorities.rst:299
+msgid ""
+"Параметры **ignorePartialResultException** и **ignoreNameNotFoundException**"
+" должны быть **false**, **referral** - ``ignore`` или ``throw``."
 msgstr ""
 "The **ignorePartialResultException** and **ignoreNameNotFoundException** "
 "parameters must be **false**, **referral** - ``ignore`` or ``throw``."
 
-#: ../../admin/authorities/sync_authorities.rst:297
+#: ../../admin/authorities/sync_authorities.rst:301
 msgid ""
 "Если флаг **allowDeletions = true**, то крайне не рекомендуется менять "
 "поисковый запрос (ldapSearch) при наличии уже синхронизированных "
 "пользователей, иначе не попавшие в новый запрос пользователи будут "
 "отключены. Если требуется изменить запрос, нужно убедиться, что в новый "
-"запрос входят все пользователи из старого, либо установить "
-"**allowDeletions = false**. Полностью пустой результат поиска приведет к "
-"отключению всех пользователей этой синхронизации."
+"запрос входят все пользователи из старого, либо установить **allowDeletions "
+"= false**. Полностью пустой результат поиска приведет к отключению всех "
+"пользователей этой синхронизации."
 msgstr ""
-"If the **allowDeletions = true** flag is set, it is strongly not "
-"recommended to change the search query (ldapSearch) when there are "
-"already synchronized users, otherwise users not matching the new query "
-"will be disabled. If the query needs to be changed, make sure that the "
-"new query includes all users from the old one, or set **allowDeletions = "
-"false**. A completely empty search result will disable all users of this"
-" synchronization."
+"If the **allowDeletions = true** flag is set, it is strongly not recommended"
+" to change the search query (ldapSearch) when there are already synchronized"
+" users, otherwise users not matching the new query will be disabled. If the "
+"query needs to be changed, make sure that the new query includes all users "
+"from the old one, or set **allowDeletions = false**. A completely empty "
+"search result will disable all users of this synchronization."
 
-#: ../../admin/authorities/sync_authorities.rst:299
+#: ../../admin/authorities/sync_authorities.rst:303
 msgid ""
-"**allowDeletions** действует только на пользователей. Группы не "
-"отключаются и физически не удаляются."
+"**config.allowDeletions** действует только на пользователей. Удаление "
+"исчезнувших групп настраивается независимо параметром "
+"**config.groups.allowDeletions** (см. :ref:`ldap_sync_group_deletions`)."
 msgstr ""
-"**allowDeletions** applies to users only. Groups are not disabled and are"
-" not physically deleted."
+"**config.allowDeletions** applies only to users. Deleting groups that have "
+"disappeared is configured independently using "
+"**config.groups.allowDeletions** (see :ref:`ldap_sync_group_deletions`)."
 
-#: ../../admin/authorities/sync_authorities.rst:305
+#: ../../admin/authorities/sync_authorities.rst:309
 msgid "Синхронизация групп"
 msgstr "Group synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:307
+#: ../../admin/authorities/sync_authorities.rst:311
 msgid ""
-"Синхронизация групп включается блоком ``config.groups`` и выполняется "
-"после успешного импорта пользователей в рамках того же запуска."
+"Синхронизация групп включается блоком ``config.groups`` и выполняется после "
+"успешного импорта пользователей в рамках того же запуска."
 msgstr ""
 "Group synchronization is enabled by the ``config.groups`` block and is "
 "performed after a successful user import within the same run."
 
-#: ../../admin/authorities/sync_authorities.rst:367
+#: ../../admin/authorities/sync_authorities.rst:372
 msgid "Описание атрибутов config.groups"
 msgstr "Description of config.groups attributes"
 
@@ -834,15 +864,15 @@ msgstr "Description of config.groups attributes"
 msgid "Параметры поиска групп"
 msgstr "Group search parameters"
 
-#: ../../admin/authorities/sync_authorities.rst:377
+#: ../../admin/authorities/sync_authorities.rst:382
 msgid ""
-"base - базовый DN для поиска относительно ``ldapConnection.base``, "
-"например ``ou=groups``. По умолчанию - пустая строка"
+"base - базовый DN для поиска относительно ``ldapConnection.base``, например "
+"``ou=groups``. По умолчанию - пустая строка"
 msgstr ""
-"base - base DN for search relative to ``ldapConnection.base``, for "
-"example ``ou=groups``. Default - empty string"
+"base - base DN for search relative to ``ldapConnection.base``, for example "
+"``ou=groups``. Default - empty string"
 
-#: ../../admin/authorities/sync_authorities.rst:378
+#: ../../admin/authorities/sync_authorities.rst:383
 msgid ""
 "filter - LDAP-фильтр для поиска (обязательный), например "
 "``(objectClass=groupOfNames)``, ``(objectClass=group)`` для Active "
@@ -852,67 +882,65 @@ msgstr ""
 "``(objectClass=groupOfNames)``, ``(objectClass=group)`` for Active "
 "Directory, ``(objectClass=posixGroup)``"
 
-#: ../../admin/authorities/sync_authorities.rst:381
+#: ../../admin/authorities/sync_authorities.rst:386
 msgid "idAttributeName"
 msgstr "idAttributeName"
 
-#: ../../admin/authorities/sync_authorities.rst:382
+#: ../../admin/authorities/sync_authorities.rst:387
 msgid ""
 "Атрибут LDAP, из которого формируется идентификатор группы. Для Active "
 "Directory обычно ``sAMAccountName``. Если у группы нет этого атрибута, "
 "синхронизация завершается ошибкой. По умолчанию - ``cn``"
 msgstr ""
 "LDAP attribute from which the group identifier is formed. For Active "
-"Directory it is usually ``sAMAccountName``. If a group does not have this"
-" attribute, synchronization fails with an error. Default - ``cn``"
+"Directory it is usually ``sAMAccountName``. If a group does not have this "
+"attribute, synchronization fails with an error. Default - ``cn``"
 
-#: ../../admin/authorities/sync_authorities.rst:383
+#: ../../admin/authorities/sync_authorities.rst:388
 msgid "idPrefix"
 msgstr "idPrefix"
 
-#: ../../admin/authorities/sync_authorities.rst:384
+#: ../../admin/authorities/sync_authorities.rst:389
 msgid ""
 "Префикс идентификатора группы в Citeck: из ``cn=sales`` получится группа "
 "``ldap_sales``. Итоговые идентификаторы должны быть уникальны в выборке, "
 "иначе синхронизация завершается ошибкой. По умолчанию - ``ldap_``"
 msgstr ""
-"Group identifier prefix in Citeck: ``cn=sales`` becomes the "
-"``ldap_sales`` group. The resulting identifiers must be unique within the"
-" result set, otherwise synchronization fails with an error. Default - "
-"``ldap_``"
+"Group identifier prefix in Citeck: ``cn=sales`` becomes the ``ldap_sales`` "
+"group. The resulting identifiers must be unique within the result set, "
+"otherwise synchronization fails with an error. Default - ``ldap_``"
 
-#: ../../admin/authorities/sync_authorities.rst:386
+#: ../../admin/authorities/sync_authorities.rst:391
 #, python-brace-format
 msgid ""
-"Атрибуты группы для синхронизации. Ключ - имя атрибута в Citeck, значение"
-" - атрибут в LDAP. Допустимы только ключи ``name`` и ``description``, "
-"состав группы синхронизируется отдельно. Поддерживаются процессоры "
-"атрибутов, как и для пользователей. По умолчанию - ``{\"name\": \"cn\", "
-"\"description\": \"description\"}``"
+"Атрибуты группы для синхронизации. Ключ - имя атрибута в Citeck, значение - "
+"атрибут в LDAP. Допустимы только ключи ``name`` и ``description``, состав "
+"группы синхронизируется отдельно. Поддерживаются процессоры атрибутов, как и"
+" для пользователей. По умолчанию - ``{\"name\": \"cn\", \"description\": "
+"\"description\"}``"
 msgstr ""
 "Group attributes to synchronize. Key - attribute name in Citeck, value - "
-"attribute in LDAP. Only the ``name`` and ``description`` keys are "
-"allowed; group membership is synchronized separately. Attribute "
-"processors are supported, same as for users. Default - ``{\"name\": "
-"\"cn\", \"description\": \"description\"}``"
+"attribute in LDAP. Only the ``name`` and ``description`` keys are allowed; "
+"group membership is synchronized separately. Attribute processors are "
+"supported, same as for users. Default - ``{\"name\": \"cn\", "
+"\"description\": \"description\"}``"
 
-#: ../../admin/authorities/sync_authorities.rst:387
+#: ../../admin/authorities/sync_authorities.rst:392
 msgid "memberAttributeName"
 msgstr "memberAttributeName"
 
-#: ../../admin/authorities/sync_authorities.rst:388
+#: ../../admin/authorities/sync_authorities.rst:393
 msgid ""
 "Атрибут LDAP со списком участников группы. Для ``groupOfUniqueNames`` - "
 "``uniqueMember``, для ``posixGroup`` - ``memberUid``. Ответы Active "
-"Directory вида ``member;range=...`` дочитываются полностью. По умолчанию "
-"- ``member``"
+"Directory вида ``member;range=...`` дочитываются полностью. По умолчанию - "
+"``member``"
 msgstr ""
-"LDAP attribute with the list of group members. For "
-"``groupOfUniqueNames`` - ``uniqueMember``, for ``posixGroup`` - "
-"``memberUid``. Active Directory responses like ``member;range=...`` are "
-"read in full. Default - ``member``"
+"LDAP attribute with the list of group members. For ``groupOfUniqueNames`` - "
+"``uniqueMember``, for ``posixGroup`` - ``memberUid``. Active Directory "
+"responses like ``member;range=...`` are read in full. Default - ``member``"
 
-#: ../../admin/authorities/sync_authorities.rst:389
+#: ../../admin/authorities/sync_authorities.rst:394
 msgid "memberIdType"
 msgstr "memberIdType"
 
@@ -920,81 +948,95 @@ msgstr "memberIdType"
 msgid "Формат значений атрибута участников:"
 msgstr "Format of member attribute values:"
 
-#: ../../admin/authorities/sync_authorities.rst:392
+#: ../../admin/authorities/sync_authorities.rst:397
 msgid ""
-"``DN`` - DN пользователей и вложенных групп. DN участников, не являющихся"
-" группами из выборки, должны находиться внутри ``ldapConnection.base``"
+"``DN`` - DN пользователей и вложенных групп. DN участников, не являющихся "
+"группами из выборки, должны находиться внутри ``ldapConnection.base``"
 msgstr ""
-"``DN`` - DNs of users and nested groups. DNs of members that are not "
-"groups from the result set must be located within ``ldapConnection.base``"
+"``DN`` - DNs of users and nested groups. DNs of members that are not groups "
+"from the result set must be located within ``ldapConnection.base``"
 
-#: ../../admin/authorities/sync_authorities.rst:393
+#: ../../admin/authorities/sync_authorities.rst:398
 msgid ""
 "``USERNAME`` - имена пользователей (например, ``memberUid`` в "
-"``posixGroup``). Пустые значения не допускаются. Вложенные группы в этом "
-"режиме не поддерживаются"
+"``posixGroup``). Пустые значения пропускаются с предупреждением. Вложенные "
+"группы в этом режиме не поддерживаются"
 msgstr ""
 "``USERNAME`` - usernames (for example, ``memberUid`` in ``posixGroup``). "
-"Empty values are not allowed. Nested groups are not supported in this "
-"mode"
+"Empty values are skipped with a warning. Nested groups are not supported in "
+"this mode"
 
-#: ../../admin/authorities/sync_authorities.rst:395
+#: ../../admin/authorities/sync_authorities.rst:400
 msgid "По умолчанию - ``DN``"
 msgstr "Default - ``DN``"
 
-#: ../../admin/authorities/sync_authorities.rst:396
+#: ../../admin/authorities/sync_authorities.rst:401
 msgid "personObjectClasses"
 msgstr "personObjectClasses"
 
-#: ../../admin/authorities/sync_authorities.rst:397
+#: ../../admin/authorities/sync_authorities.rst:402
 msgid ""
-"Используется при ``memberIdType: DN``. Если участник не является группой "
-"из выборки, по его ``objectClass`` (без учета регистра) проверяется, что "
-"это пользователь; имя пользователя берется из атрибута "
-"``usernameAttributeName``. Участник, который не является ни "
-"пользователем, ни группой из выборки, приводит к ошибке. По умолчанию - "
-"``[\"person\", \"inetOrgPerson\", \"user\"]``"
+"Используется при ``memberIdType: DN``. Если участник не распознан как "
+"группа, по его ``objectClass`` (без учета регистра) проверяется, что это "
+"пользователь; имя пользователя берется из атрибута "
+"``usernameAttributeName``. Неподходящие записи, записи с классом "
+"``computer`` и записи без имени пользователя пропускаются с предупреждением."
+" По умолчанию - ``[\"person\", \"inetOrgPerson\", \"user\"]``"
 msgstr ""
-"Used with ``memberIdType: DN``. If a member is not a group from the "
-"result set, its ``objectClass`` (case-insensitive) is checked to verify "
-"that it is a user; the username is taken from the "
-"``usernameAttributeName`` attribute. A member that is neither a user nor "
-"a group from the result set causes an error. Default - ``[\"person\", "
+"Used with ``memberIdType: DN``. If a member is not recognized as a group, "
+"its ``objectClass`` (case-insensitive) is checked to verify that it is a "
+"user; the username is taken from the ``usernameAttributeName`` attribute. "
+"Unsuitable entries, entries with the ``computer`` class and entries without "
+"a username are skipped with a warning. Default: ``[\"person\", "
 "\"inetOrgPerson\", \"user\"]``"
 
-#: ../../admin/authorities/sync_authorities.rst:399
+#: ../../admin/authorities/sync_authorities.rst:404
 msgid ""
 "Флаг дифференциальной синхронизации групп - читаются только группы, "
 "измененные после последней успешной синхронизации групп. Не зависит от "
-"``differential`` пользователей. ``false`` - полная синхронизация при "
-"каждом запуске. По умолчанию - ``true``"
+"``differential`` пользователей. ``false`` - полная синхронизация при каждом "
+"запуске. По умолчанию - ``true``"
 msgstr ""
 "Differential group synchronization flag - only groups modified after the "
 "last successful group synchronization are read. Independent of the user "
 "``differential`` setting. ``false`` - full synchronization on every run. "
 "Default - ``true``"
 
-#: ../../admin/authorities/sync_authorities.rst:401
+#: ../../admin/authorities/sync_authorities.rst:406
+msgid ""
+"Физически удалять в Citeck группы, исчезнувшие из LDAP или поисковой "
+"выборки. Действует только при полной сверке групп и не зависит от "
+"``config.allowDeletions`` пользователей. Совместим с ``groups.differential: "
+"true``: удаление выполняется при следующем полном чтении. По умолчанию - "
+"``false``. См. :ref:`ldap_sync_group_deletions`"
+msgstr ""
+"Physically delete groups in Citeck that have disappeared from LDAP or the "
+"search results. Applies only during full group reconciliation and is "
+"independent of the user setting ``config.allowDeletions``. Compatible with "
+"``groups.differential: true``: deletion takes place during the next full "
+"read. Default: ``false``. See :ref:`ldap_sync_group_deletions`"
+
+#: ../../admin/authorities/sync_authorities.rst:408
 msgid ""
 "Переопределяет ``modifyTimestampAttName`` для групп. Если не задан, "
 "используется значение из ``config``"
 msgstr ""
-"Overrides ``modifyTimestampAttName`` for groups. If not set, the value "
-"from ``config`` is used"
+"Overrides ``modifyTimestampAttName`` for groups. If not set, the value from "
+"``config`` is used"
 
-#: ../../admin/authorities/sync_authorities.rst:403
+#: ../../admin/authorities/sync_authorities.rst:410
 msgid ""
 "Переопределяет ``modifyTimestampFormat`` для групп. Если не задан, "
 "используется значение из ``config``"
 msgstr ""
-"Overrides ``modifyTimestampFormat`` for groups. If not set, the value "
-"from ``config`` is used"
+"Overrides ``modifyTimestampFormat`` for groups. If not set, the value from "
+"``config`` is used"
 
-#: ../../admin/authorities/sync_authorities.rst:404
+#: ../../admin/authorities/sync_authorities.rst:411
 msgid "fullSyncInterval"
 msgstr "fullSyncInterval"
 
-#: ../../admin/authorities/sync_authorities.rst:405
+#: ../../admin/authorities/sync_authorities.rst:412
 msgid ""
 "Интервал периодической полной сверки групп в формате ISO-8601, например "
 "``PT24H``: первый запуск после истечения интервала выполняет полную "
@@ -1003,12 +1045,11 @@ msgid ""
 "``null``"
 msgstr ""
 "Interval of periodic full group reconciliation in ISO-8601 format, for "
-"example ``PT24H``: the first run after the interval expires performs a "
-"full synchronization. An empty value or ``null`` - reconciliation is "
-"disabled. Zero, negative and invalid values are not allowed. Default - "
-"``null``"
+"example ``PT24H``: the first run after the interval expires performs a full "
+"synchronization. An empty value or ``null`` - reconciliation is disabled. "
+"Zero, negative and invalid values are not allowed. Default - ``null``"
 
-#: ../../admin/authorities/sync_authorities.rst:407
+#: ../../admin/authorities/sync_authorities.rst:414
 msgid ""
 "Из основного блока ``config`` синхронизация групп использует "
 "``ldapConnection``, ``batchSize``, ``usernameAttributeName``, а также "
@@ -1020,87 +1061,88 @@ msgstr ""
 "``modifyTimestampAttName`` and ``modifyTimestampFormat`` if they are not "
 "overridden in ``groups``."
 
-#: ../../admin/authorities/sync_authorities.rst:411
+#: ../../admin/authorities/sync_authorities.rst:418
 msgid ""
 "При включенной синхронизации групп в ``config.attributes`` пользователей "
 "нельзя указывать ``authorityGroups``, ``ldapGroups`` и их варианты "
 "``att_add_*`` / ``att_rem_*``: членство в группах управляется этапом "
 "синхронизации групп."
 msgstr ""
-"When group synchronization is enabled, ``authorityGroups``, "
-"``ldapGroups`` and their ``att_add_*`` / ``att_rem_*`` variants must not "
-"be specified in the user ``config.attributes``: group membership is "
-"managed by the group synchronization stage."
+"When group synchronization is enabled, ``authorityGroups``, ``ldapGroups`` "
+"and their ``att_add_*`` / ``att_rem_*`` variants must not be specified in "
+"the user ``config.attributes``: group membership is managed by the group "
+"synchronization stage."
 
-#: ../../admin/authorities/sync_authorities.rst:414
+#: ../../admin/authorities/sync_authorities.rst:421
 msgid "Членство в группах"
 msgstr "Group membership"
 
-#: ../../admin/authorities/sync_authorities.rst:416
+#: ../../admin/authorities/sync_authorities.rst:423
 msgid "Для групп и пользователей хранятся служебные атрибуты:"
 msgstr "The following service attributes are stored for groups and users:"
 
-#: ../../admin/authorities/sync_authorities.rst:425
+#: ../../admin/authorities/sync_authorities.rst:432
 msgid "ldapGroups"
 msgstr "ldapGroups"
 
-#: ../../admin/authorities/sync_authorities.rst:426
+#: ../../admin/authorities/sync_authorities.rst:433
 msgid ""
-"У пользователя или группы - прямые родительские группы, полученные из "
-"LDAP при последней успешной синхронизации. Не дает прав доступа"
+"У пользователя или группы - прямые родительские группы, полученные из LDAP "
+"при последней успешной синхронизации. Не дает прав доступа"
 msgstr ""
 "For a user or group - direct parent groups received from LDAP during the "
 "last successful synchronization. Does not grant access rights"
 
-#: ../../admin/authorities/sync_authorities.rst:427
+#: ../../admin/authorities/sync_authorities.rst:434
 msgid "ldapDn"
 msgstr "ldapDn"
 
-#: ../../admin/authorities/sync_authorities.rst:428
+#: ../../admin/authorities/sync_authorities.rst:435
 msgid ""
-"У группы - исходный DN в LDAP. Сохраняется, даже если группа исчезла из "
-"LDAP"
+"У группы - исходный DN в LDAP. При исчезновении группы сохраняется, если "
+"``groups.allowDeletions: false``"
 msgstr ""
-"For a group - the original DN in LDAP. Preserved even if the group has "
-"disappeared from LDAP"
+"For a group, its original DN in LDAP. Preserved when the group disappears if"
+" ``groups.allowDeletions: false``"
 
-#: ../../admin/authorities/sync_authorities.rst:429
+#: ../../admin/authorities/sync_authorities.rst:436
 msgid "ldapPresent"
 msgstr "ldapPresent"
 
-#: ../../admin/authorities/sync_authorities.rst:430
-msgid "У группы - присутствовала ли группа в последней успешной выборке из LDAP"
+#: ../../admin/authorities/sync_authorities.rst:437
+msgid ""
+"У группы - присутствовала ли группа в последней успешной выборке из LDAP"
 msgstr ""
 "For a group - whether the group was present in the last successful LDAP "
 "result set"
 
-#: ../../admin/authorities/sync_authorities.rst:431
+#: ../../admin/authorities/sync_authorities.rst:438
 msgid "managedBySync"
 msgstr "managedBySync"
 
-#: ../../admin/authorities/sync_authorities.rst:432
+#: ../../admin/authorities/sync_authorities.rst:439
 msgid "У группы - синхронизация, которой принадлежит группа"
 msgstr "For a group - the synchronization that owns the group"
 
-#: ../../admin/authorities/sync_authorities.rst:434
+#: ../../admin/authorities/sync_authorities.rst:441
 msgid ""
 "Изменения членства вычисляются сравнением двух снимков LDAP "
 "(``ldapGroups``), а не сравнением LDAP с текущим составом групп в Citeck "
 "(``authorityGroups``):"
 msgstr ""
 "Membership changes are calculated by comparing two LDAP snapshots "
-"(``ldapGroups``), not by comparing LDAP with the current group membership"
-" in Citeck (``authorityGroups``):"
+"(``ldapGroups``), not by comparing LDAP with the current group membership in"
+" Citeck (``authorityGroups``):"
 
-#: ../../admin/authorities/sync_authorities.rst:436
+#: ../../admin/authorities/sync_authorities.rst:443
 msgid "новые связи из LDAP добавляются в ``authorityGroups``;"
 msgstr "new links from LDAP are added to ``authorityGroups``;"
 
-#: ../../admin/authorities/sync_authorities.rst:437
+#: ../../admin/authorities/sync_authorities.rst:444
 msgid "удаленные в LDAP связи удаляются из ``authorityGroups``;"
 msgstr "links removed in LDAP are removed from ``authorityGroups``;"
 
-#: ../../admin/authorities/sync_authorities.rst:438
+#: ../../admin/authorities/sync_authorities.rst:445
 msgid ""
 "неизмененные связи из LDAP и вручную добавленные в Citeck связи не "
 "изменяются."
@@ -1108,42 +1150,42 @@ msgstr ""
 "unchanged links from LDAP and links added manually in Citeck are not "
 "changed."
 
-#: ../../admin/authorities/sync_authorities.rst:440
+#: ../../admin/authorities/sync_authorities.rst:447
 msgid ""
 "Таким образом, связь из LDAP, вручную удаленная в Citeck, не "
 "восстанавливается, пока она не изменится в LDAP (в том числе при полной "
 "синхронизации и после сброса состояния). Если связь удалена в LDAP, она "
 "удаляется и в Citeck, даже если была добавлена вручную повторно."
 msgstr ""
-"Thus, a link from LDAP that was manually removed in Citeck is not "
-"restored until it changes in LDAP (including during full synchronization "
-"and after a state reset). If a link is removed in LDAP, it is also "
-"removed in Citeck, even if it was manually added again."
+"Thus, a link from LDAP that was manually removed in Citeck is not restored "
+"until it changes in LDAP (including during full synchronization and after a "
+"state reset). If a link is removed in LDAP, it is also removed in Citeck, "
+"even if it was manually added again."
 
-#: ../../admin/authorities/sync_authorities.rst:442
+#: ../../admin/authorities/sync_authorities.rst:449
 msgid ""
 "Синхронизация не может забрать себе локальную группу Citeck или группу "
 "другой синхронизации с тем же идентификатором. Сохраненный ``ldapDn`` не "
-"позволяет использовать существующий идентификатор для группы с другим DN."
-" В обоих случаях этап групп завершается ошибкой без изменений. Изменение "
+"позволяет использовать существующий идентификатор для группы с другим DN. В "
+"обоих случаях этап групп завершается ошибкой без изменений. Изменение "
 "``idAttributeName``, ``idPrefix`` или DN групп требует плановой миграции."
 msgstr ""
 "A synchronization cannot take over a local Citeck group or a group of "
 "another synchronization with the same identifier. The saved ``ldapDn`` "
-"prevents an existing identifier from being used for a group with a "
-"different DN. In both cases, the group stage fails with an error without "
-"changes. Changing ``idAttributeName``, ``idPrefix`` or group DNs requires"
-" a planned migration."
+"prevents an existing identifier from being used for a group with a different"
+" DN. In both cases, the group stage fails with an error without changes. "
+"Changing ``idAttributeName``, ``idPrefix`` or group DNs requires a planned "
+"migration."
 
-#: ../../admin/authorities/sync_authorities.rst:446
+#: ../../admin/authorities/sync_authorities.rst:453
 msgid "Порядок выполнения"
 msgstr "Execution order"
 
-#: ../../admin/authorities/sync_authorities.rst:448
+#: ../../admin/authorities/sync_authorities.rst:455
 msgid "Один запуск синхронизации выполняет следующие шаги:"
 msgstr "A single synchronization run performs the following steps:"
 
-#: ../../admin/authorities/sync_authorities.rst:450
+#: ../../admin/authorities/sync_authorities.rst:457
 msgid ""
 "Проверка конфигурации групп и отсутствия атрибутов членства в маппинге "
 "пользователей."
@@ -1151,151 +1193,206 @@ msgstr ""
 "Validation of the group configuration and of the absence of membership "
 "attributes in the user mapping."
 
-#: ../../admin/authorities/sync_authorities.rst:451
-msgid "Импорт пользователей пакетами и сохранение метки времени пользователей."
+#: ../../admin/authorities/sync_authorities.rst:458
+msgid ""
+"Импорт пользователей пакетами и сохранение метки времени пользователей."
 msgstr "Import of users in batches and saving the user timestamp."
 
-#: ../../admin/authorities/sync_authorities.rst:452
+#: ../../admin/authorities/sync_authorities.rst:459
 msgid "Чтение измененных групп LDAP и их полного состава."
 msgstr "Reading modified LDAP groups and their full membership."
 
-#: ../../admin/authorities/sync_authorities.rst:453
+#: ../../admin/authorities/sync_authorities.rst:460
 msgid ""
-"Проверка итогового графа групп и атомарная запись атрибутов групп, "
-"снимков, изменений членства и метки времени групп."
+"Проверка итогового графа групп и атомарная запись атрибутов групп, снимков, "
+"изменений членства и метки времени групп."
 msgstr ""
 "Validation of the resulting group graph and atomic writing of group "
 "attributes, snapshots, membership changes and the group timestamp."
 
-#: ../../admin/authorities/sync_authorities.rst:455
+#: ../../admin/authorities/sync_authorities.rst:462
 msgid ""
 "При включенной синхронизации групп пакеты пользователей и метка "
 "пользователей сохраняются в отдельных транзакциях, а группы - в своей "
 "транзакции. Ошибка на этапе групп не отменяет уже импортированных "
-"пользователей и не сдвигает метки времени групп: следующий запуск "
-"повторит этап групп с последней успешной метки. Ошибка на этапе "
-"пользователей не дает запустить этап групп."
+"пользователей и не сдвигает метки времени групп: следующий запуск повторит "
+"этап групп с последней успешной метки. Ошибка на этапе пользователей не дает"
+" запустить этап групп."
 msgstr ""
-"When group synchronization is enabled, user batches and the user "
-"timestamp are saved in separate transactions, and groups are saved in "
-"their own transaction. An error at the group stage does not roll back "
-"already imported users and does not move the group timestamps: the next "
-"run will repeat the group stage from the last successful timestamp. An "
-"error at the user stage prevents the group stage from starting."
+"When group synchronization is enabled, user batches and the user timestamp "
+"are saved in separate transactions, and groups are saved in their own "
+"transaction. An error at the group stage does not roll back already imported"
+" users and does not move the group timestamps: the next run will repeat the "
+"group stage from the last successful timestamp. An error at the user stage "
+"prevents the group stage from starting."
 
-#: ../../admin/authorities/sync_authorities.rst:459
+#: ../../admin/authorities/sync_authorities.rst:466
 msgid "Полная и дифференциальная синхронизация групп"
 msgstr "Full and differential group synchronization"
 
-#: ../../admin/authorities/sync_authorities.rst:461
+#: ../../admin/authorities/sync_authorities.rst:468
 msgid ""
-"Первый запуск (или запуск после сброса состояния) всегда полный. "
-"Последующие запуски читают только группы, измененные с момента последней "
-"успешной синхронизации групп. Новые группы, в том числе вложенные, "
-"создаются в дифференциальном режиме, если их время изменения попадает в "
-"фильтр."
+"Первый запуск (или запуск после сброса состояния) всегда полный. Последующие"
+" запуски читают только группы, измененные с момента последней успешной "
+"синхронизации групп. Новые группы, в том числе вложенные, создаются в "
+"дифференциальном режиме, если их время изменения попадает в фильтр."
 msgstr ""
-"The first run (or a run after a state reset) is always full. Subsequent "
-"runs read only groups modified since the last successful group "
-"synchronization. New groups, including nested ones, are created in "
-"differential mode if their modification time matches the filter."
+"The first run (or a run after a state reset) is always full. Subsequent runs"
+" read only groups modified since the last successful group synchronization. "
+"New groups, including nested ones, are created in differential mode if their"
+" modification time matches the filter."
 
-#: ../../admin/authorities/sync_authorities.rst:463
+#: ../../admin/authorities/sync_authorities.rst:470
 msgid ""
-"Полная синхронизация дополнительно обрабатывает группы, исчезнувшие из "
-"LDAP или из поисковой выборки: у них снимаются связи, полученные из LDAP,"
-" и устанавливается ``ldapPresent: false``. Это происходит и при полностью"
-" пустом результате поиска групп - тогда так обрабатываются все группы "
-"этой синхронизации. Сама группа, ``ldapDn``, ручные назначения и ссылки "
-"на группу в правах и процессах сохраняются. При отключенной периодической"
-" сверке исчезнувшие группы сохраняют членство из LDAP до следующей полной"
-" синхронизации; удаление участников из существующих измененных групп "
+"Полная синхронизация дополнительно обрабатывает группы, исчезнувшие из LDAP "
+"или из поисковой выборки. Результат зависит от ``groups.allowDeletions`` "
+"(см. :ref:`ldap_sync_group_deletions`). При отключенной периодической сверке"
+" исчезнувшие группы сохраняют членство из LDAP до следующей полной "
+"синхронизации; удаление участников из существующих измененных групп "
 "обрабатывается и в дифференциальном режиме."
 msgstr ""
-"A full synchronization additionally processes groups that have "
-"disappeared from LDAP or from the search result set: their links "
-"received from LDAP are removed and ``ldapPresent: false`` is set. This "
-"also happens with a completely empty group search result - in that case "
-"all groups of this synchronization are processed this way. The group "
-"itself, ``ldapDn``, manual assignments and references to the group in "
-"permissions and processes are preserved. With periodic reconciliation "
-"disabled, disappeared groups keep their LDAP membership until the next "
-"full synchronization; removal of members from existing modified groups is"
-" processed in differential mode as well."
+"A full synchronization additionally processes groups that have disappeared "
+"from LDAP or the search results. The outcome depends on "
+"``groups.allowDeletions`` (see :ref:`ldap_sync_group_deletions`). With "
+"periodic reconciliation disabled, disappeared groups retain their LDAP "
+"membership until the next full synchronization; removing members from "
+"existing modified groups is also handled in differential mode."
 
-#: ../../admin/authorities/sync_authorities.rst:465
+#: ../../admin/authorities/sync_authorities.rst:472
 msgid "Полная синхронизация групп выполняется, если:"
 msgstr "A full group synchronization is performed if:"
 
-#: ../../admin/authorities/sync_authorities.rst:467
+#: ../../admin/authorities/sync_authorities.rst:474
 msgid "это первый запуск или состояние сброшено;"
 msgstr "this is the first run or the state has been reset;"
 
-#: ../../admin/authorities/sync_authorities.rst:468
+#: ../../admin/authorities/sync_authorities.rst:475
 msgid "``groups.differential: false``;"
 msgstr "``groups.differential: false``;"
 
-#: ../../admin/authorities/sync_authorities.rst:469
+#: ../../admin/authorities/sync_authorities.rst:476
 msgid ""
-"истек ``groups.fullSyncInterval`` с момента последней полной "
-"синхронизации групп."
+"истек ``groups.fullSyncInterval`` с момента последней полной синхронизации "
+"групп."
 msgstr ""
 "``groups.fullSyncInterval`` has expired since the last full group "
 "synchronization."
 
-#: ../../admin/authorities/sync_authorities.rst:473
+#: ../../admin/authorities/sync_authorities.rst:482
+msgid "Обработка исчезнувших групп"
+msgstr "Handling disappeared groups"
+
+#: ../../admin/authorities/sync_authorities.rst:484
+msgid ""
+"Параметр ``config.groups.allowDeletions`` определяет результат полной сверки"
+" для групп, которые больше не входят в LDAP-выборку:"
+msgstr ""
+"The ``config.groups.allowDeletions`` parameter determines the outcome of "
+"full reconciliation for groups that are no longer in the LDAP search "
+"results:"
+
+#: ../../admin/authorities/sync_authorities.rst:486
+msgid ""
+"``false`` (по умолчанию): связи, полученные из LDAP, снимаются, группа "
+"получает ``ldapPresent: false``. Сама запись группы, ее ``ldapDn``, ручные "
+"назначения и ссылки на нее в правах и процессах сохраняются;"
+msgstr ""
+"``false`` (the default): links obtained from LDAP are removed and the group "
+"is assigned ``ldapPresent: false``. The group record itself, its ``ldapDn``,"
+" manual assignments and references to it in permissions and processes are "
+"preserved;"
+
+#: ../../admin/authorities/sync_authorities.rst:487
+msgid ""
+"``true``: группа физически удаляется из Citeck вместе с ассоциациями с этой "
+"группой, включая ручные назначения. Удаляются только группы текущей "
+"синхронизации; локальные, чужие и защищенные системные группы удалять "
+"нельзя."
+msgstr ""
+"``true``: the group is physically deleted from Citeck along with its "
+"associations, including manual assignments. Only groups belonging to the "
+"current synchronization are deleted; local groups, groups belonging to other"
+" synchronizations and protected system groups cannot be deleted."
+
+#: ../../admin/authorities/sync_authorities.rst:489
+msgid ""
+"Удаление групп не зависит от ``config.allowDeletions`` пользователей. "
+"Сочетание ``groups.allowDeletions: true`` и ``groups.differential: true`` "
+"разрешено, но исчезнувшие группы удаляются только при следующем полном "
+"чтении, например по ``groups.fullSyncInterval``. Удаление применяется и к "
+"группам, ранее сохраненным с ``ldapPresent: false``."
+msgstr ""
+"Group deletion is independent of the user setting ``config.allowDeletions``."
+" Combining ``groups.allowDeletions: true`` with ``groups.differential: "
+"true`` is allowed, but disappeared groups are deleted only during the next "
+"full read, for example according to ``groups.fullSyncInterval``. Deletion "
+"also applies to groups previously retained with ``ldapPresent: false``."
+
+#: ../../admin/authorities/sync_authorities.rst:491
+msgid ""
+"Если при полной сверке поиск групп вернул пустой результат, обработка "
+"распространяется на все группы этой синхронизации. При включенном удалении "
+"сужение фильтра ``groups.ldapSearch`` может привести к физическому удалению "
+"групп, исключенных из выборки."
+msgstr ""
+"If the group search returns no results during full reconciliation, all "
+"groups belonging to this synchronization are processed. When deletion is "
+"enabled, narrowing the ``groups.ldapSearch`` filter can physically delete "
+"groups excluded from the search results."
+
+#: ../../admin/authorities/sync_authorities.rst:494
 msgid "Проверки и ограничения"
 msgstr "Checks and limitations"
 
-#: ../../admin/authorities/sync_authorities.rst:475
+#: ../../admin/authorities/sync_authorities.rst:496
 msgid ""
 "При включенной синхронизации групп требования к полноте ответа LDAP "
 "действуют и на этапе пользователей: импорт пользователей завершается "
-"ошибкой, если сервер не подтвердил постраничную выдачу, превышен size "
-"limit, базовый DN поиска не найден или получен referral. В этом случае "
-"этап групп не запускается."
+"ошибкой, если сервер не подтвердил постраничную выдачу, превышен size limit,"
+" базовый DN поиска не найден или получен referral. В этом случае этап групп "
+"не запускается."
 msgstr ""
 "When group synchronization is enabled, the LDAP response completeness "
-"requirements also apply at the user stage: user import fails with an "
-"error if the server did not confirm paged results, the size limit is "
-"exceeded, the search base DN is not found or a referral is received. In "
-"this case, the group stage is not started."
+"requirements also apply at the user stage: user import fails with an error "
+"if the server did not confirm paged results, the size limit is exceeded, the"
+" search base DN is not found or a referral is received. In this case, the "
+"group stage is not started."
 
-#: ../../admin/authorities/sync_authorities.rst:477
+#: ../../admin/authorities/sync_authorities.rst:498
 msgid ""
 "Синхронизация групп завершается ошибкой без каких-либо изменений групп, "
 "если:"
 msgstr ""
 "Group synchronization fails with an error without any group changes if:"
 
-#: ../../admin/authorities/sync_authorities.rst:479
+#: ../../admin/authorities/sync_authorities.rst:500
 msgid ""
-"ответ LDAP неполный: нет подтверждения постраничной выдачи, превышен size"
-" limit, базовый DN поиска групп не найден, неполный диапазон "
-"``member;range`` в Active Directory, получен referral;"
+"ответ LDAP неполный: нет подтверждения постраничной выдачи, превышен size "
+"limit, базовый DN поиска групп не найден, неполный диапазон ``member;range``"
+" в Active Directory, получен referral;"
 msgstr ""
-"the LDAP response is incomplete: paged results are not confirmed, the "
-"size limit is exceeded, the group search base DN is not found, the "
+"the LDAP response is incomplete: paged results are not confirmed, the size "
+"limit is exceeded, the group search base DN is not found, the "
 "``member;range`` range in Active Directory is incomplete, a referral is "
 "received;"
 
-#: ../../admin/authorities/sync_authorities.rst:480
+#: ../../admin/authorities/sync_authorities.rst:501
 msgid ""
-"в выборке есть группы с одинаковым итоговым идентификатором или группа "
-"без атрибута ``idAttributeName``;"
+"в выборке есть группы с одинаковым итоговым идентификатором или группа без "
+"атрибута ``idAttributeName``;"
 msgstr ""
-"the result set contains groups with the same resulting identifier or a "
-"group without the ``idAttributeName`` attribute;"
+"the result set contains groups with the same resulting identifier or a group"
+" without the ``idAttributeName`` attribute;"
 
-#: ../../admin/authorities/sync_authorities.rst:481
+#: ../../admin/authorities/sync_authorities.rst:502
 msgid ""
-"в итоговом графе групп (с учетом ручных связей) появляется цикл или "
-"группа включает сама себя;"
+"в итоговом графе групп (с учетом ручных связей) появляется цикл или группа "
+"включает сама себя;"
 msgstr ""
-"a cycle appears in the resulting group graph (including manual links) or "
-"a group contains itself;"
+"a cycle appears in the resulting group graph (including manual links) or a "
+"group contains itself;"
 
-#: ../../admin/authorities/sync_authorities.rst:482
+#: ../../admin/authorities/sync_authorities.rst:503
 msgid ""
 "итоговый идентификатор группы (с учетом ``idPrefix``) равен "
 "``ECOS_ADMINISTRATORS``, ``ALFRESCO_ADMINISTRATORS`` или ``EVERYONE``. "
@@ -1305,153 +1402,209 @@ msgid ""
 "например, ``idPrefix: \"ECOS_\"`` и ``cn=ADMINISTRATORS``;"
 msgstr ""
 "the resulting group identifier (including ``idPrefix``) equals "
-"``ECOS_ADMINISTRATORS``, ``ALFRESCO_ADMINISTRATORS`` or ``EVERYONE``. "
-"It is the resulting identifier that is checked: with the default prefix a"
-" match is impossible (the ``cn=EVERYONE`` group will be imported as "
-"``ldap_EVERYONE``), but it is possible with an empty or different prefix "
-"- for example, ``idPrefix: \"ECOS_\"`` and ``cn=ADMINISTRATORS``;"
+"``ECOS_ADMINISTRATORS``, ``ALFRESCO_ADMINISTRATORS`` or ``EVERYONE``. It is "
+"the resulting identifier that is checked: with the default prefix a match is"
+" impossible (the ``cn=EVERYONE`` group will be imported as "
+"``ldap_EVERYONE``), but it is possible with an empty or different prefix - "
+"for example, ``idPrefix: \"ECOS_\"`` and ``cn=ADMINISTRATORS``;"
 
-#: ../../admin/authorities/sync_authorities.rst:483
-msgid ""
-"новые связи из LDAP ведут к группам администраторов напрямую или через "
-"родительские группы. Существующие ручные назначения в группы "
-"администраторов сохраняются;"
-msgstr ""
-"new links from LDAP lead to administrator groups directly or through "
-"parent groups. Existing manual assignments to administrator groups are "
-"preserved;"
-
-#: ../../admin/authorities/sync_authorities.rst:484
-msgid ""
-"участник новой связи из LDAP не найден среди пользователей Citeck (в том "
-"числе если он не попадает в поисковый запрос пользователей). Удаление "
-"связи для несуществующего в Citeck участника пропускается без ошибки;"
-msgstr ""
-"a member of a new link from LDAP is not found among Citeck users "
-"(including when it does not match the user search query). Removing a "
-"link for a member that does not exist in Citeck is skipped without an "
-"error;"
-
-#: ../../admin/authorities/sync_authorities.rst:485
-msgid ""
-"участник группы не является ни пользователем, ни группой из выборки, его "
-"DN находится вне ``ldapConnection.base`` или при ``memberIdType: "
-"USERNAME`` значение участника пустое;"
-msgstr ""
-"a group member is neither a user nor a group from the result set, its DN"
-" is outside ``ldapConnection.base``, or with ``memberIdType: USERNAME`` "
-"the member value is empty;"
-
-#: ../../admin/authorities/sync_authorities.rst:486
+#: ../../admin/authorities/sync_authorities.rst:504
 msgid ""
 "группа с тем же идентификатором уже существует и не принадлежит этой "
 "синхронизации, либо связана с другим DN;"
 msgstr ""
-"a group with the same identifier already exists and does not belong to "
-"this synchronization, or is linked to a different DN;"
+"a group with the same identifier already exists and does not belong to this "
+"synchronization, or is linked to a different DN;"
 
-#: ../../admin/authorities/sync_authorities.rst:487
+#: ../../admin/authorities/sync_authorities.rst:505
 msgid ""
-"во время синхронизации изменились группы Citeck или их связи (например, "
-"при одновременном ручном редактировании) - в этом случае достаточно "
-"повторить запуск;"
+"во время синхронизации изменились группы Citeck или их связи (например, при "
+"одновременном ручном редактировании) - в этом случае достаточно повторить "
+"запуск;"
 msgstr ""
-"Citeck groups or their links changed during synchronization (for example,"
-" due to simultaneous manual editing) - in this case, it is enough to "
-"repeat the run;"
+"Citeck groups or their links changed during synchronization (for example, "
+"due to simultaneous manual editing) - in this case, it is enough to repeat "
+"the run;"
 
-#: ../../admin/authorities/sync_authorities.rst:488
+#: ../../admin/authorities/sync_authorities.rst:506
 msgid ""
-"при дифференциальной синхронизации измененная группа содержит группу, "
-"которая ранее исчезла из выборки (``ldapPresent: false``) и не попала в "
-"текущий набор измененных групп. Такой участник проверяется как "
-"пользователь и не проходит проверку по ``personObjectClasses``. Чтобы "
-"исправить ошибку, верните группу в поисковый запрос или удалите ее из "
-"состава родительской группы в LDAP."
+"возникла техническая ошибка LDAP или Records API, в том числе при чтении "
+"участников."
 msgstr ""
-"during differential synchronization, a modified group contains a group "
-"that previously disappeared from the result set (``ldapPresent: false``) "
-"and is not in the current set of modified groups. Such a member is "
-"checked as a user and fails the ``personObjectClasses`` check. To fix the"
-" error, return the group to the search query or remove it from the parent"
-" group in LDAP."
+"a technical LDAP or Records API error occurs, including when reading "
+"members."
 
-#: ../../admin/authorities/sync_authorities.rst:490
+#: ../../admin/authorities/sync_authorities.rst:508
 msgid "Также необходимо учитывать:"
 msgstr "Also keep in mind:"
 
-#: ../../admin/authorities/sync_authorities.rst:492
+#: ../../admin/authorities/sync_authorities.rst:510
 msgid ""
 "вложенные группы должны попадать в поисковый запрос групп "
 "``groups.ldapSearch``;"
 msgstr ""
 "nested groups must match the ``groups.ldapSearch`` group search query;"
 
-#: ../../admin/authorities/sync_authorities.rst:493
+#: ../../admin/authorities/sync_authorities.rst:511
 msgid ""
-"учетная запись LDAP должна иметь права на чтение всех групп, их "
-"участников и пользователей. Атрибут, скрытый правами доступа LDAP, "
-"неотличим от пустого;"
+"учетная запись LDAP должна иметь права на чтение всех групп, их участников и"
+" пользователей. Атрибут, скрытый правами доступа LDAP, неотличим от пустого;"
 msgstr ""
-"the LDAP account must have read permissions for all groups, their "
-"members and users. An attribute hidden by LDAP access rights is "
-"indistinguishable from an empty one;"
+"the LDAP account must have read permissions for all groups, their members "
+"and users. An attribute hidden by LDAP access rights is indistinguishable "
+"from an empty one;"
 
-#: ../../admin/authorities/sync_authorities.rst:494
+#: ../../admin/authorities/sync_authorities.rst:512
 msgid ""
-"имена пользователей из атрибута участников (или из "
-"``usernameAttributeName`` участника при ``memberIdType: DN``) приводятся "
-"к нижнему регистру перед поиском пользователя в Citeck;"
+"имена пользователей из атрибута участников (или из ``usernameAttributeName``"
+" участника при ``memberIdType: DN``) приводятся к нижнему регистру перед "
+"поиском пользователя в Citeck;"
 msgstr ""
 "usernames from the member attribute (or from the member's "
-"``usernameAttributeName`` with ``memberIdType: DN``) are converted to "
-"lower case before searching for the user in Citeck;"
+"``usernameAttributeName`` with ``memberIdType: DN``) are converted to lower "
+"case before searching for the user in Citeck;"
 
-#: ../../admin/authorities/sync_authorities.rst:495
+#: ../../admin/authorities/sync_authorities.rst:513
 msgid ""
 "основная группа Active Directory (``primaryGroupID``) не учитывается - "
 "учитывается только атрибут ``member``;"
 msgstr ""
-"the Active Directory primary group (``primaryGroupID``) is not taken into"
-" account - only the ``member`` attribute is used;"
+"the Active Directory primary group (``primaryGroupID``) is not taken into "
+"account - only the ``member`` attribute is used;"
 
-#: ../../admin/authorities/sync_authorities.rst:496
+#: ../../admin/authorities/sync_authorities.rst:514
 msgid ""
-"проверка графа читает все связи групп Citeck, а запись выполняется в "
-"одной транзакции - для крупных инсталляций рекомендуется нагрузочное "
-"тестирование;"
+"проверка графа читает все связи групп Citeck, а запись выполняется в одной "
+"транзакции - для крупных инсталляций рекомендуется нагрузочное тестирование;"
 msgstr ""
-"the graph check reads all Citeck group links, and writing is performed in"
-" a single transaction - load testing is recommended for large "
-"installations;"
+"the graph check reads all Citeck group links, and writing is performed in a "
+"single transaction - load testing is recommended for large installations;"
 
-#: ../../admin/authorities/sync_authorities.rst:497
+#: ../../admin/authorities/sync_authorities.rst:515
 msgid ""
-"глобальной блокировки от одновременного ручного редактирования групп нет:"
-" изменения, обнаруженные во время чтения, приводят к ошибке этапа групп, "
-"и запуск нужно повторить."
+"глобальной блокировки от одновременного ручного редактирования групп нет: "
+"изменения, обнаруженные во время чтения, приводят к ошибке этапа групп, и "
+"запуск нужно повторить."
 msgstr ""
 "there is no global lock against simultaneous manual editing of groups: "
-"changes detected during reading cause the group stage to fail, and the "
-"run must be repeated."
+"changes detected during reading cause the group stage to fail, and the run "
+"must be repeated."
 
-#: ../../admin/authorities/sync_authorities.rst:500
+#: ../../admin/authorities/sync_authorities.rst:518
+msgid "Участники, пропускаемые с предупреждением"
+msgstr "Members skipped with a warning"
+
+#: ../../admin/authorities/sync_authorities.rst:520
+msgid ""
+"Следующие случаи не прерывают этап групп: участник пропускается с сообщением"
+" ``WARN``, остальные участники обрабатываются, а метка успешной "
+"синхронизации групп сохраняется:"
+msgstr ""
+"The following cases do not interrupt the group stage: the member is skipped "
+"with a ``WARN`` message, other members are processed, and the successful "
+"group synchronization timestamp is saved:"
+
+#: ../../admin/authorities/sync_authorities.rst:522
+msgid "некорректный DN или DN вне ``ldapConnection.base``;"
+msgstr "an invalid DN or a DN outside ``ldapConnection.base``;"
+
+#: ../../admin/authorities/sync_authorities.rst:523
+msgid ""
+"запись LDAP отсутствует, не подходит по ``personObjectClasses``, содержит "
+"класс ``computer`` или не имеет ``usernameAttributeName``;"
+msgstr ""
+"an LDAP entry is missing, does not match ``personObjectClasses``, has the "
+"``computer`` class or lacks ``usernameAttributeName``;"
+
+#: ../../admin/authorities/sync_authorities.rst:524
+msgid "пустое значение участника при ``memberIdType: USERNAME``;"
+msgstr "an empty member value with ``memberIdType: USERNAME``;"
+
+#: ../../admin/authorities/sync_authorities.rst:525
+msgid ""
+"участник разрешен из LDAP, но соответствующий пользователь или группа "
+"отсутствует в Citeck."
+msgstr ""
+"a member is resolved from LDAP, but the corresponding user or group does not"
+" exist in Citeck."
+
+#: ../../admin/authorities/sync_authorities.rst:527
+msgid ""
+"При дифференциальном чтении вложенные группы распознаются по текущей выборке"
+" и сохраненным DN активных групп этой синхронизации. Группа, ранее "
+"помеченная ``ldapPresent: false`` и не попавшая в текущую выборку, не "
+"считается известной активной группой. Если она не проходит проверку "
+"пользователя, такой участник пропускается."
+msgstr ""
+"During differential reads, nested groups are recognized using the current "
+"search results and the saved DNs of active groups belonging to this "
+"synchronization. A group previously marked ``ldapPresent: false`` and absent"
+" from the current results is not considered a known active group. If it "
+"fails user validation, the member is skipped."
+
+#: ../../admin/authorities/sync_authorities.rst:529
+msgid ""
+"Пропущенные участники не входят в новый снимок состава группы. Если "
+"пользователь появился в Citeck после пропуска, членство добавится при "
+"следующем чтении соответствующей группы из LDAP. Для неизмененной группы "
+"может потребоваться полная сверка или изменение группы в LDAP. Удаление "
+"связи для уже отсутствующего в Citeck участника пропускается без ошибки."
+msgstr ""
+"Skipped members are excluded from the new group membership snapshot. If a "
+"user appears in Citeck after being skipped, membership is added the next "
+"time the corresponding group is read from LDAP. An unchanged group may "
+"require full reconciliation or a change to the group in LDAP. Removing a "
+"link to a member already absent from Citeck is skipped without an error."
+
+#: ../../admin/authorities/sync_authorities.rst:531
+msgid ""
+"Технические ошибки LDAP и Records API, неполная постраничная выдача и "
+"неполные диапазоны ``member;range`` не относятся к пропуску участников: они "
+"прерывают этап групп без сохранения его изменений и метки времени."
+msgstr ""
+"Technical LDAP and Records API errors, incomplete paginated results and "
+"incomplete ``member;range`` ranges are not treated as skipped members: they "
+"interrupt the group stage without saving its changes or timestamp."
+
+#: ../../admin/authorities/sync_authorities.rst:534
+msgid "Ручная иерархия административных групп"
+msgstr "Manual hierarchy of administrative groups"
+
+#: ../../admin/authorities/sync_authorities.rst:536
+msgid ""
+"Импорт групп с итоговыми идентификаторами ``ECOS_ADMINISTRATORS``, "
+"``ALFRESCO_ADMINISTRATORS`` и ``EVERYONE`` запрещен. При этом ручные "
+"родительские связи обычной импортированной группы сохраняются. Синхронизация"
+" допускает добавление участников в такую группу, даже если она прямо или "
+"через других родителей включена в группу администраторов. В этом случае "
+"импортированные участники наследуют соответствующие права; синхронизация не "
+"блокирует такое косвенное членство."
+msgstr ""
+"Importing groups with the final identifiers ``ECOS_ADMINISTRATORS``, "
+"``ALFRESCO_ADMINISTRATORS`` and ``EVERYONE`` is prohibited. However, manual "
+"parent links of an ordinary imported group are preserved. Synchronization "
+"allows members to be added to such a group even if it belongs to an "
+"administrators group directly or through other parents. In this case, "
+"imported members inherit the corresponding permissions; synchronization does"
+" not block such indirect membership."
+
+#: ../../admin/authorities/sync_authorities.rst:540
 msgid "Настройки для разных LDAP серверов"
 msgstr "Settings for different LDAP servers"
 
-#: ../../admin/authorities/sync_authorities.rst:507
+#: ../../admin/authorities/sync_authorities.rst:547
 msgid "Сервер / класс групп"
 msgstr "Server / group class"
 
-#: ../../admin/authorities/sync_authorities.rst:508
+#: ../../admin/authorities/sync_authorities.rst:548
 msgid "Настройки"
 msgstr "Settings"
 
-#: ../../admin/authorities/sync_authorities.rst:509
+#: ../../admin/authorities/sync_authorities.rst:549
 msgid "OpenLDAP, ``groupOfNames``"
 msgstr "OpenLDAP, ``groupOfNames``"
 
-#: ../../admin/authorities/sync_authorities.rst:510
+#: ../../admin/authorities/sync_authorities.rst:550
 msgid ""
 "``groups.ldapSearch.filter: (objectClass=groupOfNames)``, "
 "``memberAttributeName: member``, ``memberIdType: DN`` (значения по "
@@ -1460,62 +1613,57 @@ msgstr ""
 "``groups.ldapSearch.filter: (objectClass=groupOfNames)``, "
 "``memberAttributeName: member``, ``memberIdType: DN`` (default values)"
 
-#: ../../admin/authorities/sync_authorities.rst:511
+#: ../../admin/authorities/sync_authorities.rst:551
 msgid "``groupOfUniqueNames``"
 msgstr "``groupOfUniqueNames``"
 
-#: ../../admin/authorities/sync_authorities.rst:512
+#: ../../admin/authorities/sync_authorities.rst:552
 msgid ""
-"``memberAttributeName: uniqueMember``, ``memberIdType: DN``. Значения "
-"должны быть DN без необязательного суффикса UID"
+"``memberAttributeName: uniqueMember``, ``memberIdType: DN``. Значения должны"
+" быть DN без необязательного суффикса UID"
 msgstr ""
-"``memberAttributeName: uniqueMember``, ``memberIdType: DN``. Values must "
-"be DNs without the optional UID suffix"
+"``memberAttributeName: uniqueMember``, ``memberIdType: DN``. Values must be "
+"DNs without the optional UID suffix"
 
-#: ../../admin/authorities/sync_authorities.rst:513
+#: ../../admin/authorities/sync_authorities.rst:553
 msgid "``posixGroup``"
 msgstr "``posixGroup``"
 
-#: ../../admin/authorities/sync_authorities.rst:514
+#: ../../admin/authorities/sync_authorities.rst:554
 msgid ""
-"``memberAttributeName: memberUid``, ``memberIdType: USERNAME``. Вложенные"
-" группы не поддерживаются"
+"``memberAttributeName: memberUid``, ``memberIdType: USERNAME``. Вложенные "
+"группы не поддерживаются"
 msgstr ""
 "``memberAttributeName: memberUid``, ``memberIdType: USERNAME``. Nested "
 "groups are not supported"
 
-#: ../../admin/authorities/sync_authorities.rst:515
+#: ../../admin/authorities/sync_authorities.rst:555
 msgid "Active Directory"
 msgstr "Active Directory"
 
-#: ../../admin/authorities/sync_authorities.rst:516
+#: ../../admin/authorities/sync_authorities.rst:556
 msgid ""
 "``usernameAttributeName: sAMAccountName``, ``modifyTimestampAttName: "
 "whenChanged``, ``modifyTimestampFormat: yyyyMMddHHmmss.0'Z'``, "
-"``groups.ldapSearch.filter: (objectClass=group)``, "
-"``groups.idAttributeName: sAMAccountName``"
+"``groups.ldapSearch.filter: (objectClass=group)``, ``groups.idAttributeName:"
+" sAMAccountName``"
 msgstr ""
 "``usernameAttributeName: sAMAccountName``, ``modifyTimestampAttName: "
 "whenChanged``, ``modifyTimestampFormat: yyyyMMddHHmmss.0'Z'``, "
-"``groups.ldapSearch.filter: (objectClass=group)``, "
-"``groups.idAttributeName: sAMAccountName``"
+"``groups.ldapSearch.filter: (objectClass=group)``, ``groups.idAttributeName:"
+" sAMAccountName``"
 
 #~ msgid "Важные замечания:"
 #~ msgstr "Important notes:"
 
 #~ msgid ""
-#~ "Синхронизация выполняется на стороне "
-#~ "микросервиса ecos-model. |br| Настройка "
-#~ "осуществляется через журнал *Модель -> "
-#~ "Синхронизация* или деплой соответствующего "
-#~ "артифакта ``authorities-sync``."
+#~ "Синхронизация выполняется на стороне микросервиса ecos-model. |br| Настройка"
+#~ " осуществляется через журнал *Модель -> Синхронизация* или деплой "
+#~ "соответствующего артифакта ``authorities-sync``."
 #~ msgstr ""
-#~ "Synchronization is performed on the "
-#~ "ecos-model microservice side. |br| "
-#~ "Configuration is done through the *Model"
-#~ " -> Synchronization* journal or by "
-#~ "deploying the corresponding ``authorities-"
-#~ "sync`` artifact."
+#~ "Synchronization is performed on the ecos-model microservice side. |br| "
+#~ "Configuration is done through the *Model -> Synchronization* journal or by "
+#~ "deploying the corresponding ``authorities-sync`` artifact."
 
 #~ msgid "Общие атрибуты"
 #~ msgstr "Common Attributes"
@@ -1525,8 +1673,7 @@ msgstr ""
 
 #~ msgid "Тип синхронизации. См. :ref:`Типы синхронизации <sync-auth-types>`"
 #~ msgstr ""
-#~ "Synchronization type. See :ref:`Synchronization "
-#~ "types <sync-auth-types>`"
+#~ "Synchronization type. See :ref:`Synchronization types <sync-auth-types>`"
 
 #~ msgid "Периодичность синхронизации (PT10S - каждые 10 секунд)"
 #~ msgstr "Synchronization frequency (PT10S - every 10 seconds)"
@@ -1535,37 +1682,27 @@ msgstr ""
 #~ msgstr "Synchronization configuration specific to each synchronization type"
 
 #~ msgid ""
-#~ "Версия синхронизации. При изменении "
-#~ "конфигурации синхронизации, необходимо увеличить "
-#~ "версию"
+#~ "Версия синхронизации. При изменении конфигурации синхронизации, необходимо "
+#~ "увеличить версию"
 #~ msgstr ""
-#~ "Synchronization version. When changing "
-#~ "synchronization configuration, the version "
-#~ "must be incremented"
+#~ "Synchronization version. When changing synchronization configuration, the "
+#~ "version must be incremented"
 
 #~ msgid "Тип синхронизируемых объектов, возможные значения - PERSON, GROUP"
 #~ msgstr "Type of synchronized objects, possible values - PERSON, GROUP"
 
 #~ msgid ""
-#~ "Управление созданием новых объектов через "
-#~ "синхронизацию. При значении ``true`` создание"
-#~ " пользователя или группы (в зависимости "
-#~ "от ``authorityType``) через журнал направляет"
-#~ " запрос в систему синхронизации. Если "
-#~ "внешняя система поддерживает создание таких"
-#~ " объектов, она создаст их на своей"
-#~ " стороне и затем синхронизирует обратно "
-#~ "в Citeck."
+#~ "Управление созданием новых объектов через синхронизацию. При значении "
+#~ "``true`` создание пользователя или группы (в зависимости от "
+#~ "``authorityType``) через журнал направляет запрос в систему синхронизации. "
+#~ "Если внешняя система поддерживает создание таких объектов, она создаст их на"
+#~ " своей стороне и затем синхронизирует обратно в Citeck."
 #~ msgstr ""
-#~ "Controls the creation of new authority"
-#~ " records through the API. When set"
-#~ " to ``true``, a record in the "
-#~ "user system will be created for "
-#~ "each user (depending on ``authorityType``) "
-#~ "after successful authentication. If a "
-#~ "record for this user did not "
-#~ "previously exist, its creation cannot "
-#~ "cause any undesirable effects in Citeck."
+#~ "Controls the creation of new authority records through the API. When set to "
+#~ "``true``, a record in the user system will be created for each user "
+#~ "(depending on ``authorityType``) after successful authentication. If a "
+#~ "record for this user did not previously exist, its creation cannot cause any"
+#~ " undesirable effects in Citeck."
 
 #~ msgid "Типы синхронизаций"
 #~ msgstr "Synchronization Types"
@@ -1576,40 +1713,35 @@ msgstr ""
 #~ msgid "Тип: ``alfresco``"
 #~ msgstr "Type: ``alfresco``"
 
-#~ msgid "Описание атрибутов конфигурации синхронизации пользователей из Alfresco"
+#~ msgid ""
+#~ "Описание атрибутов конфигурации синхронизации пользователей из Alfresco"
 #~ msgstr ""
-#~ "Description of configuration attributes for"
-#~ " synchronizing users from Alfresco"
+#~ "Description of configuration attributes for synchronizing users from "
+#~ "Alfresco"
 
 #~ msgid "Размер пакета для синхронизации"
 #~ msgstr "Batch size for synchronization"
 
 #~ msgid ""
-#~ "Список атрибутов для синхронизации. Ключ "
-#~ "- имя атрибута в Citeck, значение "
-#~ "- атрибут в Alfresco"
+#~ "Список атрибутов для синхронизации. Ключ - имя атрибута в Citeck, значение -"
+#~ " атрибут в Alfresco"
 #~ msgstr ""
-#~ "List of attributes to synchronize. Key"
-#~ " - attribute name in Citeck, value"
-#~ " - attribute in Alfresco"
+#~ "List of attributes to synchronize. Key - attribute name in Citeck, value - "
+#~ "attribute in Alfresco"
 
 #~ msgid ""
-#~ "Атрибут LDAP, содержащий имя пользователя "
-#~ "(username), должно быть уникальным в "
-#~ "системе. По умолчанию - ``uid``"
+#~ "Атрибут LDAP, содержащий имя пользователя (username), должно быть уникальным"
+#~ " в системе. По умолчанию - ``uid``"
 #~ msgstr ""
-#~ "LDAP attribute containing the username, "
-#~ "must be unique in the system. "
+#~ "LDAP attribute containing the username, must be unique in the system. "
 #~ "Default - ``uid``"
 
 #~ msgid ""
-#~ "Список атрибутов для синхронизации. Ключ "
-#~ "- имя атрибута в Citeck, значение "
-#~ "- атрибут в LDAP"
+#~ "Список атрибутов для синхронизации. Ключ - имя атрибута в Citeck, значение -"
+#~ " атрибут в LDAP"
 #~ msgstr ""
-#~ "List of attributes to synchronize. Key"
-#~ " - attribute name in Citeck, value"
-#~ " - attribute in LDAP"
+#~ "List of attributes to synchronize. Key - attribute name in Citeck, value - "
+#~ "attribute in LDAP"
 
 #~ msgid "filer - фильтр для поиска"
 #~ msgstr "filter - filter for search"
@@ -1621,38 +1753,94 @@ msgstr ""
 #~ msgstr "urls - list of server URLs"
 
 #~ msgid ""
-#~ "Для новой логики синхронизации пользователей"
-#~ " из LDAP был добавлен дополнительный "
-#~ "функционал с удаления пользователя из "
-#~ "Citeck если он был удален в LDAP."
-#~ " |br| В конфигурацию lDAP добавлен "
-#~ "новый параметр **config.allowDeletions** "
-#~ "(true/false). |br| Пример полной конфигурации:"
+#~ "Для новой логики синхронизации пользователей из LDAP был добавлен "
+#~ "дополнительный функционал с удаления пользователя из Citeck если он был "
+#~ "удален в LDAP. |br| В конфигурацию lDAP добавлен новый параметр "
+#~ "**config.allowDeletions** (true/false). |br| Пример полной конфигурации:"
 #~ msgstr ""
-#~ "For the new user synchronization logic"
-#~ " from LDAP, additional functionality has"
-#~ " been added to delete a user "
-#~ "from Citeck if they were deleted "
-#~ "in LDAP. |br| A new parameter "
-#~ "**config.allowDeletions** (true/false) has been "
-#~ "added to the LDAP configuration. |br|"
-#~ " Full configuration example:"
+#~ "For the new user synchronization logic from LDAP, additional functionality "
+#~ "has been added to delete a user from Citeck if they were deleted in LDAP. "
+#~ "|br| A new parameter **config.allowDeletions** (true/false) has been added "
+#~ "to the LDAP configuration. |br| Full configuration example:"
 
 #~ msgid ""
-#~ "При повторной синхронизации, мы обновляем "
-#~ "всех пользователей, данные по которым "
-#~ "пришли из LDAP, и если у нас "
-#~ "остались пользователи, которые не обновлялись"
-#~ " (т.е. были удалены из LDAP и "
-#~ "по ним не пришло никаких данных), "
-#~ "то при флаге **allowDeletions = true**"
-#~ " такие пользователи удаляются из Citeck."
+#~ "При повторной синхронизации, мы обновляем всех пользователей, данные по "
+#~ "которым пришли из LDAP, и если у нас остались пользователи, которые не "
+#~ "обновлялись (т.е. были удалены из LDAP и по ним не пришло никаких данных), "
+#~ "то при флаге **allowDeletions = true** такие пользователи удаляются из "
+#~ "Citeck."
 #~ msgstr ""
-#~ "During re-synchronization, we update all"
-#~ " users whose data came from LDAP, "
-#~ "and if we have users who were "
-#~ "not updated (i.e., were deleted from "
-#~ "LDAP and no data was received for"
-#~ " them), then with the **allowDeletions "
-#~ "= true** flag, such users are "
-#~ "deleted from Citeck."
+#~ "During re-synchronization, we update all users whose data came from LDAP, "
+#~ "and if we have users who were not updated (i.e., were deleted from LDAP and "
+#~ "no data was received for them), then with the **allowDeletions = true** "
+#~ "flag, such users are deleted from Citeck."
+
+#~ msgid ""
+#~ "Действием **«Скачать»** получить json, изменить и загрузить повторно — "
+#~ "существующая запись обновляется, дубликат не создаётся."
+#~ msgstr ""
+#~ "Use the **\"Download\"** action to get the json, edit it and upload it again"
+#~ " — the existing record is updated, no duplicate is created."
+
+#~ msgid "Флаг включения синхронизации"
+#~ msgstr "Flag that enables synchronization"
+
+#~ msgid ""
+#~ "Если флаг **allowDeletions = false**, пользователи остаются активными в "
+#~ "Citeck, даже если были удалены из LDAP."
+#~ msgstr ""
+#~ "If the **allowDeletions = false** flag is set, users remain active in Citeck"
+#~ " even if they were deleted from LDAP."
+
+#~ msgid ""
+#~ "**allowDeletions** действует только на пользователей. Группы не отключаются "
+#~ "и физически не удаляются."
+#~ msgstr ""
+#~ "**allowDeletions** applies to users only. Groups are not disabled and are "
+#~ "not physically deleted."
+
+#~ msgid ""
+#~ "У группы - исходный DN в LDAP. Сохраняется, даже если группа исчезла из LDAP"
+#~ msgstr ""
+#~ "For a group - the original DN in LDAP. Preserved even if the group has "
+#~ "disappeared from LDAP"
+
+#~ msgid ""
+#~ "новые связи из LDAP ведут к группам администраторов напрямую или через "
+#~ "родительские группы. Существующие ручные назначения в группы администраторов"
+#~ " сохраняются;"
+#~ msgstr ""
+#~ "new links from LDAP lead to administrator groups directly or through parent "
+#~ "groups. Existing manual assignments to administrator groups are preserved;"
+
+#~ msgid ""
+#~ "участник новой связи из LDAP не найден среди пользователей Citeck (в том "
+#~ "числе если он не попадает в поисковый запрос пользователей). Удаление связи "
+#~ "для несуществующего в Citeck участника пропускается без ошибки;"
+#~ msgstr ""
+#~ "a member of a new link from LDAP is not found among Citeck users (including "
+#~ "when it does not match the user search query). Removing a link for a member "
+#~ "that does not exist in Citeck is skipped without an error;"
+
+#~ msgid ""
+#~ "участник группы не является ни пользователем, ни группой из выборки, его DN "
+#~ "находится вне ``ldapConnection.base`` или при ``memberIdType: USERNAME`` "
+#~ "значение участника пустое;"
+#~ msgstr ""
+#~ "a group member is neither a user nor a group from the result set, its DN is "
+#~ "outside ``ldapConnection.base``, or with ``memberIdType: USERNAME`` the "
+#~ "member value is empty;"
+
+#~ msgid ""
+#~ "при дифференциальной синхронизации измененная группа содержит группу, "
+#~ "которая ранее исчезла из выборки (``ldapPresent: false``) и не попала в "
+#~ "текущий набор измененных групп. Такой участник проверяется как пользователь "
+#~ "и не проходит проверку по ``personObjectClasses``. Чтобы исправить ошибку, "
+#~ "верните группу в поисковый запрос или удалите ее из состава родительской "
+#~ "группы в LDAP."
+#~ msgstr ""
+#~ "during differential synchronization, a modified group contains a group that "
+#~ "previously disappeared from the result set (``ldapPresent: false``) and is "
+#~ "not in the current set of modified groups. Such a member is checked as a "
+#~ "user and fails the ``personObjectClasses`` check. To fix the error, return "
+#~ "the group to the search query or remove it from the parent group in LDAP."
