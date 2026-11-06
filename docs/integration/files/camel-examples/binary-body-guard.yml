@@ -1,0 +1,67 @@
+---
+# Telling a downloaded file from an error page served with a code 200, with BinaryBodyGuardProcessor.
+#
+# Scenario: the route downloads the mp3 of a call from the Mango Office VPBX API. A code 200 alone
+# does not mean that the mp3 arrived - the api, a proxy or a captive gateway on the way can answer
+# an html or a json page of their own with that code. Without the check such a body would be sent
+# to the transcription and then stored as "call.mp3": a broken attachment on a call that looks
+# processed.
+#
+# The processor never throws: a body that is not what the route asked for is an expected answer of
+# the remote side, and the route decides what to do with it.
+- beans:
+    - name: recordingGuard
+      type: ru.citeck.ecos.camel.processor.BinaryBodyGuardProcessor
+      properties:
+        # The mp3 is held in memory several times over before it reaches the storage - as the
+        # byte[], as the base64 string of the mutation, as the json around it. A telephony mp3 runs
+        # at some 32 kbit/s, so 50 MB cover a call of three and a half hours; a body larger than
+        # that is likelier to be a wrong answer than a real recording. `0` removes the limit.
+        maxSize: 52428800
+        # Substrings of a Content-Type that mean "this is not a file", comma separated. These two
+        # lines are the defaults, written out to show the shape of the properties; a route that
+        # downloads xml files would drop both xml entries and the "text/" one that covers
+        # "text/xml" - "/json,+json,/html,+html" - and would also drop "<" from the first bytes
+        # below, since every xml body starts with it. A substring is matched against the whole
+        # header, so it carries the separator of the media type: a bare "xml" also matches
+        # "application/vnd.openxmlformats-..." and would reject an xlsx.
+        rejectedContentTypes: "text/,/json,+json,/xml,+xml,/html,+html"
+        # The characters no binary body may start with: the opening ones of an html page and of a
+        # json answer. An mp3 begins with the "ID3" tag or with a frame sync byte 0xFF, so a real
+        # recording never falls under the check.
+        rejectedFirstBytes: "<,{"
+        # The prefix of the written variables: mangoRecordingAccepted, mangoRecordingRejectReason,
+        # mangoRecordingSize. Without the property they stay as bodyAccepted, bodyRejectReason and
+        # bodySize.
+        variablePrefix: mangoRecording
+
+- route:
+    id: download-recording
+    from:
+      uri: "direct:download-recording"
+      steps:
+        # In a real route the answer arrives here from the provider, and the guard is the step right
+        # after it:
+        #   - to: "{{ecos-endpoint:mango-office/url}}/vpbx/queries/recording/post?followRedirects=true"
+        # No `convertBodyTo` is needed before the guard - it reads the body as byte[] itself and,
+        # when the body was a stream, puts the bytes back into the message, so the steps below still
+        # have the file to work with.
+        - process:
+            ref: recordingGuard
+        - choice:
+            when:
+              - simple: "${variable.mangoRecordingAccepted} == true"
+                steps:
+                  - log:
+                      message: "The recording of call ${header.MangoEntryId} is downloaded, ${variable.mangoRecordingSize} bytes"
+                  # ... transcribe the recording and store it in the activity
+            otherwise:
+              steps:
+                # The cause is logged rather than hidden: "the body is rejected by its Content-Type
+                # 'text/html'" tells the difference between a broken download and a provider that
+                # answers a login page, which a bare "failed" would not.
+                - log:
+                    loggingLevel: WARN
+                    message: "The answer for call ${header.MangoEntryId} is not a recording: ${variable.mangoRecordingRejectReason} (${variable.mangoRecordingSize} bytes)"
+                  # ... a real route marks the call here:
+                  #   - to: "direct:mark-recording-failed"

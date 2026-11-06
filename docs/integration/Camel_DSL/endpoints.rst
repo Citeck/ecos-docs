@@ -105,17 +105,63 @@ URI
         - Instant
         - 1970-01-01T00:00:00Z
         - Нет
-        - | Дата, начиная с которой выполняется перебор записей.
-          | Записи, созданные раньше этой даты, в выгрузку не попадут.
+        - | Начальная дата для стратегий CREATED и MODIFIED; для KEY не используется.
+          | При MODIFIED запись, созданная раньше initDate, может попасть в выгрузку, если изменена после этой даты.
           | Значение запоминается в состоянии синхронизации при первом запуске и в дальнейшем берется оттуда, поэтому изменение параметра у уже работающего консьюмера ни на что не влияет. Чтобы применить новую дату, нужно поменять syncName.
       * - iterationStrategy
-        - CREATED_MODIFIED | CREATED | MODIFIED
+        - CREATED_MODIFIED | CREATED | MODIFIED | KEY
         - CREATED_MODIFIED
         - Нет
         - | Какие стратегии перебора будут использованы (см. раздел «Стратегии» ниже).
           | CREATED_MODIFIED — сначала перебор по дате создания, затем по дате изменения;
           | CREATED — только перебор по дате создания;
           | MODIFIED — только перебор по дате изменения.
+          | KEY — однократный обход по стабильному уникальному ключу keyAttribute.
+      * - keyAttribute
+        - String?
+        - null
+        - Для KEY
+        - Атрибут уникального ключа. Источник должен поддерживать сортировку и сравнение ключей
+      * - keyType
+        - NUMBER | TEXT
+        - NUMBER
+        - Нет
+        - Тип ключа стратегии KEY
+      * - partitions
+        - Int
+        - 1
+        - Нет
+        - Число разделов ключевого диапазона для KEY; 1 отключает разбиение
+      * - partitionStrategy
+        - COUNT | SKIP
+        - null
+        - Нет
+        - Разбиение KEY по количеству записей в диапазонах либо по смещениям выборки. По умолчанию COUNT для NUMBER, SKIP для TEXT
+      * - failedRecords
+        - RETRY | REGISTER
+        - RETRY
+        - Нет
+        - Повторять ошибочную пачку либо регистрировать проблемные записи и продолжать обход
+      * - batchRetries
+        - Int
+        - 3
+        - Нет
+        - Число повторов пачки перед выделением ошибочных записей в режиме REGISTER
+      * - maxFailedPerBatch
+        - Int
+        - -1
+        - Нет
+        - Порог ошибок пачки. При отрицательном значении — 10% batchSize, минимум одна запись
+      * - maxFailedTotal
+        - Int
+        - 1000
+        - Нет
+        - Порог общего количества зарегистрированных ошибок синхронизации
+      * - stopOnMassFailure
+        - Boolean
+        - true
+        - Нет
+        - Останавливать синхронизацию при массовых ошибках
       * - batchSize
         - Int
         - 100
@@ -180,7 +226,7 @@ URI
 
 Раз в **{delay}** миллисекунд идет запрос в источник данных **{sourceId}** который или задан явно или загружается из **{ecosType}**. Из источника данных загружается пачка записей размером <= **{batchSize}**. Загруженная пачка отправляется в обработку на указанные в роуте шаги.
 
-Обновление стейта происходит только если пачка записей обработана успешно. В случае ошибки стейт остается старым и при следующем срабатывании загрузка продолжится с предыдущего стейта.
+В режиме **failedRecords=RETRY** состояние продвигается после успешной обработки пачки; при ошибке следующая попытка начинается с прежнего состояния. Режим **REGISTER** позволяет зарегистрировать проблемные записи и продолжить обработку с учётом заданных порогов ошибок.
 
 Индивидуальная обработка записей
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -274,13 +320,15 @@ URI
         - Только «по дате создания». Изменения уже обработанных записей не подхватываются
       * - MODIFIED
         - Только «по дате изменения»
+      * - KEY
+        - Обход в порядке keyAttribute; последующие изменения записей по датам не отслеживаются
 
-Перебор в обеих стратегиях начинается с даты, заданной параметром **initDate**.
+Перебор по датам начинается с **initDate**. В стратегии KEY используются состояние ключа и, при включённом разбиении, состояния разделов. Для параллельного опроса задаётся ``scheduler.concurrentConsumers``; у стандартного планировщика размер пула автоматически согласуется с числом потребителей, если ``scheduler.poolSize`` не задан явно.
 
 По дате создания
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Перебор идет по атрибуту **_created** от начала эпохи (1970-01-01T00:00:00Z)
+Перебор идет по атрибуту **_created** от начального значения **initDate**.
 
 **Состояние:**
 
@@ -411,8 +459,14 @@ URI
         - Boolean
         - false
         - Нет
-        - | Если true, атрибут **?id** удаляется из данных и не используется как ссылка на изменяемую запись — мутация всегда создает новую запись.
+        - | Если true, атрибут **?id** удаляется из данных и не используется как ссылка на изменяемую запись.
+          | Атрибут **id** сохраняется и может использоваться источником для обновления существующей записи.
           | Если false, значение **?id** определяет, какая запись будет изменена.
+      * - logRecords
+        - FULL | IDS | ERRORS
+        - FULL
+        - Нет
+        - FULL — атрибуты запросов и результат; IDS — идентификаторы вместо полных атрибутов; ERRORS — только неуспешные мутации
 
 .. note::
 
@@ -423,13 +477,30 @@ URI
 
 Конечная точка принимает либо одно **map-like значение**, либо список.
 
-**map-like значение** — **Map<String, Any?>**, **DataValue**, **ObjectData** и другие, которые могут быть сконвертированы в **Map<String, Any?>**.
+Поддерживаются объекты **DataValue**, **ObjectData**, строка с JSON-объектом, коллекция таких значений и массив **DataValue**. Обычную Java Map предварительно преобразуйте в **DataValue** или **ObjectData**.
 
 **map-like значение** по структуре содержит список атрибутов, которые будут использованы для мутации.
 
 Если среди атрибутов есть **"?id"** с полным ref мутируемой сущности, то мутация будет выполнена именно для этой сущности.
 
 Если среди атрибутов есть **"id"** (локальный id сущности), то мутация либо обновит существующую сущность, либо создаст новую если такой еще нет.
+
+**Выход:** тело сохраняется; заголовок ``recordsMutated`` содержит список строковых ссылок на сохранённые записи. Для пустого набора мутаций заголовок не устанавливается заново.
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:save-imported-record
+         steps:
+           - setBody:
+               constant: '{"id":"example","_name":"Пример"}'
+           - to:
+               uri: 'ecos-records-mutate:'
+               parameters:
+                 sourceId: emodel/import-test
+                 logRecords: IDS
+           - log: '${header.recordsMutated}'
 
 
 .. _EcosEventEndpoint:
@@ -494,6 +565,8 @@ URI
           | DEFAULT и DATA_VALUE — объект **DataValue** (поведение совпадает);
           | JSON_STRING — строка с JSON;
           | JAVA — обычный объект Java (Map, List, String и т.д.).
+
+Параметры ``attributes``, ``attribute``, ``filter``, ``transactional`` и ``outputType`` относятся к потребителю событий. Производитель публикует событие указанного типа из тела сообщения.
 
 Пример подписки
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -585,6 +658,23 @@ URI
 
   Запрос выполняется от имени системы, то есть без учета прав текущего пользователя.
 
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:query-imported-records
+         steps:
+           - setBody:
+               constant: >-
+                 {"sourceId":"emodel/import-test","language":"predicate",
+                  "query":{"t":"eq","a":"id","v":"example"},
+                  "page":{"maxItems":100},"attributes":{"name":"_name"}}
+           - to:
+               uri: 'ecos-records-query:'
+               parameters:
+                 outputType: DATA_VALUE
+           - log: 'Всего: ${header.EcosRecordsQueryTotalCount}'
+
 .. _EcosRecordsDeleteEndpoint:
 
 EcosRecordsDeleteEndpoint
@@ -632,6 +722,19 @@ URI
 .. note::
 
   Удаление выполняется от имени системы, то есть без учета прав текущего пользователя.
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:delete-example-record
+         steps:
+           - setBody:
+               constant: emodel/import-test@example
+           - to:
+               uri: 'ecos-records-delete:'
+               parameters:
+                 ignoreInvalidRefs: false
 
 .. _EcosAttributesMapperEndpoint:
 
@@ -694,6 +797,21 @@ URI
         - | Значение ищется среди записей по атрибутам из **assocMapping** и заменяется ссылкой на найденную запись.
           | Если запись не найдена, значение считается готовой ссылкой и используется как есть.
 
+.. code-block:: yaml
+
+   - route:
+       from:
+         # На входе список DataValue со строковыми значениями атрибутов типа import-test.
+         uri: direct:map-imported-attributes
+         steps:
+           - to:
+               uri: ecos-attributes-mapper:import-test
+               parameters:
+                 delimiter: ';'
+                 assocMapping: '{"department":["code","_name"]}'
+
+Замените ``import-test`` и ``department`` на тип и атрибут своей модели. Компонент не сохраняет записи; после преобразования используйте ``ecos-records-mutate``.
+
 .. _EcosFtpEndpoint:
 
 EcosFtpEndpoint
@@ -727,6 +845,19 @@ URI
 .. note::
 
   Если для SFTP отключена проверка ключа хоста (**strictHostKeyChecking=no**, значение по умолчанию в camel-ftp), в лог выводится предупреждение.
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:upload-csv
+         steps:
+           - setHeader:
+               name: CamelFileName
+               constant: export.csv
+           - to: 'ecos-ftp:export-sftp?binary=true'
+
+На вход ``direct:upload-csv`` передаётся содержимое файла. Конечная точка ECOS ``export-sftp`` должна быть настроена заранее. Полный пример выгрузки CSV см. в :ref:`каталоге примеров <camel_dsl_repo_examples>`.
 
 .. _EcosExcelStreamReadEndpoint:
 
@@ -784,3 +915,637 @@ URI
 Тело сообщения — **List<DataValue>**, по одному объекту на строку файла в формате «заголовок колонки — значение ячейки». Значения даты и времени сдвигаются на часовой пояс пользователя, десятичные числа передаются строкой без экспоненциальной записи.
 
 По ходу чтения публикуются события управления импортом: начало, обработка пачки, завершение и ошибка.
+
+Входное тело не используется: файл определяется ссылкой в URI.
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: ecos-excel-stream-read:emodel/import-file@example
+         parameters:
+           batchSize: 100
+           sheetName: Sheet1
+           headRowNumber: 1
+         steps:
+           - split:
+               simple: '${body}'
+               steps:
+                 - to: 'ecos-records-mutate:?sourceId=emodel/import-test'
+
+.. _EcosRecordsValidateEndpoint:
+
+EcosRecordsValidateEndpoint
+---------------------------
+
+**URI:** ``ecos-records-validate:``. Производитель сравнивает ожидаемые атрибуты с целевыми записями и регистрирует расхождения без изменения целевых записей. Контекст должен предоставлять реестр расхождений синхронизации.
+
+Параметры
+~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 5 5 5 20
+   :class: tight-table
+
+   * - Параметр
+     - Тип
+     - По умолчанию
+     - Назначение
+   * - sourceId
+     - String?
+     - null
+     - Целевой источник; обязателен sourceId либо ecosType
+   * - ecosType
+     - String?
+     - null
+     - Тип, из которого определяется источник при отсутствии sourceId
+   * - syncName
+     - String?
+     - null
+     - Имя синхронизации в реестре расхождений. Если не задано, берётся заголовок журнала синхронизации от ecos-records-sync-consumer
+   * - compare
+     - String
+     - Пустая строка
+     - Режимы сравнения через запятую: ``amount=NUMBER,tags=SET``. Режимы: TEXT, NUMBER, BOOL, DATE, DATETIME, SET, LIST, JSON
+   * - skipAttributes
+     - String
+     - Пустая строка
+     - Пропускаемые атрибуты через запятую; завершающий ``*`` означает префикс. Атрибуты id и ?id всегда исключаются из сравнения
+   * - dateTolerance
+     - String
+     - PT0S
+     - Неотрицательный интервал ISO-8601 для сравнения DATETIME, например PT5S
+   * - maxOpenDiffs
+     - Int
+     - 1000
+     - Максимум записей с открытыми расхождениями; отрицательное значение снимает ограничение
+
+**Вход:** тот же формат набора атрибутов, что у ``ecos-records-mutate``. Запись определяется по ``?id`` либо по локальному ``id`` и sourceId. Остальные атрибуты — ожидаемые значения.
+
+**Выход:** тело не меняется. Расхождения регистрируются, а ранее найденные расхождения для совпавших записей закрываются. Чтение и регистрация выполняются от имени системы. Отсутствующая целевая запись регистрируется как расхождение ``_notExists``.
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:validate-import
+         steps:
+           - setBody:
+               constant: '{"id":"example","_name":"Пример","amount":1500}'
+           - to:
+               uri: 'ecos-records-validate:'
+               parameters:
+                 sourceId: emodel/import-test
+                 syncName: import-check
+                 compare: amount=NUMBER
+                 skipAttributes: '_modified,_modifier'
+
+.. _camel_external_endpoints:
+
+Компоненты импорта из Jira и GitLab
+-----------------------------------
+
+Потребители наследуют параметры ScheduledPollEndpoint, например delay и initialDelay. В примерах ``{{gitlab.url}}`` и ``{{gitlab.token}}`` — свойства Camel, задаваемые в окружении.
+
+Компоненты GitLab
+--------------------------
+
+Оба компонента являются потребителями, периодически опрашивают GitLab и сохраняют состояние синхронизации, поэтому при следующем запуске продолжают с того места, где остановились. Одновременный запуск нескольких опросов (например, на разных узлах) не происходит: повторный запуск пропускается.
+
+.. _GitLabCommitsSyncEndpoint:
+
+gitlab-commits-sync
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Входные данные:** Входное тело отсутствует: потребитель.
+
+Выгружает коммиты проектов, обновленных с момента последней синхронизации.
+
+**URI:** ``gitlab-commits-sync:syncName``, где **syncName** — имя синхронизации, под которым хранится состояние. Обязательно.
+
+.. list-table::
+      :widths: 5 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Параметр
+        - Тип
+        - Значение по умолчанию
+        - Обязательность
+        - Описание
+      * - gitLabEndpoint
+        - String
+        -
+        - Да
+        - Адрес GitLab
+      * - gitLabToken
+        - String
+        -
+        - Да
+        - Токен доступа к GitLab
+      * - batchSize
+        - Int
+        - 100
+        - Нет
+        - Количество коммитов, накапливаемых перед отправкой пачки в маршрут
+      * - skipErrorRegex
+        - String?
+        - null
+        - Нет
+        - Регулярное выражение. Ошибки GitLab, текст которых ему соответствует, пропускаются вместо прерывания опроса
+
+**Выходные данные:** **List<DataValue>** — исходный JSON коммитов.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: gitlab-commits-sync:example-sync
+         parameters:
+           gitLabEndpoint: '{{gitlab.url}}'
+           gitLabToken: '{{gitlab.token}}'
+           delay: 60000
+         steps:
+           - to: log:gitlab-import
+
+.. _GitLabMergeRequestsSyncEndpoint:
+
+gitlab-merge-requests-sync
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Входные данные:** Входное тело отсутствует: потребитель.
+
+Выгружает запросы на слияние, созданные с момента последней синхронизации, в порядке возрастания даты создания.
+
+**URI:** ``gitlab-merge-requests-sync:syncName``.
+
+Параметры **gitLabEndpoint**, **gitLabToken** и **skipErrorRegex** совпадают с параметрами ``gitlab-commits-sync``. Параметра **batchSize** у этого компонента нет: за один опрос выдается одна пачка.
+
+**Выходные данные:** **List<DataValue>** — исходный JSON запросов на слияние.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: gitlab-merge-requests-sync:example-sync
+         parameters:
+           gitLabEndpoint: '{{gitlab.url}}'
+           gitLabToken: '{{gitlab.token}}'
+           delay: 60000
+         steps:
+           - to: log:gitlab-import
+
+Компоненты Jira
+--------------------------
+
+Для производителей Jira требуется общий контекст: свойства обмена ``_workspace`` и ``link-project:project``. Их заполняет ``jira-issues``; при вызове через ``direct:`` передаёт вызывающий маршрут. Заголовки целевых записей указаны у каждого компонента.
+
+Параметр ``jiraClient`` — ссылка на бин ``ru.citeck.ecos.camel.jira.api.JiraApiClient``. Его ``endpointId`` задаёт конечную точку ECOS с адресом Jira и секретом BASIC или TOKEN:
+
+.. code-block:: yaml
+
+   - beans:
+       - name: jiraClient
+         type: ru.citeck.ecos.camel.jira.api.JiraApiClient
+         properties:
+           endpointId: jira-host
+
+Примеры производителей предполагают этот бин и переданный контекст. Входное тело — исходная задача после ``split``. Сохраняйте её в переменной и восстанавливайте перед следующим компонентом, если предыдущий заменил тело.
+
+
+Схема работы такая: потребитель ``jira-issues`` выдает в маршрут исходный JSON задачи Jira и дополнительно кладет в свойства обмена рабочее пространство и ссылку на проект. Дальше производители ``transform-jira-*`` превращают части этой задачи в наборы атрибутов, готовые к сохранению через :ref:`ecos-records-mutate <EcosRecordsMutateEndpoint>`, а производители ``import-jira-*`` сами создают связанные записи и проставляют ссылки на них в задаче EPT.
+
+.. note::
+
+  Производители ``import-jira-*``, ``transform-jira-comment`` и ``transform-jira-worklog`` ожидают в заголовке сообщения ссылку на целевую запись: **eptIssueRef** для большинства из них, **commentLinkToRecord** для комментариев и **worklogLinkToRecord** для записей о затраченном времени. Свойства обмена с рабочим пространством и проектом заполняет ``jira-issues``.
+
+.. _JiraIssuesEndpoint:
+
+jira-issues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Входные данные:** Входное тело отсутствует. Проекты с импортируемыми ключами должны существовать в Citeck и иметь связанное рабочее пространство.
+
+Потребитель. Периодически перебирает задачи одного или нескольких проектов Jira, запоминая смещение по каждому проекту; после обхода последнего проекта цикл начинается заново.
+
+**URI:** ``jira-issues:name``, где **name** — имя синхронизации. Обязательно.
+
+.. list-table::
+      :widths: 5 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Параметр
+        - Тип
+        - Значение по умолчанию
+        - Обязательность
+        - Описание
+      * - projectKey
+        - String
+        -
+        - Да
+        - Ключи проектов Jira через запятую. Не используется, если задан **issueKey**
+      * - jiraClient
+        - JiraApiClient
+        -
+        - Да
+        - Ссылка на бин клиента Jira REST API
+      * - issueKey
+        - String
+        - ""
+        - Нет
+        - | Если задан, импортируется ровно одна указанная задача, после чего потребитель останавливается.
+          | Значение должно содержать префикс проекта, например *PROJECT-1*
+
+**Выходные данные:** список с исходным JSON задач — по 10 задач за один опрос в обычном режиме и одна задача в режиме **issueKey**.
+
+**Свойства обмена:** рабочее пространство задачи и ссылка на проект (``link-project:project``) — они нужны остальным компонентам Jira.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - beans:
+       - name: jiraClient
+         type: ru.citeck.ecos.camel.jira.api.JiraApiClient
+         properties:
+           endpointId: jira-host
+   - route:
+       from:
+         uri: jira-issues:example-import
+         parameters:
+           jiraClient: '#bean:jiraClient'
+           projectKey: DEMO
+           delay: 5000
+         steps:
+           - split:
+               simple: '${body}'
+               steps:
+                 - to: direct:process-jira-issue
+
+.. _TransformJiraIssueEndpoint:
+
+transform-jira-issue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``transform-jira-issue:``.
+
+**Входные данные:** Один DataValue с JSON задачи и свойства обмена _workspace и link-project:project. Заголовок eptIssueRef не требуется.
+
+Производитель. Преобразует исходную задачу Jira в набор атрибутов задачи EPT. Правила преобразования задаются не параметрами, а свойствами обмена, имена которых можно переопределить:
+
+Все параметры ``*Property`` имеют тип ``String`` и необязательны; значения по умолчанию приведены в таблице.
+
+.. list-table::
+      :widths: 5 10 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Параметр
+        - Значение по умолчанию
+        - Какое свойство обмена задает
+      * - attributesMappingProperty
+        - attributesMapping
+        - Карта «путь в JSON задачи Jira — атрибут задачи EPT»
+      * - valuesMappingProperty
+        - valuesMapping
+        - Карта «атрибут — карта соответствия значений Jira значениям EPT»
+      * - valuesConverterProperty
+        - valuesConverter
+        - Карта «атрибут — имя конвертера значения»
+      * - staticAttributesProperty
+        - staticAttributes
+        - Карта атрибутов с постоянными значениями, добавляемых к каждой задаче
+      * - linksMappingProperty
+        - linksMapping
+        - Карта «тип связи в Jira — атрибут связи в EPT»
+
+Обязательный параметр **jiraClient** используется для получения списка наблюдателей задачи.
+
+.. list-table::
+   :widths: 8 8 8 25
+   :header-rows: 1
+   :class: tight-table
+
+   * - Параметр
+     - Тип
+     - Обязательность
+     - Описание
+   * - jiraClient
+     - JiraApiClient
+     - Да
+     - Ссылка на бин клиента Jira, например ``#bean:jiraClient``. Значения по умолчанию нет
+
+
+**Выходные данные:** один объект **DataValue** с атрибутами задачи EPT: сопоставленные поля, наблюдатели, связи с другими задачами, постоянные атрибуты, идентификатор, номер задачи, а для подзадач — ссылка на родительскую задачу.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:transform-jira-issue
+         steps:
+           - setProperty:
+               name: attributesMapping
+               constant: '{"fields.summary":"summary"}'
+           - to:
+               uri: 'transform-jira-issue:'
+               parameters:
+                 jiraClient: '#bean:jiraClient'
+
+.. _TransformJiraCommentEndpoint:
+
+transform-jira-comment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``transform-jira-comment:``.
+
+**Параметры:** собственных параметров нет.
+
+**Входные данные:** Один DataValue с JSON задачи и общий контекст импорта. Обязательный заголовок ``commentLinkToRecord`` — ссылка на целевую запись.
+
+Производитель без параметров. Преобразует комментарии задачи в список объектов, готовых к сохранению как комментарии Citeck. Заголовок **commentLinkToRecord** задает запись, к которой они относятся.
+
+При преобразовании текст комментария очищается от особенностей Jira: ссылки на вложения и миниатюры заменяются на адреса содержимого в Citeck, упоминания пользователей — на упоминания в формате Citeck, у изображений убирается заданный в Jira размер.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:transform-jira-comment
+         steps:
+           - setHeader:
+               name: commentLinkToRecord
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'transform-jira-comment:'
+
+.. _TransformJiraWorkLogEndpoint:
+
+transform-jira-worklog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``transform-jira-worklog:``.
+
+**Параметры:** собственных параметров нет.
+
+**Входные данные:** Один DataValue с JSON задачи и общий контекст импорта. Обязательный заголовок ``worklogLinkToRecord`` — ссылка на целевую запись.
+
+Производитель без параметров. Преобразует записи о затраченном времени в список объектов учета времени Citeck. Заголовок **worklogLinkToRecord** задает запись, к которой они привязываются. Длительность пересчитывается из секунд в миллисекунды.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:transform-jira-worklog
+         steps:
+           - setHeader:
+               name: worklogLinkToRecord
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'transform-jira-worklog:'
+
+.. _ImportJiraReleasesEndpoint:
+
+import-jira-releases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-releases:``.
+
+**Входные данные:** Один DataValue с fields.fixVersions и fields.versions и общий контекст импорта. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель. Создает или обновляет записи релизов из версий задачи Jira и проставляет их в атрибуты задачи EPT «Исправить в версии» и «Затронутые версии». Обязательный параметр **jiraClient** используется для получения полной информации о версии.
+
+Статус релиза берется из признака выпуска в Jira. Выходные данные — список ссылок на созданные релизы.
+
+
+.. list-table::
+   :widths: 8 8 8 25
+   :header-rows: 1
+   :class: tight-table
+
+   * - Параметр
+     - Тип
+     - Обязательность
+     - Описание
+   * - jiraClient
+     - JiraApiClient
+     - Да
+     - Ссылка на бин клиента Jira, например ``#bean:jiraClient``. Значения по умолчанию нет
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-releases
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-releases:'
+               parameters:
+                 jiraClient: '#bean:jiraClient'
+
+.. _ImportJiraAttachmentEndpoint:
+
+import-jira-attachment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-attachment:``.
+
+**Входные данные:** Один DataValue с JSON задачи, содержащий fields.attachment. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель. Скачивает вложения задачи Jira и сохраняет их как документы Citeck, вложенные в задачу EPT. Обязательный параметр **jiraClient** используется для загрузки содержимого.
+
+Автор и даты создания и изменения переносятся из Jira. Выходные данные — список ссылок на созданные документы.
+
+
+.. list-table::
+   :widths: 8 8 8 25
+   :header-rows: 1
+   :class: tight-table
+
+   * - Параметр
+     - Тип
+     - Обязательность
+     - Описание
+   * - jiraClient
+     - JiraApiClient
+     - Да
+     - Ссылка на бин клиента Jira, например ``#bean:jiraClient``. Значения по умолчанию нет
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-attachment
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-attachment:'
+               parameters:
+                 jiraClient: '#bean:jiraClient'
+
+.. _ImportJiraDevInfoEndpoint:
+
+import-jira-dev-info
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-dev-info:``.
+
+**Входные данные:** Один DataValue с JSON задачи и свойство обмена _workspace. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель. Переносит связанные с задачей коммиты и запросы на слияние: из внешних ссылок Jira создаются записи коммитов и запросов на слияние, привязанные к задаче. Обязательный параметр **jiraClient** используется для получения внешних ссылок.
+
+Тело сообщения этот компонент не изменяет.
+
+
+.. list-table::
+   :widths: 8 8 8 25
+   :header-rows: 1
+   :class: tight-table
+
+   * - Параметр
+     - Тип
+     - Обязательность
+     - Описание
+   * - jiraClient
+     - JiraApiClient
+     - Да
+     - Ссылка на бин клиента Jira, например ``#bean:jiraClient``. Значения по умолчанию нет
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-dev-info
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-dev-info:'
+               parameters:
+                 jiraClient: '#bean:jiraClient'
+
+.. _ImportJiraComponentEndpoint:
+
+import-jira-component
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-component:``.
+
+**Параметры:** собственных параметров нет.
+
+**Входные данные:** Один DataValue с fields.components и общий контекст импорта. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель без параметров. Создает или обновляет записи компонентов из компонентов задачи Jira и проставляет их в атрибут «Компоненты» задачи EPT. Выходные данные — список ссылок на созданные компоненты.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-component
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-component:'
+
+.. _ImportJiraSprintEndpoint:
+
+import-jira-sprint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-sprint:``.
+
+**Входные данные:** Один DataValue с JSON задачи и общий контекст импорта. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель. Создает или обновляет записи спринтов из спринта задачи Jira и проставляет их в атрибут «Спринт» задачи EPT.
+
+.. list-table::
+      :widths: 5 5 5 5 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Параметр
+        - Тип
+        - Значение по умолчанию
+        - Обязательность
+        - Описание
+      * - sprintFieldId
+        - String
+        -
+        - Да
+        - | Имя пользовательского поля Jira, в котором хранятся данные спринта.
+          | Поддерживаются оба формата: объект JSON и устаревший строковый формат Greenhopper
+
+Статус спринта определяется по его состоянию в Jira: активный — «в работе», закрытый — «закрыт», остальные — «новый».
+
+**Выходные данные:** список строковых ссылок на созданные или обновленные спринты.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-sprint
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-sprint:'
+               parameters:
+                 sprintFieldId: customfield_10020
+
+.. _ImportJiraTagsEndpoint:
+
+import-jira-tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**URI:** ``import-jira-tags:``.
+
+**Параметры:** собственных параметров нет.
+
+**Входные данные:** Один DataValue с fields.labels и общий контекст импорта. Обязательный заголовок ``eptIssueRef`` — ссылка на целевую запись.
+
+Производитель без параметров. Создает или обновляет записи меток из меток задачи Jira и проставляет их в атрибут «Метки» задачи EPT. Идентификатор метки получается транслитерацией ее названия в нижнем регистре. Выходные данные — список ссылок на созданные метки.
+
+Пример YAML:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:import-jira-tags
+         steps:
+           - setHeader:
+               name: eptIssueRef
+               constant: emodel/ept-issue@DEMO-1
+           - to:
+               uri: 'import-jira-tags:'

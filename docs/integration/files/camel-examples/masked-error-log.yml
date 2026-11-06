@@ -1,0 +1,118 @@
+---
+# Logging a failure without leaking credentials, with MaskedExceptionDescriberProcessor.
+#
+# Scenario: the credentials of an outgoing request travel inside the request itself - in the body
+# for the Mango Office VPBX API (vpbx_api_key, sign) and in the path of the url for a bitrix
+# webhook (/rest/<user id>/<token>/). A failed request drags them into the message and the stack
+# trace of the exception, and from there into the log. The processor describes the exception and
+# hides them before the route logs anything.
+#
+# Both routes at the bottom of the file share one handler and one bean: the rules that decide what
+# never reaches the log must not exist in two copies that can drift apart.
+- beans:
+    - name: describeError
+      type: ru.citeck.ecos.camel.processor.MaskedExceptionDescriberProcessor
+      properties:
+        # Field names, comma separated. Each name is hidden in the shapes credentials show up in
+        # inside a message: `field=value` of an urlencoded body, `field=<scheme> <credentials>` of
+        # an authorization header, `"field": "value"` and `"field": value` of a json body, and
+        # `field=value` inside the {...} dump of a map. A nested yaml list cannot be bound to a
+        # property of a bean ("Unsupported type: SEQUENCE"), hence a single string.
+        maskFields: "vpbx_api_key,sign"
+        # Regular expressions, `;` separated, applied after the fields. What a pattern hides is its
+        # capture groups, and the text around them stays as it is - so the bitrix url keeps the
+        # shape that makes it recognizable in the log: /rest/***/***/crm.deal.list
+        maskPatterns: "/rest/([0-9]+)/([a-zA-Z0-9]+)/"
+        # The prefix of the written variables: mangoExceptionType, mangoMaskedErrorMessage,
+        # mangoMaskedStackTrace, mangoIsHttpException, mangoHttpStatusCode, mangoResponseBody.
+        # Without the property they stay as exceptionType, maskedErrorMessage and so on.
+        variablePrefix: mango
+
+# `routeConfiguration` and not an `onException` nested in a route: the yaml dsl accepts
+# `onException` at the top level (a handler for every route of the file) or inside a route
+# configuration, and `RouteDefinition` itself has no `onException` property. A configuration
+# referenced by `routeConfigurationId` is how a handler is bound to the routes that need it.
+- routeConfiguration:
+    id: masked-error-handling
+    onException:
+      - onException:
+          exception:
+            - "java.lang.Exception"
+          # false: the failure is logged with the credentials masked and then goes on to the caller
+          # of the route. Nothing is swallowed here - a consumer of a queue above rejects the
+          # message and the broker moves it into the dead letter queue.
+          handled:
+            simple: "false"
+          # The processor governs what this route logs; the error handler of camel logs the raw
+          # exception and its stack trace on its own ("Exhausted after delivery attempt: N caught:
+          # ..."), and there nothing is masked. Without these three the masking is cosmetic: the
+          # key and the sign reach the log through the handler anyway.
+          redeliveryPolicy:
+            logExhausted: false
+            logStackTrace: false
+            logRetryStackTrace: false
+          steps:
+            - to: "direct:describe-error"
+
+- route:
+    id: describe-error
+    # The failure of this route belongs to whoever called it: the sub route only reports it back.
+    errorHandler:
+      noErrorHandler: {}
+    from:
+      # The one place a failure is read out and logged.
+      # Input - the CamelExceptionCaught property of the exchange.
+      # Output - the variables listed at the bean above.
+      uri: "direct:describe-error"
+      steps:
+        - process:
+            ref: describeError
+        - choice:
+            when:
+              # An answer of the provider tells much more than the message of the exception, and it
+              # is masked by the very same rules - a 401 page can quote the key that was sent.
+              - simple: "${variable.mangoIsHttpException} == true"
+                steps:
+                  - log:
+                      loggingLevel: ERROR
+                      message: "The request failed with http ${variable.mangoHttpStatusCode}: ${variable.mangoResponseBody}"
+            otherwise:
+              steps:
+                - log:
+                    loggingLevel: ERROR
+                    message: "The request failed with ${variable.mangoExceptionType}: ${variable.mangoMaskedErrorMessage}"
+        - log:
+            loggingLevel: DEBUG
+            message: "${variable.mangoMaskedStackTrace}"
+
+- route:
+    id: download-recording
+    routeConfigurationId: masked-error-handling
+    from:
+      uri: "direct:download-recording"
+      steps:
+        # In a real route this is the signed POST to the VPBX API, whose form body carries
+        # vpbx_api_key and sign:
+        #   - to: "{{ecos-endpoint:mango-office/url}}/vpbx/queries/recording/post"
+        # Here it is a `throwException` with the message such a failure really has, so that the
+        # example can be run as it is and show what ends up in the log.
+        - throwException:
+            exceptionType: java.lang.IllegalStateException
+            message: >-
+              POST /vpbx/queries/recording/post failed with 401:
+              vpbx_api_key=Ab12Cd34Ef&json={"recording_id":"MTIz","action":"download"}&sign=9f8e7d6c5b4a
+
+- route:
+    id: call-webhook
+    routeConfigurationId: masked-error-handling
+    from:
+      uri: "direct:call-webhook"
+      steps:
+        # The bitrix case: the token sits in the url, so it is the `maskPatterns` of the bean and
+        # not its `maskFields` that hides it. In a real route this step is
+        #   - to: "{{ecos-endpoint:bitrix24/url}}/rest/12345/.../crm.deal.list"
+        - throwException:
+            exceptionType: java.lang.IllegalStateException
+            message: >-
+              GET https://example.bitrix24.ru/rest/12345/abc9xyz0token/crm.deal.list
+              failed with 403 Forbidden

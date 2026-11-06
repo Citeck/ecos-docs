@@ -410,28 +410,38 @@
 Готовые примеры маршрутов в репозитории ecos-camel
 --------------------------------------------------------
 
-В проекте ``ecos-camel`` есть каталог ``ecos-camel-examples`` с готовыми маршрутами на YAML. Эти примеры покрыты тестами, которые загружают и выполняют сами файлы примеров, поэтому пример не может разойтись с процессором, который он демонстрирует.
+Исходные файлы находятся в каталоге ``ecos-camel-examples/`` проекта ``ecos-camel``. Ниже приведены копии YAML из проверенного checkout ``ecos-camel-master``. Путь каждого оригинала: ``ecos-camel-examples/<каталог>/yaml/<файл>``. При обновлении справочника копии необходимо сверять с исходниками.
 
 .. list-table::
-   :widths: 10 25
+   :widths: 12 18 30
    :header-rows: 1
    :class: tight-table
 
    * - Каталог
-     - Что показывает
+     - Файл маршрута
+     - Назначение
    * - ``masked-exception-describer``
-     - :ref:`MaskedExceptionDescriberProcessor <MaskedExceptionDescriberProcessor>` в обработчике ошибок: два случая — учетные данные в теле формы и токен в пути url
+     - :download:`masked-error-log.yml <../files/camel-examples/masked-error-log.yml>`
+     - Обработчик ошибок с :ref:`MaskedExceptionDescriberProcessor`: маскировка полей формы и токена в URL
    * - ``binary-body-guard``
-     - :ref:`BinaryBodyGuardProcessor <BinaryBodyGuardProcessor>` при скачивании файла: ветвление маршрута по вердикту проверки
+     - :download:`binary-body-guard.yml <../files/camel-examples/binary-body-guard.yml>`
+     - :ref:`BinaryBodyGuardProcessor`: проверка скачанного тела и ветвление по результату
    * - ``form-urlencoded-body``
-     - :ref:`HmacSignatureProcessor <HmacSignatureProcessor>` подписывает запрос, затем :ref:`FormUrlEncodedBodyProcessor <FormUrlEncodedBodyProcessor>` собирает тело формы
+     - :download:`signed-form-request.yml <../files/camel-examples/signed-form-request.yml>`
+     - :ref:`HmacSignatureProcessor` и :ref:`FormUrlEncodedBodyProcessor`: подпись и сборка формы
    * - ``hmac-signature``
-     - Подпись исходящего запроса
+     - :download:`hmac-sign-outbound.yml <../files/camel-examples/hmac-sign-outbound.yml>`
+     - :ref:`HmacSignatureProcessor`: подпись исходящего запроса
+   * - ``find-or-create-record``
+     - :download:`find-or-create-record.yml <../files/camel-examples/find-or-create-record.yml>`
+     - :ref:`FindOrCreateRecordProcessor`: импорт валют и связывание платежей
    * - ``ftp``
-     - Выгрузка записей в CSV и отправка на SFTP: ``ecos-records-sync-consumer`` → :ref:`ListOfDataToCsvProcessor <ListOfDataToCsvProcessor>` → :ref:`ecos-ftp <EcosFtpEndpoint>`
+     - :download:`records-to-sftp.yml <../files/camel-examples/records-to-sftp.yml>`
+     - ``ecos-records-sync-consumer`` → :ref:`ListOfDataToCsvProcessor` → :ref:`ecos-ftp <EcosFtpEndpoint>`
    * - ``jira``
-     - Импорт задач из Jira
+     - :download:`jira-import.yml <../files/camel-examples/jira-import.yml>`
+     - Импорт задач и связанных данных Jira; :ref:`справочник компонентов <camel_external_endpoints>`
 
-.. note::
+Тест ``ProcessorExamplesYamlDslTest`` в ``ecos-camel-core/src/test/java/ru/citeck/ecos/camel/processor/`` загружает и выполняет файлы из каталогов ``masked-exception-describer``, ``binary-body-guard``, ``form-urlencoded-body``, ``hmac-signature``, ``find-or-create-record``. Это проверка исходных файлов репозитория; скачиваемые копии документации в эти тесты не входят.
 
-  В примерах вызов внешнего провайдера заменен на ``throwException`` либо на тело, подаваемое вызывающей стороной, — чтобы пример можно было выполнить в тесте. Строка с настоящим ``to:`` оставлена рядом в комментарии.
+В примерах обработки ошибок и сборки формы внешний запрос заменен на ``throwException``; реальный ``to:`` оставлен в комментарии. Маршруты FTP и Jira требуют доступных внешних систем, подходящих источников данных, секретов и настроек проекта. Перед использованием замените демонстрационные идентификаторы и параметры.
