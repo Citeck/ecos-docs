@@ -12,6 +12,10 @@
 
 В данной статье рассматривается создание учебного процесса :ref:`«Заявка на закупку оборудования»<sample_request>` с помощью :ref:`AI Ассистента<AI_assistant>` — без ручной настройки.
 
+.. note::
+
+   Созданные артефакты доступны только в рабочем пространстве, в котором они были созданы.
+
 Сгенерируем минимальный набор артефактов: **тип данных** и **бизнес-процесс**.
 
 Создание типа данных
@@ -20,7 +24,13 @@
 Перейдите в AI Ассистент:
 
 .. image:: _static/equipment_request_ai/AI_01.png
-   :width: 800
+   :width: 700
+   :align: center
+
+Перейдите в **"Агент конфигурации платформы"**:
+
+.. image:: _static/equipment_request_ai/AI_01_1.png
+   :width: 700
    :align: center
 
 Создайте тип данных по заранее подготовленному запросу. В запросе описана сущность заявки, её атрибуты, роли и статусы:
@@ -60,22 +70,22 @@
 Ассистент обрабатывает запрос и возвращает сформированный тип данных:
 
 .. image:: _static/equipment_request_ai/AI_03.png
-   :width: 600
+   :width: 700
    :align: center
 
 Все необходимые атрибуты, роли и статусы заданы. Подтвердите развёртывание типа данных в системе:
 
 .. image:: _static/equipment_request_ai/AI_04.png
-   :width: 600
+   :width: 700
    :align: center
 
 По появившейся ссылке перейдите в созданный тип данных и проверьте его содержимое.
 
-Вкладка **«Основные»** — родитель «Кейс», форма и журнал созданы по умолчанию:
-
 .. image:: _static/equipment_request_ai/AI_05.png
-   :width: 600
+   :width: 700
    :align: center
+
+Вкладка **«Основные»** — родитель «Кейс», форма и журнал созданы по умолчанию:
 
 .. image:: _static/equipment_request_ai/AI_06.png
    :width: 700
@@ -101,38 +111,9 @@
 
 Тип данных готов. Переходим к созданию бизнес-процесса.
 
+
 Создание бизнес-процесса
 -------------------------
-
-Перейдите в рабочее пространство **«Раздел администратора»** → раздел **«Модели BPMN»**:
-
-.. image:: _static/equipment_request_ai/AI_10.png
-   :width: 800
-   :align: center
-
-Создайте модель и выберите для неё ранее созданный тип данных:
-
-.. image:: _static/equipment_request_ai/AI_11.png
-   :width: 600
-   :align: center
-
-Нажмите **«Создать»**:
-
-.. image:: _static/equipment_request_ai/AI_12.png
-   :width: 600
-   :align: center
-
-Перейдите в редактор процесса:
-
-.. image:: _static/equipment_request_ai/AI_13.png
-   :width: 700
-   :align: center
-
-В ассистенте откройте вкладку **«BPMN Редактор»**:
-
-.. image:: _static/equipment_request_ai/AI_14.png
-   :width: 700
-   :align: center
 
 Для генерации бизнес-процесса используйте следующий запрос:
 
@@ -151,101 +132,190 @@
 
    В запросе явно указано добавить уведомления — ассистент учтёт это при генерации процесса.
 
-.. image:: _static/equipment_request_ai/AI_15.png
-   :width: 600
-   :align: center
+Сначала будут сгенерированы уведомления, затем бизнес-процесс. После обработки запроса ассистент вернёт сообщение о готовности каждого уведомления к развёртыванию:
 
-Процесс сгенерирован:
-
-.. image:: _static/equipment_request_ai/AI_16.png
+.. image:: _static/equipment_request_ai/AI_10.png
    :width: 700
    :align: center
+
+.. grid:: 2
+   :gutter: 2
+
+   .. grid-item::
+
+      .. image:: _static/equipment_request_ai/AI_11.png
+         :width: 700
+         :align: center
+
+   .. grid-item::
+
+      .. image:: _static/equipment_request_ai/AI_12.png
+         :width: 700
+         :align: center
+
+
+Далее будет сгенерирован бизнес-процесс:
+
+.. image:: _static/equipment_request_ai/AI_13.png
+   :width: 700
+   :align: center
+
+По появившейся ссылке перейдите в карточку созданного бизнес-процесса
+
+.. image:: _static/equipment_request_ai/AI_14.png
+         :width: 700
+         :align: center
+
+Перейдите в редактор:
+
+.. image:: _static/equipment_request_ai/AI_15.png
+         :width: 700
+         :align: center
+
+И проверьте содержимое бизнес-процесса:
+
+.. image:: _static/equipment_request_ai/AI_16.png
+         :width: 700
+         :align: center
+
+.. note::
+
+   Созданный процесс уже автоматически опубликован и готов к запуску. В случае необходимости, вы можете внести изменения в процесс вручную.
 
 Настройки ключевых элементов процесса:
 
-.. list-table::
-   :widths: 20 80
-   :align: center
+.. tab-set::
 
-   * - .. image:: _static/equipment_request_ai/elements/1-1.png
-          :width: 100
-          :align: center
+   .. tab-item:: Установить статус: Заявка создана
 
-     - .. image:: _static/equipment_request_ai/elements/1-2.png
-          :width: 300
-          :align: center
+      .. image:: _static/equipment_request_ai/elements/1-1.png
+         :width: 100
+         :align: center
 
-   * - .. image:: _static/equipment_request_ai/elements/2-1.png
-          :width: 100
-          :align: center
+      .. image:: _static/equipment_request_ai/elements/1-2.png
+         :width: 300
+         :align: center
 
-     - .. image:: _static/equipment_request_ai/elements/2-2.png
-          :width: 300
-          :align: center
+   .. tab-item:: Задача «На согласование»
 
-   * - .. image:: _static/equipment_request_ai/elements/3-1.png
-          :width: 100
-          :align: center
+      .. image:: _static/equipment_request_ai/elements/2-1.png
+         :width: 100
+         :align: center
 
-     - .. image:: _static/equipment_request_ai/elements/3-2.png
-          :width: 300
-          :align: center
+      .. image:: _static/equipment_request_ai/elements/2-2.png
+         :width: 300
+         :align: center
 
-   * - .. image:: _static/equipment_request_ai/elements/4-1.png
-          :width: 100
-          :align: center
+   .. tab-item:: Установить статус: На согласовании
 
-     - .. image:: _static/equipment_request_ai/elements/4-2.png
-          :width: 300
-          :align: center
+      .. image:: _static/equipment_request_ai/elements/3-1.png
+         :width: 100
+         :align: center
 
-Итоговый процесс соответствует описанию из запроса:
+      .. image:: _static/equipment_request_ai/elements/3-2.png
+         :width: 300
+         :align: center
 
-.. image:: _static/equipment_request_ai/AI_17.png
-   :width: 600
-   :align: center
+   .. tab-item:: Уведомление согласующему о поступлении заявки
 
-**Включите** процесс **(1)**, разрешите **автоматический старт (2)** и **опубликуйте** его **(3)**:
+      .. image:: _static/equipment_request_ai/elements/4-1.png
+         :width: 100
+         :align: center
 
-.. image:: _static/equipment_request_ai/AI_18.png
-   :width: 700
-   :align: center
+      .. image:: _static/equipment_request_ai/elements/4-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Задача «На согласовании согласующим»
+
+      .. image:: _static/equipment_request_ai/elements/5-1.png
+         :width: 100
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/5-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Установить статус: Согласовано
+
+      .. image:: _static/equipment_request_ai/elements/6-1.png
+         :width: 100
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/6-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Уведомление инициатору: заявка согласована
+
+      .. image:: _static/equipment_request_ai/elements/7-1.png
+         :width: 100
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/7-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Установить статус: Отказано
+
+      .. image:: _static/equipment_request_ai/elements/8-1.png
+         :width: 100
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/8-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Уведомление инициатору: заявка отклонена
+
+      .. image:: _static/equipment_request_ai/elements/9-1.png
+         :width: 100
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/9-2.png
+         :width: 300
+         :align: center
+
+   .. tab-item:: Потоки управления
+
+      .. image:: _static/equipment_request_ai/elements/10.png
+         :width: 300
+         :align: center
+
+      .. image:: _static/equipment_request_ai/elements/11.png
+         :width: 300
+         :align: center
+
 
 Запуск и проверка процесса
 ---------------------------
 
-Перейдите в **персональное рабочее пространство** и добавьте журнал в меню:
+.. note::
 
-.. image:: _static/equipment_request_ai/AI_19.png
-   :width: 700
-   :align: center
+   Процесс можно запустить только в том рабочем пространстве, в котором он был создан.
 
-|
-
-.. image:: _static/equipment_request_ai/AI_20.png
-   :width: 500
-   :align: center
+   Журнал **Заявка на оборудование** уже добавлен в меню рабочего пространства.
 
 Откройте журнал и создайте заявку. Нажмите **«Сохранить»** — это запустит процесс:
 
-.. image:: _static/equipment_request_ai/AI_21.png
-   :width: 700
+.. image:: _static/equipment_request_ai/AI_17.png
+   :width: 800
    :align: center
 
 Появится первая задача **«На согласование»**. Нажмите **«Отправить на согласование»**:
 
-.. image:: _static/equipment_request_ai/AI_22.png
-   :width: 700
+.. image:: _static/equipment_request_ai/AI_18.png
+   :width: 800
    :align: center
 
 Откроется вторая задача **«На согласовании согласующим»**. Укажите комментарий и нажмите **«Отказать»**:
 
-.. image:: _static/equipment_request_ai/AI_23.png
-   :width: 700
+.. image:: _static/equipment_request_ai/AI_19.png
+   :width: 800
    :align: center
 
 Заявка переходит в статус **«Отказано»**:
 
-.. image:: _static/equipment_request_ai/AI_24.png
-   :width: 700
+.. image:: _static/equipment_request_ai/AI_20.png
+   :width: 800
    :align: center
