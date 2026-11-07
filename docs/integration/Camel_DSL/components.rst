@@ -32,6 +32,9 @@
    * - :ref:`ecos-records-delete <EcosRecordsDeleteEndpoint>`
      - Производитель
      - Удаление записей через RecordsAPI
+   * - :ref:`ecos-records-validate <EcosRecordsValidateEndpoint>`
+     - Производитель
+     - Сравнение ожидаемых атрибутов с целевыми записями и регистрация расхождений
    * - :ref:`ecos-attributes-mapper <EcosAttributesMapperEndpoint>`
      - Производитель
      - Приведение строковых значений атрибутов к модели атрибутов ECOS-типа
@@ -44,40 +47,40 @@
    * - :ref:`ecos-excel-stream-read <EcosExcelStreamReadEndpoint>`
      - Потребитель
      - Потоковое чтение XLSX-файла по строкам пачками
-   * - :ref:`gitlab-commits-sync <camel_dsl_external_import>`
+   * - :ref:`gitlab-commits-sync <GitLabCommitsSyncEndpoint>`
      - Потребитель
      - Периодическая выгрузка коммитов из GitLab
-   * - :ref:`gitlab-merge-requests-sync <camel_dsl_external_import>`
+   * - :ref:`gitlab-merge-requests-sync <GitLabMergeRequestsSyncEndpoint>`
      - Потребитель
      - Периодическая выгрузка запросов на слияние из GitLab
-   * - :ref:`jira-issues <camel_dsl_external_import>`
+   * - :ref:`jira-issues <JiraIssuesEndpoint>`
      - Потребитель
      - Периодическая выгрузка задач из проектов Jira
-   * - :ref:`import-jira-releases <camel_dsl_external_import>`
+   * - :ref:`import-jira-releases <ImportJiraReleasesEndpoint>`
      - Производитель
      - Создание релизов ECOS из версий задачи Jira
-   * - :ref:`import-jira-attachment <camel_dsl_external_import>`
+   * - :ref:`import-jira-attachment <ImportJiraAttachmentEndpoint>`
      - Производитель
      - Перенос вложений задачи Jira в ECOS
-   * - :ref:`import-jira-dev-info <camel_dsl_external_import>`
+   * - :ref:`import-jira-dev-info <ImportJiraDevInfoEndpoint>`
      - Производитель
      - Перенос связанных коммитов и запросов на слияние
-   * - :ref:`import-jira-component <camel_dsl_external_import>`
+   * - :ref:`import-jira-component <ImportJiraComponentEndpoint>`
      - Производитель
      - Создание компонентов ECOS из компонентов задачи Jira
-   * - :ref:`import-jira-sprint <camel_dsl_external_import>`
+   * - :ref:`import-jira-sprint <ImportJiraSprintEndpoint>`
      - Производитель
      - Создание спринтов ECOS из спринта задачи Jira
-   * - :ref:`import-jira-tags <camel_dsl_external_import>`
+   * - :ref:`import-jira-tags <ImportJiraTagsEndpoint>`
      - Производитель
      - Создание меток ECOS из меток задачи Jira
-   * - :ref:`transform-jira-issue <camel_dsl_external_import>`
+   * - :ref:`transform-jira-issue <TransformJiraIssueEndpoint>`
      - Производитель
      - Преобразование задачи Jira в набор атрибутов задачи EPT
-   * - :ref:`transform-jira-comment <camel_dsl_external_import>`
+   * - :ref:`transform-jira-comment <TransformJiraCommentEndpoint>`
      - Производитель
      - Преобразование комментариев задачи Jira
-   * - :ref:`transform-jira-worklog <camel_dsl_external_import>`
+   * - :ref:`transform-jira-worklog <TransformJiraWorkLogEndpoint>`
      - Производитель
      - Преобразование записей о затраченном времени
 

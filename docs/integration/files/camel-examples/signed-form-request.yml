@@ -1,0 +1,92 @@
+---
+# Building an `application/x-www-form-urlencoded` request body with FormUrlEncodedBodyProcessor,
+# signed by HmacSignatureProcessor.
+#
+# Scenario: the Mango Office VPBX API accepts only a form, and camel has no data format for one -
+# `HttpProducer` sends a string, bytes, a stream or an `HttpEntity` and has no branch for a map,
+# which is why routes used to concatenate and encode the form by hand in a script.
+#
+# The two processors split the request in half along the secret: the salt is consumed inside the
+# signature processor and never leaves it, while the public half of the pair (the api key the
+# provider expects in the form) comes as a header from `{{ecos-secret:...}}`. That is why
+# `secret.*` references are not supported by the form processor - a secret must not reach a request
+# body through a processor of general purpose.
+- beans:
+    - name: recordingSign
+      type: ru.citeck.ecos.camel.processor.HmacSignatureProcessor
+      properties:
+        algorithm: sha256
+        # BASIC secret: username = vpbx_api_key, password = vpbx_api_salt.
+        secretId: mango-api
+        # The order of the components is the order of the concatenation - it is what the provider
+        # signs. A list is built by a factory method and not written as a nested yaml sequence,
+        # which does not bind ("Unsupported type: SEQUENCE").
+        components: "#class:java.util.List#of('secret.username','header.MangoRequestJson','secret.password')"
+        # The body of this request is a form string and not a json object, so the signature goes
+        # into a header; the form processor below then reads it from there.
+        signatureHeader: MangoSignature
+    - name: recordingForm
+      type: ru.citeck.ecos.camel.processor.FormUrlEncodedBodyProcessor
+      properties:
+        # The fields of the form as `<name>=<value reference>` pairs, in the order they are sent.
+        # Grammar of the references: const.<literal> | header.<name> | variable.<name> | body.<field>
+        #
+        # A single string and not a nested yaml map, although a map is the shape of this property.
+        # A nested map does bind, but not as it is written: it reaches the processor as the
+        # flattened keys `fields.<name>`, bound one by one and sorted by name on the way, so these
+        # three fields would come out as json, sign, vpbx_api_key - silently, and exactly for a
+        # provider that signs the form and therefore cares about the order. A yaml list does not
+        # bind at all ("Unsupported type: SEQUENCE").
+        fields: "vpbx_api_key=header.MangoApiKey,json=header.MangoRequestJson,sign=header.MangoSignature"
+
+- route:
+    id: build-signed-form-request
+    from:
+      # Input - the header MangoRecordingId, the id of the recording to download.
+      uri: "direct:build-signed-form-request"
+      steps:
+        # The payload goes into a header and not into the body: the signature processor reads a
+        # header or a field of a json body, and the body of this request is the form itself.
+        - setHeader:
+            name: MangoRequestJson
+            simple: '{"recording_id":"${header.MangoRecordingId}","action":"download"}'
+        - process:
+            # writes sha256(vpbx_api_key + json + vpbx_api_salt) into the MangoSignature header
+            ref: recordingSign
+        - setHeader:
+            name: MangoApiKey
+            # The public half of the secret: the key identifies the account and travels to the
+            # provider in every request, while the salt stays inside the processor above.
+            constant: "{{ecos-secret:mango-api/username}}"
+        - process:
+            # writes the form into the body and sets Content-Type: application/x-www-form-urlencoded.
+            # The recording id is base64 and the payload is json, so both `=`, `+`, `/` and `{`, `"`
+            # have to be percent-encoded - that is what this processor is for.
+            ref: recordingForm
+        - removeHeaders:
+            # Everything the route has collected so far - the payload, the signature, the key of the
+            # account - would otherwise be copied into the outgoing request as http headers by
+            # HttpProducer.
+            pattern: "*"
+            # Two headers have to survive it. The Content-Type written by the processor, or the
+            # provider gets a form it does not recognize - and the bookkeeping of the retries:
+            # camel counts the attempts in the CamelRedeliveryCounter HEADER of the message, so a
+            # route that wipes it starts counting from zero after every attempt and the redelivery
+            # policy of the caller never reaches its limit - the failing request is repeated
+            # forever. The Camel* headers are not sent anywhere either: camel-http filters them out
+            # of an outgoing request by itself.
+            #
+            # excludePattern is a single string, and camel matches it as an exact name, then as a
+            # 'prefix*' wildcard, then as a regular expression (case-insensitively in all three) -
+            # an alternation is the way to keep two unrelated names with one pattern.
+            excludePattern: "Content-Type|CamelRedeliver.*"
+        - setHeader:
+            name: CamelHttpMethod
+            constant: "POST"
+        # The body of the form carries the api key and the signature, and nothing but Content-Type
+        # and the retry bookkeeping is left among the headers, so neither is logged: a
+        # `showBody=true` here would write the credentials of the account into the log of every
+        # message the route sends. What is worth recording is that the request was built at all.
+        - to: "log:signed-form-request?level=INFO&showBody=false&showHeaders=false"
+        # ... and the POST itself:
+        #   - to: "{{ecos-endpoint:mango-office/url}}/vpbx/queries/recording/post?followRedirects=true"

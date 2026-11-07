@@ -1,0 +1,57 @@
+---
+# Signing an outgoing request with HmacSignatureProcessor.
+#
+# The case: downloading a Mango Office call recording (vpbx/queries/recording/post), which
+# requires sign = sha256(vpbx_api_key + json + vpbx_api_salt) and a request body of
+# {vpbx_api_key, json, sign}.
+#
+# The processor is symmetrical to the incoming verification of COREDEV-284 (authType: signature):
+# a signature computed here is accepted by that same verifier.
+- beans:
+    - name: hmacSign
+      type: ru.citeck.ecos.camel.processor.HmacSignatureProcessor
+      properties:
+        # sha256 (the default) or hmac-sha256, which then requires keyComponent.
+        algorithm: sha256
+        # A secret of type BASIC: username = vpbx_api_key, password = vpbx_api_salt.
+        # The processor reads the secret itself through EcosSecrets under AuthContext.runAsSystem;
+        # the confidential material (the salt) reaches neither the body, nor a header, nor the DSL.
+        secretId: mango-api
+        # The ordered list of component references, concatenated (UTF-8) into the signed message.
+        # The grammar of a reference:
+        #   const.<literal> | header.<name> | body.<field> | secret.username|password|token
+        #
+        # The list is set by calling a factory method and NOT as a nested yaml sequence. A nested
+        # list does not load here: the properties of a bean are read through asMap, and a sequence
+        # in it fails with "Unsupported type: SEQUENCE". The indexed form components[0] does not
+        # work either - HmacSignatureProcessor has no getComponents(), so PropertyBindingSupport
+        # collects the indices into a map it then finds no setter for.
+        # The order of the elements is the order of the concatenation:
+        #   secret.username - vpbx_api_key (the public identifier, sent to Mango)
+        #   body.json       - the payload of the request, built by the route
+        #   secret.password - vpbx_api_salt (for the signature only, never sent out)
+        components: "#class:java.util.List#of('secret.username','body.json','secret.password')"
+        # Where the hex signature is written: exactly one of signatureBodyField / signatureHeader.
+        # The body has to be a JSON object: a DataValue/Map, or a JSON string (as in the setBody
+        # below) which the processor parses into an object before writing the field.
+        signatureBodyField: sign
+- route:
+    id: mango-recording-download-example
+    from:
+      uri: "direct:mango-recording-download"
+      steps:
+        # The route builds the body {vpbx_api_key, json} itself; the salt does NOT go into it.
+        - setBody:
+            constant: >
+              {
+                "vpbx_api_key": "{{ecos-secret:mango-api/username}}",
+                "json": "{\"recording_id\":\"123\"}"
+              }
+        # The processor adds the sign field to the body.
+        - process:
+            ref: hmacSign
+        # The body carries the api key and the signature from here on, so it is not logged: a
+        # `showBody=true` on this step would write both into the log of every message. Only the
+        # fact that the body was signed is recorded.
+        - to: "log:mango-signed-body?level=INFO&showBody=false&showHeaders=false"
+        # ... then the POST to Mango with the signed body {vpbx_api_key, json, sign}

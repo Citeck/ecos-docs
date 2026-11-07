@@ -23,7 +23,7 @@
       Реквизиты и информация о контактных лицах:
 
       .. image:: _static/client_360/Tab_01.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: История
@@ -31,7 +31,7 @@
       Информация о событиях в карточке — таких как создание, обновление:
 
       .. image:: _static/client_360/Tab_02.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: Документы
@@ -39,7 +39,7 @@
       Документы по контрагенту. Можно добавить новые, скачать загруженные ранее:
 
       .. image:: _static/client_360/Tab_03.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: CRM
@@ -47,7 +47,7 @@
       Информация из CRM о сделках, заказах и платежах. Для каждого элемента доступны действия:
 
       .. image:: _static/client_360/Tab_04.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: Договоры
@@ -55,7 +55,7 @@
       Информация о договорах, доп. соглашениях с контрагентом. Для каждого элемента доступны действия:
 
       .. image:: _static/client_360/Tab_05.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: Поддержка клиента
@@ -63,7 +63,7 @@
       Обращения контрагента в техническую поддержку:
 
       .. image:: _static/client_360/Tab_06.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: Корреспонденция
@@ -71,7 +71,7 @@
       Информация о входящей, исходящей корреспонденции контрагента:
 
       .. image:: _static/client_360/Tab_07.png
-          :width: 600
+          :width: 700
           :align: center
 
    .. tab-item:: Проекты
@@ -79,7 +79,7 @@
       Информация о релизах для данного клиента:
 
       .. image:: _static/client_360/Tab_08.png
-          :width: 600
+          :width: 700
           :align: center
 
 .. _client_360_autofill:

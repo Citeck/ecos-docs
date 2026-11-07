@@ -1,0 +1,39 @@
+# Export ECOS records to CSV on SFTP.
+#
+# Beforehand, create in ecos-model:
+#   - secret `export-sftp-cred` (BASIC: username/password  OR  PRIVATE_KEY: privateKey);
+#   - endpoint `export-sftp` with url `sftp://host:22/outbox` (for PRIVATE_KEY — `sftp://user@host:22/outbox`)
+#     and credentials = `export-sftp-cred`.
+#
+# ecos-records-sync-consumer maintains a watermark: each record is sent exactly once; if an
+# upload fails, the batch is retried on the next tick (at-least-once).
+- beans:
+    - name: toCsv
+      type: ru.citeck.ecos.camel.processor.writer.ListOfDataToCsvProcessor
+      properties:
+        columns: "docNumber:Number,approvalDate:date,approvalStatus:approval_status"
+        delimiter: ";"
+
+- route:
+    id: records-to-sftp
+    from:
+      uri: "ecos-records-sync-consumer:records-to-sftp"
+      parameters:
+        ecosType: uni-contract-clm-export
+        iterationStrategy: CREATED
+        batchSize: 1000
+        greedy: true
+        addAuditAttributes: false
+        scheduler: quartz
+        scheduler.cron: "0+50+*+*+*+?"
+        attributes:
+          docNumber: docNumber
+          approvalDate: "approvalDate|fmt('dd.MM.yyyy')"
+          approvalStatus: approvalStatus
+      steps:
+        - filter:
+            simple: "${body.size} > 0"
+            steps:
+              - process:
+                  ref: toCsv
+              - to: "ecos-ftp:export-sftp?fileName=CLM_approvals_${date:now:yyyyMMdd_HH_mm}.csv&tempPrefix=.uploading-"

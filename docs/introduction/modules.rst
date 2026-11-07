@@ -499,7 +499,7 @@
 
               - :octicon:`check-circle;1.2em;sd-text-success`
 
-            * - ecos-ecom
+            * - :ref:`ecos-ecom <ecom_service>`
               - Микросервис представляет решение для создания и управления email-рассылками, чат-ботами внутри платформы.
               - :octicon:`check-circle;1.2em;sd-text-success`
 

@@ -101,6 +101,12 @@
 
       Компоненты для переноса задач, комментариев, вложений, спринтов и связанных коммитов.
 
+   .. grid-item-card:: Настройка импорта проектов из Jira
+      :link: camel_dsl_jira_import
+      :link-type: ref
+
+      Пошаговая настройка синхронизации коммитов и MR из GitLab и импорта проекта из Jira в Project tracker: пример маршрута, маппинг значений и атрибутов, устранение неполадок.
+
    .. grid-item-card:: Библиотека ecos-camel-core
       :link: ecos-camel-core
       :link-type: ref
@@ -131,6 +137,7 @@
     Camel_DSL/endpoints
     Camel_DSL/processors
     Camel_DSL/external_import
+    Camel_DSL/jira_citeck
     Camel_DSL/ecos-camel-core
     Camel_DSL/examples
 

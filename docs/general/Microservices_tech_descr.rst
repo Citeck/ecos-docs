@@ -40,6 +40,12 @@
 
       Функционал ЮЗДО (электронный документооборот с контрагентами).
 
+   .. grid-item-card:: Коммуникации (ecos-ecom)
+      :link: ecom_service
+      :link-type: ref
+
+      Обработка входящей почты CRM и Service Desk, почтовые активности и операции объединения записей CRM.
+
 .. toctree::
     :maxdepth: 2
     :hidden:
@@ -49,3 +55,4 @@
     Ms_description/Process_Engine
     Ms_description/Transformations_microservice
     Ms_description/EDI_microservice
+    Ms_description/ecom

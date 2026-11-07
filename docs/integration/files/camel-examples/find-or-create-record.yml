@@ -1,0 +1,74 @@
+---
+# Linking records of another system to reference records by a natural key with
+# FindOrCreateRecordProcessor.
+#
+# Scenario: currencies come from another system with an id of their own, and some of them already
+# exist here, created with the same code. The first route goes through the currencies of the other
+# system: it finds the twin of each by the reference left on a previous run or by the code, writes
+# the id of the other system on it, and creates the currencies that are missing. The second route
+# then replaces the currency of a payment - the id of the other system - with the reference to the
+# currency here, and puts aside a payment whose currency is unknown instead of losing the link.
+- beans:
+    - name: currencyTwin
+      type: ru.citeck.ecos.camel.processor.data.FindOrCreateRecordProcessor
+      properties:
+        sourceId: emodel/currency
+        # The alternative keys in the order of priority, separated by ';'. The reference written on
+        # a previous run comes first: a currency found by it is found by it again, whatever happens
+        # to the codes. A key is one or more '<attribute>=<value reference>' pairs, all of which
+        # must match; body.<field> is a field of the record being processed.
+        keys: "externalRef=body.id;code=body.code"
+        onMiss: CREATE
+        # Written on the currency found or created: empty - written, equal - left alone, different -
+        # RecordKeyResolutionException, the currency already belongs to another record.
+        # __disableEvents is a flag of the mutation, it is never compared.
+        stampAtts: "externalRef=body.id,__disableEvents=const.true"
+        # Only for a currency to create. The attributes of the keys are not added by themselves: a
+        # currency created without its code would not be found by the code on a repeated run.
+        createAtts: "id=body.code,code=body.code,name=body.name,importedAt=header.ImportedAt"
+        # No targetAttribute: this route only makes sure that every currency exists.
+    - name: paymentCurrency
+      type: ru.citeck.ecos.camel.processor.data.FindOrCreateRecordProcessor
+      properties:
+        sourceId: emodel/currency
+        keys: "externalRef=body.currency"
+        # The default: a payment must not lose its currency silently.
+        onMiss: ERROR
+        targetAttribute: currency
+
+- route:
+    id: import-currencies
+    from:
+      # Input - a list of currencies of the other system: id, code, name; the header ImportedAt is
+      # the time of the run, the same for all of its records.
+      uri: "direct:import-currencies"
+      steps:
+        - process:
+            ref: currencyTwin
+
+- route:
+    id: link-payments
+    from:
+      # Input - a payment of the other system, its field 'currency' holds the id of the currency
+      # there.
+      uri: "direct:link-payments"
+      steps:
+        - doTry:
+            steps:
+              - process:
+                  ref: paymentCurrency
+              - setVariable:
+                  name: paymentLinked
+                  constant: true
+            doCatch:
+              # A currency that is not found, found twice or claimed by another record is a matter
+              # of the data, not of the network: the payment is put aside for a report rather than
+              # retried.
+              - exception:
+                  - "ru.citeck.ecos.camel.processor.data.RecordKeyResolutionException"
+                steps:
+                  - setVariable:
+                      name: paymentLinked
+                      constant: false
+                  - log:
+                      message: "The payment is put aside, ${exception.reason.name()}: ${exception.message}"

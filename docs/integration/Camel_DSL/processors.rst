@@ -17,14 +17,21 @@
    - beans:
        - name: myProcessor
          type: ru.citeck.ecos.camel.processor.data.ReverseArrayProcessor
-         properties:
-           someProperty: someValue
    - route:
        from:
-         uri: .....
+         uri: direct:reverse
          steps:
            - process:
                ref: myProcessor
+
+.. _camel_data_processors_input:
+
+Формат данных для преобразований
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Процессоры :ref:`MappingProcessor`, :ref:`JsonPatchOperationsProcessor`, :ref:`StringValuesOperationsProcessor`, :ref:`MapAssocRefsProcessor`, :ref:`AuthorityNameToRefProcessor`, :ref:`MutateInnerRecordsProcessor`, :ref:`PrepareToMutateProcessor`, :ref:`FindOrCreateRecordProcessor` работают с объектом ``DataValue``, массивом ``DataValue`` либо коллекцией объектов. Элементы коллекции преобразуются в ``DataValue``; обработчик получает копию каждого элемента. Одиночные ``Map``, ``ObjectData`` и строка JSON без предварительного преобразования остаются без изменений. ``null`` также проходит без изменений.
+
+Заголовки конфигурации, прочитанные этими процессорами, удаляются после обработки сообщения. Имена и назначение заголовков приведены в соответствующих разделах.
 
 .. _camel_dsl_processors_binding:
 
@@ -434,6 +441,7 @@ CreateEcosHistoryDocumentMirrorProcessor
                 documentMirrorRefIdPrefix: 'emodel/route-template-code@'
           - process:
               ref: createHistoryDocumentMirror
+
 .. _GetRecordAttsProcessor:
 
 GetRecordAttsProcessor
@@ -441,7 +449,7 @@ GetRecordAttsProcessor
 
 Класс: ``ru.citeck.ecos.camel.processor.GetRecordAttsProcessor``
 
-Загружает заданный набор атрибутов записи, ссылка на которую лежит в теле сообщения, и заменяет тело картой атрибутов. Загрузка выполняется от имени системы.
+Загружает заданный набор атрибутов одной или нескольких записей. Загрузка выполняется от имени системы; список ссылок читается одним пакетным вызовом Records API.
 
 .. list-table::
       :widths: 5 5 5 20
@@ -457,9 +465,11 @@ GetRecordAttsProcessor
         - Да
         - Вложенная карта «псевдоним — схема атрибута». Порядок ключей значения не имеет
 
-**Вход:** тело — ссылка на запись (**EntityRef** или строка, приводимая к ней).
+**Вход:** тело — ссылка на запись (**EntityRef** или строка), коллекция ссылок либо массив **DataValue** с текстовыми ссылками. Некорректная или пустая ссылка вызывает ошибку; для списка в ошибке указывается индекс элемента.
 
-**Выход:** тело заменяется картой загруженных атрибутов.
+**Выход:** для одной ссылки — **ObjectData** с атрибутами, для списка — список **ObjectData** в исходном порядке. Пустой список дает пустой результат. Чтобы отличать отсутствующую запись, включите в ``attributes`` атрибут ``_notExists?bool``.
+
+**Заголовки:** собственных заголовков нет.
 
 .. code-block:: yaml
 
@@ -470,6 +480,15 @@ GetRecordAttsProcessor
            attributes:
              name: _name
              created: _created
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:read-record-atts
+         steps:
+           - process:
+               ref: getAtts
 
 .. _EcosContentReadProcessor:
 
@@ -502,6 +521,23 @@ EcosContentReadProcessor
 **Вход:** тело — ссылка на запись.
 
 **Ошибки на сообщении:** пустое тело, некорректная ссылка или отсутствующее содержимое.
+
+**Выход:** тело заменяется содержимым в выбранном формате. **Заголовки:** собственных заголовков нет.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: readContent
+         type: ru.citeck.ecos.camel.processor.reader.EcosContentReadProcessor
+         properties:
+           contentAttribute: _content
+           outputType: STRING
+   - route:
+       from:
+         uri: direct:readContent
+         steps:
+           - process:
+               ref: readContent
 
 .. _ListOfDataToCsvProcessor:
 
@@ -552,6 +588,24 @@ ListOfDataToCsvProcessor
 
 **Выход:** тело заменяется строкой CSV.
 
+**Заголовки:** собственных заголовков нет.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: writeCsv
+         type: ru.citeck.ecos.camel.processor.writer.ListOfDataToCsvProcessor
+         properties:
+           columns: "id:ID,name:Название"
+           delimiter: ";"
+           withHeader: true
+   - route:
+       from:
+         uri: direct:writeCsv
+         steps:
+           - process:
+               ref: writeCsv
+
 .. _MappingProcessor:
 
 MappingProcessor
@@ -580,7 +634,7 @@ MappingProcessor
         - | Карта «атрибут — карта соответствия значений».
           | Ключ ``*`` — значение по умолчанию для всех значений, не перечисленных явно
 
-**Вход и выход:** тело — объект, коллекция объектов или массив **DataValue**; обрабатывается каждый элемент. Значения ``null`` проходят без изменений.
+**Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`. **Заголовки:** собственных заголовков нет.
 
 .. code-block:: yaml
 
@@ -595,6 +649,15 @@ MappingProcessor
              status:
                NEW: draft
                "*": unknown
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: direct:map-record
+         steps:
+           - process:
+               ref: mapping
 
 .. _JsonPatchOperationsProcessor:
 
@@ -625,6 +688,30 @@ JsonPatchOperationsProcessor
           | Неизвестное значение ``op`` отклоняется при загрузке маршрута
 
 **Заголовок на входе:** ``JsonPatchOperations`` — дополнительные операции того же вида для одного сообщения; применяются после настроенных, после чтения заголовок удаляется из сообщения.
+
+**Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`.
+
+В примере вызывающая сторона передает список операций в заголовке ``JsonPatchOperations``.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: patchData
+         type: ru.citeck.ecos.camel.processor.data.JsonPatchOperationsProcessor
+   - route:
+       from:
+         uri: direct:patchData
+         steps:
+           - process:
+               ref: patchData
+
+Пример значения заголовка (список объектов):
+
+.. code-block:: yaml
+
+   - op: set
+     path: status
+     value: draft
 
 .. _StringValuesOperationsProcessor:
 
@@ -668,6 +755,29 @@ StringValuesOperationsProcessor
 
 **Заголовок на входе:** ``StringValuesOperations`` — дополнительные операции для одного сообщения; после чтения заголовок удаляется.
 
+**Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`.
+
+В примере вызывающая сторона передает список операций в заголовке ``StringValuesOperations``.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: normalizeStrings
+         type: ru.citeck.ecos.camel.processor.data.StringValuesOperationsProcessor
+   - route:
+       from:
+         uri: direct:normalizeStrings
+         steps:
+           - process:
+               ref: normalizeStrings
+
+Пример значения заголовка (список объектов):
+
+.. code-block:: yaml
+
+   - op: trim
+   - op: uppercase
+
 .. _MapAssocRefsProcessor:
 
 MapAssocRefsProcessor
@@ -703,6 +813,25 @@ MapAssocRefsProcessor
         - ?localId
         - Поле объекта-ссылки, в котором лежит локальный идентификатор
 
+**Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`. **Заголовки:** собственных заголовков нет.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: mapAssociations
+         type: ru.citeck.ecos.camel.processor.data.MapAssocRefsProcessor
+         properties:
+           ecosTypeToSourceIdMapping:
+             department: emodel/department
+           sourceIdByKeyMapping:
+             department: emodel/department
+   - route:
+       from:
+         uri: direct:mapAssociations
+         steps:
+           - process:
+               ref: mapAssociations
+
 .. _AuthorityNameToRefProcessor:
 
 AuthorityNameToRefProcessor
@@ -727,6 +856,22 @@ AuthorityNameToRefProcessor
         - Атрибуты тела, значения которых являются именами пользователей или групп. Значение атрибута может быть строкой или массивом строк
 
 **Заголовок на входе:** ``AuthorityNameToRefAttributes`` — дополнительные имена атрибутов для одного сообщения, строкой через запятую или списком.
+
+Прочитанный заголовок удаляется. **Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: resolveAuthorities
+         type: ru.citeck.ecos.camel.processor.data.AuthorityNameToRefProcessor
+         properties:
+           attributes: "assignees,reviewer"
+   - route:
+       from:
+         uri: direct:resolveAuthorities
+         steps:
+           - process:
+               ref: resolveAuthorities
 
 .. _MutateInnerRecordsProcessor:
 
@@ -758,6 +903,23 @@ MutateInnerRecordsProcessor
 
 **Заголовки на входе:** ``MutateInnerRecordsAssocAtts`` — дополнительные атрибуты; ``MutateInnerRecordsSourceId`` — источник данных для одного сообщения.
 
+Прочитанные заголовки удаляются. **Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`; вложенный объект заменяется одной ссылкой, массив объектов — массивом ссылок.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: saveChildren
+         type: ru.citeck.ecos.camel.processor.data.MutateInnerRecordsProcessor
+         properties:
+           sourceId: emodel/import-item
+           assocAtts: "items"
+   - route:
+       from:
+         uri: direct:saveChildren
+         steps:
+           - process:
+               ref: saveChildren
+
 .. _ReverseArrayProcessor:
 
 ReverseArrayProcessor
@@ -766,6 +928,20 @@ ReverseArrayProcessor
 Класс: ``ru.citeck.ecos.camel.processor.data.ReverseArrayProcessor``
 
 Меняет порядок элементов списка или массива в теле сообщения на обратный — например, чтобы перевернуть порядок результатов запроса. Свойств нет. Тело другого вида остается без изменений, ошибки не возникает.
+
+**Заголовки:** собственных заголовков нет. Поддерживаются коллекции ``List``, массивы Java и массивы ``DataValue``.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: reverseRecords
+         type: ru.citeck.ecos.camel.processor.data.ReverseArrayProcessor
+   - route:
+       from:
+         uri: direct:reverseRecords
+         steps:
+           - process:
+               ref: reverseRecords
 
 .. _PrepareToMutateProcessor:
 
@@ -779,6 +955,25 @@ PrepareToMutateProcessor
 **Заголовок на входе:** ``PrepareToMutateProcessorConfig`` — объект с полями ``typeId`` (обязателен) и ``workspace`` (необязателен).
 
 **Ошибки на сообщении:** пустой ``typeId``; отсутствие в теле хотя бы одного ключа, похожего на идентификатор атрибута.
+
+**Свойства:** отсутствуют. Прочитанный заголовок удаляется. **Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: prepareRecord
+         type: ru.citeck.ecos.camel.importdata.processor.PrepareToMutateProcessor
+   - route:
+       from:
+         uri: direct:prepare-record
+         steps:
+           - setHeader:
+               name: PrepareToMutateProcessorConfig
+               constant:
+                 typeId: emodel/type@import-item
+                 workspace: demo
+           - process:
+               ref: prepareRecord
 
 .. _HmacSignatureProcessor:
 
@@ -801,9 +996,9 @@ HmacSignatureProcessor
         - Значение по умолчанию
         - Описание
       * - components
-        - String
+        - List<String>
         -
-        - | Обязательно. Ссылки на значения строкой через запятую, в порядке склейки перед подписью
+        - | Обязательно. Упорядоченный список ссылок на значения. Для YAML используйте фабрику ``#class:java.util.List#of(...)``, как в примере ниже
       * - algorithm
         - sha256 | hmac-sha256
         - sha256
@@ -828,6 +1023,29 @@ HmacSignatureProcessor
 Должно быть задано ровно одно из ``signatureHeader`` и ``signatureBodyField``. Подпись записывается строкой шестнадцатеричных символов в нижнем регистре.
 
 Пример: ``ecos-camel-examples/hmac-signature``.
+
+**Вход:** обмен со значениями, указанными в ``components`` и ``keyComponent``. Для записи в ``signatureBodyField`` тело должно быть JSON-объектом: ``DataValue``, ``Map`` или строкой JSON. Секрет читается от имени системы.
+
+**Заголовки:** входные ``header.*`` не удаляются; на выходе заполняется ``signatureHeader``, если выбран этот способ записи. При записи в заголовок тело сохраняется.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: signRequest
+         type: ru.citeck.ecos.camel.processor.HmacSignatureProcessor
+         properties:
+           algorithm: sha256
+           secretId: mango-api
+           components: "#class:java.util.List#of('secret.username','body.json','secret.password')"
+           signatureBodyField: sign
+   - route:
+       from:
+         uri: direct:signRequest
+         steps:
+           - process:
+               ref: signRequest
+
+Полный маршрут: :ref:`каталог примеров <camel_dsl_repo_examples>`.
 
 .. _MaskedExceptionDescriberProcessor:
 
@@ -885,6 +1103,20 @@ MaskedExceptionDescriberProcessor
 
 Пример: ``ecos-camel-examples/masked-exception-describer``.
 
+**Вход:** исключение из свойства обмена ``Exchange.EXCEPTION_CAUGHT``. Тело и заголовки сообщения не изменяются; собственных заголовков нет. Процессор вызывается в обработчике ошибок.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: describeError
+         type: ru.citeck.ecos.camel.processor.MaskedExceptionDescriberProcessor
+         properties:
+           maskFields: "password,token,api_key"
+           maskPatterns: "/rest/([0-9]+)/"
+           variablePrefix: provider
+
+Шаг в обработчике ошибок: ``process: {ref: describeError}``. Полный пример :ref:`доступен для скачивания <camel_dsl_repo_examples>`.
+
 .. _BinaryBodyGuardProcessor:
 
 BinaryBodyGuardProcessor
@@ -929,6 +1161,26 @@ BinaryBodyGuardProcessor
 
 Пример: ``ecos-camel-examples/binary-body-guard``.
 
+**Заголовки на входе:** ``Content-Type`` и ``Content-Length`` используются для проверки и не удаляются. На вход подается скачанное тело; при отказе маршрут должен обработать ``bodyAccepted: false``.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: guardFile
+         type: ru.citeck.ecos.camel.processor.BinaryBodyGuardProcessor
+         properties:
+           maxSize: 10485760
+           rejectedContentTypes: "text/,/json,+json,/xml,+xml,/html,+html"
+           rejectedFirstBytes: "<,{"
+   - route:
+       from:
+         uri: direct:guardFile
+         steps:
+           - process:
+               ref: guardFile
+
+Полный пример с ветвлением: :ref:`каталог примеров <camel_dsl_repo_examples>`.
+
 .. _FormUrlEncodedBodyProcessor:
 
 FormUrlEncodedBodyProcessor
@@ -961,3 +1213,98 @@ FormUrlEncodedBodyProcessor
 **Выход:** тело заменяется строкой вида ``имя=значение&имя2=значение2`` в кодировке UTF-8; заголовок ``Content-Type`` выставляется в ``application/x-www-form-urlencoded``. Значения всех полей вычисляются до замены тела, поэтому несколько ссылок ``body.*`` читают исходное тело.
 
 Пример: ``ecos-camel-examples/form-urlencoded-body``.
+
+**Заголовки на входе:** только выбранные ссылки ``header.*``; они не удаляются. На выходе устанавливается ``Content-Type``.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: makeForm
+         type: ru.citeck.ecos.camel.processor.FormUrlEncodedBodyProcessor
+         properties:
+           fields: "request_id=header.RequestId,json=body.json,sign=body.sign"
+   - route:
+       from:
+         uri: direct:makeForm
+         steps:
+           - process:
+               ref: makeForm
+
+Полный пример с подписью: :ref:`каталог примеров <camel_dsl_repo_examples>`.
+
+
+.. _FindOrCreateRecordProcessor:
+
+FindOrCreateRecordProcessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Класс: ``ru.citeck.ecos.camel.processor.data.FindOrCreateRecordProcessor``
+
+Ищет связанную запись по ключам и при необходимости создает ее. Позволяет сопоставлять справочники внешней системы с записями ECOS. Поиск и сохранение выполняются от имени системы.
+
+.. list-table::
+   :widths: 8 8 8 30
+   :header-rows: 1
+   :class: tight-table
+
+   * - Свойство
+     - Тип
+     - По умолчанию
+     - Описание
+   * - sourceId
+     - String
+     - —
+     - Обязательно. Источник данных для поиска и создания записей
+   * - keys
+     - String
+     - —
+     - Обязательно. Альтернативные ключи в порядке приоритета, разделенные ``;``. Ключ состоит из пар ``атрибут=ссылка-на-значение`` через запятую; все пары составного ключа должны совпасть
+   * - onMiss
+     - ERROR | NULL | CREATE
+     - ERROR
+     - Если запись не найдена: ошибка, пустая ссылка либо создание записи. Регистр значения не важен
+   * - stampAtts
+     - String
+     - пусто
+     - Пары ``атрибут=ссылка-на-значение`` через запятую. Пустой атрибут найденной или созданной записи заполняется, равный сохраняется; другое непустое значение вызывает конфликт
+   * - createAtts
+     - String
+     - пусто
+     - Пары атрибутов для новой записи. Атрибуты ключей автоматически не добавляются: перечислите их здесь, если созданная запись должна находиться повторно
+   * - targetAttribute
+     - String
+     - пусто
+     - Атрибут исходного объекта, куда записывается ссылка. Если не задан, процессор только обеспечивает наличие записи
+   * - cacheMaxSize
+     - Int
+     - 100000
+     - Предел числа закешированных ключей. ``0`` отключает кеш
+
+**Вход и выход:** :ref:`формат данных для преобразований <camel_data_processors_input>`. Ссылки на значения: ``const.<литерал>``, ``header.<имя>``, ``variable.<имя>``, ``body.<поле>``. ``body.*`` читается из текущего элемента списка. **Заголовки:** специальных заголовков конфигурации нет; выбранные ``header.*`` читаются без удаления.
+
+Ключи проверяются по очереди: первое однозначное совпадение завершает поиск. Два совпадения по одному ключу вызывают ошибку, даже если следующий ключ уникален. Ключ с пустым значением пропускается; если пусты все ключи, возвращается пустая ссылка независимо от ``onMiss``. Нормализацию строк следует выполнить до этого шага.
+
+**Ошибки данных:** ``RecordKeyResolutionException`` с причиной ``NOT_FOUND``, ``AMBIGUOUS`` или ``STAMP_CONFLICT``. Флаги мутации с префиксом ``__`` передаются при сохранении, не сравниваются с атрибутами и сами по себе не вызывают сохранение.
+
+Кеш хранится в экземпляре процессора до перезапуска контекста. Результаты транзакции попадают в него после фиксации; промахи не кешируются. Изменения записей вне этого процессора могут не отражаться в уже закешированных ключах; для таких сценариев используйте ``cacheMaxSize: 0``. Блокировка записи действует внутри одного экземпляра процессора.
+
+.. code-block:: yaml
+
+   - beans:
+       - name: currencyTwin
+         type: ru.citeck.ecos.camel.processor.data.FindOrCreateRecordProcessor
+         properties:
+           sourceId: emodel/currency
+           keys: "externalRef=body.id;code=body.code"
+           onMiss: CREATE
+           stampAtts: "externalRef=body.id,__disableEvents=const.true"
+           createAtts: "id=body.code,code=body.code,name=body.name"
+           targetAttribute: currencyRef
+   - route:
+       from:
+         uri: direct:currencyTwin
+         steps:
+           - process:
+               ref: currencyTwin
+
+Полный пример импорта справочника и связывания платежей: :ref:`каталог примеров <camel_dsl_repo_examples>`.
