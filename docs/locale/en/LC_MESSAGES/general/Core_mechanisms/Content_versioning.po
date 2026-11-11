@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-15 13:51+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -35,9 +35,8 @@ msgid ""
 msgstr ""
 "**Content versioning** is a mechanism whereby every replacement of a "
 "record's main file saves the file's previous state into a separate "
-"version record. This makes it possible to view and download any "
-"earlier version of a document, as well as to compare versions "
-"against each other."
+"version record. This makes it possible to view and download any earlier "
+"version of a document, as well as to compare versions against each other."
 
 #: ../../general/Core_mechanisms/Content_versioning.rst:11
 msgid ""
@@ -45,411 +44,413 @@ msgid ""
 "<widget_versions_journal>` и функция :ref:`сравнения версий "
 "<version_comparison>`."
 msgstr ""
-"The mechanism's user interface is the :ref:`\"Version history\" "
-"widget <widget_versions_journal>` and the :ref:`version comparison "
+"The mechanism's user interface is the :ref:`\"Version history\" widget "
+"<widget_versions_journal>` and the :ref:`version comparison "
 "<version_comparison>` feature."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:14
+#: ../../general/Core_mechanisms/Content_versioning.rst:13
+msgid ""
+"Ниже описан механизм ``record-version`` для записей, хранящихся в БД "
+"через ``DbRecordsDao``. Для Alfresco и источников с собственной "
+"реализацией версий правила хранения и работы с версиями могут отличаться."
+msgstr "The following describes the ``record-version`` mechanism for records stored in the database through ``DbRecordsDao``. Alfresco and sources with their own version implementations may use different rules for storing and managing versions."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:16
 msgid "Включение версионирования"
 msgstr "Enabling versioning"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:16
+#: ../../general/Core_mechanisms/Content_versioning.rst:18
 msgid ""
 "Версионирование включается добавлением :ref:`аспекта <aspects_user>` "
 "**«Версионируемый»** (``versionable``) к :ref:`типу данных <data_types>`:"
 msgstr ""
-"Versioning is enabled by adding the **\"Versionable\"** "
-":ref:`aspect <aspects_user>` (``versionable``) to a :ref:`data type "
-"<data_types>`:"
+"Versioning is enabled by adding the **\"Versionable\"** :ref:`aspect "
+"<aspects_user>` (``versionable``) to a :ref:`data type <data_types>`:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:23
+#: ../../general/Core_mechanisms/Content_versioning.rst:25
 msgid ""
 "Аспект не содержит атрибутов — он служит признаком того, что для записей "
 "типа нужно вести версии."
 msgstr ""
-"The aspect has no attributes — it only serves as a marker that "
-"records of the type need to be versioned."
+"The aspect has no attributes — it only serves as a marker that records of"
+" the type need to be versioned."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:25
-msgid ""
-"Версионирование можно временно отключить, не снимая аспект с типа, — "
-"через конфигурацию аспекта:"
-msgstr ""
-"Versioning can be temporarily disabled without removing the aspect "
-"from the type — through the aspect's configuration:"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:35
+#: ../../general/Core_mechanisms/Content_versioning.rst:28
 msgid "Аспект «Версионные данные»"
 msgstr "The \"Version data\" aspect"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:37
+#: ../../general/Core_mechanisms/Content_versioning.rst:30
 msgid ""
 "Аспект **«Версионные данные»** (``versionable-data``, префикс "
-"``version``) добавляется к записи автоматически при первой записи "
-"основного контента, если тип версионируемый. Он хранит служебные данные "
-"текущей версии:"
-msgstr ""
-"The **\"Version data\"** aspect (``versionable-data``, prefix "
-"``version``) is added to a record automatically the first time the "
-"main content is written, if the type is versionable. It stores "
-"service data for the current version:"
+"``version``) определяет служебные данные текущей версии:"
+msgstr "The **\"Version data\"** aspect (``versionable-data``, prefix ``version``) defines service data for the current version:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:44
-#: ../../general/Core_mechanisms/Content_versioning.rst:67
+#: ../../general/Core_mechanisms/Content_versioning.rst:37
+#: ../../general/Core_mechanisms/Content_versioning.rst:60
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:45
+#: ../../general/Core_mechanisms/Content_versioning.rst:38
 msgid "Название"
 msgstr "Name"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:46
-#: ../../general/Core_mechanisms/Content_versioning.rst:69
-#: ../../general/Core_mechanisms/Content_versioning.rst:138
+#: ../../general/Core_mechanisms/Content_versioning.rst:39
+#: ../../general/Core_mechanisms/Content_versioning.rst:62
+#: ../../general/Core_mechanisms/Content_versioning.rst:131
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:47
+#: ../../general/Core_mechanisms/Content_versioning.rst:40
 msgid "``version:version``"
 msgstr "``version:version``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:48
+#: ../../general/Core_mechanisms/Content_versioning.rst:41
 msgid "Версия"
 msgstr "Version"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:49
+#: ../../general/Core_mechanisms/Content_versioning.rst:42
 msgid "Номер актуальной версии записи. Если не задан, считается равным ``1.0``."
 msgstr ""
-"The number of the record's current version. If not set, it is "
-"treated as ``1.0``."
+"The number of the record's current version. If not set, it is treated as "
+"``1.0``."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:50
+#: ../../general/Core_mechanisms/Content_versioning.rst:43
 msgid "``version:comment``"
 msgstr "``version:comment``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:51
+#: ../../general/Core_mechanisms/Content_versioning.rst:44
 msgid "Комментарий"
 msgstr "Comment"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:52
+#: ../../general/Core_mechanisms/Content_versioning.rst:45
 msgid "Комментарий к актуальной версии."
 msgstr "Comment on the current version."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:53
+#: ../../general/Core_mechanisms/Content_versioning.rst:46
 msgid "``version:versions``"
 msgstr "``version:versions``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:54
+#: ../../general/Core_mechanisms/Content_versioning.rst:47
 msgid "Версии"
 msgstr "Versions"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:55
+#: ../../general/Core_mechanisms/Content_versioning.rst:48
 msgid "Дочерняя ассоциация на записи предыдущих версий."
 msgstr "A child association to the records of previous versions."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:58
+#: ../../general/Core_mechanisms/Content_versioning.rst:51
 msgid "Что хранится в версии"
 msgstr "What is stored in a version"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:60
+#: ../../general/Core_mechanisms/Content_versioning.rst:53
 msgid ""
 "Предыдущие версии сохраняются как отдельные записи системного типа "
 "``record-version``. Данные размещаются в таблице ``ecos_record_version`` "
 "в той же схеме БД, что и сама версионируемая запись."
 msgstr ""
 "Previous versions are stored as separate records of the system type "
-"``record-version``. The data is placed in the "
-"``ecos_record_version`` table, in the same database schema as the "
-"versioned record itself."
+"``record-version``. The data is placed in the ``ecos_record_version`` "
+"table, in the same database schema as the versioned record itself."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:68
+#: ../../general/Core_mechanisms/Content_versioning.rst:61
 msgid "Тип"
 msgstr "Type"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:70
+#: ../../general/Core_mechanisms/Content_versioning.rst:63
 msgid "``_parent``"
 msgstr "``_parent``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:71
+#: ../../general/Core_mechanisms/Content_versioning.rst:64
 msgid "ASSOC"
 msgstr "ASSOC"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:72
+#: ../../general/Core_mechanisms/Content_versioning.rst:65
 msgid "Ссылка на версионируемую запись. ``_parentAtt`` — ``version:versions``."
 msgstr ""
 "A reference to the versioned record. ``_parentAtt`` is "
 "``version:versions``."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:73
+#: ../../general/Core_mechanisms/Content_versioning.rst:66
 msgid "``content``"
 msgstr "``content``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:74
+#: ../../general/Core_mechanisms/Content_versioning.rst:67
 msgid "CONTENT"
 msgstr "CONTENT"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:75
+#: ../../general/Core_mechanisms/Content_versioning.rst:68
 msgid "Файл версии."
 msgstr "The version's file."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:76
+#: ../../general/Core_mechanisms/Content_versioning.rst:69
 msgid "``name``"
 msgstr "``name``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:77
+#: ../../general/Core_mechanisms/Content_versioning.rst:70
 msgid "MLTEXT"
 msgstr "MLTEXT"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:78
+#: ../../general/Core_mechanisms/Content_versioning.rst:71
 msgid "Имя файла на момент создания версии."
 msgstr "The file name at the time the version was created."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:79
+#: ../../general/Core_mechanisms/Content_versioning.rst:72
 msgid "``version``"
 msgstr "``version``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:80
-#: ../../general/Core_mechanisms/Content_versioning.rst:83
+#: ../../general/Core_mechanisms/Content_versioning.rst:73
+#: ../../general/Core_mechanisms/Content_versioning.rst:76
 msgid "TEXT"
 msgstr "TEXT"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:81
+#: ../../general/Core_mechanisms/Content_versioning.rst:74
 msgid "Номер версии."
 msgstr "The version number."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:82
+#: ../../general/Core_mechanisms/Content_versioning.rst:75
 msgid "``comment``"
 msgstr "``comment``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:84
+#: ../../general/Core_mechanisms/Content_versioning.rst:77
 msgid "Комментарий к версии."
 msgstr "Comment on the version."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:85
+#: ../../general/Core_mechanisms/Content_versioning.rst:78
 msgid "``versionCreator``"
 msgstr "``versionCreator``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:86
+#: ../../general/Core_mechanisms/Content_versioning.rst:79
 msgid "PERSON"
 msgstr "PERSON"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:87
+#: ../../general/Core_mechanisms/Content_versioning.rst:80
 msgid "Автор версии."
 msgstr "The version's author."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:88
+#: ../../general/Core_mechanisms/Content_versioning.rst:81
 msgid "``versionCreated``"
 msgstr "``versionCreated``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:89
+#: ../../general/Core_mechanisms/Content_versioning.rst:82
 msgid "DATETIME"
 msgstr "DATETIME"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:90
+#: ../../general/Core_mechanisms/Content_versioning.rst:83
 msgid "Дата и время создания версии."
 msgstr "The date and time the version was created."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:94
+#: ../../general/Core_mechanisms/Content_versioning.rst:87
 msgid ""
 "Запись версии ссылается на ту же запись контента, которая была у "
 "документа до замены файла, — физически файл при создании версии не "
 "копируется."
 msgstr ""
-"The version record references the same content record the document "
-"had before the file was replaced — the file is not physically "
-"copied when a version is created."
+"The version record references the same content record the document had "
+"before the file was replaced — the file is not physically copied when a "
+"version is created."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:98
+#: ../../general/Core_mechanisms/Content_versioning.rst:91
 msgid ""
 "В версии сохраняются только файл и перечисленные выше метаданные. "
 "**Значения остальных атрибутов записи в версию не попадают.** Для "
 "отслеживания изменений атрибутов используется история событий (аспект "
 "``history-config``)."
 msgstr ""
-"Only the file and the metadata listed above are saved in a version. "
-"**The values of the record's other attributes are not included in "
-"the version.** Event history (the ``history-config`` aspect) is "
-"used to track attribute changes."
+"Only the file and the metadata listed above are saved in a version. **The"
+" values of the record's other attributes are not included in the "
+"version.** Event history (the ``history-config`` aspect) is used to track"
+" attribute changes."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:101
+#: ../../general/Core_mechanisms/Content_versioning.rst:94
 msgid "Когда создаётся версия"
 msgstr "When a version is created"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:103
+#: ../../general/Core_mechanisms/Content_versioning.rst:96
 msgid ""
-"Версия создаётся при сохранении записи, если одновременно выполняются "
-"условия:"
-msgstr ""
-"A version is created when a record is saved, if all of the "
-"following conditions hold at once:"
+"Обработчик версионирования сохраняет версию при получении события "
+"изменения контента, если одновременно выполняются условия:"
+msgstr "The versioning handler saves a version on receiving a content change event if all of the following conditions are met:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:105
+#: ../../general/Core_mechanisms/Content_versioning.rst:98
+msgid "среди аспектов записи есть «Версионируемый»;"
+msgstr "The record has the \"Versionable\" aspect;"
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:99
 msgid ""
-"к типу записи применён аспект «Версионируемый» и он не отключён через "
-"``disabled``;"
-msgstr ""
-"the \"Versionable\" aspect is applied to the record's type and is "
-"not disabled via ``disabled``;"
+"до изменения у записи уже был сохранённый контент — иначе версия не "
+"создаётся (первая загрузка файла версию не порождает)."
+msgstr "The record already had saved content before the change; otherwise, no version is created (the first file upload does not produce a version)."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:106
-msgid ""
-"изменился **основной атрибут контента** записи (сравниваются ключ данных "
-"и хранилище) либо явно изменено значение ``version:version``;"
-msgstr ""
-"the record's **main content attribute** has changed (the data key "
-"and storage are compared), or the ``version:version`` value has "
-"been changed explicitly;"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:107
-msgid ""
-"до изменения у записи уже был контент — иначе версия не создаётся (первая"
-" загрузка файла версию не порождает)."
-msgstr ""
-"the record already had content before the change — otherwise no "
-"version is created (the first file upload does not produce a "
-"version)."
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:109
+#: ../../general/Core_mechanisms/Content_versioning.rst:101
 msgid ""
 "В версию сохраняется **предыдущее** состояние файла; актуальный файл "
 "всегда остаётся в самой записи. В журнале версий актуальная версия "
 "формируется на лету из текущего контента записи и в таблицу версий не "
 "пишется."
 msgstr ""
-"The **previous** state of the file is saved into the version; the "
-"current file always stays in the record itself. In the version "
-"history, the current version is formed on the fly from the record's "
-"current content and is not written to the versions table."
+"The **previous** state of the file is saved into the version; the current"
+" file always stays in the record itself. In the version history, the "
+"current version is formed on the fly from the record's current content "
+"and is not written to the versions table."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:113
+#: ../../general/Core_mechanisms/Content_versioning.rst:105
 msgid ""
 "Версионируется только основной атрибут контента типа (тот, что доступен "
 "через ``_content``, см. :ref:`конфигурацию контента "
 "<datatypes_content>`). Файлы в дополнительных атрибутах с типом "
 "«Содержимое» не версионируются."
 msgstr ""
-"Only the type's main content attribute is versioned (the one "
-"available via ``_content``, see :ref:`content configuration "
-"<datatypes_content>`). Files in additional attributes of the "
-"\"Content\" type are not versioned."
+"Only the type's main content attribute is versioned (the one available "
+"via ``_content``, see :ref:`content configuration <datatypes_content>`). "
+"Files in additional attributes of the \"Content\" type are not versioned."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:116
+#: ../../general/Core_mechanisms/Content_versioning.rst:108
 msgid "Нумерация версий"
 msgstr "Version numbering"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:118
-msgid "Номер первой версии — ``1.0``."
-msgstr "The number of the first version is ``1.0``."
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:119
+#: ../../general/Core_mechanisms/Content_versioning.rst:110
 msgid ""
-"Значение с префиксом ``+`` задаёт относительный инкремент: ``+0.1`` — "
-"минорная версия, ``+1.0`` — мажорная."
-msgstr ""
-"A value with a ``+`` prefix sets a relative increment: ``+0.1`` is a"
-" minor version, ``+1.0`` is a major version."
+"Если номер версии отсутствует или пуст, при сохранении предыдущей версии "
+"и отображении актуальной используется ``1.0``."
+msgstr "If the version number is missing or empty, ``1.0`` is used when saving the previous version and displaying the current one."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:120
+#: ../../general/Core_mechanisms/Content_versioning.rst:111
 msgid ""
-"Можно задать номер абсолютным значением, но только больше текущего. "
-"Попытка понизить версию завершается ошибкой ``Version downgrading is not "
-"supported``."
-msgstr ""
-"The number can be set as an absolute value, but only greater than "
-"the current one. Attempting to downgrade the version fails with the"
-" ``Version downgrading is not supported`` error."
+"REST-загрузка передаёт относительный инкремент: ``+0.1`` для минорной "
+"версии, ``+1.0`` для мажорной."
+msgstr "REST uploads pass a relative increment: ``+0.1`` for a minor version and ``+1.0`` for a major version."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:123
+#: ../../general/Core_mechanisms/Content_versioning.rst:113
+msgid ""
+"Правила обработки абсолютных номеров и относительных инкрементов "
+"определяются используемой версией DB-слоя."
+msgstr "The rules for processing absolute numbers and relative increments depend on the DB layer version in use."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:116
 msgid "Работа с версиями через API"
 msgstr "Working with versions via the API"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:126
+#: ../../general/Core_mechanisms/Content_versioning.rst:119
 msgid "Загрузка новой версии (REST)"
 msgstr "Uploading a new version (REST)"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:137
+#: ../../general/Core_mechanisms/Content_versioning.rst:130
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:139
+#: ../../general/Core_mechanisms/Content_versioning.rst:132
 msgid "``filedata``"
 msgstr "``filedata``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:140
+#: ../../general/Core_mechanisms/Content_versioning.rst:133
 msgid "Файл новой версии."
 msgstr "The new version's file."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:141
+#: ../../general/Core_mechanisms/Content_versioning.rst:134
 msgid "``updateNodeRef``"
 msgstr "``updateNodeRef``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:142
+#: ../../general/Core_mechanisms/Content_versioning.rst:135
 msgid "Ссылка на версионируемую запись."
 msgstr "A reference to the versioned record."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:143
+#: ../../general/Core_mechanisms/Content_versioning.rst:136
 msgid "``description``"
 msgstr "``description``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:144
+#: ../../general/Core_mechanisms/Content_versioning.rst:137
 msgid "Комментарий к версии (необязательный)."
 msgstr "Comment on the version (optional)."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:145
+#: ../../general/Core_mechanisms/Content_versioning.rst:138
 msgid "``majorversion``"
 msgstr "``majorversion``"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:146
+#: ../../general/Core_mechanisms/Content_versioning.rst:139
 msgid "``true`` — мажорная версия (``+1.0``), иначе минорная (``+0.1``)."
 msgstr "``true`` — a major version (``+1.0``), otherwise a minor one (``+0.1``)."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:148
+#: ../../general/Core_mechanisms/Content_versioning.rst:141
 msgid ""
 "Перед загрузкой проверяются право ``Write`` на запись, признак защиты "
 "контента от изменения, а также состояние блокировки документа: если "
 "документ редактируется в редакторе документов или заблокирован другим "
 "пользователем, загрузка отклоняется."
 msgstr ""
-"Before the upload, the ``Write`` permission on the record, the "
-"content-protection-from-modification flag, and the document's lock "
-"state are checked: if the document is being edited in the document "
-"editor or is locked by another user, the upload is rejected."
+"Before the upload, the ``Write`` permission on the record, the content-"
+"protection-from-modification flag, and the document's lock state are "
+"checked: if the document is being edited in the document editor or is "
+"locked by another user, the upload is rejected."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:151
+#: ../../general/Core_mechanisms/Content_versioning.rst:144
 msgid "Загрузка новой версии через мутацию записи"
 msgstr "Uploading a new version via a record mutation"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:153
+#: ../../general/Core_mechanisms/Content_versioning.rst:146
 msgid ""
 "REST-метод выше — обёртка над обычной мутацией записи, поэтому создать "
 "версию можно и напрямую через :ref:`Records API <Records_API>`:"
 msgstr ""
-"The REST method above is a wrapper over a regular record mutation, "
-"so a version can also be created directly via the :ref:`Records API "
+"The REST method above is a wrapper over a regular record mutation, so a "
+"version can also be created directly via the :ref:`Records API "
 "<Records_API>`:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:167
+#: ../../general/Core_mechanisms/Content_versioning.rst:159
+msgid ""
+"Перечисленные выше проверки ``Write``, защиты контента и блокировки "
+"выполняются REST-контроллером. Прямая мутация не вызывает этот "
+"контроллер; применяемые к ней ограничения определяются источником записи "
+"и нижележащими сервисами."
+msgstr "The REST controller performs the ``Write``, content protection and locking checks listed above. A direct mutation does not invoke this controller; its restrictions are determined by the record source and underlying services."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:162
 msgid "Получение списка версий"
 msgstr "Getting the list of versions"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:169
+#: ../../general/Core_mechanisms/Content_versioning.rst:164
 msgid ""
 "Список версий запрашивается у источника ``version``, который сам "
 "определяет, где хранятся версии конкретной записи:"
 msgstr ""
-"The list of versions is requested from the ``version`` source, "
-"which itself determines where the versions of a specific record are"
-" stored:"
+"The list of versions is requested from the ``version`` source, which "
+"itself determines where the versions of a specific record are stored:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:188
+#: ../../general/Core_mechanisms/Content_versioning.rst:183
+msgid "Источник ``version`` выбирает обработчик в следующем порядке:"
+msgstr "The ``version`` source selects a handler in the following order:"
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:185
+msgid "для Alfresco-ссылок — ``alfresco/version``;"
+msgstr "For Alfresco references: ``alfresco/version``;"
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:186
+msgid "при наличии специализированного источника — ``<app>/<source>-version``;"
+msgstr "If a dedicated source exists: ``<app>/<source>-version``;"
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:187
+msgid "для остальных записей приложения ``emodel`` — ``emodel/record-version``."
+msgstr "For other records in the ``emodel`` application: ``emodel/record-version``."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:189
+msgid "Если подходящий обработчик не найден, источник не возвращает результат."
+msgstr "If no suitable handler is found, the source returns no result."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:191
 msgid ""
-"Результат отсортирован от новых версий к старым, первой в списке идёт "
-"актуальная версия записи."
-msgstr ""
-"The result is sorted from newest to oldest versions, with the "
-"record's current version listed first."
+"В DB-механизме сохранённые версии сортируются по ``versionCreated`` от "
+"новых к старым. При наличии текущего контента первой в списке добавляется"
+" актуальная версия записи."
+msgstr "In the DB mechanism, saved versions are sorted by ``versionCreated``, newest first. If current content exists, the current record version is added at the beginning of the list."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:190
+#: ../../general/Core_mechanisms/Content_versioning.rst:193
+msgid ""
+"Локальный идентификатор сохранённой версии имеет вид ``<sourceId>__<id "
+"записи версии>``, актуальной — ``<sourceId>__current__<id документа>``. В"
+" последующих запросах используйте полную ссылку из результата, включая "
+"этот составной идентификатор."
+msgstr "The local identifier of a saved version is ``<sourceId>__<id записи версии>``; that of the current version is ``<sourceId>__current__<id документа>``. In subsequent requests, use the full reference from the result, including this composite identifier."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:195
 msgid ""
 "Скачать файл конкретной версии можно по ссылке из атрибута "
 "``downloadUrl``:"
@@ -457,193 +458,143 @@ msgstr ""
 "A specific version's file can be downloaded via the link in the "
 "``downloadUrl`` attribute:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:197
+#: ../../general/Core_mechanisms/Content_versioning.rst:202
 msgid "Создание записи версии напрямую"
 msgstr "Creating a version record directly"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:199
+#: ../../general/Core_mechanisms/Content_versioning.rst:204
 msgid ""
-"Записи версий можно создавать напрямую в источнике ``record-version``. "
-"Это основной сценарий для миграции данных из внешних систем, когда нужно "
-"сохранить исходных авторов и даты версий:"
-msgstr ""
-"Version records can be created directly in the ``record-version`` "
-"source. This is the primary scenario for migrating data from "
-"external systems, when the original authors and version dates need "
-"to be preserved:"
+"Записи версий можно создавать напрямую в источнике ``record-version``, в "
+"том числе при миграции данных из внешних систем, когда нужно явно задать "
+"исходных авторов и даты версий:"
+msgstr "Version records can be created directly in the ``record-version`` source, including when migrating data from external systems and explicitly setting the original authors and version dates:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:218
+#: ../../general/Core_mechanisms/Content_versioning.rst:223
 msgid ""
 "Источник ``record-version`` допускает только создание и удаление записей "
 "версий. Мутация уже существующей записи версии игнорируется."
 msgstr ""
-"The ``record-version`` source only allows creating and deleting "
-"version records. A mutation of an already existing version record "
-"is ignored."
+"The ``record-version`` source only allows creating and deleting version "
+"records. A mutation of an already existing version record is ignored."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:221
+#: ../../general/Core_mechanisms/Content_versioning.rst:225
+msgid "Синтетическую актуальную версию удалить через этот источник нельзя."
+msgstr "The synthetic current version cannot be deleted through this source."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:228
 msgid "Сравнение версий"
 msgstr "Comparing versions"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:223
+#: ../../general/Core_mechanisms/Content_versioning.rst:230
 msgid "Сравнение выполняется источником ``version-diff``:"
 msgstr "The comparison is performed by the ``version-diff`` source:"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:238
+#: ../../general/Core_mechanisms/Content_versioning.rst:245
 msgid ""
-"В атрибуте ``diff`` возвращается HTML-разметка, в которой добавленные и "
-"удалённые фрагменты выделены отдельными классами."
-msgstr ""
-"The ``diff`` attribute returns HTML markup in which added and "
-"removed fragments are highlighted with separate classes."
+"В примере ``<id первой версии>`` и ``<id второй версии>`` обозначают "
+"полные составные локальные идентификаторы, полученные при запросе списка "
+"версий."
+msgstr "In this example, ``<id первой версии>`` and ``<id второй версии>`` denote the full composite local identifiers returned by the version list query."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:240
+#: ../../general/Core_mechanisms/Content_versioning.rst:247
 msgid ""
-"Обе сравниваемые версии должны принадлежать одному источнику и иметь "
-"одинаковый формат."
-msgstr ""
-"Both versions being compared must belong to the same source and "
-"have the same format."
+"В атрибуте ``diff`` возвращается HTML-разметка с классами ``INSERT``, "
+"``DELETE`` и ``EQUAL``. Обычно фрагменты оборачиваются в ``span``; для "
+"формата ``bpmn`` используется ``code`` с отдельным экранированием текста."
+msgstr "The ``diff`` attribute returns HTML markup with the ``INSERT``, ``DELETE`` and ``EQUAL`` classes. Fragments are usually wrapped in ``span``; the ``bpmn`` format uses ``code`` with separate text escaping."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:243
+#: ../../general/Core_mechanisms/Content_versioning.rst:249
+msgid ""
+"Обе сравниваемые версии должны принадлежать одному приложению и "
+"источнику. Для записей вне Alfresco также проверяется совпадение атрибута"
+" ``format``. Сравнение Alfresco-версий делегируется в ``alfresco/version-"
+"diff``."
+msgstr "Both versions being compared must belong to the same application and source. For non-Alfresco records, the ``format`` attribute must also match. Comparison of Alfresco versions is delegated to ``alfresco/version-diff``."
+
+#: ../../general/Core_mechanisms/Content_versioning.rst:252
 msgid "Как работает сравнение"
 msgstr "How the comparison works"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:245
+#: ../../general/Core_mechanisms/Content_versioning.rst:254
 msgid ""
-"Из каждой версии извлекается текст, после чего выполняется посимвольное "
-"сравнение двух текстов:"
-msgstr ""
-"Text is extracted from each version, after which a character-by-"
-"character comparison of the two texts is performed:"
+"Для сохранённой и актуальной DB-версий атрибут ``data`` формируется из "
+"``_content.convertedTo.text`` и передаётся обработчику сравнения в UTF-8."
+" Затем выполняется посимвольное сравнение текстов с семантической "
+"очисткой результата."
+msgstr "For saved and current DB versions, the ``data`` attribute is generated from ``_content.convertedTo.text`` and passed to the comparison handler in UTF-8. The texts are then compared character by character, with semantic cleanup of the result."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:247
-msgid "файлы текстовых форматов читаются напрямую;"
-msgstr "files in text formats are read directly;"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:248
-msgid ""
-"остальные форматы конвертируются в текст микросервисом ``ecos-"
-"transformations`` (конвертация выполняется через OnlyOffice)."
-msgstr ""
-"other formats are converted to text by the ``ecos-transformations`` "
-"microservice (the conversion is performed via OnlyOffice)."
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:251
+#: ../../general/Core_mechanisms/Content_versioning.rst:257
 msgid "Поддерживаемые форматы"
 msgstr "Supported formats"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:258
-msgid "Группа"
-msgstr "Group"
-
 #: ../../general/Core_mechanisms/Content_versioning.rst:259
-msgid "Форматы"
-msgstr "Formats"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:260
-msgid "Текстовые (без конвертации)"
-msgstr "Text (no conversion)"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:261
 msgid ""
-"``txt``, ``csv``, ``json``, ``xml``, ``yaml``, ``html``, ``sql``, ``sh``,"
-" ``js``, ``css``"
-msgstr ""
-"``txt``, ``csv``, ``json``, ``xml``, ``yaml``, ``html``, ``sql``, "
-"``sh``, ``js``, ``css``"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:262
-msgid "Документы (через конвертацию)"
-msgstr "Documents (via conversion)"
+"Возможность сравнения зависит от доступности преобразования контента в "
+"текст через ``convertedTo.text``. Обработчик сравнения не задаёт "
+"фиксированный список расширений; поддержка конкретного формата "
+"определяется доступными преобразованиями."
+msgstr "Comparison is available if content can be converted to text through ``convertedTo.text``. The comparison handler does not define a fixed list of extensions; support for a particular format depends on the available conversions."
 
 #: ../../general/Core_mechanisms/Content_versioning.rst:263
-msgid "``doc``, ``docx``, ``odt``, ``pdf``"
-msgstr "``doc``, ``docx``, ``odt``, ``pdf``"
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:267
 msgid ""
-"Сравнение является текстовым: форматирование, таблицы, изображения и "
-"разметка документа не сравниваются. Для файлов, из которых нельзя извлечь"
-" текст (изображения, сканы, в том числе PDF без текстового слоя, архивы),"
-" а также для форматов ``xls``/``xlsx`` и ``ppt``/``pptx`` сравнение "
-"недоступно."
-msgstr ""
-"The comparison is text-based: formatting, tables, images, and "
-"document markup are not compared. Comparison is unavailable for "
-"files from which text cannot be extracted (images, scans, including"
-" PDFs without a text layer, archives), as well as for the "
-"``xls``/``xlsx`` and ``ppt``/``pptx`` formats."
+"Сравнивается только извлечённый текст. Оформление, расположение таблиц и "
+"изображения отдельно не сравниваются. Для файлов без извлекаемого текста "
+"потребуется подходящее преобразование, например распознавание текста для "
+"сканов."
+msgstr "Only extracted text is compared. Formatting, table layout and images are not compared separately. Files without extractable text require a suitable conversion, such as OCR for scans."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:269
-msgid ""
-"Перечень форматов расширяем: добавить можно любой формат, для которого "
-"поддерживается конвертация в текст."
-msgstr ""
-"The list of formats is extensible: any format for which conversion "
-"to text is supported can be added."
-
-#: ../../general/Core_mechanisms/Content_versioning.rst:272
+#: ../../general/Core_mechanisms/Content_versioning.rst:266
 msgid "Хранение файлов версий"
 msgstr "Storage of version files"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:274
+#: ../../general/Core_mechanisms/Content_versioning.rst:268
 msgid ""
-"Файлы версий хранятся так же, как и основной контент записи, — в "
-"хранилище, заданном в :ref:`конфигурации контента типа "
-"<datatypes_content>`. По умолчанию используется локальное хранилище (БД),"
-" для больших объёмов подключается S3 (см. :ref:`смену типа хранилища "
-"<type_content_storage>` и :ref:`Content микросервис <content_service>`)."
-msgstr ""
-"Version files are stored the same way as the record's main content —"
-" in the storage set in the type's :ref:`content configuration "
-"<datatypes_content>`. Local storage (the database) is used by "
-"default; for large volumes, S3 is connected (see :ref:`changing the "
-"storage type <type_content_storage>` and the :ref:`Content "
-"microservice <content_service>`)."
+"При автоматическом создании версии используется существующий "
+"идентификатор предыдущего контента. Поэтому создание версии само по себе "
+"не переносит файл в другое хранилище и не создаёт физическую копию."
+msgstr "When a version is created automatically, the existing identifier of the previous content is used. Creating a version therefore does not itself move the file to another storage or create a physical copy."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:276
+#: ../../general/Core_mechanisms/Content_versioning.rst:270
 msgid ""
-"При удалении записи версии физический файл удаляется из хранилища только "
-"в том случае, если на него не осталось ссылок из других записей контента."
-msgstr ""
-"When a version record is deleted, the physical file is removed from"
-" storage only if no references to it remain from other content "
-"records."
+"Настройки контента описаны в :ref:`конфигурации типа "
+"<datatypes_content>`, :ref:`смене типа хранилища <type_content_storage>` "
+"и разделе :ref:`Content микросервис <content_service>`. Удаление записи "
+"версии передаётся DB-слою; момент физического удаления файла определяется"
+" механизмом хранения и очистки контента."
+msgstr "Content settings are described in :ref:`type configuration <datatypes_content>`, :ref:`changing the storage type <type_content_storage>` and :ref:`Content microservice <content_service>`. Deletion of a version record is delegated to the DB layer; the content storage and cleanup mechanism determines when the physical file is deleted."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:279
+#: ../../general/Core_mechanisms/Content_versioning.rst:273
 msgid "Права доступа"
 msgstr "Access rights"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:281
+#: ../../general/Core_mechanisms/Content_versioning.rst:275
 msgid ""
 "Тип ``record-version`` использует политику прав ``PARENT`` — права на "
 "версию наследуются от версионируемой записи. Список версий возвращается "
 "только при наличии права ``Read`` на саму запись; сам запрос к хранилищу "
 "версий после проверки прав выполняется в системном контексте."
 msgstr ""
-"The ``record-version`` type uses the ``PARENT`` permission policy —"
-" permissions on a version are inherited from the versioned record. "
-"The list of versions is returned only if the ``Read`` permission on"
-" the record itself is present; the request to the version storage "
-"itself runs in a system context after the permission check."
+"The ``record-version`` type uses the ``PARENT`` permission policy — "
+"permissions on a version are inherited from the versioned record. The "
+"list of versions is returned only if the ``Read`` permission on the "
+"record itself is present; the request to the version storage itself runs "
+"in a system context after the permission check."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:283
+#: ../../general/Core_mechanisms/Content_versioning.rst:277
 msgid ""
 "Для типа ``record-version`` отключено ведение истории событий (аспект "
 "``history-config``, параметр ``disableHistory``), чтобы создание версий "
 "не засоряло историю изменений документа."
 msgstr ""
-"Event history is disabled for the ``record-version`` type (the "
-"``history-config`` aspect, the ``disableHistory`` parameter), so "
-"that creating versions does not clutter the document's change "
-"history."
+"Event history is disabled for the ``record-version`` type (the ``history-"
+"config`` aspect, the ``disableHistory`` parameter), so that creating "
+"versions does not clutter the document's change history."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:286
+#: ../../general/Core_mechanisms/Content_versioning.rst:280
 msgid "Ограничения"
 msgstr "Limitations"
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:288
+#: ../../general/Core_mechanisms/Content_versioning.rst:282
 msgid ""
 "Версионируется только основной атрибут контента типа; дополнительные "
 "атрибуты с типом «Содержимое» не версионируются."
@@ -651,45 +602,248 @@ msgstr ""
 "Only the type's main content attribute is versioned; additional "
 "attributes of the \"Content\" type are not versioned."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:289
+#: ../../general/Core_mechanisms/Content_versioning.rst:283
 msgid ""
 "Значения атрибутов записи в версии не сохраняются — версионируется только"
 " файл."
 msgstr ""
-"The values of the record's attributes are not saved in a version —"
-" only the file is versioned."
+"The values of the record's attributes are not saved in a version — only "
+"the file is versioned."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:290
+#: ../../general/Core_mechanisms/Content_versioning.rst:284
 msgid ""
 "Сравнение версий доступно только для форматов, из которых можно извлечь "
 "текст, и является текстовым."
 msgstr ""
-"Version comparison is available only for formats from which text "
-"can be extracted, and is text-based."
+"Version comparison is available only for formats from which text can be "
+"extracted, and is text-based."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:291
+#: ../../general/Core_mechanisms/Content_versioning.rst:285
 msgid "Изменение уже созданной записи версии через API не выполняется."
 msgstr "An already created version record cannot be modified via the API."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:292
+#: ../../general/Core_mechanisms/Content_versioning.rst:286
 msgid ""
-"Назначение предыдущей версии актуальной (откат) не поддерживается. Чтобы "
-"вернуться к предыдущему состоянию документа, нужно скачать файл нужной "
-"версии и загрузить его как новую версию."
-msgstr ""
-"Making a previous version the current one (rollback) is not "
-"supported. To return to a previous state of the document, download "
-"the needed version's file and upload it as a new version."
+"В API ``record-version`` нет отдельной операции назначения предыдущей "
+"версии актуальной. Вернуться к предыдущему содержимому можно, скачав "
+"нужный файл и загрузив его как новую версию."
+msgstr "The ``record-version`` API has no separate operation to make a previous version current. To restore previous content, download the required file and upload it as a new version."
 
-#: ../../general/Core_mechanisms/Content_versioning.rst:293
+#: ../../general/Core_mechanisms/Content_versioning.rst:287
 msgid ""
-"Автор и дата версии определяются по метаданным загруженного файла, то "
-"есть фиксируются текущий пользователь и время загрузки. Сохранить "
-"исходные значения (например, при миграции из внешней системы) можно "
-"только созданием записей версий напрямую в источнике ``record-version``."
-msgstr ""
-"The version's author and date are determined from the uploaded "
-"file's metadata, i.e., the current user and upload time are "
-"recorded. The original values (for example, when migrating from an"
-" external system) can only be preserved by creating version records"
-" directly in the ``record-version`` source."
+"При автоматическом создании версии автор и дата берутся из метаданных "
+"предыдущего контента. При отсутствии значений используются SYSTEM и "
+"``Instant.EPOCH`` соответственно. При прямом создании записи версии можно"
+" явно задать ``versionCreator`` и ``versionCreated``."
+msgstr "When a version is created automatically, its author and date are taken from the previous content metadata. Missing values default to SYSTEM and ``Instant.EPOCH``, respectively. When creating a version record directly, you can explicitly set ``versionCreator`` and ``versionCreated``."
+
+#~ msgid ""
+#~ "Версионирование можно временно отключить, не"
+#~ " снимая аспект с типа, — через "
+#~ "конфигурацию аспекта:"
+#~ msgstr ""
+#~ "Versioning can be temporarily disabled "
+#~ "without removing the aspect from the "
+#~ "type — through the aspect's "
+#~ "configuration:"
+
+#~ msgid ""
+#~ "Версия создаётся при сохранении записи, "
+#~ "если одновременно выполняются условия:"
+#~ msgstr ""
+#~ "A version is created when a record"
+#~ " is saved, if all of the "
+#~ "following conditions hold at once:"
+
+#~ msgid ""
+#~ "к типу записи применён аспект "
+#~ "«Версионируемый» и он не отключён через"
+#~ " ``disabled``;"
+#~ msgstr ""
+#~ "the \"Versionable\" aspect is applied to"
+#~ " the record's type and is not "
+#~ "disabled via ``disabled``;"
+
+#~ msgid ""
+#~ "изменился **основной атрибут контента** записи"
+#~ " (сравниваются ключ данных и хранилище) "
+#~ "либо явно изменено значение "
+#~ "``version:version``;"
+#~ msgstr ""
+#~ "the record's **main content attribute** "
+#~ "has changed (the data key and "
+#~ "storage are compared), or the "
+#~ "``version:version`` value has been changed "
+#~ "explicitly;"
+
+#~ msgid "Номер первой версии — ``1.0``."
+#~ msgstr "The number of the first version is ``1.0``."
+
+#~ msgid ""
+#~ "Можно задать номер абсолютным значением, "
+#~ "но только больше текущего. Попытка "
+#~ "понизить версию завершается ошибкой ``Version"
+#~ " downgrading is not supported``."
+#~ msgstr ""
+#~ "The number can be set as an "
+#~ "absolute value, but only greater than"
+#~ " the current one. Attempting to "
+#~ "downgrade the version fails with the "
+#~ "``Version downgrading is not supported`` "
+#~ "error."
+
+#~ msgid ""
+#~ "Результат отсортирован от новых версий к"
+#~ " старым, первой в списке идёт "
+#~ "актуальная версия записи."
+#~ msgstr ""
+#~ "The result is sorted from newest "
+#~ "to oldest versions, with the record's"
+#~ " current version listed first."
+
+#~ msgid ""
+#~ "В атрибуте ``diff`` возвращается "
+#~ "HTML-разметка, в которой добавленные и "
+#~ "удалённые фрагменты выделены отдельными "
+#~ "классами."
+#~ msgstr ""
+#~ "The ``diff`` attribute returns HTML "
+#~ "markup in which added and removed "
+#~ "fragments are highlighted with separate "
+#~ "classes."
+
+#~ msgid ""
+#~ "Обе сравниваемые версии должны принадлежать"
+#~ " одному источнику и иметь одинаковый "
+#~ "формат."
+#~ msgstr ""
+#~ "Both versions being compared must belong"
+#~ " to the same source and have "
+#~ "the same format."
+
+#~ msgid ""
+#~ "Из каждой версии извлекается текст, "
+#~ "после чего выполняется посимвольное сравнение"
+#~ " двух текстов:"
+#~ msgstr ""
+#~ "Text is extracted from each version, "
+#~ "after which a character-by-character "
+#~ "comparison of the two texts is "
+#~ "performed:"
+
+#~ msgid "файлы текстовых форматов читаются напрямую;"
+#~ msgstr "files in text formats are read directly;"
+
+#~ msgid ""
+#~ "остальные форматы конвертируются в текст "
+#~ "микросервисом ``ecos-transformations`` (конвертация"
+#~ " выполняется через OnlyOffice)."
+#~ msgstr ""
+#~ "other formats are converted to text "
+#~ "by the ``ecos-transformations`` microservice"
+#~ " (the conversion is performed via "
+#~ "OnlyOffice)."
+
+#~ msgid "Группа"
+#~ msgstr "Group"
+
+#~ msgid "Форматы"
+#~ msgstr "Formats"
+
+#~ msgid "Текстовые (без конвертации)"
+#~ msgstr "Text (no conversion)"
+
+#~ msgid ""
+#~ "``txt``, ``csv``, ``json``, ``xml``, ``yaml``,"
+#~ " ``html``, ``sql``, ``sh``, ``js``, ``css``"
+#~ msgstr ""
+#~ "``txt``, ``csv``, ``json``, ``xml``, ``yaml``,"
+#~ " ``html``, ``sql``, ``sh``, ``js``, ``css``"
+
+#~ msgid "Документы (через конвертацию)"
+#~ msgstr "Documents (via conversion)"
+
+#~ msgid "``doc``, ``docx``, ``odt``, ``pdf``"
+#~ msgstr "``doc``, ``docx``, ``odt``, ``pdf``"
+
+#~ msgid ""
+#~ "Сравнение является текстовым: форматирование, "
+#~ "таблицы, изображения и разметка документа "
+#~ "не сравниваются. Для файлов, из которых"
+#~ " нельзя извлечь текст (изображения, сканы,"
+#~ " в том числе PDF без текстового "
+#~ "слоя, архивы), а также для форматов "
+#~ "``xls``/``xlsx`` и ``ppt``/``pptx`` сравнение "
+#~ "недоступно."
+#~ msgstr ""
+#~ "The comparison is text-based: "
+#~ "formatting, tables, images, and document "
+#~ "markup are not compared. Comparison is"
+#~ " unavailable for files from which "
+#~ "text cannot be extracted (images, scans,"
+#~ " including PDFs without a text layer,"
+#~ " archives), as well as for the "
+#~ "``xls``/``xlsx`` and ``ppt``/``pptx`` formats."
+
+#~ msgid ""
+#~ "Перечень форматов расширяем: добавить можно"
+#~ " любой формат, для которого поддерживается"
+#~ " конвертация в текст."
+#~ msgstr ""
+#~ "The list of formats is extensible: "
+#~ "any format for which conversion to "
+#~ "text is supported can be added."
+
+#~ msgid ""
+#~ "Файлы версий хранятся так же, как "
+#~ "и основной контент записи, — в "
+#~ "хранилище, заданном в :ref:`конфигурации "
+#~ "контента типа <datatypes_content>`. По "
+#~ "умолчанию используется локальное хранилище "
+#~ "(БД), для больших объёмов подключается "
+#~ "S3 (см. :ref:`смену типа хранилища "
+#~ "<type_content_storage>` и :ref:`Content микросервис"
+#~ " <content_service>`)."
+#~ msgstr ""
+#~ "Version files are stored the same "
+#~ "way as the record's main content —"
+#~ " in the storage set in the "
+#~ "type's :ref:`content configuration "
+#~ "<datatypes_content>`. Local storage (the "
+#~ "database) is used by default; for "
+#~ "large volumes, S3 is connected (see "
+#~ ":ref:`changing the storage type "
+#~ "<type_content_storage>` and the :ref:`Content "
+#~ "microservice <content_service>`)."
+
+#~ msgid ""
+#~ "При удалении записи версии физический "
+#~ "файл удаляется из хранилища только в "
+#~ "том случае, если на него не "
+#~ "осталось ссылок из других записей "
+#~ "контента."
+#~ msgstr ""
+#~ "When a version record is deleted, "
+#~ "the physical file is removed from "
+#~ "storage only if no references to "
+#~ "it remain from other content records."
+
+#~ msgid ""
+#~ "Автор и дата версии определяются по "
+#~ "метаданным загруженного файла, то есть "
+#~ "фиксируются текущий пользователь и время "
+#~ "загрузки. Сохранить исходные значения "
+#~ "(например, при миграции из внешней "
+#~ "системы) можно только созданием записей "
+#~ "версий напрямую в источнике ``record-"
+#~ "version``."
+#~ msgstr ""
+#~ "The version's author and date are "
+#~ "determined from the uploaded file's "
+#~ "metadata, i.e., the current user and "
+#~ "upload time are recorded. The original"
+#~ " values (for example, when migrating "
+#~ "from an external system) can only "
+#~ "be preserved by creating version records"
+#~ " directly in the ``record-version`` "
+#~ "source."

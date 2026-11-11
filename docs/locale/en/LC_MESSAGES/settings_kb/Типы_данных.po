@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -56,8 +56,8 @@ msgid "Типы данных — артефакты с типом **model/type**
 msgstr "Data Types are artifacts of type **model/type**."
 
 #: ../../settings_kb/Типы_данных.rst:28
-msgid "В Citeck на основе типа данных создаются следующие артефакты:"
-msgstr "In Citeck, the following artifacts are created based on the data type:"
+msgid "Для работы с объектами типа данных используются:"
+msgstr "The following are used to work with data type objects:"
 
 #: ../../settings_kb/Типы_данных.rst:30
 msgid ":ref:`Форма <forms>`"
@@ -67,60 +67,79 @@ msgstr ":ref:`Form<forms>`"
 msgid ":ref:`Журнал <journals>`"
 msgstr ":ref:`Journal<journals>`"
 
-#: ../../settings_kb/Типы_данных.rst:36
+#: ../../settings_kb/Типы_данных.rst:33
+msgid ""
+"В настройках типа можно выбрать автоматически формируемые форму и журнал "
+"либо указать собственные артефакты. Подробнее — :ref:`auto_journal_form`."
+msgstr "Type settings can select automatically generated forms and journals or custom artifacts. See :ref:`auto_journal_form`."
+
+#: ../../settings_kb/Типы_данных.rst:38
 msgid "Иерархия системных типов и логика их наследования"
 msgstr "Hierarchy of System Types and Their Inheritance Logic"
 
-#: ../../settings_kb/Типы_данных.rst:38
-msgid "У каждого типа данных должен быть родитель. Базовые типы данных:"
-msgstr "Every data type must have a parent. The basic data types are:"
-
-#: ../../settings_kb/Типы_данных.rst:45
+#: ../../settings_kb/Типы_данных.rst:40
 msgid ""
-"**Кейс (case)** - тип для хранения записи, изменяемой во времени "
-"посредством связи ее с бизнес-процессом (не является статической). "
-"Маркером того, что тип будет кейсом является необходимость прикрепления к"
-" нему процесса и указания при создании общей информации, атрибутов, "
-"ролей, статусов и матрицы прав."
-msgstr ""
-"**Case** - a type for storing a record that changes over time through its"
-" connection to a business process (it is not static). An indicator that a"
-" type will be a case is the need to attach a process to it and specify "
-"general information, attributes, roles, statuses, and a permissions "
-"matrix during its creation."
+"Типы образуют иерархию с корневым типом ``base``. Для пользовательского "
+"типа выбирают родителя; в форме создания по умолчанию выбран ``case``. "
+"Если родитель в определении не указан, при разрешении типа используется "
+"``base`` (кроме самого корневого типа)."
+msgstr "Types form a hierarchy rooted at ``base``. User types select a parent; the creation form defaults to ``case``. An omitted definition parent resolves to ``base``, except for the root itself."
 
-#: ../../settings_kb/Типы_данных.rst:47
+#: ../../settings_kb/Типы_данных.rst:42
+msgid "Ниже показана часть иерархии базовых типов:"
+msgstr "Part of the base type hierarchy:"
+
+#: ../../settings_kb/Типы_данных.rst:44
 msgid ""
-"**Справочник (datalist)** - тип для хранения наборов бизнес-данных, "
-"которые будут использоваться как статические данные для документов, не "
-"участвующие непосредственно в бизнес-процессах. Маркером того, что тип "
-"будет даталистом является указание при его создании только общей "
-"информации и перечня атрибутов."
-msgstr ""
-"**Datalist** - a type for storing sets of business data that will be used"
-" as static data for documents not directly involved in business "
-"processes. An indicator that a type will be a datalist is specifying only"
-" general information and a list of attributes during its creation."
+"Иерархия типов: base, затем user-base, от которого наследуются case и "
+"data-list."
+msgstr "Type hierarchy: base, then user-base, with case and data-list inheriting from it."
 
-#: ../../settings_kb/Типы_данных.rst:49
-msgid "В качестве родителя можно использовать созданный ранее тип данных."
-msgstr "A previously created data type can be used as the parent."
-
-#: ../../settings_kb/Типы_данных.rst:51
+#: ../../settings_kb/Типы_данных.rst:50
 msgid ""
-"Родительские атрибуты попадают в список **наследуемых атрибутов** "
-"(:ref:`Атрибуты <ecos-model_label>`) и по флагу **«Наследовать»** можно "
-"наследовать форму, действия, шаблон нумерации."
-msgstr ""
-"Parent attributes are included in the list of **inheritable attributes** "
-"(:ref:`Attributes<ecos-model_label>`), and using the **\"Inherit\"** "
-"flag, you can inherit the form, actions, and numbering template."
+"**Кейс (case)** — базовый тип для бизнес-объектов, с которыми работают "
+"через карточку и которые могут участвовать в бизнес-процессах. Связь с "
+"процессом настраивается по задаче; выбор родителя ``case`` сам по себе не"
+" требует прикрепления процесса."
+msgstr "**Case (case)** is a base for business objects accessed through cards and participating in business processes. Configure process integration as needed; selecting ``case`` alone does not require attaching a process."
+
+#: ../../settings_kb/Типы_данных.rst:52
+msgid ""
+"**Элемент справочника (data-list)** — базовый тип для справочных "
+"бизнес-данных, используемых другими объектами системы. Он отличается "
+"начальными настройками действий, в том числе отсутствием перехода на "
+"карточку после создания. Его настройка не ограничена общей информацией и "
+"атрибутами: при необходимости можно задать роли, статусы и права."
+msgstr "**Directory item (data-list)** is a base for reference business data used by other objects. Initial action settings differ, including no card redirect after creation. Configuration is not limited to general information and attributes: roles, statuses and permissions can also be set."
+
+#: ../../settings_kb/Типы_данных.rst:54
+msgid ""
+"В форме также доступны родители **«Документ» (document)**, **«Файл "
+"библиотеки документов» (workspace-file)**, **«Публикация» (publication)**"
+" и вариант **«Остальное»** для выбора другого существующего типа."
+msgstr "The form also offers **Document (document)**, **Document library file (workspace-file)**, **Publication (publication)** and **Other** for selecting another existing type."
 
 #: ../../settings_kb/Типы_данных.rst:56
+msgid ""
+"Родителем может быть глобальный тип или тип из того же рабочего "
+"пространства. Глобальный тип не может наследоваться от типа рабочего "
+"пространства. Циклическое наследование не допускается."
+msgstr "The parent may be global or in the same workspace. A global type cannot inherit a workspace type. Cyclic inheritance is prohibited."
+
+#: ../../settings_kb/Типы_данных.rst:58
+msgid ""
+"Родительские атрибуты попадают в список **наследуемых атрибутов** "
+"(:ref:`Атрибуты <ecos-model_label>`). Отдельные флаги позволяют "
+"наследовать форму, действия и шаблон нумерации. Для наследования формы "
+"или шаблона нумерации собственная ссылка должна быть пустой. При "
+"наследовании действий родительский список объединяется с собственным."
+msgstr "Parent attributes appear in **inherited attributes** (:ref:`Attributes <ecos-model_label>`). Separate flags inherit forms, actions and numbering templates. Form or numbering inheritance requires an empty own reference. Inherited actions merge parent and own lists."
+
+#: ../../settings_kb/Типы_данных.rst:63
 msgid "Описание перехода к разделу через интерфейс"
 msgstr "Description of navigating to the section via the interface"
 
-#: ../../settings_kb/Типы_данных.rst:58
+#: ../../settings_kb/Типы_данных.rst:65
 msgid ""
 "Для просмотра существующих типов и их редактирования создан журнал "
 "**\"Типы данных\" (Рабочее пространство \"Раздел администратора\" - "
@@ -129,11 +148,11 @@ msgstr ""
 "A journal **\"Data Types\"** has been created for viewing existing types "
 "and editing them (Workspace \"Admin Section\" - Model):"
 
-#: ../../settings_kb/Типы_данных.rst:64
+#: ../../settings_kb/Типы_данных.rst:71
 msgid "По умолчанию в журнале не отображаются системные типы."
 msgstr "By default, system types are not displayed in the journal."
 
-#: ../../settings_kb/Типы_данных.rst:66
+#: ../../settings_kb/Типы_данных.rst:73
 msgid ""
 "Для отображения **ТОЛЬКО** системных типов перейдите в настройки таблицы,"
 " выставите **Системный тип - Да**:"
@@ -141,51 +160,59 @@ msgstr ""
 "To display **ONLY** system types, go to the table settings, set **System "
 "Type - Yes**:"
 
-#: ../../settings_kb/Типы_данных.rst:73
-msgid "Варианты получения экземпляра типа"
-msgstr "Ways to Obtain a Type Instance"
+#: ../../settings_kb/Типы_данных.rst:80
+msgid "Создание и загрузка описания типа"
+msgstr "Creating and uploading a type definition"
 
-#: ../../settings_kb/Типы_данных.rst:75
+#: ../../settings_kb/Типы_данных.rst:82
 msgid "Тип данных можно создать или загрузить уже созданный в систему."
 msgstr ""
 "A data type can be created or an already created one can be uploaded into"
 " the system."
 
-#: ../../settings_kb/Типы_данных.rst:78
+#: ../../settings_kb/Типы_данных.rst:85
 msgid "Создание"
 msgstr "Creation"
 
-#: ../../settings_kb/Типы_данных.rst:80
+#: ../../settings_kb/Типы_данных.rst:87
 msgid "Для создания типа данных необходимо нажать **+ - Создать новый тип**:"
 msgstr "To create a data type, click **+ - Create new type**:"
 
-#: ../../settings_kb/Типы_данных.rst:86
+#: ../../settings_kb/Типы_данных.rst:93
 msgid "Откроется форма создания типа данных:"
 msgstr "The data type creation form will open:"
 
-#: ../../settings_kb/Типы_данных.rst:93
+#: ../../settings_kb/Типы_данных.rst:100
 msgid "Загрузка"
 msgstr "Upload"
 
-#: ../../settings_kb/Типы_данных.rst:95
+#: ../../settings_kb/Типы_данных.rst:102
 msgid ""
 "Для загрузки созданного типа данных необходимо нажать **+ - Загрузить "
 "тип**:"
 msgstr "To upload a created data type, click **+ - Upload type**:"
 
-#: ../../settings_kb/Типы_данных.rst:101
+#: ../../settings_kb/Типы_данных.rst:108
 msgid "Файл формата **.yaml**"
 msgstr "File in **.yaml** format"
 
-#: ../../settings_kb/Типы_данных.rst:104
+#: ../../settings_kb/Типы_данных.rst:111
 msgid "Пример описания типа"
 msgstr "Example of a type description"
 
-#: ../../settings_kb/Типы_данных.rst:130
+#: ../../settings_kb/Типы_данных.rst:136
+msgid ""
+"Форма ``hr-offices-form`` и журнал ``hr-offices-journal`` из примера "
+"должны существовать в системе. Для автоматически формируемых артефактов "
+"используйте ссылки ``uiserv/form@DEFAULT_FORM`` и "
+"``uiserv/journal@DEFAULT_JOURNAL``."
+msgstr "The example ``hr-offices-form`` and ``hr-offices-journal`` must exist. For automatically generated artifacts, use ``uiserv/form@DEFAULT_FORM`` and ``uiserv/journal@DEFAULT_JOURNAL``."
+
+#: ../../settings_kb/Типы_данных.rst:139
 msgid "Доступные действия с записью"
 msgstr "Available Actions for a Record"
 
-#: ../../settings_kb/Типы_данных.rst:137
+#: ../../settings_kb/Типы_данных.rst:146
 msgid ""
 "В журнале администратору с каждой записью доступен стандартный набор "
 "действий:"
@@ -193,47 +220,47 @@ msgstr ""
 "In the journal, the administrator has a standard set of actions available"
 " for each record:"
 
-#: ../../settings_kb/Типы_данных.rst:139
+#: ../../settings_kb/Типы_данных.rst:148
 msgid ":ref:`редактировать права <data_type_rights>`;"
 msgstr ":ref:`edit rights<data_type_rights>`;"
 
-#: ../../settings_kb/Типы_данных.rst:140
-msgid "скачать в виде json-файла;"
-msgstr "download as a json file;"
+#: ../../settings_kb/Типы_данных.rst:149
+msgid "скачать описание типа в формате YAML;"
+msgstr "Download the type definition as YAML;"
 
-#: ../../settings_kb/Типы_данных.rst:141
+#: ../../settings_kb/Типы_данных.rst:150
 msgid "удалить;"
 msgstr "delete;"
 
-#: ../../settings_kb/Типы_данных.rst:142
+#: ../../settings_kb/Типы_данных.rst:151
 msgid "открыть карточку в соседней вкладке;"
 msgstr "open card in a new tab;"
 
-#: ../../settings_kb/Типы_данных.rst:143
+#: ../../settings_kb/Типы_данных.rst:152
 msgid "открыть на редактирование;"
 msgstr "open for editing;"
 
-#: ../../settings_kb/Типы_данных.rst:144
-msgid "редактировать json-файл;"
-msgstr "edit json file;"
+#: ../../settings_kb/Типы_данных.rst:153
+msgid "редактировать JSON-представление типа;"
+msgstr "Edit the type JSON representation;"
 
-#: ../../settings_kb/Типы_данных.rst:145
+#: ../../settings_kb/Типы_данных.rst:154
 msgid "копировать."
 msgstr "copy."
 
-#: ../../settings_kb/Типы_данных.rst:148
+#: ../../settings_kb/Типы_данных.rst:157
 msgid "Создание нового типа"
 msgstr "Creating a New Type"
 
-#: ../../settings_kb/Типы_данных.rst:150
+#: ../../settings_kb/Типы_данных.rst:159
 msgid "Форма создания нового типа состоит из следующих вкладок:"
 msgstr "The form for creating a new type consists of the following tabs:"
 
-#: ../../settings_kb/Типы_данных.rst:156
-msgid ":ref:`Основные <data_types_main>` – основные характеристики типа данных."
-msgstr ":ref:`Main<data_types_main>` – main characteristics of the data type."
+#: ../../settings_kb/Типы_данных.rst:165
+msgid ":ref:`Основной <data_types_main>` – основные характеристики типа данных."
+msgstr ":ref:`General <data_types_main>` — core data type properties."
 
-#: ../../settings_kb/Типы_данных.rst:157
+#: ../../settings_kb/Типы_данных.rst:166
 msgid ""
 ":ref:`Атрибуты <ecos-model_label>` – характеристика, определяющая "
 "свойства объекта."
@@ -241,7 +268,7 @@ msgstr ""
 ":ref:`Attributes<ecos-model_label>` – a characteristic defining the "
 "properties of an object."
 
-#: ../../settings_kb/Типы_данных.rst:158
+#: ../../settings_kb/Типы_данных.rst:167
 msgid ""
 ":ref:`Аспекты <type_aspects>` – функционал расширения типа данных без "
 "изменения самого типа."
@@ -249,7 +276,7 @@ msgstr ""
 ":ref:`Aspects<type_aspects>` – functionality for extending a data type "
 "without changing the type itself."
 
-#: ../../settings_kb/Типы_данных.rst:159
+#: ../../settings_kb/Типы_данных.rst:168
 msgid ""
 ":ref:`Роли <roles_statuses>` – роли, которые участвуют в работе с "
 "объектом."
@@ -257,19 +284,15 @@ msgstr ""
 ":ref:`Roles<roles_statuses>` – roles that participate in working with the"
 " object."
 
-#: ../../settings_kb/Типы_данных.rst:160
-msgid ""
-":ref:`Статусы <roles_statuses>` – статусы, по которым объект будет "
-"перемещаться по мере выполнения бизнес-процесса."
-msgstr ""
-":ref:`Statuses<roles_statuses>` – statuses through which the object will "
-"move as the business process is executed."
+#: ../../settings_kb/Типы_данных.rst:169
+msgid ":ref:`Статусы <associations>` – состояния объекта в его жизненном цикле."
+msgstr ":ref:`Statuses <associations>` — object lifecycle states."
 
-#: ../../settings_kb/Типы_данных.rst:161
+#: ../../settings_kb/Типы_данных.rst:170
 msgid ":ref:`Стадии <stages>` – этапы жизненного цикла документа."
 msgstr ":ref:`Stages<stages>` – stages of the document lifecycle."
 
-#: ../../settings_kb/Типы_данных.rst:162
+#: ../../settings_kb/Типы_данных.rst:171
 msgid ""
 ":ref:`Варианты создания <create>` – настройка поддержки выбора варианта "
 "создания после выбора типа."
@@ -277,7 +300,7 @@ msgstr ""
 ":ref:`Creation Variants<create>` – configuring support for selecting a "
 "creation variant after choosing the type"
 
-#: ../../settings_kb/Типы_данных.rst:163
+#: ../../settings_kb/Типы_данных.rst:172
 msgid ""
 ":ref:`Связи <datatypes_associations>` – настраиваются для отображения, "
 "добавления и удаления связанных объектов в виджете «Связи» на карточке "
@@ -287,7 +310,7 @@ msgstr ""
 " and remove related objects in the \"Associations\" widget on the object "
 "card."
 
-#: ../../settings_kb/Типы_данных.rst:164
+#: ../../settings_kb/Типы_данных.rst:173
 msgid ""
 ":ref:`Конфигурация контента <datatypes_content>` – настройки работы с "
 "содержимым (контентом)."
@@ -295,13 +318,11 @@ msgstr ""
 ":ref:`Content Configuration<datatypes_content>` – settings for working "
 "with content."
 
-#: ../../settings_kb/Типы_данных.rst:165
+#: ../../settings_kb/Типы_данных.rst:174
 msgid ""
-":ref:`Представления <datatypes_views>` – настройки режима отображения "
-"данных в виде списка."
-msgstr ""
-":ref:`Views<datatypes_views>` – settings for the data display mode as a "
-"list."
+":ref:`Представления <datatypes_views>` – настройки списка, плиток и "
+"библиотеки документов."
+msgstr ":ref:`Views <datatypes_views>` — list, tile and document library settings."
 
 #~ msgid "Пример представления данных в виде списка:"
 #~ msgstr "Example of data presentation as a list:"
@@ -3596,3 +3617,66 @@ msgstr ""
 #~ "object. The data type is linked to"
 #~ " a form and a journal."
 
+#~ msgid "В Citeck на основе типа данных создаются следующие артефакты:"
+#~ msgstr "In Citeck, the following artifacts are created based on the data type:"
+
+#~ msgid "У каждого типа данных должен быть родитель. Базовые типы данных:"
+#~ msgstr "Every data type must have a parent. The basic data types are:"
+
+#~ msgid ""
+#~ "**Кейс (case)** - тип для хранения "
+#~ "записи, изменяемой во времени посредством "
+#~ "связи ее с бизнес-процессом (не является"
+#~ " статической). Маркером того, что тип "
+#~ "будет кейсом является необходимость "
+#~ "прикрепления к нему процесса и указания"
+#~ " при создании общей информации, атрибутов,"
+#~ " ролей, статусов и матрицы прав."
+#~ msgstr ""
+#~ "**Case** - a type for storing a"
+#~ " record that changes over time "
+#~ "through its connection to a business "
+#~ "process (it is not static). An "
+#~ "indicator that a type will be a"
+#~ " case is the need to attach a"
+#~ " process to it and specify general"
+#~ " information, attributes, roles, statuses, "
+#~ "and a permissions matrix during its "
+#~ "creation."
+
+#~ msgid ""
+#~ "**Справочник (datalist)** - тип для "
+#~ "хранения наборов бизнес-данных, которые будут"
+#~ " использоваться как статические данные для"
+#~ " документов, не участвующие непосредственно "
+#~ "в бизнес-процессах. Маркером того, что "
+#~ "тип будет даталистом является указание "
+#~ "при его создании только общей информации"
+#~ " и перечня атрибутов."
+#~ msgstr ""
+#~ "**Datalist** - a type for storing "
+#~ "sets of business data that will be"
+#~ " used as static data for documents"
+#~ " not directly involved in business "
+#~ "processes. An indicator that a type "
+#~ "will be a datalist is specifying "
+#~ "only general information and a list "
+#~ "of attributes during its creation."
+
+#~ msgid "В качестве родителя можно использовать созданный ранее тип данных."
+#~ msgstr "A previously created data type can be used as the parent."
+
+#~ msgid "Варианты получения экземпляра типа"
+#~ msgstr "Ways to Obtain a Type Instance"
+
+#~ msgid "скачать в виде json-файла;"
+#~ msgstr "download as a json file;"
+
+#~ msgid ""
+#~ ":ref:`Статусы <roles_statuses>` – статусы, по"
+#~ " которым объект будет перемещаться по "
+#~ "мере выполнения бизнес-процесса."
+#~ msgstr ""
+#~ ":ref:`Statuses<roles_statuses>` – statuses through"
+#~ " which the object will move as "
+#~ "the business process is executed."

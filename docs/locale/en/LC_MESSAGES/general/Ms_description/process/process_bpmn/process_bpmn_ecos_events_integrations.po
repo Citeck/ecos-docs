@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -54,14 +54,17 @@ msgid ""
 " настройка реакции на события должна быть как можно более простой и "
 "удобной для пользователя."
 msgstr ""
-"In a business process, it must be possible to react to these events — for "
-"example, send notifications when a comment is added, or trigger a subprocess "
-"when certain document properties are changed. The configuration of event "
-"reactions should be as simple and user-friendly as possible."
+"In a business process, it must be possible to react to these events — for"
+" example, send notifications when a comment is added, or trigger a "
+"subprocess when certain document properties are changed. The "
+"configuration of event reactions should be as simple and user-friendly as"
+" possible."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:16
 msgid "Были выдвинуты следующие требования к интеграции событий в движок BPMN:"
-msgstr "The following requirements were set for event integration into the BPMN engine:"
+msgstr ""
+"The following requirements were set for event integration into the BPMN "
+"engine:"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:18
 msgid "Выбор типа события из списка доступных событий."
@@ -80,8 +83,8 @@ msgid ""
 "При реакции на события должна быть возможность получить информацию о "
 "событии и настраивать дополнительную модель на основе Records API."
 msgstr ""
-"When reacting to events, it must be possible to retrieve event information "
-"and configure an additional model based on the Records API."
+"When reacting to events, it must be possible to retrieve event "
+"information and configure an additional model based on the Records API."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:21
 msgid ""
@@ -93,18 +96,94 @@ msgstr ""
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:23
 msgid ""
-"На основе этих требований был выполнен анализ возможностей **signal** и "
-"**message** в Camunda BPMN. В результате было решено использовать "
-":ref:`signals <ecos_bpmn_events>` как основу построения интеграции "
-"Событий в движок BPMN, так как messages имеют достаточно сильные "
-"ограничения и не позволяют реализовать необходимую гибкость."
-msgstr ""
-"Based on these requirements, the capabilities of **signal** and **message** "
-"in Camunda BPMN were analyzed. As a result, it was decided to use "
-":ref:`signals <ecos_bpmn_events>` as the foundation for event integration "
-"into the BPMN engine, since messages have significant limitations and do "
-"not provide the required flexibility."
+"Для этой интеграции Citeck используются :ref:`signals <ecos_bpmn_events>`"
+" Camunda. Подписка задаёт тип события, фильтры по записи и типу ECOS, "
+"предикат и модель данных события. Поддерживаются пользовательские имена "
+"событий и ручной режим сигнала."
+msgstr "This Citeck integration uses Camunda :ref:`signals <ecos_bpmn_events>`. A subscription specifies the event type, record and ECOS type filters, a predicate and an event data model. Custom event names and manual signal mode are supported."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:25
+msgid ""
+"Фильтры проверяются при валидации модели. Например, для события создания "
+"записи необходимо задать тип ECOS или предикат. Фильтрация по типу ECOS "
+"доступна в режиме выбора любой записи (``ANY``)."
+msgstr "Filters are checked during model validation. For example, record creation events require an ECOS type or predicate. ECOS type filtering is available when selecting any record (``ANY``)."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:27
 msgid "Базовая архитектура:"
 msgstr "Base architecture:"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:33
+msgid "Обработка состоит из следующих этапов:"
+msgstr "Processing consists of the following stages:"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:35
+msgid ""
+"При старте приложения сервис находит подписки развёрнутых определений. "
+"После деплоя новых ревизий подписки обновляются."
+msgstr "At application startup, the service finds subscriptions from deployed definitions. Subscriptions are updated after new revisions are deployed."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:37
+msgid ""
+"Подписки объединяются по имени события. В общую модель включаются "
+"атрибуты пользовательской модели, атрибуты для вычисления предикатов и "
+"служебные данные события, записи, типа и рабочего пространства."
+msgstr "Subscriptions are combined by event name. The shared model includes custom model attributes, attributes needed to evaluate predicates, and service data for the event, record, type and workspace."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:39
+msgid ""
+"В ``EventsService`` регистрируются транзакционные слушатели. Общий "
+"оптимизационный фильтр исключает события записей элементов BPMN; "
+"индивидуальные условия подписок проверяются при обработке конкретного "
+"события."
+msgstr "Transactional listeners are registered in ``EventsService``. A shared optimization filter excludes BPMN element record events; individual subscription conditions are checked when processing a specific event."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:41
+msgid ""
+"После получения события сервис находит подходящие подписки Camunda, "
+"вычисляет атрибуты модели и проверяет предикат каждой подписки."
+msgstr "On receiving an event, the service finds matching Camunda subscriptions, computes model attributes and evaluates each subscription predicate."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:43
+msgid ""
+"Для совпавшей подписки выполняется ``SendSignalEventByIdCmd``. Данные "
+"события передаются в переменные процесса, и Camunda продолжает "
+"исполнение."
+msgstr "For a matching subscription, ``SendSignalEventByIdCmd`` runs. Event data is passed to process variables, and Camunda continues execution."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:45
+msgid ""
+"На схеме отсутствие предикатов в общей подписке означает, что "
+"индивидуальные условия BPMN не применяются при её регистрации. Атрибуты, "
+"необходимые этим условиям, при этом включаются в общую модель. Предикат "
+"проверяется отдельно для каждой найденной подписки."
+msgstr "In the diagram, no predicates in the shared subscription means that individual BPMN conditions are not applied at registration. Attributes required by those conditions are still included in the shared model. The predicate is evaluated separately for each subscription found."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_ecos_events_integrations.rst:47
+msgid ""
+"Для conditional events предусмотрен отдельный обработчик "
+"``BpmnConditionalEventsProcessor``. Описанный выше механизм signals "
+"относится к интеграции событий Citeck и не определяет поведение всех "
+"видов событий BPMN."
+msgstr "Conditional events have a separate ``BpmnConditionalEventsProcessor`` handler. The signal mechanism above concerns Citeck event integration and does not define the behavior of every BPMN event type."
+
+#~ msgid ""
+#~ "На основе этих требований был выполнен"
+#~ " анализ возможностей **signal** и "
+#~ "**message** в Camunda BPMN. В результате"
+#~ " было решено использовать :ref:`signals "
+#~ "<ecos_bpmn_events>` как основу построения "
+#~ "интеграции Событий в движок BPMN, так"
+#~ " как messages имеют достаточно сильные "
+#~ "ограничения и не позволяют реализовать "
+#~ "необходимую гибкость."
+#~ msgstr ""
+#~ "Based on these requirements, the "
+#~ "capabilities of **signal** and **message** "
+#~ "in Camunda BPMN were analyzed. As "
+#~ "a result, it was decided to use"
+#~ " :ref:`signals <ecos_bpmn_events>` as the "
+#~ "foundation for event integration into "
+#~ "the BPMN engine, since messages have "
+#~ "significant limitations and do not "
+#~ "provide the required flexibility."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,31 +28,33 @@ msgstr "General Information"
 
 #: ../../general/Tech_func_descr/Preview/Document_preview.rst:9
 msgid ""
-"Предпросмотр в браузере работает с форматами **pdf** и **изображениями**."
-" Для этих типов никакой дополнительной логики не требуется и их "
-"предпросмотр работает в community версии."
-msgstr ""
-"Browser preview works with **pdf** and **image** formats. No additional "
-"logic is required for these types, and their preview is available in the "
-"community version."
+"Для форматов с нативным предпросмотром, например поддерживаемых PDF и "
+"изображений, конвертация в thumbnail не запускается. Конкретный набор "
+"форматов определяется MIME-описанием платформы и возможностями UI."
+msgstr "For formats with native preview, such as supported PDFs and images, thumbnail conversion does not run. The exact formats depend on platform MIME descriptions and UI capabilities."
 
 #: ../../general/Tech_func_descr/Preview/Document_preview.rst:11
 msgid ""
-"Для содержимого, которое не соответствует поддерживаемым форматам, "
-"происходит автоматическая конвертация в **pdf** (только в enterprise "
-"версии). Подробнее см. :ref:`Механизм конвертации: Трансформация "
-"содержимого документов <content_transformation>`"
-msgstr ""
-"For content in unsupported formats, automatic conversion to **pdf** takes "
-"place (Enterprise version only). For more details, see "
-":ref:`Conversion mechanism: Document Content Transformation "
-"<content_transformation>`"
+"Для содержимого без нативного предпросмотра возможна автоматическая "
+"конвертация при наличии конвертера в целевой формат. По умолчанию "
+"используется **PDF**. Подробнее см. :ref:`Трансформация содержимого "
+"документов <content_transformation>`."
+msgstr "Content without native preview may be converted automatically if a converter to the target format exists. The default is **PDF**. See :ref:`Document content transformation <content_transformation>`."
 
 #: ../../general/Tech_func_descr/Preview/Document_preview.rst:13
-msgid "Предпросмотр автоматически генерируется для основного контента."
-msgstr "Preview is automatically generated for the main content."
+msgid ""
+"Доступность предпросмотра и конвертеров зависит от состава и условий "
+"поставки. Наличие MIME-типа или настройки целевого формата само по себе "
+"не гарантирует возможность просмотра или конвертации."
+msgstr "Preview and converter availability depend on distribution contents and terms. A MIME type or target format setting alone does not guarantee viewing or conversion support."
 
 #: ../../general/Tech_func_descr/Preview/Document_preview.rst:15
+msgid ""
+"Автоматическая генерация обрабатывает основной контент, доступный через "
+"системный атрибут ``_content``."
+msgstr "Automatic generation processes primary content available through the ``_content`` system attribute."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:17
 msgid ""
 "Основной контент — контент в атрибуте с id ``content`` или другой, но в "
 "конфигурации типа он должен быть указан в ``contentConfig → path``. "
@@ -60,56 +62,115 @@ msgid ""
 msgstr ""
 "Main content is the content in the attribute with id ``content``, or "
 "another attribute that is specified in ``contentConfig → path`` in the "
-"type configuration. For more details, see "
-":ref:`Content Configuration <datatypes_content>`"
+"type configuration. For more details, see :ref:`Content Configuration "
+"<datatypes_content>`"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:18
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:20
 msgid "Условия автоматической генерации превью"
 msgstr "Conditions for Automatic Preview Generation"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:20
-msgid "Тип документа унаследован от user-base прямо или косвенно."
-msgstr "The document type is inherited from user-base directly or indirectly."
-
 #: ../../general/Tech_func_descr/Preview/Document_preview.rst:22
-msgid "У документа есть атрибут с основным контентом."
-msgstr "The document has an attribute with the main content."
+msgid ""
+"Тип документа унаследован от ``user-base`` прямо или косвенно; запись "
+"имеет тип, отличный от ``thumbnail``."
+msgstr "The document type inherits ``user-base`` directly or indirectly; the record type is not ``thumbnail``."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:25
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:24
+msgid ""
+"При создании документа есть ``_content`` с непустым SHA-256. При событии "
+"изменения контента сведения об источнике проверяются заново при "
+"генерации."
+msgstr "On document creation, ``_content`` has a nonempty SHA-256. On content change events, source information is rechecked during generation."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:26
+msgid ""
+"MIME-тип исходного содержимого корректен, и для него не предусмотрен "
+"нативный предпросмотр на UI."
+msgstr "The source MIME type is valid and has no native UI preview."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:28
+msgid "Зарегистрирован конвертер из исходного MIME-типа в целевой."
+msgstr "A converter from the source MIME type to the target is registered."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:30
+msgid "Целевой формат задаётся Spring-настройкой микросервиса:"
+msgstr "The target format is set by a microservice Spring property:"
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:38
+msgid "Настройка определяет целевой MIME, но не добавляет конвертеры."
+msgstr "The setting specifies the target MIME type but does not add converters."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:41
+msgid "Ограничение размера"
+msgstr "Size limit"
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:43
+msgid ""
+"По умолчанию генерация thumbnail допускается для исходного файла размером"
+" не более **100 MiB** (``100 × 1024 × 1024`` байт). При превышении "
+"размера генерация отклоняется. Ограничение настраивается в ecos-"
+"transformations:"
+msgstr "By default, thumbnail generation allows source files up to **100 MiB** (``100 × 1024 × 1024`` bytes). Larger files are rejected. Configure the limit in ecos-transformations:"
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:51
+msgid ""
+"Это ограничение генерации thumbnail, а не общий предел загрузки файлов в "
+"Citeck или нативного отображения PDF. При изменении значения учитывайте "
+"ресурсы сервиса и ограничения конвертера."
+msgstr "This limits thumbnail generation, not all Citeck file uploads or native PDF display. Consider service resources and converter limits when changing it."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:54
 msgid "Процесс генерации"
 msgstr "Generation Process"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:27
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:56
 msgid ""
 "В системе происходит создание сущности с основным контентом или изменение"
 " основного контента."
 msgstr ""
-"An entity with main content is created in the system, or the main content "
-"is modified."
+"An entity with main content is created in the system, or the main content"
+" is modified."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:29
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:58
 msgid ""
-"Микросервис :ref:`ecos-transformations <transformation>` подписан на "
-"события из п.1 и создаёт или обновляет thumbnail с форматом pdf."
-msgstr ""
-"The :ref:`ecos-transformations <transformation>` microservice subscribes "
-"to the events from step 1 and creates or updates a thumbnail in pdf format."
+"Микросервис :ref:`ecos-transformations <transformation>` проверяет "
+"условия генерации и создаёт или находит thumbnail для исходной записи, "
+"атрибута и целевого MIME."
+msgstr "The :ref:`ecos-transformations <transformation>` microservice checks generation conditions and creates or finds a thumbnail for the source record, attribute and target MIME type."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:31
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:60
 msgid ""
-"Микросервис :ref:`ecos-transformations <transformation>` выполняет "
-"конвертацию основного контента документа в формат pdf и записывает "
-"результат в основной контент thumbnail."
-msgstr ""
-"The :ref:`ecos-transformations <transformation>` microservice converts the "
-"document's main content to pdf format and writes the result to the "
-"thumbnail's main content."
+"После коммита транзакции публикуется команда в очередь RabbitMQ "
+"``transformations.content-preview.gen``."
+msgstr "After transaction commit, a command is published to the RabbitMQ ``transformations.content-preview.gen`` queue."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:34
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:62
+msgid ""
+"Обработчик команды запускает генерацию асинхронно. Контент источника "
+"читается заново, проверяется размер и выполняется конвертация в целевой "
+"формат."
+msgstr "The command handler starts generation asynchronously. Source content is reread, its size checked, and conversion to the target format performed."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:64
+msgid ""
+"Результат записывается в основной контент thumbnail. При успехе "
+"устанавливается ``PROCESSED``, обновляется SHA-256 источника и "
+"сбрасываются сведения о повторных попытках."
+msgstr "The result is written to primary thumbnail content. Success sets ``PROCESSED``, updates the source SHA-256 and resets retry details."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:66
+msgid ""
+"Результат не обязан быть готов сразу после сохранения документа. Если "
+"источник пуст или не имеет SHA-256, обработчик завершает генерацию без "
+"конвертации и выставляет ``PROCESSED``; этот статус сам по себе не "
+"гарантирует наличие непустого PDF."
+msgstr "The result need not be ready immediately after saving the document. If the source is empty or lacks SHA-256, the handler finishes without conversion and sets ``PROCESSED``; this status alone does not guarantee a nonempty PDF."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:69
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:36
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:71
 msgid ""
 "Это некоторое представление основного документа в заданном формате. "
 "Атрибуты:"
@@ -117,37 +178,128 @@ msgstr ""
 "This is a representation of the main document in a specified format. "
 "Attributes:"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:49
-msgid "Thumbnail сущности создаются как дочерние к основному документу."
-msgstr "Thumbnail entities are created as children of the main document."
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:84
+msgid ""
+"Thumbnail-сущности создаются как дочерние к исходному документу: "
+"``_parent`` указывает на документ, ``_parentAtt`` — на "
+"``thumbnail:thumbnails``."
+msgstr "Thumbnail entities are children of the source document: ``_parent`` points to the document, and ``_parentAtt`` to ``thumbnail:thumbnails``."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:52
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:87
 msgid "Thumbnail repair job"
 msgstr "Thumbnail repair job"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:54
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:89
 msgid ""
-"В микросервисе :ref:`ecos-transformations <transformation>` настроена "
-"джоба, которая занимается обработкой thumbnail'ов, зависших в "
-"некорректном статусе."
-msgstr ""
-"The :ref:`ecos-transformations <transformation>` microservice has a job "
-"configured to handle thumbnails stuck in an invalid status."
+"В микросервисе :ref:`ecos-transformations <transformation>` работает "
+"джоба обработки просроченных повторов и зависшей генерации. Она "
+"включается через 10 секунд после готовности приложения и проверяет "
+"доступность ecos-model."
+msgstr "The :ref:`ecos-transformations <transformation>` microservice runs a job handling overdue retries and stuck generation. It starts 10 seconds after application readiness and checks ecos-model availability."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:56
-msgid "Варианты некорректных статусов:"
-msgstr "Invalid status cases:"
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:91
+msgid "В каждом цикле:"
+msgstr "In each cycle:"
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:58
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:93
 msgid ""
-"Статус: **PROCESSING** и время последнего изменения thumbnail старше 30 "
-"минут."
-msgstr ""
-"Status: **PROCESSING** and the thumbnail's last modification time is older "
-"than 30 minutes."
+"Сначала выбирается один thumbnail с ``nextTryTime`` раньше текущего "
+"времени, с сортировкой по этому полю. Фильтра по статусу ``FAILED`` в "
+"этом запросе нет. Для выбранного thumbnail выполняется повторная "
+"генерация."
+msgstr "First, one thumbnail with ``nextTryTime`` before the current time is selected, ordered by that field. This query has no ``FAILED`` status filter. Generation is retried for the selected thumbnail."
 
-#: ../../general/Tech_func_descr/Preview/Document_preview.rst:59
-msgid "Статус: **FAILED** и время в ``nextTryTime`` меньше чем текущее время."
-msgstr ""
-"Status: **FAILED** and the time in ``nextTryTime`` is earlier than the "
-"current time."
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:95
+msgid ""
+"Если просроченного повтора нет, выбирается thumbnail в статусе "
+"``PROCESSING``, у которого ``_modified`` старше 30 минут. Он переводится "
+"в ``FAILED`` с описанием timeout и назначением следующей попытки; "
+"немедленная конвертация в этой ветке не выполняется."
+msgstr "If no overdue retry exists, a ``PROCESSING`` thumbnail with ``_modified`` older than 30 minutes is selected. It is marked ``FAILED`` with a timeout description and a next attempt scheduled; this branch does not immediately convert it."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:97
+msgid ""
+"После обработки записи джоба ожидает 500 мс, при отсутствии работы — 10 "
+"секунд. Полное время цикла зависит также от длительности запросов и "
+"конвертации."
+msgstr "After processing a record, the job waits 500 ms; with no work, 10 seconds. Full cycle time also depends on query and conversion duration."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:99
+msgid ""
+"При обычной ошибке увеличивается ``failsCount``, заполняется "
+"``failDescription`` и назначается повтор с задержкой, зависящей от "
+"счётчика. Максимальная задержка — 48 часов. Для распознанной ошибки "
+"``Unknown MimeType`` очищаются контент и ``nextTryTime``; автоматического"
+" повтора по таймеру не будет."
+msgstr "An ordinary error increments ``failsCount``, fills ``failDescription`` and schedules a retry with a counter-dependent delay, up to 48 hours. For recognized ``Unknown MimeType`` errors, content and ``nextTryTime`` are cleared; no timed retry occurs."
+
+#: ../../general/Tech_func_descr/Preview/Document_preview.rst:101
+msgid ""
+"Thumbnail в ``DRAFT`` без ``nextTryTime`` не попадает в эти запросы. "
+"Поэтому repair job не гарантирует восстановление любого незавершённого "
+"thumbnail; при диагностике проверяйте статус, время повтора и логи "
+"сервиса."
+msgstr "A ``DRAFT`` thumbnail without ``nextTryTime`` does not match these queries. The repair job therefore does not guarantee recovery of every incomplete thumbnail; check status, retry time and service logs when diagnosing."
+
+#~ msgid ""
+#~ "Предпросмотр в браузере работает с "
+#~ "форматами **pdf** и **изображениями**. Для "
+#~ "этих типов никакой дополнительной логики "
+#~ "не требуется и их предпросмотр работает"
+#~ " в community версии."
+#~ msgstr ""
+#~ "Browser preview works with **pdf** and"
+#~ " **image** formats. No additional logic "
+#~ "is required for these types, and "
+#~ "their preview is available in the "
+#~ "community version."
+
+#~ msgid "Предпросмотр автоматически генерируется для основного контента."
+#~ msgstr "Preview is automatically generated for the main content."
+
+#~ msgid "У документа есть атрибут с основным контентом."
+#~ msgstr "The document has an attribute with the main content."
+
+#~ msgid ""
+#~ "Микросервис :ref:`ecos-transformations "
+#~ "<transformation>` выполняет конвертацию основного"
+#~ " контента документа в формат pdf и"
+#~ " записывает результат в основной контент"
+#~ " thumbnail."
+#~ msgstr ""
+#~ "The :ref:`ecos-transformations <transformation>` "
+#~ "microservice converts the document's main "
+#~ "content to pdf format and writes "
+#~ "the result to the thumbnail's main "
+#~ "content."
+
+#~ msgid "Thumbnail сущности создаются как дочерние к основному документу."
+#~ msgstr "Thumbnail entities are created as children of the main document."
+
+#~ msgid ""
+#~ "В микросервисе :ref:`ecos-transformations "
+#~ "<transformation>` настроена джоба, которая "
+#~ "занимается обработкой thumbnail'ов, зависших в"
+#~ " некорректном статусе."
+#~ msgstr ""
+#~ "The :ref:`ecos-transformations <transformation>` "
+#~ "microservice has a job configured to "
+#~ "handle thumbnails stuck in an invalid"
+#~ " status."
+
+#~ msgid "Варианты некорректных статусов:"
+#~ msgstr "Invalid status cases:"
+
+#~ msgid ""
+#~ "Статус: **PROCESSING** и время последнего "
+#~ "изменения thumbnail старше 30 минут."
+#~ msgstr ""
+#~ "Status: **PROCESSING** and the thumbnail's "
+#~ "last modification time is older than "
+#~ "30 minutes."
+
+#~ msgid "Статус: **FAILED** и время в ``nextTryTime`` меньше чем текущее время."
+#~ msgstr ""
+#~ "Status: **FAILED** and the time in "
+#~ "``nextTryTime`` is earlier than the "
+#~ "current time."

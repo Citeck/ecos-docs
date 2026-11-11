@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -78,7 +78,24 @@ msgstr ""
 "``ActionsExecutor`` implementation on the UI and flags in the action "
 "configuration. Example action on UI:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:78
+#: ../../settings_kb/interface/journals/features/group_actions.rst:22
+msgid ""
+"``execForRecord`` выполняет действие для одной записи, ``execForRecords``"
+" — для набора записей, ``execForQuery`` — для запроса. Флаг применимости "
+"может отключить возможность, но не добавляет отсутствующий метод "
+"исполнителя. Например, ``server-group-action`` поддерживает "
+"``execForRecords`` и ``execForQuery``."
+msgstr "``execForRecord`` handles one record, ``execForRecords`` a set, and ``execForQuery`` a query. Applicability flags can disable capabilities but cannot add missing executor methods. For example, ``server-group-action`` supports ``execForRecords`` and ``execForQuery``."
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:24
+msgid ""
+"При ``execForQuery`` исполнитель определяет, как обработать запрос. При "
+"выполнении запроса как набора записей UI перебирает страницы и вызывает "
+"поддерживаемые методы для записей. Обработка на сервере зависит от "
+"конкретного действия."
+msgstr "With ``execForQuery``, the executor determines query handling. When executing a query as records, the UI traverses pages and invokes supported record methods. Server processing depends on the action."
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:82
 msgid ""
 "Executor реализует два метода: ``execForRecords`` и ``execForRecord``. "
 "Это означает, что в конфиге действия мы можем управлять данными фичами, "
@@ -88,7 +105,7 @@ msgstr ""
 "``execForRecord``. This means that in the action configuration we can "
 "control these features by enabling and disabling them."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:80
+#: ../../settings_kb/interface/journals/features/group_actions.rst:84
 msgid ""
 "Фича ``execForQuery`` будет всегда неактивна до реализации "
 "соответствующего метода."
@@ -96,7 +113,7 @@ msgstr ""
 "The ``execForQuery`` feature will always be inactive until the "
 "corresponding method is implemented."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:82
+#: ../../settings_kb/interface/journals/features/group_actions.rst:86
 msgid ""
 "По умолчанию все фичи по максимуму включены, если соответствующий "
 "Executor переопределяет нужные методы."
@@ -104,19 +121,19 @@ msgstr ""
 "By default, all features are enabled to the maximum extent if the "
 "corresponding Executor overrides the required methods."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:85
+#: ../../settings_kb/interface/journals/features/group_actions.rst:89
 msgid "Конфигурация действия"
 msgstr "Action Configuration"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:87
+#: ../../settings_kb/interface/journals/features/group_actions.rst:91
 msgid "Пример конфига действия:"
 msgstr "Example action configuration:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:108
+#: ../../settings_kb/interface/journals/features/group_actions.rst:112
 msgid "Миграция со старого формата groupActions"
 msgstr "Migration from the old groupActions format"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:110
+#: ../../settings_kb/interface/journals/features/group_actions.rst:114
 msgid ""
 "В DTO нового конфига журнала есть поле **groupActions**, но оно "
 "deprecated и будет удалено в дальнейшем."
@@ -124,7 +141,7 @@ msgstr ""
 "The new journal configuration DTO has a **groupActions** field, but it is"
 " deprecated and will be removed in the future."
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:112
+#: ../../settings_kb/interface/journals/features/group_actions.rst:116
 msgid ""
 "Для воспроизведения такого же функционала как в groupActions следует "
 "настроить примерно следующий конфиг:"
@@ -132,11 +149,25 @@ msgstr ""
 "To replicate the same functionality as in groupActions, configure "
 "approximately the following:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:114
+#: ../../settings_kb/interface/journals/features/group_actions.rst:118
 msgid "Было:"
 msgstr "Before:"
 
-#: ../../settings_kb/interface/journals/features/group_actions.rst:128
+#: ../../settings_kb/interface/journals/features/group_actions.rst:132
 msgid "Стало:"
 msgstr "After:"
 
+#: ../../settings_kb/interface/journals/features/group_actions.rst:149
+msgid ""
+"Внешний ``id`` идентифицирует UI-действие; ``config.id`` сохраняет "
+"идентификатор прежнего группового действия. В примере ``tasks`` остаётся "
+"строкой JSON, как в исходной конфигурации; формат параметров определяет "
+"серверный обработчик."
+msgstr "The outer ``id`` identifies the UI action; ``config.id`` retains the legacy group action identifier. ``tasks`` remains a JSON string as in the original configuration; the server handler defines its format."
+
+#: ../../settings_kb/interface/journals/features/group_actions.rst:151
+msgid ""
+"Если старому действию нужна форма, её ключ можно перенести в "
+"``config.formKey``. Для новых действий используйте общую :ref:`настройку "
+"форм и подтверждения <ui_actions>`."
+msgstr "If the legacy action needs a form, move its key to ``config.formKey``. For new actions, use the general :ref:`form and confirmation settings <ui_actions>`."

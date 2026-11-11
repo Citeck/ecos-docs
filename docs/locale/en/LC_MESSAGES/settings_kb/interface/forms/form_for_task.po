@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,19 +32,21 @@ msgstr "Completing a task (outcome)"
 
 #: ../../settings_kb/interface/forms/form_for_task.rst:12
 msgid ""
-"Для кнопок, которые должны завершать задачу, следует указывать свойство "
-"**Имя свойства/Property Name** по следующему формату:"
-msgstr ""
-"For buttons that should complete a task, the **Property Name** property "
-"should be specified in the following format:"
+"Для ручной кнопки завершения задачи используйте компонент **Button**, "
+"действие **Submit** и **Имя свойства/Property Name** по следующему "
+"формату:"
+msgstr "For a manual task completion button, use **Button**, **Submit**, and **Property Name** in this format:"
 
 #: ../../settings_kb/interface/forms/form_for_task.rst:14
 msgid "``outcome_******``"
 msgstr "``outcome_******``"
 
 #: ../../settings_kb/interface/forms/form_for_task.rst:16
-msgid "где ``******`` - результат выполнения задачи."
-msgstr "where ``******`` is the task execution result."
+msgid ""
+"где ``******`` — идентификатор результата задачи. Префикс ``outcome_`` "
+"помечает кнопку результата; для завершения задачи также нужны отправка "
+"формы и серверная обработка этого результата."
+msgstr "Here ``******`` is the task outcome ID. ``outcome_`` marks an outcome button; task completion also requires form submission and server processing."
 
 #: ../../settings_kb/interface/forms/form_for_task.rst:22
 msgid ""
@@ -56,83 +58,105 @@ msgstr ""
 
 #: ../../settings_kb/interface/forms/form_for_task.rst:24
 msgid ""
-"Для проверки нажатой кнопки следует проверить переменную "
+"В legacy-процессах могут использоваться переменные "
 "``form_{{FORM_KEY}}_outcome`` или ``outcome``. Например:"
-msgstr ""
-"To check which button was pressed, you should check the variable "
-"``form_{{FORM_KEY}}_outcome`` or ``outcome``. For example:"
+msgstr "Legacy processes may use ``form_{{FORM_KEY}}_outcome`` or ``outcome``. For example:"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:31
+#: ../../settings_kb/interface/forms/form_for_task.rst:30
+msgid ""
+"Имя переменной и способ передачи результата зависят от движка и серверной"
+" конфигурации процесса. Этот пример нельзя переносить на другие виды "
+"задач без проверки их контракта."
+msgstr "Variable names and outcome transfer depend on the engine and server process configuration. Do not reuse this example for other task types without checking their contract."
+
+#: ../../settings_kb/interface/forms/form_for_task.rst:33
+msgid "Автоматическое создание кнопок"
+msgstr "Automatic button creation"
+
+#: ../../settings_kb/interface/forms/form_for_task.rst:35
+msgid ""
+"Для автоматической генерации кнопок добавьте компонент **Task Outcome**. "
+"Для современных задач он загружает ``possibleOutcomes[]?json``, создаёт "
+"кнопки ``outcome_<id>`` и применяет названия, темы и настройку "
+"обязательного комментария ``config.commentRequired``. Порядок кнопок "
+"берётся из списка результатов."
+msgstr "Add **Task Outcome** to generate buttons automatically. For modern tasks, it loads ``possibleOutcomes[]?json``, creates ``outcome_<id>`` buttons and applies names, themes and required-comment ``config.commentRequired``. Button order follows the outcome list."
+
+#: ../../settings_kb/interface/forms/form_for_task.rst:37
+msgid ""
+"Legacy-ветка поддерживает строковый шаблон с разделителем ``#alf#`` и "
+"сортирует кнопки по теме. Пример использования см. в :ref:`форме "
+"согласования<approve_form_bpmn>`."
+msgstr "The legacy branch supports a string template separated by ``#alf#`` and sorts buttons by theme. See the :ref:`approval form<approve_form_bpmn>` example."
+
+#: ../../settings_kb/interface/forms/form_for_task.rst:40
 msgid "Атрибуты задачи"
 msgstr "Task attributes"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:34
+#: ../../settings_kb/interface/forms/form_for_task.rst:43
 msgid "Комментарий"
 msgstr "Comment"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:36
+#: ../../settings_kb/interface/forms/form_for_task.rst:45
 msgid ""
-"Для атрибута **\"комментарий\"** свойство **Имя свойства/Property Name "
-"(warning)** должно быть **comment**."
-msgstr ""
-"For the **\"comment\"** attribute, the **Property Name (warning)** "
-"property should be **comment**."
+"У поля комментария ключ **Имя свойства/Property Name** должен быть "
+"``comment``. Task Outcome ищет компонент через "
+"``root.getComponent('comment')``, в том числе для проверки обязательности"
+" комментария при выборе результата."
+msgstr "The comment field **Property Name** must be ``comment``. Task Outcome finds it with ``root.getComponent('comment')``, including required-comment checks for selected outcomes."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:40
+#: ../../settings_kb/interface/forms/form_for_task.rst:49
 msgid ""
-"Для миграции существующих форм, где ключ отличается, следует сделать "
-"невидимое поле с нужным ключом, которое будет копировать значение из поля"
-" **comment**."
-msgstr ""
-"To migrate existing forms where the key is different, you should create "
-"an invisible field with the required key that will copy the value from "
-"the **comment** field."
+"При миграции формы измените ключ поля комментария на ``comment`` либо "
+"предусмотрите синхронизацию существующего поля с компонентом с этим "
+"ключом. Одного ``properties.attribute: comment`` у компонента с другим "
+"ключом недостаточно для поиска поля в Task Outcome."
+msgstr "When migrating a form, rename the comment field key to ``comment`` or synchronize the existing field with a component using that key. ``properties.attribute: comment`` on another key is insufficient for Task Outcome lookup."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:43
+#: ../../settings_kb/interface/forms/form_for_task.rst:52
 msgid "Атрибуты из привязанного документа"
 msgstr "Attributes from the linked document"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:45
+#: ../../settings_kb/interface/forms/form_for_task.rst:54
 msgid ""
-"Для атрибутов, которые должны загружаться из привязанного к задаче "
-"документа, следует указывать префикс **_ECM_**."
-msgstr ""
-"For attributes that should be loaded from the document linked to the "
-"task, the prefix **_ECM_** should be specified."
+"Для источников задач, которые зеркалируют атрибуты связанного документа с"
+" префиксом ``_ECM_``, используйте это имя атрибута на форме. "
+"Совместимость с таким префиксом поддерживается Records API."
+msgstr "For task sources mirroring related document attributes with ``_ECM_``, use that attribute name on the form. The Records API supports this prefix for compatibility."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:47
+#: ../../settings_kb/interface/forms/form_for_task.rst:56
 msgid "Пример:"
 msgstr "Example:"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:54
+#: ../../settings_kb/interface/forms/form_for_task.rst:63
 msgid "Атрибуты, хранящиеся в задаче"
 msgstr "Attributes stored in the task"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:56
+#: ../../settings_kb/interface/forms/form_for_task.rst:65
 msgid ""
-"Все атрибуты, которые хранятся непосредственно в задаче, доступны по "
-"прямому имени без преобразований."
-msgstr ""
-"All attributes that are stored directly in the task are available by "
-"their direct name without transformations."
+"Атрибуты задачи можно привязать по их точному имени через ключ компонента"
+" или ``properties.attribute``. Набор доступных атрибутов, включая "
+"атрибуты связанного документа, зависит от источника записи задачи и "
+"серверных прав."
+msgstr "Bind task attributes by exact name through the component key or ``properties.attribute``. Available attributes, including related document attributes, depend on the task record source and server permissions."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:59
+#: ../../settings_kb/interface/forms/form_for_task.rst:68
 msgid "Вид формы задачи"
 msgstr "Task form appearance"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:61
-msgid "Кнопки должны располагаться с левого края под полем комментария."
-msgstr "Buttons should be located at the left edge below the comment field."
+#: ../../settings_kb/interface/forms/form_for_task.rst:70
+msgid "Рекомендации для ручной компоновки кнопок:"
+msgstr "Manual button layout recommendations:"
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:62
-msgid ""
-"Кнопки, несущие отрицательный характер, должны быть всегда слева от "
-"кнопок, несущих положительный характер."
-msgstr ""
-"Buttons with a negative connotation should always be to the left of "
-"buttons with a positive connotation."
+#: ../../settings_kb/interface/forms/form_for_task.rst:72
+msgid "Располагайте кнопки с левого края под полем комментария."
+msgstr "Place buttons at the left below the comment field."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:63
+#: ../../settings_kb/interface/forms/form_for_task.rst:73
+msgid "Отрицательные решения размещайте слева от положительных."
+msgstr "Place negative decisions to the left of positive ones."
+
+#: ../../settings_kb/interface/forms/form_for_task.rst:74
 msgid ""
 "Если кнопок 3, то располагать в соответствии со смыслом: от "
 "отрицательного к положительному решению."
@@ -140,11 +164,62 @@ msgstr ""
 "If there are 3 buttons, arrange them according to their meaning: from "
 "negative to positive decision."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:64
+#: ../../settings_kb/interface/forms/form_for_task.rst:75
 msgid "По ширине кнопки и отступы между кнопками не должны быть слишком большими."
 msgstr "The width of buttons and the spacing between them should not be too large."
 
-#: ../../settings_kb/interface/forms/form_for_task.rst:66
+#: ../../settings_kb/interface/forms/form_for_task.rst:77
 msgid "Примеры:"
 msgstr "Examples:"
 
+#~ msgid "где ``******`` - результат выполнения задачи."
+#~ msgstr "where ``******`` is the task execution result."
+
+#~ msgid ""
+#~ "Для атрибута **\"комментарий\"** свойство "
+#~ "**Имя свойства/Property Name (warning)** "
+#~ "должно быть **comment**."
+#~ msgstr ""
+#~ "For the **\"comment\"** attribute, the "
+#~ "**Property Name (warning)** property should"
+#~ " be **comment**."
+
+#~ msgid ""
+#~ "Для миграции существующих форм, где ключ"
+#~ " отличается, следует сделать невидимое поле"
+#~ " с нужным ключом, которое будет "
+#~ "копировать значение из поля **comment**."
+#~ msgstr ""
+#~ "To migrate existing forms where the "
+#~ "key is different, you should create "
+#~ "an invisible field with the required "
+#~ "key that will copy the value from"
+#~ " the **comment** field."
+
+#~ msgid ""
+#~ "Для атрибутов, которые должны загружаться "
+#~ "из привязанного к задаче документа, "
+#~ "следует указывать префикс **_ECM_**."
+#~ msgstr ""
+#~ "For attributes that should be loaded "
+#~ "from the document linked to the "
+#~ "task, the prefix **_ECM_** should be "
+#~ "specified."
+
+#~ msgid ""
+#~ "Все атрибуты, которые хранятся непосредственно"
+#~ " в задаче, доступны по прямому имени"
+#~ " без преобразований."
+#~ msgstr ""
+#~ "All attributes that are stored directly"
+#~ " in the task are available by "
+#~ "their direct name without transformations."
+
+#~ msgid ""
+#~ "Кнопки, несущие отрицательный характер, должны"
+#~ " быть всегда слева от кнопок, несущих"
+#~ " положительный характер."
+#~ msgstr ""
+#~ "Buttons with a negative connotation "
+#~ "should always be to the left of"
+#~ " buttons with a positive connotation."

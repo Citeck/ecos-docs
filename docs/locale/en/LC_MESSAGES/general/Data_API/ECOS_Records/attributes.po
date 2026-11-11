@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -179,7 +179,7 @@ msgid "Аргументы"
 msgstr "Arguments"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst:96
-#: ../../general/Data_API/ECOS_Records/attributes.rst:222
+#: ../../general/Data_API/ECOS_Records/attributes.rst:224
 msgid "Описание"
 msgstr "Description"
 
@@ -241,11 +241,9 @@ msgstr "``orValueN: Any``"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid ""
-"Вернуть значение по умолчанию если значение атрибута равно null. Если "
-"аргумент является строкой"
-msgstr ""
-"Return a default value if the attribute value is null. If the argument is"
-" a string"
+"Вернуть запасное значение, если атрибут равен null или пустой строке. "
+"Если аргумент является строкой"
+msgstr "Return a fallback value if the attribute is null or an empty string. If the argument is a string"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid ""
@@ -260,24 +258,30 @@ msgid "нужно вычислить и вернуть в результате."
 msgstr "should be evaluated and returned as the result."
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
-msgid "Количество аргументов не ограничено. Аргументы перебираются по очереди"
-msgstr "The number of arguments is unlimited. Arguments are evaluated in order"
+msgid ""
+"Для последовательного выбора запасных значений используйте отдельные "
+"процессоры: ``title!name!\"n-a\"``."
+msgstr "To select fallback values sequentially, use separate processors: ``title!name!\"n-a\"``."
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid ""
-"и если он не null (не является null и не вычислился через \"a:\" в null),"
-" то результат сразу возвращается."
-msgstr ""
-"and if it is not null (neither directly null nor resolved to null via "
-"\"a:\"), the result is returned immediately."
+"В ecos-records 3.60.0-SNAPSHOT при пустом исходном значении вызов одного "
+"``or`` с несколькими аргументами"
+msgstr "In ecos-records 3.60.0-SNAPSHOT, when the initial value is empty, a single ``or`` call with multiple arguments"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:114
+#: ../../general/Data_API/ECOS_Records/attributes.rst
+msgid ""
+"фактически возвращает последний вычисленный аргумент, а не первый "
+"непустой."
+msgstr "actually returns the last evaluated argument rather than the first nonempty one."
+
+#: ../../general/Data_API/ECOS_Records/attributes.rst:115
 msgid "``documentAmount?num|or(0)`` — если атрибут вернёт ``null``, получим ``0``"
 msgstr ""
 "``documentAmount?num|or(0)`` — if the attribute returns ``null``, the "
 "result is ``0``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:115
+#: ../../general/Data_API/ECOS_Records/attributes.rst:116
 msgid "rxg"
 msgstr "rxg"
 
@@ -289,9 +293,11 @@ msgstr "``pattern: String``"
 msgid "``groupIdx: Int = 1``"
 msgstr "``groupIdx: Int = 1``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:118
-msgid "Применить регулярное выражение к результату и вернуть указанную группу"
-msgstr "Apply a regular expression to the result and return the specified group"
+#: ../../general/Data_API/ECOS_Records/attributes.rst:119
+msgid ""
+"Применить регулярное выражение ко всей строке и вернуть указанную группу."
+" Если вся строка не соответствует шаблону, вернуть null"
+msgstr "Apply a regular expression to the entire string and return the specified group. Return null if the entire string does not match the pattern"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid "``\"some-text\" | rxg(\"some-(.+)\") -> text``"
@@ -299,25 +305,23 @@ msgstr "``\"some-text\" | rxg(\"some-(.+)\") -> text``"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid ""
-"``\"some-text-and-more\" | rgx(\"(some)-(text)-(and)-(more)\", 2) -> "
+"``\"some-text-and-more\" | rxg(\"(some)-(text)-(and)-(more)\", 2) -> "
 "text``"
-msgstr ""
-"``\"some-text-and-more\" | rgx(\"(some)-(text)-(and)-(more)\", 2) -> "
-"text``"
+msgstr "``\"some-text-and-more\" | rxg(\"(some)-(text)-(and)-(more)\", 2) -> text``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:121
+#: ../../general/Data_API/ECOS_Records/attributes.rst:122
 msgid "join"
 msgstr "join"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:122
+#: ../../general/Data_API/ECOS_Records/attributes.rst:123
 msgid "``delimiter: String = \",\"``"
 msgstr "``delimiter: String = \",\"``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:123
+#: ../../general/Data_API/ECOS_Records/attributes.rst:124
 msgid "Объединить список значений в строку используя указанный разделитель"
 msgstr "Join a list of values into a string using the specified delimiter"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:125
+#: ../../general/Data_API/ECOS_Records/attributes.rst:126
 msgid "hex (3.26.0+)"
 msgstr "hex (3.26.0+)"
 
@@ -333,7 +337,7 @@ msgstr "Represent a base64 string as a HEX string (a list of hexadecimal numbers
 msgid "где каждый байт представлен двумя символами)"
 msgstr "where each byte is represented by two characters)"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:130
+#: ../../general/Data_API/ECOS_Records/attributes.rst:131
 msgid "fmt"
 msgstr "fmt"
 
@@ -346,8 +350,8 @@ msgid "``locale: String = \"en\"``"
 msgstr "``locale: String = \"en\"``"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
-msgid "``timezone: String = \"UTC\"``"
-msgstr "``timezone: String = \"UTC\"``"
+msgid "``timezone: String`` (необязательный)"
+msgstr "``timezone: String`` (optional)"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid ""
@@ -368,6 +372,12 @@ msgstr ""
 "<https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html>`_"
 
 #: ../../general/Data_API/ECOS_Records/attributes.rst
+msgid ""
+"Без явной timezone используется UTC; если шаблон содержит ``Z``, ``z`` "
+"или ``X``, используется зона исходной даты"
+msgstr "Without an explicit timezone, UTC is used; if the pattern contains ``Z``, ``z`` or ``X``, the original date zone is used"
+
+#: ../../general/Data_API/ECOS_Records/attributes.rst
 msgid "``_created|fmt(\"yyyy__MM__dd\")``"
 msgstr "``_created|fmt(\"yyyy__MM__dd\")``"
 
@@ -375,7 +385,7 @@ msgstr "``_created|fmt(\"yyyy__MM__dd\")``"
 msgid "``documentAmount|fmt(\"00000.00\")``"
 msgstr "``documentAmount|fmt(\"00000.00\")``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:138
+#: ../../general/Data_API/ECOS_Records/attributes.rst:140
 msgid "cast"
 msgstr "cast"
 
@@ -384,31 +394,38 @@ msgstr "cast"
 msgid "``type: { \"str\", \"num\", \"bool\" }``"
 msgstr "``type: { \"str\", \"num\", \"bool\" }``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:140
+#: ../../general/Data_API/ECOS_Records/attributes.rst:142
 msgid "Преобразует значение в указанный формат"
 msgstr "Converts the value to the specified format"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:142
+#: ../../general/Data_API/ECOS_Records/attributes.rst:144
 msgid "yaml"
 msgstr "yaml"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:144
+#: ../../general/Data_API/ECOS_Records/attributes.rst:146
 msgid "Любую структуру приводит к YAML строке"
 msgstr "Converts any structure to a YAML string"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:145
+#: ../../general/Data_API/ECOS_Records/attributes.rst:147
 msgid "``await Records.get('uiserv/form@ECOS_FORM').load('?json|yaml()')``"
 msgstr "``await Records.get('uiserv/form@ECOS_FORM').load('?json|yaml()')``"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:148
+#: ../../general/Data_API/ECOS_Records/attributes.rst:149
+msgid ""
+"Таблица содержит основные процессоры. В библиотеке также зарегистрированы"
+" ``plus``, ``uppercase`` и ``lowercase``; список может расширяться "
+"реализациями процессоров."
+msgstr "The table lists the main processors. The library also registers ``plus``, ``uppercase`` and ``lowercase``; processor implementations can extend the list."
+
+#: ../../general/Data_API/ECOS_Records/attributes.rst:152
 msgid "Поисковые запросы"
 msgstr "Search Queries"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:150
+#: ../../general/Data_API/ECOS_Records/attributes.rst:154
 msgid "**Группировка**"
 msgstr "**Grouping**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:152
+#: ../../general/Data_API/ECOS_Records/attributes.rst:156
 msgid ""
 "В query можно задать атрибуты для группировки через параметр groupBy. "
 "Если Records DAO поддерживает группировку (реализует интерфейс "
@@ -425,29 +442,18 @@ msgstr ""
 "attempts to perform grouping on its own using additional queries. This "
 "mechanism is called \"auto-grouping\"."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:156
+#: ../../general/Data_API/ECOS_Records/attributes.rst:160
 msgid ""
-"Так как автогруппировка может быть нежелательна в ряде случаев, то в "
-"системе предусмотрен флаг для её отключения "
-"**ecos.webapp.records.queryAutoGroupingEnabled**"
-msgstr ""
-"Since auto-grouping may be undesirable in some cases, a flag is available"
-" to disable it: **ecos.webapp.records.queryAutoGroupingEnabled**."
+"Автогруппировка зависит от поддержки преобразования языка запроса. Если "
+"язык нельзя преобразовать для обработчика группировки, в сообщения "
+"запроса добавляется ошибка."
+msgstr "Automatic grouping depends on support for query language conversion. If the language cannot be converted for the grouping handler, an error is added to the query messages."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:158
-msgid ""
-"Если этот флаг выставлен в false и целевой Records DAO не поддерживает "
-"группировку, то все запросы с непустым groupBy будут возвращать пустой "
-"список."
-msgstr ""
-"If this flag is set to false and the target Records DAO does not support "
-"grouping, all queries with a non-empty groupBy will return an empty list."
-
-#: ../../general/Data_API/ECOS_Records/attributes.rst:161
+#: ../../general/Data_API/ECOS_Records/attributes.rst:163
 msgid "Работа с MLText полями (3.26.0+)"
 msgstr "Working with MLText Fields (3.26.0+)"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:163
+#: ../../general/Data_API/ECOS_Records/attributes.rst:165
 msgid ""
 "Если известно. что в каком-то атрибуте лежит строка или MLText структура "
 "(объект, где в качестве ключей локаль, а в значении соответствующая "
@@ -457,11 +463,11 @@ msgstr ""
 " structure (an object where keys are locales and values are the "
 "corresponding strings), the **\"mltext\"** transformation can be applied."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:165
+#: ../../general/Data_API/ECOS_Records/attributes.rst:167
 msgid "Пример::"
 msgstr "Example::"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:172
+#: ../../general/Data_API/ECOS_Records/attributes.rst:174
 msgid ""
 "Преобразование работает для **String, DataValue, MLText, ObjectData, "
 "JsonNode (jackson)**"
@@ -469,11 +475,11 @@ msgstr ""
 "The transformation works for **String, DataValue, MLText, ObjectData, "
 "JsonNode (jackson)**."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:175
+#: ../../general/Data_API/ECOS_Records/attributes.rst:177
 msgid "Использование динамических атрибутов в предикатах (3.26.0+)"
 msgstr "Using Dynamic Attributes in Predicates (3.26.0+)"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:177
+#: ../../general/Data_API/ECOS_Records/attributes.rst:179
 msgid ""
 "При использовании поиска на основе языка предикатов для всех источников "
 "записей есть возможность указывать вместо значений динамически "
@@ -483,11 +489,11 @@ msgstr ""
 "possible to specify dynamically computed attributes instead of static "
 "values."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:179
+#: ../../general/Data_API/ECOS_Records/attributes.rst:181
 msgid "Пример запроса с текущим пользователем::"
 msgstr "Example query with the current user::"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:187
+#: ../../general/Data_API/ECOS_Records/attributes.rst:189
 #, python-brace-format
 msgid ""
 "Если ``${}`` один и занимает всю строку, то ``\"${...}\"`` меняется "
@@ -502,7 +508,7 @@ msgstr ""
 "Dynamic insertions can be used at any nesting level for any values in "
 "objects (t, att, val can all be specified)."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:190
+#: ../../general/Data_API/ECOS_Records/attributes.rst:192
 msgid ""
 "Список доступных атрибутов можно посмотреть в разделе **\"Контекстные "
 "атрибуты\"**."
@@ -510,11 +516,11 @@ msgstr ""
 "The list of available attributes can be found in the **\"Context "
 "Attributes\"** section."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:195
+#: ../../general/Data_API/ECOS_Records/attributes.rst:197
 msgid "Контекстные атрибуты"
 msgstr "Context Attributes"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:197
+#: ../../general/Data_API/ECOS_Records/attributes.rst:199
 msgid ""
 "Часто возникают ситуации, когда нужно загрузить атрибуты, которые не "
 "относятся напрямую к сущности, а являются контекстными."
@@ -522,19 +528,19 @@ msgstr ""
 "There are often situations where attributes need to be loaded that are "
 "not directly related to the entity but are contextual."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:199
+#: ../../general/Data_API/ECOS_Records/attributes.rst:201
 msgid "Пример таких атрибутов:"
 msgstr "Examples of such attributes:"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:201
+#: ../../general/Data_API/ECOS_Records/attributes.rst:203
 msgid "**Текущий пользователь**"
 msgstr "**Current user**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:202
+#: ../../general/Data_API/ECOS_Records/attributes.rst:204
 msgid "**Текущая дата**"
 msgstr "**Current date**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:204
+#: ../../general/Data_API/ECOS_Records/attributes.rst:206
 msgid ""
 "Для доступа к таким атрибутам при запросе данных к имени атрибута в "
 "начале добавляется знак **\"$\"**."
@@ -542,7 +548,7 @@ msgstr ""
 "To access such attributes when querying data, a **\"$\"** sign is "
 "prepended to the attribute name."
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:206
+#: ../../general/Data_API/ECOS_Records/attributes.rst:208
 msgid ""
 "Т.о. если нам нужно получить имя текущего пользователя, мы можем "
 "загрузить следующий атрибут::"
@@ -550,35 +556,35 @@ msgstr ""
 "So, if we need to get the current user's name, we can load the following "
 "attribute::"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:210
+#: ../../general/Data_API/ECOS_Records/attributes.rst:212
 msgid "Если нам нужно получить текущую дату и отформатировать её::"
 msgstr "If we need to get the current date and format it::"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:214
+#: ../../general/Data_API/ECOS_Records/attributes.rst:216
 msgid "Список контекстных атрибутов, которые доступны во всех источниках:"
 msgstr "List of context attributes available in all sources:"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:221
+#: ../../general/Data_API/ECOS_Records/attributes.rst:223
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:223
+#: ../../general/Data_API/ECOS_Records/attributes.rst:225
 msgid "**user**"
 msgstr "**user**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:224
+#: ../../general/Data_API/ECOS_Records/attributes.rst:226
 msgid "Текущий пользователь"
 msgstr "Current user"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:225
+#: ../../general/Data_API/ECOS_Records/attributes.rst:227
 msgid "**now**"
 msgstr "**now**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:226
+#: ../../general/Data_API/ECOS_Records/attributes.rst:228
 msgid "Текущая дата"
 msgstr "Current date"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:227
+#: ../../general/Data_API/ECOS_Records/attributes.rst:229
 msgid "**auth**"
 msgstr "**auth**"
 
@@ -590,39 +596,39 @@ msgstr ""
 "Authentication of the current user. This attribute can be used to check "
 "whether the user is a member of a group or a global role:"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:235
+#: ../../general/Data_API/ECOS_Records/attributes.rst:237
 msgid "**str**"
 msgstr "**str**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:236
+#: ../../general/Data_API/ECOS_Records/attributes.rst:238
 msgid "Атрибут для указания константного строкового значения"
 msgstr "Attribute for specifying a constant string value"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:237
+#: ../../general/Data_API/ECOS_Records/attributes.rst:239
 msgid "**ref**"
 msgstr "**ref**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:238
+#: ../../general/Data_API/ECOS_Records/attributes.rst:240
 msgid "Атрибут для указания ссылки на другую сущность"
 msgstr "Attribute for specifying a reference to another entity"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:239
+#: ../../general/Data_API/ECOS_Records/attributes.rst:241
 msgid "**appName**"
 msgstr "**appName**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:240
+#: ../../general/Data_API/ECOS_Records/attributes.rst:242
 msgid "Имя текущего приложения"
 msgstr "Name of the current application"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:241
+#: ../../general/Data_API/ECOS_Records/attributes.rst:243
 msgid "**appInstanceId**"
 msgstr "**appInstanceId**"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:242
+#: ../../general/Data_API/ECOS_Records/attributes.rst:244
 msgid "Идентификатор инстанса текущего приложения"
 msgstr "Identifier of the current application instance"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:244
+#: ../../general/Data_API/ECOS_Records/attributes.rst:246
 msgid ""
 "Если в серверном коде нужно расширить доступный список контекстных "
 "атрибутов, то работу с RecordsService нужно выполнять следующим образом::"
@@ -630,7 +636,7 @@ msgstr ""
 "If the available list of context attributes needs to be extended in "
 "server-side code, RecordsService should be used as follows::"
 
-#: ../../general/Data_API/ECOS_Records/attributes.rst:253
+#: ../../general/Data_API/ECOS_Records/attributes.rst:255
 msgid ""
 "В качестве значений для контекстных атрибутов могут быть EntityRef'ы (для"
 " доступа к другим сущностям) или значения любых других типов."
@@ -696,3 +702,39 @@ msgstr ""
 #~ msgid "**now** - Текущая дата"
 #~ msgstr "**now** — Current date"
 
+#~ msgid "Количество аргументов не ограничено. Аргументы перебираются по очереди"
+#~ msgstr "The number of arguments is unlimited. Arguments are evaluated in order"
+
+#~ msgid ""
+#~ "и если он не null (не является "
+#~ "null и не вычислился через \"a:\" "
+#~ "в null), то результат сразу "
+#~ "возвращается."
+#~ msgstr ""
+#~ "and if it is not null (neither "
+#~ "directly null nor resolved to null "
+#~ "via \"a:\"), the result is returned "
+#~ "immediately."
+
+#~ msgid ""
+#~ "Так как автогруппировка может быть "
+#~ "нежелательна в ряде случаев, то в "
+#~ "системе предусмотрен флаг для её "
+#~ "отключения **ecos.webapp.records.queryAutoGroupingEnabled**"
+#~ msgstr ""
+#~ "Since auto-grouping may be undesirable"
+#~ " in some cases, a flag is "
+#~ "available to disable it: "
+#~ "**ecos.webapp.records.queryAutoGroupingEnabled**."
+
+#~ msgid ""
+#~ "Если этот флаг выставлен в false и"
+#~ " целевой Records DAO не поддерживает "
+#~ "группировку, то все запросы с непустым"
+#~ " groupBy будут возвращать пустой список."
+#~ msgstr ""
+#~ "If this flag is set to false "
+#~ "and the target Records DAO does "
+#~ "not support grouping, all queries with"
+#~ " a non-empty groupBy will return "
+#~ "an empty list."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,13 +28,11 @@ msgstr "Contents"
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:9
 msgid ""
-"**Citeck WebAPI** - основной низкоуровневый способ общения микросервисов "
+"**Citeck WebAPI** — основной низкоуровневый способ общения микросервисов "
 "между собой в пределах Citeck. Общение происходит по схеме **Запрос → "
-"Ответ** синхронно."
-msgstr ""
-"**Citeck WebAPI** is the primary low-level communication method between "
-"microservices within Citeck. Communication follows the **Request → "
-"Response** pattern synchronously."
+"Ответ**. Клиентский API предоставляет асинхронные методы с ``Promise`` и "
+"синхронные методы, ожидающие результат."
+msgstr "**Citeck WebAPI** is the main low-level communication mechanism between Citeck microservices. Communication follows the **Request → Response** pattern. The client API provides asynchronous methods using ``Promise`` and synchronous methods that wait for the result."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:11
 msgid ""
@@ -70,16 +68,12 @@ msgstr "1"
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:26
 msgid ""
-"Единообразная обработка ошибок. WebAPI берёт на себя сбор информации о "
-"возникшей ошибке и отправку этой информации вызывающей стороне. "
-"Пользователь WebAPI-клиента получит исключение ``EcosWebException`` и "
-"либо обработает его, либо оно отправится следующему приложению в иерархии"
-" вызовов."
-msgstr ""
-"Uniform error handling. WebAPI takes care of collecting information about"
-" an error and sending it to the calling party. The WebAPI client user "
-"will receive an EcosWebException and either handle it, or it will be "
-"passed to the next application in the call hierarchy."
+"Единообразная обработка ошибок executor'а до начала записи ответа: WebAPI"
+" формирует ответ со статусом ``ERROR`` и данными ``EcosWebException``, а "
+"клиент завершает ``Promise`` с ошибкой. Ошибки после начала записи "
+"ответа, сбои транспорта и раннего разбора запроса могут не позволить "
+"передать структурированное описание ошибки."
+msgstr "Consistent handling of executor errors before the response starts: WebAPI creates a response with the ``ERROR`` status and ``EcosWebException`` data, and the client rejects the ``Promise``. Errors after the response has started, transport failures and early request parsing failures may prevent structured error details from being sent."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:27
 msgid "2"
@@ -87,14 +81,13 @@ msgstr "2"
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:28
 msgid ""
-"Возможность единообразно отправлять запросы любых размеров (от байтов до "
-"гигабайтов) без опасений, что на какой-либо из сторон закончится "
-"оперативная память. Потоковая обработка позволяет пропускать через WebAPI"
-" запросы любых размеров."
-msgstr ""
-"The ability to uniformly send requests of any size (from bytes to "
-"gigabytes) without worrying that either side will run out of memory. "
-"Stream processing allows requests of any size to pass through WebAPI."
+"Потоковый доступ к телу запроса и ответа позволяет обрабатывать большие "
+"объёмы данных без загрузки всего тела в память. Для этого доступны "
+"``getInputStream()``, ``writeStream()`` и ``getOutputStream()``. Методы "
+"``readAsBytes()`` и ``readAsText()`` читают тело целиком; метаданные при "
+"отправке также собираются в памяти. Допустимый размер сообщения зависит "
+"от ресурсов приложения и ограничений транспорта."
+msgstr "Streaming access to request and response bodies allows large amounts of data to be processed without loading the entire body into memory. Use ``getInputStream()``, ``writeStream()`` and ``getOutputStream()`` for this. The ``readAsBytes()`` and ``readAsText()`` methods read the entire body; metadata is also assembled in memory when sending. The maximum message size depends on application resources and transport limits."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:29
 msgid "3"
@@ -146,8 +139,10 @@ msgid "Локаль из текущего контекста прокидыва�
 msgstr "Locale from the current context is propagated to the receiving side."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:37
-msgid "Таймзона из текущего контекста прокидывается на принимающую сторону."
-msgstr "Timezone from the current context is propagated to the receiving side."
+msgid ""
+"Часовое смещение относительно UTC из текущего контекста прокидывается на "
+"принимающую сторону."
+msgstr "The UTC offset from the current context is propagated to the receiving side."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:38
 msgid ""
@@ -166,31 +161,23 @@ msgstr ""
 "level."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:40
-msgid ""
-"Информация о тенанте из текущего контекста прокидывается на принимающую "
-"сторону."
-msgstr ""
-"Tenant information from the current context is propagated to the "
-"receiving side."
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:41
 msgid "5"
 msgstr "5"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:42
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:41
 msgid ""
-"WebAPI позволяет сжимать сообщения, что при сетевых задержках увеличивает"
-" скорость передачи данных."
-msgstr ""
-"WebAPI supports message compression, which increases data transfer speed "
-"in the presence of network latency."
+"WebAPI позволяет независимо настраивать сжатие всего сообщения, "
+"метаданных и тела. Сжатие может уменьшить объём передаваемых данных; "
+"выигрыш во времени зависит от данных, канала связи и затрат на сжатие. По"
+" умолчанию сжатие отключено."
+msgstr "WebAPI allows compression of the entire message, metadata and body to be configured independently. Compression may reduce the amount of transmitted data; time savings depend on the data, connection and compression overhead. Compression is disabled by default."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:43
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:297
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:42
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:340
 msgid "6"
 msgstr "6"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:44
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:43
 msgid ""
 "WebAPI позволяет в библиотеках реализовывать клиент-серверное общение "
 "между приложениями без добавления тяжёлых зависимостей вроде Spring MVC "
@@ -200,12 +187,12 @@ msgstr ""
 "applications without adding heavy dependencies such as Spring MVC or "
 "various HTTP clients."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:45
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:299
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:44
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:342
 msgid "7"
 msgstr "7"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:46
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:45
 msgid ""
 "Версионирование API позволяет ещё до выполнения запроса узнать, "
 "поддерживается ли он на принимающей стороне, включая диапазон "
@@ -223,86 +210,143 @@ msgstr ""
 "the maximum supported version (2). This mechanism allows the product to "
 "evolve without breaking API compatibility."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:47
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:46
 msgid "8"
 msgstr "8"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:48
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:47
 msgid ""
-"Для некоторых запросов (например, коммит транзакции) нужна максимальная "
-"скорость — малейшая задержка может нарушить целостность данных в системе."
-" В этом случае использование высокоуровневых API не лучший вариант."
-msgstr ""
-"For some requests (transaction commit), maximum speed is required, and "
-"the slightest delay can compromise data integrity in the system. In this "
-"case, using high-level APIs is not the best option."
+"Асинхронность на уровне API. Методы ``execute()`` и ``executeJ()`` "
+"возвращают ``Promise``. Вызов ``get()`` ожидает завершения и блокирует "
+"текущий поток. Методы ``executeSync()`` и ``executeSyncJ()`` возвращают "
+"результат после ожидания ответа."
+msgstr "Asynchronous API. The ``execute()`` and ``executeJ()`` methods return a ``Promise``. Calling ``get()`` waits for completion and blocks the current thread. The ``executeSync()`` and ``executeSyncJ()`` methods return the result after waiting for the response."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:49
-msgid "9"
-msgstr "9"
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:50
-msgid ""
-"Асинхронность на уровне API. Все запросы через Citeck WebAPI возвращают "
-"``Promise``, который можно использовать для асинхронных оптимизаций со "
-"стороны клиента."
-msgstr ""
-"Asynchrony at the API level. All requests through Citeck WebAPI return a "
-"Promise, which can be used for asynchronous optimizations on the client "
-"side."
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:52
 msgid "**Пример использования со стороны клиента:**"
 msgstr "**Example of client-side usage:**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:54
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:74
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:51
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:75
 msgid "Java:"
 msgstr "Java:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:72
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:71
+msgid ""
+"Этот пример синхронно ожидает результат в ``get()`` и читает тело ответа "
+"целиком. В текущей реализации ``writeText()`` автоматически выбирает "
+"формат ``TEXT_UTF8``, если запись тела ещё не началась. При использовании"
+" ``writeStream()`` закрывать переданный входной поток должен вызывающий "
+"код."
+msgstr "This example waits synchronously for the result in ``get()`` and reads the entire response body. In the current implementation, ``writeText()`` automatically selects ``TEXT_UTF8`` if body writing has not started. When using ``writeStream()``, the calling code must close the supplied input stream."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:73
 msgid "**Пример использования со стороны сервера:**"
 msgstr "**Example of server-side usage:**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:108
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:111
 msgid "Версионирование API"
 msgstr "API Versioning"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:110
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:113
 msgid ""
-"Микросервис при инициализации собирает информацию обо всех "
-"зарегистрированных executor'ах и записывает эту информацию в Zookeeper."
-msgstr ""
-"During initialization, the microservice collects information about all "
-"registered executors and writes this information to Zookeeper."
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:112
-msgid ""
-"Микросервис, который хочет отправить запрос достает информацию из "
-"Zookeeper и предоставляет возможность отправителю скорректировать свое "
-"поведение на основе поддерживаемости определенного эндпоинта."
-msgstr ""
-"The microservice that wants to send a request retrieves information from "
-"Zookeeper and provides the sender with the ability to adjust its behavior"
-" based on the support status of a specific endpoint."
+"Микросервис публикует сведения о зарегистрированных executor'ах и "
+"диапазонах их версий через discovery-сервис. В текущей реализации "
+"сведения хранятся в ZooKeeper и доступны через кеш discovery-сервиса."
+msgstr "The microservice publishes information about registered executors and their version ranges through the discovery service. In the current implementation, this information is stored in ZooKeeper and accessed through the discovery service cache."
 
 #: ../../general/Core_mechanisms/ECOS_WebAPI.rst:115
+msgid ""
+"Метод ``getApiVersion(targetApp, path, maxVersion)`` использует эти "
+"сведения и возвращает максимальную совместимую версию executor'а, не "
+"превышающую ``maxVersion``. Перед отправкой запроса необходимо обработать"
+" отрицательные результаты:"
+msgstr "The ``getApiVersion(targetApp, path, maxVersion)`` method uses this information and returns the highest compatible executor version that does not exceed ``maxVersion``. Handle negative results before sending a request:"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:122
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:335
+msgid "Значение"
+msgstr "Meaning"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:123
+msgid "Константа ``EcosWebClientApi``"
+msgstr "``EcosWebClientApi`` constant"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:124
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:178
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:235
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:258
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:125
+msgid "``-1``"
+msgstr "``-1``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:126
+msgid "``AV_APP_NOT_AVAILABLE``"
+msgstr "``AV_APP_NOT_AVAILABLE``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:127
+msgid "Приложение недоступно."
+msgstr "The application is unavailable."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:128
+msgid "``-2``"
+msgstr "``-2``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:129
+msgid "``AV_PATH_NOT_SUPPORTED``"
+msgstr "``AV_PATH_NOT_SUPPORTED``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:130
+msgid "Путь не поддерживается приложением."
+msgstr "The application does not support this path."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:131
+msgid "``-3``"
+msgstr "``-3``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:132
+msgid "``AV_VERSION_NOT_SUPPORTED``"
+msgstr "``AV_VERSION_NOT_SUPPORTED``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:133
+msgid "Минимальная версия executor'а выше максимальной версии клиента."
+msgstr "The minimum executor version is higher than the maximum client version."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:135
+msgid ""
+"Версия запроса в клиентском builder'е по умолчанию равна ``0``; диапазон "
+"executor'а по умолчанию — от ``0`` до ``0``. Метод ``version()`` можно "
+"опустить, если используется нулевая версия."
+msgstr "The request version in the client builder defaults to ``0``; the executor range defaults to ``0``–``0``. The ``version()`` method can be omitted when using version zero."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:137
+msgid ""
+"Версия executor'а и версия транспортного протокола Citeck WebAPI — разные"
+" значения. Транспорт поддерживает версии ``0`` и ``1``; клиент выбирает "
+"меньшую из текущей версии протокола (``1``) и версии, опубликованной "
+"целевым приложением."
+msgstr "The executor version and the Citeck WebAPI transport protocol version are different values. The transport supports versions ``0`` and ``1``; the client selects the lower of the current protocol version (``1``) and the version published by the target application."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:140
 msgid "Описание запроса и ответа"
 msgstr "Request and Response Description"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:117
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:142
 msgid "Запрос формируется по следующему паттерну:"
 msgstr "The request is formed according to the following pattern:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:119
-msgid "Версия Citeck WebAPI (целое число);"
-msgstr "Citeck WebAPI version (integer);"
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:144
+msgid "Версия транспортного протокола Citeck WebAPI (целое число);"
+msgstr "Citeck WebAPI transport protocol version (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:121
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:146
 msgid "Тип сжатия всего последующего содержимого (целое число);"
 msgstr "Compression type for all subsequent content (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:123
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:148
 msgid ""
 "Размер сжатых метаданных в байтах включая тип метаданных и тип сжатия "
 "(целое число);"
@@ -310,126 +354,123 @@ msgstr ""
 "Size of compressed metadata in bytes including metadata type and "
 "compression type (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:125
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:150
 msgid "Тип метаданных (целое число);"
 msgstr "Metadata type (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:127
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:152
 msgid "Тип сжатия метаданных (целое число);"
 msgstr "Metadata compression type (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:129
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:154
 msgid "Метаданные (зависит от типа метаданных (4))"
 msgstr "Metadata (depends on metadata type (4));"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:131
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:156
 msgid "Тип тела запроса (целое число)"
 msgstr "Request body type (integer);"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:133
-msgid "Тип сжатия тела запроса (целое число)"
-msgstr "Request body compression type (integer);"
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:158
+msgid ""
+"Тип сжатия тела запроса (целое число; отсутствует, если тип тела — "
+"``NONE``)"
+msgstr "Request body compression type (integer; absent if the body type is ``NONE``)"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:135
-msgid "Тело запроса (зависит от типа тела запроса (7))"
-msgstr "Request body (depends on body type (7))."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:160
+msgid "Тело запроса (зависит от типа тела запроса (7); отсутствует при ``NONE``)"
+msgstr "Request body (depends on request body type (7); absent for ``NONE``)"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:137
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:162
 msgid ""
 "Ответ формируется по тем же принципам, что и запрос, но без указания "
-"версии Citeck WebAPI (1)"
-msgstr ""
-"The response is formed according to the same principles as the request, "
-"but without specifying the Citeck WebAPI version (1)."
+"версии транспортного протокола (1)."
+msgstr "The response follows the same principles as the request, but omits the transport protocol version (1)."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:140
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:165
 msgid "Структура метаданных запроса:"
 msgstr "Request metadata structure:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:144
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:190
-msgid "Имена полей не играют роли, если тип метаданных — массив."
-msgstr "Field names do not matter if the metadata type is an array."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:169
+msgid ""
+"В формате CBOR-массива поля определяются по позиции. Порядок строк "
+"таблицы ниже соответствует порядку элементов массива. Типы в таблице — "
+"типы Kotlin; особенности представления в потоке указаны в описаниях."
+msgstr "In the CBOR array format, fields are determined by position. The rows in the table below follow the order of array elements. The table lists Kotlin types; stream representation details are given in the descriptions."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:151
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:197
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:220
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:176
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:233
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:256
 msgid "Поле"
 msgstr "Field"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:152
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:198
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:221
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:177
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:234
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:257
 msgid "Тип"
 msgstr "Type"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:153
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:199
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:222
-msgid "Описание"
-msgstr "Description"
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:154
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:179
 msgid "``jwt``"
 msgstr "``jwt``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:155
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:158
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:170
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:180
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:183
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:195
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:213
 msgid "``String``"
 msgstr "``String``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:156
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:181
 msgid "JWT-токен с информацией о текущей аутентификации."
 msgstr "A JWT token with information about the current authentication."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:157
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:182
 msgid "``path``"
 msgstr "``path``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:159
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:184
 msgid "Путь для обращения к нужному executor'у."
 msgstr "The path used to address the required executor."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:160
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:185
 msgid "``version``"
 msgstr "``version``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:161
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:186
 msgid "``Int``"
 msgstr "``Int``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:162
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:187
 msgid "Версия запроса для executor'а."
 msgstr "The request version for the executor."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:163
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:200
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:188
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:236
 msgid "``headers``"
 msgstr "``headers``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:164
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:201
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:189
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:237
 msgid "``DataValue``"
 msgstr "``DataValue``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:165
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:202
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:190
 msgid "Заголовки запроса (произвольные структурированные данные)."
 msgstr "Request headers (arbitrary structured data)."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:166
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:206
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:191
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:242
 msgid "``routes``"
 msgstr "``routes``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:167
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:207
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:192
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:210
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:243
 msgid "``Map<String, String>``"
 msgstr "``Map<String, String>``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:168
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:208
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:193
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:244
 msgid ""
 "Роуты, которые следует использовать для внешних запросов. Ключ — имя "
 "приложения, значение — идентификатор инстанса приложения."
@@ -437,226 +478,297 @@ msgstr ""
 "Routes to be used for outgoing requests. The key is the application name,"
 " the value is the application instance identifier."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:169
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:194
 msgid "``tenant``"
 msgstr "``tenant``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:171
-msgid "Тенант, в рамках которого выполняется запрос."
-msgstr "The tenant within which the request is executed."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:196
+msgid ""
+"Поле тенанта. В текущей реализации клиент передаёт пустую строку; перенос"
+" тенанта из контекста не реализован."
+msgstr "Tenant field. In the current implementation, the client sends an empty string; propagating the tenant from the context is not implemented."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:172
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:197
 msgid "``tzUtcOffset``"
 msgstr "``tzUtcOffset``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:173
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:198
 msgid "``Duration``"
 msgstr "``Duration``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:174
-msgid "Часовое смещение относительно UTC."
-msgstr "The time zone offset relative to UTC."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:199
+msgid "Часовое смещение относительно UTC. В потоке передаётся целым числом минут."
+msgstr "UTC offset. Transmitted as an integer number of minutes."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:175
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:200
 msgid "``clientData``"
 msgstr "``clientData``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:176
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:201
 msgid "``ClientData``"
 msgstr "``ClientData``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:177
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:202
 msgid "Информация о клиенте (IP-адрес)."
 msgstr "Client information (IP address)."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:178
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:203
 msgid "``txnId``"
 msgstr "``txnId``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:179
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:204
 msgid "``TxnId``"
 msgstr "``TxnId``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:180
-msgid "Идентификатор транзакции."
-msgstr "The transaction identifier."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:205
+msgid "Идентификатор транзакции. В потоке передаётся строкой."
+msgstr "Transaction identifier. Transmitted as a string."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:181
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:206
 msgid "``locales``"
 msgstr "``locales``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:182
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:207
 msgid "``List<Locale>``"
 msgstr "``List<Locale>``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:183
-msgid "Список локалей."
-msgstr "The list of locales."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:208
+msgid "Список локалей. В потоке передаётся массивом языковых тегов."
+msgstr "Locale list. Transmitted as an array of language tags."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:186
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:209
+msgid "``micrometerScope``"
+msgstr "``micrometerScope``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:211
+msgid "Данные контекста наблюдаемости Micrometer."
+msgstr "Micrometer observability context data."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:212
+msgid "``sourceApp``"
+msgstr "``sourceApp``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:214
+msgid "Источник запроса в формате ``appName:appInstanceId``."
+msgstr "Request source in ``appName:appInstanceId`` format."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:215
+msgid "``txnNesting``"
+msgstr "``txnNesting``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:216
+msgid "``TxnNesting?``"
+msgstr "``TxnNesting?``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:217
+msgid ""
+"Данные вложенности транзакции: массив ``[parentId, depth]``, где "
+"идентификатор родительской транзакции передаётся строкой, глубина — целым"
+" числом. При ``null`` элемент не записывается."
+msgstr "Transaction nesting data: the ``[parentId, depth]`` array, where the parent transaction identifier is a string and depth is an integer. If ``null``, the element is omitted."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:219
+msgid ""
+"Массив содержит 12 элементов без ``txnNesting`` или 13 элементов при его "
+"наличии."
+msgstr "The array contains 12 elements without ``txnNesting``, or 13 elements if it is present."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:222
 msgid "Структура метаданных ответа:"
 msgstr "Response metadata structure:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:203
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:226
+msgid "Имена полей не играют роли, если тип метаданных — массив."
+msgstr "Field names do not matter if the metadata type is an array."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:238
+msgid "Заголовки ответа (произвольные структурированные данные)."
+msgstr "Response headers (arbitrary structured data)."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:239
 msgid "``status``"
 msgstr "``status``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:204
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:240
 msgid "``EcosWebRespStatus``"
 msgstr "``EcosWebRespStatus``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:205
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:241
 msgid "Статус выполнения запроса. Поддерживается ``SUCCESS`` и ``ERROR``."
 msgstr "The request execution status. ``SUCCESS`` and ``ERROR`` are supported."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:209
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:245
 msgid "``txnData``"
 msgstr "``txnData``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:210
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:246
 msgid "``TxnRespData``"
 msgstr "``TxnRespData``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:211
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:247
 msgid "Транзакционные данные (структура — ниже)."
 msgstr "Transactional data (structure below)."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:213
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:249
 msgid "Структура ``TxnRespData``:"
 msgstr "``TxnRespData`` structure:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:223
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:259
 msgid "``actions``"
 msgstr "``actions``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:224
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:260
 msgid "``Map<TxnActionType, List<TxnActionRef>>``"
 msgstr "``Map<TxnActionType, List<TxnActionRef>>``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:225
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:261
 msgid ""
-"Транзакционные действия, которые нужно выполнить перед или после "
-"завершения транзакции."
-msgstr ""
-"Transactional actions that need to be performed before or after the "
-"transaction completes."
+"Транзакционные действия, сгруппированные по типу. Клиент добавляет их в "
+"текущую транзакцию; порядок исполнения определяется механизмом "
+"транзакций."
+msgstr "Transactional actions grouped by type. The client adds them to the current transaction; their execution order is determined by the transaction mechanism."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:226
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:262
 msgid "``remoteTxnApps``"
 msgstr "``remoteTxnApps``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:227
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:263
 msgid "``List<String>``"
 msgstr "``List<String>``"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:228
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:264
 msgid ""
-"Приложения, которые нужно включить в качестве ресурсов в транзакцию. "
-"Другими словами — приложения, которые ожидают коммита или ролбэка в "
-"рамках текущей транзакции."
-msgstr ""
-"Applications that need to be included as resources in the transaction. In"
-" other words, applications waiting for a commit or rollback within the "
-"current transaction."
+"Устаревшее поле для совместимости: список приложений — участников "
+"транзакции. Сервер продолжает заполнять его вместе с ``txnApps``. Если "
+"ответ содержит только это поле, клиент преобразует список в ``txnApps`` с"
+" пустыми наборами XID."
+msgstr "Legacy compatibility field: a list of applications participating in the transaction. The server continues to populate it alongside ``txnApps``. If a response contains only this field, the client converts the list to ``txnApps`` with empty XID sets."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:231
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:265
+msgid "``txnApps``"
+msgstr "``txnApps``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:266
+msgid "``Map<String, Set<EcosXid>>``"
+msgstr "``Map<String, Set<EcosXid>>``"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:267
+msgid ""
+"Соответствие приложений наборам идентификаторов транзакционных ветвей "
+"(XID). Клиент регистрирует их в текущей транзакции."
+msgstr "Mapping of applications to sets of transaction branch identifiers (XIDs). The client registers them in the current transaction."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:270
 msgid "Поддерживаемые типы сжатия:"
 msgstr "Supported compression types:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:238
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:277
 msgid "ID типа сжатия"
 msgstr "Compression type ID"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:239
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:278
 msgid "Тип сжатия"
 msgstr "Compression type"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:240
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:255
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:268
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:279
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:298
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:311
 msgid "**0**"
 msgstr "**0**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:241
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:280
 msgid "Без сжатия"
 msgstr "No compression"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:242
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:270
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:281
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:313
 msgid "**1**"
 msgstr "**1**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:243
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:282
 msgid "ZSTD (Zstandard)"
 msgstr "ZSTD (Zstandard)"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:246
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:283
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:315
+msgid "**2**"
+msgstr "**2**"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:284
+msgid "LZ4"
+msgstr "LZ4"
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:286
+msgid ""
+"LZ4 используется начиная с версии ``1`` транспортного протокола. Если в "
+"настройках выбран LZ4, а используется протокол версии ``0``, применяется "
+"режим без сжатия. Это ограничение относится к версии протокола, а не к "
+"версии executor'а."
+msgstr "LZ4 is used from transport protocol version ``1`` onwards. If LZ4 is selected in the settings but protocol version ``0`` is used, compression is disabled. This restriction applies to the protocol version, not the executor version."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:289
 msgid "Поддерживаемые типы метаданных:"
 msgstr "Supported metadata types:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:253
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:296
 msgid "ID типа метаданных"
 msgstr "Metadata type ID"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:254
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:297
 msgid "Тип метаданных"
 msgstr "Metadata type"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:256
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:299
 msgid "CBOR массив с данными, где имя поля определяется по порядковому индексу."
 msgstr ""
 "CBOR array with data, where the field name is determined by the ordinal "
 "index."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:259
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:302
 msgid "Поддерживаемые типы тела:"
 msgstr "Supported body types:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:266
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:309
 msgid "ID типа тела"
 msgstr "Body type ID"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:267
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:310
 msgid "Тип тела"
 msgstr "Body type"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:269
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:312
 msgid "NONE — тело отсутствует"
 msgstr "NONE — no body"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:271
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:314
 msgid "BINARY - бинарные данные"
 msgstr "BINARY — binary data"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:272
-msgid "**2**"
-msgstr "**2**"
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:273
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:316
 msgid "CBOR - структурированные данные в формате CBOR"
 msgstr "CBOR — structured data in CBOR format"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:274
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:317
 msgid "**3**"
 msgstr "**3**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:275
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:318
 msgid "JSON - структурированные данные в формате JSON"
 msgstr "JSON — structured data in JSON format"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:276
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:319
 msgid "**4**"
 msgstr "**4**"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:277
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:320
 msgid "TEXT_UTF8 - текстовые данные"
 msgstr "TEXT_UTF8 — text data"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:280
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:323
 msgid "Бинарное представление целого числа в Citeck WebAPI:"
 msgstr "Binary representation of an integer in Citeck WebAPI:"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:282
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:325
 msgid ""
 "Если число в диапазоне от 0 до 127 включительно, то мы его записываем как"
 " есть в виде одного байта."
@@ -664,7 +776,7 @@ msgstr ""
 "If the number is in the range from 0 to 127 inclusive, it is written as-"
 "is in a single byte."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:284
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:327
 msgid ""
 "Если число не в диапазоне от 0 до 127, то мы первый байт формируем "
 "следующим образом (по битам):"
@@ -672,19 +784,15 @@ msgstr ""
 "If the number is not in the range from 0 to 127, the first byte is formed"
 " as follows (bit by bit):"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:291
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:334
 msgid "Биты"
 msgstr "Bits"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:292
-msgid "Значение"
-msgstr "Meaning"
-
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:293
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:336
 msgid "0–2"
 msgstr "0–2"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:294
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:337
 msgid ""
 "Кодируют количество байт, в которых закодировано число. Для кодирования "
 "берётся количество байт (например, 2) и вычитается единица (получаем 1). "
@@ -694,37 +802,45 @@ msgstr ""
 "the number of bytes (e.g., 2) is taken and one is subtracted (giving 1). "
 "Thus, ``001`` means the number is encoded in two bytes."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:295
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:338
 msgid "3–5"
 msgstr "3–5"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:296
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:339
 msgid "Не используются."
 msgstr "Not used."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:298
-msgid "Определяет знак «минус». Если равен 1, число отрицательное."
-msgstr "Defines the minus sign. If it is 1, the number is negative."
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:341
+msgid ""
+"Определяет знак «минус». Если равен 1, число отрицательное. Особый случай"
+" ``Int.MIN_VALUE`` описан ниже."
+msgstr "Defines the minus sign. If it is 1, the number is negative. The special case ``Int.MIN_VALUE`` is described below."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:300
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:343
 msgid "Определяет, что число не входит в диапазон от 0 до 127."
 msgstr "Indicates that the number is outside the range from 0 to 127."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:302
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:345
 msgid ""
-"Далее на основе битов 0-2 мы получаем число байт, которые нужно "
-"прочитать, читаем их и преобразуем в исходное число. Если бит 6 выставлен"
-" в 1, то домножаем результат на -1."
-msgstr ""
-"Based on bits 0–2, we get the number of bytes to read, read them, and "
-"convert them to the original number. If bit 6 is set to 1, the result is "
-"multiplied by -1."
+"Далее на основе битов 0–2 определяется количество байт полезной части. "
+"Байты записываются от старшего к младшему (big-endian); реализация для "
+"``Int`` допускает от 1 до 4 байт. Если бит 6 выставлен в 1, результат "
+"умножается на -1."
+msgstr "Bits 0–2 then determine the number of payload bytes. Bytes are written from most significant to least significant (big-endian); the ``Int`` implementation supports 1 to 4 bytes. If bit 6 is set to 1, the result is multiplied by -1."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:305
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:347
+msgid ""
+"Особый случай — ``Int.MIN_VALUE`` (``-2147483648``): бит знака в "
+"заголовке не устанавливается, а полезная часть содержит четыре байта ``80"
+" 00 00 00``. При чтении в 32-битный накопитель они восстанавливают "
+"отрицательное значение."
+msgstr "The special case is ``Int.MIN_VALUE`` (``-2147483648``): the sign bit in the header is not set, and the payload contains four bytes, ``80 00 00 00``. When read into a 32-bit accumulator, they restore the negative value."
+
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:350
 msgid "Транспорт"
 msgstr "Transport"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:307
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:352
 msgid ""
 "В качестве транспорта для Citeck WebAPI на данный момент используется "
 "HTTP, но в будущем возможны и другие протоколы."
@@ -732,7 +848,7 @@ msgstr ""
 "HTTP is currently used as the transport for Citeck WebAPI, but other "
 "protocols may be supported in the future."
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:310
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:355
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -740,7 +856,7 @@ msgstr "FAQ"
 msgid "Как связан Records API и Citeck WebAPI?"
 msgstr "How are Records API and Citeck WebAPI related?"
 
-#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:315
+#: ../../general/Core_mechanisms/ECOS_WebAPI.rst:360
 msgid ""
 "RecordsAPI использует Citeck WebAPI в качестве транспорта для общения "
 "между микросервисами."
@@ -748,3 +864,154 @@ msgstr ""
 "RecordsAPI uses Citeck WebAPI as transport for communication between "
 "microservices."
 
+#~ msgid ""
+#~ "Единообразная обработка ошибок. WebAPI берёт"
+#~ " на себя сбор информации о возникшей"
+#~ " ошибке и отправку этой информации "
+#~ "вызывающей стороне. Пользователь WebAPI-клиента "
+#~ "получит исключение ``EcosWebException`` и либо"
+#~ " обработает его, либо оно отправится "
+#~ "следующему приложению в иерархии вызовов."
+#~ msgstr ""
+#~ "Uniform error handling. WebAPI takes "
+#~ "care of collecting information about an"
+#~ " error and sending it to the "
+#~ "calling party. The WebAPI client user"
+#~ " will receive an EcosWebException and "
+#~ "either handle it, or it will be"
+#~ " passed to the next application in"
+#~ " the call hierarchy."
+
+#~ msgid ""
+#~ "Возможность единообразно отправлять запросы "
+#~ "любых размеров (от байтов до гигабайтов)"
+#~ " без опасений, что на какой-либо из"
+#~ " сторон закончится оперативная память. "
+#~ "Потоковая обработка позволяет пропускать через"
+#~ " WebAPI запросы любых размеров."
+#~ msgstr ""
+#~ "The ability to uniformly send requests"
+#~ " of any size (from bytes to "
+#~ "gigabytes) without worrying that either "
+#~ "side will run out of memory. "
+#~ "Stream processing allows requests of any"
+#~ " size to pass through WebAPI."
+
+#~ msgid "Таймзона из текущего контекста прокидывается на принимающую сторону."
+#~ msgstr "Timezone from the current context is propagated to the receiving side."
+
+#~ msgid ""
+#~ "Информация о тенанте из текущего "
+#~ "контекста прокидывается на принимающую "
+#~ "сторону."
+#~ msgstr ""
+#~ "Tenant information from the current "
+#~ "context is propagated to the receiving"
+#~ " side."
+
+#~ msgid ""
+#~ "WebAPI позволяет сжимать сообщения, что "
+#~ "при сетевых задержках увеличивает скорость "
+#~ "передачи данных."
+#~ msgstr ""
+#~ "WebAPI supports message compression, which "
+#~ "increases data transfer speed in the "
+#~ "presence of network latency."
+
+#~ msgid ""
+#~ "Для некоторых запросов (например, коммит "
+#~ "транзакции) нужна максимальная скорость — "
+#~ "малейшая задержка может нарушить целостность"
+#~ " данных в системе. В этом случае "
+#~ "использование высокоуровневых API не лучший"
+#~ " вариант."
+#~ msgstr ""
+#~ "For some requests (transaction commit), "
+#~ "maximum speed is required, and the "
+#~ "slightest delay can compromise data "
+#~ "integrity in the system. In this "
+#~ "case, using high-level APIs is not"
+#~ " the best option."
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid ""
+#~ "Асинхронность на уровне API. Все запросы"
+#~ " через Citeck WebAPI возвращают "
+#~ "``Promise``, который можно использовать для"
+#~ " асинхронных оптимизаций со стороны "
+#~ "клиента."
+#~ msgstr ""
+#~ "Asynchrony at the API level. All "
+#~ "requests through Citeck WebAPI return a"
+#~ " Promise, which can be used for "
+#~ "asynchronous optimizations on the client "
+#~ "side."
+
+#~ msgid ""
+#~ "Микросервис при инициализации собирает "
+#~ "информацию обо всех зарегистрированных "
+#~ "executor'ах и записывает эту информацию "
+#~ "в Zookeeper."
+#~ msgstr ""
+#~ "During initialization, the microservice "
+#~ "collects information about all registered "
+#~ "executors and writes this information to"
+#~ " Zookeeper."
+
+#~ msgid ""
+#~ "Микросервис, который хочет отправить запрос"
+#~ " достает информацию из Zookeeper и "
+#~ "предоставляет возможность отправителю "
+#~ "скорректировать свое поведение на основе "
+#~ "поддерживаемости определенного эндпоинта."
+#~ msgstr ""
+#~ "The microservice that wants to send "
+#~ "a request retrieves information from "
+#~ "Zookeeper and provides the sender with"
+#~ " the ability to adjust its behavior"
+#~ " based on the support status of "
+#~ "a specific endpoint."
+
+#~ msgid "Тенант, в рамках которого выполняется запрос."
+#~ msgstr "The tenant within which the request is executed."
+
+#~ msgid "Список локалей."
+#~ msgstr "The list of locales."
+
+#~ msgid ""
+#~ "Транзакционные действия, которые нужно "
+#~ "выполнить перед или после завершения "
+#~ "транзакции."
+#~ msgstr ""
+#~ "Transactional actions that need to be"
+#~ " performed before or after the "
+#~ "transaction completes."
+
+#~ msgid ""
+#~ "Приложения, которые нужно включить в "
+#~ "качестве ресурсов в транзакцию. Другими "
+#~ "словами — приложения, которые ожидают "
+#~ "коммита или ролбэка в рамках текущей "
+#~ "транзакции."
+#~ msgstr ""
+#~ "Applications that need to be included"
+#~ " as resources in the transaction. In"
+#~ " other words, applications waiting for "
+#~ "a commit or rollback within the "
+#~ "current transaction."
+
+#~ msgid ""
+#~ "Далее на основе битов 0-2 мы "
+#~ "получаем число байт, которые нужно "
+#~ "прочитать, читаем их и преобразуем в "
+#~ "исходное число. Если бит 6 выставлен "
+#~ "в 1, то домножаем результат на -1."
+#~ msgstr ""
+#~ "Based on bits 0–2, we get the "
+#~ "number of bytes to read, read "
+#~ "them, and convert them to the "
+#~ "original number. If bit 6 is set"
+#~ " to 1, the result is multiplied "
+#~ "by -1."

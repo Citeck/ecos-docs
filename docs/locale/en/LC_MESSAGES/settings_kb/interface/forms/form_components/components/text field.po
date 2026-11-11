@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -79,89 +79,128 @@ msgstr "Raw JSON"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
 #: field.rst:37
-msgid "В текстовое поле вводим данные в формате JSON-строки:"
-msgstr "Enter data in JSON string format into the text field:"
+msgid ""
+"В текстовое поле вводим JSON-массив без дополнительного преобразования в "
+"строковый литерал:"
+msgstr "Enter a JSON array in the text field without converting it to an additional string literal:"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
 #: field.rst:43
 msgid ""
-"Для отображения ключей уже добавленных на форме компонентов, расширил "
-"базовый компонент форм, поле key. Теперь, при добавлении на форму нового "
-"компонента ( или при редактировании), в "
-"``instance.root.options._webform`` хранится ссылка на форму, из которой "
-"можно достать список добавленных компонентов, например:"
-msgstr ""
-"To display keys of components already added to the form, the base form "
-"component's key field has been extended. Now, when adding a new component"
-" to the form (or when editing), a reference to the form is stored in "
-"``instance.root.options._webform``, from which the list of added "
-"components can be retrieved, for example:"
+"Для асинхронного источника **Custom** переменной ``values`` нужно "
+"присвоить Promise, возвращающий массив строк. Если запрос возвращает "
+"объекты, извлеките из них текстовые значения:"
+msgstr "For asynchronous **Custom** sources, assign ``values`` a Promise returning a string array. If the query returns objects, extract their text values:"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
 #: field.rst:52
 msgid ""
-"Для поддержки асинхронных запросов в типе источника **Custom** нужно "
-"переменной **values** присвоить промис, который должен вернуть массив "
-"строк"
-msgstr ""
-"To support asynchronous requests in the **Custom** source type, the "
-"**values** variable must be assigned a promise that should return an "
-"array of strings"
+"В редакторе форм у поля **Имя свойства (Property Name)** также есть "
+"автодополнение. Подсказки берутся из атрибутов модели родительской формы,"
+" а при их отсутствии — из типа редактируемой формы, если он определён. "
+"Этот список помогает выбрать атрибут модели; он не является списком уже "
+"занятых ключей компонентов."
+msgstr "The form editor's **Property Name** also supports completion. Suggestions come from parent form model attributes, or otherwise the edited form type if known. This helps select model attributes; it is not a list of already used component keys."
 
 #: ../../settings_kb/interface/forms/form_components/components/text
 #: field.rst:59
-msgid ""
-"Теперь, при добавлении на форму нового компонента, при вводе имени "
-"свойства, появляется выпадающий список (при наличии частичного совпадения"
-" имен). Это позволит понять, какие имена уже заняты, чтобы не привести к "
-"ошибке при создании или редактировании формы."
-msgstr ""
-"Now, when adding a new component to the form, a dropdown list appears "
-"when entering a property name (if there are partial name matches). This "
-"helps to understand which names are already taken to avoid errors when "
-"creating or editing the form."
-
-#: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:66
 msgid "Ввод маски"
 msgstr "Input Mask"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:68
+#: field.rst:61
 msgid ""
-"На вкладке **Вид (View)** можно предопределить формат ввод. Маска полезна"
-" для принудительного использования форматов ввода, таких как номера "
-"телефонов, почтовые индексы  и т. д."
-msgstr ""
-"In the **View** tab, you can predefine the input format. The mask is "
-"useful for enforcing input formats such as phone numbers, postal codes, "
-"etc."
+"На вкладке **Вид (View)** можно предопределить формат ввода. Маска "
+"полезна для принудительного использования форматов ввода, таких как "
+"номера телефонов, почтовые индексы и т. д."
+msgstr "On **View**, define an input format. Masks enforce formats such as telephone numbers and postal codes."
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:70
+#: field.rst:63
 msgid "В поле **Маска для поля (Input Mask)** введите маску с использованием:"
 msgstr "In the **Input Mask** field, enter a mask using:"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:72
-msgid "*9: числовой*"
-msgstr "*9: numeric*"
+#: field.rst:65
+msgid "``9`` — цифра;"
+msgstr "``9`` — digit;"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:73
-msgid "*a: буквенный*"
-msgstr "*a: alphabetic*"
+#: field.rst:66
+msgid "``a`` — буква;"
+msgstr "``a`` — letter;"
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:74
-msgid "*: буквенно-цифровой*"
-msgstr "*: alphanumeric*"
+#: field.rst:67
+msgid "``*`` — буква или цифра."
+msgstr "``*`` — letter or digit."
 
 #: ../../settings_kb/interface/forms/form_components/components/text
-#: field.rst:76
+#: field.rst:69
 msgid "Например:"
 msgstr "For example:"
 
 #~ msgid "Однострочное текстовое поле."
 #~ msgstr "Single-line text field."
 
+#~ msgid "В текстовое поле вводим данные в формате JSON-строки:"
+#~ msgstr "Enter data in JSON string format into the text field:"
+
+#~ msgid ""
+#~ "Для отображения ключей уже добавленных "
+#~ "на форме компонентов, расширил базовый "
+#~ "компонент форм, поле key. Теперь, при"
+#~ " добавлении на форму нового компонента "
+#~ "( или при редактировании), в "
+#~ "``instance.root.options._webform`` хранится ссылка "
+#~ "на форму, из которой можно достать "
+#~ "список добавленных компонентов, например:"
+#~ msgstr ""
+#~ "To display keys of components already"
+#~ " added to the form, the base "
+#~ "form component's key field has been "
+#~ "extended. Now, when adding a new "
+#~ "component to the form (or when "
+#~ "editing), a reference to the form "
+#~ "is stored in ``instance.root.options._webform``, "
+#~ "from which the list of added "
+#~ "components can be retrieved, for "
+#~ "example:"
+
+#~ msgid ""
+#~ "Для поддержки асинхронных запросов в "
+#~ "типе источника **Custom** нужно переменной "
+#~ "**values** присвоить промис, который должен"
+#~ " вернуть массив строк"
+#~ msgstr ""
+#~ "To support asynchronous requests in the"
+#~ " **Custom** source type, the **values** "
+#~ "variable must be assigned a promise "
+#~ "that should return an array of "
+#~ "strings"
+
+#~ msgid ""
+#~ "Теперь, при добавлении на форму нового"
+#~ " компонента, при вводе имени свойства, "
+#~ "появляется выпадающий список (при наличии "
+#~ "частичного совпадения имен). Это позволит "
+#~ "понять, какие имена уже заняты, чтобы"
+#~ " не привести к ошибке при создании"
+#~ " или редактировании формы."
+#~ msgstr ""
+#~ "Now, when adding a new component "
+#~ "to the form, a dropdown list "
+#~ "appears when entering a property name"
+#~ " (if there are partial name matches)."
+#~ " This helps to understand which names"
+#~ " are already taken to avoid errors"
+#~ " when creating or editing the form."
+
+#~ msgid "*9: числовой*"
+#~ msgstr "*9: numeric*"
+
+#~ msgid "*a: буквенный*"
+#~ msgstr "*a: alphabetic*"
+
+#~ msgid "*: буквенно-цифровой*"
+#~ msgstr "*: alphanumeric*"

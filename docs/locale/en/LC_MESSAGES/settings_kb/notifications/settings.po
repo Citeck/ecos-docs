@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -59,10 +59,23 @@ msgid "Переменные окружения"
 msgstr "Environment Variables"
 
 #: ../../settings_kb/notifications/settings.rst:51
+msgid "Выбор исходящего адреса"
+msgstr "Selecting the sender address"
+
+#: ../../settings_kb/notifications/settings.rst:53
+msgid ""
+"Параметр ``ecos-notifications.email.from.fixed`` заменяет From любого "
+"email-уведомления, включая адрес, заданный в BPMN. Если ``fixed`` пустой,"
+" для пустого From сообщения используется ``from.default``, а для "
+"непустого нормализованного адреса применяется ``from.mapping``. Эти "
+"настройки относятся к блоку ``ecos-notifications.email``."
+msgstr "``ecos-notifications.email.from.fixed`` replaces From on every email, including BPMN-specified addresses. If ``fixed`` is empty, empty message From uses ``from.default``; nonempty normalized addresses use ``from.mapping``. These settings belong to ``ecos-notifications.email``."
+
+#: ../../settings_kb/notifications/settings.rst:56
 msgid "Параметры, влияющие на повторные отправки"
 msgstr "Parameters Affecting Retries"
 
-#: ../../settings_kb/notifications/settings.rst:53
+#: ../../settings_kb/notifications/settings.rst:58
 msgid ""
 "Помимо параметров подключения, поведение микросервиса при сбоях отправки "
 "задаётся блоком ``ecos-notifications.retry`` — см. :ref:`повторные "
@@ -72,7 +85,7 @@ msgstr ""
 "send failures is set by the ``ecos-notifications.retry`` block — see "
 ":ref:`retry attempts <notifications-label>`."
 
-#: ../../settings_kb/notifications/settings.rst:56
+#: ../../settings_kb/notifications/settings.rst:61
 msgid ""
 "Значения по умолчанию рассчитаны на типовой сценарий, менять их обычно не"
 " требуется."
@@ -80,27 +93,34 @@ msgstr ""
 "The default values are designed for a typical scenario; changing them is "
 "usually not required."
 
-#: ../../settings_kb/notifications/settings.rst:60
+#: ../../settings_kb/notifications/settings.rst:63
+msgid ""
+"Некорректные значения параметров retry могут остановить запуск. "
+"Несоответствие времени аренды размеру пачки и SMTP-таймаутам "
+"диагностируется предупреждением и не исправляется автоматически."
+msgstr "Invalid retry values may prevent startup. A lease duration inconsistent with batch size and SMTP timeouts produces a warning and is not automatically corrected."
+
+#: ../../settings_kb/notifications/settings.rst:67
 msgid ""
 "Следующие SMTP-параметры важны для корректной работы повторов — "
 "переопределять их значения по умолчанию не рекомендуется:"
 msgstr ""
-"The following SMTP parameters are important for retries to work "
-"correctly — overriding their default values is not recommended:"
+"The following SMTP parameters are important for retries to work correctly"
+" — overriding their default values is not recommended:"
 
-#: ../../settings_kb/notifications/settings.rst:80
+#: ../../settings_kb/notifications/settings.rst:87
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../settings_kb/notifications/settings.rst:81
+#: ../../settings_kb/notifications/settings.rst:88
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/notifications/settings.rst:82
+#: ../../settings_kb/notifications/settings.rst:89
 msgid "``connectiontimeout``, ``timeout``, ``writetimeout``"
 msgstr "``connectiontimeout``, ``timeout``, ``writetimeout``"
 
-#: ../../settings_kb/notifications/settings.rst:83
+#: ../../settings_kb/notifications/settings.rst:90
 msgid ""
 "Таймауты обязательно должны быть конечными: иначе зависшее соединение "
 "заблокирует уведомление на всё время ожидания ответа сервера."
@@ -108,18 +128,17 @@ msgstr ""
 "Timeouts must always be finite: otherwise a hung connection will block "
 "the notification for the entire time it waits for a server response."
 
-#: ../../settings_kb/notifications/settings.rst:85
+#: ../../settings_kb/notifications/settings.rst:92
 msgid "``sendpartial``"
 msgstr "``sendpartial``"
 
-#: ../../settings_kb/notifications/settings.rst:86
+#: ../../settings_kb/notifications/settings.rst:93
 msgid ""
 "Доставлять письмо принявшим его получателям вместо отмены отправки "
 "целиком, если часть адресов отклонена сервером."
 msgstr ""
-"Deliver the email to the recipients who accepted it instead of cancelling "
-"the entire send if some addresses are rejected by the server."
+"Deliver the email to the recipients who accepted it instead of cancelling"
+" the entire send if some addresses are rejected by the server."
 
 #~ msgid "Или то же самое через **переменные окружения**:"
 #~ msgstr "Or the same via **environment variables**:"
-

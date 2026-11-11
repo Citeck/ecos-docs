@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -40,13 +40,10 @@ msgstr ""
 
 #: ../../settings_kb/interface/journals/configuration.rst:10
 msgid ""
-"На этой странице описаны: способы создания и подключения журнала, "
+"На этой странице описаны способы создания и подключения журнала, "
 "использование атрибутов записи и вычисляемых свойств в форматтерах и "
-"редакторах, а также полная модель объектов конфигурации."
-msgstr ""
-"This page describes: ways to create and connect a journal, using record "
-"attributes and computed properties in formatters and editors, as well as "
-"the complete configuration object model."
+"редакторах, а также основные поля конфигурации."
+msgstr "This page describes creating and connecting journals, using record attributes and computed properties in formatters and editors, and core configuration fields."
 
 #: ../../settings_kb/interface/journals/configuration.rst:12
 msgid "Варианты создания записи берутся из связанного типа."
@@ -197,15 +194,11 @@ msgstr ""
 #: ../../settings_kb/interface/journals/configuration.rst:117
 msgid ""
 "Описанная выше конфигурация ``formatter`` настраивает **только отрисовку "
-"ячейки**. Чтобы у колонки-ассоциации работал фильтр в заголовке и "
-"инлайн-редактирование, также нужно задать поле ``editor`` (обычно ``type:"
-" journal``). См. :ref:`editors` и подраздел *JournalEditor*."
-msgstr ""
-"The ``formatter`` configuration described above configures **only cell "
-"rendering**. For the header filter and inline editing to work on an "
-"association column, you also need to set the ``editor`` field (usually "
-"``type: journal``). See :ref:`editors` and the *JournalEditor* "
-"subsection."
+"ячейки**. Для ввода значения используется ``editor`` (например, ``type: "
+"journal``), а для фильтра можно независимо задать ``headerFilterEditor``."
+" UI работает с итоговой конфигурацией, разрешённой сервером. См. "
+":ref:`editors`."
+msgstr "The ``formatter`` configuration above controls **cell rendering only**. ``editor`` handles input, such as ``type: journal``; ``headerFilterEditor`` independently configures filtering. The UI uses server-resolved configuration. See :ref:`editors`."
 
 #: ../../settings_kb/interface/journals/configuration.rst:120
 msgid "Вычисляемые свойства"
@@ -302,8 +295,8 @@ msgid "query"
 msgstr "query"
 
 #: ../../settings_kb/interface/journals/configuration.rst
-msgid "``query: String`` — поисковый запрос, который нужно выполнить"
-msgstr "``query: String`` — the search query to execute"
+msgid "``query: Object`` — объект RecordsQuery для поискового запроса"
+msgstr "``query: Object`` — RecordsQuery search query object"
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Отправить поисковый запрос через"
@@ -329,31 +322,76 @@ msgstr "``vars: Map<String, Any>`` — variables to be passed to the script."
 msgid "Вычислить скрипт"
 msgstr "Execute script"
 
+#: ../../settings_kb/interface/journals/configuration.rst:157
+msgid "value"
+msgstr "value"
+
 #: ../../settings_kb/interface/journals/configuration.rst:158
+msgid "``value: Any`` — значение"
+msgstr "``value: Any`` — value"
+
+#: ../../settings_kb/interface/journals/configuration.rst:159
+msgid ""
+"Вернуть значение. Особенности обработки ``0``, ``false`` и пустой строки "
+"см. в :ref:`computed_attributes`."
+msgstr "Return a value. See :ref:`computed_attributes` for ``0``, ``false`` and empty string behavior."
+
+#: ../../settings_kb/interface/journals/configuration.rst:160
+msgid "type-records"
+msgstr "type-records"
+
+#: ../../settings_kb/interface/journals/configuration.rst
+msgid "``typeId: String`` — идентификатор типа"
+msgstr "``typeId: String`` — type identifier"
+
+#: ../../settings_kb/interface/journals/configuration.rst
+msgid "``attributes`` — загружаемые атрибуты"
+msgstr "``attributes`` — attributes to load"
+
+#: ../../settings_kb/interface/journals/configuration.rst
+msgid "``maxItems: Number`` — максимум записей, по умолчанию 100"
+msgstr "``maxItems: Number`` — maximum records, default 100"
+
+#: ../../settings_kb/interface/journals/configuration.rst:164
+msgid "Загрузить записи типа из связанного источника данных."
+msgstr "Load records of a type from its associated data source."
+
+#: ../../settings_kb/interface/journals/configuration.rst:166
 msgid "Пример использования вычисляемого свойства для вариантов выбора:"
 msgstr "Example of using a computed property for selection options:"
 
-#: ../../settings_kb/interface/journals/configuration.rst:190
+#: ../../settings_kb/interface/journals/configuration.rst:198
 msgid "Модель конфигурации журнала"
 msgstr "Journal Configuration Model"
 
-#: ../../settings_kb/interface/journals/configuration.rst:192
+#: ../../settings_kb/interface/journals/configuration.rst:200
 msgid ""
-"Полная модель конфигурации журнала (все доступные поля) — под спойлером "
-"ниже."
-msgstr ""
-"The full journal configuration model (all available fields) is under the "
-"spoiler below."
+"Ниже приведена схема основных полей, а не исчерпывающая серверная модель."
+" UI получает разрешённую конфигурацию, которая может включать значения из"
+" типа и метаданные представлений (например, ``listViewInfo``). Правила "
+"наследования и значения по умолчанию определяются сервисом ``ecos-"
+"uiserv``."
+msgstr "The following outlines core fields, not the complete server model. The UI receives resolved configuration that may include type values and view metadata, such as ``listViewInfo``. ``ecos-uiserv`` defines inheritance and defaults."
+
+#: ../../settings_kb/interface/journals/configuration.rst:202
+msgid ""
+"Дополнительно используются ``workspace`` (рабочее пространство), "
+"``searchConfig`` (поиск), ``isReloadDataOnFocus`` (обновление при "
+"возврате фокуса), ``hideImportDataActions`` (скрытие импорта). У колонок "
+"поддерживаются ``width``, ``headerFilterEditor``, ``searchConfig`` и "
+"``hasTotalSumField``; примеры см. в :ref:`new_journal` и "
+":ref:`journal_settings`."
+msgstr "Additional fields include ``workspace``, ``searchConfig``, ``isReloadDataOnFocus`` and ``hideImportDataActions``. Columns support ``width``, ``headerFilterEditor``, ``searchConfig`` and ``hasTotalSumField``; see :ref:`new_journal` and :ref:`journal_settings`."
 
 #: ../../settings_kb/interface/journals/configuration.rst
 msgid "Модель"
 msgstr "Model"
 
-#: ../../settings_kb/interface/journals/configuration.rst:395
+#: ../../settings_kb/interface/journals/configuration.rst:408
 msgid "Инструменты для разработчиков"
 msgstr "Developer Tools"
 
-#: ../../settings_kb/interface/journals/configuration.rst:397
+#: ../../settings_kb/interface/journals/configuration.rst:410
 msgid ""
 "Если на странице журналов нажать :guilabel:`Ctrl` + :guilabel:`Shift` + "
 ":guilabel:`ЛКМ` на заголовке журнала, то откроется его конфигурация для "
@@ -363,3 +401,31 @@ msgstr ""
 " Mouse Button) on the journal title on the journals page, its "
 "configuration will open for viewing."
 
+#~ msgid ""
+#~ "Описанная выше конфигурация ``formatter`` "
+#~ "настраивает **только отрисовку ячейки**. Чтобы"
+#~ " у колонки-ассоциации работал фильтр в "
+#~ "заголовке и инлайн-редактирование, также нужно"
+#~ " задать поле ``editor`` (обычно ``type: "
+#~ "journal``). См. :ref:`editors` и подраздел "
+#~ "*JournalEditor*."
+#~ msgstr ""
+#~ "The ``formatter`` configuration described "
+#~ "above configures **only cell rendering**. "
+#~ "For the header filter and inline "
+#~ "editing to work on an association "
+#~ "column, you also need to set the"
+#~ " ``editor`` field (usually ``type: "
+#~ "journal``). See :ref:`editors` and the "
+#~ "*JournalEditor* subsection."
+
+#~ msgid "``query: String`` — поисковый запрос, который нужно выполнить"
+#~ msgstr "``query: String`` — the search query to execute"
+
+#~ msgid ""
+#~ "Полная модель конфигурации журнала (все "
+#~ "доступные поля) — под спойлером ниже."
+#~ msgstr ""
+#~ "The full journal configuration model "
+#~ "(all available fields) is under the "
+#~ "spoiler below."

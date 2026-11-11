@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -333,13 +333,11 @@ msgstr ""
 msgid ""
 "Если записи принадлежат одному типу или тип отсутствует, но для некоторых"
 " записей должна использоваться определенная форма, можно реализовать "
-"атрибут ``_formRef``. Если этот атрибут вернул ссылку на форму, то она "
-"имеет наибольший приоритет."
-msgstr ""
-"If records belong to one type or the type is absent, but a specific form "
-"should be used for some records, a ``_formRef`` attribute can be "
-"implemented. If this attribute returns a reference to a form, it has the "
-"highest priority."
+"атрибут ``_formRef``. При автоматическом выборе сначала используется эта "
+"ссылка, затем унаследованная форма типа (``inhFormRef``), затем поиск по "
+"ключам ``_formKey``. Явно заданные ``formId`` или аргумент ``formKey`` "
+"используются отдельно и не переопределяются этим порядком."
+msgstr "If records share a type or have no type but some need a specific form, implement ``_formRef``. Automatic selection first uses it, then the inherited type form (``inhFormRef``), then ``_formKey`` lookup. Explicit ``formId`` or ``formKey`` arguments are handled separately and are not overridden by this order."
 
 #: ../../settings_kb/interface/forms/forms.rst:273
 msgid "Связь с атрибутом записи"
@@ -355,17 +353,23 @@ msgstr ""
 
 #: ../../settings_kb/interface/forms/forms.rst:281
 msgid ""
-"но если нужно связать с атрибутом, в котором есть спец символы (например "
-"\":\"), то во вкладке **API** следует добавить в **Пользовательские "
-"свойства** свойство (2) с ключом **attribute** и значением - именем "
-"атрибута."
-msgstr ""
-"but if you need to link to an attribute that contains special characters "
-"(for example, \":\"), then in the **API** tab, you should add a property "
-"(2) to **Custom Properties** with the key **attribute** and the value - "
-"the attribute name."
+"В базовых настройках ключа допускаются буквы, цифры, подчёркивания, "
+"точки, дефисы и двоеточия; ключ не должен заканчиваться точкой или "
+"дефисом. Поэтому двоеточие само по себе не требует отдельной настройки "
+"привязки. У отдельных компонентов правила проверки ключа могут "
+"отличаться."
+msgstr "Basic key settings allow letters, digits, underscores, dots, hyphens and colons; keys must not end in a dot or hyphen. A colon alone does not require separate binding configuration. Individual components may validate keys differently."
 
-#: ../../settings_kb/interface/forms/forms.rst:287
+#: ../../settings_kb/interface/forms/forms.rst:283
+msgid ""
+"Чтобы имя ключа компонента отличалось от имени атрибута записи, на "
+"вкладке **API** добавьте в **Пользовательские свойства** свойство (2) с "
+"ключом ``attribute`` и точным именем атрибута в значении. При сохранении "
+"используется ``properties.attribute``, если оно задано, иначе — ключ "
+"компонента."
+msgstr "To use a component key different from the record attribute, add custom property (2) on **API** with key ``attribute`` and the exact attribute name as its value. Saving uses ``properties.attribute`` if set, otherwise the component key."
+
+#: ../../settings_kb/interface/forms/forms.rst:289
 msgid ""
 "Также добавлена возможность настраивать имя полей в одном месте - в типе "
 "данных, и не дублировать данную информацию в форме и в журнале."
@@ -374,7 +378,7 @@ msgstr ""
 "has also been added, without duplicating this information in the form and"
 " in the journal."
 
-#: ../../settings_kb/interface/forms/forms.rst:289
+#: ../../settings_kb/interface/forms/forms.rst:291
 msgid ""
 "**Название поля (Label)** загружается из типа. Если **Название поля "
 "(Label)** выставлен равный атрибуту или если атрибут не задан, то идет "
@@ -385,7 +389,7 @@ msgstr ""
 "equal to the attribute or if the attribute is not set, a check is "
 "performed for equality between **Property Name** and **Field Label**."
 
-#: ../../settings_kb/interface/forms/forms.rst:299
+#: ../../settings_kb/interface/forms/forms.rst:301
 msgid "Использование нескольких форм для одного типа"
 msgstr "Using multiple forms for one type"
 
@@ -393,23 +397,23 @@ msgstr "Using multiple forms for one type"
 msgid "Как использовать несколько форм для одного типа"
 msgstr "How to use multiple forms for one type"
 
-#: ../../settings_kb/interface/forms/forms.rst:304
+#: ../../settings_kb/interface/forms/forms.rst:306
 msgid "Создать новые формы, привязать их к нужному типу:"
 msgstr "Create new forms, bind them to the required type:"
 
-#: ../../settings_kb/interface/forms/forms.rst:310
+#: ../../settings_kb/interface/forms/forms.rst:312
 msgid ":ref:`Добавить<dashboard_settings>` виджеты свойств."
 msgstr ":ref:`Add<dashboard_settings>` property widgets."
 
-#: ../../settings_kb/interface/forms/forms.rst:312
+#: ../../settings_kb/interface/forms/forms.rst:314
 msgid "В настройке виджета через шестеренку присвоить ему нужную форму:"
 msgstr "In the widget settings via the gear icon, assign it the required form:"
 
-#: ../../settings_kb/interface/forms/forms.rst:319
+#: ../../settings_kb/interface/forms/forms.rst:321
 msgid "Разные формы для создания и редактирования"
 msgstr "Different forms for creation and editing"
 
-#: ../../settings_kb/interface/forms/forms.rst:321
+#: ../../settings_kb/interface/forms/forms.rst:323
 msgid ""
 "Разные формы для создания и редактирования записи обычно настраиваются "
 "без отдельного действия:"
@@ -417,7 +421,7 @@ msgstr ""
 "Different forms for creating and editing a record are usually configured "
 "without a separate action:"
 
-#: ../../settings_kb/interface/forms/forms.rst:323
+#: ../../settings_kb/interface/forms/forms.rst:325
 msgid ""
 "**форма создания** указывается в варианте создания типа данных, в поле "
 "``formRef`` (см. ``createVariants`` в :ref:`параметрах типа "
@@ -427,7 +431,7 @@ msgstr ""
 "the ``formRef`` field (see ``createVariants`` in the :ref:`data type "
 "parameters<type_parameters>`);"
 
-#: ../../settings_kb/interface/forms/forms.rst:324
+#: ../../settings_kb/interface/forms/forms.rst:326
 msgid ""
 "**при редактировании** открывается основная форма, заданная в самом типе "
 "данных."
@@ -435,7 +439,7 @@ msgstr ""
 "**when editing**, the main form specified in the data type itself is "
 "opened."
 
-#: ../../settings_kb/interface/forms/forms.rst:326
+#: ../../settings_kb/interface/forms/forms.rst:328
 msgid ""
 "Также нужную форму можно выбрать в настройках виджета **«Свойства»** на "
 "дашборде (см. :ref:`выше<several_forms_for_type>`). Чтобы форма появилась"
@@ -449,11 +453,11 @@ msgstr ""
 "type or to one of its parent types. The edit button (pencil) on the "
 "widget will open exactly this form."
 
-#: ../../settings_kb/interface/forms/forms.rst:329
+#: ../../settings_kb/interface/forms/forms.rst:331
 msgid "Отдельная кнопка редактирования"
 msgstr "Separate edit button"
 
-#: ../../settings_kb/interface/forms/forms.rst:331
+#: ../../settings_kb/interface/forms/forms.rst:333
 msgid ""
 "Если нужна отдельная кнопка, например **«Редактировать профиль»**, можно "
 "использовать :ref:`действие<ui_actions_types>` типа ``create``:"
@@ -461,7 +465,7 @@ msgstr ""
 "If you need a separate button, for example **«Edit profile»**, you can "
 "use an :ref:`action<ui_actions_types>` of the ``create`` type:"
 
-#: ../../settings_kb/interface/forms/forms.rst:360
+#: ../../settings_kb/interface/forms/forms.rst:362
 msgid ""
 "Несмотря на тип ``create``, новая запись не создаётся: в ``recordRef`` "
 "передаётся ссылка на текущую запись, а в ``options.formMode`` задаётся "
@@ -486,3 +490,19 @@ msgstr ""
 #~ msgid "Для загрузки созданного журнала необходимо нажать **+ - Форма**:"
 #~ msgstr "To upload a created journal, click **+ - Form**:"
 
+#~ msgid ""
+#~ "но если нужно связать с атрибутом, "
+#~ "в котором есть спец символы (например"
+#~ " \":\"), то во вкладке **API** "
+#~ "следует добавить в **Пользовательские "
+#~ "свойства** свойство (2) с ключом "
+#~ "**attribute** и значением - именем "
+#~ "атрибута."
+#~ msgstr ""
+#~ "but if you need to link to "
+#~ "an attribute that contains special "
+#~ "characters (for example, \":\"), then in"
+#~ " the **API** tab, you should add "
+#~ "a property (2) to **Custom Properties**"
+#~ " with the key **attribute** and the"
+#~ " value - the attribute name."

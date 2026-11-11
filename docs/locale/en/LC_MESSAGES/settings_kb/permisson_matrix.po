@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -34,13 +34,9 @@ msgstr ""
 
 #: ../../settings_kb/permisson_matrix.rst:8
 msgid ""
-"Матрицы привязываются к :ref:`типам данных <data_types>` и определяют, "
-"какие действия доступны каждой роли на каждом этапе жизненного цикла "
-"документа."
-msgstr ""
-"Matrices are bound to :ref:`data types <data_types>` and define which "
-"actions are available to each role at each stage of the document "
-"lifecycle."
+"Матрицы привязываются к :ref:`типам данных <data_types>` и задают доступ "
+"к объекту и его атрибутам для сочетаний роли и статуса документа."
+msgstr "Matrices bind to :ref:`data types <data_types>` and define object and attribute access by document role/status combinations."
 
 #: ../../settings_kb/permisson_matrix.rst:11
 msgid "Возможности"
@@ -51,54 +47,111 @@ msgid "С помощью матрицы прав можно:"
 msgstr "Using the permission matrix, you can:"
 
 #: ../../settings_kb/permisson_matrix.rst:15
-msgid ""
-"разрешать или запрещать просмотр, создание, редактирование и удаление "
-"записей;"
-msgstr "allow or deny viewing, creating, editing, and deleting records;"
+msgid "настраивать уровни доступа к записи: NONE, READ и WRITE;"
+msgstr "Configure record access levels: NONE, READ and WRITE;"
 
 #: ../../settings_kb/permisson_matrix.rst:16
 msgid ""
-"управлять видимостью и доступностью отдельных атрибутов для конкретных "
+"задавать права чтения и изменения отдельных атрибутов для конкретных "
 "ролей;"
-msgstr ""
-"control the visibility and availability of individual attributes for "
-"specific roles;"
+msgstr "Configure reading and editing individual attributes for specific roles;"
 
 #: ../../settings_kb/permisson_matrix.rst:17
 msgid "задавать разные наборы прав в зависимости от статуса документа."
 msgstr "define different permission sets depending on the document status."
 
-#: ../../settings_kb/permisson_matrix.rst:20
+#: ../../settings_kb/permisson_matrix.rst:19
+msgid ""
+"Создание и удаление записей также зависят от серверных проверок "
+"соответствующего источника данных. Матрицу доступа к бизнес-объектам "
+"следует отличать от :ref:`прав на описания типов <data_type_rights>` и "
+"настроек доступности действий интерфейса."
+msgstr "Record creation and deletion also depend on server source checks. Business object permission matrices differ from :ref:`type definition permissions <data_type_rights>` and UI action availability."
+
+#: ../../settings_kb/permisson_matrix.rst:22
 msgid "Работа с матрицей"
 msgstr "Working with the Matrix"
 
-#: ../../settings_kb/permisson_matrix.rst:22
+#: ../../settings_kb/permisson_matrix.rst:24
 msgid ""
-"Журнал содержит :ref:`матрицы прав <permissions>`, созданные для типов "
-"данных."
-msgstr ""
-"The journal contains :ref:`permission matrices<permissions>` created for "
-"data types."
+"Журнал **«Матрицы прав»** содержит :ref:`матрицы прав <permissions>`, "
+"созданные для типов данных, с учётом доступных пользователю рабочих "
+"пространств. Источник записей — ``emodel/perms``, идентификатор журнала —"
+" ``type-perms``."
+msgstr "The **Permission matrices** journal contains :ref:`permission matrices <permissions>` for data types in accessible workspaces. Source: ``emodel/perms``; journal ID: ``type-perms``."
 
-#: ../../settings_kb/permisson_matrix.rst:28
-msgid "Матрицу прав можно загрузить, нажав **(1)**:"
-msgstr "The permission matrix can be loaded by clicking **(1)**:"
+#: ../../settings_kb/permisson_matrix.rst:30
+msgid ""
+"Матрицу прав можно загрузить через вариант **«Загрузить матрицу»**, нажав"
+" **(1)**:"
+msgstr "Upload a matrix through **Upload matrix** by clicking **(1)**:"
 
-#: ../../settings_kb/permisson_matrix.rst:34
+#: ../../settings_kb/permisson_matrix.rst:36
 msgid "Для матрицы доступны действия **(2)**:"
 msgstr "The following actions are available for the matrix **(2)**:"
 
-#: ../../settings_kb/permisson_matrix.rst:36
+#: ../../settings_kb/permisson_matrix.rst:38
 msgid "редактирование через JSON;"
 msgstr "editing via JSON;"
 
-#: ../../settings_kb/permisson_matrix.rst:37
-msgid "скачивание;"
-msgstr "downloading;"
+#: ../../settings_kb/permisson_matrix.rst:39
+msgid "скачивание в формате YAML;"
+msgstr "Download as YAML;"
 
-#: ../../settings_kb/permisson_matrix.rst:38
+#: ../../settings_kb/permisson_matrix.rst:40
 msgid "удаление."
 msgstr "deletion."
+
+#: ../../settings_kb/permisson_matrix.rst:43
+msgid "Импорт и рабочие пространства"
+msgstr "Import and workspaces"
+
+#: ../../settings_kb/permisson_matrix.rst:45
+msgid ""
+"Описание матрицы содержит ``id``, ссылку на тип ``typeRef``, настройки "
+"объекта ``permissions`` и настройки атрибутов ``attributes``. Например:"
+msgstr "A matrix definition contains ``id``, type reference ``typeRef``, object ``permissions`` and ``attributes`` settings. For example:"
+
+#: ../../settings_kb/permisson_matrix.rst:57
+msgid ""
+"Тип ``example`` должен существовать в целевой системе и содержать роль "
+"``reader`` и статус ``draft``. В примере участникам этой роли разрешено "
+"чтение в статусе draft. Артефакт матрицы имеет тип ``model/permissions``."
+msgstr "Type ``example`` must exist in the target system with role ``reader`` and status ``draft``. This example permits role members to read in draft. Matrix artifact type: ``model/permissions``."
+
+#: ../../settings_kb/permisson_matrix.rst:59
+msgid ""
+"Матрица и её тип должны относиться к одному рабочему пространству. "
+"Локальный ID матрицы уникален внутри пространства; при создании он не "
+"должен содержать двоеточие. Префикс пространства в полной ссылке "
+"отличается от локального ID."
+msgstr "The matrix and type must share a workspace. Local matrix IDs are unique within a workspace and must not contain colons at creation. The full reference workspace prefix differs from the local ID."
+
+#: ../../settings_kb/permisson_matrix.rst:61
+msgid ""
+"При переносе матрицы ссылки на тип могут содержать плейсхолдер "
+"``CURRENT_WS``, который при импорте разрешается в контексте пространства "
+"назначения."
+msgstr "When transferring matrices, type references may contain ``CURRENT_WS``, resolved in the destination workspace context on import."
+
+#: ../../settings_kb/permisson_matrix.rst:64
+msgid "Доступ к матрицам"
+msgstr "Matrix access"
+
+#: ../../settings_kb/permisson_matrix.rst:66
+msgid ""
+"Права на изменение самой матрицы проверяются отдельно от прав объектов, "
+"заданных в её содержимом. Сохранение, загрузка и удаление требуют права "
+"изменения артефактов **type-perms** в соответствующем рабочем "
+"пространстве либо системного контекста с нужными полномочиями."
+msgstr "Permissions to change the matrix itself are checked separately from its object permissions. Saving, uploading and deleting require **type-perms** artifact modification rights in that workspace, or system context with appropriate privileges."
+
+#: ../../settings_kb/permisson_matrix.rst:68
+msgid ""
+"Матрицы рабочего пространства доступны на чтение его участникам, "
+"администраторам и соответствующим системным контекстам. Наличие доступа к"
+" журналу само по себе не разрешает редактировать или удалять все матрицы."
+msgstr "Workspace matrices can be read by members, administrators and appropriate system contexts. Journal access alone does not allow editing or deleting every matrix."
 
 #~ msgid ""
 #~ "**Матрица прав** - таблица, которая "
@@ -114,3 +167,17 @@ msgstr "deletion."
 #~ " the document and separately for its"
 #~ " attributes."
 
+#~ msgid ""
+#~ "разрешать или запрещать просмотр, создание,"
+#~ " редактирование и удаление записей;"
+#~ msgstr "allow or deny viewing, creating, editing, and deleting records;"
+
+#~ msgid ""
+#~ "Журнал содержит :ref:`матрицы прав "
+#~ "<permissions>`, созданные для типов данных."
+#~ msgstr ""
+#~ "The journal contains :ref:`permission "
+#~ "matrices<permissions>` created for data types."
+
+#~ msgid "скачивание;"
+#~ msgstr "downloading;"

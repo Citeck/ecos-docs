@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,15 +24,11 @@ msgstr "Type parameter reference"
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:6
 msgid ""
-"Раздел содержит справочное описание всех параметров типа данных с точки "
-"зрения внутренней модели системы. Информация предназначена для "
-"разработчиков и администраторов, работающих с конфигурацией типов "
-"напрямую (через JSON, артефакты или API)."
-msgstr ""
-"This section provides a reference description of all data type parameters"
-" from the perspective of the system's internal model. The information is "
-"intended for developers and administrators who work with type "
-"configuration directly (via JSON, artifacts, or API)."
+"Раздел содержит справочное описание основных параметров типа данных и "
+"правил их разрешения. Информация предназначена для разработчиков и "
+"администраторов, работающих с конфигурацией типов напрямую (через JSON, "
+"артефакты или API)."
+msgstr "This section provides a reference for core data type parameters and their resolution rules, intended for developers and administrators configuring types directly through JSON, artifacts or APIs."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:8
 msgid ""
@@ -49,16 +45,21 @@ msgid "**id: String**"
 msgstr "**id: String**"
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:15
-msgid "Уникальный идентификатор типа. Не наследуется."
-msgstr "Unique identifier of the type. Not inherited."
+msgid ""
+"Локальный идентификатор типа, уникальный в его рабочем пространстве. Не "
+"наследуется. В полной ссылке тип рабочего пространства имеет префикс "
+"пространства."
+msgstr "Local type identifier, unique within its workspace. Not inherited. Full workspace type references include a workspace prefix."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:16
 msgid "**name: MLText**"
 msgstr "**name: MLText**"
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:17
-msgid "Имя типа. Не наследуется."
-msgstr "Name of the type. Not inherited."
+msgid ""
+"Имя типа. Не наследуется. При пустом значении формируется из "
+"идентификатора типа."
+msgstr "Type name. Not inherited. If empty, generated from the type identifier."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:18
 msgid "**description: MLText**"
@@ -72,55 +73,73 @@ msgstr "Description of the type. Not inherited."
 msgid "**storageType: String**"
 msgstr "**storageType: String**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:21
-msgid "Тип хранилища. Не наследуется."
-msgstr "Storage type. Not inherited."
+#: ../../settings_kb/data_types/data_types_parameters.rst
+msgid "Тип хранилища: DEFAULT, ECOS_MODEL или ALFRESCO."
+msgstr "Storage type: DEFAULT, ECOS_MODEL or ALFRESCO."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:22
+#: ../../settings_kb/data_types/data_types_parameters.rst
+msgid ""
+"Для неабстрактного типа с DEFAULT и пустым sourceId под абстрактным "
+"родителем без источника используется политика хранилища родителя."
+msgstr "A nonabstract type with DEFAULT and empty sourceId under an abstract parent without a source uses the parent storage policy."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst
+msgid "Для типа рабочего пространства принудительно используется ECOS_MODEL."
+msgstr "ECOS_MODEL is enforced for workspace types."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:24
 msgid "**sourceId: String**"
 msgstr "**sourceId: String**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:23
+#: ../../settings_kb/data_types/data_types_parameters.rst:25
 msgid "Идентификатор источника данных. Вычисляется по правилам:"
 msgstr "Data source identifier. Calculated according to the following rules:"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:25
-msgid "Если задан, то остается как есть."
-msgstr "If set, it remains as is."
-
-#: ../../settings_kb/data_types/data_types_parameters.rst:26
-msgid "Если не задан. то:"
-msgstr "If not set, then:"
+#: ../../settings_kb/data_types/data_types_parameters.rst:27
+msgid ""
+"Для типа рабочего пространства собственный sourceId очищается и "
+"вычисляется для ECOS_MODEL с учётом пространства."
+msgstr "For workspace types, own sourceId is cleared and calculated for ECOS_MODEL with workspace context."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:28
-msgid "Если **storageType = DEFAULT**, то берем sourceId родительского типа."
-msgstr "If **storageType = DEFAULT**, the sourceId of the parent type is used."
+msgid "При **storageType = ALFRESCO** устанавливается ``alfresco/``."
+msgstr "With **storageType = ALFRESCO**, ``alfresco/`` is set."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:29
 msgid ""
-"Если **storageType = ECOS_MODEL**, то вычисляем sourceId на базе "
-"идентификатора типа."
-msgstr ""
-"If **storageType = ECOS_MODEL**, the sourceId is calculated based on the "
-"type identifier."
+"При **storageType = DEFAULT** пустое значение берётся из родителя с "
+"учётом правила выбора storageType выше."
+msgstr "With **storageType = DEFAULT**, an empty value is taken from the parent using the storageType selection rule above."
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:30
-msgid "Если **storageType = ALFRESCO**, то в sourceId записывается \"alfresco/\""
-msgstr "If **storageType = ALFRESCO**, the sourceId is set to \"alfresco/\"."
+msgid ""
+"При **storageType = ECOS_MODEL** пустое значение вычисляется на базе "
+"идентификатора типа; для абстрактных типов источник автоматически не "
+"создаётся."
+msgstr "With **storageType = ECOS_MODEL**, an empty value is derived from the type identifier; sources are not created automatically for abstract types."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:32
+#: ../../settings_kb/data_types/data_types_parameters.rst:31
+msgid ""
+"Если непустое значение не содержит имени приложения, добавляется префикс "
+"``emodel/``."
+msgstr "If a nonempty value omits the application name, ``emodel/`` is prepended."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:33
 msgid "**parentRef: EntityRef**"
 msgstr "**parentRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:33
-msgid "Ссылка на родительский тип. Не наследуется."
-msgstr "Reference to the parent type. Not inherited."
-
 #: ../../settings_kb/data_types/data_types_parameters.rst:34
+msgid ""
+"Ссылка на родительский тип. При пустом значении используется "
+"``emodel/type@base``, кроме самого корневого типа base. Допускается "
+"глобальный родитель или родитель из того же рабочего пространства."
+msgstr "Parent type reference. If empty, ``emodel/type@base`` is used, except for the root base type itself. A global parent or one in the same workspace is allowed."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:35
 msgid "**formRef: EntityRef**"
 msgstr "**formRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:35
+#: ../../settings_kb/data_types/data_types_parameters.rst:36
 msgid ""
 "Ссылка на форму. Наследуется если значение **пустое** И **inheritForm == "
 "true**."
@@ -128,7 +147,7 @@ msgstr ""
 "Reference to the form. Inherited if the value is **empty** AND "
 "**inheritForm == true**."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:37
+#: ../../settings_kb/data_types/data_types_parameters.rst:38
 msgid ""
 "Если ссылка указывает на **uiserv/form@DEFAULT_FORM**, то в formRef "
 "записывается **\"uiserv/form@type$\" + id типа**."
@@ -136,15 +155,15 @@ msgstr ""
 "If the reference points to **uiserv/form@DEFAULT_FORM**, formRef is set "
 "to **\"uiserv/form@type$\" + type id**."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:39
+#: ../../settings_kb/data_types/data_types_parameters.rst:40
 msgid "**journalRef: EntityRef**"
 msgstr "**journalRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:40
+#: ../../settings_kb/data_types/data_types_parameters.rst:41
 msgid "Ссылка на журнал. Не наследуется."
 msgstr "Reference to the journal. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:42
+#: ../../settings_kb/data_types/data_types_parameters.rst:43
 msgid ""
 "Если ссылка указывает на **uiserv/journal@DEFAULT_JOURNAL**, то в "
 "journalRef записывается **\"uiserv/journal@type$\" + id типа**."
@@ -152,69 +171,69 @@ msgstr ""
 "If the reference points to **uiserv/journal@DEFAULT_JOURNAL**, journalRef"
 " is set to **\"uiserv/journal@type$\" + type id**."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:44
+#: ../../settings_kb/data_types/data_types_parameters.rst:45
 msgid "**defaultStatus: String**"
 msgstr "**defaultStatus: String**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:45
+#: ../../settings_kb/data_types/data_types_parameters.rst:46
 msgid "Статус по умолчанию. Если не задан, то наследуется от родителя."
 msgstr "Default status. If not set, inherited from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:46
+#: ../../settings_kb/data_types/data_types_parameters.rst:47
 msgid "**boardRef: EntityRef**"
 msgstr "**boardRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:47
+#: ../../settings_kb/data_types/data_types_parameters.rst:48
 msgid "Ссылка на канбан доску. Не наследуется."
 msgstr "Reference to the Kanban board. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:48
+#: ../../settings_kb/data_types/data_types_parameters.rst:49
 msgid "**dashboardType: String**"
 msgstr "**dashboardType: String**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:49
+#: ../../settings_kb/data_types/data_types_parameters.rst:50
 msgid "Тип дашборда. Если не задан, то наследуется от родителя."
 msgstr "Dashboard type. If not set, inherited from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:50
+#: ../../settings_kb/data_types/data_types_parameters.rst:51
 msgid "**inheritForm: Boolean**"
 msgstr "**inheritForm: Boolean**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:51
+#: ../../settings_kb/data_types/data_types_parameters.rst:52
 msgid "Флаг для включения и отключения наследования формы. Не наследуется."
 msgstr "Flag to enable or disable form inheritance. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:52
+#: ../../settings_kb/data_types/data_types_parameters.rst:53
 msgid "**inheritActions: Boolean**"
 msgstr "**inheritActions: Boolean**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:53
+#: ../../settings_kb/data_types/data_types_parameters.rst:54
 msgid "Флаг для включения и отключения наследования действий. Не наследуется."
 msgstr "Flag to enable or disable actions inheritance. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:54
+#: ../../settings_kb/data_types/data_types_parameters.rst:55
 msgid "**inheritNumTemplate: Boolean**"
 msgstr "**inheritNumTemplate: Boolean**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:55
+#: ../../settings_kb/data_types/data_types_parameters.rst:56
 msgid ""
 "Флаг для включения и отключения наследования шаблона нумерации. Не "
 "наследуется."
 msgstr "Flag to enable or disable numbering template inheritance. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:56
+#: ../../settings_kb/data_types/data_types_parameters.rst:57
 msgid "**dispNameTemplate: MLText**"
 msgstr "**dispNameTemplate: MLText**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:57
+#: ../../settings_kb/data_types/data_types_parameters.rst:58
 msgid "Шаблон отображаемого имени. Если не задан, то наследуется от родителя."
 msgstr "Display name template. If not set, inherited from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:58
+#: ../../settings_kb/data_types/data_types_parameters.rst:59
 msgid "**numTemplateRef: EntityRef**"
 msgstr "**numTemplateRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:59
+#: ../../settings_kb/data_types/data_types_parameters.rst:60
 msgid ""
 "Шаблон нумерации. Если не задан и флаг inheritNumTemplate == true, то "
 "наследуются от родителя."
@@ -222,57 +241,61 @@ msgstr ""
 "Numbering template. If not set and the inheritNumTemplate flag == true, "
 "inherited from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:60
+#: ../../settings_kb/data_types/data_types_parameters.rst:61
 msgid "**actions: List<EntityRef>**"
 msgstr "**actions: List<EntityRef>**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:61
-msgid ""
-"Действия. Если не заданы И флаг inheritActions == true, то наследуются от"
-" родителя."
-msgstr ""
-"Actions. If not set AND the inheritActions flag == true, inherited from "
-"the parent."
-
 #: ../../settings_kb/data_types/data_types_parameters.rst:62
+msgid ""
+"Действия. При inheritActions == true родительские действия объединяются с"
+" собственными; повторяющиеся ссылки исключаются."
+msgstr "Actions. With inheritActions == true, parent actions are merged with own actions; duplicate references are removed."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:63
 msgid "**associations: List<AssocDef>**"
 msgstr "**associations: List<AssocDef>**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:63
-msgid ""
-"Ассоциации. Родительские ассоциации объединяются с ассоциациями текущего "
-"типа. Если id у ассоциаций совпадает, то происходит перезапись."
-msgstr ""
-"Associations. Parent associations are merged with the current type's "
-"associations. If association ids match, the values are overwritten."
-
 #: ../../settings_kb/data_types/data_types_parameters.rst:64
+msgid ""
+"Ассоциации объединяются по id. При совпадении id собственная конфигурация"
+" заменяет родительскую, но пустые attribute, target, name и незаданный "
+"child дозаполняются из родительской связи. Если родительского значения "
+"нет, часть настроек берётся из атрибута ASSOC. Подробнее — "
+":ref:`datatypes_associations`."
+msgstr "Associations are merged by id. Own configuration replaces a parent entry with the same id, but empty attribute, target, name and unspecified child are filled from the parent relationship. Without a parent value, some settings come from the ASSOC attribute. See :ref:`datatypes_associations`."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:65
 msgid "**defaultCreateVariant: Boolean?**"
 msgstr "**defaultCreateVariant: Boolean?**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:65
-msgid "Нужно ли генерировать вариант создания по умолчанию. Не наследуется."
-msgstr "Whether to generate a default create variant. Not inherited."
-
 #: ../../settings_kb/data_types/data_types_parameters.rst:66
+msgid ""
+"Нужно ли генерировать вариант создания по умолчанию. При null генерация "
+"включается, если собственный исходный список createVariants пуст. Для "
+"генерации требуется непустая ссылка на форму."
+msgstr "Whether to generate a default creation variant. With null, enabled if the original own createVariants list is empty. Generation requires a nonempty form reference."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:67
 msgid "**createVariants: List<CreateVariantDef>**"
 msgstr "**createVariants: List<CreateVariantDef>**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:67
-msgid "Варианты создания. Не наследуются. Вычисляются по правилам:"
-msgstr ""
-"Create variants. Not inherited. Calculated according to the following "
-"rules:"
-
-#: ../../settings_kb/data_types/data_types_parameters.rst:69
-msgid ""
-"Если **defaultCreateVariant == true**, то в список добавляется вариант "
-"создания с идентификатором **DEFAULT**."
-msgstr ""
-"If **defaultCreateVariant == true**, a create variant with the identifier"
-" **DEFAULT** is added to the list."
+#: ../../settings_kb/data_types/data_types_parameters.rst:68
+msgid "Варианты создания. Вычисляются по правилам:"
+msgstr "Creation variants. Resolved according to these rules:"
 
 #: ../../settings_kb/data_types/data_types_parameters.rst:70
+msgid ""
+"При включённой генерации defaultCreateVariant и непустом formRef "
+"добавляется вариант с идентификатором **DEFAULT**."
+msgstr "With defaultCreateVariant generation enabled and nonempty formRef, a variant with ID **DEFAULT** is added."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:71
+msgid ""
+"При **inheritCreateVariants == true** добавляются варианты родителя. "
+"Собственные варианты с совпадающим id имеют приоритет."
+msgstr "With **inheritCreateVariants == true**, parent variants are added. Own variants with matching id take precedence."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:72
 msgid ""
 "Если **createVariantsForChildTypes == true**, то варианты создания "
 "текущего типа будут содержать варианты создания дочерних типов."
@@ -280,11 +303,33 @@ msgstr ""
 "If **createVariantsForChildTypes == true**, the create variants of the "
 "current type will include the create variants of child types."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:72
+#: ../../settings_kb/data_types/data_types_parameters.rst:73
+msgid ""
+"Пустые имя, форма, источник и действие после создания дозаполняются из "
+"разрешённого типа. Варианты без sourceId исключаются."
+msgstr "Empty name, form, source and post-creation action are filled from the resolved type. Variants without sourceId are excluded."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:74
+msgid ""
+"Для базовых типов base, user-base, case, data-list итоговый список "
+"вариантов пуст."
+msgstr "The effective variant list is empty for base, user-base, case and data-list."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:76
+msgid "**inheritCreateVariants: Boolean?**"
+msgstr "**inheritCreateVariants: Boolean?**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:77
+msgid ""
+"Включает наследование вариантов создания. При null наследуется значение "
+"флага родителя; если оно также null, используется false."
+msgstr "Enables creation variant inheritance. Null inherits the parent flag; if also null, false is used."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:78
 msgid "**createVariantsForChildTypes: Boolean**"
 msgstr "**createVariantsForChildTypes: Boolean**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:73
+#: ../../settings_kb/data_types/data_types_parameters.rst:79
 msgid ""
 "Нужно ли добавлять в варианты создания варианты создания дочерних типов. "
 "Не наследуется."
@@ -292,35 +337,35 @@ msgstr ""
 "Whether to include the create variants of child types in the create "
 "variants list. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:74
+#: ../../settings_kb/data_types/data_types_parameters.rst:80
 msgid "**configFormRef: EntityRef**"
 msgstr "**configFormRef: EntityRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:75
+#: ../../settings_kb/data_types/data_types_parameters.rst:81
 msgid "Форма для доп. конфига. Если не задана, то наследуется."
 msgstr "Form for additional config. If not set, inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:76
+#: ../../settings_kb/data_types/data_types_parameters.rst:82
 msgid "**config: ObjectData**"
 msgstr "**config: ObjectData**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:77
+#: ../../settings_kb/data_types/data_types_parameters.rst:83
 msgid "Доп. конфиг. Не наследуется."
 msgstr "Additional config. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:78
+#: ../../settings_kb/data_types/data_types_parameters.rst:84
 msgid "**model: TypeModelDef**"
 msgstr "**model: TypeModelDef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:79
+#: ../../settings_kb/data_types/data_types_parameters.rst:85
 msgid "Модель. Наследуется. Ниже подробнее."
 msgstr "Model. Inherited. See details below."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:80
+#: ../../settings_kb/data_types/data_types_parameters.rst:86
 msgid "**↳ model.attributes**"
 msgstr "**↳ model.attributes**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:81
+#: ../../settings_kb/data_types/data_types_parameters.rst:87
 msgid ""
 "Атрибуты типа. Наследуются от родителя и объединяются с атрибутами "
 "текущего типа. Если id совпадает, то происходит полное переопределение."
@@ -328,11 +373,11 @@ msgstr ""
 "Type attributes. Inherited from the parent and merged with the current "
 "type's attributes. If ids match, a full override occurs."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:82
+#: ../../settings_kb/data_types/data_types_parameters.rst:88
 msgid "**↳ model.systemAttributes**"
 msgstr "**↳ model.systemAttributes**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:83
+#: ../../settings_kb/data_types/data_types_parameters.rst:89
 msgid ""
 "Системные атрибуты типа. Наследуются от родителя и объединяются с "
 "системными атрибутами текущего типа. Если id совпадает, то происходит "
@@ -342,11 +387,11 @@ msgstr ""
 "the current type's system attributes. If ids match, a full override "
 "occurs."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:84
+#: ../../settings_kb/data_types/data_types_parameters.rst:90
 msgid "**↳ model.roles**"
 msgstr "**↳ model.roles**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:85
+#: ../../settings_kb/data_types/data_types_parameters.rst:91
 msgid ""
 "Роли типа. Наследуются от родителя и объединяются с ролями текущего типа."
 " Если id совпадает, то происходит полное переопределение."
@@ -354,11 +399,11 @@ msgstr ""
 "Type roles. Inherited from the parent and merged with the current type's "
 "roles. If ids match, a full override occurs."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:86
+#: ../../settings_kb/data_types/data_types_parameters.rst:92
 msgid "**↳ model.statuses**"
 msgstr "**↳ model.statuses**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:87
+#: ../../settings_kb/data_types/data_types_parameters.rst:93
 msgid ""
 "Статусы типа. Наследуются от родителя и объединяются со статусами "
 "текущего типа. Если id совпадает, то происходит полное переопределение."
@@ -366,35 +411,37 @@ msgstr ""
 "Type statuses. Inherited from the parent and merged with the current "
 "type's statuses. If ids match, a full override occurs."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:88
+#: ../../settings_kb/data_types/data_types_parameters.rst:94
 msgid "**↳ model.stages**"
 msgstr "**↳ model.stages**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:89
-msgid "Стадии типа. Не наследуются от родителя."
-msgstr "Type stages. Not inherited from the parent."
+#: ../../settings_kb/data_types/data_types_parameters.rst:95
+msgid ""
+"Стадии типа. Если собственный список пуст, наследуется список родителя. "
+"Непустой собственный список заменяет родительский целиком."
+msgstr "Type stages. An empty own list inherits the parent list. A nonempty own list replaces it entirely."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:90
+#: ../../settings_kb/data_types/data_types_parameters.rst:96
 msgid "**docLib: DocLibDef**"
 msgstr "**docLib: DocLibDef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:91
+#: ../../settings_kb/data_types/data_types_parameters.rst:97
 msgid "Настройки библиотеки документов. Не наследуются."
 msgstr "Document library settings. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:92
+#: ../../settings_kb/data_types/data_types_parameters.rst:98
 msgid "**contentConfig: TypeContentConfig**"
 msgstr "**contentConfig: TypeContentConfig**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:93
+#: ../../settings_kb/data_types/data_types_parameters.rst:99
 msgid "Настройка работы с контентом. Наследуется. Ниже подробнее"
 msgstr "Content configuration. Inherited. See details below."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:94
+#: ../../settings_kb/data_types/data_types_parameters.rst:100
 msgid "**↳ contentConfig.path**"
 msgstr "**↳ contentConfig.path**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:95
+#: ../../settings_kb/data_types/data_types_parameters.rst:101
 msgid ""
 "Путь до атрибута с основным контентом документа. Если не задан, то "
 "наследуется от родителя."
@@ -402,33 +449,30 @@ msgstr ""
 "Path to the attribute containing the main document content. If not set, "
 "inherited from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:96
+#: ../../settings_kb/data_types/data_types_parameters.rst:102
 msgid "**↳ contentConfig.previewPath**"
 msgstr "**↳ contentConfig.previewPath**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:97
+#: ../../settings_kb/data_types/data_types_parameters.rst:103
 msgid ""
-"Путь до атрибута с основным контентом для превью. Если не задан, то "
-"наследуется от родителя. Если и в родителе он не задан, то берется "
-"значение path."
-msgstr ""
-"Path to the attribute containing the content for preview. If not set, "
-"inherited from the parent. If also not set in the parent, the path value "
-"is used."
+"Путь до контента для предпросмотра. Если не задан, используется "
+"собственный явно заданный path; иначе — непустой previewPath родителя, "
+"затем разрешённый основной path."
+msgstr "Preview content path. If unspecified, the explicitly defined own path is used; otherwise, the nonempty parent previewPath, then the resolved primary path."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:98
+#: ../../settings_kb/data_types/data_types_parameters.rst:104
 msgid "**↳ contentConfig.storageRef**"
 msgstr "**↳ contentConfig.storageRef**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:99
+#: ../../settings_kb/data_types/data_types_parameters.rst:105
 msgid "Ссылка на хранилище контента. Если не задана, то берется из родителя."
 msgstr "Reference to the content storage. If not set, taken from the parent."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:100
+#: ../../settings_kb/data_types/data_types_parameters.rst:106
 msgid "**↳ contentConfig.storageConfig**"
 msgstr "**↳ contentConfig.storageConfig**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:101
+#: ../../settings_kb/data_types/data_types_parameters.rst:107
 msgid ""
 "Конфигурация хранилища контента. Берется из родителя если storageRef не "
 "задан."
@@ -436,31 +480,31 @@ msgstr ""
 "Content storage configuration. Taken from the parent if storageRef is not"
 " set."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:102
+#: ../../settings_kb/data_types/data_types_parameters.rst:108
 msgid "**properties**"
 msgstr "**properties**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:103
+#: ../../settings_kb/data_types/data_types_parameters.rst:109
 msgid "Доп. настройки типа. Не наследуются."
 msgstr "Additional type settings. Not inherited."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:104
+#: ../../settings_kb/data_types/data_types_parameters.rst:110
 msgid "**aspects**"
 msgstr "**aspects**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:105
+#: ../../settings_kb/data_types/data_types_parameters.rst:111
 msgid ""
-"Аспекты типа. Аспекты родителя объединяются с аспектами в текущем типе. "
-"Если поле ref у аспектов совпадает, то происходит переопределение."
-msgstr ""
-"Type aspects. Parent aspects are merged with the current type's aspects. "
-"If the ref field of aspects matches, an override occurs."
+"Аспекты объединяются по ref. При совпадении ref и inheritConfig == true "
+"основой конфигурации служит конфигурация родительского аспекта; иначе "
+"используется defaultConfig аспекта. Собственные ключи config "
+"накладываются поверх выбранной основы."
+msgstr "Aspects are merged by ref. With matching ref and inheritConfig == true, the parent aspect configuration is the base; otherwise, aspect defaultConfig is used. Own config keys override the selected base."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:106
+#: ../../settings_kb/data_types/data_types_parameters.rst:112
 msgid "**queryPermsPolicy**"
 msgstr "**queryPermsPolicy**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:107
+#: ../../settings_kb/data_types/data_types_parameters.rst:113
 msgid ""
 "Политика поиска с проверкой прав. Наследуется от родителя если текущее "
 "значение DEFAULT"
@@ -468,25 +512,108 @@ msgstr ""
 "Permission check policy for search. Inherited from the parent if the "
 "current value is DEFAULT."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:108
+#: ../../settings_kb/data_types/data_types_parameters.rst:114
 msgid "**assignablePerms**"
 msgstr "**assignablePerms**"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:109
+#: ../../settings_kb/data_types/data_types_parameters.rst:115
 msgid "Назначаемые права. Объединяются с назначаемыми правами родительского типа."
 msgstr ""
 "Assignable permissions. Merged with the parent type's assignable "
 "permissions."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:112
+#: ../../settings_kb/data_types/data_types_parameters.rst:116
+msgid "**localIdTemplate: String**"
+msgstr "**localIdTemplate: String**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:117
+msgid ""
+"Шаблон локального идентификатора записи. Пустое значение наследуется от "
+"родителя; ``-`` отключает наследование шаблона."
+msgstr "Record local identifier template. Empty inherits the parent; ``-`` disables template inheritance."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:118
+msgid "**postCreateActionRef: EntityRef**"
+msgstr "**postCreateActionRef: EntityRef**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:119
+msgid "Действие после создания записи. Пустое значение наследуется от родителя."
+msgstr "Post-creation action. Empty inherits the parent."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:120
+msgid "**workspace: String**"
+msgstr "**workspace: String**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:121
+msgid "Рабочее пространство типа. Пустое значение соответствует глобальному типу."
+msgstr "Type workspace. Empty denotes a global type."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:122
+msgid "**workspaceScope**"
+msgstr "**workspaceScope**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:123
+msgid ""
+"Видимость экземпляров в рабочих пространствах. У глобального типа DEFAULT"
+" наследуется от родителя. Для типа рабочего пространства применяется "
+"PRIVATE."
+msgstr "Instance visibility in workspaces. Global types inherit DEFAULT from the parent. Workspace types use PRIVATE."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:124
+msgid "**defaultWorkspace: String**"
+msgstr "**defaultWorkspace: String**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:125
+msgid ""
+"Рабочее пространство по умолчанию. У глобального типа пустое значение "
+"наследуется; у типа рабочего пространства используется пространство "
+"самого типа."
+msgstr "Default workspace. Empty is inherited for global types; workspace types use their own workspace."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:126
+msgid "**metaRecord: EntityRef**"
+msgstr "**metaRecord: EntityRef**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:127
+msgid ""
+"Запись для получения метаданных. При пустом значении формируется как "
+"``sourceId + '@'`` после разрешения источника."
+msgstr "Record for retrieving metadata. If empty, generated as ``sourceId + '@'`` after source resolution."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:128
+msgid "**system: Boolean**"
+msgstr "**system: Boolean**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:129
+msgid ""
+"Признак системного типа, используемый, в частности, для фильтрации "
+"журнала типов."
+msgstr "System type flag, used among other things to filter the type journal."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:130
+msgid "**sourceRef: EntityRef**"
+msgstr "**sourceRef: EntityRef**"
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:131
+msgid "Дополнительная ссылка на источник, сохраняемая в определении типа."
+msgstr "Additional source reference stored in the type definition."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:133
+msgid ""
+"Для автоматически формируемых формы и журнала используется ID "
+"``type$<id>``. У типа рабочего пространства в него включается префикс: "
+"``type$<префикс_пространства>:<id>``."
+msgstr "Automatically generated forms and journals use ``type$<id>``. Workspace types include the prefix: ``type$<префикс_пространства>:<id>``."
+
+#: ../../settings_kb/data_types/data_types_parameters.rst:136
 msgid "Отображаемое имя сущности"
 msgstr "Entity display name"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:114
+#: ../../settings_kb/data_types/data_types_parameters.rst:138
 msgid "Есть несколько сценариев для работы с отображаемым именем сущности."
 msgstr "There are several scenarios for working with the entity display name."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:116
+#: ../../settings_kb/data_types/data_types_parameters.rst:140
 msgid ""
 "Если необходимо, чтобы имя сущности всегда формировалось по шаблону, то "
 "следует использовать поле ``dispNameTemplate`` в типе;"
@@ -494,7 +621,7 @@ msgstr ""
 "If the entity name should always be generated from a template, use the "
 "``dispNameTemplate`` field in the type;"
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:117
+#: ../../settings_kb/data_types/data_types_parameters.rst:141
 msgid ""
 "Если необходимо, чтобы именем сущности можно было управлять, то следует в"
 " список атрибутов добавить атрибут с **id = 'name'**. Система "
@@ -506,7 +633,7 @@ msgstr ""
 "field as the display name (:ref:`scalar<scalars>` **?disp** in Records "
 "API)."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:119
+#: ../../settings_kb/data_types/data_types_parameters.rst:143
 msgid ""
 "Можно вывести поле name на форму и тогда пользователь сможет сам им "
 "управлять"
@@ -514,7 +641,7 @@ msgstr ""
 "The name field can be placed on the form so the user can manage it "
 "directly."
 
-#: ../../settings_kb/data_types/data_types_parameters.rst:120
+#: ../../settings_kb/data_types/data_types_parameters.rst:144
 msgid ""
 "Можно поле **name** не выводить на форму, но позволить пользователю "
 "работать с ``_content`` атрибутом. В этом случае при загрузке нового "
@@ -525,3 +652,73 @@ msgstr ""
 " content will automatically update the name field and, consequently, the "
 "display name."
 
+#~ msgid "Уникальный идентификатор типа. Не наследуется."
+#~ msgstr "Unique identifier of the type. Not inherited."
+
+#~ msgid "Имя типа. Не наследуется."
+#~ msgstr "Name of the type. Not inherited."
+
+#~ msgid "Тип хранилища. Не наследуется."
+#~ msgstr "Storage type. Not inherited."
+
+#~ msgid "Если задан, то остается как есть."
+#~ msgstr "If set, it remains as is."
+
+#~ msgid "Если не задан. то:"
+#~ msgstr "If not set, then:"
+
+#~ msgid "Если **storageType = DEFAULT**, то берем sourceId родительского типа."
+#~ msgstr "If **storageType = DEFAULT**, the sourceId of the parent type is used."
+
+#~ msgid "Ссылка на родительский тип. Не наследуется."
+#~ msgstr "Reference to the parent type. Not inherited."
+
+#~ msgid ""
+#~ "Действия. Если не заданы И флаг "
+#~ "inheritActions == true, то наследуются "
+#~ "от родителя."
+#~ msgstr ""
+#~ "Actions. If not set AND the "
+#~ "inheritActions flag == true, inherited "
+#~ "from the parent."
+
+#~ msgid ""
+#~ "Ассоциации. Родительские ассоциации объединяются "
+#~ "с ассоциациями текущего типа. Если id"
+#~ " у ассоциаций совпадает, то происходит "
+#~ "перезапись."
+#~ msgstr ""
+#~ "Associations. Parent associations are merged"
+#~ " with the current type's associations. "
+#~ "If association ids match, the values "
+#~ "are overwritten."
+
+#~ msgid "Нужно ли генерировать вариант создания по умолчанию. Не наследуется."
+#~ msgstr "Whether to generate a default create variant. Not inherited."
+
+#~ msgid "Стадии типа. Не наследуются от родителя."
+#~ msgstr "Type stages. Not inherited from the parent."
+
+#~ msgid ""
+#~ "Путь до атрибута с основным контентом"
+#~ " для превью. Если не задан, то "
+#~ "наследуется от родителя. Если и в "
+#~ "родителе он не задан, то берется "
+#~ "значение path."
+#~ msgstr ""
+#~ "Path to the attribute containing the "
+#~ "content for preview. If not set, "
+#~ "inherited from the parent. If also "
+#~ "not set in the parent, the path"
+#~ " value is used."
+
+#~ msgid ""
+#~ "Аспекты типа. Аспекты родителя объединяются"
+#~ " с аспектами в текущем типе. Если "
+#~ "поле ref у аспектов совпадает, то "
+#~ "происходит переопределение."
+#~ msgstr ""
+#~ "Type aspects. Parent aspects are merged"
+#~ " with the current type's aspects. If"
+#~ " the ref field of aspects matches,"
+#~ " an override occurs."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,46 +28,37 @@ msgstr "Contents"
 
 #: ../../general/Core_mechanisms/Events.rst:9
 msgid ""
-"**События (Events)** — механизм межсервисного взаимодействия в платформе "
-"Citeck, позволяющий микросервисам реагировать на изменения в системе без "
-"прямой зависимости друг от друга."
-msgstr ""
-"**Events** — an inter-service communication mechanism in the Citeck "
-"platform that allows microservices to react to changes in the system "
-"without direct dependencies on each other."
+"**События (Events)** — механизм локального и межсервисного взаимодействия"
+" в платформе Citeck. Подписчики выбирают тип события и необходимые им "
+"атрибуты. Ниже описаны API и ограничения ``ecos-events2 "
+"2.14.0-SNAPSHOT``."
+msgstr "**Events** are a mechanism for local and interservice communication in Citeck. Subscribers select the event type and the attributes they need. The API and limitations of ``ecos-events2 2.14.0-SNAPSHOT`` are described below."
 
 #: ../../general/Core_mechanisms/Events.rst:11
 msgid ""
-"События генерируются при изменении состояния объектов: создании, "
-"обновлении или удалении записей, смене статуса, изменении атрибутов, "
-"назначении задач и других действиях. Подписчики получают только те "
-"атрибуты, которые им нужны, — без модификации источника событий."
-msgstr ""
-"Events are generated when the state of objects changes: when records are "
-"created, updated, or deleted, when the status changes, attributes are "
-"modified, tasks are assigned, and other actions. Subscribers receive only"
-" the attributes they need — without modifying the event source."
+"Библиотека предоставляет стандартные события записей и средства "
+"публикации собственных событий. Их генерация при создании, изменении или "
+"удалении записей, назначении задач и других действиях определяется "
+"интеграцией соответствующего источника данных."
+msgstr "The library provides standard record events and facilities for publishing custom events. Whether events are generated when records are created, changed or deleted, tasks are assigned, or other actions occur depends on the integration of the relevant data source."
 
 #: ../../general/Core_mechanisms/Events.rst:13
-msgid "Механизм поддерживает два режима доставки:"
-msgstr "The mechanism supports two delivery modes:"
+msgid "Слушатели поддерживают два режима обработки:"
+msgstr "Listeners support two processing modes:"
 
 #: ../../general/Core_mechanisms/Events.rst:15
 msgid ""
-"**Нетранзакционные** — доставка через RabbitMQ после завершения "
-"транзакции (слабая связность между сервисами);"
-msgstr ""
-"**Non-transactional** — delivery via RabbitMQ after the transaction "
-"completes (loose coupling between services);"
+"**Нетранзакционный** (по умолчанию) — локальный обработчик при "
+"транзакционном вызове ставится на выполнение после commit; для удалённой "
+"нетранзакционной доставки используется RabbitMQ;"
+msgstr "**Non-transactional** (default): during a transactional call, the local handler is scheduled to run after commit; remote non-transactional delivery uses RabbitMQ;"
 
 #: ../../general/Core_mechanisms/Events.rst:16
 msgid ""
-"**Транзакционные** — синхронная доставка в рамках текущей транзакции "
-"(позволяет прерывать транзакцию или выполнять действия «здесь и сейчас»)."
-msgstr ""
-"**Transactional** — synchronous delivery within the current transaction "
-"(allows interrupting the transaction or performing actions \"here and "
-"now\")."
+"**Транзакционный** — обработчик вызывается синхронно в транзакционном "
+"пути; удалённый слушатель вызывается через web-запрос. Исключение "
+"обработчика может повлиять на успех вызывающей операции."
+msgstr "**Transactional**: the handler is invoked synchronously in the transactional path; a remote listener is invoked through a web request. A handler exception may affect the success of the calling operation."
 
 #: ../../general/Core_mechanisms/Events.rst:19
 msgid "Events 2.0"
@@ -75,98 +66,286 @@ msgstr "Events 2.0"
 
 #: ../../general/Core_mechanisms/Events.rst:21
 msgid ""
-"Реакция на события (events) строится на основе rabbitmq и моделей events "
-"в библиотеке - `ecos-events <https://github.com/Citeck/ecos-events>`_. На"
-" стороне producer и consumer строится подключение к rabbitmq. Пример: "
-"отправка уведомлений как реакция на событие - сменился статус, изменился "
-"атрибут, назначилась задача и т.д."
-msgstr ""
-"Event reactions are built on RabbitMQ and event models in the `ecos-"
-"events <https://github.com/Citeck/ecos-events>`_ library. RabbitMQ "
-"connections are established on both the producer and consumer sides. "
-"Example: sending notifications in response to an event — status changed, "
-"attribute modified, task assigned, etc."
+"Модель событий и локальная обработка предоставляются библиотекой `ecos-"
+"events <https://github.com/Citeck/ecos-events>`_, модуль ``ecos-"
+"events2``. Межсервисная RabbitMQ-интеграция реализована отдельным модулем"
+" ``ecos-events2-rabbitmq`` и использует также ZooKeeper и web-клиент. "
+"Локальные события могут обрабатываться без удалённого транспорта."
+msgstr "The event model and local processing are provided by the `ecos-events <https://github.com/Citeck/ecos-events>`_ library, in the ``ecos-events2`` module. Interservice RabbitMQ integration is implemented by the separate ``ecos-events2-rabbitmq`` module and also uses ZooKeeper and a web client. Local events can be processed without remote transport."
 
 #: ../../general/Core_mechanisms/Events.rst:23
-msgid "Общая архитектура:"
-msgstr "Overall architecture:"
+msgid "Пример интеграции с микросервисом уведомлений:"
+msgstr "Example integration with the notification microservice:"
 
-#: ../../general/Core_mechanisms/Events.rst:29
+#: ../../general/Core_mechanisms/Events.rst:28
+msgid ""
+"Схема показывает частный сценарий отправки уведомлений через очередь. "
+"Шаблоны и каналы доставки относятся к сервису уведомлений; локальные "
+"обработчики и синхронный web-путь на схеме не показаны."
+msgstr "The diagram shows a specific scenario for sending notifications through a queue. Templates and delivery channels belong to the notification service; local handlers and the synchronous web path are not shown."
+
+#: ../../general/Core_mechanisms/Events.rst:31
 msgid "Описание работы"
 msgstr "How It Works"
 
-#: ../../general/Core_mechanisms/Events.rst:31
+#: ../../general/Core_mechanisms/Events.rst:33
 msgid ""
-"События в Citeck позволяют менять атрибутивный состав, который нужен "
-"подписчику на событие, без модификации источника событий. При старте "
-"системы все подписчики регистрируют в Zookeeper список необходимых им "
-"событий по типам и атрибуты события, в которых они заинтересованы."
-msgstr ""
-"Events in Citeck allow changing the set of attributes required by an "
-"event subscriber without modifying the event source. At system startup, "
-"all subscribers register in Zookeeper the list of event types they need "
-"and the event attributes they are interested in."
+"Подписчик задаёт атрибуты в формате Records API через карту "
+"``withAttributes`` или DTO-класс. Для получения дополнительных данных не "
+"нужно менять payload источника, если эти данные доступны через его граф "
+"атрибутов."
+msgstr "The subscriber specifies attributes in Records API format through the ``withAttributes`` map or a DTO class. Additional data does not require changing the source payload if it is available through the source attribute graph."
 
-#: ../../general/Core_mechanisms/Events.rst:34
+#: ../../general/Core_mechanisms/Events.rst:35
 msgid ""
-"Приложение, которое может отправлять события подобного типа, видит, что в"
-" системе есть подписчики на эти события, и, при их возникновении, "
-"подготовив необходимый список атрибутов, отправляет их в Rabbit MQ "
-"(нетранзакционные слушатели) или напрямую слушателю (транзакционные "
-"слушатели) через синхронный запрос."
-msgstr ""
-"The application that can emit events of this type sees that there are "
-"subscribers to these events in the system, and when events occur, it "
-"prepares the required list of attributes and sends them to RabbitMQ (for "
-"non-transactional listeners) or directly to the listener (for "
-"transactional listeners) via a synchronous request."
+"При настроенной удалённой интеграции подписки публикуются в ZooKeeper по "
+"типу события и требуемым атрибутам. Подписки можно добавлять и удалять во"
+" время работы; регистрация не ограничена стартом приложения."
+msgstr "When remote integration is configured, subscriptions are published in ZooKeeper by event type and required attributes. Subscriptions can be added and removed at runtime; registration is not limited to application startup."
 
 #: ../../general/Core_mechanisms/Events.rst:37
 msgid ""
-"Атрибуты описываются в формате Records API и могут пользоваться всеми "
-"преимуществами данного API."
-msgstr ""
-"Attributes are described in the Records API format and can take full "
-"advantage of that API."
+"Producer загружает объединение атрибутов всех заинтересованных "
+"слушателей, включая поля для фильтров. Для каждого слушателя формируется "
+"его проекция данных. Чтение атрибутов producer выполняется в системном "
+"контексте; это нужно учитывать при выборе данных события и обработчиков."
+msgstr "The producer loads the union of attributes required by all interested listeners, including filter fields. Each listener receives its own data projection. The producer reads attributes in the system context; take this into account when choosing event data and handlers."
 
-#: ../../general/Core_mechanisms/Events.rst:40
+#: ../../general/Core_mechanisms/Events.rst:39
+msgid ""
+"Удалённое транзакционное событие передаётся синхронным web-вызовом "
+"executor ``/events``, нетранзакционное — публикацией в RabbitMQ exchange "
+"``ecos-events``. Получатель RabbitMQ обрабатывает событие в новой "
+"транзакции."
+msgstr "A remote transactional event is sent through a synchronous web call to the ``/events`` executor; a non-transactional event is published to the RabbitMQ ``ecos-events`` exchange. The RabbitMQ receiver processes the event in a new transaction."
+
+#: ../../general/Core_mechanisms/Events.rst:41
+msgid ""
+"Момент публикации сообщения зависит от транспортной и транзакционной "
+"интеграции. Выполнение локального обработчика после commit само по себе "
+"не означает, что любая публикация RabbitMQ происходит только после "
+"успешного commit producer."
+msgstr "The time at which a message is published depends on the transport and transaction integration. Running a local handler after commit does not itself mean that every RabbitMQ publication occurs only after a successful producer commit."
+
+#: ../../general/Core_mechanisms/Events.rst:44
 msgid "Транзакционные слушатели"
 msgstr "Transactional Listeners"
 
-#: ../../general/Core_mechanisms/Events.rst:42
+#: ../../general/Core_mechanisms/Events.rst:46
 msgid ""
 "Транзакционные слушатели позволяют реагировать на события \"здесь и "
-"сейчас\", не дожидаясь пока транзакция завершится. Подобные слушатели "
-"могут быть использованы, чтобы добавить валидацию состояния системы с "
-"возможностью прервать транзакцию или для любых других действий, которые "
-"должны выполниться в рамках транзакции."
-msgstr ""
-"Transactional listeners allow reacting to events \"here and now\" without"
-" waiting for the transaction to complete. Such listeners can be used to "
-"add system state validation with the ability to abort the transaction, or"
-" for any other actions that must be performed within the transaction."
+"сейчас\", не дожидаясь пока транзакция завершится. Такие слушатели можно "
+"использовать для валидации с возможностью прервать вызывающую операцию "
+"исключением. Границы транзакций между приложениями определяются "
+"интеграцией webapp/txn: синхронный вызов сам по себе не гарантирует "
+"единую атомарную DB-транзакцию нескольких микросервисов."
+msgstr "Transactional listeners can react to events immediately, without waiting for the transaction to complete. They can be used for validation, with exceptions aborting the calling operation. Transaction boundaries between applications are determined by the webapp/txn integration: a synchronous call alone does not guarantee a single atomic database transaction across multiple microservices."
 
-#: ../../general/Core_mechanisms/Events.rst:45
+#: ../../general/Core_mechanisms/Events.rst:49
 msgid ""
-"Важная особенность - добавляя транзакционных слушателей вы автоматически "
-"добавляете жесткую зависимость генерирующих события микросервисов от "
-"микросервиса со слушателем. Т.е. если микросервис со слушателем "
-"недоступен, то микросервис, генерирующий события не сможет "
-"функционировать в полной мере."
-msgstr ""
-"An important consideration: by adding transactional listeners, you "
-"automatically introduce a hard dependency of event-generating "
-"microservices on the microservice containing the listener. That is, if "
-"the microservice with the listener is unavailable, the event-generating "
-"microservice will not be able to function fully."
+"Удалённый транзакционный слушатель создаёт зависимость доступности: если "
+"приложение со слушателем недоступно или возвращает ошибку, отправляющая "
+"операция может завершиться ошибкой. В примерах ниже "
+"``withTransactional(true)`` выбран явно; по умолчанию этот параметр равен"
+" ``false``."
+msgstr "A remote transactional listener creates an availability dependency: if its application is unavailable or returns an error, the sending operation may fail. The examples below explicitly select ``withTransactional(true)``; this parameter defaults to ``false``."
 
-#: ../../general/Core_mechanisms/Events.rst:48
+#: ../../general/Core_mechanisms/Events.rst:52
+msgid "Параметры подписки"
+msgstr "Subscription parameters"
+
+#: ../../general/Core_mechanisms/Events.rst:59
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../general/Core_mechanisms/Events.rst:60
+msgid "По умолчанию"
+msgstr "Default"
+
+#: ../../general/Core_mechanisms/Events.rst:61
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../general/Core_mechanisms/Events.rst:62
+msgid "``transactional``"
+msgstr "``transactional``"
+
+#: ../../general/Core_mechanisms/Events.rst:63
+#: ../../general/Core_mechanisms/Events.rst:66
+msgid "``false``"
+msgstr "``false``"
+
+#: ../../general/Core_mechanisms/Events.rst:64
+msgid "Синхронная обработка в транзакционном пути"
+msgstr "Synchronous processing in the transactional path"
+
+#: ../../general/Core_mechanisms/Events.rst:65
+msgid "``local``"
+msgstr "``local``"
+
+#: ../../general/Core_mechanisms/Events.rst:67
+msgid ""
+"При ``true`` подписка остаётся локальной и не экспортируется для "
+"удалённых событий"
+msgstr "If ``true``, the subscription remains local and is not exported for remote events"
+
+#: ../../general/Core_mechanisms/Events.rst:68
+msgid "``exclusive``"
+msgstr "``exclusive``"
+
+#: ../../general/Core_mechanisms/Events.rst:69
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../general/Core_mechanisms/Events.rst:70
+msgid ""
+"Удалённое событие обрабатывается одним экземпляром приложения; при "
+"``false`` каждый экземпляр получает отдельную доставку"
+msgstr "A remote event is processed by one application instance; if ``false``, each instance receives a separate delivery"
+
+#: ../../general/Core_mechanisms/Events.rst:71
+msgid "``filter``"
+msgstr "``filter``"
+
+#: ../../general/Core_mechanisms/Events.rst:72
+msgid "Без условий"
+msgstr "No conditions"
+
+#: ../../general/Core_mechanisms/Events.rst:73
+msgid "Предикат отбора событий"
+msgstr "Event selection predicate"
+
+#: ../../general/Core_mechanisms/Events.rst:74
+msgid "``id``"
+msgstr "``id``"
+
+#: ../../general/Core_mechanisms/Events.rst:75
+msgid "UUID"
+msgstr "UUID"
+
+#: ../../general/Core_mechanisms/Events.rst:76
+msgid "Идентификатор подписки для последующего удаления"
+msgstr "Subscription identifier for subsequent removal"
+
+#: ../../general/Core_mechanisms/Events.rst:78
+msgid ""
+"``dataClass`` и ``action`` обязательны. Сочетание ``transactional=true`` "
+"и ``exclusive=false`` запрещено."
+msgstr "``dataClass`` and ``action`` are required. The combination ``transactional=true`` and ``exclusive=false`` is prohibited."
+
+#: ../../general/Core_mechanisms/Events.rst:80
+msgid ""
+"``addListener`` возвращает ``ListenerHandle`` с методом ``remove()``. "
+"Также доступны ``eventsService.removeListener(id)`` и удаление по "
+"конфигурации."
+msgstr "``addListener`` returns a ``ListenerHandle`` with a ``remove()`` method. You can also use ``eventsService.removeListener(id)`` or remove a listener by configuration."
+
+#: ../../general/Core_mechanisms/Events.rst:83
+msgid "Стандартные события записей"
+msgstr "Standard record events"
+
+#: ../../general/Core_mechanisms/Events.rst:85
+msgid ""
+"В файле ``RecordEventTypes.kt`` модуля ``ecos-events2`` определены "
+"следующие типы:"
+msgstr "The following types are defined in ``RecordEventTypes.kt`` in the ``ecos-events2`` module:"
+
+#: ../../general/Core_mechanisms/Events.rst:92
+msgid "Класс"
+msgstr "Class"
+
+#: ../../general/Core_mechanisms/Events.rst:93
+msgid "Значение ``TYPE``"
+msgstr "``TYPE`` value"
+
+#: ../../general/Core_mechanisms/Events.rst:94
+msgid "Поля payload"
+msgstr "Payload fields"
+
+#: ../../general/Core_mechanisms/Events.rst:95
+msgid "``RecordCreatedEvent``"
+msgstr "``RecordCreatedEvent``"
+
+#: ../../general/Core_mechanisms/Events.rst:96
+msgid "``record-created``"
+msgstr "``record-created``"
+
+#: ../../general/Core_mechanisms/Events.rst:97
+#: ../../general/Core_mechanisms/Events.rst:103
+msgid "``record``, ``typeDef``"
+msgstr "``record``, ``typeDef``"
+
+#: ../../general/Core_mechanisms/Events.rst:98
+msgid "``RecordChangedEvent``"
+msgstr "``RecordChangedEvent``"
+
+#: ../../general/Core_mechanisms/Events.rst:99
+msgid "``record-changed``"
+msgstr "``record-changed``"
+
+#: ../../general/Core_mechanisms/Events.rst:100
+msgid "``record``, ``typeDef``, ``before``, ``after``, вычисляемый ``diff``"
+msgstr "``record``, ``typeDef``, ``before``, ``after``, computed ``diff``"
+
+#: ../../general/Core_mechanisms/Events.rst:101
+msgid "``RecordDeletedEvent``"
+msgstr "``RecordDeletedEvent``"
+
+#: ../../general/Core_mechanisms/Events.rst:102
+msgid "``record-deleted``"
+msgstr "``record-deleted``"
+
+#: ../../general/Core_mechanisms/Events.rst:104
+msgid "``RecordStatusChangedEvent``"
+msgstr "``RecordStatusChangedEvent``"
+
+#: ../../general/Core_mechanisms/Events.rst:105
+msgid "``record-status-changed``"
+msgstr "``record-status-changed``"
+
+#: ../../general/Core_mechanisms/Events.rst:106
+#: ../../general/Core_mechanisms/Events.rst:109
+msgid "``record``, ``typeDef``, ``before``, ``after``"
+msgstr "``record``, ``typeDef``, ``before``, ``after``"
+
+#: ../../general/Core_mechanisms/Events.rst:107
+msgid "``RecordDraftStatusChangedEvent``"
+msgstr "``RecordDraftStatusChangedEvent``"
+
+#: ../../general/Core_mechanisms/Events.rst:108
+msgid "``record-draft-status-changed``"
+msgstr "``record-draft-status-changed``"
+
+#: ../../general/Core_mechanisms/Events.rst:111
+msgid ""
+"Другие прикладные и пользовательские события определяются их источниками."
+" Набор доступных полей нужно проверять по payload конкретного события."
+msgstr "Other application and custom events are defined by their sources. Check the payload of the specific event for available fields."
+
+#: ../../general/Core_mechanisms/Events.rst:113
+msgid ""
+"Метаданные события доступны через контекстный атрибут ``$event``: ``id``,"
+" ``time``, ``type``, ``user``, ``source``. В ``source`` содержатся "
+"идентификатор источника, имя приложения и его экземпляра. ``time`` и "
+"``user`` фиксируются при отправке события; ``user`` не обязательно "
+"совпадает с создателем записи."
+msgstr "Event metadata is available through the ``$event`` context attribute: ``id``, ``time``, ``type``, ``user``, ``source``. The ``source`` contains the source identifier, application name and instance identifier. ``time`` and ``user`` are recorded when the event is sent; ``user`` is not necessarily the record creator."
+
+#: ../../general/Core_mechanisms/Events.rst:116
 msgid "Примеры"
 msgstr "Examples"
 
-#: ../../general/Core_mechanisms/Events.rst:51
+#: ../../general/Core_mechanisms/Events.rst:119
 msgid "Подписка на событие с произвольными атрибутами"
 msgstr "Subscribing to an event with arbitrary attributes"
+
+#: ../../general/Core_mechanisms/Events.rst:121
+msgid ""
+"Фрагменты ниже предполагают доступный ``eventsService``, предоставленный "
+"интеграцией приложения. Для Java-фрагмента нужны, в частности, импорты "
+"``DataValue``, ``RecordCreatedEvent``, ``Map``, ``HashMap`` и "
+"``kotlin.Unit``."
+msgstr "The snippets below assume that ``eventsService`` is provided by the application integration. The Java snippet requires imports including ``DataValue``, ``RecordCreatedEvent``, ``Map``, ``HashMap`` and ``kotlin.Unit``."
 
 #: ../../general/Core_mechanisms/Events.rst
 msgid "Kotlin"
@@ -176,41 +355,231 @@ msgstr "Kotlin"
 msgid "Java"
 msgstr "Java"
 
-#: ../../general/Core_mechanisms/Events.rst:93
+#: ../../general/Core_mechanisms/Events.rst:163
 msgid "Пример listener-а событий для определенного типа данных"
 msgstr "Example of an event listener for a specific data type"
 
-#: ../../general/Core_mechanisms/Events.rst:179
+#: ../../general/Core_mechanisms/Events.rst:165
+msgid ""
+"В следующем примере фильтр ``typeDef.id`` сравнивает точный ID типа. "
+"Включение наследников таким условием не подразумевается. Карта "
+"``withAttributes`` может переопределять пути DTO по совпадающим алиасам; "
+"атрибуты фильтра загружаются дополнительно."
+msgstr "In the following example, the ``typeDef.id`` filter compares the exact type ID. This condition does not imply inclusion of descendant types. The ``withAttributes`` map can override DTO paths with matching aliases; filter attributes are loaded additionally."
+
+#: ../../general/Core_mechanisms/Events.rst:251
 msgid ""
 "В теле каждого ``withAction`` вместо ``println`` должна быть ваша "
-"бизнес-логика. Аналогичным образом можно подписаться и на другие уже "
-"реализованные события — например, ``RecordStatusChangedEvent``, "
-"``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent`` и т.д., "
-"а также на собственные события. Полный список — в классе "
-"``RecordEventTypes.kt`` библиотеки ``ecos-events2``."
-msgstr ""
-"The body of each ``withAction`` should contain your business logic "
-"instead of ``println``. In the same way, you can subscribe to other "
-"already implemented events — for example, ``RecordStatusChangedEvent``, "
-"``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent``, etc., "
-"as well as to your own custom events. The full list is available in the "
-"``RecordEventTypes.kt`` class of the ``ecos-events2`` library."
+"бизнес-логика. Аналогичным образом можно подписаться на другие "
+"стандартные события из таблицы выше и на события, публикуемые вашим "
+"приложением. Импорт ``javax.annotation.PostConstruct`` соответствует "
+"показанному поколению зависимостей; для приложений с Jakarta следует "
+"использовать подходящий импорт из их зависимостей."
+msgstr "Replace ``println`` in each ``withAction`` body with your business logic. You can similarly subscribe to other standard events in the table above and events published by your application. The ``javax.annotation.PostConstruct`` import matches the dependency generation shown; Jakarta applications should use the appropriate import from their dependencies."
 
-#: ../../general/Core_mechanisms/Events.rst:181
+#: ../../general/Core_mechanisms/Events.rst:253
 msgid ""
 "В data-классах (``RecordUpdated``, ``RecordCreated``, ``RecordDeleted``) "
-"определяется набор данных, которые нужно получить из события; там же, в "
-"``RecordEventTypes.kt``, можно посмотреть, какие атрибуты события "
-"доступны."
-msgstr ""
-"The data classes (``RecordUpdated``, ``RecordCreated``, "
-"``RecordDeleted``) define the set of data to be obtained from the event; "
-"``RecordEventTypes.kt`` also shows which event attributes are available."
+"определяется проекция данных для обработчика. Поля payload стандартных "
+"событий описаны в файле ``RecordEventTypes.kt``, а метаданные ``$event`` "
+"— в ``EcosEventInfo``."
+msgstr "The data classes (``RecordUpdated``, ``RecordCreated``, ``RecordDeleted``) define the data projection for the handler. Standard event payload fields are described in ``RecordEventTypes.kt``, and ``$event`` metadata in ``EcosEventInfo``."
 
-#: ../../general/Core_mechanisms/Events.rst:183
-msgid "Пояснения:"
-msgstr "Notes:"
+#: ../../general/Core_mechanisms/Events.rst:255
+msgid ""
+"Иллюстрация настройки слушателя. Поле ``user`` в ней следует понимать как"
+" пользователя отправки события:"
+msgstr "Listener configuration illustration. Its ``user`` field means the user sending the event:"
 
 #~ msgid "Подписка на событие с произвольными атрибутами (Kotlin)"
 #~ msgstr "Subscribing to an event with arbitrary attributes (Kotlin)"
 
+#~ msgid ""
+#~ "**События (Events)** — механизм межсервисного"
+#~ " взаимодействия в платформе Citeck, "
+#~ "позволяющий микросервисам реагировать на "
+#~ "изменения в системе без прямой "
+#~ "зависимости друг от друга."
+#~ msgstr ""
+#~ "**Events** — an inter-service "
+#~ "communication mechanism in the Citeck "
+#~ "platform that allows microservices to "
+#~ "react to changes in the system "
+#~ "without direct dependencies on each "
+#~ "other."
+
+#~ msgid ""
+#~ "События генерируются при изменении состояния"
+#~ " объектов: создании, обновлении или "
+#~ "удалении записей, смене статуса, изменении "
+#~ "атрибутов, назначении задач и других "
+#~ "действиях. Подписчики получают только те "
+#~ "атрибуты, которые им нужны, — без "
+#~ "модификации источника событий."
+#~ msgstr ""
+#~ "Events are generated when the state "
+#~ "of objects changes: when records are "
+#~ "created, updated, or deleted, when the"
+#~ " status changes, attributes are modified,"
+#~ " tasks are assigned, and other "
+#~ "actions. Subscribers receive only the "
+#~ "attributes they need — without modifying"
+#~ " the event source."
+
+#~ msgid ""
+#~ "**Нетранзакционные** — доставка через RabbitMQ"
+#~ " после завершения транзакции (слабая "
+#~ "связность между сервисами);"
+#~ msgstr ""
+#~ "**Non-transactional** — delivery via "
+#~ "RabbitMQ after the transaction completes "
+#~ "(loose coupling between services);"
+
+#~ msgid ""
+#~ "**Транзакционные** — синхронная доставка в "
+#~ "рамках текущей транзакции (позволяет прерывать"
+#~ " транзакцию или выполнять действия «здесь"
+#~ " и сейчас»)."
+#~ msgstr ""
+#~ "**Transactional** — synchronous delivery "
+#~ "within the current transaction (allows "
+#~ "interrupting the transaction or performing "
+#~ "actions \"here and now\")."
+
+#~ msgid ""
+#~ "Реакция на события (events) строится на"
+#~ " основе rabbitmq и моделей events в"
+#~ " библиотеке - `ecos-events "
+#~ "<https://github.com/Citeck/ecos-events>`_. На "
+#~ "стороне producer и consumer строится "
+#~ "подключение к rabbitmq. Пример: отправка "
+#~ "уведомлений как реакция на событие - "
+#~ "сменился статус, изменился атрибут, "
+#~ "назначилась задача и т.д."
+#~ msgstr ""
+#~ "Event reactions are built on RabbitMQ"
+#~ " and event models in the `ecos-"
+#~ "events <https://github.com/Citeck/ecos-events>`_ "
+#~ "library. RabbitMQ connections are established"
+#~ " on both the producer and consumer"
+#~ " sides. Example: sending notifications in"
+#~ " response to an event — status "
+#~ "changed, attribute modified, task assigned,"
+#~ " etc."
+
+#~ msgid "Общая архитектура:"
+#~ msgstr "Overall architecture:"
+
+#~ msgid ""
+#~ "События в Citeck позволяют менять "
+#~ "атрибутивный состав, который нужен подписчику"
+#~ " на событие, без модификации источника "
+#~ "событий. При старте системы все "
+#~ "подписчики регистрируют в Zookeeper список "
+#~ "необходимых им событий по типам и "
+#~ "атрибуты события, в которых они "
+#~ "заинтересованы."
+#~ msgstr ""
+#~ "Events in Citeck allow changing the "
+#~ "set of attributes required by an "
+#~ "event subscriber without modifying the "
+#~ "event source. At system startup, all "
+#~ "subscribers register in Zookeeper the "
+#~ "list of event types they need and"
+#~ " the event attributes they are "
+#~ "interested in."
+
+#~ msgid ""
+#~ "Приложение, которое может отправлять события"
+#~ " подобного типа, видит, что в системе"
+#~ " есть подписчики на эти события, и,"
+#~ " при их возникновении, подготовив "
+#~ "необходимый список атрибутов, отправляет их"
+#~ " в Rabbit MQ (нетранзакционные слушатели)"
+#~ " или напрямую слушателю (транзакционные "
+#~ "слушатели) через синхронный запрос."
+#~ msgstr ""
+#~ "The application that can emit events "
+#~ "of this type sees that there are"
+#~ " subscribers to these events in the"
+#~ " system, and when events occur, it"
+#~ " prepares the required list of "
+#~ "attributes and sends them to RabbitMQ"
+#~ " (for non-transactional listeners) or "
+#~ "directly to the listener (for "
+#~ "transactional listeners) via a synchronous "
+#~ "request."
+
+#~ msgid ""
+#~ "Атрибуты описываются в формате Records "
+#~ "API и могут пользоваться всеми "
+#~ "преимуществами данного API."
+#~ msgstr ""
+#~ "Attributes are described in the Records"
+#~ " API format and can take full "
+#~ "advantage of that API."
+
+#~ msgid ""
+#~ "Транзакционные слушатели позволяют реагировать "
+#~ "на события \"здесь и сейчас\", не "
+#~ "дожидаясь пока транзакция завершится. Подобные"
+#~ " слушатели могут быть использованы, чтобы"
+#~ " добавить валидацию состояния системы с "
+#~ "возможностью прервать транзакцию или для "
+#~ "любых других действий, которые должны "
+#~ "выполниться в рамках транзакции."
+#~ msgstr ""
+#~ "Transactional listeners allow reacting to "
+#~ "events \"here and now\" without waiting"
+#~ " for the transaction to complete. "
+#~ "Such listeners can be used to add"
+#~ " system state validation with the "
+#~ "ability to abort the transaction, or "
+#~ "for any other actions that must be"
+#~ " performed within the transaction."
+
+#~ msgid ""
+#~ "Важная особенность - добавляя транзакционных"
+#~ " слушателей вы автоматически добавляете "
+#~ "жесткую зависимость генерирующих события "
+#~ "микросервисов от микросервиса со слушателем."
+#~ " Т.е. если микросервис со слушателем "
+#~ "недоступен, то микросервис, генерирующий "
+#~ "события не сможет функционировать в "
+#~ "полной мере."
+#~ msgstr ""
+#~ "An important consideration: by adding "
+#~ "transactional listeners, you automatically "
+#~ "introduce a hard dependency of event-"
+#~ "generating microservices on the microservice"
+#~ " containing the listener. That is, if"
+#~ " the microservice with the listener "
+#~ "is unavailable, the event-generating "
+#~ "microservice will not be able to "
+#~ "function fully."
+
+#~ msgid ""
+#~ "В теле каждого ``withAction`` вместо "
+#~ "``println`` должна быть ваша бизнес-логика."
+#~ " Аналогичным образом можно подписаться и"
+#~ " на другие уже реализованные события "
+#~ "— например, ``RecordStatusChangedEvent``, "
+#~ "``RecordDraftStatusChangedEvent``, ``RecordContentChangedEvent``"
+#~ " и т.д., а также на собственные "
+#~ "события. Полный список — в классе "
+#~ "``RecordEventTypes.kt`` библиотеки ``ecos-events2``."
+#~ msgstr ""
+#~ "The body of each ``withAction`` should"
+#~ " contain your business logic instead "
+#~ "of ``println``. In the same way, "
+#~ "you can subscribe to other already "
+#~ "implemented events — for example, "
+#~ "``RecordStatusChangedEvent``, ``RecordDraftStatusChangedEvent``,"
+#~ " ``RecordContentChangedEvent``, etc., as well "
+#~ "as to your own custom events. The"
+#~ " full list is available in the "
+#~ "``RecordEventTypes.kt`` class of the "
+#~ "``ecos-events2`` library."
+
+#~ msgid "Пояснения:"
+#~ msgstr "Notes:"

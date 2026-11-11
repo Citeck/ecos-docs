@@ -10,11 +10,11 @@
 
 Артефакт означает единицу конфигурации системы Citeck. Примером артефактов являются: форма, журнал, тип, раздел, матрица прав, действие и др.
 
-Микросервис, который управляет деплоем приложений и артефактов называется ECOS Applications или сокращенно ecos-apps.
+Микросервис, который управляет деплоем приложений и артефактов, называется ECOS Applications, или сокращённо ecos-apps.
 
 Цели микросервиса:
 
-1. Версионирование артефактов. Все меняющиеся артефакты сохраняются как отдельные ревизии без возможности изменения.
+1. Версионирование артефактов. Изменения, принятые политикой загрузки, сохраняются как отдельные неизменяемые ревизии.
 
 2. Доставка артефактов от всех микросервисов к целевому (например, доставка форм из ecos-integrations, ecos-model, alfresco в ecos-uiserv).
 
@@ -22,177 +22,184 @@
 
 4. Управление патчами для артефактов.
 
-Процесс деплоя артефактов выглядит примерно следующим образом:
+Процесс деплоя включает получение типов и артефактов, сохранение ревизий и доставку в целевые микросервисы.
 
 Простое описание
 ------------------
 
-.. image:: _static/apps_mks/apps_1.png
-   :width: 400
-   :align: center
+После обнаружения нового микросервиса ECOS Apps выполняет три основных этапа:
 
-После появления в сети нового приложения (на схеме это alfresco) происходит 3 этапа:
+1. Получает сведения о типах артефактов и поддерживающих их микросервисах.
 
-1. Запрос типов.
+2. Загружает артефакты из зарегистрированных источников и сохраняет принятые изменения.
 
-2. Получение артефактов.
-
-3. Деплой артефактов.
+3. Применяет патчи и развёртывает артефакты с учётом зависимостей и состояния целевых микросервисов.
 
 Подробное описание
 --------------------
 
-Микросервис периодически опрашивает всех кто подключен к Rabbit MQ
+После готовности приложения запускается фоновый процесс ``ApplicationsWatcherJob``. При нескольких экземплярах ECOS Apps обновлением управляет владелец блокировки ``watcher-job``.
 
-.. image:: _static/apps_mks/apps_2.png
-   :width: 400
-   :align: center
+1. Процесс получает статусы микросервисов через ``RemoteAppService`` и обновляет сведения об их экземплярах. После цикла предусмотрено ожидание до 5 секунд; полная длительность цикла зависит также от времени выполнения запросов.
 
-1. Пока к Rabbit'у никто не подключился ничего не происходит.
+2. По отметкам изменения выбираются актуальные сведения о типах и источниках артефактов. ECOS Apps обновляет каталог типов, регистрирует источники и обработчики деплоя для поддерживаемых целевыми микросервисами типов.
 
-2. Когда появляется первый микросервис он возвращает ответ в ECOS Apps о своем присутствии.
+3. Из источников запрашиваются артефакты с учётом каталога типов и сохранённого времени предыдущей загрузки (``since``). Это позволяет загружать изменения, а не повторять полную загрузку на каждом цикле.
 
-.. image:: _static/apps_mks/apps_3.png
-   :width: 400
-   :align: center
+4. Для каждого артефакта проверяется политика загрузки. Если содержимое и тип источника совпадают с последней ревизией, новая ревизия не создаётся. Принятые изменения сохраняются с учётом рабочего пространства артефакта.
 
-3. После этого ECOS Apps отправляет запрос на типы, в которых заинтересован микросервис.
+5. ECOS Apps применяет патчи и проверяет зависимости. Артефакты, готовые к деплою, отправляются в целевой микросервис. Патчи могут потребовать повторного деплоя.
 
-Получив список типов ECOS Apps отправляет всем зарегистрировавшимся микросервисам запрос на получение артефактов.
+Изменение артефакта не гарантирует немедленного успешного деплоя. В частности, используются следующие статусы:
 
-.. image:: _static/apps_mks/apps_4.png
-   :width: 400
-   :align: center
+.. list-table::
+   :widths: 10 30
+   :header-rows: 1
+   :class: tight-table
 
-4. Получив необходимые артефакты ECOS Apps проверяет поменялись ли они с прошлой загрузки и если нет, то ничего не делает.
+   * - Статус
+     - Значение
+   * - ``DRAFT``
+     - Артефакт ожидает деплоя.
+   * - ``DEPS_WAITING``
+     - Артефакт ожидает готовности зависимостей.
+   * - ``DEPLOY_FAILED``
+     - При деплое возникла ошибка.
+   * - ``DEPLOYED``
+     - Артефакт развёрнут.
 
-Если выясняется, что артефакты поменялись, то они отправляются в целевой микросервис на деплой.
+Удалённые операции с типами, источниками и деплоем выполняются через ``RemoteAppService``; для команд используется библиотека ``ecos-commands``. ECOS Apps также предоставляет Records API и REST API.
 
-Все взаимодействие происходит посредством Rabbit MQ и библиотеки ecos-commands.
+Сообщения в логах
+-----------------
 
-Лог ECOS Apps при обнаружении трех микросервисов (включая себя):
+При диагностике можно ориентироваться на следующие фрагменты сообщений. Конкретные значения зависят от приложения, источника и артефакта:
 
-.. code-block:: text
+.. list-table::
+   :widths: 20 30
+   :header-rows: 1
+   :class: tight-table
 
-    Detected new application 'eapps' with EcosApps: [EcosAppInfo(id=eapps, lastChanged=1584425736433)]
-    // Обнаружено новое приложение (микросервис). eapps не содержит типов артефактов. Поэтому грузить нечего
-    Detected new application 'uiserv' with EcosApps: [EcosAppInfo(id=uiserv, lastChanged=1584425751061)]
-    // В uiserv уже есть 4 типа (форма, дашборд, действие и меню). Мы должны пройтись по всем зарегистрированным микросервисам и опросить есть ли у них модули с такими типами:
-    Loaded 1 modules from 'eapps' EcosApp: 'eapps' type: 'ui/form'
-    // нашли одну форму в eapps
-    Loaded 1 modules from 'eapps' EcosApp: 'eapps' type: 'ui/action'
-    // нашли одно действие в eapps
-    Loaded 0 modules from 'eapps' EcosApp: 'eapps' type: 'ui/menu'
-    Loaded 0 modules from 'eapps' EcosApp: 'eapps' type: 'ui/dashboard'
-    Loaded 3 modules from 'uiserv' EcosApp: 'uiserv' type: 'ui/form'
-    // нашли 3 формы в uiserv (локальные артефакты тоже деплоятся через ECOS Apps)
-    Loaded 7 modules from 'uiserv' EcosApp: 'uiserv' type: 'ui/action'
-    Loaded 0 modules from 'uiserv' EcosApp: 'uiserv' type: 'ui/menu'
-    Loaded 4 modules from 'uiserv' EcosApp: 'uiserv' type: 'ui/dashboard'
-    Modules count was changed by target app. Before: 4 After: 1
-    // мы отправили в uiserv изменившиеся артефакты, но он отказался принимать 3 из них (защита от перезатирания конфигурации, которую настроили на стенде)
-    Detected new application 'emodel' with EcosApps: [EcosAppInfo(id=emodel, lastChanged=1584425829184)]
-    Loaded 0 modules from 'eapps' EcosApp: 'eapps' type: 'model/section'
-    Loaded 0 modules from 'eapps' EcosApp: 'eapps' type: 'model/type'
-    Loaded 0 modules from 'uiserv' EcosApp: 'uiserv' type: 'model/section'
-    Loaded 1 modules from 'uiserv' EcosApp: 'uiserv' type: 'model/type'
-    Loaded 0 modules from 'emodel' EcosApp: 'emodel' type: 'model/section'
-    Loaded 3 modules from 'emodel' EcosApp: 'emodel' type: 'model/type'
-    Loaded 3 modules from 'emodel' EcosApp: 'emodel' type: 'ui/form'
-    Loaded 0 modules from 'emodel' EcosApp: 'emodel' type: 'ui/action'
-    Loaded 0 modules from 'emodel' EcosApp: 'emodel' type: 'ui/menu'
-    Loaded 0 modules from 'emodel' EcosApp: 'emodel' type: 'ui/dashboard'
+   * - Фрагмент сообщения
+     - Событие
+   * - ``Register deployer for``
+     - Регистрация обработчика деплоя с перечнем поддерживаемых типов.
+   * - ``Add application artifacts source. App:``
+     - Регистрация источника артефактов микросервиса.
+   * - ``Start artifacts uploading from source``
+     - Начало загрузки из источника с указанием новой и предыдущей отметок времени.
+   * - ``Create new artifact revision entity``
+     - Создание ревизии артефакта.
+   * - ``Artifact deploy failed:``
+     - Ошибка деплоя с описанием причин.
 
 
 Полезные скрипты (EApps)
 ------------------------
 
-.. dropdown:: Получение и удаление артефактов по типу
+.. dropdown:: Получение артефактов по типу
    :color: secondary
 
-   Для получения всех артефактов по типу можно выполнить следующий скрипт:
+   Для получения страницы артефактов типа ``ui/form`` выполните следующий скрипт:
 
    .. code-block:: javascript
 
          Records.query({
-         sourceId: 'eapps/module',
-               query: {
-                     type: 'form'
-               },
-               page: {maxItems: 100}
+             sourceId: 'eapps/artifact',
+             language: 'predicate',
+             query: { t: 'eq', att: 'type', val: 'ui/form' },
+             page: { maxItems: 100, skipCount: 0 }
          }).then(console.log);
 
-   В результате выполнения в консоль выведется список id артефактов.
+   В консоль выведется результат запроса со ссылками на артефакты. Для получения следующих страниц увеличивайте ``skipCount`` на размер страницы. Результат ограничен доступными рабочими пространствами и содержит неудалённые артефакты с ревизией, типы которых не помечены как внутренние.
 
-   Имея id артефакта, его можно удалить следующим скриптом:
+   Для дальнейших операций используйте полную ссылку из результата поиска. Глобальная запись формы может иметь вид ``eapps/artifact@ui/form$ECOS_FORM``, а запись рабочего пространства — ``eapps/artifact@ui/form$wsSysId:ECOS_FORM``. Здесь ``wsSysId`` — системный идентификатор рабочего пространства; двоеточия в самом идентификаторе артефакта экранируются при формировании ссылки.
 
-   .. code-block:: javascript
+Получение содержимого артефактов
+--------------------------------
 
-         Records.remove(["eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1"]);
+В журнале артефактов доступно действие выгрузки ревизий. REST API микросервиса предоставляет ``GET /api/artifact/download-revisions`` с параметрами ``ref`` (полная ссылка на артефакт) и ``fromTime`` (начальный момент времени в формате ISO 8601 со смещением). Ответ — ZIP-архив ревизий. Внешний URL зависит от маршрутизации к микросервису.
 
-Получение содержимого модулей из базы eapps
---------------------------------------------
-
-.. dropdown:: Извлечение файла модуля напрямую из БД
+.. dropdown:: Извлечение содержимого ревизии напрямую из БД
    :color: secondary
 
-   Получаем список ревизий по ext_id и типу артефакта:
+   Получаем список ревизий по идентификатору, типу и рабочему пространству артефакта. Пустая строка в ``workspace`` обозначает глобальный артефакт; для другого рабочего пространства укажите его идентификатор:
 
    .. code-block:: sql
 
-         select module.ext_id,rev.created_date,rev.created_by,rev.content_id
-         from ecos_module module
-         join ecos_module_rev rev on module.id=rev.module_id
-         where module.ext_id='ECOS_FORM' and module.type='ui/form';
+         select artifact.ext_id, artifact.workspace,
+                rev.created_date, rev.created_by, rev.source_type, rev.content_id
+         from ecos_artifact artifact
+         join ecos_artifact_rev rev on artifact.id = rev.artifact_id
+         where artifact.ext_id = 'ECOS_FORM'
+           and artifact.type = 'ui/form'
+           and artifact.workspace = ''
+           and artifact.deleted = false
+         order by rev.created_date desc;
 
-   Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:
+   Выбираем ревизию и подставляем её ``content_id`` в запрос содержимого. Ниже ``14809`` — пример значения, которое нужно заменить результатом предыдущего запроса:
 
    .. code-block:: sql
 
-         select id,encode(data, 'base64') from ecos_content where id=14809;
+         select id, encode(data, 'base64')
+         from ecos_apps_content
+         where id = 14809;
 
-   Получаем результат в виде постранично разбитой base64-строки (фрагмент):
-
-   .. code-block:: text
-
-          id   |                                    encode
-         -------+------------------------------------------------------------------------------
-         11448 | UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAA+
-               | AAAAAO1aWXMbNxL+K8y8xKnSYUdOLDHZrXIoKVFiLl2Wy3nYcrnAGZADCgNQAIYUxeJ/324cc1AU+
-               | HR1UxM3oRRygB+jz625g5hFLonZ00umdfzntfehGO9FAquwPOoPRTCY5p19wAMYNM5xG7XlEBcyd+
-               | ...
-               | AABRQgAADgAJAAAAAAAAAAAAAAAAAAAARUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEA+
-               | AQBFAAAAmQgAAAAA
-
-   Убираем шапку, отступы ``|``, переносы строк и знаки ``+`` в конце строк — получаем одну сплошную base64-строку:
+   Для сохранения base64 без заголовков и оформления таблицы в клиенте ``psql`` можно использовать команду ``\copy``. Она создаст файл на компьютере, где запущен клиент:
 
    .. code-block:: text
 
-         UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAAAAAAAO1aWXMbNxL...RUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEAAQBFAAAAmQgAAAAA
+         \copy (select replace(encode(data, 'base64'), chr(10), '') from ecos_apps_content where id = 14809) to 'artifact.base64'
 
-   Загружаем полученную строку в любой сервис по декодированию base64 в файл. Например:
+   Декодируем файл локально, например в PowerShell из каталога, где он сохранён:
 
-   `https://base64.guru/converter/decode/file <https://base64.guru/converter/decode/file>`_
+   .. code-block:: powershell
 
-   Скачиваем итоговый файл:
+         $artifactBase64 = [IO.File]::ReadAllText((Join-Path $PWD 'artifact.base64'))
+         [IO.File]::WriteAllBytes((Join-Path $PWD 'artifact.bin'), [Convert]::FromBase64String($artifactBase64))
 
-   .. image:: _static/apps_mks/app_download.png
-      :width: 700
-      :align: center
+   Символ ``+`` входит в алфавит base64, поэтому удалять его из данных нельзя. При копировании из табличного вывода SQL-клиента удаляйте только оформление, однозначно отделённое от значения.
 
-   В результате получаем архив с нашим модулем.
+   Полученный файл содержит байты выбранной ревизии. Формат определяется сериализацией типа артефакта; расширение следует выбирать по фактическому формату. Для получения ZIP-архива ревизий используйте действие выгрузки или REST API, описанные выше.
 
 Полезные скрипты в базе ECOS Apps
 ----------------------------------
 
-.. dropdown:: Получение ревизий модуля
+.. dropdown:: Получение пользовательских ревизий артефакта
    :color: secondary
 
    .. code-block:: sql
 
-         select module.ext_id,rev.created_date,rev.created_by,rev.is_user_rev,rev.content_id
-         from ecos_module module
-         join ecos_module_rev rev on module.id=rev.module_id
-         where module.ext_id='ECOS_FORM' order by rev.created_date desc;
+         select artifact.ext_id, artifact.workspace,
+                rev.created_date, rev.created_by, rev.source_type, rev.content_id
+         from ecos_artifact artifact
+         join ecos_artifact_rev rev on artifact.id = rev.artifact_id
+         where artifact.ext_id = 'ECOS_FORM'
+           and artifact.type = 'ui/form'
+           and artifact.workspace = ''
+           and artifact.deleted = false
+           and rev.source_type = 0
+         order by rev.created_date desc;
 
-   **is_user_rev** флаг определяет, что модуль менялся пользователем.
+   Источник конкретной ревизии определяется полем ``source_type``:
+
+   .. list-table::
+      :widths: 5 10 20
+      :header-rows: 1
+      :class: tight-table
+
+      * - Значение
+        - Тип источника
+        - Описание
+      * - ``0``
+        - ``USER``
+        - Пользователь.
+      * - ``1``
+        - ``ECOS_APP``
+        - ECOS-приложение.
+      * - ``2``
+        - ``APPLICATION``
+        - Микросервис.
+      * - ``3``
+        - ``PATCH``
+        - Патч.

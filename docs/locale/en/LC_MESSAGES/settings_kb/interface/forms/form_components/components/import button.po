@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -39,7 +39,8 @@ msgid ""
 "Компонент **Import Button** позволяет добавить на форму настраиваемую "
 "кнопку для загрузки файлов."
 msgstr ""
-"The **Import Button** component allows adding a customizable button to the form for uploading files."
+"The **Import Button** component allows adding a customizable button to "
+"the form for uploading files."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:14
@@ -47,13 +48,13 @@ msgid ""
 "Для отображаемой кнопки применяются стандартные настройки компонента "
 "**Button**."
 msgstr ""
-"Standard settings of the **Button** component are applied to the displayed button."
+"Standard settings of the **Button** component are applied to the "
+"displayed button."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:16
 msgid "Компонент располагается в разделе :guilabel:`Расширенные`"
-msgstr ""
-"The component is located in the :guilabel:`Advanced` section"
+msgstr "The component is located in the :guilabel:`Advanced` section"
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:23
@@ -66,7 +67,8 @@ msgid ""
 "Помимо основных настроек компонента **Button**, добавилась настройка "
 "отображения информации о загруженных файлах."
 msgstr ""
-"In addition to the basic settings of the **Button** component, a setting for displaying information about uploaded files has been added."
+"In addition to the basic settings of the **Button** component, a setting "
+"for displaying information about uploaded files has been added."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:31
@@ -75,7 +77,9 @@ msgid ""
 "отобразится список названий файлов. При повторной загрузке файлов, список"
 " заменится на информацию о новых файлах."
 msgstr ""
-"When this checkbox is activated, after uploading file(s), a list of file names will be displayed below the button. When files are uploaded again, the list will be replaced with information about the new files."
+"When this checkbox is activated, after uploading file(s), a list of file "
+"names will be displayed below the button. When files are uploaded again, "
+"the list will be replaced with information about the new files."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:38
@@ -86,16 +90,16 @@ msgstr "Data Settings"
 #: button.rst:39
 msgid "Помимо стандартных настроек Button, добавлены следующие:"
 msgstr ""
-"In addition to the standard Button settings, the following have been added:"
+"In addition to the standard Button settings, the following have been "
+"added:"
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:41
 msgid ""
-"**Загрузить URL**  - url, куда будет отправляться POST-запрос с "
-"прикреплённым файлом (или несколькими файлами) для обработки. Обязательно"
+"**Загрузить URL** — адрес для обработки файлов. Для каждого файла "
+"отправляется отдельный POST-запрос с одним файлом в FormData. Обязательно"
 " к заполнению."
-msgstr ""
-"**Upload URL** - the URL where a POST request with the attached file (or multiple files) will be sent for processing. Mandatory to fill."
+msgstr "**Upload URL** is the file processing address. Each file is sent in a separate POST with one file in FormData. Required."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:47
@@ -109,13 +113,25 @@ msgid ""
 " ``resp``), которая содержит результат ответа сервера после загрузки "
 "файла."
 msgstr ""
-"**Response Handler** - processes the result of the server response after file upload. Mandatory to fill. Accepts a javascript expression in which you need to assign a string (recordRef), an array of strings (array of recordRefs), or an error (result = new Error('error text')) to the ``result`` variable. In the javascript expression, in addition to standard formio objects (data, instance, _, moment, etc.), the variable ``response`` (or ``resp``) is available, which contains the result of the server response after file upload."
+"**Response Handler** - processes the result of the server response after "
+"file upload. Mandatory to fill. Accepts a javascript expression in which "
+"you need to assign a string (recordRef), an array of strings (array of "
+"recordRefs), or an error (result = new Error('error text')) to the "
+"``result`` variable. In the javascript expression, in addition to "
+"standard formio objects (data, instance, _, moment, etc.), the variable "
+"``response`` (or ``resp``) is available, which contains the result of the"
+" server response after file upload."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:49
-msgid "**Несколько файлов** - возможность загрузки нескольких файлов одновременно"
-msgstr ""
-"**Multiple files** - the ability to upload multiple files simultaneously"
+msgid ""
+"**Несколько файлов** — возможность выбрать несколько файлов для загрузки."
+" Каждый ответ обрабатывается отдельно и обновляет значение компонента. "
+"Результаты не объединяются автоматически в общий массив; итоговое "
+"значение зависит от порядка завершения обработчиков. Список названий "
+"загруженных файлов под кнопкой формируется отдельно от значения "
+"компонента."
+msgstr "**Multiple files** allows selecting multiple uploads. Each response is processed separately and updates the component value. Results are not automatically combined into an array; the final value depends on handler completion order. The filename list below the button is built separately from the component value."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:55
@@ -127,10 +143,32 @@ msgid ""
 "модального окна - заголовка и описания. Эти поля не обязательны к "
 "заполнению, имеются базовые значения с учётом локализации."
 msgstr ""
-"**Confirmation before upload** - a setting that allows displaying a confirmation modal window before uploading new files. Appears after clicking the button, before displaying the file upload modal window. When the checkbox is activated, settings for the modal window fields appear - title and description. These fields are not mandatory to fill, there are default values considering localization."
+"**Confirmation before upload** - a setting that allows displaying a "
+"confirmation modal window before uploading new files. Appears after "
+"clicking the button, before displaying the file upload modal window. When"
+" the checkbox is activated, settings for the modal window fields appear -"
+" title and description. These fields are not mandatory to fill, there are"
+" default values considering localization."
 
 #: ../../settings_kb/interface/forms/form_components/components/import
 #: button.rst:57
 msgid "Внешний вид модального окна:"
-msgstr ""
-"Appearance of the modal window:"
+msgstr "Appearance of the modal window:"
+
+#~ msgid ""
+#~ "**Загрузить URL**  - url, куда будет "
+#~ "отправляться POST-запрос с прикреплённым "
+#~ "файлом (или несколькими файлами) для "
+#~ "обработки. Обязательно к заполнению."
+#~ msgstr ""
+#~ "**Upload URL** - the URL where a"
+#~ " POST request with the attached file"
+#~ " (or multiple files) will be sent "
+#~ "for processing. Mandatory to fill."
+
+#~ msgid ""
+#~ "**Несколько файлов** - возможность загрузки"
+#~ " нескольких файлов одновременно"
+#~ msgstr ""
+#~ "**Multiple files** - the ability to "
+#~ "upload multiple files simultaneously"

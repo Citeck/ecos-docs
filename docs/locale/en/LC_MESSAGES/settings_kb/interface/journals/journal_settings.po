@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -95,17 +95,17 @@ msgstr ""
 "**Predicate**:"
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:44
-#: ../../settings_kb/interface/journals/journal_settings.rst:301
+#: ../../settings_kb/interface/journals/journal_settings.rst:303
 msgid "где:"
 msgstr "where:"
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:51
-#: ../../settings_kb/interface/journals/journal_settings.rst:308
+#: ../../settings_kb/interface/journals/journal_settings.rst:310
 msgid "Атрибут"
 msgstr "Attribute"
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:52
-#: ../../settings_kb/interface/journals/journal_settings.rst:309
+#: ../../settings_kb/interface/journals/journal_settings.rst:311
 msgid "Описание"
 msgstr "Description"
 
@@ -120,8 +120,7 @@ msgid ""
 "т.д."
 msgstr ""
 "The attribute (association) used for filtering. Replace it with the "
-"required attribute, e.g.: ``author``, ``responsible``, ``assignee``, "
-"etc."
+"required attribute, e.g.: ``author``, ``responsible``, ``assignee``, etc."
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:55
 msgid "``$user``"
@@ -151,18 +150,20 @@ msgstr "Parameter «Search Attribute»"
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:67
 msgid ""
-"В конфигурацию столбца журнала добавлен параметр **«Атрибут для поиска»**"
-" — атрибут, который нужно получить у записей из подзапроса. По умолчанию "
-"из подзапроса берутся идентификаторы найденных сущностей, но при "
-"необходимости можно взять у этих сущностей какой-то атрибут."
-msgstr ""
-"The **«Search Attribute»** parameter has been added to the journal column"
-" configuration — an attribute that needs to be obtained from the records "
-"in the subquery. By default, identifiers of found entities are taken from"
-" the subquery, but you can take some attribute from these entities if "
-"needed."
+"Параметр ``searchConfig.searchAttribute`` (**«Атрибут для поиска»**) "
+"задаёт атрибут основного предиката при фильтрации колонки. Он позволяет "
+"отображать одно значение, а искать по другому атрибуту записи."
+msgstr "``searchConfig.searchAttribute`` (**\"Search attribute\"**) sets the main predicate attribute when filtering a column, allowing display of one value and search by another record attribute."
 
 #: ../../settings_kb/interface/journals/journal_settings.rst:69
+msgid ""
+"От него отличается ``searchConfig.searchByText.innerQueryAttribute`` — "
+"атрибут, извлекаемый из записей внутреннего запроса. По умолчанию из "
+"подзапроса берутся идентификаторы найденных записей. См. "
+":ref:`inner_query_filter`."
+msgstr "``searchConfig.searchByText.innerQueryAttribute`` instead selects an attribute from inner query records. By default, subqueries return matched record identifiers. See :ref:`inner_query_filter`."
+
+#: ../../settings_kb/interface/journals/journal_settings.rst:71
 msgid ""
 "В любом журнале со включёнными фильтрами выбрать столбец с текстовым "
 "поиском, задать фильтр."
@@ -170,7 +171,7 @@ msgstr ""
 "In any journal with filters enabled, select a column with text search, "
 "set a filter."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:71
+#: ../../settings_kb/interface/journals/journal_settings.rst:73
 msgid ""
 "При применении фильтра UI строит и отправляет запрос с url: "
 "``http://host/gateway/api/records/query?``"
@@ -178,11 +179,11 @@ msgstr ""
 "When applying a filter, the UI builds and sends a request with the URL: "
 "``http://host/gateway/api/records/query?``"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:73
+#: ../../settings_kb/interface/journals/journal_settings.rst:75
 msgid "В теле запроса — query-предикат, который был задан фильтром по столбцу:"
 msgstr "In the request body — the query predicate set by the column filter:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:87
+#: ../../settings_kb/interface/journals/journal_settings.rst:89
 msgid ""
 "При построении этого query в предикате значение ``att`` меняется на "
 "значение параметра ``searchAttribute`` из конфигурации столбца журнала."
@@ -191,23 +192,18 @@ msgstr ""
 "with the value of the ``searchAttribute`` parameter from the journal "
 "column configuration."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:89
+#: ../../settings_kb/interface/journals/journal_settings.rst:91
 msgid ""
-"Такой поиск планируется использовать для вычисляемых атрибутов. "
-"Отображать в журнале они будут то, что сконфигурировано в ``computed "
-"att``, а поиск должен выполняться по заданному в конфигурации столбца "
-"атрибуту."
-msgstr ""
-"This type of search is planned to be used for computed attributes. They "
-"will display in the journal what is configured in ``computed att``, but "
-"the search should be performed on the attribute specified in the column "
-"configuration."
+"Так можно, например, отображать вычисляемое значение, а фильтрацию "
+"выполнять по поддерживаемому источником атрибуту, указанному в "
+"``searchAttribute``."
+msgstr "For example, display a computed value while filtering on a source-supported ``searchAttribute``."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:94
+#: ../../settings_kb/interface/journals/journal_settings.rst:96
 msgid "Фильтр по тексту в колонке «assoc». Настройки innerQuery"
 msgstr "Text filter in the «assoc» column. innerQuery Settings"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:96
+#: ../../settings_kb/interface/journals/journal_settings.rst:98
 msgid ""
 "Расширены настройки — добавлена возможность использовать "
 "**RecordsQuery**. Например, на вычисляемых полях, что позволяет "
@@ -217,7 +213,7 @@ msgstr ""
 "For example, on computed fields, which allows forming arbitrary queries "
 "to different data sources."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:97
+#: ../../settings_kb/interface/journals/journal_settings.rst:99
 msgid ""
 "Для решения вопроса — когда пользователь выбирает произвольные предикаты "
 "(Contains, Equals, Starts with, …) при настройке фильтра — добавлен ещё "
@@ -229,31 +225,29 @@ msgstr ""
 "tag has been added to the query: **$PREDICATE_TYPE** — for replacement on"
 " the client side."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:98
+#: ../../settings_kb/interface/journals/journal_settings.rst:100
 msgid ""
-"Добавлен атрибут — **innerQueryAttribute** — для возможности настройки "
-"отображения:"
-msgstr ""
-"Added attribute — **innerQueryAttribute** — for display configuration "
-"capability:"
+"**innerQueryAttribute** задаёт извлекаемый из результатов подзапроса "
+"атрибут для фильтрации основного запроса:"
+msgstr "**innerQueryAttribute** specifies which subquery result attribute filters the main query:"
 
 #: ../../settings_kb/interface/journals/journal_settings.rst
 msgid "Пример: настройка поиска по колонке «Статус»"
 msgstr "Example: configuring search for the «Status» column"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:135
+#: ../../settings_kb/interface/journals/journal_settings.rst:137
 msgid "Перейти в дополнительные настройки колонки:"
 msgstr "Go to additional column settings:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:141
+#: ../../settings_kb/interface/journals/journal_settings.rst:143
 msgid "Тип редактора указать **text**:"
 msgstr "Set editor type to **text**:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:147
+#: ../../settings_kb/interface/journals/journal_settings.rst:149
 msgid "В разделе **Search Config** в **запросе** введите:"
 msgstr "In the **Search Config** section, in the **query** field, enter:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:151
+#: ../../settings_kb/interface/journals/journal_settings.rst:153
 msgid ""
 "Запрос нужно задавать как можно точнее, с указанием типа запрашиваемой "
 "ноды."
@@ -261,11 +255,11 @@ msgstr ""
 "The query should be specified as precisely as possible, indicating the "
 "type of the requested node."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:171
+#: ../../settings_kb/interface/journals/journal_settings.rst:173
 msgid "Укажите необходимое **Количество записей подзапроса**:"
 msgstr "Specify the required **Subquery Record Count**:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:173
+#: ../../settings_kb/interface/journals/journal_settings.rst:175
 msgid ""
 "**Количество записей подзапроса** — сколько максимально записей на данный"
 " запрос вернёт сервер. Далее эти ноды будут использоваться как фильтр для"
@@ -276,7 +270,7 @@ msgstr ""
 " return for this query. These nodes will then be used as a filter to form"
 " the main query — to display the required records in the journal itself."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:175
+#: ../../settings_kb/interface/journals/journal_settings.rst:177
 msgid ""
 "Но в ответе также будет приходить число, сколько сервер всего нашёл "
 "записей, и если это число больше указанного количества записей "
@@ -288,57 +282,57 @@ msgstr ""
 "record count, the interface will show a message about the need to set a "
 "more precise filter."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:181
+#: ../../settings_kb/interface/journals/journal_settings.rst:183
 msgid "Сохраните."
 msgstr "Save."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:183
+#: ../../settings_kb/interface/journals/journal_settings.rst:185
 msgid "Поиск осуществляется только по колонке **«Статус»**:"
 msgstr "Search is performed only for the **«Status»** column:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:190
+#: ../../settings_kb/interface/journals/journal_settings.rst:192
 msgid "Настройки фильтрации колонки"
 msgstr "Column Filtering Settings"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:192
+#: ../../settings_kb/interface/journals/journal_settings.rst:194
 msgid ""
 "В журнале для колонок появилась настройка **headerFilterEditor**. В "
 "настройках типа данных можно изменить фильтр с Select Journal на "
 "текстовое поле."
 msgstr ""
 "The **headerFilterEditor** setting has been added for columns in the "
-"journal. In the data type settings, you can change the filter from "
-"Select Journal to a text field."
+"journal. In the data type settings, you can change the filter from Select"
+" Journal to a text field."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:194
+#: ../../settings_kb/interface/journals/journal_settings.rst:196
 msgid "Фильтр **Select Journal**:"
 msgstr "**Select Journal** filter:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:200
+#: ../../settings_kb/interface/journals/journal_settings.rst:202
 msgid "Для изменения:"
 msgstr "To make changes:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:202
+#: ../../settings_kb/interface/journals/journal_settings.rst:204
 msgid "В журнале рядом с названием колонки нажать:"
 msgstr "In the journal, click next to the column name:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:208
+#: ../../settings_kb/interface/journals/journal_settings.rst:210
 msgid "У необходимой колонки нажать **«Дополнительно»**:"
 msgstr "For the required column, click **«Advanced»**:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:214
+#: ../../settings_kb/interface/journals/journal_settings.rst:216
 msgid "Указать настройки, как ниже:"
 msgstr "Specify settings as below:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:220
+#: ../../settings_kb/interface/journals/journal_settings.rst:222
 msgid "Результат — фильтр **Select Journal** изменён на текстовый:"
 msgstr "Result — the **Select Journal** filter is changed to text:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:229
+#: ../../settings_kb/interface/journals/journal_settings.rst:231
 msgid "Настройки отображения суммы для колонки"
 msgstr "Column Sum Display Settings"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:231
+#: ../../settings_kb/interface/journals/journal_settings.rst:233
 msgid ""
 "Добавлена поддержка группировки по всем записям в журнале с "
 "использованием :ref:`предиката <ecos-predicate_main>`."
@@ -346,15 +340,15 @@ msgstr ""
 "Added support for grouping by all records in the journal using "
 ":ref:`predicate <ecos-predicate_main>`."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:233
+#: ../../settings_kb/interface/journals/journal_settings.rst:235
 msgid "Получить сумму как часть ответа ``query``:"
 msgstr "Get the sum as part of the ``query`` response:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:239
+#: ../../settings_kb/interface/journals/journal_settings.rst:241
 msgid "Получить только числовое значение через ``queryOne``:"
 msgstr "Get only the numeric value via ``queryOne``:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:245
+#: ../../settings_kb/interface/journals/journal_settings.rst:247
 msgid ""
 "Включение или выключение отображения суммы для каждой колонки "
 "производится отдельно по каждому атрибуту. Тип атрибута должен быть "
@@ -363,7 +357,7 @@ msgstr ""
 "Enabling or disabling sum display for each column is done separately for "
 "each attribute. The attribute type must be **Number**."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:257
+#: ../../settings_kb/interface/journals/journal_settings.rst:259
 msgid ""
 "Общая сумма учитывает только форматтеры :ref:`NumberFormatter "
 "<NumberFormatter>` и :ref:`DurationFormatter <DurationFormatter>`."
@@ -371,17 +365,19 @@ msgstr ""
 "The total sum only considers formatters :ref:`NumberFormatter "
 "<NumberFormatter>` and :ref:`DurationFormatter <DurationFormatter>`."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:259
+#: ../../settings_kb/interface/journals/journal_settings.rst:261
 msgid "В нижней части столбца будет отображаться общая сумма значений столбца:"
 msgstr ""
 "The total sum of column values will be displayed at the bottom of the "
 "column:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:267
+#: ../../settings_kb/interface/journals/journal_settings.rst:269
 msgid "Отображение имени сущности при поиске по вложенному атрибуту ассоциации"
-msgstr "Displaying the entity name when searching by a nested association attribute"
+msgstr ""
+"Displaying the entity name when searching by a nested association "
+"attribute"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:271
+#: ../../settings_kb/interface/journals/journal_settings.rst:273
 msgid ""
 "Если настроить атрибут для загрузки через точку, то фильтрация, "
 "сортировка и группировка будут работать, но уже не по ассоциации, а по "
@@ -391,7 +387,7 @@ msgstr ""
 "sorting, and grouping will work, but by the nested attribute type rather "
 "than the association."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:273
+#: ../../settings_kb/interface/journals/journal_settings.rst:275
 msgid ""
 "Если нужен поиск по ассоциации, но в колонке должно отображаться имя "
 "сущности, есть два способа:"
@@ -403,7 +399,7 @@ msgstr ""
 msgid "Display Name Template"
 msgstr "Display Name Template"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:279
+#: ../../settings_kb/interface/journals/journal_settings.rst:281
 #, python-brace-format
 msgid ""
 "Обычно для таких сценариев в типе сущности-справочника настраивается "
@@ -422,7 +418,7 @@ msgstr ""
 msgid "Форматтер"
 msgstr "Formatter"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:283
+#: ../../settings_kb/interface/journals/journal_settings.rst:285
 msgid ""
 "Если же в большинстве случаев имя сущности должно быть одно, а в колонке "
 "журнала — частный случай, то эту задачу можно решить через форматтеры. "
@@ -432,23 +428,23 @@ msgstr ""
 "journal column specifically, this can be solved using formatters. "
 "Example:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:310
+#: ../../settings_kb/interface/journals/journal_settings.rst:312
 msgid "``legalEntity``"
 msgstr "``legalEntity``"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:311
+#: ../../settings_kb/interface/journals/journal_settings.rst:313
 msgid "Ассоциация."
 msgstr "Association."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:312
+#: ../../settings_kb/interface/journals/journal_settings.rst:314
 msgid "``inn``"
 msgstr "``inn``"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:313
+#: ../../settings_kb/interface/journals/journal_settings.rst:315
 msgid "Вложенный атрибут."
 msgstr "Nested attribute."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:315
+#: ../../settings_kb/interface/journals/journal_settings.rst:317
 msgid ""
 "В таком случае поиск будет работать по ассоциации, а в колонке будет "
 "отображаться значение из указанного атрибута."
@@ -456,25 +452,23 @@ msgstr ""
 "In this case, the search will work by association, and the column will "
 "display the value from the specified attribute."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:318
+#: ../../settings_kb/interface/journals/journal_settings.rst:320
 msgid "Сортировка колонок журнала"
 msgstr "Journal column sorting"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:323
+#: ../../settings_kb/interface/journals/journal_settings.rst:325
 msgid "Поведение сортировки по клику"
 msgstr "Sort behavior on click"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:325
-msgid ""
-"При нажатии на заголовок колонки журнала применяется сортировка. "
-"Направление сортировки при **первом** клике определяется автоматически, "
-"исходя из типа данных атрибута колонки."
-msgstr ""
-"Clicking a journal column header applies sorting. The sort direction on "
-"the **first** click is determined automatically based on the column "
-"attribute's data type."
-
 #: ../../settings_kb/interface/journals/journal_settings.rst:327
+msgid ""
+"При нажатии на заголовок колонки журнала применяется сортировка. Если "
+"колонка ещё не отсортирована, начальное направление определяется её "
+"типом. Для уже отсортированной колонки нажатие переключает текущее "
+"направление на противоположное."
+msgstr "Clicking a journal column header sorts it. For an unsorted column, the initial direction depends on its type. Clicking an already sorted column reverses its direction."
+
+#: ../../settings_kb/interface/journals/journal_settings.rst:329
 msgid ""
 "Это улучшает удобство работы: числовые и датовые поля, как правило, "
 "интереснее просматривать в порядке «от новых/больших к старым/меньшим», а"
@@ -484,56 +478,56 @@ msgstr ""
 "useful in descending order (newest/largest first), while text fields are "
 "better in alphabetical order."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:330
+#: ../../settings_kb/interface/journals/journal_settings.rst:332
 msgid "Таблица направлений по умолчанию"
 msgstr "Default sort direction table"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:337
+#: ../../settings_kb/interface/journals/journal_settings.rst:339
 msgid "Тип атрибута"
 msgstr "Attribute type"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:338
+#: ../../settings_kb/interface/journals/journal_settings.rst:340
 msgid "Первый клик"
 msgstr "First click"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:339
+#: ../../settings_kb/interface/journals/journal_settings.rst:341
 msgid "Пример"
 msgstr "Example"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:340
+#: ../../settings_kb/interface/journals/journal_settings.rst:342
 msgid "``DATE``, ``DATETIME``"
 msgstr "``DATE``, ``DATETIME``"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:341
-#: ../../settings_kb/interface/journals/journal_settings.rst:344
+#: ../../settings_kb/interface/journals/journal_settings.rst:343
+#: ../../settings_kb/interface/journals/journal_settings.rst:346
 msgid "По убыванию (``ascending: false``)"
 msgstr "Descending (``ascending: false``)"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:342
+#: ../../settings_kb/interface/journals/journal_settings.rst:344
 msgid "Новые записи — сверху"
 msgstr "Newest records at the top"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:343
-msgid "``NUMBER``, ``INT``, ``LONG``, ``FLOAT``, ``DOUBLE``"
-msgstr "``NUMBER``, ``INT``, ``LONG``, ``FLOAT``, ``DOUBLE``"
-
 #: ../../settings_kb/interface/journals/journal_settings.rst:345
+msgid "``NUMBER`` (внутренний тип UI — ``double``)"
+msgstr "``NUMBER`` (internal UI type ``double``)"
+
+#: ../../settings_kb/interface/journals/journal_settings.rst:347
 msgid "Большие значения — сверху"
 msgstr "Largest values at the top"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:346
+#: ../../settings_kb/interface/journals/journal_settings.rst:348
 msgid "Остальные типы (``TEXT``, ``MLTEXT``, ``ASSOC``, ``BOOLEAN`` и др.)"
 msgstr "Other types (``TEXT``, ``MLTEXT``, ``ASSOC``, ``BOOLEAN``, etc.)"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:347
+#: ../../settings_kb/interface/journals/journal_settings.rst:349
 msgid "По возрастанию (``ascending: true``)"
 msgstr "Ascending (``ascending: true``)"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:348
+#: ../../settings_kb/interface/journals/journal_settings.rst:350
 msgid "Алфавитный порядок A → Z"
 msgstr "Alphabetical order A → Z"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:350
+#: ../../settings_kb/interface/journals/journal_settings.rst:352
 msgid ""
 "Последующие клики по той же колонке переключают направление на "
 "противоположное. Сортировка по другой колонке сбрасывает предыдущую и "
@@ -543,15 +537,15 @@ msgstr ""
 "different column resets the previous sort and applies the default "
 "direction for the new type."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:353
+#: ../../settings_kb/interface/journals/journal_settings.rst:355
 msgid "Значок сортировки в заголовке"
 msgstr "Sort icon in the header"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:355
+#: ../../settings_kb/interface/journals/journal_settings.rst:357
 msgid "Иконка сортировки в заголовке колонки отображается корректно:"
 msgstr "The sort icon in the column header is displayed correctly:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:357
+#: ../../settings_kb/interface/journals/journal_settings.rst:359
 msgid ""
 "**Активная сортировка** — иконка подсвечена и показывает направление (↑ "
 "или ↓)."
@@ -559,11 +553,11 @@ msgstr ""
 "**Active sort** — the icon is highlighted and shows the direction (↑ or "
 "↓)."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:358
+#: ../../settings_kb/interface/journals/journal_settings.rst:360
 msgid "**Нет сортировки** — иконка не подсвечена (серая/скрытая)."
 msgstr "**No sort** — the icon is not highlighted (grey/hidden)."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:360
+#: ../../settings_kb/interface/journals/journal_settings.rst:362
 msgid ""
 "Это позволяет сразу определить, по какой колонке и в каком направлении "
 "отсортирован журнал."
@@ -571,11 +565,11 @@ msgstr ""
 "This allows you to immediately identify which column the journal is "
 "sorted by and in which direction."
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:363
+#: ../../settings_kb/interface/journals/journal_settings.rst:365
 msgid "Сортировка по умолчанию в конфигурации журнала"
 msgstr "Default sort in journal configuration"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:365
+#: ../../settings_kb/interface/journals/journal_settings.rst:367
 msgid ""
 "Помимо интерактивной сортировки, в конфигурации журнала можно задать "
 "начальную сортировку через поле ``sortBy``. В этом случае журнал "
@@ -585,23 +579,19 @@ msgstr ""
 "journal configuration using the ``sortBy`` field. In this case, the "
 "journal will open already sorted, regardless of the attribute type:"
 
-#: ../../settings_kb/interface/journals/journal_settings.rst:375
-msgid ""
-"Поле ``ascending`` в ``sortBy`` имеет приоритет над автоматическим "
-"направлением по типу данных — оно применяется только при первом "
-"пользовательском клике на заголовок колонки."
-msgstr ""
-"The ``ascending`` field in ``sortBy`` takes priority over the automatic "
-"direction by data type — the automatic direction is only applied on the "
-"first user click on a column header."
-
 #: ../../settings_kb/interface/journals/journal_settings.rst:377
 msgid ""
+"Поле ``ascending`` задаёт начальную сортировку при открытии журнала. "
+"Нажатие на заголовок уже отсортированной колонки переключает это "
+"направление. Сохранённые пользовательские настройки могут переопределять "
+"исходную конфигурацию."
+msgstr "``ascending`` sets initial journal sorting. Clicking the sorted header reverses it. Saved user settings may override initial configuration."
+
+#: ../../settings_kb/interface/journals/journal_settings.rst:379
+msgid ""
 "Подробнее о модели конфигурации ``JournalSortByDef`` см. "
-":ref:`Конфигурация журналов<journals>`."
-msgstr ""
-"For more details on the ``JournalSortByDef`` configuration model, see "
-":ref:`Journal Configuration<journals>`."
+":ref:`Конфигурация журналов <journals_config>`."
+msgstr "For ``JournalSortByDef``, see :ref:`Journal configuration <journals_config>`."
 
 #~ msgid ""
 #~ "В журнале отобразить документы, в "
@@ -639,3 +629,74 @@ msgstr ""
 #~ msgid "**legalEntity** — ассоциация;"
 #~ msgstr "**legalEntity** — association;"
 
+#~ msgid ""
+#~ "В конфигурацию столбца журнала добавлен "
+#~ "параметр **«Атрибут для поиска»** — "
+#~ "атрибут, который нужно получить у "
+#~ "записей из подзапроса. По умолчанию из"
+#~ " подзапроса берутся идентификаторы найденных "
+#~ "сущностей, но при необходимости можно "
+#~ "взять у этих сущностей какой-то атрибут."
+#~ msgstr ""
+#~ "The **«Search Attribute»** parameter has "
+#~ "been added to the journal column "
+#~ "configuration — an attribute that needs"
+#~ " to be obtained from the records "
+#~ "in the subquery. By default, identifiers"
+#~ " of found entities are taken from "
+#~ "the subquery, but you can take "
+#~ "some attribute from these entities if"
+#~ " needed."
+
+#~ msgid ""
+#~ "Такой поиск планируется использовать для "
+#~ "вычисляемых атрибутов. Отображать в журнале"
+#~ " они будут то, что сконфигурировано в"
+#~ " ``computed att``, а поиск должен "
+#~ "выполняться по заданному в конфигурации "
+#~ "столбца атрибуту."
+#~ msgstr ""
+#~ "This type of search is planned to"
+#~ " be used for computed attributes. "
+#~ "They will display in the journal "
+#~ "what is configured in ``computed att``,"
+#~ " but the search should be performed"
+#~ " on the attribute specified in the"
+#~ " column configuration."
+
+#~ msgid ""
+#~ "Добавлен атрибут — **innerQueryAttribute** —"
+#~ " для возможности настройки отображения:"
+#~ msgstr ""
+#~ "Added attribute — **innerQueryAttribute** —"
+#~ " for display configuration capability:"
+
+#~ msgid ""
+#~ "При нажатии на заголовок колонки журнала"
+#~ " применяется сортировка. Направление сортировки"
+#~ " при **первом** клике определяется "
+#~ "автоматически, исходя из типа данных "
+#~ "атрибута колонки."
+#~ msgstr ""
+#~ "Clicking a journal column header applies"
+#~ " sorting. The sort direction on the"
+#~ " **first** click is determined "
+#~ "automatically based on the column "
+#~ "attribute's data type."
+
+#~ msgid "``NUMBER``, ``INT``, ``LONG``, ``FLOAT``, ``DOUBLE``"
+#~ msgstr "``NUMBER``, ``INT``, ``LONG``, ``FLOAT``, ``DOUBLE``"
+
+#~ msgid ""
+#~ "Поле ``ascending`` в ``sortBy`` имеет "
+#~ "приоритет над автоматическим направлением по"
+#~ " типу данных — оно применяется только"
+#~ " при первом пользовательском клике на "
+#~ "заголовок колонки."
+#~ msgstr ""
+#~ "The ``ascending`` field in ``sortBy`` "
+#~ "takes priority over the automatic "
+#~ "direction by data type — the "
+#~ "automatic direction is only applied on"
+#~ " the first user click on a "
+#~ "column header."

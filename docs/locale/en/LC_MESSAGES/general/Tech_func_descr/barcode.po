@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -23,21 +23,19 @@ msgid "Штрих-код"
 msgstr "Barcode"
 
 #: ../../general/Tech_func_descr/barcode.rst:8
-msgid "Доступно только в Enterprise версии."
-msgstr "Available in the Enterprise version only."
+msgid ""
+"Доступность функции зависит от состава и условий поставки, включая "
+"подключённые компоненты трансформации и конвертеры."
+msgstr "Feature availability depends on distribution contents and terms, including transformation components and converters."
 
 #: ../../general/Tech_func_descr/barcode.rst:10
 msgid ""
-"Citeck позволяет автоматически формировать PDF-документ со встроенным "
-"штрих-кодом — это упрощает идентификацию и отслеживание документов в "
-"рамках бизнес-процессов. Функционал реализован с использованием "
-"микросервиса :ref:`ecos-transformations <transformation>` и инструмента "
-"PDFStamp."
-msgstr ""
-"Citeck allows automatically generating a PDF document with an embedded "
-"barcode — this simplifies document identification and tracking within "
-"business processes. The feature is implemented using the :ref:`ecos-"
-"transformations <transformation>` microservice and the PDFStamp tool."
+"Citeck позволяет формировать PDF-документ со встроенным штрих-кодом — это"
+" упрощает идентификацию и отслеживание документов в рамках "
+"бизнес-процессов. Функционал реализован в микросервисе :ref:`ecos-"
+"transformations <transformation>`: изображение генерируется через ZXing, "
+"а компонент трансформации ``barcode`` накладывает его на PDF через iText."
+msgstr "Citeck can generate PDF documents with embedded barcodes to simplify document identification and tracking in business processes. The :ref:`ecos-transformations <transformation>` microservice generates images through ZXing, and the ``barcode`` transformation component overlays them on PDFs using iText."
 
 #: ../../general/Tech_func_descr/barcode.rst:12
 msgid ""
@@ -62,36 +60,42 @@ msgid "Процесс формирования PDF-документа со шт�
 msgstr "Process of Generating a PDF Document with a Barcode"
 
 #: ../../general/Tech_func_descr/barcode.rst:21
-msgid "Конвертация в PDF из файлов **doc** и **docx**, прикреплённых к карточке."
-msgstr ""
-"Conversion to PDF from **doc** and **docx** files attached to the record "
-"card."
+msgid ""
+"Исходный контент загружается пользователем или генерируется из "
+":ref:`шаблона <doc_template>`."
+msgstr "Source content is uploaded by a user or generated from a :ref:`template <doc_template>`."
 
 #: ../../general/Tech_func_descr/barcode.rst:22
 msgid ""
-"Контент заполняется путём вложения пользователем документа или "
-"генерируется из :ref:`шаблона (FreeMarkerTemplate) <doc_template>`."
-msgstr ""
-"The content is populated by a user-attached document or generated from a "
-":ref:`template (FreeMarkerTemplate) <doc_template>`."
+"Если исходник не PDF, выполняется конвертация в PDF. Для DOC/DOCX "
+"необходим доступный конвертер офисных форматов, например OnlyOffice."
+msgstr "Non-PDF input is converted to PDF. DOC/DOCX requires an available office format converter, such as OnlyOffice."
 
 #: ../../general/Tech_func_descr/barcode.rst:23
 msgid ""
-"После генерации PDF-файл прикрепляется в виджет документов карточки или в"
-" контент дочерней сущности."
-msgstr ""
-"After generation, the PDF file is attached to the card's document widget "
-"or to the content of a child entity."
+"Компонент ``barcode`` получает данные штрих-кода из указанной сущности "
+"или сущности входного контента и добавляет его в PDF. Без "
+"сущности-источника компонент завершится ошибкой."
+msgstr "The ``barcode`` component obtains barcode data from the specified entity or input content entity and adds it to the PDF. Without a source entity, the component fails."
 
 #: ../../general/Tech_func_descr/barcode.rst:24
-msgid "Штрих-код размещается внизу документа:"
-msgstr "The barcode is placed at the bottom of the document:"
+msgid ""
+"Результат скачивается или сохраняется согласно настройке цели "
+"трансформации (``output``). Запись в контент документа или дочерней "
+"сущности настраивается отдельно."
+msgstr "The result is downloaded or saved according to transformation target (``output``) settings. Writing to document or child entity content is configured separately."
 
-#: ../../general/Tech_func_descr/barcode.rst:31
+#: ../../general/Tech_func_descr/barcode.rst:26
+msgid ""
+"По умолчанию штрих-код размещается внизу по центру на всех страницах. "
+"Пример:"
+msgstr "By default, the barcode is centered at the bottom of every page. Example:"
+
+#: ../../general/Tech_func_descr/barcode.rst:33
 msgid "Настройка штрих-кода"
 msgstr "Barcode Configuration"
 
-#: ../../general/Tech_func_descr/barcode.rst:33
+#: ../../general/Tech_func_descr/barcode.rst:35
 msgid ""
 "Настройка осуществляется через :ref:`аспект <aspects>`, который "
 "добавляется к требуемому типу:"
@@ -99,27 +103,39 @@ msgstr ""
 "Configuration is done via an :ref:`aspect <aspects>` added to the "
 "required type:"
 
-#: ../../general/Tech_func_descr/barcode.rst:35
+#: ../../general/Tech_func_descr/barcode.rst:37
 msgid "Аспект: **Имеет штрих-код (barcode)**"
 msgstr "Aspect: **Has barcode (barcode)**"
 
-#: ../../general/Tech_func_descr/barcode.rst:37
-msgid "В настройках аспекта для типа есть 2 поля:"
-msgstr "The aspect settings for the type contain 2 fields:"
-
 #: ../../general/Tech_func_descr/barcode.rst:39
-msgid "Формат штрих-кода (format)"
-msgstr "Barcode format (format)"
+msgid "В настройках аспекта для типа есть три поля:"
+msgstr "The type aspect configuration has three fields:"
 
-#: ../../general/Tech_func_descr/barcode.rst:40
-msgid "Атрибут с содержимым для штрих-кода (attribute)"
-msgstr "Attribute containing the barcode content (attribute)"
+#: ../../general/Tech_func_descr/barcode.rst:41
+msgid "``format`` — формат штрих-кода, по умолчанию ``CODE_128``."
+msgstr "``format`` — barcode format, default ``CODE_128``."
+
+#: ../../general/Tech_func_descr/barcode.rst:42
+msgid "``attribute`` — атрибут с кодируемым содержимым, по умолчанию ``_docNum``."
+msgstr "``attribute`` — attribute containing encoded content, default ``_docNum``."
 
 #: ../../general/Tech_func_descr/barcode.rst:43
+msgid ""
+"``textAttribute`` — атрибут подписи под изображением. Если он не задан, "
+"подпись берётся из атрибута кодируемого содержимого."
+msgstr "``textAttribute`` — attribute for the caption below the image. If omitted, the caption comes from the encoded content attribute."
+
+#: ../../general/Tech_func_descr/barcode.rst:45
+msgid ""
+"Аспект задаёт способ получения данных. Автоматическое создание и "
+"сохранение PDF требует отдельного действия или настройки процесса."
+msgstr "The aspect defines how data is obtained. Automatically creating and saving a PDF requires a separate action or process configuration."
+
+#: ../../general/Tech_func_descr/barcode.rst:48
 msgid "Добавление штрих-кода в PDF-документ"
 msgstr "Adding a Barcode to a PDF Document"
 
-#: ../../general/Tech_func_descr/barcode.rst:45
+#: ../../general/Tech_func_descr/barcode.rst:50
 msgid ""
 "Для добавления штрих-кода в PDF можно воспользоваться возможностями "
 ":ref:`трансформации содержимого <content_transformation>`."
@@ -127,11 +143,13 @@ msgstr ""
 "To add a barcode to a PDF, use the :ref:`content transformation "
 "<content_transformation>` capabilities."
 
-#: ../../general/Tech_func_descr/barcode.rst:47
-msgid "Конфигурация действия (наложение штрих-кода на уже существующий PDF):"
-msgstr "Action configuration (stamping a barcode onto an existing PDF):"
+#: ../../general/Tech_func_descr/barcode.rst:52
+msgid ""
+"Пример настройки UI-действия ``transform`` для наложения штрих-кода на "
+"существующий PDF:"
+msgstr "Example ``transform`` UI action configuration for adding a barcode to an existing PDF:"
 
-#: ../../general/Tech_func_descr/barcode.rst:59
+#: ../../general/Tech_func_descr/barcode.rst:64
 msgid ""
 "Если содержимое документа нужно предварительно конвертировать в PDF "
 "(например, из **doc**/**docx**), добавьте трансформер ``convert`` перед "
@@ -140,15 +158,38 @@ msgstr ""
 "If the document content needs to be converted to PDF first (e.g. from "
 "**doc**/**docx**), add the ``convert`` transformer before ``barcode``:"
 
-#: ../../general/Tech_func_descr/barcode.rst:74
+#: ../../general/Tech_func_descr/barcode.rst:79
 msgid ""
-"Для скачивания документа с наложенным штрих-кодом используйте в карточке "
-"действие **Скачать PDF (со штрих-кодом)**:"
-msgstr ""
-"To download the document with the stamped barcode, use the **Download PDF"
-" (with barcode)** action in the record card:"
+"Эти примеры описывают UI-действия; подготовка источника и цели зависит от"
+" клиентского компонента. Полная серверная конфигурация включает "
+"``input``, ``transformations`` и ``output`` — см. :ref:`трансформации "
+"содержимого <content_transformation>`."
+msgstr "These examples describe UI actions; source and target preparation depend on the client component. The full server configuration includes ``input``, ``transformations`` and ``output``; see :ref:`content transformations <content_transformation>`."
 
-#: ../../general/Tech_func_descr/barcode.rst:80
+#: ../../general/Tech_func_descr/barcode.rst:81
+msgid ""
+"Все параметры компонента ``barcode`` имеют значения по умолчанию. Для "
+"изменения положения и выбора страниц можно добавить ``config`` к шагу "
+"трансформации:"
+msgstr "All ``barcode`` component parameters have defaults. Add ``config`` to the transformation step to change placement and select pages:"
+
+#: ../../general/Tech_func_descr/barcode.rst:91
+msgid ""
+"``layout`` поддерживает ``TOP_LEFT``, ``TOP_CENTER``, ``TOP_RIGHT``, "
+"``BOTTOM_LEFT``, ``BOTTOM_CENTER`` и ``BOTTOM_RIGHT``. Для ``pages`` "
+"доступны ``ALL`` (по умолчанию), ``FIRST`` и ``LAST``. Также можно задать"
+" ``entityRef``, ``barcodeAttribute``, размеры, отступы, масштаб и цвета; "
+"подробнее см. :ref:`конфигурацию трансформаций <content_transformation>`."
+msgstr "``layout`` supports ``TOP_LEFT``, ``TOP_CENTER``, ``TOP_RIGHT``, ``BOTTOM_LEFT``, ``BOTTOM_CENTER`` and ``BOTTOM_RIGHT``. ``pages`` supports ``ALL`` (default), ``FIRST`` and ``LAST``. You can also set ``entityRef``, ``barcodeAttribute``, size, margins, scale and colors; see :ref:`transformation configuration <content_transformation>`."
+
+#: ../../general/Tech_func_descr/barcode.rst:93
+msgid ""
+"В настроенной карточке действие может отображаться, например, как "
+"**Скачать PDF (со штрих-кодом)**. Его наличие и название зависят от "
+"конфигурации действий:"
+msgstr "On a configured card, the action may appear as **Download PDF (with barcode)**. Its availability and name depend on action configuration:"
+
+#: ../../general/Tech_func_descr/barcode.rst:99
 msgid ""
 "Подробнее о трансформациях — в :ref:`трансформации содержимого "
 "<content_transformation>`."
@@ -156,214 +197,380 @@ msgstr ""
 "For more details on transformations, see :ref:`content transformation "
 "<content_transformation>`."
 
-#: ../../general/Tech_func_descr/barcode.rst:83
-msgid "Rest API"
-msgstr "Rest API"
+#: ../../general/Tech_func_descr/barcode.rst:102
+msgid "REST API"
+msgstr "REST API"
 
-#: ../../general/Tech_func_descr/barcode.rst:85
+#: ../../general/Tech_func_descr/barcode.rst:104
 msgid ""
 "Для загрузки штрих-кода в виде изображения можно воспользоваться "
 "следующим API:"
 msgstr "To retrieve a barcode as an image, use the following API:"
 
-#: ../../general/Tech_func_descr/barcode.rst:87
+#: ../../general/Tech_func_descr/barcode.rst:106
 msgid "``GET /gateway/transformations/api/barcode/image?content=123``"
 msgstr "``GET /gateway/transformations/api/barcode/image?content=123``"
 
-#: ../../general/Tech_func_descr/barcode.rst:89
+#: ../../general/Tech_func_descr/barcode.rst:108
+msgid ""
+"Путь внутри микросервиса — ``/api/barcode/image``; префикс "
+"``/gateway/transformations`` определяется маршрутизацией платформы."
+msgstr "The path within the microservice is ``/api/barcode/image``; platform routing determines the ``/gateway/transformations`` prefix."
+
+#: ../../general/Tech_func_descr/barcode.rst:110
+msgid "Доступны два режима:"
+msgstr "Two modes are available:"
+
+#: ../../general/Tech_func_descr/barcode.rst:112
+msgid "Без ``entityRef`` используются ``content`` и ``barcodeFormat``."
+msgstr "Without ``entityRef``, ``content`` and ``barcodeFormat`` are used."
+
+#: ../../general/Tech_func_descr/barcode.rst:113
+msgid ""
+"При переданном ``entityRef`` содержимое и формат берутся из записи и "
+"конфигурации её аспекта. ``attribute`` может переопределить атрибут "
+"содержимого; ``content`` и ``barcodeFormat`` в этом режиме не "
+"используются."
+msgstr "With ``entityRef``, content and format come from the record and its aspect configuration. ``attribute`` can override the content attribute; ``content`` and ``barcodeFormat`` are unused in this mode."
+
+#: ../../general/Tech_func_descr/barcode.rst:115
+msgid ""
+"Для прямой генерации по ``content`` полностью опускайте ``entityRef``, а "
+"не передавайте пустое значение. Значения query-параметров URL-кодируйте."
+msgstr "For direct generation from ``content``, omit ``entityRef`` entirely rather than passing an empty value. URL-encode query parameter values."
+
+#: ../../general/Tech_func_descr/barcode.rst:117
 msgid "Параметры:"
 msgstr "Parameters:"
 
-#: ../../general/Tech_func_descr/barcode.rst:97
+#: ../../general/Tech_func_descr/barcode.rst:125
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../general/Tech_func_descr/barcode.rst:98
+#: ../../general/Tech_func_descr/barcode.rst:126
 msgid "Тип"
 msgstr "Type"
 
-#: ../../general/Tech_func_descr/barcode.rst:99
+#: ../../general/Tech_func_descr/barcode.rst:127
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Tech_func_descr/barcode.rst:100
+#: ../../general/Tech_func_descr/barcode.rst:128
 msgid "barcodeFormat"
 msgstr "barcodeFormat"
 
-#: ../../general/Tech_func_descr/barcode.rst:101
-#: ../../general/Tech_func_descr/barcode.rst:104
-#: ../../general/Tech_func_descr/barcode.rst:119
-#: ../../general/Tech_func_descr/barcode.rst:122
-#: ../../general/Tech_func_descr/barcode.rst:125
-#: ../../general/Tech_func_descr/barcode.rst:134
+#: ../../general/Tech_func_descr/barcode.rst:129
+#: ../../general/Tech_func_descr/barcode.rst:132
+#: ../../general/Tech_func_descr/barcode.rst:147
+#: ../../general/Tech_func_descr/barcode.rst:150
+#: ../../general/Tech_func_descr/barcode.rst:153
+#: ../../general/Tech_func_descr/barcode.rst:162
 msgid "String?"
 msgstr "String?"
 
-#: ../../general/Tech_func_descr/barcode.rst:102
-msgid "Формат штрих-кода. По умолчанию CODE_128"
-msgstr "Barcode format. Default is CODE_128"
+#: ../../general/Tech_func_descr/barcode.rst:130
+msgid ""
+"Формат штрих-кода при генерации по ``content``. По умолчанию "
+"``CODE_128``. В режиме ``entityRef`` используется формат из аспекта."
+msgstr "Barcode format for generation from ``content``. Default ``CODE_128``. In ``entityRef`` mode, the aspect format is used."
 
-#: ../../general/Tech_func_descr/barcode.rst:103
+#: ../../general/Tech_func_descr/barcode.rst:131
 msgid "imageFormat"
 msgstr "imageFormat"
 
-#: ../../general/Tech_func_descr/barcode.rst:105
-msgid "Формат изображения. По умолчанию PNG"
-msgstr "Image format. Default is PNG"
+#: ../../general/Tech_func_descr/barcode.rst:133
+msgid ""
+"Формат изображения. Текущая реализация поддерживает только ``PNG``; это "
+"значение используется по умолчанию."
+msgstr "Image format. The current implementation supports only ``PNG``, which is the default."
 
-#: ../../general/Tech_func_descr/barcode.rst:106
+#: ../../general/Tech_func_descr/barcode.rst:134
 msgid "width"
 msgstr "width"
 
-#: ../../general/Tech_func_descr/barcode.rst:107
-#: ../../general/Tech_func_descr/barcode.rst:110
-#: ../../general/Tech_func_descr/barcode.rst:113
+#: ../../general/Tech_func_descr/barcode.rst:135
+#: ../../general/Tech_func_descr/barcode.rst:138
+#: ../../general/Tech_func_descr/barcode.rst:141
 msgid "Int?"
 msgstr "Int?"
 
-#: ../../general/Tech_func_descr/barcode.rst:108
-msgid "Ширина изображения"
-msgstr "Image width"
+#: ../../general/Tech_func_descr/barcode.rst:136
+msgid ""
+"Ширина матрицы штрих-кода в пикселях. По умолчанию ``0``; итоговый размер"
+" определяется также форматом и подписью."
+msgstr "Barcode matrix width in pixels. Default ``0``; final size also depends on format and caption."
 
-#: ../../general/Tech_func_descr/barcode.rst:109
+#: ../../general/Tech_func_descr/barcode.rst:137
 msgid "height"
 msgstr "height"
 
-#: ../../general/Tech_func_descr/barcode.rst:111
-msgid "Высота изображения"
-msgstr "Image height"
+#: ../../general/Tech_func_descr/barcode.rst:139
+msgid ""
+"Высота матрицы штрих-кода в пикселях. По умолчанию ``0``; для одномерного"
+" формата при нулевой высоте используется ``50``."
+msgstr "Barcode matrix height in pixels. Default ``0``; one-dimensional formats use ``50`` when height is zero."
 
-#: ../../general/Tech_func_descr/barcode.rst:112
+#: ../../general/Tech_func_descr/barcode.rst:140
 msgid "margin"
 msgstr "margin"
 
-#: ../../general/Tech_func_descr/barcode.rst:114
-msgid "Отступ от краёв"
-msgstr "Margin from the edges"
+#: ../../general/Tech_func_descr/barcode.rst:142
+msgid ""
+"Отступ кодировщика. По умолчанию ``-1`` — явный отступ не задаётся, "
+"используются правила выбранного формата."
+msgstr "Encoder margin. Default ``-1`` leaves it unspecified and uses the chosen format rules."
 
-#: ../../general/Tech_func_descr/barcode.rst:115
+#: ../../general/Tech_func_descr/barcode.rst:143
 msgid "altText"
 msgstr "altText"
 
-#: ../../general/Tech_func_descr/barcode.rst:116
-#: ../../general/Tech_func_descr/barcode.rst:128
-#: ../../general/Tech_func_descr/barcode.rst:131
+#: ../../general/Tech_func_descr/barcode.rst:144
+#: ../../general/Tech_func_descr/barcode.rst:156
+#: ../../general/Tech_func_descr/barcode.rst:159
 msgid "Boolean?"
 msgstr "Boolean?"
 
-#: ../../general/Tech_func_descr/barcode.rst:117
+#: ../../general/Tech_func_descr/barcode.rst:145
 msgid "Рендерить текстовое содержимое штрих-кода. По умолчанию — Да"
 msgstr "Render the barcode's text content. Default is Yes"
 
-#: ../../general/Tech_func_descr/barcode.rst:118
+#: ../../general/Tech_func_descr/barcode.rst:146
 msgid "content"
 msgstr "content"
 
-#: ../../general/Tech_func_descr/barcode.rst:120
-msgid "Содержимое штрих-кода. Если задано, то entityRef и attribute игнорируются"
-msgstr "Barcode content. If set, entityRef and attribute are ignored"
+#: ../../general/Tech_func_descr/barcode.rst:148
+msgid "Кодируемое содержимое. Используется только при отсутствии ``entityRef``."
+msgstr "Content to encode. Used only when ``entityRef`` is absent."
 
-#: ../../general/Tech_func_descr/barcode.rst:121
+#: ../../general/Tech_func_descr/barcode.rst:149
 msgid "entityRef"
 msgstr "entityRef"
 
-#: ../../general/Tech_func_descr/barcode.rst:123
-msgid "Сущность, из которой нужно загрузить содержимое для штрих-кода"
-msgstr "The entity from which to load the barcode content"
+#: ../../general/Tech_func_descr/barcode.rst:151
+msgid ""
+"Ссылка на сущность для получения данных. При наличии имеет приоритет над "
+"``content``; формат и параметры атрибутов берутся из аспекта типа."
+msgstr "Entity reference for retrieving data. If present, takes precedence over ``content``; format and attribute parameters come from the type aspect."
 
-#: ../../general/Tech_func_descr/barcode.rst:124
+#: ../../general/Tech_func_descr/barcode.rst:152
 msgid "attribute"
 msgstr "attribute"
 
-#: ../../general/Tech_func_descr/barcode.rst:126
-msgid "Атрибут сущности, из которого нужно загрузить содержимое для штрих-кода"
-msgstr "The entity attribute from which to load the barcode content"
+#: ../../general/Tech_func_descr/barcode.rst:154
+msgid ""
+"Атрибут кодируемого содержимого в режиме ``entityRef``. Если пуст или не "
+"задан, используется ``attribute`` аспекта с fallback на ``_docNum``. Для "
+"подписи применяется ``textAttribute`` аспекта или атрибут кодируемого "
+"содержимого."
+msgstr "Encoded content attribute in ``entityRef`` mode. If empty or absent, the aspect's ``attribute`` is used, falling back to ``_docNum``. The caption uses the aspect's ``textAttribute`` or the encoded content attribute."
 
-#: ../../general/Tech_func_descr/barcode.rst:127
+#: ../../general/Tech_func_descr/barcode.rst:155
 msgid "download"
 msgstr "download"
 
-#: ../../general/Tech_func_descr/barcode.rst:129
-msgid "Если true — изображение скачивается; если false — открывается в браузере"
-msgstr "If true, the image is downloaded; if false, it opens in the browser"
+#: ../../general/Tech_func_descr/barcode.rst:157
+msgid ""
+"При ``true`` устанавливается ``Content-Disposition: attachment``. Формат "
+"результата этим параметром не выбирается. При отсутствии или ``false`` "
+"заголовок вложения не устанавливается."
+msgstr "If ``true``, sets ``Content-Disposition: attachment``. This does not select the result format. If absent or ``false``, no attachment header is set."
 
-#: ../../general/Tech_func_descr/barcode.rst:130
+#: ../../general/Tech_func_descr/barcode.rst:158
 msgid "print"
 msgstr "print"
 
-#: ../../general/Tech_func_descr/barcode.rst:132
-msgid "Если true — пользователю отправляется PDF со штрих-кодом для печати"
-msgstr "If true, the user is sent a PDF with the barcode for printing"
+#: ../../general/Tech_func_descr/barcode.rst:160
+msgid ""
+"При ``true`` возвращается PDF со штрих-кодом для печати, независимо от "
+"``outputType``. Сервер не открывает диалог печати и не отправляет "
+"документ на принтер. По умолчанию флаг не включён."
+msgstr "If ``true``, returns a barcode PDF for printing regardless of ``outputType``. The server neither opens a print dialog nor sends the document to a printer. Disabled by default."
 
-#: ../../general/Tech_func_descr/barcode.rst:133
+#: ../../general/Tech_func_descr/barcode.rst:161
 msgid "outputType"
 msgstr "outputType"
 
 #: ../../general/Tech_func_descr/barcode.rst
-msgid "Формат результата. По умолчанию PDF (если print=true) или изображение."
-msgstr "Result format. Default is PDF (if print=true) or image."
+msgid ""
+"При выключенном ``print`` точное значение ``json`` возвращает JSON с "
+"полем ``data`` (base64 изображения)."
+msgstr "With ``print`` disabled, the exact value ``json`` returns JSON with a ``data`` field containing the base64 image."
 
 #: ../../general/Tech_func_descr/barcode.rst
 msgid ""
-"Значение \"json\" — содержимое возвращается в виде JSON с полем data "
-"(base64)"
-msgstr ""
-"Value \"json\" — the content is returned as JSON with a data field "
-"(base64)"
+"При другом или отсутствующем значении возвращается изображение. "
+"``outputType=pdf`` сам по себе не включает PDF; для него требуется "
+"``print=true``."
+msgstr "Other or absent values return an image. ``outputType=pdf`` alone does not enable PDF; ``print=true`` is required."
 
-#: ../../general/Tech_func_descr/barcode.rst:138
+#: ../../general/Tech_func_descr/barcode.rst:166
+msgid ""
+"Значения ``barcodeFormat`` и ``imageFormat`` приводятся к верхнему "
+"регистру, но неизвестный формат вызывает ошибку. Значение "
+"``outputType=json`` проверяется с учётом регистра."
+msgstr "``barcodeFormat`` and ``imageFormat`` values are uppercased, but unknown formats cause an error. ``outputType=json`` is case-sensitive."
+
+#: ../../general/Tech_func_descr/barcode.rst:168
+msgid ""
+"Для двумерных штрих-кодов при нулевых ширине и высоте используется "
+"матрица ``60 × 60``. Если задана только одна сторона, вторая принимается "
+"равной ей. Текстовая подпись может увеличить размер итогового PNG."
+msgstr "Two-dimensional barcodes with zero width and height use a ``60 × 60`` matrix. If only one side is specified, the other is set equal to it. A text caption may increase the final PNG size."
+
+#: ../../general/Tech_func_descr/barcode.rst:170
+msgid ""
+"При сочетании ``download`` с ``print`` или JSON учитывайте, что текущий "
+"контроллер формирует имя вложения до выбора формата ответа и дописывает "
+"расширение по формату изображения. Соответствующее PDF/JSON-расширение "
+"имени не гарантируется."
+msgstr "When combining ``download`` with ``print`` or JSON, note that the controller constructs the attachment name before selecting response format and appends the image format extension. A matching PDF/JSON extension is not guaranteed."
+
+#: ../../general/Tech_func_descr/barcode.rst:172
+msgid "Пример получения изображения по записи:"
+msgstr "Example image retrieval from a record:"
+
+#: ../../general/Tech_func_descr/barcode.rst:178
+msgid ""
+"Хотя HTTP-параметры необязательны в сигнатуре, для генерации нужны "
+"корректные данные. Допустимая длина и алфавит содержимого зависят от "
+"выбранного формата."
+msgstr "Although HTTP parameters are optional in the signature, generation requires valid data. Content length and alphabet depend on the selected format."
+
+#: ../../general/Tech_func_descr/barcode.rst:180
 msgid "Поддерживаемые форматы штрих-кода:"
 msgstr "Supported barcode formats:"
 
-#: ../../general/Tech_func_descr/barcode.rst:140
+#: ../../general/Tech_func_descr/barcode.rst:182
 msgid "AZTEC"
 msgstr "AZTEC"
 
-#: ../../general/Tech_func_descr/barcode.rst:141
+#: ../../general/Tech_func_descr/barcode.rst:183
 msgid "CODABAR"
 msgstr "CODABAR"
 
-#: ../../general/Tech_func_descr/barcode.rst:142
+#: ../../general/Tech_func_descr/barcode.rst:184
 msgid "CODE_39"
 msgstr "CODE_39"
 
-#: ../../general/Tech_func_descr/barcode.rst:143
+#: ../../general/Tech_func_descr/barcode.rst:185
 msgid "CODE_93"
 msgstr "CODE_93"
 
-#: ../../general/Tech_func_descr/barcode.rst:144
+#: ../../general/Tech_func_descr/barcode.rst:186
 msgid "CODE_128"
 msgstr "CODE_128"
 
-#: ../../general/Tech_func_descr/barcode.rst:145
+#: ../../general/Tech_func_descr/barcode.rst:187
 msgid "DATA_MATRIX"
 msgstr "DATA_MATRIX"
 
-#: ../../general/Tech_func_descr/barcode.rst:146
+#: ../../general/Tech_func_descr/barcode.rst:188
 msgid "EAN_8"
 msgstr "EAN_8"
 
-#: ../../general/Tech_func_descr/barcode.rst:147
+#: ../../general/Tech_func_descr/barcode.rst:189
 msgid "EAN_13"
 msgstr "EAN_13"
 
-#: ../../general/Tech_func_descr/barcode.rst:148
+#: ../../general/Tech_func_descr/barcode.rst:190
 msgid "ITF"
 msgstr "ITF"
 
-#: ../../general/Tech_func_descr/barcode.rst:149
+#: ../../general/Tech_func_descr/barcode.rst:191
 msgid "PDF_417"
 msgstr "PDF_417"
 
-#: ../../general/Tech_func_descr/barcode.rst:150
+#: ../../general/Tech_func_descr/barcode.rst:192
 msgid "QR_CODE"
 msgstr "QR_CODE"
 
-#: ../../general/Tech_func_descr/barcode.rst:151
+#: ../../general/Tech_func_descr/barcode.rst:193
 msgid "UPC_A"
 msgstr "UPC_A"
 
-#: ../../general/Tech_func_descr/barcode.rst:152
+#: ../../general/Tech_func_descr/barcode.rst:194
 msgid "UPC_E"
 msgstr "UPC_E"
 
+#~ msgid "Доступно только в Enterprise версии."
+#~ msgstr "Available in the Enterprise version only."
+
+#~ msgid ""
+#~ "Конвертация в PDF из файлов **doc** "
+#~ "и **docx**, прикреплённых к карточке."
+#~ msgstr ""
+#~ "Conversion to PDF from **doc** and "
+#~ "**docx** files attached to the record"
+#~ " card."
+
+#~ msgid ""
+#~ "После генерации PDF-файл прикрепляется в "
+#~ "виджет документов карточки или в контент"
+#~ " дочерней сущности."
+#~ msgstr ""
+#~ "After generation, the PDF file is "
+#~ "attached to the card's document widget"
+#~ " or to the content of a child"
+#~ " entity."
+
+#~ msgid "Штрих-код размещается внизу документа:"
+#~ msgstr "The barcode is placed at the bottom of the document:"
+
+#~ msgid "Формат штрих-кода (format)"
+#~ msgstr "Barcode format (format)"
+
+#~ msgid "Атрибут с содержимым для штрих-кода (attribute)"
+#~ msgstr "Attribute containing the barcode content (attribute)"
+
+#~ msgid ""
+#~ "Для скачивания документа с наложенным "
+#~ "штрих-кодом используйте в карточке действие"
+#~ " **Скачать PDF (со штрих-кодом)**:"
+#~ msgstr ""
+#~ "To download the document with the "
+#~ "stamped barcode, use the **Download PDF"
+#~ " (with barcode)** action in the "
+#~ "record card:"
+
+#~ msgid "Формат изображения. По умолчанию PNG"
+#~ msgstr "Image format. Default is PNG"
+
+#~ msgid "Ширина изображения"
+#~ msgstr "Image width"
+
+#~ msgid "Высота изображения"
+#~ msgstr "Image height"
+
+#~ msgid "Отступ от краёв"
+#~ msgstr "Margin from the edges"
+
+#~ msgid ""
+#~ "Содержимое штрих-кода. Если задано, то "
+#~ "entityRef и attribute игнорируются"
+#~ msgstr "Barcode content. If set, entityRef and attribute are ignored"
+
+#~ msgid "Сущность, из которой нужно загрузить содержимое для штрих-кода"
+#~ msgstr "The entity from which to load the barcode content"
+
+#~ msgid "Атрибут сущности, из которого нужно загрузить содержимое для штрих-кода"
+#~ msgstr "The entity attribute from which to load the barcode content"
+
+#~ msgid ""
+#~ "Если true — изображение скачивается; "
+#~ "если false — открывается в браузере"
+#~ msgstr "If true, the image is downloaded; if false, it opens in the browser"
+
+#~ msgid "Если true — пользователю отправляется PDF со штрих-кодом для печати"
+#~ msgstr "If true, the user is sent a PDF with the barcode for printing"
+
+#~ msgid "Формат результата. По умолчанию PDF (если print=true) или изображение."
+#~ msgstr "Result format. Default is PDF (if print=true) or image."
+
+#~ msgid ""
+#~ "Значение \"json\" — содержимое возвращается"
+#~ " в виде JSON с полем data "
+#~ "(base64)"
+#~ msgstr ""
+#~ "Value \"json\" — the content is "
+#~ "returned as JSON with a data field"
+#~ " (base64)"

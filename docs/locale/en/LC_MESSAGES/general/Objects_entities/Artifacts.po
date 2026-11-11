@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -36,19 +36,40 @@ msgstr ""
 msgid ""
 "Артефакты хранятся в различных форматах (JSON, YAML, XML, ZIP) и могут "
 "быть развёрнуты в систему через интерфейс или средства автоматизации. "
-"Механизм артефактов обеспечивает переносимость конфигураций между средами"
-" и версионирование настроек платформы."
-msgstr ""
-"Artifacts are stored in various formats (JSON, YAML, XML, ZIP) and can be"
-" deployed to the system via the UI or automation tools. The artifact "
-"mechanism ensures configuration portability across environments and "
-"versioning of platform settings."
+"Допустимый формат определяется типом артефакта. Механизм артефактов "
+"обеспечивает переносимость конфигураций между средами и версионирование "
+"настроек платформы."
+msgstr "Artifacts are stored in various formats (JSON, YAML, XML, ZIP) and can be deployed through the UI or automation tools. The artifact type determines the allowed format. Artifacts provide configuration portability between environments and platform setting versioning."
+
+#: ../../general/Objects_entities/Artifacts.rst:10
+msgid ""
+"Микросервис ``ecos-apps`` хранит ревизии артефактов, применяет политики "
+"источников и доставляет конфигурации в микросервисы с обработчиками "
+"соответствующих типов. При хранении артефакт идентифицируется сочетанием "
+"типа, идентификатора и рабочего пространства. Загрузка конфигурации ещё "
+"не означает успешного применения: доставка может ожидать зависимости или "
+"завершиться ошибкой."
+msgstr "The ``ecos-apps`` microservice stores artifact revisions, applies source policies and delivers configurations to microservices with handlers for the relevant types. Stored artifacts are identified by type, identifier and workspace. Uploading a configuration does not mean it was successfully applied: delivery may await dependencies or fail."
+
+#: ../../general/Objects_entities/Artifacts.rst:12
+msgid ""
+"Идентификация, источники, ревизии и состояния развёртывания описаны в "
+"разделе :ref:`Артефакты Citeck <ecos_artifacts>`."
+msgstr "Identification, sources, revisions and deployment states are described in :ref:`Citeck artifacts <ecos_artifacts>`."
 
 #: ../../general/Objects_entities/Artifacts.rst:14
+msgid ""
+"Для миграции данных и конфигурации используются :ref:`исполняемые патчи "
+"<patches>` типа ``app/patch``. Для изменения содержимого существующего "
+"артефакта предусмотрены :ref:`патчи артефактов <artifact_patch>` типа "
+"``app/artifact-patch``."
+msgstr ":ref:`Executable patches <patches>` of type ``app/patch`` migrate data and configuration. :ref:`Artifact patches <artifact_patch>` of type ``app/artifact-patch`` modify existing artifact contents."
+
+#: ../../general/Objects_entities/Artifacts.rst:19
 msgid "Конечные точки"
 msgstr "Endpoints"
 
-#: ../../general/Objects_entities/Artifacts.rst:18
+#: ../../general/Objects_entities/Artifacts.rst:23
 msgid ""
 "Артефакт для работы с ресурсами по сети: адрес, параметры доступа, "
 "настройка через переменные окружения."
@@ -56,15 +77,14 @@ msgstr ""
 "An artifact for working with network resources: address, access "
 "parameters, configuration via environment variables."
 
-#: ../../general/Objects_entities/Artifacts.rst:20
+#: ../../general/Objects_entities/Artifacts.rst:25
 msgid "Секреты"
 msgstr "Secrets"
 
-#: ../../general/Objects_entities/Artifacts.rst:24
+#: ../../general/Objects_entities/Artifacts.rst:29
 msgid ""
 "Артефакт для хранения конфиденциальных данных: пароли, токены, ключи, "
 "сертификаты. Шифрование и ротация ключей."
 msgstr ""
 "An artifact for storing sensitive data: passwords, tokens, keys, "
 "certificates. Encryption and key rotation."
-

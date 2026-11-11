@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -277,11 +277,10 @@ msgstr "Delayed Sending"
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:85
 msgid ""
-"Выбор времени отложенной отправки. Если пусто, то отправка осуществится "
-"сразу после действия `3.2.2 Отправить сообщения`_"
-msgstr ""
-"Selecting the time for delayed sending. If empty, sending will occur "
-"immediately after the action `3.2.2 Send Messages`_"
+"Планируемая дата отправки. Если пусто, уведомления доступны обработчику "
+"очереди после действия `3.2.2 Отправить сообщения`_, без дополнительной "
+"задержки по дате."
+msgstr "Scheduled send date. If empty, notifications are available to the queue handler after `3.2.2 Send Messages`_, without additional date delay."
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:86
 msgid "Размер пакета"
@@ -306,8 +305,11 @@ msgid "Персонализированная рассылка"
 msgstr "Personalized Mailing"
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:89
-msgid "Отправка персонализированного сообщения каждому получателю"
-msgstr "Sending a personalized message to each recipient"
+msgid ""
+"Отдельное сообщение на каждый адрес. Флаг сам по себе не добавляет "
+"индивидуальные атрибуты получателя в модель; при включении имеет "
+"приоритет над размером пакета."
+msgstr "A separate message for each address. This flag alone does not add recipient-specific attributes to the model; when enabled, it overrides batch size."
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:93
 msgid ""
@@ -353,8 +355,7 @@ msgstr "Default, without additional settings"
 msgid ""
 "Будет отправлено одно сообщение, в котором в поле ``to`` будет 1_000 "
 "адресов."
-msgstr ""
-"One message will be sent, with 1,000 addresses in the ``to`` field."
+msgstr "One message will be sent, with 1,000 addresses in the ``to`` field."
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:111
 msgid "``Персонализированная рассылка``"
@@ -377,8 +378,8 @@ msgid ""
 "По одному адресу будет добавлено в ``cc`` или ``bcc`` соответственно, при"
 " этом в ``to`` будет пусто."
 msgstr ""
-"One address will be added to ``cc`` or ``bcc`` respectively, while ``to`` "
-"will be empty."
+"One address will be added to ``cc`` or ``bcc`` respectively, while ``to``"
+" will be empty."
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:115
 msgid "``Размер пакета`` = ``50``"
@@ -401,8 +402,8 @@ msgid ""
 "По 50 адресов будет добавлено в ``cc`` или ``bcc`` соответственно, при "
 "этом в ``to`` будет пусто."
 msgstr ""
-"50 addresses will be added to ``cc`` or ``bcc`` respectively, while ``to`` "
-"will be empty."
+"50 addresses will be added to ``cc`` or ``bcc`` respectively, while "
+"``to`` will be empty."
 
 #: ../../settings_kb/notifications/notifications_bulk_mail.rst:120
 msgid ""
@@ -419,11 +420,17 @@ msgstr ""
 " while users should not see other recipients* - is solved by setting the "
 "``batch size`` and the ``All recipients to blind copy (bcc)`` flag."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:126
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:125
+msgid ""
+"Режимы CC и BCC выбирайте раздельно. Если оба флага установлены "
+"одновременно, используется CC."
+msgstr "Select CC and BCC separately. If both are enabled, CC is used."
+
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:128
 msgid "3. Жизненный цикл массовой рассылки"
 msgstr "3. Bulk Mailing Lifecycle"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:128
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:130
 msgid ""
 "После создания, массовая рассылка переходит в статус \"Новый\", на "
 "котором можно сформировать получателей, скорректировать их и "
@@ -432,35 +439,35 @@ msgstr ""
 "After creation, the bulk mailing transitions to the \"New\" status, where"
 " recipients can be formed, adjusted, and sending can be scheduled."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:131
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:133
 msgid "3.1 Статусы"
 msgstr "3.1 Statuses"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:133
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:135
 msgid "Статусы устанавливаются в приоритете описания:"
 msgstr "Statuses are set in the order of description priority:"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:140
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:142
 msgid "Статус"
 msgstr "Status"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:141
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:143
 msgid "Условие установки"
 msgstr "Condition for Setting"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:142
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:144
 msgid "Новый"
 msgstr "New"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:143
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:145
 msgid "Массовая рассылка создана."
 msgstr "Bulk mailing has been created."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:144
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:146
 msgid "Осуществляются попытки отправки"
 msgstr "Sending Attempts in Progress"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:145
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:147
 msgid ""
 "Устанавливается, если хотя бы у одного сообщения при отправке произошла "
 "временная ошибка и по нему ещё выполняются :ref:`повторные попытки "
@@ -470,11 +477,11 @@ msgstr ""
 "and :ref:`retry attempts<notifications-label>` are still being made for "
 "it."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:146
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:148
 msgid "Ожидается отправка"
 msgstr "Awaiting Sending"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:147
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:149
 msgid ""
 "Устанавливается, если хотя бы одно сообщение массовой рассылки находится "
 "в статусе \"Ожидание отправки\"."
@@ -482,11 +489,11 @@ msgstr ""
 "Set if at least one message of the bulk mailing is in the \"Awaiting "
 "Sending\" status."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:148
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:150
 msgid "Ошибка"
 msgstr "Error"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:149
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:151
 msgid ""
 "Устанавливается, когда по рассылке не осталось сообщений в работе и хотя "
 "бы одно из них завершилось неудачей: постоянной ошибкой (статус "
@@ -496,37 +503,43 @@ msgstr ""
 "of them ended in failure: a permanent error (status ``FAILED``) or "
 "exhaustion of the retry budget (status ``EXPIRED``)."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:150
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:152
 msgid "Отправлено"
 msgstr "Sent"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:151
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:153
 msgid ""
-"Устанавливается, если все сообщения рассылки обработаны и среди них нет "
-"ни одного завершившегося неудачей."
-msgstr ""
-"Set if all messages of the mailing have been processed and none of them "
-"ended in failure."
+"Обработка завершена без ``FAILED`` и ``EXPIRED``. Возможны итоговые "
+"состояния ``BLOCKED``, ``CANCELLED``, ``RECIPIENTS_NOT_FOUND`` и "
+"частичная доставка отдельного письма. Это не гарантия получения сообщения"
+" каждым адресатом."
+msgstr "Processing completed without ``FAILED`` or ``EXPIRED``. Final states may include ``BLOCKED``, ``CANCELLED``, ``RECIPIENTS_NOT_FOUND`` and partial email delivery. This does not guarantee every recipient received it."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:155
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:157
 msgid ""
 "Удаление массовой рассылки отменяет её сообщения, ожидающие отправки и "
 "находящиеся в статусе ``ERROR``: запланированные повторные попытки по ним"
 " останавливаются."
 msgstr ""
-"Deleting a bulk mailing cancels its messages that are awaiting sending "
-"or are in the ``ERROR`` status: scheduled retry attempts for them are "
+"Deleting a bulk mailing cancels its messages that are awaiting sending or"
+" are in the ``ERROR`` status: scheduled retry attempts for them are "
 "stopped."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:159
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:160
+msgid ""
+"Удаление не отзывает уже принятое почтовым сервером письмо и не "
+"гарантирует остановку сетевой отправки, которая уже началась."
+msgstr "Deletion does not recall mail already accepted by the server or guarantee cancellation of network sending already underway."
+
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:163
 msgid "3.2 Действия"
 msgstr "3.2 Actions"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:162
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:166
 msgid "3.2.1 Сформировать получателей"
 msgstr "3.2.1 Form Recipients"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:164
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:168
 msgid ""
 "Выбранные получатели на форме массовой рассылки являются заготовкой для "
 "формирования конечного списка получателей."
@@ -534,7 +547,7 @@ msgstr ""
 "The recipients selected on the bulk mailing form serve as a draft for "
 "forming the final list of recipients."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:166
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:170
 msgid ""
 "По умолчанию, на форме есть возможность выбрать получателей из компонента"
 " оргструктуры и ручного ввода (см. `2.2 Описание полей`_). |br| При этом,"
@@ -547,7 +560,7 @@ msgstr ""
 "recipients from a custom source (see `4. Additional Sources for Forming "
 "Recipients`_)."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:169
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:173
 msgid ""
 "При выполнении действия \"Формирование получателей\" происходит сбор "
 "получателей из разных источников и формирование уникальных реципиентов по"
@@ -559,7 +572,7 @@ msgstr ""
 "address. As a result, you can view and adjust the list of formed "
 "recipients in the \"Recipients\" journal:"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:174
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:178
 msgid ""
 "Журнал получателей поддерживает удаление и простой текстовый поиск через "
 "``ИЛИ``."
@@ -567,7 +580,7 @@ msgstr ""
 "The recipients journal supports deletion and simple text search using "
 "``OR``."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:178
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:182
 msgid ""
 "При каждом запуске действия \"Сформировать получателей\" происходит "
 "удаление старых получателей и формирование новых."
@@ -575,21 +588,19 @@ msgstr ""
 "Each time the \"Form Recipients\" action is run, the old recipients are "
 "deleted and new ones are formed."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:182
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:186
 msgid "3.2.2 Отправить сообщения"
 msgstr "3.2.2 Send Messages"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:184
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:188
 msgid ""
-"При выполнении действия \"Отправить сообщения\" происходит отправка "
-"сообщений, согласно указанным настройкам, получателям из сформированного "
-"списка - журнала \"Получатели\"."
-msgstr ""
-"When the \"Send Messages\" action is performed, messages are sent "
-"according to the specified settings to the recipients from the formed "
-"list - the \"Recipients\" journal."
+"Действие **«Отправить сообщения»** создаёт записи ``WAIT_FOR_DISPATCH`` "
+"для сформированного списка получателей. Доставка выполняется обработчиком"
+" очереди с учётом отложенной даты и загрузки сервиса. При пустом итоговом"
+" списке сообщений действие завершается ошибкой."
+msgstr "**\"Send messages\"** creates ``WAIT_FOR_DISPATCH`` records for generated recipients. The queue handler delivers them according to scheduled date and service load. An empty final message list causes failure."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:186
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:190
 msgid ""
 "В результате действия будут сформированы уведомления в журнале "
 "\"Уведомления\" (см. :ref:`Описание уведомлений  <notifications-label>`),"
@@ -601,21 +612,19 @@ msgstr ""
 "<notifications-label>`), where you can view information about the formed "
 "messages and their status."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:192
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:196
 msgid ""
-"Пользователи, у которых установлен атрибут **ecos:isPersonDisabled = "
-"true**, отфильтровываются, и email сообщения им не отправляются. "
-"Актуально для версий: ecos-com:4.9.15, ecos-com:4.11.4 и ecos-com:4.15.0+"
-msgstr ""
-"Users with the attribute **ecos:isPersonDisabled = true** are filtered "
-"out, and email messages are not sent to them. Relevant for versions: "
-"ecos-com:4.9.15, ecos-com:4.11.4 and ecos-com:4.15.0+"
+"При разрешении пользователей и групп проверяются ``personDisabled`` и "
+"наличие email. Прямые email и адреса custom providers не проходят ту же "
+"проверку пользовательской записи: отключение пользователя не запрещает "
+"безусловно отправку на его адрес из любого источника."
+msgstr "User/group resolution checks ``personDisabled`` and email presence. Direct emails and custom provider addresses do not undergo the same user record check: disabling a user does not universally block every source from sending to their address."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:195
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:199
 msgid "4. Дополнительные источники формирования получателей"
 msgstr "4. Additional Sources for Forming Recipients"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:197
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:201
 msgid ""
 "Получение дополнительных получателей осуществляется через records dao, "
 "который при ``queryOne`` запросе атрибута ``recipients[]?json``, должен "
@@ -625,15 +634,15 @@ msgstr ""
 "upon a ``queryOne`` request for the attribute ``recipients[]?json``, "
 "should return a list of objects in the format:"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:199
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:203
 msgid "RecipientInfo"
 msgstr "RecipientInfo"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:216
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:220
 msgid "Запрос дополнительных получателей"
 msgstr "Requesting Additional Recipients"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:227
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:231
 msgid ""
 "Перечисление records-источников устанавливается через ecos config с id "
 "``bulk-mail-custom-recipients-providers``."
@@ -641,11 +650,17 @@ msgstr ""
 "The enumeration of records sources is set via ecos config with the id - "
 "``bulk-mail-custom-recipients-providers``."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:229
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:233
+msgid ""
+"Дополнительные источники вызываются только при непустом "
+"``recipientsData.custom``."
+msgstr "Additional sources are invoked only with nonempty ``recipientsData.custom``."
+
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:235
 msgid "Ecos config: bulk-mail-custom-recipients-providers"
 msgstr "Ecos config: bulk-mail-custom-recipients-providers"
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:238
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:244
 msgid ""
 "Указанному источнику, для вычисления получателей, можно передать "
 "необходимую информацию в query. Информация, передаваемая в query берется "
@@ -664,7 +679,7 @@ msgstr ""
 "by creating a nested container ``custom``. Thus, everything filled inside"
 " custom will be passed in the query object to the records source."
 
-#: ../../settings_kb/notifications/notifications_bulk_mail.rst:242
+#: ../../settings_kb/notifications/notifications_bulk_mail.rst:248
 msgid ""
 "В итоге, при формировании получателей, будет вызван records api метод "
 "queryOne с переданным ``query``, для каждого указанного источника в "
@@ -737,3 +752,52 @@ msgstr ""
 #~ "one message is in the \"Sent\" "
 #~ "status."
 
+#~ msgid ""
+#~ "Выбор времени отложенной отправки. Если "
+#~ "пусто, то отправка осуществится сразу "
+#~ "после действия `3.2.2 Отправить сообщения`_"
+#~ msgstr ""
+#~ "Selecting the time for delayed sending."
+#~ " If empty, sending will occur "
+#~ "immediately after the action `3.2.2 Send"
+#~ " Messages`_"
+
+#~ msgid "Отправка персонализированного сообщения каждому получателю"
+#~ msgstr "Sending a personalized message to each recipient"
+
+#~ msgid ""
+#~ "Устанавливается, если все сообщения рассылки"
+#~ " обработаны и среди них нет ни "
+#~ "одного завершившегося неудачей."
+#~ msgstr ""
+#~ "Set if all messages of the mailing"
+#~ " have been processed and none of "
+#~ "them ended in failure."
+
+#~ msgid ""
+#~ "При выполнении действия \"Отправить "
+#~ "сообщения\" происходит отправка сообщений, "
+#~ "согласно указанным настройкам, получателям из"
+#~ " сформированного списка - журнала "
+#~ "\"Получатели\"."
+#~ msgstr ""
+#~ "When the \"Send Messages\" action is "
+#~ "performed, messages are sent according "
+#~ "to the specified settings to the "
+#~ "recipients from the formed list - "
+#~ "the \"Recipients\" journal."
+
+#~ msgid ""
+#~ "Пользователи, у которых установлен атрибут "
+#~ "**ecos:isPersonDisabled = true**, отфильтровываются,"
+#~ " и email сообщения им не "
+#~ "отправляются. Актуально для версий: ecos-"
+#~ "com:4.9.15, ecos-com:4.11.4 и ecos-"
+#~ "com:4.15.0+"
+#~ msgstr ""
+#~ "Users with the attribute "
+#~ "**ecos:isPersonDisabled = true** are filtered"
+#~ " out, and email messages are not "
+#~ "sent to them. Relevant for versions: "
+#~ "ecos-com:4.9.15, ecos-com:4.11.4 and "
+#~ "ecos-com:4.15.0+"

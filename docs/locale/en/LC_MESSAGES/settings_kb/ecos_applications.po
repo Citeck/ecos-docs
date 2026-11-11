@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 12:20+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -49,8 +49,8 @@ msgid "как создавать, скачивать и загружать пр�
 msgstr "how to create, download, and upload applications via the system interface;"
 
 #: ../../settings_kb/ecos_applications.rst:14
-msgid "как переносить данные между стендами;"
-msgstr "how to transfer data between environments;"
+msgid "как переносить конфигурацию между стендами и рабочими пространствами;"
+msgstr "How to transfer configuration between environments and workspaces;"
 
 #: ../../settings_kb/ecos_applications.rst:15
 msgid ""
@@ -82,13 +82,12 @@ msgstr ""
 
 #: ../../settings_kb/ecos_applications.rst:23
 msgid ""
-"Приложение Citeck представляет собой zip-архив с мета информацией (id, "
-"name, dependencies, version) и модулями (form, journal, menu, "
-"credentials, datasource, …)."
-msgstr ""
-"A Citeck Application is a zip archive with meta information (id, name, "
-"dependencies, version) and modules (form, journal, menu, credentials, "
-"datasource, …)."
+"Приложение Citeck выгружается в zip-архив с метаданными и каталогом "
+"артефактов. Метаданные приложения, сформированного через журнал, содержат"
+" ``id``, ``name``, ``version``, ``repositoryEndpoint``, ``typeRefs``, "
+"``artifacts`` и ``workspace``. Состав артефактов может включать формы, "
+"журналы, меню, типы данных и другие элементы конфигурации."
+msgstr "A Citeck application exports to a ZIP archive with metadata and an artifact directory. Metadata generated through the journal contains ``id``, ``name``, ``version``, ``repositoryEndpoint``, ``typeRefs``, ``artifacts`` and ``workspace``. Artifacts may include forms, journals, menus, data types and other configuration."
 
 #: ../../settings_kb/ecos_applications.rst:25
 msgid ""
@@ -100,11 +99,11 @@ msgstr ""
 
 #: ../../settings_kb/ecos_applications.rst:27
 msgid ""
-"**ECOS Application** сам является артефактом, но его нельзя включить в "
-"другие приложения т.к. это системный тип."
-msgstr ""
-"**ECOS Application** itself is an artifact, but it cannot be included in "
-"other applications because it is a system type."
+"**ECOS Application** сам является артефактом типа ``app/ecosapp``. Этот "
+"тип помечен как внутренний (``internal: true``) и исключён из обычного "
+"выбора артефактов для приложения. Признак внутреннего типа следует "
+"отличать от признака ``system`` у записи артефакта."
+msgstr "**ECOS Application** is itself an ``app/ecosapp`` artifact. This type is internal (``internal: true``) and excluded from normal application artifact selection. Distinguish the internal type flag from ``system`` on an artifact record."
 
 #: ../../settings_kb/ecos_applications.rst:30
 msgid "Работа с приложениями"
@@ -140,22 +139,24 @@ msgid "Скачивать приложения."
 msgstr "Download applications."
 
 #: ../../settings_kb/ecos_applications.rst:46
-msgid "Перенос данных с одного стенда на другой"
-msgstr "Transferring data from one environment to another"
+msgid "Перенос конфигурации между стендами"
+msgstr "Transferring configuration between environments"
 
 #: ../../settings_kb/ecos_applications.rst:48
 msgid ""
-"Перенос данных со стенда на стенд осуществляется через **Приложения "
-"ECOS**."
-msgstr "Data transfer between environments is done through **ECOS Applications**."
+"Через **Приложения ECOS** переносятся выбранные артефакты конфигурации. "
+"Выбор типа данных и сбор связанных с ним артефактов не означает "
+"автоматического переноса всех документов или записей справочника этого "
+"типа."
+msgstr "**ECOS Applications** transfers selected configuration artifacts. Selecting a data type and collecting related artifacts does not automatically transfer all documents or directory records of that type."
 
 #: ../../settings_kb/ecos_applications.rst:50
 msgid "См. подробней :ref:`пример<app_example>`"
 msgstr "See more details :ref:`example<app_example>`"
 
 #: ../../settings_kb/ecos_applications.rst
-msgid "Как перенести данные между стендами"
-msgstr "How to transfer data between environments"
+msgid "Как перенести конфигурацию между стендами"
+msgstr "How to transfer configuration between environments"
 
 #: ../../settings_kb/ecos_applications.rst:55
 msgid "Создать приложение по кнопке **+**."
@@ -190,30 +191,76 @@ msgid "Загрузить приложение"
 msgstr "Upload Application"
 
 #: ../../settings_kb/ecos_applications.rst:79
+msgid "Рабочие пространства и права"
+msgstr "Workspaces and permissions"
+
+#: ../../settings_kb/ecos_applications.rst:81
+msgid ""
+"Приложение может быть глобальным или относиться к рабочему пространству. "
+"При экспорте ссылка на исходное пространство очищается в метаданных, а "
+"ссылки на артефакты этого пространства приводятся к переносимому виду с "
+"``CURRENT_WS``. При импорте используется пространство назначения, и "
+"ссылки привязываются к нему."
+msgstr "An application may be global or workspace-scoped. Export clears the source workspace reference in metadata and converts workspace artifact references to portable ``CURRENT_WS`` form. Import uses the destination workspace and binds references to it."
+
+#: ../../settings_kb/ecos_applications.rst:83
+msgid ""
+"Для создания, изменения, удаления и импорта глобального приложения нужны "
+"права администратора или системный контекст. Менеджер обычного рабочего "
+"пространства может выполнять эти операции с приложениями своего "
+"пространства; эти полномочия не распространяются на глобальные приложения"
+" и другие пространства. Для фиксации изменений в Git действует отдельное "
+"ограничение, описанное ниже."
+msgstr "Creating, modifying, deleting and importing global applications requires administrator permissions or system context. A regular workspace manager can perform these operations for applications in that workspace; this does not extend to global applications or other workspaces. Git commits have a separate restriction below."
+
+#: ../../settings_kb/ecos_applications.rst:85
+msgid ""
+"Если импортируемый артефакт в целевом пространстве уже принадлежит "
+"другому приложению Citeck, импорт завершается ошибкой. Перед переносом "
+"согласуйте состав приложений и принадлежность общих артефактов."
+msgstr "If an imported artifact already belongs to another Citeck application in the target workspace, import fails. Coordinate application contents and shared artifact ownership before transfer."
+
+#: ../../settings_kb/ecos_applications.rst:88
 msgid "Структура архива приложения"
 msgstr "Application Archive Structure"
 
-#: ../../settings_kb/ecos_applications.rst:107
+#: ../../settings_kb/ecos_applications.rst:112
+msgid ""
+"Формат файлов внутри ``artifacts`` определяется контроллером "
+"соответствующего типа: это могут быть JSON, YAML или другая структура "
+"файлов."
+msgstr "File formats within ``artifacts`` are determined by the type controller: JSON, YAML or another file structure."
+
+#: ../../settings_kb/ecos_applications.rst:114
+msgid ""
+"Архив, выгруженный через журнал приложений, содержит ``meta.json``; этот "
+"файл читает обработчик загрузки ZIP. Артефактный загрузчик "
+"``app/ecosapp`` дополнительно поддерживает каталог приложения или ZIP с "
+"``meta.yml``, ``meta.yaml`` либо ``meta.json`` (в таком порядке поиска). "
+"Для этого пути загрузки необходимы непустой ``id`` и каталог "
+"``artifacts``; если версия не задана, используется ``1.0``."
+msgstr "An archive exported through the application journal contains ``meta.json``, read by the ZIP upload handler. The ``app/ecosapp`` artifact loader also supports an application directory or ZIP with ``meta.yml``, ``meta.yaml`` or ``meta.json``, searched in that order. This path requires a nonempty ``id`` and an ``artifacts`` directory; an omitted version defaults to ``1.0``."
+
+#: ../../settings_kb/ecos_applications.rst:119
 msgid "Создание ECOS Apps проекта"
 msgstr "Creating an ECOS Apps Project"
 
-#: ../../settings_kb/ecos_applications.rst:109
+#: ../../settings_kb/ecos_applications.rst:121
 msgid ""
-"Для создания ECOS Apps проекта нужно создать новый **maven проект** и "
-"настроить главный **pom файл** следующим образом:"
-msgstr ""
-"To create an ECOS Apps project, you need to create a new **Maven "
-"project** and configure the main **pom file** as follows:"
+"Для создания ECOS Apps проекта используется **Maven-проект** со сборочным"
+" parent. Ниже приведён пример конфигурации; версию parent и настройки "
+"упаковки выбирайте для используемой поставки:"
+msgstr "An ECOS Apps project uses a **Maven project** with a build parent. An example follows; choose the parent version and packaging settings for your distribution:"
 
-#: ../../settings_kb/ecos_applications.rst:139
+#: ../../settings_kb/ecos_applications.rst:151
 msgid "Приложения можно расположить двумя способами:"
 msgstr "Applications can be placed in two ways:"
 
-#: ../../settings_kb/ecos_applications.rst:141
+#: ../../settings_kb/ecos_applications.rst:153
 msgid "``src/main/resources/app`` - для варианта, когда приложение одно"
 msgstr "``src/main/resources/app`` - for the case when there is one application"
 
-#: ../../settings_kb/ecos_applications.rst:143
+#: ../../settings_kb/ecos_applications.rst:155
 msgid ""
 "``src/main/resources/apps/[app0,app1,…]`` - для варианта, когда "
 "приложений несколько"
@@ -221,7 +268,7 @@ msgstr ""
 "``src/main/resources/apps/[app0,app1,…]`` - for the case when there are "
 "several applications"
 
-#: ../../settings_kb/ecos_applications.rst:145
+#: ../../settings_kb/ecos_applications.rst:157
 msgid ""
 "В корне приложения нужно разместить файл **meta.yml**, в котором можно "
 "указать:"
@@ -229,25 +276,24 @@ msgstr ""
 "In the root of the application, you need to place a **meta.yml** file, in"
 " which you can specify:"
 
-#: ../../settings_kb/ecos_applications.rst:151
+#: ../../settings_kb/ecos_applications.rst:163
 msgid ""
-"**id: String** - идентификатор приложения. По умолчанию равен artifactId "
-"проекта"
-msgstr ""
-"**id: String** - application identifier. Defaults to the project's "
-"artifactId"
+"**id: String** - идентификатор приложения. Задайте его явно; генерация "
+"значения из artifactId зависит от сборочного parent."
+msgstr "**id: String** — application identifier. Set it explicitly; generation from artifactId depends on the build parent."
 
-#: ../../settings_kb/ecos_applications.rst:152
+#: ../../settings_kb/ecos_applications.rst:164
 msgid "**name: MLText** - имя приложения"
 msgstr "**name: MLText** - application name"
 
-#: ../../settings_kb/ecos_applications.rst:154
+#: ../../settings_kb/ecos_applications.rst:166
 msgid ""
-"Если файл **meta.yml** отсутствует, то он будет сгенерирован "
-"автоматически."
-msgstr "If the **meta.yml** file is missing, it will be generated automatically."
+"Создание отсутствующего **meta.yml** при сборке зависит от используемого "
+"parent. Артефактный загрузчик ожидает уже подготовленные метаданные с "
+"непустым **id**."
+msgstr "Creating a missing **meta.yml** during the build depends on the parent. The artifact loader expects prepared metadata with a nonempty **id**."
 
-#: ../../settings_kb/ecos_applications.rst:160
+#: ../../settings_kb/ecos_applications.rst:172
 msgid ""
 "При сборке приложений получается набор **zip-архивов**, каждый из которых"
 " представляет из себя отдельное приложение."
@@ -255,11 +301,11 @@ msgstr ""
 "When building applications, a set of **zip archives** is obtained, each "
 "representing a separate application."
 
-#: ../../settings_kb/ecos_applications.rst:163
+#: ../../settings_kb/ecos_applications.rst:175
 msgid "Деплой"
 msgstr "Deployment"
 
-#: ../../settings_kb/ecos_applications.rst:165
+#: ../../settings_kb/ecos_applications.rst:177
 msgid "Есть два основных способа деплоя - ручной и автоматический."
 msgstr "There are two main deployment methods - manual and automatic."
 
@@ -267,15 +313,18 @@ msgstr "There are two main deployment methods - manual and automatic."
 msgid "Ручной деплой"
 msgstr "Manual Deployment"
 
-#: ../../settings_kb/ecos_applications.rst:173
+#: ../../settings_kb/ecos_applications.rst:185
 msgid "При ручном деплое мы можем собрать приложения командой:"
 msgstr "With manual deployment, we can build applications with the command:"
 
-#: ../../settings_kb/ecos_applications.rst:179
-msgid "и загрузить нужный архив из папки ``target/classes/apps``"
-msgstr "and upload the required archive from the ``target/classes/apps`` folder"
+#: ../../settings_kb/ecos_applications.rst:191
+msgid ""
+"и загрузить полученный архив. Для приведённой схемы сборки используется "
+"папка ``target/classes/apps``; фактический выходной каталог определяется "
+"настройками проекта."
+msgstr "And upload the resulting archive. This build layout uses ``target/classes/apps``; project settings determine the actual output directory."
 
-#: ../../settings_kb/ecos_applications.rst:185
+#: ../../settings_kb/ecos_applications.rst:197
 msgid ""
 "через журнал приложений, который доступен по ссылке "
 "``v2/journals?journalId=ecos-apps&viewMode=table&ws=admin$workspace``"
@@ -287,7 +336,7 @@ msgstr ""
 msgid "Автоматический деплой"
 msgstr "Automatic Deployment"
 
-#: ../../settings_kb/ecos_applications.rst:195
+#: ../../settings_kb/ecos_applications.rst:207
 msgid ""
 "Автоматический деплой осуществляется через механизм загрузки артефактов в"
 " микросервисе **ecos-apps**. Артефакты доставляются в виде docker образа."
@@ -296,15 +345,18 @@ msgstr ""
 "mechanism in the **ecos-apps** microservice. Artifacts are delivered as a"
 " docker image."
 
-#: ../../settings_kb/ecos_applications.rst:197
+#: ../../settings_kb/ecos_applications.rst:209
 msgid "Команда для сборки docker образа:"
 msgstr "Command to build a docker image:"
 
-#: ../../settings_kb/ecos_applications.rst:204
-msgid "где **1.0.0-snapshot** - тег для итогового образа."
-msgstr "where **1.0.0-snapshot** is the tag for the final image."
+#: ../../settings_kb/ecos_applications.rst:216
+msgid ""
+"где **1.0.0-snapshot** - тег для итогового образа в приведённой "
+"конфигурации сборочного parent. Настройки Jib должны быть предусмотрены "
+"проектом."
+msgstr "Here **1.0.0-snapshot** is the resulting image tag in this build parent configuration. The project must provide Jib settings."
 
-#: ../../settings_kb/ecos_applications.rst:206
+#: ../../settings_kb/ecos_applications.rst:218
 msgid ""
 "После сборки образа мы подключаем его там, где развернут микросервис "
 "**ecos-apps**:"
@@ -312,7 +364,7 @@ msgstr ""
 "After building the image, we connect it where the **ecos-apps** "
 "microservice is deployed:"
 
-#: ../../settings_kb/ecos_applications.rst:218
+#: ../../settings_kb/ecos_applications.rst:230
 msgid ""
 "Параметр **ECOS_APPS_TARGET_DIR** - папка, в которую будут скопированы "
 "все приложения, которые лежат внутри образа. Копирование происходит с "
@@ -322,7 +374,7 @@ msgstr ""
 "applications inside the image will be copied. Copying is done using a "
 "shell script."
 
-#: ../../settings_kb/ecos_applications.rst:222
+#: ../../settings_kb/ecos_applications.rst:234
 msgid ""
 "По завершении копирования приложений Citeck образ сразу же "
 "останавливается т.к. на этом его работа заканчивается."
@@ -330,7 +382,7 @@ msgstr ""
 "After the copying of Citeck applications is complete, the image stops "
 "immediately, as its work is done."
 
-#: ../../settings_kb/ecos_applications.rst:224
+#: ../../settings_kb/ecos_applications.rst:236
 msgid ""
 "Далее нам нужно подключить папку с артефактами (``./volumes/ecos-apps``) "
 "как volume в микросервис ecos-apps:"
@@ -338,7 +390,7 @@ msgstr ""
 "Next, we need to connect the artifacts folder (``./volumes/ecos-apps``) "
 "as a volume to the ecos-apps microservice:"
 
-#: ../../settings_kb/ecos_applications.rst:239
+#: ../../settings_kb/ecos_applications.rst:251
 msgid ""
 "В **env** переменной мы передаем конфигурацию "
 "**ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS**, которая указывает "
@@ -350,7 +402,7 @@ msgstr ""
 "additional folders from which artifacts should be loaded (Citeck "
 "application is also an artifact with type **app/ecosapp**)."
 
-#: ../../settings_kb/ecos_applications.rst:241
+#: ../../settings_kb/ecos_applications.rst:253
 msgid ""
 "Нашу папку с архивами мы должны подключить как **volume** в директорию "
 "``$ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS/app/ecosapp``"
@@ -358,7 +410,7 @@ msgstr ""
 "Our archive folder must be connected as a **volume** to the directory "
 "``$ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS/app/ecosapp``"
 
-#: ../../settings_kb/ecos_applications.rst:243
+#: ../../settings_kb/ecos_applications.rst:255
 msgid ""
 "При запуске микросервиса **ecos-apps** он начинает следить за "
 "директориями, которые указаны в "
@@ -372,15 +424,15 @@ msgstr ""
 "applications located there change, the microservice automatically loads "
 "them into its database and deploys artifacts from there."
 
-#: ../../settings_kb/ecos_applications.rst:246
+#: ../../settings_kb/ecos_applications.rst:258
 msgid "Интеграция с Git"
 msgstr "Git Integration"
 
-#: ../../settings_kb/ecos_applications.rst:252
+#: ../../settings_kb/ecos_applications.rst:264
 msgid "Доступно только в enterprise версии."
 msgstr "Available only in the enterprise version."
 
-#: ../../settings_kb/ecos_applications.rst:254
+#: ../../settings_kb/ecos_applications.rst:266
 msgid ""
 "Интеграция с Git позволяет связать приложение Citeck с Git репозиторием и"
 " по нажатию на действие **«Зафиксировать изменения в Git»** загрузить "
@@ -390,7 +442,7 @@ msgstr ""
 "repository and, by clicking the **\"Commit Changes to Git\"** action, "
 "upload changed artifacts to the specified repository."
 
-#: ../../settings_kb/ecos_applications.rst:257
+#: ../../settings_kb/ecos_applications.rst:269
 msgid "Настройка"
 msgstr "Configuration"
 
@@ -398,7 +450,7 @@ msgstr "Configuration"
 msgid "Настройка интеграции с Git"
 msgstr "Configuring Git Integration"
 
-#: ../../settings_kb/ecos_applications.rst:262
+#: ../../settings_kb/ecos_applications.rst:274
 msgid ""
 "Открыть журнал **«Секреты»** ``v2/journals?journalId=ecos-"
 "secrets&viewMode=table&ws=admin$workspace``:"
@@ -406,7 +458,7 @@ msgstr ""
 "Open the **\"Secrets\"** journal ``v2/journals?journalId=ecos-"
 "secrets&viewMode=table&ws=admin$workspace``:"
 
-#: ../../settings_kb/ecos_applications.rst:268
+#: ../../settings_kb/ecos_applications.rst:280
 msgid ""
 "и создать пару **логин/пароль** (Тип - **Basic**) для доступа к Git "
 "репозиторию:"
@@ -414,7 +466,7 @@ msgstr ""
 "and create a **username/password** pair (Type - **Basic**) for accessing "
 "the Git repository:"
 
-#: ../../settings_kb/ecos_applications.rst:276
+#: ../../settings_kb/ecos_applications.rst:288
 msgid ""
 "Для получения пароля в Gitlab для своей учетной записи можно "
 "сгенерировать `Personal Access Token "
@@ -428,7 +480,7 @@ msgstr ""
 "specifying scopes **read_repository** and **write_repository** for the "
 "required repositories."
 
-#: ../../settings_kb/ecos_applications.rst:278
+#: ../../settings_kb/ecos_applications.rst:290
 msgid ""
 "При этом на форме создания секрета выбрать тип= Basic, ввести свой логин "
 "и вместо своего пароля ввести сгенерированный токен."
@@ -436,7 +488,7 @@ msgstr ""
 "On the secret creation form, select type=Basic, enter your username, and "
 "enter the generated token instead of your password."
 
-#: ../../settings_kb/ecos_applications.rst:280
+#: ../../settings_kb/ecos_applications.rst:292
 msgid ""
 "Открыть журнал **«Конечные точки»** "
 "``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
@@ -444,19 +496,17 @@ msgstr ""
 "Open the **\"Endpoints\"** journal "
 "``v2/journals?journalId=endpoints&viewMode=table&ws=admin$workspace``"
 
-#: ../../settings_kb/ecos_applications.rst:286
+#: ../../settings_kb/ecos_applications.rst:298
 msgid "и добавить **ссылку** на Git репозиторий:"
 msgstr "and add a **link** to the Git repository:"
 
-#: ../../settings_kb/ecos_applications.rst:294
+#: ../../settings_kb/ecos_applications.rst:306
 msgid ""
-"Важно чтобы URL начинался на **https** (поддержка ssh на данный момент "
-"отсутствует)."
-msgstr ""
-"It is important that the URL starts with **https** (ssh support is "
-"currently not available)."
+"Для описанного способа аутентификации с секретом **Basic** используйте "
+"**HTTPS URL** репозитория."
+msgstr "For the described **Basic** secret authentication, use an **HTTPS repository URL**."
 
-#: ../../settings_kb/ecos_applications.rst:296
+#: ../../settings_kb/ecos_applications.rst:308
 msgid ""
 "URL можно получить, открыв страницу с репозиторием и нажав **Code**. В "
 "появившемся окне скопировать **HTTPS URL**."
@@ -464,7 +514,7 @@ msgstr ""
 "The URL can be obtained by opening the repository page and clicking "
 "**Code**. In the window that appears, copy the **HTTPS URL**."
 
-#: ../../settings_kb/ecos_applications.rst:302
+#: ../../settings_kb/ecos_applications.rst:314
 msgid ""
 "Открыть журнал **«Приложения ECOS»** ``v2/journals?journalId=ecos-"
 "apps&viewMode=table&ws=admin$workspace``"
@@ -472,7 +522,7 @@ msgstr ""
 "Open the **\"ECOS Applications\"** journal ``v2/journals?journalId=ecos-"
 "apps&viewMode=table&ws=admin$workspace``"
 
-#: ../../settings_kb/ecos_applications.rst:308
+#: ../../settings_kb/ecos_applications.rst:320
 msgid ""
 "и открыть настройки нужного приложения Citeck. В настройках заполнить "
 "поле **«репозиторий»** конечной точкой, которая была создана в **п.2.**"
@@ -481,20 +531,18 @@ msgstr ""
 "settings, fill in the **\"repository\"** field with the endpoint that was"
 " created in **step 2**."
 
-#: ../../settings_kb/ecos_applications.rst:314
+#: ../../settings_kb/ecos_applications.rst:326
 msgid ""
-"После этого на карточке настроенного приложения Citeck и на карточках его"
-" артефактов появится действие **«Зафиксировать изменения в Git»**:"
-msgstr ""
-"After this, the **\"Commit Changes to Git\"** action will appear on the "
-"card of the configured Citeck application and on the cards of its "
-"artifacts:"
+"Для администратора при доступной Git-интеграции на карточке настроенного "
+"приложения Citeck и карточках его артефактов доступно действие "
+"**«Зафиксировать изменения в Git»**:"
+msgstr "With Git integration available, administrators can use **\"Commit changes to Git\"** on the configured Citeck application card and its artifact cards:"
 
-#: ../../settings_kb/ecos_applications.rst:332
+#: ../../settings_kb/ecos_applications.rst:344
 msgid "Проверка соединения"
 msgstr "Connection Check"
 
-#: ../../settings_kb/ecos_applications.rst:334
+#: ../../settings_kb/ecos_applications.rst:346
 msgid ""
 "По кнопке **«Проверить соединение»** можно проверить актуальный статус "
 "подключения к репозиторию:"
@@ -502,37 +550,35 @@ msgstr ""
 "Using the **\"Check Connection\"** button, you can check the current "
 "status of the connection to the repository:"
 
-#: ../../settings_kb/ecos_applications.rst:352
+#: ../../settings_kb/ecos_applications.rst:364
 msgid "Действие «Зафиксировать изменения в Git»"
 msgstr "Action \"Commit Changes to Git\""
 
-#: ../../settings_kb/ecos_applications.rst:354
+#: ../../settings_kb/ecos_applications.rst:366
 msgid ""
-"Действие для фиксации изменений доступно на карточке приложения Citeck и "
-"на карточках его артефактов если у приложения Citeck настроен "
-"**Репозиторий**."
-msgstr ""
-"The action to commit changes is available on the Citeck application card "
-"and on the cards of its artifacts if the Citeck application has a "
-"**Repository** configured."
+"Действие доступно администратору на карточке приложения Citeck и "
+"карточках его артефактов при настроенном **Репозитории** и доступной "
+"возможности Git-интеграции. Для артефакта репозиторий определяется через "
+"приложение, которому он принадлежит."
+msgstr "The action is available to administrators on Citeck application and artifact cards when **Repository** is configured and Git integration is available. An artifact's repository is resolved through its owning application."
 
-#: ../../settings_kb/ecos_applications.rst:356
+#: ../../settings_kb/ecos_applications.rst:368
 msgid "При нажатии на действие появляется следующая форма:"
 msgstr "When you click the action, the following form appears:"
 
-#: ../../settings_kb/ecos_applications.rst:362
+#: ../../settings_kb/ecos_applications.rst:374
 msgid "На форме можно выбрать:"
 msgstr "On the form you can choose:"
 
-#: ../../settings_kb/ecos_applications.rst:364
+#: ../../settings_kb/ecos_applications.rst:376
 msgid "либо существующую ветку:"
 msgstr "either an existing branch:"
 
-#: ../../settings_kb/ecos_applications.rst:370
+#: ../../settings_kb/ecos_applications.rst:382
 msgid "либо создать новую:"
 msgstr "or create a new one:"
 
-#: ../../settings_kb/ecos_applications.rst:376
+#: ../../settings_kb/ecos_applications.rst:388
 msgid ""
 "По умолчанию коммиты из Citeck можно делать в ветки, у которых имя "
 "начинается на **ecos/**. Это поведение можно изменить в журнале **ECOS "
@@ -542,7 +588,13 @@ msgstr ""
 " with **ecos/**. This behavior can be changed in the **ECOS "
 "Configurations** journal → ``ecos-vcs-allowed-branches-to-commit``."
 
-#: ../../settings_kb/ecos_applications.rst:378
+#: ../../settings_kb/ecos_applications.rst:390
+msgid ""
+"Значения настроек веток — регулярные выражения. Список фильтруется без "
+"учёта регистра."
+msgstr "Branch setting values are regular expressions. The list is filtered case-insensitively."
+
+#: ../../settings_kb/ecos_applications.rst:392
 msgid ""
 "При создании новой ветки в качестве базовой можно выбрать либо ветки, имя"
 " которых начинается на **ecos/**, либо стандартные ветки **develop, "
@@ -554,7 +606,7 @@ msgstr ""
 " main**. This behavior can be changed in the **ECOS Configurations** "
 "journal → ``ecos-vcs-allowed-base-branches``."
 
-#: ../../settings_kb/ecos_applications.rst:380
+#: ../../settings_kb/ecos_applications.rst:394
 msgid ""
 "Если установить галку **«Создать ветку»**, то пользователю будет "
 "предложено указать имя новой ветки и ветку, которую нужно взять за "
@@ -566,49 +618,48 @@ msgstr ""
 "base. The new branch always has the prefix **ecos/** to prevent "
 "accidental corruption of artifacts in important repository branches."
 
-#: ../../settings_kb/ecos_applications.rst:382
+#: ../../settings_kb/ecos_applications.rst:396
 msgid ""
-"Фиксация в репозитории будет с авторством пользователя, который выполнил "
-"действие. При этом фиксация будет выполнена системной учетной записью, "
-"которая была настроена для приложения Citeck."
-msgstr ""
-"The commit in the repository will be authored by the user who performed "
-"the action. However, the commit will be made by the system account that "
-"was configured for the Citeck application."
+"Доступ к репозиторию настраивается через конечную точку и связанный с ней"
+" секрет. Правила авторства коммита и аутентификации определяются "
+"используемым компонентом Git-интеграции."
+msgstr "Repository access is configured through an endpoint and associated secret. Commit authorship and authentication rules depend on the Git integration component."
 
-#: ../../settings_kb/ecos_applications.rst:384
-msgid "Права на выполнение действия есть только у администраторов Citeck."
-msgstr "Only Citeck administrators have rights to perform this action."
-
-#: ../../settings_kb/ecos_applications.rst:386
+#: ../../settings_kb/ecos_applications.rst:398
 msgid ""
-"Фиксация изменений не удаляет артефакты из репозитория. Фиксируется "
-"только добавление новых артефактов и изменение старых."
-msgstr ""
-"Committing changes does not delete artifacts from the repository. Only "
-"the addition of new artifacts and changes to old ones are committed."
+"Пользовательское выполнение действия разрешено администраторам Citeck. "
+"Сервер также допускает системный контекст; полномочий менеджера рабочего "
+"пространства для Git-действия недостаточно."
+msgstr "The user action is restricted to Citeck administrators. The server also allows system context; workspace manager privileges are insufficient for the Git action."
 
-#: ../../settings_kb/ecos_applications.rst:389
+#: ../../settings_kb/ecos_applications.rst:400
+msgid ""
+"Для фиксации берутся последние исходные ревизии выбранных артефактов без "
+"наложенных патчей. Ревизии с источником **ECOS_APP** пропускаются: в Git "
+"передаются изменения из других источников, например пользовательские "
+"правки. Удаление записи в интерфейсе Citeck не следует использовать как "
+"способ удаления файла из Git; удаление файлов выполняйте в репозитории."
+msgstr "Commits use the latest original revisions of selected artifacts without applied patches. **ECOS_APP** revisions are skipped: Git receives changes from other sources, such as user edits. Do not use deleting a Citeck UI record to delete a Git file; delete files in the repository."
+
+#: ../../settings_kb/ecos_applications.rst:403
 msgid "Структура проекта"
 msgstr "Project Structure"
 
-#: ../../settings_kb/ecos_applications.rst:391
+#: ../../settings_kb/ecos_applications.rst:405
 msgid ""
-"Если в репозитории не обнаружено базовых файлов структуры проекта из "
-"maven архетипа `ecos application <https://gitlab.citeck.ru/citeck-"
-"projects/ecos-projects-archetypes>`_ , то они будут добавлены - "
-"**настройка pom.xml, gitignore, gitattribute, editorconfig.**"
-msgstr ""
-"If the basic project structure files from the Maven archetype `ecos "
-"application <https://gitlab.citeck.ru/citeck-projects/ecos-projects-"
-"archetypes>`_ are not found in the repository, they will be added - "
-"**configuration of pom.xml, gitignore, gitattribute, editorconfig.**"
+"Артефакты записываются в ``src/main/resources/app/artifacts``, метаданные"
+" — в ``src/main/resources/app/meta.json``. Подготовка недостающего "
+"каркаса проекта зависит от компонента Git-интеграции и поставляемого "
+"шаблона Maven. Для самостоятельной подготовки проекта можно использовать "
+"архетип `ecos application <https://gitlab.citeck.ru/citeck-projects/ecos-"
+"projects-archetypes>`_."
+msgstr "Artifacts are written to ``src/main/resources/app/artifacts``, and metadata to ``src/main/resources/app/meta.json``. Creating a missing project skeleton depends on the Git integration component and bundled Maven template. To prepare a project yourself, use the `ecos application <https://gitlab.citeck.ru/citeck-projects/ecos-projects-archetypes>`_ archetype."
 
-#: ../../settings_kb/ecos_applications.rst:398
+#: ../../settings_kb/ecos_applications.rst:412
 msgid "Настройки конфигурации"
 msgstr "Configuration Settings"
 
-#: ../../settings_kb/ecos_applications.rst:400
+#: ../../settings_kb/ecos_applications.rst:414
 msgid ""
 "Для настройки конфигурации необходимо открыть журнал **«Конфигурация "
 "ECOS»** ``v2/journals?journalId=ecos-"
@@ -617,11 +668,131 @@ msgstr ""
 "To configure, you need to open the **\"ECOS Configuration\"** journal "
 "``v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``:"
 
-#: ../../settings_kb/ecos_applications.rst:406
+#: ../../settings_kb/ecos_applications.rst:420
 msgid "``ecos-vcs-allowed-branches-to-commit`` — разрешённые ветки для коммита"
 msgstr "``ecos-vcs-allowed-branches-to-commit`` — allowed branches for commit"
 
-#: ../../settings_kb/ecos_applications.rst:407
+#: ../../settings_kb/ecos_applications.rst:421
 msgid "``ecos-vcs-allowed-base-branches`` — разрешённые базовые ветки"
 msgstr "``ecos-vcs-allowed-base-branches`` — allowed base branches"
 
+#~ msgid ""
+#~ "Приложение Citeck представляет собой zip-архив"
+#~ " с мета информацией (id, name, "
+#~ "dependencies, version) и модулями (form, "
+#~ "journal, menu, credentials, datasource, …)."
+#~ msgstr ""
+#~ "A Citeck Application is a zip "
+#~ "archive with meta information (id, name,"
+#~ " dependencies, version) and modules (form,"
+#~ " journal, menu, credentials, datasource, "
+#~ "…)."
+
+#~ msgid ""
+#~ "**ECOS Application** сам является артефактом,"
+#~ " но его нельзя включить в другие "
+#~ "приложения т.к. это системный тип."
+#~ msgstr ""
+#~ "**ECOS Application** itself is an "
+#~ "artifact, but it cannot be included "
+#~ "in other applications because it is "
+#~ "a system type."
+
+#~ msgid "Перенос данных с одного стенда на другой"
+#~ msgstr "Transferring data from one environment to another"
+
+#~ msgid ""
+#~ "Перенос данных со стенда на стенд "
+#~ "осуществляется через **Приложения ECOS**."
+#~ msgstr ""
+#~ "Data transfer between environments is "
+#~ "done through **ECOS Applications**."
+
+#~ msgid ""
+#~ "Для создания ECOS Apps проекта нужно "
+#~ "создать новый **maven проект** и "
+#~ "настроить главный **pom файл** следующим "
+#~ "образом:"
+#~ msgstr ""
+#~ "To create an ECOS Apps project, "
+#~ "you need to create a new **Maven"
+#~ " project** and configure the main "
+#~ "**pom file** as follows:"
+
+#~ msgid ""
+#~ "Если файл **meta.yml** отсутствует, то "
+#~ "он будет сгенерирован автоматически."
+#~ msgstr ""
+#~ "If the **meta.yml** file is missing, "
+#~ "it will be generated automatically."
+
+#~ msgid "и загрузить нужный архив из папки ``target/classes/apps``"
+#~ msgstr "and upload the required archive from the ``target/classes/apps`` folder"
+
+#~ msgid "где **1.0.0-snapshot** - тег для итогового образа."
+#~ msgstr "where **1.0.0-snapshot** is the tag for the final image."
+
+#~ msgid ""
+#~ "Важно чтобы URL начинался на **https**"
+#~ " (поддержка ssh на данный момент "
+#~ "отсутствует)."
+#~ msgstr ""
+#~ "It is important that the URL "
+#~ "starts with **https** (ssh support is"
+#~ " currently not available)."
+
+#~ msgid ""
+#~ "Действие для фиксации изменений доступно "
+#~ "на карточке приложения Citeck и на "
+#~ "карточках его артефактов если у "
+#~ "приложения Citeck настроен **Репозиторий**."
+#~ msgstr ""
+#~ "The action to commit changes is "
+#~ "available on the Citeck application card"
+#~ " and on the cards of its "
+#~ "artifacts if the Citeck application has"
+#~ " a **Repository** configured."
+
+#~ msgid ""
+#~ "Фиксация в репозитории будет с "
+#~ "авторством пользователя, который выполнил "
+#~ "действие. При этом фиксация будет "
+#~ "выполнена системной учетной записью, которая"
+#~ " была настроена для приложения Citeck."
+#~ msgstr ""
+#~ "The commit in the repository will "
+#~ "be authored by the user who "
+#~ "performed the action. However, the "
+#~ "commit will be made by the system"
+#~ " account that was configured for the"
+#~ " Citeck application."
+
+#~ msgid "Права на выполнение действия есть только у администраторов Citeck."
+#~ msgstr "Only Citeck administrators have rights to perform this action."
+
+#~ msgid ""
+#~ "Фиксация изменений не удаляет артефакты "
+#~ "из репозитория. Фиксируется только добавление"
+#~ " новых артефактов и изменение старых."
+#~ msgstr ""
+#~ "Committing changes does not delete "
+#~ "artifacts from the repository. Only the"
+#~ " addition of new artifacts and "
+#~ "changes to old ones are committed."
+
+#~ msgid ""
+#~ "Если в репозитории не обнаружено базовых"
+#~ " файлов структуры проекта из maven "
+#~ "архетипа `ecos application <https://gitlab.citeck.ru"
+#~ "/citeck-projects/ecos-projects-archetypes>`_ ,"
+#~ " то они будут добавлены - **настройка"
+#~ " pom.xml, gitignore, gitattribute, "
+#~ "editorconfig.**"
+#~ msgstr ""
+#~ "If the basic project structure files "
+#~ "from the Maven archetype `ecos "
+#~ "application <https://gitlab.citeck.ru/citeck-projects"
+#~ "/ecos-projects-archetypes>`_ are not found"
+#~ " in the repository, they will be "
+#~ "added - **configuration of pom.xml, "
+#~ "gitignore, gitattribute, editorconfig.**"

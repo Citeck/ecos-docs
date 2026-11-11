@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -117,18 +117,15 @@ msgstr ""
 #: ../../settings_kb/interface/forms/form_components/components/select
 #: orgstruct.rst:42
 msgid ""
-"Для того чтобы дочерние группы скрытых групп не появлялись в результатах "
-"поиска была добавлена следующая нотация: ``GROUP_NAME/*`` - для того "
-"чтобы убрать дочерние элементы только первого уровня ``GROUP_NAME/**`` - "
-"для того чтобы убрать дочерние элементы на любом уровне вложенности"
-msgstr ""
-"To prevent child groups of hidden groups from appearing in search "
-"results, the following notation was added: ``GROUP_NAME/*`` - to remove "
-"child elements only at the first level ``GROUP_NAME/**`` - to remove "
-"child elements at any nesting level"
+"Скрытие ветки дерева и исключение её элементов из результатов поиска — "
+"разные настройки. Обработку шаблонов имён и исключение дочерних элементов"
+" из поиска следует согласовать с серверной конфигурацией: сам компонент "
+"не разбирает нотации ``GROUP_NAME/*`` и ``GROUP_NAME/**`` как правила "
+"глубины вложенности."
+msgstr "Hiding a tree branch and excluding its items from search results are separate settings. Coordinate name patterns and descendant exclusion with server configuration: the component does not interpret ``GROUP_NAME/*`` or ``GROUP_NAME/**`` as nesting depth rules."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:46
+#: orgstruct.rst:44
 msgid ""
 "**Исключить группы по типу или подтипу** - список групп, перечисленных "
 "через запятую, для фильтрации по типу. Элементы, соответствующие этим "
@@ -139,20 +136,19 @@ msgstr ""
 " the org structure."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:49
+#: orgstruct.rst:47
 msgid "Поиск во всех группах"
 msgstr "Search in all groups"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:51
+#: orgstruct.rst:49
 msgid ""
 "Вкладка **Кастомные** - **«Искать во всех группах»**. По умолчанию  "
 "выключена."
-msgstr ""
-"**Custom** tab - **«Search in all groups»**. Disabled by default."
+msgstr "**Custom** tab - **«Search in all groups»**. Disabled by default."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:57
+#: orgstruct.rst:55
 msgid ""
 "**Выключена** — всё как раньше: поиск находит группы и пользователей "
 "только внутри корневой группы оргструктуры (_orgstruct_home_)."
@@ -161,7 +157,7 @@ msgstr ""
 "only within the root group of the org structure (_orgstruct_home_)."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:58
+#: orgstruct.rst:56
 msgid ""
 "**Включена** — поиск находит группы и пользователей по всей системе, в "
 "том числе группы, которые не входят в оргструктуру (например, системные "
@@ -172,54 +168,37 @@ msgstr ""
 "system groups or portal groups)."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:60
+#: orgstruct.rst:58
 msgid ""
 "Без ввода текста в поиск окно выбора в обоих случаях показывает дерево "
-"оргструктуры — группы вне её находятся только поиском. Настройка уже "
-"включена на формах:"
-msgstr ""
-"In both cases, without search text, the selection window shows the org "
-"structure tree — groups outside it can only be found by search. The "
-"setting is already enabled on the following forms:"
+"оргструктуры — группы вне её находятся только поиском. Настройку можно "
+"включить, например, для выбора родительских групп или добавления "
+"участников рабочего пространства. Её значение на конкретной форме "
+"определяется конфигурацией этой формы."
+msgstr "Without search text, both cases show the organization tree; groups outside it are found only through search. Enable this, for example, to select parent groups or add workspace members. The particular form configuration determines its value."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:63
-msgid "группы — поле «Родительские группы»;"
-msgstr "group — the «Parent groups» field;"
-
-#: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:64
-msgid ""
-"добавления участника в рабочее пространство — поле «Группы или "
-"пользователи»."
-msgstr "adding a member to a workspace — the «Groups or users» field."
-
-#: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:66
+#: orgstruct.rst:61
 msgid "Например, при включенной настройке доступен поиск системных групп:"
 msgstr "For example, with the setting enabled, system groups can be searched:"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:74
+#: orgstruct.rst:69
 msgid "Настройка полей для поиска пользователя"
 msgstr "Configuring fields for user search"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:82
-msgid "Пользовательские значения по умолчанию: ``value = user;``"
-msgstr "Custom default values: ``value = user;``"
-
-#: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:85
+#: orgstruct.rst:75
 msgid ""
-"По-умолчанию поиск пользователей осуществляется по трём полям: "
-"**userName, firstName и lastName**."
-msgstr ""
-"By default, user search is performed across three fields: **userName, "
-"firstName, and lastName**."
+"Базовые поля поиска — ``id`` и ``_name``. Набор расширяется глобальной "
+"настройкой поиска и дополнительными полями компонента; по отдельному "
+"флагу добавляется ``middleName``. Для многословного поиска предусмотрена "
+"логика комбинирования имени, фамилии и отчества. Фактический набор полей "
+"зависит от конфигурации системы."
+msgstr "Basic search fields are ``id`` and ``_name``. Global search settings and extra component fields extend them; a separate flag adds ``middleName``. Multiword search combines first, last and middle names. Actual fields depend on system configuration."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:87
+#: orgstruct.rst:77
 msgid ""
 "Подробно о вариантах расширения списка полей для поиска пользователей см."
 " :ref:`конфигурация компонента оргструктуры <orgstructure_config>`"
@@ -228,31 +207,34 @@ msgstr ""
 "see :ref:`orgstructure component configuration <orgstructure_config>`"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:90
+#: orgstruct.rst:80
 msgid "Возможность динамически задавать корневую группу"
 msgstr "Ability to dynamically set the root group"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
+#: orgstruct.rst:86
+msgid ""
+"Для динамического выбора корневой группы задайте выражение "
+"**Пользовательское значение корневой группы** (``customRootGroupName``). "
+"Результат нужно присвоить переменной ``value``. Например:"
+msgstr "To select the root group dynamically, set **Custom root group value** (``customRootGroupName``). Assign the result to ``value``. For example:"
+
+#: ../../settings_kb/interface/forms/form_components/components/select
 #: orgstruct.rst:96
 msgid ""
-"Возможность динамически задавать корневую группу в Оргструктуре, через "
-"параметр, value или условие. Например:"
-msgstr ""
-"Ability to dynamically set the root group in the Org Structure, through a"
-" parameter, value, or condition. For example:"
+"Выражение корневой группы вычисляется независимо от разрешённого типа "
+"полномочий. Настройки **Разрешенный тип полномочий**, **Разрешенный тип "
+"группы** и **Разрешенный подтип группы** определяют, какие элементы "
+"пользователь сможет выбрать."
+msgstr "The root group expression is evaluated independently of the allowed authority type. **Allowed authority type**, **Allowed group type** and **Allowed group subtype** determine selectable items."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:108
-msgid "Только если **разрешенный тип полномочий** имеет значение **GROUP**"
-msgstr "Only if **allowed authority type** has the value **GROUP**"
-
-#: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:112
+#: orgstruct.rst:100
 msgid "Тип данных"
 msgstr "Data Type"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:119
+#: orgstruct.rst:107
 msgid ""
 "Настройка **\"Тип Данных\"** определяет формат данных, отправляемых на "
 "сервер при сохранении формы. Доступны два режима:"
@@ -261,27 +243,27 @@ msgstr ""
 "server when the form is saved. Two modes are available:"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:127
+#: orgstruct.rst:115
 msgid "Режим"
 msgstr "Mode"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:128
+#: orgstruct.rst:116
 msgid "Описание"
 msgstr "Description"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:129
+#: orgstruct.rst:117
 msgid "Когда использовать"
 msgstr "When to use"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:130
+#: orgstruct.rst:118
 msgid "**Node Ref**"
 msgstr "**Node Ref**"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:131
+#: orgstruct.rst:119
 msgid ""
 "Сохраняет полную ссылку на сущность в формате :ref:`RecordRef<RecordRef>`"
 " (например, ``emodel/person@user``)"
@@ -290,73 +272,153 @@ msgstr ""
 "format (e.g., ``emodel/person@user``)"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:132
+#: orgstruct.rst:120
 msgid ""
-"**Всегда** для ASSOC-like атрибутов (Association, Authority, Person, "
-"Group)"
-msgstr ""
-"**Always** for ASSOC-like attributes (Association, Authority, Person, "
-"Group)"
+"Когда атрибут на сервере ожидает ссылку на запись, например ассоциацию с "
+"пользователем или группой"
+msgstr "When the server attribute expects a record reference, such as a user or group association"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:133
+#: orgstruct.rst:121
 msgid "**Authority**"
 msgstr "**Authority**"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:134
+#: orgstruct.rst:122
 msgid ""
 "Отправляет строковый идентификатор (например, ``user`` или "
 "``GROUP_my_group``)"
 msgstr "Sends a string identifier (e.g., ``user`` or ``GROUP_my_group``)"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:135
-msgid "Только для системных артефактов, когда поле на бэкенде имеет тип «строка»"
-msgstr "Only for system artifacts when the backend field has type \"string\""
+#: orgstruct.rst:123
+msgid "Когда атрибут на сервере ожидает строковый идентификатор полномочия"
+msgstr "When the server attribute expects a string authority identifier"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:139
+#: orgstruct.rst:127
 msgid ""
-"Для бизнес-сущностей всегда используйте режим **Node Ref**. Режим "
-"**Authority** предназначен для системных артефактов, где поле на бэкенде "
-"имеет строковый тип."
-msgstr ""
-"For business entities, always use **Node Ref** mode. **Authority** mode "
-"is intended for system artifacts where the backend field has a string "
-"type."
+"Выбирайте формат в соответствии с типом атрибута на сервере. Компонент "
+"поддерживает оба режима; выбор не определяется только тем, является "
+"запись бизнес-сущностью или системным артефактом."
+msgstr "Choose the format according to the server attribute type. Both modes are supported; the choice is not determined solely by whether the record is a business entity or system artifact."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:142
+#: orgstruct.rst:130
 msgid "Прочее"
 msgstr "Other"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:145
+#: orgstruct.rst:133
 msgid "Текущий пользователь"
 msgstr "Current user"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:151
+#: orgstruct.rst:139
 msgid ""
-"На вкладке :guilabel:`Кастомные` **Текущий пользователь по умолчанию** - "
-"в случае, если флажок отмечен, по умолчанию будет установлено значение "
-"**id** текущего пользователя. Работает только для форм в режиме создания "
-"записи (CREATE)."
-msgstr ""
-"On the :guilabel:`Custom` tab, **Current user by default** - if the "
-"checkbox is selected, the **id** of the current user is set by default. "
-"Works only for forms in record creation mode (CREATE)."
+"На вкладке :guilabel:`Кастомные` настройка **Текущий пользователь по "
+"умолчанию** заполняет пустое поле текущим пользователем. Она применяется "
+"к ещё не изменённому пользователем полю при создании записи (``CREATE``),"
+" вне режима чтения. Значение нормализуется в ссылку через Records API."
+msgstr "On :guilabel:`Custom`, **Current user by default** fills an empty field with the current user. It applies to a field not yet changed by the user during record creation (``CREATE``), outside read mode. The Records API normalizes the value to a reference."
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:153
+#: orgstruct.rst:141
 msgid ""
 "На вкладке :guilabel:`Данные` в разделе **Пользовательские значения по "
 "умолчанию**:"
 msgstr "On the :guilabel:`Data` tab in the **Custom default values** section:"
 
 #: ../../settings_kb/interface/forms/form_components/components/select
-#: orgstruct.rst:159
+#: orgstruct.rst:147
 msgid "указать:"
 msgstr "specify:"
 
+#~ msgid ""
+#~ "Для того чтобы дочерние группы скрытых"
+#~ " групп не появлялись в результатах "
+#~ "поиска была добавлена следующая нотация: "
+#~ "``GROUP_NAME/*`` - для того чтобы убрать"
+#~ " дочерние элементы только первого уровня"
+#~ " ``GROUP_NAME/**`` - для того чтобы "
+#~ "убрать дочерние элементы на любом уровне"
+#~ " вложенности"
+#~ msgstr ""
+#~ "To prevent child groups of hidden "
+#~ "groups from appearing in search results,"
+#~ " the following notation was added: "
+#~ "``GROUP_NAME/*`` - to remove child "
+#~ "elements only at the first level "
+#~ "``GROUP_NAME/**`` - to remove child "
+#~ "elements at any nesting level"
+
+#~ msgid "группы — поле «Родительские группы»;"
+#~ msgstr "group — the «Parent groups» field;"
+
+#~ msgid ""
+#~ "добавления участника в рабочее пространство"
+#~ " — поле «Группы или пользователи»."
+#~ msgstr "adding a member to a workspace — the «Groups or users» field."
+
+#~ msgid "Пользовательские значения по умолчанию: ``value = user;``"
+#~ msgstr "Custom default values: ``value = user;``"
+
+#~ msgid ""
+#~ "По-умолчанию поиск пользователей осуществляется "
+#~ "по трём полям: **userName, firstName и"
+#~ " lastName**."
+#~ msgstr ""
+#~ "By default, user search is performed "
+#~ "across three fields: **userName, firstName,"
+#~ " and lastName**."
+
+#~ msgid ""
+#~ "Возможность динамически задавать корневую "
+#~ "группу в Оргструктуре, через параметр, "
+#~ "value или условие. Например:"
+#~ msgstr ""
+#~ "Ability to dynamically set the root "
+#~ "group in the Org Structure, through "
+#~ "a parameter, value, or condition. For"
+#~ " example:"
+
+#~ msgid "Только если **разрешенный тип полномочий** имеет значение **GROUP**"
+#~ msgstr "Only if **allowed authority type** has the value **GROUP**"
+
+#~ msgid ""
+#~ "**Всегда** для ASSOC-like атрибутов "
+#~ "(Association, Authority, Person, Group)"
+#~ msgstr ""
+#~ "**Always** for ASSOC-like attributes "
+#~ "(Association, Authority, Person, Group)"
+
+#~ msgid ""
+#~ "Только для системных артефактов, когда "
+#~ "поле на бэкенде имеет тип «строка»"
+#~ msgstr "Only for system artifacts when the backend field has type \"string\""
+
+#~ msgid ""
+#~ "Для бизнес-сущностей всегда используйте режим"
+#~ " **Node Ref**. Режим **Authority** "
+#~ "предназначен для системных артефактов, где "
+#~ "поле на бэкенде имеет строковый тип."
+#~ msgstr ""
+#~ "For business entities, always use **Node"
+#~ " Ref** mode. **Authority** mode is "
+#~ "intended for system artifacts where the"
+#~ " backend field has a string type."
+
+#~ msgid ""
+#~ "На вкладке :guilabel:`Кастомные` **Текущий "
+#~ "пользователь по умолчанию** - в случае,"
+#~ " если флажок отмечен, по умолчанию "
+#~ "будет установлено значение **id** текущего "
+#~ "пользователя. Работает только для форм в"
+#~ " режиме создания записи (CREATE)."
+#~ msgstr ""
+#~ "On the :guilabel:`Custom` tab, **Current "
+#~ "user by default** - if the "
+#~ "checkbox is selected, the **id** of "
+#~ "the current user is set by "
+#~ "default. Works only for forms in "
+#~ "record creation mode (CREATE)."

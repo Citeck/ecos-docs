@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,11 +28,9 @@ msgstr "Contents"
 
 #: ../../general/Data_API/ECOS_Records/using_in_browser.rst:11
 msgid ""
-"Начиная с версии 4.5.0 вместо Citeck.Records.get и Citeck.Records.query "
-"можно использовать Records.get и Records.query"
-msgstr ""
-"Starting from version 4.5.0, Records.get and Records.query can be used "
-"instead of Citeck.Records.get and Citeck.Records.query."
+"В инициализированном web-приложении ``Records`` и ``Citeck.Records`` "
+"ссылаются на один компонент."
+msgstr "In an initialized web application, ``Records`` and ``Citeck.Records`` refer to the same component."
 
 #: ../../general/Data_API/ECOS_Records/using_in_browser.rst:13
 msgid ""
@@ -43,10 +41,17 @@ msgstr ""
 " API and is available in the global context on any page of the system."
 
 #: ../../general/Data_API/ECOS_Records/using_in_browser.rst:15
+msgid ""
+"Атрибуты статуса, лицензии, рабочих областей и другие прикладные поля в "
+"примерах ниже предоставляются соответствующими сервисами. Их доступность "
+"и права определяются источником записи."
+msgstr "The status, license, workspace and other application attributes in the examples below are provided by their respective services. Availability and permissions depend on the record source."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:17
 msgid "Доступные операции:"
 msgstr "Available operations:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:17
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:19
 msgid ""
 "**get(recordRef)** - Получить запись по её идентификатору. Ниже "
 "представлен список операций с записью;"
@@ -54,7 +59,7 @@ msgstr ""
 "**get(recordRef)** — Retrieve a record by its identifier. The list of "
 "operations on a record is provided below;"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:18
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:20
 msgid ""
 "**query(query, attributes)** - Поиск записей. Первый аргумент - запрос "
 "для поиска, а второй - какие атрибуты нам нужны у найденых записей;"
@@ -63,27 +68,22 @@ msgstr ""
 "the search query, and the second is which attributes are needed from the "
 "found records;"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:19
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:21
 msgid "**remove(records)** - Удаление записей."
 msgstr "**remove(records)** — Delete records."
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:21
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:23
 msgid "Операции с записью, которая получена через метод **\"Records.get\"**:"
 msgstr "Operations on a record retrieved via the **\"Records.get\"** method:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:23
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:25
 msgid ""
 "**load(attributes, forceLoad)** - Загрузить атрибут или несколько "
-"атрибутов. Первым аргументом мы указываем что нужно загрузить, а вторым "
-"следует использовать кэш или нет. Второй аргумент опционален и по "
-"умолчанию равен false (т.е. кэш активен);"
-msgstr ""
-"**load(attributes, forceLoad)** — Load one or more attributes. The first "
-"argument specifies what to load, and the second specifies whether to use "
-"the cache. The second argument is optional and defaults to false (i.e. "
-"cache is active);"
+"атрибутов. При ``forceLoad=true`` сохранённые значения загружаются "
+"повторно; при false или отсутствии параметра используется кэш;"
+msgstr "**load(attributes, forceLoad)** loads one or more attributes. With ``forceLoad=true``, saved values are reloaded; with false or an omitted parameter, the cache is used;"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:24
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:26
 msgid ""
 "**att(attributeName, value)** - Проставить значение атрибута для записи. "
 "Используется перед сохранением записи;"
@@ -91,7 +91,7 @@ msgstr ""
 "**att(attributeName, value)** — Set the value of an attribute for a "
 "record. Used before saving the record;"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:25
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:27
 msgid ""
 "**save(attsToLoad)** - Сохранить изменения в записи, которые были сделаны"
 " методом att из предыдущего пункта и загрузить атрибуты, которые передали"
@@ -101,58 +101,91 @@ msgstr ""
 "method from the previous item and load the attributes passed in "
 "attsToLoad (optional);"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:27
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:29
 msgid ""
-"Метод save с версии UI 2.8.1 может принимать атрибуты для загрузки. В "
-"этом случае на сервер вместе с атрибутами для изменения так же "
-"отправляются атрибуты для загрузки в поле attributes тела запроса. Если "
-"при вызове save указаны атрибуты для загрузки, то в результате будет тот "
-"же формат, что и при вызове метода load."
-msgstr ""
-"Starting from UI version 2.8.1, the save method can accept attributes to "
-"load. In this case, the attributes to load are also sent to the server "
-"along with the attributes to modify, in the attributes field of the "
-"request body. If load attributes are specified when calling save, the "
-"result will have the same format as when calling the load method."
+"``load`` возвращает Promise: для строки атрибута — одно значение, для "
+"массива строк — объект с этими строками в качестве ключей, для карты "
+"алиасов — объект с заданными ключами."
+msgstr "``load`` returns a Promise: a single value for an attribute string, an object keyed by those strings for an array of strings, or an object with the specified keys for an alias map."
 
 #: ../../general/Data_API/ECOS_Records/using_in_browser.rst:31
+msgid ""
+"Метод ``save`` может принимать атрибуты для загрузки. В этом случае на "
+"сервер вместе с изменениями отправляется поле ``attributes``. "
+"``save(attsToLoad)`` возвращает Promise с той же формой данных, что и "
+"``load``; обычный ``save()`` для серверной записи возвращает Promise "
+"объекта Record. ``remove`` возвращает Promise без значения. Для "
+"последовательных операций используйте ``await``."
+msgstr "The ``save`` method can accept attributes to load. In that case, the ``attributes`` field is sent to the server along with the changes. ``save(attsToLoad)`` returns a Promise with the same data shape as ``load``; plain ``save()`` for a server record returns a Promise of a Record object. ``remove`` returns a Promise without a value. Use ``await`` for sequential operations."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:35
+msgid ""
+"``forceLoad=true`` не отменяет несохранённые изменения, сделанные через "
+"``att``: для изменённого атрибута может вернуться локальное значение. "
+"Виртуальные записи обрабатываются локально; параметр не гарантирует "
+"HTTP-запрос в каждом случае."
+msgstr "``forceLoad=true`` does not discard unsaved changes made through ``att``: a modified attribute may return its local value. Virtual records are handled locally; the parameter does not guarantee an HTTP request in every case."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:37
+msgid ""
+"Метод ``Records.getRecordToEdit(recordRef)`` возвращает отдельную обёртку"
+" редактирования базовой записи. Её временный идентификатор с ``-alias-`` "
+"связан с исходной записью и не является идентификатором новой сущности на"
+" сервере."
+msgstr "The ``Records.getRecordToEdit(recordRef)`` method returns a separate editing wrapper for the underlying record. Its temporary identifier containing ``-alias-`` is linked to the original record and does not identify a new server entity."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:40
 msgid "Структура query"
 msgstr "Query structure"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:38
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:42
+msgid ""
+"``Records.query`` возвращает Promise объекта с полями ``records``, "
+"``messages``, ``hasMore``, ``totalCount``, ``attributes`` и ``errors``. "
+"Без запроса атрибутов элементы ``records`` — строки ссылок. С атрибутами "
+"это объекты с запрошенными значениями и полем ``id``, содержащим полную "
+"ссылку, если алиас ``id`` не задан потребителем."
+msgstr "``Records.query`` returns a Promise of an object with ``records``, ``messages``, ``hasMore``, ``totalCount``, ``attributes`` and ``errors`` fields. Without requested attributes, ``records`` contains reference strings. With attributes, it contains objects with the requested values and an ``id`` field holding the full reference unless the consumer defines an ``id`` alias."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:44
+#, python-brace-format
+msgid ""
+"Этот результат браузерного компонента отличается от сырых серверных "
+"записей вида ``{id, attributes}``."
+msgstr "This browser component result differs from raw server records in ``{id, attributes}`` form."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:51
 msgid "Поле"
 msgstr "Field"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:39
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:186
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:52
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:201
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:40
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:53
 msgid "``sourceId``"
 msgstr "``sourceId``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:41
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:54
 msgid ""
 "Идентификатор источника данных в формате "
 "«приложение/id_локального_источника_данных»"
-msgstr ""
-"Data source identifier in the format "
-"\"application/local_data_source_id\""
+msgstr "Data source identifier in the format \"application/local_data_source_id\""
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:42
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:55
 msgid "``query``"
 msgstr "``query``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:43
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:56
 msgid "Любой формат, который поддерживается источником данных"
 msgstr "Any format supported by the data source"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:44
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:57
 msgid "``language``"
 msgstr "``language``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:45
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:58
 msgid ""
 "Язык для определения содержимого query. Источник данных может "
 "поддерживать несколько языков"
@@ -160,11 +193,11 @@ msgstr ""
 "Language used to interpret the contents of query. The data source may "
 "support several languages"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:46
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:59
 msgid "``sortBy``"
 msgstr "``sortBy``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:47
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:60
 #, python-brace-format
 msgid ""
 "Список объектов ``{attribute: String, ascending: Boolean}`` — атрибут для"
@@ -175,19 +208,19 @@ msgstr ""
 "attribute to sort by and the direction (ascending ``true`` or descending "
 "``false``)"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:48
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:61
 msgid "``groupBy``"
 msgstr "``groupBy``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:49
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:62
 msgid "Список атрибутов для группировки"
 msgstr "List of attributes to group by"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:50
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:63
 msgid "``page``"
 msgstr "``page``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:51
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:64
 #, python-brace-format
 msgid ""
 "Объект ``{maxItems: Number, skipCount: Number}`` — максимальное "
@@ -197,11 +230,11 @@ msgstr ""
 "Object ``{maxItems: Number, skipCount: Number}`` — the maximum number of "
 "items and the number of items to skip when searching"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:52
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:65
 msgid "``consistency``"
 msgstr "``consistency``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:53
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:66
 msgid ""
 "Ожидаемая консистенция данных: ``EVENTUAL`` \\| ``TRANSACTIONAL`` \\| "
 "``DEFAULT`` \\| ``TRANSACTIONAL_IF_POSSIBLE``. ``EVENTUAL`` позволяет "
@@ -211,47 +244,47 @@ msgstr ""
 "``DEFAULT`` \\| ``TRANSACTIONAL_IF_POSSIBLE``. ``EVENTUAL`` allows using "
 "indexes to search for items"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:76
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:89
 msgid "Примеры использования"
 msgstr "Usage examples"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:78
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:91
 msgid "Запрос ФИО пользователя:"
 msgstr "Request for the user's full name:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:85
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:98
 msgid "Запрос имени пользователя:"
 msgstr "Request for the user's first name:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:92
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:105
 msgid "Пример скрипта для смены статуса:"
 msgstr "Example script for changing the status:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:100
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:113
 msgid "Получение сразу нескольких атрибутов у вложенного значения:"
 msgstr "Retrieving several attributes of a nested value at once:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:106
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:119
 msgid "Статус объекта:"
 msgstr "Object status:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:112
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:125
 msgid "Проверка enterprise лицензии:"
 msgstr "Checking the enterprise license:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:118
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:131
 msgid "Получение рабочих областей текущего пользователя:"
 msgstr "Retrieving the workspaces of the current user:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:130
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:143
 msgid "Узнать sourceId по typeId:"
 msgstr "Find out sourceId by typeId:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:141
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:154
 msgid "CRUD операции"
 msgstr "CRUD operations"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:143
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:156
 msgid ""
 "Ниже представлены примеры основных операций, выполняемых при управлении "
 "данными и манипулировании:"
@@ -275,72 +308,83 @@ msgstr "UPDATE"
 msgid "DELETE"
 msgstr "DELETE"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:178
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:191
 msgid "Общение с сервером происходит через ``POST`` запросы:"
 msgstr "Communication with the server occurs via ``POST`` requests:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:185
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:193
+msgid ""
+"Браузерный клиент передаёт ``version: 1`` в теле запроса для выбора "
+"версии REST-контракта."
+msgstr "The browser client sends ``version: 1`` in the request body to select the REST contract version."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:200
 msgid "Запрос"
 msgstr "Request"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:187
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:202
 msgid "В коде ecos-ui используется"
 msgstr "Used in ecos-ui code"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:188
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:203
 msgid "``READ_ONLY POST``"
 msgstr "``READ_ONLY POST``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:194
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:209
 msgid "Поиск записей и/или получение атрибутов"
 msgstr "Searching records and/or retrieving attributes"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:201
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:214
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:216
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:229
 msgid "``READ_WRITE POST``"
 msgstr "``READ_WRITE POST``"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:207
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:222
 msgid "Удаление сущностей"
 msgstr "Deleting entities"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:220
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:235
 msgid "Создание или изменение сущностей"
 msgstr "Creating or modifying entities"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:228
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:243
 msgid "Возвращаемые в ответе типы"
 msgstr "Response return types"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:230
-msgid "В ответе может быть возвращен только тип json."
-msgstr "Only the JSON type can be returned in the response."
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:245
+msgid ""
+"Браузерный клиент читает ответы этих endpoint как JSON. Это описание "
+"транспорта браузерного клиента; Java/Kotlin API возвращает также DTO и "
+"другие объекты."
+msgstr "The browser client reads responses from these endpoints as JSON. This describes the browser client transport; the Java/Kotlin API also returns DTOs and other objects."
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:233
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:248
 msgid "Коды HTTP ответов"
 msgstr "HTTP response codes"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:235
-msgid "Возможные коды ответов:"
-msgstr "Possible response codes:"
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:250
+msgid ""
+"Примеры HTTP-кодов ответа (полный набор зависит также от gateway и "
+"авторизации):"
+msgstr "Example HTTP response codes (the full set also depends on the gateway and authentication):"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:237
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:252
 msgid "200 **OK**"
 msgstr "200 **OK**"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:238
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:253
 msgid "401 **Unauthorized**"
 msgstr "401 **Unauthorized**"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:239
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:254
 msgid "500 **Internal Server Error**"
 msgstr "500 **Internal Server Error**"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:242
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:257
 msgid "Описание ошибок и их уровни"
 msgstr "Error descriptions and their levels"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:244
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:259
 msgid ""
 "Ошибки отражены в теле ответа по ключу **messages** и с полем **level** "
 "равным **\"ERROR\"**."
@@ -348,11 +392,88 @@ msgstr ""
 "Errors are reflected in the response body under the **messages** key with"
 " the **level** field equal to **\"ERROR\"**."
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:246
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:261
 msgid "Пример:"
 msgstr "Example:"
 
-#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:271
-msgid "Доступный **level** только **\"ERROR\"**."
-msgstr "The only available **level** is **\"ERROR\"**."
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:286
+#, python-brace-format
+msgid ""
+"Поддерживаются уровни ``ERROR``, ``WARN``, ``INFO`` и ``DEBUG``; состав "
+"сообщений зависит от настроек запроса. Отладочные сообщения можно "
+"запросить через ``Records.query(query, attributes, {debug: true})``."
+msgstr "The supported levels are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``; message contents depend on request settings. Debug messages can be requested using ``Records.query(query, attributes, {debug: true})``."
 
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:288
+msgid ""
+"Ошибка может присутствовать в ``messages`` даже при HTTP 200. Транспорт "
+"браузерного компонента при сообщении ERROR отклоняет Promise; поле "
+"``msg`` может содержать строку или объект ошибки. Для ``type=records-"
+"error`` текст может находиться в ``msg.msg``."
+msgstr "An error may appear in ``messages`` even with HTTP 200. The browser component transport rejects the Promise on an ERROR message; the ``msg`` field may contain a string or error object. For ``type=records-error``, the text may be in ``msg.msg``."
+
+#: ../../general/Data_API/ECOS_Records/using_in_browser.rst:290
+msgid ""
+"При обработке результата учитывайте особенности метода: некоторые ветки "
+"``load`` перехватывают ошибку, выводят её в консоль и возвращают пустое "
+"значение. Успешный HTTP-статус сам по себе не подтверждает успешное "
+"выполнение операции."
+msgstr "When processing results, consider the method behavior: some ``load`` branches catch errors, log them to the console and return an empty value. A successful HTTP status alone does not confirm that the operation succeeded."
+
+#~ msgid ""
+#~ "Начиная с версии 4.5.0 вместо "
+#~ "Citeck.Records.get и Citeck.Records.query можно "
+#~ "использовать Records.get и Records.query"
+#~ msgstr ""
+#~ "Starting from version 4.5.0, Records.get "
+#~ "and Records.query can be used instead"
+#~ " of Citeck.Records.get and Citeck.Records.query."
+
+#~ msgid ""
+#~ "**load(attributes, forceLoad)** - Загрузить "
+#~ "атрибут или несколько атрибутов. Первым "
+#~ "аргументом мы указываем что нужно "
+#~ "загрузить, а вторым следует использовать "
+#~ "кэш или нет. Второй аргумент опционален"
+#~ " и по умолчанию равен false (т.е. "
+#~ "кэш активен);"
+#~ msgstr ""
+#~ "**load(attributes, forceLoad)** — Load one "
+#~ "or more attributes. The first argument"
+#~ " specifies what to load, and the "
+#~ "second specifies whether to use the "
+#~ "cache. The second argument is optional"
+#~ " and defaults to false (i.e. cache"
+#~ " is active);"
+
+#~ msgid ""
+#~ "Метод save с версии UI 2.8.1 может"
+#~ " принимать атрибуты для загрузки. В "
+#~ "этом случае на сервер вместе с "
+#~ "атрибутами для изменения так же "
+#~ "отправляются атрибуты для загрузки в "
+#~ "поле attributes тела запроса. Если при"
+#~ " вызове save указаны атрибуты для "
+#~ "загрузки, то в результате будет тот "
+#~ "же формат, что и при вызове метода"
+#~ " load."
+#~ msgstr ""
+#~ "Starting from UI version 2.8.1, the "
+#~ "save method can accept attributes to "
+#~ "load. In this case, the attributes "
+#~ "to load are also sent to the "
+#~ "server along with the attributes to "
+#~ "modify, in the attributes field of "
+#~ "the request body. If load attributes "
+#~ "are specified when calling save, the "
+#~ "result will have the same format "
+#~ "as when calling the load method."
+
+#~ msgid "В ответе может быть возвращен только тип json."
+#~ msgstr "Only the JSON type can be returned in the response."
+
+#~ msgid "Возможные коды ответов:"
+#~ msgstr "Possible response codes:"
+
+#~ msgid "Доступный **level** только **\"ERROR\"**."
+#~ msgstr "The only available **level** is **\"ERROR\"**."

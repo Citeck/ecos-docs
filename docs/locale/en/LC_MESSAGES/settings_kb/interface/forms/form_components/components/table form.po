@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -225,16 +225,23 @@ msgstr ""
 #: ../../settings_kb/interface/forms/form_components/components/table
 #: form.rst:129
 msgid ""
-"Кнопка **\"Выбрать\"** отображается только при установленном флаге "
-"**Кнопка \"Выбрать\"** и указанном ``selectJournalId`` (идентификатор "
-"журнала для выбора шаблонов)."
-msgstr ""
-"The **\"Select\"** button is displayed only when the **\"Select\" "
-"button** flag is set and ``selectJournalId`` (the journal identifier for "
-"selecting templates) is specified."
+"Кнопка **\"Выбрать\"** отображается при установленном флаге **Кнопка "
+"\"Выбрать\"** (``enableSelectButton``), наличии вариантов создания и "
+"разрешённом действии ``select`` в настройке элементов отображения. В "
+"режиме чтения кнопка скрыта. При ``disabled`` или в одиночном режиме с "
+"уже добавленной строкой она заблокирована."
+msgstr "The **\"Select\"** button appears with **Select button** (``enableSelectButton``) enabled, creation variants available and ``select`` allowed in display element settings. It is hidden in read mode and disabled with ``disabled`` or in single mode with a row already added."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:133
+#: form.rst:131
+msgid ""
+"Для открытия окна выбора обязательно задайте ``selectJournalId`` — "
+"идентификатор журнала шаблонов. При пустом ID кнопка может отображаться, "
+"но окно выбора не откроется."
+msgstr "To open the selection dialog, set ``selectJournalId`` to the template journal ID. With an empty ID, the button may appear but the dialog will not open."
+
+#: ../../settings_kb/interface/forms/form_components/components/table
+#: form.rst:135
 msgid ""
 "Журнал для кнопки \"Создать\" (``source.journal.journalId``) и журнал для"
 " кнопки \"Выбрать\" (``selectJournalId``) — это, как правило, **разные** "
@@ -247,12 +254,12 @@ msgstr ""
 "the second is the reference of templates for copying."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:136
+#: form.rst:138
 msgid "Выбор значения из справочника"
 msgstr "Select value from reference"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:138
+#: form.rst:140
 msgid ""
 "Чтобы на форме отображалась кнопка **\"Выбрать\"** для копирования "
 "существующих объектов, установите флаг **Кнопка \"Выбрать\"**:"
@@ -261,23 +268,20 @@ msgstr ""
 "objects, set the **\"Select\" button** flag:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:144
+#: form.rst:146
 msgid ""
-"Укажите **идентификатор журнала** для выбора объектов. Если идентификатор"
-" не указан, будет использован журнал соответствующий типу первого "
-"варианта создания."
-msgstr ""
-"Specify the **journal identifier** for object selection. If no identifier"
-" is specified, the journal corresponding to the type of the first "
-"creation option will be used."
+"Укажите **идентификатор журнала** для выбора объектов "
+"(``selectJournalId``). Автоматической подстановки журнала из первого "
+"варианта создания для этой кнопки нет."
+msgstr "Specify **Journal ID** for object selection (``selectJournalId``). This button does not automatically use the first creation variant journal."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:146
+#: form.rst:148
 msgid "На форме нажмите кнопку **\"Выбрать\"**."
 msgstr "On the form, click the **\"Select\"** button."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:147
+#: form.rst:149
 msgid ""
 "Выберите необходимый **объект** для копирования. Выбираемое значение "
 "используется как шаблон для копируемого объекта."
@@ -286,55 +290,51 @@ msgstr ""
 " a template for the copied object."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:153
+#: form.rst:155
 msgid ""
 "Открывается форма редактирования объекта, если необходимо, то можно "
 "изменить значения."
 msgstr "The object editing form opens, where values can be modified if necessary."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:159
+#: form.rst:161
 msgid "Подтвердите выбор, объект будет скопирован в table form."
 msgstr "Confirm the selection, the object will be copied to the table form."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:162
-msgid "Структура типов для корректной работы копирования"
-msgstr "Type structure for correct copy operation"
-
-#: ../../settings_kb/interface/forms/form_components/components/table
 #: form.rst:164
-msgid ""
-"Чтобы копирование из справочника работало правильно (записи создавались "
-"как дочерние элементы родительской сущности и **не попадали** в "
-"глобальный справочник), необходима двухуровневая иерархия типов:"
-msgstr ""
-"For copying from a reference to work correctly (records are created as "
-"child elements of the parent entity and do **not end up** in the global "
-"reference), a two-level type hierarchy is required:"
+msgid "Пример структуры типов для копирования"
+msgstr "Example type structure for copying"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:172
+#: form.rst:166
+msgid ""
+"Для разделения справочника шаблонов и дочерних записей можно использовать"
+" следующую иерархию типов:"
+msgstr "To separate the template directory from child records, use a hierarchy such as:"
+
+#: ../../settings_kb/interface/forms/form_components/components/table
+#: form.rst:174
 msgid "Пример из CRM (продукты и услуги):"
 msgstr "Example from CRM (products and services):"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:184
+#: form.rst:186
 msgid "Конфигурация ассоциации на родительском типе (сделка/заказ):"
 msgstr "Association configuration on the parent type (deal/order):"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:195
+#: form.rst:197
 msgid "Конфигурация компонента Table Form на форме:"
 msgstr "Table Form component configuration on the form:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:215
+#: form.rst:217
 msgid "Где:"
 msgstr "Where:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:217
+#: form.rst:219
 msgid ""
 "``source.journal.journalId`` — журнал типа-элемента (для отображения "
 "строк в таблице)"
@@ -343,7 +343,7 @@ msgstr ""
 "displaying rows in the table)"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:218
+#: form.rst:220
 msgid ""
 "``selectJournalId`` — журнал типа-справочника (для выбора шаблонов при "
 "нажатии кнопки \"Выбрать\")"
@@ -352,44 +352,40 @@ msgstr ""
 "templates when the \"Select\" button is clicked)"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:219
+#: form.rst:221
 msgid "``properties.attribute`` — атрибут-ассоциация на родительском типе"
 msgstr "``properties.attribute`` — the association attribute on the parent type"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:223
+#: form.rst:225
 msgid ""
-"Если тип-элемент наследуется напрямую от ``data-list``, созданные записи "
-"будут попадать в глобальный справочник. Тип-элемент должен наследоваться "
-"от типа-справочника (или другого не-справочного типа), чтобы записи "
-"существовали только как дочерние элементы родительской сущности."
-msgstr ""
-"If the element type inherits directly from ``data-list``, created records"
-" will end up in the global reference. The element type must inherit from "
-"the reference type (or another non-reference type) so that records exist "
-"only as child elements of the parent entity."
+"Эта иерархия — пример конфигурации. Table Form использует доступные "
+"варианты создания и не требует определённого наследования от ``data-"
+"list``. Состав записей глобального справочника зависит от серверной "
+"модели и фильтров журнала; настройте их так, чтобы дочерние записи не "
+"попадали в список шаблонов."
+msgstr "This hierarchy is a configuration example. Table Form uses available creation variants and requires no specific ``data-list`` inheritance. Server models and journal filters determine global directory contents; configure them to exclude child records from templates."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:227
+#: form.rst:229
 msgid "Наполнение данных в таблице"
 msgstr "Data population in the table"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:230
+#: form.rst:232
 msgid "Использование Массив записей"
 msgstr "Using Records Array"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:232
+#: form.rst:234
 msgid ""
-"Для этого можно использовать компонент **Async Data** (добавить ссылку) с"
-" типом данных **Массив записей (Records Array)**."
-msgstr ""
-"For this, you can use the **Async Data** component (add link) with the "
-"data type **Records Array**."
+"Для этого можно использовать компонент :ref:`Async "
+"Data<async_data_component>` с типом данных **Массив записей (Records "
+"Array)**."
+msgstr "Use :ref:`Async Data<async_data_component>` with **Records Array** data type for this."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:234
+#: form.rst:236
 msgid ""
 "В поле **Массив записей (Records Array)** указывается имя таблицы, "
 "заключенное в двойные фигурные скобки, в аттрибутах - поля этой таблицы и"
@@ -400,12 +396,12 @@ msgstr ""
 "by which they will be accessible."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:242
+#: form.rst:244
 msgid "Ручное заполнение"
 msgstr "Manual population"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:244
+#: form.rst:246
 msgid ""
 "Table form ожидает, что value в нем будет массивом recordRef. Данные по "
 "рекордам будут подтянуты автоматически."
@@ -414,7 +410,7 @@ msgstr ""
 "data will be loaded automatically."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:246
+#: form.rst:248
 msgid ""
 "Таким образом, можем в async data получить какие-то данные, например, "
 "через recordsQuery, а в table form (вкладка Данные -> Вычисляемые "
@@ -425,236 +421,218 @@ msgstr ""
 "them into a recordRef array and assign to value:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:256
+#: form.rst:258
 msgid "Как получить доступ к родительской форме?"
 msgstr "How to access the parent form?"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:258
+#: form.rst:260
 msgid ""
-"Чтобы получить доступ к родительской форме из формы "
-"создания/редактирования записи, можно использовать объект "
-"``instance.options.parentForm``. Например, если требуется установить "
-"значение по умолчанию полю дочерней формы, опираясь на значение из поля "
-"родительской формы, можно установить этому полю настройку "
-"**Пользовательские значения по умолчанию**:"
-msgstr ""
-"To access the parent form from the record creation/editing form, you can "
-"use the ``instance.options.parentForm`` object. For example, if you need "
-"to set a default value for a child form field based on a value from a "
-"parent form field, you can set the **Custom default values** setting for "
-"this field:"
+"Чтобы получить доступ к родительской форме из компонента формы "
+"создания/редактирования записи, используйте ``instance.root.parentForm``."
+" Например, если требуется установить значение по умолчанию полю дочерней "
+"формы, опираясь на значение из поля родительской формы, можно установить "
+"этому полю настройку **Пользовательские значения по умолчанию**:"
+msgstr "To access the parent form from a record creation/editing form component, use ``instance.root.parentForm``. For example, to default a child field using a parent field, set **Custom default values**:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:272
+#: form.rst:270
+msgid ""
+"Родительская форма определяется по ``options.parentId``, если он задан, "
+"иначе — по порядку открытых форм в ``Formio.forms``. При нескольких "
+"одновременно открытых формах учитывайте этот способ определения родителя."
+msgstr "The parent form is determined by ``options.parentId`` if set, otherwise by open form order in ``Formio.forms``. Account for this when multiple forms are open."
+
+#: ../../settings_kb/interface/forms/form_components/components/table
+#: form.rst:277
 msgid "Отображение действий"
 msgstr "Displaying actions"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:274
+#: form.rst:279
 msgid ""
-"Вкладка :guilabel:`Отображение`, настройка **Элементы отображения** "
-"позволяет задавать условия отображения действий."
-msgstr ""
-"The :guilabel:`Display` tab, **Display elements** setting allows "
-"configuring action display conditions."
+"На вкладке :guilabel:`Условия` группа **Отображение действий (Display "
+"Actions)** содержит настройки журнальных и стандартных действий."
+msgstr "On :guilabel:`Conditional`, **Display Actions** contains journal and standard action settings."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:276
+#: form.rst:281
 msgid "Есть два варианта установки действий:"
 msgstr "There are two ways to set up actions:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:278
+#: form.rst:283
 msgid ""
-"**Использовать действия журнала** — флаг на вкладке "
-":guilabel:`Отображение`. При включении в строках таблицы отображаются "
-"действия, заданные в конфигурации журнала (секция ``actions`` в YAML "
-"журнала). Например, если в журнале указаны ``uiserv/action@edit`` и "
-"``uiserv/action@delete``, в каждой строке таблицы будут доступны кнопки "
-"редактирования и удаления. Рекомендуется включать, когда источник данных "
-"— **Журнал**."
-msgstr ""
-"**Use journal actions** — a flag on the :guilabel:`Display` tab. When "
-"enabled, the table rows display the actions defined in the journal "
-"configuration (the ``actions`` section in the journal YAML). For example,"
-" if ``uiserv/action@edit`` and ``uiserv/action@delete`` are specified in "
-"the journal, edit and delete buttons will be available in each table row."
-" Recommended when the data source is **Journal**."
+"**Использовать действия журнала** (``isUsedJournalActions``) — флаг на "
+"вкладке :guilabel:`Условия`. При включении в строках таблицы используются"
+" действия журнала, доступные для соответствующей записи. Например, это "
+"могут быть действия редактирования и удаления. Используйте этот режим, "
+"когда источник данных — **Журнал**."
+msgstr "**Use journal actions** (``isUsedJournalActions``) is on :guilabel:`Conditional`. Enabled uses journal actions available for each row record, such as edit and delete. Use this with **Journal** data sources."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:280
+#: form.rst:285
 msgid ""
-"Если источник не журнал или не нужны журнальные действия, и заполнено "
-"поле **Действия компонентов**, отобразятся доступные стандартные "
-"действия, описанные ниже."
-msgstr ""
-"If the source is not a journal or journal actions are not needed, and the"
-" **Component actions** field is filled, available standard actions "
-"described below will be displayed."
+"Если флаг выключен, отображаются стандартные действия. Поле **Действия "
+"компонентов** (``displayElementsJS``) позволяет переопределить их "
+"видимость. Незаданные свойства используют значения по умолчанию из "
+"таблицы ниже."
+msgstr "If disabled, standard actions appear. **Component actions** (``displayElementsJS``) overrides visibility. Unspecified properties use the defaults below."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:282
+#: form.rst:287
 msgid ""
-"Если установлен  флаг **Использовать действия журнала**, то из поля "
-"**Действия компонентов** будет обработано только действие "
-":guilabel:`Создать`."
-msgstr ""
-"If the **Use journal actions** flag is set, only the :guilabel:`Create` "
-"action from the **Component actions** field will be processed."
+"При включённых журнальных действиях поле ``displayElementsJS`` не "
+"управляет действиями строк. При этом ключ ``create`` продолжает влиять на"
+" кнопки создания и импорта, а ``select`` — на кнопку выбора из "
+"справочника."
+msgstr "With journal actions enabled, ``displayElementsJS`` does not control row actions. However, ``create`` still affects creation and import buttons, and ``select`` the directory selection button."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:289
+#: form.rst:294
 msgid "Наименование действия"
 msgstr "Action name"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:290
+#: form.rst:295
 msgid "Ключ"
 msgstr "Key"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:291
+#: form.rst:296
 msgid "По умолчанию"
 msgstr "Default"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:292
+#: form.rst:297
 msgid "disabled / режим просмотра"
 msgstr "disabled / view mode"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:293
+#: form.rst:298
 msgid "**Создать**"
 msgstr "**Create**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:294
+#: form.rst:299
 msgid "create"
 msgstr "create"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:295 form.rst:299 form.rst:303 form.rst:307
+#: form.rst:300 form.rst:304 form.rst:308 form.rst:312
 msgid "true"
 msgstr "true"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:296
-msgid "недоступно или скрыто"
-msgstr "unavailable or hidden"
+#: form.rst:301
+msgid "заблокировано при disabled; скрыто в режиме чтения"
+msgstr "Disabled with disabled; hidden in read mode"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:297
+#: form.rst:302
 msgid "**Редактировать**"
 msgstr "**Edit**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:298
+#: form.rst:303
 msgid "edit"
 msgstr "edit"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:300 form.rst:304
-msgid "недоступно"
-msgstr "unavailable"
+#: form.rst:305 form.rst:309 form.rst:321
+msgid "скрыто"
+msgstr "Hidden"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:301
+#: form.rst:306
 msgid "**Удалить**"
 msgstr "**Delete**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:302
+#: form.rst:307
 msgid "delete"
 msgstr "delete"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:305
+#: form.rst:310
 msgid "**Просмотр**"
 msgstr "**View**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:306
+#: form.rst:311
 msgid "view"
 msgstr "view"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:309
+#: form.rst:314
 msgid "**Предпросмотр документа**"
 msgstr "**Document preview**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:310
+#: form.rst:315
 msgid "preview"
 msgstr "preview"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:311 form.rst:315
+#: form.rst:316 form.rst:320
 msgid "false"
 msgstr "false"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:313
+#: form.rst:318
 msgid "**Клонировать**"
 msgstr "**Clone**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:314
+#: form.rst:319
 msgid "clone"
 msgstr "clone"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:318
+#: form.rst:323
 msgid ""
-"Поле принимает javascript-выражение, в котором необходимо присвоить "
-"переменной **value** объект с необязательными свойствами **create, view, "
-"preview, edit и delete** (ключи в таблице выше)."
-msgstr ""
-"The field accepts a JavaScript expression where you need to assign an "
-"object with optional properties **create, view, preview, edit, and "
-"delete** (keys in the table above) to the **value** variable."
+"Поле принимает JavaScript-выражение, в котором переменной ``value`` "
+"присваивается объект с необязательными свойствами ``create``, ``view``, "
+"``preview``, ``edit``, ``delete`` и ``clone``. Дополнительное свойство "
+"``select`` управляет видимостью кнопки **Выбрать**; при его отсутствии "
+"показ разрешён, если выполнены остальные условия для этой кнопки."
+msgstr "The field accepts JavaScript assigning an object to ``value`` with optional ``create``, ``view``, ``preview``, ``edit``, ``delete`` and ``clone``. Additional ``select`` controls **Select** visibility; if omitted, display is allowed when other button conditions are met."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:320
+#: form.rst:325
 msgid ""
-"Если какое-то из свойств не указано, то компонент сам будет решать, "
-"отображать элемент или скрывать, в зависимости от ситуации (*)."
-msgstr ""
-"If any property is not specified, the component itself will decide "
-"whether to display or hide the element, depending on the situation (*)."
+"Если свойство не указано, используются стандартные настройки действия с "
+"учётом состояния компонента."
+msgstr "Unspecified properties use standard action settings subject to component state."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:322
+#: form.rst:327
 msgid ""
-"Если компонент **Table Form** в состоянии *disabled* или *форма в режиме "
-"просмотра*, элементы “редактировать“, “удалить“ в любом случае будут "
-"недоступны."
-msgstr ""
-"If the **Table Form** component is in the *disabled* state or the *form "
-"is in view mode*, the \"edit\" and \"delete\" elements will be "
-"unavailable in any case."
+"Ограничения в таблице относятся к стандартным действиям. При включённых "
+"журнальных действиях доступность определяется конфигурацией действий и "
+"правами на записи; флаги ``disabled`` и режима чтения не являются общим "
+"запретом на выполнение всех журнальных действий."
+msgstr "Table restrictions concern standard actions. With journal actions enabled, availability depends on action configuration and record permissions; ``disabled`` and read mode are not universal prohibitions on all journal actions."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:339
+#: form.rst:344
 msgid "Настройки элементов"
 msgstr "Element settings"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:341
+#: form.rst:346
 msgid ""
-"Вкладка :guilabel:`Отображение` настройка **Элементы отображения** задает"
-" некоторые свойства действиям."
-msgstr ""
-"The :guilabel:`Display` tab, **Display elements** setting configures some"
-" properties for actions."
+"На вкладке :guilabel:`Условия` группа **Настройка элементов (Setting "
+"Elements)** содержит настройку клонирования."
+msgstr "On :guilabel:`Conditional`, **Setting Elements** contains cloning settings."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:343
-msgid "**Копирование без подтверждения**"
-msgstr "**Copy without confirmation**"
+#: form.rst:348
+msgid "**Мгновенный клон (Instant Clone)** — ``isInstantClone``."
+msgstr "**Instant Clone** — ``isInstantClone``."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:345
+#: form.rst:350
 msgid ""
 "Если флаг установлен, при выборе из справочника запись сразу копируется в"
 " таблицу без открытия формы редактирования. Если флаг снят, сначала "
@@ -666,12 +644,12 @@ msgstr ""
 "modified before adding."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:352
+#: form.rst:357
 msgid "Выбор строк в таблице и выполнение действий с выбранными строками"
 msgstr "Row selection in table and performing actions with selected rows"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:353
+#: form.rst:358
 msgid ""
 "Для включения возможности выбора строки в таблице нужно отметить галочкой"
 " пункт **Выбираемые строки** на вкладке :guilabel:`Данные`."
@@ -680,7 +658,7 @@ msgstr ""
 "option on the :guilabel:`Data` tab."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:359
+#: form.rst:364
 msgid ""
 "Для получения списка выбранных строк в таблице у компонента предусмотрен "
 "метод ``getSelectedRows()``."
@@ -689,7 +667,7 @@ msgstr ""
 "selected rows in the table."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:361
+#: form.rst:366
 msgid ""
 "Например, чтобы выполнить какое-нибудь действие с выбранными строками в "
 "таблице при нажатии на кнопку, в компоненте **Button** выберем "
@@ -700,12 +678,12 @@ msgstr ""
 "Custom** and specify **Button Custom Logic**:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:375
+#: form.rst:380
 msgid "Запрет выбора некоторых строк в таблице"
 msgstr "Prohibiting selection of certain rows in the table"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:377
+#: form.rst:382
 msgid ""
 "На вкладке :guilabel:`Данные` в поле **Указать невыбираемые строки** "
 "можно запретить выбор определенных строк в таблице:"
@@ -714,12 +692,12 @@ msgstr ""
 "field, you can prohibit the selection of certain rows in the table:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:384
+#: form.rst:389
 msgid "Установка выбранных строк по умолчанию"
 msgstr "Setting default selected rows"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:386
+#: form.rst:391
 msgid ""
 "На вкладке :guilabel:`Данные` в поле **Указать выбираемые строки** можно "
 "указать, какие строки должны быть выбраны по умолчанию:"
@@ -728,7 +706,7 @@ msgstr ""
 "you can specify which rows should be selected by default:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:393
+#: form.rst:398
 msgid ""
 "Флаг \"Разрешить ручное переопределение вычисляемого значения\"/ \"Allow "
 "Manual Override of Calculated Value\""
@@ -737,7 +715,7 @@ msgstr ""
 "Override of Calculated Value\""
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:399
+#: form.rst:404
 msgid ""
 "На вкладке :guilabel:`Данные` выставленный флаг разрешает принудительно "
 "перезаписать пользователю поле, где уже введено вычисляемое значение."
@@ -746,17 +724,17 @@ msgstr ""
 "overwrite a field where a calculated value has already been entered."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:401
+#: form.rst:406
 msgid "См. :ref:`подробно<manual_override>`"
 msgstr "See :ref:`details<manual_override>`"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:404
+#: form.rst:409
 msgid "Статические заголовки"
 msgstr "Static headers"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:406
+#: form.rst:411
 msgid ""
 "Для включения статического заголовка необходимо в родительской форме "
 "проставить чекбокс **Скрыть имя записи в модальном заголовке/ Hide record"
@@ -767,7 +745,7 @@ msgstr ""
 "hidden."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:408
+#: form.rst:413
 msgid ""
 "Так же, есть возможность задать свой локализованный статический "
 "заголовок. Для этого необходимо:"
@@ -776,12 +754,12 @@ msgstr ""
 " To do this:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:410
+#: form.rst:415
 msgid "Создать в **Локализация/Localization** бандл с необходимой локализацией"
 msgstr "Create a bundle with the required localization in **Localization**"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:412
+#: form.rst:417
 msgid ""
 "Вставить ключ локализации в поле **Укажите пользовательское статическое "
 "название поля для объединения с основным/ Enter custom static label for "
@@ -796,34 +774,28 @@ msgstr ""
 "header"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:415
+#: form.rst:420
 msgid "Импорт из файла"
 msgstr "Import from file"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:417
+#: form.rst:422
 msgid ""
-"Появилась возможность импортировать в таблицу данные из файла (например, "
-"xslx). Для этого в настройки компонента  добавлен раздел "
-":guilabel:`Импорт`:"
-msgstr ""
-"The ability to import data into the table from a file (e.g., xslx) has "
-"been added. For this, an :guilabel:`Import` section has been added to the"
-" component settings:"
+"Для импорта данных из файла (например, xlsx) откройте раздел "
+":guilabel:`Импорт` и включите **Добавить кнопку Импорт** "
+"(``import.enable``). По умолчанию этот флаг выключен."
+msgstr "To import file data, such as xlsx, open :guilabel:`Import` and enable **Add Import button** (``import.enable``). Disabled by default."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:423
+#: form.rst:428
 msgid ""
-"Поле **URL для загрузки** предназначено для указания url, куда будет "
-"отправляться POST-запрос с прикреплённым файлом (или несколькими файлами)"
-" для обработки. Обязательно к заполнению."
-msgstr ""
-"The **Upload URL** field is for specifying the URL where a POST request "
-"with an attached file (or multiple files) will be sent for processing. "
-"Mandatory to fill."
+"Поле **URL для загрузки** задаёт адрес обработки файлов. Каждый выбранный"
+" файл отправляется отдельным POST-запросом с одним файлом в FormData. "
+"Поле обязательно к заполнению."
+msgstr "**Upload URL** specifies the file processing address. Each selected file is sent in a separate POST with one file in FormData. Required."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:425
+#: form.rst:430
 msgid ""
 "Поле **Обработчик ответов** предназначено для обработки результата ответа"
 " сервера после загрузки файла. Обязательно к заполнению. Принимает "
@@ -838,7 +810,7 @@ msgstr ""
 "new Error('error text'))."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:428
+#: form.rst:433
 msgid ""
 "В javascript-выражении помимо стандартных объектов **formio (data, "
 "instance, _, moment, и т.д.)** доступна переменная **response** (или "
@@ -850,29 +822,32 @@ msgstr ""
 "upload."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:430
-msgid "После заполнения настроек у компонента должна появиться кнопка **Импорт**:"
-msgstr ""
-"After filling in the settings, the component should have an **Import** "
-"button:"
+#: form.rst:435
+msgid ""
+"После включения импорта и заполнения настроек появляется кнопка "
+"**Импорт**, если действие ``create`` разрешено и форма не находится в "
+"режиме чтения. При ``disabled`` кнопка заблокирована. Обработанные "
+"результаты каждого ответа добавляются к текущему массиву значений "
+"таблицы."
+msgstr "After import is enabled and configured, **Import** appears if ``create`` is allowed and the form is not in read mode. ``disabled`` disables the button. Processed results of each response are appended to the current table value array."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:437
+#: form.rst:442
 msgid "Примеры"
 msgstr "Examples"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:440
+#: form.rst:445
 msgid "Импортирование данных"
 msgstr "Data import"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:442
+#: form.rst:447
 msgid "Работа с файлами обычно делегируется бэкенду."
 msgstr "File handling is usually delegated to the backend."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:444
+#: form.rst:449
 msgid ""
 "Создадим новый тип для импортирования данных :download:`excel-files-"
 "import.yml <../files/excel-files-import.yml>` и форму :download:`excel-"
@@ -883,16 +858,14 @@ msgstr ""
 "inport-form.json <../files/excel-files-inport-form.json>`"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:446
+#: form.rst:451
 msgid ""
 "Для отображения строк используем дочерний тип :download:`excel-files-"
-"import-line.yml <../files/excel-files-import.yml>`"
-msgstr ""
-"For displaying rows, use the child type :download:`excel-files-import-"
-"line.yml <../files/excel-files-import.yml>`"
+"import-line.yml <../files/excel-files-import-line.yml>`"
+msgstr "Use the child type :download:`excel-files-import-line.yml <../files/excel-files-import-line.yml>` to display rows"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:448
+#: form.rst:453
 msgid ""
 ":download:`ecos-app архив со всеми артефактами <../files/import-from-"
 "excel-example.zip>`, который можно загрузить целиком по адресу "
@@ -903,7 +876,7 @@ msgstr ""
 "=ecos-apps&type=JOURNAL``"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:450
+#: form.rst:455
 msgid ""
 "Далее необходимо добавить основной тип в меню, открыть журнал, нажать "
 "\"Создать\", добавить файлы для импорта и нажать \"Создать\". На бэкенде "
@@ -915,12 +888,12 @@ msgstr ""
 "populated."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:452
+#: form.rst:457
 msgid "Примерный вид, того как это будет выглядеть:"
 msgstr "Approximate view of how it will look:"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:464
+#: form.rst:469
 msgid ""
 "Для произвольной логики на бэкенде в Citeck есть возможность создания "
 "дополнительных микросервисов. Демо микросервис, который можно посмотреть "
@@ -931,12 +904,12 @@ msgstr ""
 "example - https://github.com/Citeck/ecos-demo-app"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:467
+#: form.rst:472
 msgid "Изменение стиля строки"
 msgstr "Changing row style"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:473
+#: form.rst:478
 msgid ""
 "У каждой строки можно заполнять флаг \"совпадения\" и повесить на этот "
 "атрибут :ref:`форматтер<formatters>`"
@@ -945,7 +918,7 @@ msgstr ""
 ":ref:`formatter<formatters>` to this attribute"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:475
+#: form.rst:480
 msgid ""
 "Пример формы :download:`excel-files-inport-form.json <../files/excel-"
 "files-inport-form_1.json>`"
@@ -954,17 +927,17 @@ msgstr ""
 "files-inport-form_1.json>`"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:479
+#: form.rst:484
 msgid "Добавление строк"
 msgstr "Adding rows"
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:481
+#: form.rst:486
 msgid "Таблицы на формах - способ представления дочерних сущностей."
 msgstr "Tables on forms are a way to represent child entities."
 
 #: ../../settings_kb/interface/forms/form_components/components/table
-#: form.rst:483
+#: form.rst:488
 msgid ""
 "Добавлять новые строки на бэкенде можно, указав корректные атрибуты "
 "**_parent** (ссылка на родителя) и **_parentAtt** (ассоциация родителя "
@@ -1001,3 +974,192 @@ msgstr ""
 #~ "creation form is displayed and the "
 #~ "record is added only after submission."
 
+#~ msgid ""
+#~ "Кнопка **\"Выбрать\"** отображается только при"
+#~ " установленном флаге **Кнопка \"Выбрать\"** "
+#~ "и указанном ``selectJournalId`` (идентификатор "
+#~ "журнала для выбора шаблонов)."
+#~ msgstr ""
+#~ "The **\"Select\"** button is displayed "
+#~ "only when the **\"Select\" button** flag"
+#~ " is set and ``selectJournalId`` (the "
+#~ "journal identifier for selecting templates)"
+#~ " is specified."
+
+#~ msgid ""
+#~ "Чтобы копирование из справочника работало "
+#~ "правильно (записи создавались как дочерние "
+#~ "элементы родительской сущности и **не "
+#~ "попадали** в глобальный справочник), "
+#~ "необходима двухуровневая иерархия типов:"
+#~ msgstr ""
+#~ "For copying from a reference to "
+#~ "work correctly (records are created as"
+#~ " child elements of the parent entity"
+#~ " and do **not end up** in the"
+#~ " global reference), a two-level type"
+#~ " hierarchy is required:"
+
+#~ msgid ""
+#~ "Если тип-элемент наследуется напрямую от "
+#~ "``data-list``, созданные записи будут "
+#~ "попадать в глобальный справочник. Тип-элемент"
+#~ " должен наследоваться от типа-справочника "
+#~ "(или другого не-справочного типа), чтобы "
+#~ "записи существовали только как дочерние "
+#~ "элементы родительской сущности."
+#~ msgstr ""
+#~ "If the element type inherits directly"
+#~ " from ``data-list``, created records "
+#~ "will end up in the global "
+#~ "reference. The element type must inherit"
+#~ " from the reference type (or another"
+#~ " non-reference type) so that records"
+#~ " exist only as child elements of "
+#~ "the parent entity."
+
+#~ msgid ""
+#~ "Вкладка :guilabel:`Отображение`, настройка "
+#~ "**Элементы отображения** позволяет задавать "
+#~ "условия отображения действий."
+#~ msgstr ""
+#~ "The :guilabel:`Display` tab, **Display "
+#~ "elements** setting allows configuring action"
+#~ " display conditions."
+
+#~ msgid ""
+#~ "**Использовать действия журнала** — флаг "
+#~ "на вкладке :guilabel:`Отображение`. При "
+#~ "включении в строках таблицы отображаются "
+#~ "действия, заданные в конфигурации журнала "
+#~ "(секция ``actions`` в YAML журнала). "
+#~ "Например, если в журнале указаны "
+#~ "``uiserv/action@edit`` и ``uiserv/action@delete``, в"
+#~ " каждой строке таблицы будут доступны "
+#~ "кнопки редактирования и удаления. "
+#~ "Рекомендуется включать, когда источник данных"
+#~ " — **Журнал**."
+#~ msgstr ""
+#~ "**Use journal actions** — a flag "
+#~ "on the :guilabel:`Display` tab. When "
+#~ "enabled, the table rows display the "
+#~ "actions defined in the journal "
+#~ "configuration (the ``actions`` section in "
+#~ "the journal YAML). For example, if "
+#~ "``uiserv/action@edit`` and ``uiserv/action@delete`` "
+#~ "are specified in the journal, edit "
+#~ "and delete buttons will be available "
+#~ "in each table row. Recommended when "
+#~ "the data source is **Journal**."
+
+#~ msgid ""
+#~ "Если источник не журнал или не "
+#~ "нужны журнальные действия, и заполнено "
+#~ "поле **Действия компонентов**, отобразятся "
+#~ "доступные стандартные действия, описанные "
+#~ "ниже."
+#~ msgstr ""
+#~ "If the source is not a journal "
+#~ "or journal actions are not needed, "
+#~ "and the **Component actions** field is"
+#~ " filled, available standard actions "
+#~ "described below will be displayed."
+
+#~ msgid ""
+#~ "Если установлен  флаг **Использовать действия"
+#~ " журнала**, то из поля **Действия "
+#~ "компонентов** будет обработано только действие"
+#~ " :guilabel:`Создать`."
+#~ msgstr ""
+#~ "If the **Use journal actions** flag "
+#~ "is set, only the :guilabel:`Create` "
+#~ "action from the **Component actions** "
+#~ "field will be processed."
+
+#~ msgid "недоступно или скрыто"
+#~ msgstr "unavailable or hidden"
+
+#~ msgid "недоступно"
+#~ msgstr "unavailable"
+
+#~ msgid ""
+#~ "Поле принимает javascript-выражение, в котором"
+#~ " необходимо присвоить переменной **value** "
+#~ "объект с необязательными свойствами **create,"
+#~ " view, preview, edit и delete** "
+#~ "(ключи в таблице выше)."
+#~ msgstr ""
+#~ "The field accepts a JavaScript "
+#~ "expression where you need to assign "
+#~ "an object with optional properties "
+#~ "**create, view, preview, edit, and "
+#~ "delete** (keys in the table above) "
+#~ "to the **value** variable."
+
+#~ msgid ""
+#~ "Если какое-то из свойств не указано, "
+#~ "то компонент сам будет решать, "
+#~ "отображать элемент или скрывать, в "
+#~ "зависимости от ситуации (*)."
+#~ msgstr ""
+#~ "If any property is not specified, "
+#~ "the component itself will decide whether"
+#~ " to display or hide the element, "
+#~ "depending on the situation (*)."
+
+#~ msgid ""
+#~ "Если компонент **Table Form** в "
+#~ "состоянии *disabled* или *форма в режиме"
+#~ " просмотра*, элементы “редактировать“, “удалить“"
+#~ " в любом случае будут недоступны."
+#~ msgstr ""
+#~ "If the **Table Form** component is "
+#~ "in the *disabled* state or the "
+#~ "*form is in view mode*, the "
+#~ "\"edit\" and \"delete\" elements will be"
+#~ " unavailable in any case."
+
+#~ msgid ""
+#~ "Вкладка :guilabel:`Отображение` настройка **Элементы"
+#~ " отображения** задает некоторые свойства "
+#~ "действиям."
+#~ msgstr ""
+#~ "The :guilabel:`Display` tab, **Display "
+#~ "elements** setting configures some properties"
+#~ " for actions."
+
+#~ msgid "**Копирование без подтверждения**"
+#~ msgstr "**Copy without confirmation**"
+
+#~ msgid ""
+#~ "Появилась возможность импортировать в таблицу"
+#~ " данные из файла (например, xslx). "
+#~ "Для этого в настройки компонента  "
+#~ "добавлен раздел :guilabel:`Импорт`:"
+#~ msgstr ""
+#~ "The ability to import data into "
+#~ "the table from a file (e.g., xslx)"
+#~ " has been added. For this, an "
+#~ ":guilabel:`Import` section has been added "
+#~ "to the component settings:"
+
+#~ msgid ""
+#~ "Поле **URL для загрузки** предназначено "
+#~ "для указания url, куда будет "
+#~ "отправляться POST-запрос с прикреплённым "
+#~ "файлом (или несколькими файлами) для "
+#~ "обработки. Обязательно к заполнению."
+#~ msgstr ""
+#~ "The **Upload URL** field is for "
+#~ "specifying the URL where a POST "
+#~ "request with an attached file (or "
+#~ "multiple files) will be sent for "
+#~ "processing. Mandatory to fill."
+
+#~ msgid ""
+#~ "После заполнения настроек у компонента "
+#~ "должна появиться кнопка **Импорт**:"
+#~ msgstr ""
+#~ "After filling in the settings, the "
+#~ "component should have an **Import** "
+#~ "button:"

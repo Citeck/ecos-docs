@@ -61,8 +61,9 @@ RecordsService (Java)
 
       На выходе:
 
-      * при **query** получаем **RecsQueryRes<RecordRef>**
-      * при **queryOne** получаем **RecordRef**
+      * при **query** без запроса атрибутов получаем **RecsQueryRes<RecordRef>**;
+      * при **queryOne** без запроса атрибутов получаем **RecordRef** или ``null``, если запись не найдена;
+      * перегрузки с атрибутами возвращают **RecordAtts** или DTO; для **query** они находятся в **RecsQueryRes**.
 
    .. tab-item:: Получение атрибутов
 
@@ -96,7 +97,7 @@ RecordsService (Java)
    .. tab-item:: Мутация
 
       Каждый DAO решает сам создавать или редактировать полученную запись.
-      Если в DAO приходит запись с пустым идентификатором, то это команда к созданию новой записи.
+      Пустой локальный идентификатор в выбранном источнике означает создание новой записи.
 
       .. tab-set::
 
@@ -116,21 +117,13 @@ RecordsService (Java)
             .. code-block:: java
 
                RecordAtts recordAtts = new RecordAtts();
-               recordAtts.setAtt(RecordConstants.ATT_TYPE, "emodel/type@testdl-routeTemplateItem");
-               recordAtts.setAtt(RecordConstants.ATT_PARENT, "eproc/routeTemplate@c897a06d-e1b5-4564-9966-762124399dfd");
-               recordAtts.setAtt(RecordConstants.ATT_PARENT_ATT, "routes");
+               recordAtts.setId(RecordRef.create("emodel", "your-type", ""));
+               recordAtts.setAtt("name", "Новая запись");
                recordsService.mutate(recordAtts);
 
-            При создании новой записи параметр **setId()** не указывается.
+            Здесь **setId()** задаёт приложение и источник с пустым локальным ID. Замените ``your-type`` источником, который поддерживает создание записей в вашей установке. Также можно использовать ``recordsService.create(sourceId, attributes)``.
 
-      Если при мутации указать атрибут ``__disableAudit=true``
-      (константа ``DbRecordsControlAtts.DISABLE_AUDIT``), то поля
-      ``_creator``, ``_created``, ``_modifier``, ``_modified``
-      заполняться автоматически не будут. Если эти поля установить вручную, то в БД попадут именно они.
-
-      Для ``creator`` и ``modifier`` допустимо указывать как username так и полный ref пользователя.
-
-      Атрибут ``__disableAudit`` допустимо проставлять только в контексте системы (``runAsSystem``).
+      Заполнение аудиторских полей ``_creator``, ``_created``, ``_modifier``, ``_modified`` определяется реализацией источника. Управляющие атрибуты DB-слоя, например ``__disableAudit``, и условия их применения не являются общим контрактом Records API.
 
    .. tab-item:: Удаление записи
 

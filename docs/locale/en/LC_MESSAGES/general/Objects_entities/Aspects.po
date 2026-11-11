@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -29,14 +29,10 @@ msgstr "Contents"
 #: ../../general/Objects_entities/Aspects.rst:9
 msgid ""
 "**Аспект** — механизм расширения функционала :ref:`типа "
-"данных<data_types>` без изменения самого типа. Аспект добавляет к "
-"сущностям дополнительные атрибуты, форму конфигурации и связанное "
-"поведение, при этом тип данных остаётся неизменным."
-msgstr ""
-"**An aspect** is a mechanism for extending the functionality of a "
-":ref:`data type<data_types>` without modifying the type itself. An aspect"
-" adds extra attributes, a configuration form, and associated behavior to "
-"entities, while leaving the data type unchanged."
+"данных<data_types>`. Он позволяет переиспользовать определения атрибутов,"
+" форму конфигурации и связанное поведение, не копируя их в каждый тип. "
+"При подключении аспекта его атрибуты включаются в итоговую модель типа."
+msgstr "An **aspect** extends the functionality of a :ref:`data type<data_types>`. It enables reuse of attribute definitions, configuration forms and associated behavior without copying them into each type. When attached, its attributes become part of the effective type model."
 
 #: ../../general/Objects_entities/Aspects.rst:11
 msgid ""
@@ -97,11 +93,18 @@ msgstr ""
 "The aspects journal is available at: ``v2/journals?journalId=ecos-"
 "aspects&viewMode=table&ws=admin$workspace``"
 
-#: ../../general/Objects_entities/Aspects.rst:27
+#: ../../general/Objects_entities/Aspects.rst:26
+msgid ""
+"Изменение определения аспекта через API доступно под SYSTEM или ADMIN. "
+"Эти права следует отличать от прав на изменение значений атрибутов и "
+"подключение аспекта к конкретной записи."
+msgstr "Changing an aspect definition through the API requires SYSTEM or ADMIN. Distinguish these permissions from permission to modify attribute values or attach an aspect to a particular record."
+
+#: ../../general/Objects_entities/Aspects.rst:29
 msgid "Модель аспекта"
 msgstr "Aspect Model"
 
-#: ../../general/Objects_entities/Aspects.rst:38
+#: ../../general/Objects_entities/Aspects.rst:40
 msgid ""
 "В конфигурации типа предусмотрено поле ``aspects``, которое содержит "
 "список аспектов и их конфигурацию:"
@@ -109,21 +112,70 @@ msgstr ""
 "The type configuration includes an ``aspects`` field that contains a list"
 " of aspects and their configuration:"
 
-#: ../../general/Objects_entities/Aspects.rst:52
+#: ../../general/Objects_entities/Aspects.rst:55
+msgid "Наследование"
+msgstr "Inheritance"
+
+#: ../../general/Objects_entities/Aspects.rst:57
+msgid ""
+"Дочерний тип наследует аспекты родительского типа. Если тот же аспект "
+"объявлен в дочернем типе повторно, при ``inheritConfig: true`` основой "
+"становится конфигурация родительского объявления. Иначе основой служит "
+"конфигурация по умолчанию аспекта. Затем ключи собственной ``config`` "
+"переопределяют ключи основы. Слияние выполняется по верхнему уровню: "
+"вложенный объект заменяется целиком."
+msgstr "A child type inherits the parent type's aspects. If the child redeclares an aspect with ``inheritConfig: true``, the parent declaration configuration is used as the base. Otherwise, the aspect default configuration is used. Keys in its own ``config`` then override base keys. Merging is shallow: nested objects are replaced entirely."
+
+#: ../../general/Objects_entities/Aspects.rst:59
+msgid ""
+"Атрибуты аспекта входят в итоговую модель типа, включая "
+"``systemAttributes``. При изменении определения аспекта обновляются также"
+" модели типов, которые наследуют этот аспект."
+msgstr "Aspect attributes are included in the effective type model, including ``systemAttributes``. Changing an aspect definition also updates models of types inheriting it."
+
+#: ../../general/Objects_entities/Aspects.rst:62
+msgid "Ограничения имён"
+msgstr "Naming restrictions"
+
+#: ../../general/Objects_entities/Aspects.rst:64
+msgid ""
+"Идентификатор аспекта должен соответствовать выражению ``^[\\w-]+$``. "
+"Если ``prefix`` пустой, используется идентификатор аспекта. Эффективный "
+"префикс должен быть уникален среди аспектов."
+msgstr "The aspect identifier must match ``^[\\w-]+$``. If ``prefix`` is empty, the aspect identifier is used. The effective prefix must be unique among aspects."
+
+#: ../../general/Objects_entities/Aspects.rst:66
+msgid ""
+"Полное имя атрибута ``prefix:attributeId`` должно соответствовать "
+"выражению ``[\\w-_:]+``: допускаются латинские буквы, цифры, "
+"подчёркивание, дефис и двоеточие. Для атрибутов, сохраняемых как столбцы,"
+" длина полного имени ограничена 63 байтами UTF-8, включая префикс и "
+"двоеточие. Атрибуты, не сохраняемые как столбцы, освобождены от "
+"ограничения длины, но проверка допустимых символов остаётся."
+msgstr "The full attribute name ``prefix:attributeId`` must match ``[\\w-_:]+``: Latin letters, digits, underscores, hyphens and colons are allowed. For attributes stored as columns, the full name is limited to 63 UTF-8 bytes including the prefix and colon. Attributes not stored as columns are exempt from the length limit, but character validation still applies."
+
+#: ../../general/Objects_entities/Aspects.rst:68
+msgid ""
+"В штатной форме ``id`` и ``prefix`` доступны при создании и заблокированы"
+" при редактировании. При изменении префикса через API проверяются полные "
+"имена уже заданных атрибутов."
+msgstr "The standard form allows ``id`` and ``prefix`` during creation and locks them during editing. Changing a prefix through the API validates the full names of existing attributes."
+
+#: ../../general/Objects_entities/Aspects.rst:71
 msgid "API"
 msgstr "API"
 
-#: ../../general/Objects_entities/Aspects.rst:55
+#: ../../general/Objects_entities/Aspects.rst:74
 msgid "Проверить наличие аспекта у сущности"
 msgstr "Check Whether an Entity Has an Aspect"
 
-#: ../../general/Objects_entities/Aspects.rst:61
-#: ../../general/Objects_entities/Aspects.rst:87
-#: ../../general/Objects_entities/Aspects.rst:102
+#: ../../general/Objects_entities/Aspects.rst:80
+#: ../../general/Objects_entities/Aspects.rst:106
+#: ../../general/Objects_entities/Aspects.rst:121
 msgid "где,"
 msgstr "where,"
 
-#: ../../general/Objects_entities/Aspects.rst:63
+#: ../../general/Objects_entities/Aspects.rst:82
 msgid ""
 "``emodel/some-id@local-id`` - идентификатор сущности, у которой мы хотим "
 "проверить наличие аспекта"
@@ -131,29 +183,33 @@ msgstr ""
 "``emodel/some-id@local-id`` - the identifier of the entity whose aspect "
 "presence we want to check"
 
-#: ../../general/Objects_entities/Aspects.rst:65
+#: ../../general/Objects_entities/Aspects.rst:84
 msgid "``aspectToTest`` - идентификатор аспекта, наличие которого мы проверяем"
 msgstr ""
 "``aspectToTest`` - the identifier of the aspect whose presence we are "
 "checking"
 
-#: ../../general/Objects_entities/Aspects.rst:68
-msgid "Получить конфиг аспекта из сущности"
-msgstr "Get Aspect Configuration from an Entity"
+#: ../../general/Objects_entities/Aspects.rst:87
+msgid "Получить конфигурацию аспекта типа"
+msgstr "Retrieve a type aspect configuration"
 
-#: ../../general/Objects_entities/Aspects.rst:75
+#: ../../general/Objects_entities/Aspects.rst:93
+msgid ""
+"Запрос через ``_type`` возвращает конфигурацию аспекта в типе указанной "
+"сущности. Вместо ``you-aspect-id`` подставьте идентификатор аспекта."
+msgstr "A query through ``_type`` returns the aspect configuration in the specified entity's type. Replace ``you-aspect-id`` with the aspect identifier."
+
+#: ../../general/Objects_entities/Aspects.rst:96
 msgid "Добавить аспект к сущности"
 msgstr "Add an Aspect to an Entity"
 
-#: ../../general/Objects_entities/Aspects.rst:79
+#: ../../general/Objects_entities/Aspects.rst:98
 msgid ""
-"Добавление так же происходит автоматически, когда мы проставляем для "
-"сущности атрибут из аспекта"
-msgstr ""
-"An aspect is also added automatically when an attribute belonging to that"
-" aspect is set on the entity"
+"Для явного добавления аспекта к записи передайте его идентификатор в "
+"``att_add__aspects``:"
+msgstr "To explicitly attach an aspect to a record, pass its identifier in ``att_add__aspects``:"
 
-#: ../../general/Objects_entities/Aspects.rst:89
+#: ../../general/Objects_entities/Aspects.rst:108
 msgid ""
 "``emodel/some-id@local-id`` - идентификатор сущности, к которой мы хотим "
 "добавить аспект"
@@ -161,15 +217,15 @@ msgstr ""
 "``emodel/some-id@local-id`` - the identifier of the entity to which we "
 "want to add the aspect"
 
-#: ../../general/Objects_entities/Aspects.rst:91
+#: ../../general/Objects_entities/Aspects.rst:110
 msgid "``aspectToAdd`` - идентификатор аспекта, который мы добавляем"
 msgstr "``aspectToAdd`` - the identifier of the aspect being added"
 
-#: ../../general/Objects_entities/Aspects.rst:94
+#: ../../general/Objects_entities/Aspects.rst:113
 msgid "Удаление аспекта"
 msgstr "Remove an Aspect"
 
-#: ../../general/Objects_entities/Aspects.rst:104
+#: ../../general/Objects_entities/Aspects.rst:123
 msgid ""
 "``emodel/some-id@local-id`` - идентификатор сущности, у которой мы хотим "
 "удалить аспект"
@@ -177,11 +233,18 @@ msgstr ""
 "``emodel/some-id@local-id`` - the identifier of the entity from which we "
 "want to remove the aspect"
 
-#: ../../general/Objects_entities/Aspects.rst:106
+#: ../../general/Objects_entities/Aspects.rst:125
 msgid "``aspectToRemove`` - идентификатор аспекта, который мы удаляем."
 msgstr "``aspectToRemove`` - the identifier of the aspect being removed."
 
-#: ../../general/Objects_entities/Aspects.rst:108
+#: ../../general/Objects_entities/Aspects.rst:127
+msgid ""
+"Эти операции изменяют набор аспектов конкретной записи. Для изменения "
+"аспектов, подключённых через тип, редактируйте конфигурацию типа с учётом"
+" наследования."
+msgstr "These operations change the aspect set of a specific record. To change aspects attached through the type, edit the type configuration with inheritance in mind."
+
+#: ../../general/Objects_entities/Aspects.rst:129
 msgid ""
 "Описание работы с аспектами с точки зрения пользователя (без "
 "программирования) приведено в разделе :ref:`Аспекты <aspects_user>`."
@@ -207,3 +270,11 @@ msgstr ""
 #~ msgid ":ref:`Пользовательское описание работы с аспектами <aspects_user>`"
 #~ msgstr ":ref:`User guide for working with aspects <aspects_user>`"
 
+#~ msgid ""
+#~ "Добавление так же происходит автоматически,"
+#~ " когда мы проставляем для сущности "
+#~ "атрибут из аспекта"
+#~ msgstr ""
+#~ "An aspect is also added automatically"
+#~ " when an attribute belonging to that"
+#~ " aspect is set on the entity"
