@@ -1,6 +1,6 @@
 .. _process_bpmn_unit_tests:
 
-Unit тестирование BPMN процессов
+Тестирование BPMN-процессов
 =====================================================================
 
 .. contents::
@@ -9,11 +9,11 @@ Unit тестирование BPMN процессов
 Тестирование реализаций бизнес процессов BPMN
 ------------------------------------------------------------------------------------------
 
-С добавлением camunda как движка BPMN, в проекте появилась возможность писать unit тесты для процессов.
+В ecos-process процессы и компоненты Citeck проверяются сценариями, которые развёртывают BPMN-модель, запускают процесс и проверяют задачи, переменные и результат исполнения.
 
-На текущий момент, есть возможность писать тесты только в микросервисе ecos-process, в дальнейшем планируется добавить возможность написания тестов для различных проектов.
+Ниже описан способ тестирования в проекте ecos-process. Показанный пример использует Spring-контекст приложения и движок Camunda, поэтому имеет интеграционный характер.
 
-Для написания unit тестов используются библиотеки облегчающие тестирование bpmn:
+Для сценариев и проверок используются библиотеки Camunda:
 
     * https://github.com/camunda-community-hub/camunda-platform-scenario - написание unit тестов по стилю `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_
     * https://github.com/camunda/camunda-bpm-platform/tree/master/test-utils/assert - удобные bpmn ассерты для тестов
@@ -23,11 +23,11 @@ Unit тестирование BPMN процессов
 
 Тесты написанные для проверки Citeck компонентов bpmn представляют собой небольшие процессы BPMN, которые реализуют варианты использования Citeck компонентов, с дальнейшем запуском процесса и проверкой результатов.
 
-Тесты располагаются в микросервисе ecos-process по пути ``src/test/java/ru/citeck/ecos/process/domain/bpmn/elements`` и написаны в стиле `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_.
+Kotlin-тесты находятся в ``src/test/java/ru/citeck/ecos/process/domain/bpmn/`` и тематических подкаталогах. BPMN-ресурсы компонентов располагаются в ``src/test/resources/test/bpmn/elements/``. Для сценариев используется стиль `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_.
 
-Предполагается покрытие тестами каждого компонента. На момент написания статьи написано порядка 40 тестов.
+Пример назначения задачи по ролям находится в классе ``BpmnMonsterTestWithRunProcessTest``, метод ``task assignment by roles``. Его BPMN-модель — ``src/test/resources/test/bpmn/elements/usertask/test-user-task-role.bpmn.xml``.
 
-Пример unit BPMN теста
+Пример сценарного теста BPMN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Проверка назначения userTask по роли.
@@ -38,15 +38,15 @@ Unit тестирование BPMN процессов
       :width: 800
       :align: center
 
-Unit test:
+Фрагмент теста из подготовленного окружения:
 
 .. code-block:: kotlin
-    :caption: Bpmn unit test
+    :caption: Назначение задачи по ролям
 
     @Test
     fun `task assignment by roles`() {
         val procId = "test-user-task-role"
-        saveAndDeployBpmn(USER_TASK, procId)
+        helper.saveAndDeployBpmn(USER_TASK, procId)
 
         `when`(process.waitsAtUserTask("userTask")).thenReturn {
             assertThat(it).hasCandidateUser(USER_IVAN)
@@ -57,9 +57,17 @@ Unit test:
             it.complete()
         }
 
-        run(process).startByKey(procId, variables).execute()
+        run(process).startByKey(procId, variables_docRef).engine(processEngine).execute()
 
         verify(process).hasFinished("endEvent")
     }
 
-Таким образом, проверяется, что при выполнении компонента **userTask**, была назначена задача на корректных пользователей и группы исходя из указанных ролей.
+Класс использует ``@SpringBootTest`` с ``EprocApp`` и расширение ``EcosSpringExtension``. Вне показанного метода подготавливаются:
+
+* ``helper`` типа ``BpmnProcHelper`` для сохранения и деплоя модели;
+* ``processEngine`` — экземпляр движка Camunda;
+* ``process`` — mock сценария ``ProcessScenario``;
+* ``variables_docRef`` — переменные запуска со ссылкой на документ;
+* BPMN-ресурс ``USER_TASK``, пользователи, группы и данные для разрешения ролей.
+
+Этот фрагмент следует использовать вместе с настройкой класса теста. Он проверяет кандидатов задачи — пользователей и группы, полученные из ролей, — завершает **userTask** и проверяет достижение **endEvent**.

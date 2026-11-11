@@ -20,32 +20,36 @@
 
 .. code-block:: json
 
-    "computed": [
-      {
-        "id": "someAttribute",
-        "type": "script",
-        "config": {
-          "script": "return \"abcd\";"
+    {
+      "computed": [
+        {
+          "id": "someAttribute",
+          "type": "script",
+          "config": {
+            "fn": "return \"abcd\";"
+          }
         }
-      }
-    ]
+      ]
+    }
 
 Для обращения к атрибутам из записи в конфиге можно использовать плейсхолдеры ``${…}``. Например:
 
 .. code-block:: json
 
-    "computed": [
-      {
-        "id": "someAttribute",
-        "type": "script",
-        "config": {
-          "vars": {
-            "documentDisplayName": "${?disp}"
-          },
-          "script": "return \"abcd\" + vars.documentDisplayName;"
+    {
+      "computed": [
+        {
+          "id": "someAttribute",
+          "type": "script",
+          "config": {
+            "vars": {
+              "documentDisplayName": "${?disp}"
+            },
+            "fn": "return \"abcd\" + vars.documentDisplayName;"
+          }
         }
-      }
-    ]
+      ]
+    }
 
 При наличии в конфиге плейсхолдеров ``${…}`` атрибут автоматически становится R атрибутом.
 
@@ -53,24 +57,26 @@
 
 .. code-block:: json
 
-    "formatter": {
-      "type": "value",
-      "config": {
-        "value": "${$computed.someAttribute}"
-      }
-    },
-    "computed": [
-      {
-        "id": "someAttribute",
-        "type": "script",
+    {
+      "formatter": {
+        "type": "value",
         "config": {
-          "vars": {
-            "documentDisplayName": "${?disp}"
-          },
-          "script": "return \"abcd\" + vars.documentDisplayName;"
+          "value": "${$computed.someAttribute}"
         }
-      }
-    ]
+      },
+      "computed": [
+        {
+          "id": "someAttribute",
+          "type": "script",
+          "config": {
+            "vars": {
+              "documentDisplayName": "${?disp}"
+            },
+            "fn": "return \"abcd\" + vars.documentDisplayName;"
+          }
+        }
+      ]
+    }
 
 Типы вычисляемых атрибутов
 ---------------------------
@@ -85,7 +91,7 @@
      - Примечание
    * - **script**
      - | ``vars: Object<String, Any>`` — переменные, которые будут доступны в скрипте
-       | ``script: String`` — текст скрипта
+       | ``fn: String`` — текст скрипта; может вернуть Promise
      - | В контексте скрипта доступны:
        | **Records**
        | **_** — lodash библиотека
@@ -93,5 +99,18 @@
        | **t** — функция для получения локализованного сообщения по ключу
    * - **value**
      - | ``value: Any`` — значение
-       | Может быть выбрано несколько значений.
-     -
+       | Поддерживаются также массивы и объекты.
+     - В текущей реализации буквальные ``0``, ``false`` и пустая строка возвращают ``null``. Строки ``"0"`` и ``"false"`` преобразуются в число и логическое значение соответственно.
+   * - **attributes**
+     - | ``record: String`` — ссылка на запись
+       | ``attributes: String|List<String>|Map<String, String>`` — загружаемые атрибуты
+     - Загрузка атрибутов через Records API.
+   * - **query**
+     - | ``query: Object`` — объект RecordsQuery
+       | ``attributes: String|List<String>|Map<String, String>`` — загружаемые атрибуты
+     - Выполнение запроса к источнику Records.
+   * - **type-records**
+     - | ``typeId: String`` — идентификатор типа
+       | ``attributes`` — загружаемые атрибуты (необязательно)
+       | ``maxItems: Number`` — максимальное число записей, по умолчанию 100
+     - Поиск записей типа в связанном с ним источнике данных.

@@ -3,7 +3,7 @@
 Механизмы платформы
 =====================
 
-В данном разделе описаны ключевые механизмы платформы Citeck, обеспечивающие взаимодействие компонентов, интеграцию с внешними системами и надёжную работу бизнес-логики.
+Раздел описывает взаимодействие компонентов Citeck через команды, события и WebAPI, управление транзакциями, версии контента и настройку инфраструктурных подключений.
 
 Раздел включает следующие темы:
 
@@ -14,45 +14,45 @@
       :link: ecos_commands
       :link-type: ref
 
-      Механизм декларативного вызова действий над записями платформы.
+      Декларативный вызов локальных и удалённых действий, синхронная и асинхронная обработка команд.
 
    .. grid-item-card:: События
       :link: ecos_events
       :link-type: ref
 
-      Система публикации и подписки на события внутри платформы.
+      Локальные и удалённые подписки, параметры слушателей, стандартные события записей и транзакционная обработка.
 
    .. grid-item-card:: Citeck WebAPI
       :link: ecos-webapi
       :link-type: ref
 
-      REST-интерфейс для работы с данными и сервисами платформы.
+      Низкоуровневое взаимодействие микросервисов по схеме «запрос — ответ», потоковые данные и обработка ошибок.
 
    .. grid-item-card:: Транзакции
       :link: ecos-transactions
       :link-type: ref
 
-      Управление транзакционностью операций на основе двухфазного коммита.
+      Двухфазный коммит, транзакционные ресурсы и действия на этапах жизненного цикла транзакции.
 
    .. grid-item-card:: Версионирование контента
       :link: content_versioning
       :link-type: ref
 
-      Хранение, создание и сравнение версий файлов записей.
+      Аспекты версионирования, загрузка и получение версий, права доступа и текстовое сравнение файлов.
 
    .. grid-item-card:: Внешние коммуникации
       :link: external-communications
       :link-type: ref
 
-      Настройка каналов уведомлений (email, Telegram и др.).
+      Настройка RabbitMQ, ZooKeeper, БД и cloud config через параметры Spring, ENV и конфигурационные файлы.
 
 .. toctree::
     :maxdepth: 4
     :hidden:
 
-    Core_mechanisms/Commands.rst
-    Core_mechanisms/Events.rst
-    Core_mechanisms/ECOS_WebAPI.rst
-    Core_mechanisms/Transactions.rst
-    Core_mechanisms/Content_versioning.rst
-    Core_mechanisms/external communications.rst
+    Core_mechanisms/Commands
+    Core_mechanisms/Events
+    Core_mechanisms/ECOS_WebAPI
+    Core_mechanisms/Transactions
+    Core_mechanisms/Content_versioning
+    Core_mechanisms/external communications

@@ -107,13 +107,17 @@
      - Тип уведомления. Поддерживается только ``EMAIL_NOTIFICATION``.
    * - ``ecos:notificationTemplate``
      - Ссылка на шаблон уведомления в формате ``notifications/template@<id>``.
-       Взаимоисключающий с ``ecos:notificationTitle`` / ``ecos:notificationBody``.
+       Используется для шаблонизации сообщения. Для прямого содержимого задаются ``notificationTitle`` и ``notificationBody``; не рассчитывайте на ошибку валидации при их одновременном заполнении с шаблоном.
    * - ``ecos:notificationTitle``
      - Заголовок письма напрямую (без шаблона). Только статический текст, без динамических переменных.
    * - ``ecos:notificationBody``
      - Тело письма напрямую (без шаблона). Только статический текст.
    * - ``ecos:notificationLang``
      - Язык шаблона: ``ru``, ``en`` и т.д. Если не указан — берётся язык по умолчанию.
+   * - ``ecos:notificationRecord``
+     - Базовый документ для модели шаблона; поддерживает выражение. При пустом результате используется документ процесса.
+   * - ``ecos:notificationRecipientsStrategy``
+     - ``COMBINED`` (по умолчанию), ``PER_ROLE`` или ``PER_RECIPIENT``. Для раздельной отправки CC/BCC должны быть пустыми.
    * - ``ecos:notificationFrom``
      - Исходящий адрес отправителя. Можно указать напрямую или через expression.
        Если не указан — используется значение по умолчанию из настроек ecos-notifications.
@@ -123,10 +127,13 @@
        - ``"Some Name" <someAddress@mail.com>``
        - ``${someExpressionToGetAddress}``
        - ``${Config.getNotNull("app/your-app$your-key").asText()}``
+
    * - ``ecos:notificationAdditionalMeta``
      - JSON-объект с дополнительными переменными, доступными в шаблоне.
        Значение, начинающееся с ``!str_``, передаётся как строка-константа.
        Пример: ``{"myKey": "!str_someConstant"}`` — в шаблоне доступно как ``${myKey}`` со значением ``someConstant``.
+
+Итоговый From может быть заменён настройкой ``ecos-notifications.email.from.fixed``. См. :ref:`настройку SMTP и исходящего адреса <ecos-notifications-settings>`.
 
 3.2 Получатели
 ~~~~~~~~~~~~~~~
@@ -161,16 +168,22 @@
 
 - ``ivan.petrov`` — имя пользователя
 - ``ivan.petrov@company.com`` — email напрямую
-- ``GROUP_company_accountant`` — группа (выбирается первый email)
+- ``GROUP_company_accountant`` — группа (раскрывается в подходящие email её участников)
 - ``emodel/authority-group@company_accountant`` — recordRef группы
 - ``emodel/person@ivan`` — recordRef пользователя
 - ``${someVariable}`` — переменная процесса, содержащая любое из вышеперечисленных значений
 - ``${someService.getEmails()},petya.voks`` — несколько через запятую
 
+``COMBINED`` формирует одно письмо всем адресатам; ``PER_ROLE`` — письмо каждой непустой роли и отдельную группу адресатов из выражений; ``PER_RECIPIENT`` — письмо на адрес внутри каждой группы. Один человек в разных ролях может получить несколько сообщений. Для сообщений роли в дополнительной модели доступны ``recipientRoleId`` и ``recipientRoleName``.
+
+Отключённые пользователи и пустые email отбрасываются при разрешении пользовательских ссылок. Если адресаты не найдены, уведомление может завершиться статусом ``RECIPIENTS_NOT_FOUND``.
+
 4. Приглашение в календарь (iCal)
 -----------------------------------
 
 Send Task поддерживает отправку iCal-вложения (приглашения в календарь) вместе с письмом.
+
+В текущей реализации зона организатора преобразуется в UTC или фиксированное целочасовое смещение. При сезонном переводе времени и дробных смещениях проверьте результат в используемом клиенте.
 
 .. code-block:: xml
 
@@ -189,7 +202,7 @@ Send Task поддерживает отправку iCal-вложения (пр�
      ecos:notificationSendCalendarEvent="true"
      ecos:notificationCalendarEventSummary="Встреча по согласованию договора"
      ecos:notificationCalendarEventDescription="Необходимо согласовать договор №${docNum}"
-     ecos:notificationCalendarEventOrganizer="{&quot;role&quot;:&quot;initiator&quot;}"
+     ecos:notificationCalendarEventOrganizer="initiator"
      ecos:notificationCalendarEventDate="${meetingDate}"
      ecos:notificationCalendarEventDuration="PT1H"
      ecos:notificationAdditionalMeta="{}">
@@ -209,24 +222,23 @@ Send Task поддерживает отправку iCal-вложения (пр�
    * - ``ecos:notificationCalendarEventDescription``
      - Описание события. Поддерживает expression: ``${someVar}``.
    * - ``ecos:notificationCalendarEventOrganizer``
-     - Организатор. JSON-объект с полем ``role`` или ``expression``.
-
-       - По роли: ``{"role": "initiator"}``
-       - По выражению: ``{"expression": "ivan.petrov@company.com"}``
-
-       Если роль содержит несколько пользователей, берётся первый email.
+     - ID роли организатора, например ``initiator``. Если роль содержит несколько пользователей, берётся первый вычисленный email.
+   * - ``ecos:notificationCalendarEventOrganizerExpression``
+     - Организатор через выражение, например ``${organizerEmail}``, либо имя/email/RecordRef. Если роль организатора также заполнена и дала адрес, она имеет приоритет.
    * - ``ecos:notificationCalendarEventDate``
      - Дата начала события. Переменная процесса типа ``Instant`` или ISO 8601-строка.
        Пример: ``${meetingDate}`` или ``2025-12-01T10:00:00Z``.
        При создании события используется часовой пояс организатора.
    * - ``ecos:notificationCalendarEventDateExpression``
      - Альтернатива ``ecos:notificationCalendarEventDate`` — expression для вычисления даты.
-       Должно вернуть ``java.util.Date``, ``String (ISO 8601)`` или ``null``.
+       Должно вернуть непустой ``java.util.Date`` или значение, представимое корректной ISO 8601-строкой Instant. ``null`` приводит к ошибке разбора даты.
    * - ``ecos:notificationCalendarEventDuration``
      - Длительность события в формате `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_.
        Примеры: ``PT15S``, ``PT1H30M``, ``P14D``.
    * - ``ecos:notificationCalendarEventDurationExpression``
      - Альтернатива ``ecos:notificationCalendarEventDuration`` — expression для длительности.
+
+При включённом приглашении обязательны название, описание, организатор, дата и длительность. Если заданы и основное поле даты/длительности, и альтернативное expression, используется непустое основное поле. Перед публикацией также проверяются тело или шаблон и наличие хотя бы одного из списков To/CC/BCC.
 
 5. Шаблон уведомления
 -----------------------
@@ -237,7 +249,7 @@ Send Task поддерживает отправку iCal-вложения (пр�
 
    notifications/template@<template-id>
 
-Где ``<template-id>`` — идентификатор шаблона, совпадающий с именем директории артефакта.
+Где ``<template-id>`` — идентификатор из метаданных шаблона. Имя каталога может отличаться. Для локального шаблона используйте полный RecordRef с префиксом области, полученный системой.
 
 Подробно о создании шаблонов — см. :ref:`Шаблоны уведомлений<notification_templates>`.
 
