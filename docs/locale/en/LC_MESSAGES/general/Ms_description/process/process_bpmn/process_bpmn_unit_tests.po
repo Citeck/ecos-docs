@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:4
-msgid "Unit тестирование BPMN процессов"
-msgstr "Unit Testing of BPMN Processes"
+msgid "Тестирование BPMN-процессов"
+msgstr "Testing BPMN processes"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:7
 msgid "Содержание"
@@ -32,27 +32,21 @@ msgstr "Testing BPMN Business Process Implementations"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:12
 msgid ""
-"С добавлением camunda как движка BPMN, в проекте появилась возможность "
-"писать unit тесты для процессов."
-msgstr ""
-"With the addition of Camunda as the BPMN engine, the project now supports"
-" writing unit tests for processes."
+"В ecos-process процессы и компоненты Citeck проверяются сценариями, "
+"которые развёртывают BPMN-модель, запускают процесс и проверяют задачи, "
+"переменные и результат исполнения."
+msgstr "In ecos-process, Citeck processes and components are tested using scenarios that deploy a BPMN model, start a process and verify tasks, variables and execution results."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:14
 msgid ""
-"На текущий момент, есть возможность писать тесты только в микросервисе "
-"ecos-process, в дальнейшем планируется добавить возможность написания "
-"тестов для различных проектов."
-msgstr ""
-"Currently, tests can only be written within the ecos-process "
-"microservice; support for writing tests in other projects is planned for "
-"the future."
+"Ниже описан способ тестирования в проекте ecos-process. Показанный пример"
+" использует Spring-контекст приложения и движок Camunda, поэтому имеет "
+"интеграционный характер."
+msgstr "The following describes testing within the ecos-process project. The example uses the application Spring context and Camunda engine, making it an integration test."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:16
-msgid ""
-"Для написания unit тестов используются библиотеки облегчающие "
-"тестирование bpmn:"
-msgstr "The following libraries are used to simplify BPMN unit testing:"
+msgid "Для сценариев и проверок используются библиотеки Camunda:"
+msgstr "The following Camunda libraries are used for scenarios and assertions:"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:18
 msgid ""
@@ -88,27 +82,26 @@ msgstr ""
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:26
 msgid ""
-"Тесты располагаются в микросервисе ecos-process по пути "
-"``src/test/java/ru/citeck/ecos/process/domain/bpmn/elements`` и написаны "
-"в стиле `GivenWhenThen "
+"Kotlin-тесты находятся в "
+"``src/test/java/ru/citeck/ecos/process/domain/bpmn/`` и тематических "
+"подкаталогах. BPMN-ресурсы компонентов располагаются в "
+"``src/test/resources/test/bpmn/elements/``. Для сценариев используется "
+"стиль `GivenWhenThen "
 "<https://martinfowler.com/bliki/GivenWhenThen.html>`_."
-msgstr ""
-"The tests are located in the ecos-process microservice at "
-"``src/test/java/ru/citeck/ecos/process/domain/bpmn/elements`` and are "
-"written in the `GivenWhenThen "
-"<https://martinfowler.com/bliki/GivenWhenThen.html>`_ style."
+msgstr "Kotlin tests are in ``src/test/java/ru/citeck/ecos/process/domain/bpmn/`` and topic subdirectories. Component BPMN resources are in ``src/test/resources/test/bpmn/elements/``. Scenarios use `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_ style."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:28
 msgid ""
-"Предполагается покрытие тестами каждого компонента. На момент написания "
-"статьи написано порядка 40 тестов."
-msgstr ""
-"Every component is expected to be covered by tests. At the time of "
-"writing, approximately 40 tests have been written."
+"Пример назначения задачи по ролям находится в классе "
+"``BpmnMonsterTestWithRunProcessTest``, метод ``task assignment by "
+"roles``. Его BPMN-модель — "
+"``src/test/resources/test/bpmn/elements/usertask/test-user-task-"
+"role.bpmn.xml``."
+msgstr "The role-based task assignment example is in ``BpmnMonsterTestWithRunProcessTest``, method ``task assignment by roles``. Its BPMN model is ``src/test/resources/test/bpmn/elements/usertask/test-user-task-role.bpmn.xml``."
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:31
-msgid "Пример unit BPMN теста"
-msgstr "BPMN Unit Test Example"
+msgid "Пример сценарного теста BPMN"
+msgstr "Example BPMN scenario test"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:33
 msgid "Проверка назначения userTask по роли."
@@ -119,19 +112,101 @@ msgid "Процесс:"
 msgstr "Process:"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:41
-msgid "Unit test:"
-msgstr "Unit test:"
+msgid "Фрагмент теста из подготовленного окружения:"
+msgstr "Test snippet from a prepared environment:"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:43
-msgid "Bpmn unit test"
-msgstr "BPMN unit test"
+msgid "Назначение задачи по ролям"
+msgstr "Role-based task assignment"
 
 #: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:65
 msgid ""
-"Таким образом, проверяется, что при выполнении компонента **userTask**, "
-"была назначена задача на корректных пользователей и группы исходя из "
-"указанных ролей."
-msgstr ""
-"This verifies that when the **userTask** component is executed, the task "
-"is assigned to the correct users and groups based on the specified roles."
+"Класс использует ``@SpringBootTest`` с ``EprocApp`` и расширение "
+"``EcosSpringExtension``. Вне показанного метода подготавливаются:"
+msgstr "The class uses ``@SpringBootTest`` with ``EprocApp`` and ``EcosSpringExtension``. The following are prepared outside the shown method:"
 
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:67
+msgid "``helper`` типа ``BpmnProcHelper`` для сохранения и деплоя модели;"
+msgstr "``helper`` of type ``BpmnProcHelper`` for saving and deploying the model;"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:68
+msgid "``processEngine`` — экземпляр движка Camunda;"
+msgstr "``processEngine``: a Camunda engine instance;"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:69
+msgid "``process`` — mock сценария ``ProcessScenario``;"
+msgstr "``process``: a ``ProcessScenario`` mock;"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:70
+msgid "``variables_docRef`` — переменные запуска со ссылкой на документ;"
+msgstr "``variables_docRef``: start variables containing a document reference;"
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:71
+msgid ""
+"BPMN-ресурс ``USER_TASK``, пользователи, группы и данные для разрешения "
+"ролей."
+msgstr "The ``USER_TASK`` BPMN resource, users, groups and role resolution data."
+
+#: ../../general/Ms_description/process/process_bpmn/process_bpmn_unit_tests.rst:73
+msgid ""
+"Этот фрагмент следует использовать вместе с настройкой класса теста. Он "
+"проверяет кандидатов задачи — пользователей и группы, полученные из "
+"ролей, — завершает **userTask** и проверяет достижение **endEvent**."
+msgstr "Use this snippet with the test class setup. It checks task candidates, meaning users and groups resolved from roles, completes **userTask**, and verifies that **endEvent** is reached."
+
+#~ msgid ""
+#~ "С добавлением camunda как движка BPMN,"
+#~ " в проекте появилась возможность писать "
+#~ "unit тесты для процессов."
+#~ msgstr ""
+#~ "With the addition of Camunda as "
+#~ "the BPMN engine, the project now "
+#~ "supports writing unit tests for "
+#~ "processes."
+
+#~ msgid ""
+#~ "На текущий момент, есть возможность "
+#~ "писать тесты только в микросервисе "
+#~ "ecos-process, в дальнейшем планируется "
+#~ "добавить возможность написания тестов для "
+#~ "различных проектов."
+#~ msgstr ""
+#~ "Currently, tests can only be written "
+#~ "within the ecos-process microservice; "
+#~ "support for writing tests in other "
+#~ "projects is planned for the future."
+
+#~ msgid ""
+#~ "Для написания unit тестов используются "
+#~ "библиотеки облегчающие тестирование bpmn:"
+#~ msgstr "The following libraries are used to simplify BPMN unit testing:"
+
+#~ msgid ""
+#~ "Предполагается покрытие тестами каждого "
+#~ "компонента. На момент написания статьи "
+#~ "написано порядка 40 тестов."
+#~ msgstr ""
+#~ "Every component is expected to be "
+#~ "covered by tests. At the time of"
+#~ " writing, approximately 40 tests have "
+#~ "been written."
+
+#~ msgid "Пример unit BPMN теста"
+#~ msgstr "BPMN Unit Test Example"
+
+#~ msgid "Unit test:"
+#~ msgstr "Unit test:"
+
+#~ msgid "Bpmn unit test"
+#~ msgstr "BPMN unit test"
+
+#~ msgid ""
+#~ "Таким образом, проверяется, что при "
+#~ "выполнении компонента **userTask**, была "
+#~ "назначена задача на корректных пользователей"
+#~ " и группы исходя из указанных ролей."
+#~ msgstr ""
+#~ "This verifies that when the **userTask**"
+#~ " component is executed, the task is"
+#~ " assigned to the correct users and"
+#~ " groups based on the specified roles."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -80,16 +80,11 @@ msgstr ""
 
 #: ../../settings_kb/notifications/notifications.rst:25
 msgid ""
-"Устойчивость к недоступности SMTP: если почтовый сервер временно "
-"недоступен, уведомления сохраняются в БД со статусом "
-"``WAIT_FOR_DISPATCH`` или ``ERROR`` и отправляются автоматически после "
-"восстановления соединения. Подробнее — в разделе `4. Повторные попытки "
-"отправки`_."
-msgstr ""
-"**SMTP resilience:** if the mail server is temporarily unavailable, "
-"notifications are saved to the database with a status of "
-"``WAIT_FOR_DISPATCH`` or ``ERROR`` and are sent automatically once the "
-"connection is restored. For more details, see `4. Retry Attempts`_."
+"При временной недоступности SMTP уведомления сохраняются, а повторные "
+"попытки выполняются в пределах настроенного бюджета. Доставка после "
+"восстановления соединения зависит от статуса, оставшихся попыток и окна "
+"повторов. Подробнее — в разделе `4. Повторные попытки отправки`_."
+msgstr "During temporary SMTP unavailability, notifications are saved and retried within the configured budget. Delivery after recovery depends on status, remaining attempts and retry window. See `4. Retry Attempts`_."
 
 #: ../../settings_kb/notifications/notifications.rst:28
 msgid "1. Сущность \"Уведомление\""
@@ -105,7 +100,7 @@ msgstr "Field"
 
 #: ../../settings_kb/notifications/notifications.rst:42
 #: ../../settings_kb/notifications/notifications.rst:91
-#: ../../settings_kb/notifications/notifications.rst:223
+#: ../../settings_kb/notifications/notifications.rst:225
 msgid "Описание"
 msgstr "Description"
 
@@ -151,8 +146,11 @@ msgid "Тип уведомления"
 msgstr "Notification Type"
 
 #: ../../settings_kb/notifications/notifications.rst:52
-msgid "Тип отправки. На текущий момент поддерживается ``EMAIL_NOTIFICATION``."
-msgstr "The delivery type. Currently only ``EMAIL_NOTIFICATION`` is supported."
+msgid ""
+"Тип отправки: ``EMAIL_NOTIFICATION`` или ``FIREBASE_NOTIFICATION``. Для "
+"Firebase требуется настройка соответствующего канала. BPMN Send Task "
+"поддерживает только email."
+msgstr "Send type: ``EMAIL_NOTIFICATION`` or ``FIREBASE_NOTIFICATION``. Firebase requires its channel configuration. BPMN Send Task supports email only."
 
 #: ../../settings_kb/notifications/notifications.rst:53
 msgid "Отложенная отправка"
@@ -191,8 +189,10 @@ msgid "Количество попыток отправки"
 msgstr "Number of sending attempts"
 
 #: ../../settings_kb/notifications/notifications.rst:60
-msgid "Счётчик попыток отправки. Увеличивается при каждой неудачной попытке."
-msgstr "Send attempt counter. Incremented on each failed attempt."
+msgid ""
+"Счётчик обработанных попыток, включая успешную. При ручном RETRY "
+"обнуляется."
+msgstr "Processed attempt count, including successful attempts. Manual RETRY resets it."
 
 #: ../../settings_kb/notifications/notifications.rst:61
 msgid "Время последней попытки"
@@ -213,8 +213,8 @@ msgid ""
 "колонка журнала уведомлений. См. `4. Повторные попытки отправки`_."
 msgstr ""
 "The time the next send attempt is scheduled for. Populated while the "
-"notification is in the ``ERROR`` status. Also available as a notifications"
-" journal column. See `4. Retry Attempts`_."
+"notification is in the ``ERROR`` status. Also available as a "
+"notifications journal column. See `4. Retry Attempts`_."
 
 #: ../../settings_kb/notifications/notifications.rst:65
 msgid "Время первой ошибки"
@@ -289,10 +289,10 @@ msgid ""
 " API им соответствуют атрибуты ``nextRetryAt``, ``firstErrorAt`` и "
 "``failureKind``."
 msgstr ""
-"The **Time of next attempt**, **Time of first error**, and **Error Type** "
-"fields are populated by the microservice and are read-only; in the "
-"Records API they correspond to the ``nextRetryAt``, ``firstErrorAt``, and "
-"``failureKind`` attributes."
+"The **Time of next attempt**, **Time of first error**, and **Error Type**"
+" fields are populated by the microservice and are read-only; in the "
+"Records API they correspond to the ``nextRetryAt``, ``firstErrorAt``, and"
+" ``failureKind`` attributes."
 
 #: ../../settings_kb/notifications/notifications.rst:84
 msgid "1.2 Статусы"
@@ -304,19 +304,21 @@ msgstr "``WAIT_FOR_DISPATCH``"
 
 #: ../../settings_kb/notifications/notifications.rst:93
 msgid ""
-"Уведомление создано и ожидает отправки. Начальный статус для всех "
-"уведомлений."
-msgstr ""
-"The notification has been created and is waiting to be sent. This is the "
-"initial status for all notifications."
+"Уведомление поставлено в очередь, например для отложенной отправки или "
+"массовой рассылки. Синхронная отправка может сразу сохранить итоговый "
+"статус."
+msgstr "The notification is queued, for example for delayed sending or bulk mail. Synchronous sending may save the final status immediately."
 
 #: ../../settings_kb/notifications/notifications.rst:94
 msgid "``SENT``"
 msgstr "``SENT``"
 
 #: ../../settings_kb/notifications/notifications.rst:95
-msgid "Сообщение успешно отправлено."
-msgstr "Message successfully sent."
+msgid ""
+"Канал принял сообщение. Для email возможна частичная доставка; статус не "
+"гарантирует прочтение или доставку каждому адресату. См. `4.2 Частичная "
+"доставка`_."
+msgstr "The channel accepted the message. Email may be partially delivered; status does not guarantee reading or delivery to every recipient. See `4.2 Partial Delivery`_."
 
 #: ../../settings_kb/notifications/notifications.rst:96
 msgid "``ERROR``"
@@ -339,15 +341,11 @@ msgstr "``FAILED``"
 
 #: ../../settings_kb/notifications/notifications.rst:99
 msgid ""
-"Отправка невозможна по причине, которую повтор не исправит: некорректный "
-"адрес получателя, сломанный шаблон, нечитаемая конфигурация отправителя, "
-"отказ SMTP-сервера с кодом 5xx. Делается ровно одна попытка, повторов не "
-"будет."
-msgstr ""
-"Sending is impossible for a reason a retry will not fix: an invalid "
-"recipient address, a broken template, an unreadable sender configuration, "
-"or an SMTP server rejection with a 5xx code. Exactly one attempt is made; "
-"there will be no retries."
+"Выявлена постоянная ошибка: например, некорректный адрес, ошибка шаблона "
+"или конфигурации отправителя. После её выявления автоматические повторы "
+"не назначаются. Постоянная ошибка может возникнуть и после нескольких "
+"временных ошибок."
+msgstr "A permanent error was identified, such as an invalid address, template error or sender configuration error. No automatic retries are scheduled afterward. Permanent errors may follow several temporary failures."
 
 #: ../../settings_kb/notifications/notifications.rst:100
 msgid "``EXPIRED``"
@@ -359,9 +357,9 @@ msgid ""
 "(``max-attempts``) или окно повторов (``retry-window``). Автоматических "
 "повторов больше не будет."
 msgstr ""
-"The retry budget is exhausted — the maximum number of attempts "
-"(``max-attempts``) or the retry window (``retry-window``) has been "
-"exceeded. There will be no more automatic retries."
+"The retry budget is exhausted — the maximum number of attempts (``max-"
+"attempts``) or the retry window (``retry-window``) has been exceeded. "
+"There will be no more automatic retries."
 
 #: ../../settings_kb/notifications/notifications.rst:102
 msgid "``BLOCKED``"
@@ -388,7 +386,17 @@ msgstr ""
 "notification was created was deleted. Scheduled retries are stopped in "
 "this case."
 
-#: ../../settings_kb/notifications/notifications.rst:109
+#: ../../settings_kb/notifications/notifications.rst:106
+msgid "``RECIPIENTS_NOT_FOUND``"
+msgstr "``RECIPIENTS_NOT_FOUND``"
+
+#: ../../settings_kb/notifications/notifications.rst:107
+msgid ""
+"Не найдены получатели. Сообщение не отправлено; проверьте To, CC, BCC и "
+"разрешение ролей/выражений."
+msgstr "No recipients found. Nothing was sent; check To, CC, BCC and role/expression resolution."
+
+#: ../../settings_kb/notifications/notifications.rst:111
 msgid ""
 "Из статусов ``ERROR``, ``FAILED`` и ``EXPIRED`` уведомление можно вернуть"
 " в очередь вручную — действием **Повторить отправку сейчас** (см. `4.4 "
@@ -398,15 +406,15 @@ msgstr ""
 "can be returned to the queue manually — via the **Retry Sending Now** "
 "action (see `4.4 Manual Resending`_)."
 
-#: ../../settings_kb/notifications/notifications.rst:112
+#: ../../settings_kb/notifications/notifications.rst:114
 msgid "**Типичный жизненный цикл уведомления:**"
 msgstr "**Typical notification lifecycle:**"
 
-#: ../../settings_kb/notifications/notifications.rst:124
+#: ../../settings_kb/notifications/notifications.rst:126
 msgid "2. Журнал уведомлений"
 msgstr "2. Notifications Journal"
 
-#: ../../settings_kb/notifications/notifications.rst:126
+#: ../../settings_kb/notifications/notifications.rst:128
 msgid ""
 "Журнал **Уведомления** расположен в **Разделе администратора → "
 "Конфигурация уведомлений**:"
@@ -414,25 +422,25 @@ msgstr ""
 "The **Notifications** journal is located in **Admin Section → "
 "Notification Configuration**:"
 
-#: ../../settings_kb/notifications/notifications.rst:128
-msgid ""
-"В данном журнале отображается информация обо всех уведомлениях, "
-"отправленных из микросервиса **ecos-notifications**."
-msgstr ""
-"This journal displays information about all notifications sent from the "
-"**ecos-notifications** microservice."
-
 #: ../../settings_kb/notifications/notifications.rst:130
+msgid ""
+"В журнале отображаются зарегистрированные уведомления с учётом прав, "
+"фильтров и контекста рабочего пространства. Тестовое письмо при старте "
+"сервиса отправляется отдельным путём и не обязано появляться в этом "
+"журнале."
+msgstr "The journal shows registered notifications subject to permissions, filters and workspace context. Startup test email uses a separate path and need not appear here."
+
+#: ../../settings_kb/notifications/notifications.rst:132
 msgid ""
 "На текущий момент поддерживается только простая текстовая фильтрация "
 "полей через ``ИЛИ``."
 msgstr "Currently, only simple text field filtering using ``OR`` is supported."
 
-#: ../../settings_kb/notifications/notifications.rst:137
+#: ../../settings_kb/notifications/notifications.rst:139
 msgid "3. Диагностика проблем с доставкой"
 msgstr "3. Diagnosing delivery issues"
 
-#: ../../settings_kb/notifications/notifications.rst:139
+#: ../../settings_kb/notifications/notifications.rst:141
 msgid ""
 "Если уведомление не доходит до получателя, используйте журнал уведомлений"
 " для диагностики."
@@ -444,7 +452,7 @@ msgstr ""
 msgid "Алгоритм"
 msgstr "Algorithm"
 
-#: ../../settings_kb/notifications/notifications.rst:144
+#: ../../settings_kb/notifications/notifications.rst:146
 msgid ""
 "Найдите нужное уведомление в журнале — по получателю, шаблону или времени"
 " отправки."
@@ -452,11 +460,11 @@ msgstr ""
 "Find the notification in the journal — by recipient, template, or send "
 "time."
 
-#: ../../settings_kb/notifications/notifications.rst:145
+#: ../../settings_kb/notifications/notifications.rst:147
 msgid "Проверьте **Статус** уведомления:"
 msgstr "Check the notification **Status**:"
 
-#: ../../settings_kb/notifications/notifications.rst:147
+#: ../../settings_kb/notifications/notifications.rst:149
 msgid ""
 "``ERROR`` — временная ошибка, повторы продолжаются. Смотрите поля "
 "**Сообщение ошибки** и **Время следующей попытки**. Типичная причина — "
@@ -466,7 +474,7 @@ msgstr ""
 "Message** and **Time of next attempt** fields. A common cause is SMTP "
 "server unavailability."
 
-#: ../../settings_kb/notifications/notifications.rst:149
+#: ../../settings_kb/notifications/notifications.rst:151
 msgid ""
 "``FAILED`` — постоянная ошибка. Смотрите поля **Сообщение ошибки** и "
 "**Трассировка стека ошибки**. Типичные причины: неверный адрес "
@@ -478,17 +486,17 @@ msgstr ""
 "template rendering error, an incorrect sender configuration. Retrying "
 "without fixing the cause will not help."
 
-#: ../../settings_kb/notifications/notifications.rst:152
+#: ../../settings_kb/notifications/notifications.rst:154
 msgid ""
 "``EXPIRED`` — бюджет повторов исчерпан. Смотрите **Сообщение ошибки**: "
 "как правило, SMTP-сервер был недоступен дольше, чем настроенное окно "
 "повторов."
 msgstr ""
-"``EXPIRED`` — the retry budget is exhausted. Check the **Error Message**: "
-"typically, the SMTP server was unavailable longer than the configured "
+"``EXPIRED`` — the retry budget is exhausted. Check the **Error Message**:"
+" typically, the SMTP server was unavailable longer than the configured "
 "retry window."
 
-#: ../../settings_kb/notifications/notifications.rst:154
+#: ../../settings_kb/notifications/notifications.rst:156
 msgid ""
 "``BLOCKED`` — уведомление заблокировано настройками "
 ":ref:`отправителя<senders>`. Проверьте конфигурацию активных отправителей"
@@ -498,7 +506,7 @@ msgstr ""
 "settings. Check the configuration of active senders and the blocking "
 "conditions."
 
-#: ../../settings_kb/notifications/notifications.rst:156
+#: ../../settings_kb/notifications/notifications.rst:158
 msgid ""
 "``WAIT_FOR_DISPATCH`` — уведомление ещё не обработано. Возможна проблема "
 "с доступностью SMTP или большой очередью."
@@ -506,7 +514,7 @@ msgstr ""
 "``WAIT_FOR_DISPATCH`` — the notification has not been processed yet. "
 "There may be an SMTP availability issue or a large queue."
 
-#: ../../settings_kb/notifications/notifications.rst:159
+#: ../../settings_kb/notifications/notifications.rst:161
 msgid ""
 "Откройте поле **Данные уведомления** — убедитесь, что получатели, тема и "
 "тело письма вычислены корректно."
@@ -514,13 +522,13 @@ msgstr ""
 "Open the **Notification Data** field — verify that the recipients, "
 "subject, and body were calculated correctly."
 
-#: ../../settings_kb/notifications/notifications.rst:160
+#: ../../settings_kb/notifications/notifications.rst:162
 msgid "Откройте поле **Отправленное сообщение** — проверьте финальный вид письма."
 msgstr ""
 "Open the **Sent Message** field — review the final appearance of the "
 "email."
 
-#: ../../settings_kb/notifications/notifications.rst:161
+#: ../../settings_kb/notifications/notifications.rst:163
 msgid ""
 "Устранив причину (например, восстановив SMTP-сервер или исправив адрес "
 "получателя), вернитесь в журнал и выполните действие **Повторить отправку"
@@ -530,11 +538,11 @@ msgstr ""
 "recipient address is fixed), return to the journal and perform the "
 "**Retry Sending Now** action (see `4.4 Manual Resending`_)."
 
-#: ../../settings_kb/notifications/notifications.rst:166
+#: ../../settings_kb/notifications/notifications.rst:168
 msgid "4. Повторные попытки отправки"
 msgstr "4. Retry Attempts"
 
-#: ../../settings_kb/notifications/notifications.rst:170
+#: ../../settings_kb/notifications/notifications.rst:172
 msgid ""
 "Механизм повторных отправок переработан в релизе платформы 2026.3 (см. "
 ":ref:`изменения обратной совместимости <breaking_changes_2026.3>`)."
@@ -542,11 +550,11 @@ msgstr ""
 "The retry mechanism was reworked in platform release 2026.3 (see "
 ":ref:`backward compatibility changes <breaking_changes_2026.3>`)."
 
-#: ../../settings_kb/notifications/notifications.rst:174
+#: ../../settings_kb/notifications/notifications.rst:176
 msgid "4.1 Как это работает"
 msgstr "4.1 How It Works"
 
-#: ../../settings_kb/notifications/notifications.rst:176
+#: ../../settings_kb/notifications/notifications.rst:178
 msgid ""
 "Если отправка уведомления не удалась, микросервис классифицирует ошибку и"
 " решает, имеет ли смысл повтор."
@@ -554,21 +562,16 @@ msgstr ""
 "If sending a notification fails, the microservice classifies the error "
 "and decides whether a retry makes sense."
 
-#: ../../settings_kb/notifications/notifications.rst:178
+#: ../../settings_kb/notifications/notifications.rst:180
 msgid ""
 "**Постоянные ошибки** — те, которые повтор не исправит: некорректный "
-"адрес получателя, сломанный шаблон, нечитаемая конфигурация отправителя, "
-"отказ SMTP-сервера с кодом 5xx. Уведомление сразу переходит в статус "
-"``FAILED`` после единственной попытки; почтовый сервер не нагружается "
-"бесполезными повторами."
-msgstr ""
-"**Permanent errors** — those a retry will not fix: an invalid recipient "
-"address, a broken template, an unreadable sender configuration, an SMTP "
-"server rejection with a 5xx code. The notification immediately transitions"
-" to the ``FAILED`` status after a single attempt; the mail server is not "
-"loaded with useless retries."
+"адрес получателя, ошибка шаблона, нечитаемая конфигурация отправителя, "
+"большинство отказов SMTP с кодом 5xx. После выявления такой ошибки "
+"уведомление переходит в ``FAILED``, дальнейшие автоматические повторы не "
+"назначаются."
+msgstr "**Permanent errors** are not fixed by retrying: invalid recipient addresses, template errors, unreadable sender configurations and most SMTP 5xx rejections. Detection sets ``FAILED`` with no further automatic retries."
 
-#: ../../settings_kb/notifications/notifications.rst:182
+#: ../../settings_kb/notifications/notifications.rst:184
 msgid ""
 "**Временные ошибки** — недоступность SMTP-сервера, таймаут, отказ с кодом"
 " 4xx, переполненный почтовый ящик получателя. Уведомление остаётся в "
@@ -578,7 +581,16 @@ msgstr ""
 " with a 4xx code, a full recipient mailbox. The notification remains in "
 "the ``ERROR`` status, and retries are performed within the budget."
 
-#: ../../settings_kb/notifications/notifications.rst:185
+#: ../../settings_kb/notifications/notifications.rst:187
+msgid ""
+"К временным относятся также SMTP 552 и ответы 5xx с указанием ``quota``. "
+"Если в цепочке почтовых ошибок есть временная причина или остались "
+"допустимые, но не обслуженные адресаты, классификатор сохраняет "
+"возможность повтора. Явная постоянная ошибка конфигурации или шаблона "
+"имеет приоритет."
+msgstr "SMTP 552 and 5xx responses mentioning ``quota`` are also temporary. A temporary cause in the mail error chain or valid unserved recipients preserves retry eligibility. Explicit permanent configuration or template errors take precedence."
+
+#: ../../settings_kb/notifications/notifications.rst:189
 msgid ""
 "Неизвестные ошибки считаются временными: ложный вердикт \"постоянная "
 "ошибка\" безвозвратно теряет письмо, а лишние повторы стоят лишь "
@@ -588,26 +600,20 @@ msgstr ""
 "verdict loses the email irrecoverably, while extra retries only cost a "
 "few cheap attempts."
 
-#: ../../settings_kb/notifications/notifications.rst:188
+#: ../../settings_kb/notifications/notifications.rst:192
 msgid ""
 "Интервал между повторами растёт по экспоненте: первый повтор через "
-"``initial-interval``, каждый следующий в ``multiplier`` раз позже "
-"предыдущего, но не позже ``max-interval``. К интервалу добавляется "
-"случайный разброс ±20%, поэтому фактические паузы не совпадают с "
-"настройками в точности — это не даёт всем накопившимся уведомлениям пойти"
-" на SMTP-сервер одновременно. При настройках по умолчанию "
-"последовательность пауз — примерно 1 мин, 3 мин, 9 мин, 27 мин, далее по "
-"2 часа."
-msgstr ""
-"The interval between retries grows exponentially: the first retry occurs "
-"after ``initial-interval``, each subsequent one ``multiplier`` times "
-"later than the previous, but not later than ``max-interval``. A random "
-"±20% jitter is added to the interval, so actual pauses do not exactly "
-"match the settings — this prevents all accumulated notifications from "
-"hitting the SMTP server at once. With default settings, the sequence of "
-"pauses is roughly 1 min, 3 min, 9 min, 27 min, then every 2 hours."
+"``initial-interval``, каждый следующий в ``multiplier`` раз дольше "
+"предыдущего, с ограничением базовой паузы ``max-interval``. Затем "
+"добавляется случайный разброс ±20%, поэтому фактические паузы не "
+"совпадают с настройками в точности — это не даёт всем накопившимся "
+"уведомлениям пойти на SMTP-сервер одновременно. При настройках по "
+"умолчанию последовательность пауз — примерно 1 мин, 3 мин, 9 мин, 27 мин,"
+" 81 мин, далее по 2 часа. Из-за разброса фактическая пауза может "
+"превышать ``max-interval`` до 20%."
+msgstr "Retry intervals grow exponentially: first ``initial-interval``, then each ``multiplier`` times the previous, capped at base ``max-interval``. Random ±20% jitter prevents queued notifications hitting SMTP simultaneously. Default pauses are about 1, 3, 9, 27 and 81 minutes, then 2 hours. Jitter can exceed ``max-interval`` by up to 20%."
 
-#: ../../settings_kb/notifications/notifications.rst:194
+#: ../../settings_kb/notifications/notifications.rst:198
 msgid ""
 "Бюджет повторов ограничен с двух сторон: количеством попыток (``max-"
 "attempts``) и окном повторов (``retry-window``, отсчитывается от первой "
@@ -619,23 +625,20 @@ msgstr ""
 "from the first error). Whichever runs out first moves the notification to"
 " the ``EXPIRED`` status."
 
-#: ../../settings_kb/notifications/notifications.rst:200
+#: ../../settings_kb/notifications/notifications.rst:204
 msgid ""
-"При работе нескольких реплик микросервиса каждое уведомление "
-"обрабатывается только одной из них, поэтому получатели не получают дубли "
-"писем. Если реплика упала в процессе отправки, её уведомления "
-"возвращаются в очередь после истечения аренды (``lease-time``)."
-msgstr ""
-"When multiple microservice replicas are running, each notification is "
-"processed by only one of them, so recipients do not receive duplicate "
-"emails. If a replica crashes while sending, its notifications return to "
-"the queue after the lease (``lease-time``) expires."
+"Захват записи и аренда защищают от одновременной обработки несколькими "
+"репликами. После сбоя записи снова становятся доступны по истечении "
+"``lease-time``. Это не гарантирует единственную доставку: если SMTP уже "
+"принял письмо, а результат не успел сохраниться, повтор может создать "
+"дубль."
+msgstr "Record claiming and leases prevent concurrent processing by replicas. After failure, records become available again after ``lease-time``. This does not guarantee single delivery: if SMTP accepted mail but the result was not saved, a retry may duplicate it."
 
-#: ../../settings_kb/notifications/notifications.rst:205
+#: ../../settings_kb/notifications/notifications.rst:207
 msgid "4.2 Частичная доставка"
 msgstr "4.2 Partial Delivery"
 
-#: ../../settings_kb/notifications/notifications.rst:207
+#: ../../settings_kb/notifications/notifications.rst:209
 msgid ""
 "Если письмо адресовано нескольким получателям и почтовый сервер принял "
 "его только для части из них, уведомление считается отправленным (статус "
@@ -649,137 +652,139 @@ msgstr ""
 "**Error Message** field. Resending is not performed in this case: it "
 "would mean a duplicate email for everyone who already received it."
 
-#: ../../settings_kb/notifications/notifications.rst:213
+#: ../../settings_kb/notifications/notifications.rst:215
 msgid "4.3 Настройка"
 msgstr "4.3 Configuration"
 
-#: ../../settings_kb/notifications/notifications.rst:215
+#: ../../settings_kb/notifications/notifications.rst:217
 msgid ""
 "Параметры задаются в конфигурации микросервиса (см. :ref:`настройка "
 "подключения <ecos-notifications-settings>`) в блоке ``ecos-"
 "notifications.retry``:"
 msgstr ""
-"The parameters are set in the microservice configuration (see :ref:`"
-"connection settings <ecos-notifications-settings>`) in the ``ecos-"
+"The parameters are set in the microservice configuration (see "
+":ref:`connection settings <ecos-notifications-settings>`) in the ``ecos-"
 "notifications.retry`` block:"
 
-#: ../../settings_kb/notifications/notifications.rst:221
+#: ../../settings_kb/notifications/notifications.rst:223
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../settings_kb/notifications/notifications.rst:222
+#: ../../settings_kb/notifications/notifications.rst:224
 msgid "По умолчанию"
 msgstr "Default"
 
-#: ../../settings_kb/notifications/notifications.rst:224
+#: ../../settings_kb/notifications/notifications.rst:226
 msgid "``enabled``"
 msgstr "``enabled``"
 
-#: ../../settings_kb/notifications/notifications.rst:225
+#: ../../settings_kb/notifications/notifications.rst:227
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../settings_kb/notifications/notifications.rst:226
+#: ../../settings_kb/notifications/notifications.rst:228
 msgid "``false`` — первая же ошибка переводит уведомление в терминальный статус."
-msgstr "``false`` — the very first error moves the notification to a terminal status."
+msgstr ""
+"``false`` — the very first error moves the notification to a terminal "
+"status."
 
-#: ../../settings_kb/notifications/notifications.rst:227
+#: ../../settings_kb/notifications/notifications.rst:229
 msgid "``poll-interval``"
 msgstr "``poll-interval``"
 
-#: ../../settings_kb/notifications/notifications.rst:228
+#: ../../settings_kb/notifications/notifications.rst:230
 msgid "``30s``"
 msgstr "``30s``"
 
-#: ../../settings_kb/notifications/notifications.rst:229
+#: ../../settings_kb/notifications/notifications.rst:231
 msgid "Как часто проверяется очередь повторов."
 msgstr "How often the retry queue is checked."
 
-#: ../../settings_kb/notifications/notifications.rst:230
+#: ../../settings_kb/notifications/notifications.rst:232
 msgid "``batch-size``"
 msgstr "``batch-size``"
 
-#: ../../settings_kb/notifications/notifications.rst:231
+#: ../../settings_kb/notifications/notifications.rst:233
 msgid "``50``"
 msgstr "``50``"
 
-#: ../../settings_kb/notifications/notifications.rst:232
+#: ../../settings_kb/notifications/notifications.rst:234
 msgid "Сколько уведомлений берётся в обработку за один проход."
 msgstr "How many notifications are taken for processing in a single pass."
 
-#: ../../settings_kb/notifications/notifications.rst:233
+#: ../../settings_kb/notifications/notifications.rst:235
 msgid "``max-attempts``"
 msgstr "``max-attempts``"
 
-#: ../../settings_kb/notifications/notifications.rst:234
+#: ../../settings_kb/notifications/notifications.rst:236
 msgid "``20``"
 msgstr "``20``"
 
-#: ../../settings_kb/notifications/notifications.rst:235
+#: ../../settings_kb/notifications/notifications.rst:237
 msgid "Максимум попыток отправки."
 msgstr "Maximum number of send attempts."
 
-#: ../../settings_kb/notifications/notifications.rst:236
+#: ../../settings_kb/notifications/notifications.rst:238
 msgid "``initial-interval``"
 msgstr "``initial-interval``"
 
-#: ../../settings_kb/notifications/notifications.rst:237
+#: ../../settings_kb/notifications/notifications.rst:239
 msgid "``1m``"
 msgstr "``1m``"
 
-#: ../../settings_kb/notifications/notifications.rst:238
+#: ../../settings_kb/notifications/notifications.rst:240
 msgid "Пауза перед первым повтором."
 msgstr "The pause before the first retry."
 
-#: ../../settings_kb/notifications/notifications.rst:239
+#: ../../settings_kb/notifications/notifications.rst:241
 msgid "``multiplier``"
 msgstr "``multiplier``"
 
-#: ../../settings_kb/notifications/notifications.rst:240
+#: ../../settings_kb/notifications/notifications.rst:242
 msgid "``3.0``"
 msgstr "``3.0``"
 
-#: ../../settings_kb/notifications/notifications.rst:241
+#: ../../settings_kb/notifications/notifications.rst:243
 msgid "Во сколько раз растёт пауза."
 msgstr "How many times the pause grows."
 
-#: ../../settings_kb/notifications/notifications.rst:242
+#: ../../settings_kb/notifications/notifications.rst:244
 msgid "``max-interval``"
 msgstr "``max-interval``"
 
-#: ../../settings_kb/notifications/notifications.rst:243
+#: ../../settings_kb/notifications/notifications.rst:245
 msgid "``2h``"
 msgstr "``2h``"
 
-#: ../../settings_kb/notifications/notifications.rst:244
+#: ../../settings_kb/notifications/notifications.rst:246
 msgid "Максимальная пауза между повторами."
 msgstr "The maximum pause between retries."
 
-#: ../../settings_kb/notifications/notifications.rst:245
+#: ../../settings_kb/notifications/notifications.rst:247
 msgid "``retry-window``"
 msgstr "``retry-window``"
 
-#: ../../settings_kb/notifications/notifications.rst:246
+#: ../../settings_kb/notifications/notifications.rst:248
 msgid "``24h``"
 msgstr "``24h``"
 
-#: ../../settings_kb/notifications/notifications.rst:247
+#: ../../settings_kb/notifications/notifications.rst:249
 msgid "Окно повторов от первой ошибки."
 msgstr "The retry window counted from the first error."
 
-#: ../../settings_kb/notifications/notifications.rst:248
+#: ../../settings_kb/notifications/notifications.rst:250
 msgid "``lease-time``"
 msgstr "``lease-time``"
 
-#: ../../settings_kb/notifications/notifications.rst:249
+#: ../../settings_kb/notifications/notifications.rst:251
 msgid "``15m``"
 msgstr "``15m``"
 
-#: ../../settings_kb/notifications/notifications.rst:250
+#: ../../settings_kb/notifications/notifications.rst:252
 msgid "Аренда уведомления, взятого репликой в обработку."
 msgstr "The lease on a notification taken for processing by a replica."
 
-#: ../../settings_kb/notifications/notifications.rst:252
+#: ../../settings_kb/notifications/notifications.rst:254
 msgid ""
 "Показаны значения по умолчанию — задавать блок целиком не требуется, "
 "достаточно переопределить нужные параметры:"
@@ -787,17 +792,17 @@ msgstr ""
 "Default values are shown — it is not necessary to set the entire block, "
 "it is enough to override the parameters you need:"
 
-#: ../../settings_kb/notifications/notifications.rst:263
+#: ../../settings_kb/notifications/notifications.rst:265
 msgid ""
 "Некорректные значения (нулевой ``batch-size``, ``multiplier`` меньше 1, "
 "неположительные интервалы) не дают микросервису запуститься — ошибка "
 "будет видна в логе при старте."
 msgstr ""
-"Invalid values (a zero ``batch-size``, a ``multiplier`` less than 1, "
-"non-positive intervals) prevent the microservice from starting — the "
-"error will be visible in the log at startup."
+"Invalid values (a zero ``batch-size``, a ``multiplier`` less than 1, non-"
+"positive intervals) prevent the microservice from starting — the error "
+"will be visible in the log at startup."
 
-#: ../../settings_kb/notifications/notifications.rst:266
+#: ../../settings_kb/notifications/notifications.rst:268
 msgid ""
 "Параметр ``lease-time`` должен превышать ``batch-size`` × максимальное "
 "время отправки одного письма, иначе другая реплика может взять в работу "
@@ -811,7 +816,7 @@ msgstr ""
 "``spring.mail.properties.mail.smtp.*timeout`` timeouts must always be "
 "finite."
 
-#: ../../settings_kb/notifications/notifications.rst:270
+#: ../../settings_kb/notifications/notifications.rst:272
 msgid ""
 "Даже при ``enabled: false`` ручная повторная отправка продолжает "
 "работать: уведомление получит ровно одну попытку."
@@ -819,7 +824,7 @@ msgstr ""
 "Even with ``enabled: false``, manual resending continues to work: the "
 "notification will get exactly one attempt."
 
-#: ../../settings_kb/notifications/notifications.rst:275
+#: ../../settings_kb/notifications/notifications.rst:277
 msgid ""
 "Устаревший блок настроек ``ecos-notifications.error-notification`` "
 "(параметры ``ttl``, ``delay``, ``min-try-count``) больше не влияет на "
@@ -832,63 +837,56 @@ msgstr ""
 "written to the log — such settings should be moved to the ``retry`` "
 "block."
 
-#: ../../settings_kb/notifications/notifications.rst:280
+#: ../../settings_kb/notifications/notifications.rst:282
 msgid "4.4 Ручная повторная отправка"
 msgstr "4.4 Manual Resending"
 
-#: ../../settings_kb/notifications/notifications.rst:282
+#: ../../settings_kb/notifications/notifications.rst:284
 msgid ""
 "Действие **Повторить отправку сейчас** доступно в журнале уведомлений и "
 "на карточке уведомления — для уведомлений в статусах ``ERROR``, "
 "``FAILED`` и ``EXPIRED``. Действие возвращает уведомление в очередь "
 "повторов со сброшенным бюджетом: счётчик попыток обнуляется, а "
 "запланированное **Время следующей попытки** сбрасывается на текущий "
-"момент — ждать его не нужно, отправка выполняется при ближайшей проверке "
-"очереди (по умолчанию — в пределах 30 секунд)."
-msgstr ""
-"The **Retry Sending Now** action is available in the notifications "
-"journal and on the notification card — for notifications in the "
-"``ERROR``, ``FAILED``, and ``EXPIRED`` statuses. The action returns the "
-"notification to the retry queue with a reset budget: the attempt counter "
-"is zeroed, and the scheduled **Time of next attempt** is reset to the "
-"current moment — there is no need to wait for it, sending occurs at the "
-"next queue check (within 30 seconds by default)."
+"момент. Запись становится доступной для одного из ближайших проходов "
+"планировщика. Интервал между проходами по умолчанию 30 секунд; "
+"фактическое ожидание зависит от очереди и длительности предыдущей "
+"обработки."
+msgstr "**Retry sending now** is available in the notification journal and card for ``ERROR``, ``FAILED`` and ``EXPIRED``. It requeues with a reset budget: attempt count becomes zero and **Next attempt time** becomes now. The record is available to an upcoming scheduler pass. The default interval is 30 seconds; actual wait depends on queue and previous processing duration."
 
-#: ../../settings_kb/notifications/notifications.rst:288
+#: ../../settings_kb/notifications/notifications.rst:289
 msgid "Действие доступно администраторам и системным пользователям."
 msgstr "The action is available to administrators and system users."
 
-#: ../../settings_kb/notifications/notifications.rst:292
+#: ../../settings_kb/notifications/notifications.rst:293
 msgid ""
 "Похожее по названию действие **Отправить повторно** (``RESEND``) "
-"предлагается для уведомлений в остальных статусах — важно не перепутать "
-"их:"
-msgstr ""
-"A similarly named action, **Resend** (``RESEND``), is offered for "
-"notifications in the remaining statuses — it is important not to confuse "
-"them:"
+"предлагается для уведомлений в остальных статусах, если не заполнены "
+"``bulkMailRef`` и ``delayedSend``. В штатном интерфейсе оно не "
+"предлагается для уведомлений рассылки и записей с отложенной отправкой:"
+msgstr "The similarly named **Resend** (``RESEND``) is offered for other statuses if ``bulkMailRef`` and ``delayedSend`` are empty. The standard UI does not offer it for bulk or delayed notifications:"
 
-#: ../../settings_kb/notifications/notifications.rst:299
+#: ../../settings_kb/notifications/notifications.rst:300
 msgid "Действие"
 msgstr "Action"
 
-#: ../../settings_kb/notifications/notifications.rst:300
+#: ../../settings_kb/notifications/notifications.rst:301
 msgid "Для каких статусов"
 msgstr "For Which Statuses"
 
-#: ../../settings_kb/notifications/notifications.rst:301
+#: ../../settings_kb/notifications/notifications.rst:302
 msgid "Что происходит"
 msgstr "What Happens"
 
-#: ../../settings_kb/notifications/notifications.rst:302
+#: ../../settings_kb/notifications/notifications.rst:303
 msgid "**Повторить отправку сейчас**"
 msgstr "**Retry Sending Now**"
 
-#: ../../settings_kb/notifications/notifications.rst:303
+#: ../../settings_kb/notifications/notifications.rst:304
 msgid "``ERROR``, ``FAILED``, ``EXPIRED``"
 msgstr "``ERROR``, ``FAILED``, ``EXPIRED``"
 
-#: ../../settings_kb/notifications/notifications.rst:304
+#: ../../settings_kb/notifications/notifications.rst:305
 msgid ""
 "Работает с той же записью уведомления: сбрасывает бюджет повторов и "
 "возвращает её в очередь."
@@ -896,21 +894,19 @@ msgstr ""
 "Works with the same notification record: resets the retry budget and "
 "returns it to the queue."
 
-#: ../../settings_kb/notifications/notifications.rst:305
+#: ../../settings_kb/notifications/notifications.rst:306
 msgid "**Отправить повторно** (``RESEND``)"
 msgstr "**Resend** (``RESEND``)"
 
-#: ../../settings_kb/notifications/notifications.rst:306
-msgid "остальные статусы"
-msgstr "other statuses"
-
 #: ../../settings_kb/notifications/notifications.rst:307
+msgid "Остальные статусы; ``bulkMailRef`` и ``delayedSend`` пусты."
+msgstr "Other statuses; ``bulkMailRef`` and ``delayedSend`` empty."
+
+#: ../../settings_kb/notifications/notifications.rst:308
 msgid ""
 "Формирует и отправляет новое уведомление, оставляя исходную запись без "
 "изменений."
-msgstr ""
-"Forms and sends a new notification, leaving the original record "
-"unchanged."
+msgstr "Forms and sends a new notification, leaving the original record unchanged."
 
 #~ msgid "Текущий статус."
 #~ msgstr "Current status."
@@ -984,3 +980,83 @@ msgstr ""
 #~ ":ref:`bulk mailing<bulk_mail>` or restart the"
 #~ " process."
 
+#~ msgid ""
+#~ "Устойчивость к недоступности SMTP: если "
+#~ "почтовый сервер временно недоступен, "
+#~ "уведомления сохраняются в БД со статусом"
+#~ " ``WAIT_FOR_DISPATCH`` или ``ERROR`` и "
+#~ "отправляются автоматически после восстановления "
+#~ "соединения. Подробнее — в разделе `4."
+#~ " Повторные попытки отправки`_."
+#~ msgstr ""
+#~ "**SMTP resilience:** if the mail server"
+#~ " is temporarily unavailable, notifications "
+#~ "are saved to the database with a"
+#~ " status of ``WAIT_FOR_DISPATCH`` or "
+#~ "``ERROR`` and are sent automatically "
+#~ "once the connection is restored. For "
+#~ "more details, see `4. Retry Attempts`_."
+
+#~ msgid "Тип отправки. На текущий момент поддерживается ``EMAIL_NOTIFICATION``."
+#~ msgstr "The delivery type. Currently only ``EMAIL_NOTIFICATION`` is supported."
+
+#~ msgid "Счётчик попыток отправки. Увеличивается при каждой неудачной попытке."
+#~ msgstr "Send attempt counter. Incremented on each failed attempt."
+
+#~ msgid ""
+#~ "Уведомление создано и ожидает отправки. "
+#~ "Начальный статус для всех уведомлений."
+#~ msgstr ""
+#~ "The notification has been created and"
+#~ " is waiting to be sent. This is"
+#~ " the initial status for all "
+#~ "notifications."
+
+#~ msgid "Сообщение успешно отправлено."
+#~ msgstr "Message successfully sent."
+
+#~ msgid ""
+#~ "Отправка невозможна по причине, которую "
+#~ "повтор не исправит: некорректный адрес "
+#~ "получателя, сломанный шаблон, нечитаемая "
+#~ "конфигурация отправителя, отказ SMTP-сервера с"
+#~ " кодом 5xx. Делается ровно одна "
+#~ "попытка, повторов не будет."
+#~ msgstr ""
+#~ "Sending is impossible for a reason "
+#~ "a retry will not fix: an invalid"
+#~ " recipient address, a broken template, "
+#~ "an unreadable sender configuration, or "
+#~ "an SMTP server rejection with a "
+#~ "5xx code. Exactly one attempt is "
+#~ "made; there will be no retries."
+
+#~ msgid ""
+#~ "В данном журнале отображается информация "
+#~ "обо всех уведомлениях, отправленных из "
+#~ "микросервиса **ecos-notifications**."
+#~ msgstr ""
+#~ "This journal displays information about "
+#~ "all notifications sent from the "
+#~ "**ecos-notifications** microservice."
+
+#~ msgid ""
+#~ "При работе нескольких реплик микросервиса "
+#~ "каждое уведомление обрабатывается только одной"
+#~ " из них, поэтому получатели не "
+#~ "получают дубли писем. Если реплика упала"
+#~ " в процессе отправки, её уведомления "
+#~ "возвращаются в очередь после истечения "
+#~ "аренды (``lease-time``)."
+#~ msgstr ""
+#~ "When multiple microservice replicas are "
+#~ "running, each notification is processed "
+#~ "by only one of them, so recipients"
+#~ " do not receive duplicate emails. If"
+#~ " a replica crashes while sending, its"
+#~ " notifications return to the queue "
+#~ "after the lease (``lease-time``) "
+#~ "expires."
+
+#~ msgid "остальные статусы"
+#~ msgstr "other statuses"

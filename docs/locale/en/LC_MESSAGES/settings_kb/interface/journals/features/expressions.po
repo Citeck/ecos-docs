@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -29,61 +29,40 @@ msgstr "Contents"
 #: ../../settings_kb/interface/journals/features/expressions.rst:9
 msgid ""
 "В журналах Citeck помимо простых атрибутов (``name``, ``counterparty`` и "
-"др.) можно использовать выражения — SQL-подобные конструкции, вычисляемые"
-" в момент запроса к базе данных. Они поддерживают математические "
-"операции, функции работы с датами, а также поиск, группировку и "
-"сортировку с гарантией актуальности данных."
-msgstr ""
-"In Citeck journals, in addition to simple attributes (``name``, "
-"``counterparty``, etc.), expressions can be used — SQL-like constructs "
-"evaluated at the time of the database query. They support mathematical "
-"operations, date functions, as well as search, grouping, and sorting with "
-"guaranteed data freshness."
+"др.) можно использовать выражения, если их поддерживает источник данных "
+"Records. Например, источник на базе ecos-data может выполнять "
+"SQL-подобные вычисления при запросе данных: математические операции и "
+"функции работы с датами."
+msgstr "Alongside simple attributes (``name``, ``counterparty``, etc.), Citeck journals can use expressions supported by the Records source. For example, ecos-data sources may perform SQL-like calculations during queries, including math and date functions."
 
 #: ../../settings_kb/interface/journals/features/expressions.rst:11
 msgid ""
 "**Выражение** — набор функций, операторов, скобок и атрибутов, который "
-"позволяет вычислить значение на основе данных в БД."
-msgstr ""
-"An **Expression** is a set of functions, operators, parentheses, and "
-"attributes that computes a value based on data in the database."
+"позволяет вычислить значение на основе данных источника."
+msgstr "An **expression** combines functions, operators, parentheses and attributes to compute a value from source data."
 
 #: ../../settings_kb/interface/journals/features/expressions.rst:15
 msgid ""
-":ref:`Вычисляемые атрибуты <count_attributes>`, которые описаны в типе, "
-"имеют схожую с выражениями функциональность и позволяют более гибко "
-"настраивать значения атрибутов, но у них есть ограничения при поиске, "
-"группировке и сортировке."
-msgstr ""
-":ref:`Computed attributes <count_attributes>` defined in the type have "
-"functionality similar to expressions and allow more flexible configuration "
-"of attribute values, but they have limitations for search, grouping, and "
-"sorting."
+"UI передаёт настроенный атрибут источнику Records. Допустимый синтаксис, "
+"функции, поддержка поиска, группировки и сортировки определяются "
+"серверным источником. Примеры ниже относятся к источникам, поддерживающим"
+" соответствующие функции ecos-data."
+msgstr "The UI passes the configured attribute to the Records source. The server source defines syntax, functions, search, grouping and sorting support. Examples below apply to sources supporting the relevant ecos-data functions."
 
 #: ../../settings_kb/interface/journals/features/expressions.rst:17
 msgid ""
-"Эти операции доступны, только если для вычисляемого атрибута настроено "
-"сохранение в БД, но и в этом случае есть ограничение — их перерасчёт "
-"будет произведён только когда произойдёт обновление сущности."
-msgstr ""
-"These operations are only available if the computed attribute is configured "
-"to be saved to the database, but even then there is a limitation — "
-"recalculation occurs only when the entity is updated."
+":ref:`Вычисляемые атрибуты типа <count_attributes>` и :ref:`computed "
+"журнала <computed_attributes>` — отдельные механизмы. Клиентское "
+"вычисление значения для отображения само по себе не даёт возможности "
+"искать, группировать или сортировать по нему на сервере."
+msgstr ":ref:`Type computed attributes <count_attributes>` and :ref:`journal computed <computed_attributes>` are separate mechanisms. Client-side display calculations alone do not enable server search, grouping or sorting."
 
 #: ../../settings_kb/interface/journals/features/expressions.rst:19
 msgid ""
-"Если обновляются связанные сущности или глобальные объекты, которые "
-"использовались для вычисления, то вычисляемый атрибут не пересчитается. В"
-" отличие от вычисляемых атрибутов, выражения в журнале позволяют "
-"настраивать вычисления, которые вычисляются в момент запроса для каждой "
-"записи, что позволяет искать, группировать и сортировать по ним с "
-"гарантией актуальности данных."
-msgstr ""
-"If related entities or global objects used in the computation are updated, "
-"the computed attribute will not be recalculated. Unlike computed "
-"attributes, journal expressions allow configuring calculations that are "
-"evaluated at query time for each record, enabling search, grouping, and "
-"sorting with guaranteed data freshness."
+"Актуальность вычислений зависит от серверного механизма: выражение может "
+"вычисляться во время запроса, а сохранённое вычисляемое поле — "
+"обновляться по правилам его пересчёта."
+msgstr "Calculation freshness depends on the server mechanism: expressions may run during queries, while stored computed fields update according to recalculation rules."
 
 #: ../../settings_kb/interface/journals/features/expressions.rst:21
 msgid ""
@@ -93,7 +72,7 @@ msgstr ""
 "Expressions are configured in the column's advanced settings in the "
 "**«Attribute for loading»** field."
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:40
+#: ../../settings_kb/interface/journals/features/expressions.rst:38
 msgid ""
 "Для настройки выражения нужно, чтобы в содержимом этого поля была или "
 "функция, или выражение, полностью обёрнутое в скобки."
@@ -101,15 +80,15 @@ msgstr ""
 "To configure an expression, the field content must be either a function "
 "or an expression fully wrapped in parentheses."
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:43
+#: ../../settings_kb/interface/journals/features/expressions.rst:41
 msgid "Примеры"
 msgstr "Examples"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:46
+#: ../../settings_kb/interface/journals/features/expressions.rst:44
 msgid "Расчёт разницы между датами в днях"
 msgstr "Calculating the difference between dates in days"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:52
+#: ../../settings_kb/interface/journals/features/expressions.rst:50
 msgid ""
 "**date0** и **date1** — атрибуты с датой или датой-временем, между "
 "которыми происходит расчёт."
@@ -117,7 +96,7 @@ msgstr ""
 "**date0** and **date1** — date or datetime attributes between which the "
 "calculation is performed."
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:53
+#: ../../settings_kb/interface/journals/features/expressions.rst:51
 msgid ""
 "**ceil** — округлить до ближайшего целого, которое больше или равно "
 "аргументу. Вместо этой функции можно использовать:"
@@ -125,19 +104,19 @@ msgstr ""
 "**ceil** — round up to the nearest integer greater than or equal to the "
 "argument. This function can be replaced with:"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:55
+#: ../../settings_kb/interface/journals/features/expressions.rst:53
 msgid "**floor** — отбросить дробную часть;"
 msgstr "**floor** — truncate the fractional part;"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:56
+#: ../../settings_kb/interface/journals/features/expressions.rst:54
 msgid "**round** — округлить результат до ближайшего целого."
 msgstr "**round** — round the result to the nearest integer."
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:59
+#: ../../settings_kb/interface/journals/features/expressions.rst:57
 msgid "Произвольные математические операции"
 msgstr "Arbitrary mathematical operations"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:69
+#: ../../settings_kb/interface/journals/features/expressions.rst:67
 msgid ""
 "**field0** и **field1** — атрибуты сущности. Сложность выражений и "
 "количество атрибутов не ограничены."
@@ -145,10 +124,62 @@ msgstr ""
 "**field0** and **field1** — entity attributes. Expression complexity and "
 "the number of attributes are unlimited."
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:72
+#: ../../settings_kb/interface/journals/features/expressions.rst:70
 msgid "Получить месяц и год"
 msgstr "Getting the month and year"
 
-#: ../../settings_kb/interface/journals/features/expressions.rst:78
+#: ../../settings_kb/interface/journals/features/expressions.rst:76
 msgid "**date0** — атрибут с датой или датой-временем."
 msgstr "**date0** — a date or datetime attribute."
+
+#~ msgid ""
+#~ ":ref:`Вычисляемые атрибуты <count_attributes>`, "
+#~ "которые описаны в типе, имеют схожую "
+#~ "с выражениями функциональность и позволяют "
+#~ "более гибко настраивать значения атрибутов,"
+#~ " но у них есть ограничения при "
+#~ "поиске, группировке и сортировке."
+#~ msgstr ""
+#~ ":ref:`Computed attributes <count_attributes>` "
+#~ "defined in the type have functionality"
+#~ " similar to expressions and allow "
+#~ "more flexible configuration of attribute "
+#~ "values, but they have limitations for"
+#~ " search, grouping, and sorting."
+
+#~ msgid ""
+#~ "Эти операции доступны, только если для"
+#~ " вычисляемого атрибута настроено сохранение "
+#~ "в БД, но и в этом случае "
+#~ "есть ограничение — их перерасчёт будет"
+#~ " произведён только когда произойдёт "
+#~ "обновление сущности."
+#~ msgstr ""
+#~ "These operations are only available if"
+#~ " the computed attribute is configured "
+#~ "to be saved to the database, but"
+#~ " even then there is a limitation "
+#~ "— recalculation occurs only when the "
+#~ "entity is updated."
+
+#~ msgid ""
+#~ "Если обновляются связанные сущности или "
+#~ "глобальные объекты, которые использовались для"
+#~ " вычисления, то вычисляемый атрибут не "
+#~ "пересчитается. В отличие от вычисляемых "
+#~ "атрибутов, выражения в журнале позволяют "
+#~ "настраивать вычисления, которые вычисляются в"
+#~ " момент запроса для каждой записи, "
+#~ "что позволяет искать, группировать и "
+#~ "сортировать по ним с гарантией "
+#~ "актуальности данных."
+#~ msgstr ""
+#~ "If related entities or global objects"
+#~ " used in the computation are updated,"
+#~ " the computed attribute will not be"
+#~ " recalculated. Unlike computed attributes, "
+#~ "journal expressions allow configuring "
+#~ "calculations that are evaluated at query"
+#~ " time for each record, enabling "
+#~ "search, grouping, and sorting with "
+#~ "guaranteed data freshness."

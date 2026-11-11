@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -84,12 +84,12 @@ msgstr "Adding a Form Component"
 
 #: ../../settings_kb/interface/forms/form_builder.rst:24
 msgid ""
-"Каждая новая форма начинается с автоматически добавленных кнопок и "
-"текстового поля, которые могут быть удалены или отредактированы по мере "
-"необходимости."
-msgstr ""
-"Each new form starts with automatically added buttons and a text field, "
-"which can be deleted or edited as needed."
+"Для пустой формы конструктор загружает начальный набор компонентов из "
+"системного шаблона ``uiserv/form@DEFAULT``. Его состав зависит от "
+"конфигурации системы. Например, шаблон может содержать кнопки и текстовое"
+" поле; их можно удалить или отредактировать. Существующая непустая форма "
+"открывается со своим набором компонентов."
+msgstr "For an empty form, the builder loads initial components from ``uiserv/form@DEFAULT``. Contents depend on system configuration. For example, buttons and a text field may be included and can be deleted or edited. Existing nonempty forms open with their own components."
 
 #: ../../settings_kb/interface/forms/form_builder.rst:30
 msgid ""
@@ -144,7 +144,7 @@ msgstr "Name"
 #: ../../settings_kb/interface/forms/form_builder.rst:68
 #: ../../settings_kb/interface/forms/form_builder.rst:112
 #: ../../settings_kb/interface/forms/form_builder.rst:194
-#: ../../settings_kb/interface/forms/form_builder.rst:218
+#: ../../settings_kb/interface/forms/form_builder.rst:220
 msgid "Описание"
 msgstr "Description"
 
@@ -176,15 +176,10 @@ msgstr "the property name from the :ref:`data type<data_types_main>`"
 
 #: ../../settings_kb/interface/forms/form_builder.rst
 msgid ""
-"При вводе имени свойства появляется выпадающий список атрибутов типа "
-"данных, для которого форма создается (при наличии частичного совпадения "
-"имен). Это позволяет понять, какие имена уже заняты, чтобы не привести к "
-"ошибке при создании или редактировании формы."
-msgstr ""
-"When entering a property name, a dropdown list of attributes from the "
-"data type for which the form is being created appears (if there is a "
-"partial name match). This helps to understand which names are already "
-"taken to avoid errors when creating or editing the form."
+"При вводе имени свойства появляются подсказки атрибутов модели "
+"родительской формы или типа редактируемой формы. Они помогают выбрать "
+"атрибут; список не является проверкой уже занятых ключей компонентов."
+msgstr "Entering a property name shows attribute suggestions from the parent form model or edited form type. These help select an attribute; the list does not check already used component keys."
 
 #: ../../settings_kb/interface/forms/form_builder.rst:81
 #: ../../settings_kb/interface/forms/form_builder.rst:119
@@ -296,8 +291,8 @@ msgid ""
 "асинхронного запроса данными."
 msgstr ""
 "Responsible for automatically populating the field with data. In lists, "
-"there is an option to populate the list with static data or data "
-"obtained from an asynchronous request."
+"there is an option to populate the list with static data or data obtained"
+" from an asynchronous request."
 
 #: ../../settings_kb/interface/forms/form_builder.rst:133
 msgid "Валидация"
@@ -338,15 +333,16 @@ msgid "строка ``attribute``"
 msgstr "the string ``attribute``"
 
 #: ../../settings_kb/interface/forms/form_builder.rst:160
-#: ../../settings_kb/interface/forms/form_builder.rst:221
+#: ../../settings_kb/interface/forms/form_builder.rst:223
 msgid "**Значение**"
 msgstr "**Value**"
 
 #: ../../settings_kb/interface/forms/form_builder.rst:161
-#, python-format
-msgid "данные как в заголовке ``%prefix%_%localName%``, например ``initiator``"
-msgstr ""
-"data as in the title ``%prefix%_%localName%``, for example ``initiator``"
+msgid ""
+"точное имя атрибута Records API, например ``initiator`` или "
+"``docs:documents``. Пространство имён не преобразуется автоматически в "
+"подчёркивание."
+msgstr "Exact Records API attribute name, such as ``initiator`` or ``docs:documents``. Namespaces are not automatically converted to underscores."
 
 #: ../../settings_kb/interface/forms/form_builder.rst:164
 msgid "Отображение"
@@ -463,8 +459,10 @@ msgid "**Событие**"
 msgstr "**Event**"
 
 #: ../../settings_kb/interface/forms/form_builder.rst:206
-msgid "Предназначен для создания пользовательских событий в форме."
-msgstr "Designed for creating custom events in the form."
+msgid ""
+"Запускает правило при получении указанного события формы. Событие может "
+"отправляться кнопкой с действием Event или скриптом."
+msgstr "Triggers the rule on the specified form event. A button with an Event action or a script can emit the event."
 
 #: ../../settings_kb/interface/forms/form_builder.rst:207
 msgid "—"
@@ -472,26 +470,32 @@ msgstr "—"
 
 #: ../../settings_kb/interface/forms/form_builder.rst:209
 msgid ""
+"Внешнее руководство Form.io может описывать интерфейс другой версии "
+"движка. Состав настроек в Citeck зависит от компонента и доработок "
+"платформы."
+msgstr "The external Form.io guide may describe another engine version. Citeck settings depend on the component and platform customizations."
+
+#: ../../settings_kb/interface/forms/form_builder.rst:211
+msgid ""
 "Доступны следующие действия, которые могут быть выполнены при активации "
 "условия:"
 msgstr ""
 "The following actions are available that can be performed when the "
 "condition is activated:"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:217
+#: ../../settings_kb/interface/forms/form_builder.rst:219
 msgid "Действие"
 msgstr "Action"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:219
+#: ../../settings_kb/interface/forms/form_builder.rst:221
 msgid "**Свойство**"
 msgstr "**Property**"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:220
-msgid "Изменение настроек поля (видимость, обязательность, текст подписи и др.)."
-msgstr ""
-"Changing field settings (visibility, mandatory status, label text, etc.)."
-
 #: ../../settings_kb/interface/forms/form_builder.rst:222
+msgid "Изменение настроек поля (видимость, обязательность, текст подписи и др.)."
+msgstr "Changing field settings (visibility, mandatory status, label text, etc.)."
+
+#: ../../settings_kb/interface/forms/form_builder.rst:224
 msgid ""
 "Динамическое обновление данных с помощью JavaScript (доступны переменные "
 "``row``, ``data``, ``component``, ``result``)."
@@ -499,29 +503,27 @@ msgstr ""
 "Dynamic data update using JavaScript (variables ``row``, ``data``, "
 "``component``, ``result`` are available)."
 
-#: ../../settings_kb/interface/forms/form_builder.rst:223
+#: ../../settings_kb/interface/forms/form_builder.rst:225
 msgid "**Валидация**"
 msgstr "**Validation**"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:224
+#: ../../settings_kb/interface/forms/form_builder.rst:226
 msgid "Настройка правил проверки данных формы в зависимости от условий."
-msgstr ""
-"Configuring form data validation rules depending on conditions."
+msgstr "Configuring form data validation rules depending on conditions."
 
-#: ../../settings_kb/interface/forms/form_builder.rst:227
+#: ../../settings_kb/interface/forms/form_builder.rst:229
 msgid "Шаблон элемента"
 msgstr "Element Template"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:229
+#: ../../settings_kb/interface/forms/form_builder.rst:231
 msgid "Отвечает за дополнительные атрибуты, которые могут быть добавлены в форму."
-msgstr ""
-"Responsible for additional attributes that can be added to the form."
+msgstr "Responsible for additional attributes that can be added to the form."
 
-#: ../../settings_kb/interface/forms/form_builder.rst:232
+#: ../../settings_kb/interface/forms/form_builder.rst:234
 msgid "Настройки макета"
 msgstr "Layout Settings"
 
-#: ../../settings_kb/interface/forms/form_builder.rst:234
+#: ../../settings_kb/interface/forms/form_builder.rst:236
 msgid ""
 "Можно изменить расположение компонентов на форме, используя "
 "HTML-атрибуты. Например, отступы сверху, снизу, слева и справа. Величины "
@@ -530,10 +532,10 @@ msgid ""
 "образом в зависимости от того, какие поля отступов вы настроите."
 msgstr ""
 "You can change the arrangement of components on the form using HTML "
-"attributes. For example, top, bottom, left, and right padding. The "
-"values must be entered in a valid CSS format (e.g., 10px) to display "
-"correctly. The components will be arranged accordingly depending on "
-"which padding fields you configure."
+"attributes. For example, top, bottom, left, and right padding. The values"
+" must be entered in a valid CSS format (e.g., 10px) to display correctly."
+" The components will be arranged accordingly depending on which padding "
+"fields you configure."
 
 #~ msgid ""
 #~ "Конструктор форм позволяет моделировать формы"
@@ -568,3 +570,39 @@ msgstr ""
 #~ msgid "Основные вкладки, используемые для настройки:"
 #~ msgstr "Main tabs used for configuration:"
 
+#~ msgid ""
+#~ "Каждая новая форма начинается с "
+#~ "автоматически добавленных кнопок и текстового"
+#~ " поля, которые могут быть удалены или"
+#~ " отредактированы по мере необходимости."
+#~ msgstr ""
+#~ "Each new form starts with automatically"
+#~ " added buttons and a text field, "
+#~ "which can be deleted or edited as"
+#~ " needed."
+
+#~ msgid ""
+#~ "При вводе имени свойства появляется "
+#~ "выпадающий список атрибутов типа данных, "
+#~ "для которого форма создается (при "
+#~ "наличии частичного совпадения имен). Это "
+#~ "позволяет понять, какие имена уже "
+#~ "заняты, чтобы не привести к ошибке "
+#~ "при создании или редактировании формы."
+#~ msgstr ""
+#~ "When entering a property name, a "
+#~ "dropdown list of attributes from the "
+#~ "data type for which the form is"
+#~ " being created appears (if there is"
+#~ " a partial name match). This helps"
+#~ " to understand which names are "
+#~ "already taken to avoid errors when "
+#~ "creating or editing the form."
+
+#~ msgid "данные как в заголовке ``%prefix%_%localName%``, например ``initiator``"
+#~ msgstr ""
+#~ "data as in the title "
+#~ "``%prefix%_%localName%``, for example ``initiator``"
+
+#~ msgid "Предназначен для создания пользовательских событий в форме."
+#~ msgstr "Designed for creating custom events in the form."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -94,12 +94,8 @@ msgid "**Id**"
 msgstr "**Id**"
 
 #: ../../settings_kb/data_types/data_types_associations.rst
-msgid ""
-"идентификатор связи. Обязательное поле (если не заполнено, то сервер "
-"такую связь не сохраняет)."
-msgstr ""
-"association identifier. Required field (if not filled in, the server does"
-" not save the association)."
+msgid "идентификатор связи. Обязательное поле в форме настройки."
+msgstr "Relationship identifier. Required in the configuration form."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid "Это поле нужно для:"
@@ -107,20 +103,16 @@ msgstr "This field is used for:"
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
-"1. Перезаписывания конфигурации связи в дочернем типе. Т.е. если мы в "
-"дочернем типе укажем тот же ID, то по сути перезатрем конфигурацию связи"
-msgstr ""
-"1. Overriding the association configuration in a child type. That is, if "
-"the same ID is specified in a child type, the association configuration "
-"will effectively be overwritten."
+"1. Переопределения конфигурации связи в дочернем типе. При совпадении ID "
+"пустые поля «Атрибут», «Связанный тип», «Имя» и незаданный признак "
+"дочерней связи дозаполняются из родительской конфигурации."
+msgstr "1. Overriding relationship configuration in a child type. With matching IDs, empty \"Attribute\", \"Related type\", \"Name\" and an unspecified child relationship flag are filled from the parent configuration."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
-"2. Указания атрибута, в котором связь сохранится (если не задано значение"
-" в поле \"Атрибут\")"
-msgstr ""
-"2. Specifying the attribute in which the association will be stored (if "
-"no value is set in the \"Attribute\" field)."
+"2. Указания атрибута хранения, если поле «Атрибут» пустое и атрибут не "
+"задан в родительской связи."
+msgstr "2. Specifying the storage attribute when \"Attribute\" is empty and the parent relationship does not specify one."
 
 #: ../../settings_kb/data_types/data_types_associations.rst:42
 msgid "2"
@@ -144,15 +136,16 @@ msgstr "**Attribute**"
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid "в который новые связи будут добавляться и из которого будут загружаться."
-msgstr "the attribute to which new associations will be added and from which they will be loaded."
+msgstr ""
+"the attribute to which new associations will be added and from which they"
+" will be loaded."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
-"Как правило это ассоциация из вкладки :guilabel:`Атрибуты`. Если не "
-"задано то используется значение поля ID."
-msgstr ""
-"This is typically an association from the :guilabel:`Attributes` tab. If "
-"not set, the ID field value is used."
+"Как правило это ассоциация из вкладки :guilabel:`Атрибуты`. Если поле "
+"пустое, используется атрибут родительской связи с тем же ID; если его нет"
+" — значение ID."
+msgstr "Usually an association from the :guilabel:`Attributes` tab. If empty, the parent relationship attribute with the same ID is used; otherwise, the ID value."
 
 #: ../../settings_kb/data_types/data_types_associations.rst:49
 msgid "4"
@@ -172,23 +165,16 @@ msgstr ""
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
-"- **SOURCE** - обратная к **TARGET** связь у источника. При открытии "
-"карточки **TARGET** мы увидим нашу связь. При открытии карточки "
-"**SOURCE** мы ничего не увидим."
-msgstr ""
-"- **SOURCE** - the reverse of the **TARGET** association at the source. "
-"When opening the **TARGET** card, we will see our association. When "
-"opening the **SOURCE** card, we will see nothing."
+"- **SOURCE** - на карточке цели **TARGET** отображаются исходные "
+"документы **SOURCE**, ссылающиеся на неё."
+msgstr "- **SOURCE** — the **TARGET** card displays **SOURCE** documents referencing it."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
-"- **TARGET** - связь отображается только у документа, который хотим "
-"привязать. При открытии карточки **TARGET** мы ничего не увидим. При "
-"открытии карточки **SOURCE** мы увидим нашу связь."
-msgstr ""
-"- **TARGET** - the association is displayed only on the document we want "
-"to link. When opening the **TARGET** card, we will see nothing. When "
-"opening the **SOURCE** card, we will see our association."
+"- **TARGET** - на карточке источника **SOURCE** отображаются связанные "
+"целевые документы **TARGET**. Эта настройка сама по себе не добавляет "
+"отображение обратной связи на карточке **TARGET**."
+msgstr "- **TARGET** — the **SOURCE** card displays related **TARGET** documents. This setting alone does not display the reverse relationship on the **TARGET** card."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
 msgid ""
@@ -239,18 +225,42 @@ msgid "загрузка списка журналов из типа данных
 msgstr "loads the list of journals from the data type."
 
 #: ../../settings_kb/data_types/data_types_associations.rst
-msgid "Возможные значения — null, true, false."
-msgstr "Possible values — null, true, false."
+msgid ""
+"При **false** используется явно заданный список журналов. При **null** и "
+"непустом явном списке используется этот список."
+msgstr "With **false**, the explicit journal list is used. With **null** and a nonempty explicit list, that list is used."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:69
+#: ../../settings_kb/data_types/data_types_associations.rst
+msgid ""
+"В остальных случаях система ищет журнал целевого типа, затем, если он не "
+"задан, журналы его потомков."
+msgstr "Otherwise, the system looks for the target type journal, then, if absent, its descendants' journals."
+
+#: ../../settings_kb/data_types/data_types_associations.rst:70
+msgid ""
+"Если связанный тип не задан и не может быть получен из родительской связи"
+" или конфигурации атрибута ASSOC, связь исключается из итоговой "
+"конфигурации. Для обычной, не дочерней связи также требуется непустой "
+"результирующий список журналов."
+msgstr "If the related type is unspecified and cannot be obtained from the parent relationship or ASSOC attribute configuration, the relationship is excluded from the effective configuration. Ordinary non-child relationships also require a nonempty resulting journal list."
+
+#: ../../settings_kb/data_types/data_types_associations.rst:72
+msgid ""
+"Для дочерней связи список журналов очищается, а загрузка журналов из "
+"целевого типа отключается. Признак дочерней связи и целевой тип могут "
+"быть получены из настроек атрибута ASSOC, если они не заданы в "
+"конфигурации связи или её родителе."
+msgstr "For child relationships, the journal list is cleared and loading journals from the target type is disabled. The child flag and target type may come from ASSOC attribute settings if unspecified in the relationship or its parent."
+
+#: ../../settings_kb/data_types/data_types_associations.rst:74
 msgid "Пример:"
 msgstr "Example:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:76
+#: ../../settings_kb/data_types/data_types_associations.rst:81
 msgid "Связь документа с простой ссылкой"
 msgstr "Associating a document with a simple link"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:78
+#: ../../settings_kb/data_types/data_types_associations.rst:83
 msgid ""
 "Для добавления возможности связать документ с простой ссылкой (**Id** - "
 "webLinks, **Направление связи** - Target):"
@@ -258,11 +268,11 @@ msgstr ""
 "To add the ability to associate a document with a simple link (**Id** - "
 "webLinks, **Association direction** - Target):"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:87
+#: ../../settings_kb/data_types/data_types_associations.rst:92
 msgid "Связь в обе стороны"
 msgstr "Bidirectional association"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:89
+#: ../../settings_kb/data_types/data_types_associations.rst:94
 msgid ""
 "Для связи в обе стороны необходимо, чтобы у источника ассоциации и у цели"
 " ассоциации была настроена ассоциация в типе с одним ID."
@@ -270,35 +280,35 @@ msgstr ""
 "For a bidirectional association, both the source and the target must have"
 " an association configured in their type with the same ID."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:108
+#: ../../settings_kb/data_types/data_types_associations.rst
 msgid "Простой пример настройки связей"
 msgstr "Simple example of configuring associations"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:110
+#: ../../settings_kb/data_types/data_types_associations.rst:114
 msgid "Создадим 2 типа данных:"
 msgstr "Let's create 2 data types:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:112
+#: ../../settings_kb/data_types/data_types_associations.rst:116
 msgid "**Sons**:"
 msgstr "**Sons**:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:132
+#: ../../settings_kb/data_types/data_types_associations.rst:133
 msgid "**Dad**:"
 msgstr "**Dad**:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst
+#: ../../settings_kb/data_types/data_types_associations.rst:150
 msgid "**Son** зададим ассоциацией:"
 msgstr "We will define **Son** as an association:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:157
+#: ../../settings_kb/data_types/data_types_associations.rst:156
 msgid "Заполним журнал **Sons** элементами:"
 msgstr "Let's populate the **Sons** journal with entries:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:163
+#: ../../settings_kb/data_types/data_types_associations.rst:162
 msgid "Заполним **Dad** - добавим к нему **sons**:"
 msgstr "Let's fill in **Dad** — add **sons** to it:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:169
+#: ../../settings_kb/data_types/data_types_associations.rst:168
 msgid ""
 "**Случай 1.** Чтобы **у Dad в виджете «Связи» отображались Sons.** Для "
 "этого необходимо:"
@@ -306,22 +316,24 @@ msgstr ""
 "**Case 1.** So that **Sons are displayed in the \"Associations\" widget "
 "on Dad's card.** To do this:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:171
+#: ../../settings_kb/data_types/data_types_associations.rst:170
 msgid "Перейти в тип данных **Dad** во вкладку **«Связи»**, настроить:"
-msgstr "Go to the **Dad** data type, open the **\"Associations\"** tab, and configure:"
+msgstr ""
+"Go to the **Dad** data type, open the **\"Associations\"** tab, and "
+"configure:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:177
-#: ../../settings_kb/data_types/data_types_associations.rst:203
+#: ../../settings_kb/data_types/data_types_associations.rst:176
+#: ../../settings_kb/data_types/data_types_associations.rst:200
 msgid "**Идентификатор связи.**"
 msgstr "**Association identifier.**"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:178
-#: ../../settings_kb/data_types/data_types_associations.rst:204
+#: ../../settings_kb/data_types/data_types_associations.rst:177
+#: ../../settings_kb/data_types/data_types_associations.rst:201
 msgid "**Наименование связи**, которое будет использоваться в виджете."
 msgstr "**Association name** that will be displayed in the widget."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:179
-#: ../../settings_kb/data_types/data_types_associations.rst:205
+#: ../../settings_kb/data_types/data_types_associations.rst:178
+#: ../../settings_kb/data_types/data_types_associations.rst:202
 msgid ""
 "**Атрибут**, в который новые связи будут добавляться и из которого будут "
 "загружаться."
@@ -329,16 +341,16 @@ msgstr ""
 "**Attribute** to which new associations will be added and from which they"
 " will be loaded."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:180
+#: ../../settings_kb/data_types/data_types_associations.rst:179
 msgid ""
 "**Направление связи.** **Source** является **Dad**, **target**, "
 "соответственно, **Sons**."
 msgstr ""
-"**Association direction.** **Source** is **Dad**, **target** is "
-"**Sons**, respectively."
+"**Association direction.** **Source** is **Dad**, **target** is **Sons**,"
+" respectively."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:181
-#: ../../settings_kb/data_types/data_types_associations.rst:207
+#: ../../settings_kb/data_types/data_types_associations.rst:180
+#: ../../settings_kb/data_types/data_types_associations.rst:204
 msgid ""
 "**Тип данных.** Для добавления элементов в виджете по нажатию **+**, и "
 "правильного отображения столбцов в нем."
@@ -346,30 +358,85 @@ msgstr ""
 "**Data type.** For adding elements in the widget by clicking **+** and "
 "for correct column display in it."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:183
+#: ../../settings_kb/data_types/data_types_associations.rst:182
 msgid "Перейти в журнал **Dad**, открыть карточку:"
 msgstr "Go to the **Dad** journal and open a card:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:195
+#: ../../settings_kb/data_types/data_types_associations.rst:192
 msgid ""
 "**Случай 2.** Чтобы **у каждого Son в виджете «Связи» отображался его "
 "Dad.** Для этого необходимо:"
 msgstr ""
-"**Case 2.** So that **each Son's card shows his Dad in the \"Associations\""
-" widget.** To do this:"
+"**Case 2.** So that **each Son's card shows his Dad in the "
+"\"Associations\" widget.** To do this:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:197
+#: ../../settings_kb/data_types/data_types_associations.rst:194
 msgid "Перейти в тип данных **Sons** во вкладку **«Связи»**, настроить:"
-msgstr "Go to the **Sons** data type, open the **\"Associations\"** tab, and configure:"
+msgstr ""
+"Go to the **Sons** data type, open the **\"Associations\"** tab, and "
+"configure:"
 
-#: ../../settings_kb/data_types/data_types_associations.rst:206
+#: ../../settings_kb/data_types/data_types_associations.rst:203
 msgid ""
 "**Направление связи.** **Source** является **Son**, **target**, "
 "соответственно, **Dad**."
 msgstr ""
-"**Association direction.** **Source** is **Son**, **target** is **Dad**,"
-" respectively."
+"**Association direction.** **Source** is **Son**, **target** is **Dad**, "
+"respectively."
 
-#: ../../settings_kb/data_types/data_types_associations.rst:209
+#: ../../settings_kb/data_types/data_types_associations.rst:206
 msgid "Перейти в журнал **Sons**, открыть карточку:"
 msgstr "Go to the **Sons** journal and open a card:"
+
+#~ msgid ""
+#~ "1. Перезаписывания конфигурации связи в "
+#~ "дочернем типе. Т.е. если мы в "
+#~ "дочернем типе укажем тот же ID, то"
+#~ " по сути перезатрем конфигурацию связи"
+#~ msgstr ""
+#~ "1. Overriding the association configuration"
+#~ " in a child type. That is, if"
+#~ " the same ID is specified in a"
+#~ " child type, the association configuration"
+#~ " will effectively be overwritten."
+
+#~ msgid ""
+#~ "2. Указания атрибута, в котором связь"
+#~ " сохранится (если не задано значение "
+#~ "в поле \"Атрибут\")"
+#~ msgstr ""
+#~ "2. Specifying the attribute in which "
+#~ "the association will be stored (if "
+#~ "no value is set in the "
+#~ "\"Attribute\" field)."
+
+#~ msgid ""
+#~ "- **SOURCE** - обратная к **TARGET** "
+#~ "связь у источника. При открытии карточки"
+#~ " **TARGET** мы увидим нашу связь. При"
+#~ " открытии карточки **SOURCE** мы ничего "
+#~ "не увидим."
+#~ msgstr ""
+#~ "- **SOURCE** - the reverse of the"
+#~ " **TARGET** association at the source. "
+#~ "When opening the **TARGET** card, we "
+#~ "will see our association. When opening"
+#~ " the **SOURCE** card, we will see "
+#~ "nothing."
+
+#~ msgid ""
+#~ "- **TARGET** - связь отображается только"
+#~ " у документа, который хотим привязать. "
+#~ "При открытии карточки **TARGET** мы "
+#~ "ничего не увидим. При открытии карточки"
+#~ " **SOURCE** мы увидим нашу связь."
+#~ msgstr ""
+#~ "- **TARGET** - the association is "
+#~ "displayed only on the document we "
+#~ "want to link. When opening the "
+#~ "**TARGET** card, we will see nothing."
+#~ " When opening the **SOURCE** card, we"
+#~ " will see our association."
+
+#~ msgid "Возможные значения — null, true, false."
+#~ msgstr "Possible values — null, true, false."

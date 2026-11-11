@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 12:20+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -57,8 +57,8 @@ msgid "расположение артефактов в файловой стр�
 msgstr "artifact location in the project file structure;"
 
 #: ../../settings_kb/ecos_artifacts.rst:17
-msgid "полный список типов артефактов по микросервисам;"
-msgstr "full list of artifact types by microservice;"
+msgid "основные типы артефактов по микросервисам;"
+msgstr "Main artifact types by microservice;"
 
 #: ../../settings_kb/ecos_artifacts.rst:18
 msgid "переопределение артефактов и патчи;"
@@ -88,16 +88,12 @@ msgstr ""
 
 #: ../../settings_kb/ecos_artifacts.rst:27
 msgid ""
-":ref:`Микросервис ecos-apps<apps_service>` управляет артефактами, ведя их"
-" версионность и доставляя их до целевого микросервиса. Контент артефактов"
-" в системе неизменяемый и при любом изменении артефакта всегда создается "
-"новая версия, а старая сохраняется в списке версий."
-msgstr ""
-":ref:`Microservice ecos-apps<apps_service>` manages artifacts, "
-"maintaining their versioning and delivering them to the target "
-"microservice. Artifact content in the system is immutable, and any change"
-" to an artifact always creates a new version, while the old one is "
-"preserved in the version list."
+":ref:`Микросервис ecos-apps<apps_service>` управляет артефактами, ведёт "
+"их версионность и доставляет до целевого микросервиса. Изменения "
+"сохраняются новыми ревизиями со ссылкой на предыдущие. Повторная загрузка"
+" того же содержимого из того же типа источника не создаёт новую обычную "
+"ревизию; перед созданием также проверяется политика источника."
+msgstr "The :ref:`ecos-apps microservice<apps_service>` manages, versions and delivers artifacts to target microservices. Changes create revisions linked to previous ones. Uploading identical content from the same source type creates no new ordinary revision; the source policy is also checked beforehand."
 
 #: ../../settings_kb/ecos_artifacts.rst:29
 msgid ""
@@ -194,12 +190,11 @@ msgstr "Journal \"ECOS Artifacts\""
 #: ../../settings_kb/ecos_artifacts.rst:51
 msgid ""
 "Для управления :ref:`артефактами<ecos_artifacts>` предусмотрен журнал "
-"**Артефакты ECOS**. В данный журнал попадают все артефакты, которые "
-"достигли микросервиса ``ecos-apps``."
-msgstr ""
-"A journal **ECOS Artifacts** is provided for managing "
-":ref:`artifacts<ecos_artifacts>`. This journal includes all artifacts "
-"that have reached the ``ecos-apps`` microservice."
+"**Артефакты ECOS**. Он показывает артефакты невнутренних типов с "
+"сохранённой ревизией, которые не удалены и относятся к доступным "
+"пользователю рабочим пространствам. По умолчанию действует дополнительный"
+" фильтр ``system = false``, скрывающий системные артефакты."
+msgstr "The **ECOS artifacts** journal manages :ref:`artifacts<ecos_artifacts>`. It displays undeleted artifacts of noninternal types with saved revisions in accessible workspaces. A default ``system = false`` filter also hides system artifacts."
 
 #: ../../settings_kb/ecos_artifacts.rst:53
 msgid ""
@@ -225,43 +220,46 @@ msgstr ""
 
 #: ../../settings_kb/ecos_artifacts.rst:65
 msgid ""
-"При сабмите формы скачивается **zip** архив со всеми версиями артефакта с"
-" указанной даты."
-msgstr ""
-"Upon form submission, a **zip** archive is downloaded containing all "
-"versions of the artifact from the specified date."
+"При отправке формы скачивается **zip** с не более чем **1000 последними "
+"ревизиями**, созданными строго после указанного момента, в порядке от "
+"новых к старым."
+msgstr "Submitting the form downloads a **ZIP** with at most the **1000 latest revisions** created strictly after the specified time, newest first."
 
 #: ../../settings_kb/ecos_artifacts.rst:66
 msgid ""
-"Если последний артефакт был загружен ранее чем выбранная дата, то будет "
-"выгружен только он (т.е. всегда будет как минимум 1 артефакт)."
-msgstr ""
-"If the last artifact was uploaded earlier than the selected date, only it"
-" will be downloaded (i.e., there will always be at least 1 artifact)."
+"Если подходящих ревизий нет, выгружается последняя доступная ревизия. Для"
+" этого артефакт должен существовать, иметь ревизию и известный системе "
+"тип."
+msgstr "If no revisions match, the latest available revision is exported. The artifact must exist, have a revision and a known type."
 
 #: ../../settings_kb/ecos_artifacts.rst:67
 msgid ""
-"Формат имени папки с версией артефакта: "
-"**дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]**. Дата "
-"создания указывается в часовом поясе UTC."
-msgstr ""
-"The folder name format for the artifact version: "
-"**creation_dateTcreation_timeZ-[USER | APPLICATION | ECOS_APP]**. The "
-"creation date is specified in UTC timezone."
+"Имя папки строится из момента создания в UTC и типа источника. Для "
+"активной ревизии добавляется суффикс **ACTIVE**. Все символы, кроме "
+"латинских букв, цифр, ``_`` и ``-``, заменяются на ``-`` — в том числе "
+"двоеточия и точка в записи времени."
+msgstr "The folder name combines UTC creation time and source type. **ACTIVE** is appended for the active revision. All characters except Latin letters, digits, ``_`` and ``-`` become ``-``, including colons and the timestamp decimal point."
 
-#: ../../settings_kb/ecos_artifacts.rst:73
+#: ../../settings_kb/ecos_artifacts.rst:68
+msgid ""
+"Помимо **USER**, **APPLICATION** и **ECOS_APP**, в истории может "
+"встречаться **PATCH** — результирующая ревизия после наложения патчей. "
+"Это не отдельный источник пользовательской загрузки."
+msgstr "Besides **USER**, **APPLICATION** and **ECOS_APP**, history may contain **PATCH**, the resulting revision after patches are applied. This is not a separate user upload source."
+
+#: ../../settings_kb/ecos_artifacts.rst:74
 msgid "**2. Скачать артефакт**"
 msgstr "**2. Download Artifact**"
 
-#: ../../settings_kb/ecos_artifacts.rst:75
+#: ../../settings_kb/ecos_artifacts.rst:76
 msgid "Всегда скачивается *zip* архив с выбранным артефактом."
 msgstr "Always downloads a *zip* archive with the selected artifact."
 
-#: ../../settings_kb/ecos_artifacts.rst:77
+#: ../../settings_kb/ecos_artifacts.rst:78
 msgid "**3. Передеплоить артефакт вручную**"
 msgstr "**3. Redeploy Artifact Manually**"
 
-#: ../../settings_kb/ecos_artifacts.rst:79
+#: ../../settings_kb/ecos_artifacts.rst:80
 msgid ""
 "Отправить артефакт из ``ecos-apps`` в микросервис. Может быть полезно при"
 " разработке или после сбоя в базе целевого микросервиса т.е. ``ecos-"
@@ -272,33 +270,38 @@ msgstr ""
 "database, i.e., ``ecos-apps`` does not pass the artifact if it was "
 "previously successfully deployed."
 
-#: ../../settings_kb/ecos_artifacts.rst:81
+#: ../../settings_kb/ecos_artifacts.rst:82
 msgid "**4. Сбросить пользовательскую версию артефакта**"
 msgstr "**4. Reset User Version of Artifact**"
 
-#: ../../settings_kb/ecos_artifacts.rst:83
+#: ../../settings_kb/ecos_artifacts.rst:84
 msgid ""
-"Сброс происходит до той версии, которая была установлена из приложения "
-"(``APPLICATION`` или ``ECOS_APP``). Сбрасывать можно только артефакты, "
-"которые в колонке :guilabel:`Тип источника` имеют **USER**."
-msgstr ""
-"The reset reverts to the version that was installed from the application "
-"(``APPLICATION`` or ``ECOS_APP``). Only artifacts that have **USER** in "
-"the :guilabel:`Source Type` column can be reset."
+"Сброс доступен, если текущая обычная ревизия имеет источник **USER** и в "
+"её истории есть предыдущая непользовательская ревизия, например "
+"**APPLICATION** или **ECOS_APP**. Если история состоит только из USER, "
+"сброс не выполняется."
+msgstr "Reset is available if the current ordinary revision has source **USER** and its history contains an earlier nonuser revision, such as **APPLICATION** or **ECOS_APP**. History consisting only of USER cannot be reset."
 
 #: ../../settings_kb/ecos_artifacts.rst:86
+msgid ""
+"Операция создаёт новую ревизию с содержимым и источником найденной "
+"базовой версии, очищает результат наложения патчей и переводит артефакт в"
+" состояние ожидания деплоя. Пользовательские ревизии остаются в истории."
+msgstr "The operation creates a revision with the base version's content and source, clears patch results and marks the artifact as awaiting deployment. User revisions remain in history."
+
+#: ../../settings_kb/ecos_artifacts.rst:89
 msgid "Источники артефактов"
 msgstr "Artifact Sources"
 
-#: ../../settings_kb/ecos_artifacts.rst:88
+#: ../../settings_kb/ecos_artifacts.rst:91
 msgid "Есть 3 возможных источника артефактов:"
 msgstr "There are 3 possible artifact sources:"
 
-#: ../../settings_kb/ecos_artifacts.rst:90
+#: ../../settings_kb/ecos_artifacts.rst:93
 msgid "**USER** - артефакт добавляет или модифицирует пользователь;"
 msgstr "**USER** - the artifact is added or modified by a user;"
 
-#: ../../settings_kb/ecos_artifacts.rst:91
+#: ../../settings_kb/ecos_artifacts.rst:94
 msgid ""
 "**APPLICATION** - артефакт загружается из приложений, которые подключены "
 "к интерфейсу команд;"
@@ -306,27 +309,25 @@ msgstr ""
 "**APPLICATION** - the artifact is loaded from applications connected to "
 "the command interface;"
 
-#: ../../settings_kb/ecos_artifacts.rst:92
+#: ../../settings_kb/ecos_artifacts.rst:95
 msgid "**ECOS_APP** - артефакт загружается из приложения Citeck;"
 msgstr "**ECOS_APP** - the artifact is loaded from the Citeck application;"
 
-#: ../../settings_kb/ecos_artifacts.rst:95
+#: ../../settings_kb/ecos_artifacts.rst:98
 msgid "Обновление артефактов"
 msgstr "Artifact Updates"
 
-#: ../../settings_kb/ecos_artifacts.rst:97
+#: ../../settings_kb/ecos_artifacts.rst:100
 msgid "Все 3 источника имеют свою политику по обновлению артефактов:"
 msgstr "All 3 sources have their own policy for updating artifacts:"
 
-#: ../../settings_kb/ecos_artifacts.rst:99
+#: ../../settings_kb/ecos_artifacts.rst:102
 msgid ""
-"**USER** - Артефакт обновляется безусловно. Любое изменение артефакта "
-"приводит к его изменению в базе микросервиса ``ecos-apps``."
-msgstr ""
-"**USER** - The artifact is updated unconditionally. Any change to the "
-"artifact leads to its change in the ``ecos-apps`` microservice database."
+"**USER** - политика источника разрешает загрузку безусловно. Общие "
+"проверки прав и совпадения содержимого выполняются отдельно."
+msgstr "**USER** — the source policy permits uploads unconditionally. General permission and content equality checks run separately."
 
-#: ../../settings_kb/ecos_artifacts.rst:101
+#: ../../settings_kb/ecos_artifacts.rst:104
 msgid ""
 "**APPLICATION** - Артефакт обновляется если он не принадлежит никакому "
 "приложению Citeck и была загружена версия артефакта, которая отличается "
@@ -338,22 +339,22 @@ msgstr ""
 "differs from the previous one loaded from ``APPLICATION``. Example: If we"
 " have the following artifact revisions:"
 
-#: ../../settings_kb/ecos_artifacts.rst:103
-#: ../../settings_kb/ecos_artifacts.rst:114
+#: ../../settings_kb/ecos_artifacts.rst:106
+#: ../../settings_kb/ecos_artifacts.rst:117
 msgid "**rev2** USER"
 msgstr "**rev2** USER"
 
-#: ../../settings_kb/ecos_artifacts.rst:104
-#: ../../settings_kb/ecos_artifacts.rst:115
+#: ../../settings_kb/ecos_artifacts.rst:107
+#: ../../settings_kb/ecos_artifacts.rst:118
 msgid "**rev1** USER"
 msgstr "**rev1** USER"
 
-#: ../../settings_kb/ecos_artifacts.rst:105
-#: ../../settings_kb/ecos_artifacts.rst:116
+#: ../../settings_kb/ecos_artifacts.rst:108
+#: ../../settings_kb/ecos_artifacts.rst:119
 msgid "**rev0** APPLICATION"
 msgstr "**rev0** APPLICATION"
 
-#: ../../settings_kb/ecos_artifacts.rst:107
+#: ../../settings_kb/ecos_artifacts.rst:110
 msgid ""
 "То **rev0** - самая первая версия артефакта, а **rev2** - самая последняя"
 " версия артефакта. Мы видим, что первая версия артефакта поступила из "
@@ -363,7 +364,7 @@ msgstr ""
 "the latest version. We see that the first version came from an "
 "application and the other two from a user."
 
-#: ../../settings_kb/ecos_artifacts.rst:109
+#: ../../settings_kb/ecos_artifacts.rst:112
 msgid ""
 "Если в такой ситуации в микросервис приходит версия **rev0** от "
 "APPLICATION, то ничего не поменяется не смотря на то что **rev2** != "
@@ -372,7 +373,7 @@ msgstr ""
 "If in this situation version **rev0** from APPLICATION arrives at the "
 "microservice, nothing will change even though **rev2** != **rev0**."
 
-#: ../../settings_kb/ecos_artifacts.rst:111
+#: ../../settings_kb/ecos_artifacts.rst:114
 msgid ""
 "Если из приложения придет **rev3**, то новая ревизия загрузится и станет "
 "актуальной:"
@@ -380,29 +381,28 @@ msgstr ""
 "If **rev3** comes from the application, the new revision will be loaded "
 "and become current:"
 
-#: ../../settings_kb/ecos_artifacts.rst:113
+#: ../../settings_kb/ecos_artifacts.rst:116
 msgid "**rev3** APPLICATION"
 msgstr "**rev3** APPLICATION"
 
-#: ../../settings_kb/ecos_artifacts.rst:118
-msgid ""
-"**ECOS_APP** - обновляется аналогично APPLICATION, но при загрузке "
-"артефакту проставляется признак принадлежности приложению. Если артефакт "
-"принадлежит приложению, то он не обновляется из APPLICATION."
-msgstr ""
-"**ECOS_APP** - updated similarly to APPLICATION, but upon loading, the "
-"artifact is marked as belonging to an application. If an artifact belongs"
-" to an application, it is not updated from APPLICATION."
-
 #: ../../settings_kb/ecos_artifacts.rst:121
+msgid ""
+"**ECOS_APP** - при отсутствии владельца загрузка разрешается; артефакт "
+"связывается с приложением. Если владелец уже задан, обновление "
+"допускается только из того же приложения и при отличии от последней "
+"ревизии источников ECOS_APP/APPLICATION. Из APPLICATION или другого ECOS "
+"App такой артефакт не обновляется."
+msgstr "**ECOS_APP** — upload is allowed without an owner, and the artifact is linked to the application. With an existing owner, updates are accepted only from the same application and when differing from the latest ECOS_APP/APPLICATION revision. APPLICATION or another ECOS App cannot update such artifacts."
+
+#: ../../settings_kb/ecos_artifacts.rst:124
 msgid "Расположение артефактов"
 msgstr "Artifact Location"
 
-#: ../../settings_kb/ecos_artifacts.rst:123
+#: ../../settings_kb/ecos_artifacts.rst:126
 msgid "Все артефакты располагаются в директориях, которые соответствуют типу."
 msgstr "All artifacts are located in directories corresponding to their type."
 
-#: ../../settings_kb/ecos_artifacts.rst:125
+#: ../../settings_kb/ecos_artifacts.rst:128
 msgid ""
 "В приложении настраивается корневая папка с артефактами и в ней можно "
 "создавать подпапки ``ui/form``, ``model/type`` и тд."
@@ -411,7 +411,7 @@ msgstr ""
 "subfolders like ``ui/form``, ``model/type``, etc., can be created within "
 "it."
 
-#: ../../settings_kb/ecos_artifacts.rst:127
+#: ../../settings_kb/ecos_artifacts.rst:130
 msgid ""
 "По умолчанию корневой папкой с артефактами для приложения Citeck - "
 "``src/main/resources/app/artifacts``, для микросервиса -  "
@@ -421,46 +421,45 @@ msgstr ""
 "``src/main/resources/app/artifacts``, and for a microservice it is "
 "``src/main/resources/eapps/artifacts``"
 
-#: ../../settings_kb/ecos_artifacts.rst:132
+#: ../../settings_kb/ecos_artifacts.rst:135
 msgid "Приложение Citeck"
 msgstr "Citeck Application"
 
-#: ../../settings_kb/ecos_artifacts.rst:138
+#: ../../settings_kb/ecos_artifacts.rst:141
 msgid "Микросервис Citeck"
 msgstr "Citeck Microservice"
 
-#: ../../settings_kb/ecos_artifacts.rst:144
+#: ../../settings_kb/ecos_artifacts.rst:147
 msgid "Например, для **ECOS приложения Поручения**, структура папки следующая:"
 msgstr ""
 "For example, for the **ECOS Assignments application**, the folder "
 "structure is as follows:"
 
-#: ../../settings_kb/ecos_artifacts.rst:152
+#: ../../settings_kb/ecos_artifacts.rst:155
 msgid "Типы артефактов"
 msgstr "Artifact Types"
 
 #: ../../settings_kb/ecos_artifacts.rst
-msgid "Полный список типов артефактов по микросервисам"
-msgstr "Full list of artifact types by microservice"
+msgid "Основные типы артефактов по микросервисам"
+msgstr "Main artifact types by microservice"
 
-#: ../../settings_kb/ecos_artifacts.rst:163
-#: ../../settings_kb/ecos_artifacts.rst:588
+#: ../../settings_kb/ecos_artifacts.rst:166
+#: ../../settings_kb/ecos_artifacts.rst:590
 msgid "Тип"
 msgstr "Type"
 
-#: ../../settings_kb/ecos_artifacts.rst:164
+#: ../../settings_kb/ecos_artifacts.rst:167
 msgid "Микросервис"
 msgstr "Microservice"
 
-#: ../../settings_kb/ecos_artifacts.rst:165
+#: ../../settings_kb/ecos_artifacts.rst:168
 msgid "Примечание"
 msgstr "Note"
 
-#: ../../settings_kb/ecos_artifacts.rst:166
+#: ../../settings_kb/ecos_artifacts.rst:169
 msgid "model/aspect"
 msgstr "model/aspect"
 
-#: ../../settings_kb/ecos_artifacts.rst:167
 #: ../../settings_kb/ecos_artifacts.rst:170
 #: ../../settings_kb/ecos_artifacts.rst:173
 #: ../../settings_kb/ecos_artifacts.rst:176
@@ -474,122 +473,122 @@ msgstr "model/aspect"
 #: ../../settings_kb/ecos_artifacts.rst:200
 #: ../../settings_kb/ecos_artifacts.rst:203
 #: ../../settings_kb/ecos_artifacts.rst:206
+#: ../../settings_kb/ecos_artifacts.rst:209
 msgid "ecos-model"
 msgstr "ecos-model"
 
-#: ../../settings_kb/ecos_artifacts.rst:168
+#: ../../settings_kb/ecos_artifacts.rst:171
 msgid "Аспект"
 msgstr "Aspect"
 
-#: ../../settings_kb/ecos_artifacts.rst:169
+#: ../../settings_kb/ecos_artifacts.rst:172
 msgid "model/authorities-sync"
 msgstr "model/authorities-sync"
 
-#: ../../settings_kb/ecos_artifacts.rst:171
+#: ../../settings_kb/ecos_artifacts.rst:174
 msgid "Синхронизация пользователей и групп"
 msgstr "User and Group Synchronization"
 
-#: ../../settings_kb/ecos_artifacts.rst:172
+#: ../../settings_kb/ecos_artifacts.rst:175
 msgid "model/endpoint"
 msgstr "model/endpoint"
 
-#: ../../settings_kb/ecos_artifacts.rst:174
+#: ../../settings_kb/ecos_artifacts.rst:177
 msgid "Конечная точка"
 msgstr "Endpoint"
 
-#: ../../settings_kb/ecos_artifacts.rst:175
+#: ../../settings_kb/ecos_artifacts.rst:178
 msgid "model/num-template"
 msgstr "model/num-template"
 
-#: ../../settings_kb/ecos_artifacts.rst:177
+#: ../../settings_kb/ecos_artifacts.rst:180
 msgid "Шаблоны нумерации"
 msgstr "Numbering Templates"
 
-#: ../../settings_kb/ecos_artifacts.rst:178
+#: ../../settings_kb/ecos_artifacts.rst:181
 msgid "model/permission-def"
 msgstr "model/permission-def"
 
-#: ../../settings_kb/ecos_artifacts.rst:180
+#: ../../settings_kb/ecos_artifacts.rst:183
 msgid "Описание права"
 msgstr "Permission Description"
 
-#: ../../settings_kb/ecos_artifacts.rst:181
-msgid "model/Permission settings"
-msgstr "model/Permission settings"
+#: ../../settings_kb/ecos_artifacts.rst:184
+msgid "model/permission-settings"
+msgstr "model/permission-settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:183
+#: ../../settings_kb/ecos_artifacts.rst:186
 msgid "Настройка прав"
 msgstr "Permission Settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:184
+#: ../../settings_kb/ecos_artifacts.rst:187
 msgid "model/permissions"
 msgstr "model/permissions"
 
-#: ../../settings_kb/ecos_artifacts.rst:186
+#: ../../settings_kb/ecos_artifacts.rst:189
 msgid "Права доступа"
 msgstr "Access Rights"
 
-#: ../../settings_kb/ecos_artifacts.rst:187
+#: ../../settings_kb/ecos_artifacts.rst:190
 msgid "model/secret"
 msgstr "model/secret"
 
-#: ../../settings_kb/ecos_artifacts.rst:189
+#: ../../settings_kb/ecos_artifacts.rst:192
 msgid "Секрет"
 msgstr "Secret"
 
-#: ../../settings_kb/ecos_artifacts.rst:190
+#: ../../settings_kb/ecos_artifacts.rst:193
 msgid "model/type"
 msgstr "model/type"
 
-#: ../../settings_kb/ecos_artifacts.rst:192
+#: ../../settings_kb/ecos_artifacts.rst:195
 msgid "Типы данных"
 msgstr "Data Types"
 
-#: ../../settings_kb/ecos_artifacts.rst:193
+#: ../../settings_kb/ecos_artifacts.rst:196
 msgid "model/working-calendar"
 msgstr "model/working-calendar"
 
-#: ../../settings_kb/ecos_artifacts.rst:195
+#: ../../settings_kb/ecos_artifacts.rst:198
 msgid "Производственный календарь"
 msgstr "Working Calendar"
 
-#: ../../settings_kb/ecos_artifacts.rst:196
+#: ../../settings_kb/ecos_artifacts.rst:199
 msgid "model/working-schedule"
 msgstr "model/working-schedule"
 
-#: ../../settings_kb/ecos_artifacts.rst:198
+#: ../../settings_kb/ecos_artifacts.rst:201
 msgid "Рабочее расписание"
 msgstr "Work Schedule"
 
-#: ../../settings_kb/ecos_artifacts.rst:199
+#: ../../settings_kb/ecos_artifacts.rst:202
 msgid "model/workspace"
 msgstr "model/workspace"
 
-#: ../../settings_kb/ecos_artifacts.rst:201
+#: ../../settings_kb/ecos_artifacts.rst:204
 msgid "Рабочее пространство"
 msgstr "Workspace"
 
-#: ../../settings_kb/ecos_artifacts.rst:202
+#: ../../settings_kb/ecos_artifacts.rst:205
 msgid "model/workspace-template"
 msgstr "model/workspace-template"
 
-#: ../../settings_kb/ecos_artifacts.rst:204
+#: ../../settings_kb/ecos_artifacts.rst:207
 msgid "Шаблон рабочего пространства"
 msgstr "Workspace Template"
 
-#: ../../settings_kb/ecos_artifacts.rst:205
+#: ../../settings_kb/ecos_artifacts.rst:208
 msgid "model/workspace-member"
 msgstr "model/workspace-member"
 
-#: ../../settings_kb/ecos_artifacts.rst:207
+#: ../../settings_kb/ecos_artifacts.rst:210
 msgid "Участник рабочего пространства"
 msgstr "Workspace Member"
 
-#: ../../settings_kb/ecos_artifacts.rst:211
+#: ../../settings_kb/ecos_artifacts.rst:214
 msgid "ui/action"
 msgstr "ui/action"
 
-#: ../../settings_kb/ecos_artifacts.rst:212
 #: ../../settings_kb/ecos_artifacts.rst:215
 #: ../../settings_kb/ecos_artifacts.rst:218
 #: ../../settings_kb/ecos_artifacts.rst:221
@@ -600,164 +599,164 @@ msgstr "ui/action"
 #: ../../settings_kb/ecos_artifacts.rst:236
 #: ../../settings_kb/ecos_artifacts.rst:239
 #: ../../settings_kb/ecos_artifacts.rst:242
+#: ../../settings_kb/ecos_artifacts.rst:245
 msgid "ecos-uiserv"
 msgstr "ecos-uiserv"
 
-#: ../../settings_kb/ecos_artifacts.rst:213
+#: ../../settings_kb/ecos_artifacts.rst:216
 msgid "Действия"
 msgstr "Actions"
 
-#: ../../settings_kb/ecos_artifacts.rst:214
+#: ../../settings_kb/ecos_artifacts.rst:217
 msgid "ui/admin-sections-group"
 msgstr "ui/admin-sections-group"
 
-#: ../../settings_kb/ecos_artifacts.rst:216
+#: ../../settings_kb/ecos_artifacts.rst:219
 msgid "Группа разделов администратора"
 msgstr "Admin Sections Group"
 
-#: ../../settings_kb/ecos_artifacts.rst:217
+#: ../../settings_kb/ecos_artifacts.rst:220
 msgid "ui/board"
 msgstr "ui/board"
 
-#: ../../settings_kb/ecos_artifacts.rst:219
+#: ../../settings_kb/ecos_artifacts.rst:222
 msgid "Канбан доска"
 msgstr "Kanban Board"
 
-#: ../../settings_kb/ecos_artifacts.rst:220
+#: ../../settings_kb/ecos_artifacts.rst:223
 msgid "ui/dashboard"
 msgstr "ui/dashboard"
 
-#: ../../settings_kb/ecos_artifacts.rst:222
+#: ../../settings_kb/ecos_artifacts.rst:225
 msgid "Дашборды"
 msgstr "Dashboards"
 
-#: ../../settings_kb/ecos_artifacts.rst:223
+#: ../../settings_kb/ecos_artifacts.rst:226
 msgid "ui/form"
 msgstr "ui/form"
 
-#: ../../settings_kb/ecos_artifacts.rst:225
+#: ../../settings_kb/ecos_artifacts.rst:228
 msgid "Формы"
 msgstr "Forms"
 
-#: ../../settings_kb/ecos_artifacts.rst:226
+#: ../../settings_kb/ecos_artifacts.rst:229
 msgid "ui/i18n"
 msgstr "ui/i18n"
 
-#: ../../settings_kb/ecos_artifacts.rst:228
+#: ../../settings_kb/ecos_artifacts.rst:231
 msgid "Локализация"
 msgstr "Localization"
 
-#: ../../settings_kb/ecos_artifacts.rst:229
+#: ../../settings_kb/ecos_artifacts.rst:232
 msgid "ui/icon"
 msgstr "ui/icon"
 
-#: ../../settings_kb/ecos_artifacts.rst:231
+#: ../../settings_kb/ecos_artifacts.rst:234
 msgid "Набор иконок"
 msgstr "Icon Set"
 
-#: ../../settings_kb/ecos_artifacts.rst:232
+#: ../../settings_kb/ecos_artifacts.rst:235
 msgid "ui/journal-settings"
 msgstr "ui/journal-settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:234
+#: ../../settings_kb/ecos_artifacts.rst:237
 msgid "Настройки журнала"
 msgstr "Journal Settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:235
+#: ../../settings_kb/ecos_artifacts.rst:238
 msgid "ui/journal"
 msgstr "ui/journal"
 
-#: ../../settings_kb/ecos_artifacts.rst:237
+#: ../../settings_kb/ecos_artifacts.rst:240
 msgid "Журналы"
 msgstr "Journals"
 
-#: ../../settings_kb/ecos_artifacts.rst:238
+#: ../../settings_kb/ecos_artifacts.rst:241
 msgid "ui/menu"
 msgstr "ui/menu"
 
-#: ../../settings_kb/ecos_artifacts.rst:240
+#: ../../settings_kb/ecos_artifacts.rst:243
 msgid "Меню"
 msgstr "Menu"
 
-#: ../../settings_kb/ecos_artifacts.rst:241
+#: ../../settings_kb/ecos_artifacts.rst:244
 msgid "ui/theme"
 msgstr "ui/theme"
 
-#: ../../settings_kb/ecos_artifacts.rst:243
+#: ../../settings_kb/ecos_artifacts.rst:246
 msgid "Пользовательские темы"
 msgstr "Custom Themes"
 
-#: ../../settings_kb/ecos_artifacts.rst:247
+#: ../../settings_kb/ecos_artifacts.rst:250
 msgid "app/artifact-patch"
 msgstr "app/artifact-patch"
 
-#: ../../settings_kb/ecos_artifacts.rst:248
 #: ../../settings_kb/ecos_artifacts.rst:251
 #: ../../settings_kb/ecos_artifacts.rst:254
 #: ../../settings_kb/ecos_artifacts.rst:257
 #: ../../settings_kb/ecos_artifacts.rst:260
 #: ../../settings_kb/ecos_artifacts.rst:263
 #: ../../settings_kb/ecos_artifacts.rst:266
+#: ../../settings_kb/ecos_artifacts.rst:269
 msgid "ecos-apps"
 msgstr "ecos-apps"
 
-#: ../../settings_kb/ecos_artifacts.rst:249
+#: ../../settings_kb/ecos_artifacts.rst:252
 msgid "Патч для артефакта"
 msgstr "Artifact Patch"
 
-#: ../../settings_kb/ecos_artifacts.rst:250
+#: ../../settings_kb/ecos_artifacts.rst:253
 msgid "app/config"
 msgstr "app/config"
 
-#: ../../settings_kb/ecos_artifacts.rst:252
+#: ../../settings_kb/ecos_artifacts.rst:255
 msgid "Конфигурация"
 msgstr "Configuration"
 
-#: ../../settings_kb/ecos_artifacts.rst:253
+#: ../../settings_kb/ecos_artifacts.rst:256
 msgid "app/dev-module"
 msgstr "app/dev-module"
 
-#: ../../settings_kb/ecos_artifacts.rst:255
+#: ../../settings_kb/ecos_artifacts.rst:258
 msgid "Модуль разработки"
 msgstr "Development Module"
 
-#: ../../settings_kb/ecos_artifacts.rst:256
+#: ../../settings_kb/ecos_artifacts.rst:259
 msgid "app/ecosapp"
 msgstr "app/ecosapp"
 
-#: ../../settings_kb/ecos_artifacts.rst:258
+#: ../../settings_kb/ecos_artifacts.rst:261
 msgid "Приложение ECOS"
 msgstr "ECOS Application"
 
-#: ../../settings_kb/ecos_artifacts.rst:259
+#: ../../settings_kb/ecos_artifacts.rst:262
 msgid "app/license"
 msgstr "app/license"
 
-#: ../../settings_kb/ecos_artifacts.rst:261
+#: ../../settings_kb/ecos_artifacts.rst:264
 msgid "Лицензия ECOS"
 msgstr "ECOS License"
 
-#: ../../settings_kb/ecos_artifacts.rst:262
+#: ../../settings_kb/ecos_artifacts.rst:265
 msgid "app/patch"
 msgstr "app/patch"
 
-#: ../../settings_kb/ecos_artifacts.rst:264
+#: ../../settings_kb/ecos_artifacts.rst:267
 msgid "Патч"
 msgstr "Patch"
 
-#: ../../settings_kb/ecos_artifacts.rst:265
+#: ../../settings_kb/ecos_artifacts.rst:268
 msgid "app/system-info"
 msgstr "app/system-info"
 
-#: ../../settings_kb/ecos_artifacts.rst:267
+#: ../../settings_kb/ecos_artifacts.rst:270
 msgid "Информация о системе"
 msgstr "System Information"
 
-#: ../../settings_kb/ecos_artifacts.rst:271
+#: ../../settings_kb/ecos_artifacts.rst:274
 msgid "integration/camel-dsl"
 msgstr "integration/camel-dsl"
 
-#: ../../settings_kb/ecos_artifacts.rst:272
 #: ../../settings_kb/ecos_artifacts.rst:275
 #: ../../settings_kb/ecos_artifacts.rst:278
 #: ../../settings_kb/ecos_artifacts.rst:281
@@ -766,190 +765,202 @@ msgstr "integration/camel-dsl"
 #: ../../settings_kb/ecos_artifacts.rst:290
 #: ../../settings_kb/ecos_artifacts.rst:293
 #: ../../settings_kb/ecos_artifacts.rst:296
+#: ../../settings_kb/ecos_artifacts.rst:299
 msgid "ecos-integrations"
 msgstr "ecos-integrations"
 
-#: ../../settings_kb/ecos_artifacts.rst:273
+#: ../../settings_kb/ecos_artifacts.rst:276
 msgid "Конфигурации Camel DSL"
 msgstr "Camel DSL Configurations"
 
-#: ../../settings_kb/ecos_artifacts.rst:274
+#: ../../settings_kb/ecos_artifacts.rst:277
 msgid "integration/credentials"
 msgstr "integration/credentials"
 
-#: ../../settings_kb/ecos_artifacts.rst:276
+#: ../../settings_kb/ecos_artifacts.rst:279
 msgid "Учетные данные"
 msgstr "Credentials"
 
-#: ../../settings_kb/ecos_artifacts.rst:277
+#: ../../settings_kb/ecos_artifacts.rst:280
 msgid "integration/datasource"
 msgstr "integration/datasource"
 
-#: ../../settings_kb/ecos_artifacts.rst:279
+#: ../../settings_kb/ecos_artifacts.rst:282
 msgid "Источник данных"
 msgstr "Data Source"
 
-#: ../../settings_kb/ecos_artifacts.rst:280
+#: ../../settings_kb/ecos_artifacts.rst:283
 msgid "integration/ext-portal"
 msgstr "integration/ext-portal"
 
-#: ../../settings_kb/ecos_artifacts.rst:282
+#: ../../settings_kb/ecos_artifacts.rst:285
 msgid "Внешний портал"
 msgstr "External Portal"
 
-#: ../../settings_kb/ecos_artifacts.rst:283
+#: ../../settings_kb/ecos_artifacts.rst:286
 msgid "integration/file-import-config"
 msgstr "integration/file-import-config"
 
-#: ../../settings_kb/ecos_artifacts.rst:285
+#: ../../settings_kb/ecos_artifacts.rst:288
 msgid "Конфигурация импорта файлов"
 msgstr "File Import Configuration"
 
-#: ../../settings_kb/ecos_artifacts.rst:286
+#: ../../settings_kb/ecos_artifacts.rst:289
 msgid "integration/in-webhook"
 msgstr "integration/in-webhook"
 
-#: ../../settings_kb/ecos_artifacts.rst:288
+#: ../../settings_kb/ecos_artifacts.rst:291
 msgid "Вебхук"
 msgstr "Webhook"
 
-#: ../../settings_kb/ecos_artifacts.rst:289
+#: ../../settings_kb/ecos_artifacts.rst:292
 msgid "integration/osgi-bundles"
 msgstr "integration/osgi-bundles"
 
-#: ../../settings_kb/ecos_artifacts.rst:291
+#: ../../settings_kb/ecos_artifacts.rst:294
 msgid "OSGi Пакет"
 msgstr "OSGi Bundle"
 
-#: ../../settings_kb/ecos_artifacts.rst:292
+#: ../../settings_kb/ecos_artifacts.rst:295
 msgid "integration/recsrc"
 msgstr "integration/recsrc"
 
-#: ../../settings_kb/ecos_artifacts.rst:294
+#: ../../settings_kb/ecos_artifacts.rst:297
 msgid "Настройки внешней БД"
 msgstr "External Database Settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:295
+#: ../../settings_kb/ecos_artifacts.rst:298
 msgid "integration/sync"
 msgstr "integration/sync"
 
-#: ../../settings_kb/ecos_artifacts.rst:297
+#: ../../settings_kb/ecos_artifacts.rst:300
 msgid "Синхронизации"
 msgstr "Synchronizations"
 
-#: ../../settings_kb/ecos_artifacts.rst:301
+#: ../../settings_kb/ecos_artifacts.rst:304
 msgid "transformation/template"
 msgstr "transformation/template"
 
-#: ../../settings_kb/ecos_artifacts.rst:302
+#: ../../settings_kb/ecos_artifacts.rst:305
 msgid "ecos-transformations"
 msgstr "ecos-transformations"
 
-#: ../../settings_kb/ecos_artifacts.rst:303
+#: ../../settings_kb/ecos_artifacts.rst:306
 msgid "Шаблон документа"
 msgstr "Document Template"
 
-#: ../../settings_kb/ecos_artifacts.rst:307
+#: ../../settings_kb/ecos_artifacts.rst:310
 msgid "process/bpmn-kpi-settings"
 msgstr "process/bpmn-kpi-settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:308
 #: ../../settings_kb/ecos_artifacts.rst:311
 #: ../../settings_kb/ecos_artifacts.rst:314
 #: ../../settings_kb/ecos_artifacts.rst:317
 #: ../../settings_kb/ecos_artifacts.rst:320
 #: ../../settings_kb/ecos_artifacts.rst:323
+#: ../../settings_kb/ecos_artifacts.rst:326
 msgid "ecos-process"
 msgstr "ecos-process"
 
-#: ../../settings_kb/ecos_artifacts.rst:309
+#: ../../settings_kb/ecos_artifacts.rst:312
 msgid "Настройка BPMN KPI"
 msgstr "BPMN KPI Settings"
 
-#: ../../settings_kb/ecos_artifacts.rst:310
+#: ../../settings_kb/ecos_artifacts.rst:313
 msgid "process/bpmn-section"
 msgstr "process/bpmn-section"
 
-#: ../../settings_kb/ecos_artifacts.rst:312
+#: ../../settings_kb/ecos_artifacts.rst:315
 msgid "BPMN раздел"
 msgstr "BPMN Section"
 
-#: ../../settings_kb/ecos_artifacts.rst:313
+#: ../../settings_kb/ecos_artifacts.rst:316
 msgid "process/bpmn-task-atts-sync"
 msgstr "process/bpmn-task-atts-sync"
 
-#: ../../settings_kb/ecos_artifacts.rst:315
+#: ../../settings_kb/ecos_artifacts.rst:318
 msgid "Синхронизация атрибутов задач BPMN"
 msgstr "BPMN Task Attributes Synchronization"
 
-#: ../../settings_kb/ecos_artifacts.rst:316
+#: ../../settings_kb/ecos_artifacts.rst:319
 msgid "process/bpmn"
 msgstr "process/bpmn"
 
-#: ../../settings_kb/ecos_artifacts.rst:318
+#: ../../settings_kb/ecos_artifacts.rst:321
 msgid "BPMN процесс"
 msgstr "BPMN Process"
 
-#: ../../settings_kb/ecos_artifacts.rst:319
+#: ../../settings_kb/ecos_artifacts.rst:322
 msgid "process/dmn-section"
 msgstr "process/dmn-section"
 
-#: ../../settings_kb/ecos_artifacts.rst:321
+#: ../../settings_kb/ecos_artifacts.rst:324
 msgid "DMN раздел"
 msgstr "DMN Section"
 
-#: ../../settings_kb/ecos_artifacts.rst:322
+#: ../../settings_kb/ecos_artifacts.rst:325
 msgid "process/dmn"
 msgstr "process/dmn"
 
-#: ../../settings_kb/ecos_artifacts.rst:324
+#: ../../settings_kb/ecos_artifacts.rst:327
 msgid "DMN"
 msgstr "DMN"
 
-#: ../../settings_kb/ecos_artifacts.rst:328
+#: ../../settings_kb/ecos_artifacts.rst:331
 msgid "notification/file"
 msgstr "notification/file"
 
-#: ../../settings_kb/ecos_artifacts.rst:329
 #: ../../settings_kb/ecos_artifacts.rst:332
 #: ../../settings_kb/ecos_artifacts.rst:335
 #: ../../settings_kb/ecos_artifacts.rst:338
+#: ../../settings_kb/ecos_artifacts.rst:341
 msgid "ecos-notifications"
 msgstr "ecos-notifications"
 
-#: ../../settings_kb/ecos_artifacts.rst:330
+#: ../../settings_kb/ecos_artifacts.rst:333
 msgid "Файлы уведомлений"
 msgstr "Notification Files"
 
-#: ../../settings_kb/ecos_artifacts.rst:331
+#: ../../settings_kb/ecos_artifacts.rst:334
 msgid "notification/template"
 msgstr "notification/template"
 
-#: ../../settings_kb/ecos_artifacts.rst:333
+#: ../../settings_kb/ecos_artifacts.rst:336
 msgid "Шаблоны уведомлений"
 msgstr "Notification Templates"
 
-#: ../../settings_kb/ecos_artifacts.rst:334
+#: ../../settings_kb/ecos_artifacts.rst:337
 msgid "notification/sender"
 msgstr "notification/sender"
 
-#: ../../settings_kb/ecos_artifacts.rst:336
+#: ../../settings_kb/ecos_artifacts.rst:339
 msgid "Отправители"
 msgstr "Senders"
 
-#: ../../settings_kb/ecos_artifacts.rst:337
+#: ../../settings_kb/ecos_artifacts.rst:340
 msgid "notification/reminder"
 msgstr "notification/reminder"
 
-#: ../../settings_kb/ecos_artifacts.rst:339
+#: ../../settings_kb/ecos_artifacts.rst:342
 msgid "Напоминание"
 msgstr "Reminder"
 
-#: ../../settings_kb/ecos_artifacts.rst:342
+#: ../../settings_kb/ecos_artifacts.rst:344
+msgid ""
+"Внутренние типы (``internal: true``) исключены из обычного выбора "
+"артефактов. Например, в ecos-model есть внутренние типы "
+"``model/attrs_permission``, ``model/delete``, ``model/section`` и "
+"``model/tk_type``; в ecos-apps — ``app/ecosapp`` и устаревший ``app"
+"/module-patch``. Признак ``internal`` относится к типу артефакта и "
+"отличается от ``system`` у его записи. В таблице также приведён "
+"``app/ecosapp`` как часть инфраструктуры приложений."
+msgstr "Internal types (``internal: true``) are excluded from ordinary artifact selection. For example, ecos-model has internal ``model/attrs_permission``, ``model/delete``, ``model/section`` and ``model/tk_type``; ecos-apps has ``app/ecosapp`` and legacy ``app/module-patch``. ``internal`` belongs to the artifact type and differs from record ``system``. The table also includes ``app/ecosapp`` as application infrastructure."
+
+#: ../../settings_kb/ecos_artifacts.rst:347
 msgid "Переопределение артефактов"
 msgstr "Artifact Override"
 
-#: ../../settings_kb/ecos_artifacts.rst:344
+#: ../../settings_kb/ecos_artifacts.rst:349
 msgid ""
 "Для переопределения артефактов можно создать папку с именем ``override`` "
 "в корне директории с артефактами."
@@ -957,11 +968,11 @@ msgstr ""
 "To override artifacts, you can create a folder named ``override`` in the "
 "root directory of the artifacts."
 
-#: ../../settings_kb/ecos_artifacts.rst:346
+#: ../../settings_kb/ecos_artifacts.rst:351
 msgid "Пример структуры папок:"
 msgstr "Example folder structure:"
 
-#: ../../settings_kb/ecos_artifacts.rst:362
+#: ../../settings_kb/ecos_artifacts.rst:367
 msgid ""
 "Для формы **some-form.json** будет создан патч с типом **override** и "
 "порядком -100 (по умолчанию)."
@@ -969,7 +980,7 @@ msgstr ""
 "For the form **some-form.json**, a patch with type **override** and order"
 " -100 (by default) will be created."
 
-#: ../../settings_kb/ecos_artifacts.rst:364
+#: ../../settings_kb/ecos_artifacts.rst:369
 msgid ""
 "Если требуется настроить порядок, то следует в корне папки override "
 "создать файл ``meta.yml``. В нем возможны следующие настройки:"
@@ -977,33 +988,33 @@ msgstr ""
 "If you need to configure the order, you should create a ``meta.yml`` file"
 " in the root of the override folder. The following settings are possible:"
 
-#: ../../settings_kb/ecos_artifacts.rst:366
+#: ../../settings_kb/ecos_artifacts.rst:371
 msgid "Список возможных настроек в override/meta.yml"
 msgstr "List of possible settings in override/meta.yml"
 
-#: ../../settings_kb/ecos_artifacts.rst:370
+#: ../../settings_kb/ecos_artifacts.rst:375
 msgid "Название"
 msgstr "Name"
 
-#: ../../settings_kb/ecos_artifacts.rst:371
+#: ../../settings_kb/ecos_artifacts.rst:376
 msgid "Тип данных"
 msgstr "Data Type"
 
-#: ../../settings_kb/ecos_artifacts.rst:372
-#: ../../settings_kb/ecos_artifacts.rst:591
-#: ../../settings_kb/ecos_artifacts.rst:670
+#: ../../settings_kb/ecos_artifacts.rst:377
+#: ../../settings_kb/ecos_artifacts.rst:593
+#: ../../settings_kb/ecos_artifacts.rst:682
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/ecos_artifacts.rst:373
+#: ../../settings_kb/ecos_artifacts.rst:378
 msgid "order"
 msgstr "order"
 
-#: ../../settings_kb/ecos_artifacts.rst:374
+#: ../../settings_kb/ecos_artifacts.rst:379
 msgid "float"
 msgstr "float"
 
-#: ../../settings_kb/ecos_artifacts.rst:375
+#: ../../settings_kb/ecos_artifacts.rst:380
 msgid ""
 "Порядок патча для перезаписи артефакта. Сначала применяются патчи с "
 "меньшим порядком."
@@ -1011,11 +1022,11 @@ msgstr ""
 "Patch order for overriding the artifact. Patches with a lower order are "
 "applied first."
 
-#: ../../settings_kb/ecos_artifacts.rst:376
+#: ../../settings_kb/ecos_artifacts.rst:381
 msgid "scope"
 msgstr "scope"
 
-#: ../../settings_kb/ecos_artifacts.rst:377
+#: ../../settings_kb/ecos_artifacts.rst:382
 msgid "string"
 msgstr "string"
 
@@ -1033,19 +1044,18 @@ msgstr ""
 "The patch identifier is formed according to the following pattern: "
 "override[_{{scope}}]$ui/form$some-form"
 
-#: ../../settings_kb/ecos_artifacts.rst:385
+#: ../../settings_kb/ecos_artifacts.rst:390
 msgid "**Особенности**"
 msgstr "**Features**"
 
-#: ../../settings_kb/ecos_artifacts.rst:387
+#: ../../settings_kb/ecos_artifacts.rst:392
 msgid ""
-"Перезапись артефактов работает вне зависимости от того откуда деплоится "
-"основной артефакт"
-msgstr ""
-"Artifact overriding works regardless of where the main artifact is "
-"deployed from"
+"Применение переопределения зависит от источника текущей ревизии. "
+"Пользовательская ревизия **USER** не патчится; подробнее — "
+":ref:`artifact_patch`."
+msgstr "Override application depends on the current revision source. **USER** revisions are not patched; see :ref:`artifact_patch`."
 
-#: ../../settings_kb/ecos_artifacts.rst:390
+#: ../../settings_kb/ecos_artifacts.rst:395
 msgid "Создание нового типа артефакта"
 msgstr "Creating a New Artifact Type"
 
@@ -1053,19 +1063,18 @@ msgstr "Creating a New Artifact Type"
 msgid "Пошаговая инструкция по созданию нового типа артефакта"
 msgstr "Step-by-step guide to creating a new artifact type"
 
-#: ../../settings_kb/ecos_artifacts.rst:395
+#: ../../settings_kb/ecos_artifacts.rst:400
 msgid "Определяемся в какой микросервис должен попасть артефакт после деплоя."
 msgstr "Determine which microservice the artifact should go to after deployment."
 
-#: ../../settings_kb/ecos_artifacts.rst:397
+#: ../../settings_kb/ecos_artifacts.rst:402
 msgid ""
-"В целевом приложении находим папку eapps в ресурсах и создаем там "
-"подпапки следующего содержания:"
-msgstr ""
-"In the target application, find the eapps folder in the resources and "
-"create subfolders with the following content:"
+"В целевом микросервисе создаём определение типа в "
+"``src/main/resources/eapps/types/<область>/<тип>/``. Например, для "
+"``model/example`` используется каталог ``eapps/types/model/example``:"
+msgstr "In the target microservice, create the type definition in ``src/main/resources/eapps/types/<область>/<тип>/``. For example, ``model/example`` uses ``eapps/types/model/example``:"
 
-#: ../../settings_kb/ecos_artifacts.rst:399
+#: ../../settings_kb/ecos_artifacts.rst:404
 msgid ""
 "первый уровень - раздел к которому относится артефакт (обычно 1 раздел =="
 " 1 микросервис. Например, ui → ecos-uiserv, integration → ecos-"
@@ -1075,7 +1084,7 @@ msgstr ""
 "section == 1 microservice. For example, ui → ecos-uiserv, integration → "
 "ecos-integrations, model → ecos-model, etc.)"
 
-#: ../../settings_kb/ecos_artifacts.rst:401
+#: ../../settings_kb/ecos_artifacts.rst:406
 msgid ""
 "второй уровень - локальный идентификатор типа (action, form, menu, "
 "dashboard, type, section и т.д.)"
@@ -1083,17 +1092,11 @@ msgstr ""
 "second level - local type identifier (action, form, menu, dashboard, "
 "type, section, etc.)"
 
-#: ../../settings_kb/ecos_artifacts.rst:403
-msgid ""
-"Не обязательно создавать именно 2 уровня, но желательно. Механизм "
-"поддерживает уровни любой вложенности от 1 до ограничений файловой "
-"системы)."
-msgstr ""
-"It is not necessary to create exactly 2 levels, but it is desirable. The "
-"mechanism supports levels of any nesting from 1 to file system "
-"limitations)."
+#: ../../settings_kb/ecos_artifacts.rst:408
+msgid "Иерархия внутри ``eapps/types`` определяет идентификатор типа артефакта."
+msgstr "The hierarchy within ``eapps/types`` determines the artifact type identifier."
 
-#: ../../settings_kb/ecos_artifacts.rst:407
+#: ../../settings_kb/ecos_artifacts.rst:412
 msgid ""
 "Следует учитывать, что создаваемая иерархия директорий будет использована"
 " как идентификатор типа артефакта. Поэтому следует внимательно к ней "
@@ -1102,63 +1105,64 @@ msgstr ""
 "Keep in mind that the created directory hierarchy will be used as the "
 "artifact type identifier. Therefore, it should be treated carefully."
 
-#: ../../settings_kb/ecos_artifacts.rst:409
-msgid ""
-"Создаем в получившейся директории файл type.yml примерно со следующим "
-"содержанием:"
-msgstr ""
-"Create a type.yml file in the resulting directory with approximately the "
-"following content:"
+#: ../../settings_kb/ecos_artifacts.rst:414
+msgid "Создаём ``eapps/types/model/example/type.yml``:"
+msgstr "Create ``eapps/types/model/example/type.yml``:"
 
-#: ../../settings_kb/ecos_artifacts.rst:420
-msgid ""
-"**modelVersion** - тип модели. В будущем будет использоваться для "
-"миграции старых артефактов."
-msgstr ""
-"**modelVersion** - model type. In the future, it will be used for "
-"migrating old artifacts."
+#: ../../settings_kb/ecos_artifacts.rst:427
+msgid "**modelVersion** - версия модели артефакта."
+msgstr "**modelVersion** — artifact model version."
 
-#: ../../settings_kb/ecos_artifacts.rst:422
+#: ../../settings_kb/ecos_artifacts.rst:429
 msgid ""
-"**sourceId** - ID источника данных (RecordsDAO) через который будет "
-"доступ к данным артефактам. Это поле необходимо если потребуется механизм"
-" разрешения зависимостей на стороне ECOS Apps. Если у артефакта не будет "
-"зависимостей, то можно поставить пустую строку."
-msgstr ""
-"**sourceId** - ID of the data source (RecordsDAO) through which access to"
-" the artifact data will be provided. This field is necessary if a "
-"dependency resolution mechanism is required on the ECOS Apps side. If the"
-" artifact has no dependencies, an empty string can be used."
+"**sourceId** - ID источника данных (RecordsDAO), через который доступны "
+"записи артефактов. Он используется для сопоставления записи и типа "
+"артефакта, в том числе при разрешении зависимостей и фиксации изменений в"
+" Git."
+msgstr "**sourceId** — RecordsDAO source ID exposing artifact records. Used to map records to artifact types, including dependency resolution and Git commits."
 
-#: ../../settings_kb/ecos_artifacts.rst:424
+#: ../../settings_kb/ecos_artifacts.rst:431
 msgid ""
-"**controller.type** - тип контроллера для типа артефакта. Определяет "
-"логику, по которой будут загружаться артефакты из директории и "
-"записываться в директорию. json - самый простой и понятный контроллер, "
-"который следует использовать при добавлении простых типов артефактов. Для"
-" сложных случаев существует script controller, который поддерживает "
-"описание логики чтения и записи артефактов на языке groovy (в перспективе"
-" добавятся другие языки вроде Kotlin)."
-msgstr ""
-"**controller.type** - controller type for the artifact type. Defines the "
-"logic for loading artifacts from the directory and writing to the "
-"directory. json is the simplest and most understandable controller, which"
-" should be used when adding simple artifact types. For complex cases, "
-"there is a script controller that supports describing the logic for "
-"reading and writing artifacts in Groovy (other languages like Kotlin will"
-" be added in the future)."
+"**controller.type** определяет чтение и запись файлов артефакта. Для "
+"структурированных данных используется **json**; "
+"``controller.config.format: yaml`` задаёт YAML-формат записи. Для "
+"собственной файловой структуры можно использовать **script** с "
+"Groovy-реализацией ``ArtifactController`` и методами ``read``, ``write``,"
+" ``getMeta``."
+msgstr "**controller.type** defines artifact file reading and writing. **json** handles structured data; ``controller.config.format: yaml`` specifies YAML output. For custom file structures, use **script** with a Groovy ``ArtifactController`` implementing ``read``, ``write`` and ``getMeta``."
 
-#: ../../settings_kb/ecos_artifacts.rst:426
-msgid "Описываем хендлер для нашего артефакта:"
-msgstr "Describe the handler for our artifact:"
+#: ../../settings_kb/ecos_artifacts.rst:433
+msgid ""
+"Регистрируем Spring-компонент, реализующий ``EcosArtifactHandler``. Ниже "
+"каркас обработчика; ``ExampleArtifactService`` — прикладной сервис "
+"хранения, который нужно реализовать и зарегистрировать в своём "
+"микросервисе:"
+msgstr "Register a Spring component implementing ``EcosArtifactHandler``. The following is a handler skeleton; implement and register the application storage service ``ExampleArtifactService`` in your microservice:"
+
+#: ../../settings_kb/ecos_artifacts.rst:470
+msgid ""
+"Callback ``listenChanges`` передаёт локальные изменения в инфраструктуру "
+"артефактов для сохранения ревизий. Зависимости можно задать в определении"
+" типа через ``controller.config.metaFields.dependencies``; например, у "
+"``model/type`` там указаны ссылки на родительский тип."
+msgstr "The ``listenChanges`` callback passes local changes to artifact infrastructure to save revisions. Define dependencies in ``controller.config.metaFields.dependencies``; for example, ``model/type`` lists parent type references there."
+
+#: ../../settings_kb/ecos_artifacts.rst:472
+msgid ""
+"Если артефакт относится к рабочему пространству, используйте "
+"``WsAwareArtifactHandler<T>``: методы ``deployArtifact`` и "
+"``deleteArtifact`` получают отдельный аргумент ``workspace``, а "
+"``listenChanges`` принимает ``BiConsumer<T, String>``. Обработчик должен "
+"учитывать пространство при сохранении, удалении и подготовке переносимых "
+"ссылок."
+msgstr "For workspace artifacts, use ``WsAwareArtifactHandler<T>``: ``deployArtifact`` and ``deleteArtifact`` take a separate ``workspace`` argument, and ``listenChanges`` accepts ``BiConsumer<T, String>``. The handler must account for the workspace when saving, deleting and preparing portable references."
 
 #: ../../settings_kb/ecos_artifacts.rst:474
 msgid ""
-"На этом описание типа артефакта можно считать законченным. Можно положить"
-" **.json** файлы в ``eapps/artifacts/ui/form``."
-msgstr ""
-"This completes the description of the artifact type. You can place "
-"**.json** files in ``eapps/artifacts/ui/form``."
+"Экземпляры нового артефакта разместите отдельно от определения типа — в "
+"``src/main/resources/eapps/artifacts/model/example/``. Для приведённого "
+"контроллера можно использовать YAML или JSON."
+msgstr "Place new artifact instances separately from the type definition, in ``src/main/resources/eapps/artifacts/model/example/``. This controller accepts YAML or JSON."
 
 #: ../../settings_kb/ecos_artifacts.rst:476
 msgid ""
@@ -1198,11 +1202,12 @@ msgstr ""
 
 #: ../../settings_kb/ecos_artifacts.rst:489
 msgid ""
-"При скачивании артефакта из журнала мы все равно будем получать json вне "
-"зависимости от того как описана исходная конфигурация."
-msgstr ""
-"When downloading an artifact from the journal, we will still receive json"
-" regardless of how the original configuration was described."
+"Внутреннее JSON-представление следует отличать от формата выгрузки. Файлы"
+" формируются контроллером соответствующего типа; например, "
+"``controller.config.format: yaml`` задаёт YAML-формат записи. Центральный"
+" журнал **«Артефакты ECOS»** скачивает ZIP-контейнер, а предметный журнал"
+" может выгружать YAML напрямую — как журнал типов данных."
+msgstr "Distinguish internal JSON representation from export format. The type controller generates files; for example, ``controller.config.format: yaml`` specifies YAML output. The central **\"ECOS artifacts\"** journal downloads a ZIP container, while a specialized journal may export YAML directly, as the data type journal does."
 
 #: ../../settings_kb/ecos_artifacts.rst:491
 msgid "Пример описания журнала форм:"
@@ -1289,7 +1294,7 @@ msgstr ""
 msgid "В other-key мы получим {“aa”: “bb“, “cc“: “ee“}"
 msgstr "In other-key we will get {\"aa\": \"bb\", \"cc\": \"ee\"}"
 
-#: ../../settings_kb/ecos_artifacts.rst:563
+#: ../../settings_kb/ecos_artifacts.rst:565
 msgid "Патчи для артефактов"
 msgstr "Patches for Artifacts"
 
@@ -1315,16 +1320,12 @@ msgstr ""
 
 #: ../../settings_kb/ecos_artifacts.rst:571
 msgid ""
-"Патчи обновляют целевой артефакт \"на лету\" при каждом изменении "
-"артефакта или самого патча. Например, удалив патч в журнале мы увидим "
-"через 3-7 секунд, что изменения, которые он накладывал откатились и "
-"артефакт приобрел стандартную конфигурацию."
-msgstr ""
-"Patches update the target artifact \"on the fly\" with every change to "
-"the artifact or the patch itself. For example, by deleting a patch in the"
-" journal, we will see within 3-7 seconds that the changes it applied have"
-" been rolled back and the artifact has acquired the standard "
-"configuration."
+"Патчи применяются асинхронно при изменении исходной ревизии артефакта или"
+" настроек патча с учётом источника ревизии. При удалении или отключении "
+"последнего действующего патча его результат снимается. Время применения "
+"зависит от цикла синхронизации, доступности микросервисов и нагрузки; "
+"состояние проверяйте в журнале и логах."
+msgstr "Patches are applied asynchronously when the source artifact revision or patch settings change, subject to revision source. Removing or disabling the last active patch removes its result. Application timing depends on the synchronization cycle, microservice availability and load; check journal state and logs."
 
 #: ../../settings_kb/ecos_artifacts.rst:573
 msgid ""
@@ -1344,46 +1345,53 @@ msgstr ""
 
 #: ../../settings_kb/ecos_artifacts.rst:577
 msgid ""
-"Если менять запись, на которую действует патч через интерфейс, то патч "
-"сам не переприменится. Если загружать новую версию артефакта через "
-"**ecos-apps** (подкладывая в target или при перезапуске сервера), то патч"
-" применится."
-msgstr ""
-"If you change the record affected by the patch through the interface, the"
-" patch will not reapply itself. If you load a new version of the artifact"
-" through **ecos-apps** (by placing it in target or when restarting the "
-"server), the patch will be applied."
+"К текущей обычной ревизии с источником **USER** патчи не применяются. "
+"Поэтому пользовательское изменение записи через интерфейс может снять "
+"результат патча. После успешной загрузки новой обычной ревизии из "
+"**APPLICATION** или **ECOS_APP** патчи снова учитываются; повторная "
+"загрузка прежнего содержимого может быть отклонена политикой источника."
+msgstr "Patches do not apply to an ordinary **USER** revision. Editing a record in the UI may therefore remove patch results. After a new ordinary **APPLICATION** or **ECOS_APP** revision is accepted, patches apply again; source policy may reject reuploading previous content."
 
 #: ../../settings_kb/ecos_artifacts.rst:579
+msgid ""
+"Для артефакта APPLICATION допускаются патчи любого источника, для "
+"ECOS_APP — патчи APPLICATION, ECOS_APP и USER. При сохранении патча "
+"пользователем его источник становится USER; при деплое источник берётся "
+"из метаданных загрузки."
+msgstr "APPLICATION artifacts accept patches from any source; ECOS_APP accepts APPLICATION, ECOS_APP and USER patches. User saves set patch source to USER; deployment takes it from upload metadata."
+
+#: ../../settings_kb/ecos_artifacts.rst:581
 msgid "Формат патча:"
 msgstr "Patch format:"
 
-#: ../../settings_kb/ecos_artifacts.rst:587
+#: ../../settings_kb/ecos_artifacts.rst:589
 msgid "Поле"
 msgstr "Field"
 
-#: ../../settings_kb/ecos_artifacts.rst:589
+#: ../../settings_kb/ecos_artifacts.rst:591
 msgid "Обязательность"
 msgstr "Mandatory"
 
-#: ../../settings_kb/ecos_artifacts.rst:590
+#: ../../settings_kb/ecos_artifacts.rst:592
 msgid "Значение по умолчанию"
 msgstr "Default Value"
 
-#: ../../settings_kb/ecos_artifacts.rst:592
+#: ../../settings_kb/ecos_artifacts.rst:594
 msgid "**order**"
 msgstr "**order**"
 
-#: ../../settings_kb/ecos_artifacts.rst:593
+#: ../../settings_kb/ecos_artifacts.rst:595
 msgid "Float"
 msgstr "Float"
 
-#: ../../settings_kb/ecos_artifacts.rst:594
-#: ../../settings_kb/ecos_artifacts.rst:613
+#: ../../settings_kb/ecos_artifacts.rst:596
+#: ../../settings_kb/ecos_artifacts.rst:615
+#: ../../settings_kb/ecos_artifacts.rst:635
+#: ../../settings_kb/ecos_artifacts.rst:640
 msgid "Нет"
 msgstr "No"
 
-#: ../../settings_kb/ecos_artifacts.rst:595
+#: ../../settings_kb/ecos_artifacts.rst:597
 msgid "0"
 msgstr "0"
 
@@ -1393,33 +1401,32 @@ msgstr "Patch order."
 
 #: ../../settings_kb/ecos_artifacts.rst
 msgid ""
-"Если в системе есть несколько патчей для одного артефакта. то они "
-"применяются в соответствии с этим порядком от меньшего к большему."
-msgstr ""
-"If there are several patches for one artifact in the system, they are "
-"applied in this order from smallest to largest."
+"Если в системе есть несколько патчей для одного артефакта, они "
+"применяются от меньшего порядка к большему. При одинаковом порядке патчи "
+"сортируются по id."
+msgstr "Multiple patches for one artifact run in ascending order. Equal-order patches are sorted by id."
 
-#: ../../settings_kb/ecos_artifacts.rst:598
+#: ../../settings_kb/ecos_artifacts.rst:600
 msgid "**id**"
 msgstr "**id**"
 
-#: ../../settings_kb/ecos_artifacts.rst:599
-#: ../../settings_kb/ecos_artifacts.rst:612
-#: ../../settings_kb/ecos_artifacts.rst:620
+#: ../../settings_kb/ecos_artifacts.rst:601
+#: ../../settings_kb/ecos_artifacts.rst:614
+#: ../../settings_kb/ecos_artifacts.rst:622
 msgid "String"
 msgstr "String"
 
-#: ../../settings_kb/ecos_artifacts.rst:600
-#: ../../settings_kb/ecos_artifacts.rst:606
-#: ../../settings_kb/ecos_artifacts.rst:621
-#: ../../settings_kb/ecos_artifacts.rst:627
+#: ../../settings_kb/ecos_artifacts.rst:602
+#: ../../settings_kb/ecos_artifacts.rst:608
+#: ../../settings_kb/ecos_artifacts.rst:623
+#: ../../settings_kb/ecos_artifacts.rst:629
 msgid "Да"
 msgstr "Yes"
 
-#: ../../settings_kb/ecos_artifacts.rst:601
-#: ../../settings_kb/ecos_artifacts.rst:607
-#: ../../settings_kb/ecos_artifacts.rst:622
-#: ../../settings_kb/ecos_artifacts.rst:628
+#: ../../settings_kb/ecos_artifacts.rst:603
+#: ../../settings_kb/ecos_artifacts.rst:609
+#: ../../settings_kb/ecos_artifacts.rst:624
+#: ../../settings_kb/ecos_artifacts.rst:630
 msgid "`-`"
 msgstr "`-`"
 
@@ -1431,13 +1438,13 @@ msgstr "Identifier."
 msgid "Уникальный среди всех патчей для артефактов в системе."
 msgstr "Unique among all patches for artifacts in the system."
 
-#: ../../settings_kb/ecos_artifacts.rst:604
+#: ../../settings_kb/ecos_artifacts.rst:606
 msgid "**target**"
 msgstr "**target**"
 
-#: ../../settings_kb/ecos_artifacts.rst:605
-msgid "ModuleRef"
-msgstr "ModuleRef"
+#: ../../settings_kb/ecos_artifacts.rst:607
+msgid "ArtifactRef"
+msgstr "ArtifactRef"
 
 #: ../../settings_kb/ecos_artifacts.rst
 msgid "Целевой артефакт, который будет пропатчен."
@@ -1459,11 +1466,11 @@ msgstr ""
 "The workspace identifier is not specified in ``target`` — it is set by a "
 "separate ``workspace`` field."
 
-#: ../../settings_kb/ecos_artifacts.rst:611
+#: ../../settings_kb/ecos_artifacts.rst:613
 msgid "**workspace**"
 msgstr "**workspace**"
 
-#: ../../settings_kb/ecos_artifacts.rst:614
+#: ../../settings_kb/ecos_artifacts.rst:616
 msgid "`\"\"`"
 msgstr "`\"\"`"
 
@@ -1499,7 +1506,7 @@ msgstr ""
 "without a specified ``workspace`` are automatically linked to the "
 "``admin$workspace`` workspace upon saving."
 
-#: ../../settings_kb/ecos_artifacts.rst:619
+#: ../../settings_kb/ecos_artifacts.rst:621
 msgid "**type**"
 msgstr "**type**"
 
@@ -1508,14 +1515,16 @@ msgid "Тип патча."
 msgstr "Patch type."
 
 #: ../../settings_kb/ecos_artifacts.rst
-msgid "На данный момент поддерживается только json тип."
-msgstr "Currently, only the json type is supported."
+msgid ""
+"Для частичного изменения конфигурации используется json. Полное "
+"переопределение override описано выше."
+msgstr "Use json for partial configuration changes. Full override is described above."
 
-#: ../../settings_kb/ecos_artifacts.rst:625
+#: ../../settings_kb/ecos_artifacts.rst:627
 msgid "**config**"
 msgstr "**config**"
 
-#: ../../settings_kb/ecos_artifacts.rst:626
+#: ../../settings_kb/ecos_artifacts.rst:628
 msgid "ObjectData"
 msgstr "ObjectData"
 
@@ -1523,15 +1532,53 @@ msgstr "ObjectData"
 msgid "Конфигурация патча"
 msgstr "Patch configuration"
 
-#: ../../settings_kb/ecos_artifacts.rst:632
-msgid "Патчи описываются в **eapps/artifacts/artifact-patch** директории."
-msgstr "Patches are described in the **eapps/artifacts/artifact-patch** directory."
+#: ../../settings_kb/ecos_artifacts.rst:633
+msgid "**enabled**"
+msgstr "**enabled**"
 
-#: ../../settings_kb/ecos_artifacts.rst:635
+#: ../../settings_kb/ecos_artifacts.rst:634
+msgid "Boolean"
+msgstr "Boolean"
+
+#: ../../settings_kb/ecos_artifacts.rst:636
+msgid "true"
+msgstr "true"
+
+#: ../../settings_kb/ecos_artifacts.rst:637
+msgid "Включён ли патч. Значение false позволяет отключить патч без удаления."
+msgstr "Whether the patch is enabled. false disables it without deletion."
+
+#: ../../settings_kb/ecos_artifacts.rst:638
+msgid "**sourceType**"
+msgstr "**sourceType**"
+
+#: ../../settings_kb/ecos_artifacts.rst:639
+msgid "ArtifactSourceType"
+msgstr "ArtifactSourceType"
+
+#: ../../settings_kb/ecos_artifacts.rst:641
+msgid "Определяется при сохранении"
+msgstr "Determined on save"
+
+#: ../../settings_kb/ecos_artifacts.rst:642
+msgid ""
+"Источник патча. Задаётся метаданными деплоя, а при пользовательском "
+"сохранении нормализуется в USER; участвует в отборе применимых патчей."
+msgstr "Patch source. Set by deployment metadata and normalized to USER on user saves; participates in applicable patch selection."
+
+#: ../../settings_kb/ecos_artifacts.rst:644
+msgid ""
+"В микросервисе патчи размещаются в "
+"``src/main/resources/eapps/artifacts/app/artifact-patch``. В проекте "
+"приложения с корнем ``src/main/resources/app`` используется каталог "
+"``src/main/resources/app/artifacts/app/artifact-patch``."
+msgstr "In a microservice, patches reside in ``src/main/resources/eapps/artifacts/app/artifact-patch``. An application project rooted at ``src/main/resources/app`` uses ``src/main/resources/app/artifacts/app/artifact-patch``."
+
+#: ../../settings_kb/ecos_artifacts.rst:647
 msgid "Журнал «Патчи артефактов»"
 msgstr "Journal \"Artifact Patches\""
 
-#: ../../settings_kb/ecos_artifacts.rst:637
+#: ../../settings_kb/ecos_artifacts.rst:649
 msgid ""
 "Расположен **Рабочее пространство \"Раздел администратора\" - Управление "
 "системой - Патчи артефактов**:"
@@ -1539,39 +1586,39 @@ msgstr ""
 "Located in **Workspace \"Admin Section\" - System Management - Artifact "
 "Patches**:"
 
-#: ../../settings_kb/ecos_artifacts.rst:643
+#: ../../settings_kb/ecos_artifacts.rst:655
 msgid "Доступные действия:"
 msgstr "Available actions:"
 
-#: ../../settings_kb/ecos_artifacts.rst:645
+#: ../../settings_kb/ecos_artifacts.rst:657
 msgid "Скачать;"
 msgstr "Download;"
 
-#: ../../settings_kb/ecos_artifacts.rst:646
+#: ../../settings_kb/ecos_artifacts.rst:658
 msgid "Удалить;"
 msgstr "Delete;"
 
-#: ../../settings_kb/ecos_artifacts.rst:647
+#: ../../settings_kb/ecos_artifacts.rst:659
 msgid "Просмотреть;"
 msgstr "View;"
 
-#: ../../settings_kb/ecos_artifacts.rst:648
+#: ../../settings_kb/ecos_artifacts.rst:660
 msgid "Редактировать свойства;"
 msgstr "Edit properties;"
 
-#: ../../settings_kb/ecos_artifacts.rst:649
+#: ../../settings_kb/ecos_artifacts.rst:661
 msgid "Редактор JSON."
 msgstr "JSON Editor."
 
-#: ../../settings_kb/ecos_artifacts.rst:652
+#: ../../settings_kb/ecos_artifacts.rst:664
 msgid "Типы патчей"
 msgstr "Patch Types"
 
-#: ../../settings_kb/ecos_artifacts.rst:655
+#: ../../settings_kb/ecos_artifacts.rst:667
 msgid "Тип патча \"json\""
 msgstr "Patch type \"json\""
 
-#: ../../settings_kb/ecos_artifacts.rst:657
+#: ../../settings_kb/ecos_artifacts.rst:669
 msgid ""
 "В конфигурации указывается 1 параметр - **operations** с типом **массив "
 "объектов**."
@@ -1579,7 +1626,7 @@ msgstr ""
 "The configuration specifies 1 parameter - **operations** with the type "
 "**array of objects**."
 
-#: ../../settings_kb/ecos_artifacts.rst:659
+#: ../../settings_kb/ecos_artifacts.rst:671
 msgid ""
 "Все операции из массива **operations** применяются последовательно к "
 "результату изменений предыдущей операции."
@@ -1587,23 +1634,23 @@ msgstr ""
 "All operations from the **operations** array are applied sequentially to "
 "the result of the previous operation's changes."
 
-#: ../../settings_kb/ecos_artifacts.rst:661
+#: ../../settings_kb/ecos_artifacts.rst:673
 msgid "Тип операции определяется в ключе op и может быть следующим:"
 msgstr "The operation type is determined by the op key and can be as follows:"
 
-#: ../../settings_kb/ecos_artifacts.rst:669
+#: ../../settings_kb/ecos_artifacts.rst:681
 msgid "op"
 msgstr "op"
 
-#: ../../settings_kb/ecos_artifacts.rst:671
+#: ../../settings_kb/ecos_artifacts.rst:683
 msgid "Параметры"
 msgstr "Parameters"
 
-#: ../../settings_kb/ecos_artifacts.rst:672
+#: ../../settings_kb/ecos_artifacts.rst:684
 msgid "**add**"
 msgstr "**add**"
 
-#: ../../settings_kb/ecos_artifacts.rst:673
+#: ../../settings_kb/ecos_artifacts.rst:685
 msgid "Добавить элемент или массив элементов в массив по пути."
 msgstr "Add an element or an array of elements to the array at the specified path."
 
@@ -1627,11 +1674,11 @@ msgstr ""
 "be specified. In this case, elements will be added either to the "
 "beginning or to the end."
 
-#: ../../settings_kb/ecos_artifacts.rst:677
+#: ../../settings_kb/ecos_artifacts.rst:689
 msgid "**set**"
 msgstr "**set**"
 
-#: ../../settings_kb/ecos_artifacts.rst:678
+#: ../../settings_kb/ecos_artifacts.rst:690
 msgid "Установить явное значение любому полю."
 msgstr "Set an explicit value to any field."
 
@@ -1651,11 +1698,11 @@ msgstr ""
 msgid "**value** - значение или массив значений, которые следует установить"
 msgstr "**value** - value or array of values to be set"
 
-#: ../../settings_kb/ecos_artifacts.rst:682
+#: ../../settings_kb/ecos_artifacts.rst:694
 msgid "**remove**"
 msgstr "**remove**"
 
-#: ../../settings_kb/ecos_artifacts.rst:683
+#: ../../settings_kb/ecos_artifacts.rst:695
 msgid "Удалить элемент из конфигурации"
 msgstr "Remove an element from the configuration"
 
@@ -1663,11 +1710,11 @@ msgstr "Remove an element from the configuration"
 msgid "**path** - JsonPath до элемента, который нужно удалить"
 msgstr "**path** - JsonPath to the element to be removed"
 
-#: ../../settings_kb/ecos_artifacts.rst:685
+#: ../../settings_kb/ecos_artifacts.rst:697
 msgid "**rename-key**"
 msgstr "**rename-key**"
 
-#: ../../settings_kb/ecos_artifacts.rst:686
+#: ../../settings_kb/ecos_artifacts.rst:698
 msgid "Переименовать ключ в объекте внутри конфигурации."
 msgstr "Rename a key in an object within the configuration."
 
@@ -1683,7 +1730,7 @@ msgstr "**oldKey** - old key name"
 msgid "**newKey** - новое наименование ключа"
 msgstr "**newKey** - new key name"
 
-#: ../../settings_kb/ecos_artifacts.rst:692
+#: ../../settings_kb/ecos_artifacts.rst:704
 msgid "Примеры"
 msgstr "Examples"
 
@@ -1707,7 +1754,7 @@ msgstr "Remove an action"
 msgid "Изменить значение параметра конфигурации"
 msgstr "Change the value of a configuration parameter"
 
-#: ../../settings_kb/ecos_artifacts.rst:766
+#: ../../settings_kb/ecos_artifacts.rst:778
 msgid "Изменить значение параметра Конфигурации ECOS some-config-id на 123:"
 msgstr ""
 "Change the value of the ECOS configuration parameter some-config-id to "
@@ -1725,11 +1772,18 @@ msgstr "Patch for an artifact in a workspace"
 msgid "Патч к булевым атрибутам формы"
 msgstr "Patch to boolean attributes of a form"
 
-#: ../../settings_kb/ecos_artifacts.rst:854
+#: ../../settings_kb/ecos_artifacts.rst:851
+msgid ""
+"Ниже приведён фрагмент поля **config** для json-патча. Для "
+"самостоятельного артефакта добавьте внешние поля **id**, **target** и "
+"**type: json**."
+msgstr "The following is a json patch **config** snippet. For a standalone artifact, add outer **id**, **target** and **type: json** fields."
+
+#: ../../settings_kb/ecos_artifacts.rst:868
 msgid "Отображение артефактов разных категорий"
 msgstr "Displaying artifacts of different categories"
 
-#: ../../settings_kb/ecos_artifacts.rst:856
+#: ../../settings_kb/ecos_artifacts.rst:870
 msgid ""
 "В журналах **«Типы данных», «Формы» и «Журналы»** в фильтрах настройки "
 "таблицы можно выбрать какую категорию артефакта отражать – бизнес-данные "
@@ -1739,18 +1793,291 @@ msgstr ""
 " settings filters, you can choose which artifact category to display — "
 "business data or system."
 
-#: ../../settings_kb/ecos_artifacts.rst:858
+#: ../../settings_kb/ecos_artifacts.rst:872
 msgid "В фильтрах по умолчанию стоит **Системный тип (форма|журнал)= НЕТ**."
 msgstr "By default, the filter is set to **System type (form|journal) = NO**."
 
-#: ../../settings_kb/ecos_artifacts.rst:860
-msgid "Если выставить **ДА**, то в списке будут отражены несистемные записи."
-msgstr "If set to **YES**, non-system records will be displayed in the list."
+#: ../../settings_kb/ecos_artifacts.rst:874
+msgid "Если выставить **ДА**, то в списке будут отражены системные записи."
+msgstr "Select **YES** to display system records."
 
-#: ../../settings_kb/ecos_artifacts.rst:862
-msgid "Если выставить **Выбрать**, то будут отражены все записи."
-msgstr "If set to **Select**, all records will be displayed."
+#: ../../settings_kb/ecos_artifacts.rst:876
+msgid ""
+"Если снять ограничение по системности, будут отражены системные и "
+"несистемные записи с учётом остальных фильтров и доступных рабочих "
+"пространств."
+msgstr "Removing the system restriction displays both system and nonsystem records, subject to other filters and accessible workspaces."
 
 #~ msgid "Пример патча для добавления раздела меню:"
 #~ msgstr "Example patch for adding a menu section:"
 
+#~ msgid ""
+#~ ":ref:`Микросервис ecos-apps<apps_service>` управляет"
+#~ " артефактами, ведя их версионность и "
+#~ "доставляя их до целевого микросервиса. "
+#~ "Контент артефактов в системе неизменяемый "
+#~ "и при любом изменении артефакта всегда"
+#~ " создается новая версия, а старая "
+#~ "сохраняется в списке версий."
+#~ msgstr ""
+#~ ":ref:`Microservice ecos-apps<apps_service>` manages"
+#~ " artifacts, maintaining their versioning "
+#~ "and delivering them to the target "
+#~ "microservice. Artifact content in the "
+#~ "system is immutable, and any change "
+#~ "to an artifact always creates a "
+#~ "new version, while the old one is"
+#~ " preserved in the version list."
+
+#~ msgid ""
+#~ "Для управления :ref:`артефактами<ecos_artifacts>` "
+#~ "предусмотрен журнал **Артефакты ECOS**. В "
+#~ "данный журнал попадают все артефакты, "
+#~ "которые достигли микросервиса ``ecos-apps``."
+#~ msgstr ""
+#~ "A journal **ECOS Artifacts** is provided"
+#~ " for managing :ref:`artifacts<ecos_artifacts>`. "
+#~ "This journal includes all artifacts that"
+#~ " have reached the ``ecos-apps`` "
+#~ "microservice."
+
+#~ msgid ""
+#~ "При сабмите формы скачивается **zip** "
+#~ "архив со всеми версиями артефакта с "
+#~ "указанной даты."
+#~ msgstr ""
+#~ "Upon form submission, a **zip** archive"
+#~ " is downloaded containing all versions "
+#~ "of the artifact from the specified "
+#~ "date."
+
+#~ msgid ""
+#~ "Если последний артефакт был загружен "
+#~ "ранее чем выбранная дата, то будет "
+#~ "выгружен только он (т.е. всегда будет"
+#~ " как минимум 1 артефакт)."
+#~ msgstr ""
+#~ "If the last artifact was uploaded "
+#~ "earlier than the selected date, only "
+#~ "it will be downloaded (i.e., there "
+#~ "will always be at least 1 "
+#~ "artifact)."
+
+#~ msgid ""
+#~ "Формат имени папки с версией артефакта:"
+#~ " **дата_созданияTвремя_созданияZ-[USER | APPLICATION"
+#~ " | ECOS_APP]**. Дата создания указывается"
+#~ " в часовом поясе UTC."
+#~ msgstr ""
+#~ "The folder name format for the "
+#~ "artifact version: **creation_dateTcreation_timeZ-[USER "
+#~ "| APPLICATION | ECOS_APP]**. The "
+#~ "creation date is specified in UTC "
+#~ "timezone."
+
+#~ msgid ""
+#~ "Сброс происходит до той версии, которая"
+#~ " была установлена из приложения "
+#~ "(``APPLICATION`` или ``ECOS_APP``). Сбрасывать "
+#~ "можно только артефакты, которые в "
+#~ "колонке :guilabel:`Тип источника` имеют "
+#~ "**USER**."
+#~ msgstr ""
+#~ "The reset reverts to the version "
+#~ "that was installed from the application"
+#~ " (``APPLICATION`` or ``ECOS_APP``). Only "
+#~ "artifacts that have **USER** in the "
+#~ ":guilabel:`Source Type` column can be "
+#~ "reset."
+
+#~ msgid ""
+#~ "**USER** - Артефакт обновляется безусловно."
+#~ " Любое изменение артефакта приводит к "
+#~ "его изменению в базе микросервиса "
+#~ "``ecos-apps``."
+#~ msgstr ""
+#~ "**USER** - The artifact is updated "
+#~ "unconditionally. Any change to the "
+#~ "artifact leads to its change in "
+#~ "the ``ecos-apps`` microservice database."
+
+#~ msgid ""
+#~ "**ECOS_APP** - обновляется аналогично "
+#~ "APPLICATION, но при загрузке артефакту "
+#~ "проставляется признак принадлежности приложению. "
+#~ "Если артефакт принадлежит приложению, то "
+#~ "он не обновляется из APPLICATION."
+#~ msgstr ""
+#~ "**ECOS_APP** - updated similarly to "
+#~ "APPLICATION, but upon loading, the "
+#~ "artifact is marked as belonging to "
+#~ "an application. If an artifact belongs"
+#~ " to an application, it is not "
+#~ "updated from APPLICATION."
+
+#~ msgid ""
+#~ "Перезапись артефактов работает вне зависимости"
+#~ " от того откуда деплоится основной "
+#~ "артефакт"
+#~ msgstr ""
+#~ "Artifact overriding works regardless of "
+#~ "where the main artifact is deployed "
+#~ "from"
+
+#~ msgid ""
+#~ "В целевом приложении находим папку eapps"
+#~ " в ресурсах и создаем там подпапки"
+#~ " следующего содержания:"
+#~ msgstr ""
+#~ "In the target application, find the "
+#~ "eapps folder in the resources and "
+#~ "create subfolders with the following "
+#~ "content:"
+
+#~ msgid ""
+#~ "Не обязательно создавать именно 2 "
+#~ "уровня, но желательно. Механизм поддерживает"
+#~ " уровни любой вложенности от 1 до "
+#~ "ограничений файловой системы)."
+#~ msgstr ""
+#~ "It is not necessary to create "
+#~ "exactly 2 levels, but it is "
+#~ "desirable. The mechanism supports levels "
+#~ "of any nesting from 1 to file "
+#~ "system limitations)."
+
+#~ msgid ""
+#~ "Создаем в получившейся директории файл "
+#~ "type.yml примерно со следующим содержанием:"
+#~ msgstr ""
+#~ "Create a type.yml file in the "
+#~ "resulting directory with approximately the "
+#~ "following content:"
+
+#~ msgid ""
+#~ "**modelVersion** - тип модели. В будущем"
+#~ " будет использоваться для миграции старых"
+#~ " артефактов."
+#~ msgstr ""
+#~ "**modelVersion** - model type. In the"
+#~ " future, it will be used for "
+#~ "migrating old artifacts."
+
+#~ msgid ""
+#~ "**sourceId** - ID источника данных "
+#~ "(RecordsDAO) через который будет доступ "
+#~ "к данным артефактам. Это поле необходимо"
+#~ " если потребуется механизм разрешения "
+#~ "зависимостей на стороне ECOS Apps. Если"
+#~ " у артефакта не будет зависимостей, "
+#~ "то можно поставить пустую строку."
+#~ msgstr ""
+#~ "**sourceId** - ID of the data "
+#~ "source (RecordsDAO) through which access "
+#~ "to the artifact data will be "
+#~ "provided. This field is necessary if "
+#~ "a dependency resolution mechanism is "
+#~ "required on the ECOS Apps side. If"
+#~ " the artifact has no dependencies, an"
+#~ " empty string can be used."
+
+#~ msgid ""
+#~ "**controller.type** - тип контроллера для "
+#~ "типа артефакта. Определяет логику, по "
+#~ "которой будут загружаться артефакты из "
+#~ "директории и записываться в директорию. "
+#~ "json - самый простой и понятный "
+#~ "контроллер, который следует использовать при"
+#~ " добавлении простых типов артефактов. Для"
+#~ " сложных случаев существует script "
+#~ "controller, который поддерживает описание "
+#~ "логики чтения и записи артефактов на "
+#~ "языке groovy (в перспективе добавятся "
+#~ "другие языки вроде Kotlin)."
+#~ msgstr ""
+#~ "**controller.type** - controller type for "
+#~ "the artifact type. Defines the logic "
+#~ "for loading artifacts from the directory"
+#~ " and writing to the directory. json"
+#~ " is the simplest and most "
+#~ "understandable controller, which should be "
+#~ "used when adding simple artifact types."
+#~ " For complex cases, there is a "
+#~ "script controller that supports describing "
+#~ "the logic for reading and writing "
+#~ "artifacts in Groovy (other languages "
+#~ "like Kotlin will be added in the"
+#~ " future)."
+
+#~ msgid "Описываем хендлер для нашего артефакта:"
+#~ msgstr "Describe the handler for our artifact:"
+
+#~ msgid ""
+#~ "На этом описание типа артефакта можно"
+#~ " считать законченным. Можно положить "
+#~ "**.json** файлы в ``eapps/artifacts/ui/form``."
+#~ msgstr ""
+#~ "This completes the description of the"
+#~ " artifact type. You can place "
+#~ "**.json** files in ``eapps/artifacts/ui/form``."
+
+#~ msgid ""
+#~ "При скачивании артефакта из журнала мы"
+#~ " все равно будем получать json вне"
+#~ " зависимости от того как описана "
+#~ "исходная конфигурация."
+#~ msgstr ""
+#~ "When downloading an artifact from the"
+#~ " journal, we will still receive json"
+#~ " regardless of how the original "
+#~ "configuration was described."
+
+#~ msgid ""
+#~ "Патчи обновляют целевой артефакт \"на "
+#~ "лету\" при каждом изменении артефакта "
+#~ "или самого патча. Например, удалив патч"
+#~ " в журнале мы увидим через 3-7 "
+#~ "секунд, что изменения, которые он "
+#~ "накладывал откатились и артефакт приобрел "
+#~ "стандартную конфигурацию."
+#~ msgstr ""
+#~ "Patches update the target artifact \"on"
+#~ " the fly\" with every change to "
+#~ "the artifact or the patch itself. "
+#~ "For example, by deleting a patch "
+#~ "in the journal, we will see within"
+#~ " 3-7 seconds that the changes it "
+#~ "applied have been rolled back and "
+#~ "the artifact has acquired the standard"
+#~ " configuration."
+
+#~ msgid ""
+#~ "Если менять запись, на которую действует"
+#~ " патч через интерфейс, то патч сам"
+#~ " не переприменится. Если загружать новую"
+#~ " версию артефакта через **ecos-apps** "
+#~ "(подкладывая в target или при "
+#~ "перезапуске сервера), то патч применится."
+#~ msgstr ""
+#~ "If you change the record affected "
+#~ "by the patch through the interface, "
+#~ "the patch will not reapply itself. "
+#~ "If you load a new version of "
+#~ "the artifact through **ecos-apps** (by"
+#~ " placing it in target or when "
+#~ "restarting the server), the patch will"
+#~ " be applied."
+
+#~ msgid "ModuleRef"
+#~ msgstr "ModuleRef"
+
+#~ msgid "На данный момент поддерживается только json тип."
+#~ msgstr "Currently, only the json type is supported."
+
+#~ msgid "Патчи описываются в **eapps/artifacts/artifact-patch** директории."
+#~ msgstr ""
+#~ "Patches are described in the "
+#~ "**eapps/artifacts/artifact-patch** directory."
+
+#~ msgid "Если выставить **Выбрать**, то будут отражены все записи."
+#~ msgstr "If set to **Select**, all records will be displayed."

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -20,11 +20,10 @@ msgstr "Frontend and general settings for any action"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:6
 msgid ""
-"Как действия устроены на фронтенде и какие настройки применимы к действию"
-" любого типа, независимо от его ``type``."
-msgstr ""
-"How actions are structured on the frontend and which settings apply to "
-"an action of any type, regardless of its ``type``."
+"Общие поля действия задают его название, применимость, подтверждение и "
+"предобработку. Их поведение зависит от режима выполнения и возможностей "
+"выбранного типа."
+msgstr "Common fields define name, applicability, confirmation and preprocessing. Behavior depends on execution mode and selected type capabilities."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:9
 msgid "Содержание"
@@ -36,254 +35,474 @@ msgstr "Frontend"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:14
 msgid ""
-"На фронтенде действия описаны в виде javascript сущностей с методами "
-"``execForRecord``, ``execForRecords``, ``execForQuery``, "
-"``getDefaultModel``, ``canBeExecuted`` и др."
-msgstr ""
-"On the frontend, actions are described as javascript entities with "
-"methods ``execForRecord``, ``execForRecords``, ``execForQuery``, "
-"``getDefaultModel``, ``canBeExecuted``, and others."
+"Исполнители действий наследуют ``ActionsExecutor`` из "
+"``src/components/core/Records/actions/handler/ActionsExecutor.js``. В "
+"зависимости от поддерживаемого режима они реализуют:"
+msgstr "Executors extend ``ActionsExecutor`` from ``src/components/core/Records/actions/handler/ActionsExecutor.js``. According to supported modes, they implement:"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:16
-msgid ""
-"Например: "
-"``src/components/Records/actions/handler/executor/CreateAction.js``"
-msgstr ""
-"For example: "
-"``src/components/Records/actions/handler/executor/CreateAction.js``"
+msgid "``execForRecord(record, action, context)`` — для одной записи;"
+msgstr "``execForRecord(record, action, context)`` — one record;"
+
+#: ../../settings_kb/ui_actions/common_settings.rst:17
+msgid "``execForRecords(records, action, context)`` — для массива записей;"
+msgstr "``execForRecords(records, action, context)`` — an array;"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:18
-msgid ""
-"При выполнении действия вызывается метод execute в который передается "
-"запись, над которой выполняется действие и конфигурация действия."
-msgstr ""
-"When an action is performed, the execute method is called, which is "
-"passed the record the action is being performed on and the action "
-"configuration."
+msgid "``execForQuery(query, action, context)`` — для поискового запроса."
+msgstr "``execForQuery(query, action, context)`` — a search query."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:20
 msgid ""
-"Реестр действий описан в "
-"``src/components/Records/actions/RecordActionExecutorsRegistry.js``"
-msgstr ""
-"The action registry is described in "
-"``src/components/Records/actions/RecordActionExecutorsRegistry.js``"
+"Метод ``getDefaultActionModel()`` задаёт значения модели по умолчанию, а "
+"``isAllowedInContext(context)`` проверяет доступность действия в "
+"контексте интерфейса."
+msgstr "``getDefaultActionModel()`` provides model defaults, and ``isAllowedInContext(context)`` checks UI context availability."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:22
 msgid ""
-"Регистрация действий в реестре: "
-"``src/components/Records/actions/index.js``"
-msgstr ""
-"Registration of actions in the registry: "
-"``src/components/Records/actions/index.js``"
+"Пример исполнителя: "
+"``src/components/core/Records/actions/handler/executor/CreateAction.js``."
+" Реестр находится в "
+"``src/components/core/Records/actions/actionsRegistry.js``; встроенные "
+"обработчики регистрируются функцией ``registerAllActions`` в "
+"``actions.js``. Общий порядок выполнения описан в ``recordActions.js``."
+msgstr "Example executor: ``src/components/core/Records/actions/handler/executor/CreateAction.js``. Registry: ``src/components/core/Records/actions/actionsRegistry.js``; built-ins are registered by ``registerAllActions`` in ``actions.js``. ``recordActions.js`` describes common execution order."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:25
-msgid "Общие настройки любого действия"
-msgstr "General settings for any action"
+#: ../../settings_kb/ui_actions/common_settings.rst:26
+msgid "Общие настройки"
+msgstr "Common settings"
 
-#: ../../settings_kb/ui_actions/common_settings.rst:27
+#: ../../settings_kb/ui_actions/common_settings.rst:29
+msgid "Название и применимость"
+msgstr "Name and applicability"
+
+#: ../../settings_kb/ui_actions/common_settings.rst:45
 msgid ""
-"Ниже перечислены настройки, которые применимы к действию любого типа, "
-"независимо от его ``type``."
-msgstr ""
-"Below are the settings that apply to an action of any type, regardless "
-"of its ``type``."
-
-#: ../../settings_kb/ui_actions/common_settings.rst:30
-msgid "Стандартные установки"
-msgstr "Standard settings"
+"Описание общих полей см. в разделе :ref:`Формат действия "
+"<ui_actions_format>`."
+msgstr "For common fields, see :ref:`Action format <ui_actions_format>`."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:47
-msgid "**id** - идентификатор действия;"
-msgstr "**id** - action identifier;"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:48
-msgid "**name** - название действия;"
-msgstr "**name** - action name;"
+msgid "Флажки ``features`` имеют три состояния:"
+msgstr "``features`` flags have three states:"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:49
-msgid "**type** - тип;"
-msgstr "**type** - type;"
+msgid "``false`` — режим запрещён;"
+msgstr "``false`` — mode prohibited;"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:50
-msgid "**config** - дополнительные сведения;"
-msgstr "**config** - additional information;"
+msgid "``true`` — режим разрешён, если исполнитель его реализует;"
+msgstr "``true`` — mode allowed if implemented by the executor;"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:51
-msgid "**icon** - код картинки из иконочного шрифта citeck;"
-msgstr "**icon** - image code from the citeck icon font;"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:52
-msgid "**theme** - имя темы."
-msgstr "**theme** - theme name."
+msgid "значение не задано — используется доступность режима в исполнителе."
+msgstr "Unset — executor capabilities determine availability."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:53
 msgid ""
-"**features** - использовать для записи/Record, записей/Records, "
-"поискового запроса/Query"
-msgstr ""
-"**features** - use for a record/Record, records/Records, a search "
-"query/Query"
+"Флажок не добавляет отсутствующий метод. Например, ``open-url`` реализует"
+" только выполнение для одной записи; ``execForRecords: true`` не "
+"превращает его в групповое действие."
+msgstr "A flag does not add a missing method. For example, ``open-url`` supports only single-record execution; ``execForRecords: true`` does not make it a group action."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:56
-msgid "Подтверждение и контент окна"
-msgstr "Confirmation and window content"
+msgid "Подтверждение"
+msgstr "Confirmation"
 
-#: ../../settings_kb/ui_actions/common_settings.rst:71
-msgid "Подтверждение выполнения действия"
-msgstr "Confirmation of action execution"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:72
-msgid ""
-"- если не заданы значения в **confirm** , действие выполняется без "
-"подтверждения"
-msgstr ""
-"- if no values are set in **confirm**, the action is performed without "
-"confirmation"
+#: ../../settings_kb/ui_actions/common_settings.rst:57
+msgid "Пример поля ``confirm`` в конфигурации действия:"
+msgstr "Example action ``confirm`` field:"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:73
-msgid "- **title** - заголовок окна (строка или объект с локализацией)"
-msgstr "- **title** - window title (a string or a localization object)"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:74
-msgid "- **message** - сообщение в окне"
-msgstr "- **message** - message in the window"
+msgid ""
+"Если не заданы ``confirm.title``, ``confirm.message`` и "
+"``confirm.formRef``, общего диалога подтверждения нет. Сам исполнитель "
+"может показывать собственный диалог, например ``delete``."
+msgstr "Without ``confirm.title``, ``confirm.message`` or ``confirm.formRef``, there is no common confirmation dialog. An executor such as ``delete`` may show its own."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:75
 msgid ""
-"- если задано **formRef** - отображается соответствующая форма в окне "
-"подтверждения (message игнорируется)"
-msgstr ""
-"- if **formRef** is set, the corresponding form is displayed in the "
-"confirmation window (message is ignored)"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:76
-msgid ""
-"- **attributesMapping** - маппинг атрибутов, данные с формы подтверждения"
-" (комментарии и т.д.) можно прокинуть в поля конфигурации действия; "
-"``key`` - путь для записи в body конфигурации действия, ``value`` - путь "
-"к значению с формы."
-msgstr ""
-"- **attributesMapping** - attribute mapping; data from the confirmation"
-" form (comments, etc.) can be passed into the action configuration "
-"fields; ``key`` is the path to write into the body of the action "
-"configuration, ``value`` is the path to the value from the form."
+"``title`` и ``message`` поддерживают локализацию. Если указан "
+"``formRef``, открывается форма подтверждения, а ``message`` не "
+"отображается. ``formAttributes`` задаёт исходные данные формы."
+msgstr "``title`` and ``message`` support localization. ``formRef`` opens a confirmation form and suppresses ``message``. ``formAttributes`` sets initial form data."
 
 #: ../../settings_kb/ui_actions/common_settings.rst:77
 msgid ""
-"Ответ подтверждения, если он есть, и прочие данные с формы, передается в "
-"действие."
-msgstr ""
-"The confirmation response, if any, and other data from the form are "
-"passed into the action."
+"``attributesMapping`` переносит данные отправленной формы в ``config`` "
+"действия: ключ — путь назначения внутри ``config``, значение — путь к "
+"полю в данных формы. В примере значение поля ``comment`` попадает в "
+"``config.body.comment``."
+msgstr "``attributesMapping`` copies submitted form data into action ``config``: keys are destination paths within ``config``, values are form data paths. Here ``comment`` becomes ``config.body.comment``."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:78
+#: ../../settings_kb/ui_actions/common_settings.rst:79
 msgid ""
-"Например, в запросе необходимо отправить комментарий с формы "
-"подтверждения. Для этого настраиваем ``body.comment``. Внутри ``body`` в "
-"поле ``comment`` необходимо найти и записать значение из поля ``comment``"
-" в форму подтверждения."
-msgstr ""
-"For example, the request needs to send a comment from the confirmation "
-"form. To do this, configure ``body.comment``. Inside ``body``, in the "
-"``comment`` field, find and write the value from the ``comment`` field "
-"in the confirmation form."
+"При выполнении для одной записи в options формы передаётся "
+"``actionRecord``, для выбранных записей — ``actionRecords``. "
+"Дополнительные options можно задать через ``confirm.formOptions``; они "
+"объединяются после автоматически сформированных options и могут их "
+"переопределить."
+msgstr "Single-record forms receive ``actionRecord`` in options; selected-record forms receive ``actionRecords``. Additional ``confirm.formOptions`` are merged afterward and may override generated options."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:81
-msgid "Подстановка значения по атрибуту"
-msgstr "Substituting a value by attribute"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:100
-msgid ""
-"В любом месте конфигурации можно подставлять атрибуты из записи, над "
-"которой происходит действие."
-msgstr ""
-"Attributes from the record the action is performed on can be "
-"substituted anywhere in the configuration."
+#: ../../settings_kb/ui_actions/common_settings.rst:82
+msgid "Подстановка атрибутов записи"
+msgstr "Record attribute substitution"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:101
 #, python-brace-format
 msgid ""
-"Есть один частный случай - ``${recordRef}``. Вместо него всегда "
-"подставляется ``recordRef`` текущей записи."
-msgstr ""
-"There is one special case - ``${recordRef}``. It is always replaced "
-"with the ``recordRef`` of the current record."
+"Перед одиночным выполнением в любом месте ``config`` разворачиваются "
+"вставки ``${attribute_name}``. Значения загружаются как атрибуты Records;"
+" специальное выражение ``${recordRef}`` обозначает ссылку на текущую "
+"запись."
+msgstr "Before single execution, ``${attribute_name}`` substitutions anywhere in ``config`` are expanded. Values load as Records attributes; special ``${recordRef}`` means the current record reference."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:102
+#: ../../settings_kb/ui_actions/common_settings.rst:103
 msgid ""
-"Все остальные атрибуты подставляются так же как если они загружены через "
-"``Records.load(...)``."
-msgstr ""
-"All other attributes are substituted the same way as if they were "
-"loaded via ``Records.load(...)``."
+"Для группового выполнения и запроса общей подстановки по одной записи "
+"нет. Она зависит от исполнителя: например, обычный групповой ``mutate`` "
+"разворачивает конфигурацию отдельно для каждой записи. В "
+"``confirm.formAttributes`` подстановка выполняется только при одиночном "
+"подтверждении, когда известен ``actionRecord``."
+msgstr "Groups and queries have no shared single-record substitution. Executor behavior applies: ordinary group ``mutate`` expands configuration separately per record. ``confirm.formAttributes`` substitution runs only for single confirmation with known ``actionRecord``."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:105
-msgid "Отключение окна о результатах выполнения"
-msgstr "Disabling the execution results window"
+#: ../../settings_kb/ui_actions/common_settings.rst:106
+msgid "Окно результата"
+msgstr "Result dialog"
 
-#: ../../settings_kb/ui_actions/common_settings.rst:115
-msgid "По умолчанию ``false``"
-msgstr "``false`` by default"
+#: ../../settings_kb/ui_actions/common_settings.rst:107
+msgid ""
+"Для одиночного выполнения окно результата можно отключить через "
+"``config.noResultModal``:"
+msgstr "For single execution, disable the result dialog with ``config.noResultModal``:"
 
-#: ../../settings_kb/ui_actions/common_settings.rst:118
-msgid "Первоначальная обработка внешним модулем"
-msgstr "Initial processing by an external module"
+#: ../../settings_kb/ui_actions/common_settings.rst:120
+msgid ""
+"По умолчанию ``noResultModal`` равен ``false``. Общие ветки группового "
+"выполнения и выполнения по запросу этот флаг не проверяют. Он также не "
+"отключает собственные диалоги и уведомления исполнителя."
+msgstr "``noResultModal`` defaults to ``false``. Common group and query branches do not check it. It also does not disable executor-specific dialogs or notifications."
+
+#: ../../settings_kb/ui_actions/common_settings.rst:122
+msgid ""
+"Заголовок общего окна результата формируется из ``config.title`` или "
+"названия действия. Содержимое определяется возвращённым результатом, см. "
+":ref:`Формат результата <ui_actions_result>`."
+msgstr "The common result dialog title comes from ``config.title`` or action name. Contents depend on the returned result; see :ref:`Result format <ui_actions_result>`."
+
+#: ../../settings_kb/ui_actions/common_settings.rst:125
+msgid "Предобработка внешним модулем"
+msgstr "External module preprocessing"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:126
-msgid "``preActionModule`` указывается ссылка на модуль содержащая js код."
-msgstr "``preActionModule`` specifies a reference to a module containing js code."
-
-#: ../../settings_kb/ui_actions/common_settings.rst:127
 msgid ""
-"Модулю нужно экспортировать функции ``execForRecord`` или "
-"``execForRecords``  (в зависимости от features), которые вызываются перед"
-" выполнением основного внутреннего действия."
-msgstr ""
-"The module needs to export the ``execForRecord`` or ``execForRecords`` "
-"functions (depending on features), which are called before the main "
-"internal action is executed."
+"В поле верхнего уровня ``preActionModule`` задаётся URL загружаемого "
+"JS-модуля. Например:"
+msgstr "Top-level ``preActionModule`` specifies the URL of a JS module. For example:"
 
-#: ../../settings_kb/ui_actions/common_settings.rst:128
+#: ../../settings_kb/ui_actions/common_settings.rst:132
 msgid ""
-"В функцию модуля передаются значения: ``records``, ``action``, "
-"``context``."
-msgstr ""
-"The module function is passed the values: ``records``, ``action``, "
-"``context``."
+"Модуль экспортирует объект с функциями для нужных режимов. Каждая функция"
+" вызывается с аргументами ``(records, action, context)``. В одиночном "
+"режиме ``records`` — массив из одной записи; в режиме запроса — "
+"``undefined``."
+msgstr "The module exports functions for required modes. Each receives ``(records, action, context)``. For single execution, ``records`` is a one-item array; for queries, ``undefined``."
 
-#: ../../settings_kb/ui_actions/common_settings.rst:129
-msgid "Ожидаемый ответ от функции модуля:"
-msgstr "Expected response from the module function:"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:144
-msgid "ключ-значения не обязательные, но обрабатываются только они."
-msgstr "the key-values are not required, but only these are processed."
-
-#: ../../settings_kb/ui_actions/common_settings.rst:145
-msgid ""
-"**config** - объединяется со значением config из конфигурации самого "
-"действия"
-msgstr ""
-"**config** - merged with the config value from the action's own "
-"configuration"
-
-#: ../../settings_kb/ui_actions/common_settings.rst:146
-msgid ""
-"**results** - актуально для ``execForRecords``; внешнее действие может "
-"обработать какие-то записи и вернуть по ним результат."
-msgstr ""
-"**results** - relevant for ``execForRecords``; the external action can "
-"process some records and return a result for them."
+#: ../../settings_kb/ui_actions/common_settings.rst:134
+msgid "Пример ES-модуля для группового выполнения:"
+msgstr "Example group execution ES module:"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:147
-msgid ""
-"Если записи указаны в **results**, они исключаются из выполнения "
-"внутреннего основного действия."
-msgstr ""
-"If records are specified in **results**, they are excluded from "
-"execution of the internal main action."
+msgid "Ответ может содержать:"
+msgstr "The response may contain:"
 
 #: ../../settings_kb/ui_actions/common_settings.rst:149
-msgid "Результаты внешнего и внутреннего объединяются для вывода информации."
-msgstr "The results of the external and internal actions are merged for output."
+msgid ""
+"``config`` — поля, которые неглубоко объединяются поверх "
+"``action.config``. Вложенные объекты заменяются целиком;"
+msgstr "``config`` — fields shallow-merged over ``action.config``. Nested objects are replaced entirely;"
+
+#: ../../settings_kb/ui_actions/common_settings.rst:150
+msgid ""
+"``results`` — результаты для уже обработанных записей в групповом режиме."
+" Каждый элемент содержит ``recordRef``, ``status`` и ``message``. Такие "
+"записи исключаются из основного выполнения, результаты объединяются для "
+"отображения."
+msgstr "``results`` — results for already processed records in group mode. Each has ``recordRef``, ``status`` and ``message``. These records are excluded from main execution, and results are merged for display."
+
+#: ../../settings_kb/ui_actions/common_settings.rst:154
+msgid ""
+"В текущей одиночной ветке возвращённый ``config`` не передаётся основному"
+" исполнителю: он получает ранее подготовленную конфигурацию. ``results`` "
+"также не отменяет выполнение одиночного действия. Не используйте эти поля"
+" предобработки для изменения или пропуска одиночного действия."
+msgstr "The current single-record branch does not pass returned ``config`` to the executor, which receives earlier prepared configuration. ``results`` also does not cancel single execution. Do not use these preprocessing fields to change or skip single actions."
+
+#: ../../settings_kb/ui_actions/common_settings.rst:156
+msgid ""
+"Для режима запроса модуль может определить ``execForQuery``. Исходный "
+"поисковый запрос отдельным аргументом предобработке не передаётся. "
+"Поведение предобработки запроса и выбранных записей различается."
+msgstr "For queries, the module may define ``execForQuery``. The original query is not passed as a separate preprocessing argument. Query preprocessing differs from selected-record preprocessing."
+
+#~ msgid ""
+#~ "Как действия устроены на фронтенде и "
+#~ "какие настройки применимы к действию "
+#~ "любого типа, независимо от его ``type``."
+#~ msgstr ""
+#~ "How actions are structured on the "
+#~ "frontend and which settings apply to "
+#~ "an action of any type, regardless "
+#~ "of its ``type``."
+
+#~ msgid ""
+#~ "На фронтенде действия описаны в виде "
+#~ "javascript сущностей с методами "
+#~ "``execForRecord``, ``execForRecords``, ``execForQuery``,"
+#~ " ``getDefaultModel``, ``canBeExecuted`` и др."
+#~ msgstr ""
+#~ "On the frontend, actions are described"
+#~ " as javascript entities with methods "
+#~ "``execForRecord``, ``execForRecords``, ``execForQuery``,"
+#~ " ``getDefaultModel``, ``canBeExecuted``, and "
+#~ "others."
+
+#~ msgid ""
+#~ "Например: "
+#~ "``src/components/Records/actions/handler/executor/CreateAction.js``"
+#~ msgstr ""
+#~ "For example: "
+#~ "``src/components/Records/actions/handler/executor/CreateAction.js``"
+
+#~ msgid ""
+#~ "При выполнении действия вызывается метод "
+#~ "execute в который передается запись, над"
+#~ " которой выполняется действие и "
+#~ "конфигурация действия."
+#~ msgstr ""
+#~ "When an action is performed, the "
+#~ "execute method is called, which is "
+#~ "passed the record the action is "
+#~ "being performed on and the action "
+#~ "configuration."
+
+#~ msgid ""
+#~ "Реестр действий описан в "
+#~ "``src/components/Records/actions/RecordActionExecutorsRegistry.js``"
+#~ msgstr ""
+#~ "The action registry is described in "
+#~ "``src/components/Records/actions/RecordActionExecutorsRegistry.js``"
+
+#~ msgid ""
+#~ "Регистрация действий в реестре: "
+#~ "``src/components/Records/actions/index.js``"
+#~ msgstr ""
+#~ "Registration of actions in the registry:"
+#~ " ``src/components/Records/actions/index.js``"
+
+#~ msgid ""
+#~ "Ниже перечислены настройки, которые применимы"
+#~ " к действию любого типа, независимо "
+#~ "от его ``type``."
+#~ msgstr ""
+#~ "Below are the settings that apply "
+#~ "to an action of any type, "
+#~ "regardless of its ``type``."
+
+#~ msgid "Стандартные установки"
+#~ msgstr "Standard settings"
+
+#~ msgid "**id** - идентификатор действия;"
+#~ msgstr "**id** - action identifier;"
+
+#~ msgid "**name** - название действия;"
+#~ msgstr "**name** - action name;"
+
+#~ msgid "**type** - тип;"
+#~ msgstr "**type** - type;"
+
+#~ msgid "**config** - дополнительные сведения;"
+#~ msgstr "**config** - additional information;"
+
+#~ msgid "**icon** - код картинки из иконочного шрифта citeck;"
+#~ msgstr "**icon** - image code from the citeck icon font;"
+
+#~ msgid "**theme** - имя темы."
+#~ msgstr "**theme** - theme name."
+
+#~ msgid ""
+#~ "**features** - использовать для записи/Record,"
+#~ " записей/Records, поискового запроса/Query"
+#~ msgstr ""
+#~ "**features** - use for a record/Record,"
+#~ " records/Records, a search query/Query"
+
+#~ msgid "Подтверждение и контент окна"
+#~ msgstr "Confirmation and window content"
+
+#~ msgid "Подтверждение выполнения действия"
+#~ msgstr "Confirmation of action execution"
+
+#~ msgid ""
+#~ "- если не заданы значения в "
+#~ "**confirm** , действие выполняется без "
+#~ "подтверждения"
+#~ msgstr ""
+#~ "- if no values are set in "
+#~ "**confirm**, the action is performed "
+#~ "without confirmation"
+
+#~ msgid "- **title** - заголовок окна (строка или объект с локализацией)"
+#~ msgstr "- **title** - window title (a string or a localization object)"
+
+#~ msgid "- **message** - сообщение в окне"
+#~ msgstr "- **message** - message in the window"
+
+#~ msgid ""
+#~ "- если задано **formRef** - отображается"
+#~ " соответствующая форма в окне подтверждения"
+#~ " (message игнорируется)"
+#~ msgstr ""
+#~ "- if **formRef** is set, the "
+#~ "corresponding form is displayed in the"
+#~ " confirmation window (message is ignored)"
+
+#~ msgid ""
+#~ "- **attributesMapping** - маппинг атрибутов,"
+#~ " данные с формы подтверждения (комментарии"
+#~ " и т.д.) можно прокинуть в поля "
+#~ "конфигурации действия; ``key`` - путь "
+#~ "для записи в body конфигурации действия,"
+#~ " ``value`` - путь к значению с "
+#~ "формы."
+#~ msgstr ""
+#~ "- **attributesMapping** - attribute mapping;"
+#~ " data from the confirmation form "
+#~ "(comments, etc.) can be passed into "
+#~ "the action configuration fields; ``key`` "
+#~ "is the path to write into the "
+#~ "body of the action configuration, "
+#~ "``value`` is the path to the value"
+#~ " from the form."
+
+#~ msgid ""
+#~ "Ответ подтверждения, если он есть, и "
+#~ "прочие данные с формы, передается в "
+#~ "действие."
+#~ msgstr ""
+#~ "The confirmation response, if any, and"
+#~ " other data from the form are "
+#~ "passed into the action."
+
+#~ msgid ""
+#~ "Например, в запросе необходимо отправить "
+#~ "комментарий с формы подтверждения. Для "
+#~ "этого настраиваем ``body.comment``. Внутри "
+#~ "``body`` в поле ``comment`` необходимо "
+#~ "найти и записать значение из поля "
+#~ "``comment`` в форму подтверждения."
+#~ msgstr ""
+#~ "For example, the request needs to "
+#~ "send a comment from the confirmation "
+#~ "form. To do this, configure "
+#~ "``body.comment``. Inside ``body``, in the "
+#~ "``comment`` field, find and write the"
+#~ " value from the ``comment`` field in"
+#~ " the confirmation form."
+
+#~ msgid ""
+#~ "В любом месте конфигурации можно "
+#~ "подставлять атрибуты из записи, над "
+#~ "которой происходит действие."
+#~ msgstr ""
+#~ "Attributes from the record the action"
+#~ " is performed on can be substituted"
+#~ " anywhere in the configuration."
+
+#~ msgid ""
+#~ "Есть один частный случай - "
+#~ "``${recordRef}``. Вместо него всегда "
+#~ "подставляется ``recordRef`` текущей записи."
+#~ msgstr ""
+#~ "There is one special case - "
+#~ "``${recordRef}``. It is always replaced "
+#~ "with the ``recordRef`` of the current"
+#~ " record."
+
+#~ msgid ""
+#~ "Все остальные атрибуты подставляются так "
+#~ "же как если они загружены через "
+#~ "``Records.load(...)``."
+#~ msgstr ""
+#~ "All other attributes are substituted the"
+#~ " same way as if they were "
+#~ "loaded via ``Records.load(...)``."
+
+#~ msgid "Отключение окна о результатах выполнения"
+#~ msgstr "Disabling the execution results window"
+
+#~ msgid "По умолчанию ``false``"
+#~ msgstr "``false`` by default"
+
+#~ msgid "``preActionModule`` указывается ссылка на модуль содержащая js код."
+#~ msgstr ""
+#~ "``preActionModule`` specifies a reference to"
+#~ " a module containing js code."
+
+#~ msgid ""
+#~ "Модулю нужно экспортировать функции "
+#~ "``execForRecord`` или ``execForRecords``  (в "
+#~ "зависимости от features), которые вызываются"
+#~ " перед выполнением основного внутреннего "
+#~ "действия."
+#~ msgstr ""
+#~ "The module needs to export the "
+#~ "``execForRecord`` or ``execForRecords`` functions"
+#~ " (depending on features), which are "
+#~ "called before the main internal action"
+#~ " is executed."
+
+#~ msgid ""
+#~ "В функцию модуля передаются значения: "
+#~ "``records``, ``action``, ``context``."
+#~ msgstr ""
+#~ "The module function is passed the "
+#~ "values: ``records``, ``action``, ``context``."
+
+#~ msgid "Ожидаемый ответ от функции модуля:"
+#~ msgstr "Expected response from the module function:"
+
+#~ msgid "ключ-значения не обязательные, но обрабатываются только они."
+#~ msgstr "the key-values are not required, but only these are processed."
+
+#~ msgid ""
+#~ "**config** - объединяется со значением "
+#~ "config из конфигурации самого действия"
+#~ msgstr ""
+#~ "**config** - merged with the config "
+#~ "value from the action's own "
+#~ "configuration"
+
+#~ msgid ""
+#~ "**results** - актуально для "
+#~ "``execForRecords``; внешнее действие может "
+#~ "обработать какие-то записи и вернуть по"
+#~ " ним результат."
+#~ msgstr ""
+#~ "**results** - relevant for ``execForRecords``;"
+#~ " the external action can process some"
+#~ " records and return a result for "
+#~ "them."
+
+#~ msgid ""
+#~ "Если записи указаны в **results**, они"
+#~ " исключаются из выполнения внутреннего "
+#~ "основного действия."
+#~ msgstr ""
+#~ "If records are specified in **results**,"
+#~ " they are excluded from execution of"
+#~ " the internal main action."
+
+#~ msgid "Результаты внешнего и внутреннего объединяются для вывода информации."
+#~ msgstr "The results of the external and internal actions are merged for output."

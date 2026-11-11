@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -72,19 +72,18 @@ msgstr ""
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:23
 msgid ""
-"Доступные операции с темами: загрузка новой темы **(1)**, скачивание "
-"**(2)**, удаление существующей **(3)**, применение темы **(4)**."
-msgstr ""
-"Available operations with themes: uploading a new theme **(1)**, "
-"downloading **(2)**, deleting existing **(3)**, applying a theme **(4)**."
+"На иллюстрации показаны операции: загрузка новой темы **(1)**, скачивание"
+" **(2)**, удаление существующей **(3)**, применение темы **(4)**. Состав "
+"доступных действий и права на них определяются серверной конфигурацией "
+"журнала."
+msgstr "The illustration shows uploading a theme **(1)**, downloading **(2)**, deleting **(3)** and applying **(4)**. Available actions and permissions depend on server journal configuration."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:25
 msgid ""
-"Действие **Применить тему** доступно для неактивных тем, для текущей темы"
-" действие не отображается."
-msgstr ""
-"The **Apply theme** action is available for inactive themes; for the "
-"current theme, the action is not displayed."
+"Действие **Применить тему** выбирает активную тему через серверную "
+"конфигурацию. Условия его отображения, в том числе для уже активной темы,"
+" задаются на сервере."
+msgstr "**Apply theme** selects the active theme through server configuration. Display conditions, including for an already active theme, are set server-side."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:29
 msgid ""
@@ -101,8 +100,11 @@ msgstr ""
 "uploaded to **uiserv**."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:33
-msgid "Структура архива:"
-msgstr "Archive structure:"
+msgid ""
+"Пример структуры архива. При изменении существующей темы сохраняйте "
+"структуру выгруженного архива: правила его разбора определяются версией "
+"сервиса uiserv."
+msgstr "Example archive structure. Preserve exported structure when editing a theme: parsing rules depend on uiserv version."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:50
 msgid "где:"
@@ -133,180 +135,208 @@ msgid "**main.css** — главный файл со стилями"
 msgstr "**main.css** - main styles file"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:58
-msgid "Общий вид **meta.json**::"
-msgstr "General view of **meta.json**::"
+msgid "Пример **meta.json**, согласованный с файлами выше:"
+msgstr "Example **meta.json** matching the files above:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:77
+#: ../../settings_kb/interface/Темы_интерфейса.rst:79
 msgid "**name** — имя темы. Справочная информация;"
 msgstr "**name** - theme name. Reference information;"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:78
+#: ../../settings_kb/interface/Темы_интерфейса.rst:80
+msgid ""
+"**parentRef** — серверное поле метаданных родительской темы; в примере "
+"родитель не задан. Правила наследования определяет uiserv;"
+msgstr "**parentRef** — server metadata field for the parent theme, unspecified here. uiserv defines inheritance rules;"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:81
 msgid "**images** — ссылки на изображения:"
 msgstr "**images** - links to images:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:80
-msgid "**favicon** — значок для сайта. Поддерживается только ICO формат"
-msgstr "**favicon** - site icon. Only ICO format is supported"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:81
-msgid "**logo** — логотип темы. Будет использоваться при выборе темы"
-msgstr "**logo** - theme logo. Will be used when selecting a theme"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:82
-msgid "**login-logo** — логотип на странице логина"
-msgstr "**login-logo** - logo on the login page"
-
 #: ../../settings_kb/interface/Темы_интерфейса.rst:83
-msgid "**menu-left-logo-large** — логотип в левом развернутом меню"
-msgstr "**menu-left-logo-large** - logo in the left expanded menu"
+msgid ""
+"**favicon** — значок сайта. В текущем HTML приложения он подключается с "
+"типом ``image/vnd.microsoft.icon``; в примере используется файл ICO;"
+msgstr "**favicon** — site icon. Current application HTML links it as ``image/vnd.microsoft.icon``; this example uses ICO;"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:84
-msgid "**menu-left-logo-small** — логотип в левом свернутом меню"
-msgstr "**menu-left-logo-small** - logo in the left collapsed menu"
+msgid "**logo** — изображение, представляющее тему;"
+msgstr "**logo** — image representing the theme;"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:85
 msgid ""
-"**apple-touch-icon** — логотип, используемый iOS для закладок и сайтов "
-"«на домашнем экране»"
-msgstr ""
-"**apple-touch-icon** - logo used by iOS for bookmarks and \"add to home "
-"screen\" sites"
+"**login-logo** — изображение для страницы входа, если его использует "
+"соответствующая поставка страницы аутентификации;"
+msgstr "**login-logo** — login page image, if used by that authentication page distribution;"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:86
+msgid "**menu-left-logo-large** — логотип в левом развернутом меню"
+msgstr "**menu-left-logo-large** - logo in the left expanded menu"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:87
 msgid ""
-"**apple-touch-icon-precomposed** — логотип, используемый в ранних версиях"
-" iOS для закладок и сайтов «на домашнем экране»"
-msgstr ""
-"**apple-touch-icon-precomposed** - logo used in early iOS versions for "
-"bookmarks and \"add to home screen\" sites"
+"**menu-left-logo-small** — логотип в левом свернутом меню; при включённых"
+" рабочих пространствах текущий компонент скрывает его;"
+msgstr "**menu-left-logo-small** — collapsed left menu logo; hidden by the current component when workspaces are enabled;"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:88
 msgid ""
-"Поддерживаемые форматы логотипов: **jpeg**, **ico**, **png** (в "
-"предстоящем релизе добавлен **svg**). Размер логотипа не лимитирован."
-msgstr ""
-"Supported logo formats: **jpeg**, **ico**, **png** (**svg** added in "
-"upcoming release). Logo size is not limited."
+"**apple-touch-icon** и **apple-touch-icon-precomposed** — изображения для"
+" соответствующих значков iOS, если они подключены страницей. Текущий "
+"``index.html`` приложения не содержит ссылок на эти ресурсы."
+msgstr "**apple-touch-icon** and **apple-touch-icon-precomposed** — iOS icon images if linked by the page. Current ``index.html`` does not link these resources."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:90
 msgid ""
-"Кроме логотипов можно менять стили в файле **main.css** — через него "
-"можно изменить практически любую часть UI (предполагается, что автор "
-"изменений хорошо знает, как работать со стилями в браузере). Помимо "
-"**main.css**, в теме могут быть и другие css-файлы, доступные по API; в "
-"будущем, если main.css будет отсутствовать, сервер сгенерирует его из "
-"всех css-файлов темы."
-msgstr ""
-"In addition to logos, styles can be changed in the **main.css** file. "
-"Through this file, almost any part of the UI can be modified, but "
-"generally it is assumed that the author of changes is well-versed in "
-"working with browser styles. Besides **main.css**, the theme can contain "
-"other CSS files accessible via the API; in the future, if main.css is "
-"missing, the server will generate it from all of the theme's CSS files."
+"Все пути в ``images`` должны указывать на файлы, действительно включённые"
+" в архив. Клиент отображает логотипы через ``<img>`` без отдельного "
+"фильтра расширений. Допустимые форматы, MIME-типы и размер загружаемых "
+"файлов определяются серверным загрузчиком; проверяйте их для используемой"
+" версии uiserv."
+msgstr "Every ``images`` path must reference a file included in the archive. The client renders logos with ``<img>`` without a separate extension filter. Server uploaders determine allowed formats, MIME types and sizes; check your uiserv version."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:92
+msgid ""
+"Размер файла и размер отображения различаются: в левом меню для логотипа "
+"заданы ``max-width: 170px`` и ``max-height: 30px``. Поэтому большое "
+"исходное изображение не будет показано в натуральную величину."
+msgstr "File dimensions differ from displayed dimensions: left menu logos have ``max-width: 170px`` and ``max-height: 30px``. Large source images are therefore not displayed at natural size."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:94
 msgid ""
-"Сервер никак не обрабатывает стили — в архиве желательно грузить сразу "
-"минифицированные стили."
-msgstr ""
-"Currently, the server does not process styles in any way. I.e., it is "
-"advisable to load minified styles directly in the archive."
+"Кроме логотипов можно менять стили в файле **main.css**. Клиент "
+"подключает основной файл темы как таблицу стилей; наличие других "
+"CSS-файлов в архиве не означает их автоматического подключения. Для "
+"настройки интерфейса используйте ``main.css`` и проверяйте результат на "
+"нужных страницах и размерах экрана."
+msgstr "Besides logos, change styles in **main.css**. The client links the main theme file as a stylesheet; other archive CSS files are not automatically linked. Use ``main.css`` and test relevant pages and screen sizes."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:97
+#: ../../settings_kb/interface/Темы_интерфейса.rst:98
+msgid ""
+"Подготовьте готовый CSS. Правила обработки архива и наследования темы "
+"определяются сервером; клиент не компилирует стили и не объединяет все "
+"CSS-файлы темы."
+msgstr "Prepare compiled CSS. The server defines archive processing and theme inheritance; the client neither compiles styles nor merges every theme CSS file."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:101
 msgid "Конфигурация active-theme"
 msgstr "active-theme Configuration"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:99
+#: ../../settings_kb/interface/Темы_интерфейса.rst:103
 msgid ""
-"Для хранения текущей темы используется конфигурация в uiserv **active-"
-"theme**"
-msgstr ""
-"To store the current theme, a configuration in uiserv **active-theme** is"
-" used"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:101
-msgid "Для получения текущей темы::"
-msgstr "To get the current theme::"
+"Для хранения выбранной темы используется конфигурация uiserv **active-"
+"theme**. Значение по умолчанию — ``ecos``."
+msgstr "The uiserv **active-theme** configuration stores the selected theme. Default ``ecos``."
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:105
-msgid ""
-"Информация об активной теме доступна в журнале **Конфигурация ECOS** "
-"(`v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace`) "
-"в **active-theme**:"
-msgstr ""
-"Information about the active theme is available in the **ECOS "
-"Configuration** journal (``v2/admin?journalId=ecos-"
-"configs&type=JOURNAL``) in **active-theme**:"
+msgid "При запуске интерфейс получает идентификатор активной темы через API:"
+msgstr "At startup, the UI retrieves the active theme ID through the API:"
 
 #: ../../settings_kb/interface/Темы_интерфейса.rst:111
+msgid ""
+"Ответ — строка с идентификатором. При ошибке запроса клиент использует "
+"``ecos``. После аутентификации имя и изображения темы дополнительно "
+"загружаются из ``uiserv/theme@<themeId>``."
+msgstr "The response is an identifier string. Request errors fall back to ``ecos``. After authentication, theme name and images also load from ``uiserv/theme@<themeId>``."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:113
+msgid ""
+"Пример чтения настройки через Records, соответствующий текущему "
+"клиентскому механизму конфигураций:"
+msgstr "Example reading the setting through Records using the current client configuration mechanism:"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:119
+msgid ""
+"Клиентский ConfigService сохраняет серверные конфиги через источник "
+"``uiserv/cfg``. Его метод ``setValue`` меняет только локальное значение; "
+"для серверного сохранения предусмотрен ``setServerValue``. Простого "
+"локального изменения значения недостаточно для выбора глобальной темы."
+msgstr "Client ConfigService saves server configurations through ``uiserv/cfg``. ``setValue`` changes only the local value; ``setServerValue`` saves server-side. A local change alone does not select the global theme."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:121
+msgid ""
+"Информация о настройке доступна в журнале **Конфигурация ECOS** "
+"(``/v2/journals?journalId=ecos-"
+"configs&viewMode=table&ws=admin$workspace``) в **active-theme**:"
+msgstr "The setting appears in **ECOS Configuration** (``/v2/journals?journalId=ecos-configs&viewMode=table&ws=admin$workspace``) under **active-theme**:"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:127
 msgid "Для изменения темы укажите ее новое значение в настройке и сохраните:"
 msgstr "To change the theme, specify its new value in the setting and save:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:118
+#: ../../settings_kb/interface/Темы_интерфейса.rst:133
+msgid ""
+"После серверного сохранения обновите страницу. При загрузке клиент "
+"записывает идентификатор в ``window.Citeck.config.theme``, добавляет "
+"элементу ``body`` класс ``body_theme_<themeId>`` и подключает основной "
+"CSS через ``<link rel=\"stylesheet\">``. Автоматического наблюдения за "
+"изменениями серверной настройки и замены всех ресурсов в уже открытой "
+"странице в этой ветке нет."
+msgstr "After server save, refresh the page. On loading, the client sets ``window.Citeck.config.theme``, adds ``body_theme_<themeId>`` to ``body`` and links the main CSS with ``<link rel=\"stylesheet\">``. This branch does not automatically watch server changes and replace all resources in an open page."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:136
 msgid "API"
 msgstr "API"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:120
-msgid "Получение основного файла стилей для темы::"
-msgstr "Getting the main styles file for a theme::"
+#: ../../settings_kb/interface/Темы_интерфейса.rst:138
+msgid "Получение основного файла стилей активной темы:"
+msgstr "Retrieving the active theme's main stylesheet:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:124
+#: ../../settings_kb/interface/Темы_интерфейса.rst:144
 msgid ""
-"Расширение .css можно не указывать. Вместо main.css могут быть и другие "
-"стили, которые есть в теме (учитывается только имя файла без пути до "
-"него). Получение изображений::"
-msgstr ""
-"The .css extension can be omitted. Instead of main.css, there can be "
-"other styles present in the theme (only the filename without the path is "
-"considered). Getting images::"
+"Клиент использует имя ``main`` без расширения ``.css``. Дополнительные "
+"стили не загружаются автоматически; правила обращения к ним и "
+"наследования определяет сервер."
+msgstr "The client uses ``main`` without ``.css``. Additional styles are not loaded automatically; the server defines access and inheritance rules."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:129
-#, python-brace-format
+#: ../../settings_kb/interface/Темы_интерфейса.rst:146
+msgid "Получение изображения:"
+msgstr "Retrieving an image:"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:152
 msgid ""
-"Вместо logo должен быть идентификатор изображения из meta.json темы "
-"(images) Вместо {themeId} могут быть:"
-msgstr ""
-"Instead of logo, there should be the image identifier from the theme's "
-"meta.json (images) Instead of {themeId}, there can be:"
+"Последний сегмент — идентификатор изображения из ``images`` в "
+"``meta.json``, например ``logo`` или ``menu-left-logo-large``. Клиент "
+"обращается к ``active``, чтобы сервер выбрал активную тему. Для обращения"
+" к конкретной теме используется путь "
+"``/gateway/uiserv/api/theme/<themeId>/...``; разрешение её ресурсов "
+"выполняет uiserv."
+msgstr "The last segment is an image ID from ``images`` in ``meta.json``, such as ``logo`` or ``menu-left-logo-large``. The client uses ``active`` for server theme selection. For a specific theme, use ``/gateway/uiserv/api/theme/<themeId>/...``; uiserv resolves its resources."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:132
-msgid "Реальный идентификатор темы"
-msgstr "Actual theme identifier"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:133
-msgid ""
-"Константа “active“, с которой идентификатор темы загружается из конфига "
-"**active-theme**"
-msgstr ""
-"Constant \"active\", with which the theme identifier is loaded from the "
-"**active-theme** config"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:136
+#: ../../settings_kb/interface/Темы_интерфейса.rst:155
 msgid "Кэш"
 msgstr "Cache"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:138
+#: ../../settings_kb/interface/Темы_интерфейса.rst:157
 msgid ""
-"Все запросы за стилями и изображениями возвращают заголовки кэширования с"
-" временем жизни ~4 часа."
-msgstr ""
-"All requests for styles and images return caching headers with a lifetime"
-" of ~4 hours."
+"HTTP-заголовки кэширования и срок хранения ресурсов задаются сервером. "
+"Клиент дополнительно включает ключ версии темы в URL основного CSS и "
+"изображений бокового меню."
+msgstr "The server sets HTTP cache headers and resource lifetimes. The client also adds a theme version key to main CSS and sidebar image URLs."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:140
+#: ../../settings_kb/interface/Темы_интерфейса.rst:159
+msgid "Ключи ресурсов загружаются через API:"
+msgstr "Resource keys load through the API:"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:165
 msgid ""
-"Чтобы избежать проблем с кэшем (темы могут меняться \"на лету\") нужно "
-"добавлять в запросы ключ кэширования, который загружается по следующему "
-"API::"
-msgstr ""
-"To avoid cache issues (themes can change \"on the fly\"), a cache key "
-"needs to be added to requests, which is loaded via the following API::"
+"Для стилей и изображений темы селекторы интерфейса используют значение "
+"``theme`` из ответа в параметре ``cacheKey``:"
+msgstr "For theme styles and images, UI selectors use response ``theme`` as ``cacheKey``:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:145
+#: ../../settings_kb/interface/Темы_интерфейса.rst:172
+msgid ""
+"Несмотря на наличие отдельного ключа ``images``, URL изображения темы в "
+"текущем клиенте использует ключ ``theme``. Favicon подключён "
+"непосредственно в ``index.html`` по адресу "
+"``/gateway/uiserv/api/theme/active/image/favicon`` без ``cacheKey``; его "
+"кэширование следует проверять отдельно."
+msgstr "Despite a separate ``images`` key, current theme image URLs use ``theme``. Favicon is linked directly in ``index.html`` at ``/gateway/uiserv/api/theme/active/image/favicon`` without ``cacheKey``; check its caching separately."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:175
 msgid "Стили"
 msgstr "Styles"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:147
+#: ../../settings_kb/interface/Темы_интерфейса.rst:177
 msgid "В активную тему можно добавить кастомный css."
 msgstr "You can add custom CSS to the active theme."
 
@@ -314,23 +344,23 @@ msgstr "You can add custom CSS to the active theme."
 msgid "Как добавить кастомный CSS"
 msgstr "How to add custom CSS"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:152
+#: ../../settings_kb/interface/Темы_интерфейса.rst:182
 msgid "Скачайте артефакт готовой темы:"
 msgstr "Download the artifact of the finished theme:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:158
+#: ../../settings_kb/interface/Темы_интерфейса.rst:188
 msgid "Распакуйте архив:"
 msgstr "Unpack the archive:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:164
-msgid "Откройте **main.css**"
-msgstr "Open **main.css**"
+#: ../../settings_kb/interface/Темы_интерфейса.rst:194
+msgid "Откройте **main.css**."
+msgstr "Open **main.css**."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:171
+#: ../../settings_kb/interface/Темы_интерфейса.rst:196
 msgid "Внесите в него изменения."
 msgstr "Make your changes."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:173
+#: ../../settings_kb/interface/Темы_интерфейса.rst:198
 msgid ""
 "Упакуйте в архив (с такой же структурой как был выгружен) и загрузите на "
 "стенд:"
@@ -338,39 +368,60 @@ msgstr ""
 "Pack into an archive (with the same structure as when it was downloaded) "
 "and upload to the instance:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:179
+#: ../../settings_kb/interface/Темы_интерфейса.rst:204
 msgid "Обновите страницу."
 msgstr "Refresh the page."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:182
+#: ../../settings_kb/interface/Темы_интерфейса.rst:207
 msgid "Настройка ширины выпадающего списка у кнопки Создать"
 msgstr "Configuring the Create button dropdown width"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:184
-msgid "Например, для настройки ширины выпадающего списка у кнопки Создать:"
-msgstr "For example, to configure the dropdown width of the Create button:"
-
-#: ../../settings_kb/interface/Темы_интерфейса.rst:195
+#: ../../settings_kb/interface/Темы_интерфейса.rst:209
 msgid ""
-"Результат: перейдите к кнопке Создать, ширина выпадающего списка будет "
-"подстраиваться под длину текста:"
-msgstr ""
-"Result: navigate to the Create button — the dropdown width will adjust to"
-" fit the text length:"
+"Чтобы снять ограничение максимальной ширины меню у кнопки «Создать», "
+"используйте его текущий класс и класс вложенных каскадных меню:"
+msgstr "To remove the \"Create\" menu maximum width, use its current class and nested cascading menu class:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:202
+#: ../../settings_kb/interface/Темы_интерфейса.rst:218
+msgid ""
+"Правило снимает ограничение ширины, в том числе ограничение меню в узкой "
+"шапке. Проверьте результат с длинными названиями в групповом и каскадном "
+"режиме и на мобильном экране. Класс ``.ecos-dropdown__menu_new`` "
+"относится к другому компоненту и не выбирает текущее меню кнопки "
+"«Создать»."
+msgstr "This removes width limits, including the narrow-header menu limit. Test long names in grouped and cascading modes and on mobile. ``.ecos-dropdown__menu_new`` belongs to another component and does not select the current \"Create\" menu."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:220
+#: ../../settings_kb/interface/Темы_интерфейса.rst:253
+msgid "Пример результата:"
+msgstr "Example result:"
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:227
 msgid "Изменение цветовой гаммы темы"
 msgstr "Changing the color scheme of the theme"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:227
-msgid "Результат:"
-msgstr "Result:"
+#: ../../settings_kb/interface/Темы_интерфейса.rst:249
+msgid ""
+"Все перечисленные CSS-переменные используются интерфейсом. Селектор "
+"``.ecos-sidebar`` меняет фон соответствующей боковой панели; фон "
+"вложенных элементов может задаваться собственными правилами. Аналогично, "
+"изменение фона строки журнала не переопределяет автоматически фон каждой "
+"ячейки и встроенного элемента."
+msgstr "All listed CSS variables are used by the UI. ``.ecos-sidebar`` changes that sidebar background; nested elements may have their own rules. Likewise, changing journal row backgrounds does not automatically override every cell and embedded element."
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:234
+#: ../../settings_kb/interface/Темы_интерфейса.rst:251
+msgid ""
+"Чтобы ограничить правила конкретной темой, используйте класс "
+"``body_theme_<themeId>`` на элементе ``body``, например "
+"``body.body_theme_ecos .ecos-sidebar``. В этом примере ``ecos`` нужно "
+"заменить идентификатором нужной темы."
+msgstr "To scope rules to a theme, use ``body_theme_<themeId>`` on ``body``, for example ``body.body_theme_ecos .ecos-sidebar``. Replace ``ecos`` with the required theme ID."
+
+#: ../../settings_kb/interface/Темы_интерфейса.rst:260
 msgid "Базовая тема:"
 msgstr "Base theme:"
 
-#: ../../settings_kb/interface/Темы_интерфейса.rst:242
+#: ../../settings_kb/interface/Темы_интерфейса.rst:268
 msgid "Обновленная тема:"
 msgstr "Updated theme:"
 
@@ -401,3 +452,163 @@ msgstr "Updated theme:"
 #~ "missing, the server will generate it "
 #~ "from all css files in the theme."
 
+#~ msgid ""
+#~ "Действие **Применить тему** доступно для "
+#~ "неактивных тем, для текущей темы "
+#~ "действие не отображается."
+#~ msgstr ""
+#~ "The **Apply theme** action is available"
+#~ " for inactive themes; for the current"
+#~ " theme, the action is not displayed."
+
+#~ msgid "Структура архива:"
+#~ msgstr "Archive structure:"
+
+#~ msgid "Общий вид **meta.json**::"
+#~ msgstr "General view of **meta.json**::"
+
+#~ msgid "**favicon** — значок для сайта. Поддерживается только ICO формат"
+#~ msgstr "**favicon** - site icon. Only ICO format is supported"
+
+#~ msgid "**logo** — логотип темы. Будет использоваться при выборе темы"
+#~ msgstr "**logo** - theme logo. Will be used when selecting a theme"
+
+#~ msgid "**login-logo** — логотип на странице логина"
+#~ msgstr "**login-logo** - logo on the login page"
+
+#~ msgid ""
+#~ "**apple-touch-icon** — логотип, "
+#~ "используемый iOS для закладок и сайтов"
+#~ " «на домашнем экране»"
+#~ msgstr ""
+#~ "**apple-touch-icon** - logo used "
+#~ "by iOS for bookmarks and \"add to"
+#~ " home screen\" sites"
+
+#~ msgid ""
+#~ "**apple-touch-icon-precomposed** — "
+#~ "логотип, используемый в ранних версиях "
+#~ "iOS для закладок и сайтов «на "
+#~ "домашнем экране»"
+#~ msgstr ""
+#~ "**apple-touch-icon-precomposed** - logo"
+#~ " used in early iOS versions for "
+#~ "bookmarks and \"add to home screen\" "
+#~ "sites"
+
+#~ msgid ""
+#~ "Поддерживаемые форматы логотипов: **jpeg**, "
+#~ "**ico**, **png** (в предстоящем релизе "
+#~ "добавлен **svg**). Размер логотипа не "
+#~ "лимитирован."
+#~ msgstr ""
+#~ "Supported logo formats: **jpeg**, **ico**, "
+#~ "**png** (**svg** added in upcoming "
+#~ "release). Logo size is not limited."
+
+#~ msgid ""
+#~ "Кроме логотипов можно менять стили в "
+#~ "файле **main.css** — через него можно"
+#~ " изменить практически любую часть UI "
+#~ "(предполагается, что автор изменений хорошо"
+#~ " знает, как работать со стилями в "
+#~ "браузере). Помимо **main.css**, в теме "
+#~ "могут быть и другие css-файлы, доступные"
+#~ " по API; в будущем, если main.css "
+#~ "будет отсутствовать, сервер сгенерирует его"
+#~ " из всех css-файлов темы."
+#~ msgstr ""
+#~ "In addition to logos, styles can "
+#~ "be changed in the **main.css** file. "
+#~ "Through this file, almost any part "
+#~ "of the UI can be modified, but "
+#~ "generally it is assumed that the "
+#~ "author of changes is well-versed "
+#~ "in working with browser styles. Besides"
+#~ " **main.css**, the theme can contain "
+#~ "other CSS files accessible via the "
+#~ "API; in the future, if main.css is"
+#~ " missing, the server will generate it"
+#~ " from all of the theme's CSS "
+#~ "files."
+
+#~ msgid ""
+#~ "Сервер никак не обрабатывает стили — "
+#~ "в архиве желательно грузить сразу "
+#~ "минифицированные стили."
+#~ msgstr ""
+#~ "Currently, the server does not process"
+#~ " styles in any way. I.e., it is"
+#~ " advisable to load minified styles "
+#~ "directly in the archive."
+
+#~ msgid "Для получения текущей темы::"
+#~ msgstr "To get the current theme::"
+
+#~ msgid ""
+#~ "Расширение .css можно не указывать. "
+#~ "Вместо main.css могут быть и другие "
+#~ "стили, которые есть в теме (учитывается"
+#~ " только имя файла без пути до "
+#~ "него). Получение изображений::"
+#~ msgstr ""
+#~ "The .css extension can be omitted. "
+#~ "Instead of main.css, there can be "
+#~ "other styles present in the theme "
+#~ "(only the filename without the path "
+#~ "is considered). Getting images::"
+
+#~ msgid ""
+#~ "Вместо logo должен быть идентификатор "
+#~ "изображения из meta.json темы (images) "
+#~ "Вместо {themeId} могут быть:"
+#~ msgstr ""
+#~ "Instead of logo, there should be "
+#~ "the image identifier from the theme's"
+#~ " meta.json (images) Instead of {themeId},"
+#~ " there can be:"
+
+#~ msgid "Реальный идентификатор темы"
+#~ msgstr "Actual theme identifier"
+
+#~ msgid ""
+#~ "Константа “active“, с которой идентификатор"
+#~ " темы загружается из конфига **active-"
+#~ "theme**"
+#~ msgstr ""
+#~ "Constant \"active\", with which the "
+#~ "theme identifier is loaded from the "
+#~ "**active-theme** config"
+
+#~ msgid ""
+#~ "Все запросы за стилями и изображениями"
+#~ " возвращают заголовки кэширования с "
+#~ "временем жизни ~4 часа."
+#~ msgstr ""
+#~ "All requests for styles and images "
+#~ "return caching headers with a lifetime"
+#~ " of ~4 hours."
+
+#~ msgid ""
+#~ "Чтобы избежать проблем с кэшем (темы "
+#~ "могут меняться \"на лету\") нужно "
+#~ "добавлять в запросы ключ кэширования, "
+#~ "который загружается по следующему API::"
+#~ msgstr ""
+#~ "To avoid cache issues (themes can "
+#~ "change \"on the fly\"), a cache "
+#~ "key needs to be added to requests,"
+#~ " which is loaded via the following"
+#~ " API::"
+
+#~ msgid "Например, для настройки ширины выпадающего списка у кнопки Создать:"
+#~ msgstr "For example, to configure the dropdown width of the Create button:"
+
+#~ msgid ""
+#~ "Результат: перейдите к кнопке Создать, "
+#~ "ширина выпадающего списка будет подстраиваться"
+#~ " под длину текста:"
+#~ msgstr ""
+#~ "Result: navigate to the Create button"
+#~ " — the dropdown width will adjust "
+#~ "to fit the text length:"

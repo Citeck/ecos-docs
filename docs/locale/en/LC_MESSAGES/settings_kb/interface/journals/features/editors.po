@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 10:36+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -40,7 +40,9 @@ msgstr ""
 
 #: ../../settings_kb/interface/journals/features/editors.rst:13
 msgid "``formatter`` и ``editor`` в конфигурации колонки — независимые поля:"
-msgstr "``formatter`` and ``editor`` in the column configuration are independent fields:"
+msgstr ""
+"``formatter`` and ``editor`` in the column configuration are independent "
+"fields:"
 
 #: ../../settings_kb/interface/journals/features/editors.rst:15
 msgid "``formatter`` управляет **отрисовкой ячейки** в таблице;"
@@ -48,29 +50,22 @@ msgstr "``formatter`` controls **cell rendering** in the table;"
 
 #: ../../settings_kb/interface/journals/features/editors.rst:16
 msgid ""
-"``editor`` управляет **инлайн-редактором** и **контролом фильтра** в "
-"заголовке колонки."
-msgstr ""
-"``editor`` controls the **inline editor** and the **filter control** in "
-"the column header."
+"``editor`` управляет **инлайн-редактором** и используется для фильтра, "
+"если не задан отдельный ``headerFilterEditor``."
+msgstr "``editor`` controls the **inline editor** and also filtering if no separate ``headerFilterEditor`` is set."
 
 #: ../../settings_kb/interface/journals/features/editors.rst:18
 msgid ""
-"Если у колонки не задан ``editor``, то поле ввода значения в фильтре "
-"будет пустым — даже если ``formatter`` настроен корректно. Наиболее "
-"частый случай — колонки типа ``ASSOC``: форматтер ``assoc`` отвечает "
-"только за отображение, а для фильтра обязательно нужен ``editor`` (обычно"
-" ``type: journal``)."
-msgstr ""
-"If a column does not have an ``editor`` set, the filter value input will "
-"be empty — even if ``formatter`` is correctly configured. The most common "
-"case is columns of type ``ASSOC``: the ``assoc`` formatter only handles "
-"display, while the filter requires an ``editor`` (typically "
-"``type: journal``)."
+"Для фильтра в заголовке можно независимо задать ``headerFilterEditor`` с "
+"полями ``type`` и ``config``. Если его тип не задан, UI использует "
+"``editor`` из итоговой конфигурации, полученной от сервера. Настройка "
+"одного ``formatter`` не определяет контрол фильтра. Если ни один редактор"
+" не определён в итоговой конфигурации, контрол ввода может отсутствовать."
+msgstr "For header filtering, independently specify ``headerFilterEditor`` with ``type`` and ``config``. Without its type, the UI uses ``editor`` from final server configuration. ``formatter`` alone does not define the filter control. If neither editor is defined in the final configuration, an input control may be absent."
 
 #: ../../settings_kb/interface/journals/features/editors.rst:20
-msgid "Соответствие типов колонки и редакторов:"
-msgstr "Column type to editor mapping:"
+msgid "Рекомендуемые редакторы для типов колонок текущей схемы:"
+msgstr "Recommended editors for current column types:"
 
 #: ../../settings_kb/interface/journals/features/editors.rst:26
 msgid "Тип колонки (``type``)"
@@ -105,8 +100,8 @@ msgid "``text``"
 msgstr "``text``"
 
 #: ../../settings_kb/interface/journals/features/editors.rst:34
-msgid "``NUMBER`` / ``INT`` / ``LONG`` / ``FLOAT`` / ``DOUBLE``"
-msgstr "``NUMBER`` / ``INT`` / ``LONG`` / ``FLOAT`` / ``DOUBLE``"
+msgid "``NUMBER``"
+msgstr "``NUMBER``"
 
 #: ../../settings_kb/interface/journals/features/editors.rst:35
 msgid "``number``"
@@ -156,96 +151,93 @@ msgstr ""
 "required journal > :guilabel:`Edit` action. Navigate to "
 ":guilabel:`Advanced`."
 
-#: ../../settings_kb/interface/journals/features/editors.rst:65
+#: ../../settings_kb/interface/journals/features/editors.rst:61
 msgid "Типы"
 msgstr "Types"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:68
+#: ../../settings_kb/interface/journals/features/editors.rst:64
 msgid "BooleanEditor"
 msgstr "BooleanEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:70
+#: ../../settings_kb/interface/journals/features/editors.rst:66
 msgid "Тип: ``boolean``"
 msgstr "Type: ``boolean``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:76
-#: ../../settings_kb/interface/journals/features/editors.rst:113
-#: ../../settings_kb/interface/journals/features/editors.rst:157
-#: ../../settings_kb/interface/journals/features/editors.rst:180
+#: ../../settings_kb/interface/journals/features/editors.rst:72
+#: ../../settings_kb/interface/journals/features/editors.rst:109
+#: ../../settings_kb/interface/journals/features/editors.rst:153
+#: ../../settings_kb/interface/journals/features/editors.rst:179
 msgid "Ключ"
 msgstr "Key"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:77
-#: ../../settings_kb/interface/journals/features/editors.rst:114
-#: ../../settings_kb/interface/journals/features/editors.rst:158
-#: ../../settings_kb/interface/journals/features/editors.rst:181
+#: ../../settings_kb/interface/journals/features/editors.rst:73
+#: ../../settings_kb/interface/journals/features/editors.rst:110
+#: ../../settings_kb/interface/journals/features/editors.rst:154
+#: ../../settings_kb/interface/journals/features/editors.rst:180
 msgid "Значение"
 msgstr "Value"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:78
-#: ../../settings_kb/interface/journals/features/editors.rst:115
-#: ../../settings_kb/interface/journals/features/editors.rst:159
-#: ../../settings_kb/interface/journals/features/editors.rst:182
+#: ../../settings_kb/interface/journals/features/editors.rst:74
+#: ../../settings_kb/interface/journals/features/editors.rst:111
+#: ../../settings_kb/interface/journals/features/editors.rst:155
+#: ../../settings_kb/interface/journals/features/editors.rst:181
 msgid "По умолчанию"
 msgstr "Default"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:79
+#: ../../settings_kb/interface/journals/features/editors.rst:75
 msgid "**mode**"
 msgstr "**mode**"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:80
+#: ../../settings_kb/interface/journals/features/editors.rst:76
 msgid "Режим редактора ``select``:"
 msgstr "Editor mode ``select``:"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:85
+#: ../../settings_kb/interface/journals/features/editors.rst:81
 msgid "``checkbox``:"
 msgstr "``checkbox``:"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:90
+#: ../../settings_kb/interface/journals/features/editors.rst:86
 msgid "``select``"
 msgstr "``select``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:93
+#: ../../settings_kb/interface/journals/features/editors.rst:89
 msgid "DateEditor"
 msgstr "DateEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:95
+#: ../../settings_kb/interface/journals/features/editors.rst:91
 msgid "Тип: ``date``"
 msgstr "Type: ``date``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:98
+#: ../../settings_kb/interface/journals/features/editors.rst:94
 msgid "DateTimeEditor"
 msgstr "DateTimeEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:100
+#: ../../settings_kb/interface/journals/features/editors.rst:96
 msgid "Тип: ``datetime``"
 msgstr "Type: ``datetime``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:103
+#: ../../settings_kb/interface/journals/features/editors.rst:99
 msgid "JournalEditor"
 msgstr "JournalEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:105
+#: ../../settings_kb/interface/journals/features/editors.rst:101
 msgid "Тип: ``journal``"
 msgstr "Type: ``journal``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:107
+#: ../../settings_kb/interface/journals/features/editors.rst:103
 msgid ""
-"Используется для колонок типа ``ASSOC`` — отвечает и за "
-"инлайн-редактирование значения ассоциации, и за контрол фильтра в "
-"заголовке колонки. Отдельного редактора с типом ``assoc`` не существует: "
-"для любой ассоциации нужно задавать именно ``editor.type: journal``."
-msgstr ""
-"Used for columns of type ``ASSOC`` — handles both inline editing of the "
-"association value and the filter control in the column header. There is no "
-"separate editor with type ``assoc``: for any association, "
-"``editor.type: journal`` must be specified."
+"Используется для выбора записей через журнал, в том числе в колонках типа"
+" ``ASSOC``. Его можно задать в ``editor`` для редактирования и фильтрации"
+" либо в ``headerFilterEditor`` только для фильтра. Редактора с типом "
+"``assoc`` в реестре нет; выбор редактора зависит от требуемого способа "
+"ввода, например ``journal``, ``orgstruct`` или ``select``."
+msgstr "Selects records through a journal, including ``ASSOC`` columns. Set it in ``editor`` for editing and filtering, or ``headerFilterEditor`` for filtering only. No ``assoc`` editor exists in the registry; choose the input method, such as ``journal``, ``orgstruct`` or ``select``."
 
-#: ../../settings_kb/interface/journals/features/editors.rst:116
+#: ../../settings_kb/interface/journals/features/editors.rst:112
 msgid "**journalId**"
 msgstr "**journalId**"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:117
+#: ../../settings_kb/interface/journals/features/editors.rst:113
 msgid ""
 "Идентификатор журнала, из которого будет выбираться значение. Обычно — "
 "журнал, связанный с целевым типом ассоциации."
@@ -253,84 +245,99 @@ msgstr ""
 "The identifier of the journal from which the value will be selected. "
 "Typically — the journal associated with the target association type."
 
-#: ../../settings_kb/interface/journals/features/editors.rst:120
+#: ../../settings_kb/interface/journals/features/editors.rst:116
 msgid "Пример полной конфигурации ASSOC-колонки с ``formatter`` и ``editor``:"
-msgstr "Example of a complete ASSOC column configuration with ``formatter`` and ``editor``:"
-
-#: ../../settings_kb/interface/journals/features/editors.rst:139
-msgid ""
-"Здесь ``formatter`` определяет, как отрисовывается ячейка, а ``editor`` —"
-" как выглядит фильтр в заголовке и инлайн-редактор значения. Без блока "
-"``editor`` фильтр останется пустым."
 msgstr ""
-"Here ``formatter`` defines how the cell is rendered, and ``editor`` "
-"defines how the filter in the header and the inline value editor look. "
-"Without the ``editor`` block, the filter will remain empty."
+"Example of a complete ASSOC column configuration with ``formatter`` and "
+"``editor``:"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:142
+#: ../../settings_kb/interface/journals/features/editors.rst:135
+msgid ""
+"Здесь ``formatter`` определяет отображение ячейки, а ``editor`` — "
+"инлайн-редактор и фильтр в заголовке. Для отдельной настройки фильтра "
+"задайте ``headerFilterEditor``; итоговая конфигурация также может "
+"содержать редактор, определённый сервером."
+msgstr "Here ``formatter`` controls cell display, while ``editor`` controls inline editing and header filtering. Set ``headerFilterEditor`` independently for the filter; final configuration may also include a server-defined editor."
+
+#: ../../settings_kb/interface/journals/features/editors.rst:138
 msgid "NumberEditor"
 msgstr "NumberEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:144
+#: ../../settings_kb/interface/journals/features/editors.rst:140
 msgid "Тип: ``number``"
 msgstr "Type: ``number``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:147
+#: ../../settings_kb/interface/journals/features/editors.rst:143
 msgid "OrgstructEditor"
 msgstr "OrgstructEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:149
+#: ../../settings_kb/interface/journals/features/editors.rst:145
 msgid "Тип: ``orgstruct``"
 msgstr "Type: ``orgstruct``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:151
-#: ../../settings_kb/interface/journals/features/editors.rst:172
+#: ../../settings_kb/interface/journals/features/editors.rst:147
+#: ../../settings_kb/interface/journals/features/editors.rst:171
 msgid "Конфигурация:"
 msgstr "Configuration:"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:160
+#: ../../settings_kb/interface/journals/features/editors.rst:156
 msgid "**allowedAuthorityTypes**"
 msgstr "**allowedAuthorityTypes**"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:161
-msgid "строка вариантов: ``GROUP``, ``USER``"
-msgstr "options string: ``GROUP``, ``USER``"
+#: ../../settings_kb/interface/journals/features/editors.rst:157
+msgid "Строка типов субъектов через запятую, например ``GROUP,USER``"
+msgstr "Comma-separated authority types, such as ``GROUP,USER``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:163
+#: ../../settings_kb/interface/journals/features/editors.rst:158
+msgid "``GROUP,USER``"
+msgstr "``GROUP,USER``"
+
+#: ../../settings_kb/interface/journals/features/editors.rst:159
+msgid "**allowedGroupTypes**"
+msgstr "**allowedGroupTypes**"
+
+#: ../../settings_kb/interface/journals/features/editors.rst:160
+msgid "Строка разрешённых типов групп через запятую"
+msgstr "Comma-separated allowed group types"
+
+#: ../../settings_kb/interface/journals/features/editors.rst:161
+msgid "Все типы групп"
+msgstr "All group types"
+
+#: ../../settings_kb/interface/journals/features/editors.rst:162
 msgid "**multiple**"
 msgstr "**multiple**"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:164
+#: ../../settings_kb/interface/journals/features/editors.rst:163
 msgid "множественный выбор boolean"
 msgstr "multiple selection boolean"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:165
+#: ../../settings_kb/interface/journals/features/editors.rst:164
 msgid "false"
 msgstr "false"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:168
+#: ../../settings_kb/interface/journals/features/editors.rst:167
 msgid "SelectEditor"
 msgstr "SelectEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:170
+#: ../../settings_kb/interface/journals/features/editors.rst:169
 msgid "Тип: ``select``"
 msgstr "Type: ``select``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:174
+#: ../../settings_kb/interface/journals/features/editors.rst:173
 msgid ""
-"Можно задавать статические варианты или получаемые с использованием "
-"``recordRef + attribute`` записи и параметра ``optionsAtt``."
-msgstr ""
-"Static options can be defined, or options can be retrieved using the "
-"``recordRef + attribute`` of a record and the ``optionsAtt`` parameter."
+"Можно задавать статические варианты либо загружать их по ``optionsAtt``. "
+"Значения ``recordRef`` и ``attribute`` передаются редактору из контекста "
+"ячейки."
+msgstr "Define static options or load them through ``optionsAtt``. ``recordRef`` and ``attribute`` are passed from the cell context."
 
-#: ../../settings_kb/interface/journals/features/editors.rst:183
+#: ../../settings_kb/interface/journals/features/editors.rst:182
 msgid "**options**"
 msgstr "**options**"
 
 #: ../../settings_kb/interface/journals/features/editors.rst
-msgid "json-строка вариантов"
-msgstr "JSON options string"
+msgid "Массив вариантов или строка JSON"
+msgstr "Option array or JSON string"
 
 #: ../../settings_kb/interface/journals/features/editors.rst
 #, python-brace-format
@@ -347,28 +354,102 @@ msgstr "``{\"label\":\"priority.low\",\"value\":3},``"
 msgid "``{\"label\":\"priority.medium\",\"value\":2}]``"
 msgstr "``{\"label\":\"priority.medium\",\"value\":2}]``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:189
+#: ../../settings_kb/interface/journals/features/editors.rst:188
 msgid "**optionsAtt**"
 msgstr "**optionsAtt**"
 
+#: ../../settings_kb/interface/journals/features/editors.rst:189
+msgid "Атрибут для загрузки вариантов у записи"
+msgstr "Attribute used to load record options"
+
 #: ../../settings_kb/interface/journals/features/editors.rst:190
 #, python-brace-format
-msgid "пр. ``_edge.${attribute}.options{value:?str,label:?disp}``"
-msgstr "e.g. ``_edge.${attribute}.options{value:?str,label:?disp}``"
+msgid "``_edge.${attribute}.options[]{value:?str,label:?disp}``"
+msgstr "``_edge.${attribute}.options[]{value:?str,label:?disp}``"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:191
-#, python-brace-format
-msgid "``_edge.${attribute}.options{value:?str,label:?disp}``"
-msgstr "``_edge.${attribute}.options{value:?str,label:?disp}``"
-
-#: ../../settings_kb/interface/journals/features/editors.rst:194
+#: ../../settings_kb/interface/journals/features/editors.rst:193
 msgid "TextEditor"
 msgstr "TextEditor"
 
-#: ../../settings_kb/interface/journals/features/editors.rst:196
+#: ../../settings_kb/interface/journals/features/editors.rst:195
 msgid "Тип: ``text``"
 msgstr "Type: ``text``"
 
 #~ msgid "идентификатор журнала"
 #~ msgstr "journal identifier"
 
+#~ msgid ""
+#~ "Если у колонки не задан ``editor``, "
+#~ "то поле ввода значения в фильтре "
+#~ "будет пустым — даже если ``formatter``"
+#~ " настроен корректно. Наиболее частый случай"
+#~ " — колонки типа ``ASSOC``: форматтер "
+#~ "``assoc`` отвечает только за отображение, "
+#~ "а для фильтра обязательно нужен "
+#~ "``editor`` (обычно ``type: journal``)."
+#~ msgstr ""
+#~ "If a column does not have an "
+#~ "``editor`` set, the filter value input"
+#~ " will be empty — even if "
+#~ "``formatter`` is correctly configured. The "
+#~ "most common case is columns of "
+#~ "type ``ASSOC``: the ``assoc`` formatter "
+#~ "only handles display, while the filter"
+#~ " requires an ``editor`` (typically ``type:"
+#~ " journal``)."
+
+#~ msgid "Соответствие типов колонки и редакторов:"
+#~ msgstr "Column type to editor mapping:"
+
+#~ msgid "``NUMBER`` / ``INT`` / ``LONG`` / ``FLOAT`` / ``DOUBLE``"
+#~ msgstr "``NUMBER`` / ``INT`` / ``LONG`` / ``FLOAT`` / ``DOUBLE``"
+
+#~ msgid ""
+#~ "Используется для колонок типа ``ASSOC`` "
+#~ "— отвечает и за инлайн-редактирование "
+#~ "значения ассоциации, и за контрол "
+#~ "фильтра в заголовке колонки. Отдельного "
+#~ "редактора с типом ``assoc`` не "
+#~ "существует: для любой ассоциации нужно "
+#~ "задавать именно ``editor.type: journal``."
+#~ msgstr ""
+#~ "Used for columns of type ``ASSOC`` "
+#~ "— handles both inline editing of "
+#~ "the association value and the filter "
+#~ "control in the column header. There "
+#~ "is no separate editor with type "
+#~ "``assoc``: for any association, ``editor.type:"
+#~ " journal`` must be specified."
+
+#~ msgid ""
+#~ "Здесь ``formatter`` определяет, как "
+#~ "отрисовывается ячейка, а ``editor`` — "
+#~ "как выглядит фильтр в заголовке и "
+#~ "инлайн-редактор значения. Без блока ``editor``"
+#~ " фильтр останется пустым."
+#~ msgstr ""
+#~ "Here ``formatter`` defines how the cell"
+#~ " is rendered, and ``editor`` defines "
+#~ "how the filter in the header and"
+#~ " the inline value editor look. "
+#~ "Without the ``editor`` block, the filter"
+#~ " will remain empty."
+
+#~ msgid "строка вариантов: ``GROUP``, ``USER``"
+#~ msgstr "options string: ``GROUP``, ``USER``"
+
+#~ msgid ""
+#~ "Можно задавать статические варианты или "
+#~ "получаемые с использованием ``recordRef + "
+#~ "attribute`` записи и параметра ``optionsAtt``."
+#~ msgstr ""
+#~ "Static options can be defined, or "
+#~ "options can be retrieved using the "
+#~ "``recordRef + attribute`` of a record"
+#~ " and the ``optionsAtt`` parameter."
+
+#~ msgid "json-строка вариантов"
+#~ msgstr "JSON options string"
+
+#~ msgid "пр. ``_edge.${attribute}.options{value:?str,label:?disp}``"
+#~ msgstr "e.g. ``_edge.${attribute}.options{value:?str,label:?disp}``"
