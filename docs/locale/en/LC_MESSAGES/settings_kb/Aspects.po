@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -29,14 +29,10 @@ msgstr "Contents"
 #: ../../settings_kb/Aspects.rst:9
 msgid ""
 "**Аспект** — механизм расширения функционала :ref:`типа "
-"данных<data_types>` без изменения самого типа. Аспект добавляет к "
-"сущностям дополнительные атрибуты, форму конфигурации и связанное "
-"поведение, при этом тип данных остаётся неизменным."
-msgstr ""
-"**An aspect** is a mechanism for extending the functionality of a "
-":ref:`data type<data_types>` without modifying the type itself. An aspect"
-" adds extra attributes, a configuration form, and associated behavior to "
-"entities, while the data type remains unchanged."
+"данных<data_types>`. Он позволяет переиспользовать определения атрибутов,"
+" форму конфигурации и связанное поведение, не копируя их в каждый тип. "
+"При подключении аспекта его атрибуты включаются в итоговую модель типа."
+msgstr "An **aspect** extends the functionality of a :ref:`data type<data_types>`. It enables reuse of attribute definitions, configuration forms and associated behavior without copying them into each type. When attached, its attributes become part of the effective type model."
 
 #: ../../settings_kb/Aspects.rst:11
 msgid ""
@@ -62,34 +58,44 @@ msgstr ""
 "in forms, journals, action configurations, and record mutations."
 
 #: ../../settings_kb/Aspects.rst:15
+msgid ""
+"Дочерние типы наследуют аспекты родительского типа. При повторном "
+"подключении того же аспекта настройка ``inheritConfig`` определяет основу"
+" конфигурации: при включённом наследовании используется конфигурация "
+"родительского объявления, иначе — конфигурация по умолчанию аспекта. "
+"Собственные значения переопределяют ключи основы по верхнему уровню; "
+"вложенные объекты заменяются целиком."
+msgstr "Child types inherit parent aspects. When the same aspect is attached again, ``inheritConfig`` determines the configuration base: the parent declaration if enabled, otherwise the aspect defaults. Own values override top-level base keys; nested objects are replaced entirely."
+
+#: ../../settings_kb/Aspects.rst:17
 msgid "В Citeck представлены системные аспекты для типовых задач:"
 msgstr "Citeck provides system aspects for typical tasks:"
 
-#: ../../settings_kb/Aspects.rst:17
+#: ../../settings_kb/Aspects.rst:19
 msgid "учёт времени;"
 msgstr "time tracking;"
 
-#: ../../settings_kb/Aspects.rst:18
+#: ../../settings_kb/Aspects.rst:20
 msgid "управление связями между документами;"
 msgstr "managing links between documents;"
 
-#: ../../settings_kb/Aspects.rst:19
+#: ../../settings_kb/Aspects.rst:21
 msgid "генерация штрихкода;"
 msgstr "barcode generation;"
 
-#: ../../settings_kb/Aspects.rst:20
+#: ../../settings_kb/Aspects.rst:22
 msgid "конфигурация истории событий;"
 msgstr "event history configuration;"
 
-#: ../../settings_kb/Aspects.rst:21
+#: ../../settings_kb/Aspects.rst:23
 msgid "импорт данных;"
 msgstr "data import;"
 
-#: ../../settings_kb/Aspects.rst:22
+#: ../../settings_kb/Aspects.rst:24
 msgid "обработка активностей."
 msgstr "activity processing."
 
-#: ../../settings_kb/Aspects.rst:24
+#: ../../settings_kb/Aspects.rst:26
 msgid ""
 "Для просмотра существующих аспектов и их редактирования создан журнал "
 "**\"Аспекты\" (Рабочее пространство \"Раздел администратора\" - "
@@ -98,7 +104,7 @@ msgstr ""
 "A journal **\"Aspects\" (Workspace \"Admin Section\" - Model)** has been "
 "created for viewing existing aspects and editing them:"
 
-#: ../../settings_kb/Aspects.rst:30
+#: ../../settings_kb/Aspects.rst:32
 msgid ""
 "В журнале администратору с каждой записью доступен стандартный набор "
 "действий:"
@@ -106,68 +112,77 @@ msgstr ""
 "In the journal, the administrator has a standard set of actions available"
 " for each record:"
 
-#: ../../settings_kb/Aspects.rst:32
+#: ../../settings_kb/Aspects.rst:34
 msgid "редактировать json-файл;"
 msgstr "edit json file;"
 
-#: ../../settings_kb/Aspects.rst:33
+#: ../../settings_kb/Aspects.rst:35
 msgid "редактировать свойства;"
 msgstr "edit properties;"
 
-#: ../../settings_kb/Aspects.rst:34
-msgid "скачать;"
-msgstr "download;"
+#: ../../settings_kb/Aspects.rst:36
+msgid "скачать определение в формате YAML;"
+msgstr "Download the definition as YAML;"
 
-#: ../../settings_kb/Aspects.rst:35
+#: ../../settings_kb/Aspects.rst:37
 msgid "удалить."
 msgstr "delete."
 
-#: ../../settings_kb/Aspects.rst:37
+#: ../../settings_kb/Aspects.rst:39
 msgid "См. больше информации :ref:`о разработке<aspects>`"
 msgstr "See more information :ref:`on development<aspects>`"
 
-#: ../../settings_kb/Aspects.rst:40
+#: ../../settings_kb/Aspects.rst:41
+msgid ""
+"Для изменения определений аспектов нужны права администратора. Через API "
+"изменение также доступно под SYSTEM. Это отдельные права, не определяющие"
+" доступ к значениям атрибутов конкретных записей."
+msgstr "Changing aspect definitions requires administrator permissions. The API also allows SYSTEM. These are separate permissions and do not determine access to attribute values on individual records."
+
+#: ../../settings_kb/Aspects.rst:44
 msgid "Создание нового аспекта"
 msgstr "Creating a New Aspect"
 
-#: ../../settings_kb/Aspects.rst:42
+#: ../../settings_kb/Aspects.rst:46
 msgid "Форма создания нового аспекта состоит из 2 вкладок."
 msgstr "The form for creating a new aspect consists of 2 tabs."
 
-#: ../../settings_kb/Aspects.rst:44
+#: ../../settings_kb/Aspects.rst:48
 msgid "**Вкладка \"Основные\":**"
 msgstr "**\"Main\" Tab:**"
 
-#: ../../settings_kb/Aspects.rst:56 ../../settings_kb/Aspects.rst:90
+#: ../../settings_kb/Aspects.rst:60 ../../settings_kb/Aspects.rst:97
 msgid "п/п"
 msgstr "No."
 
-#: ../../settings_kb/Aspects.rst:57 ../../settings_kb/Aspects.rst:91
+#: ../../settings_kb/Aspects.rst:61 ../../settings_kb/Aspects.rst:98
 msgid "Наименование"
 msgstr "Name"
 
-#: ../../settings_kb/Aspects.rst:58 ../../settings_kb/Aspects.rst:92
-#: ../../settings_kb/Aspects.rst:253 ../../settings_kb/Aspects.rst:483
+#: ../../settings_kb/Aspects.rst:62 ../../settings_kb/Aspects.rst:99
+#: ../../settings_kb/Aspects.rst:264 ../../settings_kb/Aspects.rst:496
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/Aspects.rst:59 ../../settings_kb/Aspects.rst:94
+#: ../../settings_kb/Aspects.rst:63 ../../settings_kb/Aspects.rst:101
 msgid "1"
 msgstr "1"
 
-#: ../../settings_kb/Aspects.rst:60
+#: ../../settings_kb/Aspects.rst:64
 msgid "**Идентификатор**"
 msgstr "**Identifier**"
 
-#: ../../settings_kb/Aspects.rst:61
-msgid "уникальный идентификатор аспекта"
-msgstr "unique aspect identifier"
+#: ../../settings_kb/Aspects.rst:65
+msgid ""
+"уникальный идентификатор аспекта; допускаются латинские буквы, цифры, "
+"подчёркивание и дефис"
+msgstr "Unique aspect identifier; Latin letters, digits, underscores and hyphens are allowed"
 
-#: ../../settings_kb/Aspects.rst:62 ../../settings_kb/Aspects.rst:98
+#: ../../settings_kb/Aspects.rst:66 ../../settings_kb/Aspects.rst:105
 msgid "2"
 msgstr "2"
 
-#: ../../settings_kb/Aspects.rst:63
+#: ../../settings_kb/Aspects.rst:67
 msgid "**Префикс**"
 msgstr "**Prefix**"
 
@@ -196,23 +211,27 @@ msgstr ""
 msgid "Если префикс отдельно не задан, то по умолчанию равен идентификатору."
 msgstr "If the prefix is not specified separately, it defaults to the identifier."
 
-#: ../../settings_kb/Aspects.rst:68 ../../settings_kb/Aspects.rst:102
+#: ../../settings_kb/Aspects.rst
+msgid "Эффективный префикс должен быть уникален среди аспектов."
+msgstr "The effective prefix must be unique among aspects."
+
+#: ../../settings_kb/Aspects.rst:73 ../../settings_kb/Aspects.rst:109
 msgid "3"
 msgstr "3"
 
-#: ../../settings_kb/Aspects.rst:69
+#: ../../settings_kb/Aspects.rst:74
 msgid "**Название**"
 msgstr "**Title**"
 
-#: ../../settings_kb/Aspects.rst:70
+#: ../../settings_kb/Aspects.rst:75
 msgid "локализованное наименование"
 msgstr "localized name"
 
-#: ../../settings_kb/Aspects.rst:71 ../../settings_kb/Aspects.rst:106
+#: ../../settings_kb/Aspects.rst:76 ../../settings_kb/Aspects.rst:113
 msgid "4"
 msgstr "4"
 
-#: ../../settings_kb/Aspects.rst:72
+#: ../../settings_kb/Aspects.rst:77
 msgid "**Форма конфигурации**"
 msgstr "**Configuration Form**"
 
@@ -226,11 +245,17 @@ msgstr ""
 msgid "Форма может быть выбрана из ранее созданных или создана."
 msgstr "The form can be selected from previously created ones or created."
 
-#: ../../settings_kb/Aspects.rst:76
+#: ../../settings_kb/Aspects.rst:81
+msgid ""
+"Идентификатор и префикс задаются при создании; при редактировании в "
+"штатной форме эти поля заблокированы."
+msgstr "The identifier and prefix are set during creation; these fields are locked in the standard editing form."
+
+#: ../../settings_kb/Aspects.rst:83
 msgid "**Вкладка \"Атрибуты\":**"
 msgstr "**\"Attributes\" Tab:**"
 
-#: ../../settings_kb/Aspects.rst:82
+#: ../../settings_kb/Aspects.rst:89
 msgid ""
 "Атрибуты аспекта и системные атрибуты аспекта, которые будут добавлены к "
 "сущностям с данным аспектом."
@@ -238,90 +263,87 @@ msgstr ""
 "Aspect attributes and system aspect attributes that will be added to "
 "entities with this aspect."
 
-#: ../../settings_kb/Aspects.rst:93
+#: ../../settings_kb/Aspects.rst:100
 msgid "Пример заполнения"
 msgstr "Example of Filling"
 
-#: ../../settings_kb/Aspects.rst:95
+#: ../../settings_kb/Aspects.rst:102
 msgid "**Id**"
 msgstr "**Id**"
 
-#: ../../settings_kb/Aspects.rst:96
+#: ../../settings_kb/Aspects.rst:103
 msgid "идентификатор поля, по которому оно будет доступно на форме, в журнале."
 msgstr ""
 "field identifier by which it will be available on the form, in the "
 "journal."
 
-#: ../../settings_kb/Aspects.rst:97
+#: ../../settings_kb/Aspects.rst:104
 msgid "testAttribute (camelCase)"
 msgstr "testAttribute (camelCase)"
 
-#: ../../settings_kb/Aspects.rst:99
+#: ../../settings_kb/Aspects.rst:106
 msgid "**Имя**"
 msgstr "**Name**"
 
-#: ../../settings_kb/Aspects.rst:100
+#: ../../settings_kb/Aspects.rst:107
 msgid "имя поля для отображения пользователю."
 msgstr "field name for display to the user."
 
-#: ../../settings_kb/Aspects.rst:101
+#: ../../settings_kb/Aspects.rst:108
 msgid "Тестовый атрибут"
 msgstr "Test Attribute"
 
-#: ../../settings_kb/Aspects.rst:103
+#: ../../settings_kb/Aspects.rst:110
 msgid "**Тип**"
 msgstr "**Type**"
 
-#: ../../settings_kb/Aspects.rst:104
+#: ../../settings_kb/Aspects.rst:111
 msgid "тип поля. :ref:`Поддерживаемые типы данных<ecos-model_types>`"
 msgstr "field type. :ref:`Supported data types<ecos-model_types>`"
 
-#: ../../settings_kb/Aspects.rst:105
+#: ../../settings_kb/Aspects.rst:112
 msgid "выбирается из списка предлагаемых. По умолчанию выставляется text."
 msgstr "selected from the proposed list. Default is text."
 
-#: ../../settings_kb/Aspects.rst:107
+#: ../../settings_kb/Aspects.rst:114
 msgid "**Множественный**"
 msgstr "**Multiple**"
 
-#: ../../settings_kb/Aspects.rst:108
+#: ../../settings_kb/Aspects.rst:115
 msgid "множественный ввод разрешен"
 msgstr "multiple input allowed"
 
-#: ../../settings_kb/Aspects.rst:109 ../../settings_kb/Aspects.rst:113
+#: ../../settings_kb/Aspects.rst:116 ../../settings_kb/Aspects.rst:120
 msgid "флаг"
 msgstr "flag"
 
-#: ../../settings_kb/Aspects.rst:110
+#: ../../settings_kb/Aspects.rst:117
 msgid "5"
 msgstr "5"
 
-#: ../../settings_kb/Aspects.rst:111
+#: ../../settings_kb/Aspects.rst:118
 msgid "**Обязательный**"
 msgstr "**Mandatory**"
 
-#: ../../settings_kb/Aspects.rst:112
+#: ../../settings_kb/Aspects.rst:119
 msgid "поле обязательно к заполнению"
 msgstr "field is mandatory"
 
-#: ../../settings_kb/Aspects.rst:114
+#: ../../settings_kb/Aspects.rst:121
 msgid "6"
 msgstr "6"
 
-#: ../../settings_kb/Aspects.rst:115
+#: ../../settings_kb/Aspects.rst:122
 msgid "**Вычисляемые атрибуты**"
 msgstr "**Calculated Attributes**"
 
-#: ../../settings_kb/Aspects.rst:116
+#: ../../settings_kb/Aspects.rst:123
 msgid ""
-"функционал, позволяющий установить выражение-зависимость, позволяющий "
-"гибко создавать производные атрибуты :ref:`См. "
-"подробно<attribute_rights>`"
-msgstr ""
-"functionality allowing to set a dependency expression, enabling flexible "
-"creation of derived attributes :ref:`See details<attribute_rights>`"
+"функционал, позволяющий создавать производные атрибуты с помощью "
+"выражений и скриптов. :ref:`См. подробно<count_attributes>`"
+msgstr "Functionality for creating derived attributes using expressions and scripts. :ref:`Details<count_attributes>`"
 
-#: ../../settings_kb/Aspects.rst:117
+#: ../../settings_kb/Aspects.rst:124
 msgid ""
 "настройка конфигурации в зависимости от типа и сложности вычисления "
 "атрибута"
@@ -329,7 +351,16 @@ msgstr ""
 "configuration setting depending on the type and complexity of attribute "
 "calculation"
 
-#: ../../settings_kb/Aspects.rst:119
+#: ../../settings_kb/Aspects.rst:126
+msgid ""
+"Полное имя атрибута ``prefix:attributeId`` может содержать латинские "
+"буквы, цифры, подчёркивание, дефис и двоеточие. Для атрибутов, "
+"сохраняемых как столбцы, длина полного имени ограничена 63 байтами UTF-8,"
+" включая префикс и двоеточие. Для атрибутов, не сохраняемых как столбцы, "
+"ограничение длины не применяется, но требования к символам сохраняются."
+msgstr "The full attribute name ``prefix:attributeId`` may contain Latin letters, digits, underscores, hyphens and colons. For attributes stored as columns, the full name is limited to 63 UTF-8 bytes including prefix and colon. Non-column attributes have no length limit but retain character requirements."
+
+#: ../../settings_kb/Aspects.rst:128
 msgid ""
 "В поле ``_aspects`` как и при добавлении любого другого аспекта вносится "
 "информация об аспекте."
@@ -337,23 +368,22 @@ msgstr ""
 "Information about the aspect is entered in the ``_aspects`` field, as "
 "when adding any other aspect."
 
-#: ../../settings_kb/Aspects.rst:127
+#: ../../settings_kb/Aspects.rst:136
 msgid ""
-"Каждый аспект может быть добавлен как явно (во вкладке Аспекты), так и "
-"автоматически (см. ниже **Учет времени**)"
-msgstr ""
-"Each aspect can be added either explicitly (in the Aspects tab) or "
-"automatically (see below **Time Tracking**)"
+"Аспект можно подключить явно во вкладке **Аспекты** типа данных. "
+"Автоматическое добавление зависит от реализации конкретного аспекта и "
+"конфигурации платформы."
+msgstr "An aspect can be attached explicitly on the data type **Aspects** tab. Automatic addition depends on the specific aspect implementation and platform configuration."
 
-#: ../../settings_kb/Aspects.rst:131
+#: ../../settings_kb/Aspects.rst:140
 msgid "Примеры"
 msgstr "Examples"
 
-#: ../../settings_kb/Aspects.rst:134
+#: ../../settings_kb/Aspects.rst:143
 msgid "Связан с другим документом"
 msgstr "Associated with Another Document"
 
-#: ../../settings_kb/Aspects.rst:136
+#: ../../settings_kb/Aspects.rst:145
 msgid ""
 "Аспект **\"Связан с другим документом\"** создан для работы виджета "
 "**\"Связи документа\"** (добавление и отображение связей с сущностью ):"
@@ -362,17 +392,17 @@ msgstr ""
 "operation of the **\"Document Links\"** widget (adding and displaying "
 "links with an entity):"
 
-#: ../../settings_kb/Aspects.rst:142
+#: ../../settings_kb/Aspects.rst:151
 msgid "В поле ``assoc:associatedWith`` вносится информация о связанных сущностях."
 msgstr ""
 "Information about related entities is entered in the "
 "``assoc:associatedWith`` field."
 
-#: ../../settings_kb/Aspects.rst:151
+#: ../../settings_kb/Aspects.rst:162
 msgid "Имеет штрихкод"
 msgstr "Has Barcode"
 
-#: ../../settings_kb/Aspects.rst:155
+#: ../../settings_kb/Aspects.rst:164
 msgid ""
 "Аспект **\"Имеет штрихкод\"** создан для формирования штрихкода к "
 "документу:"
@@ -380,11 +410,11 @@ msgstr ""
 "The aspect **\"Has Barcode\"** is created for generating a barcode for "
 "the document:"
 
-#: ../../settings_kb/Aspects.rst:161
+#: ../../settings_kb/Aspects.rst:170
 msgid "В аспекте нет атрибутов, но есть форма настройки:"
 msgstr "The aspect has no attributes, but has a configuration form:"
 
-#: ../../settings_kb/Aspects.rst:167
+#: ../../settings_kb/Aspects.rst:176
 msgid ""
 "При выборе аспекта в типе данных можно настроить формат штрих-кода и "
 "атрибут, из которого брать данные для формирования штрих-кода (по "
@@ -394,7 +424,7 @@ msgstr ""
 " format and the attribute from which to take data for generating the "
 "barcode (by default, the document number ``_docNum``)."
 
-#: ../../settings_kb/Aspects.rst:169
+#: ../../settings_kb/Aspects.rst:178
 msgid ""
 "Для реализации сложной логики - необходимо создать :ref:`вычисляемый "
 "атрибут<count_attributes>`, и на основе него добавить аспект и далее "
@@ -404,29 +434,29 @@ msgstr ""
 "attribute<count_attributes>`, and based on it, add an aspect and then "
 "take the barcode setting from the attribute."
 
-#: ../../settings_kb/Aspects.rst:173
+#: ../../settings_kb/Aspects.rst:184
 msgid "Учет времени"
 msgstr "Time Tracking"
 
-#: ../../settings_kb/Aspects.rst:177
+#: ../../settings_kb/Aspects.rst:186
 msgid ""
 "Аспект **\"Учет времени\"** создает записи о потраченном времени по "
 "задаче:"
 msgstr "The aspect **\"Time Tracking\"** creates records of time spent on a task:"
 
-#: ../../settings_kb/Aspects.rst:183
+#: ../../settings_kb/Aspects.rst:192
 msgid "В аспекте есть атрибут ``timeTracking`` - запись о потраченном времени:"
 msgstr "The aspect has an attribute ``timeTracking`` - a record of time spent:"
 
-#: ../../settings_kb/Aspects.rst:189
+#: ../../settings_kb/Aspects.rst:198
 msgid "Отражается в виде дочерней ассоциации: ``time-trackable:timeTracking``:"
 msgstr "Reflected as a child association: ``time-trackable:timeTracking``:"
 
-#: ../../settings_kb/Aspects.rst:195
+#: ../../settings_kb/Aspects.rst:204
 msgid "При таком выборе атрибут аспекта является дочерней ассоциацией."
 msgstr "With this choice, the aspect attribute is a child association."
 
-#: ../../settings_kb/Aspects.rst:197
+#: ../../settings_kb/Aspects.rst:206
 msgid ""
 "Следовательно, по сущности ``timeTracking`` можно перейти к родителю. В "
 "атрибуте ``timeTracking``, соответственно, содержатся ссылки на все "
@@ -436,37 +466,34 @@ msgstr ""
 "``timeTracking`` entity. The ``timeTracking`` attribute, accordingly, "
 "contains links to all child entities."
 
-#: ../../settings_kb/Aspects.rst:199
+#: ../../settings_kb/Aspects.rst:208
 msgid "Таким образом образуется двухсторонняя связь:"
 msgstr "Thus, a two-way connection is formed:"
 
-#: ../../settings_kb/Aspects.rst:201
+#: ../../settings_kb/Aspects.rst:210
 msgid "от дочернего к родителю по системному атрибуту ``_parent``,"
 msgstr "from child to parent via the system attribute ``_parent``,"
 
-#: ../../settings_kb/Aspects.rst:202
+#: ../../settings_kb/Aspects.rst:211
 msgid "от родителя к дочернему по настроенному атрибуту."
 msgstr "from parent to child via the configured attribute."
 
-#: ../../settings_kb/Aspects.rst:204
+#: ../../settings_kb/Aspects.rst:213
 msgid ""
-"Если удаляется родитель, то удаляются дочерние сущности по всем "
-"ассоциациям."
-msgstr ""
-"If the parent is deleted, then child entities are deleted for all "
-"associations."
+"По умолчанию при удалении родителя удаляются записи по дочерним "
+"ассоциациям. Если для дочерней ассоциации включена настройка сохранения "
+"дочерних записей (``allowChildDetach``), они сохраняются при удалении "
+"связи или родителя."
+msgstr "By default, deleting a parent deletes records in child associations. If child record preservation (``allowChildDetach``) is enabled, they remain when the association or parent is deleted."
 
-#: ../../settings_kb/Aspects.rst:206
+#: ../../settings_kb/Aspects.rst:215
 msgid ""
-"Если заданы права по умолчанию, то дочерние наследуют права от родителей."
-" Соответственно, просматривать ``timeTracking`` могут все, у кого доступ "
-"к документу."
-msgstr ""
-"If default rights are set, then children inherit rights from parents. "
-"Accordingly, everyone who has access to the document can view "
-"``timeTracking``."
+"Доступ к записям ``timeTracking`` зависит от настроек прав дочернего типа"
+" и наследования прав от родителя. При настройке учёта времени проверьте "
+"доступ к дочерним записям для нужных пользователей."
+msgstr "Access to ``timeTracking`` records depends on child type permissions and permission inheritance from the parent. When configuring time tracking, check child record access for the required users."
 
-#: ../../settings_kb/Aspects.rst:208
+#: ../../settings_kb/Aspects.rst:217
 msgid ""
 "При создании ``timeTracking``- сущности доступны 2 атрибута, которые "
 "позволяют сделать связь с родителем:"
@@ -474,11 +501,18 @@ msgstr ""
 "When creating a ``timeTracking`` entity, 2 attributes are available that "
 "allow making a connection with the parent:"
 
-#: ../../settings_kb/Aspects.rst:217
+#: ../../settings_kb/Aspects.rst:224
+msgid ""
+"Вместо ``emodel/<source-id>@<record-id>`` подставьте фактический "
+"RecordRef заявки. Ссылка вида ``emodel/type@document`` указывает на "
+"определение типа, а не на экземпляр документа."
+msgstr "Replace ``emodel/<source-id>@<record-id>`` with the actual request RecordRef. ``emodel/type@document`` refers to a type definition, not a document instance."
+
+#: ../../settings_kb/Aspects.rst:230
 msgid "Конфигурация истории"
 msgstr "History Configuration"
 
-#: ../../settings_kb/Aspects.rst:221
+#: ../../settings_kb/Aspects.rst:232
 msgid ""
 "Аспект **«Конфигурация истории»** создан для возможности конфигурации "
 "записи свойств в историю."
@@ -486,7 +520,7 @@ msgstr ""
 "The aspect **\"History Configuration\"** is created for the possibility "
 "of configuring the recording of properties into history."
 
-#: ../../settings_kb/Aspects.rst:238
+#: ../../settings_kb/Aspects.rst:249
 msgid ""
 "Для настройки необходимо добавить этот аспект в тип данных на вкладке "
 "**Аспекты**:"
@@ -494,7 +528,7 @@ msgstr ""
 "To configure, you need to add this aspect to the data type on the "
 "**Aspects** tab:"
 
-#: ../../settings_kb/Aspects.rst:244
+#: ../../settings_kb/Aspects.rst:255
 msgid ""
 "Аспект добавляет 3 настройки, которые можно задать как в форме, так и "
 "напрямую в json:"
@@ -502,19 +536,19 @@ msgstr ""
 "The aspect adds 3 settings that can be specified either in the form or "
 "directly in json:"
 
-#: ../../settings_kb/Aspects.rst:252
+#: ../../settings_kb/Aspects.rst:263
 msgid "Настройка"
 msgstr "Setting"
 
-#: ../../settings_kb/Aspects.rst:254
+#: ../../settings_kb/Aspects.rst:265
 msgid "**Исключенные атрибуты** (``excludedAtts``)"
 msgstr "**Excluded Attributes** (``excludedAtts``)"
 
-#: ../../settings_kb/Aspects.rst:255
+#: ../../settings_kb/Aspects.rst:266
 msgid "атрибуты, изменение которых не записывается в историю"
 msgstr "attributes whose changes are not recorded in history"
 
-#: ../../settings_kb/Aspects.rst:256
+#: ../../settings_kb/Aspects.rst:267
 msgid ""
 "**Атрибуты для записи истории при создании** "
 "(``onCreationHistoricalAtts``)"
@@ -522,23 +556,23 @@ msgstr ""
 "**Attributes for Recording History on Creation** "
 "(``onCreationHistoricalAtts``)"
 
-#: ../../settings_kb/Aspects.rst:257
+#: ../../settings_kb/Aspects.rst:268
 msgid "атрибуты, создание которых записывается в историю"
 msgstr "attributes whose creation is recorded in history"
 
-#: ../../settings_kb/Aspects.rst:258
+#: ../../settings_kb/Aspects.rst:269
 msgid "**Отключить историю**"
 msgstr "**Disable History**"
 
-#: ../../settings_kb/Aspects.rst:259
+#: ../../settings_kb/Aspects.rst:270
 msgid "полностью отключает запись изменений в историю"
 msgstr "completely disables recording of changes in history"
 
-#: ../../settings_kb/Aspects.rst:262
+#: ../../settings_kb/Aspects.rst:273
 msgid "Исключенные атрибуты"
 msgstr "Excluded Attributes"
 
-#: ../../settings_kb/Aspects.rst:264
+#: ../../settings_kb/Aspects.rst:275
 msgid ""
 "По кнопке **Настроить** в строке **Исключенные атрибуты** доступен выбор "
 "атрибутов типа данных, информация об изменении которых не будет "
@@ -550,7 +584,7 @@ msgstr ""
 "will not be recorded in **history**, and accordingly, will not be "
 "displayed in the **\"Event History\"** widget."
 
-#: ../../settings_kb/Aspects.rst:281
+#: ../../settings_kb/Aspects.rst:292
 msgid ""
 "Например, если в карточке изменить информацию о наименовании, категории и"
 " стоимости, то в виджете **«История событий»** отразится информация "
@@ -560,7 +594,7 @@ msgstr ""
 " in the card, then only information about the changed cost will be "
 "reflected in the **\"Event History\"** widget:"
 
-#: ../../settings_kb/Aspects.rst:287
+#: ../../settings_kb/Aspects.rst:298
 msgid ""
 "Если в типе данных настроены аспекты (например, **Версионные данные**, "
 "**Имеет документы**), то атрибуты из них так же можно выбрать:"
@@ -569,11 +603,11 @@ msgstr ""
 "Data**, **Has Documents**), then attributes from them can also be "
 "selected:"
 
-#: ../../settings_kb/Aspects.rst:306
+#: ../../settings_kb/Aspects.rst:317
 msgid "Атрибуты для записи истории при создании"
 msgstr "Attributes for Recording History on Creation"
 
-#: ../../settings_kb/Aspects.rst:308
+#: ../../settings_kb/Aspects.rst:319
 msgid ""
 "По кнопке **Настроить** в строке **Атрибуты для записи истории при "
 "создании** доступен выбор атрибутов типа данных, информация о создании "
@@ -585,29 +619,29 @@ msgstr ""
 "information about the creation of which will be recorded in **history**, "
 "and accordingly, will be displayed in the **\"Event History\"** widget."
 
-#: ../../settings_kb/Aspects.rst:325
+#: ../../settings_kb/Aspects.rst:336
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../settings_kb/Aspects.rst:332
+#: ../../settings_kb/Aspects.rst:343
 msgid "Также можно вносить атрибуты непосредственно в json:"
 msgstr "Attributes can also be entered directly in json:"
 
-#: ../../settings_kb/Aspects.rst:334
+#: ../../settings_kb/Aspects.rst:345
 msgid "**excludedAtts** - исключенные атрибуты;"
 msgstr "**excludedAtts** - excluded attributes;"
 
-#: ../../settings_kb/Aspects.rst:335
+#: ../../settings_kb/Aspects.rst:346
 msgid "**onCreationHistoricalAtts** - атрибуты для записи истории при создании"
 msgstr ""
 "**onCreationHistoricalAtts** - attributes for recording history on "
 "creation"
 
-#: ../../settings_kb/Aspects.rst:354
+#: ../../settings_kb/Aspects.rst:365
 msgid "Отключить историю"
 msgstr "Disable History"
 
-#: ../../settings_kb/Aspects.rst:360
+#: ../../settings_kb/Aspects.rst:371
 msgid ""
 "При выставленном чекбоксе **Отключить историю** при изменении никакие "
 "данные не будут записываться в **историю**, и отражаться в виджете "
@@ -617,11 +651,11 @@ msgstr ""
 "in **history** when changed, and accordingly, will not be displayed in "
 "the **\"Event History\"** widget."
 
-#: ../../settings_kb/Aspects.rst:364
+#: ../../settings_kb/Aspects.rst:377
 msgid "Импорт данных"
 msgstr "Data Import"
 
-#: ../../settings_kb/Aspects.rst:368
+#: ../../settings_kb/Aspects.rst:379
 msgid ""
 "Аспект **import-data-config (Импорт данных)** - необходим для настройки "
 "вариантов импорта данных."
@@ -629,19 +663,25 @@ msgstr ""
 "The aspect **import-data-config (Data Import)** - is necessary for "
 "configuring data import options."
 
-#: ../../settings_kb/Aspects.rst:374
+#: ../../settings_kb/Aspects.rst:381
+msgid ""
+"Определение аспекта поставляется модулем ``ecos-integrations`` и "
+"использует форму конфигурации ``uiserv/form@import-data-aspect-form``."
+msgstr "The aspect definition is supplied by ``ecos-integrations`` and uses ``uiserv/form@import-data-aspect-form``."
+
+#: ../../settings_kb/Aspects.rst:387
 msgid "Форма настройки:"
 msgstr "Configuration Form:"
 
-#: ../../settings_kb/Aspects.rst:380
+#: ../../settings_kb/Aspects.rst:393
 msgid "**id** - id варианта."
 msgstr "**id** - option id."
 
-#: ../../settings_kb/Aspects.rst:381
+#: ../../settings_kb/Aspects.rst:394
 msgid "**Название** - название варианта, которое будет отображаться в журнале."
 msgstr "**Title** - the title of the option that will be displayed in the journal."
 
-#: ../../settings_kb/Aspects.rst:382
+#: ../../settings_kb/Aspects.rst:395
 msgid ""
 "**Camel DSL** - Camel DSL с типом IMPORT_DATA, в котором описана "
 "обработка данных."
@@ -649,7 +689,7 @@ msgstr ""
 "**Camel DSL** - Camel DSL with type IMPORT_DATA, which describes data "
 "processing."
 
-#: ../../settings_kb/Aspects.rst:383
+#: ../../settings_kb/Aspects.rst:396
 msgid ""
 "**Разрешен для** - можно указать группы или пользователей напрямую. Если "
 "оставить пустым, вариант будет доступен всем."
@@ -657,21 +697,21 @@ msgstr ""
 "**Allowed for** - you can specify groups or users directly. If left "
 "empty, the option will be available to everyone."
 
-#: ../../settings_kb/Aspects.rst:385
+#: ../../settings_kb/Aspects.rst:398
 msgid "Для типа данных может быть добавлено несколько конфигураций импорта."
 msgstr "Several import configurations can be added for a data type."
 
-#: ../../settings_kb/Aspects.rst:387
+#: ../../settings_kb/Aspects.rst:400
 msgid "Созданные конфигурации будут доступны в журнале по кнопке **Импорт**:"
 msgstr ""
 "The created configurations will be available in the journal via the "
 "**Import** button:"
 
-#: ../../settings_kb/Aspects.rst:394
+#: ../../settings_kb/Aspects.rst:407
 msgid "Вариант «По умолчанию»"
 msgstr "**\"Default\" Option**"
 
-#: ../../settings_kb/Aspects.rst:400
+#: ../../settings_kb/Aspects.rst:413
 msgid ""
 "Если вариант **«По умолчанию»** включен, можно указать **Маппинг для "
 "ассоциаций**."
@@ -679,7 +719,7 @@ msgstr ""
 "If the **\"Default\"** option is enabled, you can specify **Mapping for "
 "Associations**."
 
-#: ../../settings_kb/Aspects.rst:402
+#: ../../settings_kb/Aspects.rst:415
 msgid ""
 "Указывается **атрибут** в Типе данных и **атрибут** в связанном типе, "
 "**для поиска**. Атрибутов для поиска может быть указано несколько. Если "
@@ -691,7 +731,7 @@ msgstr ""
 " If the field is left empty, the search will be conducted by the system "
 "attribute **_name**."
 
-#: ../../settings_kb/Aspects.rst:407
+#: ../../settings_kb/Aspects.rst:420
 msgid ""
 "Шаблон для варианта **«По умолчанию»** формируется по журналу, в котором "
 "выполняется скачивание шаблона."
@@ -699,7 +739,7 @@ msgstr ""
 "The template for the **\"Default\"** option is generated based on the "
 "journal in which the template is downloaded."
 
-#: ../../settings_kb/Aspects.rst:409
+#: ../../settings_kb/Aspects.rst:422
 msgid ""
 "Если в типе присутствуют обязательные атрибуты, которых нет в журнале, "
 "они будут добавлены в конец столбцов в шаблоне."
@@ -707,7 +747,7 @@ msgstr ""
 "If the type has mandatory attributes that are not in the journal, they "
 "will be added to the end of the columns in the template."
 
-#: ../../settings_kb/Aspects.rst:411
+#: ../../settings_kb/Aspects.rst:424
 msgid ""
 "В шаблон не выгружаются системные, вычисляемые (созданные и в типе "
 "данных, и в журнале), вложенные поля."
@@ -715,7 +755,7 @@ msgstr ""
 "System, calculated (created both in the data type and in the journal), "
 "and nested fields are not uploaded to the template."
 
-#: ../../settings_kb/Aspects.rst:413
+#: ../../settings_kb/Aspects.rst:426
 msgid ""
 "Для варианта **«По умолчанию»** добавлен универсальный CamelDSL "
 "**default-import-data**."
@@ -723,15 +763,15 @@ msgstr ""
 "A universal CamelDSL **default-import-data** has been added for the "
 "**\"Default\"** option."
 
-#: ../../settings_kb/Aspects.rst:417
+#: ../../settings_kb/Aspects.rst:432
 msgid "Имеет активности"
 msgstr "Has Activities"
 
-#: ../../settings_kb/Aspects.rst:421
+#: ../../settings_kb/Aspects.rst:434
 msgid "Чтобы письмо обрабатывалось и добавлялось как активность необходимо:"
 msgstr "For an email to be processed and added as an activity, it is necessary:"
 
-#: ../../settings_kb/Aspects.rst:423
+#: ../../settings_kb/Aspects.rst:436
 msgid ""
 "Добавить в тип данных аспект **Имеет активности** (has-ecos-activities) и"
 " настроить его конфигурацию:"
@@ -739,7 +779,7 @@ msgstr ""
 "Add the **Has Activities** (has-ecos-activities) aspect to the data type "
 "and configure its settings:"
 
-#: ../../settings_kb/Aspects.rst:429
+#: ../../settings_kb/Aspects.rst:442
 msgid ""
 "Указать **алиас**, по которому будет осуществляться поиск типа данных в "
 "заголовке письма, выбрать **атрибут** типа данных."
@@ -747,13 +787,13 @@ msgstr ""
 "Specify the **alias** by which the data type will be searched in the "
 "email header, select the **attribute** of the data type."
 
-#: ../../settings_kb/Aspects.rst:431
+#: ../../settings_kb/Aspects.rst:444
 msgid "В Теме сообщения в конце указывать связь в формате **(Алиас: Значение)**"
 msgstr ""
 "In the Subject of the message, specify the connection at the end in the "
 "format **(Alias: Value)**"
 
-#: ../../settings_kb/Aspects.rst:437
+#: ../../settings_kb/Aspects.rst:450
 msgid ""
 "Для рабочих пространств по умолчанию добавлена следующая настройка "
 "аспекта:"
@@ -761,7 +801,7 @@ msgstr ""
 "The following aspect configuration has been added for workspaces by "
 "default:"
 
-#: ../../settings_kb/Aspects.rst:443
+#: ../../settings_kb/Aspects.rst:456
 msgid ""
 "Для включения обработки писем в виджете \"Активности\" необходимо указать"
 " почтовый ящик в настройке :ref:`mail-inbox-activity<mail-inbox-"
@@ -771,11 +811,11 @@ msgstr ""
 "specify a mailbox in the :ref:`mail-inbox-activity<mail-inbox-activity>` "
 "setting."
 
-#: ../../settings_kb/Aspects.rst:447
+#: ../../settings_kb/Aspects.rst:462
 msgid "Вычисляемые атрибуты в аспекте"
 msgstr "Calculated attributes in an aspect"
 
-#: ../../settings_kb/Aspects.rst:451
+#: ../../settings_kb/Aspects.rst:464
 msgid ""
 "Пример показывает, как один раз описать :ref:`вычисляемые "
 "атрибуты<count_attributes>` в аспекте и переиспользовать их в нескольких "
@@ -784,60 +824,60 @@ msgid ""
 "``value.load(...)``."
 msgstr ""
 "This example shows how to describe :ref:`calculated "
-"attributes<count_attributes>` in an aspect once and reuse them in several "
-"data types. The aspect script runs in the context of a record of the type"
-" the aspect is attached to, and can read its attributes via "
+"attributes<count_attributes>` in an aspect once and reuse them in several"
+" data types. The aspect script runs in the context of a record of the "
+"type the aspect is attached to, and can read its attributes via "
 "``value.load(...)``."
 
-#: ../../settings_kb/Aspects.rst:453
+#: ../../settings_kb/Aspects.rst:466
 msgid "Пример состоит из трёх файлов:"
 msgstr "The example consists of three files:"
 
-#: ../../settings_kb/Aspects.rst:461
+#: ../../settings_kb/Aspects.rst:474
 msgid "Файл"
 msgstr "File"
 
-#: ../../settings_kb/Aspects.rst:462
+#: ../../settings_kb/Aspects.rst:475
 msgid "Назначение"
 msgstr "Purpose"
 
-#: ../../settings_kb/Aspects.rst:463
+#: ../../settings_kb/Aspects.rst:476
 msgid "``age-test-aspect.yml``"
 msgstr "``age-test-aspect.yml``"
 
-#: ../../settings_kb/Aspects.rst:464
+#: ../../settings_kb/Aspects.rst:477
 msgid "аспект **«Вычисление возраста»** с вычисляемыми атрибутами"
 msgstr ""
 "the **«Вычисление возраста»** (\"Age calculation\") aspect with "
 "calculated attributes"
 
-#: ../../settings_kb/Aspects.rst:465
+#: ../../settings_kb/Aspects.rst:478
 msgid "``age-example-a-type.yml``"
 msgstr "``age-example-a-type.yml``"
 
-#: ../../settings_kb/Aspects.rst:466
+#: ../../settings_kb/Aspects.rst:479
 msgid "тип данных **«Пример возраста — тип A»**, к которому подключён аспект"
 msgstr ""
-"the **«Пример возраста — тип A»** (\"Age example — type A\") data type "
-"to which the aspect is attached"
+"the **«Пример возраста — тип A»** (\"Age example — type A\") data type to"
+" which the aspect is attached"
 
-#: ../../settings_kb/Aspects.rst:467
+#: ../../settings_kb/Aspects.rst:480
 msgid "``age-example-b-type.yml``"
 msgstr "``age-example-b-type.yml``"
 
-#: ../../settings_kb/Aspects.rst:468
+#: ../../settings_kb/Aspects.rst:481
 msgid ""
 "тип данных **«Пример возраста — тип B»**, к которому подключён тот же "
 "аспект"
 msgstr ""
-"the **«Пример возраста — тип B»** (\"Age example — type B\") data type "
-"to which the same aspect is attached"
+"the **«Пример возраста — тип B»** (\"Age example — type B\") data type to"
+" which the same aspect is attached"
 
-#: ../../settings_kb/Aspects.rst:471
+#: ../../settings_kb/Aspects.rst:484
 msgid "Аспект"
 msgstr "Aspect"
 
-#: ../../settings_kb/Aspects.rst:473
+#: ../../settings_kb/Aspects.rst:486
 msgid ""
 "Аспект ``age-test`` содержит два вычисляемых атрибута типа ``SCRIPT``. "
 "Оба используют ``storingType: ON_MUTATE`` — значение пересчитывается и "
@@ -847,23 +887,23 @@ msgstr ""
 "``SCRIPT`` type. Both use ``storingType: ON_MUTATE`` — the value is "
 "recalculated and saved on every record change."
 
-#: ../../settings_kb/Aspects.rst:481
+#: ../../settings_kb/Aspects.rst:494
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../settings_kb/Aspects.rst:482
+#: ../../settings_kb/Aspects.rst:495
 msgid "Тип"
 msgstr "Type"
 
-#: ../../settings_kb/Aspects.rst:484
+#: ../../settings_kb/Aspects.rst:497
 msgid "``constant``"
 msgstr "``constant``"
 
-#: ../../settings_kb/Aspects.rst:485
+#: ../../settings_kb/Aspects.rst:498
 msgid "TEXT"
 msgstr "TEXT"
 
-#: ../../settings_kb/Aspects.rst:486
+#: ../../settings_kb/Aspects.rst:499
 msgid ""
 "всегда возвращает строку ``\"Любой текст\"``. Служит для проверки, что "
 "вычисляемые атрибуты аспекта работают на типе"
@@ -871,15 +911,15 @@ msgstr ""
 "always returns the string ``\"Любой текст\"`` (\"Any text\"). Used to "
 "check that the aspect's calculated attributes work on the type"
 
-#: ../../settings_kb/Aspects.rst:487
+#: ../../settings_kb/Aspects.rst:500
 msgid "``age``"
 msgstr "``age``"
 
-#: ../../settings_kb/Aspects.rst:488
+#: ../../settings_kb/Aspects.rst:501
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: ../../settings_kb/Aspects.rst:489
+#: ../../settings_kb/Aspects.rst:502
 msgid ""
 "возраст на дату расчёта, вычисленный по атрибутам записи ``dateBirth`` и "
 "``calculationDate``"
@@ -887,11 +927,11 @@ msgstr ""
 "age as of the calculation date, computed from the record attributes "
 "``dateBirth`` and ``calculationDate``"
 
-#: ../../settings_kb/Aspects.rst:491
+#: ../../settings_kb/Aspects.rst:504
 msgid "Алгоритм вычисления атрибута ``age``:"
 msgstr "Algorithm for calculating the ``age`` attribute:"
 
-#: ../../settings_kb/Aspects.rst:493
+#: ../../settings_kb/Aspects.rst:506
 msgid ""
 "Прочитать из записи ``dateBirth`` и ``calculationDate`` в строковом виде "
 "(``?str``)."
@@ -899,11 +939,11 @@ msgstr ""
 "Read ``dateBirth`` and ``calculationDate`` from the record as strings "
 "(``?str``)."
 
-#: ../../settings_kb/Aspects.rst:494
+#: ../../settings_kb/Aspects.rst:507
 msgid "Если хотя бы одна из дат не заполнена — вернуть ``null``."
 msgstr "If at least one of the dates is empty, return ``null``."
 
-#: ../../settings_kb/Aspects.rst:495
+#: ../../settings_kb/Aspects.rst:508
 msgid ""
 "Разобрать обе даты на год, месяц и день (первые 10 символов в формате "
 "``ГГГГ-ММ-ДД``)."
@@ -911,11 +951,11 @@ msgstr ""
 "Parse both dates into year, month, and day (the first 10 characters in "
 "the ``YYYY-MM-DD`` format)."
 
-#: ../../settings_kb/Aspects.rst:496
+#: ../../settings_kb/Aspects.rst:509
 msgid "Если дата расчёта раньше даты рождения — вернуть ``null``."
 msgstr "If the calculation date is earlier than the birth date, return ``null``."
 
-#: ../../settings_kb/Aspects.rst:497
+#: ../../settings_kb/Aspects.rst:510
 msgid ""
 "Вычесть год рождения из года расчёта. Если в году расчёта день рождения "
 "ещё не наступил — уменьшить результат на 1."
@@ -927,11 +967,11 @@ msgstr ""
 msgid "age-test-aspect.yml"
 msgstr "age-test-aspect.yml"
 
-#: ../../settings_kb/Aspects.rst:554
+#: ../../settings_kb/Aspects.rst:567
 msgid "Типы данных"
 msgstr "Data types"
 
-#: ../../settings_kb/Aspects.rst:556
+#: ../../settings_kb/Aspects.rst:569
 msgid ""
 "Оба типа наследуются от ``emodel/type@user-base``, хранятся в "
 "``ECOS_MODEL`` и подключают аспект через ``aspects: - ref: emodel/aspect"
@@ -940,10 +980,10 @@ msgid ""
 "идентификатором и названием."
 msgstr ""
 "Both types inherit from ``emodel/type@user-base``, are stored in "
-"``ECOS_MODEL``, and attach the aspect via ``aspects: - ref: "
-"emodel/aspect@age-test``. The types have the same set of own attributes: "
-"``name``, ``dateBirth``, ``calculationDate``. The types differ only in "
-"their identifier and name."
+"``ECOS_MODEL``, and attach the aspect via ``aspects: - ref: emodel/aspect"
+"@age-test``. The types have the same set of own attributes: ``name``, "
+"``dateBirth``, ``calculationDate``. The types differ only in their "
+"identifier and name."
 
 #: ../../settings_kb/Aspects.rst
 msgid "Тип A"
@@ -953,7 +993,7 @@ msgstr "Type A"
 msgid "Тип B"
 msgstr "Type B"
 
-#: ../../settings_kb/Aspects.rst:622
+#: ../../settings_kb/Aspects.rst:635
 msgid ""
 "В результате у записей обоих типов автоматически появляются атрибуты "
 "аспекта, которые вычисляются по данным самой записи. Префикс в аспекте не"
@@ -965,27 +1005,26 @@ msgstr ""
 " set in the aspect, so it equals the identifier, and the attributes are "
 "available as ``age-test:constant`` and ``age-test:age``."
 
-#: ../../settings_kb/Aspects.rst:626
+#: ../../settings_kb/Aspects.rst:639
 msgid ""
-"Аспект не объявляет атрибуты ``dateBirth`` и ``calculationDate`` — он "
-"рассчитывает на то, что они есть в типе данных. Если подключить аспект к "
-"типу без этих атрибутов, ``age`` всегда будет ``null``, ошибки при этом "
-"не возникнет."
-msgstr ""
-"The aspect does not declare the ``dateBirth`` and ``calculationDate`` "
-"attributes — it relies on them being present in the data type. If the "
-"aspect is attached to a type without these attributes, ``age`` will "
-"always be ``null``, and no error will occur."
+"Аспект не объявляет атрибуты ``dateBirth`` и ``calculationDate`` — их "
+"нужно объявить в типе данных, как в примерах выше. Если одно из входных "
+"значений пустое, скрипт возвращает ``null``."
+msgstr "The aspect does not declare ``dateBirth`` and ``calculationDate``; declare them in the data type as above. If either input is empty, the script returns ``null``."
 
-#: ../../settings_kb/Aspects.rst:628
+#: ../../settings_kb/Aspects.rst:641
 msgid ""
 "Чтобы сделать аспект самодостаточным, ``dateBirth`` и ``calculationDate``"
-" можно перенести в ``attributes`` самого аспекта — тогда в типах их "
-"объявлять не нужно."
-msgstr ""
-"To make the aspect self-contained, ``dateBirth`` and ``calculationDate`` "
-"can be moved to the aspect's own ``attributes`` — then they do not need "
-"to be declared in the types."
+" можно перенести в ``attributes`` самого аспекта. Тогда в типах их "
+"объявлять не нужно, но в скрипте необходимо использовать имена с "
+"префиксом:"
+msgstr "To make the aspect self-contained, move ``dateBirth`` and ``calculationDate`` to the aspect's ``attributes``. Types then need not declare them, but the script must use prefixed names:"
+
+#: ../../settings_kb/Aspects.rst:648
+msgid ""
+"Эти же полные имена используйте в формах, журналах и других обращениях к "
+"перенесённым атрибутам."
+msgstr "Use these full names in forms, journals and other references to the moved attributes."
 
 #~ msgid "Аспект  расширяет функционал типа данных без изменения самого типа."
 #~ msgstr ""
@@ -1013,3 +1052,54 @@ msgstr ""
 #~ msgid "TBD"
 #~ msgstr "TBD"
 
+#~ msgid "скачать;"
+#~ msgstr "download;"
+
+#~ msgid "уникальный идентификатор аспекта"
+#~ msgstr "unique aspect identifier"
+
+#~ msgid ""
+#~ "Каждый аспект может быть добавлен как"
+#~ " явно (во вкладке Аспекты), так и "
+#~ "автоматически (см. ниже **Учет времени**)"
+#~ msgstr ""
+#~ "Each aspect can be added either "
+#~ "explicitly (in the Aspects tab) or "
+#~ "automatically (see below **Time Tracking**)"
+
+#~ msgid ""
+#~ "Если удаляется родитель, то удаляются "
+#~ "дочерние сущности по всем ассоциациям."
+#~ msgstr ""
+#~ "If the parent is deleted, then "
+#~ "child entities are deleted for all "
+#~ "associations."
+
+#~ msgid ""
+#~ "Если заданы права по умолчанию, то "
+#~ "дочерние наследуют права от родителей. "
+#~ "Соответственно, просматривать ``timeTracking`` могут"
+#~ " все, у кого доступ к документу."
+#~ msgstr ""
+#~ "If default rights are set, then "
+#~ "children inherit rights from parents. "
+#~ "Accordingly, everyone who has access to"
+#~ " the document can view ``timeTracking``."
+
+#~ msgid ""
+#~ "Аспект не объявляет атрибуты ``dateBirth`` "
+#~ "и ``calculationDate`` — он рассчитывает "
+#~ "на то, что они есть в типе "
+#~ "данных. Если подключить аспект к типу"
+#~ " без этих атрибутов, ``age`` всегда "
+#~ "будет ``null``, ошибки при этом не "
+#~ "возникнет."
+#~ msgstr ""
+#~ "The aspect does not declare the "
+#~ "``dateBirth`` and ``calculationDate`` attributes "
+#~ "— it relies on them being present"
+#~ " in the data type. If the "
+#~ "aspect is attached to a type "
+#~ "without these attributes, ``age`` will "
+#~ "always be ``null``, and no error "
+#~ "will occur."

@@ -3,7 +3,7 @@
 Checkbox
 ========
 
-Компонент **Checkbox** позволяет пользователю выбрать одно булево значение (да/нет, true/false).
+Компонент **Checkbox** позволяет пользователю выбрать логическое значение (да/нет, ``true``/``false``). Настройка ``hasThreeStates`` включает третье состояние — ``null`` (значение не задано).
 
 `См. описание Checkbox на Form.io <https://help.form.io/userguide/forms/form-components#check-box>`_
 
@@ -18,13 +18,13 @@ Checkbox
 
 Checkbox поддерживает два независимых механизма управления видимостью:
 
-* **customConditional** — JavaScript-выражение на вкладке **Conditional**, которое вычисляется при каждом изменении данных формы. Результат (``true`` / ``false``) определяет, должен ли компонент отображаться.
+* **customConditional** — JavaScript-выражение на вкладке **Conditional**. Переменной ``show`` присваивается ``true`` или ``false``, определяющее, должен ли компонент отображаться.
 * **Logic** — правила на вкладке **Logic**, которые могут программно устанавливать свойство ``component.hidden``.
 
 Оба механизма работают **независимо** и применяются совместно:
 
 * компонент скрыт, если ``customConditional`` вернул ``false`` **или** Logic установила ``hidden = true``.
-* если ни одно из условий не задано, компонент отображается.
+* при отсутствии запрещающих условий компонент доступен для показа с учётом общих настроек видимости формы.
 
 Пример customConditional
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,20 +46,12 @@ Checkbox поддерживает два независимых механизм
 В этом случае Checkbox отображается только если **оба** условия разрешают показ:
 компонент скрыт, когда ``data.role !== 'manager'`` **или** когда Logic установила ``hidden = true``.
 
-.. note::
-
-   До версии, включающей исправление задачи **#96**, ``customConditional`` игнорировался при наличии Logic-правил.
-   Убедитесь, что используете актуальную версию ecos-ui, если формы с обоими механизмами работали некорректно.
-
 Особенности реализации (для разработчиков)
 -------------------------------------------
 
-Checkbox в Citeck переопределяет метод ``updateVisible`` базового класса formiojs.
-Это необходимо для корректной работы в контейнере **Columns** с включённым ``autoAdjust``
-(элемент скрывается через ``visibility: hidden`` вместо атрибута ``hidden``,
-чтобы ячейка колонки не сжималась).
+Checkbox в Citeck переопределяет метод ``updateVisible`` базового класса formiojs и вызывает функцию ``applyCheckboxVisibility``. Она не изменяет DOM в режиме редактора форм (``options.builder``) и при пустом списке ``component.logic``.
 
-Видимость вычисляется как:
+В остальных случаях вычисляется признак необходимости скрытия:
 
 .. code-block:: javascript
 
@@ -67,11 +59,11 @@ Checkbox в Citeck переопределяет метод ``updateVisible`` б�
 
 где:
 
-* ``component.hidden`` — устанавливается Logic-правилами (Pipeline 2 в formiojs).
-* ``_visible`` — устанавливается ``customConditional`` / стандартной логикой ``conditional`` (Pipeline 1 в formiojs).
+* ``component.hidden`` — свойство, которое в том числе может задаваться Logic-правилами;
+* ``_visible`` — результат обработки условий видимости, включая ``customConditional`` и ``conditional``.
 
 Строгая проверка ``=== false`` для ``_visible`` важна: она предотвращает ложное скрытие компонента,
-пока formiojs ещё не инициализировал это поле (значение ``undefined`` трактуется как «видим»).
+пока formiojs ещё не инициализировал это поле. Само значение ``undefined`` не запрещает показ.
 
 Логика работы ``updateVisible``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,38 +75,36 @@ Checkbox в Citeck переопределяет метод ``updateVisible`` б�
 
    * - ``component.hidden``
      - ``_visible``
-     - Результат
+     - ``shouldBeHidden``
      - Примечание
    * - ``false``
      - ``true``
-     - Отображается
+     - ``false``
      - Нормальное состояние
    * - ``false``
      - ``false``
-     - Скрыт
+     - ``true``
      - customConditional запретил показ
    * - ``true``
      - ``true``
-     - Скрыт
+     - ``true``
      - Logic скрыла компонент
    * - ``true``
      - ``false``
-     - Скрыт
+     - ``true``
      - Оба механизма скрывают
    * - ``false``
      - ``undefined``
-     - Отображается
+     - ``false``
      - formiojs ещё не инициализировал _visible
 
-При скрытии внутри **Columns** с ``autoAdjust``:
+DOM обновляется только при наличии ``element`` и отличии ``shouldBeHidden`` от текущего состояния атрибута ``hidden``:
 
-.. code-block:: javascript
+* Если ``shouldBeHidden === true``, устанавливаются атрибут ``hidden``, ``visibility: hidden`` и ``position: absolute``. Эта ветка применяется и внутри Columns.
+* Если ``shouldBeHidden === false`` и компонент находится в Columns с ``autoAdjust``, устанавливаются ``visibility: hidden`` и ``position: relative``. Эта ветка не снимает атрибут ``hidden``.
+* В остальных случаях показа атрибут ``hidden`` снимается, устанавливаются ``visibility: visible`` и ``position: relative``.
 
-   // Компонент не удаляется из DOM, только визуально скрывается:
-   element.style.visibility = 'hidden';
-   element.style.position = 'relative';
-
-Это сохраняет ширину колонки, пока соседние элементы не перестроятся через ``autoAdjust``.
+Таким образом, таблица описывает вычисляемый признак скрытия, а не гарантирует итоговую видимость элемента во всех режимах компоновки.
 
 Тестирование логики видимости
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,14 +118,12 @@ Checkbox в Citeck переопределяет метод ``updateVisible`` б�
 
    const ctx = {
      options: { builder: false },
-     component: { hidden: false, logic: [{ ... }] },
+     component: { hidden: false, logic: [{}] },
      _visible: false,
      element: document.createElement('div')
    };
    applyCheckboxVisibility(ctx);
    // ctx.element.hidden === true
-
-Это тот же паттерн, который используется в ``overrideTriggerChange`` (``misc.js``).
 
 .. seealso::
 

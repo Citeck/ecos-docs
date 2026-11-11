@@ -114,25 +114,22 @@
             "components": [
               {
                 "label": {
-                  "ru": "Сохранить",
-                  "en": "Save"
+                  "ru": "Включить автосабмит",
+                  "en": "Enable auto-submit"
                 },
-                "key": "submit",
+                "key": "enableAutoSubmit",
                 "state": "",
-                "hidden": true,
+                "hidden": false,
                 "theme": "primary",
                 "block": true,
-                "refreshOn": [
-                  "selectWithSubmit",
-                  "submitOnCheckBox"
-                ],
-                "calculateValue": "if (data.selectWithSubmit || data.submitOnCheckBox) {\n  instance.root.submit();\n}",
+                "refreshOn": [],
+                "action": "custom",
                 "optionalWhenDisabled": false,
                 "type": "button",
                 "input": true,
                 "showValidations": false,
                 "event": "",
-                "custom": "",
+                "custom": "const form = instance.root;\nif (!form._autoSubmitOnSelection) {\n  const keys = new Set(['selectWithSubmit', 'submitOnCheckBox']);\n  let timer;\n  let pending = false;\n  let busy = false;\n\n  const flush = () => {\n    timer = null;\n    if (!form.element || !form.element.isConnected) {\n      pending = false;\n      return;\n    }\n    if (!pending || busy) {\n      return;\n    }\n    if (form.submitting) {\n      timer = setTimeout(flush, 200);\n      return;\n    }\n    pending = false;\n    busy = true;\n    Promise.resolve()\n      .then(() => form.submit())\n      .catch(error => console.error('Auto-submit failed', error))\n      .finally(() => {\n        busy = false;\n        if (pending) {\n          timer = setTimeout(flush, 200);\n        }\n      });\n  };\n\n  const onChange = event => {\n    const flags = event && event.flags || {};\n    if (!event || !keys.has(event.component && event.component.key) ||\n        !(flags.modified || flags.changeByUser)) {\n      return;\n    }\n    pending = true;\n    clearTimeout(timer);\n    timer = setTimeout(flush, 200);\n  };\n  form._autoSubmitOnSelection = onChange;\n  form.on('componentChange', onChange);\n}\ninstance.disabled = true;",
                 "url": "",
                 "headers": [
                   {}

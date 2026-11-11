@@ -14,7 +14,7 @@
 Добавление новых инстансов действий
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в микросервис по пути ``eapps/artifacts/ui/actions``
+Экземпляр действия описывается в JSON или YAML как артефакт типа ``ui/action``. Правила размещения и загрузки артефактов описаны в разделе :ref:`Артефакты <ecos_artifacts>`.
 
 Пример описания:
 
@@ -36,55 +36,43 @@
 Добавление новых типов действий
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-На данный момент все типы описаны в базовом проекте ecos-ui (в планах есть поддержка расширения действий без изменений в ecos-ui).
+Встроенные обработчики находятся в ``src/components/core/Records/actions/handler`` проекта ecos-ui. Новый исполнитель наследует ``ActionsExecutor`` и регистрируется в ``actionsRegistry``. Доступны только те режимы, методы которых он реализует.
 
 Описать новое действие:
 
 .. code-block:: javascript
 
- export const DownloadAction = {
-  execute: ({ record, action }) => {
-    const config = action.config || {};
+    import ActionsExecutor from '@/components/core/Records/actions/handler/ActionsExecutor';
 
-    let url = config.url || getDownloadContentUrl(record.id);
-    url = url.replace('${recordRef}', record.id); // eslint-disable-line no-template-curly-in-string
+    export default class ShowRecordIdAction extends ActionsExecutor {
+      static ACTION_ID = 'show-record-id';
 
-    const name = config.filename || 'file';
+      async execForRecord(record, action, context) {
+        return {
+          type: 'msg',
+          data: { status: 'OK', message: record.id }
+        };
+      }
 
-    const a = document.createElement('A', { target: '_blank' });
-
-    a.href = url;
-    a.download = name;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    return false;
-  },
-
-  getDefaultModel: () => {
-    return {
-      name: 'grid.inline-tools.download',
-      type: 'download',
-      icon: 'icon-download'
-    };
-  },
-
-  canBeExecuted: ({ record }) => {
-    return record.att('.has(n:"_content")') !== false;
-  }
- };
+      getDefaultActionModel() {
+        return { name: 'Показать идентификатор', icon: 'icon-small-eye-show' };
+      }
+    }
 
 Зарегистрировать новый тип:
 
 .. code-block:: javascript
 
- import Registry from './RecordActionExecutorsRegistry';
- import { DownloadAction } from './DefaultActions';
+    import actionsRegistry from '@/components/core/Records/actions/actionsRegistry';
+    import ShowRecordIdAction from './ShowRecordIdAction';
 
- Registry.addExecutors({
-  download: DownloadAction,
- });
+    actionsRegistry.register(new ShowRecordIdAction());
+
+Регистрацию нужно выполнить при загрузке модуля интерфейса до получения действий. После этого экземпляр действия может использовать ``type: show-record-id``. Встроенные обработчики регистрируются в ``src/components/core/Records/actions/actions.js``.
+
+Реестр также доступен как ``window.Citeck.ActionsRegistry``. Подключаемому модулю нужно обеспечить доступ к совместимому базовому классу исполнителя; один JSON-артефакт не добавляет новый JS-обработчик. Для выполнения произвольного кода над записью можно использовать существующий тип :ref:`script <ui_action_script>`.
+
+Для значений модели по умолчанию используется ``getDefaultActionModel()``, для ограничения по контексту интерфейса — ``isAllowedInContext(context)``. Проверка серверных прав и условий доступности настраивается отдельно.
 
 Настройки списка действий
 -------------------------
@@ -104,13 +92,15 @@
 - **1** - выбрать список действий для типа.
 - **2** - если стоит чекбокс, то действия наследуются от родителя.
 
-Пример в конфиге типа данных: :
+Пример поля в конфигурации типа данных:
 
 .. code-block:: json
 
-  "actions": [
-    "uiserv/action@create-supplementary-agreement"
-  ],
+  {
+    "actions": [
+      "uiserv/action@create-supplementary-agreement"
+    ]
+  }
 
 .. _ui_actions_journal_settings:
 
@@ -124,24 +114,22 @@
        :alt: Настройка действий
        :width: 600
 
-- **1** - Добавить действия из типа:
-
- * **empty (null)** - если actions и actionsDef пустые, то добавляем действия из типа;
- * **true** - всегда добавляем действия из типа;
- * **false** - никогда не добавляем из типа.
+- **1** — настройка добавления действий из типа. Состав итогового списка определяется серверной конфигурацией журнала: ``includeTypeActions``, ``actions`` и ``actionsDef``.
 
 - **2** - выбор действий
 
-Пример в конфиге журнала: :
+Пример поля в конфигурации журнала:
 
 .. code-block:: json
 
+  {
     "actions": [
-    "uiserv/action@download-zip",
-    "uiserv/action@edit",
-    "uiserv/action@view-dashboard",
-    "uiserv/action@view-dashboard-in-background"
-  ],
+      "uiserv/action@download-zip",
+      "uiserv/action@edit",
+      "uiserv/action@view-dashboard",
+      "uiserv/action@view-dashboard-in-background"
+    ]
+  }
 
 Настройка действия, которое активно для записей с определенным mimetype контента:
 
@@ -151,17 +139,17 @@
     "id": "edit-in-onlyoffice",
     "key": "edit.onlyoffice",
     "name": "Редактировать Документ",
-    "type": "open-url", // тип действия должен соответствовать типу на UI
+    "type": "open-url",
     "config": {
         "url": "/share/page/onlyoffice-edit?nodeRef=${recordRef}&new="
     },
     "evaluator": {
-        "type": "predicate", // Тип evaluator'а для фильтрации действий
+        "type": "predicate",
         "config": {
             "predicate": {
                 "t": "in",
-                "att": "_content.mimetype?str", // атрибут, который мы проверяем
-                "val": [ //значения, на которые мы проверяем
+                "att": "_content.mimetype?str",
+                "val": [
                     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     "application/vnd.openxmlformats-officedocument.presentationml.presentation",
@@ -173,7 +161,7 @@
     }
  }
 
-Данный конфиг достаточно положить в папку ``eapps/artifacts/ui/actions`` для микросервисов.
+Здесь серверный ``evaluator`` проверяет ``_content.mimetype?str`` на вхождение в список MIME-типов. URL в примере предназначен для стенда с подключённым legacy-редактором OnlyOffice; для другой интеграции задайте её адрес. Конфигурация загружается как экземпляр действия, а затем подключается к типу данных или журналу.
 
 Техническая информация
 ----------------------
@@ -190,15 +178,20 @@
       * - Параметр
         - Описание
       * - **actionRecord**
-        - | В любую форму, которая вызывается из действия, в объект ``options`` устанавливается свойство ``actionRecord``, указывающее идентификатор записи (record), для которой выполняется действие.
-          | Данное значение только для чтения. Указать в действии ``config.options.actionRecord`` не нужно, пользовательское будет перезаписано.
+        - | В формах ``create`` и ``open-submit-form`` — исходный ``record.id``. В обычной форме ``edit`` — ``config.recordId`` или текущая запись.
+          | Передаётся через ``options``. В ``create`` значение из ``config.options.actionRecord`` перезаписывается автоматически.
+          | В task-ветке ``edit`` и форме ``task-outcome`` универсальной передачи этого параметра нет.
+      * - **actionRecords**
+        - Список записей, передаваемый в options групповой формы подтверждения. Для одиночного подтверждения используется ``actionRecord``. ``confirm.formOptions`` может переопределять автоматически сформированные options.
 
-Ожидаемый формат результат действия
+.. _ui_actions_result:
+
+Ожидаемый формат результата действия
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Тип результата boolean или object (array - deprecated - обработка поддерживается)
 
-Если ``object`` отображаются подробности выполнения в зависимости от типа результата. Для групповых действий модальное окно появляется сразу при запуске и если результат boolean автоматические закрывается.
+Если возвращён объект с поддерживаемым ``type``, отображаются подробности выполнения. При групповом выполнении окно может появляться уже при запуске и закрываться при булевом результате. Режимы выполнения по запросу и обработки пакетами управляют окнами отдельно.
 
 **link**
 
@@ -225,7 +218,7 @@
     "results": [
       {
         "recordRef": "emodel/someType@a2fb0374-d69c-4861-8d03-4a30e395fb2d",
-        "disp": "название записи"
+        "disp": "название записи",
         "status": "OK",
         "message": "Все хорошо"
       }
@@ -247,7 +240,16 @@
     }
   }
 
-.. note::
+**msg** и **info**
 
- * Для заголовка типа действия используйте уровень **Heading 3** (``~~~~~~~~``) - так тип попадет в список доступных действий и будет возможность сослаться на него через якорь
- * Если описание конфигурации большое, оформляйте его через ``.. dropdown::``, чтобы оно сворачивалось по умолчанию
+Тип ``msg`` показывает строку таблицы с ``data.status`` и ``data.message``. Тип ``info`` показывает информационный результат; например, серверное групповое действие использует строку ``data`` для уведомления об отправке результата по электронной почте.
+
+.. code-block:: json
+
+    {
+      "type": "msg",
+      "data": {
+        "status": "OK",
+        "message": "Действие выполнено"
+      }
+    }

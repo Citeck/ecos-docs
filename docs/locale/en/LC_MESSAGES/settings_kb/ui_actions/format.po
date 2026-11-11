@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -20,11 +20,9 @@ msgstr "Action format and retrieving actions for a record"
 
 #: ../../settings_kb/ui_actions/format.rst:6
 msgid ""
-"Описание полей действия и способы запросить доступные действия для "
-"записей через API."
-msgstr ""
-"Description of the action fields and ways to request the available "
-"actions for records via the API."
+"Общие поля действия и получение доступных действий через клиентский "
+"Records API."
+msgstr "Common action fields and retrieval through the client Records API."
 
 #: ../../settings_kb/ui_actions/format.rst:9
 msgid "Содержание"
@@ -34,155 +32,355 @@ msgstr "Contents"
 msgid "Описание формата"
 msgstr "Format description"
 
-#: ../../settings_kb/ui_actions/format.rst:20
-msgid "Имя"
-msgstr "Name"
+#: ../../settings_kb/ui_actions/format.rst:19
+msgid "Поле"
+msgstr "Field"
 
-#: ../../settings_kb/ui_actions/format.rst:21
+#: ../../settings_kb/ui_actions/format.rst:20
 msgid "Тип"
 msgstr "Type"
 
-#: ../../settings_kb/ui_actions/format.rst:22
+#: ../../settings_kb/ui_actions/format.rst:21
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/ui_actions/format.rst:23
-msgid "**id**"
-msgstr "**id**"
+#: ../../settings_kb/ui_actions/format.rst:22
+msgid "``id``"
+msgstr "``id``"
 
-#: ../../settings_kb/ui_actions/format.rst:24
-#: ../../settings_kb/ui_actions/format.rst:28
+#: ../../settings_kb/ui_actions/format.rst:23
 #: ../../settings_kb/ui_actions/format.rst:32
 #: ../../settings_kb/ui_actions/format.rst:35
-#: ../../settings_kb/ui_actions/format.rst:39
+#: ../../settings_kb/ui_actions/format.rst:38
+#: ../../settings_kb/ui_actions/format.rst:50
+#: ../../settings_kb/ui_actions/format.rst:65
 msgid "String"
 msgstr "String"
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Идентификатор действия."
-msgstr "Action identifier."
+#: ../../settings_kb/ui_actions/format.rst:24
+msgid ""
+"Идентификатор действия. Для обращения через Records используется полная "
+"ссылка ``uiserv/action@<id>``, учитывающая пространство имён действия."
+msgstr "Action identifier. Records access uses full ``uiserv/action@<id>``, accounting for the action namespace."
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Уникальный среди всех действий в системе"
-msgstr "Unique among all actions in the system"
+#: ../../settings_kb/ui_actions/format.rst:25
+msgid "``name``"
+msgstr "``name``"
+
+#: ../../settings_kb/ui_actions/format.rst:26
+#: ../../settings_kb/ui_actions/format.rst:29
+msgid "String / MLText"
+msgstr "String / MLText"
 
 #: ../../settings_kb/ui_actions/format.rst:27
-msgid "**key**"
-msgstr "**key**"
-
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Ключ, по которому возможна фильтрация."
-msgstr "Key that can be used for filtering."
-
-#: ../../settings_kb/ui_actions/format.rst
+#, python-brace-format
 msgid ""
-"Должен быть в формате **word0.word1.word2**, чтобы можно было фильтровать"
-" по маске."
-msgstr ""
-"Must be in the format **word0.word1.word2** so that filtering by mask is"
-" possible."
+"Название действия: строка или объект локализаций, например ``{\"ru\": "
+"\"Открыть\", \"en\": \"Open\"}``."
+msgstr "Action name: string or localization object, such as ``{\"ru\": \"Открыть\", \"en\": \"Open\"}``."
+
+#: ../../settings_kb/ui_actions/format.rst:28
+msgid "``pluralName``"
+msgstr "``pluralName``"
+
+#: ../../settings_kb/ui_actions/format.rst:30
+msgid "Название для нескольких записей. Если не задано, используется ``name``."
+msgstr "Name for multiple records. Defaults to ``name``."
 
 #: ../../settings_kb/ui_actions/format.rst:31
-msgid "**name**"
-msgstr "**name**"
+msgid "``type``"
+msgstr "``type``"
 
 #: ../../settings_kb/ui_actions/format.rst:33
-msgid "Имя действия, которое увидит пользователь"
-msgstr "Name of the action that the user will see"
+msgid ""
+"Идентификатор зарегистрированного обработчика, например ``download`` или "
+"``mutate``."
+msgstr "Registered handler identifier, such as ``download`` or ``mutate``."
 
 #: ../../settings_kb/ui_actions/format.rst:34
-msgid "**type**"
-msgstr "**type**"
+msgid "``icon``"
+msgstr "``icon``"
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Тип действия."
-msgstr "Action type."
-
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Тип определяет логику, которая будет выполнена при выполнении действия."
-msgstr "The type determines the logic that will be executed when the action runs."
-
-#: ../../settings_kb/ui_actions/format.rst:38
-msgid "**icon**"
-msgstr "**icon**"
-
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Иконка действия. Пример \"icon-delete\", \"icon-on\"."
-msgstr "Action icon. Example: \"icon-delete\", \"icon-on\"."
-
-#: ../../settings_kb/ui_actions/format.rst
+#: ../../settings_kb/ui_actions/format.rst:36
 msgid ""
-"Все иконки можно посмотреть в ``citeck/ecos-"
-"ui/src/fonts/citeck/demo.html``"
-msgstr ""
-"All icons can be viewed in ``citeck/ecos-"
-"ui/src/fonts/citeck/demo.html``"
+"Код иконки, например ``icon-delete``. Каталог иконок в ecos-ui: "
+"``src/fonts/citeck/demo.html``."
+msgstr "Icon code, such as ``icon-delete``. ecos-ui icon catalog: ``src/fonts/citeck/demo.html``."
+
+#: ../../settings_kb/ui_actions/format.rst:37
+msgid "``theme``"
+msgstr "``theme``"
+
+#: ../../settings_kb/ui_actions/format.rst:39
+msgid "Тема оформления действия."
+msgstr "Action visual theme."
+
+#: ../../settings_kb/ui_actions/format.rst:40
+msgid "``config``"
+msgstr "``config``"
+
+#: ../../settings_kb/ui_actions/format.rst:41
+#: ../../settings_kb/ui_actions/format.rst:44
+#: ../../settings_kb/ui_actions/format.rst:47
+#: ../../settings_kb/ui_actions/format.rst:59
+#: ../../settings_kb/ui_actions/format.rst:62
+msgid "Object"
+msgstr "Object"
 
 #: ../../settings_kb/ui_actions/format.rst:42
-msgid "**config**"
-msgstr "**config**"
+msgid ""
+"Параметры выбранного типа. Например, ``config.url`` для ``download`` "
+"задаёт URL скачивания."
+msgstr "Selected type parameters. For example, ``config.url`` specifies the ``download`` URL."
 
 #: ../../settings_kb/ui_actions/format.rst:43
-msgid "JsonObject"
-msgstr "JsonObject"
+msgid "``features``"
+msgstr "``features``"
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid "Конфигурация действия."
-msgstr "Action configuration."
-
-#: ../../settings_kb/ui_actions/format.rst
+#: ../../settings_kb/ui_actions/format.rst:45
 msgid ""
-"Полезно в случаях, когда один тип действия может на основе конфигурации "
-"менять свое поведение."
-msgstr ""
-"Useful in cases where a single action type can change its behavior "
-"based on the configuration."
+"Применимость: ``execForRecord``, ``execForRecords``, ``execForQuery``. "
+"Возможности ограничены методами исполнителя."
+msgstr "Applicability: ``execForRecord``, ``execForRecords``, ``execForQuery``. Limited by executor methods."
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid ""
-"Например - для действия с типом **Download** можно задать шаблон URI для "
-"скачивания контента."
-msgstr ""
-"For example, for an action of type **Download** you can specify a URI "
-"template for downloading content."
-
-#: ../../settings_kb/ui_actions/format.rst:47
-msgid "**predicate**"
-msgstr "**predicate**"
+#: ../../settings_kb/ui_actions/format.rst:46
+msgid "``confirm``"
+msgstr "``confirm``"
 
 #: ../../settings_kb/ui_actions/format.rst:48
-msgid "Predicate"
-msgstr "Predicate"
-
-#: ../../settings_kb/ui_actions/format.rst
 msgid ""
-"Используется для динамического определения доступности действия для "
-"пользователя. Подробно о :ref:`предикатах <ecos-predicate_main>`"
-msgstr ""
-"Used to dynamically determine whether an action is available to the "
-"user. For more details, see :ref:`predicates <ecos-predicate_main>`"
+"Заголовок, сообщение или форма подтверждения; исходные данные формы и "
+"перенос введённых значений в конфигурацию."
+msgstr "Confirmation title, message or form; initial data and mapping entered values to configuration."
 
-#: ../../settings_kb/ui_actions/format.rst
-msgid ""
-"Например, действия **Редактировать** и **Удалить** не могут выполнять "
-"пользователи без прав на запись и для них эти действия скрываются."
-msgstr ""
-"For example, the **Edit** and **Delete** actions cannot be performed by "
-"users without permissions on the record, and these actions are hidden "
-"for them."
+#: ../../settings_kb/ui_actions/format.rst:49
+msgid "``preActionModule``"
+msgstr "``preActionModule``"
+
+#: ../../settings_kb/ui_actions/format.rst:51
+msgid "URL модуля предобработки."
+msgstr "Preprocessing module URL."
+
+#: ../../settings_kb/ui_actions/format.rst:52
+msgid "``execForRecordsBatchSize``"
+msgstr "``execForRecordsBatchSize``"
+
+#: ../../settings_kb/ui_actions/format.rst:53
+#: ../../settings_kb/ui_actions/format.rst:56
+msgid "Number"
+msgstr "Number"
 
 #: ../../settings_kb/ui_actions/format.rst:54
+msgid ""
+"Размер пакета при групповом выполнении; значение ``0`` не включает "
+"разбиение на пакеты."
+msgstr "Group execution batch size; ``0`` does not enable batching."
+
+#: ../../settings_kb/ui_actions/format.rst:55
+msgid "``execForRecordsParallelBatchesCount``"
+msgstr "``execForRecordsParallelBatchesCount``"
+
+#: ../../settings_kb/ui_actions/format.rst:57
+msgid ""
+"Настройка обработки пакетов. Значение ``1`` используется для "
+"последовательной обработки."
+msgstr "Batch processing setting. ``1`` selects sequential processing."
+
+#: ../../settings_kb/ui_actions/format.rst:58
+msgid "``execForQueryConfig``"
+msgstr "``execForQueryConfig``"
+
+#: ../../settings_kb/ui_actions/format.rst:60
+msgid ""
+"Настройки выполнения запроса. ``execAsForRecords`` включает обработку "
+"найденных записей через групповой режим, если режим запроса доступен у "
+"исполнителя."
+msgstr "Query execution settings. ``execAsForRecords`` processes found records through group mode if the executor supports queries."
+
+#: ../../settings_kb/ui_actions/format.rst:61
+msgid "``predicate`` / ``evaluator``"
+msgstr "``predicate`` / ``evaluator``"
+
+#: ../../settings_kb/ui_actions/format.rst:63
+msgid ""
+"Серверные условия доступности действия. Фронтенд получает результат их "
+"проверки; правила зависят от серверной конфигурации. См. :ref:`Предикаты "
+"<ecos-predicate_main>`."
+msgstr "Server availability conditions. The frontend receives evaluation results; rules depend on server configuration. See :ref:`Predicates <ecos-predicate_main>`."
+
+#: ../../settings_kb/ui_actions/format.rst:64
+msgid "``key``"
+msgstr "``key``"
+
+#: ../../settings_kb/ui_actions/format.rst:66
+msgid ""
+"Ключ для серверной фильтрации действий. Общий механизм выполнения "
+"фронтенда не использует его для выбора исполнителя — для этого служит "
+"``type``."
+msgstr "Server action filtering key. Frontend common execution does not use it to select an executor; ``type`` does that."
+
+#: ../../settings_kb/ui_actions/format.rst:68
+msgid ""
+"Подробности подтверждения, подстановок и предобработки см. в разделе "
+":ref:`Общие настройки <ui_actions_frontend_settings>`."
+msgstr "For confirmation, substitutions and preprocessing, see :ref:`Common settings <ui_actions_frontend_settings>`."
+
+#: ../../settings_kb/ui_actions/format.rst:71
 msgid "Получение действий по записи"
 msgstr "Retrieving actions for a record"
 
-#: ../../settings_kb/ui_actions/format.rst:55
-msgid "Для запроса действий отправляется следующий запрос:"
-msgstr "The following request is sent to request actions:"
+#: ../../settings_kb/ui_actions/format.rst:73
+msgid ""
+"Текущий клиент ecos-ui запрашивает источник ``uiserv/record-actions``. "
+"Ниже приведён вызов JavaScript Records API с сокращённой схемой "
+"атрибутов:"
+msgstr "The current ecos-ui client queries ``uiserv/record-actions``. The following JavaScript Records API call uses an abbreviated attribute schema:"
 
-#: ../../settings_kb/ui_actions/format.rst:72
-msgid "Ответ:"
-msgstr "Response:"
+#: ../../settings_kb/ui_actions/format.rst:94
+msgid "Пример результата этого вызова:"
+msgstr "Example call result:"
 
-#: ../../settings_kb/ui_actions/format.rst:113
-msgid "Также доступен вариант раздельного указания действий по записям:"
-msgstr "There is also an option to specify actions separately per record:"
+#: ../../settings_kb/ui_actions/format.rst:120
+msgid ""
+"Массив ``records`` содержит числовые маски доступности в порядке "
+"запрошенных записей. Бит ``1 << actionIndex`` соответствует позиции "
+"действия в массиве ``actions``. В примере маска ``3`` разрешает оба "
+"действия для первой записи, а ``2`` — только второе для второй."
+msgstr "``records`` contains numeric availability masks in requested record order. Bit ``1 << actionIndex`` corresponds to the position in ``actions``. Here ``3`` allows both actions for the first record; ``2`` only the second for the second record."
+
+#: ../../settings_kb/ui_actions/format.rst:122
+msgid ""
+"Рабочий клиент дополнительно запрашивает ``pluralName``, "
+"``preActionModule``, ``confirm`` и настройки пакетного выполнения и "
+"запроса. Полный список находится в ``ACTION_INNER_ATTRIBUTES`` файла "
+"``src/components/core/Records/actions/recordActionsApi.js``."
+msgstr "The production client also requests ``pluralName``, ``preActionModule``, ``confirm`` and batch/query settings. See ``ACTION_INNER_ATTRIBUTES`` in ``src/components/core/Records/actions/recordActionsApi.js``."
+
+#: ../../settings_kb/ui_actions/format.rst:124
+msgid ""
+"Сервис ``recordActions.getActionsForRecords(records, actions, context)`` "
+"преобразует этот ответ в группы ``forRecord``, ``forRecords`` и "
+"``forQuery``, проверяет возможности исполнителей и контекст. Это уже "
+"клиентская модель, отличающаяся от результата ``Records.queryOne``."
+msgstr "``recordActions.getActionsForRecords(records, actions, context)`` converts the response into ``forRecord``, ``forRecords`` and ``forQuery`` groups and checks executor capabilities and context. This client model differs from ``Records.queryOne`` output."
+
+#: ../../settings_kb/ui_actions/format.rst:126
+msgid ""
+"При вызове ``recordActions.getActionsForRecord(record)`` без явного "
+"списка действий клиент сначала загружает ``_type?id`` записи, затем "
+"``_actions[]?id`` её типа и запрашивает доступность найденных действий."
+msgstr "Calling ``recordActions.getActionsForRecord(record)`` without an explicit list first loads record ``_type?id``, then type ``_actions[]?id``, and requests availability."
+
+#~ msgid "Имя"
+#~ msgstr "Name"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "Идентификатор действия."
+#~ msgstr "Action identifier."
+
+#~ msgid "Уникальный среди всех действий в системе"
+#~ msgstr "Unique among all actions in the system"
+
+#~ msgid "**key**"
+#~ msgstr "**key**"
+
+#~ msgid "Ключ, по которому возможна фильтрация."
+#~ msgstr "Key that can be used for filtering."
+
+#~ msgid ""
+#~ "Должен быть в формате **word0.word1.word2**,"
+#~ " чтобы можно было фильтровать по "
+#~ "маске."
+#~ msgstr ""
+#~ "Must be in the format "
+#~ "**word0.word1.word2** so that filtering by "
+#~ "mask is possible."
+
+#~ msgid "**name**"
+#~ msgstr "**name**"
+
+#~ msgid "Имя действия, которое увидит пользователь"
+#~ msgstr "Name of the action that the user will see"
+
+#~ msgid "**type**"
+#~ msgstr "**type**"
+
+#~ msgid "Тип определяет логику, которая будет выполнена при выполнении действия."
+#~ msgstr ""
+#~ "The type determines the logic that "
+#~ "will be executed when the action "
+#~ "runs."
+
+#~ msgid "**icon**"
+#~ msgstr "**icon**"
+
+#~ msgid "Иконка действия. Пример \"icon-delete\", \"icon-on\"."
+#~ msgstr "Action icon. Example: \"icon-delete\", \"icon-on\"."
+
+#~ msgid ""
+#~ "Все иконки можно посмотреть в ``citeck"
+#~ "/ecos-ui/src/fonts/citeck/demo.html``"
+#~ msgstr ""
+#~ "All icons can be viewed in "
+#~ "``citeck/ecos-ui/src/fonts/citeck/demo.html``"
+
+#~ msgid "Конфигурация действия."
+#~ msgstr "Action configuration."
+
+#~ msgid ""
+#~ "Полезно в случаях, когда один тип "
+#~ "действия может на основе конфигурации "
+#~ "менять свое поведение."
+#~ msgstr ""
+#~ "Useful in cases where a single "
+#~ "action type can change its behavior "
+#~ "based on the configuration."
+
+#~ msgid ""
+#~ "Например - для действия с типом "
+#~ "**Download** можно задать шаблон URI для"
+#~ " скачивания контента."
+#~ msgstr ""
+#~ "For example, for an action of type"
+#~ " **Download** you can specify a URI"
+#~ " template for downloading content."
+
+#~ msgid "**predicate**"
+#~ msgstr "**predicate**"
+
+#~ msgid "Predicate"
+#~ msgstr "Predicate"
+
+#~ msgid ""
+#~ "Используется для динамического определения "
+#~ "доступности действия для пользователя. "
+#~ "Подробно о :ref:`предикатах <ecos-"
+#~ "predicate_main>`"
+#~ msgstr ""
+#~ "Used to dynamically determine whether an"
+#~ " action is available to the user. "
+#~ "For more details, see :ref:`predicates "
+#~ "<ecos-predicate_main>`"
+
+#~ msgid ""
+#~ "Например, действия **Редактировать** и "
+#~ "**Удалить** не могут выполнять пользователи"
+#~ " без прав на запись и для них"
+#~ " эти действия скрываются."
+#~ msgstr ""
+#~ "For example, the **Edit** and **Delete**"
+#~ " actions cannot be performed by users"
+#~ " without permissions on the record, "
+#~ "and these actions are hidden for "
+#~ "them."
+
+#~ msgid "Для запроса действий отправляется следующий запрос:"
+#~ msgstr "The following request is sent to request actions:"
+
+#~ msgid "Ответ:"
+#~ msgstr "Response:"
+
+#~ msgid "Также доступен вариант раздельного указания действий по записям:"
+#~ msgstr "There is also an option to specify actions separately per record:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -56,8 +56,10 @@ msgstr ""
 "**«Model»** subsection:"
 
 #: ../../settings_kb/workspaces.rst:13
-msgid "создаёт, редактирует и удаляет пространства;"
-msgstr "creates, edits, and deletes spaces;"
+msgid ""
+"создаёт и редактирует пространства, удаляет несистемные пространства при "
+"наличии соответствующих прав;"
+msgstr "Creates and edits workspaces, and deletes nonsystem workspaces with appropriate permissions;"
 
 #: ../../settings_kb/workspaces.rst:14
 msgid "настраивает пункты меню и типы данных для каждого пространства;"
@@ -65,35 +67,46 @@ msgstr "configures menu items and data types for each space;"
 
 #: ../../settings_kb/workspaces.rst:15
 msgid ""
-"задаёт принадлежность типов данных к конкретному пространству или к "
-"глобальному — чтобы объекты (например, общие справочники) были доступны "
-"во всех пространствах одновременно."
-msgstr ""
-"assigns data types to a specific workspace or to the global one — so that"
-" objects (e.g., shared reference data) are available in all workspaces "
-"simultaneously."
+"задаёт область определения типов данных и видимость их записей, например "
+"для общих справочников или данных отдельных команд."
+msgstr "Sets data type definition scope and record visibility, for example for shared directories or team-specific data."
 
 #: ../../settings_kb/workspaces.rst:18
 msgid "Тип данных"
 msgstr "Data Type"
 
 #: ../../settings_kb/workspaces.rst:24
-msgid "**Видимость** в рабочих пространствах:"
-msgstr "**Visibility** in workspaces:"
+msgid ""
+"**Рабочее пространство** (``workspace``, поле формы ``_workspace``) "
+"определяет область самого типа. Тип без указанного пространства считается"
+" глобальным и может использоваться в разных пространствах. Это само по "
+"себе не делает все его записи общедоступными."
+msgstr "**Workspace** (``workspace``, form field ``_workspace``) defines the type's own scope. Without it, the type is global and can be used in different workspaces. This alone does not make every record public."
 
 #: ../../settings_kb/workspaces.rst:26
-msgid "**По умолчанию** – назначается типу данных по умолчанию."
-msgstr "**Default** – assigned to the data type by default."
-
-#: ../../settings_kb/workspaces.rst:27
 msgid ""
-"**Приватная** – экземпляры типа данных доступны в рамках рабочего "
-"пространства, в котором созданы."
-msgstr ""
-"**Private** – instances of the data type are available within the "
-"workspace where they were created."
+"При создании типа в обычном пространстве поле заполняется текущим "
+"пространством. В административном контексте ``admin$...`` создаётся "
+"глобальный тип. В штатной форме поле недоступно для ручного изменения."
+msgstr "Creating a type in an ordinary workspace fills this field with the current workspace. The ``admin$...`` context creates a global type. The standard form does not allow manual changes."
 
 #: ../../settings_kb/workspaces.rst:28
+msgid ""
+"**Видимость в рабочих пространствах** (``workspaceScope``) определяет "
+"видимость записей типа:"
+msgstr "**Workspace visibility** (``workspaceScope``) determines type record visibility:"
+
+#: ../../settings_kb/workspaces.rst:30
+msgid "**По умолчанию** – наследуется настройка родительского типа."
+msgstr "**Default** — inherits parent settings."
+
+#: ../../settings_kb/workspaces.rst:31
+msgid ""
+"**Приватная** – записи разделяются по пространствам; при запросах "
+"учитывается контекст пространства и права доступа."
+msgstr "**Private** — records are separated by workspace; queries consider workspace context and access permissions."
+
+#: ../../settings_kb/workspaces.rst:32
 msgid ""
 "**Публичная** – экземпляры типа данных доступны пользователям в "
 "соответствии с правами, независимо от рабочего пространства, в котором "
@@ -103,19 +116,34 @@ msgstr ""
 "to their permissions, regardless of the workspace where they were "
 "created."
 
-#: ../../settings_kb/workspaces.rst:30
+#: ../../settings_kb/workspaces.rst:34
 msgid ""
-"**Рабочее пространство по умолчанию** – в каком рабочем пространстве "
-"будет отображаться по умолчанию."
-msgstr ""
-"**Default workspace** – in which workspace it will be displayed by "
-"default."
+"**Рабочее пространство по умолчанию** (``defaultWorkspace``) задаёт "
+"пространство по умолчанию для записей типа. Если значение не указано, оно"
+" наследуется от родительского типа. Эта настройка не выбирает стартовое "
+"пространство пользователя."
+msgstr "**Default workspace** (``defaultWorkspace``) sets the default for type records. Empty inherits the parent. It does not select a user's starting workspace."
 
-#: ../../settings_kb/workspaces.rst:33
+#: ../../settings_kb/workspaces.rst:36
+msgid ""
+"Для типа с указанным ``workspace`` сервер устанавливает ``workspaceScope:"
+" PRIVATE`` и ``defaultWorkspace``, равный пространству типа. В форме "
+"настройки видимости и пространства по умолчанию доступны для глобальных "
+"типов. При любой видимости сохраняются проверки прав на записи."
+msgstr "For types with ``workspace``, the server sets ``workspaceScope: PRIVATE`` and ``defaultWorkspace`` to that workspace. Visibility and default workspace fields are available for global types. Record permission checks apply at every visibility level."
+
+#: ../../settings_kb/workspaces.rst:38
+msgid ""
+"Тип может наследоваться от глобального типа или от типа своего "
+"пространства. Глобальный тип не может наследоваться от локального, а "
+"локальный — от типа другого пространства."
+msgstr "A type can inherit a global type or one in its workspace. Global types cannot inherit local types; local types cannot inherit types from another workspace."
+
+#: ../../settings_kb/workspaces.rst:41
 msgid "Журнал Рабочие пространства"
 msgstr "Workspaces Journal"
 
-#: ../../settings_kb/workspaces.rst:35
+#: ../../settings_kb/workspaces.rst:43
 msgid ""
 "В разделе администратора в подразделе **«Модель»** добавлен журнал "
 "**«Рабочие пространства»**:"
@@ -123,23 +151,27 @@ msgstr ""
 "In the admin section, under the **«Model»** subsection, the "
 "**«Workspaces»** journal has been added:"
 
-#: ../../settings_kb/workspaces.rst:41
-msgid "В журнале можно создать, отредактировать, удалить пространства."
-msgstr "In the journal, you can create, edit, and delete spaces."
+#: ../../settings_kb/workspaces.rst:49
+msgid ""
+"В журнале можно создавать и редактировать пространства. Системные "
+"пространства (``system: true``) защищены от удаления. Для удаления "
+"несистемного пространства пользователю нужны права менеджера; техническое"
+" выполнение под SYSTEM обрабатывается отдельно."
+msgstr "The journal creates and edits workspaces. System workspaces (``system: true``) are protected from deletion. Nonsystem deletion requires manager permissions; technical SYSTEM execution is handled separately."
 
-#: ../../settings_kb/workspaces.rst:44
+#: ../../settings_kb/workspaces.rst:52
 msgid "Создание рабочего пространства"
 msgstr "Creating a Workspace"
 
-#: ../../settings_kb/workspaces.rst:46
+#: ../../settings_kb/workspaces.rst:54
 msgid "См. :ref:`Создание рабочего пространства<new_workspace>`"
 msgstr "See :ref:`Creating a Workspace<new_workspace>`"
 
-#: ../../settings_kb/workspaces.rst:52
+#: ../../settings_kb/workspaces.rst:60
 msgid "Шаблоны рабочих пространств"
 msgstr "Workspace Templates"
 
-#: ../../settings_kb/workspaces.rst:54
+#: ../../settings_kb/workspaces.rst:62
 msgid ""
 "Шаблон содержит уже настроенные пункты меню, дашборды разделов и домашней"
 " страницы."
@@ -147,7 +179,23 @@ msgstr ""
 "The template contains pre-configured menu items, section dashboards, and "
 "home page."
 
-#: ../../settings_kb/workspaces.rst:56
+#: ../../settings_kb/workspaces.rst:64
+msgid ""
+"В шаблон включаются конфигурации меню и дашбордов из ``ecos-uiserv``, в "
+"том числе настройки виджетов внутри дашбордов. Данные пространства и "
+"зависимости виджетов, например формы, журналы и процессы, автоматически "
+"не копируются."
+msgstr "Templates include ``ecos-uiserv`` menu and dashboard configurations, including widget settings. Workspace data and widget dependencies, such as forms, journals and processes, are not automatically copied."
+
+#: ../../settings_kb/workspaces.rst:66
+msgid ""
+"Создание, загрузка и обновление шаблонов в штатном интерфейсе доступны "
+"администраторам. Роль менеджера пространства сама по себе этих прав не "
+"предоставляет. Для сбора и применения шаблона необходим доступный ``ecos-"
+"uiserv`` с поддержкой соответствующих API."
+msgstr "The standard UI restricts template creation, uploading and updating to administrators. Workspace manager status alone is insufficient. Collecting and applying templates requires available ``ecos-uiserv`` APIs."
+
+#: ../../settings_kb/workspaces.rst:68
 msgid ""
 "В разделе администратора в подразделе **«Модель»** добавлен журнал "
 "**«Шаблоны рабочих пространств»**:"
@@ -155,7 +203,7 @@ msgstr ""
 "In the admin section, under the **«Model»** subsection, the **«Workspace "
 "Templates»** journal has been added:"
 
-#: ../../settings_kb/workspaces.rst:63
+#: ../../settings_kb/workspaces.rst:75
 msgid "Создание шаблона"
 msgstr "Creating a Template"
 
@@ -163,7 +211,7 @@ msgstr "Creating a Template"
 msgid "Как создать шаблон рабочего пространства"
 msgstr "How to create a workspace template"
 
-#: ../../settings_kb/workspaces.rst:68
+#: ../../settings_kb/workspaces.rst:80
 msgid ""
 "Создайте новое **рабочее пространство**. Настройте в этом рабочем "
 "пространстве **меню** и **дашборд(ы)**."
@@ -171,13 +219,13 @@ msgstr ""
 "Create a new **workspace**. Configure **menu** and **dashboard(s)** in "
 "this workspace."
 
-#: ../../settings_kb/workspaces.rst:69
+#: ../../settings_kb/workspaces.rst:81
 msgid ""
 "Перейдите в журнал **«Шаблоны рабочих пространств»**, нажмите **+ - "
 "Создать**."
 msgstr "Go to the **«Workspace Templates»** journal, click **+ - Create**."
 
-#: ../../settings_kb/workspaces.rst:70
+#: ../../settings_kb/workspaces.rst:82
 msgid ""
 "Выберите созданное в **п.1** **рабочее пространство**, укажите **id** и "
 "**Имя**, сохраните."
@@ -185,15 +233,15 @@ msgstr ""
 "Select the **workspace** created in **step 1**, specify **id** and "
 "**Name**, save."
 
-#: ../../settings_kb/workspaces.rst:76
+#: ../../settings_kb/workspaces.rst:88
 msgid ""
-"Опционально скачайте новый шаблон и загрузите его в ecos-app или в "
-"микросервис по пути **artifacts/model/workspace-template**"
-msgstr ""
-"Optionally download the new template and upload it to ecos-app or to the "
-"microservice at path **artifacts/model/workspace-template**"
+"При необходимости скачайте шаблон в формате ZIP. Для включения в ECOS App"
+" распакуйте его содержимое в ``artifacts/model/workspace-template/``; для"
+" микросервиса — в ``src/main/resources/eapps/artifacts/model/workspace-"
+"template/``. Сохраняйте каталог с идентификатором шаблона."
+msgstr "If needed, download the template as ZIP. For ECOS Apps, extract to ``artifacts/model/workspace-template/``; for microservices, to ``src/main/resources/eapps/artifacts/model/workspace-template/``. Preserve the template identifier directory."
 
-#: ../../settings_kb/workspaces.rst:77
+#: ../../settings_kb/workspaces.rst:89
 msgid ""
 "Опционально загрузите шаблон на стенд (если необходимо его использовать "
 "не на том стенде, где он был создан) вручную или через деплой ecos-"
@@ -203,11 +251,11 @@ msgstr ""
 " on a different environment than where it was created) manually or "
 "through ecos-app/microservice deployment."
 
-#: ../../settings_kb/workspaces.rst:78
+#: ../../settings_kb/workspaces.rst:90
 msgid "Перейдите в журнал **«Рабочие пространства»**, нажмите **+ - Создать**."
 msgstr "Go to the **«Workspaces»** journal, click **+ - Create**."
 
-#: ../../settings_kb/workspaces.rst:84
+#: ../../settings_kb/workspaces.rst:96
 msgid ""
 "В поле **«Шаблон»** выберите шаблон, который создали в **п.3** Заполните "
 "остальные обязательные поля и нажмите **«Создать»**."
@@ -215,15 +263,13 @@ msgstr ""
 "In the **«Template»** field, select the template created in **step 3**. "
 "Fill in the other required fields and click **«Create»**."
 
-#: ../../settings_kb/workspaces.rst:90
+#: ../../settings_kb/workspaces.rst:102
 msgid ""
-"Откройте созданное в **п.7** рабочее пространство - в нем меню и дашборд "
-"совпадают с теми, что были настроены в **п.1**"
-msgstr ""
-"Open the workspace created in **step 7** - its menu and dashboard match "
-"those configured in **step 1**"
+"Откройте созданное в **п.7** рабочее пространство — в него будут "
+"перенесены конфигурации меню и дашбордов из сохранённого шаблона."
+msgstr "Open the workspace created in **step 7**; menu and dashboard configurations from the saved template will be transferred to it."
 
-#: ../../settings_kb/workspaces.rst:98
+#: ../../settings_kb/workspaces.rst:110
 msgid ""
 "При создании шаблона конфигурации меню и дашбордов копируются внутрь "
 "шаблона (т.е. последующие изменения меню/дашбордов шаблон автоматически "
@@ -236,7 +282,7 @@ msgstr ""
 "template, use the **«Update Template»** action in the **«Workspace "
 "Templates»** journal."
 
-#: ../../settings_kb/workspaces.rst:104
+#: ../../settings_kb/workspaces.rst:116
 msgid ""
 "При создании рабочего пространства на основе шаблона создаются новые "
 "конфигурации меню и дашбордов с автоматически сгенерированным id и явно "
@@ -245,6 +291,24 @@ msgstr ""
 "When creating a workspace based on a template, new menu and dashboard "
 "configurations are created with automatically generated id and explicitly"
 " specified workspace field."
+
+#: ../../settings_kb/workspaces.rst:118
+msgid ""
+"Шаблон применяется при создании пространства. Обновление шаблона не "
+"обновляет ранее созданные по нему пространства; поле выбора шаблона в "
+"форме редактирования пространства заблокировано."
+msgstr "Templates apply during workspace creation. Updating a template does not update existing workspaces; template selection is locked when editing."
+
+#: ../../settings_kb/workspaces.rst:120
+msgid "Файловая структура шаблона:"
+msgstr "Template file structure:"
+
+#: ../../settings_kb/workspaces.rst:133
+msgid ""
+"Сервер запрещает создание шаблона из пространства ``default``. В штатном "
+"журнале выбора также исключены ``admin$workspace`` и ``personal-"
+"workspace``."
+msgstr "The server prohibits templates from ``default``. The standard selection journal also excludes ``admin$workspace`` and ``personal-workspace``."
 
 #~ msgid ""
 #~ "Чтобы обновить артефакты в шаблоне "
@@ -256,3 +320,56 @@ msgstr ""
 #~ "provided in the **«Workspace Templates»** "
 #~ "journal."
 
+#~ msgid "создаёт, редактирует и удаляет пространства;"
+#~ msgstr "creates, edits, and deletes spaces;"
+
+#~ msgid ""
+#~ "задаёт принадлежность типов данных к "
+#~ "конкретному пространству или к глобальному "
+#~ "— чтобы объекты (например, общие "
+#~ "справочники) были доступны во всех "
+#~ "пространствах одновременно."
+#~ msgstr ""
+#~ "assigns data types to a specific "
+#~ "workspace or to the global one —"
+#~ " so that objects (e.g., shared "
+#~ "reference data) are available in all "
+#~ "workspaces simultaneously."
+
+#~ msgid "**Видимость** в рабочих пространствах:"
+#~ msgstr "**Visibility** in workspaces:"
+
+#~ msgid "**По умолчанию** – назначается типу данных по умолчанию."
+#~ msgstr "**Default** – assigned to the data type by default."
+
+#~ msgid ""
+#~ "**Приватная** – экземпляры типа данных "
+#~ "доступны в рамках рабочего пространства, "
+#~ "в котором созданы."
+#~ msgstr ""
+#~ "**Private** – instances of the data "
+#~ "type are available within the workspace"
+#~ " where they were created."
+
+#~ msgid ""
+#~ "**Рабочее пространство по умолчанию** – "
+#~ "в каком рабочем пространстве будет "
+#~ "отображаться по умолчанию."
+#~ msgstr ""
+#~ "**Default workspace** – in which "
+#~ "workspace it will be displayed by "
+#~ "default."
+
+#~ msgid "В журнале можно создать, отредактировать, удалить пространства."
+#~ msgstr "In the journal, you can create, edit, and delete spaces."
+
+#~ msgid ""
+#~ "Опционально скачайте новый шаблон и "
+#~ "загрузите его в ecos-app или в "
+#~ "микросервис по пути **artifacts/model/workspace-"
+#~ "template**"
+#~ msgstr ""
+#~ "Optionally download the new template and"
+#~ " upload it to ecos-app or to"
+#~ " the microservice at path **artifacts/model"
+#~ "/workspace-template**"

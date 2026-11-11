@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -26,12 +26,9 @@ msgstr "Create Variants"
 msgid ""
 "**Вариант создания** — это настраиваемый сценарий, по которому "
 "пользователь создаёт новый объект данного типа. Каждый вариант задаёт "
-"форму, доступность для конкретных ролей и поведение системы после "
+"форму, доступность для пользователей или групп и поведение системы после "
 "создания записи."
-msgstr ""
-"A **create variant** is a configurable scenario by which a user creates a "
-"new object of the given type. Each variant defines the form, availability "
-"for specific roles, and the system behavior after the record is created."
+msgstr "A **creation variant** is a configurable scenario for creating a new object of this type. Each variant defines a form, availability to users or groups, and system behavior after record creation."
 
 #: ../../settings_kb/data_types/data_types_create_variants.rst:8
 msgid ""
@@ -47,8 +44,7 @@ msgstr ""
 msgid ""
 "Настройка вариантов создания производится на вкладке :guilabel:`Варианты "
 "создания`."
-msgstr ""
-"Create variants are configured on the :guilabel:`Create Variants` tab."
+msgstr "Create variants are configured on the :guilabel:`Create Variants` tab."
 
 #: ../../settings_kb/data_types/data_types_create_variants.rst:23
 msgid "п/п"
@@ -144,7 +140,9 @@ msgstr "**Post-creation action**"
 
 #: ../../settings_kb/data_types/data_types_create_variants.rst
 msgid "Возможность настроить действие после создания карточки."
-msgstr "Ability to configure an action to be performed after the record is created."
+msgstr ""
+"Ability to configure an action to be performed after the record is "
+"created."
 
 #: ../../settings_kb/data_types/data_types_create_variants.rst
 msgid "Если ничего не выбрать, то по умолчанию будет открываться карточка записи."
@@ -190,19 +188,27 @@ msgstr "8"
 msgid "**Вариант создания по умолчанию**"
 msgstr "**Default create variant**"
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:60
-msgid "Нужно или нет автоматически сгенерировать вариант создания для типа"
-msgstr "Whether to automatically generate a create variant for the type."
+#: ../../settings_kb/data_types/data_types_create_variants.rst
+msgid ""
+"Нужно ли автоматически сгенерировать вариант создания DEFAULT для типа. "
+"Для генерации требуется непустая ссылка на форму."
+msgstr "Whether to automatically generate the DEFAULT creation variant. A nonempty form reference is required."
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:62
+#: ../../settings_kb/data_types/data_types_create_variants.rst
+msgid ""
+"При null генерация включается, если собственный исходный список вариантов"
+" пуст."
+msgstr "With null, generation is enabled if the original own variant list is empty."
+
+#: ../../settings_kb/data_types/data_types_create_variants.rst:63
 msgid "9"
 msgstr "9"
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:63
+#: ../../settings_kb/data_types/data_types_create_variants.rst:64
 msgid "**Наследовать варианты создания**"
 msgstr "**Inherit create variants**"
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:64
+#: ../../settings_kb/data_types/data_types_create_variants.rst:65
 msgid ""
 "Добавить варианты создания из родительского типа к текущему. Если задано "
 "null, то значение флага наследуется от родительского типа."
@@ -210,29 +216,50 @@ msgstr ""
 "Add create variants from the parent type to the current one. If set to "
 "null, the flag value is inherited from the parent type."
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:78
-msgid "Ограничение прав на создание"
-msgstr "Restricting creation permissions"
-
-#: ../../settings_kb/data_types/data_types_create_variants.rst:80
+#: ../../settings_kb/data_types/data_types_create_variants.rst:68
 msgid ""
-"Создание можно ограничить через настройку вариантов создания. **\"+\"** в"
-" журнале и пункт в меню **\"Создать\"** появляются только, если для "
-"пользователя есть доступные варианты создания."
-msgstr ""
-"Creation can be restricted via create variant settings. The **\"+\"** "
-"button in the journal and the **\"Create\"** menu item appear only if "
-"there are create variants available for the user."
+"При наследовании собственный вариант с тем же ID имеет приоритет над "
+"родительским. У вариантов дочерних типов в итоговом списке ID имеет вид "
+"``<id_дочернего_типа>__<id_варианта>``."
+msgstr "In inheritance, an own variant with the same ID takes precedence over the parent variant. Child type variant IDs in the effective list use ``<id_дочернего_типа>__<id_варианта>``."
 
-#: ../../settings_kb/data_types/data_types_create_variants.rst:82
+#: ../../settings_kb/data_types/data_types_create_variants.rst:70
+msgid ""
+"Пустые имя, форма, источник данных и действие после создания "
+"дозаполняются из настроек типа. Вариант без источника данных исключается "
+"из итогового списка. Для базовых типов ``base``, ``user-base``, ``case`` "
+"и ``data-list`` варианты создания не формируются."
+msgstr "Empty name, form, data source and post-creation action are filled from type settings. Variants without a data source are excluded. Creation variants are not generated for the base types ``base``, ``user-base``, ``case`` and ``data-list``."
+
+#: ../../settings_kb/data_types/data_types_create_variants.rst:83
+msgid "Доступность вариантов создания"
+msgstr "Creation variant availability"
+
+#: ../../settings_kb/data_types/data_types_create_variants.rst:85
+msgid ""
+"Настройка **«Разрешен для»** ограничивает доступность сценариев создания "
+"в интерфейсе. **«+»** в журнале и пункт меню **«Создать»** появляются, "
+"если для пользователя есть доступные варианты создания."
+msgstr "**\"Allowed for\"** limits creation scenarios available in the UI. The journal **\"+\"** and **\"Create\"** menu appear if the user has available creation variants."
+
+#: ../../settings_kb/data_types/data_types_create_variants.rst:87
+msgid ""
+"Эта настройка управляет выбором сценария в интерфейсе. Для ограничения "
+"создания записей через API необходимо также настроить серверные права; "
+"отсутствие кнопки само по себе не заменяет такую проверку."
+msgstr "This setting controls scenario selection in the UI. Restricting record creation through the API also requires server permissions; a missing button alone does not replace that check."
+
+#: ../../settings_kb/data_types/data_types_create_variants.rst:89
 msgid ""
 "В настройке типа можно отключить вариант создания по умолчанию и добавить"
 " новый с указанием групп, которые будут иметь к нему доступ. Заполнение "
 "полей «Имя» и «Форма» необязательно — если оставить их пустыми, значения "
 "вычислятся автоматически."
 msgstr ""
-"In the type settings, you can disable the default create variant and add a"
-" new one specifying the groups that will have access to it. The \"Name\" "
-"and \"Form\" fields are optional — if left empty, the values will be "
+"In the type settings, you can disable the default create variant and add "
+"a new one specifying the groups that will have access to it. The \"Name\""
+" and \"Form\" fields are optional — if left empty, the values will be "
 "calculated automatically."
 
+#~ msgid "Ограничение прав на создание"
+#~ msgstr "Restricting creation permissions"

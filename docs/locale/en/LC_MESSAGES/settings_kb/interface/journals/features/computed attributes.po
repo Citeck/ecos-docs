@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -76,7 +76,7 @@ msgstr ""
 "Computed attributes can be defined at the journal level or for a specific"
 " column:"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:33
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:35
 #, python-brace-format
 msgid ""
 "Для обращения к атрибутам из записи в конфиге можно использовать "
@@ -85,7 +85,7 @@ msgstr ""
 "To reference record attributes in the configuration, placeholders "
 "``${…}`` can be used. For example:"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:50
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:54
 #, python-brace-format
 msgid ""
 "При наличии в конфиге плейсхолдеров ``${…}`` атрибут автоматически "
@@ -94,7 +94,7 @@ msgstr ""
 "When placeholders ``${…}`` are present in the configuration, the "
 "attribute automatically becomes an R attribute."
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:52
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:56
 msgid ""
 "Использование computed атрибутов доступно в полях :ref:`Форматтер для "
 "колонки <formatters>` и :ref:`Редактор для колонки <editors>`. Доступ "
@@ -106,23 +106,23 @@ msgstr ""
 "similar to record attribute access, but with the ``$computed`` prefix. "
 "For example:"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:76
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:82
 msgid "Типы вычисляемых атрибутов"
 msgstr "Computed Attribute Types"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:83
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:89
 msgid "Тип"
 msgstr "Type"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:84
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:90
 msgid "Конфиг"
 msgstr "Config"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:85
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:91
 msgid "Примечание"
 msgstr "Note"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:86
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:92
 msgid "**script**"
 msgstr "**script**"
 
@@ -135,8 +135,8 @@ msgstr ""
 "script"
 
 #: ../../settings_kb/interface/journals/features/computed attributes.rst
-msgid "``script: String`` — текст скрипта"
-msgstr "``script: String`` — script text"
+msgid "``fn: String`` — текст скрипта; может вернуть Promise"
+msgstr "``fn: String`` — script text; may return a Promise"
 
 #: ../../settings_kb/interface/journals/features/computed attributes.rst
 msgid "В контексте скрипта доступны:"
@@ -158,7 +158,7 @@ msgstr "**vars** — variables from the configuration"
 msgid "**t** — функция для получения локализованного сообщения по ключу"
 msgstr "**t** — function for retrieving a localized message by key"
 
-#: ../../settings_kb/interface/journals/features/computed attributes.rst:94
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:100
 msgid "**value**"
 msgstr "**value**"
 
@@ -167,6 +167,65 @@ msgid "``value: Any`` — значение"
 msgstr "``value: Any`` — value"
 
 #: ../../settings_kb/interface/journals/features/computed attributes.rst
-msgid "Может быть выбрано несколько значений."
-msgstr "Multiple values can be selected."
+msgid "Поддерживаются также массивы и объекты."
+msgstr "Arrays and objects are also supported."
 
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:103
+msgid ""
+"В текущей реализации буквальные ``0``, ``false`` и пустая строка "
+"возвращают ``null``. Строки ``\"0\"`` и ``\"false\"`` преобразуются в "
+"число и логическое значение соответственно."
+msgstr "The current implementation returns ``null`` for literal ``0``, ``false`` and empty strings. Strings ``\"0\"`` and ``\"false\"`` convert to numeric and boolean values respectively."
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:104
+msgid "**attributes**"
+msgstr "**attributes**"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid "``record: String`` — ссылка на запись"
+msgstr "``record: String`` — record reference"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid ""
+"``attributes: String|List<String>|Map<String, String>`` — загружаемые "
+"атрибуты"
+msgstr "``attributes: String|List<String>|Map<String, String>`` — attributes to load"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:107
+msgid "Загрузка атрибутов через Records API."
+msgstr "Loading attributes through the Records API."
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:108
+msgid "**query**"
+msgstr "**query**"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid "``query: Object`` — объект RecordsQuery"
+msgstr "``query: Object`` — RecordsQuery object"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:111
+msgid "Выполнение запроса к источнику Records."
+msgstr "Executing a query against a Records source."
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:112
+msgid "**type-records**"
+msgstr "**type-records**"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid "``typeId: String`` — идентификатор типа"
+msgstr "``typeId: String`` — type identifier"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid "``attributes`` — загружаемые атрибуты (необязательно)"
+msgstr "``attributes`` — attributes to load (optional)"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst
+msgid "``maxItems: Number`` — максимальное число записей, по умолчанию 100"
+msgstr "``maxItems: Number`` — maximum record count, default 100"
+
+#: ../../settings_kb/interface/journals/features/computed attributes.rst:116
+msgid "Поиск записей типа в связанном с ним источнике данных."
+msgstr "Searching type records in its associated data source."
+
+#~ msgid "Может быть выбрано несколько значений."
+#~ msgstr "Multiple values can be selected."

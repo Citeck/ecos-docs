@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-04 01:05+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -108,110 +108,59 @@ msgstr "Menu Selection for User"
 
 #: ../../settings_kb/interface/menu.rst:32
 msgid ""
-"Логика выбора зависит от рабочего пространства (workspace, :ref:`релиз "
-"2025.1.2 <citeck_releases>`):"
-msgstr ""
-"The selection logic depends on the workspace (workspace, :ref:`release "
-"2025.1.2<citeck_releases>`):"
+"Конфигурацию выбирает серверный источник ``uiserv/rmenu``. Клиент читает "
+"``main-menu-type``, определяет версию модели (по умолчанию ``1``) и "
+"передаёт в запрос имя пользователя, версию и контекст рабочего "
+"пространства:"
+msgstr "The ``uiserv/rmenu`` server source selects configuration. The client reads ``main-menu-type``, determines model version (default ``1``), and queries with username, version and workspace context:"
 
 #: ../../settings_kb/interface/menu.rst
-msgid "Workspace default или отсутствует"
-msgstr "Workspace is default or absent"
+msgid "Рабочие пространства выключены"
+msgstr "Workspaces disabled"
 
 #: ../../settings_kb/interface/menu.rst:38
 msgid ""
-"Рабочие области выключены — ищем только конфигурации без workspace, среди"
-" всех конфигураций меню кроме дефолтных:"
-msgstr ""
-"Workspaces are disabled — we search only for configurations without a "
-"workspace, among all menu configurations except the default ones:"
-
-#: ../../settings_kb/interface/menu.rst:40
-msgid ""
-"Ищем **персональную конфигурацию** для пользователя (в authorities указан"
-" конкретный пользователь). Если нашлось несколько вариантов, то "
-"возвращаем любую."
-msgstr ""
-"Search for a **personal configuration** for the user (a specific user is "
-"specified in authorities). If several options are found, return any one."
-
-#: ../../settings_kb/interface/menu.rst:41
-msgid ""
-"Берем **группы пользователя**, сортируем их в соответствии с "
-"конфигурацией **menu-group-priority** и ищем первую подходящую "
-"конфигурацию. Если для одной группы нашлось несколько, то берем любую."
-msgstr ""
-"Take the **user's groups**, sort them according to the **menu-group-"
-"priority** configuration, and search for the first suitable "
-"configuration. If several are found for one group, take any one."
-
-#: ../../settings_kb/interface/menu.rst:43
-msgid "Если п.1 и п.2 не дали результата, то возвращаем **default-menu-v1**."
-msgstr "If items 1 and 2 yield no result, return **default-menu-v1**."
+"Клиент передаёт ``user`` и ``version``. Поле ``workspace`` в запрос не "
+"включается."
+msgstr "The client passes ``user`` and ``version``. ``workspace`` is omitted."
 
 #: ../../settings_kb/interface/menu.rst
-msgid "Workspace есть и не default"
-msgstr "Workspace exists and is not default"
+msgid "Рабочие пространства включены"
+msgstr "Workspaces enabled"
 
-#: ../../settings_kb/interface/menu.rst:47
-msgid "Ищем среди всех конфигураций меню кроме дефолтных:"
-msgstr "Search among all menu configurations except the default ones:"
-
-#: ../../settings_kb/interface/menu.rst:49
+#: ../../settings_kb/interface/menu.rst:42
 msgid ""
-"Ищем **персональную конфигурацию** для пользователя в текущем workspace "
-"(в authorities указан конкретный пользователь). Если нашлось несколько "
-"вариантов, то возвращаем любую."
-msgstr ""
-"Search for a **personal configuration** for the user in the current "
-"workspace (a specific user is specified in authorities). If several "
-"options are found, return any one."
+"Вместе с ``user`` и ``version`` передаётся ``workspace`` — текущее "
+"рабочее пространство. Это правило действует и для пространства "
+"``default``: его наличие не означает, что механизм рабочих пространств "
+"выключен."
+msgstr "``workspace`` is passed with ``user`` and ``version``, specifying the current workspace. This also applies to ``default``: its presence does not mean workspaces are disabled."
 
-#: ../../settings_kb/interface/menu.rst:50
+#: ../../settings_kb/interface/menu.rst:44
 msgid ""
-"Берем **группы пользователя**, сортируем их в соответствии с "
-"конфигурацией **menu-group-priority** и ищем первую подходящую "
-"конфигурацию в текущем workspace. Если для одной группы нашлось "
-"несколько, то берем любую."
-msgstr ""
-"Take the **user's groups**, sort them according to the **menu-group-"
-"priority** configuration, and search for the first suitable configuration"
-" in the current workspace. If several are found for one group, take any "
-"one."
+"Сервер возвращает идентификатор конфигурации и разрешённую структуру "
+"``subMenu``. Назначения ``authorities``, настройка ``menu-group-"
+"priority``, выбор конфигурации по умолчанию и разрешение совпадений "
+"обрабатываются сервером. Фронтенд не выполняет самостоятельный перебор "
+"персональных и групповых конфигураций."
+msgstr "The server returns the configuration identifier and resolved ``subMenu``. It handles ``authorities`` assignments, ``menu-group-priority``, default selection and conflicts. The frontend does not independently enumerate personal and group configurations."
 
-#: ../../settings_kb/interface/menu.rst:52
-msgid "Если п.1 и п.2 не дали результата:"
-msgstr "If items 1 and 2 yield no result:"
-
-#: ../../settings_kb/interface/menu.rst:54
-msgid ""
-"Если **workspace пользовательский**, то возвращаем **default-personal-ws-"
-"menu**."
-msgstr "If the **workspace is personal**, return **default-personal-ws-menu**."
-
-#: ../../settings_kb/interface/menu.rst:55
-msgid "Если **workspace не пользовательский**, то возвращаем **default-ws-menu**."
-msgstr "If the **workspace is not personal**, return **default-ws-menu**."
-
-#: ../../settings_kb/interface/menu.rst:59
+#: ../../settings_kb/interface/menu.rst:48
 msgid "Общий подход к настройке"
 msgstr "General Configuration Approach"
 
-#: ../../settings_kb/interface/menu.rst:61
+#: ../../settings_kb/interface/menu.rst:50
 msgid ""
 "Основной подход к кастомизации меню под проект/модуль — создание нового "
-"меню. Конфигурации по умолчанию имеют наименьший приоритет и не "
-"применяются, если есть другие подходящие варианты."
-msgstr ""
-"The main approach to customizing the menu for a project/module is to "
-"create a new menu. Default configurations have the lowest priority and "
-"are not applied if other suitable options exist."
+"меню с нужными элементами и назначениями. Приоритет относительно других "
+"подходящих конфигураций определяется серверными правилами выбора меню."
+msgstr "The main customization approach is creating a menu with the required items and assignments. Server menu selection rules determine priority against other matching configurations."
 
-#: ../../settings_kb/interface/menu.rst:64
+#: ../../settings_kb/interface/menu.rst:53
 msgid "Журнал Конфигурация"
 msgstr "Configuration Journal"
 
-#: ../../settings_kb/interface/menu.rst:66
+#: ../../settings_kb/interface/menu.rst:55
 msgid ""
 "В журнале для настройки **Интерфейса основного меню** (main-menu-type) "
 "устанавливается какой **вариант** (версия) меню будет использоваться в "
@@ -221,7 +170,7 @@ msgstr ""
 "determines which **variant** (version) of the menu will be used in the "
 "system."
 
-#: ../../settings_kb/interface/menu.rst:72
+#: ../../settings_kb/interface/menu.rst:61
 msgid ""
 "где **left-v1** - первая версия конфигурации левого меню (поддерживается "
 "просмотр и редактирование)."
@@ -229,19 +178,19 @@ msgstr ""
 "where **left-v1** is the first version of the left menu configuration "
 "(viewing and editing are supported)."
 
-#: ../../settings_kb/interface/menu.rst:75
+#: ../../settings_kb/interface/menu.rst:64
 msgid "Журнал Меню"
 msgstr "Menu Journal"
 
-#: ../../settings_kb/interface/menu.rst:77
+#: ../../settings_kb/interface/menu.rst:66
 msgid "В журнале перечислены все конфигурации разных версий."
 msgstr "The journal lists all configurations of different versions."
 
-#: ../../settings_kb/interface/menu.rst:84
+#: ../../settings_kb/interface/menu.rst:73
 msgid "Версия конфигурации меню"
 msgstr "Menu Configuration Version"
 
-#: ../../settings_kb/interface/menu.rst:86
+#: ../../settings_kb/interface/menu.rst:75
 msgid ""
 "В конфигурации меню есть поле **Версия модели**, которое определяет "
 "версию модели. Актуальный список версий:"
@@ -249,27 +198,35 @@ msgstr ""
 "The menu configuration has a **Model Version** field that determines the "
 "model version. The current list of versions:"
 
-#: ../../settings_kb/interface/menu.rst:88
+#: ../../settings_kb/interface/menu.rst:77
 msgid "**0** - устаревший xml формат конфигурации"
 msgstr "**0** - deprecated XML configuration format"
 
-#: ../../settings_kb/interface/menu.rst:89
+#: ../../settings_kb/interface/menu.rst:78
 msgid "**1** - актуальный json формат конфигурации"
 msgstr "**1** - current JSON configuration format"
 
-#: ../../settings_kb/interface/menu.rst:92
+#: ../../settings_kb/interface/menu.rst:81
 msgid "Дефолтные конфигурации меню"
 msgstr "Default Menu Configurations"
 
-#: ../../settings_kb/interface/menu.rst:94
+#: ../../settings_kb/interface/menu.rst:83
+msgid ""
+"Ниже приведены примеры поставляемых конфигураций. Их наличие, состав и "
+"выбор для пользователя определяются серверной поставкой, а не "
+"фиксированным списком в ecos-ui:"
+msgstr "The following are bundled configuration examples. Their availability, contents and user selection depend on the server distribution, not a fixed ecos-ui list:"
+
+#: ../../settings_kb/interface/menu.rst:85
 msgid ""
 "**default-tasks** содержит все пункты из раздела "
 ":ref:`\"Задачи\"<tasks_spaces>` в дефолтном меню, включая сам раздел."
 msgstr ""
-"**default-tasks** contains all items from the :ref:`\"Tasks\"<tasks_spaces>`"
-" section in the default menu, including the section itself."
+"**default-tasks** contains all items from the "
+":ref:`\"Tasks\"<tasks_spaces>` section in the default menu, including the"
+" section itself."
 
-#: ../../settings_kb/interface/menu.rst:95
+#: ../../settings_kb/interface/menu.rst:86
 msgid ""
 "**default-data-lists** содержит все пункты из раздела "
 ":ref:`\"Справочники\"<datalists>` в дефолтном меню включая сам раздел."
@@ -278,7 +235,7 @@ msgstr ""
 ":ref:`\"Directories\"<datalists>` section in the default menu, including "
 "the section itself."
 
-#: ../../settings_kb/interface/menu.rst:96
+#: ../../settings_kb/interface/menu.rst:87
 msgid ""
 "**default-personal-ws-menu** содержит задачи (default-tasks) через пункт "
 "\"Вложенное меню\" (INCLUDE_MENU) и раздел \"Разделы\", куда добавлена "
@@ -291,139 +248,71 @@ msgstr ""
 "type workspace-file and a link to a :ref:`kanban board<ws_kanban>` "
 "(kanban-task)."
 
-#: ../../settings_kb/interface/menu.rst:97
+#: ../../settings_kb/interface/menu.rst:88
 msgid ""
 "**default-ws-menu** содержит задачи (default-tasks) через пункт "
 "\"Вложенное меню\" (INCLUDE_MENU) и раздел \"Разделы\", куда добавлена "
 "ссылка на doclib (:ref:`библиотеку документов<ws_doc_library>`) с типом "
 "workspace-file и ссылка на :ref:`канбан доску<ws_kanban>` (kanban-task)."
 msgstr ""
-"**default-ws-menu** contains tasks (default-tasks) via the \"Nested menu\" "
-"(INCLUDE_MENU) item and a \"Sections\" section, which includes a link to a "
-"doclib (:ref:`document library<ws_doc_library>`) of type workspace-file "
-"and a link to a :ref:`kanban board<ws_kanban>` (kanban-task)."
+"**default-ws-menu** contains tasks (default-tasks) via the \"Nested "
+"menu\" (INCLUDE_MENU) item and a \"Sections\" section, which includes a "
+"link to a doclib (:ref:`document library<ws_doc_library>`) of type "
+"workspace-file and a link to a :ref:`kanban board<ws_kanban>` (kanban-"
+"task)."
 
-#: ../../settings_kb/interface/menu.rst:100
+#: ../../settings_kb/interface/menu.rst:91
 msgid "Доступность действий в журнале"
 msgstr "Action Availability in the Journal"
 
-#: ../../settings_kb/interface/menu.rst:102
-msgid "**default** - конфигурации меню по умолчанию"
-msgstr "**default** - default menu configurations"
+#: ../../settings_kb/interface/menu.rst:93
+msgid ""
+"Доступность редактирования, удаления, копирования, редактирования JSON и "
+"скачивания определяется списком действий журнала и серверными условиями "
+"доступа. Она может различаться для поставляемых конфигураций по умолчанию"
+" и пользовательских конфигураций."
+msgstr "Editing, deleting, copying, JSON editing and downloading depend on journal actions and server access conditions. Bundled default and user configurations may differ."
 
-#: ../../settings_kb/interface/menu.rst:103
-msgid "**user** - конфигурация для Группы или пользователей"
-msgstr "**user** - configuration for Groups or Users"
+#: ../../settings_kb/interface/menu.rst:95
+msgid ""
+"Редактор интерфейса не поддерживает модель версии ``0``. Для модели "
+"версии ``1`` доступны описанные ниже настройки, если действие "
+"редактирования разрешено. Чтобы изменить поставляемое меню, создайте "
+"собственную конфигурацию или её копию с отдельным идентификатором."
+msgstr "The UI editor does not support model version ``0``. Version ``1`` supports the settings below when editing is allowed. To change a bundled menu, create a separate configuration or copy with a distinct ID."
 
-#: ../../settings_kb/interface/menu.rst:109
-msgid "**Действия**"
-msgstr "**Actions**"
-
-#: ../../settings_kb/interface/menu.rst:110
-msgid "default"
-msgstr "default"
-
-#: ../../settings_kb/interface/menu.rst:111
-msgid "user"
-msgstr "user"
-
-#: ../../settings_kb/interface/menu.rst:112
-msgid "**Редактировать**"
-msgstr "**Edit**"
-
-#: ../../settings_kb/interface/menu.rst:113
-#: ../../settings_kb/interface/menu.rst:116
-msgid "``-``"
-msgstr "``-``"
-
-#: ../../settings_kb/interface/menu.rst:114
-#: ../../settings_kb/interface/menu.rst:117
-#: ../../settings_kb/interface/menu.rst:119
-#: ../../settings_kb/interface/menu.rst:120
-#: ../../settings_kb/interface/menu.rst:122
-#: ../../settings_kb/interface/menu.rst:123
-#: ../../settings_kb/interface/menu.rst:125
-#: ../../settings_kb/interface/menu.rst:126
-#: ../../settings_kb/interface/menu.rst:216
-#: ../../settings_kb/interface/menu.rst:217
-#: ../../settings_kb/interface/menu.rst:220
-#: ../../settings_kb/interface/menu.rst:223
-#: ../../settings_kb/interface/menu.rst:226
-#: ../../settings_kb/interface/menu.rst:229
-#: ../../settings_kb/interface/menu.rst:232
-#: ../../settings_kb/interface/menu.rst:235
-#: ../../settings_kb/interface/menu.rst:238
-#: ../../settings_kb/interface/menu.rst:241
-#: ../../settings_kb/interface/menu.rst:244
-#: ../../settings_kb/interface/menu.rst:247
-#: ../../settings_kb/interface/menu.rst:498
-#: ../../settings_kb/interface/menu.rst:499
-#: ../../settings_kb/interface/menu.rst:503
-#: ../../settings_kb/interface/menu.rst:504
-#: ../../settings_kb/interface/menu.rst:505
-#: ../../settings_kb/interface/menu.rst:508
-#: ../../settings_kb/interface/menu.rst:509
-#: ../../settings_kb/interface/menu.rst:510
-#: ../../settings_kb/interface/menu.rst:513
-#: ../../settings_kb/interface/menu.rst:514
-#: ../../settings_kb/interface/menu.rst:515
-#: ../../settings_kb/interface/menu.rst:518
-#: ../../settings_kb/interface/menu.rst:519
-#: ../../settings_kb/interface/menu.rst:520
-msgid "``+``"
-msgstr "``+``"
-
-#: ../../settings_kb/interface/menu.rst:115
-msgid "**Удалить**"
-msgstr "**Delete**"
-
-#: ../../settings_kb/interface/menu.rst:118
-msgid "**Копировать**"
-msgstr "**Copy**"
-
-#: ../../settings_kb/interface/menu.rst:121
-msgid "**Редактировать JSON**"
-msgstr "**Edit JSON**"
-
-#: ../../settings_kb/interface/menu.rst:124
-msgid "**Скачать**"
-msgstr "**Download**"
-
-#: ../../settings_kb/interface/menu.rst:129
+#: ../../settings_kb/interface/menu.rst:98
 msgid "Настройка меню"
 msgstr "Menu Settings"
 
-#: ../../settings_kb/interface/menu.rst:132
+#: ../../settings_kb/interface/menu.rst:101
 msgid "Способы открытия"
 msgstr "Ways to Open"
 
-#: ../../settings_kb/interface/menu.rst:134
+#: ../../settings_kb/interface/menu.rst:103
 msgid "Через шапку сайта иконка \"Шестеренка\" > :guilabel:`Настроить меню`."
 msgstr "Via the site header, click the \"Gear\" icon > :guilabel:`Configure Menu`."
 
-#: ../../settings_kb/interface/menu.rst:143
+#: ../../settings_kb/interface/menu.rst:112
 msgid ""
-"При использовании данного способа в окно настроек загружается "
-"конфигурация меню используемая на данный момент в интерфейсе. То есть в "
-"основном для настройки административного меню."
-msgstr ""
-"When using this method, the menu configuration currently used in the "
-"interface is loaded into the settings window. That is, it is primarily "
-"for configuring the administrative menu."
+"При использовании этого способа загружается конфигурация меню, "
+"используемая в текущем интерфейсе. Это не обязательно административное "
+"меню: выбор зависит от пользователя и рабочего пространства."
+msgstr "This method loads the menu used by the current interface. It is not necessarily the administrative menu: selection depends on user and workspace."
 
-#: ../../settings_kb/interface/menu.rst:145
+#: ../../settings_kb/interface/menu.rst:114
 msgid "Через журнал **Конфигурация UI** - **Меню** действие *Редактировать*"
 msgstr "Via the **UI Configuration** journal - **Menu** action *Edit*"
 
-#: ../../settings_kb/interface/menu.rst:152
+#: ../../settings_kb/interface/menu.rst:121
 msgid "Окно настроек"
 msgstr "Settings Window"
 
-#: ../../settings_kb/interface/menu.rst:154
+#: ../../settings_kb/interface/menu.rst:123
 msgid "Настройки содержат четыре вкладки:"
 msgstr "The settings contain four tabs:"
 
-#: ../../settings_kb/interface/menu.rst:156
+#: ../../settings_kb/interface/menu.rst:125
 msgid ""
 "**Настройки выбранной конфигурации** - описывает состояние отображаемого "
 "меню (элементы меню, версия, принадлежность и т.д.)."
@@ -431,7 +320,7 @@ msgstr ""
 "**Selected Configuration Settings** - describes the state of the "
 "displayed menu (menu items, version, assignment, etc.)."
 
-#: ../../settings_kb/interface/menu.rst:157
+#: ../../settings_kb/interface/menu.rst:126
 msgid ""
 "**Меню \"Создать\"** - для редактирования пунктов меню, доступных по "
 "нажатию на кнопку :guilabel:`Создать`"
@@ -439,7 +328,7 @@ msgstr ""
 "**\"Create\" Menu** - for editing menu items available by clicking the "
 ":guilabel:`Create` button"
 
-#: ../../settings_kb/interface/menu.rst:158
+#: ../../settings_kb/interface/menu.rst:127
 msgid ""
 "**Пользовательское меню** - для редактирования пунктов меню, доступных по"
 " нажатию на имя пользователя в правом верхнем углу."
@@ -447,7 +336,7 @@ msgstr ""
 "**User Menu** - for editing menu items available by clicking the username"
 " in the upper right corner."
 
-#: ../../settings_kb/interface/menu.rst:159
+#: ../../settings_kb/interface/menu.rst:128
 msgid ""
 "**Глобальные настройки** - те настройки, что влияют на всю систему и всех"
 " пользователей (приоритеты)."
@@ -455,12 +344,12 @@ msgstr ""
 "**Global Settings** - those settings that affect the entire system and "
 "all users (priorities)."
 
-#: ../../settings_kb/interface/menu.rst:162
+#: ../../settings_kb/interface/menu.rst:131
 msgid "Обзор режима редактирования"
 msgstr "Edit Mode Overview"
 
 #: ../../settings_kb/interface/menu.rst
-#: ../../settings_kb/interface/menu.rst:201
+#: ../../settings_kb/interface/menu.rst:168
 msgid "Вкладка \"Настройки выбранной конфигурации\""
 msgstr "Tab \"Selected Configuration Settings\""
 
@@ -469,156 +358,130 @@ msgid "Вкладка \"Меню \"Создать\"\""
 msgstr "Tab \"Create Menu\""
 
 #: ../../settings_kb/interface/menu.rst
-#: ../../settings_kb/interface/menu.rst:565
+#: ../../settings_kb/interface/menu.rst:460
 msgid "Вкладка \"Пользовательское меню\""
 msgstr "Tab \"User Menu\""
 
 #: ../../settings_kb/interface/menu.rst
-#: ../../settings_kb/interface/menu.rst:584
+#: ../../settings_kb/interface/menu.rst:490
 msgid "Вкладка \"Глобальные настройки\""
 msgstr "Tab \"Global Settings\""
 
-#: ../../settings_kb/interface/menu.rst:191
+#: ../../settings_kb/interface/menu.rst:160
 msgid "Редактирование"
 msgstr "Editing"
 
-#: ../../settings_kb/interface/menu.rst:195
+#: ../../settings_kb/interface/menu.rst:164
 msgid ""
-"Настройки на вкладке \"Настройки выбранной конфигурации (Меню Левое)\" и "
-"\"Меню Создать\" хранятся вместе. То есть на меню Создать влияют те же "
-"правила что и на Левое меню."
-msgstr ""
-"Settings on the \"Selected Configuration Settings (Left Menu)\" tab and "
-"the \"Create Menu\" tab are stored together. That is, the Create Menu is "
-"subject to the same rules as the Left Menu."
+"Левое меню, меню «Создать» и пользовательское меню сохраняются в одной "
+"конфигурации ``subMenu`` (блоки ``left``, ``create`` и ``user``). У "
+"кнопки «Создать» дополнительно есть собственные назначения "
+"``create.allowedFor``. Доступные типы элементов и правила вложенности у "
+"блоков различаются."
+msgstr "The left, \"Create\" and user menus are stored in one ``subMenu`` configuration (``left``, ``create`` and ``user`` blocks). \"Create\" additionally has ``create.allowedFor`` assignments. Blocks have different item types and nesting rules."
 
-#: ../../settings_kb/interface/menu.rst:197
-msgid "**А** - создаются автоматически системой"
-msgstr "**A** - created automatically by the system"
-
-#: ../../settings_kb/interface/menu.rst:204
+#: ../../settings_kb/interface/menu.rst:171
 msgid "Элементы меню"
 msgstr "Menu Items"
 
-#: ../../settings_kb/interface/menu.rst:206
-msgid "Возможные типы пунктов и их доступность на каждом уровне:"
-msgstr "Possible item types and their availability at each level:"
+#: ../../settings_kb/interface/menu.rst:173
+msgid "Возможные типы пунктов и их доступность при ручном добавлении:"
+msgstr "Possible item types and manual addition availability:"
 
-#: ../../settings_kb/interface/menu.rst:212
-#: ../../settings_kb/interface/menu.rst:256
-#: ../../settings_kb/interface/menu.rst:492
-msgid "Тип/Уровень"
-msgstr "Type/Level"
+#: ../../settings_kb/interface/menu.rst:180
+#: ../../settings_kb/interface/menu.rst:405
+msgid "Тип"
+msgstr "Type"
 
-#: ../../settings_kb/interface/menu.rst:213
-#: ../../settings_kb/interface/menu.rst:257
-#: ../../settings_kb/interface/menu.rst:493
-msgid "1"
-msgstr "1"
+#: ../../settings_kb/interface/menu.rst:181
+msgid "На верхнем уровне"
+msgstr "Top level"
 
-#: ../../settings_kb/interface/menu.rst:214
-#: ../../settings_kb/interface/menu.rst:258
-#: ../../settings_kb/interface/menu.rst:494
-msgid "2"
-msgstr "2"
+#: ../../settings_kb/interface/menu.rst:182
+msgid "Внутри раздела"
+msgstr "Inside a section"
 
-#: ../../settings_kb/interface/menu.rst:215
-#: ../../settings_kb/interface/menu.rst:260
-#: ../../settings_kb/interface/menu.rst:497
-msgid "**Раздел**"
-msgstr "**Section**"
+#: ../../settings_kb/interface/menu.rst:183
+#: ../../settings_kb/interface/menu.rst:407
+msgid "Раздел (SECTION)"
+msgstr "Section (SECTION)"
 
-#: ../../settings_kb/interface/menu.rst:218
-#: ../../settings_kb/interface/menu.rst:264
-msgid "**Разделяющий заголовок**"
-msgstr "**Divider Header**"
+#: ../../settings_kb/interface/menu.rst:184
+#: ../../settings_kb/interface/menu.rst:187
+#: ../../settings_kb/interface/menu.rst:190
+#: ../../settings_kb/interface/menu.rst:191
+#: ../../settings_kb/interface/menu.rst:193
+#: ../../settings_kb/interface/menu.rst:194
+#: ../../settings_kb/interface/menu.rst:196
+#: ../../settings_kb/interface/menu.rst:197
+#: ../../settings_kb/interface/menu.rst:199
+#: ../../settings_kb/interface/menu.rst:200
+msgid "Да"
+msgstr "Yes"
 
-#: ../../settings_kb/interface/menu.rst:221
-#: ../../settings_kb/interface/menu.rst:268
-msgid "**Журнал**"
-msgstr "**Journal**"
+#: ../../settings_kb/interface/menu.rst:185
+#: ../../settings_kb/interface/menu.rst:188
+msgid "Нет"
+msgstr "No"
 
-#: ../../settings_kb/interface/menu.rst:224
-msgid "**Канбан-доска**"
-msgstr "**Kanban Board**"
+#: ../../settings_kb/interface/menu.rst:186
+msgid "Разделяющий заголовок (HEADER-DIVIDER)"
+msgstr "Divider header (HEADER-DIVIDER)"
 
-#: ../../settings_kb/interface/menu.rst:227
-#: ../../settings_kb/interface/menu.rst:276
-msgid "**Дашборд**"
-msgstr "**Dashboard**"
+#: ../../settings_kb/interface/menu.rst:189
+msgid "Журнал, канбан-доска, дашборд, база знаний, DocLib, список"
+msgstr "Journal, kanban, dashboard, knowledge base, DocLib, list"
 
-#: ../../settings_kb/interface/menu.rst:230
-#: ../../settings_kb/interface/menu.rst:280
-msgid "**База знаний**"
-msgstr "**Knowledge Base**"
+#: ../../settings_kb/interface/menu.rst
+#: ../../settings_kb/interface/menu.rst:192
+#: ../../settings_kb/interface/menu.rst:411
+msgid "Произвольный пункт меню"
+msgstr "Custom Menu Item"
 
-#: ../../settings_kb/interface/menu.rst:233
-#: ../../settings_kb/interface/menu.rst:284
-msgid "**DocLib**"
-msgstr "**DocLib**"
+#: ../../settings_kb/interface/menu.rst:195
+msgid "Ссылка на создание кейса, запуск бизнес-процесса"
+msgstr "Case creation link, business process start"
 
-#: ../../settings_kb/interface/menu.rst:236
-#: ../../settings_kb/interface/menu.rst:288
-msgid "**Список**"
-msgstr "**List**"
+#: ../../settings_kb/interface/menu.rst:198
+msgid "Вложенное меню (INCLUDE_MENU)"
+msgstr "Included menu (INCLUDE_MENU)"
 
-#: ../../settings_kb/interface/menu.rst:239
-#: ../../settings_kb/interface/menu.rst:292
-#: ../../settings_kb/interface/menu.rst:507
-msgid "**Произвольный пункт меню**"
-msgstr "**Custom Menu Item**"
+#: ../../settings_kb/interface/menu.rst:202
+msgid ""
+"Дочерние элементы вручную добавляются только в раздел. Создание нового "
+"раздела и разделяющего заголовка разрешено только на верхнем уровне. Для "
+"INCLUDE_MENU отдельного ограничения уровня нет: его содержимое "
+"раскрывается сервером. Полученная структура может отличаться от дерева, "
+"которое создаётся вручную в редакторе."
+msgstr "Children can be added manually only inside sections. New sections and divider headers are top-level only. INCLUDE_MENU has no separate level restriction: the server expands its content. The resulting structure may differ from the manually editable tree."
 
-#: ../../settings_kb/interface/menu.rst:242
-#: ../../settings_kb/interface/menu.rst:296
-#: ../../settings_kb/interface/menu.rst:512
-msgid "**Ссылка на создание кейса**"
-msgstr "**Link to Create Case**"
-
-#: ../../settings_kb/interface/menu.rst:245
-#: ../../settings_kb/interface/menu.rst:300
-#: ../../settings_kb/interface/menu.rst:517
-msgid "**Запустить бизнес-процесс**"
-msgstr "**Start Business Process**"
-
-#: ../../settings_kb/interface/menu.rst:249
+#: ../../settings_kb/interface/menu.rst:204
 msgid "Доступность дополнительных характеристик:"
 msgstr "Availability of Additional Characteristics:"
 
-#: ../../settings_kb/interface/menu.rst:259
-#: ../../settings_kb/interface/menu.rst:495
-msgid "3"
-msgstr "3"
+#: ../../settings_kb/interface/menu.rst:206
+msgid "**Скрывать название** — для раздела верхнего уровня."
+msgstr "**Hide name** — for top-level sections."
 
-#: ../../settings_kb/interface/menu.rst:261
-msgid "Без названия"
-msgstr "No Title"
+#: ../../settings_kb/interface/menu.rst:207
+msgid ""
+"**Иконка** — в левом меню на втором уровне, кроме разделяющего заголовка "
+"и INCLUDE_MENU. Для пунктов, добавленных из журналов, отображаемые "
+"сведения также могут поступать из связанной записи."
+msgstr "**Icon** — second-level left menu items, excluding divider headers and INCLUDE_MENU. Journal-based items may also obtain display information from their linked record."
 
-#: ../../settings_kb/interface/menu.rst:262
-#: ../../settings_kb/interface/menu.rst:274
-#: ../../settings_kb/interface/menu.rst:278
-#: ../../settings_kb/interface/menu.rst:282
-#: ../../settings_kb/interface/menu.rst:286
-#: ../../settings_kb/interface/menu.rst:290
-#: ../../settings_kb/interface/menu.rst:294
-#: ../../settings_kb/interface/menu.rst:298
-#: ../../settings_kb/interface/menu.rst:302
-msgid "Иконка"
-msgstr "Icon"
+#: ../../settings_kb/interface/menu.rst:208
+msgid "**Свернуть раздел по умолчанию** и **Доступно для** — настройки раздела."
+msgstr "**Collapse section by default** and **Available for** — section settings."
 
-#: ../../settings_kb/interface/menu.rst:263
-#: ../../settings_kb/interface/menu.rst:271
-msgid "Счетчик"
-msgstr "Counter"
+#: ../../settings_kb/interface/menu.rst:209
+msgid ""
+"Обычное редактирование не предлагается для JOURNAL, KANBAN, DOCLIB, "
+"PREVIEW_LIST и DASHBOARD. Для них доступны другие действия, например "
+"удаление пункта."
+msgstr "Ordinary editing is unavailable for JOURNAL, KANBAN, DOCLIB, PREVIEW_LIST and DASHBOARD. Other actions, such as removing an item, are available."
 
-#: ../../settings_kb/interface/menu.rst:270
-msgid "Счетчик, Иконка"
-msgstr "Counter, Icon"
-
-#: ../../settings_kb/interface/menu.rst:272
-msgid "**Канбан-доску**"
-msgstr "**Kanban Board**"
-
-#: ../../settings_kb/interface/menu.rst:305
+#: ../../settings_kb/interface/menu.rst:211
 msgid "Подробнее о некоторых типах:"
 msgstr "More about some types:"
 
@@ -626,7 +489,7 @@ msgstr "More about some types:"
 msgid "Вложенное меню"
 msgstr "Nested Menu"
 
-#: ../../settings_kb/interface/menu.rst:317
+#: ../../settings_kb/interface/menu.rst:223
 msgid ""
 "Пункт, который позволяет вставить в меню уже готовое, ранее сохранённое "
 "меню целиком — вместо того чтобы вручную пересоздавать те же пункты в "
@@ -636,43 +499,29 @@ msgstr ""
 "menu as a whole — instead of manually recreating the same items in "
 "several places."
 
-#: ../../settings_kb/interface/menu.rst:319
+#: ../../settings_kb/interface/menu.rst:225
 msgid "Как это работает:"
 msgstr "How It Works"
 
-#: ../../settings_kb/interface/menu.rst:321
+#: ../../settings_kb/interface/menu.rst:227
 msgid ""
 "Вы выбираете существующее меню из списка — так же, как выбираете журнал "
-"или запись. На экране такой пункт выглядит как обычная ссылка/раздел, но "
-"при отображении пользователю он автоматически заменяется всем содержимым "
-"выбранного меню (его пунктами, подпунктами). У него нет собственной "
-"иконки. Название пункта можно задать своё, а если оставить пустым — будет"
-" использовано название самого включённого меню. Пример использования: "
-"если у вас есть общий блок пунктов (например, \"Отчёты\" со своими "
-"вложенными ссылками), который нужен сразу в нескольких разных меню — "
-"можно один раз оформить его как отдельное меню, а затем в каждом нужном "
-"месте просто «включить» его через этот тип пункта. При изменении "
-"исходного меню изменения подхватятся везде, где оно включено — не нужно "
-"править копии."
-msgstr ""
-"You select an existing menu from a list — the same way you select a "
-"journal or a record. On screen, such an item looks like a regular "
-"link/section, but when displayed to the user it is automatically replaced"
-" with the full contents of the selected menu (its items and sub-items). "
-"It has no icon of its own. You can give the item its own name, and if "
-"left empty, the name of the included menu itself will be used. Usage "
-"example: if you have a common block of items (e.g., \"Reports\" with its "
-"own nested links) that is needed in several different menus at once — you"
-" can set it up once as a separate menu, and then simply \"include\" it "
-"via this item type wherever it's needed. When the source menu changes, "
-"the changes propagate everywhere it is included — there is no need to "
-"edit copies."
+"или запись. В редакторе отображается ссылка на выбранное меню. При "
+"загрузке меню для пользователя сервер заменяет этот пункт содержимым "
+"включённого меню. У него нет собственной иконки. Название пункта можно "
+"задать своё, а если оставить пустым — будет использовано название самого "
+"включённого меню. Пример использования: если общий блок пунктов "
+"(например, «Отчёты» со вложенными ссылками) нужен в нескольких меню, "
+"оформите его как отдельное меню и включите через этот тип пункта. "
+"Обновлённое содержимое поступит при повторной загрузке разрешённого "
+"сервером меню; править копии пунктов не требуется."
+msgstr "Select an existing menu as you would a journal or record. The editor displays a reference; when loading the user menu, the server replaces it with the included contents. It has no own icon. Set a custom name or leave it empty to use the included menu name. For example, define a shared \"Reports\" block with nested links as a separate menu and include it in several menus. Updated content appears when the server-resolved menu reloads; no copies need editing."
 
 #: ../../settings_kb/interface/menu.rst
 msgid "Раздел"
 msgstr "Section"
 
-#: ../../settings_kb/interface/menu.rst:333
+#: ../../settings_kb/interface/menu.rst:239
 msgid ""
 "**Скрывать название** - доступно только на головном уровне. В меню "
 "подпункты отображаются вне группы, но вместе."
@@ -680,7 +529,7 @@ msgstr ""
 "**Hide Title** - available only at the top level. In the menu, sub-items "
 "are displayed outside the group but together."
 
-#: ../../settings_kb/interface/menu.rst:335
+#: ../../settings_kb/interface/menu.rst:241
 msgid ""
 "**Свернуть раздел по умолчанию** - содержимое раздела будет свернутым по "
 "умолчанию"
@@ -688,7 +537,7 @@ msgstr ""
 "**Collapse section by default** — the section content will be collapsed "
 "by default."
 
-#: ../../settings_kb/interface/menu.rst:337
+#: ../../settings_kb/interface/menu.rst:243
 msgid ""
 "**Доступно для** - возможность ограничивать видимость раздела по группам,"
 " пользователям и ролям:"
@@ -704,22 +553,19 @@ msgstr "Divider Header"
 msgid "Журнал"
 msgstr "Journal"
 
-#: ../../settings_kb/interface/menu.rst:351
+#: ../../settings_kb/interface/menu.rst:257
 msgid ""
-"Добавление пунктов осуществляется выбором элементов из журнала. "
-"Редактирование не доступно, только удаление. Необходимые сведения "
-"поступают из конфигурации элемента. Можно добавлять сразу несколько "
-"выбранных значений."
-msgstr ""
-"Adding items is done by selecting elements from the journal. Editing is "
-"not available, only deletion. The necessary information comes from the "
-"element's configuration. Multiple selected values can be added at once."
+"Добавление пунктов осуществляется выбором элементов из журнала. Обычное "
+"редактирование пункта не предлагается; его можно скрыть или удалить из "
+"меню. Необходимые сведения поступают из конфигурации связанной записи. "
+"Можно добавлять сразу несколько выбранных значений."
+msgstr "Add items by selecting journal entries. Ordinary item editing is unavailable; items can be hidden or removed. Linked record configuration supplies details. Multiple entries can be added together."
 
 #: ../../settings_kb/interface/menu.rst
 msgid "Канбан доска"
 msgstr "Kanban Board"
 
-#: ../../settings_kb/interface/menu.rst:360
+#: ../../settings_kb/interface/menu.rst:266
 msgid ""
 "Добавление пунктов осуществляется выбором элементов из журнала "
 ":ref:`канбан досок <kanban_board>`:"
@@ -727,7 +573,7 @@ msgstr ""
 "Adding items is done by selecting elements from the :ref:`kanban "
 "boards<kanban_board>` journal:"
 
-#: ../../settings_kb/interface/menu.rst:366
+#: ../../settings_kb/interface/menu.rst:272
 msgid ""
 "Обратите внимание, что к выбору доступны те канбан-доски, в настройках "
 "которой указан журнал."
@@ -739,81 +585,92 @@ msgstr ""
 msgid "Дашборд"
 msgstr "Dashboard"
 
-#: ../../settings_kb/interface/menu.rst:370
+#: ../../settings_kb/interface/menu.rst:276
 msgid ""
-"Добавление нового пустого :ref:`дашборда <dashboard>`. Укажите его имя, "
-"выберите иконку и сохраните."
-msgstr ""
-"Adding a new empty :ref:`dashboard<dashboard>`. Specify its name, select "
-"an icon, and save."
+"Добавление нового пустого :ref:`дашборда <dashboard>`. Укажите его имя и "
+"сохраните. Выбор иконки доступен на тех уровнях, где он разрешён "
+"редактором."
+msgstr "Add a new empty :ref:`dashboard <dashboard>`, enter its name and save. Icon selection is available at levels allowed by the editor."
 
-#: ../../settings_kb/interface/menu.rst:376
+#: ../../settings_kb/interface/menu.rst:282
 msgid "Далее перейдите из меню в созданный дашборд и нажмите **«Настроить»**."
 msgstr ""
 "Then go from the menu to the created dashboard and click "
 "**\"Configure\"**."
 
-#: ../../settings_kb/interface/menu.rst:382
+#: ../../settings_kb/interface/menu.rst:288
 msgid ""
-"Как настроить см. :ref:`настройки дашборда <dashboard_settings>`. Для "
-"добавления к дашборду доступны следующие виджеты:"
-msgstr ""
-"For configuration, see :ref:`dashboard settings<dashboard_settings>`. The"
-" following widgets are available for adding to the dashboard:"
+"Как настроить см. :ref:`настройки дашборда <dashboard_settings>`. Набор "
+"виджетов определяется видом ``custom``, реестром компонентов и "
+"подключёнными возможностями. Примеры виджетов:"
+msgstr "See :ref:`dashboard settings <dashboard_settings>`. Widgets depend on ``custom`` kind, the component registry and enabled capabilities. Examples:"
 
-#: ../../settings_kb/interface/menu.rst:384
+#: ../../settings_kb/interface/menu.rst:290
 msgid ":ref:`Новости <widget_news>`;"
 msgstr ":ref:`News<widget_news>`;"
 
-#: ../../settings_kb/interface/menu.rst:385
+#: ../../settings_kb/interface/menu.rst:291
 msgid ":ref:`Журнал <widget_journal>`;"
 msgstr ":ref:`Journal<widget_journal>`;"
 
-#: ../../settings_kb/interface/menu.rst:386
+#: ../../settings_kb/interface/menu.rst:292
 msgid ":ref:`HTML <widget_html>`;"
 msgstr ":ref:`HTML<widget_html>`;"
 
-#: ../../settings_kb/interface/menu.rst:387
+#: ../../settings_kb/interface/menu.rst:293
 msgid ":ref:`Веб-страница <widget_web_page>`;"
 msgstr ":ref:`Web Page<widget_web_page>`;"
 
-#: ../../settings_kb/interface/menu.rst:388
+#: ../../settings_kb/interface/menu.rst:294
 msgid ":ref:`Дни рождения <widget_birthdays>`;"
 msgstr ":ref:`Birthdays<widget_birthdays>`;"
 
-#: ../../settings_kb/interface/menu.rst:389
+#: ../../settings_kb/interface/menu.rst:295
 msgid ":ref:`Доступные пространства <widget_available_ws>`;"
 msgstr ":ref:`Available Workspaces<widget_available_ws>`;"
 
-#: ../../settings_kb/interface/menu.rst:390
+#: ../../settings_kb/interface/menu.rst:296
 msgid ":ref:`Активности <widget_activities>`;"
 msgstr ":ref:`Activities<widget_activities>`;"
 
-#: ../../settings_kb/interface/menu.rst:391
+#: ../../settings_kb/interface/menu.rst:297
 msgid ":ref:`Графическая статистика <widget_graphic_statistics>`;"
 msgstr ":ref:`Graphic Statistics<widget_graphic_statistics>`;"
 
-#: ../../settings_kb/interface/menu.rst:392
+#: ../../settings_kb/interface/menu.rst:298
 msgid ":ref:`Иерархия <widget_knowledge_base>`."
 msgstr ":ref:`Hierarchy<widget_knowledge_base>`."
+
+#: ../../settings_kb/interface/menu.rst:300
+msgid ""
+"Это не закрытый список. Например, при наличии соответствующих "
+"возможностей также доступны диаграмма Ганта, приветственный виджет и "
+"отчёты. Для ряда виджетов проверяются подключённый плагин, включение "
+"рабочих пространств или интеграция с Alfresco. Поэтому состав доступных "
+"виджетов различается между стендами; см. :ref:`Виджеты <widgets>`."
+msgstr "This is not exhaustive. Gantt charts, welcome widgets and reports may also be available. Some widgets require a plugin, enabled workspaces or Alfresco integration. Availability varies between environments; see :ref:`Widgets <widgets>`."
 
 #: ../../settings_kb/interface/menu.rst
 msgid "База знаний"
 msgstr "Knowledge Base"
 
-#: ../../settings_kb/interface/menu.rst:396
+#: ../../settings_kb/interface/menu.rst:304
 msgid ""
-"Добавление новой пустой :ref:`базы знаний <wiki_base>`. Укажите его имя, "
-"выберите иконку и сохраните."
-msgstr ""
-"Adding a new empty :ref:`knowledge base<wiki_base>`. Specify its name, "
-"select an icon, and save."
+"Добавление новой пустой :ref:`базы знаний <wiki_base>`. Укажите её имя и "
+"сохраните. Выбор иконки зависит от уровня пункта."
+msgstr "Add a new empty :ref:`knowledge base <wiki_base>`, enter its name and save. Icon selection depends on item level."
+
+#: ../../settings_kb/interface/menu.rst:306
+msgid ""
+"При включённых рабочих пространствах в персональном пространстве (``ws`` "
+"содержит ``user$``) редактор не предлагает тип «База знаний»."
+msgstr "With workspaces enabled, the editor does not offer \"Knowledge base\" in personal workspaces (``ws`` contains ``user$``)."
 
 #: ../../settings_kb/interface/menu.rst
 msgid "DocLib"
 msgstr "DocLib"
 
-#: ../../settings_kb/interface/menu.rst:404
+#: ../../settings_kb/interface/menu.rst:314
 msgid ""
 "Добавление пунктов осуществляется выбором элементов из журнала, в котором"
 " представлены созданные :ref:`библиотеки документов <document_library>`:"
@@ -825,15 +682,11 @@ msgstr ""
 msgid "Список"
 msgstr "List"
 
-#: ../../settings_kb/interface/menu.rst:412
+#: ../../settings_kb/interface/menu.rst:322
 msgid "Добавление пунктов осуществляется выбором элементов из журнала:"
 msgstr "Adding items is done by selecting elements from the journal:"
 
-#: ../../settings_kb/interface/menu.rst
-msgid "Произвольный пункт меню"
-msgstr "Custom Menu Item"
-
-#: ../../settings_kb/interface/menu.rst:424
+#: ../../settings_kb/interface/menu.rst:334
 msgid ""
 "**Ссылка** - В зависимости от значения на выходе формируется "
 "соответствующий путь перехода. Под описанием поле выводится результат "
@@ -843,7 +696,7 @@ msgstr ""
 "formed. Below the description field, the result of the generated link is "
 "displayed."
 
-#: ../../settings_kb/interface/menu.rst:428
+#: ../../settings_kb/interface/menu.rst:338
 msgid ""
 "Подробнее про `Абсолютные и относительные ссылки "
 "<https://htmlacademy.ru/blog/boost/frontend/links>`_."
@@ -851,52 +704,56 @@ msgstr ""
 "More about `Absolute and Relative Links "
 "<https://htmlacademy.ru/blog/boost/frontend/links>`_."
 
-#: ../../settings_kb/interface/menu.rst:430
+#: ../../settings_kb/interface/menu.rst:340
 msgid ""
-"**Абсолютный URL** - если указан полный путь. Ссылка будет открываться в "
-"новой вкладке браузера."
-msgstr ""
-"**Absolute URL** - if a full path is specified. The link will open in a "
-"new browser tab."
+"**HTTP/HTTPS URL** обычно открывается в новой вкладке браузера. При "
+"включённых рабочих пространствах наличие ``ws=`` в ссылке переводит её "
+"открытие в текущую вкладку браузера."
+msgstr "An **HTTP/HTTPS URL** normally opens in a new browser tab. With workspaces enabled, ``ws=`` in the link opens it in the current browser tab."
 
-#: ../../settings_kb/interface/menu.rst:436
+#: ../../settings_kb/interface/menu.rst:346
 msgid "**Относительный URL. Варианты формирования:**"
 msgstr "**Relative URL. Formation options:**"
 
-#: ../../settings_kb/interface/menu.rst:438
+#: ../../settings_kb/interface/menu.rst:348
 #, python-brace-format
 msgid ""
-"Атрибут из рабочего пространства может быть добавлен в виде "
-"``%/journal?journalId=${attrName}``"
-msgstr ""
-"A workspace attribute can be added in the form "
-"``%/journal?journalId=${attrName}``"
+"Атрибут текущего рабочего пространства подставляется через "
+"``${attrName}``, например ``/v2/journals?journalId=${attrName}``, если "
+"атрибут содержит идентификатор журнала. Специальный префикс ``%`` не "
+"требуется и не обрабатывается. Значение подставляется в строку без "
+"автоматического URL-кодирования."
+msgstr "Substitute current workspace attributes using ``${attrName}``, for example ``/v2/journals?journalId=${attrName}`` if the attribute contains a journal ID. No ``%`` prefix is required or processed. Values are inserted without automatic URL encoding."
 
-#: ../../settings_kb/interface/menu.rst:440
+#: ../../settings_kb/interface/menu.rst:350
 msgid ""
-"Если значение начинается с “ / “ , то итоговая ссылка формируется как "
-"**хост** + **значение**."
-msgstr ""
-"If the value starts with “ / ”, then the final link is formed as **host**"
-" + **value**."
+"Значение с начальным ``/`` задаёт путь от корня текущего хоста. При "
+"включённых рабочих пространствах для внутренней ссылки автоматически "
+"добавляется параметр ``ws``, если его ещё нет и ссылка не относится к "
+"исключениям перенаправления."
+msgstr "A leading ``/`` denotes a path from the current host root. With workspaces enabled, internal links automatically receive ``ws`` if absent and not excluded from redirect handling."
 
-#: ../../settings_kb/interface/menu.rst:446
+#: ../../settings_kb/interface/menu.rst:356
 msgid ""
-"Если значение **не** начинается с “ / “, то итоговая ссылка формируется "
-"как **текущая ссылка в адресной строке** + **значение**."
-msgstr ""
-"If the value does **not** start with “ / ”, then the final link is formed"
-" as **the current link in the address bar** + **the value**."
+"Для значения без начального ``/`` поведение зависит от рабочих "
+"пространств. При включённом механизме клиент разрешает ссылку "
+"относительно хоста и добавляет ``ws``. Без этой обработки действуют "
+"обычные правила относительных ссылок браузера; это не простое добавление "
+"строки к текущему URL."
+msgstr "Without a leading ``/``, behavior depends on workspaces. When enabled, the client resolves the link relative to the host and adds ``ws``. Otherwise, ordinary browser relative-link rules apply; this is not simple string concatenation with the current URL."
 
-#: ../../settings_kb/interface/menu.rst:450
-msgid "Может привести к не ожидаемому результату."
-msgstr "May lead to unexpected results."
+#: ../../settings_kb/interface/menu.rst:360
+msgid ""
+"Чтобы путь не зависел от текущей страницы, используйте внутренний маршрут"
+" с начальным ``/``, например ``/v2/journals?journalId=contracts``."
+msgstr "For a path independent of the current page, use an internal route starting with ``/``, such as ``/v2/journals?journalId=contracts``."
 
 #: ../../settings_kb/interface/menu.rst
+#: ../../settings_kb/interface/menu.rst:413
 msgid "Ссылка на создание кейса"
 msgstr "Link to Create Case"
 
-#: ../../settings_kb/interface/menu.rst:458
+#: ../../settings_kb/interface/menu.rst:368
 msgid ""
 "**Ссылка на создание кейса** в настройке выбирается тип данных, но в "
 "самом меню используются сами варианты создания записей этого типа данных."
@@ -912,7 +769,7 @@ msgstr ""
 msgid "Запустить бизнес-процесс"
 msgstr "Start Business Process"
 
-#: ../../settings_kb/interface/menu.rst:470
+#: ../../settings_kb/interface/menu.rst:380
 msgid ""
 "**Запустить бизнес-процесс** в настройке выбирается процесс BPMN. В самом"
 " меню используется форма запуска бизнес-процесса, определенная при его "
@@ -922,81 +779,104 @@ msgstr ""
 "settings. The menu itself uses the business process start form defined in"
 " its settings."
 
-#: ../../settings_kb/interface/menu.rst:473
+#: ../../settings_kb/interface/menu.rst:383
 msgid "Секция \"Группы и пользователи\""
 msgstr "Section \"Groups and Users\""
 
-#: ../../settings_kb/interface/menu.rst:475
+#: ../../settings_kb/interface/menu.rst:385
 msgid "Выбор групп и пользователей, которым будет назначено редактируемое меню:"
 msgstr "Selection of groups and users to whom the edited menu will be assigned:"
 
-#: ../../settings_kb/interface/menu.rst:477
+#: ../../settings_kb/interface/menu.rst:387
 msgid ""
-"**Пользователь** имеет наивысший приоритет. Так же стоит учесть "
-"зависимости других настроек."
-msgstr ""
-"**User** has the highest priority. Dependencies of other settings should "
-"also be considered."
+"Назначения сохраняются в ``authorities``. Если список пуст, клиент "
+"записывает ``GROUP_EVERYONE`` — назначение всем пользователям."
+msgstr "Assignments are saved in ``authorities``. An empty list is saved as ``GROUP_EVERYONE``, assigning all users."
 
-#: ../../settings_kb/interface/menu.rst:478
+#: ../../settings_kb/interface/menu.rst:388
 msgid ""
-"Если на пользователя/группу назначено несколько конфигураций, это может "
-"привести к неопределенному результату и появится не то меню, что "
-"ожидалось."
-msgstr ""
-"If multiple configurations are assigned to a user/group, this may lead to"
-" an undefined result and the wrong menu may appear."
+"При нескольких подходящих конфигурациях выбор выполняет сервер "
+"``uiserv/rmenu``. Чтобы избежать неоднозначной настройки, используйте "
+"отдельные назначения и согласованный список приоритетов групп."
+msgstr "For multiple matching configurations, ``uiserv/rmenu`` selects the menu. Use distinct assignments and a coordinated group priority list to avoid ambiguity."
 
-#: ../../settings_kb/interface/menu.rst:479
+#: ../../settings_kb/interface/menu.rst:389
 msgid ""
-"Установленные группы попадают в *приоритет групп*, по умолчанию в конец "
-"списка."
-msgstr ""
-"The assigned groups are added to the *group priorities*, at the end of "
-"the list by default."
+"Группы, указанные в конфигурациях, добавляются в список настройки "
+"приоритетов. Порядок можно изменить вручную."
+msgstr "Groups referenced in configurations are added to priority settings. Reorder them manually."
 
-#: ../../settings_kb/interface/menu.rst:484
+#: ../../settings_kb/interface/menu.rst:391
+msgid ""
+"В персональном рабочем пространстве (``ws`` содержит ``user$``) секция "
+"«Группы и пользователи» не отображается."
+msgstr "The \"Groups and users\" section is hidden in personal workspaces (``ws`` contains ``user$``)."
+
+#: ../../settings_kb/interface/menu.rst:396
 msgid "Вкладка \"Меню \"Создать\""
 msgstr "Tab \"Create Menu\""
 
-#: ../../settings_kb/interface/menu.rst:486
-msgid "**Возможные типы пунктов и их доступность на каждом уровне:**"
-msgstr "**Possible item types and their availability at each level:**"
+#: ../../settings_kb/interface/menu.rst:398
+msgid "**Возможные типы пунктов при ручном добавлении:**"
+msgstr "**Item types available for manual addition:**"
 
-#: ../../settings_kb/interface/menu.rst:496
-msgid "4"
-msgstr "4"
+#: ../../settings_kb/interface/menu.rst:406
+msgid "Ограничение"
+msgstr "Restriction"
 
-#: ../../settings_kb/interface/menu.rst:500
-#: ../../settings_kb/interface/menu.rst:506
-#: ../../settings_kb/interface/menu.rst:516
-#: ../../settings_kb/interface/menu.rst:521
-msgid "``А``"
-msgstr "``A``"
+#: ../../settings_kb/interface/menu.rst:408
+msgid "Только верхний уровень."
+msgstr "Top level only."
 
-#: ../../settings_kb/interface/menu.rst:502
-#: ../../settings_kb/interface/menu.rst:531
-msgid "**Варианты создания из раздела**"
-msgstr "**Creation Options from Section**"
+#: ../../settings_kb/interface/menu.rst:409
+msgid "Варианты создания из раздела (CREATE_IN_SECTION)"
+msgstr "Creation variants from a section (CREATE_IN_SECTION)"
 
-#: ../../settings_kb/interface/menu.rst:523
-msgid "**Доступность дополнительных характеристик:**"
-msgstr "**Availability of additional characteristics:**"
+#: ../../settings_kb/interface/menu.rst:410
+msgid "Доступны на верхнем уровне и внутри раздела."
+msgstr "Available at top level and inside a section."
 
-#: ../../settings_kb/interface/menu.rst:525
-msgid "Не доступны только Счетчик и Иконка"
-msgstr "Only Counter and Icon are not available"
+#: ../../settings_kb/interface/menu.rst:412
+#: ../../settings_kb/interface/menu.rst:416
+msgid "Доступен на верхнем уровне и внутри раздела."
+msgstr "Available at top level and inside a section."
 
-#: ../../settings_kb/interface/menu.rst:527
-#: ../../settings_kb/interface/menu.rst:579
+#: ../../settings_kb/interface/menu.rst:414
+msgid "Доступна на верхнем уровне и внутри раздела."
+msgstr "Available at top level and inside a section."
+
+#: ../../settings_kb/interface/menu.rst:415
+msgid "Запуск бизнес-процесса"
+msgstr "Start business process"
+
+#: ../../settings_kb/interface/menu.rst:418
+msgid ""
+"Дочерние пункты вручную добавляются в раздел; новый вложенный раздел "
+"создать нельзя. Вложенность, полученная при раскрытии вариантов создания,"
+" формируется отдельно и не задаётся фиксированной таблицей из четырёх "
+"уровней."
+msgstr "Children are added manually inside sections; new nested sections cannot be created. Nesting from expanded creation variants is generated separately and is not defined by a fixed four-level table."
+
+#: ../../settings_kb/interface/menu.rst:420
+msgid ""
+"В редакторе меню «Создать» не предлагается настройка иконок. Применимые "
+"поля зависят от типа пункта."
+msgstr "The \"Create\" menu editor offers no icon settings. Applicable fields depend on item type."
+
+#: ../../settings_kb/interface/menu.rst:422
+#: ../../settings_kb/interface/menu.rst:485
 msgid "**Подробнее о некоторых типах:**"
 msgstr "**More about some types:**"
 
-#: ../../settings_kb/interface/menu.rst:529
+#: ../../settings_kb/interface/menu.rst:424
 msgid "Повторяющиеся типы из первой вкладки аналогичны."
 msgstr "Repeating types from the first tab are similar."
 
-#: ../../settings_kb/interface/menu.rst:533
+#: ../../settings_kb/interface/menu.rst:426
+msgid "**Варианты создания из раздела**"
+msgstr "**Creation Options from Section**"
+
+#: ../../settings_kb/interface/menu.rst:428
 msgid ""
 "Выборка составляется на основе конфигурации Левого меню, содержит все "
 "пункты с типом **Раздел**. Представлены плоским списком, включая "
@@ -1006,13 +886,13 @@ msgstr ""
 "contains all items of type **Section**. Presented as a flat list, "
 "including child items."
 
-#: ../../settings_kb/interface/menu.rst:539
+#: ../../settings_kb/interface/menu.rst:434
 msgid "После создания пункта в настройках отображается только имя раздела."
 msgstr ""
 "After creating an item, only the section name is displayed in the "
 "settings."
 
-#: ../../settings_kb/interface/menu.rst:545
+#: ../../settings_kb/interface/menu.rst:440
 msgid ""
 "В самом **\"Меню Создать\"** после применения настроек, пункт "
 "превращается в пункты - варианты создания (аналогичные типу **Ссылка на "
@@ -1022,7 +902,7 @@ msgstr ""
 "turns into items - creation options (similar to the **Link to Create "
 "Case** type)."
 
-#: ../../settings_kb/interface/menu.rst:549
+#: ../../settings_kb/interface/menu.rst:444
 msgid ""
 "Т.е. данный тип заменяет ручное добавление пунктов с типом Ссылка на "
 "создание кейса, если необходимы все варианты из раздела."
@@ -1030,160 +910,175 @@ msgstr ""
 "I.e., this type replaces the manual addition of items of type Link to "
 "Create Case if all options from the section are needed."
 
-#: ../../settings_kb/interface/menu.rst:551
-msgid "Кнопка **Создать** по умолчанию доступна для всех:"
-msgstr "The **Create** button is available to everyone by default."
+#: ../../settings_kb/interface/menu.rst:446
+msgid ""
+"Для кнопки **Создать** можно оставить общий доступ без отдельного списка "
+"назначений:"
+msgstr "The **Create** button can retain general access without separate assignments:"
 
-#: ../../settings_kb/interface/menu.rst:557
-msgid "Можно сделать доступной только выбранных пользователей/групп:"
-msgstr "It can be made available only to selected users/groups."
+#: ../../settings_kb/interface/menu.rst:452
+msgid ""
+"Либо задать выбранных пользователей и группы в "
+"``subMenu.create.allowedFor``. Разрешённое содержимое меню возвращается "
+"сервером:"
+msgstr "Or specify users and groups in ``subMenu.create.allowedFor``. The server returns permitted menu contents:"
 
-#: ../../settings_kb/interface/menu.rst:567
+#: ../../settings_kb/interface/menu.rst:462
 msgid "**Возможные типы пунктов:**"
 msgstr "**Possible item types:**"
 
-#: ../../settings_kb/interface/menu.rst:573
+#: ../../settings_kb/interface/menu.rst:468
 msgid "Для настройки доступны следующие пункты:"
 msgstr "The following items are available for configuration:"
 
-#: ../../settings_kb/interface/menu.rst:581
+#: ../../settings_kb/interface/menu.rst:470
+msgid "**Мой профиль** (``USER-PROFILE``);"
+msgstr "**My profile** (``USER-PROFILE``);"
+
+#: ../../settings_kb/interface/menu.rst:471
+msgid "**Сменить статус** (``USER-STATUS``);"
+msgstr "**Change status** (``USER-STATUS``);"
+
+#: ../../settings_kb/interface/menu.rst:472
+msgid "**Изменить пароль** (``USER-CHANGE-PASSWORD``);"
+msgstr "**Change password** (``USER-CHANGE-PASSWORD``);"
+
+#: ../../settings_kb/interface/menu.rst:473
+msgid "**Обратная связь** (``USER-FEEDBACK``);"
+msgstr "**Feedback** (``USER-FEEDBACK``);"
+
+#: ../../settings_kb/interface/menu.rst:474
+msgid "**Сообщить о проблеме** (``USER-SEND-PROBLEM-REPORT``);"
+msgstr "**Report a problem** (``USER-SEND-PROBLEM-REPORT``);"
+
+#: ../../settings_kb/interface/menu.rst:475
+msgid "**О платформе** (``USER-ABOUT-PLATFORM``);"
+msgstr "**About the platform** (``USER-ABOUT-PLATFORM``);"
+
+#: ../../settings_kb/interface/menu.rst:476
+msgid "**Выйти** (``USER-LOGOUT``);"
+msgstr "**Log out** (``USER-LOGOUT``);"
+
+#: ../../settings_kb/interface/menu.rst:477
+msgid "**Произвольный пункт меню** (``ARBITRARY``)."
+msgstr "**Custom menu item** (``ARBITRARY``)."
+
+#: ../../settings_kb/interface/menu.rst:479
+msgid ""
+"В списке по умолчанию есть пункт «О платформе», а смена пароля исключена."
+" В текущем ecos-ui обработчик ``change-user-password``, вызываемый "
+"пунктом смены пароля, не реализует методы выполнения: добавление пункта в"
+" редакторе не обеспечивает рабочую смену пароля."
+msgstr "The default list includes \"About the platform\" and excludes password change. In current ecos-ui, the ``change-user-password`` handler implements no execution methods: adding the menu item does not provide working password changes."
+
+#: ../../settings_kb/interface/menu.rst:487
 msgid "Тип **\"Произвольный пункт меню\"** аналогичен первой вкладке."
 msgstr "The **\"Custom Menu Item\"** type is similar to the first tab."
 
-#: ../../settings_kb/interface/menu.rst:587
+#: ../../settings_kb/interface/menu.rst:493
 msgid "Данные настройки относятся ко всей системе."
 msgstr "These settings apply to the entire system."
 
-#: ../../settings_kb/interface/menu.rst:590
+#: ../../settings_kb/interface/menu.rst:496
 msgid "Секция \"Приоритеты групп\""
 msgstr "Section \"Group Priorities\""
 
-#: ../../settings_kb/interface/menu.rst:592
+#: ../../settings_kb/interface/menu.rst:498
 msgid ""
-"Список групп соответствует значениям групп, указанных во всех "
-"конфигурациях меню."
-msgstr ""
-"The list of groups corresponds to the group values specified in all menu "
-"configurations."
+"Список объединяет группы из сохранённой настройки приоритетов и "
+"назначений конфигураций меню. ``GROUP_EVERYONE`` и персональные "
+"пользователи в список групп не включаются."
+msgstr "The list combines groups from saved priorities and menu configuration assignments. ``GROUP_EVERYONE`` and individual users are excluded from the group list."
 
-#: ../../settings_kb/interface/menu.rst:593
+#: ../../settings_kb/interface/menu.rst:499
 msgid ""
-"Приоритет группы обратно пропорционален уровню иерархии группы в "
-"Оргструктуре или уровню функциональной иерархии. Чем специфичнее и уже "
-"группа пользователей, тем выше у нее приоритет."
-msgstr ""
-"The priority of a group is inversely proportional to its level in the "
-"organizational hierarchy or functional hierarchy. The more specific and "
-"narrower the user group, the higher its priority."
+"Приоритет задаётся вручную перетаскиванием и сохраняется в ``menu-group-"
+"priority``. Клиент не вычисляет его автоматически по уровню группы в "
+"оргструктуре."
+msgstr "Priority is set manually by dragging and saved in ``menu-group-priority``. The client does not automatically calculate it from organization group hierarchy."
 
-#: ../../settings_kb/interface/menu.rst:594
-msgid "Группы администраторов, как правило, размещаются на первом месте."
-msgstr "Administrator groups are typically placed first."
-
-#: ../../settings_kb/interface/menu.rst:595
+#: ../../settings_kb/interface/menu.rst:500
 msgid ""
-"Пользователь имеет наивысший приоритет (пользователи не отображаются в "
-"приоритетах)."
-msgstr "User has the highest priority (users are not displayed in the priorities)."
+"Более специфичные группы и группы администраторов рекомендуется "
+"располагать в соответствии с нужным порядком выбора. Применение этого "
+"порядка и соотношение с персональными назначениями определяет сервер."
+msgstr "Arrange specific and administrator groups according to the desired selection order. The server determines how this order applies relative to personal assignments."
 
 #: ../../settings_kb/interface/menu.rst
 msgid "Как это работает"
 msgstr "How It Works"
 
-#: ../../settings_kb/interface/menu.rst:600
+#: ../../settings_kb/interface/menu.rst:505
 msgid ""
-"В конфигурации меню указываются группы или пользователи для которых "
-"настраивается меню. Приоритет групп - настройка глобальная, исходя из ее "
-"настройки и указанных участников, возвращается соответствующее для "
-"пользователя меню."
-msgstr ""
-"Menu configurations specify groups or users for whom the menu is "
-"configured. Group priorities is a global setting; based on its "
-"configuration and the specified members, the appropriate menu for the "
-"user is returned."
+"В конфигурациях меню указываются назначения. Глобальная настройка "
+"приоритетов передаёт серверу порядок групп. Пример ниже иллюстрирует "
+"организацию назначений; конкретный результат подбора определяется "
+"серверными правилами."
+msgstr "Menu configurations specify assignments. Global priority settings pass group order to the server. The example illustrates assignments; server rules determine actual selection."
 
-#: ../../settings_kb/interface/menu.rst:606
+#: ../../settings_kb/interface/menu.rst:511
 msgid "**АП** - авторизованный пользователь"
 msgstr "**AU** - Authorized User"
 
-#: ../../settings_kb/interface/menu.rst:608
+#: ../../settings_kb/interface/menu.rst:513
 msgid ""
-"**АП** - tam42 и он указан в одной из конфигураций. Указание пользователя"
-" - наивысший приоритет => возвращается конфигурация №10. Пользователь не "
-"должен указываться в нескольких."
-msgstr ""
-"**AU** - tam42 and he is specified in one of the configurations. "
-"Specifying a user has the highest priority => configuration No. 10 is "
-"returned. A user should not be specified in multiple configurations."
+"Для персонального меню tam42 назначьте его пользователя конфигурации №10."
+" Не создавайте несколько конкурирующих персональных назначений без "
+"необходимости."
+msgstr "For tam42's personal menu, assign that user to configuration No. 10. Avoid competing personal assignments unless necessary."
 
-#: ../../settings_kb/interface/menu.rst:610
+#: ../../settings_kb/interface/menu.rst:515
 msgid ""
-"**АП** состоит в группе администраторов (и не указан на прямую в "
-"конфигурации). Настраиваем конфигурацию с указанием этой группы. В "
-"настройке приоритетов эта группа на первом месте. Результат - слева "
-"отображается меню №3"
-msgstr ""
-"**AU** is a member of the administrators group (and is not directly "
-"specified in the configuration). We configure a menu specifying this "
-"group. In the priority settings, this group is in first place. Result - "
-"menu No. 3 is displayed on the left."
+"Для меню администраторов назначьте соответствующую группу конфигурации №3"
+" и задайте нужное положение группы в приоритетах."
+msgstr "For the administrator menu, assign the relevant group to configuration No. 3 and position it appropriately in priorities."
 
-#: ../../settings_kb/interface/menu.rst:612
+#: ../../settings_kb/interface/menu.rst:517
 msgid ""
-"**АП** - главный клерк, состоит в 2х группах: клерки и главные клерки. "
-"Есть две конфигурации №2 и №6. В приоритетах главные клерки на 2 месте, "
-"другие на 3. Результат - слева отображается меню №6. Для Не главных "
-"клерков №2."
-msgstr ""
-"**AU** - chief clerk, is a member of 2 groups: clerks and chief clerks. "
-"There are two configurations: No. 2 and No. 6. In the priorities, chief "
-"clerks are in 2nd place, others in 3rd. Result - menu No. 6 is displayed "
-"on the left. For non-chief clerks, menu No. 2."
+"Если пользователь входит в группы «Клерки» и «Главные клерки» с разными "
+"меню, разместите более специфичную группу в соответствии с желаемым "
+"приоритетом и проверьте итоговое меню под этим пользователем."
+msgstr "If a user belongs to \"Clerks\" and \"Head clerks\" with different menus, position the more specific group according to desired priority and check the resulting menu as that user."
 
-#: ../../settings_kb/interface/menu.rst:614
+#: ../../settings_kb/interface/menu.rst:519
 msgid ""
-"Если для **АП** нет ни одного подходящего меню - загружается базовое "
-"(default)"
-msgstr ""
-"If there is no suitable menu for the **AU**, the base menu (default) is "
-"loaded."
+"Конфигурацию по умолчанию при отсутствии подходящих назначений выбирает "
+"сервер с учётом рабочего пространства и версии меню."
+msgstr "Without matching assignments, the server selects default configuration using workspace and menu version."
 
-#: ../../settings_kb/interface/menu.rst:617
+#: ../../settings_kb/interface/menu.rst:522
 msgid "Редактор иконок"
 msgstr "Icon Editor"
 
-#: ../../settings_kb/interface/menu.rst:623
+#: ../../settings_kb/interface/menu.rst:528
 msgid ""
 "На выбор пользователю предоставлен набор системных иконок. Если в наборе "
-"нет подходящей, есть возможность загрузить собственную, которая появится "
-"в блоке *Пользовательские*. Наилучший вариант формата иконки  - **svg**."
-msgstr ""
-"A set of system icons is provided for the user to choose from. If a "
-"suitable one is not in the set, there is an option to upload a custom "
-"icon, which will appear in the *Custom* block. The best icon format is "
-"**svg**."
+"нет подходящей, можно загрузить собственную, которая появится в блоке "
+"*Пользовательские*. Загрузчик принимает изображения (``image/*``); SVG "
+"рекомендуется для масштабируемых иконок."
+msgstr "System icons are available. If none fits, upload a custom icon under *Custom*. The uploader accepts images (``image/*``); SVG is recommended for scalable icons."
 
-#: ../../settings_kb/interface/menu.rst:626
+#: ../../settings_kb/interface/menu.rst:531
 msgid "Иконка по умолчанию:"
 msgstr "Default icon:"
 
-#: ../../settings_kb/interface/menu.rst:633
+#: ../../settings_kb/interface/menu.rst:538
 msgid "Результат настроек"
 msgstr "Settings Result"
 
-#: ../../settings_kb/interface/menu.rst:636
+#: ../../settings_kb/interface/menu.rst:541
 msgid "Меню Левое"
 msgstr "Left Menu"
 
-#: ../../settings_kb/interface/menu.rst:654
+#: ../../settings_kb/interface/menu.rst:559
 msgid "Меню Создать"
 msgstr "Create Menu"
 
-#: ../../settings_kb/interface/menu.rst:672
+#: ../../settings_kb/interface/menu.rst:577
 msgid "Пользовательское меню"
 msgstr "User Menu"
 
-#: ../../settings_kb/interface/menu.rst:691
+#: ../../settings_kb/interface/menu.rst:596
 msgid "Решение возможных проблем"
 msgstr "Troubleshooting"
 
@@ -1191,11 +1086,11 @@ msgstr "Troubleshooting"
 msgid "Несколько подсвеченных элементов меню"
 msgstr "Multiple Highlighted Menu Items"
 
-#: ../../settings_kb/interface/menu.rst:696
+#: ../../settings_kb/interface/menu.rst:601
 msgid "В меню должен быть подсвечен только активный (выбранный) журнал."
 msgstr "Only the active (selected) journal should be highlighted in the menu."
 
-#: ../../settings_kb/interface/menu.rst:698
+#: ../../settings_kb/interface/menu.rst:603
 msgid ""
 "Но может быть ситуация, что при выборе одного элемента подсвечиваются "
 "несколько элементов меню сразу:"
@@ -1203,7 +1098,7 @@ msgstr ""
 "But there can be a situation where selecting one item highlights several "
 "menu items at once:"
 
-#: ../../settings_kb/interface/menu.rst:704
+#: ../../settings_kb/interface/menu.rst:609
 msgid ""
 "Такое происходит, если при конфигурации меню использовалось копирование "
 "ui-элементов без изменения их **id**."
@@ -1211,7 +1106,7 @@ msgstr ""
 "This happens if UI elements were copied during menu configuration without"
 " changing their **id**."
 
-#: ../../settings_kb/interface/menu.rst:710
+#: ../../settings_kb/interface/menu.rst:615
 msgid ""
 "Логика у UI следующая - подсвечивается синим открытый в данный момент "
 "элемент. И если id задублированы, то все элементы с данным id будут "
@@ -1221,7 +1116,7 @@ msgstr ""
 " blue. And if the ids are duplicated, then all elements with that id will"
 " be highlighted."
 
-#: ../../settings_kb/interface/menu.rst:712
+#: ../../settings_kb/interface/menu.rst:617
 msgid ""
 "Поэтому необходимо следить за уникальностью id элементов, и если элементы"
 " копируются, то для получения уникальных id использовать онлайн "
@@ -1267,3 +1162,432 @@ msgstr ""
 #~ msgid "Действия > :ref:`Типы действий <ui_actions>`"
 #~ msgstr "Actions> :ref:`Action Types<ui_actions>`"
 
+#~ msgid ""
+#~ "Логика выбора зависит от рабочего "
+#~ "пространства (workspace, :ref:`релиз 2025.1.2 "
+#~ "<citeck_releases>`):"
+#~ msgstr ""
+#~ "The selection logic depends on the "
+#~ "workspace (workspace, :ref:`release "
+#~ "2025.1.2<citeck_releases>`):"
+
+#~ msgid "Workspace default или отсутствует"
+#~ msgstr "Workspace is default or absent"
+
+#~ msgid ""
+#~ "Рабочие области выключены — ищем только"
+#~ " конфигурации без workspace, среди всех "
+#~ "конфигураций меню кроме дефолтных:"
+#~ msgstr ""
+#~ "Workspaces are disabled — we search "
+#~ "only for configurations without a "
+#~ "workspace, among all menu configurations "
+#~ "except the default ones:"
+
+#~ msgid ""
+#~ "Ищем **персональную конфигурацию** для "
+#~ "пользователя (в authorities указан конкретный"
+#~ " пользователь). Если нашлось несколько "
+#~ "вариантов, то возвращаем любую."
+#~ msgstr ""
+#~ "Search for a **personal configuration** "
+#~ "for the user (a specific user is"
+#~ " specified in authorities). If several "
+#~ "options are found, return any one."
+
+#~ msgid ""
+#~ "Берем **группы пользователя**, сортируем их"
+#~ " в соответствии с конфигурацией **menu-"
+#~ "group-priority** и ищем первую "
+#~ "подходящую конфигурацию. Если для одной "
+#~ "группы нашлось несколько, то берем "
+#~ "любую."
+#~ msgstr ""
+#~ "Take the **user's groups**, sort them"
+#~ " according to the **menu-group-"
+#~ "priority** configuration, and search for "
+#~ "the first suitable configuration. If "
+#~ "several are found for one group, "
+#~ "take any one."
+
+#~ msgid "Если п.1 и п.2 не дали результата, то возвращаем **default-menu-v1**."
+#~ msgstr "If items 1 and 2 yield no result, return **default-menu-v1**."
+
+#~ msgid "Workspace есть и не default"
+#~ msgstr "Workspace exists and is not default"
+
+#~ msgid "Ищем среди всех конфигураций меню кроме дефолтных:"
+#~ msgstr "Search among all menu configurations except the default ones:"
+
+#~ msgid ""
+#~ "Ищем **персональную конфигурацию** для "
+#~ "пользователя в текущем workspace (в "
+#~ "authorities указан конкретный пользователь). "
+#~ "Если нашлось несколько вариантов, то "
+#~ "возвращаем любую."
+#~ msgstr ""
+#~ "Search for a **personal configuration** "
+#~ "for the user in the current "
+#~ "workspace (a specific user is specified"
+#~ " in authorities). If several options "
+#~ "are found, return any one."
+
+#~ msgid ""
+#~ "Берем **группы пользователя**, сортируем их"
+#~ " в соответствии с конфигурацией **menu-"
+#~ "group-priority** и ищем первую "
+#~ "подходящую конфигурацию в текущем workspace."
+#~ " Если для одной группы нашлось "
+#~ "несколько, то берем любую."
+#~ msgstr ""
+#~ "Take the **user's groups**, sort them"
+#~ " according to the **menu-group-"
+#~ "priority** configuration, and search for "
+#~ "the first suitable configuration in the"
+#~ " current workspace. If several are "
+#~ "found for one group, take any one."
+
+#~ msgid "Если п.1 и п.2 не дали результата:"
+#~ msgstr "If items 1 and 2 yield no result:"
+
+#~ msgid ""
+#~ "Если **workspace пользовательский**, то "
+#~ "возвращаем **default-personal-ws-menu**."
+#~ msgstr "If the **workspace is personal**, return **default-personal-ws-menu**."
+
+#~ msgid ""
+#~ "Если **workspace не пользовательский**, то "
+#~ "возвращаем **default-ws-menu**."
+#~ msgstr "If the **workspace is not personal**, return **default-ws-menu**."
+
+#~ msgid ""
+#~ "Основной подход к кастомизации меню под"
+#~ " проект/модуль — создание нового меню. "
+#~ "Конфигурации по умолчанию имеют наименьший "
+#~ "приоритет и не применяются, если есть"
+#~ " другие подходящие варианты."
+#~ msgstr ""
+#~ "The main approach to customizing the "
+#~ "menu for a project/module is to "
+#~ "create a new menu. Default "
+#~ "configurations have the lowest priority "
+#~ "and are not applied if other "
+#~ "suitable options exist."
+
+#~ msgid "**default** - конфигурации меню по умолчанию"
+#~ msgstr "**default** - default menu configurations"
+
+#~ msgid "**user** - конфигурация для Группы или пользователей"
+#~ msgstr "**user** - configuration for Groups or Users"
+
+#~ msgid "**Действия**"
+#~ msgstr "**Actions**"
+
+#~ msgid "default"
+#~ msgstr "default"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "**Редактировать**"
+#~ msgstr "**Edit**"
+
+#~ msgid "``-``"
+#~ msgstr "``-``"
+
+#~ msgid "``+``"
+#~ msgstr "``+``"
+
+#~ msgid "**Удалить**"
+#~ msgstr "**Delete**"
+
+#~ msgid "**Копировать**"
+#~ msgstr "**Copy**"
+
+#~ msgid "**Редактировать JSON**"
+#~ msgstr "**Edit JSON**"
+
+#~ msgid "**Скачать**"
+#~ msgstr "**Download**"
+
+#~ msgid ""
+#~ "Настройки на вкладке \"Настройки выбранной "
+#~ "конфигурации (Меню Левое)\" и \"Меню "
+#~ "Создать\" хранятся вместе. То есть на"
+#~ " меню Создать влияют те же правила"
+#~ " что и на Левое меню."
+#~ msgstr ""
+#~ "Settings on the \"Selected Configuration "
+#~ "Settings (Left Menu)\" tab and the "
+#~ "\"Create Menu\" tab are stored together."
+#~ " That is, the Create Menu is "
+#~ "subject to the same rules as the"
+#~ " Left Menu."
+
+#~ msgid "**А** - создаются автоматически системой"
+#~ msgstr "**A** - created automatically by the system"
+
+#~ msgid "Тип/Уровень"
+#~ msgstr "Type/Level"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "**Раздел**"
+#~ msgstr "**Section**"
+
+#~ msgid "**Разделяющий заголовок**"
+#~ msgstr "**Divider Header**"
+
+#~ msgid "**Журнал**"
+#~ msgstr "**Journal**"
+
+#~ msgid "**Канбан-доска**"
+#~ msgstr "**Kanban Board**"
+
+#~ msgid "**Дашборд**"
+#~ msgstr "**Dashboard**"
+
+#~ msgid "**База знаний**"
+#~ msgstr "**Knowledge Base**"
+
+#~ msgid "**DocLib**"
+#~ msgstr "**DocLib**"
+
+#~ msgid "**Список**"
+#~ msgstr "**List**"
+
+#~ msgid "**Ссылка на создание кейса**"
+#~ msgstr "**Link to Create Case**"
+
+#~ msgid "**Запустить бизнес-процесс**"
+#~ msgstr "**Start Business Process**"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "Без названия"
+#~ msgstr "No Title"
+
+#~ msgid "Иконка"
+#~ msgstr "Icon"
+
+#~ msgid "Счетчик"
+#~ msgstr "Counter"
+
+#~ msgid "Счетчик, Иконка"
+#~ msgstr "Counter, Icon"
+
+#~ msgid "**Канбан-доску**"
+#~ msgstr "**Kanban Board**"
+
+#~ msgid ""
+#~ "Как настроить см. :ref:`настройки дашборда "
+#~ "<dashboard_settings>`. Для добавления к "
+#~ "дашборду доступны следующие виджеты:"
+#~ msgstr ""
+#~ "For configuration, see :ref:`dashboard "
+#~ "settings<dashboard_settings>`. The following widgets"
+#~ " are available for adding to the "
+#~ "dashboard:"
+
+#~ msgid ""
+#~ "**Абсолютный URL** - если указан полный"
+#~ " путь. Ссылка будет открываться в "
+#~ "новой вкладке браузера."
+#~ msgstr ""
+#~ "**Absolute URL** - if a full path"
+#~ " is specified. The link will open "
+#~ "in a new browser tab."
+
+#~ msgid ""
+#~ "Атрибут из рабочего пространства может "
+#~ "быть добавлен в виде "
+#~ "``%/journal?journalId=${attrName}``"
+#~ msgstr ""
+#~ "A workspace attribute can be added "
+#~ "in the form ``%/journal?journalId=${attrName}``"
+
+#~ msgid ""
+#~ "Если значение начинается с “ / “"
+#~ " , то итоговая ссылка формируется как"
+#~ " **хост** + **значение**."
+#~ msgstr ""
+#~ "If the value starts with “ / "
+#~ "”, then the final link is formed"
+#~ " as **host** + **value**."
+
+#~ msgid ""
+#~ "Если значение **не** начинается с “ "
+#~ "/ “, то итоговая ссылка формируется "
+#~ "как **текущая ссылка в адресной строке**"
+#~ " + **значение**."
+#~ msgstr ""
+#~ "If the value does **not** start "
+#~ "with “ / ”, then the final "
+#~ "link is formed as **the current "
+#~ "link in the address bar** + **the"
+#~ " value**."
+
+#~ msgid "Может привести к не ожидаемому результату."
+#~ msgstr "May lead to unexpected results."
+
+#~ msgid ""
+#~ "**Пользователь** имеет наивысший приоритет. "
+#~ "Так же стоит учесть зависимости других"
+#~ " настроек."
+#~ msgstr ""
+#~ "**User** has the highest priority. "
+#~ "Dependencies of other settings should "
+#~ "also be considered."
+
+#~ msgid ""
+#~ "Если на пользователя/группу назначено "
+#~ "несколько конфигураций, это может привести "
+#~ "к неопределенному результату и появится "
+#~ "не то меню, что ожидалось."
+#~ msgstr ""
+#~ "If multiple configurations are assigned "
+#~ "to a user/group, this may lead to"
+#~ " an undefined result and the wrong"
+#~ " menu may appear."
+
+#~ msgid ""
+#~ "Установленные группы попадают в *приоритет "
+#~ "групп*, по умолчанию в конец списка."
+#~ msgstr ""
+#~ "The assigned groups are added to "
+#~ "the *group priorities*, at the end "
+#~ "of the list by default."
+
+#~ msgid "**Возможные типы пунктов и их доступность на каждом уровне:**"
+#~ msgstr "**Possible item types and their availability at each level:**"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "``А``"
+#~ msgstr "``A``"
+
+#~ msgid "**Доступность дополнительных характеристик:**"
+#~ msgstr "**Availability of additional characteristics:**"
+
+#~ msgid "Не доступны только Счетчик и Иконка"
+#~ msgstr "Only Counter and Icon are not available"
+
+#~ msgid "Кнопка **Создать** по умолчанию доступна для всех:"
+#~ msgstr "The **Create** button is available to everyone by default."
+
+#~ msgid "Можно сделать доступной только выбранных пользователей/групп:"
+#~ msgstr "It can be made available only to selected users/groups."
+
+#~ msgid ""
+#~ "Список групп соответствует значениям групп,"
+#~ " указанных во всех конфигурациях меню."
+#~ msgstr ""
+#~ "The list of groups corresponds to "
+#~ "the group values specified in all "
+#~ "menu configurations."
+
+#~ msgid ""
+#~ "Приоритет группы обратно пропорционален уровню"
+#~ " иерархии группы в Оргструктуре или "
+#~ "уровню функциональной иерархии. Чем "
+#~ "специфичнее и уже группа пользователей, "
+#~ "тем выше у нее приоритет."
+#~ msgstr ""
+#~ "The priority of a group is "
+#~ "inversely proportional to its level in"
+#~ " the organizational hierarchy or functional"
+#~ " hierarchy. The more specific and "
+#~ "narrower the user group, the higher "
+#~ "its priority."
+
+#~ msgid "Группы администраторов, как правило, размещаются на первом месте."
+#~ msgstr "Administrator groups are typically placed first."
+
+#~ msgid ""
+#~ "Пользователь имеет наивысший приоритет "
+#~ "(пользователи не отображаются в приоритетах)."
+#~ msgstr ""
+#~ "User has the highest priority (users "
+#~ "are not displayed in the priorities)."
+
+#~ msgid ""
+#~ "В конфигурации меню указываются группы "
+#~ "или пользователи для которых настраивается "
+#~ "меню. Приоритет групп - настройка "
+#~ "глобальная, исходя из ее настройки и "
+#~ "указанных участников, возвращается соответствующее"
+#~ " для пользователя меню."
+#~ msgstr ""
+#~ "Menu configurations specify groups or "
+#~ "users for whom the menu is "
+#~ "configured. Group priorities is a global"
+#~ " setting; based on its configuration "
+#~ "and the specified members, the "
+#~ "appropriate menu for the user is "
+#~ "returned."
+
+#~ msgid ""
+#~ "**АП** - tam42 и он указан в "
+#~ "одной из конфигураций. Указание пользователя"
+#~ " - наивысший приоритет => возвращается "
+#~ "конфигурация №10. Пользователь не должен "
+#~ "указываться в нескольких."
+#~ msgstr ""
+#~ "**AU** - tam42 and he is specified"
+#~ " in one of the configurations. "
+#~ "Specifying a user has the highest "
+#~ "priority => configuration No. 10 is "
+#~ "returned. A user should not be "
+#~ "specified in multiple configurations."
+
+#~ msgid ""
+#~ "**АП** состоит в группе администраторов "
+#~ "(и не указан на прямую в "
+#~ "конфигурации). Настраиваем конфигурацию с "
+#~ "указанием этой группы. В настройке "
+#~ "приоритетов эта группа на первом месте."
+#~ " Результат - слева отображается меню "
+#~ "№3"
+#~ msgstr ""
+#~ "**AU** is a member of the "
+#~ "administrators group (and is not "
+#~ "directly specified in the configuration). "
+#~ "We configure a menu specifying this "
+#~ "group. In the priority settings, this"
+#~ " group is in first place. Result "
+#~ "- menu No. 3 is displayed on "
+#~ "the left."
+
+#~ msgid ""
+#~ "**АП** - главный клерк, состоит в "
+#~ "2х группах: клерки и главные клерки. "
+#~ "Есть две конфигурации №2 и №6. В"
+#~ " приоритетах главные клерки на 2 "
+#~ "месте, другие на 3. Результат - "
+#~ "слева отображается меню №6. Для Не "
+#~ "главных клерков №2."
+#~ msgstr ""
+#~ "**AU** - chief clerk, is a member"
+#~ " of 2 groups: clerks and chief "
+#~ "clerks. There are two configurations: "
+#~ "No. 2 and No. 6. In the "
+#~ "priorities, chief clerks are in 2nd "
+#~ "place, others in 3rd. Result - "
+#~ "menu No. 6 is displayed on the "
+#~ "left. For non-chief clerks, menu "
+#~ "No. 2."
+
+#~ msgid ""
+#~ "Если для **АП** нет ни одного "
+#~ "подходящего меню - загружается базовое "
+#~ "(default)"
+#~ msgstr ""
+#~ "If there is no suitable menu for"
+#~ " the **AU**, the base menu (default)"
+#~ " is loaded."

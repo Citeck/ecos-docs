@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,19 +24,18 @@ msgstr "Checkbox"
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:6
 msgid ""
-"Компонент **Checkbox** позволяет пользователю выбрать одно булево "
-"значение (да/нет, true/false)."
-msgstr ""
-"The **Checkbox** component allows users to select a single boolean value "
-"(yes/no, true/false)."
+"Компонент **Checkbox** позволяет пользователю выбрать логическое значение"
+" (да/нет, ``true``/``false``). Настройка ``hasThreeStates`` включает "
+"третье состояние — ``null`` (значение не задано)."
+msgstr "**Checkbox** selects a boolean value (yes/no, ``true``/``false``). ``hasThreeStates`` enables a third state, ``null`` (unset)."
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:8
 msgid ""
 "`См. описание Checkbox на Form.io <https://help.form.io/userguide/forms"
 "/form-components#check-box>`_"
 msgstr ""
-"`See Checkbox description on Form.io <https://help.form.io/userguide/forms"
-"/form-components#check-box>`_"
+"`See Checkbox description on Form.io "
+"<https://help.form.io/userguide/forms/form-components#check-box>`_"
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:10
 msgid ":ref:`См. общее описание компонента Checkbox<Checkbox>`"
@@ -52,14 +51,10 @@ msgstr "Checkbox supports two independent visibility control mechanisms:"
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:21
 msgid ""
-"**customConditional** — JavaScript-выражение на вкладке **Conditional**, "
-"которое вычисляется при каждом изменении данных формы. Результат "
-"(``true`` / ``false``) определяет, должен ли компонент отображаться."
-msgstr ""
-"**customConditional** — a JavaScript expression on the **Conditional** "
-"tab that is evaluated on every form data change. The result "
-"(``true`` / ``false``) determines whether the component should be "
-"displayed."
+"**customConditional** — JavaScript-выражение на вкладке **Conditional**. "
+"Переменной ``show`` присваивается ``true`` или ``false``, определяющее, "
+"должен ли компонент отображаться."
+msgstr "**customConditional** is a JavaScript expression on **Conditional**. Assign ``true`` or ``false`` to ``show`` to determine whether the component is displayed."
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:22
 msgid ""
@@ -82,8 +77,10 @@ msgstr ""
 "**or** Logic set ``hidden = true``."
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:27
-msgid "если ни одно из условий не задано, компонент отображается."
-msgstr "if neither condition is set, the component is displayed."
+msgid ""
+"при отсутствии запрещающих условий компонент доступен для показа с учётом"
+" общих настроек видимости формы."
+msgstr "Without prohibiting conditions, the component can be shown subject to general form visibility settings."
 
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:30
 msgid "Пример customConditional"
@@ -119,160 +116,150 @@ msgid ""
 " показ: компонент скрыт, когда ``data.role !== 'manager'`` **или** когда "
 "Logic установила ``hidden = true``."
 msgstr ""
-"In this case, the Checkbox is displayed only if **both** conditions allow "
-"display: the component is hidden when ``data.role !== 'manager'`` **or** "
-"when Logic set ``hidden = true``."
+"In this case, the Checkbox is displayed only if **both** conditions allow"
+" display: the component is hidden when ``data.role !== 'manager'`` **or**"
+" when Logic set ``hidden = true``."
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:51
-msgid ""
-"До версии, включающей исправление задачи **#96**, ``customConditional`` "
-"игнорировался при наличии Logic-правил. Убедитесь, что используете "
-"актуальную версию ecos-ui, если формы с обоими механизмами работали "
-"некорректно."
-msgstr ""
-"Prior to the version that includes the fix for task **#96**, "
-"``customConditional`` was ignored when Logic rules were present. Make "
-"sure you are using an up-to-date version of ecos-ui if forms with both "
-"mechanisms were working incorrectly."
-
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:55
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:50
 msgid "Особенности реализации (для разработчиков)"
 msgstr "Implementation Details (for Developers)"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:57
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:52
 msgid ""
 "Checkbox в Citeck переопределяет метод ``updateVisible`` базового класса "
-"formiojs. Это необходимо для корректной работы в контейнере **Columns** с"
-" включённым ``autoAdjust`` (элемент скрывается через ``visibility: "
-"hidden`` вместо атрибута ``hidden``, чтобы ячейка колонки не сжималась)."
-msgstr ""
-"Checkbox in Citeck overrides the ``updateVisible`` method of the formiojs"
-" base class. This is necessary for correct operation inside the "
-"**Columns** container with ``autoAdjust`` enabled (the element is hidden "
-"via ``visibility: hidden`` instead of the ``hidden`` attribute, so the "
-"column cell does not collapse)."
+"formiojs и вызывает функцию ``applyCheckboxVisibility``. Она не изменяет "
+"DOM в режиме редактора форм (``options.builder``) и при пустом списке "
+"``component.logic``."
+msgstr "Citeck Checkbox overrides the formiojs base ``updateVisible`` method and calls ``applyCheckboxVisibility``. It does not modify the DOM in builder mode (``options.builder``) or with empty ``component.logic``."
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:62
-msgid "Видимость вычисляется как:"
-msgstr "Visibility is computed as:"
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:54
+msgid "В остальных случаях вычисляется признак необходимости скрытия:"
+msgstr "Otherwise, the need to hide is calculated:"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:68
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:60
 msgid "где:"
 msgstr "where:"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:70
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:62
 msgid ""
-"``component.hidden`` — устанавливается Logic-правилами (Pipeline 2 в "
-"formiojs)."
-msgstr ""
-"``component.hidden`` — set by Logic rules (Pipeline 2 in formiojs)."
+"``component.hidden`` — свойство, которое в том числе может задаваться "
+"Logic-правилами;"
+msgstr "``component.hidden`` — a property that may be set by Logic rules;"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:71
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:63
 msgid ""
-"``_visible`` — устанавливается ``customConditional`` / стандартной "
-"логикой ``conditional`` (Pipeline 1 в formiojs)."
-msgstr ""
-"``_visible`` — set by ``customConditional`` / standard ``conditional`` "
-"logic (Pipeline 1 in formiojs)."
+"``_visible`` — результат обработки условий видимости, включая "
+"``customConditional`` и ``conditional``."
+msgstr "``_visible`` — the visibility condition result, including ``customConditional`` and ``conditional``."
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:73
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:65
 msgid ""
 "Строгая проверка ``=== false`` для ``_visible`` важна: она предотвращает "
-"ложное скрытие компонента, пока formiojs ещё не инициализировал это поле "
-"(значение ``undefined`` трактуется как «видим»)."
-msgstr ""
-"The strict ``=== false`` check for ``_visible`` is important: it prevents"
-" the component from being falsely hidden while formiojs has not yet "
-"initialized this field (a value of ``undefined`` is treated as "
-"\"visible\")."
+"ложное скрытие компонента, пока formiojs ещё не инициализировал это поле."
+" Само значение ``undefined`` не запрещает показ."
+msgstr "The strict ``=== false`` check for ``_visible`` prevents premature hiding before formiojs initializes the field. ``undefined`` alone does not prohibit display."
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:77
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:69
 msgid "Логика работы ``updateVisible``"
 msgstr "``updateVisible`` Logic"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:84
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:76
 msgid "``component.hidden``"
 msgstr "``component.hidden``"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:85
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:77
 msgid "``_visible``"
 msgstr "``_visible``"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:86
-msgid "Результат"
-msgstr "Result"
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:78
+msgid "``shouldBeHidden``"
+msgstr "``shouldBeHidden``"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:87
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:79
 msgid "Примечание"
 msgstr "Note"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:88
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:92
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:80
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:82
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:84
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:85
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:93
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:101
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:104
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:96
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:98
 msgid "``false``"
 msgstr "``false``"
 
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:81
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:86
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:88
 #: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:89
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:96
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:97
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:100
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:90
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:92
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:94
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:90
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:106
-msgid "Отображается"
-msgstr "Displayed"
-
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:91
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:83
 msgid "Нормальное состояние"
 msgstr "Normal state"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:94
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:98
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:102
-msgid "Скрыт"
-msgstr "Hidden"
-
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:95
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:87
 msgid "customConditional запретил показ"
 msgstr "customConditional prevented display"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:99
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:91
 msgid "Logic скрыла компонент"
 msgstr "Logic hid the component"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:103
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:95
 msgid "Оба механизма скрывают"
 msgstr "Both mechanisms hide"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:105
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:97
 msgid "``undefined``"
 msgstr "``undefined``"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:107
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:99
 msgid "formiojs ещё не инициализировал _visible"
 msgstr "formiojs has not yet initialized _visible"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:109
-msgid "При скрытии внутри **Columns** с ``autoAdjust``:"
-msgstr "When hiding inside **Columns** with ``autoAdjust``:"
-
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:117
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:101
 msgid ""
-"Это сохраняет ширину колонки, пока соседние элементы не перестроятся "
-"через ``autoAdjust``."
-msgstr ""
-"This preserves the column width until adjacent elements are rearranged "
-"via ``autoAdjust``."
+"DOM обновляется только при наличии ``element`` и отличии "
+"``shouldBeHidden`` от текущего состояния атрибута ``hidden``:"
+msgstr "The DOM updates only if ``element`` exists and ``shouldBeHidden`` differs from the current ``hidden`` attribute state:"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:120
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:103
+msgid ""
+"Если ``shouldBeHidden === true``, устанавливаются атрибут ``hidden``, "
+"``visibility: hidden`` и ``position: absolute``. Эта ветка применяется и "
+"внутри Columns."
+msgstr "If ``shouldBeHidden === true``, ``hidden``, ``visibility: hidden`` and ``position: absolute`` are set. This branch also applies within Columns."
+
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:104
+msgid ""
+"Если ``shouldBeHidden === false`` и компонент находится в Columns с "
+"``autoAdjust``, устанавливаются ``visibility: hidden`` и ``position: "
+"relative``. Эта ветка не снимает атрибут ``hidden``."
+msgstr "If ``shouldBeHidden === false`` and the component is in Columns with ``autoAdjust``, ``visibility: hidden`` and ``position: relative`` are set. This branch does not remove ``hidden``."
+
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:105
+msgid ""
+"В остальных случаях показа атрибут ``hidden`` снимается, устанавливаются "
+"``visibility: visible`` и ``position: relative``."
+msgstr "In other display cases, ``hidden`` is removed and ``visibility: visible`` and ``position: relative`` are set."
+
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:107
+msgid ""
+"Таким образом, таблица описывает вычисляемый признак скрытия, а не "
+"гарантирует итоговую видимость элемента во всех режимах компоновки."
+msgstr "The table therefore describes the calculated hiding flag, not guaranteed final visibility in every layout mode."
+
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:110
 msgid "Тестирование логики видимости"
 msgstr "Testing Visibility Logic"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:122
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:112
 msgid ""
 "Функция ``applyCheckboxVisibility`` вынесена как именованный экспорт из "
 "``Checkbox.js``, что позволяет тестировать её без рендеринга полного "
@@ -282,25 +269,102 @@ msgstr ""
 "from ``Checkbox.js``, allowing it to be tested without rendering the full"
 " component:"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:138
-msgid ""
-"Это тот же паттерн, который используется в ``overrideTriggerChange`` "
-"(``misc.js``)."
-msgstr ""
-"This is the same pattern used in ``overrideTriggerChange`` (``misc.js``)."
-
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:142
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:130
 msgid ":ref:`Компоненты формы — общее описание<form_components>`"
 msgstr ":ref:`Form components — general description<form_components>`"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:143
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:131
 msgid ":ref:`Columns<columns_component>` — контейнер с autoAdjust"
 msgstr ":ref:`Columns<columns_component>` — container with autoAdjust"
 
-#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:144
+#: ../../settings_kb/interface/forms/form_components/components/checkbox.rst:132
 msgid ""
 ":ref:`Настройки компонентов<manual_override>` — customDefaultValue, Allow"
 " Manual Override и другие настройки"
 msgstr ""
 ":ref:`Component settings<manual_override>` — customDefaultValue, Allow "
 "Manual Override and other settings"
+
+#~ msgid "если ни одно из условий не задано, компонент отображается."
+#~ msgstr "if neither condition is set, the component is displayed."
+
+#~ msgid ""
+#~ "До версии, включающей исправление задачи "
+#~ "**#96**, ``customConditional`` игнорировался при "
+#~ "наличии Logic-правил. Убедитесь, что "
+#~ "используете актуальную версию ecos-ui, "
+#~ "если формы с обоими механизмами работали"
+#~ " некорректно."
+#~ msgstr ""
+#~ "Prior to the version that includes "
+#~ "the fix for task **#96**, "
+#~ "``customConditional`` was ignored when Logic"
+#~ " rules were present. Make sure you"
+#~ " are using an up-to-date "
+#~ "version of ecos-ui if forms with"
+#~ " both mechanisms were working incorrectly."
+
+#~ msgid ""
+#~ "Checkbox в Citeck переопределяет метод "
+#~ "``updateVisible`` базового класса formiojs. "
+#~ "Это необходимо для корректной работы в"
+#~ " контейнере **Columns** с включённым "
+#~ "``autoAdjust`` (элемент скрывается через "
+#~ "``visibility: hidden`` вместо атрибута "
+#~ "``hidden``, чтобы ячейка колонки не "
+#~ "сжималась)."
+#~ msgstr ""
+#~ "Checkbox in Citeck overrides the "
+#~ "``updateVisible`` method of the formiojs "
+#~ "base class. This is necessary for "
+#~ "correct operation inside the **Columns** "
+#~ "container with ``autoAdjust`` enabled (the "
+#~ "element is hidden via ``visibility: "
+#~ "hidden`` instead of the ``hidden`` "
+#~ "attribute, so the column cell does "
+#~ "not collapse)."
+
+#~ msgid "Видимость вычисляется как:"
+#~ msgstr "Visibility is computed as:"
+
+#~ msgid ""
+#~ "``component.hidden`` — устанавливается "
+#~ "Logic-правилами (Pipeline 2 в formiojs)."
+#~ msgstr "``component.hidden`` — set by Logic rules (Pipeline 2 in formiojs)."
+
+#~ msgid ""
+#~ "``_visible`` — устанавливается ``customConditional``"
+#~ " / стандартной логикой ``conditional`` "
+#~ "(Pipeline 1 в formiojs)."
+#~ msgstr ""
+#~ "``_visible`` — set by ``customConditional``"
+#~ " / standard ``conditional`` logic (Pipeline"
+#~ " 1 in formiojs)."
+
+#~ msgid "Результат"
+#~ msgstr "Result"
+
+#~ msgid "Отображается"
+#~ msgstr "Displayed"
+
+#~ msgid "Скрыт"
+#~ msgstr "Hidden"
+
+#~ msgid "При скрытии внутри **Columns** с ``autoAdjust``:"
+#~ msgstr "When hiding inside **Columns** with ``autoAdjust``:"
+
+#~ msgid ""
+#~ "Это сохраняет ширину колонки, пока "
+#~ "соседние элементы не перестроятся через "
+#~ "``autoAdjust``."
+#~ msgstr ""
+#~ "This preserves the column width until"
+#~ " adjacent elements are rearranged via "
+#~ "``autoAdjust``."
+
+#~ msgid ""
+#~ "Это тот же паттерн, который используется"
+#~ " в ``overrideTriggerChange`` (``misc.js``)."
+#~ msgstr ""
+#~ "This is the same pattern used in"
+#~ " ``overrideTriggerChange`` (``misc.js``)."

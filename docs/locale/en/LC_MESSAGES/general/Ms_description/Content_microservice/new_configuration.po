@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -92,7 +92,7 @@ msgid "Создать yml файл с конфигурацией:"
 msgstr "Create a yml file with the configuration:"
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:61
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:114
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:116
 msgid "Где:"
 msgstr "Where:"
 
@@ -109,8 +109,11 @@ msgid "*name* - Имя конфигурации."
 msgstr "*name* - Configuration name."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:65
-msgid "*type* - Тип хранилища контента. Возможные варианты: S3"
-msgstr "*type* - Content storage type. Possible values: S3"
+msgid ""
+"*type* - Тип хранилища контента. В ecos-content реализован тип ``S3``. "
+"Наличие других вариантов в интерфейсе платформы не означает, что они "
+"обслуживаются этим микросервисом."
+msgstr "*type* — Content storage type. ecos-content implements ``S3``. Other options in the platform UI do not imply that this microservice handles them."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:66
 msgid ""
@@ -146,13 +149,11 @@ msgstr ""
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:74
 msgid ""
-"В данных директориях вы можете создавать внутреннюю структуру папок. "
-"Поиск артефактов шаблонов происходит рекурсивно по папкам, но начинается "
-"именно с этих директорий."
-msgstr ""
-"You can create an internal folder structure within these directories. "
-"Template artifact lookup is performed recursively through subfolders, but"
-" starts from these directories."
+"В данных директориях можно создавать внутреннюю структуру папок. "
+"Поддержка пути старых проектов зависит от используемой версии загрузчика "
+"приложений; в ecos-content поставляемые конфигурации находятся в "
+"``eapps/artifacts/content/storage/``."
+msgstr "These directories can contain an internal folder structure. Support for legacy project paths depends on the application loader version; ecos-content bundled configurations are in ``eapps/artifacts/content/storage/``."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:80
 msgid "Убедиться, что она создалась в журнале."
@@ -168,35 +169,36 @@ msgstr "To load the configuration via Citeck Applications, you need to:"
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:86
 msgid ""
-"Создать приложение с имеющегося стенда (архив с артефактом создастся "
-"автоматически) или, если вы создавали собственный yml файл, создать zip "
-"архив самостоятельно. За основу можете взять данный файл `test-app.zip "
-"<https://github.com/Citeck/ecos-"
-"docs/blob/main/docs/general/Content_microservice/_static/test-app.zip>`_ "
-"и сгенерировать, как в нем."
-msgstr ""
-"Create an application from an existing environment (the archive with the "
-"artifact will be created automatically), or if you created your own yml "
-"file, create the zip archive manually. You can use the `test-app.zip "
-"<https://github.com/Citeck/ecos-"
-"docs/blob/main/docs/general/Content_microservice/_static/test-app.zip>`_ "
-"file as a reference and generate your archive in the same way."
+"Создать приложение с имеющегося стенда или подготовить ZIP-архив с "
+"конфигурацией. За основу можно взять :download:`test-app.zip <_static"
+"/test-app.zip>`."
+msgstr "Create an application from an existing environment or prepare a configuration ZIP archive. You can use :download:`test-app.zip <_static/test-app.zip>` as a starting point."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:87
+msgid ""
+"Перед загрузкой образца создать endpoint с ID ``test-app-content-"
+"storage-s3-endpoint`` и связанным секретом типа ``BASIC``. В endpoint "
+"укажите URL своего S3-сервера, а в секрете — access key и secret key. "
+"Создайте bucket ``ecos-content`` либо измените ``bucketName`` в архиве. "
+"Образец содержит только конфигурацию хранилища и ссылается на "
+"``emodel/endpoint@test-app-content-storage-s3-endpoint``."
+msgstr "Before uploading the sample, create an endpoint with ID ``test-app-content-storage-s3-endpoint`` and an associated ``BASIC`` secret. Specify your S3 server URL in the endpoint and the access key and secret key in the secret. Create the ``ecos-content`` bucket or change ``bucketName`` in the archive. The sample contains only storage configuration and references ``emodel/endpoint@test-app-content-storage-s3-endpoint``."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:88
 msgid "Загрузить приложение через журнал **«Приложения ECOS»**."
 msgstr "Upload the application via the **\"ECOS Applications\"** journal."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:88
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:89
 msgid "Убедиться, что в журнале «Хранилища контента» создались ваши конфигурации."
 msgstr ""
 "Verify that your configurations have been created in the \"Content "
 "Storages\" journal."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:93
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:94
 msgid "Параметры конфигурации отдельных хранилищ контента"
 msgstr "Configuration Parameters for Individual Content Storages"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:95
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:96
 msgid ""
 "У каждого хранилища контента есть собственные атрибуты конфигурации, "
 "необходимые системе для подключения и организации работы."
@@ -204,95 +206,195 @@ msgstr ""
 "Each content storage has its own configuration attributes required by the"
 " system for connection and operation."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:98
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:99
 msgid "Хранилище S3"
 msgstr "S3 Storage"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:100
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:101
 msgid "Общий файл конфигурации для хранилища S3 выглядит следующим образом:"
 msgstr "The general configuration file for S3 storage looks as follows:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:121
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:123
 msgid "Поле"
 msgstr "Field"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:122
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:124
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:123
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:125
 msgid "**endpoint**"
 msgstr "**endpoint**"
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst
-msgid "Ассоциация на «конечную точку», в которой указывается:"
-msgstr "Refers to the \"endpoint\", which specifies:"
+msgid ""
+"Ссылка на endpoint, например ``emodel/endpoint@content-"
+"storage-s3-endpoint``."
+msgstr "Endpoint reference, for example ``emodel/endpoint@content-storage-s3-endpoint``."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst
 msgid ""
-"— *адрес сервера*: должен быть указан корневой адрес s3 без "
-"дополнительных путей, например ``myminio.domain.ru``;"
-msgstr ""
-"— *server address*: the root S3 address must be specified without "
-"additional paths, for example ``myminio.domain.ru``;"
+"В endpoint задаётся полный URL S3-сервера без пути bucket, например "
+"``https://myminio.domain.ru`` или ``http://localhost:9000``, и ссылка на "
+"секрет типа ``BASIC``."
+msgstr "The endpoint specifies the full S3 server URL without the bucket path, such as ``https://myminio.domain.ru`` or ``http://localhost:9000``, and a reference to a ``BASIC`` secret."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst
 msgid ""
-"— *данные для аутентификации* в s3. Тип ``basic``, в username указывается"
-" access key, в password — secret key."
-msgstr ""
-"— *authentication data* for S3. Type ``basic``, where username is the "
-"access key and password is the secret key."
+"В секрете ``username`` содержит access key, ``password`` — secret key. "
+"Ключи доступа непосредственно в ``config`` хранилища не задаются."
+msgstr "In the secret, ``username`` contains the access key and ``password`` the secret key. Access keys are not specified directly in the storage ``config``."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:127
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:129
 msgid "**bucketName**"
 msgstr "**bucketName**"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:128
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:130
 msgid ""
-"Имя корзины, в которой будут сохраняться все файлы системы. Корзина "
-"представляет собой аналог БД в определённой СУБД: у одного хранилища "
-"может быть создано несколько корзин, притом каждая из них может иметь "
-"свои параметры, такие как обеспечение доступов и т.п."
-msgstr ""
-"The name of the bucket where all system files will be stored. A bucket is"
-" analogous to a database in a given DBMS: a single storage can have "
-"several buckets created, and each of them can have its own parameters, "
-"such as access control, etc."
+"Имя bucket для данной конфигурации хранилища. Bucket необходимо создать "
+"заранее и предоставить учётным данным доступ к нужным операциям. В "
+"системе можно использовать несколько конфигураций с разными bucket; "
+"микросервис не создаёт bucket автоматически."
+msgstr "The bucket name for this storage configuration. Create the bucket in advance and grant the credentials access to the required operations. Multiple configurations can use different buckets; the microservice does not create buckets automatically."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst:131
+msgid "**region**"
+msgstr "**region**"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:132
+msgid ""
+"Необязательный регион S3. Непустое значение после удаления крайних "
+"пробелов используется обычным и multipart-клиентом. При пустом значении "
+"регион явно не задаётся и определяется поведением SDK. Значение "
+"выбирается по настройкам вашего хранилища."
+msgstr "Optional S3 region. A nonempty value, trimmed of surrounding whitespace, is used by both ordinary and multipart clients. An empty value leaves the region unspecified, with behavior determined by the SDK. Choose the value according to your storage settings."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:134
+msgid ""
+"В стандартной форме отдельного поля ``region`` нет. Его можно задать "
+"через YAML или редактирование JSON конфигурации хранилища."
+msgstr "The standard form has no separate ``region`` field. Set it through YAML or by editing the storage configuration JSON."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:137
+msgid "Загрузка больших файлов и чанки"
+msgstr "Large file uploads and chunks"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:139
+msgid ""
+"Сервис поддерживает обычную потоковую загрузку и загрузку чанками в S3. "
+"Использование чанков формой зависит от версий ecos-model и клиентского "
+"компонента; наличие поддержки в ecos-content не означает, что любой "
+"**file-component** автоматически использует её."
+msgstr "The service supports ordinary streaming and chunked S3 uploads. Whether a form uses chunks depends on ecos-model and client component versions; ecos-content support does not mean that every **file-component** automatically uses it."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:141
+msgid "Чанковая загрузка выполняется через внутренний Citeck WebAPI:"
+msgstr "Chunked uploads use the internal Citeck WebAPI:"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:148
+msgid "Путь executor'а"
+msgstr "Executor path"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:149
+msgid "Назначение"
+msgstr "Purpose"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:150
+msgid "``/content/storage/chunk-init``"
+msgstr "``/content/storage/chunk-init``"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:151
+msgid ""
+"Начало загрузки. Принимает ID хранилища и положительный размер файла; "
+"возвращает ``supported``, ``state`` и ``chunkSize``."
+msgstr "Starts an upload. Accepts a storage ID and positive file size; returns ``supported``, ``state`` and ``chunkSize``."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:152
+msgid "``/content/storage/chunk-write``"
+msgstr "``/content/storage/chunk-write``"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:153
+msgid ""
+"Загрузка части. Клиент передаёт состояние и получает его обновлённое "
+"значение."
+msgstr "Uploads a part. The client passes the state and receives an updated value."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:154
+msgid "``/content/storage/chunk-complete``"
+msgstr "``/content/storage/chunk-complete``"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:155
+msgid "Завершение multipart-загрузки и получение ключа сохранённого файла."
+msgstr "Completes a multipart upload and returns the stored file key."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:156
+msgid "``/content/storage/chunk-abort``"
+msgstr "``/content/storage/chunk-abort``"
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:157
+msgid "Отмена незавершённой загрузки."
+msgstr "Aborts an incomplete upload."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:159
+msgid ""
+"Эти пути предназначены для системных вызовов WebAPI с ролью ``SYSTEM``. "
+"Они не являются самостоятельными публичными HTTP-маршрутами для браузера."
+" Если хранилище не поддерживает чанки, инициализация возвращает "
+"``supported=false``. Состояние ``state`` нужно передавать между вызовами "
+"без самостоятельного изменения его содержимого."
+msgstr "These paths are for system WebAPI calls with the ``SYSTEM`` role. They are not standalone public browser HTTP routes. If storage does not support chunks, initialization returns ``supported=false``. Pass ``state`` between calls without modifying its contents yourself."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:161
+msgid ""
+"Базовый размер чанка — **5 MiB**. Для больших файлов сервис может "
+"увеличить его с учётом ограничения S3 на число частей; клиент должен "
+"использовать размер, возвращённый в ``chunkSize``. Размер ограничен "
+"пределами части multipart, а число частей — 10000. Размер чанка не "
+"настраивается в записи хранилища. При обработке части используется "
+"временный файл, поэтому контейнеру необходимо доступное дисковое "
+"пространство."
+msgstr "The base chunk size is **5 MiB**. For large files, the service may increase it to meet the S3 part count limit; the client must use the returned ``chunkSize``. Chunk size is subject to multipart part limits, and the maximum part count is 10000. Chunk size is not configured in the storage record. Part processing uses a temporary file, so the container needs available disk space."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:163
+msgid ""
+"Параметр Spring ``ecos-content.minio-client.part-size-mb`` относится к "
+"разбиению обычной потоковой загрузки внутри MinIO-клиента и не управляет "
+"чанковым протоколом. В поставляемом ``application.yml`` задано значение "
+"**8 MiB**; fallback в коде при отсутствии свойства — **5 MiB**."
+msgstr "The Spring parameter ``ecos-content.minio-client.part-size-mb`` controls splitting ordinary streaming uploads within the MinIO client, not the chunked protocol. The bundled ``application.yml`` sets **8 MiB**; the code fallback when the property is absent is **5 MiB**."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:165
+msgid ""
+"Для bucket с multipart-загрузками настройте lifecycle-правило очистки "
+"незавершённых загрузок (``AbortIncompleteMultipartUpload``), выбирая срок"
+" хранения по требованиям окружения."
+msgstr "For buckets with multipart uploads, configure a lifecycle rule to clean up incomplete uploads (``AbortIncompleteMultipartUpload``), choosing a retention period for your environment."
+
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:168
 msgid "Конфигурация максимального размера загружаемого файла"
 msgstr "Configuring the Maximum Upload File Size"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:133
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:170
 msgid ""
-"В текущей реализации при загрузке файла через file-component происходит "
-"отправка всего файла целиком. По умолчанию максимальный размер файла, "
-"который можно загрузить в систему, ограничен 100 MB. В дальнейшем "
-"планируется реализовать загрузку файлов чанками `ECOSCOM-5619 "
-"<https://jira.citeck.ru/browse/ECOSCOM-5619>`_, что позволит загружать "
-"файлы любого размера."
-msgstr ""
-"In the current implementation, uploading a file via the file-component "
-"sends the entire file at once. By default, the maximum file size that can"
-" be uploaded to the system is limited to 100 MB. In the future, "
-"chunked file uploading is planned `ECOSCOM-5619 "
-"<https://jira.citeck.ru/browse/ECOSCOM-5619>`_, which will allow "
-"uploading files of any size."
+"Единого лимита **100 MB** на уровне ecos-content нет. Допустимый размер "
+"определяется ограничениями формы, маршрута загрузки, серверов, "
+"proxy/ingress и S3. Чанки уменьшают размер отдельных запросов, но не "
+"отменяют ограничений хранилища и инфраструктуры."
+msgstr "ecos-content has no universal **100 MB** limit. Allowed size depends on the form, upload route, servers, proxy/ingress and S3 limits. Chunks reduce individual request sizes but do not remove storage and infrastructure limits."
 
 #: ../../general/Ms_description/Content_microservice/new_configuration.rst
 msgid "Как изменить максимальный размер файла"
 msgstr "How to Change the Maximum File Size"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:140
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:175
 msgid ""
-"Для изменения максимального размера файла, который можно загрузить в "
-"систему, необходимо:"
-msgstr ""
-"To change the maximum file size that can be uploaded to the system, you "
-"need to:"
+"Проверьте ограничения на каждом уровне используемого маршрута загрузки. "
+"Ниже приведены примеры для формы и загрузки через ecos-model; "
+"применимость настроек зависит от версий компонентов и способа передачи "
+"файла:"
+msgstr "Check limits at every level of the upload route in use. The following examples cover forms and uploads through ecos-model; applicability depends on component versions and file transfer method:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:142
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:177
 msgid ""
 "На форме, где используется **file-component**, в вкладке **«Файл»** "
 "установить *Максимальный размер файла*."
@@ -300,35 +402,33 @@ msgstr ""
 "On the form where the **file-component** is used, set the *Maximum file "
 "size* in the **\"File\"** tab."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:143
-msgid "В микросервисе **ecos-model** установить свойства необходимыми значениями."
-msgstr ""
-"In the **ecos-model** microservice, set the properties to the required "
-"values."
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:178
+msgid ""
+"При использовании servlet multipart в **ecos-model** установить свойства "
+"необходимыми значениями. Например:"
+msgstr "When using servlet multipart in **ecos-model**, set the properties to the required values. For example:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:153
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:188
 msgid "Сконфигурировать Nginx в **EcosProxyApp** для передачи больших файлов."
 msgstr "Configure Nginx in **EcosProxyApp** for transferring large files."
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:155
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:190
 msgid ""
 "Для этого необходимо установить параметры в конфигурационном файле "
 "**nginx.conf**:"
 msgstr "To do this, set the parameters in the **nginx.conf** configuration file:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:161
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:196
 msgid ""
-"Если используется citeck helm chart, то с версии 1.3.53 можно задать "
-"параметр:"
-msgstr ""
-"If the Citeck Helm chart is used, starting from version 1.3.53 you can "
-"set the parameter:"
+"Пример параметра для citeck Helm chart; имя и поддержку настройки "
+"сверяйте с версией своего chart:"
+msgstr "Example citeck Helm chart parameter; check its name and support against your chart version:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:169
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:204
 msgid "Сконфигурировать **Ingress k8s** (если реализация nginx):"
 msgstr "Configure **Ingress k8s** (for an nginx implementation):"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:171
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:206
 msgid ""
 "Если используется citeck helm chart и k8s yandex cloud, нужно "
 "сконфигурировать параметры timeout через аннотации:"
@@ -336,17 +436,14 @@ msgstr ""
 "If the Citeck Helm chart and k8s Yandex Cloud are used, configure the "
 "timeout parameters via annotations:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:181
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:216
 msgid ""
-"Если используется citeck helm chart с k8s, конфигурируемый через "
-"аннотации `nginx.ingress.kubernetes.io/proxy-*`, то с версии 1.3.53 можно"
-" задать параметры:"
-msgstr ""
-"If the Citeck Helm chart with k8s is used, configured via "
-"`nginx.ingress.kubernetes.io/proxy-*` annotations, starting from version "
-"1.3.53 you can set the parameters:"
+"Пример параметров citeck Helm chart для ingress на основе nginx. Их "
+"поддержку и отображение в аннотации "
+"``nginx.ingress.kubernetes.io/proxy-*`` сверяйте с версией своего chart:"
+msgstr "Example citeck Helm chart parameters for nginx ingress. Check their support and mapping to ``nginx.ingress.kubernetes.io/proxy-*`` annotations against your chart version:"
 
-#: ../../general/Ms_description/Content_microservice/new_configuration.rst:195
+#: ../../general/Ms_description/Content_microservice/new_configuration.rst:230
 msgid ""
 "Учтите, что при использовании Kubernetes ограничения на размер файла и "
 "максимальный timeout также нужно сконфигурировать на уровне "
@@ -395,3 +492,135 @@ msgstr ""
 #~ "access key and password is the "
 #~ "secret key."
 
+#~ msgid "*type* - Тип хранилища контента. Возможные варианты: S3"
+#~ msgstr "*type* - Content storage type. Possible values: S3"
+
+#~ msgid ""
+#~ "В данных директориях вы можете создавать"
+#~ " внутреннюю структуру папок. Поиск "
+#~ "артефактов шаблонов происходит рекурсивно по"
+#~ " папкам, но начинается именно с этих"
+#~ " директорий."
+#~ msgstr ""
+#~ "You can create an internal folder "
+#~ "structure within these directories. Template"
+#~ " artifact lookup is performed recursively"
+#~ " through subfolders, but starts from "
+#~ "these directories."
+
+#~ msgid ""
+#~ "Создать приложение с имеющегося стенда "
+#~ "(архив с артефактом создастся автоматически)"
+#~ " или, если вы создавали собственный "
+#~ "yml файл, создать zip архив "
+#~ "самостоятельно. За основу можете взять "
+#~ "данный файл `test-app.zip "
+#~ "<https://github.com/Citeck/ecos-"
+#~ "docs/blob/main/docs/general/Content_microservice/_static/test-"
+#~ "app.zip>`_ и сгенерировать, как в нем."
+#~ msgstr ""
+#~ "Create an application from an existing"
+#~ " environment (the archive with the "
+#~ "artifact will be created automatically), "
+#~ "or if you created your own yml "
+#~ "file, create the zip archive manually."
+#~ " You can use the `test-app.zip "
+#~ "<https://github.com/Citeck/ecos-"
+#~ "docs/blob/main/docs/general/Content_microservice/_static/test-"
+#~ "app.zip>`_ file as a reference and "
+#~ "generate your archive in the same "
+#~ "way."
+
+#~ msgid "Ассоциация на «конечную точку», в которой указывается:"
+#~ msgstr "Refers to the \"endpoint\", which specifies:"
+
+#~ msgid ""
+#~ "— *адрес сервера*: должен быть указан"
+#~ " корневой адрес s3 без дополнительных "
+#~ "путей, например ``myminio.domain.ru``;"
+#~ msgstr ""
+#~ "— *server address*: the root S3 "
+#~ "address must be specified without "
+#~ "additional paths, for example "
+#~ "``myminio.domain.ru``;"
+
+#~ msgid ""
+#~ "— *данные для аутентификации* в s3. "
+#~ "Тип ``basic``, в username указывается "
+#~ "access key, в password — secret "
+#~ "key."
+#~ msgstr ""
+#~ "— *authentication data* for S3. Type "
+#~ "``basic``, where username is the access"
+#~ " key and password is the secret "
+#~ "key."
+
+#~ msgid ""
+#~ "Имя корзины, в которой будут сохраняться"
+#~ " все файлы системы. Корзина представляет"
+#~ " собой аналог БД в определённой СУБД:"
+#~ " у одного хранилища может быть "
+#~ "создано несколько корзин, притом каждая "
+#~ "из них может иметь свои параметры, "
+#~ "такие как обеспечение доступов и т.п."
+#~ msgstr ""
+#~ "The name of the bucket where all"
+#~ " system files will be stored. A "
+#~ "bucket is analogous to a database "
+#~ "in a given DBMS: a single storage"
+#~ " can have several buckets created, "
+#~ "and each of them can have its "
+#~ "own parameters, such as access control,"
+#~ " etc."
+
+#~ msgid ""
+#~ "В текущей реализации при загрузке файла"
+#~ " через file-component происходит отправка"
+#~ " всего файла целиком. По умолчанию "
+#~ "максимальный размер файла, который можно "
+#~ "загрузить в систему, ограничен 100 MB."
+#~ " В дальнейшем планируется реализовать "
+#~ "загрузку файлов чанками `ECOSCOM-5619 "
+#~ "<https://jira.citeck.ru/browse/ECOSCOM-5619>`_, что "
+#~ "позволит загружать файлы любого размера."
+#~ msgstr ""
+#~ "In the current implementation, uploading "
+#~ "a file via the file-component "
+#~ "sends the entire file at once. By"
+#~ " default, the maximum file size that"
+#~ " can be uploaded to the system "
+#~ "is limited to 100 MB. In the "
+#~ "future, chunked file uploading is "
+#~ "planned `ECOSCOM-5619 "
+#~ "<https://jira.citeck.ru/browse/ECOSCOM-5619>`_, which will"
+#~ " allow uploading files of any size."
+
+#~ msgid ""
+#~ "Для изменения максимального размера файла, "
+#~ "который можно загрузить в систему, "
+#~ "необходимо:"
+#~ msgstr ""
+#~ "To change the maximum file size "
+#~ "that can be uploaded to the "
+#~ "system, you need to:"
+
+#~ msgid ""
+#~ "Если используется citeck helm chart, то"
+#~ " с версии 1.3.53 можно задать "
+#~ "параметр:"
+#~ msgstr ""
+#~ "If the Citeck Helm chart is used,"
+#~ " starting from version 1.3.53 you can"
+#~ " set the parameter:"
+
+#~ msgid ""
+#~ "Если используется citeck helm chart с"
+#~ " k8s, конфигурируемый через аннотации "
+#~ "`nginx.ingress.kubernetes.io/proxy-*`, то с версии"
+#~ " 1.3.53 можно задать параметры:"
+#~ msgstr ""
+#~ "If the Citeck Helm chart with k8s"
+#~ " is used, configured via "
+#~ "`nginx.ingress.kubernetes.io/proxy-*` annotations, "
+#~ "starting from version 1.3.53 you can "
+#~ "set the parameters:"

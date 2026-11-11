@@ -42,7 +42,7 @@ Kotlin/Java Backend
 
 Есть два основных сценария использования ``RecordsService``:
 
-* Работа с уже готовыми данными как в примере выше. Нам не нужно никуда отправлять запросы и получение атрибутов проходит в пределах сервиса. В этом режиме доступно только получение атрибутов и Records DAO никак не задействуются.
+* Чтение собственных значений Map или бина, как в примере выше, выполняется локально без собственного DAO. Если значение содержит ссылки и запрошены атрибуты связанных записей, разрешение ссылок может обратиться к DAO.
    
 * Работа с ссылками (``EntityRef``). В этом режиме сервис взаимодействует с источниками данных, функционал которых реализован через следующие интерфейсы:
 
@@ -105,18 +105,16 @@ Kotlin/Java Backend
 
          newRecord.att("id", "id-value");
          newRecord.att("name", "Custom name");
-         // В resultRecord будет созданная запись.
-         // Если мы задаем id вручную (как двумя строчками выше),
-         // то в resultRecord будет лежать то же самое что мы получим при выполнении
-         // Records.get('emodel/types-repo@id-value');
-         // Если мы не указали вручную ID, то он сгенерируется в виде UUID.
+         // В resultRecord будет объект записи со ссылкой, которую вернул источник.
+         // Правила назначения ID, включая возможность задать поле id вручную,
+         // определяются целевым DAO. UUID не является общим требованием Records API.
          let resultRecord = await newRecord.save();
 
    .. tab-item:: Delete
 
       Удаление записей через ``RecordsDeleteDao``.
 
-**AttValue** - интерфейс, который представляет собой значение, с которым умеет работать ``RecordsService`` при получении атрибутов. Методы интерфейса:
+**AttValue** - интерфейс, который представляет собой значение, с которым умеет работать ``RecordsService`` при получении атрибутов. Ниже приведены сокращённые сигнатуры без ``throws Exception``:
 
 .. code-block:: java
 
@@ -130,7 +128,7 @@ Kotlin/Java Backend
     Object asJson() // значение для скаляра "?json"
     Object asRaw() // значение для скаляра "?raw"
     Object asBin() // значение для скаляра "?bin"
-    has(String name) // значение для спец. атрибута "_has"
+    boolean has(String name) // значение для спец. атрибута "_has"
     Object getAtt(String name) // получить значение атрибута по его имени
     AttEdge getEdge(String name) // получить мета-информацию об атрибуте по его имени
     Object getType() // получить ECOS тип значения
@@ -141,13 +139,13 @@ Kotlin/Java Backend
   
   // Проинициализировать фабрику. В основном используется для получения конвертеров для других типов. 
   // Например: attValuesConverter.getFactory(DataValueAttFactory.class)
-  void init(attValuesConverter: AttValuesConverter)
+  void init(AttValuesConverter attValuesConverter)
   
   // Получить реализацию AttValue для значения
   AttValue getValue(T value)
   
   // Получить список доступных типов значений, которые может обрабатывать данная фабрика
-  List<Class<*>> getValueTypes()
+  List<Class<?>> getValueTypes()
   
   // Получить приоритет фабрики. Чем выше приоритет, тем важнее фабрика в случае если для одного и того же типа нашлось две фабрики.
   int getPriority()
@@ -169,10 +167,10 @@ Kotlin/Java Backend
    
     static class TestDto {
       private String field;    
-      void setField(String value) {
+      public void setField(String value) {
         this.field = value;
       }
-      String getField() {
+      public String getField() {
         return field;
       }
     } 
@@ -187,7 +185,7 @@ Kotlin/Java Backend
     TestDto value = new TestDto();
     value.setField("field-value");
   
-    String attributeValue = recordsService.getAtt(value, "someKey").asText();
+    String attributeValue = recordsService.getAtt(value, "field").asText();
     System.out.println(attributeValue); // field-value
 
 Если же мы хотим изменить имя атрибута не меняя названия методов, то можно воспользоваться аннотацией ``AttName``:
@@ -196,11 +194,11 @@ Kotlin/Java Backend
 
     static class TestDto {
       private String field;    
-      void setField(String value) {
+      public void setField(String value) {
         this.field = value;
       }
       @AttName("otherName")
-      String getField() {
+      public String getField() {
         return field;
       }
     }
@@ -230,7 +228,7 @@ Kotlin/Java Backend
      }
    }
    static class ChildDto {
-      public String getValue(): String {
+      public String getValue() {
         return "abc"; // геттер не обязательно должен отдавать значение поля. Его поведение может быть произвольным
       }
    }
@@ -239,7 +237,7 @@ Kotlin/Java Backend
    
    // Если бы аннотация AttName отсутствовала, то до значения 'abc' мы бы могли добраться так:
    // recordsService.getAtt(value, "child.value").asText();
-   // Но с аннотацией @AttValue("...") можно обращаться к вложенному атрибуту так:
+   // Но с аннотацией @AttName("...") можно обращаться к вложенному атрибуту так:
    
    String attributeValue = recordsService.getAtt(value, "value").asText();
    System.out.println(attributeValue); // abc
@@ -247,7 +245,7 @@ Kotlin/Java Backend
 Так же особое значение имеют аннотации ``AttName`` где в качестве аргумента указан один из скаляров с вопросительным знаком. 
 Например: ``@AttName("?str")``. Такие геттеры вызываются при загрузке скаляров.
 
-``BeanValueFactory`` так же ищет в бине ряд специальных методов по их имени и аргументам (тип возвращаемого значения не важен):
+``BeanValueFactory`` также ищет в бине ряд специальных методов по их имени и аргументам. Возвращаемое значение должно соответствовать назначению метода:
 
 .. code-block:: java
   
@@ -260,8 +258,8 @@ Kotlin/Java Backend
   Object getAsBin() // значение для скаляра "?bin"
   Object getEcosType() // значение для атрибута "_type"
   Object getAs(String name) // значение для спец. атрибута "_as"
-  Object has(String name) // значение для спец. атрибута "_has"
-  Object getEdge(String name) // значение для спец. атрибута "_edge"
+  boolean has(String name) // значение для спец. атрибута "_has"
+  AttEdge getEdge(String name) // значение для спец. атрибута "_edge"
   Object getAtt(String name) // Значение атрибута по имени если не получилось найти геттер для него
 
 Для отображаемого имени нашего бина ``BeanValueFactory`` ищет следующие методы в порядке убывания приоритета (используется первый найденный):
@@ -297,4 +295,4 @@ Kotlin/Java Backend
     data.set("arr", new LinkedList<Object>());
     data.add("$.arr", "new-element");
 
-Формат с **$** — стандарт `JsonPath <https://goessner.net/articles/JsonPath/>`_.  
+Формат с **$** — стандарт `JsonPath <https://goessner.net/articles/JsonPath/>`_. Методы ``ObjectData`` предоставляются библиотекой ``ecos-commons``.

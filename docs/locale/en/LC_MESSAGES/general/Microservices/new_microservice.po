@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -78,13 +78,11 @@ msgstr ""
 
 #: ../../general/Microservices/new_microservice.rst:23
 msgid ""
-"Результат описанных ниже инструкций можно посмотреть здесь: `Citeck/ecos-"
-"webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main"
-"/minimal-sample>`_"
-msgstr ""
-"The result of the instructions described below can be viewed here: "
-"`Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-"
-"sample/tree/main/minimal-sample>`_"
+"Пример минимального проекта: `Citeck/ecos-webapp-sample "
+"<https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-"
+"sample>`_. Версии зависимостей примера следует согласовать с используемым"
+" выпуском платформы."
+msgstr "Minimal project example: `Citeck/ecos-webapp-sample <https://github.com/Citeck/ecos-webapp-sample/tree/main/minimal-sample>`_. Align its dependency versions with the platform release in use."
 
 #: ../../general/Microservices/new_microservice.rst:26
 msgid "Создание микросервиса в интегрированной среде разработки"
@@ -156,31 +154,45 @@ msgstr ""
 
 #: ../../general/Microservices/new_microservice.rst:49
 msgid ""
-"Актуальная версия родительских pom файлов: **3.22.9 (версия Java не ниже "
-"25)**"
-msgstr ""
-"Current version of parent pom files: **3.22.9 (Java version not lower "
-"than 25)**"
+"Версию родительского POM выбирайте в соответствии с используемым выпуском"
+" платформы и требованиями его библиотек. Например, на 10.11.2026 в ветках"
+" ``develop`` сервисов ``ecos-model`` и ``ecos-integrations`` используются"
+" версии ``hibernate-parent`` **3.39.0** и **3.38.5** соответственно, а в "
+"``ecos-uiserv`` и ``ecos-notifications`` — **3.37.1**. Это примеры "
+"используемых версий, а не указание последнего релиза для всех parent POM."
+msgstr "Choose the parent POM version according to the platform release and library requirements. For example, on November 10, 2026, the ``develop`` branches of ``ecos-model`` and ``ecos-integrations`` use ``hibernate-parent`` **3.39.0** and **3.38.5**, respectively, while ``ecos-uiserv`` and ``ecos-notifications`` use **3.37.1**. These are examples in use, not the latest release for every parent POM."
 
 #: ../../general/Microservices/new_microservice.rst:51
 msgid ""
-"Все родительские pom файлы импортируют spring-boot зависимости, общие "
-"библиотеки Citeck и дополнительные библиотеки для тестирования (rabbitmq "
-"mock, zookeeper mock и тд.)"
-msgstr ""
-"All parent **pom files** import spring-boot dependencies, common Citeck "
-"libraries, and additional libraries for testing (rabbitmq mock, zookeeper"
-" mock, etc.)"
+"JDK и Maven должны соответствовать требованиям выбранного parent POM. В "
+"CI перечисленных ``ecos-model``, ``ecos-integrations`` и ``ecos-"
+"notifications`` используется **JDK 25**. Требования предыдущих выпусков "
+"могут отличаться."
+msgstr "JDK and Maven must meet the requirements of the selected parent POM. CI for the listed ``ecos-model``, ``ecos-integrations`` and ``ecos-notifications`` services uses **JDK 25**. Earlier releases may have different requirements."
 
 #: ../../general/Microservices/new_microservice.rst:53
-msgid "Пример настроенного pom файла:"
-msgstr "Example of a configured **pom file**:"
+msgid ""
+"Родительские POM управляют версиями зависимостей Spring Boot и библиотек "
+"Citeck. Состав тестовых зависимостей и настройки сборки зависят от "
+"выбранного parent и его версии. Для загрузки зависимостей нужен доступ к "
+"настроенным Maven-репозиториям."
+msgstr "Parent POMs manage Spring Boot and Citeck library dependency versions. Test dependencies and build settings depend on the selected parent and version. Downloading dependencies requires access to the configured Maven repositories."
 
-#: ../../general/Microservices/new_microservice.rst:82
+#: ../../general/Microservices/new_microservice.rst:55
+msgid ""
+"Пример структуры POM с ``simple-parent`` приведён ниже. В нём "
+"используется фиксированная версия **3.22.9**; перед созданием проекта "
+"замените её совместимой версией ``simple-parent`` для вашего окружения. "
+"Наличие нужного выпуска проверяйте для выбранного артефакта: версии "
+"``simple-parent`` и ``hibernate-parent`` нужно согласовать с их "
+"зависимостями."
+msgstr "An example POM structure with ``simple-parent`` is shown below. It uses fixed version **3.22.9**; before creating a project, replace it with a compatible ``simple-parent`` version for your environment. Check release availability for the selected artifact: align ``simple-parent`` and ``hibernate-parent`` versions with their dependencies."
+
+#: ../../general/Microservices/new_microservice.rst:84
 msgid "Главный класс приложения"
 msgstr "Application Main Class"
 
-#: ../../general/Microservices/new_microservice.rst:84
+#: ../../general/Microservices/new_microservice.rst:86
 msgid ""
 "Следующим шагом нужно создать **главный класс** для запуска spring-boot "
 "приложения по следующему пути:"
@@ -188,7 +200,7 @@ msgstr ""
 "The next step is to create a **main class** to run the spring-boot "
 "application at the following path:"
 
-#: ../../general/Microservices/new_microservice.rst:90
+#: ../../general/Microservices/new_microservice.rst:92
 msgid ""
 "``ru/citeck/ecos/webapp/sample/minimal`` — java пакет для нашего "
 "приложения, который может быть произвольным;"
@@ -196,7 +208,7 @@ msgstr ""
 "``ru/citeck/ecos/webapp/sample/minimal`` - java package for our "
 "application, which can be arbitrary;"
 
-#: ../../general/Microservices/new_microservice.rst:92
+#: ../../general/Microservices/new_microservice.rst:94
 msgid ""
 "``MinimalWebAppSample.java`` — файл с основным классом для запуска "
 "приложения. Может быть произвольным. Есть поддержка как Kotlin так и Java"
@@ -205,35 +217,31 @@ msgstr ""
 "``MinimalWebAppSample.java`` - file with the main class to run the "
 "application. Can be arbitrary. Both Kotlin and Java files are supported."
 
-#: ../../general/Microservices/new_microservice.rst:94
+#: ../../general/Microservices/new_microservice.rst:96
 msgid "Содержимое основного класса:"
 msgstr "Main class content:"
 
-#: ../../general/Microservices/new_microservice.rst:115
-#: ../../general/Microservices/new_microservice.rst:211
-#: ../../general/Microservices/new_microservice.rst:240
+#: ../../general/Microservices/new_microservice.rst:117
+#: ../../general/Microservices/new_microservice.rst:213
+#: ../../general/Microservices/new_microservice.rst:249
 msgid "где"
 msgstr "where"
 
-#: ../../general/Microservices/new_microservice.rst:117
-msgid ""
-"``public static final String NAME = \"minimal-webapp\";`` - имя "
-"приложения (app name). Оно должно быть уникально в пределах всех "
-"остальных микросервисов. На этом имени основано много механизмов:"
-msgstr ""
-"``public static final String NAME = \"minimal-webapp\";`` - application "
-"name (app name). It must be unique among all other microservices. Many "
-"mechanisms are based on this name:"
-
 #: ../../general/Microservices/new_microservice.rst:119
 msgid ""
-"Распределенный кэш hazelcast формируется между микросервисами с одним "
-"именем;"
-msgstr ""
-"Distributed hazelcast cache is formed between microservices with the same"
-" name;"
+"``public static final String NAME = \"minimal-webapp\";`` — имя "
+"приложения (app name). Выберите отдельное имя для нового сервиса; "
+"экземпляры одного сервиса используют одинаковое имя. Оно применяется в "
+"нескольких механизмах платформы:"
+msgstr "``public static final String NAME = \"minimal-webapp\";`` is the application name. Choose a distinct name for a new service; instances of the same service share a name. It is used in several platform mechanisms:"
 
 #: ../../general/Microservices/new_microservice.rst:121
+msgid ""
+"При использовании распределённого кэша Hazelcast одноимённые экземпляры "
+"сервиса объединяются согласно настройкам кэша;"
+msgstr "When using the Hazelcast distributed cache, instances with the same service name join according to cache settings;"
+
+#: ../../general/Microservices/new_microservice.rst:123
 msgid ""
 "Commands API работает на базе этого имени. При отправке команды мы "
 "указываем имя приложения и сообщение уходит в персональную очередь для "
@@ -243,7 +251,7 @@ msgstr ""
 " the application name and the message goes to the personal queue for this"
 " application;"
 
-#: ../../general/Microservices/new_microservice.rst:123
+#: ../../general/Microservices/new_microservice.rst:125
 msgid ""
 "Records API работает на базе этого имени. Имя приложения используется при"
 " поиске и указывается в sourceId до символа “/\" (напр. emodel/person). "
@@ -255,11 +263,11 @@ msgstr ""
 "emodel/person). Entity references are formed taking into account the "
 "application name (e.g., emodel/person@someuser);"
 
-#: ../../general/Microservices/new_microservice.rst:125
+#: ../../general/Microservices/new_microservice.rst:127
 msgid "Service discovery механизм работает на основе имени приложения."
 msgstr "Service discovery mechanism works based on the application name."
 
-#: ../../general/Microservices/new_microservice.rst:127
+#: ../../general/Microservices/new_microservice.rst:129
 msgid ""
 "``EcosSpringApplication`` — наше расширение штатного SpringApplication. "
 "Для корректной работы микросервиса нужно использовать "
@@ -269,74 +277,85 @@ msgstr ""
 "SpringApplication. For the microservice to work correctly, "
 "EcosSpringApplication must be used."
 
-#: ../../general/Microservices/new_microservice.rst:130
+#: ../../general/Microservices/new_microservice.rst:132
 msgid "Файл настроек"
 msgstr "Settings File"
 
-#: ../../general/Microservices/new_microservice.rst:132
+#: ../../general/Microservices/new_microservice.rst:134
 msgid "Создать **файл с настройками** по пути (опционально):"
 msgstr "Create a **settings file** at the path (optional):"
 
-#: ../../general/Microservices/new_microservice.rst:138
-#: ../../general/Microservices/new_microservice.rst:217
+#: ../../general/Microservices/new_microservice.rst:140
 msgid "Содержимое файла:"
 msgstr "File content:"
 
-#: ../../general/Microservices/new_microservice.rst:146
-msgid "В этом файле можно разместить настройки приложения."
-msgstr "Application settings can be placed in this file."
+#: ../../general/Microservices/new_microservice.rst:148
+msgid ""
+"В этом файле можно разместить настройки приложения. Пример задаёт только "
+"HTTP-порт. Для подключения к платформе настройте используемые сервисом "
+"Service Discovery, транспорт сообщений и источники данных согласно "
+"конфигурации окружения. Набор обязательных подключений зависит от функций"
+" сервиса и выбранного parent POM."
+msgstr "This file can hold application settings. The example sets only the HTTP port. To connect to the platform, configure the service's Service Discovery, message transport and data sources for the environment. Required connections depend on service features and the selected parent POM."
 
-#: ../../general/Microservices/new_microservice.rst:149
+#: ../../general/Microservices/new_microservice.rst:151
 msgid "Логирование"
 msgstr "Logging"
 
-#: ../../general/Microservices/new_microservice.rst:151
+#: ../../general/Microservices/new_microservice.rst:153
 msgid "Добавить **файл для настройки логирования**:"
 msgstr "Add a **file for logging configuration**:"
 
-#: ../../general/Microservices/new_microservice.rst:157
+#: ../../general/Microservices/new_microservice.rst:159
 msgid "со следующим содержимым:"
 msgstr "with the following content:"
 
-#: ../../general/Microservices/new_microservice.rst:168
+#: ../../general/Microservices/new_microservice.rst:170
 msgid "Запуск"
 msgstr "Running"
 
-#: ../../general/Microservices/new_microservice.rst:170
-msgid "Для запуска микросервиса локально использовать команду:"
-msgstr "To run the microservice locally, use the command:"
+#: ../../general/Microservices/new_microservice.rst:172
+msgid ""
+"Перед запуском проверьте выбранный JDK, доступ к зависимостям и "
+"необходимым внешним сервисам. Для запуска микросервиса локально с parent,"
+" подключающим ``spring-boot-maven-plugin``, используйте команду из корня "
+"проекта:"
+msgstr "Before starting, check the selected JDK, dependency access and required external services. To run the microservice locally with a parent providing ``spring-boot-maven-plugin``, execute from the project root:"
 
-#: ../../general/Microservices/new_microservice.rst:176
+#: ../../general/Microservices/new_microservice.rst:178
 msgid "Или стандартные механизмы IDE для запуска spring-boot приложений."
 msgstr "Or standard IDE mechanisms for running spring-boot applications."
 
-#: ../../general/Microservices/new_microservice.rst:179
+#: ../../general/Microservices/new_microservice.rst:181
 msgid "Тестирование"
 msgstr "Testing"
 
-#: ../../general/Microservices/new_microservice.rst:181
+#: ../../general/Microservices/new_microservice.rst:183
 msgid "Создать файл с **настройками логирования для тестов** (опционально):"
 msgstr "Create a file with **logging settings for tests** (optional):"
 
-#: ../../general/Microservices/new_microservice.rst:187
+#: ../../general/Microservices/new_microservice.rst:189
 msgid "с содержимым:"
 msgstr "with content:"
 
-#: ../../general/Microservices/new_microservice.rst:197
+#: ../../general/Microservices/new_microservice.rst:199
 msgid "Создать файл с **настройками для автотестов** (опционально):"
 msgstr "Create a file with **settings for autotests** (optional):"
 
-#: ../../general/Microservices/new_microservice.rst:203
-msgid ""
-"В этом файле можно разместить настройки, которые будут использованы "
-"только во время авто-тестов."
-msgstr "This file can contain settings that will be used only during autotests."
-
 #: ../../general/Microservices/new_microservice.rst:205
+msgid ""
+"В этом файле можно разместить настройки тестового профиля. Ресурсы из "
+"``src/test/resources`` доступны тестам и не включаются в основной "
+"артефакт приложения. Файл ``application-test.yml`` загружается при "
+"активном профиле ``test``; в примере ниже он включён явно через "
+"``@ActiveProfiles(\"test\")``."
+msgstr "This file can hold test profile settings. Resources in ``src/test/resources`` are available to tests and excluded from the main application artifact. ``application-test.yml`` loads when the ``test`` profile is active; the example below explicitly enables it with ``@ActiveProfiles(\"test\")``."
+
+#: ../../general/Microservices/new_microservice.rst:207
 msgid "Создать **файл для тестирования микросервиса**:"
 msgstr "Create a **file for testing the microservice**:"
 
-#: ../../general/Microservices/new_microservice.rst:213
+#: ../../general/Microservices/new_microservice.rst:215
 msgid ""
 "``ru/citeck/ecos/webapp/sample/minimal`` — java пакет с тестами. Может "
 "быть любым, но крайне желательно размещать тесты в том же пакете или "
@@ -347,21 +366,27 @@ msgstr ""
 "or subpackages as the main class from the \"Application Main Class\" "
 "section;"
 
-#: ../../general/Microservices/new_microservice.rst:215
+#: ../../general/Microservices/new_microservice.rst:217
 msgid "``MinimalWebAppSampleTest.java`` — имя файла с тестами. Может быть любым."
 msgstr "``MinimalWebAppSampleTest.java`` - name of the test file. Can be any."
 
-#: ../../general/Microservices/new_microservice.rst:242
+#: ../../general/Microservices/new_microservice.rst:219
 msgid ""
-"``EcosSpringExtension`` — расширения Citeck для SpringExtension, которое "
-"позволяет запускать в автотестах полноценный spring-context с in-memory "
-"БД (если для неё заданы настройки подключения в application.yml);"
-msgstr ""
-"``EcosSpringExtension`` - Citeck extension for SpringExtension, which "
-"allows running a full spring-context with in-memory database in autotests"
-" (if connection settings are specified for it in application.yml);"
+"Пример smoke-теста загрузки Spring-контекста и регистрации главного "
+"класса приложения:"
+msgstr "Example smoke test for Spring context loading and main application class registration:"
 
-#: ../../general/Microservices/new_microservice.rst:244
+#: ../../general/Microservices/new_microservice.rst:251
+msgid ""
+"``EcosSpringExtension`` — расширение Citeck для интеграции с тестовым "
+"Spring-контекстом и тестовой инфраструктурой. Тип БД, mocks и "
+"необходимость контейнерного окружения зависят от версии библиотек и "
+"настроек. Например, тестовая инфраструктура WebApp поддерживает "
+"PostgreSQL в контейнере; наличие расширения само по себе не гарантирует "
+"использование in-memory БД;"
+msgstr "``EcosSpringExtension`` is a Citeck extension integrating the test Spring context and test infrastructure. The database type, mocks and container requirements depend on library versions and settings. For example, the WebApp test infrastructure supports PostgreSQL in a container; the extension alone does not guarantee an in-memory database;"
+
+#: ../../general/Microservices/new_microservice.rst:253
 msgid ""
 "``MinimalWebAppSample.class`` — класс из раздела «Главный класс "
 "приложения»."
@@ -369,64 +394,108 @@ msgstr ""
 "``MinimalWebAppSample.class`` - class from the \"Application Main Class\""
 " section."
 
-#: ../../general/Microservices/new_microservice.rst:246
+#: ../../general/Microservices/new_microservice.rst:255
+msgid ""
+"Такой тест проверяет загрузку контекста. Проверки бизнес-логики и "
+"взаимодействия через Records API добавляйте отдельно для компонентов "
+"вашего сервиса."
+msgstr "This test checks context loading. Add separate business logic and Records API interaction tests for your service components."
+
+#: ../../general/Microservices/new_microservice.rst:257
 msgid "Для запуска автотестов нужно выполнить следующую команду:"
 msgstr "To run autotests, you need to execute the following command:"
 
-#: ../../general/Microservices/new_microservice.rst:253
+#: ../../general/Microservices/new_microservice.rst:264
 msgid "Сборка"
 msgstr "Build"
 
-#: ../../general/Microservices/new_microservice.rst:255
-msgid "Для сборки docker образа с микросервисом выполнить следующую команду:"
-msgstr ""
-"To build a docker image with the microservice, execute the following "
-"command:"
-
-#: ../../general/Microservices/new_microservice.rst:263
-msgid "При сборке внутри контейнера обязательно должны быть файлы для запуска:"
-msgstr ""
-"When building inside a container, the following startup files must be "
-"present:"
-
-#: ../../general/Microservices/new_microservice.rst:265
-msgid "/entrypoint.sh"
-msgstr "/entrypoint.sh"
-
 #: ../../general/Microservices/new_microservice.rst:266
-msgid "/app/jib-classpath-file"
-msgstr "/app/jib-classpath-file"
+msgid ""
+"Для сборки Docker-образа нужен доступный Docker daemon, JDK выбранного "
+"выпуска и доступ к зависимостям и базовому образу. Следующая команда "
+"рассчитана на parent с подключёнными ``jib-maven-plugin`` и ``ecos-"
+"webapp-maven-plugin``. При использовании ``base-parent`` эти плагины и их"
+" выполнения в жизненном цикле Maven нужно настроить отдельно."
+msgstr "Building the Docker image requires an available Docker daemon, the JDK for the selected release, and access to dependencies and the base image. The following command assumes a parent with ``jib-maven-plugin`` and ``ecos-webapp-maven-plugin`` configured. With ``base-parent``, configure these plugins and their Maven lifecycle executions separately."
 
-#: ../../general/Microservices/new_microservice.rst:267
-msgid "/app/jib-main-class-file"
-msgstr "/app/jib-main-class-file"
+#: ../../general/Microservices/new_microservice.rst:268
+msgid "Из корня проекта выполните:"
+msgstr "From the project root, run:"
 
-#: ../../general/Microservices/new_microservice.rst:270
+#: ../../general/Microservices/new_microservice.rst:276
+msgid "В стандартной конфигурации образа entrypoint использует следующие файлы:"
+msgstr "In the standard image configuration, the entrypoint uses the following files:"
+
+#: ../../general/Microservices/new_microservice.rst:278
+msgid "``/entrypoint.sh``;"
+msgstr "``/entrypoint.sh``;"
+
+#: ../../general/Microservices/new_microservice.rst:279
+msgid "``/app/jib-classpath-file``;"
+msgstr "``/app/jib-classpath-file``;"
+
+#: ../../general/Microservices/new_microservice.rst:280
+msgid "``/app/jib-main-class-file``."
+msgstr "``/app/jib-main-class-file``."
+
+#: ../../general/Microservices/new_microservice.rst:282
+msgid ""
+"Подготовку скрипта запуска выполняет цель ``prepare-image`` плагина "
+"``ecos-webapp-maven-plugin``; Jib добавляет подготовленные файлы в образ "
+"и формирует файлы classpath и главного класса. В подключающем эти "
+"настройки parent они выполняются при стандартной сборке. Если "
+"конфигурация плагинов изменена, проверьте выполнение подготовки образа и "
+"соответствие путей его entrypoint."
+msgstr "The ``prepare-image`` goal of ``ecos-webapp-maven-plugin`` prepares the launch script; Jib adds the prepared files to the image and generates the classpath and main class files. With a parent enabling these settings, they run during the standard build. If plugin configuration changes, check image preparation and that paths match the entrypoint."
+
+#: ../../general/Microservices/new_microservice.rst:284
+#, python-brace-format
+msgid ""
+"В конфигурации parent, использующей "
+"``${project.artifactId}:${jib.docker.image.tag}``, приведённая команда "
+"создаёт образ с тегом ``1.0.0-snapshot`` в локальном Docker daemon."
+msgstr "With a parent configuration using ``${project.artifactId}:${jib.docker.image.tag}``, this command creates an image tagged ``1.0.0-snapshot`` in the local Docker daemon."
+
+#: ../../general/Microservices/new_microservice.rst:287
 msgid "Проверка версии в интерфейсе"
 msgstr "Checking the Version in the Interface"
 
-#: ../../general/Microservices/new_microservice.rst:272
+#: ../../general/Microservices/new_microservice.rst:289
 msgid ""
-"В списке модулей системы (раздел ID) отображается имя репозитория — "
-"свойство ``repo``, которое загружается из файла ``build-info.json``:"
-msgstr ""
-"In the list of system modules (ID section), the repository name — the "
-"``repo`` property — is displayed, which is loaded from the ``build-"
-"info.json`` file:"
+"В списке модулей системы UI использует поле ``label`` как ID и название "
+"модуля. Версия и дата сборки загружаются из ``info.version`` и "
+"``info.buildDate`` источника build-info. Поле ``info.repo`` используется "
+"отдельно для сведений о репозиториях и коммитах; оно не является прямым "
+"источником столбца ID."
+msgstr "In the system module list, the UI uses ``label`` as the module ID and name. Version and build date are loaded from ``info.version`` and ``info.buildDate`` in the build-info source. ``info.repo`` is used separately for repository and commit details; it does not directly populate the ID column."
 
-#: ../../general/Microservices/new_microservice.rst:278
+#: ../../general/Microservices/new_microservice.rst:295
+msgid ""
+"Метаданные сборки создаёт цель ``build-info`` плагина ``ecos-webapp-"
+"maven-plugin``. При стандартной конфигурации ресурсы находятся по путям:"
+msgstr "Build metadata is generated by the ``build-info`` goal of ``ecos-webapp-maven-plugin``. With standard configuration, resources are located at:"
+
+#: ../../general/Microservices/new_microservice.rst:297
 msgid "в проекте — ``target/classes/ecos/build-info.json``;"
 msgstr "in the project — ``target/classes/ecos/build-info.json``;"
 
-#: ../../general/Microservices/new_microservice.rst:279
-msgid "в контейнере — ``/app/resources/ecos/build-info.json``."
-msgstr "in the container — ``/app/resources/ecos/build-info.json``."
+#: ../../general/Microservices/new_microservice.rst:298
+msgid ""
+"в образе Jib со стандартной раскладкой приложения — ``/app/resources/ecos"
+"/build-info.json``."
+msgstr "In a Jib image with the standard application layout: ``/app/resources/ecos/build-info.json``."
 
-#: ../../general/Microservices/new_microservice.rst:282
+#: ../../general/Microservices/new_microservice.rst:300
+msgid ""
+"При изменении расположения ресурсов или конфигурации образа пути могут "
+"отличаться."
+msgstr "Paths may differ if the resource location or image configuration changes."
+
+#: ../../general/Microservices/new_microservice.rst:303
 msgid "Создание микросервиса с использованием плагина для IntelliJ IDEA"
 msgstr "Creating a Microservice Using the IntelliJ IDEA Plugin"
 
-#: ../../general/Microservices/new_microservice.rst:284
+#: ../../general/Microservices/new_microservice.rst:305
 msgid ""
 "Быстрее и удобнее создавать микросервис с использованием плагина для "
 "IntelliJ IDEA см. :ref:`как <plugin_app_mks>`."
@@ -440,3 +509,99 @@ msgstr ""
 #~ msgid "В списке модулей системы в ID:"
 #~ msgstr "In the system modules list in ID:"
 
+#~ msgid ""
+#~ "Актуальная версия родительских pom файлов: "
+#~ "**3.22.9 (версия Java не ниже 25)**"
+#~ msgstr ""
+#~ "Current version of parent pom files: "
+#~ "**3.22.9 (Java version not lower than"
+#~ " 25)**"
+
+#~ msgid ""
+#~ "Все родительские pom файлы импортируют "
+#~ "spring-boot зависимости, общие библиотеки "
+#~ "Citeck и дополнительные библиотеки для "
+#~ "тестирования (rabbitmq mock, zookeeper mock"
+#~ " и тд.)"
+#~ msgstr ""
+#~ "All parent **pom files** import "
+#~ "spring-boot dependencies, common Citeck "
+#~ "libraries, and additional libraries for "
+#~ "testing (rabbitmq mock, zookeeper mock, "
+#~ "etc.)"
+
+#~ msgid "Пример настроенного pom файла:"
+#~ msgstr "Example of a configured **pom file**:"
+
+#~ msgid ""
+#~ "``public static final String NAME = "
+#~ "\"minimal-webapp\";`` - имя приложения "
+#~ "(app name). Оно должно быть уникально"
+#~ " в пределах всех остальных микросервисов."
+#~ " На этом имени основано много "
+#~ "механизмов:"
+#~ msgstr ""
+#~ "``public static final String NAME = "
+#~ "\"minimal-webapp\";`` - application name "
+#~ "(app name). It must be unique "
+#~ "among all other microservices. Many "
+#~ "mechanisms are based on this name:"
+
+#~ msgid ""
+#~ "Распределенный кэш hazelcast формируется между"
+#~ " микросервисами с одним именем;"
+#~ msgstr ""
+#~ "Distributed hazelcast cache is formed "
+#~ "between microservices with the same "
+#~ "name;"
+
+#~ msgid "В этом файле можно разместить настройки приложения."
+#~ msgstr "Application settings can be placed in this file."
+
+#~ msgid "Для запуска микросервиса локально использовать команду:"
+#~ msgstr "To run the microservice locally, use the command:"
+
+#~ msgid ""
+#~ "В этом файле можно разместить настройки,"
+#~ " которые будут использованы только во "
+#~ "время авто-тестов."
+#~ msgstr "This file can contain settings that will be used only during autotests."
+
+#~ msgid ""
+#~ "``EcosSpringExtension`` — расширения Citeck "
+#~ "для SpringExtension, которое позволяет "
+#~ "запускать в автотестах полноценный spring-"
+#~ "context с in-memory БД (если для"
+#~ " неё заданы настройки подключения в "
+#~ "application.yml);"
+#~ msgstr ""
+#~ "``EcosSpringExtension`` - Citeck extension for"
+#~ " SpringExtension, which allows running a"
+#~ " full spring-context with in-memory"
+#~ " database in autotests (if connection "
+#~ "settings are specified for it in "
+#~ "application.yml);"
+
+#~ msgid "Для сборки docker образа с микросервисом выполнить следующую команду:"
+#~ msgstr ""
+#~ "To build a docker image with the"
+#~ " microservice, execute the following "
+#~ "command:"
+
+#~ msgid "При сборке внутри контейнера обязательно должны быть файлы для запуска:"
+#~ msgstr ""
+#~ "When building inside a container, the"
+#~ " following startup files must be "
+#~ "present:"
+
+#~ msgid ""
+#~ "В списке модулей системы (раздел ID) "
+#~ "отображается имя репозитория — свойство "
+#~ "``repo``, которое загружается из файла "
+#~ "``build-info.json``:"
+#~ msgstr ""
+#~ "In the list of system modules (ID"
+#~ " section), the repository name — the"
+#~ " ``repo`` property — is displayed, "
+#~ "which is loaded from the ``build-"
+#~ "info.json`` file:"

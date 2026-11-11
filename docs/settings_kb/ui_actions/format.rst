@@ -1,135 +1,126 @@
 .. _ui_actions_format:
 
 Формат действия и получение действий по записи
-================================================
+==============================================
 
-Описание полей действия и способы запросить доступные действия для записей через API.
+Общие поля действия и получение доступных действий через клиентский Records API.
 
 .. contents::
     :depth: 2
 
 Описание формата
-------------------
+----------------
 
 .. list-table::
-      :widths: 3 3 10
-      :header-rows: 1
-      :class: tight-table
-      :align: center
+    :widths: 20 15 65
+    :header-rows: 1
+    :class: tight-table
 
-      * - Имя
-        - Тип
-        - Описание
-      * - **id**
-        - String
-        - | Идентификатор действия.
-          | Уникальный среди всех действий в системе
-      * - **key**
-        - String
-        - | Ключ, по которому возможна фильтрация.
-          | Должен быть в формате **word0.word1.word2**, чтобы можно было фильтровать по маске.
-      * - **name**
-        - String
-        - Имя действия, которое увидит пользователь
-      * - **type**
-        - String
-        - | Тип действия.
-          | Тип определяет логику, которая будет выполнена при выполнении действия.
-      * - **icon**
-        - String
-        - | Иконка действия. Пример "icon-delete", "icon-on".
-          | Все иконки можно посмотреть в ``citeck/ecos-ui/src/fonts/citeck/demo.html``
-      * - **config**
-        - JsonObject
-        - | Конфигурация действия.
-          | Полезно в случаях, когда один тип действия может на основе конфигурации менять свое поведение.
-          | Например - для действия с типом **Download** можно задать шаблон URI для скачивания контента.
-      * - **predicate**
-        - Predicate
-        - | Используется для динамического определения доступности действия для пользователя. Подробно о :ref:`предикатах <ecos-predicate_main>`
-          | Например, действия **Редактировать** и **Удалить** не могут выполнять пользователи без прав на запись и для них эти действия скрываются.
+    * - Поле
+      - Тип
+      - Описание
+    * - ``id``
+      - String
+      - Идентификатор действия. Для обращения через Records используется полная ссылка ``uiserv/action@<id>``, учитывающая пространство имён действия.
+    * - ``name``
+      - String / MLText
+      - Название действия: строка или объект локализаций, например ``{"ru": "Открыть", "en": "Open"}``.
+    * - ``pluralName``
+      - String / MLText
+      - Название для нескольких записей. Если не задано, используется ``name``.
+    * - ``type``
+      - String
+      - Идентификатор зарегистрированного обработчика, например ``download`` или ``mutate``.
+    * - ``icon``
+      - String
+      - Код иконки, например ``icon-delete``. Каталог иконок в ecos-ui: ``src/fonts/citeck/demo.html``.
+    * - ``theme``
+      - String
+      - Тема оформления действия.
+    * - ``config``
+      - Object
+      - Параметры выбранного типа. Например, ``config.url`` для ``download`` задаёт URL скачивания.
+    * - ``features``
+      - Object
+      - Применимость: ``execForRecord``, ``execForRecords``, ``execForQuery``. Возможности ограничены методами исполнителя.
+    * - ``confirm``
+      - Object
+      - Заголовок, сообщение или форма подтверждения; исходные данные формы и перенос введённых значений в конфигурацию.
+    * - ``preActionModule``
+      - String
+      - URL модуля предобработки.
+    * - ``execForRecordsBatchSize``
+      - Number
+      - Размер пакета при групповом выполнении; значение ``0`` не включает разбиение на пакеты.
+    * - ``execForRecordsParallelBatchesCount``
+      - Number
+      - Настройка обработки пакетов. Значение ``1`` используется для последовательной обработки.
+    * - ``execForQueryConfig``
+      - Object
+      - Настройки выполнения запроса. ``execAsForRecords`` включает обработку найденных записей через групповой режим, если режим запроса доступен у исполнителя.
+    * - ``predicate`` / ``evaluator``
+      - Object
+      - Серверные условия доступности действия. Фронтенд получает результат их проверки; правила зависят от серверной конфигурации. См. :ref:`Предикаты <ecos-predicate_main>`.
+    * - ``key``
+      - String
+      - Ключ для серверной фильтрации действий. Общий механизм выполнения фронтенда не использует его для выбора исполнителя — для этого служит ``type``.
 
+Подробности подтверждения, подстановок и предобработки см. в разделе :ref:`Общие настройки <ui_actions_frontend_settings>`.
 
 Получение действий по записи
-------------------------------
-Для запроса действий отправляется следующий запрос:
+----------------------------
+
+Текущий клиент ecos-ui запрашивает источник ``uiserv/record-actions``. Ниже приведён вызов JavaScript Records API с сокращённой схемой атрибутов:
+
+.. code-block:: javascript
+
+    const result = await Records.queryOne(
+      {
+        sourceId: 'uiserv/record-actions',
+        query: {
+          records: [
+            'emodel/someType@bb617ee9-e085-4a3a-8fbf-df2d9534eadb',
+            'emodel/someType@74c11ef8-8c63-40c1-b119-94feefd7f885'
+          ],
+          actions: ['uiserv/action@edit', 'uiserv/action@delete']
+        }
+      },
+      {
+        records: 'records[]?num',
+        actions: 'actions[]{id,name,icon,type,config:config?json,features:features?json}'
+      }
+    );
+
+Пример результата этого вызова:
 
 .. code-block:: json
 
- {
-    "query": {
-        "records": [
-            "emodel/someType@bb617ee9-e085-4a3a-8fbf-df2d9534eadb",
-            "emodel/someType@74c11ef8-8c63-40c1-b119-94feefd7f885"
-        ],
-        "actions": [
-            "ui/action$delete",
-            "ui/action$edit"
-        ]
-    }
- }
-
-Ответ:
-
-.. code-block:: json
-
- [
     {
-        "record": "emodel/someType@bb617ee9-e085-4a3a-8fbf-df2d9534eadb",
-        "actions": [
-            {
-                "icon": "edit",
-                "key": "...",
-                "type": "mutate",
-                "config": {}
-            },
-            {
-                "icon": "delete",
-                "key": "...",
-                "type": "delete",
-                "config": {}
-            }
-        ]
-    },
-    {
-        "record": "emodel/someType@74c11ef8-8c63-40c1-b119-94feefd7f885",
-        "actions": [
-            {
-                "icon": "edit",
-                "id": "...",
-                "type": "mutate",
-                "config": {}
-            },
-            {
-                "icon": "delete",
-                "id": "...",
-                "type": "delete",
-                "config": {}
-            }
-        ]
+      "records": [3, 2],
+      "actions": [
+        {
+          "id": "uiserv/action@edit",
+          "name": "Редактировать",
+          "icon": "icon-edit",
+          "type": "edit",
+          "config": {},
+          "features": {"execForRecord": true}
+        },
+        {
+          "id": "uiserv/action@delete",
+          "name": "Удалить",
+          "icon": "icon-delete",
+          "type": "delete",
+          "config": {},
+          "features": {"execForRecord": true, "execForRecords": true}
+        }
+      ]
     }
- ]
 
-Также доступен вариант раздельного указания действий по записям:
+Массив ``records`` содержит числовые маски доступности в порядке запрошенных записей. Бит ``1 << actionIndex`` соответствует позиции действия в массиве ``actions``. В примере маска ``3`` разрешает оба действия для первой записи, а ``2`` — только второе для второй.
 
-.. code-block:: json
+Рабочий клиент дополнительно запрашивает ``pluralName``, ``preActionModule``, ``confirm`` и настройки пакетного выполнения и запроса. Полный список находится в ``ACTION_INNER_ATTRIBUTES`` файла ``src/components/core/Records/actions/recordActionsApi.js``.
 
- {
-    "query": {
-        "records": [
-            {
-                "record": "emodel/someType@3352b46d-ec44-465c-8673-086282d62b04",
-                "actions": [
-                    "ui/action$delete",
-                    "ui/action$edit"
-                ]
-            },
-            {
-                "record": "emodel/someType@3dfff282-3ddf-45e1-886d-f5f2c94fe4e7",
-                "actions": [
-                    "ui/action$edit"
-                ]
-            }
-        ]
-    }
- }
+Сервис ``recordActions.getActionsForRecords(records, actions, context)`` преобразует этот ответ в группы ``forRecord``, ``forRecords`` и ``forQuery``, проверяет возможности исполнителей и контекст. Это уже клиентская модель, отличающаяся от результата ``Records.queryOne``.
+
+При вызове ``recordActions.getActionsForRecord(record)`` без явного списка действий клиент сначала загружает ``_type?id`` записи, затем ``_actions[]?id`` её типа и запрашивает доступность найденных действий.

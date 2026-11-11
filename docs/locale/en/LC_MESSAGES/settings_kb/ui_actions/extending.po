@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -40,11 +40,10 @@ msgstr "Adding new action instances"
 
 #: ../../settings_kb/ui_actions/extending.rst:17
 msgid ""
-"Для добавления новых инстансов действий необходимо описать их в json виде"
-" и добавить их в микросервис по пути ``eapps/artifacts/ui/actions``"
-msgstr ""
-"To add new action instances, describe them in json form and add them to "
-"the microservice at the path ``eapps/artifacts/ui/actions``"
+"Экземпляр действия описывается в JSON или YAML как артефакт типа "
+"``ui/action``. Правила размещения и загрузки артефактов описаны в разделе"
+" :ref:`Артефакты <ecos_artifacts>`."
+msgstr "An action instance is JSON or YAML, artifact type ``ui/action``. See :ref:`Artifacts <ecos_artifacts>` for placement and loading."
 
 #: ../../settings_kb/ui_actions/extending.rst:19
 msgid "Пример описания:"
@@ -66,29 +65,55 @@ msgstr "Adding new action types"
 
 #: ../../settings_kb/ui_actions/extending.rst:39
 msgid ""
-"На данный момент все типы описаны в базовом проекте ecos-ui (в планах "
-"есть поддержка расширения действий без изменений в ecos-ui)."
-msgstr ""
-"Currently, all types are described in the base ecos-ui project (support "
-"for extending actions without changes to ecos-ui is planned)."
+"Встроенные обработчики находятся в "
+"``src/components/core/Records/actions/handler`` проекта ecos-ui. Новый "
+"исполнитель наследует ``ActionsExecutor`` и регистрируется в "
+"``actionsRegistry``. Доступны только те режимы, методы которых он "
+"реализует."
+msgstr "Built-in handlers reside in ecos-ui ``src/components/core/Records/actions/handler``. New executors extend ``ActionsExecutor`` and register in ``actionsRegistry``. Only implemented modes are available."
 
 #: ../../settings_kb/ui_actions/extending.rst:41
 msgid "Описать новое действие:"
 msgstr "Describe the new action:"
 
-#: ../../settings_kb/ui_actions/extending.rst:78
+#: ../../settings_kb/ui_actions/extending.rst:62
 msgid "Зарегистрировать новый тип:"
 msgstr "Register the new type:"
 
-#: ../../settings_kb/ui_actions/extending.rst:90
+#: ../../settings_kb/ui_actions/extending.rst:71
+msgid ""
+"Регистрацию нужно выполнить при загрузке модуля интерфейса до получения "
+"действий. После этого экземпляр действия может использовать ``type: show-"
+"record-id``. Встроенные обработчики регистрируются в "
+"``src/components/core/Records/actions/actions.js``."
+msgstr "Register during UI module loading before actions are retrieved. Instances can then use ``type: show-record-id``. Built-ins register in ``src/components/core/Records/actions/actions.js``."
+
+#: ../../settings_kb/ui_actions/extending.rst:73
+msgid ""
+"Реестр также доступен как ``window.Citeck.ActionsRegistry``. "
+"Подключаемому модулю нужно обеспечить доступ к совместимому базовому "
+"классу исполнителя; один JSON-артефакт не добавляет новый JS-обработчик. "
+"Для выполнения произвольного кода над записью можно использовать "
+"существующий тип :ref:`script <ui_action_script>`."
+msgstr "The registry is also exposed as ``window.Citeck.ActionsRegistry``. Modules need a compatible executor base class; JSON artifacts alone cannot add JS handlers. Use the existing :ref:`script <ui_action_script>` type for arbitrary record code."
+
+#: ../../settings_kb/ui_actions/extending.rst:75
+msgid ""
+"Для значений модели по умолчанию используется "
+"``getDefaultActionModel()``, для ограничения по контексту интерфейса — "
+"``isAllowedInContext(context)``. Проверка серверных прав и условий "
+"доступности настраивается отдельно."
+msgstr "Use ``getDefaultActionModel()`` for defaults and ``isAllowedInContext(context)`` for UI context restrictions. Configure server permissions and availability conditions separately."
+
+#: ../../settings_kb/ui_actions/extending.rst:78
 msgid "Настройки списка действий"
 msgstr "Action list settings"
 
-#: ../../settings_kb/ui_actions/extending.rst:95
+#: ../../settings_kb/ui_actions/extending.rst:83
 msgid "Настройка действий для карточки"
 msgstr "Configuring actions for a card"
 
-#: ../../settings_kb/ui_actions/extending.rst:97
+#: ../../settings_kb/ui_actions/extending.rst:85
 msgid ""
 "Настройка действий для карточки осуществляется в журнале типов данных, "
 "который располагается в системных журналах:"
@@ -96,28 +121,28 @@ msgstr ""
 "Actions for a card are configured in the data types journal, which is "
 "located in the system journals:"
 
-#: ../../settings_kb/ui_actions/extending.rst:99
-#: ../../settings_kb/ui_actions/extending.rst:122
+#: ../../settings_kb/ui_actions/extending.rst:87
+#: ../../settings_kb/ui_actions/extending.rst:112
 msgid "Настройка действий"
 msgstr "Configuring actions"
 
-#: ../../settings_kb/ui_actions/extending.rst:104
+#: ../../settings_kb/ui_actions/extending.rst:92
 msgid "**1** - выбрать список действий для типа."
 msgstr "**1** - select the action list for the type."
 
-#: ../../settings_kb/ui_actions/extending.rst:105
+#: ../../settings_kb/ui_actions/extending.rst:93
 msgid "**2** - если стоит чекбокс, то действия наследуются от родителя."
 msgstr "**2** - if the checkbox is checked, actions are inherited from the parent."
 
-#: ../../settings_kb/ui_actions/extending.rst:107
-msgid "Пример в конфиге типа данных: :"
-msgstr "Example in the data type config: :"
+#: ../../settings_kb/ui_actions/extending.rst:95
+msgid "Пример поля в конфигурации типа данных:"
+msgstr "Example data type configuration field:"
 
-#: ../../settings_kb/ui_actions/extending.rst:118
+#: ../../settings_kb/ui_actions/extending.rst:108
 msgid "Настройка действий в журналах"
 msgstr "Configuring actions in journals"
 
-#: ../../settings_kb/ui_actions/extending.rst:120
+#: ../../settings_kb/ui_actions/extending.rst:110
 msgid ""
 "Настройка действий для журнала осуществляется в разделе **Конфигурация UI"
 " - Журналы**, который располагается в системных журналах:"
@@ -125,35 +150,22 @@ msgstr ""
 "Actions for a journal are configured in the **UI Configuration - "
 "Journals** section, which is located in the system journals:"
 
-#: ../../settings_kb/ui_actions/extending.rst:127
-msgid "**1** - Добавить действия из типа:"
-msgstr "**1** - Add actions from the type:"
-
-#: ../../settings_kb/ui_actions/extending.rst:129
+#: ../../settings_kb/ui_actions/extending.rst:117
 msgid ""
-"**empty (null)** - если actions и actionsDef пустые, то добавляем "
-"действия из типа;"
-msgstr ""
-"**empty (null)** - if actions and actionsDef are empty, actions from the "
-"type are added;"
+"**1** — настройка добавления действий из типа. Состав итогового списка "
+"определяется серверной конфигурацией журнала: ``includeTypeActions``, "
+"``actions`` и ``actionsDef``."
+msgstr "**1** — adding actions from the type. Server journal configuration determines the effective list: ``includeTypeActions``, ``actions`` and ``actionsDef``."
 
-#: ../../settings_kb/ui_actions/extending.rst:130
-msgid "**true** - всегда добавляем действия из типа;"
-msgstr "**true** - always add actions from the type;"
-
-#: ../../settings_kb/ui_actions/extending.rst:131
-msgid "**false** - никогда не добавляем из типа."
-msgstr "**false** - never add from the type."
-
-#: ../../settings_kb/ui_actions/extending.rst:133
+#: ../../settings_kb/ui_actions/extending.rst:119
 msgid "**2** - выбор действий"
 msgstr "**2** - selecting actions"
 
-#: ../../settings_kb/ui_actions/extending.rst:135
-msgid "Пример в конфиге журнала: :"
-msgstr "Example in the journal config: :"
+#: ../../settings_kb/ui_actions/extending.rst:121
+msgid "Пример поля в конфигурации журнала:"
+msgstr "Example journal configuration field:"
 
-#: ../../settings_kb/ui_actions/extending.rst:146
+#: ../../settings_kb/ui_actions/extending.rst:134
 msgid ""
 "Настройка действия, которое активно для записей с определенным mimetype "
 "контента:"
@@ -161,59 +173,70 @@ msgstr ""
 "Configuring an action that is active for records with a specific content "
 "mimetype:"
 
-#: ../../settings_kb/ui_actions/extending.rst:176
+#: ../../settings_kb/ui_actions/extending.rst:164
 msgid ""
-"Данный конфиг достаточно положить в папку ``eapps/artifacts/ui/actions`` "
-"для микросервисов."
-msgstr ""
-"It is enough to place this config in the ``eapps/artifacts/ui/actions`` "
-"folder for microservices."
+"Здесь серверный ``evaluator`` проверяет ``_content.mimetype?str`` на "
+"вхождение в список MIME-типов. URL в примере предназначен для стенда с "
+"подключённым legacy-редактором OnlyOffice; для другой интеграции задайте "
+"её адрес. Конфигурация загружается как экземпляр действия, а затем "
+"подключается к типу данных или журналу."
+msgstr "The server ``evaluator`` checks ``_content.mimetype?str`` against MIME types. The example URL targets an environment with the legacy OnlyOffice editor; use the address for your integration. Load this as an action instance, then attach it to a type or journal."
 
-#: ../../settings_kb/ui_actions/extending.rst:179
+#: ../../settings_kb/ui_actions/extending.rst:167
 msgid "Техническая информация"
 msgstr "Technical information"
 
-#: ../../settings_kb/ui_actions/extending.rst:182
+#: ../../settings_kb/ui_actions/extending.rst:170
 msgid "Вспомогательные параметры"
 msgstr "Auxiliary parameters"
 
-#: ../../settings_kb/ui_actions/extending.rst:190
+#: ../../settings_kb/ui_actions/extending.rst:178
 msgid "Параметр"
 msgstr "Parameter"
 
-#: ../../settings_kb/ui_actions/extending.rst:191
+#: ../../settings_kb/ui_actions/extending.rst:179
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/ui_actions/extending.rst:192
+#: ../../settings_kb/ui_actions/extending.rst:180
 msgid "**actionRecord**"
 msgstr "**actionRecord**"
 
 #: ../../settings_kb/ui_actions/extending.rst
 msgid ""
-"В любую форму, которая вызывается из действия, в объект ``options`` "
-"устанавливается свойство ``actionRecord``, указывающее идентификатор "
-"записи (record), для которой выполняется действие."
-msgstr ""
-"In any form that is invoked from an action, the ``actionRecord`` property"
-" is set in the ``options`` object, indicating the identifier of the "
-"record for which the action is being performed."
+"В формах ``create`` и ``open-submit-form`` — исходный ``record.id``. В "
+"обычной форме ``edit`` — ``config.recordId`` или текущая запись."
+msgstr "In ``create`` and ``open-submit-form``, the original ``record.id``. In ordinary ``edit``, ``config.recordId`` or the current record."
 
 #: ../../settings_kb/ui_actions/extending.rst
 msgid ""
-"Данное значение только для чтения. Указать в действии "
-"``config.options.actionRecord`` не нужно, пользовательское будет "
-"перезаписано."
-msgstr ""
-"This value is read-only. There is no need to specify "
-"``config.options.actionRecord`` in the action; any user-provided value "
-"will be overwritten."
+"Передаётся через ``options``. В ``create`` значение из "
+"``config.options.actionRecord`` перезаписывается автоматически."
+msgstr "Passed through ``options``. In ``create``, ``config.options.actionRecord`` is overwritten automatically."
 
-#: ../../settings_kb/ui_actions/extending.rst:197
-msgid "Ожидаемый формат результат действия"
+#: ../../settings_kb/ui_actions/extending.rst
+msgid ""
+"В task-ветке ``edit`` и форме ``task-outcome`` универсальной передачи "
+"этого параметра нет."
+msgstr "The task branch of ``edit`` and ``task-outcome`` forms do not universally pass this parameter."
+
+#: ../../settings_kb/ui_actions/extending.rst:184
+msgid "**actionRecords**"
+msgstr "**actionRecords**"
+
+#: ../../settings_kb/ui_actions/extending.rst:185
+msgid ""
+"Список записей, передаваемый в options групповой формы подтверждения. Для"
+" одиночного подтверждения используется ``actionRecord``. "
+"``confirm.formOptions`` может переопределять автоматически сформированные"
+" options."
+msgstr "Record list passed in group confirmation options. Single confirmation uses ``actionRecord``. ``confirm.formOptions`` may override generated options."
+
+#: ../../settings_kb/ui_actions/extending.rst:190
+msgid "Ожидаемый формат результата действия"
 msgstr "Expected action result format"
 
-#: ../../settings_kb/ui_actions/extending.rst:199
+#: ../../settings_kb/ui_actions/extending.rst:192
 msgid ""
 "Тип результата boolean или object (array - deprecated - обработка "
 "поддерживается)"
@@ -221,57 +244,49 @@ msgstr ""
 "The result type is boolean or object (array is deprecated - processing is"
 " still supported)"
 
-#: ../../settings_kb/ui_actions/extending.rst:201
+#: ../../settings_kb/ui_actions/extending.rst:194
 msgid ""
-"Если ``object`` отображаются подробности выполнения в зависимости от типа"
-" результата. Для групповых действий модальное окно появляется сразу при "
-"запуске и если результат boolean автоматические закрывается."
-msgstr ""
-"If it is ``object``, execution details are shown depending on the result "
-"type. For group actions, the modal window appears immediately upon "
-"launch, and if the result is boolean it closes automatically."
+"Если возвращён объект с поддерживаемым ``type``, отображаются подробности"
+" выполнения. При групповом выполнении окно может появляться уже при "
+"запуске и закрываться при булевом результате. Режимы выполнения по "
+"запросу и обработки пакетами управляют окнами отдельно."
+msgstr "An object with a supported ``type`` displays execution details. For groups, the dialog may open at startup and close on a boolean result. Query and batch modes manage dialogs separately."
 
-#: ../../settings_kb/ui_actions/extending.rst:203
+#: ../../settings_kb/ui_actions/extending.rst:196
 msgid "**link**"
 msgstr "**link**"
 
-#: ../../settings_kb/ui_actions/extending.rst:205
+#: ../../settings_kb/ui_actions/extending.rst:198
 msgid "Отображаемый результат выполнения - ссылка на скачивания отчета"
 msgstr "The displayed execution result is a link for downloading the report"
 
-#: ../../settings_kb/ui_actions/extending.rst:216
+#: ../../settings_kb/ui_actions/extending.rst:209
 msgid "**results**"
 msgstr "**results**"
 
-#: ../../settings_kb/ui_actions/extending.rst:218
+#: ../../settings_kb/ui_actions/extending.rst:211
 msgid "Таблица записей с результатом выполнения действия"
 msgstr "A table of records with the action execution result"
 
-#: ../../settings_kb/ui_actions/extending.rst:236
+#: ../../settings_kb/ui_actions/extending.rst:229
 msgid "**error**"
 msgstr "**error**"
 
-#: ../../settings_kb/ui_actions/extending.rst:238
+#: ../../settings_kb/ui_actions/extending.rst:231
 msgid "Вывод ошибки. Возможно автоматическое создание."
 msgstr "Error output. Automatic creation is possible."
 
-#: ../../settings_kb/ui_actions/extending.rst:252
-msgid ""
-"Для заголовка типа действия используйте уровень **Heading 3** "
-"(``~~~~~~~~``) - так тип попадет в список доступных действий и будет "
-"возможность сослаться на него через якорь"
-msgstr ""
-"For the action type heading, use **Heading 3** level (``~~~~~~~~``) - "
-"this way the type will appear in the list of available actions and it "
-"will be possible to reference it via an anchor"
+#: ../../settings_kb/ui_actions/extending.rst:243
+msgid "**msg** и **info**"
+msgstr "**msg** and **info**"
 
-#: ../../settings_kb/ui_actions/extending.rst:253
+#: ../../settings_kb/ui_actions/extending.rst:245
 msgid ""
-"Если описание конфигурации большое, оформляйте его через ``.. "
-"dropdown::``, чтобы оно сворачивалось по умолчанию"
-msgstr ""
-"If the configuration description is large, format it using ``.. "
-"dropdown::`` so that it is collapsed by default"
+"Тип ``msg`` показывает строку таблицы с ``data.status`` и "
+"``data.message``. Тип ``info`` показывает информационный результат; "
+"например, серверное групповое действие использует строку ``data`` для "
+"уведомления об отправке результата по электронной почте."
+msgstr "``msg`` displays a table row with ``data.status`` and ``data.message``. ``info`` displays information; for example, server group actions use string ``data`` to report that results will be emailed."
 
 #~ msgid ""
 #~ "Для тестирования можно заливать эту "
@@ -281,3 +296,116 @@ msgstr ""
 #~ "can be uploaded manually in the "
 #~ "actions journal."
 
+#~ msgid ""
+#~ "Для добавления новых инстансов действий "
+#~ "необходимо описать их в json виде "
+#~ "и добавить их в микросервис по "
+#~ "пути ``eapps/artifacts/ui/actions``"
+#~ msgstr ""
+#~ "To add new action instances, describe"
+#~ " them in json form and add them"
+#~ " to the microservice at the path "
+#~ "``eapps/artifacts/ui/actions``"
+
+#~ msgid ""
+#~ "На данный момент все типы описаны "
+#~ "в базовом проекте ecos-ui (в "
+#~ "планах есть поддержка расширения действий "
+#~ "без изменений в ecos-ui)."
+#~ msgstr ""
+#~ "Currently, all types are described in"
+#~ " the base ecos-ui project (support"
+#~ " for extending actions without changes "
+#~ "to ecos-ui is planned)."
+
+#~ msgid "**1** - Добавить действия из типа:"
+#~ msgstr "**1** - Add actions from the type:"
+
+#~ msgid ""
+#~ "**empty (null)** - если actions и "
+#~ "actionsDef пустые, то добавляем действия "
+#~ "из типа;"
+#~ msgstr ""
+#~ "**empty (null)** - if actions and "
+#~ "actionsDef are empty, actions from the"
+#~ " type are added;"
+
+#~ msgid "**true** - всегда добавляем действия из типа;"
+#~ msgstr "**true** - always add actions from the type;"
+
+#~ msgid "**false** - никогда не добавляем из типа."
+#~ msgstr "**false** - never add from the type."
+
+#~ msgid ""
+#~ "Данный конфиг достаточно положить в "
+#~ "папку ``eapps/artifacts/ui/actions`` для "
+#~ "микросервисов."
+#~ msgstr ""
+#~ "It is enough to place this config"
+#~ " in the ``eapps/artifacts/ui/actions`` folder "
+#~ "for microservices."
+
+#~ msgid ""
+#~ "В любую форму, которая вызывается из "
+#~ "действия, в объект ``options`` устанавливается"
+#~ " свойство ``actionRecord``, указывающее "
+#~ "идентификатор записи (record), для которой "
+#~ "выполняется действие."
+#~ msgstr ""
+#~ "In any form that is invoked from"
+#~ " an action, the ``actionRecord`` property"
+#~ " is set in the ``options`` object,"
+#~ " indicating the identifier of the "
+#~ "record for which the action is "
+#~ "being performed."
+
+#~ msgid ""
+#~ "Данное значение только для чтения. "
+#~ "Указать в действии ``config.options.actionRecord``"
+#~ " не нужно, пользовательское будет "
+#~ "перезаписано."
+#~ msgstr ""
+#~ "This value is read-only. There is"
+#~ " no need to specify "
+#~ "``config.options.actionRecord`` in the action; "
+#~ "any user-provided value will be "
+#~ "overwritten."
+
+#~ msgid ""
+#~ "Если ``object`` отображаются подробности "
+#~ "выполнения в зависимости от типа "
+#~ "результата. Для групповых действий модальное"
+#~ " окно появляется сразу при запуске и"
+#~ " если результат boolean автоматические "
+#~ "закрывается."
+#~ msgstr ""
+#~ "If it is ``object``, execution details"
+#~ " are shown depending on the result"
+#~ " type. For group actions, the modal"
+#~ " window appears immediately upon launch,"
+#~ " and if the result is boolean "
+#~ "it closes automatically."
+
+#~ msgid ""
+#~ "Для заголовка типа действия используйте "
+#~ "уровень **Heading 3** (``~~~~~~~~``) - "
+#~ "так тип попадет в список доступных "
+#~ "действий и будет возможность сослаться "
+#~ "на него через якорь"
+#~ msgstr ""
+#~ "For the action type heading, use "
+#~ "**Heading 3** level (``~~~~~~~~``) - "
+#~ "this way the type will appear in"
+#~ " the list of available actions and"
+#~ " it will be possible to reference "
+#~ "it via an anchor"
+
+#~ msgid ""
+#~ "Если описание конфигурации большое, оформляйте"
+#~ " его через ``.. dropdown::``, чтобы "
+#~ "оно сворачивалось по умолчанию"
+#~ msgstr ""
+#~ "If the configuration description is "
+#~ "large, format it using ``.. dropdown::``"
+#~ " so that it is collapsed by "
+#~ "default"

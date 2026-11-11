@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -38,7 +38,7 @@ msgstr "Term"
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:17
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:37
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:78
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:102
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:104
 msgid "Описание"
 msgstr "Description"
 
@@ -71,8 +71,8 @@ msgid ""
 "Сущность с набором атрибутов и идентификатором записи (:ref:`RecordRef "
 "<RecordRef>`)"
 msgstr ""
-"An entity with a set of attributes and a record identifier (:ref:`RecordRef"
-" <RecordRef>`)"
+"An entity with a set of attributes and a record identifier "
+"(:ref:`RecordRef <RecordRef>`)"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:24
 msgid "**Идентификатор записи (RecordRef)**"
@@ -80,10 +80,9 @@ msgstr "**RecordRef**"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:25
 msgid ""
-"Идентификатор источника данных и локальный идентификатор сущности в виде "
-"строки"
-msgstr ""
-"The data source identifier and the local entity identifier as a string"
+"Ссылка вида ``appName/sourceId@localId``. Часть приложения может быть "
+"опущена, если его можно определить из контекста"
+msgstr "A reference in ``appName/sourceId@localId`` format. The application part may be omitted if it can be determined from the context"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:26
 msgid "**Источник данных (записей) (Records DAO)**"
@@ -91,11 +90,10 @@ msgstr "**Records DAO**"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:27
 msgid ""
-"Источник данных, в котором описана логика базовых CRUD операций для "
-"работы с сущностями"
-msgstr ""
-"A data source that defines the logic of basic CRUD operations for working "
-"with entities"
+"Реализация источника данных. Поддерживаемые операции задаются отдельными "
+"интерфейсами поиска, чтения атрибутов, мутации и удаления; весь CRUD "
+"реализовывать необязательно"
+msgstr "A data source implementation. Supported operations are defined by separate interfaces for search, attribute reading, mutation and deletion; implementing all CRUD operations is optional"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:29
 msgid "Данные:"
@@ -120,8 +118,8 @@ msgid ""
 "Некоторое финальное значение в графе данных, у которого нельзя запросить "
 "вложенные атрибуты (строка, число и др.)"
 msgstr ""
-"A final value in the data graph that has no nested attributes that can be "
-"requested (string, number, etc.)"
+"A final value in the data graph that has no nested attributes that can be"
+" requested (string, number, etc.)"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:42
 msgid "**Схема атрибутов (Attributes Schema)**"
@@ -132,8 +130,8 @@ msgid ""
 "Описание запроса данных для преобразования графа данных в наборы (map и "
 "list) значений скаляров"
 msgstr ""
-"A data query description for transforming a data graph into sets (map and "
-"list) of scalar values"
+"A data query description for transforming a data graph into sets (map and"
+" list) of scalar values"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:46
 msgid "Описание работы с данными"
@@ -194,7 +192,7 @@ msgid "Примитивные скаляры:"
 msgstr "Primitive scalars:"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:77
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:101
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:103
 msgid "Скаляр"
 msgstr "Scalar"
 
@@ -226,8 +224,7 @@ msgstr "**num**"
 msgid ""
 "Число (двойная точность; если точности Double не хватает, то следует "
 "использовать str)"
-msgstr ""
-"Number (double precision; if Double precision is insufficient, use str)"
+msgstr "Number (double precision; if Double precision is insufficient, use str)"
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:85
 msgid "**bool**"
@@ -257,9 +254,9 @@ msgid ""
 "источника данных и локальный идентификатор. Актуален для сложных значений"
 " вроде «Договор», «Контрагент», «Валюта» и др."
 msgstr ""
-"The global identifier of the value, containing the data source identifier "
-"and the local identifier. Relevant for complex values such as \"Contract\","
-" \"Counterparty\", \"Currency\", etc."
+"The global identifier of the value, containing the data source identifier"
+" and the local identifier. Relevant for complex values such as "
+"\"Contract\", \"Counterparty\", \"Currency\", etc."
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:91
 msgid "**localId**"
@@ -269,27 +266,36 @@ msgstr "**localId**"
 msgid "То же, что и id, но без идентификатора источника данных"
 msgstr "Same as id, but without the data source identifier"
 
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:93
+msgid "**assoc**"
+msgstr "**assoc**"
+
 #: ../../general/Data_API/ECOS_Records/records_intro.rst:94
+msgid ""
+"Идентификатор ассоциации; в мутациях используется также для связанных "
+"виртуальных записей, которые нужно создать"
+msgstr "An association identifier; also used in mutations for related virtual records to be created"
+
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:96
 msgid "Непримитивные скаляры:"
 msgstr "Non-primitive scalars:"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:103
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:105
 msgid "**?raw**"
 msgstr "**?raw**"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:104
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:106
 msgid ""
-"Возвращает сырые данные в исходном виде, как есть. Это единственный "
-"скаляр, при загрузке которого не происходит конвертации исходных данных"
-msgstr ""
-"Returns raw data in its original form, as-is. This is the only scalar "
-"that does not perform any conversion of the source data when loaded"
+"Возвращает необработанное представление, определённое для конкретного "
+"значения. Например, для ссылки на запись возвращается строка ссылки; это "
+"не универсальный способ получить все поля сущности"
+msgstr "Returns the raw representation defined for the particular value. For example, a record reference returns its reference string; this is not a universal way to retrieve all entity fields"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:105
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:107
 msgid "**?bin**"
 msgstr "**?bin**"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:106
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:108
 msgid ""
 "Возвращает бинарные данные. При использовании json-формата равнозначен "
 "использованию **?str** (данные передаются в виде base64 строки), но с "
@@ -302,11 +308,12 @@ msgstr ""
 "transmitting byte arrays without base64 transformation it provides an "
 "advantage in data size (base64 adds 33% overhead)"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:108
-msgid "**?json** удобен для получения всего набора атрибутов из записи."
-msgstr ""
-"**?json** is convenient for retrieving the full set of attributes from a "
-"record."
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:110
+msgid ""
+"**?json** возвращает JSON-представление значения. Его состав определяется"
+" источником: он не обязан включать все хранимые и вычисляемые атрибуты "
+"записи. Для MLText это карта локалей и соответствующих строк."
+msgstr "**?json** returns the JSON representation of a value. Its contents are determined by the source and need not include every stored and computed record attribute. For MLText, it is a map of locales to their strings."
 
 #: ../../general/Data_API/ECOS_Records/records_intro.rst
 msgid "js"
@@ -316,7 +323,7 @@ msgstr "js"
 msgid "java"
 msgstr "java"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:132
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:134
 msgid ""
 "Например — чтобы одним запросом вытянуть все значения для всех "
 "локализаций у MLText поля, необходимо использовать при загрузке значения "
@@ -326,11 +333,11 @@ msgstr ""
 "field in a single request, use the **\"?json\"** scalar when loading the "
 "attribute value."
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:142
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:144
 msgid "Data Graph with Scalars"
 msgstr "Data Graph with Scalars"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:147
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:149
 msgid ""
 "Для примера рассмотрим получение полного наименования организации "
 "контрагента у договора."
@@ -338,17 +345,17 @@ msgstr ""
 "As an example, let us consider retrieving the full organization name of "
 "the counterparty for a contract."
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:149
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:151
 msgid "Получение наименования контрагента"
 msgstr "Retrieving the counterparty name"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:154
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:156
 msgid ""
 "Здесь мы используем javascript Records API для загрузки нужного нам "
 "атрибута."
 msgstr "Here we use the JavaScript Records API to load the attribute we need."
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:156
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:158
 msgid ""
 "**Первая строка** - получение записи по её идентификатору RecordRef. "
 ":ref:`см. подробно<RecordRef>`"
@@ -356,7 +363,7 @@ msgstr ""
 "**First line** — retrieving a record by its RecordRef identifier. "
 ":ref:`See details<RecordRef>`"
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:160
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:162
 msgid ""
 "Общий вид идентификатора **\"приложение/источник_данных@локальный_id\"**,"
 " но здесь присутствует только локальный_id."
@@ -365,7 +372,7 @@ msgstr ""
 "**\"application/data_source@local_id\"**, but here only the local_id is "
 "present."
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:162
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:164
 msgid ""
 "**Вторая строка** - загрузка нужного нам атрибута. Вложенные атрибуты "
 "разделены точкой **\".\"**, а скаляр определяется знаком вопроса "
@@ -375,9 +382,11 @@ msgstr ""
 "separated by a dot **\".\"**, and the scalar is indicated by a question "
 "mark **\"?\"**."
 
-#: ../../general/Data_API/ECOS_Records/records_intro.rst:166
-msgid "Допустимая вложенность атрибутов не ограничена"
-msgstr "The allowed depth of attribute nesting is unlimited."
+#: ../../general/Data_API/ECOS_Records/records_intro.rst:168
+msgid ""
+"Грамматика не задаёт фиксированной глубины вложенности. Практическая "
+"глубина чтения зависит от источников и доступных ресурсов."
+msgstr "The grammar does not impose a fixed nesting depth. The practical reading depth depends on the sources and available resources."
 
 #~ msgid "**str** - Строка;"
 #~ msgstr "**str** — String;"
@@ -388,3 +397,37 @@ msgstr "The allowed depth of attribute nesting is unlimited."
 #~ msgid "Синтаксис для java:"
 #~ msgstr "Java syntax:"
 
+#~ msgid ""
+#~ "Идентификатор источника данных и локальный "
+#~ "идентификатор сущности в виде строки"
+#~ msgstr "The data source identifier and the local entity identifier as a string"
+
+#~ msgid ""
+#~ "Источник данных, в котором описана "
+#~ "логика базовых CRUD операций для работы"
+#~ " с сущностями"
+#~ msgstr ""
+#~ "A data source that defines the "
+#~ "logic of basic CRUD operations for "
+#~ "working with entities"
+
+#~ msgid ""
+#~ "Возвращает сырые данные в исходном виде,"
+#~ " как есть. Это единственный скаляр, "
+#~ "при загрузке которого не происходит "
+#~ "конвертации исходных данных"
+#~ msgstr ""
+#~ "Returns raw data in its original "
+#~ "form, as-is. This is the only "
+#~ "scalar that does not perform any "
+#~ "conversion of the source data when "
+#~ "loaded"
+
+#~ msgid "**?json** удобен для получения всего набора атрибутов из записи."
+#~ msgstr ""
+#~ "**?json** is convenient for retrieving "
+#~ "the full set of attributes from a"
+#~ " record."
+
+#~ msgid "Допустимая вложенность атрибутов не ограничена"
+#~ msgstr "The allowed depth of attribute nesting is unlimited."

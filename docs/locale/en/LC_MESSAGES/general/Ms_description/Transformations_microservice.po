@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -23,8 +23,11 @@ msgid "Transformations микросервис"
 msgstr "Transformations Microservice"
 
 #: ../../general/Ms_description/Transformations_microservice.rst:8
-msgid "Доступно только в Enterprise версии."
-msgstr "Available in the Enterprise version only."
+msgid ""
+"Доступность отдельных функций зависит от состава и условий поставки. В "
+"частности, автоматическая генерация контента использует "
+"Enterprise-библиотеку трансформаций."
+msgstr "Individual features depend on distribution contents and terms. In particular, automatic content generation uses the Enterprise transformation library."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:10
 msgid ""
@@ -47,28 +50,47 @@ msgstr "Connecting the Microservice"
 #: ../../general/Ms_description/Transformations_microservice.rst:18
 msgid ""
 "**Микросервис Трансформации (ecos-transformations)** — самостоятельный "
-"микросервис, не требующего развертывания дополнительных баз данных (все "
-"шаблоны хранятся в БД ecos-model). Для обеспечения работоспособности "
-"необходимы:"
-msgstr ""
-"**Transformations Microservice (ecos-transformations)** is a standalone "
-"microservice that does not require deploying additional databases (all "
-"templates are stored in the ecos-model database). The following are "
-"required for it to function:"
+"микросервис, шаблоны которого хранятся через ecos-model. Для них "
+"используется тип ``tfm-document-template`` и источник ``emodel/tfm-"
+"document-template``; обращение через ``transformations/template`` "
+"проксируется к этому источнику."
+msgstr "The **Transformations microservice (ecos-transformations)** is a standalone service whose templates are stored through ecos-model. They use the ``tfm-document-template`` type and ``emodel/tfm-document-template`` source; access through ``transformations/template`` is proxied to this source."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:21
-msgid "ecos-model:2.13.0"
-msgstr "ecos-model:2.13.0"
+#: ../../general/Ms_description/Transformations_microservice.rst:20
+msgid ""
+"Описание сверено с исходниками ecos-transformations **1.26.0-SNAPSHOT**. "
+"Версии ecos-model и других компонентов выбирайте по совместимой поставке "
+"платформы. Подключение OnlyOffice требуется для операций, использующих "
+"его конвертер."
+msgstr "This description was checked against ecos-transformations **1.26.0-SNAPSHOT** source code. Choose ecos-model and other component versions from a compatible platform distribution. OnlyOffice is required for operations using its converter."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:24
+#: ../../general/Ms_description/Transformations_microservice.rst:23
 msgid "Параметры подключения через docker-compose.yml"
 msgstr "Connection Parameters via docker-compose.yml"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:49
+#: ../../general/Ms_description/Transformations_microservice.rst:25
+msgid ""
+"Задайте ``ECOS_TRANSFORMATIONS_IMAGE`` с полным именем образа и тегом "
+"вашего релиза. Наличие образа с тегом, совпадающим с версией исходников, "
+"необходимо уточнять для поставки. Создайте файл ``transformations.env`` с"
+" настройками инфраструктуры и подключите сервис к общей сети "
+"микросервисов. Шаблон для добавления в секцию ``services``:"
+msgstr "Set ``ECOS_TRANSFORMATIONS_IMAGE`` to the full image name and tag for your release. Confirm distribution availability of an image whose tag matches the source version. Create ``transformations.env`` with infrastructure settings and connect the service to the shared microservice network. Template for the ``services`` section:"
+
+#: ../../general/Ms_description/Transformations_microservice.rst:40
+msgid ""
+"Порт ``8087`` и группа настроек ``ecos.integrations.onlyoffice`` "
+"соответствуют конфигурации приложения. Адрес OnlyOffice измените под своё"
+" окружение. Параметры RabbitMQ, аутентификации, профили Spring и лимиты "
+"ресурсов берите из конфигурации вашего релиза; старые настройки Eureka и "
+"Config Server не являются универсальным примером для всех версий."
+msgstr "Port ``8087`` and the ``ecos.integrations.onlyoffice`` settings group match the application configuration. Change the OnlyOffice address for your environment. Take RabbitMQ parameters, authentication, Spring profiles and resource limits from your release configuration; legacy Eureka and Config Server settings are not universal across versions."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:45
 msgid "Создание нового шаблона"
 msgstr "Creating a New Template"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:51
+#: ../../general/Ms_description/Transformations_microservice.rst:47
 msgid ""
 "Для работы с новыми шаблонами документов в Citeck есть журнал **\"Шаблоны"
 " документов\" (Рабочее пространство \"Раздел администратора\" - "
@@ -78,25 +100,25 @@ msgstr ""
 "**\"Document Templates\" (Workspace \"Admin Section\" - "
 "Transformations)**:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:57
+#: ../../general/Ms_description/Transformations_microservice.rst:53
 msgid "Существует 2 способа создавать шаблоны документов в системе:"
 msgstr "There are 2 ways to create document templates in the system:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:59
+#: ../../general/Ms_description/Transformations_microservice.rst:55
 msgid "Располагая их в проекте в определенной директории."
 msgstr "By placing them in the project in a specific directory."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:61
+#: ../../general/Ms_description/Transformations_microservice.rst:57
 msgid "Загрузив их через действие Добавить в журнале Шаблоны документов."
 msgstr ""
 "By uploading them through the Add action in the Document Templates "
 "journal."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:64
+#: ../../general/Ms_description/Transformations_microservice.rst:60
 msgid "Создание шаблона документа в проекте"
 msgstr "Creating a Document Template in a Project"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:66
+#: ../../general/Ms_description/Transformations_microservice.rst:62
 msgid ""
 "Для успешного добавления в систему вашего шаблона необходимо учитывать "
 "некоторые вещи:"
@@ -104,7 +126,7 @@ msgstr ""
 "To successfully add your template to the system, there are several things"
 " to keep in mind:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:68
+#: ../../general/Ms_description/Transformations_microservice.rst:64
 msgid ""
 "Вместе с самим шаблоном должен храниться файл ``meta.yml``, который будет"
 " хранить метаинформацию о шаблоне."
@@ -112,11 +134,11 @@ msgstr ""
 "Along with the template itself, a ``meta.yml`` file must be stored to "
 "hold the template's meta-information."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:70
+#: ../../general/Ms_description/Transformations_microservice.rst:66
 msgid "**Особенность наименования файлов:**"
 msgstr "**File naming convention:**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:72
+#: ../../general/Ms_description/Transformations_microservice.rst:68
 #, python-brace-format
 msgid ""
 "Если файл шаблона один, то мета-файл называется по шаблону "
@@ -125,13 +147,13 @@ msgstr ""
 "If there is a single template file, the meta-file is named according to "
 "the pattern ``${Full_file_name_with_extension}.meta.yml``"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:74
-#: ../../general/Ms_description/Transformations_microservice.rst:82
-#: ../../general/Ms_description/Transformations_microservice.rst:166
+#: ../../general/Ms_description/Transformations_microservice.rst:70
+#: ../../general/Ms_description/Transformations_microservice.rst:78
+#: ../../general/Ms_description/Transformations_microservice.rst:162
 msgid "Пример:"
 msgstr "Example:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:80
+#: ../../general/Ms_description/Transformations_microservice.rst:76
 #, python-brace-format
 msgid ""
 "Если файлов шаблона несколько в результате разделения их по локализации, "
@@ -142,36 +164,37 @@ msgstr ""
 "locale, the meta-file is named according to the following pattern "
 "``${File_name_before_locale_specification}.meta.yml``"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:88
+#: ../../general/Ms_description/Transformations_microservice.rst:84
 msgid "**Структура мета-файла**"
 msgstr "**Meta-file Structure**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:90
+#: ../../general/Ms_description/Transformations_microservice.rst:86
 msgid "Мета-файл должен содержать следующие поля в своей структуре:"
 msgstr "The meta-file must contain the following fields in its structure:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:97
-#: ../../general/Ms_description/Transformations_microservice.rst:210
-#: ../../general/Ms_description/Transformations_microservice.rst:249
+#: ../../general/Ms_description/Transformations_microservice.rst:93
+#: ../../general/Ms_description/Transformations_microservice.rst:206
+#: ../../general/Ms_description/Transformations_microservice.rst:247
 msgid "Поле"
 msgstr "Field"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:98
-#: ../../general/Ms_description/Transformations_microservice.rst:211
-#: ../../general/Ms_description/Transformations_microservice.rst:250
+#: ../../general/Ms_description/Transformations_microservice.rst:94
+#: ../../general/Ms_description/Transformations_microservice.rst:207
+#: ../../general/Ms_description/Transformations_microservice.rst:248
 msgid "Описание"
 msgstr "Description"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:99
+#: ../../general/Ms_description/Transformations_microservice.rst:95
+#: ../../general/Ms_description/Transformations_microservice.rst:249
 msgid "**id**"
 msgstr "**id**"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
-#: ../../general/Ms_description/Transformations_microservice.rst:213
+#: ../../general/Ms_description/Transformations_microservice.rst:209
 msgid "Уникальный идентификатор шаблона в системе"
 msgstr "Unique identifier of the template in the system"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:106
+#: ../../general/Ms_description/Transformations_microservice.rst:102
 msgid "**engine**"
 msgstr "**engine**"
 
@@ -207,16 +230,16 @@ msgstr ""
 "- ``none`` — for processing templates without any transformation. The "
 "template is returned as-is."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:117
+#: ../../general/Ms_description/Transformations_microservice.rst:113
 msgid "**name**"
 msgstr "**name**"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
-#: ../../general/Ms_description/Transformations_microservice.rst:215
+#: ../../general/Ms_description/Transformations_microservice.rst:211
 msgid "Имя шаблона"
 msgstr "Template name"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:124
+#: ../../general/Ms_description/Transformations_microservice.rst:120
 msgid "**mimeType**"
 msgstr "**mimeType**"
 
@@ -224,7 +247,7 @@ msgstr "**mimeType**"
 msgid "Тип файла шаблона"
 msgstr "Template file type"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:131
+#: ../../general/Ms_description/Transformations_microservice.rst:127
 msgid "**model**"
 msgstr "**model**"
 
@@ -245,7 +268,7 @@ msgstr ""
 "The values support all attribute access capabilities through "
 ":ref:`Records API <Records_API>`"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:143
+#: ../../general/Ms_description/Transformations_microservice.rst:139
 msgid "**computedAttributes**"
 msgstr "**computedAttributes**"
 
@@ -269,24 +292,24 @@ msgstr ""
 msgid "См. подробнее :ref:`Вычисляемые атрибуты для шаблонов <calculated_attr>`"
 msgstr "See also :ref:`Computed Attributes for Templates <calculated_attr>`"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:156
+#: ../../general/Ms_description/Transformations_microservice.rst:152
 msgid "**tags**"
 msgstr "**tags**"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
-#: ../../general/Ms_description/Transformations_microservice.rst:230
+#: ../../general/Ms_description/Transformations_microservice.rst:228
 msgid "Список вспомогательных меток для удобного поиска"
 msgstr "A list of auxiliary labels for convenient search"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:178
+#: ../../general/Ms_description/Transformations_microservice.rst:174
 msgid "Файлы должны располагаться в проекте по определенному пути."
 msgstr "Files must be placed in the project at a specific path."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:180
+#: ../../general/Ms_description/Transformations_microservice.rst:176
 msgid "Путь для расположения файлов имеет следующий паттерн:"
 msgstr "The file path follows this pattern:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:182
+#: ../../general/Ms_description/Transformations_microservice.rst:178
 #, python-brace-format
 msgid ""
 "В микросервисе: "
@@ -295,7 +318,7 @@ msgstr ""
 "In the microservice: "
 "``${home_dir}/src/main/resources/eapps/artifacts/transformation/template/``"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:184
+#: ../../general/Ms_description/Transformations_microservice.rst:180
 #, python-brace-format
 msgid ""
 "В старых проектах: "
@@ -304,21 +327,19 @@ msgstr ""
 "In legacy projects: "
 "``${module_name}/src/main/resources/alfresco/module/${module_name}/transformation/template/``"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:186
+#: ../../general/Ms_description/Transformations_microservice.rst:182
 msgid ""
-"В данных директориях вы можете создавать внутреннюю структуру папок. "
-"Поиск артефактов шаблонов происходит рекурсивно по папкам, но начинается "
-"именно с этих директорий."
-msgstr ""
-"You can create an internal folder structure within these directories. "
-"Template artifact lookup is performed recursively through subfolders, but"
-" starts from these directories."
+"В данных директориях можно создавать внутреннюю структуру папок. "
+"Поддержка пути старых Alfresco-проектов зависит от загрузчика приложений "
+"соответствующей версии. В ecos-transformations поставляемые шаблоны "
+"находятся в ``eapps/artifacts/transformation/template/``."
+msgstr "These directories can contain an internal folder structure. Legacy Alfresco project path support depends on the application loader version. ecos-transformations bundled templates are in ``eapps/artifacts/transformation/template/``."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:189
+#: ../../general/Ms_description/Transformations_microservice.rst:185
 msgid "Создание шаблона через журнал"
 msgstr "Creating a Template via the Journal"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:191
+#: ../../general/Ms_description/Transformations_microservice.rst:187
 msgid ""
 "Для создания шаблона документа необходимо перейти в журнал **\"Шаблоны "
 "документов\" (Рабочее пространство \"Раздел администратора\" - "
@@ -328,28 +349,36 @@ msgstr ""
 "journal (Workspace \"Admin Section\" - Transformations)** and create a "
 "new record."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:203
+#: ../../general/Ms_description/Transformations_microservice.rst:199
 msgid "Необходимо заполнить следующие поля:"
 msgstr "The following fields must be filled in:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:212
-#: ../../general/Ms_description/Transformations_microservice.rst:251
+#: ../../general/Ms_description/Transformations_microservice.rst:208
 msgid "**ID**"
 msgstr "**ID**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:214
+#: ../../general/Ms_description/Transformations_microservice.rst:210
 msgid "**Имя**"
 msgstr "**Name**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:216
+#: ../../general/Ms_description/Transformations_microservice.rst:212
 msgid "**Движок**"
 msgstr "**Engine**"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
-msgid "(На данный момент существует только Freemarker)"
-msgstr "(Currently, only Freemarker is available)"
+msgid ""
+"В стандартной форме доступны ``freemarker`` для DOCX и текста и ``ecos-"
+"table`` для XLSX."
+msgstr "The standard form offers ``freemarker`` for DOCX and text, and ``ecos-table`` for XLSX."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:219
+#: ../../general/Ms_description/Transformations_microservice.rst
+msgid ""
+"Сервер также поддерживает ``none`` — выдачу шаблона без преобразования. "
+"Это значение можно задать в метаданных или JSON; в списке стандартной "
+"формы его нет."
+msgstr "The server also supports ``none``, which returns the template without transformation. Set it in metadata or JSON; it is absent from the standard form list."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:216
 msgid "**Шаблоны**"
 msgstr "**Templates**"
 
@@ -367,13 +396,10 @@ msgstr ""
 
 #: ../../general/Ms_description/Transformations_microservice.rst
 msgid ""
-"В архиве должен быть файл с шаблоном в формате docx или ftl. Строгих "
-"правил к его наименованию нет, но желательно придерживаться общей "
-"концепции и называть файл как id шаблона."
-msgstr ""
-"The archive must contain a template file in docx or ftl format. There are"
-" no strict naming rules, but it is recommended to follow the general "
-"convention and name the file after the template ID."
+"В архиве размещаются файлы содержимого: DOCX или FTL для ``freemarker``, "
+"XLSX для ``ecos-table``. Файлы располагайте в корне архива. Имя "
+"желательно согласовать с ID шаблона."
+msgstr "The archive contains content files: DOCX or FTL for ``freemarker``, XLSX for ``ecos-table``. Place files at the archive root. Prefer a name matching the template ID."
 
 #: ../../general/Ms_description/Transformations_microservice.rst
 msgid ""
@@ -383,11 +409,17 @@ msgstr ""
 "If there are multiple templates (split by locale), the file names must "
 "have suffixes such as _ru, _en, etc. appended at the end."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:224
+#: ../../general/Ms_description/Transformations_microservice.rst
+msgid ""
+"Метафайл добавляется в архив для отдельного действия импорта. В обычное "
+"поле «Шаблоны» загружается архив содержимого без метафайла."
+msgstr "The metadata file is added to the archive for the separate import action. Upload a content archive without a metadata file to the ordinary \"Templates\" field."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:222
 msgid "**Модель**"
 msgstr "**Model**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:225
+#: ../../general/Ms_description/Transformations_microservice.rst:223
 msgid ""
 "Представляет собой маппинг ключ-значение, где в качестве ключа "
 "используется атрибут из шаблона, а в качестве значения — атрибут, который"
@@ -396,7 +428,7 @@ msgstr ""
 "Represents a key-value mapping where the key is an attribute from the "
 "template and the value is an attribute taken from the record."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:226
+#: ../../general/Ms_description/Transformations_microservice.rst:224
 msgid "**Вычисляемые атрибуты**"
 msgstr "**Computed Attributes**"
 
@@ -404,15 +436,15 @@ msgstr "**Computed Attributes**"
 msgid "Лист объектов с информацией о вычисляемых атрибутах."
 msgstr "A list of objects containing information about computed attributes."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:229
+#: ../../general/Ms_description/Transformations_microservice.rst:227
 msgid "**Теги**"
 msgstr "**Tags**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:236
+#: ../../general/Ms_description/Transformations_microservice.rst:234
 msgid "Вычисляемые атрибуты для шаблонов"
 msgstr "Computed Attributes for Templates"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:238
+#: ../../general/Ms_description/Transformations_microservice.rst:236
 msgid ""
 "Вычисляемые атрибуты в метафайле шаблона предназначены для того, чтобы "
 "совершить постобработку над значениями, которые пришли в модели, и "
@@ -422,11 +454,11 @@ msgstr ""
 "post-processing on values received in the model, and to update these "
 "values in the model or add them under new names."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:240
+#: ../../general/Ms_description/Transformations_microservice.rst:238
 msgid "**Структура записи:**"
 msgstr "**Record Structure:**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:242
+#: ../../general/Ms_description/Transformations_microservice.rst:240
 msgid ""
 "Указание вычисляемых атрибутов начинается с ключевого атрибута "
 "``computedAttributes`` в корневой структуре метафайла, содержащего в себе"
@@ -450,15 +482,15 @@ msgstr ""
 "If the model already contains an attribute with this name, its value in "
 "the model will be updated."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:254
+#: ../../general/Ms_description/Transformations_microservice.rst:252
 msgid "**type**"
 msgstr "**type**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:255
+#: ../../general/Ms_description/Transformations_microservice.rst:253
 msgid "Указание типа преобразования значения."
 msgstr "Specifies the type of value transformation."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:256
+#: ../../general/Ms_description/Transformations_microservice.rst:254
 msgid "**config**"
 msgstr "**config**"
 
@@ -489,21 +521,31 @@ msgstr ""
 "model using the attribute name from the **id** field of the computed "
 "attribute."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:268
+#: ../../general/Ms_description/Transformations_microservice.rst:266
 msgid "**Пример:**"
 msgstr "**Example:**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:284
+#: ../../general/Ms_description/Transformations_microservice.rst:282
 msgid "Типы вычисляемых атрибутов"
 msgstr "Computed Attribute Types"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:286
+#: ../../general/Ms_description/Transformations_microservice.rst:284
 msgid ""
 "**html-to-text** — преобразует входной текст из HTML кода в текст, убирая"
 " из него лишние теги (такие как <p>, <br>, <li>)."
 msgstr ""
 "**html-to-text** — converts input text from HTML code to plain text by "
 "removing unnecessary tags (such as <p>, <br>, <li>)."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:286
+msgid ""
+"Преобразование сохраняет структуру текста: для ``br`` и ``p`` добавляются"
+" переносы строк, для ``li`` — перенос и отступ. Вычисляемые атрибуты "
+"обрабатываются последовательно, поэтому последующие преобразования могут "
+"использовать результат предыдущих. При неизвестном типе преобразования "
+"или отсутствии исходного атрибута обработка списка прерывается с записью "
+"ошибки в лог; оставшиеся вычисляемые атрибуты не выполняются."
+msgstr "Conversion preserves text structure: ``br`` and ``p`` add line breaks, and ``li`` adds a line break and indentation. Computed attributes are processed sequentially, so later transformations can use earlier results. An unknown transformation type or missing source attribute stops list processing and logs an error; remaining computed attributes are not executed."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:291
 msgid "Действие сгенерировать и скачать документ"
@@ -547,9 +589,10 @@ msgstr "The name of the resulting document."
 
 #: ../../general/Ms_description/Transformations_microservice.rst
 msgid ""
-"Если данный атрибут будет отсутствовать, то возьмется имя документа "
-"шаблона."
-msgstr "If this attribute is absent, the template document name will be used."
+"Если значение отсутствует или пустое, используется поле ``name`` записи "
+"шаблона. Если тип файла не определяется по имени результата, расширение "
+"дописывается по MIME-типу шаблона."
+msgstr "If the value is absent or empty, the template record's ``name`` is used. If the result name does not identify the file type, the extension is appended based on the template MIME type."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:314
 msgid "**templateRef**"
@@ -579,36 +622,26 @@ msgstr ""
 
 #: ../../general/Ms_description/Transformations_microservice.rst:325
 msgid ""
-"В TemplateServiceImpl перед передачей модели данных в шаблонизатор "
-"реализована рекурсивная санитизация всех строковых значений. Из строк "
-"удаляются управляющие символы u0000 u0008, u000B, u000C, u000E, u001F. "
-"Допустимые символы — табуляция, перевод строки и возврат каретки — "
-"сохраняются."
-msgstr ""
-"In TemplateServiceImpl, before passing the data model to the template "
-"engine, recursive sanitization of all string values is implemented. "
-"Control characters u0000, u0008, u000B, u000C, u000E, u001F are removed "
-"from strings. Allowed characters — tab, newline, and carriage return — "
-"are preserved."
+"В ``TemplateServiceImpl`` после вычисляемых атрибутов и перед передачей "
+"модели в движок выполняется рекурсивная санитизация строк в объектах и "
+"массивах. Удаляются диапазоны ``U+0000–U+0008`` и ``U+000E–U+001F``, а "
+"также ``U+000B`` и ``U+000C``. Табуляция (``U+0009``), перевод строки "
+"(``U+000A``) и возврат каретки (``U+000D``) сохраняются."
+msgstr "In ``TemplateServiceImpl``, strings within objects and arrays are recursively sanitized after computed attributes are processed and before the model is passed to the engine. The ranges ``U+0000–U+0008`` and ``U+000E–U+001F``, plus ``U+000B`` and ``U+000C``, are removed. Tab (``U+0009``), line feed (``U+000A``) and carriage return (``U+000D``) are preserved."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:327
 msgid ""
-"Санитизация централизована и покрывает все типы шаблонов (DOCX, XLSX, "
-"текстовые)."
-msgstr ""
-"Sanitization is centralized and covers all template types (DOCX, XLSX, "
-"text)."
+"Санитизация модели выполняется для всех движков на этом пути генерации. "
+"Разметка самого файла шаблона при этом не исправляется."
+msgstr "Model sanitization runs for every engine on this generation path. It does not repair template file markup."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:329
 msgid ""
-"Особенность: если используются зашифрованные поля (зашифрованы в БД и "
-"расшифровываются непосредственно у пользователя), то такие поля "
-"передадутся в расшифрованном виде и в сгенерированном документе они будут"
-" корректно отображаться."
-msgstr ""
-"Note: if encrypted fields are used (encrypted in the database and "
-"decrypted on the client side), such fields will be passed in decrypted "
-"form and will be displayed correctly in the generated document."
+"Если модель содержит зашифрованные поля, их расшифровку до отправки "
+"должен обеспечивать клиентский компонент с учётом прав пользователя. "
+"Микросервис получает готовую модель; возможность расшифровки зависит от "
+"клиентского пути генерации."
+msgstr "If the model contains encrypted fields, the client component must decrypt them before sending, subject to user permissions. The microservice receives a prepared model; decryption availability depends on the client generation path."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:332
 msgid "Примеры действий:"
@@ -726,19 +759,19 @@ msgstr ""
 
 #: ../../general/Ms_description/Transformations_microservice.rst:416
 msgid ""
-"При создании рекорда автоматическая генерация выполняется синхронно, "
-"результат будет записан в атрибут ``_content``."
-msgstr ""
-"When a record is created, automatic generation is performed "
-"synchronously, and the result is written to the ``_content`` attribute."
+"Автоматическая генерация при создании записи обеспечивается интеграцией "
+"вызывающего компонента, например ecos-model, с Enterprise-библиотекой "
+"``TemplatedContentGenerator``. Её подключение и момент выполнения зависят"
+" от версии и конфигурации платформы. Для явной генерации микросервис "
+"также предоставляет источник ``transformations/templated-content``; "
+"атрибут результата по умолчанию — ``_content``."
+msgstr "Automatic generation on record creation is provided by integration of the calling component, such as ecos-model, with the Enterprise ``TemplatedContentGenerator`` library. Its inclusion and execution timing depend on platform version and configuration. For explicit generation, the microservice also provides ``transformations/templated-content``; the default result attribute is ``_content``."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:418
 msgid ""
-"Сгенерированный контент будет доступен для скачивания, предпросмотра и "
-"сравнения версий."
-msgstr ""
-"The generated content will be available for download, preview, and "
-"version comparison."
+"После сохранения контента его скачивание, предпросмотр и сравнение версий"
+" обеспечиваются соответствующими компонентами платформы."
+msgstr "After content is saved, the corresponding platform components provide downloading, preview and version comparison."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:421
 msgid "Синтаксис условных операторов"
@@ -771,11 +804,18 @@ msgstr ""
 "Expressions that contain opening and closing tags must be wrapped in "
 "grouping tags ``[#`` ``#]``:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:440
+#: ../../general/Ms_description/Transformations_microservice.rst:433
+msgid ""
+"Для DOCX используются директивы с квадратными скобками, например ``[#if "
+"...]...[/#if]``. Вариант ``<#if ...>`` для этого движка не "
+"поддерживается. Пример сгруппированного выражения:"
+msgstr "DOCX uses square-bracket directives, such as ``[#if ...]...[/#if]``. The ``<#if ...>`` form is not supported by this engine. Example grouped expression:"
+
+#: ../../general/Ms_description/Transformations_microservice.rst:446
 msgid "Параметры работы с документом во встроенном редакторе OnlyOffice"
 msgstr "Parameters for Working with Documents in the Built-in OnlyOffice Editor"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:442
+#: ../../general/Ms_description/Transformations_microservice.rst:448
 msgid ""
 "В действии, в **url**, через **\"&config=JSON\"** необходимо прописать "
 "конфиг, предварительно сгенерировав его в **encodeURIComponent** прямо в "
@@ -785,7 +825,7 @@ msgstr ""
 "having first generated it using **encodeURIComponent** directly in the "
 "browser:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:454
+#: ../../general/Ms_description/Transformations_microservice.rst:460
 msgid ""
 "В данном примере мы разрешаем пользователю редактировать только "
 "определённые поля, и при этом убираем возможность скачать файл."
@@ -793,7 +833,7 @@ msgstr ""
 "In this example, we allow the user to edit only specific fields while "
 "removing the ability to download the file."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:456
+#: ../../general/Ms_description/Transformations_microservice.rst:462
 msgid ""
 "Варианты конфигурации редактора описаны в `официальной документации "
 "<https://api.onlyoffice.com/editors/config/document/permissions#review>`_"
@@ -802,18 +842,17 @@ msgstr ""
 " "
 "<https://api.onlyoffice.com/editors/config/document/permissions#review>`_"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:462
+#: ../../general/Ms_description/Transformations_microservice.rst:468
 msgid ""
 "Для создания документа с редактируемыми полями необходимо выполнить "
 "следующие шаги:"
-msgstr ""
-"To create a document with editable fields, follow these steps:"
+msgstr "To create a document with editable fields, follow these steps:"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
 msgid "Пример: создание документа с редактируемыми полями"
 msgstr "Example: creating a document with editable fields"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:467
+#: ../../general/Ms_description/Transformations_microservice.rst:473
 msgid ""
 "Исходный **.docx** файл локально открыть в редакторе OnlyOffice и "
 "сохранить в формате **.docxf**."
@@ -821,7 +860,7 @@ msgstr ""
 "Open the original **.docx** file locally in the OnlyOffice editor and "
 "save it in **.docxf** format."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:473
+#: ../../general/Ms_description/Transformations_microservice.rst:479
 msgid ""
 "Открыть уже в этом формате и с помощью вкладки **Формы → Текстовое поле**"
 " разметить необходимые поля."
@@ -829,7 +868,7 @@ msgstr ""
 "Open it in this format and mark the required fields using the **Forms → "
 "Text Field** tab."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:475
+#: ../../general/Ms_description/Transformations_microservice.rst:481
 msgid ""
 "При этом нужно убедиться, что **«Заполнитель»** и **«Значение по "
 "умолчанию»** пустые (для избежания проблем вёрстки и изменения цвета "
@@ -839,7 +878,7 @@ msgstr ""
 "(to avoid layout issues and text color changes after template "
 "generation)."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:481
+#: ../../general/Ms_description/Transformations_microservice.rst:487
 msgid ""
 "Отметив необходимые поля, снова сохранить документ в формате **.docx**, "
 "открыть в Word, заполнить необходимыми тегами и сохранить."
@@ -847,70 +886,79 @@ msgstr ""
 "After marking the required fields, save the document again in **.docx** "
 "format, open it in Word, fill it with the necessary tags, and save."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:487
+#: ../../general/Ms_description/Transformations_microservice.rst:493
 msgid ""
 "Снова открыть документ с помощью OnlyOffice, через вкладку **Защита → "
 "Защитить документ** указать **пароль** и **«Заполнение форм»**."
 msgstr ""
-"Open the document again with OnlyOffice, go to the **Protection → Protect "
-"Document** tab, and specify the **password** and **\"Fill in forms\"**."
-
-#: ../../general/Ms_description/Transformations_microservice.rst:497
-msgid ""
-"В итоге получаем готовый **.docx** файл, который перед тем как загружать "
-"в систему, следует поправить, пользуясь статьей :ref:`Временное решение "
-"ошибки при генерации шаблона с условиями <temporary_solution>`"
-msgstr ""
-"The result is a ready **.docx** file, which should be fixed before "
-"uploading to the system by following the article :ref:`Temporary "
-"Workaround for Template Generation Error with Conditions "
-"<temporary_solution>`"
+"Open the document again with OnlyOffice, go to the **Protection → Protect"
+" Document** tab, and specify the **password** and **\"Fill in forms\"**."
 
 #: ../../general/Ms_description/Transformations_microservice.rst:503
-msgid "Временное решение ошибки при генерации шаблона с условиями"
-msgstr "Temporary Workaround for Template Generation Error with Conditions"
-
-#: ../../general/Ms_description/Transformations_microservice.rst:505
 msgid ""
-"При генерации документа из шаблона документа, в котором есть условие "
-"(т.е. if, else или elseif), возникает ошибка."
-msgstr ""
-"When generating a document from a template that contains a condition "
-"(i.e., if, else, or elseif), an error occurs."
+"Перед использованием проверьте генерацию подготовленного **.docx** на "
+"нужной версии платформы и редактора. Если возникает ошибка обработки "
+"условия, см. :ref:`диагностику шаблонов с условиями "
+"<temporary_solution>`."
+msgstr "Before use, test generation from the prepared **.docx** with the required platform and editor versions. For condition processing errors, see :ref:`diagnosing conditional templates <temporary_solution>`."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:509
+msgid "Диагностика ошибки при генерации шаблона с условиями"
+msgstr "Diagnosing errors when generating a template with conditions"
 
 #: ../../general/Ms_description/Transformations_microservice.rst:511
-msgid "так как файл **document.xml** дробит условие на множество тегов:"
-msgstr "because the **document.xml** file splits the condition into multiple tags:"
+msgid ""
+"При ошибке обработки ``if``, ``else`` или ``elseif`` сначала проверьте "
+"квадратный синтаксис директив и группировку ``[# ... #]``. Текущий "
+"DOCX-обработчик умеет собирать выражение из нескольких текстовых "
+"фрагментов XML, поэтому само наличие условия или его разбиение редактором"
+" на теги не означает обязательный сбой."
+msgstr "For ``if``, ``else`` or ``elseif`` processing errors, first check square-bracket directive syntax and ``[# ... #]`` grouping. The current DOCX handler can assemble an expression from multiple XML text fragments, so a condition or editor splitting it across tags does not necessarily cause failure."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:513
+msgid ""
+"Ниже показан пример проблемного шаблона и ручной способ исправления. "
+"Применяйте его только к воспроизводимому случаю после проверки синтаксиса"
+" и минимального примера; предварительно сохраните копию файла."
+msgstr "The following shows a problematic template and a manual fix. Apply it only to a reproducible case after checking syntax and a minimal example; save a copy first."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:519
+msgid ""
+"В этом примере условие в **document.xml** разделено между несколькими "
+"тегами:"
+msgstr "In this example, the condition in **document.xml** is split across several tags:"
 
 #: ../../general/Ms_description/Transformations_microservice.rst
 msgid "Work around для решения проблемы"
 msgstr "Workaround for the issue"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:520
+#: ../../general/Ms_description/Transformations_microservice.rst:528
 msgid "Открыть **docx** как архив."
 msgstr "Open the **docx** file as an archive."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:526
+#: ../../general/Ms_description/Transformations_microservice.rst:534
 msgid "В папке **word** открыть файл **document.xml**"
 msgstr "In the **word** folder, open the **document.xml** file"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:532
+#: ../../general/Ms_description/Transformations_microservice.rst:540
 msgid "Найти условие, разбитое на теги:"
 msgstr "Find the condition split across tags:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:538
+#: ../../general/Ms_description/Transformations_microservice.rst:546
 msgid "Собрать в один тег:"
 msgstr "Merge into a single tag:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:544
-msgid "Сохранить. Загрузить."
-msgstr "Save. Upload."
+#: ../../general/Ms_description/Transformations_microservice.rst:552
+msgid ""
+"Сохранить архив и проверить, что документ открывается. Затем загрузить "
+"шаблон и повторить генерацию."
+msgstr "Save the archive and check that the document opens. Then upload the template and repeat generation."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:548
+#: ../../general/Ms_description/Transformations_microservice.rst:556
 msgid "Движок «ECOS table»"
 msgstr "\"ECOS table\" Engine"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:550
+#: ../../general/Ms_description/Transformations_microservice.rst:558
 msgid ""
 "Данный движок в системе Citeck служит для работы с шаблонами документов в"
 " формате **xlsx**. Движок представляет собой смесь обработчика **xlsx "
@@ -921,23 +969,23 @@ msgstr ""
 "processor and a **Freemarker** processor, providing the following "
 "capabilities:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:552
+#: ../../general/Ms_description/Transformations_microservice.rst:560
 msgid ""
-"использование в ячейках полноценного синтаксиса Freemarker для заполнения"
-" ячеек значениями;"
-msgstr "use of full Freemarker syntax in cells to fill them with values;"
+"обработка текстовых ячеек через Freemarker при выполнении условия "
+"распознавания подстановки, описанного ниже;"
+msgstr "Processing text cells with Freemarker when the substitution recognition condition below is met;"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:553
+#: ../../general/Ms_description/Transformations_microservice.rst:561
 msgid ""
 "использование специального синтаксиса для генерирования строк в xlsx "
 "файле."
 msgstr "use of a special syntax for generating rows in the xlsx file."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:555
+#: ../../general/Ms_description/Transformations_microservice.rst:563
 msgid "Общий принцип работы движка:"
 msgstr "General engine operation principle:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:557
+#: ../../general/Ms_description/Transformations_microservice.rst:565
 msgid ""
 "сканирует все страницы шаблона, заменяя, где необходимо, значения в "
 "ячейках на значения из модели, используя обработчик Freemarker;"
@@ -945,36 +993,32 @@ msgstr ""
 "scans all pages of the template, replacing cell values with model values "
 "where necessary, using the Freemarker processor;"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:558
+#: ../../general/Ms_description/Transformations_microservice.rst:566
 msgid ""
-"при нахождении строк с определенным синтаксисом (для генерации новых "
-"строк) начинает генерировать новые строки, заменяя ячейки в них "
-"значениями из объектов внутри соответствующего списка из модели. Другими "
-"словами, в модели должен быть список с объектами, на основе которого "
-"будут сгенерированы строки (число строк будет совпадать с количеством "
-"элементов в списке). При генерировании строки будут использоваться "
-"значения объекта списка, для которого генерируется строка."
-msgstr ""
-"when rows with a specific syntax are found (for generating new rows), it "
-"begins generating new rows, replacing cells with values from objects "
-"within the corresponding list in the model. In other words, the model "
-"must contain a list of objects from which rows will be generated (the "
-"number of rows will match the number of list elements). When generating a"
-" row, the values of the corresponding list object will be used."
+"при нахождении блока строк между ``#LIST`` и ``#END`` повторяет его для "
+"каждого объекта списка из модели. Если список содержит ``n`` объектов, а "
+"блок — ``k`` шаблонных строк, формируется ``n × k`` строк данных. При "
+"заполнении используются значения текущего объекта списка."
+msgstr "When a row block between ``#LIST`` and ``#END`` is found, it is repeated for each object in the model list. For ``n`` objects and ``k`` template rows, ``n × k`` data rows are generated. Values from the current list object populate the cells."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:561
+#: ../../general/Ms_description/Transformations_microservice.rst:569
 msgid "Вывод данных в ячейку"
 msgstr "Outputting Data to a Cell"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:563
-msgid "В ячейках можно полноценно использовать синтаксис обработчика Freemarker."
-msgstr "Cells support full Freemarker processor syntax."
+#: ../../general/Ms_description/Transformations_microservice.rst:571
+#, python-brace-format
+msgid ""
+"Перед обработкой движок проверяет строку ячейки на наличие подстановки "
+"вида ``${name}`` или ``${user.name}`` — с буквами, цифрами, "
+"подчёркиванием и точкой в имени. Только совпавшая ячейка передаётся в "
+"Freemarker."
+msgstr "Before processing, the engine checks the cell string for a substitution such as ``${name}`` or ``${user.name}``, with letters, digits, underscores and dots in the name. Only matching cells are passed to Freemarker."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:565
+#: ../../general/Ms_description/Transformations_microservice.rst:573
 msgid "Конструкция:"
 msgstr "Construction:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:571
+#: ../../general/Ms_description/Transformations_microservice.rst:579
 msgid ""
 "подставит значение переменной **name** в указанное место, взяв его из "
 "модели данных."
@@ -982,19 +1026,35 @@ msgstr ""
 "substitutes the value of the **name** variable at the specified location,"
 " taking it from the data model."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:573
-msgid ""
-"Также можно использовать и более сложные конструкции, которые "
-"поддерживаются обработчиком Freemarker."
-msgstr ""
-"More complex constructs supported by the Freemarker processor can also be"
-" used."
-
 #: ../../general/Ms_description/Transformations_microservice.rst:581
+#, python-brace-format
+msgid ""
+"В такой ячейке можно использовать и более сложные конструкции Freemarker."
+" Например, следующая строка содержит простую подстановку "
+"``${annotation.annotation.ru}``, которая позволяет распознать ячейку:"
+msgstr "Such cells may also use more complex Freemarker constructs. For example, this string contains the simple substitution ``${annotation.annotation.ru}``, allowing the cell to be recognized:"
+
+#: ../../general/Ms_description/Transformations_microservice.rst:587
+#, python-brace-format
+msgid ""
+"Чистая директива без простой подстановки, а также выражение только вида "
+"``${name?upper_case}`` или ``${amount + 1}`` не запускают обработку сами "
+"по себе. Это ограничение распознавания ячейки в ``ecos-table``."
+msgstr "A standalone directive without a simple substitution, or an expression consisting only of ``${name?upper_case}`` or ``${amount + 1}``, does not trigger processing. This is an ``ecos-table`` cell recognition limitation."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:589
+msgid ""
+"Обрабатываемые ячейки должны содержать текст; результат записывается "
+"строкой. Числовые, логические и формульные ячейки требуют проверки на "
+"конкретном шаблоне: реализация читает строковое значение без "
+"предварительной проверки типа ячейки."
+msgstr "Processed cells must contain text; the result is written as a string. Test numeric, boolean and formula cells with the specific template: the implementation reads a string value without checking cell type first."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:593
 msgid "Вывод в шаблон произвольного количества строк"
 msgstr "Outputting an Arbitrary Number of Rows to the Template"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:583
+#: ../../general/Ms_description/Transformations_microservice.rst:595
 msgid ""
 "Для вывода в шаблон произвольного количества строк в виде таблицы "
 "необходимо использовать следующую конструкцию:"
@@ -1002,7 +1062,7 @@ msgstr ""
 "To output an arbitrary number of rows as a table in the template, use the"
 " following construction:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:585
+#: ../../general/Ms_description/Transformations_microservice.rst:597
 msgid ""
 "На том месте, где ожидаются сгенерированные на основе списка объектов "
 "строки, в первой ячейке пишется следующая конструкция:"
@@ -1010,7 +1070,7 @@ msgstr ""
 "At the position where the rows generated from the list of objects are "
 "expected, write the following construction in the first cell:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:591
+#: ../../general/Ms_description/Transformations_microservice.rst:603
 msgid ""
 "где **list_name** — название переменной из модели, в которой записан "
 "список объектов."
@@ -1018,7 +1078,14 @@ msgstr ""
 "where **list_name** is the name of the variable in the model that "
 "contains the list of objects."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:593
+#: ../../general/Ms_description/Transformations_microservice.rst:605
+msgid ""
+"Элементы списка должны быть объектами с именованными полями. Блок "
+"необходимо закрыть маркером ``#END``; незакрытый блок приводит к ошибке "
+"генерации."
+msgstr "List items must be objects with named fields. Close the block with ``#END``; an unclosed block causes generation to fail."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:607
 msgid ""
 "Следующие строки строятся таким образом, как мы хотим их сгенерировать на"
 " основе объектов из списка **list_name**"
@@ -1026,11 +1093,11 @@ msgstr ""
 "The following rows are structured the way we want them to be generated "
 "based on objects from the **list_name** list"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:595
+#: ../../general/Ms_description/Transformations_microservice.rst:609
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:603
+#: ../../general/Ms_description/Transformations_microservice.rst:617
 msgid ""
 "В строках при заполнении ячеек используем имена переменных из объектов "
 "данного списка (также можем использовать и переменные из общей модели; "
@@ -1042,7 +1109,7 @@ msgstr ""
 "variable names from the object and from the general model match, the "
 "value from the object will be used)."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:605
+#: ../../general/Ms_description/Transformations_microservice.rst:619
 msgid ""
 "После описания шаблонных строк необходимо поставить в первую ячейку на "
 "новой строке конструкцию:"
@@ -1050,7 +1117,7 @@ msgstr ""
 "After the template rows are described, place the following construction "
 "in the first cell of a new row:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:611
+#: ../../general/Ms_description/Transformations_microservice.rst:625
 msgid ""
 "Она будет указывать на то, что далее строки не являются шаблонными и их "
 "не нужно генерировать."
@@ -1058,23 +1125,29 @@ msgstr ""
 "It indicates that the rows after this point are not template rows and "
 "should not be generated."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:618
+#: ../../general/Ms_description/Transformations_microservice.rst:627
+msgid ""
+"Строки с маркерами ``#LIST`` и ``#END`` удаляются из результата. Для "
+"каждого элемента списка повторяются только строки между ними."
+msgstr "Rows containing ``#LIST`` and ``#END`` are removed from the result. Only rows between them are repeated for each list item."
+
+#: ../../general/Ms_description/Transformations_microservice.rst:634
 msgid "Пример"
 msgstr "Example"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:620
+#: ../../general/Ms_description/Transformations_microservice.rst:636
 msgid "Мы имеем тип данных со следующими атрибутами:"
 msgstr "We have a data type with the following attributes:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:626
+#: ../../general/Ms_description/Transformations_microservice.rst:642
 msgid "Атрибут **empls** — является списком пользователей системы."
 msgstr "The **empls** attribute is a list of system users."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:628
+#: ../../general/Ms_description/Transformations_microservice.rst:644
 msgid "Для данного типа мы делаем шаблон со следующей моделью:"
 msgstr "For this type, we create a template with the following model:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:634
+#: ../../general/Ms_description/Transformations_microservice.rst:650
 msgid ""
 "Переменная **empls** хранит список объектов, состоящих из 3 полей, на "
 "основе пользователей системы."
@@ -1082,21 +1155,21 @@ msgstr ""
 "The **empls** variable stores a list of objects consisting of 3 fields, "
 "based on system users."
 
-#: ../../general/Ms_description/Transformations_microservice.rst:636
+#: ../../general/Ms_description/Transformations_microservice.rst:652
 msgid "Шаблон xlsx выглядит следующим образом:"
 msgstr "The xlsx template looks as follows:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:642
+#: ../../general/Ms_description/Transformations_microservice.rst:658
 msgid "Где:"
 msgstr "Where:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:644
+#: ../../general/Ms_description/Transformations_microservice.rst:660
 msgid "В ячейке **А2** мы хотим записать значение из модели с ключом **name**"
 msgstr ""
 "In cell **A2** we want to write the value from the model with the key "
 "**name**"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:645
+#: ../../general/Ms_description/Transformations_microservice.rst:661
 msgid ""
 "В ячейке **А5** мы указываем, что дальше мы хотим строки на основе "
 "объектов из списка с ключом **empls** в модели"
@@ -1104,7 +1177,7 @@ msgstr ""
 "In cell **A5** we indicate that we want rows based on objects from the "
 "list with key **empls** in the model"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:646
+#: ../../general/Ms_description/Transformations_microservice.rst:662
 msgid ""
 "В ячейках **A6-C6** указываем как должны быть заполнены ячейки в "
 "сгенерированных строках"
@@ -1112,7 +1185,7 @@ msgstr ""
 "In cells **A6-C6** we specify how cells should be filled in the generated"
 " rows"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:647
+#: ../../general/Ms_description/Transformations_microservice.rst:663
 msgid ""
 "В ячейке **А7** мы указываем, что здесь заканчиваются шаблонные строки "
 "для списка с ключом **empls** (т.е. мы можем сделать 2 шаблонные строки и"
@@ -1123,11 +1196,11 @@ msgstr ""
 "**empls** end here (i.e., we can define 2 template rows and 2 rows will "
 "be generated for each list entry in the final file)"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:649
+#: ../../general/Ms_description/Transformations_microservice.rst:665
 msgid "В итоге, для карточки с данными параметрами:"
 msgstr "As a result, for a record with these parameters:"
 
-#: ../../general/Ms_description/Transformations_microservice.rst:655
+#: ../../general/Ms_description/Transformations_microservice.rst:671
 msgid "Будет сгенерирован следующий шаблон:"
 msgstr "The following template will be generated:"
 
@@ -1140,3 +1213,201 @@ msgstr "The following template will be generated:"
 #~ msgid "Указать **пароль** и **«Заполнение форм»**:"
 #~ msgstr "Specify a **password** and **\"Fill in forms\"**:"
 
+#~ msgid "Доступно только в Enterprise версии."
+#~ msgstr "Available in the Enterprise version only."
+
+#~ msgid ""
+#~ "**Микросервис Трансформации (ecos-transformations)**"
+#~ " — самостоятельный микросервис, не "
+#~ "требующего развертывания дополнительных баз "
+#~ "данных (все шаблоны хранятся в БД "
+#~ "ecos-model). Для обеспечения работоспособности"
+#~ " необходимы:"
+#~ msgstr ""
+#~ "**Transformations Microservice (ecos-"
+#~ "transformations)** is a standalone "
+#~ "microservice that does not require "
+#~ "deploying additional databases (all templates"
+#~ " are stored in the ecos-model "
+#~ "database). The following are required "
+#~ "for it to function:"
+
+#~ msgid "ecos-model:2.13.0"
+#~ msgstr "ecos-model:2.13.0"
+
+#~ msgid ""
+#~ "В данных директориях вы можете создавать"
+#~ " внутреннюю структуру папок. Поиск "
+#~ "артефактов шаблонов происходит рекурсивно по"
+#~ " папкам, но начинается именно с этих"
+#~ " директорий."
+#~ msgstr ""
+#~ "You can create an internal folder "
+#~ "structure within these directories. Template"
+#~ " artifact lookup is performed recursively"
+#~ " through subfolders, but starts from "
+#~ "these directories."
+
+#~ msgid "(На данный момент существует только Freemarker)"
+#~ msgstr "(Currently, only Freemarker is available)"
+
+#~ msgid ""
+#~ "В архиве должен быть файл с "
+#~ "шаблоном в формате docx или ftl. "
+#~ "Строгих правил к его наименованию нет,"
+#~ " но желательно придерживаться общей "
+#~ "концепции и называть файл как id "
+#~ "шаблона."
+#~ msgstr ""
+#~ "The archive must contain a template "
+#~ "file in docx or ftl format. There"
+#~ " are no strict naming rules, but "
+#~ "it is recommended to follow the "
+#~ "general convention and name the file "
+#~ "after the template ID."
+
+#~ msgid ""
+#~ "Если данный атрибут будет отсутствовать, "
+#~ "то возьмется имя документа шаблона."
+#~ msgstr "If this attribute is absent, the template document name will be used."
+
+#~ msgid ""
+#~ "В TemplateServiceImpl перед передачей модели"
+#~ " данных в шаблонизатор реализована "
+#~ "рекурсивная санитизация всех строковых "
+#~ "значений. Из строк удаляются управляющие "
+#~ "символы u0000 u0008, u000B, u000C, "
+#~ "u000E, u001F. Допустимые символы — "
+#~ "табуляция, перевод строки и возврат "
+#~ "каретки — сохраняются."
+#~ msgstr ""
+#~ "In TemplateServiceImpl, before passing the "
+#~ "data model to the template engine, "
+#~ "recursive sanitization of all string "
+#~ "values is implemented. Control characters "
+#~ "u0000, u0008, u000B, u000C, u000E, u001F"
+#~ " are removed from strings. Allowed "
+#~ "characters — tab, newline, and carriage"
+#~ " return — are preserved."
+
+#~ msgid ""
+#~ "Санитизация централизована и покрывает все "
+#~ "типы шаблонов (DOCX, XLSX, текстовые)."
+#~ msgstr ""
+#~ "Sanitization is centralized and covers "
+#~ "all template types (DOCX, XLSX, text)."
+
+#~ msgid ""
+#~ "Особенность: если используются зашифрованные "
+#~ "поля (зашифрованы в БД и "
+#~ "расшифровываются непосредственно у пользователя),"
+#~ " то такие поля передадутся в "
+#~ "расшифрованном виде и в сгенерированном "
+#~ "документе они будут корректно отображаться."
+#~ msgstr ""
+#~ "Note: if encrypted fields are used "
+#~ "(encrypted in the database and decrypted"
+#~ " on the client side), such fields "
+#~ "will be passed in decrypted form "
+#~ "and will be displayed correctly in "
+#~ "the generated document."
+
+#~ msgid ""
+#~ "При создании рекорда автоматическая генерация"
+#~ " выполняется синхронно, результат будет "
+#~ "записан в атрибут ``_content``."
+#~ msgstr ""
+#~ "When a record is created, automatic "
+#~ "generation is performed synchronously, and "
+#~ "the result is written to the "
+#~ "``_content`` attribute."
+
+#~ msgid ""
+#~ "Сгенерированный контент будет доступен для "
+#~ "скачивания, предпросмотра и сравнения версий."
+#~ msgstr ""
+#~ "The generated content will be available"
+#~ " for download, preview, and version "
+#~ "comparison."
+
+#~ msgid ""
+#~ "В итоге получаем готовый **.docx** файл,"
+#~ " который перед тем как загружать в"
+#~ " систему, следует поправить, пользуясь "
+#~ "статьей :ref:`Временное решение ошибки при "
+#~ "генерации шаблона с условиями "
+#~ "<temporary_solution>`"
+#~ msgstr ""
+#~ "The result is a ready **.docx** "
+#~ "file, which should be fixed before "
+#~ "uploading to the system by following "
+#~ "the article :ref:`Temporary Workaround for "
+#~ "Template Generation Error with Conditions "
+#~ "<temporary_solution>`"
+
+#~ msgid ""
+#~ "При генерации документа из шаблона "
+#~ "документа, в котором есть условие (т.е."
+#~ " if, else или elseif), возникает "
+#~ "ошибка."
+#~ msgstr ""
+#~ "When generating a document from a "
+#~ "template that contains a condition "
+#~ "(i.e., if, else, or elseif), an "
+#~ "error occurs."
+
+#~ msgid "так как файл **document.xml** дробит условие на множество тегов:"
+#~ msgstr ""
+#~ "because the **document.xml** file splits "
+#~ "the condition into multiple tags:"
+
+#~ msgid "Сохранить. Загрузить."
+#~ msgstr "Save. Upload."
+
+#~ msgid ""
+#~ "использование в ячейках полноценного "
+#~ "синтаксиса Freemarker для заполнения ячеек "
+#~ "значениями;"
+#~ msgstr "use of full Freemarker syntax in cells to fill them with values;"
+
+#~ msgid ""
+#~ "при нахождении строк с определенным "
+#~ "синтаксисом (для генерации новых строк) "
+#~ "начинает генерировать новые строки, заменяя"
+#~ " ячейки в них значениями из объектов"
+#~ " внутри соответствующего списка из модели."
+#~ " Другими словами, в модели должен "
+#~ "быть список с объектами, на основе "
+#~ "которого будут сгенерированы строки (число "
+#~ "строк будет совпадать с количеством "
+#~ "элементов в списке). При генерировании "
+#~ "строки будут использоваться значения объекта"
+#~ " списка, для которого генерируется строка."
+#~ msgstr ""
+#~ "when rows with a specific syntax "
+#~ "are found (for generating new rows), "
+#~ "it begins generating new rows, replacing"
+#~ " cells with values from objects "
+#~ "within the corresponding list in the "
+#~ "model. In other words, the model "
+#~ "must contain a list of objects "
+#~ "from which rows will be generated "
+#~ "(the number of rows will match the"
+#~ " number of list elements). When "
+#~ "generating a row, the values of "
+#~ "the corresponding list object will be"
+#~ " used."
+
+#~ msgid ""
+#~ "В ячейках можно полноценно использовать "
+#~ "синтаксис обработчика Freemarker."
+#~ msgstr "Cells support full Freemarker processor syntax."
+
+#~ msgid ""
+#~ "Также можно использовать и более сложные"
+#~ " конструкции, которые поддерживаются обработчиком"
+#~ " Freemarker."
+#~ msgstr ""
+#~ "More complex constructs supported by the"
+#~ " Freemarker processor can also be "
+#~ "used."

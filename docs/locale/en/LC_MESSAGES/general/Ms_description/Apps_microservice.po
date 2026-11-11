@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -48,11 +48,9 @@ msgstr ""
 
 #: ../../general/Ms_description/Apps_microservice.rst:13
 msgid ""
-"Микросервис, который управляет деплоем приложений и артефактов называется"
-" ECOS Applications или сокращенно ecos-apps."
-msgstr ""
-"The microservice that manages the deployment of applications and "
-"artifacts is called ECOS Applications, or ecos-apps for short."
+"Микросервис, который управляет деплоем приложений и артефактов, "
+"называется ECOS Applications, или сокращённо ecos-apps."
+msgstr "The microservice managing application and artifact deployment is called ECOS Applications, or ecos-apps for short."
 
 #: ../../general/Ms_description/Apps_microservice.rst:15
 msgid "Цели микросервиса:"
@@ -60,11 +58,9 @@ msgstr "Microservice goals:"
 
 #: ../../general/Ms_description/Apps_microservice.rst:17
 msgid ""
-"Версионирование артефактов. Все меняющиеся артефакты сохраняются как "
-"отдельные ревизии без возможности изменения."
-msgstr ""
-"Artifact versioning. All changed artifacts are saved as separate "
-"revisions that cannot be modified."
+"Версионирование артефактов. Изменения, принятые политикой загрузки, "
+"сохраняются как отдельные неизменяемые ревизии."
+msgstr "Artifact versioning. Changes accepted by the upload policy are stored as separate immutable revisions."
 
 #: ../../general/Ms_description/Apps_microservice.rst:19
 msgid ""
@@ -88,181 +84,499 @@ msgid "Управление патчами для артефактов."
 msgstr "Managing patches for artifacts."
 
 #: ../../general/Ms_description/Apps_microservice.rst:25
-msgid "Процесс деплоя артефактов выглядит примерно следующим образом:"
-msgstr "The artifact deployment process looks roughly as follows:"
+msgid ""
+"Процесс деплоя включает получение типов и артефактов, сохранение ревизий "
+"и доставку в целевые микросервисы."
+msgstr "The deployment process includes retrieving types and artifacts, saving revisions and delivering them to target microservices."
 
 #: ../../general/Ms_description/Apps_microservice.rst:28
 msgid "Простое описание"
 msgstr "Simple Description"
 
+#: ../../general/Ms_description/Apps_microservice.rst:30
+msgid ""
+"После обнаружения нового микросервиса ECOS Apps выполняет три основных "
+"этапа:"
+msgstr "After discovering a new microservice, ECOS Apps performs three main stages:"
+
+#: ../../general/Ms_description/Apps_microservice.rst:32
+msgid "Получает сведения о типах артефактов и поддерживающих их микросервисах."
+msgstr "Retrieves information about artifact types and microservices supporting them."
+
 #: ../../general/Ms_description/Apps_microservice.rst:34
 msgid ""
-"После появления в сети нового приложения (на схеме это alfresco) "
-"происходит 3 этапа:"
-msgstr ""
-"After a new application appears on the network (alfresco in the diagram),"
-" 3 stages occur:"
+"Загружает артефакты из зарегистрированных источников и сохраняет принятые"
+" изменения."
+msgstr "Loads artifacts from registered sources and saves accepted changes."
 
 #: ../../general/Ms_description/Apps_microservice.rst:36
-msgid "Запрос типов."
-msgstr "Types request."
+msgid ""
+"Применяет патчи и развёртывает артефакты с учётом зависимостей и "
+"состояния целевых микросервисов."
+msgstr "Applies patches and deploys artifacts according to dependencies and target microservice status."
 
-#: ../../general/Ms_description/Apps_microservice.rst:38
-msgid "Получение артефактов."
-msgstr "Receiving artifacts."
-
-#: ../../general/Ms_description/Apps_microservice.rst:40
-msgid "Деплой артефактов."
-msgstr "Deploying artifacts."
-
-#: ../../general/Ms_description/Apps_microservice.rst:43
+#: ../../general/Ms_description/Apps_microservice.rst:39
 msgid "Подробное описание"
 msgstr "Detailed Description"
 
+#: ../../general/Ms_description/Apps_microservice.rst:41
+msgid ""
+"После готовности приложения запускается фоновый процесс "
+"``ApplicationsWatcherJob``. При нескольких экземплярах ECOS Apps "
+"обновлением управляет владелец блокировки ``watcher-job``."
+msgstr "Once the application is ready, the ``ApplicationsWatcherJob`` background process starts. With multiple ECOS Apps instances, the owner of the ``watcher-job`` lock manages updates."
+
+#: ../../general/Ms_description/Apps_microservice.rst:43
+msgid ""
+"Процесс получает статусы микросервисов через ``RemoteAppService`` и "
+"обновляет сведения об их экземплярах. После цикла предусмотрено ожидание "
+"до 5 секунд; полная длительность цикла зависит также от времени "
+"выполнения запросов."
+msgstr "The process retrieves microservice statuses through ``RemoteAppService`` and updates instance information. Each cycle is followed by a wait of up to 5 seconds; the full cycle duration also depends on request execution time."
+
 #: ../../general/Ms_description/Apps_microservice.rst:45
-msgid "Микросервис периодически опрашивает всех кто подключен к Rabbit MQ"
-msgstr "The microservice periodically polls everyone connected to Rabbit MQ"
+msgid ""
+"По отметкам изменения выбираются актуальные сведения о типах и источниках"
+" артефактов. ECOS Apps обновляет каталог типов, регистрирует источники и "
+"обработчики деплоя для поддерживаемых целевыми микросервисами типов."
+msgstr "Change markers determine which artifact type and source information is current. ECOS Apps updates the type catalog and registers sources and deployment handlers for types supported by target microservices."
+
+#: ../../general/Ms_description/Apps_microservice.rst:47
+msgid ""
+"Из источников запрашиваются артефакты с учётом каталога типов и "
+"сохранённого времени предыдущей загрузки (``since``). Это позволяет "
+"загружать изменения, а не повторять полную загрузку на каждом цикле."
+msgstr "Artifacts are requested from sources using the type catalog and the saved previous upload time (``since``). This loads changes rather than repeating a full upload on every cycle."
+
+#: ../../general/Ms_description/Apps_microservice.rst:49
+msgid ""
+"Для каждого артефакта проверяется политика загрузки. Если содержимое и "
+"тип источника совпадают с последней ревизией, новая ревизия не создаётся."
+" Принятые изменения сохраняются с учётом рабочего пространства артефакта."
+msgstr "The upload policy is checked for each artifact. If the content and source type match the latest revision, no new revision is created. Accepted changes are stored in the artifact workspace."
 
 #: ../../general/Ms_description/Apps_microservice.rst:51
-msgid "Пока к Rabbit'у никто не подключился ничего не происходит."
-msgstr "While no one has connected to Rabbit, nothing happens."
+msgid ""
+"ECOS Apps применяет патчи и проверяет зависимости. Артефакты, готовые к "
+"деплою, отправляются в целевой микросервис. Патчи могут потребовать "
+"повторного деплоя."
+msgstr "ECOS Apps applies patches and checks dependencies. Artifacts ready for deployment are sent to the target microservice. Patches may require redeployment."
 
 #: ../../general/Ms_description/Apps_microservice.rst:53
 msgid ""
-"Когда появляется первый микросервис он возвращает ответ в ECOS Apps о "
-"своем присутствии."
-msgstr ""
-"When the first microservice appears, it returns a response to ECOS Apps "
-"about its presence."
+"Изменение артефакта не гарантирует немедленного успешного деплоя. В "
+"частности, используются следующие статусы:"
+msgstr "Changing an artifact does not guarantee immediate successful deployment. The following statuses are used, among others:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:59
-msgid ""
-"После этого ECOS Apps отправляет запрос на типы, в которых заинтересован "
-"микросервис."
-msgstr ""
-"After that, ECOS Apps sends a request for the types the microservice is "
-"interested in."
+#: ../../general/Ms_description/Apps_microservice.rst:60
+msgid "Статус"
+msgstr "Status"
 
 #: ../../general/Ms_description/Apps_microservice.rst:61
-msgid ""
-"Получив список типов ECOS Apps отправляет всем зарегистрировавшимся "
-"микросервисам запрос на получение артефактов."
-msgstr ""
-"Having received the list of types, ECOS Apps sends a request for "
-"artifacts to all registered microservices."
+#: ../../general/Ms_description/Apps_microservice.rst:191
+msgid "Значение"
+msgstr "Value"
+
+#: ../../general/Ms_description/Apps_microservice.rst:62
+msgid "``DRAFT``"
+msgstr "``DRAFT``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:63
+msgid "Артефакт ожидает деплоя."
+msgstr "The artifact is awaiting deployment."
+
+#: ../../general/Ms_description/Apps_microservice.rst:64
+msgid "``DEPS_WAITING``"
+msgstr "``DEPS_WAITING``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:65
+msgid "Артефакт ожидает готовности зависимостей."
+msgstr "The artifact is waiting for dependencies to become ready."
+
+#: ../../general/Ms_description/Apps_microservice.rst:66
+msgid "``DEPLOY_FAILED``"
+msgstr "``DEPLOY_FAILED``"
 
 #: ../../general/Ms_description/Apps_microservice.rst:67
-msgid ""
-"Получив необходимые артефакты ECOS Apps проверяет поменялись ли они с "
-"прошлой загрузки и если нет, то ничего не делает."
-msgstr ""
-"Having received the necessary artifacts, ECOS Apps checks whether they "
-"have changed since the last load, and if not, does nothing."
+msgid "При деплое возникла ошибка."
+msgstr "A deployment error occurred."
+
+#: ../../general/Ms_description/Apps_microservice.rst:68
+msgid "``DEPLOYED``"
+msgstr "``DEPLOYED``"
 
 #: ../../general/Ms_description/Apps_microservice.rst:69
-msgid ""
-"Если выясняется, что артефакты поменялись, то они отправляются в целевой "
-"микросервис на деплой."
-msgstr ""
-"If it turns out that the artifacts have changed, they are sent to the "
-"target microservice for deployment."
+msgid "Артефакт развёрнут."
+msgstr "The artifact is deployed."
 
 #: ../../general/Ms_description/Apps_microservice.rst:71
 msgid ""
-"Все взаимодействие происходит посредством Rabbit MQ и библиотеки ecos-"
-"commands."
-msgstr "All interaction occurs via Rabbit MQ and the ecos-commands library."
+"Удалённые операции с типами, источниками и деплоем выполняются через "
+"``RemoteAppService``; для команд используется библиотека ``ecos-"
+"commands``. ECOS Apps также предоставляет Records API и REST API."
+msgstr "Remote type, source and deployment operations run through ``RemoteAppService``; commands use ``ecos-commands``. ECOS Apps also provides Records API and REST API."
 
-#: ../../general/Ms_description/Apps_microservice.rst:73
-msgid "Лог ECOS Apps при обнаружении трех микросервисов (включая себя):"
-msgstr "ECOS Apps log when three microservices are detected (including itself):"
+#: ../../general/Ms_description/Apps_microservice.rst:74
+msgid "Сообщения в логах"
+msgstr "Log messages"
 
-#: ../../general/Ms_description/Apps_microservice.rst:108
+#: ../../general/Ms_description/Apps_microservice.rst:76
+msgid ""
+"При диагностике можно ориентироваться на следующие фрагменты сообщений. "
+"Конкретные значения зависят от приложения, источника и артефакта:"
+msgstr "The following message fragments can help with diagnostics. Actual values depend on the application, source and artifact:"
+
+#: ../../general/Ms_description/Apps_microservice.rst:83
+msgid "Фрагмент сообщения"
+msgstr "Message fragment"
+
+#: ../../general/Ms_description/Apps_microservice.rst:84
+msgid "Событие"
+msgstr "Event"
+
+#: ../../general/Ms_description/Apps_microservice.rst:85
+msgid "``Register deployer for``"
+msgstr "``Register deployer for``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:86
+msgid "Регистрация обработчика деплоя с перечнем поддерживаемых типов."
+msgstr "Registering a deployment handler with its supported types."
+
+#: ../../general/Ms_description/Apps_microservice.rst:87
+msgid "``Add application artifacts source. App:``"
+msgstr "``Add application artifacts source. App:``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:88
+msgid "Регистрация источника артефактов микросервиса."
+msgstr "Registering a microservice artifact source."
+
+#: ../../general/Ms_description/Apps_microservice.rst:89
+msgid "``Start artifacts uploading from source``"
+msgstr "``Start artifacts uploading from source``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:90
+msgid ""
+"Начало загрузки из источника с указанием новой и предыдущей отметок "
+"времени."
+msgstr "Starting a source upload with the new and previous timestamps."
+
+#: ../../general/Ms_description/Apps_microservice.rst:91
+msgid "``Create new artifact revision entity``"
+msgstr "``Create new artifact revision entity``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:92
+msgid "Создание ревизии артефакта."
+msgstr "Creating an artifact revision."
+
+#: ../../general/Ms_description/Apps_microservice.rst:93
+msgid "``Artifact deploy failed:``"
+msgstr "``Artifact deploy failed:``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:94
+msgid "Ошибка деплоя с описанием причин."
+msgstr "A deployment error with its causes."
+
+#: ../../general/Ms_description/Apps_microservice.rst:98
 msgid "Полезные скрипты (EApps)"
 msgstr "Useful Scripts (EApps)"
 
 #: ../../general/Ms_description/Apps_microservice.rst
-msgid "Получение и удаление артефактов по типу"
-msgstr "Getting and Deleting Artifacts by Type"
+msgid "Получение артефактов по типу"
+msgstr "Retrieving artifacts by type"
 
-#: ../../general/Ms_description/Apps_microservice.rst:113
-msgid "Для получения всех артефактов по типу можно выполнить следующий скрипт:"
-msgstr "To retrieve all artifacts by type, you can run the following script:"
+#: ../../general/Ms_description/Apps_microservice.rst:103
+msgid ""
+"Для получения страницы артефактов типа ``ui/form`` выполните следующий "
+"скрипт:"
+msgstr "To retrieve a page of ``ui/form`` artifacts, run this script:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:125
-msgid "В результате выполнения в консоль выведется список id артефактов."
-msgstr "As a result, a list of artifact IDs will be printed to the console."
+#: ../../general/Ms_description/Apps_microservice.rst:114
+msgid ""
+"В консоль выведется результат запроса со ссылками на артефакты. Для "
+"получения следующих страниц увеличивайте ``skipCount`` на размер "
+"страницы. Результат ограничен доступными рабочими пространствами и "
+"содержит неудалённые артефакты с ревизией, типы которых не помечены как "
+"внутренние."
+msgstr "The query result with artifact references is printed to the console. To fetch subsequent pages, increment ``skipCount`` by the page size. Results are limited to accessible workspaces and include undeleted artifacts with a revision whose types are not marked internal."
 
-#: ../../general/Ms_description/Apps_microservice.rst:127
-msgid "Имея id артефакта, его можно удалить следующим скриптом:"
-msgstr "Having the artifact ID, it can be deleted using the following script:"
+#: ../../general/Ms_description/Apps_microservice.rst:116
+msgid ""
+"Для дальнейших операций используйте полную ссылку из результата поиска. "
+"Глобальная запись формы может иметь вид "
+"``eapps/artifact@ui/form$ECOS_FORM``, а запись рабочего пространства — "
+"``eapps/artifact@ui/form$wsSysId:ECOS_FORM``. Здесь ``wsSysId`` — "
+"системный идентификатор рабочего пространства; двоеточия в самом "
+"идентификаторе артефакта экранируются при формировании ссылки."
+msgstr "For subsequent operations, use the full reference from the search result. A global form record may look like ``eapps/artifact@ui/form$ECOS_FORM``, and a workspace record like ``eapps/artifact@ui/form$wsSysId:ECOS_FORM``. Here ``wsSysId`` is the workspace system identifier; colons within the artifact identifier itself are escaped when constructing the reference."
 
-#: ../../general/Ms_description/Apps_microservice.rst:134
-msgid "Получение содержимого модулей из базы eapps"
-msgstr "Retrieving Module Contents from the eapps Database"
+#: ../../general/Ms_description/Apps_microservice.rst:119
+msgid "Получение содержимого артефактов"
+msgstr "Retrieving artifact contents"
+
+#: ../../general/Ms_description/Apps_microservice.rst:121
+msgid ""
+"В журнале артефактов доступно действие выгрузки ревизий. REST API "
+"микросервиса предоставляет ``GET /api/artifact/download-revisions`` с "
+"параметрами ``ref`` (полная ссылка на артефакт) и ``fromTime`` (начальный"
+" момент времени в формате ISO 8601 со смещением). Ответ — ZIP-архив "
+"ревизий. Внешний URL зависит от маршрутизации к микросервису."
+msgstr "The artifact journal provides a revision export action. The microservice REST API provides ``GET /api/artifact/download-revisions`` with ``ref`` (full artifact reference) and ``fromTime`` (start time in ISO 8601 with offset). The response is a ZIP archive of revisions. The external URL depends on microservice routing."
 
 #: ../../general/Ms_description/Apps_microservice.rst
-msgid "Извлечение файла модуля напрямую из БД"
-msgstr "Extracting a Module File Directly from the Database"
+msgid "Извлечение содержимого ревизии напрямую из БД"
+msgstr "Extracting revision contents directly from the database"
 
-#: ../../general/Ms_description/Apps_microservice.rst:139
-msgid "Получаем список ревизий по ext_id и типу артефакта:"
-msgstr "Get the list of revisions by ext_id and artifact type:"
+#: ../../general/Ms_description/Apps_microservice.rst:126
+msgid ""
+"Получаем список ревизий по идентификатору, типу и рабочему пространству "
+"артефакта. Пустая строка в ``workspace`` обозначает глобальный артефакт; "
+"для другого рабочего пространства укажите его идентификатор:"
+msgstr "Retrieve the revision list by artifact identifier, type and workspace. An empty ``workspace`` string denotes a global artifact; for another workspace, specify its identifier:"
+
+#: ../../general/Ms_description/Apps_microservice.rst:140
+msgid ""
+"Выбираем ревизию и подставляем её ``content_id`` в запрос содержимого. "
+"Ниже ``14809`` — пример значения, которое нужно заменить результатом "
+"предыдущего запроса:"
+msgstr "Select a revision and insert its ``content_id`` into the content query. Below, ``14809`` is an example to replace with the previous query result:"
 
 #: ../../general/Ms_description/Apps_microservice.rst:148
-msgid "Смотрим на поле **content_id** нужных модулей и делаем следующий запрос:"
-msgstr ""
-"Look at the **content_id** field of the required modules and make the "
-"following request:"
+msgid ""
+"Для сохранения base64 без заголовков и оформления таблицы в клиенте "
+"``psql`` можно использовать команду ``\\copy``. Она создаст файл на "
+"компьютере, где запущен клиент:"
+msgstr "To save base64 without headers or table formatting in ``psql``, use ``\\copy``. This creates a file on the computer running the client:"
 
 #: ../../general/Ms_description/Apps_microservice.rst:154
-msgid "Получаем результат в виде постранично разбитой base64-строки (фрагмент):"
-msgstr "We get the result as a paginated base64 string (fragment):"
-
-#: ../../general/Ms_description/Apps_microservice.rst:167
 msgid ""
-"Убираем шапку, отступы ``|``, переносы строк и знаки ``+`` в конце строк "
-"— получаем одну сплошную base64-строку:"
-msgstr ""
-"Remove the header, the ``|`` indents, line breaks, and the ``+`` signs at "
-"the end of lines — this gives one continuous base64 string:"
+"Декодируем файл локально, например в PowerShell из каталога, где он "
+"сохранён:"
+msgstr "Decode the file locally, for example in PowerShell from the directory containing it:"
 
-#: ../../general/Ms_description/Apps_microservice.rst:173
+#: ../../general/Ms_description/Apps_microservice.rst:161
 msgid ""
-"Загружаем полученную строку в любой сервис по декодированию base64 в "
-"файл. Например:"
-msgstr ""
-"Upload the resulting string to any base64-to-file decoding service. For "
-"example:"
+"Символ ``+`` входит в алфавит base64, поэтому удалять его из данных "
+"нельзя. При копировании из табличного вывода SQL-клиента удаляйте только "
+"оформление, однозначно отделённое от значения."
+msgstr "The ``+`` character is part of the base64 alphabet and must not be removed from the data. When copying tabular SQL client output, remove only formatting clearly separated from the value."
 
-#: ../../general/Ms_description/Apps_microservice.rst:175
+#: ../../general/Ms_description/Apps_microservice.rst:163
 msgid ""
-"`https://base64.guru/converter/decode/file "
-"<https://base64.guru/converter/decode/file>`_"
-msgstr ""
-"`https://base64.guru/converter/decode/file "
-"<https://base64.guru/converter/decode/file>`_"
+"Полученный файл содержит байты выбранной ревизии. Формат определяется "
+"сериализацией типа артефакта; расширение следует выбирать по фактическому"
+" формату. Для получения ZIP-архива ревизий используйте действие выгрузки "
+"или REST API, описанные выше."
+msgstr "The resulting file contains the bytes of the selected revision. Its format is determined by artifact type serialization; choose the extension based on the actual format. To obtain a ZIP archive of revisions, use the export action or REST API described above."
 
-#: ../../general/Ms_description/Apps_microservice.rst:177
-msgid "Скачиваем итоговый файл:"
-msgstr "Download the resulting file:"
-
-#: ../../general/Ms_description/Apps_microservice.rst:183
-msgid "В результате получаем архив с нашим модулем."
-msgstr "As a result, we get an archive with our module."
-
-#: ../../general/Ms_description/Apps_microservice.rst:186
+#: ../../general/Ms_description/Apps_microservice.rst:166
 msgid "Полезные скрипты в базе ECOS Apps"
 msgstr "Useful Scripts in the ECOS Apps Database"
 
 #: ../../general/Ms_description/Apps_microservice.rst
-msgid "Получение ревизий модуля"
-msgstr "Getting Module Revisions"
+msgid "Получение пользовательских ревизий артефакта"
+msgstr "Retrieving user revisions of an artifact"
+
+#: ../../general/Ms_description/Apps_microservice.rst:184
+msgid "Источник конкретной ревизии определяется полем ``source_type``:"
+msgstr "The source of a particular revision is determined by ``source_type``:"
+
+#: ../../general/Ms_description/Apps_microservice.rst:192
+msgid "Тип источника"
+msgstr "Source type"
+
+#: ../../general/Ms_description/Apps_microservice.rst:193
+msgid "Описание"
+msgstr "Description"
+
+#: ../../general/Ms_description/Apps_microservice.rst:194
+msgid "``0``"
+msgstr "``0``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:195
+msgid "``USER``"
+msgstr "``USER``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:196
+msgid "Пользователь."
+msgstr "User."
+
+#: ../../general/Ms_description/Apps_microservice.rst:197
+msgid "``1``"
+msgstr "``1``"
 
 #: ../../general/Ms_description/Apps_microservice.rst:198
-msgid "**is_user_rev** флаг определяет, что модуль менялся пользователем."
-msgstr "**is_user_rev** flag indicates that the module was changed by a user."
+msgid "``ECOS_APP``"
+msgstr "``ECOS_APP``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:199
+msgid "ECOS-приложение."
+msgstr "ECOS application."
+
+#: ../../general/Ms_description/Apps_microservice.rst:200
+msgid "``2``"
+msgstr "``2``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:201
+msgid "``APPLICATION``"
+msgstr "``APPLICATION``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:202
+msgid "Микросервис."
+msgstr "Microservice."
+
+#: ../../general/Ms_description/Apps_microservice.rst:203
+msgid "``3``"
+msgstr "``3``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:204
+msgid "``PATCH``"
+msgstr "``PATCH``"
+
+#: ../../general/Ms_description/Apps_microservice.rst:205
+msgid "Патч."
+msgstr "Patch."
 
 #~ msgid "Получаем:"
 #~ msgstr "We get:"
 
+#~ msgid "Процесс деплоя артефактов выглядит примерно следующим образом:"
+#~ msgstr "The artifact deployment process looks roughly as follows:"
+
+#~ msgid ""
+#~ "После появления в сети нового приложения"
+#~ " (на схеме это alfresco) происходит 3"
+#~ " этапа:"
+#~ msgstr ""
+#~ "After a new application appears on "
+#~ "the network (alfresco in the diagram),"
+#~ " 3 stages occur:"
+
+#~ msgid "Запрос типов."
+#~ msgstr "Types request."
+
+#~ msgid "Деплой артефактов."
+#~ msgstr "Deploying artifacts."
+
+#~ msgid "Микросервис периодически опрашивает всех кто подключен к Rabbit MQ"
+#~ msgstr "The microservice periodically polls everyone connected to Rabbit MQ"
+
+#~ msgid "Пока к Rabbit'у никто не подключился ничего не происходит."
+#~ msgstr "While no one has connected to Rabbit, nothing happens."
+
+#~ msgid ""
+#~ "Когда появляется первый микросервис он "
+#~ "возвращает ответ в ECOS Apps о "
+#~ "своем присутствии."
+#~ msgstr ""
+#~ "When the first microservice appears, it"
+#~ " returns a response to ECOS Apps "
+#~ "about its presence."
+
+#~ msgid ""
+#~ "После этого ECOS Apps отправляет запрос"
+#~ " на типы, в которых заинтересован "
+#~ "микросервис."
+#~ msgstr ""
+#~ "After that, ECOS Apps sends a "
+#~ "request for the types the microservice"
+#~ " is interested in."
+
+#~ msgid ""
+#~ "Получив список типов ECOS Apps "
+#~ "отправляет всем зарегистрировавшимся микросервисам"
+#~ " запрос на получение артефактов."
+#~ msgstr ""
+#~ "Having received the list of types, "
+#~ "ECOS Apps sends a request for "
+#~ "artifacts to all registered microservices."
+
+#~ msgid ""
+#~ "Получив необходимые артефакты ECOS Apps "
+#~ "проверяет поменялись ли они с прошлой"
+#~ " загрузки и если нет, то ничего "
+#~ "не делает."
+#~ msgstr ""
+#~ "Having received the necessary artifacts, "
+#~ "ECOS Apps checks whether they have "
+#~ "changed since the last load, and "
+#~ "if not, does nothing."
+
+#~ msgid ""
+#~ "Если выясняется, что артефакты поменялись, "
+#~ "то они отправляются в целевой "
+#~ "микросервис на деплой."
+#~ msgstr ""
+#~ "If it turns out that the artifacts"
+#~ " have changed, they are sent to "
+#~ "the target microservice for deployment."
+
+#~ msgid ""
+#~ "Все взаимодействие происходит посредством "
+#~ "Rabbit MQ и библиотеки ecos-commands."
+#~ msgstr "All interaction occurs via Rabbit MQ and the ecos-commands library."
+
+#~ msgid "Лог ECOS Apps при обнаружении трех микросервисов (включая себя):"
+#~ msgstr "ECOS Apps log when three microservices are detected (including itself):"
+
+#~ msgid "В результате выполнения в консоль выведется список id артефактов."
+#~ msgstr "As a result, a list of artifact IDs will be printed to the console."
+
+#~ msgid "Имея id артефакта, его можно удалить следующим скриптом:"
+#~ msgstr "Having the artifact ID, it can be deleted using the following script:"
+
+#~ msgid "Получение содержимого модулей из базы eapps"
+#~ msgstr "Retrieving Module Contents from the eapps Database"
+
+#~ msgid "Получаем список ревизий по ext_id и типу артефакта:"
+#~ msgstr "Get the list of revisions by ext_id and artifact type:"
+
+#~ msgid ""
+#~ "Смотрим на поле **content_id** нужных "
+#~ "модулей и делаем следующий запрос:"
+#~ msgstr ""
+#~ "Look at the **content_id** field of "
+#~ "the required modules and make the "
+#~ "following request:"
+
+#~ msgid ""
+#~ "Получаем результат в виде постранично "
+#~ "разбитой base64-строки (фрагмент):"
+#~ msgstr "We get the result as a paginated base64 string (fragment):"
+
+#~ msgid ""
+#~ "Убираем шапку, отступы ``|``, переносы "
+#~ "строк и знаки ``+`` в конце строк"
+#~ " — получаем одну сплошную base64-строку:"
+#~ msgstr ""
+#~ "Remove the header, the ``|`` indents,"
+#~ " line breaks, and the ``+`` signs "
+#~ "at the end of lines — this "
+#~ "gives one continuous base64 string:"
+
+#~ msgid ""
+#~ "Загружаем полученную строку в любой "
+#~ "сервис по декодированию base64 в файл."
+#~ " Например:"
+#~ msgstr ""
+#~ "Upload the resulting string to any "
+#~ "base64-to-file decoding service. For "
+#~ "example:"
+
+#~ msgid ""
+#~ "`https://base64.guru/converter/decode/file "
+#~ "<https://base64.guru/converter/decode/file>`_"
+#~ msgstr ""
+#~ "`https://base64.guru/converter/decode/file "
+#~ "<https://base64.guru/converter/decode/file>`_"
+
+#~ msgid "Скачиваем итоговый файл:"
+#~ msgstr "Download the resulting file:"
+
+#~ msgid "В результате получаем архив с нашим модулем."
+#~ msgstr "As a result, we get an archive with our module."
+
+#~ msgid "Получение ревизий модуля"
+#~ msgstr "Getting Module Revisions"
+
+#~ msgid "**is_user_rev** флаг определяет, что модуль менялся пользователем."
+#~ msgstr "**is_user_rev** flag indicates that the module was changed by a user."

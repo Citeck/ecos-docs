@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -51,8 +51,11 @@ msgid "Виды дашбордов"
 msgstr "Types of Dashboards"
 
 #: ../../settings_kb/interface/dashboards.rst:20
-msgid "Существуют следующие виды дашборда:"
-msgstr "The following types of dashboards exist:"
+msgid ""
+"Вид дашборда определяет набор доступных виджетов и раскладок. Он "
+"отличается от типа данных записи и идентификатора сохранённой "
+"конфигурации."
+msgstr "The dashboard kind determines available widgets and layouts. It differs from the record data type and saved configuration identifier."
 
 #: ../../settings_kb/interface/dashboards.rst:23
 msgid "case-details"
@@ -68,41 +71,12 @@ msgstr ""
 
 #: ../../settings_kb/interface/dashboards.rst:27
 msgid ""
-"Ключ dashboard'а берется из **RecordRef** в URL страницы и как правило он"
-" связан с типом/видом ECOS."
-msgstr ""
-"The dashboard key is taken from the **RecordRef** in the page URL and is "
-"usually related to the ECOS type/kind."
+"Запись задаётся параметром ``recordRef`` в URL. Для подбора конфигурации "
+"клиент загружает её тип и передаёт серверу контекст пользователя и "
+"рабочего пространства."
+msgstr "The ``recordRef`` URL parameter specifies the record. To select configuration, the client loads its type and passes user and workspace context to the server."
 
 #: ../../settings_kb/interface/dashboards.rst:29
-msgid "Формирование ключа построено по следующему правилу:"
-msgstr "Key formation follows this rule:"
-
-#: ../../settings_kb/interface/dashboards.rst:31
-msgid "**type_uuid/kind_**"
-msgstr "**type_uuid/kind_**"
-
-#: ../../settings_kb/interface/dashboards.rst:32
-msgid "**type_uuid**"
-msgstr "**type_uuid**"
-
-#: ../../settings_kb/interface/dashboards.rst:34
-msgid "То есть для договоров это будет:"
-msgstr "So for contracts it would be:"
-
-#: ../../settings_kb/interface/dashboards.rst:36
-msgid "**contracts-cat-doctype-contract/contracts-cat-contract-rent**"
-msgstr "**contracts-cat-doctype-contract/contracts-cat-contract-rent**"
-
-#: ../../settings_kb/interface/dashboards.rst:37
-msgid "**contracts-cat-doctype-contract**"
-msgstr "**contracts-cat-doctype-contract**"
-
-#: ../../settings_kb/interface/dashboards.rst:39
-msgid "Порядок - от более приоритетного к менее приоритетного."
-msgstr "Order - from highest priority to lowest priority."
-
-#: ../../settings_kb/interface/dashboards.rst:41
 msgid ""
 "Например: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id@local-"
 "id``"
@@ -110,58 +84,47 @@ msgstr ""
 "For example: ``host/v2/dashboard?activeTab=0&recordRef=emodel/type-id"
 "@local-id``"
 
-#: ../../settings_kb/interface/dashboards.rst:44
+#: ../../settings_kb/interface/dashboards.rst:32
 msgid "site-details"
 msgstr "site-details"
 
-#: ../../settings_kb/interface/dashboards.rst:46
+#: ../../settings_kb/interface/dashboards.rst:34
 msgid "Страница раздела, которая позволяет отображать общие данные по разделу."
 msgstr "Section page that allows displaying general data for the section."
 
-#: ../../settings_kb/interface/dashboards.rst:48
+#: ../../settings_kb/interface/dashboards.rst:36
 msgid ""
-"Ключ dashboard'а берется из **RecordRef** в URL страницы. На момент "
-"написания ключ формируется по правилу **\"site\"** + **siteId**."
-msgstr ""
-"The dashboard key is taken from the **RecordRef** in the page URL. At the"
-" time of writing, the key is formed by the rule **\"site\"** + "
-"**siteId**."
+"Раздел задаётся через ``recordRef``, например "
+"``/v2/dashboard?recordRef=site@contracts``. Подбор конфигурации "
+"выполняется сервером; клиент не формирует ключ ``site_<siteId>`` для "
+"перебора конфигураций."
+msgstr "The section is specified through ``recordRef``, for example ``/v2/dashboard?recordRef=site@contracts``. The server selects configuration; the client does not construct a ``site_<siteId>`` key to enumerate configurations."
 
-#: ../../settings_kb/interface/dashboards.rst:50
-msgid ""
-"Если идентификатор сайта **contracts**, то его приоритетный dashboardKey "
-"будет **site_contracts**."
-msgstr ""
-"If the site identifier is **contracts**, then its priority dashboardKey "
-"will be **site_contracts**."
-
-#: ../../settings_kb/interface/dashboards.rst:53
+#: ../../settings_kb/interface/dashboards.rst:39
 msgid "user-dashboard"
 msgstr "user-dashboard"
 
-#: ../../settings_kb/interface/dashboards.rst:55
+#: ../../settings_kb/interface/dashboards.rst:41
 msgid ""
-"Домашняя страница пользователя. Открывается если в URL не указано "
-"никакого **recordRef**."
-msgstr "User's home page. Opens if no **recordRef** is specified in the URL."
+"Домашняя страница пользователя при выключенных рабочих пространствах. "
+"Открывается без ``recordRef`` и без явного ``dashboardId``."
+msgstr "User home page with workspaces disabled. Opens without ``recordRef`` or an explicit ``dashboardId``."
 
-#: ../../settings_kb/interface/dashboards.rst:57
+#: ../../settings_kb/interface/dashboards.rst:43
 msgid "Например: ``host/v2/dashboard``"
 msgstr "For example: ``host/v2/dashboard``"
 
-#: ../../settings_kb/interface/dashboards.rst:59
+#: ../../settings_kb/interface/dashboards.rst:45
 msgid ""
-"Ключ dashboard'а всегда DEFAULT, если явно не задано обратного (возможно "
-"указание dashboardKey в URL)."
-msgstr ""
-"The dashboard key is always DEFAULT unless explicitly specified otherwise"
-" (dashboardKey can be specified in the URL)."
+"Для подбора конфигурации используется тип данных ``emodel/type@user-"
+"dashboard``."
+msgstr "The ``emodel/type@user-dashboard`` data type is used to select configuration."
 
-#: ../../settings_kb/interface/dashboards.rst:62
+#: ../../settings_kb/interface/dashboards.rst:48
 msgid "profile-details"
 msgstr "profile-details"
 
-#: ../../settings_kb/interface/dashboards.rst:64
+#: ../../settings_kb/interface/dashboards.rst:50
 msgid ""
 "Страница профиля пользователя, которая доступна из меню действий с "
 "учетной записью пользователя, пункт «Мой профиль» (см. :ref:`Панель "
@@ -170,7 +133,7 @@ msgstr ""
 "User profile page, accessible from the user account actions menu, item "
 "\"My Profile\" (see :ref:`Control Panel<control_panel>`)."
 
-#: ../../settings_kb/interface/dashboards.rst:66
+#: ../../settings_kb/interface/dashboards.rst:52
 msgid ""
 "Например: "
 "``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``"
@@ -178,13 +141,56 @@ msgstr ""
 "For example: "
 "``host/v2/dashboard?activeTab=0&recordRef=emodel/person@username``"
 
+#: ../../settings_kb/interface/dashboards.rst:55
+msgid "Другие виды"
+msgstr "Other kinds"
+
+#: ../../settings_kb/interface/dashboards.rst:57
+msgid "В реестре интерфейса также определены:"
+msgstr "The UI registry also defines:"
+
+#: ../../settings_kb/interface/dashboards.rst:59
+msgid "``process-dashboard`` — дашборд процесса;"
+msgstr "``process-dashboard`` — process dashboard;"
+
+#: ../../settings_kb/interface/dashboards.rst:60
+msgid "``publication-details`` — дашборд публикации;"
+msgstr "``publication-details`` — publication dashboard;"
+
+#: ../../settings_kb/interface/dashboards.rst:61
+msgid "``orgstructure-person-dashboard`` — карточка человека в оргструктуре;"
+msgstr "``orgstructure-person-dashboard`` — person card in the organization structure;"
+
+#: ../../settings_kb/interface/dashboards.rst:62
+msgid ""
+"``orgstructure-dashboard`` — страница оргструктуры без выбранного "
+"человека;"
+msgstr "``orgstructure-dashboard`` — organization structure page without a selected person;"
+
+#: ../../settings_kb/interface/dashboards.rst:63
+msgid "``custom`` — самостоятельный дашборд, открываемый по ``dashboardId``;"
+msgstr "``custom`` — standalone dashboard opened by ``dashboardId``;"
+
+#: ../../settings_kb/interface/dashboards.rst:64
+msgid "``wiki`` — дашборд базы знаний."
+msgstr "``wiki`` — knowledge base dashboard."
+
+#: ../../settings_kb/interface/dashboards.rst:66
+msgid ""
+"Для открытия конкретной конфигурации используйте "
+"``/v2/dashboard?dashboardId=<id>``. Параметр ``dashboardKey`` в текущем "
+"пути загрузки не выбирает конфигурацию вместо ``dashboardId``."
+msgstr "To open a specific configuration, use ``/v2/dashboard?dashboardId=<id>``. In the current loading path, ``dashboardKey`` does not select configuration instead of ``dashboardId``."
+
 #: ../../settings_kb/interface/dashboards.rst:69
-msgid "ws-dashboard"
-msgstr "ws-dashboard"
+msgid "Дашборды рабочих пространств"
+msgstr "Workspace dashboards"
 
 #: ../../settings_kb/interface/dashboards.rst:71
-msgid "Страница :ref:`рабочего пространствах <workspaces>`. Например:"
-msgstr "Page of :ref:`workspaces<workspaces>`. For example:"
+msgid ""
+"Домашняя страница :ref:`рабочего пространства <workspaces>` открывается с"
+" параметром ``ws``. Например:"
+msgstr "The :ref:`workspace <workspaces>` home page opens with ``ws``. For example:"
 
 #: ../../settings_kb/interface/dashboards.rst:73
 msgid ""
@@ -198,152 +204,135 @@ msgid ""
 "``host/v2/dashboard?ws=workspacename``"
 msgstr "for non-personal workspace: ``host/v2/dashboard?ws=workspacename``"
 
-#: ../../settings_kb/interface/dashboards.rst:77
+#: ../../settings_kb/interface/dashboards.rst:76
+msgid "При отсутствии записи клиент выбирает тип данных для запроса конфигурации:"
+msgstr "Without a record, the client selects the data type for the configuration request:"
+
+#: ../../settings_kb/interface/dashboards.rst:83
+msgid "Контекст"
+msgstr "Context"
+
+#: ../../settings_kb/interface/dashboards.rst:84
+msgid "Тип данных"
+msgstr "Data type"
+
+#: ../../settings_kb/interface/dashboards.rst:85
+msgid "Рабочие пространства выключены"
+msgstr "Workspaces disabled"
+
+#: ../../settings_kb/interface/dashboards.rst:86
+msgid "``emodel/type@user-dashboard``"
+msgstr "``emodel/type@user-dashboard``"
+
+#: ../../settings_kb/interface/dashboards.rst:87
+msgid "Персональное рабочее пространство (``ws`` содержит ``user$``)"
+msgstr "Personal workspace (``ws`` contains ``user$``)"
+
+#: ../../settings_kb/interface/dashboards.rst:88
+msgid "``emodel/type@personal-workspace-dashboard``"
+msgstr "``emodel/type@personal-workspace-dashboard``"
+
+#: ../../settings_kb/interface/dashboards.rst:89
+msgid "Другое рабочее пространство"
+msgstr "Other workspace"
+
+#: ../../settings_kb/interface/dashboards.rst:90
+msgid "``emodel/type@workspace-dashboard``"
+msgstr "``emodel/type@workspace-dashboard``"
+
+#: ../../settings_kb/interface/dashboards.rst:92
+msgid ""
+"Конкретную конфигурацию по умолчанию выбирает сервер. Её идентификатор и "
+"состав виджетов зависят от поставляемых настроек, в том числе настроек "
+":ref:`корпоративного портала <corp_portal>`. ``ws-dashboard`` не является"
+" отдельным значением реестра видов дашбордов интерфейса."
+msgstr "The server selects the specific default configuration. Its ID and widgets depend on bundled settings, including :ref:`corporate portal <corp_portal>` settings. ``ws-dashboard`` is not a separate entry in the UI dashboard kind registry."
+
+#: ../../settings_kb/interface/dashboards.rst:95
 msgid "Параметр activeTab"
 msgstr "The activeTab parameter"
 
-#: ../../settings_kb/interface/dashboards.rst:79
+#: ../../settings_kb/interface/dashboards.rst:97
 msgid ""
-"В ссылках для **user-base-type-dashboard**, **user-dashboard** "
-"(самостоятельно и из оргструктуры) используется параметр **activeTab**,"
-msgstr ""
-"In links for **user-base-type-dashboard**, **user-dashboard** "
-"(independently and from org structure) the **activeTab** parameter is "
-"used,"
+"``activeTab=N`` выбирает вкладку дашборда. Нумерация начинается с ``0``; "
+"например: ``/v2/dashboard?activeTab=1&recordRef=emodel/person@someuser``."
+" Если указанной вкладки нет, используется первая. Для первой вкладки "
+"параметр может отсутствовать в URL."
+msgstr "``activeTab=N`` selects a dashboard tab, numbered from ``0``; for example ``/v2/dashboard?activeTab=1&recordRef=emodel/person@someuser``. A nonexistent tab falls back to the first. The first tab may omit the parameter."
 
-#: ../../settings_kb/interface/dashboards.rst:81
-msgid ""
-"например, "
-"https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser"
-msgstr ""
-"for example, "
-"https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser"
-
-#: ../../settings_kb/interface/dashboards.rst:83
-msgid ""
-"``activeTab=N`` - активная вкладка дашборда. Вкладки нумеруются с 0, где "
-"**0** - первая вкладка."
-msgstr ""
-"``activeTab=N`` - active dashboard tab. Tabs are numbered from 0, where "
-"**0** is the first tab."
-
-#: ../../settings_kb/interface/dashboards.rst:86
-msgid "Алгоритм поиска dashboard"
-msgstr "Dashboard search algorithm"
+#: ../../settings_kb/interface/dashboards.rst:100
+msgid "Алгоритм выбора конфигурации"
+msgstr "Configuration selection algorithm"
 
 #: ../../settings_kb/interface/dashboards.rst
 msgid "Показать шаги алгоритма"
 msgstr "Show algorithm steps"
 
-#: ../../settings_kb/interface/dashboards.rst:91
-msgid "Смотрим наличие **recordRef** в URL:"
-msgstr "Check for **recordRef** in the URL:"
-
-#: ../../settings_kb/interface/dashboards.rst:93
-msgid ""
-"Если **recordRef** отсутствует - отправляется запрос на конфигурацию "
-"домашней страницы пользователя."
-msgstr ""
-"If **recordRef** is absent - a request is sent for the user's home page "
-"configuration."
-
-#: ../../settings_kb/interface/dashboards.rst:94
-msgid ""
-"Если **recordRef** присутствует, то запрашиваем аттрибуты "
-"**_dashboardKey[]** (массив) и **_dashboardType** (одно значение)."
-msgstr ""
-"If **recordRef** is present, then we request attributes "
-"**_dashboardKey[]** (array) and **_dashboardType** (single value)."
-
-#: ../../settings_kb/interface/dashboards.rst:96
-msgid ""
-"Дальше перебираем каждый полученный **dashboardKey** и запрашиваем у "
-"сервера конфигурацию для ключа + типа,"
-msgstr ""
-"Then we iterate through each received **dashboardKey** and request "
-"configuration from the server for key + type,"
-
-#: ../../settings_kb/interface/dashboards.rst:97
-msgid ""
-"Если на сервере конфигурации не нашлось, то пробуем следующий "
-"**dashboardKey**,"
-msgstr ""
-"If no configuration is found on the server, we try the next "
-"**dashboardKey**,"
-
-#: ../../settings_kb/interface/dashboards.rst:98
-msgid ""
-"Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию"
-" по ключу **DEFAULT**."
-msgstr ""
-"If no dashboard is found for any key, we request configuration for the "
-"**DEFAULT** key."
-
-#: ../../settings_kb/interface/dashboards.rst:101
-msgid "Дашборды рабочих пространств"
-msgstr "Workspace dashboards"
-
-#: ../../settings_kb/interface/dashboards.rst:103
-msgid ""
-"Для :ref:`рабочего пространствах <workspaces>` по умолчанию отображается "
-"дашборд **user-dashboard**."
-msgstr ""
-"For :ref:`workspaces<workspaces>`, the **user-dashboard** is displayed by"
-" default."
-
-#: ../../settings_kb/interface/dashboards.rst:104
-msgid ""
-"Для персонального рабочего пространства отображается дашборд **personal-"
-"ws-dashboard-default**."
-msgstr ""
-"For personal workspace, the **personal-ws-dashboard-default** dashboard "
-"is displayed."
-
 #: ../../settings_kb/interface/dashboards.rst:105
 msgid ""
-"Для неперсонального рабочего пространства отображается дашборд **ws-"
-"dashboard-default**."
-msgstr ""
-"For non-personal workspace, the **ws-dashboard-default** dashboard is "
-"displayed."
+"Если задан ``dashboardId``, клиент загружает эту конфигурацию из "
+"``uiserv/dashboard`` напрямую."
+msgstr "If ``dashboardId`` is set, the client loads that configuration directly from ``uiserv/dashboard``."
 
 #: ../../settings_kb/interface/dashboards.rst:106
 msgid ""
-"Для :ref:`корпоративного портала <corp_portal>` отображается дашборд "
-"**corpport-workspace-dashboard**."
-msgstr ""
-"For :ref:`corporate portal<corp_portal>`, the **corpport-workspace-"
-"dashboard** dashboard is displayed."
+"Иначе для ``recordRef`` загружается ``_etype?id``. При отсутствии типа "
+"используется базовый тип записи; для домашней страницы без записи — тип "
+"данных из таблицы выше."
+msgstr "Otherwise, ``_etype?id`` is loaded for ``recordRef``. Without a type, the base record type is used; home pages without records use the data type from the table above."
+
+#: ../../settings_kb/interface/dashboards.rst:107
+msgid ""
+"В источник ``uiserv/dashboard`` отправляется запрос с ``typeRef``, "
+"``authority`` (текущий пользователь), ``recordRef`` и, при включённых "
+"рабочих пространствах, ``workspace``."
+msgstr "A query to ``uiserv/dashboard`` contains ``typeRef``, ``authority`` (current user), ``recordRef`` and, with workspaces enabled, ``workspace``."
+
+#: ../../settings_kb/interface/dashboards.rst:108
+msgid ""
+"Для страницы оргструктуры дополнительно передаётся ``scope: "
+"orgstructure``. Без выбранного человека используется ``emodel/type"
+"@orgstructure-dashboard``, с выбранным — ``emodel/type@person``."
+msgstr "The organization structure page also sends ``scope: orgstructure``. Without a selected person, it uses ``emodel/type@orgstructure-dashboard``; with one, ``emodel/type@person``."
 
 #: ../../settings_kb/interface/dashboards.rst:109
+msgid ""
+"Предварительный запрос ``typeRef?id`` используется для ключа кэша. При "
+"отсутствии конфигурации в кэше клиент запрашивает её у сервера в том же "
+"контексте."
+msgstr "The preliminary ``typeRef?id`` query is used for the cache key. On a cache miss, the client requests configuration from the server in the same context."
+
+#: ../../settings_kb/interface/dashboards.rst:111
+msgid ""
+"Наследование и выбор конфигурации по умолчанию выполняются на сервере. "
+"Клиент не перебирает ``_dashboardKey[]`` и не выполняет отдельный поиск "
+"ключа ``DEFAULT``. Атрибут ``_dashboardType`` используется в других "
+"операциях, например при получении заголовка записи."
+msgstr "The server handles inheritance and default configuration selection. The client does not enumerate ``_dashboardKey[]`` or separately search for ``DEFAULT``. ``_dashboardType`` is used in other operations, such as retrieving a record title."
+
+#: ../../settings_kb/interface/dashboards.rst:114
 msgid "Кэширование"
 msgstr "Caching"
 
-#: ../../settings_kb/interface/dashboards.rst:111
-msgid "Кэширование возможно в пределах открытой вкладки браузера:"
-msgstr "Caching is possible within the open browser tab:"
-
-#: ../../settings_kb/interface/dashboards.rst:113
+#: ../../settings_kb/interface/dashboards.rst:116
 msgid ""
-"**_dashboardKey[]** и **_dashboardType** по recordRef (они достаточно "
-"редко меняются),"
-msgstr ""
-"**_dashboardKey[]** and **_dashboardType** by recordRef (they change "
-"quite rarely),"
+"Клиент хранит загруженные конфигурации в памяти открытой страницы. Ключ "
+"кэша учитывает тип или конкретную запись, пользователя, рабочее "
+"пространство (если включено) и область ``scope``. Поэтому профиль "
+"человека и его карточка в оргструктуре используют разные записи кэша."
+msgstr "The client caches loaded configurations in the open page's memory. The key includes type or specific record, user, workspace if enabled, and ``scope``. A person's profile and organization structure card therefore use different cache entries."
 
-#: ../../settings_kb/interface/dashboards.rst:114
+#: ../../settings_kb/interface/dashboards.rst:118
 msgid ""
-"Конфигурация **dashboard** (или её отсутствие) по **dashboardKey** + "
-"**dashboardType**."
-msgstr ""
-"**Dashboard** configuration (or its absence) by **dashboardKey** + "
-"**dashboardType**."
+"Сохранение, создание и удаление конфигурации очищают этот кэш. Кэш "
+"конфигураций дашборда работает отдельно от общего кэша атрибутов Records."
+msgstr "Saving, creating and deleting configurations clears this cache. Dashboard configuration caching is separate from the general Records attribute cache."
 
-#: ../../settings_kb/interface/dashboards.rst:119
+#: ../../settings_kb/interface/dashboards.rst:123
 msgid "Настройка прав на редактирование"
 msgstr "Setting editing permissions"
 
-#: ../../settings_kb/interface/dashboards.rst:121
+#: ../../settings_kb/interface/dashboards.rst:125
 msgid ""
 "В системе для пользователей можно разграничить права на настройку "
 "дашборда (**restrict-access-to-edit-dashboard**) и настройку виджетов "
@@ -353,7 +342,7 @@ msgstr ""
 "configuration (**restrict-access-to-edit-dashboard**) and widget "
 "configuration (**restrict-access-to-edit-dashboard-widgets**)."
 
-#: ../../settings_kb/interface/dashboards.rst:123
+#: ../../settings_kb/interface/dashboards.rst:127
 msgid ""
 "То есть у пользователя могут быть права на настройку дашборда, но "
 "запрещена настройка виджетов."
@@ -361,7 +350,29 @@ msgstr ""
 "That is, a user may have rights to configure the dashboard but be "
 "prohibited from configuring widgets."
 
-#: ../../settings_kb/interface/dashboards.rst:125
+#: ../../settings_kb/interface/dashboards.rst:129
+msgid "Администратору доступны оба уровня настройки. Для остальных пользователей:"
+msgstr "Administrators have both configuration levels. For other users:"
+
+#: ../../settings_kb/interface/dashboards.rst:131
+msgid ""
+"ограничение настройки дашборда запрещает её при включённом ``restrict-"
+"access-to-edit-dashboard``;"
+msgstr "Dashboard configuration is prohibited when ``restrict-access-to-edit-dashboard`` is enabled;"
+
+#: ../../settings_kb/interface/dashboards.rst:132
+msgid "пустое или незаданное ограничение виджетов наследует ограничение дашборда;"
+msgstr "An empty or unspecified widget restriction inherits the dashboard restriction;"
+
+#: ../../settings_kb/interface/dashboards.rst:133
+msgid ""
+"явно заданное строковое значение ``true`` в ``restrict-access-to-edit-"
+"dashboard-widgets`` запрещает настройку виджетов. Клиент сравнивает "
+"именно строку ``true``; булево значение не следует считать её "
+"эквивалентом в этой проверке."
+msgstr "The explicit string ``true`` in ``restrict-access-to-edit-dashboard-widgets`` prohibits widget configuration. The client compares the string ``true`` specifically; a boolean is not equivalent in this check."
+
+#: ../../settings_kb/interface/dashboards.rst:135
 msgid ""
 "Конфиги хранятся в разделе **Управление системой – Конфигурация ECOS** "
 "(``v2/journals?journalId=ecos-"
@@ -370,29 +381,24 @@ msgstr ""
 "Configs are stored in the **System Management – ECOS Configuration** "
 "section (``v2/admin?journalId=ecos-configs&type=JOURNAL``):"
 
-#: ../../settings_kb/interface/dashboards.rst:131
+#: ../../settings_kb/interface/dashboards.rst:141
 msgid "Включение настройки:"
 msgstr "Enabling the setting:"
 
-#: ../../settings_kb/interface/dashboards.rst:140
+#: ../../settings_kb/interface/dashboards.rst:150
 msgid "Конфигурация дашборда"
 msgstr "Dashboard Configuration"
 
-#: ../../settings_kb/interface/dashboards.rst:142
+#: ../../settings_kb/interface/dashboards.rst:152
 msgid ""
-"При открытии впервые карточки кейса, профиля пользователя или домашней "
-"страницы будет показан дашборд по умолчанию для соответствующего типа."
-msgstr ""
-"When opening a case card, user profile, or home page for the first time, "
-"the default dashboard for the corresponding type will be shown."
+"При открытии карточки, профиля пользователя или домашней страницы сервер "
+"подбирает конфигурацию по типу, записи, пользователю и рабочему "
+"пространству. Настройку можно привязать к типу данных или конкретной "
+"записи; самостоятельные дашборды открываются по идентификатору "
+"конфигурации."
+msgstr "When opening a card, user profile or home page, the server selects configuration by type, record, user and workspace. Settings can be bound to a data type or specific record; standalone dashboards open by configuration ID."
 
-#: ../../settings_kb/interface/dashboards.rst:144
-msgid ""
-"Конфигурация дашборда происходит непосредственно из выбранного типа "
-"данных."
-msgstr "Dashboard configuration is done directly from the selected data type."
-
-#: ../../settings_kb/interface/dashboards.rst:146
+#: ../../settings_kb/interface/dashboards.rst:154
 msgid ""
 "Чтобы дополнительно конфигурировать дашборд – изменить настройки, убрать "
 "или добавить виджеты, необходимо перейти в карточку кейса, профиль "
@@ -403,19 +409,19 @@ msgstr ""
 "widgets, you need to go to the case card, user profile, or home page and "
 "**click the gear icon -> \"Configure page\"**:"
 
-#: ../../settings_kb/interface/dashboards.rst:152
+#: ../../settings_kb/interface/dashboards.rst:160
 msgid "Общая форма настройки имеет следующий вид:"
 msgstr "The general configuration form looks like this:"
 
-#: ../../settings_kb/interface/dashboards.rst:159
+#: ../../settings_kb/interface/dashboards.rst:167
 msgid "Разделы дашборда"
 msgstr "Dashboard Sections"
 
-#: ../../settings_kb/interface/dashboards.rst:162
+#: ../../settings_kb/interface/dashboards.rst:170
 msgid "«Принадлежность»"
 msgstr "«Ownership»"
 
-#: ../../settings_kb/interface/dashboards.rst:168
+#: ../../settings_kb/interface/dashboards.rst:176
 msgid ""
 "В верхней части указан **id дашборда** и **тип данных**, для которого он "
 "настраивается."
@@ -423,13 +429,13 @@ msgstr ""
 "The top section shows the **dashboard id** and **data type** for which it"
 " is being configured."
 
-#: ../../settings_kb/interface/dashboards.rst:170
+#: ../../settings_kb/interface/dashboards.rst:178
 msgid "Тип данных может быть изменен из доступного выпадающего списка. Например:"
 msgstr ""
 "The data type can be changed from the available dropdown list. For "
 "example:"
 
-#: ../../settings_kb/interface/dashboards.rst:176
+#: ../../settings_kb/interface/dashboards.rst:184
 msgid ""
 "Отдельный дашборд может быть настроен для определенного документа (если "
 "на примере выбрать тип «Договор№512», то при открытии карточки данного "
@@ -441,28 +447,35 @@ msgstr ""
 "contract's card, a dashboard configured specifically for this document "
 "will be displayed)."
 
-#: ../../settings_kb/interface/dashboards.rst:178
+#: ../../settings_kb/interface/dashboards.rst:186
 msgid ""
-"При выставленном чекбоксе **«Применить для всех пользователей»** "
-"настроенный дашборд будет применен для всех пользователей, состоящих в "
-"первой назначенной группе по организационной структуре, открывших "
-"указанный тип данных."
-msgstr ""
-"With the **\"Apply to all users\"** checkbox checked, the configured "
-"dashboard will be applied to all users in the first assigned "
-"organizational group who open the specified data type."
+"Чекбокс **«Применить для всех пользователей»** доступен администратору "
+"или менеджеру текущего рабочего пространства, кроме настройки "
+"самостоятельного дашборда. При его включении конфигурация сохраняется без"
+" привязки к конкретному пользователю (``authority: null``). При "
+"выключении сохраняется пользовательская конфигурация. Для обычного "
+"пользователя интерфейс при сохранении подставляет его имя."
+msgstr "**\"Apply to all users\"** is available to an administrator or current workspace manager, except for standalone dashboards. Enabled saves configuration without a specific user (``authority: null``); disabled saves a personal configuration. For ordinary users, the UI inserts their username on save."
 
-#: ../../settings_kb/interface/dashboards.rst:184
+#: ../../settings_kb/interface/dashboards.rst:188
+msgid ""
+"Этот флажок не выбирает первую группу пользователя в оргструктуре. "
+"Область применения общей конфигурации и её приоритет относительно других "
+"настроек определяются сервером с учётом выбранной привязки и рабочего "
+"пространства."
+msgstr "This checkbox does not select the user's first organization group. The server determines shared configuration scope and priority relative to other settings using the selected binding and workspace."
+
+#: ../../settings_kb/interface/dashboards.rst:194
 msgid "«Представление»"
 msgstr "«View»"
 
-#: ../../settings_kb/interface/dashboards.rst:186
+#: ../../settings_kb/interface/dashboards.rst:196
 msgid "Доступен выбор настройки для десктопной или мобильной версии Citeck."
 msgstr ""
 "Configuration selection is available for desktop or mobile version of "
 "Citeck."
 
-#: ../../settings_kb/interface/dashboards.rst:188
+#: ../../settings_kb/interface/dashboards.rst:198
 msgid ""
 "Укажите количество и содержимое вкладок, выберите расположение и "
 "количество колонок для каждой вкладки."
@@ -470,25 +483,23 @@ msgstr ""
 "Specify the number and content of tabs, select the layout and number of "
 "columns for each tab."
 
-#: ../../settings_kb/interface/dashboards.rst:194
+#: ../../settings_kb/interface/dashboards.rst:204
 msgid ""
-"Только для типа дашборда :ref:`site-details <dashboard_types>` доступно "
-"следующее расположение (Количество колонок подстраивается под размер окна"
-" браузера):"
-msgstr ""
-"Only for the :ref:`site-details <dashboard_types>` dashboard type, the "
-"following layout is available (Number of columns adjusts to browser "
-"window size):"
+"В адаптивных раскладках расположение виджетов подстраивается под размер "
+"окна браузера. Вариант ``adaptive`` доступен для ``profile-details`` и "
+"``orgstructure-person-dashboard``; ``adaptive-same-widgets`` — для "
+"остальных видов, кроме ``orgstructure-person-dashboard``. Доступность "
+"раскладки определяется её настройками разрешённых и запрещённых видов "
+"дашбордов:"
+msgstr "Adaptive layouts adjust widget placement to browser window size. ``adaptive`` is available for ``profile-details`` and ``orgstructure-person-dashboard``; ``adaptive-same-widgets`` for other kinds except ``orgstructure-person-dashboard``. Layout availability depends on allowed and prohibited dashboard kind settings:"
 
-#: ../../settings_kb/interface/dashboards.rst:200
+#: ../../settings_kb/interface/dashboards.rst:210
 msgid ""
-"Для типа дашборда :ref:`case-details <dashboard_types>` доступна "
-"поддержка мультиязычного имени для вкладок:"
-msgstr ""
-"For the :ref:`case-details <dashboard_types>` dashboard type, "
-"multilingual name support is available for tabs:"
+"Названия вкладок поддерживают локализацию в общем редакторе дашборда. "
+"Пример настройки:"
+msgstr "Tab names support localization in the general dashboard editor. Example:"
 
-#: ../../settings_kb/interface/dashboards.rst:225
+#: ../../settings_kb/interface/dashboards.rst:235
 msgid ""
 "Для мобильной версии отображаются только те виджеты, которые уже были "
 "настроены для десктопной версии и несут в себе те же настройки:"
@@ -497,11 +508,11 @@ msgstr ""
 "configured for the desktop version and carry the same settings are "
 "displayed:"
 
-#: ../../settings_kb/interface/dashboards.rst:233
+#: ../../settings_kb/interface/dashboards.rst:243
 msgid "«Виджеты»"
 msgstr "«Widgets»"
 
-#: ../../settings_kb/interface/dashboards.rst:235
+#: ../../settings_kb/interface/dashboards.rst:245
 msgid ""
 "Созданные колонки можно заполнить доступными виджетами – перетащите "
 "виджет в необходимую колонку:"
@@ -509,15 +520,15 @@ msgstr ""
 "Created columns can be filled with available widgets - drag the widget to"
 " the desired column:"
 
-#: ../../settings_kb/interface/dashboards.rst:241
+#: ../../settings_kb/interface/dashboards.rst:251
 msgid "Набор доступных виджетов зависит от вида дашборда."
 msgstr "The set of available widgets depends on the dashboard type."
 
-#: ../../settings_kb/interface/dashboards.rst:245
+#: ../../settings_kb/interface/dashboards.rst:255
 msgid "Настройки виджетов на дашбордах"
 msgstr "Widget settings on dashboards"
 
-#: ../../settings_kb/interface/dashboards.rst:247
+#: ../../settings_kb/interface/dashboards.rst:257
 msgid ""
 "Настройка виджета осуществляется в карточке каждого виджета. См. "
 "отдельную статью :ref:`Виджеты <widgets>`"
@@ -525,33 +536,37 @@ msgstr ""
 "Widget configuration is done in each widget's card. See separate article "
 ":ref:`Widgets<widgets>`"
 
-#: ../../settings_kb/interface/dashboards.rst:249
+#: ../../settings_kb/interface/dashboards.rst:259
 msgid ""
-"Информация по доступности виджета хранится в самом виджете (без участия "
-"сервера)."
-msgstr ""
-"Information about widget availability is stored in the widget itself "
-"(without server involvement)."
+"Доступность типа виджета в редакторе определяется клиентским реестром: "
+"поддерживаемыми видами дашборда, проверкой ``checkIsAvailable``, "
+"подключёнными плагинами и конфигурацией системы."
+msgstr "Widget type availability in the editor is determined by the client registry: supported dashboard kinds, ``checkIsAvailable``, plugins and system configuration."
 
-#: ../../settings_kb/interface/dashboards.rst:251
+#: ../../settings_kb/interface/dashboards.rst:261
 msgid ""
-"В конфигурации виджета в поле **config.widgetDisplayCondition** задается "
-"условие как **json-строка**. Написание условия в соответствии статье "
-":ref:`Язык предикатов <ecos-predicate_main>`"
-msgstr ""
-"In the widget configuration, the **config.widgetDisplayCondition** field "
-"sets the condition as a **json-string**. Condition writing according to "
-"the article :ref:`Predicate Language<ecos-predicate_main>`"
+"Для отображения конкретного виджета задаётся условие "
+"**props.config.widgetDisplayCondition**. Оно поддерживает объект "
+"предиката, массив предикатов или строку с корректным JSON. Общий редактор"
+" сохраняет объект. Синтаксис описан в статье :ref:`Язык предикатов <ecos-"
+"predicate_main>`."
+msgstr "**props.config.widgetDisplayCondition** controls a specific widget's visibility. It accepts a predicate object, an array of predicates or a valid JSON string. The general editor saves an object. See :ref:`Predicate language <ecos-predicate_main>`."
 
-#: ../../settings_kb/interface/dashboards.rst:253
-msgid "Если отсутствует условие, то виджет отображается."
-msgstr "If no condition is present, the widget is displayed."
+#: ../../settings_kb/interface/dashboards.rst:263
+msgid ""
+"Клиент отправляет условие вместе с записью в серверный источник "
+"``uiserv/predicate`` и получает ``result?bool``. Для массива требуется "
+"истинность всех результатов. Если условия нет, виджет отображается; при "
+"ошибке серверной проверки — скрывается. Некорректная JSON-строка может "
+"прервать загрузку конфигурации ещё до запроса, поэтому используйте "
+"валидное условие."
+msgstr "The client sends the condition and record to ``uiserv/predicate`` and receives ``result?bool``. An array requires all results to be true. Without a condition the widget is shown; server validation errors hide it. Invalid JSON strings may interrupt configuration loading before the request, so use a valid condition."
 
-#: ../../settings_kb/interface/dashboards.rst:256
+#: ../../settings_kb/interface/dashboards.rst:266
 msgid "Журнал \"Дашборды\""
 msgstr "Journal \"Dashboards\""
 
-#: ../../settings_kb/interface/dashboards.rst:258
+#: ../../settings_kb/interface/dashboards.rst:268
 msgid ""
 "Журнал расположен в **разделе администратора -> Конфигурация UI - > "
 "Дашборды**:"
@@ -559,7 +574,7 @@ msgstr ""
 "The journal is located in **admin section -> UI Configuration -> "
 "Dashboards**:"
 
-#: ../../settings_kb/interface/dashboards.rst:264
+#: ../../settings_kb/interface/dashboards.rst:274
 msgid ""
 "Дашборд можно скачать, удалить, отредактировать в форме или через "
 "json-файл, копировать."
@@ -573,3 +588,280 @@ msgstr ""
 #~ msgid "Описание"
 #~ msgstr "Description"
 
+#~ msgid "Существуют следующие виды дашборда:"
+#~ msgstr "The following types of dashboards exist:"
+
+#~ msgid ""
+#~ "Ключ dashboard'а берется из **RecordRef** "
+#~ "в URL страницы и как правило он"
+#~ " связан с типом/видом ECOS."
+#~ msgstr ""
+#~ "The dashboard key is taken from "
+#~ "the **RecordRef** in the page URL "
+#~ "and is usually related to the ECOS"
+#~ " type/kind."
+
+#~ msgid "Формирование ключа построено по следующему правилу:"
+#~ msgstr "Key formation follows this rule:"
+
+#~ msgid "**type_uuid/kind_**"
+#~ msgstr "**type_uuid/kind_**"
+
+#~ msgid "**type_uuid**"
+#~ msgstr "**type_uuid**"
+
+#~ msgid "То есть для договоров это будет:"
+#~ msgstr "So for contracts it would be:"
+
+#~ msgid "**contracts-cat-doctype-contract/contracts-cat-contract-rent**"
+#~ msgstr "**contracts-cat-doctype-contract/contracts-cat-contract-rent**"
+
+#~ msgid "**contracts-cat-doctype-contract**"
+#~ msgstr "**contracts-cat-doctype-contract**"
+
+#~ msgid "Порядок - от более приоритетного к менее приоритетного."
+#~ msgstr "Order - from highest priority to lowest priority."
+
+#~ msgid ""
+#~ "Ключ dashboard'а берется из **RecordRef** "
+#~ "в URL страницы. На момент написания "
+#~ "ключ формируется по правилу **\"site\"** "
+#~ "+ **siteId**."
+#~ msgstr ""
+#~ "The dashboard key is taken from "
+#~ "the **RecordRef** in the page URL. "
+#~ "At the time of writing, the key"
+#~ " is formed by the rule **\"site\"**"
+#~ " + **siteId**."
+
+#~ msgid ""
+#~ "Если идентификатор сайта **contracts**, то "
+#~ "его приоритетный dashboardKey будет "
+#~ "**site_contracts**."
+#~ msgstr ""
+#~ "If the site identifier is **contracts**,"
+#~ " then its priority dashboardKey will "
+#~ "be **site_contracts**."
+
+#~ msgid ""
+#~ "Домашняя страница пользователя. Открывается "
+#~ "если в URL не указано никакого "
+#~ "**recordRef**."
+#~ msgstr "User's home page. Opens if no **recordRef** is specified in the URL."
+
+#~ msgid ""
+#~ "Ключ dashboard'а всегда DEFAULT, если "
+#~ "явно не задано обратного (возможно "
+#~ "указание dashboardKey в URL)."
+#~ msgstr ""
+#~ "The dashboard key is always DEFAULT "
+#~ "unless explicitly specified otherwise "
+#~ "(dashboardKey can be specified in the"
+#~ " URL)."
+
+#~ msgid "ws-dashboard"
+#~ msgstr "ws-dashboard"
+
+#~ msgid ""
+#~ "В ссылках для **user-base-type-"
+#~ "dashboard**, **user-dashboard** (самостоятельно "
+#~ "и из оргструктуры) используется параметр "
+#~ "**activeTab**,"
+#~ msgstr ""
+#~ "In links for **user-base-type-"
+#~ "dashboard**, **user-dashboard** (independently "
+#~ "and from org structure) the "
+#~ "**activeTab** parameter is used,"
+
+#~ msgid ""
+#~ "например, "
+#~ "https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser"
+#~ msgstr ""
+#~ "for example, "
+#~ "https://host/v2/dashboard?activeTab=0&recordRef=emodel/person@someuser"
+
+#~ msgid ""
+#~ "``activeTab=N`` - активная вкладка дашборда."
+#~ " Вкладки нумеруются с 0, где **0**"
+#~ " - первая вкладка."
+#~ msgstr ""
+#~ "``activeTab=N`` - active dashboard tab. "
+#~ "Tabs are numbered from 0, where "
+#~ "**0** is the first tab."
+
+#~ msgid "Алгоритм поиска dashboard"
+#~ msgstr "Dashboard search algorithm"
+
+#~ msgid "Смотрим наличие **recordRef** в URL:"
+#~ msgstr "Check for **recordRef** in the URL:"
+
+#~ msgid ""
+#~ "Если **recordRef** отсутствует - отправляется"
+#~ " запрос на конфигурацию домашней страницы"
+#~ " пользователя."
+#~ msgstr ""
+#~ "If **recordRef** is absent - a "
+#~ "request is sent for the user's "
+#~ "home page configuration."
+
+#~ msgid ""
+#~ "Если **recordRef** присутствует, то "
+#~ "запрашиваем аттрибуты **_dashboardKey[]** (массив)"
+#~ " и **_dashboardType** (одно значение)."
+#~ msgstr ""
+#~ "If **recordRef** is present, then we "
+#~ "request attributes **_dashboardKey[]** (array) "
+#~ "and **_dashboardType** (single value)."
+
+#~ msgid ""
+#~ "Дальше перебираем каждый полученный "
+#~ "**dashboardKey** и запрашиваем у сервера "
+#~ "конфигурацию для ключа + типа,"
+#~ msgstr ""
+#~ "Then we iterate through each received"
+#~ " **dashboardKey** and request configuration "
+#~ "from the server for key + type,"
+
+#~ msgid ""
+#~ "Если на сервере конфигурации не нашлось,"
+#~ " то пробуем следующий **dashboardKey**,"
+#~ msgstr ""
+#~ "If no configuration is found on "
+#~ "the server, we try the next "
+#~ "**dashboardKey**,"
+
+#~ msgid ""
+#~ "Если ни по одному ключу не нашелся"
+#~ " dashboard, то запрашиваем конфигурацию по"
+#~ " ключу **DEFAULT**."
+#~ msgstr ""
+#~ "If no dashboard is found for any"
+#~ " key, we request configuration for "
+#~ "the **DEFAULT** key."
+
+#~ msgid ""
+#~ "Для :ref:`рабочего пространствах <workspaces>` "
+#~ "по умолчанию отображается дашборд **user-"
+#~ "dashboard**."
+#~ msgstr ""
+#~ "For :ref:`workspaces<workspaces>`, the **user-"
+#~ "dashboard** is displayed by default."
+
+#~ msgid ""
+#~ "Для персонального рабочего пространства "
+#~ "отображается дашборд **personal-ws-"
+#~ "dashboard-default**."
+#~ msgstr ""
+#~ "For personal workspace, the **personal-"
+#~ "ws-dashboard-default** dashboard is "
+#~ "displayed."
+
+#~ msgid ""
+#~ "Для неперсонального рабочего пространства "
+#~ "отображается дашборд **ws-dashboard-default**."
+#~ msgstr ""
+#~ "For non-personal workspace, the **ws-"
+#~ "dashboard-default** dashboard is displayed."
+
+#~ msgid ""
+#~ "Для :ref:`корпоративного портала <corp_portal>` "
+#~ "отображается дашборд **corpport-workspace-"
+#~ "dashboard**."
+#~ msgstr ""
+#~ "For :ref:`corporate portal<corp_portal>`, the "
+#~ "**corpport-workspace-dashboard** dashboard is "
+#~ "displayed."
+
+#~ msgid "Кэширование возможно в пределах открытой вкладки браузера:"
+#~ msgstr "Caching is possible within the open browser tab:"
+
+#~ msgid ""
+#~ "**_dashboardKey[]** и **_dashboardType** по "
+#~ "recordRef (они достаточно редко меняются),"
+#~ msgstr ""
+#~ "**_dashboardKey[]** and **_dashboardType** by "
+#~ "recordRef (they change quite rarely),"
+
+#~ msgid ""
+#~ "Конфигурация **dashboard** (или её отсутствие)"
+#~ " по **dashboardKey** + **dashboardType**."
+#~ msgstr ""
+#~ "**Dashboard** configuration (or its absence)"
+#~ " by **dashboardKey** + **dashboardType**."
+
+#~ msgid ""
+#~ "При открытии впервые карточки кейса, "
+#~ "профиля пользователя или домашней страницы "
+#~ "будет показан дашборд по умолчанию для"
+#~ " соответствующего типа."
+#~ msgstr ""
+#~ "When opening a case card, user "
+#~ "profile, or home page for the "
+#~ "first time, the default dashboard for"
+#~ " the corresponding type will be "
+#~ "shown."
+
+#~ msgid ""
+#~ "Конфигурация дашборда происходит непосредственно "
+#~ "из выбранного типа данных."
+#~ msgstr "Dashboard configuration is done directly from the selected data type."
+
+#~ msgid ""
+#~ "При выставленном чекбоксе **«Применить для "
+#~ "всех пользователей»** настроенный дашборд "
+#~ "будет применен для всех пользователей, "
+#~ "состоящих в первой назначенной группе по"
+#~ " организационной структуре, открывших указанный"
+#~ " тип данных."
+#~ msgstr ""
+#~ "With the **\"Apply to all users\"** "
+#~ "checkbox checked, the configured dashboard "
+#~ "will be applied to all users in"
+#~ " the first assigned organizational group"
+#~ " who open the specified data type."
+
+#~ msgid ""
+#~ "Только для типа дашборда :ref:`site-"
+#~ "details <dashboard_types>` доступно следующее "
+#~ "расположение (Количество колонок подстраивается "
+#~ "под размер окна браузера):"
+#~ msgstr ""
+#~ "Only for the :ref:`site-details "
+#~ "<dashboard_types>` dashboard type, the "
+#~ "following layout is available (Number of"
+#~ " columns adjusts to browser window "
+#~ "size):"
+
+#~ msgid ""
+#~ "Для типа дашборда :ref:`case-details "
+#~ "<dashboard_types>` доступна поддержка мультиязычного"
+#~ " имени для вкладок:"
+#~ msgstr ""
+#~ "For the :ref:`case-details <dashboard_types>`"
+#~ " dashboard type, multilingual name support"
+#~ " is available for tabs:"
+
+#~ msgid ""
+#~ "Информация по доступности виджета хранится "
+#~ "в самом виджете (без участия сервера)."
+#~ msgstr ""
+#~ "Information about widget availability is "
+#~ "stored in the widget itself (without "
+#~ "server involvement)."
+
+#~ msgid ""
+#~ "В конфигурации виджета в поле "
+#~ "**config.widgetDisplayCondition** задается условие "
+#~ "как **json-строка**. Написание условия в "
+#~ "соответствии статье :ref:`Язык предикатов "
+#~ "<ecos-predicate_main>`"
+#~ msgstr ""
+#~ "In the widget configuration, the "
+#~ "**config.widgetDisplayCondition** field sets the "
+#~ "condition as a **json-string**. "
+#~ "Condition writing according to the "
+#~ "article :ref:`Predicate Language<ecos-"
+#~ "predicate_main>`"
+
+#~ msgid "Если отсутствует условие, то виджет отображается."
+#~ msgstr "If no condition is present, the widget is displayed."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -53,17 +53,25 @@ msgstr ""
 
 #: ../../settings_kb/interface/forms/form_localisation.rst:16
 msgid ""
-"В качестве глобальной локализации используется локализация из ``site-"
-"messages/*.properties`` файлов ``*-share`` модулей."
-msgstr ""
-"Global localization uses localization from ``site-messages/*.properties``"
-" files of ``*-share`` modules."
+"Глобальный словарь объединяет локальные переводы интерфейса "
+"(``src/i18n/<lang>.json``) и серверные переводы, получаемые через "
+"``messages/locale``. При совпадении ключей серверные значения перекрывают"
+" локальные. Из объединённого словаря выбираются ключи ``ecos.forms.*``; "
+"при передаче в форму префикс ``ecos.forms.`` снимается."
+msgstr "The global dictionary combines local UI translations (``src/i18n/<lang>.json``) and server translations from ``messages/locale``. Server values override matching local keys. ``ecos.forms.*`` keys are selected from the combined dictionary; the ``ecos.forms.`` prefix is removed when passed to forms."
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:19
+#: ../../settings_kb/interface/forms/form_localisation.rst:18
+msgid ""
+"Заголовки атрибутов и локализация конкретной формы дополняют этот "
+"словарь. При совпадении ключей локализация формы имеет приоритет над "
+"глобальными переводами и заголовками атрибутов."
+msgstr "Attribute labels and form-specific localization extend this dictionary. For duplicate keys, form localization overrides global translations and attribute labels."
+
+#: ../../settings_kb/interface/forms/form_localisation.rst:21
 msgid "Локализация атрибутов"
 msgstr "Attribute Localization"
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:21
+#: ../../settings_kb/interface/forms/form_localisation.rst:23
 msgid ""
 "Если **Название поля** совпадает с редактируемым атрибутом, то происходит"
 " запрос на сервер за заголовком для такого поля. Если заголовок найден, "
@@ -73,11 +81,11 @@ msgstr ""
 "request is made to the server for the title of that field. If the title "
 "is found, the field will be localized."
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:39
+#: ../../settings_kb/interface/forms/form_localisation.rst:41
 msgid "Локализация формы"
 msgstr "Form Localization"
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:41
+#: ../../settings_kb/interface/forms/form_localisation.rst:43
 msgid ""
 "В ``json`` конфигурации формы можно задать локализацию, которая будет "
 "действовать только в пределах данной формы. Пример:"
@@ -85,7 +93,7 @@ msgstr ""
 "In the form's ``json`` configuration, you can set localization that will "
 "only apply within this specific form. Example:"
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:47
+#: ../../settings_kb/interface/forms/form_localisation.rst:49
 msgid ""
 "Такой вариант подходит, если требуется добавить пользовательскую "
 "локализацию для сообщений об ошибке, подсказок и т. д. Чтобы установить "
@@ -100,23 +108,52 @@ msgstr ""
 "that, it can be used on the form itself by key. For naming keys, it is "
 "best to use Latin characters."
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:65
+#: ../../settings_kb/interface/forms/form_localisation.rst:67
 msgid "Локализация текста полей компонента формы"
 msgstr "Localization of Form Component Field Text"
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:67
+#: ../../settings_kb/interface/forms/form_localisation.rst:69
 msgid ""
-"Для локализации текста полей компонента формы (Название поля, Подсказка) "
-"предусмотрен компонент :ref:`ML Text<ML_Text>` - текстовое поле с "
-"переключателем в виде флага России /США. После выбора языка в поле "
-"вводится текст."
-msgstr ""
-"For localizing the text of form component fields (Field Label, Tooltip), "
-"the :ref:`ML Text<ML_Text>` component is provided - a text field with a "
-"switch in the form of a Russian/USA flag. After selecting the language, "
-"the text is entered in the field."
+"В базовых настройках названия поля (``label``), текста пустого поля "
+"(``placeholder``) и описания (``description``) используется :ref:`ML "
+"Text<ML_Text>`. Для подсказки (``tooltip``) применяется многострочный ML "
+"Textarea. Переключатель языка позволяет заполнить текст на русском и "
+"английском."
+msgstr "Basic ``label``, ``placeholder`` and ``description`` settings use :ref:`ML Text<ML_Text>`. ``tooltip`` uses multiline ML Textarea. The language switch allows Russian and English text."
 
-#: ../../settings_kb/interface/forms/form_localisation.rst:84
-msgid "Сохраняются оба введенных значения."
-msgstr "Both entered values are saved."
+#: ../../settings_kb/interface/forms/form_localisation.rst:86
+#, python-brace-format
+msgid ""
+"Переводы сохраняются в объекте со строчными ключами языков, например "
+"``{\"ru\": \"Название\", \"en\": \"Title\"}``. Можно заполнить один или "
+"оба перевода."
+msgstr "Translations use lowercase language keys, for example ``{\"ru\": \"Название\", \"en\": \"Title\"}``. One or both may be filled."
 
+#~ msgid ""
+#~ "В качестве глобальной локализации используется"
+#~ " локализация из ``site-messages/*.properties``"
+#~ " файлов ``*-share`` модулей."
+#~ msgstr ""
+#~ "Global localization uses localization from "
+#~ "``site-messages/*.properties`` files of "
+#~ "``*-share`` modules."
+
+#~ msgid ""
+#~ "Для локализации текста полей компонента "
+#~ "формы (Название поля, Подсказка) предусмотрен"
+#~ " компонент :ref:`ML Text<ML_Text>` - "
+#~ "текстовое поле с переключателем в виде"
+#~ " флага России /США. После выбора "
+#~ "языка в поле вводится текст."
+#~ msgstr ""
+#~ "For localizing the text of form "
+#~ "component fields (Field Label, Tooltip), "
+#~ "the :ref:`ML Text<ML_Text>` component is "
+#~ "provided - a text field with a "
+#~ "switch in the form of a "
+#~ "Russian/USA flag. After selecting the "
+#~ "language, the text is entered in "
+#~ "the field."
+
+#~ msgid "Сохраняются оба введенных значения."
+#~ msgstr "Both entered values are saved."

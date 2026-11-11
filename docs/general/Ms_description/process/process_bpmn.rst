@@ -3,7 +3,7 @@
 BPMN Process Engine
 ===================
 
-В качестве движка BPMN в ecos-process выступает Camunda.
+В качестве движка BPMN в ecos-process используется **Camunda 7**. В проверенной версии исходников ecos-process **2.38.0-SNAPSHOT** задана Camunda **7.24.0**. Движок работает с реляционной БД через JDBC; подробнее см. :ref:`архитектуру микросервиса <process_description>`.
 
 .. toctree::
     :maxdepth: 3

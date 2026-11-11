@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -29,8 +29,8 @@ msgid ""
 "может просматривать, изменять или создавать дочерние типы."
 msgstr ""
 "In addition to the rights matrix for objects (records), Citeck has a "
-"separate mechanism for controlling access to the **data type definitions** "
-"themselves — who can view, modify, or create child types."
+"separate mechanism for controlling access to the **data type "
+"definitions** themselves — who can view, modify, or create child types."
 
 #: ../../settings_kb/data_types/data_types_type_rights.rst:8
 msgid ""
@@ -38,14 +38,14 @@ msgid ""
 "данных и не влияет на права пользователей в отношении объектов этого "
 "типа."
 msgstr ""
-"Type rights are configured directly from the data types journal and do not"
-" affect user rights over the objects of that type."
+"Type rights are configured directly from the data types journal and do "
+"not affect user rights over the objects of that type."
 
 #: ../../settings_kb/data_types/data_types_type_rights.rst:10
 msgid "В журнале типов для редактирования прав на конкретный тип доступна кнопка:"
 msgstr ""
-"In the types journal, the following button is available for editing rights"
-" on a specific type:"
+"In the types journal, the following button is available for editing "
+"rights on a specific type:"
 
 #: ../../settings_kb/data_types/data_types_type_rights.rst:16
 msgid "При нажатии на эту кнопку можно настроить права на конкретный тип:"
@@ -92,8 +92,10 @@ msgid "Право на создание дочерних типов."
 msgstr "Permission to create child types."
 
 #: ../../settings_kb/data_types/data_types_type_rights.rst:38
-msgid "Право на изменение типа имеют три категории пользователей:"
-msgstr "Three categories of users have permission to modify a type:"
+msgid ""
+"Для **глобального типа** право изменения проверяется с учётом системных "
+"полномочий, назначенных прав **write** и авторства типа:"
+msgstr "For a **global type**, modification permission considers system privileges, assigned **write** permissions and type authorship:"
 
 #: ../../settings_kb/data_types/data_types_type_rights.rst:40
 msgid "Системные администраторы"
@@ -107,34 +109,91 @@ msgstr "Users who have been granted **write** permission by a system administrat
 msgid "Создатель типа"
 msgstr "The creator of the type"
 
-#: ../../settings_kb/data_types/data_types_type_rights.rst:45
+#: ../../settings_kb/data_types/data_types_type_rights.rst:44
+msgid ""
+"При создании глобального типа, а также при изменении его родителя "
+"дополнительно проверяется право **create-children** на выбранного "
+"родителя."
+msgstr "Creating a global type or changing its parent also requires **create-children** on the selected parent."
+
+#: ../../settings_kb/data_types/data_types_type_rights.rst:47
+msgid "Типы рабочего пространства"
+msgstr "Workspace types"
+
+#: ../../settings_kb/data_types/data_types_type_rights.rst:49
+msgid ""
+"Для создания и изменения типа с заданным рабочим пространством действует "
+"отдельная проверка: операция доступна системному администратору, "
+"системному контексту или менеджеру этого пространства. Наличие обычного "
+"права **write** или авторство типа само по себе не заменяет эту проверку."
+msgstr "Creating or modifying a type with a workspace uses a separate check: system administrator, system context or workspace manager. Ordinary **write** permission or authorship alone does not replace this check."
+
+#: ../../settings_kb/data_types/data_types_type_rights.rst:51
+msgid ""
+"Менеджер рабочего пространства также учитывается при вычислении прав на "
+"описание типа. Права, показанные в интерфейсе, и разрешение конкретной "
+"операции сохранения следует различать."
+msgstr "The workspace manager is also considered when calculating type description permissions. Distinguish permissions shown in the UI from authorization for a specific save operation."
+
+#: ../../settings_kb/data_types/data_types_type_rights.rst:54
 msgid "Наследование прав"
 msgstr "Rights inheritance"
 
-#: ../../settings_kb/data_types/data_types_type_rights.rst:47
+#: ../../settings_kb/data_types/data_types_type_rights.rst:56
 msgid ""
 "Все права по умолчанию наследуются от родительского типа к дочерним, но "
 "это поведение можно отключить если убрать флаг **\"Наследовать права\"** "
 "при настройке прав на тип."
 msgstr ""
 "All rights are inherited from the parent type to child types by default, "
-"but this behavior can be disabled by unchecking the **\"Inherit rights\"** "
-"flag when configuring type rights."
+"but this behavior can be disabled by unchecking the **\"Inherit "
+"rights\"** flag when configuring type rights."
 
-#: ../../settings_kb/data_types/data_types_type_rights.rst:50
+#: ../../settings_kb/data_types/data_types_type_rights.rst:59
 msgid "Право на создание типа без родителя"
 msgstr "Permission to create a type without a parent"
 
-#: ../../settings_kb/data_types/data_types_type_rights.rst:52
+#: ../../settings_kb/data_types/data_types_type_rights.rst:61
 msgid ""
-"Если при создании типа поле с родительским типом оставить пустым, то "
-"родителем у такого типа будет тип с идентификатором **\"base\"**. Если "
-"нужно чтобы определенные пользователи могли создавать типы с любыми "
-"родителями, то следует выдать права **\"create-children\"** на тип "
-"**\"base\"**."
-msgstr ""
-"If the parent type field is left empty when creating a type, the parent of"
-" that type will be the type with the identifier **\"base\"**. To allow "
-"certain users to create types with any parent, grant them "
-"**\"create-children\"** rights on the **\"base\"** type."
+"Если в определении типа родитель не указан, при разрешении типа "
+"используется **base** (кроме самого корневого типа base). При проверке "
+"создания глобального типа без родителя право **create-children** также "
+"проверяется на **base**."
+msgstr "If a type definition omits its parent, **base** is used during resolution, except for the root base itself. Creating a global type without a parent also checks **create-children** on **base**."
 
+#: ../../settings_kb/data_types/data_types_type_rights.rst:63
+msgid ""
+"Выданные на base права могут наследоваться дочерними типами с учётом "
+"настройки **«Наследовать права»**. Это не отменяет проверку прав на "
+"выбранного родителя и отдельный порядок для типов рабочего пространства."
+msgstr "Permissions granted on base may be inherited by child types according to **\"Inherit permissions\"**. This does not remove the selected parent permission check or the separate rules for workspace types."
+
+#: ../../settings_kb/data_types/data_types_type_rights.rst:65
+msgid ""
+"Родителем может быть глобальный тип или тип из того же рабочего "
+"пространства. Наследование глобального типа от типа рабочего "
+"пространства, наследование из другого пространства и циклическое "
+"наследование не допускаются."
+msgstr "The parent may be global or in the same workspace. Global types cannot inherit workspace types; cross-workspace and cyclic inheritance are prohibited."
+
+#~ msgid "Право на изменение типа имеют три категории пользователей:"
+#~ msgstr "Three categories of users have permission to modify a type:"
+
+#~ msgid ""
+#~ "Если при создании типа поле с "
+#~ "родительским типом оставить пустым, то "
+#~ "родителем у такого типа будет тип "
+#~ "с идентификатором **\"base\"**. Если нужно "
+#~ "чтобы определенные пользователи могли "
+#~ "создавать типы с любыми родителями, то"
+#~ " следует выдать права **\"create-"
+#~ "children\"** на тип **\"base\"**."
+#~ msgstr ""
+#~ "If the parent type field is left"
+#~ " empty when creating a type, the "
+#~ "parent of that type will be the"
+#~ " type with the identifier **\"base\"**. "
+#~ "To allow certain users to create "
+#~ "types with any parent, grant them "
+#~ "**\"create-children\"** rights on the "
+#~ "**\"base\"** type."

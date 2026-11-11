@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -54,12 +54,18 @@ msgstr ""
 
 #: ../../general/Data_API/ECOS_Records/RecordRef.rst:12
 msgid ""
-"**id** — локальный идентификатор, который должен быть уникален в пределах"
-" источника."
-msgstr ""
-"**id** — the local identifier, which must be unique within the source."
+"**localId** — локальный идентификатор, который должен быть уникален в "
+"пределах источника."
+msgstr "**localId** is a local identifier that must be unique within the source."
 
 #: ../../general/Data_API/ECOS_Records/RecordRef.rst:14
+msgid ""
+"В контексте известного приложения допустима сокращённая ссылка "
+"``sourceId@localId``. При передаче ссылки между приложениями используйте "
+"полный формат, чтобы источник определялся однозначно."
+msgstr "Within a known application context, the shortened reference ``sourceId@localId`` is allowed. Use the full format when passing references between applications so that the source is identified unambiguously."
+
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:16
 msgid ""
 "**RecordRef**, например, указывается в строке браузера при обращении к "
 "сущности:"
@@ -67,79 +73,82 @@ msgstr ""
 "**RecordRef** is specified, for example, in the browser address bar when "
 "accessing an entity:"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:20
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:22
 msgid "RecordRef является реализацией интерфейса EntityRef."
 msgstr "RecordRef is an implementation of the EntityRef interface."
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:26
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:28
 msgid "**emodel** – appName"
 msgstr "**emodel** – appName"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:27
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:29
 msgid "**type** – sourceId"
 msgstr "**type** – sourceId"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:28
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:30
 msgid "**testdl-counterpartyToAuthority** — localId"
 msgstr "**testdl-counterpartyToAuthority** — localId"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:31
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:33
 msgid "Примеры ссылок для пользователей и групп"
 msgstr "Reference examples for users and groups"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:39
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:35
+msgid "Ниже приведены форматы ссылок на источники приложения ``emodel``:"
+msgstr "The reference formats for sources in the ``emodel`` application are shown below:"
+
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:43
 msgid "Тип сущности"
 msgstr "Entity type"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:40
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:44
 msgid "Формат ссылки"
 msgstr "Reference format"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:41
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:45
 msgid "Пример"
 msgstr "Example"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:42
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:46
 msgid "Пользователь"
 msgstr "User"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:43
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:47
 #, python-brace-format
 msgid "``emodel/person@{username}``"
 msgstr "``emodel/person@{username}``"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:44
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:48
 msgid "``emodel/person@ivan.petrov``"
 msgstr "``emodel/person@ivan.petrov``"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:45
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:49
 msgid "Группа"
 msgstr "Group"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:46
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:50
 #, python-brace-format
 msgid "``emodel/authority-group@{localId}``"
 msgstr "``emodel/authority-group@{localId}``"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:47
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:51
 msgid "``emodel/authority-group@accountant``"
 msgstr "``emodel/authority-group@accountant``"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:52
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:56
 msgid "Корректный формат ссылок"
 msgstr "Correct reference format"
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:54
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:58
 #, python-brace-format
 msgid ""
 "При записи значений в ASSOC-like атрибуты (Association, Authority, "
-"Person, Group) важно использовать полные ссылки в формате "
-"``{appName}/{sourceId}@{localId}``."
-msgstr ""
-"When writing values to ASSOC-like attributes (Association, Authority, "
-"Person, Group), it is important to use full references in the format "
-"``{appName}/{sourceId}@{localId}``."
+"Person, Group) рекомендуется использовать полные ссылки в формате "
+"``{appName}/{sourceId}@{localId}``: это обеспечивает однозначную "
+"адресацию между приложениями. Поддержка сокращённых ссылок зависит от "
+"контекста и целевого источника."
+msgstr "When writing values to ASSOC-like attributes (Association, Authority, Person, Group), use full references in ``{appName}/{sourceId}@{localId}`` format to ensure unambiguous addressing between applications. Support for shortened references depends on the context and target source."
 
-#: ../../general/Data_API/ECOS_Records/RecordRef.rst:56
+#: ../../general/Data_API/ECOS_Records/RecordRef.rst:60
 msgid "Проверить формат хранимых ссылок можно через:"
 msgstr "The format of stored references can be verified via:"

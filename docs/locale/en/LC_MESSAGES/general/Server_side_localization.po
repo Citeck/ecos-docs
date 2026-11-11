@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -25,8 +25,10 @@ msgstr "Backend Localization Configuration"
 #: ../../general/Server_side_localization.rst:6
 msgid ""
 "Платформа Citeck поддерживает локализацию сообщений об ошибках на стороне"
-" сервера."
-msgstr "The Citeck platform supports server-side localization of error messages."
+" сервера. Исключение и classpath-источник переводов предоставляет ``ecos-"
+"commons``, выбор локали — ``I18nContext``, а текст клиентского ответа "
+"формируется web-обработчиком."
+msgstr "Citeck supports server-side error message localization. ``ecos-commons`` provides the exception and classpath translation source, ``I18nContext`` selects the locale, and the web handler creates client response text."
 
 #: ../../general/Server_side_localization.rst:9
 msgid "Формат файла локализации"
@@ -34,50 +36,145 @@ msgstr "Localization File Format"
 
 #: ../../general/Server_side_localization.rst:11
 msgid ""
-"В микросервисе или библиотеке необходимо добавить файл со списком "
-"локализаций сообщений в ``resources/ecos/messages`` в формате:"
-msgstr ""
-"In a microservice or library, a file with the list of message "
-"localizations must be added to ``resources/ecos/messages`` in the "
-"following format:"
+"В микросервисе или библиотеке добавьте JSON-файл в classpath-каталог "
+"``ecos/messages``. Для Maven/Gradle-проекта пример полного пути — "
+"``src/main/resources/ecos/messages/test-messages.json``; в собранном JAR "
+"ресурс находится в ``ecos/messages``."
+msgstr "In the microservice or library, add a JSON file to the ``ecos/messages`` classpath directory. An example full Maven/Gradle project path is ``src/main/resources/ecos/messages/test-messages.json``; in the built JAR, the resource is in ``ecos/messages``."
 
-#: ../../general/Server_side_localization.rst:39
-msgid ""
-"Локализация сообщения должна располагаться в том же порядке, как указано "
-"в ``locales``."
-msgstr ""
-"The message localization must be listed in the same order as specified in"
-" ``locales``."
+#: ../../general/Server_side_localization.rst:13
+msgid "Формат файла:"
+msgstr "File format:"
 
 #: ../../general/Server_side_localization.rst:41
+msgid ""
+"Переводы сообщения должны располагаться в том же порядке, что и значения "
+"в ``locales``. Для каждого ключа рекомендуется указывать перевод для "
+"каждой объявленной локали. Если переводов меньше, отсутствующие значения "
+"не заполняются автоматически; лишние значения сверх числа локалей "
+"игнорируются."
+msgstr "Message translations must follow the order of values in ``locales``. Provide a translation for each declared locale for every key. Missing translations are not filled automatically; values beyond the locale count are ignored."
+
+#: ../../general/Server_side_localization.rst:43
+msgid ""
+"Ключи сообщений объединяются в общий каталог; ``id`` бандла не "
+"добавляется к ключу автоматически. Чтобы избежать конфликтов между "
+"библиотеками и приложениями, используйте префикс ключа, например ``ecos-"
+"model.type.attribute-id-invalid``. На порядок загрузки файлов при "
+"совпадении ключей полагаться не следует."
+msgstr "Message keys are merged into a shared catalog; the bundle ``id`` is not automatically prepended. To avoid library and application conflicts, prefix keys, for example ``ecos-model.type.attribute-id-invalid``. Do not rely on file loading order when keys conflict."
+
+#: ../../general/Server_side_localization.rst:45
+msgid ""
+"JSON-ресурсы загружаются classpath-источником при первом обращении к "
+"каталогу. Ошибки чтения или разбора бандла записываются на уровне WARN, "
+"некорректный бандл пропускается. Автоматическое перечитывание файлов "
+"после загрузки этим источником не предусмотрено."
+msgstr "JSON resources are loaded by the classpath source on first catalog access. Bundle read or parse errors are logged at WARN, and invalid bundles are skipped. This source does not automatically reload files afterward."
+
+#: ../../general/Server_side_localization.rst:47
 msgid "В текст можно подставлять параметры в формате:"
 msgstr "Parameters can be substituted into the text in the following format:"
 
-#: ../../general/Server_side_localization.rst:48
+#: ../../general/Server_side_localization.rst:54
 msgid "Использование в коде"
 msgstr "Usage in Code"
 
-#: ../../general/Server_side_localization.rst:50
+#: ../../general/Server_side_localization.rst:56
 msgid ""
-"Для обработки локализованной ошибки добавлено исключение "
-"``I18nRuntimeException``. Например:"
-msgstr ""
-"The ``I18nRuntimeException`` exception has been added to handle localized"
-" errors. For example:"
+"Для локализованной ошибки используйте ``I18nRuntimeException`` из ``ecos-"
+"commons``:"
+msgstr "For a localized error, use ``I18nRuntimeException`` from ``ecos-commons``:"
 
-#: ../../general/Server_side_localization.rst:58
+#: ../../general/Server_side_localization.rst:66
 msgid "Пример с проставлением параметров:"
 msgstr "Example with parameter substitution:"
 
-#: ../../general/Server_side_localization.rst:73
+#: ../../general/Server_side_localization.rst:79
 msgid ""
-"При обработке такого исключения в логи всегда пишется английская "
-"локализация. Если локализация не найдена, будет использоваться ключ "
-"сообщения. На клиент возвращается текст ошибки исходя из локализации в "
-"контексте запроса."
-msgstr ""
-"When handling such an exception, the English localization is always "
-"written to the logs. If no localization is found, the message key will be"
-" used. The error text returned to the client is based on the localization"
-" in the request context."
+"``messageKey`` в builder должен быть непустым. ``messageArgs`` заменяет "
+"карту параметров; ``messageArg(name, value)`` позволяет добавить или "
+"заменить один параметр. Причину ошибки можно передать через "
+"``cause(exception)``."
+msgstr "The builder's ``messageKey`` must be nonempty. ``messageArgs`` replaces the parameter map; ``messageArg(name, value)`` adds or replaces one parameter. Pass the cause through ``cause(exception)``."
 
+#: ../../general/Server_side_localization.rst:82
+msgid "Выбор перевода и обработка ошибки"
+msgstr "Translation selection and error handling"
+
+#: ../../general/Server_side_localization.rst:84
+msgid ""
+"Каталог сначала ищет точное совпадение локали, затем ближайший непустой "
+"перевод с тем же языком. Например, для ``en_US`` может использоваться "
+"``en``. Перевод другого языка автоматически не выбирается: при наличии "
+"только ``en`` и ``ru`` запрос ``fr`` не получает английский перевод из "
+"этого каталога."
+msgstr "The catalog first seeks an exact locale match, then the nearest nonempty translation in the same language. For example, ``en_US`` may use ``en``. A different language is not selected automatically: with only ``en`` and ``ru``, a ``fr`` request receives no English translation from this catalog."
+
+#: ../../general/Server_side_localization.rst:86
+msgid ""
+"Если ключ или подходящий перевод отсутствует, classpath-источник "
+"возвращает пустую строку. Fallback к ключу сообщения выполняется на "
+"уровне ``I18nContext``. Не следует рассчитывать на автоматический "
+"английский перевод для клиента с неподдерживаемым языком."
+msgstr "If the key or a suitable translation is missing, the classpath source returns an empty string. ``I18nContext`` handles fallback to the message key. Do not expect automatic English translation for clients with unsupported languages."
+
+#: ../../general/Server_side_localization.rst:88
+msgid ""
+"При создании ``I18nRuntimeException`` его диагностическое ``message`` "
+"вычисляется для английской локали с подстановкой параметров. В "
+"стандартной web-обработке клиентский текст формируется отдельно, с учётом"
+" локали или списка локалей запроса. Конкретное поле ответа зависит от "
+"транспорта и обработчика."
+msgstr "When ``I18nRuntimeException`` is created, its diagnostic ``message`` is computed for English with parameter substitution. Standard web handling creates client text separately, using the request locale or locale list. The response field depends on the transport and handler."
+
+#: ../../general/Server_side_localization.rst:92
+msgid ""
+"Английское диагностическое сообщение исключения не гарантирует язык любой"
+" записи в логах: обработчик может вывести сообщение внешнего "
+"исключения-обёртки или собственный текст."
+msgstr "The exception's English diagnostic message does not guarantee the language of every log entry: a handler may output an outer wrapper exception message or its own text."
+
+#~ msgid ""
+#~ "Платформа Citeck поддерживает локализацию "
+#~ "сообщений об ошибках на стороне сервера."
+#~ msgstr ""
+#~ "The Citeck platform supports server-side"
+#~ " localization of error messages."
+
+#~ msgid ""
+#~ "В микросервисе или библиотеке необходимо "
+#~ "добавить файл со списком локализаций "
+#~ "сообщений в ``resources/ecos/messages`` в "
+#~ "формате:"
+#~ msgstr ""
+#~ "In a microservice or library, a "
+#~ "file with the list of message "
+#~ "localizations must be added to "
+#~ "``resources/ecos/messages`` in the following "
+#~ "format:"
+
+#~ msgid ""
+#~ "Локализация сообщения должна располагаться в"
+#~ " том же порядке, как указано в "
+#~ "``locales``."
+#~ msgstr ""
+#~ "The message localization must be listed"
+#~ " in the same order as specified "
+#~ "in ``locales``."
+
+#~ msgid ""
+#~ "При обработке такого исключения в логи"
+#~ " всегда пишется английская локализация. "
+#~ "Если локализация не найдена, будет "
+#~ "использоваться ключ сообщения. На клиент "
+#~ "возвращается текст ошибки исходя из "
+#~ "локализации в контексте запроса."
+#~ msgstr ""
+#~ "When handling such an exception, the "
+#~ "English localization is always written "
+#~ "to the logs. If no localization is"
+#~ " found, the message key will be "
+#~ "used. The error text returned to "
+#~ "the client is based on the "
+#~ "localization in the request context."

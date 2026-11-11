@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-11 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -77,8 +77,8 @@ msgid ""
 "Добавление перед символом знака ``\\``. Необходимо в тех случаях, когда "
 "спец-символ должен быть обработан как обычный символ"
 msgstr ""
-"Prefixing a character with ``\\``. Required when a special character "
-"must be treated as a regular character"
+"Prefixing a character with ``\\``. Required when a special character must"
+" be treated as a regular character"
 
 #: ../../general/Data_API/ECOS_Records/records_syntax.rst:25
 msgid "**Спец-символ**"
@@ -96,11 +96,8 @@ msgstr "**Scalar**"
 msgid ""
 "Конечный атрибут, который не может содержать вложенных атрибутов. Может "
 "быть одним из ``?id``, ``?str``, ``?disp``, ``?num``, ``?assoc``, "
-"``?localId``, ``?bool``, ``?json``"
-msgstr ""
-"A terminal attribute that cannot contain nested attributes. Can be one "
-"of ``?id``, ``?str``, ``?disp``, ``?num``, ``?assoc``, ``?localId``, "
-"``?bool``, ``?json``"
+"``?localId``, ``?bool``, ``?json``, ``?raw``, ``?bin``"
+msgstr "A terminal attribute that cannot contain nested attributes. One of ``?id``, ``?str``, ``?disp``, ``?num``, ``?assoc``, ``?localId``, ``?bool``, ``?json``, ``?raw``, ``?bin``"
 
 #: ../../general/Data_API/ECOS_Records/records_syntax.rst:32
 msgid ""
@@ -222,16 +219,19 @@ msgstr "**procN** — post-processor name;"
 #: ../../general/Data_API/ECOS_Records/records_syntax.rst:83
 msgid ""
 "**argN** - аргументы, которые отделяются друг от друга запятыми. "
-"Допускаются значения аналогичные формату json - https://www.json.org"
-"/json-en.html , но с возможностью использовать для строк одинарные "
-"кавычки вместо двойных;"
-msgstr ""
-"**argN** — arguments separated from each other by commas. Values "
-"analogous to the JSON format are allowed — https://www.json.org/json-"
-"en.html — but with the option to use single quotes instead of double "
-"quotes for strings;"
+"Поддерживаются строки в одинарных или двойных кавычках, null, булевы "
+"значения, числа, JSON-массивы и объекты."
+msgstr "**argN** are comma-separated arguments. Single- or double-quoted strings, null, booleans, numbers, JSON arrays and objects are supported."
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:85
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:87
+msgid ""
+"Парсер аргументов в ecos-records 3.60.0-SNAPSHOT распознаёт отдельный "
+"числовой аргумент только тогда, когда первый символ — цифра. Например, "
+"``-1`` обрабатывается как строка. Поэтому синтаксис аргументов не "
+"полностью эквивалентен JSON."
+msgstr "The argument parser in ecos-records 3.60.0-SNAPSHOT recognizes a standalone numeric argument only if its first character is a digit. For example, ``-1`` is treated as a string. Argument syntax is therefore not fully equivalent to JSON."
+
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:89
 msgid ""
 "Пост-процессоры объединяются через символ ``|`` и выполняются слева "
 "направо аналогично unix pipeline. Пост-процессоры могут быть частью "
@@ -241,7 +241,7 @@ msgstr ""
 " to right, analogous to a Unix pipeline. Post-processors can be part of "
 "any attribute at any nesting level."
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:87
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:91
 msgid ""
 "Для пост-процессора с типом \"or\" доступен дополнительный синтаксис с "
 "использованием ``!``. Возможные варианты значения после ``!``:"
@@ -249,7 +249,7 @@ msgstr ""
 "For the \"or\" type post-processor, additional syntax using ``!`` is "
 "available. Possible values after ``!``:"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:89
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:93
 msgid ""
 "Значение в двойных или одинарных кавычках означает константную строку; "
 "(``some!'constant' == some|or('constant')``)"
@@ -257,7 +257,7 @@ msgstr ""
 "A value in double or single quotes means a constant string; "
 "(``some!'constant' == some|or('constant')``)"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:90
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:94
 msgid ""
 "При отсутствии значения парсер подбирает нужный аргумент в зависимости от"
 " скаляра перед знаком ``!``:"
@@ -265,32 +265,32 @@ msgstr ""
 "When no value is present, the parser selects the appropriate argument "
 "based on the scalar before the ``!`` sign:"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:92
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:96
 msgid "?bool! -> ``false``"
 msgstr "?bool! -> ``false``"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:93
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:97
 #, python-brace-format
 msgid "?json! -> ``{}``;"
 msgstr "?json! -> ``{}``;"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:94
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:98
 msgid "?num! -> ``0``;"
 msgstr "?num! -> ``0``;"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:95
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:99
 msgid "иначе -> ``\"\"``."
 msgstr "otherwise -> ``\"\"``."
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:97
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:101
 msgid "null означает пустое значение; (``some!null == some|or(null)``)"
 msgstr "null means an empty value; (``some!null == some|or(null)``)"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:98
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:102
 msgid "true или false - булево значение; (``some!true == some|or(true)``)"
 msgstr "true or false — a boolean value; (``some!true == some|or(true)``)"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:99
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:103
 msgid ""
 "Если первый символ число - числовое значение; (``some!123 == "
 "some|or(123)``)"
@@ -298,19 +298,14 @@ msgstr ""
 "If the first character is a digit — a numeric value; (``some!123 == "
 "some|or(123)``)"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:100
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:104
 msgid ""
 "Если ни один из вышестоящих вариантов не подошел, то считается, что "
-"указано имя атрибута, который нужно вернуть в случае если результат "
-"вычисления атрибута до ``!`` оказался null; (``some!other == "
-"some|or('a:other')``)"
-msgstr ""
-"If none of the above options matched, it is assumed that an attribute "
-"name is specified, which should be returned if the result of evaluating "
-"the attribute before ``!`` is null; (``some!other == "
-"some|or('a:other')``)"
+"указано имя атрибута, который нужно вернуть, если результат до ``!`` "
+"оказался null или пустой строкой; (``some!other == some|or('a:other')``)"
+msgstr "If none of the preceding options matches, the value is treated as the name of an attribute to return if the result before ``!`` is null or an empty string; (``some!other == some|or('a:other')``)"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:102
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:106
 msgid ""
 "Между частями атрибута (алиас, путь, вложенные атрибуты, пост-процессоры,"
 " аргументы) допускается использование любого количества пробельных "
@@ -320,15 +315,29 @@ msgstr ""
 "processors, arguments), any number of whitespace characters (``\\n``, "
 "``\\t``, ``\\r``, :literal:`\\ `) are allowed."
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:104
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:108
 msgid "Модель атрибута:"
 msgstr "Attribute model:"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:116
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:120
 msgid "Модель пост-процессора:"
 msgstr "Post-processor model:"
 
-#: ../../general/Data_API/ECOS_Records/records_syntax.rst:125
+#: ../../general/Data_API/ECOS_Records/records_syntax.rst:129
 msgid "**DataValue** - любой json тип - https://www.json.org/json-en.html"
 msgstr "**DataValue** — any JSON type — https://www.json.org/json-en.html"
 
+#~ msgid ""
+#~ "**argN** - аргументы, которые отделяются "
+#~ "друг от друга запятыми. Допускаются "
+#~ "значения аналогичные формату json - "
+#~ "https://www.json.org/json-en.html , но с "
+#~ "возможностью использовать для строк одинарные"
+#~ " кавычки вместо двойных;"
+#~ msgstr ""
+#~ "**argN** — arguments separated from each"
+#~ " other by commas. Values analogous to"
+#~ " the JSON format are allowed — "
+#~ "https://www.json.org/json-en.html — but with"
+#~ " the option to use single quotes "
+#~ "instead of double quotes for strings;"
