@@ -17,6 +17,8 @@
 
    Для работы примера необходимо создать ECOS Endpoint с именем ``my-rabbitmq-endpoint``, содержащий ``url``, ``credentials/username`` и ``credentials/password``.
 
+Для основного брокера платформы можно использовать :ref:`автоматическую фабрику подключения <camel_rabbitmq_platform_connection>`. В этом случае уберите объявление ``myRabbitConnectionFactory`` и укажите ``connectionFactory: '#bean:rabbitConnectionFactory'``. Учитывайте ограничения автоматического варианта для TLS.
+
 .. code-block:: yaml
 
    - beans:

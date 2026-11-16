@@ -46,3 +46,29 @@
            # Отправка события типа "test-event-type".
            # В теле передаётся DataValue.of(exchange.message.body)
            - to: "ecos-event:test-event-type"
+
+.. _camel_rabbitmq_platform_connection:
+
+Подключение к основному брокеру платформы
+-----------------------------------------
+
+В версиях integrations с поддержкой автоматической фабрики подключения можно использовать настройки ``ecos.webapp.dataSources.main-rabbitmq``. Если в них задан host, Camel-контекст получает бин ``rabbitConnectionFactory`` типа Spring AMQP. Отдельные endpoint и секрет для этого варианта не требуются.
+
+Вместо объявления собственной фабрики из примера выше оставьте только маршрут:
+
+.. code-block:: yaml
+
+   - route:
+       from:
+         uri: spring-rabbitmq:default
+         parameters:
+           connectionFactory: '#bean:rabbitConnectionFactory'
+           queues: test-queue
+         steps:
+           - to: ecos-event:test-event-type
+
+Автоматическая фабрика использует host, port, virtual host и учетные данные основного брокера. Если артефакт YAML или XML объявляет собственную фабрику Spring AMQP, автоматическая фабрика в этот контекст не добавляется.
+
+.. note::
+
+   Автоматический вариант не воспроизводит TLS-настройки источника: при включенном TLS фабрика не создается, а в лог выводится ошибка. Для такого подключения настройте собственную фабрику с необходимыми TLS-параметрами. Это ограничение автоматического подключения, а не всего компонента ``spring-rabbitmq``.
