@@ -12,11 +12,13 @@
 
 Начиная с версии 1.16.0 в микросервис была добавлена возможность загружать кастомный код, реализованный согласно спецификации **OSGI** для пакетов. Это позволяет расширять микросервис без изменения базового функционала.
 
+В ecos-integrations 2.40.0-SNAPSHOT используются ``ecos-osgi-loader`` 3.1.0, OSGi Core 8.0.0, Apache Felix 7.0.5 и Camel 4.14.8. Зависимости бандла и импортируемые пакеты должны соответствовать целевой версии микросервиса.
+
 Загрузка самих пакетов производится через журнал **OSGI пакеты** в разделе администратора. Чтобы загрузить пакет, переходим в этот журнал и нажимаем кнопку создания. Появляется модальное окно с предложением загрузки файла. Подкладываем туда свой скомпилированный jar файл и нажимаем **Создать**. Пакет загружен и проинсталлирован, если никаких проблем при инсталляции не возникло. В самом журнале всегда можно найти актуальный статус пакета, имя загруженного файла, символическое имя пакета, а так же, скачать сам jar файл пакета.
 
 Что доступно "из коробки" при реализации нового пакета:
 
-* **ApplicationContext ecos-integrations** микросервиса, но просто так с ним работать не получится, потому что пакеты не могут "переварить" зависимость от spring библиотек, поэтому в библиотеке **ecos-osgi-loader** была реализована обертка, принимающая в себя объект **ApplicationContext** и позволяющая получать из него бины
+* **ApplicationContext ecos-integrations** передаётся OSGi-фабрике в свойстве ``SpringApplicationContext``. Для получения бинов используется обёртка ``ApplicationContextReflection`` из ``ecos-osgi-loader``. При обращении к Spring API необходимо согласовать версии и OSGi imports/exports: доступность библиотеки в микросервисе сама по себе не гарантирует её доступность бандлу.
 
 Полезные ссылки для реализации OSGI пакетов:
 
@@ -26,11 +28,11 @@
 
 3. `https://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html <https://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html>`_ – Более подробное описание работы с плагином для создания OSGI пакетов.
 
-При реализации пакетов можно не прописывать пакеты **Felix** и **OSGI Core** в свои проекты, а просто добавить зависимость на ecos-osgi-loader. Все необходимые библиотеки OSGI придут оттуда, как и обертка для работы с **ApplicationContext**.
+При реализации бандла используйте зависимости API, совместимые с целевым микросервисом. В самом ecos-integrations ``ecos-osgi-loader``, **Felix** и **OSGi Core** объявлены отдельными зависимостями. Состав транзитивных зависимостей проекта бандла проверяйте через ``mvn dependency:tree``. API, предоставляемые микросервисом, должны использовать те же классы, что и host; состав зависимостей со scope ``provided`` и экспортируемых пакетов проверяется для конкретной поставки.
 
-Версия плагина для сборки пакетов: 5.1.1
+В примере ниже используется версия плагина для сборки пакетов 5.1.1. Это пример настройки, а не требование к любой версии микросервиса.
 
-Пример настроенного плагина:
+Шаблон настройки плагина; имена активатора и пакеты импорта/экспорта замените значениями своего проекта:
 
 .. code-block:: xml
 
@@ -61,7 +63,7 @@
 1. Сборка
 ~~~~~~~~~~
 
-**Бандл** -  стандартный **jar файл** с добавлением в него **MANIFEST.MF** файла.
+**Бандл** — JAR-файл с OSGi-метаданными в ``META-INF/MANIFEST.MF``. Самого наличия manifest недостаточно: для загрузки нового пакета сервису требуется ``Bundle-SymbolicName``, а зависимости бандла должны разрешаться OSGi-фреймворком. Для бандла с активатором указывается ``Bundle-Activator``.
 
 Чтобы получить подобную сборку, делаем следующее:
 
@@ -80,15 +82,15 @@
     ...
     </project>
 
-1.2. Указываем в области **build** следующий плагин (у меня получился довольно большой объем):
+1.2. В разделе ``build/plugins`` добавляем ``maven-bundle-plugin`` по шаблону выше и настраиваем его для своего проекта.
 
 Тут стоит остановиться поподробнее на настройке этого плагина. Bundle имеет свой **ClassLoader**, зависящий от других бандлов. Для него не свойственны правила наследования ClassLoader'ов в Java. По этой причине, чтобы класс из какой-то либы был доступен в вашем бандле - его надо импортировать (а другой бандл, соответственно, должен его экспортировать). Если импорта не будет - произойдет **ClassNotFoundException** или **NoClassDefFoundError** в рантайме (в зависимости от контекста запроса к классу). Если импорт будет, но подобная зависимость не может быть найдена в фреймворке из других бандлов (ни один не экспортировал) - будет исключение о том, разрешения зависимостей (wiring) при старте бандла.
 
-По комментариям в xml должно быть понятно что есть что. Опишу некоторые подводные камни.
+При настройке импортов учитывайте не только имена пакетов, но и версии, экспортируемые целевым runtime.
 
-Бывает ситуация, когда бандл при старте будет жаловаться на отсутствие зависимости, но вы только что загрузили эту зависимость в другом бандле (или эта зависимость есть в системном бандле). Данная проблема может быть из-за того, что зависимость экспортировалась без версии (или со стандартной версией ``1.0.0``) из-за отсутствия этой информации в рантайме при экспорте, а импорт требует, например, ``25.1.0``. Примером решения подобной проблемы - может быть указание минимальной поддерживаемой версии самостоятельно в манифесте. Для этого, вместо строки в импорте ``com.google.common.*`` пишем следующее: ``com.google.common.*; version="[1.0,26.0)"`` , что означает, что мы будем рады любой версии от 1.0.0 до 26.0.
+Бандл может не стартовать, если пакет экспортируется в версии, не входящей в диапазон импорта. Например, ``com.google.common.*;version="[1.0,26.0)"`` задаёт диапазон от 1.0 включительно до 26.0 исключительно. Выбирайте диапазон по фактически совместимым версиям API; расширение диапазона само по себе не обеспечивает совместимость кода.
 
-1.3. Сама сборка после предыдущих приготовлений выполняется стандартной командой ``mvn clean package (install|deploy)``
+1.3. Сборка выполняется командой ``mvn clean package``. При необходимости установки в локальный Maven-репозиторий используйте ``mvn clean install``, для публикации — ``mvn clean deploy``.
 
 2. Активатор
 ~~~~~~~~~~~~~~~~~~
@@ -120,7 +122,11 @@
 
 .. important::
     
-    Если вы получили ошибку, поправили бандл, загружаете новый бандл и получаете эту же ошибку - сделайте рестарт микросервиса интеграций после каждого неудачного старта бандла.
+    При ошибке загрузки сначала проверьте логи установки, разрешение зависимостей и выполнение ``start``/``stop`` активатора. В ``stop`` освобождайте созданные ресурсы и снимайте регистрации, выполненные бандлом.
+
+    При некоторых ошибках установки сервис пытается восстановить предыдущую версию бандла. Это не гарантирует очистку всех ресурсов после частично выполненного ``start``. Если после исправления и повторной загрузки сохраняется некорректное состояние runtime, может потребоваться перезапуск микросервиса; после каждой ошибки он не обязателен.
+
+Сохранённые бандлы повторно устанавливаются после запуска микросервиса: установка планируется через 30 секунд после первого события обновления Spring-контекста.
 
 Способы расширения микросервиса интеграций с помощью бандлов
 ------------------------------------------------------------
@@ -130,7 +136,7 @@
 
 Подготовительная часть - импортировать зависимости records с помощью maven в своем бандле.
 
-Импортировать пакеты в бандл (в конфиге):
+Пример пакетов для импорта; окончательный список определяется используемой версией Records и экспортами OSGi runtime:
 
 .. code-block:: text
 
@@ -141,6 +147,8 @@
     ru.citeck.ecos.commons.*
 
 Дальше - написать ``RecordsDao`` под свои потребности.
+
+``RecordRef`` и ``getRecordsServiceV1()`` используются в Records API, включая сервис из пакета ``records3``. Имя ``V1`` в getter не означает, что этот API необходимо автоматически заменить. Аналогично ``ecos.com.fasterxml.jackson210`` используется в предоставляемой библиотеке Records; пакет аннотаций должен соответствовать её JSON mapper.
 
 После написания - в ``BundleActivator`` можно получить с помощью ``ApplicationContextReflection`` бин класса ``RecordsService`` и вызываем у него метод **register**, передав свой ``RecordsDao``.
 
@@ -181,21 +189,21 @@
 
 Дальше - в ``BundleActivator`` создать ``DefaultCamelContext``. Добавить в него необходимые маршруты. Запустить контекст.
 
-Теперь у вас работает Camel в вашем бандле. Camel позволяет не только в рамках контекста обмениваться сообщениями, но и в рамках JVM, что может быть особенно полезно (direct-vm компонент).
+Для Camel 4 нельзя использовать ``direct-vm``: компонент удалён при переходе на эту версию. Выбирайте поддерживаемый способ обмена с учётом того, находятся ли маршруты в одном контексте или в разных. ``direct`` не следует считать автоматической заменой межконтекстного обмена. См. `руководство миграции Camel 4 <https://camel.apache.org/manual/camel-4-migration-guide.html>`_.
 
 Пока что возможности Camel вроде динамичного добавления ендпоинтов и тд не тестировались, но до кролика или иного сервиса (исходящий запрос) - очень даже удобно ходить.
 
 4. Регистрация нового endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Добавляем зависимость: 
+Добавляем зависимость ``spring-webmvc`` со scope ``provided``. Свойство ``spring-framework.version`` в примере должно быть задано в проекте бандла согласно версии Spring целевого микросервиса:
 
 .. code-block:: xml
 
     <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
-    <version>5.0.12.RELEASE</version>
+    <version>${spring-framework.version}</version>
     <scope>provided</scope>
     </dependency>
 
@@ -208,33 +216,29 @@
 
 В бандле создаем класс(ы) содержащий(ие) методы для обработки запросов. 
 
-Возможные варианты реализации такого метода - использование `RequestEnitity  <https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/RequestEntity.html>`_, `ResponseEntity  <https://www.baeldung.com/spring-response-entity>`_, использование `@RequestBody  <https://www.baeldung.com/spring-request-response-body>`_, `пример  <https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/request-response-entity.html>`_.  Также методы могут принимать переменные пути запроса `@PathVariable  <https://www.baeldung.com/spring-pathvariable>`_ и переменные заголовка `@RequestHeader <https://www.baeldung.com/spring-rest-http-headers>`_.
+Возможные варианты реализации такого метода - использование `RequestEntity  <https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/RequestEntity.html>`_, `ResponseEntity  <https://www.baeldung.com/spring-response-entity>`_, использование `@RequestBody  <https://www.baeldung.com/spring-request-response-body>`_, `пример  <https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/request-response-entity.html>`_.  Также методы могут принимать переменные пути запроса `@PathVariable  <https://www.baeldung.com/spring-pathvariable>`_ и переменные заголовка `@RequestHeader <https://www.baeldung.com/spring-rest-http-headers>`_.
 
-В ``start`` методе активатора при помощи ``ApplicationContextReflection`` получаем ``RequestMappingHandlerMapping``, настраиваем ``RequestMappingInfo.BuilderConfiguration``, создаем ``RequestMappingInfo`` и регистрируем его в  ``RequestMappingHandlerMapping``. Пример для регистрации нового endpoint ``"ecos/message"``:
+В ``start`` активатора получаем ``RequestMappingHandlerMapping`` через ``ApplicationContextReflection``. Для Spring MVC с поддержкой ``getBuilderConfiguration()`` используем конфигурацию действующего mapping, чтобы согласовать правила сопоставления путей. См. `API RequestMappingHandlerMapping <https://docs.spring.io/spring-framework/docs/6.2.x/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerMapping.html>`_.
+
+Ниже — фрагмент регистрации ``/ecos/message``. ``controller`` — экземпляр вашего контроллера с методом ``postLoad(String, CreateDocsRequest)``; ``CreateDocsRequest`` — DTO вашего проекта. ``handlerMapping`` и ``info`` сохраните в полях активатора для последующего удаления регистрации:
 
 .. code-block:: java
 
-    RequestMappingHandlerMapping requestMappingHandlerMapping = ApplicationContextReflection.getBean(RequestMappingHandlerMapping.class);
-    handlerMapping = (AbstractHandlerMethodMapping) requestMappingHandlerMapping;
+    handlerMapping = ApplicationContextReflection.getBean(RequestMappingHandlerMapping.class);
+    info = RequestMappingInfo
+        .paths("/ecos/message")
+        .methods(RequestMethod.POST)
+        .consumes(MediaType.APPLICATION_JSON_VALUE)
+        .produces(MediaType.APPLICATION_JSON_VALUE)
+        .options(handlerMapping.getBuilderConfiguration())
+        .build();
 
-    RequestMappingInfo.BuilderConfiguration config = new RequestMappingInfo.BuilderConfiguration();
-    config.setUrlPathHelper(requestMappingHandlerMapping.getUrlPathHelper());
-    config.setPathMatcher(requestMappingHandlerMapping.getPathMatcher());
-    config.setSuffixPatternMatch(requestMappingHandlerMapping.useSuffixPatternMatch());
-    config.setTrailingSlashMatch(requestMappingHandlerMapping.useTrailingSlashMatch());
-    config.setRegisteredSuffixPatternMatch(requestMappingHandlerMapping.useRegisteredSuffixPatternMatch());
-    config.setContentNegotiationManager(requestMappingHandlerMapping.getContentNegotiationManager());
-
-    RequestMappingInfo.Builder builder = RequestMappingInfo
-                    .paths("ecos/message")
-                    .methods(RequestMethod.POST)
-                    .consumes(MediaType.APPLICATION_JSON_VALUE)
-                    .produces(MediaType.APPLICATION_JSON_VALUE);
-
-    RequestMappingInfo requestMappingInfo = builder.options(config).build();
-    handlerMapping.registerMapping(requestMappingInfo, controller, DocumentController.class.getDeclaredMethod("postLoad", String.class, CreateDocsRequest.class));
+    handlerMapping.registerMapping(info, controller,
+        controller.getClass().getDeclaredMethod("postLoad", String.class, CreateDocsRequest.class));
 
 В методе ``stop`` предусматриваем отключение endpoint при помощи вызова ``handlerMapping.unregisterMapping(info)``.
+
+Имя Spring-бина, доступность API из бандла и обработку параметров контроллера необходимо проверить на целевой поставке с используемой версией ``ecos-osgi-loader``.
 
 Использование RecordsService через DTO
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -251,7 +255,7 @@
 Псевдоним свойства через JsonProperty
 """""""""""""""""""""""""""""""""""""
 
-Для использования псевдонима в свойствах можно использовать ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``
+Для задания JSON-имени свойства при преобразовании DTO можно использовать ``ecos.com.fasterxml.jackson210.annotation.JsonProperty``, если этот пакет аннотаций соответствует версии JSON mapper вашей библиотеки Records/Commons. Это отличается от задания выражения Records-атрибута через ``@AttName`` при чтении DTO.
 
 .. code-block:: java
 
@@ -275,6 +279,8 @@
 Свойство с типом CONTENT
 """"""""""""""""""""""""
 
+Следующий фрагмент относится к Alfresco-адаптеру и не является универсальным форматом CONTENT для всех источников Records. Набор полей и тип значения ``base64content`` необходимо согласовать с версией используемого адаптера.
+
 Свойство с типом ``CONTENT: private ObjectData nsdb_content``
 
 .. code-block:: java
@@ -288,7 +294,7 @@
 Свойства FileRepresentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Возможные свойства для установки ``ru.citeck.ecos.records.source.alf.file.FileRepresentation``
+Далее приведены примеры для Alfresco-классов ``ru.citeck.ecos.records.source.alf.file.FileRepresentation`` и ``AlfNodeRecord``. Их наличие и импорт в бандле зависят от поставки Alfresco-модуля; эти классы не определяются самим ``ecos-records``.
 
 Ссылка на родителя из ASSOC
 """"""""""""""""""""""""""""
@@ -355,14 +361,16 @@
     recordsServiceFactory.getRecordsServiceV1().register(this);
     RecordsService recordsService = recordsServiceFactory.getRecordsServiceV1();
 
-где **this** реализует ``RecordMutateDao``, ``RecordsQueryDao``.
+В этом фрагменте **this** — тестовый DAO, реализующий необходимые для сценария интерфейсы из используемой версии Records API. Сам ``getRecordsServiceV1()`` возвращает сервис ``ru.citeck.ecos.records3.RecordsService``.
 
 Особенности
 ~~~~~~~~~~~~~~~~
 
 .. warning::
 
-    Одновременное использование аннотаций JsonProperty и AttName приводит к тому, что при чтении DTO из RecordsService свойство не заполняется.
+    ``JsonProperty`` задаёт имя свойства при JSON-преобразовании, а ``AttName`` — выражение атрибута для схемы Records. При несовпадении alias схемы и ожидаемого JSON-имени свойство может не заполниться. Результат зависит от структуры DTO, расположения аннотаций и версии mapper; общего правила «любое сочетание даёт null» нет.
+
+    Например, следующее сочетание требует проверки на используемой версии:
 
     .. code-block:: java
 
@@ -372,6 +380,8 @@
         ...
         RecsQueryRes<Dto> docRes = recordsService.query(query, Dto.class);
         ...
-        System.out.println(queryResultDto.getAuthor());
+        if (!docRes.getRecords().isEmpty()) {
+            System.out.println(docRes.getRecords().get(0).getAuthor());
+        }
 
-    Выведет на консоль null.
+    Проверьте схему запроса и десериализацию результата. Для DTO чтения используйте ``AttName`` с согласованным alias, для DTO записи через ``ObjectData`` — JSON-имена, соответствующие mapper. При разных требованиях к чтению и записи используйте отдельные DTO.

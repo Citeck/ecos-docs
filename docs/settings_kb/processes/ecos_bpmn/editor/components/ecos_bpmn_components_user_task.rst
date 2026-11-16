@@ -245,7 +245,7 @@
 
 .. warning::
 
-   В ``ecos-integrations 2.40.0-SNAPSHOT`` переопределение шаблона ошибочного LA-отчёта из задачи не применяется из-за дефекта сервиса: используется общий ``la-report-error-template``. Подробности и условия отправки — в :ref:`отчётах Lazy approval <lazy_approval_reports>`.
+   В ``ecos-integrations 2.40.0`` переопределение шаблона ошибочного LA-отчёта из задачи не применяется из-за дефекта сервиса: используется общий ``la-report-error-template``. Подробности и условия отправки — в :ref:`отчётах Lazy approval <lazy_approval_reports>`.
 
 .. _user_task_form:
 

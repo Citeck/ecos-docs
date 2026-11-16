@@ -5,7 +5,7 @@
 
 Журнал содержит информацию о запущенных отдельных инстансах Camel контекста импорта данных.
 
-Журнал доступен по адресу: ``v2/journals?journalId=ecos-camel-dsl&viewMode=table&ws=admin$workspace``
+Журнал доступен по адресу: ``v2/journals?journalId=ecos-camel-dsl-instance-journal&viewMode=table&ws=admin$workspace``
 
 .. image:: _static/instances/instance_01.png
    :width: 700
