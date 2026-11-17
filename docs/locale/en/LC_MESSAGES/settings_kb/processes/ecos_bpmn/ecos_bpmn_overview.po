@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -30,29 +30,21 @@ msgstr "Contents"
 msgid ""
 "**Citeck BPMN** — встроенный инструмент моделирования и исполнения "
 "бизнес-процессов на базе стандарта BPMN 2.0. Он позволяет визуально "
-"описывать логику работы: маршрутизацию задач, ветвления, таймеры, "
-"интеграции с внешними системами — и сразу запускать созданные схемы в "
-"производственной среде без написания кода."
-msgstr ""
-"**Citeck BPMN** is a built-in tool for modeling and executing business "
-"processes based on the BPMN 2.0 standard. It allows you to visually "
-"describe the workflow logic — task routing, branching, timers, and "
-"integrations with external systems — and immediately run the created "
-"diagrams in a production environment without writing code."
+"описывать маршрутизацию задач, ветвления, таймеры и интеграции. Типовые "
+"процессы можно настроить без написания кода; скрипты и внешние "
+"обработчики используются для дополнительной логики и интеграций. Перед "
+"запуском схему необходимо проверить, опубликовать и настроить окружение и"
+" права доступа."
+msgstr "**Citeck BPMN** is a built-in tool for modeling and executing business processes based on the BPMN 2.0 standard. It allows you to visually describe task routing, branching, timers, and integrations. Typical processes can be configured without writing code; scripts and external workers provide additional logic and integrations. Before startup, validate and deploy the diagram and configure the environment and access permissions."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:10
 msgid ""
-"Платформа основана на библиотеке редактора `bpmn-js "
-"<https://bpmn.io/toolkit/bpmn-js/>`_ и движке `camunda "
-"<https://camunda.com/>`_. Редактор поддерживает полный цикл работы с "
-"процессом: создание и редактирование схемы, публикацию (деплой), "
-"мониторинг запущенных экземпляров и администрирование."
-msgstr ""
-"The platform is based on the `bpmn-js <https://bpmn.io/toolkit/bpmn-"
-"js/>`_ editor library and the `camunda <https://camunda.com/>`_ engine. "
-"The editor supports the full process lifecycle: creating and editing "
-"diagrams, publishing (deploying), monitoring running instances, and "
-"administration."
+"Для моделирования используется библиотека редактора `bpmn-js "
+"<https://bpmn.io/toolkit/bpmn-js/>`_, для исполнения — движок **Camunda "
+"7.24.0** в ``ecos-process 2.38.0-SNAPSHOT``. Платформа поддерживает "
+"создание и редактирование схемы, публикацию (деплой), мониторинг "
+"запущенных экземпляров и администрирование."
+msgstr "Modeling uses the `bpmn-js <https://bpmn.io/toolkit/bpmn-js/>`_ editor library; execution uses the **Camunda 7.24.0** engine in ``ecos-process 2.38.0-SNAPSHOT``. The platform supports diagram creation and editing, publishing (deployment), monitoring running instances, and administration."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:12
 msgid ""
@@ -68,13 +60,11 @@ msgstr "Process Description Permissions"
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:21
 msgid ""
-"Предоставление прав разграничено в рамках категорий "
-"бизнес-процессов/конкретных бизнес-процессов. По умолчанию для указанных "
-"ролей права следующие:"
-msgstr ""
-"Permission granting is delimited within business process "
-"categories/specific business processes. By default, the permissions for "
-"the specified roles are as follows:"
+"Права назначаются на разделы и конкретные модели процессов. Ниже показаны"
+" поставляемые назначения группам в **ROOT** для глобальных BPMN-разделов."
+" Это не полный итоговый доступ к любой модели: он также зависит от явных "
+"настроек, прав модели и правил рабочего пространства."
+msgstr "Permissions are assigned to sections and specific process models. The supplied group assignments on **ROOT** for global BPMN sections are shown below. These do not represent the full effective access to every model: access also depends on explicit settings, model permissions, and workspace rules."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:29
 msgid "Право / Роль/ Группа"
@@ -203,11 +193,9 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:222
 msgid ""
-"Роли назначены на группы. Чтобы пользователь получил права, необходимо "
-"добавить его в соответствующую группу."
-msgstr ""
-"Roles are assigned to groups. To grant permissions to a user, they must "
-"be added to the corresponding group."
+"Роли связаны с группами. Членство в группе участвует в расчёте прав; "
+"итоговые разрешения зависят от настроек конкретной модели и пространства."
+msgstr "Roles are associated with groups. Group membership contributes to permission calculation; effective permissions depend on the settings of the specific model and workspace."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:224
 msgid ""
@@ -217,46 +205,64 @@ msgstr ""
 "Permissions can also be configured for specific users on :ref:`specific "
 "sections<bpmn_permissions>`"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:227
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:226
+msgid ""
+"В неглобальном рабочем пространстве обычный пользователь должен быть его "
+"участником. Для **DEFAULT** действуют отдельные наборы прав участника и "
+"менеджера, которые заменяют наследуемый набор ROOT. См. :ref:`Права в "
+"рабочих пространствах <bpmn_workspace_permissions>`."
+msgstr "In a non-global workspace, an ordinary user must be a member. **DEFAULT** has separate member and manager permission sets that replace the inherited ROOT set. See :ref:`Workspace permissions <bpmn_workspace_permissions>`."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:228
+msgid ""
+"Права редактирования и публикации не подразумевают создание новых моделей"
+" или подразделов. Для них предусмотрены отдельные разрешения, "
+"отсутствующие в приведённых стандартных назначениях ROOT, включая набор "
+"группы **bp-administrator**. Участник этой группы не является "
+"автоматически системным администратором."
+msgstr "Edit and deployment permissions do not imply permission to create new models or subsections. Separate permissions are provided for these operations and are absent from the standard ROOT assignments shown, including the **bp-administrator** group set. Membership in this group does not automatically make a user a system administrator."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:231
 msgid "Доступ к разделу «Моделирование»"
 msgstr "Access to the \"Modeling\" section"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:229
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:233
 msgid ""
-"Раздел **«Моделирование»** с редакторами DMN/BPMN доступен для "
-"пользователей с правом **Право на чтение (read)**."
-msgstr ""
-"The **\"Modeling\"** section with DMN/BPMN editors is available to users "
-"with **Read permission (read)**."
+"Право **read** позволяет просматривать доступную пользователю модель "
+"DMN/BPMN. Для изменения схемы требуются права записи, а для создания "
+"новой модели — права создания в соответствующем разделе. Доступ учитывает"
+" также правила рабочего пространства."
+msgstr "The **read** permission allows viewing a DMN/BPMN model available to the user. Changing the diagram requires write permission; creating a new model requires create permission in the corresponding section. Access also accounts for workspace rules."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:232
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:236
 msgid "Публикация (деплой) моделей"
 msgstr "Publishing (deploying) models"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:234
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:238
 msgid ""
-"В редакторах DMN/BPMN публикация моделей доступна только для "
-"пользователей с правом **Деплой процесса**."
-msgstr ""
-"In DMN/BPMN editors, model publishing is only available to users with "
-"**Process deployment** permission."
+"Для публикации BPMN требуется право **bpmn-process-def-deploy**, для DMN "
+"— **dmn-def-deploy**. При действии **«Сохранить и опубликовать»** "
+"дополнительно проверяются права записи существующей модели либо создания "
+"новой модели в разделе. Одного разрешения деплоя недостаточно для всего "
+"сценария сохранения изменений."
+msgstr "BPMN deployment requires **bpmn-process-def-deploy** permission; DMN requires **dmn-def-deploy**. The **Save and deploy** action additionally checks write permission for an existing model or permission to create a new model in the section. Deployment permission alone is insufficient for the entire change-saving workflow."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:251
-msgid "Право на деплой можно проверить запросом ``permissions._has.deploy?bool``"
-msgstr ""
-"Deployment permission can be checked with the query "
-"``permissions._has.deploy?bool``"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:255
+msgid ""
+"Право на деплой BPMN можно проверить запросом ``permissions._has.bpmn-"
+"process-def-deploy?bool``."
+msgstr "BPMN deployment permission can be checked with the query ``permissions._has.bpmn-process-def-deploy?bool``."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:253
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:286
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:257
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:290
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:260
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:264
 msgid "Просмотр схемы процесса"
 msgstr "View process diagram"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:262
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:266
 msgid ""
 "Добавлена возможность просмотра схемы БП для пользователей с правом "
 "**Право на чтение (read)**."
@@ -264,11 +270,11 @@ msgstr ""
 "Added capability to view BP diagrams for users with **Read permission "
 "(read)**."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:280
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:284
 msgid "Просмотр отчётности"
 msgstr "Report viewing"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:282
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:286
 msgid ""
 "Добавлен просмотр отчетности для ролей с правом **Просмотр отчета**. Под "
 "отчетностью понимаем виджет «Статистика по процессу»."
@@ -276,27 +282,72 @@ msgstr ""
 "Added report viewing for roles with **View report** permission. Reporting"
 " refers to the \"Process Statistics\" widget."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:284
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:288
 msgid ""
-"Право на просмотр отчётности можно проверить запросом "
-"``permissions._has.viewReports?bool``"
-msgstr ""
-"Report viewing permission can be checked with the query "
-"``permissions._has.viewReports?bool``"
+"Право на просмотр отчётности можно проверить запросом ``permissions._has"
+".bpmn-process-def-report-view?bool``."
+msgstr "Report viewing permission can be checked with the query ``permissions._has.bpmn-process-def-report-view?bool``."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:296
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:300
 msgid ""
-"Настройка просмотра доступна только пользователям из группы "
-"администраторы ECOS."
-msgstr ""
-"View configuration is only available to users from the ECOS "
-"administrators group."
+"Для настройки просмотра обратитесь к администратору ECOS. Право просмотра"
+" отчётности само по себе не разрешает изменять настройки виджета или "
+"панели."
+msgstr "Contact an ECOS administrator to configure viewing access. Permission to view reports does not itself allow changing widget or dashboard settings."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:302
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.rst:306
 msgid ""
 "Подробно о виджете :ref:`«Статистика по процессу» "
 "<widget_process_statistics>`."
 msgstr ""
 "Details about the :ref:`\"Process "
 "Statistics\"<widget_process_statistics>` widget"
+
+#~ msgid ""
+#~ "Предоставление прав разграничено в рамках "
+#~ "категорий бизнес-процессов/конкретных бизнес-процессов."
+#~ " По умолчанию для указанных ролей "
+#~ "права следующие:"
+#~ msgstr ""
+#~ "Permission granting is delimited within "
+#~ "business process categories/specific business "
+#~ "processes. By default, the permissions "
+#~ "for the specified roles are as "
+#~ "follows:"
+
+#~ msgid ""
+#~ "Роли назначены на группы. Чтобы "
+#~ "пользователь получил права, необходимо "
+#~ "добавить его в соответствующую группу."
+#~ msgstr ""
+#~ "Roles are assigned to groups. To "
+#~ "grant permissions to a user, they "
+#~ "must be added to the corresponding "
+#~ "group."
+
+#~ msgid ""
+#~ "Раздел **«Моделирование»** с редакторами "
+#~ "DMN/BPMN доступен для пользователей с "
+#~ "правом **Право на чтение (read)**."
+#~ msgstr ""
+#~ "The **\"Modeling\"** section with DMN/BPMN "
+#~ "editors is available to users with "
+#~ "**Read permission (read)**."
+
+#~ msgid ""
+#~ "В редакторах DMN/BPMN публикация моделей "
+#~ "доступна только для пользователей с "
+#~ "правом **Деплой процесса**."
+#~ msgstr ""
+#~ "In DMN/BPMN editors, model publishing is"
+#~ " only available to users with "
+#~ "**Process deployment** permission."
+
+#~ msgid ""
+#~ "Настройка просмотра доступна только "
+#~ "пользователям из группы администраторы ECOS."
+#~ msgstr ""
+#~ "View configuration is only available to"
+#~ " users from the ECOS administrators "
+#~ "group."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -27,7 +27,6 @@ msgid "Доступно только в enterprise версии."
 msgstr "Available in the enterprise version only."
 
 #: ../../integration/external_portal.rst:11
-#: ../../integration/external_portal.rst:473
 msgid "Содержание"
 msgstr "Contents"
 
@@ -80,130 +79,206 @@ msgstr ""
 "attributes are defined in the external portal configuration."
 
 #: ../../integration/external_portal.rst:28
-msgid "Пример настройки в **values.yaml** для стенда:"
-msgstr "Example configuration in **values.yaml** for the instance:"
+msgid ""
+"Пример настройки в **values.yaml** для стенда. Структуру параметров TLS и"
+" имена секретов необходимо согласовать с используемой версией Helm-чарта:"
+msgstr "Example **values.yaml** configuration for an environment. Align the TLS parameter structure and secret names with the Helm chart version used:"
 
 #: ../../integration/external_portal.rst:50
-msgid "Настройка подключения к внешнему RMQ:"
-msgstr "Configuring the connection to the external RMQ:"
+msgid "Пример подключения внешнего портала к RabbitMQ основного стенда:"
+msgstr "Example connection from an external portal to RabbitMQ in the main environment:"
 
 #: ../../integration/external_portal.rst:72
 msgid ""
-"Настройки доступны в журнале **«Интеграции» (Рабочее пространство "
-"\"Раздел администратора\" - Интеграции)**."
-msgstr ""
-"Settings are available in the **Integrations** journal **(Administrator "
-"Section workspace — Integrations)**."
+"На основном стенде аналогично настройте подключение к RabbitMQ внешнего "
+"портала с идентификатором ``sd-ext-instance-rmq`` и адресом его брокера. "
+"В примерах ниже ``main-rabbitmq`` обозначает подключение к локальному "
+"RabbitMQ каждого стенда; проверьте наличие этого подключения в окружении."
+msgstr "In the main environment, similarly configure a connection to the external portal's RabbitMQ with the ``sd-ext-instance-rmq`` identifier and its broker address. In the examples below, ``main-rabbitmq`` denotes the connection to each environment's local RabbitMQ; verify that this connection exists in the environment."
 
 #: ../../integration/external_portal.rst:74
 msgid ""
-"Журнал доступен по адресу: https://portal_host/v2/journals?journalId=ext-"
-"portals&viewMode=table&ws=admin$workspace"
-msgstr ""
-"The journal is available at: https://portal_host/v2/journals?journalId"
-"=ext-portals&viewMode=table&ws=admin$workspace"
+"``dataSource`` — идентификатор подключения из "
+"``ecos.webapp.dataSources``, а ``queue`` — имя очереди в выбранном "
+"брокере. Это разные параметры:"
+msgstr "``dataSource`` is the connection identifier from ``ecos.webapp.dataSources``, while ``queue`` is the queue name in the selected broker. These are different parameters:"
+
+#: ../../integration/external_portal.rst:76
+msgid "Подключения и очереди для двух направлений"
+msgstr "Connections and queues for both directions"
 
 #: ../../integration/external_portal.rst:81
+msgid "Стенд"
+msgstr "Environment"
+
+#: ../../integration/external_portal.rst:82
+msgid "Направление"
+msgstr "Direction"
+
+#: ../../integration/external_portal.rst:83
+msgid "dataSource"
+msgstr "dataSource"
+
+#: ../../integration/external_portal.rst:84
+msgid "queue"
+msgstr "queue"
+
+#: ../../integration/external_portal.rst:85
+#: ../../integration/external_portal.rst:89
+msgid "Основной"
+msgstr "Main"
+
+#: ../../integration/external_portal.rst:86
+#: ../../integration/external_portal.rst:94
+msgid "Экспорт"
+msgstr "Export"
+
+#: ../../integration/external_portal.rst:87
+#: ../../integration/external_portal.rst:95
+msgid "main-rabbitmq"
+msgstr "main-rabbitmq"
+
+#: ../../integration/external_portal.rst:88
+#: ../../integration/external_portal.rst:100
+msgid "export-from-main-sd-portal"
+msgstr "export-from-main-sd-portal"
+
+#: ../../integration/external_portal.rst:90
+#: ../../integration/external_portal.rst:98
+msgid "Импорт"
+msgstr "Import"
+
+#: ../../integration/external_portal.rst:91
+msgid "sd-ext-instance-rmq"
+msgstr "sd-ext-instance-rmq"
+
+#: ../../integration/external_portal.rst:92
+#: ../../integration/external_portal.rst:96
+msgid "export-from-external-sd-portal"
+msgstr "export-from-external-sd-portal"
+
+#: ../../integration/external_portal.rst:93
+#: ../../integration/external_portal.rst:97
+msgid "Внешний"
+msgstr "External"
+
+#: ../../integration/external_portal.rst:99
+msgid "sd-main-instance-rmq"
+msgstr "sd-main-instance-rmq"
+
+#: ../../integration/external_portal.rst:102
+msgid ""
+"Настройки доступны в журнале **«Внешние порталы» (Рабочее пространство "
+"\"Раздел администратора\" — Интеграция)**."
+msgstr "Settings are available in the **External portals** journal (**Administration** workspace — Integration)."
+
+#: ../../integration/external_portal.rst:104
+msgid ""
+"Журнал доступен по адресу: ``https://portal_host/v2/journals?journalId"
+"=ext-portals&viewMode=table&ws=admin$workspace``"
+msgstr "The journal is available at: ``https://portal_host/v2/journals?journalId=ext-portals&viewMode=table&ws=admin$workspace``"
+
+#: ../../integration/external_portal.rst:111
 msgid "Форма настройки"
 msgstr "Configuration Form"
 
-#: ../../integration/external_portal.rst:87
+#: ../../integration/external_portal.rst:117
 msgid "**Идентификатор**, **Имя** как у любого артефакта"
 msgstr "**Identifier**, **Name** — as for any artifact"
 
-#: ../../integration/external_portal.rst:88
+#: ../../integration/external_portal.rst:118
 msgid "**Конфигурация экспорта**, **Конфигурации импорта** подробно см. ниже"
 msgstr "**Export Configuration**, **Import Configurations** — see details below"
 
-#: ../../integration/external_portal.rst:89
+#: ../../integration/external_portal.rst:119
 msgid ""
-"**«Синхронизация включена»** — если её выключить соответственно "
-"синхронизация работать не будет."
-msgstr ""
-"**\"Synchronization Enabled\"** — if disabled, synchronization will not "
-"work."
+"**«Синхронизация включена»** (``syncEnabled``) — включает импорт и "
+"экспорт. По умолчанию новая конфигурация выключена."
+msgstr "**Synchronization enabled** (``syncEnabled``) enables import and export. A new configuration is disabled by default."
 
-#: ../../integration/external_portal.rst:92
+#: ../../integration/external_portal.rst:121
+msgid ""
+"После настройки подключений, очередей и типов на обеих сторонах включите "
+"синхронизацию в UI. При повторном развёртывании существующего артефакта "
+"текущее значение ``syncEnabled`` сохраняется: изменение флага только в "
+"YAML не переключает уже существующую синхронизацию."
+msgstr "After configuring connections, queues, and types on both sides, enable synchronization in the UI. When an existing artifact is redeployed, the current ``syncEnabled`` value is preserved: changing the flag only in YAML does not toggle an existing synchronization."
+
+#: ../../integration/external_portal.rst:124
 msgid "Конфигурация импорта"
 msgstr "Import Configuration"
 
-#: ../../integration/external_portal.rst:103
-#: ../../integration/external_portal.rst:161
-#: ../../integration/external_portal.rst:226
-#: ../../integration/external_portal.rst:515
+#: ../../integration/external_portal.rst:135
+#: ../../integration/external_portal.rst:194
+#: ../../integration/external_portal.rst:263
+#: ../../integration/external_portal.rst:558
 msgid "Поле"
 msgstr "Field"
 
-#: ../../integration/external_portal.rst:104
-#: ../../integration/external_portal.rst:162
-#: ../../integration/external_portal.rst:227
-#: ../../integration/external_portal.rst:306
-#: ../../integration/external_portal.rst:467
-#: ../../integration/external_portal.rst:488
-#: ../../integration/external_portal.rst:516
+#: ../../integration/external_portal.rst:136
+#: ../../integration/external_portal.rst:195
+#: ../../integration/external_portal.rst:264
+#: ../../integration/external_portal.rst:345
+#: ../../integration/external_portal.rst:508
+#: ../../integration/external_portal.rst:531
+#: ../../integration/external_portal.rst:559
 msgid "Описание"
 msgstr "Description"
 
-#: ../../integration/external_portal.rst:105
+#: ../../integration/external_portal.rst:137
 msgid "**Тип источника данных для импорта**"
 msgstr "**Import Data Source Type**"
 
-#: ../../integration/external_portal.rst:106
+#: ../../integration/external_portal.rst:138
 msgid "На данный момент доступен только **RabbitMQ**."
 msgstr "Currently, only **RabbitMQ** is available."
 
-#: ../../integration/external_portal.rst:107
+#: ../../integration/external_portal.rst:139
 msgid "**Источник данных**"
 msgstr "**Data Source**"
 
-#: ../../integration/external_portal.rst:108
+#: ../../integration/external_portal.rst:140
 msgid ""
-"(Внешний инстанс SD, Internal RabbitMQ) указывается, из какого инстанса "
-"RabbitMQ данные должны импортироваться. В answers стенда настраивается "
-"список подключений, и на UI подтягивается этот список."
-msgstr ""
-"(External SD Instance, Internal RabbitMQ) — specifies which RabbitMQ "
-"instance data should be imported from. The instance configuration defines "
-"a list of connections, which is then displayed in the UI."
+"Подключение к RabbitMQ, из которого импортируются данные. UI получает "
+"доступные источники типа rabbitmq из ``integrations/ecos-data-sources``. "
+"Сами подключения настраиваются в конфигурации окружения."
+msgstr "Connection to RabbitMQ from which data is imported. The UI retrieves available rabbitmq sources from ``integrations/ecos-data-sources``. The connections themselves are configured in the environment configuration."
 
-#: ../../integration/external_portal.rst:110
-msgid "*Внешний инстанс SD – enterprise в данном случае.*"
-msgstr "*External SD instance — enterprise in this case.*"
-
-#: ../../integration/external_portal.rst:111
+#: ../../integration/external_portal.rst:141
 msgid "**Очередь**"
 msgstr "**Queue**"
 
-#: ../../integration/external_portal.rst:112
+#: ../../integration/external_portal.rst:142
 msgid "Из какой очереди выбранного источника импортировать."
 msgstr "Specifies which queue of the selected source to import from."
 
-#: ../../integration/external_portal.rst:114
-#: ../../integration/external_portal.rst:168
-msgid "Пример:"
-msgstr "Example:"
+#: ../../integration/external_portal.rst:144
+msgid ""
+"Сокращённый пример конфигурации основного стенда для типа заявки SD. "
+"Полный поставляемый профиль ``sd-portal-main-sync`` также экспортирует "
+"заказчиков, комментарии и вложения:"
+msgstr "A shortened main environment configuration example for the SD request type. The full supplied ``sd-portal-main-sync`` profile also exports customers, comments, and attachments:"
 
-#: ../../integration/external_portal.rst:150
+#: ../../integration/external_portal.rst:183
 msgid "Конфигурация экспорта"
 msgstr "Export Configuration"
 
-#: ../../integration/external_portal.rst:163
+#: ../../integration/external_portal.rst:196
 msgid "**Очередь для экспорта**"
 msgstr "**Export Queue**"
 
-#: ../../integration/external_portal.rst:164
+#: ../../integration/external_portal.rst:197
 msgid ""
-"Настроен по умолчанию на RabbitMQ текущего стенда. Выбора не "
-"предполагается."
-msgstr ""
-"Configured by default to the current instance's RabbitMQ. No selection is "
-"available."
+"Очередь в RabbitMQ текущего стенда. В UI-форме выбор подключения для "
+"экспорта не предлагается; в YAML подключение задаётся через "
+"exportConfig.endpoint.config.dataSource."
+msgstr "Queue in the current environment's RabbitMQ. The UI form does not offer an export connection selector; in YAML, the connection is specified through exportConfig.endpoint.config.dataSource."
 
-#: ../../integration/external_portal.rst:165
+#: ../../integration/external_portal.rst:198
 msgid "**Дата начала синхронизации по умолчанию**"
 msgstr "**Default Synchronization Start Date**"
 
-#: ../../integration/external_portal.rst:166
+#: ../../integration/external_portal.rst:199
 msgid ""
 "Заявки и комментарии, которые были созданы до указанной даты, не будут "
 "обрабатываться."
@@ -211,11 +286,17 @@ msgstr ""
 "Requests and comments created before the specified date will not be "
 "processed."
 
-#: ../../integration/external_portal.rst:202
+#: ../../integration/external_portal.rst:201
+msgid ""
+"Сокращённый пример конфигурации внешнего стенда. Типы и поля должны "
+"соответствовать установленному портальному приложению:"
+msgstr "A shortened external environment configuration example. Types and fields must match the installed portal application:"
+
+#: ../../integration/external_portal.rst:237
 msgid "Типы и атрибуты для экспорта"
 msgstr "Types and Attributes for Export"
 
-#: ../../integration/external_portal.rst:204
+#: ../../integration/external_portal.rst:239
 msgid ""
 "Выбираем **типы данных**, выбираем **атрибуты** выбранного типа, которые "
 "необходимо синхронизировать:"
@@ -223,37 +304,41 @@ msgstr ""
 "Select the **data types** and the **attributes** of the selected type to "
 "be synchronized:"
 
-#: ../../integration/external_portal.rst:211
+#: ../../integration/external_portal.rst:241
+msgid ""
+"Если список ``attributesToSync`` пуст, экспортируются атрибуты модели "
+"типа. Системные атрибуты идентификатора, типа и аудита добавляются "
+"отдельно. Для ограничения состава выгрузки задайте список явно."
+msgstr "If the ``attributesToSync`` list is empty, the type model's attributes are exported. System identifier, type, and audit attributes are added separately. Specify the list explicitly to restrict the exported attributes."
+
+#: ../../integration/external_portal.rst:248
 msgid "Настроить условия"
 msgstr "Configure Conditions"
 
-#: ../../integration/external_portal.rst:213
+#: ../../integration/external_portal.rst:250
 msgid "После выбора типа можно настроить условия:"
 msgstr "After selecting a type, you can configure conditions:"
 
-#: ../../integration/external_portal.rst:219
+#: ../../integration/external_portal.rst:256
 msgid "2 поля для условий:"
 msgstr "2 fields for conditions:"
 
-#: ../../integration/external_portal.rst:228
+#: ../../integration/external_portal.rst:265
 msgid "**Предикат для запроса**"
 msgstr "**Predicate for Query**"
 
-#: ../../integration/external_portal.rst:229
+#: ../../integration/external_portal.rst:266
 msgid ""
-"Означает, что мы в query запросе прямо отправляем - получить заявки, "
-"которые были созданы после выбранной даты (Дата начала синхронизации по "
-"умолчанию) и для которых выполняется указанное условие."
-msgstr ""
-"This means that in the query request we directly send — retrieve requests "
-"that were created after the selected date (Default Synchronization Start "
-"Date) and for which the specified condition is met."
+"Условие отбора, передаваемое источнику данных вместе с выбранным типом. "
+"Дата начала и стратегия итерации задаются отдельно в настройках "
+"синхронизации."
+msgstr "Selection condition passed to the data source together with the selected type. The start date and iteration strategy are configured separately in the synchronization settings."
 
-#: ../../integration/external_portal.rst:230
+#: ../../integration/external_portal.rst:267
 msgid "**Предикат для in-memory фильтрации**"
 msgstr "**Predicate for In-Memory Filtering**"
 
-#: ../../integration/external_portal.rst:231
+#: ../../integration/external_portal.rst:268
 msgid ""
 "Проверяется после выгрузки в ecos-integrations. То есть мы сначала "
 "сформировали запрос, отправили его, получили 100 записей, например, и "
@@ -263,7 +348,7 @@ msgstr ""
 "query, send it, receive 100 records, for example, and then check each "
 "record against this additional predicate."
 
-#: ../../integration/external_portal.rst:233
+#: ../../integration/external_portal.rst:270
 msgid ""
 "Предикат для in-memory фильтрации позволяет фильтровать данные на "
 "основании любых атрибутов. Этот метод фильтрации обладает максимальной "
@@ -275,7 +360,7 @@ msgstr ""
 "recommended to use the query predicate when possible to reduce processing"
 " time."
 
-#: ../../integration/external_portal.rst:235
+#: ../../integration/external_portal.rst:272
 msgid ""
 "В запросе очень многие вещи проверить нельзя. Например, обратиться к "
 "атрибуту parent’a, сложный вложенный атрибут. Некоторые источники данных "
@@ -285,7 +370,7 @@ msgstr ""
 "parent attribute or complex nested attributes. Some data sources cannot "
 "properly translate predicates into joins."
 
-#: ../../integration/external_portal.rst:237
+#: ../../integration/external_portal.rst:274
 msgid ""
 "В то же время предикат для in-memory фильтрации позволяет делать условия "
 "на любые атрибуты, в том числе и на очень вложенные."
@@ -293,11 +378,11 @@ msgstr ""
 "At the same time, the predicate for in-memory filtering allows conditions"
 " on any attributes, including deeply nested ones."
 
-#: ../../integration/external_portal.rst:239
+#: ../../integration/external_portal.rst:276
 msgid "Пример предиката для in-memory фильтрации:"
 msgstr "Example of an in-memory filtering predicate:"
 
-#: ../../integration/external_portal.rst:245
+#: ../../integration/external_portal.rst:282
 msgid ""
 "То есть перед тем, как отправить поисковый запрос со списком атрибутов "
 "для загрузки из предиката для in-memory фильтрации вытягиваются все "
@@ -309,7 +394,7 @@ msgstr ""
 "the in-memory filtering predicate. Accordingly, they do not need to be "
 "configured separately."
 
-#: ../../integration/external_portal.rst:247
+#: ../../integration/external_portal.rst:284
 msgid ""
 "В  предикате для **in-memory фильтрации** указываем необходимый атрибут и"
 " в момент отправки запроса он будет также вытянут, а потом проверен."
@@ -318,7 +403,7 @@ msgstr ""
 " and at the time of query dispatch it will also be fetched and then "
 "checked."
 
-#: ../../integration/external_portal.rst:249
+#: ../../integration/external_portal.rst:286
 msgid ""
 "Перечисляем **атрибуты** из модели, которые дальше обрабатываются в "
 "зависимости от их типа."
@@ -326,7 +411,7 @@ msgstr ""
 "List the **attributes** from the model, which are then processed "
 "depending on their type."
 
-#: ../../integration/external_portal.rst:251
+#: ../../integration/external_portal.rst:288
 msgid ""
 "Атрибуты **простые** (текст, число, булево) загружаются из целевого "
 "источника данных, который определяется по типу, и отправляются в "
@@ -335,15 +420,15 @@ msgstr ""
 "**Simple** attributes (text, number, boolean) are loaded from the target "
 "data source, which is determined by the type, and sent to RabbitMQ."
 
-#: ../../integration/external_portal.rst:253
+#: ../../integration/external_portal.rst:290
 msgid "Для более сложных, например, ассоциаций:"
 msgstr "For more complex ones, such as associations:"
 
-#: ../../integration/external_portal.rst:255
+#: ../../integration/external_portal.rst:292
 msgid "Если **Target-ассоциация**, так выгружается ссылка;"
 msgstr "For a **Target association**, a reference is exported;"
 
-#: ../../integration/external_portal.rst:256
+#: ../../integration/external_portal.rst:293
 msgid ""
 "Если **Child-ассоциация**, то работает дополнительная логика, которая "
 "позволяет вытягивать все атрибуты, которые заданы у типа дочерней "
@@ -355,7 +440,7 @@ msgstr ""
 "included in the export, and the child entities themselves are also "
 "included in the export — if specified in the attribute list."
 
-#: ../../integration/external_portal.rst:258
+#: ../../integration/external_portal.rst:295
 msgid ""
 "Как альтернативный вариант можно не указывать атрибуты с дочерними "
 "сущностями, а отдельный строкой **в типах для экспорта** показать, что "
@@ -367,7 +452,7 @@ msgstr ""
 "entities need to be exported along with their parent. This is done, for "
 "example, for **attachments**."
 
-#: ../../integration/external_portal.rst:261
+#: ../../integration/external_portal.rst:298
 msgid ""
 "То есть вложение крепятся по docs:document (дочерняя ассоциация) и "
 "выгружаются как отдельный тип."
@@ -375,15 +460,15 @@ msgstr ""
 "That is, attachments are linked via docs:document (child association) and"
 " exported as a separate type."
 
-#: ../../integration/external_portal.rst:268
+#: ../../integration/external_portal.rst:305
 msgid "Пользовательские атрибуты"
 msgstr "Custom Attributes"
 
-#: ../../integration/external_portal.rst:270
+#: ../../integration/external_portal.rst:307
 msgid "Возможность настроить что-то сложное."
 msgstr "Allows configuring complex scenarios."
 
-#: ../../integration/external_portal.rst:276
+#: ../../integration/external_portal.rst:313
 msgid ""
 "**Ключ** - под каким алиасом результат будет загружен в RabbitMQ и, "
 "соответственно, на другой стенд."
@@ -391,11 +476,11 @@ msgstr ""
 "**Key** — the alias under which the result will be loaded into RabbitMQ "
 "and, accordingly, to the other instance."
 
-#: ../../integration/external_portal.rst:277
+#: ../../integration/external_portal.rst:314
 msgid "**Значение** – то, что нужно загрузить."
 msgstr "**Value** — what needs to be loaded."
 
-#: ../../integration/external_portal.rst:279
+#: ../../integration/external_portal.rst:316
 msgid ""
 "Для частных случаев. Дополнительная логика не используется, всё, что "
 "написано загружается и отправляется."
@@ -403,11 +488,11 @@ msgstr ""
 "For special cases. No additional logic is applied — everything written is"
 " loaded and sent."
 
-#: ../../integration/external_portal.rst:282
+#: ../../integration/external_portal.rst:319
 msgid "Дата начала синхронизации"
 msgstr "Synchronization Start Date"
 
-#: ../../integration/external_portal.rst:284
+#: ../../integration/external_portal.rst:321
 msgid ""
 "**Дата начала синхронизации** – настройка аналогична Дата начала "
 "синхронизации по умолчанию для конкретного типа."
@@ -415,37 +500,43 @@ msgstr ""
 "**Synchronization Start Date** — the setting is similar to the Default "
 "Synchronization Start Date, but for a specific type."
 
-#: ../../integration/external_portal.rst:286
+#: ../../integration/external_portal.rst:323
 msgid ""
 "Если не указана, то используется **Дата начала синхронизации по "
 "умолчанию**."
 msgstr "If not specified, the **Default Synchronization Start Date** is used."
 
-#: ../../integration/external_portal.rst:288
+#: ../../integration/external_portal.rst:325
 msgid ""
-"Если **Дата начала синхронизации по умолчанию** и **Дата начала "
-"синхронизации** не указаны, то обрабатываются все записи."
-msgstr ""
-"If neither **Default Synchronization Start Date** nor **Synchronization "
-"Start Date** is specified, all records are processed."
+"Если обе даты не указаны, начальной датой служит "
+"``1970-01-01T00:00:00Z``. При этом продолжают действовать предикаты и "
+"остальные фильтры экспорта."
+msgstr "If neither date is specified, ``1970-01-01T00:00:00Z`` is used as the start date. Predicates and other export filters still apply."
 
-#: ../../integration/external_portal.rst:291
+#: ../../integration/external_portal.rst:328
 msgid "Синхронизировать удаления"
 msgstr "Synchronize Deletions"
 
-#: ../../integration/external_portal.rst:293
+#: ../../integration/external_portal.rst:330
 msgid ""
-"Если запись удаляется на текущем инстансе Citeck, то она так же будет "
-"удалена и на внешнем портале."
-msgstr ""
-"If a record is deleted on the current Citeck instance, it will also be "
-"deleted on the external portal."
+"Флаг ``syncDeletions`` включает передачу удалений для выбранного типа. По"
+" умолчанию он выключен. Событие удаления проходит настроенные предикаты и"
+" in-memory-фильтр."
+msgstr "The ``syncDeletions`` flag enables forwarding deletions for the selected type. It is disabled by default. A deletion event passes through the configured predicates and in-memory filter."
 
-#: ../../integration/external_portal.rst:296
+#: ../../integration/external_portal.rst:332
+msgid ""
+"На принимающей стороне удаляются только записи, у которых ``ext-portal-"
+"sync:importSyncId`` совпадает с идентификатором текущей принимающей "
+"синхронизации. Удаление произвольной записи другого происхождения не "
+"выполняется."
+msgstr "The receiving side deletes only records whose ``ext-portal-sync:importSyncId`` matches the identifier of the current receiving synchronization. Arbitrary records of a different origin are not deleted."
+
+#: ../../integration/external_portal.rst:335
 msgid "Стратегия итерации"
 msgstr "Iteration Strategy"
 
-#: ../../integration/external_portal.rst:298
+#: ../../integration/external_portal.rst:337
 msgid ""
 "Стратегия итерации записей определяет последовательность обработки "
 "записей."
@@ -453,15 +544,15 @@ msgstr ""
 "The record iteration strategy defines the sequence in which records are "
 "processed."
 
-#: ../../integration/external_portal.rst:305
+#: ../../integration/external_portal.rst:344
 msgid "Стратегия"
 msgstr "Strategy"
 
-#: ../../integration/external_portal.rst:307
+#: ../../integration/external_portal.rst:346
 msgid "**CREATED**"
 msgstr "**CREATED**"
 
-#: ../../integration/external_portal.rst:308
+#: ../../integration/external_portal.rst:347
 msgid ""
 "Записи обрабатываются только по дате создания. Изменённые записи после "
 "первоначальной синхронизации не обрабатываются повторно."
@@ -469,27 +560,22 @@ msgstr ""
 "Records are processed by creation date only. Modified records are not "
 "reprocessed after the initial synchronization."
 
-#: ../../integration/external_portal.rst:309
+#: ../../integration/external_portal.rst:348
 msgid "**CREATED_MODIFIED**"
 msgstr "**CREATED_MODIFIED**"
 
-#: ../../integration/external_portal.rst:310
+#: ../../integration/external_portal.rst:349
 msgid ""
-"Записи обрабатываются сначала по дате создания, затем по дате изменения. "
-"Универсальная стратегия, которая гарантирует обработку всех записей в "
-"порядке их создания. Записи могут быть пересинхронизированы дважды "
-"(сначала по дате создания, затем по дате изменения)."
-msgstr ""
-"Records are processed first by creation date, then by modification date. "
-"A universal strategy that guarantees processing of all records in their "
-"creation order. Records may be synchronized twice (first by creation "
-"date, then by modification date)."
+"Записи обрабатываются по дате создания и по дате изменения с учётом "
+"условий отбора. При обходе по обеим датам одна запись может быть "
+"обработана повторно. Используется по умолчанию."
+msgstr "Records are processed by creation date and modification date, taking selection conditions into account. When iterating by both dates, a record may be processed more than once. Used by default."
 
-#: ../../integration/external_portal.rst:311
+#: ../../integration/external_portal.rst:350
 msgid "**MODIFIED**"
 msgstr "**MODIFIED**"
 
-#: ../../integration/external_portal.rst:312
+#: ../../integration/external_portal.rst:351
 msgid ""
 "Записи обрабатываются только по дате изменения. Все записи "
 "обрабатываются, но порядок создания не учитывается."
@@ -497,27 +583,23 @@ msgstr ""
 "Records are processed by modification date only. All records are "
 "processed, but creation order is not taken into account."
 
-#: ../../integration/external_portal.rst:315
+#: ../../integration/external_portal.rst:354
 msgid "Комментарии. Особенности настройки"
 msgstr "Comments. Configuration Specifics"
 
-#: ../../integration/external_portal.rst:321
+#: ../../integration/external_portal.rst:360
 msgid "Комментарии выгружаются с условием, что **importSyncId** отсутствует:"
 msgstr "Comments are exported with the condition that **importSyncId** is absent:"
 
-#: ../../integration/external_portal.rst:327
+#: ../../integration/external_portal.rst:366
 msgid ""
-"**importSyncId** проставляется, когда у нас синхронизированные данные "
-"приходит извне. То есть когда выгружаются с одного стенда на другой, то "
-"на другом внешнем стенде **importSyncId** будет заполнен идентификатором "
-"синхронизации *sd-portal-main-sync*."
-msgstr ""
-"**importSyncId** is set when synchronized data arrives from an external "
-"source. That is, when data is exported from one instance to another, the "
-"**importSyncId** on the other external instance will be filled with the "
-"synchronization identifier *sd-portal-main-sync*."
+"**importSyncId** (``ext-portal-sync:importSyncId``) заполняется при "
+"импорте идентификатором синхронизации **принимающего** портала. Для "
+"приведённой пары конфигураций на внешнем стенде это ``sd-portal-ext-"
+"sync``, на основном — ``sd-portal-main-sync``."
+msgstr "**importSyncId** (``ext-portal-sync:importSyncId``) is populated during import with the synchronization identifier of the **receiving** portal. For the configuration pair shown, this is ``sd-portal-ext-sync`` in the external environment and ``sd-portal-main-sync`` in the main environment."
 
-#: ../../integration/external_portal.rst:329
+#: ../../integration/external_portal.rst:368
 msgid ""
 "Такое условие гарантирует, что в выгрузку с текущего стенда на внешний "
 "портал попадут только те комментарии, которые были созданы именно здесь и"
@@ -530,7 +612,7 @@ msgstr ""
 "the external portal. The same condition on the other portal ensures that "
 "the same comment will not be synchronized indefinitely."
 
-#: ../../integration/external_portal.rst:331
+#: ../../integration/external_portal.rst:370
 msgid ""
 "Настроен **предикат для in-memory фильтрации**. Проверяются тип записи "
 "(sd-request-type), к которой комментарий добавлен:"
@@ -538,15 +620,15 @@ msgstr ""
 "An **in-memory filtering predicate** is configured. The record type (sd-"
 "request-type) to which the comment is added is checked:"
 
-#: ../../integration/external_portal.rst:341
+#: ../../integration/external_portal.rst:380
 msgid "и проверяется, что тэг комментария не внутренний:"
 msgstr "and it is verified that the comment tag is not internal:"
 
-#: ../../integration/external_portal.rst:351
+#: ../../integration/external_portal.rst:390
 msgid "то есть внутренний комментарий не выгружается."
 msgstr "that is, an internal comment is not exported."
 
-#: ../../integration/external_portal.rst:353
+#: ../../integration/external_portal.rst:392
 msgid ""
 "Стратегия **CREATED_MODIFIED**: при создании комментарий будет прокинут "
 "на внешний сервер, и если будет отредактирован, то так же."
@@ -555,15 +637,15 @@ msgstr ""
 "pushed to the external server, and if it is edited, it will be pushed "
 "again."
 
-#: ../../integration/external_portal.rst:356
+#: ../../integration/external_portal.rst:395
 msgid "Вложения. Особенности настройки"
 msgstr "Attachments. Configuration Specifics"
 
-#: ../../integration/external_portal.rst:358
+#: ../../integration/external_portal.rst:397
 msgid "Для атрибута Содержимое особая логика."
 msgstr "The Content attribute has special handling logic."
 
-#: ../../integration/external_portal.rst:364
+#: ../../integration/external_portal.rst:403
 msgid ""
 "Содержимое в исходном поисковом запросе не запрашивается, чтобы не было "
 "out of memory ошибок в ecos-model. Потом данные фильтруются следующими "
@@ -573,161 +655,170 @@ msgstr ""
 "memory errors in ecos-model. The data is then filtered by the following "
 "queries:"
 
-#: ../../integration/external_portal.rst:371
+#: ../../integration/external_portal.rst:410
 msgid ""
 "Сначала первым фильтром в поиске, потом вторым фильтром после загрузки. "
-"Когда все фильтры пройдены подгружается содержимое. На данный момент "
-"base64. И отправляется в RabbitMQ на экспорт."
-msgstr ""
-"First by the first filter in the search, then by the second filter after "
-"loading. When all filters are passed, the content is fetched — currently "
-"in base64 — and sent to RabbitMQ for export."
+"Когда все фильтры пройдены, содержимое загружается и передаётся в "
+"RabbitMQ как base64 data URL вместе с MIME-типом и исходным именем файла."
+msgstr "First using the first filter during the search, then the second filter after loading. Once all filters are passed, the content is fetched and sent to RabbitMQ as a base64 data URL together with its MIME type and original file name."
 
-#: ../../integration/external_portal.rst:375
+#: ../../integration/external_portal.rst:413
+msgid ""
+"Размер контента ограничен свойством ``ecos-integrations.ext-"
+"portal.export.contentSizeLimitMb``. В поставляемой конфигурации значение "
+"равно 14 (14 × 1024 × 1024 байт). Проверяется суммарный размер "
+"content-атрибутов одной записи. Дополнительно длина каждого base64 data "
+"URL ограничена 20 000 000 символов."
+msgstr "Content size is limited by the ``ecos-integrations.ext-portal.export.contentSizeLimitMb`` property. In the supplied configuration, its value is 14 (14 × 1024 × 1024 bytes). The total size of a single record's content attributes is checked. Additionally, each base64 data URL is limited to 20,000,000 characters."
+
+#: ../../integration/external_portal.rst:415
+msgid ""
+"При превышении любого из лимитов вместо контента экспортируется запись "
+"``emodel/web-url`` со ссылкой на исходную запись. Для дочернего вложения "
+"ссылка прикрепляется к родителю через ``webLinks``. Для открытия ссылки "
+"пользователю необходим доступ к исходному стенду и записи."
+msgstr "If either limit is exceeded, an ``emodel/web-url`` record linking to the source record is exported instead of the content. For a child attachment, the link is attached to the parent through ``webLinks``. To open the link, the user needs access to the source environment and record."
+
+#: ../../integration/external_portal.rst:418
 msgid "Приложение sd-ext-portal-ecos-app"
 msgstr "The sd-ext-portal-ecos-app Application"
 
-#: ../../integration/external_portal.rst:377
+#: ../../integration/external_portal.rst:420
 msgid ""
-"Меню и прочие артефакты определены в журнале **\"Приложениях ECOS\" "
-"(Рабочее пространство \"Раздел администратора\" - Управление системой)** "
-"для sd-ext-portal-ecos-app:"
-msgstr ""
-"Menus and other artifacts are defined in the **ECOS Applications** "
-"journal **(Administrator Section workspace — System Management)** for sd-"
-"ext-portal-ecos-app:"
+"Меню, формы и матрицы внешнего портала задаются его отдельным "
+"приложением. В показанном примере используется **sd-ext-portal-ecos-"
+"app**, доступное в журнале **«Приложения ECOS» (Рабочее пространство "
+"\"Раздел администратора\" — Управление системой)**. Состав артефактов "
+"зависит от установленной версии приложения:"
+msgstr "The external portal's menus, forms, and matrices are defined by its separate application. The example shown uses **sd-ext-portal-ecos-app**, available in the **ECOS Applications** journal (**Administration** workspace — System management). The set of artifacts depends on the installed application version:"
 
-#: ../../integration/external_portal.rst:384
+#: ../../integration/external_portal.rst:427
 msgid "Матрицы прав"
 msgstr "Permission Matrices"
 
-#: ../../integration/external_portal.rst:386
-msgid "Важная особенность – добавлены следующие матрицы прав:"
-msgstr "An important feature — the following permission matrices have been added:"
+#: ../../integration/external_portal.rst:429
+msgid ""
+"Ниже показан пример матриц прав внешнего портального приложения. Эти "
+"настройки следует отличать от матриц основного Service Desk:"
+msgstr "Below is an example of permission matrices for the external portal application. Distinguish these settings from the main Service Desk matrices:"
 
-#: ../../integration/external_portal.rst:392
+#: ../../integration/external_portal.rst:435
 msgid "Настройка базового типа:"
 msgstr "Base Type Configuration:"
 
-#: ../../integration/external_portal.rst:398
+#: ../../integration/external_portal.rst:441
 msgid ""
-"У базового типа настроено, что администраторы могут записывать всё, все "
-"прочие только читать."
-msgstr ""
-"The base type is configured so that administrators can write everything, "
-"while all others can only read."
+"В показанном примере для базового типа администраторам разрешено "
+"редактирование, остальным — чтение. Это настройка приложения, а не "
+"универсальная матрица стандартной поставки ecos-model."
+msgstr "In the example shown, administrators have edit permission for the base type, while others have read permission. This is an application setting, not a universal matrix of the standard ecos-model distribution."
 
-#: ../../integration/external_portal.rst:400
+#: ../../integration/external_portal.rst:443
 msgid ""
-"В рамках задачи по внешним порталам была добавлена возможность определять"
-" права для ролей, который не заданы в типе данных. Такие роли начинаются "
-"на **ROLE_**"
-msgstr ""
-"As part of the external portals task, the ability to define permissions "
-"for roles not defined in the data type was added. Such roles start with "
-"**ROLE_**"
+"При настройке прав различайте **authorities** пользователя, **роли "
+"записи** и итоговые разрешения. Роли записи определяются моделью типа, а "
+"authorities включают полномочия пользователя, в том числе системные роли "
+"с префиксом **ROLE_**."
+msgstr "When configuring permissions, distinguish between the user's **authorities**, **record roles**, and effective permissions. Record roles are determined by the type model, while authorities include the user's granted authorities, including system roles prefixed with **ROLE_**."
 
-#: ../../integration/external_portal.rst:402
+#: ../../integration/external_portal.rst:445
 msgid ""
-"В типе данных они могут быть не заданы, но они проверяются у пользователя"
-" в списке authorities."
-msgstr ""
-"They may not be defined in the data type, but they are checked against "
-"the user's authorities list."
+"Наличие authority с префиксом **ROLE_** само по себе не означает, что она"
+" появится в справочнике выбора ролей. Проверяйте доступные роли и "
+"настройки матрицы в используемой версии приложения."
+msgstr "Having an authority prefixed with **ROLE_** does not by itself mean it appears in the role selection directory. Check the available roles and matrix settings in the application version used."
 
-#: ../../integration/external_portal.rst:404
+#: ../../integration/external_portal.rst:451
 msgid ""
-"Если мы запросим authorities - все authority, которые начинаются на "
-"**ROLE_**, они в запросе получения ролей пользователя вернутся."
-msgstr ""
-"If we request authorities — all authorities starting with **ROLE_** will "
-"be returned in the user role retrieval request."
+"Матрицы привязаны к типам и рабочим пространствам. При переносе настроек "
+"проверьте, что матрица относится к нужному типу в нужном рабочем "
+"пространстве."
+msgstr "Matrices are linked to types and workspaces. When transferring settings, check that the matrix applies to the required type in the required workspace."
 
-#: ../../integration/external_portal.rst:410
+#: ../../integration/external_portal.rst:453
 msgid ""
-"Такие неявные глобальные роли, на которые теперь можно настраивать права."
-" Самый базовый тип не менялся."
-msgstr ""
-"These implicit global roles can now have permissions configured for them."
-" The most basic type has not changed."
+"Итоговые права могут также учитывать пользовательские разрешения записи и"
+" наследование от родителя. Для проверки конкретной записи и пользователя "
+"администратор может использовать Records DAO ``emodel/permissions-"
+"diagnostic``: в запросе указываются ``recordRef`` и, при необходимости, "
+"``user``. Отчёт содержит роли типа, роли пользователя и итоговые права "
+"чтения и записи."
+msgstr "Effective permissions may also account for custom record permissions and inheritance from the parent. To check a specific record and user, an administrator can use the ``emodel/permissions-diagnostic`` Records DAO: specify ``recordRef`` and, if necessary, ``user`` in the query. The report contains type roles, user roles, and effective read and write permissions."
 
-#: ../../integration/external_portal.rst:412
-msgid "Администратор может редактировать то, для чего не настроена своя матрица."
-msgstr ""
-"An administrator can edit anything for which no specific matrix is "
-"configured."
+#: ../../integration/external_portal.rst:455
+msgid "В показанном внешнем приложении выделены три роли:"
+msgstr "The external application shown defines three roles:"
 
-#: ../../integration/external_portal.rst:414
-msgid ""
-"То есть матрица на базовый тип используется, если не найдена другая "
-"матрица для конкретного типа."
-msgstr ""
-"That is, the matrix for the base type is used if no other matrix is found"
-" for a specific type."
-
-#: ../../integration/external_portal.rst:416
-msgid ""
-"Если у нас настроена матрица для SD заявки, то используется она, и "
-"матрица для базового типа не используется."
-msgstr ""
-"If a matrix is configured for an SD request, that matrix is used and the "
-"base type matrix is not."
-
-#: ../../integration/external_portal.rst:418
-msgid ""
-"Список заказчиков виден технологу, и  пользователям, которые добавлены в "
-"карточке заказчика. Редактирование их происходит на основном стенде."
-msgstr ""
-"The customer list is visible to the technologist and to users added to "
-"the customer card. Editing is done on the main instance."
-
-#: ../../integration/external_portal.rst:420
-msgid "В матрице есть 3 роли:"
-msgstr "The matrix has 3 roles:"
-
-#: ../../integration/external_portal.rst:422
+#: ../../integration/external_portal.rst:457
 msgid "Инициатор;"
 msgstr "Initiator;"
 
-#: ../../integration/external_portal.rst:423
-msgid "Support организации, который определяется в карточке заказчика (client);"
-msgstr "Organization Support, which is defined in the customer card (client);"
+#: ../../integration/external_portal.rst:458
+msgid "Support организации;"
+msgstr "Organization support;"
 
-#: ../../integration/external_portal.rst:424
-msgid "Технолог citeck определяется по группе."
-msgstr "Citeck technologist is determined by group."
+#: ../../integration/external_portal.rst:459
+msgid "Технолог."
+msgstr "Technologist."
 
-#: ../../integration/external_portal.rst:427
+#: ../../integration/external_portal.rst:461
+msgid ""
+"Это не полный перечень ролей основного SD. В текущей модели основного "
+"Service Desk определены восемь ролей: Инициатор, Support организации, "
+"исполнители трёх линий ТП, Руководитель ТП, Дополнительный участник и "
+"Технолог ТП."
+msgstr "This is not the full list of roles in the main SD. The current main Service Desk model defines eight roles: Initiator, Organization support, assignees of three technical support tiers, Support manager, Additional participant, and Support technologist."
+
+#: ../../integration/external_portal.rst:463
+msgid ""
+"В основном SD роль **Support организации** вычисляется из обеих "
+"ассоциаций карточки заказчика: ``client.users`` и ``client.authGroups``. "
+"Роль **Технолог ТП** определяется атрибутом заявки ``technologist``. На "
+"группу ``GROUP_support-lead`` напрямую назначена роль **Руководитель "
+"ТП**. Назначения ролей внешнего приложения проверяйте отдельно."
+msgstr "In the main SD, the **Organization support** role is calculated from both customer card associations: ``client.users`` and ``client.authGroups``. The **Support technologist** role is determined by the request's ``technologist`` attribute. The **Support manager** role is assigned directly to the ``GROUP_support-lead`` group. Check role assignments in the external application separately."
+
+#: ../../integration/external_portal.rst:465
+msgid ""
+"Видимость и возможность изменения заказчика зависят от матриц на "
+"соответствующем стенде. Доступ к рабочему пространству и права на "
+"карточку заказчика — отдельные настройки."
+msgstr "Customer visibility and editing depend on the matrices in the corresponding environment. Workspace access and customer card permissions are separate settings."
+
+#: ../../integration/external_portal.rst:468
 msgid "Заказчики"
 msgstr "Customers"
 
-#: ../../integration/external_portal.rst:429
-msgid "В Заказчике появились группы."
-msgstr "Groups have been added to the Customer."
-
-#: ../../integration/external_portal.rst:437
+#: ../../integration/external_portal.rst:470
 msgid ""
-"Просмотр и редактирование Заказчика доступны только на основном стенде в "
-"журнале https://host/v2/journals?journalId=sd-clients-"
-"journal&viewMode=table&ws=service-desk-workspace"
-msgstr ""
-"Viewing and editing the Customer are available only on the main instance "
-"in the journal https://host/v2/journals?journalId=sd-clients-"
-"journal&viewMode=table&ws=service-desk-workspace"
+"Карточка заказчика содержит множественные ассоциации **Пользователи** "
+"(``users``) и **Группы** (``authGroups``)."
+msgstr "The customer card contains the multivalued **Users** (``users``) and **Groups** (``authGroups``) associations."
 
-#: ../../integration/external_portal.rst:439
+#: ../../integration/external_portal.rst:478
 msgid ""
-"Пользователей лучше убрать и использовать группы, т.к. при добавлении "
-"пользователя в группу будет производиться динамическое изменение прав."
-msgstr ""
-"It is better to remove users and use groups instead, as adding a user to "
-"a group will dynamically change permissions."
+"Справочник заказчиков ведётся на основном стенде в журнале "
+"``https://host/v2/journals?journalId=sd-clients-journal&viewMode=table&ws"
+"=service-desk-workspace``. Штатная конфигурация синхронизации передаёт "
+"заказчиков на внешний портал; права на просмотр и изменение "
+"импортированных карточек задаются внешним приложением."
+msgstr "The customer directory is maintained in the main environment in the ``https://host/v2/journals?journalId=sd-clients-journal&viewMode=table&ws=service-desk-workspace`` journal. The standard synchronization configuration transfers customers to the external portal; permissions to view and modify imported cards are defined by the external application."
 
-#: ../../integration/external_portal.rst:446
+#: ../../integration/external_portal.rst:480
+msgid ""
+"Для управления доступом можно использовать группы вместо перечисления "
+"отдельных пользователей. В основном SD роль **Support организации** "
+"учитывает оба способа назначения. Изменения ``users`` и ``authGroups`` "
+"также обновляют членство соответствующих пользователей и групп в "
+"``service-desk-workspace`` с ролью USER; это не заменяет настройку прав "
+"на записи."
+msgstr "You can use groups instead of listing individual users to manage access. In the main SD, the **Organization support** role accounts for both assignment methods. Changes to ``users`` and ``authGroups`` also update the corresponding users' and groups' membership in ``service-desk-workspace`` with the USER role; this does not replace record permission configuration."
+
+#: ../../integration/external_portal.rst:487
 msgid "Логирование"
 msgstr "Logging"
 
-#: ../../integration/external_portal.rst:448
+#: ../../integration/external_portal.rst:489
 msgid ""
 "Ошибки импорта, экспорта доступны в логах микросервиса интеграции, в "
 "журналах **Состояние синхронизации**, **Журнал синхронизации** **(Рабочее"
@@ -737,11 +828,11 @@ msgstr ""
 "logs, in the **Synchronization Status** and **Synchronization Journal** "
 "journals **(Administrator Section workspace — Integration)**."
 
-#: ../../integration/external_portal.rst:451
+#: ../../integration/external_portal.rst:492
 msgid "Состояние синхронизации"
 msgstr "Synchronization Status"
 
-#: ../../integration/external_portal.rst:453
+#: ../../integration/external_portal.rst:494
 msgid ""
 "**Состояния синхронизации** определяют то, в каком сейчас состоянии "
 "находится синхронизация."
@@ -749,48 +840,60 @@ msgstr ""
 "**Synchronization statuses** define the current state of the "
 "synchronization."
 
-#: ../../integration/external_portal.rst:459
-msgid "Состояния настроены для следующих типов:"
-msgstr "Statuses are configured for the following types:"
+#: ../../integration/external_portal.rst:500
+msgid "Состояния создаются для настроенных типов экспорта. Например:"
+msgstr "States are created for configured export types. For example:"
 
-#: ../../integration/external_portal.rst:466
+#: ../../integration/external_portal.rst:507
 msgid "Тип"
 msgstr "Type"
 
-#: ../../integration/external_portal.rst:468
+#: ../../integration/external_portal.rst:509
 msgid "**sd-request-type**"
 msgstr "**sd-request-type**"
 
-#: ../../integration/external_portal.rst:469
+#: ../../integration/external_portal.rst:510
 msgid "Заявка"
 msgstr "Request"
 
-#: ../../integration/external_portal.rst:470
+#: ../../integration/external_portal.rst:511
 msgid "**ecos-comment**"
 msgstr "**ecos-comment**"
 
-#: ../../integration/external_portal.rst:471
+#: ../../integration/external_portal.rst:512
 msgid "Комментарий"
 msgstr "Comment"
 
-#: ../../integration/external_portal.rst:472
-#: ../../integration/external_portal.rst:493
+#: ../../integration/external_portal.rst:513
+#: ../../integration/external_portal.rst:536
 msgid "**attachment**"
 msgstr "**attachment**"
 
-#: ../../integration/external_portal.rst:475
+#: ../../integration/external_portal.rst:514
+msgid "Вложение"
+msgstr "Attachment"
+
+#: ../../integration/external_portal.rst:515
+msgid "**clients-type**"
+msgstr "**clients-type**"
+
+#: ../../integration/external_portal.rst:516
+msgid "Заказчик"
+msgstr "Customer"
+
+#: ../../integration/external_portal.rst:518
 msgid "Работает через ECOS Camel, такой же функционал как для миграции данных."
 msgstr "Works via ECOS Camel, same functionality as for data migration."
 
-#: ../../integration/external_portal.rst:477
+#: ../../integration/external_portal.rst:520
 msgid "**Владелец состояния** - настройка Service desk portal"
 msgstr "**Status Owner** — Service desk portal configuration"
 
-#: ../../integration/external_portal.rst:478
+#: ../../integration/external_portal.rst:521
 msgid "**Идентификатор** содержит в себе префикс Camel. Например:"
 msgstr "**Identifier** contains the Camel prefix. For example:"
 
-#: ../../integration/external_portal.rst:480
+#: ../../integration/external_portal.rst:523
 msgid ""
 "*camel:ecos-records-sync-consumer:ext-portal-sd-portal-ext-sync-"
 "attachment*, где"
@@ -798,56 +901,55 @@ msgstr ""
 "*camel:ecos-records-sync-consumer:ext-portal-sd-portal-ext-sync-"
 "attachment*, where"
 
-#: ../../integration/external_portal.rst:487
+#: ../../integration/external_portal.rst:530
 msgid "Часть идентификатора"
 msgstr "Identifier Part"
 
-#: ../../integration/external_portal.rst:489
+#: ../../integration/external_portal.rst:532
 msgid "**ecos-records-sync-consumer**"
 msgstr "**ecos-records-sync-consumer**"
 
-#: ../../integration/external_portal.rst:490
+#: ../../integration/external_portal.rst:533
 msgid "Consumer синхронизации"
 msgstr "Synchronization Consumer"
 
-#: ../../integration/external_portal.rst:491
+#: ../../integration/external_portal.rst:534
 msgid "**ext-portal-sd-portal-ext-sync**"
 msgstr "**ext-portal-sd-portal-ext-sync**"
 
-#: ../../integration/external_portal.rst:492
+#: ../../integration/external_portal.rst:535
 msgid "Id синхронизации"
 msgstr "Synchronization ID"
 
-#: ../../integration/external_portal.rst:494
+#: ../../integration/external_portal.rst:537
 msgid "Идентификатор типа"
 msgstr "Type Identifier"
 
-#: ../../integration/external_portal.rst:496
+#: ../../integration/external_portal.rst:539
 msgid "Если настроек для типа несколько, то добавляется индекс."
 msgstr "If there are multiple configurations for a type, an index is added."
 
-#: ../../integration/external_portal.rst:498
+#: ../../integration/external_portal.rst:541
 msgid "В таком случае важен порядок в массиве **typesToSync**:"
 msgstr "In this case, the order in the **typesToSync** array matters:"
 
-#: ../../integration/external_portal.rst:504
+#: ../../integration/external_portal.rst:547
 msgid "Конфигурация:"
 msgstr "Configuration:"
 
-#: ../../integration/external_portal.rst:517
+#: ../../integration/external_portal.rst:560
 msgid "**Status**"
 msgstr "**Status**"
 
-#: ../../integration/external_portal.rst:518
+#: ../../integration/external_portal.rst:561
 msgid "Статусы синхронизации. RUNNING, если ERROR то выдается текст ошибки."
-msgstr ""
-"Synchronization statuses. RUNNING; if ERROR, the error text is displayed."
+msgstr "Synchronization statuses. RUNNING; if ERROR, the error text is displayed."
 
-#: ../../integration/external_portal.rst:519
+#: ../../integration/external_portal.rst:562
 msgid "**initDate**"
 msgstr "**initDate**"
 
-#: ../../integration/external_portal.rst:520
+#: ../../integration/external_portal.rst:563
 msgid ""
 "Дата начала синхронизации. Заносится в state и остается константой до тех"
 " пор, пока state не убьется или дата не будет изменена вручную. Изменение"
@@ -857,27 +959,27 @@ msgstr ""
 "until the state is reset or the date is changed manually. Changing the "
 "synchronization date in the portal settings does not change initDate."
 
-#: ../../integration/external_portal.rst:521
+#: ../../integration/external_portal.rst:564
 msgid "**lastCreated**"
 msgstr "**lastCreated**"
 
-#: ../../integration/external_portal.rst:522
+#: ../../integration/external_portal.rst:565
 msgid "Дата последней созданной записи."
 msgstr "Date of the last created record."
 
-#: ../../integration/external_portal.rst:523
+#: ../../integration/external_portal.rst:566
 msgid "**syncStartedAt**"
 msgstr "**syncStartedAt**"
 
-#: ../../integration/external_portal.rst:524
+#: ../../integration/external_portal.rst:567
 msgid "Когда запустилась синхронизация."
 msgstr "When synchronization started."
 
-#: ../../integration/external_portal.rst:525
+#: ../../integration/external_portal.rst:568
 msgid "**strategyStates**"
 msgstr "**strategyStates**"
 
-#: ../../integration/external_portal.rst:526
+#: ../../integration/external_portal.rst:569
 msgid ""
 "Состояния по стратегии (CREATED, MODIFIED, CREATED_MODIFIED). Если "
 "CREATED_MODIFIED, то 2. Если CREATED, MODIFIED, то 1."
@@ -885,19 +987,19 @@ msgstr ""
 "States by strategy (CREATED, MODIFIED, CREATED_MODIFIED). If "
 "CREATED_MODIFIED, then 2. If CREATED or MODIFIED, then 1."
 
-#: ../../integration/external_portal.rst:527
+#: ../../integration/external_portal.rst:570
 msgid "**processedCount**"
 msgstr "**processedCount**"
 
-#: ../../integration/external_portal.rst:528
+#: ../../integration/external_portal.rst:571
 msgid "Сколько записей обработано."
 msgstr "Number of records processed."
 
-#: ../../integration/external_portal.rst:529
+#: ../../integration/external_portal.rst:572
 msgid "**initialSyncCompletedAt**"
 msgstr "**initialSyncCompletedAt**"
 
-#: ../../integration/external_portal.rst:530
+#: ../../integration/external_portal.rst:573
 msgid ""
 "Дата синхронизации всех записей и ожидания новых. Если не задан, то "
 "синхронизация не закончилась."
@@ -905,49 +1007,321 @@ msgstr ""
 "Date when all records were synchronized and new ones are being awaited. "
 "If not set, synchronization has not completed."
 
-#: ../../integration/external_portal.rst:533
+#: ../../integration/external_portal.rst:576
 msgid "Журнал синхронизации"
 msgstr "Synchronization Journal"
 
-#: ../../integration/external_portal.rst:535
+#: ../../integration/external_portal.rst:578
 msgid "В журнале хранится информация о получаемых данных."
 msgstr "The journal stores information about the received data."
 
-#: ../../integration/external_portal.rst:541
+#: ../../integration/external_portal.rst:584
 msgid "В случае ошибки содержит подробную информация о ней."
 msgstr "In case of an error, it contains detailed information about it."
 
-#: ../../integration/external_portal.rst:548
+#: ../../integration/external_portal.rst:591
 msgid "Создание заявки"
 msgstr "Creating a Request"
 
-#: ../../integration/external_portal.rst:550
-msgid "Доступны следующие варианты:"
-msgstr "The following options are available:"
+#: ../../integration/external_portal.rst:593
+msgid ""
+"Способ создания заявки зависит от установленного приложения и настроенных"
+" интеграций:"
+msgstr "The way a request is created depends on the installed application and configured integrations:"
 
-#: ../../integration/external_portal.rst:552
+#: ../../integration/external_portal.rst:595
 msgid "на внешнем портале;"
 msgstr "on the external portal;"
 
-#: ../../integration/external_portal.rst:553
+#: ../../integration/external_portal.rst:596
 msgid ""
-"через почту – заявки создаются на основном портале, потом экспортируются "
-"на внешний портал;"
-msgstr ""
-"via email — requests are created on the main portal and then exported to "
-"the external portal;"
+"через почту — при настроенном входящем почтовом маршруте заявка создаётся"
+" на основном стенде и затем экспортируется на внешний портал;"
+msgstr "via email — with an incoming mail route configured, the request is created in the main environment and then exported to the external portal;"
 
-#: ../../integration/external_portal.rst:554
+#: ../../integration/external_portal.rst:597
 msgid "на основном портале, потом экспортируются на внешний портал."
 msgstr "on the main portal, then exported to the external portal."
 
-#: ../../integration/external_portal.rst:556
-msgid "Номер присваивается на основном портале. И возвращается статус."
-msgstr "The number is assigned on the main portal. The status is then returned."
+#: ../../integration/external_portal.rst:599
+msgid ""
+"В основном SD для заявки задан шаблон нумерации ``sd-reg-number-"
+"template`` и формат идентификатора ``SD-{{_docNum}}``. Штатная "
+"конфигурация основного портала экспортирует номер ``_docNum`` и статус "
+"``_status`` на внешний портал. Первоначальное создание заявки и "
+"назначение номера на внешней стороне зависят от конфигурации её "
+"приложения."
+msgstr "In the main SD, requests use the ``sd-reg-number-template`` numbering template and the ``SD-{{_docNum}}`` identifier format. The standard main portal configuration exports the ``_docNum`` number and ``_status`` status to the external portal. Initial request creation and number assignment on the external side depend on its application configuration."
 
-#: ../../integration/external_portal.rst:558
+#: ../../integration/external_portal.rst:601
 msgid ""
 "См. пользовательское описание :ref:`портала технической "
 "поддержки<portal_sd>`"
 msgstr "See the user description of the :ref:`technical support portal<portal_sd>`"
+
+#~ msgid "Пример настройки в **values.yaml** для стенда:"
+#~ msgstr "Example configuration in **values.yaml** for the instance:"
+
+#~ msgid "Настройка подключения к внешнему RMQ:"
+#~ msgstr "Configuring the connection to the external RMQ:"
+
+#~ msgid ""
+#~ "**«Синхронизация включена»** — если её "
+#~ "выключить соответственно синхронизация работать "
+#~ "не будет."
+#~ msgstr ""
+#~ "**\"Synchronization Enabled\"** — if disabled,"
+#~ " synchronization will not work."
+
+#~ msgid ""
+#~ "(Внешний инстанс SD, Internal RabbitMQ) "
+#~ "указывается, из какого инстанса RabbitMQ "
+#~ "данные должны импортироваться. В answers "
+#~ "стенда настраивается список подключений, и "
+#~ "на UI подтягивается этот список."
+#~ msgstr ""
+#~ "(External SD Instance, Internal RabbitMQ) "
+#~ "— specifies which RabbitMQ instance data"
+#~ " should be imported from. The "
+#~ "instance configuration defines a list of"
+#~ " connections, which is then displayed "
+#~ "in the UI."
+
+#~ msgid "*Внешний инстанс SD – enterprise в данном случае.*"
+#~ msgstr "*External SD instance — enterprise in this case.*"
+
+#~ msgid "Пример:"
+#~ msgstr "Example:"
+
+#~ msgid ""
+#~ "Настроен по умолчанию на RabbitMQ "
+#~ "текущего стенда. Выбора не предполагается."
+#~ msgstr ""
+#~ "Configured by default to the current "
+#~ "instance's RabbitMQ. No selection is "
+#~ "available."
+
+#~ msgid ""
+#~ "Означает, что мы в query запросе "
+#~ "прямо отправляем - получить заявки, "
+#~ "которые были созданы после выбранной "
+#~ "даты (Дата начала синхронизации по "
+#~ "умолчанию) и для которых выполняется "
+#~ "указанное условие."
+#~ msgstr ""
+#~ "This means that in the query "
+#~ "request we directly send — retrieve "
+#~ "requests that were created after the "
+#~ "selected date (Default Synchronization Start"
+#~ " Date) and for which the specified"
+#~ " condition is met."
+
+#~ msgid ""
+#~ "Если **Дата начала синхронизации по "
+#~ "умолчанию** и **Дата начала синхронизации**"
+#~ " не указаны, то обрабатываются все "
+#~ "записи."
+#~ msgstr ""
+#~ "If neither **Default Synchronization Start "
+#~ "Date** nor **Synchronization Start Date** "
+#~ "is specified, all records are processed."
+
+#~ msgid ""
+#~ "Если запись удаляется на текущем "
+#~ "инстансе Citeck, то она так же "
+#~ "будет удалена и на внешнем портале."
+#~ msgstr ""
+#~ "If a record is deleted on the "
+#~ "current Citeck instance, it will also"
+#~ " be deleted on the external portal."
+
+#~ msgid ""
+#~ "Записи обрабатываются сначала по дате "
+#~ "создания, затем по дате изменения. "
+#~ "Универсальная стратегия, которая гарантирует "
+#~ "обработку всех записей в порядке их "
+#~ "создания. Записи могут быть "
+#~ "пересинхронизированы дважды (сначала по дате"
+#~ " создания, затем по дате изменения)."
+#~ msgstr ""
+#~ "Records are processed first by creation"
+#~ " date, then by modification date. A"
+#~ " universal strategy that guarantees "
+#~ "processing of all records in their "
+#~ "creation order. Records may be "
+#~ "synchronized twice (first by creation "
+#~ "date, then by modification date)."
+
+#~ msgid ""
+#~ "**importSyncId** проставляется, когда у нас"
+#~ " синхронизированные данные приходит извне. "
+#~ "То есть когда выгружаются с одного "
+#~ "стенда на другой, то на другом "
+#~ "внешнем стенде **importSyncId** будет заполнен"
+#~ " идентификатором синхронизации *sd-portal-"
+#~ "main-sync*."
+#~ msgstr ""
+#~ "**importSyncId** is set when synchronized "
+#~ "data arrives from an external source."
+#~ " That is, when data is exported "
+#~ "from one instance to another, the "
+#~ "**importSyncId** on the other external "
+#~ "instance will be filled with the "
+#~ "synchronization identifier *sd-portal-main-"
+#~ "sync*."
+
+#~ msgid ""
+#~ "Меню и прочие артефакты определены в "
+#~ "журнале **\"Приложениях ECOS\" (Рабочее "
+#~ "пространство \"Раздел администратора\" - "
+#~ "Управление системой)** для sd-ext-"
+#~ "portal-ecos-app:"
+#~ msgstr ""
+#~ "Menus and other artifacts are defined"
+#~ " in the **ECOS Applications** journal "
+#~ "**(Administrator Section workspace — System"
+#~ " Management)** for sd-ext-portal-"
+#~ "ecos-app:"
+
+#~ msgid "Важная особенность – добавлены следующие матрицы прав:"
+#~ msgstr ""
+#~ "An important feature — the following "
+#~ "permission matrices have been added:"
+
+#~ msgid ""
+#~ "У базового типа настроено, что "
+#~ "администраторы могут записывать всё, все "
+#~ "прочие только читать."
+#~ msgstr ""
+#~ "The base type is configured so "
+#~ "that administrators can write everything, "
+#~ "while all others can only read."
+
+#~ msgid ""
+#~ "В рамках задачи по внешним порталам "
+#~ "была добавлена возможность определять права"
+#~ " для ролей, который не заданы в "
+#~ "типе данных. Такие роли начинаются на"
+#~ " **ROLE_**"
+#~ msgstr ""
+#~ "As part of the external portals "
+#~ "task, the ability to define permissions"
+#~ " for roles not defined in the "
+#~ "data type was added. Such roles "
+#~ "start with **ROLE_**"
+
+#~ msgid ""
+#~ "В типе данных они могут быть не"
+#~ " заданы, но они проверяются у "
+#~ "пользователя в списке authorities."
+#~ msgstr ""
+#~ "They may not be defined in the "
+#~ "data type, but they are checked "
+#~ "against the user's authorities list."
+
+#~ msgid ""
+#~ "Если мы запросим authorities - все "
+#~ "authority, которые начинаются на **ROLE_**,"
+#~ " они в запросе получения ролей "
+#~ "пользователя вернутся."
+#~ msgstr ""
+#~ "If we request authorities — all "
+#~ "authorities starting with **ROLE_** will "
+#~ "be returned in the user role "
+#~ "retrieval request."
+
+#~ msgid ""
+#~ "Такие неявные глобальные роли, на "
+#~ "которые теперь можно настраивать права. "
+#~ "Самый базовый тип не менялся."
+#~ msgstr ""
+#~ "These implicit global roles can now "
+#~ "have permissions configured for them. "
+#~ "The most basic type has not "
+#~ "changed."
+
+#~ msgid ""
+#~ "Администратор может редактировать то, для "
+#~ "чего не настроена своя матрица."
+#~ msgstr ""
+#~ "An administrator can edit anything for"
+#~ " which no specific matrix is "
+#~ "configured."
+
+#~ msgid ""
+#~ "То есть матрица на базовый тип "
+#~ "используется, если не найдена другая "
+#~ "матрица для конкретного типа."
+#~ msgstr ""
+#~ "That is, the matrix for the base"
+#~ " type is used if no other "
+#~ "matrix is found for a specific "
+#~ "type."
+
+#~ msgid ""
+#~ "Если у нас настроена матрица для "
+#~ "SD заявки, то используется она, и "
+#~ "матрица для базового типа не "
+#~ "используется."
+#~ msgstr ""
+#~ "If a matrix is configured for an"
+#~ " SD request, that matrix is used "
+#~ "and the base type matrix is not."
+
+#~ msgid ""
+#~ "Список заказчиков виден технологу, и  "
+#~ "пользователям, которые добавлены в карточке"
+#~ " заказчика. Редактирование их происходит на"
+#~ " основном стенде."
+#~ msgstr ""
+#~ "The customer list is visible to "
+#~ "the technologist and to users added "
+#~ "to the customer card. Editing is "
+#~ "done on the main instance."
+
+#~ msgid "В матрице есть 3 роли:"
+#~ msgstr "The matrix has 3 roles:"
+
+#~ msgid ""
+#~ "Support организации, который определяется в"
+#~ " карточке заказчика (client);"
+#~ msgstr "Organization Support, which is defined in the customer card (client);"
+
+#~ msgid "Технолог citeck определяется по группе."
+#~ msgstr "Citeck technologist is determined by group."
+
+#~ msgid "В Заказчике появились группы."
+#~ msgstr "Groups have been added to the Customer."
+
+#~ msgid ""
+#~ "Просмотр и редактирование Заказчика доступны"
+#~ " только на основном стенде в журнале"
+#~ " https://host/v2/journals?journalId=sd-clients-"
+#~ "journal&viewMode=table&ws=service-desk-workspace"
+#~ msgstr ""
+#~ "Viewing and editing the Customer are "
+#~ "available only on the main instance "
+#~ "in the journal https://host/v2/journals?journalId"
+#~ "=sd-clients-journal&viewMode=table&ws=service-desk-"
+#~ "workspace"
+
+#~ msgid ""
+#~ "Пользователей лучше убрать и использовать "
+#~ "группы, т.к. при добавлении пользователя "
+#~ "в группу будет производиться динамическое "
+#~ "изменение прав."
+#~ msgstr ""
+#~ "It is better to remove users and"
+#~ " use groups instead, as adding a "
+#~ "user to a group will dynamically "
+#~ "change permissions."
+
+#~ msgid "Состояния настроены для следующих типов:"
+#~ msgstr "Statuses are configured for the following types:"
+
+#~ msgid "Доступны следующие варианты:"
+#~ msgstr "The following options are available:"
+
+#~ msgid "Номер присваивается на основном портале. И возвращается статус."
+#~ msgstr "The number is assigned on the main portal. The status is then returned."
 

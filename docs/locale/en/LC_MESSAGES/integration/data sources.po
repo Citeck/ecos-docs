@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -34,15 +34,16 @@ msgstr "REST Data Source"
 msgid "Источник данных, который работает через REST запросы"
 msgstr "A data source that operates via REST requests"
 
-#: ../../integration/data sources.rst:24 sources.rst:168
+#: ../../integration/data sources.rst:24 sources.rst:77 sources.rst:216
 msgid "Поле"
 msgstr "Field"
 
-#: ../../integration/data sources.rst:25 sources.rst:74 sources.rst:169
+#: ../../integration/data sources.rst:25 sources.rst:78 sources.rst:113
+#: sources.rst:217
 msgid "Описание"
 msgstr "Description"
 
-#: ../../integration/data sources.rst:26 sources.rst:170
+#: ../../integration/data sources.rst:26 sources.rst:218
 msgid "**Id**"
 msgstr "**Id**"
 
@@ -50,7 +51,7 @@ msgstr "**Id**"
 msgid "Идентификатор источника"
 msgstr "Data source identifier"
 
-#: ../../integration/data sources.rst:28 sources.rst:172
+#: ../../integration/data sources.rst:28 sources.rst:220
 msgid "**Name**"
 msgstr "**Name**"
 
@@ -77,19 +78,18 @@ msgstr "**Internal**"
 
 #: ../../integration/data sources.rst:33
 msgid ""
-"Запрос будет отправляться только в сети микросервисов, зарегистрированных"
-" в Eureka (в таких запросах прокидываются header'ы и cookie)"
-msgstr ""
-"The request will be sent only within the network of microservices "
-"registered in Eureka (headers and cookies are passed in such requests)"
+"Поле сохранено в конфигурации, но текущая реализация REST Data Source его"
+" не использует. Маршрутизация через Eureka и автоматический перенос "
+"заголовков и cookie входящего запроса не выполняются."
+msgstr "The field is retained in the configuration, but the current REST Data Source implementation does not use it. Routing through Eureka and automatic forwarding of incoming request headers and cookies are not performed."
 
 #: ../../integration/data sources.rst:34
 msgid "**HTTP Method**"
 msgstr "**HTTP Method**"
 
 #: ../../integration/data sources.rst:35
-msgid "Можно выбрать методы http post, get, put и т.д."
-msgstr "You can select http methods like post, get, put, etc."
+msgid "HTTP-метод запроса: POST, GET, PUT и т. д. По умолчанию используется GET."
+msgstr "Request HTTP method: POST, GET, PUT, etc. GET is used by default."
 
 #: ../../integration/data sources.rst:36
 msgid "**Request headers**"
@@ -100,8 +100,7 @@ msgstr "**Request headers**"
 msgid ""
 "Заголовки запроса. Есть поддержка переменных запроса в фигурных скобках -"
 " *${key}*"
-msgstr ""
-"Request headers. Supports query variables in curly braces - *${key}*"
+msgstr "Request headers. Supports query variables in curly braces - *${key}*"
 
 #: ../../integration/data sources.rst:38
 msgid "**Request body**"
@@ -112,8 +111,7 @@ msgstr "**Request body**"
 msgid ""
 "Тело запроса. Есть поддержка переменных запроса в фигурных скобках - "
 "*${key}*"
-msgstr ""
-"Request body. Supports query variables in curly braces - *${key}*"
+msgstr "Request body. Supports query variables in curly braces - *${key}*"
 
 #: ../../integration/data sources.rst:40
 msgid "**Json response transform specification**"
@@ -127,193 +125,319 @@ msgstr ""
 "A specification that describes the response transformation. The "
 "specification format is `Jolt <https://jolt-demo.appspot.com/>`_"
 
-#: ../../integration/data sources.rst:44
+#: ../../integration/data sources.rst:45
+msgid ""
+"В Java API настройки метода, заголовков, тела и преобразования ответа "
+"применяются при вызове ``getForObject``. Отдельный метод ``getForEntity``"
+" выполняет GET-запрос без применения этих настроек."
+msgstr "In the Java API, the method, header, body, and response transformation settings are applied when ``getForObject`` is called. The separate ``getForEntity`` method performs a GET request without applying these settings."
+
+#: ../../integration/data sources.rst:48
 msgid "DB Data Source"
 msgstr "DB Data Source"
 
-#: ../../integration/data sources.rst:46
+#: ../../integration/data sources.rst:50
 msgid "Источник данных из базы данных."
 msgstr "Data source from a database."
 
-#: ../../integration/data sources.rst:49
-msgid "SSL при запросах к бд через ECOS db-data-source"
-msgstr "SSL for database requests via ECOS db-data-source"
+#: ../../integration/data sources.rst:53
+msgid "SSL/TLS при запросах к БД через ECOS db-data-source"
+msgstr "SSL/TLS for database requests through ECOS db-data-source"
 
-#: ../../integration/data sources.rst:52
+#: ../../integration/data sources.rst:56
 msgid "Общая информация по настройке"
 msgstr "General Configuration Information"
 
-#: ../../integration/data sources.rst:54
-msgid ""
-"Начиная с версии 2.8.0 микросервиса интеграции - появилась возможность "
-"указывать в конфиге на форме **DataSource** следующие параметры:"
-msgstr ""
-"Starting from version 2.8.0 of the integration microservice, it has "
-"become possible to specify the following parameters in the **DataSource**"
-" form config:"
+#: ../../integration/data sources.rst:58
+msgid "Параметры подключения задаются в конфигурации на форме **DataSource**."
+msgstr "Connection parameters are specified in the configuration on the **DataSource** form."
 
-#: ../../integration/data sources.rst:56
-msgid "Можно использовать при настройке внешней БД в **recsrc**."
-msgstr "Can be used when configuring an external database in **recsrc**."
-
-#: ../../integration/data sources.rst:62
+#: ../../integration/data sources.rst:60
 msgid ""
-"Общий принцип таков, что исходя из конфига - создается "
-"**HikariDataSource**."
-msgstr ""
-"The general principle is that a **HikariDataSource** is created based on "
-"the config."
-
-#: ../../integration/data sources.rst:64
-msgid ""
-"При указании данных свойств - в наш создаваемый **HikariDataSource** "
-"попадут дополнительные атрибуты, которые принудят используемый драйвер "
-"ходить не по http, а по https."
-msgstr ""
-"When these properties are specified, additional attributes will be "
-"included in our created **HikariDataSource**, which will force the used "
-"driver to use HTTPS instead of HTTP."
+"Источник можно использовать для подключения внешней БД в **recsrc**: "
+"конфигурация recsrc ссылается на него через ``dataSourceRef``. SSL/TLS "
+"настраивается у самого источника данных."
+msgstr "The source can be used to connect an external database in **recsrc**: the recsrc configuration refers to it through ``dataSourceRef``. SSL/TLS is configured on the data source itself."
 
 #: ../../integration/data sources.rst:66
-msgid "Доступные сейчас режимы:"
-msgstr "Currently available modes:"
-
-#: ../../integration/data sources.rst:73
-msgid "Режим"
-msgstr "Mode"
-
-#: ../../integration/data sources.rst:75
-msgid "**none**"
-msgstr "**none**"
-
-#: ../../integration/data sources.rst:76
 msgid ""
-"Флаг ssl выключен, поля НЕ заполнены. Ходим по HTTP протоколу (трафик не "
-"защищен)."
-msgstr ""
-"SSL flag is off, fields are NOT filled. We use the HTTP protocol (traffic"
-" is not secured)."
+"На основе конфигурации создаётся JDBC DataSource с пулом соединений. Для "
+"PostgreSQL используется ``PGXADataSource`` в обёртке "
+"``BasicManagedDataSource``, для остальных типов БД — "
+"``HikariDataSource``. Максимальное число соединений в обоих случаях — 30."
+msgstr "The configuration is used to create a JDBC DataSource with a connection pool. PostgreSQL uses ``PGXADataSource`` wrapped in ``BasicManagedDataSource``; other database types use ``HikariDataSource``. The maximum number of connections is 30 in both cases."
 
-#: ../../integration/data sources.rst:77
-msgid "**require**"
-msgstr "**require**"
-
-#: ../../integration/data sources.rst:78
+#: ../../integration/data sources.rst:68
 msgid ""
-"Флаг ssl включен, остальные поля НЕ заполнены. Ходим по HTTPS, трафик "
-"защищен шифрованием, но мы не проверяем что БД именно та, которой мы "
-"доверяем. БД так же не уверена что соединяется с нашим приложением."
-msgstr ""
-"SSL flag is on, other fields are NOT filled. We use HTTPS, traffic is "
-"secured by encryption, but we do not verify that the database is the one "
-"we trust. The database is also not sure it is connecting to our "
-"application."
+"SSL-параметры передаются JDBC-драйверу для настройки шифрования "
+"соединения с БД. PostgreSQL использует собственный протокол с TLS."
+msgstr "SSL parameters are passed to the JDBC driver to configure encryption of the database connection. PostgreSQL uses its own protocol with TLS."
+
+#: ../../integration/data sources.rst:70
+msgid "Поля конфигурации:"
+msgstr "Configuration fields:"
 
 #: ../../integration/data sources.rst:79
-msgid "**verify-ca**"
-msgstr "**verify-ca**"
+msgid "``url``"
+msgstr "``url``"
 
 #: ../../integration/data sources.rst:80
 msgid ""
-"Флаг ssl включен, SSL root cert path и SSL cert path указаны, SSLkey path"
-" не указан. Ходим по HTTPS, трафик защищен шифрованием. Мы знаем что БД "
-"именно та, к которой мы хотим подключиться (при успехе рукопожатия). БД "
-"еще не уверена что соединяется с нашим приложением."
-msgstr ""
-"SSL flag is on, SSL root cert path and SSL cert path are specified, "
-"SSLkey path is not specified. We use HTTPS, traffic is secured by "
-"encryption. We know the database is the one we want to connect to (upon "
-"successful handshake). The database is still not sure it is connecting to"
-" our application."
+"Адрес подключения. Если строка не начинается с ``jdbc``, фабрика "
+"добавляет JDBC-префикс выбранного типа БД."
+msgstr "Connection address. If the string does not start with ``jdbc``, the factory adds the JDBC prefix for the selected database type."
 
 #: ../../integration/data sources.rst:81
+msgid "``type``"
+msgstr "``type``"
+
+#: ../../integration/data sources.rst:82
+msgid "Тип БД; для PostgreSQL — ``POSTGRESQL``."
+msgstr "Database type; for PostgreSQL, use ``POSTGRESQL``."
+
+#: ../../integration/data sources.rst:83
+msgid "``credentials``"
+msgstr "``credentials``"
+
+#: ../../integration/data sources.rst:84
+msgid "Ссылка на credentials с именем пользователя и паролем."
+msgstr "Reference to credentials containing the username and password."
+
+#: ../../integration/data sources.rst:85
+msgid "``schema``"
+msgstr "``schema``"
+
+#: ../../integration/data sources.rst:86
+msgid "Схема БД."
+msgstr "Database schema."
+
+#: ../../integration/data sources.rst:87
+msgid "``table``"
+msgstr "``table``"
+
+#: ../../integration/data sources.rst:88
+msgid "Таблица БД."
+msgstr "Database table."
+
+#: ../../integration/data sources.rst:89
+msgid "``sslEnabled``"
+msgstr "``sslEnabled``"
+
+#: ../../integration/data sources.rst:90
+msgid "При значении ``true`` фабрика задаёт SSL-свойства драйвера."
+msgstr "When ``true``, the factory sets the driver's SSL properties."
+
+#: ../../integration/data sources.rst:91
+msgid "``sslRootCertPath``"
+msgstr "``sslRootCertPath``"
+
+#: ../../integration/data sources.rst:92
+msgid "Путь к корневому сертификату для проверки сертификата сервера."
+msgstr "Path to the root certificate used to verify the server certificate."
+
+#: ../../integration/data sources.rst:93
+msgid "``sslCertPath``"
+msgstr "``sslCertPath``"
+
+#: ../../integration/data sources.rst:94
+msgid ""
+"Путь к сертификату клиента. Передаётся драйверу только при заполненном "
+"``sslKeyPath``."
+msgstr "Path to the client certificate. Passed to the driver only when ``sslKeyPath`` is populated."
+
+#: ../../integration/data sources.rst:95
+msgid "``sslKeyPath``"
+msgstr "``sslKeyPath``"
+
+#: ../../integration/data sources.rst:96
+msgid ""
+"Путь к закрытому ключу клиента. При включённом SSL заполнение этого поля "
+"выбирает режим ``verify-full``."
+msgstr "Path to the client's private key. When SSL is enabled, populating this field selects ``verify-full`` mode."
+
+#: ../../integration/data sources.rst:97
+msgid "``sslVerifyHostname``"
+msgstr "``sslVerifyHostname``"
+
+#: ../../integration/data sources.rst:98
+msgid ""
+"Значение ``false`` отключает проверку имени сервера, в том числе в режиме"
+" ``verify-full``. При остальных значениях фабрика не переопределяет "
+"стандартную проверку имени драйвером."
+msgstr "A value of ``false`` disables server hostname verification, including in ``verify-full`` mode. For other values, the factory does not override the driver's standard hostname verification."
+
+#: ../../integration/data sources.rst:100
+msgid ""
+"Файлы сертификатов и ключа должны быть доступны процессу микросервиса "
+"integrations. Пути разрешаются через ``ExtFilesService``; отсутствие "
+"файла вызывает ошибку при создании источника. Наличие серверных "
+"сертификатов только в контейнере БД не обеспечивает доступ к клиентским "
+"файлам из integrations."
+msgstr "Certificate and key files must be accessible to the integrations microservice process. Paths are resolved through ``ExtFilesService``; a missing file causes an error when creating the source. Having server certificates only in the database container does not make client files accessible from integrations."
+
+#: ../../integration/data sources.rst:102
+msgid ""
+"Для PostgreSQL ключ с окончанием ``.key`` обрабатывается через "
+"``DbPostgresSSLFactory``, в которой предусмотрено чтение PEM-ключей "
+"PKCS#1 и PKCS#8."
+msgstr "For PostgreSQL, a key ending in ``.key`` is processed through ``DbPostgresSSLFactory``, which supports reading PKCS#1 and PKCS#8 PEM keys."
+
+#: ../../integration/data sources.rst:104
+msgid "Выбор SSL-режима фабрикой и его смысл для PostgreSQL:"
+msgstr "SSL mode selection by the factory and its meaning for PostgreSQL:"
+
+#: ../../integration/data sources.rst:111
+msgid "Режим"
+msgstr "Mode"
+
+#: ../../integration/data sources.rst:112
+msgid "Условие выбора"
+msgstr "Selection condition"
+
+#: ../../integration/data sources.rst:114
+msgid "SSL-свойства не задаются"
+msgstr "SSL properties are not set"
+
+#: ../../integration/data sources.rst:115
+msgid "``sslEnabled`` не равен ``true``."
+msgstr "``sslEnabled`` is not ``true``."
+
+#: ../../integration/data sources.rst:116
+msgid ""
+"Фабрика не устанавливает явный ``sslmode=disable``. Использование TLS "
+"зависит от JDBC URL и поведения драйвера; выключенный флаг не гарантирует"
+" незашифрованное соединение."
+msgstr "The factory does not explicitly set ``sslmode=disable``. TLS usage depends on the JDBC URL and driver behavior; disabling the flag does not guarantee an unencrypted connection."
+
+#: ../../integration/data sources.rst:117
+msgid "**require**"
+msgstr "**require**"
+
+#: ../../integration/data sources.rst:118
+msgid "``sslEnabled=true``, ``sslRootCertPath`` и ``sslKeyPath`` не заполнены."
+msgstr "``sslEnabled=true``; ``sslRootCertPath`` and ``sslKeyPath`` are empty."
+
+#: ../../integration/data sources.rst:119
+msgid "Соединение шифруется, сертификат сервера не проверяется."
+msgstr "The connection is encrypted; the server certificate is not verified."
+
+#: ../../integration/data sources.rst:120
+msgid "**verify-ca**"
+msgstr "**verify-ca**"
+
+#: ../../integration/data sources.rst:121
+msgid ""
+"``sslEnabled=true``, ``sslRootCertPath`` заполнен, ``sslKeyPath`` не "
+"заполнен. ``sslCertPath`` для выбора режима не требуется."
+msgstr "``sslEnabled=true``; ``sslRootCertPath`` is populated and ``sslKeyPath`` is empty. ``sslCertPath`` is not required for mode selection."
+
+#: ../../integration/data sources.rst:122
+msgid ""
+"Соединение шифруется, проверяется цепочка сертификата сервера до "
+"доверенного центра сертификации. Имя сервера не проверяется."
+msgstr "The connection is encrypted, and the server certificate chain is verified against a trusted certificate authority. The server hostname is not verified."
+
+#: ../../integration/data sources.rst:123
 msgid "**verify-full**"
 msgstr "**verify-full**"
 
-#: ../../integration/data sources.rst:82
+#: ../../integration/data sources.rst:124
 msgid ""
-"Флаг ssl включен, остальные поля заполнены. Ходим по HTTPS, трафик "
-"защищен. Мы уверены в БД, а БД уверена в нас."
-msgstr ""
-"SSL flag is on, other fields are filled. We use HTTPS, traffic is "
-"secured. We are confident in the database, and the database is confident "
-"in us."
+"``sslEnabled=true``, ``sslKeyPath`` заполнен. Выбирается независимо от "
+"заполнения ``sslRootCertPath``."
+msgstr "``sslEnabled=true``; ``sslKeyPath`` is populated. Selected regardless of whether ``sslRootCertPath`` is populated."
 
-#: ../../integration/data sources.rst:84
+#: ../../integration/data sources.rst:125
 msgid ""
-"Более подробно по настройкам можно посмотреть тут: `Configuring the "
-"Client <https://jdbc.postgresql.org/documentation/head/ssl-client.html>`_"
-" и тут: `Connecting to the Database "
-"<https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_ "
-"Connecting to the Database."
-msgstr ""
-"For more details on configuration, you can look here: `Configuring the "
-"Client <https://jdbc.postgresql.org/documentation/head/ssl-client.html>`_"
-" and here: `Connecting to the Database "
-"<https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_."
+"Соединение шифруется, проверяются цепочка сертификата и соответствие "
+"имени сервера сертификату. Проверка имени отключается при "
+"``sslVerifyHostname=false``."
+msgstr "The connection is encrypted; the certificate chain and the match between the server hostname and certificate are verified. Hostname verification is disabled when ``sslVerifyHostname=false``."
 
-#: ../../integration/data sources.rst:86
+#: ../../integration/data sources.rst:127
 msgid ""
-"Настройки со стороны БД описаны тут:  `SSL Support "
-"<https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_"
-msgstr ""
-"Database-side settings are described here: `SSL Support "
-"<https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_"
+"Условия в таблице описывают выбор режима в коде. Для успешного "
+"подключения должны быть доступны необходимые сертификаты и ключи, а "
+"настройки клиента и сервера должны быть согласованы. ``sslCertPath`` сам "
+"по себе не меняет режим и без ``sslKeyPath`` не передаётся драйверу."
+msgstr "The conditions in the table describe mode selection in the code. A successful connection requires the necessary certificates and keys to be available and the client and server settings to agree. ``sslCertPath`` alone does not change the mode and is not passed to the driver without ``sslKeyPath``."
 
-#: ../../integration/data sources.rst:90
-msgid "ВАЖНО! Тестировались только варианты require и verify-ca для БД Postgres."
-msgstr ""
-"IMPORTANT! Only the require and verify-ca options have been tested for "
-"Postgres DB."
-
-#: ../../integration/data sources.rst:93
-msgid "Подъем БД в докере с возможностью общаться по HTTPS"
-msgstr "Running the DB in Docker with HTTPS Communication Capability"
-
-#: ../../integration/data sources.rst:95
+#: ../../integration/data sources.rst:129
 msgid ""
-"Для каждой системы подход прокидывания сертификатов в образ контейнера "
-"будет разный, так как постгрису важно чтоб на файл еще были минимальные "
-"права (640 и меньше от рута, 600 и меньше при запуске в других случаях)."
-msgstr ""
-"For each system, the approach to injecting certificates into the "
-"container image will be different, because it is important for Postgres "
-"that the file has minimal permissions (640 or less from root, 600 or less"
-" when running in other cases)."
+"Проверка сертификата клиента на стороне PostgreSQL настраивается "
+"отдельно: требуются доверенные CA на сервере и соответствующие правила "
+"аутентификации. Выбор клиентского режима ``verify-full`` сам по себе не "
+"включает обязательную аутентификацию клиента по сертификату."
+msgstr "Client certificate verification on the PostgreSQL side is configured separately: it requires trusted CAs on the server and appropriate authentication rules. Selecting client-side ``verify-full`` mode does not by itself enable mandatory client certificate authentication."
 
-#: ../../integration/data sources.rst:97
-msgid "Расскажу как обойти это на примере Windows."
-msgstr "I will explain how to work around this using Windows as an example."
-
-#: ../../integration/data sources.rst:99
+#: ../../integration/data sources.rst:131
 msgid ""
-"В Windows, к сожалению, такой контейнер в докере можно запустить только "
-"собирая его сразу с сертификатами."
-msgstr ""
-"In Windows, unfortunately, such a container in Docker can only be run by "
-"building it with the certificates included from the start."
+"Подробнее о параметрах JDBC-драйвера: `Using SSL "
+"<https://jdbc.postgresql.org/documentation/ssl/>`_ и `Initializing the "
+"Driver <https://jdbc.postgresql.org/documentation/use/>`_. Настройки "
+"сервера: `Secure TCP/IP Connections with SSL "
+"<https://www.postgresql.org/docs/current/ssl-tcp.html>`_."
+msgstr "For more information on JDBC driver parameters, see `Using SSL <https://jdbc.postgresql.org/documentation/ssl/>`_ and `Initializing the Driver <https://jdbc.postgresql.org/documentation/use/>`_. Server settings: `Secure TCP/IP Connections with SSL <https://www.postgresql.org/docs/current/ssl-tcp.html>`_."
+
+#: ../../integration/data sources.rst:135
+msgid ""
+"Проверяйте подключение и проверку сертификатов на целевом окружении. "
+"Поведение SSL-параметров для других типов БД зависит от используемого "
+"JDBC-драйвера; описание режимов выше относится к PostgreSQL."
+msgstr "Test connectivity and certificate verification in the target environment. SSL parameter behavior for other database types depends on the JDBC driver used; the mode descriptions above apply to PostgreSQL."
+
+#: ../../integration/data sources.rst:138
+msgid "Запуск PostgreSQL с TLS в Docker"
+msgstr "Running PostgreSQL with TLS in Docker"
+
+#: ../../integration/data sources.rst:140
+msgid ""
+"В Unix-системах закрытый ключ сервера ``server.key`` должен иметь права "
+"``0600`` и быть доступен пользователю PostgreSQL. Допускается вариант с "
+"владельцем root и правами ``0640``, если серверный процесс имеет доступ к"
+" файлу через группу."
+msgstr "On Unix systems, the server's private key ``server.key`` must have ``0600`` permissions and be accessible to the PostgreSQL user. Alternatively, root ownership with ``0640`` permissions is allowed if the server process can access the file through its group."
+
+#: ../../integration/data sources.rst:142
+msgid ""
+"Ниже приведён один из вариантов подготовки файлов для Linux-контейнера "
+"при работе с Docker на Windows: сертификаты копируются в образ, а права "
+"ключа задаются при сборке."
+msgstr "Below is one way to prepare files for a Linux container when using Docker on Windows: certificates are copied into the image, and key permissions are set during the build."
+
+#: ../../integration/data sources.rst:146
+msgid ""
+"Это исторический пример с образом ``postgres:10.4-alpine``. Версию "
+"PostgreSQL для рабочего окружения необходимо выбирать и проверять "
+"отдельно. Пример включает серверный TLS, но не настраивает обязательную "
+"проверку сертификатов клиентов."
+msgstr "This is a historical example using the ``postgres:10.4-alpine`` image. Choose and verify the PostgreSQL version for your production environment separately. The example enables server-side TLS but does not configure mandatory client certificate verification."
 
 #: ../../integration/data sources.rst
 msgid "Как собрать и запустить контейнер с сертификатами"
 msgstr "How to build and run the container with certificates"
 
-#: ../../integration/data sources.rst:104
-msgid "Сгенерим ключи и серт:"
-msgstr "Let's generate keys and certificates:"
+#: ../../integration/data sources.rst:151
+msgid ""
+"Сгенерируйте ключи и сертификаты. Для проверки имени сервера сертификат "
+"должен соответствовать имени, указанному в адресе подключения. "
+"Приведённые команды не задают SAN явно; параметры сертификата необходимо "
+"подготовить для своего окружения."
+msgstr "Generate keys and certificates. For server hostname verification, the certificate must match the hostname in the connection address. The commands shown do not explicitly set SAN; prepare certificate parameters for your environment."
 
-#: ../../integration/data sources.rst:114
-msgid "Добавить в директорию с сертификатами DockerFile:"
-msgstr "Add a Dockerfile to the directory with certificates:"
+#: ../../integration/data sources.rst:161
+msgid "Добавьте в директорию с сертификатами файл ``Dockerfile``:"
+msgstr "Add a ``Dockerfile`` to the directory containing the certificates:"
 
-#: ../../integration/data sources.rst:129
-msgid "Собираем и запускаем:"
-msgstr "Build and run:"
+#: ../../integration/data sources.rst:175
+msgid "Соберите и запустите контейнер:"
+msgstr "Build and start the container:"
 
-#: ../../integration/data sources.rst:138
+#: ../../integration/data sources.rst:184
 msgid "Проверка соединения"
 msgstr "Connection Check"
 
-#: ../../integration/data sources.rst:140
+#: ../../integration/data sources.rst:186
 msgid ""
 "Проверить клиентов и признак использования шифрования с их стороны можно "
 "с помощью SQL скрипта:"
@@ -321,49 +445,242 @@ msgstr ""
 "You can check clients and the indication of encryption usage on their "
 "side using an SQL script:"
 
-#: ../../integration/data sources.rst:151
+#: ../../integration/data sources.rst:195
+msgid ""
+"Запрос показывает состояние соединений и использование шифрования. Он не "
+"подтверждает корректность проверки доверия к сертификату или имени "
+"сервера. Копирование ``root.crt`` в контейнер без настройки "
+"``ssl_ca_file`` и правил аутентификации также не включает обязательную "
+"проверку сертификатов клиентов."
+msgstr "The query shows connection states and encryption usage. It does not confirm correct verification of certificate trust or the server hostname. Copying ``root.crt`` into the container without configuring ``ssl_ca_file`` and authentication rules also does not enable mandatory client certificate verification."
+
+#: ../../integration/data sources.rst:199
 msgid "[Deprecated] MQ Data Source"
 msgstr "[Deprecated] MQ Data Source"
 
-#: ../../integration/data sources.rst:155
+#: ../../integration/data sources.rst:203
 msgid "Для интеграции с MQ лучше использовать :ref:`Camel DSL<rabbitmq_camel>`"
 msgstr "For MQ integration, it is better to use :ref:`Camel DSL<rabbitmq_camel>`"
 
-#: ../../integration/data sources.rst:157
+#: ../../integration/data sources.rst:205
 msgid "Источник данных для подключения к очереди сообщений"
 msgstr "Data source for connecting to a message queue"
 
-#: ../../integration/data sources.rst:171
+#: ../../integration/data sources.rst:219
 msgid "Идентификатор источника данных"
 msgstr "Data source identifier"
 
-#: ../../integration/data sources.rst:173
+#: ../../integration/data sources.rst:221
 msgid "Произвольное имя источника данных"
 msgstr "Arbitrary data source name"
 
-#: ../../integration/data sources.rst:174
+#: ../../integration/data sources.rst:222
 msgid "**URI**"
 msgstr "**URI**"
 
-#: ../../integration/data sources.rst:175
+#: ../../integration/data sources.rst:223
 msgid "Строка для подключения к очереди"
 msgstr "Connection string for the queue"
 
-#: ../../integration/data sources.rst:176
+#: ../../integration/data sources.rst:224
 msgid "**Type**"
 msgstr "**Type**"
 
-#: ../../integration/data sources.rst:177
+#: ../../integration/data sources.rst:225
 msgid "Тип очереди"
 msgstr "Queue type"
 
-#: ../../integration/data sources.rst:178
+#: ../../integration/data sources.rst:226
 msgid "**Credentials**"
 msgstr "**Credentials**"
 
-#: ../../integration/data sources.rst:179
+#: ../../integration/data sources.rst:227
 msgid "Ссылка на credentials где указаны login/pass для подключения к очереди"
 msgstr ""
 "Reference to credentials where the login/password for connecting to the "
 "queue is specified"
+
+#~ msgid ""
+#~ "Запрос будет отправляться только в сети"
+#~ " микросервисов, зарегистрированных в Eureka "
+#~ "(в таких запросах прокидываются header'ы "
+#~ "и cookie)"
+#~ msgstr ""
+#~ "The request will be sent only "
+#~ "within the network of microservices "
+#~ "registered in Eureka (headers and "
+#~ "cookies are passed in such requests)"
+
+#~ msgid "Можно выбрать методы http post, get, put и т.д."
+#~ msgstr "You can select http methods like post, get, put, etc."
+
+#~ msgid ""
+#~ "Начиная с версии 2.8.0 микросервиса "
+#~ "интеграции - появилась возможность указывать"
+#~ " в конфиге на форме **DataSource** "
+#~ "следующие параметры:"
+#~ msgstr ""
+#~ "Starting from version 2.8.0 of the "
+#~ "integration microservice, it has become "
+#~ "possible to specify the following "
+#~ "parameters in the **DataSource** form "
+#~ "config:"
+
+#~ msgid "Можно использовать при настройке внешней БД в **recsrc**."
+#~ msgstr "Can be used when configuring an external database in **recsrc**."
+
+#~ msgid ""
+#~ "Общий принцип таков, что исходя из "
+#~ "конфига - создается **HikariDataSource**."
+#~ msgstr ""
+#~ "The general principle is that a "
+#~ "**HikariDataSource** is created based on "
+#~ "the config."
+
+#~ msgid ""
+#~ "При указании данных свойств - в "
+#~ "наш создаваемый **HikariDataSource** попадут "
+#~ "дополнительные атрибуты, которые принудят "
+#~ "используемый драйвер ходить не по http,"
+#~ " а по https."
+#~ msgstr ""
+#~ "When these properties are specified, "
+#~ "additional attributes will be included "
+#~ "in our created **HikariDataSource**, which "
+#~ "will force the used driver to use"
+#~ " HTTPS instead of HTTP."
+
+#~ msgid "Доступные сейчас режимы:"
+#~ msgstr "Currently available modes:"
+
+#~ msgid "**none**"
+#~ msgstr "**none**"
+
+#~ msgid ""
+#~ "Флаг ssl выключен, поля НЕ заполнены."
+#~ " Ходим по HTTP протоколу (трафик не"
+#~ " защищен)."
+#~ msgstr ""
+#~ "SSL flag is off, fields are NOT"
+#~ " filled. We use the HTTP protocol "
+#~ "(traffic is not secured)."
+
+#~ msgid ""
+#~ "Флаг ssl включен, остальные поля НЕ "
+#~ "заполнены. Ходим по HTTPS, трафик "
+#~ "защищен шифрованием, но мы не проверяем"
+#~ " что БД именно та, которой мы "
+#~ "доверяем. БД так же не уверена что"
+#~ " соединяется с нашим приложением."
+#~ msgstr ""
+#~ "SSL flag is on, other fields are"
+#~ " NOT filled. We use HTTPS, traffic"
+#~ " is secured by encryption, but we "
+#~ "do not verify that the database is"
+#~ " the one we trust. The database "
+#~ "is also not sure it is connecting"
+#~ " to our application."
+
+#~ msgid ""
+#~ "Флаг ssl включен, SSL root cert "
+#~ "path и SSL cert path указаны, "
+#~ "SSLkey path не указан. Ходим по "
+#~ "HTTPS, трафик защищен шифрованием. Мы "
+#~ "знаем что БД именно та, к которой"
+#~ " мы хотим подключиться (при успехе "
+#~ "рукопожатия). БД еще не уверена что "
+#~ "соединяется с нашим приложением."
+#~ msgstr ""
+#~ "SSL flag is on, SSL root cert "
+#~ "path and SSL cert path are "
+#~ "specified, SSLkey path is not specified."
+#~ " We use HTTPS, traffic is secured "
+#~ "by encryption. We know the database "
+#~ "is the one we want to connect "
+#~ "to (upon successful handshake). The "
+#~ "database is still not sure it is"
+#~ " connecting to our application."
+
+#~ msgid ""
+#~ "Флаг ssl включен, остальные поля "
+#~ "заполнены. Ходим по HTTPS, трафик "
+#~ "защищен. Мы уверены в БД, а БД "
+#~ "уверена в нас."
+#~ msgstr ""
+#~ "SSL flag is on, other fields are"
+#~ " filled. We use HTTPS, traffic is "
+#~ "secured. We are confident in the "
+#~ "database, and the database is confident"
+#~ " in us."
+
+#~ msgid ""
+#~ "Более подробно по настройкам можно "
+#~ "посмотреть тут: `Configuring the Client "
+#~ "<https://jdbc.postgresql.org/documentation/head/ssl-"
+#~ "client.html>`_ и тут: `Connecting to the"
+#~ " Database "
+#~ "<https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_"
+#~ " Connecting to the Database."
+#~ msgstr ""
+#~ "For more details on configuration, you"
+#~ " can look here: `Configuring the "
+#~ "Client <https://jdbc.postgresql.org/documentation/head/ssl-"
+#~ "client.html>`_ and here: `Connecting to "
+#~ "the Database "
+#~ "<https://jdbc.postgresql.org/documentation/head/connect.html#ssl>`_."
+
+#~ msgid ""
+#~ "Настройки со стороны БД описаны тут:"
+#~ "  `SSL Support <https://www.postgresql.org/docs/9.0"
+#~ "/libpq-ssl.html>`_"
+#~ msgstr ""
+#~ "Database-side settings are described "
+#~ "here: `SSL Support "
+#~ "<https://www.postgresql.org/docs/9.0/libpq-ssl.html>`_"
+
+#~ msgid ""
+#~ "ВАЖНО! Тестировались только варианты require"
+#~ " и verify-ca для БД Postgres."
+#~ msgstr ""
+#~ "IMPORTANT! Only the require and "
+#~ "verify-ca options have been tested "
+#~ "for Postgres DB."
+
+#~ msgid "Подъем БД в докере с возможностью общаться по HTTPS"
+#~ msgstr "Running the DB in Docker with HTTPS Communication Capability"
+
+#~ msgid ""
+#~ "Для каждой системы подход прокидывания "
+#~ "сертификатов в образ контейнера будет "
+#~ "разный, так как постгрису важно чтоб "
+#~ "на файл еще были минимальные права "
+#~ "(640 и меньше от рута, 600 и "
+#~ "меньше при запуске в других случаях)."
+#~ msgstr ""
+#~ "For each system, the approach to "
+#~ "injecting certificates into the container "
+#~ "image will be different, because it "
+#~ "is important for Postgres that the "
+#~ "file has minimal permissions (640 or "
+#~ "less from root, 600 or less when"
+#~ " running in other cases)."
+
+#~ msgid "Расскажу как обойти это на примере Windows."
+#~ msgstr "I will explain how to work around this using Windows as an example."
+
+#~ msgid ""
+#~ "В Windows, к сожалению, такой контейнер"
+#~ " в докере можно запустить только "
+#~ "собирая его сразу с сертификатами."
+#~ msgstr ""
+#~ "In Windows, unfortunately, such a "
+#~ "container in Docker can only be "
+#~ "run by building it with the "
+#~ "certificates included from the start."
+
+#~ msgid "Сгенерим ключи и серт:"
+#~ msgstr "Let's generate keys and certificates:"
+
+#~ msgid "Собираем и запускаем:"
+#~ msgstr "Build and run:"
 

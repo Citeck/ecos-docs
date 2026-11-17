@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,34 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:2
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:4
 msgid "Подключение микросервиса ecos-edi локально"
 msgstr "Connecting the ecos-edi Microservice Locally"
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:4
-msgid "Рассматривается yaml версия для ECOS 4.2 и выше."
-msgstr "The yaml version for ECOS 4.2 and above is covered."
-
 #: ../../general/Ms_description/EDI_microservice/deployment.rst:6
+msgid ""
+"Ниже приведён пример подключения ecos-edi к локальному Docker Compose "
+"окружению. Выберите образ микросервиса, совместимый с используемой "
+"поставкой ECOS, и задайте его полный адрес с тегом в переменной "
+"``ECOS_EDI_IMAGE`` (например, в файле ``.env`` рядом с Compose-файлом)."
+msgstr "The following is an example of connecting ecos-edi to a local Docker Compose environment. Choose a microservice image compatible with your ECOS distribution and specify its full address with a tag in the ``ECOS_EDI_IMAGE`` variable (for example, in the ``.env`` file next to the Compose file)."
+
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:8
+msgid ""
+"Параметры БД в примере соответствуют конфигурации ecos-edi 1.14.0. Имена "
+"сервисов, профили и параметры registry/config-сервера необходимо "
+"согласовать с вашим окружением."
+msgstr "The database parameters in the example match the ecos-edi 1.14.0 configuration. Service names, profiles, and registry/config server parameters must be aligned with your environment."
+
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:10
 msgid ""
 "Для поднятия микросервиса ecos-edi локально необходимо выполнить "
 "следующие шаги:"
-msgstr ""
-"To run the ecos-edi microservice locally, perform the following steps:"
+msgstr "To run the ecos-edi microservice locally, perform the following steps:"
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:8
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:12
 msgid "Добавить описание в yaml:"
 msgstr "Add the definition to the yaml file:"
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:34
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:38
 msgid ""
 "Также перед запуском в БД микросервиса **ecos-microservices-psql-dev** "
 "необходимо создать базу данных **ecos_edi**."
 msgstr ""
-"Before starting, you also need to create the **ecos_edi** database in the "
-"**ecos-microservices-psql-dev** microservice database."
+"Before starting, you also need to create the **ecos_edi** database in the"
+" **ecos-microservices-psql-dev** microservice database."
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:36
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:40
 msgid ""
 "В запущенном контейнере **ecos-microservices-psql-dev** необходимо "
 "выполнить следующие команды:"
@@ -53,18 +63,48 @@ msgstr ""
 "In the running **ecos-microservices-psql-dev** container, execute the "
 "following commands:"
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:44
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:48
 msgid ""
-"При локальном поднятии также убедиться что в **application.yml** "
-"прописаны параметры подключения к БД edi, соответствующие созданной БД."
-msgstr ""
-"When running locally, also make sure that **application.yml** contains the "
-"EDI database connection parameters matching the created database."
+"Параметры подключения должны соответствовать созданной БД. В конфигурации"
+" приложения используются свойства ``ecos.webapp.dataSources.main.url``, "
+"``ecos.webapp.dataSources.main.username`` и "
+"``ecos.webapp.dataSources.main.password``. В примере они переопределены "
+"через переменные окружения. Источник ``main-xa-aware`` в поставляемом "
+"``application.yml`` ссылается на эти же свойства."
+msgstr "Connection parameters must match the database you created. The application configuration uses the ``ecos.webapp.dataSources.main.url``, ``ecos.webapp.dataSources.main.username``, and ``ecos.webapp.dataSources.main.password`` properties. The example overrides them through environment variables. The ``main-xa-aware`` source in the supplied ``application.yml`` refers to these same properties."
 
-#: ../../general/Ms_description/EDI_microservice/deployment.rst:46
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:50
 msgid ""
-"Создание базы добавлено в скрипт инициализации БД для "
-"nexus.citeck.ru/postgresql:12.7-1"
-msgstr ""
-"Database creation has been added to the DB initialization script for "
-"nexus.citeck.ru/postgresql:12.7-1"
+"Если ваше окружение создаёт БД и пользователя автоматически, повторно "
+"выполнять SQL-команды не требуется."
+msgstr "If your environment creates the database and user automatically, there is no need to run the SQL commands again."
+
+#: ../../general/Ms_description/EDI_microservice/deployment.rst:52
+msgid ""
+"Для сборки ecos-edi 1.14.0 из исходников требуется JDK 25. При запуске "
+"готового Docker-образа Java используется внутри контейнера."
+msgstr "Building ecos-edi 1.14.0 from source requires JDK 25. When running a prebuilt Docker image, Java runs inside the container."
+
+#~ msgid "Рассматривается yaml версия для ECOS 4.2 и выше."
+#~ msgstr "The yaml version for ECOS 4.2 and above is covered."
+
+#~ msgid ""
+#~ "При локальном поднятии также убедиться "
+#~ "что в **application.yml** прописаны параметры"
+#~ " подключения к БД edi, соответствующие "
+#~ "созданной БД."
+#~ msgstr ""
+#~ "When running locally, also make sure "
+#~ "that **application.yml** contains the EDI "
+#~ "database connection parameters matching the"
+#~ " created database."
+
+#~ msgid ""
+#~ "Создание базы добавлено в скрипт "
+#~ "инициализации БД для "
+#~ "nexus.citeck.ru/postgresql:12.7-1"
+#~ msgstr ""
+#~ "Database creation has been added to "
+#~ "the DB initialization script for "
+#~ "nexus.citeck.ru/postgresql:12.7-1"
+

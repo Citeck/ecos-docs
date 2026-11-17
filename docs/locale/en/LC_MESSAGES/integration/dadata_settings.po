@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 13:05+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -52,37 +52,72 @@ msgstr "Integration Components"
 
 #: ../../integration/dadata_settings.rst:17
 msgid ""
-"Интеграция поставляется артефактами модуля справочников и выполняется "
-"микросервисом :ref:`ecos-integrations<ecos_integrations_app>`."
-msgstr ""
-"The integration is delivered as artifacts of the reference books module "
-"and is executed by the :ref:`ecos-integrations<ecos_integrations_app>` "
-"microservice."
+"Сценарий автозаполнения карточки поставляется артефактами модуля "
+"справочников и выполняется микросервисом :ref:`ecos-"
+"integrations<ecos_integrations_app>`. Помимо него, в integrations есть "
+"отдельный встроенный источник записей ``dadata-party``, описанный ниже."
+msgstr "The card autofill scenario is supplied as artifacts of the data lists module and executed by the :ref:`ecos-integrations <ecos_integrations_app>` microservice. In addition, integrations has a separate built-in record source, ``dadata-party``, described below."
+
+#: ../../integration/dadata_settings.rst:19
+msgid ""
+"Маппинг и поведение формы ниже соответствуют артефактам ``ecos-datalist "
+"1.19.0-SNAPSHOT``. В доработанной поставке они могут отличаться. Основные"
+" файлы модуля:"
+msgstr "The mapping and form behavior below correspond to ``ecos-datalist 1.19.0-SNAPSHOT`` artifacts. They may differ in a customized distribution. Main module files:"
+
+#: ../../integration/dadata_settings.rst:21
+msgid ""
+"``app/artifacts/ui/form/ecos-counterparty-form.json`` — форма и скрипт "
+"автозаполнения;"
+msgstr "``app/artifacts/ui/form/ecos-counterparty-form.json`` — form and autofill script;"
+
+#: ../../integration/dadata_settings.rst:22
+msgid ""
+"``app/artifacts/integration/recsrc/findCounterpartyByInn.yml`` — "
+"параметры источника записей;"
+msgstr "``app/artifacts/integration/recsrc/findCounterpartyByInn.yml`` — record source parameters;"
+
+#: ../../integration/dadata_settings.rst:23
+msgid ""
+"``app/artifacts/integration/datasource/counterparty-suggestions-"
+"dadata.yml`` — HTTP-запрос и JOLT;"
+msgstr "``app/artifacts/integration/datasource/counterparty-suggestions-dadata.yml`` — HTTP request and JOLT;"
 
 #: ../../integration/dadata_settings.rst:24
+msgid "``app/artifacts/model/type/ecos-counterparty.yml`` — модель контрагента."
+msgstr "``app/artifacts/model/type/ecos-counterparty.yml`` — counterparty model."
+
+#: ../../integration/dadata_settings.rst:26
+msgid ""
+"Пути приведены относительно ``src/main/resources`` проекта ``ecos-"
+"datalist``."
+msgstr "Paths are relative to ``src/main/resources`` in the ``ecos-datalist`` project."
+
+#: ../../integration/dadata_settings.rst:33
 msgid "Компонент"
 msgstr "Component"
 
-#: ../../integration/dadata_settings.rst:25
+#: ../../integration/dadata_settings.rst:34
 msgid "Тип"
 msgstr "Type"
 
-#: ../../integration/dadata_settings.rst:26
+#: ../../integration/dadata_settings.rst:35
 msgid "Назначение"
 msgstr "Purpose"
 
-#: ../../integration/dadata_settings.rst:27
+#: ../../integration/dadata_settings.rst:36
 msgid "``ecos-counterparty-form``"
 msgstr "``ecos-counterparty-form``"
 
-#: ../../integration/dadata_settings.rst:28
-#: ../../integration/dadata_settings.rst:213
-#: ../../integration/dadata_settings.rst:219
-#: ../../integration/dadata_settings.rst:231
+#: ../../integration/dadata_settings.rst:37
+#: ../../integration/dadata_settings.rst:289
+#: ../../integration/dadata_settings.rst:295
+#: ../../integration/dadata_settings.rst:307
+#: ../../integration/dadata_settings.rst:310
 msgid "Форма"
 msgstr "Form"
 
-#: ../../integration/dadata_settings.rst:29
+#: ../../integration/dadata_settings.rst:38
 msgid ""
 "Форма типа ``ecos-counterparty``: кнопка **«Автозаполнение»**, сборка "
 "юридического адреса, диалог перезаписи заполненных полей"
@@ -90,75 +125,176 @@ msgstr ""
 "Form of the ``ecos-counterparty`` type: the **Autofill** button, legal "
 "address assembly, dialog for overwriting filled-in fields"
 
-#: ../../integration/dadata_settings.rst:30
+#: ../../integration/dadata_settings.rst:39
 msgid "``findCounterpartyByInn``"
 msgstr "``findCounterpartyByInn``"
 
-#: ../../integration/dadata_settings.rst:31
+#: ../../integration/dadata_settings.rst:40
 msgid "Источник записей (``rest``)"
 msgstr "Records source (``rest``)"
 
-#: ../../integration/dadata_settings.rst:32
+#: ../../integration/dadata_settings.rst:41
 msgid "Принимает ИНН, хранит API-ключ DaData в параметре ``token``"
 msgstr "Accepts the INN, stores the DaData API key in the ``token`` parameter"
 
-#: ../../integration/dadata_settings.rst:33
+#: ../../integration/dadata_settings.rst:42
 msgid "``counterparty-suggestions-dadata``"
 msgstr "``counterparty-suggestions-dadata``"
 
-#: ../../integration/dadata_settings.rst:34
+#: ../../integration/dadata_settings.rst:43
 msgid ":ref:`Источник данных<data_sources>` (REST)"
 msgstr ":ref:`Data source<data_sources>` (REST)"
 
-#: ../../integration/dadata_settings.rst:35
+#: ../../integration/dadata_settings.rst:44
 msgid "Отправляет запрос в DaData и преобразует ответ JOLT-спецификацией"
 msgstr ""
 "Sends a request to DaData and transforms the response with a JOLT "
 "specification"
 
-#: ../../integration/dadata_settings.rst:38
+#: ../../integration/dadata_settings.rst:47
 msgid "Поток запроса"
 msgstr "Request Flow"
 
-#: ../../integration/dadata_settings.rst:62
+#: ../../integration/dadata_settings.rst:77
 msgid ""
-"Одно автозаполнение — один запрос к DaData. Метод ``findById/party`` с "
-"``branch_type: MAIN`` ищет только головную организацию и одинаков на всех"
-" тарифах."
-msgstr ""
-"One autofill means one request to DaData. The ``findById/party`` method "
-"with ``branch_type: MAIN`` searches only for the head organization and is"
-" the same on all plans."
+"В обычном пути одного нажатия выполняется один запрос к DaData. Форма "
+"берёт только первый результат; выбора из нескольких найденных организаций"
+" нет. Метод ``findById/party`` с ``branch_type: MAIN`` ограничивает поиск"
+" головной организацией. Полнота возвращаемых данных зависит от тарифа "
+"DaData."
+msgstr "In the normal flow, one click makes one request to DaData. The form takes only the first result; there is no selection among multiple organizations found. The ``findById/party`` method with ``branch_type: MAIN`` restricts the search to the head organization. The completeness of returned data depends on the DaData plan."
 
-#: ../../integration/dadata_settings.rst:65
+#: ../../integration/dadata_settings.rst:80
+msgid "Встроенный источник dadata-party"
+msgstr "Built-in dadata-party source"
+
+#: ../../integration/dadata_settings.rst:82
+msgid ""
+"Источник ``integrations/dadata-party`` реализован в ``IntegrationsDAO`` и"
+" ``DadataClient``. Он напрямую вызывает метод DaData ``findById/party``. "
+"Этот путь использует свойства приложения и возвращает данные без "
+"JOLT-преобразования; подключение к форме контрагента через "
+"``findCounterpartyByInn`` настраивается отдельно."
+msgstr "The ``integrations/dadata-party`` source is implemented in ``IntegrationsDAO`` and ``DadataClient``. It directly calls DaData's ``findById/party`` method. This path uses application properties and returns data without a JOLT transformation; connecting it to the counterparty form through ``findCounterpartyByInn`` is configured separately."
+
+#: ../../integration/dadata_settings.rst:84
+msgid "Настройки микросервиса integrations:"
+msgstr "integrations microservice settings:"
+
+#: ../../integration/dadata_settings.rst:91
+msgid ""
+"``DadataClientConfig`` добавляет заголовок ``Authorization: Token "
+"<API-ключ>``. Свойство ``dadata.api-key`` относится к встроенному "
+"клиенту; параметр ``token`` источника записей ``findCounterpartyByInn`` "
+"этим свойством не настраивается."
+msgstr "``DadataClientConfig`` adds the ``Authorization: Token <API-key>`` header. The ``dadata.api-key`` property applies to the built-in client; it does not configure the ``token`` parameter of the ``findCounterpartyByInn`` record source."
+
+#: ../../integration/dadata_settings.rst:93
+msgid "Параметры запроса к встроенному источнику:"
+msgstr "Query parameters for the built-in source:"
+
+#: ../../integration/dadata_settings.rst:100
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../integration/dadata_settings.rst:101
+msgid "Описание"
+msgstr "Description"
+
+#: ../../integration/dadata_settings.rst:102
+msgid "``sourceId``"
+msgstr "``sourceId``"
+
+#: ../../integration/dadata_settings.rst:103
+msgid "``integrations/dadata-party``. Префикс ``rs-`` не используется."
+msgstr "``integrations/dadata-party``. The ``rs-`` prefix is not used."
+
+#: ../../integration/dadata_settings.rst:104
+msgid "``language``"
+msgstr "``language``"
+
+#: ../../integration/dadata_settings.rst:105
+msgid "``json``."
+msgstr "``json``."
+
+#: ../../integration/dadata_settings.rst:106
+msgid "``query.tin``"
+msgstr "``query.tin``"
+
+#: ../../integration/dadata_settings.rst:107
+msgid "ИНН для поиска. Передаётся в поле ``query`` HTTP-запроса DaData."
+msgstr "TIN to search for. Passed in the ``query`` field of the DaData HTTP request."
+
+#: ../../integration/dadata_settings.rst:108
+msgid "``query.main``"
+msgstr "``query.main``"
+
+#: ../../integration/dadata_settings.rst:109
+msgid ""
+"Необязательный флаг выбора головной организации. По умолчанию ``false``. "
+"Ограничение текущей реализации описано ниже."
+msgstr "Optional flag for selecting the head organization. Defaults to ``false``. The limitation of the current implementation is described below."
+
+#: ../../integration/dadata_settings.rst:111
+msgid "Пример тела POST-запроса к ``{{host}}/gateway/api/records/query``:"
+msgstr "Example POST request body for ``{{host}}/gateway/api/records/query``:"
+
+#: ../../integration/dadata_settings.rst:128
+msgid ""
+"Каждый элемент ``suggestions`` преобразуется в запись: идентификатор "
+"берётся из ``data.hid``, а сведения об организации доступны в атрибуте "
+"``data``. Автоматического переноса этих значений в поля карточки "
+"контрагента этот DAO не выполняет."
+msgstr "Each ``suggestions`` item is converted into a record: the identifier is taken from ``data.hid``, and organization details are available in the ``data`` attribute. This DAO does not automatically transfer these values into counterparty card fields."
+
+#: ../../integration/dadata_settings.rst:132
+msgid ""
+"В проверенной реализации ``ecos-integrations 2.40.0-SNAPSHOT`` поле "
+"клиента ``branchType`` помечено ``@JsonProperty(\"branch-type\")``. При "
+"``main=true`` клиент формирует ``branch-type: MAIN``, тогда как `API "
+"DaData <https://dadata.ru/api/find-party/>`_ ожидает ``branch_type: "
+"MAIN`` — с подчёркиванием."
+msgstr "In the verified ``ecos-integrations 2.40.0-SNAPSHOT`` implementation, the client's ``branchType`` field is annotated with ``@JsonProperty(\"branch-type\")``. With ``main=true``, the client produces ``branch-type: MAIN``, whereas the `DaData API <https://dadata.ru/api/find-party/>`_ expects ``branch_type: MAIN`` — with an underscore."
+
+#: ../../integration/dadata_settings.rst:134
+msgid ""
+"Пока расхождение не исправлено и не проверено запросом, нельзя полагаться"
+" на ``main=true`` как на фильтр головной организации. Исправление "
+"требуется в ``DadataClient.PartyByIdQuery``: имя JSON-поля должно быть "
+"``branch_type``. Добавление ``branch_type`` в запрос Records API не "
+"заменяет исправление клиента: DAO принимает параметры ``tin`` и ``main`` "
+"и самостоятельно формирует HTTP-тело."
+msgstr "Until this discrepancy is fixed and verified by a request, ``main=true`` cannot be relied on as a head organization filter. The fix is required in ``DadataClient.PartyByIdQuery``: the JSON field name must be ``branch_type``. Adding ``branch_type`` to the Records API request does not replace the client fix: the DAO accepts ``tin`` and ``main`` parameters and constructs the HTTP body itself."
+
+#: ../../integration/dadata_settings.rst:137
 msgid "Подключение"
 msgstr "Connection"
 
-#: ../../integration/dadata_settings.rst:68
+#: ../../integration/dadata_settings.rst:140
 msgid "Ключи DaData"
 msgstr "DaData Keys"
 
-#: ../../integration/dadata_settings.rst:70
+#: ../../integration/dadata_settings.rst:142
 msgid "В личном кабинете DaData доступны два ключа:"
 msgstr "Two keys are available in your DaData account:"
 
-#: ../../integration/dadata_settings.rst:77
+#: ../../integration/dadata_settings.rst:149
 msgid "Ключ"
 msgstr "Key"
 
-#: ../../integration/dadata_settings.rst:78
+#: ../../integration/dadata_settings.rst:150
 msgid "Для чего нужен"
 msgstr "What it is for"
 
-#: ../../integration/dadata_settings.rst:79
+#: ../../integration/dadata_settings.rst:151
 msgid "Используется в Citeck"
 msgstr "Used in Citeck"
 
-#: ../../integration/dadata_settings.rst:80
+#: ../../integration/dadata_settings.rst:152
 msgid "API-ключ"
 msgstr "API key"
 
-#: ../../integration/dadata_settings.rst:81
+#: ../../integration/dadata_settings.rst:153
 msgid ""
 "Подсказки, поиск организации по ИНН, банка по БИК, адреса по коду, "
 "справочники — всё, что оплачивается подпиской"
@@ -166,58 +302,45 @@ msgstr ""
 "Suggestions, organization search by INN, bank search by BIC, address by "
 "code, reference books — everything covered by the subscription"
 
-#: ../../integration/dadata_settings.rst:82
-msgid "Да"
-msgstr "Yes"
+#: ../../integration/dadata_settings.rst:154
+msgid "Да, в обоих описанных сценариях"
+msgstr "Yes, in both scenarios described"
 
-#: ../../integration/dadata_settings.rst:83
+#: ../../integration/dadata_settings.rst:155
 msgid "Секретный ключ"
 msgstr "Secret key"
 
-#: ../../integration/dadata_settings.rst:84
+#: ../../integration/dadata_settings.rst:156
 msgid ""
-"Передаётся в заголовке ``X-Secret``. Нужен для платных поштучных методов "
-"стандартизации (разбор адреса, проверка паспорта, ФИО, телефона, email), "
-"API статистики и баланса, MCP-сервера DaData"
-msgstr ""
-"Passed in the ``X-Secret`` header. Required for paid per-record "
-"standardization methods (address parsing, passport, full name, phone and "
-"email checks), the statistics and balance API, and the DaData MCP server"
+"Передаётся в заголовке ``X-Secret`` при серверных вызовах API "
+"стандартизации. Требования других методов проверяйте по их документации."
+msgstr "Passed in the ``X-Secret`` header for server-side calls to the standardization API. Check the documentation for requirements of other methods."
 
-#: ../../integration/dadata_settings.rst:85
-msgid "Нет"
-msgstr "No"
+#: ../../integration/dadata_settings.rst:157
+msgid "Не используется в описанном автозаполнении и встроенном ``dadata-party``"
+msgstr "Not used in the described autofill or the built-in ``dadata-party``"
 
-#: ../../integration/dadata_settings.rst:87
+#: ../../integration/dadata_settings.rst:159
 msgid ""
-"Для автозаполнения достаточно API-ключа. Секретный ключ в Citeck "
-"вписывать некуда: он понадобится, только если будут подключены "
-"стандартизация, мониторинг лимита или MCP-сервер."
-msgstr ""
-"The API key is enough for autofill. There is nowhere in Citeck to enter "
-"the secret key: it will only be needed if standardization, limit "
-"monitoring or the MCP server is connected."
+"Для поиска организации через ``findById/party`` достаточно API-ключа. "
+"Если подключается другой сервис DaData, его заголовки аутентификации и "
+"способ разрешения секретов нужно настроить отдельно."
+msgstr "An API key is sufficient to search for an organization through ``findById/party``. If you connect another DaData service, configure its authentication headers and secret resolution method separately."
 
-#: ../../integration/dadata_settings.rst:89
+#: ../../integration/dadata_settings.rst:161
 msgid ""
-"DaData считает API-ключ публичным: для виджета подсказок он встраивается "
-"в код веб-страницы. Поэтому всё, что списывает деньги с баланса или "
-"показывает статистику аккаунта, дополнительно требует секретного ключа, а"
-" методы стандартизации DaData запрещает вызывать из браузера. Секретный "
-"ключ допустимо хранить только на сервере, в :ref:`секретах<ecos_secret>`."
-msgstr ""
-"DaData treats the API key as public: for the suggestions widget, it is "
-"embedded in the web page code. Therefore, everything that charges the "
-"balance or shows account statistics additionally requires the secret key,"
-" and DaData prohibits calling standardization methods from the browser. "
-"The secret key may only be stored on the server, in "
-":ref:`secrets<ecos_secret>`."
+"В браузерном виджете подсказок API-ключ может передаваться клиенту. Для "
+"стандартизации DaData требует дополнительный секретный ключ и серверный "
+"вызов. Такой ключ следует хранить на сервере, например в "
+":ref:`секретах<ecos_secret>`, и получать его через настроенную серверную "
+"интеграцию."
+msgstr "In a browser suggestions widget, the API key may be passed to the client. DaData standardization requires an additional secret key and a server-side call. Store this key on the server, for example in :ref:`secrets <ecos_secret>`, and retrieve it through a configured server-side integration."
 
-#: ../../integration/dadata_settings.rst:92
+#: ../../integration/dadata_settings.rst:164
 msgid "Получение ключа"
 msgstr "Getting the Key"
 
-#: ../../integration/dadata_settings.rst:94
+#: ../../integration/dadata_settings.rst:166
 msgid ""
 "Перейдите на https://dadata.ru и нажмите кнопку **«Войти»** в правом "
 "верхнем углу экрана."
@@ -225,7 +348,7 @@ msgstr ""
 "Go to https://dadata.ru and click **Войти** (Sign in) in the upper right "
 "corner of the screen."
 
-#: ../../integration/dadata_settings.rst:96
+#: ../../integration/dadata_settings.rst:168
 msgid ""
 "В открывшемся окне выберите **«Зарегистрироваться»**. Введите имя "
 "пользователя, электронную почту и пароль, затем нажмите кнопку "
@@ -234,15 +357,14 @@ msgstr ""
 "In the window that opens, select **Зарегистрироваться** (Sign up). Enter "
 "a username, email and password, then click the sign-up button."
 
-#: ../../integration/dadata_settings.rst:98
+#: ../../integration/dadata_settings.rst:170
 msgid ""
 "Подтвердите email: на указанный адрес придёт письмо со ссылкой для "
-"подтверждения. Без этого шага ключи не будут сгенерированы."
-msgstr ""
-"Confirm your email: a message with a confirmation link will be sent to "
-"the specified address. Without this step, the keys will not be generated."
+"подтверждения. Неподтверждённая почта может быть причиной отказа API с "
+"кодом 403."
+msgstr "Confirm your email: a message with a confirmation link will be sent to the specified address. An unconfirmed email may cause the API to reject requests with code 403."
 
-#: ../../integration/dadata_settings.rst:100
+#: ../../integration/dadata_settings.rst:172
 msgid ""
 "Перейдите в личный кабинет по адресу https://dadata.ru/profile/ — в "
 "нижней части страницы указаны API-ключ и секретный ключ аккаунта."
@@ -250,15 +372,22 @@ msgstr ""
 "Go to your account at https://dadata.ru/profile/ — the account's API key "
 "and secret key are shown at the bottom of the page."
 
-#: ../../integration/dadata_settings.rst:102
+#: ../../integration/dadata_settings.rst:174
 msgid "Скопируйте **API-ключ**. Секретный ключ для автозаполнения не нужен."
 msgstr "Copy the **API key**. The secret key is not needed for autofill."
 
-#: ../../integration/dadata_settings.rst:105
-msgid "Настройка Citeck"
-msgstr "Configuring Citeck"
+#: ../../integration/dadata_settings.rst:177
+msgid "Настройка автозаполнения в форме"
+msgstr "Configuring autofill in the form"
 
-#: ../../integration/dadata_settings.rst:107
+#: ../../integration/dadata_settings.rst:179
+msgid ""
+"Эти действия относятся к сценарию модуля справочников через "
+"``findCounterpartyByInn``. Параметры встроенного ``dadata-party`` описаны"
+" в его разделе выше."
+msgstr "These steps apply to the data lists module scenario through ``findCounterpartyByInn``. The built-in ``dadata-party`` parameters are described in its section above."
+
+#: ../../integration/dadata_settings.rst:181
 msgid ""
 "Перейдите в рабочее пространство **«Раздел администратора»** → "
 "**Интеграция** → **Источники записей**."
@@ -266,15 +395,15 @@ msgstr ""
 "Go to the **Administrator Section** workspace → **Integration** → "
 "**Records Sources**."
 
-#: ../../integration/dadata_settings.rst:108
+#: ../../integration/dadata_settings.rst:182
 msgid "Откройте запись **findCounterpartyByInn**."
 msgstr "Open the **findCounterpartyByInn** record."
 
-#: ../../integration/dadata_settings.rst:109
+#: ../../integration/dadata_settings.rst:183
 msgid "Вставьте API-ключ в параметр ``token`` и сохраните запись."
 msgstr "Paste the API key into the ``token`` parameter and save the record."
 
-#: ../../integration/dadata_settings.rst:121
+#: ../../integration/dadata_settings.rst:195
 msgid ""
 "В поставке параметр ``token`` пустой — без ключа автозаполнение не "
 "работает."
@@ -282,156 +411,152 @@ msgstr ""
 "Out of the box, the ``token`` parameter is empty — autofill does not work"
 " without the key."
 
-#: ../../integration/dadata_settings.rst:125
+#: ../../integration/dadata_settings.rst:199
 msgid ""
-"Ключ хранится в настройках источника записей открытым текстом, а не в "
-"секретах. Его видят все, у кого есть доступ к настройкам источников "
-"записей. Ограничьте этот доступ и не используйте для Citeck ключ аккаунта"
-" DaData, на котором подключены платные поштучные сервисы."
-msgstr ""
-"The key is stored in the records source settings as plain text, not in "
-"secrets. Anyone with access to the records source settings can see it. "
-"Restrict this access and do not use for Citeck the key of a DaData "
-"account that has paid per-record services enabled."
+"Ключ хранится в параметре источника записей открытым текстом, а не в "
+"секретах. Учитывайте права чтения этой конфигурации и ограничьте доступ к"
+" ней."
+msgstr "The key is stored in plain text in a record source parameter rather than in secrets. Consider read permissions for this configuration and restrict access to it."
 
-#: ../../integration/dadata_settings.rst:128
+#: ../../integration/dadata_settings.rst:202
 msgid "Почему ключ не в секрете"
 msgstr "Why the key is not in a secret"
 
-#: ../../integration/dadata_settings.rst:130
+#: ../../integration/dadata_settings.rst:204
 msgid ""
-"Это ограничение платформы, а не только интеграции с DaData. Конфигурация "
-"REST-источника данных содержит только URL, признак Internal, HTTP-метод, "
-"заголовки, тело запроса и JOLT-спецификацию — поля для ссылки на секрет "
-"нет. Поэтому ключ передаётся параметром источника записей и подставляется"
-" в заголовок ``Authorization``. Тот же приём используется в "
-"REST-источнике данных для Jira."
-msgstr ""
-"This is a platform limitation, not just a limitation of the DaData "
-"integration. The REST data source configuration contains only the URL, "
-"the Internal flag, the HTTP method, headers, the request body and the "
-"JOLT specification — there is no field for a secret reference. Therefore,"
-" the key is passed as a records source parameter and substituted into the"
-" ``Authorization`` header. The same approach is used in the REST data "
-"source for Jira."
+"В текущей конфигурации REST-источника данных нет поля для ссылки на "
+"endpoint, credentials или secret. Поэтому в данном сценарии ключ "
+"передаётся параметром источника записей и подставляется в заголовок "
+"``Authorization``. Подстановка параметров в заголовки используется и в "
+"REST-источниках Jira."
+msgstr "The current REST data source configuration has no field for a reference to an endpoint, credentials, or secret. Therefore, in this scenario, the key is passed as a record source parameter and substituted into the ``Authorization`` header. Parameter substitution in headers is also used in Jira REST sources."
 
-#: ../../integration/dadata_settings.rst:132
+#: ../../integration/dadata_settings.rst:206
 msgid ""
-"Для сравнения, токен Контур.Фокуса хранится в секрете ``kontur-focus-api-"
-"token`` и подставляется через эндпоинт: вызов Контур.Фокуса реализован "
-"маршрутом Camel DSL, а не REST-источником данных."
-msgstr ""
-"By comparison, the Kontur.Focus token is stored in the ``kontur-focus-"
-"api-token`` secret and substituted via an endpoint: the Kontur.Focus call"
-" is implemented as a Camel DSL route, not as a REST data source."
+"Это ограничение конкретного REST DataSource, а не отсутствие секретов в "
+"платформе. Например, ``KonturFocusService`` в integrations получает токен"
+" из секрета ``kontur-focus-api-token`` через endpoint ``kontur-focus-api-"
+"endpoint`` и делает HTTP-вызов через ``RestTemplate``. В модуле "
+"справочников также есть отдельный REST-источник ``counterparty-focus-api-"
+"kontur``, передающий ``token`` параметром запроса. Эти пути Контур.Фокуса"
+" настраиваются независимо."
+msgstr "This is a limitation of the specific REST DataSource, not an absence of secrets in the platform. For example, ``KonturFocusService`` in integrations retrieves a token from the ``kontur-focus-api-token`` secret through the ``kontur-focus-api-endpoint`` endpoint and makes an HTTP call through ``RestTemplate``. The data lists module also has a separate ``counterparty-focus-api-kontur`` REST source that passes ``token`` as a query parameter. These Kontur.Focus paths are configured independently."
 
-#: ../../integration/dadata_settings.rst:134
-msgid "Перенести ключ DaData в секрет можно двумя способами:"
-msgstr "There are two ways to move the DaData key into a secret:"
+#: ../../integration/dadata_settings.rst:208
+msgid "Возможные варианты доработки хранения ключа DaData:"
+msgstr "Possible improvements to DaData key storage:"
 
-#: ../../integration/dadata_settings.rst:141
+#: ../../integration/dadata_settings.rst:215
 msgid "Вариант"
 msgstr "Option"
 
-#: ../../integration/dadata_settings.rst:142
+#: ../../integration/dadata_settings.rst:216
 msgid "Что потребуется"
 msgstr "What it requires"
 
-#: ../../integration/dadata_settings.rst:143
+#: ../../integration/dadata_settings.rst:217
 msgid "Эффект"
 msgstr "Effect"
 
-#: ../../integration/dadata_settings.rst:144
+#: ../../integration/dadata_settings.rst:218
 msgid "Добавить в конфигурацию REST-источника данных ссылку на секрет"
 msgstr "Add a secret reference to the REST data source configuration"
 
-#: ../../integration/dadata_settings.rst:145
+#: ../../integration/dadata_settings.rst:219
 msgid "Доработка ``ecos-integrations`` и формы REST-источника данных"
 msgstr "Changes to ``ecos-integrations`` and the REST data source form"
 
-#: ../../integration/dadata_settings.rst:146
+#: ../../integration/dadata_settings.rst:220
 msgid "Секреты станут доступны всем REST-источникам, включая Jira"
 msgstr "Secrets become available to all REST sources, including Jira"
 
-#: ../../integration/dadata_settings.rst:147
+#: ../../integration/dadata_settings.rst:221
 msgid "Перенести вызов DaData в маршрут Camel DSL с эндпоинтом и секретом"
 msgstr "Move the DaData call to a Camel DSL route with an endpoint and a secret"
 
-#: ../../integration/dadata_settings.rst:148
-msgid "Новый маршрут по образцу Контур.Фокуса, переделка источника записей"
-msgstr "A new route modeled on Kontur.Focus, reworking the records source"
+#: ../../integration/dadata_settings.rst:222
+msgid "Новый маршрут с получением ключа из секрета, переделка источника записей"
+msgstr "A new route that retrieves the key from a secret, reworking the record source"
 
-#: ../../integration/dadata_settings.rst:149
+#: ../../integration/dadata_settings.rst:223
 msgid "Решает задачу только для DaData"
 msgstr "Solves the problem only for DaData"
 
-#: ../../integration/dadata_settings.rst:152
+#: ../../integration/dadata_settings.rst:225
+msgid ""
+"Произвольный заголовок, включая ``X-Secret``, можно задать обычным "
+"значением в REST DataSource. Это не добавляет автоматического разрешения "
+"ссылки на секрет. Встроенный ``dadata-party`` также читает ключ из "
+"свойства приложения, а не из ссылки на секрет."
+msgstr "An arbitrary header, including ``X-Secret``, can be set as a regular value in the REST DataSource. This does not add automatic secret reference resolution. The built-in ``dadata-party`` also reads its key from an application property rather than a secret reference."
+
+#: ../../integration/dadata_settings.rst:228
 msgid "Маппинг полей"
 msgstr "Field Mapping"
 
-#: ../../integration/dadata_settings.rst:159
+#: ../../integration/dadata_settings.rst:235
 msgid "Поле ответа DaData"
 msgstr "DaData response field"
 
-#: ../../integration/dadata_settings.rst:160
+#: ../../integration/dadata_settings.rst:236
 msgid "Ключ после JOLT"
 msgstr "Key after JOLT"
 
-#: ../../integration/dadata_settings.rst:161
+#: ../../integration/dadata_settings.rst:237
 msgid "Атрибут ``ecos-counterparty``"
 msgstr "``ecos-counterparty`` attribute"
 
-#: ../../integration/dadata_settings.rst:162
-#: ../../integration/dadata_settings.rst:346
+#: ../../integration/dadata_settings.rst:238
+#: ../../integration/dadata_settings.rst:431
 msgid "Статус"
 msgstr "Status"
 
-#: ../../integration/dadata_settings.rst:163
+#: ../../integration/dadata_settings.rst:239
 msgid "``data.name.full_with_opf``"
 msgstr "``data.name.full_with_opf``"
 
-#: ../../integration/dadata_settings.rst:164
-#: ../../integration/dadata_settings.rst:165
+#: ../../integration/dadata_settings.rst:240
+#: ../../integration/dadata_settings.rst:241
 msgid "``fullOrganizationName``"
 msgstr "``fullOrganizationName``"
 
-#: ../../integration/dadata_settings.rst:166
-#: ../../integration/dadata_settings.rst:170
+#: ../../integration/dadata_settings.rst:242
+#: ../../integration/dadata_settings.rst:246
 msgid "Заполняется"
 msgstr "Filled in"
 
-#: ../../integration/dadata_settings.rst:167
+#: ../../integration/dadata_settings.rst:243
 msgid "``data.name.short_with_opf``"
 msgstr "``data.name.short_with_opf``"
 
-#: ../../integration/dadata_settings.rst:168
-#: ../../integration/dadata_settings.rst:169
+#: ../../integration/dadata_settings.rst:244
+#: ../../integration/dadata_settings.rst:245
 msgid "``shortOrganizationName``"
 msgstr "``shortOrganizationName``"
 
-#: ../../integration/dadata_settings.rst:171
+#: ../../integration/dadata_settings.rst:247
 msgid "``data.kpp``"
 msgstr "``data.kpp``"
 
-#: ../../integration/dadata_settings.rst:172
-#: ../../integration/dadata_settings.rst:173
+#: ../../integration/dadata_settings.rst:248
+#: ../../integration/dadata_settings.rst:249
 msgid "``kpp``"
 msgstr "``kpp``"
 
-#: ../../integration/dadata_settings.rst:174
+#: ../../integration/dadata_settings.rst:250
 msgid "Заполняется. У ИП пусто"
 msgstr "Filled in. Empty for individual entrepreneurs"
 
-#: ../../integration/dadata_settings.rst:175
+#: ../../integration/dadata_settings.rst:251
 msgid "``data.ogrn``"
 msgstr "``data.ogrn``"
 
-#: ../../integration/dadata_settings.rst:176
-#: ../../integration/dadata_settings.rst:177
+#: ../../integration/dadata_settings.rst:252
+#: ../../integration/dadata_settings.rst:253
 msgid "``ogrn``"
 msgstr "``ogrn``"
 
-#: ../../integration/dadata_settings.rst:178
+#: ../../integration/dadata_settings.rst:254
 msgid ""
 "Заполняется. У ИП это ОГРНИП, для которого в модели есть отдельный "
 "атрибут ``psrnsp``"
@@ -439,38 +564,38 @@ msgstr ""
 "Filled in. For individual entrepreneurs, this is the OGRNIP, which has a "
 "separate ``psrnsp`` attribute in the model"
 
-#: ../../integration/dadata_settings.rst:179
+#: ../../integration/dadata_settings.rst:255
 msgid "``data.okpo``"
 msgstr "``data.okpo``"
 
-#: ../../integration/dadata_settings.rst:180
-#: ../../integration/dadata_settings.rst:181
+#: ../../integration/dadata_settings.rst:256
+#: ../../integration/dadata_settings.rst:257
 msgid "``okpo``"
 msgstr "``okpo``"
 
-#: ../../integration/dadata_settings.rst:182
+#: ../../integration/dadata_settings.rst:258
 msgid "Заполняется. Есть только у действующих головных организаций и ИП"
 msgstr ""
 "Filled in. Available only for active head organizations and individual "
 "entrepreneurs"
 
-#: ../../integration/dadata_settings.rst:183
+#: ../../integration/dadata_settings.rst:259
 msgid "``data.management.name``"
 msgstr "``data.management.name``"
 
-#: ../../integration/dadata_settings.rst:184
+#: ../../integration/dadata_settings.rst:260
 msgid "``CEOname``"
 msgstr "``CEOname``"
 
-#: ../../integration/dadata_settings.rst:185
+#: ../../integration/dadata_settings.rst:261
 msgid "``ceoName``"
 msgstr "``ceoName``"
 
-#: ../../integration/dadata_settings.rst:186
+#: ../../integration/dadata_settings.rst:262
 msgid "Не заполняется: ключи различаются регистром"
 msgstr "Not filled in: the keys differ in letter case"
 
-#: ../../integration/dadata_settings.rst:187
+#: ../../integration/dadata_settings.rst:263
 msgid ""
 "``data.address.data.*``: индекс, регион, район города, город, населённый "
 "пункт, улица, дом, корпус, квартира — с типами"
@@ -478,7 +603,7 @@ msgstr ""
 "``data.address.data.*``: postal code, region, city district, city, "
 "locality, street, house, building, apartment — with types"
 
-#: ../../integration/dadata_settings.rst:188
+#: ../../integration/dadata_settings.rst:264
 #, python-brace-format
 msgid ""
 "``legalAddress.{zipCode, regionName, district, city, settlement, street, "
@@ -487,28 +612,28 @@ msgstr ""
 "``legalAddress.{zipCode, regionName, district, city, settlement, street, "
 "house, bulk, flat}``"
 
-#: ../../integration/dadata_settings.rst:189
+#: ../../integration/dadata_settings.rst:265
 msgid "``juridicalAddress`` — строка собирается в форме"
 msgstr "``juridicalAddress`` — the string is assembled in the form"
 
-#: ../../integration/dadata_settings.rst:190
+#: ../../integration/dadata_settings.rst:266
 msgid "Заполняется с ошибками, см. ниже"
 msgstr "Filled in with errors, see below"
 
-#: ../../integration/dadata_settings.rst:191
-#: ../../integration/dadata_settings.rst:192
+#: ../../integration/dadata_settings.rst:267
+#: ../../integration/dadata_settings.rst:268
 msgid "—"
 msgstr "—"
 
-#: ../../integration/dadata_settings.rst:193
+#: ../../integration/dadata_settings.rst:269
 msgid "``postAddress``"
 msgstr "``postAddress``"
 
-#: ../../integration/dadata_settings.rst:194
+#: ../../integration/dadata_settings.rst:270
 msgid "Не заполняется: почтового адреса в DaData нет"
 msgstr "Not filled in: DaData does not provide a postal address"
 
-#: ../../integration/dadata_settings.rst:196
+#: ../../integration/dadata_settings.rst:272
 msgid ""
 "Форма раскладывает значения по компонентам с совпадающими ключами, "
 "поэтому ключ после JOLT должен совпадать с ключом компонента формы."
@@ -516,34 +641,34 @@ msgstr ""
 "The form distributes values to components with matching keys, so the key "
 "after JOLT must match the form component key."
 
-#: ../../integration/dadata_settings.rst:199
+#: ../../integration/dadata_settings.rst:275
 msgid "Известные ограничения"
 msgstr "Known Limitations"
 
-#: ../../integration/dadata_settings.rst:206
-#: ../../integration/dadata_settings.rst:244
+#: ../../integration/dadata_settings.rst:282
+#: ../../integration/dadata_settings.rst:325
 msgid "Ограничение"
 msgstr "Limitation"
 
-#: ../../integration/dadata_settings.rst:207
+#: ../../integration/dadata_settings.rst:283
 msgid "Где"
 msgstr "Where"
 
-#: ../../integration/dadata_settings.rst:208
+#: ../../integration/dadata_settings.rst:284
 msgid "Причина и последствие"
 msgstr "Cause and consequence"
 
-#: ../../integration/dadata_settings.rst:209
+#: ../../integration/dadata_settings.rst:285
 msgid "Руководитель не заполняется"
 msgstr "Head is not filled in"
 
-#: ../../integration/dadata_settings.rst:210
-#: ../../integration/dadata_settings.rst:222
-#: ../../integration/dadata_settings.rst:228
+#: ../../integration/dadata_settings.rst:286
+#: ../../integration/dadata_settings.rst:298
+#: ../../integration/dadata_settings.rst:304
 msgid "Источник данных"
 msgstr "Data source"
 
-#: ../../integration/dadata_settings.rst:211
+#: ../../integration/dadata_settings.rst:287
 msgid ""
 "JOLT пишет ``CEOname``, форма и модель ждут ``ceoName``. Если поле "
 "заполнено вручную, форма каждый раз спрашивает про перезапись: сравнивает"
@@ -553,26 +678,26 @@ msgstr ""
 " If the field is filled in manually, the form asks about overwriting it "
 "every time, because it compares the value with ``undefined``"
 
-#: ../../integration/dadata_settings.rst:212
+#: ../../integration/dadata_settings.rst:288
 msgid "Юридический адрес без индекса"
 msgstr "Legal address without postal code"
 
-#: ../../integration/dadata_settings.rst:214
+#: ../../integration/dadata_settings.rst:290
 msgid "Индекс приходит в ``legalAddress.zipCode``, но в строку адреса не попадает"
 msgstr ""
 "The postal code arrives in ``legalAddress.zipCode`` but is not included "
 "in the address string"
 
-#: ../../integration/dadata_settings.rst:215
+#: ../../integration/dadata_settings.rst:291
 msgid "Неверный порядок частей адреса"
 msgstr "Wrong order of address parts"
 
-#: ../../integration/dadata_settings.rst:216
-#: ../../integration/dadata_settings.rst:225
+#: ../../integration/dadata_settings.rst:292
+#: ../../integration/dadata_settings.rst:301
 msgid "Источник данных и форма"
 msgstr "Data source and form"
 
-#: ../../integration/dadata_settings.rst:217
+#: ../../integration/dadata_settings.rst:293
 msgid ""
 "Район города (``city_district``) положен в слот ``district``, который в "
 "строке стоит перед городом; район субъекта (``area``) не передаётся. Для "
@@ -585,11 +710,11 @@ msgstr ""
 "before the city; for villages and settlements, the municipal district is "
 "lost"
 
-#: ../../integration/dadata_settings.rst:218
+#: ../../integration/dadata_settings.rst:294
 msgid "Формат «сокращение + точка + значение»"
 msgstr "\"Abbreviation + period + value\" format"
 
-#: ../../integration/dadata_settings.rst:220
+#: ../../integration/dadata_settings.rst:296
 msgid ""
 "«р-н. Печатники», «пр-кт. Волгоградский», «обл. Московская» вместо "
 "готовых полей DaData ``*_with_type``"
@@ -597,11 +722,11 @@ msgstr ""
 "\"р-н. Печатники\", \"пр-кт. Волгоградский\", \"обл. Московская\" instead"
 " of the ready-made DaData ``*_with_type`` fields"
 
-#: ../../integration/dadata_settings.rst:221
+#: ../../integration/dadata_settings.rst:297
 msgid "Статус компании не проверяется"
 msgstr "Company status is not checked"
 
-#: ../../integration/dadata_settings.rst:223
+#: ../../integration/dadata_settings.rst:299
 msgid ""
 "``data.state.status`` не передаётся — ликвидированная или банкротящаяся "
 "компания заполняется без предупреждения"
@@ -609,11 +734,11 @@ msgstr ""
 "``data.state.status`` is not passed — a liquidated or bankrupt company is"
 " filled in without any warning"
 
-#: ../../integration/dadata_settings.rst:224
+#: ../../integration/dadata_settings.rst:300
 msgid "ИП не распознаются"
 msgstr "Individual entrepreneurs are not recognized"
 
-#: ../../integration/dadata_settings.rst:226
+#: ../../integration/dadata_settings.rst:302
 msgid ""
 "Не передаются ``data.type`` и ``data.fio``: не проставляется "
 "``counterpartyKind``, не заполняются ``lastName``, ``firstName``, "
@@ -623,11 +748,11 @@ msgstr ""
 "not set, ``lastName``, ``firstName``, ``patronymicName`` are not filled "
 "in, and the OGRNIP goes to ``ogrn`` instead of ``psrnsp``"
 
-#: ../../integration/dadata_settings.rst:227
+#: ../../integration/dadata_settings.rst:303
 msgid "ОПФ не заполняется"
 msgstr "Legal form is not filled in"
 
-#: ../../integration/dadata_settings.rst:229
+#: ../../integration/dadata_settings.rst:305
 msgid ""
 "``data.opf.code`` не передаётся. Справочник ``legal-form`` пока не "
 "содержит кодов ОКОПФ, поэтому сопоставить ОПФ по коду нельзя"
@@ -635,45 +760,57 @@ msgstr ""
 "``data.opf.code`` is not passed. The ``legal-form`` reference book does "
 "not contain OKOPF codes yet, so the legal form cannot be matched by code"
 
-#: ../../integration/dadata_settings.rst:230
+#: ../../integration/dadata_settings.rst:306
 msgid "Формат ИНН не проверяется"
 msgstr "INN format is not validated"
 
-#: ../../integration/dadata_settings.rst:232
+#: ../../integration/dadata_settings.rst:308
 msgid ""
-"Проверяется только, что ИНН не пустой. При опечатке уходит лишний запрос,"
-" пользователь видит «Data is empty»"
-msgstr ""
-"Only checks that the INN is not empty. A typo results in an unnecessary "
-"request, and the user sees \"Data is empty\""
+"Скрипт кнопки проверяет только непустое значение. У компонента есть "
+"``required: true`` и ``maxLength: 12``, но нет проверки цифрового "
+"состава, точной длины 10/12 и контрольных разрядов. При отсутствии "
+"результата показывается «Data is empty»"
+msgstr "The button script only checks that the value is nonempty. The component has ``required: true`` and ``maxLength: 12``, but does not validate digits, the exact length of 10/12, or check digits. If there is no result, it displays “Data is empty”"
 
-#: ../../integration/dadata_settings.rst:235
+#: ../../integration/dadata_settings.rst:309
+msgid "Лишний запрос перезаписи почтового адреса"
+msgstr "Unnecessary postal address overwrite prompt"
+
+#: ../../integration/dadata_settings.rst:311
+msgid ""
+"``postAddress`` включён в список сравнения, но отсутствует в результате "
+"JOLT. Непустой прежний адрес сравнивается с ``undefined`` и может вызвать"
+" диалог, хотя новое значение для него не задано"
+msgstr "``postAddress`` is included in the comparison list but is absent from the JOLT result. A nonempty previous address is compared with ``undefined`` and may trigger a dialog even though no new value is supplied for it"
+
+#: ../../integration/dadata_settings.rst:314
 msgid "Лимиты и ошибки"
 msgstr "Limits and Errors"
 
-#: ../../integration/dadata_settings.rst:237
+#: ../../integration/dadata_settings.rst:316
 msgid ""
-"Все запросы к DaData идут с одного IP-адреса сервера ``ecos-"
-"integrations``, поэтому ограничения по частоте действуют на всю "
-"инсталляцию. При ручном автозаполнении их не достичь; заметными они "
-"становятся при пакетном обогащении базы или когда несколько инсталляций "
-"выходят в интернет через один IP."
-msgstr ""
-"All requests to DaData come from the single IP address of the ``ecos-"
-"integrations`` server, so rate limits apply to the entire installation. "
-"Manual autofill will not reach them; they become noticeable during batch "
-"data enrichment or when several installations access the internet through"
-" the same IP."
+"Ограничения по частоте привязаны к внешнему IP, который видит DaData. "
+"Несколько экземпляров integrations или инсталляций могут делить один "
+"адрес через NAT/прокси либо использовать разные адреса. Учитывайте "
+"суммарные параллельные запросы, включая ручное автозаполнение."
+msgstr "Rate limits are tied to the external IP seen by DaData. Multiple integrations instances or installations may share one address through NAT/a proxy or use different addresses. Consider the total concurrent requests, including manual autofill."
 
-#: ../../integration/dadata_settings.rst:245
+#: ../../integration/dadata_settings.rst:318
+msgid ""
+"Ниже приведены ограничения метода ``findById/party``; ограничения других "
+"методов проверяйте отдельно по `документации DaData "
+"<https://dadata.ru/api/find-party/>`_."
+msgstr "The following limits apply to ``findById/party``; check limits for other methods separately in the `DaData documentation <https://dadata.ru/api/find-party/>`_."
+
+#: ../../integration/dadata_settings.rst:326
 msgid "Значение"
 msgstr "Value"
 
-#: ../../integration/dadata_settings.rst:246
+#: ../../integration/dadata_settings.rst:327
 msgid "Запросов в сутки"
 msgstr "Requests per day"
 
-#: ../../integration/dadata_settings.rst:247
+#: ../../integration/dadata_settings.rst:328
 msgid ""
 "Зависит от тарифа — от 10 000 на бесплатном. Лимит общий на все сервисы "
 "подписки"
@@ -681,23 +818,19 @@ msgstr ""
 "Depends on the plan — from 10,000 on the free plan. The limit is shared "
 "across all subscription services"
 
-#: ../../integration/dadata_settings.rst:248
+#: ../../integration/dadata_settings.rst:329
 msgid "Частота запросов"
 msgstr "Request rate"
 
-#: ../../integration/dadata_settings.rst:249
-msgid ""
-"30 в секунду с одного IP-адреса, на всех тарифах. Для стандартизации — 20"
-" в секунду"
-msgstr ""
-"30 per second from a single IP address, on all plans. For standardization"
-" — 20 per second"
+#: ../../integration/dadata_settings.rst:330
+msgid "30 в секунду с одного IP-адреса"
+msgstr "30 per second from a single IP address"
 
-#: ../../integration/dadata_settings.rst:250
+#: ../../integration/dadata_settings.rst:331
 msgid "Новые соединения"
 msgstr "New connections"
 
-#: ../../integration/dadata_settings.rst:251
+#: ../../integration/dadata_settings.rst:332
 msgid ""
 "60 в минуту с одного IP-адреса, на всех тарифах. При переиспользовании "
 "соединения запросов в минуту может быть больше"
@@ -705,91 +838,98 @@ msgstr ""
 "60 per minute from a single IP address, on all plans. With connection "
 "reuse, there can be more requests per minute"
 
-#: ../../integration/dadata_settings.rst:252
+#: ../../integration/dadata_settings.rst:333
 msgid "Длина запроса"
 msgstr "Request length"
 
-#: ../../integration/dadata_settings.rst:253
+#: ../../integration/dadata_settings.rst:334
 msgid "До 300 символов"
 msgstr "Up to 300 characters"
 
-#: ../../integration/dadata_settings.rst:254
-msgid "Индивидуальное повышение"
-msgstr "Individual increase"
-
-#: ../../integration/dadata_settings.rst:255
-msgid "Ограничения по частоте общие для всех и индивидуально не меняются"
-msgstr "Rate limits are the same for everyone and are not changed individually"
-
-#: ../../integration/dadata_settings.rst:256
+#: ../../integration/dadata_settings.rst:335
 msgid "Актуальность данных"
 msgstr "Data freshness"
 
-#: ../../integration/dadata_settings.rst:257
+#: ../../integration/dadata_settings.rst:336
 msgid ""
 "Сведения ЕГРЮЛ отстают не более чем на 3 дня, адреса обновляются раз в "
 "неделю"
 msgstr "EGRUL data lags by no more than 3 days; addresses are updated once a week"
 
-#: ../../integration/dadata_settings.rst:259
+#: ../../integration/dadata_settings.rst:338
 msgid ""
-"При отказе DaData пользователь видит общее сообщение **«Error while "
-"requesting data»**. Код ответа можно увидеть в логах ``ecos-"
-"integrations``:"
-msgstr ""
-"When DaData rejects a request, the user sees the generic message "
-"**\"Error while requesting data\"**. The response code can be found in "
-"the ``ecos-integrations`` logs:"
+"Форма показывает **«Error while requesting data»**, если Records API "
+"вернул непустой массив ``errors``; **«Data is empty»** — если нет первого"
+" результата ``.json``; **«Undefined error»** — при иной ошибке без "
+"подготовленного сообщения. Отдельных сообщений для HTTP-кодов DaData в "
+"текущем скрипте нет."
+msgstr "The form displays **Error while requesting data** if the Records API returns a nonempty ``errors`` array; **Data is empty** if there is no first ``.json`` result; and **Undefined error** for another error without a prepared message. The current script has no separate messages for DaData HTTP status codes."
 
-#: ../../integration/dadata_settings.rst:266
+#: ../../integration/dadata_settings.rst:340
+msgid ""
+"При диагностике различайте ошибку HTTP, отсутствие организации в ответе и"
+" ошибку JOLT. Проверяйте ответ Records API и логи integrations: "
+"HTTP-исключение может возникнуть до проверки статуса в клиентском коде, "
+"поэтому конкретная запись лога не гарантирована для каждого отказа."
+msgstr "When diagnosing issues, distinguish between an HTTP error, an organization missing from the response, and a JOLT error. Check the Records API response and integrations logs: an HTTP exception may occur before the status check in client code, so a specific log entry is not guaranteed for every failure."
+
+#: ../../integration/dadata_settings.rst:347
 msgid "Код ответа"
 msgstr "Response code"
 
-#: ../../integration/dadata_settings.rst:267
+#: ../../integration/dadata_settings.rst:348
 msgid "Причина"
 msgstr "Cause"
 
-#: ../../integration/dadata_settings.rst:268
+#: ../../integration/dadata_settings.rst:349
 msgid "Что делать"
 msgstr "What to do"
 
-#: ../../integration/dadata_settings.rst:269
+#: ../../integration/dadata_settings.rst:350
 msgid "403"
 msgstr "403"
 
-#: ../../integration/dadata_settings.rst:270
-msgid "Исчерпан суточный лимит запросов"
-msgstr "Daily request limit exhausted"
-
-#: ../../integration/dadata_settings.rst:271
+#: ../../integration/dadata_settings.rst:351
 msgid ""
-"Дождаться 00:00 — сервисы подписки включатся снова. При регулярном "
-"превышении — перейти на старший тариф"
-msgstr ""
-"Wait until 00:00 — subscription services will be re-enabled. If the limit"
-" is exceeded regularly, upgrade to a higher plan"
+"Неправильный API-ключ, неподтверждённая почта или исчерпанный суточный "
+"лимит"
+msgstr "Invalid API key, unconfirmed email, or exhausted daily quota"
 
-#: ../../integration/dadata_settings.rst:272
+#: ../../integration/dadata_settings.rst:352
+msgid ""
+"Проверить ключ, подтверждение почты и остаток лимита в личном кабинете. "
+"При исчерпании дождаться следующих суток или изменить тариф; ожидание не "
+"исправляет неверный ключ"
+msgstr "Check the key, email confirmation, and remaining quota in your account. If the quota is exhausted, wait until the next day or change the plan; waiting does not fix an invalid key"
+
+#: ../../integration/dadata_settings.rst:353
 msgid "429"
 msgstr "429"
 
-#: ../../integration/dadata_settings.rst:273
+#: ../../integration/dadata_settings.rst:354
 msgid "Превышена частота запросов или число новых соединений"
 msgstr "Request rate or number of new connections exceeded"
 
-#: ../../integration/dadata_settings.rst:274
+#: ../../integration/dadata_settings.rst:355
 msgid ""
-"Прекратить запросы: доступ восстанавливается через 5 минут после того, "
-"как нарушение прекратится"
-msgstr ""
-"Stop sending requests: access is restored 5 minutes after the violation "
-"stops"
+"Прекратить поток запросов и уменьшить частоту/число новых соединений. "
+"Автоматическая обработка 429 и отложенный повтор в описанных клиентах не "
+"реализованы"
+msgstr "Stop the request flow and reduce the rate/number of new connections. Automatic 429 handling and delayed retries are not implemented in the described clients"
 
-#: ../../integration/dadata_settings.rst:277
+#: ../../integration/dadata_settings.rst:357
+msgid ""
+"Причины 403 перечислены в `официальной инструкции DaData "
+"<https://support.dadata.ru/knowledge-bases/4/articles/1834-podskazki-ne-"
+"rabotayut-oshibka-403-forbidden-ona-zhe-feature-suggestions-disabled-for-"
+"token>`_."
+msgstr "The causes of 403 are listed in the `official DaData instructions <https://support.dadata.ru/knowledge-bases/4/articles/1834-podskazki-ne-rabotayut-oshibka-403-forbidden-ona-zhe-feature-suggestions-disabled-for-token>`_."
+
+#: ../../integration/dadata_settings.rst:360
 msgid "Расширение набора полей"
 msgstr "Extending the Set of Fields"
 
-#: ../../integration/dadata_settings.rst:279
+#: ../../integration/dadata_settings.rst:362
 msgid ""
 "Ответ DaData на запрос по ИНН содержит больше данных, чем попадает в "
 "карточку: лишнее отбрасывает JOLT-спецификация (``jsonRespTfmSpec``) "
@@ -801,11 +941,11 @@ msgstr ""
 "(``jsonRespTfmSpec``) of the ``counterparty-suggestions-dadata`` data "
 "source. To pass a field to the card:"
 
-#: ../../integration/dadata_settings.rst:281
+#: ../../integration/dadata_settings.rst:364
 msgid "Добавьте поле в JOLT-спецификацию."
 msgstr "Add the field to the JOLT specification."
 
-#: ../../integration/dadata_settings.rst:282
+#: ../../integration/dadata_settings.rst:365
 msgid ""
 "Если в модели ``ecos-counterparty`` нет подходящего атрибута — добавьте "
 "атрибут в модель и компонент в форму."
@@ -813,29 +953,26 @@ msgstr ""
 "If the ``ecos-counterparty`` model has no suitable attribute, add the "
 "attribute to the model and a component to the form."
 
-#: ../../integration/dadata_settings.rst:283
+#: ../../integration/dadata_settings.rst:366
 msgid ""
-"Если ключ после JOLT совпадает с ключом компонента формы, значение "
-"заполнится без правки скрипта формы. Иначе доработайте скрипт."
-msgstr ""
-"If the key after JOLT matches the form component key, the value will be "
-"filled in without changing the form script. Otherwise, update the script."
+"Если ключ после JOLT совпадает с ключом компонента, существующий цикл "
+"заполнения передаст значение компоненту. Проверьте также его видимость, "
+"валидацию, сохранение и включение в диалог перезаписи. Для преобразования"
+" значения или другого ключа доработайте скрипт."
+msgstr "If the key after JOLT matches the component key, the existing fill loop passes the value to the component. Also check its visibility, validation, saving, and inclusion in the overwrite dialog. Modify the script to transform the value or use a different key."
 
-#: ../../integration/dadata_settings.rst:285
+#: ../../integration/dadata_settings.rst:368
 msgid ""
-"Данные, доступные только на платных тарифах, появятся в ответе DaData "
-"сразу после смены тарифа, но в карточку попадут только после этих "
-"доработок."
-msgstr ""
-"Data available only on paid plans will appear in the DaData response "
-"immediately after the plan change, but will get into the card only after "
-"these changes."
+"Доступность дополнительных сведений зависит от тарифа и наличия данных у "
+"DaData. Для переноса этих сведений в карточку нужны соответствующие "
+"маппинг и поля формы."
+msgstr "Availability of additional information depends on the plan and the data available in DaData. Transferring this information to the card requires appropriate mapping and form fields."
 
 #: ../../integration/dadata_settings.rst
 msgid "Пример расширенной JOLT-спецификации (уровень data)"
 msgstr "Example of an extended JOLT specification (data level)"
 
-#: ../../integration/dadata_settings.rst:290
+#: ../../integration/dadata_settings.rst:373
 msgid ""
 "В примере исправлен регистр ``ceoName`` и добавлены тип, статус, ОПФ, ФИО"
 " ИП, основной ОКВЭД, идентификатор DaData, должность руководителя, "
@@ -849,29 +986,35 @@ msgstr ""
 "and KLADR codes. Keep the current ``address.data`` → ``legalAddress`` "
 "mapping inside the ``address.data`` block next to the new fields."
 
-#: ../../integration/dadata_settings.rst:329
+#: ../../integration/dadata_settings.rst:375
+msgid ""
+"Это фрагмент для замены ``data`` внутри ``spec.suggestions.*`` операции "
+"``shift``, а не полная спецификация ``jsonRespTfmSpec``. Сохраните "
+"окружающий список операций и проверьте преобразование на примере ответа "
+"DaData."
+msgstr "This is a fragment to replace ``data`` inside ``spec.suggestions.*`` of the ``shift`` operation, not a complete ``jsonRespTfmSpec`` specification. Preserve the surrounding operation list and test the transformation using a sample DaData response."
+
+#: ../../integration/dadata_settings.rst:414
 msgid ""
 "Ключи ``ceoName``, ``lastName``, ``firstName``, ``patronymicName`` "
-"совпадают с ключами компонентов формы и заполнятся без правки скрипта. "
-"Остальное требует правки скрипта формы:"
-msgstr ""
-"The ``ceoName``, ``lastName``, ``firstName`` and ``patronymicName`` keys "
-"match the form component keys and will be filled in without changing the "
-"script. Everything else requires changes to the form script:"
+"совпадают с ключами компонентов. Проверьте условия их видимости и "
+"сохранения, особенно при переключении вида контрагента. Для следующих "
+"действий требуется доработка скрипта формы:"
+msgstr "The ``ceoName``, ``lastName``, ``firstName``, and ``patronymicName`` keys match the component keys. Check their visibility and saving conditions, especially when switching the counterparty kind. The following actions require changes to the form script:"
 
-#: ../../integration/dadata_settings.rst:336
+#: ../../integration/dadata_settings.rst:421
 msgid "Что"
 msgstr "What"
 
-#: ../../integration/dadata_settings.rst:337
+#: ../../integration/dadata_settings.rst:422
 msgid "Как"
 msgstr "How"
 
-#: ../../integration/dadata_settings.rst:338
+#: ../../integration/dadata_settings.rst:423
 msgid "Юридический адрес"
 msgstr "Legal address"
 
-#: ../../integration/dadata_settings.rst:339
+#: ../../integration/dadata_settings.rst:424
 msgid ""
 "Если пришёл ``juridicalAddressFull`` — записать его в "
 "``juridicalAddress``, сборку из ``legalAddress`` не выполнять"
@@ -879,11 +1022,11 @@ msgstr ""
 "If ``juridicalAddressFull`` is received, write it to ``juridicalAddress``"
 " and skip assembling from ``legalAddress``"
 
-#: ../../integration/dadata_settings.rst:340
+#: ../../integration/dadata_settings.rst:425
 msgid "Вид контрагента"
 msgstr "Counterparty type"
 
-#: ../../integration/dadata_settings.rst:341
+#: ../../integration/dadata_settings.rst:426
 msgid ""
 "``partyType``: ``LEGAL`` → ``legalEntity``, ``INDIVIDUAL`` → "
 "``individualEntrepreneur`` в ``counterpartyKind``"
@@ -891,19 +1034,19 @@ msgstr ""
 "``partyType``: ``LEGAL`` → ``legalEntity``, ``INDIVIDUAL`` → "
 "``individualEntrepreneur`` in ``counterpartyKind``"
 
-#: ../../integration/dadata_settings.rst:342
+#: ../../integration/dadata_settings.rst:427
 msgid "ОГРНИП"
 msgstr "OGRNIP"
 
-#: ../../integration/dadata_settings.rst:343
+#: ../../integration/dadata_settings.rst:428
 msgid "При ``INDIVIDUAL`` переложить ``ogrn`` в ``psrnsp``"
 msgstr "For ``INDIVIDUAL``, move ``ogrn`` to ``psrnsp``"
 
-#: ../../integration/dadata_settings.rst:344
+#: ../../integration/dadata_settings.rst:429
 msgid "ОПФ"
 msgstr "Legal form"
 
-#: ../../integration/dadata_settings.rst:345
+#: ../../integration/dadata_settings.rst:430
 msgid ""
 "Найти запись справочника ``legal-form`` по ``opfCode`` и проставить "
 "``legalForm`` — после того как в справочник добавят коды ОКОПФ"
@@ -911,46 +1054,45 @@ msgstr ""
 "Find the ``legal-form`` reference book record by ``opfCode`` and set "
 "``legalForm`` — once OKOPF codes are added to the reference book"
 
-#: ../../integration/dadata_settings.rst:347
+#: ../../integration/dadata_settings.rst:432
 msgid "При ``partyStatus`` не ``ACTIVE`` — предупреждение до заполнения полей"
 msgstr ""
 "If ``partyStatus`` is not ``ACTIVE``, show a warning before filling in "
 "the fields"
 
-#: ../../integration/dadata_settings.rst:348
+#: ../../integration/dadata_settings.rst:433
 msgid "ИНН"
 msgstr "INN"
 
-#: ../../integration/dadata_settings.rst:349
+#: ../../integration/dadata_settings.rst:434
 #, python-brace-format
 msgid "Проверка ``^\\d{10}$`` или ``^\\d{12}$`` до запроса"
 msgstr "Validate against ``^\\d{10}$`` or ``^\\d{12}$`` before the request"
 
-#: ../../integration/dadata_settings.rst:350
+#: ../../integration/dadata_settings.rst:435
 msgid "Ошибки"
 msgstr "Errors"
 
-#: ../../integration/dadata_settings.rst:351
+#: ../../integration/dadata_settings.rst:436
 msgid ""
-"Для 403 и 429 — отдельные сообщения: «Исчерпан суточный лимит DaData» и "
-"«Слишком много запросов, повторите через 5 минут»"
-msgstr ""
-"Separate messages for 403 and 429: \"DaData daily limit exhausted\" and "
-"\"Too many requests, try again in 5 minutes\""
+"Для 403 — проверка ключа, подтверждения почты и лимита; для 429 — "
+"сообщение о превышении частоты. Не определять исчерпание суточного лимита"
+" только по коду 403"
+msgstr "For 403, check the key, email confirmation, and quota; for 429, display a rate limit message. Do not infer daily quota exhaustion solely from a 403 code"
 
-#: ../../integration/dadata_settings.rst:352
+#: ../../integration/dadata_settings.rst:437
 msgid "Диалог перезаписи"
 msgstr "Overwrite dialog"
 
-#: ../../integration/dadata_settings.rst:353
+#: ../../integration/dadata_settings.rst:438
 msgid "Список атрибутов в ``isNeedAsk`` привести к ключам формы"
 msgstr "Align the attribute list in ``isNeedAsk`` with the form keys"
 
-#: ../../integration/dadata_settings.rst:358
+#: ../../integration/dadata_settings.rst:443
 msgid "Что ещё есть в DaData"
 msgstr "What Else DaData Offers"
 
-#: ../../integration/dadata_settings.rst:360
+#: ../../integration/dadata_settings.rst:445
 msgid ""
 "Ниже — возможности DaData, которые Citeck пока не использует. Они "
 "перечислены, чтобы оценить, что можно подключить."
@@ -958,11 +1100,11 @@ msgstr ""
 "Below are DaData capabilities that Citeck does not use yet. They are "
 "listed to help assess what could be connected."
 
-#: ../../integration/dadata_settings.rst:363
+#: ../../integration/dadata_settings.rst:448
 msgid "Дополнительные сведения об организации"
 msgstr "Additional organization information"
 
-#: ../../integration/dadata_settings.rst:365
+#: ../../integration/dadata_settings.rst:450
 msgid ""
 "На любом тарифе, включая бесплатный, DaData уже возвращает в ответе на "
 "запрос по ИНН больше данных, чем попадает в карточку:"
@@ -970,55 +1112,55 @@ msgstr ""
 "On any plan, including the free one, DaData already returns more data in "
 "response to an INN request than gets into the card:"
 
-#: ../../integration/dadata_settings.rst:372
+#: ../../integration/dadata_settings.rst:457
 msgid "Сведения"
 msgstr "Information"
 
-#: ../../integration/dadata_settings.rst:373
+#: ../../integration/dadata_settings.rst:458
 msgid "Применение"
 msgstr "Use case"
 
-#: ../../integration/dadata_settings.rst:374
+#: ../../integration/dadata_settings.rst:459
 msgid "Тип: юридическое лицо или ИП, ФИО предпринимателя"
 msgstr "Type: legal entity or individual entrepreneur, entrepreneur's full name"
 
-#: ../../integration/dadata_settings.rst:375
+#: ../../integration/dadata_settings.rst:460
 msgid "Заполнение вида контрагента, ФИО и ОГРНИП для ИП"
 msgstr ""
 "Filling in the counterparty type, full name and OGRNIP for individual "
 "entrepreneurs"
 
-#: ../../integration/dadata_settings.rst:376
+#: ../../integration/dadata_settings.rst:461
 msgid "Организационно-правовая форма и код ОКОПФ"
 msgstr "Legal form and OKOPF code"
 
-#: ../../integration/dadata_settings.rst:377
+#: ../../integration/dadata_settings.rst:462
 msgid "Заполнение ОПФ"
 msgstr "Filling in the legal form"
 
-#: ../../integration/dadata_settings.rst:378
+#: ../../integration/dadata_settings.rst:463
 msgid ""
 "Статус: действующая, ликвидируется, ликвидирована, банкротство, "
 "реорганизация"
 msgstr "Status: active, being liquidated, liquidated, bankruptcy, reorganization"
 
-#: ../../integration/dadata_settings.rst:379
+#: ../../integration/dadata_settings.rst:464
 msgid "Предупреждение при заполнении карточки нерабочей компании"
 msgstr "Warning when filling in the card of an inactive company"
 
-#: ../../integration/dadata_settings.rst:380
+#: ../../integration/dadata_settings.rst:465
 msgid "Даты регистрации, ликвидации и последних изменений"
 msgstr "Dates of registration, liquidation and latest changes"
 
-#: ../../integration/dadata_settings.rst:381
+#: ../../integration/dadata_settings.rst:466
 msgid "Возраст компании, дата сверки с ЕГРЮЛ"
 msgstr "Company age, date of reconciliation with the EGRUL"
 
-#: ../../integration/dadata_settings.rst:382
+#: ../../integration/dadata_settings.rst:467
 msgid "Должность руководителя и дата вступления в должность"
 msgstr "Head's position and date of taking office"
 
-#: ../../integration/dadata_settings.rst:383
+#: ../../integration/dadata_settings.rst:468
 msgid ""
 "«В лице генерального директора…» в шаблонах документов, проверка "
 "полномочий подписанта"
@@ -1026,31 +1168,31 @@ msgstr ""
 "\"Represented by the General Director…\" in document templates, "
 "verification of the signatory's authority"
 
-#: ../../integration/dadata_settings.rst:384
+#: ../../integration/dadata_settings.rst:469
 msgid "Основной ОКВЭД"
 msgstr "Main OKVED"
 
-#: ../../integration/dadata_settings.rst:385
+#: ../../integration/dadata_settings.rst:470
 msgid "Отрасль клиента, сегментация в CRM"
 msgstr "Client industry, segmentation in CRM"
 
-#: ../../integration/dadata_settings.rst:386
+#: ../../integration/dadata_settings.rst:471
 msgid "Коды ОКАТО, ОКТМО, ОКОГУ, ОКФС, КПП крупнейшего налогоплательщика"
 msgstr "OKATO, OKTMO, OKOGU, OKFS codes, KPP of the largest taxpayer"
 
-#: ../../integration/dadata_settings.rst:387
+#: ../../integration/dadata_settings.rst:472
 msgid "Полный набор реквизитов"
 msgstr "Complete set of company details"
 
-#: ../../integration/dadata_settings.rst:388
+#: ../../integration/dadata_settings.rst:473
 msgid "Головная организация или филиал, число филиалов"
 msgstr "Head organization or branch, number of branches"
 
-#: ../../integration/dadata_settings.rst:389
+#: ../../integration/dadata_settings.rst:474
 msgid "Структура клиента"
 msgstr "Client structure"
 
-#: ../../integration/dadata_settings.rst:390
+#: ../../integration/dadata_settings.rst:475
 msgid ""
 "Юридический адрес готовой строкой с индексом, коды ФИАС (ГАР) и КЛАДР, "
 "координаты, признак качества разбора"
@@ -1058,15 +1200,15 @@ msgstr ""
 "Legal address as a ready-made string with postal code, FIAS (GAR) and "
 "KLADR codes, coordinates, parsing quality flag"
 
-#: ../../integration/dadata_settings.rst:391
+#: ../../integration/dadata_settings.rst:476
 msgid "Корректный адрес без сборки по частям, связь с ФИАС, карта клиентов"
 msgstr "Correct address without assembling it from parts, link to FIAS, client map"
 
-#: ../../integration/dadata_settings.rst:394
+#: ../../integration/dadata_settings.rst:479
 msgid "Реквизиты банков, адреса и контакты"
 msgstr "Bank details, addresses and contacts"
 
-#: ../../integration/dadata_settings.rst:396
+#: ../../integration/dadata_settings.rst:481
 msgid ""
 "Отдельные запросы, доступные на любом тарифе. Для большинства из них в "
 "карточке контрагента уже есть поля."
@@ -1074,19 +1216,19 @@ msgstr ""
 "Separate requests available on any plan. The counterparty card already "
 "has fields for most of them."
 
-#: ../../integration/dadata_settings.rst:403
+#: ../../integration/dadata_settings.rst:488
 msgid "Возможность"
 msgstr "Capability"
 
-#: ../../integration/dadata_settings.rst:404
+#: ../../integration/dadata_settings.rst:489
 msgid "Что даёт"
 msgstr "What it provides"
 
-#: ../../integration/dadata_settings.rst:405
+#: ../../integration/dadata_settings.rst:490
 msgid "Банк по БИК, SWIFT или ИНН"
 msgstr "Bank by BIC, SWIFT or INN"
 
-#: ../../integration/dadata_settings.rst:406
+#: ../../integration/dadata_settings.rst:491
 msgid ""
 "Наименование, БИК, SWIFT, корреспондентский счёт, адрес и статус банка — "
 "одним запросом"
@@ -1094,11 +1236,11 @@ msgstr ""
 "Bank name, BIC, SWIFT, correspondent account, address and status — in a "
 "single request"
 
-#: ../../integration/dadata_settings.rst:407
+#: ../../integration/dadata_settings.rst:492
 msgid "Подсказки по адресам"
 msgstr "Address suggestions"
 
-#: ../../integration/dadata_settings.rst:408
+#: ../../integration/dadata_settings.rst:493
 msgid ""
 "Ввод почтового и других адресов с кодами ФИАС (ГАР) и КЛАДР, индексом и "
 "координатами"
@@ -1106,29 +1248,29 @@ msgstr ""
 "Entering postal and other addresses with FIAS (GAR) and KLADR codes, "
 "postal code and coordinates"
 
-#: ../../integration/dadata_settings.rst:409
+#: ../../integration/dadata_settings.rst:494
 msgid "Подсказки по ФИО и электронной почте"
 msgstr "Full name and email suggestions"
 
-#: ../../integration/dadata_settings.rst:410
+#: ../../integration/dadata_settings.rst:495
 msgid "Ввод ФИО по частям с определением пола, дополнение домена почты"
 msgstr ""
 "Entering a full name in parts with gender detection, email domain "
 "completion"
 
-#: ../../integration/dadata_settings.rst:411
+#: ../../integration/dadata_settings.rst:496
 msgid "Кем выдан паспорт"
 msgstr "Passport issuing authority"
 
-#: ../../integration/dadata_settings.rst:412
+#: ../../integration/dadata_settings.rst:497
 msgid "Подразделение по коду"
 msgstr "Issuing department by code"
 
-#: ../../integration/dadata_settings.rst:413
+#: ../../integration/dadata_settings.rst:498
 msgid "Поиск компании по названию"
 msgstr "Company search by name"
 
-#: ../../integration/dadata_settings.rst:414
+#: ../../integration/dadata_settings.rst:499
 msgid ""
 "Поиск по названию, ФИО руководителя или адресу, а не только по ИНН; "
 "фильтры по статусу, ОКВЭД, региону"
@@ -1136,19 +1278,19 @@ msgstr ""
 "Search by name, head's full name or address, not only by INN; filters by "
 "status, OKVED, region"
 
-#: ../../integration/dadata_settings.rst:415
+#: ../../integration/dadata_settings.rst:500
 msgid "Компании Беларуси и Казахстана"
 msgstr "Companies of Belarus and Kazakhstan"
 
-#: ../../integration/dadata_settings.rst:416
+#: ../../integration/dadata_settings.rst:501
 msgid "Реквизиты контрагентов из ЕАЭС"
 msgstr "Details of counterparties from the EAEU"
 
-#: ../../integration/dadata_settings.rst:419
+#: ../../integration/dadata_settings.rst:504
 msgid "Работа с ФИАС (ГАР) и КЛАДР"
 msgstr "Working with FIAS (GAR) and KLADR"
 
-#: ../../integration/dadata_settings.rst:421
+#: ../../integration/dadata_settings.rst:506
 msgid ""
 "DaData даёт доступ к своей копии ФИАС (ГАР) и КЛАДР по API — это запросы "
 "к справочнику, а не выгрузка базы. Копия обновляется раз в неделю."
@@ -1157,7 +1299,7 @@ msgstr ""
 "are queries to the reference book, not a database export. The copy is "
 "updated once a week."
 
-#: ../../integration/dadata_settings.rst:423
+#: ../../integration/dadata_settings.rst:508
 msgid ""
 "**Подсказки по адресам** — поиск адреса по любой части, индексу, коду "
 "ФИАС или кадастровому номеру; коды ФИАС и КЛАДР на каждом уровне от "
@@ -1167,7 +1309,7 @@ msgstr ""
 " FIAS code or cadastral number; FIAS and KLADR codes at every level from "
 "region to apartment."
 
-#: ../../integration/dadata_settings.rst:424
+#: ../../integration/dadata_settings.rst:509
 msgid ""
 "**Адрес по коду** — по коду ФИАС (ГАР) до квартиры, по коду КЛАДР до "
 "улицы. Полезно, когда адрес приходит из внешней системы кодом."
@@ -1176,11 +1318,11 @@ msgstr ""
 "the street by KLADR code. Useful when an address comes from an external "
 "system as a code."
 
-#: ../../integration/dadata_settings.rst:425
+#: ../../integration/dadata_settings.rst:510
 msgid "**Обратное геокодирование** — адрес по координатам."
 msgstr "**Reverse geocoding** — address by coordinates."
 
-#: ../../integration/dadata_settings.rst:426
+#: ../../integration/dadata_settings.rst:511
 msgid ""
 "**Стандартизация адресов** — разбор адреса из строки по полям, индекс, "
 "координаты, часовой пояс, кадастровые номера. Предназначена для массовой "
@@ -1190,7 +1332,7 @@ msgstr ""
 "postal code, coordinates, time zone, cadastral numbers. Intended for bulk"
 " address cleanup during migration and import; charged per record."
 
-#: ../../integration/dadata_settings.rst:428
+#: ../../integration/dadata_settings.rst:513
 msgid ""
 "Коды ФИАС домов и квартир иногда меняются, а поиск по коду работает "
 "только по актуальным, поэтому адрес стоит хранить строкой рядом с кодом."
@@ -1199,11 +1341,11 @@ msgstr ""
 "works only with current codes, so it is advisable to store the address as"
 " a string alongside the code."
 
-#: ../../integration/dadata_settings.rst:431
+#: ../../integration/dadata_settings.rst:516
 msgid "Государственные справочники"
 msgstr "Government reference books"
 
-#: ../../integration/dadata_settings.rst:433
+#: ../../integration/dadata_settings.rst:518
 msgid ""
 "Доступны на любом тарифе: ОКВЭД 2, ОКПД 2, ОКТМО, страны (ISO 3166), "
 "валюты (ISO 4217), налоговые инспекции, таможни, суды, станции метро, "
@@ -1218,39 +1360,39 @@ msgstr ""
 "example, OKPD 2 for the subject of a contract, courts for claims and "
 "litigation management."
 
-#: ../../integration/dadata_settings.rst:436
+#: ../../integration/dadata_settings.rst:521
 msgid "Проверки данных"
 msgstr "Data checks"
 
-#: ../../integration/dadata_settings.rst:438
+#: ../../integration/dadata_settings.rst:523
 msgid "Оплачиваются поштучно с баланса DaData, первые 100 записей бесплатно."
 msgstr ""
 "Charged per record from the DaData balance; the first 100 records are "
 "free."
 
-#: ../../integration/dadata_settings.rst:445
+#: ../../integration/dadata_settings.rst:530
 msgid "Проверка"
 msgstr "Check"
 
-#: ../../integration/dadata_settings.rst:446
+#: ../../integration/dadata_settings.rst:531
 msgid "Что делает"
 msgstr "What it does"
 
-#: ../../integration/dadata_settings.rst:447
+#: ../../integration/dadata_settings.rst:532
 msgid "ФИО"
 msgstr "Full name"
 
-#: ../../integration/dadata_settings.rst:448
+#: ../../integration/dadata_settings.rst:533
 msgid "Разбирает ФИО на части, определяет пол, склоняет по падежам"
 msgstr ""
 "Splits a full name into parts, detects gender, declines it by grammatical"
 " case"
 
-#: ../../integration/dadata_settings.rst:449
+#: ../../integration/dadata_settings.rst:534
 msgid "Паспорт"
 msgstr "Passport"
 
-#: ../../integration/dadata_settings.rst:450
+#: ../../integration/dadata_settings.rst:535
 msgid ""
 "Проверяет формат и сверяет со справочником недействительных паспортов "
 "МВД. Справочник не обновляется с 21 июня 2023 года"
@@ -1259,35 +1401,35 @@ msgstr ""
 " register of invalid passports. The register has not been updated since "
 "June 21, 2023"
 
-#: ../../integration/dadata_settings.rst:451
+#: ../../integration/dadata_settings.rst:536
 msgid "Телефон"
 msgstr "Phone"
 
-#: ../../integration/dadata_settings.rst:452
+#: ../../integration/dadata_settings.rst:537
 msgid "Оператор с учётом переноса номера, страна, город, часовой пояс"
 msgstr "Carrier (taking number portability into account), country, city, time zone"
 
-#: ../../integration/dadata_settings.rst:453
+#: ../../integration/dadata_settings.rst:538
 msgid "Электронная почта"
 msgstr "Email"
 
-#: ../../integration/dadata_settings.rst:454
+#: ../../integration/dadata_settings.rst:539
 msgid "Исправляет опечатки, выявляет одноразовые адреса"
 msgstr "Fixes typos, detects disposable addresses"
 
-#: ../../integration/dadata_settings.rst:455
+#: ../../integration/dadata_settings.rst:540
 msgid "Компания по электронной почте"
 msgstr "Company by email"
 
-#: ../../integration/dadata_settings.rst:456
+#: ../../integration/dadata_settings.rst:541
 msgid "Сведения об организации по корпоративному адресу"
 msgstr "Organization information by corporate email address"
 
-#: ../../integration/dadata_settings.rst:460
+#: ../../integration/dadata_settings.rst:545
 msgid "MCP-сервер для AI-агентов"
 msgstr "MCP Server for AI Agents"
 
-#: ../../integration/dadata_settings.rst:462
+#: ../../integration/dadata_settings.rst:547
 msgid ""
 "DaData предоставляет `MCP-сервер <https://dadata.ru/mcp/>`_, через "
 "который AI-агент получает сведения о компаниях и адресах. Через него "
@@ -1302,11 +1444,11 @@ msgstr ""
 "subscription; address checks and domain owner lookup are charged per "
 "request."
 
-#: ../../integration/dadata_settings.rst:465
+#: ../../integration/dadata_settings.rst:550
 msgid "Возможные направления развития"
 msgstr "Possible Development Directions"
 
-#: ../../integration/dadata_settings.rst:467
+#: ../../integration/dadata_settings.rst:552
 msgid ""
 "**Исправление автозаполнения.** Заполнение руководителя, юридический "
 "адрес в виде готовой строки DaData с индексом, предупреждение о "
@@ -1320,7 +1462,7 @@ msgstr ""
 "full name and OGRNIP filled in, filling in the legal form, INN format "
 "validation, separate messages when the limit is exhausted."
 
-#: ../../integration/dadata_settings.rst:468
+#: ../../integration/dadata_settings.rst:553
 msgid ""
 "**Хранение ключа в секретах.** Поддержка секретов в REST-источниках "
 "данных — это же нужно для подключения стандартизации и мониторинга "
@@ -1329,7 +1471,7 @@ msgstr ""
 "**Storing the key in secrets.** Support for secrets in REST data sources "
 "— this is also needed to connect standardization and limit monitoring."
 
-#: ../../integration/dadata_settings.rst:469
+#: ../../integration/dadata_settings.rst:554
 msgid ""
 "**Дополнительные сведения на бесплатном тарифе.** Должность руководителя,"
 " даты регистрации и ликвидации, основной ОКВЭД, коды статистики, коды "
@@ -1339,13 +1481,13 @@ msgstr ""
 "registration and liquidation dates, main OKVED, statistics codes, FIAS "
 "and KLADR codes of the legal address."
 
-#: ../../integration/dadata_settings.rst:470
+#: ../../integration/dadata_settings.rst:555
 msgid ""
 "**Автозаполнение банка по БИК.** Наименование банка, БИК и SWIFT по "
 "одному запросу."
 msgstr "**Bank autofill by BIC.** Bank name, BIC and SWIFT in a single request."
 
-#: ../../integration/dadata_settings.rst:471
+#: ../../integration/dadata_settings.rst:556
 msgid ""
 "**Ввод адресов с подсказками.** Почтовый и другие адреса с кодами ФИАС "
 "(ГАР), индексом и координатами."
@@ -1353,11 +1495,11 @@ msgstr ""
 "**Address entry with suggestions.** Postal and other addresses with FIAS "
 "(GAR) codes, postal code and coordinates."
 
-#: ../../integration/dadata_settings.rst:472
+#: ../../integration/dadata_settings.rst:557
 msgid "**Государственные справочники** — по потребностям модулей."
 msgstr "**Government reference books** — as needed by modules."
 
-#: ../../integration/dadata_settings.rst:473
+#: ../../integration/dadata_settings.rst:558
 msgid ""
 "**Мониторинг лимита** через API статистики DaData с предупреждением "
 "администратору до отказа."
@@ -1365,23 +1507,23 @@ msgstr ""
 "**Limit monitoring** via the DaData statistics API, with a warning to the"
 " administrator before requests start being rejected."
 
-#: ../../integration/dadata_settings.rst:474
+#: ../../integration/dadata_settings.rst:559
 msgid "**MCP-сервер DaData** для агентов Citeck AI."
 msgstr "**DaData MCP server** for Citeck AI agents."
 
-#: ../../integration/dadata_settings.rst:477
+#: ../../integration/dadata_settings.rst:562
 msgid "Источники"
 msgstr "References"
 
-#: ../../integration/dadata_settings.rst:479
+#: ../../integration/dadata_settings.rst:564
 msgid "`Каталог API DaData <https://dadata.ru/api/>`_"
 msgstr "`DaData API catalog <https://dadata.ru/api/>`_"
 
-#: ../../integration/dadata_settings.rst:480
+#: ../../integration/dadata_settings.rst:565
 msgid "`Тарифы DaData <https://dadata.ru/pricing/>`_"
 msgstr "`DaData pricing <https://dadata.ru/pricing/>`_"
 
-#: ../../integration/dadata_settings.rst:481
+#: ../../integration/dadata_settings.rst:566
 msgid ""
 "`API: организация по ИНН (findById/party) <https://dadata.ru/api/find-"
 "party/>`_"
@@ -1389,7 +1531,7 @@ msgstr ""
 "`API: organization by INN (findById/party) <https://dadata.ru/api/find-"
 "party/>`_"
 
-#: ../../integration/dadata_settings.rst:482
+#: ../../integration/dadata_settings.rst:567
 msgid ""
 "`Поддержка DaData: превышение лимитов, код 429 "
 "<https://support.dadata.ru/communities/1/topics/10152-chto-proishodit-"
@@ -1399,7 +1541,7 @@ msgstr ""
 "<https://support.dadata.ru/communities/1/topics/10152-chto-proishodit-"
 "pri-prevyishenii-limitov-na-zaprosyi-v-api>`_"
 
-#: ../../integration/dadata_settings.rst:483
+#: ../../integration/dadata_settings.rst:568
 msgid ""
 "`Поддержка DaData: ограничение на новые соединения "
 "<https://support.dadata.ru/knowledge-bases/4/articles/8875-ogranichenie-"
@@ -1409,7 +1551,7 @@ msgstr ""
 "/knowledge-bases/4/articles/8875-ogranichenie-na-kolichestvo-novyih-"
 "soedinenij>`_"
 
-#: ../../integration/dadata_settings.rst:484
+#: ../../integration/dadata_settings.rst:569
 msgid ""
 "`Поддержка DaData: секретный ключ <https://support.dadata.ru/knowledge-"
 "bases/4/articles/1051-sekretnyij-klyuch-dlya-polzovatelej-api-"
@@ -1418,4 +1560,225 @@ msgstr ""
 "`DaData support: secret key <https://support.dadata.ru/knowledge-"
 "bases/4/articles/1051-sekretnyij-klyuch-dlya-polzovatelej-api-"
 "standartizatsii>`_"
+
+#~ msgid ""
+#~ "Одно автозаполнение — один запрос к "
+#~ "DaData. Метод ``findById/party`` с "
+#~ "``branch_type: MAIN`` ищет только головную "
+#~ "организацию и одинаков на всех тарифах."
+#~ msgstr ""
+#~ "One autofill means one request to "
+#~ "DaData. The ``findById/party`` method with "
+#~ "``branch_type: MAIN`` searches only for "
+#~ "the head organization and is the "
+#~ "same on all plans."
+
+#~ msgid "Да"
+#~ msgstr "Yes"
+
+#~ msgid ""
+#~ "Передаётся в заголовке ``X-Secret``. Нужен "
+#~ "для платных поштучных методов стандартизации"
+#~ " (разбор адреса, проверка паспорта, ФИО,"
+#~ " телефона, email), API статистики и "
+#~ "баланса, MCP-сервера DaData"
+#~ msgstr ""
+#~ "Passed in the ``X-Secret`` header. "
+#~ "Required for paid per-record "
+#~ "standardization methods (address parsing, "
+#~ "passport, full name, phone and email "
+#~ "checks), the statistics and balance API,"
+#~ " and the DaData MCP server"
+
+#~ msgid "Нет"
+#~ msgstr "No"
+
+#~ msgid ""
+#~ "Для автозаполнения достаточно API-ключа. "
+#~ "Секретный ключ в Citeck вписывать "
+#~ "некуда: он понадобится, только если "
+#~ "будут подключены стандартизация, мониторинг "
+#~ "лимита или MCP-сервер."
+#~ msgstr ""
+#~ "The API key is enough for "
+#~ "autofill. There is nowhere in Citeck "
+#~ "to enter the secret key: it will"
+#~ " only be needed if standardization, "
+#~ "limit monitoring or the MCP server "
+#~ "is connected."
+
+#~ msgid ""
+#~ "DaData считает API-ключ публичным: для "
+#~ "виджета подсказок он встраивается в код"
+#~ " веб-страницы. Поэтому всё, что списывает"
+#~ " деньги с баланса или показывает "
+#~ "статистику аккаунта, дополнительно требует "
+#~ "секретного ключа, а методы стандартизации "
+#~ "DaData запрещает вызывать из браузера. "
+#~ "Секретный ключ допустимо хранить только "
+#~ "на сервере, в :ref:`секретах<ecos_secret>`."
+#~ msgstr ""
+#~ "DaData treats the API key as "
+#~ "public: for the suggestions widget, it"
+#~ " is embedded in the web page "
+#~ "code. Therefore, everything that charges "
+#~ "the balance or shows account statistics"
+#~ " additionally requires the secret key, "
+#~ "and DaData prohibits calling standardization"
+#~ " methods from the browser. The secret"
+#~ " key may only be stored on the"
+#~ " server, in :ref:`secrets<ecos_secret>`."
+
+#~ msgid "Настройка Citeck"
+#~ msgstr "Configuring Citeck"
+
+#~ msgid ""
+#~ "Ключ хранится в настройках источника "
+#~ "записей открытым текстом, а не в "
+#~ "секретах. Его видят все, у кого "
+#~ "есть доступ к настройкам источников "
+#~ "записей. Ограничьте этот доступ и не "
+#~ "используйте для Citeck ключ аккаунта "
+#~ "DaData, на котором подключены платные "
+#~ "поштучные сервисы."
+#~ msgstr ""
+#~ "The key is stored in the records"
+#~ " source settings as plain text, not"
+#~ " in secrets. Anyone with access to"
+#~ " the records source settings can see"
+#~ " it. Restrict this access and do "
+#~ "not use for Citeck the key of "
+#~ "a DaData account that has paid "
+#~ "per-record services enabled."
+
+#~ msgid ""
+#~ "Для сравнения, токен Контур.Фокуса хранится"
+#~ " в секрете ``kontur-focus-api-token``"
+#~ " и подставляется через эндпоинт: вызов "
+#~ "Контур.Фокуса реализован маршрутом Camel DSL,"
+#~ " а не REST-источником данных."
+#~ msgstr ""
+#~ "By comparison, the Kontur.Focus token is"
+#~ " stored in the ``kontur-focus-api-"
+#~ "token`` secret and substituted via an"
+#~ " endpoint: the Kontur.Focus call is "
+#~ "implemented as a Camel DSL route, "
+#~ "not as a REST data source."
+
+#~ msgid "Перенести ключ DaData в секрет можно двумя способами:"
+#~ msgstr "There are two ways to move the DaData key into a secret:"
+
+#~ msgid ""
+#~ "Проверяется только, что ИНН не пустой."
+#~ " При опечатке уходит лишний запрос, "
+#~ "пользователь видит «Data is empty»"
+#~ msgstr ""
+#~ "Only checks that the INN is not"
+#~ " empty. A typo results in an "
+#~ "unnecessary request, and the user sees"
+#~ " \"Data is empty\""
+
+#~ msgid ""
+#~ "Все запросы к DaData идут с одного"
+#~ " IP-адреса сервера ``ecos-integrations``, "
+#~ "поэтому ограничения по частоте действуют "
+#~ "на всю инсталляцию. При ручном "
+#~ "автозаполнении их не достичь; заметными "
+#~ "они становятся при пакетном обогащении "
+#~ "базы или когда несколько инсталляций "
+#~ "выходят в интернет через один IP."
+#~ msgstr ""
+#~ "All requests to DaData come from "
+#~ "the single IP address of the "
+#~ "``ecos-integrations`` server, so rate "
+#~ "limits apply to the entire installation."
+#~ " Manual autofill will not reach them;"
+#~ " they become noticeable during batch "
+#~ "data enrichment or when several "
+#~ "installations access the internet through "
+#~ "the same IP."
+
+#~ msgid ""
+#~ "30 в секунду с одного IP-адреса, "
+#~ "на всех тарифах. Для стандартизации —"
+#~ " 20 в секунду"
+#~ msgstr ""
+#~ "30 per second from a single IP "
+#~ "address, on all plans. For "
+#~ "standardization — 20 per second"
+
+#~ msgid "Индивидуальное повышение"
+#~ msgstr "Individual increase"
+
+#~ msgid "Ограничения по частоте общие для всех и индивидуально не меняются"
+#~ msgstr "Rate limits are the same for everyone and are not changed individually"
+
+#~ msgid ""
+#~ "При отказе DaData пользователь видит "
+#~ "общее сообщение **«Error while requesting "
+#~ "data»**. Код ответа можно увидеть в "
+#~ "логах ``ecos-integrations``:"
+#~ msgstr ""
+#~ "When DaData rejects a request, the "
+#~ "user sees the generic message **\"Error"
+#~ " while requesting data\"**. The response"
+#~ " code can be found in the "
+#~ "``ecos-integrations`` logs:"
+
+#~ msgid "Исчерпан суточный лимит запросов"
+#~ msgstr "Daily request limit exhausted"
+
+#~ msgid ""
+#~ "Дождаться 00:00 — сервисы подписки "
+#~ "включатся снова. При регулярном превышении "
+#~ "— перейти на старший тариф"
+#~ msgstr ""
+#~ "Wait until 00:00 — subscription services"
+#~ " will be re-enabled. If the "
+#~ "limit is exceeded regularly, upgrade to"
+#~ " a higher plan"
+
+#~ msgid ""
+#~ "Прекратить запросы: доступ восстанавливается "
+#~ "через 5 минут после того, как "
+#~ "нарушение прекратится"
+#~ msgstr ""
+#~ "Stop sending requests: access is "
+#~ "restored 5 minutes after the violation"
+#~ " stops"
+
+#~ msgid ""
+#~ "Если ключ после JOLT совпадает с "
+#~ "ключом компонента формы, значение заполнится"
+#~ " без правки скрипта формы. Иначе "
+#~ "доработайте скрипт."
+#~ msgstr ""
+#~ "If the key after JOLT matches the"
+#~ " form component key, the value will"
+#~ " be filled in without changing the"
+#~ " form script. Otherwise, update the "
+#~ "script."
+
+#~ msgid ""
+#~ "Данные, доступные только на платных "
+#~ "тарифах, появятся в ответе DaData сразу"
+#~ " после смены тарифа, но в карточку"
+#~ " попадут только после этих доработок."
+#~ msgstr ""
+#~ "Data available only on paid plans "
+#~ "will appear in the DaData response "
+#~ "immediately after the plan change, but"
+#~ " will get into the card only "
+#~ "after these changes."
+
+#~ msgid ""
+#~ "Для 403 и 429 — отдельные "
+#~ "сообщения: «Исчерпан суточный лимит DaData»"
+#~ " и «Слишком много запросов, повторите "
+#~ "через 5 минут»"
+#~ msgstr ""
+#~ "Separate messages for 403 and 429: "
+#~ "\"DaData daily limit exhausted\" and "
+#~ "\"Too many requests, try again in "
+#~ "5 minutes\""
 
