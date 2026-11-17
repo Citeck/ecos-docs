@@ -3,7 +3,9 @@
 Подключение микросервиса ecos-edi локально
 ===========================================
 
-Рассматривается yaml версия для ECOS 4.2 и выше.
+Ниже приведён пример подключения ecos-edi к локальному Docker Compose окружению. Выберите образ микросервиса, совместимый с используемой поставкой ECOS, и задайте его полный адрес с тегом в переменной ``ECOS_EDI_IMAGE`` (например, в файле ``.env`` рядом с Compose-файлом).
+
+Параметры БД в примере соответствуют конфигурации ecos-edi 1.14.0. Имена сервисов, профили и параметры registry/config-сервера необходимо согласовать с вашим окружением.
 
 Для поднятия микросервиса ecos-edi локально необходимо выполнить следующие шаги:
 
@@ -15,7 +17,7 @@
     
     edi-app-dev:
       container_name: edi-app-dev
-      image: enterprise-registry.citeck.ru/ecos-edi:1.0.0-snapshot
+      image: ${ECOS_EDI_IMAGE:?Set ECOS_EDI_IMAGE}
       ports:
         - 8083:8083
       environment:
@@ -24,9 +26,9 @@
         - SPRING_RABBITMQ_HOST=rabbitmq-dev
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@ecos-registry:8761/eureka
         - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@ecos-registry:8761/config
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://ecos-microservices-psql-dev:5432/ecos_edi
-        - SPRING_DATASOURCE_USERNAME=edi
-        - SPRING_DATASOURCE_PASSWORD=edipassword
+        - ECOS_WEBAPP_DATASOURCES_MAIN_URL=jdbc:postgresql://ecos-microservices-psql-dev:5432/ecos_edi
+        - ECOS_WEBAPP_DATASOURCES_MAIN_USERNAME=edi
+        - ECOS_WEBAPP_DATASOURCES_MAIN_PASSWORD=edipassword
         - ECOS_INIT_DELAY=20
       depends_on:
         - ecos-registry
@@ -43,6 +45,8 @@
     CREATE DATABASE ecos_edi;
     GRANT ALL PRIVILEGES ON DATABASE ecos_edi TO edi;
 
-При локальном поднятии также убедиться что в **application.yml** прописаны параметры подключения к БД edi, соответствующие созданной БД.
+Параметры подключения должны соответствовать созданной БД. В конфигурации приложения используются свойства ``ecos.webapp.dataSources.main.url``, ``ecos.webapp.dataSources.main.username`` и ``ecos.webapp.dataSources.main.password``. В примере они переопределены через переменные окружения. Источник ``main-xa-aware`` в поставляемом ``application.yml`` ссылается на эти же свойства.
 
-Создание базы добавлено в скрипт инициализации БД для nexus.citeck.ru/postgresql:12.7-1
+Если ваше окружение создаёт БД и пользователя автоматически, повторно выполнять SQL-команды не требуется.
+
+Для сборки ecos-edi 1.14.0 из исходников требуется JDK 25. При запуске готового Docker-образа Java используется внутри контейнера.

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -103,17 +103,17 @@ msgid "Политика выбора"
 msgstr "Hit policy"
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:60
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:141
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:158
 msgid "Входной элемент"
 msgstr "Input"
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:61
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:193
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:208
 msgid "Выходной элемент"
 msgstr "Output"
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:62
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:233
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:248
 msgid "Правило"
 msgstr "Rule"
 
@@ -162,16 +162,26 @@ msgstr ""
 "The **Rule Order** and **Collect** hit policies can return multiple "
 "satisfied rules."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:95
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:89
+msgid ""
+"В используемом движке Camunda 7.24 поддерживаются **Unique, Any, First, "
+"Rule Order и Collect**. Политики **Priority** и **Output order** "
+"предусмотрены нотацией DMN, но не поддерживаются этим движком. См. "
+"`поддерживаемые политики выбора "
+"<https://docs.camunda.org/manual/7.24/reference/dmn/decision-table/hit-"
+"policy/>`_."
+msgstr "The Camunda 7.24 engine used supports **Unique, Any, First, Rule Order, and Collect**. **Priority** and **Output order** are defined by DMN notation but are not supported by this engine. See `supported hit policies <https://docs.camunda.org/manual/7.24/reference/dmn/decision-table/hit-policy/>`_."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:97
 msgid "Политика"
 msgstr "Policy"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:96
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:254
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:98
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:269
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:97
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:99
 msgid "**Unique (Уникальная)**"
 msgstr "**Unique**"
 
@@ -194,7 +204,7 @@ msgstr "If more than one rule is satisfied, the unique hit policy is violated."
 msgid "Является политикой выбора по умолчанию."
 msgstr "This is the default hit policy."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:101
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:103
 msgid "**First (Политика первого совпадения)**"
 msgstr "**First**"
 
@@ -206,7 +216,7 @@ msgstr ""
 "Multiple rules can be satisfied. The decision table result contains only "
 "the output of the first satisfied rule."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:103
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:105
 msgid "**Priority**"
 msgstr "**Priority**"
 
@@ -223,10 +233,10 @@ msgstr ""
 " considered. Not yet implemented."
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
-msgid "Пока не реализовано."
-msgstr "Not yet implemented."
+msgid "Не поддерживается используемым движком Camunda 7.24."
+msgstr "Not supported by the Camunda 7.24 engine used."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:107
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:109
 msgid "**Any (Любая)**"
 msgstr "**Any**"
 
@@ -254,7 +264,7 @@ msgstr ""
 "If multiple rules are satisfied that generate different outputs, the hit "
 "policy is violated."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:111
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:113
 msgid "**Collect (Сбор)**"
 msgstr "**Collect**"
 
@@ -282,13 +292,19 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
 msgid ""
+"При использовании агрегатора таблица должна содержать только одну "
+"выходную колонку."
+msgstr "When using an aggregator, the table must contain only one output column."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
+msgid ""
 "Для политики выбора Collect доступны :ref:`следующие операторы "
 "<dmn_collect_operators>`"
 msgstr ""
 "The following :ref:`operators<dmn_collect_operators>` are available for "
 "the Collect hit policy."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:116
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:119
 msgid "**Rule order (Порядок применения правил)**"
 msgstr "**Rule order**"
 
@@ -304,7 +320,7 @@ msgstr ""
 "The decision table result contains the outputs of all satisfied rules in "
 "the order in which the rules appear in the decision table."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:119
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:122
 msgid "**Output order**"
 msgstr "**Output order**"
 
@@ -316,23 +332,23 @@ msgstr ""
 "The result of all matched rules is a list of outputs ordered by their "
 "(descending) output priority."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:124
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:128
 msgid "Операторы для политики выбора Collect:"
 msgstr "Operators for the Collect hit policy:"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:131
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:135
 msgid "**SUM**"
 msgstr "**SUM**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:132
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:136
 msgid "Агрегатор SUM суммирует все выходные данные выполненных правил."
 msgstr "The SUM aggregator sums all output values of the satisfied rules."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:133
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:137
 msgid "**MIN**"
 msgstr "**MIN**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:134
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:138
 msgid ""
 "Агрегатор MIN можно использовать для возврата наименьшего выходного "
 "значения всех удовлетворяемых правил."
@@ -340,11 +356,11 @@ msgstr ""
 "The MIN aggregator can be used to return the smallest output value of all"
 " satisfied rules."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:135
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:139
 msgid "**MAX**"
 msgstr "**MAX**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:136
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:140
 msgid ""
 "Агрегатор MAX можно использовать для возврата наибольшего выходного "
 "значения всех удовлетворяемых правил."
@@ -352,17 +368,54 @@ msgstr ""
 "The MAX aggregator can be used to return the largest output value of all "
 "satisfied rules."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:137
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:141
 msgid "**COUNT**"
 msgstr "**COUNT**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:138
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:142
 msgid ""
 "Агрегатор COUNT можно использовать для возврата количества выполненных "
 "правил."
 msgstr "The COUNT aggregator can be used to return the number of satisfied rules."
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:147
+msgid "Языки выражений"
+msgstr "Expression languages"
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:149
+msgid ""
+"В стандартной конфигурации Camunda 7.24 язык по умолчанию для входного "
+"выражения, условия правила, выходного выражения и литерального выражения "
+"решения — **FEEL**."
+msgstr "In the standard Camunda 7.24 configuration, the default language for input expressions, rule conditions, output expressions, and decision literal expressions is **FEEL**."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:151
+msgid ""
+"Язык отдельного выражения задаётся атрибутом XML ``expressionLanguage``. "
+"Если он не указан, применяется глобальный язык модели из "
+"``definitions.expressionLanguage``, а при его отсутствии — значение по "
+"умолчанию в конфигурации движка. Для использования **JUEL** выберите его "
+"явно; на стендах с legacy-конфигурацией значения по умолчанию могут "
+"отличаться."
+msgstr "The language of an individual expression is set by the XML ``expressionLanguage`` attribute. If omitted, the global model language from ``definitions.expressionLanguage`` applies; if that is also absent, the engine configuration default is used. To use **JUEL**, select it explicitly; defaults may differ in environments with legacy configuration."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:153
+msgid ""
+"Сервер также поддерживает **JavaScript** при явном указании "
+"``expressionLanguage=\"javascript\"`` в XML. Набор вариантов в меню "
+"зависит от версии редактора. Контекст DMN-выражения отличается от "
+":ref:`BPMN Script Task <script_task>`: доступность всех переменных и "
+"сервисов скриптовой задачи не предполагается."
+msgstr "The server also supports **JavaScript** when ``expressionLanguage=\"javascript\"`` is explicitly specified in XML. Menu options depend on the editor version. The DMN expression context differs from :ref:`BPMN Script Task <script_task>`: availability of all script task variables and services is not assumed."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:155
+msgid ""
+"См. `языки выражений DMN и их настройку "
+"<https://docs.camunda.org/manual/7.24/user-guide/dmn-engine/expressions-"
+"and-scripts/>`_."
+msgstr "See `DMN expression languages and their configuration <https://docs.camunda.org/manual/7.24/user-guide/dmn-engine/expressions-and-scripts/>`_."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:164
 msgid ""
 "Таблица решений может иметь один или несколько входных элементов. Входной"
 " элемент определяет идентификатор, метку, выражение и тип ввода таблицы "
@@ -372,7 +425,7 @@ msgstr ""
 "defines the identifier, label, expression, and input type of the decision"
 " table."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:149
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:166
 msgid ""
 "Ввод можно редактировать, дважды кликнув заголовок соответствующего "
 "столбца в таблице решений."
@@ -380,17 +433,17 @@ msgstr ""
 "You can edit the input by double-clicking the header of the corresponding"
 " column in the decision table."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:158
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:208
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:175
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:223
 msgid "**1**"
 msgstr "**1**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:159
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:176
 msgid "**Наименование входного элемента**"
 msgstr "**Input element name**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:160
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:210
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:177
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:225
 msgid ""
 "Краткое описание. Обратите внимание, что наименование не обязательно, но "
 "рекомендуется, поскольку оно помогает понять суть решения."
@@ -398,12 +451,12 @@ msgstr ""
 "A short description. Note that the name is optional but recommended, as "
 "it helps to understand the essence of the decision."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:161
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:211
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:178
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:226
 msgid "**2**"
 msgstr "**2**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:162
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:179
 msgid "**Expression**"
 msgstr "**Expression**"
 
@@ -423,32 +476,30 @@ msgstr ""
 "This expression will be evaluated by the DMN engine. Typically, it is "
 "just a reference to a variable that is available at evaluation time."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:165
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:215
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:182
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:230
 msgid "**3**"
 msgstr "**3**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:166
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:183
 msgid "**Expression language**"
 msgstr "**Expression language**"
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
-msgid "Язык входного выражения. Поддерживаемые языки выражений:"
-msgstr "The language of the input expression. Supported expression languages:"
+msgid "Язык входного выражения. Основные варианты — FEEL и JUEL."
+msgstr "Input expression language. Main options are FEEL and JUEL."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:169
-msgid "JUEL"
-msgstr "JUEL"
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
+msgid ""
+"По умолчанию — FEEL. См. :ref:`настройку языков выражений "
+"<dmn_expression_languages>`."
+msgstr "The default is FEEL. See :ref:`expression language configuration <dmn_expression_languages>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:170
-msgid "FEEL"
-msgstr "FEEL"
-
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:172
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:187
 msgid "**4**"
 msgstr "**4**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:173
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:188
 msgid "**Input variable**"
 msgstr "**Input variable**"
 
@@ -464,12 +515,12 @@ msgstr ""
 msgid "Переменная может использоваться в выражении входной записи."
 msgstr "The variable can be used in the input entry expression."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:176
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:191
 msgid "**5**"
 msgstr "**5**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:177
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:216
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:192
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:231
 msgid "**Type**"
 msgstr "**Type**"
 
@@ -485,48 +536,49 @@ msgstr ""
 msgid "Поддерживаемые типы:"
 msgstr "Supported types:"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:181
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:220
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:196
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:235
 msgid "string"
 msgstr "string"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:182
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:221
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:197
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:236
 msgid "boolean"
 msgstr "boolean"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:183
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:222
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:198
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:237
 msgid "integer"
 msgstr "integer"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:184
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:223
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:199
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:238
 msgid "long"
 msgstr "long"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:185
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:224
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:200
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:239
 msgid "double"
 msgstr "double"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:186
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:225
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:201
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:240
 msgid "date"
 msgstr "date"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:190
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:229
-msgid "При работе с типом string, данные необходимо писать в кавычках."
-msgstr ""
-"When working with the string type, data must be enclosed in quotation "
-"marks."
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:205
+msgid ""
+"В FEEL строковый литерал записывается в двойных кавычках: "
+"``\"Канцелярские товары\"``. Имя переменной указывается без кавычек: "
+"входное выражение ``type`` получает значение переменной, а ``\"type\"`` "
+"возвращает постоянную строку. Тип ``string`` не меняет это правило."
+msgstr "In FEEL, a string literal is written in double quotes: ``\"Канцелярские товары\"`` (Office supplies). A variable name is specified without quotes: the input expression ``type`` retrieves the variable's value, while ``\"type\"`` returns a constant string. The ``string`` type does not change this rule."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:199
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:214
 msgid "Таблица решений может иметь один или несколько выходных элементов."
 msgstr "A decision table can have one or more output elements."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:201
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:216
 msgid ""
 "Выходной элемент определяет идентификатор, метку, имя и тип вывода "
 "таблицы решений."
@@ -534,11 +586,11 @@ msgstr ""
 "An output element defines the identifier, label, name, and output type of"
 " the decision table."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:209
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:224
 msgid "**Наименование выходного элемента**"
 msgstr "**Output element name**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:212
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:227
 msgid "**Output name**"
 msgstr "**Output name**"
 
@@ -566,7 +618,14 @@ msgstr ""
 "After the output entry is evaluated by the DMN engine, it converts the "
 "result to the specified type."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:239
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:244
+msgid ""
+"В FEEL для строкового результата укажите литерал в двойных кавычках, "
+"например ``\"Разрешить\"``. Если результат нужно получить из переменной, "
+"используйте её имя без кавычек."
+msgstr "In FEEL, specify a double-quoted literal for a string result, for example ``\"Разрешить\"`` (Allow). To obtain the result from a variable, use its name without quotes."
+
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:254
 msgid ""
 "Таблица решений может иметь одно или несколько правил. Каждое правило "
 "содержит входные и выходные элементы."
@@ -574,7 +633,7 @@ msgstr ""
 "A decision table can have one or more rules. Each rule contains input and"
 " output elements."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:241
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:256
 msgid ""
 "Входные элементы являются условием, а выходные элементы — заключением "
 "правила. Если каждый входной элемент (условие) выполняется, то правило "
@@ -586,11 +645,11 @@ msgstr ""
 "the rule is executed and the decision result contains the output elements"
 " (conclusions) of that rule."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:253
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:268
 msgid "Поле"
 msgstr "Field"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:255
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:270
 msgid "**Входной элемент**"
 msgstr "**Input element**"
 
@@ -608,17 +667,12 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
 msgid ""
-"Если глобальный язык выражений не установлен, вместо него используется "
-"язык выражений по умолчанию. Язык выражений по умолчанию для входных "
-"записей — `FEEL "
-"<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_."
-msgstr ""
-"If a global expression language is not set, the default expression "
-"language is used instead. The default expression language for input "
-"entries is `FEEL "
-"<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_."
+"Если язык не задан для выражения или модели, в стандартной конфигурации "
+"используется FEEL. См. :ref:`настройку языков выражений "
+"<dmn_expression_languages>`."
+msgstr "If no language is set for the expression or model, the standard configuration uses FEEL. See :ref:`expression language configuration <dmn_expression_languages>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:259
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:274
 msgid "**Выходной элемент**"
 msgstr "**Output element**"
 
@@ -640,29 +694,26 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst
 msgid ""
-"Если глобальный язык выражений не установлен, вместо него используется "
-"язык выражений по умолчанию. Язык выражений по умолчанию для выходных "
-"записей — JUEL."
-msgstr ""
-"If a global expression language is not set, the default expression "
-"language is used instead. The default expression language for output "
-"entries is JUEL."
+"Если язык не задан для выражения или модели, в стандартной конфигурации "
+"используется FEEL. Для JUEL язык нужно выбрать явно. См. :ref:`настройку "
+"языков выражений <dmn_expression_languages>`."
+msgstr "If no language is set for the expression or model, the standard configuration uses FEEL. For JUEL, select the language explicitly. See :ref:`expression language configuration <dmn_expression_languages>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:263
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:278
 msgid "**Описание**"
 msgstr "**Description**"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:264
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:279
 msgid ""
 "В правило может быть добавлено описание, содержащее дополнительную "
 "информацию."
 msgstr "A rule can have a description containing additional information."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:267
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:282
 msgid "Типы решения"
 msgstr "Decision types"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:269
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:284
 msgid "Для решения в свойствах доступны:"
 msgstr "The following are available in the decision properties:"
 
@@ -670,11 +721,11 @@ msgstr "The following are available in the decision properties:"
 msgid "Empty"
 msgstr "Empty"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:279
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:294
 msgid "По нажатию на **Empty** у элемента удаляется таблица решения."
 msgstr "Clicking **Empty** removes the decision table from the element."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:285
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:300
 msgid "Для добавления таблицы выберите:"
 msgstr "To add a table, select:"
 
@@ -682,13 +733,11 @@ msgstr "To add a table, select:"
 msgid "Literal Expression"
 msgstr "Literal Expression"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:293
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:308
 msgid "По нажатию на **Literal Expression** доступен ввод литерального выражения."
-msgstr ""
-"Clicking **Literal Expression** allows you to enter a literal "
-"expression."
+msgstr "Clicking **Literal Expression** allows you to enter a literal expression."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:303
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:318
 msgid ""
 "Литеральное выражение решения представляет собой логику решения, которая "
 "может быть представлена в виде выражения в DMN 1.3. Оно состоит из "
@@ -698,7 +747,7 @@ msgstr ""
 "expressed in DMN 1.3 as an expression. It consists of a literal "
 "expression and a variable."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:305
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:320
 msgid ""
 "Буквенное выражение указывает, как генерируется значение решения. Это "
 "выражение будет оцениваться механизмом DMN. Его можно использовать для "
@@ -711,7 +760,7 @@ msgstr ""
 "perform complex calculations, call a bean component that provides "
 "decision-making logic, or combine the output values of decisions."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:307
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:322
 msgid ""
 "Литеральное выражение решения должно иметь переменную, которая определяет"
 " имя и тип результата решения."
@@ -719,7 +768,7 @@ msgstr ""
 "A decision literal expression must have a variable that defines the name "
 "and type of the decision result."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:311
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:326
 msgid "Пример создания таблицы принятия решений"
 msgstr "Example of creating a decision table"
 
@@ -727,7 +776,7 @@ msgstr "Example of creating a decision table"
 msgid "Пример: Решение по закупке"
 msgstr "Example: Purchase Decision"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:316
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:331
 msgid ""
 "Кликните дважды на поле и установите название решения **«Решение по "
 "закупке»**. Далее перейдите к таблице решений, кликнув значок таблицы в "
@@ -737,7 +786,7 @@ msgstr ""
 "Decision\"**. Then go to the decision table by clicking the table icon at"
 " the top of the decision."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:322
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:337
 msgid ""
 "Для установки наименования входного элемента, дважды кликните поле под "
 "**«When»** и введите **«Группа товаров»** в самом верхнем поле."
@@ -745,7 +794,7 @@ msgstr ""
 "To set the name of the input element, double-click the field under "
 "**\"When\"** and enter **\"Product Group\"** in the topmost field."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:324
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:339
 msgid ""
 "Для установки наименования выходного элемента, дважды кликните поле под "
 "**«Then»** и введите **«Согласование»** в самом верхнем поле."
@@ -753,7 +802,7 @@ msgstr ""
 "To set the name of the output element, double-click the field under "
 "**\"Then\"** and enter **\"Approval\"** in the topmost field."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:330
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:345
 msgid ""
 "Предполагая, что входное значение для **«Группа товаров»** представляется"
 " переменной с именем **«type»**, входное выражение должно быть **«type»**"
@@ -763,17 +812,14 @@ msgstr ""
 " a variable named **\"type\"**, the input expression should be "
 "**\"type\"** with the type **string**."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:332
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:347
 msgid ""
 "Дважды кликните поле **«Группа товаров»**. В появившемся модальном меню "
-"установите **«type»** в качестве выражения, и тип **string**, и закройте "
-"его."
-msgstr ""
-"Double-click the **\"Product Group\"** field. In the modal menu that "
-"appears, set **\"type\"** as the expression, select the **string** type, "
-"and close it."
+"установите ``type`` без кавычек в качестве выражения, язык **FEEL** и тип"
+" **string**, затем закройте меню."
+msgstr "Double-click the **Product group** field. In the modal menu, set ``type`` without quotes as the expression, select the **FEEL** language and **string** type, then close the menu."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:338
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:353
 msgid ""
 "Затем дважды щелкните поле **«Согласование»** и установите "
 "**«agreement»** в качестве названия выходного элемента и тип **string**."
@@ -781,7 +827,7 @@ msgstr ""
 "Then double-click the **\"Approval\"** field and set **\"agreement\"** as"
 " the output element name and the type to **string**."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:344
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:359
 msgid ""
 "Далее добавьте первое правило, указывающее, что для **«Канцелярские "
 "товары» — «Разрешить»**."
@@ -789,7 +835,7 @@ msgstr ""
 "Next, add the first rule specifying that for **\"Stationery\" — "
 "\"Allow\"**."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:346
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:361
 msgid ""
 "Нажмите кнопку **«+»** внизу таблицы или просто нажмите в любом месте "
 "последней строки."
@@ -797,47 +843,34 @@ msgstr ""
 "Click the **\"+\"** button at the bottom of the table or simply click "
 "anywhere in the last row."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:348
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:363
 msgid ""
-"В добавленной строке введите **«Канцелярские товары»** в столбце ввода и "
-"**«Разрешить»** в столбце вывода."
-msgstr ""
-"In the added row, enter **\"Stationery\"** in the input column and "
-"**\"Allow\"** in the output column."
+"Для условия и выходного выражения используйте язык **FEEL**. В "
+"добавленной строке введите ``\"Канцелярские товары\"`` в столбце ввода и "
+"``\"Разрешить\"`` в столбце вывода, включая двойные кавычки."
+msgstr "Use the **FEEL** language for the condition and output expression. In the added row, enter ``\"Канцелярские товары\"`` (Office supplies) in the input column and ``\"Разрешить\"`` (Allow) in the output column, including the double quotes."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:354
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:369
 msgid ""
-"**«Канцелярские товары»** — условие (т. е. входной элемент) правила. Это "
-"выражение в `FEEL "
-"<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_, которое "
-"применяется, а затем проверяет, равно ли входное значение (т. е. "
-"переменная **«type»**) «Канцелярские товары»."
-msgstr ""
-"**\"Stationery\"** is the condition (i.e., the input element) of the "
-"rule. This is an expression in `FEEL "
-"<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_ that is "
-"applied and then checks whether the input value (i.e., the **\"type\"** "
-"variable) equals \"Stationery\"."
+"``\"Канцелярские товары\"`` — условие правила в FEEL, которое проверяет, "
+"равно ли значение переменной ``type`` строке «Канцелярские товары»."
+msgstr "``\"Канцелярские товары\"`` is a FEEL rule condition that checks whether the ``type`` variable equals the string “Канцелярские товары” (Office supplies)."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:356
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:371
 msgid ""
-"**«Разрешить»** — вывод (т. е. выходной элемент) правила. Это простое "
-"выражение в JUEL возвращает строку **«Канцелярские товары»**."
-msgstr ""
-"**\"Allow\"** is the output (i.e., the output element) of the rule. This "
-"is a simple JUEL expression that returns the string **\"Stationery\"**."
+"``\"Разрешить\"`` — выходное выражение правила в FEEL, возвращающее "
+"строку «Разрешить»."
+msgstr "``\"Разрешить\"`` is a FEEL rule output expression returning the string “Разрешить” (Allow)."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:358
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:373
 msgid ""
 "Затем добавьте второй входной элемент **«Стоимость»** с входным "
-"выражением **«cost»** и типом **«integer»**. Заполните таблицу "
-"дополнительными правилами для оставшихся **Групп товаров**."
-msgstr ""
-"Then add a second input element **\"Cost\"** with the input expression "
-"**\"cost\"** and the type **integer**. Fill in the table with additional "
-"rules for the remaining **Product Groups**."
+"выражением ``cost`` без кавычек, языком **FEEL** и типом **integer**. "
+"Заполните таблицу дополнительными правилами для оставшихся **Групп "
+"товаров**."
+msgstr "Then add a second input element, **Cost**, with the input expression ``cost`` without quotes, the **FEEL** language, and the **integer** type. Fill the table with additional rules for the remaining **Product groups**."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:364
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:379
 msgid ""
 "Установите для политики выбора значение **«Unique»**, которое указывает, "
 "что может совпадать только одно правило. Убедитесь, что таблица решений "
@@ -848,7 +881,7 @@ msgstr ""
 "can match. Ensure that the decision table contains only one rule that can"
 " match the input data."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:366
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:381
 msgid ""
 "Кликните раскрывающийся список **«Политика выбора»** и выберите политику "
 "**«Unique»**."
@@ -856,11 +889,11 @@ msgstr ""
 "Click the **\"Hit policy\"** dropdown and select the **\"Unique\"** "
 "policy."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:373
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:388
 msgid "Реализация DMN для динамической роли"
 msgstr "DMN implementation for a dynamic role"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:375
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:390
 msgid ""
 "Динамическая роль назначается в :ref:`типе данных <data_types_main>` на "
 "вкладке :ref:`Роли <roles_statuses>` и устанавливает гибкую логику, по "
@@ -870,7 +903,7 @@ msgstr ""
 "the :ref:`Roles<roles_statuses>` tab and defines flexible logic for "
 "calculating the composition of users for the role."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:377
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:392
 msgid ""
 "Входными данными для вычисления DMN является заполненная **Модель** на "
 "основе рекорда. Рекорд — сущность с набором атрибутов и идентификатором "
@@ -881,33 +914,33 @@ msgstr ""
 "identifier (RecordRef), see :ref:`details about the Records "
 "API<Records_API>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:379
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:394
 msgid ""
 "В модели могут быть использованы :ref:`системные атрибуты "
 "<system_attributes>`."
 msgstr "The model can use :ref:`system attributes<system_attributes>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:381
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:396
 msgid "По ключу модели будут доступны вычисленные данные рекорда в контексте DMN."
 msgstr ""
 "The calculated record data will be available in the DMN context by the "
 "model key."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:383
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:398
 msgid "Модель заполняется в **Описании DMN**:"
 msgstr "The model is populated in the **DMN Description**:"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:391
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:406
 msgid ""
 "Переменные бизнес-процесса, в том числе ``documentRef``, при вычислении "
 "роли недоступны — роль пересчитывается вне процесса. Входные данные "
 "передаются только через **Модель**."
 msgstr ""
 "Business process variables, including ``documentRef``, are not available "
-"when calculating the role — the role is recalculated outside the "
-"process. Input data is passed only through the **Model**."
+"when calculating the role — the role is recalculated outside the process."
+" Input data is passed only through the **Model**."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:393
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:408
 msgid ""
 "Решение DMN должно вернуть **String** с именами реципиентов. Если в одной"
 " строке DMN необходимо перечислить несколько реципиентов, то их можно "
@@ -917,7 +950,7 @@ msgstr ""
 "recipients. If multiple recipients need to be listed in one DMN row, they"
 " can be separated by commas:"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:399
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:414
 msgid ""
 "Реципиента можно указать именем пользователя (``\"ivan.petrov\"``), "
 "группой с префиксом ``GROUP_`` (``\"GROUP_administrators\"``) или "
@@ -929,15 +962,13 @@ msgstr ""
 "the recordRef of a user or group (``\"emodel/person@ivan.petrov\"``, "
 "``\"emodel/authority-group@administrators\"``)."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:401
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:416
 msgid ""
-"**Hit policy** указывается на ваше усмотрение, в зависимости от "
-"необходимого результата."
-msgstr ""
-"**Hit policy** is specified at your discretion, depending on the desired "
-"result."
+"**Hit policy** выбирается из поддерживаемых движком политик в зависимости"
+" от необходимого результата. См. :ref:`Политика выбора <dmn_hit_policy>`."
+msgstr "Choose a **Hit policy** from the policies supported by the engine according to the required result. See :ref:`Hit policy <dmn_hit_policy>`."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:403
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:418
 msgid ""
 "Конечный **Output variable name** значения не имеет, можно оставить "
 "пустым. Главное указать тип **String**."
@@ -945,7 +976,7 @@ msgstr ""
 "The final **Output variable name** does not matter and can be left empty."
 " The main thing is to specify the **String** type."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:409
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:424
 msgid ""
 "В состав роли попадают значения **всех** выходных колонок **всех** "
 "сработавших правил. Выходных колонок, не являющихся именами реципиентов, "
@@ -954,22 +985,22 @@ msgid ""
 "входит."
 msgstr ""
 "The role includes the values of **all** output columns of **all** "
-"triggered rules. This decision should not contain output columns that "
-"are not recipient names — their values would also be added to the role."
-" Use the **Annotations** column for explanations; it is not included in"
-" the result."
+"triggered rules. This decision should not contain output columns that are"
+" not recipient names — their values would also be added to the role. Use "
+"the **Annotations** column for explanations; it is not included in the "
+"result."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:411
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:426
 msgid "При вычислении всегда используется последняя опубликованная версия DMN."
 msgstr "The latest published version of the DMN is always used for evaluation."
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:413
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:428
 msgid ""
 "См. :ref:`пример использования DMN для динамической роли "
 "<dynamic_role_dmn>`."
 msgstr "See :ref:`example of using DMN for a dynamic role<dynamic_role_dmn>`"
 
-#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:417
+#: ../../settings_kb/processes/ecos_dmn/editor/components/ecos_dmn_components_decision.rst:432
 msgid ":ref:`Входные и выходные данные решения <dmn_decision_data>`"
 msgstr ":ref:`Decision input and output data<dmn_decision_data>`"
 
@@ -994,4 +1025,78 @@ msgstr ":ref:`Decision input and output data<dmn_decision_data>`"
 #~ "Double-clicking the element allows you"
 #~ " to rename it, or you can "
 #~ "change its name in the properties."
+
+#~ msgid "Пока не реализовано."
+#~ msgstr "Not yet implemented."
+
+#~ msgid "Язык входного выражения. Поддерживаемые языки выражений:"
+#~ msgstr "The language of the input expression. Supported expression languages:"
+
+#~ msgid "JUEL"
+#~ msgstr "JUEL"
+
+#~ msgid "FEEL"
+#~ msgstr "FEEL"
+
+#~ msgid "При работе с типом string, данные необходимо писать в кавычках."
+#~ msgstr ""
+#~ "When working with the string type, "
+#~ "data must be enclosed in quotation "
+#~ "marks."
+
+#~ msgid ""
+#~ "Если глобальный язык выражений не "
+#~ "установлен, вместо него используется язык "
+#~ "выражений по умолчанию. Язык выражений "
+#~ "по умолчанию для входных записей — "
+#~ "`FEEL "
+#~ "<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_."
+#~ msgstr ""
+#~ "If a global expression language is "
+#~ "not set, the default expression language"
+#~ " is used instead. The default "
+#~ "expression language for input entries is"
+#~ " `FEEL "
+#~ "<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_."
+
+#~ msgid ""
+#~ "Если глобальный язык выражений не "
+#~ "установлен, вместо него используется язык "
+#~ "выражений по умолчанию. Язык выражений "
+#~ "по умолчанию для выходных записей — "
+#~ "JUEL."
+#~ msgstr ""
+#~ "If a global expression language is "
+#~ "not set, the default expression language"
+#~ " is used instead. The default "
+#~ "expression language for output entries "
+#~ "is JUEL."
+
+#~ msgid ""
+#~ "**«Канцелярские товары»** — условие (т. "
+#~ "е. входной элемент) правила. Это "
+#~ "выражение в `FEEL "
+#~ "<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_, "
+#~ "которое применяется, а затем проверяет, "
+#~ "равно ли входное значение (т. е. "
+#~ "переменная **«type»**) «Канцелярские товары»."
+#~ msgstr ""
+#~ "**\"Stationery\"** is the condition (i.e., "
+#~ "the input element) of the rule. "
+#~ "This is an expression in `FEEL "
+#~ "<https://docs.camunda.org/manual/7.18/reference/dmn/feel/>`_ "
+#~ "that is applied and then checks "
+#~ "whether the input value (i.e., the "
+#~ "**\"type\"** variable) equals \"Stationery\"."
+
+#~ msgid ""
+#~ "**«Разрешить»** — вывод (т. е. выходной"
+#~ " элемент) правила. Это простое выражение"
+#~ " в JUEL возвращает строку **«Канцелярские"
+#~ " товары»**."
+#~ msgstr ""
+#~ "**\"Allow\"** is the output (i.e., the"
+#~ " output element) of the rule. This"
+#~ " is a simple JUEL expression that "
+#~ "returns the string **\"Stationery\"**."
 

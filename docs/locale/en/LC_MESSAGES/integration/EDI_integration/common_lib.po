@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-11-17 14:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,41 +18,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/EDI_integration/common_lib.rst:2
+#: ../../integration/EDI_integration/common_lib.rst:4
 msgid "Общая библиотека для обработки EDI событий ecos-edi-integration"
 msgstr "Common Library for Processing EDI Events ecos-edi-integration"
 
-#: ../../integration/EDI_integration/common_lib.rst:6
+#: ../../integration/EDI_integration/common_lib.rst:8
 msgid "Доступно только в Enterprise версии."
 msgstr "Available only in the Enterprise version."
 
-#: ../../integration/EDI_integration/common_lib.rst:8
-msgid ""
-"Данная библиотека нужна для обработки события от провайдера "
-"непосредственно в Citeck. При ее деплое как osgi-bundle, разворачивается "
-"camel контекст с внешним роутом - direct-vm:ecosEventsReceiveVmRoute. Все"
-" события от разных провайдеров будут падать в этот роут."
-msgstr ""
-"This library is needed to process events from the provider directly in Citeck. When deployed as an osgi-bundle, a Camel context with an external route - direct-vm:ecosEventsReceiveVmRoute - is deployed. All events from different providers will go into this route."
-
 #: ../../integration/EDI_integration/common_lib.rst:10
 msgid ""
-"Путь до библиотеки: `https://gitlab.citeck.ru/citeck-projects/ecos-edi-"
-"integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-"
-"integration>`_"
-msgstr ""
-"Library path: `https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration>`_"
+"Библиотека ``ecos-edi-integration`` обрабатывает унифицированные "
+"EDI-события в Citeck: вложения, подписи и пакеты документов. При запуске "
+"OSGi-бандла создаётся отдельный Camel-контекст с входной точкой ``direct-"
+"vm:ecosEventsReceiveVmRoute``."
+msgstr "The ``ecos-edi-integration`` library processes common EDI events in Citeck: attachments, signatures, and document packages. Starting the OSGi bundle creates a separate Camel context with the entry point ``direct-vm:ecosEventsReceiveVmRoute``."
 
 #: ../../integration/EDI_integration/common_lib.rst:12
 msgid ""
-"Деплой библиотеки описан тут: :ref:`Функционал загрузки OSGI "
-"пакетов<OSGI>`"
-msgstr ""
-"Library deployment is described here: :ref:`OSGI Bundle Loading Functionality<OSGI>`"
+"Исходный код: `ecos-edi-integration <https://gitlab.citeck.ru/citeck-"
+"projects/ecos-edi-integration>`_."
+msgstr "Source code: `ecos-edi-integration <https://gitlab.citeck.ru/citeck-projects/ecos-edi-integration>`_."
 
-#: ../../integration/EDI_integration/common_lib.rst:14
+#: ../../integration/EDI_integration/common_lib.rst:15
+msgid "Версия и совместимость"
+msgstr "Version and compatibility"
+
+#: ../../integration/EDI_integration/common_lib.rst:17
 msgid ""
-"Настройка синхронизации на примере диадока описана тут: :ref:`Настройка "
-"получения событий с ящиком Контур.Диадок<events_kontur>`"
-msgstr ""
-"Synchronization configuration using Diadoc as an example is described here: :ref:`Setting up event reception from the Kontur.Diadoc mailbox<events_kontur>`"
+"Описание сверено с версией **1.9.0**. В её POM заданы **Camel 3.11.2**, "
+"**ecos-osgi-loader 2.0.0** и **ecos-edi-commons 2.15.0-SNAPSHOT**. Эти "
+"зависимости имеют scope ``provided``: необходимые API и компоненты должны"
+" быть доступны в принимающем окружении."
+msgstr "This description has been checked against version **1.9.0**. Its POM specifies **Camel 3.11.2**, **ecos-osgi-loader 2.0.0**, and **ecos-edi-commons 2.15.0-SNAPSHOT**. These dependencies have ``provided`` scope: the required APIs and components must be available in the host environment."
+
+#: ../../integration/EDI_integration/common_lib.rst:21
+msgid ""
+"Перед установкой проверьте версии API, экспортируемые OSGi-пакеты и "
+"наличие компонента ``direct-vm`` на целевом стенде. Общая "
+":ref:`инструкция загрузки OSGi-бандлов <OSGI>` описывает также окружение "
+"с Camel 4, где ``direct-vm`` удалён. Совместимость библиотеки 1.9.0 с "
+"таким окружением не подтверждена. Замена ``direct-vm`` на ``direct`` сама"
+" по себе не сохраняет обмен между отдельными Camel-контекстами."
+msgstr "Before installation, check API versions, exported OSGi packages, and the availability of the ``direct-vm`` component in the target environment. The general :ref:`OSGi bundle loading instructions <OSGI>` also describe a Camel 4 environment, where ``direct-vm`` has been removed. Compatibility of library version 1.9.0 with that environment has not been confirmed. Replacing ``direct-vm`` with ``direct`` alone does not preserve communication between separate Camel contexts."
+
+#: ../../integration/EDI_integration/common_lib.rst:24
+msgid "Подключение событий"
+msgstr "Connecting the event flow"
+
+#: ../../integration/EDI_integration/common_lib.rst:26
+msgid ""
+"Запуск бандла создаёт обработчик, но получение событий у провайдера "
+"настраивается отдельно. В поле **Camel endpoint** отправляющей "
+"синхронизации укажите ``direct-vm:ecosEventsReceiveVmRoute``. Пример "
+"настройки: :ref:`получение событий из ящика Контур.Диадок "
+"<events_kontur>`."
+msgstr "Starting the bundle creates the handler, but event retrieval from the provider is configured separately. In the sending synchronization's **Camel endpoint** field, specify ``direct-vm:ecosEventsReceiveVmRoute``. Configuration example: :ref:`receiving events from a Kontur.Diadoc mailbox <events_kontur>`."
+
+#: ../../integration/EDI_integration/common_lib.rst:28
+msgid ""
+"В стандартной фабрике версии 1.9.0 зарегистрированы обработчики "
+"**KONTUR**, **CORUS** и **SBIS**. Наличие обработчика не означает "
+"поддержку всех возможностей API соответствующего провайдера."
+msgstr "The standard factory in version 1.9.0 registers handlers for **KONTUR**, **CORUS**, and **SBIS**. A handler's presence does not mean that all capabilities of the corresponding provider API are supported."
+
+#: ../../integration/EDI_integration/common_lib.rst:30
+msgid ""
+"Тело сообщения должно представлять унифицированное событие "
+"``ru.citeck.ecos.domain.edi.dto.Event`` из совместимой версии ``ecos-edi-"
+"commons``. Общий процессор проверяет:"
+msgstr "The message body must contain a common ``ru.citeck.ecos.domain.edi.dto.Event`` from a compatible ``ecos-edi-commons`` version. The common processor checks:"
+
+#: ../../integration/EDI_integration/common_lib.rst:32
+msgid "наличие ``ediProviderType``;"
+msgstr "that ``ediProviderType`` is present;"
+
+#: ../../integration/EDI_integration/common_lib.rst:33
+msgid "наличие зарегистрированного обработчика этого провайдера;"
+msgstr "that a handler is registered for this provider;"
+
+#: ../../integration/EDI_integration/common_lib.rst:34
+msgid "непустой идентификатор собственного ящика в ``ourId.attributes.boxId``."
+msgstr "that the own-mailbox identifier in ``ourId.attributes.boxId`` is nonempty."
+
+#: ../../integration/EDI_integration/common_lib.rst:36
+msgid ""
+"При нарушении этих условий процессор выбрасывает "
+"``IllegalArgumentException``. Исходные ответы провайдера необходимо "
+"преобразовать в унифицированное событие до передачи в этот маршрут."
+msgstr "If these conditions are not met, the processor throws ``IllegalArgumentException``. Raw provider responses must be converted to a common event before being passed to this route."
+
+#: ../../integration/EDI_integration/common_lib.rst:39
+msgid "Условия работы"
+msgstr "Operating requirements"
+
+#: ../../integration/EDI_integration/common_lib.rst:41
+msgid ""
+"Библиотека получает ``RecordsServiceFactory``, ``RecordsService`` и "
+"``EdiService`` из Spring-контекста принимающего приложения. В данной "
+"версии используются Alfresco-источники и модель данных: конфигурация EDI "
+"читается из ``alfresco/`` с типом ``ediConfig:ecosConfig``, а поиск "
+"контрагентов использует ``alfresco/counterpartyByBoxId``. Эти сервисы, "
+"источники и используемые Alfresco-пути хранения должны быть доступны в "
+"окружении."
+msgstr "The library obtains ``RecordsServiceFactory``, ``RecordsService``, and ``EdiService`` from the host application's Spring context. This version uses Alfresco data sources and its data model: EDI configuration is read from ``alfresco/`` with type ``ediConfig:ecosConfig``, and counterparty lookup uses ``alfresco/counterpartyByBoxId``. These services, data sources, and the Alfresco storage paths used must be available in the environment."
+
+#: ../../integration/EDI_integration/common_lib.rst:43
+msgid "События проходят по цепочке:"
+msgstr "Events follow this chain:"
+
+#: ../../integration/EDI_integration/common_lib.rst:51
+msgid ""
+"Доставка в маршрут не всегда приводит к обработке пакета. При "
+"``inboundPackagesProcessing=BOX_ID`` внешнее событие без найденного "
+"контрагента пропускается с сообщением ``Skip event``. Для внутреннего "
+"пакета эта проверка не блокирует обработку. При других значениях режима "
+"отсутствие контрагента само по себе не блокирует вызов процессора. "
+"Значение режима по умолчанию — ``ALL``."
+msgstr "Delivery to the route does not always result in package processing. With ``inboundPackagesProcessing=BOX_ID``, an external event without a matching counterparty is skipped with a ``Skip event`` message. For an internal package, this check does not block processing. With other mode values, the absence of a counterparty alone does not prevent the processor from being called. The default mode is ``ALL``."
+
+#: ../../integration/EDI_integration/common_lib.rst:53
+msgid ""
+"Порядок загрузки бандла описан в разделе :ref:`Функционал загрузки "
+"OSGi-пакетов <OSGI>`. Загрузку выполняйте от имени системного "
+"администратора после проверки совместимости окружения."
+msgstr "Bundle loading is described in :ref:`OSGi package loading <OSGI>`. Upload as a system administrator after checking environment compatibility."
+
+#~ msgid ""
+#~ "Данная библиотека нужна для обработки "
+#~ "события от провайдера непосредственно в "
+#~ "Citeck. При ее деплое как osgi-"
+#~ "bundle, разворачивается camel контекст с "
+#~ "внешним роутом - direct-"
+#~ "vm:ecosEventsReceiveVmRoute. Все события от "
+#~ "разных провайдеров будут падать в этот"
+#~ " роут."
+#~ msgstr ""
+#~ "This library is needed to process "
+#~ "events from the provider directly in "
+#~ "Citeck. When deployed as an osgi-"
+#~ "bundle, a Camel context with an "
+#~ "external route - direct-"
+#~ "vm:ecosEventsReceiveVmRoute - is deployed. All"
+#~ " events from different providers will "
+#~ "go into this route."
+
+#~ msgid ""
+#~ "Деплой библиотеки описан тут: :ref:`Функционал"
+#~ " загрузки OSGI пакетов<OSGI>`"
+#~ msgstr ""
+#~ "Library deployment is described here: "
+#~ ":ref:`OSGI Bundle Loading Functionality<OSGI>`"
+
+#~ msgid ""
+#~ "Настройка синхронизации на примере диадока "
+#~ "описана тут: :ref:`Настройка получения событий"
+#~ " с ящиком Контур.Диадок<events_kontur>`"
+#~ msgstr ""
+#~ "Synchronization configuration using Diadoc as"
+#~ " an example is described here: "
+#~ ":ref:`Setting up event reception from "
+#~ "the Kontur.Diadoc mailbox<events_kontur>`"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -47,10 +47,10 @@ msgstr ""
 "process."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:12
-msgid "**Событие «Ошибка»** может быть стартовым, промежуточным и конечным."
-msgstr ""
-"**'Error' Event** can be a start event, an intermediate event, and an end"
-" event."
+msgid ""
+"**Событие «Ошибка»** может быть стартовым событием событийного "
+"подпроцесса, граничным событием активности или конечным событием."
+msgstr "An **Error event** can be the start event of an event subprocess, a boundary event of an activity, or an end event."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:15
 msgid "Начальное событие «Ошибка»"
@@ -96,11 +96,13 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:34
 msgid ""
-"Если соответствующее Boundary Catch Event не найдено, семантика "
-"выполнения по умолчанию принимает семантику отсутствия конечного события."
-msgstr ""
-"If no corresponding Boundary Catch Event is found, the default execution "
-"semantics assume the semantics of a missing end event."
+"Если подходящий обработчик ошибки не найден, Camunda по умолчанию "
+"записывает информацию в журнал и завершает текущую ветку выполнения. При "
+"включённом параметре движка ``enableExceptionsAfterUnhandledBpmnError`` "
+"вместо этого выбрасывается исключение. См. `обработку неперехваченных "
+"BPMN-ошибок <https://docs.camunda.org/manual/7.24/reference/bpmn20/events"
+"/error-events/#unhandled-bpmn-error>`_."
+msgstr "If no suitable error handler is found, Camunda logs information and ends the current execution branch by default. If the engine's ``enableExceptionsAfterUnhandledBpmnError`` option is enabled, an exception is thrown instead. See `handling unhandled BPMN errors <https://docs.camunda.org/manual/7.24/reference/bpmn20/events/error-events/#unhandled-bpmn-error>`_."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:40
 msgid "На рисунке — **(1)**"
@@ -161,18 +163,15 @@ msgstr ""
 "/advanced-asynchronous-continuations/>`_."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:87
-msgid "Промежуточное событие «Ошибка»"
-msgstr "Intermediate Event 'Error'"
+msgid "Граничное событие «Ошибка»"
+msgstr "Boundary Error Event"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:89
 msgid ""
-"**Промежуточное событие «Ошибка»** всегда является граничным-прерывающим."
-" Это означает, что ошибка прерывает выполнение действия, в котором она "
-"произошла, и поток операций идет по другому маршруту."
-msgstr ""
-"**Intermediate Event 'Error'** is always an interrupting boundary event. "
-"This means that the error interrupts the execution of the activity in "
-"which it occurred, and the flow of operations follows a different route."
+"**Граничное событие «Ошибка» (Boundary Error Event)** всегда является "
+"прерывающим. Это означает, что перехваченная ошибка прерывает выполнение "
+"привязанной активности, и поток операций идет по другому маршруту."
+msgstr "A **Boundary Error Event** is always interrupting. This means that a caught error interrupts execution of the attached activity, and the sequence flow follows a different route."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:91
 msgid "На рисунке — **(2)**"
@@ -200,11 +199,9 @@ msgstr "The name of the variable that will contain the error message."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:148
 msgid ""
-"Intermediate catching error event перехватывает ошибки, возникающие в "
-"рамках действия, для которого оно определено."
-msgstr ""
-"Intermediate catching error event catches errors that occur within the "
-"scope of the activity for which it is defined."
+"Boundary Error Event перехватывает ошибки, возникающие в области "
+"выполнения активности, к которой оно прикреплено."
+msgstr "A Boundary Error Event catches errors arising within the execution scope of the activity to which it is attached."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:150
 msgid ""
@@ -283,4 +280,18 @@ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
 
 #~ msgid "Атрибуты"
 #~ msgstr "Attributes"
+
+#~ msgid ""
+#~ "Если соответствующее Boundary Catch Event "
+#~ "не найдено, семантика выполнения по "
+#~ "умолчанию принимает семантику отсутствия "
+#~ "конечного события."
+#~ msgstr ""
+#~ "If no corresponding Boundary Catch Event"
+#~ " is found, the default execution "
+#~ "semantics assume the semantics of a "
+#~ "missing end event."
+
+#~ msgid "Промежуточное событие «Ошибка»"
+#~ msgstr "Intermediate Event 'Error'"
 

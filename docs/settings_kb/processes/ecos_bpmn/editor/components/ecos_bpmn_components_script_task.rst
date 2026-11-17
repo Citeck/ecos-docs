@@ -155,12 +155,14 @@ ECOS Config
     // Получение значение конфигурации из ecos-app и приведение к типу Boolean
     const enabled = Config.get("app/eapps$enable-crm-lead-ai-spam-check").asBoolean();
 
+.. _bpmn_script_data_value:
+
 DataValue
 ~~~~~~~~~
 
-``DataValue`` - объект, позволяющий сконвертировать данные в структуру `BpmnDataValue <https://github.com/Citeck/ecos-process/blob/master/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt>`_ для удобной работы с json представлением, это позволяет безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу, сохранять данные в execution и многое другое, подробнее см. методы класса.
+``DataValue`` — сервис для создания объектов ``ru.citeck.ecos.bpmn.commons.values.BpmnDataValue``. Объект позволяет работать с JSON-данными: безопасно обращаться к полям, получать значения по умолчанию, приводить значения к нужному типу и сохранять данные в execution. Класс находится в библиотеке BPMN commons; одноимённый класс в пакете ``ecos.process.domain.bpmn.engine.camunda.impl.variables.convert`` устарел.
 
-    - ``DataValue.of(content: Any?)`` - создает объект DataValue из любого объекта, если объект не может быть сконвертирован в DataValue, то возвращается пустой объект DataValue.
+    - ``DataValue.of(content: Any?)`` — преобразует переданные данные в объект DataValue.
     - ``DataValue.createObj()`` - создает пустой объект DataValue.
     - ``DataValue.createArr()`` - создает пустой массив DataValue.
     - ``DataValue.createStr(value: Any?)`` - создает строковое представление переданного значения.
@@ -472,7 +474,7 @@ Logger
         throw new Error("Комментарий не заполнен");
     }
 
-В эту переменную информация не пишется, если строка пустая.
+При завершении задачи пустой или состоящий из пробелов комментарий нормализуется в ``null`` и записывается в переменную ``comment``. Предыдущий комментарий при этом не сохраняется.
 
 
 .. dropdown:: Пример вычисления id рабочего расписания с использованием DMN

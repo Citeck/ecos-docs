@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-11-17 14:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,27 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:2
-msgid "Описание ecos-edi-sbis-lib"
-msgstr "Description of ecos-edi-sbis-lib"
-
 #: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:4
-msgid "Данная либа производит интеграцию с Тензор.СБИС."
-msgstr "This library provides integration with Tensor.SBIS."
+msgid "Описание ecos-edi-sbis"
+msgstr "ecos-edi-sbis overview"
 
 #: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:6
+msgid ""
+"Библиотека ``ecos-edi-sbis`` обеспечивает интеграцию с Тензор.СБИС для "
+"юридически значимого документооборота (ЮЗДО). Maven-координаты: "
+"``ru.citeck.ecos:ecos-edi-sbis``."
+msgstr "The ``ecos-edi-sbis`` library provides integration with Tensor.SBIS for legally significant electronic document exchange. Maven coordinates: ``ru.citeck.ecos:ecos-edi-sbis``."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:8
+msgid "Описание ниже сверено с исходниками версии ``2.11.0-SNAPSHOT``."
+msgstr "The description below has been checked against the source code of version ``2.11.0-SNAPSHOT``."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:10
 msgid "Ссылка на документацию:"
 msgstr "Documentation links:"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:8
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:12
 msgid ""
 "`Порядок работы с API-интерфейсом  "
 "<https://sbis.ru/help/integration/api/sequence>`_"
-msgstr ""
-"`API usage procedure  "
-"<https://sbis.ru/help/integration/api/sequence>`_"
+msgstr "`API usage procedure  <https://sbis.ru/help/integration/api/sequence>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:10
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:13
 msgid ""
 "`список используемых в Тензор.СБИС форматов документов "
 "<https://sbis.ru/formats/edo/>`_"
@@ -46,28 +51,159 @@ msgstr ""
 "`List of document formats used in Tensor.SBIS "
 "<https://sbis.ru/formats/edo/>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:12
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:15
 msgid "Ссылка на личный кабинет:"
 msgstr "Personal account links:"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:14
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:17
 msgid "`Тест  <https://fix-online.sbis.ru/>`_"
 msgstr "`Test  <https://fix-online.sbis.ru/>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:16
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:18
 msgid "`Прод  <https://online.sbis.ru/>`_"
 msgstr "`Production  <https://online.sbis.ru/>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:18
-msgid ""
-"Настройка ящика проще чем для других провайдеров, необходимо заполнить "
-"только **datasource**, **creds** и **boxId**:"
-msgstr ""
-"Box setup is simpler than for other providers; you only need to fill in **datasource**, **creds**, and **boxId**:"
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:21
+msgid "Настройка подключения"
+msgstr "Connection setup"
 
-#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:24
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:23
 msgid ""
-"На данный момент интеграция корректно работает только для ЮЗДО. EDI "
-"интеграция не реализована."
-msgstr ""
-"Currently, the integration works correctly only for EDI (Electronic Data Interchange). EDI integration is not implemented."
+"При создании конфигурации ящика заполните общие обязательные поля формы и"
+" выберите провайдера **СБИС** (``SBIS``). Укажите следующие параметры "
+"подключения:"
+msgstr "When creating a mailbox configuration, fill in the form's common required fields and select the **SBIS** (``SBIS``) provider. Specify the following connection parameters:"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:30
+msgid "Параметр"
+msgstr "Parameter"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:31
+msgid "Описание"
+msgstr "Description"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:32
+msgid "**URL** (``datasourceRef``)"
+msgstr "**URL** (``datasourceRef``)"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:33
+msgid "Ссылка на источник данных с базовым URL сервиса."
+msgstr "A reference to the data source containing the service's base URL."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:34
+msgid "**Авторизационные данные** (``credentialsRef``)"
+msgstr "**Credentials** (``credentialsRef``)"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:35
+msgid ""
+"Ссылка на credentials с заполненными атрибутами ``username`` и "
+"``password``. Библиотека передаёт логин и пароль в JSON-RPC метод "
+"``СБИС.Аутентифицировать`` и использует полученный идентификатор сессии "
+"для последующих запросов."
+msgstr "A reference to credentials with the ``username`` and ``password`` attributes filled in. The library passes the login and password to the JSON-RPC method ``СБИС.Аутентифицировать`` and uses the returned session ID for subsequent requests."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:36
+msgid "**Идентификатор ящика** (``boxId``)"
+msgstr "**Mailbox ID** (``boxId``)"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:37
+msgid "Идентификатор ящика СБИС, для которого настраивается подключение."
+msgstr "The ID of the SBIS mailbox for which the connection is being configured."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:39
+msgid ""
+"Базовый URL должен позволять добавление путей ``/auth/service/`` и "
+"``/service/?srv=1``: библиотека формирует эти адреса самостоятельно. При "
+"прямом подключении укажите URL хоста выбранного контура без этих путей. "
+"При подключении через прокси используйте базовый адрес с согласованным "
+"префиксом пути."
+msgstr "The base URL must allow the paths ``/auth/service/`` and ``/service/?srv=1`` to be appended: the library constructs these addresses itself. For a direct connection, specify the host URL of the selected environment without these paths. When connecting through a proxy, use a base address with the agreed path prefix."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:41
+msgid ""
+"Ключ разработчика (``devKey``) и GLN в этом пути подключения не "
+"используются."
+msgstr "The developer key (``devKey``) and GLN are not used in this connection path."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:43
+msgid "Пример заполнения формы:"
+msgstr "Example form:"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:49
+msgid "В библиотеке сохранены два механизма чтения конфигурации ящика:"
+msgstr "The library retains two mechanisms for reading mailbox configuration:"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:51
+msgid ""
+"**v1** — устаревший механизм: URL читается из ``config.url`` источника "
+"данных, а идентификатор ящика — из ``ourId.attributes.boxId``."
+msgstr "**v1** — the legacy mechanism: the URL is read from the data source's ``config.url`` attribute, and the mailbox ID from ``ourId.attributes.boxId``."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:52
+msgid ""
+"**v2** — конфигурация получается через ``EdiBoxDataService``; URL "
+"извлекается через ``EdiDatasourceService``, а идентификатор ящика "
+"хранится в отдельном поле ``boxId``."
+msgstr "**v2** — configuration is obtained through ``EdiBoxDataService``; the URL is retrieved through ``EdiDatasourceService``, and the mailbox ID is stored in a separate ``boxId`` field."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:54
+msgid ""
+"При поиске подключения библиотека сначала обращается к механизму v1, "
+"затем, если конфигурация не найдена, — к v2. Используйте поля и форму, "
+"соответствующие версии механизма в вашем экземпляре Citeck."
+msgstr "When resolving a connection, the library first uses the v1 mechanism, then falls back to v2 if no configuration is found. Use the fields and form appropriate for the mechanism version in your Citeck instance."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:56
+msgid ""
+"Настройка ящика задаёт параметры соединения. Для получения событий "
+"отдельно настройте синхронизацию и обработчик событий: сервис СБИС "
+"принимает конфигурацию синхронизации с ``stateServiceConfig.endpoint`` и "
+"передаёт обработанные события в ``EdiStateService``. Форма и расписание "
+"синхронизации определяются микросервисом, в котором используется "
+"библиотека."
+msgstr "Mailbox configuration defines the connection parameters. To receive events, configure a synchronization and an event handler separately: the SBIS service accepts a synchronization configuration with ``stateServiceConfig.endpoint`` and passes processed events to ``EdiStateService``. The synchronization form and schedule are defined by the microservice that uses the library."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:59
+msgid "Ограничения"
+msgstr "Limitations"
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:61
+msgid ""
+"В версии ``2.11.0-SNAPSHOT`` стандартный генератор EDI XML возвращает "
+"``null``, а оба метода отправки EDI XML — с подписью и без неё — "
+"выбрасывают ``UnsupportedOperationException``. Этот путь EDI-интеграции "
+"не реализован."
+msgstr "In version ``2.11.0-SNAPSHOT``, the standard EDI XML generator returns ``null``, and both EDI XML sending methods — signed and unsigned — throw ``UnsupportedOperationException``. This EDI integration path is not implemented."
+
+#: ../../integration/EDI_integration/ecos-edi-sbis-lib.rst:63
+msgid ""
+"Доступность отдельных операций ЮЗДО зависит от реализованных методов и "
+"сценария обработки. Методы общего API ``acceptDocument`` и "
+"``sendSimpleRejection`` для СБИС не поддерживаются и выбрасывают "
+"``UnsupportedOperationException``. Это ограничение конкретных методов; "
+"возможность выполнить соответствующее действие другим сценарием "
+"необходимо проверять отдельно."
+msgstr "Availability of individual legally significant document exchange operations depends on the implemented methods and processing scenario. The common API methods ``acceptDocument`` and ``sendSimpleRejection`` are unsupported for SBIS and throw ``UnsupportedOperationException``. This restriction applies to specific methods; whether the corresponding action can be performed through another scenario must be checked separately."
+
+#~ msgid "Данная либа производит интеграцию с Тензор.СБИС."
+#~ msgstr "This library provides integration with Tensor.SBIS."
+
+#~ msgid ""
+#~ "Настройка ящика проще чем для других "
+#~ "провайдеров, необходимо заполнить только "
+#~ "**datasource**, **creds** и **boxId**:"
+#~ msgstr ""
+#~ "Box setup is simpler than for "
+#~ "other providers; you only need to "
+#~ "fill in **datasource**, **creds**, and "
+#~ "**boxId**:"
+
+#~ msgid ""
+#~ "На данный момент интеграция корректно "
+#~ "работает только для ЮЗДО. EDI интеграция"
+#~ " не реализована."
+#~ msgstr ""
+#~ "Currently, the integration works correctly "
+#~ "only for EDI (Electronic Data "
+#~ "Interchange). EDI integration is not "
+#~ "implemented."

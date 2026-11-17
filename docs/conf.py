@@ -47,13 +47,13 @@ gettext_compact = False     # Опция, которая определяет р
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
+ 'sphinxcontrib.rsvgconverter',
  'sphinx.ext.imgconverter',
  'sphinx_search.extension',
  'sphinx_copybutton',
  'sphinx_tabs.tabs',
  'sphinx_rtd_theme',
  'sphinxcontrib.mermaid',
- 'sphinxcontrib.rsvgconverter',
  'sphinx_design'
 ]
 

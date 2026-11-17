@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 15:14+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,21 +24,26 @@ msgstr "Using Camel DSL"
 
 #: ../../integration/Camel_DSL.rst:6
 msgid ""
-"**Camel DSL** — надстройка над Apache Camel, адаптированная для работы с "
-"платформой Citeck. Инструмент позволяет описывать интеграционные маршруты"
-" в форматах **YAML DSL** и **XML DSL** и использует ключевые концепции "
-"Apache Camel: контексты, маршруты, компоненты и endpoint-ы."
-msgstr ""
-"**Camel DSL** is an extension built on top of Apache Camel, adapted for "
-"working with the Citeck platform. The tool allows describing integration "
-"routes in **YAML DSL** and **XML DSL** formats and uses key Apache Camel "
-"concepts: contexts, routes, components, and endpoints."
+"**Camel DSL в Citeck** позволяет описывать и выполнять интеграционные "
+"маршруты Apache Camel в микросервисе **ecos-integrations**. "
+"Поддерживаются форматы **YAML DSL** и **XML DSL**. Компоненты Citeck "
+"дополняют стандартные средства Camel работой с Records API, событиями "
+"платформы, файлами и внешними системами."
+msgstr "**Camel DSL in Citeck** allows you to define and execute Apache Camel integration routes in the **ecos-integrations** microservice. Both **YAML DSL** and **XML DSL** are supported. Citeck components extend standard Camel capabilities with Records API operations, platform events, files, and external systems."
 
 #: ../../integration/Camel_DSL.rst:8
+msgid ""
+"Основная единица настройки — **Camel-контекст**: он содержит маршруты, "
+"бины и параметры их выполнения. Маршрут задаёт источник сообщений или "
+"данных, последовательность обработки и целевые конечные точки "
+"(endpoint-ы)."
+msgstr "The main configuration unit is the **Camel context**: it contains routes, beans, and their execution parameters. A route defines the source of messages or data, the processing sequence, and target endpoints."
+
+#: ../../integration/Camel_DSL.rst:10
 msgid "Основные сценарии применения:"
 msgstr "Main use cases:"
 
-#: ../../integration/Camel_DSL.rst:10
+#: ../../integration/Camel_DSL.rst:12
 msgid ""
 "интеграция Citeck с внешними системами через REST, JDBC, RabbitMQ и "
 "другие протоколы;"
@@ -46,35 +51,97 @@ msgstr ""
 "integrating Citeck with external systems via REST, JDBC, RabbitMQ, and "
 "other protocols;"
 
-#: ../../integration/Camel_DSL.rst:11
+#: ../../integration/Camel_DSL.rst:13
 msgid "миграция и синхронизация данных между базами данных;"
 msgstr "data migration and synchronization between databases;"
 
-#: ../../integration/Camel_DSL.rst:12
+#: ../../integration/Camel_DSL.rst:14
 msgid "обработка событий и сообщений через подписки;"
 msgstr "processing events and messages via subscriptions;"
 
-#: ../../integration/Camel_DSL.rst:13
+#: ../../integration/Camel_DSL.rst:15
 msgid "автоматизация импорта данных из файлов."
 msgstr "automating data import from files."
 
-#: ../../integration/Camel_DSL.rst:15
-msgid ""
-"В данном разделе описаны ключевые возможности Camel DSL в Citeck: "
-"настройка контекстов и маршрутов, доступные компоненты, endpoint-ы и "
-"процессоры, а также интеграция с ECOS Records через "
-"``RecordsDaoEndpoint``."
-msgstr ""
-"This section describes the key capabilities of Camel DSL in Citeck: "
-"configuring contexts and routes, available components, endpoints and "
-"processors, as well as integration with ECOS Records via "
-"``RecordsDaoEndpoint``."
+#: ../../integration/Camel_DSL.rst:18
+msgid "Начало работы"
+msgstr "Getting started"
 
 #: ../../integration/Camel_DSL.rst:20
+msgid ""
+"Откройте журнал **Camel DSL** в рабочем пространстве администратора: "
+"``v2/journals?journalId=ecos-camel-"
+"dsl&viewMode=table&ws=admin$workspace``."
+msgstr "Open the **Camel DSL** journal in the administrator workspace: ``v2/journals?journalId=ecos-camel-dsl&viewMode=table&ws=admin$workspace``."
+
+#: ../../integration/Camel_DSL.rst:21
+msgid ""
+"Создайте или выберите контекст и задайте формат его содержимого — YAML "
+"или XML. Укажите тип запуска:"
+msgstr "Create or select a context and set its content format to YAML or XML. Specify the startup type:"
+
+#: ../../integration/Camel_DSL.rst:23
+msgid "**MANUALLY** — запуск и остановка контекста действиями в журнале;"
+msgstr "**MANUALLY** — start and stop the context using journal actions;"
+
+#: ../../integration/Camel_DSL.rst:24
+msgid ""
+"**IMPORT_DATA** — обработка файла через механизм импорта данных с "
+"созданием отдельного инстанса контекста."
+msgstr "**IMPORT_DATA** — process a file through the data import mechanism, creating a separate context instance."
+
+#: ../../integration/Camel_DSL.rst:26
+msgid ""
+"Настройте подключения к внешним системам, учётные данные и маршрут. "
+"Пример работы с JDBC приведён в разделе :ref:`Выборка из БД "
+"<camel_dsl_bd_selection>`, чтения и записи данных Citeck — в справочнике "
+":ref:`конечных точек <endpoints_dsl>`."
+msgstr "Configure external system connections, credentials, and the route. A JDBC example is provided in :ref:`Database query <camel_dsl_bd_selection>`; reading and writing Citeck data are described in the :ref:`endpoint reference <endpoints_dsl>`."
+
+#: ../../integration/Camel_DSL.rst:27
+msgid ""
+"Для YAML-маршрута можно открыть :ref:`просмотрщик Kaoto "
+"<camel_dsl_visual_editor>`. По умолчанию схема служит для просмотра и "
+"навигации, а изменения вносятся в YAML. Визуальное редактирование схемы "
+"включается отдельно настройкой ``app/integrations$camel-visual-editing-"
+"enabled``."
+msgstr "For a YAML route, you can open the :ref:`Kaoto viewer <camel_dsl_visual_editor>`. By default, the diagram is used for viewing and navigation, and changes are made in YAML. Visual diagram editing is enabled separately with the ``app/integrations$camel-visual-editing-enabled`` setting."
+
+#: ../../integration/Camel_DSL.rst:28
+msgid ""
+"Сохраните контекст и запустите его выбранным способом. Для диагностики "
+"используйте :ref:`действия и лог контекста <camel_dsl_actions>`, а для "
+"импорта данных — :ref:`журнал инстансов <camel_instance>`."
+msgstr "Save the context and start it using the selected method. For diagnostics, use :ref:`context actions and logs <camel_dsl_actions>`; for data imports, use the :ref:`instance journal <camel_instance>`."
+
+#: ../../integration/Camel_DSL.rst:32
+msgid ""
+"Для новых маршрутов записи данных через Records API используйте :ref"
+":`ecos-records-mutate <EcosRecordsMutateEndpoint>`. Описанный отдельно "
+"бин :ref:`RecordsDaoEndpoint <camel_dsl_records_dao_endpoint>` подавляет "
+"ошибки сохранения: успешное завершение его шага не гарантирует, что "
+"запись сохранена. Это нужно учитывать перед удалением исходных данных или"
+" отметкой об успешном импорте."
+msgstr "For new routes that write data through the Records API, use :ref:`ecos-records-mutate <EcosRecordsMutateEndpoint>`. The separately documented :ref:`RecordsDaoEndpoint <camel_dsl_records_dao_endpoint>` bean suppresses save errors: successful completion of its step does not guarantee that the record was saved. Consider this before deleting source data or marking an import as successful."
+
+#: ../../integration/Camel_DSL.rst:35
+msgid "Справочники и примеры"
+msgstr "References and examples"
+
+#: ../../integration/Camel_DSL.rst:37
+msgid ""
+"Раздел включает настройку контекстов, справочники компонентов, конечных "
+"точек и процессоров, а также готовые сценарии интеграции. Набор доступных"
+" компонентов и параметры зависят от версии и состава поставки. Для "
+"встраивания Camel-контекстов в код микросервиса см. :ref:`ecos-camel-core"
+" <ecos-camel-core>`."
+msgstr "This section includes context configuration, component, endpoint, and processor references, and ready-to-use integration scenarios. Available components and parameters depend on the version and distribution. To embed Camel contexts in microservice code, see :ref:`ecos-camel-core <ecos-camel-core>`."
+
+#: ../../integration/Camel_DSL.rst:42
 msgid "Общая информация"
 msgstr "Overview"
 
-#: ../../integration/Camel_DSL.rst:24
+#: ../../integration/Camel_DSL.rst:46
 msgid ""
 "Camel-контексты, маршруты, компоненты Apache Camel и типы запуска в "
 "Citeck."
@@ -82,11 +149,11 @@ msgstr ""
 "Camel contexts, routes, Apache Camel components, and launch types in "
 "Citeck."
 
-#: ../../integration/Camel_DSL.rst:26
+#: ../../integration/Camel_DSL.rst:48
 msgid "Визуальный просмотрщик маршрутов (Kaoto)"
 msgstr "Visual route viewer (Kaoto)"
 
-#: ../../integration/Camel_DSL.rst:30
+#: ../../integration/Camel_DSL.rst:52
 msgid ""
 "Просмотр Camel-маршрута в виде схемы рядом с YAML на базе Kaoto, "
 "навигация по схеме и включение полноценного визуального редактирования."
@@ -94,11 +161,11 @@ msgstr ""
 "Viewing a Camel route as a diagram next to the YAML, based on Kaoto, "
 "navigating the diagram, and enabling full visual editing."
 
-#: ../../integration/Camel_DSL.rst:32
+#: ../../integration/Camel_DSL.rst:54
 msgid "Выборка из БД"
 msgstr "Selecting data from a database"
 
-#: ../../integration/Camel_DSL.rst:36
+#: ../../integration/Camel_DSL.rst:58
 msgid ""
 "Настройка Credentials, источника данных и маршрута для выборки из БД "
 "через JDBC."
@@ -106,57 +173,57 @@ msgstr ""
 "Configuring credentials, a data source, and a route for selecting data "
 "from a database via JDBC."
 
-#: ../../integration/Camel_DSL.rst:38
+#: ../../integration/Camel_DSL.rst:60
 msgid "Действия, доступные с Camel DSL"
 msgstr "Actions available with Camel DSL"
 
-#: ../../integration/Camel_DSL.rst:42
+#: ../../integration/Camel_DSL.rst:64
 msgid "Старт, стоп контекста и просмотр лога последней синхронизации."
 msgstr ""
 "Starting and stopping a context, and viewing the log of the last "
 "synchronization."
 
-#: ../../integration/Camel_DSL.rst:44
+#: ../../integration/Camel_DSL.rst:66
 msgid "Инстансы контекста Camel DSL"
 msgstr "Camel DSL context instances"
 
-#: ../../integration/Camel_DSL.rst:48
-msgid "Журнал запущенных инстансов контекста и их возможные состояния."
-msgstr "Journal of launched context instances and their possible states."
+#: ../../integration/Camel_DSL.rst:70
+msgid ""
+"Отдельные запуски импорта данных с типом IMPORT_DATA, журнал инстансов и "
+"их состояния."
+msgstr "Separate data import runs with the IMPORT_DATA type, the instance journal, and instance states."
 
-#: ../../integration/Camel_DSL.rst:50
+#: ../../integration/Camel_DSL.rst:72
 msgid "Подключение RecordsDaoEndpoint"
 msgstr "Connecting RecordsDaoEndpoint"
 
-#: ../../integration/Camel_DSL.rst:54
+#: ../../integration/Camel_DSL.rst:76
 msgid ""
-"Запись данных в RecordsDao через бин ``RecordsDaoEndpoint``, в том числе "
-"из XML/CSV/текстовых файлов."
-msgstr ""
-"Writing data to RecordsDao via the ``RecordsDaoEndpoint`` bean, including"
-" from XML/CSV/text files."
+"Настройка бина ``RecordsDaoEndpoint`` для обработки XML/CSV/текстовых "
+"файлов и ограничения обработки ошибок сохранения."
+msgstr "Configuration of the ``RecordsDaoEndpoint`` bean for processing XML/CSV/text files and limitations of save error handling."
 
-#: ../../integration/Camel_DSL.rst:56
+#: ../../integration/Camel_DSL.rst:78
 msgid "Удаление данных из БД"
 msgstr "Deleting data from a database"
 
-#: ../../integration/Camel_DSL.rst:60
+#: ../../integration/Camel_DSL.rst:82
 msgid "Простое удаление записей и удаление после выборки и обработки."
 msgstr "Simple record deletion and deletion after selection and processing."
 
-#: ../../integration/Camel_DSL.rst:62
+#: ../../integration/Camel_DSL.rst:84
 msgid "Получение сообщений из RabbitMQ"
 msgstr "Receiving messages from RabbitMQ"
 
-#: ../../integration/Camel_DSL.rst:66
+#: ../../integration/Camel_DSL.rst:88
 msgid "Подключение к очереди RabbitMQ и публикация события Citeck."
 msgstr "Connecting to a RabbitMQ queue and publishing a Citeck event."
 
-#: ../../integration/Camel_DSL.rst:68
+#: ../../integration/Camel_DSL.rst:90
 msgid "Подписка на событие Citeck"
 msgstr "Subscribing to a Citeck event"
 
-#: ../../integration/Camel_DSL.rst:72
+#: ../../integration/Camel_DSL.rst:94
 msgid ""
 "Подписка на события Citeck с фильтрацией по атрибутам, в том числе по "
 "смене статуса."
@@ -164,51 +231,49 @@ msgstr ""
 "Subscribing to Citeck events with filtering by attributes, including "
 "status changes."
 
-#: ../../integration/Camel_DSL.rst:74
+#: ../../integration/Camel_DSL.rst:96
 msgid "Роутинг из RabbitMQ"
 msgstr "Routing from RabbitMQ"
 
-#: ../../integration/Camel_DSL.rst:78
+#: ../../integration/Camel_DSL.rst:100
 msgid "Чтение из RabbitMQ, роутинг по jsonPath и переотправка в Citeck Event."
 msgstr ""
 "Reading from RabbitMQ, routing by jsonPath, and forwarding to a Citeck "
 "Event."
 
-#: ../../integration/Camel_DSL.rst:80
+#: ../../integration/Camel_DSL.rst:102
 msgid "Компоненты"
 msgstr "Components"
 
-#: ../../integration/Camel_DSL.rst:84
-msgid "Сводный список Camel-компонентов Citeck: ключ, роль и назначение каждого."
-msgstr ""
-"A summary list of Citeck Camel components: the key, role, and purpose of "
-"each."
+#: ../../integration/Camel_DSL.rst:106
+msgid ""
+"Схемы URI компонентов Citeck, их роли потребителей и производителей и "
+"назначение."
+msgstr "URI schemes of Citeck components, their consumer and producer roles, and their purpose."
 
-#: ../../integration/Camel_DSL.rst:86
+#: ../../integration/Camel_DSL.rst:108
 msgid "Конечные точки"
 msgstr "Endpoints"
 
-#: ../../integration/Camel_DSL.rst:90
+#: ../../integration/Camel_DSL.rst:112
 msgid "Подробное описание endpoint-ов: URI, параметры, входные и выходные данные."
 msgstr "Detailed description of endpoints: URI, parameters, input and output data."
 
-#: ../../integration/Camel_DSL.rst:92
+#: ../../integration/Camel_DSL.rst:114
 msgid "Процессоры"
 msgstr "Processors"
 
-#: ../../integration/Camel_DSL.rst:96
+#: ../../integration/Camel_DSL.rst:118
 msgid ""
-"Обработка CSV/Excel-данных, сопоставление ассоциаций и другие процессоры "
-"Camel DSL."
-msgstr ""
-"Processing CSV/Excel data, matching associations, and other Camel DSL "
-"processors."
+"Чтение и запись CSV/Excel, преобразование данных, работа с контентом, "
+"сопоставление ассоциаций и другие процессоры."
+msgstr "Reading and writing CSV/Excel, transforming data, working with content, matching associations, and other processors."
 
-#: ../../integration/Camel_DSL.rst:98
+#: ../../integration/Camel_DSL.rst:120
 msgid "Импорт из Jira и GitLab"
 msgstr "Importing from Jira and GitLab"
 
-#: ../../integration/Camel_DSL.rst:102
+#: ../../integration/Camel_DSL.rst:124
 msgid ""
 "Компоненты для переноса задач, комментариев, вложений, спринтов и "
 "связанных коммитов."
@@ -216,36 +281,39 @@ msgstr ""
 "Components for migrating tasks, comments, attachments, sprints, and "
 "related commits."
 
-#: ../../integration/Camel_DSL.rst:104
+#: ../../integration/Camel_DSL.rst:126
 msgid "Настройка импорта проектов из Jira"
 msgstr "Configuring project imports from Jira"
 
-#: ../../integration/Camel_DSL.rst:108
+#: ../../integration/Camel_DSL.rst:130
 msgid ""
 "Пошаговая настройка синхронизации коммитов и MR из GitLab и импорта "
 "проекта из Jira в Project tracker: пример маршрута, маппинг значений и "
 "атрибутов, устранение неполадок."
-msgstr "Step-by-step configuration of GitLab commit and merge request synchronization and project imports from Jira into Project Tracker: a sample route, value and attribute mappings, and troubleshooting."
+msgstr ""
+"Step-by-step configuration of GitLab commit and merge request "
+"synchronization and project imports from Jira into Project Tracker: a "
+"sample route, value and attribute mappings, and troubleshooting."
 
-#: ../../integration/Camel_DSL.rst:110
+#: ../../integration/Camel_DSL.rst:132
 msgid "Библиотека ecos-camel-core"
 msgstr "ecos-camel-core library"
 
-#: ../../integration/Camel_DSL.rst:114
+#: ../../integration/Camel_DSL.rst:136
 msgid ""
-"Встраивание Camel-контекстов напрямую в код микросервиса (требует "
-"enterprise-лицензию)."
-msgstr ""
-"Embedding Camel contexts directly into microservice code (requires an "
-"enterprise license)."
+"Подключение библиотеки и создание Camel-контекстов в коде микросервиса; "
+"координаты зависимости и требования к поставке."
+msgstr "Connecting the library and creating Camel contexts in microservice code; dependency coordinates and distribution requirements."
 
-#: ../../integration/Camel_DSL.rst:116
+#: ../../integration/Camel_DSL.rst:138
 msgid "Примеры реализации"
 msgstr "Implementation examples"
 
-#: ../../integration/Camel_DSL.rst:120
-msgid "Импорт из Excel, синхронизация с Bitrix24 CRM, глобальный импорт данных."
-msgstr "Importing from Excel, synchronizing with Bitrix24 CRM, global data import."
+#: ../../integration/Camel_DSL.rst:142
+msgid ""
+"Импорт из Excel, синхронизация с Bitrix24 CRM, глобальный импорт данных и"
+" примеры маршрутов из репозитория ecos-camel."
+msgstr "Importing from Excel, synchronizing with Bitrix24 CRM, global data import, and route examples from the ecos-camel repository."
 
 #~ msgid ""
 #~ "Camel-компоненты для подключения маршрутов к"
@@ -270,4 +338,66 @@ msgstr "Importing from Excel, synchronizing with Bitrix24 CRM, global data impor
 #~ "**Camel DSL** is an extension built "
 #~ "on Apache Camel that is adapted "
 #~ "for working with the Citeck platform."
+
+#~ msgid ""
+#~ "**Camel DSL** — надстройка над Apache"
+#~ " Camel, адаптированная для работы с "
+#~ "платформой Citeck. Инструмент позволяет "
+#~ "описывать интеграционные маршруты в форматах"
+#~ " **YAML DSL** и **XML DSL** и "
+#~ "использует ключевые концепции Apache Camel:"
+#~ " контексты, маршруты, компоненты и "
+#~ "endpoint-ы."
+#~ msgstr ""
+#~ "**Camel DSL** is an extension built "
+#~ "on top of Apache Camel, adapted "
+#~ "for working with the Citeck platform."
+#~ " The tool allows describing integration "
+#~ "routes in **YAML DSL** and **XML "
+#~ "DSL** formats and uses key Apache "
+#~ "Camel concepts: contexts, routes, components,"
+#~ " and endpoints."
+
+#~ msgid ""
+#~ "В данном разделе описаны ключевые "
+#~ "возможности Camel DSL в Citeck: "
+#~ "настройка контекстов и маршрутов, доступные"
+#~ " компоненты, endpoint-ы и процессоры, а "
+#~ "также интеграция с ECOS Records через"
+#~ " ``RecordsDaoEndpoint``."
+#~ msgstr ""
+#~ "This section describes the key "
+#~ "capabilities of Camel DSL in Citeck: "
+#~ "configuring contexts and routes, available "
+#~ "components, endpoints and processors, as "
+#~ "well as integration with ECOS Records"
+#~ " via ``RecordsDaoEndpoint``."
+
+#~ msgid "Журнал запущенных инстансов контекста и их возможные состояния."
+#~ msgstr "Journal of launched context instances and their possible states."
+
+#~ msgid ""
+#~ "Запись данных в RecordsDao через бин "
+#~ "``RecordsDaoEndpoint``, в том числе из "
+#~ "XML/CSV/текстовых файлов."
+#~ msgstr ""
+#~ "Writing data to RecordsDao via the "
+#~ "``RecordsDaoEndpoint`` bean, including from "
+#~ "XML/CSV/text files."
+
+#~ msgid ""
+#~ "Сводный список Camel-компонентов Citeck: ключ,"
+#~ " роль и назначение каждого."
+#~ msgstr ""
+#~ "A summary list of Citeck Camel "
+#~ "components: the key, role, and purpose"
+#~ " of each."
+
+#~ msgid ""
+#~ "Встраивание Camel-контекстов напрямую в код"
+#~ " микросервиса (требует enterprise-лицензию)."
+#~ msgstr ""
+#~ "Embedding Camel contexts directly into "
+#~ "microservice code (requires an enterprise "
+#~ "license)."
 

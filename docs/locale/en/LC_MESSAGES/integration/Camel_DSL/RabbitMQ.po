@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -65,13 +65,48 @@ msgstr ""
 "and specify the created secret."
 
 #: ../../integration/Camel_DSL/RabbitMQ.rst:19
-
 msgid ""
 "Зайти в **журнал Camel DSL** (Интеграция → Camel DSL) и создать новый "
 "контекст с конфигурацией ниже."
 msgstr ""
 "Go to the **Camel DSL journal (Integration - Camel DSL)** and create a "
 "new context with the following config:"
+
+#: ../../integration/Camel_DSL/RabbitMQ.rst:53
+msgid "Подключение к основному брокеру платформы"
+msgstr "Connecting to the platform's main broker"
+
+#: ../../integration/Camel_DSL/RabbitMQ.rst:55
+msgid ""
+"В версиях integrations с поддержкой автоматической фабрики подключения "
+"можно использовать настройки ``ecos.webapp.dataSources.main-rabbitmq``. "
+"Если в них задан host, Camel-контекст получает бин "
+"``rabbitConnectionFactory`` типа Spring AMQP. Отдельные endpoint и секрет"
+" для этого варианта не требуются."
+msgstr "In integrations versions supporting an automatic connection factory, you can use the ``ecos.webapp.dataSources.main-rabbitmq`` settings. If host is specified, the Camel context receives a Spring AMQP bean named ``rabbitConnectionFactory``. A separate endpoint and secret are not required for this option."
+
+#: ../../integration/Camel_DSL/RabbitMQ.rst:57
+msgid ""
+"Вместо объявления собственной фабрики из примера выше оставьте только "
+"маршрут:"
+msgstr "Instead of declaring a custom factory as in the example above, keep only the route:"
+
+#: ../../integration/Camel_DSL/RabbitMQ.rst:70
+msgid ""
+"Автоматическая фабрика использует host, port, virtual host и учетные "
+"данные основного брокера. Если артефакт YAML или XML объявляет "
+"собственную фабрику Spring AMQP, автоматическая фабрика в этот контекст "
+"не добавляется."
+msgstr "The automatic factory uses the main broker's host, port, virtual host, and credentials. If the YAML or XML artifact declares its own Spring AMQP factory, the automatic factory is not added to that context."
+
+#: ../../integration/Camel_DSL/RabbitMQ.rst:74
+msgid ""
+"Автоматический вариант не воспроизводит TLS-настройки источника: при "
+"включенном TLS фабрика не создается, а в лог выводится ошибка. Для такого"
+" подключения настройте собственную фабрику с необходимыми "
+"TLS-параметрами. Это ограничение автоматического подключения, а не всего "
+"компонента ``spring-rabbitmq``."
+msgstr "The automatic option does not reproduce the source's TLS settings: when TLS is enabled, no factory is created and an error is logged. For this connection, configure your own factory with the required TLS parameters. This is a limitation of automatic connection setup, not of the entire ``spring-rabbitmq`` component."
 
 #~ msgid "Пример чтения из rabbitmq и отправка события Citeck:"
 #~ msgstr "Example of reading from RabbitMQ and sending a Citeck event:"

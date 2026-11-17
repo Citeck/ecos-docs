@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,33 +24,27 @@ msgstr "Working with Snapshots"
 
 #: ../../admin/launch_setup/launcher/dump.rst:6
 msgid ""
-"**Снэпшоты** — моментальные снимки состояния тома (volume) на "
-"определённый момент времени. Они позволяют быстро вернуться к ранее "
-"зафиксированной точке и используются преимущественно для отладки и "
-"тестирования, а не как полноценное средство резервного копирования."
-msgstr ""
-"**Snapshots** are point-in-time captures of a volume's state. They allow "
-"you to quickly roll back to a previously recorded point and are used "
-"primarily for debugging and testing rather than as a full backup "
-"solution."
+"**Снэпшот** — архив данных выбранных томов (volume) namespace на момент "
+"создания. Он позволяет восстановить сохранённое состояние данных. Для "
+"резервного копирования всей установки дополнительно сохраняйте "
+"конфигурацию workspace и namespace, сведения о версиях и необходимые "
+"секреты."
+msgstr "A **snapshot** is an archive of data from selected volumes in a namespace at the time of creation. It allows you to restore the saved data state. To back up the entire installation, also save the workspace and namespace configuration, version information, and required secrets."
 
 #: ../../admin/launch_setup/launcher/dump.rst:8
 msgid ""
-"Снэпшоты сохраняют изменения относительно базового образа, создавая новый"
-" слой, и применяются для фиксации состояния данных на томах или экспорта "
-"конфигурации контейнера."
-msgstr ""
-"Snapshots preserve changes relative to the base image by creating a new "
-"layer and are used to capture the state of data on volumes or to export "
-"container configuration."
+"Снэпшот содержит физические копии данных томов в архивах ``*.tar.xz`` и "
+"файл ``meta.json`` с метаданными и пинами версий зависимостей. Они "
+"упакованы в ZIP. При восстановлении поддерживаются также архивы томов "
+"``*.tar.zst`` из предыдущих версий Launcher. Конфигурацию контейнеров и "
+"Docker-образы снэпшот не заменяет."
+msgstr "A snapshot contains physical copies of volume data in ``*.tar.xz`` archives and a ``meta.json`` file with metadata and pinned dependency versions, packaged in a ZIP file. Restoration also supports ``*.tar.zst`` volume archives from earlier Launcher versions. A snapshot does not replace container configuration or Docker images."
 
 #: ../../admin/launch_setup/launcher/dump.rst:12
 msgid ""
-"Создание и разворачивание из снэпшота возможно только при полной "
-"остановке системы."
-msgstr ""
-"Creating and deploying from a snapshot is only possible when the system "
-"is fully stopped."
+"Перед созданием или восстановлением снэпшота остановите namespace и "
+"дождитесь статуса **Остановлен**."
+msgstr "Before creating or restoring a snapshot, stop the namespace and wait for the **Stopped** status."
 
 #: ../../admin/launch_setup/launcher/dump.rst:14
 msgid "Перейдите в **список томов**:"
@@ -80,19 +74,34 @@ msgstr ""
 "**Namespace snapshots** — snapshots local to the namespace that can be "
 "managed manually."
 
-#: ../../admin/launch_setup/launcher/dump.rst:37
+#: ../../admin/launch_setup/launcher/dump.rst:31
+msgid ""
+"Для workspace-снэпшота может быть задана минимальная совместимая версия "
+"бандла. Если выбранный бандл не подходит, Launcher показывает причину "
+"недоступности. Это ограничение относится к определениям снэпшотов в "
+"workspace и не является проверкой совместимости любого произвольного "
+"ZIP-архива."
+msgstr "A workspace snapshot may specify a minimum compatible bundle version. If the selected bundle is unsuitable, Launcher displays the reason it is unavailable. This restriction applies to snapshot definitions in the workspace and does not check the compatibility of an arbitrary ZIP archive."
+
+#: ../../admin/launch_setup/launcher/dump.rst:39
 msgid "Доступные действия со снэпшотами:"
 msgstr "Available snapshot actions:"
 
-#: ../../admin/launch_setup/launcher/dump.rst:39
-msgid "**Создать новый снэпшот** — укажите название и подтвердите создание:"
-msgstr "**Create a new snapshot** — enter a name and confirm creation:"
-
-#: ../../admin/launch_setup/launcher/dump.rst:56
-msgid "**Импорт zip-архива снэпшота** — добавляет архив в список снэпшотов."
-msgstr "**Import a snapshot zip archive** — adds the archive to the list of snapshots."
+#: ../../admin/launch_setup/launcher/dump.rst:41
+msgid ""
+"**Создать новый снэпшот** — укажите название, выберите тома и подтвердите"
+" создание. По умолчанию выбраны все тома; дождитесь завершения экспорта:"
+msgstr "**Create a new snapshot** — enter a name, select volumes, and confirm creation. All volumes are selected by default; wait for the export to complete:"
 
 #: ../../admin/launch_setup/launcher/dump.rst:58
+msgid ""
+"**Импорт zip-архива снэпшота** — восстанавливает данные из выбранного "
+"ZIP-файла. Если в namespace уже есть тома, Launcher запросит "
+"подтверждение замены данных. После выбора файла не нужно отдельно "
+"запускать ещё одно восстановление."
+msgstr "**Import snapshot ZIP archive** restores data from the selected ZIP file. If the namespace already has volumes, Launcher asks you to confirm replacing the data. After selecting the file, you do not need to start another restore operation."
+
+#: ../../admin/launch_setup/launcher/dump.rst:60
 msgid ""
 "**Перейти в директорию со снэпшотами** — открывает папку с созданными "
 "архивами:"
@@ -100,68 +109,189 @@ msgstr ""
 "**Go to the snapshot directory** — opens the folder containing the "
 "created archives:"
 
-#: ../../admin/launch_setup/launcher/dump.rst:64
+#: ../../admin/launch_setup/launcher/dump.rst:66
 msgid "**Переименовать** снэпшот:"
 msgstr "**Rename** a snapshot:"
 
-#: ../../admin/launch_setup/launcher/dump.rst:70
-msgid "**Развернуть данные** из снэпшота:"
-msgstr "**Deploy data** from a snapshot:"
+#: ../../admin/launch_setup/launcher/dump.rst:72
+msgid ""
+"**Развернуть данные** из локального снэпшота — восстанавливает "
+"сохранённые данные в остановленный namespace. Для снэпшота workspace "
+"сначала выполняется скачивание, после чего доступно восстановление "
+"локальной копии:"
+msgstr "**Deploy data** from a local snapshot restores the saved data to a stopped namespace. A workspace snapshot must first be downloaded; its local copy can then be restored:"
 
-#: ../../admin/launch_setup/launcher/dump.rst:76
+#: ../../admin/launch_setup/launcher/dump.rst:78
 msgid "**Удалить** снэпшот:"
 msgstr "**Delete** a snapshot:"
 
-#: ../../admin/launch_setup/launcher/dump.rst:84
-msgid "Развернуть снэпшот на другом компьютере"
-msgstr "Deploy a snapshot on another computer"
-
-#: ../../admin/launch_setup/launcher/dump.rst
-msgid "Как перенести снэпшот на другой компьютер"
+#: ../../admin/launch_setup/launcher/dump.rst:88
+msgid "Перенос снэпшота на другой компьютер"
 msgstr "How to transfer a snapshot to another computer"
 
-#: ../../admin/launch_setup/launcher/dump.rst:89
+#: ../../admin/launch_setup/launcher/dump.rst:90
+msgid ""
+"Обычный снэпшот, созданный в GUI, не включает секреты. Он рассчитан на "
+"восстановление в окружении, где сохранены прежние ключи. При переносе в "
+"новый namespace могут потребоваться исходные секреты namespace и "
+"системные ключи, в частности ключи S3, JWT и OIDC."
+msgstr "A regular snapshot created in the GUI does not include secrets. It is intended for restoration in an environment that retains the original keys. When transferring to a new namespace, the original namespace secrets and system keys, particularly S3, JWT, and OIDC keys, may be required."
+
+#: ../../admin/launch_setup/launcher/dump.rst:92
 msgid "**На исходном рабочем месте:**"
 msgstr "**On the source workstation:**"
 
-#: ../../admin/launch_setup/launcher/dump.rst:91
-msgid "Создайте снэпшот, как описано выше."
-msgstr "Create a snapshot as described above."
-
-#: ../../admin/launch_setup/launcher/dump.rst:92
-msgid "Перейдите в директорию со снэпшотами по кнопке **(3)**."
-msgstr "Go to the snapshot directory using button **(3)**."
-
-#: ../../admin/launch_setup/launcher/dump.rst:93
-msgid "Скопируйте и передайте необходимый архив."
-msgstr "Copy and transfer the required archive."
+#: ../../admin/launch_setup/launcher/dump.rst:94
+msgid "Сохраните конфигурацию workspace и namespace, а также версию бандла."
+msgstr "Save the workspace and namespace configuration and the bundle version."
 
 #: ../../admin/launch_setup/launcher/dump.rst:95
+msgid ""
+"Для экспорта вместе с ключами используйте CLI той же версии, подключённый"
+" к исходному desktop-профилю. Выполняйте команду от пользователя, под "
+"которым работает Launcher. Для стандартного desktop-профиля на "
+"Linux/macOS:"
+msgstr "To export data together with keys, use the CLI of the same version, connected to the original desktop profile. Run the command as the user running Launcher. For the standard desktop profile on Linux/macOS:"
+
+#: ../../admin/launch_setup/launcher/dump.rst:101
+msgid "На Windows в PowerShell:"
+msgstr "On Windows, in PowerShell:"
+
+#: ../../admin/launch_setup/launcher/dump.rst:108
+#, python-brace-format
+msgid ""
+"Укажите свой абсолютный каталог назначения. Если профиль использует "
+"нестандартные ``CITECK_HOME`` или ``CITECK_RUN``, CLI должен использовать"
+" те же значения. CLI предложит остановить работающий namespace и после "
+"экспорта запустит его обратно. Альтернатива — API ``POST "
+"/api/v1/snapshots/export`` с JSON ``{\"includeSecrets\": true}``; для API"
+" namespace нужно остановить заранее. В диалоге создания снэпшота GUI "
+"параметра включения секретов нет."
+msgstr "Specify your absolute destination directory. If the profile uses custom ``CITECK_HOME`` or ``CITECK_RUN`` values, the CLI must use the same values. The CLI prompts you to stop a running namespace and restarts it after export. Alternatively, use the ``POST /api/v1/snapshots/export`` API with the JSON body ``{\"includeSecrets\": true}``; for the API, stop the namespace in advance. The GUI snapshot creation dialog has no option to include secrets."
+
+#: ../../admin/launch_setup/launcher/dump.rst:110
+msgid ""
+"Дождитесь завершения экспорта и перенесите полученный ZIP на целевой "
+"компьютер."
+msgstr "Wait for the export to complete and transfer the resulting ZIP file to the target computer."
+
+#: ../../admin/launch_setup/launcher/dump.rst:114
+msgid ""
+"В архиве с секретами файл ``secrets.json`` содержит открытые значения "
+"ключей. Ограничьте доступ к архиву. Учётные данные Git и реестров Docker "
+"в него не входят; на целевом компьютере задайте их отдельно."
+msgstr "In an archive with secrets, the ``secrets.json`` file contains unencrypted key values. Restrict access to the archive. Git and Docker registry credentials are not included; configure them separately on the target computer."
+
+#: ../../admin/launch_setup/launcher/dump.rst:116
 msgid "**На целевом рабочем месте:**"
 msgstr "**On the target workstation:**"
 
-#: ../../admin/launch_setup/launcher/dump.rst:97
-msgid "Создайте новый :ref:`namespace <launcher_new_space>`."
-msgstr "Create a new :ref:`namespace <launcher_new_space>`."
+#: ../../admin/launch_setup/launcher/dump.rst:118
+msgid ""
+"Подготовьте workspace с нужной версией бандла и создайте :ref:`namespace "
+"<launcher_new_space>` с совместимой конфигурацией. Для восстановления "
+"используйте версии зависимостей, соответствующие данным снэпшота."
+msgstr "Prepare a workspace with the required bundle version and create a :ref:`namespace <launcher_new_space>` with a compatible configuration. To restore data, use dependency versions matching the snapshot data."
 
-#: ../../admin/launch_setup/launcher/dump.rst:98
-msgid "Перейдите в список снэпшотов."
-msgstr "Go to the list of snapshots."
+#: ../../admin/launch_setup/launcher/dump.rst:119
+msgid ""
+"Остановите целевой namespace, если он запущен, и откройте список "
+"снэпшотов."
+msgstr "Stop the target namespace if it is running and open the snapshot list."
 
-#: ../../admin/launch_setup/launcher/dump.rst:99
-msgid "Нажмите **Импорт zip-архива снэпшота (2)** и выберите полученный файл."
-msgstr "Click **Import snapshot zip archive (2)** and select the received file."
+#: ../../admin/launch_setup/launcher/dump.rst:120
+msgid ""
+"Нажмите **Импорт zip-архива снэпшота**, выберите перенесённый файл и при "
+"необходимости подтвердите замену существующих данных."
+msgstr "Click **Import snapshot ZIP archive**, select the transferred file, and confirm replacing existing data if necessary."
 
-#: ../../admin/launch_setup/launcher/dump.rst:100
-msgid "Снэпшот появится в списке."
-msgstr "The snapshot will appear in the list."
+#: ../../admin/launch_setup/launcher/dump.rst:121
+msgid ""
+"Дождитесь завершения восстановления. Секреты из архива будут применены к "
+"целевому namespace; архив без ``secrets.json`` не изменяет его секреты."
+msgstr "Wait for restoration to complete. Secrets from the archive are applied to the target namespace; an archive without ``secrets.json`` does not change its secrets."
 
-#: ../../admin/launch_setup/launcher/dump.rst:101
-msgid "Разверните данные из снэпшота, нажав **(4)**."
-msgstr "Deploy the data from the snapshot by clicking **(4)**."
+#: ../../admin/launch_setup/launcher/dump.rst:122
+msgid ""
+"Нажмите **Обновить и запустить**, дождитесь готовности приложений и "
+"проверьте доступ к платформе и хранилищу контента."
+msgstr "Click **Update and start**, wait for the applications to become ready, and check access to the platform and content storage."
 
 #~ msgid "создайте снапшот;"
 #~ msgstr "create a snapshot;"
 
 #~ msgid "добавьте полученный архив в папку;"
 #~ msgstr "add the received archive to the folder;"
+
+#~ msgid ""
+#~ "**Снэпшоты** — моментальные снимки состояния"
+#~ " тома (volume) на определённый момент "
+#~ "времени. Они позволяют быстро вернуться "
+#~ "к ранее зафиксированной точке и "
+#~ "используются преимущественно для отладки и "
+#~ "тестирования, а не как полноценное "
+#~ "средство резервного копирования."
+#~ msgstr ""
+#~ "**Snapshots** are point-in-time captures"
+#~ " of a volume's state. They allow "
+#~ "you to quickly roll back to a "
+#~ "previously recorded point and are used"
+#~ " primarily for debugging and testing "
+#~ "rather than as a full backup "
+#~ "solution."
+
+#~ msgid ""
+#~ "Снэпшоты сохраняют изменения относительно "
+#~ "базового образа, создавая новый слой, и"
+#~ " применяются для фиксации состояния данных"
+#~ " на томах или экспорта конфигурации "
+#~ "контейнера."
+#~ msgstr ""
+#~ "Snapshots preserve changes relative to "
+#~ "the base image by creating a new"
+#~ " layer and are used to capture "
+#~ "the state of data on volumes or"
+#~ " to export container configuration."
+
+#~ msgid ""
+#~ "Создание и разворачивание из снэпшота "
+#~ "возможно только при полной остановке "
+#~ "системы."
+#~ msgstr ""
+#~ "Creating and deploying from a snapshot"
+#~ " is only possible when the system "
+#~ "is fully stopped."
+
+#~ msgid "**Импорт zip-архива снэпшота** — добавляет архив в список снэпшотов."
+#~ msgstr ""
+#~ "**Import a snapshot zip archive** — "
+#~ "adds the archive to the list of"
+#~ " snapshots."
+
+#~ msgid "**Развернуть данные** из снэпшота:"
+#~ msgstr "**Deploy data** from a snapshot:"
+
+#~ msgid "Развернуть снэпшот на другом компьютере"
+#~ msgstr "Deploy a snapshot on another computer"
+
+#~ msgid "Создайте снэпшот, как описано выше."
+#~ msgstr "Create a snapshot as described above."
+
+#~ msgid "Перейдите в директорию со снэпшотами по кнопке **(3)**."
+#~ msgstr "Go to the snapshot directory using button **(3)**."
+
+#~ msgid "Скопируйте и передайте необходимый архив."
+#~ msgstr "Copy and transfer the required archive."
+
+#~ msgid "Создайте новый :ref:`namespace <launcher_new_space>`."
+#~ msgstr "Create a new :ref:`namespace <launcher_new_space>`."
+
+#~ msgid "Перейдите в список снэпшотов."
+#~ msgstr "Go to the list of snapshots."
+
+#~ msgid "Снэпшот появится в списке."
+#~ msgstr "The snapshot will appear in the list."
+
+#~ msgid "Разверните данные из снэпшота, нажав **(4)**."
+#~ msgstr "Deploy the data from the snapshot by clicking **(4)**."
+

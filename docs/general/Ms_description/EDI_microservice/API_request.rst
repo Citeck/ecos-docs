@@ -9,7 +9,7 @@ API запросы ecos-edi
 
 Для отправки запроса через рекорды необходимо использовать метод **mutate**.
 
-DTO запроса и ответа:
+DTO запроса:
 
 .. code-block:: java
 
@@ -20,15 +20,19 @@ DTO запроса и ответа:
         private ObjectData requestData;
     }
 
-    public static class EdiActionResult {
-        private T data;
-    }
-
 Где:
 
     -  **requestType** - тип запроса, например *“generatePrintForm“*
     -  **providerType**- тип провайдера, Контур, СБИС и т.д. для Диадока необходимо указывать *“KONTUR“* (см. EdiProviderType enum).
     -  **requestData** - данные по запросу, например, для генерации печатных форм это *documentRef документа*
+
+Запросы с результатом возвращают объект с полем ``data``. Например, результат проверки существования связи с контрагентом:
+
+.. code-block:: json
+
+    {"data": true}
+
+Команды без возвращаемых данных возвращают пустой объект ``{}``. Тип значения ``data`` зависит от действия: это может быть логическое значение, ссылка на запись, список ссылок или данные печатной формы.
 
 
 Пример запроса:
@@ -57,6 +61,10 @@ DTO запроса и ответа:
         });
     var resp = await rec.save("?json");
 
+Параметр ``"?json"`` запрашивает JSON-представление ответа. ``save`` возвращает Promise, поэтому для получения результата используется ``await``; данные запроса с результатом доступны в ``resp.data``. Строка ``"json"`` без вопросительного знака запрашивает атрибут с таким именем.
+
+Ссылки на записи и идентификаторы в примерах необходимо заменить данными вашей системы. Доступность конкретного действия зависит от провайдера и версии его коннектора.
+
 Список текущих поддерживаемых запросов:
 
 .. dropdown:: isCounterpartyExists — проверка существования связи с контрагентом
@@ -83,7 +91,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var resp = await rec.save("json");
+       var resp = await rec.save("?json");
 
 .. dropdown:: acquireCounterparty — создание связи с контрагентом
    :color: secondary
@@ -111,7 +119,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var resp = await rec.save("json");
+       var resp = await rec.save("?json");
 
 .. dropdown:: breakWithCounterparty — разрыв связи с контрагентом
    :color: secondary
@@ -137,7 +145,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var resp = await rec.save("json");
+       var resp = await rec.save("?json");
 
 .. dropdown:: sendPackageToCounterparty — отправка исходящего пакета провайдеру
    :color: secondary
@@ -184,7 +192,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var resp = await rec.save("json");
+       var resp = await rec.save("?json");
 
 .. dropdown:: signPackage — отправка подписанных документов в пакете провайдеру
    :color: secondary
@@ -207,7 +215,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: pointwiseSync — точечная синхронизация с провайдером по одному пакету
    :color: secondary
@@ -231,7 +239,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: signDocuments — отправка подписей по документам провайдеру
    :color: secondary
@@ -256,7 +264,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: signDocumentsAndBuyerTitles — отправка подписей по формализованным документам провайдеру
    :color: secondary
@@ -288,7 +296,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: sendReconciliationActSigns — отправка подписей для актов сверки
    :color: secondary
@@ -297,7 +305,7 @@ DTO запроса и ответа:
 
    Параметры:
 
-   * *documentRefs* - список подписанных неформализованных документов, для которых требуется отправить подписи
+   * *documentRefs* - список подписанных актов сверки, для которых требуется отправить подписи
    * *signerRef* - recordRef пользователя подписавшего документы
    * *signerJobTitle* - Должность пользователя подписавшего документы
 
@@ -317,7 +325,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: rejectPackage — отправка подписанного отказа в подписи документов в пакете
    :color: secondary
@@ -339,7 +347,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: rejectDocuments — отправка подписанного отказа в подписи документов
    :color: secondary
@@ -364,7 +372,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: sendReconciliationActRejects — отправка подписанных отказов в подписи для актов сверки
    :color: secondary
@@ -389,7 +397,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: acceptRevocationRequests — отправка подписанного согласия на аннулирование по документам
    :color: secondary
@@ -414,7 +422,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: declineRevocationRequests — отправка подписанных отказов по запросу на аннулирование по документам
    :color: secondary
@@ -439,7 +447,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: sendRevocationRequests — отправка подписанных запросов на аннулирование по документам
    :color: secondary
@@ -464,7 +472,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: sendCorrectionRequests — отправка подписанных запросов на корректировку по документам
    :color: secondary
@@ -489,7 +497,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: sendBuyerTitles — отправка подписанных титулов покупателя по формализованным документам
    :color: secondary
@@ -514,7 +522,7 @@ DTO запроса и ответа:
                        }
 
            });
-       rec.save("json");
+       await rec.save("?json");
 
 .. dropdown:: generatePrintForm — генерация печатной формы по документу
    :color: secondary
@@ -536,7 +544,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generatePrintFormWithDetails — генерация печатной формы по документу с доп. параметрами
    :color: secondary
@@ -558,7 +566,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: needUpdateMainContentByPrintForm — требуется ли генерация печатной формы для документа
    :color: secondary
@@ -580,7 +588,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateRejectionXml — генерация xml отказа в подписи для документа
    :color: secondary
@@ -606,7 +614,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateRejectionsXml — генерация xml отказа в подписи для документов
    :color: secondary
@@ -635,7 +643,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateRevocationXml — генерация xml запроса на аннулирование для документа
    :color: secondary
@@ -661,7 +669,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateRevocationsXml — генерация xml запроса на аннулирование для документов
    :color: secondary
@@ -690,7 +698,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateInvoiceCorrectionRequestXml — генерация xml корректировки для документа
    :color: secondary
@@ -716,7 +724,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: isNeedSignTitle — проверка на требование подписания титула покупателя у документа
    :color: secondary
@@ -738,7 +746,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateBuyerTitle — генерация xml титула покупателя для документа
    :color: secondary
@@ -767,7 +775,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: sendEdiXml — отправка EDI-сообщения провайдеру
    :color: secondary
@@ -789,7 +797,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: sendSignedEdiXml — отправка подписанного EDI-сообщения провайдеру
    :color: secondary
@@ -811,7 +819,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateReceiptXml — генерация xml извещения о получении для документа
    :color: secondary
@@ -837,7 +845,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateReceiptsXml — генерация xml извещения о получении для документов
    :color: secondary
@@ -866,7 +874,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: sendReceiptsXml — отправка подписанного xml извещения о получении для документов
    :color: secondary
@@ -891,7 +899,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: sendReceiptXml — отправка подписанного xml извещения о получении для документа
    :color: secondary
@@ -913,7 +921,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: generateUniversalMessageXml — генерация xml универсального сообщения для документа
    :color: secondary
@@ -953,7 +961,7 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: sendUniversalMessage — отправка универсального сообщения провайдеру
    :color: secondary
@@ -975,21 +983,23 @@ DTO запроса и ответа:
                        }
 
            });
-       var res = rec.save("json");
+       var res = await rec.save("?json");
 
 .. dropdown:: addDocumentsToSystemPackage — добавление документа в системный пакет edi-package
    :color: secondary
 
-   Добавление документа в системный пакет edi-package. В параметры передаются *ref* системного пакета и список документов для добавления в данный пакет. Если *ref* пакета не указан, то будет создан новый edi пакет и в него будут добавлены передаваемые документы.
+   Добавление документов в системный пакет. В параметры передаются *ref* пакета и список документов. Если *packageRef* не указан, сервис сначала ищет существующий черновик среди пакетов подходящих документов. Черновиком считается пакет без статуса *packageStatus*. Если подходящего черновика нет и есть документы для добавления, создаётся новый пакет.
 
-   Документы могут передаваться как с типом edi-document и его наследники, так и с любым другим, не связанным с edi. Если передается документ не являющийся типом edi-document или его наследником, то для каждого из таких документов создается соответствующий ему документ c типом edi-document. Edi-document добавляется в пакет и далее может быть отправлен провайдеру. Edi-document и добавляемый кастомный документ связываются через ассоциацию *ediDoc:systemDocumentLink*.
+   Можно передавать документы типа *edi-document* и его наследников, а также пользовательские документы других типов. Для пользовательского документа сервис создаёт или обновляет связанную запись *edi-document* через ассоциацию *ediDoc:systemDocumentLink*. Повторное добавление может использовать существующий черновик, создать новую копию для повторной отправки либо пропустить уже отправленный неизменённый документ. Новый раунд создаётся после отказа или ошибки доставки, а также при изменении содержимого ранее отправленного документа.
+
+   Прямая ссылка на *edi-document*, уже находящийся в пакете со статусом, пропускается. В выбранный пакет добавляются только подходящие документы, которые ещё к нему не относятся; дубли исключаются.
 
    Параметры:
 
-   * *packageRef* - recordRef ЭДО пакета в который добавляются документы, может быть null, в таком случае создается новый пакет
+   * *packageRef* - recordRef ЭДО пакета, в который добавляются документы. Если null, сервис ищет подходящий черновик и при необходимости создаёт новый пакет
    * *documentRefs* – документы добавляемые в пакет
 
-   В ответе возвращается *recordRef* пакета.
+   В поле ``data`` ответа возвращается *recordRef* пакета. Если пакет не указан, подходящий черновик не найден и нет документов для добавления, возвращается пустая ссылка.
 
    .. code-block:: javascript
 
@@ -998,8 +1008,8 @@ DTO запроса и ответа:
                        "requestType":"addDocumentsToSystemPackage",
                        "providerType":"KONTUR",
                        "requestData": {
-                               "packageRef":"emodel/edi-package@packageId", //id системного пакета для добавления документов (может быть null, тогда будет создан новый пакет
+                               "packageRef":"emodel/edi-package@packageId", // null — поиск подходящего черновика или создание нового пакета
                                "documentRefs":["emodel/doc-type@doc-id"] // список документов для добавления в системный edi пакет
                        }
        });
-       var resp = await rec.save("json");
+       var resp = await rec.save("?json");

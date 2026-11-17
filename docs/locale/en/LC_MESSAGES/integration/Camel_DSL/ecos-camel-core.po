@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -39,18 +39,40 @@ msgid "Подключение"
 msgstr "Setup"
 
 #: ../../integration/Camel_DSL/ecos-camel-core.rst:15
-msgid "Добавьте зависимость в нужном микросервисе:"
-msgstr "Add the dependency to the required microservice:"
+msgid ""
+"Координаты зависимости и версию выбирайте по поставке библиотеки и POM "
+"целевого микросервиса. В enterprise-поставке integrations используется "
+"следующая зависимость:"
+msgstr "Choose dependency coordinates and version according to the library distribution and the target microservice's POM. The enterprise integrations distribution uses the following dependency:"
 
 #: ../../integration/Camel_DSL/ecos-camel-core.rst:24
-msgid "Подходящая версия будет загружена из родительского POM."
-msgstr "The appropriate version will be downloaded from the parent POM."
+msgid ""
+"Если версия управляется родительским POM или разделом "
+"dependencyManagement, ее можно не указывать. Иначе задайте ее явно; в "
+"проверенной конфигурации integrations указана версия ``1.18.0-SNAPSHOT``."
+msgstr "If the version is managed by the parent POM or dependencyManagement section, it can be omitted. Otherwise, specify it explicitly; the verified integrations configuration uses version ``1.18.0-SNAPSHOT``."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:27
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:26
+msgid ""
+"В проверенной версии исходников библиотеки ``1.17.1`` модуль имеет другие"
+" Maven-координаты:"
+msgstr "In the verified library source version ``1.17.1``, the module has different Maven coordinates:"
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:36
+msgid ""
+"Эти варианты описывают разные поставки. Перед подключением проверьте, "
+"какой артефакт доступен в вашем Maven-репозитории и совместим с "
+"приложением. Справочники конечных точек и процессоров сверены с "
+"исходниками ``ecos-camel-core 1.17.1`` на Apache Camel ``4.14.8``; "
+"enterprise-зависимость ``1.18.0-SNAPSHOT`` отдельно не проверялась по "
+"исходникам."
+msgstr "These options describe different distributions. Before adding a dependency, check which artifact is available in your Maven repository and compatible with the application. The endpoint and processor references were checked against the ``ecos-camel-core 1.17.1`` source code on Apache Camel ``4.14.8``; the enterprise dependency ``1.18.0-SNAPSHOT`` was not separately checked against source code."
+
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:39
 msgid "Пример использования"
 msgstr "Usage Example"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:29
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:41
 msgid ""
 "Создайте компонент с настройками роутов. Он запустит новый контекст после"
 " старта приложения:"
@@ -58,11 +80,11 @@ msgstr ""
 "Create a component with route configurations that will launch a new "
 "context after the application starts:"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:123
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:135
 msgid "Пример демонстрирует следующий сценарий:"
 msgstr "The example demonstrates the following scenario:"
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:125
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:137
 msgid ""
 "При старте приложения через ``@PostConstruct`` создаётся и запускается "
 "новый ``EcosCamelContext``."
@@ -70,15 +92,15 @@ msgstr ""
 "When the application starts, a new ``EcosCamelContext`` is created and "
 "launched via ``@PostConstruct``."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:126
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:138
 msgid ""
 "Роут подписывается на событие ``record-created`` по типу ``demo-type``, "
 "извлекая нужные атрибуты записи."
 msgstr ""
-"The route subscribes to the ``record-created`` event of type "
-"``demo-type``, extracting the required record attributes."
+"The route subscribes to the ``record-created`` event of type ``demo-"
+"type``, extracting the required record attributes."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:127
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:139
 msgid ""
 "В ``process``-шаге формируется новый объект с полями, необходимыми для "
 "создания записи в целевом источнике."
@@ -86,7 +108,7 @@ msgstr ""
 "In the ``process`` step, a new object is formed with the fields required "
 "to create a record in the target source."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:128
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:140
 msgid ""
 "Результат передаётся в endpoint ``ecos-records-mutate``, который создаёт "
 "новую сущность в ``emodel/demo-type-2``."
@@ -94,7 +116,7 @@ msgstr ""
 "The result is passed to the ``ecos-records-mutate`` endpoint, which "
 "creates a new entity in ``emodel/demo-type-2``."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:129
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:141
 msgid ""
 "При остановке приложения контекст корректно завершается в методе "
 "``destroy()``."
@@ -102,7 +124,13 @@ msgstr ""
 "When the application stops, the context is properly terminated in the "
 "``destroy()`` method."
 
-#: ../../integration/Camel_DSL/ecos-camel-core.rst:133
+#: ../../integration/Camel_DSL/ecos-camel-core.rst:145
 msgid ":ref:`Endpoint ecos-records-mutate <EcosRecordsMutateEndpoint>`"
 msgstr "More about :ref:`ecos-records-mutate<EcosRecordsMutateEndpoint>`"
+
+#~ msgid "Добавьте зависимость в нужном микросервисе:"
+#~ msgstr "Add the dependency to the required microservice:"
+
+#~ msgid "Подходящая версия будет загружена из родительского POM."
+#~ msgstr "The appropriate version will be downloaded from the parent POM."
 

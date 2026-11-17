@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -75,8 +75,11 @@ msgid "``stt-sidecar``"
 msgstr "``stt-sidecar``"
 
 #: ../../integration/mango/reference.rst:29
-msgid "Сервис распознавания речи, ``http://citeck-stt-sidecar:8090``"
-msgstr "Speech recognition service, ``http://citeck-stt-sidecar:8090``"
+msgid ""
+"Сервис распознавания речи; в проверенной поставке для Kubernetes — ``http"
+"://stt-sidecar-app-service:8090``. Для другого окружения задайте "
+"доступный из integrations адрес."
+msgstr "Speech recognition service; in the verified Kubernetes distribution, ``http://stt-sidecar-app-service:8090``. For another environment, specify an address accessible from integrations."
 
 #: ../../integration/mango/reference.rst:30
 msgid "``mango-webhook``"
@@ -507,11 +510,10 @@ msgstr "``401,403,408,425,429``"
 
 #: ../../integration/mango/reference.rst:179
 msgid ""
-"Коды HTTP-ответов, при которых загрузка и распознавание аудиозаписи "
-"повторяются"
-msgstr ""
-"HTTP response codes on which downloading and recognizing the recording "
-"are retried"
+"Общие повторяемые коды для загрузки и распознавания. HTTP 404 скачивания "
+"Mango повторяется отдельной веткой маршрута, а HTTP 404 STT остаётся "
+"постоянной ошибкой."
+msgstr "Common retryable codes for downloading and recognition. Mango download HTTP 404 is retried by a separate route branch, while STT HTTP 404 remains a permanent error."
 
 #: ../../integration/mango/reference.rst:180
 #: ../../integration/mango/reference.rst:184
@@ -1059,12 +1061,10 @@ msgstr ""
 #: ../../integration/mango/reference.rst:338
 msgid ""
 "Временный файл, через который передаётся mp3-файл, удаляется после "
-"успешной записи. Временные файлы неудачных записей остаются в хранилище: "
-"платформа их автоматически не удаляет."
-msgstr ""
-"The temporary file used to transfer the mp3 file is deleted after a "
-"successful write. Temporary files of failed writes remain in the "
-"storage: the platform does not delete them automatically."
+"успешной записи. Временные файлы неудачных записей интеграция оставляет в"
+" хранилище; их дальнейшая очистка зависит от настроек и механизмов "
+"платформы."
+msgstr "The temporary file used to transfer the mp3 file is deleted after a successful write. The integration leaves temporary files from failed writes in storage; subsequent cleanup depends on platform settings and mechanisms."
 
 #: ../../integration/mango/reference.rst:339
 msgid ""
@@ -1076,4 +1076,15 @@ msgstr ""
 "``downloading`` status but passing the call to the recordings queue "
 "failed, the status remains ``downloading`` until the message from "
 "``mango-events-dlq`` is reprocessed."
+
+#~ msgid "Сервис распознавания речи, ``http://citeck-stt-sidecar:8090``"
+#~ msgstr "Speech recognition service, ``http://citeck-stt-sidecar:8090``"
+
+#~ msgid ""
+#~ "Коды HTTP-ответов, при которых загрузка "
+#~ "и распознавание аудиозаписи повторяются"
+#~ msgstr ""
+#~ "HTTP response codes on which downloading"
+#~ " and recognizing the recording are "
+#~ "retried"
 

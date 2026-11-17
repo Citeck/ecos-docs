@@ -53,7 +53,7 @@
 
 *	**Исходящий** (выход из задачи)
 *	**Скрипт** — скрипт, который должен вернуть булевое значение. Например: paymentSum >= 30000
-*	**Выражение** — expression (`подробнее о expressions <https://docs.camunda.io/docs/components/concepts/expressions/>`_)
+*	**Выражение** — выражение JUEL, например ``${paymentSum >= 30000}`` (`подробнее о выражениях Camunda 7 <https://docs.camunda.org/manual/7.24/user-guide/process-engine/expression-language/>`_).
 
 Например, для шлюза — **(2)** и **(3)**:
 

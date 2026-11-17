@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,13 +24,10 @@ msgstr "Workspaces"
 
 #: ../../admin/launch_setup/launcher/workspace.rst:6
 msgid ""
-"В лаунчере доступно создание нескольких рабочих пространств. Например, "
+"В Launcher доступно создание нескольких рабочих пространств. Например, "
 "одно пространство можно использовать для запуска релизных версий, второе "
 "— для внутренних сборок разработки."
-msgstr ""
-"The launcher allows you to create multiple workspaces. For example, one "
-"workspace can be used to run release versions, and another — for internal "
-"development builds."
+msgstr "The launcher allows you to create multiple workspaces. For example, one workspace can be used to run release versions, and another — for internal development builds."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:8
 msgid "Для перехода к списку пространств нажмите:"
@@ -77,16 +74,18 @@ msgid "**Ветка**"
 msgstr "**Branch**"
 
 #: ../../admin/launch_setup/launcher/workspace.rst:37
-msgid "Ветка репозитория."
-msgstr "Repository branch."
+msgid "Ветка репозитория. По умолчанию — ``main``."
+msgstr "Repository branch. The default is ``main``."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:38
 msgid "**Период обновления**"
 msgstr "**Update Interval**"
 
 #: ../../admin/launch_setup/launcher/workspace.rst:39
-msgid "В формате ISO 8601."
-msgstr "In ISO 8601 format."
+msgid ""
+"Длительность в формате ISO 8601, например ``PT2H`` — каждые два часа "
+"(значение по умолчанию)."
+msgstr "A duration in ISO 8601 format, for example ``PT2H`` — every two hours (the default)."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:40
 msgid "**Тип аутентификации**"
@@ -97,32 +96,33 @@ msgid "**Нет** (публичный репозиторий) или **Токе�
 msgstr "**None** (public repository) or **Token** (private repository)."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:47
-msgid "Нажмите **Сохранить** — рабочее пространство будет создано."
-msgstr "Click **Save** — the workspace will be created."
-
-#: ../../admin/launch_setup/launcher/workspace.rst:49
 msgid ""
-"Для типа аутентификации **Токен** введите `персональный access-токен "
-"GitHub <https://docs.github.com/en/authentication/keeping-your-account-"
-"and-data-secure/creating-a-personal-access-token>`_."
-msgstr ""
-"For the **Token** authentication type, enter a `GitHub personal access "
-"token <https://docs.github.com/en/authentication/keeping-your-account-"
-"and-data-secure/creating-a-personal-access-token>`_."
+"Для типа аутентификации **Токен** до сохранения workspace выберите "
+"существующий секрет либо создайте новый и укажите токен доступа к вашему "
+"Git-серверу. Например, для GitHub используется `персональный access-токен"
+" <https://docs.github.com/en/authentication/keeping-your-account-and-"
+"data-secure/creating-a-personal-access-token>`_. Секрет можно "
+"использовать в нескольких рабочих пространствах."
+msgstr "For the **Token** authentication type, before saving the workspace, select an existing secret or create a new one and specify an access token for your Git server. For example, GitHub uses a `personal access token <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>`_. The secret can be used in multiple workspaces."
+
+#: ../../admin/launch_setup/launcher/workspace.rst:51
+msgid ""
+"В GitHub токены создаются в **Settings → Developer settings → Personal "
+"access tokens**. Токену нужен доступ на чтение выбранного репозитория."
+msgstr "In GitHub, tokens are created under **Settings → Developer settings → Personal access tokens**. The token needs read access to the selected repository."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:53
 msgid ""
-"Чтобы создать токен, перейдите в **GitHub → аватар (слева) → Settings → "
-"Developer settings → Personal access tokens**, создайте новый токен и "
-"скопируйте его значение."
-msgstr ""
-"To create a token, go to **GitHub → avatar (left) → Settings → Developer "
-"settings → Personal access tokens**, create a new token, and copy its "
-"value."
+"При создании секрета введите токен и сохраните секрет. Если хранилище ещё"
+" не настроено или заблокировано, Launcher предложит установить или ввести"
+" :ref:`мастер-пароль <launcher_secrets>`:"
+msgstr "When creating a secret, enter the token and save the secret. If the store is not yet configured or is locked, Launcher prompts you to set or enter the :ref:`master password <launcher_secrets>`:"
 
-#: ../../admin/launch_setup/launcher/workspace.rst:55
-msgid "Введите токен в соответствующее поле и подтвердите:"
-msgstr "Enter the token in the appropriate field and confirm:"
+#: ../../admin/launch_setup/launcher/workspace.rst:70
+msgid ""
+"После выбора секрета нажмите **Сохранить** в форме workspace. При типе "
+"аутентификации **Нет** секрет не требуется."
+msgstr "After selecting a secret, click **Save** in the workspace form. A secret is not required when the authentication type is **None**."
 
 #: ../../admin/launch_setup/launcher/workspace.rst:74
 msgid "Выбор из созданных"
@@ -142,4 +142,29 @@ msgstr ""
 
 #~ msgid "Нажмите **Confirm**."
 #~ msgstr "Click **Confirm**."
+
+#~ msgid "Ветка репозитория."
+#~ msgstr "Repository branch."
+
+#~ msgid "В формате ISO 8601."
+#~ msgstr "In ISO 8601 format."
+
+#~ msgid "Нажмите **Сохранить** — рабочее пространство будет создано."
+#~ msgstr "Click **Save** — the workspace will be created."
+
+#~ msgid ""
+#~ "Чтобы создать токен, перейдите в "
+#~ "**GitHub → аватар (слева) → Settings "
+#~ "→ Developer settings → Personal access"
+#~ " tokens**, создайте новый токен и "
+#~ "скопируйте его значение."
+#~ msgstr ""
+#~ "To create a token, go to **GitHub"
+#~ " → avatar (left) → Settings → "
+#~ "Developer settings → Personal access "
+#~ "tokens**, create a new token, and "
+#~ "copy its value."
+
+#~ msgid "Введите токен в соответствующее поле и подтвердите:"
+#~ msgstr "Enter the token in the appropriate field and confirm:"
 

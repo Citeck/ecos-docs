@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -288,14 +288,12 @@ msgstr "Version compatibility"
 
 #: ../../integration/mango/setup.rst:85
 msgid ""
-"Интеграция подготовлена к выпуску в ``ecos-integrations`` 2.37.0. До "
-"выхода релизов ``ecos-integrations`` 2.37.0 и библиотеки ``ecos-camel-"
-"core`` 1.16.0 документ описывает предварительную версию интеграции."
-msgstr ""
-"The integration is prepared for release in ``ecos-integrations`` 2.37.0. "
-"Until ``ecos-integrations`` 2.37.0 and the ``ecos-camel-core`` 1.16.0 "
-"library are released, this document describes a preview version of the "
-"integration."
+"Описание сверено с ``ecos-integrations 2.40.0-SNAPSHOT`` и свойством "
+"зависимости ``ecos.camel.version=1.18.0-SNAPSHOT``. Это проверенная "
+"поставка, а не минимальная версия всех компонентов. Для более ранней "
+"версии отдельно проверьте наличие отложенных повторов, сохранения аудио "
+"при сбое распознавания и временной обработки HTTP 404 скачивания Mango."
+msgstr "This description was checked against ``ecos-integrations 2.40.0-SNAPSHOT`` and the ``ecos.camel.version=1.18.0-SNAPSHOT`` dependency property. This is a verified distribution, not a minimum version for all components. For an earlier version, separately check for delayed retries, audio preservation on recognition failure, and temporary handling of Mango download HTTP 404."
 
 #: ../../integration/mango/setup.rst:87
 msgid ""
@@ -306,8 +304,8 @@ msgstr ""
 "components. Before connecting, make sure the following are installed:"
 
 #: ../../integration/mango/setup.rst:95
-msgid "Версия"
-msgstr "Version"
+msgid "Проверенная версия или требование"
+msgstr "Verified version or requirement"
 
 #: ../../integration/mango/setup.rst:96
 msgid "Что в ней нужно интеграции"
@@ -318,24 +316,24 @@ msgid "``ecos-integrations``"
 msgstr "``ecos-integrations``"
 
 #: ../../integration/mango/setup.rst:98
-msgid "2.37.0 или новее"
-msgstr "2.37.0 or later"
+msgid "Проверено: 2.40.0-SNAPSHOT"
+msgstr "Verified: 2.40.0-SNAPSHOT"
 
 #: ../../integration/mango/setup.rst:99
 msgid ""
-"Артефакты интеграции MANGO OFFICE; проверка подписи входящих вебхуков и "
-"приём по вложенным путям (появились в 2.34.0)"
-msgstr ""
-"MANGO OFFICE integration artifacts; incoming webhook signature "
-"verification and receiving on nested paths (introduced in 2.34.0)"
+"Артефакты MANGO OFFICE, подпись и вложенные пути вебхука, отложенные "
+"повторы, обработка Mango 404"
+msgstr "MANGO OFFICE artifacts, webhook signature and nested paths, delayed retries, Mango 404 handling"
 
 #: ../../integration/mango/setup.rst:100
 msgid "``ecos-camel-core`` (библиотека в составе ``ecos-integrations``)"
 msgstr "``ecos-camel-core`` (a library included in ``ecos-integrations``)"
 
 #: ../../integration/mango/setup.rst:101
-msgid "1.16.0 или новее"
-msgstr "1.16.0 or later"
+msgid ""
+"Согласованная с integrations поставка; проверено свойство "
+"``ecos.camel.version=1.18.0-SNAPSHOT``"
+msgstr "A distribution aligned with integrations; the ``ecos.camel.version=1.18.0-SNAPSHOT`` property was verified"
 
 #: ../../integration/mango/setup.rst:102
 msgid ""
@@ -364,8 +362,8 @@ msgid "CRM (``ecos-crm``, ``ecos-common-data-list``)"
 msgstr "CRM (``ecos-crm``, ``ecos-common-data-list``)"
 
 #: ../../integration/mango/setup.rst:107
-msgid "Релиз 2026.3 или новее"
-msgstr "Release 2026.3 or later"
+msgid "Версия с вычисляемым полем ``phoneDigits`` в используемых типах"
+msgstr "A version with the calculated ``phoneDigits`` field in the types used"
 
 #: ../../integration/mango/setup.rst:108
 msgid "Вычисляемое поле ``phoneDigits`` у сделок, лидов и контрагентов"
@@ -519,13 +517,9 @@ msgstr "Network requirements"
 #: ../../integration/mango/setup.rst:150
 msgid ""
 "Входящий публичный HTTPS-адрес Citeck доступен из интернета с IP-адресов "
-"MANGO OFFICE по протоколу TLS 1.2. Другие версии протокола MANGO OFFICE "
-"не поддерживает. Путь вебхука доступен без авторизации пользователя."
-msgstr ""
-"The incoming public HTTPS address of Citeck is accessible from the "
-"internet from MANGO OFFICE IP addresses over TLS 1.2. MANGO OFFICE does "
-"not support other protocol versions. The webhook path is accessible "
-"without user authorization."
+"MANGO OFFICE и поддерживает TLS 1.2 согласно требованиям API MANGO "
+"OFFICE. Путь вебхука доступен без авторизации пользователя."
+msgstr "Citeck's incoming public HTTPS address is accessible from the internet from MANGO OFFICE IP addresses and supports TLS 1.2 as required by the MANGO OFFICE API. The webhook path is accessible without user authentication."
 
 #: ../../integration/mango/setup.rst:151
 msgid ""
@@ -774,14 +768,13 @@ msgstr "``emodel/endpoint@stt-sidecar``"
 
 #: ../../integration/mango/setup.rst:219
 msgid ""
-"Базовый URL сервиса распознавания, доступный из процесса интеграции. "
-"Например, ``http://citeck-stt-sidecar:8090`` в общей Docker-сети или "
-"``http://localhost:8090``, если оба сервиса запущены на хосте."
-msgstr ""
-"The base URL of the recognition service accessible from the integration "
-"process. For example, ``http://citeck-stt-sidecar:8090`` in a shared "
-"Docker network or ``http://localhost:8090`` if both services run on the "
-"host."
+"Базовый URL сервиса распознавания, доступный из процесса интеграции. В "
+"проверенной поставке для Kubernetes задан ``http://stt-sidecar-app-"
+"service:8090``. В Docker-сети укажите реальное имя сервиса/контейнера, "
+"например ``http://citeck-stt-sidecar:8090``, если он так назван. "
+"``http://localhost:8090`` подходит, только если сервис доступен в той же "
+"сетевой среде."
+msgstr "Base URL of the recognition service, accessible from the integration process. The verified Kubernetes distribution uses ``http://stt-sidecar-app-service:8090``. In a Docker network, specify the actual service/container name, for example ``http://citeck-stt-sidecar:8090`` if that is its name. ``http://localhost:8090`` is suitable only if the service is accessible in the same network environment."
 
 #: ../../integration/mango/setup.rst:221
 msgid "Адреса журналов:"
@@ -855,6 +848,13 @@ msgstr ""
 "The journal is available at: ``v2/journals?journalId=in-webhook-"
 "journal&viewMode=table&ws=admin$workspace``"
 
+#: ../../integration/mango/setup.rst:245
+msgid ""
+"При заполнении JSON ориентируйтесь на объект из текстового примера ниже; "
+"отображение экранированной строки в редакторе на скриншоте не является "
+"образцом для копирования."
+msgstr "When entering JSON, use the object in the text example below; the escaped string displayed in the editor screenshot is not a template to copy."
+
 #: ../../integration/mango/setup.rst
 msgid "В YAML артефакта"
 msgstr "In the artifact YAML"
@@ -863,23 +863,23 @@ msgstr "In the artifact YAML"
 msgid "В интерфейсе"
 msgstr "In the interface"
 
-#: ../../integration/mango/setup.rst:266
+#: ../../integration/mango/setup.rst:268
 msgid "«Тип аутентификации» — «Подпись»;"
 msgstr "\"Authentication type\" — \"Signature\";"
 
-#: ../../integration/mango/setup.rst:267
+#: ../../integration/mango/setup.rst:269
 msgid "в поле «Токен» выбран секрет ``mango-api``;"
 msgstr "the ``mango-api`` secret is selected in the \"Token\" field;"
 
-#: ../../integration/mango/setup.rst:268
+#: ../../integration/mango/setup.rst:270
 msgid "«Действие» — «Трансформация в Events»;"
 msgstr "\"Action\" — \"Transformation to Events\";"
 
-#: ../../integration/mango/setup.rst:269
+#: ../../integration/mango/setup.rst:271
 msgid "«Конфигурация подписи (JSON)» — схема MANGO OFFICE:"
 msgstr "\"Signature configuration (JSON)\" — the MANGO OFFICE scheme:"
 
-#: ../../integration/mango/setup.rst:280
+#: ../../integration/mango/setup.rst:282
 msgid ""
 "В конфигурации ``components`` задаёт, из чего и в каком порядке "
 "собирается подпись, ``signatureParam`` — поле запроса с подписью, "
@@ -893,7 +893,7 @@ msgstr ""
 " becomes the Citeck event body. How the signature is verified is "
 "described in the :ref:`mango_receive` section."
 
-#: ../../integration/mango/setup.rst:282
+#: ../../integration/mango/setup.rst:284
 msgid ""
 "Идентификатор ``mango-webhook`` изменять нельзя: на него ссылается "
 "маршрут обработки."
@@ -901,11 +901,11 @@ msgstr ""
 "The ``mango-webhook`` identifier must not be changed: the processing "
 "route refers to it."
 
-#: ../../integration/mango/setup.rst:285
+#: ../../integration/mango/setup.rst:287
 msgid "Шаг 5. Запуск маршрута"
 msgstr "Step 5. Starting the route"
 
-#: ../../integration/mango/setup.rst:287
+#: ../../integration/mango/setup.rst:289
 msgid ""
 "Откройте журнал **«Camel DSL»** (Рабочее пространство «Раздел "
 "администратора» — Интеграция). Журнал доступен по адресу: "
@@ -916,7 +916,7 @@ msgstr ""
 "Integration). The journal is available at: ``v2/journals?journalId=ecos-"
 "camel-dsl&viewMode=table&ws=admin$workspace``."
 
-#: ../../integration/mango/setup.rst:288
+#: ../../integration/mango/setup.rst:290
 msgid ""
 "Найдите маршрут ``mango-call-recordings-sync`` и выполните действие "
 "**«Запустить»**. Действие доступно администратору."
@@ -924,7 +924,7 @@ msgstr ""
 "Find the ``mango-call-recordings-sync`` route and run the **\"Start\"** "
 "action. The action is available to the administrator."
 
-#: ../../integration/mango/setup.rst:289
+#: ../../integration/mango/setup.rst:291
 msgid ""
 "Проверьте состояние ``STARTED`` и наличие потребителей у очередей "
 "``mango-events`` и ``mango-recordings``."
@@ -932,7 +932,7 @@ msgstr ""
 "Check the ``STARTED`` state and that the ``mango-events`` and ``mango-"
 "recordings`` queues have consumers."
 
-#: ../../integration/mango/setup.rst:291
+#: ../../integration/mango/setup.rst:293
 msgid ""
 "При запуске маршрут сам объявляет обменник и очереди RabbitMQ. Схему "
 "маршрута можно посмотреть действием «Открыть в редакторе» в журнале Camel"
@@ -942,7 +942,7 @@ msgstr ""
 " route diagram can be viewed with the \"Open in editor\" action in the "
 "Camel DSL journal."
 
-#: ../../integration/mango/setup.rst:295
+#: ../../integration/mango/setup.rst:297
 msgid ""
 "После обновления микросервиса ``ecos-integrations`` проверьте состояние "
 "маршрута (см. :ref:`mango_after_update`)."
@@ -950,11 +950,11 @@ msgstr ""
 "After updating the ``ecos-integrations`` microservice, check the route "
 "state (see :ref:`mango_after_update`)."
 
-#: ../../integration/mango/setup.rst:298
+#: ../../integration/mango/setup.rst:300
 msgid "Шаг 6. Адрес и уведомления в MANGO OFFICE"
 msgstr "Step 6. Address and notifications in MANGO OFFICE"
 
-#: ../../integration/mango/setup.rst:300
+#: ../../integration/mango/setup.rst:302
 msgid ""
 "В настройках API ВАТС укажите **базовый адрес вебхука**, включая путь до "
 "``mango-webhook``. Маршрутизация обратного прокси стенда должна "
@@ -972,15 +972,15 @@ msgstr "Via gateway"
 msgid "Прямое проксирование на HTTP-порт ecos-integrations"
 msgstr "Direct proxying to the ecos-integrations HTTP port"
 
-#: ../../integration/mango/setup.rst:316
+#: ../../integration/mango/setup.rst:318
 msgid "При указании адреса:"
 msgstr "When specifying the address:"
 
-#: ../../integration/mango/setup.rst:318
+#: ../../integration/mango/setup.rst:320
 msgid "не указывайте только домен;"
 msgstr "do not specify just the domain;"
 
-#: ../../integration/mango/setup.rst:319
+#: ../../integration/mango/setup.rst:321
 msgid ""
 "к базовому адресу MANGO OFFICE добавляет путь с типом уведомления, "
 "например ``/events/summary`` или ``/events/record/added``; эти суффиксы в"
@@ -990,7 +990,7 @@ msgstr ""
 "address, for example ``/events/summary`` or ``/events/record/added``; "
 "these suffixes are not added to the base field;"
 
-#: ../../integration/mango/setup.rst:320
+#: ../../integration/mango/setup.rst:322
 msgid ""
 "для сертификата публичного центра сертификации используйте проверку "
 "доверенного сертификата;"
@@ -998,7 +998,7 @@ msgstr ""
 "for a certificate from a public certificate authority, use trusted "
 "certificate verification;"
 
-#: ../../integration/mango/setup.rst:321
+#: ../../integration/mango/setup.rst:323
 msgid ""
 "если существующая внешняя система используется другой интеграцией, "
 "настройте отдельную запись внешней системы для Citeck, чтобы не прервать "
@@ -1008,7 +1008,7 @@ msgstr ""
 "separate external system record for Citeck so as not to interrupt its "
 "work."
 
-#: ../../integration/mango/setup.rst:323
+#: ../../integration/mango/setup.rst:325
 msgid ""
 "Перед указанием адреса проверьте его доступность из внешней сети (пример "
 "для варианта через gateway):"
@@ -1016,7 +1016,7 @@ msgstr ""
 "Before specifying the address, check that it is accessible from the "
 "external network (example for the gateway option):"
 
-#: ../../integration/mango/setup.rst:329
+#: ../../integration/mango/setup.rst:331
 msgid ""
 "Ожидаемый ответ — HTTP 401 ``Webhook signature is not valid``: запрос "
 "дошёл до Citeck и был отклонён проверкой подписи, потому что подписи в "
@@ -1028,7 +1028,7 @@ msgstr ""
 "it has no signature. Responses 404, 403, 502, or a redirect to the login "
 "page mean that the path is blocked by the gateway or proxy."
 
-#: ../../integration/mango/setup.rst:331
+#: ../../integration/mango/setup.rst:333
 msgid ""
 "Разрешите отправку уведомлений об итоге вызова ``events/summary`` и о "
 "готовности файла аудиозаписи ``events/record/added``. В интерфейсе с "
@@ -1050,7 +1050,7 @@ msgstr ""
 "``events/record/tagged``, see :ref:`mango_delivery_limits`). Check that "
 "the test numbers are not excluded by the notification sending filter."
 
-#: ../../integration/mango/setup.rst:333
+#: ../../integration/mango/setup.rst:335
 msgid ""
 "Если перед Citeck стоит обратный прокси или межсетевой экран, путь "
 "вебхука и все пути под ним должны быть доступны без авторизации "
@@ -1066,7 +1066,7 @@ msgstr ""
 msgid "Локальный стенд через HTTPS-туннель"
 msgstr "Local installation via an HTTPS tunnel"
 
-#: ../../integration/mango/setup.rst:338
+#: ../../integration/mango/setup.rst:340
 msgid ""
 "Если ``ecos-integrations`` запущен на хосте на порту ``8082``, для "
 "временной проверки можно проксировать его через установленный "
@@ -1075,7 +1075,7 @@ msgstr ""
 "If ``ecos-integrations`` runs on the host on port ``8082``, for temporary"
 " testing it can be proxied through an installed ``cloudflared``:"
 
-#: ../../integration/mango/setup.rst:344
+#: ../../integration/mango/setup.rst:346
 msgid ""
 "Полученный публичный домен используйте с путём ``/pub/webhook/mango-"
 "webhook``. При смене домена обновите адрес внешней системы в MANGO "
@@ -1086,7 +1086,7 @@ msgstr ""
 "MANGO OFFICE. The tunnel process must keep running during the entire "
 "test."
 
-#: ../../integration/mango/setup.rst:346
+#: ../../integration/mango/setup.rst:348
 msgid ""
 "Для постоянной эксплуатации нужен стабильный HTTPS-адрес; временный "
 "туннель не гарантирует непрерывную доставку."
@@ -1094,11 +1094,11 @@ msgstr ""
 "Permanent operation requires a stable HTTPS address; a temporary tunnel "
 "does not guarantee continuous delivery."
 
-#: ../../integration/mango/setup.rst:351
+#: ../../integration/mango/setup.rst:353
 msgid "Шаг 7. Проверочный звонок"
 msgstr "Step 7. Test call"
 
-#: ../../integration/mango/setup.rst:353
+#: ../../integration/mango/setup.rst:355
 msgid ""
 "Проверяйте под пользователем из группы менеджеров или администраторов CRM"
 " (см. :ref:`mango_user_rights`)."
@@ -1106,7 +1106,7 @@ msgstr ""
 "Test as a user from the CRM managers or administrators group (see "
 ":ref:`mango_user_rights`)."
 
-#: ../../integration/mango/setup.rst:355
+#: ../../integration/mango/setup.rst:357
 msgid ""
 "Выполните входящий звонок на номер ВАТС, ответьте, произнесите тестовую "
 "фразу и завершите разговор. Текущий сценарий обрабатывает **входящие "
@@ -1118,7 +1118,7 @@ msgstr ""
 "answered** calls: ``call_direction=1``, ``entry_result=1``. The activity "
 "is not expected immediately when the number is dialed."
 
-#: ../../integration/mango/setup.rst:356
+#: ../../integration/mango/setup.rst:358
 msgid ""
 "Проверьте получение ``summary`` и создание активности «Входящий звонок "
 "``<номер>``» в карточке сделки или лида. Если номер не найден среди "
@@ -1135,7 +1135,7 @@ msgstr ""
 "modified matching document is chosen, and the ``[mango:ambiguous]`` mark "
 "is added."
 
-#: ../../integration/mango/setup.rst:357
+#: ../../integration/mango/setup.rst:359
 msgid ""
 "После готовности аудиозаписи проверьте ``record/added`` того же "
 "``entry_id``, скачивание, расшифровку, аудиофайл и длительность в "
@@ -1146,7 +1146,7 @@ msgstr ""
 "duration in the card. The file may become available later than the end of"
 " the call."
 
-#: ../../integration/mango/setup.rst:358
+#: ../../integration/mango/setup.rst:360
 msgid ""
 "Убедитесь, что пользователь CRM имеет доступ к рабочему пространству и "
 "документу через предусмотренные роли."
@@ -1154,7 +1154,7 @@ msgstr ""
 "Make sure the CRM user has access to the workspace and the document "
 "through the provided roles."
 
-#: ../../integration/mango/setup.rst:359
+#: ../../integration/mango/setup.rst:361
 msgid ""
 "Сверьте время звонка в карточке со временем в личном кабинете MANGO "
 "OFFICE (см. :ref:`mango_call_time`). Если время отличается ровно на 3 "
@@ -1166,7 +1166,7 @@ msgstr ""
 "hours, report it to Citeck support before commissioning: fixing it "
 "requires an enhancement to the integration."
 
-#: ../../integration/mango/setup.rst:360
+#: ../../integration/mango/setup.rst:362
 msgid ""
 "Проверьте отсутствие новых сообщений в ``mango-events-dlq`` и ``mango-"
 "recordings-dlq``. Зафиксируйте ``entry_id`` и ссылки на лид или сделку и "
@@ -1176,31 +1176,31 @@ msgstr ""
 "recordings-dlq``. Record the ``entry_id`` and the links to the lead or "
 "deal and the activity for later diagnostics."
 
-#: ../../integration/mango/setup.rst:362
+#: ../../integration/mango/setup.rst:364
 msgid "Ориентиры по времени:"
 msgstr "Timing guidelines:"
 
-#: ../../integration/mango/setup.rst:369
+#: ../../integration/mango/setup.rst:371
 msgid "Этап"
 msgstr "Stage"
 
-#: ../../integration/mango/setup.rst:370
+#: ../../integration/mango/setup.rst:372
 msgid "Когда ожидать"
 msgstr "When to expect"
 
-#: ../../integration/mango/setup.rst:371
+#: ../../integration/mango/setup.rst:373
 msgid "Активность в карточке сделки или лида"
 msgstr "Activity in the deal or lead card"
 
-#: ../../integration/mango/setup.rst:372
+#: ../../integration/mango/setup.rst:374
 msgid "Через несколько секунд после окончания звонка"
 msgstr "A few seconds after the call ends"
 
-#: ../../integration/mango/setup.rst:373
+#: ../../integration/mango/setup.rst:375
 msgid "Аудиозапись и расшифровка"
 msgstr "Recording and transcript"
 
-#: ../../integration/mango/setup.rst:374
+#: ../../integration/mango/setup.rst:376
 msgid ""
 "После того как MANGO OFFICE поместит аудиозапись в облако и сервис "
 "распознавания её обработает. В зависимости от процессора распознавание "
@@ -1212,11 +1212,11 @@ msgstr ""
 "seconds per minute of conversation to a time comparable to the "
 "conversation duration."
 
-#: ../../integration/mango/setup.rst:375
+#: ../../integration/mango/setup.rst:377
 msgid "Очередь в часы пик"
 msgstr "Queue at peak hours"
 
-#: ../../integration/mango/setup.rst:376
+#: ../../integration/mango/setup.rst:378
 msgid ""
 "Одновременно обрабатываются две аудиозаписи, остальные ждут в очереди "
 "``mango-recordings``, поэтому статус ``downloading`` держится дольше"
@@ -1224,11 +1224,11 @@ msgstr ""
 "Two recordings are processed at the same time, the others wait in the "
 "``mango-recordings`` queue, so the ``downloading`` status lasts longer"
 
-#: ../../integration/mango/setup.rst:377
+#: ../../integration/mango/setup.rst:379
 msgid "Когда проверять"
 msgstr "When to check"
 
-#: ../../integration/mango/setup.rst:378
+#: ../../integration/mango/setup.rst:380
 msgid ""
 "С учётом отложенных повторов (48 минут ожидания) статус ``downloading``, "
 "который не меняется больше полутора часов, требует проверки лога и "
@@ -1239,21 +1239,21 @@ msgstr ""
 "half requires checking the log and the ``mango-recordings-retry-*`` and "
 "``mango-recordings-dlq`` queues"
 
-#: ../../integration/mango/setup.rst:380
+#: ../../integration/mango/setup.rst:382
 msgid ""
 "Если активность не появилась, воспользуйтесь разделом "
 ":ref:`mango_monitoring`."
 msgstr "If the activity did not appear, use the :ref:`mango_monitoring` section."
 
-#: ../../integration/mango/setup.rst:383
+#: ../../integration/mango/setup.rst:385
 msgid "Дополнительная настройка"
 msgstr "Additional setup"
 
-#: ../../integration/mango/setup.rst:388
+#: ../../integration/mango/setup.rst:390
 msgid "Настройка интервалов повторов"
 msgstr "Configuring retry intervals"
 
-#: ../../integration/mango/setup.rst:390
+#: ../../integration/mango/setup.rst:392
 msgid ""
 "Параметры разрешает Camel через JVM system properties или переменные "
 "окружения, а не через ``application.yml`` Spring. Перечень параметров и "
@@ -1272,7 +1272,7 @@ msgstr "JVM property"
 msgid "Переменная окружения"
 msgstr "Environment variable"
 
-#: ../../integration/mango/setup.rst:406
+#: ../../integration/mango/setup.rst:408
 msgid ""
 "После изменения параметров обеспечьте пересоздание Camel-контекста; при "
 "изменении параметров запуска JVM перезапустите приложение."
@@ -1280,7 +1280,7 @@ msgstr ""
 "After changing the parameters, make sure the Camel context is recreated; "
 "when changing JVM startup parameters, restart the application."
 
-#: ../../integration/mango/setup.rst:408
+#: ../../integration/mango/setup.rst:410
 msgid ""
 "Значения ``mango.recording.retryDelaysMillis`` должны быть положительными"
 " числами. Ошибка в этом параметре нарушает обработку сбоев аудиозаписей."
@@ -1289,7 +1289,7 @@ msgstr ""
 "numbers. An error in this parameter breaks the handling of recording "
 "failures."
 
-#: ../../integration/mango/setup.rst:412
+#: ../../integration/mango/setup.rst:414
 msgid ""
 "Уже опубликованные сообщения остаются в очередях с прежним TTL: изменение"
 " настройки не переносит их в новые очереди. Прежние очереди ``mango-"
@@ -1301,11 +1301,11 @@ msgstr ""
 "``mango-recordings-retry-*`` queues are not deleted automatically — once "
 "they are empty, delete them manually."
 
-#: ../../integration/mango/setup.rst:417
+#: ../../integration/mango/setup.rst:419
 msgid "Правила выбора сделки или лида"
 msgstr "Deal or lead selection rules"
 
-#: ../../integration/mango/setup.rst:419
+#: ../../integration/mango/setup.rst:421
 msgid ""
 "Правила выбора хранятся в YAML маршрута ``mango-call-recordings-sync``, в"
 " объекте ``mangoResolvePolicy``. Их можно изменить под модель CRM вашей "
@@ -1322,46 +1322,46 @@ msgstr ""
 "purpose and default values are given in the :ref:`mango_route_params` "
 "section."
 
-#: ../../integration/mango/setup.rst:421
+#: ../../integration/mango/setup.rst:423
 msgid "В шаблонах пометок доступны подстановки:"
 msgstr "The following placeholders are available in note templates:"
 
-#: ../../integration/mango/setup.rst:428
+#: ../../integration/mango/setup.rst:430
 msgid "Подстановка"
 msgstr "Placeholder"
 
-#: ../../integration/mango/setup.rst:429
+#: ../../integration/mango/setup.rst:431
 msgid "Значение"
 msgstr "Value"
 
-#: ../../integration/mango/setup.rst:430
+#: ../../integration/mango/setup.rst:432
 #, python-brace-format
 msgid "``{number}``"
 msgstr "``{number}``"
 
-#: ../../integration/mango/setup.rst:431
+#: ../../integration/mango/setup.rst:433
 msgid "Номер звонящего"
 msgstr "Caller's number"
 
-#: ../../integration/mango/setup.rst:432
+#: ../../integration/mango/setup.rst:434
 #, python-brace-format
 msgid "``{names}``"
 msgstr "``{names}``"
 
-#: ../../integration/mango/setup.rst:433
+#: ../../integration/mango/setup.rst:435
 msgid "Названия найденных сделок, лидов или контрагентов"
 msgstr "Names of the deals, leads, or counterparties found"
 
-#: ../../integration/mango/setup.rst:434
+#: ../../integration/mango/setup.rst:436
 #, python-brace-format
 msgid "``{chosen}``"
 msgstr "``{chosen}``"
 
-#: ../../integration/mango/setup.rst:435
+#: ../../integration/mango/setup.rst:437
 msgid "Выбранная сделка, лид или контрагент"
 msgstr "The selected deal, lead, or counterparty"
 
-#: ../../integration/mango/setup.rst:437
+#: ../../integration/mango/setup.rst:439
 msgid ""
 "Значения ``inactiveStatuses`` и ``sourceNoteTemplates`` — JSON-словари, "
 "записанные строкой в одинарных кавычках. Ключ — идентификатор источника "
@@ -1379,15 +1379,15 @@ msgstr ""
 "``inactiveStatuses`` value, which lists the statuses from the "
 ":ref:`mango_search_order` section:"
 
-#: ../../integration/mango/setup.rst:443
+#: ../../integration/mango/setup.rst:445
 msgid "Вне ``mangoResolvePolicy`` в YAML маршрута задаются:"
 msgstr "The following are set in the route YAML outside ``mangoResolvePolicy``:"
 
-#: ../../integration/mango/setup.rst:445
+#: ../../integration/mango/setup.rst:447
 msgid "порядок источников поиска;"
 msgstr "the order of search sources;"
 
-#: ../../integration/mango/setup.rst:446
+#: ../../integration/mango/setup.rst:448
 msgid ""
 "рабочее пространство создаваемого лида (константа ``LEAD_WORKSPACE`` в "
 "шаге ``mango-create-lead-for-call``);"
@@ -1395,15 +1395,14 @@ msgstr ""
 "the workspace of the created lead (the ``LEAD_WORKSPACE`` constant in the"
 " ``mango-create-lead-for-call`` step);"
 
-#: ../../integration/mango/setup.rst:447
+#: ../../integration/mango/setup.rst:449
 msgid ""
-"коды HTTP-ответов, при которых загрузка и распознавание аудиозаписи "
-"повторяются (``recordingFailurePolicy.retryHttpStatuses``);"
-msgstr ""
-"HTTP response codes on which downloading and recognizing the recording "
-"are retried (``recordingFailurePolicy.retryHttpStatuses``);"
+"общие коды HTTP-ответов, при которых загрузка и распознавание аудиозаписи"
+" повторяются (``recordingFailurePolicy.retryHttpStatuses``); HTTP 404 "
+"скачивания Mango дополнительно обрабатывается отдельной веткой маршрута;"
+msgstr "common HTTP response codes for which recording downloading and recognition are retried (``recordingFailurePolicy.retryHttpStatuses``); Mango download HTTP 404 is additionally handled by a separate route branch;"
 
-#: ../../integration/mango/setup.rst:448
+#: ../../integration/mango/setup.rst:450
 msgid "наибольший размер аудиозаписи (``mangoRecordingGuard.maxSize``)."
 msgstr "the maximum recording size (``mangoRecordingGuard.maxSize``)."
 
@@ -1411,23 +1410,23 @@ msgstr "the maximum recording size (``mangoRecordingGuard.maxSize``)."
 msgid "Порядок изменения"
 msgstr "How to make changes"
 
-#: ../../integration/mango/setup.rst:453
+#: ../../integration/mango/setup.rst:455
 msgid "Остановите маршрут действием «Остановить» в журнале Camel DSL."
 msgstr "Stop the route with the \"Stop\" action in the Camel DSL journal."
 
-#: ../../integration/mango/setup.rst:454
+#: ../../integration/mango/setup.rst:456
 msgid "Измените YAML маршрута и сохраните его."
 msgstr "Change the route YAML and save it."
 
-#: ../../integration/mango/setup.rst:455
+#: ../../integration/mango/setup.rst:457
 msgid "Запустите маршрут действием «Запустить»."
 msgstr "Start the route with the \"Start\" action."
 
-#: ../../integration/mango/setup.rst:456 ../../integration/mango/setup.rst:490
+#: ../../integration/mango/setup.rst:458 ../../integration/mango/setup.rst:495
 msgid "Сделайте контрольный звонок."
 msgstr "Make a test call."
 
-#: ../../integration/mango/setup.rst:460
+#: ../../integration/mango/setup.rst:462
 msgid ""
 "Ошибка в правилах не мешает маршруту запуститься, но ломает обработку "
 "звонков. К таким ошибкам относятся неверный JSON, нечисловое или "
@@ -1447,7 +1446,7 @@ msgstr ""
 "events-dlq``. After fixing the error, return such notifications from the "
 "dead-letter queue."
 
-#: ../../integration/mango/setup.rst:464
+#: ../../integration/mango/setup.rst:466
 msgid ""
 "Правила хранятся в содержимом поставляемого маршрута. Если при обновлении"
 " ``ecos-integrations`` изменился поставляемый маршрут, ваши правки YAML "
@@ -1459,27 +1458,21 @@ msgstr ""
 " changes are overwritten (see :ref:`mango_after_update`). Keep a copy of "
 "the modified YAML outside Citeck."
 
-#: ../../integration/mango/setup.rst:469
+#: ../../integration/mango/setup.rst:471
 msgid "Смена учётных данных API-коннектора"
 msgstr "Changing API connector credentials"
 
-#: ../../integration/mango/setup.rst:471
-msgid ""
-"После любого изменения секрета ``mango-api`` или адреса любой конечной "
-"точки сразу остановите и заново запустите маршрут ``mango-call-"
-"recordings-sync`` (действия «Остановить» и «Запустить» в журнале Camel "
-"DSL). Часть значений привязывается при создании Camel-контекста, поэтому "
-"до перезапуска MANGO OFFICE отклоняет запросы на загрузку аудиозаписей. "
-"Проверка входящих уведомлений читает секрет при каждом запросе."
-msgstr ""
-"After any change to the ``mango-api`` secret or the address of any "
-"endpoint, immediately stop and restart the ``mango-call-recordings-sync``"
-" route (the \"Stop\" and \"Start\" actions in the Camel DSL journal). "
-"Some values are bound when the Camel context is created, so until the "
-"restart MANGO OFFICE rejects recording download requests. Incoming "
-"notification verification reads the secret on every request."
-
 #: ../../integration/mango/setup.rst:473
+msgid ""
+"После любого изменения секрета ``mango-api`` или адреса конечной точки "
+"остановите и заново запустите маршрут ``mango-call-recordings-sync`` "
+"(действия «Остановить» и «Запустить» в журнале Camel DSL). Часть значений"
+" привязывается при создании Camel-контекста, поэтому до перезапуска могут"
+" использоваться прежние адреса или учётные данные. Проверка входящих "
+"уведомлений читает секрет при каждом запросе."
+msgstr "After any change to the ``mango-api`` secret or endpoint address, stop and restart the ``mango-call-recordings-sync`` route (the Stop and Start actions in the Camel DSL journal). Some values are bound when the Camel context is created, so old addresses or credentials may be used until it is restarted. Incoming notification verification reads the secret on every request."
+
+#: ../../integration/mango/setup.rst:475
 msgid ""
 "Что станет со звонком, аудиозапись которого не удалось загрузить из-за "
 "такого отказа, зависит от ответа MANGO OFFICE:"
@@ -1487,30 +1480,38 @@ msgstr ""
 "What happens to a call whose recording could not be downloaded because of"
 " such a rejection depends on the MANGO OFFICE response:"
 
-#: ../../integration/mango/setup.rst:475
+#: ../../integration/mango/setup.rst:477
 msgid ""
-"ответы 401 и 403, как и ответы 5xx, считаются временными: сообщение "
-"проходит отложенные повторы, после чего звонок получает статус "
-"``download-failed``, а сообщение попадает в ``mango-recordings-dlq``;"
-msgstr ""
-"401 and 403 responses, like 5xx responses, are considered temporary: the "
-"message goes through delayed retries, after which the call gets the "
-"``download-failed`` status, and the message goes to ``mango-recordings-"
-"dlq``;"
-
-#: ../../integration/mango/setup.rst:476
-msgid ""
-"ответ с кодом ошибки MANGO OFFICE в JSON и HTTP-кодом 2xx, а также ответ "
-"с любым другим кодом 4xx считаются окончательными: звонок сразу получает "
-"статус ``download-failed``, а сообщение в очередь недоставленных не "
-"попадает."
-msgstr ""
-"a response with a MANGO OFFICE error code in JSON and an HTTP 2xx code, "
-"as well as a response with any other 4xx code, is considered final: the "
-"call immediately gets the ``download-failed`` status, and the message "
-"does not go to the dead-letter queue."
+"ответы 401, 403, 408, 425, 429 и 5xx считаются временными: назначаются "
+"отложенные повторы. Если скачивание не удалось за весь бюджет попыток, "
+"звонок получает статус ``download-failed``, а сообщение попадает в "
+"``mango-recordings-dlq``;"
+msgstr "401, 403, 408, 425, 429, and 5xx responses are treated as temporary: delayed retries are scheduled. If downloading fails throughout the retry budget, the call receives the ``download-failed`` status and the message goes to ``mango-recordings-dlq``;"
 
 #: ../../integration/mango/setup.rst:478
+msgid ""
+"HTTP 404 скачивания Mango также повторяется: файл может ещё не быть "
+"доступен по API. Даже если запись действительно отсутствует или уже "
+"удалена, сначала расходуется бюджет повторов;"
+msgstr "Mango download HTTP 404 is also retried: the file may not yet be available through the API. Even if the recording is genuinely missing or already deleted, the retry budget is used first;"
+
+#: ../../integration/mango/setup.rst:479
+msgid ""
+"ответ с кодом ошибки MANGO OFFICE в JSON и HTTP-кодом 2xx, а также "
+"остальные ответы 4xx считаются окончательными: звонок сразу получает "
+"статус ``download-failed``, а сообщение в очередь недоставленных не "
+"попадает."
+msgstr "a response with a MANGO OFFICE error code in JSON and an HTTP 2xx code, as well as a response with any other 4xx code, is considered final: the call immediately gets the ``download-failed`` status, and the message does not go to the dead-letter queue."
+
+#: ../../integration/mango/setup.rst:481
+msgid ""
+"Исключение для 404 относится только к загрузке из MANGO OFFICE. HTTP 404 "
+"конечной точки STT считается постоянной ошибкой: проверьте URL сервиса "
+"распознавания. Пока сообщение уже ожидает в ``mango-recordings-retry-*``,"
+" повторно подавать уведомление вручную не требуется."
+msgstr "The 404 exception applies only to downloads from MANGO OFFICE. An HTTP 404 from the STT endpoint is treated as a permanent error: check the recognition service URL. While a message is already waiting in ``mango-recordings-retry-*``, there is no need to resubmit the notification manually."
+
+#: ../../integration/mango/setup.rst:483
 msgid ""
 "По документации MANGO OFFICE ошибка в запросе возвращается кодом 3xxx в "
 "JSON, а ответ 401 приходит только после превышения квоты неверных "
@@ -1532,11 +1533,11 @@ msgstr ""
 "messages are not in the dead-letter queue, and submit the recording "
 "notification for them manually (see :ref:`mango_record_reupload`)."
 
-#: ../../integration/mango/setup.rst:483
+#: ../../integration/mango/setup.rst:488
 msgid "Действия после обновления ecos-integrations"
 msgstr "Actions after updating ecos-integrations"
 
-#: ../../integration/mango/setup.rst:485
+#: ../../integration/mango/setup.rst:490
 msgid ""
 "При обновлении микросервиса поставляемые артефакты интеграции "
 "разворачиваются заново, если в новой версии они изменились. Изменённый "
@@ -1551,7 +1552,7 @@ msgstr ""
 " so your YAML changes (selection rules, ``retryHttpStatuses``, "
 "``maxSize``, lead workspace) are overwritten. After each update:"
 
-#: ../../integration/mango/setup.rst:487
+#: ../../integration/mango/setup.rst:492
 msgid ""
 "Проверьте, что маршрут ``mango-call-recordings-sync`` запущен "
 "(``STARTED``)."
@@ -1559,7 +1560,7 @@ msgstr ""
 "Check that the ``mango-call-recordings-sync`` route is running "
 "(``STARTED``)."
 
-#: ../../integration/mango/setup.rst:488
+#: ../../integration/mango/setup.rst:493
 msgid ""
 "Сверьте YAML маршрута с сохранённой копией своих изменений и при "
 "необходимости повторите их."
@@ -1567,7 +1568,7 @@ msgstr ""
 "Compare the route YAML with the saved copy of your changes and reapply "
 "them if necessary."
 
-#: ../../integration/mango/setup.rst:489
+#: ../../integration/mango/setup.rst:494
 msgid ""
 "Проверьте адреса конечных точек ``mango-office`` и ``stt-sidecar`` и "
 "заполненность секрета ``mango-api``."
@@ -1575,11 +1576,11 @@ msgstr ""
 "Check the addresses of the ``mango-office`` and ``stt-sidecar`` endpoints"
 " and that the ``mango-api`` secret is filled in."
 
-#: ../../integration/mango/setup.rst:493
+#: ../../integration/mango/setup.rst:498
 msgid "Отключение интеграции"
 msgstr "Disabling the integration"
 
-#: ../../integration/mango/setup.rst:495
+#: ../../integration/mango/setup.rst:500
 msgid ""
 "Удалите адрес внешней системы в настройках API-коннектора в личном "
 "кабинете MANGO OFFICE."
@@ -1587,7 +1588,7 @@ msgstr ""
 "Remove the external system address in the API connector settings in the "
 "MANGO OFFICE account."
 
-#: ../../integration/mango/setup.rst:496
+#: ../../integration/mango/setup.rst:501
 msgid ""
 "Дождитесь, пока опустеют очереди ``mango-events``, ``mango-recordings`` и"
 " ``mango-recordings-retry-*``."
@@ -1595,7 +1596,7 @@ msgstr ""
 "Wait until the ``mango-events``, ``mango-recordings``, and ``mango-"
 "recordings-retry-*`` queues are empty."
 
-#: ../../integration/mango/setup.rst:497
+#: ../../integration/mango/setup.rst:502
 msgid ""
 "Остановите маршрут ``mango-call-recordings-sync`` действием «Остановить» "
 "в журнале Camel DSL."
@@ -1603,7 +1604,7 @@ msgstr ""
 "Stop the ``mango-call-recordings-sync`` route with the \"Stop\" action in"
 " the Camel DSL journal."
 
-#: ../../integration/mango/setup.rst:501
+#: ../../integration/mango/setup.rst:506
 msgid ""
 "Если остановить маршрут, не убрав адрес в MANGO OFFICE, вебхук продолжит "
 "отвечать кодом 200, но уведомления никто не обработает. Они теряются без "
@@ -1615,4 +1616,55 @@ msgstr ""
 "notifications. They are lost without a trace in the log, and MANGO OFFICE"
 " will not repeat them. Messages already in the queues are kept and "
 "processed after the route is started."
+
+#~ msgid ""
+#~ "Интеграция подготовлена к выпуску в "
+#~ "``ecos-integrations`` 2.37.0. До выхода "
+#~ "релизов ``ecos-integrations`` 2.37.0 и "
+#~ "библиотеки ``ecos-camel-core`` 1.16.0 "
+#~ "документ описывает предварительную версию "
+#~ "интеграции."
+#~ msgstr ""
+#~ "The integration is prepared for release"
+#~ " in ``ecos-integrations`` 2.37.0. Until "
+#~ "``ecos-integrations`` 2.37.0 and the "
+#~ "``ecos-camel-core`` 1.16.0 library are "
+#~ "released, this document describes a "
+#~ "preview version of the integration."
+
+#~ msgid "Версия"
+#~ msgstr "Version"
+
+#~ msgid "2.37.0 или новее"
+#~ msgstr "2.37.0 or later"
+
+#~ msgid ""
+#~ "Артефакты интеграции MANGO OFFICE; проверка"
+#~ " подписи входящих вебхуков и приём по"
+#~ " вложенным путям (появились в 2.34.0)"
+#~ msgstr ""
+#~ "MANGO OFFICE integration artifacts; incoming"
+#~ " webhook signature verification and "
+#~ "receiving on nested paths (introduced in"
+#~ " 2.34.0)"
+
+#~ msgid "1.16.0 или новее"
+#~ msgstr "1.16.0 or later"
+
+#~ msgid "Релиз 2026.3 или новее"
+#~ msgstr "Release 2026.3 or later"
+
+#~ msgid ""
+#~ "Базовый URL сервиса распознавания, доступный"
+#~ " из процесса интеграции. Например, ``http"
+#~ "://citeck-stt-sidecar:8090`` в общей "
+#~ "Docker-сети или ``http://localhost:8090``, если "
+#~ "оба сервиса запущены на хосте."
+#~ msgstr ""
+#~ "The base URL of the recognition "
+#~ "service accessible from the integration "
+#~ "process. For example, ``http://citeck-stt-"
+#~ "sidecar:8090`` in a shared Docker "
+#~ "network or ``http://localhost:8090`` if both"
+#~ " services run on the host."
 

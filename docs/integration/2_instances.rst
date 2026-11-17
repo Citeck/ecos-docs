@@ -1,6 +1,6 @@
 .. _two_instances:
 
-Общение между двумя и более инстансами Citeck через команды и события
+Обмен командами между двумя и более контурами Citeck
 ===========================================================================
 
 .. contents::
@@ -9,41 +9,60 @@
 Требования
 -----------
 
-1. Инстансы Citeck должны быть самодостаточны. Т.е. в каждом Citeck должен быть развернут полный список необходимых микросервисов для полноценной работы.
+Микросервис integrations создаёт мост команд между контурами через настройку ``ecos-integrations.extecos``. Для каждого указанного локального приложения мост слушает RabbitMQ удалённого контура и перенаправляет полученные команды в локальное приложение.
 
-2. Микросервис интеграции в каждом контуре Citeck должен иметь доступ по сети к RabbitMQ и Zookeeper удаленного Citeck.
+1. В каждом участвующем контуре должны работать необходимые для операции приложения и транспорт команд. В целевом приложении должен быть зарегистрирован исполнитель нужного типа команды.
 
-3. В каждом контуре Citeck должен быть микросервис интеграции версии 1.15.0+ (пока SNAPSHOT) 
+2. Микросервис integrations целевого контура должен иметь сетевой доступ и учётные данные для RabbitMQ контура, из которого отправляются команды.
+
+3. Для обмена в обоих направлениях необходимо настроить мосты с обеих сторон.
 
 .. note::
 
-    Доступ к Zookeeper необходим для работы :ref:`событий<ecos_events>`. Для работы команд достаточно доступа к RabbitMQ.
+   Эта настройка относится к командам. В текущей реализации ``extecos`` подключение к Zookeeper и пересылка событий не предусмотрены. Механизм :ref:`событий<ecos_events>` настраивается отдельно.
 
 Настройка
 ----------
 
-Схема подключения двух инстансов Citeck: 
+Подключения integrations при обмене в обоих направлениях:
 
-.. image:: _static/2_instances/2_instances_1.png
-   :width: 600
-   :align: center
+.. mermaid::
 
-Подключение пунктирными линиями настраиваются в central-config для микросервиса интеграции (в дальнейшем подключение к Zookeeper будет в connections под ключом **zookeeper**):
+   flowchart LR
+       subgraph MAIN["main-ecos"]
+           I0["integrations"]
+           R0["RabbitMQ"]
+           I0 -->|"локальный транспорт команд"| R0
+       end
+       subgraph SECOND["second-ecos"]
+           I1["integrations"]
+           R1["RabbitMQ"]
+           I1 -->|"локальный транспорт команд"| R1
+       end
+       I0 -.->|"extecos: приём для main-ecos"| R1
+       I1 -.->|"extecos: приём для second-ecos"| R0
+
+Пунктирные подключения задаются в central-config для микросервиса integrations. Пример на стороне **main-ecos**, принимающей команды от **second-ecos**:
 
 .. code-block:: yaml
 
-    # Пример конфигурации для main-ecos. Для second-ecos изменится this-app-name и возможно host/user/pass у rabbitmq 
     ecos-integrations:
-    extecos:
+      extecos:
         - this-app-name: main-ecos
-        connections:
+          connections:
             rabbitmq:
-            host: localhost
-            username: admin
-            password: admin
-        commands:
+              host: rabbitmq.second-ecos.example
+              username: admin
+              password: admin
+          commands:
             apps:
-            - alfresco
+              - alfresco
+
+Замените адрес и учётные данные RabbitMQ значениями удалённого контура. ``alfresco`` — пример локального приложения, принимающего команды; укажите приложения своей установки.
+
+При такой настройке приложение в **second-ecos** отправляет команду через свой локальный транспорт на адрес ``main-ecos/alfresco``. Мост в **main-ecos** получает её из RabbitMQ контура **second-ecos** и перенаправляет в локальный ``alfresco``.
+
+Для обратного направления в **second-ecos** указываются ``this-app-name: second-ecos``, RabbitMQ контура **main-ecos** и список локальных приложений **second-ecos**.
 
 .. list-table::
    :widths: 10 30
@@ -54,15 +73,45 @@
    * - Поле
      - Описание
    * - **extecos**
-     - Массив из подключений к различным контурам Citeck (поддерживается неограниченное кол-во подключений).
+     - Список подключений к внешним контурам. Можно задать несколько подключений; каждое использует ресурсы соединения и сервисов команд.
    * - **extecos[].this-app-name**
-     - Имя текущего контура Citeck. Будет использоваться при отправке команд и событий из внешней системы в текущую.
+     - Обязательное имя текущего контура, под которым его локальные приложения представлены на удалённом RabbitMQ. Внешний адрес приложения: ``this-app-name/имя-приложения``.
    * - **extecos[].connections**
-     - Раздел с подключениями к RabbitMQ и Zookeeper.
+     - Параметры подключения к RabbitMQ удалённого контура в разделе ``rabbitmq``. Поле ``rabbitmq.host`` обязательно.
    * - **extecos[].commands**
      - Настройка команд.
    * - **extecos[].commands.apps**
-     - Локальные приложения, которым будет возможность отправлять команды из внешней системы.
+     - Локальные приложения, принимающие команды из удалённого контура. Пустой список не создаёт мостов приложений.
+
+Дополнительные параметры подключения задаются внутри ``extecos[].connections.rabbitmq``:
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+   :class: tight-table
+
+   * - Параметр
+     - Описание
+   * - ``port``, ``virtual-host``
+     - Порт и виртуальный хост RabbitMQ.
+   * - ``executor``
+     - Параметр исполнителя, передаваемый библиотеке подключения RabbitMQ.
+   * - ``tls.enabled``
+     - Включение TLS.
+   * - ``tls.client-key``, ``tls.trusted-certs``
+     - Настройки клиентского ключа и доверенных сертификатов.
+   * - ``tls.protocol``, ``tls.verify-hostname``
+     - Протокол TLS и проверка имени сервера.
+
+Для неуказанных параметров используются значения по умолчанию из библиотеки RabbitMQ. Параметры сервиса команд задаются в ``extecos[].commands.props``: ``command-timeout-ms``, ``concurrent-command-consumers`` и ``channel-qos``.
+
+.. important::
+
+   Мост принудительно отключает приём широковещательных команд: ``commands.props.listen-broadcast=true`` не переопределяет это поведение.
+
+   Конфигурация мостов считывается один раз при инициализации контекста приложения. После изменения настроек перезапустите integrations.
+
+При перенаправлении команды мост задаёт локальное целевое приложение и заменяет ``sourceApp``/``sourceAppId`` своими значениями. На эти поля нельзя полагаться для сохранения исходной идентичности внешнего отправителя.
 
 Регистрация исполнителя команд
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +131,7 @@
         @Nullable
         @Override
         public Object execute(SomeBody someBody) {
-            //выполняем необходимые действи
+            // Выполняем необходимые действия.
             return "OK";
         }
     }
@@ -95,7 +144,7 @@
     }
 
 - **SomeExecutor** - принимающая сторона, а отправляющая сторона будет там где вызовется commandsService.execute (пример в разделе "отправка команд").
-- **SomeBody** - любой DTO тип, который будет передаваться в Body команды. Класс должен быть описан на отправляющей стороне и на принимающей (достаточно, чтобы имена полей и типы полей совпадали - пакеты при этом не важны, Jackson позаботится о преобразовании данных).
+- **SomeBody** — DTO тела команды. На отправляющей и принимающей сторонах должна быть согласована схема тела: имена полей, типы и правила сериализации. Совместимость DTO необходимо проверять при изменении схемы или версий библиотек.
 - **@CommandType("some-command-type")** - аннотация на типе тела команды, определяющая тип команды. С отправляющей стороны тип можно также задать явно через ``builder.setType("some-command-type")``.
 
 Отправка команды во внешнюю систему (из Citeck 1 (second-ecos) в Citeck 0 (main-ecos))
@@ -108,13 +157,20 @@
 
 .. code-block:: java
 
-    commandsService.executeSync(builder -> {
+    CommandResult result = commandsService.executeSync(builder -> {
         builder.setTargetApp("main-ecos/alfresco");
         builder.setType("some-command-type");
         builder.setBody(new SomeBody());
-        builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
+        builder.setTtl(Duration.ofMinutes(1));
         return Unit.INSTANCE;
-    })
+    });
+
+    if (result.getPrimaryError() != null) {
+        throw new RuntimeException(result.getPrimaryError());
+    }
+    String value = result.getResultAs(String.class);
+
+Здесь ``CommandResult`` — ``ru.citeck.ecos.commands.dto.CommandResult``, ``Duration`` — ``java.time.Duration``, ``Unit`` — ``kotlin.Unit``. ``executeSync`` возвращает объект результата команды; значение, возвращённое исполнителем, извлекается через ``getResultAs``.
 
 .. list-table::
    :widths: 10 30
@@ -131,110 +187,101 @@
    * - **setType**
      - Тип команды, по которому будет выбран ``CommandExecutor`` для выполнения. Вместо этого вызова тип можно указать через аннотацию ``@CommandType``.
    * - **setBody**
-     - Любой инстанс DTO класса. Преобразуется в байты и обратно с помощью библиотеки Jackson.
+     - Тело команды, совместимое со схемой DTO принимающего исполнителя.
    * - **setTtl**
-     - Время жизни сообщения в RabbitMQ. Если за это время сообщение никто не обработает, оно удалится из очередей.
+     - Время жизни команды, передаваемое библиотеке команд. TTL не следует использовать как механизм отмены уже выполняемой операции.
 
 Если предположим, что отправка осуществляется из alfresco (Citeck 1 - second-ecos) в alfresco (Citeck 0 - main-ecos), то ход команды будет следующим:
 
-.. image:: _static/2_instances/2_instances_2.png
-   :width: 600
-   :align: center
+.. mermaid::
+
+   sequenceDiagram
+       participant S as alfresco (second-ecos)
+       participant R1 as RabbitMQ (second-ecos)
+       participant I0 as integrations (main-ecos)
+       participant R0 as RabbitMQ (main-ecos)
+       participant T as alfresco (main-ecos)
+       S->>R1: Команда для main-ecos/alfresco
+       R1->>I0: Получение команды мостом extecos
+       I0->>R0: Перенаправление в локальный alfresco
+       R0->>T: Выполнение команды
+       T-->>R0: Результат
+       R0-->>I0: Результат локального вызова
+       I0-->>R1: Ответ на внешнюю команду
+       R1-->>S: Результат
 
 Тестирование отправки команд
 -----------------------------
 
-Отправка команд в удаленный Citeck и локальный отличается только аргументом в **setTargetApp**. Т.о. отлаживать механизм можно без учета нескольких инстансов Citeck.
+Сначала проверьте отправку команды локальному приложению по адресу ``alfresco``. Затем настройте мост и повторите проверку с адресом ``main-ecos/alfresco``.
 
-Отправка команды в локальный RabbitMQ через Java тест (можно размещать в **ecos-integrations**):
+Пример ручного интеграционного теста в **ecos-integrations** использует ``CommandsService`` из контекста приложения. Перед запуском настройте локальный RabbitMQ и остальные зависимости приложения, запустите целевой ``alfresco`` и зарегистрируйте в нём ``SomeExecutor`` из примера выше. Снимите ``@Disabled`` для ручного запуска на подготовленном окружении.
 
 .. code-block:: java
 
+    package ru.citeck.ecos.integrations;
+
+    import java.time.Duration;
+    import java.util.Map;
+    import kotlin.Unit;
+    import org.junit.jupiter.api.Disabled;
+    import org.junit.jupiter.api.Test;
+    import org.junit.jupiter.api.extension.ExtendWith;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.boot.test.context.SpringBootTest;
+    import ru.citeck.ecos.commands.CommandsService;
+    import ru.citeck.ecos.commands.dto.CommandResult;
+    import ru.citeck.ecos.webapp.lib.spring.test.extension.EcosSpringExtension;
+
+    import static org.junit.jupiter.api.Assertions.assertEquals;
+    import static org.junit.jupiter.api.Assertions.assertNull;
+
+    @Disabled("Run manually with configured RabbitMQ and target executor")
+    @ExtendWith(EcosSpringExtension.class)
+    @SpringBootTest(classes = IntegrationsApp.class)
     public class CommandsTest {
 
+        @Autowired
+        private CommandsService commandsService;
+
         @Test
-        public void test() {
-
-            // подключаемся к нужному RabbitMQ
-            RabbitMqConnProps props = new RabbitMqConnProps();
-            props.setUsername("admin");
-            props.setPassword("admin");
-            props.setHost("localhost");
-
-            RabbitMqConnFactory factory = new RabbitMqConnFactory();
-            RabbitMqConn conn = factory.createConnection(props, 0);
-
-            conn.waitUntilReady(5000);
-
-            CommandsServiceFactory commFactory = new CommandsServiceFactory() {
-
-                @NotNull
-                @Override
-                protected CommandsProperties createProperties() {
-                    CommandsProperties props = new CommandsProperties();
-                    props.setAppName("alfresco1"); // "представляемся" в системе как приложение с именем "alfresco1" 
-                    props.setAppInstanceId("alfresco1-123"); // идентификатор инстанса приложения
-                    props.setListenBroadcast(false); // указываем, что широковещательные команды нам исполнять не нужно
-                    return props;
-                }
-
-                @NotNull
-                @Override
-                protected RemoteCommandsService createRemoteCommandsService() {
-                    return new RabbitCommandsService(this, conn);
-                }
-            };
-
-            commFactory.getRemoteCommandsService();
-            CommandsService commandsService = commFactory.getCommandsService();
-
-            // выполняем команду синхронно и выводим результат в консоль
-            System.out.println(commandsService.executeSync(builder -> {
+        public void testLocalCommand() {
+            CommandResult result = commandsService.executeSync(builder -> {
                 builder.setTargetApp("alfresco");
                 builder.setType("some-command-type");
-                builder.setBody(new SomeBody());
-                builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
+                builder.setBody(Map.of("strField", "str-field"));
+                builder.setTtl(Duration.ofMinutes(1));
                 return Unit.INSTANCE;
-            }));
+            });
 
-            conn.close();
-        }
-
-        @Data
-        @CommandType("some-command-type")
-        public static class SomeBody {
-            private String strField = "str-field";
-            private byte[] bytesField;
+            assertNull(result.getPrimaryError());
+            assertEquals("OK", result.getResultAs(String.class));
         }
     }
+
+Тело в этом тесте задано как объект с полем ``strField``, соответствующим DTO ``SomeBody`` принимающей стороны. Подключение к RabbitMQ и контекст приложения предоставляет приложение; создавать собственные ``CommandsProperties`` и ``CommandsServiceFactory`` в тесте не требуется.
 
 .. dropdown:: Локальное тестирование отправки команд на удаленный инстанс
    :color: secondary
 
-   Имеет смысл после отладки через обычную отправку команд.
+   Выполняйте после проверки локального исполнителя.
 
-   1. Добавляем настройку удаленного контура Citeck как описано в разделе **Настройка**. В качестве целевого RabbitMQ выбираем localhost. Т.о. можно локально тестировать работу с удаленными инстансами подняв только один инстанс RabbitMQ. Конфликтов при этом не возникнет.
+   1. Добавьте настройку ``extecos`` из раздела **Настройка**, указав тестовый RabbitMQ, доступный процессу integrations. Для проверки адресации моста можно использовать один RabbitMQ и уникальный префикс контура ``main-ecos``. Убедитесь, что другие мосты не регистрируют тот же адрес ``main-ecos/alfresco``.
 
-   2. Немного меняем аргумент в методе **setTargetApp** при отправке команды в тесте - добавляется идентификатор контура Citeck со слэшем:
+   2. Перезапустите integrations. В тесте замените ``builder.setTargetApp("alfresco")`` на:
 
-   .. code-block:: java
+      .. code-block:: java
 
-       ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
-               System.out.println(commandsService.executeSync(builder -> {
-                   builder.setTargetApp("main-ecos/alfresco");
-                   builder.setType("some-command-type");
-                   builder.setBody(new SomeBody());
-                   builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
-                   return Unit.INSTANCE;
-               }));
-       ... здесь все аналогично предыдущему блоку кода, который описывает класс CommandsTest ...
+          builder.setTargetApp("main-ecos/alfresco");
 
-   При желании можно подключиться и к реальному удаленному Citeck, но для этого должен быть доступ к RabbitMQ извне. При этом достаточно будет исправить параметры в **RabbitMqConnProps**.
+   3. Повторите тест и проверьте результат. Такая проверка не подтверждает сетевую доступность и настройки отдельного удалённого RabbitMQ.
 
-Отправка файлов в командах и событиях
+Для проверки с двумя контурами настройте в целевом integrations доступ к RabbitMQ отправителя, а тест запускайте в контуре отправителя с адресом целевого приложения ``main-ecos/alfresco``.
+
+Отправка файлов в командах
 --------------------------------------
 
-Для отправки файлов в командах и событиях следует использовать поля с типом byte[] (сообщения сжимаются перед отправкой. Т.е. доп. оптимизация не нужна).
+Файлы можно передавать в полях DTO типа ``byte[]``. При выборе размера тела учитывайте ограничения RabbitMQ и затраты на сериализацию. Не следует рассчитывать на обязательное автоматическое сжатие всех сообщений.
 
 Для удобной работы с файлами есть утилитные классы **EcosMemFile EcosMemDir** и **ru.citeck.ecos.commons.utils.ZipUtils**, который может легко упаковывать много файлов в один поток байт и обратно.
 
@@ -253,6 +300,6 @@
         builder.setTargetApp("main-ecos/alfresco");
         builder.setType("some-command-type");
         builder.setBody(body);
-        builder.setTtl(Duration.of(1, ChronoUnit.MINUTES));
+        builder.setTtl(Duration.ofMinutes(1));
         return Unit.INSTANCE;
     });
