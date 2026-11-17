@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -42,14 +42,11 @@ msgstr ""
 #: ../../integration/webhooks.rst:11
 msgid ""
 "Citeck поддерживает **входящие вебхуки**: внешняя система отправляет "
-"POST-запрос на специальный endpoint, Citeck проверяет токен и публикует "
-"событие во внутреннюю шину. Далее событие может быть обработано любым "
-"подписчиком — BPMN-процессом, интеграционным маршрутом Camel DSL и т.д."
-msgstr ""
-"Citeck supports **incoming webhooks**: an external system sends a POST "
-"request to a dedicated endpoint, Citeck verifies the token and publishes "
-"the event to the internal message bus. The event can then be processed by"
-" any subscriber — a BPMN process, a Camel DSL integration route, etc."
+"POST-запрос на специальный endpoint, Citeck проверяет токен или подпись "
+"запроса и публикует событие во внутреннюю шину. Далее событие может быть "
+"обработано любым подписчиком — BPMN-процессом, интеграционным маршрутом "
+"Camel DSL и т.д."
+msgstr "Citeck supports **incoming webhooks**: an external system sends a POST request to a dedicated endpoint, Citeck verifies the token or request signature and publishes an event to the internal bus. The event can then be processed by any subscriber — a BPMN process, a Camel DSL integration route, etc."
 
 #: ../../integration/webhooks.rst:13
 msgid "Типичный сценарий использования:"
@@ -105,11 +102,11 @@ msgstr "Attributes (in-webhook):"
 msgid "Атрибут"
 msgstr "Attribute"
 
-#: ../../integration/webhooks.rst:45 ../../integration/webhooks.rst:109
+#: ../../integration/webhooks.rst:45 ../../integration/webhooks.rst:177
 msgid "Тип"
 msgstr "Type"
 
-#: ../../integration/webhooks.rst:46
+#: ../../integration/webhooks.rst:46 ../../integration/webhooks.rst:92
 msgid "Описание"
 msgstr "Description"
 
@@ -117,8 +114,8 @@ msgstr "Description"
 msgid "id"
 msgstr "id"
 
-#: ../../integration/webhooks.rst:48 ../../integration/webhooks.rst:55
-#: ../../integration/webhooks.rst:58
+#: ../../integration/webhooks.rst:48 ../../integration/webhooks.rst:56
+#: ../../integration/webhooks.rst:59 ../../integration/webhooks.rst:62
 msgid "Текст"
 msgstr "Text"
 
@@ -135,42 +132,203 @@ msgid "ASSOC (secret)"
 msgstr "ASSOC (secret)"
 
 #: ../../integration/webhooks.rst
-msgid ":ref:`Секрет <ECOS_secrets>` с типом «Токен»."
-msgstr ":ref:`Secret <ECOS_secrets>` of type \"Token\"."
+msgid ":ref:`Секрет <ECOS_secrets>` для проверки запроса."
+msgstr ":ref:`Secret <ECOS_secrets>` for request verification."
 
 #: ../../integration/webhooks.rst
-msgid "Необходим для проверки валидности запроса."
-msgstr "Required to validate the request."
+msgid "При authType=token используется секрет типа «Токен» (TOKEN)."
+msgstr "authType=token uses a secret of type Token (TOKEN)."
 
-#: ../../integration/webhooks.rst:54
+#: ../../integration/webhooks.rst
+msgid ""
+"При authType=signature тип секрета зависит от полей, указанных в "
+"signatureConfig: BASIC для username/password, TOKEN для token."
+msgstr "For authType=signature, the secret type depends on the fields specified in signatureConfig: BASIC for username/password, TOKEN for token."
+
+#: ../../integration/webhooks.rst:55
 msgid "actionType"
 msgstr "actionType"
 
-#: ../../integration/webhooks.rst:56
-msgid "Тип действия при обработке запроса"
-msgstr "Action type when processing the request"
-
 #: ../../integration/webhooks.rst:57
+msgid ""
+"Тип действия при обработке запроса. Поддерживается toEvent — "
+"трансформация в Events"
+msgstr "Action type when processing a request. Supports toEvent — transformation into Events"
+
+#: ../../integration/webhooks.rst:58
+msgid "authType"
+msgstr "authType"
+
+#: ../../integration/webhooks.rst:60
+msgid ""
+"Тип аутентификации: token или signature. Если не задан или пуст, "
+"используется token. Неизвестное непустое значение вызывает ошибку "
+"конфигурации"
+msgstr "Authentication type: token or signature. If unset or empty, token is used. An unknown nonempty value causes a configuration error"
+
+#: ../../integration/webhooks.rst:61
 msgid "authParameter"
 msgstr "authParameter"
 
 #: ../../integration/webhooks.rst
-msgid "Параметр запроса, в котором передаётся токен."
-msgstr "Request parameter in which the token is passed."
+msgid "Параметр запроса, в котором передаётся токен при authType=token."
+msgstr "Request parameter carrying the token when authType=token."
 
 #: ../../integration/webhooks.rst
-msgid "Если не задан, используется значение по умолчанию: **token**"
-msgstr "If not specified, the default value **token** is used"
+msgid ""
+"Если не задан или пуст, используется значение по умолчанию: **token**. "
+"При authType=signature не используется"
+msgstr "If unset or empty, the default value is **token**. Not used when authType=signature"
 
-#: ../../integration/webhooks.rst:62
-msgid "Пример конфигурации:"
-msgstr "Configuration Example:"
+#: ../../integration/webhooks.rst:65
+msgid "signatureConfig"
+msgstr "signatureConfig"
 
-#: ../../integration/webhooks.rst:73
+#: ../../integration/webhooks.rst:66
+msgid "JSON"
+msgstr "JSON"
+
+#: ../../integration/webhooks.rst:67
+msgid "Конфигурация проверки подписи. Необходима при authType=signature"
+msgstr "Signature verification configuration. Required for authType=signature"
+
+#: ../../integration/webhooks.rst:69
+msgid "Пример конфигурации с проверкой токена:"
+msgstr "Configuration example with token verification:"
+
+#: ../../integration/webhooks.rst:81
+msgid "Проверка подписи"
+msgstr "Signature verification"
+
+#: ../../integration/webhooks.rst:83
+msgid ""
+"При ``authType: signature`` подпись передаётся в параметре запроса и "
+"проверяется по ``signatureConfig``. Параметры можно передавать в query "
+"string или в форме ``application/x-www-form-urlencoded``. Поля JSON-тела "
+"сами по себе не становятся параметрами запроса."
+msgstr "With ``authType: signature``, the signature is passed in a request parameter and verified according to ``signatureConfig``. Parameters can be passed in the query string or an ``application/x-www-form-urlencoded`` form. JSON body fields do not automatically become request parameters."
+
+#: ../../integration/webhooks.rst:85
+msgid "Поля signatureConfig"
+msgstr "signatureConfig fields"
+
+#: ../../integration/webhooks.rst:90 ../../integration/webhooks.rst:176
+msgid "Поле"
+msgstr "Field"
+
+#: ../../integration/webhooks.rst:91
+msgid "По умолчанию"
+msgstr "Default"
+
+#: ../../integration/webhooks.rst:93
+msgid "algorithm"
+msgstr "algorithm"
+
+#: ../../integration/webhooks.rst:94
+msgid "sha256"
+msgstr "sha256"
+
+#: ../../integration/webhooks.rst:95
+msgid "Алгоритм: sha256 или hmac-sha256"
+msgstr "Algorithm: sha256 or hmac-sha256"
+
+#: ../../integration/webhooks.rst:96
+msgid "payloadParam"
+msgstr "payloadParam"
+
+#: ../../integration/webhooks.rst:97
+msgid "json"
+msgstr "json"
+
+#: ../../integration/webhooks.rst:98
+msgid "Имя параметра с полезной нагрузкой, которая передаётся в body события"
+msgstr "Name of the payload parameter passed to the event body"
+
+#: ../../integration/webhooks.rst:99
+msgid "signatureParam"
+msgstr "signatureParam"
+
+#: ../../integration/webhooks.rst:100
+msgid "sign"
+msgstr "sign"
+
+#: ../../integration/webhooks.rst:101
+msgid "Имя параметра с hex-подписью запроса"
+msgstr "Name of the parameter containing the request's hex signature"
+
+#: ../../integration/webhooks.rst:102
+msgid "components"
+msgstr "components"
+
+#: ../../integration/webhooks.rst:103
+msgid "[]"
+msgstr "[]"
+
+#: ../../integration/webhooks.rst:104
+msgid ""
+"Непустой упорядоченный список ссылок на значения для формирования "
+"подписываемого сообщения"
+msgstr "A nonempty ordered list of value references used to construct the message to sign"
+
+#: ../../integration/webhooks.rst:105
+msgid "keyComponent"
+msgstr "keyComponent"
+
+#: ../../integration/webhooks.rst:106
+msgid "null"
+msgstr "null"
+
+#: ../../integration/webhooks.rst:107
+msgid "Ссылка на ключ для hmac-sha256"
+msgstr "Reference to the hmac-sha256 key"
+
+#: ../../integration/webhooks.rst:109
+msgid ""
+"В ``components`` и ``keyComponent`` используются ссылки "
+"``secret.username``, ``secret.password``, ``secret.token`` или "
+"``param.<имя>``. Поля ``secret.*`` берутся из секрета, указанного в "
+"атрибуте ``token`` вебхука, а ``param.*`` — из параметров запроса. Тип "
+"секрета должен соответствовать используемым полям."
+msgstr "``components`` and ``keyComponent`` use the references ``secret.username``, ``secret.password``, ``secret.token``, or ``param.<name>``. The ``secret.*`` fields are taken from the secret specified in the webhook's ``token`` attribute, while ``param.*`` fields come from request parameters. The secret type must match the fields used."
+
+#: ../../integration/webhooks.rst:111
+msgid ""
+"``sha256``: значения всех ``components`` соединяются в указанном порядке "
+"без разделителей, переводятся в UTF-8 и хешируются SHA-256. Список должен"
+" содержать хотя бы одну ссылку на ``secret.password`` или "
+"``secret.token``."
+msgstr "``sha256``: all ``components`` values are concatenated in the specified order without separators, converted to UTF-8, and hashed with SHA-256. The list must contain at least one reference to ``secret.password`` or ``secret.token``."
+
+#: ../../integration/webhooks.rst:112
+msgid ""
+"``hmac-sha256``: сообщение формируется из всех ``components`` тем же "
+"способом, ключ берётся отдельно из ``keyComponent``. Ключ должен "
+"ссылаться на ``secret.password`` или ``secret.token``."
+msgstr "``hmac-sha256``: the message is constructed from all ``components`` in the same way; the key is taken separately from ``keyComponent``. The key must reference ``secret.password`` or ``secret.token``."
+
+#: ../../integration/webhooks.rst:114
+msgid ""
+"В обоих случаях результат вычисления представлен в hex; регистр символов "
+"hex при сравнении не учитывается. Пустой список компонентов, неизвестный "
+"алгоритм или несовместимый тип секрета вызывают ошибку конфигурации."
+msgstr "In both cases, the computed result is represented in hex; hex character case is ignored during comparison. An empty component list, an unknown algorithm, or an incompatible secret type causes a configuration error."
+
+#: ../../integration/webhooks.rst:116
+msgid "Пример конфигурации Mango:"
+msgstr "Mango configuration example:"
+
+#: ../../integration/webhooks.rst:134
+msgid ""
+"В этом примере используется BASIC-секрет: ``username`` содержит ключ API,"
+" ``password`` — salt. Подпись вычисляется как SHA-256 от конкатенации "
+"ключа API, значения параметра ``json`` и salt."
+msgstr "This example uses a BASIC secret: ``username`` contains the API key, and ``password`` contains the salt. The signature is calculated as SHA-256 of the concatenation of the API key, the ``json`` parameter value, and the salt."
+
+#: ../../integration/webhooks.rst:137
 msgid "Отправка запроса"
 msgstr "Sending a Request"
 
-#: ../../integration/webhooks.rst:75
+#: ../../integration/webhooks.rst:139
 msgid ""
 "После создания входящего вебхука становится доступна отправка "
 "POST-запросов по адресу:"
@@ -178,39 +336,48 @@ msgstr ""
 "Once an incoming webhook is created, POST requests can be sent to the "
 "following address:"
 
-#: ../../integration/webhooks.rst:81
+#: ../../integration/webhooks.rst:145
 msgid "где **id** — идентификатор, указанный при создании вебхука."
 msgstr "where **id** is the identifier specified when creating the webhook."
 
-#: ../../integration/webhooks.rst:85
-msgid "В запросе обязательно должно присутствовать **тело (body)**."
-msgstr "The request must contain a **body**."
-
-#: ../../integration/webhooks.rst:87
+#: ../../integration/webhooks.rst:147
 msgid ""
-"Токен для аутентификации должен передаваться в параметре, указанном при "
-"создании вебхука."
-msgstr ""
-"The authentication token must be passed in the parameter specified when "
-"creating the webhook."
+"Поддерживаются и дополнительные сегменты пути, например ``/pub/webhook"
+"/mango-webhook/events/summary``. Для выбора вебхука используется только "
+"``mango-webhook``; остаток пути не передаётся отдельным полем события."
+msgstr "Additional path segments are also supported, for example ``/pub/webhook/mango-webhook/events/summary``. Only ``mango-webhook`` is used to select the webhook; the rest of the path is not passed as a separate event field."
 
-#: ../../integration/webhooks.rst:89 ../../integration/webhooks.rst:117
-msgid "Например:"
-msgstr "For example:"
+#: ../../integration/webhooks.rst:149
+msgid ""
+"HTTP-тело запроса необязательно. При проверке подписи запрос должен "
+"содержать параметры, необходимые для её вычисления."
+msgstr "The HTTP request body is optional. For signature verification, the request must contain the parameters required to calculate the signature."
 
-#: ../../integration/webhooks.rst:96
+#: ../../integration/webhooks.rst:151
+msgid ""
+"В режиме ``token`` токен передаётся в параметре, указанном в "
+"``authParameter``. Для конфигурации Bitrix24 выше URL с токеном выглядит "
+"так:"
+msgstr "In ``token`` mode, the token is passed in the parameter specified by ``authParameter``. For the Bitrix24 configuration above, the URL with a token looks like this:"
+
+#: ../../integration/webhooks.rst:157
+msgid ""
+"Пример POST-запроса с параметрами формы (замените host и демонстрационный"
+" токен своими значениями):"
+msgstr "Example POST request with form parameters (replace host and the demonstration token with your own values):"
+
+#: ../../integration/webhooks.rst:164
 msgid "Обработка запроса"
 msgstr "Request Processing"
 
-#: ../../integration/webhooks.rst:98
+#: ../../integration/webhooks.rst:166
 msgid ""
-"На данный момент доступен один тип действия — «Трансформация в Events». "
-"При обработке вебхука проверяется токен."
-msgstr ""
-"Currently, one action type is available — \"Transformation into Events\"."
-" When processing a webhook, the token is verified."
+"На данный момент доступен один тип действия — «Трансформация в Events» "
+"(``actionType: toEvent``). Перед выполнением действия проверяется токен "
+"или подпись в зависимости от ``authType``."
+msgstr "Currently, one action type is available — Transformation into Events (``actionType: toEvent``). Before the action is performed, the token or signature is verified depending on ``authType``."
 
-#: ../../integration/webhooks.rst:100
+#: ../../integration/webhooks.rst:168
 msgid ""
 "Если проверка прошла успешно, создаётся :ref:`ECOS Event <ecos_events>` в"
 " стандартную очередь **ecos-events** с типом **in-webhook-request**. "
@@ -220,31 +387,56 @@ msgstr ""
 "in the standard queue **ecos-events** with the type **in-webhook-"
 "request**. The event contains the request data:"
 
-#: ../../integration/webhooks.rst:108
-msgid "Поле"
-msgstr "Field"
-
-#: ../../integration/webhooks.rst:110
+#: ../../integration/webhooks.rst:178
 msgid "webhookId"
 msgstr "webhookId"
 
-#: ../../integration/webhooks.rst:111 ../../integration/webhooks.rst:115
+#: ../../integration/webhooks.rst:179 ../../integration/webhooks.rst:183
 msgid "String"
 msgstr "String"
 
-#: ../../integration/webhooks.rst:112
+#: ../../integration/webhooks.rst:180
 msgid "params"
 msgstr "params"
 
-#: ../../integration/webhooks.rst:113
+#: ../../integration/webhooks.rst:181
 msgid "Map<String, String>"
 msgstr "Map<String, String>"
 
-#: ../../integration/webhooks.rst:114
+#: ../../integration/webhooks.rst:182
 msgid "body"
 msgstr "body"
 
-#: ../../integration/webhooks.rst:129
+#: ../../integration/webhooks.rst:185
+msgid "Например:"
+msgstr "For example:"
+
+#: ../../integration/webhooks.rst:195
+msgid "Значение ``body`` выбирается следующим образом:"
+msgstr "The ``body`` value is selected as follows:"
+
+#: ../../integration/webhooks.rst:197
+msgid ""
+"В режиме ``signature`` берётся значение параметра, заданного в "
+"``signatureConfig.payloadParam``, если этот параметр присутствует."
+msgstr "In ``signature`` mode, the value of the parameter specified in ``signatureConfig.payloadParam`` is used if that parameter is present."
+
+#: ../../integration/webhooks.rst:198
+msgid "Иначе используется исходное HTTP-тело запроса."
+msgstr "Otherwise, the original HTTP request body is used."
+
+#: ../../integration/webhooks.rst:199
+msgid "Если HTTP-тела тоже нет, передаётся пустая строка."
+msgstr "If there is no HTTP body either, an empty string is passed."
+
+#: ../../integration/webhooks.rst:201
+msgid ""
+"Например, для Mango при ``payloadParam: json`` в ``body`` события "
+"передаётся JSON-строка из параметра ``json``, а не вся строка формы с "
+"подписью. Поля ``webhookId`` и ``params`` сохраняют тот же формат."
+msgstr "For example, for Mango with ``payloadParam: json``, the event ``body`` receives the JSON string from the ``json`` parameter rather than the entire form string with the signature. The ``webhookId`` and ``params`` fields retain the same format."
+
+#: ../../integration/webhooks.rst:205
 msgid ""
 "Доступ на чтение и редактирование вебхуков есть только у Администратора и"
 " Системы."
@@ -252,67 +444,98 @@ msgstr ""
 "Only the Administrator and the System have read and edit access to "
 "webhooks."
 
-#: ../../integration/webhooks.rst:132
+#: ../../integration/webhooks.rst:208
 msgid "Ошибки"
 msgstr "Errors"
 
-#: ../../integration/webhooks.rst:134
+#: ../../integration/webhooks.rst:210
 msgid "При отправке запроса на вебхук возможны следующие ошибки:"
 msgstr "The following errors may occur when sending a request to a webhook:"
 
-#: ../../integration/webhooks.rst:142
+#: ../../integration/webhooks.rst:218
 msgid "Код"
 msgstr "Code"
 
-#: ../../integration/webhooks.rst:143
+#: ../../integration/webhooks.rst:219
 msgid "Детали"
 msgstr "Details"
 
-#: ../../integration/webhooks.rst:144
+#: ../../integration/webhooks.rst:220
 msgid "Комментарий"
 msgstr "Comment"
 
-#: ../../integration/webhooks.rst:145 ../../integration/webhooks.rst:148
-#: ../../integration/webhooks.rst:151 ../../integration/webhooks.rst:154
+#: ../../integration/webhooks.rst:221 ../../integration/webhooks.rst:224
+#: ../../integration/webhooks.rst:227 ../../integration/webhooks.rst:230
 msgid "500"
 msgstr "500"
 
-#: ../../integration/webhooks.rst:146
+#: ../../integration/webhooks.rst:222
 #, python-brace-format
 msgid "Invalid webhook id={wh_id}"
 msgstr "Invalid webhook id={wh_id}"
 
-#: ../../integration/webhooks.rst:147
+#: ../../integration/webhooks.rst:223
 msgid "Вебхук с указанным id не найден"
 msgstr "Webhook with the specified id not found"
 
-#: ../../integration/webhooks.rst:149
+#: ../../integration/webhooks.rst:225
 #, python-brace-format
 msgid "Secret ${webhook.token} not found"
 msgstr "Secret ${webhook.token} not found"
 
-#: ../../integration/webhooks.rst:150
+#: ../../integration/webhooks.rst:226
 msgid "Секрет, заданный в вебхуке, не найден"
 msgstr "The secret specified in the webhook was not found"
 
-#: ../../integration/webhooks.rst:152
+#: ../../integration/webhooks.rst:228
 msgid "Authentication token is not valid"
 msgstr "Authentication token is not valid"
 
-#: ../../integration/webhooks.rst:153
+#: ../../integration/webhooks.rst:229
 msgid "Параметр с токеном отсутствует в запросе или токен неверный"
 msgstr "The token parameter is missing from the request or the token is invalid"
 
-#: ../../integration/webhooks.rst:155
+#: ../../integration/webhooks.rst:231
 #, python-brace-format
 msgid "Not found action type ${webhook.actionType}"
 msgstr "Not found action type ${webhook.actionType}"
 
-#: ../../integration/webhooks.rst:156
+#: ../../integration/webhooks.rst:232
 msgid "Указан несуществующий тип действия"
 msgstr "A non-existent action type was specified"
 
-#: ../../integration/webhooks.rst:160
+#: ../../integration/webhooks.rst:233 ../../integration/webhooks.rst:236
+msgid "401"
+msgstr "401"
+
+#: ../../integration/webhooks.rst:234
+msgid "Webhook signature is not valid"
+msgstr "Webhook signature is not valid"
+
+#: ../../integration/webhooks.rst:235
+msgid "При authType=signature подпись отсутствует или не совпадает с вычисленной"
+msgstr "With authType=signature, the signature is missing or does not match the computed value"
+
+#: ../../integration/webhooks.rst:237
+msgid ""
+"Request parameter '<name>' referenced by component '<component>' is "
+"missing"
+msgstr "Request parameter '<name>' referenced by component '<component>' is missing"
+
+#: ../../integration/webhooks.rst:238
+msgid "Отсутствует параметр запроса, указанный в компонентах подписи"
+msgstr "A request parameter referenced in the signature components is missing"
+
+#: ../../integration/webhooks.rst:240
+msgid ""
+"Ошибки конфигурации также возникают при неизвестном ``authType``, "
+"отсутствии ``signatureConfig`` для режима ``signature``, неизвестном "
+"алгоритме или компоненте подписи, отсутствии допустимого HMAC-ключа и "
+"несовместимом типе секрета. Формат HTTP-ответа для этих ошибок "
+"определяется обработчиком ошибок используемой поставки."
+msgstr "Configuration errors also occur for an unknown ``authType``, missing ``signatureConfig`` in ``signature`` mode, an unknown signature algorithm or component, absence of a valid HMAC key, and an incompatible secret type. The HTTP response format for these errors is determined by the error handler in the distribution used."
+
+#: ../../integration/webhooks.rst:244
 msgid ""
 "Вебхук используется, например, для :ref:`синхронизации с Bitrix24 "
 "<bitrix24_crm>`."
@@ -342,4 +565,22 @@ msgstr ""
 
 #~ msgid "Если неверно задано действие в вебхуке"
 #~ msgstr "If the action is incorrectly set in the webhook"
+
+#~ msgid "Необходим для проверки валидности запроса."
+#~ msgstr "Required to validate the request."
+
+#~ msgid "Тип действия при обработке запроса"
+#~ msgstr "Action type when processing the request"
+
+#~ msgid "В запросе обязательно должно присутствовать **тело (body)**."
+#~ msgstr "The request must contain a **body**."
+
+#~ msgid ""
+#~ "Токен для аутентификации должен передаваться"
+#~ " в параметре, указанном при создании "
+#~ "вебхука."
+#~ msgstr ""
+#~ "The authentication token must be passed"
+#~ " in the parameter specified when "
+#~ "creating the webhook."
 

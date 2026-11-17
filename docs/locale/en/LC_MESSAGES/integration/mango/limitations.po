@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 16:05+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -335,11 +335,20 @@ msgstr ""
 "text. Do not start an endless manual retry of such a message: fix the "
 "problem with the file first."
 
-#: ../../integration/mango/limitations.rst:69
+#: ../../integration/mango/limitations.rst:65
+msgid ""
+"Уведомление ``record/added`` не гарантирует немедленную доступность файла"
+" по API. HTTP 404 скачивания Mango проходит отложенные повторы; это "
+"увеличивает время ожидания и для действительно отсутствующей или "
+"удалённой записи. HTTP 404 сервиса распознавания, напротив, считается "
+"постоянной ошибкой."
+msgstr "The ``record/added`` notification does not guarantee immediate file availability through the API. A Mango download HTTP 404 goes through delayed retries; this also increases the wait for a genuinely missing or deleted recording. An HTTP 404 from the recognition service, by contrast, is treated as a permanent error."
+
+#: ../../integration/mango/limitations.rst:70
 msgid "Время звонка"
 msgstr "Call time"
 
-#: ../../integration/mango/limitations.rst:71
+#: ../../integration/mango/limitations.rst:72
 msgid ""
 "Время звонка берётся из поля ``create_time`` итога вызова (при его "
 "отсутствии — из ``talk_time`` или ``end_time``) как Unix-время без сдвига"
@@ -357,11 +366,11 @@ msgstr ""
 "commissioning, be sure to compare the time of the test call with the "
 "account (see :ref:`mango_step_check`)."
 
-#: ../../integration/mango/limitations.rst:74
+#: ../../integration/mango/limitations.rst:75
 msgid "Эксплуатация"
 msgstr "Operation"
 
-#: ../../integration/mango/limitations.rst:76
+#: ../../integration/mango/limitations.rst:77
 msgid ""
 "Интеграция рассчитана на один экземпляр микросервиса ``ecos-"
 "integrations``: порядок уведомлений обеспечивается единственным "
@@ -378,15 +387,15 @@ msgstr ""
 "and recording notifications will be discarded more often. If several "
 "instances are required, agree on the configuration with Citeck support."
 
-#: ../../integration/mango/limitations.rst:77
+#: ../../integration/mango/limitations.rst:78
 msgid "Соединение с брокером RabbitMQ по TLS не поддерживается."
 msgstr "A TLS connection to the RabbitMQ broker is not supported."
 
-#: ../../integration/mango/limitations.rst:78
+#: ../../integration/mango/limitations.rst:79
 msgid "Очереди недоставленных разбираются вручную (см. :ref:`mango_dlq_restore`)."
 msgstr "Dead-letter queues are reviewed manually (see :ref:`mango_dlq_restore`)."
 
-#: ../../integration/mango/limitations.rst:79
+#: ../../integration/mango/limitations.rst:80
 msgid ""
 "Не входят в интеграцию обработка исходящих звонков и управление звонками "
 "из Citeck (обратный звонок, запуск записи). Возможные направления "

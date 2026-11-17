@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,123 +24,110 @@ msgstr "Decision Models (Citeck DMN)"
 
 #: ../../settings_kb/processes/DMN_ecos.rst:6
 msgid ""
-"В Citeck реализована поддержка нотации **DMN 1.3** (Decision Model and "
-"Notation) — международного стандарта визуального моделирования логики "
-"принятия решений. Платформа построена на редакторе `dmn-js "
-"<https://bpmn.io/toolkit/dmn-js/>`_ и движке **Camunda**, что "
-"обеспечивает совместимость со стандартом и интеграцию с бизнес-процессами"
-" BPMN."
-msgstr ""
-"Citeck supports the **DMN 1.3** (Decision Model and Notation) notation — "
-"the international standard for visual modeling of decision logic. The "
-"platform is built on the `dmn-js <https://bpmn.io/toolkit/dmn-js/>`_ "
-"editor and the **Camunda** engine, ensuring standard compliance and "
-"integration with BPMN business processes."
+"**Citeck DMN** — инструмент моделирования бизнес-правил и принятия "
+"решений в формате **DMN 1.3** (Decision Model and Notation). Для "
+"визуального редактирования используется редактор на базе **dmn-js**, для "
+"выполнения опубликованных решений — движок **Camunda**."
+msgstr "**Citeck DMN** is a tool for modeling business rules and decision-making in **DMN 1.3** (Decision Model and Notation). Visual editing uses an editor based on **dmn-js**; deployed decisions are executed by the **Camunda** engine."
 
 #: ../../settings_kb/processes/DMN_ecos.rst:8
 msgid ""
-"Встроенный редактор позволяет без программирования описывать правила "
-"принятия решений в виде таблиц: задаются входные условия и "
-"соответствующие им выходные значения. Готовые модели публикуются в движок"
-" и могут вызываться из BPMN-процессов или напрямую через API — что "
-"упрощает изменение бизнес-логики без вмешательства в код процессов."
-msgstr ""
-"The built-in editor allows you to define decision rules as tables without"
-" coding: input conditions and their corresponding output values are "
-"specified. Finished models are published to the engine and can be invoked"
-" from BPMN processes or directly via API — making it easy to change "
-"business logic without touching process code."
+"В редакторе можно строить диаграммы требований к решениям (DRD) и таблицы"
+" решений: задавать входные выражения, условия правил и выходные значения."
+" Бизнес-правила хранятся в отдельных моделях, которые можно изменять и "
+"публиковать независимо от схемы процесса."
+msgstr "The editor allows you to build decision requirements diagrams (DRDs) and decision tables: define input expressions, rule conditions, and output values. Business rules are stored in separate models that can be changed and deployed independently of the process diagram."
 
 #: ../../settings_kb/processes/DMN_ecos.rst:10
-#: ../../settings_kb/processes/DMN_ecos.rst:25
-msgid "Раздел охватывает полный цикл работы с DMN в Citeck:"
-msgstr "This section covers the full DMN workflow in Citeck:"
+msgid "Опубликованные решения используются в следующих сценариях:"
+msgstr "Deployed decisions are used in the following scenarios:"
 
 #: ../../settings_kb/processes/DMN_ecos.rst:12
-msgid "**Общее описание** — архитектура платформы и навигация по журналу моделей;"
-msgstr ""
-"**Overview** — platform architecture and navigation through the models "
-"journal;"
+msgid ""
+":ref:`Задача бизнес-правило BPMN <business_rule_task>` — решение получает"
+" переменные процесса; версия решения определяется настройкой связи в "
+"задаче."
+msgstr ":ref:`BPMN business rule task <business_rule_task>` — the decision receives process variables; the decision version is determined by the task's binding setting."
 
 #: ../../settings_kb/processes/DMN_ecos.rst:13
-msgid "**Редактор**:"
-msgstr "**Editor**:"
-
-#: ../../settings_kb/processes/DMN_ecos.rst:15
 msgid ""
-"**Конструктор DMN** — интерфейс редактора, панели инструментов и работа с"
-" элементами схемы;"
-msgstr ""
-"**DMN Designer** — editor interface, toolbars, and working with diagram "
-"elements;"
+":ref:`Динамическая роль <dmn_role>` — решение определяет участников роли "
+"по данным документа."
+msgstr ":ref:`Dynamic role <dmn_role>` — the decision determines role participants from document data."
+
+#: ../../settings_kb/processes/DMN_ecos.rst:14
+msgid ""
+":ref:`Условие применения KPI <dmn_result_kpi>` — результат решения "
+"определяет, применяется ли настройка KPI к документу."
+msgstr ":ref:`KPI applicability condition <dmn_result_kpi>` — the decision result determines whether a KPI configuration applies to the document."
 
 #: ../../settings_kb/processes/DMN_ecos.rst:16
 msgid ""
-"**Компоненты Citeck DMN** — типы элементов нотации и правила их "
-"соединения;"
-msgstr ""
-"**Citeck DMN components** — notation element types and their connection "
-"rules;"
+"Для динамических ролей и условий KPI входные переменные задаются через "
+"свойство **«Модель»** на схеме DMN, используется последняя опубликованная"
+" версия решения. Источники входов и требования к результату различаются "
+"между сценариями; подробнее — :ref:`Входные и выходные данные решения "
+"<dmn_decision_data>`."
+msgstr "For dynamic roles and KPI conditions, input variables are specified through the **Model** property in the DMN diagram, and the latest deployed decision version is used. Input sources and result requirements differ between scenarios; for details, see :ref:`Decision input and output data <dmn_decision_data>`."
 
-#: ../../settings_kb/processes/DMN_ecos.rst:17
+#: ../../settings_kb/processes/DMN_ecos.rst:20
 msgid ""
-"**Входные и выходные данные решения** — как решение получает данные при "
-"вызове из процесса, из динамической роли и из условия KPI, и каким должен"
-" быть его результат;"
-msgstr ""
-"**Decision input and output data** — how the decision receives data when"
-" invoked from a process, from a dynamic role, and from a KPI condition, "
-"and what its result should be;"
+"Сохранение модели и публикация в движок — отдельные операции. Чтобы "
+"использовать изменения при выполнении решения, модель необходимо "
+"опубликовать. Если BPMN-задача привязана к конкретной версии или тегу "
+"версии, новая публикация сама по себе не меняет эту привязку. Порядок "
+"работы описан в разделе :ref:`Базовые операции <new_dmn>`."
+msgstr "Saving a model and deploying it to the engine are separate operations. To use changes during decision execution, deploy the model. If a BPMN task is bound to a specific version or version tag, a new deployment does not by itself change that binding. The workflow is described in :ref:`Basic operations <new_dmn>`."
 
-#: ../../settings_kb/processes/DMN_ecos.rst:18
-msgid ""
-"**Базовые операции** — создание, редактирование, версионирование и "
-"публикация решений;"
-msgstr ""
-"**Basic operations** — creating, editing, versioning, and publishing "
-"decisions;"
+#: ../../settings_kb/processes/DMN_ecos.rst:26
+msgid "Материалы раздела:"
+msgstr "Section contents:"
 
-#: ../../settings_kb/processes/DMN_ecos.rst:19
-msgid ""
-"**Права доступа** — настройка разрешений на уровне разделов и отдельных "
-"моделей."
-msgstr ""
-"**Access rights** — configuring permissions at the section and individual"
-" model level."
-
-#: ../../settings_kb/processes/DMN_ecos.rst:30
+#: ../../settings_kb/processes/DMN_ecos.rst:31
 msgid "Общее описание"
 msgstr "Overview"
 
-#: ../../settings_kb/processes/DMN_ecos.rst:34
-msgid "Архитектура платформы и навигация по журналу моделей."
-msgstr "Platform architecture and navigation through the models journal."
+#: ../../settings_kb/processes/DMN_ecos.rst:35
+msgid ""
+"Назначение Citeck DMN, способы применения решений и навигация по журналу "
+"моделей."
+msgstr "Purpose of Citeck DMN, decision use cases, and navigation through the model journal."
 
-#: ../../settings_kb/processes/DMN_ecos.rst:36
+#: ../../settings_kb/processes/DMN_ecos.rst:37
 msgid "Редактор"
 msgstr "Editor"
 
-#: ../../settings_kb/processes/DMN_ecos.rst:40
+#: ../../settings_kb/processes/DMN_ecos.rst:41
 msgid ""
 "Конструктор DMN и компоненты Citeck DMN — типы элементов нотации и "
 "правила их соединения."
 msgstr ""
-"DMN Designer and Citeck DMN components — notation element types and "
-"their connection rules."
+"DMN Designer and Citeck DMN components — notation element types and their"
+" connection rules."
 
-#: ../../settings_kb/processes/DMN_ecos.rst:42
+#: ../../settings_kb/processes/DMN_ecos.rst:43
+msgid "Входные и выходные данные решения"
+msgstr "Decision input and output data"
+
+#: ../../settings_kb/processes/DMN_ecos.rst:47
+msgid ""
+"Переменные процесса, модель входов из атрибутов документа и требования к "
+"результату для BPMN, динамических ролей и KPI."
+msgstr "Process variables, the input model based on document attributes, and result requirements for BPMN, dynamic roles, and KPIs."
+
+#: ../../settings_kb/processes/DMN_ecos.rst:49
 msgid "Базовые операции"
 msgstr "Basic operations"
 
-#: ../../settings_kb/processes/DMN_ecos.rst:46
+#: ../../settings_kb/processes/DMN_ecos.rst:53
 msgid "Создание, редактирование, версионирование и публикация решений."
 msgstr "Creating, editing, versioning, and publishing decisions."
 
-#: ../../settings_kb/processes/DMN_ecos.rst:48
+#: ../../settings_kb/processes/DMN_ecos.rst:55
 msgid "Права доступа"
 msgstr "Access rights"
 
-#: ../../settings_kb/processes/DMN_ecos.rst:52
+#: ../../settings_kb/processes/DMN_ecos.rst:59
 msgid "Настройка разрешений на уровне разделов и отдельных моделей."
 msgstr "Configuring permissions at the section and individual model level."
 
@@ -160,4 +147,111 @@ msgstr "Configuring permissions at the section and individual model level."
 #~ " sets, enabling more flexible process "
 #~ "configuration that helps companies address "
 #~ "analytical and automation tasks."
+
+#~ msgid ""
+#~ "В Citeck реализована поддержка нотации "
+#~ "**DMN 1.3** (Decision Model and "
+#~ "Notation) — международного стандарта "
+#~ "визуального моделирования логики принятия "
+#~ "решений. Платформа построена на редакторе "
+#~ "`dmn-js <https://bpmn.io/toolkit/dmn-js/>`_ и"
+#~ " движке **Camunda**, что обеспечивает "
+#~ "совместимость со стандартом и интеграцию "
+#~ "с бизнес-процессами BPMN."
+#~ msgstr ""
+#~ "Citeck supports the **DMN 1.3** "
+#~ "(Decision Model and Notation) notation —"
+#~ " the international standard for visual "
+#~ "modeling of decision logic. The platform"
+#~ " is built on the `dmn-js "
+#~ "<https://bpmn.io/toolkit/dmn-js/>`_ editor and "
+#~ "the **Camunda** engine, ensuring standard "
+#~ "compliance and integration with BPMN "
+#~ "business processes."
+
+#~ msgid ""
+#~ "Встроенный редактор позволяет без "
+#~ "программирования описывать правила принятия "
+#~ "решений в виде таблиц: задаются входные"
+#~ " условия и соответствующие им выходные "
+#~ "значения. Готовые модели публикуются в "
+#~ "движок и могут вызываться из "
+#~ "BPMN-процессов или напрямую через API —"
+#~ " что упрощает изменение бизнес-логики без"
+#~ " вмешательства в код процессов."
+#~ msgstr ""
+#~ "The built-in editor allows you to"
+#~ " define decision rules as tables "
+#~ "without coding: input conditions and "
+#~ "their corresponding output values are "
+#~ "specified. Finished models are published "
+#~ "to the engine and can be invoked"
+#~ " from BPMN processes or directly via"
+#~ " API — making it easy to change"
+#~ " business logic without touching process"
+#~ " code."
+
+#~ msgid "Раздел охватывает полный цикл работы с DMN в Citeck:"
+#~ msgstr "This section covers the full DMN workflow in Citeck:"
+
+#~ msgid ""
+#~ "**Общее описание** — архитектура платформы "
+#~ "и навигация по журналу моделей;"
+#~ msgstr ""
+#~ "**Overview** — platform architecture and "
+#~ "navigation through the models journal;"
+
+#~ msgid "**Редактор**:"
+#~ msgstr "**Editor**:"
+
+#~ msgid ""
+#~ "**Конструктор DMN** — интерфейс редактора, "
+#~ "панели инструментов и работа с "
+#~ "элементами схемы;"
+#~ msgstr ""
+#~ "**DMN Designer** — editor interface, "
+#~ "toolbars, and working with diagram "
+#~ "elements;"
+
+#~ msgid ""
+#~ "**Компоненты Citeck DMN** — типы "
+#~ "элементов нотации и правила их "
+#~ "соединения;"
+#~ msgstr ""
+#~ "**Citeck DMN components** — notation "
+#~ "element types and their connection "
+#~ "rules;"
+
+#~ msgid ""
+#~ "**Входные и выходные данные решения** —"
+#~ " как решение получает данные при "
+#~ "вызове из процесса, из динамической роли"
+#~ " и из условия KPI, и каким "
+#~ "должен быть его результат;"
+#~ msgstr ""
+#~ "**Decision input and output data** — "
+#~ "how the decision receives data when "
+#~ "invoked from a process, from a "
+#~ "dynamic role, and from a KPI "
+#~ "condition, and what its result should"
+#~ " be;"
+
+#~ msgid ""
+#~ "**Базовые операции** — создание, "
+#~ "редактирование, версионирование и публикация "
+#~ "решений;"
+#~ msgstr ""
+#~ "**Basic operations** — creating, editing, "
+#~ "versioning, and publishing decisions;"
+
+#~ msgid ""
+#~ "**Права доступа** — настройка разрешений "
+#~ "на уровне разделов и отдельных моделей."
+#~ msgstr ""
+#~ "**Access rights** — configuring permissions"
+#~ " at the section and individual model"
+#~ " level."
+
+#~ msgid "Архитектура платформы и навигация по журналу моделей."
+#~ msgstr "Platform architecture and navigation through the models journal."
 

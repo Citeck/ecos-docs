@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -40,68 +40,76 @@ msgstr ""
 msgid "Описание дополнительных действий:"
 msgstr "Description of additional actions:"
 
-#: ../../integration/Camel_DSL/actions.rst:20
+#: ../../integration/Camel_DSL/actions.rst:21
 msgid "Действие"
 msgstr "Action"
 
-#: ../../integration/Camel_DSL/actions.rst:21
+#: ../../integration/Camel_DSL/actions.rst:22
 msgid "Описание"
 msgstr "Description"
 
-#: ../../integration/Camel_DSL/actions.rst:22
+#: ../../integration/Camel_DSL/actions.rst:23
 msgid "**1a** — Старт"
 msgstr "**1a** — Start"
 
-#: ../../integration/Camel_DSL/actions.rst:23
-msgid "Запускает Camel-контекст. Доступно, когда контекст остановлен."
-msgstr "Starts the Camel context. Available when the context is stopped."
-
 #: ../../integration/Camel_DSL/actions.rst:24
+msgid "Запускает Camel-контекст. Доступно для состояний STOPPED и SUSPENDED."
+msgstr "Starts the Camel context. Available in the STOPPED and SUSPENDED states."
+
+#: ../../integration/Camel_DSL/actions.rst:25
 msgid "**1b** — Стоп"
 msgstr "**1b** — Stop"
 
-#: ../../integration/Camel_DSL/actions.rst:25
+#: ../../integration/Camel_DSL/actions.rst:26
 msgid "Останавливает выполняющийся Camel-контекст."
 msgstr "Stops the running Camel context."
 
-#: ../../integration/Camel_DSL/actions.rst:26
+#: ../../integration/Camel_DSL/actions.rst:27
 msgid "**2** — Лог"
 msgstr "**2** — Log"
 
-#: ../../integration/Camel_DSL/actions.rst:27
+#: ../../integration/Camel_DSL/actions.rst:28
 msgid ""
 "Открывает журнал последней синхронизации с подробной информацией о ходе "
 "выполнения и возможных ошибках."
 msgstr ""
-"Opens the log of the last synchronization with detailed information about "
-"the execution progress and possible errors."
+"Opens the log of the last synchronization with detailed information about"
+" the execution progress and possible errors."
 
-#: ../../integration/Camel_DSL/actions.rst:29
+#: ../../integration/Camel_DSL/actions.rst:30
+msgid ""
+"Стандартные действия **Старт** и **Стоп** доступны администратору для "
+"контекстов с ручным запуском (MANUALLY; условия действий также допускают "
+"незаполненный startupType). Сервер проверяет право записи и допускает "
+"ручной запуск только с startupType MANUALLY. Действие **Стоп** "
+"отображается для состояния STARTED."
+msgstr "The standard **Start** and **Stop** actions are available to administrators for contexts with manual startup (MANUALLY; action conditions also allow an empty startupType). The server checks write permission and allows manual startup only with startupType MANUALLY. The **Stop** action is displayed for the STARTED state."
+
+#: ../../integration/Camel_DSL/actions.rst:32
 msgid ""
 "Кнопки **Старт** и **Стоп** также доступны непосредственно внутри "
 "карточки артефакта:"
 msgstr ""
-"The **Start** and **Stop** buttons are also available directly inside the "
-"artifact card:"
+"The **Start** and **Stop** buttons are also available directly inside the"
+" artifact card:"
 
-#: ../../integration/Camel_DSL/actions.rst:38
+#: ../../integration/Camel_DSL/actions.rst:41
 msgid ""
-"Контекст автоматически останавливается сразу после завершения всех задач "
-"— например, при импорте данных из файла. Это ожидаемое поведение: после "
-"обработки файла контекст переходит в состояние **STOPPED**."
-msgstr ""
-"The context stops automatically immediately after all tasks are completed "
-"— for example, when importing data from a file. This is the expected "
-"behavior: after the file is processed, the context transitions to the "
-"**STOPPED** state."
+"После запуска контекст останавливается, если у него нет активных "
+"маршрутов. Например, ``file-from-camel-dsl`` обрабатывает вложенный файл "
+"при старте и затем не считается активным потребителем. Если других "
+"активных маршрутов нет, ручной контекст после обработки файла переходит в"
+" состояние **STOPPED**. Постоянно работающие потребители, например "
+"подписка на события, продолжают работу."
+msgstr "After startup, a context stops if it has no active routes. For example, ``file-from-camel-dsl`` processes the attached file at startup and is then no longer considered an active consumer. If there are no other active routes, a manual context transitions to **STOPPED** after processing the file. Continuously running consumers, such as event subscriptions, continue running."
 
-#: ../../integration/Camel_DSL/actions.rst:40
+#: ../../integration/Camel_DSL/actions.rst:43
 msgid ""
-"Подробнее о возможных состояниях контекста см. в разделе :ref:`Инстансы "
-"контекста Camel DSL <camel_instance>`."
-msgstr ""
-"For more details on possible context states, see the section "
-":ref:`Camel DSL Context Instances <camel_instance>`."
+"Для импорта с типом запуска IMPORT_DATA создается отдельный инстанс: "
+"после завершения обработки он останавливается со статусом STOPPED, а при "
+"ошибке получает ERROR. Состояния инстанса описаны в разделе "
+":ref:`Инстансы контекста Camel DSL <camel_instance>`."
+msgstr "An import with the IMPORT_DATA startup type creates a separate instance: after processing finishes, it stops with the STOPPED status, and on an error it receives ERROR. Instance states are described in :ref:`Camel DSL context instances <camel_instance>`."
 
 #~ msgid ""
 #~ "Помимо стандартных (скачать, удалить, "
@@ -131,4 +139,28 @@ msgstr ""
 #~ " being performed in it (as in "
 #~ "the case of importing from a "
 #~ "file)."
+
+#~ msgid ""
+#~ "Контекст автоматически останавливается сразу "
+#~ "после завершения всех задач — например,"
+#~ " при импорте данных из файла. Это "
+#~ "ожидаемое поведение: после обработки файла "
+#~ "контекст переходит в состояние **STOPPED**."
+#~ msgstr ""
+#~ "The context stops automatically immediately"
+#~ " after all tasks are completed — "
+#~ "for example, when importing data from"
+#~ " a file. This is the expected "
+#~ "behavior: after the file is processed,"
+#~ " the context transitions to the "
+#~ "**STOPPED** state."
+
+#~ msgid ""
+#~ "Подробнее о возможных состояниях контекста "
+#~ "см. в разделе :ref:`Инстансы контекста "
+#~ "Camel DSL <camel_instance>`."
+#~ msgstr ""
+#~ "For more details on possible context "
+#~ "states, see the section :ref:`Camel DSL"
+#~ " Context Instances <camel_instance>`."
 

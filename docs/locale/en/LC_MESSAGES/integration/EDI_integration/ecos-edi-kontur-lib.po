@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 23:55+0300\n"
+"POT-Creation-Date: 2026-11-17 14:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,18 +19,27 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:4
-msgid "Описание ecos-edi-kontur-lib"
-msgstr "Description of ecos-edi-kontur-lib"
+msgid "Описание ecos-edi-kontur"
+msgstr "ecos-edi-kontur overview"
 
 #: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:6
-msgid "Данная либа производит интеграцию с сервисами Контур.Диадок и Контур.EDI."
-msgstr "This library provides integration with the Kontur.Diadoc and Kontur.EDI services."
+msgid ""
+"Библиотека ``ecos-edi-kontur`` обеспечивает интеграцию с сервисами "
+"Контур.Диадок и Контур.EDI. Maven-координаты: ``ru.citeck.ecos:ecos-edi-"
+"kontur``."
+msgstr "The ``ecos-edi-kontur`` library provides integration with Kontur.Diadoc and Kontur.EDI. Maven coordinates: ``ru.citeck.ecos:ecos-edi-kontur``."
 
 #: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:8
+msgid ""
+"Описание ниже сверено с исходниками версии ``2.8.1``, использующей "
+"``ecos-edi-commons:3.8.0``."
+msgstr "The description below has been checked against the source code of version ``2.8.1``, which uses ``ecos-edi-commons:3.8.0``."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:10
 msgid "Документация сервисов:"
 msgstr "Service Documentation:"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:10
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:12
 msgid ""
 "`https://api-docs.diadoc.ru/ru/latest/  <https://api-"
 "docs.diadoc.ru/ru/latest/>`_"
@@ -38,7 +47,7 @@ msgstr ""
 "`https://api-docs.diadoc.ru/ru/latest/  <https://api-"
 "docs.diadoc.ru/ru/latest/>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:12
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:13
 msgid ""
 "`API EDI.Контур documentation <https://edi-api-"
 "documentation.readthedocs.io/en/latest/>`_"
@@ -46,11 +55,11 @@ msgstr ""
 "`API EDI.Kontur documentation <https://edi-api-"
 "documentation.readthedocs.io/en/latest/>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:14
-msgid "Ссылки на веб-морды для работы сервисов:"
-msgstr "Links to web interfaces for the services:"
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:15
+msgid "Веб-интерфейсы сервисов:"
+msgstr "Service web interfaces:"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:16
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:17
 msgid "`Вход в систему <https://diadoc.kontur.ru/>`_"
 msgstr "`Login <https://diadoc.kontur.ru/>`_"
 
@@ -58,38 +67,219 @@ msgstr "`Login <https://diadoc.kontur.ru/>`_"
 msgid "`Тестовый Контур.EDI <https://test-edi.kontur.ru/SelectParty>`_"
 msgstr "`Test Kontur.EDI <https://test-edi.kontur.ru/SelectParty>`_"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:20
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:19
 msgid "`Контур.EDI <https://edi.kontur.ru/SelectParty>`_"
 msgstr "`Kontur.EDI <https://edi.kontur.ru/SelectParty>`_"
 
 #: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:22
-msgid ""
-"Интеграция с одним или с другим сервисов происходит раздельно. То есть, "
-"для интеграции с каждым сервисом необходимо создавать отдельные "
-"синхронизации."
-msgstr ""
-"Integration with one service or the other happens separately. That is, for integration with each service, it is necessary to create separate synchronizations."
+msgid "Настройка подключения"
+msgstr "Connection setup"
 
 #: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:24
 msgid ""
-"Пример настройки ящика с описанием можно найти на этой странице: "
-":ref:`Настройка получения событий с ящиком Контур_Диадок<events_kontur>`"
-msgstr ""
-"An example of setting up a box with a description can be found on this page: "
-":ref:`Setting up event reception from the Kontur_Diadoc box<events_kontur>`"
+"Для Диадока и Контур.EDI создаются отдельные конфигурации ящиков и "
+"синхронизаций. В конфигурации ящика выберите провайдера **Контур** "
+"(``KONTUR``) и заполните параметры подключения:"
+msgstr "Separate mailbox and synchronization configurations are created for Diadoc and Kontur.EDI. Select the **Kontur** (``KONTUR``) provider in the mailbox configuration and fill in the connection parameters:"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:26
-msgid ""
-"Разделение между синхронизацией с Диадоком или синхронизацией с EDI "
-"сервисом сейчас происходит засчет сравнения урлов из датасорса. Если "
-"содержится **\"diadoc\"** - синхронизироваться будем с диадоком. Если "
-"содержится **\"edi\"** - с Контур.EDI."
-msgstr ""
-"The distinction between synchronization with Diadoc or synchronization with the EDI service is currently made by comparing the URLs from the data source. If it contains **\"diadoc\"** - we synchronize with Diadoc. If it contains **\"edi\"** - with Kontur.EDI."
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:31
+msgid "Параметр"
+msgstr "Parameter"
 
-#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:28
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:32
+msgid "Контур.Диадок"
+msgstr "Kontur.Diadoc"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:33
+msgid "Контур.EDI"
+msgstr "Kontur.EDI"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:34
+msgid "Источник данных (``datasourceRef``)"
+msgstr "Data source (``datasourceRef``)"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:35
+msgid "Базовый URL API Диадока."
+msgstr "The base URL of the Diadoc API."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:36
+msgid "Базовый URL API Контур.EDI."
+msgstr "The base URL of the Kontur.EDI API."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:37
+msgid "Авторизационные данные (``credentialsRef``)"
+msgstr "Credentials (``credentialsRef``)"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:38
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:39
+msgid "Credentials с заполненными ``username`` и ``password``."
+msgstr "Credentials with ``username`` and ``password`` filled in."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:40
+msgid "Идентификатор ящика (``boxId``)"
+msgstr "Mailbox ID (``boxId``)"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:41
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:42
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:44
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:45
+msgid "Обязателен."
+msgstr "Required."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:43
+msgid "Ключ разработчика (``devKey``)"
+msgstr "Developer key (``devKey``)"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:46
+msgid "GLN (``gln``)"
+msgstr "GLN (``gln``)"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:47
+msgid "В этом пути подключения не используется."
+msgstr "Not used in this connection path."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:48
+msgid "Обязателен дополнительно к остальным параметрам."
+msgstr "Required in addition to the other parameters."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:50
 msgid ""
-"Отличие в конфигурации для Диадока и EDI - в том, что для EDI обязательно"
-" заполнение **GLN**"
-msgstr ""
-"The difference in configuration for Diadoc and EDI is that for EDI, filling in the **GLN** is mandatory."
+"Пример настройки: :ref:`Настройка получения событий с ящиком "
+"Контур.Диадок <events_kontur>`. При использовании инструкции учитывайте "
+"версию механизма конфигурации в вашем экземпляре Citeck."
+msgstr "Configuration example: :ref:`Setting up event reception from a Kontur.Diadoc mailbox <events_kontur>`. When following the instructions, account for the configuration mechanism version in your Citeck instance."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:53
+msgid "Выбор сервиса для синхронизации событий"
+msgstr "Selecting the event synchronization service"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:55
+msgid ""
+"В версии ``2.8.1`` обычная синхронизация событий выбирает сервис по URL "
+"источника данных. Диспетчер ``KonturEventsSyncService`` читает URL из "
+"атрибута ``config.url`` записи, указанной в ``datasourceRef``, и "
+"выполняет проверки в следующем порядке:"
+msgstr "In version ``2.8.1``, regular event synchronization selects the service based on the data source URL. The ``KonturEventsSyncService`` dispatcher reads the URL from the ``config.url`` attribute of the record referenced by ``datasourceRef`` and performs the following checks in order:"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:57
+msgid ""
+"Если URL содержит ``diadoc`` без учёта регистра, запускается "
+"синхронизация с Диадоком."
+msgstr "If the URL contains ``diadoc``, ignoring case, synchronization with Diadoc is started."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:58
+msgid ""
+"Иначе, если исходный URL содержит строчную подстроку ``edi``, запускается"
+" синхронизация с Контур.EDI. Эта проверка учитывает регистр."
+msgstr "Otherwise, if the original URL contains the lowercase substring ``edi``, synchronization with Kontur.EDI is started. This check is case-sensitive."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:59
+msgid ""
+"Если ни одно условие не выполнено, выбрасывается "
+"``IllegalArgumentException``."
+msgstr "If neither condition is met, ``IllegalArgumentException`` is thrown."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:61
+msgid ""
+"Если URL содержит обе подстроки, приоритет имеет Диадок. Прокси-адрес без"
+" распознаваемых подстрок не пройдёт эту проверку. Не меняйте регистр URL "
+"целиком для обхода ограничения: путь URL может быть чувствителен к "
+"регистру."
+msgstr "If the URL contains both substrings, Diadoc takes precedence. A proxy address without recognizable substrings will fail this check. Do not change the case of the entire URL to bypass the restriction: the URL path may be case-sensitive."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:63
+msgid ""
+"Это правило относится к обычной синхронизации событий. Метод точечной "
+"синхронизации ``pointWiseSync`` в этой версии делегирует запрос в Диадок "
+"без выбора сервиса по URL."
+msgstr "This rule applies to regular event synchronization. In this version, the pointwise synchronization method ``pointWiseSync`` delegates the request to Diadoc without selecting a service by URL."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:66
+msgid "Версии конфигурации ящиков"
+msgstr "Mailbox configuration versions"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:68
+msgid "Библиотека сохраняет два механизма чтения конфигурации:"
+msgstr "The library retains two configuration reading mechanisms:"
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:70
+msgid ""
+"**v1** — устаревший ``KonturBoxInfoProvider``: URL читается из "
+"``config.url`` источника данных, идентификатор ящика — из "
+"``ourId.attributes.boxId``, а ``devKey`` и ``gln`` — из ``specialInfo``."
+msgstr "**v1** — the legacy ``KonturBoxInfoProvider``: the URL is read from the data source's ``config.url``, the mailbox ID from ``ourId.attributes.boxId``, and ``devKey`` and ``gln`` from ``specialInfo``."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:71
+msgid ""
+"**v2** — ``KonturBoxInfoDataProvider``: конфигурации получаются через "
+"``EdiBoxDataService``, URL — через ``EdiDatasourceService``, а ``boxId``,"
+" ``devKey`` и ``gln`` хранятся в отдельных полях конфигурации ящика."
+msgstr "**v2** — ``KonturBoxInfoDataProvider``: configurations are obtained through ``EdiBoxDataService``, the URL through ``EdiDatasourceService``, while ``boxId``, ``devKey``, and ``gln`` are stored in separate mailbox configuration fields."
+
+#: ../../integration/EDI_integration/ecos-edi-kontur-lib.rst:73
+msgid ""
+"При поиске подключения к API библиотека сначала обращается к механизму "
+"v1, затем, если конфигурация не найдена, — к v2. При этом диспетчер "
+"обычной синхронизации событий в версии ``2.8.1`` продолжает читать "
+"``config.url`` напрямую. Используйте конфигурацию, совместимую с версией "
+"библиотеки и микросервиса, в котором она подключена."
+msgstr "When resolving an API connection, the library first uses the v1 mechanism, then falls back to v2 if no configuration is found. However, the regular event synchronization dispatcher in version ``2.8.1`` still reads ``config.url`` directly. Use a configuration compatible with the library version and the microservice in which it is used."
+
+#~ msgid ""
+#~ "Данная либа производит интеграцию с "
+#~ "сервисами Контур.Диадок и Контур.EDI."
+#~ msgstr ""
+#~ "This library provides integration with "
+#~ "the Kontur.Diadoc and Kontur.EDI services."
+
+#~ msgid "Ссылки на веб-морды для работы сервисов:"
+#~ msgstr "Links to web interfaces for the services:"
+
+#~ msgid ""
+#~ "Интеграция с одним или с другим "
+#~ "сервисов происходит раздельно. То есть, "
+#~ "для интеграции с каждым сервисом "
+#~ "необходимо создавать отдельные синхронизации."
+#~ msgstr ""
+#~ "Integration with one service or the "
+#~ "other happens separately. That is, for"
+#~ " integration with each service, it is"
+#~ " necessary to create separate "
+#~ "synchronizations."
+
+#~ msgid ""
+#~ "Пример настройки ящика с описанием можно"
+#~ " найти на этой странице: :ref:`Настройка"
+#~ " получения событий с ящиком "
+#~ "Контур_Диадок<events_kontur>`"
+#~ msgstr ""
+#~ "An example of setting up a box "
+#~ "with a description can be found on"
+#~ " this page: :ref:`Setting up event "
+#~ "reception from the Kontur_Diadoc "
+#~ "box<events_kontur>`"
+
+#~ msgid ""
+#~ "Разделение между синхронизацией с Диадоком "
+#~ "или синхронизацией с EDI сервисом сейчас"
+#~ " происходит засчет сравнения урлов из "
+#~ "датасорса. Если содержится **\"diadoc\"** -"
+#~ " синхронизироваться будем с диадоком. Если"
+#~ " содержится **\"edi\"** - с Контур.EDI."
+#~ msgstr ""
+#~ "The distinction between synchronization with"
+#~ " Diadoc or synchronization with the "
+#~ "EDI service is currently made by "
+#~ "comparing the URLs from the data "
+#~ "source. If it contains **\"diadoc\"** -"
+#~ " we synchronize with Diadoc. If it"
+#~ " contains **\"edi\"** - with Kontur.EDI."
+
+#~ msgid ""
+#~ "Отличие в конфигурации для Диадока и "
+#~ "EDI - в том, что для EDI "
+#~ "обязательно заполнение **GLN**"
+#~ msgstr ""
+#~ "The difference in configuration for "
+#~ "Diadoc and EDI is that for EDI,"
+#~ " filling in the **GLN** is mandatory."

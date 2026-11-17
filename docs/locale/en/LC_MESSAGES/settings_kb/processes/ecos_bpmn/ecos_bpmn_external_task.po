@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-04 01:05+0300\n"
+"POT-Creation-Date: 2026-11-16 19:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -30,17 +30,12 @@ msgstr "Contents"
 msgid ""
 "**Внешние задачи (External Tasks)** — механизм интеграции, позволяющий "
 "выполнять сервисные задачи бизнес-процесса во внешних приложениях. Движок"
-" процесса создаёт экземпляры задач и публикует их в топики, а внешние "
-"обработчики (workers) получают, обрабатывают и завершают задачи через "
-"API. Это обеспечивает независимость обработчиков от движка, возможность "
-"масштабирования и поддержку разнородных технологических стеков."
-msgstr ""
-"**External Tasks** are an integration mechanism that allows service tasks"
-" of a business process to be executed in external applications. The "
-"process engine creates task instances and publishes them to topics, while"
-" external workers fetch, process, and complete the tasks via API. This "
-"ensures worker independence from the engine, scalability, and support for"
-" heterogeneous technology stacks."
+" создаёт внешние задачи с именем топика, а обработчики (workers) получают"
+" и блокируют их через fetch-and-lock, выполняют работу и подтверждают "
+"результат через API. Топик здесь — признак для выборки задач, а не "
+"очередь с push-доставкой. Обработчики можно масштабировать отдельно от "
+"движка и реализовывать на разных технологических стеках."
+msgstr "**External Tasks** are an integration mechanism for executing business process service tasks in external applications. The engine creates external tasks with a topic name; workers fetch and lock them through fetch-and-lock, perform the work, and acknowledge the result through the API. Here, a topic is a task selection attribute, not a push-delivery queue. Workers can be scaled independently of the engine and implemented using different technology stacks."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:10
 msgid ""
@@ -267,20 +262,18 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:74
 msgid ""
-"В текущей реализации starter`a, spring boot приложение должно находиться "
-"в одном контуре с Citeck."
-msgstr ""
-"In the current implementation of the starter, the Spring Boot application"
-" must be in the same environment as Citeck."
+"Версия ``2.1.0`` приведена как пример зависимости. Версию starter’а, "
+"параметры подключения и ограничения развёртывания выбирайте по "
+"документации используемой клиентской библиотеки Citeck. Её номер версии "
+"не совпадает с номером версии движка Camunda."
+msgstr "Version ``2.1.0`` is provided as an example dependency. Choose the starter version, connection parameters, and deployment constraints according to the documentation for the Citeck client library used. Its version number does not match the Camunda engine version number."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:76
 msgid ""
-"Для использования обработчиков из внешних контуров, можно воспользоваться"
-" стандартными `клиентами <https://docs.camunda.org/manual/7.19/user-guide"
-"/ext-client/>`_."
-msgstr ""
-"To use workers from external environments, you can use standard `clients "
-"<https://docs.camunda.org/manual/7.19/user-guide/ext-client/>`_."
+"Для стандартного клиента Camunda необходимо обеспечить доступ к REST API "
+"движка и настроить аутентификацию. См. `External Task Client "
+"<https://docs.camunda.org/manual/7.24/user-guide/ext-client/>`_."
+msgstr "For the standard Camunda client, provide access to the engine REST API and configure authentication. See `External Task Client <https://docs.camunda.org/manual/7.24/user-guide/ext-client/>`_."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:79
 msgid "Подписка на топики"
@@ -331,21 +324,19 @@ msgstr "Via Annotation Attributes"
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:118
 msgid ""
-"Полный список атрибутов можно найти в `Javadocs. "
-"<https://docs.camunda.org/javadoc/camunda-bpm-"
-"platform/7.19/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_."
-msgstr ""
-"The full list of attributes can be found in the `Javadocs. "
-"<https://docs.camunda.org/javadoc/camunda-bpm-"
-"platform/7.19/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_."
+"Полный список атрибутов стандартной аннотации Camunda приведён в "
+"`Javadocs <https://docs.camunda.org/javadoc/camunda-bpm-"
+"platform/7.24/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_."
+msgstr "The full list of attributes of the standard Camunda annotation is provided in the `Javadocs <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.24/org/camunda/bpm/client/spring/annotation/ExternalTaskSubscription.html>`_."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:121
 msgid ""
-"Свойства, определенные в файле application.yml, всегда переопределяет "
-"соответствующий атрибут, определенный программно через аннотацию."
-msgstr ""
-"Properties defined in the application.yml file always override the "
-"corresponding attribute defined programmatically through the annotation."
+"В стандартном starter’е Camunda свойства ``application.yml`` "
+"переопределяют соответствующие атрибуты аннотации; используется префикс "
+"``camunda.bpm.client``. В примере выше показан префикс обёртки Citeck "
+"``ecos.bpm.client``. Его поддержку и приоритет настроек сверяйте с "
+"используемой версией библиотеки Citeck."
+msgstr "In the standard Camunda starter, ``application.yml`` properties override the corresponding annotation attributes; the ``camunda.bpm.client`` prefix is used. The example above shows the Citeck wrapper prefix ``ecos.bpm.client``. Check its support and setting precedence against the Citeck library version used."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:124
 msgid "Пример конфигурации обработчика"
@@ -371,21 +362,18 @@ msgstr ""
 "If you want to define multiple handler beans in a single configuration "
 "class, you can do so as follows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:172
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:176
 msgid "Обработка ошибок и завершение задачи"
 msgstr "Error Handling and Task Completion"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:174
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:178
 msgid ""
 "Для манипуляции с задачей используется интерфейс `ExternalTaskService "
 "<https://docs.camunda.org/javadoc/camunda-bpm-"
-"platform/7.19/org/camunda/bpm/client/task/ExternalTaskService.html>`_."
-msgstr ""
-"The `ExternalTaskService <https://docs.camunda.org/javadoc/camunda-bpm-"
-"platform/7.19/org/camunda/bpm/client/task/ExternalTaskService.html>`_ "
-"interface is used to manipulate the task."
+"platform/7.24/org/camunda/bpm/client/task/ExternalTaskService.html>`_."
+msgstr "The `ExternalTaskService <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.24/org/camunda/bpm/client/task/ExternalTaskService.html>`_ interface is used to manipulate a task."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:176
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:180
 msgid ""
 "Для успешного выполнения задачи необходимо вызвать метод `complete` (как "
 "в примере выше):"
@@ -393,7 +381,7 @@ msgstr ""
 "To successfully complete a task, you need to call the `complete` method "
 "(as shown in the example above):"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:182
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:186
 msgid ""
 "Но `happy path` не всегда возможен, правильная обработка ошибок внешних "
 "задач очень важна для обеспечения надежности и стабильности выполнения "
@@ -403,11 +391,11 @@ msgstr ""
 "external tasks is very important to ensure the reliability and stability "
 "of process execution."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:185
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:189
 msgid "Обработка бизнес-ошибок"
 msgstr "Business Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:187
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:191
 msgid ""
 "В процессе выполнения внешний задачи может возникнуть бизнес-ошибка, "
 "которая должна быть обработана в процессе посредством `error event`."
@@ -415,554 +403,386 @@ msgstr ""
 "During the execution of an external task, a business error may occur that"
 " should be handled in the process via an `error event`."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:189
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:193
 msgid ""
 "Для выбрасывания бизнес-ошибки необходимо использовать метод "
 "`handleBpmnError`:"
 msgstr "To throw a business error, you need to use the `handleBpmnError` method:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:205
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:209
 msgid "Обработка технических ошибок"
 msgstr "Technical Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:207
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:211
 msgid ""
-"Если в процессе обработки возникла техническая ошибка, то посредством "
-"метода `handleFailure` можно реализовать механизм повторной обработки "
-"задачи."
-msgstr ""
-"If a technical error occurs during processing, you can implement a task "
-"retry mechanism using the `handleFailure` method."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
-msgid "С аннотацией @ExternalTaskRetry"
-msgstr "With the @ExternalTaskRetry Annotation"
+"Для технической ошибки используйте ``handleFailure``. Обработчик явно "
+"передаёт оставшееся число повторов и задержку до следующей попытки. "
+"Движок не уменьшает этот счётчик автоматически."
+msgstr "For a technical error, use ``handleFailure``. The handler explicitly passes the remaining retry count and delay before the next attempt. The engine does not decrement this counter automatically."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:213
 msgid ""
-"Для удобства можно воспользоваться аннотацией "
-"`ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
-msgstr ""
-"For convenience, you can use the annotation "
-"`ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
+"В примере ниже бюджет — **пять исполнений всего**, включая первое. При "
+"первой ошибке ``task.retries`` может быть ``null``; после неё остаются "
+"четыре повтора. Задержки составляют 1, 2, 3 и 4 минуты. После пятой "
+"ошибки устанавливается ``retries = 0`` и создаётся инцидент."
+msgstr "In the example below, the budget is **five executions in total**, including the first. On the first failure, ``task.retries`` may be ``null``; four retries remain after it. The delays are 1, 2, 3, and 4 minutes. After the fifth failure, ``retries = 0`` is set and an incident is created."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst
-msgid "Вручную"
-msgstr "Manually"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:239
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:253
 msgid ""
-"Механизм повторной обработки задачи можно реализовать вручную, со своей "
-"логикой повторной обработки:"
-msgstr ""
-"You can implement the task retry mechanism manually, with your own retry "
-"logic:"
+"При нулевом числе повторов задача остаётся в движке, но не выдаётся "
+"обычным fetch-and-lock. После разбора инцидента администратор может "
+"увеличить retries. В примере бюджет основан на сохранённом значении "
+"задачи; административное изменение retries меняет этот бюджет."
+msgstr "With zero retries, the task remains in the engine but is not returned by ordinary fetch-and-lock. After investigating the incident, an administrator can increase retries. In the example, the budget is based on the task's saved value; an administrative change to retries changes this budget."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:293
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:257
 msgid ""
-"Если количество попыток обработки задачи исчерпано, то будет создан "
-"инцидент и задача помечена как `failed`, в дальнейшем требуется ручной "
-"разбор инцидента в административном интерфейсе."
-msgstr ""
-"If the number of task processing attempts is exhausted, an incident will "
-"be created and the task will be marked as `failed`, requiring manual "
-"incident resolution in the administrative interface."
+"``PaymentService`` и другие прикладные сервисы в примерах — условные "
+"зависимости. Примеры показывают работу с API задачи, а не готовую "
+"реализацию платёжной интеграции. Исключение из внешнего вызова может "
+"означать потерю ответа после успешной операции. Перед повтором необходимо"
+" восстановить её результат или безопасно повторить запрос с тем же ключом"
+" идемпотентности."
+msgstr "``PaymentService`` and other application services in the examples are illustrative dependencies. The examples show task API usage, not a complete payment integration implementation. An exception from an external call may mean the response was lost after a successful operation. Before retrying, recover its result or safely repeat the request with the same idempotency key."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:296
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:260
+msgid "Аннотация retry в библиотеке Citeck"
+msgstr "Retry annotation in the Citeck library"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:262
+msgid ""
+"Библиотека Citeck также предоставляет аннотацию "
+"``ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry``. "
+"Настройки ``retries``, ``retryTimeout`` и ``incrementRetryTimeout``, их "
+"значения по умолчанию и перехватываемые исключения следует сверять с "
+"версией клиентской библиотеки."
+msgstr "The Citeck library also provides the ``ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`` annotation. Check ``retries``, ``retryTimeout``, and ``incrementRetryTimeout`` settings, their defaults, and intercepted exceptions against the client library version."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:264
+msgid ""
+"Не совмещайте автоматический и ручной учёт retries без согласованного "
+"алгоритма. Проверьте отдельно, перехватывает ли аннотация ошибки "
+"``complete`` и как обрабатывает потерю блокировки: повтор бизнес-операции"
+" после ошибки подтверждения не должен создавать новый внешний эффект."
+msgstr "Do not combine automatic and manual retry accounting without a coordinated algorithm. Separately check whether the annotation intercepts ``complete`` errors and how it handles lock loss: repeating a business operation after an acknowledgment error must not create a new external effect."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:267
 msgid "Комбинированная обработка ошибок"
 msgstr "Combined Error Handling"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:298
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:269
 msgid ""
-"В некоторых случаях возможна ситуация, когда в процессе обработки внешней"
-" задачи может возникнуть как бизнес-ошибка, так и техническая ошибка. В "
-"таком случае возможно использовать `@ExternalTaskRetry` и "
-"`handleBpmnError` вместе."
-msgstr ""
-"In some cases, it is possible that both a business error and a technical "
-"error may occur during the processing of an external task. In such cases,"
-" it is possible to use `@ExternalTaskRetry` and `handleBpmnError` "
-"together."
+"Бизнес-ошибка — подтверждённый результат, для которого в модели "
+"предусмотрена отдельная ветка. Техническая ошибка и исчерпание retries "
+"сами по себе не означают, что бизнес-операция отклонена."
+msgstr "A business error is a confirmed result for which the model provides a separate branch. A technical error and retry exhaustion do not by themselves mean the business operation was rejected."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:302
-msgid "Автоматический retry с проверкой результата"
-msgstr "Automatic Retry with Result Verification"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:326
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:271
 msgid ""
-"В данном случае, если в процессе обработки задачи возникнет техническая "
-"ошибка, например, случился `Exception` при выполнении метода "
-"`paymentService.processPayment` из-за проблем с сетью, то задача будет "
-"повторно обработана согласно настройкам `@ExternalTaskRetry`. После "
-"успешного выполнения обратки платежа, если платеж был отклонен, то будет "
-"выброшена бизнес-ошибка, иначе - задача будет завершена успешно."
-msgstr ""
-"In this case, if a technical error occurs during task processing, for "
-"example, an `Exception` occurs when executing the "
-"`paymentService.processPayment` method due to network problems, the task "
-"will be retried according to the `@ExternalTaskRetry` settings. After "
-"successful payment processing, if the payment was declined, a business "
-"error will be thrown; otherwise, the task will be completed successfully."
+"Для известного результата «платёж отклонён» можно использовать следующую "
+"схему после успешного получения и проверки ответа сервиса:"
+msgstr "For a known payment declined result, the following pattern can be used after successfully obtaining and verifying the service response:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:329
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:283
 msgid ""
-"Также можно реализовать кейс, когда после нескольких неудачных попыток "
-"обработки задачи из-за технической ошибки, необходимо выбросить "
-"бизнес-ошибку."
-msgstr ""
-"You can also implement a case where, after several unsuccessful attempts "
-"to process a task due to a technical error, you need to throw a business "
-"error."
+"Для ``paymentDenied`` настройте соответствующий обработчик BPMN-ошибки в "
+"процессе. Если результат внешней операции неизвестен, сначала выполните "
+"сверку с внешней системой. Не превращайте сетевой сбой или ошибку "
+"``complete`` в ложный бизнес-отказ."
+msgstr "For ``paymentDenied``, configure the corresponding BPMN error handler in the process. If the external operation's result is unknown, first reconcile it with the external system. Do not turn a network failure or ``complete`` error into a false business rejection."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:332
-msgid "Ручной контроль порога попыток"
-msgstr "Manual Control of Retry Threshold"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:368
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:287
 msgid ""
-"При работе с внешними задачами и моделировании процесса необходимо "
-"учитывать, что внешние задачи выполняются асинхронно, а обработка ошибок "
-"является зоной ответственности внешнего обработчика."
-msgstr ""
-"When working with external tasks and modeling the process, it is "
-"necessary to consider that external tasks are executed asynchronously, "
-"and error handling is the responsibility of the external worker."
+"``task.retries`` — оставшийся бюджет повторов, а не число уже выполненных"
+" попыток. Для перехода по бизнес-ветке после исчерпания бюджета нужен "
+"явно согласованный бизнес-сценарий; обычно техническое исчерпание "
+"обрабатывается инцидентом. Отдельный счётчик выполненных попыток храните "
+"явно, если он нужен бизнес-логике."
+msgstr "``task.retries`` is the remaining retry budget, not the number of attempts already made. Following a business branch after the budget is exhausted requires an explicitly agreed business scenario; technical exhaustion is usually handled by an incident. Store a separate completed attempt counter explicitly if business logic needs it."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:371
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:290
+msgid "Подтверждение результата задачи"
+msgstr "Acknowledging a task result"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:292
 msgid ""
-"Обработчик выполняется без транзакции, и одна и та же задача может прийти"
-" в него повторно. Как это учитывать в коде — в разделе `Рекомендации по "
-"реализации обработчиков`_."
-msgstr ""
-"The handler runs without a transaction, and the same task can arrive at "
-"it more than once. See the `Handler Implementation Recommendations`_ "
-"section for how to account for this in code."
+"Разделяйте три ситуации: ошибку бизнес-операции, ошибку подтверждения "
+"задачи и потерю владения задачей. Если ответ на ``complete`` потерян, "
+"задача могла уже завершиться в движке. Последующий ``handleFailure`` или "
+"``handleBpmnError`` может оказаться неприменимым."
+msgstr "Distinguish three situations: a business operation error, a task acknowledgment error, and loss of task ownership. If the response to ``complete`` is lost, the task may already have completed in the engine. A subsequent ``handleFailure`` or ``handleBpmnError`` may no longer apply."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:375
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:294
+msgid ""
+"При неопределённом результате проверьте состояние задачи и внешней "
+"операции. На повторной выдаче используйте прежний ключ операции. Не "
+"запускайте внешнее действие заново только потому, что подтверждение не "
+"получено."
+msgstr "When the result is uncertain, check the state of the task and external operation. On redelivery, use the original operation key. Do not start the external action again solely because acknowledgment was not received."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:297
 msgid "Рекомендации по реализации обработчиков"
 msgstr "Handler Implementation Recommendations"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:377
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:299
 msgid ""
-"Раздел описывает свойства паттерна, которые проявляются не на happy path,"
-" а при повторе, сбое или рестарте: как их учитывать в коде обработчика и "
-"почему транзакция вокруг обработчика внешнюю систему не защищает."
-msgstr ""
-"This section describes properties of the pattern that show up not on the"
-" happy path, but during a retry, failure, or restart: how to account for"
-" them in handler code, and why wrapping the handler in a transaction "
-"does not protect the external system."
+"Повторная обработка возможна при истечении блокировки, сбое между внешним"
+" эффектом и ``complete``, технической ошибке или административном "
+"возобновлении задачи. Проектируйте обработчик так, чтобы повтор не "
+"создавал второй бизнес-эффект."
+msgstr "Reprocessing is possible when a lock expires, a failure occurs between the external effect and ``complete``, a technical error occurs, or a task is resumed administratively. Design the handler so that a retry does not create a second business effect."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:382
-msgid "Внешние задачи выполняются at-least-once"
-msgstr "External Tasks Are Executed At-Least-Once"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:302
+msgid "Повторы и идемпотентность"
+msgstr "Retries and idempotency"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:384
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:304
 msgid ""
-"Движок не гарантирует, что задача будет обработана ровно один раз. Он "
-"гарантирует, что она будет обработана **хотя бы один раз**. Один и тот же"
-" экземпляр задачи попадает к обработчику повторно как минимум в четырёх "
-"случаях:"
-msgstr ""
-"The engine does not guarantee that a task will be processed exactly "
-"once. It guarantees that it will be processed **at least once**. The "
-"same task instance can reach the handler again in at least four cases:"
+"Паттерн внешних задач допускает повторную доставку (at-least-once), но не"
+" гарантирует безусловное выполнение: для него нужны доступный обработчик,"
+" действующий процесс и не исчерпанный бюджет повторов. Завершение задачи "
+"и внешний эффект не образуют автоматически одну атомарную операцию."
+msgstr "The external task pattern permits redelivery (at-least-once) but does not guarantee unconditional execution: execution requires an available handler, an active process, and an unexhausted retry budget. Task completion and the external effect do not automatically form a single atomic operation."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:393
-msgid "Случай"
-msgstr "Case"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:306
+msgid "Безопасный протокол обработки включает:"
+msgstr "A safe processing protocol includes:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:394
-msgid "Что происходит"
-msgstr "What Happens"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:395
-msgid "**Истёк lock**"
-msgstr "**Lock Expired**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:396
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:308
 msgid ""
-"Блокировка задачи временная (``lockDuration``). Если обработка не "
-"уложилась в неё, задачу получит другой обработчик — при том, что первый "
-"ещё работает."
-msgstr ""
-"The task lock is temporary (``lockDuration``). If processing does not "
-"finish within it, another handler will receive the task — even while "
-"the first one is still working."
+"**Устойчивый ключ бизнес-операции.** Сохраните его до внешнего вызова и "
+"используйте при каждом повторе. Если одна бизнес-операция может повторно "
+"возникнуть в другом экземпляре задачи, её ключ не должен зависеть только "
+"от ID этой задачи."
+msgstr "**A stable business operation key.** Save it before the external call and reuse it on every retry. If the same business operation may occur again in another task instance, its key must not depend solely on that task's ID."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:398
-msgid "**Сбой между эффектом и complete**"
-msgstr "**Failure Between the Effect and complete**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:399
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:309
 msgid ""
-"Обработчик вызвал внешнюю систему, но упал, был перезапущен или потерял "
-"сеть до ``complete``. Для движка задача не выполнена, и он выдаст её "
-"снова."
-msgstr ""
-"The handler called the external system but crashed, was restarted, or "
-"lost network connectivity before ``complete``. As far as the engine is "
-"concerned, the task is not done, and it will hand it out again."
+"**Раздельные состояния.** Намерение или ``IN_PROGRESS`` не означает "
+"успешного выполнения. ``SUCCEEDED`` устанавливается только после "
+"подтверждения результата; отказ и неизвестный исход обрабатываются "
+"отдельно."
+msgstr "**Separate states.** An intention or ``IN_PROGRESS`` does not mean successful execution. Set ``SUCCEEDED`` only after the result is confirmed; handle rejection and unknown outcomes separately."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:401
-msgid "**Повтор после технической ошибки**"
-msgstr "**Retry After a Technical Error**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:402
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:310
 msgid ""
-"``handleFailure`` (в том числе через ``@ExternalTaskRetry``) возвращает "
-"задачу в топик: обработка начинается заново с первой строки ``execute``."
-msgstr ""
-"``handleFailure`` (including via ``@ExternalTaskRetry``) returns the "
-"task to the topic: processing starts over from the first line of "
-"``execute``."
+"**Дедупликацию на стороне получателя.** Если внешний API поддерживает "
+"idempotency key, повтор запроса с тем же ключом должен возвращать "
+"результат той же операции. Контракт и срок хранения ключей необходимо "
+"учитывать явно."
+msgstr "**Deduplication on the receiving side.** If the external API supports an idempotency key, repeating a request with the same key must return the result of the same operation. Explicitly account for the contract and key retention period."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:404
-msgid "**Ручное вмешательство**"
-msgstr "**Manual Intervention**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:405
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:311
 msgid ""
-"Повторный запуск задачи администратором или откат процесса на предыдущий "
-"шаг."
-msgstr ""
-"The task is restarted by an administrator, or the process is rolled back"
-" to a previous step."
+"**Восстановление результата.** После таймаута проверьте статус операции "
+"по ключу. Если исход установить нельзя, предусмотрите сверку или ручной "
+"разбор, а не завершение задачи как успешно выполненной."
+msgstr "**Result recovery.** After a timeout, check the operation status by key. If the outcome cannot be established, provide reconciliation or manual investigation rather than completing the task as successful."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:407
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:312
 msgid ""
-"Отсюда главное требование к обработчику: **он обязан быть "
-"идемпотентным**. Это не свойство конкретной интеграции и не следствие "
-"настроек транзакций — это следствие самого паттерна."
-msgstr ""
-"Hence the main requirement for a handler: **it must be idempotent**. "
-"This is not a property of a specific integration or a consequence of "
-"transaction settings — it follows from the pattern itself."
+"**Конкурентный повтор.** Два обработчика могут прочитать один и тот же "
+"старый статус. Для координации используйте атомарный захват локальной "
+"операции и/или дедупликацию внешнего сервиса. Обычная проверка ``if "
+"(status == ...)`` не обеспечивает взаимного исключения."
+msgstr "**Concurrent retries.** Two handlers may read the same old status. Coordinate them using atomic acquisition of the local operation and/or external service deduplication. An ordinary ``if (status == ...)`` check does not provide mutual exclusion."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:410
-msgid "Идемпотентность строится по одной схеме:"
-msgstr "Idempotency is built the same way every time:"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:412
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:316
 msgid ""
-"**Вход по состоянию, а не по факту получения задачи.** Обработчик сам "
-"решает, нужно ли выполнять работу, глядя на состояние данных, а не "
-"полагаясь на то, что раз задача пришла — эффект ещё не произведён."
-msgstr ""
-"**Decide based on state, not on the fact that the task arrived.** The "
-"handler decides for itself whether the work needs to be done by looking"
-" at the state of the data, rather than assuming that the effect has not"
-" yet happened just because the task arrived."
+"Отметка «сделано» **до** внешнего вызова может привести к пропуску "
+"работы: обработчик упадёт после отметки, а повтор ошибочно завершит "
+"задачу. Отметка **после** вызова без восстановления результата также не "
+"защищает от повторного эффекта при потере ответа. Локальная отметка "
+"намерения сама по себе не обеспечивает идемпотентность внешнего API."
+msgstr "Marking an operation as done **before** the external call may cause work to be skipped: the handler may crash after the mark, and a retry may incorrectly complete the task. Marking it **after** the call without result recovery also does not prevent duplicate effects if the response is lost. A local intention marker alone does not make the external API idempotent."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:415
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:318
+msgid "Пример контракта прикладного сервиса:"
+msgstr "Example application service contract:"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:338
 msgid ""
-"**Признак «сделано» фиксируется до внешнего эффекта** — либо это "
-"собственная отметка, записанная и закоммиченная перед вызовом, либо "
-"состояние, которое проставляет сама внешняя система или вызываемый сервис"
-" сразу после эффекта."
-msgstr ""
-"**The \"done\" marker is recorded before the external effect** — either "
-"it's your own marker, written and committed before the call, or it's a "
-"state set by the external system or the called service right after the"
-" effect."
+"``operations`` и ``executeOrRecover`` должны быть реализованы прикладным "
+"кодом. Пример задаёт требуемый контракт, но не реализует его. Если "
+"внешний сервис не поддерживает дедупликацию и проверку результата, одной "
+"локальной проверкой нельзя гарантировать отсутствие повторных эффектов."
+msgstr "``operations`` and ``executeOrRecover`` must be implemented by application code. The example defines the required contract but does not implement it. If the external service does not support deduplication and result checking, a local check alone cannot guarantee absence of duplicate effects."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:418
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:341
+msgid "Блокировка задачи"
+msgstr "Task locking"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:343
 msgid ""
-"**У повтора есть явная ветка «уже сделано»**, и она завершает задачу "
-"штатно (``complete``), а не выбрасывает бизнес-ошибку: работа выполнена, "
-"процесс должен идти дальше."
-msgstr ""
-"**The retry has an explicit \"already done\" branch**, and it completes "
-"the task normally (``complete``) instead of throwing a business error: "
-"the work is done, and the process should move on."
+"Выбирайте ``lockDuration`` с запасом на обработку и подтверждение "
+"результата. Для длительной работы продлевайте блокировку через "
+"``extendLock`` до её истечения. Если продление не удалось, другой "
+"обработчик может получить задачу, пока первый ещё работает. Учитывайте "
+"потерю владения при подтверждении результата и не полагайтесь на lock как"
+" на единственную защиту внешнего эффекта."
+msgstr "Choose ``lockDuration`` with sufficient margin for processing and result acknowledgment. For long-running work, extend the lock through ``extendLock`` before it expires. If extension fails, another handler may obtain the task while the first is still working. Account for ownership loss when acknowledging the result, and do not rely on the lock as the sole protection for an external effect."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:458
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:345
 msgid ""
-"Если у операции нет наблюдаемого признака выполнения, его нужно завести "
-"самому: записать отметку (идентификатор запроса, отметку времени "
-"отправки, флаг) **до** обращения к внешней системе — тогда повтор увидит "
-"её и не выполнит эффект второй раз. Отметка, записанная после эффекта, от"
-" повтора не спасает: между эффектом и записью и происходит сбой."
-msgstr ""
-"If the operation has no observable sign of completion, you need to "
-"create one yourself: record a marker (a request ID, a send timestamp, a"
-" flag) **before** calling the external system — then a retry will see "
-"it and won't perform the effect a second time. A marker recorded after "
-"the effect doesn't help against retries: the failure happens precisely "
-"between the effect and the recording."
+"Слишком большой срок блокировки увеличивает время восстановления после "
+"сбоя worker’а. Продление блокировки и идемпотентность решают разные "
+"задачи и дополняют друг друга."
+msgstr "An excessively long lock duration increases recovery time after a worker failure. Lock extension and idempotency solve different problems and complement each other."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:464
-msgid ""
-"``lockDuration`` следует выбирать по худшему времени обработки, а не по "
-"среднему. Заниженное значение — самый частый способ получить двойной "
-"внешний эффект: задачу подхватит второй обработчик, пока первый ещё ждёт "
-"ответа внешней системы."
-msgstr ""
-"``lockDuration`` should be chosen based on worst-case processing time, "
-"not the average. Setting it too low is the most common way to get a "
-"duplicate external effect: a second handler will pick up the task while"
-" the first one is still waiting for a response from the external "
-"system."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:469
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:348
 msgid "Транзакции и внешние эффекты"
 msgstr "Transactions and External Effects"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:471
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:350
 msgid ""
-"Код обработчика выполняется **без транзакции**: каждая мутация "
-"``recordsService`` — отдельная единица работы. Пометив метод аннотацией "
-"``ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction``, можно "
-"выполнить его внутри транзакции (см. :ref:`Транзакции <ecos-"
-"transactions>`)."
-msgstr ""
-"Handler code runs **without a transaction**: each ``recordsService`` "
-"mutation is a separate unit of work. By marking the method with the "
-"``ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction`` "
-"annotation, you can run it inside a transaction (see :ref:`Transactions "
-"<ecos-transactions>`)."
+"Внешний обработчик не получает автоматически общую транзакцию с движком и"
+" сторонним сервисом. Фактические границы зависят от клиентской "
+"библиотеки, транспорта и конфигурации транзакций. Удалённый вызов "
+"``complete`` и локальный Java API не следует считать одинаковыми по "
+"распространению transaction context."
+msgstr "An external handler does not automatically share a transaction with the engine and a third-party service. Actual boundaries depend on the client library, transport, and transaction configuration. A remote ``complete`` call and the local Java API should not be considered equivalent in transaction context propagation."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:476
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:352
 msgid ""
-"**Это допустимо только для обработчиков без внешнего эффекта** — тех, что"
-" меняют несколько записей и должны сделать это одной единицей работы. "
-"Если обработчик обращается во внешнюю систему (отправка документа, "
-"платёж, вызов стороннего API), оборачивать ``execute`` транзакцией "
-"нельзя, и вот почему."
-msgstr ""
-"**This is only acceptable for handlers with no external effect** — ones"
-" that change several records and need to do so as a single unit of "
-"work. If a handler calls out to an external system (sending a document,"
-" processing a payment, calling a third-party API), wrapping ``execute`` "
-"in a transaction is not allowed, and here's why."
+"Предпочитайте короткие транзакции для согласованного изменения локальных "
+"записей. Не удерживайте блокировки базы данных на всё время сетевого "
+"вызова. Локальный rollback не отменяет уже выполненную операцию "
+"стороннего API."
+msgstr "Prefer short transactions for consistent changes to local records. Do not hold database locks throughout a network call. A local rollback does not undo an operation already performed by a third-party API."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:485
-msgid "Причина"
-msgstr "Reason"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:486
-msgid "Механика"
-msgstr "Mechanics"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:487
-msgid "**Продолжение процесса идёт внутри транзакции обработчика**"
-msgstr "**Process Continuation Happens Inside the Handler's Transaction**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:488
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:354
 msgid ""
-"``complete`` завершается сигналом исполнению (``signal``), то есть движок"
-" продолжает процесс **синхронно, внутри** вызова обработчика. Если "
-"``complete`` попал в транзакцию, то узлы после сервисной задачи "
-"выполняются, пока она открыта. Типовой случай — сразу за узлом стоит "
-"смена статуса той же записи: продолжение процесса ждёт строки, "
-"заблокированные самим обработчиком, а обработчик ждёт ответа "
-"``complete``. Результат — самоблокировка, таймаут, откат и повтор задачи."
-msgstr ""
-"``complete`` finishes with a signal to execution (``signal``), meaning "
-"the engine continues the process **synchronously, inside** the handler "
-"call. If ``complete`` is inside the transaction, the nodes after the "
-"service task run while it is still open. A typical case is a status "
-"change on the same record right after the node: process continuation "
-"waits on rows locked by the handler itself, while the handler waits for"
-" the ``complete`` response. The result is a self-lock, a timeout, a "
-"rollback, and a task retry."
+"При использовании транзакций Citeck см. :ref:`Транзакции <ecos-"
+"transactions>`. Аннотацию ``RunInTransaction`` или ``TxnContext.doInTxn``"
+" применяйте к конкретному блоку после определения его границ. Не "
+"предполагайте, что все records-вызовы всегда независимы или, наоборот, "
+"что все приложения участвуют в одном двухфазном коммите."
+msgstr "When using Citeck transactions, see :ref:`Transactions <ecos-transactions>`. Apply ``RunInTransaction`` or ``TxnContext.doInTxn`` to a specific block after defining its boundaries. Do not assume that all records calls are always independent or, conversely, that all applications participate in one two-phase commit."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:494
-msgid "**Внешний вызов не откатывается**"
-msgstr "**The External Call Does Not Roll Back**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:495
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:356
 msgid ""
-"Транзакция откатывает записи, а отправленный документ или проведённый "
-"платёж — нет. При откате внешняя система остаётся с эффектом, а Citeck — "
-"без отметки о нём: следующая попытка выполнит эффект второй раз. Если "
-"отметку писал сам обработчик в той же транзакции, она исчезает вместе с "
-"откатом."
-msgstr ""
-"A transaction rolls back records, but a sent document or a processed "
-"payment is not rolled back. On rollback, the external system is left "
-"with the effect, while Citeck has no record of it: the next attempt "
-"will perform the effect a second time. If the marker was written by the"
-" handler itself in the same transaction, it disappears along with the "
-"rollback."
+"Вызов ``complete`` может продолжить выполнение процесса до следующей "
+"точки ожидания или асинхронной границы. Если обработчик держит блокировки"
+" записей, которые нужны продолжению процесса, возможны ожидание, таймаут "
+"и откат. Перед включением ``complete`` в транзакционный блок проверьте "
+"транспорт, распространение контекста и порядок обращения к данным."
+msgstr "A ``complete`` call may continue process execution until the next wait state or asynchronous boundary. If the handler holds locks on records needed by the process continuation, waits, timeouts, and rollbacks are possible. Before including ``complete`` in a transactional block, check the transport, context propagation, and data access order."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:499
-msgid "**Транзакция распространяется на другие приложения**"
-msgstr "**The Transaction Spans Other Applications**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:500
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:360
 msgid ""
-"Транзакции построены на двухфазном коммите и продолжаются через "
-"records-вызовы в соседние приложения. Откат вернёт и то, что успели "
-"записать они — включая служебные записи, созданные интеграцией для "
-"внешнего вызова."
-msgstr ""
-"Transactions are built on a two-phase commit and extend through records"
-" calls to neighboring applications. A rollback will also undo whatever "
-"they managed to write — including any service records created by the "
-"integration for the external call."
+"``asyncAfter`` на сервисной задаче может отделить продолжение процесса в "
+"job executor. Он не делает внешний эффект частью локальной транзакции и "
+"не устраняет необходимость дедупликации и восстановления неизвестного "
+"результата."
+msgstr "``asyncAfter`` on a service task can separate process continuation into the job executor. It does not make the external effect part of the local transaction or eliminate the need for deduplication and recovery of an unknown result."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:503
-msgid "**Блокировки живут столько же, сколько чужой сервис отвечает**"
-msgstr "**Locks Live as Long as the Other Service Takes to Respond**"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:504
-msgid ""
-"Транзакция, растянутая на HTTP-вызов третьей стороны, держит строки всё "
-"время ожидания."
-msgstr ""
-"A transaction stretched over a third-party HTTP call holds its row "
-"locks for the entire waiting period."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:507
-msgid ""
-"``asyncAfter`` на сервисной задаче убирает только первую причину: "
-"продолжение процесса уходит в job executor и перестаёт конкурировать с "
-"транзакцией обработчика. Расхождение с внешней системой при откате и "
-"повторный эффект остаются. Как решение проблемы это не годится."
-msgstr ""
-"``asyncAfter`` on the service task removes only the first cause: process"
-" continuation moves to the job executor and stops competing with the "
-"handler's transaction. The discrepancy with the external system on "
-"rollback, and the duplicate effect, remain. It is not a valid solution "
-"to the problem."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:511
-msgid ""
-"Правильный скелет обработчика с внешним эффектом — без транзакции вокруг "
-"``execute``, с отметкой до вызова и с проверкой состояния на входе:"
-msgstr ""
-"The correct skeleton for a handler with an external effect — no "
-"transaction around ``execute``, a marker written before the call, and a"
-" state check on entry:"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:541
-msgid ""
-"Если транзакция всё же нужна, оборачивайте в неё конкретный блок кода, а "
-"не метод целиком, и никогда не включайте в неё ``complete``."
-msgstr ""
-"If a transaction is still needed, wrap a specific block of code in it, "
-"not the entire method, and never include ``complete`` in it."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:545
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:363
 msgid "Чек-лист обработчика"
 msgstr "Handler Checklist"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:552
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:370
 msgid "Проверка"
 msgstr "Check"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:553
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:371
 msgid "Почему"
 msgstr "Why"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:554
-msgid "Что произойдёт, если задача придёт второй раз?"
-msgstr "What happens if the task arrives a second time?"
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:372
+msgid "Используется ли один ключ операции при повторе?"
+msgstr "Is the same operation key used on retries?"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:555
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:373
+msgid "Новый ключ может создать второй внешний эффект."
+msgstr "A new key may create a second external effect."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:374
+msgid "Разделены ли намерение и подтверждённый успех?"
+msgstr "Are intention and confirmed success separated?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:375
+msgid "IN_PROGRESS не доказывает, что работа выполнена."
+msgstr "IN_PROGRESS does not prove the work has been completed."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:376
+msgid "Что произойдёт при потере ответа после внешнего эффекта?"
+msgstr "What happens if the response is lost after the external effect?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:377
+msgid "Требуется восстановить результат, а не безусловно повторить действие."
+msgstr "Recover the result instead of unconditionally repeating the action."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:378
+msgid "Безопасны ли два одновременных обработчика?"
+msgstr "Are two concurrent handlers safe?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:379
+msgid "Проверка статуса без атомарности не предотвращает гонку."
+msgstr "A non-atomic status check does not prevent a race condition."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:380
+msgid "Продлевается ли блокировка длительной задачи?"
+msgstr "Is the lock extended for a long-running task?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:381
+msgid "Истечение lock допускает параллельную обработку."
+msgstr "Lock expiration allows concurrent processing."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:382
+msgid "Согласованы ли retries и задержки?"
+msgstr "Are retries and delays coordinated?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:383
+msgid "retries — оставшийся бюджет; при нуле нужен разбор инцидента."
+msgstr "retries is the remaining budget; at zero, the incident must be investigated."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:384
+msgid "Отделены ли ошибки complete от ошибок операции?"
+msgstr "Are complete errors separated from operation errors?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:385
+msgid "Потеря подтверждения не означает неуспех внешнего действия."
+msgstr "Loss of acknowledgment does not mean the external action failed."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:386
+msgid "Определены ли границы транзакций?"
+msgstr "Are transaction boundaries defined?"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:387
 msgid ""
-"Ответ «эффект повторится» означает дефект: паттерн at-least-once, повтор "
-"штатен."
-msgstr ""
-"If the answer is \"the effect will repeat,\" that's a defect: the "
-"pattern is at-least-once, and retries are normal."
+"Долгие блокировки и rollback не защищают внешний API от повторного "
+"эффекта."
+msgstr "Long-held locks and rollback do not protect an external API from duplicate effects."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:556
-msgid "Есть ли признак «сделано» и записан ли он до внешнего эффекта?"
-msgstr "Is there a \"done\" marker, and is it recorded before the external effect?"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:557
-msgid "Признак после эффекта не защищает от сбоя между ними."
-msgstr "A marker recorded after the effect does not protect against a failure between the two."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:558
-msgid "Не обёрнут ли транзакцией внешний вызов или ``complete``?"
-msgstr "Is the external call or ``complete`` wrapped in a transaction?"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:559
-msgid ""
-"Внешний эффект не откатывается, а продолжение процесса внутри транзакции "
-"даёт самоблокировку."
-msgstr ""
-"The external effect does not roll back, and process continuation inside"
-" the transaction causes a self-lock."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:561
-msgid "Покрывает ли ``lockDuration`` худшее время обработки?"
-msgstr "Does ``lockDuration`` cover the worst-case processing time?"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:562
-msgid "Иначе задачу параллельно возьмёт второй обработчик."
-msgstr "Otherwise a second handler will pick up the task concurrently."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:563
-msgid "Разделены ли технические ошибки и бизнес-ошибки?"
-msgstr "Are technical errors and business errors kept separate?"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:564
-msgid ""
-"``handleFailure``/``@ExternalTaskRetry`` — повтор; ``handleBpmnError`` — "
-"ветка процесса."
-msgstr "``handleFailure``/``@ExternalTaskRetry`` — retry; ``handleBpmnError`` — process branch."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:565
-msgid "Завершается ли задача при исходе «уже сделано»?"
-msgstr "Does the task complete on the \"already done\" outcome?"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:566
-msgid ""
-"Бизнес-ошибка здесь увела бы процесс в ветку сбоя после фактически "
-"успешной работы."
-msgstr ""
-"A business error here would send the process into a failure branch "
-"after work that actually succeeded."
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:570
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:390
 msgid "Дополнительные материалы"
 msgstr "Additional Materials"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:572
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:392
 msgid ""
-"С более подробной документацией по внешним задачам можно ознакомиться по "
-"ссылкам:"
-msgstr ""
-"More detailed documentation on external tasks can be found at the "
-"following links:"
+"`External Tasks <https://docs.camunda.org/manual/7.24/user-guide/process-"
+"engine/external-tasks/>`_"
+msgstr "`External Tasks <https://docs.camunda.org/manual/7.24/user-guide/process-engine/external-tasks/>`_"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:574
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:393
 msgid ""
-"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
-"engine/external-tasks/#error-event-definitions>`_"
-msgstr ""
-"`External Tasks <https://docs.camunda.org/manual/7.19/user-guide/process-"
-"engine/external-tasks/#error-event-definitions>`_"
-
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:575
-msgid ""
-"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
+"`External Task Client <https://docs.camunda.org/manual/7.24/user-guide"
 "/ext-client/>`_"
-msgstr ""
-"`External Task Client <https://docs.camunda.org/manual/7.19/user-guide"
-"/ext-client/>`_"
+msgstr "`External Task Client <https://docs.camunda.org/manual/7.24/user-guide/ext-client/>`_"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:576
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:394
 msgid ""
-"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
+"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.24"
 "/user-guide/ext-client/spring-boot-starter/>`_"
-msgstr ""
-"`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.19"
-"/user-guide/ext-client/spring-boot-starter/>`_"
+msgstr "`External Task Spring Boot Starter <https://docs.camunda.org/manual/7.24/user-guide/ext-client/spring-boot-starter/>`_"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:577
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_external_task.rst:395
 msgid ""
 "`Error Boundary Event "
-"<https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-"
+"<https://docs.camunda.org/manual/7.24/reference/bpmn20/events/error-"
 "events/#error-boundary-event>`_"
-msgstr ""
-"`Error Boundary Event "
-"<https://docs.camunda.org/manual/7.19/reference/bpmn20/events/error-"
-"events/#error-boundary-event>`_"
+msgstr "`Error Boundary Event <https://docs.camunda.org/manual/7.24/reference/bpmn20/events/error-events/#error-boundary-event>`_"
 
 #~ msgid "**Process Engine:** Создание экземпляра внешнего задания"
 #~ msgstr "**Process Engine:** Creating an external task instance"
@@ -998,4 +818,628 @@ msgstr ""
 #~ "`ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction` "
 #~ "to execute the code within a "
 #~ "transaction."
+
+#~ msgid ""
+#~ "В текущей реализации starter`a, spring "
+#~ "boot приложение должно находиться в "
+#~ "одном контуре с Citeck."
+#~ msgstr ""
+#~ "In the current implementation of the "
+#~ "starter, the Spring Boot application "
+#~ "must be in the same environment as"
+#~ " Citeck."
+
+#~ msgid ""
+#~ "Для использования обработчиков из внешних "
+#~ "контуров, можно воспользоваться стандартными "
+#~ "`клиентами <https://docs.camunda.org/manual/7.19/user-"
+#~ "guide/ext-client/>`_."
+#~ msgstr ""
+#~ "To use workers from external "
+#~ "environments, you can use standard "
+#~ "`clients <https://docs.camunda.org/manual/7.19/user-guide"
+#~ "/ext-client/>`_."
+
+#~ msgid ""
+#~ "Свойства, определенные в файле "
+#~ "application.yml, всегда переопределяет "
+#~ "соответствующий атрибут, определенный программно "
+#~ "через аннотацию."
+#~ msgstr ""
+#~ "Properties defined in the application.yml "
+#~ "file always override the corresponding "
+#~ "attribute defined programmatically through the"
+#~ " annotation."
+
+#~ msgid ""
+#~ "Если в процессе обработки возникла "
+#~ "техническая ошибка, то посредством метода "
+#~ "`handleFailure` можно реализовать механизм "
+#~ "повторной обработки задачи."
+#~ msgstr ""
+#~ "If a technical error occurs during "
+#~ "processing, you can implement a task "
+#~ "retry mechanism using the `handleFailure` "
+#~ "method."
+
+#~ msgid "С аннотацией @ExternalTaskRetry"
+#~ msgstr "With the @ExternalTaskRetry Annotation"
+
+#~ msgid ""
+#~ "Для удобства можно воспользоваться аннотацией"
+#~ " `ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
+#~ msgstr ""
+#~ "For convenience, you can use the "
+#~ "annotation "
+#~ "`ru.citeck.ecos.bpmn.externaltask.impl.retry.ExternalTaskRetry`:"
+
+#~ msgid "Вручную"
+#~ msgstr "Manually"
+
+#~ msgid ""
+#~ "Механизм повторной обработки задачи можно "
+#~ "реализовать вручную, со своей логикой "
+#~ "повторной обработки:"
+#~ msgstr ""
+#~ "You can implement the task retry "
+#~ "mechanism manually, with your own retry"
+#~ " logic:"
+
+#~ msgid ""
+#~ "Если количество попыток обработки задачи "
+#~ "исчерпано, то будет создан инцидент и"
+#~ " задача помечена как `failed`, в "
+#~ "дальнейшем требуется ручной разбор инцидента"
+#~ " в административном интерфейсе."
+#~ msgstr ""
+#~ "If the number of task processing "
+#~ "attempts is exhausted, an incident will"
+#~ " be created and the task will "
+#~ "be marked as `failed`, requiring manual"
+#~ " incident resolution in the administrative"
+#~ " interface."
+
+#~ msgid ""
+#~ "В некоторых случаях возможна ситуация, "
+#~ "когда в процессе обработки внешней "
+#~ "задачи может возникнуть как бизнес-ошибка, "
+#~ "так и техническая ошибка. В таком "
+#~ "случае возможно использовать `@ExternalTaskRetry`"
+#~ " и `handleBpmnError` вместе."
+#~ msgstr ""
+#~ "In some cases, it is possible that"
+#~ " both a business error and a "
+#~ "technical error may occur during the "
+#~ "processing of an external task. In "
+#~ "such cases, it is possible to use"
+#~ " `@ExternalTaskRetry` and `handleBpmnError` "
+#~ "together."
+
+#~ msgid "Автоматический retry с проверкой результата"
+#~ msgstr "Automatic Retry with Result Verification"
+
+#~ msgid ""
+#~ "В данном случае, если в процессе "
+#~ "обработки задачи возникнет техническая ошибка,"
+#~ " например, случился `Exception` при "
+#~ "выполнении метода `paymentService.processPayment` "
+#~ "из-за проблем с сетью, то задача "
+#~ "будет повторно обработана согласно настройкам"
+#~ " `@ExternalTaskRetry`. После успешного выполнения"
+#~ " обратки платежа, если платеж был "
+#~ "отклонен, то будет выброшена бизнес-ошибка,"
+#~ " иначе - задача будет завершена "
+#~ "успешно."
+#~ msgstr ""
+#~ "In this case, if a technical error"
+#~ " occurs during task processing, for "
+#~ "example, an `Exception` occurs when "
+#~ "executing the `paymentService.processPayment` method"
+#~ " due to network problems, the task"
+#~ " will be retried according to the "
+#~ "`@ExternalTaskRetry` settings. After successful "
+#~ "payment processing, if the payment was"
+#~ " declined, a business error will be"
+#~ " thrown; otherwise, the task will be"
+#~ " completed successfully."
+
+#~ msgid ""
+#~ "Также можно реализовать кейс, когда "
+#~ "после нескольких неудачных попыток обработки"
+#~ " задачи из-за технической ошибки, "
+#~ "необходимо выбросить бизнес-ошибку."
+#~ msgstr ""
+#~ "You can also implement a case "
+#~ "where, after several unsuccessful attempts "
+#~ "to process a task due to a "
+#~ "technical error, you need to throw "
+#~ "a business error."
+
+#~ msgid "Ручной контроль порога попыток"
+#~ msgstr "Manual Control of Retry Threshold"
+
+#~ msgid ""
+#~ "При работе с внешними задачами и "
+#~ "моделировании процесса необходимо учитывать, "
+#~ "что внешние задачи выполняются асинхронно, "
+#~ "а обработка ошибок является зоной "
+#~ "ответственности внешнего обработчика."
+#~ msgstr ""
+#~ "When working with external tasks and "
+#~ "modeling the process, it is necessary"
+#~ " to consider that external tasks are"
+#~ " executed asynchronously, and error "
+#~ "handling is the responsibility of the"
+#~ " external worker."
+
+#~ msgid ""
+#~ "Обработчик выполняется без транзакции, и "
+#~ "одна и та же задача может прийти"
+#~ " в него повторно. Как это учитывать"
+#~ " в коде — в разделе `Рекомендации "
+#~ "по реализации обработчиков`_."
+#~ msgstr ""
+#~ "The handler runs without a transaction,"
+#~ " and the same task can arrive "
+#~ "at it more than once. See the "
+#~ "`Handler Implementation Recommendations`_ section"
+#~ " for how to account for this in"
+#~ " code."
+
+#~ msgid ""
+#~ "Раздел описывает свойства паттерна, которые"
+#~ " проявляются не на happy path, а "
+#~ "при повторе, сбое или рестарте: как "
+#~ "их учитывать в коде обработчика и "
+#~ "почему транзакция вокруг обработчика внешнюю"
+#~ " систему не защищает."
+#~ msgstr ""
+#~ "This section describes properties of the"
+#~ " pattern that show up not on "
+#~ "the happy path, but during a "
+#~ "retry, failure, or restart: how to "
+#~ "account for them in handler code, "
+#~ "and why wrapping the handler in a"
+#~ " transaction does not protect the "
+#~ "external system."
+
+#~ msgid "Внешние задачи выполняются at-least-once"
+#~ msgstr "External Tasks Are Executed At-Least-Once"
+
+#~ msgid ""
+#~ "Движок не гарантирует, что задача будет"
+#~ " обработана ровно один раз. Он "
+#~ "гарантирует, что она будет обработана "
+#~ "**хотя бы один раз**. Один и тот"
+#~ " же экземпляр задачи попадает к "
+#~ "обработчику повторно как минимум в "
+#~ "четырёх случаях:"
+#~ msgstr ""
+#~ "The engine does not guarantee that "
+#~ "a task will be processed exactly "
+#~ "once. It guarantees that it will "
+#~ "be processed **at least once**. The "
+#~ "same task instance can reach the "
+#~ "handler again in at least four "
+#~ "cases:"
+
+#~ msgid "Случай"
+#~ msgstr "Case"
+
+#~ msgid "Что происходит"
+#~ msgstr "What Happens"
+
+#~ msgid "**Истёк lock**"
+#~ msgstr "**Lock Expired**"
+
+#~ msgid ""
+#~ "Блокировка задачи временная (``lockDuration``). "
+#~ "Если обработка не уложилась в неё, "
+#~ "задачу получит другой обработчик — при"
+#~ " том, что первый ещё работает."
+#~ msgstr ""
+#~ "The task lock is temporary "
+#~ "(``lockDuration``). If processing does not "
+#~ "finish within it, another handler will"
+#~ " receive the task — even while "
+#~ "the first one is still working."
+
+#~ msgid "**Сбой между эффектом и complete**"
+#~ msgstr "**Failure Between the Effect and complete**"
+
+#~ msgid ""
+#~ "Обработчик вызвал внешнюю систему, но "
+#~ "упал, был перезапущен или потерял сеть"
+#~ " до ``complete``. Для движка задача "
+#~ "не выполнена, и он выдаст её "
+#~ "снова."
+#~ msgstr ""
+#~ "The handler called the external system"
+#~ " but crashed, was restarted, or lost"
+#~ " network connectivity before ``complete``. "
+#~ "As far as the engine is concerned,"
+#~ " the task is not done, and it"
+#~ " will hand it out again."
+
+#~ msgid "**Повтор после технической ошибки**"
+#~ msgstr "**Retry After a Technical Error**"
+
+#~ msgid ""
+#~ "``handleFailure`` (в том числе через "
+#~ "``@ExternalTaskRetry``) возвращает задачу в "
+#~ "топик: обработка начинается заново с "
+#~ "первой строки ``execute``."
+#~ msgstr ""
+#~ "``handleFailure`` (including via "
+#~ "``@ExternalTaskRetry``) returns the task to"
+#~ " the topic: processing starts over "
+#~ "from the first line of ``execute``."
+
+#~ msgid "**Ручное вмешательство**"
+#~ msgstr "**Manual Intervention**"
+
+#~ msgid ""
+#~ "Повторный запуск задачи администратором или"
+#~ " откат процесса на предыдущий шаг."
+#~ msgstr ""
+#~ "The task is restarted by an "
+#~ "administrator, or the process is rolled"
+#~ " back to a previous step."
+
+#~ msgid ""
+#~ "Отсюда главное требование к обработчику: "
+#~ "**он обязан быть идемпотентным**. Это не"
+#~ " свойство конкретной интеграции и не "
+#~ "следствие настроек транзакций — это "
+#~ "следствие самого паттерна."
+#~ msgstr ""
+#~ "Hence the main requirement for a "
+#~ "handler: **it must be idempotent**. This"
+#~ " is not a property of a "
+#~ "specific integration or a consequence of"
+#~ " transaction settings — it follows "
+#~ "from the pattern itself."
+
+#~ msgid "Идемпотентность строится по одной схеме:"
+#~ msgstr "Idempotency is built the same way every time:"
+
+#~ msgid ""
+#~ "**Вход по состоянию, а не по факту"
+#~ " получения задачи.** Обработчик сам решает,"
+#~ " нужно ли выполнять работу, глядя на"
+#~ " состояние данных, а не полагаясь на"
+#~ " то, что раз задача пришла — "
+#~ "эффект ещё не произведён."
+#~ msgstr ""
+#~ "**Decide based on state, not on "
+#~ "the fact that the task arrived.** "
+#~ "The handler decides for itself whether"
+#~ " the work needs to be done by"
+#~ " looking at the state of the "
+#~ "data, rather than assuming that the "
+#~ "effect has not yet happened just "
+#~ "because the task arrived."
+
+#~ msgid ""
+#~ "**Признак «сделано» фиксируется до внешнего"
+#~ " эффекта** — либо это собственная "
+#~ "отметка, записанная и закоммиченная перед "
+#~ "вызовом, либо состояние, которое проставляет"
+#~ " сама внешняя система или вызываемый "
+#~ "сервис сразу после эффекта."
+#~ msgstr ""
+#~ "**The \"done\" marker is recorded before"
+#~ " the external effect** — either it's"
+#~ " your own marker, written and "
+#~ "committed before the call, or it's "
+#~ "a state set by the external system"
+#~ " or the called service right after"
+#~ " the effect."
+
+#~ msgid ""
+#~ "**У повтора есть явная ветка «уже "
+#~ "сделано»**, и она завершает задачу "
+#~ "штатно (``complete``), а не выбрасывает "
+#~ "бизнес-ошибку: работа выполнена, процесс "
+#~ "должен идти дальше."
+#~ msgstr ""
+#~ "**The retry has an explicit \"already"
+#~ " done\" branch**, and it completes "
+#~ "the task normally (``complete``) instead "
+#~ "of throwing a business error: the "
+#~ "work is done, and the process "
+#~ "should move on."
+
+#~ msgid ""
+#~ "Если у операции нет наблюдаемого "
+#~ "признака выполнения, его нужно завести "
+#~ "самому: записать отметку (идентификатор "
+#~ "запроса, отметку времени отправки, флаг) "
+#~ "**до** обращения к внешней системе — "
+#~ "тогда повтор увидит её и не "
+#~ "выполнит эффект второй раз. Отметка, "
+#~ "записанная после эффекта, от повтора не"
+#~ " спасает: между эффектом и записью и"
+#~ " происходит сбой."
+#~ msgstr ""
+#~ "If the operation has no observable "
+#~ "sign of completion, you need to "
+#~ "create one yourself: record a marker "
+#~ "(a request ID, a send timestamp, a"
+#~ " flag) **before** calling the external "
+#~ "system — then a retry will see "
+#~ "it and won't perform the effect a"
+#~ " second time. A marker recorded after"
+#~ " the effect doesn't help against "
+#~ "retries: the failure happens precisely "
+#~ "between the effect and the recording."
+
+#~ msgid ""
+#~ "``lockDuration`` следует выбирать по худшему"
+#~ " времени обработки, а не по среднему."
+#~ " Заниженное значение — самый частый "
+#~ "способ получить двойной внешний эффект: "
+#~ "задачу подхватит второй обработчик, пока "
+#~ "первый ещё ждёт ответа внешней системы."
+#~ msgstr ""
+#~ "``lockDuration`` should be chosen based "
+#~ "on worst-case processing time, not "
+#~ "the average. Setting it too low is"
+#~ " the most common way to get a"
+#~ " duplicate external effect: a second "
+#~ "handler will pick up the task "
+#~ "while the first one is still "
+#~ "waiting for a response from the "
+#~ "external system."
+
+#~ msgid ""
+#~ "Код обработчика выполняется **без "
+#~ "транзакции**: каждая мутация ``recordsService`` "
+#~ "— отдельная единица работы. Пометив "
+#~ "метод аннотацией "
+#~ "``ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction``, "
+#~ "можно выполнить его внутри транзакции "
+#~ "(см. :ref:`Транзакции <ecos-transactions>`)."
+#~ msgstr ""
+#~ "Handler code runs **without a "
+#~ "transaction**: each ``recordsService`` mutation "
+#~ "is a separate unit of work. By "
+#~ "marking the method with the "
+#~ "``ru.citeck.ecos.webapp.lib.spring.context.txn.RunInTransaction`` "
+#~ "annotation, you can run it inside "
+#~ "a transaction (see :ref:`Transactions "
+#~ "<ecos-transactions>`)."
+
+#~ msgid ""
+#~ "**Это допустимо только для обработчиков "
+#~ "без внешнего эффекта** — тех, что "
+#~ "меняют несколько записей и должны "
+#~ "сделать это одной единицей работы. Если"
+#~ " обработчик обращается во внешнюю систему"
+#~ " (отправка документа, платёж, вызов "
+#~ "стороннего API), оборачивать ``execute`` "
+#~ "транзакцией нельзя, и вот почему."
+#~ msgstr ""
+#~ "**This is only acceptable for handlers"
+#~ " with no external effect** — ones "
+#~ "that change several records and need "
+#~ "to do so as a single unit of"
+#~ " work. If a handler calls out "
+#~ "to an external system (sending a "
+#~ "document, processing a payment, calling "
+#~ "a third-party API), wrapping ``execute``"
+#~ " in a transaction is not allowed, "
+#~ "and here's why."
+
+#~ msgid "Причина"
+#~ msgstr "Reason"
+
+#~ msgid "Механика"
+#~ msgstr "Mechanics"
+
+#~ msgid "**Продолжение процесса идёт внутри транзакции обработчика**"
+#~ msgstr "**Process Continuation Happens Inside the Handler's Transaction**"
+
+#~ msgid ""
+#~ "``complete`` завершается сигналом исполнению "
+#~ "(``signal``), то есть движок продолжает "
+#~ "процесс **синхронно, внутри** вызова "
+#~ "обработчика. Если ``complete`` попал в "
+#~ "транзакцию, то узлы после сервисной "
+#~ "задачи выполняются, пока она открыта. "
+#~ "Типовой случай — сразу за узлом "
+#~ "стоит смена статуса той же записи: "
+#~ "продолжение процесса ждёт строки, "
+#~ "заблокированные самим обработчиком, а "
+#~ "обработчик ждёт ответа ``complete``. Результат"
+#~ " — самоблокировка, таймаут, откат и "
+#~ "повтор задачи."
+#~ msgstr ""
+#~ "``complete`` finishes with a signal to"
+#~ " execution (``signal``), meaning the engine"
+#~ " continues the process **synchronously, "
+#~ "inside** the handler call. If "
+#~ "``complete`` is inside the transaction, "
+#~ "the nodes after the service task "
+#~ "run while it is still open. A "
+#~ "typical case is a status change on"
+#~ " the same record right after the "
+#~ "node: process continuation waits on rows"
+#~ " locked by the handler itself, while"
+#~ " the handler waits for the "
+#~ "``complete`` response. The result is a"
+#~ " self-lock, a timeout, a rollback,"
+#~ " and a task retry."
+
+#~ msgid "**Внешний вызов не откатывается**"
+#~ msgstr "**The External Call Does Not Roll Back**"
+
+#~ msgid ""
+#~ "Транзакция откатывает записи, а отправленный"
+#~ " документ или проведённый платёж — "
+#~ "нет. При откате внешняя система остаётся"
+#~ " с эффектом, а Citeck — без "
+#~ "отметки о нём: следующая попытка "
+#~ "выполнит эффект второй раз. Если отметку"
+#~ " писал сам обработчик в той же "
+#~ "транзакции, она исчезает вместе с "
+#~ "откатом."
+#~ msgstr ""
+#~ "A transaction rolls back records, but"
+#~ " a sent document or a processed "
+#~ "payment is not rolled back. On "
+#~ "rollback, the external system is left"
+#~ " with the effect, while Citeck has"
+#~ " no record of it: the next "
+#~ "attempt will perform the effect a "
+#~ "second time. If the marker was "
+#~ "written by the handler itself in "
+#~ "the same transaction, it disappears "
+#~ "along with the rollback."
+
+#~ msgid "**Транзакция распространяется на другие приложения**"
+#~ msgstr "**The Transaction Spans Other Applications**"
+
+#~ msgid ""
+#~ "Транзакции построены на двухфазном коммите "
+#~ "и продолжаются через records-вызовы в "
+#~ "соседние приложения. Откат вернёт и то,"
+#~ " что успели записать они — включая"
+#~ " служебные записи, созданные интеграцией "
+#~ "для внешнего вызова."
+#~ msgstr ""
+#~ "Transactions are built on a two-"
+#~ "phase commit and extend through records"
+#~ " calls to neighboring applications. A "
+#~ "rollback will also undo whatever they"
+#~ " managed to write — including any "
+#~ "service records created by the "
+#~ "integration for the external call."
+
+#~ msgid "**Блокировки живут столько же, сколько чужой сервис отвечает**"
+#~ msgstr "**Locks Live as Long as the Other Service Takes to Respond**"
+
+#~ msgid ""
+#~ "Транзакция, растянутая на HTTP-вызов третьей"
+#~ " стороны, держит строки всё время "
+#~ "ожидания."
+#~ msgstr ""
+#~ "A transaction stretched over a third-"
+#~ "party HTTP call holds its row "
+#~ "locks for the entire waiting period."
+
+#~ msgid ""
+#~ "``asyncAfter`` на сервисной задаче убирает "
+#~ "только первую причину: продолжение процесса"
+#~ " уходит в job executor и перестаёт"
+#~ " конкурировать с транзакцией обработчика. "
+#~ "Расхождение с внешней системой при "
+#~ "откате и повторный эффект остаются. Как"
+#~ " решение проблемы это не годится."
+#~ msgstr ""
+#~ "``asyncAfter`` on the service task "
+#~ "removes only the first cause: process"
+#~ " continuation moves to the job "
+#~ "executor and stops competing with the"
+#~ " handler's transaction. The discrepancy "
+#~ "with the external system on rollback,"
+#~ " and the duplicate effect, remain. It"
+#~ " is not a valid solution to the"
+#~ " problem."
+
+#~ msgid ""
+#~ "Правильный скелет обработчика с внешним "
+#~ "эффектом — без транзакции вокруг "
+#~ "``execute``, с отметкой до вызова и "
+#~ "с проверкой состояния на входе:"
+#~ msgstr ""
+#~ "The correct skeleton for a handler "
+#~ "with an external effect — no "
+#~ "transaction around ``execute``, a marker "
+#~ "written before the call, and a "
+#~ "state check on entry:"
+
+#~ msgid ""
+#~ "Если транзакция всё же нужна, "
+#~ "оборачивайте в неё конкретный блок кода,"
+#~ " а не метод целиком, и никогда "
+#~ "не включайте в неё ``complete``."
+#~ msgstr ""
+#~ "If a transaction is still needed, "
+#~ "wrap a specific block of code in"
+#~ " it, not the entire method, and "
+#~ "never include ``complete`` in it."
+
+#~ msgid "Что произойдёт, если задача придёт второй раз?"
+#~ msgstr "What happens if the task arrives a second time?"
+
+#~ msgid ""
+#~ "Ответ «эффект повторится» означает дефект: "
+#~ "паттерн at-least-once, повтор штатен."
+#~ msgstr ""
+#~ "If the answer is \"the effect will"
+#~ " repeat,\" that's a defect: the "
+#~ "pattern is at-least-once, and "
+#~ "retries are normal."
+
+#~ msgid "Есть ли признак «сделано» и записан ли он до внешнего эффекта?"
+#~ msgstr ""
+#~ "Is there a \"done\" marker, and is"
+#~ " it recorded before the external "
+#~ "effect?"
+
+#~ msgid "Признак после эффекта не защищает от сбоя между ними."
+#~ msgstr ""
+#~ "A marker recorded after the effect "
+#~ "does not protect against a failure "
+#~ "between the two."
+
+#~ msgid "Не обёрнут ли транзакцией внешний вызов или ``complete``?"
+#~ msgstr "Is the external call or ``complete`` wrapped in a transaction?"
+
+#~ msgid ""
+#~ "Внешний эффект не откатывается, а "
+#~ "продолжение процесса внутри транзакции даёт"
+#~ " самоблокировку."
+#~ msgstr ""
+#~ "The external effect does not roll "
+#~ "back, and process continuation inside "
+#~ "the transaction causes a self-lock."
+
+#~ msgid "Покрывает ли ``lockDuration`` худшее время обработки?"
+#~ msgstr "Does ``lockDuration`` cover the worst-case processing time?"
+
+#~ msgid "Иначе задачу параллельно возьмёт второй обработчик."
+#~ msgstr "Otherwise a second handler will pick up the task concurrently."
+
+#~ msgid "Разделены ли технические ошибки и бизнес-ошибки?"
+#~ msgstr "Are technical errors and business errors kept separate?"
+
+#~ msgid ""
+#~ "``handleFailure``/``@ExternalTaskRetry`` — повтор; "
+#~ "``handleBpmnError`` — ветка процесса."
+#~ msgstr ""
+#~ "``handleFailure``/``@ExternalTaskRetry`` — retry; "
+#~ "``handleBpmnError`` — process branch."
+
+#~ msgid "Завершается ли задача при исходе «уже сделано»?"
+#~ msgstr "Does the task complete on the \"already done\" outcome?"
+
+#~ msgid ""
+#~ "Бизнес-ошибка здесь увела бы процесс в"
+#~ " ветку сбоя после фактически успешной "
+#~ "работы."
+#~ msgstr ""
+#~ "A business error here would send "
+#~ "the process into a failure branch "
+#~ "after work that actually succeeded."
+
+#~ msgid ""
+#~ "С более подробной документацией по "
+#~ "внешним задачам можно ознакомиться по "
+#~ "ссылкам:"
+#~ msgstr ""
+#~ "More detailed documentation on external "
+#~ "tasks can be found at the "
+#~ "following links:"
 
