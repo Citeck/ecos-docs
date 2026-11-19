@@ -40,6 +40,8 @@
 - **Асинхронно "перед"** — исполнение доходит до точки перед блоком, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба.
 - **Асинхронно "после"** — исполнение доходит до точки после блока, транзакция комитится и дальнейшее выполнение ставится в очередь, которую разбирает уже джоба.
 
+При включении асинхронности также доступны **«Эксклюзивность»**, **«Цикл повтора»** и **«Приоритет»** фоновой задачи.
+
 См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07/advanced-asynchronous-continuations/>`_.
 
 .. image:: _static/script_task/62.png
@@ -48,11 +50,12 @@
 
 .. important::
 
-  При сохранении, сохранении/публикации процесса проверяется обязательность заполнения следующих полей:
+   Поле **«Скрипт»** обязательно в форме настройки элемента. При серверной валидации скрипт не должен быть пустым или состоять из пробелов.
 
-   - **«Скрипт»**
+Multi Instance
+~~~~~~~~~~~~~~
 
-  Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка.
+В форме также доступны настройки **Multi Instance** для многократного выполнения скриптовой задачи.
   
 Доступные переменные
 --------------------
@@ -62,16 +65,22 @@
 
 Во время выполнения скриптов доступны все переменные процесса, видимые в текущей области.
 
+Наличие и значения переменных зависят от способа запуска процесса и уже выполненных действий. Для обращения к переменной, которая может отсутствовать, используйте ``execution.getVariable('имя')``.
+
 .. code-block:: javascript
 
     // someVar - переменная процесса
     print("someVar: " + someVar);
+
+Типичные переменные процесса:
 
 ``documentRef`` - строковое представление entityRef документа |br|
 ``documentType`` - id типа документа |br|
 ``lastTaskCompletor`` - username пользователя, который завершил последнюю задачу |br|
 ``comment`` - комментарий из последней завершенной задачи |br|
 ``workflowInitiator`` - username инициатора БП |br|
+
+Переменные ``lastTaskCompletor`` и ``comment`` формируются при завершении пользовательских задач. До выполнения соответствующих действий их наличие предполагать нельзя.
 
 .. _execution:
 
@@ -83,7 +92,7 @@ Execution
 .. code-block:: javascript
 
     // Получение переменной процесса
-    var sum = execution.getVariable('x');
+    var x = execution.getVariable('x');
 
     // Установление переменной процесса
     execution.setVariable('y', x + 15);
@@ -92,6 +101,8 @@ Document
 ~~~~~~~~
 
 ``document`` - является скриптовым представлением документа `AttValueScriptCtx <https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/main/java/ru/citeck/ecos/records3/record/atts/computed/script/AttValueScriptCtx.kt>`_ , по которому идет БП.
+
+Объект создаётся через ``Records.get(documentRef)``. Если процесс запущен без документа, получите нужную запись явно через ``Records.get(...)``, передав корректную ссылку.
 
 .. code-block:: javascript
 
@@ -143,9 +154,11 @@ ECOS Config
 
 ``Config`` - предоставляет доступ к Конфигурации Citeck по ключу в формате ``<область>$<идентификатор>``.
 
-    - ``get(key: String): DataValue`` - получение значения по ключу
-    - ``getOrDefault(key: String, defaultValue: Any): DataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
-    - ``getNotNull(key: String): DataValue`` - получение значения по ключу, если значение null, то выбрасывается исключение
+Методы возвращают ``ru.citeck.ecos.bpmn.commons.values.BpmnDataValue`` (далее в сигнатурах — ``BpmnDataValue``).
+
+    - ``get(key: String): BpmnDataValue`` - получение значения по ключу
+    - ``getOrDefault(key: String, defaultValue: Any): BpmnDataValue`` - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию
+    - ``getNotNull(key: String): BpmnDataValue`` - получение значения по ключу, если значение null, то выбрасывается исключение
 
 .. code-block:: javascript
 
@@ -193,6 +206,8 @@ DataValue
     
 DataValue может быть сохранен в execution процесса с последующим извлечением и использованием.
 
+Для прямого сохранения JavaScript-объектов используйте ``DataValue.of(...)``. Нативные JavaScript-объекты через ``execution.setVariable(...)`` сохранять нельзя. JavaScript-массивы поддерживаются и могут сохраняться напрямую.
+
 Сохраняем в execution:
 
 .. code-block:: javascript
@@ -224,17 +239,6 @@ DataValue может быть сохранен в execution процесса с 
     print("----------");
     
     
-Результат:
-
-.. code-block::
-
-    ----------
-    dArr: {"0":"a","1":"b"}
-    dArr 0: "a"
-    dObj: {"a":"b"}
-    dObj a: "b"
-    ----------
-
 .. _time_and_duration:
 
 Time и Duration. Работа с датами и временными интервалами
@@ -336,7 +340,7 @@ Time и Duration. Работа с датами и временными инте�
 
 .. warning::
 
-    Сохранение объекта javascript Date в execution процесса не поддерживается. Для работы с датами и временными интервалами используйте объекты ``Time`` и ``Duration``.
+    Прямое сохранение нативного JavaScript ``Date`` через ``execution.setVariable(...)`` не поддерживается. Для сохранения даты используйте ``Time`` или ISO-строку, для временного интервала — ``Duration``.
 
 
 WebUrl
@@ -349,7 +353,7 @@ Tasks
 
 ``tasks`` — сервис для манипуляций над задачами.
     
-    - ``completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи по инстансу процесса из [DelegateExecution.getProcessInstanceId]. Задачи завершаются с результатом *defaultDone: Выполнено*.
+    - ``completeActiveTasks(execution: DelegateExecution)`` - завершает все активные задачи экземпляра процесса, определённого через ``execution.getProcessInstanceId()``. Задачи завершаются с идентификатором результата ``defaultDone``. Если у задачи настроен вердикт с таким идентификатором, используется его название; иначе — название по умолчанию **«Выполнено»**.
 
 
 Templated content
@@ -357,10 +361,18 @@ Templated content
 
 ``templatedContent`` — сервис для работы с шаблонизированным контентом.
 
-    - ``write(record: String, template: String)`` - генерирует контент по указанному шаблону [`template`], на основе данных рекорда [`record`] и записывает сгенерированный контент в [`record`] в атрибут контент по умолчанию `content`.
-    - ``write(record: String, template: String, attribute: String)`` - генерирует контент по указанному шаблону `[template`], на основе данных рекорда [`record`] и записывает сгенерированный контент в [`record`] в переданный атрибут [`attribute`].
+    - ``write(record, template)`` — генерирует контент по шаблону ``template`` на основе данных записи ``record`` и записывает его в атрибут ``content`` этой записи.
+    - ``write(record, template, parentAtt: String, childType: String, attribute: String)`` — позволяет явно задать атрибут контента ``attribute``. Если параметры ``parentAtt`` и ``childType`` не нужны, передайте пустые строки.
 
-В качестве [`template`] можно передать строковое представление EntityRef шаблона или его id.
+Параметры ``record`` и ``template`` принимают строку или ``EntityRef``. Для шаблона можно указать его id; отсутствующие части ссылки дополняются до ``transformations/template@id``.
+
+.. warning::
+
+    В ``ecos-process 2.38.0-SNAPSHOT`` трёхаргументный вызов ``write(record, template, attribute)`` передаёт третий аргумент как ``parentAtt``, а атрибут контента остаётся ``content``. Для явного задания атрибута используйте пятиаргументный вызов:
+
+    .. code-block:: javascript
+
+        templatedContent.write(documentRef, "template-id", "", "", "customContent");
 
 Events
 ~~~~~~
@@ -401,11 +413,11 @@ Logger
 
 ``log`` — логгер, пишет в микросервис ecos-process, дополнительно выводится информация о execution. Для настройки уровня логирования используется класс ``ru.citeck.ecos.process.domain.bpmn.engine.camunda.services.beans.ScriptLogger``. |br| Поддерживаемые методы:
     
-    - ``log.info(message: String)``
-    - ``log.warn(message: String)``
-    - ``log.error(message: String)``
-    - ``log.debug(message: String)``
-    - ``log.trace(message: String)``
+    - ``log.info(message: Any)``
+    - ``log.warn(message: Any)``
+    - ``log.error(message: Any)``
+    - ``log.debug(message: Any)``
+    - ``log.trace(message: Any)``
 
 .. note::
 
@@ -470,7 +482,7 @@ Logger
 
 .. code-block:: javascript
 
-    if (!comment) {
+    if (!execution.getVariable('comment')) {
         throw new Error("Комментарий не заполнен");
     }
 
