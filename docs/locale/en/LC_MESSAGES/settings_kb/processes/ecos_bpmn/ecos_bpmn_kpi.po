@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-18 10:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -59,7 +59,11 @@ msgid ""
 "Для разных параметров документа можно создать отдельные настройки с "
 "разными нормами и условиями применения на DMN. Условие выбирает "
 "применимые настройки, а не вычисляет саму норму."
-msgstr "Separate configurations with different targets and DMN applicability conditions can be created for different document parameters. The condition selects applicable configurations rather than calculating the target itself."
+msgstr ""
+"Separate configurations with different targets and DMN applicability "
+"conditions can be created for different document parameters. The "
+"condition selects applicable configurations rather than calculating the "
+"target itself."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:18
 msgid ""
@@ -67,7 +71,11 @@ msgid ""
 "Измерения формируются по событиям BPMN-элементов: например, задачи "
 "установки статуса или события ожидания условия. Произвольное изменение "
 "атрибута документа само по себе не является отдельным триггером KPI."
-msgstr "Users with the appropriate permissions can configure targets. Measurements are generated from BPMN element events, such as a set status task or a conditional catch event. An arbitrary document attribute change is not itself a separate KPI trigger."
+msgstr ""
+"Users with the appropriate permissions can configure targets. "
+"Measurements are generated from BPMN element events, such as a set status"
+" task or a conditional catch event. An arbitrary document attribute "
+"change is not itself a separate KPI trigger."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:20
 msgid ""
@@ -75,13 +83,28 @@ msgid ""
 "сохраняет измерения для сравнения с нормой; сам по себе он не "
 "устанавливает срок задачи, не останавливает процесс и не создаёт "
 "обработчик просрочки."
-msgstr "Values appear asynchronously after element events are processed. KPI stores measurements for comparison with a target; by itself, it does not set a task deadline, stop the process, or create an overdue handler."
+msgstr ""
+"Values appear asynchronously after element events are processed. KPI "
+"stores measurements for comparison with a target; by itself, it does not "
+"set a task deadline, stop the process, or create an overdue handler."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:23
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:22
+msgid ""
+"Для автоматического расчёта должен быть включён сбор событий "
+"BPMN-элементов: ``ecos-process.bpmn.elements.listener.enabled=true``. По "
+"умолчанию он включён. Включение настройки KPI само по себе не запускает "
+"пересчёт всей истории процесса."
+msgstr ""
+"Automatic calculation requires BPMN activity event collection to be "
+"enabled: ``ecos-process.bpmn.elements.listener.enabled=true``. It is "
+"enabled by default. Enabling a KPI configuration does not itself trigger "
+"recalculation of the entire process history."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:25
 msgid "Настройка"
 msgstr "Configuration"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:25
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:27
 msgid ""
 "Для настройки KPI необходимо перейти в журнал **\"Настройка KPI\" "
 "(Рабочее пространство \"Раздел администратора\" - Управление "
@@ -90,19 +113,33 @@ msgstr ""
 "To configure KPI, navigate to the **\"KPI Configuration\" log "
 "(Administrator Section workspace - Process Management)**:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:31
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:33
 msgid "Форма создания:"
 msgstr "Creation form:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:37
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:39
 msgid ""
 "В форме необходимо указать **Название**, выбрать **Тип (Продолжительность"
 " или Количество)**, **Процесс**, **Элементы BPMN** и их **События**, "
 "задать **Норму** и включить флаг **«Включен»**. Новая настройка по "
 "умолчанию выключена и до включения не применяется."
-msgstr "In the form, specify **Name**, select **Type (Duration or Count)**, **Process**, **BPMN elements** and their **Events**, set the **Target**, and enable **Enabled**. A new configuration is disabled by default and does not apply until enabled."
+msgstr ""
+"In the form, specify **Name**, select **Type (Duration or Count)**, "
+"**Process**, **BPMN elements** and their **Events**, set the **Target**, "
+"and enable **Enabled**. A new configuration is disabled by default and "
+"does not apply until enabled."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:39
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:41
+msgid ""
+"Настройка KPI привязана к ключу процесса и не ограничена отдельной "
+"опубликованной версией. Если идентификаторы элементов сохраняются, "
+"настройка может применяться к нескольким версиям этого процесса."
+msgstr ""
+"A KPI configuration is linked to the process key and is not restricted "
+"to a specific published version. If activity IDs are retained, the "
+"configuration can apply to multiple versions of the process."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:43
 msgid ""
 "Можно задать условие применения KPI на **DMN**. Входные данные "
 "описываются в свойстве схемы решения :ref:`«Модель» <dmn_model>`, базовым"
@@ -115,15 +152,35 @@ msgstr ""
 "process. Business process variables are not available when calculating "
 "the condition."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:41
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:45
+msgid ""
+"Условие DMN вычисляется при обработке целевого события по доступным в "
+"этот момент данным документа. Снимок атрибутов на момент исходного или "
+"целевого BPMN-события для условия не сохраняется. Изменение документа до "
+"обработки события может повлиять на применение настройки KPI. При этом "
+"продолжительность рассчитывается по временным меткам элементов, а не по "
+"времени обработки события."
+msgstr ""
+"The DMN condition is evaluated when the target event is processed, using "
+"the document data available at that time. No snapshot of the attributes "
+"at the source or target BPMN event is stored for the condition. Changes "
+"to the document before the event is processed may affect whether the KPI "
+"configuration applies. The duration itself is calculated from activity "
+"timestamps, not from the event processing time."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:47
 msgid ""
 "Если условие DMN не задано, настройка применяется без дополнительной "
 "проверки. Для условия рекомендуется решение с одной выходной колонкой "
 "типа **Boolean** и однозначным результатом, например с политикой "
 "**Unique**."
-msgstr "If no DMN condition is specified, the configuration applies without an additional check. For a condition, a decision with one output column of type **Boolean** and an unambiguous result, for example with the **Unique** policy, is recommended."
+msgstr ""
+"If no DMN condition is specified, the configuration applies without an "
+"additional check. For a condition, a decision with one output column of "
+"type **Boolean** and an unambiguous result, for example with the "
+"**Unique** policy, is recommended."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:43
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:49
 msgid ""
 "При вычислении условия используется первое значение первой группы "
 "возвращённого результата; имя выходной переменной для выбора условия не "
@@ -132,13 +189,20 @@ msgid ""
 "значения не объединяются через OR или AND. См. :ref:`результат решения "
 "для KPI <dmn_result_kpi>`. Ошибка вычисления DMN не равнозначна "
 "результату ``false``."
-msgstr "Condition evaluation uses the first value of the first group of the returned result; the output variable name is not used to select the condition. The value is converted to a string and then to a boolean: ``true`` means the KPI applies; an empty result means it does not. Other values are not combined using OR or AND. See :ref:`decision result for KPI <dmn_result_kpi>`. A DMN evaluation error is not equivalent to a ``false`` result."
+msgstr ""
+"Condition evaluation uses the first value of the first group of the "
+"returned result; the output variable name is not used to select the "
+"condition. The value is converted to a string and then to a boolean: "
+"``true`` means the KPI applies; an empty result means it does not. Other "
+"values are not combined using OR or AND. See :ref:`decision result for "
+"KPI <dmn_result_kpi>`. A DMN evaluation error is not equivalent to a "
+"``false`` result."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:46
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:52
 msgid "KPI по продолжительности"
 msgstr "Duration KPI"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:48
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:54
 msgid ""
 "KPI по продолжительности позволяет отслеживать время между указанными "
 "BPMN элементами (**Исходный** и **Целевой**) в процессе."
@@ -146,132 +210,166 @@ msgstr ""
 "Duration KPI allows tracking the time between specified BPMN elements "
 "(**Source** and **Target**) in the process."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:56
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:62
 msgid ""
 "Для одного замера исходный и целевой элементы должны находиться в одном "
 "экземпляре процесса."
-msgstr "For a single measurement, the source and target elements must be in the same process instance."
+msgstr ""
+"For a single measurement, the source and target elements must be in the "
+"same process instance."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:58
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:64
 msgid ""
 "В **Исходном** и **Целевом** элементах BPMN укажите **Идентификатор** (ID"
 " элемента бизнес-процесса) и выберите **Событие**: **START** — начало "
 "выполнения элемента, **END** — его завершение."
-msgstr "For the **Source** and **Target** BPMN elements, specify the **Identifier** (business process element ID) and select the **Event**: **START** — the start of element execution; **END** — its completion."
+msgstr ""
+"For the **Source** and **Target** BPMN elements, specify the "
+"**Identifier** (business process element ID) and select the **Event**: "
+"**START** — the start of element execution; **END** — its completion."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:60
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:66
 msgid ""
 "Значение создаётся при выбранном событии целевого элемента. До его "
 "наступления текущая длительность постоянно не пересчитывается. Для "
 "источника берётся последняя созданная подходящая запись элемента с "
 "указанным ID в том же экземпляре процесса. Если источник не найден, "
 "возникает ошибка обработки, а не нулевой замер."
-msgstr "A value is created on the selected event of the target element. Until that event occurs, the current duration is not continuously recalculated. The source is the most recently created matching element record with the specified ID in the same process instance. If no source is found, a processing error occurs rather than a zero measurement."
+msgstr ""
+"A value is created on the selected event of the target element. Until "
+"that event occurs, the current duration is not continuously recalculated."
+" The source is the most recently created matching element record with the"
+" specified ID in the same process instance. If no source is found, a "
+"processing error occurs rather than a zero measurement."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:64
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:70
 msgid ""
 "Не рекомендуется измерять интервал между START и END одного Multi "
 "Instance элемента. При нескольких выполнениях с одним ID источник и цель "
 "не сопоставляются по конкретному экземпляру активности. Это ограничение "
 "также важно для циклов и параллельных повторений исходного элемента."
-msgstr "Measuring the interval between START and END of the same Multi Instance element is not recommended. With multiple executions sharing one ID, the source and target are not matched by the specific activity instance. This limitation also matters for loops and parallel repetitions of the source element."
+msgstr ""
+"Measuring the interval between START and END of the same Multi Instance "
+"element is not recommended. With multiple executions sharing one ID, the "
+"source and target are not matched by the specific activity instance. This"
+" limitation also matters for loops and parallel repetitions of the source"
+" element."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:66
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:72
 msgid ""
 "Выберите **Тип времени** — календарное или рабочее. Для рабочего времени "
 "в текущей реализации используется расписание по умолчанию с ID "
 "``DEFAULT``; выбрать другое расписание в настройке KPI нельзя."
-msgstr "Select **Time type** — calendar or working time. For working time, the current implementation uses the default schedule with ID ``DEFAULT``; another schedule cannot be selected in the KPI configuration."
+msgstr ""
+"Select **Time type** — calendar or working time. For working time, the "
+"current implementation uses the default schedule with ID ``DEFAULT``; "
+"another schedule cannot be selected in the KPI configuration."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:68
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:74
 msgid ""
 "В форме продолжительность указывается в часах и минутах — **h m**. Дни и "
 "секунды поле формы не принимает:"
-msgstr "In the form, duration is specified in hours and minutes — **h m**. The form field does not accept days or seconds:"
+msgstr ""
+"In the form, duration is specified in hours and minutes — **h m**. The "
+"form field does not accept days or seconds:"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:74
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:80
 msgid "Формат"
 msgstr "Format"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:75
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:81
 msgid "Расшифровка"
 msgstr "Description"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:76
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:82
 msgid "27h 10m"
 msgstr "27h 10m"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:77
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:83
 msgid "27 часов 10 минут"
 msgstr "27 hours 10 minutes"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:78
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:84
 msgid "24h"
 msgstr "24h"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:79
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:85
 msgid "24 часа"
 msgstr "24 hours"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:80
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:86
 msgid "1h 15m"
 msgstr "1h 15m"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:81
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:87
 msgid "1 час 15 минут"
 msgstr "1 hour 15 minutes"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:82
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:88
 msgid "30m"
 msgstr "30m"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:83
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:89
 msgid "30 минут"
 msgstr "30 minutes"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:85
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:91
 msgid ""
 "Для рабочего времени задавайте число рабочих часов явно: рабочий день не "
 "обязательно равен 24 часам."
-msgstr "For working time, specify the number of working hours explicitly: a working day is not necessarily 24 hours."
+msgstr ""
+"For working time, specify the number of working hours explicitly: a "
+"working day is not necessarily 24 hours."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:88
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:94
 msgid "KPI по количеству"
 msgstr "Quantity KPI"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:90
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:96
 msgid ""
 "KPI по количеству считает срабатывания выбранного события элемента. "
 "Значение накапливается по паре **настройка KPI + процесс**, в том числе "
-"между разными экземплярами процесса и документами. Это не отдельный "
-"счётчик каждого экземпляра."
-msgstr "A count KPI counts occurrences of the selected element event. The value accumulates for the **KPI configuration + process** pair, including across different process instances and documents. It is not a separate counter for each instance."
+"между разными экземплярами процесса и документами, без разделения по "
+"версиям процесса. Это не отдельный счётчик каждого экземпляра."
+msgstr ""
+"A count KPI counts occurrences of the selected element event. The value "
+"accumulates for the **KPI configuration + process** pair, including "
+"across different process instances and documents, without separating "
+"values by process version. It is not a separate counter for each instance."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:92
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:98
 msgid ""
 "В **Целевом BPMN элементе** укажите **Идентификатор** (ID элемента "
 "бизнес-процесса) и выберите **Событие**: **START** или **END**. Укажите "
 "нормативное количество срабатываний в поле **Норма**."
-msgstr "For the **Target BPMN element**, specify the **Identifier** (business process element ID) and select the **Event**: **START** or **END**. Specify the target number of occurrences in the **Target** field."
+msgstr ""
+"For the **Target BPMN element**, specify the **Identifier** (business "
+"process element ID) and select the **Event**: **START** or **END**. "
+"Specify the target number of occurrences in the **Target** field."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:100
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:106
 msgid ""
 "Периоды накопления и автоматический сброс счётчика за месяц, квартал или "
 "год в текущей реализации не применяются. Ссылки на документ и экземпляр в"
 " строке COUNT записываются при её создании и не меняются при увеличении "
 "значения. Они не описывают все документы и экземпляры, вошедшие в "
 "накопленное количество."
-msgstr "Accumulation periods and automatic counter resets by month, quarter, or year are not applied in the current implementation. Document and instance references in a COUNT row are written when it is created and do not change when the value increases. They do not describe all documents and instances included in the accumulated count."
+msgstr ""
+"Accumulation periods and automatic counter resets by month, quarter, or "
+"year are not applied in the current implementation. Document and instance"
+" references in a COUNT row are written when it is created and do not "
+"change when the value increases. They do not describe all documents and "
+"instances included in the accumulated count."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:103
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:109
 msgid "Значения KPI"
 msgstr "KPI Values"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:111
 msgid "В журналах администратора выведен общий журнал **Значения KPI**."
 msgstr "In the administrator logs, a general **KPI Values** log is displayed."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:111
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:117
 msgid ""
 "Для удобства рекомендуется настроить свой журнал по KPI с нужными "
 "фильтрами, группировками, агрегациями."
@@ -279,7 +377,7 @@ msgstr ""
 "For convenience, it is recommended to configure your own KPI log with the"
 " necessary filters, groupings, and aggregations."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:113
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:119
 msgid ""
 "Для создания своего журнала со значениями KPI можно копировать журнал "
 "**Значения KPI** и настроить колонки, как необходимо."
@@ -287,16 +385,21 @@ msgstr ""
 "To create your own log with KPI values, you can copy the **KPI Values** "
 "log and configure the columns as needed."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:115
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:121
 msgid ""
 "В журнале KPI по продолжительности **Норма** и **Значение** представлены "
 "числом миллисекунд: текстовая норма из настройки преобразуется в числовое"
 " значение. Для читаемости колонок используйте :ref:`форматтер Duration "
 "(Продолжительность) <DurationFormatter>`. Для COUNT значение и норма — "
 "числа срабатываний; Duration к ним не применяется."
-msgstr "In the duration KPI journal, **Target** and **Value** are represented as a number of milliseconds: the text target from the configuration is converted to a numeric value. Use the :ref:`Duration formatter <DurationFormatter>` to make columns readable. For COUNT, the value and target are occurrence counts; Duration does not apply to them."
+msgstr ""
+"In the duration KPI journal, **Target** and **Value** are represented as "
+"a number of milliseconds: the text target from the configuration is "
+"converted to a numeric value. Use the :ref:`Duration formatter "
+"<DurationFormatter>` to make columns readable. For COUNT, the value and "
+"target are occurrence counts; Duration does not apply to them."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:119
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:125
 msgid ""
 "Колонка **«Норма»** загружается из текущей настройки KPI, а не из снимка "
 "на момент замера. Изменение нормы меняет её отображение рядом с ранее "
@@ -304,17 +407,23 @@ msgid ""
 "отдельные настройки KPI. При группировках учитывайте, что COUNT уже "
 "содержит накопленное значение по процессу и не является отдельным замером"
 " по документу."
-msgstr "The **Target** column is loaded from the current KPI configuration, not a snapshot at the time of measurement. Changing the target changes its display next to previously recorded values. Use separate KPI configurations to compare against different targets. When grouping, remember that COUNT already contains an accumulated process value rather than a separate measurement per document."
+msgstr ""
+"The **Target** column is loaded from the current KPI configuration, not a"
+" snapshot at the time of measurement. Changing the target changes its "
+"display next to previously recorded values. Use separate KPI "
+"configurations to compare against different targets. When grouping, "
+"remember that COUNT already contains an accumulated process value rather "
+"than a separate measurement per document."
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:122
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:128
 msgid "Пример сформированного отчета"
 msgstr "Example of a generated report"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:129
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:135
 msgid "Отображение на схеме BPMN"
 msgstr "Display on BPMN diagram"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:131
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:137
 msgid ""
 "Значения отклонений KPI доступны на схеме BPMN в виджете :ref:`Статистика"
 " процесса <widget_process_statistics>`."
@@ -322,13 +431,17 @@ msgstr ""
 "KPI deviation values are available on the BPMN diagram in the "
 ":ref:`Process Statistics<widget_process_statistics>` widget"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:133
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:139
 msgid ""
 "По умолчанию KPI отображается у целевого BPMN-элемента. Чтобы отобразить "
 "его у другого элемента, укажите его ID в поле "
 "``manualOverrideDisplayKpi`` раздела **«Отображение на схеме»** настройки"
 " KPI."
-msgstr "By default, the KPI is displayed at the target BPMN element. To display it at another element, specify that element's ID in the ``manualOverrideDisplayKpi`` field in the KPI configuration's **Diagram display** section."
+msgstr ""
+"By default, the KPI is displayed at the target BPMN element. To display "
+"it at another element, specify that element's ID in the "
+"``manualOverrideDisplayKpi`` field in the KPI configuration's **Diagram "
+"display** section."
 
 #~ msgid ""
 #~ "Данные нормы могут отличаться в "
