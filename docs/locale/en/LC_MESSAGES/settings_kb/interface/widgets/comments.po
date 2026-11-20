@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 16:12+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -34,11 +34,19 @@ msgstr "Key ``comments``"
 msgid "Виджет для отображения комментариев к документу."
 msgstr "A widget for displaying comments on a document."
 
-#: ../../settings_kb/interface/widgets/comments.rst:17
+#: ../../settings_kb/interface/widgets/comments.rst:13
+msgid ""
+"Чтобы добавить комментарий, нажмите кнопку с плюсом, введите текст и "
+"сохраните его кнопкой в редакторе. Пустой комментарий отправить нельзя. В"
+" списке отображаются автор, дата, содержимое и теги комментария; новые "
+"комментарии располагаются перед старыми."
+msgstr "To add a comment, click the plus button, enter text, and save it using the editor button. Empty comments cannot be submitted. The list displays the author, date, content, and comment tags; newer comments appear before older ones."
+
+#: ../../settings_kb/interface/widgets/comments.rst:19
 msgid "**Введенные комментарии**"
 msgstr "**Posted comments**"
 
-#: ../../settings_kb/interface/widgets/comments.rst:24
+#: ../../settings_kb/interface/widgets/comments.rst:26
 msgid "**Форма ввода комментария:**"
 msgstr "**Comment input form:**"
 
@@ -53,22 +61,42 @@ msgstr ""
 " and files."
 
 #: ../../settings_kb/interface/widgets/comments.rst
-msgid "Чтобы в комментарии упомянуть других пользователей используете **@**"
-msgstr "To mention other users in a comment, use **@**."
-
-#: ../../settings_kb/interface/widgets/comments.rst:32
 msgid ""
-"Пользователь, которого упомянули в комментарии получит письмо следующего "
-"вида:"
-msgstr "The mentioned user will receive an email in the following format:"
+"Чтобы упомянуть пользователя, введите **@** и выберите его из "
+"предложенного списка."
+msgstr "To mention a user, type **@** and select them from the suggestions."
 
-#: ../../settings_kb/interface/widgets/comments.rst:38
+#: ../../settings_kb/interface/widgets/comments.rst:34
 msgid ""
-"Максимальное количество символов в комментарии - 5 000. Иначе будет "
-"выдана ошибка «Это поле может содержать от 0 до 4 000 симв.»."
-msgstr "The maximum number of characters in a comment is 5,000. Otherwise, the error \"This field can contain from 0 to 4,000 characters.\" will be displayed."
+"Для нового упоминания внутреннего пользователя с указанным e-mail система"
+" отправляет почтовое уведомление. Доставка зависит от настроек почтовой "
+"службы. Пример письма:"
+msgstr "For a new mention of an internal user with an email address, the system sends an email notification. Delivery depends on mail service settings. Example email:"
 
 #: ../../settings_kb/interface/widgets/comments.rst:40
+msgid ""
+"В текущей реализации текст комментария должен содержать **менее 5 000 "
+"символов**: при достижении этого значения кнопка сохранения становится "
+"недоступна. Ограничение относится к тексту редактора, а не к длине "
+"HTML-разметки."
+msgstr "In the current implementation, comment text must contain **fewer than 5,000 characters**: reaching this limit disables the save button. The limit applies to editor text rather than HTML markup length."
+
+#: ../../settings_kb/interface/widgets/comments.rst:42
+msgid ""
+"Редактирование и удаление доступны при наличии соответствующих действий в"
+" карточке комментария. Обычный комментарий может изменять его автор или "
+"администратор; удаление требует подтверждения. Комментарии, созданные "
+"задачей, действием или интеграцией, защищены от редактирования этим "
+"механизмом."
+msgstr "Editing and deletion are available when the corresponding actions appear on the comment card. A regular comment can be edited by its author or an administrator; deletion requires confirmation. Comments created by a task, action, or integration are protected against editing through this mechanism."
+
+#: ../../settings_kb/interface/widgets/comments.rst:44
+msgid ""
+"Список обновляется по событиям документа и задач. Для повторной загрузки "
+"также доступно действие обновления виджета."
+msgstr "The list updates in response to document and task events. The widget refresh action can also reload it."
+
+#: ../../settings_kb/interface/widgets/comments.rst:46
 msgid ""
 "Подробно о  :ref:`разграничении пользователей различных заказчиков "
 "<UNIFIED_PRIVATE_GROUP>`"
@@ -76,29 +104,45 @@ msgstr ""
 "For details on :ref:`separating users of different tenants "
 "<UNIFIED_PRIVATE_GROUP>`."
 
-#: ../../settings_kb/interface/widgets/comments.rst:43
-msgid "Транcлирование комментариев при выполнении задачи"
-msgstr "Broadcasting comments when completing a task"
-
-#: ../../settings_kb/interface/widgets/comments.rst:45
-msgid ""
-"Для включения транслированная комментария при выполнении задачи в виджет "
-"комментариев необходимо к типу данных добавить аспект ``task-comments-"
-"broadcastable``."
-msgstr ""
-"To enable broadcasting a comment entered during task completion into the "
-"comments widget, add the ``task-comments-broadcastable`` aspect to the "
-"data type."
-
 #: ../../settings_kb/interface/widgets/comments.rst:49
+msgid "Внутренние комментарии"
+msgstr "Internal comments"
+
+#: ../../settings_kb/interface/widgets/comments.rst:51
+msgid ""
+"Чтобы включить эту возможность, добавьте к типу документа аспект ``has-"
+"internal-comments`` — **«Имеет внутренние комментарии»**. В редакторе "
+"появится флажок **«Внутренний комментарий»**."
+msgstr "To enable this feature, add the ``has-internal-comments`` (**Has internal comments**) aspect to the document type. An **Internal comment** checkbox appears in the editor."
+
+#: ../../settings_kb/interface/widgets/comments.rst:53
+msgid ""
+"Категория выбирается при создании комментария. При редактировании "
+"существующего комментария флажок недоступен. Доступ к внутренним "
+"комментариям определяется правилами системы."
+msgstr "The category is selected when creating a comment. The checkbox is unavailable when editing an existing comment. Access to internal comments is determined by system rules."
+
+#: ../../settings_kb/interface/widgets/comments.rst:56
+msgid "Транслирование комментариев при выполнении задачи"
+msgstr "Broadcasting comments on task completion"
+
+#: ../../settings_kb/interface/widgets/comments.rst:58
+msgid ""
+"Для добавления комментария из задачи в комментарии документа добавьте к "
+"типу данных аспект ``task-comments-broadcastable``. Непустой комментарий "
+"переносится после успешного завершения задачи, если она связана с "
+"документом."
+msgstr "To add task comments to document comments, add the ``task-comments-broadcastable`` aspect to the data type. A nonempty comment is copied after successful task completion if the task is associated with a document."
+
+#: ../../settings_kb/interface/widgets/comments.rst:62
 msgid "Инпут комментария на форме задачи должен быть добавлен с id ``comment``."
 msgstr "The comment input on the task form must be added with the id ``comment``."
 
-#: ../../settings_kb/interface/widgets/comments.rst:51
+#: ../../settings_kb/interface/widgets/comments.rst:64
 msgid "Комментарий, добавленный из задачи помечается тегом с названием задачи."
 msgstr "A comment added from a task is tagged with the task name."
 
-#: ../../settings_kb/interface/widgets/comments.rst:57
+#: ../../settings_kb/interface/widgets/comments.rst:70
 msgid ""
 "Если необходимо выключить добавление комментария из задачи для "
 "конкретного рекорда, можно у рекорда выставить свойство ``task-comments-"
@@ -107,3 +151,35 @@ msgstr ""
 "To disable comment broadcasting from a task for a specific record, set "
 "the record's ``task-comments-broadcastable:broadcastComments`` property "
 "to ``false``."
+
+#~ msgid "Чтобы в комментарии упомянуть других пользователей используете **@**"
+#~ msgstr "To mention other users in a comment, use **@**."
+
+#~ msgid ""
+#~ "Пользователь, которого упомянули в комментарии"
+#~ " получит письмо следующего вида:"
+#~ msgstr "The mentioned user will receive an email in the following format:"
+
+#~ msgid ""
+#~ "Максимальное количество символов в комментарии"
+#~ " - 5 000. Иначе будет выдана "
+#~ "ошибка «Это поле может содержать от "
+#~ "0 до 4 000 симв.»."
+#~ msgstr ""
+#~ "The maximum number of characters in "
+#~ "a comment is 5,000. Otherwise, the "
+#~ "error \"This field can contain from "
+#~ "0 to 4,000 characters.\" will be "
+#~ "displayed."
+
+#~ msgid ""
+#~ "Для включения транслированная комментария при"
+#~ " выполнении задачи в виджет комментариев"
+#~ " необходимо к типу данных добавить "
+#~ "аспект ``task-comments-broadcastable``."
+#~ msgstr ""
+#~ "To enable broadcasting a comment entered"
+#~ " during task completion into the "
+#~ "comments widget, add the ``task-"
+#~ "comments-broadcastable`` aspect to the data"
+#~ " type."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -42,7 +42,14 @@ msgid ""
 "доступны переменные охватывающей области; подпроцесс также может иметь "
 "локальные переменные, видимые только в своей области выполнения и "
 "вложенных областях."
-msgstr "A subprocess allows complex processes to be structured: repeated or logically separate fragments are moved into a separate block, improving diagram readability and simplifying maintenance. Unlike a :ref:`Call activity <call_activity>`, a subprocess is not a standalone process — it exists within the parent process. Variables from the enclosing scope are available within it; the subprocess may also have local variables visible only in its own execution scope and nested scopes."
+msgstr ""
+"A subprocess allows complex processes to be structured: repeated or "
+"logically separate fragments are moved into a separate block, improving "
+"diagram readability and simplifying maintenance. Unlike a :ref:`Call "
+"activity <call_activity>`, a subprocess is not a standalone process — it "
+"exists within the parent process. Variables from the enclosing scope are "
+"available within it; the subprocess may also have local variables visible"
+" only in its own execution scope and nested scopes."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:10
 msgid "В ECOS BPMN поддерживаются два варианта отображения подпроцесса:"
@@ -50,11 +57,10 @@ msgstr "ECOS BPMN supports two display options for a sub-process:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:16
 msgid ""
-"**Sub Process (collapsed)** — свернутый подпроцесс. Процесс создается в "
-"новом окне редактора по стрелке:"
-msgstr ""
-"**Sub Process (collapsed)** — collapsed sub-process. The process is "
-"created in a new editor window via the arrow:"
+"**Sub Process (collapsed)** — свернутый подпроцесс. Его содержимое "
+"редактируется отдельно от основной схемы; для перехода используйте "
+"стрелку. Это тот же подпроцесс внутри родительского процесса:"
+msgstr "**Sub Process (collapsed)** — a collapsed subprocess. Its contents are edited separately from the main diagram; use the arrow to navigate. It remains the same subprocess within the parent process:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:26
 msgid ""
@@ -73,8 +79,8 @@ msgid "Имя"
 msgstr "Name"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:38
-msgid "Укажите **Имя**."
-msgstr "Specify **Name**."
+msgid "При необходимости укажите **Имя** подпроцесса."
+msgstr "Specify the subprocess **Name** if needed."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:45
 msgid "Настройки асинхронности"
@@ -102,19 +108,44 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:50
 msgid ""
+"При включении асинхронности доступны **«Эксклюзивность»**, **«Цикл "
+"повтора»** и **«Приоритет»** фоновой задачи. Настройки выполнения тела "
+"Multi Instance задаются отдельно."
+msgstr "Enabling asynchronous execution makes **Exclusive**, **Retry cycle**, and **Priority** available for the background job. Multi Instance body execution settings are configured separately."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:52
+msgid ""
 "См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_."
 msgstr ""
 "See more about `asynchronous tasks <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:56
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:59
+msgid "Multi Instance"
+msgstr "Multi Instance"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:61
+msgid ""
+"Подпроцесс поддерживает последовательное и параллельное выполнение "
+"нескольких экземпляров. После выбора режима **Multi Instance** в "
+"редакторе доступны настройки количества повторений или коллекции, "
+"переменной элемента и условия завершения."
+msgstr "A subprocess supports sequential and parallel execution of multiple instances. Selecting **Multi Instance** in the editor makes loop cardinality or collection, element variable, and completion condition settings available."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:63
 msgid ""
 "Создание элементов подпроцесса аналогично описанным в разделе "
 ":ref:`Компоненты Citeck BPMN <ecos_bpmn_components>`."
 msgstr ""
 "Creating sub-process elements is similar to those described in the "
 "section :ref:`Citeck BPMN Components <ecos_bpmn_components>`."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_sub_process.rst:65
+msgid ""
+"О подпроцессе, запускаемом событием, см. :ref:`Событийный подпроцесс "
+"<event_subprocess>`."
+msgstr "For an event-triggered subprocess, see :ref:`Event subprocess <event_subprocess>`."
 
 #~ msgid ""
 #~ "**Подпроцесс BPMN** – действие, которое "
@@ -125,3 +156,15 @@ msgstr ""
 #~ "that can include: other activities, "
 #~ "gateways, events, and sequence flows."
 
+#~ msgid ""
+#~ "**Sub Process (collapsed)** — свернутый "
+#~ "подпроцесс. Процесс создается в новом "
+#~ "окне редактора по стрелке:"
+#~ msgstr ""
+#~ "**Sub Process (collapsed)** — collapsed "
+#~ "sub-process. The process is created "
+#~ "in a new editor window via the "
+#~ "arrow:"
+
+#~ msgid "Укажите **Имя**."
+#~ msgstr "Specify **Name**."

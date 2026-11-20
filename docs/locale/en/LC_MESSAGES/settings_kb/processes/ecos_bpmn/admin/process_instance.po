@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -36,7 +36,9 @@ msgstr ""
 msgid ""
 "Для просмотра данных экземпляра процесса необходимо право ``bpmn-process-"
 "instance-read``."
-msgstr "The ``bpmn-process-instance-read`` permission is required to view process instance data."
+msgstr ""
+"The ``bpmn-process-instance-read`` permission is required to view process"
+" instance data."
 
 #: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:16
 msgid "Рассмотрим каждый виджет отдельно."
@@ -108,17 +110,17 @@ msgstr ""
 "informed and redirected to the **Process Information** page."
 
 #: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:71
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:123
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:163
 msgid "**Пропустить пользовательские события**"
 msgstr "**Skip Custom Events**"
 
 #: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:72
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:124
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:164
 msgid "Будут уведомлены только встроенные слушатели событий."
 msgstr "Only built-in event listeners will be notified."
 
 #: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:73
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:125
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:165
 msgid "**Пропустить IO Mapping**"
 msgstr "**Skip IO Mapping**"
 
@@ -146,15 +148,139 @@ msgstr ""
 "``double``, ``long``, ``object``, and ``null``. For the ``object`` type, "
 "specify the Java type name in the ``objectTypeName`` field."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:88
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:90
 msgid "Миграция токенов"
 msgstr "Token Migration"
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:92
+msgid ""
+"Миграция токенов используется для ручного управления ходом экземпляра "
+"процесса: отката на предыдущий шаг, пропуска ошибочного шага и повторного"
+" выполнения шага. Токен показывает, на каком элементе схемы сейчас "
+"находится экземпляр процесса."
+msgstr "Token migration is used to manually control process instance execution: rolling back to a previous step, skipping a failed step, or repeating a step. A token indicates the diagram element where the process instance currently resides."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:94
+msgid ""
+"Все действия выполняются в окне **«Миграция токенов»**, которое "
+"открывается из действий экземпляра процесса."
+msgstr "All actions are performed in the **Token migration** window, opened from process instance actions."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:97
+msgid "Откат на предыдущий шаг"
+msgstr "Rolling back to a previous step"
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:98
+msgid ""
+"Нажмите на схеме на элемент, на котором сейчас находится экземпляр "
+"процесса (он отмечен счётчиком), и выберите **«Начальный токен»**."
+msgstr "Click the diagram element where the process instance currently resides (marked with a counter) and select **Source token**."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:99
+msgid ""
+"Нажмите на ранее пройденный элемент, к которому нужно вернуться, и "
+"выберите **«Целевой токен»**."
+msgstr "Click the previously visited element to return to and select **Target token**."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:100
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:108
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:116
+msgid "Нажмите **«Мигрировать»** и подтвердите действие."
+msgstr "Click **Migrate** and confirm."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:102
+msgid ""
+"Текущий шаг будет отменён, экземпляр процесса продолжит выполнение с "
+"выбранного элемента."
+msgstr "The current step is canceled and the process instance continues from the selected element."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:105
+msgid "Пропуск ошибочного шага"
+msgstr "Skipping a failed step"
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:106
+msgid ""
+"Нажмите на схеме на элемент, на котором экземпляр процесса остановился, и"
+" выберите **«Начальный токен»**. Для инцидента этот элемент указан в "
+"колонке **Элемент** на вкладке :ref:`Инциденты "
+"<process_instance_incidents>`."
+msgstr "Click the diagram element where the process instance stopped and select **Source token**. For an incident, this element is listed in the **Element** column on the :ref:`Incidents tab <process_instance_incidents>`."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:107
+msgid ""
+"Нажмите на элемент, следующий за ошибочным шагом, и выберите **«Целевой "
+"токен»**. Ошибочный шаг указан в колонке **Отказавший элемент**."
+msgstr "Click the element following the failed step and select **Target token**. The failed step is listed in the **Failed element** column."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:110
+msgid ""
+"Ошибочный шаг выполнен не будет, экземпляр процесса продолжит выполнение "
+"со следующего элемента."
+msgstr "The failed step is not executed and the process instance continues from the next element."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:113
+msgid "Повторное выполнение шага"
+msgstr "Repeating a step"
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:114
+msgid ""
+"Нажмите на схеме на элемент, который нужно выполнить заново, и выберите "
+"**«Начальный токен»**."
+msgstr "Click the diagram element to execute again and select **Source token**."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:115
+msgid "Нажмите на этот же элемент ещё раз и выберите **«Целевой токен»**."
+msgstr "Click the same element again and select **Target token**."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:118
+msgid "Шаг будет запущен заново."
+msgstr "The step is restarted."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:121
+msgid "Что учитывать при миграции"
+msgstr "Migration considerations"
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:122
+msgid ""
+"Переменные процесса сохраняются. Удаляются только локальные переменные "
+"отменённого элемента."
+msgstr "Process variables are preserved. Only local variables of the canceled element are deleted."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:123
+msgid ""
+"Целевой элемент запускается сразу после подтверждения. Если нужно "
+"исправить значения переменных, сделайте это до миграции (см. "
+":ref:`Переменные <process_instance_variables>`)."
+msgstr "The target element starts immediately after confirmation. If variable values need correction, change them before migration (see :ref:`Variables <process_instance_variables>`)."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:124
+msgid ""
+"Действия, которые процесс уже выполнил, не отменяются: например, "
+"изменение статуса и атрибутов документа, отправленные уведомления."
+msgstr "Actions already performed by the process are not undone, such as document status and attribute changes or sent notifications."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:126
+msgid ""
+"Чтобы остановить выполнение экземпляра, используйте действие "
+"**«Приостановить экземпляр процесса»**, чтобы продолжить — **«Возобновить"
+" экземпляр процесса»**. Прекратить выполнение полностью можно действием "
+"**«Удалить экземпляр процесса»**."
+msgstr "To pause instance execution, use **Suspend process instance**; to continue, use **Resume process instance**. To stop execution completely, use **Delete process instance**."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:128
+msgid ""
+"Для миграции токенов необходимо право ``bpmn-process-instance-migrate``, "
+"для просмотра экземпляра процесса — ``bpmn-process-instance-read``. Права"
+" выдаются группам и пользователям на раздел, в котором находится модель "
+"процесса (см. :ref:`Права доступа <bpmn_permissions>`). Поэтому откат "
+"может выполнять ответственный за процесс без прав администратора системы."
+msgstr "Token migration requires ``bpmn-process-instance-migrate`` permission; viewing a process instance requires ``bpmn-process-instance-read``. Permissions are granted to groups and users on the section containing the process model (see :ref:`Access permissions <bpmn_permissions>`). A person responsible for the process can therefore perform a rollback without system administrator privileges."
 
 #: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst
 msgid "Как выполнить миграцию токенов"
 msgstr "How to Migrate Tokens"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:93
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:133
 msgid ""
 "По нажатию на действие открывается схема текущего экземпляра процесса со "
 "счётчиками текущих экземпляров элементов и инцидентов:"
@@ -162,11 +288,11 @@ msgstr ""
 "Clicking the action opens the diagram of the current process instance "
 "with counters for current activity instances and incidents:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:99
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:139
 msgid "Для увеличения схемы используйте сочетания **Ctrl + скролл мыши**."
 msgstr "Use **ctrl + mouse scroll** to zoom the diagram."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:101
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:141
 msgid ""
 "Кликом на элемент из схемы процесса выберите **Начальный токен** "
 "(активная задача/этап — он будет снят/отменен) и **Целевой токен** "
@@ -176,7 +302,7 @@ msgstr ""
 "Token** (active task/stage - it will be removed/canceled) and the "
 "**Target Token** (task/stage that will be started)."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:107
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:147
 msgid ""
 "На схеме начальный токен будет отмечен зеленой рамкой, целевой — красной."
 " Также выбранные токены отражены в нижней части:"
@@ -185,11 +311,11 @@ msgstr ""
 " target token with a red one. The selected tokens are also reflected at "
 "the bottom:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:113
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:153
 msgid "Нажмите **«Мигрировать»**. Подтвердите действие:"
 msgstr "Click **'Migrate'**. Confirm the action:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:126
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:166
 msgid ""
 "Маппинги входных и выходных данных будут пропущены при модификации "
 "экземпляра процесса."
@@ -197,7 +323,7 @@ msgstr ""
 "Input and output mappings will be skipped when modifying the process "
 "instance."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:128
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:168
 msgid ""
 "Миграция токенов выполняется в рамках текущего запроса. Если выполнить "
 "миграцию не удастся — будет показана ошибка."
@@ -205,45 +331,45 @@ msgstr ""
 "Token migration is performed within the current request. If migration "
 "fails, an error is displayed."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:131
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:171
 msgid "Схема"
 msgstr "Diagram"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:137
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:177
 msgid "Схема процесса, на которой отмечены:"
 msgstr "Process diagram showing:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:149
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:189
 msgid "Количество текущих экземпляров элемента в данном экземпляре процесса."
 msgstr "The number of current activity instances within this process instance."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:155
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:195
 msgid "Количество инцидентов."
 msgstr "Number of incidents."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:158
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:198
 msgid "Журнал"
 msgstr "Journal"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:161
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:203
 msgid "Переменные"
 msgstr "Variables"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:163
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:205
 msgid "На вкладке представлен список переменных данного экземпляра процесса:"
 msgstr "The tab shows a list of variables for this process instance:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:169
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:211
 msgid ""
 "По клику на **Область видимости** список переменных фильтруется по "
 "выбранной области видимости."
 msgstr "Clicking **Scope** filters the variable list by the selected scope."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:175
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:217
 msgid "Элемент выделяется на схеме бизнес-процесса:"
 msgstr "The element is highlighted on the business process diagram:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:181
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:223
 msgid "Для отключения фильтра:"
 msgstr "To disable the filter:"
 
@@ -255,15 +381,15 @@ msgstr "Copy process instance variable value."
 msgid "Удалить переменную."
 msgstr "Delete variable."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:207
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:249
 msgid "Редактирование переменной"
 msgstr "Editing a Variable"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:213
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:255
 msgid "Редактировать переменную экземпляра процесса:"
 msgstr "Edit process instance variable:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:219
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:261
 msgid ""
 "Если переменная заполнена, кликните **Значение** для изменения. Внесите "
 "изменения и сохраните."
@@ -271,7 +397,7 @@ msgstr ""
 "If the variable has a value, click **Value** to change it. Make the "
 "changes and save."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:221
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:263
 msgid ""
 "Редактирование поддерживается для тех же типов, что и добавление "
 "переменной. Переменные типов ``json`` и ``xml`` могут отображаться в "
@@ -281,14 +407,14 @@ msgid ""
 msgstr ""
 "Editing supports the same types as adding a variable. Variables of types "
 "``json`` and ``xml`` may appear in the list, but this action does not "
-"support changing their values while retaining these types. The name of "
-"an existing variable is not changed when editing it."
+"support changing their values while retaining these types. The name of an"
+" existing variable is not changed when editing it."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:224
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:268
 msgid "Инциденты"
 msgstr "Incidents"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:226
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:270
 msgid ""
 "На вкладке представлен список неразрешенных инцидентов (возникших ошибок)"
 " данного экземпляра процесса:"
@@ -296,13 +422,33 @@ msgstr ""
 "The tab shows a list of unresolved incidents (errors that occurred) for "
 "this process instance:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:228
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:272
+msgid ""
+"Для каждого инцидента показаны текст ошибки (**Сообщение**), экземпляр "
+"процесса, дата и время возникновения (**Дата создания**), шаг процесса, "
+"на котором произошла ошибка (**Элемент** и **Отказавший элемент**), тип "
+"инцидента и примечание. Входные данные шага доступны на вкладке "
+":ref:`Переменные <process_instance_variables>` с фильтром по области "
+"видимости элемента."
+msgstr "Each incident shows the error text (**Message**), process instance, occurrence date and time (**Creation date**), process step where the error occurred (**Element** and **Failed element**), incident type, and annotation. Step input data is available on the :ref:`Variables tab <process_instance_variables>` filtered by the element's scope."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:274
+msgid ""
+"Действия по исправлению: комментарий к инциденту, :ref:`изменение "
+"количества попыток <process_instance_retries>` (повторный запуск "
+"задания), :ref:`изменение переменных <process_instance_variables>` и "
+":ref:`миграция токенов <token_migration>` (повтор или пропуск шага)."
+msgstr "Remedial actions: incident comments, :ref:`changing the retry count <process_instance_retries>` (retrying the job), :ref:`modifying variables <process_instance_variables>`, and :ref:`token migration <token_migration>` (repeating or skipping a step)."
+
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:276
 msgid ""
 "Для добавления комментария к инциденту и изменения количества попыток "
 "выполнения задания необходимо право ``bpmn-process-instance-edit``."
-msgstr "The ``bpmn-process-instance-edit`` permission is required to add an incident comment or change the number of job retries."
+msgstr ""
+"The ``bpmn-process-instance-edit`` permission is required to add an "
+"incident comment or change the number of job retries."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:234
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:282
 msgid ""
 "По клику на **Экземпляр процесса** открывается подробная информация о нем"
 " (карточка соответствующего экземпляра процесса). См. :ref:`Экземпляр "
@@ -312,7 +458,7 @@ msgstr ""
 " card of the corresponding process instance). See :ref:`Process Instance "
 "<process_instance>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:236
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:284
 msgid ""
 "По клику на **Элемент**, **Отказавший элемент** — элемент будет подсвечен"
 " на схеме:"
@@ -320,19 +466,19 @@ msgstr ""
 "Clicking on **Element**, **Failed Element** will highlight the element on"
 " the diagram:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:252
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:300
 msgid "Ввести комментарий к инциденту:"
 msgstr "Enter a comment for the incident:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:259
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:309
 msgid "Изменение количества попыток"
 msgstr "Changing the Number of Attempts"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:265
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:315
 msgid "Изменить количество попыток выполнения неуспешной задачи:"
 msgstr "Change the number of retry attempts for a failed task:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:271
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:321
 msgid ""
 "Введите положительное количество оставшихся попыток (не менее 1) и "
 "нажмите **«Сохранить»**. Введённое значение устанавливает количество "
@@ -342,16 +488,16 @@ msgid ""
 "задание немедленно."
 msgstr ""
 "Enter a positive number of remaining retries (at least 1) and click "
-"**\"Save\"**. The value sets the number of "
-"remaining job execution attempts. A positive value allows the executor to"
-" acquire the job again if the other execution conditions are met. Saving "
-"the retry count does not itself run the job immediately."
+"**\"Save\"**. The value sets the number of remaining job execution "
+"attempts. A positive value allows the executor to acquire the job again "
+"if the other execution conditions are met. Saving the retry count does "
+"not itself run the job immediately."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:274
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:324
 msgid "Вызываемые процессы"
 msgstr "Called Processes"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:276
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:326
 msgid ""
 "На вкладке представлен список вызываемых :ref:`call activity "
 "<call_activity>` данного экземпляра процесса и их состояний:"
@@ -359,7 +505,7 @@ msgstr ""
 "The tab shows a list of called :ref:`call activity <call_activity>` for "
 "this process instance and their statuses:"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:282
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:332
 msgid ""
 "По клику на **Вызываемый экземпляр** открывается подробная информация о "
 "нем (карточка вызываемого экземпляра процесса). См. :ref:`Экземпляр "
@@ -369,7 +515,7 @@ msgstr ""
 "card of the called process instance). See :ref:`Process Instance "
 "<process_instance>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:284
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:334
 msgid ""
 "По клику на **Описание процесса** открывается информация об определении "
 "вызываемого процесса."
@@ -377,16 +523,16 @@ msgstr ""
 "Clicking **Process Description** opens information about the called "
 "process definition."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:286
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:310
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:336
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:360
 msgid "По клику на **Элемент** элемент будет подсвечен на схеме."
 msgstr "Clicking on **Element** will highlight the element on the diagram."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:289
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:339
 msgid "Фоновые задачи"
 msgstr "Background Tasks"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:291
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:341
 msgid ""
 "На вкладке представлен список фоновых заданий движка (jobs) данного "
 "экземпляра процесса, например заданий таймеров и асинхронного выполнения."
@@ -394,7 +540,7 @@ msgstr ""
 "The tab lists engine jobs belonging to this process instance, such as "
 "timer and asynchronous execution jobs."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:297
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:347
 msgid ""
 "По клику на **Элемент**, **Отказавший элемент** — элемент будет подсвечен"
 " на схеме."
@@ -402,7 +548,7 @@ msgstr ""
 "Clicking on **Element**, **Failed Element** will highlight the element on"
 " the diagram."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:299
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:349
 msgid ""
 "Фоновую задачу можно приостановить или возобновить, нажимая "
 "соответствующие кнопки в колонке **Действия**. Возобновление разрешает "
@@ -415,11 +561,11 @@ msgstr ""
 "does not itself run it immediately. These actions require ``bpmn-process-"
 "instance-edit`` permission."
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:302
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:352
 msgid "Внешние задачи"
 msgstr "External Tasks"
 
-#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:304
+#: ../../settings_kb/processes/ecos_bpmn/admin/process_instance.rst:354
 msgid ""
 "На вкладке представлен список :ref:`Внешних задач "
 "<ecos_bpmn_external_task>` данного экземпляра процесса:"

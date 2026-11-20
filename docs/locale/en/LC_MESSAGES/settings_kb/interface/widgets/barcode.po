@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 01:13+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,53 +28,114 @@ msgstr "Key ``barcode``"
 
 #: ../../settings_kb/interface/widgets/barcode.rst:8
 msgid ""
-"Виджет отображает сгенерированный штрих-код документа, основанный на "
-"числовом поле документа."
-msgstr ""
-"The widget displays a generated barcode for the document, based on a "
-"numeric field of the document."
+"Виджет отображает изображение штрихкода по значению атрибута документа. "
+"Он используется на дашборде карточки документа (``Case-details``)."
+msgstr "The widget displays a barcode image based on a document attribute value. It is used on the document record dashboard (``Case-details``)."
 
 #: ../../settings_kb/interface/widgets/barcode.rst:10
-msgid "По умолчанию используется поле ``barcode``."
-msgstr "The ``barcode`` field is used by default."
+msgid ""
+"При открытии виджет запрашивает изображение автоматически. Если оно ещё "
+"не получено, доступна кнопка **«Сгенерировать»**. Кнопка **«Сгенерировать"
+" новый»** повторно получает изображение по текущим данным документа; "
+"новый номер документу при этом не присваивается."
+msgstr "On opening, the widget requests the image automatically. If it has not yet been received, a **Generate** button is available. **Generate new** retrieves the image again using the document's current data; it does not assign a new document number."
 
 #: ../../settings_kb/interface/widgets/barcode.rst:12
 msgid ""
-"Если нужно другое поле, то следует зарегистрировать это поле по типу "
-"данных в бине ``core.barcode-attribute.type-to-property.mappingRegistry``"
-" Пример:"
-msgstr ""
-"If a different field is needed, it should be registered by data type in "
-"the bean ``core.barcode-attribute.type-to-property.mappingRegistry``. "
-"Example:"
+"Кнопка **«Распечатать»** открывает PDF со штрихкодом в новой вкладке или "
+"окне браузера. Для печати используйте средства браузера или "
+"PDF-просмотрщика. При ошибке получения изображения виджет показывает "
+"сообщение."
+msgstr "The **Print** button opens a PDF containing the barcode in a new browser tab or window. Use the browser or PDF viewer to print it. If retrieving the image fails, the widget displays a message."
+
+#: ../../settings_kb/interface/widgets/barcode.rst:15
+msgid "Источник значения и формат"
+msgstr "Value source and format"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:17
+msgid ""
+"Для документов, обслуживаемых сервисом ``transformations``, по умолчанию "
+"используется атрибут ``_docNum`` и формат ``CODE_128``. Значение читается"
+" как текст; допустимое содержимое зависит от выбранного формата "
+"кодирования."
+msgstr "For documents served by ``transformations``, the default attribute is ``_docNum`` and the default format is ``CODE_128``. The value is read as text; valid content depends on the selected encoding format."
+
+#: ../../settings_kb/interface/widgets/barcode.rst:19
+msgid ""
+"Другой источник и формат задаются в конфигурации аспекта **«Имеет "
+"штрих-код»** (``barcode``) типа данных:"
+msgstr "Specify a different source and format in the data type's **Has barcode** (``barcode``) aspect configuration:"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:21
+msgid "``attribute`` — атрибут со значением для кодирования;"
+msgstr "``attribute`` — the attribute containing the value to encode;"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:22
+msgid ""
+"``textAttribute`` — атрибут подписи под кодом. Если не задан, "
+"используется значение из ``attribute``;"
+msgstr "``textAttribute`` — the attribute containing the label below the code. If omitted, the value from ``attribute`` is used;"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:23
+msgid "``format`` — формат, например ``CODE_128`` или ``QR_CODE``."
+msgstr "``format`` — the format, such as ``CODE_128`` or ``QR_CODE``."
+
+#: ../../settings_kb/interface/widgets/barcode.rst:25
+msgid "Пример конфигурации типа с атрибутом ``registrationNumber``:"
+msgstr "Example type configuration using the ``registrationNumber`` attribute:"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:37
+msgid "Настройки виджета"
+msgstr "Widget settings"
+
+#: ../../settings_kb/interface/widgets/barcode.rst:39
+msgid ""
+"В настройках доступны условие показа кнопки **«Сгенерировать новый»**, "
+"поле **«Тип кода»** и параметры печати: **«Масштаб»** в процентах, "
+"отступы слева, справа, сверху и снизу в миллиметрах. Для сохранения "
+"нажмите **«Готово»**, для выхода без сохранения — **«Отмена»**."
+msgstr "The settings include a condition for showing **Generate new**, a **Code type** field, and print settings: **Scale** as a percentage and left, right, top, and bottom margins in millimeters. Click **Done** to save or **Cancel** to exit without saving."
+
+#: ../../settings_kb/interface/widgets/barcode.rst:43
+msgid ""
+"В текущей форме представлен тип ``Code-128``. Для современного документа "
+"фактический формат определяется аспектом типа данных."
+msgstr "The current form offers ``Code-128``. For a modern document, the actual format is determined by the data type aspect."
+
+#: ../../settings_kb/interface/widgets/barcode.rst:45
+msgid ""
+"Масштаб и четыре отступа из формы не передаются в современный путь печати"
+" через ``transformations`` и не изменяют его результат. Эти параметры "
+"используются в отдельном пути печати для документов Alfresco."
+msgstr "The scale and four margins from the form are not passed to the modern printing path through ``transformations`` and do not affect its output. These parameters are used by a separate printing path for Alfresco documents."
 
 #: ../../settings_kb/interface/widgets/barcode.rst
 msgid "**Настройка**"
 msgstr "**Configuration**"
 
 #: ../../settings_kb/interface/widgets/barcode.rst
-msgid "Условие отображения кнопки:"
-msgstr "Button display condition:"
+msgid ""
+"Условие отображения кнопки **«Сгенерировать новый»** задаётся "
+"конструктором фильтров по атрибутам записи."
+msgstr "The condition for displaying **Generate new** is defined using the record attribute filter builder."
 
 #: ../../settings_kb/interface/widgets/barcode.rst
 msgid ""
-"Если отсутствует условие, то кнопка отображается. Иначе для отображения, "
-"API по заданному условию должно возвращать **true**."
-msgstr ""
-"If no condition is set, the button is displayed. Otherwise, the API must "
-"return **true** for the given condition in order for the button to appear."
-
-#: ../../settings_kb/interface/widgets/barcode.rst
-msgid "В текущей версии сохраняется как json строка."
-msgstr "In the current version, it is saved as a JSON string."
+"Если условие не ограничивает показ, кнопка доступна. При заданном условии"
+" она показывается, когда результат проверки — **true**."
+msgstr "If the condition does not restrict visibility, the button is available. When a condition is set, the button appears when the check returns **true**."
 
 #: ../../settings_kb/interface/widgets/barcode.rst
 msgid ""
-"Написание условия в соответствии статье :ref:`Язык предикатов <ecos-"
-"predicate_main>`"
-msgstr ""
-"Write the condition according to the :ref:`Predicate Language <ecos-"
-"predicate_main>` article."
+"Условие не скрывает весь виджет или кнопку печати. Если изображения ещё "
+"нет, кнопка **«Сгенерировать»** показывается независимо от этого условия."
+msgstr "The condition does not hide the entire widget or the print button. If there is no image yet, **Generate** appears regardless of this condition."
+
+#: ../../settings_kb/interface/widgets/barcode.rst
+msgid ""
+"Подробнее о структуре условий: :ref:`Язык предикатов <ecos-"
+"predicate_main>`."
+msgstr "For more information on condition structure, see :ref:`Predicate language <ecos-predicate_main>`."
 
 #: ../../settings_kb/interface/widgets/barcode.rst
 msgid "**Настроенный вид**"
@@ -84,3 +145,43 @@ msgstr "**Configured view**"
 msgid "Для типа дашборда Case-details"
 msgstr "For the Case-details dashboard type"
 
+#~ msgid ""
+#~ "Виджет отображает сгенерированный штрих-код "
+#~ "документа, основанный на числовом поле "
+#~ "документа."
+#~ msgstr ""
+#~ "The widget displays a generated barcode"
+#~ " for the document, based on a "
+#~ "numeric field of the document."
+
+#~ msgid "По умолчанию используется поле ``barcode``."
+#~ msgstr "The ``barcode`` field is used by default."
+
+#~ msgid ""
+#~ "Если нужно другое поле, то следует "
+#~ "зарегистрировать это поле по типу данных"
+#~ " в бине ``core.barcode-attribute.type-"
+#~ "to-property.mappingRegistry`` Пример:"
+#~ msgstr ""
+#~ "If a different field is needed, it"
+#~ " should be registered by data type"
+#~ " in the bean ``core.barcode-attribute"
+#~ ".type-to-property.mappingRegistry``. Example:"
+
+#~ msgid "Условие отображения кнопки:"
+#~ msgstr "Button display condition:"
+
+#~ msgid ""
+#~ "Если отсутствует условие, то кнопка "
+#~ "отображается. Иначе для отображения, API "
+#~ "по заданному условию должно возвращать "
+#~ "**true**."
+#~ msgstr ""
+#~ "If no condition is set, the button"
+#~ " is displayed. Otherwise, the API "
+#~ "must return **true** for the given "
+#~ "condition in order for the button "
+#~ "to appear."
+
+#~ msgid "В текущей версии сохраняется как json строка."
+#~ msgstr "In the current version, it is saved as a JSON string."

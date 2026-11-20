@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -135,8 +135,8 @@ msgid ""
 "опубликованной версией. Если идентификаторы элементов сохраняются, "
 "настройка может применяться к нескольким версиям этого процесса."
 msgstr ""
-"A KPI configuration is linked to the process key and is not restricted "
-"to a specific published version. If activity IDs are retained, the "
+"A KPI configuration is linked to the process key and is not restricted to"
+" a specific published version. If activity IDs are retained, the "
 "configuration can apply to multiple versions of the process."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:43
@@ -335,7 +335,8 @@ msgstr ""
 "A count KPI counts occurrences of the selected element event. The value "
 "accumulates for the **KPI configuration + process** pair, including "
 "across different process instances and documents, without separating "
-"values by process version. It is not a separate counter for each instance."
+"values by process version. It is not a separate counter for each "
+"instance."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:98
 msgid ""
@@ -416,14 +417,57 @@ msgstr ""
 "than a separate measurement per document."
 
 #: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:128
+msgid "Средняя длительность исполнения экземпляров"
+msgstr "Average instance execution duration"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:129
+msgid ""
+"Чтобы видеть в интерфейсе среднюю длительность исполнения экземпляров "
+"процесса, настройте KPI по продолжительности от стартового события "
+"процесса (исходный элемент, событие **START**) до конечного события "
+"(целевой элемент, событие **END**). Замер создаётся, когда экземпляр "
+"достигает указанного конечного события; если конечных событий в процессе "
+"несколько, настройте KPI для каждого. Создайте копию журнала **Значения "
+"KPI** и разрешите в ней группировку по колонке **Процесс** — настройка "
+"**«Можно ли группировать»** (см. :ref:`Дополнительные настройки колонки "
+"<additional_column_settings>`). В этом журнале сгруппируйте значения по "
+"процессу и выберите для колонки **Значение** агрегацию **Среднее**. "
+"Доступны также **Минимум**, **Максимум** и **Сумма** (см. "
+":ref:`Группировка журнала <journal_group>`)."
+msgstr "To view the average process instance execution duration, configure a duration KPI from the process start event (source element, **START** event) to the end event (target element, **END** event). A measurement is created when an instance reaches the specified end event; if the process has multiple end events, configure a KPI for each. Copy the **KPI values** journal and enable grouping for its **Process** column using **Allow grouping** (see :ref:`Additional column settings <additional_column_settings>`). In this journal, group values by process and select **Average** aggregation for **Value**. **Minimum**, **Maximum**, and **Sum** are also available (see :ref:`Journal grouping <journal_group>`)."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:132
+msgid "Отчёты по достижению контрольных точек"
+msgstr "Milestone achievement reports"
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:133
+msgid ""
+"Контрольные точки процесса задаются настройками KPI по продолжительности:"
+" исходный элемент — начало процесса или этапа, целевой — элемент, "
+"достижение которого контролируется, например задача или событие «Договор "
+"подписан». При каждом достижении контрольной точки в журнал **Значения "
+"KPI** записывается значение — время от исходного элемента до целевого — "
+"вместе с процессом и документом. Рядом со значением в журнале выводится "
+"норма из настройки KPI. Отчёт по достижению контрольных точек "
+"настраивается в копии этого журнала: колонки с атрибутами документа и "
+"отклонением от нормы (см. пример ниже), фильтры по процессу, KPI и дате, "
+"группировка по колонкам, для которых она разрешена, агрегации и выгрузка "
+"в Excel (см. :ref:`Выгрузка данных журнала <journal_data_export>`). Число"
+" прохождений через контрольную точку считает KPI по количеству — "
+"накопленным итогом по процессу. Среднее отклонение от нормы в процентах "
+"по каждому KPI по продолжительности отображается на схеме процесса (см. "
+":ref:`ниже <bpmn_kpi_scheme>`)."
+msgstr "Process milestones are defined by duration KPI settings: the source is the start of a process or stage, and the target is the monitored element, such as a task or Contract signed event. Each time the milestone is reached, a value, the time from source to target, is recorded in **KPI values** together with the process and document. The journal displays the target from KPI settings alongside the value. Configure a milestone report in a copy of this journal: columns with document attributes and target deviation (see the example below), filters by process, KPI, and date, grouping for enabled columns, aggregations, and Excel export (see :ref:`Exporting journal data <journal_data_export>`). A count KPI tracks milestone crossings as a cumulative process total. Average percentage deviation from the target for each duration KPI is displayed on the process diagram (see :ref:`below <bpmn_kpi_scheme>`)."
+
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:136
 msgid "Пример сформированного отчета"
 msgstr "Example of a generated report"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:135
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:145
 msgid "Отображение на схеме BPMN"
 msgstr "Display on BPMN diagram"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:137
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:147
 msgid ""
 "Значения отклонений KPI доступны на схеме BPMN в виджете :ref:`Статистика"
 " процесса <widget_process_statistics>`."
@@ -431,7 +475,7 @@ msgstr ""
 "KPI deviation values are available on the BPMN diagram in the "
 ":ref:`Process Statistics<widget_process_statistics>` widget"
 
-#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:139
+#: ../../settings_kb/processes/ecos_bpmn/ecos_bpmn_kpi.rst:149
 msgid ""
 "По умолчанию KPI отображается у целевого BPMN-элемента. Чтобы отобразить "
 "его у другого элемента, укажите его ID в поле "
@@ -538,4 +582,3 @@ msgstr ""
 #~ "configured using the :ref:`Duration formatter"
 #~ " (Duration)<DurationFormatter>` for better "
 #~ "readability."
-

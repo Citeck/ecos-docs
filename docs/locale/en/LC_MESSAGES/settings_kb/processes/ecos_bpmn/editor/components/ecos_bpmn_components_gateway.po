@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -45,7 +45,7 @@ msgid "*Exclusive Gateway*, исключающий — «или/или», выб
 msgstr "*Exclusive Gateway*, exclusive — 'either/or', selection of only one path."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:27
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:103
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:105
 msgid "Параллельный шлюз"
 msgstr "Parallel Gateway"
 
@@ -54,7 +54,7 @@ msgid "*Parallel Gateway*, «и» — выбор всех путей."
 msgstr "*Parallel Gateway*, 'and' — selection of all paths."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:41
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:131
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:135
 msgid "Инклюзивный шлюз"
 msgstr "Inclusive Gateway"
 
@@ -67,7 +67,7 @@ msgstr ""
 "selection of one or more paths."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:55
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:159
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:165
 msgid "Событийный"
 msgstr "Event-based"
 
@@ -132,14 +132,22 @@ msgstr ""
 "case where no other condition matches — similar to an 'else' clause in "
 "programming languages."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:94
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:122
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:150
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:181
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:90
+msgid ""
+"Условия задаются на исходящих :ref:`потоках управления <seq_flow>`: можно"
+" выбрать вердикт задачи, скрипт или выражение. Поток по умолчанию "
+"назначается отдельно и не требует условия. При слиянии эксклюзивный шлюз "
+"пропускает каждое входящее выполнение дальше, не синхронизируя ветви."
+msgstr "Conditions are defined on outgoing :ref:`sequence flows <seq_flow>`: select a task outcome, script, or expression. A default flow is assigned separately and requires no condition. When merging, an exclusive gateway passes each incoming execution onward without synchronizing branches."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:96
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:124
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:156
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:189
 msgid "Настройка шлюза:"
 msgstr "Gateway configuration:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:107
 msgid ""
 "**Параллельный шлюз** (также называемый шлюзом AND), который позволяет "
 "разветвляться на несколько путей выполнения процесса или объединять "
@@ -149,7 +157,7 @@ msgstr ""
 " multiple paths of process execution or merging multiple incoming paths "
 "of process execution."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:107
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:109
 msgid ""
 "Функциональность параллельного шлюза основана на входящем и исходящем "
 "потоках управления:"
@@ -157,7 +165,7 @@ msgstr ""
 "The functionality of the parallel gateway is based on incoming and "
 "outgoing sequence flows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:109
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:111
 msgid ""
 "**разветвление**: все исходящие потоки управления выполняются "
 "параллельно, создавая одно параллельное выполнение для каждого потока "
@@ -166,19 +174,14 @@ msgstr ""
 "**forking**: all outgoing sequence flows are executed in parallel, "
 "creating one parallel execution for each sequence flow."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:110
-msgid ""
-"**соединение**: все одновременные выполнения, поступающие на параллельный"
-" шлюз, ожидают на шлюзе до тех пор, пока не будет выполнено выполнение "
-"процесса для каждого из входящих потоков управления. Затем процесс "
-"продолжается за присоединяющимся шлюзом."
-msgstr ""
-"**joining**: all concurrent executions arriving at the parallel gateway "
-"wait at the gateway until process execution has been completed for each "
-"of the incoming sequence flows. Then the process continues past the "
-"joining gateway."
-
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:112
+msgid ""
+"**соединение**: шлюз синхронизирует параллельные ветви перед продолжением"
+" процесса. В обычной схеме с парным разветвлением и объединением он "
+"ожидает завершения всех объединяемых ветвей."
+msgstr "**join**: the gateway synchronizes parallel branches before the process continues. In a typical model with a paired split and join, it waits for all joining branches to complete."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:114
 msgid ""
 "Обратите внимание, что параллельный шлюз может иметь как разветвление, "
 "так и объединение, если для одного и того же параллельного шлюза "
@@ -191,7 +194,7 @@ msgstr ""
 "parallel gateway. In this case, the gateway will first join all incoming "
 "sequence flows and then split them into several parallel execution paths."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:114
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:116
 msgid ""
 "Важным отличием от других типов шлюзов является то, что параллельный шлюз"
 " не оценивает условия. Если условия определены для потока управления, "
@@ -201,7 +204,7 @@ msgstr ""
 "gateway does not evaluate conditions. If conditions are defined for "
 "sequence flows connected to a parallel gateway, they are simply ignored."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:116
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:118
 msgid ""
 "Фактическое поведение (разветвление, объединение или и то, и другое) "
 "определяется потоком управления, подключенным к параллельному шлюзу."
@@ -209,7 +212,16 @@ msgstr ""
 "The actual behavior (forking, joining, or both) is determined by the "
 "sequence flows connected to the parallel gateway."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:133
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:130
+msgid ""
+"Для параллельного шлюза доступны **«Асинхронно перед»** и **«Асинхронно "
+"после»**. При включении асинхронности также доступны "
+"**«Эксклюзивность»**, **«Цикл повтора»** и **«Приоритет»** фоновой "
+"задачи. В текущих формах остальных типов шлюзов эти настройки не "
+"представлены."
+msgstr "A parallel gateway supports **Asynchronous before** and **Asynchronous after**. Enabling asynchronous execution also makes **Exclusive**, **Retry cycle**, and **Priority** available for the background job. The current forms for other gateway types do not expose these settings."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:137
 msgid ""
 "**Инклюзивный шлюз** можно рассматривать как комбинацию эксклюзивного и "
 "параллельного шлюзов."
@@ -217,7 +229,7 @@ msgstr ""
 "**Inclusive Gateway** can be considered a combination of exclusive and "
 "parallel gateways."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:135
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:139
 msgid ""
 "Подобно эксклюзивному шлюзу, вы можете определить условия для исходящих "
 "потоков управления, и инклюзивный шлюз оценит их. Инклюзивный шлюз может "
@@ -229,7 +241,7 @@ msgstr ""
 " gateway. The functionality of the inclusive gateway is based on incoming"
 " and outgoing sequence flows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:137
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:141
 msgid ""
 "Функциональность инклюзивного шлюза основана на входящих и исходящих "
 "потоках управления:"
@@ -237,7 +249,7 @@ msgstr ""
 "The functionality of the parallel gateway is based on incoming and "
 "outgoing sequence flows:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:139
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:143
 msgid ""
 "разветвление: все исходящие условия потока управления оцениваются, и для "
 "условий потока управления, которые оцениваются как «истина», потоки "
@@ -248,25 +260,14 @@ msgstr ""
 "sequence flow conditions that evaluate to 'true', the flows are executed "
 "in parallel, creating one parallel execution for each sequence flow."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:140
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:144
 msgid ""
-"соединение: все одновременные выполнения, поступающие на инклюзивный "
-"шлюз, ожидают на шлюзе до тех пор, пока не произойдет выполнение процесса"
-" для каждого из входящих потоков управления, имеющих токен процесса. Это "
-"важное отличие от параллельного шлюза. Другими словами, инклюзивный шлюз "
-"будет ждать только выполнения входящих потоков управления. После "
-"присоединения процесс продолжается за пределами инклюзивного шлюза "
-"присоединения."
-msgstr ""
-"joining: all concurrent executions arriving at the inclusive gateway wait"
-" at the gateway until process execution has occurred for each of the "
-"incoming sequence flows that have a process token. This is an important "
-"difference from the parallel gateway. In other words, the inclusive "
-"gateway will only wait for the execution of incoming sequence flows that "
-"are active. After joining, the process continues past the inclusive "
-"joining gateway."
+"соединение: шлюз ожидает те активированные ветви, которые ещё могут "
+"прийти к этому объединению. Ветви, не выбранные при разветвлении, ожидать"
+" не требуется. После объединения процесс продолжается дальше."
+msgstr "join: the gateway waits for activated branches that can still reach this join. Branches not selected at the split do not need to be awaited. The process continues after the join."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:142
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:146
 msgid ""
 "Обратите внимание, что инклюзивный шлюз может работать как с "
 "разветвлением, так и с присоединением, если для одного и того же "
@@ -283,7 +284,7 @@ msgstr ""
 "several parallel process execution paths for outgoing sequence flows "
 "whose condition evaluates to 'true'."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:144
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:148
 msgid ""
 "Фактическое поведение (разветвление, объединение или и то, и другое) "
 "определяется потоками управления, подключенными к инклюзивному шлюзу."
@@ -291,13 +292,23 @@ msgstr ""
 "The actual behavior (forking, joining, or both) is determined by the "
 "sequence flows connected to the inclusive gateway."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:161
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:150
+msgid ""
+"Условия задаются на исходящих :ref:`потоках управления <seq_flow>`. Можно"
+" назначить поток по умолчанию: он используется, когда ни одна из "
+"остальных исходящих ветвей не выбрана. Обычная ветвь без условия "
+"выбирается без проверки и может выполняться вместе с подходящими "
+"условными ветвями; тип условия **«Нет»** сам по себе не делает её потоком"
+" по умолчанию."
+msgstr "Conditions are defined on outgoing :ref:`sequence flows <seq_flow>`. A default flow can be assigned: it is used when no other outgoing branch is selected. A regular unconditional branch is selected without checking and may run alongside matching conditional branches; the **None** condition type does not itself make it the default flow."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:167
 msgid ""
 "**Шлюз, основанный на событиях**, позволяет принимать решения на основе "
 "событий."
 msgstr "**Event-based Gateway** allows making decisions based on events."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:163
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:169
 msgid ""
 "Каждый исходящий поток управления шлюза должен быть подключен к "
 ":ref:`Intermediate Catch Event <Intermediate_Catch_Event>`. Когда "
@@ -312,7 +323,7 @@ msgstr ""
 "state: process execution is suspended. Additionally, an event "
 "subscription is created for each outgoing sequence flow."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:169
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:175
 msgid ""
 "Обратите внимание, что потоки управления, выходящие из шлюза, основанного"
 " на событиях, отличаются от обычных потоков управления. Эти потоки "
@@ -326,25 +337,21 @@ msgstr ""
 "events the process execution arriving at the event-based gateway should "
 "subscribe to."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:171
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:177
 msgid "Применяются следующие ограничения:"
 msgstr "The following constraints apply:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:173
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:179
 msgid "Шлюз должен иметь два или более исходящих потока управления."
 msgstr "The gateway must have two or more outgoing sequence flows."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:174
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:180
 msgid ""
-"За шлюзом могут следовать только элементы типа :ref:`Intermediate Catch "
-"Event <Intermediate_Catch_Event>` (Получение задач после шлюза на основе "
-"событий еще не поддерживается движком.)"
-msgstr ""
-"Only elements of type :ref:`Intermediate Catch Event "
-"<Intermediate_Catch_Event>` can follow the gateway (Receiving tasks after"
-" an event-based gateway are not yet supported by the engine.)"
+"В описываемой схеме после шлюза используйте элементы типа "
+":ref:`Intermediate Catch Event <Intermediate_Catch_Event>`."
+msgstr "In the model described, use :ref:`Intermediate Catch Event <Intermediate_Catch_Event>` elements after the gateway."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:175
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:181
 msgid ""
 "Промежуточное событие CatchEvent, подключенное к шлюзу, должно иметь один"
 " входящий поток управления."
@@ -352,7 +359,13 @@ msgstr ""
 "The Intermediate CatchEvent connected to the gateway must have one "
 "incoming sequence flow."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:187
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:183
+msgid ""
+"Для выбора ветви используются события, а не условия на исходящих потоках."
+" Поток по умолчанию для этого шлюза не настраивается."
+msgstr "Events select the branch, rather than conditions on outgoing flows. A default flow is not configured for this gateway."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:195
 msgid ""
 "Процесс является примером процесса со шлюзом на основе событий. Когда "
 "выполнение достигает шлюза, основанного на событиях, выполнение процесса "
@@ -374,87 +387,152 @@ msgstr ""
 "triggered, execution continues after the timer, and the signal "
 "subscription is canceled."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:189
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:197
 msgid "Сравнение шлюзов представлено в таблице:"
 msgstr "A comparison of gateways is presented in the table:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:197
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:205
 msgid "Тип шлюза"
 msgstr "Gateway Type"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:198
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:206
 msgid "Разделение"
 msgstr "Splitting"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:199
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:207
 msgid "Слияние"
 msgstr "Merging"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:200
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:208
 msgid "Условия"
 msgstr "Conditions"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:201
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:209
 msgid "**Эксклюзивный**"
 msgstr "**Exclusive**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:202
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:210
 msgid "Одна ветка"
 msgstr "One branch"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:203
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:211
 msgid "Передает поток сразу"
 msgstr "Passes flow immediately"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:204
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:212
 msgid "Да (выбор одной ветки)"
 msgstr "Yes (selects one branch)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:205
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:213
 msgid "**Параллельный**"
 msgstr "**Parallel**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:206
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:214
 msgid "Все ветки"
 msgstr "All branches"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:207
-msgid "Ждет завершения всех веток"
-msgstr "Waits for all branches to complete"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:215
+msgid "Синхронизирует параллельные ветви"
+msgstr "Synchronizes parallel branches"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:208
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:216
 msgid "Нет"
 msgstr "No"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:209
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:217
 msgid "**Инклюзивный**"
 msgstr "**Inclusive**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:210
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:218
 msgid "Несколько веток (по условиям)"
 msgstr "Multiple branches (based on conditions)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:211
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:219
 msgid "Ждет завершения активных веток"
 msgstr "Waits for active branches to complete"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:212
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:220
 msgid "Да (множественные условия)"
 msgstr "Yes (multiple conditions)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:213
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:221
 msgid "**Событийный**"
 msgstr "**Event-based**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:214
-msgid "На основе событий"
-msgstr "Based on events"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:222
+msgid "По первому сработавшему событию"
+msgstr "Based on the first event triggered"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:215
-msgid "Не требуется (ждет первого события)"
-msgstr "Not required (waits for first event)"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:223
+msgid "Не используется для синхронизации ветвей"
+msgstr "Not used for branch synchronization"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:216
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst:224
 msgid "Нет (реагирует на события)"
 msgstr "No (reacts to events)"
 
+#~ msgid ""
+#~ "**соединение**: все одновременные выполнения, "
+#~ "поступающие на параллельный шлюз, ожидают "
+#~ "на шлюзе до тех пор, пока не "
+#~ "будет выполнено выполнение процесса для "
+#~ "каждого из входящих потоков управления. "
+#~ "Затем процесс продолжается за присоединяющимся"
+#~ " шлюзом."
+#~ msgstr ""
+#~ "**joining**: all concurrent executions "
+#~ "arriving at the parallel gateway wait"
+#~ " at the gateway until process "
+#~ "execution has been completed for each"
+#~ " of the incoming sequence flows. Then"
+#~ " the process continues past the "
+#~ "joining gateway."
+
+#~ msgid ""
+#~ "соединение: все одновременные выполнения, "
+#~ "поступающие на инклюзивный шлюз, ожидают "
+#~ "на шлюзе до тех пор, пока не "
+#~ "произойдет выполнение процесса для каждого "
+#~ "из входящих потоков управления, имеющих "
+#~ "токен процесса. Это важное отличие от"
+#~ " параллельного шлюза. Другими словами, "
+#~ "инклюзивный шлюз будет ждать только "
+#~ "выполнения входящих потоков управления. После"
+#~ " присоединения процесс продолжается за "
+#~ "пределами инклюзивного шлюза присоединения."
+#~ msgstr ""
+#~ "joining: all concurrent executions arriving"
+#~ " at the inclusive gateway wait at "
+#~ "the gateway until process execution has"
+#~ " occurred for each of the incoming"
+#~ " sequence flows that have a process"
+#~ " token. This is an important "
+#~ "difference from the parallel gateway. In"
+#~ " other words, the inclusive gateway "
+#~ "will only wait for the execution "
+#~ "of incoming sequence flows that are "
+#~ "active. After joining, the process "
+#~ "continues past the inclusive joining "
+#~ "gateway."
+
+#~ msgid ""
+#~ "За шлюзом могут следовать только "
+#~ "элементы типа :ref:`Intermediate Catch Event"
+#~ " <Intermediate_Catch_Event>` (Получение задач "
+#~ "после шлюза на основе событий еще "
+#~ "не поддерживается движком.)"
+#~ msgstr ""
+#~ "Only elements of type :ref:`Intermediate "
+#~ "Catch Event <Intermediate_Catch_Event>` can "
+#~ "follow the gateway (Receiving tasks "
+#~ "after an event-based gateway are "
+#~ "not yet supported by the engine.)"
+
+#~ msgid "Ждет завершения всех веток"
+#~ msgstr "Waits for all branches to complete"
+
+#~ msgid "На основе событий"
+#~ msgstr "Based on events"
+
+#~ msgid "Не требуется (ждет первого события)"
+#~ msgstr "Not required (waits for first event)"

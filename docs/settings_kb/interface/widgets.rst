@@ -41,9 +41,6 @@
     * - Стадии / ``stages``
       - ``case-details``
       - Подключён ``StagesWidget``.
-    * - Статистика по задачам / ``report``
-      - ``user-dashboard``, ``custom``
-      - Включена интеграция с Alfresco.
 
 Это условия клиентской доступности; лицензионный состав определяется поставкой. Плагинные «Новости» и «Канбан» загружаются без аналогичной предварительной проверки наличия модуля: при его отсутствии пункт может оставаться в редакторе, а содержимое не отображаться.
 
@@ -218,12 +215,6 @@
 
       Визуализация прохождения стадий документа.
 
-   .. grid-item-card:: Статистика по задачам
-      :link: widget_report
-      :link-type: ref
-
-      Статистика по задачам при включённой интеграции с Alfresco.
-
    .. grid-item-card:: Статистика процесса
       :link: widget_process_statistics
       :link-type: ref
@@ -285,7 +276,6 @@
    widgets/publication
    widgets/doc_associations
    widgets/stages
-   widgets/report
    widgets/process_statistics
    widgets/doc_status
    widgets/properties

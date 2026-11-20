@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 16:52+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -55,13 +55,10 @@ msgstr ""
 msgid ""
 "Для одного журнала можно создать несколько канбан-досок и переключаться "
 "между ними через **Список досок**. Сохранённые конфигурации отображения "
-"доступны через **Шаблоны настроек**. При открытии доски автоматически "
-"применяется шаблон, выбранный по умолчанию."
-msgstr ""
-"Multiple Kanban boards can be created for a single journal and switched "
-"between using **Board List**. Saved display configurations are available "
-"through **Settings Templates**. When opening a board, the default "
-"template is automatically applied."
+"доступны через **Шаблоны настроек**. При открытии используется "
+"сохранённый выбор доски и шаблона по умолчанию, если он задан. Шаблоны "
+"учитывают журнал и рабочее пространство."
+msgstr "You can create several kanban boards for one journal and switch between them through **Board list**. Saved display configurations are available through **Settings templates**. On opening, the saved board selection and default template are used, if specified. Templates take the journal and workspace into account."
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst:29
 msgid ""
@@ -69,48 +66,61 @@ msgid ""
 "есть необходимые права, карточку можно перетащить (drag-and-drop) в "
 "нужную колонку. UI отправляет серверное действие перемещения; изменение "
 "статуса и допустимость перехода определяет серверная логика."
-msgstr "If the board allows changes (``readOnly: false``) and permissions permit, drag a card to the desired column. The UI sends a server move action; server logic determines status changes and allowed transitions."
+msgstr ""
+"If the board allows changes (``readOnly: false``) and permissions permit,"
+" drag a card to the desired column. The UI sends a server move action; "
+"server logic determines status changes and allowed transitions."
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst:35
 msgid ""
-"Если перенос в соответствии с бизнес-процессом невозможен, выводится "
-"ошибка. Например:"
-msgstr ""
-"If moving according to the business process is not possible, an error is "
-"shown. For example:"
+"Если серверная логика запрещает изменение статуса или у пользователя нет "
+"необходимых прав, выводится ошибка. Например:"
+msgstr "If server logic prohibits a status change or the user lacks the required permissions, an error is displayed. For example:"
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst:41
-msgid "Внутри одной колонки карточки часто можно менять местами вертикально."
-msgstr "Within a single column, cards can often be reordered vertically."
+msgid ""
+"При разрешённом перетаскивании (``readOnly: false``) внутри одной колонки"
+" можно менять порядок карточек вертикально. При ``readOnly: true`` "
+"перетаскивание отключено и используется обычный порядок выборки."
+msgstr "When dragging is allowed (``readOnly: false``), cards can be reordered vertically within a column. With ``readOnly: true``, dragging is disabled and the normal query order is used."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:45
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:43
+msgid ""
+"Ручной порядок сохраняется на сервере для доски, рабочего пространства, "
+"режима группировки и колонки. Карточки, статус которых изменился после "
+"последней ручной расстановки, могут появляться выше упорядоченных "
+"карточек."
+msgstr "The manual order is saved on the server for the board, workspace, grouping mode, and column. Cards whose status has changed since the last manual arrangement may appear above manually ordered cards."
+
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:47
 msgid ""
 "Вертикальное перемещение задаёт порядок карточек на доске. Команда может "
 "использовать этот порядок для визуального обозначения срочности, но само "
 "перемещение не означает изменения отдельного атрибута «Приоритет» записи."
-msgstr "Vertical movement sets board card order. Teams can use it to indicate urgency visually, but moving alone does not modify a separate record \"Priority\" attribute."
+msgstr ""
+"Vertical movement sets board card order. Teams can use it to indicate "
+"urgency visually, but moving alone does not modify a separate record "
+"\"Priority\" attribute."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:53
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:55
 msgid "Настройка колонок канбан доски"
 msgstr "Kanban Board Column Configuration"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:55
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:57
 msgid ""
 "Настроить фильтрацию элементов, порядок и отображение колонок можно, "
 "нажав:"
 msgstr "To configure item filtering, column order, and display, click:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:61
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:63
 msgid ""
-"Предоставлен весь список статусов типа данных, к которому относится "
-"текущий журнал. Чекбоксами можно отметить те статусы, которые необходимо "
-"отражать на канбан-доске."
-msgstr ""
-"The full list of statuses for the data type associated with the current "
-"journal is provided. Checkboxes can be used to select the statuses to "
-"display on the Kanban board."
+"Отметьте статусы, которые необходимо показывать, и при необходимости "
+"измените порядок колонок перетаскиванием. Набор колонок определяется "
+"конфигурацией доски; если колонки в ней не заданы, они формируются из "
+"статусов типа данных."
+msgstr "Select the statuses to display and drag columns to reorder them if needed. The board configuration defines the columns; if none are specified, they are generated from the data type's statuses."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:67
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:69
 msgid ""
 "Нажмите **Применить** — на канбан-доске будут показаны выбранные в "
 "настройках статусы и элементы в этих статусах."
@@ -118,37 +128,37 @@ msgstr ""
 "Click **Apply** — the Kanban board will display the statuses selected in "
 "the settings and the items in those statuses."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:69
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:71
 msgid "Чтобы сбросить применённый фильтр, воспользуйтесь кнопкой:"
 msgstr "To reset the applied filter, use the button:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:75
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:77
 msgid "Выбранные настройки можно сохранить в шаблон, нажав **Создать шаблон**:"
 msgstr ""
 "The selected settings can be saved as a template by clicking **Create "
 "template**:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:81
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:83
 msgid "Укажите название, для кого он доступен (пользователи, группы), сохраните."
 msgstr "Specify the name, who it is available to (users, groups), and save."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:84
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:86
 msgid "Применение шаблона"
 msgstr "Applying a Template"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:86
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:88
 msgid "Сохранённые шаблоны доступны по нажатию на **Шаблоны настроек**:"
 msgstr "Saved templates are available by clicking **Settings Templates**:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:92
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:94
 msgid "Шаблон можно отредактировать или удалить."
 msgstr "A template can be edited or deleted."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:95
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:97
 msgid "Группировка карточек (swimlanes)"
 msgstr "Card Grouping (swimlanes)"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:97
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:99
 msgid ""
 "На канбан-доске доступна группировка карточек по атрибутам записей — "
 "режим **swimlanes**. Это позволяет визуально разделять карточки на "
@@ -160,11 +170,11 @@ msgstr ""
 "lanes by the values of the selected field, simplifying navigation and "
 "task analysis."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:100
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:102
 msgid "Включение группировки"
 msgstr "Enabling Grouping"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:102
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:104
 msgid ""
 "В тулбаре канбан-доски расположен выпадающий список **«Группировка»**. В "
 "нём доступны атрибуты, которые в журнале помечены как доступные для "
@@ -173,7 +183,7 @@ msgstr ""
 "The Kanban board toolbar contains a **«Grouping»** dropdown. It lists the"
 " attributes that are marked as available for grouping in the journal."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:108
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:110
 msgid ""
 "При отсутствии выбранной группировки кнопка показывает текст "
 "«Группировка». После выбора атрибута в кнопке отображается его название."
@@ -181,11 +191,18 @@ msgstr ""
 "When no grouping is selected, the button shows the text «Grouping». After"
 " selecting an attribute, its name is displayed in the button."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:111
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:112
+msgid ""
+"Чтобы вернуться к обычному представлению, выберите пункт без группировки."
+" Фильтры журнала и ограничения рабочего пространства продолжают "
+"действовать в обоих режимах."
+msgstr "To return to the normal view, select the option without grouping. Journal filters and workspace restrictions continue to apply in both modes."
+
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:115
 msgid "Работа со swimlane-дорожками"
 msgstr "Working with Swimlane Lanes"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:113
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:117
 msgid ""
 "При выборе атрибута группировки доска переключается в режим swimlanes — "
 "карточки разбиваются на горизонтальные дорожки по значениям выбранного "
@@ -195,18 +212,21 @@ msgstr ""
 "mode — cards are split into horizontal lanes by the values of the "
 "selected attribute."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:117
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:121
 msgid ""
 "В текущей реализации загружается не более 500 групп. Если групп больше, "
 "часть дорожек не отображается, а записи пропущенных групп не учитываются "
 "в счётчиках колонок. Чтобы сузить выборку, используйте фильтры журнала."
-msgstr "The current implementation loads at most 500 groups. Additional lanes are hidden, and their records do not contribute to column counts. Use journal filters to narrow results."
+msgstr ""
+"The current implementation loads at most 500 groups. Additional lanes are"
+" hidden, and their records do not contribute to column counts. Use "
+"journal filters to narrow results."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:123
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:127
 msgid "Каждая swimlane-дорожка содержит:"
 msgstr "Each swimlane lane contains:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:125
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:129
 msgid ""
 "**Заголовок** — название значения группировки и суммарное количество "
 "карточек по колонкам."
@@ -214,13 +234,13 @@ msgstr ""
 "**Header** — the name of the grouping value and the total number of cards"
 " per column."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:126
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:130
 msgid ""
 "**Кнопку сворачивания/разворачивания** — позволяет скрыть или показать "
 "карточки дорожки."
 msgstr "**Collapse/expand button** — allows hiding or showing the lane's cards."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:127
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:131
 msgid ""
 "**Цветные бейджи** — для атрибутов в журнале с настроенным "
 "форматированием (:ref:`ColoredFormatter <ColoredFormatter>`) в заголовках"
@@ -230,25 +250,26 @@ msgstr ""
 "(:ref:`ColoredFormatter <ColoredFormatter>`), colored badges are "
 "displayed in headers."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:128
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:132
 msgid ""
 "**Кнопку «Показать ещё»** — постраничная подгрузка карточек в ячейках "
 "swimlane."
 msgstr "**«Show more» button** — paginated loading of cards in swimlane cells."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:130
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:134
 msgid ""
-"Перетаскивание карточек внутри дорожки выполняется так же, как и в "
-"обычном режиме — карточку можно перенести из одной колонки в другую."
-msgstr ""
-"Dragging cards within a lane works the same as in normal mode — a card "
-"can be moved from one column to another."
+"При разрешённом перетаскивании внутри одной дорожки можно переносить "
+"карточки между колонками и менять их порядок в ячейке. Перенос между "
+"разными дорожками не поддерживается и не меняет значение атрибута "
+"группировки. Для смены этого значения отредактируйте запись доступным "
+"способом."
+msgstr "When dragging is allowed, cards can be moved between columns within a lane and reordered within a cell. Moving between different lanes is not supported and does not change the grouping attribute's value. To change that value, edit the record using an available method."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:133
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:137
 msgid "Конфигурация канбан-доски"
 msgstr "Kanban Board Configuration"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:135
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:139
 msgid ""
 "Журнал с конфигурациями **«Канбан доски»** (Рабочее пространство «Раздел "
 "администратора» → Конфигурация UI):"
@@ -256,63 +277,70 @@ msgstr ""
 "The journal with **«Kanban board»** configurations (workspace "
 "**«Administrator Section»** → UI Configuration):"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:142
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:141
+msgid ""
+"В журнале также отображается рабочее пространство конфигурации доски. Его"
+" следует отличать от текущего пространства, в котором просматриваются "
+"карточки и сохраняется их порядок."
+msgstr "The journal also displays the workspace of the board configuration. This differs from the current workspace in which cards are viewed and their order is saved."
+
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:148
 msgid "Действия"
 msgstr "Actions"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:144
-msgid "Возможные действия с доской:"
-msgstr "Available actions for the board:"
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:150
+msgid "Возможные действия с конфигурацией доски зависят от прав пользователя:"
+msgstr "Available board configuration actions depend on user permissions:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:146
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:152
 msgid "Доска действия"
 msgstr "Board actions"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:151
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:157
 msgid "Просмотреть свойства"
 msgstr "View properties"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:152
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:158
 msgid "Скачать"
 msgstr "Download"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:153
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:159
 msgid "Удалить"
 msgstr "Delete"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:154
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:160
 msgid "Редактировать свойства"
 msgstr "Edit properties"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:155
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:161
 msgid "Редактор json"
 msgstr "JSON editor"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:156
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:162
 msgid "Копировать"
 msgstr "Copy"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:159
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:165
 msgid "Форма создания"
 msgstr "Creation form"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:161
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:167
 msgid "**+ → Создать конфигурацию канбан-доски**"
 msgstr "**+ → Create Kanban board configuration**"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:172
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:178
 msgid "Поле"
 msgstr "Field"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:173
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:179
 msgid "Описание"
 msgstr "Description"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:174
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:180
 msgid "Номер"
 msgstr "Number"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:175
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:181
 msgid "**Идентификатор доски**"
 msgstr "**Board identifier**"
 
@@ -328,7 +356,7 @@ msgstr ""
 "If the identifier is not filled in, it will be generated automatically. "
 "For example, ``c8393bfa-5291-464d-88b7-7ae822516e02``."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:179
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:185
 msgid "**Имя канбан-доски**"
 msgstr "**Kanban board name**"
 
@@ -341,26 +369,32 @@ msgstr ""
 "page title."
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst
-msgid "Может быть пустым."
-msgstr "Can be empty."
+msgid ""
+"Обязательно в стандартной форме. Если имя отсутствует во внешней "
+"конфигурации, для отображения используется идентификатор доски."
+msgstr "Required in the standard form. If a name is missing from an external configuration, the board ID is displayed instead."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:183
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:189
 msgid "**Возможно ли перемещать сущности между статусами**"
 msgstr "**Allow moving entities between statuses**"
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst
-msgid "Использование drag'n'drop при перемещении между статусами."
-msgstr "Use drag-and-drop when moving between statuses."
+msgid ""
+"Разрешает drag-and-drop между колонками и ручное изменение порядка "
+"карточек внутри колонки. В конфигурации хранится как ``readOnly: false``."
+msgstr "Allows drag-and-drop between columns and manual card reordering within a column. Stored in the configuration as ``readOnly: false``."
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst
-msgid "**Внимание!** Перемещение не означает изменение бизнес-процесса."
-msgstr "**Warning!** Moving does not mean changing the business process."
+msgid ""
+"Смена колонки изменяет статус записи через серверную логику; схема "
+"бизнес-процесса при этом не редактируется."
+msgstr "Changing a column changes the record status through server logic; it does not edit the business process model."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:186
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:192
 msgid "7"
 msgstr "7"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:187
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:193
 msgid "**Скрыть заголовок**"
 msgstr "**Hide header**"
 
@@ -368,12 +402,12 @@ msgstr "**Hide header**"
 msgid "Возможность убирать заголовок канбан-карточки."
 msgstr "Option to hide the Kanban card header."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:189
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:192
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:195
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:198
 msgid "5"
 msgstr "5"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:190
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:196
 msgid "**Шаблон заголовка карточки**"
 msgstr "**Card header template**"
 
@@ -386,21 +420,21 @@ msgstr ""
 "A template setting ``№ ${numberAtt} - ${?disp}`` that changes the card "
 "header in the Kanban board according to the template."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:193
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:199
 msgid "**Положение названия полей карточки**"
 msgstr "**Position of card field labels**"
 
 #: ../../settings_kb/interface/journals/views/kanban_board.rst
 msgid ""
 "Возможность выбрать расположение названий полей карточки: слева или "
-"сверху."
-msgstr "Option to choose the position of card field labels: left or top."
+"сверху. По умолчанию — сверху."
+msgstr "Choose where card field labels appear: on the left or above. The default is above."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:195
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:201
 msgid "2"
 msgstr "2"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:196
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:202
 msgid "**Тип данных**"
 msgstr "**Data type**"
 
@@ -420,7 +454,7 @@ msgstr "Only 1 value can be selected."
 msgid "В соответствии с типом в колонках можно выбирать связанные с ним статусы."
 msgstr "According to the type, the associated statuses can be selected in columns."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:201
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:207
 msgid "**Журнал**"
 msgstr "**Journal**"
 
@@ -440,11 +474,11 @@ msgstr ""
 "Selected from the list of all existing journals. Only 1 value can be "
 "selected."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:205
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:211
 msgid "1"
 msgstr "1"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:206
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:212
 msgid "**Форма**"
 msgstr "**Form**"
 
@@ -472,11 +506,11 @@ msgstr ""
 msgid "Автор; Дата создания."
 msgstr "Author; Creation date."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:211
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:217
 msgid "4"
 msgstr "4"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:212
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:218
 msgid "**Действия**"
 msgstr "**Actions**"
 
@@ -492,39 +526,39 @@ msgstr ""
 msgid "Может быть выбрано несколько значений."
 msgstr "Multiple values can be selected."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:216
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:222
 msgid "**Колонки**"
 msgstr "**Columns**"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:217
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:223
 msgid "Конфигурация колонок."
 msgstr "Column configuration."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:218
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:224
 msgid "3"
 msgstr "3"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:220
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:226
 msgid "Соответствие полей конфигурации и интерфейса:"
 msgstr "Correspondence between configuration fields and the interface:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:226
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:232
 msgid "Возможное положение названия полей карточки:"
 msgstr "Possible positions of card field labels:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:232
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:238
 msgid "**Сверху**"
 msgstr "**Top**"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:233
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:239
 msgid "**Слева**"
 msgstr "**Left**"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:247
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:253
 msgid "Настройка колонок"
 msgstr "Column Settings"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:249
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:255
 msgid ""
 "В колонке **«Статус»** выберите статус из выпадающего списка. Статусы в "
 "выпадающем списке указаны в соответствии с выбранным **типом данных**."
@@ -532,7 +566,7 @@ msgstr ""
 "In the **«Status»** column, select a status from the dropdown list. The "
 "statuses in the dropdown correspond to the selected **data type**."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:255
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:261
 msgid ""
 "В колонке **«Имя»** укажите название, которое будет отображаться на "
 "канбан-доске. По умолчанию выбранный статус автоматически указывается и в"
@@ -542,29 +576,30 @@ msgstr ""
 "Kanban board. By default, the selected status is automatically set in the"
 " **«Name»** column as well; it can be changed as needed."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:261
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:267
 msgid ""
 "Для каждой колонки можно скрыть элементы старше, чем указанная "
 "продолжительность:"
 msgstr "For each column, items older than the specified duration can be hidden:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:267
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:273
 msgid "Продолжительность указывается в днях:"
 msgstr "Duration is specified in days:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:273
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:279
 msgid ""
-"На доске для колонок с включённой настройкой будут скрываться элементы с "
-"датой перехода в статус больше, чем указанная продолжительность."
-msgstr ""
-"On the board, for columns with this setting enabled, items whose status "
-"transition date exceeds the specified duration will be hidden."
+"В колонках с включённой настройкой скрываются записи, с момента "
+"последнего изменения статуса которых прошло больше указанного времени. "
+"Проверяется атрибут ``_statusModified``, а не дата создания. В "
+"конфигурации продолжительность хранится в формате ISO 8601, например "
+"``P7D`` для семи дней."
+msgstr "Columns with this setting enabled hide records whose last status change occurred longer ago than the specified interval. The ``_statusModified`` attribute is checked, rather than the creation date. The duration is stored in ISO 8601 format, for example ``P7D`` for seven days."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:278
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:284
 msgid "Общая сумма по каждой колонке"
 msgstr "Total Sum per Column"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:280
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:286
 msgid ""
 "На канбан-доске можно отображать общую сумму по каждой колонке, что "
 "актуально для договоров, сделок и в других случаях, связанных с "
@@ -573,17 +608,23 @@ msgstr ""
 "The Kanban board can display the total sum per column, which is useful "
 "for contracts, deals, and other cases involving monetary amounts."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:286
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:292
 msgid ""
-"В каждой колонке канбан-доски отображается общая сумма по всем карточкам "
-"в данной колонке. При перемещении карточки в другой статус общая сумма "
-"пересчитывается в обеих колонках: предыдущий статус и новый статус."
-msgstr ""
-"Each Kanban board column displays the total sum for all cards in that "
-"column. When a card is moved to another status, the total sum is "
-"recalculated in both columns: the previous status and the new status."
+"В колонке отображается сумма числового атрибута по записям, "
+"соответствующим текущей выборке. Учитываются статус, ограничения журнала,"
+" поиск, фильтры пользователя, связанные записи и скрытие старых записей. "
+"При перемещении карточки в другой статус сумма пересчитывается в "
+"затронутых колонках."
+msgstr "The column displays the sum of a numeric attribute for records matching the current query. Status, journal restrictions, search, user filters, associated records, and hiding old records are taken into account. Moving a card to another status recalculates the sum in the affected columns."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:288
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:294
+msgid ""
+"Сумма вычисляется отдельным запросом и не ограничивается уже подгруженной"
+" страницей карточек. В режиме swimlanes сумма ячейки дополнительно "
+"ограничивается значением группировки дорожки."
+msgstr "The sum is calculated by a separate query and is not limited to the page of cards already loaded. In swimlane mode, the cell sum is additionally restricted by the lane's grouping value."
+
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:296
 msgid ""
 "Параметр задаётся для каждой колонки и учитывает только числовой атрибут "
 "для суммирования."
@@ -591,7 +632,7 @@ msgstr ""
 "The parameter is set for each column and considers only the numeric "
 "attribute for summation."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:294
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:302
 msgid ""
 "Для каждого рабочего пространства суммы индивидуальны и не являются "
 "общими для всех рабочих пространств одного типа."
@@ -599,35 +640,32 @@ msgstr ""
 "Sums are individual for each workspace and are not shared across all "
 "workspaces of the same type."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:296
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:304
 msgid ""
-"Если суммы в карточках внесены в разных валютах, то общая сумма содержит "
-"несколько записей с обозначением валют. Число записей при этом равно "
-"числу используемых валют в данной колонке в данном рабочем пространстве."
-msgstr ""
-"If the amounts in cards are entered in different currencies, the total "
-"sum contains multiple entries with currency labels. The number of entries"
-" equals the number of currencies used in that column in that workspace."
+"Результат отображается одним числом без автоматической разбивки по "
+"валютам и конвертации. Если записи содержат суммы в разных валютах, "
+"используйте фильтр по валюте либо подготовленный атрибут с сопоставимыми "
+"значениями."
+msgstr "The result is displayed as a single number without automatic currency breakdown or conversion. If records contain amounts in different currencies, use a currency filter or a prepared attribute with comparable values."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:299
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:307
 msgid "Цвет карточки"
 msgstr "Card Color"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:301
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:309
 msgid ""
-"Цвет карточки на канбан-доске задаётся форматтером :ref:`ColoredFormatter"
-" <ColoredFormatter>` (см. :ref:`Форматтеры <formatters>`), настроенным "
-"для атрибута, выведенного на форму карточки."
-msgstr ""
-"The card color on the Kanban board is set by the :ref:`ColoredFormatter "
-"<ColoredFormatter>` formatter (see :ref:`Formatters <formatters>`) "
-"configured for an attribute displayed on the card form."
+"Цветовой индикатор карточки — её верхняя граница — определяется "
+"настройками :ref:`ColoredFormatter <ColoredFormatter>` в журнале (см. "
+":ref:`Форматтеры <formatters>`). Используется первая колонка журнала с "
+"форматтером типа ``colored`` и карта значений ``config.color``. Выводить "
+"этот атрибут на форму карточки для окрашивания границы не требуется."
+msgstr "The card's color indicator, its top border, is determined by the journal's :ref:`ColoredFormatter <ColoredFormatter>` settings (see :ref:`Formatters <formatters>`). The first journal column with a ``colored`` formatter and the ``config.color`` value map is used. The attribute does not need to be displayed on the card form to color its border."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:303
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:311
 msgid "Чтобы задать цвет карточки:"
 msgstr "To set the card color:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:305
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:313
 msgid ""
 "Перейдите в настройки журнала, на основе которого построена канбан-доска "
 "(раздел администрирования → :guilabel:`Журналы` → нужный журнал → "
@@ -637,7 +675,7 @@ msgstr ""
 "(administration section → :guilabel:`Journals` → the required journal → "
 ":guilabel:`Edit` → :guilabel:`Advanced`)."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:306
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:314
 msgid ""
 "Найдите колонку с атрибутом, значение которого должно определять цвет "
 "карточки, и выберите для неё форматтер типа ``colored``."
@@ -645,7 +683,7 @@ msgstr ""
 "Find the column with the attribute whose value should determine the card "
 "color, and select the ``colored`` formatter type for it."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:307
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:315
 msgid ""
 "В конфигурации форматтера сопоставьте значения атрибута с цветами — "
 "предопределёнными (``green``, ``yellow``, ``pink``, ``red``) или "
@@ -655,53 +693,47 @@ msgstr ""
 "either predefined (``green``, ``yellow``, ``pink``, ``red``) or custom "
 "HEX values."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:309
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:317
 msgid "**Например:**"
 msgstr "**For example:**"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:329
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:337
 msgid ""
-"После сохранения настроек атрибут будет отображаться на карточке с "
-"цветовым индикатором: небольшим цветным кружком (при ``showPointer: "
-"true``) или цветным овальным фоном со скруглением (при ``showPointer: "
-"false``, значение по умолчанию)."
-msgstr ""
-"After saving the settings, the attribute will be displayed on the card "
-"with a color indicator: a small colored dot (when ``showPointer: true``) "
-"or a rounded colored oval background (when ``showPointer: false``, the "
-"default value)."
+"После сохранения настроек верхняя граница карточки окрашивается по "
+"значению атрибута и карте ``config.color``. В режиме swimlanes при "
+"отсутствии значения атрибута карточки может использоваться цвет дорожки."
+msgstr "After saving the settings, the card's top border is colored according to the attribute value and ``config.color`` map. In swimlane mode, the lane color may be used when the card attribute has no value."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:331
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:339
 msgid ""
-"Остальные параметры конфигурации (``colors``, ``defaultColor``, ``fn``) "
-"работают так же, как описано в разделе :ref:`ColoredFormatter "
-"<ColoredFormatter>`."
-msgstr ""
-"The remaining configuration parameters (``colors``, ``defaultColor``, "
-"``fn``) work the same way as described in the :ref:`ColoredFormatter "
-"<ColoredFormatter>` section."
+"Оформление значения отдельного поля — например, кружок или плашка — "
+"настраивается отдельно и описано в разделе :ref:`ColoredFormatter "
+"<ColoredFormatter>`. Параметры ``showPointer``, ``colors``, "
+"``defaultColor`` и ``fn`` не заменяют карту ``config.color`` в механизме "
+"окрашивания границы карточки."
+msgstr "The appearance of an individual field value, such as a circle or badge, is configured separately and described in :ref:`ColoredFormatter <ColoredFormatter>`. The ``showPointer``, ``colors``, ``defaultColor``, and ``fn`` parameters do not replace the ``config.color`` map used to color the card border."
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:334
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:342
 msgid "Заполненная конфигурация"
 msgstr "Completed configuration"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:342
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:350
 msgid "Изменение полей формы карточки"
 msgstr "Editing Card Form Fields"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:344
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:352
 msgid "Кликните на форму:"
 msgstr "Click on the form:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:350
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:358
 msgid "Удалите, добавьте необходимые поля:"
 msgstr "Remove or add the required fields:"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:369
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:377
 msgid "Связь канбан-доски и типа данных"
 msgstr "Relationship Between Kanban Board and Data Type"
 
-#: ../../settings_kb/interface/journals/views/kanban_board.rst:371
+#: ../../settings_kb/interface/journals/views/kanban_board.rst:379
 msgid "Созданная канбан-доска может быть задана и в типе данных:"
 msgstr "The created Kanban board can also be set in the data type:"
 
@@ -729,3 +761,134 @@ msgstr "The created Kanban board can also be set in the data type:"
 #~ " indicates priority: the higher the "
 #~ "card, the more important or urgent "
 #~ "the task."
+
+#~ msgid ""
+#~ "Если перенос в соответствии с "
+#~ "бизнес-процессом невозможен, выводится ошибка. "
+#~ "Например:"
+#~ msgstr ""
+#~ "If moving according to the business "
+#~ "process is not possible, an error "
+#~ "is shown. For example:"
+
+#~ msgid "Внутри одной колонки карточки часто можно менять местами вертикально."
+#~ msgstr "Within a single column, cards can often be reordered vertically."
+
+#~ msgid ""
+#~ "Предоставлен весь список статусов типа "
+#~ "данных, к которому относится текущий "
+#~ "журнал. Чекбоксами можно отметить те "
+#~ "статусы, которые необходимо отражать на "
+#~ "канбан-доске."
+#~ msgstr ""
+#~ "The full list of statuses for the"
+#~ " data type associated with the "
+#~ "current journal is provided. Checkboxes "
+#~ "can be used to select the statuses"
+#~ " to display on the Kanban board."
+
+#~ msgid ""
+#~ "Перетаскивание карточек внутри дорожки "
+#~ "выполняется так же, как и в "
+#~ "обычном режиме — карточку можно "
+#~ "перенести из одной колонки в другую."
+#~ msgstr ""
+#~ "Dragging cards within a lane works "
+#~ "the same as in normal mode — "
+#~ "a card can be moved from one "
+#~ "column to another."
+
+#~ msgid "Возможные действия с доской:"
+#~ msgstr "Available actions for the board:"
+
+#~ msgid "Может быть пустым."
+#~ msgstr "Can be empty."
+
+#~ msgid "Использование drag'n'drop при перемещении между статусами."
+#~ msgstr "Use drag-and-drop when moving between statuses."
+
+#~ msgid "**Внимание!** Перемещение не означает изменение бизнес-процесса."
+#~ msgstr "**Warning!** Moving does not mean changing the business process."
+
+#~ msgid ""
+#~ "На доске для колонок с включённой "
+#~ "настройкой будут скрываться элементы с "
+#~ "датой перехода в статус больше, чем "
+#~ "указанная продолжительность."
+#~ msgstr ""
+#~ "On the board, for columns with "
+#~ "this setting enabled, items whose status"
+#~ " transition date exceeds the specified "
+#~ "duration will be hidden."
+
+#~ msgid ""
+#~ "В каждой колонке канбан-доски отображается "
+#~ "общая сумма по всем карточкам в "
+#~ "данной колонке. При перемещении карточки "
+#~ "в другой статус общая сумма "
+#~ "пересчитывается в обеих колонках: предыдущий"
+#~ " статус и новый статус."
+#~ msgstr ""
+#~ "Each Kanban board column displays the"
+#~ " total sum for all cards in "
+#~ "that column. When a card is moved"
+#~ " to another status, the total sum "
+#~ "is recalculated in both columns: the "
+#~ "previous status and the new status."
+
+#~ msgid ""
+#~ "Если суммы в карточках внесены в "
+#~ "разных валютах, то общая сумма содержит"
+#~ " несколько записей с обозначением валют."
+#~ " Число записей при этом равно числу"
+#~ " используемых валют в данной колонке "
+#~ "в данном рабочем пространстве."
+#~ msgstr ""
+#~ "If the amounts in cards are "
+#~ "entered in different currencies, the "
+#~ "total sum contains multiple entries with"
+#~ " currency labels. The number of "
+#~ "entries equals the number of currencies"
+#~ " used in that column in that "
+#~ "workspace."
+
+#~ msgid ""
+#~ "Цвет карточки на канбан-доске задаётся "
+#~ "форматтером :ref:`ColoredFormatter <ColoredFormatter>` "
+#~ "(см. :ref:`Форматтеры <formatters>`), настроенным"
+#~ " для атрибута, выведенного на форму "
+#~ "карточки."
+#~ msgstr ""
+#~ "The card color on the Kanban board"
+#~ " is set by the :ref:`ColoredFormatter "
+#~ "<ColoredFormatter>` formatter (see :ref:`Formatters"
+#~ " <formatters>`) configured for an attribute"
+#~ " displayed on the card form."
+
+#~ msgid ""
+#~ "После сохранения настроек атрибут будет "
+#~ "отображаться на карточке с цветовым "
+#~ "индикатором: небольшим цветным кружком (при"
+#~ " ``showPointer: true``) или цветным "
+#~ "овальным фоном со скруглением (при "
+#~ "``showPointer: false``, значение по "
+#~ "умолчанию)."
+#~ msgstr ""
+#~ "After saving the settings, the attribute"
+#~ " will be displayed on the card "
+#~ "with a color indicator: a small "
+#~ "colored dot (when ``showPointer: true``) "
+#~ "or a rounded colored oval background "
+#~ "(when ``showPointer: false``, the default "
+#~ "value)."
+
+#~ msgid ""
+#~ "Остальные параметры конфигурации (``colors``, "
+#~ "``defaultColor``, ``fn``) работают так же, "
+#~ "как описано в разделе :ref:`ColoredFormatter"
+#~ " <ColoredFormatter>`."
+#~ msgstr ""
+#~ "The remaining configuration parameters "
+#~ "(``colors``, ``defaultColor``, ``fn``) work "
+#~ "the same way as described in the"
+#~ " :ref:`ColoredFormatter <ColoredFormatter>` section."

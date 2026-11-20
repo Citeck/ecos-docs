@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Citeck\n"
+"Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:16+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: en <LL@li.org>\n"
 "Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../admin/launch_setup.rst:2
@@ -27,14 +27,45 @@ msgid ""
 "Раздел описывает способы развёртывания платформы Citeck — от локального "
 "запуска для разработки до производственных конфигураций в Kubernetes."
 msgstr ""
-"This section describes the ways to deploy the Citeck platform — from local"
-" launch for development to production configurations in Kubernetes."
+"This section describes the ways to deploy the Citeck platform — from "
+"local launch for development to production configurations in Kubernetes."
+
+#: ../../admin/launch_setup.rst:6
+msgid ""
+"Платформа поставляется в виде Docker-образов и разворачивается с "
+"использованием средств контейнеризации (Docker) и оркестрации "
+"(Kubernetes):"
+msgstr "The platform is distributed as Docker images and deployed using containerization (Docker) and orchestration (Kubernetes):"
+
+#: ../../admin/launch_setup.rst:8
+msgid ""
+"**Kubernetes** — основной вариант для продуктивных окружений. Все "
+"компоненты платформы устанавливаются и обновляются автоматически с "
+"помощью Helm chart, в том числе из CI/CD-конвейера или GitOps-инструмента"
+" (Argo CD). Платформа использует только стандартные объекты Kubernetes и "
+"не привязана к конкретному дистрибутиву. Поддерживается развёртывание on-"
+"premise в кластере заказчика. Требования к кластеру — в разделе "
+":ref:`Требования к кластеру и автоматизированное развёртывание <k8s-"
+"requirements>`."
+msgstr "**Kubernetes** is the primary option for production environments. All platform components are installed and updated automatically using a Helm chart, including from a CI/CD pipeline or a GitOps tool (Argo CD). The platform uses only standard Kubernetes objects and is not tied to a specific distribution. On-premise deployment in the customer's cluster is supported. See :ref:`Cluster requirements and automated deployment <k8s-requirements>`."
 
 #: ../../admin/launch_setup.rst:9
+msgid ""
+"**Docker** — для тестовых и небольших продуктивных окружений: Citeck "
+"Launcher."
+msgstr "**Docker** — Citeck Launcher for test and small production environments."
+
+#: ../../admin/launch_setup.rst:11
+msgid ""
+"При необходимости доступно развёртывание в закрытом контуре без доступа в"
+" интернет: образы размещаются во внутреннем реестре заказчика."
+msgstr "Deployment in an isolated environment without Internet access is also available: images are hosted in the customer's internal registry."
+
+#: ../../admin/launch_setup.rst:16
 msgid "Citeck Launcher: локальный режим"
 msgstr "Citeck Launcher: Local Mode"
 
-#: ../../admin/launch_setup.rst:13
+#: ../../admin/launch_setup.rst:20
 msgid ""
 "Графический инструмент (Windows / Linux / macOS) для быстрого локального "
 "запуска Citeck Community без ручной настройки Docker."
@@ -42,11 +73,11 @@ msgstr ""
 "A graphical tool (Windows / Linux / macOS) for quick local launch of "
 "Citeck Community without manual Docker configuration."
 
-#: ../../admin/launch_setup.rst:15
+#: ../../admin/launch_setup.rst:22
 msgid "Citeck Launcher: серверный режим"
 msgstr "Citeck Launcher: Server Mode"
 
-#: ../../admin/launch_setup.rst:19
+#: ../../admin/launch_setup.rst:26
 msgid ""
 "Установка и управление платформой Citeck на Linux-серверах через CLI и "
 "systemd."
@@ -54,63 +85,60 @@ msgstr ""
 "Installation and management of the Citeck platform on Linux servers via "
 "CLI and systemd."
 
-#: ../../admin/launch_setup.rst:21
+#: ../../admin/launch_setup.rst:28
 msgid "Docker Compose"
 msgstr "Docker Compose"
 
-#: ../../admin/launch_setup.rst:25
+#: ../../admin/launch_setup.rst:32
 msgid ""
 "Развёртывание платформы через Docker Compose для тестовых и небольших "
-"производственных сред."
-msgstr ""
-"Platform deployment via Docker Compose for test and small production "
-"environments."
+"продуктивных окружений."
+msgstr "Deploying the platform using Docker Compose for test and small production environments."
 
-#: ../../admin/launch_setup.rst:27
+#: ../../admin/launch_setup.rst:34
 msgid "Kubernetes"
 msgstr "Kubernetes"
 
-#: ../../admin/launch_setup.rst:31
+#: ../../admin/launch_setup.rst:38
 msgid ""
-"Развёртывание платформы в Kubernetes-кластере: менеджмент ресурсов подов и"
-" контейнеров, параметры конфигурации Helm chart (Enterprise), генерация "
-"ключа шифрования при развёртывании нового сервера."
-msgstr ""
-"Deploying the platform in a Kubernetes cluster: managing pod and container"
-" resources, Helm chart configuration parameters (Enterprise), generating "
-"an encryption key when deploying a new server."
+"Развёртывание платформы в Kubernetes-кластере: требования к кластеру, "
+"автоматизированная установка и обновление через Helm chart, менеджмент "
+"ресурсов подов и контейнеров, параметры конфигурации Helm chart "
+"(Enterprise), генерация ключа шифрования при развёртывании нового "
+"сервера."
+msgstr "Deploying the platform in a Kubernetes cluster: cluster requirements, automated installation and upgrades using a Helm chart, pod and container resource management, Helm chart configuration (Enterprise), and encryption key generation for a new server."
 
-#: ../../admin/launch_setup.rst:33
+#: ../../admin/launch_setup.rst:40
 msgid "Типовой сайзинг"
 msgstr "Typical Sizing"
 
-#: ../../admin/launch_setup.rst:37
+#: ../../admin/launch_setup.rst:44
 msgid ""
 "Планирование инфраструктуры под развёртывание Citeck с числом именных "
 "пользователей до 2 000: конфигурации worker-нод Kubernetes и виртуальных "
 "машин, диски, требования к внешним сервисам (PostgreSQL, S3, OpenSearch)."
 msgstr ""
-"Infrastructure planning for deploying Citeck with up to 2,000 named users:"
-" Kubernetes worker node and virtual machine configurations, disks, "
+"Infrastructure planning for deploying Citeck with up to 2,000 named "
+"users: Kubernetes worker node and virtual machine configurations, disks, "
 "external services requirements (PostgreSQL, S3, OpenSearch)."
 
-#: ../../admin/launch_setup.rst:39
+#: ../../admin/launch_setup.rst:46
 msgid "Kubernetes Secrets"
 msgstr "Kubernetes Secrets"
 
-#: ../../admin/launch_setup.rst:43
+#: ../../admin/launch_setup.rst:50
 msgid ""
-"Хранение чувствительных данных (пароли, токены, credentials) в Kubernetes "
-"Secrets вместо ``values.yaml``."
+"Хранение чувствительных данных (пароли, токены, credentials) в Kubernetes"
+" Secrets вместо ``values.yaml``."
 msgstr ""
 "Storing sensitive data (passwords, tokens, credentials) in Kubernetes "
 "Secrets instead of ``values.yaml``."
 
-#: ../../admin/launch_setup.rst:45
+#: ../../admin/launch_setup.rst:52
 msgid "Сервисы Docker"
 msgstr "Docker Services"
 
-#: ../../admin/launch_setup.rst:49
+#: ../../admin/launch_setup.rst:56
 msgid ""
 "Справочник по Docker-образам платформы: назначение сервисов, шаблоны "
 "описания в docker-compose, переменные окружения, лог успешного запуска."
@@ -120,37 +148,47 @@ msgstr ""
 "log."
 
 #~ msgid ""
-#~ "**Сервисы Docker** — справочник по отдельным микросервисам платформы и их "
+#~ "**Сервисы Docker** — справочник по "
+#~ "отдельным микросервисам платформы и их "
 #~ "параметрам."
 #~ msgstr ""
-#~ "**Docker Services** — reference guide for individual platform "
-#~ "microservices and their parameters."
+#~ "**Docker Services** — reference guide "
+#~ "for individual platform microservices and "
+#~ "their parameters."
 
-#~ msgid ""
-#~ "**Kubernetes** — управление ресурсами подов и контейнеров в кластере."
+#~ msgid "**Kubernetes** — управление ресурсами подов и контейнеров в кластере."
 #~ msgstr ""
-#~ "**Kubernetes** — management of pod and container resources in the cluster."
+#~ "**Kubernetes** — management of pod and"
+#~ " container resources in the cluster."
 
 #~ msgid ""
-#~ "**Helm chart** — параметры конфигурации Helm chart для развёртывания в "
+#~ "**Helm chart** — параметры конфигурации "
+#~ "Helm chart для развёртывания в "
 #~ "Kubernetes (Enterprise)."
 #~ msgstr ""
-#~ "**Helm Chart** — Helm chart configuration parameters for deployment in "
+#~ "**Helm Chart** — Helm chart "
+#~ "configuration parameters for deployment in "
 #~ "Kubernetes (Enterprise)."
 
 #~ msgid ""
-#~ "**Развёртывание нового сервера** — инструкции по первичной настройке "
-#~ "сервера, включая генерацию ключей шифрования."
+#~ "**Развёртывание нового сервера** — инструкции"
+#~ " по первичной настройке сервера, включая"
+#~ " генерацию ключей шифрования."
 #~ msgstr ""
-#~ "**New Server Deployment** — instructions for initial server setup, "
-#~ "including encryption key generation."
+#~ "**New Server Deployment** — instructions "
+#~ "for initial server setup, including "
+#~ "encryption key generation."
 
 #~ msgid "Сайзинг: тестовая и продуктивная среда"
 #~ msgstr "Sizing: Test and Production Environments"
 
 #~ msgid ""
-#~ "Рекомендации по планированию инфраструктуры (ноды, диски, внешние сервисы)"
-#~ " для развёртывания Citeck с числом именных пользователей до 1 000."
+#~ "Рекомендации по планированию инфраструктуры "
+#~ "(ноды, диски, внешние сервисы) для "
+#~ "развёртывания Citeck с числом именных "
+#~ "пользователей до 1 000."
 #~ msgstr ""
-#~ "Recommendations for planning the infrastructure (nodes, disks, external "
-#~ "services) for a Citeck deployment with up to 1,000 named users."
+#~ "Recommendations for planning the "
+#~ "infrastructure (nodes, disks, external "
+#~ "services) for a Citeck deployment with"
+#~ " up to 1,000 named users."
