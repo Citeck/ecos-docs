@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 10:15+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,16 +32,13 @@ msgstr "Available in Enterprise version only."
 
 #: ../../introduction/meeting_record_plugin.rst:13
 msgid ""
-"**citeck-meeting-recorder** — Chrome-расширение, которое записывает "
-"видеоконференцию в Yandex Telemost, автоматически расшифровывает речь и "
-"формирует резюме встречи. Результат сохраняется в платформе Citeck как "
-"активность и привязывается к нужной бизнес-сущности (сделке или проекту)."
-msgstr ""
-"**citeck-meeting-recorder** — a Chrome extension that records video "
-"conferences in Yandex Telemost, automatically transcribes speech, and "
-"generates a meeting summary. The result is saved in the Citeck platform "
-"as an activity and linked to the required business entity (deal or "
-"project)."
+"**citeck-meeting-recorder** — Chrome-расширение, которое записывает аудио"
+" видеоконференции в Yandex Telemost и передаёт его на сервер для "
+"автоматической расшифровки речи и формирования резюме встречи. Результат "
+"сохраняется в платформе Citeck как активность. Если перед записью выбрана"
+" бизнес-сущность, например сделка или проект, активность привязывается к "
+"ней."
+msgstr "**citeck-meeting-recorder** is a Chrome extension that records Yandex Telemost conference audio and sends it to a server for automatic transcription and meeting summarization. The result is saved as a Citeck activity. If a business entity, such as a deal or project, is selected before recording, the activity is linked to it."
 
 #: ../../introduction/meeting_record_plugin.rst:17
 msgid ""
@@ -78,8 +75,10 @@ msgid "Захват аудио"
 msgstr "Audio capture"
 
 #: ../../introduction/meeting_record_plugin.rst:33
-msgid "Звук вкладки и микрофон пользователя объединяются в единый поток"
-msgstr "Tab audio and the user's microphone are combined into a single stream"
+msgid ""
+"Звук вкладки и доступный микрофон пользователя объединяются в единый "
+"поток. Без доступа к микрофону записывается только звук вкладки"
+msgstr "Tab audio and the user's available microphone are mixed into one stream. Without microphone access, only tab audio is recorded"
 
 #: ../../introduction/meeting_record_plugin.rst:34
 msgid "Автоматическая транскрипция"
@@ -102,24 +101,30 @@ msgid "Привязка к сущности"
 msgstr "Entity linking"
 
 #: ../../introduction/meeting_record_plugin.rst:39
-msgid "Выбор сделки или проекта перед началом записи"
-msgstr "Selecting a deal or project before starting the recording"
+msgid ""
+"Необязательный выбор записи перед началом записи встречи. Доступные типы "
+"сущностей задаются на стенде, например сделка или проект"
+msgstr "Optional record selection before recording a meeting. Available entity types are configured on the installation, for example deals or projects"
 
 #: ../../introduction/meeting_record_plugin.rst:40
 msgid "Авто-остановка"
 msgstr "Auto-stop"
 
 #: ../../introduction/meeting_record_plugin.rst:41
-msgid "При завершении встречи (закрытие вкладки, навигация)"
-msgstr "When the meeting ends (tab closed, navigation)"
+msgid ""
+"При закрытии вкладки, уходе со страницы встречи или завершении "
+"захваченной аудиодорожки"
+msgstr "When the tab closes, the user leaves the meeting page or the captured audio track ends"
 
 #: ../../introduction/meeting_record_plugin.rst:42
 msgid "Авторизация"
 msgstr "Authorization"
 
 #: ../../introduction/meeting_record_plugin.rst:43
-msgid "Через сессию Citeck — ничего вводить вручную не нужно"
-msgstr "Via Citeck session — no manual input required"
+msgid ""
+"Через действующую сессию Citeck. При отсутствии сессии расширение "
+"предлагает войти в платформу"
+msgstr "Through an active Citeck session. If no session exists, the extension prompts the user to sign in"
 
 #: ../../introduction/meeting_record_plugin.rst:47
 msgid "Принцип работы"
@@ -128,46 +133,37 @@ msgstr "How It Works"
 #: ../../introduction/meeting_record_plugin.rst:49
 msgid ""
 "Пользователь открывает вкладку Yandex Telemost — расширение обнаруживает "
-"встречу автоматически."
-msgstr ""
-"The user opens the Yandex Telemost tab — the extension detects the "
-"meeting automatically."
+"вкладку автоматически."
+msgstr "The user opens a Yandex Telemost tab; the extension detects it automatically."
 
 #: ../../introduction/meeting_record_plugin.rst:50
 msgid ""
-"В popup выбирается бизнес-сущность (сделка или проект) и нажимается "
-"**Начать запись**."
-msgstr ""
-"In the popup, a business entity (deal or project) is selected and **Start"
-" Recording** is clicked."
+"В popup при необходимости выбирается бизнес-сущность и нажимается "
+"**Начать запись**. Запуск без привязки требует подтверждения."
+msgstr "Optionally select a business entity in the popup and click **Start recording**. Recording without a link requires confirmation."
 
 #: ../../introduction/meeting_record_plugin.rst:51
 msgid ""
-"Расширение захватывает аудио участников (звук вкладки) и микрофон "
-"пользователя, микширует их и передаёт фрагментами по REST API в ``citeck-"
-"ai``."
-msgstr ""
-"The extension captures participant audio (tab audio) and the user's "
-"microphone, mixes them, and sends them in chunks via REST API to "
-"``citeck-ai``."
+"Расширение захватывает аудио участников (звук вкладки) и, при наличии "
+"разрешения, микрофон пользователя, микширует их и передаёт фрагментами по"
+" REST API в ``citeck-ai``."
+msgstr "The extension captures participant audio (tab audio) and, if permitted, the user's microphone, mixes them and sends chunks to ``citeck-ai`` over the REST API."
 
 #: ../../introduction/meeting_record_plugin.rst:52
-msgid "После завершения встречи бэкенд транскрибирует аудио и генерирует резюме."
-msgstr ""
-"After the meeting ends, the backend transcribes the audio and generates a"
-" summary."
+msgid "После остановки записи бэкенд транскрибирует аудио и генерирует резюме."
+msgstr "After recording stops, the backend transcribes the audio and generates a summary."
 
 #: ../../introduction/meeting_record_plugin.rst:53
 msgid ""
-"Результат сохраняется как ``meeting-activity`` в Citeck, привязанный к "
-"выбранной сущности."
-msgstr ""
-"The result is saved as ``meeting-activity`` in Citeck, linked to the "
-"selected entity."
+"Результат сохраняется как ``meeting-activity`` в Citeck. Если выбрана "
+"сущность, активность привязывается к ней."
+msgstr "The result is saved as a ``meeting-activity`` in Citeck. If an entity was selected, the activity is linked to it."
 
 #: ../../introduction/meeting_record_plugin.rst:54
-msgid "Пользователь получает Chrome-уведомление о готовности записи."
-msgstr "The user receives a Chrome notification when the recording is ready."
+msgid ""
+"После успешной обработки расширение показывает ссылку на активность и "
+"создаёт Chrome-уведомление, если завершение обнаружено фоновым опросом."
+msgstr "After successful processing, the extension shows an activity link and creates a Chrome notification if completion was detected by background polling."
 
 #: ../../introduction/meeting_record_plugin.rst:58
 msgid "Установка"
@@ -182,144 +178,195 @@ msgid "Скачайте расширение в виде zip-архива из �
 msgstr "Download the extension as a zip archive from GitHub releases."
 
 #: ../../introduction/meeting_record_plugin.rst:64
+msgid "Распакуйте архив."
+msgstr "Extract the archive."
+
+#: ../../introduction/meeting_record_plugin.rst:65
 msgid "Откройте ``chrome://extensions/``."
 msgstr "Open ``chrome://extensions/``."
 
-#: ../../introduction/meeting_record_plugin.rst:65
+#: ../../introduction/meeting_record_plugin.rst:66
 msgid "Включите **Режим разработчика**."
 msgstr "Enable **Developer mode**."
 
-#: ../../introduction/meeting_record_plugin.rst:66
+#: ../../introduction/meeting_record_plugin.rst:67
 msgid ""
-"Нажмите **Загрузить распакованное расширение** и выберите директорию "
-"проекта."
-msgstr "Click **Load unpacked extension** and select the project directory."
+"Нажмите **Загрузить распакованное расширение** и выберите папку, "
+"непосредственно содержащую ``manifest.json``."
+msgstr "Click **Load unpacked** and select the folder directly containing ``manifest.json``."
 
-#: ../../introduction/meeting_record_plugin.rst:70
+#: ../../introduction/meeting_record_plugin.rst:71
 msgid "Настройка"
 msgstr "Configuration"
 
-#: ../../introduction/meeting_record_plugin.rst:72
+#: ../../introduction/meeting_record_plugin.rst:73
 msgid "Нажмите на иконку расширения → **Открыть настройки**:"
 msgstr "Click the extension icon → **Open settings**:"
 
-#: ../../introduction/meeting_record_plugin.rst:73
+#: ../../introduction/meeting_record_plugin.rst:74
 msgid "Введите URL стенда Citeck (например, ``http://localhost``):"
 msgstr "Enter the Citeck instance URL (for example, ``http://localhost``):"
 
-#: ../../introduction/meeting_record_plugin.rst:74
+#: ../../introduction/meeting_record_plugin.rst:75
 msgid "Нажмите **Проверить подключение**:"
 msgstr "Click **Check connection**:"
 
-#: ../../introduction/meeting_record_plugin.rst:82
+#: ../../introduction/meeting_record_plugin.rst:81
+msgid ""
+"Проверка подключения сохраняет введённый URL. Если расширение сообщает об"
+" отсутствии авторизации, нажмите **Войти в ECOS** в popup и войдите в "
+"Citeck на открывшейся странице."
+msgstr "The connection check saves the entered URL. If the extension reports that you are not signed in, click **Sign in to ECOS** in the popup and sign in to Citeck on the page that opens."
+
+#: ../../introduction/meeting_record_plugin.rst:84
 msgid "Использование"
 msgstr "Usage"
 
-#: ../../introduction/meeting_record_plugin.rst:84
+#: ../../introduction/meeting_record_plugin.rst:86
 msgid "Откройте конференцию в Yandex Telemost."
 msgstr "Open a conference in Yandex Telemost."
 
-#: ../../introduction/meeting_record_plugin.rst:85
+#: ../../introduction/meeting_record_plugin.rst:87
 msgid "Нажмите иконку расширения в панели Chrome."
 msgstr "Click the extension icon in the Chrome toolbar."
 
-#: ../../introduction/meeting_record_plugin.rst:86
-msgid "Выберите бизнес-сущность (сделку или проект) через поиск."
-msgstr "Select a business entity (deal or project) using the search."
-
-#: ../../introduction/meeting_record_plugin.rst:87
-msgid "Нажмите **Начать запись**."
-msgstr "Click **Start Recording**."
-
-#: ../../introduction/meeting_record_plugin.rst:104
+#: ../../introduction/meeting_record_plugin.rst:88
 msgid ""
-"По завершении нажмите **Остановить запись** — или просто "
-"закройте/покиньте встречу, запись остановится автоматически."
-msgstr ""
-"When finished, click **Stop Recording** — or simply close/leave the "
-"meeting, and the recording will stop automatically."
+"При необходимости выберите тип сущности и найдите запись для привязки. "
+"Доступные типы зависят от настроек стенда."
+msgstr "If needed, select an entity type and find a record to link. Available types depend on installation settings."
+
+#: ../../introduction/meeting_record_plugin.rst:89
+msgid ""
+"Нажмите **Начать запись**. Если сущность не выбрана, подтвердите запуск "
+"без привязки. При первом запуске разрешите доступ к микрофону в "
+"открывшемся окне записи."
+msgstr "Click **Start recording**. If no entity is selected, confirm recording without a link. On first use, allow microphone access in the recording window."
+
+#: ../../introduction/meeting_record_plugin.rst:91
+msgid ""
+"Если доступ к микрофону не получен, запись продолжается только со звуком "
+"вкладки; собственная речь пользователя через микрофон в этот поток не "
+"добавляется."
+msgstr "If microphone access is unavailable, recording continues with tab audio only; your microphone speech is not included in that stream."
+
+#: ../../introduction/meeting_record_plugin.rst:93
+msgid ""
+"После начала захвата отдельное окно записи автоматически сворачивается. "
+"Закрытие popup расширения не останавливает запись. Не закрывайте "
+"отдельное окно записи до её завершения."
+msgstr "After capture starts, the separate recording window minimizes automatically. Closing the extension popup does not stop recording. Do not close the recording window until recording is finished."
 
 #: ../../introduction/meeting_record_plugin.rst:110
-msgid "Дождитесь уведомления о готовности транскрипта и резюме."
-msgstr "Wait for the notification that the transcript and summary are ready."
+msgid ""
+"По завершении нажмите **Остановить запись**. Автоматическая остановка "
+"предусмотрена при закрытии вкладки, уходе со страницы встречи или "
+"завершении захваченной аудиодорожки. Если вы вышли из звонка, но вкладка "
+"осталась открыта, проверьте состояние записи и при необходимости "
+"остановите её вручную."
+msgstr "When finished, click **Stop recording**. Recording stops automatically if the tab closes, you leave the meeting page or the captured audio track ends. If you leave the call but keep the tab open, check recording status and stop it manually if necessary."
 
 #: ../../introduction/meeting_record_plugin.rst:116
 msgid ""
-"Итоги встречи автоматически сохраняются в Citeck и привязываются к нужной"
-" сделке или проекту."
-msgstr ""
-"The meeting results are automatically saved in Citeck and linked to the "
-"relevant deal or project."
+"Дождитесь завершения обработки. При успешной обработке в popup появится "
+"ссылка на активность; по ней можно открыть результат. Расширение также "
+"создаёт Chrome-уведомление, нажатие на которое открывает активность. При "
+"ошибке обработки отображается сообщение об ошибке."
+msgstr "Wait for processing to finish. On success, an activity link appears in the popup; follow it to open the result. The extension also creates a Chrome notification that opens the activity when clicked. Processing errors are shown as an error message."
 
-#: ../../introduction/meeting_record_plugin.rst:134
+#: ../../introduction/meeting_record_plugin.rst:118
+msgid ""
+"Фоновый опрос завершения ограничен 15 минутами. Если обработка длится "
+"дольше или системное уведомление не появилось, проверьте состояние через "
+"popup расширения."
+msgstr "Background completion polling is limited to 15 minutes. If processing takes longer or no system notification appears, check the status in the extension popup."
+
+#: ../../introduction/meeting_record_plugin.rst:124
+msgid ""
+"Итоги встречи автоматически сохраняются в Citeck и привязываются к "
+"записи, выбранной перед началом. При запуске без привязки создаётся "
+"отдельная активность; откройте её по прямой ссылке в расширении после "
+"завершения обработки."
+msgstr "Meeting results are automatically saved in Citeck and linked to the record selected beforehand. Recording without a link creates a standalone activity; open it through the direct link in the extension after processing finishes."
+
+#: ../../introduction/meeting_record_plugin.rst:142
 msgid "Разрешения расширения"
 msgstr "Extension Permissions"
 
-#: ../../introduction/meeting_record_plugin.rst:141
+#: ../../introduction/meeting_record_plugin.rst:149
 msgid "Разрешение"
 msgstr "Permission"
 
-#: ../../introduction/meeting_record_plugin.rst:142
+#: ../../introduction/meeting_record_plugin.rst:150
 msgid "Назначение"
 msgstr "Purpose"
 
-#: ../../introduction/meeting_record_plugin.rst:143
+#: ../../introduction/meeting_record_plugin.rst:151
 msgid "``tabCapture``"
 msgstr "``tabCapture``"
 
-#: ../../introduction/meeting_record_plugin.rst:144
+#: ../../introduction/meeting_record_plugin.rst:152
 msgid "Захват аудио вкладки"
 msgstr "Tab audio capture"
 
-#: ../../introduction/meeting_record_plugin.rst:145
+#: ../../introduction/meeting_record_plugin.rst:153
 msgid "``activeTab``"
 msgstr "``activeTab``"
 
-#: ../../introduction/meeting_record_plugin.rst:146
+#: ../../introduction/meeting_record_plugin.rst:154
 msgid "Доступ к текущей вкладке"
 msgstr "Access to the current tab"
 
-#: ../../introduction/meeting_record_plugin.rst:147
+#: ../../introduction/meeting_record_plugin.rst:155
 msgid "``storage``"
 msgstr "``storage``"
 
-#: ../../introduction/meeting_record_plugin.rst:148
+#: ../../introduction/meeting_record_plugin.rst:156
 msgid "Хранение настроек расширения"
 msgstr "Storing extension settings"
 
-#: ../../introduction/meeting_record_plugin.rst:149
-msgid "``cookies``"
-msgstr "``cookies``"
+#: ../../introduction/meeting_record_plugin.rst:157
+msgid "``notifications``"
+msgstr "``notifications``"
 
-#: ../../introduction/meeting_record_plugin.rst:150
-msgid "Чтение cookies для авторизации в Citeck"
-msgstr "Reading cookies for authorization in Citeck"
+#: ../../introduction/meeting_record_plugin.rst:158
+msgid "Уведомления о завершении и ошибках обработки записи"
+msgstr "Notifications about recording processing completion and errors"
 
-#: ../../introduction/meeting_record_plugin.rst:151
+#: ../../introduction/meeting_record_plugin.rst:159
 msgid "``<all_urls>``"
 msgstr "``<all_urls>``"
 
-#: ../../introduction/meeting_record_plugin.rst:152
-msgid "API-запросы к произвольному стенду Citeck"
-msgstr "API requests to any Citeck instance"
+#: ../../introduction/meeting_record_plugin.rst:160
+msgid ""
+"Разрешение доступа к адресам (``host_permissions``) для API-запросов к "
+"произвольному стенду Citeck"
+msgstr "Host access permission (``host_permissions``) for API requests to any Citeck installation"
 
-#: ../../introduction/meeting_record_plugin.rst:156
+#: ../../introduction/meeting_record_plugin.rst:162
+msgid ""
+"Авторизация использует сессионные cookies, которые браузер передаёт с "
+"запросами через ``credentials: 'include'``. Отдельное разрешение "
+"``cookies`` для их чтения расширением не запрашивается."
+msgstr "Authentication uses session cookies sent by the browser with ``credentials: 'include'``. The extension does not request separate ``cookies`` permission to read them."
+
+#: ../../introduction/meeting_record_plugin.rst:165
 msgid "Зависимости"
 msgstr "Dependencies"
 
-#: ../../introduction/meeting_record_plugin.rst:163
+#: ../../introduction/meeting_record_plugin.rst:172
 msgid "Компонент"
 msgstr "Component"
 
-#: ../../introduction/meeting_record_plugin.rst:164
+#: ../../introduction/meeting_record_plugin.rst:173
 msgid "Роль"
 msgstr "Role"
 
-#: ../../introduction/meeting_record_plugin.rst:165
+#: ../../introduction/meeting_record_plugin.rst:174
 msgid "citeck-ai"
 msgstr "citeck-ai"
 
-#: ../../introduction/meeting_record_plugin.rst:166
+#: ../../introduction/meeting_record_plugin.rst:175
 msgid ""
 "Бэкенд: REST API приёма фрагментов, конвейер «распознавание речи → резюме"
 " модели → сохранение активности»"
@@ -327,19 +374,19 @@ msgstr ""
 "Backend: REST API for receiving chunks, the \"speech recognition → model "
 "summary → activity saving\" pipeline"
 
-#: ../../introduction/meeting_record_plugin.rst:167
+#: ../../introduction/meeting_record_plugin.rst:176
 msgid "citeck-stt-sidecar"
 msgstr "citeck-stt-sidecar"
 
-#: ../../introduction/meeting_record_plugin.rst:168
+#: ../../introduction/meeting_record_plugin.rst:177
 msgid "Сервис транскрипции на базе GigaAM (распознавание русской речи)"
 msgstr "Transcription service based on GigaAM (Russian speech recognition)"
 
-#: ../../introduction/meeting_record_plugin.rst:169
+#: ../../introduction/meeting_record_plugin.rst:178
 msgid "gateway"
 msgstr "gateway"
 
-#: ../../introduction/meeting_record_plugin.rst:170
+#: ../../introduction/meeting_record_plugin.rst:179
 msgid ""
 "Обычный маршрут ``/gateway/ai/`` — отдельная инфраструктура для передачи "
 "звука не нужна"
@@ -347,22 +394,19 @@ msgstr ""
 "The regular ``/gateway/ai/`` route — no separate infrastructure is needed"
 " for audio transfer"
 
-#: ../../introduction/meeting_record_plugin.rst:174
+#: ../../introduction/meeting_record_plugin.rst:183
 msgid ""
-"Начиная с версии **1.12.0 (3 июня 2026)** звук передаётся по REST. "
-"Отдельный маршрут ``/gateway/ai/ws/`` и аутентификация по ``wsToken`` "
-"больше не используются: настраивать WebSocket-прокси не требуется."
-msgstr ""
-"Starting with version **1.12.0 (June 3, 2026)**, audio is transferred via"
-" REST. The separate ``/gateway/ai/ws/`` route and ``wsToken`` "
-"authentication are no longer used: no WebSocket proxy configuration is "
-"required."
+"В текущей реализации звук передаётся по REST с токеном загрузки сессии "
+"``X-Upload-Token``. Отдельный маршрут ``/gateway/ai/ws/`` и "
+"аутентификация по ``wsToken`` в этом сценарии не используются: "
+"настраивать WebSocket-прокси не требуется."
+msgstr "The current implementation sends audio over REST using the session upload token ``X-Upload-Token``. A separate ``/gateway/ai/ws/`` route and ``wsToken`` authentication are not used in this scenario; no WebSocket proxy configuration is required."
 
-#: ../../introduction/meeting_record_plugin.rst:178
+#: ../../introduction/meeting_record_plugin.rst:187
 msgid "Подробная техническая информация"
 msgstr "Detailed Technical Information"
 
-#: ../../introduction/meeting_record_plugin.rst:180
+#: ../../introduction/meeting_record_plugin.rst:189
 msgid ":ref:`Модуль записи совещаний (callrecording) <call-recording-module>`"
 msgstr ":ref:`Meeting Recording Module (callrecording) <call-recording-module>`"
 
@@ -391,3 +435,51 @@ msgstr ":ref:`Meeting Recording Module (callrecording) <call-recording-module>`"
 #~ "nginx route ``/gateway/ai/ws/`` directly to"
 #~ " ``citeck-ai``."
 
+#~ msgid "Выбор сделки или проекта перед началом записи"
+#~ msgstr "Selecting a deal or project before starting the recording"
+
+#~ msgid "При завершении встречи (закрытие вкладки, навигация)"
+#~ msgstr "When the meeting ends (tab closed, navigation)"
+
+#~ msgid "Через сессию Citeck — ничего вводить вручную не нужно"
+#~ msgstr "Via Citeck session — no manual input required"
+
+#~ msgid "Пользователь получает Chrome-уведомление о готовности записи."
+#~ msgstr "The user receives a Chrome notification when the recording is ready."
+
+#~ msgid "Выберите бизнес-сущность (сделку или проект) через поиск."
+#~ msgstr "Select a business entity (deal or project) using the search."
+
+#~ msgid "Нажмите **Начать запись**."
+#~ msgstr "Click **Start Recording**."
+
+#~ msgid ""
+#~ "По завершении нажмите **Остановить запись**"
+#~ " — или просто закройте/покиньте встречу,"
+#~ " запись остановится автоматически."
+#~ msgstr ""
+#~ "When finished, click **Stop Recording** "
+#~ "— or simply close/leave the meeting, "
+#~ "and the recording will stop "
+#~ "automatically."
+
+#~ msgid "Дождитесь уведомления о готовности транскрипта и резюме."
+#~ msgstr "Wait for the notification that the transcript and summary are ready."
+
+#~ msgid ""
+#~ "Итоги встречи автоматически сохраняются в "
+#~ "Citeck и привязываются к нужной сделке"
+#~ " или проекту."
+#~ msgstr ""
+#~ "The meeting results are automatically "
+#~ "saved in Citeck and linked to the"
+#~ " relevant deal or project."
+
+#~ msgid "``cookies``"
+#~ msgstr "``cookies``"
+
+#~ msgid "Чтение cookies для авторизации в Citeck"
+#~ msgstr "Reading cookies for authorization in Citeck"
+
+#~ msgid "API-запросы к произвольному стенду Citeck"
+#~ msgstr "API requests to any Citeck instance"

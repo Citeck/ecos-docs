@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,7 +32,11 @@ msgid ""
 "сигналы. Сигнал может быть доставлен нескольким активным обработчикам, "
 "подписки которых соответствуют имени сигнала и настроенным фильтрам по "
 "документу, типу документа и предикатам."
-msgstr ":ref:`Citeck events <bpmn_events_integrations>` are implemented through signals. A signal may be delivered to multiple active handlers whose subscriptions match the signal name and configured document, document type, and predicate filters."
+msgstr ""
+":ref:`Citeck events <bpmn_events_integrations>` are implemented through "
+"signals. A signal may be delivered to multiple active handlers whose "
+"subscriptions match the signal name and configured document, document "
+"type, and predicate filters."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:10
 msgid "Сигналы типов Throw и Catch выполняются по имени сигнала."
@@ -51,7 +55,7 @@ msgid "Атрибуты"
 msgstr "Attributes"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:26
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:438
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:482
 msgid "Ручная настройка"
 msgstr "Manual Configuration"
 
@@ -65,7 +69,7 @@ msgstr ""
 "types."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:31
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:440
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:484
 msgid "Имя сигнала"
 msgstr "Signal Name"
 
@@ -106,17 +110,16 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:44
 msgid ""
-"Таким образом, модель данных позволяет указать какие данные будут "
-"передаваться в сигнале, при этом пользовательская модель данных имеет "
-"высший приоритет над :ref:`payload по умолчанию "
-"<ecos_bpmn_signal_event_defaut_payload>`."
-msgstr ""
-"Thus, the data model allows specifying which data will be transmitted in "
-"the signal, with the custom data model having the highest priority over "
-"the :ref:`default payload <ecos_bpmn_signal_event_defaut_payload>`."
+"Таким образом, модель данных позволяет указать, какие данные будут "
+"передаваться в сигнале. Пользовательская модель переопределяет "
+"совпадающие обычные поля :ref:`payload по умолчанию "
+"<ecos_bpmn_signal_event_defaut_payload>`. Служебные поля ``_meta``, "
+"``record`` и ``recordType`` формируются из исходного события и не "
+"переопределяются пользовательской моделью."
+msgstr "The data model therefore specifies which data is passed in the signal. A custom model overrides matching regular fields in the :ref:`default payload <ecos_bpmn_signal_event_defaut_payload>`. The service fields ``_meta``, ``record``, and ``recordType`` are generated from the source event and are not overridden by a custom model."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:47
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:464
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:508
 msgid "Фильтр события по документу"
 msgstr "Event Filter by Document"
 
@@ -148,11 +151,31 @@ msgstr ""
 "``Document from process variable`` — the event will occur only for the "
 "document specified in the ``Variable Name`` field."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:56
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:55
+msgid ""
+"Для варианта **«Текущий документ»** используется business key экземпляра "
+"процесса. Он должен соответствовать полной ссылке на документ. Если "
+"business key переопределён, фильтрация может отличаться от значения "
+"``documentRef``."
+msgstr "**Current document** uses the process instance business key. It must match the document's full reference. If the business key is overridden, filtering may differ from ``documentRef``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:58
+msgid "Фильтр события по типу документа"
+msgstr "Event filter by document type"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:60
+msgid ""
+"Доступен только при выборе **«Любой документ»** и ограничивает события "
+"заданным типом документа. С вариантами **«Текущий документ»** и "
+"**«Документ из переменной процесса»** отдельный фильтр типа не задаётся; "
+"серверная валидация отклоняет такое сочетание."
+msgstr "Available only with **Any document**, restricting events to the specified document type. A separate type filter cannot be set with **Current document** or **Document from process variable**; server validation rejects this combination."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:63
 msgid "Имя переменной"
 msgstr "Variable Name"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:58
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:65
 msgid ""
 "Поле становится доступно, если в ``Фильтр события по документу`` выбрано "
 "значение ``Документ из переменной процесса``."
@@ -160,7 +183,7 @@ msgstr ""
 "The field becomes available if the value ``Document from process "
 "variable`` is selected in ``Event Filter by Document``."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:60
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:67
 msgid ""
 "В данном поле указывается имя переменной процесса, по которой будет "
 "определяться документ, для которого будет возникать событие. Переменная "
@@ -170,15 +193,15 @@ msgstr ""
 " the document for which the event will occur. The variable must contain "
 "the document's EntityRef as a String."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:63
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:70
 msgid "Фильтр события по предикатам"
 msgstr "Event Filter by Predicates"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:65
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:72
 msgid "Используется для фильтрации catch событий."
 msgstr "Used for filtering catch events."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:67
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:74
 msgid ""
 "Моделью для вычисления предиката является payload события. В предикатах "
 "можно ссылаться на атрибуты из payload события через "
@@ -190,31 +213,27 @@ msgstr ""
 "``{{someAttribute}}``. If an attribute is used only in the predicate, it "
 "can be used directly without declaration in the model."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:69
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:76
 msgid ":ref:`Подробнее о предикатах <ecos-predicate_main>`"
 msgstr ":ref:`More about predicates <ecos-predicate_main>`"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:73
-msgid ""
-"При сохранении, сохранении/публикации процесса проверяется обязательность"
-" заполнения следующих полей:"
-msgstr ""
-"When saving or saving/publishing the process, the mandatory filling of "
-"the following fields is checked:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:80
+msgid "При настройке сигнала учитывайте условную обязательность полей:"
+msgstr "When configuring a signal, consider conditional field requirements:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:75
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:82
 msgid "**«Тип события»**, если поле «Ручная настройка» = false;"
 msgstr "**'Event Type'**, if the 'Manual Configuration' field = false;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:76
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:83
 msgid "**«Имя сигнала»**, если поле «Ручная настройка» = true;"
 msgstr "**'Signal Name'**, if the 'Manual Configuration' field = true;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:77
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:84
 msgid "**«Фильтр события по документу»**;"
 msgstr "**'Event Filter by Document'**;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:78
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:85
 msgid ""
 "**«Имя переменной»**, если поле «Фильтр события по документу» = «Документ"
 " из переменной процесса»;"
@@ -222,7 +241,7 @@ msgstr ""
 "**'Variable Name'**, if the 'Event Filter by Document' field = 'Document "
 "from process variable';"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:79
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:86
 msgid ""
 "**«Фильтр события по типу документа»** или **«Фильтр события по "
 "предикатам»**, если «Тип события» = «Record создан»"
@@ -230,27 +249,30 @@ msgstr ""
 "**'Event Filter by Document Type'** or **'Event Filter by Predicates'**, "
 "if 'Event Type' = 'Record created'"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:81
-msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
-msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:88
+msgid ""
+"Для типа **«Пользовательское действие»** необходимо выбрать действие. "
+"Фильтр по типу документа допускается только с вариантом **«Любой "
+"документ»**."
+msgstr "For **User action** type, an action must be selected. Filtering by document type is allowed only with **Any document**."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:86
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:93
 msgid "Payload событий"
 msgstr "Event Payloads"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:88
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:95
 msgid "Пример payload события **Статус изменен**"
 msgstr "Example payload for the **Status Changed** event"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:112
 msgid "Payload по умолчанию для всех событий"
 msgstr "Default Payload for All Events"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:107
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:114
 msgid "Каждое событие имеет payload по умолчанию, который содержит:"
 msgstr "Every event has a default payload that contains:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:114
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:121
 msgid "``_meta``"
 msgstr "``_meta``"
 
@@ -274,23 +296,23 @@ msgstr "``time`` — time the event occurred (Instant)"
 msgid "``user`` — username пользователя, который вызвал событие (String)"
 msgstr "``user`` — username of the user who triggered the event (String)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:120
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:127
 msgid "``record``"
 msgstr "``record``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:121
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:128
 msgid "Документ, по которому произошло событие (EntityRef)"
 msgstr "The document for which the event occurred (EntityRef)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:122
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:129
 msgid "``recordType``"
 msgstr "``recordType``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:123
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:130
 msgid "Тип документа, по которому произошло событие (EntityRef)"
 msgstr "The type of document for which the event occurred (EntityRef)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:127
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:134
 msgid ""
 "По соглашению, каждое событие должно содержать атрибут ``record`` в виде "
 "EntityRef. Если событие не содержит этого поля, то фильтрация по "
@@ -300,69 +322,74 @@ msgstr ""
 "EntityRef. If the event does not contain this field, filtering by "
 "document will not work."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:130
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:137
 msgid "Payload по умолчанию для предопределенных событий"
 msgstr "Default Payload for Predefined Events"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:133
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:140
 msgid "Record создан"
 msgstr "Record Created"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:135
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:140
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:142
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:147
 msgid "Дополнительная модель отсутствует."
 msgstr "No additional model."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:138
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:145
 msgid "Record удален"
 msgstr "Record Deleted"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:143
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:150
 msgid "Record изменен"
 msgstr "Record Changed"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:150
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:157
 msgid "``before``"
 msgstr "``before``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:151
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:158
 msgid "Атрибуты до изменения (Map<String, Any>)"
 msgstr "Attributes before the change (Map<String, Any>)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:152
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:159
 msgid "``after``"
 msgstr "``after``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:153
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:160
 msgid "Атрибуты после изменения (Map<String, Any>)"
 msgstr "Attributes after the change (Map<String, Any>)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:157
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:164
 msgid ""
 "``diff`` исходного события не включается в переменную BPMN ``event`` "
 "автоматически. Если требуется использовать его атрибуты, укажите их в "
 "модели данных сигнала или предикате. Наличие атрибутов зависит от "
 "исходного события. Модель сигнала по умолчанию содержит только ``before``"
 " и ``after`` в дополнение к общим полям события."
-msgstr "The source event's ``diff`` is not automatically included in the BPMN ``event`` variable. To use its attributes, specify them in the signal data model or predicate. Attribute availability depends on the source event. In addition to common event fields, the default signal model contains only ``before`` and ``after``."
+msgstr ""
+"The source event's ``diff`` is not automatically included in the BPMN "
+"``event`` variable. To use its attributes, specify them in the signal "
+"data model or predicate. Attribute availability depends on the source "
+"event. In addition to common event fields, the default signal model "
+"contains only ``before`` and ``after``."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:160
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:167
 msgid "Статус изменен"
 msgstr "Status Changed"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:177
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:184
 msgid "**Тип изменения**:"
 msgstr "**Change Type**:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:179
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:186
 msgid "**Предыдущий** — статус до изменения;"
 msgstr "**Previous** — status before the change;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:180
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:187
 msgid "**Новый** — статус после изменения."
 msgstr "**New** — status after the change."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:182
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:189
 msgid ""
 "**Статус** выбирается из выпадающего списка. Список статусов формируется "
 "из привязанного типа данных."
@@ -370,79 +397,192 @@ msgstr ""
 "**Status** is selected from a dropdown list. The list of statuses is "
 "formed from the associated data type."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:186
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:191
+msgid ""
+"Тип изменения и статус задаются вместе. При их заполнении Citeck "
+"формирует предикат статуса; произвольный предикат из отдельного поля на "
+"этом пути не объединяется с ним автоматически."
+msgstr "Change type and status are specified together. When filled in, Citeck generates a status predicate; an arbitrary predicate from the separate field is not automatically combined with it on this path."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:195
 msgid "Комментарий создан"
 msgstr "Comment Created"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:193
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:221
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:202
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:232
 msgid "``text``"
 msgstr "``text``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:194
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:203
 msgid "Текст комментария (String)"
 msgstr "Comment text (String)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:195
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:210
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:223
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:204
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:221
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:234
 msgid "``commentRecord``"
 msgstr "``commentRecord``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:196
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:211
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:205
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:222
 msgid "Рекорд созданного комментария (EntityRef)"
 msgstr "Record of the created comment (EntityRef)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:199
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:207
+msgid ""
+"Для исходного события ``comment-create`` модель по умолчанию также "
+"содержит ``attachments`` — ссылки на вложения, загружаемые через "
+"``attachments[]?id``. Для совместимого события ``ecos.comment.create`` "
+"это поле автоматически не добавляется."
+msgstr "For the source ``comment-create`` event, the default model also contains ``attachments``, references to attachments loaded through ``attachments[]?id``. This field is not automatically added for the compatible ``ecos.comment.create`` event."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:210
 msgid "Комментарий изменен"
 msgstr "Comment Changed"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:206
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:217
 msgid "``textBefore``"
 msgstr "``textBefore``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:207
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:218
 msgid "Текст комментария до изменения (String)"
 msgstr "Comment text before the change (String)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:208
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:219
 msgid "``textAfter``"
 msgstr "``textAfter``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:209
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:220
 msgid "Текст комментария после изменения (String)"
 msgstr "Comment text after the change (String)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:214
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:225
 msgid "Комментарий удален"
 msgstr "Comment Deleted"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:222
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:233
 msgid "Текст удаленного комментария (String)"
 msgstr "Text of the deleted comment (String)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:224
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:235
 msgid "Рекорд удаленного комментария (EntityRef)"
 msgstr "Record of the deleted comment (EntityRef)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:229
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:238
+msgid "Другие предопределённые события"
+msgstr "Other predefined events"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:240
+msgid ""
+"Помимо перечисленных выше, в редакторе доступны следующие типы. В таблице"
+" указаны дополнительные поля модели по умолчанию; общие поля ``_meta``, "
+"``record`` и ``recordType`` добавляются отдельно."
+msgstr "In addition to those listed above, the editor offers the following types. The table lists additional default model fields; common ``_meta``, ``record``, and ``recordType`` fields are added separately."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:247
+msgid "Тип события"
+msgstr "Event type"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:248
+msgid "Дополнительные поля модели по умолчанию"
+msgstr "Additional default model fields"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:249
+msgid "``RECORD_DRAFT_STATUS_CHANGED`` — изменение чернового статуса"
+msgstr "``RECORD_DRAFT_STATUS_CHANGED`` — draft status change"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:250
+msgid "``before``, ``after`` — логические значения, загружаемые через ``?bool``."
+msgstr "``before``, ``after`` — Boolean values loaded through ``?bool``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:251
+msgid "``RECORD_CONTENT_CHANGED`` — изменение контента"
+msgstr "``RECORD_CONTENT_CHANGED`` — content change"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:252
+msgid ""
+"Дополнительная модель отсутствует; необходимые атрибуты задаются в "
+"пользовательской модели."
+msgstr "No additional model; specify required attributes in the custom model."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:253
+msgid "``USER_TASK_ASSIGN`` — назначение задачи"
+msgstr "``USER_TASK_ASSIGN`` — task assignment"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:254
+msgid "``taskId``, ``assigneeRef``, ``elementDefId``."
+msgstr "``taskId``, ``assigneeRef``, ``elementDefId``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:255
+msgid "``USER_TASK_CREATE`` — создание задачи"
+msgstr "``USER_TASK_CREATE`` — task creation"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:256
+msgid ""
+"``taskId``, ``elementDefId``, ``assigneeRef``, ``candidateUsersRef``, "
+"``candidateGroupsRef``."
+msgstr "``taskId``, ``elementDefId``, ``assigneeRef``, ``candidateUsersRef``, ``candidateGroupsRef``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:257
+msgid "``USER_TASK_COMPLETE`` — завершение задачи"
+msgstr "``USER_TASK_COMPLETE`` — task completion"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:258
+msgid ""
+"``taskId``, ``elementDefId``, ``outcome``, ``completedBy``, ``comment``, "
+"``assigneeRef``."
+msgstr "``taskId``, ``elementDefId``, ``outcome``, ``completedBy``, ``comment``, ``assigneeRef``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:259
+msgid "``USER_TASK_COMPLETE_ERROR`` — ошибка завершения задачи"
+msgstr "``USER_TASK_COMPLETE_ERROR`` — task completion error"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:260
+msgid ""
+"``taskId``, ``elementDefId``, ``outcome``, ``completedBy``, "
+"``errorMessage``."
+msgstr "``taskId``, ``elementDefId``, ``outcome``, ``completedBy``, ``errorMessage``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:261
+msgid "``USER_TASK_DELETE`` — удаление задачи"
+msgstr "``USER_TASK_DELETE`` — task deletion"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:262
+msgid "``taskId``, ``elementDefId``, ``assigneeRef``."
+msgstr "``taskId``, ``elementDefId``, ``assigneeRef``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:263
+msgid "``PROCESS_START`` — запуск экземпляра процесса"
+msgstr "``PROCESS_START`` — process instance start"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:264
+msgid "``processKey``, ``processInstanceId``, ``document``."
+msgstr "``processKey``, ``processInstanceId``, ``document``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:266
+msgid ""
+"Полный payload исходного события может содержать больше атрибутов, чем "
+"модель по умолчанию. Для доступа к ним добавьте необходимые пути в модель"
+" данных сигнала."
+msgstr "The full source event payload may contain more attributes than the default model. To access them, add the required paths to the signal data model."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:271
 msgid "Пользовательское действие"
 msgstr "User Action"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:231
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:273
 msgid "Реализована возможность из виджета «Действия» тригерить Citeck-events."
 msgstr ""
 "The ability to trigger Citeck-events from the 'Actions' widget has been "
 "implemented."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:235
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:277
 msgid ""
 "Предварительно создайте действия с типом :ref:`user-event "
 "<user_event_action>`"
 msgstr "First, create actions with the type :ref:`user-event <user_event_action>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:237
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:279
 msgid ""
 "При выборе типа **Пользовательское действие** появляется возможность "
 "выбора действий из выпадающего списка."
@@ -450,7 +590,7 @@ msgstr ""
 "When the **User Action** type is selected, the ability to choose actions "
 "from a dropdown list appears."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:243
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:285
 msgid ""
 "При этом работает стандартный функционал фильтрации эвентов, позволяющий "
 "фильтровать события:"
@@ -458,48 +598,50 @@ msgstr ""
 "The standard event filtering functionality works, allowing events to be "
 "filtered:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:250
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:292
 msgid "Использование payload события в Script Task"
 msgstr "Using Event Payload in Script Task"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:252
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:294
 msgid ""
-"После возникновении события, его payload доступен в переменной ``event`` "
-"в рамках текущей транзакции. Если необходимо сохранить какую-то "
-"информацию из payload в execution процесса, то это можно осуществить "
-"через обычное сохранение переменных в execution."
-msgstr ""
-"After an event occurs, its payload is available in the ``event`` variable"
-" within the current transaction. If it is necessary to save some "
-"information from the payload into the process execution, this can be done"
-" through the usual saving of variables into the execution."
+"Payload передаётся обработчику в переменной ``event``. Если требуется "
+"сохранить отдельные данные независимо от последующих событий и области "
+"обработчика, скопируйте их в собственные переменные процесса через "
+"``execution.setVariable(...)``. Следующее событие может передать другое "
+"значение ``event``; его видимость зависит от области выполнения."
+msgstr "The payload is passed to the handler in ``event``. To retain specific data independently of subsequent events and the handler scope, copy it to your own process variables using ``execution.setVariable(...)``. The next event may supply a different ``event`` value; its visibility depends on the execution scope."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:254
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:296
 msgid ""
 "Переменная ``event`` — объект "
 "``ru.citeck.ecos.bpmn.commons.values.BpmnDataValue``, который позволяет "
 "работать с JSON-данными: безопасно обращаться к полям, получать значения "
 "по умолчанию и приводить значения к нужному типу. См. :ref:`работу с "
 "DataValue в скриптах <bpmn_script_data_value>`."
-msgstr "The ``event`` variable is a ``ru.citeck.ecos.bpmn.commons.values.BpmnDataValue`` object that supports working with JSON data: safely accessing fields, obtaining default values, and converting values to the required type. See :ref:`using DataValue in scripts <bpmn_script_data_value>`."
+msgstr ""
+"The ``event`` variable is a "
+"``ru.citeck.ecos.bpmn.commons.values.BpmnDataValue`` object that supports"
+" working with JSON data: safely accessing fields, obtaining default "
+"values, and converting values to the required type. See :ref:`using "
+"DataValue in scripts <bpmn_script_data_value>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:256
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:298
 msgid "Пример использования payload в скрипте:"
 msgstr "Example of using payload in a script:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:277
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:319
 msgid "Результат выполнения скрипта:"
 msgstr "Script execution result:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:292
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:334
 msgid "Примеры конфигураций событий"
 msgstr "Examples of Event Configurations"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:297
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:339
 msgid "Start Event - старт процесса"
 msgstr "Start Event - Process Start"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:299
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:341
 msgid ""
 "При изменении статуса по любому документу будет запущен процесс, который "
 "выполнит скрипт."
@@ -507,11 +649,19 @@ msgstr ""
 "When the status changes for any document, a process will be launched that"
 " will execute a script."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:319
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:343
+msgid ""
+"При запуске нового экземпляра из сигнала значение ``record`` используется"
+" как business key и ``documentRef``, а локальный идентификатор "
+"``recordType`` — как ``documentType``, если эти данные присутствуют в "
+"событии."
+msgstr "When a signal starts a new instance, ``record`` is used as the business key and ``documentRef``, while the local ``recordType`` ID is used as ``documentType``, if these values are present in the event."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:363
 msgid "Start Event - старт событийного подпроцесса"
 msgstr "Start Event - Event Subprocess Start"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:321
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:365
 msgid ""
 "Каждый раз при создании комментария по текущему документу, пока основной "
 "процесс активен, будет запущен подпроцесс, который отправит уведомление."
@@ -520,11 +670,11 @@ msgstr ""
 "process is active, a subprocess will be launched that will send a "
 "notification."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:341
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:385
 msgid "Boundary Event - событие с предикатом"
 msgstr "Boundary Event - Event with Predicate"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:343
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:387
 msgid ""
 "При активной задаче, если был добавлен комментарий, который содержит "
 "текст \"Галя, отмена!\", то задача будет отменена и отправлено "
@@ -533,11 +683,11 @@ msgstr ""
 "If an active task has a comment added that contains the text \"Galya, "
 "cancel!\", the task will be canceled and a notification will be sent."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:364
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:408
 msgid "End Throw Event - ручная настройка и события с фильтрами"
 msgstr "End Throw Event - Manual Configuration and Events with Filters"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:366
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:410
 msgid ""
 "При завершении подпроцесса сработает **signal end event** и будет "
 "сформировал сигнал с именем \"manual-throw-signal\" с фильтрацией - любой"
@@ -550,7 +700,7 @@ msgstr ""
 " of type \"Employee Hiring\". An event subprocess will then launch "
 "because it matches the signal name, document, and document type."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:392
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:436
 msgid ""
 "Intermediate Catch Event - событие с пользовательской моделью и "
 "предикатом с expression"
@@ -558,7 +708,7 @@ msgstr ""
 "Intermediate Catch Event - Event with Custom Model and Predicate with "
 "Expression"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:394
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:438
 msgid ""
 "Создается задача, в результате которой, пользователь определяет, "
 "комментарий с каким текстом нужно удалить, текст комментария сохраняется "
@@ -576,7 +726,7 @@ msgstr ""
 " of the variable ``delText``, which is defined in the data model and "
 "references a document attribute."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:401
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:445
 msgid ""
 "Если атрибут используется только в предикате, то его можно не объявлять в"
 " модели, а использоваться напрямую, таким образом, пример выше можно "
@@ -586,7 +736,7 @@ msgstr ""
 "declared in the model and can be used directly. Thus, the example above "
 "can be simplified to:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:418
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:462
 msgid ""
 "Обработка события изменения исполнителя с использованием Signal Start "
 "Event (Non Interrupting)"
@@ -594,7 +744,7 @@ msgstr ""
 "Handling the assignee change event using Signal Start Event (Non "
 "Interrupting)"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:424
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:468
 msgid ""
 "В процесс добавляется Event Sub Process, внутри событие для старта - "
 "Signal Start Event (Non Interrupting)"
@@ -602,7 +752,7 @@ msgstr ""
 "An Event Sub Process is added to the process, with a Signal Start Event "
 "(Non Interrupting) as the start event inside."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:426
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:470
 msgid ""
 "См. :download:`демонстрационный процесс <../files/assignee-changed-"
 "listener-example.bpmn.xml>`"
@@ -614,23 +764,23 @@ msgstr ""
 msgid "Настройки события и пример логов"
 msgstr "Event Settings and Log Example"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:431
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:475
 msgid "**Сигнал**"
 msgstr "**Signal**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:439
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:483
 msgid "Да"
 msgstr "Yes"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:441
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:485
 msgid "``bpmn-user-task-assign``"
 msgstr "``bpmn-user-task-assign``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:443
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:487
 msgid "Модель данных:"
 msgstr "Data model:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:455
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:499
 msgid ""
 "Полный список возможных атрибутов для загрузки можно посмотреть по "
 "`ссылка <https://github.com/Citeck/ecos-"
@@ -640,37 +790,50 @@ msgstr ""
 "link <https://github.com/Citeck/ecos-"
 "process/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/events/dto/UserTaskEvent.kt>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:457
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:501
 msgid "**Фильтрация**"
 msgstr "**Filtering**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:465
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:509
 msgid "Текущий документ"
 msgstr "Current document"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:467
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:511
 msgid "Фильтр события по предикатам:"
 msgstr "Event filter by predicates:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:487
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:531
 msgid ""
-"Проверяется id задачи и что событие произошло именно в текущем процессе "
-"(id процесса - \"qwe\"). При возникновении событий в лог микросервиса "
-"ecos-process выводятся следующие сообщения:"
-msgstr ""
-"The task ID is checked and that the event occurred specifically in the "
-"current process (process id — \"qwe\"). When events occur, the following "
-"messages are displayed in the ecos-process microservice log:"
+"В этом примере ключ ``taskId`` пользовательской модели является алиасом "
+"``elementDefId`` — идентификатора элемента задачи на схеме. Он отличается"
+" от исходного ``taskId`` события, содержащего ссылку на запись задачи; "
+"путь ``taskId?disp`` используется для загрузки её отображаемого имени."
+msgstr "In this example, the custom model's ``taskId`` key aliases ``elementDefId``, the task element ID in the diagram. It differs from the source event's ``taskId``, which contains a task record reference; the ``taskId?disp`` path loads that record's display name."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:489
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:533
+msgid ""
+"Предикат проверяет элемент задачи ``confirm_task_id`` и описание процесса"
+" ``qwe`` вместе с фильтром текущего документа. Он не выделяет конкретный "
+"экземпляр процесса: несколько экземпляров одного описания по тому же "
+"документу могут соответствовать фильтру. Для фильтрации по экземпляру "
+"необходимо отдельно запросить и сопоставить ``procInstanceId``."
+msgstr "The predicate checks task element ``confirm_task_id`` and process definition ``qwe`` together with the current document filter. It does not identify a specific process instance: multiple instances of the same definition for the same document may match. To filter by instance, query and match ``procInstanceId`` separately."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:535
+msgid ""
+"При возникновении событий в лог микросервиса ecos-process выводятся "
+"следующие сообщения:"
+msgstr "When events occur, the following messages appear in the ecos-process microservice log:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:537
 msgid "Нажата кнопка «Я выполню это»:"
 msgstr "The \"I will do this\" button is clicked:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:500
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:548
 msgid "Нажата кнопка «Вернуть на группу»:"
 msgstr "The \"Return to group\" button is clicked:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:511
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst:559
 msgid "Задача назначена на пользователя из оргструктуры:"
 msgstr "The task is assigned to a user from the org structure:"
 
@@ -794,3 +957,32 @@ msgstr "The task is assigned to a user from the org structure:"
 #~ "much more; see the class methods "
 #~ "for details."
 
+#~ msgid ""
+#~ "При сохранении, сохранении/публикации процесса "
+#~ "проверяется обязательность заполнения следующих "
+#~ "полей:"
+#~ msgstr ""
+#~ "When saving or saving/publishing the "
+#~ "process, the mandatory filling of the"
+#~ " following fields is checked:"
+
+#~ msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
+#~ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
+
+#~ msgid ""
+#~ "После возникновении события, его payload "
+#~ "доступен в переменной ``event`` в рамках"
+#~ " текущей транзакции. Если необходимо "
+#~ "сохранить какую-то информацию из payload "
+#~ "в execution процесса, то это можно "
+#~ "осуществить через обычное сохранение "
+#~ "переменных в execution."
+#~ msgstr ""
+#~ "After an event occurs, its payload "
+#~ "is available in the ``event`` variable"
+#~ " within the current transaction. If "
+#~ "it is necessary to save some "
+#~ "information from the payload into the"
+#~ " process execution, this can be done"
+#~ " through the usual saving of "
+#~ "variables into the execution."

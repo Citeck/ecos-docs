@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -64,37 +64,60 @@ msgstr ""
 
 #: ../../admin/monitoring_performance/audit.rst:21
 msgid ""
+"Аудит встроен в каждый микросервис платформы и фиксирует операции "
+":ref:`Records API <Records_API>`. Через Records API с данными работают "
+"веб-интерфейс, мобильное приложение и внешние системы. Поэтому четыре "
+"типа событий охватывают действия пользователей с записями: просмотр "
+"карточек и журналов, поиск, создание, изменение и удаление записей, "
+"выполнение задач. Изменения настроек системы (типов данных, форм, "
+"журналов, бизнес-процессов, прав доступа) тоже выполняются через Records "
+"API и фиксируются теми же событиями. Для действий администраторов в "
+"событии устанавливается признак ``admin``. Действия от имени системы по "
+"умолчанию не фиксируются; их включает параметр ``includeSystem`` фильтра "
+"``authority``."
+msgstr "Audit is built into every platform microservice and records :ref:`Records API <Records_API>` operations. The web interface, mobile application and external systems access data through the Records API. The four event types therefore cover user operations on records: viewing cards and journals, searching, creating, updating and deleting records, and completing tasks. System configuration changes (data types, forms, journals, business processes and permissions) also use the Records API and generate the same events. Events for administrator actions have the ``admin`` flag. Actions performed as the system are not recorded by default; enable them using ``includeSystem`` in the ``authority`` filter."
+
+#: ../../admin/monitoring_performance/audit.rst:23
+msgid ""
+"Вход пользователей в систему и действия в консоли администрирования "
+"Keycloak фиксирует сервис аутентификации Keycloak. Передача событий "
+"аудита и событий Keycloak в SIEM описана в разделе :ref:`Интеграция с "
+"SIEM и централизованный сбор журналов <ecos_audit_siem>`."
+msgstr "Keycloak records user logins and actions in its administration console. See :ref:`SIEM integration and centralized log collection <ecos_audit_siem>` for forwarding audit and Keycloak events to a SIEM."
+
+#: ../../admin/monitoring_performance/audit.rst:25
+msgid ""
 "Основная логика аудита располагается в библиотеке **ecos-audit-lib**: "
 "https://gitlab.citeck.ru/citeck-projects/ecos-audit-lib"
 msgstr ""
 "The main audit logic is located in the **ecos-audit-lib** library: "
 "https://gitlab.citeck.ru/citeck-projects/ecos-audit-lib"
 
-#: ../../admin/monitoring_performance/audit.rst:23
+#: ../../admin/monitoring_performance/audit.rst:27
 msgid "Аудит в Citeck настраивается через Spring-конфигурацию."
 msgstr "Audit in Citeck is configured via Spring configuration."
 
-#: ../../admin/monitoring_performance/audit.rst:25
+#: ../../admin/monitoring_performance/audit.rst:29
 msgid "Префикс конфигурации: **ecos.webapp.audit**"
 msgstr "Configuration prefix: **ecos.webapp.audit**"
 
-#: ../../admin/monitoring_performance/audit.rst:28
+#: ../../admin/monitoring_performance/audit.rst:32
 msgid "Доступные настройки"
 msgstr "Available settings"
 
-#: ../../admin/monitoring_performance/audit.rst:37
+#: ../../admin/monitoring_performance/audit.rst:41
 msgid "PipelineProps"
 msgstr "PipelineProps"
 
-#: ../../admin/monitoring_performance/audit.rst:47
+#: ../../admin/monitoring_performance/audit.rst:51
 msgid "EcosAuditEventFilterProps"
 msgstr "EcosAuditEventFilterProps"
 
-#: ../../admin/monitoring_performance/audit.rst:57
+#: ../../admin/monitoring_performance/audit.rst:61
 msgid "TypeFilter"
 msgstr "TypeFilter"
 
-#: ../../admin/monitoring_performance/audit.rst:66
+#: ../../admin/monitoring_performance/audit.rst:70
 msgid ""
 "в includes и excludes для типов поддерживаются шаблоны. Тип события "
 "разбивается по символам “.“ на слова и дальше идет сопоставление с "
@@ -107,48 +130,68 @@ msgstr ""
 "excludes. If the symbol '#' is encountered in the settings, it means "
 "\"any number of words including 0\", the symbol '*' means - one any word."
 
-#: ../../admin/monitoring_performance/audit.rst:69
+#: ../../admin/monitoring_performance/audit.rst:72
+msgid ""
+"Список ``includes`` обязателен: если он не задан или пуст, конвейер не "
+"обрабатывает ни одного события. Чтобы обрабатывать события всех типов, "
+"укажите ``includes: [ \"#\" ]``."
+msgstr "The ``includes`` list is required: if it is missing or empty, the pipeline processes no events. To process all event types, specify ``includes: [ \"#\" ]``."
+
+#: ../../admin/monitoring_performance/audit.rst:75
 msgid "AuthorityFilter"
 msgstr "AuthorityFilter"
 
-#: ../../admin/monitoring_performance/audit.rst:78
+#: ../../admin/monitoring_performance/audit.rst:84
 msgid "Пример настройки"
 msgstr "Configuration example"
 
-#: ../../admin/monitoring_performance/audit.rst:111
+#: ../../admin/monitoring_performance/audit.rst:117
 msgid "type"
 msgstr "type"
 
-#: ../../admin/monitoring_performance/audit.rst:112
+#: ../../admin/monitoring_performance/audit.rst:118
 msgid "Конфигурация"
 msgstr "Configuration"
 
-#: ../../admin/monitoring_performance/audit.rst:113
+#: ../../admin/monitoring_performance/audit.rst:119
 msgid "Описание"
 msgstr "Description"
 
-#: ../../admin/monitoring_performance/audit.rst:114
+#: ../../admin/monitoring_performance/audit.rst:120
 msgid "rabbitmq"
 msgstr "rabbitmq"
 
-#: ../../admin/monitoring_performance/audit.rst:116
+#: ../../admin/monitoring_performance/audit.rst:121
+msgid "``exchange`` — имя exchange, по умолчанию ``ecos-audit``"
+msgstr "``exchange`` — exchange name; defaults to ``ecos-audit``"
+
+#: ../../admin/monitoring_performance/audit.rst:122
 #, python-brace-format
 msgid ""
-"Отправлять события в RabbitMQ на  exchange “ecos-audit“ с RoutingKey == "
-"{тип_события}"
-msgstr ""
-"Send events to RabbitMQ on exchange \"ecos-audit\" with RoutingKey == "
-"{event_type}"
+"Отправлять события в RabbitMQ на exchange, заданный в конфигурации (тип "
+"topic, durable), с RoutingKey == {тип_события}. Тело сообщения — событие "
+"в формате JSON"
+msgstr "Send events to the RabbitMQ exchange specified in the configuration (topic, durable), with RoutingKey == {event_type}. The message body is the event in JSON format"
 
-#: ../../admin/monitoring_performance/audit.rst:117
+#: ../../admin/monitoring_performance/audit.rst:123
 msgid "log"
 msgstr "log"
 
-#: ../../admin/monitoring_performance/audit.rst:119
-msgid "Выводить события в лог микросервиса"
-msgstr "Output events to the microservice log"
+#: ../../admin/monitoring_performance/audit.rst:124
+msgid ""
+"``level`` — уровень записи: ``INFO`` (по умолчанию), ``WARN``, ``DEBUG``,"
+" ``TRACE``. События с уровнем ``DEBUG`` и ``TRACE`` попадают в лог, "
+"только если для пакета ``ru.citeck.ecos.audit`` включён такой же уровень "
+"журналирования"
+msgstr "``level`` — logging level: ``INFO`` (default), ``WARN``, ``DEBUG`` or ``TRACE``. Events at ``DEBUG`` and ``TRACE`` are logged only if the same logging level is enabled for ``ru.citeck.ecos.audit``"
 
-#: ../../admin/monitoring_performance/audit.rst:121
+#: ../../admin/monitoring_performance/audit.rst:125
+msgid ""
+"Выводить события в лог микросервиса (stdout контейнера). Каждое событие —"
+" отдельная запись журнала, текст записи — событие в формате JSON"
+msgstr "Write events to the microservice log (container stdout). Each event is a separate log entry containing the event in JSON format"
+
+#: ../../admin/monitoring_performance/audit.rst:127
 msgid ""
 "Доступные типы событий (``records.query-records``, ``records.get-records-"
 "atts``, ``records.mutate-record``, ``records.delete-records``) и общий "
@@ -157,18 +200,81 @@ msgid ""
 msgstr ""
 "Available event types (``records.query-records``, ``records.get-records-"
 "atts``, ``records.mutate-record``, ``records.delete-records``) and the "
-"general structure of an event record are described below, see "
-":ref:`Audit description<ecos_audit_description>`."
+"general structure of an event record are described below, see :ref:`Audit"
+" description<ecos_audit_description>`."
 
-#: ../../admin/monitoring_performance/audit.rst:126
+#: ../../admin/monitoring_performance/audit.rst:132
+msgid "Интеграция с SIEM и централизованный сбор журналов"
+msgstr "SIEM integration and centralized log collection"
+
+#: ../../admin/monitoring_performance/audit.rst:134
+msgid ""
+"События аудита всех микросервисов формируются в едином формате JSON (см. "
+":ref:`Модель события аудита <ecos_audit_description>`) и собираются "
+"централизованно. Для передачи в SIEM предусмотрены два выхода, их можно "
+"включить одновременно."
+msgstr "Audit events from all microservices use a common JSON format (see :ref:`Audit event model <ecos_audit_description>`) and are collected centrally. Two outputs are available for SIEM forwarding and can be enabled together."
+
+#: ../../admin/monitoring_performance/audit.rst:136
+msgid ""
+"**Через RabbitMQ.** Выход ``rabbitmq`` каждого микросервиса публикует "
+"события в общий exchange ``ecos-audit`` брокера платформы. Это единая "
+"точка сбора событий аудита со всех микросервисов. Получатель создаёт в "
+"брокере свою очередь и привязывает её к exchange: пока очередь не "
+"привязана, события не накапливаются. Routing key — тип события, поэтому "
+"очередь привязывается ко всем событиям (``#``) или только к нужным типам,"
+" например ``records.mutate-record`` и ``records.delete-records``. "
+"Коллектор SIEM с поддержкой AMQP подключается к брокеру напрямую. В "
+"остальных случаях события забирает промежуточный сборщик (например, "
+"Logstash) и передаёт их в SIEM по протоколу syslog, в том числе в формате"
+" CEF."
+msgstr "**Via RabbitMQ.** Each microservice's ``rabbitmq`` output publishes events to the platform broker's shared ``ecos-audit`` exchange, providing one collection point for all microservices. The consumer creates its own queue and binds it to the exchange; events are not retained until a queue is bound. The routing key is the event type, so the queue can subscribe to all events (``#``) or selected types, such as ``records.mutate-record`` and ``records.delete-records``. A SIEM collector supporting AMQP connects directly to the broker. Otherwise, an intermediate collector (such as Logstash) consumes events and forwards them to the SIEM over syslog, including in CEF format."
+
+#: ../../admin/monitoring_performance/audit.rst:138
+msgid ""
+"**Через журналы контейнеров.** Выход ``log`` пишет каждое событие "
+"отдельной записью в журнал микросервиса (stdout контейнера). Агент сбора "
+"журналов кластера (Fluent Bit, Vector, Filebeat и др.) отбирает записи "
+"аудита и передаёт их в SIEM или в централизованное хранилище журналов."
+msgstr "**Via container logs.** The ``log`` output writes each event as a separate microservice log entry (container stdout). The cluster log collection agent (Fluent Bit, Vector, Filebeat, etc.) selects audit entries and forwards them to the SIEM or a centralized log store."
+
+#: ../../admin/monitoring_performance/audit.rst:140
+msgid "Пример: аудит изменений и удалений записей с отправкой в оба выхода:"
+msgstr "Example: audit record updates and deletions and send them to both outputs:"
+
+#: ../../admin/monitoring_performance/audit.rst:164
+msgid ""
+"**Действия администраторов.** События от пользователей-администраторов "
+"содержат признак ``admin: true``. Чтобы передавать их отдельным потоком, "
+"создайте конвейер с фильтром ``authority`` по роли ``ROLE_ADMIN`` (по ней"
+" же выставляется признак ``admin``) или отбирайте события по признаку "
+"``admin`` на стороне SIEM."
+msgstr "**Administrator actions.** Events from administrator users contain ``admin: true``. To forward them separately, create a pipeline with an ``authority`` filter for ``ROLE_ADMIN`` (the role used to set ``admin``), or filter by ``admin`` in the SIEM."
+
+#: ../../admin/monitoring_performance/audit.rst:166
+msgid ""
+"**Вход в систему и консоль Keycloak.** Аутентификацию пользователей "
+"выполняет Keycloak. События входа и административные события записывает в"
+" журнал контейнера Keycloak слушатель событий ``jboss-logging`` (включён "
+"в realm по умолчанию), категория журнала — ``org.keycloak.events``. По "
+"умолчанию в журнал попадают только события с ошибкой. Чтобы попадали и "
+"успешные события, включите для категории уровень DEBUG — параметр запуска"
+" ``--log-level=INFO,org.keycloak.events:DEBUG`` (переменная окружения "
+"``KC_LOG_LEVEL``). Журнал забирает тот же агент сбора журналов. "
+"Сохранение событий входа (*Login events*) и административных событий "
+"(*Admin events*) в настройках realm нужно, чтобы события хранились в базе"
+" Keycloak и были доступны в его консоли администрирования."
+msgstr "**Login and the Keycloak console.** Keycloak authenticates users. The ``jboss-logging`` event listener (enabled in the realm by default) writes login and administrative events to the Keycloak container log under ``org.keycloak.events``. By default, only errors are logged. To include successful events, enable DEBUG for the category using ``--log-level=INFO,org.keycloak.events:DEBUG`` (the ``KC_LOG_LEVEL`` environment variable). The same log agent collects this log. Enable *Login events* and *Admin events* storage in realm settings to retain events in the Keycloak database and make them available in the administration console."
+
+#: ../../admin/monitoring_performance/audit.rst:171
 msgid "Описание аудита"
 msgstr "Audit description"
 
-#: ../../admin/monitoring_performance/audit.rst:129
+#: ../../admin/monitoring_performance/audit.rst:174
 msgid "Модель события аудита"
 msgstr "Audit event model"
 
-#: ../../admin/monitoring_performance/audit.rst:131
+#: ../../admin/monitoring_performance/audit.rst:176
 msgid ""
 "**id:** UUID // уникальный идентификатор события. Автоматически "
 "генерируется для каждого события."
@@ -176,21 +282,21 @@ msgstr ""
 "**id:** UUID // unique event identifier. Automatically generated for each"
 " event."
 
-#: ../../admin/monitoring_performance/audit.rst:132
+#: ../../admin/monitoring_performance/audit.rst:177
 msgid "**type:** String // тип события"
 msgstr "**type:** String // event type"
 
-#: ../../admin/monitoring_performance/audit.rst:133
+#: ../../admin/monitoring_performance/audit.rst:178
 msgid "**user:** String // пользователь"
 msgstr "**user:** String // user"
 
-#: ../../admin/monitoring_performance/audit.rst:134
+#: ../../admin/monitoring_performance/audit.rst:179
 msgid ""
 "**admin:** Boolean // флаг определяющий является ли пользователь "
 "администратором"
 msgstr "**admin:** Boolean // flag defining whether the user is an administrator"
 
-#: ../../admin/monitoring_performance/audit.rst:135
+#: ../../admin/monitoring_performance/audit.rst:180
 msgid ""
 "**client:** ClientInfo // информация о клиенте. На данный момент одно "
 "поле внутри - ip: String"
@@ -198,19 +304,19 @@ msgstr ""
 "**client:** ClientInfo // client information. Currently one field inside "
 "- ip: String"
 
-#: ../../admin/monitoring_performance/audit.rst:136
+#: ../../admin/monitoring_performance/audit.rst:181
 msgid "**time:** String // ISO8601 время события"
 msgstr "**time:** String // ISO8601 event time"
 
-#: ../../admin/monitoring_performance/audit.rst:137
+#: ../../admin/monitoring_performance/audit.rst:182
 msgid "**success:** Boolean // успешно или нет выполнилось действие"
 msgstr "**success:** Boolean // whether the action completed successfully or not"
 
-#: ../../admin/monitoring_performance/audit.rst:138
+#: ../../admin/monitoring_performance/audit.rst:183
 msgid "**actionTimeMs:** Long // время выполнения действия в миллисекундах"
 msgstr "**actionTimeMs:** Long // action execution time in milliseconds"
 
-#: ../../admin/monitoring_performance/audit.rst:139
+#: ../../admin/monitoring_performance/audit.rst:184
 msgid ""
 "**error: ErrorInfo** // информация об ошибке. Присутствует только если "
 "**success == false**. Описание этой структуры ниже."
@@ -218,7 +324,7 @@ msgstr ""
 "**error: ErrorInfo** // error information. Present only if **success == "
 "false**. Description of this structure is below."
 
-#: ../../admin/monitoring_performance/audit.rst:140
+#: ../../admin/monitoring_performance/audit.rst:185
 msgid ""
 "**data:** Map<String, Object> // данные по событию. Для каждого типа "
 "событий свой набор данных. Ниже будет список данных по типу события."
@@ -226,21 +332,21 @@ msgstr ""
 "**data:** Map<String, Object> // event data. Each event type has its own "
 "data set. A list of data by event type will be provided below."
 
-#: ../../admin/monitoring_performance/audit.rst:141
+#: ../../admin/monitoring_performance/audit.rst:186
 msgid "**appName:** String // имя приложения, в котором произошло событие"
 msgstr "**appName:** String // name of the application where the event occurred"
 
-#: ../../admin/monitoring_performance/audit.rst:142
+#: ../../admin/monitoring_performance/audit.rst:187
 msgid ""
 "**appInstanceId:** String // инстанс приложения, в котором произошло "
 "событие"
 msgstr "**appInstanceId:** String // application instance where the event occurred"
 
-#: ../../admin/monitoring_performance/audit.rst:145
+#: ../../admin/monitoring_performance/audit.rst:190
 msgid "Модель ErrorInfo"
 msgstr "ErrorInfo model"
 
-#: ../../admin/monitoring_performance/audit.rst:147
+#: ../../admin/monitoring_performance/audit.rst:192
 msgid ""
 "**message:** String // текст ошибки. Может формироваться произвольным "
 "образом и напрямую зависит от участка кода где эта ошибка возникла. Если "
@@ -252,7 +358,7 @@ msgstr ""
 "necessary to process and catch certain types of errors, a list of such "
 "errors should be formed and a refinement should be made."
 
-#: ../../admin/monitoring_performance/audit.rst:148
+#: ../../admin/monitoring_performance/audit.rst:193
 msgid ""
 "**javaClass:** String // java класс ошибки. Так же как и message может "
 "быть любым, но с привязкой к существующим классам в системе."
@@ -260,22 +366,22 @@ msgstr ""
 "**javaClass:** String // java error class. Like message, it can be "
 "anything, but tied to existing classes in the system."
 
-#: ../../admin/monitoring_performance/audit.rst:152
+#: ../../admin/monitoring_performance/audit.rst:197
 msgid "Типы событий"
 msgstr "Event types"
 
-#: ../../admin/monitoring_performance/audit.rst:155
+#: ../../admin/monitoring_performance/audit.rst:200
 msgid "records.query-records"
 msgstr "records.query-records"
 
-#: ../../admin/monitoring_performance/audit.rst:157
-#: ../../admin/monitoring_performance/audit.rst:167
-#: ../../admin/monitoring_performance/audit.rst:176
-#: ../../admin/monitoring_performance/audit.rst:186
+#: ../../admin/monitoring_performance/audit.rst:202
+#: ../../admin/monitoring_performance/audit.rst:212
+#: ../../admin/monitoring_performance/audit.rst:221
+#: ../../admin/monitoring_performance/audit.rst:231
 msgid "Данные в поле **data**:"
 msgstr "Data in the **data** field:"
 
-#: ../../admin/monitoring_performance/audit.rst:159
+#: ../../admin/monitoring_performance/audit.rst:204
 msgid ""
 "**sourceId:** String // Идентификатор источника данных. По нему можно "
 "сгруппировать или отфильтровать все операции (чтение, изменение, "
@@ -285,7 +391,7 @@ msgstr ""
 "or filter all operations (read, modify, create, delete) in a specific "
 "data source."
 
-#: ../../admin/monitoring_performance/audit.rst:160
+#: ../../admin/monitoring_performance/audit.rst:205
 msgid ""
 "**query:** RecordsQuery // Поисковый запрос за данными (записями) в "
 "источнике данных."
@@ -293,7 +399,7 @@ msgstr ""
 "**query:** RecordsQuery // Search query for data (records) in the data "
 "source."
 
-#: ../../admin/monitoring_performance/audit.rst:161
+#: ../../admin/monitoring_performance/audit.rst:206
 msgid ""
 "**records:** List<EntityRef> // Список записей, который вернулись в "
 "результате запроса. :ref:`Описание EntityRef<EntityRef>`"
@@ -301,7 +407,7 @@ msgstr ""
 "**records:** List<EntityRef> // List of records returned as a result of "
 "the query. :ref:`EntityRef description<EntityRef>`"
 
-#: ../../admin/monitoring_performance/audit.rst:162
+#: ../../admin/monitoring_performance/audit.rst:207
 msgid ""
 "**attributes:** Map<String, String> // Список атрибутов, которые клиент "
 "запросил у записей из списка records."
@@ -309,11 +415,11 @@ msgstr ""
 "**attributes:** Map<String, String> // List of attributes that the client"
 " requested from the records in the records list."
 
-#: ../../admin/monitoring_performance/audit.rst:165
+#: ../../admin/monitoring_performance/audit.rst:210
 msgid "records.get-records-atts"
 msgstr "records.get-records-atts"
 
-#: ../../admin/monitoring_performance/audit.rst:169
+#: ../../admin/monitoring_performance/audit.rst:214
 msgid ""
 "**sourceId:** String // Идентификатор источника данных. По нему можно "
 "сгруппировать или отфильтровать все операции (чтение, изменение, "
@@ -328,7 +434,7 @@ msgstr ""
 "field for filtering and grouping ``query/get-atts/mutate/delete`` actions"
 " is not required, then **sourceId** can be removed from the event."
 
-#: ../../admin/monitoring_performance/audit.rst:170
+#: ../../admin/monitoring_performance/audit.rst:215
 msgid ""
 "**record:** EntityRef // Ссылка на запись в источнике данных. "
 ":ref:`Описание EntityRef<EntityRef>`"
@@ -336,7 +442,7 @@ msgstr ""
 "**record:** EntityRef // Reference to a record in the data source. "
 ":ref:`EntityRef description<EntityRef>`"
 
-#: ../../admin/monitoring_performance/audit.rst:171
+#: ../../admin/monitoring_performance/audit.rst:216
 msgid ""
 "**attributes:** Map<String, String> // Атрибуты, которые мы запрашиваем у"
 " записи"
@@ -344,11 +450,11 @@ msgstr ""
 "**attributes:** Map<String, String> // Attributes that we request from "
 "the record"
 
-#: ../../admin/monitoring_performance/audit.rst:174
+#: ../../admin/monitoring_performance/audit.rst:219
 msgid "records.mutate-record"
 msgstr "records.mutate-record"
 
-#: ../../admin/monitoring_performance/audit.rst:178
+#: ../../admin/monitoring_performance/audit.rst:223
 msgid ""
 "**sourceId:** String // Идентификатор источника данных. По нему можно "
 "сгруппировать или отфильтровать все операции (чтение, изменение, "
@@ -363,7 +469,7 @@ msgstr ""
 "field for filtering and grouping ``query/get-atts/mutate/delete`` actions"
 " is not required, then sourceId can be removed from the event."
 
-#: ../../admin/monitoring_performance/audit.rst:179
+#: ../../admin/monitoring_performance/audit.rst:224
 msgid ""
 "**record:** EntityRef // Ссылка на запись в источнике данных. Если record"
 " имеет вид ``\"{{appName}}/{{sourceId}}@\"`` (т.е. после знака @ ничего "
@@ -375,7 +481,7 @@ msgstr ""
 "nothing after the @ sign), then it means a request to create a new entity"
 " has been received. :ref:`EntityRef description<EntityRef>`"
 
-#: ../../admin/monitoring_performance/audit.rst:180
+#: ../../admin/monitoring_performance/audit.rst:225
 #, python-brace-format
 msgid ""
 "**attributes:** Map<String, Object> // Атрибуты, которые отправлены от "
@@ -388,7 +494,7 @@ msgstr ""
 " it means the client is trying to change the field \"field0\" by "
 "assigning it the value \"field1\"."
 
-#: ../../admin/monitoring_performance/audit.rst:181
+#: ../../admin/monitoring_performance/audit.rst:226
 msgid ""
 "**attsToLoad:** Map<String, String> // Атрибуты для загрузки после "
 "мутации. В ряде случаев клиент отправляет в запросе помимо атрибутов, "
@@ -400,11 +506,11 @@ msgstr ""
 "attributes to be changed, also attributes that should be loaded from the "
 "record after successful completion of the mutation."
 
-#: ../../admin/monitoring_performance/audit.rst:184
+#: ../../admin/monitoring_performance/audit.rst:229
 msgid "records.delete-records"
 msgstr "records.delete-records"
 
-#: ../../admin/monitoring_performance/audit.rst:188
+#: ../../admin/monitoring_performance/audit.rst:233
 msgid ""
 "**sourceId:** String // Идентификатор источника данных. По нему можно "
 "сгруппировать или отфильтровать все операции (чтение, изменение, "
@@ -419,7 +525,7 @@ msgstr ""
 "separate field for filtering and grouping query/get-atts/mutate/delete "
 "actions is not required, then sourceId can be removed from the event."
 
-#: ../../admin/monitoring_performance/audit.rst:189
+#: ../../admin/monitoring_performance/audit.rst:234
 msgid ""
 "**records:** List<EntityRef> // Список записей для удаления. "
 ":ref:`Описание EntityRef<EntityRef>`"
@@ -427,11 +533,11 @@ msgstr ""
 "**records:** List<EntityRef> // List of records to delete. "
 ":ref:`EntityRef description<EntityRef>`"
 
-#: ../../admin/monitoring_performance/audit.rst:194
+#: ../../admin/monitoring_performance/audit.rst:239
 msgid "Описание EntityRef"
 msgstr "EntityRef description"
 
-#: ../../admin/monitoring_performance/audit.rst:196
+#: ../../admin/monitoring_performance/audit.rst:241
 msgid ""
 "**EntityRef** - уникальный идентификатор сущности в системе Citeck. Он "
 "формируется по следующему шаблону:"
@@ -439,11 +545,11 @@ msgstr ""
 "**EntityRef** is a unique entity identifier in the Citeck system. It is "
 "formed according to the following template:"
 
-#: ../../admin/monitoring_performance/audit.rst:198
+#: ../../admin/monitoring_performance/audit.rst:243
 msgid "``{{appName}}/{{sourceId}}@{{localId}}``"
 msgstr "``{{appName}}/{{sourceId}}@{{localId}}``"
 
-#: ../../admin/monitoring_performance/audit.rst:200
+#: ../../admin/monitoring_performance/audit.rst:245
 msgid ""
 "**appName** - имя приложения где располагается источник данных (см. поле "
 "appName в модели события). Примеры приложений: **uiserv, emodel, "
@@ -453,7 +559,7 @@ msgstr ""
 "located (see the appName field in the event model). Examples of "
 "applications: **uiserv, emodel, integrations, etc.**"
 
-#: ../../admin/monitoring_performance/audit.rst:201
+#: ../../admin/monitoring_performance/audit.rst:246
 msgid ""
 "**sourceId** - идентификатор источника данных в пределах приложения (см. "
 "поле **sourceId**)"
@@ -461,7 +567,7 @@ msgstr ""
 "**sourceId** - this is the data source identifier within the application "
 "(see the **sourceId** field)"
 
-#: ../../admin/monitoring_performance/audit.rst:202
+#: ../../admin/monitoring_performance/audit.rst:247
 msgid ""
 "**localId** - локальный идентификатор сущности в пределах источника "
 "данных. Отсутствие **localId** для мутации означает создание новой "
@@ -470,15 +576,15 @@ msgstr ""
 "**localId** - this is the local entity identifier within the data source."
 " The absence of **localId** for mutation means creating a new record."
 
-#: ../../admin/monitoring_performance/audit.rst:206
+#: ../../admin/monitoring_performance/audit.rst:251
 msgid "Описание атрибутов для загрузки"
 msgstr "Description of attributes for loading"
 
-#: ../../admin/monitoring_performance/audit.rst:208
+#: ../../admin/monitoring_performance/audit.rst:253
 msgid "Атрибуты для загрузки могут иметь следующий вид:"
 msgstr "Attributes for loading can look like this:"
 
-#: ../../admin/monitoring_performance/audit.rst:217
+#: ../../admin/monitoring_performance/audit.rst:262
 msgid ""
 "Подобный формат атрибутов - часть Records API (на базе которого строится "
 "все общение в Citeck)."
@@ -486,7 +592,7 @@ msgstr ""
 "This attribute format is part of the Records API (on which all "
 "communication in Citeck is built)."
 
-#: ../../admin/monitoring_performance/audit.rst:219
+#: ../../admin/monitoring_performance/audit.rst:264
 msgid ""
 "В RecordsAPI клиент может запросить атрибуты, указав сложную вложенную "
 "струтуру, но для аудита в основном полезны только ключи в этой мапе."
@@ -495,7 +601,7 @@ msgstr ""
 "nested structure, but for audit, mainly only the keys in this map are "
 "useful."
 
-#: ../../admin/monitoring_performance/audit.rst:221
+#: ../../admin/monitoring_performance/audit.rst:266
 msgid ""
 "То есть из примера выше мы можем получить информацию о том, что клиент "
 "запросил два атрибута - **\"name\"** и **\"counterparty\"**"
@@ -503,7 +609,7 @@ msgstr ""
 "That is, from the example above, we can get information that the client "
 "requested two attributes - **\"name\"** and **\"counterparty\"**"
 
-#: ../../admin/monitoring_performance/audit.rst:223
+#: ../../admin/monitoring_performance/audit.rst:268
 msgid "Подробнее про :ref:`Records API<Records_API>`"
 msgstr "More about :ref:`Records API<Records_API>`"
 
@@ -522,3 +628,14 @@ msgstr "More about :ref:`Records API<Records_API>`"
 #~ msgid "**ErrorInfo**"
 #~ msgstr "**ErrorInfo**"
 
+#~ msgid ""
+#~ "Отправлять события в RabbitMQ на  "
+#~ "exchange “ecos-audit“ с RoutingKey =="
+#~ " {тип_события}"
+#~ msgstr ""
+#~ "Send events to RabbitMQ on exchange "
+#~ "\"ecos-audit\" with RoutingKey == "
+#~ "{event_type}"
+
+#~ msgid "Выводить события в лог микросервиса"
+#~ msgstr "Output events to the microservice log"
