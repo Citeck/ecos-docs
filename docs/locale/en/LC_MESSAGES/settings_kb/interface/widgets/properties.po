@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,29 +32,35 @@ msgstr "Key ``properties``"
 
 #: ../../settings_kb/interface/widgets/properties.rst:11
 msgid ""
-"Виджет для отображения атрибутов карточки формы и их значений. "
-"Предоставляет возможность inline редактирования значений атрибутов или "
-"редактирование в режиме \"формы\" (с учетом статуса кейса, наличия прав у"
-" просматривающего кейс пользователя)."
-msgstr ""
-"A widget for displaying form card attributes and their values. It "
-"provides inline editing of attribute values or editing in \"form\" mode "
-"(taking into account the case status and the permissions of the user "
-"viewing the case)."
+"Виджет отображает поля выбранной формы и значения атрибутов записи. "
+"Доступны просмотр с inline-редактированием отдельных полей и "
+"редактирование всей формы внутри виджета. Возможность изменения зависит "
+"от прав пользователя, компонентов формы и ограничений, заданных формой и "
+"сервером."
+msgstr "The widget displays the selected form's fields and record attribute values. It supports viewing with inline editing of individual fields and editing the entire form inside the widget. Modification depends on user permissions, form components, and restrictions imposed by the form and server."
 
 #: ../../settings_kb/interface/widgets/properties.rst:14
 msgid "Настройка"
 msgstr "**Configuration**"
 
 #: ../../settings_kb/interface/widgets/properties.rst:16
-msgid "Список для выбора - формы из журнала форм."
-msgstr "The selection list contains forms from the forms journal."
+msgid ""
+"В настройках выбирается форма, доступная для типа текущей записи. Вариант"
+" **«По-умолчанию»** использует форму, определяемую платформой для записи."
+msgstr "Select a form available for the current record's type in the settings. **Default** uses the form determined by the platform for the record."
 
-#: ../../settings_kb/interface/widgets/properties.rst:27
+#: ../../settings_kb/interface/widgets/properties.rst:18
+msgid ""
+"Опция **«Использовать имя формы в качестве заголовка виджета»** позволяет"
+" заменить заголовок названием выбранной формы. Если ранее сохранённая "
+"форма отсутствует в списке, показывается предупреждение."
+msgstr "**Use form name as widget title** replaces the heading with the selected form's name. A warning appears if a previously saved form is absent from the list."
+
+#: ../../settings_kb/interface/widgets/properties.rst:36
 msgid "Настроенный вид"
 msgstr "**Configured view**"
 
-#: ../../settings_kb/interface/widgets/properties.rst:29
+#: ../../settings_kb/interface/widgets/properties.rst:38
 msgid ""
 "Для типа дашборда :ref:`Case-details <dashboard_types>` реализовано 2 "
 "режима (см. настройки ниже):"
@@ -70,27 +76,26 @@ msgstr "View mode with inline editing"
 msgid "Режим формы"
 msgstr "Form mode"
 
-#: ../../settings_kb/interface/widgets/properties.rst:45
+#: ../../settings_kb/interface/widgets/properties.rst:54
 msgid ""
-"При выборе свойства **Электронная подпись** отображаются данные о "
-"сертификате ЭЦП и времени подписания:"
-msgstr ""
-"When the **Electronic signature** property is selected, the digital "
-"certificate details and signing time are displayed:"
+"Если выбранная форма содержит поле **«Электронная подпись»**, его "
+"представление может включать сведения о сертификате и времени подписания."
+" Пример:"
+msgstr "If the selected form contains an **Electronic signature** field, its display may include certificate and signing time information. Example:"
 
-#: ../../settings_kb/interface/widgets/properties.rst:51
+#: ../../settings_kb/interface/widgets/properties.rst:60
 msgid ""
-"Для виджета так же доступен переход в конструктор формы для "
-"дополнительной настройки полей. См. подробную статью :ref:`Формы <forms>`"
-msgstr ""
-"The widget also provides access to the form builder for additional field "
-"configuration. See the detailed article :ref:`Forms <forms>`."
+"Для дополнительной настройки полей доступен переход в конструктор формы с"
+" учётом прав на управление формами. Право изменять запись само по себе не"
+" означает право изменять определение формы. См. подробную статью "
+":ref:`Формы <forms>`."
+msgstr "For further field configuration, open the form designer, subject to form management permissions. Permission to modify a record alone does not grant permission to modify the form definition. See :ref:`Forms <forms>`."
 
-#: ../../settings_kb/interface/widgets/properties.rst:69
+#: ../../settings_kb/interface/widgets/properties.rst:78
 msgid "Настройка режима редактирования виджета для типа дашборда Case-details"
 msgstr "Configuring the widget editing mode for the Case-details dashboard type"
 
-#: ../../settings_kb/interface/widgets/properties.rst:71
+#: ../../settings_kb/interface/widgets/properties.rst:80
 msgid ""
 "Для типа дашборда Case-details доступна настройка режима просмотра с "
 "возможностью inline редактирования значений атрибутов или редактирования "
@@ -100,15 +105,29 @@ msgstr ""
 " inline attribute editing or editing in \"form\" mode. The view mode is "
 "set by default."
 
+#: ../../settings_kb/interface/widgets/properties.rst:83
+msgid ""
+"Для режима редактирования требуется право **Write** на запись. Без него "
+"виджет использует режим просмотра независимо от выбранной настройки. В "
+"режиме просмотра inline-редактирование доступно только для поддерживающих"
+" его полей с учётом прав и настроек формы."
+msgstr "Edit mode requires **Write** permission on the record. Without it, the widget uses view mode regardless of the selected setting. In view mode, inline editing is available only for supporting fields, subject to permissions and form settings."
+
+#: ../../settings_kb/interface/widgets/properties.rst:85
+msgid ""
+"При наличии права изменения записи также доступно отдельное действие "
+"редактирования, открывающее форму в модальном окне."
+msgstr "With permission to modify the record, a separate edit action is also available to open the form in a modal window."
+
 #: ../../settings_kb/interface/widgets/properties.rst
 msgid "Как изменить режим"
 msgstr "How to change the mode"
 
-#: ../../settings_kb/interface/widgets/properties.rst:77
+#: ../../settings_kb/interface/widgets/properties.rst:90
 msgid "В карточке нажмите **шестеренку -> «Настроить страницу»**:"
 msgstr "In the card, click the **gear icon → \"Configure page\"**:"
 
-#: ../../settings_kb/interface/widgets/properties.rst:83
+#: ../../settings_kb/interface/widgets/properties.rst:96
 msgid ""
 "В настройке карточки перейдите в раздел **\"Виджеты\"**, у **виджета "
 "\"Свойства\"** нажмите:"
@@ -116,21 +135,21 @@ msgstr ""
 "In the card settings, go to the **\"Widgets\"** section and click on the "
 "**\"Properties\" widget**:"
 
-#: ../../settings_kb/interface/widgets/properties.rst:89
+#: ../../settings_kb/interface/widgets/properties.rst:102
 msgid ""
 "В настройках выберите **\"Режим редактирования\"** и нажмите "
 "**\"Применить\"**:"
 msgstr "In the settings, select **\"Edit mode\"** and click **\"Apply\"**:"
 
-#: ../../settings_kb/interface/widgets/properties.rst:95
+#: ../../settings_kb/interface/widgets/properties.rst:108
 msgid "В настройке карточки нажмите **\"Применить\"**."
 msgstr "In the card settings, click **\"Apply\"**."
 
-#: ../../settings_kb/interface/widgets/properties.rst:98
+#: ../../settings_kb/interface/widgets/properties.rst:111
 msgid "Особенности режима редактирования"
 msgstr "Edit mode specifics"
 
-#: ../../settings_kb/interface/widgets/properties.rst:100
+#: ../../settings_kb/interface/widgets/properties.rst:113
 msgid ""
 "В виджете при открытии страницы дашборда доступны свойства документа в "
 "режиме редактирования, аналогично открытию документа в модальном окне "
@@ -139,7 +158,7 @@ msgstr ""
 "When the dashboard page is opened, the widget shows document properties "
 "in edit mode, similar to opening a document in an edit modal window:"
 
-#: ../../settings_kb/interface/widgets/properties.rst:106
+#: ../../settings_kb/interface/widgets/properties.rst:119
 msgid ""
 "Если пользователь вносит изменения, то в шапке виджета становятся "
 "доступны кнопки **\"Отмена\"** и **\"Сохранить\"**."
@@ -147,18 +166,61 @@ msgstr ""
 "When the user makes changes, the **\"Cancel\"** and **\"Save\"** buttons "
 "become available in the widget header."
 
-#: ../../settings_kb/interface/widgets/properties.rst:108
+#: ../../settings_kb/interface/widgets/properties.rst:121
 msgid "Если изменений нет - кнопки в шапке виджета отсутствуют."
 msgstr "If there are no changes, the buttons are not shown in the widget header."
 
-#: ../../settings_kb/interface/widgets/properties.rst:110
+#: ../../settings_kb/interface/widgets/properties.rst:123
 msgid ""
-"Если поля при редактировании не проходят валидацию -  кнопка "
-"**\"Сохранить\"** становится не доступна для нажатия:"
-msgstr ""
-"If fields fail validation during editing, the **\"Save\"** button becomes"
-" disabled:"
+"Для обычной записи при невалидных данных кнопка **«Сохранить»** "
+"становится недоступна. Для записи-черновика используется отдельный режим "
+"сохранения без этой проверки валидности. Во время сохранения повторный "
+"запуск блокируется."
+msgstr "For a regular record, invalid data disables **Save**. Draft records use a separate save mode without this validity check. Repeated submission is blocked while saving."
+
+#: ../../settings_kb/interface/widgets/properties.rst:125
+msgid "Кнопка **«Отмена»** сбрасывает несохранённые изменения и обновляет форму."
+msgstr "**Cancel** discards unsaved changes and refreshes the form."
 
 #~ msgid "- редактирование в режиме \"формы\":"
 #~ msgstr "- editing in \"form\" mode:"
 
+#~ msgid ""
+#~ "Виджет для отображения атрибутов карточки "
+#~ "формы и их значений. Предоставляет "
+#~ "возможность inline редактирования значений "
+#~ "атрибутов или редактирование в режиме "
+#~ "\"формы\" (с учетом статуса кейса, "
+#~ "наличия прав у просматривающего кейс "
+#~ "пользователя)."
+#~ msgstr ""
+#~ "A widget for displaying form card "
+#~ "attributes and their values. It provides"
+#~ " inline editing of attribute values "
+#~ "or editing in \"form\" mode (taking "
+#~ "into account the case status and "
+#~ "the permissions of the user viewing "
+#~ "the case)."
+
+#~ msgid "Список для выбора - формы из журнала форм."
+#~ msgstr "The selection list contains forms from the forms journal."
+
+#~ msgid ""
+#~ "Для виджета так же доступен переход "
+#~ "в конструктор формы для дополнительной "
+#~ "настройки полей. См. подробную статью "
+#~ ":ref:`Формы <forms>`"
+#~ msgstr ""
+#~ "The widget also provides access to "
+#~ "the form builder for additional field"
+#~ " configuration. See the detailed article"
+#~ " :ref:`Forms <forms>`."
+
+#~ msgid ""
+#~ "Если поля при редактировании не проходят"
+#~ " валидацию -  кнопка **\"Сохранить\"** "
+#~ "становится не доступна для нажатия:"
+#~ msgstr ""
+#~ "If fields fail validation during "
+#~ "editing, the **\"Save\"** button becomes "
+#~ "disabled:"

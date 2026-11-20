@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -50,27 +50,36 @@ msgstr ""
 msgid ""
 "**Событие «Ошибка»** может быть стартовым событием событийного "
 "подпроцесса, граничным событием активности или конечным событием."
-msgstr "An **Error event** can be the start event of an event subprocess, a boundary event of an activity, or an end event."
+msgstr ""
+"An **Error event** can be the start event of an event subprocess, a "
+"boundary event of an activity, or an end event."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:15
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:14
+msgid ""
+"BPMN-ошибка может быть выброшена конечным событием **«Ошибка»** или кодом"
+" исполняемого сервиса через "
+"``org.camunda.bpm.engine.delegate.BpmnError``. Не следует считать, что "
+"любое техническое исключение автоматически является BPMN-ошибкой и будет "
+"обработано этим событием."
+msgstr "A BPMN error can be thrown by an **Error** end event or executable service code through ``org.camunda.bpm.engine.delegate.BpmnError``. Do not assume any technical exception automatically qualifies as a BPMN error and will be handled by this event."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:17
 msgid "Начальное событие «Ошибка»"
 msgstr "Start Event 'Error'"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:17
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:19
 msgid ""
 "**Начальное событие «Ошибка»** используется только для запуска "
-"событийного подпроцесса. Событийный подпроцесс, начинающийся с ошибки, "
-"всегда прерывает родительский процесс."
-msgstr ""
-"**Start Event 'Error'** is used only to trigger an event subprocess. An "
-"event subprocess starting with an error always interrupts the parent "
-"process."
+"событийного подпроцесса и является прерывающим. При его срабатывании "
+"прерываются обычные выполнения охватывающей области и запускается "
+"событийный подпроцесс обработки ошибки."
+msgstr "An **Error start event** is used only to start an event subprocess and is interrupting. When triggered, it interrupts normal executions in the enclosing scope and starts the error-handling event subprocess."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:24
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:26
 msgid "Конечное событие «Ошибка»"
 msgstr "End Event 'Error'"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:26
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:28
 msgid ""
 "**Конечное событие «Ошибка»** показывает, что в результате выполнения "
 "процесса произошла ошибка."
@@ -78,7 +87,7 @@ msgstr ""
 "**End Event 'Error'** indicates that an error occurred as a result of the"
 " process execution."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:28
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:30
 msgid ""
 "Когда выполнение процесса достигает события завершения ошибки, текущий "
 "путь выполнения завершается и выдается ошибка."
@@ -86,15 +95,14 @@ msgstr ""
 "When process execution reaches an error end event, the current execution "
 "path is terminated and an error is thrown."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:30
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:32
 msgid ""
-"Эту ошибку можно перехватить с помощью соответствующего промежуточного "
-"граничного события с типом \"Ошибка\" (Boundary Catch Event)."
-msgstr ""
-"This error can be caught by a corresponding intermediate boundary event "
-"of type \"Error\" (Boundary Catch Event)."
+"Эту ошибку можно перехватить граничным событием **«Ошибка»** или "
+"начальным событием **«Ошибка»** событийного подпроцесса в подходящей "
+"охватывающей области."
+msgstr "This error can be caught by an **Error** boundary event or an event subprocess **Error** start event in an appropriate enclosing scope."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:34
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:36
 msgid ""
 "Если подходящий обработчик ошибки не найден, Camunda по умолчанию "
 "записывает информацию в журнал и завершает текущую ветку выполнения. При "
@@ -102,37 +110,74 @@ msgid ""
 "вместо этого выбрасывается исключение. См. `обработку неперехваченных "
 "BPMN-ошибок <https://docs.camunda.org/manual/7.24/reference/bpmn20/events"
 "/error-events/#unhandled-bpmn-error>`_."
-msgstr "If no suitable error handler is found, Camunda logs information and ends the current execution branch by default. If the engine's ``enableExceptionsAfterUnhandledBpmnError`` option is enabled, an exception is thrown instead. See `handling unhandled BPMN errors <https://docs.camunda.org/manual/7.24/reference/bpmn20/events/error-events/#unhandled-bpmn-error>`_."
+msgstr ""
+"If no suitable error handler is found, Camunda logs information and ends "
+"the current execution branch by default. If the engine's "
+"``enableExceptionsAfterUnhandledBpmnError`` option is enabled, an "
+"exception is thrown instead. See `handling unhandled BPMN errors "
+"<https://docs.camunda.org/manual/7.24/reference/bpmn20/events/error-"
+"events/#unhandled-bpmn-error>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:40
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:42
 msgid "На рисунке — **(1)**"
 msgstr "In the figure — **(1)**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:47
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:49
 msgid "Имя"
 msgstr "Name"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:54
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:51
+msgid ""
+"Необязательное отображаемое имя BPMN-элемента. Оно не используется для "
+"сопоставления ошибок."
+msgstr "Optional BPMN element display name. Not used for error matching."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:58
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:119
 msgid "Имя ошибки"
 msgstr "Error Name"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:61
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:112
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:60
+msgid ""
+"Имя определения ошибки, по которому Citeck формирует общую BPMN-ошибку в "
+"описании процесса. Поле обязательно."
+msgstr "The error definition name used by Citeck to create a shared BPMN error in the process definition. Required."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:62
+msgid ""
+"Для независимых определений используйте разные имена. Если имя "
+"используется повторно, код и сообщение должны быть согласованы: события с"
+" одинаковым именем ссылаются на одно общее определение."
+msgstr "Use different names for independent definitions. If a name is reused, its code and message must be consistent: events with the same name reference one shared definition."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:69
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:128
 msgid "Код"
 msgstr "Code"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:68
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:71
+msgid ""
+"Код выбрасываемой ошибки, используемый для сопоставления с обработчиком. "
+"Для конечного события поле обязательно в форме."
+msgstr "The thrown error code used for handler matching. Required in the form for an end event."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:78
 msgid "Сообщение"
 msgstr "Message"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:75
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:137
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:80
+msgid ""
+"Необязательное сообщение выбрасываемой ошибки. Обработчик может получить "
+"его через настроенную **«Переменную ошибки»**."
+msgstr "Optional thrown error message. A handler can retrieve it through the configured **Error variable**."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:87
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:155
 msgid "Настройки асинхронности"
 msgstr "Asynchrony Settings"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:77
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:139
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:89
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:157
 msgid ""
 "**Асинхронно \"перед\"** — исполнение доходит до точки перед блоком, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
@@ -142,8 +187,8 @@ msgstr ""
 "block, the transaction is committed, and further execution is queued to "
 "be processed by a job."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:78
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:140
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:90
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:158
 msgid ""
 "**Асинхронно \"после\"** — исполнение доходит до точки после блока, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
@@ -153,8 +198,8 @@ msgstr ""
 " the transaction is committed, and further execution is queued to be "
 "processed by a job."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:80
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:142
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:92
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:160
 msgid ""
 "См. подробнее о `асинхронных задачах <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_."
@@ -162,69 +207,88 @@ msgstr ""
 "See more about `asynchronous tasks <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:87
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:99
 msgid "Граничное событие «Ошибка»"
 msgstr "Boundary Error Event"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:89
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:101
 msgid ""
 "**Граничное событие «Ошибка» (Boundary Error Event)** всегда является "
 "прерывающим. Это означает, что перехваченная ошибка прерывает выполнение "
 "привязанной активности, и поток операций идет по другому маршруту."
-msgstr "A **Boundary Error Event** is always interrupting. This means that a caught error interrupts execution of the attached activity, and the sequence flow follows a different route."
+msgstr ""
+"A **Boundary Error Event** is always interrupting. This means that a "
+"caught error interrupts execution of the attached activity, and the "
+"sequence flow follows a different route."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:91
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:103
 msgid "На рисунке — **(2)**"
 msgstr "In the figure — **(2)**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:98
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:110
 msgid "Название события"
 msgstr "Event Name"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:119
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:112
+msgid "Необязательное отображаемое имя граничного события."
+msgstr "Optional boundary event display name."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:121
+msgid ""
+"Укажите обязательное имя определения ошибки для обработчика. Оно может "
+"отличаться от имени определения выбрасываемой ошибки: сопоставление "
+"выполняется по коду."
+msgstr "Specify the required error definition name for the handler. It may differ from the thrown error's definition name: matching uses the code."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:130
+msgid ""
+"Код ошибки, которую должен перехватывать обработчик. Если оставить поле "
+"пустым, обработчик принимает BPMN-ошибки без ограничения по коду."
+msgstr "The error code to catch. If empty, the handler accepts BPMN errors without restricting the code."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:137
 msgid "Переменная кода"
 msgstr "Code Variable"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:121
-msgid "Имя переменной, которая будет содержать код ошибки."
-msgstr "The name of the variable that will contain the error code."
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:139
+msgid ""
+"Необязательное имя переменной, которая будет содержать код перехваченной "
+"ошибки."
+msgstr "Optional variable name to hold the caught error code."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:128
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:146
 msgid "Переменная ошибки"
 msgstr "Error Variable"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:130
-msgid "Имя переменной, в которой будет содержаться сообщение об ошибке."
-msgstr "The name of the variable that will contain the error message."
-
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:148
+msgid ""
+"Необязательное имя переменной, в которой будет содержаться сообщение "
+"перехваченной ошибки."
+msgstr "Optional variable name to hold the caught error message."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:166
 msgid ""
 "Boundary Error Event перехватывает ошибки, возникающие в области "
 "выполнения активности, к которой оно прикреплено."
-msgstr "A Boundary Error Event catches errors arising within the execution scope of the activity to which it is attached."
+msgstr ""
+"A Boundary Error Event catches errors arising within the execution scope "
+"of the activity to which it is attached."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:150
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:168
 msgid ""
 "Определение error boundary event наиболее целесообразно для встроенного "
 "подпроцесса или действия вызова, поскольку подпроцесс создает область "
-"действия для всех действий внутри подпроцесса. Ошибки выдаются конечным "
-"событием «Ошибка»."
-msgstr ""
-"Defining an error boundary event is most appropriate for an embedded "
-"subprocess or call activity, as the subprocess creates a scope for all "
-"activities inside it. Errors are thrown by an 'Error' end event."
+"действия для всех действий внутри подпроцесса."
+msgstr "An error boundary event is most useful for an embedded subprocess or call activity, since a subprocess creates a scope for all activities inside it."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:154
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:172
 msgid ""
-"Такая ошибка будет распространять свои родительские области вверх до тех "
-"пор, пока не будет найдена область, в которой определено граничное "
-"событие ошибки, соответствующее определению события ошибки."
-msgstr ""
-"Such an error will propagate up its parent scopes until a scope is found "
-"that has an error boundary event defined matching the error event "
-"definition."
+"Ошибка распространяется вверх по охватывающим областям до подходящего "
+"обработчика. Сопоставление выполняется по коду ошибки; отображаемые имена"
+" источника и обработчика не обязаны совпадать."
+msgstr "The error propagates upward through enclosing scopes to a matching handler. Matching uses the error code; source and handler display names do not have to match."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:156
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:174
 msgid ""
 "Когда **событие «Ошибка»** перехвачено, действие, для которого определено"
 " граничное событие (boundary event), завершается, а также завершаются все"
@@ -238,11 +302,11 @@ msgstr ""
 "Process execution continues along the outgoing sequence flow of the "
 "boundary event."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:158
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:176
 msgid "errorCode (код ошибки) используется для сопоставления обнаруженных ошибок:"
 msgstr "errorCode (the error code) is used to match the caught errors:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:160
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:178
 msgid ""
 "Если установлена *errorCodeVariable (Переменная кода)*, код ошибки можно "
 "получить с помощью этой переменной."
@@ -250,7 +314,7 @@ msgstr ""
 "If *errorCodeVariable (Code Variable)* is set, the error code can be "
 "retrieved using this variable."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:161
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:179
 msgid ""
 "Если установлена переменная *errorMessageVariable (Переменная ошибки)*, "
 "сообщение об ошибке можно получить с помощью этой переменной."
@@ -258,25 +322,33 @@ msgstr ""
 "If the *errorMessageVariable (Error Variable)* is set, the error message "
 "can be retrieved using this variable."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:165
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:183
+msgid "При настройке события учитывайте:"
+msgstr "When configuring the event, note:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:185
 msgid ""
-"При сохранении, сохранении/публикации процесса проверяется обязательность"
-" заполнения следующих полей:"
-msgstr ""
-"When saving or saving/publishing the process, the mandatory filling of "
-"the following fields is checked:"
+"**«Имя ошибки»** обязательно для всех описанных видов события; серверная "
+"валидация запрещает пустое имя и имя из пробелов."
+msgstr "**Error name** is required for all described event variants; server validation rejects empty or whitespace-only names."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:167
-msgid "**«Имя ошибки»**;"
-msgstr "**'Error Name'**;"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:186
+msgid ""
+"**«Код»** обязателен в форме конечного события. У обработчика он "
+"необязателен: пустое поле означает отсутствие ограничения по коду."
+msgstr "**Code** is required in the end event form. For a handler it is optional: an empty field means no code restriction."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:168
-msgid "**«Код»**"
-msgstr "**'Code'**"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:187
+msgid ""
+"**«Переменная кода»** и **«Переменная ошибки»** необязательны и задаются "
+"у обработчика."
+msgstr "**Code variable** and **Error variable** are optional and configured on the handler."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:170
-msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
-msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_error.rst:189
+msgid ""
+"В форме длина имени ошибки, кода и имён переменных ограничена 50 "
+"символами."
+msgstr "The form limits the error name, code, and variable names to 50 characters."
 
 #~ msgid "Атрибуты"
 #~ msgstr "Attributes"
@@ -295,3 +367,54 @@ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
 #~ msgid "Промежуточное событие «Ошибка»"
 #~ msgstr "Intermediate Event 'Error'"
 
+#~ msgid ""
+#~ "**Начальное событие «Ошибка»** используется "
+#~ "только для запуска событийного подпроцесса."
+#~ " Событийный подпроцесс, начинающийся с "
+#~ "ошибки, всегда прерывает родительский процесс."
+#~ msgstr ""
+#~ "**Start Event 'Error'** is used only "
+#~ "to trigger an event subprocess. An "
+#~ "event subprocess starting with an error"
+#~ " always interrupts the parent process."
+
+#~ msgid ""
+#~ "Эту ошибку можно перехватить с помощью"
+#~ " соответствующего промежуточного граничного "
+#~ "события с типом \"Ошибка\" (Boundary "
+#~ "Catch Event)."
+#~ msgstr ""
+#~ "This error can be caught by a "
+#~ "corresponding intermediate boundary event of"
+#~ " type \"Error\" (Boundary Catch Event)."
+
+#~ msgid ""
+#~ "Такая ошибка будет распространять свои "
+#~ "родительские области вверх до тех пор,"
+#~ " пока не будет найдена область, в "
+#~ "которой определено граничное событие ошибки,"
+#~ " соответствующее определению события ошибки."
+#~ msgstr ""
+#~ "Such an error will propagate up "
+#~ "its parent scopes until a scope is"
+#~ " found that has an error boundary "
+#~ "event defined matching the error event"
+#~ " definition."
+
+#~ msgid ""
+#~ "При сохранении, сохранении/публикации процесса "
+#~ "проверяется обязательность заполнения следующих "
+#~ "полей:"
+#~ msgstr ""
+#~ "When saving or saving/publishing the "
+#~ "process, the mandatory filling of the"
+#~ " following fields is checked:"
+
+#~ msgid "**«Имя ошибки»**;"
+#~ msgstr "**'Error Name'**;"
+
+#~ msgid "**«Код»**"
+#~ msgstr "**'Code'**"
+
+#~ msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
+#~ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."

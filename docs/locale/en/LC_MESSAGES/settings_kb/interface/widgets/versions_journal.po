@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -32,43 +32,80 @@ msgstr "The widget contains the current and previous versions of the document."
 
 #: ../../settings_kb/interface/widgets/versions_journal.rst:10
 msgid ""
+"В карточке версии отображаются её номер, название, автор, дата и "
+"комментарий, если он указан. Список разделён на **«Активные версии»** и "
+"**«Старые версии»**."
+msgstr "Each version card shows its number, name, author, date, and comment, if provided. The list is divided into **Active versions** and **Old versions**."
+
+#: ../../settings_kb/interface/widgets/versions_journal.rst:12
+msgid ""
 "Служит для **загрузки** новой версии документа по кнопке **(1)**, а также"
 " для сравнения файлов."
 msgstr ""
 "It is used to **upload** a new document version via button **(1)**, and "
 "also to compare files."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:16
+#: ../../settings_kb/interface/widgets/versions_journal.rst:18
 msgid ""
-"Версии документов можно сравнить - выбрать версии и нажать **Сравнить** "
-"**(2)**. Различия будут подсвечены:"
-msgstr ""
-"Document versions can be compared — select the versions and click "
-"**Compare** **(2)**. Differences will be highlighted:"
+"Для загрузки нужны право изменения документа и доступное для изменения "
+"содержимое. Выберите или перетащите в форму один непустой файл, укажите "
+"вид изменений и при необходимости комментарий длиной до 200 символов, "
+"затем нажмите **«Добавить»**. По умолчанию выбраны **«Незначительные "
+"изменения»**; также доступны **«Существенные изменения»**. При ошибке "
+"загрузки в форме появляется сообщение."
+msgstr "Uploading requires permission to modify the document and editable content. Select or drag one nonempty file into the form, specify the change type and an optional comment of up to 200 characters, then click **Add**. **Minor changes** is selected by default; **Major changes** is also available. Upload errors appear in the form."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:25
+#: ../../settings_kb/interface/widgets/versions_journal.rst:20
+msgid ""
+"Панель сравнения доступна при наличии хотя бы двух версий. Выберите две "
+"разные версии и нажмите **«Сравнить»** **(2)**. Вставки и удаления будут "
+"подсвечены:"
+msgstr "The comparison panel is available when there are at least two versions. Select two different versions and click **Compare** **(2)**. Insertions and deletions are highlighted:"
+
+#: ../../settings_kb/interface/widgets/versions_journal.rst:26
+msgid ""
+"Возможность сравнения зависит от формата и источника версий. Виджет "
+"показывает результат серверного сравнения и не гарантирует визуальное "
+"сравнение любых бинарных файлов. Если данные для сравнения не получены, в"
+" окне выводится **«Нет данных документа»**. Из окна сравнения можно "
+"скачать каждую из выбранных версий."
+msgstr "Comparison availability depends on the version format and source. The widget displays server comparison results and does not guarantee visual comparison of arbitrary binary files. If comparison data is not received, the window displays **No document data**. Each selected version can be downloaded from the comparison window."
+
+#: ../../settings_kb/interface/widgets/versions_journal.rst:28
+msgid ""
+"В карточках старых версий доступно скачивание. Кнопка редактирования "
+"появляется, если источник версий предоставил ссылку на редактор. В "
+"карточке текущей версии эти действия не отображаются."
+msgstr "Old version cards offer downloading. The edit button appears if the version source provides an editor link. These actions are not displayed on the current version card."
+
+#: ../../settings_kb/interface/widgets/versions_journal.rst:33
 msgid "Для BPMN-процесса"
 msgstr "For a **BPMN process**:"
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:31
+#: ../../settings_kb/interface/widgets/versions_journal.rst:39
 msgid ""
-"В виджете реализован функционал \"тегов\". Для версии процесса, которая "
-"была опубликована, будет показываться тег **\"Опубликовано\"**, для "
-"процесса, сохраненного как черновик - **\"Черновик\"** **(1)**."
-msgstr ""
-"The widget includes a \"tags\" feature. A published process version will "
-"display the **\"Published\"** tag; a process saved as a draft will show "
-"the **\"Draft\"** tag **(1)**."
+"Для версии процесса с зарегистрированной публикацией показывается тег "
+"**«Опубликовано»**, для черновой ревизии — **«Черновик»** **(1)**. Метки "
+"относятся к конкретной версии."
+msgstr "A process version with a registered deployment shows a **Published** tag; a draft revision shows **Draft** **(1)**. Tags apply to individual versions."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:33
+#: ../../settings_kb/interface/widgets/versions_journal.rst:41
 msgid ""
-"Добавлена кнопка редактирования **(2)**, при нажатии на которую, "
-"открывается bpmn-редактор процесса конкретной версии."
-msgstr ""
-"An edit button **(2)** has been added; clicking it opens the BPMN editor "
-"for that specific process version."
+"Текущей в журнале считается первая версия в списке, отсортированном по "
+"времени создания или обновления черновика. Она может отличаться от "
+"версии, опубликованной в движке: например, после сохранения нового "
+"черновика."
+msgstr "The journal considers the first version in the list, sorted by creation time or draft update time, to be current. It may differ from the version deployed in the engine, for example after saving a new draft."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:35
+#: ../../settings_kb/interface/widgets/versions_journal.rst:43
+msgid ""
+"Кнопка редактирования **(2)** в карточке старой версии открывает "
+"BPMN-редактор выбранной версии в новой вкладке. При сохранении изменения "
+"применяются к исходному процессу с указанием версии, на основе которой "
+"они сделаны."
+msgstr "The edit button **(2)** on an old version card opens that version's BPMN editor in a new tab. Saving applies changes to the original process and identifies the version on which they were based."
+
+#: ../../settings_kb/interface/widgets/versions_journal.rst:45
 msgid ""
 "При нажатии на кнопку скачать **(3)** происходит скачивание конкретной "
 "версии процесса."
@@ -76,31 +113,96 @@ msgstr ""
 "Clicking the download button **(3)** downloads the specific process "
 "version."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:37
+#: ../../settings_kb/interface/widgets/versions_journal.rst:47
 msgid ""
-"При сохранении процесса в редакторе, если есть различия, происходит "
-"сохранение инкремента версии."
-msgstr ""
-"When saving a process in the editor, if there are differences, a version "
-"increment is saved."
+"При изменении определения процесса создаётся новая ревизия. Однако "
+"повторное сохранение собственного последнего черновика может обновлять "
+"его без увеличения номера. При отсутствии различий в данных определения "
+"новая ревизия не создаётся."
+msgstr "Changing a process definition creates a new revision. However, saving your own latest draft again may update it without increasing the number. If definition data has not changed, no new revision is created."
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:39
+#: ../../settings_kb/interface/widgets/versions_journal.rst:49
 msgid ""
-"Cравнение версий процесса - выберите версии и нажмите **\"Сравнить\"** "
-"**(4)**:"
-msgstr ""
-"To compare process versions, select the versions and click "
-"**\"Compare\"** **(4)**:"
+"Для сравнения выберите две разные версии и нажмите **«Сравнить»** "
+"**(4)**. Сравнивается текст BPMN XML с подсветкой различий:"
+msgstr "To compare, select two different versions and click **Compare** **(4)**. BPMN XML text is compared with differences highlighted:"
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:45
+#: ../../settings_kb/interface/widgets/versions_journal.rst:55
 msgid "Для загрузки новой версии нажмите **(5)**:"
 msgstr "To upload a new version, click **(5)**:"
 
-#: ../../settings_kb/interface/widgets/versions_journal.rst:51
+#: ../../settings_kb/interface/widgets/versions_journal.rst:61
 msgid ""
 "Выберите файл, укажите вид изменений и комментарий при необходимости, "
-"нажмите **\"Добавить\"**. Добавленная версия станет актуальной."
-msgstr ""
-"Select a file, specify the type of changes and a comment if needed, then "
-"click **\"Add\"**. The uploaded version will become the current one."
+"нажмите **«Добавить»**. Для BPMN используются последовательные номера "
+"ревизий: выбор **«Незначительные изменения»** в общей форме не означает "
+"дробного увеличения номера версии процесса."
+msgstr "Select a file, specify the change type and an optional comment, and click **Add**. BPMN uses sequential revision numbers: selecting **Minor changes** in the common form does not mean a fractional increase in the process version number."
 
+#: ../../settings_kb/interface/widgets/versions_journal.rst:63
+msgid ""
+"При изменении определения добавленная ревизия становится текущей в "
+"журнале. Загрузка файла не публикует процесс автоматически: публикация "
+"выполняется отдельно и требует соответствующего права."
+msgstr "If the definition changes, the added revision becomes current in the journal. Uploading a file does not publish the process automatically: publishing is a separate operation requiring the corresponding permission."
+
+#~ msgid ""
+#~ "Версии документов можно сравнить - "
+#~ "выбрать версии и нажать **Сравнить** "
+#~ "**(2)**. Различия будут подсвечены:"
+#~ msgstr ""
+#~ "Document versions can be compared — "
+#~ "select the versions and click "
+#~ "**Compare** **(2)**. Differences will be "
+#~ "highlighted:"
+
+#~ msgid ""
+#~ "В виджете реализован функционал \"тегов\". "
+#~ "Для версии процесса, которая была "
+#~ "опубликована, будет показываться тег "
+#~ "**\"Опубликовано\"**, для процесса, сохраненного "
+#~ "как черновик - **\"Черновик\"** **(1)**."
+#~ msgstr ""
+#~ "The widget includes a \"tags\" feature."
+#~ " A published process version will "
+#~ "display the **\"Published\"** tag; a "
+#~ "process saved as a draft will show"
+#~ " the **\"Draft\"** tag **(1)**."
+
+#~ msgid ""
+#~ "Добавлена кнопка редактирования **(2)**, при"
+#~ " нажатии на которую, открывается "
+#~ "bpmn-редактор процесса конкретной версии."
+#~ msgstr ""
+#~ "An edit button **(2)** has been "
+#~ "added; clicking it opens the BPMN "
+#~ "editor for that specific process "
+#~ "version."
+
+#~ msgid ""
+#~ "При сохранении процесса в редакторе, "
+#~ "если есть различия, происходит сохранение "
+#~ "инкремента версии."
+#~ msgstr ""
+#~ "When saving a process in the "
+#~ "editor, if there are differences, a "
+#~ "version increment is saved."
+
+#~ msgid ""
+#~ "Cравнение версий процесса - выберите "
+#~ "версии и нажмите **\"Сравнить\"** **(4)**:"
+#~ msgstr ""
+#~ "To compare process versions, select the"
+#~ " versions and click **\"Compare\"** "
+#~ "**(4)**:"
+
+#~ msgid ""
+#~ "Выберите файл, укажите вид изменений и"
+#~ " комментарий при необходимости, нажмите "
+#~ "**\"Добавить\"**. Добавленная версия станет "
+#~ "актуальной."
+#~ msgstr ""
+#~ "Select a file, specify the type of"
+#~ " changes and a comment if needed, "
+#~ "then click **\"Add\"**. The uploaded "
+#~ "version will become the current one."

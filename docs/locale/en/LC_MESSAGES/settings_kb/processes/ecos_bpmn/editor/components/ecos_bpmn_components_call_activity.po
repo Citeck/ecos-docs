@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -96,8 +96,8 @@ msgid "Имя"
 msgstr "Name"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:34
-msgid "Укажите **Имя**."
-msgstr "Specify **Name**."
+msgid "При необходимости укажите **Имя** элемента."
+msgstr "Specify the element **Name** if needed."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:41
 msgid "Вызываемый процесс"
@@ -105,15 +105,17 @@ msgstr "Called Process"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:43
 msgid ""
-"Процесс можно вызвать одним из двух способов. Варианты взаимоисключающие."
-" Вызываемый процесс может внутри себя вызывать другие процессы."
-msgstr ""
-"The process can be called in one of two ways. The options are mutually "
-"exclusive. The called process can internally call other processes."
+"Выберите один из двух способов задания вызываемого процесса: "
+"**«Процесс»** или **«Вызываемый элемент»**. В форме при заполнении одного"
+" поля другое скрывается. Вызываемый процесс может внутри себя вызывать "
+"другие процессы."
+msgstr "Choose one of two ways to specify the called process: **Process** or **Called element**. Filling one field hides the other in the form. A called process can itself call other processes."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:51
-msgid "Вызываемый процесс может начинаться только с простого Start event."
-msgstr "The called process can only start with a simple Start event."
+msgid ""
+"Для вызываемого процесса рекомендуется использовать простое стартовое "
+"событие **Start event**."
+msgstr "A plain **Start event** is recommended for the called process."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst
 msgid "Процесс"
@@ -129,23 +131,24 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:65
 msgid ""
-"Тип данных выбираемого процесса должен быть таким же, как у создаваемого "
-"процесса."
-msgstr ""
-"The data type of the selected process must be the same as that of the "
-"process being created."
+"При работе с одним документом рекомендуется использовать одинаковый тип "
+"данных у основного и вызываемого процессов: по умолчанию ссылка на "
+"документ и его тип передаются из основного процесса."
+msgstr "When working with one document, use the same data type for the main and called processes: by default, the document reference and type are passed from the main process."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:66
 msgid ""
-"Автоматический старт процесса в настройках выбираемого процесса не должен"
-" быть выставлен."
-msgstr ""
-"The automatic start of the process in the settings of the selected "
-"process should not be enabled."
+"Если процесс предназначен только для явного вызова, отключите его "
+"автоматический старт."
+msgstr "If the process is intended only for explicit calls, disable its automatic start."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:67
-msgid "Связь «Опубликованное с процессом» в данном случае не актуальна."
-msgstr "The «Published with process» binding is not relevant in this case."
+msgid ""
+"Для отдельно публикуемого процесса обычно используйте связь "
+"**«Актуальное»**, **«Версия»** или **«Тег версии»**. Связь "
+"**«Опубликованное с процессом»** требует совместного развертывания "
+"вызывающего и вызываемого процессов."
+msgstr "For a separately published process, normally use **Latest**, **Version**, or **Version tag** binding. **Deployment** binding requires the calling and called processes to be deployed together."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst
 msgid "Вызываемый элемент"
@@ -175,11 +178,10 @@ msgstr ""
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:98
 msgid ""
-"**Опубликованное с процессом** — рассчитывается версия процесса, которая "
-"была опубликована вместе с версией текущего процесса."
-msgstr ""
-"**Published with process** — the version of the process that was "
-"published together with the version of the current process is calculated."
+"**Опубликованное с процессом** — используется версия вызываемого процесса"
+" из того же развертывания Camunda, что и текущий процесс. Выбор процесса "
+"из журнала сам по себе не обеспечивает совместное развертывание."
+msgstr "**Deployment** — uses the called process version from the same Camunda deployment as the current process. Selecting a process from a journal does not itself ensure joint deployment."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:99
 msgid "**Актуальное** — всегда последняя версия процесса."
@@ -197,7 +199,21 @@ msgstr "**Version Tag** — allows specifying a specific process version by tag.
 msgid "Трансляция переменных в вызываемый процесс"
 msgstr "Variable Mapping into the Called Process"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:114
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:110
+msgid ""
+"По умолчанию пользовательские переменные нужно передавать явно либо "
+"включить передачу всех переменных. Переменные ``documentRef``, "
+"``documentType`` и ``workflowInitiator`` передаются в вызываемый процесс "
+"автоматически, независимо от флага **«Транслировать все переменные»**."
+msgstr "By default, custom variables must be passed explicitly or all-variable propagation must be enabled. ``documentRef``, ``documentType``, and ``workflowInitiator`` are passed to the called process automatically, regardless of **Propagate all variables**."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:112
+msgid ""
+"Вызываемый процесс также получает business key основного процесса. Если "
+"business key пуст, используется строковое значение ``documentRef``."
+msgstr "The called process also receives the main process's business key. If it is empty, the string value of ``documentRef`` is used."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:118
 msgid ""
 "**Транслировать все переменные** — все переменные основного процесса "
 "будут переданы в вызываемый процесс, и необходимые из них будут "
@@ -206,21 +222,33 @@ msgstr ""
 "**Map All Variables** — all variables from the main process will be "
 "passed into the called process, and the necessary ones will be used."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:120
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:124
 msgid ""
 "**Выбор передаваемых переменных в вызываемый процесс** — **Источник** — "
-"переменная из основного процесса, передаваемая в вызываемый; **Цель** — "
-"переменная вызываемого процесса."
-msgstr ""
-"**Selection of Variables to Pass into the Called Process** — **Source** —"
-" a variable from the main process to be passed into the called process; "
-"**Target** — a variable of the called process."
+"имя переменной основного процесса или выражение, начинающееся с ``${`` "
+"или ``#{``; **Цель** — имя переменной вызываемого процесса. Для строки с "
+"заполненным источником цель обязательна."
+msgstr "**Variables passed to the called process** — **Source** is a main process variable name or an expression starting with ``${`` or ``#{``; **Target** is a called process variable name. A target is required for a row with a filled source."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:127
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:126
+msgid ""
+"Передачу всех переменных можно сочетать с отдельными сопоставлениями. Для"
+" передачи всех переменных и для отдельных строк доступны флаги "
+"**«Локальные»**, управляющие локальностью сопоставления в Camunda."
+msgstr "Passing all variables can be combined with individual mappings. **Local** flags are available for both all-variable propagation and individual rows, controlling mapping locality in Camunda."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:133
 msgid "Трансляция переменных из вызываемого процесса"
 msgstr "Variable Mapping from the Called Process"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:133
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:135
+msgid ""
+"Обратная передача переменных выполняется по заданным настройкам. "
+"Автоматические входящие сопоставления ``documentRef``, ``documentType`` и"
+" ``workflowInitiator`` не добавляют передачу этих переменных обратно."
+msgstr "Variables are passed back according to the configured settings. Automatic input mappings for ``documentRef``, ``documentType``, and ``workflowInitiator`` do not add output mappings for these variables."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:141
 msgid ""
 "**Транслировать все переменные** — все переменные вызванного процесса "
 "будут переданы в основной процесс, и необходимые из них будут "
@@ -229,34 +257,40 @@ msgstr ""
 "**Map All Variables** — all variables from the called process will be "
 "passed into the main process, and the necessary ones will be used."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:139
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:147
 msgid ""
 "**Выбор передаваемых переменных из вызванного процесса** — **Источник** —"
-" переменная из вызванного процесса, передаваемая в основной; **Цель** — "
-"переменная основного процесса."
-msgstr ""
-"**Selection of Variables to Pass from the Called Process** — **Source** —"
-" a variable from the called process to be passed into the main process; "
-"**Target** — a variable of the main process."
+" имя переменной вызванного процесса или выражение, начинающееся с ``${`` "
+"или ``#{``; **Цель** — имя переменной основного процесса. Для строки с "
+"заполненным источником цель обязательна. Передачу всех переменных можно "
+"сочетать с отдельными сопоставлениями; также доступны настройки "
+"локальности."
+msgstr "**Variables passed from the called process** — **Source** is a called process variable name or an expression starting with ``${`` or ``#{``; **Target** is a main process variable name. A target is required for a row with a filled source. Passing all variables can be combined with individual mappings; locality settings are also available."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:146
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:154
 msgid "Настройки асинхронности"
 msgstr "Asynchrony Settings"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:150
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:158
 msgid ""
 "В ``ecos-process 2.38.0-SNAPSHOT`` настройки **«Асинхронно перед»** и "
 "**«Асинхронно после»** для Call activity сохраняются в описании процесса,"
 " но не переносятся в исполняемую схему. В этой версии включение флагов не"
 " создаёт асинхронную границу для самого вызова. Настройки тела Multi "
 "Instance обрабатываются отдельно."
-msgstr "In ``ecos-process 2.38.0-SNAPSHOT``, the **Asynchronous before** and **Asynchronous after** settings for a Call activity are saved in the process description but are not transferred to the executable diagram. In this version, enabling the flags does not create an asynchronous boundary for the call itself. Multi Instance body settings are handled separately."
+msgstr ""
+"In ``ecos-process 2.38.0-SNAPSHOT``, the **Asynchronous before** and "
+"**Asynchronous after** settings for a Call activity are saved in the "
+"process description but are not transferred to the executable diagram. In"
+" this version, enabling the flags does not create an asynchronous "
+"boundary for the call itself. Multi Instance body settings are handled "
+"separately."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:152
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:160
 msgid "Назначение флагов в Camunda:"
 msgstr "Purpose of the flags in Camunda:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:154
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:162
 msgid ""
 "**Асинхронно «перед»** — исполнение доходит до точки перед блоком, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
@@ -266,7 +300,7 @@ msgstr ""
 "block, the transaction is committed, and further execution is queued to "
 "be processed by a job."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:155
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:163
 msgid ""
 "**Асинхронно «после»** — исполнение доходит до точки после блока, "
 "транзакция комитится и дальнейшее выполнение ставится в очередь, которую "
@@ -276,7 +310,7 @@ msgstr ""
 " the transaction is committed, and further execution is queued to be "
 "processed by a job."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:157
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:165
 msgid ""
 "См. подробнее об `асинхронных задачах <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_."
@@ -284,33 +318,45 @@ msgstr ""
 "see more about `asynchronous tasks <https://camunda.com/blog/2014/07"
 "/advanced-asynchronous-continuations/>`_"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:165
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:173
+msgid "При настройке элемента заполните:"
+msgstr "When configuring the element, fill in:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:175
 msgid ""
-"При сохранении, сохранении/публикации процесса проверяется обязательность"
-" заполнения следующих полей:"
-msgstr ""
-"When saving, saving/publishing the process, the mandatory filling of the "
-"following fields is checked:"
+"**«Процесс»** или **«Вызываемый элемент»** — выберите один способ задания"
+" процесса;"
+msgstr "**Process** or **Called element** — choose one way to specify the process;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:167
-msgid "**«Процесс или Вызываемый элемент»**;"
-msgstr "**«Process or Called Element»**;"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:176
+msgid "**«Связь»** — обязательное поле формы, по умолчанию **«Актуальное»**;"
+msgstr "**Binding** — required in the form, defaults to **Latest**;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:168
-msgid "**«Связь»**:"
-msgstr "**«Binding»**:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:177
+msgid ""
+"**«Версия»** — обязательна в форме при связи **«Версия»**; укажите целое "
+"число не меньше 1;"
+msgstr "**Version** — required in the form for **Version** binding; enter an integer of at least 1;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:169
-msgid "«Версия»;"
-msgstr "«Version»;"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:178
+msgid "**«Тег версии»** — обязателен в форме при связи **«Тег версии»**."
+msgstr "**Version tag** — required in the form for **Version tag** binding."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:170
-msgid "«Тег версии»."
-msgstr "«Version Tag»"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:180
+msgid ""
+"Наличие вызываемого процесса и подходящей версии проверяется движком при "
+"выполнении вызова."
+msgstr "The engine checks for the called process and a suitable version when executing the call."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:172
-msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
-msgstr "Otherwise, an error will be issued in the :ref:`linter<bpmn_linter>`."
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:183
+msgid "Multi Instance"
+msgstr "Multi Instance"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_call_activity.rst:185
+msgid ""
+"Для многократного вызова процесса в форме доступны настройки **Multi "
+"Instance**."
+msgstr "**Multi Instance** settings are available in the form to call the process repeatedly."
 
 #~ msgid "Процесс можно вызвать одним из двух способов."
 #~ msgstr "The process can be called in one of two ways."
@@ -361,3 +407,86 @@ msgstr "Otherwise, an error will be issued in the :ref:`linter<bpmn_linter>`."
 #~ msgid "**Цель** — переменная основного процесса."
 #~ msgstr "**Target** – a variable of the main process"
 
+#~ msgid "Укажите **Имя**."
+#~ msgstr "Specify **Name**."
+
+#~ msgid ""
+#~ "Процесс можно вызвать одним из двух "
+#~ "способов. Варианты взаимоисключающие. Вызываемый "
+#~ "процесс может внутри себя вызывать "
+#~ "другие процессы."
+#~ msgstr ""
+#~ "The process can be called in one"
+#~ " of two ways. The options are "
+#~ "mutually exclusive. The called process "
+#~ "can internally call other processes."
+
+#~ msgid "Вызываемый процесс может начинаться только с простого Start event."
+#~ msgstr "The called process can only start with a simple Start event."
+
+#~ msgid ""
+#~ "Тип данных выбираемого процесса должен "
+#~ "быть таким же, как у создаваемого "
+#~ "процесса."
+#~ msgstr ""
+#~ "The data type of the selected "
+#~ "process must be the same as that"
+#~ " of the process being created."
+
+#~ msgid ""
+#~ "Автоматический старт процесса в настройках "
+#~ "выбираемого процесса не должен быть "
+#~ "выставлен."
+#~ msgstr ""
+#~ "The automatic start of the process "
+#~ "in the settings of the selected "
+#~ "process should not be enabled."
+
+#~ msgid "Связь «Опубликованное с процессом» в данном случае не актуальна."
+#~ msgstr "The «Published with process» binding is not relevant in this case."
+
+#~ msgid ""
+#~ "**Опубликованное с процессом** — "
+#~ "рассчитывается версия процесса, которая была"
+#~ " опубликована вместе с версией текущего "
+#~ "процесса."
+#~ msgstr ""
+#~ "**Published with process** — the version"
+#~ " of the process that was published"
+#~ " together with the version of the "
+#~ "current process is calculated."
+
+#~ msgid ""
+#~ "**Выбор передаваемых переменных из вызванного"
+#~ " процесса** — **Источник** — переменная "
+#~ "из вызванного процесса, передаваемая в "
+#~ "основной; **Цель** — переменная основного "
+#~ "процесса."
+#~ msgstr ""
+#~ "**Selection of Variables to Pass from"
+#~ " the Called Process** — **Source** —"
+#~ " a variable from the called process"
+#~ " to be passed into the main "
+#~ "process; **Target** — a variable of "
+#~ "the main process."
+
+#~ msgid ""
+#~ "При сохранении, сохранении/публикации процесса "
+#~ "проверяется обязательность заполнения следующих "
+#~ "полей:"
+#~ msgstr ""
+#~ "When saving, saving/publishing the process,"
+#~ " the mandatory filling of the "
+#~ "following fields is checked:"
+
+#~ msgid "**«Связь»**:"
+#~ msgstr "**«Binding»**:"
+
+#~ msgid "«Версия»;"
+#~ msgstr "«Version»;"
+
+#~ msgid "«Тег версии»."
+#~ msgstr "«Version Tag»"
+
+#~ msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
+#~ msgstr "Otherwise, an error will be issued in the :ref:`linter<bpmn_linter>`."

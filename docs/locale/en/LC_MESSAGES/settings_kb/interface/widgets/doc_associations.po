@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 17:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -27,12 +27,18 @@ msgid "Ключ ``doc-associations``"
 msgstr "Key ``doc-associations``"
 
 #: ../../settings_kb/interface/widgets/doc_associations.rst:8
-msgid "Виджет используется для установки связей данного кейса с другими:"
-msgstr "The widget is used to set associations between the current case and others:"
+msgid ""
+"Виджет используется для просмотра и установки связей текущего документа с"
+" другими записями. Он показывает связи, настроенные для типа данных "
+"документа:"
+msgstr "The widget is used to view and establish associations between the current document and other records. It displays associations configured for the document's data type:"
 
 #: ../../settings_kb/interface/widgets/doc_associations.rst:14
-msgid "и отображения установленных связей."
-msgstr "and to display the established associations."
+msgid ""
+"Установленные связи отображаются группами по виду связи. Колонки таблицы "
+"определяются журналом целевого типа; если подходящая конфигурация "
+"отсутствует, используются заголовок и дата создания."
+msgstr "Existing associations are grouped by association type. Table columns are defined by the target type's journal; if no suitable configuration is available, the title and creation date are used."
 
 #: ../../settings_kb/interface/widgets/doc_associations.rst:21
 msgid "Настройки"
@@ -41,9 +47,132 @@ msgstr "Settings"
 #: ../../settings_kb/interface/widgets/doc_associations.rst:23
 msgid ""
 "Настройки производятся на вкладке :ref:`Связи <datatypes_associations>` "
-"типа данных. Связь может быть настроена с любой ассоциацией."
-msgstr ""
-"Configuration is done on the :ref:`Associations <datatypes_associations>`"
-" tab of the data type. An association can be configured with any "
-"association."
+"типа данных. Для связи задаются идентификатор, атрибут, имя, направление "
+"и целевой тип. Для выбора существующих записей также нужны журналы — "
+"указанные явно или полученные из целевого типа."
+msgstr "Configure associations on the data type's :ref:`Associations tab <datatypes_associations>`. Each association has an ID, attribute, name, direction, and target type. Selecting existing records also requires journals, either specified explicitly or obtained from the target type."
 
+#: ../../settings_kb/interface/widgets/doc_associations.rst:25
+msgid ""
+"Наличие атрибута типа ASSOC само по себе не означает, что он появится в "
+"виджете. Используется список связей из конфигурации типа с учётом "
+"наследования. Связи без целевого типа, а обычные связи также без "
+"доступной конфигурации журналов, исключаются из этого списка."
+msgstr "An ASSOC attribute alone does not guarantee that it appears in the widget. The widget uses the association list from the type configuration, including inheritance. Associations without a target type are excluded, as are regular associations without an available journal configuration."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:27
+msgid "Направления связи:"
+msgstr "Association directions:"
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:29
+msgid "**TARGET** — прямая связь: текущий документ ссылается на выбранные записи."
+msgstr "**TARGET** — a forward association: the current document references the selected records."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:30
+msgid ""
+"**SOURCE** — обратная связь: выбранные записи ссылаются на текущий "
+"документ."
+msgstr "**SOURCE** — a reverse association: the selected records reference the current document."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:31
+msgid ""
+"**BOTH** — отображение прямых и обратных связей. Этот режим не означает "
+"автоматического создания двух отдельных связей."
+msgstr "**BOTH** — displays forward and reverse associations. This mode does not automatically create two separate associations."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:33
+msgid ""
+"Изменения сохраняются с проверкой серверных прав. Для обратной связи "
+"может потребоваться право изменения выбранной записи, а не только "
+"текущего документа."
+msgstr "Changes are saved subject to server permission checks. A reverse association may require permission to modify the selected record, in addition to the current document."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:36
+msgid "Добавление существующих записей"
+msgstr "Adding existing records"
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:38
+msgid "Нажмите кнопку добавления связи."
+msgstr "Click the add association button."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:39
+msgid "Выберите вид связи и журнал в открывшемся меню."
+msgstr "Select the association type and journal in the menu that opens."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:40
+msgid "Выберите одну или несколько существующих записей и подтвердите выбор."
+msgstr "Select one or more existing records and confirm your selection."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:42
+msgid ""
+"В этом окне кнопка создания записи скрыта. Поиск не ограничивается только"
+" текущим рабочим пространством, но продолжает учитывать настройки журнала"
+" и серверные права доступа."
+msgstr "The record creation button is hidden in this window. Search is not restricted to the current workspace, but still respects journal settings and server access permissions."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:45
+msgid "Создание дочерней записи"
+msgstr "Creating a child record"
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:47
+msgid ""
+"Для дочерней связи (``child: true``) используется создание записи "
+"целевого типа. При настроенном единственном варианте создания выбор "
+"пункта связи открывает соответствующую форму. Созданная запись получает "
+"текущий документ как родителя, а атрибут связи — как родительскую "
+"ассоциацию."
+msgstr "A child association (``child: true``) creates a record of the target type. When a single creation option is configured, selecting the association item opens the corresponding form. The new record receives the current document as its parent and the association attribute as its parent association."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:49
+msgid ""
+"Если доступных вариантов создания нет, пункт дочерней связи отключён. "
+"Настройку дочерней связи следует отличать от выбора существующих записей "
+"через журнал."
+msgstr "If no creation options are available, the child association item is disabled. Configuring a child association differs from selecting existing records through a journal."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:52
+msgid "Просмотр и удаление связи"
+msgstr "Viewing and removing an association"
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:54
+msgid "Для связанной записи доступны действия просмотра и удаления связи:"
+msgstr "View and remove association actions are available for an associated record:"
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:56
+msgid "**Просмотр** открывает карточку связанной записи через действие просмотра."
+msgstr "**View** opens the associated record page through the view action."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:57
+msgid ""
+"**Удаление связи** запрашивает подтверждение и удаляет значение из "
+"атрибута связи. Для обычной связи это следует отличать от удаления самого"
+" связанного документа."
+msgstr "**Remove association** requests confirmation and removes the value from the association attribute. For a regular association, this differs from deleting the associated document itself."
+
+#: ../../settings_kb/interface/widgets/doc_associations.rst:59
+msgid ""
+"Для дочерних отношений последствия удаления связи определяются серверной "
+"моделью жизненного цикла. Возможность выполнить операцию зависит от прав "
+"на изменяемую запись; наличие кнопки в виджете не гарантирует разрешения "
+"на сохранение."
+msgstr "For child relationships, the consequences of removing an association are determined by the server lifecycle model. The operation depends on permissions for the record being modified; a button in the widget does not guarantee permission to save."
+
+#~ msgid "Виджет используется для установки связей данного кейса с другими:"
+#~ msgstr ""
+#~ "The widget is used to set "
+#~ "associations between the current case "
+#~ "and others:"
+
+#~ msgid "и отображения установленных связей."
+#~ msgstr "and to display the established associations."
+
+#~ msgid ""
+#~ "Настройки производятся на вкладке :ref:`Связи"
+#~ " <datatypes_associations>` типа данных. Связь "
+#~ "может быть настроена с любой "
+#~ "ассоциацией."
+#~ msgstr ""
+#~ "Configuration is done on the "
+#~ ":ref:`Associations <datatypes_associations>` tab of"
+#~ " the data type. An association can"
+#~ " be configured with any association."

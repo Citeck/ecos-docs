@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 16:52+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -28,91 +28,128 @@ msgstr "Contents"
 
 #: ../../settings_kb/interface/journals/content_types/publication.rst:9
 msgid ""
-"**Публикация** — встроенный тип данных для создания новостей, анонсов и "
-"редакционных материалов, отображаемых в рабочих пространствах. На его "
-"основе строится журнал :ref:`Новости <news>`. Виджет :ref:`Новости "
-"<widget_news>` выбирает записи по настроенному типу и рабочим "
-"пространствам; создание произвольной публикации само по себе не "
-"гарантирует её отображение в виджете."
-msgstr "**Publication** is a built-in type for news, announcements and editorial content displayed in workspaces. It underlies the :ref:`News <news>` journal. The :ref:`News <widget_news>` widget selects records by configured type and workspaces; creating an arbitrary publication does not guarantee widget display."
+"**Публикация** (``publication``) — встроенный тип данных для создания "
+"новостей, анонсов и редакционных материалов в рабочих пространствах. Его "
+"стандартный журнал — **Публикации** (``publications``)."
+msgstr "**Publication** (``publication``) is a built-in data type for creating news, announcements, and editorial content in workspaces. Its standard journal is **Publications** (``publications``)."
 
 #: ../../settings_kb/interface/journals/content_types/publication.rst:11
 msgid ""
-"Тип предоставляет готовую форму с полями заголовка, текста и "
-"изображения-превью. Записи журнала отображаются в двух режимах:"
-msgstr ""
-"The type provides a ready-made form with title, text, and preview image "
-"fields. Journal records are displayed in two modes:"
+"Тип **Новости** (``news``) наследует публикацию и использует собственные "
+"форму и журнал :ref:`Новости <news>`. В настройках виджета :ref:`Новости "
+"<widget_news>` можно выбрать ``news`` или его дочерний тип; записи "
+"запрашиваются в текущем рабочем пространстве. Создание произвольной "
+"публикации не гарантирует её отображение в этом виджете."
+msgstr "The **News** type (``news``) inherits Publication and uses its own :ref:`News <news>` form and journal. The :ref:`News widget <widget_news>` settings allow you to select ``news`` or a child type; records are queried in the current workspace. Creating an arbitrary publication does not guarantee that it appears in this widget."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:18
+#: ../../settings_kb/interface/journals/content_types/publication.rst:13
+msgid ""
+"Тип предоставляет готовую форму с полями заголовка, текста и "
+"изображения-превью, а также аспект ``listview``. Список и плитки — "
+"варианты одного представления журнала ``preview-list``. Плиточная "
+"раскладка включается в настройках представлений типа данных. Подробнее "
+"см. :ref:`Список и плитки <tiles>`."
+msgstr "The type provides a ready-to-use form with title, text, and preview image fields, as well as the ``listview`` aspect. List and tile layouts are options of the same journal view, ``preview-list``. The tile layout is enabled in the data type's view settings. See :ref:`List and tiles <tiles>`."
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:15
+msgid "Примеры отображения записей:"
+msgstr "Examples of how records are displayed:"
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:22
 msgid "Список:"
 msgstr "List:"
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:26
+#: ../../settings_kb/interface/journals/content_types/publication.rst:30
 msgid "Плитка:"
 msgstr "Tile:"
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:32
+#: ../../settings_kb/interface/journals/content_types/publication.rst:36
 msgid ""
-"По клику на превью или заголовок можно перейти к карточке. Карточка "
-"состоит из виджетов :ref:`Публикация <widget_publication>`, "
-":ref:`Комментарии <widget_comments>`:"
-msgstr ""
-"Clicking on the preview or title navigates to the card. The card consists"
-" of the :ref:`Publication <widget_publication>` and :ref:`Comments "
-"<widget_comments>` widgets:"
+"При включённой панели предпросмотра клик на тело элемента выбирает запись"
+" и показывает её предпросмотр. По заголовку открывается карточка записи."
+msgstr "When the preview panel is enabled, clicking an item's body selects the record and displays its preview. Clicking its title opens the record page."
 
 #: ../../settings_kb/interface/journals/content_types/publication.rst:38
-msgid "При создании публикации заполните форму:"
-msgstr "When creating a publication, fill out the form:"
-
-#: ../../settings_kb/interface/journals/content_types/publication.rst:40
-msgid "**Заголовок**;"
-msgstr "**Title**;"
-
-#: ../../settings_kb/interface/journals/content_types/publication.rst:41
 msgid ""
-"**Текст публикации** — доступен удобный :ref:`редактор контента "
-"<wysiwyg_editor>`;"
-msgstr ""
-"**Publication Text** — a convenient :ref:`content editor "
-"<wysiwyg_editor>` is available;"
+"Стандартная карточка для компьютера содержит виджеты :ref:`Публикация "
+"<widget_publication>` и :ref:`Комментарии <widget_comments>`. В "
+"стандартной мобильной раскладке включён только виджет публикации. Состав "
+"дашборда может быть переопределён для типа или рабочего пространства:"
+msgstr "The standard desktop record page contains the :ref:`Publication <widget_publication>` and :ref:`Comments <widget_comments>` widgets. The standard mobile layout includes only the publication widget. The dashboard can be overridden for a type or workspace:"
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:42
-msgid "изображение для превью."
-msgstr "a preview image."
+#: ../../settings_kb/interface/journals/content_types/publication.rst:44
+msgid ""
+"Виджет публикации требует подключённого плагина и включённых рабочих "
+"пространств. Он показывает текст, сведения об авторе и последнем "
+"изменении. Кнопка редактирования доступна при наличии права изменения "
+"записи и открывает её форму."
+msgstr "The publication widget requires its plugin to be connected and workspaces to be enabled. It displays the text, author details, and last modification information. The edit button is available to users with permission to modify the record and opens its form."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:51
+#: ../../settings_kb/interface/journals/content_types/publication.rst:46
+msgid "При создании публикации заполните стандартную форму ``publication``:"
+msgstr "When creating a publication, complete the standard ``publication`` form:"
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:48
+msgid "**Заголовок** (``title``) — обязательное поле;"
+msgstr "**Title** (``title``) — required;"
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:49
+msgid ""
+"**Текст публикации** (``text``) — обязательное поле с визуальным "
+":ref:`редактором Lexical <wysiwyg_editor>`;"
+msgstr "**Publication text** (``text``) — required, with the visual :ref:`Lexical editor <wysiwyg_editor>`;"
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:50
+msgid ""
+"**Превью** (``image``) — необязательное изображение. В поле формы "
+"установлен максимальный размер 10 МБ; также действуют ограничения "
+"загрузки на стенде."
+msgstr "**Preview** (``image``) — an optional image. The form field has a maximum size of 10 MB; environment upload limits also apply."
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:52
+msgid ""
+"Если изображение отсутствует, в списке используется стандартная иконка. "
+"Создание и изменение записей зависят от прав пользователя и настроек "
+"действий."
+msgstr "If there is no image, a default icon is used in the list. Creating and modifying records depends on user permissions and action settings."
+
+#: ../../settings_kb/interface/journals/content_types/publication.rst:61
 msgid "Создание типа «Публикация»"
 msgstr "Creating a \"Publication\" Type"
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:53
+#: ../../settings_kb/interface/journals/content_types/publication.rst:63
 msgid "Создайте новый :ref:`тип данных <data_types_main>`:"
 msgstr "Create a new :ref:`data type <data_types_main>`:"
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:55
+#: ../../settings_kb/interface/journals/content_types/publication.rst:65
 msgid "Удалите **Форму по умолчанию** **(1)**."
 msgstr "Delete the **Default Form** **(1)**."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:56
+#: ../../settings_kb/interface/journals/content_types/publication.rst:66
 msgid "На вкладке **«Основное»** укажите **id** и **Имя** **(2)**."
 msgstr "On the **\"General\"** tab, specify the **id** and **Name** **(2)**."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:57
+#: ../../settings_kb/interface/journals/content_types/publication.rst:67
 msgid "В качестве родителя выберите **Публикация** **(3)**."
 msgstr "Select **Publication** as the parent **(3)**."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:58
+#: ../../settings_kb/interface/journals/content_types/publication.rst:68
 msgid "Установите флажок **Наследовать форму** **(4)**."
 msgstr "Check the **Inherit Form** checkbox **(4)**."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:60
-msgid "В созданный тип будут автоматически добавлены действия и форма."
-msgstr "Actions and a form will be automatically added to the created type."
+#: ../../settings_kb/interface/journals/content_types/publication.rst:70
+msgid ""
+"При включённом наследовании формы созданный тип сможет использовать форму"
+" родителя. Действия и конфигурацию журнала проверьте отдельно: в "
+"стандартном журнале **Публикации** просмотр, редактирование и удаление "
+"заданы явно, а не получены из списка действий типа."
+msgstr "When form inheritance is enabled, the new type can use its parent's form. Check actions and journal configuration separately: in the standard **Publications** journal, view, edit, and delete actions are set explicitly rather than inherited from the type's action list."
 
-#: ../../settings_kb/interface/journals/content_types/publication.rst:66
-msgid "Чтобы добавить публикацию в меню, выберите специальный элемент **Список**:"
-msgstr "To add a publication to the menu, select the special **List** item:"
+#: ../../settings_kb/interface/journals/content_types/publication.rst:76
+msgid ""
+"Чтобы добавить журнал созданного типа в меню, выберите специальный "
+"элемент **Список** и укажите нужный журнал:"
+msgstr "To add the new type's journal to the menu, select the special **List** item and specify the journal:"
 
 #~ msgid ""
 #~ "При создании публикации укажите **Заголовок**,"
@@ -144,3 +181,57 @@ msgstr "To add a publication to the menu, select the special **List** item:"
 #~ "**(2)**, select **Publication** as the "
 #~ "parent **(3)**, and check the **Inherit"
 #~ " Form** checkbox **(4)**."
+
+#~ msgid ""
+#~ "**Публикация** — встроенный тип данных "
+#~ "для создания новостей, анонсов и "
+#~ "редакционных материалов, отображаемых в "
+#~ "рабочих пространствах. На его основе "
+#~ "строится журнал :ref:`Новости <news>`. Виджет"
+#~ " :ref:`Новости <widget_news>` выбирает записи "
+#~ "по настроенному типу и рабочим "
+#~ "пространствам; создание произвольной публикации "
+#~ "само по себе не гарантирует её "
+#~ "отображение в виджете."
+#~ msgstr ""
+#~ "**Publication** is a built-in type "
+#~ "for news, announcements and editorial "
+#~ "content displayed in workspaces. It "
+#~ "underlies the :ref:`News <news>` journal. "
+#~ "The :ref:`News <widget_news>` widget selects"
+#~ " records by configured type and "
+#~ "workspaces; creating an arbitrary publication"
+#~ " does not guarantee widget display."
+
+#~ msgid ""
+#~ "Тип предоставляет готовую форму с полями"
+#~ " заголовка, текста и изображения-превью. "
+#~ "Записи журнала отображаются в двух "
+#~ "режимах:"
+#~ msgstr ""
+#~ "The type provides a ready-made "
+#~ "form with title, text, and preview "
+#~ "image fields. Journal records are "
+#~ "displayed in two modes:"
+
+#~ msgid ""
+#~ "По клику на превью или заголовок "
+#~ "можно перейти к карточке. Карточка "
+#~ "состоит из виджетов :ref:`Публикация "
+#~ "<widget_publication>`, :ref:`Комментарии "
+#~ "<widget_comments>`:"
+#~ msgstr ""
+#~ "Clicking on the preview or title "
+#~ "navigates to the card. The card "
+#~ "consists of the :ref:`Publication "
+#~ "<widget_publication>` and :ref:`Comments "
+#~ "<widget_comments>` widgets:"
+
+#~ msgid "**Заголовок**;"
+#~ msgstr "**Title**;"
+
+#~ msgid "изображение для превью."
+#~ msgstr "a preview image."
+
+#~ msgid "В созданный тип будут автоматически добавлены действия и форма."
+#~ msgstr "Actions and a form will be automatically added to the created type."

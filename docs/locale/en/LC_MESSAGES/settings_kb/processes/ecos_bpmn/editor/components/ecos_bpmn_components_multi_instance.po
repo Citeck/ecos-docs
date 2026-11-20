@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -111,7 +111,9 @@ msgstr ""
 msgid ""
 "Экземпляры выполняются друг за другом. Когда один экземпляр завершен, "
 "создается новый экземпляр для следующего элемента указанной коллекции."
-msgstr "Instances execute one after another. When one instance completes, a new instance is created for the next item in the specified collection."
+msgstr ""
+"Instances execute one after another. When one instance completes, a new "
+"instance is created for the next item in the specified collection."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst
 msgid "Parallel Multi Instance"
@@ -126,12 +128,10 @@ msgstr "**Parallel Multi Instance** — parallel activity with multiple instance
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:55
 msgid ""
 "Все экземпляры создаются при активации тела активности с несколькими "
-"экземплярами. Экземпляры выполняются одновременно и независимо друг от "
-"друга."
-msgstr ""
-"All instances are created when the body of the multi-instance activity is"
-" activated. Instances are executed simultaneously and independently of "
-"each other."
+"экземплярами и могут оставаться активными одновременно. Данные отдельного"
+" элемента храните в переменной экземпляра; при изменении общих переменных"
+" процесса учитывайте параллельное выполнение."
+msgstr "All instances are created when the multi-instance activity body is activated and may remain active simultaneously. Store individual item data in an instance variable; account for parallel execution when changing shared process variables."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:61
 msgid ""
@@ -148,7 +148,7 @@ msgid "Настройки"
 msgstr "Settings"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:67
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:112
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:121
 msgid "Пользовательская задача"
 msgstr "User Task"
 
@@ -159,7 +159,12 @@ msgid ""
 "**authority**, полученной из ролей. Пользователь записывается в "
 "**assignee**, группа — в **candidateGroup**. Коллекция исполнителей "
 "формируется автоматически, переменная элемента — ``assigneeElement``."
-msgstr "With role-based assignment, parallel or sequential multi-instance operates automatically: a separate task is created for each **authority** obtained from the roles. A user is set as **assignee**, a group as **candidateGroup**. The assignee collection is generated automatically; the element variable is ``assigneeElement``."
+msgstr ""
+"With role-based assignment, parallel or sequential multi-instance "
+"operates automatically: a separate task is created for each **authority**"
+" obtained from the roles. A user is set as **assignee**, a group as "
+"**candidateGroup**. The assignee collection is generated automatically; "
+"the element variable is ``assigneeElement``."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:73
 msgid ""
@@ -168,7 +173,12 @@ msgid ""
 "количество повторений, условие завершения, коллекция, переменная элемента"
 " и настройки асинхронности/повторных попыток тела Multi Instance в "
 "``ecos-process 2.38.0-SNAPSHOT`` не переносятся в исполняемую схему."
-msgstr "In automatic role-based mode, only the sequential or parallel execution choice is used. Manually specified loop cardinality, completion condition, collection, element variable, and Multi Instance body asynchronous/retry settings are not transferred to the executable diagram in ``ecos-process 2.38.0-SNAPSHOT``."
+msgstr ""
+"In automatic role-based mode, only the sequential or parallel execution "
+"choice is used. Manually specified loop cardinality, completion "
+"condition, collection, element variable, and Multi Instance body "
+"asynchronous/retry settings are not transferred to the executable diagram"
+" in ``ecos-process 2.38.0-SNAPSHOT``."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:75
 msgid ""
@@ -188,7 +198,11 @@ msgid ""
 " другие параметры Multi Instance необходимо задать в общих настройках "
 "ниже; само включение ручного назначения не создаёт отдельную задачу "
 "каждому реципиенту."
-msgstr "With manual assignment, automatic role-based mode is disabled. The collection and other Multi Instance parameters must be specified in the general settings below; enabling manual assignment alone does not create a separate task for each recipient."
+msgstr ""
+"With manual assignment, automatic role-based mode is disabled. The "
+"collection and other Multi Instance parameters must be specified in the "
+"general settings below; enabling manual assignment alone does not create "
+"a separate task for each recipient."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:86
 msgid "Общие настройки множественного экземпляра"
@@ -197,18 +211,21 @@ msgstr "General Multi-instance Settings"
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:88
 msgid ""
 "Общие настройки применяются к :ref:`Скриптовой задаче <script_task>`, "
-":ref:`Подпроцессу <sub_process>` и **Пользовательской задаче с ручным "
-"назначением**. Для автоматического режима пользовательской задачи по "
-"ролям действуют ограничения, описанные выше."
-msgstr "General settings apply to :ref:`Script Task <script_task>`, :ref:`Subprocess <sub_process>`, and **User Task with manual assignment**. The limitations described above apply to a user task's automatic role-based mode."
+":ref:`Подпроцессу <sub_process>`, :ref:`Сервисной задаче <service_task>`,"
+" :ref:`Задаче бизнес-правилу <business_rule_task>`, :ref:`Call activity "
+"<call_activity>`, задачам ECOS и **Пользовательской задаче с ручным "
+"назначением**. Доступность настроек в интерфейсе зависит от типа элемента"
+" и версии редактора. Для автоматического режима пользовательской задачи "
+"по ролям действуют ограничения, описанные выше."
+msgstr "Common settings apply to :ref:`Script task <script_task>`, :ref:`Subprocess <sub_process>`, :ref:`Service task <service_task>`, :ref:`Business rule task <business_rule_task>`, :ref:`Call activity <call_activity>`, ECOS tasks, and **User task with manual assignment**. Availability in the interface depends on element type and editor version. The restrictions described above apply to automatic role-based user tasks."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:99
 msgid "**Количество повторений цикла / Loop cardinality**"
 msgstr "**Loop Cardinality**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:100
-msgid "Прямое указание числа экземпляров."
-msgstr "Direct specification of the number of instances."
+msgid "Число экземпляров или выражение для его вычисления."
+msgstr "The instance count or an expression calculating it."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:101
 msgid "**Условие завершения / Completion condition**"
@@ -217,16 +234,19 @@ msgstr "**Completion Condition**"
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:102
 msgid ""
 "Выражение, которое вычисляется каждый раз, когда заканчивается один "
-"экземпляр."
-msgstr "An expression that is evaluated each time one instance completes."
+"экземпляр. При истинном результате многоэкземплярная активность "
+"завершается досрочно, оставшиеся экземпляры отменяются."
+msgstr "An expression evaluated whenever an instance finishes. If true, the multi-instance activity completes early and remaining instances are canceled."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:103
 msgid "**Коллекция / Collection**"
 msgstr "**Collection**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:104
-msgid "Коллекция, в которой экземпляр будет создан для каждого элемента."
-msgstr "A collection for which an instance will be created for each element."
+msgid ""
+"Имя переменной с коллекцией или выражение, возвращающее коллекцию. Для "
+"каждого её элемента создаётся экземпляр активности."
+msgstr "A variable name containing a collection or an expression returning a collection. An activity instance is created for each item."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:105
 msgid "**Переменная элемента / Element variable**"
@@ -234,27 +254,80 @@ msgstr "**Element Variable**"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:106
 msgid ""
-"Переменная процесса, которая будет установлена для каждого созданного "
-"экземпляра, содержащего элемент указанной коллекции."
-msgstr ""
-"A process variable that will be set for each created instance, containing"
-" the element from the specified collection."
+"Локальная переменная конкретного экземпляра, содержащая соответствующий "
+"элемент коллекции."
+msgstr "A local variable of an individual instance containing the corresponding collection item."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:109
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:108
+#, python-brace-format
+msgid ""
+"Для задания числа экземпляров выберите подходящий способ: количество "
+"повторений либо коллекцию. Выражения указываются явно, например "
+"``${instanceCount}`` для количества повторений; для коллекции можно "
+"указать имя переменной, например ``recipients``."
+msgstr "Choose how to specify the instance count: loop cardinality or a collection. Specify expressions explicitly, for example ``${instanceCount}`` for loop cardinality; for a collection, you can specify a variable name such as ``recipients``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:111
+msgid "Настройки тела Multi Instance"
+msgstr "Multi Instance body settings"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:113
+msgid ""
+"В общих настройках доступны **«Асинхронно перед»**, **«Асинхронно "
+"после»**, **«Эксклюзивность»** и **«Цикл повтора»** фоновой задачи. Поле "
+"цикла повтора отображается при включении асинхронности."
+msgstr "Common settings include **Asynchronous before**, **Asynchronous after**, **Exclusive**, and the background job **Retry cycle**. The retry cycle field appears when asynchronous execution is enabled."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:115
+msgid ""
+"Эти параметры относятся к телу Multi Instance и задаются отдельно от "
+"асинхронности самого элемента. Для автоматического режима "
+"пользовательской задачи по ролям действует ограничение, описанное выше."
+msgstr "These parameters apply to the Multi Instance body and are set separately from the element's own asynchronous settings. The restriction described above applies to automatic role-based user tasks."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:118
 msgid "Примеры использования"
 msgstr "Usage examples"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:114
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:123
 msgid ""
-"Как в пользовательской задаче указать, что задачи должны идти параллельно"
-" на пользователей, указанных в переменной."
-msgstr ""
-"How to specify in a user task that tasks should run in parallel for users"
-" specified in a variable."
+"Чтобы создать параллельные пользовательские задачи для получателей из "
+"переменной процесса ``recipients``, содержащей коллекцию, задайте:"
+msgstr "To create parallel user tasks for recipients from the ``recipients`` process variable containing a collection, set:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:116
-msgid "Используйте ``java.util.ArrayList()``:"
-msgstr "Use ``java.util.ArrayList()``:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:125
+msgid "Режим **Parallel Multi Instance**."
+msgstr "**Parallel Multi Instance** mode."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:126
+msgid "Флаг **«Ручное назначение»** — включён."
+msgstr "**Manual assignment** — enabled."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:127
+#, python-brace-format
+msgid "**«Реципиенты»** — ``${recipient}``."
+msgstr "**Recipients** — ``${recipient}``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:128
+msgid "**«Коллекция»** — ``recipients``."
+msgstr "**Collection** — ``recipients``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:129
+msgid "**«Переменная элемента»** — ``recipient``."
+msgstr "**Element variable** — ``recipient``."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:131
+msgid ""
+"Каждый экземпляр получает свой элемент коллекции в переменной "
+"``recipient`` и назначается указанному в ней получателю. Для "
+"последовательного выполнения выберите **Sequential Multi Instance**."
+msgstr "Each instance receives its collection item in ``recipient`` and is assigned to the recipient it specifies. For sequential execution, select **Sequential Multi Instance**."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_multi_instance.rst:133
+msgid ""
+"Коллекцию можно подготовить заранее, например с использованием "
+"``java.util.ArrayList``. Ниже показан пример настройки:"
+msgstr "The collection can be prepared beforehand, for example using ``java.util.ArrayList``. A configuration example is shown below:"
 
 #~ msgid "Экземпляры выполняются друг за другом."
 #~ msgstr "Instances are executed one after another."
@@ -293,3 +366,47 @@ msgstr "Use ``java.util.ArrayList()``:"
 #~ "Task**, :ref:`Script Task <script_task>`, and"
 #~ " :ref:`Subprocess <sub_process>`:"
 
+#~ msgid ""
+#~ "Все экземпляры создаются при активации "
+#~ "тела активности с несколькими экземплярами."
+#~ " Экземпляры выполняются одновременно и "
+#~ "независимо друг от друга."
+#~ msgstr ""
+#~ "All instances are created when the "
+#~ "body of the multi-instance activity "
+#~ "is activated. Instances are executed "
+#~ "simultaneously and independently of each "
+#~ "other."
+
+#~ msgid "Прямое указание числа экземпляров."
+#~ msgstr "Direct specification of the number of instances."
+
+#~ msgid ""
+#~ "Выражение, которое вычисляется каждый раз, "
+#~ "когда заканчивается один экземпляр."
+#~ msgstr "An expression that is evaluated each time one instance completes."
+
+#~ msgid "Коллекция, в которой экземпляр будет создан для каждого элемента."
+#~ msgstr "A collection for which an instance will be created for each element."
+
+#~ msgid ""
+#~ "Переменная процесса, которая будет установлена"
+#~ " для каждого созданного экземпляра, "
+#~ "содержащего элемент указанной коллекции."
+#~ msgstr ""
+#~ "A process variable that will be "
+#~ "set for each created instance, "
+#~ "containing the element from the "
+#~ "specified collection."
+
+#~ msgid ""
+#~ "Как в пользовательской задаче указать, "
+#~ "что задачи должны идти параллельно на"
+#~ " пользователей, указанных в переменной."
+#~ msgstr ""
+#~ "How to specify in a user task "
+#~ "that tasks should run in parallel "
+#~ "for users specified in a variable."
+
+#~ msgid "Используйте ``java.util.ArrayList()``:"
+#~ msgstr "Use ``java.util.ArrayList()``:"

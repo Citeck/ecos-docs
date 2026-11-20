@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Citeck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -72,11 +72,55 @@ msgstr ""
 "configuration; automatic role-based multi-instance is incompatible with "
 "manual assignment."
 
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:33
+msgid "Реципиенты задаются одним из двух способов:"
+msgstr "Recipients are specified in one of two ways:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:35
+msgid ""
+"**Из списка ролей** — реципиенты берутся из ролей :ref:`типа данных "
+"<roles_statuses>`. Исполнителей определяет состав роли:"
+msgstr "**From the role list** — recipients come from :ref:`data type <roles_statuses>` roles. Role membership determines assignees:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:37
+msgid "группа или конкретные пользователи оргструктуры — поле **Участники роли**;"
+msgstr "a group or specific organizational users — **Role members** field;"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:38
+msgid "пользователи из атрибута документа — поле **Атрибуты**;"
+msgstr "users from a document attribute — **Attributes** field;"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:39
+msgid ""
+"пользователи, вычисленные скриптом или DMN-таблицей, — поле "
+"**Динамическая роль** (см. :ref:`пример с динамической ролью DMN "
+"<dynamic_role_dmn>`)."
+msgstr "users calculated by a script or DMN table — **Dynamic role** field (see the :ref:`DMN dynamic role example <dynamic_role_dmn>`)."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:41
+#, python-brace-format
+msgid ""
+"**Вручную** — флаг **Ручное назначение**: имя пользователя, группа "
+"(например, ``GROUP_company_accountant``) или выражение, которое получает "
+"реципиентов из переменной или сервиса, например "
+"``${someService.getRecipients()}``. Переменную может заранее вычислить "
+":ref:`скриптовая задача <script_task>` — так можно реализовать "
+"собственный алгоритм назначения, например распределение с учётом "
+"загрузки: выбор исполнителя с наименьшим числом активных задач."
+msgstr "**Manually** — enable **Manual assignment**: specify a username, a group (for example, ``GROUP_company_accountant``), or an expression obtaining recipients from a variable or service, such as ``${someService.getRecipients()}``. A :ref:`script task <script_task>` can calculate the variable beforehand, allowing a custom assignment algorithm, such as workload-based distribution selecting the assignee with the fewest active tasks."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:43
+msgid ""
+"Задачу с несколькими кандидатами получает тот, кто первым взял её на себя"
+" действием :ref:`«Я выполню это» <task_execute>`, — принцип «первое "
+"действие». После этого задача назначается на него."
+msgstr "A task with several candidates goes to the first person to claim it using :ref:`I will do this <task_execute>`, following a first-action principle. The task is then assigned to that person."
+
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst
 msgid "Из списка ролей"
 msgstr "From the List of Roles"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:37
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:49
 msgid ""
 "Представлен список ролей, заполненных в :ref:`типе данных "
 "<roles_statuses>`."
@@ -88,7 +132,7 @@ msgstr ""
 msgid "Вручную"
 msgstr "Manually"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:53
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:65
 msgid ""
 "Необходимо выставить флаг **Ручное назначение**. В поле указывается "
 "**имя** или **recordRef** реципиента. Поддерживаются expression для "
@@ -98,7 +142,7 @@ msgstr ""
 "**recordRef** of the recipient. Expressions are supported for obtaining "
 "recipients from variables or services."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:55
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:67
 msgid ""
 "Expression может вернуть множественное значение — строки, разделенные "
 "запятой: ``user1,user2,user3``"
@@ -106,33 +150,33 @@ msgstr ""
 "An expression can return multiple values — strings separated by commas: "
 "``user1,user2,user3``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:57
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:69
 msgid "Например:"
 msgstr "For example:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:59
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:71
 msgid "``ivan.petrov``"
 msgstr "``ivan.petrov``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:60
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:72
 msgid "``GROUP_company_accountant``"
 msgstr "``GROUP_company_accountant``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:61
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:73
 msgid "``emodel/authority-group@company_accountant``"
 msgstr "``emodel/authority-group@company_accountant``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:62
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:74
 #, python-brace-format
 msgid "``${someVariable}``"
 msgstr "``${someVariable}``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:63
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:75
 #, python-brace-format
 msgid "``${someService.getRecipients()},petya.voks``"
 msgstr "``${someService.getRecipients()},petya.voks``"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:70
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:82
 msgid "Приоритет"
 msgstr "Priority"
 
@@ -140,7 +184,7 @@ msgstr "Priority"
 msgid "Значение"
 msgstr "Value"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:76
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:88
 msgid "Выберите **приоритет** задачи из списка."
 msgstr "Select task **priority** from the list."
 
@@ -148,7 +192,7 @@ msgstr "Select task **priority** from the list."
 msgid "Выражение"
 msgstr "Expression"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:84
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:96
 msgid ""
 "Укажите **приоритет (выражение)** — expression для получения приоритета "
 "задачи из переменных или сервисов. Выражение должно вернуть число, "
@@ -158,37 +202,37 @@ msgstr ""
 "priority from variables or services. The expression must return a number "
 "representing the priority:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:86
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:98
 msgid "Высокий — 1"
 msgstr "High — 1"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:87
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:99
 msgid "Средний — 2"
 msgstr "Medium — 2"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:88
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:100
 msgid "Низкий — 3"
 msgstr "Low — 3"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:95
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:107
 msgid "Срок"
 msgstr "Due Date"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:97
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:109
 msgid "Возможность устанавливать **срок** задачи вручную или через выражение."
 msgstr "Ability to set the task **due date** manually or via an expression."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:103
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:115
 msgid "При вычислении срока задачи точкой отсчета является дата создания задачи."
 msgstr ""
 "When calculating the task due date, the task creation date is the "
 "starting point."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:105
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:117
 msgid "**Тип времени** — Календарное или Рабочее."
 msgstr "**Time type** — Calendar or Working."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:107
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:119
 msgid ""
 "**Продолжительность** — поддерживаемый формат ``PT<n>H``, ``PT<n>M`` или "
 "``PT<n>H<n>M``. Секунды, дробные значения и другие варианты ISO Duration "
@@ -197,23 +241,23 @@ msgstr ""
 "**Duration** supports ``PT<n>H``, ``PT<n>M`` or ``PT<n>H<n>M``. Seconds, "
 "fractions and other ISO Duration forms are rejected here. For example:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:109
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:121
 msgid "PT15M — 15 минут"
 msgstr "PT15M — 15 minutes"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:110
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:122
 msgid "PT3H — 3 часа"
 msgstr "PT3H — 3 hours"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:111
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:123
 msgid "PT1H30M — 1 час и 30 минут"
 msgstr "PT1H30M — 1 hour and 30 minutes"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:113
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:125
 msgid "Тип времени — **Календарное**:"
 msgstr "Time type — **Calendar**:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:119
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:131
 msgid ""
 "Тип времени — **Рабочее**. **Рабочее расписание** — ссылка на рабочее "
 "расписание, которое будет использоваться для вычисления рабочего времени."
@@ -221,30 +265,25 @@ msgstr ""
 "Time type — **Working**. **Work schedule** — a reference to the work "
 "schedule that will be used to calculate working time."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:121
-msgid ""
-"Вместо продолжительности можно задать положительное число **«Рабочие "
-"дни»**. Эти поля взаимоисключающие. Если расписание не указано, "
-"используется ``emodel/working-schedule@DEFAULT``. Продолжительность также"
-" должна быть положительной."
-msgstr ""
-"Alternatively, set a positive **Working days** count. These fields are "
-"mutually exclusive. Without a schedule, ``emodel/working-"
-"schedule@DEFAULT`` is used. Duration must also be positive."
-
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:129
-msgid ""
-"Вычисление срока по рабочему расписанию доступно только в Enterprise "
-"версии."
-msgstr ""
-"Due date calculation based on a work schedule is available only in the "
-"Enterprise version."
-
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:133
+msgid ""
+"Вместо продолжительности можно задать положительное целое число в поле "
+"**«Рабочие дни»**. Эти поля взаимоисключающие. Если расписание не "
+"указано, используется ``emodel/working-schedule@DEFAULT``. "
+"Продолжительность также должна быть положительной."
+msgstr "Instead of a duration, specify a positive integer in **Working days**. These fields are mutually exclusive. If no schedule is specified, ``emodel/working-schedule@DEFAULT`` is used. The duration must also be positive."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:141
+msgid ""
+"Выбор рабочего времени в редакторе доступен при наличии "
+"Enterprise-лицензии или лицензии разработчика."
+msgstr "Working time selection in the editor requires an Enterprise or developer license."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:145
 msgid "**Вычисляемый срок**."
 msgstr "**Computed due date**."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:135
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:147
 msgid "Дата в формате ISO:"
 msgstr "Date in ISO format:"
 
@@ -267,7 +306,7 @@ msgstr ""
 ":ref:`execution variable <execution>` via a :ref:`script task "
 "<script_task>`"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:140
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:152
 msgid ""
 "Выражение должно возвращать ``java.util.Date``, ``java.lang.String`` с "
 "ISO 8601-датой или ``null`` для отсутствующего срока. Значение передаётся"
@@ -277,7 +316,7 @@ msgstr ""
 "an ISO 8601 date, or ``null`` for no due date. The value is passed to "
 "Camunda dueDate handling."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:146
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:158
 msgid ""
 "Для удобной работы со временем и продолжительностью в js движок добавлены"
 " объекты Time и Duration. :ref:`См. Работа с датами и временными "
@@ -287,11 +326,11 @@ msgstr ""
 " have been added to the JS engine. :ref:`See Working with dates and time "
 "intervals <time_and_duration>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:149
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:161
 msgid "Результат задачи и форма"
 msgstr "Task Result and Form"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:151
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:163
 msgid ""
 "Укажите **результат задачи** (вердикт) — **идентификатор** и "
 "**название**. В вердиктах можно настроить темы для кнопки. :ref:`См. "
@@ -301,7 +340,7 @@ msgstr ""
 "Button themes can be configured in verdicts. :ref:`See details about task"
 " results <user_task_result_themes>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:153
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:165
 msgid ""
 "**Форма задачи** определяет то, что будет отображено при назначении "
 "задачи пользователю. **Форму задачи** можно выбрать из списка, создать. "
@@ -315,7 +354,7 @@ msgstr ""
 "specified in the corresponding field and a comment input field. :ref:`See"
 " details about forms <user_task_form>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:161
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:173
 msgid ""
 "Срок выполнения задачи также можно изменить с помощью **TaskService** или"
 " в **TaskListeners** с помощью переданного **DelegateTask**."
@@ -323,23 +362,19 @@ msgstr ""
 "The task due date can also be changed using **TaskService** or in "
 "**TaskListeners** using the passed **DelegateTask**."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:166
-msgid ""
-"При сохранении, сохранении/публикации процесса проверяется обязательность"
-" заполнения следующих полей:"
-msgstr ""
-"When saving, saving/publishing the process, the mandatory filling of the "
-"following fields is checked:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:178
+msgid "В форме настройки задачи обязательны следующие поля:"
+msgstr "The following fields are required in the task settings form:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:168
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:180
 msgid "**«Реципиенты задачи»**;"
 msgstr "**«Task Recipients»**;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:169
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:181
 msgid "**«Результат задачи»**: хотя бы один вердикт."
 msgstr "**Task outcome**: at least one outcome."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:171
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:183
 msgid ""
 "В редакторе приоритет обязателен и по умолчанию равен **Среднему**. При "
 "импорте XML без приоритета сервер подставляет ``MEDIUM``; отсутствие поля"
@@ -351,29 +386,23 @@ msgstr ""
 "server validation error. A nonempty priority expression overrides the "
 "selected value."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:173
-msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
-msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
-
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:175
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:185
 msgid ""
-"При одновременном установлении срока вручную и через выражение, выражение"
-" имеет больший приоритет."
-msgstr ""
-"When setting the due date both manually and via an expression, the "
-"expression takes higher priority."
+"При импорте XML с одновременно заданными сроком вручную и непустым "
+"выражением срока используется выражение."
+msgstr "When importing XML with both a manually specified due date and a nonempty due date expression, the expression is used."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:180
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:190
 msgid "Функционал Lazy approval для задачи"
 msgstr "Lazy Approval Feature for a Task"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:184
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:194
 msgid ""
 "Требуется лицензия разработчика либо лицензия с функцией ``lazy-"
 "approval``."
 msgstr "A developer license or ``lazy-approval`` feature license is required."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:186
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:196
 msgid ""
 "Панель **Согласование по почте** доступна на стендах, где есть лицензия "
 "разработчика или лицензия с включенным функционалом lazy approval."
@@ -381,7 +410,7 @@ msgstr ""
 "The **Email Approval** panel is available on instances with a developer "
 "license or a license with the lazy approval feature enabled."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:188
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:198
 msgid ""
 "**Lazy approval** — функционал, позволяющий принимать решения из "
 "электронной почты, не заходя в Citeck. Например:"
@@ -397,7 +426,7 @@ msgstr "Approval email:"
 msgid "В письме выбран вердикт **На доработку**:"
 msgstr "The verdict **Send for revision** was selected in the email:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:208
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:218
 msgid ""
 "О предварительных настройках функционала см. :ref:`подробно "
 "<lazy_approval_settings>`"
@@ -405,7 +434,7 @@ msgstr ""
 "For preliminary feature settings, see :ref:`details "
 "<lazy_approval_settings>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:210
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:220
 msgid ""
 "Письмо подготавливается при создании задачи, если доступны лицензия, "
 "адресаты и шаблон. Включённый флаг сам по себе не гарантирует доставку "
@@ -415,7 +444,7 @@ msgstr ""
 "exist. The flag alone does not guarantee delivery or another email after "
 "reassignment."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:212
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:222
 msgid ""
 "Для включения функционала **lazy approval** для определенной задачи "
 "необходимо выставить чекбокс **«Согласование по почте»**."
@@ -423,9 +452,17 @@ msgstr ""
 "To enable the **lazy approval** feature for a specific task, check the "
 "**«Email Approval»** checkbox."
 
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:224
+msgid ""
+"При включении функции шаблон уведомления обязателен: выберите его из "
+"списка либо задайте через **«Ручной ввод шаблона уведомления»**. В "
+"текущей форме тип уведомления установлен в **«Электронная почта»** и "
+"недоступен для изменения."
+msgstr "When this feature is enabled, a notification template is required: select it from the list or specify it through **Enter notification template manually**. In the current form, notification type is set to **Email** and cannot be changed."
+
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst
-msgid "Тип уведомления по умолчанию выставлен **Электронная почта**."
-msgstr "The default notification type is set to **Email**."
+msgid "Тип уведомления — **Электронная почта**."
+msgstr "Notification type: **Email**."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst
 msgid "Выберите **шаблон уведомления** из созданных ранее"
@@ -477,19 +514,39 @@ msgstr ""
 "See details about :ref:`message processing reports "
 "<lazy_approval_reports>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:248
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:257
+msgid ""
+"В поле **«Дополнительная модель»** можно задать дополнительные данные для"
+" шаблона уведомления в виде пар «ключ — значение». Строковые значения "
+"интерпретируются как ссылки на записи. Для передачи обычной строки "
+"добавьте префикс ``!str_``, например ``!str_Согласование договора``; "
+"префикс будет удалён перед передачей значения в шаблон."
+msgstr "**Additional model** supplies extra notification template data as key–value pairs. String values are interpreted as record references. To pass a plain string, add the ``!str_`` prefix, for example ``!str_Согласование договора``; the prefix is removed before passing the value to the template."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:259
+msgid ""
+"Шаблоны уведомлений об успешном и неудачном согласовании необязательны. "
+"Условия отправки и выбор шаблонов по умолчанию описаны в :ref:`отчётах "
+"Lazy approval <lazy_approval_reports>`."
+msgstr "Successful and failed approval notification templates are optional. Sending conditions and default template selection are described in :ref:`Lazy approval reports <lazy_approval_reports>`."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:263
 msgid ""
 "В ``ecos-integrations 2.40.0`` переопределение шаблона ошибочного "
 "LA-отчёта из задачи не применяется из-за дефекта сервиса: используется "
 "общий ``la-report-error-template``. Подробности и условия отправки — в "
 ":ref:`отчётах Lazy approval <lazy_approval_reports>`."
-msgstr "In ``ecos-integrations 2.40.0``, a service defect prevents overriding the LA error report template from a task: the shared ``la-report-error-template`` is used. For details and sending conditions, see :ref:`Lazy approval reports <lazy_approval_reports>`."
+msgstr ""
+"In ``ecos-integrations 2.40.0``, a service defect prevents overriding the"
+" LA error report template from a task: the shared ``la-report-error-"
+"template`` is used. For details and sending conditions, see :ref:`Lazy "
+"approval reports <lazy_approval_reports>`."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:253
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:268
 msgid "Форма задачи"
 msgstr "Task Form"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:257
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:272
 msgid ""
 "Если форма задачи не указана, то будут отображаться доступные вердикты "
 "задачи, заполненные в поле **Результат задачи** и поле для ввода "
@@ -498,15 +555,15 @@ msgstr ""
 "If the task form is not specified, the available task verdicts filled in "
 "the **Task Result** field and the comment input field will be displayed:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:263
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:278
 msgid "Результаты задачи версионируются вместе с описанием процесса."
 msgstr "Task results are versioned together with the process description."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:265
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:280
 msgid "Форму можно создать, нажав **Выбрать - Создать форму**"
 msgstr "A form can be created by clicking **Select - Create form**."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:271
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:286
 msgid ""
 "Для добавления кнопок вердиктов задачи на вашу форму, можно "
 "воспользоваться компонентом формы **Task Outcome**, который автоматически"
@@ -516,7 +573,7 @@ msgstr ""
 "Outcome** form component, which automatically generates verdict buttons "
 "based on the **Task Results** settings."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:277
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:292
 msgid ""
 "Вердикты задачи можно добавить вручную для более гибкой настройки "
 "конфигурации. Для этого на форму задачи необходимо добавить кнопку, где "
@@ -528,7 +585,7 @@ msgstr ""
 "set according to the template **outcome_verdictIdentifier**. For example,"
 " **outcome_approve**."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:279
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:294
 msgid ""
 "При завершении сервер требует ровно один истинный ``outcome_<id>`` и "
 "проверяет права текущего исполнителя/кандидата/делегата. Убедитесь, что "
@@ -538,13 +595,13 @@ msgstr ""
 "checks current assignee/candidate/delegate permissions. Ensure form data "
 "does not retain several selected outcomes."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:285
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:300
 msgid ""
 "Если какие-то задачи могут совпадать, то можно использовать одинаковую "
 "форму."
 msgstr "If some tasks may coincide, the same form can be used."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:287
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:302
 msgid ""
 "См. пример :ref:`создания формы <approve_form_bpmn>` и :ref:`best "
 "practice <best_practice_task_form>` по расположению кнопок на форме."
@@ -552,11 +609,11 @@ msgstr ""
 "See an example of :ref:`form creation <approve_form_bpmn>` and :ref:`best"
 " practice <best_practice_task_form>` for button placement on the form."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:290
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:305
 msgid "Использование переменных на форме"
 msgstr "Using Variables on the Form"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:292
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:307
 msgid ""
 "Элементы формы задачи связаны с переменными инстанса (экземпляра) "
 "процесса. Если в области видимости задачи/процесса есть переменная с "
@@ -567,7 +624,7 @@ msgstr ""
 "variable with the same **id** (Property name) as the form element exists "
 "in the task/process scope, its content will be displayed on the form."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:294
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:309
 msgid ""
 "При сабмите (публикации) формы задачи переменные будут записаны в "
 "переменные процесса."
@@ -575,30 +632,33 @@ msgstr ""
 "When the task form is submitted (published), the variables will be "
 "written to process variables."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:296
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:311
 msgid ""
-"Элементы формы задачи так же могут быть связаны с переменными документа, "
-"по которому идет бизнес-процесс."
-msgstr ""
-"Task form elements can also be linked to variables of the document on "
-"which the business process is running."
+"Элементы формы задачи также могут быть связаны с атрибутами документа, по"
+" которому идет бизнес-процесс."
+msgstr "Task form elements can also be associated with attributes of the document on which the business process runs."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:298
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:313
 msgid ""
-"Для отображения и обновления переменных документа на форме задачи "
+"Для отображения и обновления атрибутов документа на форме задачи "
 "необходимо добавить элемент с **id** (Имя свойства) с префиксом "
-"``_ECM_``, например ``_ECM_paymentSum``, где ``paymentSum`` — свойства "
-"документа."
-msgstr ""
-"To display and update document variables on the task form, add an element"
-" with an **id** (Property name) with the prefix ``_ECM_``, for example "
-"``_ECM_paymentSum``, where ``paymentSum`` — is the document property."
+"``_ECM_``, например ``_ECM_paymentSum``, где ``paymentSum`` — атрибут "
+"документа. При отправке формы такие поля записываются в документ отдельно"
+" от переменных процесса."
+msgstr "To display and update document attributes on a task form, add an element whose **id** (Property name) has the ``_ECM_`` prefix, for example ``_ECM_paymentSum``, where ``paymentSum`` is a document attribute. On form submission, these fields are written to the document separately from process variables."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:303
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:315
+msgid ""
+"При записи атрибута префикс ``_ECM_`` удаляется, а символы ``_`` в "
+"оставшейся части имени заменяются на ``:``. Учитывайте это преобразование"
+" при выборе имени свойства поля."
+msgstr "When writing an attribute, the ``_ECM_`` prefix is removed and ``_`` characters in the remaining name are replaced with ``:``. Account for this transformation when choosing the field property name."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:320
 msgid "Темы для кнопок вердикта"
 msgstr "Verdict Button Themes"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:305
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:322
 msgid ""
 "В вердиктах доступна настройка темы кнопок. Настройка влияет на цвет "
 "кнопки по аналогии с кнопками на форме."
@@ -606,67 +666,67 @@ msgstr ""
 "Button theme settings are available in verdicts. The setting affects the "
 "button color in the same way as form buttons."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:317
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:334
 msgid "Возможные варианты:"
 msgstr "Possible options:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:323
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:340
 msgid "Примеры:"
 msgstr "Examples:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:336
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:353
 msgid "**1**"
 msgstr "**1**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:337
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:354
 msgid "По умолчанию"
 msgstr "Default"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:338
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:355
 msgid "**2**"
 msgstr "**2**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:339
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:356
 msgid "Основная"
 msgstr "Primary"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:340
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:357
 msgid "**3**"
 msgstr "**3**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:341
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:358
 msgid "Информация"
 msgstr "Info"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:342
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:359
 msgid "**4**"
 msgstr "**4**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:343
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:360
 msgid "Успешно"
 msgstr "Success"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:344
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:361
 msgid "**5**"
 msgstr "**5**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:345
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:362
 msgid "Опасно"
 msgstr "Danger"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:346
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:363
 msgid "**6**"
 msgstr "**6**"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:347
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:364
 msgid "Предупреждение"
 msgstr "Warning"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:352
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:369
 msgid "Обязательный комментарий для вердикта"
 msgstr "Required Comment for a Verdict"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:354
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:371
 msgid ""
 "В настройках вердикта доступен флаг **«Комментарий обязателен»**. На "
 "универсальной форме и в компоненте **Task Outcome** он блокирует отправку"
@@ -676,7 +736,7 @@ msgstr ""
 "**Task Outcome**, this blocks submission with empty or whitespace-only "
 "comments."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:356
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:373
 msgid ""
 "Флаг настраивается отдельно для каждого вердикта в окне настройки "
 "результата задачи рядом с выбором темы кнопки."
@@ -684,7 +744,7 @@ msgstr ""
 "The flag is configured separately for each verdict in the task result "
 "settings window, next to the button theme selection."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:360
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:377
 msgid ""
 "Валидация срабатывает на универсальной форме задачи (когда форма задачи "
 "не задана) и на пользовательских формах, использующих компонент **Task "
@@ -698,11 +758,11 @@ msgstr ""
 "submission is blocked and an error message is displayed under the "
 "**Comment** field."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:362
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:379
 msgid "Типовые сценарии использования:"
 msgstr "Typical usage scenarios:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:364
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:381
 msgid ""
 "вердикты **«Отклонить»**, **«Вернуть на доработку»**, **«Аннулировать»** "
 "— где требуется указать причину;"
@@ -710,7 +770,7 @@ msgstr ""
 "the **\"Reject\"**, **\"Send for revision\"**, **\"Annul\"** verdicts — "
 "where a reason must be specified;"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:365
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:382
 msgid ""
 "любые завершающие вердикты, для которых важно зафиксировать обоснование "
 "решения исполнителя."
@@ -718,13 +778,13 @@ msgstr ""
 "any final verdicts for which it is important to record the performer's "
 "justification for the decision."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:367
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:384
 msgid ""
 "Если флаг выключен (значение по умолчанию), комментарий остаётся "
 "необязательным."
 msgstr "If the flag is disabled (the default value), the comment remains optional."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:369
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.rst:386
 msgid ""
 "Эта проверка выполняется интерфейсом Task Outcome. Произвольные кнопки "
 "``outcome_*``, прямые API-вызовы и Lazy approval не получают её "
@@ -932,3 +992,31 @@ msgstr ""
 #~ " task with this verdict until the "
 #~ "**Comment** field is filled in."
 
+#~ msgid ""
+#~ "Вычисление срока по рабочему расписанию "
+#~ "доступно только в Enterprise версии."
+#~ msgstr ""
+#~ "Due date calculation based on a "
+#~ "work schedule is available only in "
+#~ "the Enterprise version."
+
+#~ msgid ""
+#~ "При сохранении, сохранении/публикации процесса "
+#~ "проверяется обязательность заполнения следующих "
+#~ "полей:"
+#~ msgstr ""
+#~ "When saving, saving/publishing the process,"
+#~ " the mandatory filling of the "
+#~ "following fields is checked:"
+
+#~ msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
+#~ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
+
+#~ msgid ""
+#~ "При одновременном установлении срока вручную"
+#~ " и через выражение, выражение имеет "
+#~ "больший приоритет."
+#~ msgstr ""
+#~ "When setting the due date both "
+#~ "manually and via an expression, the "
+#~ "expression takes higher priority."

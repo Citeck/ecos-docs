@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Citeck \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 19:08+0300\n"
+"POT-Creation-Date: 2026-11-19 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -24,32 +24,24 @@ msgstr "Control Flows"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:7
 msgid ""
-"Поток управления используется для связи элементов потока BPMN (событий, "
-"процессов, шлюзов)."
-msgstr ""
-"Control flow is used to connect BPMN flow elements (events, processes, "
-"gateways)."
+"Поток управления соединяет элементы внутри BPMN-процесса (события, "
+"задачи, подпроцессы и шлюзы) и задаёт порядок их выполнения."
+msgstr "A sequence flow connects elements within a BPMN process (events, tasks, subprocesses, and gateways) and defines their execution order."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:9
-msgid "Поток управления отображает ход выполнения процесса."
-msgstr "Control flow shows the progress of process execution."
-
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:15
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:13
 msgid "Далее ведите стрелку к необходимому элементу."
 msgstr "Next, drag the arrow to the required element."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:17
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:15
 msgid "Виды потоков управления:"
 msgstr "Types of control flows:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst
 msgid ""
-"**Стандартный поток управления** (Sequence flow) относится к потокам, "
-"берущим начало от Стартового события и следующим по ходу выполнения "
-"процесса."
-msgstr ""
-"**Standard control flow** (Sequence flow) refers to flows starting from "
-"the Start event and following the course of process execution."
+"**Стандартный поток управления** (Sequence flow) соединяет элементы "
+"процесса и не назначен потоком по умолчанию. При необходимости на нём "
+"задаётся условие перехода."
+msgstr "A **regular sequence flow** connects process elements and is not assigned as the default flow. A transition condition can be configured if needed."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst
 msgid ""
@@ -67,74 +59,93 @@ msgid ""
 "и без него."
 msgstr "This flow can be used both with an exclusive gateway and without it."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:40
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:38
 msgid ""
 "Стандартный поток управления задается по умолчанию. Для изменения вида "
 "потока:"
 msgstr "Standard control flow is set by default. To change the flow type:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:48
-msgid "Для потока можно указать тип условия. Условия могут иметь разные типы:"
-msgstr ""
-"For a flow, you can specify the condition type. Conditions can have "
-"different types:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:46
+msgid ""
+"Для потока можно указать тип условия. По умолчанию выбран тип **«Нет»**. "
+"Доступны следующие варианты:"
+msgstr "A condition type can be specified for a flow. The default is **None**. Available options:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:52
+msgid ""
+"**Нет** — условие не задаётся. Сам по себе этот тип не делает поток "
+"потоком по умолчанию."
+msgstr "**None** — no condition is set. This type does not itself make the flow the default flow."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:53
+msgid ""
+"**Исходящий** — проверка результата (вердикта) выбранной предшествующей "
+"задачи. Выберите пару «задача — результат» из доступного списка."
+msgstr "**Outcome** — checks the result (outcome) of a selected preceding task. Select a task–outcome pair from the available list."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:54
-msgid "**Исходящий** (выход из задачи)"
-msgstr "**Outgoing** (exit from task)"
+msgid ""
+"**Скрипт** — JavaScript, который должен вернуть булевое значение. "
+"Например: ``paymentSum >= 30000``."
+msgstr "**Script** — JavaScript that must return a Boolean value. For example: ``paymentSum >= 30000``."
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:55
-msgid ""
-"**Скрипт** — скрипт, который должен вернуть булевое значение. Например: "
-"paymentSum >= 30000"
-msgstr ""
-"**Script** — a script that must return a boolean value. For example: "
-"paymentSum >= 30000"
-
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:56
 #, python-brace-format
 msgid ""
 "**Выражение** — выражение JUEL, например ``${paymentSum >= 30000}`` "
 "(`подробнее о выражениях Camunda 7 <https://docs.camunda.org/manual/7.24"
 "/user-guide/process-engine/expression-language/>`_)."
-msgstr "**Expression** — a JUEL expression, for example ``${paymentSum >= 30000}`` (`more about Camunda 7 expressions <https://docs.camunda.org/manual/7.24/user-guide/process-engine/expression-language/>`_)."
+msgstr ""
+"**Expression** — a JUEL expression, for example ``${paymentSum >= "
+"30000}`` (`more about Camunda 7 expressions "
+"<https://docs.camunda.org/manual/7.24/user-guide/process-engine"
+"/expression-language/>`_)."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:58
-msgid "Например, для шлюза — **(2)** и **(3)**:"
-msgstr "For example, for a gateway — **(2)** and **(3)**:"
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:57
+msgid ""
+"Назначение потока по умолчанию и выбор типа условия — разные настройки. "
+"Для потока по умолчанию используйте **«Нет»**: он выбирается, когда "
+"остальные ветви не подходят."
+msgstr "Assigning a default flow and selecting a condition type are separate settings. Use **None** for the default flow: it is selected when other branches do not match."
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:69
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:59
+msgid ""
+"Для условного ветвления шлюза можно использовать **«Скрипт»** или "
+"**«Выражение»**:"
+msgstr "Use **Script** or **Expression** for conditional gateway branching:"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:70
 msgid "Для согласования:"
 msgstr "For approval:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:70
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:71
 msgid "Для отказа в согласовании:"
 msgstr "For rejection:"
 
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:83
-msgid "При сохранении, сохранении/публикации процесса проверяется следующее:"
-msgstr "When saving, saving/publishing the process, the following is checked:"
-
-#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:85
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:84
 msgid ""
-"**«Тип условия»** (Исходящий или Выражение, или Скрипт) должен быть "
-"обязательно выбран, если поток выходит из эксклюзивного и инклюзивного "
-"шлюза."
-msgstr ""
-"**«Condition Type»** (Outgoing or Expression, or Script) must be selected"
-" if the flow exits an exclusive or inclusive gateway."
+"В форме настройки потока поле **«Имя»** обязательно для заполнения. В "
+"зависимости от выбранного типа условия заполните соответствующее поле:"
+msgstr "**Name** is required in the flow settings form. Complete the corresponding field according to the selected condition type:"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:86
-msgid ""
-"Если поток не выходит из эксклюзивного и инклюзивного шлюза, то **«Тип "
-"условия»** может быть равен только **«Нет»**."
-msgstr ""
-"If the flow does not exit an exclusive or inclusive gateway, then "
-"**«Condition Type»** can only be **«None»**."
+msgid "**«Исходящий»** — выберите задачу и её результат;"
+msgstr "**Outcome** — select a task and its outcome;"
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:87
+msgid "**«Скрипт»** — укажите скрипт;"
+msgstr "**Script** — specify a script;"
 
 #: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:88
-msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
-msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
+msgid "**«Выражение»** — укажите выражение."
+msgstr "**Expression** — specify an expression."
+
+#: ../../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.rst:90
+msgid ""
+"Для условных ветвей задайте способ проверки условия. Поток по умолчанию "
+"не требует такого условия. Допустимые сочетания потоков зависят от "
+"исходного элемента и правил редактора и движка BPMN."
+msgstr "For conditional branches, specify how the condition is checked. The default flow requires no such condition. Allowed flow combinations depend on the source element and BPMN editor and engine rules."
 
 #~ msgid ""
 #~ "**Выражение** — expression (`подробнее о "
@@ -145,3 +156,62 @@ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
 #~ "about expressions "
 #~ "<https://docs.camunda.io/docs/components/concepts/expressions/>`_)"
 
+#~ msgid ""
+#~ "Поток управления используется для связи "
+#~ "элементов потока BPMN (событий, процессов, "
+#~ "шлюзов)."
+#~ msgstr ""
+#~ "Control flow is used to connect "
+#~ "BPMN flow elements (events, processes, "
+#~ "gateways)."
+
+#~ msgid "Поток управления отображает ход выполнения процесса."
+#~ msgstr "Control flow shows the progress of process execution."
+
+#~ msgid ""
+#~ "**Стандартный поток управления** (Sequence "
+#~ "flow) относится к потокам, берущим "
+#~ "начало от Стартового события и следующим"
+#~ " по ходу выполнения процесса."
+#~ msgstr ""
+#~ "**Standard control flow** (Sequence flow) "
+#~ "refers to flows starting from the "
+#~ "Start event and following the course "
+#~ "of process execution."
+
+#~ msgid "Для потока можно указать тип условия. Условия могут иметь разные типы:"
+#~ msgstr ""
+#~ "For a flow, you can specify the"
+#~ " condition type. Conditions can have "
+#~ "different types:"
+
+#~ msgid "Например, для шлюза — **(2)** и **(3)**:"
+#~ msgstr "For example, for a gateway — **(2)** and **(3)**:"
+
+#~ msgid "При сохранении, сохранении/публикации процесса проверяется следующее:"
+#~ msgstr "When saving, saving/publishing the process, the following is checked:"
+
+#~ msgid ""
+#~ "**«Тип условия»** (Исходящий или Выражение,"
+#~ " или Скрипт) должен быть обязательно "
+#~ "выбран, если поток выходит из "
+#~ "эксклюзивного и инклюзивного шлюза."
+#~ msgstr ""
+#~ "**«Condition Type»** (Outgoing or Expression,"
+#~ " or Script) must be selected if "
+#~ "the flow exits an exclusive or "
+#~ "inclusive gateway."
+
+#~ msgid ""
+#~ "Если поток не выходит из эксклюзивного"
+#~ " и инклюзивного шлюза, то **«Тип "
+#~ "условия»** может быть равен только "
+#~ "**«Нет»**."
+#~ msgstr ""
+#~ "If the flow does not exit an "
+#~ "exclusive or inclusive gateway, then "
+#~ "**«Condition Type»** can only be "
+#~ "**«None»**."
+
+#~ msgid "Иначе в :ref:`линтере <bpmn_linter>` будет выдана ошибка."
+#~ msgstr "Otherwise, an error will be issued in the :ref:`linter <bpmn_linter>`."
